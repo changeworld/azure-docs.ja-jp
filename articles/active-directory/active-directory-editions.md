@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="02/02/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -46,31 +46,29 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 >-	Azure Multi-Factor Authentication は、ユーザーごとまたは認証プロバイダーごとに使用できます。詳細については、「[Azure Multi-Factor Authentication とは](multi-factor-authentication.md)」を参照してください。
 
 
+##Free、Basic、Premium エディションの一般提供されている機能の比較
+
 <br>
 
 | 機能の種類| 特徴| Free エディション| Basic エディション| Premium Edition| Office 365 アプリのみ |
 | --- | --- | --- | --- | --- | --- |
 | **共通機能**| ディレクトリ オブジェクト [1]| 最大で 500,000 のオブジェクト| オブジェクトの制限なし| オブジェクトの制限なし| Office 365 ユーザー アカウントにはオブジェクトの制限なし|
 | | [ユーザーおよびグループの管理 (追加/更新/削除)、ユーザー ベースのプロビジョニング](active-directory-administer.md)、[デバイス登録](active-directory-conditional-access-device-registration-overview.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
-| | [SaaS アプリ、カスタム アプリ、アプリケーション プロキシ アプリへの SSO](active-directory-enable-sso-scenario.md)| 10 個のアプリ (ユーザーあたり) [2]| 10 個のアプリ (ユーザーあたり) [2]| 制限なし| 10 個のアプリ (ユーザーあたり) [2]|
+| | [シングル サインオン (SSO)](active-directory-enable-sso-scenario.md)| 10 個のアプリ (ユーザーあたり) [2] <br>(事前統合済みの SaaS アプリおよび開発者が統合したアプリ)| 10 個のアプリ (ユーザーあたり) [2] <br>(Free レベル + アプリケーション プロキシ アプリ) | 制限なし [4] <br> (Free、Basic レベル + セルフサービスのアプリ統合テンプレート)| 10 個のアプリ (ユーザーあたり) [2] <br>(事前統合済みの SaaS アプリおよび開発者が統合したアプリ)|
 | | [クラウド ユーザーに対するセルフ サービスのパスワード変更](active-directory-passwords-update-your-own-password.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
 | | [Connect - オンプレミスのディレクトリと Azure Active Directory 間の同期用](active-directory-aadconnect.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
-| | **プレビュー**:[ B2B コラボレーション](active-directory-b2b-collaboration-overview.md)| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
-| | [セキュリティ/使用状況レポート](active-directory-view-access-usage-reports.md)| 基本レポート| 基本レポート| 詳細レポート| 基本レポート|
+| | [セキュリティ/使用状況レポート](active-directory-view-access-usage-reports.md)| 3 個の基本レポート| 3 個の基本レポート| 詳細レポート| 3 個の基本レポート|
 | **Premium および Basic の機能**| [グループ ベースのアプリケーション アクセス管理とプロビジョニング](active-directory-accessmanagement-group-saasapps.md)| | ![○][12]| ![○][12]| |
 | | [クラウド ユーザーに対するセルフ サービスのパスワード リセット](active-directory-passwords.md)| | ![○][12]| ![○][12]| ![○][12]|
 | | [企業ブランド (ログオン ページとアクセス パネルのカスタマイズ)](active-directory-add-company-branding.md)| | ![○][12]| ![○][12]| ![○][12]|
 | | [アプリケーション プロキシ](active-directory-application-proxy-get-started.md)| | ![○][12]| ![○][12]| |
 | | [高可用性 SLA アップタイム (99.9%)](https://azure.microsoft.com/support/legal/sla/)| | ![○][12]| ![○][12]| ![○][12]|
-| **Premium のみの機能**| セルフサービスによるグループ管理/セルフサービスによるアプリケーションの追加/動的なグループ| | | ![○][12]| |
-| | [セルフサービスによるパスワードのリセット、変更、ロック解除 (オンプレミスの書き戻しが可能)](active-directory-passwords-getting-started.md/#enable-users-to-reset-or-change-their-ad-passwords)| | | ![○][12]| |
-| | [Multi-Factor Authentication (クラウドおよびオンプレミス )](multi-factor-authentication.md)| | | ![○][12]| Office 365 アプリ用のクラウドのみに限定|
+| **Premium のみの機能**| [セルフサービスによるグループ管理](active-directory-accessmanagement-self-service-group-management.md)/セルフサービスによるアプリケーションの追加/[動的なグループ メンバーシップ](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups)| | | ![○][12]| |
+| | [Multi-Factor Authentication (クラウドおよびオンプレミス )](multi-factor-authentication.md)| | | ![○][12]| Office 365 アプリの場合はクラウドのみに限定|
 | | [Microsoft Identity Manager (MIM) ユーザー ライセンスと MIM サーバー [3]](http://www.microsoft.com/server-cloud/products/microsoft-identity-manager/default.aspx)| | | ![○][12]| |
 | | [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)| | | ![○][12]| |
 | | [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)| | | ![○][12]| |
 | | グループ アカウントの自動パスワード ロールオーバー| | | ![○][12]| |
-| | **プレビュー**: 条件付きアクセス| | | ![○][12]| |
-| | **プレビュー**: Azure AD Privileged Identity Management| | | ![○][12]| |
 | **Windows 10 および Azure AD 参加に関連する機能**| Azure AD、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による Bitlocker 回復への Windows 10 デバイスの参加| ![○][12]| ![○][12]| ![○][12]| ![○][12]|
 | | MDM の自動登録、セルフサービスによる Bitlocker 回復、Azure AD Join による Windows 10 デバイスへのローカル管理者の追加| | | ![○][12]| |
 
@@ -84,6 +82,24 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 [3] Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は、Windows Server OS で実行されるため、サーバーで Windows Server の有効なライセンス コピーが実行されている限り、そのサーバー上に Microsoft Identity Manager をインストールでき、使用することができます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
 
+[4] アプリケーション ギャラリーのメニューに用意されているテンプレートを使用して、SAML、SCIM、またはフォーム ベース認証をサポートする任意のアプリケーションのセルフサービスによる統合。詳細については、この記事を参照してください。[https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-saas-custom-apps
+
+
+##Azure AD プレビュー機能
+
+Azure AD には、Free、Basic、Premium エディションの一般提供されている機能に加えて、一連のプレビュー機能も用意されています。プレビュー機能を使用すると、近い将来に公開予定の機能を体験し、これらの機能が環境の改善に役立つかどうかを判断できます。
+
+
+**使用可能なプレビュー機能**
+
+- [B2B コラボレーション](active-directory-b2b-collaboration-overview.md)
+- 条件付きアクセス
+- [管理単位](active-directory-administrative-units-management.md)
+- Privileged Identity Management
+- [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
+
+
+
 
 
 ## 参照トピック
@@ -96,4 +112,4 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

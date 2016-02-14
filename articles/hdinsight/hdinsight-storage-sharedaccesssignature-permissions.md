@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="01/15/2016"
+ms.date="02/01/2016"
 ms.author="larryfr"/>
 
 #Azure Storage の Shared Access Signature を使用して HDInsight でデータへのアクセスを制限する
@@ -34,7 +34,7 @@ Shared Access Signature (SAS) は、データへのアクセスを制限でき�
 
 * Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Ambari を使用して、クラスターに Shared Access Signature を追加することができます。ない場合は、Azure PowerShell を使用して新しいクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
 
-* サンプル ファイルは、[https://github.com/Blackmist/hdinsight-azure-storage-sas](https://github.com/Blackmist/hdinsight-azure-storage-sas) から入手できます。このリポジトリには、次が含まれます。
+* サンプル ファイルは、[https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) にあります。このリポジトリには、次が含まれます。
 
     * HDInsight で使用するストレージ コンテナー、保存済みのポリシーおよび SAS を作成できる Visual Studio プロジェクト
     
@@ -60,7 +60,7 @@ Shared Access Signature には、次の 2 つのフォームがあります。
 
 4. SAS の作成に使用したアカウント キーが再度生成された。これを行うと、そのアカウント キーを使用するすべてのアプリケーション コンポーネントが、別の有効なアカウント キー、または新しく再生成されたアカウント キーを使用するよう更新されるまで、認証に失敗します。
 
-> [AZURE.IMPORTANT]Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
+> [AZURE.IMPORTANT] Shared Access Signature URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。保存済みのアクセス ポリシーが指定されていない場合、Shared Access Signature を取り消すにはアカウント キーを変更する以外に方法はありません。
 
 必要に応じて、署名を取り消したり、有効期限を延長したりできるように、常に保存済みのアクセス ポリシーを使用することをお勧めします。ドキュメント内のこれらの手順は、保存済みのアクセス ポリシーを使用して、SAS を生成します。
 
@@ -68,7 +68,7 @@ Shared Access Signature の詳細については、「[SAS モデルについて
 
 ##保存済みのポリシーを作成して SAS を生成する
 
-現在は、プログラムを使用して保存済みのポリシーを作成する必要があります。保存済みのポリシーや SAS を作成する C# と Python の両方の例を、[https://github.com/Blackmist/hdinsight-azure-storage-sas](https://github.com/Blackmist/hdinsight-azure-storage-sas) で参照することができます。
+現在は、プログラムを使用して保存済みのポリシーを作成する必要があります。保存済みのポリシーおよび SAS を作成する C# と Python のサンプルは両方とも、[https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) にあります。
 
 ###C# を使用して保存済みのポリシーと SAS を作成する
 
@@ -169,7 +169,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
     
     Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージも表示されます。これは、クラスターへのリモート ログインに使用されます。
     
-    > [AZURE.IMPORTANT]HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
+    > [AZURE.IMPORTANT] HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
     >
     > - 10 文字以上にする
     > - 数字を 1 つ以上含める
@@ -201,7 +201,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     変更が完了したら、__[OK]__ をクリックします。
 
-    > [AZURE.IMPORTANT]この操作をすると、構成の変更が保存されますが、変更を適用させるには、複数のサービスを再起動する必要があります。
+    > [AZURE.IMPORTANT] この操作をすると、構成の変更が保存されますが、変更を適用させるには、複数のサービスを再起動する必要があります。
 
 6. Ambari Web UI で、左側の一覧から __[HDFS]__ を選択して、右側の __[サービス アクション]__ ドロップダウン リストから __[すべて再起動]__ を選択します。プロンプトが表示されたら、__[メンテナンス モードの有効化]__ を選択して、[すべて再起動を確認する] を選択します。
 
@@ -290,4 +290,4 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 
 [powershell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

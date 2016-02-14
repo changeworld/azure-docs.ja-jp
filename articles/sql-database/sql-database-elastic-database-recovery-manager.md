@@ -19,7 +19,7 @@
 
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) クラスを使用すると、ADO.Net アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) の間の不整合を簡単に検出して修正できます。
 
-GSM と LSM はシャード化環境内の各データベースのマッピングを追跡します。GSM と LSM の間には中断が発生することがあります。そのような場合に、RecoveryManager クラスを使用して、中断を検出し、修復します。
+GSM と LSM はシャード化環境内の各データベースのマッピングを追跡します。場合によっては、GSM と LSM の間で断絶が発生します。その場合は、RecoveryManager クラスを使用して断絶を検出し、修復します。
 
 RecoveryManager クラスは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)に含まれています。
 
@@ -44,7 +44,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 * [Azure SQL Database の Elastic Database 機能](sql-database-elastic-scale-introduction.md) 
 * [Azure SQL Database の継続性](sql-database-business-continuity.md) 
-* [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)  
+* [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)  
 * [ShardMap 管理](sql-database-elastic-scale-shard-map-management.md)
 
 ## RecoveryManager からの ShardMapManager の取得 
@@ -155,4 +155,4 @@ geo フェールオーバーと復旧は一般的に、アプリケーション�
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -47,10 +47,10 @@ Azure の基本的 SSH 設定には **ssh-rsa** の 2048 ビットの公開キ�
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[プレビュー モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
+1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[Azure モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
 2. .pem ファイルは[クラシック ポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](../xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。
 
-> [AZURE.NOTE]クラシック デプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VM に接続しません。Linux または Mac でこれらのファイルを作成するには、次のように入力します。
+> [AZURE.NOTE] クラシック デプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VM に接続しません。Linux または Mac でこれらのファイルを作成するには、次のように入力します。
 
 ## Windows 上で ssh-keygen および openssl を入手する ##
 
@@ -68,7 +68,7 @@ Azure の基本的 SSH 設定には **ssh-rsa** の 2048 ビットの公開キ�
 1.	次の場所から Windows 用の GitHub をダウンロードしてインストールします: [http://windows.github.com/](http://windows.github.com/)
 2.	[スタート] メニューをクリックし、[すべてのプログラム]、[GitHub] の順にクリックして、Git シェルを実行します。
 
-> [AZURE.NOTE]上記の `openssl` コマンドを実行している場合は、次のエラーが発生する可能性があります。
+> [AZURE.NOTE] 上記の `openssl` コマンドを実行している場合は、次のエラーが発生する可能性があります。
 
         Unable to load config info from /usr/local/ssl/openssl.cnf
 
@@ -155,4 +155,4 @@ Azure の基本的 SSH 設定には **ssh-rsa** の 2048 ビットの公開キ�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

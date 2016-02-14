@@ -13,21 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="12/01/2015"
+   ms.date="01/28/2015"
    ms.author="sstein"/>
 
 # SQL Database の価格レベルの提案
 
  既存の Azure SQL Database のワークロードを実行するのに最適な価格レベルとパフォーマンス レベルを提案する価格レベルの提案が用意されています。
 
-> [AZURE.NOTE]価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure ポータル](https://portal.azure.com/)でのみ利用できます。
+> [AZURE.NOTE] 価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure ポータル](https://portal.azure.com/)でのみ利用できます。
 
 
 価格レベルの提案は、次のタスクの実行中に取得します。
 
 - [SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)
 - [Azure SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)
-- V12 サーバーをブラウズする - データベースに [Elastic Database プールによるメリットがある](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)場合は、サーバー ブレードに推奨されるプールを示すメッセージが表示されます。メッセージをクリックすると、推奨されるプールが作成されます。
+- V12 サーバーをブラウズする - データベースに [エラスティック データベース プールによるメリットがある](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)場合は、サーバー ブレードに推奨されるプールを示すメッセージが表示されます。メッセージをクリックすると、推奨されるプールが作成されます。
 - [エラスティック データベース プールを作成します](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
 
 
@@ -56,7 +56,7 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
 ## 価格レベルの提案を受ける
 
-価格レベルの提案を受けるには、既存の Web または Business データベースを選択し、**[価格レベル]** タイルをクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)ときにも利用できます)。
+価格レベルの提案を受けるには、既存の Web または Business データベースを選択して、**[すべての設定]** をクリックし、**[価格レベル (DTU のスケール)]** をクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)ときにも利用できます)。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[参照]**、**[SQL データベース]** の順にクリックします。
@@ -64,12 +64,10 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
     ![データベースの選択][1]
 
-5. データベースのブレードで、**[価格レベル]** タイルを選択します。
-
-    ![[価格レベル]][2]
+5. データベース ブレードで、**[すべての設定]** を選択し、**[価格レベル (DTU のスケール)]** を選択します。
 
 
-7. **[価格レベル]** タイルをクリックすると、**[お勧めの価格レベル]** ブレードが表示されます。提案されたレベルをクリックして **[選択]** をクリックすると、そのレベルに変更できます。
+7. **[お勧めの価格レベル]** が開き、提案されたレベルをクリックして **[選択]** をクリックすると、そのレベルに変更できます。
 
     ![プレビューのサインアップ][4]
 
@@ -81,7 +79,7 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
 ## 概要
 
-価格レベルの提案では、自動的に各 SQL データベースの製品利用統計情報データが収集され、データベースの実際のパフォーマンス ニーズと機能要件に基づいてサービス階層とパフォーマンス レベルの最適な組み合わせが提案されます。データベースのブレードの **[価格レベル]** タイルをクリックして、価格レベルの提案を表示します。
+価格レベルの提案では、自動的に各 SQL データベースの製品利用統計情報データが収集され、データベースの実際のパフォーマンス ニーズと機能要件に基づいてサービス階層とパフォーマンス レベルの最適な組み合わせが提案されます。[設定] ブレードで、**[価格レベル (DTU のスケール)]** をクリックして、Web および Business データベースの価格レベルの提案を確認します。
 
 
 
@@ -92,12 +90,10 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
 <!--Image references-->
 [1]: ./media/sql-database-service-tier-advisor/select-database.png
-[2]: ./media/sql-database-service-tier-advisor/pricing-tier.png
-[3]: ./media/sql-database-service-tier-advisor/preview-sign-up.png
 [4]: ./media/sql-database-service-tier-advisor/choose-pricing-tier.png
 [5]: ./media/sql-database-service-tier-advisor/usage-details.png
 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="02/01/2016"
    ms.author="v-darmi"/>
 
 
@@ -21,7 +21,7 @@
 
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
 
-[Azure Event Hub サービスでログ記録、監視および分析](api-management-sample-logtoeventhub.md)をする際の通信の方法については、既に学習しています。この記事では、外部の任意の HTTP ベースのサービスと通信するポリシーのデモを行います。これらのポリシーは、リモート イベントをトリガーしたり、元の要求と応答を何らかの方法で操作する情報を取得したりする場合に使用できます。
+[Azure Event Hub サービスでログ記録、監視および分析](api-management-log-to-eventhub-sample.md)をする際の通信の方法については、既に学習しています。この記事では、外部の任意の HTTP ベースのサービスと通信するポリシーのデモを行います。これらのポリシーは、リモート イベントをトリガーしたり、元の要求と応答を何らかの方法で操作する情報を取得したりする場合に使用できます。
 
 ## Send-One-Way-Request
 外部サービスに何らかの種類の重要なイベントを通知する、外部通信の最も単純な要求スタイルは、おそらくファイア アンド フォーゲットでしょう。制御フロー ポリシー `choose` を使用すれば、関心のある任意の種類の状態を検出し、条件が満たされた場合に、[send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) ポリシーを使用して外部 HTTP 要求を行うことができます。これは、Hipchat、Slack などのメッセージング システム、SendGrid または MailChimp のようなメール API、または PagerDuty などの重要なサポート インシデントへの要求である場合があります。これらのすべてのメッセージング システムには、簡単に呼び出すことができる単純な HTTP API があります。
@@ -269,4 +269,4 @@ Azure API Management サービスには、HTTP トラフィックに選択的に
 
 > [AZURE.VIDEO send-request-and-return-response-policies]
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

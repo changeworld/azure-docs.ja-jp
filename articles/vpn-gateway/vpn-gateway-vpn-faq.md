@@ -242,7 +242,7 @@ Azure VPN Gateway 経由でトラフィックを通過させることは可能�
 
 ### IPsec VPN を使用している仮想ネットワークを自社の ExpressRoute 回線に接続できますか。
 
-はい、これはサポートされています。詳細については、[共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-coexist.md)を参照してください。
+はい、これはサポートされています。詳細については、[共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
 
 ## クロスプレミス接続と VM
 
@@ -267,4 +267,4 @@ Azure VPN Gateway 経由でトラフィックを通過させることは可能�
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

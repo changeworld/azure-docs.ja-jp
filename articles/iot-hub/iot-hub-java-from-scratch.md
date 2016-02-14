@@ -26,7 +26,7 @@
 
 前提条件と、Windows または Linux に開発環境をセットアップする方法については、「[開発環境を準備する][devbox-setup]」を参照してください。
 
-> [AZURE.NOTE]このチュートリアルを開始して前提条件をインストールし、必要な JAR ファイルをローカルの Maven リポジトリに追加する前に、「[開発環境を準備する][devbox-setup]」の手順を完了しておくことが重要です。
+> [AZURE.NOTE] このチュートリアルを開始して前提条件をインストールし、必要な JAR ファイルをローカルの Maven リポジトリに追加する前に、「[開発環境を準備する][devbox-setup]」の手順を完了しておくことが重要です。
 
 ## プロジェクトを作成する
 
@@ -36,7 +36,7 @@
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=iot-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    > [AZURE.NOTE]これは、1 つの長いコマンドです。コマンド ライン ツールに貼り付ける場合は、完全なコマンドをコピーしてください。
+    > [AZURE.NOTE] これは、1 つの長いコマンドです。コマンド ライン ツールに貼り付ける場合は、完全なコマンドをコピーしてください。
 
     このコマンドは、*iot-device* という名前のプロジェクト フォルダーを作成します。このフォルダーには Maven プロジェクト構造が含まれています。詳細については、Apache Web サイトの「[Maven in 5 Minutes (5 分で始める Maven][maven-five-minutes]」を参照してください。
 
@@ -48,7 +48,7 @@
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-client</artifactId>
-      <version>1.0.0-preview.4</version>
+      <version>1.0.0</version>
     </dependency>
     ```
 
@@ -214,7 +214,7 @@
 .level = {LOGGING_LEVEL}
 ```
 
-> [AZURE.NOTE]さまざまな[ログ レベル](http://docs.oracle.com/javase/7/docs/api/java/util/logging/Level.html)の説明を確認できます。
+> [AZURE.NOTE]  さまざまな[ログ レベル](http://docs.oracle.com/javase/7/docs/api/java/util/logging/Level.html)の説明を確認できます。
 
 次に、JVM プロパティ `java.util.logging.config.file={Path to your config.properties file}` を設定します。
 
@@ -229,4 +229,4 @@ AMQP フレームをログ記録するには、コマンド環境に環境変数
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md
 [lnk-iothub-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/doc/provision_device.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

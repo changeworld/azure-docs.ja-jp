@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="02/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse と他のサービスの併用
@@ -32,14 +32,14 @@ Power BI との統合によって、SQL Data Warehouse のコンピューティ�
 + **Direct Connect**: SQL Data Warehouse に対する論理的プッシュダウンを備えた、さらに高度な接続です。これにより、分析の速度と規模を高めることができます。
 + **Power BI で開く**: ［Power BI で開く］ ボタンは、Power BI にインスタンス情報を渡し、よりシームレスな接続を可能にします。 
 
-詳細については、「[SQL Data Warehouse での Power BI の使用](../sql-data-warehouse-integrate-power-bi.md)」または「[Power BI documentation (Power BI ドキュメント)](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)」をご覧ください。
+詳細については、「[SQL Data Warehouse での Power BI の使用](./sql-data-warehouse-integrate-power-bi.md)」または「[Power BI documentation (Power BI ドキュメント)](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)」をご覧ください。
 
 ##Azure Data Factory
 Azure Data Factory は、抽出 - 読み込みの複雑なパイプラインを作成するための管理されたプラットフォームを提供します。SQL Data Warehouse と Azure Data Factory の統合には、次が含まれます。
 
 + **ストアド プロシージャ**: SQL Data Warehouse でのストアド プロシージャの実行を調整します。
 
-詳細については、「[SQL Data Warehouse での Azure Data Factory の使用](../sql-data-warehouse-integrate-azure-data-factory.md)」または「[Data Factory のドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)」をご覧ください。
+詳細については、「[SQL Data Warehouse での Azure Data Factory の使用](./sql-data-warehouse-integrate-azure-data-factory.md)」または「[Data Factory のドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)」をご覧ください。
 
 ##Azure Machine Learning
 Azure Machine Learning は、完全に管理されたを分析サービスで、大規模な予測ツール セットを活用する複雑なモデルを作成できます。SQL Data Warehouse は、次の機能により、これらのモデルのソースと変換先の両方としてサポートされています。
@@ -47,14 +47,14 @@ Azure Machine Learning は、完全に管理されたを分析サービスで、
 + **データの読み取り**: T-SQL を使用して、SQL Data Warehouse に対して大規模にモデルを駆動します。 
 + **データの書き込み**: 任意のモデルから SQL Data Warehouse に変更を戻します。
 
-詳細については、「[SQL Data Warehouse での Azure Machine Learning の使用](../sql-data-warehouse-integrate-azure-machine-learning.md)」または「[Machine Learning documentation (Machine Learning ドキュメント)](https://azure.microsoft.com/services/machine-learning/)」をご覧ください。
+詳細については、「[SQL Data Warehouse での Azure Machine Learning の使用](./sql-data-warehouse-integrate-azure-machine-learning.md)」または「[Machine Learning documentation (Machine Learning ドキュメント)](https://azure.microsoft.com/services/machine-learning/)」をご覧ください。
 
 ##Azure Stream Analytics
 Azure Stream Analytics は、Azure Event Hub で生成されたイベント データの処理と使用のための、複雑で完全に管理されたインフラストラクチャです。SQL Data Warehouse との統合により、ストリーミング データを効率的に処理でき、さらに、関連するデータと並行して格納できることにより、より深く高度な分析が可能になります。
 
 + **[ジョブの出力**: Stream Analytics ジョブから SQL Data Warehouse に直接出力を送信します。
 
-詳細については、「[SQL Data Warehouse での Azure Stream Analytics の使用](../sql-data-warehouse-integrate-azure-stream-analytics.md)」または「[Stream Analytics のドキュメント](https://azure.microsoft.com/documentation/services/stream-analytics/)」をご覧ください。
+詳細については、「[SQL Data Warehouse での Azure Stream Analytics の使用](./sql-data-warehouse-integrate-azure-stream-analytics.md)」または「[Stream Analytics のドキュメント](https://azure.microsoft.com/documentation/services/stream-analytics/)」をご覧ください。
 
 <!--Image references-->
 
@@ -71,4 +71,4 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

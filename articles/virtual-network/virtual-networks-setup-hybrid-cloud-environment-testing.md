@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="01/28/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
@@ -109,7 +109,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 
 ## フェーズ 3: クロスプレミスの Azure Virtual Network を作成する
 
-まず、Azure サブスクリプションの資格情報を使用して [Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
+まず、Azure サブスクリプションの資格情報を使用して [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
 
 1.	Microsoft Azure 管理ポータルのタスク バーで、**[新規]、[Network Services]、[Virtual Network]、[カスタム作成]** の順にクリックします。
 2.	[Virtual Network の詳細] ページで、**[名前]** に「**TestVNET**」と入力します。
@@ -291,20 +291,6 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
  
 これで、ハイブリッド クラウド環境をテストする準備が整いました。
 
-## その他のリソース
-
-[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
-
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
-
-[Azure ハイブリッド クラウド テスト環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
-
 ## この環境の継続的な費用を最小限に抑える
 
 この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。
@@ -328,5 +314,8 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 
 次に、ローカル コンピューターで Microsoft Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
  
+## 次のステップ
 
-<!---HONumber=AcomDC_0128_2016-->
+- この環境に [SharePoint イントラネット ファーム](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)、[Web ベース LOB アプリケーション](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)をセットアップします。
+
+<!---HONumber=AcomDC_0204_2016-->

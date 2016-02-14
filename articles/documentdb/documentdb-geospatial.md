@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="10/27/2015" 
+    ms.date="02/03/2016" 
     ms.author="arramac"/>
     
 # Azure DocumentDB で地理空間データを扱う
@@ -350,9 +350,9 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 ## 次のステップ
 DocumentDB の地理空間機能の基本的な使い方を身に付けたら、次に段階に進みましょう。
 
-- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)を参考にして実際にコードを作成する
+- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/e880a71bc03c9af249352cfa12997b51853f47e5/samples/code-samples/Geospatial/Program.cs)を参考にして実際にコードを作成する
 - [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間クエリを実際に体験してみる
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

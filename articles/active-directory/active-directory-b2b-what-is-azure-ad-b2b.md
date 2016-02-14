@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="01/22/2016"
+   ms.date="02/03/2016"
    ms.author="viviali"/>
 
-# Azure Active Directory (Azure AD) B2B コラボレーション プレビュー: 簡単で安全なクラウド パートナー統合
+# Azure AD B2B コラボレーション プレビュー: 簡単で安全なクラウド パートナー統合
 
 企業がその中核ビジネスに集中すると、他の企業と連携する必要性が増します。リソース (企業アプリケーションへのアクセスなど) をパートナーと簡単かつ安全に共有し、効果的にコラボレーションする必要があります。Azure Active Directory B2B コラボレーションは、自己管理される ID を使用してパートナーが会社のアプリケーションとデータに選択的にアクセスできるようにすることで、会社間のリレーションシップをサポートする方法を説明します。Azure AD B2B コラボレーションには次のような特長があります。
 
@@ -28,7 +28,7 @@
 
 [パブリック プレビューを案内するブログ投稿](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)および Azure AD B2B コラボレーションに関する[こちらの詳細なビデオ](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-B2B-collaboration-demo)をご覧ください。
 
-Azure AD B2B コラボレーション、Azure AD B2C、Azure AD マルチテナント アプリのさまざまな利用例の比較については、「[Azure Active Directory を使用して外部 ID を管理するための機能の比較](active-directory-b2b-compare-external-identities.md)」を参照してください。
+Azure AD B2B コラボレーション、Azure AD B2C、Azure AD マルチテナント アプリのさまざまな利用例の比較については、「[Comparing capabilities for managing external identities using Azure AD (Azure AD を使用して外部 ID を管理するための機能の比較)](active-directory-b2b-compare-external-identities.md)」を参照してください。
 
 ## 関連記事:
 Azure B2B コラボレーションに関する他の記事を参照してください。
@@ -40,4 +40,4 @@ Azure B2B コラボレーションに関する他の記事を参照してくだ�
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

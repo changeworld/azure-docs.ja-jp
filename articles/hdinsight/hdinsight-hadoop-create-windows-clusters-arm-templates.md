@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/04/2016"
+   ms.date="02/02/2016"
    ms.author="jgao"/>
 
 # ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
@@ -128,7 +128,7 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用したリソースの展開](arm-template-deployment.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください。
-- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments-preview-portal.md)」を参照してください。
+- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 - Azure リソース マネージャーのテンプレートのセクションについては、「[テンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、「[テンプレート関数](resource-group-template-functions.md)」を参照してください。
 
@@ -444,4 +444,4 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 	  }
 	}
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

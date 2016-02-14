@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/22/2016"
+   ms.date="01/29/2016"
    ms.author="yurid"/>
 
 #Azure セキュリティ センターでのセキュリティ ヘルスの監視
@@ -41,7 +41,7 @@ Azure Security Center は、Azure リソースのセキュリティを高度に�
 ###仮想マシン
 **[リソース ヘルス]** タイルで **[Virtual Machines]** をクリックすると、**[Virtual Machines]** ブレードが開き、次のようにオンボードおよび防止の手順に関する詳細と、Azure セキュリティ センターで監視されるすべての VM の一覧が表示されます。
 
-![VM ごとの欠落しているシステムの更新](./media/security-center-monitoring/security-center-monitoring-fig2-new.png)
+![VM ごとの欠落しているシステムの更新](./media/security-center-monitoring/security-center-monitoring-fig2-2-new.png)
 
 このブレードが開くと、3 つのセクションが表示されます。
 
@@ -60,7 +60,7 @@ Azure Security Center は、Azure リソースのセキュリティを高度に�
 ####仮想マシンの推奨事項
 このセクションには、Azure セキュリティ センターで監視されている各 VM についての推奨事項が表示されます。次のように、最初の列には推奨事項の説明、2 番目の列にはその推奨事項によって影響される VM の合計容量が表示され、3 番目の列には重要度が表示されます。
 
-![VM 推奨事項](./media/security-center-monitoring/security-center-monitoring-fig4-new.png)
+![VM 推奨事項](./media/security-center-monitoring/security-center-monitoring-fig4-2-new.png)
 
 各推奨事項にはいくつかのアクションが示されており、アクションはクリックして実行できます。たとえば、**[不足しているシステムの更新]** をクリックすると、**[不足しているシステムの更新]** ブレードが開き、次のようにパッチが欠落している VM とそれぞれの重要度の一覧が表示されます。
 
@@ -173,4 +173,4 @@ Azure ワークロードに、[リソース マネージャーの VM](resource-m
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

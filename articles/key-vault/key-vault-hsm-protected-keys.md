@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="02/01/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
 ##はじめに
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。このシナリオは、多くの場合、Bring Your Own Key または BYOK と呼ばれています。HSM は、FIPS 140-2 レベル 2 で検証済みです。Azure Key Vault は HSM の Thales nShield ファミリを使用してキーを保護します。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。HSM は、FIPS 140-2 レベル 2 で検証済みです。Azure Key Vault は HSM の Thales nShield ファミリを使用してキーを保護します。
 
 このトピックの情報は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 
 この機能は Azure China では使用できません。
 
->[AZURE.NOTE]Azure Key Vault の詳細については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault-whatis.md)」を参照してください。
+>[AZURE.NOTE] Azure Key Vault の詳細については、「[What is Azure Key Vault? (Azure Key Vault とは)](key-vault-whatis.md)」を参照してください。
 >
 >HSM 保護キーの Key Vault 作成を含む入門チュートリアルについては、「[Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。
 
@@ -217,7 +217,9 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 このコマンドを実行するとき、次の指示に従います。
 
-- **ident** と **plainname** の contosokey の値を文字列値に置換します。管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。**Ident** 値には数字、ダッシュ、小文字のみを使用できます。
+- パラメーター *protect* は、次のように **module** に設定する必要があります。module に設定すると、モジュールで保護されたキーが作成されます。BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
+
+- **ident** と **plainname** の *contosokey* の値を文字列値に置換します。管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。**Ident** 値には数字、ダッシュ、小文字のみを使用できます。
 
 - pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。詳細については、Thales の文書を参照してください。
 
@@ -225,7 +227,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 安全な場所でこのトークン化されたキーのファイルをバックアップします。
 
->[AZURE.IMPORTANT]後で Azure Key Vault にキーを転送すると、Microsoft はこのキーをあなたの元にエクスポートできません。そのため、キーとセキュリティ ワールドを安全にバックアップすることが極めて重要です。キーのバックアップ方法と最良事例については Thales にお問い合わせください。
+>[AZURE.IMPORTANT] 後で Azure Key Vault にキーを転送すると、Microsoft はこのキーをあなたの元にエクスポートできません。そのため、キーとセキュリティ ワールドを安全にバックアップすることが極めて重要です。キーのバックアップ方法と最良事例については Thales にお問い合わせください。
 
 これで Azure Key Vault にキーを転送する準備ができました。
 
@@ -259,7 +261,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
 
-このコマンドを実行するとき、contosokey を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
+このコマンドを実行するとき、*contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
@@ -305,13 +307,13 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 このコマンドを実行するとき、次の指示に従います。
 
-- contosokey を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」でキーの生成に使用した ID で置換します。
+- *contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」でキーの生成に使用した ID で置換します。
 
-- SubscriptionID を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)手順の「**手順 1.2: Azure サブスクリプション ID を取得する**」で取得しました。
+- *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)手順の「**手順 1.2: Azure サブスクリプション ID を取得する**」で取得しました。
 
-- ContosoFirstHSMKey を出力ファイル名に使用するラベルで置換します。
+- *ContosoFirstHSMKey* を出力ファイル名に使用するラベルで置換します。
 
-完了すると、**Result: SUCCESS** と表示され、"TransferPackage-ContosoFirstHSMkey.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
+完了すると、**Result: SUCCESS** と表示され、"TransferPackage-*ContosoFirstHSMkey*.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
 
 ###手順 4.4: キー転送パッケージをインターネット接続ワークステーションにコピーします。
 
@@ -330,4 +332,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

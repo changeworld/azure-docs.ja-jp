@@ -271,7 +271,7 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 	$avName="<availability set name>"
 	Get-AzureRmVMSize -ResourceGroupName $rgName -AvailabilitySetName $avName | Select Name
 
-> [AZURE.NOTE]現在、リソース マネージャーでは、作成時にのみ仮想マシンを可用性セットに追加できます。
+> [AZURE.NOTE] 現在、リソース マネージャーでは、作成時にのみ仮想マシンを可用性セットに追加できます。
 
 VM にデータ ディスクを追加するには、こませに次の行をコピーし、ディスク設定を指定します。
 
@@ -391,8 +391,8 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [リソース マネージャー テンプレートと PowerShell を使用した Azure Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
-[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple)
+[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template.md)
 
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

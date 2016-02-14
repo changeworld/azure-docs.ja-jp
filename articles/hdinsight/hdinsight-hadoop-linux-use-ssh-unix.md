@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/22/2016"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 #Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する
@@ -107,7 +107,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
-[Mac、Linux、Windows の Azure CLI](../xplat-cli.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
+[Mac、Linux、Windows の Azure CLI](../xplat-cli-install.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -238,4 +238,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

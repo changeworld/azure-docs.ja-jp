@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/29/2015"
+   ms.date="02/03/2016"
    ms.author="kdotchko"/>
 
 # IoT Hub に対するその他のプロトコルのサポート
 
-Azure IoT Hub は HTTPS および AMQP プロトコルを介した通信をネイティブでサポートします。場合によっては、デバイスまたはフィールド ゲートウェイでこれらの標準プロトコルをいずれも使用できず、プロトコルの適応が必要になることがあります。このような場合は、カスタム ゲートウェイを使用できます。カスタム ゲートウェイによって IoT Hub に対するトラフィックをブリッジすることにより、IoT Hub エンドポイントにプロトコルを適応できます。Azure Internet of Things (IoT) プロトコル ゲートウェイは、IoT Hub に対するプロトコルの適応を可能にします。さらに、IoT デバイスと IoT Hub 間の MQTT プロトコル経由の通信を可能にする MQTT プロトコル アダプターを実装します。
+Azure IoT Hub は AMQP、MQTT、および HTTP/1 プロトコルを介した通信をネイティブでサポートします。場合によっては、デバイスまたはフィールド ゲートウェイでこれらの標準プロトコルをいずれも使用できず、プロトコルの適応が必要になることがあります。このような場合は、カスタム ゲートウェイを使用できます。カスタム ゲートウェイによって IoT Hub に対するトラフィックをブリッジすることにより、IoT Hub エンドポイントにプロトコルを適応できます。IoT Hub に対するプロトコルの適用を可能にするには、[Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)をカスタム ゲートウェイとして使用します。
 
 ## Azure IoT プロトコル ゲートウェイ
 
@@ -26,9 +26,11 @@ Azure IoT プロトコル ゲートウェイは、IoT Hub との大規模双方�
 
 プロトコル ゲートウェイは、Azure Cloud Services の worker ロールを使用することで、高度にスケーラブルな方法で Azure にデプロイできます。さらに、プロトコル ゲートウェイはフィールド ゲートウェイなどのオンプレミス環境にデプロイできます。
 
-Azure IoT プロトコル ゲートウェイには、MQTT v3.1.1 プロトコルを介してデバイスとの通信を容易にするための MQTT アダプターが含まれています。プロトコル ゲートウェイと MQTT の実装は、柔軟性を追加するためのオープン ソース ソフトウェア プロジェクトとして提供されます。これにより、必要に応じて実装をカスタマイズできます。
+Azure IoT プロトコル ゲートウェイには、MQTT プロトコルの動作を必要に応じてカスタマイズできるようにする MQTT プロトコル アダプターが含まれています。IoT Hub では MQTT v3.1.1 プロトコルの組み込みサポートを提供しているため、プロトコルのカスタマイズが必要な場合または追加機能に対して特定の要件が必要な場合にのみ MQTT プロトコル アダプターの使用を検討してください。
 
 MQTT アダプターは、その他のプロトコルのプロトコル アダプターを構築するためのプログラミング モデルにもなっています。さらに、IoT プロトコル ゲートウェイのプログラミング モデルでは、カスタム認証、メッセージの変換、圧縮と圧縮解除、デバイスと IoT Hub 間のトラフィックの暗号化/暗号化解除などの特殊な処理を行うために、カスタム コンポーネントを接続することができます。
+
+柔軟性を高めるために、プロトコル ゲートウェイと MQTT の実装はオープン ソース ソフトウェア プロジェクトで提供されます。これにより、必要に応じて実装をカスタマイズできます。
 
 ## 次のステップ
 
@@ -37,4 +39,4 @@ Azure IoT プロトコル ゲートウェイについて、およびそれを Io
 * [Azure IoT protocol gateway repository on GitHub (GitHub の Azure IoT プロトコル ゲートウェイ リポジトリ)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 * [Azure IoT protocol gateway developer guide (Microsoft Azure IoT プロトコル ゲートウェイ開発者ガイド)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

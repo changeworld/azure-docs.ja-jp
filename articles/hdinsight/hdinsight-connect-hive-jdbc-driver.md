@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="12/04/2015"
+ ms.date="02/01/2016"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
@@ -61,7 +61,7 @@ Azure の HDInsight クラスターに対する JDBC 接続は 443 を使用し�
 
 ##Java プロジェクトの例
 
-Java クライアントを使用して HDInsight の Hive をクエリする例は、[https://github.com/Blackmist/hdinsight-hive-jdbc](https://github.com/Blackmist/hdinsight-hive-jdbc) にあります。リポジトリの指示に従い、サンプルを作成して実行します。
+Java クライアントを使用して HDInsight の Hive をクエリする例は、[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) にあります。リポジトリの指示に従い、サンプルを作成して実行します。
 
 ##次のステップ
 
@@ -72,4 +72,4 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

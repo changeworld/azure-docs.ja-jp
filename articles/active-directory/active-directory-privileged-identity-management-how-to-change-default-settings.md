@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="na"
+   ms.service="active-directory"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -25,7 +25,7 @@
 4. 管理者へのアクティブ化に関する通知の送信を、**[有効]** または **[無効]** にします。
 5. 管理者によるアクティブ化要求へのチケット情報の入力を **[有効]** または **[無効]** にします。
 6. アクティブ化要求で多要素認証が必要かどうかを、**[有効]** または **[無効]** にします。PIM での MFA の使用に関する詳細は、「[MFA を要求する方法](active-directory-privileged-identity-management-how-to-require-mfa.md)」を参照してください。
-7. 一時的なグローバル管理者の許可を、**[有効]** または **[無効]** にします。 
+7. 一時的なグローバル管理者の許可を、**[有効]** または **[無効]** にします。
 8. **[保存]** をクリックします。
 
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
@@ -34,4 +34,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

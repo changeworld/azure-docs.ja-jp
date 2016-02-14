@@ -34,7 +34,7 @@
 -	[Azure CDN エンドポイントをクラウド サービスと統合して、Azure CDN から Web ページの静的コンテンツを配信する](#deploy)
 -	[クラウド サービスの静的コンテンツのキャッシュ設定を構成する](#caching)
 -	[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#controller)
--	[Visual Studio のスクリプトのデバッグ エクスペリエンスを維持しながらバンドルされたコンテンツおよび縮小されたコンテンツを Azure CDN を介して配信する](#bundling)
+-	[Visual Studio のスクリプトのデバッグ エクスペリエンスを維持しながらバンドルされたコンテンツおよび縮小されたコンテンツを配信する](#bundling)
 -	[Azure CDN がオフラインのときのスクリプトおよび CSS のフォールバックを構成する](#fallback) 
 
 ## 学習内容 ##
@@ -48,9 +48,7 @@
 -	アクティブな [Microsoft Azure アカウント](/account/)
 -	Visual Studio 2015 と [Azure SDK](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
-> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps など無料の Azure サービスをご利用になれます。
-> + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="deploy"></a>
 ## クラウド サービスのデプロイ ##
@@ -90,17 +88,17 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png)
 
-	>[AZURE.NOTE]クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
+	>[AZURE.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
 
 	[**Microsoft Azure のアクティビティ ログ**] に発行状態が [**完了**] と表示されたら、このクラウド サービスと統合される CDN エンドポイントを作成します。
 	
-	>[AZURE.WARNING]発行後、デプロイされたクラウド サービスにエラー画面が表示された場合、デプロイしたクラウド サービスが [.NET 4.5.2 を含まないゲスト OS](../cloud-services/cloud-services-guestos-update-matrix.md#news-updates) を使用している可能性があります。この問題を回避するには、[.NET 4.5.2 をスタートアップ タスクとしてデプロイ](../cloud-services/cloud-services-dotnet-install-dotnet.md)します。
+	>[AZURE.WARNING] 発行後、デプロイされたクラウド サービスにエラー画面が表示された場合、デプロイしたクラウド サービスが [.NET 4.5.2 を含まないゲスト OS](../cloud-services/cloud-services-guestos-update-matrix.md#news-updates) を使用している可能性があります。この問題を回避するには、[.NET 4.5.2 をスタートアップ タスクとしてデプロイ](../cloud-services/cloud-services-dotnet-install-dotnet.md)します。
 
 ## 新しい CDN プロファイルを作成する
 
 CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
-> [AZURE.TIP]このチュートリアルに使用する CDN プロファイルが既にある場合は、[[新しい CDN エンドポイントの作成]](#create-a-new-cdn-endpoint) に進みます。
+> [AZURE.TIP] このチュートリアルに使用する CDN プロファイルが既にある場合は、[[新しい CDN エンドポイントの作成]](#create-a-new-cdn-endpoint) に進みます。
 
 **新しい CDN プロファイルを作成するには**
 
@@ -154,7 +152,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     ![CDN エンドポイント][cdn-endpoint-success]
 
-    > [AZURE.NOTE]エンドポイントはすぐには使用できません。登録が CDN ネットワークに反映されるまでに最大で 90 分かかる場合があります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 404 を受け取る場合があります。
+    > [AZURE.NOTE] エンドポイントはすぐには使用できません。登録が CDN ネットワークに反映されるまでに最大で 90 分かかる場合があります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 404 を受け取る場合があります。
 	
 ## CDN エンドポイントをテストする
 
@@ -626,10 +624,9 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 ## 詳細情報 ##
 - [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Web アプリケーションで Azure CDN からコンテンツを配信する](cdn-serve-content-from-cdn-in-your-web-application.md)
-- [Azure CDN と Azure Websites の統合](cdn-websites-with-cdn.md)
+- [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Azure 用 CDN の使用](cdn-how-to-use.md)
+
 
 
 [new-cdn-profile]: ./media/cdn-cloud-service-with-cdn/cdn-new-profile.png
@@ -638,4 +635,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

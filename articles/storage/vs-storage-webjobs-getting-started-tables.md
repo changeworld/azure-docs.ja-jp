@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 
 ## 概要
 
-この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
+この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](/app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、[NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md/#create-a-table "How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)")に関するページを参照してください。
 
@@ -142,7 +142,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 		    tableBinding.Execute(insertOperation);
 		}
 
-**CloudTable** オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables.md)」をご覧ください。
+**CloudTable** オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](./storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
 ## キューのハウツー記事で紹介されている関連トピック
 
@@ -154,4 +154,4 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

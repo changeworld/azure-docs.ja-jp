@@ -30,19 +30,19 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
 3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールおよび構成方法]()」を参照してください)。
 
-```
-Add-AzureAccount
-```
+	```
+	Login-AzureRmAccount
+	```
 
 3. 中断または再開するデータベースのサブスクリプションを選択します。次の例では、"MySubscription" という名前のサブスクリプションが選択されます。
 
-```
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
-```
+	```
+	Select-AzureRmSubscription -SubscriptionName "MySubscription"
+	```
 
 ## Suspend-AzureRmSqlDatabase
 
-コマンド リファレンスについては、「[Suspend-AzureRmSQLDatabase](https://msdn.microsoft.com/library/mt619337.aspx)」をご覧ください。
+コマンド リファレンスについては、「[Suspend-AzureRmSQLDatabase](https://msdn.microsoft.com/library/mt619337.aspx)」を参照してください。
 
 ### 例 1: サーバー上で名前によってデータベースを一時停止する
 
@@ -64,7 +64,7 @@ $resultDatabase
 
 ## Resume-AzureSqlDatabase
 
-コマンド リファレンスについては、「[Resume-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619347.aspx)」をご覧ください。
+コマンド リファレンスについては、「[Resume-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619347.aspx)」を参照してください。
 
 ### 例 1: サーバー上で名前によってデータベースを再開する
 
@@ -113,7 +113,7 @@ $retorePoints
 ```
 
 
-> [AZURE.NOTE]サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
+> [AZURE.NOTE] サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
 
 
 ## 次のステップ
@@ -133,4 +133,4 @@ $retorePoints
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

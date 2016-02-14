@@ -1,6 +1,6 @@
-    <properties 
-	pageTitle="What is the DevTest Lab service? | Microsoft Azure"
-	description="Learn how DevTest Lab can make it easy to create, manage, and monitor Azure virtual machines"
+<properties 
+	pageTitle="DevTest ラボ サービスとは? | Microsoft Azure"
+	description="Azure Virtual Machines を簡単に作成、管理、監視するために DevTest ラボを使用する方法について説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボとは
 
-開発者やテスト担当者は、クラウドへの移行による環境の作成および管理の遅延を解決する方法を求めています。Azure を使用することで、環境の遅延の問題を解決し、新しいコスト効率的な構造内でセルフ サービスを使用できます。ただし、開発者やテスト担当者は、セルフ サービス環境の構成に、依然としてかなりの時間を費やす必要があります。また、意思決定者は、クラウドを使用して、プロセス オーバーヘッドを過剰に追加することなく、コストの削減を最大化する方法について確信を持てていません。
+開発者やテスト担当者は、クラウドへの移行による環境の作成および管理の遅延を解決する方法を求めています。Azure を使用することで、環境の遅延の問題を解決し、新しいコスト効率の高い構造内でセルフ サービスを使用できます。ただし、開発者やテスト担当者は、セルフ サービス環境の構成に、依然としてかなりの時間を費やす必要があります。また、意思決定者は、クラウドを使用して、プロセス オーバーヘッドを過剰に追加することなく、コストの削減を最大化する方法について確信を持てていません。
 
 Azure DevTest ラボは、無駄を最小限に抑え、コストを管理しつつ、Azure で迅速に環境を作成するためのサポートを開発者とテスト担当者に提供するサービスです。再利用可能なテンプレートとアーティファクトを使用して Windows と Linux の環境を迅速にプロビジョニングすることで、アプリケーションの最新バージョンをテストできます。DevTest ラボで、デプロイメント パイプラインを簡単に統合し、オンデマンドの環境をプロビジョニングします。複数のテスト エージェントをプロビジョニングしてロード テストをスケール アップし、トレーニングおよびデモの事前プロビジョニング済み環境を作成します。
 
@@ -52,7 +52,7 @@ DevTest Lab を使用することで、チームがアプリケーションの�
 - VM 上で実行するアクション (リポジトリの複製など)。
 - テスト対象のアプリケーション。
 
-アーティファクトは、デプロイメントの実行と構成の適用の指示を含む Azure リソース マネージャー (ARM) ベースの JSON ファイルです。ARM の詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+アーティファクトは、デプロイメントの実行と構成の適用の指示を含む Azure リソース マネージャー (ARM) ベースの JSON ファイルです。ARM の詳細については、「[Azure リソース マネージャーの概要](/resource-group-overview.md)」を参照してください。
 
 **アーティファクト リポジトリ**は、アーティファクトがチェックインされる git リポジトリです。同じアーティファクト リポジトリを組織内の複数のラボに追加することで、再利用と共有を有効にできます。
 
@@ -66,4 +66,4 @@ DevTest Lab を使用することで、チームがアプリケーションの�
 
 DevTest ラボの使用を開始するには、次の「 [Azure DevTest ラボの作成](devtest-lab-create-lab.md)」のステップ バイ ステップ チュートリアルに従います。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

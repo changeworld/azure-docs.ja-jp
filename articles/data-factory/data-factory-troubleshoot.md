@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory のトラブルシューティング" 
-	description="Azure データ ファクトリの使用に関する問題のトラブルシューティングを行う方法について説明します。" 
+	description="Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/12/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory のトラブルシューティング
@@ -374,4 +374,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2015" 
+	ms.date="02/01/2016" 
 	ms.author="garye"/>
 
 
@@ -73,10 +73,10 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 これにより、データが、実験で使用できるデータセット モジュールにアップロードされます。
 
-さまざまな種類のデータを実験にインポートする方法の詳細については、「[Azure Machine Learning Studio への学習データのインポート](machine-learning-import-data.md)」をご覧ください。
+さまざまな種類のデータを実験にインポートする方法の詳細については、「[Azure Machine Learning Studio への学習データのインポート](machine-learning-data-science-import-data.md)」をご覧ください。
 
 **次: [新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)**
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

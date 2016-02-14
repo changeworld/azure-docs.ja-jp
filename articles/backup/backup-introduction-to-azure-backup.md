@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="01/29/2016"
 	ms.author="trinadhk;jimpark"/>
 
 # Azure Backup とは
@@ -70,12 +70,14 @@ Backup はハイブリッド バックアップ ソリューションなので�
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| Azure Backup コンテナー | ![Yes][green] | ![Yes][green] | ![Yes][green] | ![Yes][green] |
-| ディスク ストレージ | | ![Yes][green] | ![Yes][green] | |
-| テープ ストレージ | | ![Yes][green] | | |
-| 圧縮 (バックアップ コンテナー) | ![Yes][green] | ![Yes][green]| ![Yes][green] | |
-| 増分バックアップ | ![Yes][green] | ![Yes][green] | ![Yes][green] | ![Yes][green] |
+| Azure Backup コンテナー | ![Yes][green] | ![はい][green] | ![はい][green] | ![はい][green] |
+| ディスク ストレージ | | ![はい][green] | ![はい][green] | |
+| テープ ストレージ | | ![はい][green] | | |
+| 圧縮 (バックアップ コンテナー) | ![はい][green] | ![はい][green]| ![はい][green] | |
+| 増分バックアップ | ![はい][green] | ![はい][green] | ![はい][green] | ![Yes][green] |
 | ディスクの重複除去 | | ![部分的][yellow] | ![部分的][yellow]| | |
+
+**キー** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![あり][green]= サポート対象 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![部分的][yellow]= 部分的にサポート &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&lt;blank&gt;* = サポート対象外
 
 バックアップ コンテナーは、すべてのコンポーネントの中で優先されるストレージ ターゲットです。System Center DPM と Backup Server には、ローカル ディスク コピーを作成するオプションもありますが、テープ ストレージ デバイスにデータを書き込むオプションがあるのは System Center DPM だけです。
 
@@ -93,8 +95,10 @@ System Center DPM と Backup Server で、[Hyper-V 仮想マシン](http://blogs
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク セキュリティ (対 Azure) | ![Yes][green] |![Yes][green] | ![Yes][green] | ![部分的][yellow]|
-| ネットワーク セキュリティ (Azure 内) | ![Yes][green] |![Yes][green] | ![Yes][green] | ![部分的][yellow]|
+| ネットワーク セキュリティ (対 Azure) | ![Yes][green] |![はい][green] | ![Yes][green] | ![部分的][yellow]|
+| ネットワーク セキュリティ (Azure 内) | ![Yes][green] |![はい][green] | ![Yes][green] | ![部分的][yellow]|
+
+**キー** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![あり][green]= サポート対象 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![部分的][yellow]= 部分的にサポート &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&lt;blank&gt;* = サポート対象外
 
 サーバーからバックアップ コンテナーまでのすべてのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。データは、セキュリティで保護された HTTPS リンク上で送信されます。また、バックアップ データは、暗号化された形式でバックアップ コンテナーにも格納されます。このデータのロックを解除するパスフレーズは、お客様のみが保持します。マイクロソフトは、どの時点でもバックアップ データの暗号化を解除できせん。
 
@@ -106,24 +110,28 @@ Azure VM のバックアップの場合は、ユーザーが仮想マシン*内*
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| Windows Server コンピューター -- ファイルとフォルダー | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
-| Windows クライアント コンピューター -- ファイルとフォルダー | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
-| Hyper-V 仮想マシン (Windows) | | ![Yes][green] | ![Yes][green] | |
-| Hyper-V 仮想マシン (Linux) | | ![Yes][green] | ![Yes][green] | |
-| Microsoft SQL Server | | ![Yes][green] | ![Yes][green] | |
-| Microsoft SharePoint | | ![Yes][green] | ![Yes][green] | |
-| Microsoft Exchange | | ![Yes][green] | ![Yes][green] | |
-| Azure 仮想マシン (Windows) | | | | ![Yes][green] |
-| Azure 仮想マシン (Linux) | | | | ![Yes][green] |
+| Windows Server コンピューター -- ファイルとフォルダー | ![Yes][green] | ![はい][green] | ![はい][green] | |
+| Windows クライアント コンピューター -- ファイルとフォルダー | ![はい][green] | ![はい][green] | ![はい][green] | |
+| Hyper-V 仮想マシン (Windows) | | ![はい][green] | ![はい][green] | |
+| Hyper-V 仮想マシン (Linux) | | ![はい][green] | ![はい][green] | |
+| Microsoft SQL Server | | ![はい][green] | ![はい][green] | |
+| Microsoft SharePoint | | ![はい][green] | ![はい][green] | |
+| Microsoft Exchange | | ![はい][green] | ![はい][green] | |
+| Azure 仮想マシン (Windows) | | | | ![はい][green] |
+| Azure 仮想マシン (Linux) | | | | ![はい][green] |
+
+**キー** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![はい][green]= サポート対象 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&lt;blank&gt;* = サポート対象外
 
 ### ネットワーク
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク圧縮 (対バックアップ サーバー) | | ![Yes][green] | ![Yes][green] | |
-| ネットワーク圧縮 (対バックアップ コンテナー) | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
+| ネットワーク圧縮 (対バックアップ サーバー) | | ![はい][green] | ![はい][green] | |
+| ネットワーク圧縮 (対バックアップ コンテナー) | ![はい][green] | ![はい][green] | ![はい][green] | |
 | ネットワーク プロトコル (対バックアップ サーバー) | | TCP | TCP | |
 | ネットワーク プロトコル (対バックアップ コンテナー) | HTTPS | HTTPS | HTTPS | HTTPS |
+
+**キー** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Yes][green]= サポート対象 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&lt;blank&gt;* = サポート対象外
 
 VM 拡張機能はデータを Azure ストレージ アカウントからストレージ ネットワーク経由で直接読み取るので、このトラフィックを最適化する必要はありません。トラフィックは Azure データセンターのローカル ストレージ ネットワークを経由し、帯域幅のために圧縮が必要になることはほとんどありません。
 
@@ -166,4 +174,4 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

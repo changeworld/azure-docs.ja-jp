@@ -87,7 +87,7 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 ------------- | ----------- | ---------------
 **HPC クラスターの Azure へのバースト**<br/><br/>[![クラスターのバースト][burst_cluster]](./media/batch-hpc-solutions/burst_cluster.png) <br/><br/> 詳細:<br/>• [Microsoft HPC Pack を使用して Azure にバーストする](https://technet.microsoft.com/library/gg481749.aspx)<br/><br/>• [Microsoft HPC Pack を使用してハイブリッド コンピューティング クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)<br/><br/>|• ハイブリッド ソリューションでオンプレミスの [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターを追加の Azure リソースと結合させる。<br/><br/>• ビッグ コンピューティング ワークロードを拡張して、サービスとしてのプラットフォーム (PaaS) 仮想マシン インスタンスで実行する (現時点では Windows Server のみ)。<br/><br/>• オプションの Azure 仮想ネットワークを使用して、オンプレミスのライセンス サーバーまたはデータ ストアにアクセスする。|• 既存の HPC Pack クラスターがあり、さらにリソースが必要である<br/><br/>• HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある 
 **Azure 内での HPC クラスター全体の作成**<br/><br/>[![IaaS でのクラスター][iaas_cluster]](./media/batch-hpc-solutions/iaas_cluster.png)<br/><br/>詳細:<br/>• [Azure 内の HPC クラスター ソリューション](./big-compute-resources.md)<br/><br/>|• アプリケーションとクラスター ツールを Windows または Linux の標準またはカスタムのサービスとしてのインフラストラクチャ (IaaS) 仮想マシンに迅速かつ一貫性を持ってデプロイする。<br/><br/>• さまざまなビッグ コンピューティング ワークロードを、選択したスケジューリング ソリューションを使用して実行する。<br/><br/>• ネットワークやストレージを含む Azure サービスを追加利用して、完全なクラウド ベースのソリューションを作成する。 |• Linux または Windows HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある<br/><br/>• 一時的に追加のクラスターが必要だが、コンピューターとそれをデプロイするためのスペースに投資したくない<br/><br/>• コンピューティング集約型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい
-**並列アプリケーションの Azure へのスケール アウト**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>詳細:<br/>• [Azure Batch の基礎](./batch-technical-overview.md)<br/><br/>• [.NET 向け Azure Batch ライブラリの概要](./batch-dotnet-get-started.md)|• [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) API を使用して、さまざまなビッグ コンピューティング ワークロードをサービスとしてのプラットフォーム (PaaS) 仮想マシンのプールで実行するようにスケールアウトする (現時点では Windows Server のみ)。<br/><br/>• 別の HPC クラスターまたはジョブ スケジューラを必要とせずに、Azure サービスを使用して、仮想マシンのデプロイと自動スケール、ジョブのスケーリング、障害復旧、データの移動、依存関係の管理、およびアプリケーションのデプロイを実行する。|• コンピューティング リソースまたはジョブ スケジューラを管理したくない。アプリケーションの実行にフォーカスしたい<br/><br/>• コンピューティング集約型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい<br/><br/>• コンピューティング ワークロードと一致するようにコンピューティング リソースを自動的にスケーリングしたい 
+**並列アプリケーションの Azure へのスケール アウト**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>詳細:<br/>• [Azure Batch の基礎](./batch-technical-overview.md)<br/><br/>• [.NET 向け Azure Batch ライブラリの概要](./batch-dotnet-get-started.md)|• [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) API を使用して、さまざまなビッグ コンピューティング ワークロードをサービスとしてのプラットフォーム (PaaS) 仮想マシンのプールで実行するようにスケールアウトする (現時点では Windows Server のみ)。<br/><br/>• 別の HPC クラスターまたはジョブ スケジューラを必要とせずに、Azure サービスを使用して、仮想マシンのデプロイメントと自動スケール、ジョブのスケーリング、障害復旧、データの移動、依存関係の管理、およびアプリケーションのデプロイメントを実行する。|• コンピューティング リソースまたはジョブ スケジューラを管理したくない。アプリケーションの実行にフォーカスしたい<br/><br/>• コンピューティング集約型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい<br/><br/>• コンピューティング ワークロードと一致するようにコンピューティング リソースを自動的にスケーリングしたい 
 
 
 ## ビッグ コンピューティング用の Azure サービス
@@ -96,9 +96,9 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 
 >[AZURE.NOTE] Azure には、シナリオで役立つ可能性がある新しいサービスが定期的に導入されています。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/ja-JP/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
 
-### コンピューティング サービス
+### Compute Services
 
-Azure コンピューティング サービスはビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。これらのインスタンスは、さまざまな標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。Azure では、CPU コア、メモリ、ディスク容量、その他の特性の構成が異なる[さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-sizes-specs.md)を選択できます。ニーズに応じて何千ものコアまでインスタンスを拡大し、必要なリソースが減ったらスケールダウンできます。
+Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。これらのインスタンスは、さまざまな標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。Azure では、CPU コア、メモリ、ディスク容量、その他の特性の構成が異なる[さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-size-specs.md)を選択できます。ニーズに応じて何千ものコアまでインスタンスを拡大し、必要なリソースが減ったらスケールダウンできます。
 
 >[AZURE.NOTE] 低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどの HPC ワークロードのパフォーマンスを向上させるには、A8 ～ A11 インスタンスを利用してください。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
 
@@ -155,4 +155,4 @@ Azure コンピューティング サービスはビッグ コンピューティ
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

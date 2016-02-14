@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="11/06/2015"
+	ms.date="02/04/2016"
 	ms.author="jeffstok"/>
 
 # Stream Analytics プラットフォームの選択: Apache Storm と Azure Stream Analytics との比較
@@ -588,4 +588,4 @@
     </tbody>
 </table>
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

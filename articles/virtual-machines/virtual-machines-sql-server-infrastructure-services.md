@@ -1,9 +1,9 @@
-<properties 
+<properties
 	pageTitle="Virtual Machines での SQL Server の概要 | Microsoft Azure"
-	description="この記事では、Azure Virtual Machines でホストされている SQL Server の概要について説明します。この記事には詳しいコンテンツへのリンクが掲載されています。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="rothja" 
+	description="この記事では、Azure Virtual Machines でホストされている SQL Server の概要について説明します。この記事には詳しいコンテンツへのリンクが掲載されています。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="rothja"
 	manager="jeffreyg"
 	editor=""
 	tags="azure-service-management"/>
@@ -13,8 +13,8 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services" 
-	ms.date="11/12/2015"
+	ms.workload="infrastructure-services"
+	ms.date="02/03/2016"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
@@ -28,9 +28,11 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
-サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure クラシック ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
+サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure で SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-sql-server-provision-resource-manager.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
->[AZURE.NOTE] Azure ポータルを使用して、SQL Server Virtual Machines をプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
+Azure Virtual Machines の作成と管理には、クラシックとリソース マネージャーの 2 つのモデルがあることに注意してください。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。Azure VM 用の SQL Server の一部のドキュメントでは、まだクラシック モデルだけが参照されています。これらのトピックは、新しい Azure ポータルとリソース マネージャー モデルを使用するように徐々に更新されています。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
+
+>[AZURE.NOTE] 可能な場合は、最新の [Azure ポータル](https://portal.azure.com/)を使用して、SQL Server Virtual Machines をプロビジョニングおよび管理してください。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
 
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
 
@@ -44,33 +46,30 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 |SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|評価|
 
->[AZURE.NOTE] データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前の表の標準イメージを使用し、特定のワークロードのパフォーマンスを最適化してください。
-
-これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure 仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure Compute および Storage [コスト](https://azure.microsoft.com/pricing/details/virtual-machines/)のみを支払います。
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure Compute および Storage [コスト](https://azure.microsoft.com/pricing/details/virtual-machines/)のみを支払います。
 
 SQL Server イメージに最適な仮想マシン構成の設定を決定するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」を確認してください。実稼働ワークロードでは、SQL Server Enterprise Edition の最小推奨仮想マシン サイズは **DS3** であり、Standard edition の最小推奨仮想マシン サイズは **DS2** です。
 
 パフォーマンスのベスト プラクティスを確認するほかに、以下の初期タスクがあります。
 
 - [Azure VM における SQL Server のセキュリティに関するベスト プラクティスの確認](virtual-machines-sql-server-security-considerations.md)
-- [接続のセットアップ](virtual-machines-sql-server-connectivity.md)
+- [接続のセットアップ](virtual-machines-sql-server-connectivity-resource-manager.md)
 
 ### データの移行
 
-SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。複数の手法がありますが、SQL Server Management Studio のデプロイ ウィザードは、ほとんどのシナリオに適してします。シナリオの詳細とウィザードのチュートリアルについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」をご覧ください。
+SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。複数の手法がありますが、SQL Server Management Studio のデプロイメント ウィザードは、ほとんどのシナリオに適してします。シナリオの詳細とウィザードのチュートリアルについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」をご覧ください。
 
 ## 高可用性
 
 高可用性が必要な場合は、SQL Server AlwaysOn 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Azure ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
 
-可用性グループおよび関連付けられているリスナーを手動で構成する場合は、次の記事を参照してください。
+可用性グループおよび関連付けられているリスナーを手動で構成する場合は、クラシック デプロイメント モデルに基づく次の記事を参照してください。
 
 - [Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
 - [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)
-- [Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ](virtual-machines-workload-template-sql-alwayson.md)
 - [オンプレミスの AlwaysOn 可用性グループの Azure への拡張](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)
 
-その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
+その他の高可用性構成については、「[Azure Virtual Machines 内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
 
 ## バックアップと復元
 オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」をご覧ください。
@@ -142,10 +141,10 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 ## リソース
 
-- [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)
+- [Azure での SQL Server 仮想マシンのプロビジョニング (リソース マネージャー)](virtual-machines-sql-server-provision-resource-manager.md)
 - [Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)
-- [Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
+- [Azure Virtual Machines 内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
-- [Azure Virtual Machines](virtual-machines-about.md) 
+- [Azure Virtual Machines](virtual-machines-about.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

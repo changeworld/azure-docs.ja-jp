@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="12/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics ジョブ監視とクエリの監視方法の概要
@@ -35,7 +35,8 @@ Stream Analytics ジョブを初めてリージョンに作成したときに、
 
   ![Azure プレビュー ポータル、クエリの構成、診断](./media/stream-analytics-monitoring/07-stream-analytics-monitoring.png)
 
-## Stream Analytics に利用できるメトリック  
+## Stream Analytics に利用できるメトリック
+
 
 | メトリック | 定義 |
 |--------|-------------|
@@ -45,7 +46,9 @@ Stream Analytics ジョブを初めてリージョンに作成したときに、
 | 出力イベント | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベント数単位の量。 |
 | 異常イベント | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | データ変換エラー | Stream Analytics のジョブによって発生した、データ変換エラーの数。 |
+| 実行時エラー | Stream Analytics ジョブの実行中に発生したエラーの数。 |
 | 遅延入力イベント | 到着遅延許容期間の設定のイベント順序ポリシーの構成に基づいて、削除された、または調整されたタイムスタンプが付与された、ソースから遅れて到着するイベントの数。 |
+
 ## Microsoft Azure 管理ポータルでの監視のカスタマイズ ##
 
 最大 6 つのメトリックをグラフに表示することができます。
@@ -104,4 +107,4 @@ Microsoft Azure 管理ポータルのジョブのダッシュボードには、�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

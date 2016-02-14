@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/25/2016"
+   ms.date="01/27/2016"
    ms.author="bwren" />
 
 # Azure Automation の Hybrid Runbook Worker
@@ -60,7 +60,7 @@ Hybrid Worker では次の推奨事項を考慮してください。
 Hybrid Runbook Worker をインストールして構成する手順は次のとおりです。最初の 2 つのステップは Automation 環境に対して 1 回だけ実行し、残りのステップは worker コンピューターごとに繰り返します。
 
 ### 1\.Operations Management Suite のワークスペースを作成する
-Operations Management Suite のワークスペースがまだない場合は、「[Operational Insights のワークスペースのセットアップ](../operational-insights/operational-insights-onboard-in-minutes.md)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
+Operations Management Suite のワークスペースがまだない場合は、「[ワークスペースのセットアップ](https://technet.microsoft.com/library/mt484119.aspx)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
 ### 2\.Operations Management Suite ワークスペースに Automation ソリューションを追加します。
 ソリューションにより、Operations Management Suite に機能が追加されます。Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュダウンされます。
@@ -91,7 +91,7 @@ Microsoft 管理エージェントは Operations Management Suite にコンピ�
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-- **Name** は、Hybrid Runbook Worker グループの名前です。オートメーション アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
+- **Name** は、Hybrid Runbook Worker グループの名前です。Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。まだ存在しない場合は、追加されます。
 - **EndPoint** は、**[キーの管理]** ブレードの **[URL]** フィールドです。
 - **Token** は、**[キーの管理]** ブレードの **[プライマリ アクセス キー]** です。  
 
@@ -166,7 +166,7 @@ Azure Automation で Hybrid Runbook Worker 用に Runbook を編集すること�
 
 クラウドで実行される Runbook ジョブと同じように、[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)は Hybrid Worker から Azure Automation に送られます。他の Runbook と同じ方法で、Verbose および Progress ストリームも有効にできます。
 
-ログは、各 Hybrid Worker の C:\\ProgramData\\Microsoft\\System Center\\Orchestrator\\7.2\\SMA\\Sandboxes にローカルに格納されます。
+ログは、各ハイブリッド worker の C:\\ProgramData\\Microsoft\\System Center\\Orchestrator\\7.2\\SMA\\Sandboxes にローカルに格納されます。
 
 
 ## Service Management Automation との関係
@@ -186,8 +186,8 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 
 ## 関連記事:
 
-- [Azure Automation での Runbook の開始](automation-starting-a-runbook.md)
+- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

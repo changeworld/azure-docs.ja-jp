@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/05/2015" 
+	ms.date="02/01/2016" 
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -34,28 +34,26 @@ Hue は Hadoop クラスターとの情報のやりとりに使用される一�
 
 ## スクリプト アクションを使用した Hue のインストール
 
-HDInsight クラスターに Hue をインストールするには、[https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh) スクリプト アクションが使用されます。このセクションでは、Azure クラシック ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
+[https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh) スクリプト アクションを使用して、HDInsight クラスターに Hue をインストールします。このセクションでは、Azure クラシック ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE] Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
-	> [AZURE.NOTE]HDInsight クラスターに Hue をインストールするには、A4 (8 コア、14 GB メモリ) 以上のヘッドノード サイズが推奨されます。
+	> [AZURE.NOTE] HDInsight クラスターに Hue をインストールするには、A4 (8 コア、14 GB メモリ) 以上のヘッドノード サイズが推奨されます。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下のように情報を指定します。
 
 	![Hue のスクリプト アクション パラメーターを指定します。](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Hue のスクリプト アクション パラメーターを指定します。")
 
 	* __[名前]__: スクリプト アクションの表示名を入力します。
-	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
+	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 	* __[ヘッド]__: このオプションをオンにします。
 	* __[ワーカー]__: 空白のままにします。
 	* __[ZOOKEEPER]__: 空白のままにします。
-	* __[パラメーター]__: このスクリプトはパラメーターとして**クラスターの管理者パスワード**を要求します。これはクラスターのプロビジョニング時に指定したパスワードです。パスワードのプロビジョニング時に重要な考慮事項を以下に示します。
-		* クラスターのユーザー名が "admin" の場合は、パスワードを単一引用符で囲んで指定するだけで済みます。
-		* クラスターのユーザー名が "admin" 以外の場合は、パラメーターを `-u [username] [password in single quotes]` として指定する必要があります。
+	* __[パラメーター]__: 空白のままにします。
 
-3. 下部にある **[スクリプト アクション]** で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** ボタンを使用し、オプションの構成情報を保存します。
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** ボタンを使用し、オプションの構成情報を保存します。
 
 4. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
 
@@ -75,7 +73,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 2. SSH トンネルを作成し、これをトラフィックのプロキシとして使用するようにブラウザーを構成したら、ブラウザーを使用して Hue ポータル (http://HOSTNAME:8888) を開きます。HOSTNAME を前の手順で Ambari から取得した名前に変えます。
 
-    > [AZURE.NOTE]初めてログインするときには、Hue ポータルにログインするためのアカウントを作成するよう求められます。ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
+    > [AZURE.NOTE] 初めてログインするときには、Hue ポータルにログインするためのアカウントを作成するよう求められます。ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
 
 	![Hue ポータルにログインする](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Login.png "Hue ポータルの資格情報を指定する")
 
@@ -101,7 +99,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。新しいファイルやディレクトリを作成するには、**[新規]** ボタンを使用します。
 
-> [AZURE.NOTE]Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。ただし、Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。たとえば、Hive エディターに `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツを表示できます。このコマンドで、**newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
+> [AZURE.NOTE] Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。ただし、Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。たとえば、Hive エディターに `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツを表示できます。このコマンドで、**newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
 
 ## 重要な考慮事項
 
@@ -137,4 +135,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

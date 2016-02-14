@@ -3,7 +3,7 @@
 	description="Azure Active Directory と Mixpanel の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="ashimaabrol"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
-	ms.author="v-aabrol"/>
+	ms.date="02/02/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Mixpanel の統合
@@ -36,7 +36,7 @@ Mixpanel と Azure AD の統合を構成するには、次のものが必要で�
 - Mixpanel でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -88,11 +88,11 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 
 **Mixpanel で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Mixpanel** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **Mixpanel** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの Mixpanel へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![シングル サインオンの構成](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_03.png) <br>
+2. **[ユーザーの Mixpanel へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_04.png) <br>
 
 
     a.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Mixpanel アプリケーションへのサインオンに使用する URL を入力します。**“https://mixpanel.com/login/”**
@@ -198,7 +198,7 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[Mixpanel]** を選択します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_50.png) <br>
+2. アプリケーションの一覧で **[Mixpanel]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -237,4 +237,4 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_205.png
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

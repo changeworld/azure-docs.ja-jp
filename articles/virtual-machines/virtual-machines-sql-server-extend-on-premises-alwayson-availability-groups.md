@@ -1,6 +1,6 @@
-<properties 
+<properties
 	pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
+	description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
@@ -8,13 +8,13 @@
 	editor="monicar"
 	tags="azure-service-management"/>
 
-<tags 
+<tags
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="11/13/2015"
+	ms.date="02/03/2016"
 	ms.author="jroth" />
 
 # オンプレミスの AlwaysOn 可用性グループの Azure への拡張
@@ -65,7 +65,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 |**VM ユーザー名**|VM の管理者アカウントになるユーザー名を指定します。|
 |**VM 管理者パスワード**|新しいアカウントのパスワードを指定します。|
 |**パスワードの確認**|確認のためにもう一度新しいアカウントのパスワードを入力します。|
-|**Virtual Network**|新しい VM で使用する Azure Virtual Network を指定します。仮想ネットワークの詳細については、「[Virtual Network の概要](..\virtual-network\virtual-networks-overview.md)」を参照してください。|
+|**Virtual Network**|新しい VM で使用する Azure Virtual Network を指定します。仮想ネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。|
 |**Virtual Network サブネット**|新しい VM で使用する仮想ネットワーク サブネットを指定します。|
 |**ドメイン**|あらかじめ入力されているドメインの値が正しいことを確認します。|
 |**ドメイン ユーザー名**|ローカル クラスター ノード上のローカルの Administrators グループに属しているアカウントを指定します。|
@@ -91,7 +91,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. プロビジョニング プロセスが開始されます。ウィザードが正常に完了したら、**[閉じる]** をクリックして、ウィザードを終了します。
 
->[AZURE.NOTE] Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
+>[AZURE.NOTE] Azure レプリカの追加ウィザードでは、Users\\User Name\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
 
 ## 可用性グループ リスナーの作成
 
@@ -103,4 +103,4 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

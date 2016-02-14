@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/03/2015"
-   ms.author="abhic"/>
+   ms.date="02/03/2016"
+   ms.author="masnider"/>
 
 # 配置の制約の概要
 
@@ -26,7 +26,7 @@ Azure Service Fabric を使用すると、開発者はサービス レプリカ�
 
 - ノードで NodeProperties を定義して、さまざまな種類のノードでさまざまな種類のサービスを制限します。
 
-- 特定の制約を、セカンダリ レプリカではなくプライマリ レプリカに適用します。
+- サービスのプライマリおよびセカンダリ レプリカの両方に適用する制限、またはプライマリ レプリカのみに適用する制限を決めます。
 
 
 ## 主要な概念
@@ -38,4 +38,4 @@ NodeProperty - ユーザーまたはシステムによって定義される、�
 
 詳細については、「[アプリケーション シナリオ](../service-fabric-application-scenarios)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

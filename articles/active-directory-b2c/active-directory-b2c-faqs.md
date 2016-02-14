@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/28/2015"
+	ms.date="01/28/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: FAQ
@@ -59,7 +59,7 @@ Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機�
 
 ### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツ、および送信者フィールド ("From:" フィールド))。
 
-検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用します。送信者フィールドは、サポートを通じて変更できます。
+検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用します。送信者フィールドは、サポートを通じて変更できます。
 
 ### 既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
@@ -80,6 +80,10 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 ### Azure AD B2C は SharePoint On-Premises 2016 以前と連携しますか。
 
 現時点では連携しません。Azure AD B2C では、ポータル/E コマース アプリケーションが SharePoint On-Premises のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、シナリオを共有する SharePoint の外部パートナー向けではありません。「[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)」を参照してください。
+
+### 外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
+
+外部 ID のシナリオに適切な機能を使用する方法の詳細については、[こちらの記事](../active-directory/active-directory-b2b-compare-external-identities.md)を参照してください。
 
 ### Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 
@@ -109,4 +113,4 @@ Azure AD B2C に関する[このサポート トピック](active-directory-b2c-
 
 現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

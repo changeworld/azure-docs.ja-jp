@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="02/01/2016" 
 	ms.author="sdanie"/>
 
 # Azure PowerShell を使用した Azure Redis Cache の管理
@@ -60,6 +60,46 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 
 	Get-Help New-AzureRmRedisCache -Detailed
 
+## Azure Government Cloud または Azure China Cloud に接続する方法
+
+既定では、Azure 環境はグローバル Azure クラウド インスタンスを表す `AzureCloud` です。別のインスタンスに接続するには、`Add-AzureRmAccount` コマンドと `-Environment` または -`EnvironmentName` コマンド ライン スイッチを使用し、任意の環境または環境名を指定します。
+
+利用可能な環境の一覧を表示するには、`Get-AzureRmEnvironment` コマンドレットを実行します。
+
+### Azure Government Cloud に接続するには
+
+Azure Government Cloud に接続するには、次のいずれかのコマンドを使用します。
+
+	Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+
+または
+
+	Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+
+Azure Government Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
+
+-	米国政府バージニア州
+-	米国政府アイオワ州
+
+Azure Government Cloud の詳細については、[Microsoft Azure Government](https://azure.microsoft.com/features/gov/) と [Microsoft Azure Government 開発者ガイド](azure-government-developer-guide.md)を参照してください。
+
+### Azure China Cloud に接続するには
+
+Azure China Cloud に接続するには、次のいずれかのコマンドを使用します。
+
+	Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+
+または
+
+	Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+
+Azure China Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
+
+-	中国 (東部)
+-	中国 (北部)
+
+Azure China Cloud の詳細については、[中国の 21Vianet が運営している AzureChinaCloud for Azure](http://www.windowsazure.cn/) に関するページを参照してください。
+
 ## Azure Redis Cache 用の PowerShell で使用されるプロパティ
 
 次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理する際に一般的に使用されるパラメーターのプロパティと説明を示しています。
@@ -85,7 +125,7 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
 
 Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用します。
 
->[AZURE.IMPORTANT]Azure ポータルを使用してサブスクリプションに初めて Redis Cache を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルによって登録されます。PowerShell を使用してサブスクリプションに最初の Redis Cache を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzureRmRedisCache` や `Get-AzureRmRedisCache` などのコマンドレットが失敗します。
+>[AZURE.IMPORTANT] Azure ポータルを使用してサブスクリプションに初めて Redis Cache を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルによって登録されます。PowerShell を使用してサブスクリプションに最初の Redis Cache を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzureRmRedisCache` や `Get-AzureRmRedisCache` などのコマンドレットが失敗します。
 >
 >`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Cache"`
 
@@ -511,11 +551,11 @@ Redis Cache を削除するには、[Remove-AzureRmRedisCache](https://msdn.micr
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
 <a name="classic"></a>
-## PowerShell クラシック デプロイ モデルを使用した Azure Redis Cache インスタンスの管理
+## PowerShell クラシック デプロイメント モデルを使用した Azure Redis Cache インスタンスの管理
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](cache-howto-manage-redis-cache-powershell.md)については、この記事の冒頭で説明されています。
 
-次のスクリプトは、クラシック デプロイ モデルを使用して Azure Redis Cache を作成、更新、および削除する方法を示しています。
+次のスクリプトは、クラシック デプロイメント モデルを使用して Azure Redis Cache を作成、更新、および削除する方法を示しています。
 		
 		$VerbosePreference = "Continue"
 
@@ -569,4 +609,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

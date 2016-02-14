@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/31/2015"
+   ms.date="01/29/2016"
    ms.author="v-sharos" />
 
 # StorSimple 運用デバイスのトラブルシューティング
@@ -64,7 +64,7 @@
 問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 
-[1]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn715782(v=WPS.630).aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

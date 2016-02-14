@@ -39,7 +39,7 @@
 先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。次に例を示します。
 
 - VM のパブリック IP アドレスまたは VM を含むクラウド サービスのパブリック IP アドレス (仮想 IP アドレス ([VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) とも呼ばれます) を変更した場合、DNS クライアント キャッシュが DNS 名のために登録された*古い IP アドレス*をまだ持っているために、RDP が失敗することがあります。DNS クライアント キャッシュをフラッシュしてから、もう一度 VM に接続してみてください。または、新しい VIP に直接接続してみてください。
-- リモート デスクトップ接続を管理するために、Azure ポータルのいずれかではなく、サード パーティ製のアプリケーションを使用している場合は、アプリケーションの構成にリモート デスクトップ トラフィックのための正しい TCP ポートが含まれていることを確認してください。クラシック仮想マシンのこのポートを確認するには、[Azure ポータル](portal.azure.com)で VM の [設定]、[エンドポイント] の順にクリックします。
+- リモート デスクトップ接続を管理するために、Azure ポータルのいずれかではなく、サード パーティ製のアプリケーションを使用している場合は、アプリケーションの構成にリモート デスクトップ トラフィックのための正しい TCP ポートが含まれていることを確認してください。クラシック仮想マシンのこのポートを確認するには、[Azure ポータル](https://portal.azure.com)で VM の [設定]、[エンドポイント] の順にクリックします。
 
 
 ## 準備作業
@@ -96,7 +96,7 @@
 
 ### ソース 3: クラウド サービス エンドポイントと ACL
 
-クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、同じクラウド サービスまたは仮想ネットワーク内にある別の Azure 仮想マシンが自分の Azure 仮想マシンにリモート デスクトップ接続できることを確認してください。
+クラシック デプロイメント モデルを使用して作成された仮想マシンの場合は、同じクラウド サービスまたは仮想ネットワーク内にある別の Azure 仮想マシンが自分の Azure 仮想マシンにリモート デスクトップ接続できることを確認してください。
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_3.png)
 
@@ -133,9 +133,9 @@
 - Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 - Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-クラシック デプロイ モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure Virtual Machines への安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
+クラシック デプロイメント モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure Virtual Machines への安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
 
-次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。
+次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。Azure PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。**Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。適切なレベルの設定方法の詳細については、「[Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)」 を参照してください。
 
@@ -195,4 +195,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

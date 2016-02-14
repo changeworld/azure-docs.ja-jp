@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/02/2016"
 	ms.author="jeedes"/>
 
 
@@ -64,7 +64,8 @@ Azure AD への Birst Agile Business Analytics の統合を構成するには、
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Birst Agile Business Analytics**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/tutorial_birst_01.png)<br>
-7. 結果ウィンドウで **[Birst Agile Business Analytics]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>
+7. 結果ウィンドウで **[Birst Agile Business Analytics]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-birst-tutorial/tutorial_birst_02.png)<br>
+
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Birst Agile Business Analytics で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -75,7 +76,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Birst Agile Business Analytics のテスト ユーザーの作成](#creating-a-Birst Agile Business Analytics-test-user)** - Birst Agile Business Analytics で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Birst Agile Business Analytics テスト ユーザーの作成](#creating-a-birst-agile-business-analytics-test-user)** - Birst Agile Business Analytics で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -89,15 +90,15 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 1. Azure AD ポータルの **Birst Agile Business Analytics** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[Birst Agile Business Analytics へのサインオン方法を選択してください]** ページで、**[Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_03.png) <br>
+2. **[ユーザーの Birst Agile Business Analytics へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_03.png) <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_04.png) <br>
 
 
-    a.[サインオン URL] テキストボックスに、Birst Agile Business Analytics アプリケーションにユーザーがサインオンするときに使用する URL を入力します。その際の「**https://login.bws.birst.com/SAMLSSO/Service.aspx?birst.idpid=TENANTIDPID**」のパターンを利用します。
+    a.[サインオン URL] ボックスに、ユーザーが Birst Agile Business Analytics アプリケーションへのサインオンに使用する URL を入力します。その際、"**https://login.bws.birst.com/SAMLSSO/Service.aspx?birst.idpid=TENANTIDPID**" パターンを使用します。
 
 
-4. **[Birst Agile Business Analytics でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_05.png) <br>
+4. **[Birst Agile Business Analytics でのシングル サインオンの構成]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -111,9 +112,9 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
 
 
 
@@ -215,4 +216,4 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 [204]: ./media/active-directory-saas-birst-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-birst-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

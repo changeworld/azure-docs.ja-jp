@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/28/2016"
 	ms.author="kgremban"/>
 
 # オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 リモート ユーザーにアクセスを提供する必要がある場合、それらのユーザーが使っているデバイスは多岐にわたります。タブレット、スマートフォン、ノート PC が、自分の管理下にある場合も、ない場合もあることでしょう。しかし、おびただしい数のリソースが存在する中で、それらに対するアクセスのセキュリティを確保することは容易ではありません。近年、リモート アクセスの安全性を確保する方法としてリバース プロキシが広く用いられてきました。しかし、リバース プロキシは、ファイアウォールの背後に設置する必要があります。ファイアウォールのセキュリティを確保したり、可用性を高めることが難しいという問題がありました。
 
@@ -59,7 +59,7 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
-* [Azure への組織としてのサインアップ](../sign-up-organization.md)
-* [Azure ID](../fundamentals-identity.md)
+* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

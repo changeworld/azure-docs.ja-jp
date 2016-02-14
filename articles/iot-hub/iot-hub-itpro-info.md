@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="12/15/2015"
+ ms.date="02/03/2016"
  ms.author="dobett"/>
 
 # IoT Hub へのアクセスの構成と管理
@@ -22,12 +22,14 @@
 
 ## ネットワーク接続
 
-デバイスは、AMQP または HTTPS のいずれかのプロトコルを使用して Azure の IoT Hub と通信します。通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
+デバイスは、さまざまなプロトコルを使用して Azure の IoT Hub と通信できます。通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
 
 | プロトコル | ポート |
 | -------- | ------- |
 | HTTPS | 443 |
 | AMQP | 5671 |
+| AMQP over WebSocket | 443 |
+| MQTT | 8883 |
 
 Azure リージョンに IoT Hub を作成すると、そのハブはハブの存続期間中同じ IP アドレスを保持します。ただし、障害復旧シナリオでは、Microsoft によって IoT Hub が別のスケール ユニットに移動されると、新しい IP アドレスが割り当てられます。
 
@@ -49,4 +51,4 @@ IoT Hub のその他の管理エンドポイントへのアクセスも、*iothu
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

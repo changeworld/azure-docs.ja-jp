@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="02/02/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Benefitsolver の統合
@@ -82,10 +82,8 @@
 
     ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが Benefitsolver アプリケーションへのサインオンに使用する URL を入力します (例: "*http://azure-dev.benefitsolver.com*)。
-    2.  **[応答 URL]** ボックスに、Benefitsolver AssertionConsumerService URL を入力します (例: "*https://dev.benefitsolver.com/benefits/BenefitSolverView?page\_name=single\_signon\_saml*”))。  
-
-        >[AZURE.NOTE]ご使用の環境の実際の値は、Benefitsolver サポート チームから入手できます。
+    1.  **[サインオン URL]** ボックスに、「****http://azure.benefitsolver.com**」と入力します。
+2.  **[応答 URL]** ボックスに、「****https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
 
     3.  **[次へ]** をクリックします。
 
@@ -95,7 +93,7 @@
 
 5.  ダウンロードしたメタデータ ファイルを Benefitsolver サポート チームに送信します。
 
-    >[AZURE.NOTE]Benefitsolver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Benefitsolver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
 6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -122,11 +120,12 @@
     4.  **[完了]** をクリックします。
 
 9.  **[変更の適用]** をクリックします。
+
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが Benefitsolver にログインできるようにするには、ユーザーを Benefitsolver にプロビジョニングする必要があります。Benefitsolver の場合、Benefitsolver サポート チームがユーザーを手動で作成する必要があります。
+Azure AD ユーザーが Benefitsolver にログインできるようにするには、ユーザーを Benefitsolver にプロビジョニングする必要があります。Benefitsolver の場合、従業員のデータは、人事情報システムの国勢調査ファイルを介して (通常夜間に) アプリケーションに入力されます。
 
->[AZURE.NOTE]Benefitsolver から提供されている他の Benefitsolver ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Benefitsolver から提供されている他の Benefitsolver ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -146,4 +145,4 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/01/2016"
 	ms.author="piyushjo" />
 
 
 #リリース ノート
+
+##4\.1.5 (02/01/2016)
+
+- 安定性が向上しました。
 
 ##4\.1.4 (01/26/2016)
 
@@ -35,7 +39,7 @@
 
 - 安定性が向上しました。
 
-##4\.1.0 (08/25/2015)
+##4\.1.0 (2015 年 8 月 25 日)
 
 - Android M の新しいアクセス許可モデルを処理します。
 - `AndroidManifest.xml` を使用する代わりに実行時に場所の機能を構成できるようになりました。
@@ -61,4 +65,4 @@
 -   セキュリティの強化。
 -   Google Play と SmartAd の追跡機能が削除されました。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

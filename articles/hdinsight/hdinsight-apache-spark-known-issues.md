@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/13/2016" 
-	ms.author="jgao"/>
+	ms.date="02/01/2016" 
+	ms.author="nitinme"/>
 
 # Azure HDInsight (Linux) の Apache Spark の既知の問題
 
@@ -54,6 +54,23 @@
 
 Ambari から履歴サーバーを手動で開始します。
 
+##2 MB を超える Notebook の読み込み中のエラー
+
+**症状:**
+
+2 MB を超える Notebook の読み込み中にエラー **`Error loading notebook`** が表示される場合があります。
+
+**対応策:**
+
+このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。Notebook はディスク上の `/var/lib/jupyter` に残っているので、クラスターに SSH 接続し、Notebook にアクセスすることができます。バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
+
+今後このエラーが発生しないようにするには、次のベスト プラクティスを実行する必要があります。
+
+* Notebook のサイズを小さく保つことが重要です。Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。Jupyter でのベスト プラクティスとしては一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなり過ぎないように `.take()` または `.sample()` の実行を検討します。
+* また、Notebook を保存する場合は、出力セルをすべてクリアしてサイズを縮小します。
+
+
+
 ##Notebook の初期スタートアップに予想より時間がかかる 
 
 **症状:**
@@ -63,16 +80,6 @@ Spark Magic を使用する Jupyter Notebook の最初のステートメント�
 **対応策:**
  
 回避方法はありません。1 分ほどかかる場合があります。
-
-##コア構成やメモリ構成をカスタマイズできない
-
-**症状:**
- 
-Spark/Pyspark カーネルの既定の構成とは異なるコア構成やメモリ構成を指定することはできません。
-
-**対応策:**
- 
-この機能は準備中です。
 
 ##Jupyter Notebook がセッションの作成中にタイムアウトする
 
@@ -121,6 +128,16 @@ Notebook の出力結果が、Spark および Pyspark の Jupyter カーネル�
 
     最初のセルが、Notebook の終了時に呼び出されるように sc.stop() メソッドを登録することに失敗します。特定の状況では、このために Spark リソースがリークする場合があります。この問題を回避するには、これらの Notebook で、終了前に import atexit; atexit.register(lambda: sc.stop()) を実行します。誤ってリソースをリークした場合は、上の指示に従って、リークした YARN アプリケーションを強制終了します。
      
+##コア構成やメモリ構成をカスタマイズできない
+
+**症状:**
+ 
+Spark/Pyspark カーネルの既定の構成とは異なるコア構成やメモリ構成を指定することはできません。
+
+**対応策:**
+ 
+この機能は準備中です。
+
 ## Spark ログ ディレクトリでアクセス許可の問題が発生する 
 
 **症状:**
@@ -139,4 +156,4 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 - [概要: Azure HDInsight (Linux) での Apache Spark](hdinsight-apache-spark-overview.md)
 - [概要: Azure HDInsight (Linux) の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

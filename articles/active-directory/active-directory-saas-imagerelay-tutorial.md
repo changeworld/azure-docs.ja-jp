@@ -3,7 +3,7 @@
 	description="Azure Active Directory と ImageRelay の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/16/2015"
-	ms.author="markusvi"/>
+	ms.date="02/02/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と ImageRelay の統合
@@ -35,7 +35,7 @@ Azure AD と ImageRelay の統合を構成するには、次のものが必要�
 - ImageRelay でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -89,15 +89,15 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure AD ポータルの **ImageRelay** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-     ![シングル サインオンの構成][6] <br>
+     ![Configure Single Sign-On][6] <br>
 
 2. **[ユーザーの ImageRelay へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png) <br>
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_03.png) <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-     ![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_04.png) <br>
+     ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_04.png) <br>
 
     a.**[サインオン URL]** ボックスに、ユーザーが ImageRelay アプリケーションへのサインオンに使用する URL を入力します (例: **https://fabrikam.ImageRelay.com/*))。
 
@@ -105,7 +105,7 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[ImageRelay でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) <br>
+    ![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -113,33 +113,33 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 5. 別のブラウザー ウィンドウで、管理者として ImageRelay 企業サイトにサインインします。
 
-    a.上部にあるツール バーで **[Users & Permissions]** ワークロードをクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_06.png) <br>
+    a.上部にあるツール バーで **[Users & Permissions]** ワークロードをクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_06.png) <br>
 
-    b.**[Create New Permission]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png) <br>
+    b.**[Create New Permission]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_08.png) <br>
 
-    c.**[Single Sign On Settings]** ワークロードで、**[This Group can only sign-in via Single Sign On]** チェック ボックスをオンにして **[Save]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) <br>
+    c.**[Single Sign On Settings]** ワークロードで、**[This Group can only sign-in via Single Sign On]** チェック ボックスをオンにして **[Save]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_09.png) <br>
 
-    d.**[Account Settings]** に移動します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png) <br>
+    d.**[Account Settings]** に移動します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_10.png) <br>
 
-    e.**[Single Sign On Settings]** ワークロードに移動します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_11.png)<br>
+    e.**[Single Sign On Settings]** ワークロードに移動します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_11.png)<br>
 
-    f.次に示すようにフォームを入力し、**[Save]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)<br>
+    f.次に示すようにフォームを入力し、**[Save]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_12.png)<br>
 
-    - **Login URL (SSO)**: Azure Active Directory からのシングル サインオン サービスの URL です。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_13.png)<br>
+    - **Login URL (SSO)**: Azure Active Directory からのシングル サインオン サービスの URL です。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_13.png)<br>
 
-    - **Logout Service URL**: Azure Active Directory からのシングル サインアウト サービスの URL です。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_14.png)<br>
+    - **Logout Service URL**: Azure Active Directory からのシングル サインアウト サービスの URL です。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_14.png)<br>
 
-    - **[Name Id Format]** で **[urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_15.png)<br>
+    - **[Name Id Format]** で **[urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_15.png)<br>
 
-    - **[Binding Options for Requests from the Service Provider (Image Relay)]** で **[POST Binding]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_16.png)<br>
+    - **[Binding Options for Requests from the Service Provider (Image Relay)]** で **[POST Binding]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_16.png)<br>
 
-  	- **[x.509 Certificate]** の下にある **[Update Certificate]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)<br>
+  	- **[x.509 Certificate]** の下にある **[Update Certificate]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_17.png)<br>
 
-    - メモ帳で、手順 4. で Azure Active Directory からダウンロードした証明書を開き、次に示す証明書の内容をコピーして貼り付けます。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_18.png)<br>
+    - メモ帳で、手順 4. で Azure Active Directory からダウンロードした証明書を開き、次に示す証明書の内容をコピーして貼り付けます。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_18.png)<br>
 
-    - **[Just-In-Time User Provisioning]** で、**[Enable Just-In-Time User Provisioning]** チェック ボックスをオンにします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_19.png)<br>
+    - **[Just-In-Time User Provisioning]** で、**[Enable Just-In-Time User Provisioning]** チェック ボックスをオンにします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_19.png)<br>
 
-    - シングル サインオンによるサインインのみを許可するアクセス許可グループを選択します (**[SSO Basic]** など)。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_20.png)<br>
+    - シングル サインオンによるサインインのみを許可するアクセス許可グループを選択します (**[SSO Basic]** など)。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_20.png)<br>
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
@@ -151,7 +151,7 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
@@ -201,7 +201,7 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 1. ImageRelay 企業サイトに管理者としてログインします。
 
-1. **[Users & Permissions]** に移動して **[Create SSO User]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) <br>
+1. **[Users & Permissions]** に移動して **[Create SSO User]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_21.png) <br>
 
 1. プロビジョニングするユーザーの **[Email]**、**[First Name]**、**[Last Name]**、**[Company]** を入力し、シングル サインオンのみでサインインできるアクセス許可グループ ([SSO Basic] など) を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_22.png) <br>
 
@@ -215,7 +215,7 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br>![ユーザーの割り当て][201]<br>
 
-2. アプリケーションの一覧で **[ImageRelay]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_23.png) <br>
+2. アプリケーションの一覧で **[ImageRelay]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_23.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -253,4 +253,4 @@ ImageRelay で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-imagerelay-tutorial/tutorial_general_205.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

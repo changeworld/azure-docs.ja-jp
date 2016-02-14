@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="12/11/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics でクエリを記述する方法
@@ -42,7 +42,7 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 
 テスト データを含むローカル JSON ファイルを使用してブラウザーでクエリを実行することにより、クエリが意図したとおりに動作することを確認できます。これを行っても、ジョブが開始したり、課金に影響することはありません。
 
-> [AZURE.NOTE]現在、Azure プレビュー ポータルでは、ブラウザー内クエリ テストはサポートされていません。
+> [AZURE.NOTE] 現在、Azure プレビュー ポータルでは、ブラウザー内クエリ テストはサポートされていません。
 
 1.	クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。  
 
@@ -71,4 +71,4 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

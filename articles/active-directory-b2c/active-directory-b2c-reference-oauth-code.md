@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="01/28/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: OAuth 2.0 認証コード フロー
@@ -26,7 +26,7 @@
 
 OAuth 2.0 承認コード フローは、[OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749) で規定されています。[Web アプリ](active-directory-b2c-apps.md#web-apps)や[ネイティブにインストールされるアプリ](active-directory-b2c-apps.md#mobile-and-native-apps)を含め、大半のアプリ タイプで認証と承認を行う際にこのフローを利用できます。アプリは、このフローによって安全に **access\_tokens** を取得し、[認証サーバー](active-directory-b2c-reference-protocols.md#the-basics)で保護されているリソースにアクセスできます。本ガイドでは特に、OAuth 2.0 認証コード フローの「**パブリック クライアント**」について説明します。パブリック クライアントとは、秘密のパスワードの整合性を守る目的で信頼できないクライアント アプリケーションのことです。モバイル アプリ、デスクトップ アプリ、デバイスで実行され、access\_tokens の取得が必要な大半のアプリが該当します。Azure AD B2C を利用し、Web アプリに ID 管理を追加する場合、OAuth 2.0 ではなく、[OpenID Connect](active-directory-b2c-reference-oidc.md) をご利用ください。
 
-Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。[**ポリシー パラメーター**](active-directory-b2c-reference-poliices.md)を導入しており、このパラメーターにより、OAuth 2.0 を利用し、サインアップ、サインイン、プロファイル管理などのユーザー操作をアプリに追加できます。ここでは、OAuth 2.0 とポリシーを利用し、ネイティブ アプリケーションに各種のユーザー操作を導入し、Web API にアクセスするための access\_tokens を取得する方法について説明します。
+Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OAuth 2.0 プロトコルを拡張したものです。[**ポリシー パラメーター**](active-directory-b2c-reference-policies.md)を導入しており、このパラメーターにより、OAuth 2.0 を利用し、サインアップ、サインイン、プロファイル管理などのユーザー操作をアプリに追加できます。ここでは、OAuth 2.0 とポリシーを利用し、ネイティブ アプリケーションに各種のユーザー操作を導入し、Web API にアクセスするための access\_tokens を取得する方法について説明します。
 
 下の HTTP 要求例では、サンプル B2C ディレクトリの **fabrikamb2c.onmicrosoft.com**、サンプル アプリケーション、ポリシーを利用します。これらの値を利用し、要求を自由にお試しいただけます。あるいは、独自の値で置換できます。[独自の B2C ディレクトリ、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について学習してください。
 
@@ -74,7 +74,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | ----------------------- |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | response\_type | 必須 | 承認コード フローでは `code` を指定する必要があります。 |
 | redirect\_uri | 必須 | アプリ の redirect\_uri。アプリは、この URI で認証応答を送受信することができます。ポータルで登録したいずれかの redirect\_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します (これについては後に詳しく説明します)。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
@@ -134,7 +134,7 @@ Content-Type: application/json
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------------- |
 | p | 必須 | 認証コードの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。**このパラメーターはクエリ文字列に追加されることに注意してください。**POST 本文ではありません。 |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | grant\_type | 必須 | 承認コード フローでは `authorization_code` を指定する必要があります。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
 | code | 必須 | フローの最初の段階で取得した authorization\_code。 |
@@ -211,7 +211,7 @@ Content-Type: application/json
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | -------- |
 | p | 必須 | 元の更新トークンの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。**このパラメーターはクエリ文字列に追加されることに注意してください。**POST 本文ではありません。 |
-| client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)からアプリに割り当てられたアプリケーション ID。 |
+| client\_id | 必須 | [Azure ポータル](https://portal.azure.com)からアプリに割り当てられたアプリケーション ID。 |
 | grant\_type | 必須 | この段階の承認コード フローでは `refresh_token` を指定する必要があります。 |
 | scope | 必須 | スコープのスペース区切りリスト。1 つのスコープ値は、要求されている両方のアクセス許可を Azure AD を示します。`openid` スコープは、ユーザーをサインインさせ、**id\_tokens** の形式でユーザーに関するデータを取得するためのアクセス許可を示します。クライアントと同じアプリケーション ID で表され、アプリの独自のバックエンド Web API にトークンを届けるために利用できます。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。 |
 | redirect\_uri | 必須 | authorization\_code を受け取った、アプリケーションの redirect\_uri。 |
@@ -257,11 +257,11 @@ Content-Type: application/json
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 
-<!--
+<!-- 
 
 Here is the entire flow for a native  app; each request is detailed in the sections below:
 
-![OAuth Auth Code Flow](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png)
+![OAuth Auth Code Flow](./media/active-directory-b2c-reference-oauth-code/convergence_scenarios_native.png) 
 
 -->
 
@@ -273,4 +273,4 @@ Here is the entire flow for a native  app; each request is detailed in the secti
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに**ネイティブ クライアント**を追加します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

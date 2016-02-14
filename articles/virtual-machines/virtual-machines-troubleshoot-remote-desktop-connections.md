@@ -123,7 +123,7 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 
 原因: ターゲット VM が、資格情報のユーザー名の部分でセキュリティ機関を見つけることができませんでした。
 
-ユーザー名が *SecurityAuthority\UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、仮想マシンのコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
+ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、仮想マシンのコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
 
 考えられる解決策:
 
@@ -138,8 +138,8 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 
 Windows ベースのコンピューターでは、ローカル アカウントとドメイン アカウントの資格情報を認証できます。
 
-- ローカル アカウントの場合は、*ComputerName\UserName* という構文を使用します (例: SQL1\\Admin4798)。
-- ドメイン アカウントの場合は、*DomainName\UserName* という構文を使用します (例: CONTOSO\\johndoe)。
+- ローカル アカウントの場合は、*ComputerName*\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
+- ドメイン アカウントの場合は、*DomainName*\*UserName* という構文を使用します (例: CONTOSO\\johndoe)。
 
 新しい AD フォレスト内で VM がドメイン コントローラーに昇格している場合、ログイン時に使用したローカル管理者アカウントも、新しいフォレストとドメイン内で同じパスワードを持つ同等のアカウントに変換されます。その後、ローカル アカウントは削除されます。たとえば、ローカルアカウント DC1\\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コントローラーとして昇格すると、DC1\\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント (CORP\\DCAdmin) が同じパスワードで作成されます。
 
@@ -167,10 +167,10 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)
 
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

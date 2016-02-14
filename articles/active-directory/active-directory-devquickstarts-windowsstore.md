@@ -62,7 +62,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 -	DirectorySearcher プロジェクトで、`MainPage.xaml.cs` を開きます。Azure ポータルで入力した値が反映されるように、`Config Values` 領域の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
     -	`tenant` は、Azure AD テナントのドメイン (たとえば、contoso.onmicrosoft.com) です。
     -	`clientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
--	ここで、Windows Phone アプリのコールバック URI を調べる必要があります。`MainPage` メソッドの次の行にブレークポイントを設定します。
+-	ここで、Windows ストア アプリのコールバック URI を調べる必要があります。`MainPage` メソッドの次の行にブレークポイントを設定します。
 
 ```
 redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
@@ -146,4 +146,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

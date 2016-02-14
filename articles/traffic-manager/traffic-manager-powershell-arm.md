@@ -43,9 +43,9 @@ ARM を使用して Traffic Manager プロファイルを構成すると、下�
 
 - 既存の (ARM 以外の) Azure サービス管理 (ASM) API、ツール、"クラシック" ポータルを使用して作成された Traffic Manager プロファイルは ARM では使用できません。逆の場合も同様です。プロファイルを削除して再作成する方法以外に、ASM から ARM API へのプロファイルの移行は現在サポートされていません。
 
-
 - "入れ子" になった Traffic Manager のエンドポイントは、ARM API、ARM PowerShell、ARM モードの Azure CLI でサポートされています。Azure ポータルでは現在サポートされていません (Azure ポータルでも ARM API が使用されています)。
 
+- "AzureEndpoints" タイプの Traffic Manager エンドポイントは、Web アプリを参照するとき、既定の (運用) [Web アプリ スロット](../app-service-web/web-sites-staged-publishing.md)だけを参照できます。カスタム スロットはまだサポートされていません。回避策として、カスタム スロットは "ExternalEndpoints" タイプを使用して構成できます。
 
 ## Azure PowerShell の設定
 
@@ -285,4 +285,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

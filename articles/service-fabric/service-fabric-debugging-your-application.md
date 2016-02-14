@@ -1,6 +1,6 @@
 <properties
    pageTitle="Visual Studio でアプリケーションをデバッグする | Microsoft Azure"
-   description="Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善する。"
+   description="Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/15/2015"
+   ms.date="01/28/2016"
    ms.author="jesseb"/>
 
 # Visual Studio による Service Fabric アプリケーションのデバッグ
@@ -28,7 +28,7 @@
 
 3. コードにブレークポイントを設定し、**[デバッグ]** メニューのコマンドをクリックしてアプリケーションをステップ実行します。
 
-    > [AZURE.NOTE]Visual Studio は、アプリケーションのすべてのインスタンスにアタッチします。コードのステップ実行中に、ブレークポイントに複数のプロセスがヒットして、同時セッションになる場合があります。ヒットしたブレークポイントを無効にし、ブレークポイントをスレッド ID の条件付きにするか、診断イベントを使用します。
+    > [AZURE.NOTE] Visual Studio は、アプリケーションのすべてのインスタンスにアタッチします。コードのステップ実行中に、ブレークポイントに複数のプロセスがヒットして、同時セッションになる場合があります。ヒットしたブレークポイントを無効にし、ブレークポイントをスレッド ID の条件付きにするか、診断イベントを使用します。
 
 4. **[診断イベント]** ウィンドウが自動的に開き、診断イベントをリアルタイムで表示します。
 
@@ -65,4 +65,4 @@
 [diagnosticeventsactions]: ./media/service-fabric-debugging-your-application/diagnosticeventsactions.png
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

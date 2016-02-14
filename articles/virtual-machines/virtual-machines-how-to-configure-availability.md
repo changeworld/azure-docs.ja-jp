@@ -31,7 +31,7 @@
 - [オプション 1: 仮想マシンと可用性セットを同時に作成する][]。この後で、新しい仮想マシンを作成する場合には、ここで作成した可用性セットに追加します。
 - [オプション 2: 既存の仮想マシンを可用性セットに追加する][]。
 
->[AZURE.NOTE]クラシック モデルで複数の仮想マシンを同じ可用性セットに割り当てる場合は、それらの仮想マシンが同じクラウド サービスに属している必要があります。
+>[AZURE.NOTE] クラシック モデルで複数の仮想マシンを同じ可用性セットに割り当てる場合は、それらの仮想マシンが同じクラウド サービスに属している必要があります。
 
 ## <a id="createset"> </a>オプション 1: 仮想マシンと可用性セットを同時に作成する##
 
@@ -96,7 +96,7 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
 	Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
->[AZURE.NOTE]可用性セットに仮想マシンを追加する手順を完了するには、仮想マシンの再起動が必要になる場合があります。
+>[AZURE.NOTE] 可用性セットに仮想マシンを追加する手順を完了するには、仮想マシンの再起動が必要になる場合があります。
 
 ## その他のリソース
 
@@ -110,6 +110,6 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [仮想マシンの可用性管理]: virtual-machines-manage-availability.md
 [Windows を実行する仮想マシンの作成]: virtual-machines-windows-tutorial.md
 [Virtual Network の概要]: virtual-networks-overview.md
-[サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
+[サービス管理での仮想マシンの操作に関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

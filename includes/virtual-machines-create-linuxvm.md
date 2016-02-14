@@ -1,4 +1,4 @@
-1. 「[Azure CLI から Azure に接続する](../articles/xplat-cli-connect.md)」で示されている手順を使用して、Azure サブスクリプションにサインインします。
+1. 「[Azure CLI から Azure に接続する](../xplat-cli-connect.md)」で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用してサービス管理モードであることを確認します。
 
@@ -25,9 +25,9 @@
         + Creating VM
         info:    vm create command OK
 
-    >[AZURE.NOTE]Linux 仮想マシンの場合は、`vm create` で `-e` オプションを指定する必要があります。仮想マシンを作成した後で SSH を有効にすることはできません。SSH の詳細については、「[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)」をご覧ください
+    >[AZURE.NOTE] Linux 仮想マシンの場合は、`vm create` で `-e` オプションを指定する必要があります。仮想マシンを作成した後で SSH を有効にすることはできません。SSH の詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」をご覧ください
 
-    上の手順ではイメージ リストからイメージ *b4590d9e3ed742e4a1d46e5424aa335e\_\_suse-opensuse-13.1-20141216-x86-64* を選択することに注意してください。*MyTestVM* は新しい仮想マシンの名前であり、*adminUser* は仮想マシンに SSH するために使用するユーザー名です。これらの変数は、必要に応じて置き換えることができます。このコマンドの詳細については、「[Azure サービス管理での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」を参照してください。
+    上の手順ではイメージ リストからイメージ *b4590d9e3ed742e4a1d46e5424aa335e\_\_suse-opensuse-13.1-20141216-x86-64* を選択することに注意してください。*MyTestVM* は新しい仮想マシンの名前であり、*adminUser* は仮想マシンに SSH するために使用するユーザー名です。これらの変数は、必要に応じて置き換えることができます。このコマンドの詳細については、「[Azure サービス管理での Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。
 
 5. 新しく作成された Linux 仮想マシンが、次のものによって指定される一覧に表示されます。
 
@@ -39,6 +39,6 @@
 
 7. 新しく作成された仮想マシンは、`azure vm start` コマンドで開始できます。
 
-これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」を参照してください。
+これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

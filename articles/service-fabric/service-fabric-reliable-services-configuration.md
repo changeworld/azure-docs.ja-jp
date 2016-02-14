@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/28/2015"
+   ms.date="01/26/2016"
    ms.author="sumukhs"/>
 
 # ステートフル Reliable Services の構成
@@ -24,7 +24,7 @@
 
 既定では、Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
 
->[AZURE.NOTE]コードを使用してサービスを構成する予定でない限り、Visual Studio ソリューションで生成された Settings.xml ファイルの次の構成のセクション名は削除**しない**でください。構成パッケージまたはセクションの名前を変更するには、ReliableStateManager の構成時にコードを変更する必要があります。
+>[AZURE.NOTE] コードを使用してサービスを構成する予定でない限り、Visual Studio ソリューションで生成された Settings.xml ファイルの次の構成のセクション名は削除**しない**でください。構成パッケージまたはセクションの名前を変更するには、ReliableStateManager の構成時にコードを変更する必要があります。
 
 
 ## レプリケーターのセキュリティ構成
@@ -33,7 +33,7 @@
 ### 既定のセクション名
 ReplicatorSecurityConfig
 
->[AZURE.NOTE]このセクション名を変更するには、このサービスの ReliableStateManager を作成するときに replicatorSecuritySectionName パラメーターを ReliableStateManagerConfiguration コンストラクターにオーバーライドします。
+>[AZURE.NOTE] このセクション名を変更するには、このサービスの ReliableStateManager を作成するときに replicatorSecuritySectionName パラメーターを ReliableStateManagerConfiguration コンストラクターにオーバーライドします。
 
 
 ## レプリケーター構成
@@ -42,15 +42,15 @@ ReplicatorSecurityConfig
 ### 既定のセクション名
 ReplicatorConfig
 
->[AZURE.NOTE]このセクション名を変更するには、このサービスの ReliableStateManager を作成するときに replicatorSettingsSectionName パラメーターを ReliableStateManagerConfiguration コンストラクターにオーバーライドします。
+>[AZURE.NOTE] このセクション名を変更するには、このサービスの ReliableStateManager を作成するときに replicatorSettingsSectionName パラメーターを ReliableStateManagerConfiguration コンストラクターにオーバーライドします。
 
 
 ### 構成名
 |名前|単位|既定値|解説|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
-|ReplicatorEndpoint|該当なし|既定値なし - 必須パラメーター|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソース定義の詳細については、「[サービス マニフェストのリソース](service-fabric-service-manifest-resources.md)」を参照してください。 |
-|MaxPrimaryReplicationQueueSize|操作数|8192|プライマリ キューの操作の最大数です。プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信すると、操作が解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
+|ReplicatorEndpoint|該当なし|既定値 (必須パラメーター) なし|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソース定義の詳細については、「[サービス マニフェストのリソース](service-fabric-service-manifest-resources.md)」を参照してください。 |
+|MaxPrimaryReplicationQueueSize|操作数|8192|プライマリ キューの操作の最大数です。操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 |MaxSecondaryReplicationQueueSize|操作数|16384|セカンダリ キューの操作の最大数です。操作は、永続性によってその状態の高可用性が実現されてから解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 |CheckpointThresholdInMB|MB|200|その後で状態がチェックポイントされるログ ファイル領域の量。|
 |MaxRecordSizeInKB|KB|1024|レプリケーターがログに書き込むことができるレコードの最大サイズです。この値は 4 の倍数で 16 より大きい必要があります。|
@@ -107,4 +107,4 @@ MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書�
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

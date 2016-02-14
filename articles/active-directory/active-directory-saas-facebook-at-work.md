@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="02/02/2016"
 	ms.author="asmalser"/>
 
 
@@ -45,13 +45,13 @@ CS Stars と Azure AD の統合を構成するには、次のものが必要で�
 ## ギャラリーから Facebook at Work を追加する
 Azure AD への Facebook at Work の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Facebook at Work を追加する必要があります。
 
-**ギャラリーから Facebook at Work を追加するには、次の手順を実行します。**
+**ギャラリーから Facebook at Work を追加するには、次の手順に従います。**
 
 1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]<br>
 
 4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]<br>
 
@@ -64,9 +64,9 @@ Azure AD への Facebook at Work の統合を構成するには、ギャラリ�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Facebook at Work で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure Active Directory のアカウントで Facebook at Work に対する認証を行えるようにする方法を説明します。
 
-**Facebook at Work で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+**Facebook at Work で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1.	Microsoft Azure 管理ポータルで Facebook at Work を追加したら、**[シングル サインオンの構成]** をクリックします。
 
@@ -114,4 +114,4 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を F
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0204_2016-->

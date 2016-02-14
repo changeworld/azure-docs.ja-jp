@@ -17,7 +17,7 @@
 
 # Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
 
-Application Insights はプレビュー段階です。
+*Application Insights はプレビュー段階です。*
 
 Application Insights SDK のプラグインを作成および構成して、Application Insights サービスに送信される前のテレメトリのキャプチャと処理の方法をカスタマイズできます。
 
@@ -32,13 +32,13 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新のプレリリース バージョンを選択します。
+* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
 * [Application Insights API](app-insights-api-custom-events-metrics.md) を試用する。 
 
 
 ## サンプリング
 
-この機能はベータ版です。
+*この機能はベータ版です。*
 
 [サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
@@ -47,7 +47,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 ### サンプリングを有効にするには
 
-**プロジェクトの NuGet** パッケージを Application Insights の最新のプレリリース バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
+**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
 
 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) では、アダプティブ アルゴリズムが目標とするテレメトリの最大レートを調整できます。
 
@@ -57,7 +57,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 Web ページからのデータに対して固定レートのサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
 
-JavaScript
+*JavaScript*
 
 ```JavaScript
 
@@ -80,7 +80,7 @@ JavaScript
 
 テレメトリのフィルター処理を行うには、テレメトリ プロセッサを記述し、それを SDK に登録します。どのテレメトリもこのプロセッサを通過します。テレメトリをストリームから除外するように選択することも、プロパティを追加することもできます。これには、HTTP 要求コレクターや依存関係コレクターなどの標準的なモジュールのテレメトリに加えて、自身で作成したテレメトリも含まれます。たとえば、ロボットからの要求や成功した依存関係の呼び出しについてのテレメトリをフィルターで除外できます。
 
-> [AZURE.WARNING]プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
+> [AZURE.WARNING] プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
 > 
 > 代わりに、[サンプリング](#sampling)の使用を検討します。
 
@@ -154,7 +154,7 @@ JavaScript
 
 名前付きのパブリック プロパティをクラス内に指定することにより、.config ファイルから文字列値を渡すことができます。
 
-> [AZURE.WARNING].config ファイル内の型名とプロパティ名をコード内のクラスおよびプロパティ名と慎重に照合してください。存在しない型またはプロパティが .config ファイルによって参照されていると、SDK は何も通知せずにテレメトリの送信に失敗する場合があります。
+> [AZURE.WARNING] .config ファイル内の型名とプロパティ名をコード内のクラスおよびプロパティ名と慎重に照合してください。存在しない型またはプロパティが .config ファイルによって参照されていると、SDK は何も通知せずにテレメトリの送信に失敗する場合があります。
 
  
 **あるいは**、コード内でフィルターを初期化することもできます。適切な初期化クラス (たとえば Global.asax.cs の AppStart) で、プロセッサをチェーンに挿入します。
@@ -217,7 +217,7 @@ public void Process(ITelemetry item)
 
 低速な呼び出しの診断のみを実行する場合は、高速呼び出しを除外します。
 
-> [AZURE.NOTE]これによって、ポータルに表示される統計にゆがみが生じます。依存関係のグラフは、依存関係の呼び出しがすべてエラーのように表示されます。
+> [AZURE.NOTE] これによって、ポータルに表示される統計にゆがみが生じます。依存関係のグラフは、依存関係の呼び出しがすべてエラーのように表示されます。
 
 ``` C#
 
@@ -245,7 +245,7 @@ public void Process(ITelemetry item)
 
 **初期化子を定義する**
 
-C#
+*C#*
 
 ```C#
 
@@ -296,7 +296,7 @@ ApplicationInsights.config で:
       </TelemetryInitializers>
     </ApplicationInsights>
 
-または、Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
+*または、*Global.aspx.cs などのコード内で初期化子をインスタンス化することもできます。
 
 
 ```C#
@@ -314,7 +314,7 @@ ApplicationInsights.config で:
 <a name="js-initializer"></a>
 ### JavaScript テレメトリ初期化子
 
-JavaScript
+*JavaScript*
 
 ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
 
@@ -358,7 +358,7 @@ JavaScript
     </script>
 ```
 
-telemetryItem で使用できる非カスタム プロパティの概要については、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
+telemetryItem で使用できる非カスタム プロパティの概要については、[データ モデル](app-insights-export-data-model.md#lttelemetrytypegt)に関するページを参照してください。
 
 任意の数の初期化子を追加できます。
 
@@ -404,4 +404,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

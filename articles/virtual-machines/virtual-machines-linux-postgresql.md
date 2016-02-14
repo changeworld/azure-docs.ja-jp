@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="08/10/2015"
+	ms.date="02/01/2016"
 	ms.author="mingzhan"/>
 
 
@@ -30,7 +30,7 @@ PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース デ�
 
 ## PostgreSQL のインストール
 
-> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE] このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
 
 この例では、PostgreSQL ポートとしてポート 1999 を使用します。
 
@@ -94,7 +94,7 @@ PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM �
 
 		# su - postgres
 
-   >[AZURE.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
+   > [AZURE.NOTE] セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
 
 
 4. 次のコマンドを入力して、*bash\_profile* ファイルを編集します。以下の行を *bash\_profile* ファイルの最後に追加します。
@@ -243,7 +243,7 @@ Postgres データベースを作成します。
 
 これにより、"John" 列内のすべての情報が削除されます。出力は次のようになります。
 
-![image](./media/virtual-machines-linux-postgresql/no8.png)
+![イメージ](./media/virtual-machines-linux-postgresql/no8.png)
 
 ### テーブルのデータの更新
 
@@ -255,4 +255,4 @@ Postgres データベースを作成します。
 ##PostgreSQL の詳細情報
 PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

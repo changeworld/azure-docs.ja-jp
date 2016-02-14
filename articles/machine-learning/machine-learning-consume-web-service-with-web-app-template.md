@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="02/03/2016"
 	ms.author="garye;raymondl"/>
 
 # Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用
@@ -86,7 +86,7 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 **構成**ページに戻るには、Web アプリの `setting.aspx` ページに移動します。たとえば、`http://carprediction.azurewebsites.net/setting.aspx.` ページに移動します。もう一度 API キーを入力するように求められます。ページにアクセスして設定を更新するには、キーの入力が必要です。
 
-他の Web アプリと同様に、Azure クラシック ポータルでこの Web アプリの停止、再開、または削除を行うことができます。実行中は、ホーム Web アドレスに移動して、新しい値を入力することができます。
+他の Web アプリと同様に、Azure ポータルでこの Web アプリの停止、再開、または削除を行うことができます。実行中は、ホーム Web アドレスに移動して、新しい値を入力することができます。
 
 ## Batch Execution Service (BES) テンプレートの使用方法
 
@@ -125,4 +125,4 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -23,7 +23,7 @@
 - [Windows](../articles/virtual-machines/virtual-machines-windows-use-ssh-key.md)
 - [Linux/Mac](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)
 
-このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[プレビュー ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでもリソース マネージャー デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
+このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[Azure ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでもリソース マネージャー デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
 
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]Windows コンピューターが Azure で Linux VM と安全に通信するためにこのような種類のファイルを作成する方法については、「[Windows で SSH 鍵を使用する](virtual-machines-windows-use-ssh-key.md)」を参照してください。
 
@@ -33,7 +33,7 @@ Azure の基本的 ssh 設定には **ssh-rsa** の 2048 ビットの公開/秘�
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[プレビュー モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
+1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[Azure モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
 2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。 
 
 ## SSH で使用する鍵の作成
@@ -72,7 +72,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 	別の秘密鍵ファイルから .pem ファイルを作成する場合、`-key` 引数を変更します。
 
-> [AZURE.NOTE]従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
+> [AZURE.NOTE] 従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
 
 .pem ファイルを DER 形式でエンコードされた X509 証明書ファイルに変換するには。
 
@@ -296,4 +296,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

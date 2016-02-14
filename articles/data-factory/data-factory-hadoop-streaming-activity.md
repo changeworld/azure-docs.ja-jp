@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Hadoop ストリーミング アクティビティ
@@ -77,11 +77,11 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。例の "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
 6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
 7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
-8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
+8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure Storage を表す Azure Storage のリンクされたサービスを指定します。
 9. **arguments** プロパティには、ストリーミング ジョブの引数を指定します。
 10. **getDebugInfo** プロパティは、省略可能な要素です。Failure に設定されていると、エラー時にのみログがダウンロードされます。All に設定されていると、ログは実行状態に関係なく常にダウンロードされます。
 
-> [AZURE.NOTE]例に示すように、**outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定する必要があります。これは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。**inputs**プロパティにアクティビティ用の入力データセットを指定する必要はありません。
+> [AZURE.NOTE] 例に示すように、**outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定する必要があります。これは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。**inputs**プロパティにアクティビティ用の入力データセットを指定する必要はありません。
 
 	
 ## 例
@@ -89,7 +89,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 
 ### リンクされたサービス
 
-#### ストレージにリンクされたサービス
+#### Azure Storage のリンクされたサービス
 最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。次のコードをコピー/貼り付けする場合は、アカウント名とアカウント キーを、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。
 
 	{
@@ -192,4 +192,4 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 	    }
 	}
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

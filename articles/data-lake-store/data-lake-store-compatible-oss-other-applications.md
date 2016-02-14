@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Data Lake Store と互換性のあるビッグ データ アプリケーション | Azure" 
-   description="Azure Data Lake Storeで機能するオープン ソース アプリケーションの一覧" 
+   description="Azure Data Lake Store で機能するオープン ソース アプリケーションの一覧" 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="02/03/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Storeで機能するオープン ソースのビッグ データ アプリケーション
@@ -41,4 +41,4 @@
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

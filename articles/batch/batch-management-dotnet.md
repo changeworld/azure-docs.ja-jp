@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="11/10/2015"
-	ms.author="v-marsma"/>
+	ms.date="01/28/2016"
+	ms.author="marsma"/>
 
 # Azure Batch アカウントとクォータを Batch Management .NET で管理する
 
@@ -30,7 +30,7 @@
 - **アカウントのクォータを確認し**、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
 - Batch Management .NET、[Azure Active Directory][aad_about]、[Azure リソース マネージャー][resman_overview]を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
-> [AZURE.NOTE]この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.NOTE] この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch アカウントの作成と削除
 
@@ -52,7 +52,7 @@ AccountResource account = getResponse.Resource;
 await batchManagementClient.Accounts.DeleteAsync("MyResourceGroup", account.Name);
 ```
 
-> [AZURE.NOTE]Batch Management .NET ライブラリとその BatchManagementClient クラスを使用するアプリケーションでは、管理対象の Batch アカウントを所有するサブスクリプションに対する**サービス管理者**または**共同管理者**のアクセス権が必要です。詳細については、後述の「[Azure Active Directory](#aad)」セクション、および [AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
+> [AZURE.NOTE] Batch Management .NET ライブラリとその BatchManagementClient クラスを使用するアプリケーションでは、管理対象の Batch アカウントを所有するサブスクリプションに対する**サービス管理者**または**共同管理者**のアクセス権が必要です。詳細については、後述の「[Azure Active Directory](#aad)」セクション、および [AccountManagement][acct_mgmt_sample] コード サンプルを参照してください。
 
 ## アカウント キーの取得と再生成
 
@@ -71,7 +71,7 @@ BatchAccountRegenerateKeyResponse newKeys = await batchManagementClient.Accounts
 	new BatchAccountRegenerateKeyParameters() { KeyName = AccountKeyType.Primary });
 ```
 
-> [AZURE.TIP]管理アプリケーションのための効率化された接続ワークフローを作成できます。最初に、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得した後、Batch .NET ライブラリの [BatchSharedKeyCredentials][net_sharedkeycred] ([BatchClient][net_batch_client] を初期化するときに使用) を初期化するときにこのキーを使用します。
+> [AZURE.TIP] 管理アプリケーションのための効率化された接続ワークフローを作成できます。最初に、管理対象の Batch アカウントのアカウント キーを [ListKeysAsync][net_list_keys] で取得した後、Batch .NET ライブラリの [BatchSharedKeyCredentials][net_sharedkeycred] ([BatchClient][net_batch_client] を初期化するときに使用) を初期化するときにこのキーを使用します。
 
 ## Azure サブスクリプションと Batch アカウントのクォータの確認
 
@@ -119,7 +119,7 @@ Console.WriteLine("Pool quota: {0}", account.Properties.PoolQuota);
 Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.ActiveJobAndJobScheduleQuota);
 ```
 
-> [AZURE.IMPORTANT]Azure サブスクリプションおよびサービスには既定のクォータがありますが、[Azure ポータル][azure_portal]で要求を発行することによってこれらの制限の多くを増やすことができます。たとえば、Batch アカウントのクォータを増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.IMPORTANT] Azure サブスクリプションおよびサービスには既定のクォータがありますが、[Azure ポータル][azure_portal]で要求を発行することによってこれらの制限の多くを増やすことができます。たとえば、Batch アカウントのクォータを増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch Management .NET、Azure AD、リソース マネージャー
 
@@ -139,9 +139,17 @@ Batch Management .NET ライブラリで Batch アカウントを作成すると
 
 GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトで、Batch Management .NET ライブラリの動作を確認してください。このコンソール アプリケーションでは、[BatchManagementClient][net_mgmt_client] と [ResourceManagementClient][resman_client] の作成と使用を示しています。また、両方のクライアントで必要な Azure [Active Directory Authentication Library][aad_adal] (ADAL) の使用も示しています。
 
-> [AZURE.IMPORTANT]サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。「Azure Active Directory とアプリケーションの統合」の「[アプリケーションの追加][aad_integrate]」を参照し、その手順に従って独自のアカウントでサンプル アプリケーションを登録してください。
+サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「アプリケーションの追加」を参照し、その手順に従って独自のアカウントの既定のディレクトリでサンプル アプリケーションを登録してください。アプリケーションの種類には必ず「ネイティブ クライアント アプリケーション」を選択してください。「リダイレクト URI」には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。実エンドポイントにする必要はありません。
 
-サンプル アプリケーションでは、次の操作が示されています。
+アプリケーションを追加したら、ポータルのアプリケーションの設定で、*Windows Azure サービス管理 API* アプリケーションに「組織として Azure サービス管理にアクセスする」許可を委任します。
+
+![Azure ポータルのアプリケーション アクセス許可][2]
+
+上記のようにアプリケーションを追加したら、アプリケーションのリダイレクト URI とクライアント ID を利用し、[AccountManagment][acct_mgmt_sample] サンプル プロジェクトで `Program.cs` を更新します。アプリケーションの [構成] タブにこれらの値があります。
+
+![Azure ポータルのアプリケーション構成][3]
+
+[AccountManagment][acct_mgmt_sample] サンプル アプリケーションでは、次の操作が示されています。
 
 1. [ADAL][aad_adal] を使用して Azure AD からセキュリティ トークンを取得します。ユーザーがまだサインインしていない場合は、Azure 資格情報の指定を求められます。
 2. Azure AD から取得したセキュリティ トークンを使用して、[SubscriptionClient][resman_subclient] を作成し、Azure に対して、アカウントに関連付けられているサブスクリプションの一覧を照会します。複数見つかった場合はユーザーがいずれかを選択できます。
@@ -161,7 +169,7 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 
 新しく作成した Batch アカウントおよびリソース グループを削除する前に、[Azure ポータル][azure_portal]で両方を調べることができます。
 
-![Azure portal displaying the resource group and Batch account][1] <br /> Azure ポータルでの新しいリソース グループと Batch アカウントの表示
+![Azure portal displaying the resource group and Batch account][1] <br /> *Azure ポータルでの新しいリソース グループと Batch アカウントの表示*
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Azure Active Directory とは"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
@@ -189,5 +197,7 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 [resman_overview]: ../resource-group-overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
+[2]: ./media/batch-management-dotnet/portal-02.png
+[3]: ./media/batch-management-dotnet/portal-03.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

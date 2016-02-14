@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/27/2016"  
+	ms.date="02/02/2016"  
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
 #CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
@@ -40,13 +40,13 @@ Azure Active Directory、Azure Media Services、Azure Media Player、動的暗�
 	- [ライブ ストリーミングの場合](media-services-cenc-with-multidrm-access-control.md#what-about-live-streaming)
 	- [Azure Media Services の外部にあるライセンス サーバーの場合](media-services-cenc-with-multidrm-access-control.md#what-about-license-servers-outside-of-azure-media-services)
 	- [カスタム STS を使用する場合](media-services-cenc-with-multidrm-access-control.md#what-if-i-want-to-use-a-custom-sts)
-	- [テクニカル ノート](media-services-cenc-with-multidrm-access-control.md#tech-note)
 - [完成したシステムとテスト](media-services-cenc-with-multidrm-access-control.md#the-completed-system-and-test)
 	- [ユーザー ログイン](media-services-cenc-with-multidrm-access-control.md#user-login)
 	- [PlayReady に対する Encrypted Media Extensions の使用](media-services-cenc-with-multidrm-access-control.md#using-encrypted-media-extensipons-for-playready)
 	- [Widevine に対する EME の使用](media-services-cenc-with-multidrm-access-control.md#using-eme-for-widevine)
 	- [権利のないユーザー](media-services-cenc-with-multidrm-access-control.md#not-entitled-users)
 	- [カスタム セキュリティ トークン サービスの実行](media-services-cenc-with-multidrm-access-control.md#running-custom-secure-token-service)
+- [まとめ](media-services-cenc-with-multidrm-access-control.md#summary)
 
 ##はじめに
 
@@ -62,7 +62,7 @@ DRM には、マルチ DRM での CENC (共通暗号化) も含まれます。�
 1. 必要な暗号化資産のコピーが 1 つだけで済むので、暗号化資産の管理コストが減ります。
 1. ネイティブ DRM クライアントはネイティブ プラットフォームでは通常無料なので、DRM クライアント ライセンスのコストがかかりません。
 
-Microsoft は、他の主要企業と共に DASH および CENC を積極的にプロモートしてきました。Microsoft Azure Media Services は、DASH と CENC をサポートしています。最近の発表については、Mingfei のブログ「[Announcing Google Widevine license delivery services public preview in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービス パブリック プレビューのご案内)](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)」および「[Azure Media Services adds Google Widevine packaging for delivering multi-DRM stream (Azure Media Services によるマルチ DRM ストリーム配信用 Google Widevine パッケージの追加)](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)」をご覧ください。
+Microsoft は、他の主要企業と共に DASH および CENC を積極的にプロモートしてきました。Microsoft Azure Media Services は、DASH と CENC をサポートしています。最近の発表については、Mingfei のブログ「[Announcing Google Widevine license delivery services in Azure Media Services (Azure Media Services での Google Widevine ライセンス配信サービスのご案内)](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)」および「[Azure Media Services adds Google Widevine packaging for delivering multi-DRM stream (Azure Media Services によるマルチ DRM ストリーム配信用 Google Widevine パッケージの追加)](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)」を参照してください。
 
 ### この記事の概要
 
@@ -88,7 +88,7 @@ Microsoft は、他の主要企業と共に DASH および CENC を積極的に�
 **iOS (iPhone、iPad)、OS X クライアント、Apple TV**|FairPlay|Safari 8+/EME|HLS
 **プラグイン: Adobe Primetime**|Primetime Access|ブラウザー プラグイン|HDS、HLS
 
-各 DRM の現在のデプロイ状態を考慮すると、サービスでは通常 2 ～ 3 種類の DRM を実装し、すべての種類のエンドポイントに最適な方法で対応できるようにする必要があります。
+各 DRM の現在のデプロイメント状態を考慮すると、サービスでは通常 2 ～ 3 種類の DRM を実装し、すべての種類のエンドポイントに最適な方法で対応できるようにする必要があります。
 
 さまざまなクライアントで一定レベルのユーザー エクスペリエンスを実現するには、サービス ロジックの複雑さとクライアント側での複雑さの間にトレードオフが発生します。
 
@@ -406,7 +406,7 @@ JWT トークンを提供するためにユーザーがカスタム STS (Secure 
 1.	対称キー: JWT トークンの生成と検証の両方に同じキーが使用されます。
 2.	非対称キー: X509 証明書の公開/秘密キー ペアの秘密キーが JWT トークンの暗号化/生成に使用され、公開キーがトークンの検証に使用されます。
 
-###テクニカル ノート
+####テクニカル ノート
 
 開発プラットフォームとして .NET Framework/C# を使用する場合、非対称セキュリティ キーに使用される X509 証明書のキーの長さは 2048 ビット以上でなければなりません。これは、.NET Framework の System.IdentityModel.Tokens.X509AsymmetricSecurityKey クラスの要件です。そうでない場合は、次の例外がスローされます。
 
@@ -520,6 +520,6 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 ###謝辞 
 
-William Zhang、Mingfei Yan、Kilroy Hughes、Roland Le Franc、Julia Kornich
+William Zhang、Mingfei Yan、Roland Le Franc、Kilroy Hughes、Julia Kornich
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,14 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使用した Azure SQL との間でのデータの移動
+# Azure Data Factory を使用した Azure SQL Database との間でのデータの移動
 
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure SQL と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
-## サンプル: Azure SQL から Azure BLOB にデータをコピーする
+次のサンプルは、Azure SQL Database と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+
+
+## サンプル: Azure SQL Database から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
 
@@ -200,7 +203,7 @@
 	   }
 	}
 
-> [AZURE.NOTE]上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。
+> [AZURE.NOTE] 上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。
 >  
 > または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 >  
@@ -210,7 +213,7 @@
 SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
 
 
-## サンプル: Azure BLOB から Azure SQL にデータをコピーする
+## サンプル: Azure BLOB から Azure SQL Database にデータをコピーする
 
 下のサンプルで確認できる要素:
 
@@ -418,7 +421,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
-> [AZURE.NOTE]コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
+> [AZURE.NOTE] コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
@@ -504,7 +507,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-### SQL Server と Azure SQL の型のマッピング
+### SQL Server と Azure SQL Database の型のマッピング
 
 「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
@@ -519,29 +522,29 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
-| ビット | Boolean |
+| bit | Boolean |
 | char | String、Char |
 | date | DateTime |
 | Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| 小数点 | 小数点 |
+| Decimal | Decimal |
 | FILESTREAM 属性 (varbinary(max)) | Byte |
 | Float | Double |
 | image | Byte | 
 | int | Int32 | 
-| money | 小数点 |
+| money | Decimal |
 | nchar | String、Char |
 | ntext | String、Char |
-| 数値 | 小数点 |
+| numeric | Decimal |
 | nvarchar | String、Char |
 | real | Single |
 | rowversion | Byte |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | 小数点 | 
+| smallmoney | Decimal | 
 | sql\_variant | Object * |
-| テキスト | String、Char |
+| text | String、Char |
 | time | TimeSpan |
 | timestamp | Byte |
 | tinyint | Byte |
@@ -560,4 +563,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 	 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

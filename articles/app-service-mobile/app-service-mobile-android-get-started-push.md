@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="02/03/2016"
 	ms.author="yuaxu"/>
 
 # プッシュ通知を Android アプリに追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;
 
 ## 概要
 このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
@@ -31,7 +29,7 @@
 
 * 確認済みの電子メール アドレスがある [Google アカウント](http://go.microsoft.com/fwlink/p/?LinkId=268302)
 * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) (Node.js バックエンド プロジェクトには不要)
-* [クイック スタート チュートリアル](../app-service-mobile-android-get-started.md)を完了していること。
+* [クイック スタート チュートリアル](app-service-mobile-android-get-started.md)を完了していること。
 
 ##<a name="create-hub"></a>通知ハブを作成する
 
@@ -80,4 +78,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

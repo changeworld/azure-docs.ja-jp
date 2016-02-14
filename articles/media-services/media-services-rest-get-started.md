@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+	ms.date="01/28/2016" 
 	ms.author="juliako"/>
 
 #REST API を使用したオンデマンド コンテンツ配信の概要
@@ -22,7 +22,8 @@
 
 
 >[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 
@@ -85,14 +86,15 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 	>[AZURE.NOTE]
 	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。その新しい URI に再度コールする必要があります。
 	> 
-	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。3. 新しい URL に後続の API 呼び出しを投稿します。 
+	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
+3. 新しい URL に後続の API 呼び出しを投稿します。 
 	
-		たとえば、接続しようとした後に次のようなメッセージが表示されます。
+	たとえば、接続しようとした後に次のようなメッセージが表示されます。
 		
-			HTTP/1.1 301 Moved Permanently
-			Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
+		HTTP/1.1 301 Moved Permanently
+		Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-		この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
+	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
 ###アクセス トークンの取得
 
@@ -405,11 +407,11 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-- 特定の資産に関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
+- 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
 - すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。	
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
-次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケータ―の場合は "１"、オンデマンド配信元ロケーターの場合は "２")。返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
+次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケーターの場合は "1"、オンデマンド配信元ロケーターの場合は "2")。返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
 	
 **HTTP 要求**
 	
@@ -671,17 +673,17 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
 - コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 
 
-次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Azure Media Encoder** を使用して一連のアダプティブ ビットレート mp4 にトランスコードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
+次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Media Encoder Standard ** を使用して一連のアダプティブ ビットレート mp4 にトランスコードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
 
 ### メディア プロセッサを取得する
 
-Media Services では、メディア プロセッサは、メディア コンテンツのエンコード、形式変換、暗号化、または復号化などの特定の処理タスクを扱うコンポーネントです。このチュートリアルで示したエンコード タスクでは、Azure Media Encoder を使用します。
+Media Services では、メディア プロセッサは、メディア コンテンツのエンコード、形式変換、暗号化、または復号化などの特定の処理タスクを扱うコンポーネントです。このチュートリアルで示したエンコード タスクでは、Media Encoder Standard を使用します。
 
 次のコードでは、エンコーダーの Id を要求します。
 
 **HTTP 要求**
 
-	GET https://wamsbayclus001rest-hs.cloudapp.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20Encoder' HTTP/1.1
+	GET https://wamsbayclus001rest-hs.cloudapp.net/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
@@ -710,12 +712,12 @@ Media Services では、メディア プロセッサは、メディア コンテ
 	   "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#MediaProcessors",
 	   "value":[  
 	      {  
-	         "Id":"nb:mpid:UUID:1b1da727-93ae-4e46-a8a1-268828765609",
-	         "Description":"Azure Media Encoder",
-	         "Name":"Azure Media Encoder",
+	         "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+	         "Description":"Media Encoder Standard",
+	         "Name":"Media Encoder Standard",
 	         "Sku":"",
 	         "Vendor":"Microsoft",
-	         "Version":"4.4"
+	         "Version":"1.1"
 	      }
 	   ]
 	}
@@ -724,7 +726,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブとそれに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。Media Services SDK はバッチ処理を使用します。ただし、このトピックのコード例では、読みやすくするためにタスクをインラインで定義します。バッチ処理の詳細については、[Open Data Protocol (OData) のバッチ処理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。次のドキュメント セクションには、Azure のメディア プロセッサがサポートしているすべての[タスク プリセット](http://msdn.microsoft.com/library/azure/dn619392.aspx)の一覧が含まれています。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしているすべての[タスク プリセット](https://msdn.microsoft.com/ja-JP/library/mt269960)の一覧が含まれています。
 
 **HTTP 要求**
 	
@@ -751,7 +753,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 	   "Tasks":[  
 	      {  
 	         "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
-	         "MediaProcessorId":"nb:mpid:UUID:1b1da727-93ae-4e46-a8a1-268828765609",
+	         "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
 	         "TaskBody":"<?xml version="1.0" encoding="utf-8"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset>
 				<outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
 	      }
@@ -904,7 +906,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 
 成功した場合、メッセージ本文なしで応答コード 204 が返されます。
 
->[AZURE.NOTE] ジョブ id (通常は nb:jid:UUID: somevalue)は、CancelJob へのパラメーターとして渡すときは URL エンコードする必要があります。
+>[AZURE.NOTE] ジョブ id (通常は nb:jid:UUID: somevalue) は、CancelJob へのパラメーターとして渡すときは URL エンコードする必要があります。
 
 
 ### 出力資産を取得する 
@@ -983,7 +985,7 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 	{blob container name}/{asset name}/{file name}/{SAS signature}
 
-このセクションでは、資産を"発行"するために必要な次のタスクを実行する方法を示します。
+このセクションでは、資産を "発行" するために必要な次のタスクを実行する方法を示します。
 
 - 読み取りアクセス許可を持つ AccessPolicy を作成する 
 - コンテンツをダウンロードするための SAS URL を作成する 
@@ -1208,4 +1210,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 <!-- URLs. -->
   [Azure クラシック ポータル]: http://manage.windowsazure.com/
 
-<!-----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

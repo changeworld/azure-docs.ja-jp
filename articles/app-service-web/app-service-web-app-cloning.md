@@ -35,7 +35,7 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 
 新しい App Service プランを作成するには、次の例のように New-AzureRmAppServicePlan コマンドを使用します。
 
-	New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan
+	New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
 
 New-AzureRmWebApp コマンドを使って米国中北部リージョンに新しい Web アプリを作成し、既存の Premium レベルの App Service プランに関連付けることができます。さらに、ソース Web アプリと同じリソース グループを使うか、新しいリソース グループを定義できます。そのコマンドを次に示します。
 
@@ -77,7 +77,7 @@ ASE の名前と、ASE が属するリソース グループの名前がわか�
 
 ## アプリの複製時における Traffic Manager の構成 ##
 
-既存の Web アプリを複製して新しい Web アプリを作成しているときに、両方の Web アプリを新しい Traffic Manager プロファイルと既存の Traffic Manager プロファイルのどちらにでも関連付けることができます。サポートされるのは ARM バージョンの Traffic Manager のみであることに注意してください。
+複数リージョンの Web アプリを作成し、トラフィックをそのすべての Web アプリにルーティングするように Azure Traffic Manager を構成することは、顧客のアプリの高可用性を確保するための重要なシナリオです。既存の Web アプリを複製する際に、両方の Web アプリを新しい Traffic Manager プロファイルと既存の Traffic Manager プロファイルのいずれかに関連付けることができます。サポートされているのは ARM バージョンの Traffic Manager のみであることに注意してください。
 
 ### アプリの複製時における新しい Traffic Manager プロファイルの作成 ###
 
@@ -114,4 +114,4 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

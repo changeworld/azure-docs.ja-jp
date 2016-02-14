@@ -3,7 +3,7 @@
 	description="航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Analytics によるソリューション テンプレートに関する技術ガイドです。"
 	services="cortana-analytics"
 	documentationCenter=""
-	authors="garyericson"
+	authors="fboylu"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -13,14 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/20/2016"
-	ms.author="garye" />
+	ms.date="01/29/2016"
+	ms.author="fboylu" />
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Analytics Solution Template に関する技術ガイド
 
+## **謝辞**
+この記事はマイクロソフトのデータ サイエンティストである Yan Zhang、Gauher Shaheen、Fidan Boylu Uz とソフトウェア エンジニアの Dan Grecoe によって記述されました。
+
 ## **概要**
 
-ソリューション テンプレートは、Cortana Analytics Suite に基づいて、エンドツー エンドのデモを構築するプロセスを促進するために設計されています。デプロイされたテンプレートは、必要な Cortana Analytics コンポーネントのサブスクリプションをプロビジョニングし、それらの関係を構築します。さらに、ソリューション テンプレートのデプロイ後に、ローカル コンピューターにダウンロードされ、インストールされたデータ シミュレーション アプリケーションから生成されたサンプル データをデータ パイプラインに準備します。シミュレーターから生成されたデータはデータ パイプラインに取り込まれ、Machine Learning の予測の生成が開始され、それらを Power BI ダッシュボードに表示することができます。デプロイメント プロセスでは、ソリューション資格情報を設定するためのいくつかの手順を進みます。デプロイメント時に指定したソリューション名、ユーザー名、パスワードなどの資格情報を記録しておくようにしてください。
+ソリューション テンプレートは、Cortana Analytics Suite に基づいて、エンドツー エンドのデモを構築するプロセスを促進するために設計されています。デプロイされたテンプレートは、必要な Cortana Analytics コンポーネントのサブスクリプションをプロビジョニングし、それらの関係を構築します。また、ソリューション テンプレートのデプロイ後にローカル コンピューターにダウンロードし、インストールするデータ ジェネレーター アプリケーションから生成されたサンプル データをデータ パイプラインに入力します。ジェネレーターから生成されたデータがデータ パイプラインに入力され、Machine Learning 予測の生成が開始されます。生成された Machine Learning 予測は Power BI ダッシュボードで視覚化されます。デプロイメント プロセスでは、ソリューション資格情報を設定するためのいくつかの手順を進みます。デプロイメント時に指定したソリューション名、ユーザー名、パスワードなどの資格情報を記録しておくようにしてください。
 
 このドキュメントの目的は、このソリューション テンプレートの一部として、サブスクリプションでプロビジョニングされる参照アーキテクチャとさまざまなコンポーネントについて説明することです。さらに、独自のデータから洞察と予測を表示できるように、サンプル データを実際のデータと置き換える方法についても説明します。また、独自のデータによってソリューションをカスタマイズする必要がある場合に、変更する必要があると考えられるソリューション テンプレートの部分についても説明します。このソリューション テンプレートの Power BI ダッシュボードを構築する方法については、最後に説明します。
 
@@ -30,7 +33,7 @@
 
 ![](media/cortana-analytics-technical-guide-predictive-maintenance\predictive-maintenance-architecture.png)
 
-ソリューションをデプロイすると、Cortana Analytics Suite 内のさまざまな Azure サービス (*つまり*、 Event Hub、Stream Analytics、HDInsight、Data Factory、Machine Learning *など*) がアクティブ化されます。上のアーキテクチャ図は、エンド ツー エンドの航空宇宙ソリューション テンプレートの予測メンテナンスの構築方法を大まかに示しています。これらのサービスを調査するには、ソリューションのデプロイメントによって作成されたソリューション テンプレート図で、それらをクリックしてください。[図のフルサイズ バージョン](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)をダウンロードできます。
+ソリューションをデプロイすると、Cortana Analytics Suite 内のさまざまな Azure サービス (*つまり*、 Event Hub、Stream Analytics、HDInsight、Data Factory、Machine Learning *など*) がアクティブ化されます。上のアーキテクチャ図は、エンド ツー エンドの航空宇宙ソリューション テンプレートの予測メンテナンスの構築方法を大まかに示しています。これらのサービスは Azure ポータルで調査できます。その場合、ソリューションのデプロイメントで作成されたソリューション テンプレート図でサービスをクリックします。HDInsight は例外となります。このサービスは、関連パイプライン アクティビティを実行し、後で削除するときにオンデマンドでプロビジョニングされます。[図のフルサイズ バージョン](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)をダウンロードできます。
 
 次のセクションでは、各部分について説明します。
 
@@ -38,7 +41,7 @@
 
 ### 合成データソース
 
-このテンプレートでは、デプロイメントの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。このアプリケーションをダウンロードして、インストールする手順については、ソリューション テンプレート図の予測メンテナンス データ シミュレーターと呼ばれる最初のノードを選択すると、プロパティ バーに表示されます。このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) を使用して、[NASA データ リポジトリ](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)で公開されているデータから構成または派生したものです。
+このテンプレートでは、デプロイメントの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。このアプリケーションをダウンロードして、インストールする手順については、ソリューション テンプレート図の予測メンテナンス データ ジェネレーターと呼ばれる最初のノードを選択すると、プロパティ バーに表示されます。このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) を使用して、[NASA データ リポジトリ](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)で公開されているデータから構成または派生したものです。
 
 イベント生成アプリケーションは、コンピューターで実行中の場合にのみ、Azure Event Hub にデータを入力します。
 
@@ -148,7 +151,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 #### *CopyScoredResultPipeline*
 
-この[パイプライン](../data-factory/data-factory-create-pipelines.md)には 1 つのアクティビティが含まれます。それは、[Azure Machine Learning](#azure-machine-learning) の実験の結果を ***MLScoringPipeline*** から、ソリューション テンプレートのインストールの一部としてプロビジョニングされた [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に移動する [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティです。
+この[パイプライン](../data-factory/data-factory-create-pipelines.md)には 1 つのアクティビティが含まれます。***MLScoringPipeline*** からソリューション テンプレート インストールの一部としてプロビジョニングされた [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に [Azure Machine Learning](#azure-machine-learning) 実験の結果を移動させる[コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティです。
 
 ### Azure Machine Learning
 
@@ -202,9 +205,9 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 	    ![](media\cortana-analytics-technical-guide-predictive-maintenance\edit-queries.png)
 
-	-	2 つのテーブル **[RemainingUsefulLife]** と **[PMResult]** があります。最初のテーブルを選択し、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横の ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-query-settings.png) をクリックします。表示される警告メッセージは無視します。
+	-	**RemainingUsefulLife** と **PMResult** という 2 つのテーブルが表示されます。最初のテーブルを選択し、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横の ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-query-settings.png) をクリックします。表示される警告メッセージは無視します。
 
-    -   ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、**[OK]** をクリックします。サーバー名の場合、ポート 1433 (**YourSoutionName.database.windows.net 1433**) を指定していることを確認してください。画面に表示される警告メッセージは無視します。
+    -   ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、**[OK]** をクリックします。サーバー名の場合、ポート 1433 (**YourSoutionName.database.windows.net 1433**) を指定していることを確認してください。[データベース] フィールドは **pmaintenancedb** のままにします。画面に表示される警告メッセージは無視します。
 
     -   次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション (**[Windows]** と **[データベース]**) が表示されます。**[データベース]** をクリックし、**[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL Database を作成したときに入力したユーザー名とパスワードです) を入力します。***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。次に **[接続]** をクリックします。
 
@@ -218,9 +221,9 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
     -   新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュ ボード]** の横の**[+]** 記号をクリックします。この新しいダッシュボードの名前として、「Predictive Maintenance Demo」と入力します。
 
-    -   レポートが開いたら、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png) をクリックして、すべての視覚エフェクトをダッシュボードにピン留めします。詳細な手順については、「[レポートから Power BI ダッシュボードにタイルをピン留め](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)」を参照してください。ダッシュボード ページに移動し、視覚エフェクトのサイズと場所を調整し、タイルを編集します。タイルを編集する方法の詳細については、「[タイルの編集 -- サイズ変更、移動、名前の変更、ピン留め、削除、ハイパーリンクの追加](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)」を参照してください。いくつかのコールド パス視覚エフェクトがピン留めされたサンプル ダッシュボードを次に示します。データ シミュレーターの実行時間に応じて、視覚エフェクト上の数値は異なる可能性があります。<br/>![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png)<br/>
+    -   レポートが開いたら、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png) をクリックして、すべての視覚エフェクトをダッシュボードにピン留めします。詳細な手順については、「[レポートから Power BI ダッシュボードにタイルをピン留め](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)」を参照してください。ダッシュボード ページに移動し、視覚エフェクトのサイズと場所を調整し、タイルを編集します。タイルを編集する方法の詳細については、「[タイルの編集 -- サイズ変更、移動、名前の変更、ピン留め、削除、ハイパーリンクの追加](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)」を参照してください。いくつかのコールド パス視覚エフェクトがピン留めされたサンプル ダッシュボードを次に示します。データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。 <br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png) <br/>
     -   データの更新をスケジュールするには、**[PredictiveMaintenanceAerospace]** データセットの上にマウス ポインターを移動し、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-elipsis.png) をクリックし、**[更新のスケジュール設定]** を選択します。<br/> **注:** 警告メッセージが表示された場合は、**[資格情報の編集]** をクリックし、データベース資格情報が、手順 1 で説明したものと同じかどうかを確認します。<br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\schedule-refresh.png) <br/>
-    -   **[更新のスケジュール設定]** セクションを展開します。[データを最新の状態に保つ] をオンにします。<br/>
+    -   **[更新のスケジュール設定]** セクションを展開します。[データを最新の状態に保つ] をオンにします。 <br/>
     -   必要に応じて更新をスケジュールします。詳細については、「[Power BI でのデータの更新](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)」を参照してください。
 
 ### ホット パス ダッシュボードの設定
@@ -230,16 +233,19 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 1.  Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
     -  Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、「[Azure Stream Analytics & Power BI: ストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)」の手順に従う必要があります。
-	- [Azure ポータル](https://manage.windowsazure.com)で、Stream Analytics ジョブ **maintenancesa02asapbi** を見つけます。
-	- ASA クエリの 3 つの出力 **aircraftmonitor**、**aircraftalert**、および **flightsbyhour** を設定します。**出力の別名**、**データセット名**、および**テーブル名**が、クエリと同じ (**aircraftmonitor**、**aircraftalert**、および **flightsbyhour**) であることを確認します。3 つすべての出力テーブルを追加し、Stream Analytics ジョブを開始すると、確認メッセージ (*例:* "ジョブ maintenancesa02asapbi を開始しています") が表示されます。
+	- ASA クエリには 3 つの出力があります。**aircraftmonitor**、**aircraftalert**、**flightsbyhour** です。[クエリ] タブをクリックすると、クエリを表示できます。これらの各テーブルに合わせ、ASA に出力を追加する必要があります。最初の出力を追加するとき (*例*: **aircraftmonitor**)、**出力の別名**、**データセット名**、**テーブル名**が同じ (**aircraftmonitor**) であることを確認します。この手順を繰り返し、**aircraftalert** と **flightsbyhour** の出力を追加します。3 つすべての出力テーブルを追加し、ASA ジョブを開始すると、確認メッセージ (*例:* "ジョブ maintenancesa02asapbi を開始しています") が表示されます。
 
 2. [Power BI オンライン](http://www.powerbi.com)にログインします。
 
-    -   左側のパネルの [個人用ワークスペース] の [データセット] セクションに、ASA ジョブの Power BI 出力設定で定義した ***データセット***名 (**aircraftmonitor**、**aircraftalert**、および **flightsbyhour**) が表示されます。
-
+    -   左側のパネルの [個人用ワークスペース] の [データセット] セクションに、***データセット***名 (**aircraftmonitor**、**aircraftalert**、**flightsbyhour**) が表示されます。これは前の手順で Azure Stream Analytics からプッシュしたストリーミング データです。データセット **flightsbyhour** は他の 2 つのデータセットと同じタイミングで表示されるとは限りません。これは背後にある SQL クエリの性質に起因します。ただし、1 時間後には表示されるはずです。
     -   ***[視覚エフェクト]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 
-3. "Fleet View of Sensor 11 vs.Threshold 48.26" タイルを作成します。
+3. Power BI にデータが送信されていれば、ストリーミング データの視覚化を開始できます。いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。適切なデータセットに基づいて他のダッシュボード タイルを作成できます。データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
+
+
+    ![](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+
+4. 上記のタイルを作成する手順を以下に示します。"Fleet View of Sensor 11 vs.Threshold 48.26" タイルを作成します。
 
     -   左側のパネルの [データセット] セクションで、データセット **aircraftmonitor** をクリックします。
 
@@ -255,9 +261,8 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
     -   ダッシュボードのこのタイルにマウス ポインターを置き、右上隅の [編集] アイコンをクリックし、そのタイトルを「Fleet View of Sensor 11 vs.Threshold 48.26」に変更し、サブタイトルを「Average across fleet over time」に変更します。
 
-4.  適切なデータセットに基づいて他のダッシュボード タイルを作成します。いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。データ シミュレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
-
-    ![](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+## **ソリューションを削除する方法**
+データ ジェネレーターはコストを上げるので、ソリューションを活発に使用していないときはデータ ジェネレーターを停止してください。使用していない場合、ソリューションを削除してください。ソリューションを削除すると、ソリューションのデプロイ時にサブスクリプションにプロビジョニングされたすべてのコンポーネントが削除されます。ソリューションを削除するには、ソリューション テンプレートの左パネルでソリューション名を右クリックし、[削除] をクリックします。
 
 ## **コスト見積もりツール**
 
@@ -267,4 +272,4 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="NA" 
     ms.workload="data-services" 
-    ms.date="10/28/2015" 
+    ms.date="02/01/2016" 
     ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
@@ -88,7 +88,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
         "softDeleteMarkerValue" : "the value that identifies a document as deleted" 
     }
 
-> [AZURE.NOTE]カスタムのプロジェクションを使用している場合は、SELECT 句にプロパティを含める必要があります。
+> [AZURE.NOTE] カスタムのプロジェクションを使用している場合は、SELECT 句にプロパティを含める必要があります。
 
 ###<a id="CreateDataSourceExample"></a>要求本文の例
 
@@ -121,7 +121,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2: インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure クラシック ポータル UI](../search/search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search/search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -270,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、「[Search サービス ページ](https://azure.microsoft.com/services/search/)」を参照してください。
  
 
-<!---HONumber=AcomDC_0107_2016----->
+<!---HONumber=AcomDC_0204_2016-->

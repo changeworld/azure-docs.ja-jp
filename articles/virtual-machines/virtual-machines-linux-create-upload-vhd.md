@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux VHD の作成とアップロード | Microsoft Azure"
-	description="Linux オペレーティング システムを格納したクラシック デプロイ モデルを使用して Azure 仮想ハード ディスク (VHD) を作成してアップロードします。"
+	description="Linux オペレーティング システムを格納したクラシック デプロイメント モデルを使用して Azure 仮想ハード ディスク (VHD) を作成してアップロードします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -30,7 +30,7 @@ Azure 仮想マシンは、作成時に選択したイメージに基づいて�
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
-**重要**: Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを、[Linux on Azure-Endorsed Distributions (Azure で承認されているディストリビューション Linux)](virtual-machines-../linux-endorsed-distributions.md) の「サポートされているバージョン」で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+**重要**: Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを、[Linux on Azure-Endorsed Distributions (Azure で承認されているディストリビューション Linux)](virtual-machines-linux-endorsed-distributions.md) の「サポートされているバージョン」で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 
 ## 前提条件
@@ -42,16 +42,16 @@ Azure 仮想マシンは、作成時に選択したイメージに基づいて�
 
 	**重要**: 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください。Linux ディストリビューションの総目録については、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-vhd-generic.md)」を参照してください。
+	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distributions.md)」を参照してください。Linux ディストリビューションの総目録については、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-vhd-generic.md)」を参照してください。
 
-- **Azure コマンド ライン インターフェイス** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Azure コマンド ライン インターフェイス](../virtual-machines-command-line-tools.md)を使用して VHD をアップロードします。
+- **Azure コマンド ライン インターフェイス** - Linux オペレーティング システムを使用してイメージを作成する場合は、[Azure コマンド ライン インターフェイス](virtual-machines-command-line-tools.md)を使用して VHD をアップロードします。
 
 - **Azure Powershell ツール** - `Add-AzureVhd` コマンドレットを使用して、VHD をアップロードすることもできます。Azure Powershell コマンドレットをダウンロードするには、「[Azure Downloads (Azure のダウンロード)](https://azure.microsoft.com/downloads/)」を参照してください。詳細については、[Add-AzureVhd に関するページ](https://msdn.microsoft.com/library/azure/dn495173.aspx)を参照してください。
 
 <a id="prepimage"> </a>
 ## 手順 1. アップロードするイメージを準備する
 
-Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
+Azure は、さまざまな Linux ディストリビューションをサポートしています (「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distributions.md)」を参照してください)。次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
 
 - **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
 - **[Debian Linux](virtual-machines-linux-create-upload-vhd-debian.md)**
@@ -73,7 +73,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 ### Azure CLI を使用する場合
 
-最新の Azure CLI は既定でリソース マネージャーのデプロイ モデルになっているので、必ず次のコマンドを使用してクラシック デプロイ モデルにしてください。
+最新の Azure CLI は既定でリソース マネージャーのデプロイメント モデルになっているので、必ず次のコマンドを使用してクラシック デプロイメント モデルにしてください。
 
 		azure config mode asm  
 
@@ -147,7 +147,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 <a id="upload"> </a>
 ## 手順 3. Azure にイメージをアップロードする
 
-VHD ファイルをアップロードするストレージ アカウントが必要になります。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage-create-storage-account.md)」を参照してください。
+VHD ファイルをアップロードするストレージ アカウントが必要になります。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md)」を参照してください。
 
 .vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は使用する予定のストレージ アカウントの URL であり、**YourImagesFolder** は Blob Storage 内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために [Azure ポータル](http://portal.azure.com)または [Azure クラシック ポータル](http://manage.windowsazure.com)に表示されるラベルです。**PathToVHDFile** は、コンピューター上の .vhd ファイルの完全なパスとファイル名です。
 
@@ -174,4 +174,4 @@ Azure CLI でイメージをアップロードするには、次のコマンド�
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

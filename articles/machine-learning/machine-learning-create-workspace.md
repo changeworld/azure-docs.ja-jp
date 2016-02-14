@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="02/03/2016" 
 	ms.author="garye;bradsev"/>
 
 
@@ -23,13 +23,13 @@
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-Azure Machine Learning Studio を使用するには、機械学習ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+Azure Machine Learning Studio を使用するには、Machine Learning ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## ワークスペースを作成するには
 
-1. Microsoft Azure アカウントにサインインします。
+1. [Microsoft Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 2. Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。
 
     ![Machine Learning サービス][1]
@@ -41,7 +41,7 @@ Azure Machine Learning Studio を使用するには、機械学習ワークス�
 
 5. **[ワークスペース名]** にワークスペースを入力し、**[ワークスペースの所有者]** を指定します。ワークスペースの所有者は有効な Microsoft アカウントである必要があります (例: name@outlook.com)。
 
-    > [AZURE.NOTE]後からワークスペースに招待することで、作業中の実験を自分以外のユーザーと共有することができます。これは、Machine Learning Studio の **[設定]** ページから実行でき、必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+    > [AZURE.NOTE] 後からワークスペースに招待することで、作業中の実験を自分以外のユーザーと共有することができます。これは、Machine Learning Studio の **[設定]** ページから実行でき、必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
 
 6. **[場所]** に Azure の場所を指定し、**[ストレージ アカウント]** に既存の Azure のストレージ アカウントを入力するか、**[新しいストレージ アカウントの作成]** を選択して新たに作成します。
 7. **[ML ワークスペースを作成]** をクリックします。
@@ -67,4 +67,4 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

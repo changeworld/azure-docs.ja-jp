@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="02/01/2016"
 	ms.author="curtand"/>
 
 # Azure AD の使用開始方法
@@ -28,7 +28,7 @@
 > [AZURE.NOTE] Azure AD は誰でも無料で使用できます。今すぐ Azure 評価版サブスクリプションにサインアップして、ディレクトリを使用できます。購入するかどうかにかかわらず、ディレクトリはお客様のものです。[今すぐ Azure AD をお試しください](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ##組織のアクセスのセキュリティ保護
-Multi-Factor Authentication を使用してクラウド内の組織の ID データを保護し、ローカルとリモートのアクセスの安全性を高めます。[Multi-Factor Authentication の詳細を確認してください。](../multi-factor-authentication.md)
+Multi-Factor Authentication を使用してクラウド内の組織の ID データを保護し、ローカルとリモートのアクセスの安全性を高めます。[Multi-Factor Authentication の詳細を確認してください。](../multi-factor-authentication/multi-factor-authentication.md)
 
 ##パスワードの変更とリセット
 ユーザーが場所やデバイスを限定せずに Active Directory または Azure Active Directory のパスワードを変更またはリセットできるようにすると、コストは削減され、ヘルプデスクへの問い合わせは減少します。管理者は、パスワードおよび通知のポリシーを管理することができ、発生した時点でパスワードのリセット操作の詳細な監査アクティビティを確認できます。[Azure Active Directory を使用したパスワードの管理の詳細を確認してください。](active-directory-manage-passwords.md)
@@ -44,4 +44,4 @@ Azure AD には、管理者用に多くのレポートがあります。Azure AD
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

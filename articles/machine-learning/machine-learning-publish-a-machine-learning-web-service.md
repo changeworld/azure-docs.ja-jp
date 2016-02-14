@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="02/01/2016"
 	ms.author="garye"/>
 
 # Azure Machine Learning Web サービスをデプロイする
@@ -50,7 +50,7 @@ Web サービスをデプロイすると、次のことが可能になります�
 
 - [Azure Machine Learning Studio での簡単な実験の作成](machine-learning-create-experiment.md)
 - [Azure Machine Learning を使用した予測ソリューションの開発](machine-learning-walkthrough-develop-predictive-solution.md)
-- [Azure Machine Learning Studio への学習データのインポート](machine-learning-import-data.md)
+- [Azure Machine Learning Studio への学習データのインポート](machine-learning-data-science-import-data.md)
 - [Azure Machine Learning Studio での繰り返し学習の管理](machine-learning-manage-experiment-iterations.md)
 
 ## トレーニング実験を予測実験に変換する
@@ -96,8 +96,7 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 
 Azure クラシック ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、**[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスのデプロイ時に作成される既定のエンドポイントに加え、Web サービスの 2 つ目のエンドポイントを追加することもできます。
 
-詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
-<!-- When this article gets published, fix the link and uncomment
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。<!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
 
@@ -108,8 +107,8 @@ For more information on how to manage Azure Machine Learning web service endpoin
 
 Web サービスを更新するには、Web サービスのデプロイに使用した元の予測実験を開き、**[名前を付けて保存]** をクリックして編集可能なコピーを作成します。必要な変更を加えて **[WEB サービスのデプロイ]** をクリックします。この実験は以前にデプロイしているため、Machine Learning Studio で既存のサービスを上書きするかどうかの確認を求められます。**[はい]** をクリックすると、既存の Web サービスが停止され、新しい予測実験が代わりにデプロイされます。
 
-> [AZURE.NOTE]たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
+> [AZURE.NOTE] たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
 
 Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

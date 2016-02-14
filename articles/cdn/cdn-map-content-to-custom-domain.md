@@ -25,8 +25,8 @@
 	CNAME レコードは、ソース ドメインを目的のドメインにマッピングする DNS 機能です。この場合、ソース ドメインは、カスタム ドメインおよびサブドメインです (サブドメインは常に必要です)。宛先ドメインは、使用する CDN エンドポイントです。
 
 	ただし、カスタム ドメインを CDN エンドポイントにマッピングする処理によって、Azure ポータルでのドメインの登録中にドメインが短時間ダウンする場合があります。
-     
-2. [Add an intermediate registration step with **cdnverify** (cdnverify を使用して中間登録ステップを追加する)]((#register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain)
+	 
+2. [**cdnverify** で中間登録ステップを追加する](#register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain)
 
 	カスタム ドメインが現在、ダウンタイムが発生しないことを要求するサービス レベル アグリーメント (SLA) のアプリケーションをサポートしている場合は、DNS マッピングの実行中にユーザーがドメインにアクセスできるように、Azure **cdnverify** サブドメインを使用して中間登録ステップを提供できます。
 
@@ -83,4 +83,4 @@
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

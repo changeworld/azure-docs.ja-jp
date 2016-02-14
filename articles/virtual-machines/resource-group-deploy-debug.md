@@ -1,6 +1,6 @@
 <properties
-   pageTitle="リソース グループのデプロイのトラブルシューティング | Microsoft Azure"
-   description="リソース マネージャーのデプロイ モデルを使用して作成したリソースのデプロイ時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
+   pageTitle="リソース グループのデプロイメントのトラブルシューティング | Microsoft Azure"
+   description="リソース マネージャーのデプロイメント モデルを使用して作成したリソースのデプロイメント時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -14,27 +14,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="01/06/2016"
+   ms.date="01/28/2016"
    ms.author="tomfitz;rasquill"/>
 
-# Azure でのリソース グループのデプロイのトラブルシューティング
+# Azure でのリソース グループのデプロイメントのトラブルシューティング
 
-デプロイ中に問題を発生した場合、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。リソース グループの特定のデプロイに関する情報を取得するには、デプロイ コマンドを使用します。または、リソース グループに対して実行されたすべての操作に関する情報を取得するには、監査ログを使用します。この情報を使用すると、問題を解決して、ソリューションの稼働を再開できます。
+デプロイメント中に問題を発生した場合、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。リソース グループの特定のデプロイメントに関する情報を取得するには、デプロイメント コマンドを使用します。または、リソース グループに対して実行されたすべての操作に関する情報を取得するには、監査ログを使用します。この情報を使用すると、問題を解決して、ソリューションの稼働を再開できます。
 
-このトピックでは、デプロイのトラブルシューティングを行うための、デプロイ コマンドの使用に重点を置いて説明します。リソースに対するすべての操作を追跡するための監査ログを使用する方法の詳細については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
+このトピックでは、デプロイメントのトラブルシューティングを行うための、デプロイメント コマンドの使用に重点を置いて説明します。リソースに対するすべての操作を追跡するための監査ログを使用する方法の詳細については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
 
-このトピックでは、Azure PowerShell、Azure CLI および REST API を使用してのトラブルシューティング情報を取得する方法を示します。プレビュー ポータルを使用してデプロイをトラブルシューティングする方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)」を参照してください。
+このトピックでは、Azure PowerShell、Azure CLI および REST API を使用してのトラブルシューティング情報を取得する方法を示します。ポータルを使用してデプロイメントをトラブルシューティングする方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)」を参照してください。
 
 ユーザーに表示される一般的なエラーの対処方法もこのトピックで説明しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。クラシック デプロイ モデルを使用してリソース グループを作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイメント モデル。クラシック デプロイメント モデルを使用してリソース グループを作成することはできません。
 
 
 ## PowerShell でのトラブルシューティング
 
 [AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
 
-**Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+**Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイメント全体の状態を取得できます。以下の例では、デプロイメントは失敗しています。
 
     PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 
@@ -55,7 +55,7 @@
 
     Outputs           :
 
-通常、各デプロイは、それぞれの操作がデプロイ処理の 1 手順を示す、複数の操作で構成されています。デプロイの問題を検出するには、通常デプロイ操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
+通常、各デプロイメントは、それぞれの操作がデプロイメント処理の 1 手順を示す、複数の操作で構成されています。デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
 
     PS C:\> Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup
     Id                        OperationId          Properties         
@@ -63,7 +63,7 @@
     /subscriptions/xxxxx...   347A111792B648D8     @{ProvisioningState=Failed; Timestam...
     /subscriptions/xxxxx...   699776735EFC3D15     @{ProvisioningState=Succeeded; Times...
 
-ここではデプロイの 2 つの操作が示されています。1 つのプロビジョニングの状態は Failed になっており他は Succeeded になっています。
+ここではデプロイメントの 2 つの操作が示されています。1 つのプロビジョニングの状態は Failed になっており他は Succeeded になっています。
 
 状態のメッセージは、次のコマンドを使用して取得できます。
 
@@ -77,7 +77,7 @@
 
 ## Azure CLI を使用したトラブルシューティング
 
-**azure group deployment show** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+**azure group deployment show** コマンドを使用すると、デプロイメント全体の状態を取得できます。以下の例では、デプロイメントは失敗しています。
 
     azure group deployment show ExampleGroup ExampleDeployment
 
@@ -98,11 +98,11 @@
     info:    group deployment show command OK
 
 
-デプロイメントが失敗した理由の詳細は、監査ログで調べることができます。監査ログを表示するには、**azure group log show** コマンドを実行します。**--last-deployment** オプションを含めると、最新のデプロイのログのみを取得できます。
+デプロイメントが失敗した理由の詳細は、監査ログで調べることができます。監査ログを表示するには、**azure group log show** コマンドを実行します。**--last-deployment** オプションを含めると、最新のデプロイメントのログのみを取得できます。
 
     azure group log show ExampleGroup --last-deployment
 
-**azure group log show** コマンドを使用すると、多数の情報が返される可能性があります。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。**jq** などのツールについて学習するには、「[Azure とやり取りする便利なツール](#useful-tools-to-interact-with-azure)」を参照してください。
+**azure group log show** コマンドを使用すると、多数の情報が返される可能性があります。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイメント エラーのログを検索します。**jq** などのツールについて学習するには、「[Azure とやり取りする便利なツール](#useful-tools-to-interact-with-azure)」を参照してください。
 
     azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
 
@@ -149,27 +149,27 @@ json の **properties** には失敗した操作の情報が含まれます。
 
 ## REST API を使用したトラブルシューティング
 
-リソース マネージャーの REST API は、デプロイに関する情報、デプロイの操作、特定の操作の詳細に関する情報を取得するための URI を提供します。これらのコマンドの完全な説明については、次を参照してください。
+リソース マネージャーの REST API は、デプロイメントに関する情報、デプロイメントの操作、特定の操作の詳細に関する情報を取得するための URI を提供します。これらのコマンドの完全な説明については、次を参照してください。
 
-- [テンプレートのデプロイに関する情報の取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)
-- [すべてのテンプレート デプロイ操作の一覧を取得する](https://msdn.microsoft.com/library/azure/dn790518.aspx)
-- [テンプレート デプロイ操作に関する情報の取得](https://msdn.microsoft.com/library/azure/dn790519.aspx)
+- [テンプレートのデプロイメントに関する情報の取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)
+- [すべてのテンプレート デプロイメント操作の一覧を取得する](https://msdn.microsoft.com/library/azure/dn790518.aspx)
+- [テンプレート デプロイメント操作に関する情報の取得](https://msdn.microsoft.com/library/azure/dn790519.aspx)
 
 
 ## 期限切れの資格情報の更新
 
-Azure の資格情報が期限切れの場合や Azure アカウントにサインインしていない場合、デプロイは失敗します。セッションが長時間開かれている場合、資格情報の期限が切れる場合があります。資格情報は、次のオプションを使用して更新できます。
+Azure の資格情報が期限切れの場合や Azure アカウントにサインインしていない場合、デプロイメントは失敗します。セッションが長時間開かれている場合、資格情報の期限が切れる場合があります。資格情報は、次のオプションを使用して更新できます。
 
-- PowerShell では、**Login-AzureRmAccount** コマンドレットを使用します (PowerShell 1.0 プレビューよりも前のバージョンでは、**Add-AzureAccount** を使用します)。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
+- PowerShell の場合、**Login-AzureRmAccount** コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
 - Azure CLI では、**azure login** を使用します。認証エラーのヘルプを表示する場合は、[Azure CLI が正しく構成されている](../xplat-cli-connect.md)ことを確認してください。
 
 ## テンプレートおよびパラメーターの形式のチェック
 
-テンプレートまたはパラメーター ファイルの形式が不正な場合、デプロイは失敗します。デプロイを実行する前に、テンプレートとパラメーターの有効性をテストできます。
+テンプレートまたはパラメーター ファイルの形式が不正な場合、デプロイメントは失敗します。デプロイメントを実行する前に、テンプレートとパラメーターの有効性をテストできます。
 
 ### PowerShell
 
-PowerShell では、**Test-AzureRmResourceGroupDeployment** を使用します (PowerShell 1.0 プレビューよりも前のバージョンでは、**Test-AzureResourceGroupTemplate** を使用します)。
+PowerShell の場合、**Test-AzureRmResourceGroupDeployment** を使用します。
 
     PS C:\> Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\Azure\Templates\azuredeploy.json -TemplateParameterFile c:\Azure\Templates\azuredeploy.parameters.json
     VERBOSE: 12:55:32 PM - Template is valid.
@@ -193,7 +193,7 @@ Azure CLI では、**azure group template validate <resource group>** を使用�
 
 ### REST API
 
-REST API の場合は、「[テンプレートのデプロイの検証](https://msdn.microsoft.com/library/azure/dn790547.aspx)」をご覧ください。
+REST API の場合は、「[テンプレートのデプロイメントの検証](https://msdn.microsoft.com/library/azure/dn790547.aspx)」をご覧ください。
 
 ## リソースをサポートする場所の確認
 
@@ -201,7 +201,7 @@ REST API の場合は、「[テンプレートのデプロイの検証](https://
 
 ### PowerShell
 
-PowerShell 1.0 プレビューよりも前のバージョンの場合、**Get-AzureLocation** コマンドを使用すると、すべてのリソースおよび場所が一覧表示されます。
+PowerShell 1.0 よりも前のバージョンの場合、**Get-AzureLocation** コマンドを使用すると、すべてのリソースおよび場所が一覧表示されます。
 
     PS C:\> Get-AzureLocation
 
@@ -222,7 +222,7 @@ PowerShell 1.0 プレビューよりも前のバージョンの場合、**Get-Az
                                                                 North Europe, West Europe, East Asia, Southeast Asia,
                                                                 Japan East, Japan West
 
-PowerShell 1.0 プレビューでは、**Get-AzureRmResourceProvider** を使用してサポートされている場所を取得します。
+PowerShell 1.0 では、**Get-AzureRmResourceProvider** を使用してサポートされている場所を取得します。
 
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
 
@@ -269,13 +269,13 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 ## 認証、サブスクリプション、ロール、クォータの問題
 
-認証と承認および Azure Active Directory に関連する、デプロイの成功を妨げる 1 つ以上の問題があることがあります。Azure リソース グループを管理する方法に関係なく、アカウントにサインインするために使用する ID は Azure Active Directory オブジェクトである必要があります。この ID は作成した、あるいは割り当てられた会社または学校アカウントにすることができます。または、アプリケーション用のサービス プリンシパルを作成できます。
+認証と承認および Azure Active Directory に関連する、デプロイメントの成功を妨げる 1 つ以上の問題があることがあります。Azure リソース グループを管理する方法に関係なく、アカウントにサインインするために使用する ID は Azure Active Directory オブジェクトである必要があります。この ID は作成した、あるいは割り当てられた会社または学校アカウントにすることができます。または、アプリケーション用のサービス プリンシパルを作成できます。
 
-しかし、Azure Active Directory では、ユーザーまたはユーザーの管理者が、どの ID がどのリソースにアクセスできるかを高い精度で制御できるようにします。デプロイが失敗する場合は、認証または承認の問題の兆候があるかどうかについて要求自体を調べ、リソース グループのデプロイメントのログを調べます。自分が一部のリソースに対するアクセス許可を持つ一方、他のリソースに対するアクセス許可のないことがわかる場合があります。Azure CLI を使用すると、`azure ad` コマンドを使用して、Azure Active Directory テナントおよびユーザーを確認することができます。(Azure CLI コマンドの完全な一覧については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](azure-cli-arm-commands.md)」をご覧ください)。
+しかし、Azure Active Directory では、ユーザーまたはユーザーの管理者が、どの ID がどのリソースにアクセスできるかを高い精度で制御できるようにします。デプロイメントが失敗する場合は、認証または承認の問題の兆候があるかどうかについて要求自体を調べ、リソース グループのデプロイメントのログを調べます。自分が一部のリソースに対するアクセス許可を持つ一方、他のリソースに対するアクセス許可のないことがわかる場合があります。Azure CLI を使用すると、`azure ad` コマンドを使用して、Azure Active Directory テナントおよびユーザーを確認することができます。(Azure CLI コマンドの完全な一覧については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](azure-cli-arm-commands.md)」をご覧ください)。
 
-また、デプロイが既定のクォータに達すると、問題が発生する場合があります。既定のクォータは、リソース グループごと、サブスクリプションごと、アカウントごと、その他のスコープごとである可能性があります。正しくデプロイするために使用可能なリソースがあるかどうかを十分に確認します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+また、デプロイメントが既定のクォータに達すると、問題が発生する場合があります。既定のクォータは、リソース グループごと、サブスクリプションごと、アカウントごと、その他のスコープごとである可能性があります。正しくデプロイするために使用可能なリソースがあるかどうかを十分に確認します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
-サブスクリプションのコアのクォータを調べるには、Azure CLI では `azure vm list-usage` コマンド、 PowerShell では **Get-AzureVMUsage** コマンドレットを使用する必要があります。次に Azure CLI のコマンドを示します。また、無料試用版アカウントのコア クォータが 4 であることも示しています。
+サブスクリプションのコアのクォータを調べるには、Azure CLI では `azure vm list-usage` コマンド、 PowerShell では **Get-AzureRmVMUsage** コマンドレットを使用する必要があります。次に Azure CLI のコマンドを示します。また、無料試用版アカウントのコア クォータが 4 であることも示しています。
 
     azure vm list-usage
     info:    Executing command vm list-usage
@@ -285,7 +285,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
     data:    Cores  Count  0             4
     info:    vm list-usage command OK
 
-上記のサブスクリプションで、米国西部リージョンに 4 つ以上のコアを作成するテンプレートをデプロイしようとした場合、 (ポータルでまたはデプロイ ログを調査して) 次のようなデプロイ エラーになります。
+上記のサブスクリプションで、米国西部リージョンに 4 つ以上のコアを作成するテンプレートをデプロイメントしようとした場合、 (ポータルでまたはデプロイメント ログを調査して) 次のようなデプロイメント エラーになります。
 
     statusCode:Conflict
     serviceRequestId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -293,25 +293,8 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 このような場合はポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
 
-> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。
-<!-- -->
-コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。
-<!-- -->
-        azure provider show Microsoft.Compute --json | jq '.resourceTypes[] | select(.name == "virtualMachines") | { name,apiVersions, locations}'
-        {
-          "name": "virtualMachines",
-          "apiVersions": [
-            "2015-05-01-preview",
-            "2014-12-01-preview"
-          ],
-          "locations": [
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "Southeast Asia"
-          ]
-        }
+> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。<!-- --> コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。 <!-- --> azure provider show Microsoft.Compute --json | jq '.resourceTypes | select(.name == "virtualMachines") | { name,apiVersions, locations}' { "name": "virtualMachines", "apiVersions": [ "2015-05-01-preview", "2014-12-01-preview" ], "locations": [ "East US", "West US", "West Europe", "East Asia", "Southeast Asia" ] }
+
 
 ## リソース プロバイダーの登録の確認
 
@@ -319,7 +302,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 ### PowerShell
 
-PowerShell 1.0 プレビューよりも前のバージョンの場合、リソース プロバイダーと登録状態の一覧を取得するには、**Get-AzureProvider** を使用します。
+PowerShell 1.0 よりも前のバージョンの場合、リソース プロバイダーと登録状態の一覧を取得するには、**Get-AzureProvider** を使用します。
 
     PS C:\> Get-AzureProvider
 
@@ -332,7 +315,7 @@ PowerShell 1.0 プレビューよりも前のバージョンの場合、リソ�
 
 プロバイダーを登録するには、**Register-AzureProvider** を使用します。
 
-Powershell 1.0 プレビューでは、**Get-AzureRmResourceProvider** を使用します。
+Powershell 1.0 では、**Get-AzureRmResourceProvider** を使用します。
 
     PS C:\> Get-AzureRmResourceProvider -ListAvailable
 
@@ -402,13 +385,13 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 プロバイダーを登録するには、「[リソース プロバイダーへのサブスクリプションの登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)」を参照してください。
 
 
-## カスタム テンプレートでいつデプロイが成功したかを確認する
+## カスタム テンプレートでいつデプロイメントが成功したかを確認する
 
-自分で作成したテンプレートを使用している場合は、すべてのプロバイダーがデプロイから正常に返されたときに、Azure リソース マネージャー システムがデプロイの成功を報告することを理解しておくことが重要です。これは、すべてのテンプレート項目が使用法に応じてデプロイされたことを意味します。
+自分で作成したテンプレートを使用している場合は、すべてのプロバイダーがデプロイメントから正常に返されたときに、Azure リソース マネージャー システムがデプロイメントの成功を報告することを理解しておくことが重要です。これは、すべてのテンプレート項目が使用法に応じてデプロイされたことを意味します。
 
-ただし、これは必ずしもリソース グループが「アクティブで、ユーザーが使用できる状態」であるとは限りません。たとえば、ほとんどのデプロイメントでは、アップグレードのダウンロード、他の非テンプレート リソースの待機、または複雑なスクリプトや、Azure が認識していない他の実行可能なアクティビティのインストールをデプロイメントに要求します。これは、アクティビティが、プロバイダーが追跡しているアクティビティではないためです。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイが使用できるまでのある時にデプロイが成功の状態になることを予期する必要があります。
+ただし、これは必ずしもリソース グループが「アクティブで、ユーザーが使用できる状態」であるとは限りません。たとえば、ほとんどのデプロイメントでは、アップグレードのダウンロード、他の非テンプレート リソースの待機、または複雑なスクリプトや、Azure が認識していない他の実行可能なアクティビティのインストールをデプロイメントに要求します。これは、アクティビティが、プロバイダーが追跡しているアクティビティではないためです。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイメントが使用できるまでのある時にデプロイメントが成功の状態になることを予期する必要があります。
 
-ただし、(たとえば [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。サンプルは、[テンプレート デプロイを作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)するときに確認できます。
+ただし、(たとえば [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイメントの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイメント全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。サンプルは、[テンプレート デプロイメントを作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)するときに確認できます。
 
 ## Azure とやり取りする便利なツール
 コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
@@ -434,4 +417,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

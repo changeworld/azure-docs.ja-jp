@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/20/2016"
+   ms.date="02/01/2016"
    ms.author="jonor;sivae"/>
 
 # 例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
@@ -28,16 +28,16 @@
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 - 2 つのクラウド サービス: "FrontEnd001" と "BackEnd001"
-- 2 つのサブネット ("FrontEnd" と "BackEnd") を含む仮想ネットワーク "CorpNetwork"
+- 2 つのサブネット ("FrontEnd" と "BackEnd") を含む Virtual Network "CorpNetwork"
 - 両方のサブネットに適用される単一のネットワーク セキュリティ グループ
-- フロントエンド サブネットに接続されたネットワーク仮想アプライアンス (この例では Barracuda NG Firewall)
+- フロントエンド サブネットに接続されたネットワーク仮想アプライアンス (この例では Barracuda NextGen Firewall)
 - アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
 - アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
 - DNS サーバーを表す Windows サーバー ("DNS01")
 
->[AZURE.NOTE]この例では Barracuda NG Firewall を使用していますが、他にもさまざまなネットワーク仮想アプライアンスを使用できます。
+>[AZURE.NOTE] この例では Barracuda NextGen ファイアウォールを使用していますが、他にもさまざまなネットワーク仮想アプライアンスを使用できます。
 
-以上に示した環境の大部分は、このページの「参照」セクションで紹介している PowerShell スクリプトで構築します。VM と仮想ネットワークの構築については、スクリプト例には含まれていますが、このドキュメントでは詳細な説明を省略します。
+以上に示した環境の大部分は、このページの「参照」セクションで紹介している PowerShell スクリプトで構築します。VM と Virtual Network の構築については、スクリプト例には含まれていますが、このドキュメントでは詳細な説明を省略します。
  
 環境を構築するには
 
@@ -57,7 +57,7 @@
 ## ネットワーク セキュリティ グループ (NSG)
 この例では、NSG グループを作成し、そこに 6 つのルールを設定します。
 
->[AZURE.TIP]一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。どのルールが先に評価されるかは、割り当てる優先度によって決まります。具体的なルールが一度適用されたトラフィックに対しては、他のルールは評価されません。NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
+>[AZURE.TIP] 一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。どのルールが先に評価されるかは、割り当てる優先度によって決まります。具体的なルールが一度適用されたトラフィックに対しては、他のルールは評価されません。NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
 
 ここでは、受信トラフィックに対して次の内容のルールを作成しています。
 
@@ -79,7 +79,7 @@
 
 この例で使用するクライアントをダウンロードして Barracuda に接続する手順については、[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin) に関するドキュメントを参照してください。
 
-ファイアウォールには、転送ルールを作成する必要があります。この例でルーティングするのは、インターネットからファイアウォールを介して Web サーバーに到達する受信トラフィックだけであるため、必要な転送 NAT ルールは 1 つだけです。この例に使用されている Barracuda NG ファイアウォールでそれに該当するのが、そのトラフィックを許可する Destination NAT ルール ("Dst NAT") です。
+ファイアウォールには、転送ルールを作成する必要があります。この例でルーティングするのは、インターネットからファイアウォールを介して Web サーバーに到達する受信トラフィックだけであるため、必要な転送 NAT ルールは 1 つだけです。この例に使用されている Barracuda NextGen ファイアウォールでそれに該当するのが、そのトラフィックを許可する Destination NAT ルール ("Dst NAT") です。
 
 次のルールを作成するには (または既にある既定のルールを確認するには)、Barracuda NG Admin クライアント ダッシュボードの [configuration] タブに移動し、[Operational Configuration] セクションの [Ruleset] をクリックします。ファイアウォールに対して既にアクティブになっているルールと非アクティブのルールとが "Main Rules" というグリッドに表示されます。このグリッドの右上隅に小さな緑色の "+" ボタンがあります。新しいルールはこのボタンをクリックして作成します (注: ファイアウォールが変更できないように "ロック" されている場合があります。ボタンに "Lock" と表示されていてルールを作成したり編集したりできない場合は、このボタンをクリックしてルールセットの "ロックを解除" し、編集できる状態にしてください)。既存のルールを編集するには、そのルールを選択して右クリックし、[Edit Rule] を選択します。
 
@@ -108,7 +108,7 @@ Destination NAT ルールのアイコンは ![Destination NAT Icon][2] ように
 
 ファイアウォールのルールセットをアクティブ化すれば、この例における環境の構築は完了です。必要に応じて「参照」セクションにある Post Build スクリプトを実行し、以降のトラフィックのシナリオをテストするためのアプリケーションをこの環境に追加してください。
 
->[AZURE.IMPORTANT]Web サーバーに直接到達するわけではないことに注意してください。FrontEnd001.CloudApp.Net にある HTTP ページがブラウザーから要求されたとき、HTTP エンドポイント (ポート 80) はまず、そのトラフィックを Web サーバーにではなくファイアウォールに渡します。その後ファイアウォールが、先ほど作成したルールに従って、Web サーバーへのネットワーク アドレス変換をその要求に対して実行します。
+>[AZURE.IMPORTANT] Web サーバーに直接到達するわけではないことに注意してください。FrontEnd001.CloudApp.Net にある HTTP ページがブラウザーから要求されたとき、HTTP エンドポイント (ポート 80) はまず、そのトラフィックを Web サーバーにではなくファイアウォールに渡します。その後ファイアウォールが、先ほど作成したルールに従って、Web サーバーへのネットワーク アドレス変換をその要求に対して実行します。
 
 ## トラフィックのシナリオ
 
@@ -227,7 +227,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 
 この PowerShell スクリプトは、インターネットに接続されている PC またはサーバー上でローカルに実行する必要があります。
 
->[AZURE.IMPORTANT]このスクリプトを実行すると、PowerShell に警告またはその他の情報メッセージが表示される場合があります。赤色のエラー メッセージのみが問題の原因となります。
+>[AZURE.IMPORTANT] このスクリプトを実行すると、PowerShell に警告またはその他の情報メッセージが表示される場合があります。赤色のエラー メッセージのみが問題の原因となります。
 
 
 	<# 
@@ -239,7 +239,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 	   - A default storage account for VM disks
 	   - Two new cloud services
 	   - Two Subnets (FrontEnd and BackEnd subnets)
-	   - A Network Virtual Appliance (NVA), in this case a Barracuda NG Firewall
+	   - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
 	   - One server on the FrontEnd Subnet (plus the NVA on the FrontEnd subnet)
 	   - Three Servers on the BackEnd Subnet
 	   - Network Security Groups to allow/deny traffic patterns as declared
@@ -303,7 +303,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 	
 	  # VM Base Disk Image Details
 	    $SrvImg = Get-AzureVMImage | Where {$_.ImageFamily -match 'Windows Server 2012 R2 Datacenter'} | sort PublishedDate -Descending | Select ImageName -First 1 | ForEach {$_.ImageName}
-	    $FWImg = Get-AzureVMImage | Where {$_.ImageFamily -match 'Barracuda NG Firewall'} | sort PublishedDate -Descending | Select ImageName -First 1 | ForEach {$_.ImageName}
+	    $FWImg = Get-AzureVMImage | Where {$_.ImageFamily -match 'Barracuda NextGen Firewall'} | sort PublishedDate -Descending | Select ImageName -First 1 | ForEach {$_.ImageName}
 	
 	  # NSG Details
 	    $NSGName = "MyVNetSG"
@@ -566,4 +566,4 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

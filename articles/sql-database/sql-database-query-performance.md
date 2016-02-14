@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="12/02/2015"
+   ms.date="02/03/2015"
    ms.author="sstein"/>
 
 # Azure SQL Database Query Performance Insight
@@ -47,16 +47,17 @@ Query Performance Insight は簡単に使用できます。
 - リソース消費量上位のクエリの一覧を確認します。 
 - 個別のクエリを選択して詳細を表示します。
 - **[設定]** をクリックして、データの表示方法をカスタマイズしたり、別の期間を表示したりします。
+- [Index Advisor](sql-database-index-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
 
 
 
-> [AZURE.NOTE]SQL Database がクエリ パフォーマンスの内実を提供するには、2 時間分のデータを Query Store でキャプチャする必要があります。一定の期間、データベースでアクティビティが発生しない場合、または Query Store がアクティブではない場合は、その時間帯を表示してもグラフは空になります。Query Store が実行していない場合はいつでも有効にできます。
+> [AZURE.NOTE] SQL Database がクエリ パフォーマンスの内実を提供するには、2 時間分のデータをクエリ ストアでキャプチャする必要があります。一定の期間、データベースでアクティビティが発生しない場合、またはクエリ ストアがアクティブではない場合は、その時間帯を表示してもグラフは空になります。クエリ ストアが実行されていない場合はいつでも有効にできます。
 
 
 
 ## CPU 消費量上位クエリを確認する
 
-[ポータル](https://portal.azure.com)で次のようにします。
+[ポータル](http://portal.azure.com)で次のようにします。
 
 1. SQL Database を参照して、**[Query Performance Insight]** をクリックします。 
 
@@ -64,17 +65,34 @@ Query Performance Insight は簡単に使用できます。
 
     上位クエリ ビューが開き、CPU 消費量上位クエリの一覧が表示されます。
 
-1. グラフのあたりをクリックすると詳細を見られます。<br>最初の行にはデータベース全体の CPU% が表示され、バーでは選択したクエリによって消費された CPU% が示されます。グラフに表示する個別のクエリを選別するには、選択または選択解除します。
+1. グラフのあたりをクリックすると詳細を見られます。<br>最初の行にはデータベース全体の CPU% が表示され、バーでは選択した期間 (たとえば、**[過去 1 週間]** を選択した場合は、各バーが 1 日を表します) に選択したクエリによって消費された CPU% が示されます。
 
     ![上位クエリ][2]
 
-1. オプションで **[グラフの編集]** をクリックして、CPU 消費データの表示方法をカスタマイズしたり、別の期間を表示したりできます。
+    下部のグリッドには、表示可能なクエリの集計情報が表されます。
+
+    -	監視可能な期間のクエリあたり平均 CPU 使用率。 
+    -	1 つのクエリの合計実行時間。
+    -	特定のクエリの実行回数の合計。
+
+
+	グラフに表示する個別のクエリを選別するには、選択または選択解除します。
+
+
+1. データが古くなった場合は、**[更新]** ボタンをクリックします。
+1. オプションで **[設定]** をクリックして、CPU 消費データの表示方法をカスタマイズしたり、別の期間を表示したりできます。
+
+    ![設定](./media/sql-database-query-performance/settings.png)
 
 ## 個々のクエリの詳細表示
 
 クエリの詳細を表示するには:
 
-1. 上位クエリの一覧で任意のクエリをクリックします。<br>詳細ビューが開き、クエリの CPU 消費量が時間ごとに分割されます。
+1. 上位のクエリの一覧でクエリをクリックします。
+
+    ![詳細](./media/sql-database-query-performance/details.png)
+
+4. 詳細ビューが開き、クエリの CPU 消費量が時間ごとに分割されます。
 3. グラフのあたりをクリックすると詳細を見られます。<br>最初の行には全体の CPU% が表示され、バーでは選択したクエリによって消費された CPU% が示されます。
 4. クエリ実行の間隔ごとに、期間、実行回数、リソース使用率などの、詳細なメトリックが表示されます。
     
@@ -83,11 +101,57 @@ Query Performance Insight は簡単に使用できます。
 1. オプションで **[設定]** をクリックして、CPU 消費データの表示方法をカスタマイズしたり、別の期間を表示したりできます。
 
 
+## 	Query Performance Insight 用のクエリ ストア構成の最適化
+
+Query Performance Insight の使用中に、次のようなクエリ ストア メッセージが表示されることがあります。
+
+- 「クエリ ストアは容量に達したため、新しいデータを収集していません。」
+- 「このデータベースのクエリ ストアは読み取り専用モードのため、Performance Insigh のデータを収集していません。」
+- 「クエリ ストアのパラメーターは、Query Performance Insight 用に最適に設定されていません。」
+
+これらのメッセージは、通常、クエリ ストアが新しいデータを収集できないときに表示されます。この問題を解決するには、いくつかのオプションがあります。
+
+-	クエリ ストアの保持とキャプチャのポリシーを変更します
+-	クエリ ストアのサイズを増やします 
+-	クエリ ストアをクリアします
+
+### 推奨される保存とキャプチャのポリシー
+
+保持ポリシーには 2 つの種類があります。
+
+- サイズ ベース – AUTO に設定した場合、最大サイズの近づくとデータが自動的にクリーンアップされます。
+- 時間ベース – 既定では 30 日に設定されます。つまり、クエリ ストアの領域が不足すると、30 日より古いクエリ情報が削除されます。 
+
+キャプチャ ポリシーは次のように設定できます。
+
+- **すべて** – すべてのクエリをキャプチャします。これが既定のオプションです。
+- **自動** – 低頻度のクエリおよび重要ではないコンパイル期間と実行期間のクエリは無視されます。実行カウント、コンパイル期間、実行期間のしきい値は内部的に決定されます。
+- **なし** – クエリ ストアは新しいクエリのキャプチャを停止します。
+	
+すべてのポリシーを AUTO に設定し、30 日でポリシーをクリーンアップすることをお勧めします。
+
+    ALTER DATABASE [YourDB] 
+    SET QUERY_STORE (SIZE_BASED_CLEANUP_MODE = AUTO);
+    	
+    ALTER DATABASE [YourDB] 
+    SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30));
+    
+    ALTER DATABASE [YourDB] 
+    SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
+
+クエリ ストアのサイズを増やします。これは、データベースに接続して、次のクエリを発行することにより実行できます。
+
+    ALTER DATABASE [YourDB]
+    SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
+
+クエリ ストアをクリアします。現在クエリ ストア内にあるすべての情報が削除されることに注意してください。
+
+    ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 
 
-## まとめ
+## 概要
 
-Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。リソース (CPU) 消費量上位クエリを見るには、データベース ブレードで **[Query Performance Insight]** タイルをクリックします。
+Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。リソース (CPU) 消費量上位クエリを見るには、データベースで **[Query Performance Insight]** をクリックします。
 
 
 
@@ -96,11 +160,14 @@ Query Performance Insight を使うと、クエリ ワークロードの影響�
 
 データベースのワークロードは動的であり、継続的に変化します。クエリを監視し、パフォーマンスの改善のために調整を続けます。
 
-SQL Database のパフォーマンス向上のために、[Index Advisor](sql-database-index-advisor.md) も利用することをお勧めします。
+SQL Database のパフォーマンス向上のため、さらに **[Query Performance Insight]** ブレードの [Index Advisor](sql-database-index-advisor.md) も利用することをお勧めします。
+
+![Index Advisor](./media/sql-database-query-performance/ia.png)
+
 
 <!--Image references-->
 [1]: ./media/sql-database-query-performance/tile.png
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

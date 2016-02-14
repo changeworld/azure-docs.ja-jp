@@ -19,7 +19,7 @@
 
 このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。Microsoft Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。Service Bus の価格の詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
 
->[AZURE.NOTE] Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
+>[AZURE.NOTE] Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](../event-hubs/event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 - [Service Bus の課金方法を教えてください](#how-do-you-charge-for-service-bus)
 - [Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)
@@ -116,4 +116,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

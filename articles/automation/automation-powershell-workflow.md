@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/01/2015"
+   ms.date="02/03/2016"
    ms.author="bwren" />
 
 # Windows PowerShell ワークフローについて
@@ -249,4 +249,4 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 - [Windows PowerShell ワークフローの概要](http://technet.microsoft.com/library/jj134242.aspx) 
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

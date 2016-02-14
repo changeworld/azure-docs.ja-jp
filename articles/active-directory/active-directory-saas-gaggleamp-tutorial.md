@@ -3,7 +3,7 @@
 	description="Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="ashimaabrol"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
-	ms.author="v-aabrol"/>
+	ms.date="02/02/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と GaggleAMP の統合
@@ -35,7 +35,7 @@ GaggleAMP と Azure AD の統合を構成するには、次のものが必要で
 - GaggleAMP でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -87,11 +87,11 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
 **GaggleAMP で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **GaggleAMP** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **GaggleAMP** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの GaggleAMP へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![シングル サインオンの構成](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_03.png) <br>
+2. **[ユーザーの GaggleAMP へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_04.png) <br>
 
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが GaggleAMP アプリケーションへのサインオンに使用する URL を入力します。**"https://secure4.gaggleamp.com"**
@@ -225,4 +225,4 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

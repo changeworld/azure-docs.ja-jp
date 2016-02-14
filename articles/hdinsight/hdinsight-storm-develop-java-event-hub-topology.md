@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/12/2016"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -30,9 +30,9 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
     - [Windows ベースのクラスター](hdinsight-apache-storm-tutorial-get-started.md): PowerShell を使用して、Windows クライアントからクラスターを操作する場合に選択します
 
-    > [AZURE.NOTE]2 つのクラスターの違いは、SSH を使用してトポロジを送信する先がクラスターか Web フォームか、という点のみです。
+    > [AZURE.NOTE] 2 つのクラスターの違いは、SSH を使用してトポロジを送信する先がクラスターか Web フォームか、という点のみです。
 
-* [Azure Event Hub](../event-hubs/service-bus-event-hubs-csharp-ephcs-getstarted.md)。
+* [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)。
 
 * [Oracle Java Developer Kit (JDK) バージョン 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) または同等のバージョン ([OpenJDK](http://openjdk.java.net/) など)
 
@@ -40,7 +40,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 * テキスト エディターまたは Java 統合開発環境 (IDE)
 
-	> [AZURE.NOTE]お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
+	> [AZURE.NOTE] お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
 
  * SSH クライアントHDInsight で SSH を使用する方法の詳細については、次の記事をご覧ください。
 
@@ -78,7 +78,7 @@ Event Hub スパウトとボルトの内部書式のしくみを利用せずに�
 
 eventhubs-storm-spout パッケージの依存関係が加わります。このパッケージには、Event Hubs からの読み取りに使うスパウトと書き込みに使うボルトの両方が含まれます。
 
-> [AZURE.NOTE]このパッケージは、Maven では使用できません。後の手順で、ローカルの Maven リポジトリに手動でインストールします。
+> [AZURE.NOTE] このパッケージは、Maven では使用できません。後の手順で、ローカルの Maven リポジトリに手動でインストールします。
 
 ####HdfsBolt および WASB コンポーネント
 
@@ -141,7 +141,7 @@ eventhubs-storm-spout パッケージの依存関係が加わります。この�
        <version>0.6.0</version>
      </dependency>
 
-> [AZURE.NOTE]WASB を有効にするパッケージは、Maven リポジトリで使用できません。後の手順で手動でインストールします。
+> [AZURE.NOTE] WASB を有効にするパッケージは、Maven リポジトリで使用できません。後の手順で手動でインストールします。
 
 ####maven-compiler-plugin
 
@@ -269,7 +269,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 	![ウィザード ページ 1](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz1.png)
 
-	> [AZURE.NOTE]待機時間とコストを削減するために、HDInsight サーバーで使用する Storm と同じ **[場所]** を選択する必要があります。
+	> [AZURE.NOTE] 待機時間とコストを削減するために、HDInsight サーバーで使用する Storm と同じ **[場所]** を選択する必要があります。
 
 2. **[Event Hub の構成]** 画面で、**パーティション カウント**と**メッセージ保持**の値を入力します。この例では、パーティション カウントに 10 を、メッセージ保持に 1 を使用します。パーティション数を書き留めておきます。この値は後で必要になります。
 
@@ -311,7 +311,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom -DpomFile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom
 
-	> [AZURE.NOTE]PowerShell を使用している場合、`-D`パラメーターは引用符で囲む必要があります。たとえば、「`"-Dfile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom"`」のように入力します。
+	> [AZURE.NOTE] PowerShell を使用している場合、`-D`パラメーターは引用符で囲む必要があります。たとえば、「`"-Dfile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom"`」のように入力します。
 
 	また、これらのファイルは https://github.com/hdinsight/hdinsight-storm-examplesにも掲載されています。最新バージョンはこちらを参照してください。
 
@@ -333,7 +333,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
     SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。たとえば、「`scp -i ~/.ssh/id_rsa ./target/EventHubExample-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`」のように入力します。
 
-    > [AZURE.NOTE]クライアントが Windows ワークステーションの場合、SCP コマンドがインストールされていない可能性があります。PSCP をお勧めします。PSCP は [PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードできます。
+    > [AZURE.NOTE] クライアントが Windows ワークステーションの場合、SCP コマンドがインストールされていない可能性があります。PSCP をお勧めします。PSCP は [PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードできます。
 
     このコマンドで、クラスター上の SSH ユーザーのホーム ディレクトリにファイルをコピーします。
 
@@ -341,13 +341,13 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    > [AZURE.NOTE]SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
+    > [AZURE.NOTE] SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
     >
     > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
 
     PuTTY を使用している場合は、__[ホスト名 (または IP アドレス)]__ フィールドに `CLUSTERNAME-ssh.azurehdinsight.net` を入力し、__[開く]__ をクリックして接続します。SSH アカウント名を入力するように求められます。
 
-    > [AZURE.NOTE]SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合、必要に応じて次の手順でキーを選択します。
+    > [AZURE.NOTE] SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合、必要に応じて次の手順でキーを選択します。
     >
     > 1. **[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。
     > 2. **[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
@@ -372,7 +372,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
         -rw-r--r--   1 storm supergroup      10267 2015-08-11 19:36 /devicedata/wasbbolt-14-11-1439321761090.txt
         -rw-r--r--   1 storm supergroup      10259 2015-08-11 19:36 /devicedata/wasbbolt-14-12-1439321762679.txt
 
-    > [AZURE.NOTE]一部のファイルはサイズ 0 です。これは、EventHubReader でファイルが作成されても、まだデータが格納されていないためです。
+    > [AZURE.NOTE] 一部のファイルはサイズ 0 です。これは、EventHubReader でファイルが作成されても、まだデータが格納されていないためです。
 
     ファイルの内容を表示するには、次のコマンドを使用します。
 
@@ -448,7 +448,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure Storage) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\\apps\\dist\\storm-0.9.3.2.2.1.0-2340\\zkdatatool-1.0\\bin** の HDInsight クラスター上の Storm に配置されています。
 
->[AZURE.NOTE]クラスターにインストールされた Storm のバージョンは今後変更される可能性があるため、パスのバージョン番号は異なる場合があります。
+>[AZURE.NOTE] クラスターにインストールされた Storm のバージョンは今後変更される可能性があるため、パスのバージョン番号は異なる場合があります。
 
 このディレクトリのスクリプトは次のとおりです。
 
@@ -460,7 +460,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにする際にハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
 
-> [AZURE.NOTE]データは既定のストレージ コンテナーに保存されるため、新しいクラスターで以前のクラスターと同じストレージ アカウントとコンテナーを使用する**必要があります**。
+> [AZURE.NOTE] データは既定のストレージ コンテナーに保存されるため、新しいクラスターで以前のクラスターと同じストレージ アカウントとコンテナーを使用する**必要があります**。
 
 ##トラブルシューティング
 
@@ -476,4 +476,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

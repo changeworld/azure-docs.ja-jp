@@ -11,8 +11,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
-	ms.author="ddove; sidneyh" />
+	ms.date="02/02/2016" 
+	ms.author="ddove;sidneyh" />
 
 # PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
 
@@ -27,7 +27,7 @@
 ## 前提条件
 * Azure サブスクリプション。無料評価版については、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * エラスティック データベース ツールで作成された一連のデータベース。「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
-* Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
+* Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 * **エラスティック データベース ジョブ**の PowerShell パッケージ。「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ### Azure サブスクリプションを選択します。
@@ -655,7 +655,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 ## 複数のデータベースに対する横断的実行に対応したデータ層アプリケーション (DACPAC) を作成するには
 
-DACPAC の作成については、[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)に関するページを参照してください。DACPAC をデプロイするには、[New-AzureSqlJobContent コマンドレット](https://msdn.microsoft.com/library/mt346085.aspx)を使用します。サービスから DACPAC にアクセスできることが必要です。作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の [Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を作成することをお勧めします。
+DACPAC の作成については、[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)に関するページを参照してください。DACPAC をデプロイするには、[New-AzureSqlJobContent コマンドレット](https://msdn.microsoft.com/library/mt346085.aspx)を使用します。サービスから DACPAC にアクセスできることが必要です。作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) を作成することをお勧めします。
 
 	$dacpacUri = "{Uri}"
 	$dacpacName = "{Dacpac Name}"
@@ -694,4 +694,4 @@ DACPAC の作成については、[データ層アプリケーション](https:/
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
@@ -30,11 +30,11 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 ## 前提条件
 
-* [HDInsight クラスターでの Apache Storm](hdinsight-storm-getting-started.md)
+* [HDInsight クラスターでの Apache Storm](hdinsight-apache-storm-tutorial-get-started.md)
 
-* [Azure Event Hub](../service-bus/service-bus-event-hubs-csharp-ephcs-getstarted.md)
+* [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-* [Azure .NET SDK](https://azure.microsoft.com/downloads/)
+* [Azure .NET SDK](http://azure.microsoft.com/downloads/)
 
 * [HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
 
@@ -557,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

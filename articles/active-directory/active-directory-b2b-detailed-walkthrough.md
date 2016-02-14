@@ -3,7 +3,6 @@
    description="Azure Active Directory B2B は、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで、会社間のリレーションシップをサポートします"
    services="active-directory"
    authors="viv-liu"
-   documentationCenter="na"
    manager="cliffdi"
    editor=""
    tags=""/>
@@ -14,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="10/27/2015"
+   ms.date="02/03/2016"
    ms.author="viviali"/>
 
-# Azure Active Directory (Azure AD) B2B コラボレーション プレビューの詳細なチュートリアル
+# Azure AD B2B コラボレーション プレビュー: 詳細なチュートリアル
+
 このチュートリアルでは、Azure AD B2B コラボレーションの使用方法について説明します。Contoso の IT 管理者は、パートナー企業 3 社の従業員とアプリケーションを共有することを検討しています。パートナー企業側が Azure AD を導入する必要はありません。
 
 - Simple Partner Org の Alice
@@ -80,4 +80,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

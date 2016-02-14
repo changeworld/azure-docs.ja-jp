@@ -23,7 +23,7 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 
 ## Windows PowerShell コマンドレット
 
-以下の表にあるコマンドレットを使用すると、Windows PowerShell で使用される変数を Azure Automation で作成して管理できます。これらは、[Azure PowerShell モジュール](../powershell-install-configure.md)の一部として出荷されます。
+Azure Automation から Windows PowerShell を使用してスケジュールを作成したり管理したりするには、以下の表に示したコマンドレットを使用します。これらは、[Azure PowerShell モジュール](../powershell-install-configure.md)の一部として出荷されます。
 
 |コマンドレット|説明|
 |:---|:---|
@@ -37,15 +37,15 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 
 ## 新しいスケジュールを作成する
 
-### Azure ポータルで新しいスケジュールを作成するには
+### Azure クラシック ポータルで新しいスケジュールを作成するには
 
 
-1. Automation アカウントから、ウィンドウ上部にある **[資産]** をクリックします。
+1. Automation アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
 1. **[スケジュールの追加]** をクリックします。
-1. ウィザードを完了し、チェック ボックスをクリックして新しい変数を保存します。
+1. ウィザードを完了し、チェックボックスをクリックして新しいスケジュールを保存します。
 
-### Azure プレビュー ポータルで新しいスケジュールを作成するには
+### Azure ポータルで新しいスケジュールを作成するには
 
 1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[スケジュール]** 部分をクリックして、**[スケジュール]** ブレードを開きます。
@@ -68,4 +68,4 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 - [Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

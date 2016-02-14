@@ -1,6 +1,6 @@
-    <properties 
-	pageTitle="Create custom artifacts for your DevTest Lab VM | Microsoft Azure"
-	description="Learn how to author your own artifacts for use with DevTest Labs"
+<properties 
+	pageTitle="DevTest ラボ VM のカスタム アーティファクトの作成 | Microsoft Azure"
+	description="DevTest ラボで使用するために独自のアーティファクトを作成する方法を説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボ VM のカスタム アーティファクトの作成
@@ -41,7 +41,8 @@
 	  }
 	}
 
-| 要素名 | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | ------------ | --------- | -----------
 | $schema | いいえ | 定義ファイルの有効性のテストに役立つ JSON スキーマ ファイルの場所
 | title | はい | ラボで表示されるアーティファクトの名前
@@ -65,7 +66,8 @@
 	    }
 	  }
 
-| 要素名 | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | ------------ | --------- | -----------
 | type | はい | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
 | displayName Yes | ラボのユーザーに対して表示されるパラメーターの名前。
@@ -122,4 +124,4 @@
 
 [DevTest ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

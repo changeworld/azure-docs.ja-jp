@@ -2,7 +2,7 @@
 
 このセクションでは、イベントを Event Hub に送信する C アプリを作成します。[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。これは、[ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。詳細については、「[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
 
-1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。ここでは、Linux 環境で [Azure Linux VM](../articles/virtual-machines/virtual-machines-linux-tutorial.md) と Ubuntu 14.04 を使用していると仮定します。
+1. [Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)の **[Installing Qpid Proton]** リンクをクリックして、環境に応じた指示に従ってください。ここでは、Linux 環境で [Azure Linux VM](../virtual-machines/virtual-machines-linux-tutorial.md) と Ubuntu 14.04 を使用していると仮定します。
 
 2. Proton ライブラリをコンパイルするには、次のパッケージをインストールします。
 
@@ -115,6 +115,6 @@
 	gcc sender.c -o sender -lqpid-proton
 	```
 
-> [AZURE.NOTE]コンパイルしたコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージをバッチ処理する必要があります。この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」を参照してください。
+> [AZURE.NOTE] コンパイルしたコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。一般に、アプリケーションではスループットが向上するようにメッセージをバッチ処理する必要があります。この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](http://qpid.apache.org/components/messenger/index.html)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

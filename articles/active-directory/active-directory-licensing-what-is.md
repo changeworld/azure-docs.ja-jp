@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="01/05/2016"
+    ms.date="02/01/2016"
     ms.author="curtand"/>
 
 # Microsoft Azure Active Directory ライセンスとは
@@ -43,7 +43,7 @@ Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入または
 
 > [AZURE.IMPORTANT] Azure AD Premium と Azure AD Basic は、Enterprise Mobility Suite サブスクリプションと同様に、プロビジョニングされたディレクトリまたはテナントに限定されます。サブスクリプションをディレクトリ間で分割することや、他のディレクトリ内のユーザーに資格を与えるために使用することはできません。ディレクトリ間でサブスクリプションを移動できますが、直接購入の場合は、サポート チケットの送信、または取り消しと再購入が必要になります。
 
-> [AZURE.IMPORTANT] Azure AD または Enterprise Mobility Suite をボリューム ライセンス サブスクリプションを通して購入したときに、契約に他の Microsoft Online サービス (Office 365 など) が含まれている場合、アクティブ化は自動的に行われます。
+> Azure AD または Enterprise Mobility Suite をボリューム ライセンス サブスクリプションを通して購入したときに、契約に他の Microsoft Online サービス (Office 365 など) が含まれている場合、アクティブ化は自動的に行われます。
 
 Azure AD の有料の機能は、そのディレクトリ全体で利用できます。たとえば、アプリケーションへのグループ ベースの割り当ては、管理している特定のアプリケーションで有効になります。セルフ サービスによる詳細なグループ管理機能は、ディレクトリの構成または特定のグループ内で使用できます。プレミアム セキュリティ レポートは [レポート] タブにあります。クラウド アプリケーションの検出は、Azure ポータルの ID の下に表示されます。
 
@@ -129,7 +129,7 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [セルフサービスのグループ管理](active-directory-accessmanagement-self-service-group-management.md)
 - [Azure AD Connect Health](active-directory-aadconnect-health.md)
 - [アプリケーションへのグループの割り当て](active-directory-manage-groups.md)
-- [Azure Multi-Factor Authentication](multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

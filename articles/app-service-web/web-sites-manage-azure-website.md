@@ -66,7 +66,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 ### バックアップ
 
 - Web アプリの[自動バックアップ](web-sites-backup.md)を設定します。バックアップについては、[このビデオ](https://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/)を参照してください。
-- Azure SQL データベースの[データベース復旧](../sql-database-business-continuity.md)のさまざまなオプションを確認してください。
+- Azure SQL データベースの[データベース復旧](../sql-database/sql-database-business-continuity.md)のさまざまなオプションを確認してください。
 
 ### トラブルシューティング
 
@@ -87,8 +87,8 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 Visual Studio Team Services を使用する場合は、ソース管理から継続的デプロイを設定することができます。
 
-- [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services-continuous-delivery-use-vso.md) 
-- [Git の使用](../cloud-services-continuous-delivery-use-vso-git.md)
+- [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
+- [Git の使用](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
  
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -103,4 +103,4 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

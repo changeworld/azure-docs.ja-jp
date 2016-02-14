@@ -20,22 +20,23 @@
 
 クラウド サービスの worker または Web ロールの既定の一時ディレクトリの最大サイズは 100 MB ですが、ある時点でいっぱいになる可能性があります。この記事では、一時ディレクトリの領域不足を回避する方法について説明します。
 
->[AZURE.NOTE] これは Web および worker ロールを使用する Azure SDK 1.0 から SDK 1.4 にのみ適用されます。
+>[AZURE.NOTE] これは Azure SDK 1.0 ～ SDK 1.4 で Web/worker ロールを使用する場合にのみ適用されます。
 
 ## Azure カスタマー サポートへの問い合わせ
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
-
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## 領域が不足する理由
-標準的な Windows 環境変数 TEMP と TMP は、アプリケーションで実行されているコードで使用可能です。TEMP と TMP は両方とも、最大サイズが 100 MB の 1 つのディレクトリを指します。このディレクトリに格納されているデータは、ホステッド サービスのライフサイクル全体で保持されません。ホステッド サービスのロール インスタンスがリサイクルされると、ディレクトリはクリーニングされます。
+
+標準的な Windows 環境変数 TEMP と TMP は、アプリケーションで実行されているコードで使用可能です。TEMP と TMP は両方とも、最大サイズが 100 MB の 1 つのディレクトリを指します。このディレクトリに格納されているデータは、クラウド サービスのライフサイクル全体で保持されません。クラウド サービスのロール インスタンスがリサイクルされると、ディレクトリはクリーニングされます。
 
 ## 問題の修正に関する推奨事項
+
 次のいずれかの代替手段を実装します。
 
-- ローカル ストレージ リソースを構成し、**TEMP** や **TMP** を使用せずに直接アクセスします。アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、[RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。ローカル ストレージ リソースの設定の詳細については、「[ローカル ストレージ リソースを構成する](cloud-services-configure-local-storage-resources.md)」を参照してください。
+- ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、[RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。ローカル ストレージ リソースの設定の詳細については、「[ローカル ストレージ リソースを構成する](cloud-services-configure-local-storage-resources.md)」を参照してください。
 
 - ローカル ストレージ リソースを構成し、TEMP と TMP ディレクトリがローカル ストレージ リソースのパスを指すように指定します。この変更は [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッド内で実行する必要があります。
 
@@ -76,10 +77,10 @@ namespace WorkerRole1
 
 ## 次のステップ
 
-別のブログの「[How to increase the size of the Azure Web Role ASP.NET Temporary Folder (Azure Web ロール ASP.NET の一時フォルダーのサイズを増やす方法)](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)」の説明を参照してください。
+ブログ「[How to increase the size of the Azure Web Role ASP.NET Temporary Folder (Azure Web ロール ASP.NET の一時フォルダーのサイズを増やす方法)](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)」の説明を参照してください。
 
 クラウド サービスの他の[トラブルシューティングに関する記事](..\?tag=top-support-issue&service=cloud-services)を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

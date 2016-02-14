@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="01/21/2016"
    ms.author="joaoma" />
 
 # ホスト名の表示と変更
@@ -51,7 +51,7 @@ REST クライアントから次の手順を実行します。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
-1. 次の形式で要求を送信します。https://management.core.windows.net/<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
+1. 次の形式で要求を送信します。https://management.core.windows.net/\<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
 
 1. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
@@ -67,8 +67,8 @@ REST クライアントから次の手順を実行します。
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

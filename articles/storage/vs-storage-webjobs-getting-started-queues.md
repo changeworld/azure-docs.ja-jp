@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
@@ -259,7 +259,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。オ�
 
 ## キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
 
-**Blob** と **Table** 属性を持つと、BLOB および Table を読み書きすることができます。このセクションのサンプルは、BLOB に適用されます。BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」を参照してください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」を参照してください。
+**Blob** と **Table** 属性を持つと、BLOB および Table を読み書きすることができます。このセクションのサンプルは、BLOB に適用されます。BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」を参照してください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](/app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」を参照してください。
 
 ### BLOB の操作を開始する文字列キュー メッセージ
 
@@ -543,4 +543,4 @@ Azure テーブルでは **Console.Out** および **Console.Error** ログが�
 
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="02/04/2016"
 	ms.author="larryfr"/>
 
 # Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -25,7 +25,7 @@ Stephen F Elston, Ph.D.
 
 このクイック スタート チュートリアルは、R プログラミング言語を使用した Azure Machine Learning の拡張を迅速に開始するのに役立ちます。この R プログラミング チュートリアルに従って作業することで、Azure Machine Learning 内で R コードを作成、テスト、実行することができます。チュートリアルでは、Azure Machine Learning で R 言語を使用し、包括的な予測ソリューションを作成します。
 
-Microsoft Azure Machine Learning には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。強力な R 言語は、分析の共通言語という特徴があります。幸いにも Azure Machine Learning の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Azure Machine Learning のデプロイのスケーラビリティを容易に高めることができます。
+Microsoft Azure Machine Learning には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。強力な R 言語は、分析の共通言語という特徴があります。幸いにも Azure Machine Learning の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Azure Machine Learning のデプロイメントのスケーラビリティを容易に高めることができます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -58,31 +58,31 @@ Azure Machine Learning 環境で R コードを作成、テストし、分析と
 
 このセクションでは、Machine Learning Studio 環境における R プログラミング言語操作の基本を見ていきます。R 言語は、Azure Machine Learning 環境内でカスタマイズされた分析とデータ操作モジュールを作成するための、強力なツールを提供します。
 
-R コードの小規模な開発、テスト、デバッグを行うには、RStudio を使用します。このコードを Machine Learning Studio で実行するには、コードを切り取り、[R スクリプトの実行](execute-r-script)モジュールに貼り付けます。
+R コードの小規模な開発、テスト、デバッグを行うには、RStudio を使用します。このコードを Machine Learning Studio で実行するには、コードを切り取り、[R スクリプトの実行][execute-r-script]モジュールに貼り付けます。
 
 ###R スクリプトの実行モジュール
 
-Machine Learning Studio では、R スクリプトは [R スクリプトの実行モジュール](execute-r-script)内で実行します。Machine Learning Studio における [R スクリプトの実行](execute-r-script)モジュールの例を、図 1 に示します。
+Machine Learning Studio では、R スクリプトは [R スクリプトの実行モジュール][execute-r-script]内で実行します。Machine Learning Studio における [R スクリプトの実行][execute-r-script]モジュールの例を、図 1 に示します。
 
  ![R プログラミング言語: Machine Learning Studio で選択された Execute R Script モジュール][1]
 
 *図 1: 選択された R スクリプトの実行モジュールを表示する Machine Learning Studio 環境*
 
-図 1 を参照して、[R スクリプトの実行](execute-r-script)モジュールを操作するための Machine Learning Studio 環境の主要部分を見ていきましょう。
+図 1 を参照して、[R スクリプトの実行][execute-r-script]モジュールを操作するための Machine Learning Studio 環境の主要部分を見ていきましょう。
 
 - 実験するモジュールが、中央のウィンドウに表示されています。
 
 - 左側のウィンドウの上部には、R スクリプトを表示し編集するウィンドウがあります。
 
-- 右側のウィンドウの下部には、[R スクリプトの実行](execute-r-script)モジュールのプロパティがいくつか表示されています。このウィンドウの該当する位置をクリックすると、エラー ログと出力ログを表示できます。
+- 右側のウィンドウの下部には、[R スクリプトの実行][execute-r-script]モジュールのプロパティがいくつか表示されています。このウィンドウの該当する位置をクリックすると、エラー ログと出力ログを表示できます。
 
-これ以降このドキュメントでは、[R スクリプトの実行](execute-r-script)についてより詳細に説明します。
+これ以降このドキュメントでは、[R スクリプトの実行][execute-r-script]についてより詳細に説明します。
 
-複雑な R 関数を操作するときには、RStudio 内で編集、テスト、デバッグすることをお勧めします。どのようなソフトウェア開発でも、コードを徐々に拡張し、小さい単純なテスト ケースでテストします。次に、関数を切り取り、[R スクリプトの実行](execute-r-script)モジュールの R スクリプト ウィンドウに貼り付けます。このアプローチでは、RStudio 統合開発環境 (IDE) と Azure Machine Learning の両方の機能を活用できます。
+複雑な R 関数を操作するときには、RStudio 内で編集、テスト、デバッグすることをお勧めします。どのようなソフトウェア開発でも、コードを徐々に拡張し、小さい単純なテスト ケースでテストします。次に、関数を切り取り、[R スクリプトの実行][execute-r-script]モジュールの R スクリプト ウィンドウに貼り付けます。このアプローチでは、RStudio 統合開発環境 (IDE) と Azure Machine Learning の両方の機能を活用できます。
 
 ####R コードの実行
 
-[R スクリプトの実行](execute-r-script)モジュール内の R コードは、**[実行]** ボタンをクリックして実験を行うと、実行されます。実行が完了すると、[R スクリプトの実行](execute-r-script) アイコンにチェックマークが表示されます。
+[R スクリプトの実行][execute-r-script]モジュール内の R コードは、**[実行]** ボタンをクリックして実験を行うと、実行されます。実行が完了すると、[[R スクリプトの実行]][execute-r-script] アイコンにチェックマークが表示されます。
 
 ####Azure Machine Learning 向けの防御的な R コーディング
 
@@ -93,13 +93,13 @@ R 例外処理のより包括的な取扱いが必要な場合は、[付録 B - 
 
 ####Machine Learning Studio での R のデバッグとテスト
 
-繰り返しますが、RStudio では、小規模な R コードのテストとデバッグを行うことをお勧めします。ただし、[R スクリプトの実行](execute-r-script)モジュール自体で、R コードの問題を追跡することが必要になる場合があります。また、Machine Learning Studio で結果をチェックすることもお勧めします。
+繰り返しますが、RStudio では、小規模な R コードのテストとデバッグを行うことをお勧めします。ただし、[R スクリプトの実行][execute-r-script]モジュール自体で、R コードの問題を追跡することが必要になる場合があります。また、Machine Learning Studio で結果をチェックすることもお勧めします。
 
 Azure Machine Learning プラットフォームでの R コード実行の出力は、主に output.log にあります。また、いくつかの追加情報が error.log で見られます。
 
-R コード実行中に Machine Learning Studio でエラーが発生した場合、最初にすべきことは error.log を調べることです。このファイルには、エラーを把握して修正するために役立つ有用なエラー メッセージが含まれています。error.log を表示するには、エラーを含む [R スクリプトの実行](execute-r-script)の**プロパティ ウィンドウ**で、**[エラー ログの表示]** をクリックします。
+R コード実行中に Machine Learning Studio でエラーが発生した場合、最初にすべきことは error.log を調べることです。このファイルには、エラーを把握して修正するために役立つ有用なエラー メッセージが含まれています。error.log を表示するには、エラーを含む [R スクリプトの実行][execute-r-script]の**プロパティ ウィンドウ**で、**[エラー ログの表示]** をクリックします。
 
-たとえば、未定義変数 y を持つ次の R コードを[ R スクリプトの実行](execute-r-script)モジュールで実行した場合:
+たとえば、未定義変数 y を持つ次の R コードを[ R スクリプトの実行][execute-r-script]モジュールで実行した場合:
 
 	x <- 1.0
 	z <- x + y
@@ -110,7 +110,7 @@ R コード実行中に Machine Learning Studio でエラーが発生した場�
 
 *図 2: エラー メッセージのポップアップ*
 
-この場合、output.log で R のエラー メッセージを見る必要がありそうです。[R スクリプトの実行](execute-r-script)をクリックして、右側の**プロパティウィンドウ**にある **[出力ログの表示]** 項目をクリックします。新しいブラウザー ウィンドウが開き、次のことがわかります。
+この場合、output.log で R のエラー メッセージを見る必要がありそうです。[[R スクリプトの実行] ][execute-r-script]をクリックして、右側の**プロパティウィンドウ**にある **[出力ログの表示]** 項目をクリックします。新しいブラウザー ウィンドウが開き、次のことがわかります。
 
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
@@ -127,7 +127,7 @@ R のオブジェクトの値を調べるために、これらの値を output.l
 
 ####Machine Learning Studio のパッケージ
 
-Azure Machine Learning には、350 を超える R 言語パッケージがプレインストールされています。[R スクリプトの実行](execute-r-script)モジュールで次のコードを使用し、プレインストールされているパッケージの一覧を取得できます。
+Azure Machine Learning には、350 を超える R 言語パッケージがプレインストールされています。[R スクリプトの実行][execute-r-script]モジュールで次のコードを使用し、プレインストールされているパッケージの一覧を取得できます。
 
 	data.set <- data.frame(installed.packages())
 	maml.mapOutputPort("data.set")
@@ -136,7 +136,7 @@ Azure Machine Learning には、350 を超える R 言語パッケージがプ�
 
 ###	RStudio の概要
 
-RStudio は、広く使用されている R 向けの IDE です。このクイック スタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行](execute-r-script)モジュールに貼り付けます。
+RStudio は、広く使用されている R 向けの IDE です。このクイック スタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けます。
 
 デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、すぐにインストールすることをお勧めします。オープン ソース R 言語の無償ダウンロードが、包括的な R アーカイブ ネットワーク (CRAN) ([http://www.r-project.org/](http://www.r-project.org/)) で利用できます。Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。さらに、CRAN には、便利な分析とデータ操作のパッケージが豊富に用意されています。
 
@@ -144,11 +144,11 @@ RStudio を初めて使用する場合は、デスクトップ バージョン�
 
 RStudio のチュートリアルの手順は、https://support.rstudio.com/hc/sections/200107586-Using-RStudio で入手できます。
 
-RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載されています。
+RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載されています。
 
 ##<a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
 
-このセクションでは、[R スクリプトの実行](execute-r-script)モジュールでデータを入出力する方法を説明します。[R スクリプト実行](execute-r-script)モジュールでさまざまなデータ型の入出力を操作する方法を確認します。
+このセクションでは、[R スクリプトの実行][execute-r-script]モジュールでデータを入出力する方法を説明します。[R スクリプト実行][execute-r-script]モジュールでさまざまなデータ型の入出力を操作する方法を確認します。
 
 このセクションのすべてのコードは、既にダウンロードした zip ファイルに含まれています。
 
@@ -182,11 +182,11 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
 
 - **csdairydata.csv データセット**を、実験にドラッグ アンド ドロップします。
 
-- 左側のウィンドウの上部にある **[実験項目の検索]** ボックスで、「[R スクリプトの実行](execute-r-script)」と入力します。検索一覧に、モジュールが表示されます。
+- 左側のウィンドウの上部にある **[実験項目の検索]** ボックスで、「[R スクリプトの実行][execute-r-script]」と入力します。検索一覧に、モジュールが表示されます。
 
-- [R スクリプトの実行](execute-r-script)モジュールを、パレットにドラッグ アンド ドロップします。
+- [R スクリプトの実行][execute-r-script]モジュールを、パレットにドラッグ アンド ドロップします。
 
-- **csdairydata.csv データセット**の出力を、[R スクリプトの実行](execute-r-script)の入力 (**データセット 1**) の一番左側に接続します。
+- **csdairydata.csv データセット**の出力を、[R スクリプトの実行][execute-r-script]の入力 (**データセット 1**) の一番左側に接続します。
 
 - **忘れずに [保存] をクリックします。**
 
@@ -225,38 +225,49 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
 
 ###	R スクリプトの実行モジュールへのデータ入力
 
-[R スクリプトの実行](execute-r-script)モジュールへの入力を調べましょう。この例では、カリフォルニア酪農データを [R スクリプトの実行](execute-r-script)モジュールに読み込みます。
+[R スクリプトの実行][execute-r-script]モジュールへの入力を調べましょう。この例では、カリフォルニア酪農データを [R スクリプトの実行][execute-r-script]モジュールに読み込みます。
 
-[R スクリプトの実行](execute-r-script)モジュールに入力できるデータは 3 つあります。アプリケーションに応じて、いずれか 1 つ、またはすべてを使用できます。また、入力のない R スクリプトを使用することも、まったく問題ありません。
+[R スクリプトの実行][execute-r-script]モジュールに入力できるデータは 3 つあります。アプリケーションに応じて、いずれか 1 つ、またはすべてを使用できます。また、入力のない R スクリプトを使用することも、まったく問題ありません。
 
 これらの各入力を左から右に見ていきましょう。カーソルを入力の上に移動してツール ヒントを読むと、各入力の名前がわかります。
 
 #### スクリプト バンドル
 
-スクリプト バンドル入力により、zip ファイルの内容を [R スクリプトの実行](execute-r-script)モジュールに渡すことができます。次のコマンドのいずれかを使用すると、zip ファイルの内容を R コードに読み込むことができます。
+スクリプト バンドル入力により、zip ファイルの内容を [R スクリプトの実行][execute-r-script]モジュールに渡すことができます。次のコマンドのいずれかを使用すると、zip ファイルの内容を R コードに読み込むことができます。
 
 	source("src/yourfile.R") # Reads a zipped R script
 	load("src/yourData.rdata") # Reads a zipped R data file
 
-> [AZURE.NOTE]Azure Machine Learning は zip 内のファイルを、src/ ディレクトリに存在するように扱うため、このディレクトリ名をファイル名のプレフィックスにする必要があります。
+> [AZURE.NOTE] Azure Machine Learning は zip 内のファイルを、src/ ディレクトリに存在するように扱うため、このディレクトリ名をファイル名のプレフィックスにする必要があります。たとえば、zip のルートに `yourfile.R` と `yourData.rdata` というファイルが含まれている場合、`source` と `load` を使用するときに `src/yourfile.R` と `src/yourData.rdata` のようにアドレスを指定します。
 
 データセットの読み込みについては、既に[データセットの読み込み](#loading)で説明しました。前のセクションで示した R スクリプトを作成してテストした後は、次の作業を行います。
 
-1. R スクリプトを .R ファイルに保存します。このスクリプト ファイルの名前を "simpleplot.R" にします。  
+1. R スクリプトを .R ファイルに保存します。このスクリプト ファイルの名前を "simpleplot.R" にします。内容は次のとおりです。
 
-2.  zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。
+        ## Only one of the following two lines should be used
+        ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+        ## If in RStudio, use the second line with read.csv()
+        cadairydata <- maml.mapInputPort(1)
+        # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
+        str(cadairydata)
+        pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
+        ## The following line should be executed only when running in
+        ## Azure Machine Learning Studio
+        maml.mapOutputPort('cadairydata')
+
+2.  zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。Windows の場合、ファイルを右クリックし、__[送る]__、__[圧縮フォルダー]__ の順に選択します。この操作で、"simpleplot.R" ファイルを含む新しい zip ファイルが作成されます。
 
 3.	ファイルを、Machine Learning Studio の**データセット**に追加し、種類を **zip** に指定します。データセットに zip ファイルが表示されるようになります。
 
 4.	zip ファイルを、**データセット**から **ML Studio キャンバス**にドラッグ アンド ドロップします。
 
-5.	**zip データ** アイコンの出力を、[R スクリプトの実行](execute-r-script)モジュールの**スクリプト バンドル**入力に接続します。
+5.	**zip データ** アイコンの出力を、[R スクリプトの実行][execute-r-script]モジュールの**スクリプト バンドル**入力に接続します。
 
-6.	[R スクリプトの実行](execute-r-script)モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。たとえば、「`source("src/SimplePlot.R")`」と入力します。
+6.	[R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。たとえば、「`source("src/simpleplot.R")`」と入力します。
 
 7.	必ず **[保存]** をクリックします。
 
-これらの手順の完了後に実験を実行すると、[R スクリプトの実行](execute-r-script)モジュールは zip ファイル内の R スクリプトを実行します。この時点で、実験は図 5 のように表示されます。
+これらの手順の完了後に実験を実行すると、[R スクリプトの実行][execute-r-script]モジュールは zip ファイル内の R スクリプトを実行します。この時点で、実験は図 5 のように表示されます。
 
 ![zip ファイル化された R スクリプトを使用する実験][6]
 
@@ -268,7 +279,7 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
 
 	cadairydata <- maml.mapInputPort(1)
 
-**[実行]** ボタンをクリックして、実験を実行します。実行が完了したら、[R スクリプトの実行](execute-r-script) モジュールをクリックし、プロパティ ウィンドウの** [出力ログの表示]** をクリックします。ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。下へスクロールすると、次のことがわかります。
+**[実行]** ボタンをクリックして、実験を実行します。実行が完了したら、[[R スクリプトの実行]][execute-r-script] モジュールをクリックし、プロパティ ウィンドウの** [出力ログの表示]** をクリックします。ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。下へスクロールすると、次のことがわかります。
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -279,7 +290,7 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
     [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
     [ModuleOutput] }
 
-ページをダブルクリックすると、追加のデータが読み込まれ、次のように表示されます。
+さらに下にスクロールすると、次のように列に関する詳細情報が表示されます。
 
 	[ModuleOutput] [1] "Loading variable port1..."
 	[ModuleOutput]
@@ -305,7 +316,7 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
 
 これらの結果はほとんど予想どおりであり、228 個の記録と 9 個の列が含まれています。列の名前、R データの型、各列のサンプルが表示されています。
 
-> [AZURE.NOTE] [R スクリプトの実行](execute-r-script)モジュールの R デバイス出力からは、出力された同じ内容を簡単に入手できます。次のセクションでは、[R スクリプトの実行](execute-r-script)モジュールの出力について説明します。
+> [AZURE.NOTE] [R スクリプトの実行][execute-r-script]モジュールの R デバイス出力からは、出力された同じ内容を簡単に入手できます。次のセクションでは、[R スクリプトの実行][execute-r-script]モジュールの出力について説明します。
 
 ####データセット 2
 
@@ -329,7 +340,7 @@ RStudio の使用に関する追加情報が、[付録 A](appendixa) に記載�
 
 ###	R デバイス出力
 
-[R スクリプトの実行](execute-r-script)モジュールのデバイス出力には、メッセージとグラフィックスの出力が含まれています。R からの標準出力と標準エラー メッセージは両方とも、R デバイス出力ポートに送信されます。
+[R スクリプトの実行][execute-r-script]モジュールのデバイス出力には、メッセージとグラフィックスの出力が含まれています。R からの標準出力と標準エラー メッセージは両方とも、R デバイス出力ポートに送信されます。
 
 R デバイス出力を表示するは、ポートをクリックして、**[視覚化]** をクリックします。R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
 
@@ -353,7 +364,7 @@ R デバイス出力を表示するは、ポートをクリックして、**[視
 
 ###	型の変換
 
-カリフォルニア酪農データを [R スクリプトの実行](execute-r-script)モジュールの R コードに読み込めるようになったため、列のデータが目的の型と形式になっていることを確認する必要があります。
+カリフォルニア酪農データを [R スクリプトの実行][execute-r-script]モジュールの R コードに読み込めるようになったため、列のデータが目的の型と形式になっていることを確認する必要があります。
 
 R は動的に型を変更できる言語なので、必要に応じてデータ型を別の型に変換できます。R の基本的なデータ型には、数値、論理値、文字があります。因子型は、カテゴリ化されたデータをコンパクトに格納するために使用されます。[付録 B - 参考資料](#appendixb)の文献には、データ型に関する詳細な情報が記載されています
 
@@ -373,7 +384,7 @@ R は動的に型を変更できる言語なので、必要に応じてデータ
 
 前のセクションで入力した列のデータ型を調べると、ラベル "Month" (文字型) の列を除き、すべての列は数値型になります。これを因子に変換し、結果をテストしましょう。
 
-散布図マトリックスを作成した行を削除し、"Month" 列を因子に変換する行を追加しました。この実験では、R コードを切り取り、[R スクリプトの実行](execute-r-script)モジュールのコード ウィンドウに貼り付けます。また、zip ファイルを更新し、それを Azure Machine Learning Studio にアップロードすることもできますが、いくつかの手順が必要になります。
+散布図マトリックスを作成した行を削除し、"Month" 列を因子に変換する行を追加しました。この実験では、R コードを切り取り、[R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに貼り付けます。また、zip ファイルを更新し、それを Azure Machine Learning Studio にアップロードすることもできますが、いくつかの手順が必要になります。
 
 	## Only one of the following two lines should be used
 	## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
@@ -462,9 +473,9 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 このデータセットに適用する必要があるフィルター処理はわずかです。cadairydata データフレームの列を調べると、2 つの不要な列があるのがわかります。最初の列には行番号のみが含まれ、あまり役に立ちません。二番目の Year.Month 列には、重複する情報が含まれています。次の R コードを使用して、これらの列を簡単に除外できます。
 
-> [AZURE.NOTE] これからこのセクションで、[R スクリプトの実行](execute-r-script)モジュールに追加するコードを示します。`str()` 関数の**前**に、新しく各行を追加します。この関数を使用し、Azure Machine Learning Studio で結果を検証します。
+> [AZURE.NOTE] これからこのセクションで、[R スクリプトの実行][execute-r-script]モジュールに追加するコードを示します。`str()` 関数の**前**に、新しく各行を追加します。この関数を使用し、Azure Machine Learning Studio で結果を検証します。
 
-次の行を、[R スクリプトの実行](execute-r-script)モジュールの R コードに追加します。
+次の行を、[R スクリプトの実行][execute-r-script]モジュールの R コードに追加します。
 
 	# Remove two columns we do not need
 	cadairydata <- cadairydata[, c(-1, -2)]
@@ -598,7 +609,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 2. 各ケースで値 NA を返します。副作用がより少ないその他の選択肢も多数存在します。たとえば、ゼロ ベクトル、またはオリジナルの入力ベクトルを返すこともできます。
 
-3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`stop()` ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
+3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、 ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を `stop()` が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
 
 4. 例外が発生せず、処理が突然中断しないように、対数計算は `tryCatch()` の中に含まれています。`tryCatch()` を使用しない場合、R 関数により発生したほとんどのエラーは、停止信号になっていしまい、処理が中断します。
 
@@ -632,7 +643,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 値が変換されたことが確認できます。現在、牛乳の生産が他のすべての乳製品の生産を大きく超えていますが、対数スケールで見ていることに注意してください。
 
-この時点でデータはクリーンアップされ、モデリングの準備が整いました。[R スクリプトの実行](execute-r-script)モジュールの結果データセット出力に関する視覚化サマリーを調べると、"Month" 列が希望する 12 個の一意値を持つ "Categorical" であることがわかります。
+この時点でデータはクリーンアップされ、モデリングの準備が整いました。[R スクリプトの実行][execute-r-script]モジュールの結果データセット出力に関する視覚化サマリーを調べると、"Month" 列が希望する 12 個の一意値を持つ "Categorical" であることがわかります。
 
 ##<a id="timeseries"></a>時系列オブジェクトと相関関係分析
 
@@ -644,12 +655,11 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 既に述べたように、時系列データは、時間インデックスを持つ一連のデータ値です。R 時系列オブジェクトは、時間インデックスを作成し管理するために使用されます。時系列オブジェクトの使用には、いくつかの利点があります。時系列オブジェクトにより、オブジェクトにカプセル化されている時系列インデックス値のさまざまな細かな管理から解放されます。さらに、時系列オブジェクトにより、さまざまな時系列メソッドを使用して、プロット、印刷、モデリングなどを行えます。
 
-一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。
-<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
+一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ###	時系列オブジェクトの例
 
-それでは、例の操作を開始しましょう。**新しい** [R スクリプトの実行](execute-r-script)モジュールを実験にドラッグ アンド ドロップします。既存の [R スクリプトの実行](execute-r-script)モジュールの結果データセット 1 出力ポートを、新しい [R スクリプトの実行](execute-r-script)モジュールのデータセット 1 入力ポートに接続します。
+それでは、例の操作を開始しましょう。**新しい** [R スクリプトの実行][execute-r-script]モジュールを実験にドラッグ アンド ドロップします。既存の [R スクリプトの実行][execute-r-script]モジュールの結果データセット 1 出力ポートを、新しい [R スクリプトの実行][execute-r-script]モジュールのデータセット 1 入力ポートに接続します。
 
 最初の例で行ったように、例の実行を進めていく中のある時点で、各手順で追加する行のみを示します。
 
@@ -917,7 +927,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 3.  `data.frame()` 関数は、`do.call()` により生成された結果を、データフレームに変換します。
 
-行名は、データフレームの列内にあることに注意してください。そうすることで、行名が [R スクリプトの実行](execute-r-script)からの出力の場合に、保存されます。
+行名は、データフレームの列内にあることに注意してください。そうすることで、行名が [R スクリプトの実行][execute-r-script]からの出力の場合に、保存されます。
 
 このコードを実行すると、図 19 に示す出力が生成されます。これは、結果データセット ポートの出力を**視覚化**すると表示されます。行名は、意図したとおり、最初の列になっています。
 
@@ -935,7 +945,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 ###	分析用のデータフレームの作成
 
-最初に、**新しい** [R スクリプトの実行](execute-r-script)モジュールを実験に追加します。既存の [R スクリプトの実行](execute-r-script)モジュールの**結果データセット**出力を、新しいモジュールの**データセット 1** 入力に接続します。結果が、図 20 のように表示されます。
+最初に、**新しい** [R スクリプトの実行][execute-r-script]モジュールを実験に追加します。既存の [R スクリプトの実行][execute-r-script]モジュールの**結果データセット**出力を、新しいモジュールの**データセット 1** 入力に接続します。結果が、図 20 のように表示されます。
 
 ![新しい R スクリプトの実行モジュールが追加された実験][21]
 
@@ -1069,7 +1079,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 うまくいっているようです。すべての項が有意です。ただし、値 2e-16 は既定値であり、あまり深刻に考える必要はありません。
 
-サニティ テストとして、傾向曲線を示すカリフォルニア酪農生産データの時系列プロットを作成しましょう。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行](execute-r-script)モデル (RStudio ではない) に、次のコードを追加しました。図 23 に、結果が示されます。
+サニティ テストとして、傾向曲線を示すカリフォルニア酪農生産データの時系列プロットを作成しましょう。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行][execute-r-script]モデル (RStudio ではない) に、次のコードを追加しました。図 23 に、結果が示されます。
 
 	milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1127,7 +1137,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 モデルに切片項がなく、12 個の有意な月因子があることがわかります。まさにこれが、希望していたものです。
 
-別のカリフォルニア酪農生産データの時系列プロットを作成し、季節モデルがうまく機能することを確認します。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行](execute-r-script)に次のコードを追加しました。
+別のカリフォルニア酪農生産データの時系列プロットを作成し、季節モデルがうまく機能することを確認します。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行][execute-r-script]に次のコードを追加しました。
 
 	milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
@@ -1309,7 +1319,7 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 - DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。https://www.datacamp.com/courses/introduction-to-r では R に関する対話型チュートリアルが無料で提供されています。  
 
-- Clarkson 大学のKelly Black 助教授による R クイック チュートリアル http://www.cyclismo.org/tutorial/R/
+- Clarkson 大学の Kelly Black 助教授による R クイック チュートリアル http://www.cyclismo.org/tutorial/R/
 
 - http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html には 60 以上の R に関するリソースが記載されています。
 
@@ -1345,6 +1355,6 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 
 <!-- Module References -->
-(execute-r-script): https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
+[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!-----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

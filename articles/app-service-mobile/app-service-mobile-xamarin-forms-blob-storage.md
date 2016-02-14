@@ -1,6 +1,6 @@
 <properties
     pageTitle="Xamarin.Forms アプリで Azure Storage に接続する"
-    description="Azure Blob ストレージに接続することで、Todo リスト Xamarin.Forms モバイル アプリにイメージを追加する"
+    description="Azure Blob Storage に接続することで、Todo リスト Xamarin.Forms モバイル アプリにイメージを追加する"
     documentationCenter="xamarin"
     authors="lindydonna"
     manager="dwrede"
@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="01/21/2015"
+	ms.date="02/03/2015"
     ms.author="donnam"/>
 
 #Xamarin.Forms アプリで Azure Storage に接続する
 
 ## 概要
 
-Azure Mobile Apps クライアントとサーバー SDK は、/tables エンドポイントに対する CRUD 操作での構造化データのオフライン同期をサポートします。通常、このデータはデータベースや同様のストアに格納されますが、これらのデータ ストアは一般的に大きなバイナリ データを効率的に保存することができません。また、アプリケーションの中には、他の場所 (Blob ストレージやファイル共有など) に格納されている関連データを持っているものもあるため、/tables エンドポイント内のレコードとその他のデータ間の関連付けを作成できると便利です。
+Azure Mobile Apps クライアントとサーバー SDK は、/tables エンドポイントに対する CRUD 操作での構造化データのオフライン同期をサポートします。通常、このデータはデータベースや同様のストアに格納されますが、これらのデータ ストアは一般的に大きなバイナリ データを効率的に保存することができません。また、アプリケーションの中には、他の場所 (Blob Storage やファイル共有など) に格納されている関連データを持っているものもあるため、/tables エンドポイント内のレコードとその他のデータ間の関連付けを作成できると便利です。
 
 このトピックでは、Mobile Apps の Todo リスト クイック スタートにイメージのサポートを追加する方法を説明します。先に、[Xamarin.Forms アプリの作成]に関するチュートリアルを完了している必要があります。
 
@@ -44,7 +44,7 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 ## ストレージ アカウントの作成
 
-1. [Azure Storage アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。 
+1. [Azure ストレージ アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。 
 
 2. Azure ポータルで、新しく作成したストレージ アカウントに移動し、**キー**のアイコンをクリックします。**プライマリ接続文字列**をコピーします。
 
@@ -117,11 +117,11 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 ###クライアントとサーバーの通信
 
-`TodoItemStorageController` には、Blob をアップロードまたはダウンロードするためのルートが*ない*ことに注意してください。これはモバイル クライアントが、特定の Blob またはコンテナーに安全にアクセスするために、最初に SAS トークンを取得した後、これらの操作を実行するために Blob ストレージと*直接*対話するためです。これは重要なアーキテクチャの仕様で、ストレージにアクセスする場合を除き、モバイル バックエンドのスケーラビリティと可用性の制限を受けます。代わりに、Azure Storage に直接接続することで、モバイル クライアントが自動パーティション分割や地理的分散などの機能を利用できるようになります。
+`TodoItemStorageController` には、Blob をアップロードまたはダウンロードするためのルートが*ない*ことに注意してください。これはモバイル クライアントが、特定の BLOB またはコンテナーに安全にアクセスするために、最初に SAS トークン (Shared Access Signature) を取得した後、これらの操作を実行するために Blob Storage と*直接*対話するためです。これは重要なアーキテクチャの仕様で、ストレージにアクセスする場合を除き、モバイル バックエンドのスケーラビリティと可用性の制限を受けます。代わりに、Azure Storage に直接接続することで、モバイル クライアントが自動パーティション分割や地理的分散などの機能を利用できるようになります。
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。詳細については、「[共有アクセス署名]」を参照してください。
+Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて]」を参照してください。
 
-次の図は、クライアントとサーバーの相互作用を示しています。ファイルをアップロードする前に、クライアントはサービスからの SAS トークンを要求します。サービスはストレージ接続文字列を使用して新しい SAS を生成します。この SAS はその後クライアントに返されます。SAS は期間限定で、アクセス許可を特定のファイルまたはコンテナーだけに制限します。モバイル クライアントはこの SAS と Azure Storage クライアント SDK を使用して、ファイルを Blob ストレージにアップロードします。
+次の図は、クライアントとサーバーの相互作用を示しています。ファイルをアップロードする前に、クライアントはサービスからの SAS トークンを要求します。サービスはストレージ接続文字列を使用して新しい SAS を生成します。この SAS はその後クライアントに返されます。SAS は期間限定で、アクセス許可を特定のファイルまたはコンテナーだけに制限します。モバイル クライアントはこの SAS と Azure Storage クライアント SDK を使用して、ファイルを Blob Storage にアップロードします。
 
 ![SAS トークンの要求](./media/app-service-mobile-xamarin-forms-blob-storage/storage-token-diagram.png)
 
@@ -678,7 +678,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 この記事では、Azure Storage で使用するために、Azure Mobile クライアントとサーバー SDK での新しいファイル サポートの使用方法について説明しました。
 
-- ストレージ アカウントを作成し、モバイル アプリ バックエンドに接続文字列を追加します。Azure Storage へのキーを持っているのはバックエンドだけです。モバイル クライアントは Azure Storage にアクセスする必要がある場合に、SAS (Shared Access Signature) トークンを要求します。Azure Storage での SAS トークンの詳細は、「[共有アクセス署名]」を参照してください。
+- ストレージ アカウントを作成し、モバイル アプリ バックエンドに接続文字列を追加します。Azure Storage へのキーを持っているのはバックエンドだけです。モバイル クライアントは Azure Storage にアクセスする必要がある場合に、SAS (Shared Access Signature) トークンを要求します。Azure Storage での SAS トークンの詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて]」を参照してください。
 
 - SAS トークンの要求を処理してレコードに関連付けられているファイルを取得するため、`StorageController` をサブクラス化するコントローラーを作成します。既定では、ファイルはレコード ID をコンテナー名の一部として使用して、レコードに関連付けられます。この動作は `IContainerNameResolver` の実装を指定することでカスタマイズすることができます。SAS トークン ポリシーもカスタマイズすることができます。
 
@@ -704,9 +704,9 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
             jobService.MobileService.EventManager.Subscribe<StoreOperationCompletedEvent>(StoreOperationEventHandler);
 
-- 関連付けは名前付け規則によって行われるため、Blob ストレージを直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただしこの場合は、**関連付けられた Blob が変更されたら、レコードのタイムスタンプも必ず更新**する必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
+- 関連付けは名前付け規則によって行われるため、Blob Storage を直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただしこの場合は、**関連付けられた Blob が変更されたら、レコードのタイムスタンプも必ず更新**する必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
 
-    これが必要な理由は、一部のモバイル クライアントはローカル ストレージに既にレコードがあるからです。これらのクライアントが増分プルを実行すると、このレコードは返されず、クライアントは新しい関連付けられているファイルに対してクエリを実行しません。この問題を回避するため、Azure Mobile クライアント SDK を使用しない Blob ストレージの変更を実行するときに、レコードのタイムスタンプを更新することをお勧めします。
+    これが必要な理由は、一部のモバイル クライアントはローカル ストレージに既にレコードがあるからです。これらのクライアントが増分プルを実行すると、このレコードは返されず、クライアントは新しい関連付けられているファイルに対してクエリを実行しません。この問題を回避するため、Azure Mobile クライアント SDK を使用しない Blob Storage の変更を実行するときに、レコードのタイムスタンプを更新することをお勧めします。
 
 - クライアント プロジェクトは [Xamarin.Forms DependencyService] パターンを使用して、実行時に正しいプラットフォーム固有のクラスをロードします。このサンプルでは、各プラットフォームに固有のプロジェクトに実装することで、インターフェイス `IPlatform` を定義しました。
 
@@ -718,7 +718,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 [Microsoft.Azure.Mobile.Client.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.Files/
 [Microsoft.Azure.Mobile.Client.SQLiteStore]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
-[共有アクセス署名]: https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/
-[Azure Storage アカウントの作成]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/#create-a-storage-account
+[共有アクセス署名、第 1 部: SAS モデルについて]: ../storage/storage-dotnet-shared-access-signature-part-1.md
+[Azure ストレージ アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

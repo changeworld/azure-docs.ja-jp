@@ -22,8 +22,6 @@
 
 この記事では、Azure App Service Mobile Apps で Node.js バックエンドを使用する方法についての詳細な情報と例を提供します。
 
-> [AZURE.NOTE] この SDK はプレビュー段階です。そのため、運用環境でこの SDK を使用することは推奨されません。このドキュメントの例では、[azure-mobile-apps] の v2.0.0-rc2 を使用しています。
-
 ## <a name="Introduction"></a>はじめに
 
 Azure App Service Mobile Apps は、Web アプリケーションにモバイルに最適化されたデータ アクセス Web API を追加する機能を提供します。Azure App Service Mobile Apps SDK は、ASP.NET と Node.js の Web アプリケーション向けに用意されています。この SDK を使用すると、次の処理を実行できます。
@@ -129,11 +127,11 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 ### <a name="download-quickstart"></a>方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする
 
-ポータルの **[クイック スタート]** ブレードを使用して新しい Node.js モバイル アプリ バックエンドを作成すると、新しい Node.js プロジェクトが作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイメント ツールの 1 つを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
+ポータルの **[クイック スタート]** ブレードを使用して新しい Node.js モバイル アプリ バックエンドを作成すると、新しい Node.js プロジェクトが作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイ ツールの 1 つを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
 1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)](http://git-scm.com/book/en/Getting-Started-Installing-Git)」を参照してください。
 
-2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイメント用のユーザー名とパスワードをメモしておきます。
+2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
 
 3. モバイル アプリ バックエンドのブレードで、**[Git クローン URL]** の設定をメモしておきます。
 
@@ -154,7 +152,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 ### <a name="howto-publish-to-azure"></a>方法: Azure に Node.js バックエンドを発行する
 
-Microsoft Azure では、Azure サービスに Azure App Service Mobile Apps Node.js バックエンドを発行するための多数のメカニズムが提供されます。Visual Studio に統合されたデプロイメント ツール、コマンドライン ツールおよびソース管理に基づく継続的なデプロイメント オプションも利用します。このトピックの詳細については、[Azure App Service のデプロイ ガイド]を参照してください。
+Microsoft Azure では、Azure サービスに Azure App Service Mobile Apps Node.js バックエンドを発行するための多数のメカニズムが提供されます。Visual Studio に統合されたデプロイ ツール、コマンドライン ツールおよびソース管理に基づく継続的なデプロイ オプションも利用します。このトピックの詳細については、[Azure App Service のデプロイ ガイド]を参照してください。
 
 Azure App Service には、デプロイ前に確認する必要がある Node.js アプリケーションに関する以下の特定のアドバイスがあります。
 
@@ -167,7 +165,7 @@ Azure App Service には、デプロイ前に確認する必要がある Node.js
 
     var mobile = azureMobileApps({ homePage: true });
 
-ローカルで開発する場合にのみ、このオプションを利用する場合は、この設定を `azureMobile.js` ファイルに追加することができます。
+ローカルで開発するときのみ、このオプションを利用する場合は、この設定を `azureMobile.js` ファイルに追加することができます。
 
 ## <a name="TableOperations"></a>テーブル操作
 
@@ -551,7 +549,7 @@ initialize() メソッドを明示的に呼び出して、サービスの実行�
 
 ### <a name="Swagger"></a>Swagger のサポートを有効にする
 
-Azure App Service Mobile Apps には、組み込みの [Swagger] のサポートが付属してします。Swagger のサポートを有効にするには、最初に依存関係として swagger ui をインストールします。
+Azure App Service Mobile Apps には、組み込みの [Swagger] のサポートが付属しています。Swagger のサポートを有効にするには、最初に依存関係として swagger ui をインストールします。
 
     npm install --save swagger-ui
 
@@ -559,13 +557,13 @@ Azure App Service Mobile Apps には、組み込みの [Swagger] のサポート
 
     var mobile = azureMobileApps({ swagger: true });
 
-開発エディションでのみ Swagger サポートを有効にするには、`NODE_ENV` アプリの設定を利用することで行えます。
+開発エディションでのみ Swagger サポートを有効にするには、`NODE_ENV` アプリの設定を利用します。
 
     var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 
 swagger エンドポイントは、http://\_yoursite\_.azurewebsites.net/swagger で特定されます。Swagger UI には `/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とするように選択している場合、Swagger は / エンドポイントに対してエラーを生成することに注意してください。最善の結果を得るため、Azure App Service の [認証/承認] 設定で認証されていない要求を許可するように選択し、`table.access` プロパティを使用して認証を制御します。
 
-ローカルで開発する場合にのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加することができます。
+ローカルで開発するときのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加することができます。
 
 ## <a name="CustomAPI"></a>カスタム API
 
@@ -747,4 +745,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="11/17/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher" />
 
 # Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要
@@ -35,7 +35,7 @@ Deploy-AzureResourceGroup.ps1 スクリプトは、デプロイメント ワー�
 
 Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセクションでの実行内容について、次に説明します。
 
->[AZURE.NOTE]ここでは、バージョン 1.0 の Deploy-AzureResourceGroup.ps1 スクリプトについて説明します。
+>[AZURE.NOTE] ここでは、バージョン 1.0 の Deploy-AzureResourceGroup.ps1 スクリプトについて説明します。
 
 1.	Azure リソース マネージャーのデプロイメント プロジェクトに必要なパラメーターを宣言します。いくつかのパラメーターには、プロジェクトの作成時に設定された既定値があります。スクリプト内でこれらの既定値を変更したり、スクリプトを実行する前に異なるパラメーター値を追加したりすることができます。
 
@@ -209,7 +209,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
 
     ![][3]
 
-	>[AZURE.NOTE]必須パラメーターの値が必要な場合、デプロイ時に、このダイアログ ボックスが自動的に表示されます。
+	>[AZURE.NOTE] 必須パラメーターの値が必要な場合、デプロイ時に、このダイアログ ボックスが自動的に表示されます。
 
     ![][4]
 
@@ -264,4 +264,4 @@ Azure リソース マネージャーの詳細については、「[Azure リソ
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

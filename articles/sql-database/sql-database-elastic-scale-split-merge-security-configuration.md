@@ -12,8 +12,9 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="11/04/2015" 
+    ms.date="02/04/2016" 
     ms.author="torsteng;sidneyh" />
+
 
 # Split-Merge セキュリティの構成  
 
@@ -23,8 +24,8 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 証明書は次の 2 つの方法で構成されます。
 
-1. [SSL 証明書を構成するには](To#Configure#the#SSL#Certificate)
-2. [クライアント証明書を構成するには](To#Configure#Client#Certificates) 
+1. [SSL 証明書を構成するには](#To-Configure-the-SSL#Certificate)
+2. [クライアント証明書を構成するには](#To-Configure-Client-Certificates) 
 
 ## 証明書を取得するには
 
@@ -52,45 +53,45 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ### 新しい自己署名証明書を作成する
 
-1.    [自己署名証明書を作成する](Create#a#Self-Signed#Certificate)
-2.    [自己署名 SSL 証明書用の PFX ファイルを作成する](Create#PFX#file#for#Self-Signed#SSL#Certificate)
-3.    [クラウド サービスに SSL 証明書をアップロードする](Upload#SSL#Certificate#to#Cloud#Service)
-4.    [サービス構成ファイルの SSL 証明書を更新する](Update#SSL#Certificate#in#Service#Configuration#File)
-5.    [SSL 証明機関をインポートする](Import#SSL#Certification#Authority)
+1.    [自己署名証明書を作成する](#Create-a-Self-Signed-Certificate)
+2.    [自己署名 SSL 証明書用の PFX ファイルを作成する](#Create-PFX-file-for-Self-Signed-SSL-Certificate)
+3.    [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
+4.    [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
+5.    [SSL 証明機関をインポートする](#Import-SSL-Certification-Authority)
 
 ### 証明書ストアから既存の証明書を使用するには
-1. [証明書ストアから SSL 証明書をエクスポートする](Export#SSL#Certificate#From#Certificate#Store)
-2. [クラウド サービスに SSL 証明書をアップロードする](Upload#SSL#Certificate#to#Cloud#Service)
-3. [サービス構成ファイルの SSL 証明書を更新する](Update#SSL#Certificate#in#Service#Configuration#File)
+1. [証明書ストアから SSL 証明書をエクスポートする](#Export-SSL-Certificate-From-Certificate-Store)
+2. [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
+3. [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
 
 ### PFX ファイルの既存の証明書を使用するには
 
-1. [クラウド サービスに SSL 証明書をアップロードする](Upload#SSL#Certificate#to#Cloud#Service)
-2. [サービス構成ファイルの SSL 証明書を更新する](Update#SSL#Certificate#in#Service#Configuration#File)
+1. [クラウド サービスに SSL 証明書をアップロードする](#Upload-SSL-Certificate-to-Cloud-Service)
+2. [サービス構成ファイルの SSL 証明書を更新する](#Update-SSL-Certificate-in-Service-Configuration-File)
 
 ## クライアント証明書を構成するには
 サービスへの要求を認証するには、クライアント証明書が必要です。以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### クライアント証明書をオフにする
-1.    [クライアント証明書ベースの認証をオフにする](Turn#Off#Client#Certificate-Based#Authentication)
+1.    [クライアント証明書ベースの認証をオフにする](#Turn-Off-Client-Certificate-Based-Authentication)
 
 ### 新しい自己署名証明書を発行する
-1.    [自己署名証明機関を作成する](Create#a#Self-Signed#Certification#Authority)
-2.    [CA 証明書をクラウド サービスにアップロードする](Upload#CA#Certificate#to#Cloud#Service)
-3.    [サービス構成ファイルの CA 証明書を更新する](Update#CA#Certificate#in#Service#Configuration#File)
-4.    [クライアント証明書を発行する](Issue#Client#Certificates)
-5.    [クライアント証明書の PFX ファイルを作成する](Create#PFX#files#for#Client#Certificates)
-6.    [クライアント証明書をインポートする](Import#Client#Certificate)
-7.    [クライアント証明書のサムプリントをコピーする](Copy#Client#Certificate#Thumbprints)
-8.    [許可されているクライアントをサービス構成ファイルに構成する](Configure#Allowed#Clients#in#the#Service#Configuration#File)
+1.    [自己署名証明機関を作成する](#Create-a-Self-Signed-Certification-Authority)
+2.    [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-Certificate-to-Cloud-Service)
+3.    [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
+4.    [クライアント証明書を発行する](#Issue-Client-Certificates)
+5.    [クライアント証明書の PFX ファイルを作成する](#Create-PFX-files-for-Client-Certificates)
+6.    [クライアント証明書をインポートする](#Import-Client-Certificate)
+7.    [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
+8.    [許可されているクライアントをサービス構成ファイルに構成する](#Configure-Allowed-Clients-in-the-Service-Configuration-File)
 
 ### 既存のクライアント証明書を使用する
-1.    [CA の公開キーを検索する](Find#CA#Public Key)
-2.    [CA 証明書をクラウド サービスにアップロードする](Upload#CA#certificate#to#cloud#service)
-3.    [サービス構成ファイルの CA 証明書を更新する](Update#CA#Certificate#in#Service#Configuration#File)
-4.    [クライアント証明書のサムプリントをコピーする](Copy#Client#Certificate#Thumbprints)
-5.    [許可されているクライアントをサービス構成ファイルに構成する](Configure#Allowed#Clients#in#the#Service#Configuration File)
-6.    [クライアント証明書の失効確認を構成する](Configure#Client#Certificate#Revocation#Check)
+1.    [CA の公開キーを検索する] (#Find-CA-Public Key)
+2.    [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
+3.    [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
+4.    [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
+5.    [許可されているクライアントをサービス構成ファイルに構成する] (#Configure-Allowed-Clients-in-the-Service-Configuration File)
+6.    [クライアント証明書の失効確認を構成する](#Configure-Client-Certificate-Revocation-Check)
 
 ## 許可された IP アドレス
 
@@ -102,21 +103,21 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ### 新しい自己署名証明書を使用する
 
-1.     [自己署名証明書を作成する](Create#a#Self-Signed#Certificate)
-2.     [自己署名の暗号化証明書の PFX ファイルを作成する](Create#PFX#file#for#Self-Signed#Encryption#Certificate)
-3.     [クラウド サービスに暗号化証明書をアップロードする](Upload#Encryption#Certificate#to#Cloud#Service)
-4.     [サービス構成ファイルの暗号化証明書を更新する](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [自己署名証明書を作成する](#Create-a-Self-Signed-Certificate)
+2.     [自己署名の暗号化証明書の PFX ファイルを作成する](#Create-PFX-file-for-Self-Signed-Encryption-Certificate)
+3.     [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
+4.     [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
 
 ### 証明書ストアにある既存の証明書を使用する
 
-1.     [証明書ストアから暗号化証明書をエクスポートする](Export#Encryption#Certificate#From#Certificate#Store)
-2.     [クラウド サービスに暗号化証明書をアップロードする](Upload#Encryption#Certificate#to#Cloud#Service)
-3.     [サービス構成ファイルの暗号化証明書を更新する](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [証明書ストアから暗号化証明書をエクスポートする](#Export-Encryption-Certificate-From-Certificate-Store)
+2.     [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
+3.     [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
 
 ### PFX ファイル内に既存の証明書を使用する
 
-1.     [クラウド サービスに暗号化証明書をアップロードする](Upload#Encryption#Certificate#to#Cloud#Service)
-2.     [サービス構成ファイルの暗号化証明書を更新する](Update#Encryption#Certificate#in#Service#Configuration#File)
+1.     [クラウド サービスに暗号化証明書をアップロードする](#Upload-Encryption-Certificate-to-Cloud-Service)
+2.     [サービス構成ファイルの暗号化証明書を更新する](#Update-Encryption-Certificate-in-Service-Configuration-File)
 
 ## 既定の構成
 
@@ -448,14 +449,14 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 7.     目的のストアを選択します。
 8.     **[完了]** をクリックします。
        
-	* [信頼されたルート証明機関ストア] を選択した場合は、**[はい]** をクリックします。
+    * [信頼されたルート証明機関ストア] を選択した場合は、**[はい]** をクリックします。
 9.     すべてのダイアログ ウィンドウで **[OK]** をクリックします。
 
 ## 証明書のアップロード
 
-[Azure クラシック ポータル](https://portal.azure.com/)で
+[Azure ポータル](https://portal.azure.com/)で次の操作を行います。
 
-1. **[クラウド サービス]** を選択します。
+1. **[Cloud Services]** を選択します。
 2. クラウド サービスを選択します。
 3. 上部メニューで **[証明書]** をクリックします。
 4. 下部のバーで **[アップロード]** をクリックします。
@@ -473,4 +474,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

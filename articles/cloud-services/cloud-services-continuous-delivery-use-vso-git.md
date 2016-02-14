@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher"/>
 
 # Visual Studio Team Services と Git を使用した Azure への継続的な配信
@@ -23,8 +23,7 @@ Visual Studio Team Services チーム プロジェクトを使用してソース
 Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。
-> [Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
@@ -44,7 +43,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 	![][4]
 
-2. このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 以降を対象にしていることを確認します。クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。Web アプリを作成する場合は、**[ASP.NET Web アプリケーション]** プロジェクト テンプレートを選択し、次に **[MVC]** を選択します。詳細については、「[Azure App Service での ASP.NET Web アプリの作成](../web-sites-dotnet-get-started.md)」を参照してください。
+2. このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 以降を対象にしていることを確認します。クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。Web アプリを作成する場合は、**[ASP.NET Web アプリケーション]** プロジェクト テンプレートを選択し、次に **[MVC]** を選択します。詳細については、「[Azure App Service での ASP.NET Web アプリの作成](/app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
 
 3. ソリューションのショートカット メニューを開き、**[コミット]** を選択します。
 
@@ -225,7 +224,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 
 ## 次のステップ
 
-Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service での GIT による継続的なデプロイ](../web-sites-publish-source-control.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
+Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service での GIT による継続的なデプロイ](/app-service-web/web-sites-publish-source-control.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -273,4 +272,4 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="02/03/2016"
 	ms.author="jutang"/>
 
 # Java からファイル ストレージを使用する方法
@@ -208,17 +208,12 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 
 その他の Azure ストレージ API に関する詳細については、次のリンク先をご覧ください。
 
-- [Azure Storage SDK for Java]
-- [Azure ストレージ クライアント SDK リファレンス]
-- [Azure Storage REST API]
-- [Azure Storage チーム ブログ]
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+- [Azure SDK for Java](http://azure.microsoft.com/develop/java/)
+- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+- [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
+- [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+- [Azure Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-[Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

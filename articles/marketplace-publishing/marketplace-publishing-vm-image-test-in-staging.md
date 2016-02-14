@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/09/2015"
+   ms.date="02/01/2016"
    ms.author="hascipio" />
 
 # ステージングでの Azure Marketplace の VM プランのテスト
@@ -30,11 +30,13 @@
 3.	**[ステージングされたプランにアクセスできるユーザー]** ダイアログ ボックスで、[Azure プレビュー ポータル](https://portal.azure.com)でプランをプレビューするために使用する Azure サブスクリプションのリストを入力します。
 4. 前の手順で示されている上記のいずれかの Azure サブスクリプションを使用して、[Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 5. プランを検索して、VM イメージについて以下の点を検証します。
-  1. マーケティング コンテンツが Marketplace に正しく表示されていることを確認します。
-
+  - マーケティング コンテンツが Marketplace に正しく表示されていることを確認します。
+  - VM イメージのエンド ツー エンドのデプロイメント。
+  
       ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
-  2. VM イメージのエンド ツー エンドのデプロイメント。
+
+
 
 > [AZURE.IMPORTANT] プランは、本番にプッシュする準備が整っている発行ポータル (**[発行]** > **[本番にプッシュするための承認を要求]**) を介して Microsoft に通知するまで、ステージング状態のままです。この時期が、プランのライブへの移行の準備段階で必要な項目をチームのすべてのメンバーにチェックさせるのに最適です。
 
@@ -46,4 +48,4 @@
 ## 関連項目
 - [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="01/28/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
@@ -28,7 +28,7 @@ Azure Active Directory (AD) B2C の機能の中には、プレビューではサ
 
 ## 確認メールのブランドの問題
 
-既定の確認メールには、"Microsoft" ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用して削除できます。
+既定の確認メールには、"Microsoft" ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
 
 ## 実稼働アプリケーションのサポート
 
@@ -68,7 +68,7 @@ Azure AD B2C プレビューでは、OpenID Connect と OAuth 2.0 がサポー�
 
 ## トークンに関する制限事項
 
-Azure AD B2C プレビューによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("クレーム" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" クレームや "preferred\_username" クレームなどです。ここに記載されている事柄は、プレビュー段階でかなり変更されることを想定しておく必要があります。Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-tokens.md)をご覧ください。
+Azure AD B2C プレビューによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("要求" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" 要求や "preferred\_username" 要求などです。ここに記載されている事柄は、プレビュー段階でかなり変更されることを想定しておく必要があります。Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-reference-tokens.md)をご覧ください。
 
 ## Azure クラシック ポータルでのユーザー管理に関する問題
 
@@ -96,4 +96,4 @@ Azure クラシック ポータルで Azure AD B2C テナントを削除する�
 
 Azure ポータルの B2C 設定ブレードにアクセスすると、(右上隅の) [通知] の下に、"<B2CTenantName> ディレクトリには使用できるサブスクリプションがありません。切り替えることができる他のディレクトリがあります。" という警告メッセージが表示されます (<B2CTenantName> は実際の B2C テナントの名前です)。このメッセージは無視しても問題ありません。B2C 機能には引き続きアクセスできます。現在、Azure ポータル チームと協力して、この問題の解決に取り組んでいます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

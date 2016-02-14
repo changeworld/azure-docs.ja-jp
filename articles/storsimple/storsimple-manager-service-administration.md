@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="01/27/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -34,7 +34,7 @@ StorSimple Manager サービスは Microsoft Azure で実行され、複数の S
 
 #### サービスに接続するには
 
-1. [http://azure.microsoft.com/](https://azure.microsoft.com/) にアクセスします。
+1. [https://manage.windowsazure.com/](https://manage.windowsazure.com/) に移動します。
 
 1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure クラシック ポータルにログオンします。
 
@@ -114,4 +114,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

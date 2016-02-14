@@ -13,16 +13,39 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="01/08/2016"
+   ms.date="01/29/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
 
+## 2016 年 1 月 29 日の週のリリースの新機能
+
+2016 年 1 月 29 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- 追加のデータ ソースを手動で登録するためのサポート。ユーザーは **Azure Data Catalog** ポータルで "手動エントリの作成" を使用したり、**Azure Data Catalog** REST API を使用して次のデータ ソースを登録したりすることができるようになりました。
+   + OData - 関数、エンティティ セット、エンティティ コンテナー
+   + HTTP - ファイル、エンドポイント、レポート、サイト
+   + ファイル システム - ファイル
+   + SharePoint - リスト
+   + FTP - ファイル、ディレクトリ
+   + Salesforce.com - オブジェクト
+   + DB2 - テーブル、ビュー、データベース
+   + PostgreSQL - テーブル、ビュー、データベース
+- Azure SQL DB と Azure SQL Data Warehouse を含む SQL Server データ ソースに対する "SQL Server Data Tools で開く" のサポート。  
+
+> [AZURE.NOTE] "SQL Server Data Tools で開く" には、Visual Studio 2013 Update 4 と SQL Server Tooling がインストールされている必要があります。SQL Server Data Tools の最新バージョンをインストールするには、「[SQL Server Data Tools (SSDT) のダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)」を参照してください。
+
+## 2016 年 1 月 22 日の週のリリースの新機能
+
+2016 年 1 月 22 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- SAP HANA のビューおよびパッケージを登録して検出するためのサポート。ユーザーは **Azure Data Catalog** データ ソース登録ツールを使用して SAP HANA データ ソースを登録し、**Azure Data Catalog** ポータルを使用して登録済み SAP HANA データ ソースの注釈付けや検出を行うことができます。
+
 ## 2016 年 1 月 8 日の週のリリースの新機能
 
-2016 年 1 月 8 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+2016 年 1 月 8 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - **Azure Data Catalog** ポータルでデータ資産をピン留め/ピン留め解除する機能。ユーザーはデータ資産のピン留めを選択することで、再検出/再利用しやすくなります。
 - **Azure Data Catalog** ポータルの新たに再設計されたホーム ページ。新しいホーム ページには、最近公開またはピン留めされた資産、保存された検索など、現在のユーザーのアクティビティに関する詳細な情報のほか、カタログ全体でのアクティビティに関する詳細な情報も含まれています。
@@ -31,20 +54,18 @@
 
 ## 2015 年 12 月 18 日の週のリリースの新機能
 
-2015 年 12 月 18 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+2015 年 12 月 18 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - Azure SQL Data Warehouse データ ソースに対するデータ プロファイルのサポート。Azure SQL Data Warehouse のテーブルとビューを登録するとき、ユーザーはデータ ソースから抽出されたメタデータと共にデータ プロファイル メトリックを含めることができます。
 - MySQL のオブジェクトおよびデータベースを登録して検出するためのサポート。ユーザーは **Azure Data Catalog** データ ソース登録ツールを使用して MySQL データ ソースを登録し、**Azure Data Catalog** ポータルを使用して登録済み MySQL データ ソースの注釈付けや検出を行うことができます。
 
 ## 2015 年 12 月 4 日の週のリリースの新機能
 
-2015 年 12 月 4 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+2015 年 12 月 4 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - Teradata データ ソース用の SPNEGO および Windows 認証のサポート。Teradata のテーブルとビューの登録時に、LDAP および TD2 認証だけでなく、SPNEGO および Windows 認証を使用して Teradata に接続することを選択できます。
 - Azure Data Lake Store のデータ ソースのサポート。ユーザーは、Azure Data Catalog を使用して Azure Data Lake Store のデータ ソースを登録および検出できるようになりました。
 - Azure Data Catalog データ ソース登録ツールでのネットワーク プロキシ設定の手動指定のサポート。ユーザーはツールの [ようこそ] ページで [プロキシ設定を変更します] を選択し、ツールで使用されるプロキシ アドレスとポートを指定することができます。
-
-> [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com/) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
 
 ## 2015 年 11 月 20 日の週のリリースの新機能
@@ -135,18 +156,18 @@
 - Azure SQL Data Warehouse のオブジェクトおよびデータベースを登録して検出するためのサポート。Azure SQL Data Warehouse の詳細については、「[SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)」を参照してください。
 - SQL Server Analysis Services モデルおよび SQL Server Reporting Services サーバーをコンテナーとして登録して検出するためのサポート。SSAS および SSRS のオブジェクトの登録時に、**Azure Data Catalog** は、レポートや他のオブジェクトだけでなく、SSAS モデルと SSRS サーバーのエントリも作成します。コンテナーは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、モデルまたはサーバーのコンテンツを検索し、フィルター処理することもできます。
 
-> [AZURE.NOTE] 9 月 18 日のリリースより前に登録された SSAS および SSRS のオブジェクトについては、モデルまたはサーバーのエントリをカタログに追加する前に、データ ソース登録ツールを使用して再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーによって追加された注釈に影響はありません。
+> [AZURE.NOTE] 9 月 18 日のリリースより前に登録された SSAS および SSRS のオブジェクトについては、モデルまたはサーバーのエントリをカタログに追加する前に、データ ソース登録ツールを使用して再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーが追加した注釈に影響はありません。
 
 ## 2015 年 9 月 11 日の週のリリースの新機能
 
 2015 年 9 月 11 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
-- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)をご覧ください。
+- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)を参照してください。
 - Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。Oracle のテーブルとビューまたは HDFS の登録時に、**Azure Data Catalog** はテーブルとビューだけでなく、データベースのエントリも作成します。データベースは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 
 
-> [AZURE.NOTE] 9 月 11 日以前に登録された Oracle のテーブルおよびビューと、HDFS のファイルおよびディレクトリについては、データベースまたはクラスターのエントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーによって追加された注釈に影響はありません。
+> [AZURE.NOTE] 9 月 11 日以前に登録された Oracle のテーブルおよびビューと、HDFS のファイルおよびディレクトリについては、データベースまたはクラスターのエントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーが追加した注釈に影響はありません。
 
 ## 2015 年 9 月 4 日の週のリリースの新機能
 
@@ -155,7 +176,7 @@
 - 不明なデータ ソースを手動で登録できるようになりました。データ ソース登録ツールで明示的にサポートされていないデータ ソースに注釈を付け、検出できるように、**Azure Data Catalog** ポータルを使用してデータ ソース情報を手動で入力できます。
 - SQL Server データベースをコンテナーとして登録し、検出できるようになりました。SQL Server のテーブルとビューの登録時に、**Azure Data Catalog** はテーブルとビューだけでなく、データベースのエントリも作成します。データベースは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースのコンテンツを検索し、フィルター処理することもできます。
 
-> [AZURE.NOTE] 9 月 4 日以前に登録された SQL Server のテーブルとビューについては、データベース エントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーによって追加された注釈に影響はありません。
+> [AZURE.NOTE] 9 月 4 日以前に登録された SQL Server のテーブルとビューについては、データベース エントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルでユーザーが追加した注釈に影響はありません。
 
 ## 2015 年 8 月 28 日の週のリリースの新機能
 
@@ -174,4 +195,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

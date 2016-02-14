@@ -3,7 +3,7 @@
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
 	documentationCenter=""
-	authors="hangzh,weig,bradsev"
+	authors="bradsev,hangzh,weig"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,32 +13,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016" 
-	ms.author="bradsev"/>
+	ms.date="02/03/2016" 
+	ms.author="bradsev;hangzh;wguo123"/>
 
 
 # Cortana Analytics Process の活用: SQL Data Warehouse を使用する
 
+このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
 
-このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、多クラス分類と回帰のモデルについても説明します。
-
-手順は、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従います。データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、および SQL DW と IPython Notebook でのデータの探索と特徴のエンジニアリング方法について説明します。次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
+手順は、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従います。データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセット
 
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、およびメダリオン (タクシーの一意の ID) 番号が含まれています。データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
-1. 「trip\_data」の CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。いくつかのサンプル レコードを次に示します。
+1. **trip\_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。次にサンプル レコードを示します: medallion,hack\_license,vendor\_id,rate\_code,store\_and\_fwd\_flag,pickup\_datetime,dropoff\_datetime,passenger\_count,trip\_time\_in\_secs,trip\_distance,pickup\_longitude,pickup\_latitude,dropoff\_longitude,dropoff\_latitude 89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171 0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066 0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002 DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388 DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 
-		medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-
-2. 「trip\_fare」の CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
+2. **trip\_fare.csv** ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
 
 		medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
 		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -47,11 +39,15 @@ NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイ�
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
 		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_license、pickup\_datetime という 3 つのフィールドで構成されています。
+trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 
-## <a name="mltasks"></a>予測タスクの例
+- medallion、 
+- hack\_license、 
+- pickup\_datetime という 3 つのフィールドで構成されます。
 
-*tip\_amount* に基づく 3 つの予測問題について説明します。つまり、
+## <a name="mltasks"></a>3 種類の予測タスクに対応する 
+
+3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
 1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
 
@@ -70,33 +66,43 @@ trip\_data と trip\_fare を結合するための一意のキーは、medallion
 
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
 
-独自の **Azure BLOB ストレージ アカウント**を作成します。このチュートリアルで使用される NYC タクシー データは、.csv 形式で Azure のパブリック BLOB ストレージ コンテナーで共有されます。このチュートリアルでは、データは Azure SQL DW にアップロードされる前に、独自の Azure BLOB ストレージにコピーされます。**パブリック BLOB ストレージ**は***米国中南部***にあります。
+**独自の Azure BLOB ストレージ アカウントを作成する**
 
-- 独自の Azure BLOB ストレージをプロビジョニングするときに、米国中南部にできるだけ近い Azure BLOB ストレージの geo ロケーション的位置を選択します。データは、パブ BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。 
+- 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**にできるだけ近い Azure BLOB ストレージの geo ロケーション的位置を選択します。このストレージに NYC タクシー データが格納されています。データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。 
 - 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の手順に従います。以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。 
 
   - **ストレージ アカウント名**
   - **ストレージ アカウント キー**
   - **コンテナー名** (Azure BLOB ストレージ内のデータの格納先)
 
-Azure SQL DW インスタンスをプロビジョニングします。「[SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
+**Azure SQL DW インスタンスをプロビジョニングします。** 「[SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
  
-  - **サーバー名**
-  - **SQLDW (データベース) 名**
+  - **サーバー名**: <server Name>.database.windows.net
+  - **SQLDW (データベース) 名** 
   - **ユーザー名**
   - **パスワード**
 
-Visual Studio 2015 および SQL Server Data Tools をインストールします。手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](sql-data-warehouse-install-visual-studio.md)」を参照してください。
+**Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](sql-data-warehouse-install-visual-studio.md)」を参照してください。
 
-Visual Studio で Azure SQL DW に接続できることを確認します。手順については、「 [Visual Studio で SQL Data Warehouse に接続する](sql-data-warehouse-get-started-connect.md)」を参照してください。
+**Visual Studio で Azure SQL DW に接続します。** 手順については、「[Visual Studio で SQL Data Warehouse に接続する](sql-data-warehouse-get-started-connect.md)」の手順 1 と 2 を参照してください。
 
-Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。手順については、「[Azure Machine Learning のワークスペースの作成](machine-learning-create-workspace.md)」を参照してください。
+>[AZURE.NOTE] SQL Data Warehouse で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
+
+	BEGIN TRY
+	       --Try to create the master key
+	    CREATE MASTER KEY
+	END TRY
+	BEGIN CATCH
+	       --If the master key exists, do nothing
+	END CATCH;
+
+**Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。** 手順については、「[Azure Machine Learning のワークスペースの作成](machine-learning-create-workspace.md)」を参照してください。
 
 ## <a name="getdata"></a>SQL Data Warehouse へのデータの読み込み
 
 Windows PowerShell コマンド コンソールを開きます。以下の PowerShell コマンドを実行して、サンプルの SQL スクリプト ファイルを *-DestDir* パラメーターで指定したローカル ディレクトリにダウンロードします。このファイルは Github で共有されています。*-DestDir* パラメーターの値は任意のローカル ディレクトリに変更できます。*-DestDir* が存在しない場合は、PowerShell スクリプトによって作成されます。
 
->[AZURE.NOTE] *DestDir* に対する作成または書き込みに管理者特権が必要な場合は、以下の PowerShell スクリプトを実行するときに**管理者として実行**しなければならない場合があります。
+>[AZURE.NOTE] *DestDir* ディレクトリに対する作成または書き込みに管理者特権が必要な場合は、以下の PowerShell スクリプトを実行するときに**管理者として実行**しなければならない場合があります。
 
 	$source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
 	$ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
@@ -112,30 +118,204 @@ Windows PowerShell コマンド コンソールを開きます。以下の Power
 
 	./SQLDW_Data_Import.ps1
 
-この PowerShell スクリプト ファイルでは、次のタスクを行います。
+PowerShell スクリプトを初めて実行するときに、Azure SQL DW と Azure BLOB ストレージ アカウントの情報の入力を求められます。この PowerShell スクリプトを初めて完了した場合、入力した資格情報は現在の作業ディレクトリ内の構成ファイル SQLDW.conf に書き込まれます。この PowerShell スクリプト ファイルの今後の実行では、この構成ファイルから必要なすべてのパラメーターを読み取ることができます。いくつかのパラメーターを変更する必要がある場合は、構成ファイルを削除し、要求されたパラメーター値を入力してプロンプト画面でパラメーターを入力するか、*-DestDir* ディレクトリの SQLDW.conf ファイルを編集してパラメーター値を変更できます。
 
-- AzCopy がまだインストールされていない場合は、AzCopy をダウンロードしてインストールする。
-- AzCopy を使用して、パブリック BLOB からプライベート BLOB ストレージ アカウントにデータをコピーする。
-- プライベート BLOB ストレージ アカウントから Azure SQL DW にデータを読み込む。
-	- BLOB ストレージ アカウントで NYC タクシー データセット用の外部テーブルを作成する。
-	- SQL DW でテーブル (乗車および料金テーブル) を作成して、NYC タクシー データセットを格納する。
-	- 外部テーブルから SQL DW テーブルに NYC タクシー データセットをインポートする。
-	- サンプル データ テーブル (NYCTaxi\_Sample) を作成し、乗車および料金テーブルで SQL クエリを選択してデータをテーブルに挿入する。このチュートリアルのいくつかの手順では、このサンプル テーブルを使用する必要があります。 
+>[AZURE.NOTE] スキーマ名が Azure SQL DW に既に存在するものと競合しないように、SQLDW.conf ファイルから直接パラメーターを読み取るときに、実行ごとに既定のスキーマ名として 3 桁の乱数が SQLDW.conf ファイルのスキーマ名に追加されます。PowerShell スクリプトから、スキーマ名の入力を求められることがあります。任意の名前を指定できます。
 
-PowerShell スクリプトを初めて実行するときに、Azure SQL DW と Azure BLOB ストレージ アカウントの情報の入力を求められます。この PowerShell スクリプトを初めて完了した場合、入力した資格情報は現在の作業ディレクトリ内の構成ファイル SQLDW.conf に書き込まれます。この PowerShell スクリプト ファイルの今後の実行では、この構成ファイルから必要なすべてのパラメーターを読み取ることができます。いくつかのパラメーターを変更する必要がある場合は、構成ファイルを削除し、要求されたパラメーター値を入力してプロンプト画面でパラメーターを入力するか、構成ファイルを編集してパラメーター値を変更できます。
+この **PowerShell スクリプト** ファイルで、次のタスクが完了します。
 
->[AZURE.NOTE] スキーマ名が Azure SQL DW に既に存在するものと競合しないように、.conf ファイルから直接パラメーターを読み取るときに、実行ごとに既定のスキーマ名として 3 桁の乱数が .conf ファイルのスキーマ名に追加されます。
+- AzCopy がまだインストールされていない場合は、**AzCopy をダウンロードしてインストールします**
+
+		$AzCopy_path = SearchAzCopy
+    	if ($AzCopy_path -eq $null){
+       		Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
+        	InstallAzCopy
+        	$AzCopy_path = SearchAzCopy
+    	}
+			$env_path = $env:Path
+			for ($i=0; $i -lt $AzCopy_path.count; $i++){
+				if ($AzCopy_path.count -eq 1){
+					$AzCopy_path_i = $AzCopy_path
+				} else {
+					$AzCopy_path_i = $AzCopy_path[$i]
+				}
+				if ($env_path -notlike '*' +$AzCopy_path_i+'*'){
+					Write-Host $AzCopy_path_i 'not in system path, add it...'
+					[Environment]::SetEnvironmentVariable("Path", "$AzCopy_path_i;$env_path", "Machine")
+					$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") 
+					$env_path = $env:Path
+				}	
+
+- AzCopy を使用して、パブリック BLOB から**プライベート BLOB ストレージ アカウントにデータをコピーします**
+
+		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"	
+		$start_time = Get-Date
+		AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
+		$end_time = Get-Date
+    	$time_span = $end_time - $start_time
+    	$total_seconds = [math]::Round($time_span.TotalSeconds,2)
+    	Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
+    	Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
+
+
+- 次のコマンドで、プライベート BLOB ストレージ アカウントから **(LoadDataToSQLDW.sql を実行して) Polybase を使用して Azure SQL DW にデータを読み込みます**。
+	
+	- スキーマの作成
+
+			EXEC (''CREATE SCHEMA {schemaname};'');
+
+	- データベース スコープの資格情報の作成
+			
+			CREATE DATABASE SCOPED CREDENTIAL {KeyAlias} 
+			WITH IDENTITY = ''asbkey'' , 
+			Secret = ''{StorageAccountKey}''
+
+	- Azure Storage BLOB の外部データ ソースの作成
+
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage} 
+			WITH
+			(
+    			TYPE = HADOOP,
+    			LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
+    			CREDENTIAL = {KeyAlias}
+			)
+			;
+
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage} 
+			WITH
+			(
+    			TYPE = HADOOP,
+    			LOCATION =''wasbs://{ContainerName}@{StorageAccountName}.blob.core.windows.net'',
+    			CREDENTIAL = {KeyAlias}
+			)
+			;
+
+	- csv ファイルの外部ファイル形式を作成します。データは圧縮されず、フィールドはパイプ文字で区切られます。
+
+			CREATE EXTERNAL FILE FORMAT {csv_file_format} 
+			WITH 
+			(   
+    			FORMAT_TYPE = DELIMITEDTEXT, 
+    			FORMAT_OPTIONS  
+    			(
+        			FIELD_TERMINATOR ='','',
+        			USE_TYPE_DEFAULT = TRUE
+    			)
+			)
+			;
+		
+	- Azure Blob ストレージに NYC タクシー データセットの外部料金および乗車のテーブルを作成します。
+
+			CREATE EXTERNAL TABLE {external_nyctaxi_fare}
+			(
+				medallion varchar(50) not null,
+				hack_license varchar(50) not null,
+				vendor_id char(3),
+				pickup_datetime datetime not null,
+				payment_type char(3),
+				fare_amount float,
+				surcharge float,
+				mta_tax float,
+				tip_amount float,
+				tolls_amount float,
+				total_amount float
+			)
+			with (
+    			LOCATION    = ''/nyctaxifare/'',
+    			DATA_SOURCE = {nyctaxi_fare_storage},
+    			FILE_FORMAT = {csv_file_format},
+				REJECT_TYPE = VALUE,
+				REJECT_VALUE = 12     
+			)  
+
+
+			CREATE EXTERNAL TABLE {external_nyctaxi_trip}
+			(
+       			medallion varchar(50) not null,
+       			hack_license varchar(50)  not null,
+       			vendor_id char(3),
+       			rate_code char(3),
+       			store_and_fwd_flag char(3),
+       			pickup_datetime datetime  not null,
+       			dropoff_datetime datetime, 
+       			passenger_count int,
+       			trip_time_in_secs bigint,
+       			trip_distance float,
+       			pickup_longitude varchar(30),
+       			pickup_latitude varchar(30),
+       			dropoff_longitude varchar(30),
+       			dropoff_latitude varchar(30)
+			)
+			with (
+    			LOCATION    = ''/nyctaxitrip/'',
+    			DATA_SOURCE = {nyctaxi_trip_storage},
+    			FILE_FORMAT = {csv_file_format},
+    			REJECT_TYPE = VALUE,
+				REJECT_VALUE = 12         
+			)
+
+	- Azure Blob ストレージの外部テーブルのデータを SQL Data Warehouse に読み込む
+
+			CREATE TABLE {schemaname}.{nyctaxi_fare}
+			WITH 
+			(   
+    			CLUSTERED COLUMNSTORE INDEX,
+				DISTRIBUTION = HASH(medallion)
+			)
+			AS 
+			SELECT * 
+			FROM   {external_nyctaxi_fare}
+			;
+
+			CREATE TABLE {schemaname}.{nyctaxi_trip}
+			WITH 
+			(   
+    			CLUSTERED COLUMNSTORE INDEX,
+				DISTRIBUTION = HASH(medallion)
+			)
+			AS 
+			SELECT * 
+			FROM   {external_nyctaxi_trip}
+			;
+
+	- サンプル データ テーブル (NYCTaxi\_Sample) を作成し、乗車および料金テーブルで SQL クエリを選択してデータをテーブルに挿入します(このチュートリアルのいくつかの手順では、このサンプル テーブルを使用する必要があります)。
+
+			CREATE TABLE {schemaname}.{nyctaxi_sample}
+			WITH 
+			(   
+    			CLUSTERED COLUMNSTORE INDEX,
+				DISTRIBUTION = HASH(medallion)
+			)
+			AS 
+			(
+	    		SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount,
+				tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
+				tip_class = CASE 
+						WHEN (tip_amount = 0) THEN 0
+                        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+                        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+                        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+                        ELSE 4
+                    END
+	    		FROM {schemaname}.{nyctaxi_trip} t, {schemaname}.{nyctaxi_fare} f
+    			WHERE datepart("mi",t.pickup_datetime) = 1
+				AND t.medallion = f.medallion
+    			AND   t.hack_license = f.hack_license
+    			AND   t.pickup_datetime = f.pickup_datetime
+    			AND   pickup_longitude <> ''0''
+        		AND   dropoff_longitude <> ''0''
+			)
+			;
 
 >[AZURE.NOTE] プライベート BLOB ストレージ アカウントの地理的位置に応じて、パブリック BLOB からプライベート ストレージ アカウントへのデータのコピー プロセスには約 15 分 (またはそれ以上) かかる場合があります。また、ストレージ アカウントから Azure SQL DW へのデータの読み込みプロセスには 20 分以上かかる場合があります。
 
->[Azure に関する注意事項] パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーするファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。**すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。「**y**」と入力して、個別に上書きすることもできます。
+>[AZURE.NOTE] パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。**すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。「**y**」と入力して、個別に上書きすることもできます。
 
 ![プロット #21][21]
 
-[Azure に関するヒント]
-
-- 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure BLOB ストレージにアップロードできます。その場合、AzCopy コマンドで、PowerShell スクリプト ファイルの**ソース** の場所をローカル ディレクトリに変更するだけです。	
-- 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。 
+>[AZURE.TIP] **独自のデータを使用する:** 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+	
+>[AZURE.TIP] 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
 
 
 また、この Powershell スクリプトは、データ探索のサンプル ファイルである SQLDW\_Explorations.sql、SQLDW\_Explorations.ipynb、および SQLDW\_Explorations\_Scripts.py に Azure SQL DW の情報を取り込み、PowerShell スクリプトが完了したらすぐにこれら 3 つのファイルを試せるようにします。
@@ -146,11 +326,14 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 ## <a name="dbexplore"></a>Azure SQL Data Warehouse でのデータの探索と特徴エンジニアリング
 
-このセクションでは、**Visual Studio Data Tools** を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。このセクションで使用されるすべての SQL クエリは、**SQLDW\_Explorations.sql** という名前のサンプル スクリプトにあります。このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) から取得することもできます。ただし、Github のファイルには Azure SQL DW の情報は含まれていません。
+このセクションでは、**Visual Studio Data Tools** を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。このセクションで使用されるすべての SQL クエリは、*SQLDW\_Explorations.sql* という名前のサンプル スクリプトにあります。このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) から取得することもできます。ただし、Github のファイルには Azure SQL DW の情報は含まれていません。
+
+Visual Studio で、SQL DW ログイン名とパスワードを使用して Azure SQL DW に接続し、**SQL オブジェクト エクスプローラー**を開いて、データベースとテーブルがインポートされていることを確認します。*SQLDW\_Explorations.sql* ファイルを取得します。
+
+>[AZURE.NOTE] Parallel Data Warehouse (PDW) クエリ エディターを開くには、**SQL オブジェクト エクスプローラー**で PDW を選択して **[新しいクエリ]** コマンドを使用します。標準の SQL クエリ エディターは PDW でサポートされていません。
 
 このセクションで実行されるデータの探索と特徴の生成タスクの種類を以下に示します。
 
-- Visual Studio を使用して、SQL DW のログイン名とパスワードで Azure SQL DW に接続する。
 - さまざまな期間で、いくつかのフィールドのデータの分布を探索する。
 - [経度] フィールドと [緯度] フィールドのデータの品質を調査する。
 - **tip\_amount** に基づいて、二項分類および多クラス分類のラベルを生成する。
@@ -159,7 +342,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 ### データのインポートの確認
 
-以前、並行一括インポートを使用してデータを入力したテーブルの行と列の数を簡単に確認するには、次を実行します。
+以前、Polybase の並行一括インポートを使用してデータを入力したテーブルの行と列の数を簡単に確認するには、次のクエリを実行します。
 
 	-- Report number of rows in table <nyctaxi_trip> without table scan
 	SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -167,15 +350,19 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 	-- Report number of columns in table <nyctaxi_trip>
 	SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
+173、179、759 の行と 14 列を取得します。
+
 ### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
-この例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) を識別します。**pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
+このクエリ例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) を識別します。**pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
 
 	SELECT medallion, COUNT(*)
 	FROM <schemaname>.<nyctaxi_fare>
 	WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
 	GROUP BY medallion
 	HAVING COUNT(*) > 100
+
+クエリによって 13,369 個の medallion が返されます。
 
 ### 探索: medallion および hack\_license ごとの乗車回数の分布
 
@@ -209,6 +396,8 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 	  FROM <schemaname>.<nyctaxi_fare>
 	  WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
 	GROUP BY tipped
+
+クエリによって、チップが支払われた 90,447,622 件と支払われなかった 82,264,709 件というチップの頻度が返されます。
 
 ### 探索: チップのクラス/範囲の分布
 
@@ -744,4 +933,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
-	editor="tlee" />
+	editor="" />
 
  <tags
 	ms.service="visual-studio-online"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="11/17/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理
@@ -158,7 +158,7 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 	![][20]
 
 ## 次のステップ
-「[Microsoft Azure Storage の概要](storage-introduction.md)」の記事を読んで、Azure Storage サービスの機能をご確認ください。
+「[Microsoft Azure Storage の概要](/storage/storage-introduction.md)」の記事を読んで、Azure Storage サービスの機能をご確認ください。
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount1c.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount2c.png
@@ -182,4 +182,4 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

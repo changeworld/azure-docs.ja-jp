@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="01/28/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure AD B2C テナントを作成する方法
@@ -24,7 +24,7 @@ Azure Active Directory (AD) B2C を使い始めるには、以下に示す 3 つ
 
 ## 手順 1: Azure サブスクリプションにサインアップする
 
-Azure サブスクリプションが既にある場合は、次の手順に進みます。ない場合は、[Azure サブスクリプション](sign-up-organization.md)にサインアップし、Azure AD B2C にアクセスできるようにします。
+Azure サブスクリプションが既にある場合は、次の手順に進みます。ない場合は、[Azure サブスクリプション](../active-directory/sign-up-organization.md)にサインアップし、Azure AD B2C にアクセスできるようにします。
 
 > [AZURE.NOTE]
 現在、Azure AD B2C プレビューは無料で使用できますが、制限があります (テナントあたり最大 50,000 ユーザー)。[Azure クラシック ポータル](http://manage.windowsazure.com/)にアクセスするには、Azure サブスクリプションが必要です。
@@ -74,4 +74,4 @@ Azure サブスクリプションが既にある場合は、次の手順に進�
 
 [Azure AD B2C へのアプリケーションの登録とクイック スタート アプリケーションの作成](active-directory-b2c-app-registration.md)に進みます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

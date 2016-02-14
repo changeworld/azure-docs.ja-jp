@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="01/28/2016" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーション ワークロード フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する
@@ -119,4 +119,4 @@
 
 - Azure で独自の IT ワークロードをデプロイする場合は、こちらの[ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)をご覧ください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

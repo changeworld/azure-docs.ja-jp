@@ -14,7 +14,7 @@
 - [PowerShell - Service Management](vpn-gateway-about-forced-tunneling.md)
 - [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 
-この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。サービス管理 (別名、クラシック デプロイ モデル) を利用して作成された VNet の強制トンネリングを構成する場合、「[強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)」を参照してください。
+この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。サービス管理 (別名、クラシック デプロイメント モデル) を利用して作成された VNet の強制トンネリングを構成する場合、「[強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)」を参照してください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -61,9 +61,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure PowerShell コマンドレット (1.0 以上)。このバージョンは、[ダウンロード ページ](https://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。このドキュメントは、PowerShell 1.0 以降を対象に記述しています。この構成に必要なコマンドレットは、以前のバージョンにはありません。
-
-- Azure リソース マネージャーおよび PowerShell の使用方法に精通していない場合は、[この記事](../articles/powershell-azure-resource-manager.md)を参照してください。
+- Azure PowerShell コマンドレット (1.0 以上)。この構成に必要なコマンドレットは、1.0 より前のバージョンにはありません。このバージョンは、[ダウンロード ページ](https://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。PowerShell のインストールと構成の詳細については、[Microsoft Azure PowerShell のインストールおよび構成の方法](../powershell-install-configure.md)に関するページを参照してください。
 
 ### 構成の手順
 
@@ -136,4 +134,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

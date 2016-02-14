@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/05/2016"
+   ms.date="02/01/2016"
    ms.author="curtand;kenhoff"/>
 
 # Azure Active Directory レポートの使用の開始
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) には、ディレクトリに関するセキ�
 
 - ディレクトリ監査レポート
 
-> [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
 
 
@@ -71,7 +71,7 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 ![各レポートの上部のヘルプ テキスト](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
 
-> [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
 
 
@@ -92,7 +92,7 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 ### 各レポートを表示する
 
-各レポートに移動して、収集されているデータおよび処理済みのサインインを表示します。[すべてのレポートの一覧をここで](active-directory-reporting-what-it-is.md)確認できます。
+各レポートに移動して、収集されているデータおよび処理済みのサインインを表示します。[すべてのレポートの一覧をここで](active-directory-reporting-guide.md)確認できます。
 
 ![すべてのレポート](./media/active-directory-reporting-getting-started/reportsMain.png)
 
@@ -104,7 +104,7 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 ![[ダウンロード] ボタン](./media/active-directory-reporting-getting-started/downloadButton.png)
 
-> [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
 
 
@@ -134,7 +134,7 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 ![画面下部の[多要素認証] ボタン](./media/active-directory-reporting-getting-started/mfaButton.png)
 
-> [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
 
 
@@ -154,6 +154,6 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 ご意見ご感想、サポート、またはご質問については、[aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) までメールをお送りください。
 
-> [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

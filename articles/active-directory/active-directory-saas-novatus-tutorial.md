@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/02/2016"
 	ms.author="jeedes"/>
 
 
@@ -64,7 +64,7 @@ Azure AD への Novatus の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Novatus**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_01.png)<br>
-7. 結果ウィンドウで **[Novatus]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[Novatus]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Novatus で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -89,12 +89,12 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure AD ポータルの **Novatus** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの Novatus へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_03.png) <br>
+2. **[ユーザーの Novatus へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_03.png) <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_04.png) <br>
 
 
-    a.[サインオン URL] ボックスに、ユーザーが Novatus アプリケーションへのサインオンに使用する URL を入力します。その際、「**https://sso.novatuscontracts.com/companyname**」のパターンを使用します。汎用名を参照するとき、この「**companyname**」を実際の名前に置換する必要があります。
+    a.[サインオン URL] ボックスに、ユーザーが Novatus アプリケーションへのサインオンに使用する URL を入力します。その際、"**https://sso.novatuscontracts.com/companyname**" パターンを使用します。一般名を参照する際は、この "**companyname**" を実際の名前に置き換える必要があります。
 
 
 4. **[Novatus でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_05.png) <br>
@@ -107,9 +107,9 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 5. お使いのアプリケーション用に構成された SSO を取得するために、Novatus のサポート チーム (jvinci@novatusinc.com) に問い合わせます。Novatus チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
 
 
 
@@ -213,4 +213,4 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-novatus-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-novatus-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

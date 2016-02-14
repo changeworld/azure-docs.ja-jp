@@ -67,7 +67,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 	4. **NuGet パッケージ マネージャー**を閉じます。
 
-7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、コード スニペットでパラメーターの値を指定します。
+7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、コード スニペットに subscriptionId、dataLakeAccountName、localPath などのパラメーター値を指定します。
 
 	このコードでは、Data Lake Store の作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 	
@@ -101,6 +101,10 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 		            var subscriptionId = new Guid("<subscription_ID>");
 		            var _credentials = GetAccessToken();
 		            string dataLakeAccountName = "<data_lake_store_name>";
+		            string localPath = @"C:\local_path\file.txt"; //Change this
+		            string remoteFolder = "/data_lake_path/";
+		            string remotePath = remoteFolder + "file.txt";
+		            
 		            string location = "East US 2";
 		
 		            _credentials = GetCloudCredentials(_credentials, subscriptionId);
@@ -121,22 +125,22 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 		            Console.WriteLine("Account created. Press ENTER to continue...");
 		            Console.ReadLine();
 		
-		            // Create a directory called MYTEMPDIR in the store
+		            // Create a directory in the store
 		            Console.WriteLine("Creating a directory under the Azure Data Lake Store account");
-		            CreateDir(_dataLakeStoreFileSystemClient, "/mytempdir", dataLakeAccountName, "777");
+		            CreateDir(_dataLakeStoreFileSystemClient, dataLakeAccountName, remoteFolder, "777");
 		            Console.WriteLine("Directory created. Press ENTER to continue...");
 		            Console.ReadLine();
 		
-		            // Upload a file under MYTEMPDIR
+		            // Upload a file under the new folder
 		            Console.WriteLine("Uploading a file to the Azure Data Lake Store account");
 		            bool force = false; //Set this to true if you want to overwrite existing data
-		            UploadFile(_dataLakeStoreFileSystemClient, dataLakeAccountName, "C:\\users\\nitinme\\desktop\\vehicle1_09142014.csv", "/mytempdir/vehicle1_09142014.csv", force);
+		            UploadFile(_dataLakeStoreFileSystemClient, dataLakeAccountName, localPath, remotePath, force);
 		            Console.WriteLine("File uploaded. Press ENTER to continue...");
 		            Console.ReadLine();
 		
 		            // List the files in the Data Lake Store
 		            Console.WriteLine("Listing all files in the Azure Data Lake Store account");
-		            var fileList = ListItems(_dataLakeStoreFileSystemClient, dataLakeAccountName, "/mytempdir");
+		            var fileList = ListItems(_dataLakeStoreFileSystemClient, dataLakeAccountName, remoteFolder);
 		            var fileMenuItems = fileList.Select(a => String.Format("{0,15} {1}", a.Type, a.PathSuffix)).ToList();
 		            foreach (var filename in fileMenuItems)
 		            {
@@ -148,7 +152,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 		
 		            // Download the files from the Data Lake Store
 		            Console.WriteLine("Downloading files from an Azure Data Lake Store account");
-		            DownloadFile(_dataLakeStoreFileSystemClient, dataLakeAccountName, "/mytempdir/vehicle1_09142014.csv", "C:\\users\\nitinme\\desktop\\vehicle1_09142014_copy.csv", force);
+		            DownloadFile(_dataLakeStoreFileSystemClient, dataLakeAccountName, remotePath, localPath, force);
 		            Console.WriteLine("Files downloaded. Press ENTER to continue...");
 		            Console.ReadLine();
 		
@@ -184,9 +188,9 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 		            return true;
 		        }
 		
-		        public static bool UploadFile(DataLakeStoreFileSystemManagementClient dataLakeStoreFileSystemClient, string dlAccountName, string srcPath, string destPath, bool force = false)
+		        public static bool UploadFile(DataLakeStoreFileSystemManagementClient dataLakeStoreFileSystemClient, string dlAccountName, string srcPath, string destPath, bool force = true)
 		        {
-		            var parameters = new UploadParameters(srcPath, destPath, dlAccountName, isOverwrite: true);
+		            var parameters = new UploadParameters(srcPath, destPath, dlAccountName, isOverwrite: force);
 		            var frontend = new DataLakeStoreFrontEndAdapter(dlAccountName, dataLakeStoreFileSystemClient);
 		            var uploader = new DataLakeStoreUploader(parameters, frontend);
 		            uploader.Execute();
@@ -195,9 +199,9 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 		        
 		        public static bool AppendToFile(DataLakeStoreFileSystemManagementClient dataLakeStoreFileSystemClient, string dlAccountName, string path, string content)
 		        {
-		            var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
+		            var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content));
 		            
-		            dataLakeStoreFileSystemClient.FileSystem.DirectAppend(filePath, accountName, stream);
+		            dataLakeStoreFileSystemClient.FileSystem.DirectAppend(path, dlAccountName, stream, null);
 		            return true;
 		        }
 		
@@ -235,4 +239,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

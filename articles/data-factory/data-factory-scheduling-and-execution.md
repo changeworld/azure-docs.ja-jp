@@ -35,7 +35,7 @@
  
 現在実行中のアクティビティ ウィンドウでは、アクティビティ JSON の **WindowStart** および **WindowEnd** システム変数を使用して、アクティビティ ウィンドウに関連付けられた時間間隔にアクセスできます。アクティビティ JSON と、アクティビティに関連付けられたスクリプトで、時系列データを表す入力、出力データセットからデータを選択するなど、さまざまな用途にこれらの変数を使用できます。
 
-特定の時間オフセットでのスケジュール設定、アクティビティ ウィンドウ間隔の開始時または終了時に処理を合わせるモード設定など、スケジューラに使用できるさまざまなプロパティの詳細については、「[パイプラインの作成](data-factory-create-pipelines.md)」の記事を参照してください。
+**scheduler** プロパティは、データセットの **availability** プロパティと同じサブプロパティをサポートしています。特定の時間オフセットでのスケジュール設定、アクティビティ ウィンドウ間隔の開始時または終了時に処理を合わせるモード設定など、スケジューラに使用できるさまざまなプロパティの詳細については、「[Dataset availability (データセットの可用性)](data-factory-create-datasets.md#Availability)」の記事を参照してください。
 
 ## 時系列のデータセットとデータ スライス
 
@@ -577,6 +577,8 @@ Text | Format(X) | X: String 変数 | テキストの書式を設定します。
 	    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
 	}
 
+使用できるさまざまな書式設定のオプション (例: yyyy と yy) については、「[カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)」のトピックを参照してください。
+
 > [AZURE.NOTE] 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。例: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' and RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)).この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。
   
 
@@ -678,4 +680,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

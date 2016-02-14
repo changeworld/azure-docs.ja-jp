@@ -212,7 +212,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 		http://hn0-myspar:9995
 
 	* **hn0** は headnode0 を表します。
-	* **myspar** は Spark クラスターの最初の 5 文字です。
+	* **myspar** は Spark クラスター名の最初の 6 文字です。
 	* **9995** は Zeppelin Notebook にアクセスできるポートです。
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、**[Note の新規作成]** をクリックします。
@@ -330,4 +330,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

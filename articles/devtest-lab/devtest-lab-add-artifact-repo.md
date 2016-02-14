@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Add a Git artifact repository to your DevTest Lab | Microsoft Azure"
-	description="Add a GitHub or Visual Studio Team Services Git repository for your custom artifacts to your lab"
+<properties
+	pageTitle="DevTest ラボへの Git アーティファクト リポジトリの追加 | Microsoft Azure"
+	description="ラボにカスタム アーティファクト用に GitHub または Visual Studio Team Services Git リポジトリを追加する方法を説明します。"
 	services="devtest-lab,virtual-machines,visual-studio-online"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher"/>
 
 # DevTest ラボへの Git アーティファクト リポジトリの追加
@@ -115,4 +115,4 @@
     3. アーティファクト リポジトリに保存された**個人用アクセス トークン**を入力します。
     4. **[保存]** をタップします。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

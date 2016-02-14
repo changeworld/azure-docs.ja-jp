@@ -14,11 +14,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="01/27/2016"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2016 年 1 月 27 日リリース
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.817.2028315 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.817.2028315 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.817.2028315 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.817.2028315 (HDP 2.2.9.1-1)
+* HDInsight (Windows) 3.3.0.817.2028315 (HDP 2.3.3.1-5 - 変更なし)
+* HDInsight (Linux) 3.2.1000.4072335 (HDP 2.2.9.1-1)
+* HDInsight (Linux) 3.3.1000.4072335 (HDP 2.3.3.1-1)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースで、すべての HDInsight クラスターの HDInsight のバージョンを更新しました| サービス | すべて| 該当なし
 
 ## HDInsight 3.1 の 2015 年 12 月 2 日リリース ノート
 
@@ -1143,7 +1162,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 </tr>
 
 <tr>
-<td>クラスター デプロイ ID</td>
+<td>クラスター デプロイメント ID</td>
 <td>SDK の最新バージョン (1.3.3.1.5426.29232) より、ユーザーは、HDInsight が各クラスターに対して発行した一意の ID にアクセスできます。これにより、作成とドロップのシナリオで DNS 名を再利用する場合に、ユーザーがクラスターのインスタンスを一意に特定できるようになります。</td>
 <td>SDK</td>
 <td>すべて</td>
@@ -1163,7 +1182,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 * Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
-* HDInsight クラスターの既定のデプロイのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
+* HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
 
 <table border="1"> <tr><th>コンポーネント</th><th>メモリ割り当て</th></tr> <tr><td> yarn.scheduler.minimum-allocation</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td> yarn.scheduler.maximum-allocation</td><td>6144 MB (変更なし)</td></tr> <tr><td>yarn.nodemanager.resource.memory</td><td>6144 MB (変更なし)</td></tr> <tr><td>mapreduce.map.memory</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td>mapreduce.map.java.opts</td><td>opts=-Xmx512m (以前は -Xmx410m)</td></tr> <tr><td>mapreduce.reduce.memory</td><td>1536 MB (以前は 1024 MB)</td></tr> <tr><td>mapreduce.reduce.java.opts</td><td>opts=-Xmx1024m (以前は -Xmx819m)</td></tr> <tr><td>yarn.app.mapreduce.am.resource</td><td>768 MB (以前は 1024 MB)</td></tr> <tr><td>yarn.app.mapreduce.am.command</td><td>opts=-Xmx512m (以前は -Xmx819m)</td></tr> <tr><td>mapreduce.task.io.sort</td><td>256 MB (以前は 200 MB)</td></tr> <tr><td>tez.am.resource.memory</td><td>1536 MB (変更なし)</td></tr>
 
@@ -1422,4 +1441,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

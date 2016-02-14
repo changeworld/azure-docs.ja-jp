@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/12/2015"
+	ms.date="02/03/2016"
 	ms.author="jeffreyg; ronitr"/>
  
 # SQL Database 監査の使用
@@ -29,7 +29,7 @@ Azure SQL Database 監査は、データベース イベントを追跡し、監
 
 ##<a id="subheading-1"></a>Azure SQL Database の監査の基本
 
-以下のセクションでは、Azure ポータルを使用した監査の構成について説明します。また、[従来の Azure クラシック ポータルを使用してデータベースの監査を設定する]こともできます。
+以下のセクションでは、Azure ポータルを使用した監査の構成について説明します。また、[Azure クラシック ポータルを使用してデータベースの監査を設定する]こともできます。
 
 SQL Database 監査により、以下のことが可能になります。
 
@@ -62,7 +62,7 @@ SQL Database 監査により、以下のことが可能になります。
 
 ##<a id="subheading-2"></a>データベースに対する監査を設定する
 
-1. https://portal.azure.com で [Azure ポータル](https://portal.azure.com)を開きます。または、https://manage.windowsazure.com/ で [従来の Azure クラシック ポータル](https://manage.windowsazure.com/)を起動することもできます。詳しい手順は次のようになります。
+1. https://portal.azure.com で [Azure ポータル](https://portal.azure.com)を開きます。または、https://manage.windowsazure.com/ で [Azure クラシック ポータル](https://manage.windowsazure.com/)を起動することもできます。詳しい手順は次のようになります。
 
 2. 監査する SQL Database または SQL Server の [設定] ブレードに移動します。[設定] ブレードで、**[監査と脅威の検出]** を選択します。
 
@@ -99,9 +99,9 @@ Power Query を使用すると、Azure ストレージ アカウントから直�
 ![Navigation Pane][4]
 
 
-##<a id="subheading-4"></a>従来の Azure クラシック ポータルを使用してデータベースの監査を設定する
+##<a id="subheading-4"></a>Azure クラシック ポータルを使用してデータベースの監査を設定する
 
-1. https://manage.windowsazure.com/ で[従来の Azure クラシック ポータル](https://manage.windowsazure.com/)を起動します。
+1. https://manage.windowsazure.com/ で [Azure クラシック ポータル](https://manage.windowsazure.com/)を開きます。
 
 2. 監査する SQL Database/SQL Server をクリックしてから、[**監査とセキュリティ**] タブをクリックします。
 
@@ -123,7 +123,7 @@ Power Query を使用すると、Azure ストレージ アカウントから直�
 
 
 ##<a id="subheading-5">運用環境での使用手法</a>
-このセクションでは、上のスクリーン キャプチャーについて説明します。[Azure ポータル](https://portal.azure.com)または[従来の Azure クラシック ポータル](https://manage.windowsazure.com/)を使用できます。
+このセクションでは、上のスクリーン キャプチャーについて説明します。[Azure ポータル](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)を使用できます。
 
 
 ##<a id="subheading-6"></a>ストレージ キーの再生成
@@ -159,7 +159,7 @@ Azure SQL Database で監査を構成する際、使用できる PowerShell コ�
 [Azure SQL Database の監査の基本]: #subheading-1
 [データベースに対する監査を設定する]: #subheading-2
 [監査ログとレポートを分析する]: #subheading-3
-[従来の Azure クラシック ポータルを使用してデータベースの監査を設定する]: #subheading-4
+[Azure クラシック ポータルを使用してデータベースの監査を設定する]: #subheading-4
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
 [Automation]: #subheading-7
@@ -178,4 +178,4 @@ Azure SQL Database で監査を構成する際、使用できる PowerShell コ�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

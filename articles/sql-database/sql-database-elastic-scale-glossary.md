@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Elastic Database ツールの用語集 | Microsoft Azure" 
-    description="Elastic Database ツールで使用される用語の説明" 
+    description="エラスティック データベース ツールで使用される用語の説明" 
     services="sql-database" 
     documentationCenter="" 
     manager="jeffreyg" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="11/04/2015" 
+    ms.date="02/01/2016" 
     ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールの用語集
@@ -23,7 +23,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 ![Elastic Scale の用語][1]
 
-**データベース**: Azure SQL データベース
+**データベース**: Azure SQL Database。
 
 **データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。**マルチシャード クエリ**も参照。
 
@@ -39,7 +39,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 **参照テーブル**: シャード化されず、シャード間で複製されるテーブル。たとえば、郵便番号を参照テーブルに格納できます。
 
-**シャード**: シャード化されたデータ セットのデータを格納する Azure SQL データベース。
+**シャード**: シャード化されたデータ セットのデータを格納する Azure SQL Database。
 
 **シャードの弾力性**: **水平スケーリング**と**垂直スケーリング**の両方を実行する機能。
 
@@ -82,4 +82,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

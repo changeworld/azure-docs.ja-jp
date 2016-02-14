@@ -1,19 +1,19 @@
 <properties
-   pageTitle="グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法 | Microsoft Azure"
-   description="グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
-   services="active-directory"
-   documentationCenter=""
-   authors="liviodlc"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法 | Microsoft Azure"
+    description="グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
+    services="active-directory"
+    documentationCenter=""
+    authors="liviodlc"
+    manager="stevenpo"
+    editor=""/>
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="11/18/2015"
-   ms.author="liviodlc"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="02/02/2016"
+    ms.author="liviodlc"/>
 
 #グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
 
@@ -62,7 +62,7 @@
 
 3. **[グループ ポリシーの管理**] の左側のウィンドウで組織単位 (OU) 階層を表示し、グループ ポリシーを適用するスコープを決定します。たとえば、テストのために数ユーザーにデプロイする場合は小さい OU を選択し、組織全体にデプロイする場合は最上位レベルの OU を選択します。
 
-	> [AZURE.NOTE]組織単位 (OU) を作成または編集する場合は、サーバー マネージャーに戻り、**[ツール]**、**[Active Directory ユーザーとコンピューター]** に移動します。
+	> [AZURE.NOTE] 組織単位 (OU) を作成または編集する場合は、サーバー マネージャーに戻り、**[ツール]**、**[Active Directory ユーザーとコンピューター]** に移動します。
 
 4. OU を選択して右クリックし、**[このドメインに GPO を作成し、このコンテナーにリンクする...]** を選択します。
 
@@ -90,7 +90,7 @@
 
 4. 「[手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、**[開く]** をクリックします。
 
-	> [AZURE.IMPORTANT]共有が同じサーバー上に存在する場合は、ローカル ファイル パスではなく、ネットワーク ファイル パスから .msi にアクセスしていることを確認します。
+	> [AZURE.IMPORTANT] 共有が同じサーバー上に存在する場合は、ローカル ファイル パスではなく、ネットワーク ファイル パスから .msi にアクセスしていることを確認します。
 
 	![共有フォルダーからインストール パッケージを選択する](./media/active-directory-saas-ie-group-policy/select-package.png)
 
@@ -141,7 +141,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** という名前の設定を見つけます。
 
-	> [AZURE.NOTE]以前のバージョンの Active Directory では、この設定は、**[パスワードを保存するオートコンプリートを許可しない]** という名前で表示される場合があります。その設定の構成は、このチュートリアルで説明する設定とは異なります。
+	> [AZURE.NOTE] 以前のバージョンの Active Directory では、この設定は、**[パスワードを保存するオートコンプリートを許可しない]** という名前で表示される場合があります。その設定の構成は、このチュートリアルで説明する設定とは異なります。
 
 	![これは [ユーザー設定] から探すことに注意](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
 
@@ -155,7 +155,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 これで、ユーザーは資格情報を保存することも、オートコンプリートを使用して前に保存された資格情報にアクセスすることもできなくなります。ただし、このポリシーでは、他の種類のフォーム フィールド (検索フィールドなど) でのオートコンプリートは引き続き許可されます。
 
-> [AZURE.WARNING]ユーザーがいくつかの資格情報を保存した後でこのポリシーが有効になった場合、既に保存されている資格情報がこのポリシーによって消去されることはありません。
+> [AZURE.WARNING] ユーザーがいくつかの資格情報を保存した後でこのポリシーが有効になった場合、既に保存されている資格情報がこのポリシーによって消去されることはありません。
 
 ##手順 6: デプロイのテスト
 
@@ -177,4 +177,4 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

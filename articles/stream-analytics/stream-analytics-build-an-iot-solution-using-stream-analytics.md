@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="01/27/2016" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"
 />
 
@@ -417,10 +417,10 @@ Azure 管理ポータルを開き、先ほど作成した Azure Stream Analytics
 
 そのためには、EntryTime を含んだストリームと ExitTime を含んだストリームを結合する必要があります。ストリームの結合条件には、TollId 列と LicencePlate 列を指定することにします。結合したイベントどうしの間隔として許容される時間差を JOIN 演算子で指定する必要があります。DATEDIFF 関数を使用し、発生間隔が 15 分以内のイベントに限定する条件を指定します。また、通行料金の徴収に費やされた実際の時間を計算するために、ExitTime と EntryTime にも DATEDIFF 関数を適用します。DATEDIFF を SELECT ステートメントで使用する場合と JOIN 条件で使用する場合の使い方の違いに注目してください。
 
-    SELECT EntryStream.TollId, EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream .ExitTime) AS Duration InMinutes
+    SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
     FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN ExitStream TIMESTAMP BY ExitTim e
-    ON (Entry Stream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
+    JOIN ExitStream TIMESTAMP BY ExitTime
+    ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
     AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 このクエリをテストするには、ジョブの [クエリ] タブでクエリを更新します。
@@ -445,7 +445,7 @@ Azure Stream Analytics では、特定の時点の静的データを使用して
     FROM EntryStream TIMESTAMP BY EntryTime
     JOIN Registration
     ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = ‘1’
+    WHERE Registration.Expired = '1'
 
 参照データを使ってクエリをテストするためには、その参照データの入力ソースが定義されている必要があります (手順 5. で行った作業です)。
 
@@ -534,4 +534,4 @@ PowerShell ウィンドウで「.\\Cleanup.ps1」と入力します。これに�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -25,7 +25,7 @@ Event Hubs のセキュリティ モデルは、次の要件に対応します�
 
 ## デバイスの認証
 
-Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](service-bus-shared-access-signature-authentication.md) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
+Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](../service-bus/service-bus-shared-access-signature-authentication.md) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
 
 通常、Event Hub はデバイスごとに 1 つのパブリッシャーを使用します。Event Hub のパブリッシャーに送信されるすべてのメッセージは、その Event Hub 内でキューに格納されます。パブリッシャーは、きめの細かいアクセス制御と調整を行うことができます。
 
@@ -154,4 +154,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

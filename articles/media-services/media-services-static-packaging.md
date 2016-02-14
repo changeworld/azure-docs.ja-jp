@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/05/2015"   
+	ms.date="01/28/2016"   
 	ms.author="juliako"/>
 
 
 # Azure Media Packager を使用して静的パッケージ タスクを実行する
 
->[AZURE.NOTE]Microsoft Azure Media Packager と Microsoft Azure Media Encryptor は 2016 年 3 月 1 日に提供が中止されます。提供中止後は、これらのコンポーネントを使用できなくなります。形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+>[AZURE.NOTE]Windows Azure Media Packager と Windows Azure Media Encryptor の有効期限は、2017 年 3 月 1 日に延長されました。有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
 
 ## 概要
 
@@ -36,8 +36,8 @@ Media Services は、動的パッケージと静的パッケージをサポー�
 静的パッケージを使用して、次のタスクを実行することもできます。ただし、動的暗号化を使用することが推奨されます。
 
 - 静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
-- 静的暗号化を使用して AES-128 でHLSv3 を保護する
-- 静的暗号化を使用して PlayReady でHLSv3 を保護する
+- 静的暗号化を使用して AES-128 で HLSv3 を保護する
+- 静的暗号化を使用して PlayReady で HLSv3 を保護する
 
 
 ## 外部エンコーダーを使用してエンコードされたアダプティブ ビットレート MP4 を検証する
@@ -966,9 +966,9 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
 
 ## 静的暗号化を使用して PlayReady でHLSv3 を保護する
 
-PlayReady でコンテンツを保護する場合、[動的暗号化](media-services-protect-with-drm.md) (推奨されるオプション) または 静的暗号化 (このセクションで説明します) を選択できます。
+PlayReady でコンテンツを保護する場合、[動的暗号化](media-services-protect-with-drm.md) (推奨されるオプション) または静的暗号化 (このセクションで説明します) を選択できます。
 
->[AZURE.NOTE]PlayReady を使用してコンテンツを保護するには、まずコンテンツを Smooth Streaming 形式に変換/エンコードする必要があります。
+>[AZURE.NOTE] PlayReady を使用してコンテンツを保護するには、まずコンテンツを Smooth Streaming 形式に変換/エンコードする必要があります。
 
 このセクションの例では、中間ファイル (ここでは MP4) をマルチビットレート MP4 ファイルにエンコードします。次に、MP4 を Smooth Streaming にパッケージ化し、PlayReady で Smooth Streaming を暗号化します。PlayReady で暗号化された HTTP Live Streaming (HLS) を生成するには、PlayReady Smooth Streaming 資産を HLS にパッケージ化する必要があります。このトピックでは、これらすべての手順を実行する方法について説明します。
 
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

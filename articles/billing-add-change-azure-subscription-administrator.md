@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Azure 管理者ロールを追加または変更する方法 | Microsoft Azure"
 	description="Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
 	editor="meerak"
-	/>
+	tags="billing"/>
 
 <tags
 	ms.service="billing"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="01/27/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
@@ -50,7 +50,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 | ログイン方法| Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる |同じ組織内の組織アカウントを CA または SA として追加できる |異なる組織内の組織アカウントを CA または SA として追加できる
 | ------------- | ------------- |---------------|---------------|
-|Microsoft アカウント |はい|いいえ|いいえ|
+|Microsoft アカウント |はい|なし|いいえ|
 |組織アカウント|はい|はい|いいえ|
 
 ## サブスクリプションのサービス管理者を変更する方法
@@ -66,4 +66,4 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの譲渡](billing-subscription-transfer.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

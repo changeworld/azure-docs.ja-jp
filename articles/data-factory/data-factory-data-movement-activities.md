@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="02/03/2016" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
-[コピー アクティビティ](#copyactivity)により、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、[グローバルに利用可能な Data Movement Service](#global) によって動作します。このサービスでは、ソース データ ストアとシンク データ ストアの場所に基づいて、データ移動操作を実行するのに最適なリージョンが自動的に選択されます。現時点では、シンク データ ストアに最も近いリージョンが使用されています。
+[コピー アクティビティ](#copyactivity)により、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、[グローバルに利用可能なサービス](#global)によって動作します。このサービスは、データ移動の実行に最も適したリージョンを自動的に選択します。シンク データ ストアに最も近いリージョンが使用されます。
  
 このデータ移動がさまざまなシナリオでどのように行われるかを説明します。
 
 ## 2 つのクラウド データ ストア間でのデータのコピー
-ソース データ ストアとシンク (コピー先) データ ストアの両方がクラウドにある場合、コピー アクティビティは、次の段階を経てデータをソースからシンクにコピー/移動します。Data Movement Service では、次の処理が行われます。
+ソース データ ストアとシンク (コピー先) データ ストアの両方がクラウドにある場合、コピー アクティビティは、次の段階を経てデータをソースからシンクにコピー/移動します。コピー アクティビティを実行するサービスは、次を行います。
 
 1. ソース データ ストアからデータを読み取る
 2.	入力データセット、出力データセット、コピー アクティビティの構成に基づいて、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換を実行する 
@@ -32,7 +32,7 @@
 
 
 ## オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
-[企業ファイアウォールの内側にあるオンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動する](#moveonpremtocloud)には、Data Management Gateway をインストールする必要があります。これは、オンプレミスのコンピューター上でハイブリッドなデータ移動と処理を可能にするエージェントです。Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアに到達するためのアクセス権を持つ別のコンピューターにインストールできます。このシナリオでは、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換が Data Management Gateway によって実行されます。Data Movement Service は、このシナリオに関与していません。
+[企業ファイアウォールの内側にあるオンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動する](#moveonpremtocloud)には、Data Management Gateway をインストールする必要があります。これは、オンプレミスのコンピューター上でハイブリッドなデータ移動と処理を可能にするエージェントです。Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアに到達するためのアクセス権を持つ別のコンピューターにインストールできます。このシナリオでは、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換が Data Management Gateway によって実行されます。データが Azure Data Factory サービスを経由しないケースが、これに当てはまります。Data Management Gateway は、目的のストアに直接データを書き込みます。
 
 ![onprem-to-cloud copy](.\media\data-factory-data-movement-activities\onprem-to-cloud.png)
 
@@ -44,40 +44,35 @@ Data Management Gateway を使用すると、Azure IaaS VM (サービスとし�
 
 | ソース| シンク |
 |:------- | :---- |
-| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li></ul> |
+| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[オンプレミス/Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[オンプレミス/Azure IasS のHadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li></ul> |
 
 
 > [AZURE.NOTE] Azure DocumentDB と他の Azure サービス (Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure DocumentDB、Azure Data Lake Store など) との間でのみ移動できます。Azure Document DB の完全なマトリックスも間もなくサポートされます。
 
 ## チュートリアル
-コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。次のセクションは、コピー アクティビティでサポートされているすべてのソースとシンクの一覧です。
+コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
 ## <a name="copyactivity"></a>コピー アクティビティ
-コピー アクティビティは、1 つの入力データセット (**ソース**) と 1 つの出力データセット (**シンク**) を受け取ります。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。すべてのアクティビティで使用可能なさまざまな JSON セクションとプロパティなど、高レベルでの一般的なアクティビティ定義については、「[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)」を参照してください。
+コピー アクティビティは、1 つの入力データセット (**ソース**) と 1 つの出力データセット (**シンク**) を受け取ります。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。アクティビティを定義する一般的な方法については、「[Understanding Pipelines & Activities (パイプラインとアクティビティについて)](data-factory-create-pipelines.md)」の記事を参照してください。
 
 コピー アクティビティには次の機能が備わっています。
 
 ### <a name="global"></a>グローバルに使用できるデータの移動
-Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョンのみで利用できますが、Data Movement Service を利用したコピー アクティビティは、以下のリージョンと場所でグローバルに使用できます。グローバルに使用できるトポロジは、ほとんどの場合にリージョンをまたがるホップを回避する効率的なデータ移動を保証します。
+Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョンのみで利用できますが、コピー アクティビティを利用するサービスは、以下のリージョンと場所でグローバルに使用できます。グローバルに使用できるトポロジは、ほとんどの場合にリージョンをまたがるホップを回避する効率的なデータ移動を保証します。
 
-| リージョン | 地理的な場所 |
-| ------ | --------- | 
-| 米国中部 | 米国 |
-| 米国東部 | 米国 |
-| 米国東部 2 | 米国 |
-| 米国中北部 | 米国 |
-| 米国中南部 | 米国 |
-| 米国西部 | 米国 |
-| ブラジル南部 | LATAM |
-| 北ヨーロッパ | ヨーロッパ・中東・アフリカ |
-| 西ヨーロッパ | ヨーロッパ・中東・アフリカ |
-| 東南アジア | APAC |
-| 東日本 | APAC |
+**Data Management Gateway** または **Azure Data Factory** は、コピー操作のソースとコピー先のデータ ストアの場所に基づいてデータ移動を実行します。詳細については、次のテーブルを参照してください。
 
-以下の点に注意してください。
+ソース データ ストアの場所 | コピー先データ ストアの場所 | データ移動の実行者  
+-------------------------- | ------------------------------- | ----------------------------- 
+オンプレミス/Azure VM (IaaS) | クラウド | オンプレミス コンピューター/Azure VM の **Data Management Gateway**。データはクラウドのサービスを経由しません。<p> 注: Data Management Gateway はデータ ストアと同じオンプレミスのコンピューター/Azure VM に配置することができます。また、両方のデータ ストアに接続できる場合は、異なるオンプレミスのコンピューター/Azure VM に配置することもできます。</p>
+クラウド | オンプレミス/Azure VM (IaaS) | 上記と同じです。 
+オンプレミス/Azure VM (IaaS) | オンプレミス/Azure VM | **ソースに関連付けられている Data Management Gateway**。データはクラウドのサービスを経由しません。上の注を参照してください。   
+クラウド | クラウド | <p>** コピー アクティビティを実行するクラウド サービス**。Azure Data Factory は地理的に同じの、シンクの場所に最も近いリージョンでこのサービスのデプロイメントを使用します。マッピングについては、次のテーブルを参照してください。</p><table><tr><th>コピー先データストアのリージョン</th> <th>データ移動に使用するリージョン</th></tr><tr><td>米国東部</td><td>米国東部</td></tr><tr><td>米国東部 2</td><td>米国東部 2</td><tr/><tr><td>米国中部</td><td>米国中部</td><tr/><tr><td>米国西部</td><td>米国西部</td></tr><tr><td>米国中北部</td><td>米国中北部</td></tr><tr><td>米国中南部</td><td>米国中南部</td></tr><tr><td>北ヨーロッパ</td><td>北ヨーロッパ</td></tr><tr><td>西ヨーロッパ</td><td>西ヨーロッパ</td></tr><tr><td>東南アジア</td><td>東南アジア</td></tr><tr><td>東アジア</td><td>東南アジア</td></tr><tr><td>東日本</td><td>東日本</td></tr><tr><td>西日本</td><td>西日本</td></tr><tr><td>ブラジル南部</td><td>ブラジル南部</td></tr></table>
 
-- **オンプレミスのデータ ソース**から**クラウド**へデータをコピーする場合またはその逆の場合 (たとえば、オンプレミスの SQL Server から Azure BLOB)、データの移動は、事実上オンプレミス環境の **Data Management Gateway** によって行われ、Data Movement Service は関与しません。
-- **クラウドのコピー元**から**クラウドのコピー先**へコピーする場合 (たとえば、Azure BLOB から Azure SQL)、**Data Movement Service** によって、**同じ地域でシンクの場所に最も近い**デプロイが選択され、転送が実行されます。たとえば、東南アジアから西日本にコピーする場合は、東日本の Data Movement Service のデプロイを使用してコピーを実行します。コピー元とコピー先の両方が同じ地域にあり、その地域に利用可能な Data Movement Service がない場合 (現時点ではオーストラリアなど)、コピー アクティビティは、代替の地域で行われることなく、失敗します。注: Data Movement Service はオーストラリアにも拡張されます。 
+
+> [AZURE.NOTE] コピー先データ ストアのリージョンが上のリストにない場合、代わりのリージョンに移動することなく、コピー アクティビティが失敗します。近々、オーストラリア東部とオーストラリア南東部に拡大する予定です。
+
+
 
 ### <a name="moveonpremtocloud"></a>オンプレミスの場所とクラウドの間での安全なデータ移動
 最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。Data Management Gateway はオンプレミスにインストールできるエージェントで、ハイブリッド データ パイプラインを可能にします。
@@ -115,4 +110,4 @@ Azure Data Factory 自体は、米国西部と北ヨーロッパのリージョ�
 ### コピー アクティビティのパフォーマンスとチューニング 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因について、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。また、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法を説明します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Pig アクティビティ
@@ -61,7 +61,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | アクティビティの名前 | あり
+name | アクティビティの名前 | はい
 description | アクティビティの用途を説明するテキストです。 | いいえ
 type | HDInsightPig | あり
 inputs | Pig のアクティビティによって使用される入力 | いいえ
@@ -100,7 +100,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 3.	入力と出力のデータを指定する[データセット](data-factory-create-datasets.md)を作成します。入力データセットは "PigSampleIn"、出力データセットは "PigSampleOut" と呼ぶことにしましょう。
 4.	上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。データをホストするリンクされたサービスがこのクエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成し、アクティビティの構成でこのリンクされたサービスを参照します。**scriptPath** を使用して pig スクリプト ファイルへのパスを指定し、**scriptLinkedService** を使用して、このスクリプト ファイルを含む Azure Storage を指定します。
 	
-	> [AZURE.NOTE]また、**script** プロパティを使えば、アクティビティ定義で Pig スクリプトをインライン化することもできます。ただし、JSON ドキュメント内でスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題の原因となる場合があるため、この方法はお勧めできません。手順 4. の使用をお勧めします。
+	> [AZURE.NOTE] また、**script** プロパティを使えば、アクティビティ定義で Pig スクリプトをインライン化することもできます。ただし、JSON ドキュメント内でスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題の原因となる場合があるため、この方法はお勧めできません。手順 4. の使用をお勧めします。
 5. HDInsightPig アクティビティで以下のパイプラインを作成し、データを処理します。
 
 		{
@@ -186,4 +186,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
 		Store PigSampleOut into '$Output' USING PigStorage (','); 
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

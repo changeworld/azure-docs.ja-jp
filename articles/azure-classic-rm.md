@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter=""
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager,azure-service-management"/>
 
@@ -68,4 +68,4 @@ CLI を使用して、Windows、OS X、または Linux コンピューターか�
 - [テンプレートの設計](/best-practices-resource-manager-design-templates.md)方法を理解する
 - [ベスト プラクティス](/best-practices-resource-manager-examples.md)を使用する
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

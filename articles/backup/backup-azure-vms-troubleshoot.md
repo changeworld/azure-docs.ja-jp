@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/09/2016"
-	ms.author="trinadhk;jimpark;aashishr"/>
+	ms.date="01/28/2016"
+	ms.author="trinadhk;jimpark;"/>
 
 
 # Azure 仮想マシンのバックアップのトラブルシューティング
@@ -105,13 +105,13 @@ Windows VM の場合:
 
 Linux VM の場合:
 
-- [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従ってください。
+- [Linux VM エージェントの更新](../virtual-machines/virtual-machines-linux-update-agent.md)に関する手順に従ってください。
 
 
 ### VM エージェントのインストールの検証
 Windows VM 上で VM エージェントのバージョンを確認する方法:
 
-1. Azure 仮想マシンにログオンし、フォルダー C:\\WindowsAzure\\Packages に移動します。WaAppAgent.exe ファイルを探します。
+1. Azure 仮想マシンにログオンし、フォルダー *C:\\WindowsAzure\\Packages* に移動します。WaAppAgent.exe ファイルを探します。
 2. このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。
 
 ## VM スナップショットに関する問題のトラブルシューティング
@@ -149,6 +149,6 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
     - 何らかのネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。HTTP プロキシ サーバーをデプロイするための手順は、[ここ](backup-azure-vms-prepare.md#2-network-connectivity)を参照してください。
     - 規則を NSG に追加して HTTP プロキシからインターネットにアクセスできるようにします (NSG を使用している場合)。
 
->[AZURE.NOTE]IaaS VM Backup が正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。VM 内の DHCP オプションは有効のままにしておいてください。静的内部プライベート IP の設定の詳細については、[こちら](virtual-networks-reserved-private-ip.md)を参照してください。
+>[AZURE.NOTE] IaaS VM Backup が正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。VM 内の DHCP オプションは有効のままにしておいてください。静的内部プライベート IP の設定の詳細については、[こちら](virtual-networks-reserved-private-ip.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/18/2015"
+   ms.date="01/30/2016"
    ms.author="tarcher" />
 
 # Azure アプリケーションの公開ウィザード
@@ -21,7 +21,7 @@
 
 Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスにより簡単に発行できます。最初のセクションではウィザードの使用にあたって行う必要のある手順について説明し、残りのセクションではウィザードの機能について説明します。
 
->[AZURE.NOTE]このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、[Azure の Web サイトのデプロイ方法](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false)に関するページを参照してください。
+>[AZURE.NOTE] このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、[Azure の Web サイトのデプロイ方法](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false)に関するページを参照してください。
 
 ## 前提条件
 
@@ -29,13 +29,13 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 1. Microsoft アカウントと Azure サブスクリプションを取得します。[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間無料の Azure サブスクリプションを試すことができます。
 
-1. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。Azure 環境をセットアップする方法の詳細については、「[Visual Studio からのクラウド サービスの発行に必要なサービスの設定](vs-azure-tools-publish-azure-application-wizard)」を参照してください。
+1. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。
 
 1. Azure 用の Web アプリケーションを有効にします。Web アプリケーションを Visual Studio から Azure に発行できるようにするには、Visual Studio で Azure クラウド サービス プロジェクトに関連付ける必要があります。関連付けられたクラウド サービス プロジェクトを作成するには、Web アプリケーションのプロジェクトのショートカット メニューを開き、[変換]、**[Azure クラウド サービス プロジェクトに変換]** の順に選択します。
 
 1. クラウド サービス プロジェクトをソリューションに追加したら、ショートカット メニューをもう一度開き、**[発行]** を選択します。Azure のアプリケーションを有効にする方法の詳細については、「[方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)」を参照してください。
 
->[AZURE.NOTE]必ず、管理者の資格情報 (管理者として実行) で Visual Studio を開始するようにしてください。
+>[AZURE.NOTE] 必ず、管理者の資格情報 (管理者として実行) で Visual Studio を開始するようにしてください。
 
 1. アプリケーションを発行する準備ができたら、Azure クラウド サービス プロジェクトのショートカット メニューを開き、**[発行]** を選択します。次の手順では、Azure アプリケーションの公開ウィザードを示します。
 
@@ -65,7 +65,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 1. このデプロイの設定を変更し、**[発行]** をクリックしてこのデプロイを発行します (次のセクションでは、さまざまな設定の詳細について説明します)。発行する前に設定を確認するには、**[次へ]** をクリックします。
 
-    >[AZURE.NOTE]この手順で [発行] をクリックした場合は、Visual Studio でこのデプロイの状態を監視できます。
+    >[AZURE.NOTE] この手順で [発行] をクリックした場合は、Visual Studio でこのデプロイの状態を監視できます。
 
 **Azure アプリケーションの公開**ウィザードを使用して、デプロイの共通設定と詳細設定の両方を変更できます。たとえば、リリースする前にアプリケーションをテスト環境にデプロイする設定を選択できます。次の図は、Azure デプロイの **[共通設定]** タブを示しています。
 
@@ -97,7 +97,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 1. **[ストレージ アカウント]** の一覧で、このデプロイに使用するストレージ アカウントを選択します。クラウド サービスとストレージ アカウント用のデータ センターの場所を比較します。これらの場所が同じになるようにしてください。
 
-    >[AZURE.NOTE]Azure ストレージ アカウントには、アプリケーション デプロイのパッケージが格納されます。アプリケーションのデプロイ後、パッケージはストレージ アカウントから削除されます。
+    >[AZURE.NOTE] Azure ストレージ アカウントには、アプリケーション デプロイのパッケージが格納されます。アプリケーションのデプロイ後、パッケージはストレージ アカウントから削除されます。
 
 1. 更新されたコンポーネントのみをデプロイする場合は、**[配置の更新]** チェック ボックスをオンにします。このデプロイは、完全なデプロイより高速な場合があります。下記の図に示すように、**[設定]** リンクをクリックして **[配置の更新設定]** ダイアログ ボックスを開きます。
 
@@ -113,7 +113,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 2. このアプリケーションをプロファイリングするには、**[プロファイルを有効にする]** チェック ボックスをオンにし、**[設定]** リンクをクリックしてプロファイルのオプションを表示します。
 
 
-    >[AZURE.NOTE]Visual Studio Ultimate を使用して IntelliTrace または階層相互作用プロファイリング (TIP) を有効にする必要がありますが、同時に両方を有効にすることはできません。
+    >[AZURE.NOTE] Visual Studio Ultimate を使用して IntelliTrace または階層相互作用プロファイリング (TIP) を有効にする必要がありますが、同時に両方を有効にすることはできません。
 
     詳細については、「[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ff683671.aspx)」および「[クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)」を参照してください。
 
@@ -125,13 +125,11 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
     ![Summary screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
 
-    >[AZURE.NOTE]発行プロファイルが Visual Studio のソリューション エクスプローラーに表示され、プロファイル設定が .azurePubxml という拡張子を持つファイルに書き込まれます。設定は、XML タグの属性として保存されます。
+    >[AZURE.NOTE] 発行プロファイルが Visual Studio のソリューション エクスプローラーに表示され、プロファイル設定が .azurePubxml という拡張子を持つファイルに書き込まれます。設定は、XML タグの属性として保存されます。
 
 1. **[発行]** をクリックしてアプリケーションを発行します。Visual Studio の **[出力]** ウィンドウでプロセスの状態を監視できます。
 
 ## 関連項目
-
-[Visual Studio からのクラウド サービスの発行に必要なサービスの設定](https://msdn.microsoft.com/library/azure/ff683668.aspx)
 
 [方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)
 
@@ -141,4 +139,4 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 [クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

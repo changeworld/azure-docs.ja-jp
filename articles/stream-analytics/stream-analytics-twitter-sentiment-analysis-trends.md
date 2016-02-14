@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="12/04/2015"
+	ms.date="02/04/2016"
 	ms.author="jeffstok"/>
 
 
@@ -74,7 +74,7 @@ Event Hub を作成するには、次の手順に従います。
 
 ### Stream Analytics のジョブの準備
 
-1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[データ サービス]**、**[Stream Analytics]**、**[簡易作成]** の順にクリックします。
+1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[Data Services]**、**[Stream Analytics]**、**[簡易作成]** の順にクリックします。
 2.	次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
 
 	* **[ジョブ名]**: ジョブ名を入力します。
@@ -187,7 +187,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 BLOB ストレージ用のコンテナーがまだない場合は、次の手順に従って作成します。
 
-1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]**、**[データ サービス]**、**[Storage]**、**[簡易作成]** の順にクリックして、画面の指示に従います。
+1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]**、**[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックして、画面の指示に従います。
 2.	ストレージ アカウントを選択し、ページ上部にある **[コンテナー]** をクリックし、**[追加]** をクリックします。
 3.	コンテナーの **[名前]** を指定し、パブリック BLOB に対する **[アクセス]** を設定します。
 
@@ -236,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

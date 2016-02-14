@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/06/2016"
-    ms.author="sidneyh;torsteng" />
+    ms.date="01/28/2016"
+    ms.author="torsteng;sidneyh" />
 
 # シャーディング (行方向のパーティション分割) のためのエラスティック データベース クエリ
 
@@ -25,7 +25,7 @@
  
 ## データベース オブジェクトの作成
 
-エラスティック データベース クエリは、T-SQL 構文を拡張して、シャーディング (行方向のパーティション分割) を使用して多数のデータベースにデータを分散するデータ層を参照します。ここでは、シャーディングされたテーブルに対するエラスティック クエリに関係する DDL ステートメントの概要を説明します。これらのステートメントを使うと、エラスティック クエリ データベース内のシャーディングされたデータのメタデータ表現を作成できます。これらのステートメントを実行するための前提条件は、エラスティック データベース クライアント ライブラリを使用してシャード マップを作成することです。詳細については、「[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。または、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」のサンプルを使ってシャード マップを作成してください。
+エラスティック データベース クエリは、T-SQL 構文を拡張して、シャーディング (行方向のパーティション分割) を使用して多数のデータベースにデータを分散するデータ層を参照します。ここでは、シャーディングされたテーブルに対するエラスティック クエリに関係する DDL ステートメントの概要を説明します。これらのステートメントを使うと、エラスティック クエリ データベース内のシャーディングされたデータのメタデータ表現を作成できます。これらのステートメントを実行するための前提条件は、エラスティック データベース クライアント ライブラリを使用してシャード マップを作成することです。詳細については、「[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。または、「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」のサンプルを使ってシャード マップを作成してください。
 
 エラスティック データベース クエリのデータベース オブジェクトの定義は、次の T-SQL ステートメントに依存します。以降では、行方向のパーティション分割シナリオ向けにこれらの T-SQL ステートメントについて説明します。
 
@@ -200,7 +200,7 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 * シャード マップ データベース名 (nvarchar): シャード マップ データベースの名前。 
 * ユーザー名 (nvarchar): シャード マップ データベースにログインするためのユーザー名。 
 * パスワード (nvarchar): ユーザーのパスワード。 
-* シャード マップ名 (nvarchar): クエリで使用するシャード マップの名前。 
+* シャード マップ名 (nvarchar): クエリで使用するシャード マップの名前。名前は \_ShardManagement.ShardMapsGlobal テーブルで見つかります。「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」のサンプル アプリでデータベースを作成するときに使用される既定の名前です。アプリでの既定の名前は "CustomerIDShardMap" です。
 *  クエリ: 各シャードで実行する T-SQL クエリ。 
 *  パラメーター宣言 (nvarchar) (省略可能): (sp\_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
 *  パラメーター値のリスト (省略可能): (sp\_executesql などの) パラメーター値のコンマ区切りリスト。  
@@ -212,7 +212,7 @@ sp\_execute\_fanout は、呼び出しパラメーターに入力されたシャ
 例:
 
 	sp_execute_fanout 
-		’myserver.database.windows.net', 
+		N'myserver.database.windows.net', 
 		N'ShardMapDb', 
 		N'myuser', 
 		N'MyPwd', 
@@ -241,4 +241,4 @@ sp\_execute\_fanout は、呼び出しパラメーターに入力されたシャ
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

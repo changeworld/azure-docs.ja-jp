@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="joaoma"
-   manager="jdial"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -19,7 +19,7 @@
 
 ネットワーク構成ファイルの 2 つの要素を使用して、ドメイン ネーム システム (DNS) の設定 **DnsServers** と **DnsServerRef** を指定することができます。**DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。その後、**DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。
 
->[AZURE.IMPORTANT]ネットワーク構成ファイルの構成方法について詳しくは、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。ネットワーク構成ファイルに含まれる各要素については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
+>[AZURE.IMPORTANT] ネットワーク構成ファイルの構成方法について詳しくは、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。ネットワーク構成ファイルに含まれる各要素については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
 
 ネットワーク構成ファイルは、次の要素を含むことができます。各要素のタイトルは、要素値の設定に関する追加情報を提供するページにリンクされています。
 
@@ -33,7 +33,7 @@
       </DnsServers>
     </Dns>
 
->[AZURE.WARNING]**DnsServer** 要素の **name** 属性は、**DnsServerRef** 要素の参照としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります
+>[AZURE.WARNING] **DnsServer** 要素の **name** 属性は、**DnsServerRef** 要素の参照としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります
 
 [VirtualNetworkSites 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
 
@@ -43,7 +43,7 @@
 	  <DnsServerRef name="ID3" />
 	</DnsServersRef>
 
->[AZURE.NOTE]VirtualNetworkSites 要素に対してこの設定を指定するには、その前に DNS 要素で定義されている必要があります。VirtualNetworkSites 要素の DnsServerRef *name* は、DNS 要素で DnsServer *name* に対して指定されている名前の値を参照している必要があります。
+>[AZURE.NOTE] VirtualNetworkSites 要素に対してこの設定を指定するには、その前に DNS 要素で定義されている必要があります。VirtualNetworkSites 要素の DnsServerRef *name* は、DNS 要素で DnsServer *name* に対して指定されている名前の値を参照している必要があります。
 
 ## 次のステップ
 
@@ -53,4 +53,4 @@
 
 [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

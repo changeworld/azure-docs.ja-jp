@@ -7,7 +7,7 @@
 	manager="paulettm"
 	editor="cgronlun"
     tags=""/>
-
+    
 <tags
 	ms.service="machine-learning"
     ms.devlang="na"
@@ -25,7 +25,7 @@
 
 **Microsoft Azure Machine Learning のアルゴリズム チート シート**を使用すると、Microsoft Azure Machine Learning のアルゴリズム ライブラリから、予測分析ソリューションに適した機械学習アルゴリズムを選択できます。この記事では、その使用方法について説明します。
 
-> [AZURE.NOTE]チート シートをダウンロードし、それを見ながらこの記事を読むには、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」にアクセスしてください。
+> [AZURE.NOTE] チート シートをダウンロードし、それを見ながらこの記事を読むには、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」にアクセスしてください。
 
 このチート シートは非常に特定のユーザーを対象にしていることに注意してください。Azure Machine Learning Studio でアルゴリズムを選択しようとしている機械学習について学部レベルの知識を持つデータ科学初心者です。つまり、一部の一般化と過度の単純化を行いますが、安全な方向に案内します。また、多くのアルゴリズムが一覧にないことも意味します。Azure Machine Learning で使用可能な方法が増えたら、それらを追加します。
 
@@ -37,7 +37,7 @@
 
 同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Analytics ギャラリー](http://gallery.azureml.net/) の次の例を参照してください。[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
 
->[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
+>[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
 ## 機械学習の種類
 
@@ -118,20 +118,7 @@
 |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
 |[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
 |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[一対全多クラス](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|選択された 2 クラス法のプロパティを参照|
-|**回帰**| | | | | |
-|[線形](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| |
-|[ベイズ線形](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| |
-|[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| |
-|[ブースト デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|大メモリ フットプリント|
-|[高速フォレスト分位点回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|ポイント予測より速い分布|
-|[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術的にログ線形。カウント予測の場合|
-|[順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|ランク順序予測の場合|
-|**異常検出**| | | | | |
-|[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|大きい特徴セットに特に好適|
-|[PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| |
-|[K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|クラスタリング アルゴリズム|
+|[一対全多クラス](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|選択された 2 クラス法のプロパティを参照| |**回帰**| | | | | | |[線形](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| | |[ベイズ線形](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| | |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| | |[ブースト デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|大メモリ フットプリント| |[高速フォレスト分位点回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|ポイント予測より速い分布| |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)| |[ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術的にログ線形。カウント予測の場合| |[順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|ランク順序予測の場合| |**異常検出**| | | | | | |[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|大きい特徴セットに特に好適| |[PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| | |[K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|クラスタリング アルゴリズム|
 
 
 **アルゴリズムのプロパティ:**
@@ -156,7 +143,7 @@
 
 ![特徴が 1 つだけの 2 クラス データに対するロジスティック回帰][4]
 
-***特徴が 1 つだけの 2 クラス データへのロジスティック回帰*** *- クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
+***特徴が 1 つだけの 2 クラス データへのロジスティック回帰**** - クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
 
 ### ツリー、フォレスト、ジャングル
 
@@ -237,4 +224,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

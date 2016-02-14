@@ -20,7 +20,8 @@
 
 ユーザーがクラウドのデータとアプリケーションにあらゆるデバイスからアクセスするこのモバイルの世界では、情報を守ることが最重要事項になりました。毎日、セキュリティ違反に関する話題がニュースになっています。そのような違反に対抗できる保証はありませんが、多要素認証はセキュリティの層を厚くし、違反防止に役立ちます。最初に多要素認証の組織要件を評価します。要件とは、つまり、組織が守ろうとするものです。多要素認証を設定し、組織のユーザーに使用させるための技術的要件を決める際に、この評価は重要となります。
 
->[AZURE.NOTE]MFA とその機能についてよく知らない場合、このセクションを読む前に [Azure Multi-Factor Authentication の概要](multi-factor-authentication.md)に関する記事を読むことが推奨されます。
+>[AZURE.NOTE]
+MFA とその機能についてよく知らない場合、このセクションを読む前に [Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication.md)に関する記事を読むことが推奨されます。
 
 以下に回答してください。
 
@@ -57,4 +58,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -22,7 +22,7 @@
 [PowerShell - Classic](expressroute-howto-circuit-classic.md)
 [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
 
-この記事では、PowerShell コマンドレットとクラシック デプロイ モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -43,7 +43,7 @@
 
 2. **プロバイダー、ロケーション、およびサポートされている帯域幅のリストを取得します。**
 
-	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureDedicatedCircuitServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。
+	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureDedicatedCircuitServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。コマンドレットを実行すると、結果は次の例のようになります。
 
 		PS C:\> Get-AzureDedicatedCircuitServiceProvider
 
@@ -197,7 +197,7 @@
 
 7. **ExpressRoute 回線への VNet のリンク**
 
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
+	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute のクラシック デプロイメント モデルを使用して仮想ネットワークを作成する必要がある場合は、「[ExpressRoute 用 VNet の作成](expressroute-howto-vnet-portal-classic.md)」を参照してください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -328,4 +328,4 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 - [ルーティングの構成](expressroute-howto-routing-classic.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

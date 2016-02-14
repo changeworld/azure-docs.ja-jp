@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="01/30/2016"
 	ms.author="tarcher"/>
 
 # VM テンプレートの作成
 
 ## 概要
 
-[ラボを作成](devtest-lab-create-lab.md)したら、VM テンプレートの一覧から [VM をそのラボに追加](devtest-lab-add-vm-with-artifacts.md)できます。この記事では、バーチャル ハード ディスク (VHD) イメージ ファイルをアップロードし、VM の作成に使用するテンプレートとして構成する方法について説明します。VHD イメージを使い慣れていない場合、VHD イメージの作成方法については、「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。VHD イメージを作成するか、VHD イメージへのアクセス権を取得したら、この記事の手順に従って VHD イメージをアップロードし、イメージからテンプレートを作成します。
+[ラボを作成](devtest-lab-create-lab.md)したら、VM テンプレートの一覧から [VM をそのラボに追加](devtest-lab-add-vm-with-artifacts.md)できます。この記事では、バーチャル ハード ディスク (VHD) イメージ ファイルをアップロードし、VM の作成に使用するテンプレートとして構成する方法について説明します。VHD イメージを使い慣れていない場合、VHD イメージの作成方法については、「[Windows Server VHD の作成と Azure へのアップロード](/virtual-machines/virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。VHD イメージを作成するか、VHD イメージへのアクセス権を取得したら、この記事の手順に従って VHD イメージをアップロードし、イメージからテンプレートを作成します。
 
 ## VM テンプレートの作成
 
@@ -86,4 +86,4 @@
 
 VM を作成するときに使用する VM テンプレートを追加したら、次に [VM を DevTest ラボに追加](devtest-lab-add-vm-with-artifacts)します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="02/01/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API とその操作、成果物を作成する方法
@@ -62,4 +62,4 @@ API Management の成果物には、少なくとも 1 つの API に加え、使
 [API の定義を操作と共にインポートする方法]: api-management-howto-import-api.md
 [成果物を作成して詳細設定を構成する方法]: api-management-howto-product-with-rules.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

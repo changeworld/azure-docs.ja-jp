@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ビッグ コンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
-   description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
+   pageTitle="クラウドのバッチと HPC のワークロードのリソース | Microsoft Azure"
+   description="Azure で大規模並列、Batch、高性能コンピューティング (HPC) ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
    authors="dlepow"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="09/29/2015"
+   ms.date="01/26/2016"
    ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -34,11 +34,11 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
-* [API リファレンス](https://msdn.microsoft.com/library/azure/dn820177.aspx)
+* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) と [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) の API リファレンス
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -50,7 +50,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料 HPC ソリューションであり、Windows と Linux HPC の両方のワークロードを実行できます。
 
-* [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/ja-JP/download/details.aspx?id=49922)
+* [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=49922)
 
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
@@ -62,7 +62,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 
-* [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
+* [Windows HPC フォーラム](https://social.microsoft.com/Forums/ja-JP/home?category=windowshpc)
 
 ### Linux と OSS クラスターのソリューション
 
@@ -81,12 +81,12 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
+* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
 
 
 ## コンピューティング集中型インスタンス
 
-Azure では、Linux および Windows の HPC ワークロードを実行するために、コンピューティング集中型の [A8、A9、A10、A11 インスタンス](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)などの[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。
+Azure では、Linux と Windows の HPC ワークロードを実行するために[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、コンピューティング集中型の [A8 や A9](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md) インスタンスはバックエンド RDMA ネットワークに接続できます。
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
@@ -94,7 +94,7 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 
 ## アーキテクチャの設計図
 
-* Microsoft Azure Batch and Azure Data Factory: Architecture for large-scale data processing (Microsoft Azure Batch と Azure Data Factory: 大規模なデータ処理のアーキテクチャ) ([PDF](http://go.microsoft.com/fwlink/?linkid=717686) と[記事](../data-factory/data-factory-data-processing-using-batch.md)) では、Data Factory によってデータの移動と処理が調整されるしくみと、Azure Batch によってデータが並列処理されるしくみを示します。
+* [Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
 
 ## サンプルとデモ
 
@@ -121,4 +121,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

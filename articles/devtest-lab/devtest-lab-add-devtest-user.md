@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Add owners and users to a DevTest Lab | Microsoft Azure"
-	description="Securely add a user who is not in your subscription to your Azure DevTest Lab."
+<properties
+	pageTitle="DevTest ラボへの所有者とユーザーの追加 | Microsoft Azure"
+	description="Azure DevTest ラボにサブスクリプション外のユーザーを安全に追加する方法を説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher"/>
 
 # DevTest ラボへの所有者とユーザーの追加
@@ -26,7 +26,7 @@ DevTest ラボへのアクセスを許可するには 2 つのロールを使用
 
  - **所有者**: Azure サブスクリプション レベルで**所有者**ロールに割り当てられたユーザーは、管理機能や監視機能を含む、ラボへの完全なアクセス権を持ちます。
 
-     >[AZURE.NOTE] サブスクリプション レベルではなく、RBAC レベルで割り当てられた**所有者**ロールは、DevTest ラボではサポートされていません。DevTest ラボ内でユーザーを**所有者**ロールに割り当てることはサポートされていません。
+     > [AZURE.NOTE] サブスクリプション レベルではなく、RBAC レベルで割り当てられた**所有者**ロールは、DevTest ラボではサポートされていません。DevTest ラボ内でユーザーを**所有者**ロールに割り当てることはサポートされていません。
 
  -  **DevTest ラボ ユーザー**: **DevTest ラボ ユーザー** ロールに割り当てられたユーザーは、指定されたラボで VM を作成、更新、および削除することができます。ユーザーには、*内部* (サブスクリプションの Azure Active Directory のメンバー) と*外部* (パートナー組織のメンバーなど、Azure AD のメンバー以外のユーザー) の 2 種類があります。
 	-  **DevTest ラボ ユーザー** ロールは、ラボの **[ユーザーの追加]** タイルを使用して割り当てる必要があります。
@@ -101,4 +101,4 @@ DevTest ラボ ユーザーをラボに追加するには、次の手順に従�
 
 	1. **[ユーザー]** ブレードに、追加したロールとユーザーが表示されます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

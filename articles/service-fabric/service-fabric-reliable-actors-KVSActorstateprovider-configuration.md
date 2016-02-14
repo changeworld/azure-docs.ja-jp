@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/28/2015"
+   ms.date="01/26/2016"
    ms.author="sumukhs"/>
 
 # Reliable Actors の構成 - KVSActorStateProvider
@@ -21,7 +21,7 @@ KVSActorStateProvider の既定の構成を変更するには、指定された�
 
 Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
 
->[AZURE.NOTE]Visual Studio ソリューションで生成される settings.xml ファイルでは、以下の構成のセクション名を削除/変更**しない**でください。
+>[AZURE.NOTE] Visual Studio ソリューションで生成された settings.xml ファイルでは、次の構成のセクション名を削除/変更**しない**でください。
 
 ## レプリケーターのセキュリティ構成
 レプリケーション時に使用される通信チャネルをセキュリティで保護するには、レプリケーターのセキュリティ構成を使用します。これは、サービスは互いのレプリケーション トラフィックを確認できないため、高可用性データもセキュリティで保護されることを意味します。既定では、空のセキュリティ構成セクションでレプリケーション セキュリティは有効にはなりません。
@@ -86,4 +86,4 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 
 BatchAcknowledgementInterval パラメーターは、レプリケーションの待機時間を制御します。値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。これは、トランザクションのコミットの待機時間に直結します。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0204_2016-->

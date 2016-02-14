@@ -31,7 +31,7 @@ Microsoft Azure インフラストラクチャ サービスで、最初または
 
 Azure ポータルの Azure Marketplace の「[SharePoint 2013 非 HA ファーム](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)」項目を参照してください。これは、インターネットに接続された SharePoint Web サイトの基本的な開発/テスト ファームを作成します。詳細については、「[SharePoint サーバー ファームの作成](virtual-machines-sharepoint-farm-azure-preview.md)」を参照してください。
 
-Azure リソース マネージャーのテンプレートを使用することもできます。「[Deploy a three-server SharePoint farm (3 つのサーバーで構成された SharePoint ファームのデプロイ)](virtual-machines-workload-template-sharepoint.md#deploy-a-three-server-sharepoint-farm)」参照してください。
+Azure リソース マネージャーのテンプレートを使用することもできます。「[SharePoint](virtual-machines-app-frameworks.md)」を参照してください。
 
 > [AZURE.NOTE] Azure ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。
 
@@ -49,16 +49,16 @@ Azure リソース マネージャーのテンプレートを使用すること�
 
 [ハイブリッド クラウドの開発/テスト環境での SharePoint イントラネット ファーム](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)では、シミュレートされたハイブリッド クラウド構成を作成します。この構成はシンプルな 2 階層の SharePoint ファームをホストし、このファームを使用して、Azure でホストされているイントラネット SharePoint ファームをインターネット上の自分の場所からテストできます。
 
-この構成では、クラシック デプロイ モデルを使用します。
+この構成では、クラシック デプロイメント モデルを使用します。
 
 ## 高可用性イントラネット SharePoint 運用ファーム
 
 [Azure で SharePoint 2013 と SQL Server AlwaysOn 可用性グループ](virtual-machines-workload-intranet-sharepoint-overview.md)をデプロイすることで、運用環境で利用できる、高可用性のイントラネット SharePoint Server 2013 ファームを Azure で構築できます。
 
-この構成では、クラシック デプロイ モデルを使用します。
+この構成では、クラシック デプロイメント モデルを使用します。
 
 ## 次のステップ
 
 - Azure インフラストラクチャ サービスで、追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

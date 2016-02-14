@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ARM テンプレートを使用した Service Fabric クラスターのセットアップ | Microsoft Azure"
-   description="ARM テンプレートを使用した Service Fabric クラスターのセットアップ。"
+   pageTitle="Azure リソース マネージャー テンプレートを使用して Service Fabric クラスターをセットアップする | Microsoft Azure"
+   description="Azure リソース マネージャー テンプレートを使用して Service Fabric クラスターをセットアップします。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -13,48 +13,54 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/19/2015"
+   ms.date="01/29/2016"
    ms.author="chackdan"/>
 
-# ARM テンプレートを使用した Service Fabric クラスターのセットアップ
 
-このページは、ARM テンプレートを使用して Service Fabric クラスターをセットアップする際に役立ちます。サブスクリプションに、このクラスターを構成する IaaS VM をデプロイできるだけのコア数が割り当てられていることが前提となります。
+# Azure リソース マネージャー テンプレートを使用して Service Fabric クラスターをセットアップする
+
+ここでは、Azure リソース マネージャー テンプレートを使用して Azure Service Fabric クラスターをセットアップする方法について説明します。セットアップするには、サブスクリプションに、このクラスターを構成する IaaS VM をデプロイできるだけのコア数が割り当てられている必要があります。
 
 ## 前提条件
 
-- セキュリティで保護されたクラスターをセットアップする場合は、x509 証明書が Key Vault にアップロードされていることを確認します。Source Vault URL、証明書 URL、証明書の拇印が必要になります。
--  方法の詳細については、[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)に関するページをご覧ください。
+- セキュリティで保護されたクラスターをセットアップするには、まず X.509 証明書を Key Vault にアップロードする必要があります。ソース コンテナーの URL、証明書の URL、証明書の拇印が必要になります。
+- セキュリティで保護されたクラスターをセットアップする方法の詳細については、「[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)」を参照してください。
 
-## サンプル ARM テンプレートの入手
+## サンプル リソース マネージャー テンプレートを取得する
 
-1. サンプル ARM テンプレートは、[github の Azure クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates)で入手できます。Service Fabric テンプレートはすべて、名前が "service-fabric.." で始まります。リポジトリで "fabric" を検索するか、サンプル テンプレートのセットが表示されるまで下にスクロールします。
-2. 探しているテンプレートをすばやく見つけることができるように、テンプレートには次のように名前が付けられています。
-	1. [service-fabric-unsecure-cluster-5-node-1-nodetype](http://go.microsoft.com/fwlink/?LinkId=716923): セキュリティで保護されていない 5 ノード単一ノード クラスター テンプレートを示しています。 
-	3. [service-fabric-secure-cluster-5-node-1-nodetype-wad](http://go.microsoft.com/fwlink/?LinkID=716924): WAD が有効化された、セキュリティで保護された 5 ノード単一ノード クラスター テンプレートを示しています。 
-	4. [service-fabric-secure-cluster-10-node-2-nodetype-wad](http://go.microsoft.com/fwlink/?LinkId=716925): WAD が有効化された、セキュリティで保護された 10 ノード 2 ノード クラスター テンプレートを示しています。 
-	
+サンプル リソース マネージャー テンプレートは、[GitHub の Azure クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates)で入手できます。すべての Service Fabric テンプレート名の先頭には "service-fabric.." と付きます。リポジトリを検索するには、"fabric" を検索するか、サンプル テンプレートのセットまでスクロールします。探しているテンプレートをすばやく見つけることができるように、テンプレートには次のように名前が付けられています。
 
-## カスタム ARM テンプレートの作成
+- [service-fabric-unsecure-cluster-5-node-1-nodetype](http://go.microsoft.com/fwlink/?LinkId=716923): セキュリティで保護されていない 5 ノード単一ノード クラスター テンプレートを示しています。
 
-2. ここでどちらかを選択します。 
-	1. [github の Azure クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates)からサンプル テンプレートを入手し、テンプレートに変更を加えます。
-	2. Azure ポータルにログインし、Service Fabric ポータル ページを使用して、カスタマイズするテンプレートを生成します。このプロセスを次に示します。
-3. Azure ポータル ([http://aka.ms/servicefabricportal](http://aka.ms/servicefabricportal)) にログオンします。
-2. [ポータルを使用した Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)に関するページの説明に従って、クラスターの作成プロセスを完了します。ただし、****作成**をクリックしないでください。代わりに、[概要] に移動し、テンプレートをダウンロードします。
+- [service-fabric-secure-cluster-5-node-1-nodetype-wad](http://go.microsoft.com/fwlink/?LinkID=716924): WAD が有効化された、セキュリティで保護された 5 ノード単一ノード クラスター テンプレートを示しています。
 
- ![DownloadTemplate][DownloadTemplate]
+- [service-fabric-secure-cluster-10-node-2-nodetype-wad](http://go.microsoft.com/fwlink/?LinkId=716925): WAD が有効化された、セキュリティで保護された 10 ノード 2 ノード クラスター テンプレートを示しています。
 
-## Azure PS を使用した ARM テンプレートの Azure へのデプロイ
+## カスタム リソース マネージャー テンプレートを作成する
 
-PowerShell を使用したテンプレートのデプロイ方法に関する詳しいガイダンスについては、[PS を使用した ARM テンプレートのデプロイ](resource-group-template-deploy.md)に関するページをご覧ください。
+カスタム リソース マネージャー テンプレートを作成するには、2 つの方法があります。
+
+1. [GitHub の Azure クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates)からサンプル テンプレートを入手し、テンプレートに変更を加えます。
+
+2. Azure ポータルにサインインし、Service Fabric ポータル ページを使用して、カスタマイズするテンプレートを生成します。そのためには、次の手順に従います。
+
+    a.[Azure ポータル](https://portal.azure.com/)にサインインします。
+
+    b.「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」を参照し、クラスターの作成プロセスを実行します。ただし、**[作成]** をクリックせずに、**[概要]** をクリックし、次のスクリーン ショットのようにテンプレートをダウンロードします。
+
+ ![リソース マネージャー テンプレートをダウンロードするリンクが表示された Service Fabric クラスター ページのスクリーン ショット][DownloadTemplate]
+
+## Azure PowerShell を使用してリソース マネージャー テンプレートを Azure にデプロイする
+
+PowerShell を使用してテンプレートをデプロイする詳細な手順については、「[PowerShell を使用してテンプレートをデプロイする](resource-group-template-deploy.md)」を参照してください。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-- [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md) 
+- [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0204_2016-->

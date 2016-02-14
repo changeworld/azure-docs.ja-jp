@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/04/2016"
+   ms.date="02/01/2016"
    ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ Update 2 リリース ノート  
@@ -21,7 +21,7 @@
 
 次のリリース ノートでは、StorSimple 8000 シリーズ Update 2 の新機能について説明し、未解決の重要な問題を示します。また、このリリースに含まれる StorSimple のソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムの一覧も含まれています。
 
-Update 2 は、Release (GA) または Update 0.1 から Update 1.2 までを実行しているすべての StorSimple デバイスに適用できます。
+Update 2 は、Release (GA) または Update 0.1 から Update 1.2 までを実行しているすべての StorSimple デバイスに適用できます。Update 2 に関連付けられているデバイスのバージョンは、6.3.9600.17673 です。
 
 StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。
 
@@ -113,4 +113,8 @@ Update 2 では、次の新機能が導入されています。
 
 この更新プログラムは、仮想デバイスには適用できません。新しい仮想デバイスを作成する必要があります。
 
-<!---HONumber=AcomDC_0121_2016-->
+## 次のステップ
+
+StorSimple デバイスに [Update 2 をインストールする](storsimple-install-update-2.md)方法。
+
+<!---HONumber=AcomDC_0204_2016-->

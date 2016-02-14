@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows および Linux IaaS VM の Azure ディスク暗号化 | Microsoft Azure"
-   description="このドキュメントでは、Windows および Linux IaaS VM の Microsoft Azure ディスク暗号化の概要を示します。"
+   pageTitle="Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Azure"
+   description="このドキュメントでは、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption の概要を示します。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
    authors="YuriDio"
@@ -13,26 +13,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/10/2015"
+   ms.date="01/29/2016"
    ms.author="devtiw"/>
 
 
-#Windows および Linux IaaS VM プレビューの Azure ディスク暗号化
+#Windows および Linux IaaS VM プレビューの Azure Disk Encryption
 
-> [AZURE.NOTE]このドキュメントの情報は、プレビュー リリースの Azure ディスク暗号化に適用されます。
+> [AZURE.NOTE] このドキュメントの情報は、プレビュー リリースの Azure Disk Encryption に適用されます。
 
-
-Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。このドキュメントでは、"Windows および Linux IaaS VM の Azure ディスク暗号化" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure ディスク暗号化機能の使用方法に関する詳細なガイダンスを提供します。
+Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。
 
 **注**: ここに含まれる特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。
 
 ## 概要
 
-Azure ディスク暗号化は、Windows および Linux IaaS 仮想マシン ディスクを暗号化できる新機能です。Azure ディスク暗号化では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。ソリューションは [Azure Key](https://azure.microsoft.com/documentation/services/key-vault/) Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
+Azure Disk Encryption は、Windows および Linux IaaS 仮想マシン ディスクを暗号化できる新機能です。Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。ソリューションは [Azure Key](https://azure.microsoft.com/documentation/services/key-vault/) Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 
 ### 暗号化のシナリオ
 
-Azure ディスク暗号化ソリューションでは、次の 3 つのユーザー暗号化シナリオがサポートされています。
+Azure Disk Encryption ソリューションでは、次の 3 つのユーザー暗号化シナリオがサポートされています。
 
 - 顧客が暗号化した VHD と暗号化キーから作成された新しい IaaS VM での暗号化を有効にする
 
@@ -57,7 +56,7 @@ Azure ディスク暗号化ソリューションでは、次の 3 つのユー�
 
 - 従来の VM の作成方法を使用して作成された IaaS VM
 
-- Azure ディスク暗号化を使用して有効になっている、IaaS VM での暗号化を無効にする機能
+- Azure Disk Encryption を使用して有効になっている、IaaS VM での暗号化を無効にする機能
  
 - オンプレミス キー管理サービスとの統合
 
@@ -65,10 +64,12 @@ Azure ディスク暗号化ソリューションでは、次の 3 つのユー�
 
 - Red Hat Enterprise Linux
 
+- Azure Files (Azure ファイル共有)、ネットワーク ファイル共有 (NFS)、ダイナミック ボリューム、ソフトウェア ベースの RAID システム
+
 
 ### 暗号化機能
 
-Azure IaaS VM の Azure ディスク暗号化を有効にしてデプロイすると、指定された構成に応じて、以下の機能が有効になります。
+Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると、指定された構成に応じて、以下の機能が有効になります。
 
 - 顧客ストレージに保存中のブート ボリュームを保護するための OS ボリュームの暗号化
 
@@ -80,13 +81,13 @@ Azure IaaS VM の Azure ディスク暗号化を有効にしてデプロイす�
 
 - IaaS 仮想マシンからのディスク暗号化構成設定の削除
 
-Windows および Linux 用 IaaS VM の Azure ディスク暗号化ソリューションには、Windows のディスク暗号化拡張機能、Linux のディスク暗号化拡張機能、ディスク暗号化 PowerShell コマンドレット、ディスク暗号化 CLI コマンドレットおよびディスク暗号化 Azure リソース マネージャー テンプレートが含まれます。Azure ディスク暗号化ソリューションは、Windows または Linux OS を実行している IaaS VM でサポートされます。サポートされているオペレーティング システムの詳細については、後述の前提条件セクションを参照してください。
+Windows および Linux 用 IaaS VM の Azure Disk Encryption ソリューションには、Windows のディスク暗号化拡張機能、Linux のディスク暗号化拡張機能、ディスク暗号化 PowerShell コマンドレット、ディスク暗号化 CLI コマンドレットおよびディスク暗号化 Azure リソース マネージャー テンプレートが含まれます。Azure Disk Encryption ソリューションは、Windows または Linux OS を実行している IaaS VM でサポートされます。サポートされているオペレーティング システムの詳細については、後述の「前提条件」セクションを参照してください。
 
-パブリック プレビュー期間中は、Azure ディスク暗号化による VM ディスクの暗号化に対して課金されることはありません。ディスク暗号化が一般公開されてからも継続する予定です。ただし、市場および競合他社状況に応じて価格は変更になる可能性があります。
+パブリック プレビュー期間中は、Azure Disk Encryption による VM ディスクの暗号化に対して課金されることはありません。ディスク暗号化が一般公開されてからも継続する予定です。ただし、市場および競合他社状況に応じて価格は変更になる可能性があります。
 
 ### 価値の提案
 
-Azure ディスク暗号化の管理ソリューションは、クラウドにおいて次のビジネス ニーズに対応できます。
+Azure Disk Encryption の管理ソリューションは、クラウドにおいて次のビジネス ニーズに対応できます。
 
 -   業界標準の暗号化テクノロジを使用して保存中の IaaS VM をセキュリティで保護し、組織のセキュリティおよびコンプライアンス要件に対処する。
 
@@ -98,7 +99,7 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 1. 顧客は、上記 3 つの暗号化シナリオから暗号化シナリオを選択します。
 
-2. 顧客は、Azure ディスク暗号化 ARM テンプレート、PS コマンドレットまたは CLI コマンドを使用してディスク暗号化を有効にすることを選択し、暗号化構成を指定します。
+2. 顧客は、Azure Disk Encryption ARM テンプレート、PS コマンドレットまたは CLI コマンドを使用してディスク暗号化を有効にすることを選択し、暗号化構成を指定します。
 
     - 顧客が暗号化した VHD シナリオの場合、顧客は暗号化した VHD をストレージ アカウントに、暗号化キー マテリアルを Key Vault にアップロードし、暗号化構成を指定して新しい IaaS VM での暗号化を有効にします。
 
@@ -114,51 +115,53 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 ## 前提条件
 
-概要セクションに記載されているサポート対象シナリオの Azure IaaS VM で Azure ディスク暗号化を有効にするための前提条件を以下に示します。
+概要セクションに記載されているサポート対象シナリオの Azure IaaS VM で Azure Disk Encryption を有効にするための前提条件を以下に示します。
 
 - ユーザーは、サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
 
-- Azure ディスク暗号化は、Windows サーバー SKU (Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2) でサポートされています。ソリューションは、Windows Server 2008 オペレーティング システムではサポートされません。Windows Server Technical Preview はパブリック プレビュー リリースではサポートされません。
+- Azure Disk Encryption は、Windows サーバー SKU (Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2) でサポートされています。ソリューションは、Windows Server 2008 オペレーティング システムではサポートされません。Windows Server Technical Preview はパブリック プレビュー リリースではサポートされません。
 
 **注**: Windows Server 2008 R2 の場合、Azure で暗号化を有効にする前に、.Net Framework 4.5 をインストールする必要があります。オプションの更新プログラムである "Windows Server 2008 R2 x64 ベース システム用の Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983))" をインストールし、Windows 更新プログラムからこれをインストールすることができます。
 
-- Azure ディスク暗号化は、Linux サーバー SKU (Ubuntu、CentOS、SUSE および SUSE Linux Enterprise Server (SLES)) でサポートされています。Red Hat Enterprise Linux はパブリック プレビュー リリースではサポートされません。
+- Azure Disk Encryption は、Linux サーバー SKU (Ubuntu、CentOS、SUSE および SUSE Linux Enterprise Server (SLES)) でサポートされています。Red Hat Enterprise Linux はパブリック プレビュー リリースではサポートされません。
 
 - すべてのリソース (例: Key Vault、ストレージ アカウント、VM など) が同じ Azure リージョンとサブスクリプションに属している必要があります。
 
-**注** - Azure ディスク暗号化では、Key Vault と VM が同じ Azure リージョンにある必要があります。それぞれ別のリージョンで構成すると、Azure ディスク暗号化機能を有効にする場合にエラーが発生します。
+**注** - Azure Disk Encryption では、Key Vault と VM が同じ Azure リージョンにある必要があります。それぞれ別のリージョンで構成すると、Azure Disk Encryption 機能を有効にする場合にエラーが発生します。
 
-- Azure ディスク暗号化の使用について Azure Key Vault をセットアップして構成する場合は、この記事の付録の「**Azure ディスク暗号化の使用に関する Azure Key Vault の設定と構成**」セクションを参照してください。
+- Azure Disk Encryption の使用について Azure Key Vault をセットアップして構成する場合は、この記事の「*前提条件*」セクションの「**Azure Disk Encryption の使用に関する Azure Key Vault の設定と構成**」を参照してください。
 
-- Azure ディスク暗号化の使用について、Azure Active Directory で Azure AD アプリケーションをセットアップして構成する場合は、この記事の付録の「**Azure Active Directory での Azure AD アプリケーションのセットアップ**」セクションを参照してください。
+- Azure Disk Encryption の使用について、Azure Active Directory で Azure AD アプリケーションをセットアップして構成する場合は、この記事の「*前提条件*」セクションの「**Azure Active Directory での Azure AD アプリケーションのセットアップ**」を参照してください。
 
-- Azure AD アプリケーションについて Key Vault アクセス ポリシーをセットアップして構成する場合は、この記事の付録の「**Azure AD アプリケーションの Key Vault アクセス ポリシーの設定**」セクションを参照してください。
+- Azure AD アプリケーションに関する Key Vault アクセス ポリシーをセットアップして構成する場合は、この記事の「*前提条件*」セクションの「**Azure AD アプリケーションの Key Vault アクセス ポリシーの設定**」を参照してください。
 
 - 事前に暗号化された Windows VHD を準備する場合は、この記事の付録の「**事前に暗号化された Windows VHD の準備**」セクションを参照してください。
 
-- Azure プラットフォームは顧客の Azure Key Vault の暗号化キーまたはシークレットにアクセスし、VM での仮想マシン OS ボリュームのブートと暗号化解除に使用できるようにする必要があります。Key Vault へのアクセス権を Azure プラットフォームに付与するには、この要件に応じて Key Vault で **enabledForDiskEncryption** プロパティを設定する必要があります。詳細については、この記事の付録の「**Azure ディスク暗号化の使用に関する Azure Key Vault の設定と構成**」セクションを参照してください。
+- 事前に暗号化された Linux VHD を準備する場合は、この記事の付録の「**事前に暗号化された Linux VHD の準備**」セクションを参照してください。
+
+- Azure プラットフォームは顧客の Azure Key Vault の暗号化キーまたはシークレットにアクセスし、VM での仮想マシン OS ボリュームのブートと暗号化解除に使用できるようにする必要があります。Key Vault へのアクセス権を Azure プラットフォームに付与するには、この要件に応じて Key Vault で **enabledForDiskEncryption** プロパティを設定する必要があります。詳細については、この記事の付録の「**Azure Disk Encryption の使用に関する Azure Key Vault の設定と構成**」セクションを参照してください。
 
 - Key Vault シークレットおよびキー暗号化キー (KEK) の URL のバージョン管理が必要です。Azure サービス管理では、このバージョン管理制限が適用されます。有効なシークレットおよび KEK URL については以下の例を参照してください。
 
 	- 有効なシークレット URL の例:
 
-		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 有効な KRK KEK の例:
 
-		*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-- Azure ディスク暗号化では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については以下の例を参照してください。
+- Azure Disk Encryption では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については以下の例を参照してください。
 
  	- 受け入れられない Key Vault URL:
 
-		*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 受け入れられる Key Vault URL:
 
-		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-- Azure ディスク暗号化機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
+- Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
 
 	- IaaS VM は、Azure Key Vault に接続するためのトークンを取得するときに、Azure Active Directory エンドポイント [Login.windows.net] に接続できる必要があります。
 
@@ -168,13 +171,13 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 **注:** セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、接続する必要がある上記 URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
 
-- Azure ディスク暗号化 PowerShell コマンドレットのいずれかを実行するには、次のように、最初に Azure PowerShell バージョン 1.0.1 をインストールする必要があります。
+- Azure Disk Encryption PowerShell コマンドレットのいずれかを実行するには、次のように、最初に [Azure PowerShell バージョン 1.0.2](https://github.com/Azure/azure-powershell/releases/tag/v1.0.2-December2015) をインストールする必要があります。
 
 	- Azure PowerShell をインストールして、Azure サブスクリプションに関連付ける場合は、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-	- 上記のオプションがまだ更新されておらず、Azure PowerShell 1.0.1 リリースが含まれていない場合は、[ここ](https://github.com/Azure/azure-powershell/releases/tag/v1.0.1-November2015)から直接 Azure PowerShell 1.0.1 をインストールすることもできます。
+	- このドキュメントは、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。詳細については、[Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx) の概要に関するページを参照してください。
 
-**注:** このドキュメントは、モジュール、コマンドレット、およびセッションなどの基本的な概念を理解していることを前提としています。詳細については、[Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx) の概要に関するページを参照してください。
+**注:** Azure Disk Encryption は、[Azure PowerShell SDK バージョン 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) でサポートされていません。
 
 - Azure CLI コマンドのいずれかを実行して、Azure サブスクリプションに関連付けるには、まず、以下のように Azure CLI バージョンをインストールする必要があります。
 
@@ -182,9 +185,178 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 	- Azure リソース マネージャーでの Mac、Linux、および Windows 用 Azure CLI の使用については、[こちら](azure-cli-arm-commands.md)を参照してください。
 
-- Azure ディスク暗号化ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。VM がドメインに参加している場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。[互換性のある TPM が装備されていない BitLocker を許可する] というグループ ポリシーの詳細については、[この記事](https://technet.microsoft.com/library/ee706521)を参照してください。
+- Azure Disk Encryption ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。VM がドメインに参加している場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。[互換性のある TPM が装備されていない BitLocker を許可する] というグループ ポリシーの詳細については、[この記事](https://technet.microsoft.com/library/ee706521)を参照してください。
+- Azure Disk Encryption の前提条件となる、Azure AD アプリケーションを作成し、新しい Key Vault を作成するか既存の Key Vault を設定して、暗号化を有効にする PowerShell スクリプトは、[こちら](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)にあります。
 
-### 用語集
+### Azure Disk Encryption の使用に関する Azure Key Vault の設定と構成
+
+Azure Disk Encryption では、Azure Key Vault のディスク暗号化キーとシークレットを保護します。Azure Disk Encryption の使用について Key Vault をセットアップするには、以下のセクションのいずれかの手順に従います。
+
+#### 新しい Key Vault の作成
+新しい Key Vault を作成するには、以下にリストされている 2 つのオプションのいずれかを使用します。
+
+- [ここ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)にある "101-Create-KeyVault" ARM テンプレートを使用する 
+- [ここ](key-vault-get-started.md)で説明されている Azure PowerShell Key Vault コマンドレットを使用する
+
+**注:** サブスクリプションについて既に Key Vault をセットアップしている場合は、次のセクションに進んでください。
+
+#### キー暗号化キーのプロビジョニング (省略可能)
+
+キー暗号化キー (KEK) を使用して、BitLocker 暗号化キーをラップするためのセキュリティ層を追加する場合は、プロビジョニング プロセスで使用するために Key Vault に KEK を追加する必要があります。Key Vault で新しいキー暗号化キーを作成するには、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868048.aspx) コマンドレットを使用します。詳細については、[Key Vault のドキュメント](https://azure.microsoft.com/documentation/services/key-vault/)を参照してください。
+
+    Add-AzureKeyVaultKey [-VaultName] <string> [-Name] <string> -Destination <string> {HSM | Software}
+
+#### Azure プラットフォームからキーとシークレットにアクセスできるように Key Vault のアクセス許可を設定する
+
+Azure プラットフォームは Azure Key Vault の暗号化キーまたはシークレットにアクセスし、VM でのボリュームのブートと暗号化解除に使用できるようにする必要があります。Key Vault にアクセスできるように Azure プラットフォームに権限を付与するには、Key Vault で *enabledForDiskEncryption* プロパティを設定する必要があります。以下の Key Vault PS コマンドレットを使用して、Key Vault に enabledForDiskEncryption プロパティを設定することができます。
+
+    Set-AzureRmKeyVaultAccessPolicy -VaultName <yourVaultName> -ResourceGroupName <yourResourceGroup> -EnabledForDiskEncryption
+
+前述のとおり、Key Vault には *enabledForDiskEncryption* プロパティを設定する必要があります。https://resources.azure.com にアクセスして、プロパティを設定することができます。上記に詳しく説明されているプロパティが正しく設定されていることを確認してください。正しく設定されていない場合、デプロイは失敗します。
+
+#### Azure Active Directory での Azure AD アプリケーションのセットアップ
+
+Azure で実行中の VM に対して暗号化を有効にする必要がある場合、Azure Disk Encryption により、暗号化キーが生成され、Key Vault に書き込まれます。Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。
+ 
+そのため、Azure AD アプリケーションを作成する必要があります。アプリケーションの詳しい登録手順については、この[ブログ投稿](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)のアプリケーションの ID の取得に関するセクションを参照してください。この投稿には、Key Vault のプロビジョニングおよび構成に関する役立つ例も多数含まれています。認証目的で、クライアント シークレット ベースの認証またはクライアント証明書ベースの Azure AD 認証を使用できます。
+
+##### Azure AD のクライアント シークレット ベースの認証
+
+以降のセクションでは、Azure AD のクライアント シークレット ベースの認証を構成するために必要な手順が示されています。
+
+##### Azure PowerShell を使用して新しい Azure AD アプリを作成する
+
+新しい Azure AD アプリを作成するには、以下の PowerShell コマンドレットを使用します。
+
+    $aadClientSecret = “yourSecret”
+    $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password $aadClientSecret
+    $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
+
+**注:** $azureAdApplication.ApplicationId は Azure AD ClientID、$aadClientSecret はクライアント シークレットで ADE を有効にするために後で使用する必要があります。Azure AD クライアントのシークレットは適切に保護してください。
+
+
+##### Azure サービス管理ポータルからの Azure AD のクライアント ID とシークレットのプロビジョニング
+
+Azure AD のクライアント ID とシークレットも、https://manage.windowsazure.com の Azure サービス管理ポータルを使用してプロビジョニングすることができます。このタスクを実行するには、以下の手順に従います。
+
+1\. 次の図に示すように、[Active Directory] タブをクリックします。
+
+![Azure Disk Encryption](./media/azure-security-disk-encryption\disk-encryption-fig3.JPG)
+
+2\. [アプリケーションの追加] をクリックし、次のようにアプリケーション名を入力します。
+
+![Azure Disk Encryption](./media/azure-security-disk-encryption\disk-encryption-fig4.JPG)
+
+3\. 矢印ボタンをクリックし、次のようにアプリのプロパティを構成します。
+
+![Azure Disk Encryption](./media/azure-security-disk-encryption\disk-encryption-fig5.JPG)
+
+4\. 左下隅にあるチェック マークをクリックして終了します。アプリの構成ページが表示されます。次の図に示されているように、Azure AD のクライアント ID がページの下部にあることがわかります。
+ 
+![Azure Disk Encryption](./media/azure-security-disk-encryption\disk-encryption-fig6.JPG)
+
+5\. [保存] をクリックして、Azure AD のクライアント シークレットを保存します。[保存] をクリックし、キーのテキスト ボックスのシークレットをメモします。これが Azure AD のクライアント シークレットです。Azure AD のクライアント シークレットは適切に保護する必要があります。
+
+![Azure Disk Encryption](./media/azure-security-disk-encryption\disk-encryption-fig7.JPG)
+
+
+**注:** 上のこのフローはポータルではサポートされません。
+
+##### 既存のアプリの使用
+
+以下のコマンドを実行するには、Azure AD PowerShell モジュールが必要です ([ここ](https://technet.microsoft.com/library/jj151815.aspx)から取得できます)。
+
+**注:** 以下のコマンドは新しい PowerShell ウィンドウから実行する必要があります。これらのコマンドを実行する場合は、Azure PowerShell や Azure リソース マネージャーのウィンドウを使用しないでください。このように推奨するのは、これらのコマンドレットが MSOnline モジュールまたは Azure AD PowerShell にあるためです。
+
+    $clientSecret = ‘<yourAadClientSecret>’ 
+    $aadClientID = '<Client ID of your AAD app>'
+    connect-msolservice
+    New-MsolServicePrincipalCredential -AppPrincipalId $aadClientID -Type password -Value $clientSecret
+
+#### Azure AD の証明書ベースの認証
+
+以降のセクションには、Azure AD の証明書ベースの認証を構成するために必要な手順が示されています。
+
+##### 新しい Azure AD アプリの作成
+
+新しい Azure AD アプリを作成するには、以下の PowerShell コマンドレットを実行します。
+
+**注:** 以下の "yourpassword" 文字列をセキュリティで保護されたパスワードに置き換え、パスワードを保護してください。
+
+    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate("C:\certificates\examplecert.pfx", "yourpassword")
+    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+    $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -KeyValue $keyValue -KeyType AsymmetricX509Cert
+    $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
+
+この手順が完了したら、.pfx ファイルを Key Vault にアップロードし、VM にその証明書をデプロイするために必要なアクセス ポリシーを有効にします。
+
+##### 既存の Azure AD アプリの使用
+既存のアプリの証明書ベースの認証を構成する場合は、次の PowerShell コマンドレットを使用します。必ず、新しい PowerShell ウィンドウから実行してください。
+
+    $certLocalPath = 'C:\certs\myaadapp.cer' 
+    $aadClientID = '<Client ID of your AAD app>'
+    connect-msolservice
+    $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate
+    $cer.Import($certLocalPath)
+    $binCert = $cer.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert);
+    New-MsolServicePrincipalCredential -AppPrincipalId $aadClientID -Type asymmetric -Value $credValue -Usage verify
+
+この手順が完了したら、.pfx ファイルを Key Vault にアップロードし、VM にその証明書をデプロイするために必要なアクセス ポリシーを有効にします。
+
+##### PFX ファイルを Key Vault にアップロードする
+この処理のしくみの詳細については、この[ブログ投稿](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。ただし、このタスクで必要なものは以下の PowerShell コマンドレットだけです。必ず、Azure PowerShell コンソールから実行してください。
+
+**注:** 以下の "yourpassword" 文字列をセキュリティで保護されたパスワードに置き換え、パスワードを保護してください。
+
+    $certLocalPath = 'C:\certs\myaadapp.pfx' 
+    $certPassword = "yourpassword"
+    $resourceGroupName = ‘yourResourceGroup’
+    $keyVaultName = ‘yourKeyVaultName’
+    $keyVaultSecretName = ‘yourAadCertSecretName’
+
+    $fileContentBytes = get-content $certLocalPath -Encoding Byte
+    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+
+    $jsonObject = @"
+    {
+    "data": "$filecontentencoded",
+    "dataType" :"pfx",
+    "password": "$certPassword"
+    }
+    "@
+
+    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+
+    Switch-AzureMode -Name AzureResourceManager
+    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+    Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName –EnabledForDeployment
+
+##### 既存の VM に Key Vault の証明書をデプロイする
+PFX のアップロードが完了したら、以下の手順を使用して、Key Vault の証明書を既存の VM にデプロイします。
+
+    $resourceGroupName = ‘yourResourceGroup’
+    $keyVaultName = ‘yourKeyVaultName’
+    $keyVaultSecretName = ‘yourAadCertSecretName’
+    $vmName = ‘yourVMName’
+    $certUrl = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName).Id
+    $sourceVaultId = (Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName).ResourceId
+    $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
+    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore "My" -CertificateUrl $certUrl
+    Update-AzureRmVM -VM $vm  -ResourceGroupName $resourceGroupName
+
+
+#### Azure AD アプリケーションの Key Vault アクセス ポリシーの設定
+
+Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。[Set-AzureKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/dn903607.aspx) コマンドレットで、–ServicePrincipalName パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションに権限を付与します。そのいくつかの例については、[このブログ投稿](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)を参照してください。PowerShell を使用してこのタスクを実行する方法の以下の例も参照してください。
+
+    $keyVaultName = ‘yourKeyVaultName’
+    $aadClientID = '<youAadAppClientID>'
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
+
+## 用語集
 
 このテクノロジで使用される一般的な用語をいくつか理解するために、参照としての以下の用語表を使用します。
 
@@ -201,7 +373,7 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 | KEK | キー暗号化キーは、必要に応じてシークレットを保護またはラップするために使用される非対称キー (RSA 2048) です。HSM で保護されたキーまたはソフトウェアで保護されたキーを指定できます。詳細については、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に関するドキュメントを参照してください。 |
 | PS コマンドレット | [Azure PowerShell コマンドレット](powershell-install-configure.md) |
 
-## ディスク暗号化のデプロイメント シナリオとユーザー エクスペリエンス
+## ディスク暗号化のデプロイ シナリオとユーザー エクスペリエンス
 
 ディスク暗号化を有効にできるシナリオは多数あり、手順はシナリオによって異なる場合があります。以下のセクションでは、これらのシナリオについて詳しく説明します。
 
@@ -290,9 +462,8 @@ CLI コマンドを使用するこのシナリオでは、次の手順に従っ�
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ​AADClientID | ​Key Vault へのシークレットの書き込み権限を持つ Azure AD アプリのクライアント ID |
 | AADClientSecret | ​Key Vault へのシークレットの書き込み権限を持つ Azure AD アプリのクライアント シークレット |
-| **​**keyVaultResourceID | ARM で Key Vault リソースを識別する ResourceID。PowerShell コマンドレット (Get-AzureRmKeyVault -VaultName &lt;yourKeyVaultName&gt; -ResourceGroupName &lt;yourResourceGroupName&gt;).ResourceId を使用して取得できます。 |
-| ​keyVaultURL | ​BitLocker キーをアップロードする必要がある Key Vault の URL。コマンドレット (Get-AzureRmKeyVault -VaultName &lt;yourKeyVaultName&gt; -ResourceGroupName &lt;yourResourceGroupName&gt;) を使用して取得できます。VaultURI |
-| ​ keyEncryptionKeyURL | ​生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。これは省略可能です。 |
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。コマンドレット (Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>).Vaultname を使用して取得できます。 |
+| ​ keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。UseExistingKek ドロップダウンで "nokek" を選択した場合は省略可能です。UseExistingKek ドロップダウンで "kek" を選択した場合は、keyEncryptionKeyURL 値を入力する必要があります。 |
 | ​volumeType | ​暗号化操作を実行するボリュームの種類。有効な値は "OS"、"Data"、"All" です。 |
 | sequenceVersion | BitLocker 操作のシーケンス バージョン。ディスク暗号化操作が同じ VM で実行されるたびに、このバージョン番号をインクリメントします。 |
 | ​vmName | ​暗号化操作を実行する VM の名前
@@ -302,7 +473,7 @@ CLI コマンドを使用するこのシナリオでは、次の手順に従っ�
 
 #### PowerShell コマンドレットの使用
 
-PS コマンドレットによる Azure ディスク暗号化を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure ディスク暗号化の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
+PS コマンドレットによる Azure Disk Encryption を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure Disk Encryption の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
 
 #### CLI コマンドの使用
 
@@ -326,18 +497,16 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 
 次の表で、Azure AD クライアント ID を使用する既存/実行中の VM シナリオ用の ARM テンプレート パラメーターについて詳しく説明します。
 
-| パラメーター | 説明 |
+| パラメーター | 説明|
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ​AADClientID | ​Key Vault へのシークレットの書き込み権限を持つ Azure AD アプリのクライアント ID |
 | AADClientSecret | ​Key Vault へのシークレットの書き込み権限を持つ Azure AD アプリのクライアント シークレット |
-| **​**keyVaultResourceID | ARM で Key Vault リソースを識別する ResourceID。PowerShell コマンドレット (Get-AzureRmKeyVault -VaultName &lt;yourKeyVaultName&gt; -ResourceGroupName &lt;yourResourceGroupName&gt;).ResourceId を使用して取得できます。 |
-| ​keyVaultURL | ​BitLocker キーをアップロードする必要がある Key Vault の URL。コマンドレット (Get-AzureRmKeyVault -VaultName &lt;yourKeyVaultName&gt; -ResourceGroupName &lt;yourResourceGroupName&gt;) を使用して取得できます。VaultURI |
-| ​ keyEncryptionKeyURL | ​生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。これは省略可能です。 |
-| ​volumeType | ​暗号化操作を実行するボリュームの種類。有効なサポートされている値は "Data" です。Linux VM では、実行中の Linux VM の OS ボリュームでの暗号化を有効にすることはサポートされません。
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。コマンドレット (Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>).Vaultname を使用して取得できます。 |
+| ​ keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。UseExistingKek ドロップダウンで "nokek" を選択した場合は省略可能です。UseExistingKek ドロップダウンで "kek" を選択した場合は、keyEncryptionKeyURL 値を入力する必要があります。 |
+| ​volumeType | ​暗号化操作を実行するボリュームの種類。有効なサポートされている値は "Data" です。Linux VM では、実行中の Linux VM の OS ボリュームでの暗号化を有効にすることはサポートされません。 |
 | sequenceVersion | BitLocker 操作のシーケンス バージョン。ディスク暗号化操作が同じ VM で実行されるたびに、このバージョン番号をインクリメントします。 |
-| passPhrase | データ暗号化キーとして強力なパスフレーズを入力します。 |
-| ​vmName | ​暗号化操作を実行する VM の名前                                                                                                               
-                                                                                                                                                                                                                                                      
+| ​vmName | ​暗号化操作を実行する VM の名前
+| passPhrase | データ暗号化キーとして強力なパスフレーズを入力します。 |                                                                                                                                                                                                                                                      
                                                                                                                                                             
 **注:** KeyEncryptionKeyURL は省略可能なパラメーターです。独自の KEK を使用して、Key Vault でデータ暗号化キー (パスフレーズ シークレット) の保護を強化することができます。
 
@@ -358,11 +527,11 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 
 ### 暗号化された IaaS VM の暗号化状態の取得
 
-Azure 管理 (プレビュー) ポータル、[PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt622700.aspx)または CLI コマンドを使用して、暗号化状態を取得できます。以下のセクションでは、Azure 管理 (プレビュー) ポータルと CLI コマンドを使用して、暗号化状態を取得する方法を説明します。
+暗号化状態は、Azure 管理ポータル、[PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt622700.aspx)、または CLI コマンドを使用して取得できます。以下のセクションでは、Azure 管理 (プレビュー) ポータルと CLI コマンドを使用して、暗号化状態を取得する方法を説明します。
 
-#### Azure 管理プレビュー ポータルを使用して暗号化された IaaS VM の暗号化状態を取得する
+#### 暗号化された IaaS VM の暗号化状態を Azure 管理ポータルを使用して取得する
 
-Azure 管理プレビュー ポータルから IaaS VM の暗号化状態を取得できます。https://portal.azure.com/ で Azure プレビュー ポータルにログオンし、左側のメニューにある仮想マシン リンクをクリックして、サブスクリプションの仮想マシンの概要ビューを表示します。仮想マシン ビューは、サブスクリプション ドロップダウン リストからサブスクリプション名を選択してフィルター処理できます。仮想マシン ページのメニューの最上部にある列をクリックします。選択列ブレードからディスク暗号化の列を選択し、[更新] をクリックします。次の図に示すように、各 VM の [有効] または [無効] の暗号化状態を表示するディスク暗号化列が表示されます。
+Azure 管理ポータルから IaaS VM の暗号化状態を取得できます。https://portal.azure.com/ で Azure ポータルにログオンし、左側のメニューにある仮想マシン リンクをクリックして、サブスクリプションの仮想マシンの概要ビューを表示します。仮想マシン ビューは、サブスクリプション ドロップダウン リストからサブスクリプション名を選択してフィルター処理できます。仮想マシン ページのメニューの最上部にある列をクリックします。選択列ブレードからディスク暗号化の列を選択し、[更新] をクリックします。次の図に示すように、各 VM の [有効] または [無効] の暗号化状態を表示するディスク暗号化列が表示されます。
 
 ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig2.JPG)
 
@@ -383,7 +552,7 @@ Azure 管理プレビュー ポータルから IaaS VM の暗号化状態を取�
                              }
     DataVolumesEncrypted: True
 
-OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定されています。これは、両方のボリュームが Azure ディスク暗号化を使用して暗号化されることを示します。PS コマンドレットによる Azure ディスク暗号化を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure ディスク暗号化の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
+OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定されています。これは、両方のボリュームが Azure Disk Encryption を使用して暗号化されることを示します。PS コマンドレットによる Azure Disk Encryption を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure Disk Encryption の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
 
 #### ディスク暗号化 CLI コマンドから IaaS VM の暗号化状態を取得する
 
@@ -414,11 +583,11 @@ OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定さ�
 
     Get-AzureRmSubscription
  
-5\. Azure ディスク暗号化コマンドレットがインストールされていることを確認するには、次のように入力します。
+5\. Azure Disk Encryption コマンドレットがインストールされていることを確認するには、次のように入力します。
  
     Get-command *diskencryption*
 
-6\. Azure ディスク暗号化 PowerShell インストールを確認する以下の出力が示されます。
+6\. Azure Disk Encryption PowerShell インストールを確認する以下の出力が示されます。
 
     PS C:\Windows\System32\WindowsPowerShell\v1.0> get-command *diskencryption*
     CommandType  Name                               	 Version    Source                                                             
@@ -426,179 +595,8 @@ OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定さ�
     Cmdlet       Remove-AzureRmVMDiskEncryptionExtension 1.1.0      AzureRM.Compute                                                    
     Cmdlet       Set-AzureRmVMDiskEncryptionExtension    1.1.0      AzureRM.Compute                                                     
 
-
-### Azure ディスク暗号化の使用に関する Azure Key Vault の設定と構成
-
-Azure ディスク暗号化では、Azure Key Vault のディスク暗号化キーとシークレットを保護します。Azure ディスク暗号化の使用について Key Vault をセットアップするには、以下のセクションのいずれかの手順に従います。
- 
-**注:** Key Vault は VM と同じリージョンにある必要があります。
-
-### 新しい Key Vault の作成
-新しい Key Vault を作成するには、以下にリストされている 2 つのオプションのいずれかを使用します。
-
-- [ここ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)にある "101-Create-KeyVault" ARM テンプレートを使用する 
-- [ここ](key-vault-get-started.md)で説明されている Azure PowerShell Key Vault コマンドレットを使用する
-
-**注:** サブスクリプションについて既に Key Vault をセットアップしている場合は、次のセクションに進んでください。
-
-### キー暗号化キーのプロビジョニング (省略可能)
-
-キー暗号化キー (KEK) を使用して、BitLocker 暗号化キーをラップするためのセキュリティ層を追加する場合は、プロビジョニング プロセスで使用するために Key Vault に KEK を追加する必要があります。Key Vault で新しいキー暗号化キーを作成するには、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868048.aspx) コマンドレットを使用します。詳細については、[Key Vault のドキュメント](https://azure.microsoft.com/documentation/services/key-vault/)を参照してください。
-
-    Add-AzureKeyVaultKey [-VaultName] <string> [-Name] <string> -Destination <string> {HSM | Software}
-
-### Azure プラットフォームからキーとシークレットにアクセスできるように Key Vault のアクセス許可を設定する
-
-Azure プラットフォームは Azure Key Vault の暗号化キーまたはシークレットにアクセスし、VM でのボリュームのブートと暗号化解除に使用できるようにする必要があります。Key Vault にアクセスできるように Azure プラットフォームに権限を付与するには、Key Vault で *enabledForDiskEncryption* プロパティを設定する必要があります。以下の Key Vault PS コマンドレットを使用して、Key Vault に enabledForDiskEncryption プロパティを設定することができます。
-
-    Set-AzureRmKeyVaultAccessPolicy -VaultName <yourVaultName> -ResourceGroupName <yourResourceGroup> -EnabledForDiskEncryption
-
-前述のとおり、Key Vault には *enabledForDiskEncryption* プロパティを設定する必要があります。https://resources.azure.com にアクセスして、プロパティを設定することができます。上記に詳しく説明されているプロパティが正しく設定されていることを確認してください。正しく設定されていない場合、デプロイメントは失敗します。
-
-### Azure Active Directory での Azure AD アプリケーションのセットアップ
-
-Azure で実行中の VM に対して暗号化を有効にする必要がある場合、Azure ディスク暗号化機能により、暗号化キーが生成され、Key Vault に書き込まれます。Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。
- 
-そのため、Azure AD アプリケーションを作成する必要があります。アプリケーションの詳しい登録手順については、この[ブログ投稿](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)のアプリケーションの ID の取得に関するセクションを参照してください。この投稿には、Key Vault のプロビジョニングおよび構成に関する役立つ例も多数含まれています。認証目的で、クライアント シークレット ベースの認証またはクライアント証明書ベースの Azure AD 認証を使用できます。
-
-#### Azure AD のクライアント シークレット ベースの認証
-
-以降のセクションでは、Azure AD のクライアント シークレット ベースの認証を構成するために必要な手順が示されています。
-
-##### Azure PowerShell を使用して新しい Azure AD アプリを作成する
-
-新しい Azure AD アプリを作成するには、以下の PowerShell コマンドレットを使用します。
-
-    $aadClientSecret = “yourSecret”
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password $aadClientSecret
-    $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
-
-**注:** $azureAdApplication.ApplicationId は Azure AD ClientID、$aadClientSecret はクライアント シークレットで ADE を有効にするために後で使用する必要があります。Azure AD クライアントのシークレットは適切に保護してください。
-
-
-##### Azure サービス管理ポータルからの Azure AD のクライアント ID とシークレットのプロビジョニング
-
-Azure AD のクライアント ID とシークレットも、https://manage.windowsazure.com の Azure サービス管理ポータルを使用してプロビジョニングすることができます。このタスクを実行するには、以下の手順に従います。
-
-1\. 次の図に示すように、[Active Directory] タブをクリックします。
-
-![Azure ディスク暗号化](./media/azure-security-disk-encryption\disk-encryption-fig3.JPG)
-
-2\. [アプリケーションの追加] をクリックし、次のようにアプリケーション名を入力します。
-
-![Azure ディスク暗号化](./media/azure-security-disk-encryption\disk-encryption-fig4.JPG)
-
-3\. 矢印ボタンをクリックし、次のようにアプリのプロパティを構成します。
-
-![Azure ディスク暗号化](./media/azure-security-disk-encryption\disk-encryption-fig5.JPG)
-
-4\. 左下隅にあるチェック マークをクリックして終了します。アプリの構成ページが表示されます。次の図に示されているように、Azure AD のクライアント ID がページの下部にあることがわかります。
- 
-![Azure ディスク暗号化](./media/azure-security-disk-encryption\disk-encryption-fig6.JPG)
-
-5\. [保存] をクリックして、Azure AD のクライアント シークレットを保存します。[保存] をクリックし、キーのテキスト ボックスのシークレットをメモします。これが Azure AD のクライアント シークレットです。Azure AD のクライアント シークレットは適切に保護する必要があります。
-
-![Azure ディスク暗号化](./media/azure-security-disk-encryption\disk-encryption-fig7.JPG)
-
-
-**注:** 上のこのフローはプレビュー ポータルではサポートされません。
-
-##### 既存のアプリの使用
-
-以下のコマンドを実行するには、Azure AD PowerShell モジュールが必要です ([ここ](https://technet.microsoft.com/library/jj151815.aspx)から取得できます)。
-
-**注:** 以下のコマンドは新しい PowerShell ウィンドウから実行する必要があります。これらのコマンドを実行する場合は、Azure PowerShell や Azure リソース マネージャーのウィンドウを使用しないでください。このように推奨するのは、これらのコマンドレットが MSOnline モジュールまたは Azure AD PowerShell にあるためです。
-
-    $clientSecret = ‘<yourAadClientSecret>’ 
-    $aadClientID = '<Client ID of your AAD app>'
-    connect-msolservice
-    New-MsolServicePrincipalCredential -AppPrincipalId $aadClientID -Type password -Value $clientSecret
-
-#### Azure AD の証明書ベースの認証
-
-以降のセクションには、Azure AD の証明書ベースの認証を構成するために必要な手順が示されています。
-
-##### 新しい Azure AD アプリの作成
-
-新しい Azure AD アプリを作成するには、以下の PowerShell コマンドレットを実行します。
-
-**注:** 以下の "yourpassword" 文字列をセキュリティで保護されたパスワードに置き換え、パスワードを保護してください。
-
-    $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate("C:\certificates\examplecert.pfx", "yourpassword")
-    $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -KeyValue $keyValue -KeyType AsymmetricX509Cert
-    $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
-
-この手順が完了したら、.pfx ファイルを Key Vault にアップロードし、VM にその証明書をデプロイするために必要なアクセス ポリシーを有効にします。
-
-##### 既存の Azure AD アプリの使用
-既存のアプリの証明書ベースの認証を構成する場合は、次の PowerShell コマンドレットを使用します。必ず、新しい PowerShell ウィンドウから実行してください。
-
-    $certLocalPath = 'C:\certs\myaadapp.cer' 
-    $aadClientID = '<Client ID of your AAD app>'
-    connect-msolservice
-    $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate
-    $cer.Import($certLocalPath)
-    $binCert = $cer.GetRawCertData()
-    $credValue = [System.Convert]::ToBase64String($binCert);
-    New-MsolServicePrincipalCredential -AppPrincipalId $aadClientID -Type asymmetric -Value $credValue -Usage verify
-
-この手順が完了したら、.pfx ファイルを Key Vault にアップロードし、VM にその証明書をデプロイするために必要なアクセス ポリシーを有効にします。
-
-##### PFX ファイルを Key Vault にアップロードする
-この処理のしくみの詳細については、この[ブログ投稿](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。ただし、このタスクで必要なものは以下の PowerShell コマンドレットだけです。必ず、Azure PowerShell コンソールから実行してください。
-
-**注:** 以下の "yourpassword" 文字列をセキュリティで保護されたパスワードに置き換え、パスワードを保護してください。
-
-    $certLocalPath = 'C:\certs\myaadapp.pfx' 
-    $certPassword = "yourpassword"
-    $resourceGroupName = ‘yourResourceGroup’
-    $keyVaultName = ‘yourKeyVaultName’
-    $keyVaultSecretName = ‘yourAadCertSecretName’
-
-    $fileContentBytes = get-content $certLocalPath -Encoding Byte
-    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-
-    $jsonObject = @"
-    {
-    "data": "$filecontentencoded",
-    "dataType" :"pfx",
-    "password": "$certPassword"
-    }
-    "@
-
-    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
-    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-
-    Switch-AzureMode -Name AzureResourceManager
-    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
-    Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName –EnabledForDeployment
-
-##### 既存の VM に Key Vault の証明書をデプロイする
-PFX のアップロードが完了したら、以下の手順を使用して、Key Vault の証明書を既存の VM にデプロイします。
-
-    $resourceGroupName = ‘yourResourceGroup’
-    $keyVaultName = ‘yourKeyVaultName’
-    $keyVaultSecretName = ‘yourAadCertSecretName’
-    $vmName = ‘yourVMName’
-    $certUrl = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName).Id
-    $sourceVaultId = (Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName).ResourceId
-    $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
-    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore "My" -CertificateUrl $certUrl
-    Update-AzureRmVM -VM $vm  -ResourceGroupName $resourceGroupName
-
-
-### Azure AD アプリケーションの Key Vault アクセス ポリシーの設定
-
-Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。[Set-AzureKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/dn903607.aspx) コマンドレットで、–ServicePrincipalName パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションに権限を付与します。そのいくつかの例については、[このブログ投稿](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)を参照してください。PowerShell を使用してこのタスクを実行する方法の以下の例も参照してください。
-
-    $keyVaultName = ‘yourKeyVaultName’
-    $aadClientID = '<youAadAppClientID>'
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
-
 ### 事前に暗号化された Windows VHD の準備
-以下のセクションは、Azure IaaS で暗号化された VHD としてデプロイメントする場合に事前に暗号化された Windows VHD を準備するために必要です。この手順は、Hyper-V または Azure で新しい Windows VM (vhd) を準備し、ブートするために使用します。
+以下のセクションは、Azure IaaS で暗号化された VHD としてデプロイする場合に事前に暗号化された Windows VHD を準備するために必要です。この手順は、Hyper-V または Azure で新しい Windows VM (vhd) を準備し、ブートするために使用します。
 
 #### グループ ポリシーを更新して非 TPM で OS を保護できるようにする
 Local Computer Policy \\Computer Configuration\\Administrative Templates\\Windows Components の下にある、BitLocker ドライブ暗号化という BitLocker グループ ポリシー設定を構成する必要があります。以下の図に示すように、*[オペレーティング システムのドライブ]、[スタートアップ時に追加の認証を要求する]、[互換性のある TPM が装備されていない BitLocker を許可する]* の順に選択して、この設定を変更します。
@@ -802,8 +800,8 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 
 ## BLOB の詳細
-[Azure PowerShell を使用する Azure ディスク暗号化の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
+[Azure PowerShell を使用する Azure Disk Encryption の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
 
-[Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
+[Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

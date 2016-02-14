@@ -3,7 +3,7 @@
 	description="Azure Active Directory と OpsGenie の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="ashimaabrol"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
-	ms.author="v-aabrol"/>
+	ms.date="02/02/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と OpsGenie の統合
@@ -35,7 +35,7 @@ Azure AD と OpsGenie の統合を構成するには、次のものが必要で�
 - OpsGenie でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -88,16 +88,16 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
 **OpsGenie で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **OpsGenie** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure AD ポータルの **OpsGenie** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの OpsGenie へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_03.png) <br>
+2. **[ユーザーの OpsGenie へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_04.png) <br>
 
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが OpsGenie アプリケーションへのサインオンに使用する URL を入力します。**"https://app.opsgenie.com/auth/login"**
 
-    > [AZURE.NOTE]サインオン URL が必要な場合、[OpsGenie サポート チーム](mailto:support@opsgenie.com)にお問い合わせください。
+    > [AZURE.NOTE] サインオン URL が必要な場合、[OpsGenie サポート チーム](mailto:support@opsgenie.com)にお問い合わせください。
 
     b.**[次へ]** をクリックします。
 
@@ -123,14 +123,14 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
     b.ダウンロードした証明書から base-64 でエンコードされたファイルを作成します。
     
-    > [AZURE.NOTE]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](https://www.youtube.com/watch?v=PlgrzUZ-Y1o&feature=youtu.be)」をご覧ください。
+    > [AZURE.NOTE] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](https://www.youtube.com/watch?v=PlgrzUZ-Y1o&feature=youtu.be)」をご覧ください。
 
     c.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーし、**[X.500 Certificate]** テキスト ボックスに貼り付けます。
 
     d.**[変更を保存]** をクリックします。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
 
@@ -142,7 +142,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_09.png) <br>
+1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_09.png) <br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -209,7 +209,7 @@ Britta にプロファイルの設定方法が記載されたメールが届き�
 
 1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[OpsGenie]** を選択します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_50.png) <br>
+2. アプリケーションの一覧で **[OpsGenie]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -248,4 +248,4 @@ Britta にプロファイルの設定方法が記載されたメールが届き�
 [204]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

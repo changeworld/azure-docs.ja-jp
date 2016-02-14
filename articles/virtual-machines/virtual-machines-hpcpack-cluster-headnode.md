@@ -26,7 +26,7 @@ ms.service="virtual-machines"
 
 ![HPC Pack ヘッド ノート][headnode]
 
->[AZURE.NOTE]現在、HPC Pack VM イメージは HPC Pack 2012 R2 更新プログラム 2 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。Microsoft SQL Server 2014 Express も事前インストールされています。
+>[AZURE.NOTE] 現在、HPC Pack VM イメージは HPC Pack 2012 R2 更新プログラム 2 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。Microsoft SQL Server 2014 Express も事前インストールされています。
 
 
 Azure で HPC Pack クラスターを本稼働デプロイする場合、自動デプロイ手法をお勧めします。たとえば、[HPC Pack IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)や Azure リソース マネージャー [クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)です。
@@ -42,7 +42,7 @@ Azure で HPC Pack クラスターを本稼働デプロイする場合、自動�
 HPC Pack ヘッド ノードの Azure VM を作成するための大まかな手順は次のようになります。Azure の従来の (サービス管理) デプロイ モデルでは、さまざまな Azure ツールを利用してこれらの手順を実行できます。
 
 
-1. ヘッド ノード VM に VNet を作成する場合、「[Azure ポータルを利用し、仮想ネットワーク (クラシック) を作成する](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
+1. ヘッド ノード VM に VNet を作成する場合、「[Azure ポータルを利用し、仮想ネットワーク (クラシック) を作成する](../virtual-networks/virtual-networks-create-vnet-classic-portal.md)」を参照してください。
 
     **考慮事項**
 
@@ -102,4 +102,4 @@ HPC Pack ヘッド ノードの Azure VM を作成するための大まかな手
 <!--Image references-->
 [headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

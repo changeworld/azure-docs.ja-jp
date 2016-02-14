@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/21/2016"
+   ms.date="02/01/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database の Transact-SQL の相違点
@@ -95,6 +95,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - トリガー: サーバー スコープ トリガーまたはログオン トリガー
 - USE ステートメント
 
+
 ## 完全 Transact-SQL リファレンス
 
 Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
@@ -107,4 +108,4 @@ TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

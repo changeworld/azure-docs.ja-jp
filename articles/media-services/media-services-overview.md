@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/14/2016"
+	ms.date="02/02/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -31,10 +31,12 @@ Media Services ソリューションを構築するために、以下を使用�
 - [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
 - 使用可能な次のいずれかの SDK: 
 	- [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services) 
-	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 
-	- [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の非 Microsoft バージョンです。コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。) 
-- 既存のツール: [Azure クラシック ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
-
+	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 
+	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 
+	- [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。) 
+- 既存のツール: 
+	- [Azure クラシック ポータル](http://manage.windowsazure.com/) 
+	- [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) は Windows 用の Winforms/C# アプリケーションです)
 
 ##Media Services のラーニング パス
 
@@ -44,7 +46,6 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のオンデマンド ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ##ポスター
-
 
 [ここ](https://azure.microsoft.com/documentation/infographics/media-services/)で、メディアの作成から使用までの Azure Media Services のワークフローを示す AMS ポスターを確認できます。
 
@@ -59,10 +60,11 @@ Azure Media Services を使用するには、次が必要です。
 	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても確認してください
 4. (推奨) 1 つまたは複数のスケール単位を割り当てます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。詳細については、「[ストリーミング エンドポイントの管理](media-services-manage-origins.md)」を参照してください。
 
-##概念
+##概念と概要
 
-詳細については、「[概念](media-services-concepts.md)」を参照してください。
+Azure Media Services の概念については、「[概念](media-services-concepts.md)」を参照してください。
 
+Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、[Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AME タスクについて説明しています。AMSE ツールは Windows ツールです。このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
 
 ##<a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
 
@@ -161,7 +163,7 @@ Azure Media Services、**チャネル**、**プログラム**、**ストリー�
 **チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。現時点では、チャネルは次の方法でライブ入力ストリームを受信できます。
 
 
-- オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるLive Encoding が有効なチャネルに送信します。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。
+- オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services による Live Encoding が有効なチャネルに送信します。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 	Media Services でのライブ ストリームのエンコードは、**プレビュー**になっています。
 - オンプレミスのライブ エンコーダーは、マルチ ビットレート **RTMP** または **スムーズ ストリーミング** (Fragmented MP4) をチャネルに送信します。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。取り込んだストリームは、追加の処理なしで**チャネル**を通過します。ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。Media Services は、要求に応じて、ストリームを顧客に配信します。
@@ -198,7 +200,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 ##Media Services アカウントのスケーリング
 
-**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング占有ユニット]** と **[エンコード占有ユニット]** の数を指定することで規模を設定できます。
+**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング予約ユニット]** と **[エンコード予約ユニット]** の数を指定することで規模を設定できます。
 
 ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB (テラバイト) です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
 
@@ -234,4 +236,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

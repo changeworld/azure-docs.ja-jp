@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
@@ -27,6 +27,8 @@
 Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。ゲートウェイ インスタンスの設定は、SQL Server との接続の前提条件です。
 
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターまたはクラウド VM にインストールしてリソースの競合を回避することをお勧めします。
+
+次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 ## サンプル: SQL Server から Azure BLOB にデータをコピーする
 
@@ -433,7 +435,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
-## SQL Server データセット型のプロパティ
+## SQL Server データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (SQL Server 、Azure BLOB、Azure テーブルなど) で同じです。
 
@@ -441,7 +443,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| tableName | リンクされたサービスが参照する SQL Server Database インスタンスのテーブルの名前です。 | はい |
+| tableName | リンクされたサービスが参照する SQL Server Database インスタンスのテーブルの名前です。 | あり |
 
 ## SQL Server のコピー アクティビティの type プロパティ
 
@@ -497,7 +499,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP プロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下にスクロールして **IPAll** セクションを表示します。**TCP ポート** をメモしておきます (既定は **1433**)。
 5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。  
-6. **接続の確認**: 別のコンピューターからSQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などです。
+6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などです。
 
 	> [AZURE.IMPORTANT] 
 	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
@@ -565,4 +567,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="01/28/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
@@ -180,23 +180,8 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
  
 この環境で、Web ベース アプリケーションを LOB1 にデプロイし、Corpnet サブネットから機能とパフォーマンスをテストできます。
 
-## その他のリソース
+## 次のステップ
 
-[Microsoft ソフトウェア アーキテクチャのダイアグラムとブループリント](http://msdn.microsoft.com/dn630664)
+- [運用環境](../virtual-machines/virtual-machines-workload-high-availability-LOB-application-overview.md)をセットアップします。
 
-[ホストが容易な Web サーバー プラットフォーム (IIS)](http://technet.microsoft.com/library/hh831818)
-
-[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
-
-[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
-
-[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
-
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
-
-[Azure ハイブリッド クラウド テスト環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
- 
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

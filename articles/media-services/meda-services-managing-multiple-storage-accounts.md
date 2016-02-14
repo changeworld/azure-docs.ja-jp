@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+	ms.date="01/28/2016" 
 	ms.author="juliako"/>
 
 
@@ -142,12 +142,12 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 		            IJob job = _context.Jobs.Create("My encoding job");
 		            // Get a media processor reference, and pass to it the name of the 
 		            // processor to use for the specific task.
-		            IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
+		            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 		
 		            // Create a task with the encoding details, using a string preset.
 		            ITask task = job.Tasks.AddNew("My encoding task",
 		                processor,
-		                "H264 Broadband 720p",
+		                "H264 Multiple Bitrate 720p",
 		                Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 		
 		            // Specify the input asset to be encoded.
@@ -259,4 +259,4 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0204_2016-->

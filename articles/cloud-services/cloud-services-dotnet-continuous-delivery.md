@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/18/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher"/>
 
 # Azure での Cloud Services の継続的な配信
@@ -50,7 +50,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 2.  コマンド プロンプトで、ビルドする Azure プロジェクト ファイルが含まれているフォルダーに移動します。
 
-3.  次の例に示すように、/target:Publish オプションを指定して msbuild を実行します。
+3.  次の例に示すように、/target:Publish オプションを指定して MSBuild を実行します。
 
         MSBuild /target:Publish
 
@@ -139,7 +139,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 7.  スクリプトは、Azure PowerShell から直接呼び出す以外に、ホスト ビルド自動化に関連付けてパッケージがビルドされるたびに実行されるように設定できます。
 
-    >[AZURE.IMPORTANT]このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    >[AZURE.IMPORTANT] このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
     **サンプル シナリオ 1:** サービスのステージング環境への継続的なデプロイ:
 
@@ -177,7 +177,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     デプロイのアップグレード操作は、スクリプトで ($enableDeploymentUpgrade = 0)、またはパラメーターとして *-enableDeploymentUpgrade 0* を渡すことによって無効にできます。これにより、スクリプトの動作が変更され、既存のデプロイが削除された後、新しいデプロイが作成されます。
 
-    >[AZURE.IMPORTANT]このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    >[AZURE.IMPORTANT] このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
 ## ステップ 5.: TFS チーム ビルドを使用してパッケージを発行する
 
@@ -573,4 +573,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

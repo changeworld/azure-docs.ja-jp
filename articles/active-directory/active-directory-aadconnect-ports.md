@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/01/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID で必要なポートとプロトコル
 
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関する情報を提供するテクニカルリファレンスです。次の図を使用して、対応する表を参照してください。
 
-![Azure AD Connect とは](./media/active-directory-aadconnect-ports/required1.png)
+![What is Azure AD Connect](./media/active-directory-aadconnect-ports/required1.png)
 
 
 ## 表 1 - Azure AD Connect とオンプレミスの AD
@@ -46,7 +46,13 @@
 Office 365 のポートと IP アドレスの一覧については、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」を参照してください 。
 
 ## 表 3 - Azure AD Connect とフェデレーション サーバー/WAP
-この表は、Azure AD Connect サーバーとフェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。近日対応予定
+この表は、Azure AD Connect サーバーとフェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
+
+| プロトコル |ポート |説明
+| --------- | --------- |--------- |
+| HTTP|80 (TCP/UDP)|SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。
+|HTTPS|443 (TCP/UDP)|Azure AD と同期するために使用されます。
+|WinRM|5985| WinRM リスナー
 
 ## 表 4 - WAP とフェデレーション サーバー
 この表は、フェデレーション サーバーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
@@ -77,6 +83,6 @@ Office 365 のポートと IP アドレスの一覧については、「[Office 
 |Azure Service Bus|5671 (TCP/UDP)|
 
 ### 表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
-エンドポイントの一覧については、[Azure AD Connect Health エージェントの「要件」セクション](active-directory-aadconnect-health.md#requirements)を参照してください 。
+エンドポイントの一覧については、[Azure AD Connect Health エージェントの「必要条件」のセクション](active-directory-aadconnect-health.md#requirements)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

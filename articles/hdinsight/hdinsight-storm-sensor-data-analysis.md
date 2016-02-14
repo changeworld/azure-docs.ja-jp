@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
@@ -24,9 +24,9 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 ## 前提条件
 
-* Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* [HDInsight クラスターでの Apache Storm](../hdinsight-storm-getting-started.md)
+* [HDInsight クラスターでの Apache Storm](hdinsight-apache-storm-tutorial-get-started.md)
 
 * [Node.js](http://nodejs.org/): Web ダッシュボードに使用され、Event Hub にセンサー データを送信するために使用します。
 
@@ -256,7 +256,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### Web サイトのダッシュボードを発行する
 
-1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
+1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../app-service-web/web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
 
 2. Web サイトが作成されたら、Azure クラシック ポータル内のサイトに移動して、**[構成]** タブを選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
@@ -422,4 +422,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
-	ms.author="ddove; sidneyh" />
+	ms.date="02/01/2016" 
+	ms.author="ddove;sidneyh" />
 
 # エラスティック データベース ジョブの概要
 
@@ -91,7 +91,7 @@
 * **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
 * **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。既定のサービス層は、S0 です。詳細については、「[SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 * **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
-* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます ([Azure 診断](cloud-services-dotnet-diagnostics.md)の一般的な方法)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
+* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます (「[Azure Cloud Services および Virtual Machines の診断機能](../service-fabric/cloud-services-dotnet-diagnostics.md)」を参照してください)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 ## エラスティック データベース ジョブの機能
 1.	Azure SQL Database には、すべてのメタデータと状態データが保存される管理データベースが指定されています。
@@ -124,4 +124,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

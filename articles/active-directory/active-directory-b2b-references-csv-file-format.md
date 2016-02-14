@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="10/27/2015"
+   ms.date="02/03/2016"
    ms.author="viviali"/>
 
-# Azure Active Directory (Azure AD) B2B コラボレーション プレビューの CSV ファイルの形式
+# Azure AD B2B コラボレーション プレビュー: CSV ファイルの形式
 
 Azure AD B2B コラボレーションのプレビュー バージョンでは、パートナー ユーザーの情報が指定されている CSV ファイルを、Azure AD ポータルを介してアップロードする必要があります。CSV ファイルには、以下の必須ラベルと、必要に応じてオプションのフィールドが含まれている必要があります。サンプルの CSV ファイル (下記) を変更して使用できますが、1 行目のラベルのスペルと列の順序は変更しないでください。
 
->[AZURE.NOTE]1 行目のラベル (Email、DisplayName など) は、CSV ファイルを正しく解析するために必要です。スペルは、以下で指定したフィールドと一致している必要があります。これらのラベルによって、その下にある内容が識別されます。必須ではないオプションのフィールドのラベルは、CSV ファイルから削除できます。列全体を空のままにしてもかまいません。
+>[AZURE.NOTE] 1 行目のラベル (Email、DisplayName など) は、CSV ファイルを正しく解析するために必要です。スペルは、以下で指定したフィールドと一致している必要があります。これらのラベルによって、その下にある内容が識別されます。必須ではないオプションのフィールドのラベルは、CSV ファイルから削除できます。列全体を空のままにしてもかまいません。
 
 ## 必須フィールド: <br/>
 **Email:** 招待されるユーザーの電子メール アドレス。<br/>**DisplayName:** 招待されるユーザーの表示名 (通常は名前と姓)。<br/> **InviteContactUsUrl:** 招待されたユーザーが組織にアクセスできるように電子メール招待状に含める URL。<br/>
@@ -31,9 +31,9 @@ Azure AD B2B コラボレーションのプレビュー バージョンでは、
 ## サンプル CSV ファイル
 CSV ファイルのサンプルを次に示します。これは、用途に合わせて変更できます。
 
->[AZURE.NOTE]これをコピーしてメモ帳に貼り付け、".csv" というファイル拡張子で保存します。その後 Excel で編集します。1 行目がラベルの表形式です。
+>[AZURE.NOTE] これをコピーしてメモ帳に貼り付け、".csv" というファイル拡張子で保存します。その後 Excel で編集します。1 行目がラベルの表形式です。
 
->[AZURE.NOTE]オプションのフィールドを追加するには、ラベルを指定し、列の値を設定します。
+>[AZURE.NOTE] オプションのフィールドを追加するには、ラベルを指定し、列の値を設定します。
 
 ```
 Email,DisplayName,InviteAppID,InviteReplyUrl,InviteAppResources,InviteGroupResources,InviteContactUsUrl
@@ -52,4 +52,4 @@ Azure B2B コラボレーションに関する他の記事を参照してくだ�
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

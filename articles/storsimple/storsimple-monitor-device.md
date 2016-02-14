@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="01/29/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの監視 
@@ -45,6 +45,7 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 **容量使用率**は、ボリューム、ボリューム コンテナー、デバイスで使用されるデータ ストレージ領域の容量に関連するメトリックを追跡します。プライマリ ストレージ、クラウド ストレージ、またはデバイス ストレージの容量の使用率に基づいて、レポートを作成できます。容量使用率は、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
 
+
 プライマリ、クラウド、デバイス ストレージ容量は次のように説明できます。
 
 ###プライマリ ストレージの容量使用率
@@ -74,6 +75,10 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 ![クラウド スナップショット前のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
 
 ![クラウド スナップショット後のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes1M.png)
+
+Update 2 以降を使用している場合は、次に示すように、プライマリ ストレージ容量の使用率を個別ボリューム別、全ボリューム、全階層化ボリューム、全ローカル ボリュームの単位で表示できます。全ローカル ボリュームで表示すると、使用されているローカル階層の量を簡単に把握できます。
+
+![全ローカル ボリュームのプライマリの容量使用率](./media/storsimple-monitor-device/localvolumes.png)
 
 
 ###クラウド ストレージの容量使用率
@@ -121,4 +126,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/22/2015"
+	ms.date="01/28/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: コンシューマー向けにセルフサービス パスワードのリセットをセットアップする
@@ -34,6 +34,7 @@
 
 テストするには、任意のサインイン ポリシー (ID プロバイダーがローカル アカウントのもの) で [今すぐ実行] 機能を使用します。ローカル アカウントのサインイン ページ (電子メール アドレスとパスワードまたはユーザー名とパスワードを入力する場所) で、**[アカウントにアクセスできない場合]** をクリックしてコンシューマー エクスペリエンスを確認します。
 
-> [AZURE.NOTE]セルフサービス パスワード リセット ページは、[会社のブランド機能](active-directory-add-company-branding.md)を使用してカスタマイズできます。
+> [AZURE.NOTE]
+セルフサービス パスワード リセット ページは、[会社のブランド機能](../active-directory/active-directory-add-company-branding.md)を使用してカスタマイズできます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0204_2016-->

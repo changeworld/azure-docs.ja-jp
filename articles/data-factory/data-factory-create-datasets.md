@@ -131,7 +131,7 @@ type | 列のデータ型です。 | いいえ | 該当なし
 
 	"availability":
 	{
-		"frequency": "Daily",
+		"frequency": "Day",
 		"interval": "1",
 		"offset": "06:00:00"
 	}
@@ -208,4 +208,4 @@ type | 列のデータ型です。 | いいえ | 該当なし
 	  }
 	}
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

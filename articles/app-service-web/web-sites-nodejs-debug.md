@@ -4,9 +4,9 @@
 	tags="azure-portal"
 	services="app-service\web"
 	documentationCenter="nodejs"
-	authors="TomArcher"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"/>
+	editor=""/>
 
 <tags
 	ms.service="app-service-web"
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="11/18/2015"
-	ms.author="tarcher"/>
+	ms.date="02/03/2016"
+	ms.author="robmcm"/>
 
 # Azure App Service で Node.js Web アプリをデバッグする方法
 
@@ -40,11 +40,11 @@ stdout および stderr ストリームのログ記録を有効にするには�
 
 このオプションが有効になると、IISNode は "内部サーバー エラーが発生しました" のようなわかりやすいエラーの代わりに、stderr に送信された情報の最後の 64 K を返します。
 
-> [AZURE.NOTE]開発中に問題を診断する場合には devErrorsEnabled は便利ですが、運用環境でこれを有効にすると、開発エラーがエンド ユーザーに送信されることになります。
+> [AZURE.NOTE] 開発中に問題を診断する場合には devErrorsEnabled は便利ですが、運用環境でこれを有効にすると、開発エラーがエンド ユーザーに送信されることになります。
 
 **IISNode.yml** ファイルがまだアプリケーション内に存在しなかった場合は、更新されたアプリケーションを発行してから Web アプリを再起動する必要があります。以前に発行された既存の **IISNode.yml** ファイル内の設定を変更しただけの場合、再起動は必要ありません。
 
-> [AZURE.NOTE]Azure コマンド ライン ツールまたは Azure PowerShell コマンドレットを使用して Web アプリを作成した場合は、既定の **IISNode.yml** ファイルが自動的に作成されます。
+> [AZURE.NOTE] Azure コマンド ライン ツールまたは Azure PowerShell コマンドレットを使用して Web アプリを作成した場合は、既定の **IISNode.yml** ファイルが自動的に作成されます。
 
 Web アプリを再起動するには、[Azure ポータル](https://portal.azure.com)で Web アプリを選択し、**[再起動]** ボタンをクリックします。
 
@@ -54,7 +54,7 @@ Web アプリを再起動するには、[Azure ポータル](https://portal.azur
 
 	azure site restart [sitename]
 
-> [AZURE.NOTE]診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、[iisnode\_schema.xml ファイル](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml)を参照してください。
+> [AZURE.NOTE] 診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、[iisnode\_schema.xml ファイル](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml)を参照してください。
 
 <a id="viewlogs"></a>
 ## ログへのアクセス
@@ -69,7 +69,7 @@ Web アプリを再起動するには、[Azure ポータル](https://portal.azur
 
 FTP を通じて診断情報にアクセスするには、[Azure ポータル](https://portal.azure.com)にアクセスし、Web アプリを選択して、**[ダッシュボード]** を選択します。**[クイック リンク]** セクションの **[FTP 診断ログ]** および **[FTPS 診断ログ]** リンクから、FTP プロトコルを使用してログにアクセスできます。
 
-> [AZURE.NOTE]FTP またはデプロイのためにユーザー名とパスワードを構成したことがない場合は、**[クイック スタート]** 管理ページで **[デプロイ資格情報を設定する]** を選択して構成できます。
+> [AZURE.NOTE] FTP またはデプロイのためにユーザー名とパスワードを構成したことがない場合は、**[クイック スタート]** 管理ページで **[デプロイ資格情報を設定する]** を選択して構成できます。
 
 ダッシュボードで返される FTP URL は、**LogFiles** ディレクトリのものです。このディレクトリには、次のサブディレクトリが含まれます。
 
@@ -115,7 +115,7 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
@@ -126,4 +126,4 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

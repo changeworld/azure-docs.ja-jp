@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="02/01/2016"
 	ms.author="mingzhan"/>
 
 
@@ -32,7 +32,7 @@ RDP (リモート デスクトップ プロトコル) は、Windows の専用プ
 xrdp はオープン ソースの RDP サーバーで、これを使用すると、Windows コンピューターからリモート デスクトップを使用して Linux サーバーに接続できます。このパフォーマンスは、VNC (Virtual Network Computing) よりも優れています。VNC には "JPEG" 品質と動作が遅いという欠点があるのに対し、RDP は高速かつ明瞭です。
 
 
-> [AZURE.NOTE]Linux を実行している既存の Microsoft Azure VM が必要です。Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](virtual-machines-linux-tutorial.md)を参照してください。
+> [AZURE.NOTE] Linux を実行している既存の Microsoft Azure VM が必要です。Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](virtual-machines-linux-tutorial.md)を参照してください。
 
 
 ##リモート デスクトップ用のエンドポイントを作成する
@@ -67,7 +67,7 @@ Ubuntu の場合は、次のコマンドを使用します。
 
 OpenSUSE の場合は、次のコマンドを使用します。
 
-> [AZURE.NOTE]次のコマンドでは、OpenSUSE のバージョンを現在使用中のバージョンに更新してください。`OpenSUSE 13.2` のコマンドの例を次に示します。
+> [AZURE.NOTE] 次のコマンドでは、OpenSUSE のバージョンを現在使用中のバージョンに更新してください。`OpenSUSE 13.2` のコマンドの例を次に示します。
 
 	#sudo zypper in http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_13.2/x86_64/xrdp-0.9.0git.1401423964-2.1.x86_64.rpm
     #sudo zypper install tigervnc xorg-x11-Xvnc xterm remmina-plugin-vnc
@@ -116,4 +116,4 @@ Linux VM の `user` と `password` を使用してログインすると、Micros
 ##次へ
 xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0204_2016-->

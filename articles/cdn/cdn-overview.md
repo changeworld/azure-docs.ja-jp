@@ -31,7 +31,7 @@ CDN を使用して Azure データをキャッシュすると、次のような
 - 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型の配信スケール 
 
 
->[AZURE.IMPORTANT]CDN エンドポイントを作成または有効にした場合、世界中に反映されるまでに最大で 90 分かかることがあります。
+>[AZURE.IMPORTANT] CDN エンドポイントを作成または有効にした場合、世界中に反映されるまでに最大で 90 分かかることがあります。
  
 最初にオブジェクトに対する要求が CDN に行われると、オブジェクトはオブジェクトのソースの元の場所から直接取得されます。この配信元には、Azure ストレージ アカウント、Web アプリ、クラウド サービス、パブリック Web 要求を受け入れる任意のカスタム配信元などがあります。CDN 構文を使用して要求が行われると、その要求は、要求が行われた場所から最も近い CDN エンドポイントにリダイレクトされ、オブジェクトへのアクセスが提供されます。オブジェクトがそのエンドポイントで見つからない場合は、サービスから取得され、そのエンドポイントにキャッシュされます。有効期間 (TTL) の設定はキャッシュされたオブジェクトでも維持されています。
 
@@ -44,7 +44,7 @@ Standard CDN レベルには、以下の機能が含まれます。
 - [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)
 - [国のフィルタリング](cdn-restrict-access-by-country.md)
 - [コア分析](cdn-analyze-usage-patterns.md)
-- [カスタム コンテンツ配信元](cdn-map-content-to-custom-domain.md)
+- [カスタム コンテンツ配信元](cdn-how-to-use-cdn.md#caching-content-from-custom-origins)
 - [HTTPS のサポート](cdn-how-to-use-cdn.md#accessing-cached-content-over-https)
 - 負荷分散
 - DDOS 保護
@@ -61,4 +61,4 @@ Premium CDN レベルには Standard レベルのすべての機能に加え、�
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 - [リアルタイム統計](cdn-real-time-stats.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->

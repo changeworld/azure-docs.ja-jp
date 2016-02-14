@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="02/01/2016" 
 	ms.author="nitinme"/>
 
 
@@ -79,18 +79,18 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 	![自動ダウンロードのための Maven の構成](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
 
 	1. **[File (ファイル)]** メニューの **[Settings (設定)]** をクリックします。
-	2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイ)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
+	2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイメント)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
 	3. **[Import Maven projects automaticallyMaven (Maven プロジェクトを自動的にインポートする)]** オプションを選択します。
 	4. **[Apply (適用)]** をクリックし、**[OK]** をクリックします。 
 
 
-8. 目的のアプリケーション コードを含むように、Scala ソース ファイルを更新します。ファイルを開き、既存のサンプル コードを次のコードに置き換え、変更を保存します。
+8. 目的のアプリケーション コードを含むように、Scala ソース ファイルを更新します。ファイルを開き、既存のサンプル コードを次のコードに置き換え、変更を保存します。このコードでは、HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、6 番目の列に 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
 
 		package com.microsoft.spark.example
 
 		import org.apache.spark.SparkConf
 		import org.apache.spark.SparkContext
-				
+		
 		/**
 		  * Test IO to wasb
 		  */
@@ -101,11 +101,13 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 		
 		    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
-		    val rdd1 = rdd.map(s => s.split(",")).filter(s => s(0) != "ID")
+		    //find the rows which have only one digit in the 7th column in the CSV
+		    val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
 		
 		    rdd1.saveAsTextFile("wasb:///HVACout")
 		  }
 		}
+
 
 9. pom.xml ファイルを更新します。
 
@@ -192,4 +194,4 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

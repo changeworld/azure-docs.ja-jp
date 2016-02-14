@@ -13,11 +13,11 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="01/28/2016"
       ms.author="hascipio; avikova" />
 
 # Azure Marketplace のデータ サービスの発行ガイド
-手順 1 の「[アカウントの作成および登録][link-acct-creation]」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-prerequisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
+手順 1 の「[アカウントの作成および登録][link-acct-creation]」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
 
 ## 1\.発行ポータルにログインします。
 
@@ -55,7 +55,7 @@
 
 各クエリで使用されるトランザクション数を監視 (測定) するのは、Azure Marketplace サービス レイヤーの役割です。
 
-> [AZURE.IMPORTANT]月内にトランザクション上限に達したエンドユーザーは、毎月のサブスクリプション サイクルが終了するまで、サービスを継続して使用できなくなります。
+> [AZURE.IMPORTANT] 月内にトランザクション上限に達したエンドユーザーは、毎月のサブスクリプション サイクルが終了するまで、サービスを継続して使用できなくなります。
 
 > 指定したプラン (プランの 1 つ) に数が無制限のトランザクションを含めることができます (必須ではありません)。
 
@@ -68,7 +68,7 @@
 
     発行ポータルからは、"プラン ID" も提案されます。プラン ID は、UI でエンドユーザーにプラン名を通知するために使用されます。また、Marketplace サービスがプランを識別するためにも使用されます。必要に応じて、"プラン ID" を変更できます。
 
-    > [AZURE.NOTE]"プラン ID" は、各オファーの範囲内で一意である必要があります。発行ポータルで使用される他の多くの ID と同様に、プランが初めて発行され、運用が開始された後はロックされ、ID を変更できなくなります。
+    > [AZURE.NOTE] "プラン ID" は、各オファーの範囲内で一意である必要があります。発行ポータルで使用される他の多くの ID と同様に、プランが初めて発行され、運用が開始された後はロックされ、ID を変更できなくなります。
 
 3. クリックして選択を確定します。
 
@@ -81,13 +81,13 @@
 |----|----|
 |**このプランは無料で世界中で使用できますか。**|完全に無料のプランを作成できます。このオファーに 1 つのプランしかない場合、Marketplace に "無料のオファー" を発行することを意味します。(複数あるうちの) 1 つのプランのみについての場合、エンドユーザーに、毎月のトランザクション数が比較的少ないサービスに関する情報を提供することができます。これに該当する場合、追加の質問は表示されません。|
 
-> [AZURE.NOTE]エンドユーザーは、有料プランにいつでもアップグレードできます。
+> [AZURE.NOTE] エンドユーザーは、有料プランにいつでもアップグレードできます。
 
 |質問|重要性|
 |----|----|
 |**無料試用版はありますか。**|まったく "試用版なし" を選択するか、"1 か月間" のプランを使用するオプションを提供することができます。一般的に、発行元は、1 か月間無料のオプションを選択して、エンドユーザーにオファーの利点を理解してもらうことを好みます。|
 
-> [AZURE.IMPORTANT]支払い方法 (クレジット カード、エンタープライズ契約など) の設定が完了している場合にのみ、エンドユーザーは無料試用版を購入できます。
+> [AZURE.IMPORTANT] 支払い方法 (クレジット カード、エンタープライズ契約など) の設定が完了している場合にのみ、エンドユーザーは無料試用版を購入できます。
 
 > 1 か月間の無料試用版が終了したとき、ユーザーがサブスクリプションのキャンセルを開始していない場合、Azure Marketplace のサブスクリプション日時点の料金が課金されます。特別な通知はエンドユーザーに送信されません。
 
@@ -131,7 +131,7 @@ Web サービスの場合
 
   ![図](media/marketplace-publishing-data-service-creation/step-7.7.png)
 
-> [AZURE.IMPORTANT]CSDL Web サービスの作成の詳細な手順と例については、[既存の Web サービスを CSDL 経由で OData にマッピングする方法](marketplace-publishing-data-service-creation-odata-mapping.md)についてのページを参照してください。
+> [AZURE.IMPORTANT] CSDL Web サービスの作成の詳細な手順と例については、[既存の Web サービスを CSDL 経由で OData にマッピングする方法](marketplace-publishing-data-service-creation-odata-mapping.md)についてのページを参照してください。
 
 ## 次のステップ
 ここでは、データ サービス オファーを作成しました。「[Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md)」の手順を完了してから、[ステージング環境でのデータ サービスのテスト](marketplace-publishing-data-service-test-in-staging.md)に関するページに進んでください。
@@ -146,4 +146,4 @@ Web サービスの場合
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0204_2016-->

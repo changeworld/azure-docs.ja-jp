@@ -215,9 +215,8 @@
 
 7. **ルーティングを構成して VNet にリンクする**
 
-	a.**ルーティング構成を作成します。** 詳細な手順については、「[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-arm.md)」をご覧ください。
-
-		>[AZURE.NOTE] The instructions for routing only apply for circuits created with service providers offering Layer 2 connectivity services. If you are using a service provider offering managed Layer 3 services (typically an IPVPN, like MPLS), your connectivity provider will configure and manage routing for you. You will not be able to create or manage peerings in such cases. 
+	a.**ルーティング構成を作成します。** 詳細な手順については、「[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-arm.md)」をご覧ください。ルーティングの手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されることにご注意ください。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
+	
 	b.**VNet を ExpressRoute 回線にリンクします。** ルーティングが構成されていることを確認した後、VNet を ExpressRoute 回線にリンクする必要があります。詳細な手順については、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」をご覧ください。
 
 ##  ExpressRoute 回線の状態を取得するには
@@ -360,4 +359,4 @@ ExpressRoute 回線を削除するには、次の PowerShell コマンドレッ�
 1.  [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 2.  [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

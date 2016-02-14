@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="11/10/2015"
+ ms.date="02/03/2016"
  ms.author="dobett"/>
 
 # ソリューションの設計
@@ -52,7 +52,7 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 - テレメトリ データを変換し、ソリューションのバックエンドでの処理を容易にする。
 - プロトコルの変換を実行し、デバイスが IoT Hub でサポートされているトランスポート プロトコルを使用しない場合でも IoT Hub と通信できるようにする。
 
-> [AZURE.NOTE]通常は、フィールド ゲートウェイをデバイスのローカルにデプロイしますが、シナリオによっては、クラウドに[プロトコル ゲートウェイ][lnk-gateway]をデプロイする場合もあります。
+> [AZURE.NOTE] 通常は、フィールド ゲートウェイをデバイスのローカルにデプロイしますが、シナリオによっては、クラウドに[プロトコル ゲートウェイ][lnk-gateway]をデプロイする場合もあります。
 
 ### フィールド ゲートウェイのタイプ
 
@@ -63,6 +63,8 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 | IoT Hub ID レジストリに格納される ID | 接続されているすべてのデバイスの ID | フィールド ゲートウェイの ID のみ |
 | IoT Hub が提供する[デバイスID なりすまし対策][lnk-devguide-antispoofing] | あり | なし |
 | [スロットルとクォータ][lnk-throttles-quotas] | 各デバイスに適用 | フィールド ゲートウェイに適用 |
+
+> [AZURE.IMPORTANT]  非透過的なゲートウェイ パターンを使用する場合、そのゲートウェイ経由で接続するデバイスはすべて、最大で 50 個のメッセージを格納できる同じ C2D キューを共有します。したがって、非透過的なゲートウェイ パターンを使用するのは、各フィールド ゲートウェイを介して接続しているデバイスがほとんどなく、C2D トラフィックが少ない場合に限定する必要があります。
 
 ### その他の考慮事項
 
@@ -83,7 +85,7 @@ IoT Hub の[デバイス ID レジストリ][lnk-devguide-identityregistry]を�
 3. トークン サービスは、トークンを返します。トークンは、[IoT Hub 開発者ガイドのセキュリティ セクション][lnk-devguide-security]に従って、`/devices/{deviceId}` を `resourceURI` として使用して作成されます。`deviceId` は、認証されたデバイスです。トークン サービスは、共有アクセス ポリシーを使用してトークンを作成します。
 4. デバイスは、IoT Hub で直接トークンを使用します。
 
-> [AZURE.NOTE].NET クラス [SharedAccessSignatureBuilder][lnk-dotnet-sas] または Java クラス [IotHubServiceSasToken][lnk-java-sas] を使用して、トークン サービスでトークンを作成できます。
+> [AZURE.NOTE] .NET クラス [SharedAccessSignatureBuilder][lnk-dotnet-sas] または Java クラス [IotHubServiceSasToken][lnk-java-sas] を使用して、トークン サービスでトークンを作成できます。
 
 トークン サービスは、必要に応じて、トークンの有効期限を設定できます。トークンの期限が切れた時点で、IoT Hub はデバイスの接続を切断します。その後、デバイスは新しいトークンをトークン サービスに要求する必要があります。有効期限までの期間を短くすると、デバイスとトークン サービスの両方に対する負荷が増加します。
 
@@ -92,6 +94,14 @@ IoT Hub の[デバイス ID レジストリ][lnk-devguide-identityregistry]を�
 ### カスタム ゲートウェイとの比較
 
 IoT Hub でカスタム ID レジストリ/認証スキームを実装する場合は、トークン サービス パターンをお勧めします。これにより、IoT Hub がほとんどのソリューション トラフィックを処理できるためです。ただし、カスタム認証スキームとプロトコルとの関係が複雑すぎるため、すべてのトラフィックを処理するサービス (*カスタム ゲートウェイ*) が必要になる場合があります。その例として、[トランスポート層セキュリティ (TLS) と事前共有キー (PSK)][lnk-tls-psk] があります。詳細については、[プロトコル ゲートウェイ][lnk-gateway]に関する記事を参照してください。
+
+## デバイスのハートビート <a id="heartbeat"></a>
+
+[IoT Hub ID レジストリ][lnk-devguide-identityregistry]には、**connectionState** というフィールドが含まれています。**connectionState** フィールドの使用は、開発およびデバッグ中の使用にとどめ、IoT ソリューションでは実行時にこのフィールドを照会しないでください (たとえば、C2D メッセージまたは SMS を送信するかどうかを決定する場合にデバイスが接続されているかどうかを確認する目的で)。デバイスが接続されているかどうかを、IoT ソリューションで把握する必要がある場合 (実行時に、または **connectionState** プロパティでの指定よりも正確に)、ソリューションでは*ハートビート パターン*を実装する必要があります。
+
+ハートビート パターンでは、デバイスは一定の時間ごとに 1 回以上、D2C メッセージを送信します。(たとえば、1 時間ごとに 1 回以上)。そうした場合、デバイスは送信するデータを保持していなくても、空の D2C メッセージを送信します (通常は、それをハートビートとして識別するプロパティを伴って)。サービス側でソリューションは、デバイスごとに受信した最後のハートビートが示されたマップを保持し、所定の時間内にハートビート メッセージを受信しなかった場合はデバイスに問題があると見なします。
+
+より複雑な実装になると、[操作の監視][lnk-devguide-opmon]からの情報を取り込むことで、接続または通信を試みているが失敗しているデバイスを識別することが可能です。ハートビート パターンを実装する場合は、[IoT Hub のクォータとスロットル][]に関するページを必ず確認してください。
 
 ## 次のステップ
 
@@ -104,6 +114,7 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 
 [lnk-devguide-identityregistry]: iot-hub-devguide.md#identityregistry
 [lnk-device-management]: iot-hub-device-management.md
+[lnk-devguide-opmon]: iot-hub-operations-monitoring.md
 
 [lnk-device-sdks]: iot-hub-sdks-summary.md
 [lnk-devguide-security]: iot-hub-devguide.md#security
@@ -118,5 +129,6 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-devguide-protocol]: iot-hub-devguide.md#amqpvshttp
 [lnk-dotnet-sas]: https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx
 [lnk-java-sas]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/com/microsoft/azure/iot/service/auth/IotHubServiceSasToken.html
+[IoT Hub のクォータとスロットル]: iot-hub-devguide.md#throttling
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0204_2016-->

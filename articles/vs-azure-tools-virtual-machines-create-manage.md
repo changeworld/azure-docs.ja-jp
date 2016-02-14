@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio での Azure Virtual Machines の作成と管理 | Microsoft Azure"
-   description="Visual Studio での Azure Virtual Machines の作成と管理"
+   pageTitle="Visual Studio での Azure 仮想マシンの作成と管理 | Microsoft Azure"
+   description="Visual Studio での Azure 仮想マシンの作成と管理"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/05/2016"
+   ms.date="01/30/2016"
    ms.author="tarcher" />
 
-# Visual Studio での Azure Virtual Machines の作成と管理
+# Visual Studio での Azure 仮想マシンの作成と管理
 
 Azure への仮想マシンの作成は、Visual Studio のサーバー エクスプローラーを使って行うことができます。
 
@@ -175,6 +175,6 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 ## 次のステップ
 
-仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)」をご覧ください。
+仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](/virtual-machines/virtual-machines-linux-tutorial.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](/virtual-machines/virtual-machines-windows-tutorial.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

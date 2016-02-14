@@ -21,6 +21,7 @@
 
 Data Factory が現在サポートしているのは、オンプレミスの ODBC データ ストアから他のデータ ストアへのデータの移動だけで、他のデータ ストアからオンプレミスの ODBC データ ストアへの移動はサポートしていません。
 
+
 ## 接続を有効にする
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの ODBC ソースへの接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。Azure IaaS VM でホストされている場合でも、ODBC データ ストアへの接続にゲートウェイを利用する必要があります。
 
@@ -32,7 +33,9 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 ## サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
 
-下のサンプルで確認できる要素:
+このサンプルは、ODBC データ ストアから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesOdbc](#odbc-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
@@ -44,7 +47,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定してください。
 
-**ODBC のリンクされたサービス**。次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、「[ODBC のリンクされたサービス](#odbc-linked-service-properties)」セクションを参照してください。
+**ODBC のリンクされたサービス** 次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、「[ODBC のリンクされたサービス](#odbc-linked-service-properties)」セクションを参照してください。
 
 	{
 	    "name": "OnPremOdbcLinkedService",
@@ -324,4 +327,4 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

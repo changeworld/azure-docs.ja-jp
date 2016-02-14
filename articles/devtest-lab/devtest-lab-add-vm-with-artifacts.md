@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Add a VM with artifacts to a DevTest Lab | Microsoft Azure"
-	description="Create a new virtual machine with Artifacts in DevTest Lab."
+<properties
+	pageTitle="アーティファクトを含む VM の DevTest ラボへの追加 | Microsoft Azure"
+	description="アーティファクトを含む新しい仮想マシンを DevTest ラボに作成する方法を説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/01/2015"
+	ms.date="02/03/2016"
 	ms.author="tarcher"/>
 
 # アーティファクトを含む VM の Azure DevTest ラボへの追加
@@ -98,4 +98,4 @@ VM にアーティファクトを追加して構成する際に、**[アーテ�
 
 [VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

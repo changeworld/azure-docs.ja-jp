@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/06/2016"
+   ms.date="02/01/2016"
    ms.author="mbaldwin"/>
 
 
@@ -72,7 +72,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 - [Create an app with Office 365 APIs (Office 365 API を使用するアプリの作成)](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
-- [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](active-directory-b2c-overview.md)
+- [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](../active-directory-b2c/active-directory-b2c-overview.md)
 
 
 ## リファレンス
@@ -141,4 +141,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0204_2016-->

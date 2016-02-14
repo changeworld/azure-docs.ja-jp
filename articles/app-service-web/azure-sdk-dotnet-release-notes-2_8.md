@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="01/19/2016"
+   ms.date="01/31/2016"
    ms.author="juliako"/>
 
 # Azure SDK for .NET 2.8、2.8.1、2.8.2
@@ -91,6 +91,8 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 - Windows 10 を使用していて、Internet Explorer をインストールしていない場合は、"Internet Explorer が見つかりませんでした" というエラーが表示されます。この問題を解決するには、[Windows コンポーネントの追加と削除] ダイアログを使用して Internet Explorer をインストールしてください。
 
 この問題が解決されない場合は、"気に入った機能の報告" 機能を使用して問題を報告してください。
+
+詳細については、[この投稿](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-2-for-net/)を参照してください。
 ##他の更新プログラム
 
 他の更新プログラムについては、「[Azure SDK 2.8 アナウンスの投稿](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)」を参照してください。
@@ -101,4 +103,4 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0204_2016-->
