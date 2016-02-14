@@ -655,7 +655,8 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 既に述べたように、時系列データは、時間インデックスを持つ一連のデータ値です。R 時系列オブジェクトは、時間インデックスを作成し管理するために使用されます。時系列オブジェクトの使用には、いくつかの利点があります。時系列オブジェクトにより、オブジェクトにカプセル化されている時系列インデックス値のさまざまな細かな管理から解放されます。さらに、時系列オブジェクトにより、さまざまな時系列メソッドを使用して、プロット、印刷、モデリングなどを行えます。
 
-一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
+一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。
+<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ###	時系列オブジェクトの例
 

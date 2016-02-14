@@ -24,9 +24,11 @@ ETW は、Service Fabric ランタイムが診断情報 (トレース) をソー
 
 Elasticsearch に出現するトレースの場合、リアルタイムで (アプリケーションの実行中に) Service Fabric クラスター ノードでキャプチャし、Elasticsearch エンドポイントに送信する必要があります。トレースのキャプチャには、主に 2 つのオプションがあります。
 
-+ **プロセス内のトレース キャプチャ** アプリケーション (より正確にはサービス プロセス) が、診断データをトレース ストア (Elasticsearch) に送信する役割を担います。
++ **プロセス内のトレース キャプチャ**
+アプリケーション (より正確にはサービス プロセス) が、診断データをトレース ストア (Elasticsearch) に送信する役割を担います。
 
-+ **プロセス外のトレース キャプチャ** 別のエージェントが 1 つ以上のサービス プロセスからトレースをキャプチャし、トレース ストアに送信します。
++ **プロセス外のトレース キャプチャ** 
+別のエージェントが 1 つ以上のサービス プロセスからトレースをキャプチャし、トレース ストアに送信します。
 
 以下では、Azure で Elasticsearch を設定する方法、2 つのキャプチャ オプションの長所と短所、Elasticsearch にデータを送信する Service Fabric サービスを構成する方法について説明します。
 
@@ -147,7 +149,7 @@ Microsoft.Diagnostic.Listeners ライブラリは、PartyCluster サンプル Se
 
 4. サービス プロジェクトから 2 つの追加したプロジェクトへのプロジェクト参照を追加します (Elasticsearch にデータを送信する予定の各サービスは、Microsoft.Diagnostics.EventListeners と Microsoft.Diagnostics.EventListeners.Fabric を参照する必要があります)。
 
-    ![Project references to Microsoft.Diagnostics.EventListeners and Microsoft.Diagnostics.EventListeners.Fabric libraries][1]
+    ![Microsoft.Diagnostics.EventListeners および Microsoft.Diagnostics.EventListeners.Fabric ライブラリのプロジェクト参照][1]
 
 ### Service Fabric と Microsoft.Diagnostics.Tracing NuGet パッケージの 2015 年 11 月プレビュー
 Service Fabric の 2015 年 11 月プレビューで作成されたアプリケーションは、**.NET Framework 4.5.1** を対象とします。これは、プレビュー リリースの時点で Azure がサポートする最新バージョンの .NET Framework です。残念ながら、このバージョンの .NET Framework には、Microsoft.Diagnostics.Listeners ライブラリに必要な EventListener API の一部が含まれていません。EventSource (Fabric アプリケーションのロギング API の基盤となるコンポーネント) と EventListener は密接に関連しているため、Microsoft.Diagnostics.Listeners ライブラリを使用するすべてのプロジェクトは、EventSource の代替の実装を使用する必要があります。この実装は、Microsoft が作成した **Microsoft.Diagnostics.Tracing NuGet パッケージ**に用意されています。このパッケージは、この .NET Framework に含まれている EventSource と完全に下位互換性があります。そのため、参照される名前空間を変更する以外に、コードの変更は必要ありません。

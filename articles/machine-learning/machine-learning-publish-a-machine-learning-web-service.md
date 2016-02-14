@@ -96,7 +96,8 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 
 Azure クラシック ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、**[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスのデプロイ時に作成される既定のエンドポイントに加え、Web サービスの 2 つ目のエンドポイントを追加することもできます。
 
-詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。<!-- When this article gets published, fix the link and uncomment
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
+<!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
 

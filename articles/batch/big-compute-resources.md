@@ -81,7 +81,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
+* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
 
 
 ## コンピューティング集中型インスタンス
@@ -108,7 +108,7 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [仮想マシン](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 * [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 

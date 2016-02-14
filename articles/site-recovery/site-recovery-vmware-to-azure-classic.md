@@ -226,7 +226,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 ## 手順 4: コンテナー登録キーをダウンロードする
 
-1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[Recovery Services]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
+1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure-classic/quick-start-icon.png)
 
@@ -341,7 +341,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 3. アカウントを追加するには、**cspsconfigtool** を開きます。cspsconfigtool はデスクトップにショートカットがあり、[インストール場所]\\home\\svsystems\\bin フォルダーに保存されています。
 2. **[アカウントの管理]** タブの **[アカウントの追加]** をクリックします。
 
-	![Add account](./media/site-recovery-vmware-to-azure-classic/credentials1.png)
+	![アカウントの追加](./media/site-recovery-vmware-to-azure-classic/credentials1.png)
 
 3. **[アカウントの詳細]** で、vCenter サーバーへのアクセスに使用できる資格情報を追加します。アカウント名がポータルに表示されるまでに、15 分以上かかることがあります。すぐに更新するには、**[構成サーバー]** タブの [更新] をクリックします。
 
@@ -454,8 +454,9 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
-Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9..0.0\_Windows\_ release.exe
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9..0.0\_RHEL6-64\_*release.tar.gz
+SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9..0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
@@ -545,7 +546,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection1.png)
 		
-4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium Storage アカウントはサポートされていません。
+4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium ストレージ アカウントはサポートされていません。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection3.png)
 
