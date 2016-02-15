@@ -761,11 +761,11 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	-   **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
 
-	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の <namespace>.<classname> です。
+	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の \<namespace\>.\<classname\> です。
 
 	-   **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 
-	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は <containerforthezip>/<nameofthezip.zip> です。
+	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
 
 	-   カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
 
@@ -929,4 +929,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0128_2016-->
