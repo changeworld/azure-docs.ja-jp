@@ -78,63 +78,9 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 API アプリの .NET 入門シリーズに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[認証を構成する](#azureauth)」セクションに進みます。
 
-1 番目と 2 番目のチュートリアルを行っていない場合で、このチュートリアルを進めたい場合は、最初にシリーズのすべての[前提条件](app-service-api-dotnet-get-started.md#prerequisites)を満たしていることを確認してください。その後、次の手順に従ってサンプル アプリケーションをダウンロードしてデプロイします。以下の手順は最初の 2 つのチュートリアルで行ったものと同じですが、ここで簡単に示しておきます。
+1 番目と 2 番目のチュートリアルを省略してこのチュートリアルを進める場合は、[To Do List サンプル リポジトリ Readme ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)の **[Deploy to Azure]** ボタンを使用して API アプリと Web アプリをデプロイしてください。
 
-1. サンプル アプリケーションをダウンロードします。
-
-	a.[Azure-Samples/app-service-api-dotnet-todo-list](https://github.com/Azure-Samples/app-service-api-dotnet-to-do-list) リポジトリからダウンロードします。
-
-	a.ToDoList ソリューションを Visual Studio 2015 で開き、ソリューションをビルドして NuGet パッケージを復元します。
-
-2. 新しい API アプリに ToDoListDataAPI プロジェクトをデプロイします。
-
-	a.ToDoListDataAPI プロジェクトで *App\_Start/SwaggerConfig.cs* ファイルを開き、**EnableSwaggerUi** コードのコメントを解除します。
-
-	b.**ソリューション エクスプローラー**で ToDoListDataAPI プロジェクトを右クリックし、**[発行]** をクリックします。
-
-	c.**Web の発行**ウィザードの **[プロファイル]** ステップで、**[Microsoft Azure App Service]** をクリックします。
-
-	d.**[App Service]** ダイアログ ボックスで、使用する Azure **サブスクリプション**を選択して、**[新規]** をクリックします。
-
-	e.**[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]**、**[API アプリ]** を順にクリックします。
-
-	f.**[API アプリの名前]** に、ToDoListDataAPI などの名前に *azurewebsites.net* ドメインでアプリを一意にする番号を付加したもの (例: ToDoListDataAPI1230) を入力します。
-
-	g.**[リソース グループ]** ドロップダウンで、TodoListGroup などの名前を入力して新しいリソース グループを作成します。
-
-	h.**[App Service プラン]** ドロップダウンで **[新規]** をクリックし、**[App Service プランの構成]** ダイアログ ボックスで必要な情報を入力します。
-
-	i.**[作成]** をクリックします。
-
-	j.**[発行]** をクリックします。
-
-3. 新しい API アプリに ToDoListAPI プロジェクトをデプロイします。
-
-	a.ToDoListAPI プロジェクトで *Controllers\\ToDoListController.cs* を開き、`http://localhost:45914` を `https://{your ToDoListDataAPI app name}.azurewebsites.net` に変更します。
-
-	b.ToDoListDataAPI プロジェクトのときと同じ手順に従って ToDoListAPI プロジェクトをデプロイします。忘れずに種類を **[API アプリ]** に変更します。
-
-4. 新しい Web アプリに ToDoListAngular プロジェクトをデプロイします。
-
-	a.ToDoListAngular プロジェクトで *app/scripts/todoListSvc.js* ファイルを開きます。
-
-	b.`apiEndpoint` を localhost の URL に設定する行をコメント化し、`apiEndPoint` を azurewebsites.net の URL に設定する行のコメントを解除して、プレースホルダーを ToDoListAPI 用に作成した API アプリの実際の名前に置き換えます。
-
-	c.ToDoListDataAPI プロジェクトのときと同じ手順に従って ToDoListAPI プロジェクトをデプロイします。**ただし、種類を Web アプリから API アプリには変更しません。**
-
-5. Azure で API アプリ用に CORS を構成します。
-
-	a.[Azure ポータル](https://portal.azure.com/)にアクセスし、ToDoListAPI プロジェクト用に作成した API アプリに移動します。
-
-	b.**[API アプリ]** ブレードで、**[設定]** をクリックします。
-
-	c.**[API]** セクションを探し、**[CORS]** をクリックします。
-
-	d.テキスト ボックスに、呼び出し元として許可する URL を入力します。このチュートリアルでは、ToDoListAngular プロジェクトで作成した Web アプリの URL です。たとえば、「https://todolistangular.azurewebsites.net」などと入力します。
-
-	e.**[保存]** をクリックします。
-
-6. ブラウザーで Web アプリの HTTPS URL を開き、To Do 項目を表示、追加、編集、削除できることを確認します。
+デプロイが完了すると、Web アプリへの HTTP リンクが表示されます。アプリケーションを実行して正常に動作していることを確認するには、その URL を HTTPS に変更します。
 
 ## <a id="azureauth"></a>Azure で認証を設定する
 
@@ -240,7 +186,7 @@ Azure AD 認証を構成すると、App Service によって Azure AD アプリ�
 
 	![](./media/app-service-api-dotnet-user-principal-auth/replyurlazure.png)
 
-15. ページ下部の **[マニフェストの管理] > [マニフェストのダウンロード]** をクリックします。
+15. ページ下部の **[マニフェストの管理]、[マニフェストのダウンロード]** を順にクリックします。
 
 	![](./media/app-service-api-dotnet-user-principal-auth/downloadmanifest.png)
 
@@ -358,7 +304,7 @@ ToDoListAPI プロジェクトで次の変更を行います。
 
 11. 新しい To Do 項目を追加し、アプリケーションが動作していることを確認します。
 
-12. 別のブラウザー ウィンドウで、ToDoListDataAPI API の Swagger UI URL に移動し、**[ToDoList] > [Get]** をクリックします。`owner` パラメーターにアスタリスクを入力し、**[Try it out]** をクリックします。
+12. 別のブラウザー ウィンドウで、ToDoListDataAPI API の Swagger UI URL に移動し、**[ToDoList]、[Get]** を順にクリックします。`owner` パラメーターにアスタリスクを入力し、**[Try it out]** をクリックします。
 
 	応答では、新しい To Do 項目に、Owner プロパティの実際の Azure AD ユーザー ID が設定されていることが示されます。
 
@@ -391,4 +337,4 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

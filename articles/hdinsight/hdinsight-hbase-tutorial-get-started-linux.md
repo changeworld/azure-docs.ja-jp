@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/01/2016"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 
@@ -41,16 +41,16 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
 
-    [![Azure へのデプロイ](./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2FHbase.json)
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2FHbase.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
     - **ClusterName**: 作成する HBase クラスターの名前を入力します。
-    - **ClusterStorageAccountName**: 各クラスターには Azure BLOB ストレージ アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。
+    - **ClusterStorageAccountName**: 各クラスターには Azure Blob Storage アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。
     - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
     - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。その他のパラメーターは省略可能です。  
 3. **[OK]** をクリックしてパラメーターを保存します。
-4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ドロップダウン ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
+4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 5. **[法律条項]** をクリックし、**[作成]** をクリックします。
 6. **[作成]** をクリックします。クラスターの作成には約 20 分かかります。
 
@@ -185,13 +185,13 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 3. 次のコマンドを使用して、2 つの列ファミリがある新しい HBase テーブルを作成します。
 
-		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"@name\":\"test\",\"ColumnSchema\":[{\"name\":\"Personal\"},{\"name\":\"Office\"}]}"
+		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{"@name":"test","ColumnSchema":[{"name":"Personal"},{"name":"Office"}]}"
 
 	スキーマは、JSon 形式で提供されます。
 
 4. 次のコマンドを使用して、一部のデータを挿入します。
 
-		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"Row\":{\"key\":\"1000\",\"Cell\":{\"column\":\"Personal:Name\", \"$\":\"John Dole\"}}}"
+		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{"Row":{"key":"1000","Cell":{"column":"Personal:Name", "$":"John Dole"}}}"
 
 5. 次のコマンドを使用して、1 行を取得します。
 
@@ -257,8 +257,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 詳細については、次を参照してください。
 
-- 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: 
-HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+- 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
@@ -288,4 +287,4 @@ HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL 
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

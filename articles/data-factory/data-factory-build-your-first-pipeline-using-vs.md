@@ -324,6 +324,8 @@
  
 	![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 
+Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションを参照してください。
+
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
@@ -342,11 +344,101 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 3. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションを参照してください。
- 
+## 構成ファイルを使用する
+リンクされたサービス/テーブル/パイプラインには、Visual Studio から構成ファイルを使用して環境ごとに異なるプロパティを構成できます。
+
+Azure Storage のリンクされたサービスに関して次のような JSON 定義があるとします。Data Factory エンティティのデプロイ先となる環境 (開発/テスト/運用) ごとに異なる値を **connectionString** の accountname と accountkey に指定するには、環境ごとに個別の構成ファイルを使用します。
+
+	{
+	    "name": "StorageLinkedService",
+	    "properties": {
+	        "type": "AzureStorage",
+	        "description": "",
+	        "typeProperties": {
+	            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+	        }
+	    }
+	} 
+
+### 構成ファイルを追加する
+環境ごとに次の手順を実行して構成ファイルを追加します。
+
+1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、**[追加]** をポイントして **[新しい項目]** をクリックします。
+2. 左側にあるインストールされているテンプレートの一覧で **[構成]** を選択し、**[構成ファイル]** を選択して構成ファイルの**名前**を入力し、**[追加]** をクリックします。
+
+	![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
+3. 次に示した形式で構成パラメーターとその値を追加します。
+
+		{
+		    "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+		    "AzureStorageLinkedService1": [
+		        {
+		            "name": "$.properties.typeProperties.connectionString",
+		            "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+		        }
+		    ],
+		    "AzureSqlLinkedService1": [
+		        {
+		            "name": "$.properties.typeProperties.connectionString",
+		            "value":  "Server=tcp:spsqlserver.database.windows.net,1433;Database=spsqldb;User ID=spelluru;Password=Sowmya123;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+		        }
+		    ]
+		}
+
+	この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。名前を指定するための構文が [JsonPath](http://goessner.net/articles/JsonPath/) であることに注目してください。
+
+	ここで、JSON のプロパティが、次のように値の配列になっているとします。
+
+		"structure": [
+	  		{
+	  			"name": "FirstName",
+	    		"type": "String"
+	  		},
+	  		{
+	    		"name": "LastName",
+	    	    "type": "String"
+			}
+		],
+	
+	この場合、構成ファイルで次のように構成する必要があります (0 から始まるインデックスを使用)。
+		
+		{
+            "name": "$.properties.structure[0].name",
+            "value": "FirstName"
+        }
+        {
+            "name": "$.properties.structure[0].type",
+            "value": "String"
+        }
+        {
+            "name": "$.properties.structure[1].name",
+            "value": "LastName"
+        }
+        {
+            "name": "$.properties.structure[1].type",
+            "value": "String"
+        }
+
+
+### 構成を指定してソリューションをデプロイする
+Azure Data Factory のエンティティを VS で発行するときに、その発行操作に使用する構成を指定できます。
+
+構成ファイルを使用して Azure Data Factory プロジェクトのエンティティを発行するには、次の手順を実行します。
+
+1. Data Factory プロジェクトを右クリックし、**[発行]** をクリックして **[項目の発行]** ダイアログ ボックスを表示します。 
+2. **[データ ファクトリの構成]** ページで値を指定して新しいデータ ファクトリを作成するか、既存のデータ ファクトリを選択し、**[次へ]** をクリックします。   
+3. **[項目の発行]** ページのドロップダウン リストに、**[デプロイ構成の選択]** フィールドで使用できる構成が表示されます。
+
+	![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
+
+4. 使用する**構成ファイル**を選択し、**[次へ]** をクリックします。
+5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、**[次へ]** をクリックします。 
+6. デプロイ操作が終了したら **[完了]** をクリックします。 
+
+実際にデプロイすると、Data Factory エンティティ (リンクされたサービス、テーブル、パイプライン) の JSON ファイルに指定されているプロパティの値が、構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。
 
 ## 次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

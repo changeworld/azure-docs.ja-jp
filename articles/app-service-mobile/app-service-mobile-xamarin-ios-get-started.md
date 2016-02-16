@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/23/2015"
+	ms.date="02/04/2016"
 	ms.author="normesta"/>
 
 
 #Xamarin.iOS アプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -38,7 +36,7 @@
 * [Visual Studio Community 2013] 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
 
 * [Xcode] v7.0 以降と [Xamarin Studio] がインストールされた Mac。
- 
+
 * Visual Studio を実行する Windows ベースのコンピューターでアプリの構築を計画する場合でも、実際にビルドしてデプロイするには、Xamarin.iOS Build Host を実行するネットワークで接続された Mac にアクセスする必要があります。詳細については、[Windows への Xamarin.iOS のインストール](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/)に関するページを参照してください。
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -121,4 +119,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
-<!---HONumber=AcomDC_0128_2016--->
+<!---HONumber=AcomDC_0211_2016-->

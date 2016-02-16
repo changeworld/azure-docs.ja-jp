@@ -12,7 +12,7 @@
 	ms.workload="multiple" 
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="01/08/2016" 
 	ms.author="tomfitz"/>
 
@@ -89,7 +89,7 @@ Azure アカウントにログインするには、**Login-AzureRmAccount** コ�
 
 アカウント設定の有効期限が切れるため、ときどき更新する必要があります。アカウント設定を更新するには、**Login-AzureRmAccount** をもう一度実行します。
 
->[AZURE.NOTE]リソース マネージャー モジュールでは Login-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
+>[AZURE.NOTE] リソース マネージャー モジュールでは Login-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
 
 ## リソースの種類の場所を取得する
 
@@ -461,4 +461,4 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

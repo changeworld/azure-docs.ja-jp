@@ -110,10 +110,6 @@ Azure Active Directory を使用する認証の詳細については、次のリ
 
 ## 次のステップ
 
-この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。
+この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-引き続き ASP.NET と API Apps を使った一連のチュートリアルをご覧になる場合は、[App Service API Apps でのユーザー認証](app-service-api-dotnet-user-principal-auth.md)に関するページを参照してください。
-
-Azure App Service における Node と Java の使用について詳しくは、[Node.js デベロッパー センター](/develop/nodejs/)と [Java デベロッパー センター](/develop/java/)を参照してください。
-
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

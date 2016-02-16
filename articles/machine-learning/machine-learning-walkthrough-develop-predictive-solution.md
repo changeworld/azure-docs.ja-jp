@@ -1,7 +1,7 @@
 <properties
 	pageTitle="信用リスク評価のための予測分析ソリューションを Machine Learning で開発する | Microsoft Azure"
 	description="信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する方法を詳しく紹介したチュートリアルです。"
-	keywords="credit risk, predictive analytics solution,risk assessment"
+	keywords="信用リスク, 予測分析ソリューション,リスク評価"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/13/2015"
+	ms.date="02/03/2016"
 	ms.author="garye"/>
 
 
@@ -28,9 +28,7 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Machine Learning Studio を開くには、[https://studio.azureml.net/Home](https://studio.azureml.net/Home) のリンクをクリックします。Machine Learning Studio の概要の詳細については、「[Microsoft Azure Machine Learning Studio ホーム](https://studio.azureml.net/)」をご覧ください。
-
->[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
+>[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
 信用リスク評価ソリューションを作成するのには、次の手順に従います。
 
@@ -41,6 +39,6 @@ Machine Learning Studio を開くには、[https://studio.azureml.net/Home](http
 5.	[Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
-このチュートリアルは、Machine Learning Studio に含まれる「[Credit risk prediction sample experiment (クレジット リスク予測のサンプル実験)](../machine-learning-sample-credit-risk-prediction.md)」の簡略版に基づきます。
+このチュートリアルは、[Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](../machine-learning-sample-credit-risk-prediction.md)」のサンプル実験の簡略版に基づきます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

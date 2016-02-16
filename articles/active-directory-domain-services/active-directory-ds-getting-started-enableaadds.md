@@ -12,7 +12,7 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="01/26/2016"
 	ms.author="maheshu"/>
 
@@ -46,7 +46,7 @@
    - 一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが含まれます。検証対象のドメインおよび [ドメイン] タブで構成する検証対象外のドメインなどがあります。
    - さらに、この一覧には、カスタム ドメイン名を入力して追加することもできます。
 
-     >[AZURE.WARNING] 指定したドメイン名のドメイン プレフィックス (たとえば、'contoso.local' ドメイン名の 'contoso') が 15 文字未満であることを確認します 。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
+     > [AZURE.WARNING] 指定したドメイン名のドメイン プレフィックス (たとえば、'contoso.local' ドメイン名の 'contoso') が 15 文字未満であることを確認します 。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
 
 8. 次の手順は、Azure AD Domain Services を利用できる仮想ネットワークを選択することです。先ほど作成した仮想ネットワークを、**[ドメイン サービスをこの仮想ネットワークに接続します]** というタイトルのボックスの一覧から選択します。
    - 指定した仮想ネットワークが Azure AD Domain Services でサポートされている Azure リージョンに属することを確認します。
@@ -73,4 +73,4 @@
 ---
 [**次の手順: Azure 仮想ネットワークの DNS 設定を更新する**](active-directory-ds-getting-started-dns.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

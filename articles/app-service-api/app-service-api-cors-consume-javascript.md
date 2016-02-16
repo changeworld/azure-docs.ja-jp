@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="02/05/2016"
 	ms.author="tdykstra"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
@@ -76,6 +76,8 @@ Azure PowerShell や Azure クロスプラットフォーム コマンドライ�
 		    ]
 		}
 
+CORS を構成するための JSON を含んだ Azure リソース マネージャー テンプレートの例については、[サンプル アプリケーション リポジトリにある azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を開いてください。
+
 ## <a id="tutorialstart"></a> .NET 入門チュートリアルの続行
 
 API アプリの Node.js または Java 入門シリーズに従って学習している場合は、次の記事「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」に進みます。
@@ -108,19 +110,6 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 		    };
 		}]);
 
-### ToDoListAPI API アプリを呼び出すように ToDoListAngular プロジェクトを構成する 
-
-フロントエンドを Azure にデプロイする前に、前のチュートリアルで作成した ToDoListAPI Azure API アプリをコードが呼び出すように、AngularJS プロジェクトの API エンドポイントを変更する必要があります。
-
-1. ToDoListAngular プロジェクトで *app/scripts/todoListSvc.js* ファイルを開きます。
-
-2. `apiEndpoint` を localhost の URL に設定する行をコメントアウトし、`apiEndPoint` を azurewebsites.net の URL に設定する行をコメント解除して、プレースホルダーを前に作成した API アプリの実際の名前に置き換えます。API アプリの名前を ToDoListAPI0125 にした場合、コードは次の例のようになります。
-
-		var apiEndPoint = 'https://todolistapi0125.azurewebsites.net';
-		//var apiEndPoint = 'http://localhost:45914';
-
-3. 変更を保存します。
-
 ### ToDoListAngular プロジェクト用の新しい Web アプリを作成する
 
 新しい Web アプリを作成してそれにプロジェクトをデプロイする手順は、このシリーズの最初のチュートリアルで示したものと同じです。ただし、**Web アプリ**から **API アプリ**への種類の変更は行いません。
@@ -145,11 +134,59 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 	Visual Studio により Web アプリが作成され、その発行プロファイルが作成され、**Web の発行**ウィザードの **[接続]** ステップが表示されます。
 
+	**Web の発行**ウィザードの **[発行]** をクリックする前に、App Service で実行されている中間層の API アプリを呼び出すように新しい Web アプリを構成してください。
+
+### Web アプリの設定で中間層の URL を設定する
+
+1. [Azure ポータル](https://portal.azure.com/)にアクセスし、TodoListAngular (フロント エンド) プロジェクトをホストする目的で作成した Web アプリの **[Web アプリ]** ブレードに移動します。
+
+2. **[設定]、[アプリケーションの設定]** の順にクリックします。
+
+3. **[アプリ設定]** セクションで、次のキーと値を追加します。
+
+	|キー|値|例
+	|---|---|---|
+	|toDoListAPIURL|https://{your middle tier API app name}.azurewebsites.net|https://todolistapi0121.azurewebsites.net|
+
+4. **[保存]** をクリックします。
+
+	Azure でコードを実行すると、Web.config ファイルにある localhost の URL がこの値で上書きされます。
+
+	設定値を取得するコードは *index.cshtml* にあります。
+
+		<script type="text/javascript">
+		    var apiEndpoint = "@System.Configuration.ConfigurationManager.AppSettings["toDoListAPIURL"]";
+		</script>
+		<script src="app/scripts/todoListSvc.js"></script>
+
+	この設定は、*todoListSvc.js* 内のコードで使用されます。
+
+		return {
+		    getItems : function(){
+		        return $http.get(apiEndpoint + '/api/TodoList');
+		    },
+		    getItem : function(id){
+		        return $http.get(apiEndpoint + '/api/TodoList/' + id);
+		    },
+		    postItem : function(item){
+		        return $http.post(apiEndpoint + '/api/TodoList', item);
+		    },
+		    putItem : function(item){
+		        return $http.put(apiEndpoint + '/api/TodoList/', item);
+		    },
+		    deleteItem : function(id){
+		        return $http({
+		            method: 'DELETE',
+		            url: apiEndpoint + '/api/TodoList/' + id
+		        });
+		    }
+		};
+
 ### 新しい Web アプリに ToDoListAngular Web プロジェクトをデプロイする
 
-*  **Web の発行**ウィザードの **[接続]** ステップで、**[発行]** をクリックします。
+*  Visual Studio から **Web の発行**ウィザードの **[接続]** ステップで、**[発行]** をクリックします。
 
-	Visual Studio は、ToDoListAngular プロジェクトを Web アプリにデプロイし、ブラウザーで Web アプリの URL を開きます。
+	Visual Studio は、ToDoListAngular プロジェクトを新しい Web アプリにデプロイし、ブラウザーで Web アプリの URL を開きます。
 
 ### CORS を有効にしないでアプリケーションをテストする 
 
@@ -236,6 +273,6 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 
 ## 次のステップ 
 
-このチュートリアルでは、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」について説明します。
+このチュートリアルでは、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

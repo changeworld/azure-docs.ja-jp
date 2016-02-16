@@ -12,26 +12,29 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/17/2015"
+	ms.date="02/09/2016"
 	ms.author="awills"/>
 
-# JavaScript Web アプリのための Application Insights
+# Web ページ向けの Application Insights
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Web ページのパフォーマンスと使用状況について調べます。Visual Studio Application Insights をページに追加すれば、利用者の数、再訪問の頻度、最も利用されているページがわかります。読み込み時間と例外のレポートも与えられます。いくつかの[カスタム イベントとメトリック](app-insights-api-custom-events-metrics.md)を追加すると、最も人気のある機能や最も一般的なミスを詳細に分析し、ユーザーが満足するようにページを調整できます。
+Web ページまたはアプリのパフォーマンスと使用状況について調べます。Visual Studio Application Insights をページ スクリプトに追加すると、ページの読み込みや AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細のほか、ユーザー数やセッション数を取得することができます。いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/16-page-views.png)
+短い JavaScript コードを追加するだけで、Application Insights はあらゆる Web ページで使用できます。Web サービスが [Java](app-insights-java-get-started.md) または [ASP.NET](app-insights-asp-net.md) である場合、サーバーとクライアントのテレメトリを統合することができます。
 
-[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) Web アプリにサーバー利用統計情報を既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
+使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です。所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。無料の価格レベルが用意されているため、開発と小規模な用途であれば費用は一切かかりません。
 
-#### 簡単なデモ
 
-Azure サブスクリプションがなく、Web ページ上で Application Insights をお試しになりたい場合は、[Application Insights の試用についてのページ](http://aka.ms/ainow)を参照してください。
+## Web ページに Application Insights を設定する
 
-## Application Insights リソースを開く
+必要な設定が既に済んでいる可能性もあります。アプリが新しい ASP.NET プロジェクトで、Visual Studio の [新しいプロジェクト] ダイアログから Application Insights を追加するように選択した場合、必要なスクリプトは既に追加されています。特別な設定は必要はありません。
 
-Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。(Web サーバーからデータを集めるなどの目的で、既にリソースを作成している場合、この手順を省略します。)
+それ以外の場合は、次の手順に従ってコード スニペットを Web ページに追加する必要があります。
+
+### Application Insights リソースを開く
+
+Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。
 
 [Azure ポータル](https://portal.azure.com)にサインインします。
 
@@ -47,15 +50,15 @@ Application Insights リソースは、ページのパフォーマンスと使�
 *質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)。
 
 
-## アプリや Web ページに SDK スクリプトを追加する
+### アプリや Web ページに SDK スクリプトを追加する
 
 クイック スタートで、Web ページのスクリプトを取得します。
 
 ![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。スクリプトをコピーします。](./media/app-insights-javascript/02-monitor-web-page.png)
 
-追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
+追跡するすべてのページの `<head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
 
-* ASP.NET MVC プロジェクトで、View\\Shared\\_Layout.cshtml にスクリプトを配置します。
+* ASP.NET MVC プロジェクトで、`View\Shared\_Layout.cshtml` にスクリプトを配置します。
 * SharePoint サイトのコントロール パネルで、[[サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。
@@ -65,80 +68,125 @@ Application Insights リソースは、ページのパフォーマンスと使�
 *(よく知られている Web ページ フレームワークを使用している場合、Application Insights アダプターを探してください。たとえば、[AngularJS モジュール](http://ngmodules.org/modules/angular-appinsights)があります。)*
 
 
+## 詳細な構成
+
+独自に設定できる[パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)はいくつか存在しますが、ほとんどの場合、その必要はありません。たとえば、ページ ビューあたりの AJAX 呼び出し数の報告を無効にしたり、(トラフィックを抑制するために) 報告に上限を設けたりすることができます。また、テレメトリをまとめてパイプラインに送るのではなく随時送るようにデバッグ モードを設定することもできます。
+
+これらのパラメーターを設定するには、コード スニペットから次の行を探し、その後ろにコンマ区切りで項目を追加します。
+
+    })({
+      instrumentationKey: "..."
+      // Insert here
+    });
+
+[利用できるパラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)の例を次に示します。
+
+    // Send telemetry immediately without batching.
+    // Remember to remove this when no longer required, as it
+    // can affect browser performance.
+    enableDebug: true,
+
+    // Don't log browser exceptions.
+    disableExceptionTracking: true,
+
+    // Limit number of Ajax calls logged, to reduce traffic.
+    maxAjaxCallsPerView: 10, // default is 500
+
+    // Set these dynamically for an authenticated user.
+    appUserId: string,
+    accountId: string,
+
+
+
 ## <a name="run"></a>アプリを実行する
 
 Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
 Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
 
-## データを調査する
+## ブラウザーのパフォーマンス データを調査する
 
-アプリケーションの概要ブレードでは、最上部の近くにグラフがあり、ブラウザーにページを読み込むときの平均時間が表示されます。
+ユーザーのブラウザーから集計したパフォーマンス データを表示するには、[ブラウザー] ブレードを開きます。
 
-
-![](./media/app-insights-javascript/05-browser-page-load.png)
+![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
 
 *まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか? 「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
-そのグラフをクリックすると、さらに詳しいグラフになって表示されます。
+[ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された[メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md)です。時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。**[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
-![](./media/app-insights-javascript/07-client-perf.png)
+## ページ読み込みのパフォーマンス
 
-これは積み重ねグラフであり、合計ページ読み込み時間を [W3C が定義する標準のタイミング](http://www.w3.org/TR/navigation-timing/#processing-model)に分解します。
+最上部には、ページの読み込み時間をセグメント化したグラフが表示されます。グラフ全体の高さは、ユーザーのブラウザーでアプリからページを読み込んで表示するのにかかった平均時間を表します。時間の測定範囲は、ブラウザーが初期 HTTP 要求を送信してから、すべての同時読み込みイベントが処理されるまでとなります (レイアウトと実行中のスクリプトを含む)。AJAX 呼び出しからの Web パーツ読み込みといった非同期タスクは含まれません。
+
+このグラフでは、ページ読み込み時間の合計が、[W3C で定義されている標準的なタイミング](http://www.w3.org/TR/navigation-timing/#processing-model)に合わせてセグメント化されています。
 
 ![](./media/app-insights-javascript/08-client-split.png)
 
 通常、*ネットワーク接続*時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
+### 読み込みに時間がかかる
 
-### ページ別のパフォーマンス
+ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
 
-詳細ブレードのさらに下に、ページ URL で分割されたグリッドがあります。
-
+このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
 
 ![](./media/app-insights-javascript/09-page-perf.png)
 
-時間の経過と共に変化するページのパフォーマンスを表示する場合は、グリッドをダブルクリックし、グラフの種類を変更します。
+ページ ビュー カウントと標準偏差に注目してください。このページ カウントがごく小さければ、この問題はさほど多くのユーザーに影響していません。標準偏差が大きい (平均値そのものに匹敵するなど) ことは、個々の測定値にばらつきが多いことを示しています。
 
-![](./media/app-insights-javascript/10-page-perf-area.png)
+**特定の URL やページ ビューのクローズアップ。** いずれかのページ名をクリックすると、その URL だけを表示するようにブラウザー グラフがフィルタリングされてブレードが表示されます。そこからさらに、特定のページ ビューの情報だけを表示することもできます。
 
-## クライアント使用状況の概要
+![](./media/app-insights-javascript/35.png)
 
-概要ブレードに戻り、**[使用状況]** をクリックします。
-
-![](./media/app-insights-javascript/14-usage.png)
-
-* **ユーザー:** グラフの時間範囲内で変化する一意のユーザーの数。(戻ってくるユーザーを識別するために Cookie が使用されます)。
-* **セッション:** ユーザーが 30 分間何の要求も出さないと、セッションがカウントされます。
-* **ページ ビュー**: trackPageView() の呼び出し数をカウントします。通常、各 Web ページで 1 回呼び出されます。
+`...` をクリックすると、該当するイベントの一連のプロパティがすべて表示されます。また、AJAX 呼び出しや関連するイベントを詳しく調査することもできます。AJAX 呼び出しが同期処理で実行されている場合、呼び出しに時間がかかると、ページ読み込み時間全体に影響します。関連するイベントとしては、同じ URL に対するサーバー要求があります (Web サーバーに対して Application Insights を設定した場合)。
 
 
-### クリックして詳細を表示する
+**時間経過に伴うページ パフォーマンス。** 特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
 
-グラフをクリックすると、詳細が表示されます。グラフの時間範囲を変更できます。
+![Click the head of the grid and select a new chart type](./media/app-insights-javascript/10-page-perf-area.png)
 
-![](./media/app-insights-javascript/appinsights-49usage.png)
+**セグメント化の基準となるディメンションの変更。** ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、**[グループ化の基準]** で適宜ディメンションを変えながら試してください。
 
-
-グラフをクリックして表示するメトリックを選択するか、新しいグラフを追加して表示するメトリックを選択します。
-
-![](./media/app-insights-javascript/appinsights-63usermetrics.png)
-
-> [AZURE.NOTE] メトリックは、いくつかの組み合わせでしか表示できないことがあります。メトリックを選択すると、互換性のないメトリックは無効になります。
+![](./media/app-insights-javascript/21.png)
 
 
+## AJAX パフォーマンス
 
-## ページ カウントのカスタマイズ
+Web ページの AJAX 呼び出しが適切に実行されていることを確認します。Ajax 呼び出しは、非同期的にページの一部を読み込む目的でよく使用されます。ページ全体としては即座に読み込まれていても、最初に空の Web パーツが表示され、データが表示されるまでに時間がかかっているようだと、ユーザーはストレスを感じる可能性があります。
 
-既定では、ページ カウントは新しいページがクライアント ブラウザーに読み込まれるたびに行われます。ただし、ページ ビューを別の場合にもカウントできます。たとえば、ページの内容がタブに表示され、ユーザーがタブを切り替えるときに対象ページをカウントしたい場合があります。またはページ内の JavaScript コードが、ブラウザーの URL を変更することなく新しいコンテンツを読み込む場合もあります。
+Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに依存関係として表示されます。
 
-次のような JavaScript 呼び出しをクライアント コードの適切な箇所に挿入します。
+ブレードの上部には、集計グラフが表示されます。
 
-    appInsights.trackPageView(myPageName);
+![](./media/app-insights-javascript/31.png)
 
-ページ名には、同じ文字を URL として含めることできますが、「#」または「?」の後の文字はすべて無視されます。
+詳細なグリッドは下の方に表示されます。
 
+![](./media/app-insights-javascript/33.png)
+
+いずれかの行をクリックすると、詳しい情報が表示されます。
+
+
+> [AZURE.NOTE] ブレードで [ブラウザー] フィルターを削除した場合、サーバーと AJAX の両方の依存関係がこれらのグラフの対象となります。フィルターを再構成するには [既定値に戻す] をクリックしてください。
+
+**AJAX 呼び出しエラーを詳しく調査する**簡単な方法は、エラー グラフをグリッドに変更し、特定の行をクリックしてその内容を表示することです。
+
+![](./media/app-insights-javascript/37.png)
+
+`...` をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
+
+### AJAX 呼び出しが報告されない場合
+
+AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP 呼び出しが含まれます。それらがまったく表示されない場合は、コード スニペットで `disableAjaxTracking` や `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
+
+## ブラウザーの例外
+
+[ブラウザー] ブレードには、例外の集計グラフが表示されるほか、例外の種類を示すグリッドがブレードの下の方に表示されます。
+
+![](./media/app-insights-javascript/39.png)
+
+ブラウザーの例外がまったく表示されない場合は、コード スニペットで `disableExceptionTracking` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
 
 ## 個別のページ ビュー イベントを調査する
 
@@ -158,26 +206,29 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 * **ページ ビュー時間**: ページの読み込みや、スクリプト実行の開始にかかる時間です。具体的には、ページ読み込みの開始から trackPageView の実行までの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
 
-## 使用状況の追跡 (カスタム)
 
-アプリケーションで、ユーザーが何をするのかを知る必要がありますか。 クライアントとサーバーのコードに呼び出しを挿入すると、Application Insights に独自の利用統計情報を送信できます。たとえば、注文を作成したが完了していないユーザーの数、最も頻繁に発生する検証エラー、またはゲームの平均スコアを確認できます。
+## ページ カウントのカスタマイズ
 
+既定では、ページ カウントは新しいページがクライアント ブラウザーに読み込まれるたびに行われます。ただし、ページ ビューを別の場合にもカウントできます。たとえば、ページの内容がタブに表示され、ユーザーがタブを切り替えるときに対象ページをカウントしたい場合があります。またはページ内の JavaScript コードが、ブラウザーの URL を変更することなく新しいコンテンツを読み込む場合もあります。
+
+次のような JavaScript 呼び出しをクライアント コードの適切な箇所に挿入します。
+
+    appInsights.trackPageView(myPageName);
+
+ページ名には、同じ文字を URL として含めることできますが、「#」または「?」の後の文字はすべて無視されます。
+
+
+
+## 使用状況の追跡
+
+
+アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
+
+* [使用状況の追跡について](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
-* [API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-## サーバーの利用統計情報
 
-これをまだ実行していない場合、サーバーから情報を入手し、そのデータをクライアント側のデータと共に表示できます。サーバーのパフォーマンスを評価し、問題を診断できます。アプリに Application Insights SDK を追加するだけです。
-
-* [SDK を ASP.NET アプリに追加する](app-insights-asp-net.md)
-* [SDK を Java Web アプリに追加する](app-insights-java-get-started.md)
-
-または、Web アプリが既に稼働している場合でも、再ビルドまたは再デプロイすることなくサーバー テレメトリを追加できます。
-
-* [ライブ ASP.NET アプリを監視する](app-insights-monitor-performance-live-website-now.md)
-* [ライブ Java アプリを監視する](app-insights-java-live.md)
-
-## <a name="video"></a> 動画: 使用状況の追跡
+#### <a name="video"></a> 動画: 使用状況の追跡
 
 > [AZURE.VIDEO tracking-usage-with-application-insights]
 
@@ -187,4 +238,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

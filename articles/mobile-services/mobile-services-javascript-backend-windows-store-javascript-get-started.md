@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="javascript"
 	ms.topic="get-started-article"
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	ms.author="glenga"/>
 
 # Mobile Services の使用
@@ -88,4 +88,4 @@
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

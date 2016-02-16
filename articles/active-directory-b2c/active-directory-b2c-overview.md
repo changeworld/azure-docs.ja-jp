@@ -12,7 +12,7 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="01/06/2016"
 	ms.author="swkrish"/>
 
@@ -63,4 +63,4 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)
 - [Azure Active Directory B2C に対するサポート要求の提出](active-directory-b2c-support.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

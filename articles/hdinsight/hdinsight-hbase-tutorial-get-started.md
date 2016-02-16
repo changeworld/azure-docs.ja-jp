@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/29/2016"
+	ms.date="02/05/2016"
 	ms.author="jgao"/>
 
 
@@ -295,7 +295,7 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 
 
 ## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 
@@ -331,4 +331,4 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/21/2016"
+	ms.date="02/10/2016"
 	ms.author="kgremban"/>
 
 # Azure のロールベースのアクセス制御
@@ -198,4 +198,4 @@ Azure リソース プロバイダーの操作を一覧表示するには、`Get
 
 **特定のスコープで割り当て可能なカスタム ロールを表示できるユーザー**: 特定のスコープで `Microsoft.Authorization/roleDefinition/read` 操作を実行できるユーザーが、そのスコープで割り当て可能な RBAC ロールを表示できます。Azure RBAC の組み込みロールについてはいずれも、割り当て可能なロールの表示対象として許可されています。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

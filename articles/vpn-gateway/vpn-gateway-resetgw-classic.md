@@ -4,7 +4,7 @@
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/16/2015"
+   ms.date="02/04/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用して Azure VPN Gateway をリセットする
@@ -54,9 +54,8 @@ Azure VPN Gateway をリセットするための PowerShell コマンドレッ�
 
 2 回再起動してもクロスプレミス接続の問題が解消しない場合は、Azure クラシック ポータルからサポート チケットを開いて Microsoft Azure サポートにお問い合わせください。
 
-
 ## 次のステップ
 	
 このコマンドレットの詳細については、[PowerShell リファレンス](https://msdn.microsoft.com/library/azure/mt270366.aspx)を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

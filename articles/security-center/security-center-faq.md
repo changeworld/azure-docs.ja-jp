@@ -10,10 +10,10 @@
 <tags
    ms.service="security-center"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/10/2015"
+   ms.date="02/09/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターのよく寄せられる質問 (FAQ)
@@ -103,4 +103,4 @@ Access Control リストに関する推奨事項は、現在、従来の仮想�
 ### Linux 仮想マシンはサポートされていますか。
 Azure セキュリティ センターでは、Linux 仮想マシン (Ubuntu バージョン 12.04、14.04、14.10、および 15.04 の場合のみ) 用にベースライン監視が提供されています。将来的には、追加のセキュリティ ヘルスの監視とデータの収集/分析が利用できるようになり、追加の Linux ディストリビューションもサポートされるようになります。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

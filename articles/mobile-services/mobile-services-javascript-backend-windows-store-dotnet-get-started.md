@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article" 
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -75,7 +75,7 @@
 
 * [アプリケーションにプッシュ通知を追加する][Get started with push notifications] アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [.NET クライアント ライブラリを使用する方法](mobile-services-windows-dotnet-how-to-use-client-library.md) Mobile Services にクエリを送信する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
+* [.NET クライアント ライブラリを使用する方法](mobile-services-dotnet-how-to-use-client-library.md) Mobile Services にクエリを送信する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
@@ -98,4 +98,4 @@
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

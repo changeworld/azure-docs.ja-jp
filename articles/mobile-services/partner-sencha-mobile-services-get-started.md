@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-sencha"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"></a>Mobile Services と Sencha Touch の使用
@@ -69,7 +69,7 @@
 
 3. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-	> [AZURE.NOTE]Azure クラシック ポータルから HTML アプリをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。
+	> [AZURE.NOTE] Azure クラシック ポータルから HTML アプリをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。
 
 
 1. Azure クラシック ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
@@ -113,7 +113,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
 ###Sencha パッケージとしてのインストール
 
-> [AZURE.NOTE]この方法は、<code>sencha generate app</code> コマンドを使用してアプリケーションを生成している場合にのみ使用できます。
+> [AZURE.NOTE] この方法は、<code>sencha generate app</code> コマンドを使用してアプリケーションを生成している場合にのみ使用できます。
 
 Sencha Cmd によって生成されるすべてのアプリケーションで、ルートに "パッケージ" フォルダーがあります。このフォルダーの場所は構成可能ですが、その場所にかかわらず packages フォルダーの役割は、アプリケーション (または Sencha ワークスペースを作成している場合は複数のアプリケーション) によって使用されるすべてのパッケージのストレージとして機能することです。
 
@@ -724,4 +724,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

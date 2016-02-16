@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="01/29/2015" 
+	ms.date="01/29/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
@@ -786,4 +786,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.workload="multiple"
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="01/19/2016"
 	ms.author="danlep"/>
 
@@ -215,4 +215,4 @@ Azure リソース マネージャー モードは既定で無効になってい
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

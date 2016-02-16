@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="02/08/2016"
    ms.author="cherylmc"/>
 
 
@@ -67,7 +67,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 - [APNIC](https://www.apnic.net/)
 - [AFRINIC](https://www.afrinic.net/)
 - [LACNIC](http://www.lacnic.net/)
-- [RIPE NCC](https://www.ripe.net/)
+- [RIPENCC](https://www.ripe.net/)
 - [RADB](http://www.radb.net/)
 - [ALTDB](http://altdb.net/)
 
@@ -103,7 +103,8 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 **注:** 既定のルートをアドバタイズすると、Windows およびその他の VM のライセンスの認証に失敗します。これを回避する方法については、[このページ](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)を参照してください。
 
-## BGP コミュニティのサポート
+## BGP コミュニティのサポート (近日対応予定)
+
 
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。その理由とコミュニティ値の詳細については以降に示します。ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
 
@@ -169,8 +170,8 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 
 - ExpressRoute 接続を構成します。
 
-	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
-	- [ルーティングの構成](expressroute-howto-routing-classic.md)
-	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
+	- [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure リソース マネージャーを使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
+	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[リソース マネージャー デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
+	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[リソース マネージャー VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

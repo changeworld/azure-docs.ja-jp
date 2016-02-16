@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
+   ms.date="02/09/2016"
    ms.author="bwren;sngun" />
 
 # Azure Automation の構成
@@ -94,4 +94,4 @@ Runbook のすべての[チェックポイント](http://technet.microsoft.com/l
 - [Azure Automation: Azure Active Directory を使用して Azure を認証する](https://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->
