@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="12/08/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="robmcm"/>
 
 #方法: Java で Media Services を使用する
@@ -275,4 +275,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

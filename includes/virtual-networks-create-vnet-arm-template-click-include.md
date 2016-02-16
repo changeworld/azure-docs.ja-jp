@@ -3,7 +3,7 @@
 Microsoft によって管理され、コミュニティにも公開されている Github リポジトリにアップロードされた定義済み ARM テンプレートは、再利用できます。これらのテンプレートは、Github から直接デプロイすることもできるほか、ダウンロードしてユーザーのニーズに合わせて変更することもできます。2 つのサブネットを含む VNet を作成するテンプレートをデプロイするには、次の手順に従います。
 
 1. ブラウザーから [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) に移動します。
-2. テンプレートの一覧を下にスクロールし、**101-two-subnets** をクリックします。次のように **README.md** ファイルを参照します。
+2. テンプレートの一覧を下へスクロールし、**101-vnet-two-subnets** をクリックします。次のように **README.md** ファイルを参照します。
 
 	![Github の READEME.md ファイル](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
@@ -27,4 +27,4 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
 	![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

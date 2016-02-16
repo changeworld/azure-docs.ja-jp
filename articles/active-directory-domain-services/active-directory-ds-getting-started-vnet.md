@@ -12,7 +12,7 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="01/26/2016"
 	ms.author="maheshu"/>
 
@@ -58,4 +58,4 @@ Azure AD ドメイン サービスが利用できる Azure Virtual Network を�
 ---
 [**次のステップ - Azure AD ドメイン サービスを有効にする**](active-directory-ds-getting-started-enableaadds.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

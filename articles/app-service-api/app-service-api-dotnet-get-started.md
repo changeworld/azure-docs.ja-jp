@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="01/26/2016"
+	ms.date="02/05/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service で API Apps と ASP.NET を使用する
@@ -340,6 +340,8 @@ API アプリの API 定義 URL は、Azure リソース マネージャーの�
 		  "url": "https://todolistdataapi.azurewebsites.net/swagger/docs/v1"
 		}
 
+API 定義プロパティを設定するための JSON を含んだ Azure リソース マネージャー テンプレートの例については、[サンプル アプリケーション リポジトリにある azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を開いてください。
+
 ## <a id="codegen"></a> 生成されたクライアント コードを使用して .NET クライアントから利用する
 
 Azure API アプリと Swagger の統合の利点の 1 つは、自動コード生成です。生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
@@ -392,25 +394,23 @@ ToDoListAPI プロジェクトでは、クライアント コードが既に生�
 
 	次のスニペットは、クライアント オブジェクトをインスタンス化し、Get メソッドを呼び出す方法を示しています。
 
-		private ToDoListDataAPI db = new ToDoListDataAPI(new Uri("http://localhost:45914"));
+		private ToDoListDataAPI db = new ToDoListDataAPI(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 		
 		public ActionResult Index()
 		{
 		    return View(db.Contacts.Get());
 		}
 
-	このコードでは、API プロジェクトのローカル IIS Express URL でクライアント クラス コンストラクターに渡されるので、アプリケーションをローカルで実行できます。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
+	コンストラクターのパラメーターでは、`toDoListDataAPIURL` アプリ設定からエンドポイントの URL を取得しています。アプリケーションをローカルで実行できるようにするため、その値を Web.config ファイルの `toDoListDataAPIURL` 設定で、API プロジェクトのローカル IIS Express URL に設定します。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
 
-6. クライアント クラスは、API アプリ名に基づいて別の名前で生成されます。プロジェクトで生成された型名と同じになるように型名を変更し、URL を削除します。たとえば、API アプリに ToDoListDataAPI0121 という名前を付けた場合、コードは次のようになります。
+6. クライアント クラスは API アプリ名に基づく別の名前で生成されます。型名がプロジェクトで生成されたものに一致するようにこのコードを変更します。たとえば、API アプリに ToDoListDataAPI0121 という名前を付けた場合、コードは次のようになります。
 
-		private ToDoListDataAPI0121 db = new ToDoListDataAPI0121();
+		private ToDoListDataAPI0121 db = new ToDoListDataAPI0121(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 		
 		public ActionResult Index()
 		{
 		    return View(db.Contacts.Get());
 		}
-
-	既定のターゲット URL は、コードの生成元である ToDoListDataAPI API アプリです。別の方法でコードを生成した場合、必要に応じてローカル URL を指定したときと同じ方法で Azure API アプリ URL を指定します。
 
 #### 中間層をホストする API アプリを作成する
 
@@ -420,7 +420,7 @@ ToDoListAPI プロジェクトでは、クライアント コードが既に生�
 
 5. **[App Service]** ダイアログ ボックスで、**[新規]** をクリックします。
 
-3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]** をクリックし、種類が **[API アプリ]** になっていることを確認します。
+3. **[App Service の作成]** ダイアログ ボックスの **[ホスティング]** タブで、**[種類の変更]** をクリックし、種類を **[API アプリ]** に変更します。
 
 4. *azurewebsites.net* ドメインに固有の **API アプリ名**を入力します。
 
@@ -434,6 +434,22 @@ ToDoListAPI プロジェクトでは、クライアント コードが既に生�
 
 	Visual Studio によって API アプリとその発行プロファイルが作成され、**Web の発行**ウィザードの **[接続]** ステップが表示されます。
 
+### 中間層のアプリ設定でデータ層の URL を設定する
+
+1. [Azure ポータル](https://portal.azure.com/)を開き、TodoListAPI (中間層) プロジェクトをホストするために作成した API アプリの **[API アプリ]** ブレードに移動します。
+
+2. **[設定]、[アプリケーションの設定]** の順にクリックします。
+
+3. **[アプリ設定]** セクションで、次のキーと値を追加します。
+
+	|キー|値|例
+	|---|---|---|
+	|toDoListDataAPIURL|https://{your data tier API app name}.azurewebsites.net|https://todolistdataapi0121.azurewebsites.net|
+
+4. **[保存]** をクリックします。
+
+	Azure でコードを実行すると、Web.config ファイルにある localhost の URL がこの値で上書きされます。
+
 ### 新しい API アプリに ToDoListAPI プロジェクトをデプロイする
 
 3.  **Web の発行**ウィザードの **[接続]** ステップで、**[発行]** をクリックします。
@@ -444,7 +460,7 @@ ToDoListAPI プロジェクトでは、クライアント コードが既に生�
 
 11. ブラウザーのアドレス バーの URL に「swagger」を追加し、Enter キーを押します。(URL は `http://{apiappname}.azurewebsites.net/swagger` です。)
 
-	ブラウザーには、ToDoListDataAPI と同様の Swagger UI が表示されますが、今回の `owner` は必須フィールドではありません。これは、中間層 API アプリから、データ層 API アプリに値が送信されているためです。
+	ブラウザーには、ToDoListDataAPI と同様の Swagger UI が表示されますが、今回の `owner` は必須フィールドではありません。これは、中間層 API アプリからデータ層 API アプリに値が送信されているためです。
 
 12. Get メソッドや他のメソッドを試して、中間層 API アプリからデータ層 API アプリが正常に呼び出されていることを確認します。
 
@@ -454,4 +470,4 @@ ToDoListAPI プロジェクトでは、クライアント コードが既に生�
 
 このチュートリアルでは、API アプリを作成し、それにコードをデプロイし、クライアント コードを生成し、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

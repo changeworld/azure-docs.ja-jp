@@ -12,18 +12,23 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="na"
     ms.topic="get-started-article"
-	ms.date="11/21/2015"
+	ms.date="02/04/2016"
     ms.author="awills"/>
 
 # Android アプリの分析
 
-デバイスの開発運用のために 2 つのソリューションが提供されています。開発運用ワークフローおよびクラッシュ分析用の [HockeyApp](http://hockeyapp.net/) と、使用状況およびクラッシュ分析用の [Application Insights](app-insights-overview.md) です。
+デバイスの devOps に関してマイクロソフトでは、2 つのソリューションを提供しています。クライアント側の分析を目的とした [HockeyApp](http://hockeyapp.net/) とサーバー側の分析を目的とした [Application Insights](app-insights-overview.md) です。
 
-[HockeyApp](http://hockeyapp.net/) は、iOS、OS X、Android、Windows デバイスのアプリ、および Xamarin、Cordova、Unity に基づくクロス プラットフォーム アプリ用のモバイル開発運用ソリューションです。これを使用すると、ベータ テスト担当者にビルドを配布し、クラッシュ データを収集して、ユーザーからのフィードバックを得ることができます。このソリューションは Visual Studio Team Services と統合されており、ビルドのデプロイメントや作業項目の統合を簡単に行うことができます。詳細については [HockeyApp のナレッジ ベース](http://support.hockeyapp.net/kb)を参照し、[HockeyApp のブログ](http://hockeyapp.net/blog/)に常に注目してください。
+[HockeyApp](http://hockeyapp.net/) は、iOS、OS X、Android、Windows デバイスのアプリ、および Xamarin、Cordova、Unity に基づくクロス プラットフォーム アプリ用のモバイル開発運用ソリューションです。これを使用すると、ベータ テスト担当者にビルドを配布し、クラッシュ データを収集して、ユーザーからのフィードバックを得ることができます。このソリューションは Visual Studio Team Services と統合されており、ビルドのデプロイメントや作業項目の統合を簡単に行うことができます。
 
-使用状況の分析には [Application Insights SDK for Android](https://github.com/Microsoft/ApplicationInsights-Android) を使用します。アプリにサーバー側がある場合は、同じ Application Insights リソースにクライアントとサーバーのデータを送信できます。
+参照先:
 
-* [Application Insights for Android を使ってみる](https://github.com/Microsoft/ApplicationInsights-Android)。
+* [HockeyApp](http://support.hockeyapp.net/kb)
 * [HockeyApp for Android を使ってみる](http://support.hockeyapp.net/kb/client-integration-android/hockeyapp-for-android-sdk)。
+* [HockeyApp のブログ](http://hockeyapp.net/blog/)
+* [Hockeyapp Preseason](http://hockeyapp.net/preseason/) に参加して最新リリースを入手する。
 
-<!---HONumber=AcomDC_1203_2015-->
+アプリにサーバー側がある場合は、[Application Insights](app-insights-overview.md) を使用して [ASP.NET](app-insights-asp-net.md) または [J2EE](app-insights-java-get-started.md) 上のアプリの Web サーバー側を監視できます。
+ 
+
+<!---HONumber=AcomDC_0211_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/04/2015"
+	ms.date="02/04/2016"
 	ms.author="awills"/>
 
 
@@ -133,7 +133,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 #### ビルド サーバーで問題が発生した場合
 
-[このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
+[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
 > [AZURE.NOTE]\(ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) 
 > アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
@@ -270,4 +270,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-overview.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

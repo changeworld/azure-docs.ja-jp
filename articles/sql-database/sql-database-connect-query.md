@@ -5,7 +5,7 @@
 	keywords="C# データベース クエリ, C# クエリ, データベースへの接続, SQL C#"
 	documentationCenter=""
 	authors="MightyPen"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="10/09/2015"
+	ms.date="02/05/2016"
 	ms.author="genemi"/>
 
 
@@ -359,4 +359,4 @@ IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

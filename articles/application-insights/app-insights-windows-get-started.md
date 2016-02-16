@@ -12,36 +12,43 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/21/2015"
+	ms.date="02/03/2016"
 	ms.author="awills"/>
 
 # Windows Phone アプリとストア アプリの分析
 
-デバイスの開発運用のために 2 つのソリューションが提供されています。開発運用ワークフローおよびクラッシュ分析用の [HockeyApp](http://hockeyapp.net/) と、使用状況およびクラッシュ分析用の [Application Insights](app-insights-overview.md) です。
+デバイスの devOps に関してマイクロソフトでは、2 つのソリューションを提供しています。クライアント側の分析を目的とした [HockeyApp](http://hockeyapp.net/) とサーバー側の分析を目的とした [Application Insights](app-insights-overview.md) です。
 
-[HockeyApp](http://hockeyapp.net/) は、iOS、OS X、Android、Windows デバイスのアプリ、および Xamarin、Cordova、Unity に基づくクロス プラットフォーム アプリ用のモバイル開発運用ソリューションです。これを使用すると、ベータ テスト担当者にビルドを配布し、クラッシュ データを収集して、ユーザーからのフィードバックを得ることができます。このソリューションは Visual Studio Team Services と統合されており、ビルドのデプロイメントや作業項目の統合を簡単に行うことができます。詳細については [HockeyApp のナレッジ ベース](http://support.hockeyapp.net/kb)を参照し、[HockeyApp のブログ](http://hockeyapp.net/blog/)に常に注目してください。
+[HockeyApp](http://hockeyapp.net/) は、iOS、OS X、Android、Windows デバイスのアプリ、および Xamarin、Cordova、Unity に基づくクロス プラットフォーム アプリ用のモバイル開発運用ソリューションです。これを使用すると、ベータ テスト担当者にビルドを配布し、クラッシュ データを収集して、ユーザーからのフィードバックやメトリックを得ることができます。このソリューションは Visual Studio Team Services と統合されており、ビルドのデプロイメントや作業項目の統合を簡単に行うことができます。
 
-アプリにサーバー側がある場合は、[Application Insights](app-insights-overview.md) を使用して [ASP.NET](app-insights-asp-net.md) または [J2EE](app-insights-java-get-started.md) 上のアプリの Web サーバー側を監視できます。同じ Application Insights リソースにテレメトリを送信して、クライアント側とサーバー側のイベントを関連付けることができます。
+参照先:
 
-Application Insights ポータルにテレメトリを送信する [C++ ユニバーサル アプリ用の Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-CPP) もあります。
+* [HockeyApp](http://support.hockeyapp.net/kb)
+* [HockeyApp のブログ](http://hockeyapp.net/blog/)
+* [Hockeyapp Preseason](http://hockeyapp.net/preseason/) に参加して最新リリースを入手する。
 
-Visual Studio Application Insights を使用すると、発行されたアプリケーションの次の内容を監視できます。
+アプリにサーバー側がある場合は、[Application Insights](app-insights-overview.md) を使用して [ASP.NET](app-insights-asp-net.md) または [J2EE](app-insights-java-get-started.md) 上のアプリの Web サーバー側を監視できます。
 
-* [**使用状況**][windowsUsage] - ユーザーの数やユーザーがアプリで操作している内容を確認できます。
-* [**クラッシュ**][windowsCrash] - クラッシュの診断レポートを取得し、ユーザーに与える影響を把握します。
+## Windows デバイス用の Application Insights SDK
+
+Windows デバイス アプリの[クラッシュ][windowsCrash]や[使用状況][windowsUsage]を監視する手段としては HockeyApp をお勧めしますが、以前のバージョンの Application Insights SDK を使用することもできます。
+
+以前のデバイス SDK のサポートは段階的に廃止されるためご注意ください。
 
 ![](./media/app-insights-windows-get-started/appinsights-d018-oview.png)
 
-多くのアプリケーションの種類では、ほとんどの場合に通知されることなく、[Visual Studio によってアプリに Application Insights が追加されます](#ide)。ただし、この記事を読んで状況を把握できるように、ここでは手動による手順について説明します。
 
-必要なものは次のとおりです。
+以前の SDK をインストールするための要件は次のとおりです。
 
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1\.Application Insights リソースの作成 
 
-[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
+### 1\.Application Insights リソースを取得する 
+
+[Azure ポータル][portal]で、Application Insights のリソースを作成します。
+
+新しいリソースの作成:
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-windows-get-started/01-new.png)
 
@@ -54,11 +61,14 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 ![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
 
-## 2\.アプリへの Application Insights SDK の追加
+### 2\.アプリへの Application Insights SDK の追加
 
 Visual Studio で、適切な SDK をプロジェクトに追加します。
 
-Windows ユニバーサル アプリの場合は、Windows Phone プロジェクトと Windows プロジェクトの両方に対してこの手順を繰り返します。
+
+* C++ アプリの場合は、以下に示した NuGet パッケージではなく [C++ SDK](https://github.com/Microsoft/ApplicationInsights-CPP) を使用してください。
+
+Windows ユニバーサル アプリの場合は、Windows Phone プロジェクトと Windows プロジェクトの両方に対して以下の手順を繰り返します。
 
 1. ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -98,11 +108,11 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 
 **Windows ユニバーサル アプリ**: Phone プロジェクトとストア プロジェクトの両方に対して手順を繰り返します。[Windows 8.1 ユニバーサル アプリの例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/Windows%208.1%20Universal)。
 
-## <a name="network"></a>3.アプリのネットワーク アクセスの有効化
+### <a name="network"></a>3.アプリのネットワーク アクセスの有効化
 
 アプリで[発信ネットワーク アクセスを要求](https://msdn.microsoft.com/library/windows/apps/hh452752.aspx)していない場合は、[必要な機能](https://msdn.microsoft.com/library/windows/apps/br211477.aspx)としてとしてそれをマニフェストに追加する必要があります。
 
-## <a name="run"></a>4.プロジェクトの実行
+### <a name="run"></a>4.プロジェクトの実行
 
 [F5 キーを押してアプリケーションを実行](http://msdn.microsoft.com/library/windows/apps/bg161304.aspx)し、これを使用してテレメトリを生成します。
 
@@ -113,7 +123,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 デバッグ モードでは、テレメトリは生成されるとすぐに送信されます。リリース モードでは、テレメトリはデバイスに格納され、アプリケーションの再開時にのみ送信されます。
 
 
-## <a name="monitor"></a>5.監視データの表示
+### <a name="monitor"></a>5.監視データの表示
 
 プロジェクトから Application Insights を開きます。
 
@@ -129,11 +139,11 @@ Visual Studio で、受け取ったイベント数を確認できます。
 いずれかのグラフをクリックして、詳細を表示します。
 
 
-## <a name="deploy"></a>5.ストアへのアプリケーションの発行
+### <a name="deploy"></a>5.ストアへのアプリケーションの発行
 
 [アプリケーションを発行](http://dev.windows.com/publish)して、ユーザーがそのアプリケーションをダウンロードして使用すると累積されるデータを確認します。
 
-## テレメトリのカスタマイズ
+### テレメトリのカスタマイズ
 
 #### コレクターの選択
 
@@ -176,46 +186,12 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 * [アプリのクラッシュの検出と診断][windowsCrash]
 * [メトリックの詳細][metrics]
 * [診断検索の詳細][diagnostic]
+* [アプリの使用状況の追跡][windowsUsage]
+* [API を使用したカスタム テレメトリの送信][api]
+* [トラブルシューティング][qna]
 
+* [Use HockeyApp for crash analytics, beta distribution and feedback on your app (クラッシュ分析、ベータ版の配布、アプリのフィードバックに HockeyApp を使用する)](http://hockeyapp.net/)
 
-## <a name="ide"></a>自動セットアップ
-
-セットアップ手順を Visual Studio で自動実行する場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行できます。
-
-###<a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合
-
-[新しいプロジェクト] ダイアログ ボックスで [Application Insights] を選択します。
-
-サインインを求めるメッセージが表示されたら、Azure アカウント (Visual Studio Team Services アカウントとは異なります) の資格情報を使用します。
-
-![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
-
-
-###<a name="existing"></a> 既存のプロジェクトの場合
-
-ソリューション エクスプローラーから Application Insights を追加します。
-
-
-![](./media/app-insights-windows-get-started/appinsights-d22-add.png)
-
-## SDK の新しいリリースにアップグレードするには
-
-[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、アップグレード アクションを選択します。
-
-
-## <a name="usage"></a>次のステップ
-
-
-[アプリのクラッシュの検出と診断][windowsCrash]
-
-[診断ログのキャプチャと検索][diagnostic]
-
-
-[アプリの使用状況の追跡][windowsUsage]
-
-[API を使用したカスタム テレメトリの送信][api]
-
-[トラブルシューティング][qna]
 
 
 
@@ -231,4 +207,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

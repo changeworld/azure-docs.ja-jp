@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/05/2015"
+	ms.date="02/10/2016"
 	ms.author="donnam"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
@@ -58,7 +58,7 @@
 
 1.  [Azure クラシック ポータル]で、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
 	![][6]
 
@@ -110,7 +110,7 @@
 
 * [プッシュ通知の使用] アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法](partner-xamarin-mobile-services-how-to-use-client-library.md) モバイル サービスに対してクエリを実行する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
+
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
@@ -146,4 +146,4 @@
 [Azure]: http://azure.microsoft.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

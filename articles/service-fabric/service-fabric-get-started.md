@@ -13,11 +13,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/17/2015"
+   ms.date="02/09/2016"
    ms.author="seanmck"/>
 
 # 開発環境を準備する
- 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。また、ローカル クラスターを設定する必要があります。
+ 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
@@ -31,7 +31,7 @@
 
 Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
 
-> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio 2015 をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
+> [AZURE.NOTE] サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio 2015 をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -58,12 +58,13 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 - [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
-- [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
+- [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
 - [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+- [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

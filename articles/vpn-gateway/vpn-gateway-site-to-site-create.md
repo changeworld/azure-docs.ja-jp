@@ -4,7 +4,7 @@
    services="vpn-gateway"
    documentationCenter=""
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/14/2015"
+   ms.date="02/04/2016"
    ms.author="cherylmc"/>
 
 # Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する
@@ -23,7 +23,7 @@
 - [Azure Classic Portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。この記事は、クラシック デプロイ モデルに適用されます。この構成に対して別のデプロイ モデルを探す場合は、上のタブで必要な記事を選択してください。VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)に関するページを参照してください。
+この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。この記事は、**クラシック** デプロイ モデルに適用されます。**リソース マネージャー** デプロイ モデルのサイト間接続を作成する場合は、「[PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」を参照してください。VNet を接続するときにオンプレミスの場所への接続を作成しない場合は、「[Azure クラシック ポータルでの VNet 間接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)」または「[Azure リソース マネージャーおよび PowerShell を使用して同じサブスクリプション内の仮想ネットワークの VNet 間接続を構成する](vpn-gateway-vnet-vnet-rm-ps.md)」を参照してください。
 
 **Azure のデプロイ モデルについて**
 
@@ -100,4 +100,4 @@
 
 従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、[従来の VNet と Azure リソース マネージャーの VNet の接続](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

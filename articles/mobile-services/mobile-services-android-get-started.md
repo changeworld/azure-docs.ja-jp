@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="11/05/2015"
+	ms.date="02/05/2016"
 	ms.author="ricksal"/>
 
 # Android 用 Mobile Services の使用 (JavaScript バックエンド)
@@ -97,4 +97,4 @@
 [プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

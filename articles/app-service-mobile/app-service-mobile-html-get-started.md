@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="mobile-html5"
 	ms.devlang="javascript"
 	ms.topic="get-started-article"
-	ms.date="11/18/2015"
+	ms.date="02/04/2016"
 	ms.author="glenga"/>
 
 
 #HTML アプリの作成
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)] 
-&nbsp;  
-<!--- [AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]-->
+[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 >[AZURE.IMPORTANT] HTML/JavaScript アプリのクイック スタートは Azure ポータルから一時的に削除されているため、現在このトピックは Mobile Apps には適用されません。まもなく、再びサポートされるようになる予定です。もうしばらくお待ちください。
 
@@ -55,7 +53,7 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 
 ## サーバー プロジェクトのダウンロード
 
-1. [Azure ポータル]で **[すべて参照]**、**[Web Apps]** の順にクリックし、作成したモバイル アプリ バックエンドをクリックします。 
+1. [Azure ポータル]で **[すべて参照]**、**[Web Apps]** の順にクリックし、作成したモバイル アプリ バックエンドをクリックします。
 
 2. モバイル アプリ バックエンドで、**[すべての設定]** をクリックし、**[モバイル アプリ]** の下で **[クイック スタート]**、**[HTML/JavaScript]** の順にクリックします。
 
@@ -70,8 +68,8 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 既定では、ポータルからダウンロードするクライアントのクイック スタート プロジェクトは、localhost 上のポート 8000 で実行されます。このため、次にサーバー プロジェクトで `http://localhost:8000` に対して CORS を有効にします。
 
 1. ツールメニューの Visual Studio で **[NuGet Package Manager]**、**[Package Manager Console]** の順にクリックし、**[パッケージのソース]** として Nuget.org を選択して、コンソール ウィンドウで次のコマンドを実行します。
- 
-		Install-Package Microsoft.AspNet.WebApi.Cors  
+
+		Install-Package Microsoft.AspNet.WebApi.Cors
 
 2. App\_Start/Startup.MobileApp.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
@@ -93,7 +91,7 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 
 ##クライアント プロジェクトのダウンロードおよび実行
 
-1. モバイル アプリ バックエンドのブレードに戻り、**[すべての設定]** をクリックし、**[モバイル アプリ]** の下で **[クイック スタート]**、**[HTML/JavaScript]** の順にクリックします。 
+1. モバイル アプリ バックエンドのブレードに戻り、**[すべての設定]** をクリックし、**[モバイル アプリ]** の下で **[クイック スタート]**、**[HTML/JavaScript]** の順にクリックします。
 
 2.  **[新しいアプリの作成]** の **[HTML/Javascript プロジェクトをダウンロードして実行する]** の下で **[ダウンロード]** をクリックし、圧縮されたプロジェクト ファイルをローカル コンピュータに保存します。
 
@@ -125,6 +123,5 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 [Azure ポータル]: https://portal.azure.com/
 
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
- 
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -84,8 +84,7 @@ private const string StorageAccountKey  = "";
 
 [Azure ポータル][azure_portal]の各サービスのアカウント ブレード内に Batch および Storage アカウント資格情報があります。
 
-![Batch credentials in the portal][9]
-![Storage credentials in the portal][10]<br/>
+![Batch credentials in the portal][9] ![Storage credentials in the portal][10]<br/>
 
 資格情報を使用してプロジェクトを更新したら、ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションのビルド]** をクリックします。メッセージに従って NuGet パッケージの復元を確認します。
 
@@ -97,8 +96,7 @@ private const string StorageAccountKey  = "";
 
 ## 手順 1: ストレージ コンテナーを作成する
 
-![Azure Storage でコンテナーを作成する][1] 
-<br/>
+![Azure Storage でコンテナーを作成する][1] <br/>
 
 Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。Storage アカウント内のコンテナーは、Batch アカウントで実行するタスクに対して、実行に必要なファイルを提供します。また、タスクによって生成される出力データを格納する場所も提供します。*DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、[Azure Blob Storage](./../storage/storage-introduction.md) で 3 つのコンテナーを作成することです。
 
@@ -154,8 +152,7 @@ private static async Task CreateContainerIfNotExistAsync(CloudBlobClient blobCli
 
 ## 手順 2: タスク アプリケーションとデータ ファイルをアップロードする
 
-![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2] 
-<br/>
+![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2] <br/>
 
 ファイルのアップロード操作で、*DotNetTutorial* にローカル コンピューターの **application** と **input** のファイル パスのコレクションをまず定義します。次に、それらのファイルを前の手順で作成したコンテナーにアップロードします。
 
@@ -233,7 +230,7 @@ DotNetTutorial サンプル アプリケーションには JobPreparationTask �
 
 Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage のコンテナーと BLOB への安全なアクセスを提供することができる文字列です。DotNetTutorial アプリケーションは、BLOB とコンテナー両方の Shared Access Signature URL を使用し、Storage サービスからこれらの Shared Access Signature 文字列を取得する方法を示します。
 
-- **BLOB Shared Access Signature** - DotNetTutorial 内のプールの StartTask は、Storage からアプリケーション バイナリと入力データ ファイルをダウンロードするときに BLOB の Shared Access Signature を使用します (以下の手順 3 を参照してください)。DotNetTutorial の `Program.cs` の `UploadFileToContainerAsync` メソッドには、各 BLOB の Shared Access Signature を取得するコードが含まれます。この処理を実行するために、[CloudblobData.GetSharedAccessSignature][net_sas_blob] を呼び出します。
+- **BLOB Shared Access Signature** - DotNetTutorial 内のプールの StartTask は、Storage からアプリケーション バイナリと入力データ ファイルをダウンロードするときに BLOB の Shared Access Signature を使用します (以下の手順 3 を参照してください)。DotNetTutorial の `Program.cs` の `UploadFileToContainerAsync` メソッドには、各 BLOB の Shared Access Signature を取得するコードが含まれます。この処理を実行するために、[CloudBlob.GetSharedAccessSignature][net_sas_blob] を呼び出します。
 
 - **コンテナー Shared Access Signature** - 各タスクでコンピューティング ノードでの処理が完了すると、出力ファイルは Azure Storage の *output* コンテナーにアップロードされます。この処理を実行するために、TaskApplication では、ファイルをアップロードするときに、パスの一部としてコンテナーへの書き込みアクセス権を提供するコンテナー Shared Access Signature を使用します。コンテナー Shared Access Signature の取得は、BLOB Shared Access Signature を取得するときと同様の方法で行います。DotNetTutorial では、`GetContainerSasUrl` ヘルパー メソッドがこれを行う [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] を呼び出します。TaskApplication でコンテナー Shared Access Signature を使用する方法の詳細については、「手順 6: タスクを監視する」を参照してください。
 
@@ -241,8 +238,7 @@ Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage
 
 ## 手順 3: Batch プールを作成する
 
-![Create a Batch pool][3] 
-<br/>
+![Create a Batch pool][3] <br/>
 
 アプリケーションとデータ ファイルを Storage アカウントにアップロードすると、*DotNetTutorial* は Batch .NET ライブラリを使用して Batch サービスとのやり取りを開始します。その処理のために、まず [BatchClient][net_batchclient] が作成されます。
 
@@ -327,8 +323,7 @@ private static async Task CreateJobAsync(BatchClient batchClient, string jobId, 
 
 ## 手順 5: ジョブにタスクを追加する
 
-![ジョブにタスクを追加する][5]<br/> 
-*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
+![ジョブにタスクを追加する][5]<br/> *(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
 実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
@@ -346,7 +341,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(BatchClient batchClient
     foreach (ResourceFile inputFile in inputFiles)
     {
         string taskId = "topNtask" + inputFiles.IndexOf(inputFile);
-        string taskCommandLine = String.Format("cmd /c %AZ_BATCH_NODE_SHARED_DIR%\\TaskApplication.exe {0} 3 \"{1}\"", inputFile.FilePath, outputContainerSasUrl);
+        string taskCommandLine = String.Format("cmd /c %AZ_BATCH_NODE_SHARED_DIR%\\TaskApplication.exe {0} 3 "{1}"", inputFile.FilePath, outputContainerSasUrl);
 
         CloudTask task = new CloudTask(taskId, taskCommandLine);
         task.ResourceFiles = new List<ResourceFile> { inputFile };
@@ -407,8 +402,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 ## 手順 6: タスクを監視する
 
-![タスクを監視する][6]<br/> 
-*クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
+![タスクを監視する][6]<br/> *クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
 
 タスクをジョブに追加すると、そのジョブに関連付けられたプール内のコンピューティング ノードに実行待ちとして自動的にキューに追加され、スケジュールされます。指定した設定に基づき、Batch は、すべてのタスクのキュー、スケジュール、再試行など、タスク管理作業を処理します。タスクの実行を監視する方法は多数ありますが、DotNetTutorial では、完了と、タスクの失敗または成功の状態のみをレポートする簡単な例を説明します。
 
@@ -418,7 +412,7 @@ DotNetTutorial の `Program.cs` の `MonitorTasks` メソッド内には、Batch
 
 2. **TaskStateMonitor** - [TaskStateMonitor][net_taskstatemonitor] は、Batch .NET アプリケーションにタスクの状態を監視するためのヘルパー ユーティリティを提供します。`MonitorTasks` で、*DotNetTutorial* はすべてのタスクが制限時間内に [TaskState.Completed][net_taskstate] に達するまで待ちます。その後でジョブを終了します。
 
-3. **TerminateJobAsync** - [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] を使用してジョブを出力すると (または JobOperations.TerminateJob をブロックすると)、ジョブに完了とマークが付けられます。この処理は、Batch ソリューションで [JobReleaseTask][net_jobreltask] を使用する場合に必要です。これは、「[ジョブの準備と完了タスク](batch-job-prep-release)」で説明されている特殊なタスクです。
+3. **TerminateJobAsync** - [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] を使用してジョブを出力すると (または JobOperations.TerminateJob をブロックすると)、ジョブに完了とマークが付けられます。この処理は、Batch ソリューションで [JobReleaseTask][net_jobreltask] を使用する場合に必要です。これは、「[ジョブの準備と完了タスク](batch-job-prep-release.md)」で説明されている特殊なタスクです。
 
 *DotNetTutorial* の `Program.cs` の `MonitorTasks` メソッドは次のとおりです。
 
@@ -686,4 +680,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

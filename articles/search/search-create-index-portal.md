@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ポータルでの Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure クラシック ポータルでフィールド定義を入力して、クラウドのホスト型検索サービスである Azure Search にインデックスを追加します。"
+	description="Azure ポータルでフィールド定義を入力して、ホスト型クラウド検索サービスである Azure Search にインデックスを追加します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,17 +14,17 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="02/08/2016"
 	ms.author="heidist"/>
 
-# Azure クラシック ポータルでの Azure Search インデックスの作成
+# Azure ポータルでの Azure Search インデックスの作成
 > [AZURE.SELECTOR]
 - [Overview](search-what-is-an-index.md)
 - [Portal](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
 - [REST API](search-create-index-rest-api.md)
 
-Azure クラシック ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
+Azure ポータルで作成することで、Azure Search のインデックスのプロトタイプをすばやく作成できます。ポータルは概念実証テストでの使用に最適です。また、サービスにデプロイされているすべてのインデックスに対するスキーマの定義およびリソースの使用状況を表示するために使用することもできます。
 
 このタスクを完了するには、すぐに使用できる Azure Search サービスを備えていることを確認してください。セットアップのサポートが必要な場合は、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
@@ -105,4 +105,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

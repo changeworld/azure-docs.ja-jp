@@ -22,20 +22,20 @@
 
 ## 概要
 
+この記事では、App Service 認証を使用して API アプリへの[内部的](app-service-api-authentication.md#internal)なアクセスを実現する方法について説明します。ここでいう "内部的" とは、特定の API アプリを自分のアプリケーション コードからしか利用できないようにすることを指します。このシナリオを App Service で実装する最も簡単な方法は、呼び出し先の API アプリを Azure AD で保護することです。Azure AD にアプリケーション ID (サービス プリンシパル) の資格情報を提示することによって取得したベアラー トークンを使って保護対象の API アプリを呼び出します。
+
 この記事では、次の内容について説明します。
 
 * Azure Active Directory (Azure AD) を使用し、認証されていないアクセスから API アプリを保護する方法。
-* サービス プリンシパル (アプリ ID) 資格情報を使用して、保護対象の API アプリを使用する方法。
+* API アプリ、Web アプリ、モバイル アプリから Azure AD のサービス プリンシパル (アプリ ID) の資格情報を使用して、保護対象の API アプリを使用する方法。ロジック アプリから API を利用する方法については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」を参照してください。
 * ログオンしたユーザーのブラウザーから、保護対象の API アプリを呼び出すことができないようにする方法。
 * 保護対象の API アプリを特定の Azure AD サービス プリンシパルからのみ呼び出すことができるようにする方法。
-
-API アプリをセキュリティで保護するこの方法は、ある API アプリから別の API アプリを呼び出す場合など、[内部シナリオ](app-service-api-authentication.md#internal)によく使用されます。
 
 この記事には 2 つのセクションがあります。
 
 * 「[Azure App Service でサービス プリンシパル認証を構成する方法](#authconfig)」セクションでは、一般的に、API アプリの認証を構成する方法と、保護対象の API アプリを使用する方法について説明します。このセクションは、.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークに同様に適用されます。
 
-* [以降、この記事](#tutorialstart)では、App Service で実行される .NET サンプル アプリケーションの "内部アクセス" シナリオの構成手順について説明します。
+* 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、App Service で動作する .NET サンプル アプリケーションに対して "内部的なアクセス" を構成する手順を説明します。
 
 ## <a id="authconfig"></a> Azure App Service でサービス プリンシパル認証を構成する方法
 
@@ -49,7 +49,7 @@ API アプリをセキュリティで保護するこの方法は、ある API �
 
 3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
-4. **[要求が認証されていない場合のアクション]** ドロップダウン リストで、**[Azure Active Directory でログイン]** を選択します。
+4. **[要求が認証されていない場合のアクション]** ボックスの一覧の **[Azure Active Directory でログイン]** を選択します。
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
@@ -65,7 +65,7 @@ API アプリをセキュリティで保護するこの方法は、ある API �
 
 7. **認証/承認**ブレードで、**[保存]** をクリックします。
 
-保存が完了すると、App Service で認証されていない API の呼び出しから API アプリに到達できなくなります。保護対象の API アプリでは、認証または承認コードは必要ありません。
+この作業が完了すると、App Service は、構成されている Azure AD テナント内の呼び出し元から送信された要求のみを許可するようになります。保護対象の API アプリでは、認証または承認コードは必要ありません。API アプリには、使用頻度の高い要求と共にベアラー トークンが HTTP ヘッダーに格納されて渡されます。その情報をコード内で読み取ることによって、特定の呼び出し元 (サービス プリンシパルなど) から送信された要求であることを確認できます。
 
 この認証機能は、.NET、Node.js、Java など、App Service がサポートするすべての言語に対して同様に動作します。
 
@@ -83,10 +83,12 @@ API アプリをセキュリティで保護するこの方法は、ある API �
 
 #### 同じテナント内のユーザーからのアクセスに対して API アプリを保護する方法
 
-同じテナント内のユーザーのベアラー トークンは、保護対象の API アプリでは有効と見なされます。サービス プリンシパルのみが保護対象の API アプリを呼び出すことができるようにするには、保護対象の API アプリに次の要件を確認するコードを追加します。
+同じテナント内のユーザーのベアラー トークンは、保護対象の API アプリでは有効と見なされます。保護対象となる API アプリの呼び出しをサービス プリンシパルに限定するには、トークンに含まれている以下の要求を検証するコードを保護対象の API アプリに追加します。
 
-* `appid` は、呼び出し元に関連付けられている Azure AD アプリケーションのクライアント ID と同じである必要があります。
-* `objectidentifier` は、呼び出し元のサービス プリンシパル ID である必要があります。
+* `appid` が、呼び出し元に関連付けられている Azure AD アプリケーションのクライアント ID であること。 
+* `oid` (`objectidentifier`) が、呼び出し元のサービス プリンシパル ID であること。 
+
+App Service から提供される `objectidentifier` 要求は、X-MS-CLIENT-PRINCIPAL-ID ヘッダーにも格納されます。
 
 ### ブラウザー アクセスから API アプリを保護する方法
 
@@ -96,7 +98,7 @@ API アプリをセキュリティで保護するこの方法は、ある API �
 
 API アプリの Node.js または Java の入門シリーズを読んでいる場合は、「[次のステップ](#next-steps)」セクションに進みます。
 
-この記事では、引き続き API アプリの .NET 入門シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-user-principal-authentication.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
+この記事では、引き続き API アプリの .NET 入門シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
 
 ## Azure で認証を設定する
 
@@ -120,7 +122,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 6. **[Azure Active Directory 設定]** ブレードで **[Express]** をクリックします。
 
-	**[Express]** オプションを選択すると、Azure は Azure AD [テナント](https://msdn.microsoft.com/ja-JP/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)に Azure AD アプリケーションを自動的に作成できます。
+	**[Express]** オプションを選択すると、Azure は Azure AD [テナント](https://msdn.microsoft.com/ja-JP/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)に AAD アプリケーションを自動的に作成できます。
 
 	すべての Azure アカウントにテナントが自動的に作成されるので、ユーザーがテナントを作成する必要はありません。
 
@@ -299,9 +301,9 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 現在のところ、Azure AD テナントのユーザーまたはサービス プリンシパルのトークンを取得できる呼び出し元は、TodoListDataAPI (データ層) API アプリを呼び出すことができます。たとえば、データ層 API アプリで、TodoListAPI (中間層) API アプリからの呼び出しや、特定のサービス プリンシパルからの呼び出しのみを受け入れるようにすることができます。
 
-このような制限を追加するには、受信する呼び出しの `appid` と `objectidentifier` の各要求を検証するコードを追加します。
+このような制限を追加するには、着信呼び出しの `appid` と `objectidentifier` の各要求を検証するコードを追加します。
 
-このチュートリアルでは、コントローラー アクションでアプリ ID とサービス プリンシパル ID を直接検証するコードを設定します。または、カスタムの `Authorize` 属性を使用するか、スタートアップ シーケンスでこの検証を実行します (OWIN ミドルウェアなど)。
+このチュートリアルでは、コントローラー アクションでアプリ ID とサービス プリンシパル ID を直接検証するコードを設定します。または、カスタムの `Authorize` 属性を使用するか、スタートアップ シーケンスでこの検証を実行します (OWIN ミドルウェアなど)。後者の例については、[こちらのサンプル アプリケーション](https://github.com/mohitsriv/EasyAuthMultiTierSample/blob/master/MyDashDataAPI/Startup.cs)を参照してください。
 
 TodoListDataAPI プロジェクトを次のように変更します。
 
@@ -326,7 +328,7 @@ TodoListDataAPI プロジェクトを次のように変更します。
 
 5. Azure App Service に ToDoListDataAPI プロジェクトを再デプロイします。
 
-6. ブラウザーで AngularJS フロント エンド Web アプリの HTTPS URL にアクセスし、ホーム ページの **[To Do List]** タブをクリックします。
+6. ブラウザーで AngularJS フロントエンド Web アプリの HTTPS URL にアクセスし、ホーム ページの **[To Do List]** タブをクリックします。
 
 	バック エンドの呼び出しは失敗しているので、アプリケーションは動作していません。新しいコードは、実際の appid と objectidentifier を確認していますが、確認に使用する正しい値はまだ取得していません。ブラウザーの開発者ツール コンソールには、サーバーから HTTP 401 エラーが返されているというレポートが表示されます。
 
@@ -374,7 +376,7 @@ ToDoListAngular のような Web API バックエンドで AngularJS 単一ペ�
 認証なしでは正常に動作するアプリケーションが、認証を実装すると動作しなくなる場合、通常は、構成の設定が正しくないか、一貫していないことが問題です。まず、Azure App Service および Azure Active Directory ですべての設定を再確認します。具体的なヒントを次に示します。
 
 * プロジェクトでコードを構成した後、他のプロジェクトではなくそのプロジェクトを再デプロイしたことを確認します。
-* Azure ポータルの **[アプリケーション設定]** で構成した設定について、設定を入力したときに正しい API アプリまたは Web アプリを選択したことを確認します。
+* Azure ポータルの **[アプリケーション設定]** ブレードで構成した設定について、設定を入力したときに正しい API アプリまたは Web アプリを選択したことを確認します。
 * ブラウザーで HTTP URL ではなく HTTPS URL にアクセスしていることを確認します。
 * 中間層 API アプリで CORS がまだ有効になっていて、フロントエンド HTTPS URL から中間層への呼び出しが許可されることを確認します。問題が CORS 関連である可能性がある場合は、許可される配信元 URL として "*" を試してみます。**重要:** 本当の問題がデータ層の認証にある場合、一部のブラウザーの開発者ツール コンソールでは、CORS エラー メッセージがレポートされることがあります。この問題を確認するには、ToDoListDataAPI API アプリの認証を一時的に無効にしてみます。
 * [customErrors モードを Off](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview) に設定して、可能な限り多くの情報がエラー メッセージで得られるようにします。
@@ -388,8 +390,8 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 * [Azure AD 開発者ガイド](http://aka.ms/aaddev)
 * [Azure AD のシナリオ](http://aka.ms/aadscenarios)
-* [Azure AD のサンプル](http://aka.ms/aadsamples)
+* [Azure AD のサンプル](http://aka.ms/aadsamples)。[WebApp-WebAPI-OAuth2-AppIdentity-DotNet](http://github.com/AzureADSamples/WebApp-WebAPI-OAuth2-AppIdentity-DotNet) サンプルは、このチュートリアルで紹介した内容と似ていますが、App Service 認証は使用しません。
 
-Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイメントを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](web-sites-deploy.md)」を参照してください。
+Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

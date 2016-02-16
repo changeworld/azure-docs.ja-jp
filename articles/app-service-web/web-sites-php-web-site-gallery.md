@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="hero-article"
-	ms.date="11/13/2015"
+	ms.date="02/08/2016"
 	ms.author="tomfitz"/>
 
 # Azure App Service での WordPress Web アプリの作成
 
-このチュートリアルでは、Azure Marketplace でアプリケーションを検索して App Service Web アプリにインストールする方法を示します。このチュートリアルでは例として WordPress ブログ サイトを使用しますが、他の多くの Marketplace アプリケーションについても手順は同様です。
+このチュートリアルでは、WordPress ブログ サイトを Azure Marketplace からデプロイする方法について説明します。
 
 チュートリアルを完了すると、独自の WordPress ブログ サイトをクラウドで運用できるようになります。
 
@@ -28,11 +28,14 @@
 
 * Azure Marketplace でアプリケーション テンプレートを検索する方法。
 * Azure App Service でテンプレートに基づく Web アプリを作成する方法。
-* 新しい Web アプリと MySQL データベースの Azure App Service 設定を構成する方法。
+* 新しい Web アプリとデータベースの Azure App Service 設定を構成する方法。
 
 Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリが用意されています。これらの Web アプリは、この WordPress の例で使用される [PHP](/develop/nodejs/) をはじめ、[.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python](/develop/python/) など、さまざまなよく知られたフレームワーク上に構築されています。Azure Marketplace から Web アプリを作成するために必要なソフトウェアは、[Azure ポータル](https://portal.azure.com/)に使用するブラウザーだけです。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。SQL Database に変更する場合は、「[Project Nami](http://projectnami.org/)」を参照してください。**Project Nami** は Marketplace からも入手できます。
+
+> [AZURE.NOTE]
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -44,7 +47,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 	
     ![新規作成][5]
 	
-3. **WordPress** を検索し、**[WordPress]** をクリックします。
+3. **WordPress** を検索し、**[WordPress]** をクリックします。MySQL の代わりに SQL Database を使用する場合は、「**Project Nami**」を検索してください。
 
 	![WordPress リスト][7]
 	
@@ -123,4 +126,4 @@ App Service Web Apps の使用方法の詳細については、ページの左�
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

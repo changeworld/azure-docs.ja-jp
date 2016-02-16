@@ -57,7 +57,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
     ![][img-devicelist]
 
-2.  プロビジョニング プロセスで作成された 4 つのシミュレートされたデバイスが表示されています。
+2.  デバイス一覧には、プロビジョニング プロセスで作成された 4 つのシミュレートされたデバイスが表示されています。
 
 3.  デバイス一覧で任意のデバイスをクリックすると、デバイスの詳細が表示されます。
 
@@ -130,6 +130,8 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 9.  **ソリューション ダッシュボード**の **[アラーム履歴]** テーブルに戻り、規則を更新したことで動作が変更されていることを確認します。
 
     ![][img-newhistory]
+    
+完了したら、[azureiotsuite.com][lnk-azureiotsuite] サイト上の Azure サブスクリプションから事前構成済みソリューションを削除してください。こうすることで、事前構成済みソリューションの作成時にプロビジョニングしたすべてのリソースを簡単に削除できます。
 
 ## 次のステップ
 
@@ -160,4 +162,4 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-predictive]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

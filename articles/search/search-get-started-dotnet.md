@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="01/21/2016"
+	ms.date="02/09/2016"
 	ms.author="heidist"/>
 
 # .NET での Azure Search アプリケーションの初めての使用
@@ -78,7 +78,7 @@
 
 4. 次に、Azure Search .NET クライアント ライブラリをインストールします。検索を正しく指定してください。そうしないと、パッケージを簡単に検索できません。**[NuGet パッケージの管理]** を再び右クリックします。
 
-5. **[オンライン]**、**[nuget.org]**、**[プレリリースを含む]** を指定し、*azure.search* を検索します。**[インストール]** をクリックして、ライブラリをインストールします。
+5. **[オンライン]**、**[nuget.org]**、**[安定版パッケージのみ]** の順に指定し、*azure.search* を検索します。**[インストール]** をクリックして、ライブラリをインストールします。
 
    ![][12]
 
@@ -671,4 +671,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-1.PNG
 [12]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-2.PNG
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->
