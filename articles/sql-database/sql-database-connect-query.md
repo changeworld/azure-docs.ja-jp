@@ -324,7 +324,8 @@ IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加
 
 
 
-詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>
+「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 

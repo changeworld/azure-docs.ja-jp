@@ -20,12 +20,12 @@
 
 Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと、Azure AD Connect から使用できる同期サービスを監視、分析できます。アラート、パフォーマンス、使用パターン、構成設定を表示する機能があり、Office 365 に対して信頼性の高い接続を維持するなどさまざまなことができます。これらは、対象のサーバーにインストールされているエージェントを使用して実現されます。
 
-![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
+![Azure AD Connect Health とは](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
 
 この情報は、すべて Azure AD Connect Health ポータルで参照できます。Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、および使用状況の分析を表示できます。この情報はすべて 1 つの使いやすい場所に表示されるので、必要な情報を探して時間を無駄にすることはありません。
 
-![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/usage.png)
+![Azure AD Connect Health とは](./media/active-directory-aadconnect-health/usage.png)
 
 Azure AD Connect Health の今後の更新には、他の ID コンポーネントの監視や分析が追加される予定です。このように ID というレンズを通した単一のダッシュボードが提供されることで、より堅牢で健全な統合環境を設定できるようになります。ユーザーはこの環境を利用して作業能力を向上させることができます。
 
