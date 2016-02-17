@@ -32,14 +32,14 @@
 
 > [AZURE.NOTE] Azure Marketplace では、作業を開始する前に、事前承認が必要です。これは、データ サービスの発行元に対しては適用されません。
 
-|仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
+||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
 |----|----|----|----|----|
 | **事前承認の取得** | [Microsoft Azure Certified][link-certification] | [Microsoft Azure Certified][link-certification] | 該当なし | [Microsoft Azure Certified][link-certification] |
 | **ステップ 1: 開発者アカウントの登録** | [Microsoft 開発者アカウント: 作成と登録][link-accts] | [Microsoft 開発者アカウント: 作成と登録][link-accts] | [Microsoft 開発者アカウント: 作成と登録][link-accts] | [Microsoft 開発者アカウント: 作成と登録][link-accts] |
 |**ステップ 2: プランの作成**| [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)| [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)| [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)| [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)|
-| [VM の技術的な前提条件][link-single-vm-prereq] | 開発者サービスの技術的な前提条件 | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
-|[VM イメージの発行ガイド][link-single-vm] | 開発者サービスの発行ガイド | [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md) | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
-| [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
+|| [VM の技術的な前提条件][link-single-vm-prereq] | 開発者サービスの技術的な前提条件 | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
+||[VM イメージの発行ガイド][link-single-vm] | 開発者サービスの発行ガイド | [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md) | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
+|| [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
 | **ステップ 3: ステージングへのプランのプッシュ** | [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md) | ステージング環境での開発者サービス プランのテスト | [ステージング環境でのデータ サービス プランのテスト](marketplace-publishing-data-service-test-in-staging.md) | [ステージング環境でのソリューション テンプレートのテスト](marketplace-publishing-solution-template-test-in-staging.md) |
 | **ステップ 4: Marketplace へのプランのデプロイ** | [Marketplace へのプランのデプロイ][link-pushprod] | [Marketplace へのプランのデプロイ][link-pushprod] | [Marketplace へのプランのデプロイ][link-pushprod] | [Marketplace へのプランのデプロイ][link-pushprod] |
 
@@ -81,4 +81,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->

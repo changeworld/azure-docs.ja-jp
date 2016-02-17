@@ -205,7 +205,8 @@ Service Fabric では、プライマリとセカンダリという 2 つの証�
 注: セキュリティで保護されたクラスターの場合、常に有効な (失効していない、期限切れではない) 証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしないと、クラスターにアクセスできなくなります。
 
 
-## Service Fabric に使用されない証明書の種類の詳細
+## 
+Service Fabric に使用されない証明書の種類の詳細
 
 ## X.509 証明書
 
@@ -245,4 +246,4 @@ Service Fabric では、プライマリとセカンダリという 2 つの証�
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->

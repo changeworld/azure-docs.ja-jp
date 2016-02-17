@@ -82,8 +82,9 @@
 
     ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
 
-    1.  **[サインオン URL]** ボックスに、「****http://azure.benefitsolver.com**」と入力します。
-2.  **[応答 URL]** ボックスに、「****https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
+    1.  **[サインオン URL]** ボックスに、「**http://azure.benefitsolver.com**」と入力します。
+	2.  **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
+
 
     3.  **[次へ]** をクリックします。
 
@@ -145,4 +146,4 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->
