@@ -104,7 +104,12 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
+| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
+| *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay|
+| *.core.windows.net | 443 | HTTPS |
+| *.clouddatahub.net | 443 | HTTPS |
+| graph.windows.net | 443 | HTTPS |
+| login.windows.net | 443 | HTTPS |
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
@@ -216,7 +221,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	>  
 	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツールバーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
-	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
@@ -692,4 +697,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!----HONumber=AcomDC_0204_2016-->
+<!-----HONumber=AcomDC_0204_2016-->

@@ -58,7 +58,8 @@
 | [MessagingEntityDisabledException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingentitydisabledexception.aspx) | 無効になっているエンティティに対してランタイム操作を要求しました。 | エンティティをアクティブ化します。 | エンティティがそれまでにアクティブ化されている場合は、再試行によって解決することがあります。 |
 | [NoMatchingSubscriptionException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.nomatchingsubscriptionexception.aspx) | 事前フィルター処理が有効になっていて、一致するフィルターのないトピックにメッセージを送信した場合、Service Bus からこの例外が返されます。 | 少なくとも 1 つのフィルターに一致することを確認します。 | 再試行によって解決することはありません。 |
 | [MessageSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) | メッセージ ペイロードが 256K の制限を超えています。ただし 256k の制限はメッセージの合計サイズであり、システム プロパティや .NET のオーバーヘッドも含めたサイズです。 | メッセージ ペイロードのサイズを小さくし、操作を再試行します。 | 再試行によって解決することはありません。 |
-| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | - | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
+| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | -
+| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
 
 ## 次のステップ
 
@@ -70,4 +71,4 @@ Service Bus と Event Hubs の詳細な .NET API リファレンスについて�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->

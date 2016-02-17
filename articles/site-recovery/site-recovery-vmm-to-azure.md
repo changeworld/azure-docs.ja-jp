@@ -81,6 +81,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
+2. を展開し
 3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
@@ -379,4 +380,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI>
 </UL>
 
-<!---HONumber=AcomDC_0204_2016-->
+<!----HONumber=AcomDC_0204_2016-->
