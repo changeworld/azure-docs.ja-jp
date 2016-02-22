@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="02/05/2016" 
 	ms.author="nitinme"/>
 
 
@@ -182,9 +182,11 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 ### アプリケーションの作成と実行
 
-* [Run jobs remotely on a Spark cluster using Livy (Livy を使用して Spark クラスターでジョブをリモートで実行する)](hdinsight-apache-spark-livy-rest-interface.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
-### 拡張機能
+### ツールと拡張機能
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -194,4 +196,4 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

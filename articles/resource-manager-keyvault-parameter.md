@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/15/2015"
+   ms.date="02/09/2016"
    ms.author="tomfitz"/>
 
 # デプロイメント時にセキュリティで保護された値を渡す
 
 デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、[Azure Key Vault](./key-vault/key-vault-whatis.md) にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。テンプレートにはシークレットの参照のみを含めるので、シークレットが明らかになることはありません。また、リソースをデプロイするたびにシークレットの値を手動で入力する必要はありません。管理者は、シークレットにアクセスできるユーザーまたはサービス プリンシパルを指定します。
 
-> [AZURE.NOTE]現時点で Key Vault のシークレットを参照する機能をサポートしているのは Azure CLI のみです。できるだけ早く、Azure PowerShell にこの機能を追加する予定です。
+> [AZURE.NOTE] 現時点で Key Vault のシークレットを参照する機能をサポートしているのは Azure CLI のみです。できるだけ早く、Azure PowerShell にこの機能を追加する予定です。
 
 ## Key Vault とシークレットのデプロイ
 
@@ -33,34 +33,34 @@ Key Vault とシークレットのデプロイについては、[Key Vault の�
 値をテンプレートに渡すパラメーター ファイル内から、シークレットを参照します。シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。
 
     "parameters": {
-        "adminPassword": {
-            "reference": {
-                "keyVault": {
-                    "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-                }, 
-                "secretName": "sqlAdminPassword" 
-            } 
-        }
+      "adminPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+          }, 
+          "secretName": "sqlAdminPassword" 
+        } 
+      }
     }
 
 パラメーター ファイルの全体は次のような内容です。
 
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "sqlsvrAdminLogin": {
-                "value": ""
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "sqlsvrAdminLogin": {
+          "value": ""
+        },
+        "sqlsvrAdminLoginPassword": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
             },
-            "sqlsvrAdminLoginPassword": {
-                "reference": {
-                    "keyVault": {
-                        "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-                    },
-                    "secretName": "adminPassword"
-                }
-            }
+            "secretName": "adminPassword"
+          }
         }
+      }
     }
 
 この例で、シークレットを受け取るパラメーターは **securestring** です。次に、管理者のパスワードが必要な、SQL Server をデプロイするテンプレートの関連するセクションを示します。
@@ -102,7 +102,7 @@ Key Vault とシークレットのデプロイについては、[Key Vault の�
 ## 次のステップ
 
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
-- テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+- 仮想マシンで Key Vault を使用する方法については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、[Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

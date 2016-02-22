@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 #Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
@@ -26,7 +26,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 - [**ワード カウント**][hdinsight-sample-wordcount]\: テキスト ファイル内の単語出現回数をカウントします。
 - [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]\: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 - [**Pi 推定**][hdinsight-sample-pi-estimator]\: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-- [**10 GB GraySort **][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+- [**10 GB GraySort**][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 >[AZURE.NOTE] ソース コードは「付録」にあります。
 
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

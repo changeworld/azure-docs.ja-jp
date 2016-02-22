@@ -13,14 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="02/08/2016" 
 	ms.author="bradsev" />
 
 # AzCopy を使用して Azure BLOB ストレージ間でデータを移動する
-
-以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
-
-[AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 ## はじめに
 
@@ -28,9 +24,14 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 
 AzCopy のインストール手順と、Azure プラットフォームでの使い方に関する情報については、「[AzCopy コマンド ライン ユーティリティの概要](../storage-use-azcopy.md)」を参照してください。
 
+以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
+
+[AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
+
+
 > [AZURE.NOTE] [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
 
-> [AZURE.NOTE]Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ## 前提条件
 
@@ -69,6 +70,7 @@ Azure コンテナー 間で BLOB を 転送するには、AzCopy コマンド �
 
 ## AzCopy を使用するためのヒント
 
-> [AZURE.TIP]1.ファイルをアップロードする場合、/S を指定するとファイルを再帰的にアップロードします。このパラメーターを指定しなかった場合、サブディレクトリ内のファイルは 1 つもアップロードされません。2.ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。3./Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、ダウンロードする BLOB ファイル名を /Pattern パラメーターを使用して指定します。/S パラメーターは、AzCopy にファイル名のパターンを再帰的に検索させるために使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。
+> [AZURE.TIP]   
+1\.ファイルをアップロードする場合、/S を指定するとファイルを再帰的にアップロードします。このパラメーターを指定しなかった場合、サブディレクトリ内のファイルは 1 つもアップロードされません。2.ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。3./Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、ダウンロードする BLOB ファイル名を /Pattern パラメーターを使用して指定します。/S パラメーターは、AzCopy にファイル名のパターンを再帰的に検索させるために使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

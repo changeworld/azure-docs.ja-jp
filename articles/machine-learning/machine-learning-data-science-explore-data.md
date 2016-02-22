@@ -13,14 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="02/08/2016" 
 	ms.author="bradsev" />
 
 #Cortana Analytics Process のデータを探索する
-
-この**メニュー**は、多様なストレージ環境のデータを探索するツールの使用方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 このドキュメントでは、Cortana Analytics Process で一般的に使用されている 4 つの環境のデータを探索する方法について説明します。
 
@@ -29,4 +25,8 @@
 - **Hive テーブル** データは、Hive クエリを使用して探索します。
 - **Azure Machine Learning (AML) Studio** データは、AML モジュールを使用して探索します。
 
-<!---HONumber=AcomDC_1203_2015-->
+この**メニュー**は、これらのツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
+
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/09/2016"
 	ms.author="asmalser-msft"/>
 
 #SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする
@@ -684,6 +684,17 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 
 ![][5] *図: グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+- [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+- [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+- [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+
+
 	
 <!--Image references-->
 [1]: ./media/active-directory-scim-provisioning/scim-figure-1.PNG
@@ -692,4 +703,4 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

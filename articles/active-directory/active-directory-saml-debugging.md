@@ -10,10 +10,10 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="11/18/2015" 
+    ms.date="02/09/2016" 
     ms.author="asmalser" />
 
-#Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法
+#Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
 
 SAML ベースのアプリケーション統合をデバッグするときは、多くの場合、[Fiddler](http://www.telerik.com/fiddler) などのツールを使用して、SAML 要求、SAML 応答、およびアプリケーションに対して発行された実際の SAML トークンを確認すると便利です。SAML トークンを確認することで、必要な属性、SAML サブジェクト内のユーザー名、および発行者 URI のすべてが予想どおりに送信されたことを確認できます。
 
@@ -25,7 +25,13 @@ SAML トークンは、行を選択し、右側のパネルで **[インスペ�
  
 **注**: この HTTP 要求の内容を Fiddler で表示するには、HTTPS トラフィックの暗号化解除を構成することを求めるプロンプトが表示される可能性があります。この場合は、構成を実行する必要があります。
 
+## 関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
+- [Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)
+
 <!--Image references-->
 [1]: ./media/active-directory-saml-debugging/fiddler.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

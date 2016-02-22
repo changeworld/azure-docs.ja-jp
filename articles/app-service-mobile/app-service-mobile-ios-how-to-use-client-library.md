@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/30/2015"
+	ms.date="02/04/2016"
 	ms.author="krisragh"/>
 
 # Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]&nbsp;
- 
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 このガイドでは、最新の [Azure Mobile Apps iOS SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409) を使用して一般的なシナリオを実行する方法について説明します。Azure Mobile Apps を初めて使用する場合は、まず、「[iOS アプリの作成]」を参照して、バックエンドの作成、テーブルの作成、構築済みの iOS Xcode プロジェクトのダウンロードを行ってください。このガイドでは、クライアント側の iOS SDK に重点を置いています。バックエンドの .NET サーバー側 SDK の詳細については、「[Azure モバイル アプリ用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」をご覧ください。
 
@@ -87,15 +85,15 @@ let table = client.tableWithName("TodoItem")
 **Swift**:
 
 ```
-table.readWithCompletion({(result, error) -> Void in
-    if error != nil { // error is nil if no error occured
-        NSLog("ERROR %@", error!)
-    } else {
-        for item in (result?.items)! {
-            NSLog("Todo Item: %@", item["text"] as! String)
+table.readWithCompletion { (result, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else if let items = result?.items {
+        for item in items {
+            print("Todo Item: ", item["text"])
         }
     }
-})
+}
 ```
 
 ##<a name="filtering"></a>方法: 返されるデータをフィルター処理する
@@ -109,7 +107,7 @@ table.readWithCompletion({(result, error) -> Void in
 ```
 // Create a predicate that finds items where complete is false
 NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-// Query the TodoItem table 
+// Query the TodoItem table
 [table readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
 		if(error) {
 				NSLog(@"ERROR %@", error);
@@ -125,17 +123,17 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 ```
 // Create a predicate that finds items where complete is false
-let predicate =  NSPredicate(format:"complete == NO")
-// Query the TodoItem table 
-table.readWithPredicate(predicate, completion: { (result, error) -> Void in
-    if error != nil {
-        NSLog("ERROR %@", error!)
-    } else {
-        for item in (result?.items)! {
-            NSLog("Todo Item: %@", item["text"] as! String)
+let predicate =  NSPredicate(format: "complete == NO")
+// Query the TodoItem table
+table.readWithPredicate(predicate) { (result, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else if let items = result?.items {
+        for item in items {
+            print("Todo Item: ", item["text"])
         }
     }
-})
+}
 ```
 
 ##<a name="query-object"></a>方法: MSQuery を使用する
@@ -153,7 +151,7 @@ MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"c
 
 ```
 let query = table.query()
-let query = table.queryWithPredicate(NSPredicate(format:"complete == NO"))
+let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 ```
 
 `MSQuery` を使用すれば、次のような複数のクエリ動作を制御できます。`MSQuery` クエリを実行するには、以下の例に示すように `readWithCompletion` を呼び出します。* 結果の順序を指定する * 返すフィールドを制限する * 返すレコード数を制限する * 応答の合計数を指定する * 要求内にカスタム クエリ文字列パラメーターを指定する * 追加の関数を適用する
@@ -181,15 +179,15 @@ let query = table.queryWithPredicate(NSPredicate(format:"complete == NO"))
 
 **Swift**:
 
-```        
+```
 query.orderByAscending("text")
 query.orderByDescending("complete")
-query.readWithCompletion { (result, error) -> Void in
-    if error != nil {
-        NSLog("ERROR %@", error!)
-    } else {
-        for item in (result?.items)! {
-            NSLog("Todo Item: %@", item["text"] as! String)
+query.readWithCompletion { (result, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else if let items = result?.items {
+        for item in items {
+            print("Todo Item: ", item["text"])
         }
     }
 }
@@ -254,11 +252,11 @@ NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"comple
 
 ```
 let newItem = ["id": "custom-id", "text": "my new item", "complete": false]
-table.insert(newItem) { (result, error) -> Void in
-    if error != nil {
-        NSLog("ERROR %@", error!)
-    } else {
-        NSLog("Todo Item: %@", result!["text"] as! String)
+table.insert(newItem) { (result, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else if let item = result {
+        print("Todo Item: ", item["text"])
     }
 }
 ```
@@ -284,14 +282,15 @@ NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
 **Swift**:
 
 ```
-let newItem = oldItem.mutableCopy() as! NSMutableDictionary // oldItem is NSDictionary
-newerItem["text"] = "Updated text"
-table.update(newerItem  as [NSObject : AnyObject]) { (result, error) -> Void in
-    if error != nil {
-        NSLog("ERROR %@", error!)
-    } else {
-        NSLog("Todo Item: %@", result!["text"] as! String)
-    }
+if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
+    newItem["text"] = "Updated text"
+    table2.update(newItem as [NSObject: AnyObject], completion: { (result, error) -> Void in
+        if let err = error {
+            print("ERROR ", err)
+        } else if let item = result {
+            print("Todo Item: ", item["text"])
+        }
+    })
 }
 ```
 
@@ -312,13 +311,12 @@ table.update(newerItem  as [NSObject : AnyObject]) { (result, error) -> Void in
 **Swift**:
 
 ```
-table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) -> Void in
-    if error != nil {
-        NSLog("ERROR %@", error!)
-    } else {
-        NSLog("Todo Item: %@", result!["text"] as! String)
+table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else if let item = result {
+        print("Todo Item: ", item["text"])
     }
-    
 }
 ```
 
@@ -343,12 +341,12 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) ->
 **Swift**:
 
 ```
-table.delete(item as [NSObject : AnyObject]) { (itemId, error) -> Void in
-	if error != nil {
-		NSLog("ERROR %@", error!)
-	} else {
-		NSLog("Todo Item ID: %@", itemId! as! String)
-	}
+table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else {
+        print("Todo Item ID: ", itemId)
+    }
 }
 ```
 
@@ -363,18 +361,18 @@ table.delete(item as [NSObject : AnyObject]) { (itemId, error) -> Void in
 	} else {
 		NSLog(@"Todo Item ID: %@", itemId);
 	}
-}];   
+}];
 ```
 
 **Swift**:
 
 ```
-table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) -> Void in
-        if error != nil {
-        	NSLog("ERROR %@", error!)
-        } else {
-        	NSLog("Todo Item ID: %@", itemId! as! String)
-        }
+table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
+    if let err = error {
+        print("ERROR ", err)
+    } else {
+        print("Todo Item ID: ", itemId)
+    }
 }
 ```
 
@@ -397,11 +395,11 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) -> 
 **Swift**:
 
 ```
-client.push!.registerDeviceToken(deviceToken, template: iOSTemplate, completion: { (error) -> Void in
-            if error != nil {
-                NSLog("ERROR %@", error!)
-            }
-        })
+    client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { (error) in
+        if let err = error {
+            print("ERROR ", err)
+        }
+    })
 ```
 
 テンプレートは NSDictionary 型となり、次のような形式で複数のテンプレートを含めることができます。
@@ -415,7 +413,7 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 **Swift**:
 
 ```
-let iOSTemplate: [NSObject : AnyObject] = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
+let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
 セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」を参照してください。
@@ -437,7 +435,7 @@ NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 **Swift**:
 
 ```
-let serverItem = error?.userInfo[MSErrorServerItemKey]
+let serverItem = error.userInfo[MSErrorServerItemKey]
 ```
 
 さらに、このファイルでエラー コードごとに定数を定義します。これは次のように使用できます。
@@ -451,32 +449,35 @@ if (error.code == MSErrorPreconditionFailed) {
 **Swift**:
 
 ```
-if (error?.code == MSErrorPreconditionFailed) {
+if (error.code == MSErrorPreconditionFailed) {
 ```
 
 ## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
 
-Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これはよりネイティブ UX の感覚を提供し、さらなるカスタマイズが可能なため、多くの場合、`loginAsync()` メソッドの使用よりも推奨されます。
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
 
-1. [Active Directory のログインに App Service を構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。iOS では、`<app-scheme>://<bundle-id>` 形式のリダイレクト URI が推奨 (必須ではなく) されます。詳細は、[ADAL iOS のクイック スタート](active-directory-devquickstarts-ios.md#em1-determine-what-your-redirect-uri-will-be-for-iosem)を参照してください。
+1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。iOS では、`<app-scheme>://<bundle-id>` 形式のリダイレクト URI が推奨されます (必須ではありません)。詳細については、「[Azure AD の iOS アプリへの統合](active-directory-devquickstarts-ios.md#em1-determine-what-your-redirect-uri-will-be-for-iosem)」をご覧ください。
 
-2. Cocoapods を使用して ADAL をインストールします。ポッドファイルを編集して以下を含め、**YOUR-PROJECT** を Xcode プロジェクトの名前に置き換えます。
+2. Cocoapods を使用して ADAL をインストールします。POD ファイルを編集して以下を含め、**YOUR-PROJECT** を Xcode プロジェクトの名前に置き換えます。
 
-	source 'https://github.com/CocoaPods/Specs.git' link\_with ['YOUR-PROJECT'] xcodeproj 'YOUR-PROJECT'
-	
-	pod 'ADALiOS'
+		source 'https://github.com/CocoaPods/Specs.git'
+		link_with ['YOUR-PROJECT']
+		xcodeproj 'YOUR-PROJECT'
+POD:
 
-3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、生成された Xcode ワークスペース (プロジェクトではなく) を開きます。
+		pod 'ADALiOS'
+
+3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、(プロジェクトではなく) 生成された Xcode ワークスペースを開きます。
 
 4. ご使用の言語に応じて、以下のコードをアプリケーションに追加します。それぞれで、次の置換を行います。
 
 * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これはポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから入手できます。
+* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
 
 * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
-* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントと置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
 
 **Objective-C**:
 
@@ -518,8 +519,8 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 	// add the following imports to your bridging header:
 	//     #import <ADALiOS/ADAuthenticationContext.h>
 	//     #import <ADALiOS/ADAuthenticationSettings.h>
-	
-	func authenticate(parent:UIViewController, completion: (MSUser?, NSError?) -> Void) {
+
+	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
 		let authority = "INSERT-AUTHORITY-HERE"
 		let resourceId = "INSERT-RESOURCE-ID-HERE"
 		let clientId = "INSERT-CLIENT-ID-HERE"
@@ -527,16 +528,16 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 		var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?> = nil
 		let authContext = ADAuthenticationContext(authority: authority, error: error)
 		authContext.parentController = parent
-		ADAuthenticationSettings.sharedInstance().enableFullScreen = true;
-		authContext.acquireTokenWithResource(resourceId, clientId: clientId, redirectUri: redirectUri, completionBlock: { (result) -> Void in
-			if result.status != AD_SUCCEEDED {
-				completion(nil, result.error)
-			}
-			else {
-				let payload:[String:String] = ["access_token":result.tokenCacheStoreItem.accessToken]
-				client.loginWithProvider("aad", token: payload, completion: completion)
-			}
-		})
+		ADAuthenticationSettings.sharedInstance().enableFullScreen = true
+		authContext.acquireTokenWithResource(resourceId, clientId: clientId, redirectUri: redirectUri) { (result) in
+		        if result.status != AD_SUCCEEDED {
+		            completion(nil, result.error)
+		        }
+		        else {
+		            let payload: [String: String] = ["access_token": result.tokenCacheStoreItem.accessToken]
+		            client.loginWithProvider("aad", token: payload, completion: completion)
+		        }
+    		}
 	}
 
 
@@ -591,4 +592,4 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

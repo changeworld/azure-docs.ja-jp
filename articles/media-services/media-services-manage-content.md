@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015"
+	ms.date="02/04/2016"   
 	ms.author="juliako"/>
 
 
@@ -105,7 +105,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ![Process2][process2]
 
 
-[Media Encoder Standard 用のタスク プリセット文字列](https://msdn.microsoft.com/ja-JP/library/mt269960)に関するトピックでは、各プリセットの意味を説明しています。
+[Media Encoder Standard 用のタスク プリセット文字列](https://msdn.microsoft.com/library/mt269960)に関するトピックでは、各プリセットの意味を説明しています。
 
 5. 次に、わかりやすい出力コンテンツ名を入力するか、既定値をそのまま使用します。チェック ボタンをクリックすると、エンコード処理が開始され、進捗状況はポータルの下部で確認できます。
 6. [OK] をクリックします。
@@ -220,4 +220,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

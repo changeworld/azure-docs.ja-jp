@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="02/09/2016"
 	ms.author="kgremban"/>
 
 
 # コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 コネクタ グループは、以下をはじめとする、さまざまなシナリオで役立ちます。
 
@@ -70,7 +70,7 @@
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-* [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

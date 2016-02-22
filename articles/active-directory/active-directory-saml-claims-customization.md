@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/18/2015"
+	ms.date="02/09/2016"
 	ms.author="asmalser"/>
 
 #Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ
@@ -57,6 +57,12 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 **注:** **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、オンプレミスの Active Directory から AAD Connect ツールの最新のプレビューを使用してユーザー データを同期する場合にのみサポートされます。Connect ツールのプレビューは、次のリンクからダウンロードすることができます。
 
 http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=53949
+
+## 関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
+- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 	
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/claimscustomization1.png
@@ -64,4 +70,4 @@ http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

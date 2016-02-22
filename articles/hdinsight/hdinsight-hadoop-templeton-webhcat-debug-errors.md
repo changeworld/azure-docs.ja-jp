@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="12/04/2015"
+ ms.date="02/05/2016"
  ms.author="larryfr"/>
 
 #HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
@@ -27,7 +27,7 @@ WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、
 
 ##構成の変更
 
-> [AZURE.IMPORTANT]このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
+> [AZURE.IMPORTANT] このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
 
 * **Windows** クラスターの場合: スクリプト アクションを使用して、クラスターの作成時に値を構成します。詳細については、[スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
 
@@ -86,4 +86,4 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

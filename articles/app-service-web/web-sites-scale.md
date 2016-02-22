@@ -26,9 +26,9 @@ Azure で Web アプリをスケール アップするには、2 つの操作が
 
 スケール設定は適用に数秒を要するのみで、App Service プランに含まれるすべての Web アプリに反映されます。コードの変更やアプリケーションの再デプロイは必要ありません。
 
-App Service プランの詳細については、「[App Service プラン](../web-sites-web-hosting-plan-overview.md)」および「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。App Service の個々のプランの料金と機能の詳細については、「[App Service の料金の詳細](/pricing/details/web-sites/)」を参照してください。
+App Service プランの詳細については、「[App Service プラン](../app-service/web-sites-web-hosting-plan-overview.md)」および「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。App Service の個々のプランの料金と機能の詳細については、「[App Service の料金の詳細](/pricing/details/web-sites/)」を参照してください。
 
-> [AZURE.NOTE]Web アプリを **Free** モードから **Basic**、**Standard**、または **Premium** モードに切り替える前に、Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
+> [AZURE.NOTE] Web アプリを **Free** モードから **Basic**、**Standard**、または **Premium** モードに切り替える前に、Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
 
 <a name="scalingsharedorbasic"></a>
 <!-- ===================================== -->
@@ -56,7 +56,7 @@ App Service プランの詳細については、「[App Service プラン](../we
 ## 標準またはプレミアム モードへの規模の変更
 <!-- ================================= -->
 
-> [AZURE.NOTE]App Service プランを **Standard** または **Premium** モードに切り替える前に、Microsoft Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。解除しないと、請求期間が終了する前に使用制限に達した場合に、Web アプリが使用できなくなるおそれがあります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
+> [AZURE.NOTE] App Service プランを **Standard** または **Premium** モードに切り替える前に、Microsoft Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。解除しないと、請求期間が終了する前に使用制限に達した場合に、Web アプリが使用できなくなるおそれがあります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
 
 1. **Standar** または **Premium** モードに拡張するには、**Shared** または **Basic** モードに拡張するときと同じ初期手順を実行し、その後、**[価格レベルを選択]** で **Standard** または **Premium** モードを選択して、**[選択]** をクリックします。 
 	
@@ -91,7 +91,7 @@ App Service プランの詳細については、「[App Service プラン](../we
 	
 	![1 つ目の自動スケール ルールの設定][SetFirstRule]
 	
-	>[AZURE.NOTE]**[クール ダウン]** の設定は、直前のスケール操作が実行された後、再度スケール操作を実行するまでに、この規則が待機する時間の長さを指定します。
+	>[AZURE.NOTE] **[クール ダウン]** の設定は、直前のスケール操作が実行された後、再度スケール操作を実行するまでに、この規則が待機する時間の長さを指定します。
 	
 6. **[スケール アップ規則の追加]** をクリックし、**[条件]** を **[より大きい]**、**[しきい値]** を **90** (%)、**[過去の持続時間]** を **1** (分)、**[スケール アップ設定]** を **3** (インスタンス)、**[クール ダウン]** を **1** (分) に設定して、2 番目の規則を構成します。
 	
@@ -144,7 +144,7 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 
 - すべてのユーザー (開発者を含む) が関心を持つ料金や機能など、App Service プランのその他すべての機能の詳細については、「[App Service の料金の詳細](/pricing/details/web-sites/)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <a name="Next Steps"></a>
 ## 次のステップ
@@ -200,4 +200,4 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

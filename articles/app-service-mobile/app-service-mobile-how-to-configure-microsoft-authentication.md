@@ -1,7 +1,7 @@
 <properties
 	pageTitle="App Services アプリケーションに Microsoft アカウント認証を構成する方法"
 	description="App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。"
-	authors="mattchenderson" 
+	authors="mattchenderson"
 	services="app-service\mobile"
 	documentationCenter=""
 	manager="dwrede"
@@ -13,15 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/20/2015"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 
 [AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
-&nbsp;
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
 
@@ -34,7 +31,7 @@
 
 1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウント アプリを構成するのに使用します。
 
-2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
 4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -50,8 +47,8 @@
 6. **[アプリ設定]** をクリックして、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
 
-    > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
-	
+    > [AZURE.NOTE] クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報をアプリケーションに追加する
 
@@ -66,7 +63,7 @@ App Service ゲートウェイを使用する場合は、このセクション�
 9. **[Microsoft アカウント]** をクリックします。前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。次に、 **[OK]** をクリックします
 
     ![][1]
-	
+
 	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
 17. (省略可能) Microsoft によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Microsoft アカウント]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Microsoft アカウントにリダイレクトされます。
@@ -91,7 +88,7 @@ App Service ゲートウェイを使用する場合は、このセクション�
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

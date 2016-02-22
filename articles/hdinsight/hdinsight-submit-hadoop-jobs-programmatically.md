@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
 
 Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する方法と、HDInsight .NET SDK を使用して、MapReduce、Hadoop ストリーミング、Hive ジョブを送信する方法について説明します。
 
-> [AZURE.NOTE]この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
+> [AZURE.NOTE] この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
 >
 > - [HDInsight での Hive の使用](hdinsight-use-hive.md)
 > - [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 > - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-##前提条件
+###前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
@@ -266,4 +266,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

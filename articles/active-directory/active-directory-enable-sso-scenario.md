@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="10/16/2015"
+      ms.date="02/09/2016"
       ms.author="inhenk"/>
 
 # Azure Active Directory (AD) を使ったアプリケーションの管理
@@ -124,4 +124,8 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 アプリケーションを Azure AD と統合して使用を開始するには、[Azure Active Directory とアプリケーションの統合を開始するためのガイド](active-directory-integrating-applications-getting-started.md)を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+## 関連項目
+
+[Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+<!---HONumber=AcomDC_0211_2016-->

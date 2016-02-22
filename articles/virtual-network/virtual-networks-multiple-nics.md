@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 # 複数 NIC を持つ VM の作成
@@ -97,7 +97,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 - ****着信トラフィック **は、送信先が対象の NIC であり、サブネット経由で最初に送信され、サブネットの NSG ルールをトリガーし、NIC へ渡される前に NIC の NSG ルールをトリガーします。
 - **送信トラフィック**は、送信元が対象の NIC であり、NIC から最初に送信され、NIC の NSG ルールをトリガーし、サブネット経由で渡される前にサブネットの NSG ルールをトリガーします。 
 
-[ネットワーク セキュリティ グループ](virtual-networks-nsg)の詳細、およびサブネット、VM、NIC への関連付けに基づいてそれらを適用する方法についてご確認ください。
+[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の詳細、およびサブネット、VM、NIC への関連付けに基づいてそれらを適用する方法についてご確認ください。
 
 ## 従来のデプロイに複数 NIC の VM を構成する方法
 
@@ -164,7 +164,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 		New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
 
->[AZURE.NOTE]ここでは既存の VNet を指定する必要があります (前提条件で説明)。次の例では **MultiNIC-VNet** という名前の仮想ネットワークを指定します。
+>[AZURE.NOTE] ここでは既存の VNet を指定する必要があります (前提条件で説明)。次の例では **MultiNIC-VNet** という名前の仮想ネットワークを指定します。
 
 ## 他のサブネットへのセカンダリ NIC アクセス
 
@@ -265,4 +265,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 - [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md) をデプロイします。
 - [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md) をデプロイします。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

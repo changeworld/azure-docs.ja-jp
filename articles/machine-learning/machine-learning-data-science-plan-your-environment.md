@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="02/08/2016" 
 	ms.author="bradsev" />
 
 
@@ -114,4 +114,4 @@ Azure Machine Learning 環境を例とします。
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

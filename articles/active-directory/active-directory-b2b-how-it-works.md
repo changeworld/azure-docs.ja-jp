@@ -2,6 +2,7 @@
    pageTitle="Azure AD B2B コラボレーション プレビュー: 動作のしくみ | Microsoft Azure"
    description="Azure Active Directory B2B コラボレーションが、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートする方法を説明します"
    services="active-directory"
+   documentationCenter=""
    authors="viv-liu"
    manager="cliffdi"
    editor=""
@@ -41,5 +42,6 @@ Azure AD B2B コラボレーションは、招待/利用モデルに基づいて
  - [外部ユーザー トークンの形式](active-directory-b2b-references-external-user-token-format.md)
  - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
  - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
+ - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

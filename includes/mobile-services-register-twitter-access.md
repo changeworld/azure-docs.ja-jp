@@ -2,11 +2,11 @@
 
 新しい Twitter v1.1 API では、リソースにアクセスする前にアプリケーションの認証が求められます。まず、OAuth 2.0 を使用して、アクセスの要求に必要な資格情報を取得する必要があります。次に、モバイル サービス用のアプリケーション設定にその資格情報を安全に保存します。
 
-1. そのような操作をまだ実行していない場合には、トピック「<a href="../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md/" target="_blank">Mobile Services での Twitter ログイン用のアプリケーションの登録</a>」の手順を実行します。 
+1. そのような操作をまだ実行していない場合には、トピック「[モバイル サービスでの Twitter ログイン用のアプリケーションの登録](../../includes/mobile-services-how-to-register-twitter-authentication.md)」の手順を実行します。 
   
   	Twitter v1.1 API にアクセスできるようにするために必要な資格情報は、Twitter が生成します。この資格情報は Twitter デベロッパーの Web サイトから取得できます。
 
-2. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter デベロッパー</a>の Web サイトに移動し、Twitter アカウント資格情報でサインインして、自分の Twitter アプリを選択します。
+2. [Twitter デベロッパー](http://go.microsoft.com/fwlink/p/?LinkId=268300)の Web サイトに移動し、Twitter アカウント資格情報でサインインして、自分の Twitter アプリを選択します。
 
 3. アプリケーションの [**キーとアクセス トークン**] タブで、次の値をメモしておきます。
 
@@ -36,4 +36,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [アプリ設定]: http://msdn.microsoft.com/library/azure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

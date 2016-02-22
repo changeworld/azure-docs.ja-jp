@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Azure で使用するための Red Hat Enterprise Linux VHD の作成とアップロード" 
-	description="Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="SuperScottz" 
-	manager="timlt" 
+<properties
+	pageTitle="Azure で使用するための Red Hat Enterprise Linux VHD の作成とアップロード"
+	description="Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="SuperScottz"
+	manager="timlt"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/23/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="11/23/2015"
 	ms.author="mingzhan"/>
 
 
 # Azure 用の Red Hat ベースの仮想マシンの準備
-この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.7、7.1、および 7.2 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMWare です。Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)および[ Azure での RHEL の実行に関するページ](https://access.redhat.com/articles/1989673)を参照してください。
+この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。この記事で取り上げる RHEL のバージョンは 6.7、7.1、および 7.2 です。準備対象のハイパーバイザーは、Hyper-V、KVM、および VMware です。Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)および[ Azure での RHEL の実行に関するページ](https://access.redhat.com/articles/1989673)を参照してください。
 
 [Hyper-V マネージャーからの RHEL 6.7 仮想マシンの準備](#rhel67hyperv)
 
@@ -35,8 +35,8 @@
 [kickstart ファイルからの RHEL 7.1/7.2 仮想マシンの準備](#rhel7xkickstart)
 
 
-##Hyper-V マネージャーからのイメージの準備 
-###前提条件
+## Hyper-V マネージャーからのイメージの準備
+### 前提条件
 このセクションでは、Red Hat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) に既にインストールされていることを前提としています。Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、「[Hyper-V ロールのインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 **RHEL のインストールに関する注記**
@@ -80,7 +80,7 @@
         IPV6INIT=no
 
 6.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
-            
+
         # sudo mkdir -m 0700 /var/lib/waagent
         # sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
         # sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
@@ -100,9 +100,9 @@
 
 10.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/boot/grub/menu.lst` を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
-        console=ttyS0 
-        earlyprintk=ttyS0 
-        rootdelay=300 
+        console=ttyS0
+        earlyprintk=ttyS0
+        rootdelay=300
         numa=off
 
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、RHEL 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
@@ -177,8 +177,8 @@
 
 7.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/etc/default/grub` を開き、次のように、**GRUB\_CMDLINE\_LINUX** パラメーターを編集します。
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 
-        console=ttyS0 
+        GRUB_CMDLINE_LINUX="rootdelay=300
+        console=ttyS0
         earlyprintk=ttyS0"
 
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを削除することをお勧めします。
@@ -202,7 +202,7 @@
 11.	次のコマンドを実行して Azure Linux エージェントをインストールします。
 
         # sudo yum install WALinuxAgent
-        # sudo systemctl enable waagent.service 
+        # sudo systemctl enable waagent.service
 
 12.	OS ディスクにスワップ領域を作成しないでください。Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
@@ -217,7 +217,7 @@
         # sudo subscription-manager unregister
 
 14.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
-        
+
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
@@ -225,7 +225,7 @@
 15.	Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
-##KVM からのイメージの準備 
+## KVM からのイメージの準備
 
 ### <a id="rhel67kvm"></a>KVM からの RHEL 6.7 仮想マシンの準備###
 
@@ -238,7 +238,7 @@
 
         # openssl passwd -1 changeme
     guestfish でルート パスワードを設定します。
-       
+
         # guestfish --rw -a <image-name>
         ><fs> run
         ><fs> list-filesystems
@@ -295,7 +295,7 @@
         # yum remove cloud-init
 
 11.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
- 
+
         # chkconfig sshd on
 
     /etc/ssh/sshd\_config を変更して、次の行を含めます。
@@ -326,7 +326,7 @@
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
 15.	次のコマンドを実行して、サブスクリプションを登録解除します (必要な場合)。
-        
+
         # subscription-manager unregister
 
 16.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
@@ -337,8 +337,8 @@
 
 17.	KVM で VM をシャット ダウンします。
 
-18.	qcow2 イメージを vhd 形式に変換します。まず、イメージを未加工形式に変換します。
-         
+18.	qcow2 イメージを vhd 形式に変換します。まず、イメージを未加工の形式に変換します。
+
          # qemu-img convert -f qcow2 –O raw rhel-6.7.qcow2 rhel-6.7.raw
     未加工のイメージのサイズが 1 MB になっていることを確認します。そうでない場合は、1 MB になるようにサイズの端数を切り上げます: # MB=$((1024*1024)) # size=$(qemu-img info -f raw --output json "rhel-6.7.raw" | \\ gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}') # rounded\_size=$((($size/$MB + 1)*$MB))
 
@@ -354,7 +354,7 @@
 
 1.	Red Hat の Web サイトから RHEL 7.1 (または 7.2) の KVM イメージをダウンロードします。次の例では RHEL 7.1 を使用します。
 
-2.	ルート パスワードの設定
+2.	ルート パスワードを設定します。
 
     暗号化されたパスワードを生成し、コマンドの出力をコピーします。
 
@@ -398,8 +398,8 @@
 
 8.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/etc/default/grub` を開き、次のように、**GRUB\_CMDLINE\_LINUX** パラメーターを編集します。
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 
-        console=ttyS0 
+        GRUB_CMDLINE_LINUX="rootdelay=300
+        console=ttyS0
         earlyprintk=ttyS0"
 
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを削除することをお勧めします。
@@ -411,7 +411,7 @@
 9.	上記のとおりに `/etc/default/grub` の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
-        
+
 10.	Hyper-V モジュールを initramfs に追加します。
 
     `/etc/dracut.conf` を編集して、コンテンツを追加します。
@@ -421,7 +421,7 @@
     Initramfs を再構築します。
 
         # dracut –f -v
-        
+
 11.	cloud-init をアンインストールします。
 
         # yum remove cloud-init
@@ -437,7 +437,7 @@
 
     sshd を起動します。
 
-        systemctl restart sshd	
+        systemctl restart sshd
 
 13.	WALinuxAgent パッケージ `WALinuxAgent-<version>` が Fedora EPEL 6 リポジトリにプッシュされました。次のコマンドを実行して epel リポジトリを有効にします。
 
@@ -492,10 +492,10 @@
          # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.1.raw rhel-7.1.vhd
 
 
-##VMWare からのイメージの準備
-###前提条件
-このセクションでは、VMWare に RHEL の仮想マシンが既にインストールされていると仮定します。VMWare にオペレーティング システムをインストールする方法の詳細については、[VMWare のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
- 
+## VMware からのイメージの準備
+### 前提条件
+このセクションでは、VMware に RHEL の仮想マシンが既にインストールされていると仮定します。VMware にオペレーティング システムをインストールする方法の詳細については、[VMware のゲスト オペレーティング システムのインストール ガイド](http://partnerweb.vmware.com/GOSIG/home.html)を参照してください。
+
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 
 - OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
@@ -504,7 +504,7 @@
 
 
 
-### <a id="rhel67vmware"></a>VMWare からの RHEL 6.7 仮想マシンの準備###
+### <a id="rhel67vmware"></a>VMware からの RHEL 6.7 仮想マシンの準備###
 
 1.	次のコマンドを実行して NetworkManager をアンインストールします。
 
@@ -548,9 +548,9 @@
 
 8.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/boot/grub/menu.lst" を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
-        console=ttyS0 
-        earlyprintk=ttyS0 
-        rootdelay=300 
+        console=ttyS0
+        earlyprintk=ttyS0
+        rootdelay=300
         numa=off
 
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、RHEL 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。上記のほかに、次のパラメーターを削除することをお勧めします。
@@ -569,7 +569,7 @@
         # sudo chkconfig waagent on
 
 11.	OS ディスクにスワップ領域を作成しないでください。
-    
+
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは一時ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux Agent のインストール後に (前の手順を参照)、`/etc/waagent.conf` にある次のパラメーターを正確に変更します。
 
         ResourceDisk.Format=y
@@ -584,7 +584,7 @@
 
 13.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-        # sudo waagent -force -deprovision 
+        # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
@@ -607,7 +607,7 @@
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
 
-### <a id="rhel7xvmware"></a>VMWare からの RHEL 7.1/7.2 仮想マシンの準備###
+### <a id="rhel7xvmware"></a>VMware からの RHEL 7.1/7.2 仮想マシンの準備###
 
 1.	/etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
@@ -634,8 +634,8 @@
 
 5.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで `/etc/default/grub` を開き、次のように、**GRUB\_CMDLINE\_LINUX** パラメーターを編集します。
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 
-        console=ttyS0 
+        GRUB_CMDLINE_LINUX="rootdelay=300
+        console=ttyS0
         earlyprintk=ttyS0"
 
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを削除することをお勧めします。
@@ -710,10 +710,10 @@
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.1.raw rhel-7.1.vhd
 
 
-##kickstart ファイルを使用して ISO から自動的に準備する
+## kickstart ファイルを使用して ISO から自動的に準備する
 
 
-### <a id="rhel7xkickstart"></a>kickstart ファイルからの RHEL 7.1/7.2 仮想マシンの準備###
+### <a id="rhel7xkickstart"> </a>kickstart ファイルからの RHEL 7.1/7.2 仮想マシンの準備###
 
 
 1.	以下のコンテンツを含む kickstart ファイルを作成し、ファイルを保存します。kickstart のインストールの詳細については、「[kickstart インストール ガイド](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)」を参照してください。
@@ -826,16 +826,16 @@
 
         %end
 
- 
+
 
 2.	インストール システムから到達可能な場所に kickstart ファイルを置きます。
- 
+
 3.	Hyper-V マネージャーで新しい VM を作成します。**[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
 
 4.	VM 設定を開きます。
 
     a.新しい仮想ハード ディスクを VM に接続し、**[VHD 形式]**、**[固定サイズ]** の順に選択します。
-    
+
     b.インストール ISO を DVD ドライブに接続します。
 
     c.CD から起動するように BIOS を設定します。
@@ -846,10 +846,10 @@
 
 7.	インストールが完了するのを待ちます。完了すると、VM は自動的にシャット ダウンします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-##既知の問題
+## 既知の問題
 HYPER-V と Azure で RHEL 7.1 を使用する場合に既知の問題があります。
 
-###問題: ディスク I/O のフリーズ 
+### 問題: ディスク I/O のフリーズ
 
 この問題は、Hyper-V および Azure のRHEL 7.1 で、ストレージ ディスク I/O のアクティビティが頻繁な場合に発生する可能性があります。
 
@@ -857,15 +857,15 @@ HYPER-V と Azure で RHEL 7.1 を使用する場合に既知の問題があり�
 
 この問題の発生は断続的です。Hyper-V および Azure で頻繁に行われるディスク I/O 操作中に非常によく発生します。
 
-    
-[AZURE.NOTE]この既知の問題は既に Red Hat で解決されています。関連付けられている修正プログラムをインストールするには、次のコマンドを実行します。
+
+[AZURE.NOTE] この既知の問題は既に Red Hat で解決されています。関連付けられている修正プログラムをインストールするには、次のコマンドを実行します。
 
     # sudo yum update
 
 
 ## 次のステップ
-これで、Red Hat Enterprise Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
- 
+これで、Red Hat Enterprise Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
+
 Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

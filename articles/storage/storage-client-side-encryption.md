@@ -3,7 +3,7 @@
 	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
 	services="storage"
 	documentationCenter=".net"
-	authors="tamram"
+	authors="robinsh"
 	manager="carmonm"
 	editor="tysonn"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="02/08/2016"
 	ms.author="lakasa"/>
 
 
@@ -246,4 +246,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

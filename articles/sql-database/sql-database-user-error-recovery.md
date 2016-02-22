@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="11/09/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # ユーザー エラーからの Azure SQL Database の復旧
@@ -106,4 +106,4 @@ Azure ポータルでポイントインタイム リストアを使用するに�
 	
 4.	「[データベース操作の状態](http://msdn.microsoft.com/library/azure/dn720371.aspx)」の操作を使用して、復元の状態を追跡します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

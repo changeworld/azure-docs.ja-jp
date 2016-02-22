@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #Pig コマンド (SSH) を使用して Linux ベースのクラスターで Pig ジョブを実行する
@@ -25,7 +25,7 @@
 
 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-> [AZURE.NOTE]Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
+> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -101,7 +101,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 		STORE RESULT into 'wasb:///example/data/pigout';
 
-	> [AZURE.NOTE]データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラーが発生します。
+	> [AZURE.NOTE] データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラーが発生します。
 
 7. エラーを解決するには、次のステートメントを入力します。
 
@@ -154,4 +154,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

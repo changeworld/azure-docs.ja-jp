@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/22/2015" 
+	ms.date="02/05/2016" 
 	ms.author="nitinme"/>
 
 
@@ -117,7 +117,9 @@ Spark クラスターで現在実行されているアプリケーションを�
 
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
-### 拡張機能
+### ツールと拡張機能
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -136,4 +138,4 @@ Spark クラスターで現在実行されているアプリケーションを�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="02/09/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
@@ -65,7 +65,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
 
   1.  [Azure クラシック ポータル]にログオンします。
   2.  モバイル サービスを選択します。
-  3.  **[スケール]** タブを選択します。
+  3.  **[スケール アップ]** タブを選択します。
   4.  **[モバイル サービス層]** で **[STANDARD]** 層をクリックします。ページの下部にある **[保存]** アイコンをクリックします。
 
 移行後、価格レベルを適切な設定に必ず戻してください。
@@ -86,7 +86,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
 
 Free または Basic 価格レベルのモバイル サービスを移行すると、その価格レベルのすべてのモバイル サービスが同時に移行されます。移行の間、Standard に[モバイルサービスを格上げする](#opt-raise-service-tier)ことでこれを回避できます。
 
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
+利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「*移行中*」として一覧表示されます。
 
   ![移行アクティビティ モニター][1]
 
@@ -143,7 +143,7 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 この作業は任意ですが、管理しやすくなります。
 
-> [AZURE.TIP] Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.TIP]  Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 
@@ -192,7 +192,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 複数のアプリ設定を同時に更新できます。
 
-> [AZURE.TIP] 同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> [AZURE.TIP]  同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
 
 ### <a name="authentication"></a>認証
 
@@ -281,7 +281,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 
 詳細については、[Notification Hubs] ドキュメントを確認してください。
 
-> [AZURE.TIP] "[Azure ポータル]"の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+> [AZURE.TIP] [Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
 
 ### <a name="app-settings"></a>その他のアプリ設定
 
@@ -393,4 +393,4 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0211_2016-->

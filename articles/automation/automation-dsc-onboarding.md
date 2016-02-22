@@ -20,7 +20,7 @@
 
 ## Azure Automation DSC でマシンを管理する理由
 
-[PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx) と同様、Azure Automation Desired State Configuration は、すべてのクラウドまたはオンプレミス データセンターの DSC ノード (物理および仮想マシン) のシンプルでありながら強力な構成管理サービスです。これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。Azure Automation DSC 管理レイヤーは、Azure Automation 管理レイヤーが PowerShell スクリプトに対応する DSC に対応します。つまり、Azure Automation が Powershell スクリプトを管理するのに役立つように、DSC 構成の管理にも役立ちます。Azure Automation DSC を使用する利点の詳細については、「[Azure Automation DSC の概要](automation-dsc-overview/)」を参照してください。
+[PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx) と同様、Azure Automation Desired State Configuration は、すべてのクラウドまたはオンプレミス データセンターの DSC ノード (物理および仮想マシン) のシンプルでありながら強力な構成管理サービスです。これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。Azure Automation DSC 管理レイヤーは、Azure Automation 管理レイヤーが PowerShell スクリプトに対応する DSC に対応します。つまり、Azure Automation を使用して、PowerShell スクリプトを管理するのと同様に DSC 構成も管理できます。Azure Automation DSC を使用するメリットの詳細については、「[Azure Automation DSC の概要](automation-dsc-overview/)」をご覧ください。
 
 以下のさまざまなマシンを管理する際に、Azure Automation DSC を使用できます。
 
@@ -40,7 +40,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
 
 ### Azure ポータル
 
-[Azure プレビュー ポータル](http://portal.azure.com/)で、**[参照]**、**[仮想マシン (クラシック)]** の順にクリックします。オンボードする Windows VM を選択します。仮想マシンのダッシュボード ブレードで、**[すべての設定]**、**[拡張機能]**、**[追加]**、**[Azure Automation DSC]**、**[作成]** の順にクリックします。ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)、Automation アカウントの登録キーと登録 URL、および必要に応じて VM に割り当てるノード構成を入力します。
+[Azure ポータル](http://portal.azure.com/)で、**[参照]**、**[仮想マシン (クラシック)]** の順にクリックします。オンボードする Windows VM を選択します。仮想マシンのダッシュボード ブレードで、**[すべての設定]**、**[拡張機能]**、**[追加]**、**[Azure Automation DSC]**、**[作成]** の順にクリックします。ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)、Automation アカウントの登録キーと登録 URL、および必要に応じて VM に割り当てるノード構成を入力します。
 
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -54,7 +54,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
     Add-AzureAccount
     Add-AzureRmAccount
     
-    # fill in correct values for your VM / Automation Account here
+    # fill in correct values for your VM/Automation account here
     $VMName = ""
     $ServiceName = ""
     $AutomationAccountName = ""
@@ -75,7 +75,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
       ModulesUrl = "https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfigV2.zip"
       ConfigurationFunction = "RegistrationMetaConfigV2.ps1\RegistrationMetaConfigV2"
 
-    # update these DSC agent Local Configuration Manager defaults if they do not match your use case.
+    # update these PowerShell DSC Local Configuration Manager defaults if they do not match your use case.
     # See https://technet.microsoft.com/library/dn249922.aspx?f=255&MSPPError=-2147217396 for more details
      Properties = @{
         RegistrationKey = @{
@@ -117,7 +117,7 @@ Azure Automation DSC では、Azure ポータル、Azure リソース マネー�
 
 ### Azure ポータル
 
-[Azure プレビュー ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュ ボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
+[Azure ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。Automation アカウントのダッシュ ボードで、**[DSC ノード]**、**[Azure VM の追加]** の順にクリックします。
 
 **[オンボードする仮想マシンの選択]** で、オンボードする 1 つ以上の Azure Virtual Machines を選択します。
 
@@ -135,7 +135,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 ### PowerShell
 
-[Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) コマンドレットを使用して、Azure プレビュー ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
+[Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) コマンドレットを使用して、Azure ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
 
 ## オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
 
@@ -169,13 +169,13 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 3.	以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」セクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
 4.  以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。
     	
-    	$SecurePass = ConvertTo-SecureString -string "<root password>" -AsPlainText -Force
-        $Cred = New-Object System.Management.Automation.PSCredential "root", $SecurPass
-        $Opt = New-CimSessionOption -UseSs1:$true -SkipCACheck:$true -SkipCNCheck:$true -SkipRevocationCheck:$true
+    	$SecurePass = ConvertTo-SecureString -String "<root password>" -AsPlainText -Force
+        $Cred = New-Object System.Management.Automation.PSCredential "root", $SecurePass
+        $Opt = New-CimSessionOption -UseSsl -SkipCACheck -SkipCNCheck -SkipRevocationCheck
 
         # need a CimSession for each Linux machine to onboard
         
-        $Session = New-CimSession -Credential:$Cred -ComputerName:<your Linux machine> -Port:5986 -Authentication:basic -SessionOption:$Opt
+        $Session = New-CimSession -Credential $Cred -ComputerName <your Linux machine> -Port 5986 -Authentication basic -SessionOption $Opt
     	
     	Set-DscLocalConfigurationManager -CimSession $Session –Path C:\Users\joe\Desktop\DscMetaConfigs
 	
@@ -204,7 +204,7 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
             param 
             ( 
                 [Parameter(Mandatory=$True)] 
-                $RegistrationUrl,
+                [String]$RegistrationUrl,
          
                 [Parameter(Mandatory=$True)] 
                 [String]$RegistrationKey,
@@ -339,7 +339,7 @@ Azure Automation DSC を使用すると、構成管理のための Azure Windows
 
 >[AZURE.NOTE] Azure VM Desired State Configuration 拡張機能を使用する Azure Automation DSC への Azure Windows VM のオンボード方法では、ノードが Azure Automation に登録済みと表示されるまでに最大で 1 時間かかる場合があります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
-トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure プレビュー ポータルでオンボードされている VM に移動してから、**[すべての設定]**、**[拡張機能]**、**[DSC]** の順にクリックします。詳細は、**[詳細な状態の表示]** をクリックして表示できます。
+トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure ポータルでオンボードされている VM に移動し、**[すべての設定]**、**[拡張機能]**、**[DSC]** の順にクリックします。詳細は、**[詳細な状態の表示]** をクリックして表示できます。
 
 [![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
 
@@ -359,4 +359,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

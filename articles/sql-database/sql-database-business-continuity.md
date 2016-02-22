@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="11/16/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # 概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧
@@ -88,4 +88,4 @@ geo リストアも、Basic、Standard、Premium のデータベースで利用�
 
 アクティブ geo レプリケーションは、Premium のデータベースで利用できます。最もアグレッシブな復旧要件の書き込み重視アプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。標準 geo レプリケーションと同様に、セカンダリのいずれかへフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。geo レプリケーションの構成方法の詳細については、「[ビジネス継続性のための設計](sql-database-business-continuity-design.md)」、セカンダリ データベースへフェールオーバー する方法の詳細については、「[障害からの回復](sql-database-disaster-recovery.md)」をご覧ください。ダウンタイムなくアプリケーションのアップグレードを実装する方法の詳細については、「[ダウンタイムのないアプリケーションのアップグレード](sql-database-business-continuity-application-upgrade.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

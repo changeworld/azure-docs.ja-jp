@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="リソース マネージャーで Azure CLI を使用した静的パブリック IP を持つ VM のデプロイ | Microsoft Azure"
-   description="リソース マネージャーでプレビュ ポータルを使用して、静的パブリック IP を持つ VM をデプロイする方法について説明します"
+   pageTitle="リソース マネージャーで Azure ポータルを使用した静的パブリック IP を持つ VM のデプロイ | Microsoft Azure"
+   description="リソース マネージャーで Azure ポータルを使用して、静的パブリック IP を持つ VM をデプロイする方法について説明します"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/08/2016"
+   ms.date="02/04/2016"
    ms.author="telmos" />
 
 # Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする
@@ -59,4 +59,4 @@ Azure ポータルで静的パブリック IP アドレスを持つ VM を作成
 
 	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

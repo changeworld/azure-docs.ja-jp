@@ -252,11 +252,11 @@ CSS 更新を発行して、CSS URL で別のバージョン番号を使用す�
 
 Azure CDN と Azure App Service または Azure Cloud Services の統合には、次の利点があります。
 
-- コンテンツのデプロイメント (イメージ、スクリプト、およびスタイルシート) を、Azure Web アプリの[継続的なデプロイメント](../web-sites-publish-source-control.md) プロセスの一部として統合
+- コンテンツのデプロイメント (イメージ、スクリプト、およびスタイルシート) を、Azure Web アプリの[継続的なデプロイメント](../app-service-web/web-sites-publish-source-control.md) プロセスの一部として統合
 - JQuery や Bootstrap のバージョンなど、CDN によって配信される NuGet パッケージを簡単にアップグレード 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 
-関連するチュートリアルは、次の項目を参照してください。 - [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md) - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
+関連するチュートリアルは、次の項目を参照してください。 - [Azure App Service で Azure CDN を使用する](../app-service-web/cdn-websites-with-cdn.md) - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 
 Azure App Service Web Apps または Azure Cloud Services と統合しなくても、Azure CDN をスクリプト バンドルに使用することはできますが、次の点に注意してください。
 
@@ -267,10 +267,10 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 
 ## 詳細情報 ##
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
-- [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md)
+- [Azure App Service で Azure CDN を使用する](../app-service-web/cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 - [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

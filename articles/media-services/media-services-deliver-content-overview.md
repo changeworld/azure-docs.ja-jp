@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/27/2015" 
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -190,4 +190,4 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

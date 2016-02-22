@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="12/28/2015"
+	ms.date="02/07/2016"
 	ms.author="mahender"/>
 
 # カスタム認証の使用
@@ -26,11 +26,11 @@
 ## 概要
 このトピックでは、独自の Mobile Services 認証トークンを発行して、Azure Mobile Services .NET バックエンドでユーザーを認証する方法について説明します。このチュートリアルでは、アプリケーションのカスタム ユーザー名とパスワードを使用して、クイック スタート プロジェクトに認証を追加します。
 
->[AZURE.NOTE]このチュートリアルでは、カスタムの資格情報を使用して Mobile Services を認証する高度な方法を説明します。多くのアプリケーションでは、代わりに組み込みのソーシャル ID プロバイダーを使用する方法が最適であり、ユーザーは Facebook、Twitter、Google、Microsoft アカウント、および Azure Active Directory を介してログインすることができます。Mobile Services の認証を初めて使用する場合は、「[アプリへの認証の追加]」チュートリアルを参照してください。
+>[AZURE.NOTE] このチュートリアルでは、カスタムの資格情報を使用して Mobile Services を認証する高度な方法を説明します。多くのアプリケーションでは、代わりに組み込みのソーシャル ID プロバイダーを使用する方法が最適であり、ユーザーは Facebook、Twitter、Google、Microsoft アカウント、および Azure Active Directory を介してログインすることができます。Mobile Services の認証を初めて使用する場合は、「[アプリへの認証の追加]」チュートリアルを参照してください。
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。
 
->[AZURE.IMPORTANT]このチュートリアルの目的は、Mobile Services の認証トークンを発行する方法を説明することです。このチュートリアルは、セキュリティに関するガイダンスを示すものではありません。アプリケーションを開発する際には、パスワードの保存がセキュリティに及ぼす影響について認識し、ブルート フォース攻撃に対応する戦略を用意する必要があります。
+>[AZURE.IMPORTANT] このチュートリアルの目的は、Mobile Services の認証トークンを発行する方法を説明することです。このチュートリアルは、セキュリティに関するガイダンスを示すものではありません。アプリケーションを開発する際には、パスワードの保存がセキュリティに及ぼす影響について認識し、ブルート フォース攻撃に対応する戦略を用意する必要があります。
 
 ## アカウント テーブルを設定する
 
@@ -336,7 +336,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
         [AuthorizeLevel(AuthorizationLevel.Anonymous)]
 
->[AZURE.IMPORTANT]運用で使用する `CustomLoginController` には、ブルート フォース攻撃を検出する戦略を盛り込む必要もあります。そうしない場合、作成したサインイン ソリューションが攻撃に対して脆弱になる可能性があります。
+>[AZURE.IMPORTANT] 運用で使用する `CustomLoginController` には、ブルート フォース攻撃を検出する戦略を盛り込む必要もあります。そうしない場合、作成したサインイン ソリューションが攻撃に対して脆弱になる可能性があります。
 
 ## 認証を要求するようにモバイル サービスを構成する
 
@@ -381,13 +381,13 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
  	![](./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-custom-auth-access-success.png)
 
->[AZURE.IMPORTANT]テストのためにこのモバイル サービス プロジェクトも Azure に発行することを選択する場合は、サインインおよび認証プロバイダーが攻撃に対して脆弱であることに注意してください。プロバイダーが適切に強化されているか、または保護されているテスト データが重要ではないことを確認してください。カスタム認証方式を使用して運用環境のサービスを保護する前に、十分に注意してください。
+>[AZURE.IMPORTANT] テストのためにこのモバイル サービス プロジェクトも Azure に発行することを選択する場合は、サインインおよび認証プロバイダーが攻撃に対して脆弱であることに注意してください。プロバイダーが適切に強化されているか、または保護されているテスト データが重要ではないことを確認してください。カスタム認証方式を使用して運用環境のサービスを保護する前に、十分に注意してください。
 
 ## クライアントからカスタム認証を使用してサインインする
 
 このセクションでは、クライアントからカスタム認証エンドポイントにアクセスしてモバイル サービスへのアクセスに必要な認証トークンを取得するために必要な手順について説明します。必要な特定のクライアント コードはクライアントによって異なり、ここで提供するガイダンスはプラットフォームに依存しないものです。
 
->[AZURE.NOTE]Mobile Services クライアント ライブラリは、HTTPS でサービスと通信します。このソリューションではパスワードをプレーン テキストとして送信する必要があるため、直接 REST 要求を使用してこれらのエンドポイントを呼び出すときは、HTTPS を使用することを確認する必要があります。
+>[AZURE.NOTE] Mobile Services クライアント ライブラリは、HTTPS でサービスと通信します。このソリューションではパスワードをプレーン テキストとして送信する必要があるため、直接 REST 要求を使用してこれらのエンドポイントを呼び出すときは、HTTPS を使用することを確認する必要があります。
 
 1. ユーザーがユーザー名とパスワードを入力するのに必要な UI 要素をクライアント アプリで作成します。
 
@@ -395,7 +395,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 	Accounts テーブルにユーザー ログイン情報を保持するなら、特定のユーザーについて **CustomRegistration** エンドポイントを呼び出してアカウントを作成するのは 1 回だけで済みます。サポートされているさまざまなクライアント プラットフォームでカスタム API を呼び出す方法の例については、記事「[Custom API in Azure Mobile Services – client SDKs (Azure Mobile Services でのカスタム API - クライアント SDK)](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)」を参照してください。
 
-	> [AZURE.IMPORTANT]このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。SendGrid を使用して Mobile Services から電子メールを送信することもできます。SendGrid の詳細な使用方法については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
+	> [AZURE.IMPORTANT] このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。SendGrid を使用して Mobile Services から電子メールを送信することもできます。SendGrid の詳細な使用方法については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
 
 3. 適切な **invokeApi** メソッドを再び使用して今度は **CustomLogin** エンドポイントを呼び出し、実行時に提供されるユーザー名とパスワードをメッセージ本文で渡します。
 
@@ -424,4 +424,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ClaimsIdentity]: https://msdn.microsoft.com/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0211_2016-->

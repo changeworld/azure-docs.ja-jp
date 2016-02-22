@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="11/16/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # ビジネス継続性に関する FAQ
@@ -60,4 +60,4 @@
 
 [sys.dm\_geo\_replication\_link\_status](https://msdnstage.redmond.corp.microsoft.com/library/mt575504.aspx) 動的管理ビュー (DMV) を使用して、前回のレプリケーション時刻や前回のレプリケーション遅延など、レプリケーション リンクに関する情報を取得します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

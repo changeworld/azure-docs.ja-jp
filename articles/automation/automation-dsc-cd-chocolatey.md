@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="11/11/2015"
+   ms.date="02/04/2016"
    ms.author="golive"/>
 
 # 使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
@@ -78,7 +78,7 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 手動による方法もあります。Windows コンピューター用の PowerShell 統合モジュールのフォルダー構造は、Azure Automation で必要なフォルダー構造とは少し異なります。ユーザーが少し調整する必要があります。しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。 PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
 -   次のように、ワークステーションに必要なモジュールをインストールします。
-    -   [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします。 
+    -   [Windows Management Framework v5](http://www.microsoft.com/download/details.aspx?id=48729) をインストールします (Win10 では不要)。
     -   `Install-Module  –ModuleName MODULENAME` (PowerShell ギャラリーからモジュールを取得します)。 
 -   `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。 
 -   メイン フォルダーからサンプルとドキュメントを削除します。 
@@ -88,7 +88,7 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 
         New-AzureAutomationModule ``
             -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT ``
-            -Name MODULE-NAME –ContentLink "https://STORAGE-URI/public/MODULE-NAME.zip"
+            -Name MODULE-NAME –ContentLink "https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip"
         
 
 ここに含まれる例では、cChoco と xNetworking に対してこれらの手順を実行します。cChoco への特別な操作については、「[メモ](#notes)」を参照してください。
@@ -177,8 +177,6 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 
 もちろん、実稼働環境にある VM 上のパッケージを更新する場合は、更新プログラムのインストール時にローテーションからその VM を除外する必要があります。この方法はさまざまです。たとえば、Azure Load Balancer の背後にある VM では、カスタム プローブを追加できます。VM の更新時に、プローブ エンドポイントから 400 が返されるようにします。この変更に必要な微調整は構成内で行うことができます。更新が完了したら、200 が返されるように微調整して元に戻すことができます。
 
-PowerShell ギャラリーの cChoco DSC リソースのバージョンはソースに対して最新ではない場合があります。GitHub のソース プロジェクトの cChoco.zip は最新です。インストールするには、前の手順 3. に示した手動の方法を使用します。
-
 この使用例の完全なソースは、GitHub の[この Visual Studio プロジェクト](https://github.com/sebastus/ARM/tree/master/CDIaaSVM)にあります。
 
 ##関連記事##
@@ -187,4 +185,4 @@ PowerShell ギャラリーの cChoco DSC リソースのバージョンはソー
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

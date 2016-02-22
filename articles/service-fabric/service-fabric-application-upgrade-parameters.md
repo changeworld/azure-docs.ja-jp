@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/17/2015"
+   ms.date="02/09/2016"
    ms.author="subramar"/>
 
 
@@ -36,7 +36,7 @@
 | HealthCheckStableDurationSec | 次のアップグレード ドメインへの移行またはアップグレードが完了する前に、アプリケーションが安定していることを確認するための待機時間 (秒)。この待機期間を使用して、正常性チェックが実行された直後に、正常性の変更が未検出にならないようにします。既定値は 0 秒です。アプリケーションに合わせてカスタマイズしてください。 |
 | UpgradeDomainTimeoutSec | 1 つのアップグレード ドメインをアップグレードするための最大時間 (秒)。このタイムアウトに達すると、アップグレードは停止され、UpgradeFailureAction で指定したアクションが実行されます。既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 |
 | UpgradeTimeout | 全体のアップグレードに適用されるタイムアウト (秒)。このタイムアウトに達すると、アップグレードは停止され、UpgradeFailureAction がトリガーされます。既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 |
-| UpgradeHealthCheckInterval | 正常性状態をチェックする頻度。このパラメーターは、クラスター マニフェストの ClusterManager セクションで指定します (アップグレード コマンドレットの一環では指定されません)。 既定値は 60 秒です。 |
+| UpgradeHealthCheckInterval | 正常性状態をチェックする頻度。このパラメーターは、_クラスター_ _マニフェスト_の ClusterManager セクションで指定します (アップグレード コマンドレットの一環では指定されません)。 既定値は 60 秒です。 |
 
 
 
@@ -67,15 +67,15 @@
 
 ## 次のステップ
 
+「[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)」では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
-[Visual Studio による Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+「[Powershell によるアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)」では、PowerShell を使用してアプリケーションをアップグレードする方法について説明します。
 
-[PowerShell を使用した Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)
+[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
-[手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
+「[高度なトピック](service-fabric-application-upgrade-advanced.md)」を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
-[アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+ 
 
-[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
-
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

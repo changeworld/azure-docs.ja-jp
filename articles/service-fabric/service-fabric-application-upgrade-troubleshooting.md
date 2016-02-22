@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/11/2015"
+   ms.date="02/04/2016"
    ms.author="subramar"/>
 
 # アプリケーションのアップグレードのトラブルシューティング
@@ -78,13 +78,13 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ~~~
 
-この例では、アップグレード ドメイン MYUD1 でアップグレードが失敗し、2 つのパーティション (744c8d9f-1d26-417e-a60e-cd48f5c098f0 と 4b43f4d8-b26b-424e-9307-7a7a62e79750) がスタックし、ターゲット ノード Node1 と Node4 でプライマリ レプリカ (WaitForPrimaryPlacement) を配置することができないことがわかります。
+この例では、アップグレード ドメイン *MYUD1* でアップグレードが失敗し、2 つのパーティション (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* と *4b43f4d8-b26b-424e-9307-7a7a62e79750*) がスタックし、ターゲット ノード *Node1* と *Node4* でプライマリ レプリカ (*WaitForPrimaryPlacement*) を配置することができないことがわかります。
 
-**Get-ServiceFabricNode** コマンドを使用して、これら 2 つのノードがアップグレード ドメイン MYUD1 にあることを確認できます。UpgradePhase は PostUpgradeSafetyCheck を出力していますが、アップグレード ドメイン内のすべてのノードがアップグレードを完了した後にこれらの安全性チェックがなされていることを意味します。これらすべての情報は、潜在的な問題と新しいバージョンのアプリケーション コードを示します。最も一般的な問題は、プライマリ コード パスのオープンまたは昇格でのサービスのエラーです。
+**Get-ServiceFabricNode** コマンドを使用して、これら 2 つのノードがアップグレード ドメイン *MYUD1* にあることを確認できます。*UpgradePhase* は *PostUpgradeSafetyCheck* を出力していますが、アップグレード ドメイン内のすべてのノードがアップグレードを完了した後にこれらの安全性チェックがなされていることを意味します。これらすべての情報は、潜在的な問題と新しいバージョンのアプリケーション コードを示します。最も一般的な問題は、プライマリ コード パスのオープンまたは昇格でのサービスのエラーです。
 
-PreUpgradeSafetyCheck の UpgradePhase は、実際にアップグレードを実行する前のアップグレード ドメインの準備で問題があることを意味します。この場合の最も一般的な問題は、プライマリ コード パスのクローズまたは降格でのサービス エラーです。
+*PreUpgradeSafetyCheck* の *UpgradePhase* は、実際にアップグレードを実行する前のアップグレード ドメインの準備で問題があることを意味します。この場合の最も一般的な問題は、プライマリ コード パスのクローズまたは降格でのサービス エラーです。
 
-現在の **UpgradeState** は RollingBackCompleted であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。元のアップグレードが手動の **FailureAction** を使用して実行されている場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
+現在の **UpgradeState** は *RollingBackCompleted* であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。元のアップグレードが手動の **FailureAction** を使用して実行されている場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
 
 ### 正常性チェックの障害を調査する
 
@@ -142,7 +142,7 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ~~~
 
-正常性チェックの障害を調査するには、まず Service Fabric の正常性モデルを理解する必要があります。ただし、詳しく理解していなくても、fabric:/DemoApp/Svc3 と fabric:/DemoApp/Svc2 という 2 つのサービスに問題が発生し、エラーの正常性レポート (この例では "InjectedFault") が生成されていることがわかります。この例では、4 つのサービスのうち 2 つは異常な状態で、既定のターゲットの 0% の異常な状態を下回っています (MaxPercentUnhealthyServices)。
+正常性チェックの障害を調査するには、まず Service Fabric の正常性モデルを理解する必要があります。ただし、詳しく理解していなくても、*fabric:/DemoApp/Svc3* と *fabric:/DemoApp/Svc2* という 2 つのサービスに問題が発生し、エラーの正常性レポート (この例では "InjectedFault") が生成されていることがわかります。この例では、4 つのサービスのうち 2 つは異常な状態で、既定のターゲットの 0% の異常な状態を下回っています (*MaxPercentUnhealthyServices*)。
 
 アップグレードを開始するときに、**FailureAction** を手動で指定することで、アップグレードが中断されたため、追加のアクションを実行する前に、必要に応じて障害が発生している状態のライブ システムを調査できます。
 
@@ -156,7 +156,7 @@ ServiceTypeHealthPolicyMap              :
 
 **Start-ServiceFabricApplicationRollback** コマンドを使用すると、アプリケーションのロールバックをいつでも開始できます。コマンドが正常に返されると、ロールバック要求が、システムに登録されてすぐに開始されます。
 
-**Resume-ServiceFabricApplicationUpgrade** コマンドを使用すると、アップグレードの残りの項目を一度にアップグレード ドメインを 1 つずつ手動で続行できます。このモードでは、安全性チェックのみが自動実行されます。その他の正常性チェックは実行されません。このコマンドは、UpgradeState が RollingForwardPending を示している場合、つまり、現在のアップグレード ドメインがアップグレードを完了したが、次のアップグレード ドメインがまだ開始されていない (保留中) の場合にのみ使用できます。
+**Resume-ServiceFabricApplicationUpgrade** コマンドを使用すると、アップグレードの残りの項目を一度にアップグレード ドメインを 1 つずつ手動で続行できます。このモードでは、安全性チェックのみが自動実行されます。その他の正常性チェックは実行されません。このコマンドは、*UpgradeState* が *RollingForwardPending* を示している場合、つまり、現在のアップグレード ドメインがアップグレードを完了したが、次のアップグレード ドメインがまだ開始されていない (保留中) の場合にのみ使用できます。
 
 **Update-ServiceFabricApplicationUpgrade** コマンドを使用すると、安全性チェックと正常性チェックの両方が実行されている、監視対象のアップグレードを再開できます。
 
@@ -190,21 +190,21 @@ PS D:\temp>
 
 考えられる原因 1:
 
-Service Fabric は、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値にすべてのパーセンテージを変換し、常に全体のエンティティ数を最も近い値に切り上げします。たとえば、最大の MaxPercentUnhealthyReplicasPerPartition が 21% で、5 個のレプリカがある場合、Service Fabric はパーティションの正常性を評価するときに最大 2 個のレプリカ (つまり `Math.Ceiling (5*0.21)`) が異常であることを許可します。正常性ポリシーは、この点を考慮して設定してください。
+Service Fabric は、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値にすべてのパーセンテージを変換し、常に全体のエンティティ数を最も近い値に切り上げします。たとえば、最大の _MaxPercentUnhealthyReplicasPerPartition_ が 21% で、5 個のレプリカがある場合、Service Fabric はパーティションの正常性を評価するときに最大 2 個のレプリカ (つまり `Math.Ceiling (5*0.21)`) が異常であることを許可します。正常性ポリシーは、この点を考慮して設定してください。
 
 考えられる原因 2:
 
-正常性ポリシーは、特定のサービス インスタンスではなく、サービスの合計のパーセンテージにより指定されます。たとえば、アップグレードの前に、アプリケーションに A、B、C、および D の 4 つのサービス インスタンスがあり、サービス D が異常だが、アプリケーションに大きく影響がないとします。アップグレード中に、既知の問題のあるサービス D を無視するため、パラメーター MaxPercentUnhealthyServices を 25% になるよう設定し、正常であることが必要とされるのが A、B、および C のみとなるようにします。
+正常性ポリシーは、特定のサービス インスタンスではなく、サービスの合計のパーセンテージにより指定されます。たとえば、アップグレードの前に、アプリケーションに A、B、C、および D の 4 つのサービス インスタンスがあり、サービス D が異常だが、アプリケーションに大きく影響がないとします。アップグレード中に、既知の問題のあるサービス D を無視するため、パラメーター *MaxPercentUnhealthyServices* を 25% になるよう設定し、正常であることが必要とされるのが A、B、および C のみとなるようにします。
 
 ただし、アップグレード中、C が異常になり、D が正常になる可能性がありますこの場合でも、アップグレードは正常に完了します。これは、サービスの 25% のみが異常であり、D ではなく C により予期しないエラーが発生する可能性があるためです。この状態では、D は A、B、および C とは異なるサービス型としてモデル化する必要があります。正常性ポリシーはサービス型ごとに指定できるため、これによりさまざまな異常の割合のしきい値を、アプリケーションの役割に基づいて別のサービスに割り当てることができます。
 
 ### アプリケーションのアップグレードの正常性ポリシーを指定していないが、未指定のタイムアウトによりアップグレードが失敗する
 
-正常性ポリシーがアップグレード要求に指定されていない場合、現在のアプリケーションのバージョンの ApplicationManifest.xml から取得されますたとえば、アプリケーション X を v1 から v2 にアップグレードしている場合、アプリケーション X の v1 に指定されたアプリケーションの正常性ポリシーが使用されます。別の正常性ポリシーをアップグレードに使用するには、アプリケーションのアップグレードの API 呼び出しの一部としてポリシーを指定する必要があります。アップグレードの実行中、API 呼び出しの一部として指定されたポリシーのみが適用されることに注意してください。アップグレードが完了すると、ApplicationManifest.xml で指定されたポリシーが使用されます。
+正常性ポリシーがアップグレード要求に指定されていない場合、現在のアプリケーションのバージョンの *ApplicationManifest.xml* から取得されますたとえば、アプリケーション X を v1 から v2 にアップグレードしている場合、アプリケーション X の v1 に指定されたアプリケーションの正常性ポリシーが使用されます。別の正常性ポリシーをアップグレードに使用するには、アプリケーションのアップグレードの API 呼び出しの一部としてポリシーを指定する必要があります。アップグレードの実行中、API 呼び出しの一部として指定されたポリシーのみが適用されることに注意してください。アップグレードが完了すると、*ApplicationManifest.xml* で指定されたポリシーが使用されます。
 
 ### 不適切なタイムアウトが指定されている
 
-UpgradeTimeout が UpgradeDomainTimeout より小さい場合など、タイムアウトの設定に一貫性がないとどうなるでしょうか。このような場合は、エラーが返されます。ほかにこのようなことが起こるのは、UpgradeDomainTimeout が HealthCheckWaitDuration と HealthCheckRetryTimeout の合計より小さいか、UpgradeDomainTimeout が HealthCheckWaitDuration と HealthCheckStableDuration の合計より小さい場合です。
+*UpgradeTimeout* が *UpgradeDomainTimeout* より小さい場合など、タイムアウトの設定に一貫性がないとどうなるでしょうか。このような場合は、エラーが返されます。ほかにこのようなことが起こるのは、*UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckRetryTimeout* の合計より小さいか、*UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckStableDuration* の合計より小さい場合です。
 
 ### アップグレードの時間がかかりすぎる
 
@@ -212,20 +212,25 @@ UpgradeTimeout が UpgradeDomainTimeout より小さい場合など、タイム�
 
 タイムアウトが、アップグレードの時間にどのように影響するのか、以下で簡単に確認できます。
 
-アップグレード ドメインのアップグレードは、HealthCheckWaitDuration + HealthCheckStableDuration よりも速く完了できません。
+アップグレード ドメインのアップグレードは、*HealthCheckWaitDuration* + *HealthCheckStableDuration* よりも速く完了できません。
 
-アップグレードの失敗が、HealthCheckWaitDuration + HealthCheckRetryTimeout より速く発生することはあり得ません。
+アップグレードの失敗が、*HealthCheckWaitDuration* + *HealthCheckRetryTimeout* より速く発生することはあり得ません。
 
-アップグレード ドメインのアップグレード時間は、UpgradeDomainTimeout によって制限されます。HealthCheckRetryTimeout と HealthCheckStableDuration が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に UpgradeDomainTimeout でタイムアウトします。UpgradeDomainTimeout は、現在のアップグレード ドメインのアップグレードが開始されると、カウント ダウンを開始します。
+アップグレード ドメインのアップグレード時間は、*UpgradeDomainTimeout* によって制限されます。*HealthCheckRetryTimeout* と *HealthCheckStableDuration* が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に *UpgradeDomainTimeout* でタイムアウトします。*UpgradeDomainTimeout* は、現在のアップグレード ドメインのアップグレードが開始されると、カウント ダウンを開始します。
 
 ## 次のステップ
 
-[Visual Studio による Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+「[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)」では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
-[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)
+「[Powershell によるアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)」では、PowerShell を使用してアプリケーションをアップグレードする方法について説明します。
 
-[手動アップグレードと差分のパッケージを使用したアップグレード](service-fabric-application-upgrade-advanced.md)
+[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。
 
-[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
+[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
-<!---HONumber=AcomDC_0121_2016-->
+「[高度なトピック](service-fabric-application-upgrade-advanced.md)」を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
+
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+ 
+
+<!---HONumber=AcomDC_0211_2016-->

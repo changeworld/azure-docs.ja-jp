@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/17/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -108,7 +108,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
  	
 - 	**UploadAsync** メソッドを使用して、Media Services にファイルをアップロードします。
  	
->[AZURE.NOTE]非ブロッキング操作としてメソッドを呼び出し、複数のファイルを並列的にアップロードできるようにするため、UploadAsync メソッドを使用します。
+>[AZURE.NOTE] 非ブロッキング操作としてメソッドを呼び出し、複数のファイルを並列的にアップロードできるようにするため、UploadAsync メソッドを使用します。
  	
  	
         static public IAsset CreateAssetAndUploadMultipleFiles(AssetCreationOptions assetCreationOptions, string folderPath)
@@ -177,7 +177,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
  
 - ParallelTransferThreadCount は、既定値の 10 のままにしてください。
  
-##<a id="ingest_in_bulk"></a>Media Services .NET SDK を使用した資産の一括取り込み 
+##<a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み 
 
 サイズの大きい資産ファイルのアップロードは、資産の作成時に、ボトルネックになることがあります。資産を一括して取り込む "一括取り込み" の場合、アップロード プロセスから資産の作成を切り離すことが必要です。一括取り込みを行うには、資産とその関連ファイルを記述するマニフェスト (IngestManifest) を作成します。その後で、お好みのアップロード方法で、マニフェストの BLOB コンテナーに、関連ファイルをアップロードします。マニフェストに関連付けられている BLOB コンテナーは、Microsoft Azure Media Services によって監視されます。ファイルが BLOB コンテナーにアップロードされると、Microsoft Azure Media Services は、マニフェスト (IngestManifestAsset) の資産の構成に基づいてア資産の作成を完了させます。
 
@@ -310,9 +310,9 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 
 
 ##次のステップ
-これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
+これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
 
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

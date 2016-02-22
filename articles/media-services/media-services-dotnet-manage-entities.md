@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015"
+ 	ms.date="02/09/2016"  
 	ms.author="juliako"/>
 
 
@@ -33,7 +33,8 @@
 - すべてのアセットを一覧表示する 
 - ジョブとアセットを一覧表示する 
 - すべてのアクセス ポリシーを一覧表示する 
-- すべてのロケーターを一覧表示する 
+- すべてのロケーターを一覧表示する
+- 大規模なコレクションのエンティティの列挙
 - アセットを削除する 
 - ジョブを削除する 
 - アクセス ポリシーを削除する 
@@ -245,6 +246,47 @@ Media Services では、アセットまたはそのファイルに関するア�
 	    }
 	}
 
+## 大規模なコレクションのエンティティの列挙
+
+パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。大規模なコレクションのエンティティを列挙するときは、Skip と Take を使用する必要があります。
+	
+次の関数は、指定された Media Services アカウントのすべてのジョブをループします。Media Services は、Jobs コレクションの 1000 個のジョブを返します。この関数は、Skip と Take を使用してすべてのジョブが確実に列挙されるようにします (アカウントに 1,000 個を超えるジョブがある場合)。
+	
+	static void ProcessJobs()
+	{
+	    try
+	    {
+	
+	        int skipSize = 0;
+	        int batchSize = 1000;
+	        int currentBatch = 0;
+	
+	        while (true)
+	        {
+	            // Loop through all Jobs (1000 at a time) in the Media Services account
+	            IQueryable _jobsCollectionQuery = _context.Jobs.Skip(skipSize).Take(batchSize);
+	            foreach (IJob job in _jobsCollectionQuery)
+	            {
+	                currentBatch++;
+	                Console.WriteLine("Processing Job Id:" + job.Id);
+	            }
+	
+	            if (currentBatch == batchSize)
+	            {
+	                skipSize += batchSize;
+	                currentBatch = 0;
+	            }
+	            else
+	            {
+	                break;
+	            }
+	        }
+	    }
+	    catch (Exception ex)
+	    {
+	        Console.WriteLine(ex.Message);
+	    }
+	}
 
 ##アセットを削除する
 
@@ -339,4 +381,4 @@ Media Services では、アセットまたはそのファイルに関するア�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -4,7 +4,7 @@
 
 再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
 
-> [AZURE.NOTE]仮想マシンを削除しない限り、オペレーティング システム ディスクをデタッチすることはできません。
+> [AZURE.NOTE] 仮想マシンを削除しない限り、オペレーティング システム ディスクをデタッチすることはできません。
 
 
 ## ディスクの特定
@@ -12,13 +12,13 @@
 ディスク名がわからない場合や、切断前にディスク名を確認する場合は、以下の手順に従ってください。
 
 
-1. まだサインインしていない場合は、[Azure ポータル](http://manage.windowsazure.com)にサインインします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. **[Virtual Machines]**、仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
 
 3. **[ディスク]** の表に、接続されているすべてのディスクの名前と種類が列挙されます。たとえば、次の画面には、仮想マシンのほか、オペレーティング システム (OS) ディスクとデータ ディスクが 1 つずつ示されています。
 
-	![データ ディスクを探す](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
+	![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)
 
 
 ## ディスクの切断
@@ -29,8 +29,8 @@
 
 3. データ ディスクを選択し、チェック マークをクリックして切断します。
 
-	![ディスク詳細の切断](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
+	![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/04/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -50,4 +50,4 @@
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

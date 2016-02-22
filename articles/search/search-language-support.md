@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="10/19/2015"
+   ms.date="02/09/2016"
    ms.author="jlembicz"/>
 
 # Azure Search でドキュメントのインデックスを複数の言語で作成する
@@ -26,7 +26,7 @@
 
 ユーザーがインデックス スキーマを定義できる、Azure クラシック ポータルの Azure Search 用のブレードのスクリーンショットを以下に示します。ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
 
-> [AZURE.NOTE]新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。フィールドが定義されると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
+> [AZURE.NOTE] 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。フィールドが定義されると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
 
 1. [Azure クラシック ポータル](https://portal.azure.com)にサインインし、検索サービスのサービス ブレードを開きます。
 2. サービス ダッシュボードの上部にある **[インデックスの追加]** をクリックして新しいインデックスを開始するか、既存のインデックスを開いて、既存のインデックスに追加する新しいフィールドでアナライザーを設定します。
@@ -67,11 +67,11 @@
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2015-02-28`
 
-.NET 開発者の場合は、[Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search/0.13.0-preview) を使用して言語アナライザーを構成できます。最新リリースには、Microsoft 言語アナライザーのサポートも含まれています。
+.NET 開発者の場合は、[Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) を使用して言語アナライザーを構成できます。最新リリースには、Microsoft 言語アナライザーのサポートも含まれています。
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

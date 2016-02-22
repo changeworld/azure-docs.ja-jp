@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/04/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 
@@ -24,7 +24,7 @@
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。これらは、実行時に発生する問題を診断するのに便利です。
 
-> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight にのみ適用されます。Windows ベースの HDInsight については、[Windows ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dumps.md)に関するページをご覧ください。
+> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight にのみ適用されます。Windows ベースの HDInsight については、[Windows ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dumps.md)に関するページをご覧ください。
 
 ## <a name="whichServices"></a>サービス
 
@@ -49,7 +49,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
 
-> [AZURE.NOTE]Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。具体的な手順については、[Ambari の使用](#using-ambari)のセクションを参照してください。
+> [AZURE.NOTE] Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。具体的な手順については、[Ambari の使用](#using-ambari)のセクションを参照してください。
 
 ###ヒープ ダンプを有効にする
 
@@ -59,7 +59,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 **+** は、このオプションが有効になっていることを示します。既定では無効になっています。
 
-> [AZURE.WARNING]ヒープ ダンプは、ダンプ ファイルが大きくなる可能性があるため、既定では HDInsight の Hadoop サービスで無効になっています。トラブルシューティングのために有効にした場合は、問題を再現してダンプ ファイルを収集したら、忘れずに無効にしてください。
+> [AZURE.WARNING] ヒープ ダンプは、ダンプ ファイルが大きくなる可能性があるため、既定では HDInsight の Hadoop サービスで無効になっています。トラブルシューティングのために有効にした場合は、問題を再現してダンプ ファイルを収集したら、忘れずに無効にしてください。
 
 ###ダンプの場所
 
@@ -75,7 +75,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     -XX:OnOutOfMemoryError=/path/to/script
 
-> [AZURE.NOTE]Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。
+> [AZURE.NOTE] Hadoop は分散システムなので、使用するスクリプトは、サービスを実行しているクラスター内のすべてのノードに配置する必要があります。
 >
 > また、スクリプトはサービスが実行するアカウントからアクセスできる場所にあり、実行権限を提供する必要もあります。たとえば、スクリプトを `/usr/local/bin` に保存し、`chmod go+rx /usr/local/bin/filename.sh` を使用して読み取りと実行権限を付与できます。
 
@@ -87,7 +87,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     メッセージが表示されたら、HTTP のアカウント名 (既定値: admin) とクラスターのパスワードを使用してサイトを認証します。
 
-    > [AZURE.NOTE]Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。その場合は、同じアカウント名とパスワードを再入力してください。
+    > [AZURE.NOTE] Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。その場合は、同じアカウント名とパスワードを再入力してください。
 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。たとえば、**[HDFS]** です。中央の領域で、**[Configs]** タブを選択します。
 
@@ -101,7 +101,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![HADOOP\_NAMENODE\_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
-	> [AZURE.NOTE]マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、代わりに、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを検索します。
+	> [AZURE.NOTE] マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、代わりに、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを検索します。
 
     **[保存]** ボタンを押して、変更を保存します。変更を説明する短いメモを入力できます。
 
@@ -117,8 +117,8 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![[すべて再起動] エントリ](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
 
-    > [AZURE.NOTE]**[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
+    > [AZURE.NOTE] **[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。これにより、Ambari はサービスのアラートの監視を再開します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

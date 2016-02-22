@@ -4,7 +4,7 @@
 	keywords="App Service, Azure App Service, モバイル アプリ, スケール, スケーラブル, アプリのデプロイ, Azure App のデプロイ"
 	services="app-service\mobile"
 	documentationCenter=""
-	authors="ggailey777" 
+	authors="ggailey777"
 	manager="dwrede"
 	editor=""/>
 
@@ -14,14 +14,12 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/24/2016"
+	ms.date="02/04/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 
-[AZURE.INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]&nbsp;
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
 このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
@@ -85,11 +83,11 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 	public void Configuration(IAppBuilder app)
 	{
 	    HttpConfiguration config = new HttpConfiguration();
-	   
+
 	    new MobileAppConfiguration()
 	        // no added features
-	        .ApplyTo(config);  
-	    
+	        .ApplyTo(config);
+
 	    app.UseWebApi(config);
 	}
 
@@ -104,7 +102,7 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。
 
 Azure ポータルからのサーバーのクイックスタートは **UseDefaultConfiguration()** を呼び出します。これは次のセットアップと同等です。
-    
+
 		new MobileAppConfiguration()
 			.AddMobileAppHomeController()             // from the Home package
 			.MapApiControllers()
@@ -136,7 +134,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 - [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。構成に追加するには、**MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Login] AppServiceLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
+- [Microsoft.Azure.Mobile.Server.Login] では、AppServiceLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 
@@ -167,7 +165,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 テーブル コントローラーは、テーブル ベースのデータ ストア (SQL Database や Azure Table Storage など) にあるエンティティ データへのアクセスを提供します。テーブル コントローラーは、次のように **TableController** ジェネリック クラスから継承します。このクラスでは、ジェネリック型はテーブル スキーマを表すモデルのエンティティです。
 
 	public class TodoItemController : TableController<TodoItem>
-    {  
+    {
 		//...
 	}
 
@@ -179,7 +177,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
         new MobileAppTableConfiguration()
         .MapTableControllers()
         .AddEntityFramework()).ApplyTo(config);
- 
+
 Azure SQL Database のデータへのアクセスに Entity Framework を使用するテーブル コントローラーの例については、Azure ポータル からダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
 
 ## 方法: カスタム API コントローラーを定義する
@@ -196,7 +194,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 4. 次の例に従って、API コントローラーのクラス定義に **[MobileAppController]** 属性を適用します。
 
-		[MobileAppController] 
+		[MobileAppController]
 		public class CustomController : ApiController
 		{
 		      //...
@@ -207,7 +205,7 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 		new MobileAppConfiguration()
 		    .MapApiControllers()
 		    .ApplyTo(config);
-    
+
 	代わりに、すべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はありません。
 
 クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントでは適切に使用されない場合があります。
@@ -216,15 +214,15 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 Mobile Apps は、アプリの認証を有効化する処理を簡単にするために、App Service 認証と ASP.NET の機能を使用します。このセクションでは、.NET バックエンド サーバー プロジェクトで以下の認証関連のタスクを実行する方法を説明します。
 
-+ [方法: サーバー プロジェクトに認証を追加する](#add-auth) 
-+ [方法: アプリケーションにカスタム認証を使用する](#custom-auth) 
++ [方法: サーバー プロジェクトに認証を追加する](#add-auth)
++ [方法: アプリケーションにカスタム認証を使用する](#custom-auth)
 + [方法: 認証されたユーザー情報を取得する](#user-info)
 
 ### <a name="add-auth"></a>方法: サーバー プロジェクトに認証を追加する
 
 **MobileAppConfiguration** オブジェクトを拡張し、OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
-1. Visual Studio で、[Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。 
+1. Visual Studio で、[Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。
 
 2. Startup.cs プロジェクト ファイルで、**Configuration** メソッドの先頭に次のコード行を追加します。
 
@@ -242,7 +240,7 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 ユーザーをサインインするかどうかを判断するための独自のロジックを提供する必要があります。たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。次の例では、`isValidAssertion()` メソッドがこれらの照合を実行します。このメソッドは他の場所で定義されています。
 
-カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。サーバーでアサーションを確認したら、`AppServiceLoginHandler.CreateToken()` を使用してトークンを発行できます。
+カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。サーバーでアサーションを検証したら、`AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行できます。
 
 ログイン アクションの例は次のようになります。
 
@@ -280,10 +278,10 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 また、発行されたトークンの有効期間と、含めたい要求を指定する必要があります。サンプル コードに示すとおり、サブジェクトの要求を指定する必要があります。
 
-また、手動の HTTP POST の代わりに `loginAsync()` メソッド (プラットフォームによって名前が変わる可能性があります) を使用するようにクライアント コードを簡略化できます。POST するアサーション オブジェクトに関連付けられている、追加のトークン パラメーターを受け取るオーバーロードを使用します。この場合、プロバイダーは独自のカスタム名にする必要があります。その後、ログイン アクションはサーバー上のこのカスタム名が含まれる _/.auth/login/{customProviderName}_ パスにある必要があります。このパスにコントローラーを配置するには、MobileAppConfiguration を適用する前に、HttpConfiguration にルートを追加します。
+また、手動の HTTP POST の代わりに、`loginAsync()` メソッド (プラットフォームによって名前が異なる場合があります) を使用するようにクライアント コードを簡略化できます。POST するアサーション オブジェクトに関連付けられている、追加のトークン パラメーターを受け取るオーバーロードを使用します。この場合、プロバイダーは独自のカスタム名にする必要があります。その後、サーバーで、このカスタム名を含む _/.auth/login/{customProviderName}_ パスにログイン アクションを配置する必要があります。このパスにコントローラーを配置するには、MobileAppConfiguration を適用する前に、HttpConfiguration にルートを追加します。
 
-		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" }); 
-		
+		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" });
+
 上の文字列 "CustomAuth" をログイン操作をホストしているコント ローラーの名前で置き換えます。
 
 >[AZURE.TIP] loginAsync() アプローチを使用することで、サービスの後続の呼び出しごとに認証トークンが添付されます。
@@ -303,14 +301,14 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 次のコードは、**GetAppServiceIdentityAsync** 拡張メソッドを呼び出して、ログイン資格情報を取得します。この情報には、Facebook Graph API に対する要求を行うために必要なアクセス トークンが含まれています。
 
     // Get the credentials for the logged-in user.
-    var credentials = 
+    var credentials =
         await this.User
         .GetAppServiceIdentityAsync<FacebookCredentials>(this.Request);
 
     if (credentials.Provider == "Facebook")
     {
         // Create a query string with the Facebook access token.
-        var fbRequestUrl = "https://graph.facebook.com/me/feed?access_token=" 
+        var fbRequestUrl = "https://graph.facebook.com/me/feed?access_token="
             + credentials.AccessToken;
 
         // Create an HttpClient request.
@@ -332,7 +330,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成すると、サーバー プロジェクトにプッシュ通知を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
 1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.Mobile.Server.Notifications を検索して、**[インストール]** をクリックします。これにより、[Microsoft.Azure.Mobile.Server.Notifications] パッケージがインストールされます。
- 
+
 3. 上記の手順を繰り返して、Notification Hubs クライアント ライブラリが含まれる `Microsoft.Azure.NotificationHubs` パッケージをインストールします。
 
 2. App\_Start/Startup.MobileApp.cs で、次に示すように、初期化中に **AddPushNotifications** 拡張メソッドの呼び出しを追加します。
@@ -353,9 +351,9 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
-        MobileAppSettingsDictionary settings = 
+        MobileAppSettingsDictionary settings =
             config.GetMobileAppSettingsProvider().GetMobileAppSettings();
-        
+
         // Get the Notification Hubs credentials for the Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
@@ -412,7 +410,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 3. .NET バックエンドから診断ログに書き込むために、次のようにトレース ライターを作成します。
 
 		ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
-		traceWriter.Info("Hello, World");  
+		traceWriter.Info("Hello, World");
 
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
 
@@ -425,7 +423,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 App Service Authentication/Authorization を使用してクラウド ベースのモバイル アプリを構成する必要があります。また、クライアントに代替ログイン ホストとしてクラウド エンドポイントを指定する必要があります。必要な手順の詳細については、選択したクライアント プラットフォーム ([iOS](app-service-mobile-ios-how-to-use-client-library.md)、[Windows/Xamarin](app-service-mobile-dotnet-how-to-use-client-library.md)) のドキュメントを参照してください。
 
 アプリケーションに [Microsoft.Azure.Mobile.Server.Authentication] がインストールされていることを確認します。次に、`MobileAppConfiguration` が `HttpConfiguration` に適用された後で、アプリケーションの OWIN Startup クラスに次のコードを追加します。
-		
+
 		app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
 		{
 			SigningKey = ConfigurationManager.AppSettings["authSigningKey"],
@@ -446,4 +444,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

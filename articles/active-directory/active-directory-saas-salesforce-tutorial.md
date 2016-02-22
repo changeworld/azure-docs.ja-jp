@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/02/2016"
+    ms.date="02/09/2016"
     ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と Salesforce を統合する方法
@@ -220,7 +220,10 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインして **[Salesforce]** をクリックします。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
 [0]: ./media/active-directory-saas-salesforce-tutorial/azure-active-directory.png
 [1]: ./media/active-directory-saas-salesforce-tutorial/applications-tab.png
@@ -253,4 +256,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

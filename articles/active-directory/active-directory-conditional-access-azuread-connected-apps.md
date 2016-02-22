@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="02/09/2016"
 	ms.author="femila"/>
 
 # Azure Conditional Access Preview for SaaS Apps
@@ -86,4 +86,8 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。オンプレミスの Azure Multi-Factor Authentication のデプロイの手順に従ってください。
 
-<!---HONumber=Nov15_HO2-->
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+<!---HONumber=AcomDC_0211_2016-->

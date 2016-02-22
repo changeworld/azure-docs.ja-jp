@@ -336,6 +336,6 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 - [C# プログラムを使って IoT Hub を作成する](iot-hub-rm-template.md)
 - [IoT Hub usage metrics (IoT Hub の使用状況に関するメトリック)](iot-hub-metrics.md)
-- [IoT Hub 操作の監視](iot-hub-operations-montoring.md)
+- [IoT Hub 操作の監視](iot-hub-operations-monitoring.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

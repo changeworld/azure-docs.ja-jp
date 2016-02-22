@@ -3,7 +3,7 @@
 	description="このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
-	authors="Erikre" 
+	authors="erikre" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="12/10/2015" 
-	ms.author="erikre"/>
+	ms.author="tdykstra"/>
 
 
 # メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET Web フォーム アプリケーションを作成して Azure App Service にデプロイする
@@ -58,8 +58,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
-	>[AZURE.NOTE]  
-	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
+>[AZURE.NOTE]  
+Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -708,4 +708,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/29/2016"
+	ms.date="02/09/2016"
 	ms.author="juliako"/>
 
 
@@ -66,6 +66,7 @@ REST API で一般的な HTTP ヘッダーがいくつか提供されていな�
 エスケープ文字を含むファイル名 (たとえば、%20) の資産をエンコードすると、"MediaProcessor : File not found." が返され失敗する。|資産に付加し、その後エンコードする予定のファイル名には、英数字とスペースのみを使用する必要があります。問題は、今後の更新プログラムで修正される予定です。
 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。|Media Services は、[2012-02-12](http://msdn.microsoft.com/library/azure/dn592123.aspx) バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。
 Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。|詳細については、「[Azure Media Services エラー コード](http://msdn.microsoft.com/library/azure/dn168949.aspx)」の 503 HTTP 状態コードの説明を参照してください。
+パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 | [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
 
 
 ### <a id="dotnet_issues"></a>Media Services SDK for .NET の問題
@@ -114,7 +115,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 
 ##<a id="september_changes_15"></a>2015 年 9 月のリリース 
 
-- AMS で、Widevine Modular DRM テクノロジを使用してビデオ オン デマンド (VOD) とライブ ストリーミングの両方を保護できるようになりました。次の配信サービス パートナーを通して Widevine ライセンスを提供できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。詳細については、[このブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください。
+- AMS で、Widevine Modular DRM テクノロジを使用してビデオ オン デマンド (VOD) とライブ ストリーミングの両方を保護できるようになりました。次の配信サービス パートナーを通してWidevine ライセンスを提供できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。詳細については、[このブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)を参照してください。
 
 	[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
@@ -240,7 +241,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 ###Media Services の全般的な更新
 
 - Azure Indexer メディア プロセッサに、いくつかの更新と新機能が追加されています。詳細については、「[Azure Media Indexer Version 1.1.6.7 のリリース ノート](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)」をご覧ください。
-- エンコード予約ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
+- エンコード占有ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
 - キー配信サービスの CORS サポートが追加されました。
 - 承認ポリシー オプションのクエリ パフォーマンスが向上しています。
 - 中国のデータ センターで、[キー配信 URL](http://msdn.microsoft.com/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) が顧客単位となりました (他のデータ センターと同じです)。
@@ -250,8 +251,8 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 - [Azure Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) が 3.1.0.0 にバージョン アップしました。
 - .Net SDK の依存関係が .NET 4.5 Framework にアップグレードされました。
-- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した予約ユニットの種類の更新とエンコーディング予約ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
-- トークン認証に JWT (JSON Web Token) が新たにサポートされています。詳細については、[Azure Media Services と動的暗号化における JWT トークン認証に関するページ](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)をご覧ください。
+- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した占有ユニットの種類の更新とエンコーディング占有ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
+- トークン認証に JWT (JSON Web Token) が新たにサポートされています。詳細については、[Azure Media Services と動的暗号化における JWT トークン認証に関するページ](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)をご覧ください。.
 - PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
 
@@ -647,4 +648,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

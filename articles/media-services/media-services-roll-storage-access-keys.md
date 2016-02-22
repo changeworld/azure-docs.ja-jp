@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/15/2015"
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
@@ -89,7 +89,7 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 
 SAS ロケーターを更新 (または再作成) するときに、URL は常に変更されることに注意してください。
 
->[AZURE.NOTE]OnDemand ロケーターの既存の URL を保持するには、既存のロケーターを削除し、同じ ID を持つ新しいロケーターを作成する必要があります。
+>[AZURE.NOTE] OnDemand ロケーターの既存の URL を保持するには、既存のロケーターを削除し、同じ ID を持つ新しいロケーターを作成する必要があります。
  
 以下の .NET の例は、同じ ID のロケーターを再作成する方法を示しています。
 	
@@ -159,4 +159,4 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

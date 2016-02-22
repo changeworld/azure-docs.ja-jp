@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/12/2015" 
+	ms.date="02/09/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
@@ -136,7 +136,7 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST     |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
+|POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -185,9 +185,9 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST      |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
+|POST |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`|
 
-|	パラメーター名	|	有効な値						|
+|	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId	|	モデルの一意識別子 (大文字小文字を区別する) |
 | filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
@@ -239,8 +239,8 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-||| 
-|要求本文| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルをご覧ください)。|
+|
+|Request body| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。|
 
 
 - 'Click' のイベントの例:
@@ -339,15 +339,15 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|POST.... |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
+|POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
 
-|	パラメーター名	|	有効な値						|
+|	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-| modelId |	モデルの一意識別子 (大文字小文字を区別する) .|
+| modelId |	モデルの一意識別子 (大文字小文字を区別する) |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-|||
-| Request Body | NONE |
+|
+| 要求本文 | なし |
 
 **応答**:
 
@@ -417,7 +417,7 @@ OData XML
 
 
 
-|	パラメーター名	|	有効な値						|
+|	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
 |	onlyLastBuild |	モデルのすべてのビルド履歴を返すか、最新のビルドの状態のみを返すかを示します。 |
@@ -502,7 +502,7 @@ OData XML
 
 
 
-|	パラメーター名	|	有効な値						|
+|	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 (大文字小文字を区別する) |
 | itemIds | <br> の推奨項目のコンマ区切りの一覧。最大の長さ: 1024 |
@@ -685,12 +685,12 @@ OData XML
 |PUT |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27`|
 
 
-|	パラメーター名 |	有効な値	|
-|	:--------	|	:--------						|
+|	パラメーター名 |	有効な値 |
+|:--------			|:--------								|
 | id | モデルの一意識別子 (大文字小文字を区別する) |
-| apiVersion | 1.0 |
-|||
-| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
+| apiVersion | 1\.0 |
+|
+| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグの Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。 |
 
 **応答**:
 
@@ -713,4 +713,4 @@ OData XML
 このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

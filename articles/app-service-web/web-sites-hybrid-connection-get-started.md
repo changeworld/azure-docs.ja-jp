@@ -13,17 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2015" 
+	ms.date="02/03/2016" 
 	ms.author="cephalin"/>
 
 #Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする
 
-Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTTP Web APIs、Mobile Services、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用する任意のオンプレミスのリソースに接続できます。ここでは、App Service の Web アプリケーションとオンプレミスの SQL Server データベース間のハイブリッド接続の作成方法を示します。
+SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用するすべてのオンプレミス リソースに、Azure App Service アプリを接続できます。ここでは、App Service とオンプレミスの SQL Server データベース間のハイブリッド接続の作成方法を示します。
 
 > [AZURE.NOTE] ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](https://portal.azure.com)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+> 
+> このコンテンツは、Azure App Service の Mobile Apps にも適用されます。
 
 ## 前提条件
 - Azure サブスクリプション。無料サブスクリプションについては、「[1 か月間無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
+ 
+	Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 - ハイブリッド接続でオンプレミスの SQL Server または SQL Server Express のデータベースを使用するには、TCP/IP が静的ポートで有効になっている必要があります。SQL Server は静的ポート 1433 を使用するため、SQL Server で既定のインスタンスを使用することをお勧めします。ハイブリッド接続で使用するための SQL Server Express のインストールと構成については、「[ハイブリッド接続を使用して Azure の Web サイトから内部設置型の SQL Server に接続する](http://go.microsoft.com/fwlink/?LinkID=397979)」をご覧ください。
 
@@ -37,7 +41,7 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 
 ## Azure ポータルで Web アプリを作成する ##
 
-> [AZURE.NOTE] このチュートリアルで使用する Web アプリを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
+> [AZURE.NOTE] このチュートリアルで使用する Web アプリやモバイル アプリ バックエンドを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
 
 1. [Azure ポータル](https://portal.azure.com)の左上隅の **[新規]** > **[Web + モバイル]** > **[Web アプリ]** をクリックします。
 	
@@ -93,13 +97,15 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	![[OK] をクリック][CreateBTScomplete]
 	
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
-	<!-- TODO
-	Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
+	<!--- TODO
+
+    Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
 	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
 	Create hybrid conn step, you get the following error
 	Failed to create hybrid connection RelecIoudHC. The 
 	resource type could not be found in the namespace 
 	'Microsoft.BizTaIkServices for api version 2014-06-01'.
+	
 	The error indicates it couldn't find the type, not the instance.
 	![Success notification][CreateHCSuccessNotification]
 	-->
@@ -154,14 +160,64 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 
 これで、ハイブリッド接続のインフラストラクチャが完成しました。この接続を使用するハイブリッド アプリケーションを作成できます。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]以下のセクションでは、Mobile Apps .NET バックエンド プロジェクトでハイブリッド接続を使用する方法を説明します。
+
+## SQL Server データベースに接続するモバイル アプリ .NET バックエンド プロジェクトを構成する
+
+App Service では、Mobile Apps .NET バックエンド プロジェクトは、追加の Mobile Apps SDK をインストールし初期化した ASP.NET Web アプリにすぎません。Web アプリを Mobile Apps バックエンドとして使用するには、 [Mobile Apps .NET バックエンド SDK をダウンロードして初期化する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#install-sdk)必要があります。
+
+Mobile Apps については、オンプレミスのデータベースの接続文字列を定義し、この接続を使用するようにバックエンドを変更する必要もあります。
+
+1. Visual Studio のソリューション エクスプローラーで、モバイル アプリ .NET バックエンドの Web.config ファイルを開き、 **connectionStrings** セクションを探し、次のような新しい SqlClient エントリを追加します。このエントリはオンプレミスの SQL Server データベースを指しています。
+
+	    <add name="OnPremisesDBConnection"
+         connectionString="Data Source=OnPremisesServer,1433;
+         Initial Catalog=OnPremisesDB;
+         User ID=HybridConnectionLogin;
+         Password=<**secure_password**>;
+         MultipleActiveResultSets=True"
+         providerName="System.Data.SqlClient" />
+
+	文字列内の `<**secure_password**>` は、*HybridConnectionLogin* 用に作成したパスワードに置き換えます。
+
+3. Visual Studio で **[保存]** をクリックして、Web.config ファイルを保存します。
+
+	> [AZURE.NOTE]この接続設定は、ローカル コンピューターで実行されるときに使用されます。Azure で実行される場合、この設定は、ポータルで定義された接続設定によってオーバーライドされます。
+
+4. **Models** フォルダーを展開し、*Context.cs* で終わるデータ モデル ファイルを開きます。
+
+6. **DbContext** を、値 `OnPremisesDBConnection` をベース **DbContext** コンストラクターに渡すように変更します。次のスニペットに似ています。
+
+        public class hybridService1Context : DbContext
+        {
+            public hybridService1Context()
+                : base("OnPremisesDBConnection")
+            {
+            }
+        }
+
+	これで、サービスは、SQL Server データベースへの新しい接続を使用するようになります。
+
+## オンプレミスの接続文字列を使用するようにモバイル アプリ バックエンドを更新する
+
+次に、この新しい接続文字列用のアプリ設定を追加して、Azure から使用できるようにする必要があります。
+
+1. [Azure ポータル](https://portal.azure.com)に戻り、モバイル アプリ用の Web アプリ バックエンド コードで、**[すべての設定]**、**[アプリケーション設定]** の順にクリックします。
+
+3. **[Web アプリの設定]** ブレードで、下にスクロールして **[接続文字列]** を表示し、`OnPremisesDBConnection` という名前の `Server=OnPremisesServer,1433;Database=OnPremisesDB;User ID=HybridConnectionsLogin;Password=<**secure_password**>` などの値が指定された新しい **SQL Server** 接続文字列を追加します。
+
+	`<**secure_password**>` を、オンプレミスのデータベースのセキュリティ保護されたパスワードに置き換えます。
+
+	![オンプレミスのデータベースの接続文字列](./media/web-sites-hybrid-connection-get-started/set-sql-server-database-connection.png)
+
+2. [**保存**] をクリックして、今作成したハイブリッド接続と接続文字列を保存します。
+
+この時点で、サーバー プロジェクトを再発行し、既存の Mobile Apps クライアントで新しい接続をテストできます。データは、ハイブリッド接続を使用して、オンプレミスのデータベースから読み込まれ、このデータベースに書き込まれます。
 
 <a name="NextSteps"></a>
 ## 次のステップ ##
 
-- ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[Connect to an on-premises SQL Server from an Azure web site using Hybrid Connections (ハイブリッド接続を使用して Azure の Web サイトからオンプレミスの SQL Server に接続する)](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。
-
-- モバイル サービスでのハイブリッド接続の使用の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+- ハイブリッド接続を使用する ASP.NET Web アプリケーションの作成の詳細については、「[Connect to an on-premises SQL Server from an Azure web site using Hybrid Connections (ハイブリッド接続を使用して Azure の Web サイトからオンプレミスの SQL Server に接続する)](http://go.microsoft.com/fwlink/?LinkID=397979)」を参照してください。 
 
 ### その他のリソース
 
@@ -206,4 +262,4 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

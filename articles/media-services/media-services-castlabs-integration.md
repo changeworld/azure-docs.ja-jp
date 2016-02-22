@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015"  
+	ms.date="02/03/2016" 
 	ms.author="juliako"/>
 
 
@@ -122,4 +122,4 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

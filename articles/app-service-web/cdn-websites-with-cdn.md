@@ -42,8 +42,8 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 -	Visual Studio 2015 と [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)Visual Studio を使用する場合、手順が異なることがあります。
 
 > [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
->+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
->+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
+> + [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -552,15 +552,15 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 7. Azure Web アプリのブラウザー ウィンドウを更新します。これで、すべてのスクリプトとスタイルシートが正しく読み込まれていることを確認できます。
 
 ## 詳細情報 
-- [Azure Content Delivery Network (CDN) の概要](../cdn-overview.md)
-- [Web アプリケーションで Azure CDN からコンテンツを配信する](../cdn-serve-content-from-cdn-in-your-web-application.md)
-- [クラウド サービスと Azure CDN との統合](../cdn-cloud-service-with-cdn.md)
+- [Azure Content Delivery Network (CDN) の概要](../cdn/cdn-overview.md)
+- [Web アプリケーションで Azure CDN からコンテンツを配信する](../cdn/cdn-serve-content-from-cdn-in-your-web-application.md)
+- [クラウド サービスと Azure CDN との統合](../cdn/cdn-cloud-service-with-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Azure 用 CDN の使用](../cdn-how-to-use-cdn.md)
+- [Azure 用 CDN の使用](../cdn/cdn-how-to-use-cdn.md)
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

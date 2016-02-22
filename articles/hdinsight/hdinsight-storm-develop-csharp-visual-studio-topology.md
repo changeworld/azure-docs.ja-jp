@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -41,7 +41,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
     > [AZURE.NOTE] HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
 
--	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-getting-started.md)」をご覧ください。
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」をご覧ください。
 
 	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
@@ -658,4 +658,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

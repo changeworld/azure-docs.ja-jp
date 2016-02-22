@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## 公式の Ubuntu Cloud Image
+## 公式の Ubuntu クラウド イメージ
 Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) でダウンロードできます。Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。
 
 
@@ -117,13 +117,13 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-
 11. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## 次のステップ
-これで、Ubuntu Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Azure を使用して .vhd ファイルを Azure にアップロードするのが初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2. と 3. に従ってください。
+これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
 ## 参照 ##
 
-Ubuntu HardWare Enablement (HWE) カーネル
+Ubuntu HardWare Enablement (HWE) カーネル:
 
 - [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 - [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

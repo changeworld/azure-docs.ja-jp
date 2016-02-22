@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="10/23/2015"
+    ms.date="02/06/2016"
     ms.author="elizapo" />
 
 
@@ -22,6 +22,9 @@
 
 Azure RemoteApp の利点の 1 つは、常に改善の努力がされていることです。改善を行うたびに、どのような変更を加えたかをここでお知らせします。
 
+## 今後の更新
+Azure RemoteApp チームが RDS ブログを毎月更新していることをご存知でしたか? Azure RemoteApp の変更点だけでなく、RDS の使用方法に関する他の情報も確認できます。詳細については、Azure RemoteApp チームのブログ、[Remote Desktop Services Blog](https://blogs.msdn.microsoft.com/rds/) をご覧ください。たとえば、数週間前に、[Azure RemoteApp と Azure AD を使用したワークロードのリフト アンド シフト](https://blogs.msdn.microsoft.com/rds/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services/)に関するエントリが投稿されました。
+ 
 ## 2015 年 9 月
 - Microsoft Office 365 テンプレートとギャラリー イメージの InfoPath を追加しました。InfoPath を共有する場合、コレクションを最新のイメージで更新します。
 - クライアント更新:
@@ -72,7 +75,7 @@ Azure RemoteApp の利点の 1 つは、常に改善の努力がされている�
 - [Azure 仮想マシンから Azure RemoteApp イメージを作成します](remoteapp-image-on-azurevm.md)。カスタム イメージを Azure にアップロードする作業が大幅に速くなりました。
 - RemoteApp VNET ではなく Azure VNET を使用し、企業ネットワーク リソースを Azure に接続します。[ハイブリッド コレクションの指示](remoteapp-create-hybrid-deployment.md)を更新しました。段階的に Azure VNET を作成できます (その手順 1)。
 - VNET とに関しては、VNET サイズの制限と制約に関する[新しい指針](remoteapp-vnetsizing.md)を確認してください。
-- また、制限に関してですが、[サービスの上限と初期値](remoteapp-servicelimits.md)とは何でしょうか。
+- また、制限に関してですが、[サービスの上限と初期値](../azure-subscription-service-limits.md)とは何でしょうか。
 
 Azure RemoteApp について詳細を知りたいですか。 数週間前、RemoteApp チームは大勢で Ignite に出動しました。Eric の動画、「[Microsoft Azure RemoteApp の管理の基礎](http://channel9.msdn.com/Events/Ignite/2015/BRK3868)」をご覧ください。
 
@@ -82,6 +85,6 @@ Azure RemoteApp が実際に使われている様子を確認したいですか�
 
 
 ### サポートのサポートのお願い
-記事を評価したり、下欄にコメントを投稿したりするだけでなく、記事そのものに変更を加えられることをご存じですか。 何かが不足している場合 誤りがある場合、 わかりにくいことが書いてある場合は、 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
+記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

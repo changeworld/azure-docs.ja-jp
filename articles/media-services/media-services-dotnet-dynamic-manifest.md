@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/18/2015"  
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -148,4 +148,4 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

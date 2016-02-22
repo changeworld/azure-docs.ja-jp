@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/22/2015"
+	ms.date="02/04/2016"
 	ms.author="wesmc"/>
 
 # Windows アプリのオフライン同期を有効にする
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -48,11 +46,11 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
     * **Windows 8.1 Runtime:** [SQLite for Windows 8.1] をインストール。
     * **Windows Phone 8.1**: [SQLite for Windows Phone 8.1] をインストール。
 
-    >[AZURE.NOTE]次の手順は Windows 10 UAP プロジェクトでも有効ですが、その場合は代わりに [SQLite for Windows 10] をインストールする必要があります。
+    >[AZURE.NOTE] 次の手順は Windows 10 UAP プロジェクトでも有効ですが、その場合は代わりに [SQLite for Windows 10] をインストールする必要があります。
 
 2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了したプロジェクトを開きます。Windows 8.1 ランタイムおよび Windows Phone 8.1 プロジェクト向けの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージをインストールします。Windows Store 8.1 と Windows Phone 8.1 プロジェクトの両方に NuGet リファレンスを追加します。
 
-    >[AZURE.NOTE]インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
+    >[AZURE.NOTE] インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
 
 3. ソリューション エクスプローラーで Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの [**参照設定**] を右クリックし、[**拡張**] セクションにある SQLite への参照を追加します。
 
@@ -180,14 +178,14 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 1. 共有プロジェクトで App.xaml.cs を編集します。**MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
 
-         public static MobileServiceClient MobileService = 
+         public static MobileServiceClient MobileService =
 				new MobileServiceClient("https://your-service.azurewebsites.fail");
 
 	アプリでも認証が使用されている場合、それが原因でサインインは失敗するので注意してください。また、デバイス上で Wi-Fi および移動体通信ネットワークを無効にしてオフライン動作をデモンストレーションすることも、機内モードを使用することもできます。
 
 2. **F5** キーを押し、アプリケーションをビルドして実行します。アプリを起動した際の更新時には同期が失敗することに注意してください。
-3. 新しい todo 項目をいくつか入力し、それぞれについて [**保存**] をクリックします。プッシュはそれぞれ `PushResult.Status=CancelledByNetworkError` で失敗します。新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内にのみ存在します。 
- 
+3. 新しい todo 項目をいくつか入力し、それぞれについて [**保存**] をクリックします。プッシュはそれぞれ `PushResult.Status=CancelledByNetworkError` で失敗します。新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内にのみ存在します。
+
 	`PushResult.Status=CancelledByNetworkError` の例外ダイアログは非表示にできます。そうすれば、クライアント アプリケーションはモバイル アプリ バックエンドに接続されているかのように動作し、作成、読み取り、更新、削除 (CRUD) 操作のすべてをシームレスにサポートします。
 
 4. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
@@ -269,8 +267,8 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921
 
 [sqlite store nuget]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
- 
+
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

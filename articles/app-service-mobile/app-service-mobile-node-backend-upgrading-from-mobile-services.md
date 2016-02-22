@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="12/02/2015"
+	ms.date="02/09/2016"
 	ms.author="chrande"/>
 
 # App Service への既存の Node.js Azure Mobile Service のアップグレード
@@ -28,7 +28,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 [AZURE.INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
->[AZURE.TIP]アップグレードする前に、[移行する](app-service-mobile-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
+>[AZURE.TIP] アップグレードする前に、[移行する](app-service-mobile-migrating-from-mobile-services.md)ことをお勧めします。そうすることで、同じ App Service プランに両方のバージョンのアプリケーションを指定できるため、追加コストが発生しません。
 
 ### Mobile Apps Node.js サーバー SDK の機能強化
 
@@ -48,7 +48,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 .NET Mobile Apps SDK とは異なり、Node バックエンドを Mobile Services から Mobile Apps にアップグレードすることは、パッケージ交換のように単純なものではありません。Azure で制御するのではなく、ユーザーがアプリケーション スタック全体を所有するようになったため、基本的な Express アプリを作成してモバイル バックエンドをホストする必要があります。テーブルと API コントローラーについては、概念は似ていますが、テーブル オブジェクトのエクスポートが必要になり、関数 API が多少変わりました。この記事では、アップグレードの基本的な戦略について説明しますが、移行を開始する前に [Node バックエンドの使用方法](app-service-mobile-node-backend-how-to-use-server-sdk.md)に関する記述を参照してください。
 
->[AZURE.TIP]アップグレードを開始する前に、このトピックの残りの部分を読み、よく理解しておいてください。下に列記した機能のうち、使用する機能をすべてメモしてください。
+>[AZURE.TIP] アップグレードを開始する前に、このトピックの残りの部分を読み、よく理解しておいてください。下に列記した機能のうち、使用する機能をすべてメモしてください。
 
 Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK の間に互換性は**ありません**。アプリ用にサービスを接続する場合は、発行されたクライアントを現在使用しているサイトに変更を発行しないでください。代わりに、複製として機能する新しいモバイル アプリを作成する必要があります。このアプリケーションを同じ App Service プランに指定することで、追加の財務費用が発生しないようにすることができます。
 
@@ -131,7 +131,7 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 
 モバイル アプリ バックエンドの [アプリケーション設定] を使用して設定できる環境変数でサーバーを構成できます。
 
-[構成オブジェクト](http://azure.github.io/azure-mobile-apps-node/global.html#configuration)を初期化子に渡すか、プロジェクトのルートに [azureMobile.js という名前のファイルを作成する](app-service-mobile-node-backend-how-to-use-server-sdk/#howto-config-localdev)ことで、Mobile Apps SDK をさらにカスタマイズできます。
+[構成オブジェクト](http://azure.github.io/azure-mobile-apps-node/global.html#configuration)を初期化子に渡すか、プロジェクトのルートに [azureMobile.js という名前のファイルを作成する](app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-config-localdev)ことで、Mobile Apps SDK をさらにカスタマイズできます。
 
 ### データとテーブルの操作
 
@@ -288,4 +288,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -31,7 +31,7 @@
 
 ## Visual Studio で Service Fabric のシステム イベントを表示する
 
-Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。まだ実行していない場合は、[Visual Studio での初めてのアプリケーション作成](./service-fabric-create-your-first-application-in-visual-studio.md)に関するページの手順に従ってください。この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。
+Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。まだ実行していない場合は、[Visual Studio での初めてのアプリケーション作成](service-fabric-create-your-first-application-in-visual-studio.md)に関するページの手順に従ってください。この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。
 
 1. [診断イベント] ウィンドウが自動的に表示されない場合は、Visual Studio の **[サーバー エクスプローラー]** タブに移動し、**[Service Fabric クラスター]** を右クリックして、コンテキスト メニューの **[診断イベントの表示]** を選択します。
 
@@ -60,4 +60,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ## 次のステップ
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。ツールのさまざまなオプションとそのツールのセットアップ方法を説明した次の記事を参照してください。* [Azure 診断と Operational Insights で Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md) * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

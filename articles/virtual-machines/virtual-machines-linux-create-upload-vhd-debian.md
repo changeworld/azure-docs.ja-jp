@@ -19,9 +19,9 @@
 
 
 
-#Azure 用の Debian VHD の準備
+# Azure 用の Debian VHD の準備
 
-##前提条件
+## 前提条件
 このセクションでは、[Debian Web サイト](https://www.debian.org/distrib/)から仮想ハード ディスクにダウンロードした .iso ファイルから Debian Linux オペレーティング システムを既にインストールしているものと想定しています。.vhd ファイルを作成するためのツールは複数あり、Hyper-V は 1 つの例にすぎません。Hyper-V の使い方の詳細については、[Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
 
 
@@ -33,7 +33,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-##Debian 7.x および 8.x
+## Debian 7.x および 8.x
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -47,13 +47,13 @@
 
 5. GRUB をリビルドして、次のスクリプトを実行します。
 
-        # sudo update-grub 
+        # sudo update-grub
 
 6. Azure Linux エージェントの依存関係パッケージをインストールします。
 
         # apt-get install -y git parted
 
-7.	[ガイダンス](virtual-machines-linux-update-agent.md)に従って Azure Linux エージェントを Github からインストールし、バージョン 2.0.14 を選択します。
+7.	[ガイダンス](virtual-machines-linux-update-agent.md)に従って、GitHub から Azure Linux エージェントをインストールし、バージョン 2.0.14 を選択します。
 
 			# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent
 			# chmod +x waagent
@@ -65,10 +65,10 @@
         # sudo waagent –force -deprovision
         # export HISTSIZE=0
         # logout
- 
+
 9. Hyper-V マネージャーで **[アクション]**、[シャットダウン] の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-##Credativ スクリプトを使用して Debian VHD を作成する
+## Credativ スクリプトを使用して Debian VHD を作成する
 
 Credativ の Web サイトには、Debian VHD を自動的にビルドするのに役立つスクリプトが用意されています。このスクリプトを[ここ](https://gitlab.credativ.com/de/azure-manage)からダウンロードして、Linux VM にインストールすることができます。Debian VHD (たとえば、Debian 7) を作成するには、次のスクリプトを実行します。
 
@@ -78,6 +78,6 @@ Credativ の Web サイトには、Debian VHD を自動的にビルドするの�
 
 ## 次のステップ
 
-これで、Debian .vhd を使用して新しい Azure 仮想マシンを作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
+これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

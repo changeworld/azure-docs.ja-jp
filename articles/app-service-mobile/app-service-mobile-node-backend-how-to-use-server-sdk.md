@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="12/02/2015"
+	ms.date="02/09/2016"
 	ms.author="adrianhall"/>
 
 # Azure Mobile Apps Node.js SDK の使用方法
@@ -327,7 +327,7 @@ Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile
 
 パスワードがクラウドに保存されないように、_azureMobile.js_ を _.gitignore_ ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。必ず、[Azure ポータル]内の [アプリ設定] で運用設定を構成してください。
 
-### <a name="howto-appsettings"><a>モバイル アプリを構成するためのアプリ設定
+### <a name="howto-appsettings"></a>モバイル アプリを構成するためのアプリ設定
 
 _azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポータル] 内に対応するアプリ設定があります。[アプリ設定] でアプリを構成するには、次の一覧を使用します。
 
@@ -561,9 +561,9 @@ Azure App Service Mobile Apps には、組み込みの [Swagger] のサポート
 
     var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 
-swagger エンドポイントは、http://\_yoursite\_.azurewebsites.net/swagger で特定されます。Swagger UI には `/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とするように選択している場合、Swagger は / エンドポイントに対してエラーを生成することに注意してください。最善の結果を得るため、Azure App Service の [認証/承認] 設定で認証されていない要求を許可するように選択し、`table.access` プロパティを使用して認証を制御します。
+Swagger エンドポイントは http://_yoursite_.azurewebsites.net/swagger にあります。Swagger UI には `/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とするように選択している場合、Swagger は / エンドポイントに対してエラーを生成することに注意してください。最良の結果を得るには、Azure App Service の [認証/承認] 設定で認証されていない要求を許可し、`table.access` プロパティを使用して認証を制御します。
 
-ローカルで開発するときのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加することができます。
+また、ローカルで開発する場合にのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加できます。
 
 ## <a name="CustomAPI"></a>カスタム API
 
@@ -645,6 +645,32 @@ Azure Mobile Apps SDK では、テーブル エンドポイントとカスタム
 
 認証を必要とするカスタム API には、テーブル エンドポイントで使用されるものと同じトークンを使用する必要があります。
 
+### <a name="howto-customapi-auth"></a>方法: 大きなファイルのアップロードを処理する
+
+Azure Mobile Apps SDK では、[body-parser ミドルウェア](https://github.com/expressjs/body-parser)を使用して、送信された本文のコンテンツを受け入れ、デコードします。大きなファイルのアップロードを受け入れるように body-parser を事前構成できます。
+
+	var express = require('express'),
+        bodyParser = require('body-parser'),
+		azureMobileApps = require('azure-mobile-apps');
+
+	var app = express(),
+		mobile = azureMobileApps();
+
+    // Set up large body content handling
+    app.use(bodyParser.json({ limit: '50mb' }));
+    app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+	// Import the Custom API
+	mobile.api.import('./api');
+
+	// Add the mobile API so it is accessible as a Web API
+	app.use(mobile);
+
+	// Start listening on HTTP
+	app.listen(process.env.PORT || 3000);
+
+上記の 50 MB の制限は調整できます。このファイルは、送信前に Base-64 でエンコードされるため、実際のアップロードのサイズは増加します。
+
 ## <a name="Debugging"></a>デバッグおよびトラブルシューティング
 
 Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。これらの手法をすべて使用できます。
@@ -725,7 +751,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [Azure App Service での診断ログの有効化]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Visual Studio での Azure App Service のトラブルシューティング]: ../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md
 [Node のバージョンを指定する]: ../nodejs-specify-node-version-azure-apps.md
-[Node モジュールを使用する]: ../nodejs-use-node-mobiles-azure-apps.md
+[Node モジュールを使用する]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service-web/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
 [Express]: http://expressjs.com/
@@ -745,4 +771,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,14 +13,12 @@
     ms.tgt_pltfrm="mobile-xamarin-android"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="11/22/2015"
+	ms.date="02/04/2016"
     ms.author="wesmc"/>
 
 # Xamarin Android モバイル アプリのオフライン同期を有効にする
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -40,8 +38,8 @@
 
 チュートリアル「[Xamarin Android アプリの作成]」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。チュートリアルのコードにすでに含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-* テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。`ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。これにより、Azure Mobile Apps クライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、新しいローカルの SQLite データベースが作成されます。 
- 
+* テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。`ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。これにより、Azure Mobile Apps クライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、新しいローカルの SQLite データベースが作成されます。
+
 	`DefineTable` メソッドを実行すると、提供された型のフィールドに一致するテーブルがローカル ストアに作成されます。この例では、`ToDoItem` になります。この型に、リモート データベース内のすべての列を含める必要はありません。列のサブセットのみ格納できます。
 
 		// ToDoActivity.cs
@@ -60,14 +58,14 @@
             store.DefineTable<ToDoItem>();
 
             // Uses the default conflict handler, which fails on conflict
-            // To use a different conflict handler, pass a parameter to InitializeAsync. 
+            // To use a different conflict handler, pass a parameter to InitializeAsync.
 			// For more details, see http://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
 
 
 * `ToDoActivity` の `toDoTable` メンバーは、`IMobileServiceTable` ではなく、`IMobileServiceSyncTable` 型です。これは、テーブルの作成、読み取り、更新、および削除 (CRUD) といったすべての操作がローカル ストア データベースに行われるようにします。
- 
+
 	これらの変更がいつ Azure Mobile Apps バックエンドにプッシュされるかを決定するには、クライアント接続のための同期コンテキストを使用して `IMobileServiceSyncContext.PushAsync()` を呼び出すことで行います。同期コンテキストは、`PushAsync` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
 
 	todoitem リストの更新、または todoitem の追加や完了があれば、提供されているコードは `ToDoActivity.SyncAsync()` を呼び出して同期します。同期コンテキストへのプッシュや同期テーブルへのプルを実行するようなローカルの変更があれば毎回同期が行われます。ただし、コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプルの処理は自動的にコンテキストのプッシュを最初にトリガーします。これら (項目の更新、追加、完了) のケースでは、明示的な `PushAsync` の呼び出しを省略できます。冗長となるからです。
@@ -77,7 +75,6 @@
 	<!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
 	-->	
 		// ToDoActivity.cs
-
         private async Task SyncAsync()
         {
 			try {
@@ -101,7 +98,7 @@
 
 1. `ToDoActivity.cs` の上部で、次のように、`applicationURL` の初期化を変更して無効な URL を設定します。
 
-        const string applicationURL = @"https://your-service.azurewebsites.fail/"; 
+        const string applicationURL = @"https://your-service.azurewebsites.fail/";
 
 	アプリでも認証が使用されている場合、それが原因でサインインは失敗するので注意してください。また、デバイス上で Wi-Fi および移動体通信ネットワークを無効にしてオフライン動作をデモンストレーションすることも、機内モードを使用することもできます。
 
@@ -132,7 +129,7 @@
 
    Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** の順に選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。
 
-6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。 
+6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
 
 ## クライアント アプリを更新し、モバイルのバックエンドを再接続します。
@@ -179,4 +176,4 @@
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!----HONumber=AcomDC_1125_2015--->
+<!---HONumber=AcomDC_0211_2016-->

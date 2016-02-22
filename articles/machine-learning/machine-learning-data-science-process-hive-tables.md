@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="02/08/2016"
 	ms.author="hangzh;bradsev" />
 
 #<a name="heading"></a>Advanced Analytics Process and Technology で HDInsight Hadoop クラスターに Hive クエリを送信する 
@@ -167,7 +167,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 このセクションでは、Hive クエリを使用して特徴を生成する方法について説明します。
 
-> [AZURE.NOTE]このセクションのサンプルの Hive クエリでは、Azure HDInsight Hadoop クラスターの Hive テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」に従って Hive テーブルにデータをアップロードします。
+> [AZURE.NOTE] このセクションのサンプルの Hive クエリでは、Azure HDInsight Hadoop クラスターの Hive テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」に従って Hive テーブルにデータをアップロードします。
 
 追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
 
@@ -314,4 +314,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 # テンプレートを使用した複数の NIC VM のデプロイ
@@ -37,13 +37,13 @@
 2. テンプレート ページの **[親リソース グループ]** の右側にある **[Azure へのデプロイ]** をクリックします。
 3. 必要に応じて、パラメーター値を変更し、Azure プレビュー ポータル内の手順に従ってリソース グループをデプロイします。
 
-> [AZURE.IMPORTANT]ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
+> [AZURE.IMPORTANT] ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
 
 ## デプロイ テンプレートについて
 
 このドキュメントに付属するテンプレートをデプロイする前に、テンプレートを理解する必要があります。次の手順では、対象のテンプレートの概要について説明しています。
 
-1. [テンプレート ページ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC)に移動します。
+1. [テンプレート ページ](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)に移動します。
 2. **azuredeploy.json** をクリックしてテンプレート ファイルを開きます。
 3. 次に示す *osType* パラメーターに注目してください。このパラメーターは、複数のオペレーティング システム関連の設定と共に、データベース サーバー用の VM イメージを選択するために使用します。
 
@@ -59,11 +59,11 @@
 	      }
 	    },
 
-4. 下にスクロールして変数の一覧を表示し、次に示す *dbVMSetting* 変数の定義を確認します。これは、*dbVMSettings* 変数に格納されている配列要素の 1 つを受け取ります。ソフトウェア開発用語に詳しい場合は、*dbVMSettings* 変数をハッシュテーブルまたはディクショナリと考えることができます。
+4. 下にスクロールして変数の一覧を表示し、次に示す **dbVMSetting** 変数の定義を確認します。これは、**dbVMSettings** 変数に格納されている配列要素の 1 つを受け取ります。ソフトウェア開発用語に詳しい場合は、**dbVMSettings** 変数をハッシュテーブルまたはディクショナリと考えることができます。
 
 		"dbVMSetting": "[variables('dbVMSettings')[parameters('osType')]]"
 
-5. バック エンドで SQL が動作している Windows VM をデプロイするとします。*osType* の値は *Windows* となり、*dbVMSetting* 変数には次に示す要素 (*dbVMSettings* 変数の最初の値を表す) が格納されます。
+5. バック エンドで SQL が動作している Windows VM をデプロイするとします。**osType** の値は *Windows* となり、**dbVMSetting** 変数には次に示す要素 (**dbVMSettings** 変数の最初の値を表す) が格納されます。
 
 	      "Windows": {
 	        "vmSize": "Standard_DS3",
@@ -82,7 +82,7 @@
 	        "dbPort": 1433
 	      },
 
-6. *vmSize* に値 *Standard\_DS3* が格納されることに注意してください。特定の VM のサイズに対してのみ、複数の NIC の使用が許可されます。複数の NIC に対応できる VM のサイズを確認するには、[複数の NIC の概要](virtual-networks-multiple-nics.md)に関するページを参照してください。
+6. **vmSize** に値 *Standard\_DS3* が格納されることに注意してください。特定の VM のサイズに対してのみ、複数の NIC の使用が許可されます。複数の NIC に対応できる VM のサイズを確認するには、[複数の NIC の概要](virtual-networks-multiple-nics.md)に関するページを参照してください。
 7. 下にスクロールして **resources** を表示し、最初の要素に注目してください。ここでは、ストレージ アカウントについて記述しています。このストレージ アカウントは、各データベース VM で使用されるデータ ディスクの管理に使用されます。このシナリオでは、各データベース VM で、OS ディスクが標準ストレージに格納され、2 つのデータ ディスクが SSD (Premium) ストレージに格納されます。
 
 	    {
@@ -98,7 +98,7 @@
 	      }
 	    },
 
-8. 下にスクロールして、次に示す次のリソースを表示します。このリソースは、各データベース VM でデータベース アクセスに使用される NIC を表しています。このリソースで **copy** 関数を使用していることに注目してください。このテンプレートを使用すると、*dbCount* パラメーターに基づいて、必要な数の VM をデプロイできます。したがって、データベース アクセス用に同じ数 (VM ごとに 1 つ) の NIC を作成する必要があります。
+8. 下にスクロールして、次に示す次のリソースを表示します。このリソースは、各データベース VM でデータベース アクセスに使用される NIC を表しています。このリソースで **copy** 関数を使用していることに注目してください。このテンプレートを使用すると、**dbCount** パラメーターに基づいて、必要な数の VM をデプロイできます。したがって、データベース アクセス用に同じ数 (VM ごとに 1 つ) の NIC を作成する必要があります。
 
 	    {
 	      "apiVersion": "2015-06-15",
@@ -128,7 +128,7 @@
 	      }
 	    },
 
-9. 下にスクロールして、次に示す次のリソースを表示します。このリソースは、各データベース VM で管理に使用される NIC を表しています。ここでも、データベース VM ごとにこれらの NIC が 1 つ必要です。RDP/SSH へのアクセスを許可する NSG をこの NIC のみにリンクする、*networkSecurityGroup* 要素に注目してください。
+9. 下にスクロールして、次に示す次のリソースを表示します。このリソースは、各データベース VM で管理に使用される NIC を表しています。ここでも、データベース VM ごとにこれらの NIC が 1 つ必要です。RDP/SSH へのアクセスを許可する NSG をこの NIC のみにリンクする、**networkSecurityGroup** 要素に注目してください。
 
 	    {
 	      "apiVersion": "2015-06-15",
@@ -173,7 +173,7 @@
 	      }
 	    },
 
-11. 下にスクロールして、次のリソースを表示します。次の最初の数行が示すように、このリソースはデータベース VM を表しています。ここでも、**copy** 関数を使用していることに注目し、複数の VM が *dbCount* パラメーターに基づいて作成されることを確認してください。また、*dependsOn* コレクションにも注目してください。可用性セット、ストレージ アカウントと共に、VM をデプロイするときに、事前に作成する必要のある 2 つの NIC が示されます。
+11. 下にスクロールして、次のリソースを表示します。次の最初の数行が示すように、このリソースはデータベース VM を表しています。ここでも、**copy** 関数を使用していることに注目し、複数の VM が **dbCount** パラメーターに基づいて作成されることを確認してください。また、**dependsOn** コレクションにも注目してください。可用性セット、ストレージ アカウントと共に、VM をデプロイするときに、事前に作成する必要のある 2 つの NIC が示されます。
 
 		  "apiVersion": "2015-06-15",
 		  "type": "Microsoft.Compute/virtualMachines",
@@ -193,7 +193,7 @@
 		    "count": "[parameters('dbCount')]"
 		  },
 
-12. VM リソース内を下にスクロールして、次に示す **networkProfile** 要素を表示します。各 VM で参照される 2 つの NIC があることに注目してください。VM に対して複数の NIC を作成する場合は、1 つの NIC の *primary* プロパティを *true* に設定し、残りを *false* に設定する必要があります。
+12. VM リソース内を下にスクロールして、次に示す **networkProfile** 要素を表示します。各 VM で参照される 2 つの NIC があることに注目してください。VM に対して複数の NIC を作成する場合は、1 つの NIC の **primary** プロパティを *true* に設定し、残りを *false* に設定する必要があります。
 
         "networkProfile": {
           "networkInterfaces": [
@@ -211,9 +211,9 @@
 
 ## [デプロイ] をクリックして ARM テンプレートをデプロイする
 
-> [AZURE.IMPORTANT]次の手順を実行する前に、[前提条件](#Pre-requisites)の手順に従っていることを確認してください。
+> [AZURE.IMPORTANT] 次の手順を実行する前に、[前提条件](#Pre-requisites)の手順に従っていることを確認してください。
 
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。"クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、[このリンク](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC)に従って、**バックエンド リソース グループ (ドキュメントを参照)** の右側にある **[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。"クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、[このリンク](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)に従って、**バックエンド リソース グループ (ドキュメントを参照)** の右側にある **[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
 
 次の図は、デプロイ後の新しいリソース グループの内容を示しています。
 
@@ -225,7 +225,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
-3. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroup** コマンドレットを実行します。
+3. テンプレートを使用してリソース グループを作成するには、**`New-AzureRmResourceGroup`** コマンドレットを実行します。
 
 		New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json' `
@@ -260,8 +260,8 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+2. 次に示すように、**`azure config mode`** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
@@ -271,7 +271,7 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 3. [パラメーター ファイル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json)を開き、内容を選択して、コンピューター内のファイルに保存します。この例では、パラメーター ファイルを *parameters.json* に保存しました。
 
-4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**azure group deployment create** コマンドレットを実行して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+4. **`azure group deployment create`** コマンドレットを実行し、上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
 		azure group create -n IaaSStory-Backend -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json -e parameters.json
 
@@ -292,4 +292,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/18/2015" 
+	ms.date="02/08/2016" 
 	ms.author="ginathan;bradsev" />
 
 # Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する
@@ -663,4 +663,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法の総合的なチュートリアルは終了です。ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

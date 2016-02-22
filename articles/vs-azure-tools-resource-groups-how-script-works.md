@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
-	editor="tlee" />
+	editor="" />
 
  <tags
 	ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="02/03/2016"
+	ms.date="02/04/2016"
 	ms.author="tarcher" />
 
 # Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要
@@ -264,4 +264,4 @@ Azure リソース マネージャーの詳細については、「[Azure リソ
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

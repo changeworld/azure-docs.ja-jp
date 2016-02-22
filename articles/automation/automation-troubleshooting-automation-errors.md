@@ -18,14 +18,15 @@
 
 # Azure Automation の共通エラーのトラブルシューティングのヒント
 
-Runbook、モジュール、オートメーション資産など、Automation リソースの使用時に問題が発生した場合、その原因を探る必要があります。この記事では、Azure Automation を使用する際に発生するエラーについて説明し、可能な解決策を提案します。
+この記事では、Azure Automation を使用する際に発生するエラーについて説明し、可能な解決策を提案します。
 
 ## Azure Automation Runbook の使用時に発生する認証エラーをトラブルシューティングする  
 
-
-**シナリオ: Azure アカウントにサインインできない**
+### シナリオ: Azure アカウントにサインインできない
 
 **エラー:** Add-AzureAccount コマンドレットまたは Login-AzureRmAccount コマンドレットの使用時に「Unknown\_user\_type: Unknown User Type (未知のユーザー タイプ)」というエラーが発生します。
+
+**エラーの理由:** このエラーは、資格情報アセット名が無効な場合、または Automation 資格情報アセットのセットアップに使用したユーザー名とパスワードが無効な場合に、発生します。
 
 **トラブルシューティングのヒント:** 次の手順で原因を突き止めます。
 
@@ -37,15 +38,17 @@ Runbook、モジュール、オートメーション資産など、Automation �
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount – Credential $Cred
+        Login-AzureRmAccount –Credential $Cred
 
-3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。Active Directory アカウントを正しく設定する方法については、「[Authenticating to Azure using Azure Active Directory (Azure Active Directory を使用して Azure を認証する)](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」というブログ投稿を参照してください。
+3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。Azure Active Directory アカウントを正しく設定する方法については、「[Authenticating to Azure using Azure Active Directory (Azure Active Directory を使用して Azure を認証する)](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」というブログ投稿を参照してください。
 
-
-**シナリオ: Azure サブスクリプションが見つかりません**
+  <br/>
+### シナリオ: Azure サブスクリプションが見つかりません
 
 **エラー:** Select-AzureSubscription コマンドレットまたは Select-AzureRmSubscription コマンドレットの使用時に「The subscription named ``<subscription name>`` cannot be found (<サブスクリプション名> という名前のサブスクリプションが見つかりません)」というエラーが発生します。
- 
+
+**エラーの理由:** このエラーは、サブスクリプション名が無効な場合、またはサブスクリプションの詳細を取得しようとしている Azure Active Directory ユーザーがサブスクリプションの admin として構成されていない場合に、発生します。
+
 **トラブルシューティングのヒント:** Azure に対して正しく認証し、選択するサブスクリプションにアクセスできることを次の手順で確認します。
 
 1. **Select-AzureSubscription** コマンドレットを実行する前に必ず **Add-AzureAccount** を実行してください。  
@@ -54,21 +57,18 @@ Runbook、モジュール、オートメーション資産など、Automation �
     * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。  
     * 出力にサブスクリプション詳細が含まれる場合、**Select-AzureSubscription** コマンドレットを利用し、正しいサブスクリプション名または ID を使用していることを確認します。   
 
-
-
-**シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した**
+  <br/>
+### シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
 
 **エラー:** Azure のユーザー名とパスワードで Azure に対して認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
 
-**エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Active Directory ユーザーを使うことはできません。代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
+**エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
 **トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure リソース マネージャー コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)方法に関する記事と [Azure リソース マネージャーでサービス プリンシパルを認証する](./resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
-
-
-## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする 
-
-**シナリオ: Runbook の実行時にパラメーターをバインドできない**
+  <br/>
+## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする  
+### シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 
 **エラー:** Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``.Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
@@ -81,8 +81,8 @@ Runbook、モジュール、オートメーション資産など、Automation �
 
 3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
-
-**シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した**
+  <br/>
+### シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
 
 **エラー:** Runbook ジョブが失敗し、「The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)」というエラーが発生します。
 
@@ -95,8 +95,8 @@ Runbook、モジュール、オートメーション資産など、Automation �
 3. **[設定]**、**[価格レベルと使用状況]**、**[価格レベル]** の順に選択します。  
 4. **[価格レベルの選択]** ブレードで、**[Basic]** を選択します。    
 
-
-**シナリオ: Runbook の実行時にコマンドレットが認識されない**
+  <br/>
+### シナリオ: Runbook の実行時にコマンドレットが認識されない
 
 **エラー:** Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
 
@@ -110,10 +110,12 @@ Runbook、モジュール、オートメーション資産など、Automation �
 
 - 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。たとえば、**ModuleName\\CmdletName** を使用できます。
 
+- ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
+  <br/>
 ## モジュールのインポート時の共通エラーをトラブルシューティングする 
 
-**シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない**
+### シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
 **エラー:** モジュールがインポートに失敗するか、成功してもコマンドレットが抽出されません。
 
@@ -135,7 +137,7 @@ Runbook、モジュール、オートメーション資産など、Automation �
 
 - 参照される .dll がモジュール フォルダーにあることを確認します。
 
-
+  <br/>
 
 ## 次のステップ
 
@@ -149,4 +151,4 @@ Runbook、モジュール、オートメーション資産など、Automation �
 
 - Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

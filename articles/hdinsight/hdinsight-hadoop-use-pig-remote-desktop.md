@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #リモート デスクトップ接続から Pig ジョブを実行する
@@ -85,7 +85,7 @@
 
 		STORE RESULT into 'wasb:///example/data/pigout'
 
-	> [AZURE.NOTE]データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラー メッセージが表示します。
+	> [AZURE.NOTE] データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラー メッセージが表示します。
 
 7. エラーを解決するには、次のステートメントを入力します。
 
@@ -136,4 +136,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

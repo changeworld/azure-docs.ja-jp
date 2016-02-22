@@ -1,23 +1,20 @@
 
-1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile
-app settings, click **Quickstart** > **Cordova**. Under **Configure your client application**, select **Create a New App**,
-then click **Download**. This downloads a complete Cordova project for an app pre-configured to connect to your backend.
+1. [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]**、作成したバックエンドの順にクリックします。モバイル アプリの設定で、**[クイックスタート]**、 **[Cordova]** の順にクリックします。**[クライアント アプリケーションを構成]** で **[新しいアプリの作成]** を選択してから、**[ダウンロード]** をクリックします。これにより、バックエンドに接続するように事前に構成されたアプリ用の完成した Cordova プロジェクトがダウンロードされます。
 
-2. Unpack the downloading ZIP file to a directory on your hard drive.
+2. ハード ドライブのディレクトリにダウンロードしている ZIP ファイルを展開します。
 
-3. Open the project using **Visual Studio**.  Click on **Open** > **Project/Solution...**.
+3. **Visual Studio** を使用してプロジェクトを開きます。**[開く]**、**[プロジェクト/ソリューション...]** の順にクリックします。
 
-4. Find the _sitename_.sln file and click **Open**.
+4. _サイト名_.sln ファイルを検索し、**[開く]** をクリックします。
 
-5. The default emulator is **Ripple - Nexus (Galaxy)**.  Click the drop-down arrow next to the emulator and select **Google Android Emulator**.
+5. 既定のエミュレーターは **Ripple - Nexus (Galaxy)** です。エミュレーターの横にあるドロップダウン矢印をクリックして **[Google Android エミュレーター]** を選択します。
 
-6. Click on **Google Android Emulator**.  The project will be built and then run.  You may see a network security warning from the
-Google Android Emulator requesting access to the network.  Eventually, the Google Android Emulator will be shown and your application will run.
+6. **[Google Android エミュレーター]** をクリックします。プロジェクトが構築され、実行されます。Google Android エミュレーターからネットワークへのアクセスを要求する、ネットワーク セキュリティの警告が表示されることがあります。最終的には、Google Android エミュレーターが表示され、アプリケーションが実行されます。
 
-7. In the app, type meaningful text, such as _Complete the tutorial_ and then click the 'Add' button. This sends a POST request to the
-Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem SQL table, and returns information
-about the newly stored items back to the mobile app. The mobile app displays this data in the list.
+7. アプリで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、[追加] ボタンをクリックします。これにより、事前にデプロイした Azure バックエンドに POST 要求が送信されます。バックエンドは要求から取得したデータを TodoItem SQL テーブルに挿入し、新しく格納されたアイテムに関する情報をモバイル アプリに返します。モバイル アプリでは、このデータが一覧に表示されます。
 
     ![](./media/app-service-mobile-cordova-quickstart/quickstart-startup.png)
 
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
+
+<!---HONumber=AcomDC_0211_2016-->

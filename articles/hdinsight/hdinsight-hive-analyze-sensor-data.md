@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/04/2015" 
+	ms.date="02/05/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
 
 Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
-> [AZURE.NOTE]このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。
+> [AZURE.NOTE] このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。
 
 このサンプルでは、Hive を使用して、暖房、換気、および空調 (HVAC) システムによって生成された履歴データを処理し、設定した温度を正確に維持できないシステムを識別します。学習内容:
 
@@ -38,7 +38,7 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 * Microsoft Excel 2013
 
-	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=ja-JP&rs=ja-JP&ad=US) を使用したデータ視覚化のために使用します。
+	> [AZURE.NOTE] Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=ja-JP&rs=ja-JP&ad=US) を使用したデータ視覚化のために使用します。
 
 * [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)
 
@@ -54,4 +54,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

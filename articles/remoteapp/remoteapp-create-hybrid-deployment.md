@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="02/05/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のハイブリッド コレクションの作成方法
@@ -28,7 +28,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 このチュートリアルでは、ハイブリッド コレクションを作成する手順について説明します。次の 8 つの手順があります。
 
 1.	コレクションに使用する[イメージ](remoteapp-imageoptions.md)を決定する。これには、カスタム イメージを作成するか、サブスクリプションに含まれているいずれかの Microsoft イメージを使用します。
-2. 仮想ネットワークをセットアップする。[VNET 計画](remoteapp-planvpn.md)と[サイジング](remoteapp-vnetsizing.md)情報を確認する。
+2. 仮想ネットワークをセットアップする。[VNET 計画](remoteapp-planvnet.md)と[サイジング](remoteapp-vnetsizing.md)情報を確認する。
 2.	コレクションを作成する。
 2.	コレクションをローカル ドメインに参加させます。
 3.	テンプレート イメージをコレクションに追加する。
@@ -43,7 +43,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 - Azure RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。 
 - Azure RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-- [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
+- [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
 - アクセス権を付与するユーザーに関する情報を集めます。ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。Azure AD と Active Directory 間で UPN が一致していることを確認します。
 - テンプレート イメージを選択します。Azure RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、[Azure RemoteApp イメージのオプション](remoteapp-imageoptions.md)に関するページを参照してください。 
 - Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
@@ -58,7 +58,7 @@ VNET を作成する前に、[VNET 計画](remoteapp-planvnet.md)と [VNET サ�
 
 ### Azure VNET を作成して Active Directory のデプロイに参加させる
 
-まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet.md)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
+まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
 
 詳細については、「[管理ポータルでの Virtual Network の設定について](../virtual-network/virtual-networks-settings.md)」を参照してください。
 
@@ -120,7 +120,7 @@ Azure RemoteApp を使用するには、次のいずれかの方法で Azure Act
 
 Azure RemoteApp アプリケーションは、ユーザーに提供するアプリケーションまたはプログラムのことです。このプログラムは、コレクション用にアップロードしたテンプレート イメージに置かれています。ユーザーがアプリケーションにアクセスすると、アプリケーションはユーザーのローカル環境で実行しているように見えますが、実際には Azure で実行しています。
 
-ユーザーからアプリケーションへのアクセスを可能にするには、最初にこのアプリケーションをエンド ユーザー フィードに発行する必要があります。エンド ユーザー フィードとは、ユーザーがリモート デスクトップ クライアントを通じてアクセスできるアプリケーションの一覧です。
+ユーザーがアプリケーションにアクセスするには、アプリケーションを発行しておく必要があります。これにより、ユーザーはリモート デスクトップ クライアントからアプリケーションにアクセスできます。
  
 コレクションには複数のアプリケーションを発行できます。発行ページから、**[発行]** をクリックしてアプリを追加します。プログラムは、テンプレート イメージの **[スタート]** メニューから発行することも、テンプレート イメージのパスをアプリケーションに指定して発行することもできます。**[スタート]** メニューから追加する場合は、発行するアプリケーションを選択します。アプリケーションのパスを指定して発行する場合は、アプリケーションの名前と、アプリケーションがインストールされるテンプレート イメージ上の保存場所までのパスを指定します。
 
@@ -149,4 +149,4 @@ Azure RemoteApp アプリケーションは、ユーザーに提供するアプ�
 ### サポートのお願い 
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

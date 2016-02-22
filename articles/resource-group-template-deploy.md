@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/02/2015"
+   ms.date="02/02/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
@@ -271,7 +271,7 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
 パラメーター ファイルのサイズは、64 KB 以下である必要があります。
 
-テンプレートのパラメーターを定義する方法については、[認証テンプレート](resource-group-authoring-templates.md/#parameters)のページを参照してください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
+テンプレートのパラメーターを定義する方法については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/#parameters)」をご覧ください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」をご覧ください。
 
 ## 次のステップ
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/arm-template-deployment.md)」を参照してください。
@@ -282,4 +282,4 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

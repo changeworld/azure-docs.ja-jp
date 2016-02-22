@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="11/13/2015"
+   ms.date="02/09/2016"
    ms.author="tomfitz" />
 
 # Visual Studio でのリソース マネージャー テンプレートの編集
@@ -61,7 +61,7 @@ Visual Studio では、テンプレートを直接編集することもできま
 
 ## 関連項目
 
-[Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-project-create-deploy.md)
+[Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 [Azure リソース マネージャー コマンドレット](https://msdn.microsoft.com/library/azure/dn757692.aspx)
 
@@ -69,4 +69,4 @@ Visual Studio では、テンプレートを直接編集することもできま
 
 [Channel9 ビデオ: Azure リソース マネージャー](http://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B224#fbid=)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

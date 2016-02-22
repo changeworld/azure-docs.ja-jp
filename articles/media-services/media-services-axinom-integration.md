@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #Axinom を使用して Azure Media Services に Widevine ライセンスを配信する  
@@ -209,4 +209,4 @@ Widevine ライセンス取得 URL|DASH ストリーミングの資産配信ポ�
 
 この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

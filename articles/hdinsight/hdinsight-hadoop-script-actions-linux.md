@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/04/2015"
+    ms.date="02/05/2016"
     ms.author="larryfr"/>
 
 # HDInsight での Script Action 開発
 
 Script Action は、インストール中にクラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。
 
-> [AZURE.NOTE]このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターでの Script Action の使用方法の詳細については、「[HDInsight での Script Action の開発 (Windows)](hdinsight-hadoop-script-actions.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターでの Script Action の使用方法の詳細については、「[HDInsight での Script Action の開発 (Windows)](hdinsight-hadoop-script-actions.md)」を参照してください。
 
 ## Script Action とは
 
@@ -43,7 +43,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 - [STDOUT および STDERR に情報を書き込む](#bPS7)
 - [LF 行の終わりで、ファイルを ASCII として保存する](#bps8)
 
-> [AZURE.IMPORTANT]スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
+> [AZURE.IMPORTANT] スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
 ### <a name="bPS1"></a>Hadoop のバージョンを対象にする
 
@@ -55,7 +55,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ベスト プラクティスとして、すべてをダウンロードして、Azure ストレージ アカウントのサブスクリプションにアーカイブする方法があります。
 
-> [AZURE.IMPORTANT]使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
+> [AZURE.IMPORTANT] 使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
 たとえば、マイクロソフトから提供されるサンプルは、HDInsight チームによって管理される読み取り専用のパブリック コンテナーである、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。
 
@@ -73,7 +73,7 @@ HDInsight クラスターのノードがクラスターの有効期間中に再�
 
 Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、Script Action がその両方のノードで実行されます。インストールするコンポーネントで 1 つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの 2 つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
 
-> [AZURE.IMPORTANT]HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能は Script Action でインストールされるカスタム コンポーネントには拡張されません。Script Action からインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
+> [AZURE.IMPORTANT] HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能は Script Action でインストールされるカスタム コンポーネントには拡張されません。Script Action からインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
@@ -183,7 +183,7 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)  
 
-> [AZURE.NOTE]上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースの HDInsight と連携するスクリプトについては、[HDInsight でのスクリプト アクションの開発 (Windows)](hdinsight-hadoop-script-actions.md) に関する記述を参照するか、各記事の上部にあるリンクを使用します。
+> [AZURE.NOTE] 上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースの HDInsight と連携するスクリプトについては、[HDInsight でのスクリプト アクションの開発 (Windows)](hdinsight-hadoop-script-actions.md) に関する記述を参照するか、各記事の上部にあるリンクを使用します。
 
 ##トラブルシューティング
 
@@ -197,7 +197,7 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 _解決_: これがテキスト エディターのオプションである場合は、行の終わりとして Unix 形式または LE を選択します。Unix システムで次のコマンドを使用して CRLF を LF に変更することもできます。
 
-> [AZURE.NOTE]CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。システムで使用できるユーティリティに基づいて、いずれかを選択します。
+> [AZURE.NOTE] CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。システムで使用できるユーティリティに基づいて、いずれかを選択します。
 
 | コマンド | メモ |
 | ------- | ----- |
@@ -220,4 +220,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

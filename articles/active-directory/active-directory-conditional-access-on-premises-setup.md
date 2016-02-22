@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="02/09/2016"
 	ms.author="femila"/>
 
 
@@ -119,7 +119,8 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 5.	**デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をローカル ディレクトリと統合します。
   1.	ドメインを追加します。
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
-  3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。>[AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。>[AZURE.NOTE] プレビュー機能を構成する必要はありません。
+  3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
+  >[AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。[AZURE.NOTE] プレビュー機能を構成する必要はありません。
   
    
 
@@ -187,7 +188,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 4. メッセージが表示されたら、資格情報でサインインします。これでデバイスが参加します。
 
 ###Azure Active Directory Device Registration を使用して Windows 7 デバイスを参加させる
-デバイス登録ソフトウェア パッケージのデプロイに必要な Windows 7 ドメイン参加済みデバイスを登録するにはこのソフトウェア パッケージは Windows 7 向け社内参加と呼ばれ、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。パッケージの使用方法については、「 [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)」から確認できます。
+デバイス登録ソフトウェア パッケージのデプロイに必要な Windows 7 ドメイン参加済みデバイスを登録するにはこのソフトウェア パッケージは Windows 7 向け社内参加と呼ばれ、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。パッケージの使用方法については、「[Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)」をご覧ください。
 
 ### Azure Active Directory Device Registration を使用して Android デバイスを参加させる
 
@@ -244,4 +245,8 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 ![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
 
-<!---HONumber=AcomDC_0128_2016-->
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+<!---HONumber=AcomDC_0211_2016-->

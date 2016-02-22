@@ -38,7 +38,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -62,15 +62,17 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 
-* [Windows HPC フォーラム](https://social.microsoft.com/Forums/ja-JP/home?category=windowshpc)
+* [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
 
 ### Linux と OSS クラスターのソリューション
 
-これらの Azure クイック スタート テンプレートを使用して、オープン ソース ツールを備えた Linux HPC クラスターをデプロイします。
+次の Azure テンプレートを使用して、Linux HPC クラスターをデプロイします。
 
 * [SLURM クラスターの起動](https://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 
 * [トルク クラスターの起動](https://azure.microsoft.com/documentation/templates/torque-cluster/)
+
+* [Intel Cloud Edition for Lustre Software - Eval](https://azure.microsoft.com/marketplace/partners/intel/lustre-cloud-edition-evaleval-lustre-2-7/)
 
 ## Microsoft MPI
 
@@ -108,17 +110,31 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [仮想マシン](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 * [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
 * [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
 
+## 顧客事例
 
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
+
+* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
+
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
+
+* [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
+
+* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+
+* [Ludwig Institute of Cancer Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5830)
+
+* [Microsoft Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=15634)
 
 ## 次のステップ
 
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

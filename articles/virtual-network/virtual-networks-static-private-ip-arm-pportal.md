@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="プレビュー ポータルを使用して ARM モードで静的プライベート IP を設定する方法 | Microsoft Azure"
-   description="プライベート IP (DIP) とそれらをプレビュー ポータルを使用して ARM モードで管理する方法を理解します。"
+   pageTitle="Azure ポータルを使用して ARM モードで静的プライベート IP を設定する方法 | Microsoft Azure"
+   description="プライベート IP (DIP) の概要と、Azure ポータルを使用して ARM モードでプライベート IP を管理する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/04/2016"
    ms.author="telmos" />
 
-# プレビュー ポータルでの静的プライベート IP アドレスの設定方法
+# Azure ポータルで静的プライベート IP アドレスを設定する方法
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -31,14 +31,14 @@
 
 ## 静的プライベート IP アドレスをテストするために VM を作成する方法
 
-プレビュー ポータルを使用して、リソース マネージャーのデプロイメント モードで VM を作成する際に、静的プライベート IP アドレスを設定することはできません。まず、VM を作成してから、そのプライベート IP が静的になるように設定する必要があります。
+Azure ポータルを使用して、リソース マネージャー デプロイ モードで VM を作成する際に、静的プライベート IP アドレスを設定することはできません。まず、VM を作成してから、そのプライベート IP が静的になるように設定する必要があります。
 
 *TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. 次の図に示すように、**[新規]**、**[Compute]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックし、**[デプロイ モデルの選択**] の一覧に既に **[リソース マネージャー]** と表示されているのを確認してから [**作成**] をクリックします。
 
-	![プレビュー ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
+	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
 
 3. 次の図に示すように、**[基本]** ブレードで、作成する VM の名前 (ここでは *DNS01*)、ローカル管理者のアカウント、およびパスワードを入力します。
 
@@ -62,13 +62,13 @@
 
 7. **[概要]** ブレードで、**[OK]** をクリックします。ダッシュ ボードに以下のタイルが表示されることを確認します。
 
-	![プレビュー ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
+	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
 ## VM 用の静的プライベート IP アドレス情報を取得する方法
 
 上記の手順で作成された VM の静的プライベート IP アドレス情報を表示するには、次の手順を実行します。
 
-1. Azure プレビュー ポータルで、**[すべて参照]**、**[仮想マシン]**、**[DNS01]**、**[すべての設定]**、**[ネットワーク インターフェイス]** の順にクリックしてから、リストされているネットワーク インターフェイスのみをクリックします。
+1. Azure ポータルで、**[すべて参照]**、**[仮想マシン]**、**[DNS01]**、**[すべての設定]**、**[ネットワーク インターフェイス]** の順にクリックし、表示されている唯一のネットワーク インターフェイスをクリックします。
 
 	![VM のデプロイ タイル](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
 
@@ -82,9 +82,9 @@
 1. 上記の **[IP アドレス]** ブレードで、**[割り当て]** の下にある **[静的]** をクリックします。
 2. **[IP アドレス]** に「*192.168.1.101*」と入力してから、**[保存]** をクリックします。
 
-	![プレビュー ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
+	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
->[AZURE.NOTE]**[保存]** をクリックした後、割り当てがまだ **[動的]** に設定されている場合は、入力した IP アドレスが既に使用されていることを意味します。別の IP アドレスを試してください。
+>[AZURE.NOTE] **[保存]** をクリックした後、割り当てがまだ **[動的]** に設定されている場合は、入力した IP アドレスが既に使用されていることを意味します。別の IP アドレスを試してください。
 
 ## VM から静的プライベート IP アドレスを削除する方法
 上記で作成した VM から静的プライベート IP アドレスを削除するには、以下の手順に従います。
@@ -94,7 +94,7 @@
 ## 次のステップ
 
 - [予約済みパブリック IP](../virtual-networks-reserved-public-ip) アドレスについて理解する。
-- [インスタンス レベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
+- [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

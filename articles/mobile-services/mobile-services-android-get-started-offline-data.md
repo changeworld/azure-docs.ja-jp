@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="12/06/2015"
+	ms.date="02/07/2016"
 	ms.author="ricksal"/>
 
 # オフライン データ同期を Android Mobile Services アプリケーションに追加する
@@ -223,4 +223,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

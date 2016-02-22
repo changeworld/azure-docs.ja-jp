@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015" 
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -32,7 +32,7 @@
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
@@ -171,4 +171,4 @@
 
 [資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

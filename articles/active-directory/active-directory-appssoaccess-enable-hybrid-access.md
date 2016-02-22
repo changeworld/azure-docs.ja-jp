@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="02/09/2016"
 	ms.author="femila"/>
 
 # アプリケーション プロキシによるハイブリッド アクセスの有効化
@@ -38,8 +38,9 @@ Web アプリケーションへのアクセスを有効にするための要件�
 6. チケットは、アプリケーション サーバーに送信されて検証されます。
 7. 応答がアプリケーション プロキシ経由でエンドユーザーに送信されます。
 
-## 関連記事
+## 関連記事:
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 - [Azure AD アプリケーション プロキシの有効化](active-directory-application-proxy-enable.md#step-1-enable-application-proxy-in-azure-ad)
 - [Azure AD アプリケーション プロキシ経由でアプリケーションを公開する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

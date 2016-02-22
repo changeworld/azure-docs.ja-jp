@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
-   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、Lucene クエリ構文やカスタム アナライザーなどの試験的機能が含まれています。"
+   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
    services="search"
    documentationCenter="na"
    authors="HeidiSteen"
@@ -13,20 +13,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="12/21/2015"
+   ms.date="02/04/2016"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
 この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
-- Azure Search でクエリに [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)を使用できるようになりました。Lucene クエリ パーサーを使用するには、Search の操作で `queryType` を指定します。
-- [カスタム アナライザー](https://msdn.microsoft.com/library/azure/mt605304.aspx)を使用すると、テキストをインデックス可能なトークンまたは検索可能なトークンに変換するプロセスを制御できます。
-- `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
+- Azure Search でクエリに [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)を使用できるようになりました。Lucene クエリ パーサーを使用するには、Search 操作で `queryType` を指定します。`moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
+
+`2015-02-28-Preview` のいくつかの追加機能は、別のドキュメントに記載されています。学習した内容は次のとおりです。
+
+- [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
+- [インデクサー](search-api-indexers-2015-02-28-preview.md)
 
 Azure Search サービスは複数のバージョンで使用できます。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
-##このドキュメントの API
+## このドキュメントの API
+
+Azure Search サービス API は、API 操作に簡単な構文と OData 構文 (詳細については、「[OData のサポート (Azure Search)](http://msdn.microsoft.com/library/azure/dn798932.aspx)」を参照してください) という 2 つの URL 構文をサポートしています。簡単な構文の一覧を次に示します。
 
 [インデックスの作成](#CreateIndex)
 
@@ -265,7 +270,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `analyzer` - 検索時およびインデックス作成時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。また、`searchAnalyzer` または `indexAnalyzer` と共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
 
-`searchAnalyzer` - 検索時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。`indexAnalyzer` と共に設定する必要があります。また、`analyzer` オプションと共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
+`searchAnalyzer` - 検索時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。`indexAnalyzer` と共に設定する必要があります。また、`analyzer` オプションと共に設定することはできません。このアナライザーは、既存のフィールドで更新できます。
 
 `indexAnalyzer` - インデックス作成時にフィールドに対して使用するアナライザーの名前を設定します。指定できる一連の値については、[アナライザー](https://msdn.microsoft.com/library/mt605304.aspx)に関するページを参照してください。このオプションは、`searchable` フィールドでのみ使用できます。`searchAnalyzer` と共に設定する必要があります。また、`analyzer` オプションと共に設定することはできません。フィールドのアナライザーを選択した後は変更できません。
 
@@ -662,7 +667,7 @@ Azure Search は、さまざまな言語をサポートしています。各言�
 現時点では、インデックス スキーマ更新のサポートは限定的です。フィールドの種類の変更といったインデックスの再作成を必要とするスキーマ更新は、現在はサポートされていません。既存のフィールドを変更または削除することはできませんが、新しいフィールドはいつでも既存のインデックスに追加できます。新しいフィールドを追加すると、インデックス内のすべての既存ドキュメントでそのフィールドに null 値が自動的に設定されます。新しいドキュメントがインデックスに追加されるまで、追加の記憶域は使用されません。
 
 <a name="Suggesters"></a>
-##Suggesters
+## Suggesters
 
 Azure Search の検索候補機能は、先行入力またはオート コンプリート クエリ機能であり、検索ボックスに入力された部分文字列に反応して、可能性のある検索用語の一覧を提供します。商用 Web 検索エンジンを使用したときに、クエリ候補機能にお気づきではないでしょうか。Bing に「.NET」と入力すると、「.NET 4.5」、「.NET Framework 3.5」などの用語のリストが生成されます。サービス REST API を使用する場合、カスタム Azure Search アプリケーションに検索候補機能を実装するには、次のことが必要です。
 
@@ -703,7 +708,7 @@ Suggester は、インデックスの一部です。現在のバージョンで 
 		  ]
 		}
 
-> [AZURE.NOTE]Azure Search のパブリック プレビュー バージョンを使用した場合、`suggesters` は短い文字列 (3 ～ 25 文字) の接頭辞検索候補のみをサポートした古いブール型プロパティ (`"suggestions": false`) を置き換えます。その置き換えである `suggesters` は、フィールドの内容の先頭または途中で一致する語句を検索し、検索文字列の誤りに対する許容範囲が優れた、挿入辞一致をサポートします。一般公開版のリリース以降は、これが、Suggestions API の唯一の実装です。`api-version=2014-07-31-Preview` で導入された以前の `suggestions` プロパティは引き続きそのバージョンで動作しますが、Azure Search の `2015-02-28` 以降のバージョンでは動作しません。
+> [AZURE.NOTE]  Azure Search のパブリック プレビュー バージョンを使用した場合、`suggesters` は短い文字列 (3 ～ 25 文字) の接頭辞検索候補のみをサポートした古いブール型プロパティ (`"suggestions": false`) を置き換えます。その置き換えである `suggesters` は、フィールドの内容の先頭または途中で一致する語句を検索し、検索文字列の誤りに対する許容範囲が優れた、挿入辞一致をサポートします。一般公開版のリリース以降は、これが、Suggestions API の唯一の実装です。`api-version=2014-07-31-Preview` で導入された以前の `suggestions` プロパティは引き続きそのバージョンで動作しますが、Azure Search の `2015-02-28` 以降のバージョンでは動作しません。
 
 <a name="UpdateIndex"></a>
 ## インデックスの更新
@@ -1042,6 +1047,8 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
       ]
     }
 
+> [AZURE.NOTE] ドキュメント キーには、英字、数字、ダッシュ ("-")、アンダースコア ("\_")、等号 ("=") のみを含めることができます。詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」をご覧ください。
+
 **ドキュメント アクション**
 
 - `upload`: 更新アクションは、ドキュメントが新しい場合は挿入されて存在する場合は更新/置換される "upsert" に似ています。更新の場合はすべてのフィールドが置換されることに注意してください。
@@ -1143,9 +1150,9 @@ ________________________________________
 
 **GET ではなく、POST を使用する場合**
 
-HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
+HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 17 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
 
-**要求**
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、「[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)」および「[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)」をご覧ください。**要求**
 
 サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
@@ -1178,29 +1185,29 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `queryType=simple|full` (省略可能、既定は `simple`) - "simple" に設定すると、検索テキストは簡単なクエリ言語 (+、*、"" などの記号を使用できます) を使用して解釈されます。既定で、各ドキュメント内のすべての検索可能なフィールド (または `searchFields` で指定したフィールド) に対してクエリが評価されます。クエリの種類を `full`に設定すると、検索テキストは Lucene クエリ言語 (フィールドの指定や重み付けによる検索を使用できます) を使用して解釈されます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)と [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)に関するページを参照してください。
  
-> [AZURE.NOTE]Lucene クエリ言語の範囲検索は、同様の機能を提供する $filter が用意されているため、サポートされません。
+> [AZURE.NOTE] Lucene クエリ言語の範囲検索は、同様の機能を提供する $filter が用意されているため、サポートされません。
 
 `moreLikeThis=[key]` (省略可能) **重要:** この機能は `2015-02-28-Preview` でのみ使用できます。このオプションは、テキスト検索パラメーター `search=[string]` を含むクエリでは使用できません。`moreLikeThis` パラメーターは、ドキュメント キーで指定されているドキュメントに類似したドキュメントを検索します。`moreLikeThis` で検索要求を行うと、ソース ドキュメント内での語句の頻度と希少性に基づいて検索語句の一覧が生成されます。その後、これらの語句を使用して要求が行われます。`searchFields` を使用して検索対象のフィールドが制限されていない場合、既定ですべての `searchable` フィールドの内容が考慮されます。
 
 `$skip=#` (省略可能) - スキップする検索結果の数。100,000 を超えることはできません。ドキュメントを順番にスキャンする必要があり、この制限のために `$skip` を使用できない場合は、代わりに完全に順序付けられているキーに対する `$orderby` と範囲クエリでの `$filter` を使用することを検討してください。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$skip` ではなく `skip` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$skip` ではなく `skip` です。
 
 `$top=#` (省略可能) - 取得する検索結果の数。これは、`$skip` と組み合わせて使用して、検索結果のクライアント側のページングを実装できます。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$top` ではなく `top` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$top` ではなく `top` です。
 
 `$count=true|false` (省略可能、既定値は `false`) - 結果の合計数を取得するかどうか。これは、`search` パラメーターおよび `$filter` パラメーターと一致するすべてのドキュメントの数です。`$top` と `$skip` は無視されます。この値を `true` に設定すると、パフォーマンスに影響する場合があります。返されるカウントは概数であることに注意してください。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$count` ではなく `count` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$count` ではなく `count` です。
 
 `$orderby=[string]` (省略可能) - 結果を並べ替えるための式のコンマ区切りのリスト。各式は、フィールド名または `geo.distance()` 関数の呼び出しです。各式に続いて、昇順を示す `asc` または降順を示す `desc` を指定できます。既定値は昇順です。結び付きは、ドキュメントの一致スコアによって切り離されます。`$orderby` を指定しないと、既定の並べ替え順序はドキュメント一致スコアの降順になります。`$orderby` には 32 句の制限があります。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$orderby` ではなく `orderby` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$orderby` ではなく `orderby` です。
 
 `$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、スキーマで取得可能とマークされているすべてのフィールドが含まれます。このパラメーターを `*` に設定することによって、明示的にすべてのフィールドを要求することもできます。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$select` ではなく `select` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$select` ではなく `select` です。
 
 `facet=[string]` (0 以上) - ファセットに使用するフィールド。オプションとして、コンマ区切りの `name:value` ペアとして表された、ファセットをカスタマイズするパラメーターを文字列に含めることができます。有効なパラメーターは次のとおりです。
 
@@ -1216,33 +1223,36 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 - `interval` (数値に対する 0 より大きい整数間隔、または日時値に対する `minute`、`hour`、`day`、`week`、`month`、`quarter`、`year`)
   - 例: `facet=baseRate,interval:100` では、サイズ 100 のベース レート範囲に基づくバケットが生成されます。たとえば、ベース レートがすべて $60 ～ $600 の範囲である場合、0 ～ 100、100 ～ 200、200 ～ 300、300 ～ 400、400 ～ 500、500 ～ 600 のバケットが生成されます。
   - 例: `facet=lastRenovationDate,interval:year` では、ホテルが改装された各年に対して 1 つのバケットが生成されます。
+- `timeoffset` ([+-] hh:mm、[+-] hhmm、または [+-] hh) `timeoffset` は省略可能です。`Edm.DateTimeOffset` 型のフィールドに適用された場合に限り、`interval` オプションとのみ組み合わせることができます。この値によって、時間の境界の設定における UTC 時刻のオフセットを指定します。
+  - 例: `facet=lastRenovationDate,interval:day,timeoffset:-01:00` とすると、01:00:00 (UTC) (対象のタイム ゾーンで午前 0 時) を 1 日の開始点として使用します。
 - **注**: `count` と `sort` を同じファセット指定で組み合わせることができますが、それらを `interval` または `values` と組み合わせることはできず、`interval` と `values` を一緒に組み合わせることはできません。
+- **注**: `timeoffset` が指定されていない場合、日時間隔のファセットは、UTC 時刻に基づいて計算されます。例: `facet=lastRenovationDate,interval:day` の場合、1 日の開始点は 00:00:00 UTC となります。 
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `facet` ではなく `facets` です。また、各文字列が個々にファセット式の文字列となる JSON 配列の文字列として指定します。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `facet` ではなく `facets` です。また、各文字列が個々にファセット式の文字列となる JSON 配列の文字列として指定します。
 
 `$filter=[string]` (省略可能) - 標準の OData 構文で構造化された検索式。Azure Search がサポートする OData 式の文法のサブセットの詳細については、「[OData 式の構文](#ODataExpressionSyntax)」を参照してください。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$filter` ではなく `filter` です。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `$filter` ではなく `filter` です。
 
 `highlight=[string]` (省略可能) - ヒットの強調表示に使用されるコンマで区切られたフィールド名のセット。`searchable` フィールドのみが、ヒットの強調表示に使用できます。
 
 `highlightPreTag=[string]` (省略可能、既定値は `<em>`) - ヒットの強調表示の前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。
 
-> [AZURE.NOTE]GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+> [AZURE.NOTE] GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `highlightPostTag=[string]` (省略可能、既定値は `</em>`) - ヒットの強調表示の後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。
 
-> [AZURE.NOTE]GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+> [AZURE.NOTE] GET を使用して **Search** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `scoringProfile=[string]` (省略可能) - 結果の並べ替えを目的として一致するドキュメントのマッチ スコアを評価するためのスコアリング プロファイルの。
 
 `scoringParameter=[string]` (0 以上) - 名前:値の形式を使用して、スコアリング関数で定義されている各パラメーターの値を示します (例: `referencePointParameter`)。たとえば、スコアリング プロファイルで "mylocation" という名前のパラメーターを持つ関数が定義されている場合、クエリ文字列のオプションは &scoringParameter=mylocation:-122.2,44.8 になります。
 
-> [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `scoringParameter` ではなく `scoringParameters` です。また、各文字列が個々に name:value のペアとなる JSON 配列の文字列として指定します。
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `scoringParameter` ではなく `scoringParameters` です。また、各文字列が個々に name:value のペアとなる JSON 配列の文字列として指定します。
 
 `minimumCoverage` (省略可能、既定値は 100) - クエリが成功として報告されるために、検索クエリで照合する必要のあるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックス全体が一致する必要があります。そうでないと、`Search` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Search` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
-> [AZURE.NOTE]このパラメーターを 100 未満の値に設定すれば、レプリカを 1 つか持たないサービスについても検索の可用性を有効に確保することができます。ただし、すべての一致するドキュメントが検索結果に含まれると保証されるわけではありません。アプリケーションにとって可用性よりも検索の再現率が重要である場合は、`minimumCoverage` を既定値の 100 のままにしておくことをお勧めします。
+> [AZURE.NOTE] このパラメーターを 100 未満の値に設定すれば、レプリカを 1 つか持たないサービスについても検索の可用性を有効に確保することができます。ただし、すべての一致するドキュメントが検索結果に含まれると保証されるわけではありません。アプリケーションにとって可用性よりも検索の再現率が重要である場合は、`minimumCoverage` を既定値の 100 のままにしておくことをお勧めします。
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -1347,6 +1357,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 1) 日付で降順に並べ替えられたインデックスを検索します。
 
+
     GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1357,6 +1368,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 2) ファセット検索で、インデックスを検索し、カテゴリ、レーティング、タグに対するファセットと、特定の範囲の baseRate の項目を取得します。
 
+
     GET /indexes/hotels/docs?search=test&facet=category&facet=rating&facet=tags&facet=baseRate,values:80|150|220&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1366,6 +1378,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 3) ユーザーがレーティング 3 とカテゴリ "Motel" をクリックした後、フィルターを使用して前のファセット クエリの結果を絞り込みます。
+
 
     GET /indexes/hotels/docs?search=test&facet=tags&facet=baseRate,values:80|150|220&$filter=rating eq 3 and category eq 'Motel'&api-version=2015-02-28-Preview
 
@@ -1378,6 +1391,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 4) ファセット検索で、クエリで返される一意の語句に上限を設定します。既定値は 10 ですが、`facet` 属性の `count` パラメーターを使用してこの値を増減できます。
 
+
     GET /indexes/hotels/docs?search=test&facet=city,count:5&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1388,6 +1402,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 5) 特定のフィールド内のインデックスを検索します (たとえば、言語固有のフィールド)。
 
+
     GET /indexes/hotels/docs?search=hôtel&searchFields=description_fr&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1397,6 +1412,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 6) 複数のフィールドにまたがるインデックスを検索します。たとえば、複数の言語の検索可能なフィールドをすべて同じインデックスに格納してクエリできます。英語とフランス語の説明が同じドキュメントに共存している場合、いずれかまたはすべてをクエリ結果で返すことができます。
+
 
 	GET /indexes/hotels/docs?search=hotel&searchFields=description,description_fr&api-version=2015-02-28-Preview
 
@@ -1410,6 +1426,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 7) ページング - 項目の 1 番目のページを取得します (ページ サイズは 10)。
 
+
     GET /indexes/hotels/docs?search=*&$skip=0&$top=10&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1420,6 +1437,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 8) ページング - 項目の 2 番目のページを取得します (ページ サイズは 10)。
+
 
     GET /indexes/hotels/docs?search=*&$skip=10&$top=10&api-version=2015-02-28-Preview
 
@@ -1432,6 +1450,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 9) 特定のフィールドのセットを取得します。
 
+
     GET /indexes/hotels/docs?search=*&$select=hotelName,description&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1442,6 +1461,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 10) 特定のフィルター式に一致するドキュメントを取得します。
 
+
     GET /indexes/hotels/docs?$filter=(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1450,6 +1470,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 11) インデックスを検索し、ヒットを強調表示してフラグメントを返します。
+
 
     GET /indexes/hotels/docs?search=something&highlight=description&api-version=2015-02-28-Preview
 
@@ -1461,6 +1482,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 12) インデックスを検索し、参照場所から近いものから遠いものの順に並べ替えてドキュメントを返します。
 
+
     GET /indexes/hotels/docs?search=something&$orderby=geo.distance(location, geography'POINT(-122.12315 47.88121)')&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
@@ -1470,6 +1492,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 13) 2 つの距離スコアリング関数を含む "geo" という名前のスコアリング プロファイルがあるものとしてインデックスを検索します。1 つの関数は "currentLocation" という名前のパラメーターを定義し、もう 1 つは "lastLocation" という名前のパラメーターを定義しています。
+
 
     GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&scoringParameter=lastLocation:-121.499,44.2113&api-version=2015-02-28-Preview
 
@@ -1481,6 +1504,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 14) [簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)を使用して、インデックス内のドキュメントを検索します。このクエリは、検索可能なフィールドに語句 "comfort" および "location" が含まれていて "motel" が含まれないホテルを返します。
+
 
     GET /indexes/hotels/docs?search=comfort +location -motel&searchMode=all&api-version=2015-02-28-Preview
 
@@ -1504,7 +1528,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
     }
 
 <a name="LookupAPI"></a>
-##ドキュメントの参照
+## ドキュメントの参照
 
 **Lookup Document** 操作は、Azure Search からドキュメントを取得します。これは、ユーザーが特定の検索結果をクリックして、そのドキュメントに関する詳細を検索するときに役立ちます。
 
@@ -1562,7 +1586,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
     GET /indexes('hotels')/docs('3')?api-version=2015-02-28-Preview
 
 <a name="CountDocs"></a>
-##Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))
+## Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))
 
 **Count Documents** 操作は、検索インデックス内のドキュメントの数を取得します。`$count` 構文は、OData プロトコルの一部です。
 
@@ -1598,7 +1622,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 応答本文には、プレーン テキスト形式の整数として、カウント値が含まれます。
 
 <a name="Suggestions"></a>
-##検索候補
+## 検索候補
 
 **Suggestions** 操作は、部分的な検索入力に基づいて検索候補を取得します。通常は、ユーザーが検索語句を入力するときに、先行入力の候補を提供するために検索ボックスで使用されます。
 
@@ -1642,11 +1666,11 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `highlightPreTag=[string]` (省略可能) - 検索ヒットの前に付加する文字列タグ。`highlightPostTag` で設定する必要があります。
 
-> [AZURE.NOTE]GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+> [AZURE.NOTE] GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `highlightPostTag=[string]` (省略可能) - 検索ヒットの後に付加する文字列タグ。`highlightPreTag` で設定する必要があります。
 
-> [AZURE.NOTE]GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
+> [AZURE.NOTE] GET を使用して **Suggestions** を呼び出す場合は、URL の予約済みの文字は、パーセントでエンコードする必要があります (たとえば、# ではなく %23)。
 
 `suggesterName=[string]` - インデックス定義の一部である `suggesters` コレクションで指定されているサジェスターの名前。`suggester` は、検索候補のクエリ語句がスキャンされるフィールドを決定します。詳細については、「[サジェスター](#Suggesters)」を参照してください。
 
@@ -1656,23 +1680,23 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `$top=#` (省略可能、既定値 = 5) - 取得する検索候補の数。1 ～ 100 の数値を指定する必要があります。
 
-> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$top` ではなく `top` です。
+> [AZURE.NOTE] POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$top` ではなく `top` です。
 
 `$filter=[string]` (省略可能) - 検索候補と考えられるドキュメントをフィルター処理する式。
 
-> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$filter` ではなく `filter` です。
+> [AZURE.NOTE] POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$filter` ではなく `filter` です。
 
 `$orderby=[string]` (省略可能) - 結果を並べ替えるための式のコンマ区切りのリスト。各式は、フィールド名または `geo.distance()` 関数の呼び出しです。各式に続いて、昇順を示す `asc` または降順を示す `desc` を指定できます。既定値は昇順です。`$orderby` には 32 句の制限があります。
 
-> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$orderby` ではなく `orderby` です。
+> [AZURE.NOTE] POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$orderby` ではなく `orderby` です。
 
 `$select=[string]` (省略可能) - 取得するフィールドのコンマ区切りリスト。指定しないと、ドキュメント キーと検索候補テキストのみが返されます。このパラメーターを `*` に設定することによって、明示的にすべてのフィールドを要求することができます。
 
-> [AZURE.NOTE]POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$select` ではなく `select` です。
+> [AZURE.NOTE] POST を使用して **Suggestions** を呼び出す場合は、このパラメーターの名前は `$select` ではなく `select` です。
 
 `minimumCoverage` (省略可能、既定値は 80) - クエリが成功として報告されるために、検索候補クエリで照合する必要があるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックスの 80 % 以上が一致している必要があります。そうでないと、`Suggest` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Suggest` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
-> [AZURE.NOTE]このパラメーターを 100 未満の値に設定すれば、レプリカを 1 つか持たないサービスについても検索の可用性を有効に確保することができます。ただし、すべての一致する候補が結果に含まれると保証されるわけではありません。アプリケーションにとって可用性よりも再現率が重要である場合は、`minimumCoverage` が既定値の 80 を下回らないようにすることをお勧めします。
+> [AZURE.NOTE] このパラメーターを 100 未満の値に設定すれば、レプリカを 1 つか持たないサービスについても検索の可用性を有効に確保することができます。ただし、すべての一致する候補が結果に含まれると保証されるわけではありません。アプリケーションにとって可用性よりも再現率が重要である場合は、`minimumCoverage` が既定値の 80 を下回らないようにすることをお勧めします。
 
 `api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -1748,4 +1772,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

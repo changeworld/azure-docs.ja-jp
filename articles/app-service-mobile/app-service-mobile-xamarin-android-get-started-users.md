@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="Xamarin Android での Mobile Apps の認証の使用" 
-	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+<properties
+	pageTitle="Xamarin Android での Mobile Apps の認証の使用"
+	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/07/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -56,7 +54,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 	                    MobileServiceAuthenticationProvider.Facebook);
 	                CreateAndShowDialog(string.Format("you are now logged in - {0}",
 	                    user.UserId), "Logged in!");
-	
+
 	                success = true;
 	            }
 	            catch (Exception ex)
@@ -72,7 +70,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
             // Load data only after authentication succeeds.
             if (await Authenticate())
             {
-                //Hide the button after authentication succeeds. 
+                //Hide the button after authentication succeeds.
                 FindViewById<Button>(Resource.Id.buttonLoginUser).Visibility = ViewStates.Gone;
 
                 // Load the data.
@@ -82,7 +80,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 
     これにより、ユーザーを認証する新しいメソッドと、新しい **[サインイン]** ボタンのメソッド ハンドラーが作成されます。上記のサンプル コードでは、ユーザーは Facebook ログインを使用して認証されます。認証されると、ダイアログを使用してユーザー ID が表示されます。
 
-    > [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **OnCreate** メソッド内の次のコード行を削除またはコメント アウトします。
 
@@ -99,7 +97,7 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 
 5. 次の要素を Strings.xml リソース ファイルに追加します。
 
-		<string name="login_button_text">Sign in</string> 
+		<string name="login_button_text">Sign in</string>
 
 6. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
 
@@ -108,6 +106,5 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 
 <!-- URLs. -->
 [Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
- 
 
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0211_2016-->

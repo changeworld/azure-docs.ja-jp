@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/17/2015"  
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 #.NET SDK を使用して資産の配信ポリシーを構成する
@@ -348,4 +348,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

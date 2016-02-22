@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="01/11/2015"
+	ms.date="02/04/2016"
 	ms.author="wesmc"/>
 
 # Azure モバイル アプリでのオフライン データ同期
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## オフライン データ同期について
 
@@ -37,8 +35,8 @@
 以下のチュートリアルで、Azure モバイル アプリ を使用してモバイル アプリにオフライン同期を追加する方法について説明しています。
 
 * [Android: オフライン同期を有効にする]
-* [iOS: オフライン同期を有効にする]			
-* [Xamarin iOS: オフライン同期を有効にする]	
+* [iOS: オフライン同期を有効にする]
+* [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
 * [Windows 8.1: オフライン同期を有効にする]
 
@@ -65,10 +63,10 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 <!-- TODO: link to client references -->
 
 
-<!-- 
+<!--
 Client code will interact with the table using the `IMobileServiceSyncTable` interface to support offline buffering. This interface supports all the methods of `IMobileServiceTable` along with additional support for pulling data from a Mobile App backend table and merging it into a local store table. How the local table is synchronized with the backend database is mainly controlled by your logic in the client app.
 
-The sync table uses the [System Properties](https://msdn.microsoft.com/library/azure/dn518225.aspx) on the table to implement change tracking for offline synchronization. 
+The sync table uses the [System Properties](https://msdn.microsoft.com/library/azure/dn518225.aspx) on the table to implement change tracking for offline synchronization.
 
 
 
@@ -103,22 +101,23 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 
   増分同期を無効にする場合は、`null` をクエリ ID として渡します。この場合、`PullAsync` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
 
- 
+
 
 <!--   mymobileservice-code.azurewebsites.net/tables/TodoItem?$filter=(__updatedAt ge datetimeoffset'1970-01-01T00:00:00.0000000%2B00:00')&$orderby=__updatedAt&$skip=0&$top=50&__includeDeleted=true&__systemproperties=__updatedAt%2C__deleted
  -->
+
 * **消去**: ローカル ストアのコンテンツは `IMobileServiceSyncTable.PurgeAsync` を使用して削除できます。消去は、クライアント データベースに古くなったデータがある場合、または保留中の変更をすべて破棄する場合に行う必要があります。
 
   消去により、ローカル ストアからテーブルがクリアされます。サーバー データベースとの同期待ちの操作がある場合、*force purge* パラメーターを設定しない限り消去では例外がスローされます。
 
   クライアント上の古くなったデータの例として、"todo list" サンプルでデバイス 1 が未完了のアイテムだけを取得するとします。次に、別のデバイスによって、サーバー上の TodoItem "Buy milk" が完了とマークされたとします。ただし、デバイス 1 は完了とマークされていないアイテムだけをプルするので、デバイス 1 はローカル ストアに "Buy milk" TodoItem を残しています。消去によってこの古くなったアイテムがクリアされます。
- 
+
 ## 次のステップ
 
-* [iOS: オフライン同期を有効にする]			
-* [Xamarin iOS: オフライン同期を有効にする]	
+* [iOS: オフライン同期を有効にする]
+* [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
-* [Windows 8.1: オフライン同期を有効にする]	
+* [Windows 8.1: オフライン同期を有効にする]
 
 <!-- Links -->
 
@@ -128,4 +127,4 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 [Xamarin Android: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: オフライン同期を有効にする]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="02/09/2016"
 	ms.author="kgremban"/>
 
 
 
 # アプリケーション プロキシで要求に対応するアプリケーションを利用する
 
-> [AZURE.IMPORTANT]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.IMPORTANT] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 要求に対応するアプリケーションは、Security Token Service (STS) へのリダイレクトを行います。STS は、ユーザーをアプリケーションにリダイレクトする前に、ユーザーにトークンの代わりの資格情報を要求します。これらのリダイレクトで機能するようにアプリケーション プロキシを有効にするには、次の手順を実行する必要があります。
 
@@ -59,7 +59,10 @@
 
 ## その他のリソース
 
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
-* [Azure ID](fundamentals-identity.md)
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+- [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](active-directory-application-proxy-native-client.md)
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -75,17 +75,17 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 PowerShell で、次のコマンドレットを実行します。
 
+```
+$UserName = "<user@live.com>"
+$Password = "<password>"
+$AzureSubscriptionName = "prod_sub1"
 
+$SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
+$Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $securePassword
+Add-AzureAccount -Credential $Cred;
+$AzureSubscription = Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
 
-			$UserName = "<user@live.com>"
-	$Password = "<password>"
-	$AzureSubscriptionName = "prod_sub1"
-
-	$SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
-	$Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $securePassword
-	Add-AzureAccount -Credential $Cred;
-	$AzureSubscription = Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
-
+```
 
 "< >" 内の要素をユーザー固有の情報に置き換えます。
 
@@ -95,16 +95,16 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 
 ```
 
-	$VaultName = "<testvault123>"
-	$VaultGeo  = "<Southeast Asia>"
-	$OutputPathForSettingsFile = "<c:>"
+$VaultName = "<testvault123>"
+$VaultGeo  = "<Southeast Asia>"
+$OutputPathForSettingsFile = "<c:>"
 
 ```
 
 
 ```
-	New-AzureSiteRecoveryVault -Location $VaultGeo -Name $VaultName;
-	$vault = Get-AzureSiteRecoveryVault -Name $VaultName;
+New-AzureSiteRecoveryVault -Location $VaultGeo -Name $VaultName;
+$vault = Get-AzureSiteRecoveryVault -Name $VaultName;
 
 ```
 
@@ -116,20 +116,22 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	
 	```
 	
-		$VaultName = "<testvault123>"
-		$VaultGeo  = "<Southeast Asia>"
-		$OutputPathForSettingsFile = "<c:>"
+	$VaultName = "<testvault123>"
+	$VaultGeo  = "<Southeast Asia>"
+	$OutputPathForSettingsFile = "<c:>"
 	
-		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
+	$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
 	```
 	
 2.	次のコマンドを実行して、コンテナーのコンテキストを設定します。
 	
-	```	
-		$VaultSettingFilePath = $vaultSetingsFile.FilePath 
-		$VaultContext = Import-AzureSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath -ErrorAction Stop
-```
+	```
+	
+	$VaultSettingFilePath = $vaultSetingsFile.FilePath 
+	$VaultContext = Import-AzureSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath -ErrorAction Stop
+	
+	```
 
 ## ステップ 4: Azure Site Recovery プロバイダーをインストールする
 
@@ -137,19 +139,19 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	
 	```
 	
-		pushd C:\ASR\
+	pushd C:\ASR\
 	
 	```
 	
-2. 次のコマンドを実行して、ダウンロードしたプロバイダーを使用して、ファイルを抽出します。
+2.	次のコマンドを実行して、ダウンロードしたプロバイダーを使用して、ファイルを抽出します。
 	
 	```
 	
-		AzureSiteRecoveryProvider.exe /x:. /q
+	AzureSiteRecoveryProvider.exe /x:. /q
 	
 	```
 	
-3. 次のコマンドを使用してプロバイダーをインストールします。
+3.	次のコマンドを使用してプロバイダーをインストールします。
 	
 	```
 	
@@ -162,18 +164,18 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	$installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
 	do
 	{
-	                $isNotInstalled = $true;
-	                if(Test-Path $installationRegPath)
-	                {
-	                                $isNotInstalled = $false;
-	                }
+		$isNotInstalled = $true;
+		if(Test-Path $installationRegPath)
+		{
+			$isNotInstalled = $false;
+		}
 	}While($isNotInstalled)
 	
 	```
 	
 	インストールが完了するのを待ちます。
 	
-4. 次のコマンドを使用して、コンテナーにサーバーを登録します。
+4.	次のコマンドを使用して、コンテナーにサーバーを登録します。
 	
 	```
 	
@@ -208,7 +210,7 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 
 ```
 
-	marsagentinstaller.exe /q /nu
+marsagentinstaller.exe /q /nu
 
 ```
 
@@ -220,8 +222,7 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 	```
 	
 	$ReplicationFrequencyInSeconds = "300";
-	$ProfileResult = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider 	HyperVReplica -RecoveryAzureSubscription $AzureSubscriptionName `
-	-RecoveryAzureStorageAccount $StorageAccountName -ReplicationFrequencyInSeconds 	$ReplicationFrequencyInSeconds;
+	$ProfileResult = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -RecoveryAzureSubscription $AzureSubscriptionName -RecoveryAzureStorageAccount $StorageAccountName -ReplicationFrequencyInSeconds 	$ReplicationFrequencyInSeconds;
 	
 	```
 	
@@ -229,8 +230,8 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 	
 	```
 	
-		$PrimaryCloud = "testcloud"
-		$protectionContainer = Get-AzureSiteRecoveryProtectionContainer -Name $PrimaryCloud;	
+	$PrimaryCloud = "testcloud"
+	$protectionContainer = Get-AzureSiteRecoveryProtectionContainer -Name $PrimaryCloud;	
 	
 	```
 	
@@ -238,26 +239,42 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 	
 	```
 	
-		$associationJob = Start-AzureSiteRecoveryProtectionProfileAssociationJob -	ProtectionProfile $profileResult -PrimaryProtectionContainer $protectionContainer;		
+	$associationJob = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $profileResult -PrimaryProtectionContainer $protectionContainer;		
 	
 	```
 	
 4.	ジョブが完了したら、次のコマンドを実行します。
 
-			$job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
-			if($job -eq $null -or $job.StateDescription -ne "Completed")
-			{
-				$isJobLeftForProcessing = $true;
-			}
-5. ジョブの処理が完了したら、次のコマンドを実行します。
+	```
+	
+	$job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
+	if($job -eq $null -or $job.StateDescription -ne "Completed")
+	{
+		$isJobLeftForProcessing = $true;
+	}
+	
+	```
 
+5.	ジョブの処理が完了したら、次のコマンドを実行します。
+
+	```
+	Do
+	{
+		$job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
+		Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
+		if($job -eq $null -or $job.StateDescription -ne "Completed")
+		{
+			$isJobLeftForProcessing = $true;
+		}
+		
 		if($isJobLeftForProcessing)
-			{
+		{
 			Start-Sleep -Seconds 60
-			}
-				}While($isJobLeftForProcessing)
-	
-	
+		}
+	}While($isJobLeftForProcessing)
+		
+	```
+
 操作の完了を確認するには、[アクティビティを監視する](#monitor)の手順に従います。
 
 ## ステップ 8: ネットワーク マッピングを構成する
@@ -267,16 +284,16 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 
 最初のコマンドは、現在の Azure Site Recovery コンテナーのサーバーを取得します。このコマンドは、$Servers 配列変数に、Microsoft Azure Site Recovery のサーバーを格納します。
 
+```
+$Servers = Get-AzureSiteRecoveryServer
 
-
-	$Servers = Get-AzureSiteRecoveryServer
-
+```
 
 2 番目のコマンドは、$Servers 配列内の最初のサーバーの Site Recovery ネットワークを取得します。コマンドは、$Networks 変数に、ネットワークを格納します。
 
 ```
 
-	$Networks = Get-AzureSiteRecoveryNetwork -Server $Servers[0]
+$Networks = Get-AzureSiteRecoveryNetwork -Server $Servers[0]
 
 ```
 
@@ -284,7 +301,7 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 
 ```
 
-	$Subscriptions = Get-AzureSubscription
+$Subscriptions = Get-AzureSubscription
 
 ```
 
@@ -292,7 +309,7 @@ Azure ポータルから、保護する VMM クラウドに配置されている
 
 ```
 
-	$AzureVmNetworks = Get-AzureVNetSite
+$AzureVmNetworks = Get-AzureVNetSite
 
 ```
 
@@ -328,14 +345,16 @@ PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureS
 	
 	$protectionEntity = Get-AzureSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
 		
-		```
-			
+	```
+		
 3. 次のコマンドを実行して VM の DR を有効にします。
 
+	```
 	
-	$jobResult = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection Enable -Force
+	$jobResult = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity 	-Protection Enable -Force
 	
-
+	```
+	
 ## デプロイのテスト
 
 デプロイをテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
@@ -395,21 +414,21 @@ PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureS
 	
 	```
 	
-		$RPCreationJob = New-AzureSiteRecoveryRecoveryPlan -File $TemplatePath -WaitForCompletion;
+	$RPCreationJob = New-AzureSiteRecoveryRecoveryPlan -File $TemplatePath -WaitForCompletion;
 	
 	```
 	
 ### テスト フェールオーバーの実行
 
-1. 次のコマンドを実行して RecoveryPlan オブジェクトを取得します。
+1.	次のコマンドを実行して RecoveryPlan オブジェクトを取得します。
 	
 	```
 	
-		$RPObject = Get-AzureSiteRecoveryRecoveryPlan -Name $RPName;
+	$RPObject = Get-AzureSiteRecoveryRecoveryPlan -Name $RPName;
 	
 	```
 	
-2. 次のコマンドを実行してテスト フェールオーバーを開始します。
+2.	次のコマンドを実行してテスト フェールオーバーを開始します。
 	
 	```
 	
@@ -425,21 +444,17 @@ PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureS
 
 Do
 {
-                $job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
-                Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
-                if($job -eq $null -or $job.StateDescription -ne "Completed")
-                {
-                                $isJobLeftForProcessing = $true;
-                }
+        $job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
+        Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
+        if($job -eq $null -or $job.StateDescription -ne "Completed")
+        {
+        	$isJobLeftForProcessing = $true;
+        }
 
-```
-
-```
-
-if($isJobLeftForProcessing)
-                {
-                                Start-Sleep -Seconds 60
-                }
+	if($isJobLeftForProcessing)
+        {
+        	Start-Sleep -Seconds 60
+        }
 }While($isJobLeftForProcessing)
 
 ```
@@ -449,4 +464,4 @@ if($isJobLeftForProcessing)
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

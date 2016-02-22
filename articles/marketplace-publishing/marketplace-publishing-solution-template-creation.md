@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="10/28/2015"
+      ms.date="02/06/2016"
       ms.author="hascipio; v-divte" />
 
 # Azure Marketplace 向けソリューション テンプレートの作成ガイド
@@ -50,11 +50,11 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 2. [http://www.url-encode-decode.com/](http://www.url-encode-decode.com/) にあるツールを使用して URL をエンコードします。
 3. 太字のテキストを、検証が必要な *createUiDefinition.json* の場所 (エンコードされた URL) に置き換えます。
 
-  https://portal.azure.com/?clientOptimizations=false#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/ **{"initialData":{},"providerConfig":{"createUiDefinition":"http://yoururltocreateuidefinition.jsonURLencoded"}}**
+  > https://portal.azure.com/?clientOptimizations=false#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/ **{"initialData":{},"providerConfig":{"createUiDefinition":"http://yoururltocreateuidefinition.jsonURLencoded"}}**
 
 4. 任意のブラウザーで URL をコピーして貼り付けると、createUiDefinition.json ファイルのカスタマー エクスペリエンスを参照できます。
 
-  >[AZURE.TIP]開発者がソリューション テンプレートのトポロジを作成して認定を取得する間、会社のビジネス、マーケティング、法務の部門はマーケティングおよび法的なコンテンツの作業を進めることができます。
+  > [AZURE.TIP] 開発者がソリューション テンプレートのトポロジを作成して認定を取得する間、会社のビジネス、マーケティング、法務の部門はマーケティングおよび法的なコンテンツの作業を進めることができます。
 
 ## 次のステップ
 ソリューション テンプレートを作成し、認定に必要なファイルを含む zip ファイルを送信したら、プランをステージング環境でテストする準備をする前に、[Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md)の指示に従います。または、Marketplace の発行に関する記事をすべて表示する場合は、「[概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)」を参照します。
@@ -74,4 +74,4 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0211_2016-->

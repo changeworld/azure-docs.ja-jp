@@ -103,7 +103,7 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 ###<a id="mobile">Microsoft Azure Mobile App SDK
 
-[Azure App Service の Mobile Apps](app-service-mobile/app-service-mobile-value-prop-preview.md) を使用するためのツールです。
+[Azure App Service の Mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) を使用するためのツールです。
 
 ###<a id="ps"></a>Microsoft Azure PowerShell
 
@@ -186,4 +186,4 @@ Azure SDK for .NET (クライアント ライブラリを含む) のソース �
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/documentation/api/)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -58,7 +58,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
 
- 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+ 	 > [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
 
 
 2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
@@ -232,6 +232,6 @@ geo レプリケーション パートナーシップを監視するには、次
 - [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](sql-database.md)
+- [SQL Database のドキュメント](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

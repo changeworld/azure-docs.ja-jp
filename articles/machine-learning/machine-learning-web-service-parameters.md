@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="raymondl;garye"/>
 
 #Azure Machine Learning Web サービスのパラメーターの使用
@@ -46,7 +46,7 @@ Web サービスのドキュメント (Machine Learning Studio の Web サービ
 
 2.	ストレージの種類を指定します。
 
-    - **[Please specify data destination]** の下の [Azure Blob Storage] を選択します。
+    - **[Please specify data destination]** で [Azure Blob Storage] を選択します。
     - **[Please specify authentication type]** の下の [アカウント] を選択します。
     - Azure BLOB ストレージのアカウント情報を入力します。 
     <p />
@@ -91,4 +91,4 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -44,7 +44,7 @@ Media Services アカウントのセットアップ プロセスの最後で、�
 
 Media Services に対するプログラミングを開始するには、サーバー コンテキストを表す **CloudMediaContext** インスタンスを作成する必要があります。**CloudMediaContext** には、ジョブ、アセット、ファイル、アクセス ポリシー、ロケーターなどの重要なコレクションへの参照が含まれています。
 
->[AZURE.NOTE]**CloudMediaContext** クラスはスレッド セーフではありません。スレッドごと、一連の操作ごとに、新しい CloudMediaContext を作成する必要があります。
+>[AZURE.NOTE] **CloudMediaContext** クラスはスレッド セーフではありません。スレッドごと、一連の操作ごとに、新しい CloudMediaContext を作成する必要があります。
 
 
 CloudMediaContext には、5 つのコンストラクター オーバーロードがあります。**MediaServicesCredentials** をパラメーターとして受け取るコンストラクターを使用することをお勧めします。詳細については、次の**Access Control Service トークンの再利用**をご覧ください。
@@ -196,4 +196,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/08/2016"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
@@ -146,4 +146,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

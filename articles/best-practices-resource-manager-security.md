@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/13/2015"
-	ms.author="georgem"/>
+	ms.date="02/09/2016"
+	ms.author="georgem;tomfitz"/>
 
 
 # Azure リソース マネージャーのセキュリティに関する考慮事項
@@ -147,6 +147,8 @@ Azure Virtual Machines、Azure リソース マネージャー、および Azure
         }
     }
 
+テンプレートのデプロイ時に Key Vault の値をパラメーターとして渡す場合は、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」をご覧ください。
+
 ## サブスクリプション間の対話のサービス プリンシパル
 
 サービス ID は Active Directory 内でサービス プリンシパルによって表されます。サービス プリンシパルは、企業の IT 組織、システム インテグレーター (SI)、クラウド サービス ベンダー (CSV) における主要なシナリオの有効化の中心になります。具体的には、これらの組織のいずれかが、ある顧客のサブスクリプションとやり取りする必要があるユース ケースがあります。
@@ -174,7 +176,7 @@ Azure Virtual Machines、Azure リソース マネージャー、および Azure
 
 VM や仮想ネットワーク内のサブネットに NSG を関連付けることができます。VM に関連付けた場合、NSG は、VM インスタンスで送受信されるすべてのトラフィックに適用されます。仮想ネットワーク内のサブネットに適用した場合は、サブネット内のすべての VM インスタンスで送受信されるすべてのトラフィックに適用されます。VM またはサブネットは、1 つの NSG のみに関連付けることができます。各 NSG には、最大 200 のルールを含めることができます。サブスクリプションあたり 100 の NSG を割り当てることができます。
 
->[AZURE.NOTE]エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)を参照してください。
+>[AZURE.NOTE]  エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)を参照してください。
 
 ### ネットワーク セキュリティ グループのしくみ
 
@@ -306,7 +308,7 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 
 この記事の執筆時には、[ExpressRoute](expressroute/expressroute-introduction.md) は Azure リソース マネージャー向け[ネットワーク リソース プロバイダー](virtual-network/resource-groups-networking.md)ではまだサポートされていません。NRP で ExpressRoute がサポートされたら、オンプレミス ネットワークと Azure との間に ExpressRoute 接続が存在する場合に、BGP を有効にして、オンプレミス ネットワークから Azure へとルートを伝達することができます。これらの BGP ルートは、各 Azure サブネットで既定のルートやユーザー定義のルートと同じように使用されます。詳細については、[ExpressRoute の概要](expressroute/expressroute-introduction.md)に関するページを参照してください。
 
->[AZURE.NOTE]NRP で ExpressRoute がサポートされている場合は、VPN Gateway を次ホップとする、サブネット 0.0.0.0/0 宛てのユーザー定義のルートを作成することで、オンプレミス ネットワークを介した強制トンネリングを使用するように Azure 環境を構成することができます。ただし、この方法が利用できるのは、VPN Gateway を使用している場合に限られます。ExpressRoute では利用できません。ExpressRoute の場合、強制トンネリングは BGP を介して構成します。
+>[AZURE.NOTE] NRP で ExpressRoute がサポートされている場合は、VPN Gateway を次ホップとする、サブネット 0.0.0.0/0 宛てのユーザー定義のルートを作成することで、オンプレミス ネットワークを介した強制トンネリングを使用するように Azure 環境を構成することができます。ただし、この方法が利用できるのは、VPN Gateway を使用している場合に限られます。ExpressRoute では利用できません。ExpressRoute の場合、強制トンネリングは BGP を介して構成します。
 
 ### ユーザー定義のルート
 
@@ -323,7 +325,7 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 2.	BGP のルート (ExpressRoute を使用している場合)
 3.	既定のルート
 
->[AZURE.NOTE]ユーザー定義のルートが適用されるのは、Azure VM と Cloud Services だけです。たとえば、オンプレミス ネットワークと Azure との間にファイアウォール仮想アプライアンスを追加する場合、オンプレミスのアドレス空間に向かうすべてのトラフィックを仮想アプライアンスに転送するユーザー定義のルートを Azure ルート テーブルに作成する必要があります。一方、オンプレミスのアドレス空間から入ってくるトラフィックは、VPN Gateway または ExpressRoute 回線を経由し、仮想アプライアンスを飛び越えて直接 Azure 環境に向かいます。
+>[AZURE.NOTE] ユーザー定義のルートが適用されるのは、Azure VM と Cloud Services だけです。たとえば、オンプレミス ネットワークと Azure との間にファイアウォール仮想アプライアンスを追加する場合、オンプレミスのアドレス空間に向かうすべてのトラフィックを仮想アプライアンスに転送するユーザー定義のルートを Azure ルート テーブルに作成する必要があります。一方、オンプレミスのアドレス空間から入ってくるトラフィックは、VPN Gateway または ExpressRoute 回線を経由し、仮想アプライアンスを飛び越えて直接 Azure 環境に向かいます。
 
 ### IP 転送
 
@@ -337,4 +339,4 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 - ルーティングと IP 転送を有効にするには、「[Azure でルートを作成して IP 転送を有効にする方法](virtual-network/virtual-networks-udr-how-to.md)」を参照してください。 
 - ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

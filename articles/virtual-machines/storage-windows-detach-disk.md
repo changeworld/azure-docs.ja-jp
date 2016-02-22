@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/23/2015"
+	ms.date="02/03/2016"
 	ms.author="cynthn"/>
 
 
@@ -32,4 +32,4 @@
 
 [データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

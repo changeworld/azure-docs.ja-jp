@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="02/09/2016"
 	ms.author="kgremban"/>
 
 # ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。ネイティブ クライアントから使用される HTTP バックエンド アプリケーションを公開するときにも使用できます。この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
 
@@ -95,7 +95,8 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
-* [Azure ID](fundamentals-identity.md)
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE]このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
+> [AZURE.NOTE] このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
 
 この記事は、[Python での Hadoop MapReduce プログラムの記述](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/)に関するページの Michael Noll が公開する情報および例に基づいています。
 
@@ -63,35 +63,35 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 ##マッパーとリデューサーの作成
 
-マッパーとリデューサーは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
+マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
 
 ###Mapper.py
 
 **mapper.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
-	#!/usr/bin/env python
+    #!/usr/bin/env python
 
-	# Use the sys module
-	import sys
+    # Use the sys module
+    import sys
 
-	# 'file' in this case is STDIN
-	def read_input(file):
-		# Split each line into words
-		for line in file:
-			yield line.split()
+    # 'file' in this case is STDIN
+    def read_input(file):
+        # Split each line into words
+        for line in file:
+            yield line.split()
 
-	def main(separator='\t'):
-		# Read the data using read_input
-		data = read_input(sys.stdin)
-		# Process each words returned from read_input
-		for words in data:
-			# Process each word
-			for word in words:
-				# Write to STDOUT
-				print '%s%s%d' % (word, separator, 1)
+    def main(separator='\t'):
+        # Read the data using read_input
+        data = read_input(sys.stdin)
+        # Process each words returned from read_input
+        for words in data:
+            # Process each word
+            for word in words:
+                # Write to STDOUT
+                print '%s%s%d' % (word, separator, 1)
 
-	if __name__ == "__main__":
-		main()
+    if __name__ == "__main__":
+        main()
 
 コードが読み取られ、解読されるまでしばらく待ちます。
 
@@ -99,40 +99,40 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 **reducer.py** という名前の新しいファイルを作成し、内容として以下のコードを使用します。
 
-	#!/usr/bin/env python
+    #!/usr/bin/env python
 
-	# import modules
-	from itertools import groupby
-	from operator import itemgetter
-	import sys
+    # import modules
+    from itertools import groupby
+    from operator import itemgetter
+    import sys
 
-	# 'file' in this case is STDIN
-	def read_mapper_output(file, separator='\t'):
-		# Go through each line
-	    for line in file:
-			# Strip out the separator character
-	        yield line.rstrip().split(separator, 1)
+    # 'file' in this case is STDIN
+    def read_mapper_output(file, separator='\t'):
+        # Go through each line
+        for line in file:
+            # Strip out the separator character
+            yield line.rstrip().split(separator, 1)
 
-	def main(separator='\t'):
-	    # Read the data using read_mapper_output
-	    data = read_mapper_output(sys.stdin, separator=separator)
-		# Group words and counts into 'group'
-		#   Since MapReduce is a distributed process, each word
+    def main(separator='\t'):
+        # Read the data using read_mapper_output
+        data = read_mapper_output(sys.stdin, separator=separator)
+        # Group words and counts into 'group'
+        #   Since MapReduce is a distributed process, each word
         #   may have multiple counts. 'group' will have all counts
         #   which can be retrieved using the word as the key.
-	    for current_word, group in groupby(data, itemgetter(0)):
-	        try:
-				# For each word, pull the count(s) for the word
-				#   from 'group' and create a total count
-	            total_count = sum(int(count) for current_word, count in group)
-				# Write to stdout
-	            print "%s%s%d" % (current_word, separator, total_count)
-	        except ValueError:
-	            # Count was not a number, so do nothing
-	            pass
+        for current_word, group in groupby(data, itemgetter(0)):
+            try:
+                # For each word, pull the count(s) for the word
+                #   from 'group' and create a total count
+                total_count = sum(int(count) for current_word, count in group)
+                # Write to stdout
+                print "%s%s%d" % (current_word, separator, total_count)
+            except ValueError:
+                # Count was not a number, so do nothing
+                pass
 
-	if __name__ == "__main__":
-	    main()
+    if __name__ == "__main__":
+        main()
 
 ##ファイルのアップロード
 
@@ -144,7 +144,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 これにより、ファイルがローカル システムからヘッド ノードにコピーされます。
 
-> [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`:
+> [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`:
 
 ##MapReduce の実行
 
@@ -152,11 +152,11 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 		ssh username@clustername-ssh.azurehdinsight.net
 
-	> [AZURE.NOTE]SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`:
+	> [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`:
 
 2. MapReduce ジョブを開始するには次のコマンドを使用します。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
 
 	このコマンドには次のようなものがあります。
 
@@ -172,7 +172,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 	* **-output**: 出力の書き込み先のディレクトリ
 
-		> [AZURE.NOTE]このディレクトリはジョブによって作成されます。
+		> [AZURE.NOTE] このディレクトリはジョブによって作成されます。
 
 ジョブの開始時に一連の **INFO** ステートメントに続いて、**map** および **reduce** 操作がパーセンテージで表示されます。
 
@@ -186,7 +186,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 ジョブが完了したら、次のコマンドを使用して出力を表示します。
 
-	hadoop fs -text /example/wordcountout/part-00000
+	hdfs dfs -text /example/wordcountout/part-00000
 
 これにより、文字の一覧と、その出現回数が表示されます。出力データは次のようになります。
 
@@ -205,4 +205,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

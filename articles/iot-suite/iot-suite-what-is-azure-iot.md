@@ -14,21 +14,21 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="11/05/2015"
+ ms.date="02/04/2016"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Azure IoT Suite
 
-Microsoft Azure IoT Suite は、*リモート モニタリング*や*接続済みデバイス*など、一般的な IoT シナリオに対処する、拡張可能な一連の事前構成済みソリューションを介してすばやく開始できるエンタープライズ グレードのソリューションです。
+Microsoft Azure IoT Suite は、*リモート監視*や*予測的メンテナンス*など、一般的な IoT シナリオに対処する拡張可能な一連の事前構成済みソリューションによってすばやく開始できるエンタープライズ レベルのソリューションです。
 
 構成済みのソリューションは次のとおりです。
 
 - 開始できるようにシミュレーションされたデバイス、[Azure IoT Hub][]、[Azure Event Hubs][]、[Azure Stream Analytics][]、[Azure Machine Learning][]、および [Azure Storage][] などの事前構成された Azure サービス、およびソリューション固有の管理コンソールを含む、機能する完全なエンド ツー エンド ソリューションです。
 - 独自の IoT シナリオを実装するためにカスタマイズおよび拡張できる、実績のある、実稼働可能なコードが含まれています。
 
-多数の構成済みソリューションで使用される、興味深い [Azure IoT Hub][] サービスも用意されています。[Azure IoT Hub][] サービスには、サンプルのソリューション アーキテクチャで定義された多数の "データ処理および分析" 機能が用意されています。
+多数の構成済みソリューションで使用される [Azure IoT Hub][] サービスも用意されています。[Azure IoT Hub][] サービスには、サンプルのソリューション アーキテクチャで定義された多数の "データ処理および分析" 機能が用意されています。
 
 ## 次のステップ
 
@@ -47,4 +47,4 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure Machine Learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/ja-JP/services/storage/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

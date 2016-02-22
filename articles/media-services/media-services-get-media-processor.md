@@ -41,7 +41,7 @@ Storage Decryption| ストレージ暗号化を使用して暗号化されたメ
 Microsoft Azure Media Packager|メディア資産を .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスクのプリセット](http://msdn.microsoft.com/library/hh973635.aspx)
 Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
 
-##MediaProcessor の取得
+##メディア プロセッサの取得
 
 次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、[Media Services にプログラムから接続する方法]に関するページで説明しているように、モジュール レベルの変数 **\_context** を使用してサーバー コンテキストを参照しています。
 
@@ -72,4 +72,4 @@ Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [Media Services にプログラムから接続する方法]: ../media-services-set-up-computer/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

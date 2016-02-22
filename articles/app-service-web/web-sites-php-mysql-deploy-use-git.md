@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="02/09/2016"
 	ms.author="tomfitz"/>
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
@@ -220,7 +220,8 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-> [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
+> [AZURE.NOTE]
+これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
 
 1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
 
@@ -261,7 +262,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	![Azure の PHP Web サイト][running-app]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
@@ -302,4 +303,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

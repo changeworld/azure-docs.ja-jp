@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="02/05/2016" 
 	ms.author="sdanie"/>
 
 # Azure PowerShell を使用した Azure Redis Cache の管理
@@ -188,7 +188,7 @@ Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRe
 	
 	    -VirtualNetwork <String>
 	        The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format:
-	        /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	        /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}
 	
 	    -Subnet <String>
 	        Required when deploying a redis cache inside an existing Azure Virtual Network.
@@ -609,4 +609,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

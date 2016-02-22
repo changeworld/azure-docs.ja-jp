@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #Azure Media Encoder の形式とコーデック
@@ -83,7 +83,7 @@ Dolby® E |いいえ
 Dolby® Digital (AC3) |あり
 Dolby® Digital Plus (E-AC3) |いいえ
 AAC (AAC-LC、HE-AAC v1 with AAC-LC コア、HE-AAC v2 with AAC-LC コア、最大 5.1)|あり
-MPEG Layer 2|あり|あり|あり
+MPEG Layer 2|あり|はい|あり
 MP3 (MPEG-1 Audio Layer 3)|あり
 Windows Media Audio 9 (Windows Media Audio Standard、Windows Media Audio Professional、Windows Media Audio Lossless) |あり
 WAV/PCM|あり
@@ -143,4 +143,4 @@ Indeo で生成した YVU9 形式|最後のフレームとの違いに関する�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

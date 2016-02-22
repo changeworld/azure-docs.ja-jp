@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/29/2016"
+    ms.date="02/02/2016"
     ms.author="elizapo" />
 
 
 
 # 顧客の Virtual Network にデプロイした Azure RemoteApp にアクセスを許可する必要があるポートと URL の一覧 
 
-以下の要件は、Azure RemoteApp のクラウドまたはハイブリッド コレクションを仮想ネットワーク (VNET) にデプロイしている場合に適用されます。仮想ネットワークの詳細については、「[Virtual Network の概要](virtual-networks-overview.md)」を参照してください。Azure RemoteApp 用に選択した仮想ネットワーク リソースへのトラフィックを制限するネットワーク セキュリティ グループ (NSG) を作成した場合は、仮想ネットワークのセキュリティ ポリシーで次のエンドポイントと URL へのアクセスが許可されていることを確認してください。ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](virtual-networks-nsg.md)」を参照してください。
+以下の要件は、Azure RemoteApp のクラウドまたはハイブリッド コレクションを仮想ネットワーク (VNET) にデプロイしている場合に適用されます。仮想ネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」をご覧ください。Azure RemoteApp 用に選択した仮想ネットワーク リソースへのトラフィックを制限するネットワーク セキュリティ グループ (NSG) を作成した場合は、仮想ネットワークのセキュリティ ポリシーで次のエンドポイントと URL へのアクセスが許可されていることを確認してください。ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
 ##  Azure RemoteApp サブネットがアクセスする必要があるエンドポイントと URL: 
 *	**.servicebus.windows.net
@@ -45,4 +45,4 @@
 -  送信: TCP: 443  
 -  オプション - UDP: 3391 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

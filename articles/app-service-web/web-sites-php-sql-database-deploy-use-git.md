@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="02/09/2016" 
 	ms.author="tomfitz"/>
 
 # Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
 このチュートリアルでは、Azure SQL Database に接続する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の PHT Web アプリを作成する方法と、Git を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP](http://www.microsoft.com/download/en/details.aspx?id=20098)、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL Web アプリが完成します。
 
-> [AZURE.NOTE] [Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
+> [AZURE.NOTE]
+[Microsoft Web プラットフォーム インストーラー](http://www.microsoft.com/web/downloads/platform.aspx)を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP をインストールおよび構成できます。
 
 学習内容:
 
@@ -33,7 +34,7 @@
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##Azure Web アプリの作成と Git 発行の設定
 
@@ -244,12 +245,14 @@ Registration アプリケーションは、名前と電子メール アドレス
 	$pwd = "<your password>";
 	$db = "<value of SQL Database>";
 
-> [AZURE.NOTE]<code>$host</code> では、Server の値を <code>tcp:</code> に付加する必要があります。
+> [AZURE.NOTE]
+<code>$host</code> では、Server の値を <code>tcp:</code> に付加する必要があります。
 
 
 これで、Git 発行を設定してアプリケーションを発行する準備ができました。
 
-> [AZURE.NOTE]これらは、上の「**Azure の Web アプリの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです。
+> [AZURE.NOTE]
+これらは、上の「**Azure の Web アプリの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです。
 
 
 1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションの**登録**ディレクトリに変更して、次のコマンドを実行します。
@@ -295,4 +298,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

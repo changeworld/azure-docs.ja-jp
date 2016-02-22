@@ -13,14 +13,12 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="01/28/2015"
+	ms.date="02/04/2016"
     ms.author="wesmc"/>
 
 # Xamarin iOS モバイル アプリのオフライン同期を有効にする
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -59,7 +57,7 @@
 
 
 * `QSTodoService` の `todoTable` メンバーは、`IMobileServiceTable` ではなく、`IMobileServiceSyncTable` 型です。これは、テーブルの作成、読み取り、更新、および削除 (CRUD) といったすべての操作がローカル ストア データベースに行われるようにします。
- 
+
 	これらの変更がいつ Azure Mobile Apps バックエンドにプッシュされるかを決定するには、クライアント接続のための同期コンテキストを使用して `IMobileServiceSyncContext.PushAsync()` を呼び出すことで行います。同期コンテキストは、`PushAsync` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
 
 	todoitem リストの更新、または todoitem の追加や完了があれば、提供されているコードは `QSTodoService.SyncAsync()` を呼び出して同期します。同期コンテキストへのプッシュや同期テーブルへのプルを実行するようなローカルの変更があれば毎回同期が行われます。ただし、コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプルの処理は自動的にコンテキストのプッシュを最初にトリガーします。これら (項目の更新、追加、完了) のケースでは、明示的な `PushAsync` の呼び出しを省略できます。冗長となるからです。
@@ -67,10 +65,7 @@
     提供されたコードでは、リモートの `TodoItem` テーブルのすべてのレコードはクエリされますが、クエリ ID やクエリを `PushAsync` に渡すことでレコードをフィルター処理することも可能です。詳細は、「[ Azure Mobile Apps でのオフライン データ同期]」の「*増分同期*」セクションを参照してください。
 
 	<!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
-	-->
-
-
-		// QSTodoService.cs
+-->	// QSTodoService.cs
 
         public async Task SyncAsync()
         {
@@ -98,7 +93,7 @@
 
 1. `QSTodoService.cs` の上部で、次のように、`applicationURL` の初期化を変更して無効な URL を設定します。
 
-        const string applicationURL = @"https://your-service.azurewebsites.xxx/"; 
+        const string applicationURL = @"https://your-service.azurewebsites.xxx/";
 
 
 2. 追加の `catch` を `QSTodoService.SyncAsync` の `Exception` クラスに追加すると、例外メッセージがコンソールに記述されます。
@@ -170,7 +165,7 @@
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
- 
+
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!-----HONumber=AcomDC_0204_2016--->
+<!---HONumber=AcomDC_0211_2016-->

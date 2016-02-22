@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="App Services アプリケーションに Azure Active Directory 認証を構成する方法" 
-	description="App Services アプリケーションに Azure Active Directory 認証を構成する方法について説明します。" 
-	authors="mattchenderson" 
-	services="app-service\mobile" 
-	documentationCenter="" 
-	manager="dwrede" 
+<properties
+	pageTitle="App Services アプリケーションに Azure Active Directory 認証を構成する方法"
+	description="App Services アプリケーションに Azure Active Directory 認証を構成する方法について説明します。"
+	authors="mattchenderson"
+	services="app-service\mobile"
+	documentationCenter=""
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="11/20/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 このトピックでは、認証プロバイダーとして Azure Active Directory を使用するように Azure App Services を構成する方法を示します。
 
@@ -38,7 +36,7 @@
 16. **[OK]** をクリックして、Azure Active Directory にアプリケーションを登録します。これで新しい登録が作成されます。代わりに既存の登録を選択する場合は、**[既存のアプリケーションの選択]** をクリックし、テナント内で以前に作成した登録の名前を検索します。登録をクリックして選択し、**[OK]** をクリックします。Azure Active Directory 設定ブレードで **[OK]** をクリックします。
 
     ![][0]
-	
+
 	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
 17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
@@ -69,8 +67,8 @@
 8. アプリケーションが追加されたら **[構成]** タブをクリックします。**[シングル サインオン]** の **[応答 URL]** を編集して、アプリケーションの URL の末尾にパス _/.auth/login/aad/callback_ を追加します。たとえば、「`https://contoso.azurewebsites.net/.auth/login/aad/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
     ![][3]
-	
-	
+
+
 	> [AZURE.NOTE]
 	App Service の [認証/承認] 機能ではなく、App Service ゲートウェイを使用している場合は、応答 URL でパス _/signin-aad_ を含むゲートウェイ URL を代わりに使用します。
 
@@ -94,7 +92,7 @@ App Service ゲートウェイを使用する場合は、このセクション�
 15. **[Azure Active Directory]** をクリックし、**[管理モード]** の **[詳細設定]** をクリックします。以前に取得したクライアント ID と発行者の URL の値を貼り付けます。次に、 **[OK]** をクリックします
 
     ![][1]
-	
+
 	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
 17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
@@ -145,4 +143,4 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 [ios-adal]: ../app-service-mobile-xamarin-ios-aad-sso.md
 [別の方法]: #advanced
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

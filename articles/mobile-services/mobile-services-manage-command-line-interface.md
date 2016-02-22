@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/02/2015"
+	ms.date="01/27/2016"
 	ms.author="glenga"/>
 
 # コマンド ライン ツールを使用したモバイル サービスの自動化
@@ -79,7 +79,7 @@
 
 ##サブスクリプション内の既存の Mobile Services をリストする方法
 
-> [AZURE.NOTE]"リスト" と "スクリプト" に関連する CLI でのコマンドは、JavaScript バックエンドでのみ機能します。
+> [AZURE.NOTE] "リスト" と "スクリプト" に関連する CLI でのコマンドは、JavaScript バックエンドでのみ機能します。
 
 次のコマンドでは、Azure サブスクリプション内のすべてのモバイル サービスのリストが返されます。
 
@@ -95,7 +95,7 @@
 
 このコマンドでは、`-a` パラメーターと `-q` パラメーターを含めることで、モバイル サービスで使用されている SQL Database やサーバーも、確認メッセージを表示することなく削除されます。
 
-> [AZURE.NOTE]<code>-a</code> または <code>-d</code> と共に <code>-q</code> パラメーターを指定しなかった場合、例外が一時停止され、SQL Database の削除オプションを選択するように求めるメッセージが表示されます。<code>-a</code> パラメーターは、他のサービスでデータベースまたはサーバーが使用されていない場合にのみ使用してください。それ以外の場合は、削除する Mobile Services に含まれるデータのみを削除できるように <code>-d</code> パラメーターを使用してください。
+> [AZURE.NOTE] <code>-a</code> または <code>-d</code> と共に <code>-q</code> パラメーターを指定しなかった場合、例外が一時停止され、SQL Database の削除オプションを選択するように求めるメッセージが表示されます。<code>-a</code> パラメーターは、他のサービスでデータベースまたはサーバーが使用されていない場合にのみ使用してください。それ以外の場合は、削除する Mobile Services に含まれるデータのみを削除できるように <code>-d</code> パラメーターを使用してください。
 
 ##Mobile Services にテーブルを作成する方法
 
@@ -187,4 +187,4 @@
 [reference-docs]: http://azure.microsoft.com/documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [Mac および Linux 用 Microsoft Azure コマンド ライン ツールのインストール方法]: http://go.microsoft.com/fwlink/p/?LinkId=275795
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

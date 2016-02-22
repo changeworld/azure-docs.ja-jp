@@ -20,7 +20,7 @@
 
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。このリソースは、特に運用ワークロードが実行されている場合などに、許可なくアクセスされるのを防ぐためにセキュリティで保護する必要があります。この記事では、Service Fabric クラスターをセキュリティで保護するプロセスについて説明します。
 
-##  クラスターのセキュリティ シナリオ
+## クラスターのセキュリティ シナリオ
 
 Service Fabric には、次のシナリオのセキュリティが用意されています。
 
@@ -38,10 +38,9 @@ Service Fabric には、次のシナリオのセキュリティが用意され�
 
 3. **ロールベースのアクセス制御 (RBAC):** クラスターでの管理者操作を特定の証明書セットに限定します。
 
-
 ## 証明書を使用して Service Fabric をセキュリティで保護する
 
-セキュリティで保護された Service Fabric クラスターを設定するには、少なくとも 1 つのサーバー x509 証明書が必要です。次に、その証明書を Azure Key Vault にアップロードし、クラスターの作成プロセスで証明書を使用します。
+セキュリティで保護された Service Fabric クラスターを設定するには、X.509 証明書を 1 つ以上必要とします。この証明書を Azure Key Vault にアップロードし、クラスター作成プロセスで使用します。
 
 3 つの手順があります
 
@@ -51,9 +50,8 @@ Service Fabric には、次のシナリオのセキュリティが用意され�
 
 ### 手順 1: X.509 証明書を取得する
 
-1. 運用ワークロードを実行するクラスターの場合、[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された x509 証明書を使用してクラスターをセキュリティで保護する必要があります。証明書の取得の詳細については、[http://msdn.microsoft.com/library/aa702761.aspx](http://msdn.microsoft.com/library/aa702761.aspx) を参照してください。
-2. テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。 
-
+1. 運用ワークロードを実行するクラスターの場合、[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護する必要があります。これらの証明書を取得する方法の詳細については、「[方法 : 証明書 (WCF) を取得する](http://msdn.microsoft.com/library/aa702761.aspx)」を参照してください。
+2. テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。その方法については下の手順 2.5. で説明します。
 
 ### 手順 2: Key Vault に X.509 証明書をアップロードする
 
@@ -61,9 +59,9 @@ Service Fabric には、次のシナリオのセキュリティが用意され�
 
 **手順 2.1**: [Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers)からこのフォルダーをコンピューターにコピーします。
 
-**手順 2.2**: Azure PS 1.0 以降がコンピューターにインストールされていることを確認します。まだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順を実行することを強くお勧めします。
+**手順 2.2**: Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。まだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順を実行することを強くお勧めします。
 
-**手順 2.3**: 完了したら、Powershell ウィンドウを開き、ServiceFabricRPHelpers.psm (手順 2.1 でダウンロードしたモジュール) をインポートします。
+**手順 2.3**: PowerShell ウィンドウを開き、ServiceFabricRPHelpers.psm をインポートします(これは、手順 2.1 でダウンロードしたモジュールです)。
 
 ```
 Remove-Module ServiceFabricRPHelpers
@@ -75,15 +73,15 @@ Remove-Module ServiceFabricRPHelpers
 Import-Module "C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 ```
 
-**手順 2.4**: 既に取得した証明書を使用している場合、次の手順に従います。使用していない場合、手順 2.5 に進みます。手順 2.5 では、自己署名証明書を作成し、Key Vault にデプロイする手順を実行します。
+**手順 2.4**: 既に取得した証明書を使用している場合、次の手順に従います。それ以外の場合は手順 2.5 に進んでください。自己署名証明書を作成して Key Vault にデプロイする方法について説明しています。
 
-Azure アカウントにサインインします。この PowerShell が何らかの理由で失敗する場合、Azure PS が正しくインストールされているかどうかを確認することをお勧めします。
+Azure アカウントにサインインします。この PowerShell コマンドが何らかの理由で失敗する場合、Azure PowerShell が正しくインストールされているかどうかを確認することをお勧めします。
 
 ```
 Login-AzureRmAccount
 ```
 
-次のスクリプトを実行すると、新しいリソース グループ、コンテナー、またはその両方が作成されます (これらが存在しない場合)。
+次のスクリプトを実行すると、新しいリソース グループ、Key Vault、またはその両方が作成されます (これらが存在しない場合)。
 
 ```
 Invoke-AddCertToKeyVault -SubscriptionId <your subscription id> -ResourceGroupName <string> -Location <region> -VaultName <Name of the Vault> -CertificateName <Name of the Certificate> -Password <Certificate password> -UseExistingCertificate -ExistingPfxFilePath <Full path to the .pfx file>
@@ -94,17 +92,19 @@ Invoke-AddCertToKeyVault -SubscriptionId <your subscription id> -ResourceGroupNa
 Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -ResourceGroupName chackdankeyvault4doc -Location westus -VaultName chackdankeyvault4doc  -CertificateName chackdantestcertificate2 -Password abcd123 -UseExistingCertificate -ExistingPfxFilePath C:\MyCertificates\ChackdanTestCertificate.pfx
 ```
 
-スクリプトが正常に終了すると、次のような出力が表示されます。内容をメモします。この内容は、手順 3 (セキュリティで保護されたクラスターのセットアップ) に必要です。
+スクリプトが正常に終了すると、次のような出力が表示されます。手順 3 でセキュリティで保護されたクラスターを設定する際にこの出力が必要になります。
 
-1. **証明書の拇印**: 2118C3BCE6541A54A0236E14ED2CCDD77EA4567A
-2. **ソース コンテナー**: /Key Vault のリソース ID: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
-3. **証明書の URL**: Key Vault 内の証明書が保管されている場所の URL: https://chackdankeyvalut4doc.vault.azure.net:443/secrets/chackdantestcertificate3/ebc8df6300834326a95d05d90e0701ea 
+- **証明書の拇印**: 2118C3BCE6541A54A0236E14ED2CCDD77EA4567A
+
+- **SourceVault** /Key Vault のリソース ID: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
+
+- **証明書の URL** /Key Vault 内の証明書が保管されている場所の URL: https://chackdankeyvalut4doc.vault.azure.net:443/secrets/chackdantestcertificate3/ebc8df6300834326a95d05d90e0701ea
 
 これで、セキュリティで保護されたクラスターを設定するために必要な情報を入手できました。手順 3 に進みます。
 
 **手順 2.5**: 証明書が*なく*、新しい自己署名証明書を作成して Key Vault にアップロードする場合、次の手順を実行します。
 
-Azure アカウントにログインします。この PowerShell が何らかの理由で失敗する場合、Azure PS が正しくインストールされているかどうかを確認することをお勧めします。
+Azure アカウントにログインします。この PowerShell コマンドが何らかの理由で失敗する場合、Azure PowerShell が正しくインストールされているかどうかを確認することをお勧めします。
 
 ```
 Login-AzureRmAccount
@@ -140,14 +140,18 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 
 スクリプトが正常に終了すると、次のような出力が表示されます。手順 3 でこの出力が必要になります。
 
-**証明書の拇印**: 64881409F4D86498C88EEC3697310C15F8F1540F **SourceVault** /Key Vault のリソース ID: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc **証明書の URL** /Key Vault の証明書の場所の URL: https://chackdankeyvalut4doc.vault.azure.net:443/secrets/chackdantestcertificate3/fvc8df6300834326a95d05d90e0720ea
+- **証明書の拇印**: 64881409F4D86498C88EEC3697310C15F8F1540F
+
+- **SourceVault** /Key Vault のリソース ID: /subscriptions/35389201-c0b3-405e-8a23-9f1450994307/resourceGroups/chackdankeyvault4doc/providers/Microsoft.KeyVault/vaults/chackdankeyvault4doc
+
+- **証明書の URL** /Key Vault 内の証明書が保管されている場所の URL: https://chackdankeyvalut4doc.vault.azure.net:443/secrets/chackdantestcertificate3/fvc8df6300834326a95d05d90e0720ea
 
 ### 手順 3: セキュリティで保護されたクラスターを設定する
 
 「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」に記載されている手順を、セキュリティ構成に関するセクションの前まで実行します。それからここにある指示までスキップし、セキュリティ構成を設定します。
 
->[AZURE.NOTE] 
-1\.使用する必要がある証明書は、[セキュリティ構成] の [NodeType] レベルで指定します。2.クラスター内のすべての NodeType について、証明書を指定する必要があります。3.このドキュメントではポータルを使用した手順について説明していますが、ARM テンプレートを使用して実行することもできます。
+>[AZURE.NOTE]
+必要な証明書は、[セキュリティ構成] のノード タイプ レベルで指定します。クラスター内のすべてのノード タイプについて、証明書を指定する必要があります。このドキュメントではポータルを使用した手順について説明していますが、Azure リソース マネージャー テンプレートを使用して実行することもできます。
 
 ![Azure ポータルのセキュリティ構成のスクリーン ショット][SecurityConfigurations_01]
 
@@ -182,8 +186,6 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 - **サブジェクト名。** サブジェクト名による承認を指定した場合にのみ必要です。
 - **発行者の拇印。**クライアントからサーバーに対して資格情報を提示するときにサーバー側で実行可能なチェック レベルを追加できます。
 
-
-
 読み取り専用クライアント: この情報は、クラスター管理エンドポイントに接続しているクライアントが、クラスターに対して読み取り専用の操作を実行できる適切な資格情報を示していることを検証します。読み取り専用操作を許可する証明書を複数指定できます。
 
 - **承認者。** この証明書を検索する際に、サブジェクト名を使用するか拇印を指定するかを Service Fabric に示します。承認にサブジェクト名を使用することは推奨されませんが、柔軟性が与えられます。
@@ -192,32 +194,39 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 
 ## クラスター内の証明書を更新する
 
-Service Fabric では、プライマリとセカンダリという 2 つの証明書を指定できます。作成時に指定した証明書は既定でプライマリになります。別の証明書を追加するには、その証明書をクラスター内の VM にデプロイする必要があります。新しい証明書を Key Valult にアップロードする方法は、このドキュメントの手順 2 (上記) で説明しています。ここでも、最初の証明書の場合と同様の方法で同じ Key Vault を使用できます。詳細については、[ユーザーが管理する Key Vault から VM に証明書をデプロイする方法](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)に関するドキュメントを参照してください。
+プライマリとセカンダリという 2 つの証明書を指定できます。既定では、作成時に指定した証明書がプライマリになります。別の証明書を追加するには、その証明書をクラスター内の VM にデプロイする必要があります。上記の手順 2 で、Key Vault に新しい証明書をアップロードする方法が説明されています。最初の証明書の場合と同じように、これには同じ Key Vault を使用できます。詳細については、[ユーザーが管理する Key Vault から VM に証明書をデプロイする方法](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)に関するドキュメントを参照してください。
 
 デプロイが完了したら、ポータルまたはリソース マネージャーで、Service Fabric に対して、使用できるセカンダリ証明書があることを指定します。必要な情報は拇印のみです。
 
-**新しい証明書を追加するには**: ポータルで、証明書を追加するクラスター リソースを参照し、証明書設定をクリックし、セカンダリ証明書の拇印を入力して [保存] をクリックします。デプロイメントが開始され、正常に完了すると、クラスターに対する管理操作にプライマリ証明書とセカンダリ証明書の両方を使用できるようになります。
+セカンダリ証明書を追加する手順を次に示します。
+
+1. ポータルに移動し、この証明書を追加するクラスター リソースを参照します。
+2. **[設定]** で、証明書の設定をクリックし、セカンダリ証明書の拇印を入力します。
+3. **[保存]** をクリックします。デプロイが開始され、正常に完了すると、クラスターに対する管理操作にプライマリ証明書かセカンダリ証明書を使用できるようになります。
 
 ![Azure ポータルの証明書拇印のスクリーン ショット][SecurityConfigurations_02]
 
-**古い証明書を削除してクラスターで使用しないようにするには**: ポータルを開き、クラスターのセキュリティ設定に移動して、目的の証明書を削除します。新しいデプロイメントを開始できるように、証明書の削除後は必ず [保存] をクリックしてください。デプロイメントが完了すると、削除した証明書はクラスターへの接続に使用できなくなります。
+古い証明書を削除してクラスターで使用されないようにするには、次の手順を実行します。
 
-注: セキュリティで保護されたクラスターの場合、常に有効な (失効していない、期限切れではない) 証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしないと、クラスターにアクセスできなくなります。
+1. ポータルに移動し、クラスターのセキュリティ設定に移動します。
+2. 古い証明書を削除します。
+3. **[保存]** をクリックして新しいデプロイを開始します。デプロイが完了すると、削除した証明書がクラスターへの接続に使用されることはなくなります。
+
+>[AZURE.NOTE] セキュリティで保護されたクラスターの場合、常に有効な (失効していない、期限切れではない) 証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしないと、クラスターにアクセスできなくなります。
 
 
-## 
-Service Fabric に使用されない証明書の種類の詳細
+## Service Fabric で使用される証明書の種類
 
-## X.509 証明書
+### X.509 証明書
 
 一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証、暗号化、メッセージのデジタル署名に使用されています。これらの証明書の詳細については、MSDN ライブラリにある[証明書の使用](http://msdn.microsoft.com/library/ms731899.aspx)に関するセクションを参照してください。
 
 >[AZURE.NOTE]
-1\.運用ワークロードを実行しているクラスターに使用する証明書の場合、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。2.運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。3.テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。
+- 運用ワークロードを実行しているクラスターに使用する証明書の場合、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。- 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。- テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。
 
-## サーバー証明書とクライアント証明書
+### サーバー証明書とクライアント証明書
 
-**サーバー X.509 証明書**
+#### サーバー X.509 証明書
 
 サーバー証明書の主な作業は、クライアントに対するサーバー (ノード) の認証とサーバー (ノード) に対するサーバー (ノード) の認証です。クライアントまたはノードがノードを認証するときに行う初期チェックの 1 つは、サブジェクト フィールドの共通名の値を確認することです。この共通名、または証明書のサブジェクト代替名の 1 つが、使用可能な共通名の一覧に存在する必要があります。
 
@@ -227,14 +236,16 @@ Service Fabric に使用されない証明書の種類の詳細
 
 証明書の目的フィールド値には、"サーバー認証" や "クライアント認証" などの適切な値を含めるようにしてください。
 
-**クライアント証明書**
+#### クライアント証明書
 
 通常、クライアント証明書はサードパーティの証明機関から発行されません。通常、現在のユーザーの所在地の個人用ストアには、ルート機関が配置した "クライアント認証" 用のクライアント証明書が含まれています。相互認証が必要な場合、クライアントはこのような証明書を使用できます。
 
 >[AZURE.NOTE] Service Fabric クラスター上のすべての管理操作には、サーバー証明書が必要です。クライアント証明書は管理に利用できません。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
 ## 次のステップ
+
 - [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
@@ -246,4 +257,4 @@ Service Fabric に使用されない証明書の種類の詳細
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="02/09/2016"
 	ms.author="markusvi"/>
 
 # Cloud App Discovery のセキュリティとプライバシーの考慮事項
@@ -174,9 +174,10 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 
 
 
-**その他のリソース**
+##その他のリソース
 
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

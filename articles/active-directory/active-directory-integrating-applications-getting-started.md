@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="10/16/2015"
+      ms.date="02/09/2016"
       ms.author="inhenk"/>
 
 # Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
@@ -87,4 +87,8 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、[Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx) に関するページを参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+## 関連項目
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+<!---HONumber=AcomDC_0211_2016-->

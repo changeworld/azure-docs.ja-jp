@@ -36,7 +36,7 @@
 </Resources>
 ```
 
-構成パッケージ設定ファイル (settings.xml) からエンドポイントを参照する方法の詳細については、「[ステートフル Reliable Services の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)」を参照してください。
+構成パッケージ設定ファイル (settings.xml) からエンドポイントを参照する方法の詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」をご覧ください。
 
 ## 例: サービスの HTTP エンドポイントを指定する
 
@@ -137,4 +137,4 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

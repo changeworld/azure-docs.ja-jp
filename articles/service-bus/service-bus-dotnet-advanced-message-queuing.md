@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="02/08/2016" 
 	ms.author="sethm"/>
 
 # .NET サービス バス API で AMQP 1.0 を使用する方法
@@ -22,7 +22,7 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 サービス バスでの AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-この記事では、Service Bus .NET API を使って .NET アプリケーションからサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されている関連記事があります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、Service Bus .NET API を使って .NET アプリケーションからサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-java-how-to-use-jms-api-amqp.md)があります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## Service Bus の概要
 
@@ -324,4 +324,4 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
  
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

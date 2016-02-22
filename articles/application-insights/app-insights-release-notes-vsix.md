@@ -14,7 +14,24 @@
 	ms.date="01/19/2016" 
 	ms.author="dimazaid"/>
  
-# Application Insights Tools for Visual Studio v 4.1 のリリース ノート
+# Application Insights Tools for Visual Studio v 4.2 のリリース ノート
+##バージョン 4.2
+このリリースでは、イベントのコンテキストでのデータ検索を容易にする機能、複数のデータ イベントからコードに移動する機能、およびログ データを Application Insights に送信するための非常に簡単なエクスペリエンスが追加されました。この拡張機能は月単位で更新されます。フィードバックや機能についてリクエストがある場合は、aidevtools@microsoft.com に送信してください。
+###- 0 クリックのログ記録エクスペリエンス
+NLog、Log4Net や System.Diagnostics のトレースを既に使用している場合は、AI へのすべてのトレースの移動について心配する必要はありません。通常の構成エクスペリエンスと Application Insights のログ記録アダプターが統合されました。既にこれらのログ記録フレームワークを構成してある場合は、次の手順でトレースを移動できます。
+####既に Application Insights を追加してある場合
+- プロジェクト ノードを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。 
+- または、ソリューションをビルドするときに、画面右上に表示されるポップアップに気付いて、[構成] をクリックします。![ログイン トースト](./media/app-insights-release-notes-vsix/LoggingToast.png)
+
+ログ アダプターをインストールした後、アプリケーションを実行することができ、[診断ツール] タブに次のようにデータが表示されます。![トレース](./media/app-insights-release-notes-vsix/Traces.png)
+###- テレメトリ イベント プロパティが生成されるコードへの移動、またはこれらのコードの検索が可能に
+新しいリリースでは、ユーザーはイベント詳細の任意の値をクリックすることで、現在開いているソリューション内で一致する文字列を検索できます。結果は、Visual Studio の [検索結果] リストに次のように表示されます。 ![一致の検索](./media/app-insights-release-notes-vsix/FindMatch.png)
+###- サインインしていないユーザーに表示される [検索] ウィンドウの新しい画面
+[検索] ウィンドウの外観が機能強化され、実稼働環境でのデータ検索手順をユーザーにガイドするようになりました。 ![[検索] ウィンドウ](./media/app-insights-release-notes-vsix/SearchWindow.png)
+###- イベントに関連するすべてのテレメトリ イベントが表示可能に
+イベント詳細の横に新しいタブが追加されました。このタブには、ユーザーが表示しているテレメトリ イベントに関連するすべてのデータを表示する定義済みクエリが含まれています。例: 要求には操作 ID と呼ばれるフィールドがあり、この要求に関連付けられているすべてのイベントは同じ操作 ID を持ちます。そのために、たとえば、要求の処理中に例外が発生した場合は、要求と同じ操作 ID を受け取るため、例外を見つけやすくなります。要求を見ているユーザーが、[この操作のすべてのテレメトリ] をクリックすると、新しい検索結果を含む新しいタブが開くようになりました。 ![関連項目](./media/app-insights-release-notes-vsix/RelatedItems.png)
+### - 検索の前/後の履歴を追加
+ユーザーは、検索結果の間で前後に移動できるようになりました。 ![戻る](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ##Version 4.1
 このリリースには、多くの新しい機能と、既存の機能の強化が含まれています。このリリースを入手するには、お使いのコンピューターに Update 1 をインストールしておく必要があります。
@@ -64,10 +81,10 @@ Application Insights ポータルでの検索と同じように、イベント�
 
 ###デバイスのサポート
 
-Connect(); 2015 において、Microsoft は、デバイスのモバイル DevOps エクスペリエンスが HockeyApp であることを[発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)しました。HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、モバイル アプリケーションをビルドするすべてのプラットフォームに対応しています。
+*Connect();* 2015 において、Microsoft は、デバイスのモバイル DevOps エクスペリエンスが HockeyApp であることを[発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)しました。HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、モバイル アプリケーションをビルドするすべてのプラットフォームに対応しています。
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio のエクスペリエンスをさらに統合するための新しい機能を導入する予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)を参照してください。
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

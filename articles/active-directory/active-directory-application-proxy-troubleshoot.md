@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="02/09/2016"
 	ms.author="kgremban"/>
 
 
@@ -21,7 +21,7 @@
 # アプリケーション プロキシのトラブルシューティング
 
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
 
@@ -90,8 +90,14 @@
 - [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
+## その他のリソース
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Azure ID](fundamentals-identity.md)
+
+
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

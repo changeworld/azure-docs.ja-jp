@@ -56,7 +56,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 #### 今後のバージョンに、SDK を更新するには
 
-新しい [SDK がリリースされた](app-insights-release-notes-windows-cpp.md)場合。
+新しい [SDK がリリースされた](https://github.com/Microsoft/ApplicationInsights-CPP/releases)場合。
 
 * NuGet パッケージ マネージャーで、インストールされている SDK を選択し、アップグレード アクションを選択します。
 * 新しいバージョン番号を使用して、インストール手順を繰り返します。
@@ -140,4 +140,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0211_2016-->

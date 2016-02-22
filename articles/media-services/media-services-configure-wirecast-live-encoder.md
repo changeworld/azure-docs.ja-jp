@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016" 
 	ms.author="juliako"/>
 
 #Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -56,11 +56,11 @@
 
 3. **[チャネルの作成]** をクリックします。![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
->[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)ことができます。
 
->[AZURE.IMPORTANT]チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 
 ##<a id=configure_wirecast_rtmp></a>Telestream Wirecast エンコーダーを構成する
 
@@ -138,7 +138,7 @@
 
 	![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
->[AZURE.IMPORTANT]**[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 
 ##再生をテストする
   
@@ -180,4 +180,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/04/2016"
 	ms.author="yuaxu"/>
 
 # プッシュ通知を Android アプリに追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## 概要
 このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
@@ -57,7 +57,7 @@ Android アプリ プロジェクトでプッシュ通知を処理する準備�
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
-古いデバイスを使用している場合は、Google Play Services SDK のセットアップに関するページを参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
+古いデバイスを使用している場合は、[Google Play Services SDK のセットアップに関するページ]を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
 ###プロジェクトへの Google Play Services の追加
 
@@ -78,4 +78,6 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_0204_2016-->
+[Google Play Services SDK のセットアップに関するページ]: https://developers.google.com/android/guides/setup
+
+<!---HONumber=AcomDC_0211_2016-->

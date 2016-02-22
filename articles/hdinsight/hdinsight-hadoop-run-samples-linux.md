@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/04/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 
@@ -81,13 +81,13 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 2. `username@#######:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
 
-        hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
 
     これにより、このドキュメントの前のセクションのサンプル一覧が生成されます。
 
 3. 次のコマンドを使用して、特定のサンプルのヘルプを表示します。これは、**wordcount** サンプルです。
 
-        hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
 
     次のメッセージが表示されます。
 
@@ -97,7 +97,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 4. 次のコマンドを使用して、クラスタでサンプルデータとして提供されているレオナルド·ダ·ヴィンチの手記の単語をすべてカウントします。
 
-    	hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
+    	yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
 
     このジョブの入力は ****wasb:///example/data/gutenberg/davinci.txt** にあります。
 
@@ -107,7 +107,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 5. ジョブが完了したら、次のコマンドを使用して出力を表示します。
 
-        hadoop fs -cat /example/data/davinciwordcount/*
+        hdfs dfs -cat /example/data/davinciwordcount/*
 
     これにより、ジョブで生成されたすべての出力ファイルが連結して表示されます。この基本的な例では、1 つのファイルがあるだけですが、複数のファイルがある場合、このコマンドはそのすべてを反復処理します。
 
@@ -148,7 +148,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 数独の例でこれを実行するには、次のコマンドを使用します。
 
-    hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/2.2.9.1-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 
 結果は次のようになります。
 
@@ -172,7 +172,7 @@ reducer は、mapper が計算した点の数を累計して、4R という公�
 
 次のコマンドを使用して、このサンプルを実行します。これは、10,000, 000 のサンプルごとに 16 のマップを使用して、pi の値を推定します。
 
-    hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 
 これによって返される値は、**3.14159155000000000000** になります。参考までに、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
@@ -198,19 +198,19 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 1. 10 GB のデータを生成します。データは、HDInsight クラスターの既定の記憶域 ****wasb:///example/data/10GB-sort-input** に格納されます。
 
-        hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
 
 	`-Dmapred.map.tasks` は、このジョブに使用する map タスクの数を Hadoop に伝えます。最後の 2 つのパラメーターは、10 GB 分のデータを作成し、それを ****wasb:///example/data/10GB-sort-input** に格納するようにジョブに指示します。
 
 2. 次のコマンドを使用して、データをソートします。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
 
 	`-Dmapred.reduce.tasks` は、このジョブに使用する reduce タスクの数を Hadoop に伝えます。最後の 2 つのパラメーターは、単なるデータの入力と出力の場所です。
 
 3. 次のコマンドを使用して、ソートによって生成されたデータを検証します。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
 
 ##次のステップ ##
 
@@ -236,4 +236,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

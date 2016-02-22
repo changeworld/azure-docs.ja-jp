@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="07/30/2015"
+      ms.date="02/09/2016"
       ms.author="shoatman"/>
 
 # アプリケーションを Azure AD に追加する方法と理由
@@ -142,8 +142,12 @@ Azure AD にアプリケーションを追加する方法およびアプリ用�
 * IT プロフェッショナル: [特定の事前統合アプリの構成に関するチュートリアルを探します](https://msdn.microsoft.com/library/azure/dn893637.aspx)
 * IT プロフェッショナル: [Azure Active Directory アプリケーション プロキシを使用してアプリを発行する方法について学習します](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 
+## 関連項目
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
 <!--Image references-->
 [apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]: media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

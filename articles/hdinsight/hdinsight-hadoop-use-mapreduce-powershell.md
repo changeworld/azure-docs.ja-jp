@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/04/2016"
    ms.author="larryfr"/>
 
 #PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
@@ -139,7 +139,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 	この出力は、ジョブが正常に完了したことを示しています。
 
-	> [AZURE.NOTE]**ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
+	> [AZURE.NOTE] **ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
 
     この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーへのダウンロードしたファイルの格納も行います。
 
@@ -147,7 +147,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 MapReduce ジョブの出力は *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
 
-> [AZURE.NOTE]MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
+> [AZURE.NOTE] MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
 ##<a id="troubleshooting"></a>トラブルシューティング
 
@@ -182,4 +182,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0211_2016-->

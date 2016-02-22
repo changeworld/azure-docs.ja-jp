@@ -63,4 +63,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 接続時に問題が発生した場合、[Windows ベースの Azure Virtual Machine へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

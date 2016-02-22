@@ -26,7 +26,7 @@ MQTT プロトコルを使用してデバイスを IoT Hub に接続するには
 
 ## デバイス クライアント SDK の使用
 
-MQTT プロトコルをサポートする[デバイス クライアント SDK][lnk-mqtt-org] は、Java、Node.js、C、および C # に対応しています。デバイス クライアント SDK では、標準的な IoT Hub 接続文字列を使用して、IoT Hub への接続を確立します。MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT** に設定する必要があります。デバイス クライアント SDK は既定では、**CleanSession** フラグを **0** に設定して IoT Hub に接続し、IoT Hub とのメッセージ交換には **QoS 1** を使用します。
+MQTT プロトコルをサポートする[デバイス クライアント SDK][lnk-device-sdks] は、Java、Node.js、C、および C # に対応しています。デバイス クライアント SDK では、標準的な IoT Hub 接続文字列を使用して、IoT Hub への接続を確立します。MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT** に設定する必要があります。デバイス クライアント SDK は既定では、**CleanSession** フラグを **0** に設定して IoT Hub に接続し、IoT Hub とのメッセージ交換には **QoS 1** を使用します。
 
 デバイスは、IoT Hub に接続されると、デバイス クライアント SDK によって提供されるメソッドにより、IoT Hub との間でメッセージの送受信ができるようになります。
 
@@ -81,4 +81,4 @@ MQTT プロトコルの詳細については、「[MQTT documentation (MQTT ド�
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="リソース マネージャー テンプレートを使用した IoT Hub の作成 | Microsoft Azure"
-	description="このチュートリアルに従って、リソース マネージャー テンプレートを使用した IoT Hub の作成を開始できます。"
+	description="このチュートリアルでは、リソース マネージャー テンプレートを使用して、C# プログラムまたは PowerShell で IoT Hub の作成を開始する方法について説明します。"
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="dominicbetts"
@@ -32,6 +32,8 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 - アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 - [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降
 
+> [AZURE.TIP] この記事では、C# プログラムと ARM テンプレートを使用して新しい IoT Hub を作成する方法について説明します。また、C# プログラムではなく、PowerShell スクリプトと [ARM テンプレート](#submit-a-template-to-create-an-iot-hub)を使用することもできます。「[Azure リソース マネージャーでの Azure PowerShell の使用][lnk-powershell-arm]」では、ARM テンプレートを使用して、IoT Hub などの Azure リソースを作成する PowerShell スクリプトを記述する方法について説明しています。
+
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## Visual Studio プロジェクトの準備
@@ -59,7 +61,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
     
-7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。**デプロイメント名**は、デプロイメントの名前です (**Deployment\_01** など)。
+7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -135,7 +137,7 @@ JSON テンプレートを使用して、リソース グループに新しい I
       }).Result;
     ```
 
-6. 次のコードを **CreateIoTHub** メソッドの末尾に追加して、デプロイメントの正常な完了を待機します。
+6. 次のコードを **CreateIoTHub** メソッドの末尾に追加して、デプロイの正常な完了を待機します。
 
     ```
     string state = createResponse.Deployment.Properties.ProvisioningState;
@@ -189,6 +191,7 @@ JSON テンプレートを使用して、リソース グループに新しい I
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-powershell-install]: https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
-[lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/
+[lnk-azure-rm-overview]: ./resource-group-overview.md
+[lnk-powershell-arm]: ./powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

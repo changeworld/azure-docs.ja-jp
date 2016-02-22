@@ -79,7 +79,7 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ## iKey を使用して行うこと
 
-各リソースは、インストルメンテーション キー (iKey) によって識別されます。The iKey is an output of the resource creation script.Your build script should provide the iKey to the Application Insights SDK embedded in your app.
+各リソースは、インストルメンテーション キー (iKey) によって識別されます。iKey はリソース作成スクリプトの出力です。ビルド スクリプトで、アプリに組み込まれた Application Insights SDK に iKey を提供する必要があります。
 
 iKey を SDK で使用できるようにする方法は 2 つあります。
   
@@ -95,8 +95,8 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
 * [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
 * [PowerShell で Azure 診断の監視を設定する](app-insights-powershell-azure-diagnostics.md) 
-* [PowerShell を使用したアラートの設定](app-insights-alerts.md#set-alerts-by-using-powershell)
+* [PowerShell を使用したアラートの設定](app-insights-powershell-alerts.md)
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0211_2016-->

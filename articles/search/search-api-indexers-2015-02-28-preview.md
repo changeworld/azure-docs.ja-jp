@@ -10,7 +10,8 @@ editor="" />
 <tags 
 ms.service="search" 
 ms.devlang="rest-api" 
-ms.workload="search" ms.topic="article"  
+ms.workload="search" 
+ms.topic="article"  
 ms.tgt_pltfrm="na" 
 ms.date="11/04/2015" 
 ms.author="heidist" />
@@ -776,4 +777,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

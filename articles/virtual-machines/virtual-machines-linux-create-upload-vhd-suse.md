@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-##前提条件##
+## 前提条件 ##
 
 この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
@@ -80,7 +80,7 @@
 
 10.	OS ディスクにスワップ領域を作成しないでください。
 
-	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは 一時 ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -105,15 +105,13 @@
 
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. シェルでコマンド "`zypper lr`" を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
+3. シェルでコマンド "`zypper lr`" を実行します。このコマンドから次のような出力が返された場合、リポジトリは予想どおりに構成されているため、調整は不要です (バージョン番号が異なる場合があります)。
 
 		# | Alias                 | Name                  | Enabled | Refresh
 		--+-----------------------+-----------------------+---------+--------
 		1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | Yes     | Yes
 		2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
 		3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
-
-	この場合、リポジトリは予期したとおりに構成されているため、調整は不要です。
 
 	コマンドによって "No repositories defined..." が返された場合は、次のコマンドを実行してこれらのリポジトリを追加します。
 
@@ -180,7 +178,6 @@
 13. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## 次のステップ
-これで、SUSE Linux .vhd を使用して、Azure に新しい Azure Virtual Machines を作成する準備が整いました。Azure を使用し、.vhd ファイルを Azure にアップロードするのは今回が初めての場合は、[このガイダンス](virtual-machines-linux-create-upload-vhd.md)の手順 2 と 3 に従ってください。
- 
+これで、SUSE Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015"
+ 	ms.date="02/09/2016"  
 	ms.author="juliako"/>
 
 #REST API を使用した Media Services エンティティの管理
@@ -27,10 +27,11 @@ Microsoft Azure Media Services は、OData v3 上に構築された REST ベー�
 
 - エンティティの追加 
 - エンティティの照会 
+- 大規模なコレクションのエンティティの列挙
 - エンティティの更新 
 - エンティティの削除 
 
->[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
@@ -100,7 +101,9 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
 	x-ms-version: 2.11
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
 	Host: media.windows.net
-	The following example returns all JobTemplates with the name "SampleTemplate."
+
+次の例では、"SampleTemplate" という名前のすべての JobTemplates を返します。
+
 	GET https://media.windows.net/API/JobTemplates?$filter=startswith(Name,%20'SampleTemplate') HTTP/1.1
 	Content-Type: application/json;odata=verbose
 	Accept: application/json;odata=verbose
@@ -112,6 +115,20 @@ Media Services のすべてのエンティティは、POST HTTP 要求によっ�
 
 >[AZURE.NOTE]Media Services では、LINQ に関する考慮事項で説明したサポートされていない LINQ メソッドと同様に、$expand 操作もサポートされていません (WCF Data Services)。
 
+##大規模なコレクションのエンティティの列挙
+
+パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。大規模なコレクションのエンティティを列挙するには、**skip** と **top** を使用します。
+
+次の例は、**skip** と **top** を使用して、最初の 2000 個のジョブをスキップし、次の 1000 個のジョブを取得する方法を示しています。
+
+	GET https://media.windows.net/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
+	Host: media.windows.net
 
 ##エンティティの更新
 
@@ -158,4 +175,4 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

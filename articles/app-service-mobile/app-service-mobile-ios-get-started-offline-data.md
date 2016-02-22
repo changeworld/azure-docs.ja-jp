@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/04/2016"
 	ms.author="krisragh"/>
 
 # iOS モバイル アプリのオフライン同期を有効にする
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -30,7 +28,7 @@ Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリ�
 
 オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-## <a name="review-sync"></a>クライアント同期コードの確認 
+## <a name="review-sync"></a>クライアント同期コードの確認
 
 チュートリアル「[iOS アプリの作成]」でダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれています。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
@@ -107,7 +105,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
       * MS\_TableConfig: すべてのプル操作に対する最後の同期操作の最終更新時刻の追跡用
       * TodoItem: Todo 項目の格納用。システム列 **createdAt**、**updatedAt**、および **version** は省略可能なシステム プロパティです。
 
->[AZURE.NOTE]Azure Mobile Apps SDK では、"**``**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
+>[AZURE.NOTE] Azure Mobile Apps SDK では、"**``**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
 
 - オフライン同期機能を使用する場合は、次のようにシステム テーブルを定義する必要があります。
 
@@ -157,8 +155,8 @@ Core Data オフライン ストアを使用するときは、データ モデ�
     | id | 文字列、必須のマーク | リモート ストア内のプライマリ キー |
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
-    | createdAt | 日付 | (省略可能) createdAt システム プロパティにマップします |
-    | updatedAt | 日付 | (省略可能) updatedAt システム プロパティにマップします |
+    | createdAt | 日付 | (省略可能) createdAt システム プロパティにマップします。 |
+    | updatedAt | 日付 | (省略可能) updatedAt システム プロパティにマップします。 |
     | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします |
 
 
@@ -230,7 +228,7 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 ## その他のリソース
 
-* [Azure モバイル アプリでのオフライン データ同期]
+* [Azure Mobile Apps でのオフライン データ同期]
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
@@ -239,7 +237,6 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 [iOS アプリの作成]: ../app-service-mobile-ios-get-started.md
 [Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
-[Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperations-entity.png
@@ -248,6 +245,5 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
- 
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="02/08/2016" 
 	ms.author="sethm"/>
 
 
@@ -130,7 +130,7 @@ function (returnObject, finalCallback, next)
 
 トピック サブスクリプションも **ServiceBusService** オブジェクトで作成します。サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定することができます。
 
-> [AZURE.NOTE]サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+> [AZURE.NOTE] サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 
 ### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
@@ -152,7 +152,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの **createRule** メソッドを使用します。このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
-> [AZURE.NOTE]既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
+> [AZURE.NOTE] 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
 
 次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -316,7 +316,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [SqlFilter][] の API のリファレンス
 -   GitHub の [Azure SDK for Node][] リポジトリ
 
-  [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
+  [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
   [Azure クラシック ポータル]: http://manage.windowsazure.com
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
@@ -327,4 +327,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [ストレージを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

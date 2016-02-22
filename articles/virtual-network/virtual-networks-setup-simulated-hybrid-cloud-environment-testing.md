@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/14/2016" 
+	ms.date="02/03/2016" 
 	ms.author="josephd"/>
 
-# テスト用のシミュレートされたハイブリッド クラウド環境の設定
+# シミュレートされたテスト用ハイブリッド クラウド環境のセットアップ (クラシック デプロイ モード)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](../virtual-machines/virtual-machines-setup-simulated-hybrid-cloud-environment-testing.md).
 
 この記事では、2 つの Azure 仮想ネットワークを使用して、Microsoft Azure でシミュレートされたテスト用のハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、「[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
 
@@ -220,11 +220,7 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 ## 次のステップ
 
-TestVNET 仮想ネットワークで次のワークロードを設定します。
-
-- [SharePoint イントラネット ファーム](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
-- [Web ベースの基幹業務アプリケーション](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-- [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
+- TestVNET 仮想ネットワークに、[SharePoint イントラネット ファーム](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)、[Web ベースの基幹業務アプリケーション](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)をセットアップします。
 
 
 ## <a id="costs"></a>この環境の継続的な費用を最小限に抑える
@@ -264,6 +260,5 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet -SharedKey $preSharedKey
 
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
- 
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

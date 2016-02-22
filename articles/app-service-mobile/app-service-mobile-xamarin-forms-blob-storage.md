@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="02/03/2015"
+	ms.date="02/03/2016"
     ms.author="donnam"/>
 
 #Xamarin.Forms アプリで Azure Storage に接続する
@@ -93,7 +93,11 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
             return base.DeleteFileAsync(id, name);
         }
 
-6. サーバー プロジェクトをモバイル アプリ バックエンドに発行します。
+6. Web API 構成を更新して属性のルーティングを設定します。**Startup.MobileApp.cs** で、`config` 変数を定義した後に、`ConfigureMobileApp()` メソッドの下に次の行を追加します。
+
+        config.MapHttpAttributeRoutes();
+
+7. サーバー プロジェクトをモバイル アプリ バックエンドに発行します。
 
 ###ストレージ コントローラーによって登録されているルート
 
@@ -377,7 +381,7 @@ Azure Mobile クライアント SDK は実際にはどのファイル データ�
 
         public static object UIContext { get; set; }
 
-4. ポータブル ライブラリ プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[クロスプラットフォーム]**、**[Forms Xaml Page]** の順に選択します。ビュー `TodoItemDetailsView` を指定します。
+4. ポータブル ライブラリ プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[クロスプラットフォーム]**、**[Forms Xaml Page]** の順に選択します。ビューに `TodoItemDetailsView` という名前を付けます。
 
 5. **TodoItemDetailsView.xaml** を開き、ContentPage の本文を以下に置き換えます。
 
@@ -609,7 +613,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 ###Windows プロジェクトを更新する
 
-1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919) をインストールします。詳細については、[Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)のチュートリアルを参照してください。 
+1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919) をインストールします。詳細については、「[Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)」チュートリアルを参照してください。 
 
 2. **Package.appxmanifest** を編集して、**Web カメラ**機能をチェックします。
 
@@ -721,4 +725,4 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Azure ストレージ アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

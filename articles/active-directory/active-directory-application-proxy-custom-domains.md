@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="02/09/2016"
 	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシでのカスタム ドメインの使用
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 既定のドメインを使用すると、アプリケーションにアクセスするための内部 URL と外部 URL として同じ URL を設定できるため、ユーザーはアプリケーションにどこからアクセスするかに関係なく、覚えておく必要がある URL が 1 つだけで済みます。また、アプリケーションのアクセス パネルに作成するショートカットも 1 つで済みます。Azure AD アプリケーション プロキシによって提供される既定のドメインを使用する場合、独自のドメインを有効にするために必要な追加の構成はありません。カスタム ドメインを使用する場合は、アプリケーション プロキシがドメインを認識し、証明書を検証できるようにするために必要な操作がいくつかあります。
 
@@ -48,8 +48,8 @@ Q: 既にアップロードされている証明書は、もう一度アップ�
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Azure ID](fundamentals-identity.md)
 
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
-* [Azure ID](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

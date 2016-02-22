@@ -6,7 +6,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/09/2016" 
+	ms.date="02/04/2016" 
 	ms.author="robmcm"/>
 
 #Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
@@ -34,7 +34,7 @@
 <a name="bkmk_configurecname"></a>
 ## カスタム ドメインの DNS レコードの追加
 
-> [AZURE.NOTE]Azure App Service Web Apps からドメインを購入した場合は、次の手順をスキップして、「[Web Apps 用のドメインの購入](custom-dns-web-site-buydomains-web-app.md)」の記事の最後の手順をご覧ください。
+> [AZURE.NOTE] Azure App Service Web Apps からドメインを購入した場合は、次の手順をスキップして、「[Web Apps 用のドメインの購入](custom-dns-web-site-buydomains-web-app.md)」の記事の最後の手順をご覧ください。
 
 カスタム ドメインを Azure App Service の Web アプリに関連付けるには、ドメイン名を購入したドメイン レジストラーのツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して DNS ツールを見つけて利用します。
 
@@ -58,7 +58,5 @@
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
- 
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

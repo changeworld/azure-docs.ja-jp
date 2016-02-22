@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/29/2015" 
+	ms.date="02/09/2016" 
 	ms.author="mahender"/>
 
 # 既存の .NET Azure Mobile Service を App Service にアップグレードする
@@ -277,4 +277,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

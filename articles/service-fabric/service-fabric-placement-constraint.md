@@ -36,6 +36,6 @@ NodeProperty - ユーザーまたはシステムによって定義される、�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-詳細については、「[アプリケーション シナリオ](../service-fabric-application-scenarios)」を参照してください。
+詳細については、「[Service Fabric アプリケーションのシナリオ](service-fabric-application-scenarios.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

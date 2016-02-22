@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -31,7 +31,7 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 暗号化されたアセットには、**ContentKey** を関連付ける必要があります。この記事では、コンテンツ キーの作成方法について説明します。
 
->[AZURE.NOTE]Media Services .NET SDK を使用して新しい **StorageEncrypted** のアセットを作成する場合、**ContentKey** が自動的に作成され、アセットにリンクします。
+>[AZURE.NOTE] Media Services .NET SDK を使用して新しい **StorageEncrypted** のアセットを作成する場合、**ContentKey** が自動的に作成され、アセットにリンクします。
 
 ##ContentKeyType
 
@@ -146,4 +146,4 @@ Media Services では、暗号化されたアセットを作成して送信で�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="02/07/2016"
 	ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -103,4 +103,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [ JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="Xamarin iOS での Mobile Apps の認証の使用" 
-	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+<properties
+	pageTitle="Xamarin iOS での Mobile Apps の認証の使用"
+	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/25/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Xamarin.iOS アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、Xamarin.iOS クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されるとユーザー ID 値が表示され、制限付きのテーブル データにアクセスできます。
 
@@ -51,7 +49,7 @@
 	```
 
 		// Logged in user
-		private MobileServiceUser user; 
+		private MobileServiceUser user;
 		public MobileServiceUser User { get { return user; } }
 
 2. 次の定義を使用して、**QSTodoService** に **Authenticate** という新しいメソッドを追加します。
@@ -69,7 +67,7 @@
             }
         }
 
-	>[AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+	>[AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **QSTodoListViewController.cs** を開きます。**ViewDidLoad** のメソッド定義を変更して、終わり近くにある **RefreshAsync()** の呼び出しを削除します。
 
@@ -100,16 +98,15 @@
 			}
 		}
 		// rest of RefreshAsync method
-	
+
 5. Mac の Xamarin Build Host に接続しているVisual Studio または Xamarin Studio で、デバイスまたはエミュレーターをターゲットとしているクライアント プロジェクトを実行します。アプリケーションにデータが表示されないことを確認します。
 
 	項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。
 
- 
+
 <!-- URLs. -->
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Xamarin.iOS アプリの作成]: app-service-mobile-xamarin-ios-get-started.md
- 
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

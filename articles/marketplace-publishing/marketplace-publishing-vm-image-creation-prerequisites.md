@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="10/09/2015"
+  ms.date="02/04/2016"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件
@@ -33,7 +33,7 @@ Azure ベース のVM は、Windows または Linux 上で開発することが�
 - Linux を使用している場合は、『[Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。
 - Windows を使用している場合は、『[Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。
 
-> [AZURE.NOTE]認定検証ツールを実行し、VHD 認定の提出に使用する VHD SAS URL を作成するには、Windows ベースのコンピューターにアクセスする必要があります。
+> [AZURE.NOTE] 認定検証ツールを実行し、VHD 認定の提出に使用する VHD SAS URL を作成するには、Windows ベースのコンピューターにアクセスする必要があります。
 
 ## VHD の開発
 Azure VHD は、クラウドまたはオンプレミスでも開発できます。
@@ -51,4 +51,4 @@ Azure VHD は、クラウドまたはオンプレミスでも開発できます�
 
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

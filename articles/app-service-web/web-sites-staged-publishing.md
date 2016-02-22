@@ -49,7 +49,8 @@
 
 	![新しいデプロイ スロットの追加][QGAddNewDeploymentSlot]
 
-	> [AZURE.NOTE]Web アプリがまだ **Standard** または **Premium** モードでない場合は、ステージングされた発行を有効にするためのモードを示すメッセージが表示されます。その場合は、操作を継続する前に、**[アップグレード]** を選択して Web アプリの **[スケール]** タブに移動できます。
+	> [AZURE.NOTE]
+	Web アプリがまだ **Standard** または **Premium** モードでない場合は、ステージングされた発行を有効にするためのモードを示すメッセージが表示されます。その場合は、操作を継続する前に、**[アップグレード]** を選択して Web アプリの **[スケール]** タブに移動できます。
 
 2. **[スロットの追加]** ブレードで、スロット名を設定し、別の既存のデプロイ スロットから Web アプリ構成を複製するかどうかを選択します。チェック マークをクリックして続行します。
 
@@ -97,7 +98,7 @@
 <a name="Swap"></a>
 ## デプロイ スロットをスワップするには ##
 
->[AZURE.IMPORTANT]Web アプリをデプロイ スロットからを運用環境にスワップする前に、スロット固有でないすべての設定が、スワップ ターゲットへと反映させたいとおりに構成されていることを確認してください。
+>[AZURE.IMPORTANT] Web アプリをデプロイ スロットからを運用環境にスワップする前に、スロット固有でないすべての設定が、スワップ ターゲットへと反映させたいとおりに構成されていることを確認してください。
 
 1. デプロイ スロットをスワップするには、Web アプリのコマンド バーか、またはデプロイ スロットのコマンド バーで **[スワップ]** ボタンをクリックします。スワップのソースとターゲットが正しく設定されていることを確認してください。通常、スワップ ターゲットは運用スロットになります。  
 
@@ -109,7 +110,7 @@
 
 自動スワップを使用すると、Web アプリのエンドユーザーにコールド スタートやダウンタイムを強制することなく、Web アプリを連続的にデプロイできる、効率的な DevOps シナリオを実現できます。デプロイ スロットを運用環境に自動スワップするよう構成した場合、そのスロットにコードの更新をプッシュすると、Web アプリがスロット内で起動されしだい、App Service によって自動的に運用環境へとスワップされます。
 
->[AZURE.IMPORTANT]自動スワップを有効にする場合は、スロット構成がターゲット スロット (通常は運用スロット) に反映させたいとおりの構成になっていることを確認してください。
+>[AZURE.IMPORTANT] 自動スワップを有効にする場合は、スロット構成がターゲット スロット (通常は運用スロット) に反映させたいとおりの構成になっていることを確認してください。
 
 スロットの自動スワップは簡単に構成できます。次の手順に従ってください。
 
@@ -123,7 +124,7 @@
 
 	![][Autoswap2]
 
-	>[AZURE.NOTE]Web アプリの自動スワップ機能に事前に慣れておきたい場合は、まず **[自動スワップ スロット]** で運用スロット以外のターゲット スロットを選択することで、機能をテストすることができます。
+	>[AZURE.NOTE] Web アプリの自動スワップ機能に事前に慣れておきたい場合は、まず **[自動スワップ スロット]** で運用スロット以外のターゲット スロットを選択することで、機能をテストすることができます。
 
 3. デプロイ スロットにコードをプッシュします。しばらくすると自動スワップが実行され、更新がターゲット スロットの URL に反映されます。
 
@@ -134,7 +135,18 @@
 
 <a name="Rollback"></a>
 ## スワップ後に運用環境のアプリをロールバックするには ##
+
 スロットのスワップ後に運用サイトでエラーが見つかった場合は、同じ 2 つのスロットをすぐにスワップして、スロットをスワップ前の状態にロールバックすることができます。
+
+<a name="Warm-up"></a>
+## スワップ前のカスタム ウォームアップ ##
+
+アプリによっては、カスタム ウォームアップ アクションが必要な場合があります。web.config の applicationInitialization 構成要素を使用して、要求の受信前に実行されるカスタムの初期化アクションを指定できます。スワップ操作は、このカスタム ウォームアップが完了するまで待機します。サンプルの web.config フラグメントを次に示します。
+
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[web app hostname]" />
+        <add initializationPage="/Home/About" hostname="[web app hostname]" />
+    </applicationInitialization>
 
 <a name="Delete"></a>
 ## デプロイ スロットを削除するには##
@@ -150,7 +162,7 @@
 
 Azure PowerShell は、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです (Azure App Service の Web アプリ デプロイ スロットを管理するためのサポートなど)。
 
-- Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「[Microsoft Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。  
+- Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「[Microsoft Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。  
 
 - PowerShell コマンドレットの新しい Azure リソース マネージャー モードを使用するには、`Switch-AzureMode -Name AzureResourceManager` で開始します。
 
@@ -233,7 +245,7 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 
 ----------
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ ##
 [Azure App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
@@ -259,4 +271,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

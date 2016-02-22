@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="02/09/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -133,4 +133,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

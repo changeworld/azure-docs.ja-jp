@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/15/2015" 
+	ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -23,7 +23,8 @@
 
 ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](media-services-manage-channels-overview.md#cc_and_ads)」をご覧ください。
 
- 
+>[AZURE.NOTE] 現在、Azure Media Player は広告をサポートしていません。
+
 ##<a id="insert_ads_into_media"></a>メディアへの広告の挿入
 
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。メディアには、3 種類の広告を挿入できます。
@@ -812,4 +813,4 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

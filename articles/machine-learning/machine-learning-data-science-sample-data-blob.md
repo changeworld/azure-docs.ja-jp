@@ -13,18 +13,23 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="02/07/2016" 
 	ms.author="sunliangms;fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
 
-この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
-
 ## はじめに
 
 このドキュメントでは、Azure BLOB ストレージに格納されたデータのサンプリングについて説明します。これは、プログラムを使用してこのデータをダウンロードしてから、Python のサンプル コードでサンプリングして行います。これを行う手順は、次のとおりです。
+
+**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+
+次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+このサンプリング タスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+
 
 ## データのダウンロードとダウン サンプリング
 1. 次の Python のサンプル コードから、BLOB サービスを使用して Azure BLOB ストレージからデータをダウンロードします。 
@@ -103,4 +108,4 @@
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

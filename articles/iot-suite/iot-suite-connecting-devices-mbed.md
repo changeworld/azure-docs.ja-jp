@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/10/2015"
+   ms.date="02/05/2015"
    ms.author="dobett"/>
 
 
@@ -44,15 +44,15 @@
 
     ![][6]
 
-4. ポップアップ ウィンドウで、サンプル コード用のリンク https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ を入力します。
+4. ポップアップ ウィンドウで、サンプル コード用のリンク https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ を入力し、**[インポート]** をクリックします。
 
     ![][7]
 
-5. mbed コンパイラでは、このプロジェクトをインポートしたことでさまざまなライブラリがインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[iothub\_http\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_http_transport/)、[proton-c-mbed](https://developer.mbed.org/users/AzureIoTClient/code/proton-c-mbed/)) もあれば、mbed ライブラリ カタログで入手可能なサード パーティのライブラリもあります。
+5. mbed コンパイラのウィンドウでは、このプロジェクトをインポートしたことでさまざまなライブラリがインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[proton-c-mbed](https://developer.mbed.org/users/AzureIoTClient/code/proton-c-mbed/)) もあれば、mbed ライブラリ カタログで入手可能なサード パーティのライブラリもあります。
 
     ![][8]
 
-6. remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。
+6. remote\_monitoring\\remote\_monitoring.c ファイルを開き、ファイル内で次のコードを見つけます。
 
     ```
     static const char* deviceId = "[Device Id]";
@@ -61,14 +61,12 @@
     static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
     ```
 
-7. [Device Id] と [Device Key] を自身のデバイス データに置き換えます。
-
-8. デバイス データである IoT Hub ホスト名を使用して、IoTHub 名と IoTHub サフィックスを設定します。たとえば、IoT Hub ホスト名が Contoso.azure-devices.net である場合は、Contoso が IoTHub 名、残りの部分がサフィックスになります。
+7. [Device Id] と [Device Key] を自身のデバイス データに置き換えます。IoT Hub ホスト名を使用して、プレースホルダーの [IoTHub Name] と [IoTHub Suffix, i.e. azure-devices.net] を置き換えます。たとえば、IoT Hub ホスト名が contoso.azure-devices.net である場合は、contoso が **hubName**、残りの部分が **hubSuffix** になります。
 
     ```
     static const char* deviceId = "mydevice";
     static const char* deviceKey = "mykey";
-    static const char* hubName = "Contoso";
+    static const char* hubName = "contoso";
     static const char* hubSuffix = "azure-devices.net";
     ```
 
@@ -78,16 +76,17 @@
 
 1. **[コンパイル]** をクリックしてプログラムをビルドします。警告は無視してかまいません。ただし、ビルドでエラーが発生する場合は、続行する前にそのエラーを修正してください。
 
-2. ビルドが成功すると、プロジェクト名の付いた .bin ファイルが生成されます。.bin ファイルをデバイスにコピーします。.bin ファイルをデバイスに保存すると、デバイスに対する現在のターミナル セッションがリセットされます。再接続したら、もう一度ターミナルを手動でリセットするか、新しいターミナルを開始します。これにより、mbed デバイスはプログラムの実行をリセットして開始することができます。
+2. ビルドが成功した場合、mbed コンパイラの Web サイトによって、プロジェクト名の付いた .bin ファイルが生成され、ローカル コンピューターにダウンロードされます。.bin ファイルをデバイスにコピーします。.bin ファイルをデバイスに保存すると、デバイスが再起動し、.bin ファイルに含まれるプログラムが実行されます。mbed デバイスのリセット ボタンを押すことで、いつでもプログラムを手動で再起動することができます。
 
 3. PuTTY などの SSH クライアント アプリケーションを使用して、デバイスに接続します。Windows デバイス マネージャーを確認すると、デバイスで使用されているシリアル ポートを特定できます。
 
-
-4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。ほとんどの場合、デバイスの接続速度は 115200 であるため、この値を **[スピード]** ボックスに入力します。その後、**[開く]** をクリックします。
-
     ![][11]
 
+4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。デバイスは通常、115200 ボーで接続するため、**[速度]** ボックスに「115200」と入力します。その後、**[開く]** をクリックします。
+
 5. プログラムの実行が開始されます。接続時にプログラムが自動的に開始されない場合は、ボードのリセットが必要になることがあります (Ctrl キーを押しながら Break キーを押すか、ボードのリセット ボタンを押します)。
+
+    ![][10]
 
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
@@ -96,10 +95,11 @@
 [7]: ./media/iot-suite-connecting-devices-mbed/mbed2a.png
 [8]: ./media/iot-suite-connecting-devices-mbed/mbed3a.png
 [9]: ./media/iot-suite-connecting-devices-mbed/suite6.png
+[10]: ./media/iot-suite-connecting-devices-mbed/putty.png
 [11]: ./media/iot-suite-connecting-devices-mbed/mbed6.png
 
 [lnk-mbed-home]: https://developer.mbed.org/platforms/FRDM-K64F/
 [lnk-mbed-getstarted]: https://developer.mbed.org/platforms/FRDM-K64F/#getting-started-with-mbed
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/12/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 
@@ -26,7 +26,7 @@
 
 さまざまなサービスに対するヒープ ダンプの収集は、各クラスター上のサービスに対して、個別に有効にする必要があります。既定では、クラスターに対してこの機能はオフになっています。これらのヒープ ダンプのサイズは大きくなる可能性があるため、収集を有効にした後はヒープ ダンプの保存先である BLOB ストレージ アカウントを定期的に確認してください。
 
-> [AZURE.NOTE]この記事の情報は、Windows ベースの HDInsight にのみ適用されます。Linux ベースの HDInsight については、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」を参照してください。
+> [AZURE.NOTE] この記事の情報は、Windows ベースの HDInsight にのみ適用されます。Linux ベースの HDInsight については、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」を参照してください。
 
 ## ヒープ ダンプの対象サービス
 
@@ -63,4 +63,4 @@
 
 	clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:HeapDumpPath", "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"));
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

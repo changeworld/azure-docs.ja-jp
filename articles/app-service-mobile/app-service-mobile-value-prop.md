@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="02/04/2016"
 	ms.author="kirillg"/>
 
 # <a name="getting-started"></a>Mobile Apps とは
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 Azure App Service は、プロの開発者のための完全に管理されたサービスとしてのプラットフォーム (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
 
@@ -27,7 +25,7 @@ Azure App Service は、プロの開発者のための完全に管理された�
 ##モバイル アプリを使用する理由
 *Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。モバイル アプリでは、次のことを実行できます。
 
-- **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。  
+- **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。
 - **エンタープライズ システムへの接続** - Mobile Apps を使用して、企業へのサインオンを数分で追加し、企業のオンプレミス リソースまたはクラウド リソースに接続することができます。
 - **SaaS API に簡単に接続** - 40 を超える SaaS API コネクタを使用して、所属する企業が現在使用している SaaS API に、アプリを簡単に統合することができます。CRM と請求システムの両方でアカウントの状態を更新する場合、 モバイル アプリから企業の SaaS API をすぐに使用できます。
 - **同期を使用したオフライン対応のアプリの構築** - オフラインでも動作し、企業のデータ ソースや SaaS API と接続したときに Mobile Apps を使用してバックグラウンドでデータを同期するアプリを構築することにより、モバイル ユーザーの生産性が向上します。
@@ -52,6 +50,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 
- 
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

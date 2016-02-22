@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd" 
-	ms.date="09/17/2015"
+	ms.date="02/10/2016"
 	ms.author="himad"/>
 
 
@@ -41,4 +41,4 @@ Azure Machine Learning では、発行された Web サービスに対して複�
 エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。この UI によるエンドポイントの追加に加え、エンドポイントは Endpoint Management API を使用してプログラムで追加することもできます。Machine Learning Web サービスの使用については、「[発行済みの Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

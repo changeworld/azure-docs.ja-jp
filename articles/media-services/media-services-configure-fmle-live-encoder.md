@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"   
 	ms.author="juliako"/>
 
 #FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -56,12 +56,12 @@
 
 3. **[チャネルの作成]** をクリックします。![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
 
->[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
 
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp)ことができます。
 
->[AZURE.IMPORTANT]チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 
 ##<a id=configure_fmle_rtmp></a>FMLE エンコーダーを構成する
 
@@ -127,7 +127,7 @@
 	冗長性をさらに高めるには、セカンダリ入力 URL に対して次の手順を繰り返します。
 8. **[接続]** を選択します。
 
->[AZURE.IMPORTANT]**[接続]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] **[接続]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 
 ##再生をテストする
   
@@ -170,4 +170,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

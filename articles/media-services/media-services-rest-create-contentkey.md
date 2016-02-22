@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -69,7 +69,7 @@ Media Services では、暗号化されたアセットを新しく作成して�
 AES キーの生成、キーの暗号化、checksum 計算の例は、このトピックから削除されました。Media Servicesを操作する方法についての例のみご覧いただけます。
 
 
->[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
@@ -262,4 +262,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/27/2015"
+   ms.date="02/03/2016"
    ms.author="derrickv"/>
 
 # Azure Data Catalog 開発者の概念
@@ -135,7 +135,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 共通の型は、プロパティの型として使用できますが、項目ではありません。
 
-<table><tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr><tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr><tr><td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td></tr><tr><td>SecurityPrincipal</td><td></td><td></td><td></td></tr><tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td></tr><tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td></tr><tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td></tr><tr><td>分割</td><td></td><td></td><td></td></tr><tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr><tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr><tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>defaultValue</td><td>オブジェクト</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+<table><tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr><tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr><tr><td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td></tr><tr><td>SecurityPrincipal</td><td></td><td></td><td></td></tr><tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td></tr><tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td></tr><tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td></tr><tr><td>Column</td><td></td><td></td><td></td></tr><tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr><tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr><tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>defaultValue</td><td>object@</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
 
 </tr><tr><td>ColumnDescription</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>tags</td><td>string[]</td><td>列を説明するタグの配列。</td></tr>
@@ -194,7 +194,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **__roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **\_\_roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
 
 ###例
 **項目を公開する場合は、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。**POST** https://123154bb...6aad6370ee14.datacatalog.azure.com/default/views/tables/?api-version=2015-07.1.0-Preview **本文**
@@ -262,4 +262,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

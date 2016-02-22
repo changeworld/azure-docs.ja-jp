@@ -64,7 +64,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 主なカテゴリは次のとおりです。
 
 * [Web サーバー製品利用統計情報](app-insights-asp-net.md) -HTTP 要求。URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。セッション ID。
-* [Web ページ](articles/app-insights-javascript.md) - ページ、ユーザーとセッションの数。ページの読み込み時間。例外。
+* [Web ページ](app-insights-javascript.md) - ページ、ユーザーとセッションの数。ページの読み込み時間。例外。AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
 * [例外](app-insights-asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、ビルド ID、CPU タイプ。 
@@ -191,7 +191,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] | ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>ユーザー
 [Status Monitor を IIS にインストールする][redfield]<br/>[AI 拡張機能を Azure VM または Web アプリに追加する][azure]|Dependencies<br/>ServerContext<br/>Inferred<br/>Perf counters
 [Application Insights SDK を Java Web アプリに追加する][java]|ServerContext<br/>Inferred<br/>Request<br/>Session<br/>ユーザー
-[JavaScript SDK を Web ページに追加する][client]|ClientContext <br/>Inferred<br/>Page<br/>ClientPerf
+[JavaScript SDK を Web ページに追加する][client]|ClientContext <br/>Inferred<br/>Page<br/>ClientPerf<br/>Ajax
 [SDK を Windows ストア アプリに追加する][windows]|DeviceContext<br/>ユーザー<br/>Crash data
 [既定のプロパティを定義する][apiproperties]|**Properties** (すべての標準イベントおよびカスタム イベント)
 [Call TrackMetric][api]|数値<br/>**Properties**
@@ -218,6 +218,7 @@ Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーから�
 イベント | イベントの名前と値
 PageViews | URL とページ名または画面名
 Client perf | URL/ページ名、ブラウザーの読み込み時間
+Ajax | Web ページからサーバーへの HTTP 呼び出し
 Requests |URL、期間、応答コード
 依存関係|種類 (SQL、HTTP、...)、接続文字列または URI、同期または非同期、期間、成功、SQL ステートメント (Status Monitor による)
 **Exceptions** | 種類、**メッセージ**、呼び出し履歴、ソース ファイルと行の番号、スレッド ID
@@ -264,4 +265,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

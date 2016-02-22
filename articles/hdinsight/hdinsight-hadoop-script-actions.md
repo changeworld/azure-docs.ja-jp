@@ -14,23 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 # HDInsight 用の Script Action スクリプトの開発
 
-HDInsight 用の Script Action スクリプトを記述する方法について説明します。Script Action スクリプトの使用方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。Linux オペレーティング システムでの HDInsight クラスターに関する同様の記事については、「[HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
+HDInsight 用の Script Action スクリプトを記述する方法について説明します。Script Action スクリプトの使用方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。Linux ベースの HDInsight クラスターに関する同様の記事については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
 
-> [AZURE.NOTE]次のようなエラー メッセージが表示されることがあります。
+> [AZURE.NOTE] 次のようなエラー メッセージが表示されることがあります。
 > 
 >     System.Management.Automation.CommandNotFoundException; ExceptionMessage : The term 'Save-HDIFile' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 > これは、ヘルパー メソッドを含めていなかったためです。「[カスタム スクリプトのためのヘルパー メソッド](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts)」を参照してください。
 
 ## サンプルのスクリプト
 
-Windows オペレーティング システムで HDInsight クラスターをプロビジョニングする場合、Script Action は、Azure PowerShell スクリプトです。サイトの構成ファイルを構成するためのサンプル スクリプトを次に示します。
+Windows オペレーティング システムで HDInsight クラスターを作成する場合、Script Action は、Azure PowerShell スクリプトです。サイト構成ファイルを構成するためのサンプル スクリプトを次に示します。
 
 	param (
 	    [parameter(Mandatory)][string] $ConfigFileName,
@@ -94,7 +94,7 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 
 Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
-> [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
 
 
@@ -213,7 +213,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 ### 障害が発生したクラスターのデプロイメントにおける例外の実行
 
-クラスターのカスタマイズが予想通りに成功しなかった場合に正確な通知を受け取るには、例外を実行してクラスターのプロビジョニングを失敗させることが重要になります。たとえば、ファイルが存在する場合はファイルを処理し、ファイルが存在しない場合はエラー状況を処理する必要があります。これにより、スクリプトは正常に終了し、クラスターの状態が正確に把握できるようになります。次のスニペットでは、これを実行する方法の例を示します。
+クラスターのカスタマイズが予想どおりに成功しなかった場合に正確な通知を受け取るには、例外をスローし、クラスターの作成を失敗させることが重要になります。たとえば、ファイルが存在する場合はファイルを処理し、ファイルが存在しない場合はエラー状況を処理する必要があります。これにより、スクリプトは正常に終了し、クラスターの状態が正確に把握できるようになります。次のスニペットでは、これを実行する方法の例を示します。
 
 	If(Test-Path($SomePath)) {
 		#Process file in some way
@@ -351,4 +351,4 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

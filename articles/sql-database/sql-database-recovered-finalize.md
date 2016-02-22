@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery"
-   ms.date="07/30/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # 復旧された Azure SQL データベースの最終処理を行う
@@ -56,4 +56,4 @@
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

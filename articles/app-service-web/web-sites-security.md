@@ -62,7 +62,7 @@ App Service アプリ用に作成された ***.azurewebsites.net** ドメイン�
 
 ## データ層をセキュリティで保護する
 
-App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、アプリの実行時にのみ暗号化が解除されます。さらに、Azure SQL Database には、[保存済みデータの暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](sql-database-dynamic-data-masking-get-started.md)、[脅威検出](sql-database-threat-detection-get-started)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。機密データやコンプライアンスの要件がある場合は、データをセキュリティで保護する方法の詳細について「[SQL Database の保護](sql-database-security.md)」を確認してください。
+App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、アプリの実行時にのみ暗号化が解除されます。さらに、Azure SQL Database には、[保存暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](../sql-database/sql-database-dynamic-data-masking-get-started.md)、[脅威検出](sql-database-threat-detection-get-started)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。機密データやコンプライアンスの要件がある場合、データをセキュリティで保護する方法の詳細については、「[SQL Database の保護](../sql-database/sql-database-security.md)」をご覧ください。
 
 ClearDB などのサードパーティのデータベース プロバイダーを使用する場合は、プロバイダーのマニュアルを直接参照してセキュリティのベスト プラクティスを確認する必要があります。
 
@@ -123,4 +123,4 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

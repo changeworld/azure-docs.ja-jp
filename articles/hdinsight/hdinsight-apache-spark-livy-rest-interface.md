@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/16/2016" 
+	ms.date="02/05/2016" 
 	ms.author="nitinme"/>
 
 
@@ -177,7 +177,9 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
 
-### 拡張機能
+### ツールと拡張機能
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -187,4 +189,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

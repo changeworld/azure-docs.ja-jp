@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="02/09/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -171,7 +171,7 @@ BGP セッションが切断されます。プレフィックス数が上限未�
 ### ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 専用回線の更新用の API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
 
-## ExpressRoute premium
+## ExpressRoute Premium
 
 ### ExpressRoute Premium とは何ですか。
 ExpressRoute Premium は、次に示す機能で構成されたサービスです。
@@ -179,6 +179,7 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
  - パブリック ピアリングおよびプライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
  - ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。詳細については、下の表を参照してください。
  - Microsoft のコア ネットワーク経由のグローバル接続。ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。**例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。
+ - Office 365 サービスおよび CRM Online への接続。
 
 ### ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
 ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の表のとおりです。既定の上限は 10 です。
@@ -187,7 +188,7 @@ ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の�
 
 | **回線のサイズ** | **既定で設定される VNET リンクの数** | **ExpressRoute Premium の VNET リンクの数** |
 |--------------|----------------------------------------|-----------------------------------------------|
-| 50 Mbps | 10 | サポートされていません |
+| 50 Mbps | 10 | 10 |
 | 100 Mbps | 10 | 20 |
 | 200 Mbps | 10 | 25 |
 | 500 Mbps | 10 | 40 |
@@ -213,49 +214,31 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 ### ExpressRoute Premium の料金は、標準の ExpressRoute 料金に追加して支払うのですか。
 はい。ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
 
-## ExpressRoute と Office 365
+## ExpressRoute と、Office 365 サービスおよび CRM Online
 
-### Office 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
+### Office 365 サービスおよび CRM Online に接続する ExpressRoute 回線はどのようにして作成しますか。
 
 1. 「[ExpressRoute の前提条件](expressroute-prerequisites.md)」ページを参照して、要件を満たしていることを確認します。
 2. [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページでサービス プロバイダーとサービスの場所の一覧を参照し、接続ニーズが満たされることを確認します。
 3. 「[Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
-4. 以下のワークフローに示されている手順に従って、接続を設定します。[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)。
+4. 接続をセットアップするには、「[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)」に示されている手順に従います。
 
-### 既存の ExpressRoute 回線で Office 365 サービスへの接続をサポートできますか。
-はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するのに十分な容量があることを確認してください。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
+>[AZURE.IMPORTANT] Office 365 サービスおよび CRM Online への接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
+
+### 既存の ExpressRoute 回線が Office 365 サービスおよび CRM Online への接続をサポートするようにできますか。
+はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
-**次の Office 365 サービスがサポートされます。**
+ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 の URL と IP アドレスの範囲](http://aka.ms/o365endpoints)」をご覧ください。
 
-- Exchange Online と Exchange Online Protection
-- SharePoint Online
-- Skype for Business Online
-- Office Online
-- Azure Active Directory と Azure AD Sync
-- Office 365 ビデオ
-- Power BI
-- Delve
-- Project Online
-
-**次の Office 365 サービスはサポートされません。**
-
-- Yammer
-- Office 365 ProPlus クライアントのダウンロード
-- オンプレミス ID プロバイダーのサインイン
-- 中国での Office 365 (21 Vianet が運営) サービス
-
-これらのサービスにはインターネット経由で接続できます。
-
-### ExpressRoute for Office 365 の料金はいくらですか。
-ExpressRoute 経由で Office 365 に接続するのに追加コストはかかりません。ExpressRoute の料金の詳細については、[料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
+### Office 365 サービスおよび CRM Online に対応した ExpressRoute の料金はいくらですか。
+Office 365 サービス および CRM Online では、Premium アドオンを有効にする必要があります。ExpressRoute の料金の詳細については、[料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
 
 ### ExpressRoute for Office 365 はどのリージョンでサポートされていますか。
 ExpressRoute がサポートされているパートナーと地域の一覧については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
 
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
- 
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

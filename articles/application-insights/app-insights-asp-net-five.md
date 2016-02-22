@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
+	ms.date="02/10/2016" 
 	ms.author="awills"/>
 
 # ASP.NET 5 向けの Application Insights
@@ -21,8 +21,9 @@ Visual Studio Application Insights を使うと、Web アプリケーション�
 
 ![例](./media/app-insights-asp-net-five/sample.png)
 
-[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。
+[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
 
+[サンプルのデモ](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/application-insights/sample)
 
 ## 使用の開始
 
@@ -78,4 +79,4 @@ Visual Studio 2015 でプロジェクトを作成した場合、Application Insi
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

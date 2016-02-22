@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 #PowerShell を使用した複数 NIC VM (クラシック) のデプロイ
@@ -31,7 +31,7 @@
 
 ## 前提条件
 
-バックエンド サーバーをデプロイするには、このシナリオで必要なすべてのリソースを含むメイン クラウド サービスをデプロイする必要があります。少なくとも、バックエンド用のサブネットを含む仮想ネットワークを作成する必要があります。仮想ネットワークをデプロイする方法については、「[PowerShell を使用した仮想ネットワークの作成](virtual-networks-create-vnet-classic-ps.md)」を参照してください。
+バックエンド サーバーをデプロイするには、このシナリオで必要なすべてのリソースを含むメイン クラウド サービスをデプロイする必要があります。少なくとも、バックエンド用のサブネットを含む仮想ネットワークを作成する必要があります。仮想ネットワークをデプロイする方法については、「[PowerShell を使用した仮想ネットワークの作成](virtual-networks-create-vnet-classic-netcfg-ps.md)」を参照してください。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -45,7 +45,7 @@
 
 ### 手順 1 - スクリプトの開始
 
-使用するすべての PowerShell スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/multinic.ps1)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
+使用するすべての PowerShell スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
 
 1. 上記の[前提条件](#Prerequisites)でデプロイした既存のリソース グループに基づいて、以下の変数の値を変更します。
 
@@ -171,4 +171,4 @@
 		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded 
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

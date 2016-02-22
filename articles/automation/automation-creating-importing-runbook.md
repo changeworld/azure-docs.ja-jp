@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="09/22/2015"
+	ms.date="02/09/2016"
 	ms.author="bwren" />
 
 # Azure Automation での Runbook の作成またはインポート
@@ -131,4 +131,4 @@ Windows PowerShell の [Publish-AzureAutomationRunbook](https://msdn.microsoft.c
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

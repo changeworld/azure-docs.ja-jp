@@ -1,4 +1,4 @@
-<!--author=SharS last changed: 11/16/15-->
+<!--author=SharS last changed: 02/04/2016-->
 
 #### ボリュームを作成するには
 
@@ -9,9 +9,10 @@
    2. **[プロビジョニング容量]** に、ボリュームのプロビジョニング容量を GB または TB 単位で指定します。物理デバイスの場合、1 GB ～ 64 TB の範囲で容量を指定する必要があります。
    3. **[使用法の種類]** ボックスの一覧で、ボリュームの使用法の種類を選択します。 
    4. アーカイブ データにこのボリュームを使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。その他のユースケースの場合は、**[階層化ボリューム]** を選択します。 (旧称はプライマリ ボリューム)。
-   4. 矢印アイコン ![矢印アイコン](./media/storsimple-create-volume/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
 
-        ![Add volume](./media/storsimple-create-volume/AddVolume1-include.png)
+        ![Add volume](./media/storsimple-create-volume/ScreenshotUpdate1VolumeFlow.png)
+
+    4. 矢印アイコン ![矢印アイコン](./media/storsimple-create-volume/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
 
 3. **[追加設定]** ダイアログ ボックスで、新しい Access Control レコード (ACR) を追加します。
    1. ACR の **[名前]** を入力します。
@@ -28,4 +29,4 @@
 
 StorSimple ボリュームの作成方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->
