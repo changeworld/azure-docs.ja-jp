@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="12/08/2015" 
-	ms.author="erikre"/>
+	ms.author="tdykstra"/>
 
 
 # Azure App Service での Web アプリの構成 #
@@ -25,7 +25,7 @@
 
 ## アプリケーションの設定
 
-1. [Azure ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
+1. [Azure ポータル](https://portal.azure.com/)で、Web アプリのブレードを開きます。
 2. **[すべての設定]** をクリックします。
 3. **[アプリケーションの設定]** をクリックします。
 
@@ -177,4 +177,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

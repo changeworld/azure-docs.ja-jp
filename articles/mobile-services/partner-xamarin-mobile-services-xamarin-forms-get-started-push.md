@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.workload="mobile"
-	ms.date="10/05/2015"
+	ms.date="01/22/2016"
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
@@ -68,7 +68,7 @@
 
   	これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。既定のアクセス許可とは、アプリケーションの任意のユーザーがテーブル内のデータにアクセスし、変更を加えることができることを表します。
 
-    > [AZURE.NOTE]Mobile Services のクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。
+    > [AZURE.NOTE] Mobile Services のクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。
 
 4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
@@ -76,7 +76,7 @@
 
   	これは、Mobile Services のテーブルの最小要件です。
 
-    > [AZURE.NOTE]モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。
+    > [AZURE.NOTE] モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。
 
 これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
 
@@ -93,7 +93,7 @@
 
 Apple Push Notification サービス (APNS) を使用して、iOS アプリにプッシュ通知を追加します。アクティブな Google アカウントおよび [Google Cloud Messaging クライアント コンポーネント]が必要です。
 
->[AZURE.IMPORTANT]Apple Push Notification サービス (APNS) の要件に合わせて、プッシュ通知を、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) にデプロイおよびテストする必要があります。
+>[AZURE.IMPORTANT] Apple Push Notification サービス (APNS) の要件に合わせて、プッシュ通知を、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) にデプロイおよびテストする必要があります。
 
 APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、Mobile Service にアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
@@ -153,7 +153,7 @@ APNS では、証明書を使用してモバイル サービスを認証しま�
 
     これで、[Add iOS Certificate] アシスタントが表示されます。
 
-    メモ: このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書をモバイル サービスにアップロードするときと同じ証明書タイプを設定してください。
+    メモ: このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書を Mobile Services にアップロードするときと同じ証明書タイプを設定してください。
 
 5. **[Choose File]** をクリックして、前に CSR ファイルを保存した場所に移動してから、**[Generate]** をクリックします。
 
@@ -290,7 +290,7 @@ APNS と連携するようにモバイル サービスが構成されました�
             _deviceToken = _deviceToken.Trim('<', '>').Replace(" ", "");
 
             // Get Mobile Services client
-            MobileServiceClient client = todoItemManager.GetClient;
+            MobileServiceClient client = todoItemManager.GetClient();
 
             // Register for push with Mobile Services
             IEnumerable<string> tag = new List<string>() { "uniqueTag" };
@@ -302,7 +302,7 @@ APNS と連携するようにモバイル サービスが構成されました�
 
             var push = client.GetPush();
 
-            push.RegisterTemplateAsync(_deviceToken, template, expiryDate, "myTemplate", tag)
+            push.RegisterTemplateAsync(_deviceToken, template, expiryDate, "myTemplate", tag);
         }
 
 7. **AppDelegate** で、**ReceivedRemoteNotification** イベントをオーバーライドします。
@@ -363,13 +363,13 @@ APNS と連携するようにモバイル サービスが構成されました�
 
     これで、新しい insert スクリプトが登録されます。このスクリプトは、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
-   >[AZURE.NOTE]このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
+   >[AZURE.NOTE] このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
 
 ### <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
 1. **[Run]** を押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
 
-   >[AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+   >[AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
 2. アプリケーションで [**追加**] ボタンをクリックし、タスクのタイトルを追加してから [**保存**] ボタンをクリックします。
 
@@ -392,7 +392,7 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
 
 ###<a id="update-scripts"></a>通知を送信するように登録済み挿入スクリプトを更新する
 
->[AZURE.NOTE]次の手順では、Azure クラシック ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
+>[AZURE.NOTE] 次の手順では、Azure クラシック ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
 
 [Azure クラシック ポータル]で、**[データ]** タブ、**TodoItem** テーブルの順にクリックします。
 
@@ -402,7 +402,7 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
 
    ![][22]
 
-    This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
 3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
@@ -434,7 +434,7 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
 
     これで、新しい insert スクリプトが登録されます。このスクリプトは、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
-   >[AZURE.NOTE]このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
+   >[AZURE.NOTE] このスクリプトでは、トースト通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。
 
 
 ###<a id="configure-app"></a>プッシュ通知の既存のプロジェクトを構成する
@@ -539,6 +539,7 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
             MainActivity.DefaultService.RunOnUiThread(() => Register(push, null));
 
         }
+
         public async void Register(Microsoft.WindowsAzure.MobileServices.Push push, IEnumerable<string> tags)
         {
             try
@@ -618,9 +619,14 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
 
 12. **OnUnRegistered()** および **OnError()** (これらはプロジェクトをコンパイルするために必要) 用の次のメソッド オーバーライド コードを追加します。
 
+		protected override void OnUnRegistered(Context context, string registrationId)
+		{
+			Log.Error("GcmService", "Unregistered RegisterationId : " + registrationId);
+		}
+
         protected override void OnError(Context context, string errorId)
         {
-              Log.Error(PushHandlerBroadcastReceiver.TAG, "GCM Error: " + errorId);
+            Log.Error(PushHandlerBroadcastReceiver.TAG, "GCM Error: " + errorId);
         }
 
 ###<a id="test"></a>アプリケーションでプッシュ通知をテストする
@@ -629,7 +635,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。
 
-> [AZURE.IMPORTANT]プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]** に移動して **[Add Account]** をクリックします)。さらに、エミュレーターがインターネットに接続されていることを確認します。
+> [AZURE.IMPORTANT] プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]** に移動して **[Add Account]** をクリックします)。さらに、エミュレーターがインターネットに接続されていることを確認します。
 
 1. **[ツール]** で **[Android エミュレーター マネージャーを開く]** をクリックし、デバイスを選択してから **[編集]** をクリックします。
 
@@ -702,7 +708,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 5. **F5** キーを押してアプリケーションを実行します。登録キーを示すポップアップ ダイアログが表示されます。
 
-6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID\_\_\_CAP\_\_\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
+6.	ソリューション エクスプローラーで、**[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブをクリックして、**ID\_CAP\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
    	![VS で通知を有効にする](./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-app-enable-push-wp8.png)
 
@@ -762,7 +768,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
-    >[AZURE.NOTE]Windows Phone エミュレーターでテストする場合、401 認証エラー "RegistrationAuthorizationException" が発生する場合があります。これは、Windows Phone エミュレーターのホスト PC の時計との同期方法によって `RegisterNativeAsync()` 呼び出し中に発生します。セキュリティ トークンで拒否される場合があります。これを解決するには、テストする前にエミュレーターの時計を手動で設定します。
+    >[AZURE.NOTE] Windows Phone エミュレーターでテストする場合、401 認証エラー "RegistrationAuthorizationException" が発生する場合があります。これは、Windows Phone エミュレーターのホスト PC の時計との同期方法によって `RegisterNativeAsync()` 呼び出し中に発生します。セキュリティ トークンで拒否される場合があります。これを解決するには、テストする前にエミュレーターの時計を手動で設定します。
 
 5. アプリケーションで **Hello push** というタイトルの新しいタスクを作成して、すぐに [開始] ボタンまたは [戻る] ボタンを押してアプリケーションを閉じます。
 
@@ -851,4 +857,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Forms Azure Push Notification Starter Sample (Xamarin.Forms の Azure プッシュ通知スタート サンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/TodoListXamarinForms
 [Completed Xamarin.Forms Azure Push Notification Sample (Xamarin.Forms の Azure プッシュ通知の完全なサンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

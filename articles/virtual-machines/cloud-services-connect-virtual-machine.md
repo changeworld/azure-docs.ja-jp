@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.date="02/03/2016"
 	ms.author="cynthn"/>
 
 
@@ -52,7 +52,10 @@
 仮想マシンをスタンドアロンのクラウド サービスで接続するには:
 
 1.	[Azure クラシック ポータル](http://manage.windowsazure.com)でクラウド サービスを作成します。**[新規]、[Compute]、[クラウド サービス]、[カスタム作成]** の順にクリックします。また、仮想マシンを初めて作成するときに、デプロイメント用のクラウド サービスを作成することもできます。
-2.	仮想マシンを作成するときは、前の手順で作成したクラウド サービス名を選択します。![仮想マシンを既存のクラウド サービスに追加する](./media/howto-connect-vm-cloud-service/Connect-VM-to-CS.png)
+
+2.	仮想マシンを作成するときは、前の手順で作成したクラウド サービスの名前を選択します。
+
+	![仮想マシンを既存のクラウド サービスに追加する](./media/howto-connect-vm-cloud-service/Connect-VM-to-CS.png)
 
 ##リソース
 [仮想マシンの負荷分散](load-balance-virtual-machines.md)
@@ -65,4 +68,4 @@
 
 [データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

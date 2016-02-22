@@ -22,7 +22,7 @@ Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/li
 ## EventSource イベント
 Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ### キーワード
 Reliable Actors EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。これにより、収集されたイベントをフィルター処理できます。次のキーワードのビットが定義されています。
@@ -44,7 +44,7 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 
 上記の各カテゴリには、1 つまたは複数のカウンターがあります。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。パフォーマンス カウンター データを収集して Azure テーブルにアップロードするためのもう 1 つのオプションとして、[Azure 診断](../cloud-services-dotnet-diagnostics.md)があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。パフォーマンス カウンター データを収集して Azure テーブルにアップロードするためのもう 1 つのオプションとして、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)があります。
 
 ### パフォーマンス カウンター インスタンス名
 多数のアクター サービスまたはアクター サービス パーティションを持つクラスターには、多数のアクター パフォーマンス カウンター インスタンスが含まれます。パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の[パーティション](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)とアクター メソッド (該当する場合) を識別するのに役立ちます。
@@ -153,4 +153,4 @@ Reliable Actors ランタイムは、[アクターのアクティブ化と非ア
 |ActorActivated|5|情報|0x1|アクターがアクティブ化されました。|
 |ActorDeactivated|6|情報|0x1|アクターが非アクティブ化されました。|
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

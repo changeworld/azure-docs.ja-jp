@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="service-bus"
-	ms.workload="tbd"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="02/08/2016"
 	ms.author="sethm"/>
 
 # PowerShell で Service Bus を管理する
@@ -26,9 +26,9 @@ Microsoft Azure PowerShell は、Azure のワークロードのデプロイメ�
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション]、[メンバー プラン]、または[無料試用版]に関するページを参照してください。
+- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][]、[メンバー プラン][]、または[無料評価版][]に関するページを参照してください。
 
-- Azure PowerShell を搭載するコンピューター手順については、[Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
+- Azure PowerShell を搭載するコンピューター手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
 
 - PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
@@ -170,8 +170,8 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 <!--Link references-->
 [購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
 [メンバー プラン]: http://azure.microsoft.com/pricing/member-offers/
-[無料試用版]: http://azure.microsoft.com/pricing/free-trial/
-[Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell.md
+[無料評価版]: http://azure.microsoft.com/pricing/free-trial/
+[Azure PowerShell のインストールおよび構成に関するページ]: ../powershell-install-configure.md
 [Service Bus NuGet パッケージ]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
@@ -179,4 +179,4 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -15,13 +15,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/06/2015"
+	ms.date="02/08/2016"
 	ms.author="fashah;bradsev" />
 
 
 # Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 
 このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure BLOB ストレージを経由して SQL Azure データベースにデータを移動する方法を説明します。
+
+次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 ## <a name="intro"></a>概要: ADF の説明とデータの移行に ADF を使用するべきタイミング
 
@@ -137,7 +141,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 		    	}
 	    	}
     	}
-ここでは列名が含まれていないことに注意してください。ここに列名を含めることで、列名を副選択できます (詳細については、[ADF のドキュメント](data-factory-copy-activity.md)を参照)。
+ここでは列名が含まれていないことに注意してください。ここに列名を含めることで、列名を副選択できます (詳細については、[ADF のドキュメント](data-factory-data-movement-activities.md)を参照)。
 
 テーブルの JSON 定義を *onpremtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\\temp\\onpremtabledef.json*)。次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
@@ -211,7 +215,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 * このスクリプトでは、**パイプライン名**を *AMLDSProcessPipeline* としています。
 * また、既定の実行時間 (12 am UTC) を使用して、ジョブが毎日実行されるようにパイプラインの周期性を設定していることにも注目してください。
 
-> [AZURE.NOTE]  次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
+> [AZURE.NOTE]  次の手順では、Azure PowerShell を使用して ADF パイプラインの定義と作成を行います。このタスクは、Azure ポータルを使用しても行えます。詳細については、「[パイプラインを作成して実行する](../data-factory/data-factory-use-onpremises-datasources.md#step-4-create-and-run-a-pipeline)」を参照してください。
 
 上記のテーブル定義を使用して、ADF のパイプライン定義を次のように指定します。
 
@@ -301,4 +305,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -191,4 +191,8 @@ Application Insights をインストールしているとき、またはログ �
 
 市区町村、地域、国の各ディメンションは IP アドレスから取得され、必ずしも正確であるとは限りません。
 
-<!---HONumber=AcomDC_0204_2016-->
+## 問題が解決しない場合
+
+* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
+
+<!---HONumber=AcomDC_0211_2016-->

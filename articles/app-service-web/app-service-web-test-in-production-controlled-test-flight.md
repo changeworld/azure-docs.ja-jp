@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="02/02/2016"
 	ms.author="cephalin"/>
 # Azure App Service でのフライト デプロイ (ベータ テスト)
 
@@ -32,7 +32,7 @@
 このチュートリアルでは、次のシナリオを組み合わせながら、運用環境の App Service アプリをテストする方法について説明します。
 
 - ベータ アプリに[運用環境のトラフィックをルーティング](app-service-web-test-in-production-get-start.md)する
-- 効果的なメトリックを得るための[インストルメントをアプリ](app-insights-web-track-usage.md)に実装する
+- 効果的なメトリックを得るための[インストルメントをアプリ](../application-insights/app-insights-web-track-usage.md)に実装する
 - ベータ版のアプリを継続的にデプロイし、実際のアプリのメトリックを追跡する
 - 運用環境のアプリとベータ版のアプリとでメトリックを比較し、コードに加えた変更の結果を確認する
 
@@ -44,7 +44,7 @@
 -	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。
 -	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi) ビット
 -	以下の事柄の基礎知識:
-	-	[Azure リソース マネージャー ](resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください)
+	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください)
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
@@ -174,7 +174,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 このセクションでは、複数のデプロイ スロットを構成し、スロット固有のテレメトリを同じ Application Insights リソースに送信します。こうすることで、異なるスロット (デプロイ環境) からのトラフィック間でテレメトリ データを比較できるので、アプリに対する変更の効果が見やすくなります。同時に、運用アプリについては必要に応じて監視を継続できるよう、運用環境のトラフィックを他のトラフィックから分離することができます。
 
-ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](app-insights-api-custom-events-metrics.md#js-initializer)します。サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ([カスタムのイベントとメトリックのための Application Insights API](app-insights-api-custom-events-metrics.md) に関するページを参照)。
+ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer)します。サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ([カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md) に関するページを参照)。
 
 1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の 2 つの `//` コメントに挟まれたコードを追加します。
 
@@ -215,7 +215,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 5. **[お気に入り]** ボタンをクリックして、現在のメトリックス エクスプローラーの設定を **"Custom events: Production"** などとして保存します。後でデプロイ スロット ビューとの間で簡単に切り替えることができます。
 
-    > [AZURE.TIP] さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](app-insights-export-power-bi.md)することを検討してください。
+    > [AZURE.TIP] さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](../application-insights/app-insights-export-power-bi.md)することを検討してください。
 
 ### スロット固有のタグをサーバー アプリのメトリックに追加する
 こちらも片手落ちにならないようサーバー側のアプリもセットアップしましょう。ただし、JavaScript でインストルメントを実装したクライアント アプリとは異なり、サーバー アプリのスロット固有タグは .NET コードで実装します。
@@ -369,10 +369,10 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 -   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 -   [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
 -	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
--	[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
+-	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 -	[JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 -	[Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
--	[Azure PowerShell](powershell-install-configure.md)
+-	[Azure PowerShell](../powershell-install-configure.md)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

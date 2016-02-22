@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/11/2015" 
+	ms.date="02/05/2016" 
 	ms.author="awills"/>
 
 # Application Insights での作業
@@ -36,7 +36,7 @@
 ### 例外での電子メール
 
 1. [例外の監視を設定します](app-insights-asp-net-exceptions.md)
-2. 例外数メトリックに[アラートを設定](app-insights-alert.md)します
+2. 例外数メトリックに[アラートを設定](app-insights-alerts.md)します
 
 
 ### アプリのイベントでの電子メール
@@ -57,7 +57,7 @@
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-アラームを表示するには[メトリック エクスプローラー](app-insights-metric-explorer.md)でグラフを作成します。
+アラームを表示するには[メトリック エクスプローラー](app-insights-metrics-explorer.md)でグラフを作成します。
 
 ![](./media/app-insights-how-do-i/010-alarm.png)
 
@@ -201,6 +201,7 @@
 
 * [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンター コレクターなど) を無効にします。
 * SDK で、[サンプリングとフィルター処理](app-insights-api-filtering-sampling.md)を使用します。
+* Web ページで、各ページ ビューで報告される AJAX 呼び出しの数を制限します。`instrumentationKey:...` の後のスクリプト スニペットに、`,maxAjaxCallsPerView:3` (または適切な数値) を挿入します。
 * [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。これに対して提供される TrackMetric() のオーバーロードを考慮します。
 
 
@@ -240,4 +241,4 @@
 * 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

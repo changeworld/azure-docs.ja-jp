@@ -13,22 +13,27 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="02/07/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
-この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 ## はじめに
 
-このドキュメントでは、SQL と Python プログラミング言語の両方を使用して Azure 上の SQL Server に格納されているデータをサンプリングする方法について説明します。また、ファイルを保存して、サンプリングしたデータを Azure Machine Learning に移動し、そのデータを Azure BLOB にアップロードし、Azure ML に読み込む方法についても説明します。
+このドキュメントでは、SQL または Python プログラミング言語を使用して、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 
 Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/) ODBC ライブラリを使用して、Azure 上の SQL Server に接続し、[Pandas](http://pandas.pydata.org/) ライブラリを使用してサンプリングを実行します。
 
->[AZURE.NOTE]このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。データが SQL Server に格納されていない場合は、データを Azure 上の SQL Server に移動する手順について説明した「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」を参照してください。
+>[AZURE.NOTE] このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。SQL Server にデータが存在しない場合、データを Azure の SQL Server に移動する方法については、「[Azure 仮想マシン上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
+
+**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+
+次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+このサンプリング タスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 ##<a name="SQL"></a>SQL の使用
 
@@ -52,7 +57,7 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 	FROM <table_name> 
 	TABLESAMPLE (10 PERCENT)
 
->[AZURE.NOTE]このサンプリングされたデータを新しいテーブルに格納すると、このデータから探索および特徴の生成を行えます。
+>[AZURE.NOTE] このサンプリングされたデータを新しいテーブルに格納すると、このデータから探索および特徴の生成を行えます。
 
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
@@ -121,4 +126,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

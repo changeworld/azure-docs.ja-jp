@@ -19,7 +19,7 @@
 
 # Azure Media Packager を使用して静的パッケージ タスクを実行する
 
->[AZURE.NOTE]Windows Azure Media Packager と Windows Azure Media Encryptor の有効期限は、2017 年 3 月 1 日に延長されました。有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
+>[AZURE.NOTE]Microsoft Azure Media Packager と Microsoft Azure Media Encryptor の有効期限が 2017 年 3 月 1 日まで延長されました。有効期限までに、これらのプロセッサの機能が Media Encoder Standard (MES) に追加されます。お客様には、ジョブを MES に送信するワークフローを移行する方法について手順を説明します。また、形式の変換機能と暗号化機能は、動的パッケージと動的暗号化で引き続き使用できます。
 
 ## 概要
 
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

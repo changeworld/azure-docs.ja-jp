@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/17/2015"
+   ms.date="02/04/2016"
    ms.author="subramar"/>
 
 
@@ -33,7 +33,7 @@ Service Fabric による監視付きローリング アップグレードを使�
 
 これらのファイルをプロジェクトに追加した後、アプリケーション プロジェクト **[VisualObjectsApplication]** を右クリックし、次の図のように [Service Fabric] メニュー項目の **[発行]** コマンドを選択して、アプリケーションをビルドおよび発行します。詳細については、「[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)」を参照してください。代わりに、PowerShell を使用して、アプリケーションをデプロイすることができます。
 
-> [AZURE.NOTE]PowerShell で Service Fabric のコマンドを使用する前に、まず、`Connect-ServiceFabricCluster` コマンドレットを使用してクラスターに接続する必要があります。また、クラスターがローカル コンピューターにセットアップ済みになっている必要があります。「[Service Fabric 開発環境の設定](service-fabric-get-started.md)」の記事を参照してください。
+> [AZURE.NOTE] PowerShell で Service Fabric のコマンドを使用する前に、まず、`Connect-ServiceFabricCluster` コマンドレットを使用してクラスターに接続する必要があります。また、クラスターがローカル コンピューターにセットアップ済みになっている必要があります。「[Service Fabric 開発環境の設定](service-fabric-get-started.md)」の記事を参照してください。
 
 Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド **Copy-ServiceFabricApplicationPackage** を使用してアプリケーション パッケージを ImageStore にコピーできます。この手順の次に、**Register-ServiceFabricApplicationPackage** コマンドレットを使用して Service Fabric ランタイムにアプリケーションを登録します。最後に、**New-ServiceFabricApplication** コマンドレットを使用してアプリケーションのインスタンスを開始します。これら 3 つの手順は、Visual Studio で **[デプロイ]** メニュー項目を使用する場合と似ています。
 
@@ -45,7 +45,7 @@ Visual Studio でプロジェクトをビルドした後に、PowerShell コマ�
 
 VisualObjects ソリューション内の VisualObjects.ActorService プロジェクトを選択し、StatefulVisualObjectActor.cs ファイルを開きます。そのファイル内で `MoveObject` メソッドに移動し、`this.State.Move()` をコメント アウトし、`this.State.Move(true)` をコメント解除します。この変更によって、サービスのアップグレード後、オブジェクトは回転するようになります。
 
-プロジェクト **VisualObjects.ActorService** の ServiceManifest.xml ファイル (PackageRoot の下) を更新する必要もあります。CodePackage およびサービスのバージョンを 2.0 に更新し、ServiceManifest.xml ファイルの対応する行を更新します。マニフェスト ファイルを変更するには、ソリューションを右クリックしてから、Visual Studio の [マニフェスト ファイルの編集] オプションを使用します。
+プロジェクト **VisualObjects.ActorService** の *ServiceManifest.xml* ファイル (PackageRoot の下) を更新する必要もあります。*CodePackage* およびサービスのバージョンを 2.0 に更新し、*ServiceManifest.xml* ファイルの対応する行を更新します。マニフェスト ファイルを変更するには、ソリューションを右クリックしてから、Visual Studio の *[マニフェスト ファイルの編集]* オプションを使用します。
 
 
 変更後、マニフェストは次のようになります (太字部分は変更個所を示します)。
@@ -56,7 +56,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 <CodePackageName="Code"Version="2.0">
 ```
 
-次に、ApplicationManifest.xml ファイル (**VisualObjects** ソリューションの **VisualObjects** プロジェクトの下に見つかります) を更新して、**VisualObjects.ActorService** プロジェクトのバージョン 2.0 が使用できるようにし、さらに、アプリケーションのバージョンも 1.0.0.0 から 2.0.0.0 に更新することが必要です。これで、ApplicationManifest.xml ファイルの対応する行は以下のようになっているはずです。
+次に、*ApplicationManifest.xml* ファイル (**VisualObjects** ソリューションの **VisualObjects** プロジェクトの下に見つかります) を更新して、**VisualObjects.ActorService** プロジェクトのバージョン 2.0 が使用できるようにし、さらに、アプリケーションのバージョンも 1.0.0.0 から 2.0.0.0 に更新することが必要です。これで、*ApplicationManifest.xml* ファイルの対応する行は以下のようになっているはずです。
 
 ```xml
 <ApplicationManifestxmlns:xsd="http://www.w3.org/2001/XMLSchema"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"ApplicationTypeName="VisualObjects"ApplicationTypeVersion="2.0.0.0"xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -65,16 +65,16 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 ```
 
 
-次に、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** を選択してプロジェクトをビルドします(コードは変更されているので、**[すべてリビルド]** を選択すると、ServiceManifest.xml と ApplicationManifest.xml に含まれている他のプロジェクトのバージョンも更新される可能性があります)。次は、**VisualObjectsApplication** を右クリックし、[Service Fabric のメニュー]、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。デプロイ可能なアプリケーション パッケージが作成されます。これで、更新されたアプリケーションをデプロイする準備は完了です。
+次に、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** を選択してプロジェクトをビルドします(コードは変更されているので、**[すべてリビルド]** を選択すると、*ServiceManifest.xml* と *ApplicationManifest.xml* に含まれている他のプロジェクトのバージョンも更新される可能性があります)。次は、***VisualObjectsApplication*** を右クリックし、[Service Fabric のメニュー]、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。デプロイ可能なアプリケーション パッケージが作成されます。これで、更新されたアプリケーションをデプロイする準備は完了です。
 
 
 ## 手順 3: 正常性ポリシーとアップグレード パラメーターの決定
 
-[アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に精通し、アップグレードのさまざまなパラメーター、タイムアウト、および適用されている正常性条件の理解を深めましょう。このチュートリアルでは、サービスの正常性評価条件を既定 (推奨値) のままにします。これには、すべてのサービスとインスタンスが、アップグレード後正常である必要があります。
+[アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に精通し、アップグレードのさまざまなパラメーター、タイムアウト、および適用されている正常性条件の理解を深めましょう。このチュートリアルでは、サービスの正常性評価条件を既定 (推奨値) のままにします。これには、すべてのサービスとインスタンスが、アップグレード後_正常_である必要があります。
 
-ただし、HealthCheckStableDuration を 60 秒間に増やしてみましょう (そうすると、次の更新ドメインにアップグレードが進む前に、少なくとも 20 秒間、サービスが正常な状態ができます)。また、UpgradeDomainTimeout を 1200 秒に、UpgradeTimeout を 3000 秒に設定しましょう。
+ただし、*HealthCheckStableDuration* を 60 秒間に増やしてみましょう (そうすると、次の更新ドメインにアップグレードが進む前に、少なくとも 20 秒間、サービスが正常な状態ができます)。また、*UpgradeDomainTimeout* を 1200 秒に、*UpgradeTimeout* を 3000 秒に設定しましょう。
 
-最後に、UpgradeFailureAction を [ロールバック] に設定しましょう。これで、アップグレード中に問題が発生した場合、Service Fabric はアプリケーションを以前のバージョンにロールバックするよう要求されます。これで、アップグレードを開始 (ステップ 4) する時点で指定されているアップグレード パラメーターは、次のようになります。
+最後に、*UpgradeFailureAction* を [ロールバック] に設定しましょう。これで、アップグレード中に問題が発生した場合、Service Fabric はアプリケーションを以前のバージョンにロールバックするよう要求されます。これで、アップグレードを開始 (ステップ 4) する時点で指定されているアップグレード パラメーターは、次のようになります。
 
 FailureAction = Rollback
 
@@ -89,9 +89,9 @@ UpgradeTimeout = 3000
 
 アプリケーションはビルドされ、アップグレードの準備は完了しています。PowerShell ウィンドウを管理者として開き、「**Get-ServiceFabricApplication**」と入力すると、デプロイされているのが **VisualObjects** のアプリケーションの種類 1.0.0.0 であることが表示されます。
 
-アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - Samples\\Services\\Stateful\\VisualObjects\\VisualObjects\\obj\\x64\\Debug。そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。タイムスタンプを確認して、最新のビルドであることを確認します (場合によってはパスを適切に変更する必要もあります)。
+アプリケーション パッケージは、Service Fabric SDK を圧縮解除した次の相対パスの下に格納されています - *Samples\\Services\\Stateful\\VisualObjects\\VisualObjects\\obj\\x64\\Debug*。そのディレクトリ内に "パッケージ" フォルダーが見つかるはずです。このフォルダーにアプリケーション パッケージが格納されます。タイムスタンプを確認して、最新のビルドであることを確認します (場合によってはパスを適切に変更する必要もあります)。
 
-次に、更新されたアプリケーション パッケージを Service Fabric ImageStore (アプリケーション パッケージが Service Fabric により保存される場所) にコピーします。ApplicationPackagePathInImageStore パラメーターから、Service Fabric にアプリケーション パッケージが見つかる場所が通知されます。"VisualObjects\_V2" に更新されたアプリケーションが次のコマンド付きで格納されています (場合によってはここでも適切にパスを変更する必要があります)。
+次に、更新されたアプリケーション パッケージを Service Fabric ImageStore (アプリケーション パッケージが Service Fabric により保存される場所) にコピーします。*ApplicationPackagePathInImageStore* パラメーターから、Service Fabric にアプリケーション パッケージが見つかる場所が通知されます。"VisualObjects\_V2" に更新されたアプリケーションが次のコマンド付きで格納されています (場合によってはここでも適切にパスを変更する必要があります)。
 
 ```powershell
 Copy-ServiceFabricApplicationPackage  -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package
@@ -115,7 +115,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-アプリケーション名は、ApplicationManifest.xml ファイルに記述されている名前と同じにしてください。Service Fabric はこの名前を使用して、アップグレードが実行されるアプリケーションを識別します。タイムアウトを短く設定しすぎている場合、問題を示すエラー メッセージが表示されることがあります。トラブルシューティングのセクションを参照するか、タイムアウトの時間を長くします。
+アプリケーション名は、*ApplicationManifest.xml* ファイルに記述されている名前と同じにしてください。Service Fabric はこの名前を使用して、アップグレードが実行されるアプリケーションを識別します。タイムアウトを短く設定しすぎている場合、問題を示すエラー メッセージが表示されることがあります。トラブルシューティングのセクションを参照するか、タイムアウトの時間を長くします。
 
 アプリケーションのアップグレード処理の進行状況は、Service Fabric エクスプローラーを使用するか、次の PowerShell コマンドを使用して監視できます: **Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects**。
 
@@ -136,4 +136,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を解決します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

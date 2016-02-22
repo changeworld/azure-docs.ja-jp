@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/08/2016"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
 
-このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。IPython Notebook、Azure Storage Explorer および AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。たとえば Azure Storage Explorer および AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
+このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。IPython Notebook、Azure ストレージ エクスプローラーおよび AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
 
 Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。実際のデータ要件に適した SQL Server VM イメージを選択してください。推奨されるイメージは、次のとおりです。
 
 - SQL Server 2012 SP2 Enterprise (小規模および中規模のデータ サイズ向け)
 - SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads (大規模、または非常に大規模なデータ サイズ向け)
 
- >[AZURE.NOTE] SQL Server 2012 SP2 Enterprise イメージには**データ ディスクが含まれていません**。データを格納するために 1 つ以上の仮想ハード ディスクを追加またはアタッチする必要があります。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
+ > [AZURE.NOTE] SQL Server 2012 SP2 Enterprise イメージには**データ ディスクが含まれていません**。データを格納するために 1 つ以上の仮想ハード ディスクを追加またはアタッチする必要があります。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
 
 ##<a name="Provision"></a>Azure クラシック ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
@@ -46,7 +46,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
     -   **[パスワードの確認]** ボックスに、パスワードを再度入力します。
     -   **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
 
-     >[AZURE.NOTE] 仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。価格については、「[VIrtual Macines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+     > [AZURE.NOTE] 仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。価格については、「[VIrtual Macines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
     右下にある次へ進む矢印をクリックして続行します。
 
@@ -119,7 +119,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 データ ディスク、つまり C ドライブ (OS ディスク) と D ドライブ (一時的なディスク) 以外のディスクが VM イメージに含まれない場合、データを格納するために 1 つ以上のデータ ディスクを追加する必要があります。SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads 用の VM イメージは、SQL Server データおよびログ ファイル用の追加のディスク付きで事前構成されています。
 
- >[AZURE.NOTE] データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
+ > [AZURE.NOTE] データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
 追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](storage-windows-attach-disk.md)」で説明されている次のような手順に従います。
 
@@ -143,7 +143,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 	<br>
 
-	 >[AZURE.TIP] Windows レジストリ キーの変更を使用するか、SQL Server Management Studio を使用して、SQL Server 認証モードを変更することができます。レジストリ キーの変更を使用して認証モードを変更するには、**[新しいクエリ]** を開始して、次のスクリプトを実行します。
+	 > [AZURE.TIP] Windows レジストリ キーの変更を使用するか、SQL Server Management Studio を使用して、SQL Server 認証モードを変更することができます。レジストリ キーの変更を使用して認証モードを変更するには、**[新しいクエリ]** を開始して、次のスクリプトを実行します。
 
 		USE master
     	go
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

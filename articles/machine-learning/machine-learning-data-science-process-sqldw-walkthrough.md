@@ -3,7 +3,7 @@
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,hangzh,weig"
+	authors="bradsev,hangzh-msft,wguo123"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016" 
-	ms.author="bradsev;hangzh;wguo123"/>
+	ms.date="02/05/2016" 
+	ms.author="bradsev;hangzh;weig"/>
 
 
 # Cortana Analytics Process の活用: SQL Data Warehouse を使用する
@@ -28,7 +28,14 @@
 
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、およびメダリオン (タクシーの一意の ID) 番号が含まれています。データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
-1. **trip\_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。次にサンプル レコードを示します: medallion,hack\_license,vendor\_id,rate\_code,store\_and\_fwd\_flag,pickup\_datetime,dropoff\_datetime,passenger\_count,trip\_time\_in\_secs,trip\_distance,pickup\_longitude,pickup\_latitude,dropoff\_longitude,dropoff\_latitude 89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171 0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066 0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002 DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388 DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+1. **trip\_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。いくつかのサンプル レコードを次に示します。
+
+		medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
+		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
+		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
+		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
+		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
+		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 
 2. **trip\_fare.csv** ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
 
@@ -62,13 +69,13 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。
 
 
-## <a name="setup"></a>Azure のデータ サイエンス環境の高度な分析のためのセット アップ
+## <a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
 
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
 
 **独自の Azure BLOB ストレージ アカウントを作成する**
 
-- 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**にできるだけ近い Azure BLOB ストレージの geo ロケーション的位置を選択します。このストレージに NYC タクシー データが格納されています。データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。 
+- 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。 
 - 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の手順に従います。以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。 
 
   - **ストレージ アカウント名**
@@ -313,7 +320,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 ![プロット #21][21]
 
->[AZURE.TIP] **独自のデータを使用する:** 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+>[AZURE.TIP] **独自のデータを使用する:** 実際のアプリケーションでオンプレミスのコンピューターにデータがある場合でも、AzCopy を使用してオンプレミスのデータをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
 	
 >[AZURE.TIP] 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
 
@@ -350,7 +357,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	-- Report number of columns in table <nyctaxi_trip>
 	SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-173、179、759 の行と 14 列を取得します。
+**出力:** 173、179、759 の行と 14 の列が取得されます。
 
 ### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
@@ -362,7 +369,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	GROUP BY medallion
 	HAVING COUNT(*) > 100
 
-クエリによって 13,369 個の medallion が返されます。
+**出力:** クエリによって、13,369 のメダリオン (タクシー) と 2013 年に完了した乗車回数を示す行で構成されるテーブルが返されます。最後の列には、完了した乗車回数が含まれます。
 
 ### 探索: medallion および hack\_license ごとの乗車回数の分布
 
@@ -373,6 +380,8 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
 	GROUP BY medallion, hack_license
 	HAVING COUNT(*) > 100
+
+**出力:** クエリによって、2013 年に 100 回を超える乗車を完了した 13,369 の車両/運転手 ID を示す 13,369 の行で構成されるテーブルが返されます。最後の列には、完了した乗車回数が含まれます。
 
 ### データ品質の評価: 経度と緯度が正しくないレコードを確認する
 
@@ -387,6 +396,8 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	OR    (pickup_longitude = '0' AND pickup_latitude = '0')
 	OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
+**出力:** クエリによって、経度フィールドまたは緯度フィールドが無効である 837,467 件の乗車が返されます。
+
 ### 探索: チップが支払われた乗車と支払われなかった乗車の分布
 
 この例では、特定の期間中 (または、1 年を対象とする場合は全データセットで) チップが支払われた乗車と支払われなかった乗車の数を確認します。この分布は、後で二項分類のモデリングで使用する二項ラベルの分布を反映しています。
@@ -397,7 +408,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	  WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
 	GROUP BY tipped
 
-クエリによって、チップが支払われた 90,447,622 件と支払われなかった 82,264,709 件というチップの頻度が返されます。
+**出力:** クエリによって、チップが支払われた 90,447,622 件と支払われなかった 82,264,709 件という 2013 年のチップの頻度が返されます。
 
 ### 探索: チップのクラス/範囲の分布
 
@@ -415,6 +426,16 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
 	GROUP BY tip_class
 
+**出力:**
+
+|tip\_class | tip\_freq |
+| --------- | -------|
+|1 | 82230915 |
+|2 | 6198803 |
+|3 | 1932223 |
+|0 | 82264625 |
+|4 | 85765 |
+
 ### 探索: 乗車距離の計算と比較
 
 この例では、pickup (乗車) と drop-off (降車) の経度と緯度を、SQL geography ポイントに変換し、SQL geography ポイントの差を使用して乗車距離を計算し、比較するためにランダムな結果のサンプルを返します。この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
@@ -430,7 +451,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	  DROP FUNCTION fnCalculateDistance
 	GO
 
-	-- User-defined function calculate the direct distance between two geographical coordinates.
+	-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
 	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 	
 	RETURNS float
@@ -510,6 +531,16 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	AND CAST(pickup_latitude AS float) BETWEEN -90 AND 90
 	AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
 	AND pickup_longitude != '0' AND dropoff_longitude != '0'
+
+**出力:** このクエリは、乗車場所と降車場所の緯度と経度、およびマイル単位の直線距離を示す (2,803,538 行で構成される) テーブルを生成します。最初の 3 つの行の結果を次に示します。
+
+|pickup\_latitude | pickup\_longitude | dropoff\_latitude |dropoff\_longitude | DirectDistance |
+|---| --------- | -------|-------| --------- | -------|
+|1 | 40\.731804 | -74.001083 | 40\.736622 | -73.988953 | .7169601222 |
+|2 | 40\.715794 | -74,010635 | 40\.725338 | -74.00399 | .7448343721 |
+|3 | 40\.761456 | -73.999886 | 40\.766544 | -73.988228 | 0\.7037227967 |
+
+
 
 ### モデルのビルド用にデータを準備する
 
@@ -805,7 +836,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 ## <a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 
-これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイメントに進む準備が整いました。データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
+これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
 1. **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
 
@@ -815,7 +846,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 
 
-モデリングの演習を開始するには、**Azure Machine Learning** ワークスペースにログインします。Machine Learning ワークスペースをまだ作成していない場合は、「[Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)」を参照してください。
+モデリングの演習を開始するには、**Azure Machine Learning ワークスペース**にログインします。Machine Learning ワークスペースをまだ作成していない場合は、「[Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)」を参照してください。
 
 1. Azure Machine Learning の使用を開始するには、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
@@ -850,7 +881,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 5. *SQL ユーザー名*を **[サーバーのユーザー アカウント名]** に、*パスワード*を **[サーバーのユーザー アカウントのパスワード]** に入力します。
 
-6. **[サーバー証明書を受け入れる]** オプションにチェックを入れます。
+6. **[サーバー証明書を受け入れる]** オプションをオンにします。
 
 7. **データベース クエリ**テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
@@ -858,9 +889,9 @@ SQL Data Warehouse データベースから直接データを読み取る、二�
 
 ![Azure ML トレーニング][10]
 
-> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **tip\_class**、**tip\_amount**、**total\_amount** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
-> 不要な列またはターゲット リークを除外するために、[プロジェクトの列][project-columns]モジュールまたは[メタデータ エディター][metadata-editor]を使用できます。詳細については、「[プロジェクト列][project-columns]」と「[メタデータ エディター][metadata-editor]」リファレンス ページを参照してください。
+> 不要な列またはターゲット リークを除外するために、[プロジェクト列][project-columns]モジュールまたは[メタデータ エディター][metadata-editor]を使用できます。詳細については、「[プロジェクト列][project-columns]」と「[メタデータ エディター][metadata-editor]」リファレンス ページを参照してください。
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
 
@@ -933,4 +964,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

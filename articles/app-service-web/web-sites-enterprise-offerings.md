@@ -47,8 +47,8 @@ App Service Web Apps は、拡張性と信頼性に優れ、管理やパッチ�
 
 別のアプローチとしては、オンプレミスへの既存の投資を活用する方法があります。シナリオ例の人件費システムでは、データ ストアを社内のインフラストラクチャ内部に保持したいと思うかもしれません。これは、内部システム (報告書、給与支払簿、請求書の作成など) との統合のため、または IT ガバナンスを満足させるためという可能性もあります。Web Apps では、オンプレミスのインフラストラクチャへの接続を可能にするために多くの方法が用意されています。
 
-- [App Service Environment](../app-service-app-service-environment-intro.md) - App Service Environment (ASE) は、Microsoft Azure App Service に最近追加された新しい Premium 機能です。ASE が提供する完全に分離された専用の環境により、Azure App Service アプリを高スケールで安全に実行しつつ、分離およびセキュリティで保護されたネットワーク アクセスを実現できます。   
-- [ハイブリッド接続](../integration-hybrid-connection-overview.md) – ハイブリッド接続は Microsoft Azure BizTalk Services の機能で、Web Apps が、たとえば SQL Server、MySQL、Web API、カスタム Web サービスなど、オンプレミスのリソースに安全に接続できるようにします。 
+- [App Service Environment](app-service-app-service-environment-intro.md) - App Service Environment (ASE) は、Microsoft Azure App Service に最近追加された新しい Premium 機能です。ASE が提供する完全に分離された専用の環境により、Azure App Service アプリを高スケールで安全に実行しつつ、分離およびセキュリティで保護されたネットワーク アクセスを実現できます。   
+- [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) – ハイブリッド接続は Microsoft Azure BizTalk Services の機能で、Web Apps が、たとえば SQL Server、MySQL、Web API、カスタム Web サービスなど、オンプレミスのリソースに安全に接続できるようにします。 
 - [Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Web Apps と Azure Virtual Network の統合によって、Web アプリを Azure Virtual Network に接続できます。同様に Azure Virtual Network を、サイト間 VPN 経由でオンプレミスのインフラストラクチャに接続することも可能です。 
 
 次の図は、オンプレミスのリソースに対する接続オプションを備えた高度なソリューションの例を示しています。最初の例は、このソリューションを実現するために Azure App Service の標準の機能を使用する方法を示しており、2 番目の例は、同じソリューションを実現するために Premium サービスの App Service Environment を使用する方法を示しています。
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

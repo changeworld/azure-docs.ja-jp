@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 # テンプレートを使用して NSG を作成する方法
@@ -29,7 +29,7 @@
 
 ## テンプレート ファイルの NSG リソース
 
-[サンプル テンプレート](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/)を表示してダウンロードすることができます。
+[サンプル テンプレート](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json)を表示してダウンロードすることができます。
 
 以下のセクションは、上記のシナリオに基づいたフロントエンド NSG の定義を示します。
 
@@ -100,7 +100,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-3. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroup** コマンドレットを実行します。
+3. テンプレートを使用してリソース グループを作成するには、**`New-AzureRmResourceGroup`** コマンドレットを実行します。
 
 		New-AzureRmResourceGroup -Name TestRG -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' `
@@ -146,8 +146,8 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 Azure CLI を使用して ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+2. 次に示すように、**`azure config mode`** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
@@ -155,7 +155,7 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 		info:    New mode is arm
 
-4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**azure group deployment create** コマンドレットを実行して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+4. **`azure group deployment create`** コマンドレットを実行し、上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
 		azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
 
@@ -181,4 +181,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
 	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -19,7 +19,7 @@
 
 この記事では、Azure で [Application Insights](app-insights-overview.md) リソースを自動的に作成する方法を説明します。たとえば、ビルド プロセスの一部として実行します。Application Insights の基本的なリソースとともに、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)、[アラートの設定](app-insights-alerts.md)、およびその他の Azure リソースを作成できます。
 
-これらのリソースを作成するために重要となるのが、[Azure リソース マネージャー](powershell-azure-resource-manager.md) のJSON テンプレートです。簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
+これらのリソースを作成するために重要となるのが、[Azure リソース マネージャー](../powershell-azure-resource-manager.md) のJSON テンプレートです。簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
 ## 1 回限りのセットアップ
 
@@ -100,7 +100,7 @@
 
 ## テンプレートのパラメーター化
 
-ここでは、特定の名前をパラメーターで置き換える必要があります。[テンプレートをパラメーター化](resource-group-authoring-templates.md)するには、[ヘルパー関数のセット](resource-group-template-functions.md)を使用して、式を記述します。
+ここでは、特定の名前をパラメーターで置き換える必要があります。[テンプレートをパラメーター化](../resource-group-authoring-templates.md)するには、[ヘルパー関数のセット](../resource-group-template-functions.md)を使用して、式を記述します。
 
 文字列の一部のみをパラメーター化することはできません。そのため、`concat()` を使用して、文字列を構築します。
 
@@ -311,4 +311,13 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 ```
 
-<!---HONumber=AcomDC_0128_2016-->
+## 関連項目
+
+自動化に関するその他の記事:
+
+* [Application Insights リソースを作成するための PowerShell スクリプト](app-insights-powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法
+* [PowerShell を使用して Application Insights のアラートを設定する](app-insights-powershell-alerts.md)
+* [Azure 診断を Application Insights に送信する](app-insights-powershell-azure-diagnostics.md)
+* [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+
+<!---HONumber=AcomDC_0211_2016-->

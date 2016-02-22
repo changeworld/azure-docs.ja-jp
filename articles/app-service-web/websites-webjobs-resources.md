@@ -34,7 +34,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Azure の Web ジョブはとても役に立ちます。今すぐすぐ使用を開始してください。](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Troy Hunt によるブログの投稿です。)
 * [Azure Web ジョブの機能](/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)
-* [Microsoft Patterns and Practices によるバック グラウンド ジョブのガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Background-Jobs.md)
+* [Microsoft Patterns and Practices によるバック グラウンド ジョブのガイダンス](/documentation/articles/best-practices-background-jobs/)
 * [Microsoft Azure Web ジョブ SDK の 1.1.0 RTM の発表](/blog/azure-webjobs-sdk-1-1-0-rtm/)
 * [Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk-get-started.md)
 * [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
@@ -139,4 +139,4 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [Twitter](http://twitter.com/)。ハッシュタグ #AzureWebJobs を使用してください。
 * [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

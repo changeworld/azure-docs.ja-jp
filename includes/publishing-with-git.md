@@ -2,13 +2,13 @@
 
 この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket、CodePlex、Dropbox、GitHub、Mercurial などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的なデプロイメントに TFS を使用する方法の詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信]」を参照してください。
 
-> [AZURE.NOTE]この記事に記載されている Git コマンドの多くは、[Mac および Linux 用 Azure コマンド ライン ツール](/develop/nodejs/how-to-guides/command-line-tools/)を使用して Web アプリを作成する際に自動的に実行されます。
+> [AZURE.NOTE] この記事に記載されている Git コマンドの多くは、[Mac および Linux 用 Azure コマンド ライン ツール](/develop/nodejs/how-to-guides/command-line-tools/)を使用して Web アプリを作成する際に自動的に実行されます。
 
 ## <a id="Step1"></a>手順 1: Git のインストール
 
 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
-> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
+> [AZURE.NOTE] オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
 ## <a id="Step2"></a>手順 2: ローカル リポジトリの作成
 
@@ -42,7 +42,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 
 		git add index.html 
 
-	> [AZURE.NOTE]git コマンドのヘルプを見つけるには、コマンドの後に「-help」または「--help」と入力します。たとえば、add コマンドのパラメーターのオプションを見つけるには、「git add -help」と入力します。より詳細なヘルプを見つけるには、「git add --help」と入力します。
+	> [AZURE.NOTE] git コマンドのヘルプを見つけるには、コマンドの後に「-help」または「--help」と入力します。たとえば、add コマンドのパラメーターのオプションを見つけるには、「git add -help」と入力します。より詳細なヘルプを見つけるには、「git add --help」と入力します。
 
 4. 次に、次のコマンドを使用して、リポジトリへの変更をコミットします。
 
@@ -88,7 +88,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 
 		git remote add azure https://username@needsmoregit.scm.azurewebsites.net:443/NeedsMoreGit.git
 
-    > [AZURE.NOTE]この **remote** コマンドは、名前付きの参照をリモート リポジトリに追加します。この例では、Web アプリのリポジトリに「azure」という名前の参照を作成しています。
+    > [AZURE.NOTE] この **remote** コマンドは、名前付きの参照をリモート リポジトリに追加します。この例では、Web アプリのリポジトリに「azure」という名前の参照を作成しています。
 
 1. コマンド ラインで次のコマンドを使用して、ローカル リポジトリから "azure" リモートに現在のリポジトリのコンテンツをプッシュします。
 
@@ -108,7 +108,7 @@ Web Apps では、さまざまなプログラミング言語で作成された�
 		To https://username@needsmoregit.scm.azurewebsites.net:443/NeedsMoreGit.git
 		* [new branch]		master -> master
 
-	> [AZURE.NOTE]Web アプリに対して作成したリポジトリでは、プッシュ要求のターゲットがそのリポジトリの <strong>master</strong> 分岐であると想定しています。そのため、この分岐が Web アプリのコンテンツとして使用されます。
+	> [AZURE.NOTE] Web アプリに対して作成したリポジトリでは、プッシュ要求のターゲットがそのリポジトリの <strong>master</strong> 分岐であると想定しています。そのため、この分岐が Web アプリのコンテンツとして使用されます。
 
 2. Azure ポータルの Web アプリのブレードに戻ります。**[デプロイが見つかりませんでした]** が **[アクティブなデプロイ]** に変わり、直近のプッシュのログ エントリが表示されます。
 
@@ -150,7 +150,7 @@ GitHub、CodePlex、BitBucket からファイルを展開するには、これ�
   
 	![](./media/publishing-with-git/azure7-setup-github-configure.png)
 
-	> [AZURE.NOTE]GitHub または Bitbucket を使用して継続的なデプロイメントを有効にする場合、パブリック プロジェクトとプライベート プロジェクトの両方が表示されます。
+	> [AZURE.NOTE] GitHub または Bitbucket を使用して継続的なデプロイメントを有効にする場合、パブリック プロジェクトとプライベート プロジェクトの両方が表示されます。
 
 Azure によって、選択したリポジトリとの関連付けが作成され、指定された分岐からファイルがプルされます。このプロセスが完了したら、Web アプリのブレードの **[デプロイ]** セクションに、デプロイが成功したことを示す** [アクティブなデプロイ]** メッセージが表示されます。
 
@@ -182,11 +182,9 @@ Visual Studio ソリューションを Web Apps にプッシュする手順は�
 		_app/
 		nuget.exe
 
-	>[AZURE.NOTE]GitHub を使用する場合、リポジトリの作成時に、必要に応じて Visual Studio 固有の .gitignore ファイルを生成できます。これには、すべての一般的な一時ファイル、ビルド結果などが含まれます。ファイルは、特定のニーズに合わせてカスタマイズできます。
+	>[AZURE.NOTE] GitHub を使用する場合、リポジトリの作成時に、必要に応じて Visual Studio 固有の .gitignore ファイルを生成できます。これには、すべての一般的な一時ファイル、ビルド結果などが含まれます。ファイルは、特定のニーズに合わせてカスタマイズできます。
 
 -	.sln ファイルをリポジトリ ルートに入れて、ソリューションのディレクトリ ツリー全体をリポジトリに追加します。
-
--	Visual Studio ソリューションで、[NuGet パッケージの復元を有効にして](http://docs.nuget.org/Consume/Package-Restore)、Visual Studio が自動的に失われたパッケージを復元できるよにします。
 
 説明のとおりにリポジトリを設定し、いずれかのオンライン Git リポジトリからの継続的な発行のために Azure の Web アプリを構成したら、Visual Studio で ASP.NET アプリケーションをローカルで開発し、オンライン Git リポジトリに変更をプッシュするだけで、コードを継続的にデプロイできます。
 
@@ -213,7 +211,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: ホスト 'hostname' を解決できませんでした
+**症状**: Couldn't resolve host 'hostname'
 
 **原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
@@ -221,7 +219,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: refs がなく、何も指定されていません。何も処理を行いません。'master' などの分岐を指定する必要があるものと思われます.
+**症状**: No refs in common and none specified; doing nothing.Perhaps you should specify a branch such as 'master'.
 
 **原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
@@ -231,7 +229,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: src refspec [branchname] と一致するものがありません。
+**症状**: src refspec [branchname] does not match any.
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
@@ -265,7 +263,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 * [Git に関するドキュメント]
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -297,4 +295,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

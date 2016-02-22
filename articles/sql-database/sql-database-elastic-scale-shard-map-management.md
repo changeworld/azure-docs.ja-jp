@@ -13,12 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="02/05/2016" 
 	ms.author="ddove;sidneyh"/>
 
 # シャード マップの管理
 
-[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用し、シャード化されたアプリケーションを管理します。シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が[**シャード マップ**](sql-database-elastic-scale-glossary.md)に保持されます。これらのマップの構造を理解することは、シャード マップ管理に不可欠です。
+シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が[**シャード マップ**](sql-database-elastic-scale-glossary.md)に保持されます。これらのマップの構造を理解することは、シャード マップ管理に不可欠です。Azure SQL Database に対して、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)内で見つかった [ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)を使用して、 シャード マップを管理します。
+ 
 
 ## シャード マップとシャードのマッピング
  
@@ -38,7 +39,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 シャード マップは、**個々のシャーディング キー値のリスト**または**シャーディング キー値の範囲**を使用して作成できます。
 
 ###リスト シャード マップ
-**シャード**には、**シャードレット**が含まれます。シャードレットとシャードの間のマッピングは、シャード マップによって管理されます。**リスト シャード マップ**は、シャードレットを識別する個々のキー値と、シャードとして動作するデータベースとの間の関連付けのことです。**リストのマッピング**は明示的であり (たとえば、キー 1 をデータベース A にマップする)、異なるキー値を同じデータベースにマップできます (たとえば、キー値 3 と 6 の両方がデータベース B を参照する)。
+**シャード**には、**シャードレット**が含まれます。シャードレットとシャードの間のマッピングは、シャード マップによって管理されます。**リスト シャード マップ**は、シャードレットを識別する個々のキー値と、シャードとして動作するデータベースとの間の関連付けのことです。**リスト マッピング**は明示的であり、異なるキー値を同じデータベースにマップすることができます。たとえば、キー 1 がデータベース A にマップし、キー値 3 と 6 の両方がデータベース B を参照します。
 
 | キー | シャードの場所 |
 |-----|----------------|
@@ -66,22 +67,24 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 ## シャード マップ マネージャー 
 
-クライアント ライブラリでは、シャード マップ マネージャーはシャード マップのコレクションです。**ShardMapManager** .Net オブジェクトによって管理されるデータは、次の 3 つの場所に保持されます。
+クライアント ライブラリでは、シャード マップ マネージャーはシャード マップのコレクションです。**ShardMapManager** インスタンスによって管理されるデータは、次の 3 つの場所に保持されます。
 
-1. **グローバル シャード マップ (GSM)**: **ShardMapManager** を作成するときは、そのすべてのシャード マップとマッピングのリポジトリとして機能するデータベースを指定します。この情報を管理するために、特殊なテーブルとストアド プロシージャが自動的に作成されます。通常、これは小さなデータベースで簡単にアクセスできますが、アプリケーションの他の目的には使用されません。このテーブルは、**\_\_ShardManagement** という名前の特殊なスキーマに含まれます。
+1. **グローバル シャード マップ (GSM)**: すべてのシャード マップとマッピングのリポジトリとして機能するデータベースを指定します。この情報を管理するために、特殊なテーブルとストアド プロシージャが自動的に作成されます。通常、これは小さなデータベースで簡単にアクセスでき、アプリケーションの他の目的には使用されません。このテーブルは、**\_\_ShardManagement** という名前の特殊なスキーマに含まれます。
 
-2. **ローカル シャード マップ (LSM)**: シャード マップ内でシャードとして指定されたすべてのデータベースは、シャードに固有のシャード マップ情報を格納および管理するためのいくつかの小さなテーブルと特殊なストアド プロシージャを含むように変更されます。この情報は GSM 内の情報を冗長化したものになりますが、これにより、アプリケーションは、GSM に負荷をかけることなくキャッシュされたシャード マップ情報を検証できます。アプリケーションは、LSM を使用して、キャッシュされたマッピングがまだ有効であるかどうかを判定できます。各シャードの LSM に対応するテーブルは、スキーマ **\_\_ShardManagement** に含まれます。
+2. **ローカル シャード マップ (LSM)**: シャードとして指定されたすべてのデータベースは、シャードに固有のシャード マップ情報を格納と管理するためのいくつかの小さなテーブルと特殊なストアド プロシージャを含むように変更されます。この情報は GSM 内の情報を冗長化したもので、これにより、アプリケーションは、GSM に負荷をかけることなくキャッシュされたシャード マップ情報を検証できます。アプリケーションは、LSM を使用して、キャッシュされたマッピングがまだ有効であるかどうかを判定できます。各シャードの LSM に対応するテーブルも、スキーマ **\_\_ShardManagement** に含まれます。
 
 3. **アプリケーション キャッシュ**: **ShardMapManager** オブジェクトにアクセスする各アプリケーション インスタンスは、そのマッピングのローカル メモリ内キャッシュを保持します。ここには、最近取得されたルーティング情報が格納されます。
 
 ## ShardMapManager の作成
-アプリケーションの **ShardMapManager** オブジェクトは、ファクトリ パターンを使用してインスタンス化されます。**ShardMapManagerFactory.GetSqlShardMapManager** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
+
+[ファクトリ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx)パターンを使用して **ShardMapManager** オブジェクトが作成されます。**[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
 
 **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。**ShardMapManager** には、任意の数のシャード マップを含めることができます。多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
 
-次のコードでは、アプリケーションは、既存の **ShardMapManager** を開こうとします。グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリはこれを作成します。
+次のコードでは、アプリケーションは、[TryGetSqlShardMapManager メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)を使用して既存の **ShardMapManager** を開こうとします。グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは [CreateSqlShardMapManager メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)を使用してこれを作成します。
 
-    // Try to get a reference to the Shard Map Manager via the Shard Map Manager database.  
+    // Try to get a reference to the Shard Map Manager 
+ 	// via the Shard Map Manager database.  
     // If it doesn't already exist, then create it. 
     ShardMapManager shardMapManager; 
     bool shardMapManagerExists = ShardMapManagerFactory.TryGetSqlShardMapManager(
@@ -117,9 +120,9 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 ### 影響を受けるのはメタデータのみ 
 
-**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。
+**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。 「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
 
-## シャード マップの設定: 例
+## シャード マップの設定の例
  
 特定のシャード マップを設定する場合の処理手順を次に示します。このコードは、次の手順を実行します。
 
@@ -127,7 +130,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 2. 2 つの異なるシャードのメタデータがシャード マップに追加されます。 
 3. さまざまなキー範囲マッピングが追加され、シャード マップ全体の内容が表示されます。 
 
-このコードでは、予期しないエラーが発生した場合に備えてメソッド全体を安全に再実行できるようになっています。つまり、各要求は、シャードまたはマッピングの作成を試みる前に、シャードまたはマッピングが既に存在するかどうかを確認します。次のコードでは、**sample\_shard\_0**、**sample\_shard\_1**、**sample\_shard\_2** という名前のデータベースが文字列 **shardServer** によって参照されるサーバーに既に作成されているものと想定しています。
+このコードは、エラーが発生した場合にメソッドを再実行できるように記述されています。各要求は、シャードまたはマッピングを作成しようとする前に、それらが既に存在するかどうかをテストします。このコードでは、**sample\_shard\_0**、**sample\_shard\_1**、**sample\_shard\_2** という名前のデータベースが文字列 **shardServer** によって参照されるサーバーに既に作成されているものと想定しています。
 
     public void CreatePopulatedRangeMap(ShardMapManager smm, string mapName) 
         {            
@@ -140,16 +143,26 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
             } 
 
             Shard shard0 = null, shard1=null; 
-            // check if shard exists and if not, 
+            // Check if shard exists and if not, 
             // create it (Idempotent / tolerant of re-execute) 
-            if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_0"), out shard0)) 
+            if (!sm.TryGetShard(new ShardLocation(
+	                                 shardServer, 
+	                                 "sample_shard_0"), 
+	                                 out shard0)) 
             { 
-                Shard0 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_0")); 
+                Shard0 = sm.CreateShard(new ShardLocation(
+	                                        shardServer, 
+	                                        "sample_shard_0")); 
             } 
 
-            if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_1"), out shard1)) 
+            if (!sm.TryGetShard(new ShardLocation(
+	                                shardServer, 
+	                                "sample_shard_1"), 
+	                                out shard1)) 
             { 
-                Shard1 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_1"));  
+                Shard1 = sm.CreateShard(new ShardLocation(
+	                                         shardServer, 
+	                                        "sample_shard_1"));  
             } 
 
             RangeMapping<long> rmpg=null; 
@@ -158,38 +171,53 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
             // create it (Idempotent / tolerant of re-execute) 
             if (!sm.TryGetMappingForKey(0, out rmpg)) 
             { 
-                sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                    (new Range<long>(0, 50), shard0, MappingStatus.Online)); 
+                sm.CreateRangeMapping(
+	                      new RangeMappingCreationInfo<long>
+	                      (new Range<long>(0, 50), 
+	                      shard0, 
+	                      MappingStatus.Online)); 
             } 
 
             if (!sm.TryGetMappingForKey(50, out rmpg)) 
             { 
-                sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                    (new Range<long>(50, 100), shard1, MappingStatus.Online)); 
+                sm.CreateRangeMapping(
+	                     new RangeMappingCreationInfo<long> 
+                         (new Range<long>(50, 100), 
+	                     shard1, 
+	                     MappingStatus.Online)); 
             } 
 
             if (!sm.TryGetMappingForKey(100, out rmpg)) 
             { 
-                sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                    (new Range<long>(100, 150), shard0, MappingStatus.Online)); 
+                sm.CreateRangeMapping(
+	                     new RangeMappingCreationInfo<long>
+                         (new Range<long>(100, 150), 
+	                     shard0, 
+	                     MappingStatus.Online)); 
             } 
 
             if (!sm.TryGetMappingForKey(150, out rmpg)) 
             { 
-                sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                    (new Range<long>(150, 200), shard1, MappingStatus.Online)); 
+                sm.CreateRangeMapping(
+	                     new RangeMappingCreationInfo<long> 
+                         (new Range<long>(150, 200), 
+	                     shard1, 
+	                     MappingStatus.Online)); 
             } 
 
             if (!sm.TryGetMappingForKey(200, out rmpg)) 
             { 
-               sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
-                   (new Range<long>(200, 300), shard0, MappingStatus.Online)); 
+               sm.CreateRangeMapping(
+	                     new RangeMappingCreationInfo<long> 
+                         (new Range<long>(200, 300), 
+	                     shard0, 
+	                     MappingStatus.Online)); 
             } 
 
             // List the shards and mappings 
             foreach (Shard s in sm.GetShards()
-                                    .OrderBy(s => s.Location.DataSource)
-                                    .ThenBy(s => s.Location.Database))
+                         .OrderBy(s => s.Location.DataSource)
+                         .ThenBy(s => s.Location.Database))
             { 
                Console.WriteLine("shard: "+ s.Location); 
             } 
@@ -201,15 +229,15 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
             } 
         } 
  
-別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。[こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)で、いくつかのPowerShell のサンプルを入手できます。
+別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。 [こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)で、いくつかのPowerShell のサンプルを入手できます。
 
 シャード マップを設定した後は、データ アクセス アプリケーションを作成するか、またはマップに適合させることができます。**マップのレイアウト**を変更する必要があるまで、マップの設定または操作を再度行う必要はありません。
 
 ## データ依存ルーティング 
 
-シャード マップ マネージャーを使用するのは、ほとんどの場合、アプリに固有のデータ操作を実行するためのデータベース接続を必要とするアプリケーションです。シャード化されたアプリケーションでは、これらの接続を適切なターゲット データベースに関連付けする必要があります。これを**データ依存ルーティング**といいます。このようなアプリケーションの場合は、GSM データベースに対する読み取り専用アクセス権限を持つ資格情報を使用してファクトリからシャード マップ マネージャー オブジェクトをインスタンス化します。後で個々の接続要求により、適切なシャード データベースに接続するために必要な資格情報が提供されます。
+シャード マップ マネージャーは、ほとんどの場合、アプリに固有のデータ操作を実行するためのデータベース接続を必要とするアプリケーションで使用されます。これらの接続は、正しいデータベースに関連付けられている必要があります。これを**データ依存ルーティング**といいます。このようなアプリケーションの場合は、GSM データベースに対する読み取り専用アクセス権限を持つ資格情報を使用してファクトリからシャード マップ マネージャー オブジェクトをインスタンス化します。後で個々の接続要求により、適切なシャード データベースに接続するために必要な資格情報が提供されます。
 
-(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションはマップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。
+(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションはマップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」を参照してください。
 
 詳細については、「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。
 
@@ -219,23 +247,23 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 これらのメソッドは、シャード化データベース環境内のデータの全体的な分散状況を変更するために使用できるビルド ブロックとして連携します。
 
-* シャードを追加または削除するには: **CreateShard** と **DeleteShard** を使用します。 
+* シャードを追加または削除するには: [Shardmap クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx)の **[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)** と **[DeleteShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx)** を使用します。 
     
     これらの操作を実行するには、サーバーとターゲット シャードを表すデータベースが既に存在している必要があります。これらのメソッドは、データベース自体には作用せず、シャード マップ内のメタデータのみに作用します。
 
-* シャードにマップされるポイントまたは範囲を作成または削除するには: **CreateRangeMapping**、**DeleteMapping**、**CreatePointMapping** を使用します。
+* シャードにマップされるポイントまたは範囲を作成または削除するには: **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)**、[RangeShardMapping クラス](https://msdn.microsoft.com/library/azure/dn807318.aspx)の **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)**、[ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx) の **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)** を使用します。
     
     多くの異なるポイントまたは範囲を同じシャードにマップできます。これらのメソッドは、メタデータにのみ作用し、シャードに既に存在するデータには作用しません。**DeleteMapping** 操作に合わせてデータをデータベースから削除する必要がある場合は、これらのメソッドを組み合わせてこれらの操作を別個に実行する必要があります。
 
-* 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには: **SplitMapping** と **MergeMappings** を使用します。
+* 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには: **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** と **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)** を使用します。
 
     分割操作とマージ操作を行っても、**キー値がマップされているシャードは変更されない**ことに注意してください。分割操作を実行すると、既存の範囲が 2 つの部分に分割されます。このとき、どちらの部分も同じシャードにマップされたままになります。マージ操作を実行すると、同じシャードに既にマップされている 2 つの隣接する範囲が 1 つの範囲に結合されます。シャード間でのポイントまたは範囲自体の移動は、実際のデータの移動と組み合わせて **UpdateMapping** を使用して調整する必要があります。エラスティック データベース ツールの一部である **Split/Merge** サービスを使用すると、データの移動が必要な場合にシャード マップの変更をデータの移動と連携させることができます。
 
-* 個々のポイントまたは範囲を別のシャードに再マップ (移動) するには: **UpdateMapping** を使用します。
+* 個々のポイントまたは範囲を別のシャードに再マップ (移動) するには: **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)** を使用します。
 
     データは **UpdateMapping** 操作に合わせてシャード間で移動することが必要になる場合があるため、これらのメソッドを使いながら移動操作を別個に実行する必要があります。
 
-* マッピングをオンラインまたはオフラインにするには: **MarkMappingOffline** と **MarkMappingOnline** を使用して、マッピングのオンライン ステータスを制御します。
+* マッピングをオンラインまたはオフラインにするには: **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** と **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** を使用して、マッピングのオンライン ステータスを制御します。
 
     マッピングが "オフライン" 状態のときは、シャード マッピングに対して特定の操作のみを実行できます (**UpdateMapping**、**DeleteMapping** など)。マッピングがオフラインのとき、そのマッピングに含まれるキーに基づくデータに依存する要求はエラーを返します。さらに、範囲が初めてオフラインになったときは、変更が加えられている範囲に対するクエリによって一貫性のない結果または不完全な結果が生成されるのを防ぐために、影響を受けるシャードへのすべての接続が自動的に強制終了されます。
 
@@ -254,4 +282,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

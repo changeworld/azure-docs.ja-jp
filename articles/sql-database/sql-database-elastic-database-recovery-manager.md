@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="02/08/2016" 
 	ms.author="ddove"/>
 
 # RecoveryManager クラスを使用したシャード マップに関する問題の解決
@@ -32,18 +32,18 @@ RecoveryManager クラスは、[Elastic Database クライアント ライブラ
 
 ## Recovery Manager を使用する理由
 
-シャード化データベース環境には、多数のデータベースがあります。場合によっては、多くの論理サーバーをまたいで多数のデータベースが存在することがあります。各サーバーには多数のデータベースが含まれており、シングルテナント ソリューションのテナントごとに 1 つずつデータベースがあります。各データベースはシャード マップでマッピングされるため、呼び出しを適切なサーバーとデータベースに正確にルーティングできます。データベースは、シャーディング キーに従って追跡されます。各シャードにはキー値の範囲が割り当てられます。たとえば、あるシャーディング キーは、"D" ～ "F" の顧客名を表します。 すべてのシャード (データベース) のマッピングとそのマッピング範囲は、グローバル シャード マップに保持されます。各データベースには、シャードに属している範囲のマップも保持されます。これをローカル シャード マップと呼びます。LSM は、キャッシュされたデータの検証に使用されます (アプリがシャードに接続すると、すばやく取得できるようにマッピングがアプリにキャッシュされます。LSM はこのマッピングを検証します)。
+シャード化データベース環境では、データベースごとに 1 つのテナントがあり、サーバーごとに多くのデータベースがあります。また、環境に多くのサーバーが存在する場合もあります。各データベースはシャード マップでマッピングされるため、呼び出しを適切なサーバーとデータベースにルーティングできます。データベースは、**シャーディング キー**に従って追跡されます。各シャードには**キー値の範囲**が割り当てられます。たとえば、あるシャーディング キーは、"D" ～ "F" の顧客名を表します。 すべてのシャード (データベース) のマッピングとそのマッピング範囲は、**グローバル シャード マップ (GSM)** に保持されます。各データベースには、シャードに属している範囲のマップも保持されます。これを**ローカル シャード マップ (LSM)** と呼びます。アプリがシャードに接続すると、すばやく取得できるようにマッピングがアプリにキャッシュされます。LSM は、キャッシュされたデータの検証に使用されます
 
 GSM と LSM は、次の理由により、同期されなくなる可能性があります。
 
-1. 範囲が使用されていないと思われるシャードの削除またはシャードの名前変更によって発生する不整合。シャードを削除すると、**孤立したシャード マッピング**が発生します。データベースの名前を変更した場合も、同様に孤立したシャード マッピングが発生します。目的に応じて、シャードの削除が必要になることもあれば、単にシャードの場所を更新するだけで済むこともあります。 
-2. geo フェールオーバー イベントの発生。続行するには、シャード マップ内のすべてのシャードのサーバー名、データベース名、シャード マッピングの詳細を更新する必要があります。geo フェールオーバーが発生した場合に備えて、フェールオーバー ワークフロー内でこのような復旧ロジックを自動化しておく必要があります。復旧操作を自動化すると、geo 対応データベースを円滑に管理でき、ユーザーによる手動操作もなくすことができます。
+1. 範囲が使用されていないと思われる範囲のシャードの削除またはシャードの名前変更。シャードを削除すると、**孤立したシャード マッピング**が発生します。同様に、データベースの名前を変更した場合も、孤立したシャード マッピングが発生します。変更の目的に応じて、シャードの削除が必要になることもあれば、シャードの場所を更新するだけで済むこともあります。削除されたデータベースを復元するには、「[過去のある時点へのデータベースの復元、削除したデータベースの復元、またはデータ センターの障害からの回復](sql-database-troubleshoot-backup-and-restore.md)」をご覧ください。
+2. geo フェールオーバー イベントの発生。続行するには、アプリケーションのシャード マップ マネージャーのサーバー名とデータベース名を更新し、シャード マップ内のすべてのシャードのシャード マッピングの詳細を更新する必要があります。geo フェールオーバーが発生した場合に備えて、フェールオーバー ワークフロー内でこのような復旧ロジックを自動化しておく必要があります。復旧操作を自動化すると、geo 対応データベースを円滑に管理でき、ユーザーによる手動操作もなくすことができます。
 3. シャード化データベースまたは ShardMapManager データベースが以前の時点に復元された。
 
 Azure SQL Database の Elastic Database ツール、geo レプリケーション、および復元の詳細については、次のページを参照してください。
 
-* [Azure SQL Database の Elastic Database 機能](sql-database-elastic-scale-introduction.md) 
-* [Azure SQL Database の継続性](sql-database-business-continuity.md) 
+* [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md) 
+* [ビジネス継続性のための設計](sql-database-business-continuity-design.md)
 * [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)  
 * [ShardMap 管理](sql-database-elastic-scale-shard-map-management.md)
 
@@ -68,9 +68,13 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 **重要**: この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。上記の方法では、移動される範囲のデータはチェックされないため、コード内にチェックを含めることが最善です。
 
-次の例では、RecoveryManager を使用して、シャード マップからシャードを削除します。シャード マップには、シャードを削除する前の GSM 内のシャードの場所が反映されます。シャードが削除されたため、これは意図的な操作であり、シャーディング キー範囲が使用されなくなったと見なされます。意図した操作でない場合は、ポイントインタイム リストアを実行して、以前の時点からシャードを復元できます (その場合、以下のセクションで、シャードの不整合の検出について確認してください)。 データベースの削除は意図的な操作であることを前提とするため、最終的なクリーンアップ管理操作は、シャード マップ マネージャーでシャードのエントリを削除することです。これによって、アプリケーションが誤って予期しない範囲に情報を書き込むことがなくなります。
-	
+次の例では、シャードをシャード マップから削除します。
+
 	rm.DetachShard(s.Location, customerMap); 
+
+マップには、シャードを削除する前の GSM 内におけるシャードの場所が反映されます。シャードが削除されたため、これは意図的な操作であり、シャーディング キー範囲が使用されなくなったと見なされます。意図した操作でない場合は、ポイントインタイム リストアを実行して、以前の時点からシャードを復元できます。(その場合、以下のセクションで、シャードの不整合の検出について確認してください)。 復元するには、「[過去のある時点へのデータベースの復元、削除したデータベースの復元、またはデータ センターの障害からの回復](sql-database-troubleshoot-backup-and-restore.md)」をご覧ください。
+
+データベースの削除は意図的な操作であることを前提とするため、最終的なクリーンアップ管理操作は、シャード マップ マネージャーでシャードのエントリを削除することです。これによって、アプリケーションが誤って予期しない範囲に情報を書き込むことがなくなります。
 
 ## マッピングの相違点を検出するには 
 
@@ -78,18 +82,19 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 
 	rm.DetectMappingDifferences(location, shardMapName);
 
-* *location* パラメーターはシャードの場所、具体的には、シャードのサーバー名とデータベース名です。 
+* *location* では、サーバー名とデータベース名を指定します。 
 * *shardMapName* パラメーターは、シャード マップの名前です。これは、複数のシャード マップが同じシャード マップ マネージャーによって管理されている場合のみ必須です。省略可能。 
 
 ## マッピングの相違点を解決するには
 
 [ResolveMappingDifferences メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx)を実行すると、シャード マップ (ローカルとグローバルのいずれか) のうち 1 つが唯一の情報源として選択され、両方のシャード マップ (GSM および LSM) でマッピングが調整されます。
 
-	ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution);
+	ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    
 * *RecoveryToken* パラメーターには、特定のシャードの GSM と LSM のマッピングの相違点を列挙します。 
 
-* [MappingDifferenceResolution 列挙体](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx)は、シャード マッピングの相違点を解決するためのメソッドを指定するために使用します。LSM に正確なマッピングが含まれていて、そのため、シャード内のマッピングを使用する必要のあるイベントでは、**MappingDifferenceResolution.KeepShardMapping** を使用することをお勧めします。これは通常、フェールオーバーが発生した場合に当てはまります。そのような状況では、新しいサーバーにシャードが存在します。最初に (RecoveryManager.DetachShard メソッドを使用して) GSM からシャードを削除する必要があるため、マッピングは GSM には存在しなくなります。そのため、LSM を使用して、シャード マッピングを再確立する必要があります。
+* [MappingDifferenceResolution 列挙体](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx)は、シャード マッピングの相違点を解決するためのメソッドを指定するために使用します。
+* LSM に正確なマッピングが含まれていて、そのため、シャード内のマッピングを使用する必要のあるイベントでは、**MappingDifferenceResolution.KeepShardMapping** を使用することをお勧めします。これは通常、フェールオーバーが発生した場合に当てはまります。そのような状況では、新しいサーバーにシャードが存在します。最初に (RecoveryManager.DetachShard メソッドを使用して) GSM からシャードを削除する必要があるため、マッピングは GSM には存在しなくなります。そのため、LSM を使用して、シャード マッピングを再確立する必要があります。
 
 ## シャードを復元した後の ShardMap へのシャードのアタッチ 
 
@@ -141,7 +146,7 @@ geo フェールオーバーと復旧は一般的に、アプリケーション�
 	
 		  foreach (RecoveryToken g in gs) 
 			{ 
-			   rm.ResolveMappingDifferences(g, 						MappingDifferenceResolution.KeepShardMapping); 
+			   rm.ResolveMappingDifferences(g, MappingDifferenceResolution.KeepShardMapping); 
 			} 
 		} 
 	} 
@@ -155,4 +160,4 @@ geo フェールオーバーと復旧は一般的に、アプリケーション�
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

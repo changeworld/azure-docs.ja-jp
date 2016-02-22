@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/29/2016"
+   ms.date="02/05/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してストレージ アカウントを管理する (プレビュー)
@@ -72,7 +72,7 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 3. **[ストレージ アカウントの追加/編集]** ダイアログ ボックスで、次の操作を行います。
 
-  1. **[ストレージ アカウント]** ボックスの一覧で、変更する既存のアカウントを選択します。これには、サービスを最初に作成したときに自動的に生成されたストレージ アカウントも含まれます。
+  1. **[ストレージ アカウント]** ボックスの一覧で、変更する既存のアカウントを選択します。
   2. 必要に応じて、**[SSL モードを有効にする]** の設定を変更できます。
   3. ストレージ アカウント アクセス キーを再生成できます。詳細については、「[Regenerate the storage account keys (ストレージ アカウント キーの再生成)](storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。新しいストレージ アカウント キーを指定します。Azure ストレージ アカウントの場合、これはプライマリ アクセス キーです。 
   4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-manage-storage-accounts/checkicon.png) をクリックして、設定を保存します。**[構成]** ページの設定が更新されます。 
@@ -99,6 +99,6 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 ## 次のステップ
 
-- [StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)の詳細について。
+- [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

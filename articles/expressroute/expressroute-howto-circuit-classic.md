@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="02/04/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した ExpressRoute 回線の作成と変更
@@ -22,7 +22,7 @@
 [PowerShell - Classic](expressroute-howto-circuit-classic.md)
 [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
 
-この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットと**クラシック** デプロイ モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。**リソース マネージャー** デプロイ モデルを使用して、ExpressRoute 回線を作成および変更する場合は、「[Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する](expressroute-howto-circuit-arm.md)」をご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -197,7 +197,7 @@
 
 7. **ExpressRoute 回線への VNet のリンク**
 
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute のクラシック デプロイメント モデルを使用して仮想ネットワークを作成する必要がある場合は、「[ExpressRoute 用 VNet の作成](expressroute-howto-vnet-portal-classic.md)」を参照してください。
+	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute のクラシック デプロイ モデルを使用して仮想ネットワークを作成する必要がある場合、手順については、「[ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md)」をご覧ください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -328,4 +328,4 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 - [ルーティングの構成](expressroute-howto-routing-classic.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

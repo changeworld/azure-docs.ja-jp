@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="02/05/2016" 
 	ms.author="nitinme"/>
 
 # 概要: Azure HDInsight での Apache Spark (Linux)
@@ -28,7 +28,7 @@ HDInsight で Spark クラスターを作成するときは、Spark をインス
 
 **Azure HDInsight での Apache Spark の概要** 「[クイック スタート: HDInsight Linux での Spark クラスターの作成と Jupyter を使用したサンプル アプリケーションの実行](hdinsight-apache-spark-jupyter-spark-sql.md)」をご覧ください。
 
->[AZURE.NOTE]既知の問題と現在のリリースでの制限事項の一覧については、「[Azure HDInsight の Apache Spark の既知の問題 (Linux)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+>[AZURE.NOTE] 既知の問題と現在のリリースでの制限事項の一覧については、「[Azure HDInsight の Apache Spark の既知の問題 (Linux)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 
 ## Azure HDInsight で Spark を使用する理由 
@@ -93,7 +93,7 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 ### シナリオ
 
-* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
 
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
@@ -101,7 +101,7 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [HDInsight での Spark を使用した Web サイト ログ分析](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### アプリケーションの作成と実行
 
@@ -109,11 +109,13 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
-### 拡張機能
+### ツールと拡張機能
 
-* [HDInsight のSpark クラスターで Zeppelin notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [HDInsight 用の Spark クラスターの Jupyter notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
 ### リソースの管理
 
@@ -122,4 +124,4 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

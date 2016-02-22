@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/17/2015"
+	ms.date="02/09/2016"
 	ms.author="curtand"/>
 
 
@@ -167,7 +167,7 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 "Manager" グループとしてグループを構成するには
 --------------------------------------------------------------------------------
 1. 管理者ポータルで、**[構成]** タブをクリックし、**[高度なルール]** を選択します。
-2. 次の直属の部下の構文を使用してルールを入力します。*Direct Reports for {UserID\_of\_manager}*。直属の部下の有効なルールの例を示します。 
+2. 次の直属の部下の構文を使用してルールを入力します。*Direct Reports for {UserID\_of\_manager}*。直属の部下の有効なルールの例を示します。
 
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
@@ -181,10 +181,12 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
 * [グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
-* [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
+* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
+
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 * [Azure Active Directory とは](active-directory-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

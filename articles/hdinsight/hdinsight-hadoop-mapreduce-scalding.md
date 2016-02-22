@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="12/04/2015"
+ ms.date="02/05/2016"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -42,95 +42,95 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 2. **scaldingwordcount** ディレクトリで、**pom.xml** ファイルを開いて内容を次のように置き換えます。
 
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-          <modelVersion>4.0.0</modelVersion>
-          <groupId>com.microsoft.example</groupId>
-          <artifactId>scaldingwordcount</artifactId>
-          <version>1.0-SNAPSHOT</version>
-          <name>${project.artifactId}</name>
-          <properties>
+            <modelVersion>4.0.0</modelVersion>
+            <groupId>com.microsoft.example</groupId>
+            <artifactId>scaldingwordcount</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <name>${project.artifactId}</name>
+            <properties>
             <maven.compiler.source>1.6</maven.compiler.source>
             <maven.compiler.target>1.6</maven.compiler.target>
             <encoding>UTF-8</encoding>
-          </properties>
-          <repositories>
+            </properties>
+            <repositories>
             <repository>
-              <id>conjars</id>
-              <url>http://conjars.org/repo</url>
+                <id>conjars</id>
+                <url>http://conjars.org/repo</url>
             </repository>
             <repository>
-              <id>maven-central</id>
-              <url>http://repo1.maven.org/maven2</url>
+                <id>maven-central</id>
+                <url>http://repo1.maven.org/maven2</url>
             </repository>
-          </repositories>
-          <dependencies>
+            </repositories>
+            <dependencies>
             <dependency>
-              <groupId>com.twitter</groupId>
-              <artifactId>scalding-core_2.11</artifactId>
-              <version>0.13.1</version>
+                <groupId>com.twitter</groupId>
+                <artifactId>scalding-core_2.11</artifactId>
+                <version>0.13.1</version>
             </dependency>
             <dependency>
-              <groupId>org.apache.hadoop</groupId>
-              <artifactId>hadoop-core</artifactId>
-              <version>1.2.1</version>
-              <scope>provided</scope>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-core</artifactId>
+                <version>1.2.1</version>
+                <scope>provided</scope>
             </dependency>
-          </dependencies>
-          <build>
+            </dependencies>
+            <build>
             <sourceDirectory>src/main/scala</sourceDirectory>
             <plugins>
-              <plugin>
+                <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
                 <version>2.15.2</version>
                 <executions>
-                  <execution>
+                    <execution>
                     <id>scala-compile-first</id>
                     <phase>process-resources</phase>
                     <goals>
-                      <goal>add-source</goal>
-                      <goal>compile</goal>
+                        <goal>add-source</goal>
+                        <goal>compile</goal>
                     </goals>
-                  </execution>
+                    </execution>
                 </executions>
-              </plugin>
-              <plugin>
+                </plugin>
+                <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                  <transformers>
+                    <transformers>
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
                     </transformer>
-                  </transformers>
-                  <filters>
+                    </transformers>
+                    <filters>
                     <filter>
-                      <artifact>*:*</artifact>
-                      <excludes>
+                        <artifact>*:*</artifact>
+                        <excludes>
                         <exclude>META-INF/*.SF</exclude>
                         <exclude>META-INF/*.DSA</exclude>
                         <exclude>META-INF/*.RSA</exclude>
-                      </excludes>
+                        </excludes>
                     </filter>
-                  </filters>
+                    </filters>
                 </configuration>
                 <executions>
-                  <execution>
+                    <execution>
                     <phase>package</phase>
                     <goals>
-                      <goal>shade</goal>
+                        <goal>shade</goal>
                     </goals>
                     <configuration>
-                      <transformers>
+                        <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                          <mainClass>com.twitter.scalding.Tool</mainClass>
+                            <mainClass>com.twitter.scalding.Tool</mainClass>
                         </transformer>
-                      </transformers>
+                        </transformers>
                     </configuration>
-                  </execution>
+                    </execution>
                 </executions>
-              </plugin>
+                </plugin>
             </plugins>
-          </build>
+            </build>
         </project>
 
     このファイルでは、プロジェクト、依存関係、およびプラグインが記述されています。重要なエントリは次のとおりです。
@@ -158,19 +158,19 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
         import com.twitter.scalding._
 
         class WordCount(args : Args) extends Job(args) {
-          // 1. Read lines from the specified input location
-          // 2. Extract individual words from each line
-          // 3. Group words and count them
-          // 4. Write output to the specified output location
-          TextLine(args("input"))
+            // 1. Read lines from the specified input location
+            // 2. Extract individual words from each line
+            // 3. Group words and count them
+            // 4. Write output to the specified output location
+            TextLine(args("input"))
             .flatMap('line -> 'word) { line : String => tokenize(line) }
             .groupBy('word) { _.size }
             .write(Tsv(args("output")))
 
-          //Tokenizer to split sentance into words
-          def tokenize(text : String) : Array[String] = {
+            //Tokenizer to split sentance into words
+            def tokenize(text : String) : Array[String] = {
             text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
-          }
+            }
         }
 
     これにより、基本的なワード カウント ジョブが実装されます。
@@ -291,7 +291,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
             -clustername $clusterName `
             -jobdefinition $jobDef `
             -HttpCredential $creds
-        Write-Output "Job ID is: " + $job.JobId
+        Write-Output "Job ID is: $job.JobId"
         Wait-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobId $job.JobId `
@@ -344,4 +344,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="02/09/2016"
 	ms.author="markusvi"/>
 
 
@@ -116,7 +116,7 @@ IOS 用のマイ アプリは、iOS バージョン 7 以上を実行する iPho
 
 
 
-> [AZURE.NOTE]Azure AD とのフェデレーションをサポートするアプリケーション (Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 など 70 を超えるアプリケーション) には、プラグインやモバイル アプリがなくても、事実上すべてのデバイスのすべての Web ブラウザーからサインインすることができます。アクセス パネルの残りの部分 ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) は、マイ アプリ モバイル アプリがなくても、モバイル デバイスで操作できます。
+> [AZURE.NOTE] Azure AD とのフェデレーションをサポートするアプリケーション (Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 など 70 を超えるアプリケーション) には、プラグインやモバイル アプリがなくても、事実上すべてのデバイスのすべての Web ブラウザーからサインインすることができます。アクセス パネルの残りの部分 ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) は、マイ アプリ モバイル アプリがなくても、モバイル デバイスで操作できます。
  
 
 
@@ -172,8 +172,12 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 Microsoft Azure 管理ポータルでアプリケーションのシングル サインオンを構成する場合、第 3 のオプションとして "既存のシングル サインオン" が用意されています。このオプションを選択した場合、管理者は、アプリケーションへのリンクを作成し、これを選択したユーザーのアクセス パネルに配置できます。たとえば、Active Directory Federation Services 2.0 を使用してユーザーを認証するように構成されたアプリケーションがある場合、管理者は、[既存のシングル サインオン] オプションを使用して、アクセス パネルにそのアプリケーションへのリンクを作成することができます。ユーザーがこのリンクにアクセスすると、ユーザーは Active Directory Federation Services 2.0 またはアプリケーションによって提供された任意の既存のシングル サインオン ソリューションを使用して認証されます。
 
+##関連記事
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+- [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/ic767166.png
@@ -181,4 +185,4 @@ Microsoft Azure 管理ポータルでアプリケーションのシングル サ
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0211_2016-->

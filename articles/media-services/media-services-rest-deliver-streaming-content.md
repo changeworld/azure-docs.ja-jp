@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015"  
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -27,7 +27,7 @@
 ##概要
 
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[資産をエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に、資産配信ポリシーを構成します ([この](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[資産をエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に、アセット配信ポリシーを構成します ([この](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
@@ -154,7 +154,7 @@ DASH: **Path** + マニフェスト ファイル名 + "/manifest(format=mpd-time
 
 ロケーター作成後に返される **Path** 値を使って、プログレッシブ ダウンロード URL を作成します。
 
-URL: **Path** + 資産ファイル mp4 名
+URL: **Path** + アセット ファイル mp4 名
 
 例:
 
@@ -191,4 +191,4 @@ URL: **Path** + 資産ファイル mp4 名
 
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

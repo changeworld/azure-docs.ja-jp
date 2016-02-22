@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="02/09/2016"
 	ms.author="liamca"/>
 
 # Azure Search を使用して StackExchange のデータを検索する方法
@@ -41,7 +41,7 @@
 
 > <http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=stackexchange&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28%26search=azure%26$filter=tagsCollection/any(t:+t+eq+'architecture')%26$orderby=viewCount+desc>
 
--	`Spelling Mistakes`: [Lucene クエリ式](https://msdn.microsoft.com/library/mt589323.aspx)が新しく (プレビュー) サポートされるようになったため、結果のあいまい一致や特定のフィールドへの検索制限など、高度なクエリも実行できるようになりました。次の例では、タイトル フィールドで "visualize" という単語を検索しますが、~ はあいまい一致を示すため、"visualise" や "visualizing" などの結果も返されます。
+-	`Fuzzy Search`: [Lucene クエリ式](https://msdn.microsoft.com/library/mt589323.aspx)が新しくサポートされるようになったため、結果のあいまい一致や特定のフィールドへの検索制限など、高度なクエリも実行できるようになりました。次の例では、タイトル フィールドで "visualize" という単語を検索しますが、~ はあいまい一致を示すため、"visualise" や "visualizing" などの結果も返されます。
 
 > <http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=stackexchange&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28&search%3Dtitle%3Avisualise~%26querytype%3Dfull%26searchMode%3Dall%26%24select%3Dtitle>
 
@@ -109,4 +109,4 @@ Brent は、SQL データベースにデータをステージングする方法�
     Server=tcp:azs-playground.database.windows.net,1433;Database=StackExchange;User ID=reader@azs-playground;
     Password=EdrERBt3j6mZDP;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

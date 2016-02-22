@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/16/2015" 
+    ms.date="02/08/2016" 
     ms.author="elizapo" />
 
 
@@ -26,9 +26,11 @@ Azure RemoteApp をデプロイするとき、多くの場合、別の Azure AD 
 Office 365 クライアント アプリケーションをデプロイする方法については、「[Azure RemoteApp で Office 365 サブスクリプションを使用する方法](remoteapp-officesubscription.md)」を参照してください。
  
 ## フェーズ 1: 無料の Office 365 Azure Active Directory サブスクリプションを登録する
-「[Azure RemoteApp で Azure Active Directory テナントを変更する](remoteapp-changetenant.md)」を参照して、管理者権限で Microsoft Azure 管理ポータルを使用して Azure AD にアクセスできるようにします。このプロセスを実行すると、Azure ポータルにログインし、ディレクトリを確認できるようになります。この時点では、Azure RemoteApp に使用している完全な Azure サブスクリプションは別のディレクトリにあるので、あまり情報が表示されません。
+Azure クラシック ポータルを使用している場合は、「[無料の Azure Active Directory サブスクリプションの登録](https://technet.microsoft.com/library/dn832618.aspx)」の手順に従って、Microsoft Azure 管理ポータルから Azure AD への管理アクセスを取得します。このプロセスを実行すると、Azure ポータルにログインし、ディレクトリを確認できるようになります。この時点では、Azure RemoteApp に使用している完全な Azure サブスクリプションは別のディレクトリにあるので、あまり情報が表示されません。
 
 この手順で作成した管理者アカウントの名前とパスワードを記憶しておきます。これらの情報はフェーズ 2 で必要になります。
+
+Azure ポータルを使用している場合は、「[How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/)」を確認します。
 
 ## フェーズ 2: Azure サブスクリプションに関連付けられている Azure AD を変更する
 Azure サブスクリプションを、現在のディレクトリから、フェーズ 1 で操作した Office 365 ディレクトリに変更します。
@@ -43,4 +45,4 @@ Azure サブスクリプションを、現在のディレクトリから、フ�
 
 この時点で、Azure RemoteApp サブスクリプションは Office 365 Azure AD に関連付けられているので、Azure RemoteApp に既存の Office 365 ユーザー アカウントを使用できます。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

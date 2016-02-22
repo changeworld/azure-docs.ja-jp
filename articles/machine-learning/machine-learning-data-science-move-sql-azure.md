@@ -15,19 +15,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="02/08/2016" 
 	ms.author="fashah;bradsev" />
 
 # Azure Machine Learning 用にデータを Azure SQL Database に移動する
-
-この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
-
-[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 ## はじめに
 **このトピック**では、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
 
 Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
+
+次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 次の表は、Azure SQL Database にデータを移動するためのオプションをまとめたものです。
 
@@ -53,7 +53,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
-### <a name="bulk-insert-sql-query"></a>一括挿入 SQL クエリ
+### <a name="bulk-insert-sql-query">一括挿入 SQL クエリ</a>
 
 一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する手順と似ています。詳細については、「[一括挿入 SQL クエリ](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
@@ -72,7 +72,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 フラット ファイルにエクスポートする手順は、「[フラット ファイルへのエクスポート](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file)」の手順と似ています。
 
-###<a name="insert-tables-bcp"></a>SQL Database 移行ウィザード
+###<a name="insert-tables-bcp">SQL Database 移行ウィザード</a>
 
 SQL Database 移行ウィザードを使用する手順は、「[SQL Database 移行ウィザード](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration)」の手順と似ています。
 
@@ -86,4 +86,4 @@ Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移�
 
 オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="01/20/2016"
-   ms.author="ryanwi; mani-ramaswamy"/>
+   ms.author="ryanwi"/>
 
 
 # Service Fabric アプリケーションのライフサイクル
@@ -34,7 +34,7 @@
 
 
 ## 開発
-1. *サービス開発者*は、[Reliable Actors](service-fabric-reliable-actors-introduction.md) または [Reliable Services](../service-fabric/service-fabric-reliable-services-introduction.md) プログラミング モデルを使用してさまざまな種類のサービスを開発します。
+1. *サービス開発者*は、[信頼性の高いアクター](service-fabric-reliable-actors-introduction.md)または[信頼性の高いサービス](service-fabric-reliable-services-introduction.md) プログラミング モデルを使用してさまざまな種類のサービスを開発します。
 2. *サービス開発者* は、1 つ以上のコード、構成、データのパッケージで構成されるサービス マニフェスト ファイルで、開発したサービスの種類について宣言によって記述します。
 3. *アプリケーション開発者*は、異なる種類のサービスを使用するアプリケーションを構築します。
 4. *アプリケーション開発者*は、構成サービスのサービス マニフェストを参照し、異なる構成と構成サービスのデプロイ設定を適切にオーバーライドしてパラメーター化し、アプリケーション マニフェストでアプリケーションの種類を宣言によって記述します。
@@ -113,10 +113,10 @@
 Service Fabric アプリケーションとサービスの開発、テスト、管理に関する詳細については、以下を参照してください。
 
 - [Reliable Actors](service-fabric-reliable-actors-introduction.md)
-- [Reliable Services](../service-fabric/service-fabric-reliable-services-introduction.md)
+- [Reliable Service](service-fabric-reliable-services-introduction.md)
 - [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
 - [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 - [Testability の概要](service-fabric-testability-overview.md)
 - [REST ベース アプリケーション ライフサイクルのサンプル](service-fabric-rest-based-application-lifecycle-sample.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

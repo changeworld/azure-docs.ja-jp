@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/08/2015"
+   ms.date="02/04/2016"
    ms.author="hascipio"/>
 
 # Azure Marketplace のプランを作成するための Azure PowerShell のセットアップ
@@ -30,4 +30,4 @@ PowerShell セッション用に一般的な Microsoft Azure サブスクリプ�
 - [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 - [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

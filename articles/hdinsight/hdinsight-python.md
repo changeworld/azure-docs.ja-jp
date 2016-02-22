@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="01/28/2016" 
+	ms.date="02/10/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
@@ -23,7 +23,14 @@ Hive と Pig は HDInsight でデータを処理する場合にきわめて有�
 
 > [AZURE.NOTE] この記事で説明する手順は、HDInsight クラスター バージョン 2.1、3.0、3.1、3.2 に適用されます。
 
+##必要条件
 
+* HDInsight クラスター (Windows ベースまたは Linux ベース)
+
+* テキスト エディター
+
+    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。エディターで LF または CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+    
 ##<a name="python"></a>HDInsight の Python
 
 Python2.7 は HDInsight 3.0 以降のクラスターに既定でインストール済みです。このバージョンの Python と共に Hive を使用することで、ストリームを処理できます (Hive と Python の間のデータの受け渡しには STDOUT/STDIN を使用します)。
@@ -394,6 +401,22 @@ SSH の使用に関する詳細については、「Linux、Unix、または OS 
 
 ##<a name="troubleshooting"></a>トラブルシューティング
 
+###ジョブ実行時のエラー
+
+Hive ジョブを実行しているときに、次のようなエラーが発生する場合があります。
+
+    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+    
+この問題は、streaming.py ファイルの行末が原因で生じる場合があります。多くの Windows 版エディターでは行末に既定でCRLF が使用されていますが、Linux アプリケーションでは通常、行末は LF であることを前提としています。
+
+LF の行末を作成できないエディターを使用している場合、または行末に使用されている記号が不明な場合は、ファイルを HDInsight にアップロードする前に次の PowerShell ステートメントを使用し、CR 文字を削除します。
+
+    $original_file ='c:\path\to\streaming.py'
+    $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
+    [IO.File]::WriteAllText($original_file, $text)
+
+###PowerShell スクリプト
+
 例の実行に使用した両方の PowerShell スクリプトには、ジョブのエラー出力を表示するコメント行が含まれています。ジョブについて想定された出力が確認できない場合は、次の行をコメント解除し、エラー情報で問題が示されるかどうかを確認してください。
 
 	# Get-AzureRmHDInsightJobOutput `
@@ -424,4 +447,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -114,7 +114,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
 
-* *ユーザーまたはページのデータがない場合* - [ユーザーとページのデータを追加します](app-insights-asp-net-client.md)。
+* *ユーザーまたはページのデータがない場合* - [ユーザーとページのデータを追加します](app-insights-web-track-usage.md)。
 
 ### 検索: 個々のイベント
 
@@ -146,7 +146,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 #### ビルド サーバーで問題が発生した場合
 
-[このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
+[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
 > [AZURE.NOTE] (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
@@ -169,7 +169,7 @@ Application Insights サーバー テレメトリが生成されると、診断�
 
 ## 次のステップ
 
-- [ユーザーとページのデータ](../article/application-insights/app-insights-asp-net-client.md#selector1)
+- [ユーザーとページのデータ](../article/application-insights/app-insights-javascript.md#selector1)
 - [Exceptions](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
 - [依存関係](../article/application-insights/app-insights-asp-net-dependencies.md#selector1)
 - [可用性](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
@@ -212,4 +212,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

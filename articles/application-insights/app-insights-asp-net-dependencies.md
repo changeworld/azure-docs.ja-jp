@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="02/10/2016" 
 	ms.author="awills"/>
 
 
@@ -33,9 +33,10 @@
  * SQL データベース
  * HTTP ベースのバインドを使用する ASP.NET Web および WCF サービス
  * ローカルまたはリモートの HTTP 呼び出し
- * Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
+ * Azure DocumentDb、テーブル、Blob Storage、およびキュー
 * Java
  * MySQL、SQL Server、PostgreSQL、SQLite などの [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
+* Web ページの JavaScript - [Web ページの SDK](app-insights-javascript.md) では、AJAX 呼び出しを依存関係として自動的にログに記録します。
 
 [[TrackDependency API]](app-insights-api-custom-events-metrics.md#track-dependency) を使用して他の依存関係を監視するために、独自の SDK 呼び出しを記述することができます。
 
@@ -111,7 +112,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 実行時間の長いインスタンスがあればそれをクリックし、さらに検査します。
 
-> [AZURE.NOTE]少し下にスクロールして、インスタンスを選択します。パイプラインでの待機時間は、上部のインスタンスのデータが不完全であることを示す場合があります。
+> [AZURE.NOTE] 少し下にスクロールして、インスタンスを選択します。パイプラインでの待機時間は、上部のインスタンスのデータが不完全であることを示す場合があります。
 
 この要求に関連したリモート依存関係呼び出しまで下にスクロールします。
 
@@ -181,9 +182,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 [availability]: app-insights-monitor-web-app-availability.md
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
-[detect]: app-insights-detect-triage-diagnose.md
 [diagnostic]: app-insights-diagnostic-search.md
-[knowUsers]: app-insights-overview-usage.md
 [metrics]: app-insights-metrics-explorer.md
 [netlogs]: app-insights-asp-net-trace-logs.md
 [perf]: app-insights-web-monitor-performance.md
@@ -191,8 +190,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-asp-net-dependencies.md
 [roles]: app-insights-resources-roles-access-control.md
-[start]: app-insights-overview.md
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

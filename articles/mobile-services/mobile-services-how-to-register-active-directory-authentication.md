@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/05/2016"
 	ms.author="ricksal"/>
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
@@ -31,7 +31,7 @@
 
 ##アプリを登録する
 
->[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](../mobile-services/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](mobile-services-windows-store-dotnet-adal-sso-authentication.md)」チュートリアルに従ってください。
+>[AZURE.NOTE] このトピックで説明する手順は、アプリケーションで[サービス主導型ログイン操作](http://msdn.microsoft.com/library/azure/dn283952.aspx)を使用する場合にチュートリアル「[Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md)」と併せて使用するように作られています。アプリケーションの要件として Azure Active Directory および .NET バックエンド モバイル サービスに対して[クライアント主導型ログイン操作](http://msdn.microsoft.com/library/azure/jj710106.aspx)が必要な場合は、「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証](mobile-services-windows-store-dotnet-adal-sso-authentication.md)」チュートリアルに従ってください。
 
 1. [Azure クラシック ポータル]にログオンし、モバイル サービスに移動して、**[ID]** タブをクリックします。**Azure Active Directory** の ID プロバイダー セクションまでスクロールして、そこに表示されている **[アプリの URL]** をコピーします。
 
@@ -70,4 +70,4 @@
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

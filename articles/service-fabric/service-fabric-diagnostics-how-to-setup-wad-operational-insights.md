@@ -36,9 +36,9 @@ Operational Insights は、格納されているストレージ テーブルの�
 ## 収集することができるさまざまなログ ソース
 1. **Service Fabric ログ:** プラットフォームから標準の ETW と EventSource チャネルに対して生成されます。次のような種類のログがあります。
   - 操作イベント: Service Fabric プラットフォームで実行される操作のログです。たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。
-  - [Actor プログラミング モデル イベント](https://azure.microsoft.com/service-fabric-reliable-actors-diagnostics/)
-  - [Reliable Services プログラミング モデル イベント](https://azure.microsoft.com/service-fabric-reliable-services-diagnostics/)
-2. **アプリケーション イベント**: サービス コードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。アプリケーションからログを出力する方法については、[ローカル コンピューターの設定でサービスを監視および診断する方法に関する記事](https://azure.microsoft.com/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)を参照してください。
+  - [Actor プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)
+  - [Reliable Services プログラミング モデル イベント](service-fabric-reliable-services-diagnostics.md)
+2. **アプリケーション イベント**: サービス コードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。アプリケーションからログを出力する方法については、[ローカル コンピューターの設定でサービスを監視および診断する方法に関する記事](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)を参照してください。
 
 
 ## 診断拡張機能を Service Fabric クラスターにデプロイしてログの収集とアップロードを行う
@@ -325,4 +325,4 @@ WadConfigUpdate.json の EtwEventSourceProviderConfiguration セクションを�
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

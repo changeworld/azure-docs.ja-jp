@@ -12,14 +12,12 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/04/2016"
 	ms.author="donnam"/>
 
 # Android モバイル アプリのオフライン同期の有効化
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
@@ -36,7 +34,7 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「[C
 デバイスと Azure Mobile Services の間で変更をプッシュしたりプルしたりするには、*同期コンテキスト* (*MobileServiceClient.SyncContext*) を使用します。この同期コンテキストは、データをローカルに格納するローカル データベースで初期化されます。
 
 1. `TodoActivity.java` で、`mToDoTable` の既存の定義をコメント アウトし、同期テーブルのバージョンをコメント解除します。
-    
+
 	    private MobileServiceSyncTable<ToDoItem> mToDoTable;
 
 2. `onCreate` メソッドで、`mToDoTable` の既存の初期化をコメント アウトし、次の定義をコメント解除します。
@@ -104,7 +102,7 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「[C
 
 ## その他のリソース
 
-* [Azure モバイル アプリでのオフライン データ同期]
+* [Azure Mobile Apps でのオフライン データ同期]
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
@@ -112,11 +110,10 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「[C
 <!-- URLs. -->
 
 [Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
-[Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
 
 [Create an Android App (Android アプリの作成)]: ../app-service-mobile-android-get-started.md
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_1203_2015--->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/20/2015"
+   ms.date="02/04/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -44,7 +44,9 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - 米国西部
 - 米国東部
 - 西ヨーロッパ
+- 北ヨーロッパ
 - オーストラリア東部
+- 東南アジア
 
 ## Q: Azure Data Catalog のデータ資産の数の制限はどのくらいですか。
 
@@ -54,7 +56,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: サポートされているデータ ソースと資産の種類は何ですか。
 
-現在サポートされているデータ ソースの一覧については、「[データ カタログ DSR](data-catalog-dsr.md)」を参照してください。
+現在サポートされているデータ ソースの一覧については、「[Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」をご覧ください。
 
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
@@ -80,11 +82,11 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - 属性/列データ型
 - 属性/列の説明
 
-> [AZURE.IMPORTANT]データ資産を **Azure Data Catalog** に登録しても、クラウドへのデータの移動もコピーも行われません。データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。このルールの唯一の例外は、ユーザーが資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。プレビューを含む場合、最大 20 のレコードが各資産からコピーされ、**Azure Data Catalog** にスナップショットとして格納されます。データ プロファイルを含む場合、集計情報 (テーブルのサイズ、列あたりの null 値の割合、および列の最小、最大、および平均値など) が計算され、カタログ内に格納されたメタデータに含められます。
+> [AZURE.IMPORTANT] データ資産を **Azure Data Catalog** に登録しても、クラウドへのデータの移動もコピーも行われません。データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。このルールの唯一の例外は、ユーザーが資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。プレビューを含む場合、最大 20 のレコードが各資産からコピーされ、**Azure Data Catalog** にスナップショットとして格納されます。データ プロファイルを含む場合、集計情報 (テーブルのサイズ、列あたりの null 値の割合、および列の最小、最大、および平均値など) が計算され、カタログ内に格納されたメタデータに含められます。
 
 <br/>
 
-> [AZURE.NOTE]ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms\_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
+> [AZURE.NOTE] ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms\_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
 
 ## Q: 新しく登録された資産が Azure Data Catalog に表示されるまでにどのくらいの時間がかかりますか。
 
@@ -147,4 +149,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

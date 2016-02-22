@@ -104,7 +104,7 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 ## Microsoft Azure Certified for IoT
 
-**Microsoft Azure Certified for IoT** は、開発者やアーキテクトが対応状況のシナリオを理解できるように、より広範な IoT エコシステムを Microsoft Azure に接続するパートナー プログラムです。具体的には、IoT プロジェクト (概念実証フェーズまたはパイロット フェーズ) をすぐに始めるために役立つ、OS とデバイスの信頼できる組み合わせの一覧を提供しています。認定された、デバイスとオペレーティング システムの組み合わせを使用することにより、デバイスが Azure IoT Suite および Azure IoT Hub に対応していることを確認するために必要な作業とカスタマイズを減らし、IoT プロジェクトをすぐに開始することができます。
+**Microsoft Azure Certified for IoT** は、開発者やアーキテクトが対応状況のシナリオを理解できるように、より広範な IoT エコシステムを Microsoft Azure に接続するパートナー プログラムです。具体的には、IoT プロジェクト (概念実証フェーズまたはパイロット フェーズ) をすぐに始めるために役立つ、OS とデバイスの信頼できる組み合わせの一覧を提供しています。認定済みのデバイスとオペレーティング システムの組み合わせを使用することにより、デバイスが [Azure IoT Suite][lnk-iot-suite] および Azure IoT Hub と互換性があることを確認するために必要な作業とカスタマイズが減り、IoT プロジェクトをすぐに開始することができます。
 
 ## Certified for IoT デバイス
 
@@ -171,4 +171,7 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 Certified for IoT デバイスを使用したソリューションの開発に関する詳細については、[こちら](http://azure.com/iotdev)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+
+[lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+
+<!---HONumber=AcomDC_0211_2016-->

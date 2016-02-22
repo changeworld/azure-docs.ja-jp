@@ -50,7 +50,7 @@
 
 ####	サービス正常性を追跡する
 
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](insights-service-health.md)に関するページを参照してください。
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](../azure-portal/insights-service-health.md)に関するページを参照してください。
 
 ####	Web アプリを監視する
 
@@ -69,7 +69,7 @@ Web アプリに関しては、次のメトリックを監視するようお勧�
 詳細については、次を参照してください。
 
 -	[Azure App Service の Web Apps の監視](web-sites-monitor.md)
--	[アラート通知の受信](insights-receive-alert-notifications.md)
+-	[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 ### 2\.データを収集する
@@ -136,6 +136,6 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
  ![](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)をご覧ください。
+Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

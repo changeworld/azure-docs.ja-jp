@@ -392,21 +392,19 @@ Visual Studio がインストールされている Windows システムからテ
 
 > [AZURE.NOTE] アプリを **Free** レベルから **Standard** レベルに切り替える前に、サブスクリプションに設定されている使用制限を解除する必要があります。そうしないと、請求期間が終了する前に制限に到達した場合に、アプリが使用できなくなるおそれがあります。Shared レベルと **Standard** レベルの料金の詳細については、「[価格の詳細][pricing]」を参照してください。
 
-1.	ブラウザーで、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を開きます。
+1.	ブラウザーで、[Azure ポータル](https://portal.azure.com)を開きます。
 	
-2.	ページの左側にある **[参照]** オプションをクリックします。
-
-3.	**[Web Apps]** ブレードをクリックします。
+2.	ページの左側にある **[App Service]** オプションをクリックします。
 
 4.	アプリの名前をクリックします。
 
 5.	**[要点]** ページで **[設定]** をクリックします。
 
-6.	**[スケール]** をクリックします。
+6.	**[スケール アップ]** をクリックします。
 	
 	![[スケール] タブ][scale]
 
-7.	**[スケール]** セクションで、**[選択]** をクリックして App Service プラン モードを設定します。
+7.	**[スケール アップ]** セクションで、**[選択]** をクリックして App Service プラン モードを設定します。
 
 	> [AZURE.NOTE] "Web アプリ '&lt;アプリ名&gt;' のスケールの構成に失敗しました" というエラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Azure のサポート オプション](/support/options/)にお問い合わせください。
 
@@ -415,11 +413,9 @@ Visual Studio がインストールされている Windows システムからテ
 
 このセクションの手順を実行する前に、アプリにカスタム ドメイン名が関連付けられている必要があります。詳細については、[Web アプリのカスタム ドメイン名の構成][customdomain]に関するページを参照してください。
 
-1.	ブラウザーで、[Microsoft Azure 管理ポータル](https://portal.azure.com)を開きます。
+1.	ブラウザーで、[Azure ポータル](https://portal.azure.com)を開きます。
 
-2.	ページの左側にある **[参照]** オプションをクリックします。
-
-3.	**[Web Apps]** ブレードをクリックします。
+2.	ページの左側にある **[App Service]** オプションをクリックします。
 
 4.	アプリの名前をクリックします。
 
@@ -490,7 +486,7 @@ URL 書き換えルールは、アプリケーションのルートに格納さ�
 
 このルールは、ユーザーが HTTP を使用してページを要求したときに HTTP 状態コード 301 (永続的なリダイレクト) を返すことで動作します。301 は、訪問者が要求した URL と同じ URL へ要求をリダイレクトしますが、要求の HTTP 部分は HTTPS で置き換えられます。たとえば、HTTP://contoso.com は HTTPS://contoso.com にリダイレクトされます。
 
-> [AZURE.NOTE] アプリケーションが **Node.js**、**PHP**、**Python Django**、または **Java** で記述されている場合は、web.config ファイルが含まれていない可能性があります。ただし、**Node.js**、**Python Django**、**Java** はすべて、実際には、Azure App Service 上でホストされた場合に web.config を使用します。このファイルは、デプロイメント時に自動的に作成されるため、目にすることはありません。アプリケーションの一部としてこのファイルを含めると、Azure が自動的に生成したファイルは上書きされます。
+> [AZURE.NOTE] アプリケーションが **Node.js**、**PHP**、**Python Django**、または **Java** で記述されている場合は、web.config ファイルが含まれていない可能性があります。ただし、**Node.js**、**Python Django**、**Java** はすべて、実際には、Azure App Service 上でホストされた場合に web.config を使用します。このファイルは、デプロイ時に自動的に作成されるため、目にすることはありません。アプリケーションの一部としてこのファイルを含めると、Azure が自動的に生成したファイルは上書きされます。
 
 ###.NET
 
@@ -500,7 +496,7 @@ web.config ファイルに **&lt;rewrite>** セクションが既に含まれて
 
 ###PHP
 
-PHP アプリケーションの場合は、[例](#example)を web.config ファイルとしてアプリケーションのルートに保存し、このアプリケーションをアプリに再度デプロイするだけです。
+PHP アプリケーションの場合、[例](#example)を web.config ファイルとしてアプリケーションのルートに保存し、このアプリケーションをアプリに再デプロイするだけです。
 
 ###Node.js、Python Django、および Java
 
@@ -529,13 +525,13 @@ HTTPS を強制的に使用する書き換えルールを伴う web.config を�
 IIS URL 書き換えモジュールの詳細については、[URL 書き換え](http://www.iis.net/downloads/microsoft/url-rewrite)のドキュメントを参照してください。
 
 ## その他のリソース ##
-- [Microsoft Azure セキュリティ センター](/support/trust-center/security/)
+- [Microsoft Azure のトラスト センター](/support/trust-center/security/)
 - [Azure Web Sites でロックを解除された構成オプション](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
 - [診断ログの有効化](../articles/app-service-web/web-sites-enable-diagnostic-log.md)
 - [Azure App Service での Web アプリの構成](../articles/app-service-web/web-sites-configure.md)
 - [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -565,4 +561,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

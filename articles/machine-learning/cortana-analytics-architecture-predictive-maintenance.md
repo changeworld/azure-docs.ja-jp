@@ -18,7 +18,7 @@
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Analytics Solution Template のアーキテクチャ
 
-次の図に、[予測メンテナンスのための Cortana Analytics Solution Template](cortana-analytics-playbook-predictive-maintenance.md) のアーキテクチャの概要を示します。
+次の図に、[予測メンテナンスのための Cortana Analytics Solution Template](https://gallery.cortanaanalytics-int.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1) のアーキテクチャの概要を示します。
 
 フル サイズ版の図をダウンロードできます: [アーキテクチャの図: 予測メンテナンスのための Solution Template](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
 
@@ -26,4 +26,4 @@
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

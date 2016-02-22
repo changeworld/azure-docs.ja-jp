@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -23,7 +23,7 @@
 
 この記事では、Secure Shell (SSH) を使用して Linux ベースの HDInsight クラスターに接続してから、[Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) コマンド ライン ツールを使用して Hive クエリを対話的に実行する方法について説明します。
 
-> [AZURE.NOTE]Beeline は Hive への接続に JDBC を使用しました。Hive の JDBC 使用に関する詳細については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
+> [AZURE.NOTE] Beeline は Hive への接続に JDBC を使用しました。Hive の JDBC 使用に関する詳細については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -123,7 +123,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
     * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
     * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。通常、Hive でクエリを実行するとき、同じフォルダー内ではデータのスキーマが同じになりますが、このサンプル ログ ファイルは他のデータ形式で格納されます。
 
-    > [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+    > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
     > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
     
@@ -172,7 +172,7 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
     * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
     * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
     
-    > [AZURE.NOTE]外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
+    > [AZURE.NOTE] 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
     
 3. ファイルを保存するには、__Ctrl__ キーを押しながら ___X__ キーを押し、__Y__ キー、__Enter__ キーの順に押します。
 
@@ -237,4 +237,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

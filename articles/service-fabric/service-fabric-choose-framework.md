@@ -33,6 +33,6 @@ Azure Service Fabric は、Reliable Services API と Reliable Actors API とい�
 ## 次のステップ
 
 - [Reliable Actors API の詳細](service-fabric-reliable-actors-introduction.md)
-- [Reliable Services API の詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
+- [Reliable Services API の詳細](service-fabric-reliable-services-introduction.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,10 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015"
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
-
-
 
 #<a id="monitormediaservicesaccount"></a>Media Services アカウントの監視方法
 
@@ -24,7 +22,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 監視できるのは、キューに格納されたエンコード ジョブの数、失敗したエンコード タスク、エンコーダーからの入出力データによって表されるアクティブなエンコード ジョブ、およびメディア サービス アカウントに関連付けられた BLOB ストレージの使用状況です。さらに、顧客に対してコンテンツをストリーミング配信している場合は、さまざまなストリーミング メトリックも取得できます。データの監視期間は、過去 6 時間、24 時間、または 7 日間から選択できます。
  
->[AZURE.NOTE]Azure クラシック ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://go.microsoft.com/fwlink/?LinkId=256667)を参照してください。
+>[AZURE.NOTE] Azure クラシック ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://go.microsoft.com/fwlink/?LinkId=256667)を参照してください。
 
 ##<a id="configuremonitoring"></a>方法: Media Services アカウントの監視
 
@@ -38,7 +36,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 1. **[概要]** で、**ストレージ アカウント**の名前をクリックします。
 2. ストレージ アカウントのページで、**[構成ページ]** リンクをクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
 
-	>[AZURE.NOTE]BLOB は、Media Services で唯一サポートされるストレージの種類です。
+	>[AZURE.NOTE] BLOB は、Media Services で唯一サポートされるストレージの種類です。
 
 	![StorageOptions][storage_options_scoped]
 
@@ -73,4 +71,4 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="プレビュー ポータルを使用して ARM モードで NSG を作成する方法 | Microsoft Azure"
-   description="プレビュー ポータルを使用して ARM で NSG を作成してデプロイする方法について"
+   pageTitle="Azure ポータルを使用して ARM モードで NSG を作成する方法 | Microsoft Azure"
+   description="Azure ポータルを使用して ARM で NSG を作成してデプロイする方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/04/2016"
    ms.author="telmos" />
 
 # プレビュー ポータルを使用して NSG を管理する方法
@@ -56,4 +56,4 @@
 
 ![プレビュー ポータル - 新しい規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

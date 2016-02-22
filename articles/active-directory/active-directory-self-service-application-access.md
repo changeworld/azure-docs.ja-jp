@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
+	ms.date="02/09/2016"
 	ms.author="asmalser"/>
 
 #Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理
@@ -101,9 +101,12 @@
 
 * **管理者が管理する単一のアカウントでユーザーは自動的にサインインする** - これは特殊なケースであり、割り当てられたすべてのユーザーに対して、単一の共有アカウントを使用してアクセス権を付与する必要がある場合に適切です。この最も一般的なユース ケースは、組織に単一の「会社」アカウントがあり、複数のユーザーがそのアカウントを更新する必要がある場合の、ソーシャル メディア アプリケーションです。これは、[管理者が資格情報を管理する](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)パスワード SSO ケースにも対応しています。ただし、このオプションを選択すると、承認者は単一の共有アカウントに対してユーザー名とパスワードの入力を求められます。入力の完了後、割り当てられたすべてのユーザーは、Azure AD アクセス パネルまたは Office 365 内でアプリケーションをクリックすると、このアカウントを使用してサインインされます。
 
+##その他のリソース
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
 <!--Image references-->
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

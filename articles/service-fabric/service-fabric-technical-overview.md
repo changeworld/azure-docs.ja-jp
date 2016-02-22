@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/25/2015"
+   ms.date="02/09/2016"
    ms.author="mfussell"/>
 
 # Service Fabric の技術概要
@@ -53,4 +53,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [アプリケーション モデル](service-fabric-application-model.md)
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

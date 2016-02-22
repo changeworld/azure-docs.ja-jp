@@ -15,7 +15,7 @@
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="11/30/2015" 
-	ms.author="Erikre"/>
+	ms.author="glenga"/>
 
 
 # SendGrid を使用した Mobile Services からの電子メールの送信
@@ -94,7 +94,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 	- **_from-address_**: 電子メールの送信元アドレス。組織に属する登録済みドメイン アドレスの使用を検討してください。
 
-     >[AZURE.NOTE]登録済みドメインがない場合は、Mobile Service のドメインを **notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
+     > [AZURE.NOTE] 登録済みドメインがない場合は、Mobile Service のドメインを **notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
 
 6. **[保存]** ボタンをクリックします。これで、**TodoItem** テーブルにレコードが挿入されるたびに電子メールが送信されるように、スクリプトを構成できました。
 
@@ -140,4 +140,4 @@ Mobile Services で SendGrid 電子メール サービスを簡単に使用で�
 [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
 [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

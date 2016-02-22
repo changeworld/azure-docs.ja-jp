@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/08/2015"
+	ms.date="02/02/2016"
 	ms.author="yurid"/>
 
 #Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
@@ -22,16 +22,16 @@
 ##ハイブリッド ID ソリューション
 - ニーズに最適なソリューション シナリオを活用することは、モバイル デバイス管理インフラストラクチャ デプロイの詳細を確認し、計画する優れた方法です。次のソリューションでは、最も一般的なモバイル デバイス管理シナリオをいくつか紹介します。
 
-- [「企業環境のモバイル デバイスと PC を管理する」ソリューション](https://technet.microsoft.com/zh-CN/library/dn582037.aspx)は、Microsoft Intune を利用し、オンプレミスのSystem Center 2012 Configuration Manager インフラストラクチャをクラウドに展開することでモバイル デバイスを管理する際に役立ちます。このハイブリッド インフラストラクチャは、中規模または大規模の環境で IT 専門家が BYOD とリモート アクセスを導入する場合に役立ちます。同時に管理の複雑性が緩和されます。
-- [「Configuration Manager 2007 でモバイル デバイスを管理する」ソリューション](https://technet.microsoft.com/zh-CN/library/dn508400.aspx)は、System Center Configuration Manager 2007 を基盤にインフラストラクチャを構築している場合のモバイル デバイス管理に役立ちます。このソリューションでは、System Center 2012 Configuration Manager を実行する 1 台のサーバーを構築し、Microsoft Intune を実行し、その MDM 機能を最大限に活用する方法が紹介されています。
-- [「小規模環境でモバイル デバイスを管理する」ソリューション](https://technet.microsoft.com/zh-CN/library/dn715906.aspx)は、MDM の導入が必要な小規模ビジネス向けです。Microsoft Intune を使用して現在のインフラストラクチャを拡張子、モバイル デバイス管理と BYOD をサポートする方法が説明されています。このソリューションでは、Microsoft Intune をスタンドアロンで利用し、ローカル サーバーのないクラウドだけの構成という最も単純なシナリオについて説明されています。
+- [「企業環境のモバイル デバイスと PC を管理する」ソリューション](https://technet.microsoft.com/library/dn582037.aspx)は、Microsoft Intune を利用し、オンプレミスのSystem Center 2012 Configuration Manager インフラストラクチャをクラウドに展開することでモバイル デバイスを管理する際に役立ちます。このハイブリッド インフラストラクチャは、中規模または大規模の環境で IT 専門家が BYOD とリモート アクセスを導入する場合に役立ちます。同時に管理の複雑性が緩和されます。
+- [「Configuration Manager 2007 でモバイル デバイスを管理する」ソリューション](https://technet.microsoft.com/library/dn508400.aspx)は、System Center Configuration Manager 2007 を基盤にインフラストラクチャを構築している場合のモバイル デバイス管理に役立ちます。このソリューションでは、System Center 2012 Configuration Manager を実行する 1 台のサーバーを構築し、Microsoft Intune を実行し、その MDM 機能を最大限に活用する方法が紹介されています。
+- [「小規模環境でモバイル デバイスを管理する」ソリューション](https://technet.microsoft.com/library/dn715906.aspx)は、MDM の導入が必要な小規模ビジネス向けです。Microsoft Intune を使用して現在のインフラストラクチャを拡張子、モバイル デバイス管理と BYOD をサポートする方法が説明されています。このソリューションでは、Microsoft Intune をスタンドアロンで利用し、ローカル サーバーのないクラウドだけの構成という最も単純なシナリオについて説明されています。
 
 ## ハイブリッド ID のドキュメント
 モバイル デバイス管理ソリューションを実装するとき、コンセプトに基づく手続型の計画、デプロイメント、管理コンテンツが役立ちます。
 
-- [Microsoft System Center](https://technet.microsoft.com/zh-CN/library/cc507089.aspx) ソリューションは、IT スタッフが管理が簡単なシステムを構築し、操作を自動化できるように、インフラストラクチャ、ポリシー、プロセス、ベスト プラクティスに関する知識を集め、まとめる際に役立ちます。
-- [Microsoft Intune](https://technet.microsoft.com/zh-CN/library/jj676587.aspx) はクラウドベースのデバイス管理サービスであり、コンピューターとモバイル デバイスを管理し、コンピューターの情報を守る際に役立ちます。
-- [MDM for Office 365](https://technet.microsoft.com/zh-CN/library/ms.o365.cc.devicepolicy.aspx) を利用すれば、Office 365 機構に接続されているモバイル デバイスを管理し、保護できます。MDM for Office 365 を利用し、デバイスのセキュリティ ポリシーとアクセス ルールを設定し、紛失または盗難時にモバイル デバイスのデータを消去できます。
+- [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) ソリューションは、IT スタッフが管理が簡単なシステムを構築し、操作を自動化できるように、インフラストラクチャ、ポリシー、プロセス、ベスト プラクティスに関する知識を集め、まとめる際に役立ちます。
+- [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) はクラウドベースのデバイス管理サービスであり、コンピューターとモバイル デバイスを管理し、コンピューターの情報を守る際に役立ちます。
+- [MDM for Office 365](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) を利用すれば、Office 365 機構に接続されているモバイル デバイスを管理し、保護できます。MDM for Office 365 を利用し、デバイスのセキュリティ ポリシーとアクセス ルールを設定し、紛失または盗難時にモバイル デバイスのデータを消去できます。
 
 ## ハイブリッド ID リソース
 次のリソースには、モバイル デバイス管理ソリューションに関する最新ニュースと更新が頻繁に掲載されます。
@@ -45,4 +45,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

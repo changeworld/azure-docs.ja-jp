@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="02/09/2016"
 	ms.author="asmalser-msft"/>
 
 #Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
@@ -80,7 +80,7 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 
 パスワードベースの SSO の場合、エンド ユーザーのブラウザーには次のいずれかを使用できます。
 
-- Internet Explorer 8、9、および 10 -- Windows 7 以降 (「[How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (グループ ポリシーを使用する Internet Explorer のアクセスパネル拡張機能のデプロイ方法)](active-directory-saas-ie-group-policy.md)」も参照)
+- Internet Explorer 8、9、10、11 -- Windows 7 以降 (「[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)」も参照)
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
@@ -210,7 +210,14 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 
 これらのリンクにはアクセス パネルや Office 365 と同じアクセス制御メカニズムが使用され、Azure 管理ポータルでアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するアクセス パネルを呼び出すためのリンクが示されます。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+- [承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md)
+- [アプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
+- [Azure Active Directory を使用して外部 ID を管理するための機能の比較](active-directory-b2b-compare-external-identities.md)
+
 
 <!--Image references-->
 [1]: ./media/active-directory-appssoaccess-whatis/onlineappgallery.png
@@ -220,4 +227,4 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

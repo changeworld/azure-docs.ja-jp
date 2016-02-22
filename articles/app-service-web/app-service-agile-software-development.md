@@ -21,7 +21,7 @@
 
 このチュートリアルでは、[アジャイル ソフトウェア開発](https://en.wikipedia.org/wiki/Agile_software_development)をサポートする方法で [Azure App Service](/services/app-service/) を使用して拡張性の高い複雑なアプリケーションを開発する方法について説明します。ここでは、[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)方法を理解していることを前提とします。
 
-技術的な処理の限界によって、アジャイル手法を用いた実装の成功が妨げられることはよくあることです。Azure App Service は[継続的パブリッシング](web-sites-publish-source-control.md)、[ステージング環境](web-sites-staged-publishing.md) (スロット)、[監視](web-sites-monitor.md)などの機能を持っており、これらの機能を [Azure リソース マネージャー](resource-group-overview.md)のデプロイと連携させて賢く統合管理すると、アジャイル ソフトウェア開発に携わる開発者にとって非常に優れたソリューションの一部になることができます。
+技術的な処理の限界によって、アジャイル手法を用いた実装の成功が妨げられることはよくあることです。Azure App Service は[継続的パブリッシング](web-sites-publish-source-control.md)、[ステージング環境](web-sites-staged-publishing.md) (スロット)、[監視](web-sites-monitor.md)などの機能を持っており、これらの機能を [Azure リソース マネージャー](../resource-group-overview.md)のデプロイと連携させて賢く統合管理すると、アジャイル ソフトウェア開発に携わる開発者にとって非常に優れたソリューションの一部になることができます。
 
 次の表に、アジャイル開発に関連するいくつかの要件と、Azure サービスが各要件にどのように対応できるかを示します。
 
@@ -43,7 +43,7 @@
 
 図の説明は次のとおりです。
 
--	デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](resource-group-overview.md)と言います) に分割され、それぞれに独自の[App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング](web-sites-scale.md)設定、および SQL Database があります。 
+-	デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](../resource-group-overview.md)と言います) に分割され、それぞれに独自の[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング](web-sites-scale.md)設定、および SQL Database があります。 
 -	各環境は別々に管理できます。異なるサブスクリプションで存在することもできます。
 -	ステージングと実稼働は、同じ App Service アプリの 2 つのスロットとして実装されます。マスター ブランチは、ステージング スロットとの継続的インテグレーションを行うようにセットアップされます。
 -	マスター ブランチへのコミットが (実稼働データを使用して) ステージング スロットで検証されると、検証されたステージング アプリは、[ダウンタイムなしで](web-sites-staged-publishing.md)実稼働スロットにスワップされます。
@@ -63,7 +63,7 @@
 -	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。 
 -	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi) ビット
 -	以下の事柄の基礎知識:
-	-	[Azure リソース マネージャー ](resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」も参照してください)
+	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」も参照してください)
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
@@ -270,14 +270,14 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 -	[Agile Development in Practice: Tips and Tricks for Modernized Development Cycle (アジャイル開発の実践: 最新の開発サイクルのためのヒント)](http://channel9.msdn.com/Events/Ignite/2015/BRK3707)
 -	[Advanced deployment strategies for Azure Web Apps using Resource Manager templates (Resource Manager テンプレートを使用した Azure Web Apps 向けの高度なデプロイ戦略)](http://channel9.msdn.com/Events/Build/2015/2-620)
--	[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
+-	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 -	[JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 -	[ARMClient – サイトへの GitHub のパブリッシュの設定に関するページ](https://github.com/projectKudu/ARMClient/wiki/Setup-GitHub-publishing-to-Site)
 -	[Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 -	[David Ebbo のブログ](http://blog.davidebbo.com/)
--	[Azure PowerShell](powershell-install-configure.md)
--	[Azure クロスプラットフォーム コマンド ライン ツール](xplat-cli-install.md)
+-	[Azure PowerShell](../powershell-install-configure.md)
+-	[Azure クロスプラットフォーム コマンド ライン ツール](../xplat-cli-install.md)
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

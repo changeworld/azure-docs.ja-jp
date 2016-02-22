@@ -18,7 +18,7 @@
 
 # Application Insights の設定: 例外の診断
 
-申し訳ありません。[このページは移動しました](app-insights-asp-net-exception.md)。
+申し訳ありません。[このページは移動しました](app-insights-asp-net-exceptions.md)。
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

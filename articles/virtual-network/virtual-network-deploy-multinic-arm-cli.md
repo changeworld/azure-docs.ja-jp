@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 #Azure CLI を使用した複数の NIC VM のデプロイ
@@ -37,7 +37,7 @@
 2. テンプレート ページの **[親リソース グループ]** の右側にある **[Azure へのデプロイ]** をクリックします。
 3. 必要に応じて、パラメーター値を変更し、Azure プレビュー ポータル内の手順に従ってリソース グループをデプロイします。
 
-> [AZURE.IMPORTANT]ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
+> [AZURE.IMPORTANT] ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
 
 [AZURE.INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
@@ -51,7 +51,7 @@
 
 ### 手順 1 - スクリプトの開始
 
-使用するすべての Bash スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/multinic.sh)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
+使用するすべての Bash スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
 
 1. 上記の[前提条件](#Prerequisites)でデプロイした既存のリソース グループに基づいて、以下の変数の値を変更します。
 
@@ -88,7 +88,7 @@
 		                --name $backendSubnetName|grep Id)"
 		subnetId=${subnetId#*/}
 
->[AZURE.TIP]上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
+>[AZURE.TIP] 上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
 
 4. `NSG-RemoteAccess` NSG のIDを取得します。この NSG に関連付けられる NIC が別のリソース グループ内にあるため、これを行う必要があります。
 
@@ -330,4 +330,4 @@
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

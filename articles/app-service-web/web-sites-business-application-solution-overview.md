@@ -32,7 +32,8 @@
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/web-app-notitle.svg" width="100%" height="100%"></object>
 
-> [AZURE.NOTE]このガイドで取り上げるのは基幹業務アプリケーションで必要となる最も一般的な分野やタスクですが、Azure App Service Web Apps には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)および[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)のガイドを参照してください。
+> [AZURE.NOTE]
+このガイドで取り上げるのは基幹業務アプリケーションで必要となる最も一般的な分野やタスクですが、Azure App Service Web Apps には特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、[グローバル Web プレゼンス](web-sites-global-web-presence-solution-overview.md)および[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)のガイドを参照してください。
 
 ## 既存のアセットの表示
 
@@ -79,10 +80,10 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 ## その他のリソース
 
 - [App Service Web Apps のドキュメント](/services/app-service/web/)
-- [Azure App Service Web Apps の学習マップ](websites-learning-map.md)
+- [Azure App Service Web Apps の学習マップ](/documentation/learning-paths/appservice-webapps/)
 - [Azure Web ブログ](/blog/topics/web/)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -124,4 +125,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

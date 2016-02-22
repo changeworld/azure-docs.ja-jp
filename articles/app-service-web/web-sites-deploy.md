@@ -125,7 +125,6 @@ IDE を使用したデプロイの欠点は次のとおりです。
 ###<a name="webmatrix"></a>WebMatrix から直接デプロイする方法
 
 * [ WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ](web-sites-nodejs-use-webmatrix.md)
-* [WebMatrix を使用した PHP-MySQL Web アプリの作成とデプロイ](web-sites-php-mysql-use-webmatrix.md)。
 * [WebMatrix 3: Git の統合と Azure へのデプロイ](http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD)。WebMatrix を使用して、Git ソース管理リポジトリからデプロイを実行する方法です。
 
 ## <a name="onprem"></a>オンプレミスのソース管理システムからのデプロイ
@@ -157,7 +156,7 @@ TFS を使用したデプロイのその他の利点は次のとおりです。
 
 ###<a name="tfs"></a>TFS を使用して継続的にデプロイする方法
 
-* [Microsoft Azure のクラウド サービスの継続的な配信](../cloud-services-dotnet-continuous-delivery.md)このドキュメントは Azure クラウド サービスを対象にしていますが、そのコンテンツの一部は Web Apps にも当てはまります。
+* [Microsoft Azure のクラウド サービスの継続的な配信](../cloud-services/cloud-services-dotnet-continuous-delivery.md)このドキュメントは Azure クラウド サービスを対象にしていますが、そのコンテンツの一部は Web Apps にも当てはまります。
 
 ###<a name="gitmercurial"></a>オンプレミスの Git または Mercurial リポジトリからデプロイする方法
 
@@ -195,8 +194,8 @@ Visual Studio Team Services を使用したデプロイのその他の利点は�
 
 ###<a name="vsts"></a>Visual Studio Team Services を使用して継続的にデプロイする方法
 
-- [Visual Studio Team Services と TFVC を使用した Azure への継続的な配信](../cloud-services-continuous-delivery-use-vso.md)。TFVC を使用して Visual Studio Team Services から Web アプリへの継続的な配信を設定する方法を示すステップ バイ ステップ チュートリアルです。 
-- [Visual Studio Team Services と Git を使用した Azure への継続的な配信](../cloud-services-continuous-delivery-use-vso-git.md)。上のチュートリアルに似ていますが、TFVC の代わりに Git を使用します。
+- [Visual Studio Team Services と TFVC を使用した Azure への継続的な配信](../cloud-services/cloud-services-continuous-delivery-use-vso.md)。TFVC を使用して Visual Studio Team Services から Web アプリへの継続的な配信を設定する方法を示すステップ バイ ステップ チュートリアルです。 
+- [Visual Studio Team Services と Git を使用した Azure への継続的な配信](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)。上のチュートリアルに似ていますが、TFVC の代わりに Git を使用します。
 
 ###<a name="cloudgitmercurial"></a>クラウド ベースの Git または Mercurial リポジトリからデプロイする方法
 
@@ -219,7 +218,7 @@ Visual Studio Team Services を使用したデプロイのその他の利点は�
 * [Web デプロイ コマンド ラインからデプロイ](#webdeploy)
 * [FTP バッチ スクリプトの使用](http://support.microsoft.com/kb/96269)。
  
-もう 1 つのデプロイ オプションとして、[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) などのクラウド ベースのサービスを使用することもできます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
+もう 1 つのデプロイ オプションとして、[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) などのクラウド ベースのサービスを使用することもできます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
 
 ###<a name="msbuild"></a>MSBuild を使用したデプロイの自動化
 
@@ -284,4 +283,4 @@ Azure のロール ベースの Access Control を使用して、Web Apps のデ
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

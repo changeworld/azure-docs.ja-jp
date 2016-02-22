@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="01/20/2016"
+    ms.date="02/05/2016"
     ms.author="sstein"/>
 
 # PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
@@ -32,16 +32,16 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
 Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export-powershell.md)」の手順に従って作成できます。
 
-> [AZURE.NOTE]Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
 
 SQL Database をインポートするには、以下が必要です。
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
-- 復元するデータベースの .bacpac ファイル (BACPAC)。BACPAC は、[Azure Storage アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナー内にある必要があります。
+- インポートするデータベースの .bacpac ファイル (BACPAC)。BACPAC は、[Azure Storage アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナー内にある必要があります。
 
 
-> [AZURE.IMPORTANT]この記事には、バージョン 1.0 未満の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
+> [AZURE.IMPORTANT] この記事には、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
 
 
 
@@ -115,7 +115,7 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
  
 
 
-## SQL Database の PowerShell 復元スクリプト
+## SQL Database の PowerShell インポート スクリプト
 
 
     Add-AzureAccount
@@ -153,4 +153,4 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 - [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

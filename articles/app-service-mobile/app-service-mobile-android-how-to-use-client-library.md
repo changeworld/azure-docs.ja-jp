@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/03/2016" 
+	ms.date="02/04/2016"
 	ms.author="ricksal"/>
 
 
 # Mobile Apps 向け Android クライアント ライブラリの使用方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]&nbsp;
+[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 このガイドでは、Mobile Apps 向け Android クライアント SDK を使用して、データのクエリ (挿入、更新、削除)、ユーザーの認証、エラー処理、クライアントのカスタマイズなどの一般的なシナリオを実装する方法について説明します。また、ほとんどのモバイル アプリで使用される共通のクライアント コードについても詳しく説明します。
 
@@ -42,17 +42,17 @@ Android 用 Mobile Services SDK は Android バージョン 2.2 以降をサポ�
 
 以上を行った後、詳細セクションで説明する手順を完了する必要があります。
 
-###<a name="gradle-build"></a>Gradle ビルド ファイルを更新する 
+###<a name="gradle-build"></a>Gradle ビルド ファイルを更新する
 
 2 つの **build.gradle** ファイルを変更します。
 
 1. 次のコードを、*プロジェクト* レベルの **build.gradle** ファイルの *buildscript* タグ内に追加します。
- 
+
 		buildscript {
 		    repositories {
 		        jcenter()
 		    }
-		} 
+		}
 
 2. 次のコードを、*モジュール アプリ* レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
@@ -65,7 +65,7 @@ Azure にアクセスするには、アプリで INTERNET アクセス許可が�
 
 	<uses-permission android:name="android.permission.INTERNET" />
 
-## 基本の詳細情報  
+## 基本の詳細情報
 
 このセクションでは、Quickstart アプリのコードについて説明します。クイックスタートを行わなかった場合は、このコードを自分のアプリに追加する必要があります。
 
@@ -102,7 +102,7 @@ SQL Azure テーブルにさらに列が含まれる場合は、対応するフ�
 	    public Integer getPriority() {
 	        return mPriority;
 	    }
-	
+
 	    /**
 	     * Sets the item priority
 	     *
@@ -303,7 +303,7 @@ Android アプリでのこれらの非同期 API の使用方法、およびデ�
 
 次のクエリは、*ToDoItem* テーブル内のすべての項目を返します。
 
-	List<ToDoItem> results = mToDoTable.execute().get();             
+	List<ToDoItem> results = mToDoTable.execute().get();
 
 *results* 変数は、クエリの結果セットをリストとして返します。
 
@@ -441,7 +441,7 @@ Mobile Apps では、各テーブルに **id** という名前の列がある必
 
 	String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
    	mToDoTable.delete(myRowId);
-                    
+
 
 ##<a name="lookup"></a>方法: 特定の項目を検索する
 
@@ -478,7 +478,7 @@ Mobile Apps では、各テーブルに **id** という名前の列がある必
 
 次に、このオブジェクトを挿入します。
 
-    mJsonToDoTable.insert(jsonItem).get();                   
+    mJsonToDoTable.insert(jsonItem).get();
 
 
 挿入されたオブジェクトの ID を取得する必要がある場合は、このメソッド呼び出しを使用します。
@@ -546,23 +546,23 @@ ID を使用してインスタンスを直接削除することもできます�
 Android クライアントから **invokeApi** メソッドを呼び出して、カスタム API エンドポイントを呼び出します。次の例では、*completeAll* という名前の API エンドポイントを呼び出す方法を示します。このエンドポイントは、MarkAllResult という名前のコレクション クラスを返します。
 
 	public void completeItem(View view) {
-	    
-	    ListenableFuture<MarkAllResult> result = mClient.invokeApi( "completeAll", MarkAllResult.class ); 
-	    	
+
+	    ListenableFuture<MarkAllResult> result = mClient.invokeApi( "completeAll", MarkAllResult.class );
+
 	    	Futures.addCallback(result, new FutureCallback<MarkAllResult>() {
 	    		@Override
 	    		public void onFailure(Throwable exc) {
 	    			createAndShowDialog((Exception) exc, "Error");
 	    		}
-	    		
+
 	    		@Override
 	    		public void onSuccess(MarkAllResult result) {
 	    			createAndShowDialog(result.getCount() + " item(s) marked as complete.", "Completed Items");
-	                refreshItemsFromTable();	
+	                refreshItemsFromTable();
 	    		}
 	    	});
 	    }
-	
+
 POST 要求を新しいカスタム API に送信する **invokeApi** メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。オプションとして、他のバージョンの **invokeApi** を使用すると、要求本文でのオブジェクトの送信、HTTP メソッドの指定、要求でのクエリ パラメーターの送信が可能です。**invokeApi** の型指定なしバージョンも用意されています。
 
 ##<a name="authentication"></a>方法: アプリに認証を追加する
@@ -840,4 +840,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Android アプリに認証を追加する]: app-service-mobile-android-get-started-users.md
 [認証の使用]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="01/07/2016" 
+    ms.date="02/02/2016" 
     ms.author="elizapo" />
 
 
@@ -61,11 +61,11 @@ Azure RemoteApp は、Microsoft アカウントと Azure Active Directory アカ
 | Microsoft アカウント | | あり | はい | いいえ |
 | Azure Active Directory (Azure AD) | | | | |
 | | Azure AD のみ | あり | はい | いいえ |
-| | パスワード同期がある AD Connect | あり | Yes | あり |
+| | パスワード同期がある AD Connect | あり | はい | あり |
 | | パスワード同期がない AD Connect | あり | はい | いいえ |
-| | AD FS がある AD Connect | あり | Yes | あり |
-| | サード パーティの Azure サポート ID プロバイダー (Ping など) | あり | Yes | あり |
-| Multi-Factor Authentication | | あり | Yes | あり |
+| | AD FS がある AD Connect | あり | はい | あり |
+| | サード パーティの Azure サポート ID プロバイダー (Ping など) | あり | はい | あり |
+| Multi-Factor Authentication | | あり | はい | あり |
 
 
 
@@ -80,7 +80,7 @@ Azure AD アカウントを使用する場合は、Azure AD テナントがサ�
 
 ハイブリッドのコレクションには、Azure AD とオンプレミスの Active Directory を使用する必要があります。AD Connect を使用して、2 つのディレクトリを統合する必要があります。ただし、AD Connect を構成する方法に関してはいくつかの選択肢があります。
 
-AD Connect には、パスワード同期を使用する場合と、AD フェデレーションを使用する場合の 2 つのシナリオがあります。どちらが最適かについては、[AD Connect の情報](active-directory-aadconnect.md)を確認してください。
+AD Connect には、パスワード同期を使用する場合と、AD フェデレーションを使用する場合の 2 つのシナリオがあります。どちらが最適かについては、[AD Connect の情報](../active-directory/active-directory-aadconnect.md)を確認してください。
 
 クラウドのコレクションに Azure AD と AD を使用することもできます。同じ設定手順に従ってください。
 
@@ -91,4 +91,4 @@ Azure AD および Active Directory の構成に必要な手順については�
 
 「[クラウドのコレクションを作成する](remoteapp-create-cloud-deployment.md)」または「[ハイブリッドのコレクションを作成する](remoteapp-create-hybrid-deployment.md)」で作成してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

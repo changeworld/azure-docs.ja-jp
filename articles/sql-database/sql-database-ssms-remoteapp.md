@@ -1,10 +1,16 @@
-<properties pageTitle="Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する | Microsoft Azure" description="このチュートリアルでは、SQL Database に接続するときにセキュリティとパフォーマンスのために Azure RemoteApp で SQL Server Management Studio を使用する方法を説明します" services="sql-database" documentationCenter="" authors="adhurwit" manager="" tags=""//>
+<properties 
+	pageTitle="Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する | Microsoft Azure" 
+	description="このチュートリアルでは、Azure RemoteApp で SQL Server Management Studio を使用して、SQL Database に接続するときにセキュリティとパフォーマンスを確保する方法について説明します。"
+	services="sql-database" 
+	documentationCenter=""
+	authors="adhurwit" 
+	manager=""/>
 
 <tags 
 	ms.service="sql-database" 
 	ms.workload="data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
 	ms.topic="article" 
 	ms.date="01/20/2016" 
 	ms.author="adhurwit"/>
@@ -14,7 +20,7 @@
 ## はじめに  
 このチュートリアルでは、Azure RemoteApp で SQL Server Management Studio (SSMS) を使用して、SQL Database に接続する方法について説明します。Azure RemoteApp で SQL Server Management Studio を設定する手順を示し、その利点と、Azure Active Directory で使用できるセキュリティ機能について説明します。
 
-**推定所要時間:** 45 分
+**推定所要時間:** 45分
 
 ## Azure RemoteApp での SSMS
 
@@ -66,14 +72,14 @@ VM のデスクトップに Validate という名前の PowerShell スクリプ�
 
 sysprep は、完了すると VM をシャットダウンします。
 
-Azure RemoteApp イメージの作成の詳細については、「[Azure で RemoteApp テンプレート イメージを作成する方法](http://blogs.msdn.com/b/rds/archive/2015/03/17/how-to-create-a-remoteapp-template-image-in-azure.aspx)」を参照してください。
+Azure RemoteApp イメージの作成方法の詳細については、「[How to create a RemoteApp template image in Azure](http://blogs.msdn.com/b/rds/archive/2015/03/17/how-to-create-a-remoteapp-template-image-in-azure.aspx)」をご覧ください。
 
 
 ### 4\.イメージをキャプチャする
 
 VM の実行が停止したら、現在のポータルで探してキャプチャします。
 
-イメージのキャプチャについては、「[クラシック デプロイメント モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines-capture-image-windows-server.md)」をご覧ください。
+イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines-capture-image-windows-server.md)」をご覧ください。
 
 
 ### 5\.Azure RemoteApp テンプレート イメージに追加する
@@ -104,7 +110,7 @@ VM の実行が停止したら、現在のポータルで探してキャプチ�
 
 ### 9\.Azure RemoteApp クライアント アプリケーションをインストールする
 
-「[Download | Azure RemoteApp](https://www.remoteapp.windowsazure.com/en/clients.aspx)」から Azure RemoteApp をダウンロードしてインストールできます。
+Azure RemoteApp は、[Azure RemoteApp のダウンロード ページ](https://www.remoteapp.windowsazure.com/en/clients.aspx)からダウンロードしてインストールできます。
 
 
 
@@ -137,7 +143,7 @@ Azure Active Directory でユーザーに移動すると、[アクティビテ�
 
 以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。アプリケーションの 1 つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
 
-SQL Database に接続する方法の詳細については、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
+SQL Database に接続する方法の詳細については、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 
 
 今のところは以上ですべてです。機能を有効にご活用ください。
@@ -152,4 +158,4 @@ SQL Database に接続する方法の詳細については、「[SQL Server Mana
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

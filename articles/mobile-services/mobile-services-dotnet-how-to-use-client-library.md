@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/02/2015"
+	ms.date="01/28/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services 用の管理対象クライアント ライブラリの使用方法
@@ -86,7 +86,7 @@ Mobile Services のテーブル データにアクセスするコードとその
 - [特定の列を選択する]
 - [ID でデータを検索する]
 
->[AZURE.NOTE]すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
+>[AZURE.NOTE] すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。50 以上の行を返すには、「[ページにデータを返す]」で説明されている `Take` メソッドを使用します。
 
 ### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
@@ -211,7 +211,7 @@ Mobile Services のテーブル データにアクセスするコードとその
 
 ##<a name="inserting"></a>方法: モバイル サービスにデータを挿入する
 
-> [AZURE.NOTE]型に対して挿入、検索、削除、更新の各操作を実行する場合は、**ID** と呼ばれるメンバーを作成する必要があります。そのため、**TodoItem** クラスの例には、名前 **ID** のメンバーがあります。更新および削除の操作では、有効な ID 値を常に指定する必要があります。
+> [AZURE.NOTE] 型に対して挿入、検索、削除、更新の各操作を実行する場合は、**ID** と呼ばれるメンバーを作成する必要があります。そのため、**TodoItem** クラスの例には、名前 **ID** のメンバーがあります。更新および削除の操作では、有効な ID 値を常に指定する必要があります。
 
 次のコードは、テーブルに新しい行を挿入する方法を示しています。パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
 
@@ -309,7 +309,7 @@ Mobile Services クライアントでは、Azure Notification Hubs によるプ�
 	    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
 	}
 
-この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[アプリケーションにプッシュ通知を追加する](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
+この例では、登録で 2 つのタグが含められます。Windows アプリの詳細については、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
 Xamarin アプリではいくつかの追加コードが必要になります。このコードを使用して、iOS または Android アプリで実行されている Xamarin アプリを Apple Push Notification サービス (APNS) と Google Cloud Messaging (GCM) にそれぞれ登録することができます。詳細については、「**アプリにプッシュ通知を追加する**」を参照してください ([Xamarin.iOS](partner-xamarin-mobile-services-ios-get-started-push.md#add-push) | [Xamarin.Android](partner-xamarin-mobile-services-android-get-started-push.md#add-push))。
 
@@ -771,4 +771,4 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

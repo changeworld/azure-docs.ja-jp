@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="02/04/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -31,37 +31,33 @@ Virtual Network (VNET) のサポートは、キャッシュの作成中に **[Re
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
-VNET のサポートを構成するには、まず **[料金レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
+VNET のサポートを構成するには、まず **[価格レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
 
 ![価格レベルの選択][redis-cache-premium-pricing-tier]
 
-Azure Redis Cache VNET の統合は、**[Virtual Network]** ブレードで構成します。ここでは、既存の従来型 VNET を選択できます。新しい VNET を使用するには、「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って作成し、**[Redis Cache Virtual Network]** ブレードに戻って選択します。
+Azure Redis Cache VNET 統合は、**[仮想ネットワーク (クラシック)]** ブレードで構成します。ここでは、既存の従来型 VNET を選択できます。新しい VNET を使用するには、「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って作成し、**[Redis Cache Virtual Network]** ブレードに戻って選択します。
 
->[AZURE.NOTE]Azure Redis Cache は、クラシック VNET に対応しています。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+>[AZURE.NOTE] Azure Redis Cache は、クラシック VNET に対応しています。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
+VNET を選択して構成するには、**[新規 Redis Cache]** ブレードで **[仮想ネットワーク (クラシック)]** をクリックし、ドロップダウン リストから目的の VNET を選択します。
 
 ![Virtual Network][redis-cache-vnet]
 
-**[Virtual Network]** ブレードの **[Virtual Network]** をクリックして選択し、VNET を構成します。
-
-![Virtual Network][redis-cache-vnet-select]
-
-目的の VNET をクリックして選択します。
-
-![Virtual Network][redis-cache-vnet-subnet]
-
-[サブネット] をクリックして目的のサブネットを選択します。
+**[サブネット]** ドロップダウン リストから目的のサブネットを選択します。
 
 ![Virtual Network][redis-cache-vnet-ip]
 
-**[静的 IP アドレス]** フィールドは省略可能です。ここでなにも指定しない場合は、選択したサブネットから選択されます。特定の静的 IP が必要な場合は、目的の **[静的 IP アドレス]** を入力し、**[OK]** をクリックして VNET の構成を保存します。選択した静的 IP が既に使用中の場合、エラー メッセージが表示されます。
+**[静的 IP アドレス]** フィールドは省略可能です。ここでなにも指定しない場合は、選択したサブネットから選択されます。特定の静的 IP が必要な場合は、**[静的 IP アドレス]** に目的のアドレスを入力し、**[OK]** をクリックして VNET 構成を保存します。選択した静的 IP が既に使用中の場合、エラー メッセージが表示されます。
 
-キャッシュを作成すると、同じ VNET 内のクライアントからのみアドレスを指定できます。
+キャッシュが作成されたら、**[設定]** ブレードで **[仮想ネットワーク]** をクリックすることで、VNET の IP アドレスとその他の情報を表示できます。
 
->[AZURE.IMPORTANT]VNET を使用するときに Azure Redis Cache インスタンスにアクセスするには、VNET で 1 つ目のパラメーターとしてキャッシュの静的 IP アドレスを渡し、`sslhost` パラメーターにキャッシュのエンドポイントを指定して渡します。次の例では、静的 IP アドレスは `10.10.1.5`、キャッシュ エンドポイントは `contoso5.redis.cache.windows.net` です。
+![Virtual Network][redis-cache-vnet-info]
+
+>[AZURE.IMPORTANT] VNET を使用するときに Azure Redis Cache インスタンスにアクセスするには、VNET で 1 つ目のパラメーターとしてキャッシュの静的 IP アドレスを渡し、`sslhost` パラメーターにキャッシュのエンドポイントを指定して渡します。次の例では、静的 IP アドレスは `172.160.0.99`、キャッシュ エンドポイントは `contoso5.redis.cache.windows.net` です。
 
 	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 	{
-	    return ConnectionMultiplexer.Connect("10.10.1.5,sslhost=contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+	    return ConnectionMultiplexer.Connect("172.160.0.99,sslhost=contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
 	});
 	
 	public static ConnectionMultiplexer Connection
@@ -119,10 +115,8 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet.png
 
-[redis-cache-vnet-select]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-select.png
-
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
-[redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
+[redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0211_2016-->

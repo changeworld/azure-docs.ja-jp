@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/05/2016"
+   ms.date="02/08/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
@@ -182,7 +182,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        }
     }
 
-デプロイメント時にパラメーター値を入力する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md/#parameter-file)」を参照してください。
+デプロイ時にパラメーター値を入力する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy/#parameter-file)」をご覧ください。
 
 ## 変数
 
@@ -517,4 +517,4 @@ resources セクションには、デプロイの対象となる一連のリソ�
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

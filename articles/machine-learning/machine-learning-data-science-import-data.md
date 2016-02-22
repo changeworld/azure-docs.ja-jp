@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/27/2015"
+	ms.date="02/08/2016"
 	ms.author="garye;bradsev" />
 
 
@@ -32,7 +32,7 @@ Machine Learning Studio で独自のデータを使用して予測分析ソリ�
 
 これらの各オプションについては、上にあるメニューの各トピックを参照してください。各トピックでは、多様なデータ ソースのデータをインポートして Machine Learning Studio で使用する方法が説明されています。
 
-> [AZURE.NOTE]Machine Learning Studio には、この用途に使用できるさまざまなサンプル データセットが用意されています。詳細については、「[Azure Machine Learning Studio におけるサンプル データセットの使用](machine-learning-use-sample-datasets.md)」を参照してください。
+> [AZURE.NOTE] Machine Learning Studio には、この用途に使用できるさまざまなサンプル データセットが用意されています。詳細については、「[Azure Machine Learning Studio におけるサンプル データセットの使用](machine-learning-use-sample-datasets.md)」を参照してください。
 
 この概要のトピックでは、Machine Learning Studio で使用できるようにデータを準備する方法と、サポートされるデータ形式とデータ型についても説明します。
 
@@ -91,4 +91,4 @@ Machine Learning Studio は***データ テーブル***と呼ばれる内部デ�
 [metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

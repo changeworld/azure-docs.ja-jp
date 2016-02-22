@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/11/2015"
+   ms.date="02/09/2016"
    ms.author="bwren" />
 
 
@@ -99,7 +99,7 @@ Orchestrator Runbook を変換して Azure Automation にインポートする�
 - OutputFolder - 変換後のグラフィカル Runbook を作成するフォルダーへのパス。 
 
 
-次の例のコマンドは、**MyRunbooks.ois\_export** と呼ばれるエクスポート ファイルの Runbook を変換します。これらの Runbook では、Active Directory と Data Protection Manager の統合パックが使用されています。
+次の例のコマンドは、**MyRunbooks.ois\_export** というエクスポート ファイルの Runbook を変換します。これらの Runbook では、Active Directory と Data Protection Manager の統合パックが使用されています。
 
 	ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks" 
 
@@ -160,4 +160,4 @@ Orchestrator の Runbook は、**Runbook の呼び出し**活動を使用して�
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

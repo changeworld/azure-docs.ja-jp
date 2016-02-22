@@ -4,7 +4,7 @@
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 
@@ -23,17 +23,15 @@
 - [Azure Classic Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 - [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
 
-この記事では、リソース マネージャー デプロイメント モデルを使用して、手順を説明します。この構成に対して別のデプロイ モデルを探す場合は、上のタブで必要な記事を選択してください。
-
-この時点で、リソース マネージャーのデプロイメント方法を使用して作成した仮想ネットワークのうち、異なるサブスクリプション内に存在する仮想ネットワークを対象にした VNet 間接続についてはソリューションがありません。チームは現在、ソリューションの開発に取り組んでいます。年内または来年初頭に進展があることを見込んでいます。進展があった場合は、この記事で内容を説明します。次の手順は、同じサブスクリプション内にある VNet に関するものです。
+この記事では、**リソース マネージャー** デプロイ モデルと PowerShell を使用して、仮想ネットワーク間の接続を作成する手順について説明します。現時点では、リソース マネージャー デプロイ モデルを使用して作成された、さまざまサブスクリプションに存在する仮想ネットワークの VNet 間接続に関するドキュメントはありません。チームでは、現在ソリューションに取り組んでいます。進展があった場合は、この記事で内容を説明します。次の手順は、同じサブスクリプション内にある VNet に関するものです。
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 	
-- クラシック デプロイ モデルを使用して仮想ネットワークを作成した場合は、「[VNet 間接続の作成](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。クラシック デプロイメント モデルでは、異なるサブスクリプションに存在する VNet 間の接続をサポートします。
+- クラシック デプロイ モデルを使用して仮想ネットワークを作成した場合は、「[Azure クラシック ポータルでの VNet 間接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)」をご覧ください。クラシック デプロイ モデルでは、さまざまなサブスクリプションに存在する VNet の間の接続をサポートしています。
 	
-- クラシック デプロイ モデルで作成した仮想ネットワークを、Azure リソース マネージャー モデルで作成した仮想ネットワークに接続する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+- クラシック デプロイ モデルで作成した仮想ネットワークを、Azure リソース マネージャー モデルで作成した仮想ネットワークに接続する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。
 
 ## VNet 間接続の概要
 
@@ -262,4 +260,4 @@ VNet にゲートウェイ サブネットを追加する必要がある場合�
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

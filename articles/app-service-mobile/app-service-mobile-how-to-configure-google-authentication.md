@@ -3,7 +3,7 @@
 	description="App Services アプリケーションに Google 認証を構成する方法について説明します。"
     services="app-service\mobile"
 	documentationCenter=""
-	authors="mattchenderson" 
+	authors="mattchenderson"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,26 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/20/2015"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Google ログインを使用するように App Service アプリケーションを構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]&nbsp;
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、[accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) にアクセスしてください。
 
-> [AZURE.NOTE]このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
+> [AZURE.NOTE]
+このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用する場合との相違点は、トピック全体を通してメモに記載しています。
 
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
 
 1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URI は、Google アプリの構成に使用します。
- 
+
 2. [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。**[プロジェクトの作成]** をクリックして**プロジェクト名**を入力し、**[作成]** をクリックします。
 
 3. 左側のナビゲーション バーで、**[API & Auth]** をクリックした後、**[Social APIs]** の下の **[Google+ API]**、**[Enable API]** の順にクリックします。
@@ -44,18 +43,21 @@
 6. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins]** に貼り付け、前にコピーした **リダイレクト URI** を **[Authorized Redirect URI]** に貼り付けます。リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/google/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。HTTPS スキームを使用していることを確認します。**[Create]** をクリックします。
 
 
-	> [AZURE.NOTE]App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-google_ を使用します。
+	> [AZURE.NOTE]
+	App Service の認証/承認機能ではなく、App Service ゲートウェイを使用している場合、リダイレクト URL では、ゲートウェイ URL とパス _/signin-google_ を使用します。
 
 
 7. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
 
 
-    > [AZURE.IMPORTANT]クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [AZURE.IMPORTANT]
+	クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
 
-> [AZURE.NOTE]App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Google]** を選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
+> [AZURE.NOTE]
+App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Google]** を選択します。先に取得した値を貼り付けて、**[保存]** をクリックします。
 
 
 8. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
@@ -91,6 +93,5 @@
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure ポータル]: https://portal.azure.com/
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016" 
+	ms.date="02/02/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のカスタム テンプレート イメージの作成方法
@@ -46,7 +46,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。詳細については、「[Configure Azure Active Directory for RemoteApp](remoteapp-ad.md)」を参照してください。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-- [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
+- [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 
 
@@ -142,4 +142,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

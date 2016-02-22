@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/02/2015"
+	ms.date="01/25/2016"
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加
@@ -27,7 +27,7 @@
 
 ##概要
 
-このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 次のビデオで、Nick Harris によるこのチュートリアルのデモをご覧いただけます。
 
@@ -46,7 +46,7 @@
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-&nbsp;&nbsp;3.Visual Studio 2012 Express for Windows Phone で、チュートリアル「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-phone-get-started-data.md)」を実行したときに作成したプロジェクトを開きます。
+&nbsp;&nbsp;3.Visual Studio で、チュートリアル「[既存のアプリケーションへの Mobile Services の追加](mobile-services-windows-phone-get-started-data.md)」を実行したときに作成したプロジェクトを開きます。
 
 &nbsp;&nbsp;4.F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、*TodoItem* テーブルでは認証が要求されるために発生します。
 
@@ -82,4 +82,4 @@
 [既存のアプリケーションへの Mobile Services の追加]: mobile-services-windows-phone-get-started-data.md
 [Authorize users with scripts]: ../mobile-services-windows-phone-authorize-users-in-scripts.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

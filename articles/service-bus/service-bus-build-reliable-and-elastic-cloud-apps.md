@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="02/08/2016" 
 	ms.author="sethm"/>
 
 # メッセージングを使用した信頼性の高い柔軟なクラウド アプリケーションの構築 
@@ -37,7 +37,7 @@
  
 ## 基本
 
-- [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- [Azure キューと Azure Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [Service Bus REST API リファレンス](http://msdn.microsoft.com/library/azure/hh780717.aspx)
 
 ## 関連サービス
@@ -45,4 +45,4 @@
 - [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -7,7 +7,14 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/26/2015" ms.author="aashishr", "giridham"; "jimpark"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/08/2016"
+	ms.author="giridham; jimpark;"/>
 
 
 # DPM を使用した SQL Server ワークロード用 Azure Backup
@@ -55,7 +62,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
 
-    >[AZURE.NOTE]\(画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。このプロセスは、**高速完全バックアップ**と呼ばれます。SQL トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分のデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この場合は午後 8 時) からのログを再生することにより、ポイントが作成されます。
+    >[AZURE.NOTE] (画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。このプロセスは、**高速完全バックアップ**と呼ばれます。トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分にデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この例では午後 8 時) からログを再生することでポイントが作成されます。
 
 8. **[次へ]** をクリックします。
 
@@ -91,7 +98,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     この例では、バックアップは 1 日に 1 回、午後 12 時 00 分と午後 8 時 (画面の下部) に作成されます。
 
-    >[AZURE.NOTE]すばやく回復するために、ディスク上にいくつか短期的な回復ポイントを作っておくことをお勧めします。これは、"オペレーショナル リカバリ" と呼ばれます。Azure は、より高い SLA を提供し、可用性を確保するのに適したオフサイトの場所として機能します。
+    >[AZURE.NOTE] すばやく回復するために、ディスク上にいくつか短期的な回復ポイントを作っておくことをお勧めします。これは、"オペレーショナル リカバリ" と呼ばれます。Azure は、より高い SLA を提供し、可用性を確保するのに適したオフサイトの場所として機能します。
 
     **ベスト プラクティス**: DPM を使用したローカル ディスク バックアップの完了より後に Azure Backup がスケジュールされていることを確認します。これにより、最新のディスク バックアップを Azure にコピーできるようになります。
 
@@ -167,4 +174,4 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

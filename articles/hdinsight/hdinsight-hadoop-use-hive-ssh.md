@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/04/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #SSH による HDInsight での Hive と Hadoop の使用
@@ -23,7 +23,7 @@
 
 この記事では、Secure Shell (SSH) を使用して Azure HDInsight クラスターで Hadoop に接続してから、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを対話的に実行する方法について説明します。
 
-> [AZURE.IMPORTANT]Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。使用方法に関する詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
+> [AZURE.IMPORTANT] Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。使用方法に関する詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -76,7 +76,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
     * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
     * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
-    > [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+    > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
     > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
@@ -97,7 +97,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
     3 つのデータ行が返され、各行の t4 列には **[ERROR]** が含まれます。
 
-    > [AZURE.NOTE]外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
+    > [AZURE.NOTE] 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 
 ##<a id="summary"></a>概要
 
@@ -144,4 +144,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,7 +1,7 @@
 <properties
  pageTitle="クラウドでの HPC Pack クラスター オプション | Microsoft Azure"
  description="Microsoft HPC Pack を使用して Azure クラウドでハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプションについて学習します。"
- services="virtual-machines,cloud-services"
+ services="virtual-machines,cloud-services,batch"
  documentationCenter=""
  authors="dlepow"
  manager="timlt"
@@ -13,7 +13,7 @@ ms.service="virtual-machines"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/26/2016"
+ ms.date="02/04/2016"
  ms.author="danlep"/>
 
 # Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
@@ -26,6 +26,19 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 ## Azure VM での HPC Pack クラスターの実行
 
+### Azure テンプレート
+
+* (Marketplace) [HPC Pack cluster for Windows workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
+
+* (Marketplace) [HPC Pack cluster for Excel workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
+
+* (Marketplace) [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
+
+* (クイックスタート) [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
+
+* (クイックスタート) [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
+
+* (クイックスタート) [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
 
 ### Azure VM イメージ
 
@@ -35,13 +48,7 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 * [Windows Server 2012 R2 上の HPC Pack コンピューティング ノードと Excel](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
 
-### Azure クイック スタート テンプレート
 
-* [HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
-
-* [Linux コンピューティング ノードがある HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
-
-* [Create an HPC cluster with custom compute node image (カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
 
 ### PowerShell デプロイメント スクリプト
 
@@ -59,9 +66,7 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 
 
-### Azure クラシック ポータルを使用した手動デプロイメント
-
-
+### Azure ポータルを使用した手動デプロイメント
 
 * [Set up the head node of an HPC Pack cluster in an Azure VM (Azure VM での HPC Pack クラスターのヘッド ノードのセットアップ)](virtual-machines-hpcpack-cluster-headnode.md)
 
@@ -98,4 +103,4 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

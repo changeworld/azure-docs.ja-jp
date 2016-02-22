@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/02/2016"
+    ms.date="02/09/2016"
     ms.author="markvi"/>
 
 #SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧
@@ -196,8 +196,8 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 
 
 
+##関連記事
 
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
-
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0211_2016-->

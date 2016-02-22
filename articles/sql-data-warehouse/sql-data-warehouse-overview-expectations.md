@@ -3,7 +3,7 @@
    description="SQL Data Warehouse のパブリック プレビュー機能と一般公開の目標の概要"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lvargas"
+   authors="twounder"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="01/07/2016"
-   ms.author="lvargas;mausher;barbkess"/>
+   ms.author="mausher;barbkess;sonyama"/>
 
 # SQL Data Warehouse プレビューで予期される内容
 
@@ -72,4 +72,4 @@ SQL Data Warehouse では、複数のコンピューティング ノードにわ
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0211_2016-->

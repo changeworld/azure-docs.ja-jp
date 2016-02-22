@@ -1,8 +1,8 @@
 <properties
 	pageTitle="Azure App Service を使用した Xamarin.Android アプリへのプッシュ通知の追加"
-	description="Azure App Service と Azure Notification Hubs を使用して、Xamarin Android アプリにプッシュ通知を送信する方法について説明します。"
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
+	description="Azure App Service と Azure Notification Hubs を使用して、Xamarin.Android アプリにプッシュ通知を送信する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
 	authors="ggailey777"
 	manager="dwrede"
 	editor=""/>
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/18/2015" 
+	ms.date="02/04/2016"
 	ms.author="glenga"/>
 
 # Xamarin.Android アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -31,7 +29,7 @@
 このチュートリアルには、次のものが必要です。
 
 + アクティブな Google アカウント。[accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) で、Google アカウントにサインアップできます。
-   
+
 + [Google Cloud Messaging のクライアント コンポーネント](http://components.xamarin.com/view/GCMClient/)。このコンポーネントは、チュートリアル中に追加します。
 
 + [Xamarin.Android クイック スタート] チュートリアルの完了。
@@ -63,9 +61,9 @@
 
 ## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
-エミュレーターで仮想デバイスを使用して、アプリケーションをテストできます。エミュレーターで実行するときに必要な追加の構成手順があります。
+エミュレーターで仮想デバイスを使用して、アプリをテストできます。エミュレーターで実行するときに必要な追加の構成手順があります。
 
-1. Android Virtual Device (AVD) Manager で、次に示すように、Google API がターゲットとして設定された仮想デバイスでデプロイまたはデバッグする必要があります。 
+1. 次に示すように Android Virtual Device (AVD) Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
 
 	![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
@@ -85,4 +83,4 @@
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0211_2016-->

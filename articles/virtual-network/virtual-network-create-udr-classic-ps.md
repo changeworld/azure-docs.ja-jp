@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 #PowerShell を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
@@ -23,11 +23,11 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[ARM のアクションをここに入力](armToken)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-以下の Azure PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに示されているようにコマンドを実行するのであれば、「[PowerShell を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-ps.md)」に示されている環境を構築します。
+以下の Azure PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに示されているようにコマンドを実行するのであれば、「[PowerShell を使用して VNet (クラシック) を作成する](virtual-networks-create-vnet-classic-netcfg-ps.md)」に示されている環境を構築します。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -36,11 +36,9 @@
 
 3. **`New-AzureRouteTable`** コマンドレットを実行して、フロントエンドのサブネットのルート テーブルを作成します。
 
-		```powershell
 		New-AzureRouteTable -Name UDR-FrontEnd `
 			-Location uswest `
 			-Label "Route table for front end subnet"
-		```
 
 	出力:
 
@@ -50,12 +48,10 @@
 
 4. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`Set-AzureRoute`** コマンドレットを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 	
-		```powershell
 		Get-AzureRouteTable UDR-FrontEnd `
 			|Set-AzureRoute -RouteName RouteToBackEnd -AddressPrefix 192.168.2.0/24 `
 			-NextHopType VirtualAppliance `
 			-NextHopIpAddress 192.168.0.4
-		```
 
 	出力:
 
@@ -69,39 +65,32 @@
 
 5. **`Set-AzureSubnetRouteTable`** コマンドレットを実行して、上記で作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
 
-		```powershell
 		Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
 			-SubnetName FrontEnd `
 			-RouteTableName UDR-FrontEnd
-		```
  
 ## バックエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
 
 3. **`New-AzureRouteTable`** コマンドレットを実行して、バックエンドのサブネットのルート テーブルを作成します。
 
-		```powershell
 		New-AzureRouteTable -Name UDR-BackEnd `
 			-Location uswest `
 			-Label "Route table for back end subnet"
-		```
 
 4. フロントエンドのサブネット (192.168.1.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`Set-AzureRoute`** コマンドレットを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 
-		```powershell
 		Get-AzureRouteTable UDR-BackEnd `
 			|Set-AzureRoute -RouteName RouteToFrontEnd -AddressPrefix 192.168.1.0/24 `
 			-NextHopType VirtualAppliance `
 			-NextHopIpAddress 192.168.0.4
-		```
 
 5. **`Set-AzureSubnetRouteTable`** コマンドレットを実行して、上記で作成したルート テーブルを **BackEnd** サブネットに関連付けます。
 
-		```powershell
 		Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
 			-SubnetName FrontEnd `
 			-RouteTableName UDR-FrontEnd
-		```
+
 ## FW1 VM で IP 転送を有効にする
 FW1 VM で IP 転送を有効にするには、次の手順に従います。
 
@@ -119,4 +108,4 @@ FW1 VM で IP 転送を有効にするには、次の手順に従います。
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0211_2016-->

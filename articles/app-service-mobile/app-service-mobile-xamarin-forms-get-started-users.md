@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="Mobile Apps での Xamarin.Forms アプリの認証の使用" 
-	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Forms アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
+<properties
+	pageTitle="Mobile Apps での Xamarin.Forms アプリの認証の使用"
+	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Forms アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin" 
-	ms.devlang="dotnet" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin"
+	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/07/2015" 
+	ms.date="02/04/2016"
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -38,7 +36,7 @@
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 
-##ポータブル クラス ライブラリに認証を追加する 
+##ポータブル クラス ライブラリに認証を追加する
 
 Mobile Apps では、ログイン インターフェイスの表示とデータのキャッシュを行うために、プラットフォーム固有の `MobileServiceClient.LoginAsync` メソッドを使用します。Xamarin Forms プロジェクトで認証するには、ポータブル クラス ライブラリに `IAuthenticate` インターフェイスを定義します。サポートするプラットフォームごとに、このインターフェイスをプラットフォーム固有のプロジェクト内に実装します。
 
@@ -59,14 +57,14 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 
 		public class App : Application
 		{
-	
+
 	        public static IAuthenticate Authenticator { get; private set; }
-	
+
 	        public static void Init(IAuthenticate authenticator)
 	        {
 	            Authenticator = authenticator;
 	        }
-	
+
 			...
 
 
@@ -147,12 +145,12 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 
 
 5. `IAuthenticate` インターフェイスをサポートするために、次のように `MainActivity` クラスに `MobileServiceUser` フィールドと `Authenticate` メソッドを追加して更新します。
- 
+
 	Facebook ではなく別の `MobileServiceAuthenticationProvider` を使用する場合は、該当箇所も変更します。
 
 		// Define a authenticated user.
 		private MobileServiceUser user;
-	
+
         public async Task<bool> Authenticate()
         {
             var success = false;
@@ -208,18 +206,18 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 		using Microsoft.WindowsAzure.MobileServices;
 		using System.Threading.Tasks;
 
-4. `AppDelegate` クラスを更新して、`IAuthenticate` インターフェイスを実装します。
+4. `AppDelegate` クラスを、`IAuthenticate`インターフェイスを実装するように更新します。
 
 		public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 
 
 5. `IAuthenticate` インターフェイスをサポートするために、次のように `AppDelegate` クラスに `MobileServiceUser` フィールドと `Authenticate` メソッドを追加して更新します。
- 
+
 	Facebook ではなく別の `MobileServiceAuthenticationProvider` を使用する場合は、該当箇所も変更します。
 
 		// Define a authenticated user.
 		private MobileServiceUser user;
-	
+
         public async Task<bool> Authenticate()
         {
             var success = false;
@@ -280,7 +278,7 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 
 
 5. `IAuthenticate` インターフェイスをサポートするために、次のように `MainPage` クラスに `MobileServiceUser` フィールドと `Authenticate` メソッドを追加して更新します。
- 
+
 	Facebook ではなく別の `MobileServiceAuthenticationProvider` を使用する場合は、該当箇所も変更します。
 
         // Define a authenticated user.
@@ -320,7 +318,7 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
             this.InitializeComponent();
 
             <Your portable class library namespace>.App.Init(this);
-            
+
             LoadApplication(new <Your portable class library namespace>.App());
         }
 
@@ -350,7 +348,7 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 
 
 5. `IAuthenticate` インターフェイスをサポートするために、次のように `MainPage` クラスに `MobileServiceUser` フィールドと `Authenticate` メソッドを追加して更新します。
- 
+
 	Facebook ではなく別の `MobileServiceAuthenticationProvider` を使用する場合は、該当箇所も変更します。
 
         // Define a authenticated user.
@@ -405,7 +403,7 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 		protected override void OnActivated(IActivatedEventArgs args)
 		{
 		    base.OnActivated(args);
-		
+
 		    if (args.Kind == ActivationKind.WebAuthenticationBrokerContinuation)
 		    {
 		        var client = TodoItemManager.DefaultManager.CurrentClient as MobileServiceClient;
@@ -426,7 +424,4 @@ Mobile Apps では、ログイン インターフェイスの表示とデータ�
 [Installing Xamarin.iOS on Windows]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-
- 
-
-<!---HONumber=AcomDC_1210_2015--->
+<!---HONumber=AcomDC_0211_2016-->

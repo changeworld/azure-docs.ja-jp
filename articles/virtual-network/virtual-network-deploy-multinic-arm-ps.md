@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 #PowerShell を使用した複数の NIC VM のデプロイ
@@ -37,7 +37,7 @@
 2. テンプレート ページの **[親リソース グループ]** の右側にある **[Azure へのデプロイ]** をクリックします。
 3. 必要に応じて、パラメーター値を変更し、Azure プレビュー ポータル内の手順に従ってリソース グループをデプロイします。
 
-> [AZURE.IMPORTANT]ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
+> [AZURE.IMPORTANT] ストレージ アカウント名が一意であることを確認してください。Azure では重複するストレージ アカウント名を使用できません。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -51,7 +51,7 @@
 
 ### 手順 1 - スクリプトの開始
 
-使用するすべての PowerShell スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/multinic.ps1)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
+使用するすべての PowerShell スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
@@ -184,7 +184,7 @@
 		                    
 		ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/IaaSStory-Backend
 
-2. 数分後、資格情報プロンプトに入力して、**[OK]** をクリックします。次に示す出力は、1 つの VM を表しています。プロセス全体を完了するには、8 分間かかります。
+2. 数分後、資格情報プロンプトに入力して、**[OK]** をクリックします。次に示す出力は、1 つの VM を表しています。プロセス全体を完了するには、8 分間かかりました。
 
 		ResourceGroupName            : 
 		Id                           : 
@@ -308,4 +308,4 @@
 		RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 		StatusCode          : OK
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0211_2016-->

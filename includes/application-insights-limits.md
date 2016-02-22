@@ -19,6 +19,6 @@
 
 <sup>2</sup> 5,000 万を超える追加容量を購入することができます。
  
-[Application Insights の価格とクォータについて](app-insights-pricing.md)
+[Application Insights の価格とクォータについて](../articles/application-insights/app-insights-pricing.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

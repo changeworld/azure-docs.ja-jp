@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/22/2015"
+	ms.date="02/09/2016"
 	ms.author="renash"/>
 
 
@@ -55,8 +55,12 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 4.	**BLOB ストレージ ターゲット:** データは、ブロック blob およびページ blob との間で、アップロードまたはダウンロードが可能です。
 5.	**ジョブの数:** お客様は、ストレージ アカウントごとに 20 個までのアクティブなジョブを使用できます。
 6.	**ジョブの最大サイズ:** ジョブのサイズは、使用するハード ドライブの容量と、ストレージ アカウントに格納できるデータの最大量によって決まります。各ジョブは、10 台までのハード ドライブを含むことができます。
+7.  **サポートされるオペレーティング システム:** Azure に配布する前に Azure Import/Export ツールを使用してハード ドライブを準備するには、Windows 7、Windows 8、Windows 8.1、Windows 10*、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 のいずれかのオペレーティング システムを使用することができます。  
 
-  >[AZURE.IMPORTANT] USB アダプターが組み込まれた外部ハード ディスク ドライブは、このサービスではサポートされていません。外部 HDD は準備しないでください。また、データをインポートする際に外部ケース内のディスクを使用することはできません。3.5" SATA II/III **内部**ハード ディスク ドライブを使用します。SATA ディスクをコンピューターに直接接続できない場合は、外部の SATA - USB アダプターを使用します。「よく寄せられる質問」のセクションで推奨されているアダプターの一覧を参照してください。
+  > [AZURE.IMPORTANT] 
+    - ハード ドライブを準備するために Windows 10 コンピューターを使用している場合の特別な手順については、[よく寄せられる質問セクション](#frequently-asked-questions)を参照してください。
+    
+    - External hard disk drives that come with an in built USB adaptor are not supported by this service. Please do not prepare an external HDD. The disk inside the external casing also cannot be used for importing data. Use a 3.5" SATA II/III **internal** hard disk drive. If you cannot connect the SATA disk directly to your machine, use an external SATA to USB adaptor. See the list of recommended adaptors in FAQ section.
 
 ## クラシック ポータルでのインポート ジョブの作成##
 
@@ -173,6 +177,17 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 ### 全般
 
+**Windows 10 でどのように HDD を準備すればよいですか。**
+  
+HDD を準備するために Windows 10 を使用する場合は、以下の手順に従ってください。
+ 
+- Azure Import/Export サービスを準備する HDD 上で、手動で BitLocker 暗号化を有効にします。ファイル エクスプ ローラーで HDD のドライブ文字を右クリックして、[BitLocker をオンにする] を選択し、ウィザードに従って操作します。  
+- 回復キーをメモしておいてください。  
+- 暗号化モードを選択するメッセージが表示されたら、**[互換モード (このデバイスから移動できるドライブに最適)]** を選択します。  
+- 暗号化が完了したら、Azure Import/Export ツールを実行してデータをこの HDD にコピーします。   
+- */bk* パラメーターを使用し、このパラメーターの値で回復キーを指定します。   
+- */format* パラメーターおよび */encrypt* パラメーターは使用しないでください。  
+
 **Import/Export サービスの料金はいくらですか。**
 
 - 料金情報については、[料金のページ](http://go.microsoft.com/fwlink/?LinkId=329033)を参照してください。
@@ -275,4 +290,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->

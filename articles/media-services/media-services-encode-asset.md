@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/05/2015"  
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -33,9 +33,9 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
-- **メディア エンコーダー スタンダード**
-- **Azure Media Encoder**
-- **メディア エンコーダー プレミアム ワークフロー**
+- [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
+- [Azure Media Encoder](media-services-encode-asset.md#azure-media-encoder)
+- [メディア エンコーダー プレミアム ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。このトピックではまた、エンコーダーを比較します。
 
@@ -74,15 +74,15 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 ###サムネイルを生成する
 
-詳細については、「[Media Encoder Standard を使用してサムネイルを生成する方法](media-services-custom-mes-presets-with-dotnet.md#thumbnails)」を参照してください。
+詳細については、「[サムネイルを生成する](media-services-custom-mes-presets-with-dotnet.md#thumbnails)」をご覧ください。
 
 ###動画をトリミングする (クリッピング)
 
-詳細については、「[Media Encoder Standard を使用して動画をトリミングする方法](media-services-custom-mes-presets-with-dotnet.md#trim_video)」を参照してください。
+詳細については、「[動画をトリミングする (クリッピング)](media-services-custom-mes-presets-with-dotnet.md#trim_video)」をご覧ください。
 
 ###オーバーレイを作成する
 
-詳細については、「[Media Encoder Standard を使用してオーバーレイを作成する方法](media-services-custom-mes-presets-with-dotnet.md#overlay)」を参照してください。
+詳細については、「[オーバーレイを作成する](media-services-custom-mes-presets-with-dotnet.md#overlay)」をご覧ください。
 
 ###関連項目
 
@@ -104,7 +104,7 @@ Azure Media Encoder は Media Services がサポートするエンコーダー�
 
 ###プリセット
 
-Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
+Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
 ###入力メタデータと出力メタデータ
 
@@ -140,6 +140,11 @@ Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn61
 
 [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
+###既知の問題
+
+入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
+
+
 ##<a id="compare_encoders"></a>エンコーダーの比較
 
 ###<a id="billing"></a>各エンコーダーで使用される課金メーター
@@ -161,16 +166,16 @@ Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn61
 Adobe® Flash® F4V |あり|なし |あり
 MXF/SMPTE 377M |あり|制限あり|あり
 GXF |あり|なし |あり
-MPEG-2 トランスポート ストリーム |あり|Yes |あり
-MPEG-2 プログラム ストリーム |あり|Yes |あり
-MPEG-4/MP4 |あり|Yes |あり
-Windows Media/ASF |あり|Yes |あり
-AVI (非圧縮 8-bit/10-bit)|あり|Yes |あり
+MPEG-2 トランスポート ストリーム |あり|はい |あり
+MPEG-2 プログラム ストリーム |あり|はい |あり
+MPEG-4/MP4 |あり|はい |あり
+Windows Media/ASF |あり|はい |あり
+AVI (非圧縮 8-bit/10-bit)|あり|はい |あり
 3GPP/3GPP2 |あり|はい |いいえ
 スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|はい|いいえ
-[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|いいえ|いいえ
-Matroska/WebM |あり|いいえ|いいえ
-QuickTime (.mov) |あり|いいえ|いいえ
+[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|なし|いいえ
+Matroska/WebM |あり|なし|いいえ
+QuickTime (.mov) |あり|なし|いいえ
 
 ###入力ビデオ コーデック
 
@@ -181,17 +186,17 @@ Avid DNxHD (MXF) |あり|なし|あり
 DVCPro/DVCProHD (MXF) |あり|なし|あり
 JPEG2000 |あり|なし|あり
 MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル|最大 422 プロファイル|あり
-MPEG-1 |あり|Yes|あり
-Windows Media ビデオ/VC-1 |あり|Yes|あり
+MPEG-1 |あり|はい|あり
+Windows Media ビデオ/VC-1 |あり|はい|あり
 Canopus HQ/HQX |いいえ|あり|いいえ
-MPEG-4 Part 2 |あり|いいえ|いいえ
-[Theora](https://en.wikipedia.org/wiki/Theora) |あり|いいえ|いいえ
-Apple ProRes 422 |あり|いいえ|いいえ
-Apple ProRes 422 LT |あり|いいえ|いいえ
-Apple ProRes 422 HQ |あり|いいえ|いいえ
-Apple ProRes プロキシ|あり|いいえ|いいえ
-Apple ProRes 4444 |あり|いいえ|いいえ
-Apple ProRes 4444 XQ |あり|いいえ|いいえ
+MPEG-4 Part 2 |あり|なし|いいえ
+[Theora](https://en.wikipedia.org/wiki/Theora) |あり|なし|いいえ
+Apple ProRes 422 |あり|なし|いいえ
+Apple ProRes 422 LT |あり|なし|いいえ
+Apple ProRes 422 HQ |あり|なし|いいえ
+Apple ProRes プロキシ|あり|なし|いいえ
+Apple ProRes 4444 |あり|なし|いいえ
+Apple ProRes 4444 XQ |あり|なし|いいえ
 
 ###入力オーディオ コーデック
 
@@ -199,16 +204,16 @@ Apple ProRes 4444 XQ |あり|いいえ|いいえ
 ---|---|---|---
 AES (SMPTE 331M および 302M、AES3-2003) |いいえ|いいえ|あり
 Dolby® E |いいえ|いいえ|あり
-Dolby® Digital (AC3) |いいえ|あり|あり
+Dolby® Digital (AC3) |いいえ|はい|あり
 Dolby® Digital Plus (E-AC3) |いいえ|いいえ|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|Yes|あり
-MPEG Layer 2|あり|Yes|あり
-MP3 (MPEG-1 Audio Layer 3)|あり|Yes|あり
-Windows Media オーディオ|あり|Yes|あり
-WAV/PCM|あり|Yes|あり
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ|いいえ
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|いいえ|いいえ
-[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ|いいえ
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|はい|あり
+MPEG Layer 2|あり|はい|あり
+MP3 (MPEG-1 Audio Layer 3)|あり|はい|あり
+Windows Media オーディオ|あり|はい|あり
+WAV/PCM|あり|はい|あり
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|なし|いいえ
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|なし|いいえ
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|なし|いいえ
 
 
 ###出力コンテナー/ファイル形式
@@ -219,11 +224,11 @@ Adobe® Flash® F4V|いいえ|いいえ|あり
 MXF (OP1a、XDCAM および AS02)|いいえ|いいえ|あり
 DPP (AS11 を含む)|いいえ|いいえ|あり
 GXF|いいえ|いいえ|あり
-MPEG-4/MP4|あり|Yes|あり
+MPEG-4/MP4|あり|はい|あり
 MPEG TS|あり|なし|あり
-Windows Media/ASF|いいえ|あり|あり
+Windows Media/ASF|いいえ|はい|あり
 AVI (非圧縮 8-bit/10-bit)|いいえ|いいえ|あり
-スムーズ ストリーミング ファイル形式 (PIFF 1.3)|いいえ|あり|あり
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|いいえ|はい|あり
 
 ###出力ビデオ コーデック
 
@@ -234,32 +239,32 @@ Avid DNxHD (MXF)|いいえ|いいえ|あり
 DVCPro/DVCProHD (MXF)|いいえ|いいえ|あり
 MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|いいえ|いいえ|あり
 MPEG-1|いいえ|いいえ|あり
-Windows Media ビデオ/VC-1|いいえ|あり|あり
-JPEG サムネール作成|いいえ|あり|あり
+Windows Media ビデオ/VC-1|いいえ|はい|あり
+JPEG サムネール作成|いいえ|はい|あり
 
 ###出力オーディオ コーデック
 
 出力オーディオ コーデック|メディア エンコーダー スタンダード|Azure Media Encoder|メディア エンコーダー プレミアム ワークフロー
 ---|---|---|---
 AES (SMPTE 331M および 302M、AES3-2003)|いいえ|いいえ|あり
-Dolby® Digital (AC3)|いいえ|あり|あり
+Dolby® Digital (AC3)|いいえ|はい|あり
 Dolby® Digital Plus (E-AC3) 最大 7.1|いいえ|最大 5.1|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|Yes|あり
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|はい|あり
 MPEG Layer 2|いいえ|いいえ|あり
 MP3 (MPEG-1 Audio Layer 3)|いいえ|いいえ|あり
-Windows Media オーディオ|いいえ|あり|あり
+Windows Media オーディオ|いいえ|はい|あり
 
 
 ##エラー コード  
 
-次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。エラーの詳細を取得するには、.NET コードの場合は [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) クラスを、REST コードの場合は [ErrorDetails](https://msdn.microsoft.com/library/jj853026.aspx) REST API を使用します。
+次の表は、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧です。.NET コードのエラーの詳細を取得するには、[ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) クラスを使用します。REST コードのエラーの詳細を取得するには、[ErrorDetails](https://msdn.microsoft.com/library/jj853026.aspx) REST API を使用します。
 
 ErrorDetail.Code|考えられる原因
 -----|-----------------------
 Unknown| タスクの実行中に発生する不明なエラー
 ErrorDownloadingInputAssetMalformedContent|無効なファイル名、サイズ 0 のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ
 ErrorDownloadingInputAssetServiceFailure|ダウンロード中のネットワーク エラーやストレージ エラーなど、サービス側での問題に関するエラーのカテゴリ
-ErrorParsingConfiguration|構成が有効なシステム プリセットでない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ
+ErrorParsingConfiguration|構成が有効なシステム プリセットではない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ
 ErrorExecutingTaskMalformedContent|入力メディア ファイル内の問題が障害の原因となり、タスクの実行中に発生するエラーのカテゴリ
 ErrorExecutingTaskUnsupportedFormat|メディア形式がサポートされていない、または構成と一致しないなど、提供されたファイルをメディア プロセッサが処理できない場合に発生するエラーのカテゴリ(映像のみの資産から音声のみの出力を生成しようとした場合など)
 ErrorProcessingTask|コンテンツとは無関係に、メディア プロセッサでタスクの処理中に発生するその他のエラーのカテゴリ
@@ -290,4 +295,4 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0211_2016-->
