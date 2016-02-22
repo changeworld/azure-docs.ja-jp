@@ -54,7 +54,8 @@ Mobile Apps バックエンドに新しいテーブルを作成する方法に�
 
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される `MobileServiceClient` オブジェクトを作成します。
 
-	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
+	MobileServiceClient client = new MobileServiceClient(
+	"MOBILE_APP_URL");
 
 上記のコードで、`MOBILE_APP_URL` を、[Azure ポータル](https://portal.azure.com/)のモバイル アプリ バックエンド用のブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。
 
@@ -257,7 +258,12 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような Json.NET を利用できます。 JObject jo = new JObject(); jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D"); jo.Add("Text", "Hello World"); jo.Add("Complete", false); var inserted = await table.UpdateAsync(jo);
+型指定されていないデータを挿入するには、次のような Json.NET を利用できます。
+	JObject jo = new JObject();
+	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	jo.Add("Text", "Hello World");
+	jo.Add("Complete", false);
+	var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 

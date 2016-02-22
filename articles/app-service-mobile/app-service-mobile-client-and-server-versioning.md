@@ -79,7 +79,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 | サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
-| .NET | [WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | ****バージョン ヘッダーなし ** | | Node.js | (coming soon) | **バージョン ヘッダーなし** |
+| .NET | [WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | **バージョン ヘッダーなし** |
+| Node.js | (近日対応予定) | **バージョン ヘッダーなし** |
 
 <!-- TODO: add Node npm version -->
 

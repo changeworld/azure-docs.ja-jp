@@ -38,7 +38,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -83,7 +83,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
+* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
 
 
 ## コンピューティング集中型インスタンス

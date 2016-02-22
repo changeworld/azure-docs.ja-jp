@@ -314,11 +314,11 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 インポート時に利用できる詳細オプションは多数あります。まず、ツールには既定の一括インポート用ストアド プロシージャ (BulkInsert.js) が用意されていますが、独自のインポート用ストアド プロシージャを指定することもできます。
 
- ![DocumentDB 一括挿入オプションのスクリーンショット](./media/documentdb-import-data/bulkinsertsp.png)
+ ![Screenshot of DocumentDB bulk insert sproc option](./media/documentdb-import-data/bulkinsertsp.png)
 
 また、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
 
- ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
+ ![Screenshot of DocumentDB date time import options](./media/documentdb-import-data/datetimeoptions.png)
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。

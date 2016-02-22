@@ -32,7 +32,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 1.  アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2.  Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2.  Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 

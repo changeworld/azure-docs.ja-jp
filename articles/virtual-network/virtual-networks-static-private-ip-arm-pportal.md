@@ -54,7 +54,9 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
 
 6. **[設定]** ブレードで、次のプロパティが以下の値に設定されていることを確認してから **[OK]** をクリックします。
 
-	- **ストレージ アカウント**: *vnetstorage* - **ネットワーク**: *TestVNet* - **サブネット**: *FrontEnd*
+	-**ストレージ アカウント**: *vnetstorage*
+	- **ネットワーク**: *TestVNet*
+	- **サブネット**: *FrontEnd*
 
 	![[サイズの選択] ブレード](./media/virtual-networks-static-ip-arm-pportal/figure05.png)
 

@@ -58,8 +58,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
-	>[AZURE.NOTE]  
-	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
+>[AZURE.NOTE]  
+Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -648,7 +648,8 @@ Web アプリケーションが完成したら、Azure に発行することが�
 6. **[設定]** タブをクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26.png)  
 7. **[構成]** ドロップダウン ボックスを **[デバッグ]** に設定します。
 8. **[ApplicationDbContext]** の**下向き矢印**アイコンをクリックして、**ContactDB** に設定します。
-9. **[Code First Migrations を実行]** チェック ボックスをオンにします。この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
+9. **[Code First Migrations を実行]** チェック ボックスをオンにします。  
+	この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
 
 10. **[発行]** をクリックします。アプリケーションが Azure に発行されます。
 

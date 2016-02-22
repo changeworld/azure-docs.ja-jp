@@ -504,7 +504,8 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	// Start the sign-in process.
 	authenticate();
 
-これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
+これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。
+<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
 ###Caching the authentication token
 In some cases, the call to the login method can be avoided after the first time the user authenticates. We can use [sessionStorage] or [localStorage] to cache the current user identity the first time they log in and every subsequent time we check whether we already have the user identity in our cache. If the cache is empty or calls fail (meaning the current login session has expired), we still need to go through the login process.
 
