@@ -50,7 +50,7 @@ File Storage のスケーラビリティおよびパフォーマンスのター�
 - .NET 用 Azure Storage クライアント ライブラリを使用して、オンプレミスのアプリケーションからファイル共有にアクセスします。コンソール アプリケーションを作成し、ファイル共有で次の操作を実行します。
 	- 共有内のファイルの内容をコンソール ウィンドウに書き込む
 	- ファイル共有のクォータ (最大サイズ) を設定する
-	- 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature を作成する
+	- 共有で定義されている共有アクセス ポリシーを使用するファイルの共有アクセス署名を作成する
 	- ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 	- ファイルを、同じストレージ アカウント内の BLOB にコピーする
 - トラブルシューティングに Azure Storage メトリックを使用します。
@@ -211,7 +211,7 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
 1. 最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-tutorial.md)」の説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「[Log on to a Windows virtual machine using the Azure Portal (Azure ポータルで Windows 仮想マシンにログオンする)](../virtual-machines/virtual-machines-arm-log-on-windows-vm.md)」の説明に従って仮想マシンにリモート接続します。
+2. 次に、「[Azure ポータルで Windows 仮想マシンにログオンする](../virtual-machines/virtual-machines-arm-log-on-windows-vm.md)」の説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
 ### ストレージ アカウントの資格情報を仮想マシンに適用
@@ -261,7 +261,7 @@ File Storage をプログラミングする場合、.NET と Java のストレ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション\]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 

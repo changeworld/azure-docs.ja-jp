@@ -206,7 +206,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 **-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
-**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*eastus* です。
+**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
@@ -248,7 +248,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 
 ### 手順 1.
-「[Create an application gateway with public IP (パブリック IP での Application Gateway の作成)](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
+「[パブリック IP での Application Gateway の作成](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
 
 
 ### 手順 2.

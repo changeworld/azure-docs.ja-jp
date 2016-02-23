@@ -38,7 +38,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -91,7 +91,7 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
 
 ## アーキテクチャの設計図
 
