@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/02/2015"
+   ms.date="02/10/2016"
    ms.author="jgao"/>
 
 # チュートリアル: Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics の使用を開始する
@@ -39,7 +39,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure CLI**。「[Azure CLI のインストールと構成](xplat-cli.md)」をご覧ください。
+- **Azure CLI**。「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
 	- このデモを完了するためには、**プレリリース版の ** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 - **認証**。次のコマンドを使用します。
 
@@ -53,7 +53,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。Data Lake Analytics アカウントを作成するには、以下を指定する必要があります。
 
-- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。[Azure リソース マネージャー](resource-group-overview.md)を使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
+- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。[Azure リソース マネージャー](../resource-group-overview.md)を使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
 
 	サブスクリプションのリソース グループを列挙するには:
     
@@ -75,7 +75,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 		azure datalake store account create "<Data Lake Store Account Name>" "<Azure Location>" "<Resource Group Name>"
 
-	> [AZURE.NOTE]Data Lake アカウント名には小文字と数字のみを含める必要があります。
+	> [AZURE.NOTE] Data Lake アカウント名には小文字と数字のみを含める必要があります。
 
 
 
@@ -88,7 +88,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 ![Data Lake Analytics でのアカウントの表示](./media/data-lake-analytics-get-started-cli/data-lake-analytics-show-account-cli.png)
 
-> [AZURE.NOTE]Data Lake Analytics アカウント名には小文字と数字のみを含める必要があります。
+> [AZURE.NOTE] Data Lake Analytics アカウント名には小文字と数字のみを含める必要があります。
 
 
 ## Data Lake Store にデータをアップロードする
@@ -102,7 +102,7 @@ CLI を使用してファイルをアップロードするには、次のコマ�
   	azure datalake store filesystem import "<Data Lake Store Account Name>" "<Path>" "<Destination>"
   	azure datalake store filesystem list "<Data Lake Store Account Name>" "<Path>"
 
-Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。Azure BLOB ストレージへのデータのアップロードについては、「[Azure ストレージでの Azure CLI の使用](storage-azure-cli.md)」を参照してください。
+Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。Azure BLOB ストレージへのデータのアップロードについては、「[Azure ストレージでの Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
 
 ## Data Lake Analytics ジョブを送信する
 
@@ -139,7 +139,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE]パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
+    >[AZURE.NOTE] パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
 
 	
 **ジョブを送信するには**
@@ -169,4 +169,4 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -11,7 +11,7 @@
 <tags
  ms.service="iot-suite"
  ms.devlang="na"
- ms.topic="article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="10/21/2015"
@@ -145,4 +145,4 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

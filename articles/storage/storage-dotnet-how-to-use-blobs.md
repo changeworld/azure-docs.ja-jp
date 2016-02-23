@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="01/22/2016"
+	ms.date="02/14/2016"
 	ms.author="tamram"/>
 
 
@@ -353,8 +353,8 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 - [.NET 用の Table Storage の概要](storage-dotnet-how-to-use-tables.md)
 - [.NET 用の Queue Storage の概要](storage-dotnet-how-to-use-queues.md)
 - [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
-- [SQL Database を使用したリレーショナル データの格納](../sql-database/articles/sql-database-dotnet-how-to-use.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
+- [.NET アプリケーションで Azure SQL Database を使用する方法](../sql-database/sql-database-dotnet-how-to-use.md)
 - [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
@@ -368,4 +368,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

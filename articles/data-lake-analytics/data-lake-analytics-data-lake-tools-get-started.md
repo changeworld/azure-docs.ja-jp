@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/07/2015"
+   ms.date="02/10/2016"
    ms.author="jgao"/>
 
 # チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
@@ -52,7 +52,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 1. Visual Studio を開きます。
 2. **[ビュー]** メニューで、**[サーバー エクスプローラー]** をクリックして、サーバー エクスプローラーを開きます。または、**Ctrl + Alt + S** キーを押します。
 3. **[Azure]** を右クリックし、[Microsoft Azure サブスクリプションへの接続] をクリックして、指示に従います。
-4. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics--get-started-powershell.md)」をご覧ください。
+4. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
 
 ## ソース データ ファイルのアップロード
 
@@ -101,7 +101,11 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
                     ClickedUrls     string
             FROM "/Samples/Data/SearchLog.tsv"
             USING Extractors.Tsv();
-        
+
+		@res =
+		    SELECT *
+		    FROM @searchlog;        
+
         OUTPUT @searchlog   
             TO "/Output/SearchLog-from-Data-Lake.csv"
         USING Outputters.Csv();
@@ -118,7 +122,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE]パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
+    >[AZURE.NOTE] パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
 
 	次の機能に注意してください。
 
@@ -130,7 +134,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
  
     - *** 列の展開**
 
-        の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         **[列の展開]** をクリックすると、* が列名に置き換えられます。
     
@@ -148,7 +152,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	- **定義に移動してすべての参照を検索**
 	
-		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] \(F12) をクリックすると、その定義に移動できます。[すべての参照の検索] \(Shift + F12) をクリックすると、すべての参照が表示されます。
+		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。[すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
 
 	- **Azure パスの挿入**
 		
@@ -239,7 +243,7 @@ Visual Studio で U-SQL をローカル実行し、次のことができます�
     Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
 
 ### U-SQL スクリプトのローカル テスト
-U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」を参照してください。U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[ローカル]** を選択し、**[送信]** をクリックします。正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
+U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」を参照してください。U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[(ローカル)]** を選択し、**[送信]** をクリックします。正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
 
 ![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
 
@@ -281,7 +285,7 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 - [Analyze weblogs using Data Lake Analytics (Data Lake Analytics を使用したウェブログの分析)](data-lake-analytics-analyze-weblogs.md)
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
-- [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-user-defined-operators.md)
+- [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
 ##付録 A: チュートリアルの準備のための PowerShell サンプル
 
@@ -355,4 +359,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

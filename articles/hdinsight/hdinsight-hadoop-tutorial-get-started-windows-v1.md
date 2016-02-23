@@ -22,7 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [Windows](../hdinsight-hadoop-tutorial-get-started-windows-v1.md)
-- [Linux](../hdinsight-hadoop-linux-get-started.md)
+- [Linux](../hdinsight-hadoop-linux-tutorial-get-started.md)
 
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
 
@@ -259,8 +259,8 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: ../install-configure-powershell.md
-[powershell-open]: ../install-configure-powershell.md#Install
+[powershell-install-configure]: powershell-install-configure.md
+[powershell-open]: powershell-install-configure.md#setup-1-install
 
 
 [img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.png
@@ -281,4 +281,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

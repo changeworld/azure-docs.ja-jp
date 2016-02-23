@@ -12,11 +12,11 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="12/18/2015" 
 	ms.author="mimig"/>
 
-# DocumentDB コレクションの作成
+# Azure ポータルを使用して DocumentDB コレクションを作成する方法
 
 Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](documentdb-create-account.md)、[データベース](documentdb-create-database.md)、コレクション、およびドキュメントを用意する必要があります。このトピックでは、Azure ポータルで DocumentDB コレクションを作成する方法について説明します。
 
@@ -78,4 +78,4 @@ Azure ポータルで **[コレクションの追加]** が無効になってい
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

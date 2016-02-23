@@ -9,7 +9,7 @@
 <tags 
    ms.service="service-bus"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="11/06/2015"
@@ -69,4 +69,4 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

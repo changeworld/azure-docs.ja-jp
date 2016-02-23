@@ -10,7 +10,7 @@
 <tags
    ms.service="service-fabric"
    ms.devlang="dotNet"
-   ms.topic="hero-article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="11/20/2015"
@@ -19,7 +19,7 @@
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
 Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイし、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
 
-> [AZURE.NOTE]この記事では、既に [ 開発環境がセットアップ](service-fabric-get-started.md)されていると仮定します。
+> [AZURE.NOTE] この記事では、既に [ 開発環境がセットアップ](service-fabric-get-started.md)されていると仮定します。
 
 ## ローカル クラスターを作成する
 Service Fabric クラスターとは、アプリケーションをデプロイすることができるハードウェア リソース セットです。通常、クラスターは 5 台から数千台のコンピューターで構成されます。ただし、Service Fabric SDK には、1 台のコンピューター上で実行できるクラスター構成が含まれています。
@@ -28,7 +28,7 @@ Service Fabric ローカル クラスターがエミュレーターでもシミ�
 
 SDK では、2 つの方法でローカル クラスターをセットアップすることができます。1 つは Windows PowerShell スクリプトを使用する方法、もう 1 つはローカル クラスター マネージャーのシステム トレイ アプリを使用する方法です。このチュートリアルでは、PowerShell スクリプトを使用します。
 
-> [AZURE.NOTE]Visual Studio からアプリケーションをデプロイするという方法でローカル クラスターを既に作成している場合は、このセクションを省略できます。
+> [AZURE.NOTE] Visual Studio からアプリケーションをデプロイするという方法でローカル クラスターを既に作成している場合は、このセクションを省略できます。
 
 
 1. 管理者として、新しい PowerShell ウィンドウを起動します。
@@ -125,7 +125,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
     ![Service Fabric Explorer でアプリケーションの詳細を表示する][sfx-service-overview]
 
-    > [AZURE.NOTE]Service Fabric Explorer の詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
+    > [AZURE.NOTE] Service Fabric Explorer の詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 
 ## アプリケーションのアップグレード
 Service Fabric では、クラスター全体にロールアウトされるときにアプリケーションの正常性を監視することにより、ダウンタイムのないアップグレードを実現します。WordCount アプリケーションの簡単なアップグレードを実行してみましょう。
@@ -186,4 +186,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

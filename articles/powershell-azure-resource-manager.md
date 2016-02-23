@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="01/08/2016" 
+	ms.date="02/17/2016" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
@@ -34,9 +34,9 @@ Azure リソース マネージャーでは、Azure リソースに関するま�
   + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
   
   + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
-- Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+- Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-このチュートリアルは、PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
+このチュートリアルは、PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。
 
 ## デプロイ対象
 
@@ -358,6 +358,8 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
     (Type !? for Help.)
     administratorLoginPassword: ********
 
+テンプレートに、テンプレートをデプロイするコマンドに、パラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+
 コマンドを実行してリソースが作成されると、メッセージが返されます。最終的に、デプロイの結果が表示されます。
 
     DeploymentName    : azuredeploy
@@ -461,4 +463,4 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

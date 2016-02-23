@@ -26,7 +26,7 @@ BLOB サービスには、次のコンポーネントが含まれます。
     
 	*ページ BLOB* は最大 1 TB のサイズにすることができます。頻繁に読み取り/書き込み操作をする場合はこちらが効率的です。Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
 
-	BLOB の詳細については、「[ブロック BLOB、ページ BLOB、追加 BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
+	BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
 
 ## コンテナーおよび BLOB の名前付けと参照
 
@@ -69,4 +69,4 @@ BLOB サービスは、フラット ストレージ スキームに基づいて�
 
 [Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

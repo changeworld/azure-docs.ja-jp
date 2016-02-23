@@ -10,7 +10,7 @@
 <tags
    ms.service="multiple"
    ms.devlang="multiple"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
    ms.date="01/26/2016"
@@ -38,7 +38,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -83,8 +83,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
-
+* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
 
 ## コンピューティング集中型インスタンス
 
@@ -137,4 +136,4 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -9,10 +9,10 @@
 <tags 
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/13/2016"
+   ms.date="02/11/2016"
    ms.author="sngun"/>
 
 # Azure Automation におけるロールベースのアクセス制御
@@ -139,4 +139,4 @@ Automation アカウントに対するロールベースのアクセス制御は
 - Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 - 種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

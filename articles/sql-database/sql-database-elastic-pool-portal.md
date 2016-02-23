@@ -4,15 +4,15 @@
 	keywords="スケーラブルなデータベース、データベースの構成"
 	services="sql-database"
 	documentationCenter=""
-	authors="stevestein"
-	manager="jeffreyg"
+	authors="sidneyh"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/02/2015"
-	ms.author="sstein"
+	ms.date="02/12/2016"
+	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
@@ -30,7 +30,10 @@
 > [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-powershell.md)を 1 回の手順で実行できます。
 
 
-開始する前に、SQL Database V12 サーバー上にデータベースが必要です。これがない場合、5 分程度時間を取って「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照して作成してください。または、SQL Database V11 サーバーが既にある場合は、[ポータルで V12 にアップグレード](sql-database-v12-upgrade.md)した後で、次の手順に従ってプールを作成できます。
+## 前提条件
+
+* SQL Database V12 サーバーのデータベース。これがない場合、5 分程度時間を取って「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照して作成してください。 
+* または、SQL Database V11 サーバーが既にある場合は、[ポータルで V12 にアップグレード](sql-database-v12-plan-prepare-upgrade.md)した後で、次の手順に従ってプールを作成できます。
 
 
 ## 手順 1. 新しいプールを作成する
@@ -173,8 +176,7 @@ SQL データベースが正しいサーバーとプールで既に構成され�
 
 既存のプールを選択すると、プールのリソース使用率を確認できます。**[リソース使用率]** グラフをクリックして、グラフをカスタマイズして警告を設定できる **[メトリック]** ブレードを開きます。
 
-![エラスティック プールの監視][4] 
-![リソース使用率][6]
+![エラスティック プールの監視][4] ![リソース使用率][6]
 
 **[グラフの編集]** をクリックしてパラメータを追加すると、プールのテレメトリを容易に確認できるようになります。
 
@@ -201,4 +203,4 @@ SQL データベースが正しいサーバーとプールで既に構成され�
 [7]: ./media/sql-database-elastic-pool-portal/edit-chart.png
 [10]: ./media/sql-database-elastic-pool-portal/star.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

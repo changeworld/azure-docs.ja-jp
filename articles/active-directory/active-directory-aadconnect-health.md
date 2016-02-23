@@ -20,12 +20,12 @@
 
 Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと、Azure AD Connect から使用できる同期サービスを監視、分析できます。アラート、パフォーマンス、使用パターン、構成設定を表示する機能があり、Office 365 に対して信頼性の高い接続を維持するなどさまざまなことができます。これらは、対象のサーバーにインストールされているエージェントを使用して実現されます。
 
-![Azure AD Connect Health とは](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
+![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
 
 この情報は、すべて Azure AD Connect Health ポータルで参照できます。Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、および使用状況の分析を表示できます。この情報はすべて 1 つの使いやすい場所に表示されるので、必要な情報を探して時間を無駄にすることはありません。
 
-![Azure AD Connect Health とは](./media/active-directory-aadconnect-health/usage.png)
+![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/usage.png)
 
 Azure AD Connect Health の今後の更新には、他の ID コンポーネントの監視や分析が追加される予定です。このように ID というレンズを通した単一のダッシュボードが提供されることで、より堅牢で健全な統合環境を設定できるようになります。ユーザーはこの環境を利用して作業能力を向上させることができます。
 
@@ -77,7 +77,7 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/portal2.png)
 
 - **[クイック スタート]** – これを選択すると [クイック スタート] ブレードが開きます。ここで、[ツールの取得] を選択して Azure AD Connect Health エージェントをダウンロードしたり、ドキュメントにアクセスしたり、フィードバックを提供したりできます。
-- **[Active Directory フェデレーション サービス]** – Azure AD Connect Health が現在監視しているすべての AD FS サービスを表します。いずれかのインスタンスを選択すると、ブレードが開き、そのサービス インスタンスに関する情報が表示されます。この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。 
+- **[Active Directory フェデレーション サービス]** – Azure AD Connect Health が現在監視しているすべての AD FS サービスを表します。いずれかのインスタンスを選択すると、ブレードが開き、そのサービス インスタンスに関する情報が表示されます。この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。
 - [構成] – 以下の機能のオン/オフを切り替えることができます。
 <ol>
 1. Azure AD Connect Health エージェントを最新バージョンに自動更新する - Azure AD Connect Health エージェントの最新バージョンが使用可能になると、自動的に更新されます。この機能は、既定では有効になっています。
@@ -112,7 +112,7 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 
 
 - Azure AD Connect Health for AD FS の使用を開始するには、こちら ([Azure AD Connect Health for AD FS エージェントのダウンロード](http://go.microsoft.com/fwlink/?LinkID=518973)) から最新バージョンのエージェントをダウンロードします。 エージェントをインストールする前に、Marketplace からサービスを追加したことを確認します。
-- Azure AD Connect Health for Sync の使用を開始するには、こちら (Azure AD Connect Health for Sync エージェントのダウンロード) から最新バージョンのエージェントをダウンロードします。Health エージェントは、Azure AD Connect のインストール時に併せてインストールされます。Azure AD Connect では、以前のバージョンからのインプレース アップグレードがサポートされています。
+- Azure AD Connect Health for Sync の使用を開始するには、[Azure AD Connect の最新バージョン](http://go.microsoft.com/fwlink/?linkid=615771)をダウンロードしてインストールします。Health エージェントは、Azure AD Connect のインストール時に併せてインストールされます。Azure AD Connect では、以前のバージョンからのインプレース アップグレードがサポートされています。
 
 
 ## 関連リンク
@@ -123,4 +123,4 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

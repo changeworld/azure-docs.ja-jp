@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="02/11/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -46,7 +46,8 @@ Web テストには次の 2 種類があります。
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![少なくとも自分の Web サイトの URL を入力  
+](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 - **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
@@ -74,7 +75,8 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果  
+](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
@@ -111,7 +113,8 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果  
+](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -160,7 +163,7 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
     ![Visual Studio で .webtest ファイルを開き、[実行] をクリックします。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 
-#### 2.Web テストを Application Insights にアップロードする
+#### 2\.Web テストを Application Insights にアップロードする
 
 1. Application Insights ポータルで、新しい Web テストを作成します。
 
@@ -207,25 +210,29 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 ここでテストをポータルにアップロードします。テストを実行するたびに、動的な値が使用されます。
 
-## OAuth サインイン
+## サインインの処理
 
-ユーザーが自身の OAuth パスワード (Microsoft、Google、Facebook など) を使ってアプリにサインインしている場合は、SAML プラグインを使用することで、複数手順の Web テストでのサインインのシミュレーションを行うことができます。
+ユーザーがアプリにサインインする場合、サインインの背後にあるページをテストできるように、サインインをシミュレートするための多数のオプションがあります。使用する方法は、アプリで提供されるセキュリティの種類によって異なります。
 
-![Sample web test for OAuth](./media/app-insights-monitor-web-app-availability/81.png)
+どの場合も、テスト目的のみのアカウントを作成する必要があります。可能であれば、読み取り専用になるように、アクセス許可を制限します。
 
-サンプル テストでは、次の手順を実行します。
+* 簡単なユーザー名とパスワード: 通常の方法で Web テストを記録します。まず Cookie を削除します。
+* SAML 認証:この場合、Web テストに使用できる SAML プラグインを使用できます。
+* クライアント シークレット: アプリにクライアント シークレットを含むサイン イン ルートがある場合は、それを使用します。Azure Active Directory はこれを提供します。 
+* オープン認証: たとえば、Microsoft または Google アカウントを使用してサインインします。OAuth を使用する多くのアプリケーションがクライアント シークレットに代わる機能を提供しているため、それを調査することが最初の 1 つの方法です。テストで OAuth を使用してサインインする必要がある場合に、一般的な方法を次に示します。
+ * Fiddler などのツールを使用して、Web ブラウザー、認証サイト、アプリケーション間のトラフィックを調べます。 
+ * 異なるコンピューターやブラウザーを使用するか、または長い間隔 (トークンを期限切れにさせる) で複数のサインインを実行します。
+ * 異なるセッションを比較して、認証サイトから返され、次にサインイン後にアプリケーション サーバーに渡されるトークンを識別します。 
+ * Visual Studio を使用して Web テストを記録します。 
+ * トークンをパラメーター化し、トークンが認証システムから返されたときに、パラメーターを設定し、サイトへのクエリでそれを使用します(Visual Studio は、テストのパラメーター化を試みますが、トークンを正しくパラメーター化しません)。
 
-1. テスト対象の Web アプリに OAuth エンドポイントのアドレスを要求します。
-2. SAML プラグインを使用してサインインします。
-3. サインインした状態で、残りのテストを実行します。
-
-SAML プラグインにより、手順 2. で使用される `Assert` 変数が設定されます。
 
 ## <a name="edit"></a> テストの編集または無効化
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化  
+](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -263,4 +270,4 @@ SAML プラグインにより、手順 2. で使用される `Assert` 変数が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

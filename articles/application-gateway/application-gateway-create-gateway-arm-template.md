@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
+   ms.date="02/02/2016"
    ms.author="joaoma"/>
 
 
@@ -42,7 +42,7 @@ GitHub から直接 Azure リソース マネージャー テンプレートを�
 - CIDR ブロックとして 10.0.0.0/28 を使用する Appgatewaysubnet という名前のサブネットを作成します。
 - トラフィックを負荷分散する Web サーバー用に 2 個の事前構成済みバックエンド IP を設定します。このテンプレート例でのバックエンド IP は、10.0.1.10 および 10.0.1.11 です
 
->[AZURE.NOTE]これらは、このテンプレートのパラメーターです。テンプレートをカスタマイズするには、azuredeploy.json を開くルール、リスナー、SSL を変更できます。
+>[AZURE.NOTE] これらは、このテンプレートのパラメーターです。テンプレートをカスタマイズするには、azuredeploy.json を開くルール、リスナー、SSL を変更できます。
 
 
 
@@ -73,7 +73,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 	| **backendaddress2** | 2 番目の Web サーバーの IP アドレス |
 
 
->[AZURE.IMPORTANT]GitHub で管理される Azure リソース マネージャー テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
+>[AZURE.IMPORTANT] GitHub で管理される Azure リソース マネージャー テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
 
 6. **resources** の内容を確認し、次を参照します。
 
@@ -206,7 +206,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 **-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
-**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
+**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*eastus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
@@ -229,7 +229,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 		data:    -----------------  ------  --------------
 		data:    location           String  East US
 		data:    addressPrefix      String  10.0.0.0/16
-		data:    subnetPrefix       String  10.0.0.0/24	
+		data:    subnetPrefix       String  10.0.0.0/24
 		data:    skuName            String  Standard_Small
 		data:    capacity           Int     2
 		data:    backendIpAddress1  String  10.0.1.10
@@ -284,4 +284,4 @@ SSL オフロードを構成する場合は、「[SSL オフロードの Applica
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -11,7 +11,7 @@
 <tags
  ms.service="iot-suite"
  ms.devlang="na"
- ms.topic="article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="11/30/2015"
@@ -34,8 +34,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 
 | 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-remote-monitoring] | あり | あり | あり | あり | - | 
-| [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+| [リモート監視][lnk-remote-monitoring] | あり | あり | あり | あり | - | | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
 
 ## リモート監視の構成済みソリューションの概要
 
@@ -116,4 +115,4 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

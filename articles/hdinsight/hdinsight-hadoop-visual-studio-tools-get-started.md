@@ -55,7 +55,7 @@ HDInsight Tools for Visual Studio と Microsoft Hive ODBC ドライバーは、M
 ## Azure サブスクリプションに接続する
 HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、Hive クエリの実行が可能です。
 
->[AZURE.NOTE] 汎用の Hadoop クラスター (プレビュー) に接続する方法の詳細については、「[Visual Studio を使用した Hive クエリの書き込みと送信 (ブログの投稿)](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」をご覧ください。
+>[AZURE.NOTE] 汎用の Hadoop クラスターに接続する方法の詳細については、「[Visual Studio を使用した Hive クエリの書き込みと送信 (ブログの投稿)](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)」をご覧ください。
 
 
 **Azure サブスクリプションに接続するには**
@@ -256,15 +256,15 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 
 <!--Link references-->
-[hdinsight-provision]: ../hdinsight/hdinsight-provision-clusters.md
-[hdinsight.introduction]: ../hdinsight-introduction.md
-[hdinsight.get.started]: ../hdinsight-get-started.md
-[hdinsight.hive]: ../hdinsight/hdinsight-use-hive.md
-[hdinsight.submit.jobs]: ../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight.analyze.twitter.data]: ../hdinsight/hdinsight-analyze-twitter-data.md
-[hdinsight.storm.visual.studio.tools]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
-[hdinsight.access.application.logs]: ../hdinsight/hdinsight-hadoop-access-yarn-app-logs.md
+[hdinsight-provision]: hdinsight/hdinsight-provision-clusters.md
+[hdinsight.introduction]: hdinsight-introduction.md
+[hdinsight.get.started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight.hive]: hdinsight/hdinsight-use-hive.md
+[hdinsight.submit.jobs]: hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md
+[hdinsight.analyze.twitter.data]: hdinsight/hdinsight-analyze-twitter-data.md
+[hdinsight.storm.visual.studio.tools]: hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
+[hdinsight.access.application.logs]: hdinsight/hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

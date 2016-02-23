@@ -12,23 +12,22 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.topic="get-started-article"
+	ms.date="02/18/2016"
 	ms.author="billmath;andkjell"/>
 
-# Azure AD Connect でのデバイスの書き戻しの有効化
-
-ここでは、Azure AD Connect においてデバイスの書き戻し機能を有効にする方法について説明します。デバイスの書き戻しは、次のシナリオで使用されます。
-
-AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
-
-これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
+# Azure AD Connect: デバイスの書き戻しの有効化
 
 >[AZURE.NOTE] デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 
-.
+ここでは、Azure AD Connect においてデバイスの書き戻し機能を有効にする方法について説明します。デバイスの書き戻しは、次のシナリオで使用されます。
 
->[AZURE.IMPORTANT] デバイスは、ユーザーと同じフォレスト内にある必要があります。デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。
+- AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
+
+これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
+
+>[AZURE.IMPORTANT]
+<li>デバイスは、ユーザーと同じフォレスト内にある必要があります。デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイメントはサポートされていません。</li> <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>
 
 ## パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
@@ -38,18 +37,21 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 
 1.	Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
 
-2.	Active Directory PowerShell モジュールがインストールされていない場合。次のコマンドを使用してインストールします。
+2.	Active Directory PowerShell モジュールがインストールされていない場合は、次のコマンドを使用してインストールします。
 
-	`Install-WindowsFeature –Name AD-DOMAIN-Services –IncludeManagementTools`
+	`Install-WindowsFeature –Name AD-Domain-Services –IncludeManagementTools`
 
-3.	エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
+3. Azure Active Directory PowerShell モジュールがインストールされていない場合、[Windows PowerShell 用 Azure Active Directory モジュール (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297) からそれをダウンロードしてインストールします。このコンポーネントには、Azure AD Connect と一緒にインストールされるサインイン アシスタントへの依存関係があります。
+
+4.	エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
 
 	`Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
 
 	`Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
 
+構成名前空間の変更が必要なため、エンタープライズ管理者の資格情報が必要です。ドメイン管理者には、十分なアクセス許可がありません。
 
-![Powershell](./media/active-directory-aadconnect-get-started-custom-device-writeback/powershell.png)
+![Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
 
 説明:
 
@@ -66,11 +68,10 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 ## パート 3: Azure AD Connect でのデバイスの書き戻しを有効にする
 Azure AD Connect でデバイスの書き戻しを有効にするには、次の手順を使用します。
 
-1.	インストール ウィザードをもう一度実行します。[追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback2.png)
-2.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェックボックスをオンにして、**[次へ]** をクリックします。チェックボックスがまだオフの場合は、[トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。![デバイスの書き戻し](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback3.png)
-3.	[書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback4.png)
+1.	インストール ウィザードをもう一度実行します。[追加のタスク] ページで **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。![カスタム インストール](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
+2.	[オプション機能] ページで、デバイスの書き戻しを変更できるようになります。Azure AD Connect の準備手順が完了していない場合は、[オプション機能] ページでデバイスの書き戻しの設定を変更できないことに注意してください。[デバイスの書き戻し] チェックボックスをオンにして、**[次へ]** をクリックします。チェックボックスがまだオフの場合は、[トラブルシューティングのセクション](#the-writeback-checkbox-is-still-disabled)を参照してください。![デバイスの書き戻し](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
+3.	[書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。 ![カスタム インストール](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4.	その他の構成は変更しないで、ウィザードのインストールを完了します。必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
-
 
 ## 条件付きアクセスを有効にする
 このシナリオを有効にする詳細な手順については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)」をご覧ください。
@@ -79,10 +80,10 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 デバイスの書き戻しは正常に動作するようになっています。デバイス オブジェクトを AD に書き戻すには、最大 3 時間かかる可能性があります。デバイスが正しく同期されていることを確認するには、同期規則が完了した後で次のようにします。
 
 1.	Active Directory 管理センターを起動します。
-2.	フェデレーションされているドメイン内の RegisteredDevices を展開します。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback5.png)
+2.	フェデレーションされているドメイン内の RegisteredDevices を展開します。 ![カスタム インストール](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
 3.	現在登録されているデバイスが一覧表示されます。
 
-![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback6.png)
+![カスタム インストール](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## トラブルシューティング
 
@@ -98,29 +99,29 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 	- **[コネクタ]** タブを開きます。
 	- 種類が Active Directory ドメイン サービスのコネクタを探して選択します。
 	- **[アクション]** の **[プロパティ]** を選択します。
-	- **[Active Directory フォレストに接続]** を選択します。この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。![Connector アカウント](./media/active-directory-aadconnect-get-started-custom-device-writeback/connectoraccount.png)
+	- **[Active Directory フォレストに接続]** を選択します。この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。![Connector アカウント](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Active Directory の構成を確認します。つまり、configuration 名前付けコンテキストの (CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration) の下に Device Registration Service があることを確認します。
 
-![トラブルシューティング 1](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot1.png)
+![トラブルシューティング 1](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
 
 - configuration 名前空間を検索して、configuration オブジェクトが 1 つのみであることを確認します。複数ある場合は、重複するオブジェクトを削除します。
 
-![トラブルシューティング 2](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot2.png)
+![トラブルシューティング 2](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
 
 - Device Registration Service オブジェクトに、属性 msDS-DeviceLocation が存在し、値が指定されていることを確認します。その場所を参照し、その場所と objectType msDS-DeviceContainer が存在することを確認します。
 
-![トラブルシューティング 3](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot3.png)
+![トラブルシューティング 3](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot3.png)
 
-![トラブルシューティング 4](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot4.png)
+![トラブルシューティング 4](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot4.png)
 
 - Active Directory Connector には、前の手順で検索した Registered Devices コンテナーに対するアクセス許可が必要です。このコンテナーには、次のようなアクセス許可があります。
 
-![トラブルシューティング 5](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot5.png)
+![トラブルシューティング 5](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot5.png)
 
 - Active Directory アカウントに、CN=Device Registration Configuration,CN=Services,CN=Configuration オブジェクトに対するアクセス許可があることを確認します。
 
-![トラブルシューティング 6](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot6.png)
+![トラブルシューティング 6](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 
 ## 追加情報
 - [条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)
@@ -129,4 +130,4 @@ Active Directory の構成を確認します。つまり、configuration 名前�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

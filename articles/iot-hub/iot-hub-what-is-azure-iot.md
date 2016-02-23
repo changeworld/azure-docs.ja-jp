@@ -10,7 +10,7 @@
 <tags
  ms.service="iot-hub"
  ms.devlang="na"
- ms.topic="article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="02/03/2016"
@@ -35,4 +35,4 @@ Azure IoT Hub は、アプリケーション バックエンドと何百万も�
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

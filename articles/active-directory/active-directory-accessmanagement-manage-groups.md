@@ -13,8 +13,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.topic="get-started-article"
+	ms.date="02/10/2016"
 	ms.author="curtand"/>
 
 
@@ -76,4 +76,4 @@ Azure Active Directory (Azure AD) の主な機能の 1 つが、リソースへ�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

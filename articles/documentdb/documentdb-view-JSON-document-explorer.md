@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="01/28/2015"
+	ms.date="01/28/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
@@ -145,4 +145,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

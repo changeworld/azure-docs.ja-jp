@@ -13,11 +13,11 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="11/18/2015" 
 	ms.author="mimig"/>
 
-# DocumentDB 用のデータベースの作成方法
+# Azure ポータルを使用して DocumentDB のデータベースを作成する方法
 
 Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](documentdb-create-account.md)、データベース、コレクション、およびドキュメントを用意する必要があります。このトピックでは、Microsoft Azure ポータルで DocumentDB データベースを作成する方法について説明します。
 
@@ -49,4 +49,4 @@ DocumentDB データベースの作成方法を学習したら、次の手順は
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0218_2016-->
