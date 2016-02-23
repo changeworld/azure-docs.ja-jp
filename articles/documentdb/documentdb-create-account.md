@@ -17,7 +17,7 @@
 	ms.date="12/17/2015" 
 	ms.author="mimig"/>
 
-# Azure ポータルを使用して DocumentDB データベース アカウントを作成する
+# Azure ポータルを使用して DocumentDB データベース アカウントを作成する方法
 
 > [AZURE.SELECTOR]
 - [Azure Portal](documentdb-create-account.md)
@@ -50,4 +50,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="01/24/2016"
+	ms.date="02/14/2016"
 	ms.author="tamram"/>
 
 
@@ -423,8 +423,8 @@ Azure Table Storage は、NoSQL の非構造化データをクラウド内に格
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage で作業するために記述したコードを簡略化する方法については、[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)を参照してください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    - 非構造化データの格納には、[BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)を使用します。
-    - リレーショナル データの格納には、[SQL Database](sql-database-dotnet-how-to-use.md) を使用します。
+    - 非構造化データを格納するには「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」
+    - リレーショナル データを格納するには「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
@@ -444,4 +444,4 @@ Azure Table Storage は、NoSQL の非構造化データをクラウド内に格
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

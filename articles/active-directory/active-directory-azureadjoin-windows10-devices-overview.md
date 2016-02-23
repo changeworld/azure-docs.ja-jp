@@ -14,8 +14,8 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/25/2016" 
+	ms.topic="get-started-article" 
+	ms.date="02/10/2016" 
 	ms.author="femila"/>
 
 # エンタープライズ向け Windows 10: デバイスを仕事に使用する方法
@@ -35,4 +35,4 @@ Windows 10 を使用して Azure Active Directory を活用できます。Window
 | デプロイ | [Azure AD 参加の使用シナリオとデプロイに関する考慮事項](active-directory-azureadjoin-deployment-aadjoindirect.md) <br><br> [Windows 10 エクスペリエンスのためにドメイン参加デバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)<br><br>[組織での Microsoft Passport for Work の有効化](active-directory-azureadjoin-passport-deployment.md)<br><br> [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)<br><br> |
 | ユーザーの作業 | [セットアップ中に新しい Windows 10 デバイスを Azure AD に設定する](active-directory-azureadjoin-user-frx.md) <br><br> [Windows 10 デバイスを [設定] メニューから Azure AD に設定する](active-directory-azureadjoin-user-upgrade.md) <br><br> [個人の Windows 10 デバイスを組織に参加させる](active-directory-azureadjoin-personal-device.md) |
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

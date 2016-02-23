@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/22/2015"  
-	ms.author="juliako"/>
+	ms.date="02/17/2016"  
+	ms.author="piyushjo"/>
 
 
 # Azure Mobile Engagement アプリの作成
@@ -23,7 +23,7 @@
 
 アプリのデータを収集してプッシュ通知を送信できるようにするには、最小限のセットである "基本的な統合" を追加する必要があります。統合に関する完全なドキュメントは、[Mobile Engagement の統合](mobile-engagement-windows-store-integrate-engagement.md)に関するページを参照してください。
 
-> [AZURE.IMPORTANT]Azure Mobile Engagement のチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> [AZURE.IMPORTANT] Azure Mobile Engagement のチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 ##Azure でモバイル アプリ用に Mobile Engagement を設定する
 
@@ -48,4 +48,4 @@ Mobile Engagement ポータルに移動すると、セグメントの分析、�
 
 [Azure Mobile Engagement を使ってみる](mobile-engagement-windows-store-dotnet-get-started.md) (ページの上部でその他のモバイル プラットフォームを選択できます)。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

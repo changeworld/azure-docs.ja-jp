@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/25/2016"
+	ms.date="02/16/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -39,8 +39,8 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 <center>![Azure AD Connect スタック](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
 - 同期 - この部分は、以前 [Dirsync および Azure AD Sync](active-directory-aadconnect-get-started-tools-comparison.md) としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
-- AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、ドメイン参加 SSO、AD のログインのポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイメントに対応するために、組織で使用できます。
-- 正常性の監視 - Azure AD Connect Health により、AD FS サーバーを強力に監視し、このアクティビティを Azure ポータルで一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](active-directory-aadconnect-health.md)」を参照してください。
+- AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、組織で、ドメイン参加 SSO、AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイメントに対応するために使用できます。
+- 正常性の監視 - Azure AD Connect Health により、強力に監視し、Azure ポータルでこのアクティビティを一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](active-directory-aadconnect-health.md)」を参照してください。
 
 ## Azure AD Connect のインストール
 
@@ -89,9 +89,11 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [パスワード ライトバック](active-directory-passwords-getting-started.md)により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
-[デバイスの書き戻し](active-directory-aadconnect-get-started-custom-device-writeback.md)により、Azure AD に登録されているデバイスをオンプレミスの Active Directory にライトバックできます。これにより、そのデバイスを条件付きアクセスに使用できるようになります。
+[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)により、Azure AD に登録されているデバイスをオンプレミスの Active Directory にライトバックできます。これにより、そのデバイスを条件付きアクセスに使用できるようになります。
 
 [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能は既定で有効になっており、多数のクラウド ディレクトリが同時に削除されるのを防ぐことができます。既定では実行ごとに 500 件の削除が許可されていますが、組織のサイズに応じて変更できます。
+
+[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)は、簡単設定を使用したインストールのために既定で有効にされ、Azure AD Connect が最新のリリースで常に最新の状態になるようにします。
 
 ### 機能を構成する次のステップ
 
@@ -100,8 +102,9 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 | フィルター処理の構成 | [Azure AD Connect Sync: フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) |
 | パスワードの同期 | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) |
 | パスワード ライトバック | [パスワード管理の概要](active-directory-passwords-getting-started.md) |
-| デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-get-started-custom-device-writeback.md) |
+| デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md) |
 | 誤って削除されないように保護する | [Azure AD Connect Sync: 誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) |
+| 自動アップグレード | [Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)|
 
 ## Azure AD Connect Sync のカスタマイズ
 Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応した既定の構成が設定されています。とはいえ、既定の構成ではうまくいかず、調整が必要な場面も必ず存在します。このセクションとリンク先のトピックにまとめられているように、構成は変更できます。
@@ -116,11 +119,11 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 | トピック | |
 | --------- | --------- |
+| Azure AD Connect Sync に関するすべての記事 | [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) |
 | 技術的概念 | [Azure AD Connect Sync: 技術的概念](active-directory-aadconnectsync-technical-concepts.md) |
 | 既定の構成について | [Azure AD Connect Sync: 既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md) |
 | ユーザーと連絡先について | [Azure AD Connect Sync: ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) |
 | 宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| 宣言型のプロビジョニングの関数リファレンス | [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md) |
 | 既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) |
 
 ## 詳細情報とリファレンス
@@ -141,4 +144,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

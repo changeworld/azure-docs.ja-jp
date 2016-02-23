@@ -11,7 +11,7 @@
 <tags
  ms.service="iot-suite"
  ms.devlang="na"
- ms.topic="article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="02/04/2016"
@@ -47,4 +47,4 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure Machine Learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/ja-JP/services/storage/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

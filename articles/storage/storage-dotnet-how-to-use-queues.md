@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="01/24/2016"
+	ms.date="02/14/2016"
 	ms.author="gusapost"/>
 
 # .NET を使用して Azure Queue Storage を使用する
@@ -51,7 +51,7 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
 
 ## キューを作成する
 
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このガイドのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount][] に関するドキュメントを参照してください。
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このガイドのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.cloudstorageaccount_methods.aspx) に関するドキュメントを参照してください。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -246,20 +246,18 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
 - 利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
     - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
-- Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../websites-dotnet-webjobs-sdk/)」をご覧ください。
+- Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk.md)」をご覧ください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    - 構造化データの格納には、[テーブル ストレージ](storage-dotnet-how-to-use-tables.md)を使用します。
-    - 非構造化データの格納には、[BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)を使用します。
-    - リレーショナル データの格納には、[SQL Database](sql-database-dotnet-how-to-use.md) を使用します。
+    - 構造化データを格納するには「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」
+    - 非構造化データを格納するには「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」
+    - リレーショナル データを格納するには「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
-  [CloudStorageAccount]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

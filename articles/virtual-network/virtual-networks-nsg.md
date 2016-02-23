@@ -1,6 +1,6 @@
 <properties 
    pageTitle="ネットワーク セキュリティ グループ (NSG)"
-   description="ネットワーク セキュリティ グループ (NSG) の詳細"
+   description="ネットワーク セキュリティ グループ (NSG) を使用した Azure でのファイアウォールの分散について、さらに、NSG を使用して仮想ネットワーク (VNet) 内のトラフィック フローを分離および制御する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -9,15 +9,17 @@
 <tags 
    ms.service="virtual-network"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/11/2016"
    ms.author="telmos" />
 
 # ネットワーク セキュリティ グループ (NSG) について
 
 ネットワーク セキュリティ グループ (NSG) には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+
+## NSG リソース
 
 NSG には、次のプロパティが含まれています。
 
@@ -28,7 +30,7 @@ NSG には、次のプロパティが含まれています。
 |リソース グループ|NSG が属するリソース グループ|NSG はリソース グループに属しますが、リソースが NSG と同じ Azure リージョン内にあれば、任意のリソース グループ内のリソースに関連付けることができます。|リソース グループは、複数のリソースをまとめて 1 つのデプロイメント単位として管理するために使用します。<br/>NSG を、関連付けられているリソースとグループ化することができます。|
 |ルール|許可または拒否するトラフィックを定義するルール||下の「[NSG ルール](#Nsg-rules)」を参照してください。| 
 
->[AZURE.NOTE]エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)を参照してください。
+>[AZURE.NOTE] エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)を参照してください。
 
 ### NSG ルール
 
@@ -45,6 +47,12 @@ NSG ルールには、次のプロパティが含まれています。
 |**方向**|規則に関して一致するトラフィックの方向|受信または送信|受信ルールと送信ルールは方向に基づいて個別に処理されます。|
 |**優先順位**|ルールは優先度の順序でチェックされます。ルールが適用されると、それ以上はルールの一致テストが行われなくなります。|100 ～ 65535 の数値|既存のルールの間に新しいルールを追加する余地を残すために、各ルールの優先度の数値を 100 ずつ飛ばして設定することを検討してください。|
 |**Access (アクセス)**|規則が一致した場合に適用されるアクセスの種類|許可または拒否|パケットに一致する許可ルールが見つからない場合はパケットが削除されることに留意してください。|
+
+NSG には受信と送信の 2 つのルール セットがあります。ルールの優先順位は、各セット内で一意である必要があります。
+
+![NSG ルールの処理](./media/virtual-network-nsg-overview/figure3.png)
+
+上図に、NSG ルールの処理方法を示します。
 
 ### 既定のタグ
 
@@ -84,9 +92,9 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 
 [AZURE.INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
  
-- **VM に対する NSG の関連付け (クラシック デプロイメントのみ)**。 VM に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その VM を宛先とするすべてのトラフィックに適用されます。 
+- **VM に対する NSG の関連付け (クラシック デプロイメントのみ)。** VM に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その VM を宛先とするすべてのトラフィックに適用されます。 
 
-- **NIC に対する NSG の関連付け (リソース マネージャー デプロイメントのみ)**。 NIC に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その NIC にのみ適用されます。これは、複数 NIC の VM で、NSG が 1 つの NIC に適用されている場合、その NIC を宛先とするトラフィックに影響がないことを意味します。
+- **NIC に対する NSG の関連付け (リソース マネージャー デプロイメントのみ)。** NIC に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その NIC にのみ適用されます。これは、複数 NIC の VM で、NSG が 1 つの NIC に適用されている場合、その NIC を宛先とするトラフィックに影響がないことを意味します。
 
 - **サブネットに対する NSG の関連付け (すべてのデプロイメント)**。NSG をサブネットに関連付けた場合、NSG のネットワーク アクセス ルールは、サブネット内のすべての IaaS リソースと PaaS リソースに適用されます。
 
@@ -97,11 +105,25 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 	2. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG
 - **送信トラフィック**
 	1. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG
-	3. サブネットに適用される NSG
+	2. サブネットに適用される NSG
 
 ![NSG ACL](./media/virtual-network-nsg-overview/figure2.png)
 
->[AZURE.NOTE]1 つの NSG は 1 つのサブネット、VM、または NIC に関連付けられますが、同じ NSG は必要なだけの数のリソースに関連付けることができます。
+>[AZURE.NOTE] 1 つの NSG は 1 つのサブネット、VM、または NIC に関連付けられますが、同じ NSG は必要なだけの数のリソースに関連付けることができます。
+
+## 実装
+従来のデプロイ モデルまたはリソース マネージャーによるデプロイ モデルで、以下に示す各種のツールを使用して、NSG を実装することができます。
+
+|デプロイ ツール|クラシック|リソース マネージャー|
+|---|---|---|
+|クラシック ポータル|![いいえ][red]|![いいえ][red]|
+|Azure ポータル|![いいえ][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal">![はい][green]</a>|
+|PowerShell|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps">![はい][green]</a>|
+|Azure CLI|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli">![はい][green]</a>|
+|ARM テンプレート|![なし][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template">![はい][green]</a>|
+
+|**キー**|![はい][green]サポートされています。クリックして記事を確認してください。|![いいえ][red]サポートされていません。|
+|---|---|---|
 
 ## 計画
 
@@ -111,7 +133,7 @@ NSG を実装する前に、次の質問への回答を用意する必要があ�
 
 2. トラフィックをフィルター処理するリソースは、既存の VNet 内のサブネットに接続されているか、新しい VNet またはサブネットに接続されているか。
  
-Azure におけるネットワーク セキュリティの計画に関する詳細については、「[クラウド サービスとネットワーク セキュリティのベスト プラクティス](best-practices-network-security.md)」を参照してください。
+Azure におけるネットワーク セキュリティの計画に関する詳細については、[クラウド サービスとネットワーク セキュリティのベスト プラクティス](../best-practices-network-security.md)に関するページを参照してください。
 
 ## 設計上の考慮事項
 
@@ -127,7 +149,7 @@ NSG の設計時には、次の制限事項を考慮する必要があります�
 |サブスクリプションあたりのリージョンごとの NSG 数|100|既定では、Azure ポータルで作成する各 VM に新しい NSG が 1 つ作成されます。この既定の動作を許可すると、NSG はすぐに上限に達します。設計時はこの制限に留意し、必要に応じてリソースを複数のリージョンまたはサブスクリプションに分割してください。 |
 |NSG あたりの NSG ルール数|200|この上限を超えないように IP とポートの広い範囲を使用してください。 |
 
->[AZURE.IMPORTANT]ソリューションを設計する前に、[Azure のネットワーク サービスに関連するすべての制限事項](../azure-subscription-service-limits/#networking-limits)を確認してください。一部の制限は、サポート チケットを開いて引き上げることができます。
+>[AZURE.IMPORTANT] ソリューションを設計する前に、[Azure のネットワーク サービスに関連するすべての制限事項](../azure-subscription-service-limits.md#networking-limits)を確認してください。一部の制限は、サポート チケットを開いて引き上げることができます。
 
 ### VNet とサブネットの設計
 
@@ -222,7 +244,7 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 |---|---|---|---|---|---|---|---|
 |インターネットからの RDP を許可する|許可|100|INTERNET|**|*|3389|TCP|
 
->[AZURE.NOTE]このルールの発信元アドレス範囲はロード バランサーの VIP ではなく**インターネット**で、発信元ポートは 500001 ではなく ***** である点に注意してください。NAT ルール/負荷分散ルールと NSG ルールを混同しないようにしてください。NSG ルールは、常にトラフィックの最初の発信元と最終的な宛先に関連付けられ、両者の間にあるロード バランサーは**関係しません**。
+>[AZURE.NOTE] このルールの発信元アドレス範囲はロード バランサーの VIP ではなく**インターネット**で、発信元ポートは 500001 ではなく ***** である点に注意してください。NAT ルール/負荷分散ルールと NSG ルールを混同しないようにしてください。NSG ルールは、常にトラフィックの最初の発信元と最終的な宛先に関連付けられ、両者の間にあるロード バランサーは**関係しません**。
 
 ### バックエンドの管理 NIC 向けの NSG
 
@@ -248,4 +270,8 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 - [リソース マネージャーで NSG をデプロイします](virtual-networks-create-nsg-arm-pportal.md)。
 - [NSG のログを管理します](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_1217_2015-->
+[green]: ./media/virtual-network-nsg-overview/green.png
+[yellow]: ./media/virtual-network-nsg-overview/yellow.png
+[red]: ./media/virtual-network-nsg-overview/red.png
+
+<!---HONumber=AcomDC_0218_2016-->

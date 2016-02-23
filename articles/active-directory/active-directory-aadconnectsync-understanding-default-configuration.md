@@ -1,20 +1,19 @@
 <properties
-   pageTitle="Azure AD Connect 同期: 既定の構成について | Microsoft Azure"
-   description="この記事では、Azure AD Connect 同期の既定の構成について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="andkjell"
-   manager="stevenpo"
-   editor=""/>
-
+    pageTitle="Azure AD Connect 同期: 既定の構成について | Microsoft Azure"
+    description="この記事では、Azure AD Connect 同期の既定の構成について説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="stevenpo"
+    editor=""/>
 <tags
-   ms.service="active-directory"
-   ms.workload="identity"
-   ms.tgt_pltfrm="na"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.date="01/21/2016"
-   ms.author="andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+	ms.topic="get-started-article"
+    ms.date="02/12/2016"
+    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 既定の構成について
 
@@ -121,7 +120,7 @@ FSP はメタバースの「あらゆる」 (*) オブジェクトに参加し�
 
 この既定の構成での目標は次のとおりです。
 
-- ログインに関連した属性情報を、有効なアカウントを使用してフォレストから同期する。
+- サインインに関連した属性情報を、有効なアカウントを使用してフォレストから同期する。
 - GAL (グローバル アドレス一覧) で見つかる属性を、メールボックスを持つフォレストから同期する。メールボックスが見つからない場合は、他のフォレストが使用されます。
 - リンクされたメールボックスが見つかった場合、Azure AD にエクスポートされるオブジェクトのリンクされた有効なアカウントが見つかる。
 
@@ -191,7 +190,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 ![受信同期規則の編集](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)
 
-これを踏まえると、アカウント/リソース フォレストのデプロイメントでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが見つかると予想されます。ここで説明している同期規則には、ログインに必要な属性が含まれており、有効なアカウントが見つかったフォレストから、これらの属性がフローする必要があります。これらすべての属性フローが 1 つの同期規則にまとめられます。
+これを踏まえると、アカウント/リソース フォレストのデプロイメントでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが見つかると予想されます。ここで説明している同期規則には、サインインに必要な属性が含まれており、有効なアカウントが見つかったフォレストから、これらの属性がフローする必要があります。これらすべての属性フローが 1 つの同期規則にまとめられます。
 
 変換の種類には、定数、直接、式があります。
 
@@ -217,7 +216,7 @@ NULL
 
 ### 優先順位
 
-個々の同期規則をいくつか見てきましたが、この構成では、これらの規則が一体となって動作します。場合によっては、複数の同期規則の属性値が同じターゲット属性に影響します。この場合、どの属性が優先されるかは属性の優先順位によって決まります。例として、sourceAnchor 属性を見てみましょう。この属性は、Azure AD にログインできるようにするために重要な属性です。この属性の属性フローは "**AD からの受信 - ユーザー アカウント有効**" と "**AD からの受信 - ユーザー共通**" の 2 つの同期規則にあります。メタバース オブジェクトに複数のオブジェクトが結合されている場合は、同期規則の優先順位により、sourceAnchor 属性は、最初に、有効なアカウントを持つフォレストから提供されます。有効なアカウントがない場合は、包括的な同期規則 "**AD からの受信 - ユーザー共通**" が使用されます。これにより、無効なアカウントであっても sourceAnchor が提供されるようになります。
+個々の同期規則をいくつか見てきましたが、この構成では、これらの規則が一体となって動作します。場合によっては、複数の同期規則の属性値が同じターゲット属性に影響します。この場合、どの属性が優先されるかは属性の優先順位によって決まります。例として、sourceAnchor 属性を見てみましょう。この属性は、Azure AD にサインインできるようにするために重要な属性です。この属性の属性フローは "**AD からの受信 - ユーザー アカウント有効**" と "**AD からの受信 - ユーザー共通**" の 2 つの同期規則にあります。メタバース オブジェクトに複数のオブジェクトが結合されている場合は、同期規則の優先順位により、sourceAnchor 属性は、最初に、有効なアカウントを持つフォレストから提供されます。有効なアカウントがない場合は、包括的な同期規則 "**AD からの受信 - ユーザー共通**" が使用されます。これにより、無効なアカウントであっても sourceAnchor が提供されるようになります。
 
 ![同期規則、受信](./media/active-directory-aadconnectsync-understanding-default-configuration/syncrulesinbound.png)
 
@@ -230,7 +229,7 @@ NULL
 | 名前 | コメント |
 | :------------- | :------------- |
 | AD からの受信 - ユーザー結合 | コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
-| AD からの受信 - ユーザー アカウント有効 | Azure AD と Office 365 にログインするために必要な属性。これらの属性は有効なアカウントから取得します。 |
+| AD からの受信 - ユーザー アカウント有効 | Azure AD と Office 365 にサインインするために必要な属性。これらの属性は有効なアカウントから取得します。 |
 | AD からの受信 - Exchange からのユーザー共通 | グローバル アドレス一覧で見つかった属性。ユーザーのメールボックスが見つかったフォレストのデータ品質が最も優れていると想定しています。 |
 | AD からの受信 - ユーザー共通 | グローバル アドレス一覧で見つかった属性。メールボックスが見つからなかった場合、それ以外の結合済みオブジェクトが属性値に影響する可能性があります。 |
 | AD からの受信 - ユーザー Exchange | Exchange が検出された場合にのみ存在します。インフラストラクチャの Exchange 属性がすべて流れます。 |
@@ -241,4 +240,4 @@ NULL
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

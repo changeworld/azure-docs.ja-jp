@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/04/2016"
+   ms.date="02/16/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する
@@ -38,12 +38,9 @@
 - VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
 	
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-
-## PowerShell モジュールのインストール
-
-接続を構成するには、Azure リソース マネージャー PowerShell コマンドレットの最新版が必要です。
 	
-[AZURE.INCLUDE [vpn-gateway-ps-rm-howto](../../includes/vpn-gateway-ps-rm-howto-include.md)]
+- Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+
 
 ## 1\.サブスクリプションへの接続 
 
@@ -63,8 +60,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 ## 2\.仮想ネットワークとゲートウェイ サブネットを作成する
 
-- 仮想ネットワークとゲートウェイ サブネットが既にある場合は、「**手順 3. ローカル サイトを追加する**」に進むことができます。 
-- 仮想ネットワークが既にあり、VNet にゲートウェイ サブネットを追加する場合は、「[VNet にゲートウェイ サブネットを追加するには](#gatewaysubnet)」を参照してください。
+以下の例では、/28 のゲートウェイ サブネットを示します。/29 のように小規模のゲートウェイ サブネットを作成することはできますが、これは推奨されません。追加の機能要件に対応できるよう、/27 またはそれ以上の規模 (/26、/25 など) のゲートウェイ サブネットを作成することをお勧めします。/29 以上の規模のゲートウェイ サブネット持つ仮想ネットワークが既にある場合は、「**手順 3. ローカル サイトを追加する**」に進むことができます。
 
 ### 仮想ネットワークとゲートウェイ サブネットを作成するには
 
@@ -82,11 +78,11 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 	$subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Subnet1' -AddressPrefix '10.0.1.0/28'
 	New-AzureRmVirtualNetwork -Name testvnet -ResourceGroupName testrg -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $subnet1, $subnet2
 
-### <a name="gatewaysubnet"></a>VNet にゲートウェイ サブネットを追加するには (省略可能)
+### <a name="gatewaysubnet"></a>作成済みの仮想ネットワークにゲートウェイ サブネットを追加するには
 
 この手順は、前の手順で作成した VNet にゲートウェイ サブネットを追加する必要がある場合にのみ必要です。
 
-既存の仮想ネットワークがあり、仮想ネットワークにゲートウェイ サブネットを追加する場合は、次のサンプルを使用してゲートウェイ サブネットを作成できます。ゲートウェイ サブネットには、必ず 'GatewaySubnet' という名前を付けてください。別の名前を付けてサブネットを作成しても、Azure はそれをゲートウェイ サブネットとして認識しません。
+以下のサンプルを使用してゲートウェイ サブネットを作成することができます。ゲートウェイ サブネットには、必ず 'GatewaySubnet' という名前を付けてください。別の名前を付けてサブネットを作成しても、Azure はそれをゲートウェイ サブネットとして認識しません。
 
 	$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName testrg -Name testvnet
 	Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/28 -VirtualNetwork $vnet
@@ -143,8 +139,8 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 次の値を使用します。
 
-- ゲートウェイの種類は *Vpn* です。
-- VpnType には、RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *Policy Based* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。 	
+- サイト間構成の **- GatewayType** は、**Vpn** です。ゲートウェイの種類は常に、実装する構成に対応するものとなります。たとえば、他のゲートウェイ構成では、-GatewayType ExpressRoute または -GatewayType VNet2VNet を必要とする場合があります。**サイト間では VPN が必要です**。
+- **-VpnType** には、**RouteBased** (ドキュメントによっては動的ゲートウェイと呼ばれます) または **PolicyBased** (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。 	
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
@@ -246,4 +242,4 @@ VPN 接続を作成していた場合に、ローカル サイトに含まれて
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

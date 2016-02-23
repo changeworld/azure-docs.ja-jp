@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="02/14/2016"
 	ms.author="robinsh"/>
 
 
@@ -28,7 +28,7 @@ Azure ストレージ アカウントを使用すると、Azure Storage の Azur
 ストレージ アカウントには、次の 2 種類があります。
 
 - Standard ストレージ アカウント。Blob、Table、Queue、File Storage が含まれています。
-- Premium ストレージ アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」をご覧ください。
+- Premium ストレージ アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」をご覧ください。
 
 ## ストレージ アカウントの課金
 
@@ -39,15 +39,15 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 - トランザクションには、Azure Storage に対するすべての読み取り操作と書き込み操作が含まれます。
 - 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。  
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure の価格](https://azure.microsoft.com/pricing/details/#storage)」ページをご覧ください。送信データ転送の料金の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage)」ページをご覧ください。送信データ転送の料金の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
 
-ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」をご覧ください。
+ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
-> [AZURE.NOTE] Azure の仮想マシンを作成する場合、デプロイメント場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。このため、使用する仮想マシンのディスク用にストレージ アカウントを作成する場合、必ずしも以下の手順に従う必要はありません。ストレージ アカウント名は仮想マシン名を基にして付けられます。詳細については、[Azure Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
+> [AZURE.NOTE] Azure の仮想マシンを作成する場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。このため、使用する仮想マシンのディスク用にストレージ アカウントを作成する場合、必ずしも以下の手順に従う必要はありません。ストレージ アカウント名は仮想マシン名を基にして付けられます。詳細については、[Azure Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
 ## ストレージ アカウント エンドポイント
 
-Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの*エンドポイント*になります。
+Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの *エンドポイント* になります。
 
 たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 
@@ -61,7 +61,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。詳細については、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](storage-custom-domain-name.md)」をご覧ください。
+また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。従来のストレージ アカウントの詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。ARM ストレージ アカウントの場合、この機能は [Azure ポータル](https://portal.azure.com) でサポートされていませんが、PowerShell で構成することができます。詳細については、「[Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx)」を参照してください。
 
 ## ストレージ アカウントの作成
 
@@ -69,7 +69,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 2. ハブ メニューで、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-3. デプロイメント モデル (**[リソース マネージャー]** または **[クラシック]**) を選択します。**[リソース マネージャー]** が、推奨されるデプロイメント モデルです。詳細については、「[リソース マネージャー デプロイメントとクラシック デプロイメントを理解する](../resource-manager-deployment-model.md)」を参照してください。
+3. デプロイ モデル (**[リソース マネージャー]** または **[クラシック]**) を選択します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
 4. ストレージ アカウントの名前を入力します。
 
@@ -83,7 +83,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 	既定のストレージ アカウントの種類は **Standard-RAGRS** で、Read-Access Geo Redundant レプリケーションを持つ Standard Storage アカウントです。この種類のストレージ アカウントは、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにレプリケートされ、セカンダリ リージョンへの読み取りアクセスを提供します。
 
-	Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。Standard Storage アカウントと Premium Storage アカウントの詳細については、[Storage の概要](storage-introduction.md)に関するページと「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
+	Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。Standard Storage アカウントと Premium Storage アカウントの詳細については、[Microsoft Azure Storage の概要](storage-introduction.md)に関するページと「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」を参照してください。
 
 6. ストレージ アカウントの診断を有効にするかどうかを指定します。診断には、Storage Analytics のログとメトリックが含まれます。
 
@@ -99,7 +99,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-> [AZURE.NOTE]ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *共有アクセス署名* が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+> [AZURE.NOTE] ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *共有アクセス署名* が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ### ストレージ アクセス キーの表示とコピー
 
@@ -137,7 +137,7 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 
     Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
-仮想マシン ディスクを削除するには、Azure クラシック ポータルで次の手順を実行します。
+ストレージ アカウントで従来のデプロイ モデルが使用されている場合は、[Azure クラシック ポータル](https://manage.windowsazure.com)で以下の手順を実行して仮想マシン ディスクを削除することができます。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に移動します。
 2. [Virtual Machines] タブに移動します。
@@ -150,8 +150,8 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 ## 次のステップ
 
 - [Azure Storage のレプリケーション](storage-redundancy.md)
-- [Azure Storage への接続文字列の構成](storage-configure-connection-string.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
+- [Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="02/03/2016"
+	ms.date="02/17/2016"
 	ms.author="jeffreyg"/>
 
 # SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します
@@ -30,10 +30,10 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 | **Standard** | ほとんどのクラウド アプリケーションに適しています。同時に複数のクエリをサポートしています。たとえば、ワークグループや Web アプリケーションなどです。 |
 | **Premium** | トランザクション量が多く、多数の同時ユーザーをサポートし、高度なビジネス継続性機能を必要とする場合に合わせて設計されています。たとえば、ミッション クリティカルなアプリケーションをサポートするデータベースなどです。 |
 
->[AZURE.NOTE] Web および Business エディションは使用中止となっています。[Web および Business エディションのアップグレード](sql-database-upgrade-new-service-tiers.md)方法に関するドキュメントを参照してください。Web エディションと Business エディションの使用を続行する場合は、[終了に関する FAQ](https://azure.microsoft.com/pricing/details/sql-database/web-business/) のページをお読みください。
+>[AZURE.NOTE] Web および Business エディションは使用中止となっています。Web エディションと Business エディションの使用を続行する場合は、[終了に関する FAQ](https://azure.microsoft.com/pricing/details/sql-database/web-business/) のページをお読みください。
 
 ### Single Database サービス階層とパフォーマンス レベル
-単一のデータベースの場合、各サービス階層内に複数のパフォーマンス レベルがあるため、ワークロードのニーズに最も合ったレベルを柔軟に選択できます。スケールアップやスケールダウンが必要な場合は、データベースの階層を簡単に変更することができます。**このときアプリケーションのダウンタイムは発生しません**。 詳細については、「[データベースのサービス階層とパフォーマンス レベルの変更](sql-database-scale-up.md)」を参照してください。
+単一のデータベースの場合、各サービス階層内に複数のパフォーマンス レベルがあるため、ワークロードのニーズに最も合ったレベルを柔軟に選択できます。スケール アップやスケール ダウンが必要な場合は、データベースの階層を簡単に変更することができます。**このときアプリケーションのダウンタイムは発生しません**。 詳細については、「[データベースのサービス階層とパフォーマンス レベルの変更](sql-database-scale-up.md)」を参照してください。
 
 ここに示されたパフォーマンス特性は、[SQL Database V12](sql-database-v12-whats-new.md) を使用して作成したデータベースに適用されます。Azure 内の基になるハードウェアに複数の SQL データベースをホストする場合も、データベースは、所定のリソースを取得します。個々のデータベースの期待されるパフォーマンス特性には影響しません。
 
@@ -49,7 +49,7 @@ DTU について理解を深めるためには、このトピックの[「DTU」
 
 エラスティック データベース プールの場合、これらのデータベースは DTU リソースを共有して使用することができ、プール内のデータベースに特定のパフォーマンス レベルを割り当てる必要はありません。たとえば、Standard プール内の単一のデータベースで使用できるのは 0 eDTU から最大データベース eDTU (サービス階層によって定義された 100 eDTU またはユーザーが定義するカスタム値) までとなります。　これにより、プール全体に提供された eDTU リソースを、多様なワークロードを持つ複数のデータベースが効率的に使用することができます。
 
-次の表では、エラスティック データベース プールのサービス階層の特性について説明します。定義と詳細については、「[SQL Database エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
+次の表では、エラスティック データベース プールのサービス階層の特性について説明します。定義と詳細については、「[SQL Database エラスティック プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
 
 [AZURE.INCLUDE [エラスティック データベースの SQL DB サービス階層を示す表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
@@ -94,4 +94,4 @@ SQL Database のパフォーマンスの監視は、選択したデータベー�
 
 SQL Database の階層については、これで理解できました。では、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

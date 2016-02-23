@@ -30,7 +30,7 @@
 PowerShell をまだセットアップしていない場合は、ダウンロードして構成する必要があります。
 
 1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
-2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
+2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
 3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。詳細については、「[Azure PowerShell のインストールと構成の方法][]」を参照してください。
 
 	```
@@ -96,4 +96,4 @@ SQL Data Warehouse のプロビジョニングが完了したら、[サンプル
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
 [Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/05/2016"
+	ms.date="02/11/2016"
 	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure Active Directory に関連付ける方法
@@ -35,7 +35,7 @@ ID が作成されて Microsoft アカウント システムに格納されま�
 たとえば、Microsoft アカウントを使用するユーザーは Azure クラシック ポータルにサインインします。
 
 > [AZURE.NOTE]
-> Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
+Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
 
 ![][1]
 
@@ -106,19 +106,32 @@ Azure にサインアップする前に Office 365 にサインアップした�
 Azure クラシック ポータルで両方のディレクトリを管理するには、以下の手順を実行します。
 
 > [AZURE.NOTE]
-> この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、**[既存のディレクトリの使用]** オプションは使用できません。
+この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、**[既存のディレクトリの使用]** オプションは使用できません。
 
 1. Microsoft アカウントを使用して、Azure クラシック ポータルにサインインします。
+
 2. **[新規]**、**[App Services]**、**[Active Directory]**、**[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
+
 3. **[既存のディレクトリの使用]** をクリックして、**[サインアウトする準備ができました]** をオンにし、チェック マークをクリックしてアクションを完了します。
+
 4. 職場または学校のディレクトリのグローバル管理者権限を持つアカウントを使用して、Azure クラシック ポータルにサインインします。
+
 5. **[Azure で Contoso ディレクトリを使用しますか]** と表示されたら、**[続行]** をクリックします。
+
 6. **[今すぐサインアウト]** をクリックします。
+
 7. Microsoft アカウントを使用して、Azure クラシック ポータルに再度サインインします。両方のディレクトリが Active Directory 拡張機能に表示されます。
 
 
-## 次の手順
-[Azure への組織としてのサインアップ](sign-up-organization.md)
+## 次のステップ
+
+- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
+
+- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
+
+- Azure AD で役割を割り当てる方法の詳細については、「[Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
 
 
 <!--Image references-->
@@ -126,4 +139,4 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0218_2016-->

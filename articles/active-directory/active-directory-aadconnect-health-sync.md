@@ -1,20 +1,20 @@
 
-<properties 
-	pageTitle="同期での Azure AD Connect Health の使用 | Microsoft Azure" 
-	description="Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="同期での Azure AD Connect Health の使用 | Microsoft Azure"
+	description="Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="01/21/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="02/16/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect Health for Sync の使用
@@ -55,4 +55,4 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/17/2015"
+	ms.date="02/16/2016"
 	ms.author="wesmc"/>
 
 # Xamarin for Android での Notification Hubs の使用
@@ -41,7 +41,6 @@
 
 + [Xamarin.Android]
 + アクティブな Google アカウント
-+ [Azure Mobile Services コンポーネント]
 + [Azure Messaging コンポーネント]
 + [Google Cloud Messaging のクライアント コンポーネント]
 
@@ -518,8 +517,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.Android]: http://xamarin.com/download/
-[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

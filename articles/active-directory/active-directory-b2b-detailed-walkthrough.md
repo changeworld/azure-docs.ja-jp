@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Active Directory B2B コラボレーション プレビューの使用方法に関する詳細なチュートリアル | Microsoft Azure"
-   description="Azure Active Directory B2B は、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで、会社間のリレーションシップをサポートします"
+   description="Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします"
    services="active-directory"
    documentationCenter=""
    authors="viv-liu"
@@ -11,10 +11,10 @@
 <tags
    ms.service="active-directory"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="02/09/2016"
+   ms.date="02/10/2016"
    ms.author="viviali"/>
 
 # Azure AD B2B コラボレーション プレビュー: 詳細なチュートリアル
@@ -28,7 +28,7 @@
 パートナー ユーザーに招待を送信した後に、Azure AD でそれらのユーザーを構成し、Azure ポータルを使用してアプリに対するアクセス権とグループのメンバーシップを付与することができます。まず Alice を追加してみましょう。
 
 ## Alice を Contoso のディレクトリに追加する
-1. 次のような見出しの .csv ファイルを作成し、Alice の **[Email]**、**[DisplayName]**、**[InviteContactUsUrl]** のみを登録します。**[DisplayName]** は、招待に記載する名前です。Contoso 社の Azure AD ディレクトリに表示される名前にもなります。**[InviteContactUsUrl]** は、Alice から Contoso に連絡するときの窓口です。次の例では、Contoso 社の LinkedIn プロフィールを指定しています。.csv ファイルの 1 行目の見出しは、この例と同じスペル、同じ順序で作成する点が重要です。以下の CSV 形式のセクションを参照してください。![Alice の CSV ファイルの例](./media/active-directory-b2b-detailed-walkthrough/AliceCSV.png)
+1. 次のような見出しの .csv ファイルを作成し、Alice の **[Email]**、**[DisplayName]**、**[InviteContactUsUrl]** のみを登録します。**[DisplayName]** は、招待に記載する名前です。Contoso 社の Azure AD ディレクトリに表示される名前にもなります。**[InviteContactUsUrl]** は、Alice から Contoso に連絡するときの窓口です。次の例では、Contoso 社の LinkedIn プロフィールを指定しています。.csv ファイルの 1 行目の見出しは、この例と同じ順序、同じスペルで作成することが重要です。以下の CSV 形式のセクションを参照してください。![Alice の CSV ファイルの例](./media/active-directory-b2b-detailed-walkthrough/AliceCSV.png)
 
 2. Azure ポータルで、Contoso 社のディレクトリにユーザーを追加します ([Active Directory] > [Contoso] > [ユーザー] > [ユーザーの追加])。[ユーザーの種類] ドロップダウンで [パートナー会社のユーザー] を選択します。.csv ファイルをアップロードします。.csv ファイルを閉じてから、アップロードしてください。![Alice の CSV ファイルのアップロード](./media/active-directory-b2b-detailed-walkthrough/AliceUpload.png)
 
@@ -82,4 +82,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

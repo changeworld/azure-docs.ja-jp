@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/02/2016"
+	ms.date="02/17/2016"
 	ms.author="daleche"/>
 
 
@@ -28,8 +28,7 @@
 
 一時エラー (一過性の障害) には、すぐに自動的に解決する根本原因があります。一時エラーを起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。この再構成の進行中、Azure SQL Database への接続の問題が発生する場合があります。
 
-クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。
-[SQL Database クライアント アプリケーション SQL エラー コード](sql-database-develop-error-messages.md)のトピックの冒頭付近に一時エラーの一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。[SQL Database クライアント アプリケーション SQL エラー コード](sql-database-develop-error-messages.md)のトピックの冒頭付近に一時エラーの一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
 
 ### 接続とコマンド
 
@@ -81,7 +80,7 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 
 最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントの *ブロック期間* については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -105,35 +104,39 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 ### ネットワークから切断することによるテスト
 
 
-再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。この場合、次のエラーが発生します。
+再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。次のエラーが発生します。
+
 - **SqlException.Number** = 11001
-- メッセージ: "そのようなホストは不明です。"
+- メッセージ: "そのようなホストは不明です"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
 具体的には、コンピューターをネットワークから切断した後でプログラムを起動します。その後プログラムは、実行時パラメーターを通じて次の処理を行います。
+
 1. エラーのリストに対して一時的に 11001 を追加し、一過性と見なします。
 2. 通常と同様に初回接続を試みます。
 3. エラーが捕捉された後、11001 をリストから削除します。
-4. コンピューターをネットワークに接続するようユーザーに伝えるメッセージを表示します。
- - それ以降の実行は、**Console.ReadLine** メソッドまたは [OK] ボタン付きのダイアログを使って一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
+4. コンピューターをネットワークに接続するようにユーザーに通知するメッセージが表示されます。
+ - **Console.ReadLine** メソッドか、[OK] ボタンを含むダイアログ ボックスのいずれか使用して以降の実行を一時停止します。コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
 5. 再度接続を試みます。
 
 
 ### 接続時に間違った綴りのデータベース名を使用することによるテスト
 
 
-意図的に間違ったユーザー名を使って初回接続を試みます。この場合、次のエラーが発生します。
+意図的に間違ったユーザー名を使って初回接続を試みます。次のエラーが発生します。
+
 - **SqlException.Number** = 18456
-- メッセージ: "ユーザー 'WRONG\_MyUserName' はログインできませんでした。"
+- メッセージ: "ユーザー WRONG\_MyUserName はログインできませんでした"
 
 
 最初の再試行のときに、プログラムでスペルミスを修正してから接続を試みてください。
 
 
 具体的には、プログラムで実行時パラメーターを通じ、次の処理を行います。
+
 1. エラーのリストに対して一時的に 18456 を追加し、一過性と見なします。
 2. 意図的に 'WRONG\_' をユーザー名に追加します。
 3. エラーが捕捉された後、18456 をリストから削除します。
@@ -247,14 +250,18 @@ Azure 仮想マシン (VM) でクライアント プログラムがホストさ�
 
 
 ADO.NET 4.6.1:
- - サポート対象プロトコルに TDS 7.4 が追加されています。4.0 の後に行われた接続の機能強化も含まれています。
-- 接続プーリングがサポートされます。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+
+- Azure SQL database では、**SqlConnection.Open** メソッドを使用することで接続を開く際の信頼性を向上しています。**Open** メソッドには、接続タイムアウト期間内の特定のエラーを対象にして、一過性の障害に対応するベスト エフォート再試行メカニズムが取り入れられました。
+- 接続プールをサポートします。加えて、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
+
 
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じるようお勧めします。接続を再度開いたとしても、新しい接続の作成に伴う処理負荷はわずかです。
 
 
-ADO.NET 4.0 以前のバージョンを使用している場合は、最新の ADO.NET. にアップグレードすることをお勧めします。2015 年 11 月の時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
+ADO.NET 4.0 以前のバージョンを使用している場合、最新の ADO.NET. にアップグレードすることをお勧めします。
+
+- 2015 年 11 月の時点では、[ADO.NET 4.6.1 をダウンロード](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx)できます。
 
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
@@ -265,9 +272,10 @@ ADO.NET 4.0 以前のバージョンを使用している場合は、最新の A
 プログラムから Azure SQL Database に接続できないときの診断方法として 1 つ考えられるのは、ユーティリティ プログラムを使用して接続する方法です。診断対象のプログラムと同じライブラリを使用して接続するユーティリティがあれば理想的です。
 
 
-Windows コンピューターでは、次のユーティリティが利用できます。
-- SQL Server Management Studio (ssms.exe)。接続には ADO.NET が使用されます。
-- sqlcmd.exe。接続には [ODBC](http://msdn.microsoft.com/library/jj730308.aspx) が使用されます。
+任意の Windows コンピューターで、次のユーティリティを試すことができます。
+
+- SQL Server Management Studio (ssms.exe)。ADO.NET を使用して接続します。
+- sqlcmd.exe。[ODBC](http://msdn.microsoft.com/library/jj730308.aspx) を使用して接続します。
 
 
 接続後、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
@@ -281,17 +289,18 @@ Windows コンピューターでは、次のユーティリティが利用でき
 ポートの問題から接続に失敗している可能性があるとします。ポートの構成に関するレポート作成に対応したユーティリティをご使用のコンピューターから実行してください。
 
 
-Linux では、次のユーティリティが利用できます。 
-- `netstat -nap` 
-- `nmap -sS -O 127.0.0.1` 
-- (IP アドレスの部分は適宜置き換えてください)
+Linux では、次のユーティリティが役に立つ場合があります。
+
+- `netstat -nap`
+- `nmap -sS -O 127.0.0.1`
+ - (例の値を実際の IP アドレスに変更してください)。
 
 
 Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。以下の例では、Azure SQL Database サーバー上のポートの状況と、ノート PC 上で動作しているポートとを照会しています。
 
 
 ```
-[C:\Users\johndoe\]
+[C:\Users\johndoe]
 >> portqry.exe -n johndoesvr9.database.windows.net -p tcp -e 1433
 
 Querying target system called:
@@ -303,7 +312,7 @@ Name resolved to 23.100.117.95
 querying...
 TCP port 1433 (ms-sql-s service): LISTENING
 
-[C:\Users\johndoe\]
+[C:\Users\johndoe]
 >>
 ```
 
@@ -319,8 +328,9 @@ TCP port 1433 (ms-sql-s service): LISTENING
 診断には、クライアントで発生したエラーのログが役立ちます。Azure SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
 
 
-Enterprise Library 6 (EntLib60) には、ログを支援する .NET マネージ クラスが用意されています。 
-- [Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページ
+Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET マネージ クラスがあります。
+
+- [5 - Logging アプリケーション ブロックの使用](http://msdn.microsoft.com/library/dn440731.aspx)に関するページを参照してください。
 
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
@@ -387,19 +397,22 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 ## Enterprise Library 6
 
 
-Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。 
-- [Enterprise Library 6 – April 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (Azure SQL Database サービスもその一つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。EntLib60 の利便性が発揮される個々の領域の説明については、まず以下のトピックにアクセスしてください。
+
+- [Enterprise Library 6 – 2013 年 4 月](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)
 
 
-EntLib60 を活かせる領域の 1 つとして、一時エラーを処理するための再試行ロジックがあります。
-- [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 忍耐はすべての勝利の秘訣: 一時エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
+一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。
+
+- [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (忍耐力、すべての勝利の秘訣: 一時的エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
-再試行ロジックに EntLib60 を使用した簡単な C# コード サンプルは、以下のページからダウンロードできます。
- - [Enterprise Library 6 の再試行ロジックを使って SQL Database に接続するコード サンプル (C#)](sql-database-develop-entlib-csharp-retry-windows.md)
+再試行ロジックで EntLib60 を使用する簡単な C# コード サンプルは、以下のページにあります。
+
+- [コード サンプル: Enterprise Library 6 で提供される SQL Database に接続するための C# の再試行ロジック](sql-database-develop-entlib-csharp-retry-windows.md)
 
 
-> [AZURE.NOTE] EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の追加や保守目的での更新を行う予定はありません。
+> [AZURE.NOTE] EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
 
 
 ### 一時エラーと再試行に関連した EntLib60 のクラス
@@ -451,8 +464,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 - Logging ブロックは、ログ出力先が備えるログ機能を抽象化したものです。対象となるログ ストアの場所や種類に関係なく、アプリケーション コードの一貫性を確保することができます。
 
 
-詳細については、
-[Logging アプリケーション ブロックの使用](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)に関するページを参照してください。
+詳細については、[Logging アプリケーション ブロックの使用](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)に関するページを参照してください。
 
 
 ### EntLib60 IsTransient メソッドのソース コード
@@ -538,4 +550,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

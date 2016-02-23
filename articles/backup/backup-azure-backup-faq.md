@@ -13,7 +13,7 @@
    ms.workload="storage-backup-recovery"
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
-	 ms.topic="article"
+	 ms.topic="get-started-article"
 	 ms.date="01/28/2016"
 	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
@@ -100,6 +100,10 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 - *.microsoftonline.com
 - *.windows.net
 
+**Q21.VM 拡張機能を利用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールできますか。** <br/> A21.そして、Azure Backup では、VM 拡張機能を利用し、Azure VM を VM レベルでバックアップできます。Azure Backup エージェントをゲスト Windows OS にインストールし、ゲスト OS のファイルとフォルダーを保護できます。
+
+**Q22.Azure VM に Azure Backup エージェントをインストールし、Azure VM が提供する一時的なストレージにあるファイルとフォルダーをバックアップできますか。** <br/> A22.ゲスト Windows OS に Azure Backup エージェントをインストールし、一時的なストレージのファイルとフォルダーをバックアップできます。ただし、一時的なストレージ データが消去されると、バックアップは開始できません。また、復元の際、一時的なストレージ データが削除されている場合、一時的ではないストレージにのみ復元できます。
+
 
 ## バックアップと保有期間
 **Q1.バックアップされる各データ ソースのサイズに制限はありますか?** <br/> A1.2015 年 8 月時点の、各オペレーティング システム別データ ソースの最大サイズは次のとおりです。
@@ -183,4 +187,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

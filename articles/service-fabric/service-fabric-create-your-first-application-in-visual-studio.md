@@ -46,7 +46,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	![Visual Studio の [新しいサービス] ダイアログ][2]
 
-	>[AZURE.NOTE]オプションの詳細については、「[フレームワークの選択](service-fabric-choose-framework.md)」を参照してください。
+	>[AZURE.NOTE] オプションの詳細については、「[フレームワークの選択](service-fabric-choose-framework.md)」を参照してください。
 
 	Visual Studio によって、アプリケーション プロジェクトとステートフル サービス プロジェクトが作成され、ソリューション エクスプ ローラーに表示されます。
 
@@ -68,7 +68,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 1. Visual Studio で F5 キーを押して、デバッグ用にアプリケーションをデプロイします。
 
-	>[AZURE.NOTE]完了までにしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。ローカル クラスターでは、複数のコンピューターからなるクラスターで使用するのと同じプラットフォーム コードを 1 台のコンピューター上でのみ実行します。Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
+	>[AZURE.NOTE] 完了までにしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。ローカル クラスターでは、複数のコンピューターからなるクラスターで使用するのと同じプラットフォーム コードを 1 台のコンピューター上でのみ実行します。Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
 
 	クラスターの準備が整うと、SDK に含まれているローカル クラスター システム トレイ マネージャー アプリケーションから通知を受け取ります。
 
@@ -86,13 +86,13 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	ローカル クラスターには、1 台のコンピューターでホストされている 5 つのノードが含まれています。ノードがそれぞれ異なるコンピューター上にある 5 ノード クラスターを模倣します。ローカル クラスター上のノードのいずれかをダウンさせて、コンピューターの損失をシミュレートし、これと同時に Visual Studio デバッガーを実行します。
 
-    >[AZURE.NOTE]プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。詳細については、「[ローカルでのサービスの監視方法と診断方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)」を参照してください。
+    >[AZURE.NOTE] プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。詳細については、「[ローカルでのサービスの監視方法と診断方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 
 4. StatefulService から派生したサービス プロジェクト内のクラス (たとえば、MyStatefulService) を見つけ、`RunAsync` メソッドの最初の行にブレークポイントを設定します。
 
 	![ステートフル サービスの RunAsync メソッド内のブレークポイント][7]
 
-5. ローカル クラスター マネージャーのシステム トレイ アプリを右クリックし、**[ローカル クラスターの管理]** を選択してService Fabric Explorer を起動します。
+5. ローカル クラスター マネージャーのシステム トレイ アプリを右クリックし、**[ローカル クラスターの管理]** を選択して Service Fabric Explorer を起動します。
 
     ![ローカル クラスター マネージャーから Service Fabric Explorer を起動する][systray-launch-sfx]
 
@@ -142,4 +142,4 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

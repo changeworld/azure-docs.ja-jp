@@ -1,4 +1,4 @@
-# Azure と IoT
+# Azure とモノのインターネット
 
 Microsoft Azure とモノのインターネット (IoT) にようこそこの記事では、Azure のサービスを使用してデプロイする IoT ソリューションの一般的な特性を記述する標準的な IoT ソリューション アーキテクチャについて説明します。標準的な IoT ソリューションでは、デバイス間の安全な双方向通信、場合によっては何百万にもなる番号付け、および自動化された予測分析を使用してデバイスからクラウドへのイベント ストリームから実態を明らかにするといったことを行うソリューション バックエンドが必要です。
 
@@ -46,4 +46,4 @@ IoT ソリューションには、自動フィードバックのループが含�
 [lnk-machinelearning]: http://azure.microsoft.com/services/machine-learning/
 [Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

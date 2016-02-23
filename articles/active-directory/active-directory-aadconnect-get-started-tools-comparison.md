@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.topic="get-started-article"
+	ms.date="02/18/2016"
 	ms.author="billmath"/>
 
 # ディレクトリ統合ツールの比較
@@ -27,8 +27,7 @@
 
 各表で使用されるキーは次のとおりです。
 
-● = 現在利用可能</br> FR = 今後リリース</br> PP = パブリック プレビュー</br>
-
+● = 現在利用可能 FR = 今後リリース PP = パブリック プレビュー
 
 ## オンプレミスからクラウドへの同期
 
@@ -72,7 +71,7 @@
 | ドメイン コントローラーへのインストールのサポート | ● | ● | ● | |
 | SQL Express を使用したインストールのサポート | ● | ● | ● | |
 | DirSync からの簡単なアップグレード |● | | | |
-| Windows Server の言語のローカライズ | FR | ● | ● | |
+| Windows Server の言語のローカライズ | ● | ● | ● | |
 | Windows Server 2008 および Windows Server 2008 R2 のサポート | ● (同期の場合。フェデレーションの場合は利用不可)| ● | ● | ● |
 | Windows Server 2012 および Windows Server 2012 R2 のサポート | ● | ● | ● | 2012 のみ |
 
@@ -91,4 +90,4 @@ AD から Azure AD に流れる属性の削除の許可 | ● | ● | |
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->
