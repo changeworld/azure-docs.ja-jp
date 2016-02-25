@@ -37,15 +37,15 @@
 
 * 仮説テストとサンプル統計の計算
 
-この記事では、ロジスティック回帰を使用した*分類*への簡単なアプローチを提供します。
+この記事では、ロジスティック回帰を使用した *分類* への簡単なアプローチを提供します。
 
 ## 分類およびロジスティック回帰とは
 
-一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。ユーザーが指定した入力データに「ラベル」を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する Machine Learning アルゴリズムを考えてみます。
+一般的な Machine Learning タスクである *分類* は、入力データをカテゴリに分類するプロセスです。ユーザーが指定した入力データに「ラベル」を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する Machine Learning アルゴリズムを考えてみます。
 
-ロジスティック回帰は、分類に使用するアルゴリズムです。Spark のロジスティック回帰 API は、*二項分類* (入力データを 2 つのグループのいずれかに分類する) に適しています。ロジスティック回帰の詳細については、[Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) を参照してください。
+ロジスティック回帰は、分類に使用するアルゴリズムです。Spark のロジスティック回帰 API は、 *二項分類* (入力データを 2 つのグループのいずれかに分類する) に適しています。ロジスティック回帰の詳細については、[Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) を参照してください。
 
-要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる*ロジスティック関数*が生成されます。
+要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。
 
 ## この記事の目的
 
@@ -154,7 +154,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		
 		df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
 
-4. これで、データフレーム、`df` を取得できました。ここで分析を実行できます。データフレームで対象の 4 列 (**id**、**name**、**results**、および **violations**) が含まれています。データの小さなサンプルを取得します。
+4. これで、 *データフレーム* 、`df` を取得できました。ここで分析を実行できます。データフレームで対象の 4 列 (**id**、**name**、**results**、および **violations**) が含まれています。データの小さなサンプルを取得します。
 
 
 		df.show(5)
@@ -377,7 +377,7 @@ Spark を使用するロジスティック回帰の使用により、英語に�
 
 ### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
