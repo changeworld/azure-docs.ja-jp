@@ -64,10 +64,12 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 4. 作成した Event Hub をクリックし、**[構成]** をクリックして、Event Hub 用に 2 つのアクセス ポリシーを作成します。
 
 	<table>
-<tr><th>名前</th><th>アクセス許可</th></tr>
-<tr><td>mysendpolicy</td><td>送信</td></tr>
-<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
+	<tr><th>名前</th><th>アクセス許可</th></tr>
+	<tr><td>mysendpolicy</td><td>送信</td></tr>
+	<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
+	</table>
+
+	アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Event Hub のポリシーを作成します")
 
@@ -351,7 +353,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -373,3 +375,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
 <!---HONumber=AcomDC_0211_2016-->
+
