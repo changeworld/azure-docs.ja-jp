@@ -137,11 +137,11 @@ var config = new ConnectionConfiguration(connectionPool);
 var client = new ElasticsearchClient(config);
 ```
 
-> [AZURE.NOTE] [トランスポート クライアント API][] により同様の機能が Java アプリケーションで利用できます。
+> \[AZURE.NOTE] [トランスポート クライアント API][] により同様の機能が Java アプリケーションで利用できます。
 
 **サーバー ベースの負荷分散**: 個別のロード バランサーを利用し、要求をノードに分配できます。この手法には、アドレスの透過性という長所があります。クライアント アプリケーションは各ノードの詳細で構成する必要がありません。クライアント コードを変更せずに、ノードを簡単に追加、削除、位置変更できます。図 3 は、ロード バランサーを利用し、一連のクライアント ノードに要求を送信する構成を示しています。ただし、クライアント ノードが使用されない場合、同じ方法を利用し、データ ノードに直接接続できます。
 
-> [AZURE.NOTE] [Azure Load Balancer][] を利用し、クラスターを公共のインターネットに公開できます。あるいは、クライアント アプリケーションとクラスターがすべて同じプライベート仮想ネットワーク (VNET) 内に含まれている場合、[内部ロード バランサー][]を利用できます。
+> \[AZURE.NOTE] [Azure Load Balancer][] を利用し、クラスターを公共のインターネットに公開できます。あるいは、クライアント アプリケーションとクラスターがすべて同じプライベート仮想ネットワーク (VNET) 内に含まれている場合、[内部ロード バランサー][]を利用できます。
 
 ![](media/guidance-elasticsearch-general-clientappinstances.png)
 
@@ -563,4 +563,4 @@ JMeter は、このガイドに関連するドキュメントで説明されて�
 [Watcher]: https://www.elastic.co/products/watcher
 [Zen]: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->

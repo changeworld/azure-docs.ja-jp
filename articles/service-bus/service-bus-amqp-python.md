@@ -142,7 +142,25 @@ if message.properties != None:
 
 | .NET プロパティの型 | Python プロパティの型 | メモ |
 |--------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | int | - | | sbyte | int | - | | char | char | Proton-Python クラス | | short | int | - | | ushort | int | - | | int | int | - | | uint | int | - | | long | int | - | | ulong | long | Proton-Python クラス | | float | float | - | | double | float | - | | decimal | String | 現在、Decimal は Proton ではサポートされていません。 | | bool | bool | - | | Guid | uuid | Proton-Python クラス | | string | string | - | | DateTime | timestamp | Proton-Python クラス | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| byte | int | - |
+| sbyte | int | - |
+| char | char | Proton-Python クラス |
+| short | int | - |
+| ushort | int | - |
+| int | int | - |
+| uint | int | - |
+| long | int | - |
+| ulong | long | Proton-Python クラス |
+| float | float | - |
+| double | float | - |
+| decimal | String | 現在、Decimal は Proton ではサポートされていません。 |
+| bool | bool | - |
+| Guid | uuid | Proton-Python クラス |
+| string | string | - |
+| DateTime | timestamp | Proton-Python クラス |
+| DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
+| Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
 ### 標準のプロパティ
 
@@ -155,11 +173,36 @@ if message.properties != None:
 | durable | 該当なし | Service Bus は、持続的なメッセージのみをサポートします。 |
 | priority | 該当なし | Service Bus は、単一のメッセージの優先度のみをサポートします。 |
 | Ttl | Message.TimeToLive | 変換、Proton-Python TTL はミリ秒単位で定義されます。 |
-| first\_acquirer | 該当なし | - | | delivery\_count | 該当なし | - | | Id | Message.MessageID | - | | user\_id | 該当なし | - | | address | Message.To | - | | subject | Message.Label | - | | reply\_to | Message.ReplyTo | - | | correlation\_id | Message.CorrelationID | - | | content\_type | Message.ContentType | - | | content\_encoding | 該当なし | - | | expiry\_time | 該当なし | - | | creation\_time | 該当なし | - | | group\_id | Message.SessionId | - | | group\_sequence | 該当なし | - | | reply\_to\_group\_id | Message.ReplyToSessionId | - | | format | 該当なし | - |
+| first\_acquirer | 該当なし | - |
+| delivery\_count | 該当なし | - |
+| Id | Message.MessageID | - |
+| user\_id | 該当なし | - |
+| address | Message.To | - |
+| subject | Message.Label | - |
+| reply\_to | Message.ReplyTo | - |
+| correlation\_id | Message.CorrelationID | - |
+| content\_type | Message.ContentType | - |
+| content\_encoding | 該当なし | - |
+| expiry\_time | 該当なし | - |
+| creation\_time | 該当なし | - |
+| group\_id | Message.SessionId | - |
+| group\_sequence | 該当なし | - |
+| reply\_to\_group\_id | Message.ReplyToSessionId | - |
+| format | 該当なし | - |
 
 | Service Bus .NET | Proton | メモ |
 |-------------------------|------------------------------|-----------------------------------------------------------|
-| ContentType | Message.content\_type | - | | CorrelationId | Message.correlation\_id | - | | EnqueuedTimeUtc | 該当なし | - | | Label | Message.subject | - | | MessageId | Message.id | - | | ReplyTo | Message.reply\_to | - | | ReplyToSessionId | Message.reply\_to\_group\_id | - | | ScheduledEnqueueTimeUtc | 該当なし | - | | SessionId | Message.group\_id | - | | TimeToLive | Message.ttl | 変換、Proton-Python TTL はミリ秒単位で定義されます。 | | To | Message.address | - |
+| ContentType | Message.content\_type | - |
+| CorrelationId | Message.correlation\_id | - |
+| EnqueuedTimeUtc | 該当なし | - |
+| Label | Message.subject | - |
+| MessageId | Message.id | - |
+| ReplyTo | Message.reply\_to | - |
+| ReplyToSessionId | Message.reply\_to\_group\_id | - |
+| ScheduledEnqueueTimeUtc | 該当なし | - |
+| SessionId | Message.group\_id | - |
+| TimeToLive | Message.ttl | 変換、Proton-Python TTL はミリ秒単位で定義されます。 |
+| To | Message.address | - |
 
 ## 次のステップ
 
@@ -173,4 +216,4 @@ if message.properties != None:
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->
