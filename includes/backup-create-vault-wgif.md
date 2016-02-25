@@ -38,4 +38,4 @@ GRS では、データのコピーが 6 つ保持されます。GRS を使用す
 
 ![LRS](./media/backup-create-vault/lrs.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->
