@@ -124,4 +124,4 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->
