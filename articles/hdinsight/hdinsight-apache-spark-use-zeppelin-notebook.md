@@ -332,6 +332,6 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->
 
 

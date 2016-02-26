@@ -189,4 +189,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->
