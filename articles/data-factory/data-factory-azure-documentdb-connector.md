@@ -411,7 +411,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 	**回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
  
-3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割]( https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
 
 	**回答:** いいえ。 
 4. **質問:** 1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
@@ -419,4 +419,4 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
      
 
-<!---HONumber=AcomDC_0218_2016-->
+<!----HONumber=AcomDC_0218_2016-->
