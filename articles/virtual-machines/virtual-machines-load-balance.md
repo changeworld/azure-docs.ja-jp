@@ -4,7 +4,7 @@
 	services="virtual-machines"
 	documentationCenter=""
 	authors="joaoma"
-	manager="adinah"
+	manager="carmonm"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.date="02/02/2016"
 	ms.author="joaoma"/>
 
 
@@ -77,12 +77,17 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 ![負荷分散](./media/virtual-machines-load-balance/LOBServers.png)
 
+## Load Balancer に関する考慮事項
+
+Load Balancer は、既定で 4 分間のアイドル状態のセッションをタイムアウトするように構成されています。Load Balancer の背後にあるアプリケーションが 4 分以上接続をアイドル状態のままにし、キープアライブ構成がない場合、接続が切断されます。[Azure Load Balancer のタイムアウト設定を長くする](../load-balancer/load-balancer-tcp-idle-timeout.md)ようにLoad Balancer の動作を変更できます。
+
+その他の考慮事項は、Azure Load Balancer でサポートされている分散モードの種類です。ソース IP アフィニティ (ソース IP、接続先 IP) またはソース IP プロトコル (ソース IP、接続先 IP、およびプロトコル) を構成することができます。詳細については、「[Load Balancer 分散モード (ソース IP アフィニティ )](../load-balancer/load-balancer-distribution-mode.md)」を参照してください。
+
+
 ## 次のステップ
 
 負荷分散セットの作成手順については、「[内部負荷分散セットの構成](../load-balancer/load-balancer-internal-getstarted.md)」を参照してください。
 
 ロード バランサーの詳細については、「[内部負荷分散](../load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
-<!-- LINKS -->
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

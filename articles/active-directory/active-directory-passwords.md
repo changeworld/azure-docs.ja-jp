@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 	
 
 # ユーザーおよび管理者の Azure AD のパスワード リセット
 
-  >[AZURE.IMPORTANT]Azure または O365 のパスワードをリセットをしたいとお考えですか。 その場合は、[このセクション](#users-how-to-manage-your-own-password)にお進みください。
+  >[AZURE.IMPORTANT] Azure または O365 のパスワードをリセットをしたいとお考えですか。 その場合は、[このセクション](#users-how-to-manage-your-own-password)にお進みください。
   
 セルフ サービスの実現は、コストを削減し労力を節約する手段として、世界中の IT 部門が長年目指してきた大きな目標です。実際、市場はクラウドまたはオンプレミスから、オンプレミスのグループや、パスワード、ユーザー プロファイルを管理できるようにする製品であふれています。Azure AD は、現在利用可能な機能の中でも、最も使いやすく強力なセルフ サービス機能を提供することで、これらの製品とは一線を画しています。
 
@@ -252,4 +252,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

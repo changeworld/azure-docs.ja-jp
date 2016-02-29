@@ -10,11 +10,11 @@
 
 <tags
 	ms.service="machine-learning"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
+    	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="11/23/2015"
+	ms.date="02/12/2016"
 	ms.author="tedway;garye" />
 
 # Azure Machine Learning Web サービスの Excel アドイン
@@ -73,4 +73,4 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 [05]: ./media/machine-learning-excel-add-in-for-web-services/image5.png
 [06]: ./media/machine-learning-excel-add-in-for-web-services/image6.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

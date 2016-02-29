@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/02/2016"
+   ms.date="02/17/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
@@ -107,6 +107,8 @@ Azure PowerShell または REST API を利用し、リソース グループへ�
           Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
           included in the template will be deleted.
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
+     テンプレートに含まれるパラメーターの名前が、そのテンプレートをデプロイするコマンドのパラメーターのいずれかと一致する場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 6. デプロイ エラーに関する情報を取得するには
 
@@ -271,7 +273,7 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
 パラメーター ファイルのサイズは、64 KB 以下である必要があります。
 
-テンプレートのパラメーターを定義する方法については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/#parameters)」をご覧ください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」をご覧ください。
+テンプレートのパラメーターを定義する方法については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/#parameters)」を参照してください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
 ## 次のステップ
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/arm-template-deployment.md)」を参照してください。
@@ -282,4 +284,4 @@ Azure リソース マネージャーの使用方法の詳細については、�
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

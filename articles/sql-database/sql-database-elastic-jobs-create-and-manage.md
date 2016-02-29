@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="02/11/2016"
 	ms.author="ddove; sidneyh"/>
 
 # ポータル (プレビュー) を使用した SQL Database エラスティック ジョブの作成と管理
@@ -23,7 +23,7 @@
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
-**Elastic Database ジョブ**を使用すると、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作の実行が簡易になるので、データセット グループを簡単に、また確実に管理できるようになります。現在、Elastic Database ジョブは、Azure ポータルまたは PowerShell コマンドレットから使用できます。ただし、Azure ポータルでは、[Elastic Database プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して実行される機能に限定されています。その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」を参照してください。ジョブの詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
+**Elastic Database ジョブ**では、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) 製品利用統計情報の収集などの管理操作を実行して、データベース グループの管理を簡略化することができます。現在、Elastic Database ジョブは、Azure ポータルまたは PowerShell コマンドレットから使用できます。ただし、Azure ポータルでは、[Elastic Database プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して実行される機能に限定されています。その他の機能や、カスタム定義のコレクションや ([Elastic Database クライアント ライブラリ](sql-database-elastic-scale-introduction.md)を使用して作成された) シャード セットなどのデータベース グループ全体に対する実行にアクセスするには、「[PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)」を参照してください。ジョブの詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
 
 ## 前提条件
 
@@ -115,4 +115,4 @@
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

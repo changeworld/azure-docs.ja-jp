@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/22/2016"
+   ms.date="02/12/2016"
    ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理 (Update 2)
@@ -28,7 +28,7 @@ StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューショ
 
 #### 仮想デバイス モデルの比較
 
-StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 つは Standard 8010 で、もう 1 つは Premium 8020 です (Update 2 で導入)。2 つのモデルの比較を、次の表に示します。
+StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 8020 (Update 2 で導入) の 2 つのモデルで利用できます。2 つのモデルの比較を、次の表に示します。
 
 
 | デバイスのモデル | 8010<sup>1</sup> | 8020 |
@@ -36,12 +36,33 @@ StorSimple 仮想デバイスは、2 つのモデルで利用可能です。1 �
 | **最大容量** | 30 TB | 64 TB |
 | **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** | Update 2 より前または Update 2 以降を実行しているバージョン | Update 2 以降を実行しているバージョン |
-| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートしている Azure リージョン<br></br>現在 Premium Storage をサポートするリージョンの一覧については、「[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)」を参照してください。 |
+| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧は、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」を参照してください。 |
 | **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
 
+#### 8020 のサポートされるリージョン
+
+8020 で現在サポートされている Premium Storage リージョンを下の表にまとめています。このリストは、Premium Storage が使用できるリージョンの追加に伴って、継続的に更新されます。
+
+| 番号 | 現在サポートされているリージョン |
+|---------------------------------------------------------|--------------------------------|
+| 1 | 米国中央部 |
+| 2 | 米国東部 |
+| 3 | 米国東部 2 |
+| 4 | 米国西部 |
+| 5 | 北ヨーロッパ |
+| 6 | 西ヨーロッパ |
+| 7 | 東南アジア |
+| 8 | 東日本 |
+| 9 | 西日本 |
+| 10 | オーストラリア東部 |
+| 11 | オーストラリア南東部* |
+| 12 | 東アジア* |
+| 13 | 米国中南部* |
+
+**Premium Storage はこれらの地域で最近提供が開始されました。
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
 
@@ -79,7 +100,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-- 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 Premium Storage をサポートしているリージョンの詳細については、[こちら](https://azure.microsoft.com/regions/#services)をご覧ください。
+- 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 8020 でサポートされているリージョンの詳細については、[こちら](#supported-regions-for-8020)をご覧ください。
 - 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 - ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。 
 - 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
@@ -125,8 +146,7 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
-[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 
@@ -253,10 +273,12 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 [AZURE.INCLUDE [仮想デバイスの削除](../../includes/storsimple-delete-virtual-device.md)]
 
+   
+
 ## 次のステップ
 
 - [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
  
-- [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
+- [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法を理解します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="11/24/2015"
+   ms.date="02/16/2016"
    ms.author="rickbyh"/>
 
 # Azure SQL Database のセキュリティのガイドラインと制限事項
@@ -37,7 +37,7 @@ ADO.NET アプリケーション コードで証明書を検証するには、�
 
 SQL Server Management Studio も、証明書の検証をサポートしています。**[サーバーへの接続]** ダイアログ ボックスで、**[接続プロパティ]** タブの **[暗号化接続]** をクリックします。
 
-> [AZURE.NOTE]SQL Server Management Studio は、SQL Server 2008 R2 より前のバージョンでは SQL Database への接続をサポートしていません。
+> [AZURE.NOTE] SQL Server Management Studio は、SQL Server 2008 R2 より前のバージョンでは SQL Database への接続をサポートしていません。
 
 SQLCMD は SQL Server 2008 以降で SQL Database をサポートしていますが、SQL Server 2008 R2 より前のバージョンでは証明書の検証をサポートしていません。SQL Server 2008 R2 以降の SQLCMD で証明書を検証するには、``-N`` コマンドライン オプションを使用し、``-C`` オプションは使用しないでください。-N オプションを使用することで、SQLCMD は暗号化された接続を要求するようになります。``-C`` オプションを使用しないことで、SQLCMD はサーバー証明書を暗黙的に信頼しなくなり、証明書の検証が強制されるようになります。
 
@@ -49,7 +49,7 @@ Active Directory 認証 (統合セキュリティ) は、SQL Database V12 のプ
 
 [SQL Database V12](sql-database-v12-whats-new.md) では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」をご覧ください。
 
-> [AZURE.NOTE]Microsoft は、包含データベース ユーザーを使用してスケーラビリティを高めることをお勧めします。
+> [AZURE.NOTE] Microsoft は、包含データベース ユーザーを使用してスケーラビリティを高めることをお勧めします。
 
 データベース エンジンは、30 分以上アイドル状態が続くと接続を閉じます。接続する前に、もう一度ログインする必要があります。
 
@@ -64,7 +64,7 @@ SQL Database でのログインとユーザーの管理には、制限があり�
 - サーバーレベル プリンシパル ログインに対応する master データベースのデータベース ユーザーは、変更または削除できません。 
 - サーバーレベル プリンシパル ログインは、**master** データベースの 2 つのデータベース ロール **dbmanager** と **loginmanager** のメンバーではありませんが、この 2 つのロールに許可されているすべての権限を持っています。
 
-> [AZURE.NOTE]このログインは、サーバーのプロビジョニング中に作成され、SQL Server のインスタンスの **sa** ログインと似ています。
+> [AZURE.NOTE] このログインは、サーバーのプロビジョニング中に作成され、SQL Server のインスタンスの **sa** ログインと似ています。
 
 すべてのログインに、次の制限が適用されます。
 
@@ -111,4 +111,4 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

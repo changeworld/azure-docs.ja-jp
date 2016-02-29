@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/22/2015"
+   ms.date="02/10/2016"
    ms.author="jgao"/>
 
 
@@ -26,9 +26,9 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 - Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)。 
 - Microsoft Azure SDK for .NET バージョン 2.5 以上。Web Platform Installer を使用してインストールします。
 - Data Lake Analytics アカウント。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
-- 「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md)」チュートリアルを読み進める。
-- Azure への接続。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md#connect-to-azure)」を参照してください。 
-- ソース データのアップロード。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md#upload-source-data-files)」を参照してください。 
+- 「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md)」チュートリアルを読み進める。
+- Azure への接続。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md#connect-to-azure)」を参照してください。 
+- ソース データのアップロード。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md#upload-source-data-files)」を参照してください。 
 
 ## U-SQL でのユーザー定義演算子の定義と使用
 
@@ -147,4 +147,4 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 - [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

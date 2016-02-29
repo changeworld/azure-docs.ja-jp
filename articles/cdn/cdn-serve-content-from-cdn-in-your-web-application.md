@@ -151,8 +151,8 @@
 
 ASP.NET Web アプリケーション内にあるすべての静的コンテンツを簡単に CDN エンドポイントにアップロードする場合や、継続的な配信を使用して Web アプリケーションをデプロイする場合 (例については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services/cloud-services-dotnet-continuous-delivery.md)」を参照) には、Azure PowerShell を使用して、Web アプリケーションをデプロイするたびに最新コンテンツ ファイルと Azure BLOB が自動的に同期されるように設定できます。たとえば、「[Upload Content Files from ASP.NET Application to Azure Blobs (ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード)](http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a)」でスクリプトを実行し、ASP.NET アプリケーション内のすべてのコンテンツ ファイルをアップロードすることができます。スクリプトを使用するには、次の手順に従います。
 
-4. [**スタート**] メニューの [**Microsoft Azure PowerShell**] を実行します。
-5. [Azure PowerShell] ウィンドウで、`Get-AzurePublishSettingsFile` を実行し、Azure アカウントの発行設定ファイルをダウンロードします。
+4. **[スタート]** メニューから **Windows PowerShell** を実行します。
+5. PowerShell ウィンドウで `Get-AzurePublishSettingsFile` を実行して、Azure アカウントの発行設定ファイルをダウンロードします。
 6. 発行設定ファイルをダウンロードしたら、以下を実行します。 
 
 		Import-AzurePublishSettingsFile "<yourDownloadedFilePath>"
@@ -273,4 +273,4 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

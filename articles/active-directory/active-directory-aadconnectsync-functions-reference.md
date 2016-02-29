@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/16/2016"
 	ms.author="markusvi"/>
 
 
@@ -536,7 +536,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **解説:** <br> 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。<br> この関数の逆の関数は IsPresent です。
 
-**例:** <br> `IsNull([displayName])` <br> CS または MV に属性がないか、空の文字列の場合は True を返します。
+**例:** <br> `IsNullOrEmpty([displayName])` <br> CS または MV に属性がないか、空の文字列の場合は True を返します。
 
 
 
@@ -1058,4 +1058,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

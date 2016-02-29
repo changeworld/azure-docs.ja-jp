@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/30/2015" 
+	ms.date="02/11/2016" 
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -78,7 +78,7 @@
 
     これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Microsoft アカウント ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Microsoft 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_Facebook_、_Google_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+    > [AZURE.NOTE] Microsoft 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_Facebook_、_Google_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
@@ -143,4 +143,4 @@
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0218_2016-->

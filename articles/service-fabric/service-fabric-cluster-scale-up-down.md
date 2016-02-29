@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    ms.author="chackdan"/>
 
 
@@ -63,6 +63,8 @@ VM 数を目的の数に調整して保存します。デプロイメントが�
 
     d.**[削除]** アイコンをクリックして、VM を削除します。
 
+>[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
+
 ## Service Fabric クラスターの自動スケール
 
 現時点では、Service Fabric クラスターは自動スケールをサポートしていません。近い将来、クラスターは仮想マシン スケール セットの上に構築されるようになります。その時点で自動スケールが可能になり、Cloud Services での自動スケーリングと同様に動作するようになります。
@@ -79,4 +81,4 @@ VM 数を目的の数に調整して保存します。デプロイメントが�
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

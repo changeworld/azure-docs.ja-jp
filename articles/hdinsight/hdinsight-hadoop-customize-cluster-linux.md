@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/16/2016"
 	ms.author="larryfr"/>
 
 # Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -55,6 +55,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 **R のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh[HDInsight クラスターでの R のインストールと使用](hdinsight-hadoop-r-scripts-linux.md)に関するページを参照してください。
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
 **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
+| **Hive ライブラリの事前読み込み** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
 
 ## Azure ポータルからスクリプト アクションを使用する
 
@@ -390,12 +391,9 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
-	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例: 
-	* **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` 
-	* **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` 
-	* **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例: * **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` * **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` * **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-\*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
 
 		'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -446,4 +444,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

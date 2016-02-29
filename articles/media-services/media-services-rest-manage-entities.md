@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/09/2016"  
+ 	ms.date="02/11/2016"  
 	ms.author="juliako"/>
 
 #REST API を使用した Media Services エンティティの管理
@@ -175,4 +175,4 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -39,6 +39,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | **機能** ||
 | [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) | パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
 | [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | *誤って削除されないように保護する*機能および構成方法について説明します。 |
+| [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) | データをインポート、同期、およびエクスポートする組み込みのスケジューラについて説明します。 |
 | **操作** ||
 | [操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md) | 障害回復などの操作上の考慮事項について説明します。 |
 | **詳細情報とリファレンス** ||
@@ -50,4 +51,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

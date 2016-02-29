@@ -2,16 +2,7 @@
 
 [Azure リソース マネージャー][lnk-authenticate-arm] と Azure Active Directory (AD) を使用して、リソース上で実行するすべての操作を認証する必要があります。これを構成するうえで、PowerShell または Azure CLI を使用するのが最も簡単な方法です。
 
-[Azure PowerShell 1.0][lnk-powershell-install] をインストールしていない場合は、次の PowerShell コマンドを使用してインストールできます。管理者として PowerShell を実行する必要があります。
-
-```
-# Install the Azure Resource Manager modules from PowerShell Gallery
-Install-Module AzureRM
-Install-AzureRM
-
-# Install the Azure Service Management module from PowerShell Gallery
-Install-Module Azure
-```
+続ける前に、[Azure PowerShell 1.0][lnk-powershell-install] 以降をインストールする必要があります。
 
 次のステップでは、PowerShell を使用して AD アプリケーション用のパスワード認証を設定する方法を説明します。これらのコマンドは標準的な PowerShell セッションで実行できます。
 
@@ -26,12 +17,12 @@ Install-Module Azure
 3. 次のコマンドを使用して新しい Azure Active Directory アプリケーションを作成します。プレース ホルダーを以下のとおりに置き換えます。
 
     - **{Display name}:** **MySampleApp** など、アプリケーションの表示名
-    - **{Home page URL}:** **http://mysampleapp/home** など、アプリケーションのホーム ページの URL。この URL は実際のアプリケーションを示している必要はありません。
-    - **{Application identifier}:** **http://mysampleapp** などの一意識別子。この URL は実際のアプリケーションを示している必要はありません。
-    - **{Password}:** 自分のアプリで認証に使用するパスワード。
+    - **{Home page URL}:** ****http://mysampleapp/home** など、アプリケーションのホーム ページの URL。この URL は実際のアプリケーションを示している必要はありません。
+- **{Application identifier}:** ****http://mysampleapp** などの一意識別子。この URL は実際のアプリケーションを示している必要はありません。
+- **{Password}:** 自分のアプリで認証に使用するパスワード。
 
     ```
-    New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} IdentifierUris {Application identifier} -Password {Password}
+    New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
     ```
     
 4. 作成したアプリケーションの **ApplicationId** を書き留めておきます。この情報は後で必要になります。
@@ -56,6 +47,6 @@ Install-Module Azure
 - パスワード
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/
+[lnk-powershell-install]: ../powershell-install-configure.md
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -12,14 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/05/2016"
+    ms.date="02/14/2016"
     ms.author="dineshm"/>
 
 # C++ での Azure Storage のリソース一覧の取得
 
 一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
 
->[AZURE.NOTE] このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 1.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 2.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
 
 ストレージ クライアント ライブラリを使用すると、Azure Storage 内のオブジェクトをさまざまな方法で一覧取得または照会することができます。この記事では、以下のシナリオを扱います。
 
@@ -33,7 +33,7 @@
 
 ## 非同期と同期
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ (プロジェクト Casablanca)](http://casablanca.codeplex.com/) 上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。次に例を示します。
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。次に例を示します。
 
 	pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 
@@ -162,7 +162,7 @@ C# または Oracle Java SDK を使用しているのであれば、列挙型プ
 
 どん欲な一覧取得と比べて、限定的な一覧取得では必要な場合にのみデータをフェッチします。この一覧取得では、次の反復子が次のセグメントへと移動した場合にのみ、Azure Storage から秘密裏にデータをフェッチします。そのため、メモリ使用量は制限されたサイズに抑えられ、動作は高速になります。
 
-限定的一覧取得 API は、バージョン 1.0.0 の C++ 用ストレージ クライアント ライブラリに含まれています。
+限定的一覧取得 API は、バージョン 2.2.0 の C++ 用ストレージ クライアント ライブラリに含まれています。
 
 ## まとめ
 
@@ -184,4 +184,4 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

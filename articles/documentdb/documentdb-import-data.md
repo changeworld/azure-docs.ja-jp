@@ -1,6 +1,7 @@
 <properties
-	pageTitle="DocumentDB へのデータのインポート | Microsoft Azure"
-	description="オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを DocumentDB にインポートする方法について説明します。"
+	pageTitle="DocumentDB のデータベース移行ツール | Microsoft Azure"
+	description="オープン ソースの DocumentDB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを DocumentDB にインポートする方法について説明します。CSV から JSON への変換についても説明します。"
+	keywords="csv を json へ、データベース移行ツール、csv を json へ" 
 	services="documentdb"
 	authors="andrewhoh"
 	manager="jhubbard"
@@ -16,7 +17,7 @@
 	ms.date="01/29/2016"
 	ms.author="anhoh"/>
 
-# DocumentDB へのデータのインポート - データベース移行ツール
+# データベース移行ツールを使用した DocumentDB へのデータのインポート
 
 この記事では、オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) にインポートする方法について説明します。
 
@@ -147,7 +148,7 @@ SQL Server からインポートするためのコマンド ライン サンプ�
 	#Import records from sql which match a query and create hierarchical relationships
 	dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionTier:S3
 
-##<a id="CSV"></a>CSV ファイルのインポート - CSV から JSON への変換 ##
+##<a id="CSV"></a>CSV ファイルをインポートする - CSV を JSON に変換する ##
 
 CSV ファイル ソース インポーター オプションを使用して、1 つ以上の CSV ファイルをインポートできます。インポートする CSV ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
@@ -314,11 +315,11 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 インポート時に利用できる詳細オプションは多数あります。まず、ツールには既定の一括インポート用ストアド プロシージャ (BulkInsert.js) が用意されていますが、独自のインポート用ストアド プロシージャを指定することもできます。
 
- ![Screenshot of DocumentDB bulk insert sproc option](./media/documentdb-import-data/bulkinsertsp.png)
+ ![DocumentDB 一括挿入オプションのスクリーンショット](./media/documentdb-import-data/bulkinsertsp.png)
 
 また、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
 
- ![Screenshot of DocumentDB date time import options](./media/documentdb-import-data/datetimeoptions.png)
+ ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。
@@ -477,4 +478,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

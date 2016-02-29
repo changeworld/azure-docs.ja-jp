@@ -57,10 +57,11 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 6.	**ジョブの最大サイズ:** ジョブのサイズは、使用するハード ドライブの容量と、ストレージ アカウントに格納できるデータの最大量によって決まります。各ジョブは、10 台までのハード ドライブを含むことができます。
 7.  **サポートされるオペレーティング システム:** Azure に配布する前に Azure Import/Export ツールを使用してハード ドライブを準備するには、Windows 7、Windows 8、Windows 8.1、Windows 10*、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 のいずれかのオペレーティング システムを使用することができます。  
 
-  > [AZURE.IMPORTANT] 
-    - ハード ドライブを準備するために Windows 10 コンピューターを使用している場合の特別な手順については、[よく寄せられる質問セクション](#frequently-asked-questions)を参照してください。
-    
-    - External hard disk drives that come with an in built USB adaptor are not supported by this service. Please do not prepare an external HDD. The disk inside the external casing also cannot be used for importing data. Use a 3.5" SATA II/III **internal** hard disk drive. If you cannot connect the SATA disk directly to your machine, use an external SATA to USB adaptor. See the list of recommended adaptors in FAQ section.
+  > [AZURE.IMPORTANT]
+  >  
+  >  - ハード ドライブを準備するために Windows 10 コンピューターを使用している場合の特別な手順については、[よく寄せられる質問セクション](#frequently-asked-questions)を参照してください。
+  >  
+  >  - USB アダプターが組み込まれた外部ハード ディスク ドライブは、このサービスではサポートされていません。外部 HDD は準備しないでください。また、データをインポートする際に外部ケース内のディスクを使用することはできません。3.5" SATA II/III **内部**ハード ディスク ドライブを使用します。SATA ディスクをコンピューターに直接接続できない場合は、外部の SATA - USB アダプターを使用します。「よく寄せられる質問」のセクションで推奨されているアダプターの一覧を参照してください。
 
 ## クラシック ポータルでのインポート ジョブの作成##
 
@@ -290,4 +291,4 @@ HDD を準備するために Windows 10 を使用する場合は、以下の手�
 [export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

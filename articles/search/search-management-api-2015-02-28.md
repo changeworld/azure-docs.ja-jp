@@ -1,6 +1,20 @@
-<properties pageTitle="Azure Search 管理 REST API バージョン 2015-02-28 | Microsoft Azure | ホスト型クラウド検索サービス" description="Azure Search 管理 REST API: バージョン 2015-02-28" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
+<properties
+	pageTitle="Azure Search 管理 REST API バージョン 2015-02-28 | Microsoft Azure | ホスト型クラウド検索サービス"
+	description="Azure Search 管理 REST API: バージョン 2015-02-28"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="mblythe"
+	editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="11/04/2015" ms.author="heidist" />
+<tags
+	ms.service="search"
+	ms.devlang="rest-api"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.date="11/04/2015"
+	ms.author="heidist" />
 
 # 管理 API: バージョン 2015-02-28
 
@@ -39,7 +53,7 @@ Azure Search 管理 REST API は、Azure リソース マネージャーの拡�
 
 「[Azure Search 管理 REST API の使用](http://go.microsoft.com/fwlink/p/?linkID=516968)」に記載されているサンプル アプリケーションは、操作の種類ごとの認証方法を示しています。Active Directory を使用するようにクライアント アプリケーションを構成する手順については、「Get started with Azure Search Management REST API」を参照してください。
 
-Azure リソース マネージャーのアクセス制御では、組み込みの所有者、投稿者、および閲覧者のロールが使用されます。既定では、すべてのサービス管理者が、所有者ロールのメンバーです。詳細については、「[Azure クラシック ポータルでのロール ベースのアクセス制御](../role-based-access-control-configure.md)」を参照してください。
+Azure リソース マネージャーのアクセス制御では、組み込みの所有者、投稿者、および閲覧者のロールが使用されます。既定では、すべてのサービス管理者が、所有者ロールのメンバーです。詳細については、「[Azure クラシック ポータルでのロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 
 ### API の概要 ##
@@ -812,4 +826,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
 ありません。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

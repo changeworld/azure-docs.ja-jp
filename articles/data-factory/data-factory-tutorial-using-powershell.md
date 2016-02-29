@@ -391,7 +391,7 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 	![RawGameEventsTable DATA SLICE blade][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
 
-	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[検証を保留中]** 状態で表示される場合もあります。
+	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[待機中]** 状態で表示される場合もあります。
  
 	[Data Factory の開発者用リファレンス][developer-reference]を参照し、考えられるすべてのスライスの状態を把握してください。
 
@@ -503,4 +503,4 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-tutorial-using-powershell/NewDataFactoryMenu.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

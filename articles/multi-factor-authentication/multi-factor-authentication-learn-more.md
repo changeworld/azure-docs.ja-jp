@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の詳細について
@@ -25,7 +25,7 @@
 
 [IIS 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394291.aspx)
 
-[RADIUS 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394299.aspx)
+[Configure MFA Server for use with Radius Authentication](https://msdn.microsoft.com/library/azure/dn394299.aspx)
 
 [LDAP 認証を使用した MFA サーバーの設定](https://msdn.microsoft.com/library/azure/dn394286.aspx)
 
@@ -38,4 +38,4 @@
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

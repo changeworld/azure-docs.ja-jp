@@ -11,17 +11,14 @@
 	ms.service="mobile-services"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
+	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="02/05/2016"
 	ms.author="glenga"/>
 
 # テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
-
 
 このトピックでは、.NET バックエンド モバイル サービスで非リレーショナル データ ストアを使用する方法を説明します。このチュートリアルでは、既定の Azure SQL Database のデータ ストアではなく Azure テーブル ストレージが使用されるように、Azure Mobile Services のクイック スタート プロジェクトを変更します。
 
@@ -39,7 +36,7 @@
 
   	これによって、Azure ストレージ サービス用のサポートが、モバイル サービス プロジェクトに追加されます。
 
-3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage-create-storage-account.md)を参照してください。
+3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)を参照してください。
 
 4. [Azure クラシック ポータル]で、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
@@ -142,7 +139,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 + [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
 
-+ [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
++ [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-universal-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
 
 <!-- Anchors. -->
 [Create a non-relational store]: #create-store
@@ -159,4 +156,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

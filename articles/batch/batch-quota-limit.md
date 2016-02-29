@@ -16,8 +16,6 @@
 	ms.date="01/26/2016"
 	ms.author="danlep"/>
 
-
-
 # Azure Batch サービスのクォータと制限
 
 この記事では、Azure Batch サービスで使用できるリソースの既定値と上限値について説明します。このような制限のほとんどは、Azure からユーザーのサブスクリプションまたは Batch アカウントに適用されているクォータです。
@@ -95,4 +93,4 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

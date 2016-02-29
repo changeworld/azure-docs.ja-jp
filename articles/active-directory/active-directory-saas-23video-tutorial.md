@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="prasannas"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/04/2015"
+	ms.date="02/17/2016"
 	ms.author="jeedes"/>
 
 
@@ -34,7 +34,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 - 23 Video でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -84,15 +84,15 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 **23 Video で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **23 Video** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **23 Video** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの 23 Video へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][7] <br>
+2. **[ユーザーの 23 Video へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][7] <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のシングル サインオン][8] <br>
  
      a.**[応答 URL]** ボックスに、ユーザーが 23 Video サイトへのサインオンに使用する URL を入力します (例: **https://britta-simon.23Video.com/saml/login*))。
 
-     >[AZURE.NOTE]SAML 2.0 を使用した Active Directory の統合は、23 Video のすべてのユーザーが使用できます。関連するメタデータが必要な場合は、サポート ([support@23company.com](mailto:support@23company.com)) にお問い合わせください。
+     > [AZURE.NOTE] SAML 2.0 を使用した Active Directory の統合は、23 Video のすべてのユーザーが使用できます。関連するメタデータが必要な場合は、サポート ([support@23company.com](mailto:support@23company.com)) にお問い合わせください。
 
      b.**[次へ]** をクリックします。
  
@@ -107,7 +107,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
 
 
 
@@ -117,7 +117,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png)<br> 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png) <br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -228,4 +228,4 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 [401]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_11.png
 [402]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_12.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0218_2016-->

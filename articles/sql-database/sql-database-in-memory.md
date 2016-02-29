@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="jodebrui"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/27/2016"
+	ms.date="02/11/2016"
 	ms.author="jodebrui"/>
 
 
@@ -277,8 +277,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 前述の ostress.exe コマンド ラインを実行するには:
 
 
-1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。
-```
+1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -303,8 +302,7 @@ ostress.exe が完了すると、RML コマンド ウィンドウに表示され
 \_inmem 実行の結果を取得したら、\_ondisk 実行に次の手順を実行します。
 
 
-1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。
-```
+1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。```
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -318,6 +316,12 @@ EXECUTE Demo.usp_DemoReset;
 #### 予想される比較結果
 
 インメモリ テストの結果、ostress をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍**向上することがわかりました。
+
+
+
+<a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
+
+&nbsp;
 
 
 ## B.インメモリ分析のサンプルをインストールする
@@ -525,4 +529,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

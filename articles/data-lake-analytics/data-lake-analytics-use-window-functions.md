@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する | Azure" 
-   description="U SQL ウィンドウ関数を使用する方法について説明します。" 
+   description="U SQL ウィンドウ関数の使用方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/11/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 
@@ -25,7 +25,7 @@
 
 このチュートリアルと学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)」をご覧ください。
 
-ウィンドウ関数は、次のカテゴリに分類されます。
+ウィンドウ関数は次のカテゴリに分類されます。
 
 - [レポート集計関数](#reporting-aggregation-functions) (SUM や AVG など)
 - [順位付け関数](#ranking-functions) (DENSE\_RANK、ROW\_NUMBER、NTILE、RANK など)
@@ -35,9 +35,9 @@
 
 - 次の 2 つのチュートリアルを完了します。
 
-    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-use-data-lake-tools.md)
+    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-data-lake-tools-get-started.md)
     - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)
-- [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-use-data-lake-tools.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
+- [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
 - [Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページの説明に従って、Visual Studio U-SQL プロジェクトを作成します。
 
 ## サンプル データセット
@@ -136,7 +136,7 @@
             SUM(Salary) AS TotalSalary
         FROM @employees;
     
->[AZURE.NOTE]出力のテストとチェックの手順については、[Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
+>[AZURE.NOTE] 出力のテストとチェックの手順については、[Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
 
 結果は 1 行 1 列で示されます。$165000 は、テーブル全体の Salary 値の合計です。
 
@@ -144,7 +144,7 @@
 |-----------
 |165000
 
->[AZURE.NOTE]ウィンドウ関数に慣れていない場合は、出力内の数値を覚えておくと役立ちます。
+>[AZURE.NOTE] ウィンドウ関数に慣れていない場合は、出力内の数値を覚えておくと役立ちます。
 
 次のステートメントでは、GROUP BY 句を使用して、部門ごとに給与の総額を計算します。
 
@@ -243,7 +243,7 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 注:
 
-- 既定では、集計関数は null 値を無視します (COUNT を除く)。
+- 既定では、集計関数 (COUNT を除く) は null 値を無視します。
 - 集計関数を OVER 句と共に指定する場合、OVER 句では ORDER BY 句を使用できません。
 
 ### SUM の使用
@@ -739,8 +739,8 @@ PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 
 - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
 - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
-- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
+- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

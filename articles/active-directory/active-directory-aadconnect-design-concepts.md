@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="01/21/2016"
+   ms.date="02/16/2016"
    ms.author="andkjell"/>
 
-# Azure AD Connect の設計概念
+# Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある部分について説明することです。ここでは特定の部分について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
 
 ## sourceAnchor
@@ -43,7 +43,6 @@ sourceAnchor 属性は、*オブジェクトの有効期間中に変更できな
 - 大文字と小文字の区別がないこと、および大文字と小文字で異なる可能性がある値は避けること
 - オブジェクトの作成時に割り当てる必要があること
 
-
 選択した sourceAnchor が文字列型でない場合、Azure AD Connect では、特殊文字が表示されないように、属性値に対して Base64Encode を実行します。ADFS とは別のフェデレーション サーバーを使用する場合、属性に対して Base64Encode を実行する機能がそのサーバーにも備わっていることを確認してください。
 
 sourceAnchor 属性は、大文字小文字を区別します。値 "JohnDoe" と "johndoe" は同じではありません。
@@ -68,4 +67,4 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

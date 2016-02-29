@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/11/2016" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 #Azure Multi-Factor Authentication のしくみ
@@ -52,14 +52,14 @@ Azure Multi-Factor Authentication は、次の 3 種類のバージョンが使�
 
 バージョン | 説明 
 ------------- | ------------- |
-Office 365 の多要素認証 | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
-Azure 管理者用の多要素認証 | すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
+Office 365 の Multi-Factor Authentication | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
+Azure 管理者用の Multi-Factor Authentication | すべての Azure 管理者には、Office 365 向けと同じ Multi-Factor Authentication 機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
 Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。<br><br>Azure 管理ポータルを介した追加の構成オプション、高度なレポート、さまざまなオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、スタンドアロン ライセンスとして購入することができ、Azure Active Directory Premium および Enterprise Mobility Suite にバンドルされています。<br><br>また、Azure サブスクリプションで Azure Multi-Factor Authentication プロバイダーを作成して使用量ベースで購入することもできます。
 ##バージョンごとの機能の比較
 下の表は、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を提供しています。
 
 
-機能 | Office 365 の多要素認証 (Office 365 SKU に付属)|Azure 管理者用の多要素認証 (Azure サブスクリプションに付属) | Azure Multi-Factor Authentication (Azure AD Premium および Enterprise Mobility Suite に付属) 
+機能 | Office 365 の Multi-Factor Authentication (Office 365 SKU に付属)|Azure 管理者用の Multi-Factor Authentication (Azure サブスクリプションに付属) | Azure Multi-Factor Authentication (Azure AD Premium および Enterprise Mobility Suite に付属) 
 ------------- | :-------------: |:-------------: |:-------------: |
 管理者は MFA によってアカウントを保護することができます。| * | * (Azure 管理者アカウントのみ使用可能)|*
 モバイル アプリを 2 番目の要素にする|* | * | *
@@ -102,4 +102,4 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

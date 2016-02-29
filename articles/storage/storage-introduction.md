@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/16/2016"
 	ms.author="tamram"/>
 
 # Microsoft Azure Storage の概要
@@ -30,7 +30,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 Azure Storage をすぐに使用する場合は、「[Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)」をご覧ください。
 
-Azure Storage の使用に必要なツール、ライブラリ、およびその他のリソースについて詳しくは、下記「[次のステップ](next-steps)」をご覧ください。
+Azure Storage の使用に必要なツール、ライブラリ、およびその他のリソースの詳細については、下記「[次のステップ](#next-steps)」をご覧ください。
 
 ## Azure Storage とは
 
@@ -55,7 +55,7 @@ Azure ストレージ アカウントは、Azure Storage のサービスにア�
 - Standard Storage アカウント。Blob、Table、Queue、File Storage が含まれています。
 - Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。
 
-ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。[1 つのサブスクリプションに対し、一意の名前を付けた最大 100 個のストレージ アカウントを作成できます。](../azure-subscription-service-limits.md) ボリューム ディスカウント価格の詳細については、「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。[1 つのサブスクリプションに対し、一意の名前を付けた最大 100 個のストレージ アカウントを作成できます。](../azure-subscription-service-limits.md) ボリューム料金については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 Azure は、まず[無料試用版](https://azure.microsoft.com/pricing/free-trial/)で使用してみることができます。またプランの購入時には、さまざまな[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)から選択できます。[MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure Storage を含む Azure サービスに使用できる無料使用分のクレジットが与えられます。
 
@@ -74,7 +74,7 @@ Standard Storage アカウントでは、Blob Storage、Table Storage、Queue St
 
 ![Azure Storage のリソース](./media/storage-introduction/storage-concepts.png)
 
-標準ストレージ アカウントの作成方法の詳細については、[ストレージ アカウントの作成、管理、削除](storage-create-storage-account.md)に関するページをご覧ください。
+標準ストレージ アカウントの作成方法の詳細については、[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)に関するページをご覧ください。
 
 ### Premium Storage アカウント
 
@@ -93,13 +93,13 @@ Azure Premium Storage は現在、Azure 仮想マシン ディスクでのみサ
 - クラウド アプリケーションの構成データ
 - ログやその他の大きなデータセットなどのビッグ データ
 
-すべての BLOB は、コンテナーに編成されます。コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。ストレージ アカウントの容量の上限である 500 TB を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
+すべての BLOB は、コンテナーに編成されます。コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。ストレージ アカウントの容量の上限である 500 TB (テラバイト) を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
 
-Blob Storage が提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (ディスク) の 3 種類があります。ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。追加 BLOB はブロック BLOB に似ていますが、追加操作用に最適化されています。追加 BLOB は、新しいブロックを最後に追加することによってのみ更新できます。追加 BLOB は、新しいデータが BLOB の最後のみに書き込まれる必要がある、ログ記録のようなシナリオに適しています。
+BLOB ストレージが提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (ディスク) の 3 種類があります。ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。追加 BLOB はブロック BLOB に似ていますが、追加操作用に最適化されています。追加 BLOB は、新しいブロックを最後に追加することによってのみ更新できます。追加 BLOB は、新しいデータが BLOB の最後のみに書き込まれる必要がある、ログ記録のようなシナリオに適しています。
 
-ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
+ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB (テラバイト) までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
 
-ネットワーク上の制限があるために、有線接続経由で Blob Storage にデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure Import/Export サービス](storage-import-export-service.md)を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
+ネットワーク上の制限があるために、有線接続経由で Blob Storage にデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートできます。「[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](storage-import-export-service.md)」を参照してください。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
 
 ## Table Storage
 
@@ -143,7 +143,7 @@ File Storage 共有は標準の SMB ファイル共有であるため、Azure �
 
 最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
-ストレージ アカウントへのセキュリティで保護されたアクセスの詳細については、「[Microsoft Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)」および「[ Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。
+ストレージ アカウントへのセキュリティで保護されたアクセスの詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」および「[Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」をご覧ください。
 
 ## レプリケーションによる持続性と高可用性
 
@@ -155,20 +155,20 @@ File Storage 共有は標準の SMB ファイル共有であるため、Azure �
 
 ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。サービスに対する要求とは、Azure Storage に対するすべての読み取り、書き込み操作を指します。送信データ転送は、Microsoft Azure リージョンから外部に転送されるデータを指します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Microsoft Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Storage (ストレージ サービス) の料金詳細](https://azure.microsoft.com/pricing/details/storage/)」のページを参照してください。送信データ転送の価格の詳細については、「[データ転送の価格の詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。コストの見積には、[計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) をご利用ください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」ページをご覧ください。送信データ転送の価格の詳細については、「[データ転送の価格の詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。コストの見積には、[計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) をご利用ください。
 
 ## ストレージに対する開発
 
 Azure Storage では、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx) を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure Storage の使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
 - [.NET](http://go.microsoft.com/fwlink/?LinkID=390731)
-- [ネイティブ コード](http://msdn.microsoft.com/library/azure/dn495438.aspx)
+- [C++ 用の Microsoft Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
 - [Java/Android](/develop/java/)
 - [Node.JS](/develop/nodejs/)
 - [PHP](/develop/php/)
 - [Ruby](/develop/ruby/)
 - [Python](/develop/python/)
-- [PowerShell](http://msdn.microsoft.com/library/azure/dn495240.aspx)
+- [PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 
 ## 次のステップ
 
@@ -189,7 +189,7 @@ Azure Storage を導入するには、次のリソースを参照してくださ
 
 - [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 - [Azure Storage サービス REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [AzCopy コマンドライン ツール リファレンス](storage-use-azcopy.md)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
 ### PowerShell ユーザー向け
 - [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
@@ -199,40 +199,41 @@ Azure Storage を導入するには、次のリソースを参照してくださ
 ### .NET 開発者向け
 
 - [.NET クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
-- [.NET から Blob Storage を使用する方法](storage-dotnet-how-to-use-blobs.md)
-- [.NET から Table Storage を使用する方法](storage-dotnet-how-to-use-tables.md)
-- [.NET から Queue Storage を使用する方法](storage-dotnet-how-to-use-queues.md)
-- [PowerShell と .NET で File Storage を使用する方法](storage-dotnet-how-to-use-files.md)
+- [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
+- [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
+- [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)
+- [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 
 ### Java/Android 開発者向け
 
-- [Java クライアント ライブラリ リファレンス](http://dl.windowsazure.com/storage/javadoc/)
-- [Java/Android から Blob Storage を使用する方法](../storage-java-how-to-use-blob-storage/)
-- [Java/Android から Table Storage を使用する方法](../storage-java-how-to-use-table-storage/)
-- [Java/Android から Queue Storage を使用する方法](../storage-java-how-to-use-queue-storage/)
+- [Java クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-java/)
+- [Java/Android から BLOB ストレージを使用する方法](storage-java-how-to-use-blob-storage.md)
+- [Java/Android からテーブル ストレージを使用する方法](storage-java-how-to-use-table-storage.md)
+- [Java/Android から Queue Storage を使用する方法](storage-java-how-to-use-queue-storage.md)
+- [Java からファイル ストレージを使用する方法](storage-java-how-to-use-file-storage.md) 
 
 ### Node.js 開発者向け
 
-- [Node.js から Blob Storage を使用する方法](storage-nodejs-how-to-use-blob-storage.md)
-- [Node.js から Table Storage を使用する方法](storage-nodejs-how-to-use-table-storage.md)
-- [Node.js から Queue Storage を使用する方法](storage-nodejs-how-to-use-queues.md)
+- [Node.js から BLOB ストレージを使用する方法](storage-nodejs-how-to-use-blob-storage.md)
+- [Node.js からテーブル ストレージを使用する方法](storage-nodejs-how-to-use-table-storage.md)
+- [Node.js からキュー ストレージを使用する方法](storage-nodejs-how-to-use-queues.md)
 
 ### PHP 開発者向け
 
-- [PHP から Blob Storage を使用する方法](storage-php-how-to-use-blobs.md)
-- [PHP から Table Storage を使用する方法](storage-php-how-to-use-table-storage.md)
-- [PHP から Queue Storage を使用する方法](storage-php-how-to-use-queues.md)
+- [PHP から BLOB ストレージを使用する方法](storage-php-how-to-use-blobs.md)
+- [PHP からテーブル ストレージを使用する方法](storage-php-how-to-use-table-storage.md)
+- [PHP からキュー ストレージを使用する方法](storage-php-how-to-use-queues.md)
 
 ### Ruby 開発者向け
 
-- [Ruby から Blob Storage を使用する方法](storage-ruby-how-to-use-blob-storage.md)
-- [Ruby から Table Storage を使用する方法](storage-ruby-how-to-use-table-storage.md)
-- [Ruby から Queue Storage を使用する方法](storage-ruby-how-to-use-queue-storage.md)
+- [Ruby から BLOB ストレージを使用する方法](storage-ruby-how-to-use-blob-storage.md)
+- [Ruby からテーブル ストレージを使用する方法](storage-ruby-how-to-use-table-storage.md)
+- [Ruby からキュー ストレージを使用する方法](storage-ruby-how-to-use-queue-storage.md)
 
 ### Python 開発者向け
 
-- [Python から Blob Storage を使用する方法](storage-python-how-to-use-blob-storage.md)
-- [Python から Table Storage を使用する方法](storage-python-how-to-use-table-storage.md)
-- [Python から Queue Storage を使用する方法](storage-python-how-to-use-queue-storage.md)
+- [Python から BLOB ストレージを使用する方法](storage-python-how-to-use-blob-storage.md)
+- [Python からテーブル ストレージを使用する方法](storage-python-how-to-use-table-storage.md)
+- [Python からキュー ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

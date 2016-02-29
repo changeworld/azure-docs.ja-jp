@@ -18,9 +18,14 @@
 
 # Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動
 
-この記事では、Data Factory のコピー アクティビティを利用し、Azure SQL Data Warehouse と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure SQL Data Warehouse と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、コピー アクティビティによるデータ移動の一般概要のほか、SQL Data Warehouse でサポートされるデータ ソースとシンクについて紹介している「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づいています。
 
-次のサンプルは、Azure SQL Data Warehouse と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+次のサンプルは、Azure SQL Data Warehouse と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、「[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)」で説明されているシンクのいずれかに、任意のソースからデータを**直接**コピーすることができます。
+
+> [AZURE.NOTE] 
+Azure Data Factory の概要については、「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
+> 
+> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
 
 
 ## サンプル: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
@@ -526,4 +531,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

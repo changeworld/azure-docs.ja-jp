@@ -12,13 +12,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="02/10/2016"
    ms.author="telmos" />
 
 # インスタンス レベル パブリック IP の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできるパブリック IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
 
->[AZURE.NOTE]これまで、ILPIP は、パブリック IP を意味する PIP という名前で呼ばれていました。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-network-ip-addresses-overview-arm.md)。
+
+Azure における [IP アドレス](virtual-network-ip-addresses-overview-classic.md)の動作を理解しておく必要があります。
+
+>[AZURE.NOTE] これまで、ILPIP は、パブリック IP を意味する PIP という名前で呼ばれていました。
 
 ![Difference between ILPIP and VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
@@ -29,7 +33,7 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 - contosoweb\_IN\_0.contosoadservice.cloudapp.net
 - contosoweb\_IN\_1.contosoadservice.cloudapp.net 
 
->[AZURE.NOTE]各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。サブスクリプションにつき最大 5 つの ILPIP を使用できます。現時点では、複数 NIC の VMは ILPIP でサポートされていません。
+>[AZURE.NOTE] 各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。サブスクリプションにつき最大 5 つの ILPIP を使用できます。現時点では、複数 NIC の VMは ILPIP でサポートされていません。
 
 ## ILPIP を要求する理由
 直接割り当てられている IP アドレスで VM またはロール インスタンスに接続できるようにするには、クラウド サービスの "VIP:&lt;ポート番号&gt;" を使用するのではなく、VM またはロール インスタンスの ILPIP を要求します。- **パッシブ FTP** - VM に ILPIP を持つことで、任意のポートに関するトラフィックのみを受信できるため、トラフィックを受信するためにエンドポイントを開く必要がなくなります。これにより、ポートが動的に選択されるパッシブ FTP に似たシナリオを実現できます。- **送信 IP** - VM からの発信トラフィックは、送信元である ILPIP と共に送信されます。これは、外部エンティティに対して VM を一意に識別します。
@@ -118,9 +122,9 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 
 ## 次のステップ
 
-[予約済み IP](../virtual-networks-reserved-public-ip)
+- 従来のデプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)の動作を理解します。
 
-[予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+- [予約 IP](../virtual-networks-reserved-public-ip) について学習します。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Hyper-V 仮想マシンのレプリケーションの容量計画"
+	pageTitle="Site Recovery の Hyper-V Capacity Planner ツールを実行する | Microsoft Azure"
 	description="この記事には、Azure Site Recovery の Hyper-V Capacity Planner ツールの使用方法を示す手順が含まれています。"
 	services="site-recovery"
 	documentationCenter="na"
@@ -9,15 +9,19 @@
 <tags
 	ms.service="site-recovery"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/01/2015"
+	ms.date="02/15/2016"
 	ms.author="raynew" />
 
-# Hyper-V 仮想マシンのレプリケーションの容量計画
+# Site Recovery の Hyper-V Capacity Planner ツールを実行する
 
-Azure Site Recovery では、Hyper-V レプリカを使用して、Hyper-V 仮想マシンをオンプレミスのサイトから Azure またはセカンダリ データ センターにレプリケートします。Site Recovery の Capacity Planner ツールを使用すると、Hyper-V 仮想マシンのレプリケーションにおけるレプリケーション要件および帯域幅要件を容易に算出することができます。
+Azure Site Recovery デプロイメントの一環で、レプリケーションと帯域幅の要件を確認する必要があります。Site Recovery の Hyper-V Capacity Planner ツールを使用すると、Hyper-V 仮想マシンのレプリケーションにおけるレプリケーション要件および帯域幅要件を容易に算出することができます。
+
+
+この記事では、Hyper-V Capacity Planner ツールの実行方法について説明します。このツールは、[Site Recovery の容量計画](site-recovery-capacity-planner.md)で説明されている他の容量計画ツールと情報も利用することをお勧めします。
+
 
 ## 開始する前に
 
@@ -32,7 +36,7 @@ Azure Site Recovery では、Hyper-V レプリカを使用して、Hyper-V 仮�
 
 
 ## 手順 1: プライマリ サイトを準備します。
-1. プライマリ サイトでは、レプリケートする Hyper-V 仮想マシンと、それらが配置されている Hyper-V ホスト/クラスターとをすべて掲載した一覧を作成します。ツールは毎回、複数のスタンドアロン サーバー ホストに対して、または単一のクラスターに対して実行できますが、両方に対して同時に実行することはできません。また、ツールはオペレーティング システムごとに別々に実行する必要があります。したがって、Hyper-V サーバーを次のようにまとめてメモしておく必要があります。 
+1. プライマリ サイトでは、レプリケートする Hyper-V 仮想マシンと、それらが配置されている Hyper-V ホスト/クラスターとをすべて掲載した一覧を作成します。ツールは毎回、複数のスタンドアロン サーバー ホストに対して、または単一のクラスターに対して実行できますが、両方に対して同時に実行することはできません。また、ツールはオペレーティング システムごとに別々に実行する必要があります。したがって、Hyper-V サーバーを次のようにまとめてメモしておく必要があります。
 
   - Windows Server ® 2012 スタンドアロン サーバー
   - Windows Server ® 2012 クラスター
@@ -57,8 +61,8 @@ Azure にレプリケートする場合、この手順は必要ありません�
 
 	- **[サーバー マネージャー]** で、**[フェールオーバー クラスター マネージャー]** を開きます。
 	- クラスターに接続し、クラスター名を強調表示し、**[アクション]**、**[ロールの構成]** の順にクリックし、[高可用性ウィザード] を開きます。
-	- **[ロールの選択]** で、**[Hyper-V レプリカ ブローカー]** をクリックします。このウィザードでは、**[NetBIOS 名]** とクラスターの接続ポイントとして使用する **[IP アドレス]** (クライアント アクセス ポイントと呼ばれます) を指定します。**Hyper-V レプリカ ブローカー**が構成され、クライアント アクセス ポイント名が生成されます。この名前はメモする必要があります。 
-	- Hyper-V レプリカ ブローカーのロールがオンラインになることとクラスターの全ノード間でフェールオーバーできることを検証します。これを行うには、ロールを右クリックし、**[移動]** をポイントし、**[ノードの選択]** をクリックします。ノードを選択し、**[OK]** を選択します。 
+	- **[ロールの選択]** で、**[Hyper-V レプリカ ブローカー]** をクリックします。このウィザードでは、**[NetBIOS 名]** とクラスターの接続ポイントとして使用する **[IP アドレス]** (クライアント アクセス ポイントと呼ばれます) を指定します。**Hyper-V レプリカ ブローカー**が構成され、クライアント アクセス ポイント名が生成されます。この名前はメモする必要があります。
+	- Hyper-V レプリカ ブローカーのロールがオンラインになることとクラスターの全ノード間でフェールオーバーできることを検証します。これを行うには、ロールを右クリックし、**[移動]** をポイントし、**[ノードの選択]** をクリックします。ノードを選択し、**[OK]** を選択します。
 	- 証明書ベースの認証を使用する場合は、各クラスター ノードとクライアント アクセス ポイントのすべてに証明書がインストールされていることを確認します。
 2.  レプリカ サーバーを有効にします。
 
@@ -66,14 +70,14 @@ Azure にレプリケートする場合、この手順は必要ありません�
 	- スタンドアロン サーバーの場合は、Hyper-V マネージャーを開きます。**[アクション]** ウィンドウで、有効にするサーバーの **[Hyper-V の設定]** をクリックし、**[レプリケーションの構成]** で **[レプリカ サーバーとしてこのコンピューターを有効にする]** をクリックします。
 3. 認証をセットアップします。
 
-	- **[認証とポート]** で、プライマリ サーバーを認証する方法と、認証ポートを選択します。証明書を使用する場合は、**[証明書の選択]** をクリックしていずれかを選択します。プライマリと復旧の両方の Hyper-V ホストが同じドメインにあるか、信頼できるドメインにある場合は、Kerberos を使用します。ドメインまたはワークグループのデプロイメントが異なる場合は証明書を使用します。
+	- **[認証とポート]** で、プライマリ サーバーを認証する方法と、認証ポートを選択します。証明書を使用する場合は、**[証明書の選択]** をクリックしていずれかを選択します。プライマリと復旧の両方の Hyper-V ホストが同じドメインにあるか、信頼されたドメインにある場合は、Kerberos を使用します。異なるドメイン、またはワークグループのデプロイの場合は証明書を使用します。
 	- **[認証とストレージ]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可します。**[OK]** または **[適用]** をクリックします。
 
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
 	- **netsh http show servicestate** を実行して、指定したプロトコル/ポートに対してリスナーが実行されていることを確認します。  
 4. ファイアウォールをセットアップします。Hyper-V のインストール時には、既定のポートでトラフィックを許可するように (443 では HTTPS、80 では Kerberos)、ファイアウォール規則が作成されます。次のように、これらのルールを有効にします。
-	
+
 		- Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
 		- Kerberos authentication on cluster (80): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"}}**
 		- Certificate authentication on standalone server: **Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"**
@@ -81,7 +85,7 @@ Azure にレプリケートする場合、この手順は必要ありません�
 
 ## 手順 3: 容量計画ツールを実行します。
 
-プライマリ サイトを準備し、回復サーバーをセットアップすると、ツールを実行できます。
+プライマリ サイトを準備し、復旧サーバーをセットアップすると、ツールを実行できます。
 
 1. Microsoft Download Center からツールを[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39057)します。
 2. いずれかのプライマリ サーバー (またはプライマリ クラスターのノード) からツールを実行します。.exe ファイルを右クリックし、**[管理者として実行]** を選択します。
@@ -98,7 +102,7 @@ Azure にレプリケートする場合、この手順は必要ありません�
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
 
 6. **[拡張レプリカの詳細]** の **[拡張レプリカ サイトに関連するテストをスキップする]** を有効にします。これらは、Site Recovery によってサポートされていません。
-7. **[レプリケートする VM を選択]** では、ツールは **[プライマリ サイトの詳細]** ページで指定された設定に従って、サーバーまたはクラスターに接続し、プライマリ サーバー上で動作している VM およびディスクを表示します。レプリケーションが既に有効になっている VM または動作していない VM は表示されないので注意してください。メトリックを収集する VM を選択します。VHD を選択すると、VM のデータも自動的に収集されます。
+7. **[レプリケートする VM を選択]** では、ツールは **[プライマリ サイトの詳細]** ページで指定された設定に従って、サーバーまたはクラスターに接続し、プライマリ サーバー上で動作している VM およびディスクを表示します。レプリケーションが既に有効になっている VM または実行していない VM は表示されないので注意してください。メトリックスを収集する VM を選択します。VHD を選択すると、VM のデータも自動的に収集されます。
 9. レプリカ サーバーまたはクラスターが構成済みである場合、**[ネットワーク情報]** では、プライマリ サイトとレプリカ サイト間で使用されると考えられるおおよその WAN 帯域幅を指定し、さらに証明書認証が構成済みである場合には証明書を選択します。
 
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
@@ -125,16 +129,20 @@ Azure にレプリケートする場合、この手順は必要ありません�
 
 ## その他のリソース
 
-- ツールの詳細については、ダウンロード時にツールに付いてきたドキュメントを参照してください。
+- ツールの詳細については、ダウンロード時にツールに付属していたドキュメントを参照してください。
 - ツールのチュートリアルについては、Keith Mayer の [TechNet ブログ](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)を参照してください。
-- オンプレミス間の Hyper-V レプリケーションに関する弊社のパフォーマンス テストの結果については、[こちら](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)を参照してください。
+- オンプレミス間の Hyper-V レプリケーションに関する弊社のパフォーマンス テストの結果については、[こちら](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md)を参照してください。
 
 
 
 ## 次のステップ
 
+容量計画を完了すると、Site Recovery のデプロイを始めることができます。
+
 - [オンプレミスの VMM サイトと Azure 間の保護の設定](site-recovery-vmm-to-azure.md)
 - [Set up protection between an on-premises Hyper-V site and Azure (オンプレミスの Hyper-V サイトと Azure 間の保護の設定)](site-recovery-hyper-v-site-to-azure.md)
 - [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
+- [Set up protection between two on-premises VMM sites with SAN (SAN を使用した 2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-san.md)
+- [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="オンプレミスの VMWare サイト間の保護の設定"
-	description="この記事を使用して、2 つの VMware サイト間の保護を Azure Site Recovery を使用して構成します。"
+	pageTitle="オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする | Microsoft Azure"
+	description="VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/03/2015"
+	ms.date="02/16/2016"
 	ms.author="raynew"/>
 
 
-# オンプレミスの VMWare サイト間の保護の設定
+# オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
 
 
 ## 概要
@@ -27,7 +27,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ## 前提条件
 
-- **Azure アカウント** - [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+- **Azure アカウント** - [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。
 
 
 ## ステップ 1: コンテナーの作成
@@ -36,7 +36,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 4. **[名前]** ボックスに、資格情報コンテナーを識別するフレンドリ名を入力します。
-5. **[リージョン]** ボックスで、資格情報コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](pricing/details/site-recovery/)」で利用可能地域をご覧ください。
+5. **[リージョン]** ボックスで、資格情報コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域をご覧ください。
 
 ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。メイン [復旧サービス] ページで、コンテナーは **[アクティブ]** と表示されています。
 
@@ -130,4 +130,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

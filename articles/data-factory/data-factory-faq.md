@@ -132,9 +132,9 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 スライスを再実行するには、次のどちらかの方法を使用します。
 
 - ポータルのスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。 
-- **Set-AzureDataFactorySliceStatus** コマンドレットを実行して、スライスの状態を **PendingExecution** に設定します   
+- スライスの状態を **Waiting** に設定して、**Set-AzureDataFactorySliceStatus** コマンドレットを実行します。   
 	
-		Set-AzureRmDataFactorySliceStatus -Status PendingExecution -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
+		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
 コマンドレットの詳細については、[Set-AzureDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
 
@@ -174,4 +174,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

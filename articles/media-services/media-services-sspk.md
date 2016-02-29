@@ -145,6 +145,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Shenzhen Jiuzhou Electric Co.,Ltd
 - Shenzhen Skyworth Digital Technology Co., Ltd
 - Sichuan Changhong Electric Co., Ltd.
+- Sky Deutschland Fernsehen GmbH & Co. KG
 - SmarDTV S.A.
 - SoftAtHome
 - TCL Overseas Marketing (Macao Commercial Offshore) Limited
@@ -164,4 +165,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,22 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/12/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 
 # Traffic Manager のパフォーマンスに関する考慮事項
 
-
-Azure Traffic Manager に関してよく寄せられる質問に、Traffic Manager が原因と考えられる潜在的なパフォーマンスの問題があります。よくある質問は、"Traffic Manager によって Web サイトでの待機時間はどれくらい増加しますか"、"監視サイトで昨日 2 時間にわたって Web サイトが遅くなったことが示されましたが、そのとき Traffic Manager に問題がありましたか"、"Traffic Manager のサーバーはどこにありますか。 パフォーマンスに影響がないように、Web サイトと同じデータ センターにあることを確認させてください" といったものです。
-
-ここでは、Traffic Manager が Web サイトに直接及ぼす可能性のあるパフォーマンス面での影響について説明します。米国東部とアジアに 1 つずつ Web サイトがあり、米国東部の Traffic Manager のプローブが失敗した場合、すべてのユーザーはアジアの Web サイトに送られ、パフォーマンスが影響を受けますが、このパフォーマンスの影響は Traffic Manager 自体とは何の関係もありません。
+このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。考えられるシナリオ: 米国リージョンとアジアに Web サイトが 1 つずつあり、それらのいずれかが Traffic Manager プローブの正常性チェックに失敗し、すべてのユーザーが正常なリージョンにリダイレクトされます。この動作はパフォーマンスの問題があるように見えますが、ユーザー要求の距離に基づいて予想される動作になります。
 
   
 
 ## Traffic Manager の動作に関する重要な注意事項
-
-「[Traffic Manager について](traffic-manager-overview.md)」は Traffic Manager の動作について学習できる優れたリソースですが、非常に多くの情報が記載されているため、パフォーマンスに関する重要な情報を見つけ出すのが困難な場合があります。この MSDN ドキュメントを見るときの重要な点は図 3 の手順 5 と 6 であり、ここでそれについて詳しく説明します。
 
 - Traffic Manager は基本的に DNS の解決だけを行います。つまり、Traffic Manager が Web サイトに対して与える可能性があるパフォーマンスに関する唯一の影響は、初期 DNS 参照です。
 - Traffic Manager の DNS 参照に関する説明のポイント。Traffic Manager は、ポリシーとプローブの結果に基づいて、通常の Microsoft DNS ルート サーバーを設定し、定期的に更新します。したがって、初期 DNS 参照の間であっても、DNS 要求は通常の Microsoft DNS ルート サーバーによって処理されるため、Traffic Manager による影響はありません。Traffic Manager が「停止」しても (つまり、ポリシーのプローブと DNS の更新を行っている VM での障害)、Microsoft DNS サーバーのエントリは維持されるため、Traffic Manager の DNS 名への影響はありません。唯一の影響は、ポリシーに基づくプローブと更新が行われないことです (つまり、プライマリ サイトがダウンした場合、Traffic Manager は DNS を更新してフェールオーバー サイトを参照できません)。
@@ -77,11 +72,6 @@ http://www.whatsmydns.net/ – このサイトは、20 の異なる地理的な�
 
 http://www.digwebinterface.com – watchmouse サイトと似ていますが、このサイトでは CNAME と A レコードを含む DNS のさらに詳細な情報が表示されます。オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
 
-## まとめ
-
-以上のことから、Traffic Manager が Web サイトに与えるパフォーマンスの影響は最初の DNS 参照だけであり (時間は一定ではありませんが、平均すると 50 ミリ秒以下です)、DNS TTL (既定値は 300 秒) の期間中はパフォーマンスへの影響はなく、TTL が経過した後で DNS キャッシュを更新するときに再び影響があることがわかります。したがって、"Traffic Manager によって Web サイトでの待機時間はどれくらい増加しますか" という質問に対する回答は、基本的にゼロです。
-
-
 ## 次のステップ
 
 
@@ -94,4 +84,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

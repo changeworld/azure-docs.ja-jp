@@ -17,9 +17,9 @@
  ms.date="01/08/2016"
  ms.author="larryfr"/>
 
-# Power BI (プレビュー) を使用した Apache Storm トポロジのデータの視覚化
+# Power BI を使用した Apache Storm トポロジのデータの視覚化
 
-Power BI プレビューを使用すると、データをレポートとして表示したり、ダッシュボードに表示したりできます。Power BI REST API によって、HDInsight クラスター上の Apache Storm で実行しているトポロジのデータを Power BI で簡単に使用できます。
+Power BI を使用すると、データをレポートとして表示したり、ダッシュボードに表示したりできます。Power BI REST API によって、HDInsight クラスター上の Apache Storm で実行しているトポロジのデータを Power BI で簡単に使用できます。
 
 このドキュメントでは、Power BI を使用して、Storm トポロジによって作成されたデータから、レポートとダッシュボードを作成する方法について説明します。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 
@@ -22,7 +22,7 @@
 Azure ポータルでは、Data Lake Analytics を使用するための対話型チュートリアルが提供されます。この記事では、Web サイト ログを分析するためのチュートリアルを読み進める方法を示します。
 
 
->[AZURE.NOTE]Visual Studio を使用する同じチュートリアルを読み進める場合は、「[Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。ポータルにはさらに対話型チュートリアルが追加されます。
+>[AZURE.NOTE] Visual Studio を使用する同じチュートリアルを読み進める場合は、「[Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。ポータルにはさらに対話型チュートリアルが追加されます。
 
 
 他のチュートリアルについては、以下を参照してください。
@@ -42,7 +42,7 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。
 
-各 Data Lake Analytics アカウントには、[Azure Data Lake Store](data-lake-store-overview.md) アカウントとの依存関係があります。このアカウントを、既定の Data Lake Store アカウントと呼びます。事前に、または Data Lake Analytics アカウントの作成時に Data Lake Store アカウントを作成することができます。このチュートリアルでは、Analytics アカウントを使用して Data Lake Store アカウントを作成します。
+各 Data Lake Analytics アカウントには、[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) アカウントとの依存関係があります。このアカウントを、既定の Data Lake Store アカウントと呼びます。事前に、または Data Lake Analytics アカウントの作成時に Data Lake Store アカウントを作成することができます。このチュートリアルでは、Analytics アカウントを使用して Data Lake Store アカウントを作成します。
 
 **Data Lake Analytics アカウントを作成するには**
 
@@ -88,4 +88,4 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

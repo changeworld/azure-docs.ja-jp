@@ -41,7 +41,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **uploadSampleDataAndScripts.ps1:** このスクリプトは、サンプル データとスクリプトを Azure にアップロードします。
 5. 以下の Azure リソースが作成済みであることを確認してください。			
 	- Azure ストレージ アカウント
-	- Azure SQL データベース
+	- Azure SQL Database
 	- Azure HDInsight クラスター Version 3.1 以上 (または、Data Factory サービスで自動的に作成されるオンデマンド HDInsight クラスターを使用します)	
 7. Azure リソースを作成したなら、上記の各リソースへの接続に必要な情報を持っていることを確認します。
  	- **Azure ストレージ アカウント** - アカウント名とアカウント キー。  
@@ -214,7 +214,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 3. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![Editor Blob Storage JSON][image-editor-blob-storage-json]
+	![エディターの Blob Storage JSON][image-editor-blob-storage-json]
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
@@ -348,7 +348,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	左上にある階層リンクで **[Data Factory]** をクリックすると、すべてのパイプラインでダイアグラム ビューに戻ります。
 
 
-**お疲れさまでした。** Azure データ ファクトリ、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
+**お疲れさまでした。** Azure Data Factory、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
 
 ## <a name="MainStep6"></a>手順 6. パイプラインとデータ スライスを監視する 
@@ -391,7 +391,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 	![[RawGameEventsTable] の [データ スライス] ブレード][image-data-factory-monitoring-raw-game-events-table-dataslice-blade]
 
-	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[検証を保留中]** 状態で表示される場合もあります。
+	エラーが発生していた場合、ここに **[失敗]** という状態が表示されます。また、スライスがどの程度の速さで処理されるかによって、両方のスライスが **[準備完了]** 状態で表示される場合もあれば、**[待機中]** 状態で表示される場合もあります。
 
 	スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。
  
@@ -484,4 +484,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-tutorial/NewDataFactoryMenu.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

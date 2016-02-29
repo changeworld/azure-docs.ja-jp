@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="02/16/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics のリリース ノート
@@ -127,10 +127,10 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 ## 次のステップ
 
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-- [Azure Stream Analytics の使用](../stream.analytics.get.started.md)
+- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="na"
       ms.topic="article"
-      ms.date="12/17/2015"
+      ms.date="02/15/2016"
       ms.author="jutang" />
 
 
@@ -121,13 +121,12 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 ### 概念に関する記事とビデオ
 
 - [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-- [Windows で Azure File Storage を使用する方法](storage-dotnet-how-to-use-files.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+- [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 
-### File ストレージ用のツールのサポート
+### File Storage 用のツールのサポート
 
-- [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
-- [Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
+- Azure CLI を使用した[ファイル共有の作成と管理](storage-azure-cli.md#create-and-manage-file-shares)
 
 ### リファレンス
 
@@ -135,9 +134,9 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 
 ### ブログ記事
 
-- [Azure File Storage の一般提供開始](http://go.microsoft.com/fwlink/?LinkID=626728&clcid=0x409)
-- [Azure File ストレージの詳細情報](http://go.microsoft.com/fwlink/?LinkID=626729&clcid=0x409)
+- [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+- [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -71,7 +71,7 @@ Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat
 BLOB ストレージは、構造化データと非構造化データに使用できます。BLOB ストレージ コンテナーには、"キーと値のペア" としてデータが格納されます。ディレクトリ階層はありません。ただし、キー名でスラッシュ (/) を使用すれば、ファイルがディレクトリ階層に保存されているように見せかけることができます。たとえば、BLOB のキー名を「*input/log1.txt*」とします。この場合、*input* ディレクトリは実際に存在しませんが、キー名でスラッシュが使用されているのでファイル パスのように見えます。
 
 ###<a id="benefits"></a>BLOB ストレージの利点
-コンピューティング クラスターとストレージ リソースを同じ場所で併置しないとなるとパフォーマンスの低下が懸念されますが、これは、Azure データ センター内のストレージ アカウント リソースの近くにコンピューティング クラスターを作成することで軽減されます。高速ネットワークが整備されているので、コンピューティング ノードは Azure BLOB ストレージ内のデータに非常に効率的にアクセスできます。
+コンピューティング クラスターとストレージ リソースを同じ場所で併置しないとなるとパフォーマンスの低下が懸念されますが、これは、Azure リージョン内のストレージ アカウント リソースの近くにコンピューティング クラスターを作成することで軽減されます。高速ネットワークが整備されているので、コンピューティング ノードは Azure Blob Storage 内のデータに非常に効率的にアクセスできます。
 
 HDFS ではなく、Azure BLOB ストレージにデータを格納することにはいくつかの利点があります。
 
@@ -87,7 +87,7 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 
 ## BLOB コンテナーの作成
 
-BLOB を使用するには、まず、[Azure ストレージ アカウント][azure-storage-create]を作成します。その一環として、このアカウントを使用して作成するオブジェクトを格納する Azure データセンターを指定します。クラスターとストレージ アカウントは、同じデータセンターに置く必要があります。Hive メタストア SQL Server データベースと Oozie メタストア SQL Server データベースも、同じデータセンターに配置する必要があります。
+BLOB を使用するには、まず、[Azure ストレージ アカウント][azure-storage-create]を作成します。その一環として、このアカウントを使用して作成するオブジェクトを格納する Azure リージョンを指定します。クラスターとストレージ アカウントは、同じリージョンに置く必要があります。Hive メタストア SQL Server データベースと Oozie メタストア SQL Server データベースも、同じリージョンに配置する必要があります。
 
 作成される各 BLOB は、どこにあるとしても、Azure ストレージ アカウント内のコンテナーに属します。このコンテナーは、HDInsight の外部で作成された既存の BLOB ストレージ コンテナーか、HDInsight クラスター用に作成されたコンテナーであってもかまいません。
 
@@ -151,11 +151,11 @@ HDInsight から BLOB ストレージ内のファイルにアクセスするた�
 	wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
 
-> [AZURE.NOTE] \(HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
+> [AZURE.NOTE] (HDInsight のエミュレーター上で実行されている) ストレージ エミュレーター上にあるファイルを指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
 
 
 
-この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と SSL で暗号化されたアクセス (*wasbs*) に対応しています。同じ Azure のデータ センター内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
+この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と SSL で暗号化されたアクセス (*wasbs*) に対応しています。同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
 &lt;BlobStorageContainerName&gt; では、Azure BLOB ストレージでコンテナーの名前を指定します。&lt;StorageAccountName&gt; では、Azure ストレージ アカウントの名前を指定します。完全修飾ドメイン名 (FQDN) を指定する必要があります。
 
@@ -286,7 +286,7 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 * [Azure Storage の Shared Access Signature を使用して HDInsight でデータへのアクセスを制限する][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: ../install-configure-powershell.md
+[powershell-install]: powershell-install-configure.md
 [hdinsight-creation]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-tutorial-get-started-windows.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -300,4 +300,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/27/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 # Azure ポータルを使用する Azure Data Lake Analytics の管理
@@ -102,8 +102,8 @@ Analytics アカウントを削除しても、従属する Data Lake Store ア�
 
 Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
-- [Azure Data Lake Store](data-lake-store-overview.md)
-- [Azure BLOB ストレージ](storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure Storage](../storage/storage-introduction.md)
 
 Data Lake Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Store アカウントを指定する必要があります。既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。Data Lake Analytics アカウントを作成したら、さらに Data Lake Store アカウントや Azure ストレージ アカウントを追加することができます。
 
@@ -154,7 +154,7 @@ Data Lake Analytics アカウントを作成する際には、既定のストレ
 
 <a name="upload-data-to-wasb"></a>**Azure BLOB ストレージ アカウントにファイルをアップロードするには**
 
-「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。この情報は Data Lake Analytics に適用されます。
+「[HDInsight での Hadoop ジョブ用データのアップロード](../hdinsight/hdinsight-upload-data.md)」を参照してください。この情報は Data Lake Analytics に適用されます。
 
 
 ## ユーザーの管理
@@ -170,7 +170,7 @@ Data Lake Analytics では、Azure Active Directory でのロール ベースの
 |DevTest Lab ユーザー|すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。|  
 |ユーザーアクセスの管理者|Azure リソースに対するユーザー アクセスを管理します。|  
 
-Azure Active Directory ユーザーとセキュリティ グループの作成については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。
+Azure Active Directory ユーザーとセキュリティ グループの作成については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
 
 **Analytics アカウントにユーザーまたはセキュリティ グループを追加するには**
 
@@ -181,7 +181,7 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 3. **[ユーザー]** ブレードで、**[追加]** をクリックします。
 4. ロールを選択し、ユーザーを追加してから **[OK]** をクリックします。
 
-**注: このユーザーまたはセキュリティ グループは、ジョブを送信する必要がある場合、Data Lake Store に対するアクセス許可も与えられている必要があります。詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md)に関する記述を参照してください。**
+**注: このユーザーまたはセキュリティ グループは、ジョブを送信する必要がある場合、Data Lake Store に対するアクセス許可も与えられている必要があります。詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記述を参照してください。**
 
 
 
@@ -244,8 +244,6 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 
 ##アカウントの使用状況の監視
 
-[概要 - 用語について説明し、関連付ける必要があります。]
-
 **アカウントの使用状況を監視するには**
 
 1. 管理する Analytics アカウントを開きます。手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。使用状況は、以下のように [使用状況] パネルに表示されます。
@@ -271,7 +269,7 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 <!-- ################################ -->
 ## Azure リソース マネージャー グループの使用
 
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -292,7 +290,7 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 - [Azure ポータルで Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
+- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

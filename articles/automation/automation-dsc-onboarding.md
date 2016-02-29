@@ -288,18 +288,23 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
         
         # Create the metaconfigurations
         # TODO: edit the below as needed for your use case
-        DscMetaConfigs `
-            -RegistrationUrl "<fill me in>" `
-            -RegistrationKey "<fill me in>" `
-            -ComputerName "<some VM to onboard>", "<some other VM to onboard>" `
-            -NodeConfigurationName "SimpleConfig.webserver" `
-            -RefreshFrequencyMins 30 `
-            -ConfigurationModeFrequencyMins 15 `
-            -RebootNodeIfNeeded $False `
-            -AllowModuleOverwrite $False `
-            -ConfigurationMode "ApplyAndMonitor" `
-            -ActionAfterReboot "ContinueConfiguration" `
-            -ReportOnly $False # Set to $True to have machines only report to AA DSC but not pull from it
+        $Params = @{
+             RegistrationUrl = '<fill me in>';
+             RegistrationKey = '<fill me in>';
+             ComputerName = @('<some VM to onboard>', '<some other VM to onboard>');
+             NodeConfigurationName = 'SimpleConfig.webserver';
+             RefreshFrequencyMins = 30;
+             ConfigurationModeFrequencyMins = 15;
+             RebootNodeIfNeeded = $False;
+             AllowModuleOverwrite = $False;
+             ConfigurationMode = 'ApplyAndMonitor';
+             ActionAfterReboot = 'ContinueConfiguration';
+             ReportOnly = $False;  # Set to $True to have machines only report to AA DSC but not pull from it
+        }
+        
+        # Use PowerShell splatting to pass parameters to the DSC configuration being invoked
+        # For more info about splatting, run: Get-Help -Name about_Splatting
+        DscMetaConfigs @Params
 
 3.	お使いの Automation アカウントの登録キーと URL のほか、オンボードするマシンの名前を入力します。その他のパラメーターはすべて省略可能です。Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
@@ -316,7 +321,17 @@ PowerShell DSC Local Configuration Manager の既定値がユース ケースに
 
 3.	ノードをオンボードする Automation アカウントから、オンボードするマシンの PowerShell DSC メタ構成をダウンロードします。
 
-        Get-AzureRmAutomationDscOnboardingMetaconfig -ResourceGroupName MyResourceGroup -AutomationAccountName MyAutomationAccount -ComputerName MyServer1, MyServer2 -OutputFolder C:\Users\joe\Desktop
+        # Define the parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
+        $Params = @{
+            ResourceGroupName = 'ContosoResources'; # The name of the ARM Resource Group that contains your Azure Automation Account
+            AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
+            ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+            OutputFolder = "$env:UserProfile\Desktop";
+        }
+        
+        # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
+        # For more info about splatting, run: Get-Help -Name about_Splatting
+        Get-AzureRmAutomationDscOnboardingMetaconfig @Params
 
 作業ディレクトリに、マシンをオンボードするための PowerShell DSC メタ構成が含まれる ***DscMetaConfigs*** という名前のフォルダーが作成されます。
 
@@ -359,4 +374,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/06/2015"
+	ms.date="02/11/2016"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -283,4 +283,4 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

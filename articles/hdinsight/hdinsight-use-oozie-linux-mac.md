@@ -201,7 +201,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 次の手順では、データのエクスポート先となる Azure SQL Database を作成します。
 
-> [AZURE.IMPORTANT] これらの手順を実行する前に、[Azure CLI をインストールして構成する](xplat-cli-install.md)必要があります。CLI のインストールとデータベースを作成する手順は、HDInsight クラスターまたはローカル ワークステーションから実行できます。
+> [AZURE.IMPORTANT] これらの手順を実行する前に、[Azure CLI をインストールして構成する](../xplat-cli-install.md)必要があります。CLI のインストールとデータベースを作成する手順は、HDInsight クラスターまたはローカル ワークステーションから実行できます。
 
 1. 次のコマンドを使用して、新しい Azure SQL Database サーバーを作成します。
 
@@ -721,4 +721,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

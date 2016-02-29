@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Site Recovery で SAN を使用して VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする | Microsoft Azure"
-	description="Azure Site Recovery は、SAN レプリケーションを使用して、オンプレミスのサイト間での Hyper-V 仮想マシンのレプリケーション、フェールオーバー、および回復を調整します。"
+	description="この記事では、Azure Site Recovery で SAN レプリケーションを使用して、2 つのサイト間で Hyper-V 仮想マシンをレプリケートする方法について説明します。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="02/16/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery で SAN を使用して (VMM クラウド内の) Hyper-V VM をセカンダリ サイトにレプリケートする
@@ -26,18 +26,18 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 この記事では、概要とデプロイの前提条件について説明します。また、VMM と Site Recovery 資格情報コンテナーでレプリケーションを構成し、有効にする手順を示します。VMM で SAN 記憶域を検出および分類し、LUN をプロビジョニングして、記憶域を Hyper-V クラスターに割り当てます。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
 
-質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
-このシナリオには、次に示すビジネス上のメリットがあります。
+## SAN を使用してレプリケートする理由
+
+このシナリオの内容を次に示します。
 
 - Site Recovery によって自動化されたスケーラブルなエンタープライズ レプリケーション ソリューションを提供します。
-- ファイバー チャネル記憶域と iSCSI 記憶域の両方で、エンタープライズ記憶域パートナーが提供する SAN レプリケーション機能を利用します。[SAN 記憶域パートナー](http://go.microsoft.com/fwlink/?LinkId=518669)に関するページをご覧ください。
+- ファイバー チャネル記憶域と iSCSI 記憶域の両方で、エンタープライズ記憶域パートナーが提供する SAN レプリケーション機能を利用します。[SAN 記憶域パートナー](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)に関するページをご覧ください。
 - 既存の SAN インフラストラクチャを活用して、Hyper-V クラスターにデプロイされているミッション クリティカルなアプリケーションを保護します。
 - ゲスト クラスターをサポートします。
 - 記憶域配列の機能に応じて、RTO と RPO の短縮を実現する同期レプリケーションと、優れた柔軟性を実現する非同期レプリケーションを使用して、アプリケーションのさまざまな階層でレプリケーションの一貫性を確保します。  
 - VMM との統合により、VMM コンソール内で SAN を管理できます。また、VMM 内の SMI-S により、既存の記憶域が検出されます。  
-
-
 
 ## アーキテクチャ
 
@@ -59,11 +59,11 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 **前提条件** | **詳細** 
 --- | ---
-**Azure**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
+**Azure**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
 **VMM** | 少なくとも 1 台の VMM サーバーを、物理または仮想スタンドアロン サーバーとして、または仮想クラスターとしてデプロイする必要があります。<br/><br/>VMM サーバーは、最新の累積更新プログラムが適用された System Center 2012 R2 を実行する必要があります。<br/><br/>保護するプライマリ VMM サーバー上に少なくとも 1 つのクラウドを構成し、保護と回復を行うために使用するセカンダリ VMM サーバー上に 1 つのクラウドを構成する必要があります。<br/><br/>保護するソース クラウドには、1 つ以上のVMM ホスト グループを含める必要があります。<br/><br/>すべての VMM クラウドに Hyper-V キャパシティ プロファイルを設定する必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウドのファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページと、[チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)に関するページを参照してください。
-**Hyper-V** | プライマリ サイトとセカンダリ サイトに 1 つ上の Hyper-V クラスターが必要であり、ソース Hyper-V クラスターに 1 台以上の VM が必要です。プライマリとセカンダリの場所にある VMM ホスト グループは、各グループが 1 つ以上の Hyper-V クラスタを持っている必要があります。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hｙｐｅｒ-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
-**SAN 記憶域** | SAN レプリケーションを使用して、iSCSI またはファイバー チャネル ストレージがあるか、共有仮想ハード ディスク (vhdx) を使用するゲスト クラスター化仮想マシンをレプリケートできます。<br/><br/>2 つの SAN アレイを設定する必要があります (プライマリ サイト内とセカンダリ サイト内にそれぞれ１ つ)。<br/><br/>これらのアレイの間にネットワーク インフラストラクチャを設定する必要がありますピアリングとレプリケーションが構成されていること。ストレージ アレイの要件に従ってレプリケーション ライセンスが設定されている必要があります。<br/><br/>Hyper-V ホスト サーバーとストレージ アレイの間にネットワークを設定して、ホストが ISCSI またはファイバーチャネルを使用して LUN と通信できるようにする必要があります。<br/><br/> [サポートされるストレージ アレイ](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)の一覧を確認します。<br/><br/>ストレージ アレイ メーカーによって提供された SMI-Sプロバイダーをインストールする必要があり、SAN アレイはそのプロバイダーによって管理される必要があります。プロバイダーをそれぞれのドキュメントに従って設定します。<br/><br/> VMM サーバーが IP アドレスまたはFQDN によってネットワーク経由でアクセスできるサーバー上にアレイ用の SMI-S プロバイダーがあることを確認します。<br/><br/>各 SAN アレイには、このデプロイで 1 つ以上のストレージ プールを使用できる必要があります。プライマリ サイトの VMM サーバーがプライマリ アレイを管理し、セカンダリ VMM サーバーがセカンダリ アレイを管理します。<br/><br/>プライマリ サイトの VMM サーバーがプライマリ アレイを管理し、セカンダリ VMM サーバーがセカンダリ アレイを管理する必要があります。
-**ネットワーク マッピング** | フェールオーバー後に、レプリケートされた仮想マシンがセカンダリ Hyper-V ホスト サーバーに最適に配置され、適切な VM ネットワークに接続できるように、ネットワーク マッピングを構成できます。ネットワーク マッピングを構成しない場合、フェールオーバー後にレプリカ VM はどのネットワークにも接続されません。<br/><br/>デプロイ中にネットワーク マッピングを設定するには、ソース Hyper-V ホスト サーバー上の仮想マシンが VMM VM ネットワークに接続されることを確認します。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。<br/<br/>回復に使用するセカンダリ VMM サーバーのターゲット クラウドには対応する VM ネットワークが構成されており、そのネットワークが、ターゲット クラウドに関連付けられている対応する論理ネットワークにリンクされている必要があります。<br/><br/>ネットワーク マッピングについては[こちら](site-recovery-network-mapping.md)を参照してください。
+**Hyper-V** | プライマリ サイトとセカンダリ サイトに 1 つ上の Hyper-V クラスターが必要であり、ソース Hyper-V クラスターに 1 台以上の VM が必要です。プライマリとセカンダリの場所にある VMM ホスト グループは、各グループが 1 つ以上の Hyper-V クラスターを持っている必要があります。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hyper-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。[詳細](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters)は、Aidan Finn のブログ記事を参照してください。
+**SAN 記憶域** | SAN レプリケーションを使用して、iSCSI またはファイバー チャネル記憶域があるか、共有仮想ハード ディスク (vhdx) を使用するゲスト クラスター化仮想マシンをレプリケートできます。<br/><br/>2 つの SAN 配列を設定する必要があります (プライマリ サイト内とセカンダリ サイト内にそれぞれ 1 つ)。<br/><br/>これらの配列の間にネットワーク インフラストラクチャを設定する必要があります。ピアリングとレプリケーションが構成されていること。記憶域配列の要件に従ってレプリケーション ライセンスが設定されている必要があります。<br/><br/>Hyper-V ホスト サーバーと記憶域配列の間にネットワークを設定して、ホストが ISCSI またはファイバーチャネルを使用して記憶域 LUN と通信できるようにする必要があります。<br/><br/> [サポートされる記憶域配列](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)の一覧を確認します。<br/><br/>記憶域配列のメーカーによって提供された SMI-S プロバイダーをインストールする必要があり、SAN 配列はそのプロバイダーによって管理される必要があります。プロバイダーをそれぞれのドキュメントに従って設定します。<br/><br/>VMM サーバーが IP アドレスまたは FQDN によってネットワーク経由でアクセスできるサーバー上に配列用の SMI-S プロバイダーがあることを確認します。<br/><br/>各 SAN 配列には、このデプロイメントで 1 つ以上の記憶域プールを使用できる必要があります。プライマリ サイトの VMM サーバーがプライマリ配列を管理し、セカンダリ VMM サーバーがセカンダリ配列を管理します。<br/><br/>プライマリ サイトの VMM サーバーがプライマリ配列を管理し、セカンダリ VMM サーバーがセカンダリ配列を管理する必要があります。
+**ネットワーク マッピング** | フェールオーバー後に、レプリケートされた仮想マシンがセカンダリ Hyper-V ホスト サーバーに最適に配置され、適切な VM ネットワークに接続できるように、ネットワーク マッピングを構成できます。ネットワーク マッピングを構成しない場合、フェールオーバー後にレプリカ VM はどのネットワークにも接続されません。<br/><br/>デプロイメント中にネットワーク マッピングを設定するには、ソース Hyper-V ホスト サーバー上の仮想マシンが VMM VM ネットワークに接続されることを確認します。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。<br/>回復に使用するセカンダリ VMM サーバーのターゲット クラウドには対応する VM ネットワークが構成されており、そのネットワークが、ターゲット クラウドに関連付けられている対応する論理ネットワークにリンクされている必要があります。<br/><br/>ネットワーク マッピングについては[こちら](site-recovery-network-mapping.md)を参照してください。
 
 
 ## 手順 1: VMM インフラストラクチャの準備
@@ -78,10 +78,7 @@ VMM インフラストラクチャを準備するには、以下を行う必要�
 
 ### VMM クラウドが設定されていることを確認する
 
-Site Recovery で、VMM クラウド内の Hyper-V ホスト サーバーに配置された仮想マシンの保護をオーケストレーションします。Site Recovery のデプロイを開始する前に、VMM クラウドが適切に設定されていることを確認する必要があります。次の情報も参考にしてください。
-
-- [VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn883636.aspx#BKMK_Fabric)
-- [Creating private clouds (チュートリアル: プライベート クラウドの作成)](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) (Keith Mayer のブログ)
+Site Recovery で、VMM クラウド内の Hyper-V ホスト サーバーに配置された仮想マシンの保護をオーケストレーションします。Site Recovery のデプロイを開始する前に、VMM クラウドが適切に設定されていることを確認する必要があります。[Walkthrough: Creating private clouds (チュートリアル: プライベート クラウドの作成)](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) (Keith Mayer のブログ)
 
 ### VMM で、SAN 記憶域の統合と分類を行う
 
@@ -148,7 +145,7 @@ VMM コンソールで SAN を追加し、分類します。
 
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、資格情報コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](http://go.microsoft.com/fwlink/?LinkId=389880)」で利用可能地域を参照してください。
+5. **[リージョン]** ボックスで、資格情報コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
 
 6. **[コンテナーの作成]** をクリックします。
 
@@ -357,4 +354,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 テスト フェールオーバーを実行して、環境が期待どおりに動作することを確認したら、[こちらで](site-recovery-failover.md)異なる種類のフェールオーバーについて参照します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

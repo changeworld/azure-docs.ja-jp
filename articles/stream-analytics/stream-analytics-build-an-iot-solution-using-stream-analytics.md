@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="02/16/2016" 
 	ms.author="jeffstok"
 />
 
@@ -37,7 +37,7 @@
 
 このチュートリアルを正常に完了するための前提条件は次のとおりです。
 
--   最新の [Azure PowerShell](../install-configure-powershell.md)
+-   最新の [Azure PowerShell](../powershell-install-configure.md)
 -   Visual Studio 2015 または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 -   [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 -   コンピューターの管理特権
@@ -150,7 +150,7 @@ Azure アカウントをお持ちでない場合は、<http://azure.microsoft.co
 
 関連する [TollApp](https://github.com/streamanalytics/samples/releases) フォルダーとファイルをダウンロードして保存します。必ず最新版をダウンロードしてください。
 
-[Microsoft Azure PowerShell] ウィンドウを**管理者として**開きます。まだ Azure PowerShell をお持ちでない場合は、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従ってインストールしてください。
+[Microsoft Azure PowerShell] ウィンドウを**管理者として**開きます。まだ Azure PowerShell をお持ちでない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順に従ってインストールしてください。
 
 インターネットからダウンロードされた ps1 ファイル、dll ファイル、exe ファイルは、Windows によって自動的にブロックされます。スクリプトを実行する前に、実行ポリシーを設定しておく必要があります。Azure PowerShell ウィンドウが管理者権限で実行されていることを確認してください。「Set-ExecutionPolicy unrestricted」を実行し、確認を求められたら「Y」と入力します。
 
@@ -534,4 +534,4 @@ PowerShell ウィンドウで「.\\Cleanup.ps1」と入力します。これに�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

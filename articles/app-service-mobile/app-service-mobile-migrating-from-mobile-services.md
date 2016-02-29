@@ -210,7 +210,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 > [AZURE.WARNING] **[設定] メニューの認証メカニズムは使用しないでください。**
 >
-> Azure App Service の _[認証/承認]_ 設定メニューに別個の「コードなし」認証/承認システムがあり、[設定] メニューに (廃止) _[モバイル認証]_ オプションがあります。これらのオプションと移行した Azure モバイル サービスとの間には互換性がありません。サイトをアップグレードし、Azure App Service 認証を最大限に活用できます。
+> Azure App Service の _[認証/承認]_ 設定メニューに別個の「コードなし」認証/承認システムがあり、[設定] メニューに (廃止) _[モバイル認証]_ オプションがあります。これらのオプションと移行した Azure モバイル サービスとの間には互換性がありません。[サイトをアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)し、Azure App Service 認証を最大限に活用できます。
 
 ### <a name="easytables"></a>データ
 
@@ -274,7 +274,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > \[Notification Hubs] の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -393,4 +393,4 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

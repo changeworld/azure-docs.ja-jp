@@ -31,9 +31,13 @@
 ### デベロッパー センターでの支払いレポートへのアクセス
 
 1. https://dev.windows.com/ja-JP でデベロッパー センターに移動します。
-2. **[ダッシュボード]** をクリックします。![LandingPageDashboardHighlight][1]
+2. **[ダッシュボード]** をクリックします。
 
-3. **[入金状況]** をクリックします。![DashboardPayoutSummary][2]
+    ![LandingPageDashboardHighlight][1]
+
+3. **[入金状況]** をクリックします。
+
+    ![DashboardPayoutSummary][2]
 
 
 ## デベロッパー センターでの支払いレポートの表示
@@ -58,7 +62,9 @@
 
 1. https://publish.windowsazure.com で発行ポータルに移動します
 2. **[発行元]** セクションで **[支払いレポート]** をクリックします
-3. ドロップダウン リストをクリックすると、使用可能なすべての四半期支払いレポートが表示されます。![accessingpayoutreport][5]
+3. ドロップダウン リストをクリックすると、使用可能なすべての四半期支払いレポートが表示されます。
+
+    ![accessingpayoutreport][5]
 
 
 ### 支払いレポートの読み取り
@@ -94,7 +100,7 @@
 
 ## 次のステップ
 
-その他のサポートの問い合わせについては、https://portal.azure.com に問題をログしてください。
+その他のサポートの問い合わせについては、<https://portal.azure.com> に問題をログしてください。
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
 [2]: ./media/marketplace-publishing-report-payout/Dashboard-PayoutSummary.png
@@ -106,4 +112,4 @@
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

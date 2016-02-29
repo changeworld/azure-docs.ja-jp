@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Site Recovery を使用したオンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果 | Microsoft Azure"
 	description="この記事では、Azure Site Recovery を使用したオンプレミス間のレプリケーションのパフォーマンス テストについての情報を提供します。"
-	services="site-recovery" 
+	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
 	manager="jwhit"
@@ -10,7 +10,7 @@
 <tags
 	ms.service="site-recovery"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
 	ms.date="12/14/2015"
@@ -195,19 +195,11 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 |メトリック|カウンター|
 |---|---|
-|CPU|\\Processor(\_Total)\\% Processor Time|
-|使用可能なメモリ|\\Memory\\Available MBytes|
-|IOPS|\\PhysicalDisk(\_Total)\\Disk Transfers/sec|
-|VM 読み取り (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Operations/Sec|
-|VM 書き込み (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Operations/S|
-|VM 読み取りスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Bytes/sec|
-|VM 書き込みスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Bytes/sec|
+|CPU|\\Processor(\_Total)\\% Processor Time| |使用可能なメモリ|\\Memory\\Available MBytes| |IOPS|\\PhysicalDisk(\_Total)\\Disk Transfers/sec| |VM 読み取り (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Operations/Sec| |VM 書き込み (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Operations/S| |VM 読み取りスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Bytes/sec| |VM 書き込みスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Bytes/sec|
 
 
 ## 次のステップ
 
 - [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
 
- 
-
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

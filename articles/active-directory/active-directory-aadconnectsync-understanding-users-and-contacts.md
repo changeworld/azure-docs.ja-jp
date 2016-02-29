@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -26,7 +26,7 @@
 構成の前提となるいくつかの一般的なルールがあります。
 
 - ソースの Active Directory からインポートする順序に関係なく、最終的な結果は常に同じになる必要があります。
-- アクティブなアカウントは、**userPrincipalName** と **sourceAnchor** を含むログイン情報を常に提供します。
+- アクティブなアカウントは、**userPrincipalName** や **sourceAnchor** など、サインイン情報を常に提供します。
 - アクティブなアカウントが見つからない場合、無効なアカウントは、リンクされたメールボックスでない限り、userPrincipalName と sourceAnchor を提供します。
 - リンクされたメールボックスを使用するアカウントは、userPrincipalName と sourceAnchor に使用されることはありません。アクティブなアカウントは後で見つかることが前提です。
 - 連絡先オブジェクトは、Azure AD に対して連絡先またはユーザーとしてプロビジョニングされます。すべてのソースの Active Directory フォレストが処理されるまでは、実際にはわかりません。
@@ -56,4 +56,4 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

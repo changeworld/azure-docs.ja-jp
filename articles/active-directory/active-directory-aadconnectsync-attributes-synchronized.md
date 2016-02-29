@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -426,6 +426,27 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msExchUserHoldPolicies| ○| | | 訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。|
 | proxyAddresses| ○| ○| ○| Exchange Online の x500 アドレスのみが挿入されます。|
 
+## デバイスの書き戻し
+デバイス オブジェクトは、Active Directory に作成されます。これらは、Azure AD に参加しているデバイスか、ドメインに参加している Windows 10 コンピューターです。
+
+| 属性名| デバイス| コメント |
+| --- | :-: | --- |
+| altSecurityIdentities | ○| |
+| displayName | ○| |
+| dn | ○| |
+| msDS-CloudAnchor | ○| |
+| msDS-DeviceID | ○| |
+| msDS-DeviceObjectVersion | ○| |
+| msDS-DeviceOSType | ○| |
+| msDS-DeviceOSVersion | ○| |
+| msDS-DevicePhysicalIDs | ○| |
+| msDS-KeyCredentialLink | ○| Windows Server 2016 AD スキーマでのみ |
+| msDS-IsCompliant | ○| |
+| msDS-IsEnabled | ○| |
+| msDS-IsManaged | ○| |
+| msDS-RegisteredOwner | ○| |
+
+
 ## 属性に関する注意事項
 - 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
 
@@ -435,4 +456,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

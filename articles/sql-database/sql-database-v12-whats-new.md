@@ -150,7 +150,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 V12 の論理サーバーでのみ、V12 データベースをホストできます。V12 サーバーは V12 データベースのみをホストできます。
 
 
-まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
+まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-plan-prepare-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
 
 
 ## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開リージョン
@@ -161,4 +161,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

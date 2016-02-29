@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/17/2016"
 	ms.author="micurd"/>
 
 
@@ -32,7 +32,7 @@
 
 ## Node.js アプリケーションの作成
 
-Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Node.js Cloud Service]」、「[Node.js クラウド サービス]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web アプリ」を参照してください。
+Node.js アプリケーションを作成する手順については、「[Azure App Service での Node.js Web アプリの作成]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -67,7 +67,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ]」を参照してください。
 
 ## コンテナーを作成する
 
@@ -136,7 +136,7 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 ## コンテナーに BLOB をアップロードする
 
-BLOB はブロックベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB はブロックベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### ブロック blob
 
@@ -364,17 +364,18 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 -   [Azure Storage チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 -   [Node.js デベロッパー センター](/develop/nodejs/)
--   [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+-   [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-[Create and deploy a Node.js application to an Azure Web Site]: /develop/nodejs/tutorials/create-a-website-(mac)/
-[Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-[ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
-[Node.js クラウド サービス]: ../web-sites-nodejs-use-webmatrix.md
+
+[Azure App Service での Node.js Web アプリの作成]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+[Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
+[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 [Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-[Azure Portal]: portal.azure.com
-[Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+[Azure Portal]: https://portal.azure.com
+[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -52,9 +52,9 @@ Azure クラシック ポータルから SQL Server のリンクされたサー�
 2. SQL Server Management Studio (SSMS) を使用して、Azure クラシック ポータルで指定した資格情報で SQL Server インスタンスに接続してみます。
 
 
-## 問題: 入力スライスが PendingExecution または PendingValidation 状態のままになっている
+## 問題: 入力スライスの状態が Waiting のままになっている
 
-このスライスは、さまざまな理由から **PendingExecution** または **PendingValidation** になります。一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていることが挙げられます。Azure Data Factory の範囲外で生成されるデータセットの場合、**external** プロパティによるマーキングが必要です。これは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
+このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていることが挙げられます。Azure Data Factory の範囲外で生成されるデータセットの場合、**external** プロパティによるマーキングが必要です。これは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
 **external** プロパティの使用方法については、次の例を参照してください。external を true に設定するときに、必要に応じて **externalData*** を指定できます。
 
@@ -374,4 +374,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

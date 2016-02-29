@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="02/17/2016"
 	ms.author="jgao"/>
 
 # Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -36,7 +36,7 @@
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage-create-storage-account.md)に関するページを参照してください。
+- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md)に関するページを参照してください。
 
 ##ポータルを開く
 
@@ -215,7 +215,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 
 このプロセスをプログラムで実行する方法は数多くあります。
 
-- Azure Data Factory を使用する。オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory-compute-linked-services.md/#azure-hdinsight-linked-service)」および「[Azure Data Factory を使用した変換と分析](../data-factory-data-transformation-activities.md)」をご覧ください。
+- Azure Data Factory を使用する。オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/data-factory-compute-linked-services.md/#azure-hdinsight-linked-service)」および「[Azure Data Factory を使用した変換と分析](../data-factory/data-factory-data-transformation-activities.md)」をご覧ください。
 - Azure PowerShell を使用する。「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 - Azure CLI を使用する。「[Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
 - HDInsight .NET SDK を使用する。「[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
@@ -393,10 +393,10 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-provision-clusters.md)
 * [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [Azure HDInsight の概要](../hdinsight-get-started.md)
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

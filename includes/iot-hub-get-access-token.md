@@ -21,17 +21,17 @@ Azure Active Directory では、Azure リソース マネージャーを使用�
 2. **Main** メソッドの終わりに次のコードを追加し、トークンを使用する **ResourceManagementClient** オブジェクトを作成します。
 
     ```
-    var creds = new TokenCloudCredentials(subscriptionId, token.AccessToken);
+    var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
+    client.SubscriptionId = subscriptionId;
     ```
 
 3. 使用するリソース グループを作成するか、その参照を取得します。
 
     ```
-    var rgResponse = client.ResourceGroups.CreateOrUpdateAsync(rgName,
-        new ResourceGroup("East US")).Result;
-    if (rgResponse.StatusCode != HttpStatusCode.Created
-        && rgResponse.StatusCode != HttpStatusCode.OK)
+    var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
+        new ResourceGroup("East US"));
+    if (rgResponse.Properties.ProvisioningState != "Succeeded")
     {
       Console.WriteLine("Problem creating resource group");
       return;
@@ -40,4 +40,4 @@ Azure Active Directory では、Azure リソース マネージャーを使用�
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

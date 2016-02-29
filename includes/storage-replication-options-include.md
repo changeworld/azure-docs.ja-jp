@@ -1,4 +1,4 @@
-Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を確保するために常にレプリケートされており、一時的なハードウェア障害が発生した場合でも [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/) が満たされます。ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
+Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を確保するために常にレプリケートされており、一時的なハードウェア障害が発生した場合でも [Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) が満たされます。ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
 
 - **ローカル冗長ストレージ (LRS)。** ローカル冗長ストレージでは、データのコピーが 3 つ保持されます。LRS は、1 つのリージョンの 1 つの施設内で 3 回複製されます。LRS では、データは通常のハードウェア障害から保護されますが、1 つの施設の障害からは保護されません。  
   
@@ -22,8 +22,8 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
  
 ストレージ レプリケーション オプションの詳細については、[Azure Storage のレプリケーション](../articles/storage/storage-redundancy.md)に関するページを参照してください。
 
-ストレージ アカウント レプリケーションの価格情報については、[Storage の価格の詳細](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+ストレージ アカウント レプリケーションの価格情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-Azure Storage の持続性に関するアーキテクチャの詳細については、[Azure Storage SOSP ペーパー](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)のページを参照してください。
+Azure Storage の持続性に関するアーキテクチャ面での詳細については、[SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

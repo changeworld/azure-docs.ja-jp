@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2015" 
+	ms.date="02/12/2016" 
 	ms.author="jaymathe"/>
 
 
@@ -74,4 +74,4 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

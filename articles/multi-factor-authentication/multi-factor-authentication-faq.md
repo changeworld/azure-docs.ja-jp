@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/11/2016" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
@@ -35,7 +35,7 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 [パスワード 発行](mailto:phonefactorsupport@microsoft.com)
 
-- 従来の Phonefactor ユーザーで、パスワードのリセットについて不明な点がある場合や、パスワードのリセットのヘルプが必要な場合は、以下のリンクをクリックしてサポート ケースを開いてください。
+- 従来の PhoneFactor ユーザーで、パスワードのリセットについて不明な点がある場合や、パスワードのリセットのヘルプが必要な場合は、以下のリンクをクリックしてサポート ケースを開いてください。
 
 [Microsoft Azure Multi-Factor Authentication Server (PhoneFactor) のカスタマー サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)
 
@@ -75,7 +75,8 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 Azure Multi-Factor Authentication は、ユーザーごとおよび認証ごとの課金オプション付きスタンドアロン サービスとして、または Azure Active Directory Premium、Enterprise Mobility Suite、および Enterprise Cloud Suite とのセットで利用できます。スタンドアロン サービスは、使用量ベースで利用可能であり、Azure 年額コミットメントに対して毎月請求されます。または、Microsoft エンタープライズ契約、Open Volume License プログラム、Cloud Solution Providers プログラム、および Direct を通じて入手できる、ユーザーごとの年間ランセンスでも利用できます。
 
->[AZURE.IMPORTANT]オーストラリア リージョンをご利用いただけるのは、オーストラリアまたはニュージーランドに事業の活動場所を持つお客様のみです。
+>[AZURE.IMPORTANT]
+オーストラリア リージョンをご利用いただけるのは、オーストラリアまたはニュージーランドに事業の活動場所を持つお客様のみです。
 
 課金モデル | 料金
 ------------- | ------------- |
@@ -136,7 +137,7 @@ Azure Multi-Factor Authentication、Azure Active Directory Premium、Enterprise 
 アプリ パスワードを作成する方法について、「[アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 
->[AZURE.NOTE]Office 2013 クライアントのための最新の認証
+>[AZURE.NOTE] Office 2013 クライアントのための最新の認証
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
@@ -177,6 +178,6 @@ Windows Server 2012 以前のバージョンで Azure MFA Server が LSA セキ�
 
 現時点では、追加のセキュリティ確認は、ブラウザーからアクセスできるアプリケーションまたはサービスでのみ使用できます。Windows Powershell など、ローカル コンピューターにインストールされている非ブラウザー アプリケーション (リッチ クライアント アプリケーションとも呼ばれます) は、追加のセキュリティ確認に必要なアカウントでは機能しません。この場合、アプリケーション生成エラー 0x800434D4L が表示されることがあります。
 
-これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)」 を参照してください。
+これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする」(http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)) を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

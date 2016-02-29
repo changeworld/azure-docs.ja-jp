@@ -13,10 +13,10 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="11/23/2015"
+     ms.date="02/12/2016"
      ms.author="dobett"/>
 
-# チュートリアル: C# プログラムを使って IoT Hub を作成する
+# チュートリアル: C# プログラムと REST API を使って IoT Hub を作成する
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -40,29 +40,28 @@
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. NuGet パッケージ マネージャーで、**Microsoft.Azure.Management.Resources** を検索します。バージョン **2.18.11-preview** を選択します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.Resources** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
-4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。バージョン **2.19.208020213** を選択します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
-
-5. NuGet パッケージ マネージャーで、**Microsoft.Azure.Common** を検索します。バージョン **2.1.0** を選択します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
 6. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
 
     ```
     using System;
-    using System.IO;
-    using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json;
+    using Microsoft.Rest;
+    using System.Linq;
+    using System.Threading;
+    using Newtonsoft.Json;
     ```
     
-7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。**デプロイメント名**は、デプロイメントの名前です (**Deployment\_01** など)。
+7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -72,29 +71,28 @@
     
     static string rgName = "{Resource group name}";
     static string iotHubName = "{IoT Hub name}";
-    static string deploymentName = "{Deployment name}";
     ```
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
 ## REST API を使用して IoT Hub を作成する
 
-IoT Hub Resource Provider REST API を使用して、リソース グループで新しい IoT Hub を作成します。また、[REST API][lnk-rest-api] を使用して、既存の IoT Hub に変更を加えることもできます。
+[IoT Hub REST API][lnk-rest-api] を使用して、リソース グループで新しい IoT Hub を作成します。また、REST API を使用して、既存の IoT Hub に変更を加えることもできます。
 
 1. 次のメソッドを Program.cs に追加します。
     
     ```
-    static bool CreateIoTHub(ResourceManagementClient client, string token)
+    static void CreateIoTHub(string token)
     {
         
     }
     ```
 
-2. 次のコードを **CreateIoTHub** メソッドに追加して、認証トークンを要求に追加します。
+2. 以下に示したのは、**HttpClient** オブジェクトとそのヘッダー内の認証トークンを作成するコードです。このコードを **CreateIoTHub** メソッドに追加してください。
 
     ```
-    client.HttpClient.DefaultRequestHeaders.Authorization = 
-      new AuthenticationHeaderValue("Bearer", token);
+    HttpClient client = new HttpClient();
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
 3. 次のコードを **CreateIoTHub** メソッドに追加して IoT Hub を記述し、JSON 表記を生成します。
@@ -112,65 +110,54 @@ IoT Hub Resource Provider REST API を使用して、リソース グループ�
       }
     };
     
-    var content = new StringContent(
-      JsonConvert.SerializeObject(description),
-      Encoding.UTF8, "application/json");
+    var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
 
-4. 次のコードを **CreateIoTHub** メソッドに追加して、REST 要求を Azure に送信し、応答を確認します。
+4. **CreateIoTHub** メソッドに次のコードを追加します。これは、REST 要求を Azure に送信し、応答を確認して、デプロイ タスクの状態を監視するための URL を取得するコードです。
 
     ```
-    var requestUri = string.Format("https://management.azure.com/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.devices/IotHubs/{2}?api-version=2015-08-15-preview",
-      subscriptionId, rgName, iotHubName);
-    var httpsRepsonse = client.HttpClient.PutAsync(
-      requestUri, content).Result;
-
-    if (!httpsRepsonse.IsSuccessStatusCode)
+    var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
+    var requestUri = string.Format("https://management.azure.com/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.devices/IotHubs/{2}?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
+    var result = client.PutAsync(requestUri, content).Result;
+      
+    if (!result.IsSuccessStatusCode)
     {
-      Console.WriteLine("Failed {0}", httpsRepsonse.Content.ReadAsStringAsync().Result);
-      return false;
+      Console.WriteLine("Failed {0}", result.Content.ReadAsStringAsync().Result);
+      return;
     }
+    
+    var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
 
-5. 次のコードを **CreateIoTHub** メソッドの末尾に追加して、デプロイメントの完了を待機します。
+5. 直前のステップで取得した **asyncStatusUri** アドレスを使用してデプロイの完了を待機するコードを **CreateIoTHub** メソッドの最後に追加します。
 
     ```
-    ResourceGetResult resourceGetResult = null;
+    string body;
     do
     {
-    resourceGetResult = client.Resources.GetAsync(
-      rgName,
-      new ResourceIdentity()
-      {
-        ResourceName = iotHubName,
-        ResourceProviderApiVersion = "2015-08-15-preview",
-        ResourceProviderNamespace = "Microsoft.Devices",
-        ResourceType = "IotHubs"
-      }).Result;
-    Console.WriteLine("IoTHub state {0}", 
-      resourceGetResult.Resource.ProvisioningState);
-    } while (resourceGetResult.Resource.ProvisioningState != "Succeeded" 
-          && resourceGetResult.Resource.ProvisioningState != "Failed");
-    
-    if (resourceGetResult.Resource.ProvisioningState != "Succeeded")
-    {
-        Console.WriteLine("Failed to create iothub");
-        return false;
-    }
-    return true;
+      Thread.Sleep(10000);
+      HttpResponseMessage deploymentstatus = client.GetAsync(asyncStatusUri).Result;
+      body = deploymentstatus.Content.ReadAsStringAsync().Result;
+    } while (body == "{"Status":"Running"}");
     ```
 
-[AZURE.INCLUDE [iot-hub-retrieve-keys](../../includes/iot-hub-retrieve-keys.md)]
+6. 次のコードを **CreateIoTHub** メソッドの最後に追加します。作成した IoT Hub のキーを取得し、それをコンソールに出力するものです。
 
+    ```
+    var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2015-08-15-preview", subscriptionId, rgName, iotHubName);
+    var keysresults = client.PostAsync(listKeysUri, null).Result;
+    
+    Console.WriteLine("Keys: {0}", keysresults.Content.ReadAsStringAsync().Result);
+    ```
+    
 ## アプリケーションの完了と実行
 
-アプリケーションを完了するには、これをビルドおよび実行する前に、**CreateIoTHub** および **ShowIoTHubKeys** メソッドを呼び出します。
+**CreateIoTHub** メソッドの呼び出しを追加したうえでアプリケーションをビルドし、実行すれば、アプリケーションは完成です。
 
 1. 次のコードを **Main** メソッドの末尾に追加します。
 
     ```
-    if (CreateIoTHub(client, token.AccessToken))
-        ShowIoTHubKeys(client, token.AccessToken);
+    CreateIoTHub(token.AccessToken);
     Console.ReadLine();
     ```
     
@@ -184,14 +171,16 @@ IoT Hub Resource Provider REST API を使用して、リソース グループ�
 
 ## 次のステップ
 
+ここでは、REST API を使用して IoT Hub をデプロイしました。次の手順に進んでください。
+
 - [IoT Hub Resource Provider REST API][lnk-rest-api] の機能の詳細をご確認ください。
 - Azure リソース マネージャーの機能の詳細については、「[Azure リソース マネージャーの概要][lnk-azure-rm-overview]」を参照してください。
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
-[lnk-powershell-install]: https://azure.microsoft.com/ja-JP/blog/azps-1-0-pre/
+[lnk-powershell-install]: ../powershell-install-configure.md
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
-[lnk-azure-rm-overview]: https://azure.microsoft.com/documentation/articles/resource-group-overview/
+[lnk-azure-rm-overview]: ../resource-group-overview.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

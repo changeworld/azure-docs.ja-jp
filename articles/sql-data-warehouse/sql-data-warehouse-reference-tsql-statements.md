@@ -27,6 +27,7 @@
 - [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
 - [CREATE COLUMNSTORE INDEX](https://msdn.microsoft.com/library/gg492153.aspx)
 - [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
+- [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 - [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 - [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
 - [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -126,4 +127,4 @@ TSQL の例については、[SQL Data Warehouse の開発の概要][]に関す�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

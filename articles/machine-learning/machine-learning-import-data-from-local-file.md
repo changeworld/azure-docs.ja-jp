@@ -18,7 +18,7 @@
 	ms.author="garye;bradsev" />
 
 
-# さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
+# ローカル ファイルのトレーニング データを Azure Machine Learning Studio にインポートする
 
 [AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
@@ -40,4 +40,4 @@
 
 データがアップロードされると、データセット モジュールに格納され、ワークスペース内のすべての実験で使用できるようになります。実験の編集中に、モジュール パレットの **[保存されたデータセット]** リストに、あらかじめ読み込まれているすべてのサンプル データセットやデータセットが表示されます。データ セットを別の分析と機械学習のために使用する場合、実験キャンバスのデータセットをドラッグ アンド ドロップできます。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

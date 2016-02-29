@@ -37,17 +37,19 @@ SQL Data Warehouse では上記のすべてのメソッドを使用できます�
 
 次のセクションでは、各ステップをより詳しく説明し、処理の例を提供します。
 
-> [AZURE.NOTE]SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
+> [AZURE.NOTE] SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
 
 ## BCP によるファイルのエクスポート
 
 Azure へのファイルの移動の準備として、ファイルをフラット ファイルにエクスポートする必要があります。これには BCP コマンドライン ユーティリティを使用すると最適です。まだユーティリティがない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンド ライン ユーティリティ) からダウンロードできます。サンプルの BCP コマンドは、次のようになります。
 
 ```
-bcp "<Directory><File>" -c -T -S <Server Name> -d <Database Name>
+bcp "select top 10 * from <table>" queryout "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Query
+or
+bcp <table> out "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Table
 ```
 
-このコマンドは、クエリの結果を、指定したディレクトリのファイルにエクスポートします。複数の BCP コマンドを個別のテーブルごとに一度に実行して、並行処理できます。そのため、サーバーのコアごとに 1 つの BCP プロセスまで実行できますが、構成が違う場合には少し控えめの処理を試行して、自分の環境に最適な処理を確かめてください。
+スループットを最大化するために、個々のテーブルに対して、または 1 つのテーブル内の個々のパーティションに対して、BCP コマンドを複数同時に実行して、プロセスの並列化を試みることができます。これにより、BCP で使用される CPU を、BCP が実行されているサーバー内の複数のコアに分散できます。SQL DW または PDW システムから抽出する場合は、BCP コマンドに引数 -q (引用符で囲まれた識別子) を追加する必要があります。また、使用環境で Active Directory を使用していない場合は、-U と -P を追加してユーザー名とパスワードを指定する必要があります。
 
 さらに、PolyBase を使用してロードする際には、PolyBase が UTF-16 をまだサポートしておらず、すべてのファイルが UTF-8 でなければならないことに注意してください。これは、BCP コマンドで "-c" フラグを使用することで容易に解決し、また、フラット ファイルを下記のコードで UTF-16 から UTF-8 に変換することもできます。
 
@@ -62,7 +64,7 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 
 次のステップで、AZCopy を使って、オンプレミスから Azure ストレージ アカウントにデータを移動する方法を詳しく説明します。同じリージョンに Azure ストレージ アカウントがない場合、[Azure Storage のドキュメント][]に従ってアカウントを 1 つ作成できます。異なるリージョンのストレージ アカウントからもデータをロードできます。しかし、この場合は最適なパフォーマンスとなりません。
 
-> [AZURE.NOTE]本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
+> [AZURE.NOTE] 本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
 
 BCP を使って作成されたファイルのセットができたら、Azure powershell から、または、powershell スクリプトの実行により、AZCopy を簡単に実行できます。AZCopy を実行する際のプロンプトのおおよその形式は次のようになります。
 
@@ -202,4 +204,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

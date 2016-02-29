@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="02/16/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management ポリシー リファレンス
@@ -42,6 +42,7 @@
 	-	[要求メソッドを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 	-	[状態コードを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetStatus) - HTTP 状態コードを指定された値に変更します。
 	-	[変数の設定][] - 名前付き[コンテキスト][]変数の値を、後でアクセスできるように保持します。
+	-	[待機](https://msdn.microsoft.com/library/azure/dn894085.aspx#Wait) - 含まれている要求の送信、キャッシュからの値の取得、または制御フロー ポリシーが完了するまで待機してから次に進みます。
 -	[認証ポリシー][]
 	-	[基本認証][] -基本認証を使用してバックエンド サービスで認証します。
 	-	[クライアント証明書による認証][] -クライアント証明書を使用してバックエンド サービスで認証します。
@@ -119,4 +120,4 @@
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

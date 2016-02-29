@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/06/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
@@ -116,7 +116,7 @@
 
 ## 仮想マシン用のリモート デスクトップ エンドポイントの作成
 
-`azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからのローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
+`azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
 	azure vm endpoint create web1 54580 -k 3389 
 
@@ -130,7 +130,7 @@
 	azure vm endpoint delete web1 tcp-80-80
 
 
->[AZURE.NOTE]`azure vm endpoint --help` コマンドを使用すると、エンドポイントを管理するオプションをさらに調べることができます。
+>[AZURE.NOTE] `azure vm endpoint --help` コマンドを使用すると、エンドポイントを管理するオプションをさらに調べることができます。
 
 
 ## 次のステップ
@@ -143,4 +143,4 @@
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

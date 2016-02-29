@@ -20,7 +20,7 @@
 
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
->[AZURE.NOTE]HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
+>[AZURE.NOTE] HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 
 ##SQLLine の使用
 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
@@ -91,7 +91,7 @@ SQLLine を使用するには、以下のものが必要です。
 
 - DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。方法については、「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照してください。 
 
-	>[AZURE.IMPORTANT]仮想ネットワークに DNS サーバーをインストールする必要があります。方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)」を参照してください。
+	>[AZURE.IMPORTANT] 仮想ネットワークに DNS サーバーをインストールする必要があります。方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)」を参照してください。
 
 - HBase クラスターの接続固有の DNS サフィックスを取得します。そのためには、RDP でクラスターに接続して、IPConfig を実行します。DNS サフィックスの例を次に示します。
 
@@ -155,7 +155,7 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
 	コマンド プロンプトを閉じないでください。これは、次の手順で必要になります。
 
-	>[AZURE.NOTE]クライアント証明書の生成元となるルート証明書を作成したので、この証明書を秘密キーと共にエクスポートし、回復できる安全な場所に保存します。
+	>[AZURE.NOTE] クライアント証明書の生成元となるルート証明書を作成したので、この証明書を秘密キーと共にエクスポートし、回復できる安全な場所に保存します。
 
 **クライアント証明書を作成するには**
 
@@ -216,7 +216,7 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 2. jar ファイルを開くか実行します。[Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
 3. **[次へ]** を 2 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、**[次へ]** をクリックします。
-	>[AZURE.NOTE]既定のインストール フォルダーは、C:\\Program Files\\squirrel-sql-3.6 です。このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
+	>[AZURE.NOTE] 既定のインストール フォルダーは、C:\\Program Files\\squirrel-sql-3.6 です。このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
 	>
 	>     java.exe -jar [the path of the SQuirreL jar file] 
 5. **[OK]** をクリックして、ターゲット ディレクトリの作成を確認します。
@@ -242,7 +242,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 	- **Example URL**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
 	- **Class Name**: org.apache.phoenix.jdbc.PhoenixDriver
 
-	>[AZURE.WARNING] [Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
+	>[AZURE.WARNING] [Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
 
 	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-driver]
 4. **[OK]** をクリックします。
@@ -289,7 +289,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
+[hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
@@ -306,4 +306,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

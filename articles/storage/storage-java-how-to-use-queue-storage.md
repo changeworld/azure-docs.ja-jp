@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/16/2016"
 	ms.author="micurd"/>
 
 # Java から Queue ストレージを使用する方法
@@ -22,7 +22,7 @@
 
 ## 概要
 
-このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
+このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ](#Next-Steps)」のセクションを参照してください。
 
 注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。
 
@@ -381,14 +381,14 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 - [Azure Storage SDK for Java][]
 - [Azure ストレージ クライアント SDK リファレンス][]
-- [Azure Storage REST API][]
-- [Azure のストレージ チーム ブログ][]
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)][]
+- [Azure Storage チーム ブログ][]
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android に関するページ]: https://github.com/azure/azure-storage-android
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Services REST API (Azure Storage サービスの REST API)]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

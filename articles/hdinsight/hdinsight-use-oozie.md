@@ -173,7 +173,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 このセクションの PowerShell スクリプトでは、次の手順を実行します。
 
 1. Azure に接続します。
-2. Azure リソース グループを作成します。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+2. Azure リソース グループを作成します。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。これらは、ワークフローで Sqoop アクションによって使用されます。
 
 	テーブル名は *log4jLogCount* です。
@@ -635,11 +635,11 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 
 
-[azure-data-factory-pig-hive]: ../data-factory/data-factory-pig-hive-activities.md
+[azure-data-factory-pig-hive]: ../data-factory/data-factory-data-transformation-activities.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 
@@ -650,7 +650,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
 
 [hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
@@ -680,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

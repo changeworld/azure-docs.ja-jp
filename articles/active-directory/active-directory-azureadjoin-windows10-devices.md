@@ -30,13 +30,13 @@ Windows 10 では、ユーザーが職場のリソースにアクセスする、
 | | Domain Join | Azure AD Join | 個人デバイス |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|---------------|-----------------|
 | 職場アカウントを使用した Windows デバイスでのサインイン | あり | はい | いいえ |
-| Office 365 および Azure AD アプリでのユーザーの SSO。[1] シングル サインオン (一度サインインしたら再度資格証明を入力する必要なく企業のリソースにアクセスできる機能)。 | あり | あり | あり |
+| Office 365 および Azure AD アプリでのユーザーの SSO。[1] シングル サインオン (一度サインインしたら再度資格証明を入力する必要なく企業のリソースにアクセスできる機能)。 | あり | はい | あり |
 | Kerberos または NTLM アプリへのユーザーの SSO | あり | 制限あり | VPN 経由 |
-| Microsoft Passport と Windows Hello による、職場アカウント用の強力な認証と便利なサインイン | あり | あり | あり |
-| 職場アカウントを使用した企業の Windows ストアへのアクセス (Microsoft アカウントは不要です) | あり | あり | あり |
-| 職場アカウントを使用した、企業に準拠したデバイス間でのユーザー設定のローミング | あり | あり | あり |
-| 組織のデバイス ポリシーに準拠したデバイスからの組織のアプリへのアクセスの制限 | あり | あり | あり |
-| 任意の場所から作業するためのユーザーによるデバイスのセルフサービス プロビジョニング | いいえ | あり | あり |
+| Microsoft Passport と Windows Hello による、職場アカウント用の強力な認証と便利なサインイン | あり | はい | あり |
+| 職場アカウントを使用した企業の Windows ストアへのアクセス (Microsoft アカウントは不要です) | あり | はい | あり |
+| 職場アカウントを使用した、企業に準拠したデバイス間でのユーザー設定のローミング | あり | はい | あり |
+| 組織のデバイス ポリシーに準拠したデバイスからの組織のアプリへのアクセスの制限 | あり | はい | あり |
+| 任意の場所から作業するためのユーザーによるデバイスのセルフサービス プロビジョニング | いいえ | はい | あり |
 | デバイスを管理する機能 | GP/SCCM 経由の場合あり | あり | あり |
 
 ##職場所有のデバイス: Azure AD Join および Domain Join
@@ -148,15 +148,6 @@ PKI インフラストラクチャの代わりに、次を実行してキーに�
 
 ## よく寄せられる質問
 
-###Azure AD にはどのサード パーティ MDM ベンダー製品を統合できますか。
-
-Azure AD には Windows 10 での統合登録および条件付きアクセスが可能な次のベンダー製品を組み込むことができます。
-
-- AirWatch by VMware
-- Citrix Xenmobile
-- Lightspeed Mobile Manager
-- SOTI オンプレミス MDM
-
 ###Windows 10 の Workplace Join について説明してください。
 Windows 8.1 で Workplace Join は BYOD を有効にするために使用されていました。Windows 10 では、BYOD はこのドキュメントで既に説明している [職場アカウントを追加] を使用して有効になります。Azure AD に MDM を統合しない組織では、ユーザーは、**[設定]**、**[アカウント]**、**[職場のアクセス]** から手動で管理にデバイスを登録できます。
 
@@ -169,8 +160,8 @@ MSA が接続されている Windows 8.1 ドメインに参加しているデバ
 ## 追加情報
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
-* [Azure AD Join の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)
+* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

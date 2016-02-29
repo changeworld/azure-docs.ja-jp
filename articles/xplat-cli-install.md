@@ -40,7 +40,7 @@ Azure CLI をインストールした後、[Azure サブスクリプションに
 
 ## Node.js と npm のインストールと使用
 
-Node.js が既にシステムにインストールされている場合、次のコマンドを使用して Azure CLI をインストールします。
+また、Node.js が既にシステムにインストールされている場合は、次のコマンドを使用して Azure CLI をインストールします。
 
 	npm install azure-cli -g
 
@@ -137,7 +137,7 @@ azure --version
 マイクロソフトは、Azure CLI の更新バージョンを頻繁にリリースしています。ご利用のオペレーティング システム用のインストーラーを使用して CLI を再インストールするか、Node.js と npm がインストールされている場合は、次のコマンドを入力して更新してください (Linux ディストリビューションでは、**sudo** の使用が必要になる場合があります)。
 
 ```
-npm upgrade -g azure-cli
+npm update -g azure-cli
 ```
 
 ## その他のリソース
@@ -158,4 +158,4 @@ npm upgrade -g azure-cli
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # Password Management のデプロイとユーザー トレーニング
@@ -105,7 +105,7 @@
 ### 管理者によるデータのアップロード
 管理者が認証データをアップロードする場合、パスワードをリセットする前にユーザーがパスワード リセットの登録を行う必要はありません。ユーザーは、定義されたパスワード リセット ポリシーに従って認証データをアカウントに定義している限り、自分のパスワードをリセットできます。
 
-AAD Connect または Windows PowerShell を使用して設定できるプロパティについては、「[パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)」を参照してください。
+AAD Connect または Windows PowerShell を使用して設定できるプロパティについては、「[パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)] を参照してください。
 
 認証データは、次の手順に従って、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でアップロードできます。
 
@@ -153,4 +153,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

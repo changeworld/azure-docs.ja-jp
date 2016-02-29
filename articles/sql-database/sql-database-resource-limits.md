@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="02/04/2016"
+	ms.date="02/17/2016"
 	ms.author="jroth" />
 
 
@@ -75,4 +75,4 @@ Azure SQL Database では、論理サーバーごとの DTU クォータが現�
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

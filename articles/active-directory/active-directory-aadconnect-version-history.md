@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="02/16/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -26,6 +26,34 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.105.0
+リリース日: 2016 年 2 月
+
+**新機能:**
+
+- 簡単設定ユーザー向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
+- インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
+    - MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するようにプロキシを設定する必要があります。
+    - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
+- 初期インストール後のユーザーのサインイン方法の変更を許可。
+- インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
+- 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
+
+**プレビューから GA に昇格した機能:**
+
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
+
+**新しいプレビュー機能:**
+
+- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の動作の変更がサポートされるようになりました。
+
+**修正された問題:**
+
+- DNS ドメインの検証ページが、ドメインを認識できない場合がありました。
+- ADFS を構成するときに、ドメイン管理者の資格情報を求めるメッセージが表示されます。
+- オンプレミス AD アカウントが、ルート ドメインとは異なる DNS ツリーを持つドメイン内にある場合、インストール ウィザードがそのアカウントを認識できません。
 
 ## 1\.0.9131.0
 リリース日: 2015 年 12 月
@@ -114,7 +142,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)
 - [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)
-- [デバイスの書き戻し](active-directory-aadconnect-get-started-custom-device-writeback.md)
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
 - [ディレクトリ拡張機能](active-directory-aadconnect-feature-preview.md#directory-extensions)
 
 
@@ -209,4 +237,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

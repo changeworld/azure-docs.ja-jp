@@ -16,7 +16,12 @@
 	ms.date="01/04/2016" 
 	ms.author="spelluru"/>
 
+
 # Azure Data Factory のパイプラインの監視と管理
+> [AZURE.SELECTOR]
+- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
+- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+
 Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
 
 この記事では、パイプラインを監視、管理、およびデバッグする方法について説明します。また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。
@@ -270,15 +275,13 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ### Azure PowerShell の使用
 
-Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。
+Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。このコマンドレットの構文やその他の詳細については、「[Set-AzureDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx)」を参照してください。
 
-	Set-AzureRmDataFactorySliceStatus [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Status] <String> [[-UpdateType] <String> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+**例:** 次の例では、Azure データ ファクトリ "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "Waiting" に設定します。
 
-**例:** 次の例では、Azure Data Factory "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "PendingExecution" に設定します。
+**注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が "Waiting" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
 
-**注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が、"PendingExecution" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
-
-	Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status PendingExecution -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+	Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 
 
 ## アラートを作成する
@@ -352,7 +355,7 @@ OnDemandClusterDeleted | Succeeded
 上記の例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
 
 #### アラートのデプロイ 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureRmResourceGroupDeployment** を使用します。
+アラートをデプロイするには、次の例に示すように、Azure PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** を使用します。
 
 	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
@@ -374,7 +377,7 @@ OnDemandClusterDeleted | Succeeded
 	Outputs           :
 
 #### Azure リソース グループのデプロイメント一覧の取得
-デプロイした Azure リソース グループのデプロイメント一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
+デプロイした Azure リソース グループの一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
 
 	Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
 	
@@ -544,7 +547,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 **アラートのデプロイ:**
 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureRmResourceGroupDeployment** を使用します。
+アラートをデプロイするには、次の例に示すように、Azure PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** を使用します。
 
 	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
 
@@ -567,4 +570,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 **Add-AlertRule** コマンドレットを使用して、アラート ルールをデプロイすることもできます。詳細と例については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」トピックを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

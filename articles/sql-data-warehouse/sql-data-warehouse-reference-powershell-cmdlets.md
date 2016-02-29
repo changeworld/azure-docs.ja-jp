@@ -27,7 +27,7 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 ## Azure PowerShell コマンドレットの取得と実行
 
 1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。 
-2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
+2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
 3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールおよび構成方法]()」を参照してください)。
 
 	```
@@ -133,4 +133,4 @@ $retorePoints
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

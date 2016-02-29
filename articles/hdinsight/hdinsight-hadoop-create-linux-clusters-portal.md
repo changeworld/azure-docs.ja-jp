@@ -64,7 +64,7 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 
 	![[データ ソース] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.4.png "データ ソース構成の指定")
 
-	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
+	現在、HDInsight クラスターのデータ ソースとして Azure Storage アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
 
 	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
 
@@ -78,7 +78,7 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 
 	**[選択]** をクリックしてデータ ソースの構成を保存します。
 
-8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要な worker ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.5.png "クラスター ノード数の指定")
     
@@ -165,13 +165,13 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 ###HBase クラスター
 
-* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
 * [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
 
 ###Storm クラスター
 
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
+* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
 ###Spark クラスター
@@ -182,4 +182,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

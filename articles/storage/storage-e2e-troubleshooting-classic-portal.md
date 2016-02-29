@@ -25,7 +25,7 @@
 
 このチュートリアルでは、クライアント アプリケーションの最適化を目的に、パフォーマンスに影響する可能性のあるクライアントのエラーを特定すると共に、Microsoft と Azure Storage が提供するツールを使用して、これらのエラーについてエンド ツー エンドのトラブルシューティングを実施する方法を説明します。
 
-このチュートリアルでは、エンド ツー エンド トラブルシューティングのシナリオを実践的に学ぶことができます。Azure Storage アプリケーションのトラブルシューティングに関する詳細な概念ガイドについては、「[Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。
+このチュートリアルでは、エンド ツー エンド トラブルシューティングのシナリオを実践的に学ぶことができます。Azure Storage アプリケーションのトラブルシューティングに関する詳細な概念ガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。
 
 ## Azure Storage アプリケーションのトラブルシューティングに使用するツール
 
@@ -38,9 +38,9 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
 
 - **Azure クラシック ポータル**。[Azure クラシック ポータル](https://manage.windowsazure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
 	
-	Azure クラシック ポータルでの監視の構成の詳細については、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページを参照してください。
+	Azure クラシック ポータルでの監視の構成については、「[Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)」を参照してください。
 
-- **AzCopy**Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。AzCopy の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
+- **AzCopy**Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。AzCopy の詳細については、「[ AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
 - **Microsoft Message Analyzer**。Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)を参照してください。
 
@@ -92,7 +92,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 **Azure クラシック ポータルの使用**
 
-ポータルを使用してストレージ アカウントのログとメトリックを構成するには、[ストレージ アカウントの監視方法](storage-monitor-storage-account.md)に関するページの手順に従ってください。
+ポータルを使用してストレージ アカウントのログとメトリックを構成するには、「[Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)」の手順に従ってください。
 
 > [AZURE.NOTE] Azure クラシック ポータルを使用して分単位メトリックを設定することはできません。ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。分単位メトリックは、PowerShell (以下を参照)、プログラム、Azure クラシック ポータルのいずれかを使用して設定できます。
 >
@@ -100,7 +100,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 **PowerShell を使用**
 
-Azure の PowerShell を使用するには、[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)に関するページを参照してください。
+Azure の PowerShell を使用するには、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
 
 1. [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
 
@@ -130,11 +130,9 @@ Azure の PowerShell を使用するには、[Azure PowerShell のインスト�
 
 ### .NET のクライアント側のログを構成する
 
-.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、MSDN の[ストレージ クライアント ライブラリを使用したクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)に関するページ、および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」を参照してください。
+.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、MSDN の「[.NET ストレージ クライアント ライブラリによるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」を参照してください。
 
 クライアント側のログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
-
-クライアント側のログは、アプリケーションの app.config または web.config ファイル内で構成されます。詳細については、MSDN の[ストレージ クライアント ライブラリを使用したクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)に関するページを参照してください。
 
 ストレージ クライアント ライブラリは、クライアント側のログ データをアプリケーションの構成ファイル (web.config または app.config) 内で指定した場所に格納します。
 
@@ -182,7 +180,7 @@ Azure クラシック ポータルの監視チャート内には、他の追加�
 
 ![ポータルのメトリック チャート](./media/storage-e2e-troubleshooting-classic-portal/portal-metrics-chart-1.png)
 
-監視ページへのメトリックの追加の詳細については、「[方法: メトリック テーブルへのメトリックの追加](storage-monitor-storage-account.md#addmonitoringmetrics)」を参照してください。
+監視ページへのメトリックの追加の詳細については、「[方法: メトリック テーブルへのメトリックの追加](storage-monitor-storage-account.md#how-to-add-metrics-to-the-metrics-table)」を参照してください。
 
 > [AZURE.NOTE] ストレージ メトリックを有効にした後、Azure クラシック ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure クラシック ポータルに表示されないためです。また、分単位メトリックについては Azure クラシック ポータルには表示されません。つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
 
@@ -194,9 +192,9 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
-AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)に関するページを参照してください。
+AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-サーバー側のログのダウンロードの詳細については、「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
+サーバー側のログのダウンロードの詳細については、「[Downloading Storage Logging log data (ストレージ ログのログ データのダウンロード)](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
 
 ## Microsoft Message Analyzer を使用してログ データを分析する
 
@@ -347,32 +345,21 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
-| PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
-| HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
-| HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
-| 404 (すべて) | *StatusCode == 404 | すべて |
-| Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク |
-| HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク |
-| 409 (すべて) | *StatusCode == 409 | すべて |
-| PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
-| Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー |
-| サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
-| サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
+| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて | | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント | | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク | | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク | | 404 (すべて) | *StatusCode == 404 | すべて | | Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク | | HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク | | 409 (すべて) | *StatusCode == 409 | すべて | | PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー | | Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー | | サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク | | サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
 
 
 ## 次のステップ
 
 Azure Storage におけるエンド ツー エンド シナリオのトラブルシューティングの詳細については、次のリソースを参照してください。
 
-- [Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
+- [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 - [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
-- [ストレージ アカウントの監視方法](storage-monitor-storage-account.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+- [Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
  
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

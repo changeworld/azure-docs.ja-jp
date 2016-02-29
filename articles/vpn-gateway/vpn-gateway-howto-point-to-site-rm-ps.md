@@ -50,11 +50,9 @@
 
 ## 作業を開始する前に
 
-Azure サブスクリプションがあり、この構成に必要な Azure PowerShell コマンドレットがインストールされていることを確認します (1.0.2 以降)。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-**PowerShell コマンドレット モジュールのインストールについて**
-
-	[AZURE.INCLUDE [vpn-gateway-ps-rm-howto](../../includes/vpn-gateway-ps-rm-howto-include.md)]
+- Azure リソース マネージャー PowerShell コマンドレット (1.0.2 以降) をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## Azure のポイント対サイト接続を構成する
 
@@ -231,4 +229,4 @@ Azure サブスクリプションがあり、この構成に必要な Azure Powe
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/10/2015" 
+	ms.date="02/15/2016" 
 	ms.author="micurd"/>
 
 # AzCopy コマンド ライン ユーティリティを使用してデータを転送する
@@ -22,7 +22,7 @@
 
 AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ストレージ間でデータをコピーするために設計されたコマンド ライン ユーティリティです。Azcopy では、簡単なコマンドを使用して最適なパフォーマンスで、ファイル システムと Azure Storage 間でデータを移行できます。ストレージ アカウント内またはストレージ アカウント間で、1 つのオブジェクトから別のオブジェクトにデータをコピーすることもできます。
 
-> [AZURE.NOTE]このガイドでは、AzCopy 5.0 以降がインストール済みであることを前提としています。
+> [AZURE.NOTE] このガイドでは、AzCopy 5.0 以降がインストール済みであることを前提としています。
 
 現在、Microsoft Azure Storage Data Movement Library プレビューを [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) 経由でダウンロードできます。Data Movement Library は AzCopy のコア ライブラリです。ソース コードは [GitHub](https://github.com/Azure/azure-storage-net-data-movement) から入手できます。詳細については、[Azure Storage Data Movement Library プレビューの紹介](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)に関するページを参照してください。
 
@@ -38,7 +38,7 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 
 	AzCopy /Source:<source> /Dest:<destination> /Pattern:<filepattern> [Options]
 
-> [AZURE.NOTE]AzCopy バージョン 3.0.0 より、AzCopy コマンド ライン構文では、すべてのパラメーターにパラメーター名を含めて指定する必要があります (*例*: `/ParameterName:ParameterValue`)。
+> [AZURE.NOTE] AzCopy バージョン 3.0.0 より、AzCopy コマンド ライン構文では、すべてのパラメーターにパラメーター名を含めて指定する必要があります (*例*: `/ParameterName:ParameterValue`)。
 
 ## 初めての AzCopy コマンドを書く
 
@@ -446,7 +446,7 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 	AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 
-ストレージ アクセス キーの操作の詳細については、「[方法: ストレージ アクセス キーの表示、コピーおよび再生成](../storage-create-storage-account/#regeneratestoragekeys)」を参照してください
+ストレージ アクセス キーの操作の詳細については、[ストレージ アクセス キーの管理](storage-create-storage-account.md#manage-your-storage-access-keys)に関するページを参照してください
 
 ### サーバー側コピーを通じた BLOB のコピー
 
@@ -936,7 +936,7 @@ FIPS 準拠アルゴリズムは既定で Windows マシンでは無効に設定
 
 ## AzCopy のバージョン
 
-> [AZURE.NOTE]最新バージョンの AzCopy をインストールして、新しい機能と取得し、パフォーマンスを高めることをお勧めします。
+> [AZURE.NOTE] 最新バージョンの AzCopy をインストールして、新しい機能と取得し、パフォーマンスを高めることをお勧めします。
 
 | バージョン | 新機能 | 参照される .NET クライアント ライブラリのバージョン | ターゲット ストレージの REST API バージョン |
 |---------|-----------------------------------------------------------------------------------------------------------------|--------|----------|
@@ -964,22 +964,21 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
 ### Azure Storage のドキュメント:
 
-- [Azure ストレージの概要](storage-introduction.md)
-- [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
-- [Java からファイル ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
-- [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
-- [ストレージ アカウントを作成、管理、または削除する方法](storage-create-storage-account.md)
-- [Import/Export Service を使用した Blob Storage へのデータの転送](storage-import-export-service.md)
+- [Microsoft Azure Storage の概要](storage-introduction.md)
+- [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
+- [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
+- [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
+- [Azure ストレージ アカウントについて](storage-create-storage-account.md)
+- [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](storage-import-export-service.md)
 
 ### Azure Storage に関するブログの投稿:
-- [DML: Introducing azure storage data movement library preview (DML: Azure Storage Data Movement Library プレビューの概要)](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
+- [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
 - [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
 - [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-- [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](http://go.microsoft.com/fwlink/?LinkId=507682)
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
 - [AzCopy - Transfer data with re-startable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -23,6 +23,7 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 
+
 ## 新しい SSL 証明書のアップロードとバインド ##
 
 シナリオ: ユーザーは、いずれかの Web アプリに SSL 証明書をバインドしたいと考えています。
@@ -30,6 +31,15 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 Web アプリを含むリソース グループの名前、Web アプリ名、ユーザーのコンピューターにおける証明書の .pfx ファイルのパス、証明書のパスワード、カスタム ホスト名がわかっていれば、次の PowerShell コマンドを使ってその SSL バインドを作成できます。
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
+
+Web アプリに SSL バインドを追加する前に、ホスト名 (カスタム ドメイン) を構成しておく必要があります。ホスト名が構成されていない場合は、New-AzureRmWebAppSSLBinding の実行時に 'ホスト名' が存在しないことを示すエラーが表示されます。ホスト名は、直接ポータルから、または Azure PowerShell を使用して追加できます。次の PowerShell スニペットでは、New-AzureRmWebAppSSLBinding を実行する前に、ホスト名を構成できます。
+  
+    $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
+    $hostNames = $webApp.HostNames  
+    $HostNames.Add("www.contoso.com")  
+    Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
+  
+Set-AzureRmWebApp コマンドレットでは Web アプリのホスト名が上書きされる点を理解しておくことが重要です。そのため、上記の PowerShell スニペットでは、Web アプリのホスト名の既存のリストに追加されます。
 
 ## 既存の SSL 証明書のアップロードとバインド ##
 
@@ -61,4 +71,4 @@ Web アプリを含むリソース グループの名前、Web アプリ名、�
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0218_2016-->
