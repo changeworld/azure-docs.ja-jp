@@ -6,10 +6,21 @@
    authors="Jim-Parker"
    manager="jwhit"
    editor=""/>
-<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="12/15/2015" ms.author="jimpark"; "aashishr"; "sammehta"/>
+<tags
+   ms.service="backup"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="storage-backup-recovery"
+   ms.date="02/09/2016"
+   ms.author="jimpark;"/>
 
 # Azure Backup を使用してテープのインフラストラクチャを置換する
-Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。 - 組織のニーズに最適なスケジュールでデータをバックアップする - 長期間にわたってバックアップ データを保持する - Azure を長期保持ニーズの一部にする (テープの代わり)
+Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。
+
+- 組織のニーズに最適なスケジュールでのデータのバックアップ
+- 長期間にわたるバックアップ データの保持
+- 長期間保有する必要があるものを (テープの代わりに) Azure で保持
 
 この記事では、顧客がバックアップと保有ポリシーを有効にする方法について説明します。その長期間保有のニーズに対処するためにこれまでテープ使用してきた顧客にとっては、この機能を使用するための強力かつ有効な代替方法を活用できるようになりました。Azure Backup の最新のリリース ([ここ](http://aka.ms/azurebackup_agent)からアクセスできます) では、この機能が有効になっています。SCDPM の顧客は、この機能を使用する前に、UR5 に移動する必要があります。
 
@@ -60,4 +71,4 @@ Azure Backup について詳しくは、以下をご覧ください。
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

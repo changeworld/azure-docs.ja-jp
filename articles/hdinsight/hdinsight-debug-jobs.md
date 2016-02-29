@@ -14,44 +14,145 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="02/16/2016"
 	ms.author="jgao"/>
 
-# HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈
+# HDInsight ログの分析
 
-このトピックで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に発生する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復する手順も示されています。
+Azure HDInsight の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。このストレージ アカウントを、既定のストレージ アカウントと呼びます。クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。クラスターの既定のストレージ アカウントを調べるには、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
-一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。
+##Azure テーブルに書き込まれたログ
 
-エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdinsight-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure ポータルから直接実行できます。
+Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。
 
+HDInsight クラスターを作成すると、Linux ベースのクラスターの場合、既定の Table Storage 内に次の 6 つのテーブルが自動的に作成されます。
+
+- hdinsightagentlog
+- syslog
+- daemonlog
+- hadoopservicelog
+- ambariserverlog
+- ambariagentlog
+
+Windows ベースのクラスターの場合は、次の 3 つのテーブルが作成されます。
+
+- setuplog: HDInsight クラスターのプロビジョニング/設定で発生したイベントと例外のログ。
+- hadoopinstalllog: クラスターに Hadoop をインストールする際に発生したイベントと例外のログ。このテーブルは、カスタム パラメーターを使用して作成されたクラスターに関連した問題のデバッグに役立つことがあります。
+- hadoopservicelog: すべての Hadoop サービスによって記録されるイベントと例外のログ。このテーブルは、HDInsight クラスターのジョブ エラーに関連した問題のデバッグに役立つことがあります。
+
+テーブルのファイル名は **u<ClusterName>DDMonYYYYatHHMMSSsss<TableName>** となります。
+
+これらのテーブルには次のフィールドが含まれます。
+
+- ClusterDnsName
+- ComponentName
+- EventTimestamp
+- ホスト
+- MALoggingHash
+- メッセージ
+- N
+- PreciseTimeStamp
+- ロール
+- RowIndex
+- テナント
+- TIMESTAMP
+- TraceLevel
+
+### ログにアクセスするためのツール
+
+これらのテーブルのデータにアクセスするには、次のようにさまざまなツールを使用できます。
+
+-  Visual Studio
+-  Azure Storage エクスプローラー
+-  Power Query for Excel
+
+#### Power Query for Excel を使用する
+
+Power Query は、[www.microsoft.com/ja-JP/download/details.aspx?id=39379](http://www.microsoft.com/ja-JP/download/details.aspx?id=39379) からインストールできます。システム要件については、ダウンロード ページを参照してください。
+
+**Power Query でサービス ログを開いて分析するには**
+
+1. **Microsoft Excel** を開きます。
+2. **[Power Query]** メニューの **[Azure から]** をクリックし、**[Microsoft Azure テーブル ストレージから]** をクリックします。
+ 
+	![HDInsight Hadoop Excel PowerQuery open Azure Table storage](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
+3. ストレージ アカウント名を入力します。これには、短縮名または FQDN を指定できます。
+4. ストレージ アカウント キーを入力します。次のようなテーブルの一覧が表示されます。
+
+	![HDInsight Hadoop logs stored in Azure Table storage](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
+5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、**[編集]** を選択します。4 つの列が表示されます。必要に応じて、**[パーティション キー]**、**[行キー]**、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
+6. [コンテンツ] 列にある展開アイコンをクリックし、Excel スプレッドシートにインポートする列を選択します。このデモでは、TraceLevel と ComponentName を選択しました。これによって、問題のあるコンポーネントに関する基本的な情報がわかるようになります。
+
+	![HDInsight Hadoop logs choose columns](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
+7. **[OK]** をクリックしてデータをインポートします。
+8. **[TraceLevel]**、[Role]、**[ComponentName]** の各列を選択し、リボンの **[グループ化]** コントロールをクリックします。
+9. [グループ化] ダイアログ ボックスで **[OK]** をクリックします。
+10. **[適用して閉じる]** をクリックします。
+ 
+これで、Excel を使用して、必要に応じてフィルター処理と並べ替えを実行できるようになりました。当然ながら、問題の発生時にその問題を掘り下げるために、他の列 (Message など) を含めることもできますが、前に説明した列を選択してグループ化すると、Hadoop サービスで何が起こっているかを適切に把握できます。setuplog テーブルと hadoopinstalllog テーブルにも同じ考え方が当てはまります。
+
+#### Visual Studio を使用する
+
+**Visual Studio を使用するには**
+
+1. Visual Studio を開きます。
+2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。または、単に **Ctrl + \\、Ctrl + X** キーを押します。
+3. **Cloud Explorer** で **[リソースの種類]** を選択します。そのほかに、**[リソース グループ]** というオプションも選択できます。
+4. **[ストレージ アカウント]**、クラスターの既定のストレージ アカウント、**[テーブル]** の順に展開します。
+5. hadoopservicelog をダブルクリックします。
+6. フィルターを追加します。次に例を示します。
+	
+		TraceLevel eq 'ERROR'
+
+	![HDInsight Hadoop logs choose columns](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+
+	フィルターの作成の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](https://msdn.microsoft.com/library/azure/ff683669.aspx)」を参照してください。
+ 
+##Azure Blob Storage に書き込まれたログ
+
+[Azure テーブルに書き込まれたログ](#log-written-to-azure-tables)は、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。
+
+ログを表示するには、「[Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
+
+アプリケーション ログの詳細については、「[Simplifying user-logs management and access in YARN (YARN におけるユーザーログの管理とアクセスの簡略化)](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)」を参照してください。
+ 
+ 
 ## クラスターの状態とジョブ ログの表示
 
-* **Hadoop UI にアクセスします**。Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
+###Hadoop UI にアクセスする
 
-	![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
-  
-	入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[Hadoop UI]** をクリックします。
+Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
 
-	![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
+![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
 
-* **Yarn UI にアクセスします**。Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
+入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[Hadoop UI]** をクリックします。
 
-	YARN UI では、次の操作を実行できます。
+![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
 
-	* **クラスターの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
 
-		![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-yarn-cluster-state.png)
+###Yarn UI にアクセスする
 
-	* **ノードの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
+Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
 
-	* **ジョブの状態を監視します**。左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、**[Applications]** の下にある該当リンクをクリックします。さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+YARN UI では、次の操作を実行できます。
 
-* **HBase UI にアクセスします**。Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
+* **クラスターの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
+
+    ![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-yarn-cluster-state.png)
+
+* **ノードの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
+
+* **ジョブの状態を監視します**。左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、**[Applications]** の下にある該当リンクをクリックします。さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+
+###HBase UI にアクセスする
+
+Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
 
 ## HDInsight のエラー コード
 
-Azure PowerShell またはポータルで発生する可能性があるエラーを以下に名前のアルファベット順で示します。
+このセクションで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に直面する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復するための手順も示されています。
+
+一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。その他のエラー メッセージは、対応策が明白な文脈で提供されています。
 
 ### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
 - **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
@@ -123,11 +224,11 @@ Azure PowerShell またはポータルで発生する可能性があるエラー
 - **対応策**: 操作をやり直します。
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-- **説明**: ホストされるサービス *nameOfYourHostedService* を作成できません。要求を再試行してください。  
+- **説明**: ホステッド サービス *nameOfYourHostedService* を作成できません。要求を再試行してください。  
 - **対応策**: 要求をやり直してください。
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-- **説明**: ホストされるサービス *nameOfYourHostedService* には、既に運用環境がデプロイされています。ホストされるサービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
+- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境が展開されています。ホストされるサービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
 - **対応策**: 別のクラスター名を使用して要求をやり直します。
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
@@ -234,12 +335,8 @@ Azure PowerShell またはポータルで発生する可能性があるエラー
 - **説明**: 無効なクラスター構成です。必要な WASB アカウント構成が外部アカウントに見つかりません。  
 - **対応策**: アカウントが存在し、構成で適切に指定されていることを確認して、操作をやり直します。
 
-## <a id="resources"></a>Additional Debugging Resources
+## 次のステップ
 
-* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
+[HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md) [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする (プレビュー)](hdinsight-hadoop-collect-debug-heap-dump-linux.md) [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn469975.aspx
-
-[image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

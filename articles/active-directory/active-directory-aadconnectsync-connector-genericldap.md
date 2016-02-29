@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/21/2016"
+   ms.date="02/16/2016"
    ms.author="andkjell"/>
 
 # Generic LDAP コネクタに関するテクニカル リファレンス
@@ -38,7 +38,7 @@ IETF RFC では、特定の操作やスキーマ要素 (たとえば、差分イ
 
 | 機能 | サポート |
 | --- | --- |
-| 接続先のデータ ソース | コネクタはすべての LDAP v3 サーバー (RFC 4510 準拠) でサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)</li><li>Microsoft Active Directory グローバル カタログ (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (以前は Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>ただし、次のディレクトリはサポートされていません。<li>Microsoft Active Directory ドメイン サービス (AD DS) [代わりに組み込みの Active Directory コネクタを使用]</li><li>Oracle Internet Directory (OID)</li> |
+| 接続先のデータ ソース | コネクタはすべての LDAP v3 サーバー (RFC 4510 準拠) でサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)</li><li>Microsoft Active Directory グローバル カタログ (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (以前は Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**ただし、次のディレクトリはサポートされていません。**<li>Microsoft Active Directory ドメイン サービス (AD DS) [代わりに組み込みの Active Directory コネクタを使用]</li><li>Oracle Internet Directory (OID)</li> |
 | シナリオ | <li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
 | 操作 |すべての LDAP ディレクトリで次の操作がサポートされています。<li>フル インポート</li><li>エクスポート</li>次の操作は特定のディレクトリでのみサポートされています。<li>差分インポート</li><li>パスワードの設定、パスワードの変更</li> |
 | スキーマ | <li>スキーマは LDAP スキーマで検出されます (RFC3673 および RFC4512/4.2)</li><li>構造型クラス、aux クラス、および extensibleObject オブジェクト クラスをサポートします (RFC4512/4.3)</li>
@@ -279,4 +279,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

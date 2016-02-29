@@ -104,7 +104,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
             -Container $container `
             -Context $context
     
-    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから __wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
+    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
 
 ###ジョブを実行する
 
@@ -378,7 +378,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (__wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
+    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
@@ -410,7 +410,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  このジョブでも、__wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
+  このジョブでも、\_\___wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
 > [AZURE.NOTE] Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
@@ -519,7 +519,7 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [aps]: ../powershell-install-configure.md
 [movielens]: http://grouplens.org/datasets/movielens/
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]: ../hdinsight-get-started.md
+[getstarted]: hdinsight-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
 [forest]: http://en.wikipedia.org/wiki/Random_forest
@@ -530,4 +530,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

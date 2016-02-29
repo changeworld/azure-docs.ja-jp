@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="prasannas"/>
+    manager="stevenpo"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="12/04/2015" 
+    ms.date="02/17/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Igloo Software の統合
@@ -78,11 +78,11 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Igloo Software サインイン URL]** ボックスに、"**https://company.igloocommunities.com/?signin*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
 
 4.  **[Igloo Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-igloo-software-tutorial/IC783966.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-igloo-software-tutorial/IC783966.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザーのウィンドウで、管理者として Igloo Software 企業サイトにログインします。
 
@@ -132,7 +132,7 @@
 
 12. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-igloo-software-tutorial/IC783973.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-igloo-software-tutorial/IC783973.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Igloo Software へのユーザー プロビジョニングを構成するときに必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Igloo Software にログインしようとすると、そのユーザーが存在するかどうかが Igloo Software によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Igloo Software によって自動的に作成されます。
@@ -150,8 +150,8 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-igloo-software-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-igloo-software-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0218_2016-->

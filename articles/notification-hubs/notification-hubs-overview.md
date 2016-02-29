@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="02/11/2016"
 	ms.author="wesmc"/>
 
 
@@ -123,7 +123,7 @@ Azure のサービス間でシームレスかつ同一のエクスペリエン�
 Mobile Apps の開発者は、次のワークフローで Notification Hubs を使用します。
 
 1. デバイスの PNS ハンドルを取得する
-2. 便利な Mobile Apps クライアント SDK 登録 API を介して、Notification Hubs でデバイスと[テンプレート]を登録する
+2. 便利な Mobile Apps クライアント SDK 登録 API を介して Notification Hubs でデバイスと[テンプレート]を登録する
     + Mobile Apps ではセキュリティの目的で登録時にすべてのタグを除去することに注意してください。タグをデバイスに関連付けるには、Notification Hubs をバックエンドから直接操作します。
 3. Notification Hubs を使用してアプリのバックエンドから通知を送信する
 
@@ -165,4 +165,4 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Azure ポータル]: https://portal.azure.com
   [タグ]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

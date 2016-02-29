@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/27/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 # Azure ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング
@@ -26,9 +26,9 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Data Lake Analytics ジョブ プロセスの基本的な知識**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-use-portal.md)」を参照してください。
-- **Data Lake Analytics アカウント**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-use-portal.md#create-adl-analytics-account)」を参照してください。
-- **既定の Data Lake Store アカウントへのサンプル データのコピー**。「[ソース データの準備](data-lake-analytics-get-started-use-portal.md.md#prepare-source-data)」を参照してください。
+- **Data Lake Analytics ジョブ プロセスの基本的な知識**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+- **Data Lake Analytics アカウント**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#create-adl-analytics-account)」を参照してください。
+- **既定の Data Lake Store アカウントへのサンプル データのコピー**。「[ソース データの準備](data-lake-analytics-get-started-portal.md#prepare-source-data)」を参照してください。
 
 ##Data Lake Analytics ジョブの送信
 
@@ -107,7 +107,7 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 
 - [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 - [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
-- [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-get-started-u-sql-studio.md)
+- [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-u-sql-get-started.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

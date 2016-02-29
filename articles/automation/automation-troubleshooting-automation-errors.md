@@ -139,6 +139,42 @@
 
   <br/>
 
+## Desired State Configuration (DSC) の使用時に発生する一般的なエラーをトラブルシューティングする  
+
+### シナリオ: ノードが "失敗" 状態になり、"見つかりませんでした" というエラーが表示される
+
+**エラー:** "有効な構成 <guid> が見つからないため、サーバー https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction から操作を取得できませんでした" というエラーが記載された "失敗" 状態のレポートがノードで生成される。
+
+**エラーの理由:** 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられているために発生します。
+
+**トラブルシューティングのヒント:** ノード構成の名前が使用されており、構成名が使用されていないことを再確認してください。ノードを有効なノード構成にマッピングするには、ポータルの [ノード] ブレードにある [ノード構成の割り当て] ボタンか、AzureRMAutomationDscNode コマンドレットを使用できます。
+
+### シナリオ: 構成のコンパイルを実行しても、ノード構成 (mof ファイル) が生成されなかった
+
+**エラー:** DSC のコンパイル ジョブが中断され、"コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした" というエラーが表示された。
+
+**エラーの理由:** DSC 構成の "ノード" の横にある式の評価結果が $null の場合、ノード構成は生成されません。
+
+**トラブルシューティングのヒント:** "ノード" の横にある式の評価結果が $null でないことを確認してください。ConfigurationData を渡している場合は、構成データから、構成に必要な期待される値を渡すようにしてください。たとえば、"$AllNodes" です。詳細については、「https://azure.microsoft.com/ja-JP/documentation/articles/automation-dsc-compile/#configurationdata」を参照してください。
+
+### シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
+
+**エラー:** DSC エージェントによって、"指定されたプロパティ値のインスタンスが見つかりません" と出力される。
+
+**エラーの理由:** WMF のバージョンをアップグレードした結果、WMI が破損した。
+
+**トラブルシューティングのヒント:** この問題を解決するには、次の投稿の手順に従ってください: https://msdn.microsoft.com/ja-JP/powershell/wmf/limitation_dsc
+
+### シナリオ: DSC 構成で資格情報が使用できない 
+
+**エラー:** DSC コンパイル ジョブが中断され、"型 '<some resource name>' のプロパティ 'Credential' の処理中に System.InvalidOperationException エラーが発生しました: 暗号化されたパスワードを変換してプレーンテキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです" というエラーが表示された。
+
+**エラーの理由:** 構成で資格情報を使用しようとしたときに、各ノード構成について PSAllowPlainTextPassword を true に設定するための適切な ConfigurationData を渡さなかった。
+
+**トラブルシューティングのヒント:** 上記の構成の各ノード構成について PSAllowPlainTextPassword を true に設定するために、適切な ConfigurationData を渡してください。詳細については、「https://azure.microsoft.com/ja-JP/documentation/articles/automation-dsc-compile/#assets」を参照してください。
+
+  <br/>
+
 ## 次のステップ
 
 上記のトラブルシューティング手順に従ったが、この記事の何らかの点でさらにサポートが必要な場合、次の手段をご利用ください。
@@ -147,8 +183,8 @@
 
 - Azure サポート インシデントを送信する。[Azure サポート サイト](https://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 
-- Azure Automation Runbook ソリューションや統合モジュールを探索している場合は、[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)にスクリプトの要求を投稿することができます。
+- Azure Automation Runbook ソリューションや統合モジュールを探している場合は、[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)にスクリプトの要求を投稿することができます。
 
 - Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

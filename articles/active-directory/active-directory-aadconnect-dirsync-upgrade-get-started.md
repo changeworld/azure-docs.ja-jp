@@ -13,10 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/21/2016"
+   ms.date="02/16/2016"
    ms.author="shoatman;billmath"/>
 
-# Windows Azure Active Directory 同期 (DirSync) の Azure AD Connect へのアップグレード
+# Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード
 
 次のドキュメントは、既存の DirSync インストールの Azure AD Connect へのアップグレードに役立ちます。
 
@@ -58,13 +58,13 @@ DirSync では次の構成の変更が サポートされており、アップ�
 - フォレスト/ドメインと Azure AD の設定
 - ユーザー属性に基づくフィルター処理
 
-次のような変更をアップグレードすることはできません。これらの変更を加えた場合は、アップグレードがブロックされます。
+次の変更をアップグレードすることはできません。この変更を加えた場合は、アップグレードがブロックされます。
+
+- サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
 
 ![アップグレードのブロック](./media/active-directory-aadconnect-dirsync-upgrade-get-started/analysisblocked.png)
 
 そのような場合、[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
-
-- サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
 
 DirSync がサービス アカウントで使用したパスワードは取得できず、移行されません。これらのパスワードはアップグレード中にリセットされます。
 
@@ -197,4 +197,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

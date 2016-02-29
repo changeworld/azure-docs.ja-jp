@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する | Microsoft Azure"
-	description="Azure Site Recovery は、オンプレミスの Hyper-V サーバーに配置された仮想マシンの Azure へのレプリケーション、フェールオーバー、および復旧を調整します。"
+	description="この記事では、マシンが VMM クラウドで管理されていない場合に Azure Site Recovery を使用して Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -13,24 +13,27 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/10/2015"
+	ms.date="02/16/2016"
 	ms.author="raynew"/>
 
 
 # Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する
 
-Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。Site Recovery については[こちら](site-recovery-overview.md)を参照してください。
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
 ## 概要
 
-この記事では、Windows Server 2012 R2 を実行する Hyper-V ホストが System Center Virtual Machine Manager (VMM) クラウドで管理されていないときに、Site Recovery をデプロイし、Hyper-V 仮想マシンを複製する方法について説明します。
+この記事では、Hyper-V ホストが System Center Virtual Machine Manager (VMM) クラウドで管理されていないときに、Site Recovery をデプロイし、Hyper-V 仮想マシンをレプリケートする方法について説明します。
 
-この記事は、デプロイの前提条件をまとめたものです。レプリケーションの設定を構成して仮想マシンの保護を有効にするのに役立ちます。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
+この記事は、デプロイの前提条件をまとめたものです。レプリケーションの設定を構成して仮想マシンの保護を有効にするのに役立ちます。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
+
+
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
 ## 開始する前に
 
-開始する前に、すべての準備が整っていることを確認してください。
+開始する前に、すべての条件を満たしていることを確認します。
 
 ### Azure の前提条件
 
@@ -274,7 +277,7 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 5. フェールオーバー後、Azure ポータルで仮想マシンのテスト レプリカを確認できます。オンプレミスのネットワークから、仮想マシンへのアクセスをセットアップすると、仮想マシンへのリモート デスクトップ接続を開始できます。
 
 	1. 仮想マシンが正常に起動することを確認します。
-    2. フェールオーバー後に Azure でリモート デスクトップを使用して仮想マシンに接続する場合は、テストのフェールオーバーを実行する前に、仮想マシンのリモート デスクトップ接続を有効にします。また、仮想マシンに RDP エンドポイントを追加する必要もあります。[Azure Automation Runbook](site-recovery-runbook-automation.md) を活用して、このことを行うことができます。
+    2. フェールオーバー後に Azure でリモート デスクトップを使用して仮想マシンに接続する場合は、テストのフェールオーバーを実行する前に、仮想マシンのリモート デスクトップ接続を有効にします。また、仮想マシンに RDP エンドポイントを追加する必要もあります。[Azure Automation Runbook](site-recovery-runbook-automation.md) を活用して、この処理を実行できます。
     3. フェールオーバー後、リモート デスクトップでパブリック IP アドレスを使用して Azure の仮想マシンに接続する場合、パブリック アドレスを使用して仮想マシンに接続することを妨げるドメイン ポリシーがないことを確認します。
 
 6. テストが完了したら、以下の手順を実行します。
@@ -292,4 +295,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -71,15 +71,15 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 ### 前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **HDInsight 環境の HBase クラスター**。クラスターの作成については、「[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]」をご覧ください。このチュートリアルを読み進めるには、次のデータが必要です。
+- **HDInsight 環境の HBase クラスター**。クラスターの作成については、「[HDInsight の Windows ベースの Hadoop で Apache HBase を使用する][hbase-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 
 	<table border="1">
-<tr><th>クラスター プロパティ</th><th>説明</th></tr>
-<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
-<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
-</table>
+	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+	<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
+	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
+	</table>
 
 - Visual Studio 2013 がインストールされている**ワークステーション**。手順については、[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
@@ -600,9 +600,9 @@ Web アプリケーションの作成中はストリーミング コンソール
 	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
-    - **HBASETABLENAME** = "tweets_by_words";
+    - **HBASETABLENAME** = "tweets\_by\_words";
 
-	HBase テーブル名は「**tweets_by_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「**tweets\_by\_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
@@ -1205,7 +1205,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 		using System.Web.Http;
 
-2. 以下の行を **Application_Start()** 関数内に追加します。
+2. 以下の行を **Application\_Start()** 関数内に追加します。
 
 		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -1237,7 +1237,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
-[hbase-get-started]: ../hdinsight-hbase-get-started.md
+[hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
 [website-get-started]: ../web-sites-dotnet-get-started.md
 
 
@@ -1252,7 +1252,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 [hdinsight-analyze-twitter-data]: hdinsight-analyze-twitter-data.md
-[hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
+[hdinsight-hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
 
 
 
@@ -1266,17 +1266,17 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-install]: ../install-configure-powershell.md
+[powershell-install]: powershell-install-configure.md
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage-powershell]: ../hdinsight-use-blob-storage.md#powershell
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-storage-powershell]: hdinsight-hadoop-use-blob-storage.md#powershell
 [hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

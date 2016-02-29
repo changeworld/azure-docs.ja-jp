@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="dalechen"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="02/14/2016"
 	ms.author="daleche"/>
 
 # 過去のある時点へのデータベースの復元、削除したデータベースの復元、またはデータ センターの障害からの回復
@@ -42,4 +42,4 @@ Azure では、別のリージョンでのすべてのデータベースのバ�
 
 - [Azure ポータル](https://azure.microsoft.com/)で**[新規]** をクリックし、**[データ + ストレージ]** をクリックしてから、**[SQL Database]** をクリックし、データベースのソースとして **[Backup]** を選択します。詳細については、「[Azure SQL データベースの障害からの回復](sql-database-disaster-recovery.md)」を参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0218_2016-->

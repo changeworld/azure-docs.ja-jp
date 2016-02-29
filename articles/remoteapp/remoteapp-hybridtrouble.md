@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/13/2016"
+    ms.date="02/11/2016"
     ms.author="elizapo" />
 
 
@@ -32,26 +32,14 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 
 ## VNET にはネットワーク セキュリティ グループが定義されていますか。 ##
-コレクションに使用しているサブネットでネットワーク セキュリティ グループを定義している場合、サブネット内から次の URL にアクセスできることを確認します。
-
-	https://management.remoteapp.windowsazure.com  
-	https://opsapi.mohoro.com  
-	https://telemetry.remoteapp.windowsazure.com  
-	https://*.remoteapp.windowsazure.com  
-	https://login.windows.net (if you have Active Directory)  
-	https://login.microsoftonline.com  
-	Azure storage *.remoteapp.windowsazure.com  
-	*.core.windows.net  
-	https://www.remoteapp.windowsazure.com  
-	https://www.remoteapp.windowsazure.com  
-
-仮想ネットワーク サブネットで次のポートを開きます。
-
-受信 - TCP: 3030、TCP: 443 送信 - TCP: 443
+コレクションに使用しているサブネットでネットワーク セキュリティ グループを定義している場合、サブネット内からこれらの [URL とポート](remoteapp-ports.md)にアクセスできることを確認します。
 
 厳密な制御のために、サブネットに配置した VM にネットワーク セキュリティ グループを追加できます。
 
 ## 独自の DNS サーバーを使用していますか。 そのサーバーには VNET サブネットからアクセスできますか。 ##
+>[AZURE.NOTE] VNET の DNS サーバーが常に稼動していること、そして VNET でホストされている仮想マシンを常に解決できることを、確認する必要があります。Google DNS をこれに使用しないでください。
+
+
 ハイブリッド コレクションには、独自の DNS サーバーを使用します。それは仮想ネットワークの構築時にネットワーク構成スキーマに指定するか、管理ポータルで指定します。DNS サーバーは (ラウンド ロビン方式ではなく) フェールオーバー方式で指定されている順序で使用されます。
 
 コレクションの DNS サーバーにはそのコレクションに指定した VNET サブネットからアクセスできて利用できることを確認します。
@@ -79,4 +67,4 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 作成または追加したドメイン名は (Azure AD ドメイン名ではなく) 内部ドメイン名であり、解決可能な DNS 形式 (contoso.local) になっている必要があります。たとえば、Active Directory 内部名 (contoso.local) と Active Directory UPN (contoso.com) が与えられている場合、コレクションの作成時にその内部名を使用する必要があります。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0218_2016-->

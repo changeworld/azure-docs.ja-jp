@@ -28,29 +28,17 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 Azure PowerShell は、以下に示す 2 つの方法でインストールできます。WebPI からインストールする方法と PowerShell ギャラリーからインストールする方法です。
 
-> [AZURE.NOTE]Windows PowerShell Integrated Scripting Environment (ISE) のすべてのコマンドを表示するには、インストール後に再起動が必要になる場合があります。
+> [AZURE.NOTE] Windows PowerShell Integrated Scripting Environment (ISE) のすべてのコマンドを表示するには、インストール後に再起動が必要になる場合があります。
 
 ###WebPI から Azure PowerShell をインストールする
 
 Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からインストールすることができます。[Azure Powershell](http://aka.ms/webpi-azps) をダウンロードしてインストールを開始します。Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、Azure PowerShell 環境の整合性を確保するために、インストール前にモジュールを削除するよう求められます。
 
-> [AZURE.NOTE]PowerShell ギャラリーから Azure モジュールをインストールした場合、それらをアンインストールするよう求められます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリー モジュールは通常、**%ProgramFiles%\\WindowsPowerShell\\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles%\\Microsoft SDKs\\Azure\\PowerShell** にインストールされます。モジュールをアンインストールするには **PowerShellGet** を使用します。このとき、アンインストール中にモジュールの依存関係が読み込まれている場合、ロックされている .dll とそのフォルダーはそのまま残されます。PowerShell ギャラリー モジュールをアンインストールしたにもかかわらずインストールでエラーが発生する場合は、**%ProgramFiles%\\WindowsPowerShell\\Modules** フォルダーから Azure* フォルダーを削除してください。
+> [AZURE.NOTE] PowerShell ギャラリーからインストールした Azure モジュールがある場合は、インストーラーによって自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリー モジュールは通常、**%ProgramFiles%\\WindowsPowerShell\\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles%\\Microsoft SDKs\\Azure\\PowerShell** にインストールされます。モジュールをアンインストールするには **PowerShellGet** を使用します。このとき、アンインストール中にモジュールの依存関係が読み込まれている場合、ロックされている .dll とそのフォルダーはそのまま残されます。インストール中にエラーが発生する場合は、**%ProgramFiles%\\WindowsPowerShell\\Modules** フォルダーから Azure* フォルダーを削除してください。
 
-PowerShell ギャラリーからインストールした Azure PowerShell が既に存在する状態で WebPI インストールを使用する必要がある場合は、WebPI からインストールする前に次のコマンドを実行してください。
+PowerShell ギャラリーからインストールした Azure PowerShell が既に存在する状態で WebPI インストールを使用する必要がある場合、ギャラリーからインストールされたコマンドレットは WebPI インストールによって自動的に削除されます。
 
-    # Uninstall the AzureRM component modules
-    Uninstall-AzureRM
-
-    # Uninstall AzureRM module
-    Uninstall-Module AzureRM
-
-    # Uninstall the Azure module
-    Uninstall-Module Azure
-
-    # Or, you can remove all Azure modules
-    # Uninstall-Module Azure* -Force
-
-> [AZURE.NOTE]PowerShell **$env:PSModulePath** には、WebPI からのインストール時に生じる既知の問題があります。システムの更新プログラムやその他のインストールでコンピューターの再起動が必要になった場合、Azure PowerShell のインストール パスが **$env:PSModulePath** に反映されない可能性があります。この問題は、コンピューターを再起動するか、**$env:PSModulePath** に Azure PowerShell のパスを追加することによって修正できます。
+> [AZURE.NOTE] PowerShell **$env:PSModulePath** には、WebPI からのインストール時に生じる既知の問題があります。システムの更新プログラムやその他のインストールでコンピューターの再起動が必要になった場合、Azure PowerShell のインストール パスが **$env:PSModulePath** に反映されない可能性があります。この問題は、コンピューターを再起動することで修正できます。
 
 ###ギャラリーから Azure PowerShell をインストールする
 
@@ -79,11 +67,11 @@ Azure PowerShell 1.0 以降をギャラリーからインストールするに�
 
 
 ## 手順 2: 起動
-モジュールをインストールすると、Azure PowerShell 用にカスタマイズされたコンソールもインストールされます。コマンドレットは、標準の Windows PowerShell コンソールまたは Azure PowerShell コンソールから実行できます。どちらのコンソールでも、開く方法は、実行している Windows のバージョンによって異なります。
+コマンドレットは、標準の Windows PowerShell コンソールまたは PowerShell Integrated Scripting Environment (ISE) から実行できます。どちらのコンソールでも、開く方法は、実行している Windows のバージョンによって異なります。
 
-- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。**スタート**画面で「power」と入力します。Windows PowerShell および Azure PowerShell が名前に含まれているすべてのアプリケーションが一覧表示されます。コンソールを開くには、いずれかのアプリケーションをクリックします。アプリケーションを**スタート**画面にピン留めするには、そのアイコンを右クリックします。
+- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。**スタート**画面で「power」と入力します。Windows PowerShell が名前に含まれているすべてのアプリケーションが一覧表示されます。コンソールを開くには、いずれかのアプリケーションをクリックします。アプリケーションを**スタート**画面にピン留めするには、そのアイコンを右クリックします。
 
-- Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、**[スタート]** メニューを使用します。**[スタート]** メニューから、**[すべてのプログラム]**、**[Azure]**、**[Azure PowerShell]** の順にクリックします。
+- Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、**[スタート]** メニューを使用します。**[スタート]** メニューから、**[すべてのプログラム]**、**[アクセサリ]**、**[Windows PowerShell]** フォルダー、**[Windows PowerShell]** の順にクリックします。
 
 Windows PowerShell コンソールで行う作業の多くは、**Windows PowerShell ISE** からメニュー項目とキーボード ショートカットを使用して実行することもできます。ISE を使用するには、Windows PowerShell コンソール、Cmd.exe、または **[ファイル名を指定して実行]** ボックスに「**powershell\_ise.exe**」と入力します。
 
@@ -138,12 +126,12 @@ Windows PowerShell コンソールで行う作業の多くは、**Windows PowerS
 
     $cred = Get-Credential
     Login-AzureRmAccount -Credential $cred
-> [AZURE.NOTE]組織アカウントに複数のテナントが関連付けられている場合、TenantId パラメーターを指定します。
+> [AZURE.NOTE] 組織アカウントに複数のテナントが関連付けられている場合、TenantId パラメーターを指定します。
 
     $loadersubscription = Get-AzureRmSubscription -SubscriptionName $YourSubscriptionName -TenantId $YourAssociatedSubscriptionTenantId
 
 
-> [AZURE.NOTE]この非対話型のログイン方法は、職場または学校のアカウントでのみ機能します。職場または学校のアカウントは、職場または学校によって管理されているユーザーで、職場または学校の Azure Active Directory インスタンスで定義されています。現在、職場または学校のアカウントがなく、Microsoft アカウントを使用して Azure サブスクリプションにログインしている場合は、次の手順を使用して簡単に職場または学校のアカウントを作成できます。
+> [AZURE.NOTE] この非対話型のログイン方法は、職場または学校のアカウントでのみ機能します。職場または学校のアカウントは、職場または学校によって管理されているユーザーで、職場または学校の Azure Active Directory インスタンスで定義されています。現在、職場または学校のアカウントがなく、Microsoft アカウントを使用して Azure サブスクリプションにログインしている場合は、次の手順を使用して簡単に職場または学校のアカウントを作成できます。
 
 > 1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインし、**[Active Directory]** をクリックします。
 
@@ -190,4 +178,4 @@ Windows PowerShell の基本的な使用手順については、「[Windows Powe
 
 スクリプトを使用した Azure の管理に役立つサンプル スクリプトとその使用方法については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0218_2016-->

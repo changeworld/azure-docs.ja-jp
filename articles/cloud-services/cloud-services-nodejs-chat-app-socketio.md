@@ -36,7 +36,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します。最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
 	![Azure PowerShell アイコン][powershell-menu]
 
@@ -170,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

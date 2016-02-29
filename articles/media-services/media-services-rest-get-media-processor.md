@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/05/2015" 
+	ms.date="02/14/2016" 
 	ms.author="juliako"/>
 
 
@@ -38,8 +38,8 @@ Azure Media Encoder|Azure Media Encoder を使用してエンコード タスク
 Azure Media Indexer| メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。|[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)
 Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|		[Azure Media Hyperlapse](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
 Storage Decryption| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
-Microsoft Azure Media Packager|メディア資産を .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスクのプリセット](http://msdn.microsoft.com/library/hh973635.aspx)
-Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
+Azure Media Packager|メディア アセットを .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973635.aspx)
+Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
 
 ##MediaProcessor の取得
 
@@ -103,4 +103,4 @@ Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: ../media-services-rest-connect_programmatically/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="jodebrui"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/27/2016"
+	ms.date="02/11/2016"
 	ms.author="jodebrui"/>
 
 
@@ -320,6 +320,12 @@ EXECUTE Demo.usp_DemoReset;
 インメモリ テストの結果、ostress をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍**向上することがわかりました。
 
 
+
+<a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
+
+&nbsp;
+
+
 ## B.インメモリ分析のサンプルをインストールする
 
 
@@ -525,4 +531,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

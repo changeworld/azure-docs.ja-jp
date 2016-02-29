@@ -4,7 +4,7 @@
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags
    ms.service="load-balancer"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/26/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 # Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始
@@ -272,7 +272,7 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 	Remove-AzureLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 
->[AZURE.NOTE]オプションのスイッチ -Force を使用することで、削除のためのプロンプトを回避できます。
+>[AZURE.NOTE] オプションのスイッチ -Force を使用することで、削除のためのプロンプトを回避できます。
 
 
 ## 関連項目
@@ -282,4 +282,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

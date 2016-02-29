@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="giridharreddy"
 	manager="jwhit"
-	editor=""/>
+	editor=""
+	keywords="System Center Data Protection Manager, Data Protection Manager, DPM バックアップ"/>
 
 <tags
 	ms.service="backup"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="02/12/2016"
 	ms.author="giridham;jimpark"/>
 
 # DPM を使用して Azure へのワークロードをバックアップするための準備
@@ -92,4 +93,4 @@ Azure へのバックアップがサポートされているファイルの種�
 
 >[AZURE.NOTE] System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

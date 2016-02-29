@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # パスワード管理の詳細情報
@@ -101,7 +101,7 @@
 ### パスワードのリセットで使用されるデータ
 次の表は、このデータがパスワードのリセット時に使用される場所と方法を示し、組織に適した認証オプションを決定する際に役立つように作られています。この表では、このデータを検証しない入力パスからユーザーに代わってデータを指定する場合の形式の要件も示しています。
 
-> [AZURE.NOTE]会社電話は、現在ユーザーはディレクトリでこのプロパティを編集できないため、登録ポータルに表示されません。
+> [AZURE.NOTE] 会社電話は、現在ユーザーはディレクトリでこのプロパティを編集できないため、登録ポータルに表示されません。
 
 <table>
           <tbody><tr>
@@ -379,4 +379,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

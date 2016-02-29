@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="02/11/2016"
    ms.author="telmos"/>
 
 # Azure デプロイ モデル
@@ -60,12 +60,11 @@ Azure には、次の 2 つのポータルがあります。
 - **Azure リソース マネージャーのテンプレートを使用した PowerShell コマンドレット:** PowerShell を使用すると、Azure リソース マネージャーのテンプレートを使用して Azure リソースを作成できます。これらのテンプレートは、保存とバージョン管理が可能です。詳細については、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関する記事を参照してください。一般的なソリューション向けの [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)が複数あります。これらは、ダウンロードして変更することも可能です。
 
 ## CLI
-CLI を使用して、Windows、OS X、または Linux コンピューターから Azure リソースを作成および構成できます。選択したオペレーティング システムに CLI をインストールするには、[Azure CLI のインストール](xplat-cli-install.md)に関する記事を参照してください。PowerShell と同様、リソースの作成に[リソース マネージャー](xplat-cli-azure-resource-manager.md)と[従来 (サービス管理)](virtual-machines-command-line-tools.md) のどちらのデプロイ モデルを使用するかに応じて、使用する必要があるコマンドが異なります。
+CLI を使用して、Windows、OS X、または Linux コンピューターから Azure リソースを作成および構成できます。選択したオペレーティング システムに CLI をインストールするには、[Azure CLI のインストール](xplat-cli-install.md)に関する記事を参照してください。PowerShell と同様、リソースの作成に[リソース マネージャー](xplat-cli-azure-resource-manager.md)と[従来 (サービス管理)](virtual-machines/virtual-machines-command-line-tools.md) のどちらのデプロイ モデルを使用するかに応じて、使用する必要があるコマンドが異なります。
 
 ## 次のステップ
 
-- [リソース マネージャー](/resource-group-overview.md)の詳細情報を確認する
-- [テンプレートの設計](/best-practices-resource-manager-design-templates.md)方法を理解する
-- [ベスト プラクティス](/best-practices-resource-manager-examples.md)を使用する
+- [リソース マネージャー](resource-group-overview.md)の詳細情報を確認する
+- [テンプレートの設計](best-practices-resource-manager-design-templates.md)方法を理解する
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

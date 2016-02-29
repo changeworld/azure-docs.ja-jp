@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="02/12/2016"
 	ms.author="garye" />
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Analytics Solution Template のアーキテクチャ
@@ -26,4 +26,4 @@
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

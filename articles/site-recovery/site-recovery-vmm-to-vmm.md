@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする | Microsoft Azure"
-	description="Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ VMM サイトにレプリケートする方法について説明します。"
+	description="この記事では、Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ VMM サイトにレプリケートする方法について説明します。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="02/17/2016"
 	ms.author="raynew"/>
 
 # VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
@@ -22,11 +22,11 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 ## 概要
 
-この記事では、System Center Virtual Machine Manager (VMM) プライベート クラウドに配置される Hyper-V 仮想マシンを保護するための調整と自動化を行うように Site Recovery をデプロイする方法について説明します。このシナリオでは、仮想マシンはプライマリ VMM サイトからセカンダリ VMM サイトに Site Recovery と Hyper-V レプリカを使用してレプリケートされます。
+この記事では、VMM クラウドで管理されている Hyper-V ホスト サーバーの Hyper-V 仮想マシンを、Azure Site Recovery を使用してセカンダリ VMM サイトにレプリケートする方法について説明します。
 
 この記事では、シナリオの前提条件、Site Recovery コンテナーを設定する方法、ソースとターゲットの VMM サーバーに Azure Site Recovery Provider をインストールする方法、コンテナーにサーバーを登録する方法、VMM クラウドの保護設定を構成する方法、および Hyper-V VM に対する保護を有効にする方法について説明します。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
 
-質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## アーキテクチャ
 
@@ -41,17 +41,17 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 **前提条件** | **詳細** 
 --- | ---
 **Azure**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の料金については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
-**VMM** | 少なくとも 1 台の VMM サーバーが必要です。<br/><br/>VMM サーバーは、最新の累積更新プログラムが適用された System Center 2012 SP1 を実行する必要があります。<br/><br/>1 台の VMM で保護を設定する場合は、そのサーバーに少なくとも2 つのクラウドを構成する必要があります。<br/><br/> 2 台のVMMサーバーで保護をデプロイする場合は、保護するプライマリ VMM サーバーに少なくとも 1 つのクラウドが構成され、保護と回復用に使用するセカンダリ VMM サーバーに １ つのクラウドが構成される必要があります。<br/><br/>すべての VMM クラウドに Hyper-V キャパシティ プロファイルを設定する必要があります。<br/><br/>保護するソースクラウドには、1つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウドのファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページと、[チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)に関するページを参照してください。
-**Hyper-V** | プライマリとセカンダリの VMM ホスト グループに 1 つ以上の Hyper-V ホスト サーバーが必要であり、各 Hyper-V ホストサーバーに 1 台以上の仮想マシンが必要です。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hyper-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
-**ネットワーク マッピング** | フェールオーバー後に、レプリケートされた仮想マシンがセカンダリ Hyper-V ホスト サーバーに最適に配置され、適切な VM ネットワークに接続できるように、ネットワーク マッピングを構成できます。ネットワーク マッピングを構成しない場合、フェールオーバー後にレプリカ VM はどのネットワークにも接続されません。<br/><br/>デプロイ中にネットワーク マッピングを設定するには、ソース Hyper-V ホスト サーバー上の仮想マシンが VMM VM ネットワークに接続されることを確認します。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。<br/<br/>回復に使用するセカンダリ VMM サーバーのターゲット クラウドには対応する VM ネットワークが構成されており、そのネットワークが、ターゲット クラウドに関連付けられている対応する論理ネットワークにリンクされている必要があります。<br/><br/>ネットワーク マッピングについては[こちら](site-recovery-network-mapping.md)を参照してください。
-**ストレージ マッピング** | ソースの Hyper-V ホスト サーバーにある仮想マシンをターゲットの Hyper-V ホスト サーバーにレプリケートする場合、既定では、レプリケートされたデータは既定の場所に格納されます。その場所は、Hyper-V マネージャーでターゲットの Hyper-V ホストに対して指定されています。レプリケートされたデータの格納場所を細かく制御するために、ストレージ マッピングを構成できます。<br/><br/>ストレージ マッピングを構成するには、デプロイを開始する前に、ソースとターゲットの VMM サーバーでストレージ分類を設定する必要があります。[詳細情報](site-recovery-storage-mapping.md)。
+**VMM** | 少なくとも 1 台の VMM サーバーが必要です。<br/><br/>VMM サーバーは、最新の累積更新プログラムが適用された System Center 2012 SP1 を実行する必要があります。<br/><br/>1 台の VMM サーバーで保護を設定する場合は、そのサーバーに少なくとも 2 つのクラウドを構成する必要があります。<br/><br/>2 台の VMMサーバーで保護をデプロイする場合は、保護するプライマリ VMM サーバーに少なくとも 1 つのクラウドが構成され、保護と回復用に使用するセカンダリ VMM サーバーに 1 つのクラウドが構成されている必要があります。<br/><br/>すべての VMM クラウドに Hyper-V キャパシティ プロファイルを設定する必要があります。<br/><br/>保護するソース クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、Keith Mayer のブログの「[チュートリアル: System Center 2012 SP1 VMM を使用したプライベート クラウドの作成](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)」を参照してください。
+**Hyper-V** | プライマリとセカンダリの VMM ホスト グループに 1 つ以上の Hyper-V ホスト サーバーが必要であり、各 Hyper-V ホストサーバーに 1 台以上の仮想マシンが必要です。<br/><br/>ホストとターゲットの Hyper-V サーバーは、少なくとも Hyper-V ロールが割り当てられ、最新の更新プログラムがインストールされた Windows Server 2012 を実行中である必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。[詳細](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters)は、Aidan Finn のブログ記事を参照してください。
+**ネットワーク マッピング** | フェールオーバー後に、レプリケートされた仮想マシンがセカンダリ Hyper-V ホスト サーバーに最適に配置され、適切な VM ネットワークに接続できるように、ネットワーク マッピングを構成できます。ネットワーク マッピングを構成しない場合、フェールオーバー後にレプリカ VM はどのネットワークにも接続されません。<br/><br/>デプロイメント中にネットワーク マッピングを設定するには、ソース Hyper-V ホスト サーバー上の仮想マシンが VMM VM ネットワークに接続されることを確認します。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。<br/>回復に使用するセカンダリ VMM サーバーのターゲット クラウドには対応する VM ネットワークが構成されており、そのネットワークが、ターゲット クラウドに関連付けられている対応する論理ネットワークにリンクされている必要があります。<br/><br/>ネットワーク マッピングについては[こちら](site-recovery-network-mapping.md)を参照してください。
+**ストレージ マッピング** | ソースの Hyper-V ホスト サーバーにある仮想マシンをターゲットの Hyper-V ホスト サーバーにレプリケートする場合、既定では、レプリケートされたデータは既定の場所に格納されます。その場所は、Hyper-V マネージャーでターゲットの Hyper-V ホストに対して指定されています。レプリケートされたデータの格納場所を細かく制御するために、記憶域マッピングを構成できます。<br/><br/>記憶域マッピングを構成するには、デプロイメントを開始する前に、ソースとターゲットの VMM サーバーで記憶域の分類を設定する必要があります。[詳細情報](site-recovery-storage-mapping.md)。
 
 
 ## ステップ 1: Site Recovery コンテナーを作成する
 
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
-2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 
@@ -99,7 +99,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 	![InstallComplete](./media/site-recovery-vmm-to-vmm/install-complete.png)
 
-7. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。**[既存のシステム プロキシ設定を使用して接続する]** を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
+7. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。**[既存のプロキシ設定を使用して接続する]** を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
 	![インターネット設定](./media/site-recovery-vmm-to-vmm/proxy-details.png)
 
@@ -234,8 +234,8 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 
 1. ソースとターゲットの両方の VMM サーバーでストレージ分類を定義します。[詳細情報](https://technet.microsoft.com/library/gg610685.aspx)。分類は、ソースおよびターゲットのクラウド内の Hyper-V ホスト サーバーで使用できる必要があります。分類のストレージの種類は同じでなくてもかまいません。たとえば、SMB 共有が含まれているソース分類を CSV が含まれているターゲット分類に割り当てることができます。
-2. 分類を定義したら、マッピングを作成できます。 **[クイック スタート]** ページで、**[ストレージのマップ]** をクリックします。
-1. **[ストレージ]** タブで、**[ストレージ分類のマップ]** をクリックします。
+2. 分類を定義したら、マッピングを作成できます。**[クイック スタート]** ページで、**[ストレージのマッピング]** をクリックします。
+3. **[Storage]** タブで、**[ストレージ分類のマップ]** をクリックします。
 4. **[ストレージ分類のマップ]** タブで、ソースとターゲットの VMM サーバーの分類を選択します。設定を保存します。
 
 	![ターゲット ネットワークの選択](./media/site-recovery-vmm-to-vmm/storage-mapping.png)
@@ -244,7 +244,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 ## ステップ 7: 仮想マシンの保護を有効化する
 サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。
 
-1. 仮想マシンが配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。 
+1. Virtual Machines が配置されているクラウドの **[Virtual Machines]** タブで、**[保護を有効にする]**、**[仮想マシンの追加]** の順にクリックします。
 2. クラウド内の仮想マシンのリストから、保護する仮想マシンを選択します。
 
 	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-vmm/enable-protection.png)
@@ -375,4 +375,4 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
 - **選択肢**: これは、本サービスに必要不可欠であり、無効にすることはできません。この情報を本サービスに送信することを希望しない場合は、本サービスを使用しないでください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

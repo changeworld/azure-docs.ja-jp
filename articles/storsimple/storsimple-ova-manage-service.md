@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/26/2016"
+   ms.date="02/05/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array の StorSimple Manager サービスのデプロイ
@@ -105,10 +105,10 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 
 ## 次のステップ
 
-- [StorSimple Virtual Array のデプロイ - ポータルの準備 (プレビュー)](storsimple-ova-deploy1-portal-prep.md)
+- [StorSimple Virtual Array の使用を開始する](storsimple-ova-deploy1-portal-prep.md)方法を確認します。
 	
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-ova-manager-service-administration.md)
+- [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

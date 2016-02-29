@@ -381,7 +381,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		Start             : 3/3/2015 12:00:00 AM
 		End               : 3/3/2015 1:00:00 AM
 		RetryCount        : 0
-		Status            : PendingExecution
+		Status            : Waiting
 		LatencyStatus     :
 		LongRetryCount    : 0
 
@@ -393,7 +393,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		Start             : 3/4/2015 11:00:00 PM
 		End               : 3/4/2015 12:00:00 AM
 		RetryCount        : 0
-		Status            : PendingExecution
+		Status            : Waiting
 		LatencyStatus     : 
 		LongRetryCount    : 0
 
@@ -444,4 +444,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

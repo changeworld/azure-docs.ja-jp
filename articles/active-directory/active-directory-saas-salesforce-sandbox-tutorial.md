@@ -1,5 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Salesforce Sandbox の統合 | Microsoft Azure" description="Azure Active Directory で Salesforce Sandbox を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="チュートリアル: Azure Active Directory と Salesforce Sandbox の統合 | Microsoft Azure"
+    description="Azure Active Directory で Salesforce Sandbox を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -18,9 +19,7 @@
 #チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521878)をクリックしてください。
   
-このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。  
-Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。  
-詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
+このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
   
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -87,7 +86,7 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
 4.  **[Salesforce Sandbox でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781023.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、Salesforce Sandbox 企業サイトに管理者としてログインします。
 
@@ -199,10 +198,10 @@ Sandbox を使用すると、Salesforce 運用組織内のデータとアプリ�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "Yes")
   
 10 分待ってから、アカウントが Salesforce Sandbox と同期できたことをご確認ください。
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="02/17/2016"
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -37,7 +37,7 @@
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新してストレージ エミュレーターとクラウドの Azure ストレージ アカウントを切り替えることができます。接続文字列を編集するだけでストレージ アカウントを参照できます。
 
-Azure [CloudConfigurationManager](https://msdn.microsoft.com/library/microsoft.windowsazure.cloudconfigurationmanager.aspx) クラスを使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
+[Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) クラスを使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
 
 ## ストレージ エミュレーターへの接続文字列を作成する
 
@@ -57,7 +57,7 @@ Azure ストレージ アカウントへの接続文字列を作成するには�
 	AccountName=storagesample;
 	AccountKey=<account-key>
 
-> [AZURE.NOTE]Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、HTTPS の使用を強くお勧めします。
+> [AZURE.NOTE] Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、HTTPS の使用を強くお勧めします。
 
 ## 明示的なストレージ エンドポイントへの接続文字列を作成する
 
@@ -119,4 +119,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 	AccountKey=<account-key>;
 	EndpointSuffix=core.chinacloudapi.cn;
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

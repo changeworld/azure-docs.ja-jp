@@ -24,14 +24,14 @@ Hadoop スタック トレース エラーに関するこのインデックス�
 ## メモリ不足に関するエラー メッセージ
 * [Hive 設定によるメモリ不足 (OOM) エラーの修正](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Hive クエリのメモリ不足エラー (OOM) を修正します。顧客シナリオに、多数の大きなテーブルへのクエリが含まれています。
 
-> [AZURE.NOTE]その他のスタック トレース エラーのトラブルシューティングに関する記事を準備中です。
+> [AZURE.NOTE] その他のスタック トレース エラーのトラブルシューティングに関する記事を準備中です。
 
 ## HDInsight のその他のトラブルシューティングに関する記事
 
 * [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)
-* [HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈](hhdinsight-debug-jobs.md)
+* [HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈](hdinsight-debug-jobs.md)
 * [プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)
 * [BLOB ストレージのヒープ ダンプを収集して Hadoop サービスをデバッグおよび分析する](hdinsight-hadoop-collect-debug-heap-dumps.md)
 * [Azure HDInsight の Hadoop コンポーネントのリリース ノート](hdinsight-release-notes.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

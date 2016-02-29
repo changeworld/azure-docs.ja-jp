@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/02/2016"
+	ms.date="02/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 - Certify にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Certify にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -56,7 +56,7 @@ Azure AD への Certify の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Certify を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br> ![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br> ![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -64,7 +64,7 @@ Azure AD への Certify の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Certify**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-certify-tutorial/tutorial_certify_01.png)<br>
-7. 結果ウィンドウで **[Certify]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>
+7. 結果ウィンドウで **[Certify]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-certify-tutorial/tutorial_certify_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Certify で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -81,13 +81,13 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、Certify アプリケーションでシングル サインオンを構成することです。
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Certify アプリケーションでシングル サインオンを構成することです。
 
 
 
 **Certify で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **Certify** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
+1. Azure AD クラシック ポータルの **Certify** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
 2. **[ユーザーの Certify へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-certify-tutorial/tutorial_certify_03.png) <br>
 
@@ -107,7 +107,7 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 5. お使いのアプリケーション用に構成された SSO を取得するために、Certify のサポート チーム (support@certify.com) に問い合わせます。Certify チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][10]<br>
+6. Azure AD クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
 
@@ -119,7 +119,7 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-certify-tutorial/create_aaduser_09.png) <br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-certify-tutorial/create_aaduser_09.png) <br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -168,7 +168,7 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 
 ### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Certify へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。<br><br>![ユーザーの割り当て][200] <br>
+このセクションの目的は、Britta Simon に Certify へのアクセスを許可することによって、このユーザーが Azure のシングル サインオンを使用できるようにすることです。<br><br>![ユーザーの割り当て][200] <br>
 
 **Certify に Britta Simon を割り当てるには、次の手順に従います。**
 
@@ -213,4 +213,4 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-certify-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-certify-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

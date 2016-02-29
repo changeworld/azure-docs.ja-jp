@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="02/12/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの CHAP の構成
 
-このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。CHAP は、チャレンジ ハンドシェイク認証プロトコルを意味します。これは、サーバーがリモート クライアントの ID を検証する際に使用する認証スキームです。この検証は、共有パスワードまたはシークレットに基づいて行われます。
+このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。この記事の詳細な手順は、StorSimple 8000 シリーズと StorSimple 1200 デバイスに適用されます。
 
-CHAP には、単一方向 (一方向 CHAP) と双方向 (相互 CHAP) とがあります。一方向 CHAP は、ターゲットがイニシエーターを認証する際に使用されます。一方、相互 CHAP やリバース CHAP では、ターゲットがイニシエーターを認証した後、イニシエーターがターゲットを認証します。イニシエーターの認証は、ターゲットの認証なしに実装できますが、ターゲットの認証は、イニシエーターも実装されている場合にのみ実装できます。
+CHAP は、チャレンジ ハンドシェイク認証プロトコルを意味します。これは、サーバーがリモート クライアントの ID を検証する際に使用する認証スキームです。この検証は、共有パスワードまたはシークレットに基づいて行われます。CHAP には、単一方向 (一方向 CHAP) と双方向 (相互 CHAP) とがあります。一方向 CHAP は、ターゲットがイニシエーターを認証する際に使用されます。一方、相互 CHAP やリバース CHAP では、ターゲットがイニシエーターを認証した後、イニシエーターがターゲットを認証します。イニシエーターの認証は、ターゲットの認証なしに実装できますが、ターゲットの認証は、イニシエーターも実装されている場合にのみ実装できます。
 
 ベスト プラクティスとして、CHAP を使用して iSCSI セキュリティを強化することをお勧めします。
 
->[AZURE.NOTE]StorSimple デバイスでは現在 IPSEC がサポートされていないことに注意してください。
+>[AZURE.NOTE] StorSimple デバイスでは現在 IPSEC がサポートされていないことに注意してください。
 
 StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 
@@ -49,8 +49,11 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 
 	2. CHAP イニシエーターのパスワードを指定します。
 
-    > [AZURE.IMPORTANT]CHAP のユーザー名は 233 文字未満にする必要があります。CHAP のパスワードは 12 ～ 16 文字にする必要があります。ユーザー名やパスワードをそれより長くすると、Windows ホストで認証エラーとなります。
+   		 > [AZURE.IMPORTANT] CHAP のユーザー名は 233 文字未満にする必要があります。CHAP のパスワードは 12 ～ 16 文字にする必要があります。ユーザー名やパスワードをそれより長くすると、Windows ホストで認証エラーとなります。
+    
+	3. パスワードを確認入力します。
 
+4. **[保存]** をクリックします。確認メッセージが表示されます。**[OK]** をクリックして変更を保存します。
 #### Windows ホスト サーバーで一方向認証を構成するには
 
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
@@ -83,9 +86,11 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 
 		![Advanceds settings general](./media/storsimple-configure-chap/IC740946.png)
 
-5. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブに、デバイスの状態が **[接続中]** として表示されます。
+5. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブに、デバイスの状態が **[接続中]** として表示されます。StorSimple 1200 デバイスを使用する場合、各ボリュームは以下に示すように iSCSI ターゲットとしてマウントされます。そのため、ボリュームごとに手順 3 と手順 4 を繰り返す必要があります。
 
-    > [AZURE.IMPORTANT]iSCSI の名前を変更した場合は、新しい名前が新しい iSCSI のセッションに使用されます。新しい設定は、ログオフしてもう一度ログオンするまで、既存のセッションに使用されません。
+	![個別のターゲットとしてマウントされたボリューム](./media/storsimple-configure-chap/chap4.png)
+
+    > [AZURE.IMPORTANT] iSCSI の名前を変更した場合は、新しい名前が新しい iSCSI のセッションに使用されます。新しい設定は、ログオフしてもう一度ログオンするまで、既存のセッションに使用されません。
 
 Windows ホスト サーバーで CHAP を構成する方法の詳細については、「[追加の考慮事項](#additional-considerations)」を参照してください。
 
@@ -153,7 +158,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 		![Advanceds settings mutual authentication](./media/storsimple-configure-chap/IC740950.png)
 
 	5. **[OK]** をクリックして、CHAP 構成を完了します。
-
+	 
 Windows ホスト サーバーで CHAP を構成する方法の詳細については、「[追加の考慮事項](#additional-considerations)」を参照してください。
 
 ## 追加の考慮事項
@@ -192,4 +197,4 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0218_2016-->

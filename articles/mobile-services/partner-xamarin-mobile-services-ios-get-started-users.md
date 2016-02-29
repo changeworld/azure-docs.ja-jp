@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="02/11/2016"
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -78,7 +78,7 @@
             }
         }
 
-	> [AZURE.NOTE]Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _Facebook_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
+	> [AZURE.NOTE] Microsoft アカウント以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _Facebook_、_Twitter_、_Google_、または _WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **ToDoItem** テーブルに対する要求を、**ToDoService** コンストラクターから **CreateTable** という名前の新しいメソッドに移動します。
 
@@ -155,4 +155,4 @@
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0218_2016-->

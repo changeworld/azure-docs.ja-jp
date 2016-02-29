@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/10/2015"
+   ms.date="02/12/2016"
    ms.author="mattrow"/>
 
 
@@ -45,4 +45,4 @@ Service Fabric によって提供される次の既存の診断について説�
 * [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 * [Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->

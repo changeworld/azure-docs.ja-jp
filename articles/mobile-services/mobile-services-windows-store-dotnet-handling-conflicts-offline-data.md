@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/12/2015"
+	ms.date="02/11/2016"
 	ms.author="glenga"/>
 
 
@@ -56,7 +56,7 @@
 
 3. Visual Studio 2013 で、*mobile-services-samples\\TodoOffline\\WindowsUniversal\\TodoOffline-Universal.sln* ソリューション ファイルを開きます。**F5** キーを押してプロジェクトをリビルドして実行します。NuGet パッケージが復元され、参照が正しく設定されていることを確認します。
 
-    >[AZURE.NOTE]SQLite ランタイムへの以前の参照を削除し、これを「[オフライン データの使用]」チュートリアルで説明したように、更新された参照で置き換える必要がある場合があります。
+    >[AZURE.NOTE] SQLite ランタイムへの以前の参照を削除し、これを「[オフライン データの使用]」チュートリアルで説明したように、更新された参照で置き換える必要がある場合があります。
 
 4. アプリケーションの [**TodoItem の挿入**] にテキストを入力し、[**保存**] をクリックして、ローカルのストアに Todoitem を追加します。次に、アプリケーションを閉じます。
 
@@ -87,7 +87,7 @@
 
 現実のシナリオでは、1 つのアプリケーションがデータベースのレコードに更新をプッシュし、次に別のアプリケーションがそのレコードの使用していないバージョンを使用して同じレコードへプッシュしようとする場合に同期の競合が発生します。「[オフライン データの使用]」にあるように、オフラインでの同期の機能をサポートするにはバージョンのシステム プロパティが必要です。このバージョン情報は、データベースの更新ごとに検証されます。アプリケーションのインスタンスが以前のバージョンを使用してレコードを更新しようとすると、競合が発生し、アプリケーションで `MobileServicePreconditionFailedException` として捕捉されます。アプリケーションが `MobileServicePreconditionFailedException` を捕捉しなかった場合は、発生した同期エラーの数を示す `MobileServicePushFailedException` が最終的にスローされます。
 
->[AZURE.NOTE]オフライン データの同期で削除されたレコードの同期をサポートするには、[論理削除](mobile-services-using-soft-delete.md)を有効にする必要があります。それ以外の場合は、ローカル ストアのレコードを手動で削除するか、`IMobileServiceSyncTable::PurgeAsync()` を呼び出してローカル ストアを消去する必要があります。
+>[AZURE.NOTE] オフライン データの同期で削除されたレコードの同期をサポートするには、[論理削除](mobile-services-using-soft-delete.md)を有効にする必要があります。それ以外の場合は、ローカル ストアのレコードを手動で削除するか、`IMobileServiceSyncTable::PurgeAsync()` を呼び出してローカル ストアを消去する必要があります。
 
 
 次の手順では、同時に実行する Windows Phone 8.1 クライアントと Windows ストア 8.1 のクライアントに競合が発生し、サンプルを使用してこれを解決する方法を示します。
@@ -168,4 +168,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Mobile Services のサンプルの GitHub リポジトリ]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

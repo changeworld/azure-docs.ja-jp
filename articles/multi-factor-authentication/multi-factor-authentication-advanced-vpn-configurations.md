@@ -7,14 +7,7 @@
 	manager="stevenpo" 
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/19/2015" 
-	ms.author="billmath"/>
+<tags ms.service="multi-factor-authentication" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="02/16/2016"" ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication とサード パーティ VPN の高度なシナリオ
 Azure Multi-Factor Authentication を利用し、さまざまなサード パーティ VPN ソリューションとシームレスに接続できます。たとえば、Cisco® ASA VPN アプライアンス、Citrix NetScaler SSL VPN アプライアンス、Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN アプライアンスをご利用いただけます。
@@ -43,4 +36,4 @@ Azure Multi-Factor Authentication は Juniper/Pulse Secure SSL VPN アプライ�
 [Juniper/Pulse Secure SSL VPN と Azure MFA の構成 (LDAP の場合)](http://download.microsoft.com/download/6/5/8/6587B418-75B1-4FCB-84D4-984BC479309E/JuniperPulse_Azure_MFA_LDAP.docx)| Juniper/Pulse Secure SSL VPN と Azure MFA アプライアンスを LDAP でシームレスに統合します。|
 [Juniper/Pulse Secure SSL VPN と Azure MFA の構成 (RADIUS の場合)](http://download.microsoft.com/download/7/9/A/79AB3DAD-4799-4379-B1DA-B95ABDF231DC/JuniperPulse_Azure_MFA_RADIUS.docx) | Juniper/Pulse Secure SSL VPN アプライアンスと Azure MFA を RADIUS でシームレスに統合します。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

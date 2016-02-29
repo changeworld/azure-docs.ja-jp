@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/08/2016"
 	ms.author="billmath"/>
 
 
@@ -21,7 +21,7 @@
 
 
 
-# Azure AD Connect Health エージェントのインストール 
+# Azure AD Connect Health エージェントのインストール
 
 このドキュメントでは、AD FS と同期用に Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。
 
@@ -31,7 +31,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -50,11 +50,11 @@
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AD FS 診断サービス  
-- Azure AD Connect Health AD FS 分析サービス  
+- Azure AD Connect Health AD FS Diagnostics Service
+- Azure AD Connect Health AD FS Insights Service
 - Azure AD Connect Health AD FS Monitoring Service
 
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install5.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
 
 
 ### Windows Server 2008 R2 サーバーへのエージェントのインストール
@@ -110,7 +110,7 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。
 
-![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
+![AD FS audit logs](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
@@ -123,7 +123,7 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 
 - Azure AD Connect Health AadSync Insights Service
 - Azure AD Connect Health AadSync Monitoring Service
- 
+
 ![Azure AD Connect Health for Sync の確認](./media/active-directory-aadconnect-health-sync/services.png)
 
 >[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health.md#requirements)で要件を参照してください。
@@ -176,7 +176,23 @@ WinHTTP プロキシ設定をインポートするには、Health エージェ�
 	Get-AzureAdConnectHealthProxySettings
 
 
-[//]: # "エージェントのプロキシ構成セクションの終了"
+## Azure AD Connect Health サービスへの接続テスト
+Azure AD Connect Health エージェントが Azure AD Connect Health サービスとの接続を失うことになるような問題が発生することがあります。ネットワークの問題、アクセス許可の問題や、その他のさまざまな理由があります。
+
+エージェントが Azure AD Connect Health サービスに 2 時間以上データを送信できない場合は、"ヘルス サービス データが最新ではありません" というアラートが表示されます。 その場合は、エージェントの問題が発生しているコンピューターで以下の PowerShell コマンドを実行して、Azure AD Connect Health エージェントが Azure AD Connect Health サービスにデータをアップロードできるかどうかをテストできるようになりました。
+
+    Test-AzureADConnectHealthConnectivity -Role Adfs
+
+role パラメーターは、現在、以下の値を受け取ります。
+	
+- Adfs
+- 同期
+
+コマンドで - ShowResults フラグを使用すると、詳細ログが表示されます。次の例を使用してください。
+
+    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResults
+
+>[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
 
 
 ## 関連リンク
@@ -187,4 +203,4 @@ WinHTTP プロキシ設定をインポートするには、Health エージェ�
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

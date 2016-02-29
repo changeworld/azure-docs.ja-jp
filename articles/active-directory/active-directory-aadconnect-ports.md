@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="02/09/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID で必要なポートとプロトコル
@@ -74,15 +74,14 @@ Office 365 のポートと IP アドレスの一覧については、「[Office 
 次の表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なエンドポイント、ポート、およびプロトコルについて説明しています。
 
 ### 表 6a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
-この表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
+この表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要な以下の送信ポートとプロトコルについて説明しています。
 
 | プロトコル |ポート |説明
 | --------- | --------- |--------- |
-| HTTP|80 (TCP/UDP)|
-|HTTPS|443 (TCP/UDP)|
-|Azure Service Bus|5671 (TCP/UDP)|
+|HTTPS|443 (TCP/UDP)| 送信
+|Azure Service Bus|5671 (TCP/UDP)| 送信
 
 ### 表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、[Azure AD Connect Health エージェントの「必要条件」のセクション](active-directory-aadconnect-health.md#requirements)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/25/2016" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
@@ -25,13 +25,13 @@
 
 
 - [関連付け ID のエラー](#correlation-id-errors)
-- [電話を紛失した場合や電話が盗まれた場合](#i-have-lost-my-phone-or-it-was-stolen?)
+- [電話を紛失した場合や電話が盗まれた場合](#i-have-lost-my-phone-or-it-was-stolen)
 - [電話番号を変更する必要がある場合](#i-want-to-change-my-phone-number)
 - [電話を新しくしたので、電話番号を変更する必要がある場合](#i-have-a-new-phone-and-need-to-change-my-phone-number)
-- [電話でコードを受け取ることができない場合](#i-am-not-receiving-a-code-on-my-phone)
+- [電話でコードを受け取ることができない場合](#i-am-not-receiving-a-code-or-a-call-on-my-phone)
 - [アプリ パスワードが機能しない場合](#app-passwords-are-not-working)
 - [古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合](#how-do-i-clean-up-azure-authenticator-from-my-old-device-and-move-to-a-new-one)
-- [問題に対する回答が見つからなかった場合](#i-didn't-find-an-answer-to-my-problem)
+- [問題に対する回答が見つからなかった場合](#i-didnt-find-an-answer-to-my-problem)
 
 ##関連付け ID のエラー
 以下のトラブルシューティングの手順を試しても引き続き問題が発生する場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[Microsoft 技術情報 (KB) を検索する](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)か、[サポートに問い合わせ](https://support.microsoft.com/ja-JP)ていただければ、すぐに問題に対応いたします。
@@ -147,7 +147,7 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 - 確認コードをテキスト メッセージで携帯電話に送信するように選択している場合は、ご利用のサービス プランと、デバイスがテキスト メッセージの配信をサポートしていることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。また、これらのコードの受信を試みているときに、十分な電波が届いていることを確認します。
 - モバイル アプリを使って確認コードを受信するように選択している場合は、電波状態が良いことを確認します。配信の速度や利用可能性は、場所とサービス プロバイダーによって異なる場合があることも忘れないでください。 
 
-スマートフォンをお持ちの場合は、[Azure Authenticator アプリ](multi-factor-authentication-azure-authenticator)を使用することをお勧めします。
+スマートフォンをお持ちの場合は、[Azure Authenticator アプリ](multi-factor-authentication-azure-authenticator.md)を使用することをお勧めします。
 
 サインインするときに **[別の確認オプションを使用する]** を選択することで、検証コードを受信する方法をモバイル アプリからテキスト メッセージに切り替えることができます。
 
@@ -172,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

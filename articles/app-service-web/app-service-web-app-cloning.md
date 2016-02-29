@@ -114,4 +114,4 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

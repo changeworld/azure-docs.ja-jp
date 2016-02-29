@@ -36,7 +36,7 @@ Azure CLI を使用して HDInsight クラスターを作成する方法につ�
 
 	azure login
 
-職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
+職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](../xplat-cli-connect.md)」をご覧ください。
 	
 次のコマンドを使用して、ARM モードに切り替えます。
 
@@ -129,9 +129,9 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 
 ## 関連項目
 
-- [Azure HDInsight の概要](hdinsight-get-started.md) - HDInsight クラスターの使用方法について説明しています。
+- [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 - [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 - [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
-- [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
+- [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

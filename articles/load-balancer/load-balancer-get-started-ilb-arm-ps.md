@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 # PowerShell を使用した内部ロード バランサーの作成の開始
@@ -316,4 +316,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

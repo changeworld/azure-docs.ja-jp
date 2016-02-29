@@ -13,11 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
 # Azure AD Connect Sync: 技術的概念
+この記事は、[アーキテクチャの理解](active-directory-aadconnectsync-technical-concepts.md)に関するトピックの概要です。
 
 Azure AD Connect Sync は、堅牢なメタディレクトリ同期プラットフォームを基盤としています。以下のセクションでは、メタディレクトリ同期の概念を説明します。Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、データ ソースへの接続、データ ソース間でのデータの同期、ID のプロビジョニングとプロビジョニング解除のための次期型プラットフォームを提供します。
 
@@ -89,4 +90,4 @@ ID が一緒にリンクされ、インポート フローのマッピングを�
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/17/2016"
 	ms.author="micurd"/>
 
 
@@ -28,9 +28,9 @@
 
 このトピックのコード例は、既に Node.js アプリケーションがあることを前提としています。Azure で Node.js アプリケーションを作成する方法については、次のいずれかのトピックを参照してください。
 
-- [Node.js Web サイトの構築と Azure へのデプロイ](Node.js アプリケーションの作成と Azure Web サイトへのデプロイ)
-- [WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ](WebMatrix を使用した Node.js アプリケーションの作成と Azure へのデプロイ)
-- [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](Node.js クラウド サービス) (Windows PowerShell を使用)
+- [Azure App Service での Node.js Web アプリの作成](../app-service-web/web-sites-nodejs-develop-deploy-mac.md)
+- [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+- [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)
 
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -71,7 +71,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ]」を参照してください。
 
 ## テーブルの作成
 
@@ -445,7 +445,7 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Website with WebMatrix]: ../web-sites-nodejs-use-webmatrix.md
   [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-  [ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+  [Azure Table サービスを使用する Node.js Web アプリ]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

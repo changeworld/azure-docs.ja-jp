@@ -24,9 +24,9 @@
 
 **推定所要時間:** 20 分
 
-Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault/key-vault-whatis.md)」をご覧ください。
+Azure Key Vault の概要については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」をご覧ください。
 
-Azure Storage のクライアント側の暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](storage-client-side-encryption.md)」をご覧ください。
+Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](storage-client-side-encryption.md)」を参照してください。
 
 
 ## 前提条件
@@ -40,7 +40,7 @@ Azure Storage のクライアント側の暗号化の概要については、「
 
 ## クライアント側暗号化の概要
 
-Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側暗号化の概要](storage-client-side-encryption.md)」を参照してください。
+Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](storage-client-side-encryption.md)」を参照してください。
 
 ここでは、クライアント側暗号化のしくみを簡単に説明します。
 
@@ -51,7 +51,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 
 ## Azure Key Vault のセットアップ
-このチュートリアルを続けるには、チュートリアル「[Azure Key Vault の概要](key-vault/key-vault-get-started.md)」で説明されている以下の手順を実行する必要があります。
+このチュートリアルを続けるには、チュートリアル「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」で説明されている以下の手順を実行する必要があります。
 
 - Key Vault を作成します。
 - キーやシークレットを Key Vault に追加します。
@@ -235,4 +235,4 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

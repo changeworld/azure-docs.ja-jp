@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/28/2016"    
+	ms.date="02/16/2016"    
 	ms.author="juliako"/>
 
 
@@ -353,7 +353,6 @@
 	          <MaxBitrate>4500</MaxBitrate>
 	        </H264Layer>
 	      </H264Layers>
-	      <Chapters />
 	    </H264Video>
 	    <AACAudio>
 	      <Profile>AACLC</Profile>
@@ -425,8 +424,8 @@
 
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーは、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングする場合にも利用できます。それに関する詳細は[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)にあります。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。なお、**Sources** 要素はスキーマの先頭に配置する必要があります。
-
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。なお、**Sources** 要素はスキーマの先頭に配置する必要があります。
+ 
 ###<a id="json"></a>JSON プリセット
 	
 	{
@@ -651,7 +650,6 @@
 	          <MaxBitrate>400</MaxBitrate>
 	        </H264Layer>
 	      </H264Layers>
-	      <Chapters />
 	    </H264Video>
 	    <AACAudio>
 	      <Profile>AACLC</Profile>
@@ -736,7 +734,6 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	          "FrameRate": "0/1"
 	        }
 	      ],
-	      "Chapters": [],
 	      "Type": "H264Video"
 	    },
 	    {
@@ -806,7 +803,6 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	          <MaxBitrate>1045</MaxBitrate>
 	        </H264Layer>
 	      </H264Layers>
-	      <Chapters />
 	    </H264Video>
 	    <CopyAudio />
 	  </Encoding>
@@ -888,4 +884,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

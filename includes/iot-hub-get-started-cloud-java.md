@@ -54,7 +54,7 @@
     ```
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
 
-    Device device = Device.createFromId(deviceId);
+    Device device = Device.createFromId(deviceId, null, null);
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
@@ -228,4 +228,4 @@
 [lnk-event-hubs-overview]: event-hubs-overview.md
 [lnk-processd2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

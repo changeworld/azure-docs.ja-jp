@@ -4,7 +4,7 @@
     services="sql-database"
     documentationCenter=""
     authors="carlrabeler"
-    manager="jeffreyg"
+    manager="jhubbard"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="01/25/2015"
+    ms.date="02/12/2016"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -42,11 +42,11 @@ geo レプリケーションを構成するには、次のものが必要です�
 - Azure SQL Database 論理サーバー <MyLocalServer> と SQL データベース <MyDB> - 別の地理的リージョンにレプリケートするプライマリ データベースです。
 - 複数の Azure SQL Database 論理サーバー <MySecondaryServer(n)> - geo レプリケーション セカンダリ データベースの作成先であるパートナー サーバーとなる論理サーバーです。
 - プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db\_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
-- 最新バージョンの SQL Server Management Studio - 最新バージョンの SQL Server Management Studio (SSMS) を入手するには、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx) ページに移動します。SQL Server Management Studio を使用した Azure SQL Database の論理サーバーとデータベースの管理については、「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
+- 最新バージョンの SQL Server Management Studio - 最新バージョンの SQL Server Management Studio (SSMS) を入手するには、[SQL Server Management Studio のダウンロード]( https://msdn.microsoft.com/library/mt238290.aspx) ページに移動します。SQL Server Management Studio を使用した Azure SQL Database の論理サーバーとデータベースの管理については、「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
 
 ## セカンダリ データベースの追加
 
-**ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリ データベースをパートナー サーバー上に作成できます。このステートメントは、レプリケートされるデータベースが含まれているサーバーの master データベースに対して実行します。geo レプリケートされたデータベース ("プライマリ データベース") は、レプリケートされているデータベースと同じ名前になります。また、既定では、サービス レベルがプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
+**ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリ データベースをパートナー サーバー上に作成できます。このステートメントは、レプリケートされるデータベースが含まれているサーバーの master データベースに対して実行します。geo レプリケートされたデータベース ("プライマリ データベース") は、レプリケートされているデータベースと同じ名前になります。また、既定では、サービス レベルがプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、[ALTER DATABASE (Transact-SQL)]( https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層]( https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)に関するページを参照してください。
 セカンダリ データベースが作成され、シード処理が行われると、データはプライマリ データベースから非同期にレプリケートを開始します。以下の手順では、Management Studio を使用して geo レプリケーションを構成する方法について説明します。単一データベースまたはエラスティック データベースとして、読み取り不可のセカンダリと読み取り可能なセカンダリを作成する手順について説明します。
 
 > [AZURE.NOTE]\(たとえば、geo レプリケーション リレーションシップが現在存在しているか、以前に存在していたことが原因で) 指定したパートナー サーバー上にセカンダリ データベースが存在する場合、コマンドは失敗します。
@@ -58,7 +58,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
 
- 	 > [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+ 	 > [AZURE.IMPORTANT] [最新]( https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
 
 
 2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
@@ -123,7 +123,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ## セカンダリ データベースを削除する
 
-**ALTER DATABASE** を使用して、セカンダリ データベースとそのプライマリの間のレプリケーション パートナーシップを完全に終了させることができます。このステートメントは、プライマリ データベースが存在する master データベースに対して実行されます。リレーションシップの終了後、セカンダリ データベースは通常の読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
+**ALTER DATABASE** を使用して、セカンダリ データベースとそのプライマリの間のレプリケーション パートナーシップを完全に終了させることができます。このステートメントは、プライマリ データベースが存在する master データベースに対して実行されます。リレーションシップの終了後、セカンダリ データベースは通常の読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、[ALTER DATABASE (Transact-SQL)]( https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
 
 geo レプリケートされたセカンダリを geo レプリケーション パートナーシップから削除するには、次の手順に従います。
 
@@ -149,7 +149,7 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 2. geo レプリケーション パートナーシップにおける 2 つのデータベースのロールを切り替えます。
 
-このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
+このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、[ALTER DATABASE (Transact-SQL)]( https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
 
 
 > [AZURE.NOTE] コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが表示されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンドを実行できますが、データが失われることを容認する必要があります。
@@ -195,7 +195,7 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 ## geo レプリケーションの構成と正常性を監視する
 
-監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。master データベースの **sys.dm\_geo\_replication\_links** 動的管理ビューを使用すると、Azure SQL Database 論理サーバー上の各データベースについて、既存のレプリケーション リンクすべてに関する情報が返されます。このビューでは、プライマリ データベースとセカンダリ データベースの間の各レプリケーション リンクについて 1 行表示されます。**sys.dm\_replication\_status** 動的管理ビューを使用すると、レプリケーション リンクに現在関係している Azure SQL Database ごとに行が返されます。これには、プライマリ データベースとセカンダリ データベースの両方が含まれます。特定のプライマリ データベースについて複数の連続レプリケーション リンクが存在する場合、このテーブルには、各リレーションシップについて 1 行が含まれます。このビューは、すべてのデータベース (論理 master データベースを含む) で作成されます。ただし、論理 master データベースでこのビューにクエリを実行しても、空のセットが返されます。**sys.dm\_operation\_status** 動的管理ビューを使用すると、レプリケーション リンクの状態など、すべてのデータベース操作の状態を表示できます。詳細については、[sys.geo\_replication\_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm\_geo\_replication\_link\_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx)、[sys.dm\_operation\_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx) に関するページを参照してください。
+監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。master データベースの **sys.dm\_geo\_replication\_links** 動的管理ビューを使用すると、Azure SQL Database 論理サーバー上の各データベースについて、既存のレプリケーション リンクすべてに関する情報が返されます。このビューでは、プライマリ データベースとセカンダリ データベースの間の各レプリケーション リンクについて 1 行表示されます。**sys.dm\_replication\_status** 動的管理ビューを使用すると、レプリケーション リンクに現在関係している Azure SQL Database ごとに行が返されます。これには、プライマリ データベースとセカンダリ データベースの両方が含まれます。特定のプライマリ データベースについて複数の連続レプリケーション リンクが存在する場合、このテーブルには、各リレーションシップについて 1 行が含まれます。このビューは、すべてのデータベース (論理 master データベースを含む) で作成されます。ただし、論理 master データベースでこのビューにクエリを実行しても、空のセットが返されます。**sys.dm\_operation\_status** 動的管理ビューを使用すると、レプリケーション リンクの状態など、すべてのデータベース操作の状態を表示できます。詳細については、[sys.geo\_replication\_links (Azure SQL Database)]( https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm\_geo\_replication\_link\_status (Azure SQL Database)]( https://msdn.microsoft.com/library/mt575504.aspx)、[sys.dm\_operation\_status (Azure SQL Database)]( https://msdn.microsoft.com/library/dn270022.aspx) に関するページを参照してください。
 
 geo レプリケーション パートナーシップを監視するには、次の手順に従います。
 
@@ -229,9 +229,9 @@ geo レプリケーション パートナーシップを監視するには、次
 
 ## その他のリソース
 
-- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [新しい geo レプリケーション機能に関するスポットライト]( https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/services/sql-database/)
+- [SQL Database のドキュメント]( https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/05/2016"
+    ms.date="02/14/2016"
     ms.author="micurd"/>
 
 # Azure Storage での Azure CLI の使用
@@ -33,7 +33,7 @@ Azure CLI は、Azure Platform で使用できるオープン ソース、クロ
 
 **Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。Azure の購入オプションの詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
 
-Azure サブスクリプションの詳細については、「[アカウント、サブスクリプション、管理ロールの管理](https://msdn.microsoft.com/library/azure/hh531793.aspx)」を参照してください。
+Azure サブスクリプションの詳細については、「[Azure Active Directory (Azure AD) の管理者ロールの割り当て](https://msdn.microsoft.com/library/azure/hh531793.aspx)」をご覧ください。
 
 **Microsoft Azure アカウントとサブスクリプションを作成済みである場合:**
 
@@ -94,7 +94,7 @@ Azure サブスクリプションの詳細については、「[アカウント�
 
 ### Azure サブスクリプションへの接続
 
-ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure サブスクリプションに接続する方法](../xplat-cli-install.md#how-to-connect-to-your-azure-subscription)に関するページの手順に従ってください。
+ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページの手順に従ってください。
 
 ### 新しいストレージ アカウントの作成
 
@@ -121,7 +121,7 @@ Azure Storage を使用するには、ストレージ アカウントが必要�
 
 ## BLOB を作成および管理する
 
-Azure BLOB ストレージは、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。詳細については、[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)に関するページと「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+Azure BLOB ストレージは、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」および「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ### コンテナーを作成する
 
@@ -129,11 +129,11 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
 
         azure storage container create mycontainer
 
-> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、[Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 
 ### コンテナーに BLOB をアップロードする
 
-Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、[ブロック BLOB およびページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページを参照してください。
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 BLOB をコンテナーにアップロードするには、`azure storage blob upload` を使用できます。既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。BLOB の種類を指定するには、`--blobtype` パラメーターを使用できます。
 
@@ -169,7 +169,7 @@ BLOB を削除するには、次のコマンドを使用します。
 
 ## ファイル共有を作成および管理する
 
-Azure File ストレージは、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。ファイル共有とファイル データは、Azure CLI を使用して管理できます。Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files)」または「[How to use Azure File storage with Linux (Linux で Azure File ストレージを使用する方法)](storage-how-to-use-files-linux.md)」を参照してください。
+Azure File ストレージは、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。ファイル共有とファイル データは、Azure CLI を使用して管理できます。Azure File ストレージの詳細については、「[Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)」または「[Linux で Azure File Storage を使用する方法](storage-how-to-use-files-linux.md)」を参照してください。
 
 ### ファイル共有を作成する
 
@@ -221,4 +221,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

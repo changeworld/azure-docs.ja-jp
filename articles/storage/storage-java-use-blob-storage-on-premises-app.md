@@ -14,7 +14,7 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="12/01/2015"
-	ms.author="micurd"/>
+	ms.author="rmcmurray"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
 
@@ -356,15 +356,14 @@
 - [Azure Storage SDK for Java][]
 - [Azure ストレージ クライアント SDK リファレンス][]
 - [Azure Storage REST API][]
-- [Azure のストレージ チーム ブログ][]
+- [Azure Storage チーム ブログ][]
 
-  [Azure SDK for Java のダウンロード]: http://go.microsoft.com/fwlink/?LinkID=525671
+  [Download the Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
   [方法: ストレージ アカウントを作成する]: storage-create-storage-account.md#create-a-storage-account
   [ストレージ アカウントを管理する方法]: storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys
   [Java から BLOB ストレージを使用する方法]: storage-java-how-to-use-blob-storage.md
   [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
   [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
   [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

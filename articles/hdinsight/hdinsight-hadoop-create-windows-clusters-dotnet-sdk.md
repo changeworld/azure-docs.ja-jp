@@ -138,7 +138,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 ##次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の概要](hdinsight-get-started.md) - HDInsight クラスターの使用方法について説明しています。
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 * [HDInsight][hdinsight-sdk-documentation] - HDInsight SDK について説明しています。
 
@@ -220,4 +220,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Azure における VM バックアップ インフラストラクチャの計画を立てる | Microsoft Azure"
-	description="Azure における VM バックアップ インフラストラクチャの計画を立てる際の重要な考慮事項"
+	description="Azure で仮想マシンをバックアップする計画を立てる際の重要な考慮事項"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
 	manager="jwhit"
-	editor=""/>
+	editor=""
+	keywords="VM のバックアップ, 仮想マシンのバックアップ"/>
 
 <tags
 	ms.service="backup"
@@ -13,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="02/12/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Azure における VM バックアップ インフラストラクチャの計画を立てる
-この記事では、仮想マシン (VM) バックアップ インフラストラクチャの計画を立てる際に考慮すべき重要な事柄について取り上げます。[必要な環境](backup-azure-vms-prepare.md)を準備したら、この手順を経て、[VM のバックアップ](backup-azure-vms.md)を開始することになります。Azure virtual machines について詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。
+この記事では、Azure で仮想マシンをバックアップする計画を立てる際に留意すべき重要な点について説明します。[必要な環境](backup-azure-vms-prepare.md)を準備したら、この手順を経て、[VM のバックアップ](backup-azure-vms.md)を開始することになります。Azure virtual machines について詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。
 
 ## Azure における仮想マシン バックアップの動作
 Azure Backup サービスは、スケジュールされた時刻にバックアップ ジョブを開始し、バックアップ拡張機能をトリガーして特定時点のスナップショットを作成します。このスナップショットは Volume Shadow Copy Service (VSS) と連携して作成されるため、シャットダウンせずに、仮想マシンに使用されているディスクの一貫したスナップショットを取得することができます。
@@ -120,4 +121,4 @@ Azure Backup を使用してバックアップされている Azure 仮想マシ
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [VM のバックアップに関する問題のトラブルシューティング](backup-azure-vms-troubleshoot.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

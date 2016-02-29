@@ -10,7 +10,7 @@
 <tags
    ms.service="service-fabric"
    ms.devlang="dotNet"
-   ms.topic="hero-article"
+   ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="11/25/2015"
@@ -53,7 +53,7 @@ Service Fabric アプリケーションは、サービス インスタンスの�
 
 DefaultValue 属性では、特定の環境に対して具体的なパラメーターがない場合に使用される値が指定されます。
 
->[AZURE.NOTE]すべてのサービス インスタンス パラメーターが環境ごとの構成に適しているわけではありません。上記の例で、サービスのパーティション分割構成の LowKey 値と HighKey 値は、サービスのすべてのインスタンスに対して明示的に定義されています。これは、パーティションの範囲が、環境ではなくデータ ドメインに応じて決まるからです。　　
+>[AZURE.NOTE] すべてのサービス インスタンス パラメーターが環境ごとの構成に適しているわけではありません。上記の例で、サービスのパーティション分割構成の LowKey 値と HighKey 値は、サービスのすべてのインスタンスに対して明示的に定義されています。これは、パーティションの範囲が、環境ではなくデータ ドメインに応じて決まるからです。　　
 
 
 ### 環境ごとのサービス構成の設定
@@ -81,7 +81,7 @@ DefaultValue 属性では、特定の環境に対して具体的なパラメー�
 
 このパラメーターは上記のように環境ごとに構成することができます。そのためには、アプリケーション マニフェストのパラメーター セクションでこのパラメーターを宣言し、アプリケーション パラメーター ファイルに環境固有の値を指定します。
 
->[AZURE.NOTE]サービス構成設定の場合は、キーの値を設定できる場所が 3 箇所あります。サービス構成パッケージ、アプリケーション マニフェスト、およびアプリケーション パラメーター ファイルの 3 つです。Service Fabric は常に、まずアプリケーション パラメーター ファイル (指定されている場合) から選択し、次にアプリケーション マニフェスト、最後に構成パッケージの順に選択します。
+>[AZURE.NOTE] サービス構成設定の場合は、キーの値を設定できる場所が 3 箇所あります。サービス構成パッケージ、アプリケーション マニフェスト、およびアプリケーション パラメーター ファイルの 3 つです。Service Fabric は常に、まずアプリケーション パラメーター ファイル (指定されている場合) から選択し、次にアプリケーション マニフェスト、最後に構成パッケージの順に選択します。
 
 
 ### アプリケーション パラメーター ファイル
@@ -129,4 +129,4 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

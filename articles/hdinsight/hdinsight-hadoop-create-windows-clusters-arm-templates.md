@@ -21,14 +21,14 @@
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
 
-Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
 ###前提条件:
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
 - [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-- [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater) / [Azure CLI](xplat-cli-install.md)。 
+- [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater) / [Azure CLI](../xplat-cli-install.md)。 
 
 ## ARM テンプレート
 
@@ -38,8 +38,8 @@ HDInsight クラスターと依存 Azure Storage アカウントを作成する�
 
 ARM テンプレートについて詳しくは、以下を参照してください。
 
-- [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)
+- [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
 
 
 ## PowerShell でデプロイする
@@ -102,7 +102,7 @@ ARM テンプレートについて詳しくは、以下を参照してくださ�
 
 	PowerShell スクリプトは、クラスター名とストレージ アカウント名のみを構成します。ARM テンプレートのその他の値は設定可能です。
 	
-詳細については、「[PowerShell でデプロイする](resource-group-template-deploy.md#deploy-with-powershell)」を参照してください。
+詳細については、「[PowerShell でデプロイする](../resource-group-template-deploy.md#deploy-with-powershell)」を参照してください。
 
 ## Azure CLI でのデプロイ
 
@@ -115,22 +115,22 @@ ARM テンプレートについて詳しくは、以下を参照してくださ�
 
 ## REST API でのデプロイ
 
-「[REST API でデプロイする](resource-group-template-deploy.md#deploy-with-the-rest-api)」を参照してください。
+「[REST API でデプロイする](../resource-group-template-deploy.md#deploy-with-the-rest-api)」を参照してください。
 
 ## Visual Studio でのデプロイ
 
 Visual Studio では、リソース グループ プロジェクトを作成して、それをユーザー インターフェイスから Azure にデプロイできます。プロジェクトに含めるリソースの種類を選択すると、それらのリソースがリソース マネージャー テンプレートに自動的に追加されます。プロジェクトでは、テンプレートをデプロイするための PowerShell スクリプトも提供されます。
 
-リソース グループで Visual Studio を使用する概要については、「[Visual Studio を使用した Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+Visual Studio とリソース グループの使用の概要については、「[Visual Studio を使用した Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
 ##次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用したリソースの展開](arm-template-deployment.md)」を参照してください。
-- アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください。
-- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
-- Azure リソース マネージャーのテンプレートのセクションについては、「[テンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、「[テンプレート関数](resource-group-template-functions.md)」を参照してください。
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](../virtual-machines/arm-template-deployment.md)」を参照してください。
+- アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにプロビジョニングしてデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
+- Azure リソース マネージャーのテンプレートのセクションについては、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+- Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、「[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
 
 
 ##付録 A: ARM テンプレート
@@ -444,4 +444,4 @@ Visual Studio では、リソース グループ プロジェクトを作成し�
 	  }
 	}
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

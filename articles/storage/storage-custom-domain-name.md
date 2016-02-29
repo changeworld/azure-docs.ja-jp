@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2015"
+	ms.date="02/14/2016"
 	ms.author="tamram"/>
 
 
@@ -24,7 +24,7 @@
 Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB ストレージの既定のエンドポイントは、https://<*mystorageaccount*>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 
-> [AZURE.NOTE]	このタスクの手順は、Azure ストレージ アカウントに適用されます。クラウド サービスの場合は「<a href = "/develop/net/common-tasks/custom-dns/">Azure クラウド サービスのカスタム ドメイン名の構成</a>」を、Web サイトの場合は「<a href="/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成</a>」を参照してください。
+> [AZURE.NOTE]	このタスクの手順は、Azure ストレージ アカウントに適用されます。クラウド サービスの場合は「<a href = "/develop/net/common-tasks/custom-dns/">Azure クラウド サービスのカスタム ドメイン名の構成</a>」を、Websites の場合は「<a href="/develop/net/common-tasks/custom-dns-web-site/">Azure App Service のカスタム ドメイン名の構成</a>」を参照してください。
 
 ストレージ アカウントの BLOB エンドポイントをカスタム ドメインで参照するには、2 つの方法があります。最も簡単な方法は、CNAME レコードを作成して、カスタム ドメインおよびサブドメインを BLOB エンドポイントにマッピングすることです。CNAME レコードは、ソース ドメインを目的のドメインにマッピングする DNS 機能です。この場合、ソース ドメインは、カスタム ドメインおよびサブドメインです。サブドメインは常に必要であることに注意してください。目的のドメインは、BLOB サービス エンドポイントです。
 
@@ -42,7 +42,7 @@ BLOB|**既定の URL:** http://mystorageaccount.blob.core.windows.net/mycontaine
 
 ユーザーが短時間、ドメインを使用できなくても問題ではない場合、またはカスタム ドメインが現在、アプリケーションのホストでない場合は、この手順でカスタム ドメインを登録します。
 
-カスタム ドメインが現在、ダウンタイムの発生が許容されないアプリケーションをサポートしている場合は、「<a href="#register-asverify">中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</a>」で説明している手順に従ってください。
+カスタム ドメインが現在、ダウンタイムの発生が許容されないアプリケーションをサポートしている場合は、「<a href="#register-a-custom-domain-for-your-storage-account-using-the-intermediary-asverify-subdomain">中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</a>」で説明している手順に従ってください。
 
 カスタム ドメイン名を構成するには、ドメイン レジストラーで新しい CNAME レコードを作成する必要があります。CNAME レコードによって、ドメイン名のエイリアスが指定されます。この場合、カスタム ドメインのアドレスが、ストレージ アカウントの BLOB ストレージ エンドポイントにマッピングされます。
 
@@ -114,6 +114,6 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 
 ## その他のリソース
 
--   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
+-   [Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

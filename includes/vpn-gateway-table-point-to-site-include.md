@@ -1,6 +1,8 @@
-A Point-to-Site connection can be configured in both deployment models and by using several different tools. See the table below for more information. We update this table as new articles, new deployment models and tools become available for this configuration. When an article is available, we link directly to it from the table.
+両方のデプロイ モデルで、さまざまなツールを利用し、ポイントとサイトの間の接続を構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイ モデル、ツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
 
-| **Deployment Model / Tool** | **Classic Portal** | **Azure Portal** | **PowerShell** |
+| **デプロイ モデル/ツール** | **クラシック ポータル** | **Azure ポータル** | **PowerShell** |
 |-----------------------------|--------------------|------------------|----------------|
-| **Classic**                 | [Article](../articles/vpn-gateway/vpn-gateway-point-to-site-create.md) | No   | Yes  |
-| **Resource Manager**        | No           | No    | [Article](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)   |
+| **クラシック** | [記事](../articles/vpn-gateway/vpn-gateway-point-to-site-create.md) | いいえ | あり |
+| **リソース マネージャー** | いいえ | いいえ | [記事](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) |
+
+<!---HONumber=AcomDC_0218_2016-->

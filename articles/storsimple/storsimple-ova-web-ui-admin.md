@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/22/2016"
+   ms.date="02/17/2016"
    ms.author="alkohli" />
 
 # Web UI を使用した StorSimple Virtual Array の管理 (プレビュー)
@@ -94,7 +94,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 ## デバイスのシャットダウンと再起動
 
-ローカル Web UI を使用して、仮想デバイスをシャットダウンおよび再起動できます。
+ローカル Web UI を使用して、仮想デバイスをシャットダウンおよび再起動できます。再起動する前に、ホストのボリュームや共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。これにより、データの破損の可能性を最小限にします。
 
 #### 仮想デバイスをシャットダウンするには
 
@@ -136,4 +136,4 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 [StorSimple Manager サービスを使用してデバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

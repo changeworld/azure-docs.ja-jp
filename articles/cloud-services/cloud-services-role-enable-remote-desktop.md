@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="01/19/2016" 
+ms.date="02/17/2016" 
 ms.author="saurabh"/>
 
 # Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
@@ -55,7 +55,7 @@ Azure クラシック ポータルでは、アプリケーションのデプロ�
     
     - リモート デスクトップ構成の有効期限を変更します。
 
-5. 構成の更新が完了したら、**OK** \(チェックマーク) をクリックします。
+5. 構成の更新が完了したら、**[OK]** (チェックマーク) をクリックします。
 
 
 ## ロール インスタンスへのリモート接続
@@ -93,7 +93,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 この方法を使用すると、開発時にアプリケーションのリモート デスクトップを有効にすることができます。この方法では、サービス構成ファイルに暗号化パスワードを保存する必要があり、リモート デスクトップ構成を更新した場合はアプリケーションを再デプロイする必要があります。こうした欠点を回避するには、前述のリモート デスクトップ拡張機能ベースの方法を使用してください。
 
-サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](https://msdn.microsoft.com/library/gg443832.aspx)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
+サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](../vs-azure-tools-remote-desktop-roles.md)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
 
 ### サービス モデルでの接続をセットアップする 
 **Imports** 要素を使用して、[ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) ファイルに **RemoteAccess** モジュール と **RemoteForwarder** モジュールをインポートします。
@@ -121,7 +121,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
     </WebRole>
 </ServiceDefinition>
 ```
-[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
+[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](../cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -145,6 +145,6 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 ## その他のリソース
 
-[クラウド サービスの構成方法](cloud-services-how-to-configure.md)
+[Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

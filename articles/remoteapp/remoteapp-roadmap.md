@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="01/19/2016"
+    ms.date="02/16/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
@@ -27,6 +27,7 @@
 |Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/))| ○| |
 |Azure RemoteApp の HTML5 ベースのクライアント|○ ||
 |Azure リソース マネージャー (ARM) のサポート||○|
+|Azure v2 リソースのサポート| |○|
 |Cloud Solution Provider (CSP)||○|
 |インド リージョンでの可用性|○||
 |英国リージョンでの可用性||○|
@@ -46,4 +47,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/18/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 # ARM テンプレートを使用したインターネットに接続するロード バランサーの作成の開始
@@ -38,9 +38,9 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-2. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroup** コマンドレットを実行します。
+2. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroupDeployment** コマンドレットを実行します。
 
-		New-AzureRmResourceGroup -Name TestRG -Location uswest `
+		New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
 		    -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'	
 
@@ -70,4 +70,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

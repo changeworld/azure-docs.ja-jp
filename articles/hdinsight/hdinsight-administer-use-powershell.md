@@ -68,7 +68,7 @@ WebPI は月次の更新プログラムを受け取ります。PowerShell ギャ
 
 HDInsight クラスターを使用するには、Azure ストレージ アカウントに Azure リソース グループと BLOB コンテナーが必要です。
 
-- Azure リソース グループは、Azure リソース用の論理的なコンテナーです。Azure リソース グループと HDInsight クラスターを同じ場所にする必要はありません。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+- Azure リソース グループは、Azure リソース用の論理的なコンテナーです。Azure リソース グループと HDInsight クラスターを同じ場所にする必要はありません。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 - HDInsight は、Azure ストレージ アカウントの BLOB コンテナーを既定のファイル システムとして使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントとストレージ コンテナーが必要です。既定のストレージ アカウントと HDInsight クラスターは、同じ場所に存在する必要があります。
 
 [AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
@@ -94,7 +94,7 @@ HDInsight クラスターを使用するには、Azure ストレージ アカウ
 [AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
 
 
-Azure ポータルを使用した Azure ストレージ アカウントの作成については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。
+Azure ポータルを使用した Azure ストレージ アカウントの作成については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -103,7 +103,7 @@ Azure ポータルを使用した Azure ストレージ アカウントの作成
 	# List the keys for a Storage account
 	Get-AzureRmStorageAccountKey -ResourceGroupName <Azure Resource Group Name> -name $storageAccountName <Azure Storage Account Name>
 
-ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
+ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
 
 **Azure Storage コンテナーを作成するには**
 
@@ -313,14 +313,14 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-provision-custom-options]: hdinsight-provision-clusters.md#configuration
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -328,8 +328,8 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

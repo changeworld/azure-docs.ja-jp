@@ -341,13 +341,13 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 ###HBase クラスター
 
-* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-stared-linux.md)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
 * [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
 
 ###Storm クラスター
 
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python.md)
+* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
 ###Spark クラスター
@@ -358,4 +358,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

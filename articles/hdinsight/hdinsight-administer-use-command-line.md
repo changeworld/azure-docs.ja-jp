@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure コマンド ライン インターフェイス](xplat-cli-install.md)を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
+[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
 この記事では、HDInsight での Azure CLI の使用についてのみ説明します。Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストールと構成][azure-command-line-tools]」を参照してください。
 
@@ -99,11 +99,11 @@ Hadoop クラスターのサイズを変更するには:
 
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

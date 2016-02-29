@@ -21,7 +21,7 @@
 
 ## 概要
 
-この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[Azure Storage iOS ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。また、[サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample)をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
+この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。また、[サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample)をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -88,7 +88,7 @@ iOS アプリケーションの場合、BLOB ストレージに対するクラ�
 
 次の例では、2015 年 9 月 5 日の午前 0 時 00 分 (UTC) を有効期限としてコンテナー *sascontainer* に対する読み取りおよび書き込みのアクセス許可を付与する SAS トークンを Azure CLI を使用して生成する方法を示します。
 
-1. まず、この[ガイド](../xplat-cli/#how-to-install-the-azure-cli)に従い、Azure CLI をインストールして Azure サブスクリプションに接続する方法を確認します。
+1. まず、Azure CLI をインストールして Azure サブスクリプションに接続する方法を説明する「[Azure CLI のインストール](../xplat-cli-install.md)」を参照してください。
 
 2. 次に、Azure CLI で次のコマンドを入力し、アカウントの接続文字列を取得します。
 
@@ -111,7 +111,7 @@ iOS アプリケーションの場合、BLOB ストレージに対するクラ�
 		// Get a reference to a container in your Storage account
     	AZSCloudBlobContainer *blobContainer = [[AZSCloudBlobContainer alloc] initWithUrl:[NSURL URLWithString:@" your SAS URL"]];
 
-ご覧のように、SAS トークンを使用する場合、iOS アプリケーションでアカウント名とアカウント キーを公開することはありません。SAS の詳細については、[Shared Access Signature のチュートリアル](../storage-dotnet-shared-access-signature-part-1)を参照してください。
+ご覧のように、SAS トークンを使用する場合、iOS アプリケーションでアカウント名とアカウント キーを公開することはありません。SAS の詳細については、「[Shared Access Signature: SAS モデルについて](../storage-dotnet-shared-access-signature-part-1)」を参照してください。
 
 ##非同期操作
 > [AZURE.NOTE] サービスに対して要求を実行するメソッドは、すべてが非同期操作です。コード サンプルでは、このようなメソッドに完了ハンドラーが含まれていることがわかります。完了ハンドラーの中のコードは、要求が完了した**後に**実行されます。完了ハンドラーの後のコードは、要求が行われている**間に**実行されます。
@@ -348,15 +348,11 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先をご覧ください。
 
-- [Azure Storage iOS ライブラリ]
-- [Azure Storage REST API]
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
-- [Azure Storage チーム ブログ]
+- [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/azure/azure-storage-ios)
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
+- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage)
 
 このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 
-[Azure Storage iOS ライブラリ]: https://github.com/azure/azure-storage-ios
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

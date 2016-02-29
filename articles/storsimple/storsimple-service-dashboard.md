@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/02/2015"
+   ms.date="02/01/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスのダッシュボードを使用する
@@ -22,8 +22,6 @@
 StorSimple Manager サービスのダッシュボード ページには、StorSimple Manager サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とする内容は、強調表示されます。このチュートリアルでは、ダッシュボード ページを紹介してから、ダッシュボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
 
 ![サービスのダッシュボード](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
-
-**図 1: StorSimple Manager サービスのダッシュボード**
 
 StorSimple Manager サービスのダッシュボードには、次の情報が表示されます。
 
@@ -70,7 +68,7 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 ## 操作ログの表示
 
-操作ログを表示するには、ダッシュボードの **[概要]** ウィンドウにある操作ログ リンクをクリックします。これにより、管理サービス ページが表示されます。このページでは、フィルター機能を使用して、特定の StorSimple Manager サービスに限定したログを表示することができます。
+操作ログを表示するには、ダッシュ ボードの **[概要]** ウィンドウにある操作ログ リンクをクリックします。これにより、管理サービス ページが表示されます。このページでは、フィルター機能を使用して、特定の StorSimple Manager サービスに限定したログを表示することができます。
 
 ## 次のステップ
 
@@ -78,4 +76,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

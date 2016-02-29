@@ -1,5 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Azure" description="Azure Active Directory で Zscaler ZSCloud を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Azure"
+    description="Azure Active Directory で Zscaler ZSCloud を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" 
@@ -81,9 +82,9 @@
 
 3.  **[アプリの URL を構成する]** ページの **[ZScaler ZSCloud サインオン URL]** テキスト ボックスに、ユーザーが ZScaler ZSCloud アプリケーションのサインオンに使用する URL を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800280.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800280.png "アプリケーション URL の構成")
 
-    >[AZURE.NOTE]ご使用の環境の実際の値は、ZScaler ZSCloud サポート チームから入手できます。
+    >[AZURE.NOTE] ご使用の環境の実際の値は、ZScaler ZSCloud サポート チームから入手できます。
 
 4.  **[ZScaler ZSCloud でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
@@ -93,7 +94,7 @@
 
 6.  上部のメニューで **[管理]** をクリックします。
 
-    ![管理](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800206.png "管理")
+    ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800206.png "管理")
 
 7.  **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。
 
@@ -181,7 +182,7 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
     1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
     2.  **[保存]** をクリックします。
 
->[AZURE.NOTE]ZScaler ZSCloud から提供されている他の ZScaler ZSCloud ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] ZScaler ZSCloud から提供されている他の ZScaler ZSCloud ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -201,4 +202,4 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

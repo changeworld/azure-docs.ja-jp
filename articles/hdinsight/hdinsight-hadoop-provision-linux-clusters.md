@@ -24,7 +24,7 @@
 
 このドキュメントでは、クラスターで使用できるオプションの構成に加え、Azure で Linux ベースの HDInsight クラスターを作成するさまざまな方法を学習します。HDInsight は、Azure クラウド プラットフォーム上のサービスとして Apache Hadoop、Apache Storm、および Apache HBase を提供します。
 
-> [AZURE.NOTE] このドキュメントでは、クラスターを作成するさまざまな手順を示します。クラスターをすばやく作成する方法を調べる場合は、[Azure HDInsight (Linux) の概要](../hdinsight-hadoop-linux-get-started.md)に関する記述を参照してください。
+> [AZURE.NOTE] このドキュメントでは、クラスターを作成するさまざまな手順を示します。クラスターをすばやく作成する方法を調べる場合は、[Azure HDInsight (Linux) の概要](hdinsight-hadoop-linux-tutorial-get-started.md)に関する記述を参照してください。
 
 ## HDInsight クラスターについて
 
@@ -69,7 +69,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 ###HDInsight 用 Azure Storage
 
-各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。
+各クラスターの種類には、クラスターに関連付けられている 1 つ以上の Azure Storage アカウントもあります。HDInsight は、クラスターのデータ ストアとして、これらのストレージ アカウントの Azure BLOB を使用します。データをクラスターから分離しておくことで、使用されていないクラスターを削除した場合でもデータを引き続き保持できます。したがって、さらに分析が必要な場合に、新しいクラスターでも同じストレージ アカウントを使用できます。詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
 
 ## <a id="configuration"></a>基本的な構成オプション
 
@@ -103,7 +103,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 - **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**: Hadoop クラスターで実行される Windows ベースのサービスとテクノロジを統合する必要がある場合や、既存の Windows ベースの Hadoop ディストリビューションから移行する場合は、このオプションを選択します。
 
-- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを選択します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-get-started.md)」をご覧ください。
+- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを選択します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
 > [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースのクラスターに固有の情報については、[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関する記述を参照してください。
 
@@ -113,7 +113,7 @@ HDInsight 用 Spark クラスターには、ヘッド ノード (2 ノード) - 
 
 ###リソース グループ
 
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
 ###資格情報
 
@@ -192,7 +192,7 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 メタストアには、Hive テーブル、パーティション、スキーマ、列に関する情報などの Hive と Oozie メタデータが含まれます。メタストアを使用すると Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。
 
-メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
+メタストアの構成オプションを使用すると、SQL Database を使用して外部のメタストアを指定することができます。これにより、クラスターを削除するときに、データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database を作成する](../sql-database/sql-database-get-started.md)」をご覧ください。
 
 > [AZURE.NOTE] HBase のクラスターの種類では、メタストア構成は使用できません。
 
@@ -206,7 +206,7 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 場合によっては、クラスターへのストレージの追加が必要になることがあります。たとえば、異なる地理的リージョンまたは異なるサービスの複数の Azure Storage アカウントがあるが、それらをすべて HDInsight で分析する必要がある場合などです。
 
-従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」をご覧ください。
+従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。
 
 ##<a id="nextsteps"></a><a id="options"></a>作成方法
 
@@ -221,24 +221,24 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 
 
-[hdinsight-use-mapreduce]: ../hdinsight-use-mapreduce/
-[hdinsight-use-hive]: ../hdinsight-use-hive/
-[hdinsight-use-pig]: ../hdinsight-use-pig/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
+[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
+[hdinsight-use-hive]: hdinsight-use-hive.md
+[hdinsight-use-pig]: hdinsight-use-pig.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 
 
-[hdinsight-customize-cluster]: ../hdinsight-hadoop-customize-cluster/
-[hdinsight-get-started]: ../hdinsight-get-started/
-[hdinsight-admin-powershell]: ../hdinsight-administer-use-powershell/
+[hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
+[hdinsight-get-started]: hdinsight-get-started.md
+[hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
-[hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
+[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 
 [azure-management-portal]: https://manage.windowsazure.com/
 
 [azure-command-line-tools]: ../xplat-cli/
-[azure-create-storageaccount]: ../storage-create-storage-account/
+[azure-create-storageaccount]: ../storage/storage-create-storage-account.md
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
@@ -268,4 +268,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

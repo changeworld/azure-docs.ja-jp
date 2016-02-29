@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # パスワード管理のしくみ
@@ -47,7 +47,7 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 - パスワード ライトバック エージェントの状態を表示する (AAD Connect を使用してパスワード ライトバックがデプロイされている場合)
 - パスワードがリセットされた場合のユーザーへの電子メール通知を有効化する ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクションで確認できる)
 - 管理者のパスワードを他の管理者がリセットした場合の管理者への電子メール通知を有効化する ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**通知**] セクション)
-- テナント ブランド化のカスタマイズ機能 ([Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の [**ディレクトリのプロパティ**] セクション) を使用して、ユーザー パスワードのリセット ポータルとパスワード リセットの電子メールを組織のロゴおよび名前によりブランド化する
+- テナント ブランド化のカスタマイズ機能 ([Azure 管理ポータル](https://manage.windowsazure.com)の [**ディレクトリのプロパティ**] セクション) を使用して、ユーザー パスワードのリセット ポータルとパスワード リセットの電子メールを組織のロゴおよび名前によりブランド化する
 
 組織内のパスワード管理を構成する方法の詳細については、[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
@@ -121,4 +121,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

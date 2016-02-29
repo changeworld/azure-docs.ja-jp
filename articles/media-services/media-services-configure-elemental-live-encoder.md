@@ -3,7 +3,7 @@
 	description="このトピックでは、Elemental Live エンコーダーを構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako,cenkdin,anilmur" 
+	authors="cenkdin" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
-	ms.author="juliako"/>
+	ms.date="02/17/2016"
+	ms.author="cenkdin;anilmur;juliako"/>
 
 #Elemental Live エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 
@@ -60,11 +60,11 @@
 
 3. **[チャネルの作成]** をクリックします。![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
->[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp)ことができます。
 
->[AZURE.IMPORTANT]チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 
 ###<a id=configure_elemental_rtp></a>Elemental Live エンコーダーを構成する 
 
@@ -95,7 +95,7 @@
 	
 	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
 	
-	>[AZURE.NOTE]ストリームのエラー時にエンコーダーが再接続できるように、Elemental のイベントのタイムコードを [システム クロック] に設定することをお勧めします。
+	>[AZURE.NOTE] ストリームのエラー時にエンコーダーが再接続できるように、Elemental のイベントのタイムコードを [システム クロック] に設定することをお勧めします。
 
 4. 出力が作成されたので、**[ストリームの追加]** をクリックします。これで、出力の設定が構成されました。
 5. 作成した "Stream 1" まで下にスクロールし、左の **[ビデオ]** タブをクリックして、**[詳細]** 設定セクションを展開します。 
@@ -129,7 +129,7 @@
 	
 7. **[作成]** (新しいイベントが作成された場合) または **[更新]** (既存のイベントを編集する場合) をクリックして、エンコーダーの開始に進みます。
 
->[AZURE.IMPORTANT]Elemental Live Web インターフェイスの **[開始]** をクリックする前に、チャネルが準備可能になっていることを確認する**必要があります**。また、15 分を超えるイベントがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] Elemental Live Web インターフェイスの **[開始]** をクリックする前に、チャネルが準備可能になっていることを確認する**必要があります**。また、15 分を超えるイベントがある場合を除き、チャネルを準備可能のままにしないでください。
 
 ストリームが 30 秒間実行されたら、AMSE ツールに戻り、再生をテストします。
 
@@ -173,4 +173,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/19/2015" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 
@@ -22,7 +22,7 @@
 
 現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。多要素認証はユーザーごとに有効にします。これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。アプリ パスワードによってこれが発生します。
 
->[AZURE.NOTE]Office 2013 クライアントのための最新の認証
+>[AZURE.NOTE] Office 2013 クライアントのための最新の認証
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
  
@@ -129,4 +129,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 5. **[はい]** をクリックし、削除を確定します。
 6. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0218_2016-->

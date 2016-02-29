@@ -19,7 +19,7 @@
 
 # 概要: Azure HDInsight での Apache Spark (Windows)
  
-> [AZURE.NOTE]HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark が Linux 上で提供する機能については、「[概要: Azure HDInsight での Apache Spark (Linux)](hdinsight-apache-spark-overview.md)」を参照してください。
+> [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark が Linux 上で提供する機能については、「[概要: Azure HDInsight での Apache Spark (Linux)](hdinsight-apache-spark-overview.md)」を参照してください。
 
 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。Spark 処理エンジンは、速度、使いやすさ、高度な分析用に作成されています。Spark のメモリ内の計算能力により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。また、Spark は Azure BLOB ストレージ (WASB) と互換性があるので、Azure に格納されている既存データを Spark で簡単に処理できます。
 
@@ -96,6 +96,6 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 * [Azure HDInsight の Apache Spark クラスターへのジョブのリモート送信](hdinsight-apache-spark-job-server.md)
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage/
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

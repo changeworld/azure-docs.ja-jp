@@ -35,7 +35,7 @@
 
 アプリのソース ファイルが含まれているコンピューターから次の手順を実行します。
 
-1. **Azure PowerShell** を管理者として実行します。(**[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。)
+1. **Windows PowerShell** を管理者として実行します (**[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します)。
 
 2.  サービス定義 (.csdef) ファイルおよびサービス構成 (.cscfg) ファイルを含むディレクトリに移動します。
 
@@ -115,4 +115,4 @@
 [Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

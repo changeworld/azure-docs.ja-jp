@@ -23,7 +23,7 @@
 
 HDInsight で Sqoop を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する方法について説明します。
 
-> [AZURE.NOTE]この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。
+> [AZURE.NOTE] この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。
 >
 > Linux、OS X、または Unix クライアントと Linux ベースの HDInsight サーバーを使用している場合は、「[HDInsight の Hadoop での Sqoop の使用 (SSH)](hdinsight-use-sqoop-mac-linux.md)」を参照してください。
 
@@ -41,25 +41,25 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 既存の Azure SQL Database または Microsoft SQL Server を使用する場合
 
-- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。
+- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
 
-	> [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
-	
+	> [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configue]」を参照してください。
+
 - **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
-	
+
 	> [AZURE.NOTE] HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
-	
+
 	* 仮想ネットワークを作成および構成する場合は、「[Virtual Network の構成タスク](../services/virtual-machines/)」を参照してください。
-	
+
 		* SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
-	
+
 			> [AZURE.NOTE] **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
-	
+
 		* SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
-	
+
 	* 仮想ネットワークに HDInsight クラスターをプロビジョニングする場合は、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
 
-	> [AZURE.NOTE]SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
+	> [AZURE.NOTE] SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
 	
 ##シナリオの理解
 
@@ -83,7 +83,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 このセクションの PowerShell サンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
-2. Azure リソース グループを作成します。詳細については、[Azure リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)に関するページを参照してください。
+2. Azure リソース グループを作成します。詳細については、[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 
 
 	SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
@@ -131,7 +131,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 	ソース ファイルは、tutorials/usesqoop/data/sample.log です。データのエクスポート先のテーブルは log4jlogs です。
 	
-	> [AZURE.NOTE]接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
+	> [AZURE.NOTE] 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
 	>
 	> * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
 	> * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
@@ -612,8 +612,8 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -623,9 +623,9 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-install]: ../install-configure-powershell.md
+[powershell-install]: powershell-install-configure.md
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

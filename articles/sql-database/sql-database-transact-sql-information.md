@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="02/01/2016"
+   ms.date="02/16/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database の Transact-SQL の相違点
@@ -53,7 +53,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 
 - システム オブジェクトの照合順序
 - 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMEWindows 認証はログインまたは包含データベース ユーザーには利用できません。
-- INSERT、UPDATE、DELETE 操作のデータベース間クエリ(読み取り専用のデータベース間クエリはサポートされます)。
+- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、エラスティック データベース クエリを使用してサポートされます)。
 - データベース間での所有権の継承、TRUSTWORTHY 設定
 - データ コレクター
 - データベース ダイアグラム
@@ -108,4 +108,4 @@ TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

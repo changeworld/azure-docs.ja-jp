@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/19/2015"   
+	ms.date="02/12/2015"   
 	ms.author="adsolank"/>
 
 
@@ -221,4 +221,4 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

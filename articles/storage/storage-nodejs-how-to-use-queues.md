@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/17/2016"
 	ms.author="micurd"/>
 
 
@@ -31,7 +31,7 @@
 
 ## Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -66,7 +66,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
+Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ]」を参照してください。
 
 ## 方法: キューを作成する
 
@@ -315,10 +315,10 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-  [Azure Portal]: portal.azure.com
-  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../web-sites-nodejs-develop-deploy-mac.md
-  [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-  [ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+  [Azure Portal]: https://portal.azure.com
+  [Azure App Service での Node.js Web アプリの作成]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+  [Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
 
 
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -327,8 +327,8 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 
 
-  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+  [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
+  [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

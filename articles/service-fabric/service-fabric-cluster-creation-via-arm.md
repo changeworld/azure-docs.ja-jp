@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    ms.author="chackdan"/>
 
 
@@ -52,7 +52,9 @@
 
 ## Azure PowerShell を使用してリソース マネージャー テンプレートを Azure にデプロイする
 
-PowerShell を使用してテンプレートをデプロイする詳細な手順については、「[PowerShell を使用してテンプレートをデプロイする](resource-group-template-deploy.md)」を参照してください。
+PowerShell を使用してテンプレートをデプロイする詳細な手順については、「[PowerShell を使用してテンプレートをデプロイする](../resource-group-template-deploy.md)」を参照してください。
+
+>[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
@@ -63,4 +65,4 @@ PowerShell を使用してテンプレートをデプロイする詳細な手順
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

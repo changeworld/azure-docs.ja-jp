@@ -636,7 +636,7 @@ Azure Mobile Apps SDK では、テーブル エンドポイントとカスタム
 		get: function (req, res, next) {
 			var date = { currentTime: Date.now() };
 			res.status(200).type('application/json').send(date);
-		});
+		}
 	};
 	// The GET methods must be authenticated.
 	api.get.access = 'authenticated';
@@ -671,6 +671,38 @@ Azure Mobile Apps SDK では、[body-parser ミドルウェア](https://github.c
 
 上記の 50 MB の制限は調整できます。このファイルは、送信前に Base-64 でエンコードされるため、実際のアップロードのサイズは増加します。
 
+### <a name="howto-customapi-sql"></a>方法: カスタム SQL ステートメントを実行する
+
+Azure Mobile Apps SDK では、要求オブジェクトを通じてコンテキスト全体にアクセスできるため、定義済みのデータ プロバイダーに対して、パラメーター化された SQL ステートメントを簡単に実行することができます。
+
+    var api = {
+        get: function (request, response, next) {
+            // Check for parameters - if not there, pass on to a later API call
+            if (typeof request.params.completed === 'undefined')
+                return next();
+
+            // Define the query - anything that can be handled by the mssql
+            // driver is allowed.
+            var query = {
+                sql: 'UPDATE TodoItem SET complete=@completed',
+                parameters: [{
+                    completed: request.params.completed
+                }]
+            };
+
+            // Execute the query.  The context for Azure Mobile Apps is available through
+            // request.azureMobile - the data object contains the configured data provider.
+            request.azureMobile.data.execute(query)
+            .then(function (results) {
+                response.json(results);
+            });
+        }
+    };
+
+    api.get.access = 'authenticated';
+    module.exports = api;
+
+このエンドポイントにはアクセスできます。
 ## <a name="Debugging"></a>デバッグおよびトラブルシューティング
 
 Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。これらの手法をすべて使用できます。
@@ -771,4 +803,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

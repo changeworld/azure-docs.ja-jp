@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/23/2015"
+   ms.date="02/16/2016"
    ms.author="chackdan"/>
 
 # Service Fabric クラスターのアップグレード
@@ -37,8 +37,6 @@ Microsoft は、クラスターで実行されるファブリック コードと
 インフラストラクチャに関する理由でアップグレードに失敗した場合は、同じアップグレードが数回実行されます。電子メールの送信日から n 日後に、フェーズ 2 に進みます。
 
 クラスター正常性ポリシーが満たされた場合は、アップグレードが成功したと見なされ、完了としてマークされます。このフェーズの最初のアップグレードで成功することも、何回目かの再実行で成功することもあります。実行が成功した場合、電子メールでの確認はありません。これは、送信される電子メールが多くなりすぎないようにするためです。電子メールを受信するのは、正常でないことが起きた場合だけです。クラスターのアップグレードの大半は、アプリケーションの可用性に影響することなく、成功すると思われます。
-
-クラスターのカスタム正常性ポリシーを設定する方法の詳細については、「[クラスターのアップグレードと正常性パラメーター](service-fabric-cluster-health-parameters.md)」を参照してください。
 
 ### フェーズ 2: アップグレードが、既定の正常性ポリシーだけを使用して実行される
 
@@ -76,7 +74,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ![Screen shot that shows certificate thumbprints in the Azure portal.][CertificateUpgrade]
 
->[AZURE.NOTE]クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。1. Key Vault に新しい証明書をアップロードします。手順については、[Service Fabric のセキュリティ](service-fabric-cluster-security.md)に関するページを参照してください。そのドキュメントの手順 2. から開始します。2.証明書がデプロイされるように、クラスターを構成するすべての仮想マシンを更新します。そのためには、[Azure Key Vault チームのブログ](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
+>[AZURE.NOTE] クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。1. Key Vault に新しい証明書をアップロードします。手順については、「[Service Fabric クラスターのセキュリティ保護](service-fabric-cluster-security.md)」を参照してください。そのドキュメントの手順 2. から開始します。2.証明書がデプロイされるように、クラスターを構成するすべての仮想マシンを更新します。そのためには、[Azure Key Vault チームのブログ](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
 
 ### アプリケーション ポート
 
@@ -101,7 +99,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ノードの種類ごとに、アプリケーションで使用するカスタム配置プロパティを追加できます。NodeType は、明示的に追加せずに使用できる、既定のプロパティです。
 
->[AZURE.NOTE]配置プロパティの使用方法の詳細については、「[配置の制約の概要](service-fabric-placement-constraint.md)」を参照してください。
+>[AZURE.NOTE] 配置プロパティの使用方法の詳細については、「[配置の制約の概要](service-fabric-placement-constraint.md)」を参照してください。
 
 ### 容量メトリック
 
@@ -125,4 +123,4 @@ Microsoft は、クラスターで実行されるファブリック コードと
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

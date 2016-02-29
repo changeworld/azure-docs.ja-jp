@@ -1,6 +1,6 @@
 <properties
    pageTitle="MongoDB を使用した Node.js アプリケーションのデプロイ |Microsoft Azure"
-   description="複数のアプリケーションをパッケージ化して Azure Service Fabric クラスターにデプロイする方法に関するチュートリアル"
+   description="複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric クラスターにデプロイする方法に関するチュートリアル"
    services="service-fabric"
    documentationCenter=".net"
    authors="bmscholl"
@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/17/2015"
+   ms.date="02/12/2016"
    ms.author="bscholl"/>
 
 
-# 複数のカスタム アプリケーションをデプロイする
+# 複数のゲスト実行可能ファイルのデプロイ
 
-この記事では、Service Fabric パッケージ化ツールのプレビュー バージョンを使用して、複数のアプリケーションをパッケージ化し、Azure Service Fabric にデプロイする方法について説明します。このツールは [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) で入手できます。
+この記事では、Service Fabric パッケージ化ツールのプレビュー バージョンを使用して、複数のゲスト実行可能ファイルをパッケージ化し、Azure Service Fabric にデプロイする方法について説明します。このツールは [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) で入手できます。
 
-Service Fabric のパッケージを手動で作成する方法については、[Service Fabric に既存のアプリケーションをデプロイする](service-fabric-deploy-existing-app.md)方法を確認してください。
+Service Fabric のパッケージを手動で作成する方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」方法を確認してください。
 
 このチュートリアルは、データ ストアとして MongoDB を使用する Node.js フロントエンドを使用したアプリケーションをデプロイする方法を示していますが、この手順は、別のアプリケーションへの依存関係があるすべてのアプリケーションに適用できます。
 
@@ -125,7 +125,7 @@ Service Fabric は次に示すようなコマンドを使用して MongoDB を�
 ```
 mongod.exe --dbpath [path to data]
 ```
-> [AZURE.NOTE]ノードのローカル ディレクトリに MongoDB のデータ ディレクトリを配置すると、ノードに障害が発生した場合にデータが保持されません。データ損失を防ぐには、耐久性の高いストレージを使用するか、MongoDB レプリカ セットを実装する必要があります。
+> [AZURE.NOTE] ノードのローカル ディレクトリに MongoDB のデータ ディレクトリを配置すると、ノードに障害が発生した場合にデータが保持されません。データ損失を防ぐには、耐久性の高いストレージを使用するか、MongoDB レプリカ セットを実装する必要があります。
 
 PowerShell またはコマンド シェルで、次のパラメーターを使用してパッケージ化ツールを実行します。
 
@@ -182,7 +182,7 @@ MongoDB を Service Fabric アプリケーション パッケージに追加す�
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStore' -ApplicationPackagePathInImageStore 'Store\NodeAppType'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\NodeAppType'
 
 Write-Host 'Registering application type...'
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\NodeAppType'
@@ -196,6 +196,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 ## 次のステップ
 
-- [1 つのアプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
+- [ゲスト アプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -50,7 +50,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (****wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -982,9 +982,9 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [hdinsight-introduction]: hdinsight-hadoop-introduction.md
 
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
 [hdinsight-samples]: hdinsight-run-samples.md
 [hdinsight-sample-10gb-graysort]: #hdinsight-sample-10gb-graysort
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

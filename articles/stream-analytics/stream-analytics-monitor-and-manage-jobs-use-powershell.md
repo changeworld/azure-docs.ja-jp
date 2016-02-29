@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/08/2016" 
+	ms.date="02/16/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -24,7 +24,7 @@
 
 ## Stream Analytics 用に Azure PowerShell コマンドレットを実行するための前提条件
 
- - サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
+ - サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
 
 Azure PowerShell 0.9.8:
 
@@ -458,7 +458,7 @@ Azure PowerShell 1.0:
 
 
 [msdn-switch-azuremode]: http://msdn.microsoft.com/library/dn722470.aspx
-[powershell-install]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[powershell-install]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [msdn-rest-api-create-stream-analytics-job]: https://msdn.microsoft.com/library/dn834994.aspx
 [msdn-rest-api-create-stream-analytics-input]: https://msdn.microsoft.com/library/dn835010.aspx
 [msdn-rest-api-create-stream-analytics-output]: https://msdn.microsoft.com/library/dn835015.aspx
@@ -472,4 +472,4 @@ Azure PowerShell 1.0:
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

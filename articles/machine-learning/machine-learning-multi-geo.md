@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/23/2015"
+   ms.date="02/12/2016"
    ms.author="tedway; neerajkh"/>
 
 # 複数の地理的リージョンに関するヘルプ ドキュメント
@@ -57,4 +57,4 @@
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

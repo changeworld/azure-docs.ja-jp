@@ -1,9 +1,11 @@
-A VNet-to-VNet connection can be configured in both deployment models and by using several different tools. See the table below for more information. We update this table as new articles, new deployment models and tools become available for this configuration. When an article is available, we link directly to it from the table.
+両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイ モデル、ツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
 
-| **Deployment Model / Tool**    | **Classic Portal** | **Azure Portal** | **PowerShell** |
+| **デプロイ モデル/ツール** | **クラシック ポータル** | **Azure ポータル** | **PowerShell** |
 |--------------------------------|----|------|------------|
-|**Classic**                     | No | No  |    [Article](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)     |
-|**Resource Manager**            | No | Yes+   | [Article](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)  |
-|**Classic to Resource Manager** | No | No   | [Article](../articles/virtual-network/virtual-networks-arm-asm-s2s.md) |
+|**クラシック** | いいえ | いいえ | [記事](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) |
+|**リソース マネージャー** | いいえ | はい+ | [記事](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) |
+|**クラシックからリソース マネージャーに** | いいえ | いいえ | [記事](../articles/virtual-network/virtual-networks-arm-asm-s2s.md) |
 
-"+" denotes this deployment method is available only for VNets in the same subscription.
+「+」は、このデプロイ方法が同じサブスクリプションの VNet でのみ利用できることを示します。
+
+<!---HONumber=AcomDC_0218_2016-->

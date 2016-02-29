@@ -33,7 +33,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 "expressapp" という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
 
-1. **[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します。最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
 	![Azure PowerShell アイコン](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 
@@ -45,7 +45,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 		PS C:\Node\expressapp> Add-AzureNodeWebRole
 		PS C:\Node\expressapp> Set-AzureServiceProjectRole WebRole1 Node 0.10.21
 
-	> [AZURE.NOTE]既定では、**Add-AzureNodeWebRole** は以前のバージョンの Node.js を使用します。上記の **Set-AzureServiceProjectRole** ステートメントは v0.10.21 のノードを使用するよう Azure に指示します。パラメーターには大文字と小文字の区別があることに注意してください。Node.js の正しいバージョンが選択されていることを検証できます。このためには、**WebRole1\\package.json** の **engines** プロパティを確認します。
+	> [AZURE.NOTE] 既定では、**Add-AzureNodeWebRole** は以前のバージョンの Node.js を使用します。上記の **Set-AzureServiceProjectRole** ステートメントは v0.10.21 のノードを使用するよう Azure に指示します。パラメーターには大文字と小文字の区別があることに注意してください。Node.js の正しいバージョンが選択されていることを検証できます。このためには、**WebRole1\\package.json** の **engines** プロパティを確認します。
 
 ##Express のインストール
 
@@ -138,4 +138,4 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

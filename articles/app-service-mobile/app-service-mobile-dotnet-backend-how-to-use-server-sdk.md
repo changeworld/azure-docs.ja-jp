@@ -138,7 +138,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 
-このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-site-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
+このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
 
@@ -444,4 +444,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

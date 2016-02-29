@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure クラシック ポータル)" 
+	pageTitle="チュートリアル: 出力データを SQL Server データベースにコピーする (Azure クラシック ポータル)" 
 	description="ここでは、Azure クラシック ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
 	services="data-factory" 
 	documentationCenter="" 
@@ -17,7 +17,7 @@
 	ms.author="spelluru"/>
 
 
-# チュートリアル: オンプレミスの SQL Server データベースへのキャンペーンの有効性のデータのコピー 
+# チュートリアル: 出力データをオンプレミスの SQL Server データベースにコピーする (Azure クラシック ポータル) 
 このチュートリアルでは、パイプラインがオンプレミスのデータを扱えるようにするため、その環境を設定する方法を学びます。
  
 パーティション -> 強化 -> 分析のワークフローを含む最初のチュートリアルにおいて、ログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性のアウトプットが Azure SQL データベースにコピーされました。分析のため、所属する組織内にあるオンプレミスの SQL Server にこのデータを移動することも可能です。
@@ -169,4 +169,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -3,7 +3,7 @@
 	description="BLOB、Queue、Table、および File サービスに対するストレージ メトリックを有効にする方法" 
 	services="storage" 
 	documentationCenter="" 
-	authors="tamram" 
+	authors="robinsh" 
 	manager="carmonm" 
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
-	ms.author="tamram"/>
+	ms.date="02/14/2016" 
+	ms.author="robinsh"/>
 
 # Azure のストレージ メトリックの有効化とメトリック データの表示
 
@@ -58,7 +58,7 @@
 
 `Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob`
 
-Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」をご覧ください。
+Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 ## プログラムを利用してストレージ メトリックを有効にする方法
 
@@ -204,4 +204,4 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 [ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

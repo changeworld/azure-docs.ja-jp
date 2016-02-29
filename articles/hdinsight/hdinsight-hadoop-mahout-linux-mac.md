@@ -17,7 +17,7 @@
 	ms.date="01/28/2016"
 	ms.author="larryfr"/>
 
-#HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成 (プレビュー)
+#HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成
 
 [AZURE.INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -25,7 +25,7 @@
 
 Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです。Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
 
-> [AZURE.NOTE] このドキュメントの手順には、HDInsight クラスターの Linux ベースの Hadoop が必要です (プレビュー)。Windows ベースのクラスターで Mahout を使用する方法の詳細については、「[HDInsight で Apache Mahout と Windows ベースの Hadoop を使用した映画のリコメンデーションの生成](hdinsight-mahout.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの手順には、HDInsight クラスターの Linux ベースの Hadoop が必要です。Windows ベースのクラスターで Mahout を使用する方法の詳細については、「[HDInsight で Apache Mahout と Windows ベースの Hadoop を使用した映画のリコメンデーションの生成](hdinsight-mahout.md)」を参照してください。
 
 ##前提条件
 
@@ -267,4 +267,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0218_2016-->

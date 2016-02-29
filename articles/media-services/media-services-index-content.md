@@ -3,7 +3,7 @@
 	description="Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。このトピックでは、Media Indexer の使用方法について説明します。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,Asolanki,johndeu"
+	authors="Asolanki"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/15/2015"   
-	ms.author="juliako"/>
+	ms.date="02/17/2016"   
+	ms.author="juliako;adsolank;johndeu"/>
 
 
 # Azure Media Indexer によるメディア ファイルのインデックス作成
@@ -301,4 +301,4 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

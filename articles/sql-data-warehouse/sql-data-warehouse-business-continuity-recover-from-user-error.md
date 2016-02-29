@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="02/17/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
@@ -25,8 +25,10 @@ SQL Data Warehouse には、意図しないデータの破損または削除の�
 
 これらの機能はいずれも、同じサーバー上の新しいデータベースに復元を実行します。
 
+SQL Data Warehouse データベースの復元をサポートする API には、Azure PowerShell と REST API の 2 種類があります。いずれかを使用して、SQL Data Warehouse の復元機能にアクセスすることができます。
+
 ## ライブ データベースの復元
-ユーザー エラーが意図しないデータ変更の原因になっている場合は、保有期間内の復元ポイントのいずれかにデータベースを復元できます。ライブ データベースのデータベース スナップショットは 8 時間ごとに作成され、7 日間保持されます。
+ユーザー エラーが意図しないデータ変更の原因になっている場合は、保有期間内の復元ポイントのいずれかにデータベースを復元できます。ライブ データベースのデータベース スナップショットは少なくとも 8 時間ごとに作成され、7 日間保持されます。
 
 ### PowerShell
 
@@ -136,4 +138,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/03/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 # Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
@@ -27,7 +27,7 @@ Azure を使用して、Azure Data Lake Analytics のアカウント、データ
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure CLI**。「[Azure CLI のインストールと構成](xplat-cli.md)」をご覧ください。
+- **Azure CLI**。「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
 	- このデモを完了するためには、**プレリリース版の ** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 - **認証**。次のコマンドを使用します。
 
@@ -85,8 +85,8 @@ Data Lake Analytics アカウントを一覧表示します。
 
 Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
-- [Azure Data Lake Storage](data-lake-storage-overview.md)
-- [Azure Storage](storage-introduction.md)
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+- [Azure Storage](../storage/storage-introduction.md)
 
 Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Storage アカウントを指定する必要があります。既定の ADL ストレージ アカウントは、ジョブ メタデータとジョブ監査ログを保存するために使用されます。Analytics アカウントを作成したら、さらに Data Lake Storage アカウントや Azure Storage アカウントを追加することができます。
 
@@ -100,7 +100,7 @@ Analytics アカウントを作成する際には、既定のストレージ ア
 
   	azure datalake analytics account datasource add -n "<Data Lake Analytics Account Name>" -b "<Azure Blob Storage Account Short Name>" -k "<Azure Storage Account Key>"
 
->[AZURE.NOTE]BLOB ストレージの短い名のみがサポートされます。"myblob.blob.core.windows.net" などの FQDN 名は使用しないでください。
+>[AZURE.NOTE] BLOB ストレージの短い名のみがサポートされます。"myblob.blob.core.windows.net" などの FQDN 名は使用しないでください。
 
 ### 他の Data Lake Store アカウントの追加
 
@@ -150,7 +150,7 @@ BLOB ストレージ アカウントを削除するには:
 	
 ### ジョブの送信
 
-> [AZURE.NOTE]ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
+> [AZURE.NOTE] ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
 
 	azure datalake analytics job create  "<Data Lake Analytics Account Name>" "<Job Name>" "<Script>"
 
@@ -191,7 +191,7 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 <!-- ################################ -->
 ## ARM グループの使用
 
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
 Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
 
@@ -211,7 +211,7 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 - [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

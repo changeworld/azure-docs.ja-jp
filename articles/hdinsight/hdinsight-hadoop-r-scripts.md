@@ -22,7 +22,7 @@
 
 Script Action を使用して Windows ベースの HDInsight クラスターを R でカスタマイズする方法と、HDInsight クラスターで R を使用する方法について説明します。Linux ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
  
-Script Action を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に R をインストールできます。HDInsight クラスターに R をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。
+*Script Action* を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に R をインストールできます。HDInsight クラスターに R をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。
 
 **関連記事:**
 
@@ -41,7 +41,7 @@ R は Azure BLOB Storage (WASB) と互換性があるので、そこに格納さ
 
 HDInsight クラスターで R をインストールする[サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)は、Azure Storage の読み取り専用 BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
 1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
@@ -108,9 +108,9 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 - [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
 - [HDInsight クラスターに Solr をインストールし、使用する](hdinsight-hadoop-solr-install-linux.md): Solr のインストールに関する Script Action サンプル。
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/21/2016"
+   ms.date="02/17/2016"
    ms.author="barbkess;sonyama"/>
 
 # システム ビュー
@@ -29,7 +29,6 @@
 - [sys.pdw\_index\_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
 - [sys.pdw\_loader\_backup\_run\_details](http://msdn.microsoft.com/library/mt203877.aspx)
 - [sys.pdw\_loader\_backup\_runs](http://msdn.microsoft.com/library/mt203884.aspx)
-- [sys.pdw\_loader\_run\_stages](http://msdn.microsoft.com/library/mt203879.aspx)
 - [sys.pdw\_nodes\_column\_store\_dictionaries](http://msdn.microsoft.com/library/mt203902.aspx)
 - [sys.pdw\_nodes\_column\_store\_row\_groups](http://msdn.microsoft.com/library/mt203880.aspx)
 - [sys.pdw\_nodes\_column\_store\_segments](http://msdn.microsoft.com/library/mt203916.aspx)
@@ -41,20 +40,6 @@
 - [sys.pdw\_table\_distribution\_properties](http://msdn.microsoft.com/library/mt203896.aspx)
 - [sys.pdw\_table\_mappings](http://msdn.microsoft.com/library/mt203876.aspx)
 
-## SQL Database カタログ ビュー
-
-- [dbo.server\_quotas (Azure SQL Database)](http://msdn.microsoft.com/library/dn308512.aspx)
-- [sys.bandwidth\_usage (Azure SQL Database)](http://msdn.microsoft.com/library/dn269985.aspx)
-- [sys.database\_connection\_stats (Azure SQL Database)](http://msdn.microsoft.com/library/dn269986.aspx)
-- [sys.database\_firewall\_rules (Azure SQL Database)](http://msdn.microsoft.com/library/dn269982.aspx)
-- [sys.database\_usage (Azure SQL Database)](https://msdn.microsoft.com/library/dn270020.aspx)
-- [sys.event\_log (Azure SQL Database)](http://msdn.microsoft.com/library/dn270018.aspx)
-- [sys.database\_firewall\_rules (Azure SQL Database)](http://msdn.microsoft.com/library/dn269982.aspx)
-- [sys.firewall\_rules (Azure SQL Database)](https://msdn.microsoft.com/library/dn269980.aspx)
-- [sys.resource\_stats (Azure SQL Database)](http://msdn.microsoft.com/library/dn269979.aspx)
-- [sys.resource\_usage (Azure SQL Database)](https://msdn.microsoft.com/library/dn270016.aspx)
-
-
 ## SQL Data Warehouse 動的管理ビュー (DMV)
 
 - [sys.dm\_pdw\_diag\_processing\_stats](http://msdn.microsoft.com/library/mt203914.aspx)
@@ -64,15 +49,9 @@
 - [sys.dm\_pdw\_exec\_connections](http://msdn.microsoft.com/library/mt203882.aspx)
 - [sys.dm\_pdw\_exec\_requests](http://msdn.microsoft.com/library/mt203887.aspx)
 - [sys.dm\_pdw\_exec\_sessions](http://msdn.microsoft.com/library/mt203883.aspx)
-- [sys.dm\_pdw\_network\_credentials](http://msdn.microsoft.com/library/mt203915.aspx)
 - [sys.dm\_pdw\_nodes](http://msdn.microsoft.com/library/mt203907.aspx)
 - [sys.dm\_pdw\_nodes\_database\_encryption\_keys](http://msdn.microsoft.com/library/mt203922.aspx)
-- [sys.dm\_pdw\_node\_status](http://msdn.microsoft.com/library/mt203905.aspx)
-- [sys.dm\_pdw\_os\_event\_logs](http://msdn.microsoft.com/library/mt203910.aspx)
-- [sys.dm\_pdw\_or\_performance\_counters](http://msdn.microsoft.com/library/mt203875.aspx)
 - [sys.dm\_pdw\_os\_threads](http://msdn.microsoft.com/library/mt203917.aspx)
-- [sys.dm\_pdw\_query\_stats\_xe](http://msdn.microsoft.com/library/mt203898.aspx)
-- [sys.dm\_pdw\_query\_stats\_xe\_file](http://msdn.microsoft.com/library/mt203919.aspx)
 - [sys.dm\_pdw\_request\_steps](http://msdn.microsoft.com/library/mt203913.aspx)
 - [sys.dm\_pdw\_resource\_waits](http://msdn.microsoft.com/library/mt203906.aspx)
 - [sys.dm\_pdw\_sql\_requests](http://msdn.microsoft.com/library/mt203889.aspx)
@@ -102,7 +81,7 @@
 - [sys.databases](http://msdn.microsoft.com/library/ms178534.aspx)
 - [sys.default\_constraints](http://msdn.microsoft.com/library/ms173758.aspx)
 - [sys.extended\_properties](http://msdn.microsoft.com/library/ms177541.aspx)
-- [sys.external\_file formats](http://msdn.microsoft.com/library/dn935025.aspx)
+- [sys.external\_file\_formats](http://msdn.microsoft.com/library/dn935025.aspx)
 - [sys.external\_tables](http://msdn.microsoft.com/library/dn935029.aspx)
 - [sys.external\_data\_sources](http://msdn.microsoft.com/library/dn935019.aspx)
 - [sys.filegroups](http://msdn.microsoft.com/library/ms187782.aspx)
@@ -111,7 +90,6 @@
 - [sys.index\_columns](http://msdn.microsoft.com/library/ms175105.aspx)
 - [sys.indexes](http://msdn.microsoft.com/library/ms173760.aspx)
 - [sys.key\_constraints](http://msdn.microsoft.com/library/ms174321.aspx)
-- [sys.master\_files](http://msdn.microsoft.com/library/ms186782.aspx)
 - [sys.numbered\_procedures](http://msdn.microsoft.com/library/ms179865.aspx)
 - [sys.objects](http://msdn.microsoft.com/library/ms190324.aspx)
 - [sys.partition\_functions](http://msdn.microsoft.com/library/ms187381.aspx)
@@ -123,11 +101,7 @@
 - [sys.procedures](http://msdn.microsoft.com/library/ms188737.aspx)
 - [sys.schemas](http://msdn.microsoft.com/library/ms176011.aspx)
 - [sys.securable\_classes](http://msdn.microsoft.com/library/ms408301.aspx)
-- [sys.server\_role\_members](http://msdn.microsoft.com/library/ms190331.aspx)
-- [sys.server\_permissions](http://msdn.microsoft.com/library/ms186260.aspx)
-- [sys.server\_principals](http://msdn.microsoft.com/library/ms188786.aspx)
 - [sys.sql\_expression\_dependencies](http://msdn.microsoft.com/library/bb677315.aspx)
-- [sys.sql\_logins](http://msdn.microsoft.com/ms174355.aspx)
 - [sys.sql\_modules](http://msdn.microsoft.com/library/ms175081.aspx)
 - [sys.stats](http://msdn.microsoft.com/library/ms177623.aspx)
 - [sys.stats\_columns](http://msdn.microsoft.com/library/ms187340.aspx)
@@ -168,7 +142,6 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 | sys.dm\_pdw\_nodes\_exec\_query\_stats | [sys.dm\_exec\_query\_stats (Transact-SQL)](http://msdn.microsoft.com/library/ms189741.aspx) |
 | sys.dm\_pdw\_nodes\_exec\_requests | [sys.dm\_exec\_requests (Transact-SQL)](http://msdn.microsoft.com/library/ms177648.aspx) |
 | sys.dm\_pdw\_nodes\_exec\_sessions | [sys.dm\_exec\_sessions (Transact-SQL)](https://msdn.microsoft.com/ja-JP/library/ms176013.aspx) |
-| sys.dm\_pdw\_nodes\_io\_cluster\_shared\_drives | [sys.dm\_io\_cluster\_shared\_drives (Transact-SQL)](http://msdn.microsoft.com/library/ms188930.aspx) |
 | sys.dm\_pdw\_nodes\_io\_pending\_io\_requests | [sys.dm\_io\_pending\_io\_requests (Transact-SQL)](http://msdn.microsoft.com/library/ms188762.aspx) |
 | sys.dm\_pdw\_nodes\_os\_buffer\_descriptors | [sys.dm\_os\_buffer\_descriptors (Transact-SQL)](http://msdn.microsoft.com/library/ms173442.aspx) |
 | sys.dm\_pdw\_nodes\_os\_child\_instances | [sys.dm\_os\_child\_instances (Transact-SQL)](http://msdn.microsoft.com/library/ms165698.aspx) |
@@ -177,7 +150,6 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 | sys.dm\_pdw\_nodes\_os\_dispatchers | Transact-SQL のドキュメントはありません。 |
 | sys.dm\_pdw\_nodes\_os\_hosts | [sys.dm\_os\_hosts (Transact-SQL)](http://msdn.microsoft.com/library/ms187800.aspx) |
 | sys.dm\_pdw\_nodes\_os\_latch\_stats | [sys.dm\_os\_latch\_stats (Transact-SQL)](http://msdn.microsoft.com/library/ms175066.aspx) |
-| sys.dm\_pdw\_nodes\_os\_loaded\_modules | [sys.dm\_os\_loaded\_modules (Transact-SQL)](http://msdn.microsoft.com/library/ms179907.aspx) |
 | sys.dm\_pdw\_nodes\_os\_memory\_brokers | [sys.dm\_os\_memory\_brokers (Transact-SQL)](http://msdn.microsoft.com/library/bb522548.aspx) |
 | sys.dm\_pdw\_nodes\_os\_memory\_cache\_clock\_hands | [sys.dm\_os\_memory\_cache\_clock\_hands (Transact-SQL)](http://msdn.microsoft.com/library/ms173786.aspx) |
 | sys.dm\_pdw\_nodes\_os\_memory\_cache\_counters | [sys.dm\_os\_memory\_cache\_counters (Transact-SQL)](http://msdn.microsoft.com/library/ms188760.aspx) |
@@ -223,16 +195,6 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 - [sys.dm\_exec\_external\_operations (Transact-SQL)](https://msdn.microsoft.com/library/mt146391.aspx)
 - [sys.dm\_exec\_external\_work (Transact-SQL)](https://msdn.microsoft.com/library/mt146375.aspx)
 
-## SQL Data Warehouse で使用可能な SQL Database DMV
-
-- [sys.dm\_continuous\_copy\_status](https://msdn.microsoft.com/library/dn467642.aspx)
-- [sys.dm\_database\_copies](https://msdn.microsoft.com/library/dn270023.aspx)
-- [sys.dm\_db\_objects\_impacted\_on\_version\_change](https://msdn.microsoft.com/library/dn270019.aspx)
-- [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx)
-- [sys.dm\_db\_wait\_stats](https://msdn.microsoft.com/library/dn269834.aspx)
-- [sys.dm\_operation\_status](https://msdn.microsoft.com/library/dn270022.aspx)
-
-
 ## SQL Server information\_schema ビュー
 
 これらは、SQL Server PDW で使用できる SQL Server 情報スキーマ ビューへのリンクです。SQL Server で予期されるすべての INFORMATION\_SCHEMA ビューを SQL Server PDW で使用できます。
@@ -270,4 +232,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

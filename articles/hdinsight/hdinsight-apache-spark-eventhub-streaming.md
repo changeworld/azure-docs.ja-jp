@@ -35,7 +35,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 - Oracle Java Development kit。[ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 - Java IDE。この記事では、IntelliJ IDEA 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 - Microsoft JDBC Driver for SQL Server (v4.1 以降)。SQL Server データベースにイベント データを書き込むために必要です。[ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からインストールできます。
-- Azure SQL Database。手順については、「[SQL データベースを分単位で作成する](sql-database/sql-database-get-started.md)」を参照してください。
+- Azure SQL Database。手順については、「[SQL データベースを分単位で作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
 ## このソリューションの内容
 
@@ -64,12 +64,10 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 4. 作成した Event Hub をクリックし、**[構成]** をクリックして、Event Hub 用に 2 つのアクセス ポリシーを作成します。
 
 	<table>
-	<tr><th>名前</th><th>アクセス許可</th></tr>
-	<tr><td>mysendpolicy</td><td>送信</td></tr>
-	<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-	</table>
-
-	アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
+<tr><th>名前</th><th>アクセス許可</th></tr>
+<tr><td>mysendpolicy</td><td>送信</td></tr>
+<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
+</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Event Hub のポリシーを作成します")
 
@@ -189,7 +187,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
 
 		java -cp EventhubsSampleEventProducer.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
 
-2. ストリーミング jar (**microsoft-spark-streaming-examples.jar**) を、クラスターに関連付けられた Azure Blob ストレージにコピーします。これにより、jar で Livy にアクセスできるようになります。そのためには、[**AzCopy**](storage/storage-use-azcopy.md) (コマンドライン ユーティリティ) を使用します。データのアップロードに使用できるクライアントは他にも多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+2. ストリーミング jar (**microsoft-spark-streaming-examples.jar**) を、クラスターに関連付けられた Azure Blob ストレージにコピーします。これにより、jar で Livy にアクセスできるようになります。そのためには、[**AzCopy**](../storage/storage-use-azcopy.md) (コマンドライン ユーティリティ) を使用します。データのアップロードに使用できるクライアントは他にも多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
 3. これらのアプリケーションを実行するコンピューターに CURL をインストールします。CURL を使用して、ジョブをリモートで実行する Livy エンドポイントを呼び出します。
 
@@ -353,7 +351,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -364,9 +362,9 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
 
-[hdinsight-versions]: ../hdinsight-component-versioning/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
-[hdinsight-storage]: ../hdinsight-use-blob-storage/
+[hdinsight-versions]: hdinsight-component-versioning.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
@@ -374,5 +372,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!----HONumber=AcomDC_0211_2016-->
-
+<!---HONumber=AcomDC_0218_2016-->

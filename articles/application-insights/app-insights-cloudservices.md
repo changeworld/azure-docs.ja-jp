@@ -125,7 +125,7 @@ HTTP 要求の場合と同じ方法で追跡することで、worker ロール�
 
 ## Azure 診断
 
-[Azure 診断](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)のデータには、ロール管理イベント、パフォーマンス カウンター、およびアプリケーション ログが含まれます。これらのデータを Application Insights に送信し、他のテレメトリと共に表示して、問題の診断を容易にできます。
+[Azure 診断](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)のデータには、ロール管理イベント、パフォーマンス カウンター、およびアプリケーション ログが含まれます。これらのデータを Application Insights に送信し、他のテレメトリと共に表示して、問題の診断を容易にできます。
 
 ロールが予期せずに失敗した場合、または起動に失敗した場合は、Azure 診断が特に役立ちます。
 
@@ -261,7 +261,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 ## 関連トピック
 
 * [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
-* [PowerShell を使用した Application Insights への Azure 診断の送信])(app-insights-powershell-azure-diagnostics.md)
+* [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 
 
 
@@ -279,4 +279,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

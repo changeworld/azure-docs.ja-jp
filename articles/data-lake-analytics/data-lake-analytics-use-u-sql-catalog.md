@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 # U-SQL カタログの使用
@@ -55,7 +55,7 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
     - 新しいアセンブリを追加するには、**[アセンブリ]** を右クリックしてから **[アセンブリの登録]** をクリックします。
     - 新しいスキーマを追加するには、**[スキーマ]** を右クリックしてから [スキーマの作成] をクリックします。
     - 新しいテーブルを追加するには、**[テーブル]** を右クリックしてから [テーブルの作成] をクリックします。
-    - 新しいテーブル値関数を追加する場合は、「[Data Lake Analytics ジョブの U-SQL 定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」を参照してください。
+    - 新しいテーブル値関数を追加するには、「[Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」を参照してください。
 
 
 ![U-SQL Visual Studio カタログの参照](./media/data-lake-analytics-use-u-sql-catalog/data-lake-analytics-browse-catalogs.png)
@@ -84,4 +84,4 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
     - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
     - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0218_2016-->

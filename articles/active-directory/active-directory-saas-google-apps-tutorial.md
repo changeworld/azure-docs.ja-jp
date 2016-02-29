@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/09/2016"
+    ms.date="02/17/2016"
     ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と Google Apps を統合する方法
@@ -22,7 +22,7 @@
 
 ##前提条件
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
 
 2. [Google Apps for Work](https://www.google.com/work/apps/) または [Google Apps for Education](https://www.google.com/edu/products/productivity-tools/) に対して有効なテナントが必要です。どちらのサービスにも無料試用版のアカウントを使用できます。
 
@@ -32,9 +32,27 @@
 
 > [AZURE.VIDEO enable-single-sign-on-to-google-apps-in-2-minutes-with-azure-ad]
 
+##よく寄せられる質問
+
+1. **Q: Chromebook とその他の Chrome デバイスは、Azure AD シングル サインオンと互換性がありますか。**
+
+	A: はい。ユーザーは Azure AD の資格情報を使用して、Chromebook デバイスにサインインすることができます。ユーザーに資格情報の入力を求めるメッセージが 2 回表示される場合がある理由については、[Google Apps のサポート記事](https://support.google.com/chrome/a/answer/6060880)を参照してください。
+
+2. **Q: シングル サインオンを有効にした場合、ユーザーは Google Classroom、GMail、Google Drive、YouTube などの Google 製品にサインインするために Azure AD 資格情報を使用できますか。**
+
+	A: はい。[Google アプリ](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583)ごとに、組織で有効にするか無効にするかを選択します。
+
+3. **Q: Google Apps ユーザーの一部だけに対して、シングル サインオンを有効にできますか。**
+
+	A: いいえ。シングル サインオンを有効にすると、直ちにすべての Google Apps ユーザーが Azure AD 資格情報での認証を要求されるようになります。Google Apps は複数の ID プロバイダーをサポートしていないため、Google Apps 環境の ID プロバイダーは Azure AD か Google であり、同時に両方を設定することはできません。
+
+4. **Q: Windows を通じてサインインしたユーザーは、パスワードの入力を求められることなく、自動的に Google Apps でも認証されますか。**
+
+	A: このシナリオを有効にするには、2 つのオプションがあります。まず、ユーザーは [Azure Active Directory 参加](active-directory-azureadjoin-overview.md)を通じて Windows 10 デバイスにサインインできます。また、ユーザーは、[Active Directory フェデレーション サービス (AD FS)](active-directory-aadconnect-user-signin.md) デプロイを通じて Azure AD へのシングル サインオンが有効になっているオンプレミスの Active Directory にドメイン参加している Windows デバイスにサインインすることもできます。もちろん、どちらのオプションでも、以下のチュートリアルに従って、Azure AD と Google Apps 間のシングル サインオンを有効にする必要があります。
+
 ##手順 1. Google Apps をディレクトリに追加する
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Select Active Directory from the left navigation pane.][0]
 
@@ -176,7 +194,7 @@
 
 4. まだ Azure Active Directory にカスタム ドメイン名を追加していない場合は、次の手順に従います。
 
-	- [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。ディレクトリの一覧で、ディレクトリを選択します。 
+	- [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。ディレクトリの一覧で、ディレクトリを選択します。 
 
 	- 最上部のメニューで、**[ドメイン]** をクリックし、**[カスタム ドメインの追加]** をクリックします。
 
@@ -295,4 +313,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

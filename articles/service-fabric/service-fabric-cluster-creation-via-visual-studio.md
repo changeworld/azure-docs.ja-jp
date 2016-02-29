@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/13/2015"
+   ms.date="02/12/2016"
    ms.author="karolz@microsoft.com"/>
 
 # Visual Studio による Service Fabric クラスターのセットアップ
@@ -45,7 +45,7 @@
 |sourceVaultValue |クラスターをセキュリティで保護する証明書が格納されている Key Vault の*リソース ID*。|
 |certificateUrlValue |クラスターのセキュリティ証明書の URL。|
 
-Visual Studio Service Fabric リソース マネージャー テンプレートは、証明書によって保護されている、安全なクラスターを作成します。この証明書は、最後の 3 つのテンプレート パラメーター (`certificateThumbprint`、`sourceVaultValue`、`certificateUrlValue`) によって識別され、**Azure Key Vault** 内に存在する必要があります。クラスター セキュリティ証明書を作成する方法の詳細については、「[Service Fabric クラスターのセキュリティ保護](service-fabric-cluster-security.md)」を参照してください。
+Visual Studio Service Fabric リソース マネージャー テンプレートは、証明書によって保護されている、安全なクラスターを作成します。この証明書は、最後の 3 つのテンプレート パラメーター (`certificateThumbprint`、`sourceVaultValue`、`certificateUrlValue`) によって識別され、**Azure Key Vault** 内に存在する必要があります。クラスター セキュリティ証明書を作成する方法の詳細については、「[Service Fabric クラスターのセキュリティ保護](service-fabric-cluster-security.md#secure-a-service-fabric-cluster-by-using-certificates)」を参照してください。
 
 ## 省略可能: パブリック アプリケーション ポートを追加する
 デプロイする前に、クラスターのパブリック アプリケーション ポートを変更することもできます。既定では、テンプレートが開くパブリック TCP ポートは 2 つだけです (80 と 8081)。アプリケーションにさらに多くのポートが必要な場合は、テンプレート内の Azure Load Balancer の定義を変更します。定義は、メイン テンプレート ファイル (`SecureFabricCluster.json`) に保存されています。そのファイルを開き、`loadBalancedAppPort` を検索します。各ポートが、次の 3 つのアーティファクトに関連付けられていることがわかります。
@@ -106,6 +106,8 @@ Visual Studio の出力ウィンドウで、デプロイ プロセスの進行�
 
 エラーが発生した場合は、[Azure ポータル](https://portal.azure.com/)に移動し、**[通知]** を確認します。リソース グループのデプロイが失敗すると、詳細な診断情報がここに表示されます。
 
+>[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
+
 ## 次のステップ
 - [Azure ポータルによる Service Fabric クラスターのセットアップについて学習する](service-fabric-cluster-creation-via-portal.md)
 - [Visual Studio による Service Fabric アプリケーションの管理とデプロイの方法について学習する](service-fabric-manage-application-in-visual-studio.md)
@@ -115,4 +117,4 @@ Visual Studio の出力ウィンドウで、デプロイ プロセスの進行�
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0218_2016-->

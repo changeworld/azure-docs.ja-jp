@@ -36,14 +36,14 @@ Azure クラシック ポータル以外にも、HDInsight を管理するツー
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage-create-storage-account.md)に関するページを参照してください。
+- **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。Azure ストレージ アカウントの作成の詳細については、[ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md)に関するページを参照してください。
 
 
 ##HDInsight クラスターのプロビジョニング
 
 Azure クラシック ポータルから [簡易作成] または [カスタム作成] オプションを使用して、HDInsight クラスターをプロビジョニングできます。手順については、次の各リンクを参照してください。
 
-- [簡易作成を使用したクラスターのプロビジョニング](../hdinsight-get-started.md#provision)
+- [簡易作成を使用したクラスターのプロビジョニング](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [カスタム作成を使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)
 
 [AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
@@ -182,7 +182,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 	cd %hcatalog_home%
 
 ##クラスターのスケール
-[HDInsight での Hadoop クラスターのスケール](hdinsight-hadoop-cluster-scaling.md)に関するページを参照してください。
+[HDInsight での Hadoop クラスターのスケール](hdinsight-administer-use-management-portal.md#scale-clusters)に関するページを参照してください。
 
 ##次のステップ
 この記事では、Azure クラシック ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。詳細については、次の記事を参照してください。
@@ -191,11 +191,11 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)
 * [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [Azure HDInsight の概要](../hdinsight-get-started.md)
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal-v1/hdi.createrdpuser.png
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0218_2016-->

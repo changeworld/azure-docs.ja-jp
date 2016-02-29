@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/06/2015"
+	ms.date="02/12/2016"
 	ms.author="yuridio"/>
 
 # ハイブリッド ID ソリューションのインシデント対応要件の決定
@@ -54,7 +54,8 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
  - 配置している場合、現在のソリューションはこれから導入するハイブリッド ID 管理システムと統合されますか。
 - 隔離されているユーザーには条件付きのアクセスを会社は適用する必要がありますか。 
  
->[AZURE.NOTE]回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
+>[AZURE.NOTE]
+回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
 
 ## 次のステップ
 [データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
@@ -62,4 +63,4 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

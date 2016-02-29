@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="11/10/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma"/>
 
 # CLI を使用して DNS ゾーンを管理する方法
@@ -24,7 +24,7 @@
 
 このガイドでは、DNS ゾーンの管理方法を説明します。このガイドは、DNS ゾーンを管理するために実行する一連の操作を理解するのに役立ちます。
 
->[AZURE.NOTE]Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
+>[AZURE.NOTE] Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
 
 >"エラー: 'dns' は、Azure のコマンドではありません" と表示される場合は、多くの場合、リソース マネージャー モードではなく、ASM モードで Azure CLI を使用していることが原因です。
  
@@ -76,8 +76,6 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 ## 次のステップ
 
 
-[DNS レコードの管理](dns-operations-recordsets-cli.md)
+「[CLI を使用して DNS レコードを管理する方法](dns-operations-recordsets-cli.md)」および「[.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
 
-[.NET SDK を使用した操作の自動化](dns-sdk.md)
-
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0218_2016-->
