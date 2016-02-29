@@ -27,6 +27,7 @@ Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を�
 
     ![Support - Switch tenants](./media/active-directory-b2c-support/support-switch-dir.png)
 
+    
 3. テナントを切り替えた後、**[ヘルプとサポート]** をクリックします。
 
     ![Support - Help + Support](./media/active-directory-b2c-support/support-support.png)

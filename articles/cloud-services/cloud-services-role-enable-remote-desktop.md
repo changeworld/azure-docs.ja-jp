@@ -38,7 +38,7 @@ Azure クラシック ポータルでは、アプリケーションのデプロ�
     
     ![クラウド サービス リモート](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
     
-    > [AZURE.WARNING] 初めてリモート デスクトップを有効にして [OK] (チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
+    > [AZURE.WARNING]初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
     
 
 3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。

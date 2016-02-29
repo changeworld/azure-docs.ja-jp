@@ -37,7 +37,11 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | URL | ポート | 説明 |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| **.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 | | *.trust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 | | *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 | | secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 | | *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリを構成し、データをインポート/エクスポートするために使用します。 |
+| **.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
+| *.trust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 |
+| *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 |
+| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 |
+| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリを構成し、データをインポート/エクスポートするために使用します。 |
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用しています。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成になんらかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。

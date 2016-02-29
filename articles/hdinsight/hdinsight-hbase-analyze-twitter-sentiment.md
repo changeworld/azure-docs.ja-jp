@@ -75,11 +75,11 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 
 
 	<table border="1">
-<tr><th>クラスター プロパティ</th><th>説明</th></tr>
-<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
-<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
-<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
-</table>
+	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+	<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
+	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
+	</table>
 
 - Visual Studio 2013 がインストールされている**ワークステーション**。手順については、[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
