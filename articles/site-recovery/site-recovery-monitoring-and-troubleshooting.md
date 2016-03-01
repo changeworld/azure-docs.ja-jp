@@ -199,4 +199,4 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
 -   多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。[VM への RDP 接続におけるトラブルシューティングに関するドキュメントを使用してください。](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!----HONumber=AcomDC_1217_2015-->
+<!-----HONumber=AcomDC_1217_2015-->

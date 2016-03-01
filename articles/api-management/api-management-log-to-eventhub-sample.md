@@ -268,4 +268,4 @@ Azure API Management サービスでは、API を経由して送受信される 
 	-	[log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 	
 
-<!----HONumber=Nov15_HO3-->
+<!-----HONumber=Nov15_HO3-->

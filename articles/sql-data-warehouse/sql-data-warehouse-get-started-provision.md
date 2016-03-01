@@ -135,4 +135,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!----HONumber=AcomDC_0204_2016-->
+<!-----HONumber=AcomDC_0204_2016-->
