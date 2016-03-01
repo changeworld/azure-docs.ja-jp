@@ -31,13 +31,14 @@
 
 ## インストールの前提条件
 
-開発用のコンピューター上で [Java ランタイム環境](http://www.java.com/en/download/ie_manual.jsp)がサポートされている必要があります。また、[Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/index.php?show_instructions=TRUE) をインストールする必要があります。
+開発用のコンピューター上で [Java ランタイム環境](http://www.java.com/en/download/ie_manual.jsp)がサポートされている必要があります。
+また、[Eclipse IDE for Java Developers](https://www.eclipse.org/downloads/index.php?show_instructions=TRUE) をインストールする必要があります。
 
 > [AZURE.NOTE] 「[パフォーマンス テスト環境の構成](#overview)」セクションに説明されている JMeter Master VM を開発環境として使用する場合は、Windows 32 ビット バージョンの Eclipse インストーラーをダウンロードしてください。
 
 ## Elasticsearch のロード テストのための JUnit テスト プロジェクトを作成する
 
-1.  Eclipse IDE がまだ起動していない場合は起動し、*ようこそ*ページを閉じます。
+1.  Eclipse IDE がまだ起動していない場合は起動し、 *ようこそ* ページを閉じます。
 
 2.  *[File (ファイル)]* メニューの *[New (新規)]* をクリックし、*[Java Project (Java プロジェクト)]* をクリックします。
 
@@ -77,7 +78,7 @@
 
 ![](./media/guidance-elasticsearch-jmeter-deploy15.png)
 
-11.  POM エディターの下部のウィンドウに次の警告が表示される場合があります。*Build path specifies execution environment J2SE-1.5.There are no JREs installed in the workspace that are strictly compatible with this environment (ビルド パスによって実行環境 J2SE-1.5 が指定されています。この環境と厳密に互換性がある JRE がワークスペースにインストールされていません)*。Java のバージョンが 1.5 より新しい場合、この警告は無視してかまいません。
+11.  POM エディターの下部のウィンドウに次の警告が表示される場合があります。 *ビルド パスによって実行環境 J2SE-1.5 が指定されています。この環境と厳密に互換性がある JRE がワークスペースにインストールされていません* 。Java のバージョンが 1.5 より新しい場合、この警告は無視してかまいません。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy16.png)
 
@@ -85,7 +86,7 @@
 
 ![](./media/guidance-elasticsearch-jmeter-deploy17.png)
 
-13.  *[Add Property (プロパティの追加)]* ダイアログ ボックスで、*[Name (名前)]* ボックスに「*es.version*」と入力し、*[Value (値)]* ボックスに「*1.7.2*」と入力し、*[OK]* をクリックします。この値は、使用する Elasticsearch Java クライアント ライブラリのバージョンです (このバージョンは、将来、置き換えられる可能性があります。バージョンを POM プロパティとして定義し、プロジェクト内の別の場所内からこのプロパティを参照することで、バージョンをすばやく変更することができます)。
+13.  *[Add Property (プロパティの追加)]* ダイアログ ボックスで、*[Name (名前)]* ボックスに 「*es.version*」 と入力し、*[Value (値)]* ボックスに 「*1.7.2*」 と入力し、*[OK]* をクリックします。この値は、使用する Elasticsearch Java クライアント ライブラリのバージョンです (このバージョンは、将来、置き換えられる可能性があります。バージョンを POM プロパティとして定義し、プロジェクト内の別の場所内からこのプロパティを参照することで、バージョンをすばやく変更することができます)。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy18.png)
 
@@ -93,7 +94,7 @@
 
 ![](./media/guidance-elasticsearch-jmeter-deploy19.png)
 
-15.  *[Select Dependency (依存関係の選択)]* ダイアログ ボックスで、*[Group Id (グループ ID)]* ボックスに「*org.elasticsearch*」と入力し、*[Artifact Id (アーティファクト ID)]* ボックスに「*elasticsearch*」と入力し、*[Version (バージョン)]* ボックスに「*\\${es.version}*」と入力して、*[OK]* をクリックします。Java Elasticsearch クライアント ライブラリに関する情報はオンラインの Maven Central リポジトリに保持されます。この構成では、プロジェクトのビルド時に、ライブラリとその依存関係が自動的にダウンロードされます。
+15.  *[Select Dependency (依存関係の選択)]* ダイアログ ボックスで、*[Group Id (グループ ID)]* ボックスに 「*org.elasticsearch*」 と入力し、*[Artifact Id (アーティファクト ID)]* ボックスに 「*elasticsearch*」 と入力し、*[Version (バージョン)]* ボックスに 「*\\${es.version}*」 と入力して、*[OK]* をクリックします。Java Elasticsearch クライアント ライブラリに関する情報はオンラインの Maven Central リポジトリに保持されます。この構成では、プロジェクトのビルド時に、ライブラリとその依存関係が自動的にダウンロードされます。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy20.png)
 
@@ -136,7 +137,7 @@
 
 ![](./media/guidance-elasticsearch-jmeter-deploy27.png)
 
-3.  *[JAR File Specification (JAR ファイルの仕様)]* ページの *[Select the resources to export (エクスポートするリソースを選択)]* ボックスで、エクスポートするプロジェクトを展開し、*src* フォルダーを除くすべての項目の選択を解除し、さらに *.classpath*、*.project*、および *pom.xml* の選択を解除します。*[JAR ファイル]* ボックスで、JAR のファイル名と場所を指定し (.jar ファイル拡張子が付いたファイル)、*[Finish (完了)]* をクリックします。
+3.  *[JAR File Specification (JAR ファイルの仕様)]* ページの *[Select the resources to export (エクスポートするリソースを選択)]* ボックスで、エクスポートするプロジェクトを展開し、*src* フォルダーを除くすべての項目の選択を解除し、さらに *.classpath* 、 *.project* 、および *pom.xml* の選択を解除します。*[JAR ファイル]* ボックスで、JAR のファイル名と場所を指定し (.jar ファイル拡張子が付いたファイル)、*[Finish (完了)]* をクリックします。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy28.png)
 
@@ -154,7 +155,7 @@
 
 8.  JMeter を起動します。
 
-9.  JMeter で、*[Test Plan (テスト プラン)]* を右クリックし、*[Add (追加)]*、*[Threads (Users) (スレッド (ユーザー))]*、*[Thread Group (スレッド グループ)]* の順にクリックします。
+9.  JMeter で、*[Test Plan (テスト プラン)]* を右クリックし、*[Add (追加)]* 、*[Threads (Users) (スレッド (ユーザー))]*、*[Thread Group (スレッド グループ)]* の順にクリックします。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy30.png)
 
@@ -162,7 +163,7 @@
 
 ![](./media/guidance-elasticsearch-jmeter-deploy31.png)
 
-11.  *[JUnit Request]* ページで、*[Search for JUnit4 annotations (instead of JUnit 3) (JUnit4 (JUnit 3 ではなく) の注釈を検索)]* を選択します。*[Classname (クラス名)]* ドロップダウン リスト ボックスで、まず、JUnit ロード テスト クラスを選択し (これは *&lt;package&gt;.&lt;class&gt;* の形式で一覧されます)、次に、*[Test Method (テスト メソッド)]* ドロップダウン リスト ボックスで、JUnit テスト メソッドを選択し (これは、テストに関連付けられた作業を実際に実行するメソッドであり、Eclipse プロジェクトでは注釈 *@test* でマーク付けされています)、最後に、*[Constructor String Label (コンストラクター文字列ラベル)]* ボックスに、コンストラクターに渡す値を入力します (下図に示す内容は例にすぎません。*[Classname (クラス名)]*、*[Test Method (テスト メソッド)]*、*[Constructor String Label (コンストラクター文字列ラベル)]* の実際の内容は、おそらく表示例とは異なります)。
+11.  *[JUnit Request]* ページで、*[Search for JUnit4 annotations (instead of JUnit 3) (JUnit4 (JUnit 3 ではなく) の注釈を検索)]* を選択します。*[Classname (クラス名)]* ドロップダウン リスト ボックスで、まず、JUnit ロード テスト クラスを選択し (これは *&lt;package&gt;.&lt;class&gt;* の形式で一覧されます)、次に、*[Test Method (テスト メソッド)]* ドロップダウン リスト ボックスで、JUnit テスト メソッドを選択し (これは、テストに関連付けられた作業を実際に実行するメソッドであり、Eclipse プロジェクトでは注釈 *@test* でマーク付けされています)、最後に、*[Constructor String Label (コンストラクター文字列ラベル)]* ボックスに、コンストラクターに渡す値を入力します (下図に示す内容は例にすぎません。*[Classname (クラス名)]* 、*[Test Method (テスト メソッド)]* 、*[Constructor String Label (コンストラクター文字列ラベル)]* の実際の内容は、おそらく表示例とは異なります)。
 
 ![](./media/guidance-elasticsearch-jmeter-deploy32.png)
 
