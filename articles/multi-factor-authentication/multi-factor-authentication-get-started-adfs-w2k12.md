@@ -7,14 +7,7 @@
 	manager="stevenpo" 
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
-	ms.author="billmath"/>
+<tags ms.service="multi-factor-authentication" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="get-started-article" ms.date="02/18/2016"" ms.author="billmath"/>
 
 
 # Azure Multi-Factor Authentication Server と Windows Server 2012 R2 AD FS を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護
@@ -33,6 +26,7 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 開始する前に、次の情報に注意してください。
 
 - Azure Multi-Factor Authentication Server を AD FS フェデレーション サーバーにインストールすることは必須ではありませんが、AD FS 用の Multi-Factor Authentication Adapter は、AD FS を実行する Windows Server 2012 R2 にインストールする必要があります。サポートされているバージョンであれば、サーバーを別のコンピューターにインストールすることができ、AD FS アダプターを AD FS フェデレーション サーバーに別個にインストールすることができます。アダプターを別個にインストールする手順については、以下の手順を参照してください。
+- Multi-Factor Authentication Server の AD FS アダプターが設計された時点では、AD FS によって証明書利用者の名前をアダプターに渡し、それをアプリケーション名として使用することができると想定されていました。しかし、結果的にはそうでないことが明らかになりました。テキスト メッセージやモバイル アプリの認証方法を使用している場合、[会社の設定] に定義された文字列にはプレースホルダー "<$application\_name$>" が含まれます。このプレースホルダーは、AD FS アダプターを使用しても置換されません。このため、AD FS をセキュリティで保護するときは、プレースホルダーを該当する文字列から削除することをお勧めします。
 
 - サインオン アカウントには、Active Directory でセキュリティ グループを作成する権限が必要です。
 
@@ -229,4 +223,4 @@ Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集しま
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="REST API による ACS コンテナー管理 | Microsoft Azure"
-   description="Marathon REST API を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。"
+   description="Marathon REST API を使用して、Azure Container Service Mesos クラスターにコンテナーをデプロイします。"
    services="container-service"
    documentationCenter=""
    authors="neilpeterson"
@@ -20,23 +20,25 @@
    
 # REST API によるコンテナー管理
 
-Mesos はクラスター化されたワークロードをデプロイし、拡張縮小するための環境を提供し、基礎となるハードウェアを抽象化します。Mesos に加え、コンピューティング ワークロードのスケジュールと実行をフレームワークで管理します。さまざまな人気のワークロードのフレームワークを利用できますが、このドキュメントでは、Marathon でコンテナー デプロイを作成し、拡大縮小する方法について説明します。以下の例を進める前に、ACS で Mesos クラスターを構成し、そのクラスターにリモート接続する必要があります。これらの項目の詳細については、次の記事を参照してください。
+Mesos はクラスター化されたワークロードをデプロイし、拡張縮小するための環境を提供し、基礎となるハードウェアを抽象化します。Mesos に加え、コンピューティング ワークロードのスケジュールと実行をフレームワークで管理します。さまざまな人気のワークロードのフレームワークを利用できますが、このドキュメントでは、Marathon でコンテナー デプロイを作成し、拡大縮小する方法について説明します。
+
+以下の例を進める前に、ACS で Mesos クラスターを構成し、そのクラスターにリモート接続する必要があります。これらの項目の詳細については、次の記事を参照してください。
 
 - [Azure コンテナー サービス クラスターをデプロイする](./container-service-deployment.md) 
 - [ACS クラスターに接続する](./container-service-connect.md)
 
 
-SSH トンネルを設定したら、Mesos 関連 API に `http://localhost:LOCAL_PORT` 経由でアクセスできます。下の例では、ポート 80 でトンネリングするものと想定しています。たとえば、`http://localhost/marathon/v2` は Marathon API のエンドポイントになります。利用できるさまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) の Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) の Apache ドキュメントを参照してください。
+ACS クラスターに接続すると、Mesos と関連 REST API には http://localhost:local-port を通じてアクセスできます。このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で到達できます。さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
 ## Mesos と Marathon から情報を収集する
 
-Mesos クラスターにコンテナーをデプロイする前に、Mesos エージェントの名前や現在の状態など、Mesos クラスターに関する情報を収集します。これを行うには、Mesos マスターで `master/slaves` エンドポイントにクエリを実行します。問題がなければ、Mesos エージェントの一覧と各エージェントのプロパティが表示されます。
+Mesos クラスターにコンテナーをデプロイする前に、Mesos エージェントの名前や現在の状態など、Mesos クラスターに関する情報を収集します。これを行うには、Mesos マスターの `master/slaves` エンドポイントにクエリを実行します。問題がなければ、Mesos エージェントの一覧と各エージェントのプロパティが表示されます。
 
 ```bash
 curl http://localhost/master/slaves
 ```
 
-次に、Marathon `/apps` エンドポイントを利用し、Mesos クラスターへの現在の Marathon デプロイを確認します。これが新しいクラスターであれば、アプリ用の空の配列が表示されます。
+次に、Marathon `/apps` エンドポイントを利用し、Mesos クラスターに対する現在のアプリケーション デプロイを確認します。これが新しいクラスターであれば、アプリ用の空の配列が表示されます。
 
 ```
 curl localhost/marathon/v2/apps
@@ -67,19 +69,19 @@ Docker コンテナーは、意図するデプロイを表す JSON ファイル�
 }
 ```
 
-Docker コンテナーをデプロイするために、自分の JSON ファイルを作成するか、ここのサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用し、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
+Docker コンテナーをデプロイするために、独自の JSON ファイルを作成するか、用意されているサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用して、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
 
 ```
 curl -X POST http://localhost/marathon/v2/groups -d @marathon.json -H "Content-type: application/json"
 ```
 
-次のように出力されます。
+出力は次のようになります。
 
 ```json
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-次に、実行中のアプリケーションについて Marathon にクエリを実行する場合、この新しいアプリケーションが出力に表示されます。
+ここで、アプリケーションについて Marathon にクエリを実行すると、この新しいアプリケーションが出力に表示されます。
 
 ```
 curl localhost/marathon/v2/apps
@@ -95,19 +97,19 @@ Marathon API を利用し、アプリケーションのデプロイを拡大縮�
 
 次のコマンドを実行し、アプリケーションを拡大します。
 
-> 注 – URI は http://localhost/marathon/v2/apps/ に拡張するアプリケーションの ID を追加したものになります。ここの nginx サンプルの場合、URI は http://localhost/v2/nginx になります。
+> 注: URI は、http://localhost/marathon/v2/apps/ に、拡張するアプリケーションの ID を追加したものになります。ここで説明する nginx サンプルを使用する場合、URI は http://localhost/v2/nginx になります。
 
 ```json
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-最後に、アプリケーションのインスタンスについて Marathon エンドポイントにクエリを実行します。インスタンスが 3 つになったことがわかります。
+最後に、アプリケーションについて Marathon エンドポイントにクエリを実行すると、nginx コンテナーが 3 つ表示されるようになります。
 
 ```
 curl localhost/marathon/v2/apps
 ```
 
-## Marathon REST API PowerShell
+## Marathon REST API と PowerShell の相互作用
 
 これらの同じ操作を Windows システムで PowerShell を使用して実行できます。この簡易演習で最後の演習と同様のタスクが完了します。今回は PowerShell コマンドを利用します。
 
@@ -138,7 +140,7 @@ Docker コンテナーは、意図するデプロイを表す JSON ファイル�
 }
 ```
 
-自分の JSON ファイルを作成するか、ここのサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用し、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
+独自の JSON ファイルを作成するか、用意されているサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用して、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
@@ -152,10 +154,10 @@ Marathon API を利用し、アプリケーションのデプロイを拡大縮�
 
 次のコマンドを実行し、アプリケーションを拡大します。
 
-> 注 – URI は http://loclahost/marathon/v2/apps/ に拡張するアプリケーションの ID を追加したものになります。ここの nginx サンプルの場合、URI は http://localhost/v2/nginx になります。
+> 注: URI は、http://loclahost/marathon/v2/apps/ に、拡張するアプリケーションの ID を追加したものになります。ここで説明する nginx サンプルを使用する場合、URI は http://localhost/v2/nginx になります。
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

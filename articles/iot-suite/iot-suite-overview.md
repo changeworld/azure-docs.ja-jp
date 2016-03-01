@@ -14,7 +14,7 @@
      ms.topic="get-started-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="11/27/2015"
+     ms.date="02/19/2016"
      ms.author="dobett"/>
 
 # Azure IoT Suite の概要
@@ -49,7 +49,7 @@ Azure IoT サービスは、さまざまな機能を提供しています。こ�
 
 ## 構成済みのソリューション
 
-IoT Suite には構成済みソリューションが含まれているので、Azure IoT Suite で実現できる一般的な IoT シナリオをすぐに始めて、調べることができます。ソリューションを Azure サブスクリプションにデプロイし、完全なエンドツーエンドの IoT ソリューションを実行することができます。
+IoT Suite には構成済みソリューションが含まれており、そのソリューションを使用すると、Azure IoT Suite で実現できる一般的な IoT シナリオ (*リモート監視*、*予測的なメンテナンス*など) をすぐに始めて、調べることができます。これらのソリューションを Azure サブスクリプションにデプロイし、完全なエンドツーエンドの IoT シナリオを実行することができます。
 
 ## 次のステップ
 
@@ -57,7 +57,7 @@ IoT Suite には構成済みソリューションが含まれているので、A
 
 - IoT Suite の構成済みソリューションの詳細については、「[Azure IoT の構成済みソリューションとは][lnk-what-are-preconfig]」を参照してください。
 
-- 構成済みソリューションのいずれかを初めて使用する方法については、[IoT の構成済みソリューションの使用に関するページ][lnk-preconfig-start]を参照してください。
+- 構成済みソリューションのいずれかを初めて使用する方法については、「[チュートリアル: IoT 事前構成済みソリューションの使用][lnk-preconfig-start]」を参照してください。
 
 - Azure IoT Hub サービスについては、「[IoT Hub のドキュメント][lnk-iot-hub]」を参照してください。
 
@@ -74,4 +74,4 @@ IoT Suite には構成済みソリューションが含まれているので、A
 [lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

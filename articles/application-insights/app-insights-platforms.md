@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/07/2016"
+	ms.date="02/22/2016"
 	ms.author="awills"/>
 
 # Application Insights: 言語、プラットフォーム、統合
@@ -39,10 +39,11 @@
 + [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android)
-+ [Azure Web アプリと VM](../insights-perf-analytics.md)
++ [Azure Web アプリと VM](../azure-portal/insights-perf-analytics.md)
 + [Azure Cloud Services](app-insights-cloudservices.md) &#151; Web ロールと worker ロールの両方を含む
 + [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
++ [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 + [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [J2EE](app-insights-java-get-started.md)
 + [J2EE - 既にライブとなっているアプリ用](app-insights-java-live.md)
@@ -83,4 +84,4 @@
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

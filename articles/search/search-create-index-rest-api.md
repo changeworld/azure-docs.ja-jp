@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/17/2015"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # REST API を使用した Azure Search インデックスの作成
@@ -65,4 +65,4 @@ REST API を使用してインデックスを作成するには、Azure Search �
 
 要求が成功した場合、状態コード "201 Created" が返ります。REST API を使用してインデックスを作成する方法の詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798941.aspx)を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -25,7 +25,13 @@
 
 Azure Blob Storage は、クラウドにファイル データを格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、BLOB のアップロード、一覧表示、ダウンロード、および削除です。このチュートリアルの所要時間は 1 時間以内です。
+### このチュートリアルについて
+
+このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、BLOB のアップロード、一覧表示、ダウンロード、および削除です。
+
+**推定所要時間:** 45 分
+
+**前提条件:**
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -353,9 +359,9 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 - [.NET 用の Table Storage の概要](storage-dotnet-how-to-use-tables.md)
 - [.NET 用の Queue Storage の概要](storage-dotnet-how-to-use-queues.md)
 - [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
-- [.NET アプリケーションで Azure SQL Database を使用する方法](../sql-database/sql-database-dotnet-how-to-use.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+- [.NET (c#) からの SQL Database 使用](../sql-database/sql-database-dotnet-how-to-use.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -368,4 +374,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

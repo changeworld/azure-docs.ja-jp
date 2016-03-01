@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/08/2016"
+   ms.date="02/12/2016"
    ms.author="cherylmc"/>
 
 
@@ -118,7 +118,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 Microsoft は、パブリック ピアリングと Microsoft ピアリングを介してアドバタイズされるプレフィックスに適切な BGP コミュニティ値をタグ付けして、プレフィックスがホストされるリージョンを示します。ユーザーは、このコミュニティ値に依存して、最適なルーティングを顧客に提供するための適切なルーティングの決定を行うことができます。
 
-| **地理的リージョン** | **Microsoft Azure リージョン (Office 365 の場合も同じ)** | **BGP コミュニティ値** |
+| **地理的リージョン** | **Microsoft Azure リージョン** | **BGP コミュニティ値** |
 |---|---|---|
 | **北米** | | |
 | | 米国東部 | 12076:51004 |
@@ -174,4 +174,4 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[リソース マネージャー デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[リソース マネージャー VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

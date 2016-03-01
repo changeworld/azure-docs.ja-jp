@@ -17,16 +17,19 @@
 	ms.author="heidist"/>
 
 # .NET での Azure Search アプリケーションの初めての使用
-
+> [AZURE.SELECTOR]
+- [.NET](search-get-started-dotnet.md)
+- [Portal](search-get-started-portal.md)
+ 
 検索エクスペリエンスとして Azure Search を使用するカスタム .NET 検索アプリケーションを Visual Studio 2013 以降で作成する方法を説明します。このチュートリアルでは、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) と Azure Search サービス REST API を使用します。
 
-このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
+このサンプルを実行するには、Azure Search サービスが必要になります。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[Azure ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
 
 ## データについて
 
-このサンプル アプリケーションでは、[米国地質調査所 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータ サイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
+このサンプル アプリケーションでは、[米国地質調査所 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータセットのサイズを小さくして使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
-このアプリケーションでは、**DataIndexer** プログラムは [インデクサー](https://msdn.microsoft.com/library/azure/dn798918.aspx) を使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。オンライン データ ソースに対する資格情報と接続情報は、ソース コードで提供されます。それ以上の構成は必要ありません。
+このアプリケーションでは、**DataIndexer** プログラムが[インデクサー](https://msdn.microsoft.com/library/azure/dn798918.aspx)を使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。オンライン データ ソースに対する資格情報と接続情報は、ソース コードで提供されます。それ以上の構成は必要ありません。
 
 > [AZURE.NOTE] このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。別の価格レベルを使用する場合、この制限は適用されません。各価格レベルの容量の詳細については、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
 
@@ -234,7 +237,7 @@
 
 このプログラムは、app.config での指定に従って Search サービスに接続し、インデックスを作成して、Azure SQL Database に格納されている USGS データセットを読み込むコンソール アプリケーションです。このチュートリアルのこの部分にはインデクサーを使用します。
 
-このプログラムを実行する前に、**Program.cs** を置き換える必要があります。これはインデックスおよびインデクサーの作成、データの読み込み、メッセージの書き込みに使用されます。
+このプログラムを実行する前に、**Program.cs** を置き換える必要があります。これはインデックスとインデクサーの作成、データの読み込み、メッセージの書き込みに使用されます。
 
 ### Program.cs の更新
 
@@ -671,4 +674,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-1.PNG
 [12]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-2.PNG
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

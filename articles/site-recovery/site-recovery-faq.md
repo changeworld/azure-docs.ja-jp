@@ -76,7 +76,7 @@ Site Recovery を使用すると、仮想マシンまたは物理サーバーで
 
 Windows および Linux を実行している物理サーバーを保護することができます。オペレーティング システムの要件については、[こちら](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を参照してください。物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ制限が適用されます。
 
-オンプレミスのサーバーがダウンした場合には、物理サーバーは Azure では VM として実行されることに注意してください。オンプレミスの物理サーバーへのフェールバックは、現在サポートされていません。VMware VM にフェールバックする必要があります。
+オンプレミスのサーバーがダウンした場合には、物理サーバーは Azure では VM として実行されることに注意してください。オンプレミスの物理サーバーへのフェールバックは、現在サポートされていません。VMware 上で動作している仮想マシンへのフェールバックにのみ対応しています。
 
 ### どの VMware VM を保護できますか。
 
@@ -219,4 +219,4 @@ Azure パック、クラウド プラットフォーム システム、および
 - [Azure Site Recovery の概要](site-recovery-overview.md)を読む
 - [Site Recovery アーキテクチャ](site-recovery-components.md)の詳細  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="hero-article" 
-	ms.date="11/16/2015"
+	ms.date="02/19/2016"
 	ms.author="huvalo"/>
 
 
@@ -26,7 +26,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 前提条件
@@ -57,7 +57,6 @@ Python と Git は既にインストールされていると思いますが、Py
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
 1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。
-2. **[Web + モバイル]** をクリックします。
 3. 検索ボックスに、「python」と入力します。
 4. 検索結果で **[Django]** を選択し、**[作成]** をクリックします。
 5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Django アプリを構成します。**[作成]** をクリックします。
@@ -118,7 +117,7 @@ IIS 構成ファイル。デプロイ スクリプトは適切な web.x.y.config
 
 ### オプションのファイル - デプロイのカスタマイズ
 
-[AZURE.INCLUDE [web-sites-python-customizing-deployment](../../includes/web-sites-python-customizing-deployment.md)]
+[AZURE.INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
 ### オプションのファイル - Python ランタイム
 
@@ -496,7 +495,7 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 
 <!--Link references-->
@@ -517,4 +516,4 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 [Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Django のドキュメント]: https://www.djangoproject.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

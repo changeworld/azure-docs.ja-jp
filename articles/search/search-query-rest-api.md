@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/17/2015"
+	ms.date="02/17/2016"
 	ms.author="heidist"/>
 
 # REST 呼び出しを使用して Azure Search のクエリを作成する
@@ -67,4 +67,4 @@ Azure Search では、非常に強力なクエリを作成できる多くのオ�
 
 クエリが成功すると状態コード "200 OK" が返され、検索結果は応答本文に JSON 形式で格納されています。詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)の「Response (応答)」セクションを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

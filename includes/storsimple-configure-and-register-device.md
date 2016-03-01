@@ -30,12 +30,12 @@
    - プライマリ DNS サーバーの IP アドレス
    - プライマリ NTP サーバーの IP アドレス
    
-      >[AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
+      > [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
-8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
+8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
  
 
-      >[AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
+      > [AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
 
 9. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、以降のセッションでは変更する必要があります。画面の指示に従って、デバイスの管理者パスワードを入力します。デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。大文字、小文字、数字、および特殊文字を組み合わせたパスワードを使用してください。
 
@@ -43,13 +43,13 @@
 
     ![StorSimple によるデバイスの登録 4](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
 
-    StorSimple Snapshot Manager のパスワードは StorSimple Manager サービス インターフェイスからリセットできます。詳しい手順については、「[StorSimple Manager サービスを利用して StorSimple パスワードを変更する](storsimple-change-passwords.md)」を参照してください。
+    StorSimple Snapshot Manager のパスワードは StorSimple Manager サービス インターフェイスからリセットできます。詳しい手順については、「[StorSimple Manager サービスを利用して StorSimple パスワードを変更する](../articles/storsimple/storsimple-change-passwords.md)」を参照してください。
 
-	この手順で発生した問題を解消する場合、トラブルシューティング ガイダンスの「[パスワード関連のエラー](storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords)」を参照してください。
+	この手順で発生した問題を解消する場合、トラブルシューティング ガイダンスの「[パスワード関連のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords)」を参照してください。
 
 11. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、手順 2. で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
 
-	デバイス登録関連のエラーを解消するには、「[デバイス登録中のエラー](storsimple-troubleshoot-deployment.md#errors-during-device-registration)」を参照してください。トラブルシューティングの詳細については、「[ステップ バイ ステップ トラブルシューティング例](storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example)」も参照してください。
+	デバイス登録関連のエラーを解消するには、「[デバイス登録中のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration)」を参照してください。トラブルシューティングの詳細については、「[ステップ バイ ステップ トラブルシューティング例](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example)」も参照してください。
 
 12. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。
 	
@@ -68,7 +68,7 @@
    
     ![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png)
   
-      >[AZURE.IMPORTANT] デバイスがオンラインになったら、この手順の最初で取り外したネットワーク ケーブルを取り付けます。
+      > [AZURE.IMPORTANT] デバイスがオンラインになったら、この手順の最初で取り外したネットワーク ケーブルを取り付けます。
 
 デバイスを登録したが、オンラインにならない場合、`Test-HcsmConnection -Verbose` を実行し、ネットワーク接続の正常な状態を確認できます。このコマンドレットの詳しい利用については、「[Test-HcsmConnection のコマンドレット リファレンス](https://technet.microsoft.com/library/dn715782.aspx)」を参照してください。
 
@@ -76,4 +76,4 @@
 
 StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

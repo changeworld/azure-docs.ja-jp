@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/03/2016"
+	ms.date="02/19/2016"
 	ms.author="awills"/>
 
 # Windows Phone アプリとストア アプリの分析
@@ -83,6 +83,7 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 4. プロジェクトのルートに ApplicationInsights.config ファイルを追加し、ポータルでコピーしたインストルメンテーション キーを挿入します。この構成ファイルのサンプル xml を次に示します。
 
 	```xml
+
 		<?xml version="1.0" encoding="utf-8" ?>
 		<ApplicationInsights>
 			<InstrumentationKey>YOUR COPIED INSTRUMENTATION KEY</InstrumentationKey>
@@ -96,6 +97,7 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。他の場所にコピーすると、最初の PageViews のコレクションが失われることがあります。
 
 ```C#
+
 	public App()
 	{
 	   // Add this initilization line. 
@@ -207,4 +209,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

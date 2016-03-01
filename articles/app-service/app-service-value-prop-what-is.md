@@ -13,7 +13,7 @@
 	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="01/05/2016" 
 	ms.author="omark"/>
 
@@ -50,7 +50,7 @@ App Service を使用すると、単一の開発エクスペリエンスで次�
 App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
 
 ### App Service プラン
-App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランでは、いくつかの料金レベル (Free、Shared、Basic、Standard、および Premium など) がサポートされています。各レベルには独自の機能があります。アプリがホストされる App Service プランを、ダウンタイムなしですばやく変更できます。[App Service プランの詳細に関するページを参照してください](../web-sites-web-hosting-plan-overview.md)。
+App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランでは、いくつかの料金レベル (Free、Shared、Basic、Standard、および Premium など) がサポートされています。各レベルには独自の機能があります。アプリがホストされる App Service プランを、ダウンタイムなしですばやく変更できます。[App Service プランの詳細に関するページを参照してください](azure-web-sites-web-hosting-plans-in-depth-overview.md)。
 
 ##App Service の使用開始
 App Service をぜひお試しください。 すぐに使用を開始しましょう。
@@ -60,4 +60,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

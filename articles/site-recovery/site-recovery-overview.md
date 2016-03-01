@@ -13,13 +13,12 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="02/22/2016" 
 	ms.author="raynew"/>
 
 #  Site Recovery とは
 
-Site Recovery は、オンプレミスのセカンダリ データセンターまたは Azure へのオンプレミス サーバーと仮想マシンのレプリケーションを調整することにより、ビジネス継続性と障害復旧 (BCDR) の戦略を支援する Azure サービスです。Site Recovery でレプリケーションが処理されるため、クリックするだけでフェールオーバーと復旧を開始することができます。[FAQ](site-recovery-faq.md) のよく寄せられる質問の一覧に目を通してください。
-
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。[FAQ](site-recovery-faq.md) のページでよく寄せられる質問を確認してください。
 
 ## Site Recovery を使用する理由 
 
@@ -60,7 +59,7 @@ Site Recovery は、アプライアンス対応のビジネス継続性に貢献
 - 豊富な自動化ライブラリでは、運用環境ですぐに使えるアプリケーション固有のスクリプトを提供しています。これらのスクリプトは、ダウンロードして Site Recovery と統合できます。  
 
 
-詳細については、[Site Recovery で保護できるワークロード](site-recovery-workload.md)に関するページを参照してください。
+詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」を参照してください。
 
 
 ## 次のステップ
@@ -68,4 +67,4 @@ Site Recovery は、アプライアンス対応のビジネス継続性に貢献
 この概要の確認が終わったら、Site Recovery のアーキテクチャの[詳細](site-recovery-components.md)を確認してください。
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

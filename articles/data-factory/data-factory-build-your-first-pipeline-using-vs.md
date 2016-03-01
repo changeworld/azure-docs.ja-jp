@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="02/16/2015"
+	ms.date="02/16/2016"
 	ms.author="spelluru"/>
 
 # Visual Studio を使用した初めての Azure Data Factory パイプラインの作成
@@ -419,6 +419,14 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
             "value": "String"
         }
 
+### スペースが含まれているプロパティ名
+プロパティ名にスペースが含まれている場合は、次の例 (Database server name) のように、角かっこを使用します。
+
+     {
+         "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
+         "value": "MyAsqlServer.database.windows.net"
+     }
+
 
 ### 構成を指定してソリューションをデプロイする
 Azure Data Factory のエンティティを VS で発行するときに、その発行操作に使用する構成を指定できます。
@@ -433,7 +441,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 4. 使用する**構成ファイル**を選択し、**[次へ]** をクリックします。
 5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、**[次へ]** をクリックします。 
-6. デプロイ操作が終了したら **[完了]** をクリックします。 
+6. デプロイ操作が終了したら、**[完了]** をクリックします。 
 
 実際にデプロイすると、Data Factory エンティティ (リンクされたサービス、テーブル、パイプライン) の JSON ファイルに指定されているプロパティの値が、構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。
 
@@ -441,4 +449,4 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="01/09/2016"
 	ms.author="jaime.espinosa"/>
 
@@ -45,7 +45,7 @@ Azure App Service Web Apps は、エンタープライズ レベルの Web ア�
 - **デプロイメント スロット** - [ステージングされたデプロイメント][Slots]を実行し、Azure App Service の運用環境の Web アプリと同じ運用前環境でコードを検証します。結果に満足したら、スワップ操作を実行することにより、ダウンタイムなしで新しいバージョンのアプリをリリースします。 
 - **運用環境でのテスト** - ステージングされたデプロイメントを次のレベルに移行し、A/B テストを実行して、構成可能な一部のライブ トラフィックで新しいコードを検証します。 
 - **Web ジョブ** - Web Apps VM でプログラムまたはスクリプトを実行します。複数の VM で実行するため、継続的に、またはスケジュールやスケールに基づきジョブを実行します。Azure [Web ジョブ SDK][Webjobs] を使用して Azure Storage または Service Bus と統合します。
-- **ハイブリッド接続** - [ハイブリッド接続](../integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
+- **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
 
 ## 始めに ##
 Web Apps を使用するには、[ASP.NET Web アプリを作成する方法][create]のチュートリアルに従ってください。
@@ -64,4 +64,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->
