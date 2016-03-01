@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="12/18/2015" 
+	ms.date="02/22/2016" 
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB コレクションを作成する方法
@@ -22,26 +22,30 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 コレクションについて不明な場合は、 「[DocumentDB コレクションとは](#what-is-a-documentdb-collection)」を参照してください。
 
-![ジャンプバーの [DocumentDB アカウント] 、[DocumentDB アカウント] ブレードのアカウント、[DocumentDB アカウント] ブレードの [データベース] レンズのデータベースを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-database-creation-1-3.png)
+1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。**[DocumentDB アカウント]** が表示されない場合は、**[参照]** をクリックし、**[DocumentDB アカウント]** をクリックします。
 
-1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。 
+    ![ジャンプバーの [DocumentDB アカウント] 、[DocumentDB アカウント] ブレードのアカウント、[DocumentDB アカウント] ブレードの [データベース] レンズのデータベースを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
 
 2.  **[DocumentDB アカウント]** ブレードで、コレクションを追加するアカウントを選択します。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
 
 3. 選択したアカウントの **[DocumentDB アカウント]** ブレードで、**[データベース]** レンズまで下にスクロールし、コレクションを追加するデータベースを選択します。
-    
+
+    ![ジャンプバーの [DocumentDB アカウント] 、[DocumentDB アカウント] ブレードのアカウント、[DocumentDB アカウント] ブレードの [データベース] レンズのデータベースを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-database-creation-3.png)
+
 4. **[データベース]** ブレードで、**[コレクションの追加]** をクリックします。
 
-	![Screen shot highlighting the Add Collection button on the Database blade, the settings on the Add Collection blade, and the OK button - Azure portal for DocumentDB - Cloud based database creator for NoSQL JSON databases](./media/documentdb-create-collection/docdb-collection-creation-4-7.png)
+	![Screen shot highlighting the Add Collection button on the Database blade, the settings on the Add Collection blade, and the OK button - Azure portal for DocumentDB - Cloud based database creator for NoSQL JSON databases](./media/documentdb-create-collection/docdb-collection-creation-4.png)
 
-5. **[コレクションの追加]** ブレードで、新しいコレクションの ID を入力します。コレクション名は、1 ～ 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。名前が検証されると、緑色のチェック マークが [ID] ボックスに表示されます。
+5. **[コレクションの追加]** ブレードの **[ID]** ボックスに、新しいコレクションの ID を入力します。コレクション名は、1 ～ 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。名前が検証されると、緑色のチェック マークが [ID] ボックスに表示されます。
+
+	![Screen shot highlighting the Add Collection button on the Database blade, the settings on the Add Collection blade, and the OK button - Azure portal for DocumentDB - Cloud based database creator for NoSQL JSON databases](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
 
 6. 新しいコレクションの価格レベルを選択します。作成するそれぞれのコレクションが、課金対象のエンティティになります。使用可能なパフォーマンス レベルの詳細については、[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)に関するページを参照してください。
 
 7. 次のいずれかの **[インデックス作成ポリシー]** を選択します。
 
 	- **[既定]**。このポリシーでは、文字列に対してハッシュ インデックスを、数値に対して範囲インデックスを使用します。このポリシーは、文字列に対しては等値クエリを実行し、数値に対しては ORDER BY、範囲、および等値クエリを使用する場合に最適です。また、インデックスのストレージ オーバーヘッドが小さく、地理空間インデックスを含んでいます。
-	- **[範囲]**。このポリシーは、数値と文字列の両方に対してORDER BY、範囲、等値クエリを使用する場合に最適です。このポリシーは、**既定**よりもインデックスのストレージ オーバーヘッドが大きく、地理空間インデックスを含んでいます。
+	- **[ハッシュ]**。このポリシーは、数値と文字列の両方に対してORDER BY、範囲、等値クエリを使用する場合に最適です。このポリシーは、**既定**よりもインデックスのストレージ オーバーヘッドが大きく、地理空間インデックスを含んでいます。
 
 	インデックス作成ポリシーの詳細については、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」を参照してください。
 
@@ -50,7 +54,7 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 9. 新しいコレクションは、**[データベース]** ブレードの **[コレクション]** レンズに表示されます。
  
-	![Screen shot of the new collection in the Database blade - Azure portal for DocumentDB - Cloud based database creator for NoSQL JSON databases](./media/documentdb-create-collection/docdb-collection-creation-8.png)
+	![Screen shot of the new collection in the Database blade - Azure portal for DocumentDB - Cloud based database creator for NoSQL JSON databases](./media/documentdb-create-collection/docdb-collection-creation-9.png)
 
 ## DocumentDB コレクションとは 
 
@@ -62,7 +66,7 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 ## DocumentDB コレクションを作成するその他の方法
 
-コレクションは必ずしもポータルを使用して作成する必要はなく、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成することもできます。DocumentDB .NET SDK を使用してコレクションを作成する方法を示す C# コードのサンプルについては、CollectionManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/CollectionManagement/Program.cs) ファイルを参照してください。このファイルは、[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できます。
+コレクションは必ずしもポータルを使用して作成する必要はなく、[DocumentDB SDK](documentdb-sdk-dotnet.md) を使用して作成することもできます。DocumentDB .NET SDK を使用してコレクションを操作する方法を示す C# コード サンプルについては、「[コレクションのサンプル](documentdb-dotnet-samples.md#collection-examples)」を参照してください。DocumentDB Node.js SDK を使用してコレクションを操作する方法を示す Node.js コード サンプルについては、「[コレクションのサンプル](documentdb-nodejs-samples.md#collection-examples)」を参照してください。
 
 ## トラブルシューティング
 
@@ -74,8 +78,8 @@ Azure ポータルで **[コレクションの追加]** が無効になってい
 
 - ポータルのドキュメント エクスプローラーを使用して[ドキュメントを追加](documentdb-view-json-document-explorer.md)できます。
 - DocumentDB データ移行ツールを使用して[ドキュメントとデータをインポート](documentdb-import-data.md)できます。このツールでは、JSON ファイルと CSV ファイルをインポートできるほか、SQL Server、MongoDB、Azure Table Storage、その他の DocumentDB コレクションからデータをインポートできます。 
-- いずれかの [DocumentDB SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを追加できます。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できる DocumentManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/DocumentManagement/Program.cs) ファイルに、DocumentDB の .NET SDK を使用したドキュメントに対する CRUD 操作を示します。
+- いずれかの [DocumentDB SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを追加できます。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。DocumentDB .NET SDK を使用してドキュメントを操作する方法を示す C# コード サンプルについては、「[ドキュメントのサンプル](documentdb-dotnet-samples.md#document-examples)」を参照してください。DocumentDB Node.js SDK を使用してドキュメントを操作する方法を示す Node.js コード サンプルについては、「[ドキュメントのサンプル](documentdb-nodejs-samples.md#document-examples)」を参照してください。
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

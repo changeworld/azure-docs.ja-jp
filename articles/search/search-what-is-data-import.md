@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
+	ms.date="02/09/2016"
 	ms.author="heidist"/>
 
 # Azure Search へのデータのインポート
@@ -22,7 +22,7 @@
 - [Overview](search-what-is-data-import.md)
 - [Portal](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
-- [REST API](search-import-data-rest-api.md)
+- [REST](search-import-data-rest-api.md)
 - [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 Azure Search の動作には永続化されたデータ (インデックス) が使用され、このデータを基に、インデックスの処理、クエリの実行、検索結果の生成に使用されるドキュメントと情報が提供されます。インデックスを設定するには、データの読み込みのプッシュまたはプル モデルを使用できます。
@@ -60,4 +60,4 @@ Azure Search の動作には永続化されたデータ (インデックス) が
 |スケジュールされたデータ更新|インデクサーを使用します (上記参照)。|
 |コードを使用しないプロトタイプ作成または編集|ポータルには、インデクサーを構成するためのデータ インポート ウィザードが用意されており、プライマリ データベースに十分な情報がある場合は暫定的なスキーマを生成することもできます。ウィザードでは、スケジュールされたデータ更新を設定するためのオプションを使用できます。必要に応じて、言語アナライザーまたは CORS オプションを追加できます。少数ながらマイナス面もあります。スコアリング プロファイルは追加できません。コードでの使用向けに、ポータルで作成したスキーマを JSON ファイルにエクスポートすることもできません。| 
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

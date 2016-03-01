@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # .NET を使用した Azure Search インデックスの作成
@@ -66,4 +66,4 @@
 
 このメソッドは、新しいインデックスのスキーマを定義する `Field` オブジェクトのリストで新しい `Index` オブジェクトを作成します。各フィールドには、名前、データ型、および検索動作を定義するいくつかの属性があります。フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます (簡潔さを優先し、サンプルではこれらは省略されています)。Index オブジェクトとその構成要素の詳細については、[MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.index_members.aspx) の SDK リファレンスおよび [Azure Search REST API リファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

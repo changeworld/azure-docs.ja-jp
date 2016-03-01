@@ -11,7 +11,7 @@
 <tags 
 	ms.service="stream-analytics" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
 	ms.date="02/11/2016"
@@ -119,4 +119,4 @@ Contoso は工業オートメーション スペースの製造会社で、自�
 
 このチュートリアルでは、基本的にさまざまな SAQL クエリの作成を開始し、ブラウザーで、データのさまざまなパターンの結果を確認します。ただし、これはほんの導入部に過ぎません。Stream Analytics でできることはたくさんあります。次に学ぶことは、Stream Analytics ジョブを入力と出力に関連付け、それを Azure にデプロイすることです。[学習マップ](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) ガイドを使用して、Stream Analytics の詳細を探究することができます。クエリの作成の詳細については、[一般的なクエリ パターン](./stream-analytics-stream-analytics-query-patterns.md#query-example-detect-the-absence-of-events)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

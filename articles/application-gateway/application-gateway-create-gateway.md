@@ -48,11 +48,10 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
+- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 
-
-## 新しい Application Gateway の作成
+## 新しいアプリケーション ゲートウェイの作成
 
 Application Gateway を作成するには:
 
@@ -60,12 +59,12 @@ Application Gateway を作成するには:
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
->[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
+>[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
 
 
 ### Application Gateway リソースの作成
 
-ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
+ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを、独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
 次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
 
@@ -331,7 +330,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 ゲートウェイを構成したら、**Start-AzureApplicationGateway** コマンドレットを使用してゲートウェイを起動します。Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
 
 
-> [AZURE.NOTE] **Start-AzureApplicationGateway** コマンドレットは終了までに最大で 15 ～ 20 分かかる場合があります。
+> [AZURE.NOTE] **Start-AzureApplicationGateway** コマンドレットは、終了までに最大で 15 ～ 20 分かかる場合があります。
 
 
 
@@ -345,7 +344,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 ## ゲートウェイの状態の確認
 
-**Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイの状態を確認します。前の手順で **Start-AzureApplicationGateway** が成功した場合、*State* は Running になり、*Vip* と *DnsName* に有効な値が入力されます。
+**Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイの状態を確認します。前の手順で **Start-AzureApplicationGateway** が成功した場合、*State* は Running になり、*Vip* と *DnsName* に有効な値が入ります。
 
 次の例では、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 方向のトラフィックを受け入れる準備が完了している Application Gateway を示します。
 
@@ -372,7 +371,7 @@ Application Gateway を削除するには:
 2. ゲートウェイを削除するには、**Remove-AzureApplicationGateway** コマンドレットを使用します。
 3. ゲートウェイが削除されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
 
-次の例では、最初の行で **Stop-AzureApplicationGateway** コマンドレットを示し、続いてその出力を示します。
+次の例の最初の行は **Stop-AzureApplicationGateway** コマンドレットを示し、その後に出力が続きます。
 
 	Stop-AzureApplicationGateway AppGwTest
 
@@ -407,11 +406,11 @@ Application Gateway が停止状態になったら、**Remove-AzureApplicationGa
 
 SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
 
-内部ロード バランサーとともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

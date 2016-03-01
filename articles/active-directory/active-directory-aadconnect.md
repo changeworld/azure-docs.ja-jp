@@ -29,7 +29,7 @@ Azure AD Connect は、Windows Server Active Directory などのオンプレミ�
 
 - 単一のツールにより、同期とサインインのための容易なデプロイメントを実現できます。
 
-- それぞれのシナリオに適した最新の機能が手に入ります。Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「[ディレクトリ統合ツールの比較](active-directory-aadconnect-get-started-tools-comparison.md)」を参照してください。
+- それぞれのシナリオに適した最新の機能が手に入ります。Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「[ハイブリッド ID ディレクトリ統合ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
 
 
 ### Azure AD Connect の動作
@@ -38,7 +38,7 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 
 <center>![Azure AD Connect スタック](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
-- 同期 - この部分は、以前 [Dirsync および Azure AD Sync](active-directory-aadconnect-get-started-tools-comparison.md) としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
+- 同期 - この部分は、以前 [Dirsync および Azure AD Sync](active-directory-hybrid-identity-design-considerations-tools-comparison.md) としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
 - AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、組織で、ドメイン参加 SSO、AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイメントに対応するために使用できます。
 - 正常性の監視 - Azure AD Connect Health により、強力に監視し、Azure ポータルでこのアクティビティを一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](active-directory-aadconnect-health.md)」を参照してください。
 
@@ -144,4 +144,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

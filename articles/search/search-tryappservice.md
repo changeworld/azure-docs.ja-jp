@@ -13,22 +13,23 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="search" 
-   ms.date="01/13/2016"
+   ms.date="02/21/2016"
    ms.author="heidist"/>
 
 # Azure App Service での Azure Search の無料試用
 
 [Azure App Service](https://tryappservice.azure.com/) は、サインアップせずに **Azure Search** を含む Azure サービスを 1 時間無料でテスト使用できるブラウザ ベースのセッションです。このサイトには、選択可能ないくつかのテンプレートが用意されています。Azure Search を含む ASP.NET テンプレートを選択すると、選択したサービスのサポートがある、完全に機能する Web サイトにアクセスできます。
 
-[Azure App Service](https://tryappservice.azure.com/) プランの一部である Azure Search サービスは既に作成されており、検索クエリを受け付ける準備ができています。独自のインデックスやデータをアップロードしたり使用したりすることはできませんが、クエリを実行して、コード変更を何回も実行し、ユーザー エクスペリエンスを作り変えることができます。
+**Azure App Service** プランの一部である Azure Search サービスは既に作成されており、検索クエリを受け付ける準備ができています。独自のインデックスやデータをアップロードしたり使用したりすることはできませんが、クエリを実行して、コード変更を何回も実行し、ユーザー エクスペリエンスを作り変えることができます。
 
-検索データは[米国地質調査所 (USG)](http://geonames.usgs.gov/domestic/download_data.htm) のもので、約 3 百万行の全米のランドマーク、史跡、建造物、およびその他のランドマーク地物が含まれます。
+検索データは[米国地質調査所 (USG)](http://geonames.usgs.gov/domestic/download_data.htm) のもので、約 300 万行の全米のランドマーク、史跡、建造物、およびその他のランドマーク地物が含まれます。
 
 ## 作業開始
 
 1 時間のセッションをまだ開始していない場合、次の手順に従って開始してください。
 
-1. [https://tryappservice.azure.com](https://tryappservice.azure.com/) に移動して、下へスクロールして **[Web アプリ]** を選択します。 
+1. [https://tryappservice.azure.com](https://tryappservice.azure.com/) を右クリックして、このサイトをブラウザーの新しいウィンドウで開きます。
+2. 下へスクロールして **[Web アプリ]** を選択します。 
 2. **[次へ]** をクリックします。
 3. **ASP.NET + Azure Search Site** テンプレートを選択します。
 
@@ -523,4 +524,4 @@ USG 検索インデックスの構築および読み込みには、このテン�
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

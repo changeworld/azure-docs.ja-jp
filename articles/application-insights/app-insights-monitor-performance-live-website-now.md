@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="11/25/2015"
+	ms.date="02/18/2016"
 	ms.author="awills"/>
 
 
@@ -196,6 +196,7 @@ Status Monitor が動作するように、サーバーのファイアウォー�
 
 IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
+
 ## <a name="next"></a>次のステップ
 
 * サイトがライブの状態であることを確認するには、[Web テストを作成][availability]します。
@@ -220,4 +221,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="02/04/2016"
 	ms.author="kirillg"/>
 
@@ -50,4 +50,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

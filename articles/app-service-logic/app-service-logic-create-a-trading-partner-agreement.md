@@ -10,14 +10,15 @@
 <tags
    ms.service="app-service-logic"
    ms.devlang="multiple"
-   ms.topic="article"
+	ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="12/07/2015"
+   ms.date="02/18/2016"
    ms.author="rajram"/>
 
-
 # 取引先契約の作成   
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 取引先は、B2B (企業間) コミュニケーションに含まれるエンティティです。2 つのパートナーがある関係を確立した場合、この関係は*契約*と呼ばれます。契約は、2 つのパートナーが達成したいと考えているコミュニケーションに基づいて定義され、プロトコルまたはトランスポートに固有のものです。Azure App Service がサポートするさまざまな B2B プロトコルとトランスポートには、以下のものが含まれます。
 
@@ -78,4 +79,4 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.png
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

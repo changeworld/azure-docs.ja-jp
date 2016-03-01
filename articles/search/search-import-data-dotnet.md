@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
+	ms.date="02/09/2016"
 	ms.author="heidist"/>
 
 # .NET を使用した Azure Search へのデータのインポート
@@ -125,4 +125,4 @@
 
 最後に、メソッドは 2 秒間遅延します。インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

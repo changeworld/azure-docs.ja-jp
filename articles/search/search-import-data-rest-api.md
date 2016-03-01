@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/17/2015"
+	ms.date="02/17/2016"
 	ms.author="heidist"/>
 
 # REST API を使用した Azure Search へのデータのインポート
@@ -84,4 +84,4 @@ URL では、サービスの名前と適切な API バージョン (このドキ
 
 ドキュメント アクションおよび成功/エラー応答の詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -83,7 +83,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
+* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
 
 ## コンピューティング集中型インスタンス
 
@@ -117,23 +117,32 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 ## 顧客事例
 
-* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
 
-* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
-
-* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
 
 * [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
-
-* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 
 * [Ludwig Institute of Cancer Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5830)
 
 * [Microsoft Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=15634)
+
+* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
+
+* [Mitsubishi UFJ Securities International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=26266)
+
+* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
+
+
+
+
+
+
 
 ## 次のステップ
 
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

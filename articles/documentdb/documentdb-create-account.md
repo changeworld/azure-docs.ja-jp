@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="NoSQL データベース アカウントの作成 - 無料試用版 | Microsoft Azure" 
+<properties
+	pageTitle="NoSQL データベース アカウントの作成 - 無料試用版 | Microsoft Azure"
 	description="JSON の管理された NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン データベース クリエーターを使用して、データベース アカウントを作成する方法について説明します。無料試用版を今すぐ入手してください。"
 	keywords="無料試用版, オンライン データベース クリエーター, データベースの作成, データベース作成, documentdb, Azure, Microsoft Azure"
-	services="documentdb" 
-	documentationCenter="" 
-	authors="mimig1" 
-	manager="jhubbard" 
+	services="documentdb"
+	documentationCenter=""
+	authors="mimig1"
+	manager="jhubbard"
 	editor="monicar"/>
 
-<tags 
-	ms.service="documentdb" 
+<tags
+	ms.service="documentdb"
 	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="12/17/2015" 
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="02/23/2016"
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB データベース アカウントを作成する方法
@@ -36,7 +36,7 @@ DocumentDB アカウントを作成できたら、次の手順として Document
 - GitHub の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) リポジトリの [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) プロジェクトにある C# .NET のサンプル。
 - Azure ポータル。[Azure ポータルを使用した DocumentDB データベースの作成](documentdb-create-database.md)に関するページの説明を参照してください。
 - 包括的なチュートリアル: [.NET](documentdb-get-started.md)、[.NET MVC](documentdb-dotnet-application.md)、[Java](documentdb-java-application.md)、[Node.js](documentdb-nodejs-application.md)、または [Python](documentdb-python-application.md)。
-- [DocumentDB SDK](documentdb-sdk-dotnet.md)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。 
+- [DocumentDB SDK](documentdb-sdk-dotnet.md)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。
 
 
 データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。
@@ -48,6 +48,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 -	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
- 
-
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

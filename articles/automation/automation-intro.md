@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="02/11/2016"
-	ms.author="bwren;sngun"/>
+	ms.date="02/18/2016"
+	ms.author="magoedte;bwren"/>
 
 # Azure Automation の概要
 
@@ -41,7 +41,7 @@ Azure Automation での Runbook は、Windows PowerShell または Windows Power
 
 ## Azure Automation での Runbook の作成 
 
-最初から[独自の Runbook を作成する](automation-creating-importing-runbook.md)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。要件と PowerShell の経験に基づいて選択できる 3 つの [Runbook の種類](automation-runbook-types.md)があります。PowerShell コードを直接操作する場合は、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) をオフラインでまたは Azure ポータルで[テキスト エディター](http://msdn.microsoft.com/library/azure/dn879137.aspx)を使用して編集できます。コードを見ないで Runbook を編集する場合は、Azure プレビュー ポータルで[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用して、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) を作成できます。
+最初から[独自の Runbook を作成する](automation-creating-importing-runbook.md)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。要件と PowerShell の経験に基づいて選択できる 3 つの [Runbook の種類](automation-runbook-types.md)があります。PowerShell コードを直接操作する場合は、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) をオフラインでまたは Azure ポータルで[テキスト エディター](http://msdn.microsoft.com/library/azure/dn879137.aspx)を使用して編集できます。コードを見ないで Runbook を編集する場合は、Azure ポータルで[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用して、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) を作成できます。
 
 読むより見る方がよければ、 2015 年 5 月に行われた Microsoft Ignite セッションのビデオをご覧ください。注: このビデオで説明されている概念と機能は正しいのですが、このビデオが録画されたころよりも Azure Automation は大幅に改善され、現在では Azure ポータルの UI が増え、サポートされる機能も増えました。
 
@@ -62,7 +62,7 @@ Azure Automation での Runbook は、Windows PowerShell または Windows Power
 
 ## モジュールと構成の取得 
 
-Runbook や DSC の構成で使用できるコマンドレットを含む [PowerShell モジュール](automation-runbook-gallery.md#modules-in-powershell-gallery)を、[PowerShell ギャラリー](http://www.powershellgallery.com/)から取得できます。このギャラリーを Azure プレビュー ポータルから起動して、Azure Automation にモジュールを直接インポートできます。または、手動でダウンロードしてインポートすることもできます。Azure ポータルからは、直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
+Runbook や DSC の構成で使用できるコマンドレットを含む [PowerShell モジュール](automation-runbook-gallery.md#modules-in-powershell-gallery)を、[PowerShell ギャラリー](http://www.powershellgallery.com/)から取得できます。このギャラリーを Azure ポータルから起動して、Azure Automation にモジュールを直接インポートできます。または、手動でダウンロードしてインポートすることもできます。Azure ポータルからは、直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
 
 
 ## Azure Automation の実際の適用例 
@@ -101,4 +101,4 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

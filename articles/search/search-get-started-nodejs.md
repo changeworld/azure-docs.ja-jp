@@ -17,12 +17,15 @@
 	ms.author="heidist"/>
 
 # NodeJS での Azure Search の使用
+> [AZURE.SELECTOR]
+- [Portal](search-get-started-portal.md)
+- [.NET](search-get-started-dotnet.md)
 
 検索エクスペリエンスとして Azure Search を使用するカスタム NodeJS 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
 [NodeJS](https://nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
 
-このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
+このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[Azure ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
 
 ## データについて
 
@@ -118,4 +121,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

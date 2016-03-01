@@ -12,8 +12,8 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.topic="get-started-article" 
+	ms.date="02/18/2016" 
 	ms.author="billmath"/>
 
 # LDAP 認証と Azure Multi-Factor Authentication Server 
@@ -63,4 +63,4 @@ LDAP クライアントを構成するには、次のガイドラインに従い
 - LDAP タイムアウトは、LDAP ディレクトリでユーザーの資格情報を検証し、第 2 要素認証を実行し、応答を受け取って LDAP アクセス要求に応答する時間があるように、30 ～ 60 秒に構成します。 
 - LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている SSL 証明書を信頼する必要があります。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

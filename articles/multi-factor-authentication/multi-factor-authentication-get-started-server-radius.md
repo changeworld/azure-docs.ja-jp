@@ -12,8 +12,8 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.topic="get-started-article" 
+	ms.date="02/18/2016" 
 	ms.author="billmath"/>
 
 
@@ -60,4 +60,4 @@ RADIUS クライアントを構成するには、ガイドラインに従いま�
 - 前に構成した同じ共有シークレットを使用します。 
 - RADIUS のタイムアウトを 30 ～ 60 秒に設定し、ユーザーの資格情報を検証する、多要素認証を実行する、応答を受信する、および RADIUS アクセス要求に対して応答する時間を確保します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

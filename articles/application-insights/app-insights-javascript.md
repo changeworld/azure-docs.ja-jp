@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/09/2016"
+	ms.date="02/19/2016"
 	ms.author="awills"/>
 
 # Web ページ向けの Application Insights
@@ -170,7 +170,7 @@ Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに�
 
 > [AZURE.NOTE] ブレードで [ブラウザー] フィルターを削除した場合、サーバーと AJAX の両方の依存関係がこれらのグラフの対象となります。フィルターを再構成するには [既定値に戻す] をクリックしてください。
 
-**AJAX 呼び出しエラーを詳しく調査する**簡単な方法は、エラー グラフをグリッドに変更し、特定の行をクリックしてその内容を表示することです。
+**AJAX 呼び出しエラーを詳しく調査する** 下にスクロールして [依存関係の障害] グリッドを表示し、特定の行をクリックしてその内容を表示します。
 
 ![](./media/app-insights-javascript/37.png)
 
@@ -238,4 +238,4 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

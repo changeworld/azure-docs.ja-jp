@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="12/18/2015"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # Fiddler を使用して Azure Search REST API を評価およびテストする
@@ -239,4 +239,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

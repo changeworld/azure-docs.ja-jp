@@ -28,8 +28,8 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
  
 次のテンプレートのいずれかを選択し、Mesos または Docker Swarm クラスターをデプロイします。**注** - 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
  
-* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos)
-* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm)
+* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
  
 いずれのテンプレート ページにも「deploy to Azure (Azure にデプロイする)」ボタンがあります。このボタンをクリックすると、Azure ポータルが起動します。フォームは次のようになります。 <br />
 
@@ -67,8 +67,8 @@ SSHRSAPUBLICKEY | 仮想マシンの認証には SSH を使用する必要があ
  
 次のテンプレートのいずれかを選択し、Mesos または Docker Swarm クラスターをデプロイします。**注** - 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
  
-* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos)
-* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm)
+* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
  
 次に、Azure CLI が Azure サブスクリプションに接続されたことを確認します。これは次のコマンドを使用して行うことができます。
 
@@ -127,8 +127,8 @@ ACS クラスターは PowerShell でデプロイすることもできます。�
 
 次のテンプレートのいずれかを選択し、Mesos または Docker Swarm クラスターをデプロイします。**注** - 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
  
-* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-mesos)
-* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/acs-swarm)
+* Mesos: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* Swarm: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Azure サブスクリプションでクラスターを作成する前に、PowerShell セッションが Azure にログインしていることを確認します。これは `Get-AzureRMSubscription` コマンドで完了できます。
 
@@ -173,4 +173,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE\_GROUP\_NAME-Temp
 
  
 
-<!-----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

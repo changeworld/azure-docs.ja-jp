@@ -12,7 +12,7 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
-	ms.topic="article" 
+	ms.topic="hero-article" 
 	ms.date="01/12/2016" 
 	ms.author="tomfitz"/>
 
@@ -303,4 +303,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

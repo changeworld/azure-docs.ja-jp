@@ -14,7 +14,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="12/01/2015"
+    ms.date="02/23/2016"
     ms.author="adamkr; sstein"/>
 
 # PowerShell を使用してエラスティック データベース プールを作成し、複数の SQL Database のリソースをスケールアウトする 
@@ -26,7 +26,7 @@
 
 PowerShell コマンドレットを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成し、複数のデータベースを管理する方法について説明します。
 
-> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
+> [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
 エラスティック データベース プールを使用すると、複数の SQL Database のデータベース リソースと管理をスケールアウトすることができます。
 
@@ -47,7 +47,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 これで、Azure リソース マネージャー モジュールが実行され、エラスティック データベース プールを作成して構成するために必要なすべてのコマンドレットにアクセスできるようになりました。はじめに Azure アカウントへのアクセスを確立する必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
-	Add-AzureRmAccount
+	Login-AzureRmAccount
 
 正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
 
@@ -230,11 +230,11 @@ CSV ファイルにエクスポートします。
 
 ## 次のステップ
 
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[弾力性データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 
 ## エラスティック データベースのリファレンス
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

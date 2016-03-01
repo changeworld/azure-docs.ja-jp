@@ -14,7 +14,7 @@
     ms.workload="na"
     ms.tgt_pltfrm="mobile-html"
     ms.devlang="javascript"
-    ms.topic="article"
+    ms.topic="hero-article"
     ms.date="02/09/2016"
     ms.author="adrianha"/>
 
@@ -80,4 +80,4 @@ SDK の使用方法を確認してください。
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

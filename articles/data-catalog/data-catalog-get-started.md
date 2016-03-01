@@ -10,7 +10,7 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
    ms.date="02/08/2016"
@@ -232,4 +232,4 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 [12]: ./media/data-catalog-get-started/ownership.png
 [13]: ./media/data-catalog-get-started/crowdsource.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

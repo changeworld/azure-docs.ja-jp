@@ -28,9 +28,9 @@
 
 ### アカウント
 
-- **Azure アカウント** - まだ Azure サブスクリプションを持っていない場合は、[Azure 無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページで無料試用版のアカウントを簡単に作成できます。
+- **Azure アカウント** - まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成][azure_free_account]できます。
 - **Batch アカウント** - Azure サブスクリプションの用意ができたら、[Azure Batch アカウントを作成して管理します](batch-account-create-portal.md)。
-- **ストレージ アカウント** - 「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
+- **ストレージ アカウント** - 「[Azure ストレージ アカウントについて](./../storage/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
 
 ### Visual Studio
 
@@ -626,6 +626,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 - [TopNWords][github_topnwords] サンプルで、Batch を使用した "上位 N 個の単語" ワークロードの処理について、さまざまな実装を確認してください。
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
+[azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
 [batch_explorer_blog]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
@@ -680,4 +681,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

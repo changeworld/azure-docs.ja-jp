@@ -4,15 +4,15 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="adinah"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="01/14/2016"
+   ms.workload="NA"
+   ms.date="02/22/2016"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイスのデプロイ
@@ -294,4 +294,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

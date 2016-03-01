@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/05/2016"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # Azure ポータルでの Azure Search サービスの作成
@@ -25,7 +25,7 @@ Azure Search は、Free (Shared) から Standard までの価格レベルで利�
 
 ## Azure Search を無料でサブスクリプションに追加する
 
-Azure Search は、管理者が共有サービスを選択することによって無料で既存の Azure サブスクリプションに追加できます。[無料試用版サブスクリプション](../includes/free-trial-note.md)にサインアップしてご検討ください。
+Azure Search は、管理者が共有サービスを選択することによって無料で既存の Azure サブスクリプションに追加できます。[無料試用版サブスクリプション](../../includes/free-trial-note.md)にサインアップしてご検討ください。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
@@ -126,4 +126,4 @@ Azure Search 構成の最後の手順では、サービスがクライアント 
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->
