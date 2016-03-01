@@ -39,7 +39,7 @@ Azure Search の動作には永続化されたデータ (インデックス) が
 
 ##データのプル (クロール) 
 
-プル モデルでは、サポートされているデータ ソースをクロールしてインデックスを読み込みます。Azure Search では、この機能は*インデクサー*によって実装され、現在は Azure SQL Database、DocumentDB、および Azure VM の SQL Server で利用可能です。Azure SQL データのアップロードについては、「[インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)」を参照してください。
+プル モデルでは、サポートされているデータ ソースをクロールしてインデックスを読み込みます。Azure Search では、この機能は *インデクサー* によって実装され、現在は Azure SQL Database、DocumentDB、および Azure VM の SQL Server で利用可能です。Azure SQL データのアップロードについては、「[インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)」を参照してください。
 
 インデックスにデータをプルするにはポータル、REST API、または .NET SDK を使用することができます。
 

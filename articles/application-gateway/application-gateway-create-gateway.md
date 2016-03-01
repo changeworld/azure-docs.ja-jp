@@ -78,7 +78,7 @@ Application Gateway を作成するには:
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
+ *Description* 、 *InstanceCount* 、および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
