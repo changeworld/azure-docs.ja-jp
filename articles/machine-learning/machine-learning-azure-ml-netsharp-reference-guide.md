@@ -414,4 +414,4 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 [1]: ./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->

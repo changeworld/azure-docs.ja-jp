@@ -151,4 +151,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!-----HONumber=AcomDC_0211_2016-->

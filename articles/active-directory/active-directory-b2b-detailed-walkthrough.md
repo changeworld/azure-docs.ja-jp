@@ -80,6 +80,6 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 - [外部ユーザー トークンの形式](active-directory-b2b-references-external-user-token-format.md)
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!----HONumber=AcomDC_0218_2016-->

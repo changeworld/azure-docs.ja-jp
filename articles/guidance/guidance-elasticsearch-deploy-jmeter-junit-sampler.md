@@ -177,4 +177,4 @@
 
 > [AZURE.NOTE] pscp ユーティリティを使用して、Windows コンピューターから Ubuntu にファイルをコピーできます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0211_2016-->
