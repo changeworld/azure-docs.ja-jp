@@ -205,7 +205,7 @@
 	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##</a><a name="test">エミュレーターでプログラムをテストする
+##<a name="test"></a>エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 
@@ -222,7 +222,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 フォルダー|注
 ---|---
-/WordCount|ワード カウント プロジェクトのルート フォルダー。 
+/WordCount|ワード カウント プロジェクトのルート フォルダー。
 /WordCount/Apps|mapper と reducer の実行可能ファイルのフォルダー。
 /WordCount/Input|MapReduce のソース ファイル フォルダー。
 /WordCount/Output|MapReduce の出力ファイル フォルダー。
