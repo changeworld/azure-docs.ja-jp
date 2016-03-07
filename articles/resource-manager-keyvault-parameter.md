@@ -20,8 +20,6 @@
 
 デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、[Azure Key Vault](./key-vault/key-vault-whatis.md) にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。テンプレートにはシークレットの参照のみを含めるので、シークレットが明らかになることはありません。また、リソースをデプロイするたびにシークレットの値を手動で入力する必要はありません。管理者は、シークレットにアクセスできるユーザーまたはサービス プリンシパルを指定します。
 
-> [AZURE.NOTE] 現時点で Key Vault のシークレットを参照する機能をサポートしているのは Azure CLI のみです。できるだけ早く、Azure PowerShell にこの機能を追加する予定です。
-
 ## Key Vault とシークレットのデプロイ
 
 他のリソース マネージャー テンプレートから参照できる Key Vault を作成するには、**enabledForTemplateDeployment** property を **true** に設定する必要があります。また、ユーザーまたはサービス プリンシパルに対して、シークレットを参照するデプロイメントを実行するアクセス権を付与する必要があります。
@@ -105,4 +103,4 @@ Key Vault とシークレットのデプロイについては、[Key Vault の�
 - 仮想マシンで Key Vault を使用する方法については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、[Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

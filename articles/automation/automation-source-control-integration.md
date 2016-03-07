@@ -12,8 +12,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="infrastructure-services"
-    ms.date="02/09/2016"
-    ms.author="sngun" />
+    ms.date="02/18/2016"
+    ms.author="magoedte;sngun" />
 
 # Azure Automation でのソース管理の統合
 
@@ -33,7 +33,7 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
 
 ## 手順 2. Azure Automation でソース管理を設定する
 
-1. Azure プレビュー ポータルの [Automation アカウント] ブレードで、**[ソース管理の設定]** をクリックします。 
+1. Azure ポータルの [Automation アカウント] ブレードで、**[ソース管理の設定]** をクリックします。 
  
     ![ソース管理の設定](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
 
@@ -120,7 +120,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
     ![チェックイン入力](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名* が更新されました**" というコミット メッセージが表示されます。
+6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名*が更新されました**" というコミット メッセージが表示されます。
 
 
 
@@ -158,4 +158,4 @@ GitHub アカウントから切断するには、[リポジトリの同期] ブ�
 
 ソース管理の統合の詳細については、次のリソースを参照してください。- [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Team Services を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

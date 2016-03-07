@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,24 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/11/2015"
+   ms.date="02/11/2016"
    ms.author="jehollan"/>
    
 # 概要
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 ロジック アプリ用 Azure ML コネクタを使用すると、バッチ スコアリング (バッチ実行サービス) および再トレーニングのために Azure ML API を呼び出すことができます。これらの機能とロジック アプリのトリガーを使用すると、バッチ ジョブのスケジュールや、スケジュールされたモデルの再トレーニングのセットアップを行うことができます。
 
  ![][1]
  
 ## Azure Machine Learning コネクタの使用開始とロジック アプリへの追加
-まず、Azure ML Studio で実験を作成し、Web サービスをセットアップしてデプロイします。これで、API URL と、バッチ実行のヘルプ ページに記載されている BES Post URL のキーを使用できるようになります ([詳細情報](https://github.com/Azure/azure-content/blob/master/articles/machine-learning/machine-learning-walkthrough-5-publish-web-service.md))。
+まず、Azure ML Studio で実験を作成し、Web サービスをセットアップしてデプロイします。これで、API URL と、バッチ実行のヘルプ ページに記載されている BES Post URL のキーを使用できるようになります。([Machine Learning チュートリアル](../machine-learning/machine-learning-walkthrough-5-publish-web-service.md))
 
-コネクタを使用して BES ジョブを実行するには、ロジック アプリに Azure ML コネクタを追加します。次に、必要な情報を入力します (詳細については後述)。再トレーニングをセットアップするには、2 つ目の Azure ML コネクタを追加し、入力パラメーターを指定します (再トレーニングのためのモデルのセットアップの詳細については、[こちら](machine-learning-retrain-models-programmatically.md)を参照してください)。
+コネクタを使用して BES ジョブを実行するには、ロジック アプリに Azure ML コネクタを追加します。次に、必要な情報を入力します (詳細については後述)。再トレーニングをセットアップするには、2 つ目の Azure ML コネクタを追加し、入力パラメーターを指定します (「[プログラムによる Machine Learning のモデルの再トレーニング](../machine-learning/machine-learning-retrain-models-programmatically.md)」を参照してください)。
 
 ## Azure ML バッチ実行ジョブの実行
 Azure ML コネクタには、バッチ実行 (BES) ジョブを実行するためのオプションが 4 つあります。1. 入力と出力があるバッチ ジョブ: 実験に Web サービス入力モジュールと出力モジュールがあります。2. 入力と出力がないバッチ ジョブ: 実験に Web サービス入力モジュールと出力モジュールがありません (たとえば、リーダー モジュールとライター モジュールを使用します)。3. 入力のみがあるバッチ ジョブ: 実験には Web サービス入力モジュールがありますが、Web サービス出力モジュールはありません (たとえば、ライター モジュールを使用します)。4. 出力のみがあるバッチ ジョブ: 実験には Web サービス入力モジュールがありませんが、Web サービス出力モジュールはあります (たとえば、リーダー モジュールを使用します)。BES は非同期要求であり、データのサイズとモデルの複雑さによっては、完了までに時間がかかる場合があることに注意してください。ジョブが完了すると、コネクタは出力結果を返します。
 
 ### バッチ実行: 入力と出力がある場合
-Studio 実験に Web サービス入力モジュールと出力モジュールがある場合、Storage BLOB アカウントと場所に関する情報を指定する必要があります ([詳細情報](machine-learning-consume-web-services.md))。また、実験でセットアップされていれば、グローバル (Web サービス) パラメーターを含めることができます ([詳細情報](machine-learning-web-service-parameters.md))。
+Studio 実験に Web サービス入力モジュールと出力モジュールがある場合、([Storage BLOB アカウントと場所に関する情報を指定する](../machine-learning/machine-learning-consume-web-services.md)) 必要があります。また、実験でセットアップされていれば、グローバル (Web サービス) パラメーターを含めることができます ([Machine Learning Web サービス パラメーター](../machine-learning/machine-learning-web-service-parameters.md))。
 
 ![][2]
 
@@ -77,4 +79,4 @@ Web サービス出力を含めなかった場合は、これを使用できな�
 [6]: ./media/app-service-logic-connector-azureml/img6.png
 [7]: ./media/app-service-logic-connector-azureml/img7.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

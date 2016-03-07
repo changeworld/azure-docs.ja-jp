@@ -58,6 +58,8 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 
 <center>![Cloud](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
+Azure AD Connect 同期: スケジューラの詳細については、「[Azure AD Connect Scheduler](active-directory-aadconnectsync-feature-scheduler.md)」 (Azure AD Connect 同期スケジューラ) を参照してください。
+
 
 ## Azure AD Connect で利用可能なその他のタスク
 Azure AD Connect の初回インストール後は、Azure AD Connect のスタート ページまたはデスクトップのショートカットから、いつでもウィザードを再び起動できます。再度ウィザードを実行すると、追加のタスクの形式で新しいオプションがいくつか表示されます。
@@ -76,4 +78,4 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

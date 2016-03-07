@@ -18,33 +18,33 @@
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
 
-Azure Active Directory (AD) B2C の機能の中には、プレビューではサポートされていなかったものがあります。これらの制限事項の多くは、Azure AD B2C が一般公開される前に排除される予定ですが、プレビューの時点で Azure AD B2C を使用して消費者向けアプリケーションを作成する場合は注意が必要です。
+Azure Active Directory (Azure AD) B2C の機能の中には、プレビューではサポートされていなかったものがあります。これらの制限事項の多くは、Azure AD B2C が一般公開される前に排除される予定ですが、プレビューの時点で Azure AD B2C を使用して消費者向けアプリケーションを作成する場合は注意が必要です。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## Azure AD B2C テナントの作成中の問題
 
-[Azure AD B2C テナントの作成](active-directory-b2c-get-started)中に問題が発生した場合、ガイダンスについてはこの[記事](active-directory-b2c-support-create-directory.md)をご覧ください。
+[Azure AD B2C テナントの作成](active-directory-b2c-get-started)中に問題が発生した場合は、「[Azure AD テナントまたは Azure AD B2C テナントの作成 - 問題と解決策](active-directory-b2c-support-create-directory.md)」を参照してください。
 
 ## 確認メールのブランドの問題
 
-既定の確認メールには、"Microsoft" ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
+既定の確認メールには、Microsoft ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
 
 ## 実稼働アプリケーションのサポート
 
-Azure AD B2C と統合されたアプリケーションを実稼働レベルのアプリケーションとして一般公開することは避けてください。現時点で Azure AD B2C はプレビュー状態であり、いずれ重大な変更が行われる可能性もあります。サービスの SLA も保証されません。問題が発生してもサポートを受けることはできません。リスクを理解したうえで開発段階のサービスを利用する場合は、アプリケーションまたはサービスのスコープについて検討する必要があります。@AzureAD にツイートしてください。
+Azure AD B2C と統合されたアプリケーションを実稼働レベルのアプリケーションとして一般公開することは避けてください。現時点で Azure AD B2C はプレビュー状態であり、常に重大な変更が行われる可能性があります。サービスのサービス レベル アグリーメントも保証されません。問題が発生してもサポートを受けることはできません。リスクを理解したうえで開発段階のサービスを利用する場合は、アプリケーションまたはサービスのスコープについて検討する必要があります。@AzureAD にツイートしてください。
 
 ## アプリケーションに関する制限事項
 
-Azure AD B2C プレビューでは現在、次のタイプのアプリケーションはサポートされていません。サポートされているアプリケーションのタイプについては、[こちらの記事](active-directory-b2c-apps.md)を参照してください。
+Azure AD B2C プレビューでは現在、次のタイプのアプリケーションはサポートされていません。サポートされているアプリケーションのタイプについては、「[Azure AD B2C プレビュー: アプリケーションの種類](active-directory-b2c-apps.md)」を参照してください。
 
-### シングル ページ アプリケーション (Javascript)
+### シングル ページ アプリケーション (JavaScript)
 
 最近多く見かけるようになったシングル ページ アプリケーション (SPA) のフロントエンドは、主に JavaScript で作成されています。AngularJS、Ember.js、Durandal などの SPA フレームワークが使われることも少なくありません。このフローは、Azure AD B2C プレビューではまだ使用できません。
 
 ### デーモン/サーバー側のアプリケーション
 
-長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリケーションは、[OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。このフローは Azure AD B2C プレビューではまだ使用できません。つまり、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
+長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリケーションは、[OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。このフローは Azure AD B2C プレビューではまだ使用できないので、現時点では、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
 
 ### スタンドアロン Web API
 
@@ -52,9 +52,9 @@ Azure AD B2C プレビューでは、[OAuth 2.0 トークンを使用して保�
 
 ### Web API チェーン (On-Behalf-Of)
 
-Azure AD B2C によって保護された Web API から、同様に保護されたダウンストリームの別の Web API を呼び出す手法は、多くのアーキテクチャで使用されています。このシナリオは、バックエンドの Web API から Microsoft Online サービス (Azure AD Graph API など) を呼び出すネイティブ クライアントでよく見られます。
+Azure AD B2C によって保護された Web API から、同様に保護されたダウンストリームの別の Web API を呼び出す手法は、多くのアーキテクチャで使用されています。このシナリオは、バックエンドの Web API から Microsoft オンライン サービス (Azure AD Graph API など) を呼び出すネイティブ クライアントでよく見られます。
 
-このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of Flow) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
+このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
 
 ## ライブラリと SDK に関する制限事項
 
@@ -92,8 +92,4 @@ Azure クラシック ポータルで Azure AD B2C テナントを削除する�
 
 現在、[Azure クラシック ポータル](https://manage.windowsazure.com/)でドメインを正常に確認することはできません。Microsoft では、この問題の解決に取り組んでいます。
 
-## Azure ポータルの警告メッセージ
-
-Azure ポータルの B2C 設定ブレードにアクセスすると、(右上隅の) [通知] の下に、"<B2CTenantName> ディレクトリには使用できるサブスクリプションがありません。切り替えることができる他のディレクトリがあります。" という警告メッセージが表示されます (<B2CTenantName> は実際の B2C テナントの名前です)。このメッセージは無視しても問題ありません。B2C 機能には引き続きアクセスできます。現在、Azure ポータル チームと協力して、この問題の解決に取り組んでいます。
-
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

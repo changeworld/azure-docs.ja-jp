@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ディスク暗号化の適用 |Microsoft Azure"
+   pageTitle="Azure Security Center で Disk Encryption を適用する | Microsoft Azure"
    description="このドキュメントでは、**ディスク暗号化の適用**という Azure セキュリティ センターの推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
@@ -10,13 +10,13 @@
 <tags
    ms.service="security-center"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="02/23/2016"
    ms.author="terrylan"/>
 
-# ディスク暗号化の適用
+# Azure Security Center で Disk Encryption を適用する
 
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure セキュリティ センターにより、ディスク暗号化を適用することが推奨されます。Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
 
@@ -54,4 +54,4 @@ Disk Encryption では、業界標準である Windows の [BitLocker](https://t
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

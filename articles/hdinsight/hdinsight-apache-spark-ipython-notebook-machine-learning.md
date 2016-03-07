@@ -14,15 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight での Apache Spark を使用した Machine Learning アプリケーションの構築 (Linux)
 
 HDInsight の Apache Spark クラスターを使用して Machine Learning アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
-
-> [AZURE.TIP] このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、Notebook の **Python** フォルダーにある**Spark Machine Learning - Predict building temperature using HVAC data.ipynb (Machine learning: HVAC data.ipynb を使用した建物の温度の予測)** Notebook を実行します。
 
 **前提条件:**
 
@@ -45,6 +43,8 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 ##<a name="app"></a>Spark MLlib を使用した Machine Learning アプリケーションの作成
 
+このアプリケーションでは、Spark ML パイプラインを使用して、ドキュメントの分類を実行します。パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。アプリケーションを作成するには、次の手順を実行します。
+
 1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
@@ -53,7 +53,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -61,10 +61,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-3. Machine Learning アプリケーションの作成を始めます。このアプリケーションでは、Spark ML パイプラインを使用して、ドキュメントの分類を実行します。パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。
-
-	アプリケーションの作成を始めるには、最初に、必要なモジュールをインポートし、アプリケーションにリソースを割り当てます。新しい Notebook の空のセルに次のスニペットを貼り付けてから、**Shift + Enter** キーを押します。
-
+3. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
 
 		from pyspark.ml import Pipeline
 		from pyspark.ml.classification import LogisticRegression
@@ -73,29 +70,14 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 		
 		import os
 		import sys
-		from pyspark import SparkConf
-		from pyspark import SparkContext
-		from pyspark.sql import SQLContext
 		from pyspark.sql.types import *
 		
 		from pyspark.mllib.classification import LogisticRegressionWithSGD
 		from pyspark.mllib.regression import LabeledPoint
 		from numpy import array
 		
-		# Assign resources to the application
-		conf = SparkConf()
-		conf.setMaster('yarn-client')
-		conf.setAppName('pysparkregression')
-		conf.set("spark.cores.max", "4")
-		conf.set("spark.executor.memory", "4g")
 		
-		sc = SparkContext(conf=conf)
-		sqlContext = SQLContext(sc)
-
-	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **Python 2** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
-
-	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
- 
+	 
 4. ここで、データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングする必要があります。そのためには、ビルの実際の温度が目標温度より高いかどうかを確認する関数を定義します。実際の温度の方が高い場合、ビルは暑く、値 **1.0** で示されます。実際の温度の方が低い場合、ビルは寒く、値 **0.0** で示されます。
 
 	次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
@@ -272,4 +254,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

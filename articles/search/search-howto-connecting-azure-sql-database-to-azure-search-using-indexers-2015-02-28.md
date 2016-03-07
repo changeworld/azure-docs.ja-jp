@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Azure | ホスト型クラウド検索サービス" 
+	pageTitle="インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Azure | インデックス" 
 	description="インデクサーを使用して Azure SQL Database から Azure Search インデックスにデータを取得する方法について説明します。" 
 	services="search" 
 	documentationCenter="" 
@@ -275,4 +275,4 @@ A: はい。ただし、1 つのノードで一度に実行できるインデク
 
 A: はい。インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、検索サービスのスケールアップを検討してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

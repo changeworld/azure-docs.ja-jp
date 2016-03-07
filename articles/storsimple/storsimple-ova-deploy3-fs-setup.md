@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/05/2016"
+   ms.date="02/18/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array をデプロイする - ファイル サーバーとしてセットアップする (プレビュー)
@@ -69,7 +69,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
 	![](./media/storsimple-ova-deploy3-fs-setup/image5.png)
 
-	デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。
+	デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。ネットワーク インターフェイスは IPv4 だけで構成するか、IPv4 と IPv6 の両方で構成することができます。IPv6 だけで構成することはできません。
 
 1.  DNS サーバーは必須です。これは、デバイスがクラウド ストレージのサービス プロバイダーとやり取りしたり、デバイスがファイル サーバーとして構成されている場合にデバイスを名前により解決したりする際に使用されます。**[DNS サーバー]** の**[ネットワークの設定]** ページで、以下の操作を行います。
 
@@ -235,4 +235,4 @@ StorSimple Virtual Array をファイル サーバーとして構成、登録す
 
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="サーバーの登録解除と保護の無効化 | Microsoft Azure" 
-	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。この記事を使用して、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にします。" 
+	pageTitle="サーバーの削除と保護の無効化 | Microsoft Azure" 
+	description="この記事では、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にする方法を説明します。" 
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="rayne-wiselman" 
@@ -13,12 +13,18 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="02/22/2016" 
 	ms.author="raynew"/>
 
-# サーバーの登録解除と保護の無効化
+# サーバーの削除と保護の無効化
 
-この記事では、Site Recovery コンテナーからサーバーの登録を解除する方法と Site Recovery によって保護される仮想マシンの保護を無効にする方法について説明します。この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
+
+## 概要
+
+この記事では、Site Recovery コンテナーからサーバーの登録を解除する方法と Site Recovery によって保護される仮想マシンの保護を無効にする方法について説明します。
+
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## VMM サーバーの登録解除
 
@@ -210,6 +216,8 @@ VMware 仮想マシンまたは物理サーバーの保護を停止する場合�
 			- 仮想マシンからモビリティ サービスをアンインストールしないでください。
 	
 	- **[保護を無効にする]**—このオプションを有効にして保存すると、マシンは Site Recovery によって保護されなくなります。マシンの保護設定は、自動的にクリーンアップされます。
-	- **[コンテナーから削除する]**—このオプションを選択すると、Site Recovery のコンテナーからのみマシンが削除されます。マシンのオンプレミスの保護設定には影響しません。マシンの設定を削除したり、Azure のサブスクリプションから仮想マシンを削除したりするには、モビリティ サービスをアンインストールして、設定をクリーンアップする必要があります。 ![オプションを削除する](./media/site-recovery-manage-registration-and-protection/RegistrationProtection_RemoveVM.png)
+	- **[コンテナーから削除する]**—このオプションを選択すると、Site Recovery のコンテナーからのみマシンが削除されます。マシンのオンプレミスの保護設定には影響しません。マシンの設定を削除したり、Azure のサブスクリプションから仮想マシンを削除したりするには、モビリティ サービスをアンインストールして、設定をクリーンアップする必要があります。
+	
+		![オプションを削除する](./media/site-recovery-manage-registration-and-protection/remove-vm.png)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

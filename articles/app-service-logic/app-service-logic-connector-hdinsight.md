@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="01/12/2016"
+   ms.date="02/10/2016"
    ms.author="sameerch"/>
 
 
 # HDInsight コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive ジョブ、Pig ジョブ、MapReduce ジョブ、ストリーミング MapReduce ジョブなど、さまざまな Hadoop ジョブを送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
 
 コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。この HDInsight コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
@@ -45,7 +47,7 @@ HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し�
 
 ## 証明書の構成 (省略可能) ##
 
-> [AZURE.NOTE]この手順は、ロジック アプリで管理操作 (クラスターの作成と削除) を実行する場合のみ必要です。
+> [AZURE.NOTE] この手順は、ロジック アプリで管理操作 (クラスターの作成と削除) を実行する場合のみ必要です。
 
 作成した HDInsight コネクタ API App を参照すると、[セキュリティ] コンポーネントが 0 になっています。これは、アップロードされた管理証明書がないことを意味します: ![][2]
 
@@ -58,7 +60,7 @@ API アプリに管理証明書をアップロードするには、次の手順�
 
 証明書が正常にアップロードされると、証明書の詳細が表示されます。![][3]
 
-> [AZURE.NOTE]証明書を変更する場合は、既存の証明書を置き換える別の証明書をアップロードできます。
+> [AZURE.NOTE] 証明書を変更する場合は、既存の証明書を置き換える別の証明書をアップロードできます。
 
 ## ロジック アプリでのコネクタの使用 ##
 
@@ -87,7 +89,7 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -107,4 +109,4 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 [11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.png
 [12]: ./media/app-service-logic-connector-hdinsight/LogicApp8.PNG
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

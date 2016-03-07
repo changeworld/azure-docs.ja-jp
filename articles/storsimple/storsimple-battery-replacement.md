@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -27,7 +27,7 @@ Microsoft Azure StorSimple デバイスの主エンクロージャの電源お�
 - 新しいバックアップ バッテリ モジュールを取り付ける
 - バックアップ バッテリ モジュールを保守する
 
->[AZURE.IMPORTANT]バックアップ バッテリ モジュールを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+>[AZURE.IMPORTANT] バックアップ バッテリ モジュールを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
 
 ## バックアップ バッテリ モジュールを取り外す
 
@@ -97,7 +97,7 @@ Microsoft Azure StorSimple デバイスのバックアップ バッテリ モジ
 
 Azure クラシック ポータルの **[メンテナンス]** ページの **[ハードウェアの状態]** では、バッテリの故障または寿命が近いことが示されます。バッテリの状態は、**[共有コンポーネント]** の **[PCM 0 のバッテリー]** または **[PCM 1 のバッテリー]** で示されます。このページでは、寿命が近い場合は **[低下]** と表示され、寿命に達した場合は **[失敗]** と表示されます。
 
->[AZURE.NOTE]バッテリは単に充電が必要な場合にも **[失敗]** と表示されることがあります。
+>[AZURE.NOTE] バッテリは単に充電が必要な場合にも **[失敗]** と表示されることがあります。
  
 **[低下]** 状態が表示されたら、次の一連の措置をお勧めします。
 
@@ -109,10 +109,10 @@ Azure クラシック ポータルの **[メンテナンス]** ページの **[�
 
 - 関連する AC 電源の停電がなく、PCM をオンにして AC 電源に接続されている場合は、バッテリを交換する必要があります。交換用バックアップ バッテリ モジュールの注文については[マイクロソフトのサポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
 
->[AZURE.IMPORTANT]国または地域の規定に従って、故障したバッテリを廃棄します。
+>[AZURE.IMPORTANT] 国または地域の規定に従って、故障したバッテリを廃棄します。
 
 ## 次のステップ
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

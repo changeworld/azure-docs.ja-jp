@@ -1,9 +1,9 @@
 <properties
-   pageTitle="SQL Data Warehouse でのコマンドレットの概要"
+   pageTitle="SQL Data Warehouse での PowerShell コマンドレットと REST API の使用"
    description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sidneyh"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/11/2016"
-   ms.author="mausher;sidneyh;barbkess;sonyama"/>
+   ms.date="02/22/2016"
+   ms.author="barbkess;mausher;sonyama"/>
 
-# Azure Data Warehouse コマンドレットと REST API の概要
+# SQL Data Warehouse での PowerShell コマンドレットと REST API の使用
 
 SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。
 
@@ -133,4 +133,4 @@ $retorePoints
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

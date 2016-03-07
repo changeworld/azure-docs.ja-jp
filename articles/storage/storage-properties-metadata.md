@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na" 
   ms.devlang="na" 
   ms.topic="article" 
-  ms.date="01/05/2016" 
+  ms.date="02/20/2016" 
   ms.author="tamram"/>
 
 
@@ -30,7 +30,7 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 
 ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。これらの値を読み取るには、**FetchAttributes** メソッドを呼び出して値を明示的に取得しておく必要があります。
 
-> [AZURE.IMPORTANT]ストレージ リソースのプロパティとメタデータの値は、いずれかの **FetchAttributes** メソッドを呼び出さない限り、設定されません。
+> [AZURE.IMPORTANT] ストレージ リソースのプロパティとメタデータの値は、いずれかの **FetchAttributes** メソッドを呼び出さない限り、設定されません。
 
 ## プロパティの設定と取得
 
@@ -99,4 +99,4 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 - [.NET 用 Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

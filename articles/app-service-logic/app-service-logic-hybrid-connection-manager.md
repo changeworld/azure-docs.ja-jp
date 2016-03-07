@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="02/18/2016" 
 	ms.author="mandia"/>
 
 # Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 オンプレミス システムを使用するため、Azure App Service は Hybrid Connection Manager を使用します。一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。
 
 Hybrid Connection Manager (HCM) は、ワンクリック インストーラーであり、ネットワーク内のファイアウオールの背後にある IIS サーバーにインストールされます。HCM は、Azure Service Bus リレーを使用して、Azure 内にコネクタを持つオンプレミス システムを認証します。
@@ -106,7 +109,7 @@ TCP ポート | 理由
 
 ## FAQ
 
-**質問**: Hybrid Connection Manager が 2 つあります。違いは何でしょうか。<br/> **回答**: オンプレミスに接続するために主に Web Apps (以前の Web サイト) と Mobile Apps (以前のモバイル サービス) によって使用される[ハイブリッド接続](../integration-hybrid-connection-overview.md)テクノロジがあります。この Hybrid Connections Manager には独自の[セットアップ](../integration-hybrid-connection-create-manage.md)があり、Azure BizTalk Service を (バック グラウンドで) 使用します。それは、TCP プロトコルと HTTP プロトコルのみをサポートします。
+**質問**: Hybrid Connection Manager が 2 つあります。違いは何でしょうか。<br/> **回答**: オンプレミスに接続するために主に Web Apps (以前の Web サイト) と Mobile Apps (以前のモバイル サービス) によって使用される[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)テクノロジがあります。この Hybrid Connections Manager には独自の[セットアップ](../biztalk-services/integration-hybrid-connection-create-manage.md)があり、Azure BizTalk Service を (バック グラウンドで) 使用します。それは、TCP プロトコルと HTTP プロトコルのみをサポートします。
 
 Azure App Service コネクタにも、Hybrid Connection Manager があります。この Hybrid Connection Manager は Azure BizTalk Service を (バック グラウンドで) 使用せず、TCP プロトコルと HTTP プロトコル以外のプロトコルもサポートします。「[Connectors and API Apps (コネクタと API Apps の一覧)](app-service-logic-connectors-list.md)」を参照してください。
 
@@ -114,7 +117,7 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
 **質問**: カスタム API App を作成した場合、App Service Hybrid Connection Manager を使用してオンプレミスに接続できますか。 <br/> **回答**: 従来の意味ではできません。組み込みコネクタを使用し、App Service Hybrid Connection Manager を構成することで、オンプレミス システムに接続できます。その後、カスタム API App の中で、Logic App を利用してこのコネクタを使用します。現時点では、独自のハイブリッド API App (SQL コネクタやファイル コネクタなど) は開発することも作成することもできません。
 
-カスタム API で TCP または HTTP ポートを使用する場合は、[ハイブリッド接続](../integration-hybrid-connection-overview.md) とその Hybrid Connection Manager を使用することができます。このシナリオでは、Azure BizTalk Service が使用されます。[オンプレミスの SQL Server に Web アプリから接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)と便利な場合があります。
+カスタム API で TCP または HTTP ポートを使用する場合は、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) とその Hybrid Connection Manager を使用することができます。このシナリオでは、Azure BizTalk Service が使用されます。[オンプレミスの SQL Server に Web アプリから接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)と便利な場合があります。
 
 
 ## 詳細
@@ -133,4 +136,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

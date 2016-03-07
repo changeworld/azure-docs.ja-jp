@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="12/03/2015"
+   ms.date="02/10/2016"
    ms.author="plarsen"/>
 
 # DB2 コネクタ
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 Microsoft Connector for DB2 は、Azure App Service を介してアプリケーションを IBM DB2 データベースに格納されているリソースに接続するための API アプリです。コネクタには、Azure Service Bus Relay を使用したオンプレミスの DB2 サーバーへの Azure ハイブリッド接続を含む、TCP/IP ネットワーク接続経由でリモート DB2 サーバー コンピューターに接続するための Microsoft クライアントが含まれています。コネクタでは、次のデータベース操作がサポートされています。
 
@@ -66,7 +67,7 @@ PollToAlterData | いいえ | ロジック アプリのトリガーで使用す�
 ## データを追加する DB2 コネクタ アクションを使用したロジック アプリ ##
 "API の挿入" または "エンティティへの投稿" OData 操作を使用して DB2 テーブルにデータを追加するようにロジック アプリ アクションを定義できます。たとえば、新しい顧客注文レコードを挿入するには、ID 列で定義されたテーブルに対する SQL INSERT ステートメントを処理して、ID 値または処理された行をロジック アプリに返します (SELECT ORDID FROM FINAL TABLE (INSERT INTO NWIND.NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?)))。
 
-> [AZURE.TIP]DB2 接続 "*EntitySet への投稿*" では ID 列の値が返され、"*API の挿入*" では処理された行が返されます。
+> [AZURE.TIP] DB2 接続 "*EntitySet への投稿*" では ID 列の値が返され、"*API の挿入*" では処理された行が返されます。
 
 1. Azure のスタート画面で、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
 2. 名前 (例:"NewOrdersDb2")、App Service プラン、その他のプロパティを入力し、**[作成]** を選択します。
@@ -198,7 +199,7 @@ Azure Marketplace 内から新しいロジック アプリを作成した後、�
 **注:** ロジック アプリ デザイナーによってテーブル名は切り詰められます。たとえば、操作 "**NEWORDERS から条件付きで削除する**" は、"**N から条件付きで削除する**" に切り詰められます。
 
 
-> [AZURE.TIP]次の SQL ステートメントを使用して、サンプルのテーブルおよびストアド プロシージャを作成します。
+> [AZURE.TIP] 次の SQL ステートメントを使用して、サンプルのテーブルおよびストアド プロシージャを作成します。
 
 次の DB2 SQL DDL ステートメントを使用して、サンプルの NEWORDERS テーブルを作成できます。
  
@@ -239,7 +240,7 @@ Azure Marketplace 内から新しいロジック アプリを作成した後、�
 
 ## ハイブリッド構成 (省略可能)
 
-> [AZURE.NOTE]この手順は、ファイアウォールの内側にあるオンプレミスの DB2 コネクタを使用する場合にのみ、実行する必要があります。
+> [AZURE.NOTE] この手順は、ファイアウォールの内側にあるオンプレミスの DB2 コネクタを使用する場合にのみ、実行する必要があります。
 
 App Service では、 ハイブリッド構成マネージャーを使用して、オンプレミス システムに安全に接続します。コネクタでオンプレミスの IBM DB2 Server for Windows を使用する場合は、ハイブリッド接続マネージャーが必要です。
 
@@ -270,4 +271,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [13]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_TriggersActions.png
 [14]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_Outputs.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

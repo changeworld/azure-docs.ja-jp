@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="12/17/2015"
+   ms.date="02/11/2016"
    ms.author="sameerch"/>
 
 
 # Twitter コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Twitter API](../connectors/create-api-twitter.md) をクリックしてください。
+
 Twitter フィードに接続して、ツイートを投稿し、自分のタイムライン、友人のタイムライン、Twitter アカウントのフォロワーからツイートを取得します。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Twitter コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
 - 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
@@ -41,7 +43,7 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 
 ## Twitter コネクタの作成
 
-> [AZURE.IMPORTANT]Twitter コネクタの作成時に自分のアプリを Twitter に登録し、Twitter コネクタでアプリ キーを使用することもできます。アプリケーションの登録は、[http://apps.twitter.com](http://apps.twitter.com) で無料で行えます。登録するときに、必ずコールバック URL を指定してください。Twitter コネクタの作成後に、コールバック URL を変更することもできます。コネクタを作成するには、Twitter API キーとシークレットが必要です。
+> [AZURE.IMPORTANT] Twitter コネクタの作成時に自分のアプリを Twitter に登録し、Twitter コネクタでアプリ キーを使用することもできます。アプリケーションの登録は、[http://apps.twitter.com](http://apps.twitter.com) で無料で行えます。登録するときに、必ずコールバック URL を指定してください。Twitter コネクタの作成後に、コールバック URL を変更することもできます。コネクタを作成するには、Twitter API キーとシークレットが必要です。
 
 コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
@@ -53,33 +55,26 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 5. コネクタ名、App Service、およびリソース グループなど、その他の必要な設定を入力します。
 6.	**[作成]** をクリックします。
 
-> [AZURE.NOTE]リダイレクト URL で Twitter API をさらに保護する場合は、[OAUTH セキュリティ](app-service-logic-oauth-security.md)を使用できます。
+> [AZURE.NOTE] リダイレクト URL で Twitter API をさらに保護する場合は、[OAUTH セキュリティ](app-service-logic-oauth-security.md)を使用できます。
 
 
 ## ロジック アプリで Twitter Connector を使用する
 API アプリを作成した後は、Logic Apps のトリガーまたはアクションとして Twitter コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。  
-![][2]
-2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。  
-![][3]
-3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。  
-![][4]
-4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。  
-![][5]
+1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。![][2]
+2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。![][3]
+3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。![][4]
+4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。![][5]
 
 
-これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。  
-![][6]
+これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。![][6]
 
-ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。  
-![][7]  
-![][8]  
+ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。![][7] ![][8]
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -97,4 +92,4 @@ API アプリを作成した後は、Logic Apps のトリガーまたはアク�
 [9]: ./media/app-service-logic-connector-twitter/settings.PNG
 [10]: ./media/app-service-logic-connector-twitter/TwitterAPISettings.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Machine Learning API: テキスト分析 | Microsoft Azure"
-	description="Azure Machine Learning のテキスト分析 APIこれを使用し、センチメント分析、キー フレーズの抽出、言語検出の非構造化テキストを分析できます。"
+	description="Microsoft の Machine Learning テキスト分析 API を使用し、センチメント分析、キー フレーズの抽出、言語検出、トピック検出の非構造化テキストを分析できます。"
 	services="machine-learning"
 	documentationCenter=""
 	authors="onewth"
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/17/2015"
+	ms.date="02/22/2016"
 	ms.author="onewth"/>
 
 
-# Machine Learning API: センチメントのテキスト分析、キー フレーズ抽出、言語検出
+# Machine Learning API: センチメントのテキスト分析、キー フレーズ抽出、言語検出、トピック検出
 
 ## 概要
 
-テキスト分析 API は、Azure Machine Learning で構築されたテキスト分析 [Web サービス](https://datamarket.azure.com/dataset/amla/text-analytics)です。API を使用して、センチメント分析、キー フレーズの抽出、言語検出などのタスクの非構造化テキストを分析することができます。この API を使用するためにトレーニング データは必要ありません。自分のテキスト データを使用するだけです。この API は、高度な自然言語の処理手法を使用し、このクラスで最高の予測機能を提供します。
+テキスト分析 API は、Azure Machine Learning で構築されたテキスト分析 [Web サービス](https://datamarket.azure.com/dataset/amla/text-analytics)です。API を使用して、センチメント分析、キー フレーズの抽出、言語検出、トピック検出などのタスクの非構造化テキストを分析することができます。この API を使用するためにトレーニング データは必要ありません。自分のテキスト データを使用するだけです。この API は、高度な自然言語の処理手法を使用し、このクラスで最高の予測機能を提供します。
 
 [デモ サイト](https://text-analytics-demo.azurewebsites.net/)で実際のテキスト分析をご覧いただけます。このサイトには、C# と Python のテキスト分析方法に関する[サンプル](https://text-analytics-demo.azurewebsites.net/Home/SampleCode)もあります。
 
@@ -40,6 +40,10 @@ API は、入力テキストの要点を示す文字列のリストを返しま�
 ## 言語検出
 
 この API は、検出した言語と 0 と 1 の間の数値スコアを返します。1 に近いスコアは、100% の確実性で正しい言語が特定されたことを示します。合計で 120 種類の言語がサポートされています。
+
+## トピック検出
+
+これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。この API を利用するには、100 件以上のテキスト レコードを送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。この API では、送信されるテキスト レコードあたり 1 トランザクションが請求されることに注意してください。この API は、レビューやユーザー フィードバックなど、人間が書いた短いテキストで効果的に機能するように設計されています。
 
 ---
 
@@ -161,14 +165,14 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 	{"Inputs":
 	[
 	    {"Id":"1","Text":"hello world"},
-    	    {"Id":"2","Text":"hello foo world"},
-    	    {"Id":"3","Text":"hello my world"},
+	    {"Id":"2","Text":"hello foo world"},
+	    {"Id":"3","Text":"hello my world"},
 	]}
 
 次の応答では、テキスト ID に関連付けられているスコアの一覧を取得します。
 
 	{
-	  "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata", 
+	  "odata.metadata":"<url>", 
 	  "SentimentBatch":
 	  [
 		{"Score":0.9549767,"Id":"1"},
@@ -210,7 +214,7 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 
 次の応答では、テキスト ID に関連付けられているキー フレーズの一覧を取得します。
 
-	{ "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata",
+	{ "odata.metadata":"<url>",
 	 	"KeyPhrasesBatch":
 		[
 		   {"KeyPhrases":["unique decor","friendly staff","wonderful hotel"],"Id":"1"},
@@ -261,4 +265,122 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
        "Errors": []
     }
 
-<!---HONumber=AcomDC_1125_2015-->
+---
+
+## トピック検出 API
+
+これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。この API では、送信されるテキスト レコードあたり 1 トランザクションが請求されることに注意してください。
+
+この API を利用するには、100 件以上のテキスト レコードを送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。
+
+
+### トピック – 送信ジョブ
+
+**URL**
+
+	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
+
+**要求の例**
+
+
+下の POST 呼び出しでは、100 件の記事からなる 1 セットに対してトピックを要求しています。最初と最後の Input と 2 つの StopPhrases が表示されています。
+
+	POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection HTTP/1.1
+
+要求本文:
+
+	{"Inputs":[
+		{"Id":"1","Text":"I loved the food at this restaurant"},
+		...,
+		{"Id":"100","Text":"I hated the decor"}
+	],
+	"StopPhrases":[
+		"restaurant", “visitor"
+	]}
+
+下の応答では、送信されたジョブの JobId を取得します。
+
+	{
+		"odata.metadata":"<url>",
+		"JobId":"<JobId>"
+	}
+
+トピックとして返すべきではない 1 つの単語または複数の語句の一覧を利用し、非常に一般的なトピックを除外できます。たとえば、ホテルのレビューに関するデータセットで、"hotel" と "hostel" は理にかなったストップ フレーズとなります。
+
+### トピック – ジョブ結果のポーリング
+
+**URL**
+
+	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult
+
+**要求の例**
+
+"ジョブの送信" 手順から返された JobId を渡し、結果を取得します。応答に「Status=’Complete’」が含まれるまで、このエンドポイントを 1 分ごとに呼び出すことが推奨されます。ジョブのレコードが数千単位になる場合、完了に 10 分以上かかります。
+
+	GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult?JobId=<JobId>
+
+
+処理中の応答は次のようになります。
+
+	{
+		"odata.metadata":"<url>",
+		"Status":"Running",
+ 		"TopicInfo":[],
+		"TopicAssignment":[],
+		"Errors":[]
+	}
+
+
+この API は、JSON 形式の出力を次の形式で返します。
+
+	{
+		"odata.metadata":"<url>",
+		"Status":"Finished",
+		"TopicInfo":[
+		{
+			"TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
+			"Score":8.0,
+			"KeyPhrase":"food"
+		},
+		...
+		{
+			"TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
+			"Score":6.0,
+			"KeyPhrase":"decor"
+    		}
+  		],
+		"TopicAssignment":[
+		{
+			"Id":"1",
+			"TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
+			"Distance":0.7809
+		},
+		...
+		{
+			"Id":"100",
+			"TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
+			"Distance":0.8034
+		}
+		],
+		"Errors":[]
+
+
+応答の各部分のプロパティは次のとおりです。
+
+**TopicInfo プロパティ**
+
+| キー | 説明 |
+|:-----|:----|
+| TopicId | 各トピックの一意の識別子 |
+| Score | トピックに割り当てられているレコードの数。 |
+| KeyPhrase | トピックの要約となる単語または語句。1 つの単語の場合もあれば、複数の単語の場合もあります。 |
+
+**TopicAssignment プロパティ**
+
+| キー | 説明 |
+|:-----|:----|
+| ID | レコードの識別子。入力に含まれる ID と同じです。 |
+| TopicId | レコードが割り当てられているトピック ID。 |
+| Distance | レコードがトピックに属する確実性。Distance がゼロに近ければ、それだけ確実性が高くなります。 |
+
+<!---HONumber=AcomDC_0224_2016-->

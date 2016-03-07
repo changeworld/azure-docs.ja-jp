@@ -12,11 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="02/18/2016"
    ms.author="joaoma"/>
 
-# Application Gateway とは
-
+# Application Gateway の概要
 
 Microsoft Azure Application Gateway は、レイヤー 7 の負荷分散に基づく、Azure で管理される HTTP 負荷分散ソリューションを提供します。
 
@@ -26,8 +25,8 @@ Microsoft Azure Application Gateway は、レイヤー 7 の負荷分散に基�
 
 - HTTP の負荷分散
 - Cookie ベースのセッション アフィニティ
-- Secure Sockets Layer (SSL) オフロード
-
+- [Secure Sockets Layer (SSL) オフロード](application-gateway-ssl-arm.md)
+- [URL ベースのコンテンツ ルーティング](application-gateway-url-route-overview.md) 
 
 ## HTTP レイヤー 7 の負荷分散
 
@@ -41,7 +40,7 @@ HTTP レイヤー 7 の負荷分散は、次の場合に役立ちます。
 - Web サーバーのファームを SSL 終了オーバーヘッドから解放する必要があるアプリケーション。
 - 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション (コンテンツ配信ネットワークなど)。
 
-
+ 
 ## ゲートウェイのサイズとインスタンス
 
 現在、Application Gateway は Small、Medium、Large の 3 つのサイズで提供されています。Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
@@ -59,9 +58,10 @@ HTTP レイヤー 7 の負荷分散は、次の場合に役立ちます。
 
 >[AZURE.NOTE] これはアプリケーション ゲートウェイ スループットのおおよそのガイダンスです。実際のスループットは、平均ページ サイズ、バックエンド インスタンスの場所、ページの処理時間など、さまざまな環境の違いによって異なります。
 
+
 ## 正常性の監視
 
-Azure Application Gateway は、バックエンド インスタンスの正常性を自動的に監視します。詳細については、「[Application Gateway health monitoring overview](application-gateway-probe-overview.md)」をご覧ください。
+Azure Application Gateway は、バックエンド インスタンスの正常性を自動的に監視します。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」をご覧ください。
 
 ## 構成と管理
 
@@ -72,4 +72,6 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 Application Gateway について学習すると、[アプリケーション ゲートウェイを作成](application-gateway-create-gateway.md)、または[アプリケーション ゲートウェイ SSL オフロードを作成](application-gateway-ssl.md)して、HTTPS 接続を負荷分散できるようになります。
 
-<!---HONumber=AcomDC_0128_2016-->
+URL ベースのコンテンツ ルーティングを使用して Application Gateway を作成する方法については、「[Create an application gateway using URL based routing](application-gateway-create-url-route-arm-ps.md)」 (URL ベースのルーティングを使用した Application Gateway の作成) を参照してください。
+
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/18/2016"
 	ms.author="tarcher"/>
 
 # アーティファクトを含む VM の Azure DevTest ラボへの追加
+
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to create VMs with artifacts in a DevTest Lab](/documentation/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab) (DevTest ラボでアーティファクトを含む VM を作成する方法)
 
 ## 概要
 
@@ -96,6 +98,6 @@ VM にアーティファクトを追加して構成する際に、**[アーテ�
 
 ## 次のステップ
 
-[VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
+- [VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

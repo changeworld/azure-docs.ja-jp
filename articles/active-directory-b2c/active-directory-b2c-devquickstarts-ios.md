@@ -6,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="objectivec"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/17/2016"
 	ms.author="brandwe"/>
 
 # Azure AD B2C プレビュー: iOS アプリケーションからの Web API の呼び出し
@@ -33,7 +33,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 - アプリケーションに **Web アプリまたは Web API** を含めます。
 - `http://localhost:3000/auth/openid/return` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
 - アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -617,4 +617,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

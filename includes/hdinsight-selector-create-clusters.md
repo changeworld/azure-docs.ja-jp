@@ -11,3 +11,5 @@
 - [Windows | Azure PowerShell](hdinsight-hadoop-create-windows-clusters-powershell.md)
 - [Windows | .NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md)
 - [Windows | ARM templates](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
+
+<!---HONumber=AcomDC_0224_2016-->

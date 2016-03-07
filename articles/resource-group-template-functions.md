@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/15/2016"
+   ms.date="02/22/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -556,7 +556,8 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
 - [listkeys](#listkeys)
-- [プロバイダー](#providers)
+- [list*](#list)
+- [providers](#providers)
 - [reference](#reference)
 - [resourceGroup](#resourcegroup)
 - [resourceId](#resourceid)
@@ -569,11 +570,11 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 **listKeys (resourceName or resourceIdentifier, [apiVersion])**
 
-ストレージ アカウントのキーを返します。resourceId は、[resourceId function](./#resourceid) を使用して、または形式 **providerNamespace/resourceType/resourceName** を使用して指定できます。関数を使用して、PrimaryKey と secondaryKey を取得できます。
+listKeys 操作をサポートする任意の種類のリソースのキーを返します。resourceId は、[resourceId function](./#resourceid) を使用して、または形式 **providerNamespace/resourceType/resourceName** を使用して指定できます。関数を使用して、PrimaryKey と secondaryKey を取得できます。
   
 | パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
-| resourceName または resourceIdentifier | あり | ストレージ アカウントの一意の識別子。
+| resourceName または resourceIdentifier | あり | リソースの一意識別子です。
 | apiVersion | あり | リソースのランタイム状態の API バージョン。
 
 次の例は、出力のセクションで、ストレージ アカウントからキーを返す方法を示しています。
@@ -584,6 +585,19 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
         "type" : "object" 
       } 
     } 
+
+<a id="list" />
+### list*
+
+**list* (resourceName または resourceIdentifier、apiVersion)**
+
+**list** で始まるすべての操作はテンプレート内の関数として使用できます。これには、上で示すように **listKeys** が含まれ、また **list**、**listAdminKeys**、**listStatus** などの操作も含まれます。この関数を呼び出すとき、list* ではなく、関数の実際の名前を使用します。どのリソースの種類にリスト処理を含めるかを指定するには、次の PowerShell コマンドを使用します。
+
+    PS C:\> Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
+
+または、Azure CLI でリストを取得します。次の例では、**apiapps** のすべての操作を取得し、JSON ユーティリティ [jq](http://stedolan.github.io/jq/download/) を使用して、リスト処理のみをフィルタリングします。
+
+    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains("list"))"
 
 <a id="providers" />
 ### プロバイダー
@@ -657,7 +671,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 		}
 	}
 
-テンプレートで API バージョンを直接指定しない場合は、次に示すように、[providers](#providers) 関数を使用して、最新版などの値を取得できます。
+テンプレートで API バージョンを直接指定しない場合は、次に示すように、[providers](#providers) 関数を使用して、以下に示すように最新版などの値を取得できます。
 
     "outputs": {
 		"BlobUri": {
@@ -792,4 +806,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

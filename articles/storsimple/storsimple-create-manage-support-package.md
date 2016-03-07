@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -123,7 +123,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 サポート パッケージを生成した後、パッケージを編集して、ボリューム名、デバイスの IP アドレス、バックアップ名などのユーザー固有の情報をログ ファイルから削除することが必要になる場合があります。
 
-> [AZURE.IMPORTANT]編集できるのは、StorSimple 用 Windows PowerShell を使って生成されたサポート パッケージのみです。Azure クラシック ポータルで StorSimple Manager サービスを使用して作成したパッケージを編集することはできません。
+> [AZURE.IMPORTANT] 編集できるのは、StorSimple 用 Windows PowerShell を使って生成されたサポート パッケージのみです。Azure クラシック ポータルで StorSimple Manager サービスを使用して作成したパッケージを編集することはできません。
 
 サポート パッケージを Microsoft サポート サイトにアップロードする前に編集するには、サポート パッケージの暗号化を解除し、ファイルを編集して、もう一度暗号化する必要があります。サポート パッケージを編集するには、次の手順を実行します。
 
@@ -137,7 +137,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
  
 	`Import-module <Path to the folder that contains the Windows PowerShell script>`
 
-4. サポート パッケージ フォルダーを開きます。すべてのファイルが圧縮および暗号化された .aes ファイルであることに注意してください。ファイルを開きます。ファイルを開くには、次のコマンドを入力します。
+4. サポート パッケージ フォルダーを開きます。すべてのファイルが圧縮および暗号化された *.aes* ファイルであることに注意してください。ファイルを開きます。ファイルを開くには、次のコマンドを入力します。
 
 	`Open-HcsSupportPackage <Path to the folder that contains support package files>`
 
@@ -200,4 +200,4 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

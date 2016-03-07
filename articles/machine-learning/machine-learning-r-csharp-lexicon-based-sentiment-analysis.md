@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="02/23/2015" 
 	ms.author="pengxia"/>
 
 
@@ -153,4 +153,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/15/2015" 
+	ms.date="02/19/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -42,7 +42,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 ![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
 
-エクスポートを追加し、データを格納する [Azure ストレージ アカウント](../storage-introduction.md)を選択します。
+エクスポートを追加し、データを格納する [Azure ストレージ アカウント](../storage/storage-introduction.md)を選択します。
 
 ![[追加]、[エクスポート先]、[ストレージ アカウント] の順にクリックし、新しいストアを作成するかまたは既存のストアを使用するかを選択します。](./media/app-insights-export-telemetry/02-add.png)
 
@@ -170,7 +170,6 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
     アカウントが組織によって所有されている場合は、所有者または共同作成者グループのメンバーである必要があります。
 
-    <!-- Your account has to be either a paid-for account, or in the free trial period. -->
 
 * *自分のオンプレミスのストアに直接エクスポートできますか。*
 
@@ -210,4 +209,4 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Microsoft Azure | ホスト型クラウド検索サービス"
+	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Azure Search Preview API"
 	description="Azure Search は、ユーザーが定義したスコアリング プロファイルに基づき、ランク付けされた結果を調整するホスト型のクラウド検索サービスです。"
 	services="search"
 	documentationCenter=""
@@ -14,11 +14,11 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.author="heidist"
-	ms.date="11/04/2015" />
+	ms.date="02/18/2016" />
 
 # スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。
+> [AZURE.NOTE] この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) のドキュメントで説明されている `2015-02-28` バージョンとここで説明する `2015-02-28-Preview` バージョンの間に違いはありませんが、API 全体についてのドキュメントを提供するため、ここにも掲載しておきます。
 
 ## 概要
 
@@ -55,7 +55,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&api-version=2015-02-28-Preview
 
-このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview/#SearchDocs.md)」を参照してください。
+このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview/#SearchDocs)」を参照してください。
 
 スコアリング プロファイルの詳細な例を確認するには、「[例](#example)」をクリックします。
 
@@ -302,7 +302,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 </tr><tr>
 <td>freshness</td>	<td>DateTimeOffset フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。(将来の日付を使用して、カレンダー イベントなどの項目に順位を付けることもできます。たとえば、現在に近い日付の項目を遠い日付の項目よりも高い順位にすることができます) 現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。もう一端は、`boostingDuration` に基づく過去の時刻です。将来の時刻の範囲をブーストするには、負の値の `boostingDuration` を使用します。最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。</td>
 </tr><tr>
-<td>freshness | boostingDuration</td>	<td>特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。構文と例については、次のセクションの [boostingDuration の設定](#bkmk_boostdur) を参照してください。</td>
+<td>freshness | boostingDuration</td>	<td>特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。構文と例については、次のセクションの [boostingDuration の設定][#bkmk_boostdur] を参照してください。</td>
 </tr><tr>
 <td>distance</td>	<td>地理的な参照場所との間の距離に基づいてドキュメントのスコアに影響を与えるには、distance スコアリング関数を使用します。参照場所は、クエリの一部としてパラメーター (’scoringParameterquery’ 文字列オプションを使用) 内に lon,lat 引数で指定します。</td>
 </tr><tr>
@@ -372,4 +372,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

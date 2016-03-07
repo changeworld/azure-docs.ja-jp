@@ -258,6 +258,10 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 
 [この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
 
+## Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
+
+.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に[各ロールに 4.6 をインストールします](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
+
 ## 関連トピック
 
 * [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
@@ -279,4 +283,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

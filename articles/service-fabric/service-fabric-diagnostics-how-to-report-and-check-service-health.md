@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/05/2015"
-   ms.author="kunalds"/>
+   ms.date="02/12/2016"
+   ms.author="toddabel"/>
 
 
 # サービス正常性のレポートとチェック
@@ -107,4 +107,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ## 次のステップ
 [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

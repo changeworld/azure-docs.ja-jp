@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="02/18/2016"
 	ms.author="anuragdalmia"/>
 
 # BizTalk 変換
 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 ## 概要
-簡単に言うと、BizTalk 変換 API アプリは、1 つの形式から別の形式へデータを変換します。たとえば、注文書から出荷先住所と請求先住所を取得して、請求書ドキュメントに挿入する場合などです。または、受信メッセージに *YearMonthDay* 形式で現在の日付が含まれる場合、*MonthDayYear* 形式に日付の書式設定を変更する必要があります。
+BizTalk Transform API は、データの形式を変換します。たとえば、注文書から出荷先住所と請求先住所を取得して、請求書ドキュメントに挿入する場合などです。または、受信メッセージに *YearMonthDay* 形式で現在の日付が含まれる場合、*MonthDayYear* 形式に日付の書式設定を変更する必要があります。
 
 Microsoft Azure App Service の変換 API プリを使用してこれを実行できます。変換 (マップともいう) は、送信元 XML スキーマ (入力) と送信先 XML スキーマ (出力) で構成されます。さまざまな組み込み関数を使用すると、文字列操作、条件付き割り当て、算術式、日時の書式設定や、ループ構造の操作などで、データを操作および制御できます。
 
@@ -116,4 +117,4 @@ API Apps の概要ページから、SQL、SAP、SharePoint などのコネクタ
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

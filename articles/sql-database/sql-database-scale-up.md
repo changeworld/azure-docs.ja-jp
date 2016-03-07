@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/02/2015"
+	ms.date="02/02/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -27,7 +27,7 @@
 
 この記事では、[Azure ポータル](https://portal.azure.com)で SQL Database のサービス階層とパフォーマンス レベルを変更する方法について説明します。
 
-[SQL Database の Web/Business データベースの新しいサービス階層へのアップグレード](sql-database-upgrade-new-service-tiers.md)に関するトピックと「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」の情報を使用して、Azure SQL Database に適したサービス階層とパフォーマンス レベルを決定します。
+[SQL Database の Web/Business データベースの新しいサービス階層へのアップグレード](sql-database-upgrade-server-portal.md)に関するトピックと「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」の情報を使用して、Azure SQL Database に適したサービス階層とパフォーマンス レベルを決定します。
 
 > [AZURE.IMPORTANT] SQL Database のサービス階層とパフォーマンス レベルの変更はオンライン操作です。そのため、操作中はダウンタイムがなく、データベースを使用できます。
 
@@ -103,4 +103,4 @@
 [3]: ./media/sql-database-scale-up/scale-notification.png
 [4]: ./media/sql-database-scale-up/new-tier.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

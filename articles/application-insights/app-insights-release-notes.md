@@ -20,8 +20,9 @@
 
 リリース ノートと SDK の更新手順の詳細を以下に示します。
 
-* [.NET](app-insights-release-notes-dotnet.md)
-* [.NET のログ記録アダプター](app-insights-release-notes-dotnet-logging.md)
+* [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
+* [.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+* [.NET のログ記録アダプター](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android/releases)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
@@ -34,4 +35,4 @@
 
 Application Insights サービス全体の主要な機能強化をまとめた「[サービスの更新情報](https://azure.microsoft.com/updates/?service=application-insights)」ページもご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

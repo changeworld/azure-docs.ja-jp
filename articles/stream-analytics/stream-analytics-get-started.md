@@ -11,7 +11,7 @@
 <tags
 	ms.service="stream-analytics"
 	ms.devlang="na"
-	ms.topic="hero-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
 	ms.date="02/04/2016"
@@ -34,7 +34,8 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 ## 前提条件
 
-このシナリオでは、GitHub にあるイベント ジェネレーターを利用します。[ここ](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator)からダウンロードし、このチュートリアルで示す手順に従って、ソリューションを設定します。
+- Microsoft Download Center から [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードすること 
+- 省略可能: [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator) のイベント ジェネレーターのソース コード
 
 ## Azure Event Hubs 入力とコンシューマー グループの作成
 
@@ -56,16 +57,15 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 サンプル受信通話メタデータを生成し、それを Event Hub にプッシュするクライアント アプリケーションが提供されています。次の手順に従って、このアプリケーションを設定します。
 
-1.	TelcoGenerator ソリューションを [https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator) からダウンロードします。
-2.	App.Config 内の Microsoft.ServiceBus.ConnectionString 値と EventHubName 値を、Event Hub の接続文字列と名前に置き換えます。
-3.	必要な NuGet パッケージのダウンロードをトリガーするソリューションを作成します。
-4.	アプリケーションを起動します。使用方法は次のとおりです。
+1.	[TelcoGenerator.zip ファイル](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)をダウンロードする
+2.	**telcodatagen.exe.config** 内の Microsoft.ServiceBus.ConnectionString 値と EventHubName 値を、Event Hub の接続文字列と名前に置き換えます。
+3.	アプリケーションを起動します。使用方法は次のとおりです。
 
-    	telcodatagen [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]
+   telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]
 
 次の例では、2 時間の間に、不正行為の確率が 20% のイベントが 1000 件生成されます。
 
-    TelcoDataGen.exe 1000 .2 2
+    telcodatagen.exe 1000 .2 2
 
 Event Hub に送信されるレコードが表示されます。このリアルタイムの不正行為検出アプリケーションで使用するいくつかのキー フィールドをここで定義します。
 
@@ -127,7 +127,7 @@ Event Hub に送信されるレコードが表示されます。このリアル�
 Stream Analytics では、リアルタイム処理のために変換を記述する単純な宣言型のクエリ モデルがサポートされます。言語に関する詳細については、[Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/dn834998.aspx)を参照してください。このチュートリアルは、通話データのリアルタイム ストリームに対するいくつかのクエリを作成してテストするのに役立ちます。
 
 #### 省略可能: サンプルの入力データ
-実際のジョブ データに対するクエリを検証するには、**サンプル データ**機能を使用して、ストリームからイベントを抽出し、テスト用のイベントの .JSON ファイルを作成できます。次の手順では、これを実行する方法を示しています。さらに、テスト目的のサンプルの [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) ファイルも提供しています。
+実際のジョブ データに対するクエリを検証するには、**サンプル データ**機能を使用して、ストリームからイベントを抽出し、テスト用のイベントの .JSON ファイルを作成できます。次の手順では、これを実行する方法を示しています。さらに、テスト目的のサンプルの [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) ファイルも提供しています。
 
 1.	Event Hub の入力を選択して、ページ下部の **[サンプル データ]** をクリックします。
 2.	表示されたダイアログ ボックスで、データ収集を開始する **[開始時間]** を指定し、使用する追加のデータ量に応じて **[期間]** を指定します。
@@ -147,7 +147,7 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 	> 入力ソースの名前が前に指定した入力の名前と必ず一致するようにします。
 
 3.	クエリ エディターの下の **[テスト]** をクリックします。
-4.	前の手順を使用して作成したテスト ファイルまたは [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) を指定します。
+4.	前の手順を使用して作成したテスト ファイルまたは [telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) を指定します。
 5.	チェック ボタンをクリックして、クエリ定義の下に表示される結果を確認します。
 
 	![クエリの定義の結果](./media/stream-analytics-get-started/stream-analytics-sim-fraud-output.png)
@@ -246,7 +246,7 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 ![不正行為の検出: 不正なイベントをリアルタイムで表示](./media/stream-analytics-get-started/stream-ananlytics-view-real-time-fraudent-events.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -257,4 +257,4 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

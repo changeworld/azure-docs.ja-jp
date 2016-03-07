@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -27,7 +27,7 @@
 
 - 交換用のディスク ドライブを取り付ける
 
->[AZURE.IMPORTANT]ディスク ドライブを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+>[AZURE.IMPORTANT] ディスク ドライブを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
 
 ## 改ざん防止ロックを解除する
 
@@ -37,7 +37,7 @@
 
 1. ロック キー (Microsoft が提供する "改ざん防止加工された" T10 ドライバー) を、ハンドルの開口部から受け口に慎重に差し込みます。 
 
-    >[AZURE.NOTE]改ざん防止ロックがアクティブになっている場合は、開口部に赤色のインジケーターが表示されます。
+    >[AZURE.NOTE] 改ざん防止ロックがアクティブになっている場合は、開口部に赤色のインジケーターが表示されます。
 
     ![ロックされたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741056.png)
 
@@ -118,10 +118,10 @@ Microsoft Azure StorSimple デバイスから障害が発生したドライブ�
 
 5. Azure クラシック ポータルにアクセスし、**[メンテナンス]**、**[ハードウェアの状態]** の順に選択して、交換が成功し、ドライブが機能していることを確認します。**[共有コンポーネント]** または**[EBOD エンクロージャの共有コンポーネント]** に、ドライブの状態が、正常な状態であることを示す緑色で表示されます。
 
-    >[AZURE.NOTE]交換後にディスクの状態が緑色に変化するまで、数時間かかる場合があります。
+    >[AZURE.NOTE] 交換後にディスクの状態が緑色に変化するまで、数時間かかる場合があります。
 
 ## 次のステップ
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

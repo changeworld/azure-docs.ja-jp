@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画 | Microsoft Azure"
+	pageTitle="Azure Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画 | Microsoft Azure"
 	description="Azure Site Recovery は、オンプレミスに配置されている仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
@@ -13,17 +13,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="02/22/2016" 
 	ms.author="raynew"/>
 
 # Azure Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画
 
-Capacity Planner ツールを使用すると、Azure Site Recovery で HYPER-V VM、VMware VM、Windows および Linux 物理サーバーを保護するために必要な容量を算出できます。
+Azure Site Recovery Capacity Planner ツールを使用すると、Azure Site Recovery で HYPER-V VM、VMware VM、Windows および Linux 物理サーバーを保護するために必要な容量を算出できます。
 
 
 ## 概要
 
-このツールでは、ソース環境やワークロードを分析したり、必要な帯域幅、ソースの場所で必要なサーバー リソース、ターゲットの場所に必要な (仮想マシンやストレージなどの) リソースを算出できます。
+Site Recovery Capacity Planner では、ソース環境やワークロードを分析できるほか、必要な帯域幅、ソースの場所に必要なサーバー リソース、およびターゲットの場所に必要な (仮想マシンやストレージなどの) リソースを算出することができます。
 
 このツールは、いくつかのモードで実行できます。
 
@@ -81,7 +81,7 @@ Capacity Planner ツールを使用すると、Azure Site Recovery で HYPER-V V
 
 	![Getting Started (概要)](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3.	**Workload Qualification** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
+3.	**Workload Qualification ** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
 
 	- **[プロセッサ コア]** には、ソース サーバー上のコアの総数を指定します。
 	- **[メモリの割り当て (MB)]** には、ソース サーバーの RAM サイズを指定します。 
@@ -121,7 +121,7 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 	-  VM4 は、2 つ目の Standard Storage アカウントを使用できます。
 	-  VM5 と VM6 には、Premium Storage アカウントが必要で、いずれも単一のアカウントを使用できます。
 
-	>[AZURE.NOTE]Standard Storage および Premium Storage の IOPS は、ディスク レベルではなく VM レベルで計算されます。標準的な仮想マシンはディスクあたり最大 500 IOPS を処理できます。ディスクの IOPS が 500 より大きい場合は、Premium Storage が必要になります。ただし、ディスクの IOPS が 500 を超えても VM ディスクの合計の IOPS がサポートされる標準 Azure VM の制限 (VM サイズ、ディスク数、アダプター数、CPU、メモリ) 内にある場合、プランナーは DS または GS シリーズではなく標準の VM を選択します。ユーザーは適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
+	>[AZURE.NOTE]  Standard Storage および Premium Storage の IOPS は、ディスク レベルではなく VM レベルで計算されます。標準的な仮想マシンはディスクあたり最大 500 IOPS を処理できます。ディスクの IOPS が 500 より大きい場合は、Premium Storage が必要になります。ただし、ディスクの IOPS が 500 を超えても VM ディスクの合計の IOPS がサポートされる標準 Azure VM の制限 (VM サイズ、ディスク数、アダプター数、CPU、メモリ) 内にある場合、プランナーは DS または GS シリーズではなく標準の VM を選択します。ユーザーは適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
 
 5. すべての詳細を定義したら、**[データをプランナー ツールに送信]** をクリックして、**Capacity Planner** を開きます。ワークロードが保護対象かどうかは強調表示によって示されます。
 
@@ -133,4 +133,4 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 
 	![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="12/01/2015"
+    ms.date="02/23/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -36,7 +36,7 @@ Standard データベースでは、読み取り不可のセカンダリ デー�
 
 geo レプリケーションを構成するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料アカウント**をクリックしてからこの記事に戻り、最後まで完了してください。
 - Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
 - Azure PowerShell 1.0 以降。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
@@ -215,4 +215,4 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

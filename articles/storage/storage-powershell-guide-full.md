@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/24/2016"
+	ms.date="02/19/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage での Azure PowerShell の使用
@@ -34,7 +34,7 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するコマン�
 
 **Azure を初めて使用する場合:** Microsoft Azure サブスクリプションと、そのサブスクリプションに関連付けられた Microsoft アカウントを入手してください。Azure の購入オプションの詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページ、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページ、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/) (MSDN、Microsoft Partner Network、BizSpark、その他の Microsoft プログラムのメンバー向け) に関するページをご覧ください。
 
-Azure サブスクリプションの詳細については、「[アカウント、サブスクリプション、管理ロールの管理](https://msdn.microsoft.com/library/azure/hh531793.aspx)」を参照してください。
+Azure サブスクリプションの詳細については、「[Azure Active Directory (Azure AD) の管理者ロールの割り当て](https://msdn.microsoft.com/library/azure/hh531793.aspx)」をご覧ください。
 
 **Microsoft Azure アカウントとサブスクリプションを作成済みである場合:**
 
@@ -236,7 +236,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
 これで、コンピューターを設定できました。また、Azure PowerShell を使用してサブスクリプションとストレージ アカウントを管理する方法を確認できました。次のセクションでは、Azure BLOB と BLOB のスナップショットを管理する方法について確認します。
 
 ## Azure BLOB の管理方法
-Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB Storage サービスの概念について理解しているユーザーを対象としています。詳細については、[.NET から Blob Storage を使用する方法](storage-dotnet-how-to-use-blobs.md)に関するページと「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB Storage サービスの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ### コンテナーを作成する方法
 Azure Storage のすべての BLOB はコンテナーに格納する必要があります。New-AzureStorageContainer コマンドレットを使用して、プライベート コンテナーを作成できます。
@@ -244,10 +244,10 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
     $StorageContainerName = "yourcontainername"
     New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 
-> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、[Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 
 ### BLOB をコンテナーにアップロードする方法
-Azure BLOB Storageでは、ブロック BLOB とページ BLOB がサポートされています。詳細については、[ブロック BLOB およびページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページを参照してください。
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、[ブロック BLOB、追加 BLOB、ページ BLOB の概要](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページを参照してください。
 
 BLOB をコンテナーにアップロードする場合は、[Set-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806379.aspx) コマンドレットを使用します。既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。BLOB の種類を指定する場合は、-BlobType パラメーターを使用します。
 
@@ -373,7 +373,7 @@ BLOB のスナップショットをコピーして復元できます。詳細と
 これで、Azure PowerShell で Azure BLOB と BLOB スナップショットを管理する方法を確認できました。次のセクションでは、テーブル、キュー、ファイルを管理する方法について確認します。
 
 ## Azure テーブルとテーブル エンティティを管理する方法
-Azure Table Storage サービスは NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納して照会できます。このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。テーブルは、エンティティのコレクションです。エンティティは、プロパティのセットです。各エンティティには、最大 252 個のプロパティを含むことができます。これらはすべて名前と値のペアです。このセクションでは、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。詳細については、「[Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」と [.NET から Table Storage を使用する方法](storage-dotnet-how-to-use-tables.md)に関するページを参照してください。
+Azure Table Storage サービスは NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納して照会できます。このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。テーブルは、エンティティのコレクションです。エンティティは、プロパティのセットです。各エンティティには、最大 252 個のプロパティを含むことができます。これらはすべて名前と値のペアです。このセクションでは、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。詳細については、「[Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」と「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」を参照してください。
 
 以下のサブセクションでは、Azure PowerShell を使用して Azure Table Storage サービスを管理する方法について説明します。**テーブル**の**作成**、**削除**、**取得**、**テーブル エンティティの追加**、**照会**、**削除**の各シナリオについて説明します。
 
@@ -514,7 +514,7 @@ Azure Table Storage サービスは NoSQL データストアであり、これ�
     }
 
 ## Azure キューとキュー メッセージを管理する方法
-Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。このセクションでは、Azure Queue Storage サービスの概念について理解しているユーザーを対象としています。詳細については、[.NET から Queue Storage を使用する方法](storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
+Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。このセクションでは、Azure Queue Storage サービスの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)」を参照してください。
 
 このセクションでは、Azure PowerShell を使用して Azure Queue Storage サービスを管理する方法を取り上げます。キュー メッセージの**挿入**と**削除**、および**キューの作成**、**削除**、および**取得**の各シナリオについて説明します。
 
@@ -592,7 +592,7 @@ Azure Queue サービスでの名前付け規則の詳細については、「[�
 ## Azure ファイル共有とファイルを管理する方法
 Azure File Storage は、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File Storage API または Azure PowerShell を介して、共有内のファイル データにアクセスできます。
 
-Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files.md)」と「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
+Azure File ストレージの詳細については、「[Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)」と「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
 ## ストレージ分析を設定して照会する方法
 [Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Azure ポータルまたは Windows PowerShell を使用して監視を有効にできます。また、ストレージ クライアント ライブラリを使用したプログラムで監視を有効にすることもできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
@@ -613,7 +613,7 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 - **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
 - **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
 
-詳細については、[Shared Access Signature のチュートリアル](storage-dotnet-shared-access-signature-part-1.md)および [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+詳細については、「[共有アクセス署名、第 1 部 : SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 
 次のセクションでは、Azure テーブルに対する Shared Access Signature トークンと保存されたアクセス ポリシーを作成する方法を学習します。Azure PowerShell では、コンテナー、BLOB、キューに対して類似するコマンドレットが提供されます。このセクションのスクリプトを実行するには、[Azure PowerShell Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 以降のバージョンをダウンロードしてください。
 
@@ -647,7 +647,7 @@ New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新�
 
 
 ## 米国政府対応の Azure Storage や Azure China を使用する方法
-[米国政府対応の Azure Government](https://azure.microsoft.com/features/gov/)、[グローバル Azure 対応の AzureCloud](https://manage.windowsazure.com)、[中国の 21Vianet が運営する Azure 対応の AzureChinaCloud](http://www.windowsazure.cn/) など、Microsoft Azure ではそれぞれ独立した環境をサポートしています。米国政府対応の新しい Azure 環境や Azure China をデプロイできます。
+[米国政府対応の Azure Government](https://azure.microsoft.com/features/gov/)、[グローバル Azure 対応の AzureCloud](https://portal.azure.com)、[中国の 21Vianet が運営する Azure 対応の AzureChinaCloud](http://www.windowsazure.cn/) など、Microsoft Azure ではそれぞれ独立した環境をサポートしています。米国政府対応の新しい Azure 環境や Azure China をデプロイできます。
 
 AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関連付けられたストレージ コンテキストを作成する必要があります。次の手順に従って開始します。
 
@@ -676,7 +676,7 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 詳細については、次を参照してください。
 
 - [Microsoft Azure Government 開発者向けガイド](../azure-government-developer-guide.md)
-- [グローバル Azure 対応の AzureCloud と中国の 21Vianet が運営する Azure 対応の AzureChinaCloud の相違点に関するページ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+- [Azure in China アプリケーションに関する開発者用メモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 
 ## 次のステップ
 このガイドでは、Azure PowerShell を使用して Azure Storage を管理する方法を確認しました。詳細についての関連記事とリソースがあります。
@@ -730,4 +730,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

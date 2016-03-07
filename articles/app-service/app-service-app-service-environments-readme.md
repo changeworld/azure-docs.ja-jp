@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
-	ms.author="yochay"/>
+	ms.date="02/18/2016" 
+	ms.author="stefsch"/>
 
 # 概要
 
@@ -32,7 +32,23 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 
 アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。App Service Environment で動作するアプリは、[サイト間][SiteToSite] VPN 接続や [Azure ExpressRoute][ExpressRoute] 接続を介してリソースにアクセスすることができます。
 
+* [App Service 環境とは](../app-service-web/app-service-app-service-environment-intro.md)
+* [App Service 環境の作成](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
+* [App Service 環境でのアプリの作成](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+* [App Service 環境の構成](../app-service-web/app-service-web-configure-an-app-service-environment.md) 
+* [App Service 環境でのアプリのスケーリング](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+* [ネットワークのセキュリティとアーキテクチャ](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
+
+## 方法
+
 [AZURE.INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
+
+
+## ビデオ
+[AZURE.VIDEO azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps]
+
+[AZURE.VIDEO microsoft-ignite-2015-running-enterprise-web-and-mobile-apps-on-azure-app-service]
+
 
 <!-- LINKS -->
 [PremiumTier]: http://azure.microsoft.com/pricing/details/app-service/
@@ -43,4 +59,4 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

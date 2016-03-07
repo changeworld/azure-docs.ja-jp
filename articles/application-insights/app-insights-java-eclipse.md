@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="02/19/2016" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -260,4 +260,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

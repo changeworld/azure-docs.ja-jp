@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/19/2015"
+	ms.date="02/15/2016"
 	ms.author="heidist"/>
 
 # Azure Search サービスの制限
@@ -112,4 +112,4 @@ Api キーは、サービスの認証に使用されます。次の 2 つの種�
 
 <sup>1</sup> Azure Search では、要求の本文は上限 16 MB に左右され、それ以外では理論的制限によって制約されない個々のフィールドまたはコレクションのコンテンツに実際的な制限が課せられます (フィールドの構成と制約の詳細については、「[サポートされているデータ型](https://msdn.microsoft.com/library/azure/dn798938.aspx)」を参照してください)。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

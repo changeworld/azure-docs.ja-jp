@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/02/2015"
+	ms.date="02/23/2016"
 	ms.author="tomfitz"/>
 
 
@@ -50,6 +50,37 @@
             }
         }
     ]
+
+現時点で、リソース マネージャーはタグの名前と値のオブジェクトの処理をサポートしません。代わりに、タグの値のオブジェクトを渡すことはできますが、次のように、タグ名を指定する必要があります。
+
+    {
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "tagvalues": {
+          "type": "object",
+          "defaultValue": {
+            "dept": "Finance",
+            "project": "Test"
+          }
+        }
+      },
+      "resources": [
+      {
+        "apiVersion": "2015-06-15",
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "examplestorage",
+        "tags": {
+          "dept": "[parameters('tagvalues').dept]",
+          "project": "[parameters('tagvalues').project]"
+        },
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "accountType": "Standard_LRS"
+        }
+      }]
+    }
+
 
 ## ポータルでのタグ
 
@@ -183,4 +214,4 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
 - ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」をご覧ください。  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

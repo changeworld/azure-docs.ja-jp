@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
-	ms.author="robinsh;prkhad"/>
+	ms.date="02/20/2016"
+	ms.author="prkhad"/>
 
 
 # Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ
@@ -35,9 +35,9 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 次は、Premium Storage の使用前や使用時に考慮すべき重要な事柄の一覧です。
 
-- Premium Storage を使用するには、Premium Storage アカウントが必要です。Premium Storage アカウントの作成方法については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
+- Premium Storage を使用するには、Premium Storage アカウントが必要です。Premium Storage アカウントの作成方法については、「[仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)」をご覧ください。
 
-- Premium Storage は [Azure ポータル](https://portal.azure.com)で利用できます。Premium Storage には、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイメント)、[Storage Resource Provider API](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイメント)、[Azure PowerShell](../install-configure-powershell.md) バージョン 0.8.10 以降の SDK ライブラリからアクセスできます。
+- Premium Storage は [Azure ポータル](https://portal.azure.com)で利用できます。Premium Storage には、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイメント)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイメント)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降の SDK ライブラリからアクセスできます。
 
 - 現在 Premium Storage をサポートするリージョンの一覧については、「[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)」を参照してください。
 
@@ -63,7 +63,7 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
 
-Premium Storage のメリットを活用するには、アカウントの種類として *Premium\_LRS* を使用して、Premium Storage アカウントを作成します。これを行うには、[Azure ポータル](https://portal.azure.com)、[Azure PowerShell](../install-configure-powershell.md)、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (クラシック デプロイメント)、または [Storage Resource Provider REST API](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイメント) を使用できます。詳しい手順については、[ディスク向け Premium Storage アカウントの作成と使用](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)に関するセクションをご覧ください。
+Premium Storage のメリットを活用するには、アカウントの種類として *Premium\_LRS* を使用して、Premium Storage アカウントを作成します。これを行うには、[Azure ポータル](https://portal.azure.com)、[Azure PowerShell](../powershell-install-configure.md)、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (クラシック デプロイメント)、または [Storage Resource Provider REST API](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイメント) を使用できます。詳細な手順については、「[仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)」を参照してください。
 
 ### 重要:
 
@@ -79,7 +79,7 @@ Premium Storage のメリットを活用するには、アカウントの種類�
 
 - 同じ DS シリーズの VM または GS シリーズの VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。
 - Premium Storage を使用すると、DS シリーズの VM をプロビジョニングし、複数の永続データ ディスクをVM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。[記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。ただし、8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。PowerShell の [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) コマンドレットの *NumberOfColumns* パラメーターを使用して、仮想ディスクが使用する列数を指定できます。詳細については、[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)に関するページおよび「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
-- DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加することは避けてください。回避策の 1 つは、既存の VHD を新しいクラウド サービスに移行し、このクラウドでは DS シリーズ VM だけを運用するというものです。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](virtual-networks-configure-vnet-to-vnet-connection.md)機能を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
+- DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加することは避けてください。回避策の 1 つは、既存の VHD を新しいクラウド サービスに移行し、このクラウドでは DS シリーズ VM だけを運用するというものです。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)機能を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 - DS シリーズの Azure 仮想マシンで使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。OS ディスクをマシンの起動のみに使用する場合は、Standard Storage ベースの OS ディスクの使用を検討してください。コストの点で有利であり、起動後のパフォーマンスは Premium Storage とほぼ同じであるからです。マシン起動以外のタスクも OS ディスクで実行する場合は、Premium Storage を使用すると、より高いパフォーマンスが得られます。たとえば、アプリケーションで OS ディスクの読み取りと書き込みを行う場合は、Premium Storage ベースの OS ディスクを使うと VM のパフォーマンスが向上します。
 - Premium Storage で [Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) を使用できます。Azure CLI を使用して、いずれかのディスクのキャッシュ ポリシーを変更するには、次のコマンドを実行します。
 
@@ -191,7 +191,7 @@ Premium Storage の場合も、Standard Storage を使用してスナップシ�
 
 - 単一の BLOB のスナップショットの数は 100 に制限されています。スナップショットは最大で 10 分間隔で取得できます。
 - Premium Storage アカウントあたりのスナップショットの最大容量は 10 TB (テラバイト) です。スナップショット容量とは、スナップショットのみに存在するデータの総量のことであり、ベース BLOB のデータは含まれないことにご注意ください。
-- スナップショットの地理冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから地理冗長 Standard Storage アカウントにスナップショットをコピーできます。詳細については、「[Microsoft Azure Storage での AzCopy の使用方法](storage-use-azcopy.md)」および「[Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx)」をご覧ください。
+- スナップショットの地理冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから地理冗長 Standard Storage アカウントにスナップショットをコピーできます。詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[BLOB のコピー](http://msdn.microsoft.com/library/azure/dd894037.aspx)」を参照してください。
 - Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、MSDN ライブラリの「[Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)」をご覧ください。
 
 ## Linux VM とともに Premium Storage を使用する
@@ -265,12 +265,12 @@ Premium Storage、DS シリーズの VM、GS シリーズの VM の料金につ�
 
 5.	**[ストレージ アカウント]** ブレードの **[リソース グループ]**、**[サブスクリプション]**、**[場所]**、**[診断]** には既定値をそのまま使用します。**[作成]** をクリックします。
 
-Azure 環境内部の完全なチュートリアルについては、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines-windows-tutorial.md)」を参照してください。
+Azure 環境内部の完全なチュートリアルについては、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-tutorial.md)」を参照してください。
 
 ### Premium Storage を使用する Azure 仮想マシンを Azure PowerShell で作成する
 この PowerShell の例では、新しい Premium Storage アカウントを作成してこのアカウントを使用するデータ ディスクを新しい Azure 仮想マシンにアタッチする方法を説明します。
 
-1. 「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」に記載された手順に従って、PowerShell 環境を設定します。
+1. 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載された手順に従って、PowerShell 環境を設定します。
 2. PowerShell コンソールを起動してサブスクリプションに接続し、コンソール ウィンドウで次の PowerShell コマンドレットを実行します。この PowerShell ステートメントでわかるように、Premium Storage アカウントを作成するときは、**Type** パラメーターを **Premium\_LRS** に指定する必要があります。
 
 		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
@@ -330,10 +330,10 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 
 - [Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)
 - [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
-- [Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines-windows-tutorial.md)
+- [Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-tutorial.md)
 - [Virtual Machines のサイズ](../virtual-machines/virtual-machines-size-specs.md)
 - [Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
 [Image1]: ./media/storage-premium-storage/Azure_pricing_tier.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

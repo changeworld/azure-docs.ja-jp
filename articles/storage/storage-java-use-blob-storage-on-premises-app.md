@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/20/2016"
 	ms.author="rmcmurray"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
@@ -26,8 +26,9 @@
 
 - Java Developer Kit (JDK) バージョン 1.6 以降がインストールされていること。
 - Azure SDK がインストールされていること。
-- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード][]」のページをご覧ください。
-- Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する]」をご覧ください。アカウント キーの取得については[ストレージ アカウントを管理する方法][]に関するページをご覧ください。
+- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード](java-download-azure-sdk.md)」のページをご覧ください。
+- Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。アカウント キーの取得については[ストレージ アクセス キーの表示およびコピー](storage-create-storage-account.md#view-and-copy-storage-access-keys)に関するページをご覧ください。
+
 - ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
@@ -347,23 +348,15 @@
         }
     }
 
-他の BLOB ストレージ クラスとメソッドの概要については、「[Java から BLOB ストレージを使用する方法]」をご覧ください。
+他の BLOB ストレージ クラスとメソッドの概要については、「[Java から BLOB ストレージを使用する方法](storage-java-how-to-use-blob-storage.md)」をご覧ください。
 
 ## 次のステップ
 
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-- [Azure Storage SDK for Java][]
-- [Azure ストレージ クライアント SDK リファレンス][]
-- [Azure Storage REST API][]
-- [Azure Storage チーム ブログ][]
+- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+- [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-  [Download the Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
-  [方法: ストレージ アカウントを作成する]: storage-create-storage-account.md#create-a-storage-account
-  [ストレージ アカウントを管理する方法]: storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys
-  [Java から BLOB ストレージを使用する方法]: storage-java-how-to-use-blob-storage.md
-  [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-  [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-  [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

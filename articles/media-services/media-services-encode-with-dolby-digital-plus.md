@@ -3,7 +3,7 @@
 	description="このトピックでは、ドルビー デジタル プラスを使用してメディアをエンコードする方法を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="anilmur" 
+	authors="juliako" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/17/2016"   
-	ms.author="anilmur"/>
+	ms.author="juliako"/>
 
 #ドルビー デジタル プラスを使ったメディアのエンコード
 
@@ -659,4 +659,4 @@ DPLM が統合ラウドネスの結果を生成するために使用する音声
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

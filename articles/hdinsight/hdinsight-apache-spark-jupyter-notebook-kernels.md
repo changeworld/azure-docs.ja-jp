@@ -14,16 +14,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 
 # HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル
 
-HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。既定では、Jupyter Notebook には **Python2** カーネルが付属しています。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つの追加のカーネルが用意されています。次のとおりです。
+HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。既定では、Jupyter Notebook には **Python2** カーネルが付属しています。カーネルは、コードを実行し、解釈するプログラムです。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つの追加のカーネルが用意されています。次のとおりです。
 
-1. **Spark** (Scala で記述されたアプリケーション用)
-2. **PySpark** (Python で記述されたアプリケーション用)
+1. **PySpark** (Python で記述されたアプリケーション用)
+2. **Spark** (Scala で記述されたアプリケーション用)
 
 この記事では、これらのカーネルの使い方と、これらを使用する利点について説明します。
 
@@ -54,7 +54,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 新しいカーネルを使用すると、いくつかの利点があります。
 
-1. 既定の **Python2** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark、SQL、または Hive コンテキストを設定する必要があります。新しいカーネル (**Spark** または **PySpark**) を使用する場合は、これらのコンテキストが既定で利用可能です。各コンテキストは次のとおりです。
+1. **コンテキストのプリセット**。Jupyter ノードブックで利用できる既定の **Python2** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark、SQL、Hive コンテキストを明示的に設定する必要があります。新しいカーネル (**PySpark** または **Spark**) を使用する場合は、これらのコンテキストが既定で利用可能です。各コンテキストは次のとおりです。
 
 	* **sc**: Spark コンテキスト用
 	* **sqlContext**: SQL コンテキスト用
@@ -72,10 +72,24 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 	代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 	
-2. SQL クエリまたは Hive クエリを使用するには、それぞれ **%sql** または **%hive** を直接使用することができます。そのため、次のようなコードを、先行するコード ステートメントなしで、そのまま機能させることができます。
+2. **セル マジック**。PySpark カーネルには、"魔法"、つまり、`%%` で呼び出せる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
 
-		%hive
-		SELECT * FROM hivesampletable LIMIT 10
+	次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
+
+	| マジック | 例 | 説明 |
+	|-----------|---------------------------------|--------------|
+	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
+	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
+	| configure | `%%configure -f {"executorMemory": "1000M", "executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧は、「[Livy の POST /セッション要求本文](https://github.com/cloudera/livy#request-body)」にあります。パラメーターは JSON 文字列として渡す必要があります。 |
+	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して SQL クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
+	| hive | `%%hive -o <variable name>`<br> `SHOW TABLES` | hivelContext に対する Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
+	| local | `%%local`<br>`a=1` | 後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。 |
+	| ログ | `%%logs` | 現在の Livy セッションのログを出力します。 |
+	| 削除 | `%%delete -f -s <session number>` | 現在 Livy エンドポイントの特定のセッションを削除します。カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
+	| cleanup | `%%cleanup -f` | このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。強制フラグ -f は必須です。 |
+
+3. **自動視覚化**。**Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
+
 
 ## 新しいカーネルを使用する場合の考慮事項
 
@@ -88,14 +102,14 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つのフォルダーが表示されます。
 
-* **Python** フォルダーには、既定の **Python2** カーネルを使用するサンプル Notebook があります。
+* **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
 * **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
 
-各フォルダーの同じ Notebook (たとえば **READ ME FIRST - Learn the Basics of Spark on HDInsight**) を開くと、Python2 Notebook では必要なコンテキストの設定が常に最初に行われ、Spark Notebook では事前に設定されたコンテキストが使用されることを確認できます。
+**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** ノードブックを開くと、利用できるさまざまなマジックを確認できます。この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
 
 ## フィードバック
 
-新しいカーネルは、まだ初期ステージであり、今後も進化していきます。カーネルが改良されるにつれて、API も変更される可能性があります。これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。これらのカーネルの最終リリースの設計に、大いに役立ちます。ご意見やフィードバックは、この記事の下部にある**コメント**のセクションからお寄せください。
+新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。カーネルが改良されるにつれて、API も変更される可能性があります。これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。これらのカーネルの最終リリースの設計に、大いに役立ちます。ご意見やフィードバックは、この記事の下部にある**コメント**のセクションからお寄せください。
 
 
 ## <a name="seealso"></a>関連項目
@@ -123,7 +137,7 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -131,4 +145,4 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

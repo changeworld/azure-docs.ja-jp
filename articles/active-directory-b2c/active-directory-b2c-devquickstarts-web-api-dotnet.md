@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="02/17/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: .NET Web アプリから Web API を呼び出す
@@ -36,7 +36,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 - アプリケーションに **Web アプリまたは Web API** を含めます。
 - `https://localhost:44316/` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
 - アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -87,13 +87,11 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
-「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
+この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
 
-## 6.タスク Web アプリの構成
+## 6\.タスク Web アプリの構成
 
-`TaskWebApp` が Azure AD B2C と通信するために、指定する必要がある一般的なパラメーターがいくつかあります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある 
-`web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
+`TaskWebApp` が Azure AD B2C と通信するために、指定する必要がある一般的なパラメーターがいくつかあります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
 
 ```
 <appSettings>
@@ -389,4 +387,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/18/2016"
 	ms.author="tarcher"/>
 
 # DevTest ラボへの所有者とユーザーの追加
+
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to set security in your DevTest Lab](/documentation/videos/how-to-set-security-in-your-devtest-lab) (DevTest ラボでセキュリティを設定する方法)
 
 ## 概要
 
@@ -101,4 +103,4 @@ DevTest ラボ ユーザーをラボに追加するには、次の手順に従�
 
 	1. **[ユーザー]** ブレードに、追加したロールとユーザーが表示されます。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

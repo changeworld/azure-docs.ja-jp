@@ -28,6 +28,7 @@ Azure SQL Database は、ユーザー エラーまたは予期しないデータ
 Azure SQL Database では、常に新しいデータベースに復元します。これらの復元機能は、Basic、Standard、Premium のすべてのデータベースに提供されます。
 
 ##ポイントインタイム リストア
+
 ユーザー エラーや意図しないデータ変更が発生した場合、ポイントインタイム リストア (PITR) 機能を使用して、データベースの保持期間内の任意の時点にデータベースを復元できます。
 
 Basic データベースの保持期間は 7 日間、Standard データベースの保持期間は 14 日間、Premium データベースの保持期間は 35 日です。データベースの保持期間の詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
@@ -35,6 +36,8 @@ Basic データベースの保持期間は 7 日間、Standard データベー�
 > [AZURE.NOTE] データベースを復元すると、新しいデータベースが作成されます。復元先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの引き上げをご希望の場合は、[サポートに連絡](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
 
 ###Azure ポータル
+> [AZURE.NOTE] エラスティック データベース プール内のデータベースについては、Azure ポータルでは、同じプールへのポイントインタイム リストアのみをサポートします。データベースをスタンドアロン データベースとしてポイントインタイム リストアしたい場合は、REST API を使用してください。
+
 Azure ポータルでポイントインタイム リストアを使用するには、次の手順に従います。
 
 1. [Azure ポータル](https://portal.Azure.com)にログインします。
@@ -55,13 +58,7 @@ Azure ポータルでポイントインタイム リストアを使用するに�
 		 
 
 ###REST API 
-プログラムでデータベースの復元を実行するには、REST を使用します。
-
-1. 「[データベースの取得](http://msdn.microsoft.com/library/azure/dn505708.aspx)」の操作を使用して、復元するデータベースを取得します。
-
-2.	「[データベースの復元要求の作成](http://msdn.microsoft.com/library/azure/dn509571.aspx)」の操作を使用して、復元要求を作成します。
-	
-3.	「[データベース操作の状態](http://msdn.microsoft.com/library/azure/dn720371.aspx)」の操作を使用して、復元要求を追跡します。
+プログラムでデータベースの復元を実行するには、REST を使用します。そのためには、[Create Database](https://msdn.microsoft.com/library/azure/mt163685.aspx) 操作を使用して復元要求を作成し、**作成モード**を **PointInTimeRestore** に指定します。
 
 ##削除されたデータベースの復元
 データベースが削除された場合、Azure SQL Database では、削除されたデータベースを削除された時点の状態に復元できます。Azure SQL Database では、データベースの保持期間にわたり、削除されたデータベースのバックアップを格納します。
@@ -106,4 +103,4 @@ Azure ポータルでポイントインタイム リストアを使用するに�
 	
 4.	「[データベース操作の状態](http://msdn.microsoft.com/library/azure/dn720371.aspx)」の操作を使用して、復元の状態を追跡します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

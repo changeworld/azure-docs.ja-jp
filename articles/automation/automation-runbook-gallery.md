@@ -12,8 +12,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
-	ms.author="bwren" />
+	ms.date="02/18/2016"
+	ms.author="magoedte;bwren" />
 
 
 # Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
@@ -24,13 +24,13 @@ Runbook は [Runbook ギャラリー](#runbooks-in-runbook-gallery)から、モ�
 
 ## Runbook ギャラリーでの Runbook
 
-[Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。[TechNet スクリプト センター](http://gallery.technet.microsoft.com/)でホストされているギャラリーから Runbook をダウンロードすることも、Azure ポータルや Azure プレビュー ポータルでギャラリーから Runbook を直接インポートすることもできます。
+[Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。[TechNet スクリプト センター](http://gallery.technet.microsoft.com/)でホストされているギャラリーから Runbook をダウンロードすることも、Azure クラシック ポータルまたは Azure ポータルでギャラリーから Runbook を直接インポートすることもできます。
 
-Runbook ギャラリーから直接インポートするのは、Azure ポータルまたは Azure プレビュー ポータルを使用した場合にのみ可能です。Windows PowerShell を使用してこの機能を実行することはできません。
+Runbook ギャラリーから直接インポートできるのは、Azure クラシック ポータルまたは Azure ポータルを使用した場合のみです。Windows PowerShell を使用してこの機能を実行することはできません。
 
 >[AZURE.NOTE] Runbook ギャラリーから取得した Runbook は、内容を検証し、運用環境でインストールおよび実行するときは細心の注意を払う必要があります。
 
-### Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
+### Azure クラシック ポータルで Runbook ギャラリーから Runbook をインポートするには
 
 1. Microsoft Azure 管理ポータルで、**[新規]**、**[App Services]**、**[Automation]**、**[Runbook]**、**[ギャラリーから]** の順にクリックします。
 2. カテゴリを選択して関連する Runbook を表示し、Runbook を選択して詳細を表示します。目的の Runbook を選択するときは、右矢印ボタンをクリックします。<br> ![Runbook ギャラリー](media/automation-runbook-gallery/runbook-gallery.png)
@@ -38,9 +38,9 @@ Runbook ギャラリーから直接インポートするのは、Azure ポータ
 4. Runbook の詳細を入力し、チェック マーク ボタンをクリックします。Runbook の名前は既に設定されています。
 5. Runbook が Automation アカウントの **[Runbook]** タブに表示されます。
 
-### Azure プレビュー ポータルで Runbook ギャラリーから Runbook をインポートするには
+### Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。 
+1. Azure ポータルで、Automation アカウントを開きます。 
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **[ギャラリーの参照]** ボタンをクリックします。 <br> ![[ギャラリーの参照] ボタン](media/automation-runbook-gallery/browse-gallery-button.png)
 4. 必要なギャラリー項目を探し、選択して詳細を表示します。 <br> ![ギャラリーの参照](media/automation-runbook-gallery/browse-gallery.png)
@@ -82,18 +82,18 @@ Runbook ギャラリーから直接インポートするのは、Azure ポータ
 
 ## PowerShell ギャラリーのモジュール
 
-PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。このギャラリーは Azure プレビュー ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。Azure ポータルからは、直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
+PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。Azure クラシック ポータルからは直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
 
-### Azure プレビュー ポータルで PowerShell ギャラリーからモジュールをインポートするには
+### Azure ポータルで PowerShell ギャラリーからモジュールをインポートするには
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。 
+1. Azure ポータルで、Automation アカウントを開きます。 
 2. **[アセット]** タイルをクリックして、資産の一覧を開きます。
 3. **[モジュール]** タイルをクリックして、モジュールの一覧を開きます。
 3. **[PowerShell ギャラリー]** ボタンをクリックして、別のブラウザー ウィンドウで PowerShell ギャラリーを起動します。 <br> ![PowerShell ギャラリー](media/automation-runbook-gallery/powershell-gallery-button.png)
 4. **[モジュール]** メニューをクリックして、利用可能なモジュールの一覧にアクセスします。<br> ![[PowerShell ギャラリー] ボタン](media/automation-runbook-gallery/powershell-gallery.png)
 4. 目的のモジュールを探し、選択して詳細を表示します。
 5. モジュールを Azure Automation に直接インストールするには、**[Azure Automation にデプロイ]** ボタンをクリックします。<br> ![[PowerShell ギャラリー] ボタン](media/automation-runbook-gallery/powershell-gallery-detail.png)
-6. Azure プレビュー ポータルの **[カスタム デプロイメント]** ウィンドウに戻ります。**[新規または既存の Automation アカウント]** および **[Automation アカウント名]** で、モジュールをインストールするかどうかを指定します。既存のアカウントを使用する場合、**[Automation アカウントの場所]** は無視されます。 
+6. Azure ポータルの **[カスタム デプロイメント]** ウィンドウに戻ります。**[新規または既存の Automation アカウント]** および **[Automation アカウント名]** で、モジュールをインストールするかどうかを指定します。既存のアカウントを使用する場合、**[Automation アカウントの場所]** は無視されます。 
 7. **[リソース グループ]** を選択し、既存のリソース グループを指定するか、モジュール用に新しいリソース グループを作成します。
 6. **[法的条項]** を選択し、**[購入]** をクリックします。このボタンの名前はこうなっていますが、実際にはモジュールをインストールしても課金されません。
 7. **[作成]** をクリックしてモジュールをインポートします。各アクティビティを抽出する必要があるため、数分かかる場合があります。  
@@ -109,4 +109,4 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 - [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="02/18/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory (Azure AD) の管理者ロールの割り当て
@@ -31,8 +31,8 @@
 - **パスワード管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
 - **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
-> [AZURE.NOTE]
-> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
+
+	> [AZURE.NOTE] サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
 - **ユーザー管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
 
@@ -94,7 +94,7 @@
 
 - Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
 
-- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated directory.md)」を参照してください。
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 - [ユーザーの管理](active-directory-create-users.md)
 
@@ -102,4 +102,4 @@
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

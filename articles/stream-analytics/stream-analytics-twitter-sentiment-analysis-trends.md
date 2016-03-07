@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="02/04/2016"
+	ms.date="02/18/2016"
 	ms.author="jeffstok"/>
 
 
@@ -29,8 +29,9 @@ Event Hubs に Twitter イベントをリアルタイム入力することで、
 ニュース メディア Web サイトは、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。そのため、Twitter データのリアルタイム センチメント分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を利用します。特に、Twitter のトレンディング トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。そのため、基本的に、このソーシャル メディア フィードに基づいたセンチメント分析エンジンが必要となります。
 
 ## 前提条件
-1.	このチュートリアルでは、Twitter アカウントが必要です。  
-2.	このチュートリアルでは、GitHub にある Twitter クライアント アプリケーションを使用します。[ここ](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)からダウンロードし、次の手順に従って、ソリューションを設定します。
+1.	Twitter アカウントと [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) 
+2.	Microsoft Download Center の [TwitterClient.zip](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip)
+3.	省略可能: [Github](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient) の twitter クライアントのソース コード 
 
 ## イベント ハブ入力とコンシューマー グループの作成
 
@@ -55,16 +56,15 @@ Event Hub を作成するには、次の手順に従います。
 
 アプリケーションを設定するには、次の手順に従います。
 
-1.	[TwitterClient ソリューションをダウンロードします。](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)
-2.	App.config を開き、oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret を、自身の値を設定した Twitter トークンに置き換えます。  
+1.	[TwitterClient ソリューションをダウンロードします。](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip)
+2.	TwitterClient.exe.config を開き、oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret を、自身の値を設定した Twitter トークンに置き換えます。  
 
 	[OAuth アクセス トークンを生成する手順](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 	トークンを生成するには、空のアプリケーションを作成する必要がある点に注意してください。  
-3.	App.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。
-4.	*省略可能:* 検索するキーワードを調整します。既定で、このアプリケーションでは "Azure、Skype、XBox、Microsoft、シアトル" が検索されます。必要な場合は、App.config の twitter\_keywords の値を調整できます。
-5.	ソリューションをビルドします。
-6.	アプリケーションを起動します。CreatedAt、Topic、SentimentScore の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
+3.	TwitterClient.exe.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。
+4.	*省略可能:* 検索するキーワードを調整します。既定で、このアプリケーションでは "Azure、Skype、XBox、Microsoft、シアトル" が検索されます。必要な場合は、TwitterClient.exe.config の twitter\_keywords の値を調整できます。
+5.	**TwitterClient.exe** を実行し、アプリケーションを起動します。CreatedAt、Topic、SentimentScore の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
 
 	![センチメント分析: イベント ハブに送信される SentimentScore 値。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-sentiment-output-to-event-hub.png)
 
@@ -224,7 +224,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -236,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

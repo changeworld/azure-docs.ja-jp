@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="02/04/2016"
+	ms.date="02/22/2016"
 	ms.author="jeffstok"/>
 
 # データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
@@ -28,7 +28,7 @@ Stream Analytics に対するデータ接続は、データ ソースからの�
 データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。BLOB ストレージ、Event Hubs および IoT Hub は、データ ストリーム入力ソースとしてサポートされます。Event Hubs は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなどのイベント ストリームを回収するために使用されます。IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。ストリームとしてバルク データを取り込むための入力ソースとして、BLOB ストレージを使用できます。
 
 ### 参照データ
-Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。参照データ入力を作成する方法については、「[参照データの使用](stream-analytics-use-reference-data.md)」を参照してください。
+Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 100MB に制限されています。参照データ入力を作成する方法については、「[参照データの使用](stream-analytics-use-reference-data.md)」を参照してください。
 
 ## Event Hub でデータ ストリーム入力を作成する
 
@@ -38,7 +38,7 @@ Stream Analytics で Event Hubs から返されるイベントの既定のタイ
 
 ### コンシューマー グループ
 
-Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](./event-hubs/event-hubs-programming-guide.md)」を参照してください。
+Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
 
 ## 入力データ ストリームとしてイベント ハブを構成する
 
@@ -116,6 +116,8 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 Stream Analytics の BLOB ストレージ イベントの既定のタイムスタンプは BLOB が最後に更新されたタイムスタンプであることに注意してください。このタイムスタンプが *BlobLastModifiedUtcTime* です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
+> [AZURE.NOTE] Stream Analytics では、既存の BLOB にコンテンツを追加できません。Stream Analytics は BLOB を 1 回だけ表示します。その読み込み後の変更は処理されません。ベスト プラクティスとしては、すべてのデータを一度にアップロードし、BLOB ストアにイベントを追加しないことです。
+
 次の表に、[BLOB ストレージ入力] タブの各プロパティとその説明を示しています。
 
 <table>
@@ -189,7 +191,7 @@ FROM Input
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 ここでは、Azure での Stream Analytics ジョブのデータ接続オプションについて説明しました。Stream Analytics の詳細については、以下を参照してください。
@@ -207,4 +209,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

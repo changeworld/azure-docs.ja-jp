@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="11/24/2015"
+	ms.date="02/19/2016"
 	ms.author="awills"/>
 
 # Application Insights による利用状況分析
@@ -25,7 +25,7 @@ Application Insights は、スタンドアロン アプリ (iOS、Android Window
 
 ## アプリケーションの正常性と利用状況の監視
 
-使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です (無料評価版を利用できます。この試用期間が終了しても、サービスの無料の層は引き続きご利用いただけます)。
+作業を開始するには、[Microsoft Azure](https://azure.com) で無料アカウントを取得します。(この試用期間が終了しても、サービスの無料の層は引き続きご利用いただけます)。
 
 [Azure ポータル](https://portal.azure.com)で、Application Insights のリソースを作成します。アプリに関する使用状況とパフォーマンス データはここに表示されます。
 
@@ -288,4 +288,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

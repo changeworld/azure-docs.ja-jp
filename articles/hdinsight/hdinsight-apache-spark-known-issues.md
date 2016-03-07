@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 # Azure HDInsight (Linux) の Apache Spark の既知の問題
@@ -54,11 +54,11 @@
 
 Ambari から履歴サーバーを手動で開始します。
 
-##2 MB を超える Notebook の読み込み中のエラー
+##大きなサイズの Notebook の読み込み中のエラー
 
 **症状:**
 
-2 MB を超える Notebook の読み込み中にエラー **`Error loading notebook`** が表示される場合があります。
+大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が表示される場合があります。
 
 **対応策:**
 
@@ -75,68 +75,26 @@ Ambari から履歴サーバーを手動で開始します。
 
 **症状:**
 
-Spark Magic を使用する Jupyter Notebook の最初のステートメントは、1 分以上かかる場合があります。
+Spark Magic を使用した Jupyter Notebook の最初のステートメントは、1 分以上かかる場合があります。
 
-**対応策:**
+**説明:**
  
-回避方法はありません。1 分ほどかかる場合があります。
+これは、最初のコード セルが実行されるタイミングのために発生します。バック グラウンドで、これにより、セッション構成が開始され、Spark、SQL、および Hive コンテキストが設定されます。これらのコンテキストが設定された後に、最初のステートメントが実行されるので、ステートメントの完了までに時間がかかるような印象を受けます。
 
 ##Jupyter Notebook がセッションの作成中にタイムアウトする
 
 **症状:**
 
-Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと Pyspark カーネルは、セッションを作成する試行をタイムアウトにします。対応策:
+Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと Pyspark カーネルは、セッションを作成する試行をタイムアウトにします。
+
+**対応策:**
 
 1. 以下の方法で、Spark クラスターのリソースを解放します。
 
-    - [閉じて停止] メニューに移動するか、Notebook エクスプローラーで [シャットダウン] をクリックして、他の Spark Notebook を停止します。
-    - YARN から他の Spark アプリケーションを停止します。
+    - [閉じて停止] メニューに移動するか、Notebook エクスプローラーで [シャットダウン] をクリックして、他の Spark Notebook を停止する。
+    - YARN から他の Spark アプリケーションを停止する。
 
 2. スタートアップしようとしていた Notebook を再起動します。今度は、セッションを作成するために十分なリソースが使用可能になっている必要があります。
-
-##Notebook の出力結果の形式に問題がある
-
-**症状:**
- 
-Notebook の出力結果が、Spark および Pyspark の Jupyter カーネルのセルを実行した後で、正しくない形式になります。これには、セル実行の成功した結果も、Spark stacktrace などのエラーも含まれます。
-
-**対応策:**
- 
-この問題は、今後のリリースで対処されます。
-
-##サンプル Notebook に誤記がある
- 
-- **Python notebook 4 (Analyze logs with Spark using a custom library)**
-
-    "Let us assume you copy it over to wasb:///example/data/iislogparser.py" は "Let us assume you copy it over to wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py" が正しい記述です。
-
-- **Python notebook 5 (Spark Machine Learning - Predictive analysis on food inspection data using MLLib)**
-
-    "A quick visualization can help us reason about the distribution of these outcomes" に、実行できない誤ったコードがいくつかあります。次のように修正する必要があります。
-
-        countResults = df.groupBy('results').count().withColumnRenamed('count', 'cnt').collect() 
-        labels = [row.results for row in countResults] 
-        sizes = [row.cnt for row in countResults] 
-        colors = ['turquoise', 'seagreen', 'mediumslateblue', 'palegreen', 'coral'] 
-        plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors) plt.axis('equal') 
-        
-- **Python notebook 5 (Spark Machine Learning - Predictive analysis on food inspection data using MLLib)**
-
-    最後のコメントに、偽陰性率と偽陽性率がそれぞれ 12.6% と 16.0% であると記載されています。これらの数値は不正確です。正しいパーセンテージの円グラフを表示するには、コードを実行してください。
-
-- **Python notebooks 6 および 7**
-
-    最初のセルが、Notebook の終了時に呼び出されるように sc.stop() メソッドを登録することに失敗します。特定の状況では、このために Spark リソースがリークする場合があります。この問題を回避するには、これらの Notebook で、終了前に import atexit; atexit.register(lambda: sc.stop()) を実行します。誤ってリソースをリークした場合は、上の指示に従って、リークした YARN アプリケーションを強制終了します。
-     
-##コア構成やメモリ構成をカスタマイズできない
-
-**症状:**
- 
-Spark/Pyspark カーネルの既定の構成とは異なるコア構成やメモリ構成を指定することはできません。
-
-**対応策:**
- 
-この機能は準備中です。
 
 ## Spark ログ ディレクトリでアクセス許可の問題が発生する 
 
@@ -156,4 +114,4 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 - [概要: Azure HDInsight (Linux) での Apache Spark](hdinsight-apache-spark-overview.md)
 - [概要: Azure HDInsight (Linux) の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

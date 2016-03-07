@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
+	ms.date="02/04/2016"
 	ms.author="heidist" />
 
 # 管理 API: バージョン 2015-02-28
@@ -826,4 +826,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
 ありません。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

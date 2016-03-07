@@ -13,16 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/14/2015"
+	ms.date="02/22/2016"
 	ms.author="raynew"/>
 
 
 # Azure Site Recovery を使用して 2 つのオンプレミス データセンター間で Hyper-V 仮想マシンをレプリケーションするために、記憶域マッピングを準備する
 
 
-Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。この記事では記憶域マッピングについて説明します。これを利用すれば、Site Recovery を使って 2 つのオンプレミス データ センター間で Hyper-V 仮想マシンをレプリケートするときに、記憶域を最適に使用できます。
+Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。この記事では記憶域マッピングについて説明します。これを利用すれば、Site Recovery を使って 2 つのオンプレミスの VMM データセンター間で Hyper-V 仮想マシンをレプリケートするときに、記憶域を最適に使用できます。
 
-この記事について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## 概要
 
@@ -98,4 +98,4 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構�
 
 記憶域マッピングに関する理解が深まったところで、[Azure Site Recovery をデプロイする準備](site-recovery-best-practices.md)を行いましょう。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

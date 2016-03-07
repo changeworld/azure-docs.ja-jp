@@ -15,14 +15,48 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/21/2015"
+	ms.date="02/21/2016"
 	ms.author="genli"/>
 
-# Azure サブスクリプションのサインアップ、購入、アップグレード、またはアクティブ化の方法
+# Azure オファー - 特典と制限、サインアップ、購入、アップグレード、または有効化する方法
 
+Azure には、お客様のビジネス ニーズに合った、Azure を使い始める良いきっかけとなるさまざまなオファーが用意されています。[[Azure オファー]](https://azure.microsoft.com/support/legal/offer-details/) にアクセスして、すべてのアクティブなオファーの完全なリストと、その内容、特典、国/リージョン別の利用可能性など、各オファーの詳細をご覧ください。
+
+一般的なオファーには次のようなものがあります。
+
+- **無料試用版**
+  - [サインアップ手順のガイド](#SignupFreeTrial)
+  - [特典](https://azure.microsoft.com/pricing/free-trial/)
+  - [FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)
+  - [無料試用版を従量課金制にアップグレード](#UpgradeFreeToPYG)
+- **従量課金制**
+   - [サインアップ](https://azure.microsoft.com/pricing/purchase-options/)
+   - [料金](https://azure.microsoft.com/pricing/)
+- **MPN** (Microsoft Partner Network) - メンバーは、毎月無料で Azure クレジットを取得できます。  
+  - [パートナー向けの Azure の特典](https://azure.microsoft.com/offers/ms-azr-0025p/)
+  - [パートナとして登録](http://go.microsoft.com/fwlink/?linkid=309258&clcid=0x409)または [Microsoft Action Pack をサブスクライブ](http://go.microsoft.com/fwlink/?linkid=525768&clcid=0x409)
+  - Azure クレジットの使用 - [MPN ポータル](https://mspartner.microsoft.com/Pages/Locale.aspx)にアクセスして、利用資格を確認し、[ソフトウェア キーと特典] の手順に従います。利用資格を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
+- **MSDN および Visual Studio サブスクライバー**
+  - [MSDN 開発/テストの特典](https://azure.microsoft.com/offers/ms-azr-0023p/)。 [Visual Studio サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+  - [Visual Studio サブスクライバーの Azure クレジットの有効化](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+  - [シンプルな 3 つの手順で MSDN Azure 特典を有効化](https://www.youtube.com/watch?v=SN2CA71uOEI&feature=youtu.be)。[MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)にログオンして、利用資格を確認し、[Azure の特典を有効化] をクリックします。確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/subscriptions/contactus.aspx)にお問い合わせください。
+- **BizSpark**
+  - [BizSpark の特典](https://www.microsoft.com/bizspark/default.aspx#start-two)。詳しくは、「[Visual Studio Enterprise サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/offers/ms-azr-0064p/)」をご覧ください。
+  - [BizSpark に登録する](https://www.microsoft.com/bizspark/signup/default.aspx)。問題が発生した場合は、[BizSpark チーム](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)にお問い合わせください。
+- **BizSpark Plus**
+   - [BizSpark Plus についてご確認ください](https://www.microsoft.com/bizspark/plus/default.aspx)。詳しくは、「[BizSpark Plus Benefits (BizSpark Plus の特典)](https://azure.microsoft.com/offers/ms-azr-0149p/)」をご覧ください。
+   - [BizSpark に登録](https://www.microsoft.com/bizspark/signup/default.aspx)し、パートナーの窓口担当者に問い合わせて、BizSpark Plus にアップグレードします。問題が発生した場合は、[BizSpark チーム](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)にお問い合わせください。
+- **リセラー** (Open Volume License プログラム)
+  - [オンライン サービス キーのアクティブ化 - ステップ バイ ステップ ガイド](#activateKey)
+  - [購入、特典、アクティブ化](https://azure.microsoft.com/offers/ms-azr-0111p/)
+- **EA (Enterprise Agreement)**
+  - [Azure のエンタープライズ向けライセンス](https://azure.microsoft.com/pricing/enterprise-agreement/)
+  - アクティブ化するには、Microsoft アカウント マネージャーまたはリセラーに相談して今すぐ利用を開始できます。
+
+<a name="SignupFreeTrial"></a>
 ## Azure 無料試用版サブスクリプションにサインアップする
 
-Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、および Microsoft アカウントを指定する必要があります。Microsoft アカウントとは、Windows Live プログラムまたはサービス (Outlook、Hotmail、OneDrive など) にサインインするために使用する電子メール アドレスとパスワードのことです。Microsoft アカウントを設定するには、会社の電子メールなど、所有する任意の電子メール アドレスを使用します。詳細については、「[Microsoft アカウントのよくある質問](https://www.microsoft.com/ja-JP/account/faq.aspx)」を参照してください。
+Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、および Microsoft アカウントを指定する必要があります。Microsoft アカウントとは、Windows Live プログラムまたはサービス (Outlook、Hotmail、OneDrive など) にサインインするために使用する電子メール アドレスとパスワードのことです。Microsoft アカウントを設定するには、会社の電子メールなど、所有する任意の電子メール アドレスを使用します。詳細については、「[Microsoft アカウントのよくある質問](https://www.microsoft.com/account/faq.aspx)」を参照してください。
 
 >[AZURE.NOTE] 電話番号とクレジット カードの詳細は、ID を確認する目的のみで使用されます。クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
 
@@ -38,7 +72,7 @@ Azure 無料試用版のサブスクリプションにサインアップする�
 
  **注**: クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
 
- クレジット カード情報の送信後にエラー メッセージが表示される場合は、記事「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](../billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+ クレジット カード情報の送信後にエラー メッセージが表示される場合は、記事「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
 
  ![cardverify](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)</br> 6.**[契約]** セクションで、サブスクリプション契約、プランの詳細、プライバシーに関する声明に同意する場合は、チェック ボックスをオンにします。その後、**[サインアップ]** を選択します。サンプルのスクリーンショットは英語版の契約です。契約フォームは、国によって異なる場合があります。
 
@@ -48,17 +82,19 @@ Azure 無料試用版のサブスクリプションにサインアップする�
 
  この場合は、別のブラウザーを使用してサインアップ プロセスを完了してください。問題が引き続き発生する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br> 7.サブスクリプションの準備が完了したら、**[サービスの管理を開始する]** を選択して開始します。</br> ![startservice](./media/billing-buy-sign-up-azure-subscription/startservice.png)
 
-## Azure 無料試用版サブスクリプションを従量課金制サブスクリプションにアップグレードする
+<a name="UpgradeFreeToPYG"></a>
+## Azure 無料試用版を従量課金制にアップグレード
 
-1. 無料評価版にサインアップするために使用した Microsoft アカウントまたは学校や職場のアカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
+1. 無料試用版にサインアップするために使用した Microsoft アカウントまたは学校や職場のアカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
 2. サブスクリプションを選択し、**[アップグレード]** を選択します。</br>![billpage](./media/billing-buy-sign-up-azure-subscription/billpage.png)
 3. **[はい]** を選択し、**[今すぐアップグレード]** をクリックします。</br>![upgrade](./media/billing-buy-sign-up-azure-subscription/Upgrade.png)
 
 無料試用版サブスクリプションから従量課金制サブスクリプションにアップグレードするとき、Azure サービスで使用する 30 日間の制限や 200 ドルのクレジットなど無料試用版から引き継がれるメリットは、いずれかがなくなるまで継続されます。サブスクリプション アップグレードは、その後でのみ行われます。
 
-## Online Service のアクティブ化キー (5 桁 x 5 個のキー) を使用して Azure サブスクリプションをアクティブ化する
+<a name="activateKey"></a>
+## オンライン サービスのライセンス認証キーを使用したアクティブ化
 
-Azure イン オープン プランのクレジットを販売店から購入した場合は、次の手順に従ってサブスクリプションをアクティブ化します。
+Azure イン オープン プランのクレジットをリセラーから購入した場合は、ライセンス認証キー (5x5 のキー) を入手して、次の手順に従ってサブスクリプションをアクティブ化します。
 
 1. azure.com の[サブスクリプションの概要ページ](https://account.windowsazure.com/subscriptions)に移動します。
 
@@ -66,30 +102,4 @@ Azure イン オープン プランのクレジットを販売店から購入し
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
-## エンタープライズ契約、MSDN、MPN、および BizSpark ユーザーのための Azure サインアップ
-
-プランを選択する資格がある場合は、特典プログラム チャネルを調べます。
-
-### MSDN
-- [サブスクリプションの特典の比較](https://www.visualstudio.com/ja-JP/products/msdn-subscriptions-vs/#AdditionalPageSections_1)
-- [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
-- 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/subscriptions/contactus.aspx)にお問い合わせください。
-- [MSDN 向け開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
-
-### MPN
-
-- [MPN ポータル](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx)にアクセスして、資格の状態を確認します。
-- [MPN の主なメリット](https://mspartner.microsoft.com/en/us/Pages/Membership/core-benefits.aspx)
-- [MPN の要件](https://mspartner.microsoft.com/en/us/Pages/Membership/core-benefits.aspx#Requirements)
-- 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/en/us/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
-
-### BizSpark
-
-- [Bizspark ポータル](https://www.microsoft.com/bizspark/default.aspx)にアクセスして、資格の状態を確認します。
-- 状態を確認できない場合は、[BizSpark サポート チームに電子メールを送信](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)して BizSpark サポートにお問い合わせください。
-
-### BizSpark Plus
-
-- [Microsoft BizSpark Plus ポータル](http://www.microsoft.com/bizspark/plus/default.aspx)
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

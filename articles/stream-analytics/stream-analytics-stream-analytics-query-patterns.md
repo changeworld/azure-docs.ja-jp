@@ -415,7 +415,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 **説明**: LAST 関数を使用して、イベントの種類が "Start" であった最後の Time 値を取得します。LAST 関数に PARTITION BY [user] が使用されていることに注目してください。この指定によって、一意のユーザーごとに結果が計算されます。このクエリでは、"Start" イベントと "Stop" イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です (LIMIT DURATION(hour, 1))。
 
 ## クエリ例: 条件の期間を検出する
-**説明**: 条件が発生していた時間の長さを調べます。例: すべての自動車が正しくない (20,000 ポンド超) 結果になるバグがありました。バグの期間を計算します。
+**説明**: 条件が発生していた時間の長さを調べます。例: すべての自動車の重量が正しくない (20,000 ポンド超) 結果になるバグがありました。バグの期間を計算します。
 
 **入力**:
 
@@ -499,7 +499,7 @@ WHERE
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -510,4 +510,4 @@ WHERE
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

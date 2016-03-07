@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    ms.author="chackdan"/>
 
 
@@ -189,11 +189,16 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
+## 仮想マシン スケール セット (VMSS) インスタンスまたはクラスター ノードへの RDP 接続 
+
+クラスターで指定する NodeType ごとに、VMSS がセットアップされます。詳細については、「[How to RDP into your VMSS instance (VMSS インスタンスに RDP 接続する方法)](service-fabric-cluster-nodetypes.md)」を参照してください。
+
 ## 次のステップ
 
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 - [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
+- [How to RDP into your VMSS instance (VMSS インスタンスに RDP 接続する方法)](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
@@ -207,4 +212,4 @@
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

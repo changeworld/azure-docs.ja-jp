@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/23/2016"
+   ms.date="02/22/2016"
    ms.author="tomfitz"/>
 
 # リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ
@@ -36,8 +36,7 @@ Azure ポータルとクラシック ポータルでサポートされている�
 | Dynamics Lifecycle Services | はい | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (プレビュー) | はい | [Service Fabric Rest](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
 | Virtual Machines | あり | [VM REST](https://msdn.microsoft.com/library/azure/mt163647.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) | [Microsoft.Compute](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Compute%22&type=Code) |
-| Virtual Machines (クラシック) | 制限あり | - | - | | リモート アプリ | いいえ | - | - | 
-| Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
+| Virtual Machines (クラシック) | 制限あり | - | - | | リモート アプリ | いいえ | - | - | | Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイ モデルではなくクラシック デプロイ モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -183,7 +182,22 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
     
 ### Azure CLI
 
-リソース プロバイダーの情報は、次のコマンドでファイルに保存できます。
+使用可能なすべてのリソース プロバイダーを取得する例を次に示します。
+
+    azure provider list
+    
+次のように出力されます。
+
+    info:    Executing command provider list
+    + Getting ARM registered providers
+    data:    Namespace                        Registered
+    data:    -------------------------------  -------------
+    data:    Microsoft.ApiManagement          Unregistered
+    data:    Microsoft.AppService             Registered
+    data:    Microsoft.Authorization          Registered
+    ...
+
+特定のリソース プロバイダーの情報は、次のコマンドでファイルに保存できます。
 
     azure provider show Microsoft.Web -vv --json > c:\temp.json
 
@@ -277,4 +291,4 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

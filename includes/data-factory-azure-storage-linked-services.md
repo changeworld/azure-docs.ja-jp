@@ -23,7 +23,7 @@ Azure Storage のアカウント キーを表示またはコピーする手順�
 
 
 ## Azure Storage SAS のリンクされたサービス  
-Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。SAS の詳細については、「[共有アクセス署名、第 1 部 : SAS モデルについて](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。SAS の詳細については、「[共有アクセス署名、第 1 部 : SAS モデルについて](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
   
 Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
@@ -47,9 +47,9 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 **SAS URI** を作成する際は、次の点を考慮してください。
 
-- Azure Data Factory は、**サービス SAS** のみをサポートします。アカウント SAS はサポートしません。この 2 種類の SAS の詳細については、「[共有アクセス署名の種類](../storage/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。
+- Azure Data Factory は、**サービス SAS** のみをサポートします。アカウント SAS はサポートしません。この 2 種類の SAS の詳細については、「[共有アクセス署名の種類](../articles/storage/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。
 - リンクされたサービス (読み取り、書き込み、読み取り/書き込み) が Data Factory 内でどのように使用されるかに応じて、適切な読み取り/書き込み**アクセス許可**をオブジェクトに設定する必要があります。
 - **有効期限**は適切に設定する必要があります。Azure Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
 - URI は、必要に応じて、適切なコンテナーや BLOB またはテーブル レベルで作成する必要があります。Azure BLOB への SAS URI を使用すると、Data Factory サービスから特定の BLOB にアクセスできます。Azure BLOB コンテナーへの SAS URI を使用すると、Data Factory サービスはそのコンテナー内の BLOB に対して反復処理を行うことができます。アクセスするオブジェクトの数を後で変更する必要がある場合、または SAS URI を更新する必要がある場合は、リンクされたサービスを新しい URI で更新することを忘れないでください。   
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

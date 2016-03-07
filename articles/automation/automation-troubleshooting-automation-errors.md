@@ -143,19 +143,30 @@
 
 ### シナリオ: ノードが "失敗" 状態になり、"見つかりませんでした" というエラーが表示される
 
-**エラー:** "有効な構成 <guid> が見つからないため、サーバー https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction から操作を取得できませんでした" というエラーが記載された "失敗" 状態のレポートがノードで生成される。
+**エラー:** ノードのレポートで **Failed** 状態および “https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction failed because a valid configuration ``<guid>``が見つからないためサーバーからアクションを取得する試みが失敗しました。” というエラーが報告されている。
 
-**エラーの理由:** 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられているために発生します。
+**エラーの理由:** 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられている場合に発生します。
 
-**トラブルシューティングのヒント:** ノード構成の名前が使用されており、構成名が使用されていないことを再確認してください。ノードを有効なノード構成にマッピングするには、ポータルの [ノード] ブレードにある [ノード構成の割り当て] ボタンか、AzureRMAutomationDscNode コマンドレットを使用できます。
+**トラブルシューティングのヒント:**
+
+- ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。  
+
+- ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
+    - Azure ポータルを使用してノードにノード構成を割り当てるには、**[DSC ノード]** ブレードを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
+    - PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
+
 
 ### シナリオ: 構成のコンパイルを実行しても、ノード構成 (mof ファイル) が生成されなかった
 
 **エラー:** DSC のコンパイル ジョブが中断され、"コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした" というエラーが表示された。
 
-**エラーの理由:** DSC 構成の "ノード" の横にある式の評価結果が $null の場合、ノード構成は生成されません。
+**エラーの理由:** DSC 構成の **Node** キーワードに続く式の評価結果が $null の場合、ノード構成は生成されない。
 
-**トラブルシューティングのヒント:** "ノード" の横にある式の評価結果が $null でないことを確認してください。ConfigurationData を渡している場合は、構成データから、構成に必要な期待される値を渡すようにしてください。たとえば、"$AllNodes" です。詳細については、「https://azure.microsoft.com/ja-JP/documentation/articles/automation-dsc-compile/#configurationdata」を参照してください。
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
+
+- 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。  
+- 構成のコンパイル時に ConfigurationData を渡す場合は、[configurationData](automation-dsc-compile.md#configurationdata) から、構成に必要な期待される値を渡すようにしてください。
+
 
 ### シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
 
@@ -163,15 +174,16 @@
 
 **エラーの理由:** WMF のバージョンをアップグレードした結果、WMI が破損した。
 
-**トラブルシューティングのヒント:** この問題を解決するには、次の投稿の手順に従ってください: https://msdn.microsoft.com/ja-JP/powershell/wmf/limitation_dsc
+**トラブルシューティングのヒント:** この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/limitation_dsc)に関するブログ投稿にある手順に従ってください。
 
 ### シナリオ: DSC 構成で資格情報が使用できない 
 
-**エラー:** DSC コンパイル ジョブが中断され、"型 '<some resource name>' のプロパティ 'Credential' の処理中に System.InvalidOperationException エラーが発生しました: 暗号化されたパスワードを変換してプレーンテキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです" というエラーが表示された。
+**エラー:** DSC コンパイル ジョブが中断され、“型 ``<some resource name>`` のプロパティ 'Credential' の処理中に System.InvalidOperationException エラーが発生しました: 暗号化されたパスワードを変換してプレーンテキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです“ というエラーが表示された。
 
-**エラーの理由:** 構成で資格情報を使用しようとしたときに、各ノード構成について PSAllowPlainTextPassword を true に設定するための適切な ConfigurationData を渡さなかった。
+**エラーの理由:** 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定しなかった。
 
-**トラブルシューティングのヒント:** 上記の構成の各ノード構成について PSAllowPlainTextPassword を true に設定するために、適切な ConfigurationData を渡してください。詳細については、「https://azure.microsoft.com/ja-JP/documentation/articles/automation-dsc-compile/#assets」を参照してください。
+**トラブルシューティングのヒント:** 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
+
 
   <br/>
 
@@ -187,4 +199,4 @@
 
 - Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

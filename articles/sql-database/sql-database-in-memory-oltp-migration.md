@@ -18,12 +18,13 @@
 	ms.author="jodebrui"/>
 
 
-# インメモリ (プレビュー) を使用して SQL Database のアプリケーション パフォーマンスを向上させる
+# インメモリ OLTP (プレビュー) を使用して SQL Database のアプリケーション パフォーマンスを向上させる
 
-[インメモリ](sql-database-in-memory.md)機能を使用して既存の [Premium](sql-database-service-tiers.md) Azure SQL Database のトランザクション パフォーマンスを最適化するには、次の手順に従います。
+[インメモリ OLTP](sql-database-in-memory.md) を使用すると、パフォーマンス レベルを上げることなく、[Premium](sql-database-service-tiers.md) Azure SQL Databases で OLTP ワークロードのパフォーマンスを高めることができます。
 
+既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
-## 手順 1. Premium データベースでインメモリがサポートされていることを確認する
+## 手順 1. Premium データベースでインメモリ OLTP がサポートされていることを確認する
 
 2015 年 11 月以降に作成された Premium データベースは、インメモリ機能をサポートしています。Premium データベースがインメモリ機能をサポートしているかどうかを確認するには、次の Transact-SQL ステートメントを実行します。返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
 
@@ -233,4 +234,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

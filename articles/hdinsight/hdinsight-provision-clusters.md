@@ -19,7 +19,7 @@
 
 # HDInsight での Windows ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 HDInsight クラスターの作成を計画する方法について説明します。
 
@@ -51,9 +51,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 	
 - **オペレーティング システム**
 
-	HDInsight クラスターは、次の 2 つのオペレーティング システムのいずれかで作成できます。
-	- **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**。
-	- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**。HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
+	HDInsight クラスターは、次の 2 つのオペレーティング システムのいずれかで作成できます。- **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**。- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**。HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
 - **クラスターの種類**と**クラスター サイズ (データ ノード)**
 
@@ -79,25 +77,16 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters/HDInsight.HBase.roles.png)
 
-	HDInsight 用 HBase クラスターは 3 つのロールでデプロイされます。
-	- ヘッド サーバー (2 ノード)
-	- リージョン サーバー (1 ノード以上)
-	- Master/Zookeeper ノード (3 ノード)
+	HDInsight 用 HBase クラスターは 3 つのロールでデプロイされます。- ヘッド サーバー (2 ノード) - リージョン サーバー (1 ノード以上) - Master/Zookeeper ノード (3 ノード)
 
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters/HDInsight.Storm.roles.png)
 
-	HDInsight 用 Storm クラスターは 3 つのロールでデプロイされます。
-	- Nimbus ノード (2 ノード)
-	- Supervisor サーバー (1 ノード以上)
-	- Zookeeper ノード (3 ノード)
+	HDInsight 用 Storm クラスターは 3 つのロールでデプロイされます。Nimbus ノード (2 ノード) - Supervisor サーバー (1 ノード以上) - Zookeeper ノード (3 ノード)
 
 
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)
 
-	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。
-	- ヘッド ノード (2 ノード)
-	- worker ノード (1 ノード以上)
-	- Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
+	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
 
 	クラスターの有効期間中、これらのノードの使用量に対して課金されます。課金は、クラスターが作成された時点で開始され、クラスターが削除されると終了します (クラスターを割り当て解除したり、保留にしたりすることはできません)。クラスター サイズはクラスターの価格に影響します。学習目的の場合、データ ノードを 1 つ使用することをお勧めします。HDInsight の価格の詳細については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
@@ -220,4 +209,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM テンプレート](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

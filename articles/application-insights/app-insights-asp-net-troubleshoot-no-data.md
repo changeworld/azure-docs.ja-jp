@@ -191,8 +191,12 @@ Application Insights をインストールしているとき、またはログ �
 
 市区町村、地域、国の各ディメンションは IP アドレスから取得され、必ずしも正確であるとは限りません。
 
+## Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
+
+.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に[各ロールに 4.6 をインストールします](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
+
 ## 問題が解決しない場合
 
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

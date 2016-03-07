@@ -1,6 +1,6 @@
 > [AZURE.SELECTOR]
-[PowerShell](virtual-network-create-udr-arm-ps.md)
-[Azure CLI](virtual-network-create-udr-arm-cli.md)
-[Template](virtual-network-create-udr-arm-template.md)
+[PowerShell](../articles/virtual-network/virtual-network-create-udr-arm-ps.md)
+[Azure CLI](../articles/virtual-network/virtual-network-create-udr-arm-cli.md)
+[Template](../articles/virtual-network/virtual-network-create-udr-arm-template.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

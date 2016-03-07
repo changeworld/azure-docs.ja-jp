@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/30/2016"
+	ms.date="02/21/2016"
 	ms.author="tarcher"/>
 
 # Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 
 ## 概要
 
-この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](/app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
 
 
 
@@ -28,7 +28,7 @@
 
 このセクションでは、**BlobTrigger** 属性を使用する方法を示しています。
 
- **注:** Web ジョブ SDK は、ログ ファイルをスキャンして新しい blob や変更された blob を監視します。このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、[QueueTrigger](/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することが推奨されます。
+ **注:** Web ジョブ SDK は、ログ ファイルをスキャンして新しい blob や変更された blob を監視します。このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成するときにキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、[QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することが推奨されます。
 
 ### 拡張子を持つ BLOB 名の 1 つのプレース ホルダー  
 
@@ -64,7 +64,7 @@
 
 ### 別の BLOB 名と拡張子のプレース ホルダー
 
-次のコード サンプルでは、*入力*コンテナーに表示される BLOB が *出力*コンテナーにコピーされる際にファイル拡張子を変更します。コードは、*入力* BLOB の拡張子をログに記録し、*出力* BLOB の拡張子を *.txt* に設定します。
+次のコード サンプルでは、*入力*コンテナーに表示される BLOB が *出力*コンテナーにコピーされるときにファイル拡張子を変更します。コードは、*入力* BLOB の拡張子をログに記録し、*出力* BLOB の拡張子を *.txt* に設定します。
 
 		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
 		    [Blob("output/{name}.txt")] out string output,
@@ -87,7 +87,7 @@
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* [ICloudBlobStreamBinder](#icbsb) によって逆シリアル化されるその他の種類
+* [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder) によって逆シリアル化されるその他の種類
 
 Azure ストレージ アカウントを直接操作する場合は、メソッド シグネチャに **CloudStorageAccount** パラメーターを追加することもできます。
 
@@ -146,7 +146,7 @@ Azure ストレージ アカウントを直接操作する場合は、メソッ�
 
 **BlobTrigger** 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
 
-再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
+再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
@@ -211,7 +211,7 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 
 ## キューの記事で扱う関連トピック
 
-キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
+キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」を参照してください。
 
 その記事では、以下のような関連トピックが紹介されています。
 
@@ -227,6 +227,6 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 
 ## 次のステップ
 
-この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブおよび Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブのドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

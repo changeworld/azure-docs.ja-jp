@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database を使用したエラスティック データベース トランザクションの概要 (プレビュー)"
-   description="Azure SQL Database を使用したエラスティック データベース トランザクションの概要 (プレビュー)"
+   pageTitle="Azure SQL Database を使用した Elastic Database トランザクションの概要"
+   description="Azure SQL Database を使用した Elastic Database トランザクションの概要"
    services="sql-database"
    documentationCenter=""
    authors="torsteng"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="sql-database"
-   ms.date="02/01/2016"
+   ms.date="02/23/2016"
    ms.author="torsteng"/>
 
-# Azure SQL Database を使用したエラスティック データベース トランザクションの概要 (プレビュー)
+# Azure SQL Database を使用した Elastic Database トランザクションの概要
 
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。SQL DB のエラスティック データベース トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) を参照してください。
 
@@ -94,11 +94,13 @@ SQL DB のエラスティック データベース トランザクションで�
 	}
 
 
-## Azure worker ロールのセットアップ
+## Azure Cloud Services の .NET インストール
 
-エラスティック データベース トランザクションに必要なバージョンの .NET とライブラリを Azure (ご利用のクラウド サービスのゲスト OS) にインストールしてデプロイする作業は自動化することができます。Azure worker ロールの場合、スタートアップ タスクを使用します。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。
+Azure には、.NET アプリケーションをホストするためのいくつかのサービスが用意されています。さまざまなサービスを比較するには、「[Azure App Service、Cloud Services、および Virtual Machines の比較](../app-service-web/choose-web-site-cloud-service-vm.md)」をご覧ください。サービスのゲスト OS がエラスティック トランザクションに必要な .NET 4.6.1 より小さい場合は、ゲスト OS を 4.6.1 にアップグレードする必要があります。
 
-.NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とすることに注意してください。正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
+Azure App Services では、ゲスト OS のアップグレードは現在サポートされていません。Azure Virtual Machines では、単に VM にログインし、最新の .NET Framework のインストーラーを実行します。Azure Cloud Services では、新しいバージョンの .NET のインストールをデプロイのスタートアップ タスクに含める必要があります。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。
+
+.NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とする場合があることに注意してください。正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
 
 	<LocalResources>
 	...
@@ -118,6 +120,17 @@ SQL DB のエラスティック データベース トランザクションで�
 			</Environment>
 		</Task>
 	</Startup>
+	
+## 複数のサーバーにまたがるトランザクション
+
+エラスティック データベース トランザクションは、Azure SQL Database の複数の論理サーバーに対して実行できます。トランザクションが論理サーバーの境界を超えた場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。2 つの論理サーバーにまたがるトランザクションでは、論理サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
+
+次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
+
+* **New-AzureRmSqlServerCommunicationLink**: Azure SQL DB において 2 つの論理サーバー間に新しい通信リレーションシップを構築できます。リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップを削除します。 
+
 
 ## トランザクションの状態の監視
 
@@ -136,7 +149,6 @@ SQL DB のエラスティック データベース トランザクションに�
 * サポートされるトランザクションの対象は、SQL DB 内のデータベースに限られます。その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや SQL DB 以外のデータベースがエラスティック データベース トランザクションに参加することはできません。つまり、オンプレミス SQL Server と Azure SQL Database にまたがってエラスティック データベース トランザクションを実行することはできません。オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。 
 * サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。 
 * Azure SQL DB V12 上のデータベースのみサポートされます。
-* サポートされるのは、SQL DB 内の同じ論理サーバーに属しているデータベースだけです。
 
 ## 詳細情報
 
@@ -145,4 +157,4 @@ Azure アプリケーションでエラスティック データベースの機�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="02/18/2016"
 	ms.author="sameerch"/>
 
 
 # オンプレミスの SAP サーバーと統合する
-SAP コネクタを使用すると、Azure App Services を構成する Web アプリ、モバイル アプリ、ロジック アプリを既存の SAP サーバーに接続できます。これにより、RFC、BAPI、tRFC を呼び出すだけでなく、オンプレミス ファイアウォールの背後にある場合でも、SAP サーバーに IDOC を送信することもできます。
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+[SAP コネクタ](app-service-logic-connector-sap.md)を使用すると、Azure App Services を構成する Web アプリ、モバイル アプリ、ロジック アプリを既存の SAP サーバーに接続できます。これにより、RFC、BAPI、tRFC を呼び出すだけでなく、オンプレミス ファイアウォールの背後にある場合でも、SAP サーバーに IDOC を送信することもできます。
 
 オンプレミス SAP サーバーがある場合は、ハイブリッド リスナーを使用して、以下のように SAP コネクタとの接続を確立します。
 
@@ -106,7 +109,7 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 
 右側のウィンドウで SAP コネクタを選択し、[アクション] タブでアクションを選択します。
 
-> [AZURE.NOTE]アクションの一覧は、SAP コネクタを作成したときに入力した構成に基づいています。
+> [AZURE.NOTE] アクションの一覧は、SAP コネクタを作成したときに入力した構成に基づいています。
 
 選択したアクションについては、入力と出力のパラメーターが表示されます。アクションに対する入力項目に入力することもできます。また、他の API Apps 内の現在のアクションの出力を使用して、ワークフロー内のより詳細な意思決定の可能性に備えることもできます。
 
@@ -121,4 +124,4 @@ SAP コネクタを使用すると、Azure App Services を構成する Web ア�
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://www.microsoft.com/download/details.aspx?id=35552
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -60,7 +60,7 @@ Microsoft アカウントを使用してサインインした SA は、Azure ク
 
 - Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
-- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated directory.md)」を参照してください。
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 - Azure AD でロールを割り当てる方法の詳細については、「[Azure Active Directory (Azure AD) の管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
 
@@ -72,4 +72,4 @@ Microsoft アカウントを使用してサインインした SA は、Azure ク
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

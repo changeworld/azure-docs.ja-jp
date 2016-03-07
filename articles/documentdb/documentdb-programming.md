@@ -6,7 +6,7 @@
 	documentationCenter="" 
 	authors="aliuy" 
 	manager="jhubbard" 
-	editor="cgronlun"/>
+	editor="mimig"/>
 
 <tags 
 	ms.service="documentdb" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
+	ms.date="02/16/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
@@ -50,7 +50,9 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 	-	生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
 	-	この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-データベース トリガー、ストアド プロシージャ、カスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、[Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
+データベース トリガー、ストアド プロシージャ、カスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](documentdb-sdk-dotnet.md) でサポートされます。
+
+**このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/)** を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
 
 ## ストアド プロシージャ
 
@@ -92,7 +94,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 		});
 
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、DocumentDB ストレージに対して実行できるすべての操作へのアクセスを提供します。ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定しています。詳細については、[DocumentDB JavaScript サーバー SDK のドキュメント](http://dl.windowsazure.com/documentDB/jsserverdocs/)を参照してください。
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、DocumentDB ストレージに対して実行できるすべての操作へのアクセスを提供します。ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定しています。詳細については、[DocumentDB JavaScript サーバー SDK のドキュメント](http://azure.github.io/azure-documentdb-js-server/)を参照してください。
 
 この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。
 
@@ -475,69 +477,9 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 ## JavaScript 統合言語クエリ API
 DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。クエリは JavaScript ランタイムで解析され、DocumentDB のインデックスで効率的に実行されます。
 
-> [AZURE.NOTE]`__` (二重下線) は `getContext().getCollection()` のエイリアスです。
-> <br/>
-> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
+> [AZURE.NOTE] `__` (二重下線) は `getContext().getCollection()` のエイリアスです。<br/> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
 
-サポートされる関数:
-<ul>
-<li>
-<b>chain() ... .value([callback] [, options])</b>
-<ul>
-<li>
-連鎖呼び出しを開始します。これは value() で終了しなければなりません。
-</li>
-</ul>
-</li>
-<li>
-<b>filter(predicateFunction [, options] [, callback])</b>
-<ul>
-<li>
-入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>map(transformationFunction [, options] [, callback])</b>
-<ul>
-<li>
-各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を所与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>pluck([propertyName] [, options] [, callback])</b>
-<ul>
-<li>
-これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。
-</li>
-</ul>
-</li>
-<li>
-<b>flatten([isShallow] [, options] [, callback])</b>
-<ul>
-<li>
-各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>sortBy([predicate] [, options] [, callback])</b>
-<ul>
-<li>
-与えられた述語を利用し、入力ドキュメントのストリームを昇順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY 句に似ています。
-</li>
-</ul>
-</li>
-<li>
-<b>sortByDescending([predicate] [, options] [, callback])</b>
-<ul>
-<li>
-与えられた述語を利用し、入力ドキュメントのストリームを降順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY x DESC 句に似ています。
-</li>
-</ul>
-</li>
-</ul>
+サポートされる関数: <ul> <li> <b>chain() ... .value([callback] [, options])</b> <ul> <li> 連鎖呼び出しを開始します。これは value() で終了しなければなりません。 </li> </ul> </li> <li> <b>filter(predicateFunction [, options] [, callback])</b> <ul> <li> 入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。 </li> </ul> </li> <li> <b>map(transformationFunction [, options] [, callback])</b> <ul> <li> 各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を付与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。 </li> </ul> </li> <li> <b>pluck([propertyName] [, options] [, callback])</b> <ul> <li> これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。 </li> </ul> </li> <li> <b>flatten([isShallow] [, options] [, callback])</b> <ul> <li> 各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。 </li> </ul> </li> <li> <b>sortBy([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY 句に似ています。 </li> </ul> </li> <li> <b>sortByDescending([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY x DESC 句に似ています。 </li> </ul> </li> </ul>
 
 
 述語またはセレクター関数の中に含まれるとき、次の JavaScript コンストラクトは自動的に最適化され、DocumentDB インデックスで直接実行されます。
@@ -551,7 +493,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 * 制御フロー (if、for、while など)
 * 関数呼び出し
 
-詳細については、「[サーバー側 JSDocs](http://dl.windowsazure.com/documentDB/jsserverdocs/)」を参照してください。
+詳細については、「[サーバー側 JSDocs](http://azure.github.io/azure-documentdb-js-server/)」を参照してください。
 
 ### 例: JavaScript クエリ API を使用してストアド プロシージャを作成します。
 
@@ -614,143 +556,10 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 
 SQL クエリと同様に、ドキュメント プロパティ キー (`doc.id` など) では大文字と小文字が区別されます。
 
-<br/>
-<table border="1" width="100%">
-<colgroup>
-<col span="1" style="width: 40%;">
-<col span="1" style="width: 40%;">
-<col span="1" style="width: 20%;">
-</colgroup>
-<tbody>
-<tr>
-<th>SQL</th>
-<th>JavaScript クエリ API</th>
-<th>詳細</th>
-</tr>
-<tr>
-<td>
-<pre>
- SELECT *
-FROM docs
-</pre>
-</td>
-<td>
-<pre>
-_.map(function(doc) {
-    return doc;
-});
-</pre>
-</td>
-<td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT docs.id, docs.message AS msg, docs.actions
-FROM docs
-</pre>
-</td>
-<td>
-<pre>
-_.map(function(doc) {
-    return {
-        id: doc.id,
-        msg: doc.message,
-        actions: doc.actions
-    };
-});
-</pre>
-</td>
-<td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT * 
-FROM docs
-WHERE docs.id="X998_Y998"
-</pre>
-</td>
-<td>
-<pre>
-_.filter(function(doc) {
-    return doc.id === "X998\_Y998";
-});
-</pre>
-</td>
-<td>述語があるドキュメントのクエリ: id = "X998_Y998".</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT *
-FROM docs
-WHERE ARRAY_CONTAINS(docs.Tags, 123)
-</pre>
-</td>
-<td>
-<pre>
-_.filter(function(x) {
-    return x.Tags && x.Tags.indexOf(123) > -1;
-});
-</pre>
-</td>
-<td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT docs.id, docs.message AS msg
-FROM docs
-WHERE docs.id="X998_Y998"
-</pre>
-</td>
-<td>
-<pre>
-_.chain()
-    .filter(function(doc) {
-        return doc.id === "X998_Y998";
-    })
-    .map(function(doc) {
-        return {
-            id: doc.id,
-            msg: doc.message
-        };
-    })
-    .value();
-</pre>
-</td>
-<td>述語があり、id = "X998_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td>
-</tr>
-<tr>
-<td>
-<pre>
-SELECT VALUE tag
-FROM docs
-JOIN tag IN docs.Tags
-ORDER BY docs._ts
-</pre>
-</td>
-<td>
-<pre>
-_.chain()
-    .filter(function(doc) {
-        return doc.Tags && Array.isArray(doc.Tags);
-    })
-    .sortBy(function(doc) {
-    	return doc.\_ts;
-    })
-    .pluck("Tags")
-    .flatten()
-    .value()
-</pre>
-</td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td>
-</tr>
-</tbody>
-</table>
+<br/> <table border="1" width="100%"> <colgroup> <col span="1" style="width: 40%;"> <col span="1" style="width: 40%;"> <col span="1" style="width: 20%;"> </colgroup> <tbody> <tr> <th>SQL</th> <th>JavaScript クエリ API</th> <th>詳細</th> </tr> <tr> <td> <pre> SELECT * FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return doc; }); </pre> </td> <td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg, docs.actions FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return { id: doc.id, msg: doc.message, actions: doc.actions }; }); </pre> </td> <td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.filter(function(doc) { return doc.id === "X998\_Y998"; }); </pre> </td> <td>述語があるドキュメントのクエリ: id = "X998\_Y998"。</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE ARRAY\_CONTAINS(docs.Tags, 123) </pre> </td> <td> <pre> \_\_.filter(function(x) { return x.Tags && x.Tags.indexOf(123) > -1; }); </pre> </td> <td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.id === "X998\_Y998"; }) .map(function(doc) { return { id: doc.id, msg: doc.message }; }) .value(); </pre> </td> <td>述語があり、id = "X998\_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT VALUE tag FROM docs JOIN tag IN docs.Tags ORDER BY docs.\_ts </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.Tags && Array.isArray(doc.Tags); }) .sortBy(function(doc) { return doc.\_ts; }) .pluck("Tags") .flatten() .value() </pre> </td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td> </tr> </tbody> </table>
 
 ## ランタイム サポート
-[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
+[DocumentDB JavaScript サーバー側 SDK](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### セキュリティ
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。このため、互いの意図していない副作用に対する安全性が保証されています。
@@ -759,7 +568,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## クライアント SDK のサポート
-[Node.js](http://dl.windowsazure.com/documentDB/nodedocs/) クライアントに加え、DocumentDB では、[.NET](https://msdn.microsoft.com/library/azure/dn948556.aspx)、[Java](http://dl.windowsazure.com/documentdb/javadoc/)、[JavaScript](http://dl.windowsazure.com/documentDB/jsclientdocs/)、および [Python の SDK](http://dl.windowsazure.com/documentDB/pythondocs/) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
+[Node.js](documentdb-sdk-node.md) クライアントに加え、DocumentDB では、[.NET](documentdb-sdk-dotnet.md)、[Java](documentdb-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python の SDK](documentdb-sdk-python.md) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
 
 	var markAntiquesSproc = new StoredProcedure
 	{
@@ -901,7 +710,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 
 ## サンプル コード
 
-その他のサーバー側のコード例 ([アップデート](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/upsert.js)、[一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
+その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) および [更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
 
 あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。
 
@@ -912,11 +721,12 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 次のようなリファレンスとリソースでも、DocumentDB のサーバー側プログラミングについて詳しく学ぶことができます。
 
 - [Azure DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)
+- [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 - [JSON](http://www.json.org/) 
 - [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
--	[JavaScript – JSON 型システム](http://www.json.org/js.html) 
--	[セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
--	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
--	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
+- [JavaScript – JSON 型システム](http://www.json.org/js.html) 
+- [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
+- [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+- [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

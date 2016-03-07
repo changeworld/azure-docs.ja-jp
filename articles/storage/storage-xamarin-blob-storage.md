@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="02/21/2016"
 	ms.author="micurd"/>
 
 # Xamarin から BLOB ストレージを使用する方法 (プレビュー)
@@ -49,7 +49,7 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 コンテナーに作成した共有アクセス署名は次の日まで有効です。この署名はコンテナー内の BLOB に完全アクセス許可を与えます (読み取り、書き込み、削除、一覧表示*など*)。
 
-共有アクセス署名の詳細については、「[.NET の SAS チュートリアル](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
+共有アクセス署名の詳細については、「[Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
 
 ## 新しい Xamarin アプリケーションの作成
 
@@ -173,9 +173,11 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 BLOB、テーブル、キューの詳細は次のリンクで確認できます。
 
-[Microsoft Azure ストレージの概要](storage-introduction.md)  
-[.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md)  
-[.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md)  
-[.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
+- [Microsoft Azure Storage の概要](storage-introduction.md)
+- [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
+- [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
+- [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)
+- [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

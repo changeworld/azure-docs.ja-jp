@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 
@@ -50,7 +50,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-use-bi-tools/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -58,22 +58,12 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-use-bi-tools/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. 必要なモジュールをインポートし、Spark コンテキストと Hive コンテキストを作成します。次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
 
-		from pyspark import SparkContext
 		from pyspark.sql import *
-		from pyspark.sql import HiveContext
-		from pyspark.sql import Row
 		
-		# Create Spark and Hive contexts
-		sc = SparkContext('yarn-client')
-		hiveCtx = HiveContext(sc)
-
-	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **Python 2** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
-
-	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-use-bi-tools/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
-
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
+	
+5. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。このスニペットは、**hvac** という Hive テーブルにデータを登録します。
 
@@ -94,9 +84,10 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 		dfw = DataFrameWriter(hvacTable)
 		dfw.saveAsTable('hvac')
 
-5. テーブルが正常に作成されたことを確認します。Notebook の空のセルに次のスニペットをコピーして、**Shift + Enter** キーを押します。
+5. テーブルが正常に作成されたことを確認します。`%%hive` マジックを使用して、Hive を直接実行できます。`%%hive` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
 
-		hiveCtx.sql("SHOW TABLES").show()
+		%%hive
+		SHOW TABLES
 
 	出力は次のようになります。
 
@@ -113,7 +104,8 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 6. テーブルに目的のデータが含まれることを確認します。Notebook の空のセルに次のスニペットをコピーして、**Shift + Enter** キーを押します。
 
-		hiveCtx.sql("SELECT * FROM hvac LIMIT 10").show()
+		%%hive
+		SELECT * FROM hvac LIMIT 10
 	
 7. ここで、リソースを解放するために Notebook をシャットダウンできます。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
 
@@ -218,7 +210,7 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -239,4 +231,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!-----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

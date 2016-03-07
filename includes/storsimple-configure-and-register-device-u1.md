@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 12/01/15-->
+<!--author=alkohli last changed: 02/22/2016-->
 
 
 ### デバイスを構成して登録するには
@@ -27,9 +27,9 @@
    - ゲートウェイ
    - プライマリ DNS サーバーの IP アドレス
     
-		処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
-   
-      > [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
+	処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
+		   
+	> [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
 8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。
 
@@ -47,25 +47,25 @@
 
 12. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。**このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。** このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
 	
-	![StorSimple register device 7](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice7_U1-include.png)
+	![StorSimple によるデバイスの登録 7](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice7_U1-include.png)
 
       > [AZURE.NOTE] シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
 
 13. シリアル コンソールを終了します。
 
-14. 管理ポータルに戻り、次の手順を実行します。
+14. Azure クラシック ポータルに戻り、次の手順を実行します。
   1. StorSimple Manager サービスをダブルクリックして **[クイック スタート]** ページにアクセスします。
   2. **[接続されたデバイスの表示]** をクリックします。
   3. **[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は **"オンライン"** と表示されます。
    
-    	![StorSimple Devices page](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png) 
+	![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png)
   
 	デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
-	      
-	数分待ってもデバイスがまだオフラインである場合は、[StorSimple デバイスのネットワーク要件](../articles/storsimple/storsimple-system-requirements.md)に関するページで説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
-	
-	HTTP 1.1 がサポートされていない場合は、ポート 9354 が発信方向の通信のために開かれていることを確認してください。このポートは、StorSimple Manager サービスと StorSimple デバイスの間の通信に使用されます。
+
+	数分待ってもデバイスがまだオフラインである場合は、「[StorSimple ソフトウェア、高可用性、ネットワークの要件](../articles/storsimple/storsimple-system-requirements.md)」で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
+
+	ポート 9354 は Service Bus によって StorSimple Manager のサービスとデバイス間の通信に使用されているため、このポートが送信用に開かれていることを確認してください。
      
        
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

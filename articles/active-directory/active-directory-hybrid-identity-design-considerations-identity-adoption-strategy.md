@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/09/2016"
+	ms.date="02/23/2016"
 	ms.author="billmath"/>
 
 
@@ -92,7 +92,7 @@
 長年にわたり、いくつかの同期ツールが登場し、さまざまなシナリオで使用されています。現在、サポートされているすべてのシナリオで、Azure AD Connect が主要なツールとして選ばれています。AAD Sync や DirSync もまだまだ健在で、現在の環境にも見られます。
 
 >[AZURE.NOTE]
-各ツールでサポートされる機能の最新情報については、記事「[ディレクトリ統合ツールの比較](active-directory-aadconnect-get-started-tools-comparison.md)」をお読みください。
+各ツールでサポートされる機能の最新情報については、記事「[ディレクトリ統合ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)」をお読みください。
 
 ### サポートされているトポロジ
 同期戦略を定義する場合、使用するトポロジを決定する必要があります。手順 2. で決定した情報に基づいて、使用に適したトポロジを決定できます。単一のフォレスト、単一の Azure AD トポロジが最も一般的で、単一の Active Directory フォレストと Azure AD の単一のインスタンスで構成されます。このトポロジは、多くのシナリオで使用されており、次の図に示すように、Azure AD Connect の高速インストールを使用する場合に想定されるトポロジです。
@@ -197,4 +197,4 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

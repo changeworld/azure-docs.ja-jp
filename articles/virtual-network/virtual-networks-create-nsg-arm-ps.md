@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="PowerShell を使用して ARM モードで NSG を作成する方法 | Microsoft Azure"
-   description="PowerShell を使用して ARM で NSG を作成してデプロイする方法について"
+   pageTitle="PowerShell を利用し、Azure リソース マネージャーで NSG を作成する方法 | Microsoft Azure"
+   description="PowerShell を使用して Azure リソース マネージャーで NSG を作成してデプロイする方法について"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/23/2016"
    ms.author="telmos" />
 
-# PowerShell で NSG を作成する方法
+# PowerShell を利用し、リソース マネージャーで NSG を作成する方法
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
@@ -34,7 +34,7 @@
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
 3. インターネットからポート 3389 へのアクセスを許可するセキュリティ規則を作成します。
 
@@ -123,7 +123,7 @@
 		                        "ProvisioningState": "Succeeded"
 		                      }
 
->[AZURE.WARNING]上のコマンドの出力では、仮想ネットワーク構成オブジェクトの内容が示されます。これは、PowerShell を実行しているコンピューターにのみ存在します。これらの設定を Azure に保存するには、**Set-AzureRmVirtualNetwork** コマンドレットを実行する必要があります。
+>[AZURE.WARNING] 上のコマンドの出力では、仮想ネットワーク構成オブジェクトの内容が示されます。これは、PowerShell を実行しているコンピューターにのみ存在します。これらの設定を Azure に保存するには、`Set-AzureRmVirtualNetwork` コマンドレットを実行する必要があります。
 
 7. 新しい VNet 設定を Azure に保存します。
 
@@ -182,4 +182,4 @@
 
 		Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

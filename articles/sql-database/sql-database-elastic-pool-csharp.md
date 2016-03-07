@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management"
-    ms.date="12/01/2015"
+    ms.date="02/23/2016"
     ms.author="sstein"/>
 
 # C&#x23; データベース開発: SQL データベースのエラスティック データベース プールの作成と構成
@@ -27,17 +27,14 @@
 
 この記事では、C# データベース開発手法を使用するアプリケーションで SQL データベース向け[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
 
-> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
+> [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-powershell.md)を 1 回の手順で実行できます。
 
 例では、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用しています。各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
 
-Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](resource-group-overview.md) ベースの API を提供します。このクライアント ライブラリは、リソース マネージャー ベースのクライアント ライブラリの一般的なパターンに従います。リソース マネージャーでは、リソース グループ、および [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) を使用した認証が必要です。
 
-<br>
+> [AZURE.NOTE] SQL Database Library for .NET は現在プレビュー段階にあります。
 
-> [AZURE.NOTE]SQL Database Library for .NET は現在プレビュー段階にあります。
 
-<br>
 
 Azure サブスクリプションをお持ちでない場合、このページの上部の **[無料試用版]** をクリックしてからこの記事にお戻りください。Visual Studio の無償版については、「[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)」 ページを参照してください。
 
@@ -123,20 +120,15 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 クライアント アプリケーションでは、現在のユーザーのアプリケーション アクセス トークンを取得する必要があります。ユーザーが最初にコードを実行すると、ユーザーの資格情報を入力するよう求められ、作成されたトークンがローカルにキャッシュされます。以降の実行では、キャッシュからトークンが取得されます。トークンの有効期限が切れている場合のみログインが必要になります。
 
 
-    /// <summary>
-    /// Prompts for user credentials when first run or if the cached credentials have expired.
-    /// </summary>
-    /// <returns>The access token from AAD.</returns>
     private static AuthenticationResult GetAccessToken()
     {
         AuthenticationContext authContext = new AuthenticationContext
-            ("https://login.windows.net/" /* AAD URI */
-                + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
+            ("https://login.windows.net/" + domainName /* Tenant ID or AAD domain */);
 
         AuthenticationResult token = authContext.AcquireToken
             ("https://management.azure.com/"/* the Azure Resource Management endpoint */,
-                "aa00a0a0-a0a0-0000-0a00-a0a00000a0aa" /* application client ID from AAD*/,
-        new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */,
+                clientId,
+        new Uri(redirectUri) /* redirect URI */,
         PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
 
         return token;
@@ -144,7 +136,7 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 
 
 
-> [AZURE.NOTE]この記事の例では、各 API 要求の同期フォームを使用し、基になるサービスでの REST 呼び出しが完了するまでブロックします。非同期の手法も利用できます。
+> [AZURE.NOTE] この記事の例では、各 API 要求の同期フォームを使用し、基になるサービスでの REST 呼び出しが完了するまでブロックします。非同期の手法も利用できます。
 
 
 
@@ -388,14 +380,13 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
         private static AuthenticationResult GetAccessToken()
         {
             AuthenticationContext authContext = new AuthenticationContext
-                ("https://login.windows.net/" /* AAD URI */
-                + "domain.onmicrosoft.com" /* Tenant ID or AAD domain */);
+                ("https://login.windows.net/" + domainName /* Tenant ID or AAD domain */);
 
             AuthenticationResult token = authContext.AcquireToken
                 ("https://management.azure.com/"/* the Azure Resource Management endpoint */,
-                "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/,
-                new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */,
-                PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
+                    clientId,
+            new Uri(redirectUri) /* redirect URI */,
+            PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
 
             return token;
         }
@@ -585,4 +576,4 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

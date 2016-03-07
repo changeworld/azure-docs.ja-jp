@@ -26,7 +26,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 - [**ワード カウント**][hdinsight-sample-wordcount]\: テキスト ファイル内の単語出現回数をカウントします。
 - [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]\: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 - [**Pi 推定**][hdinsight-sample-pi-estimator]\: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-- [**10 GB GraySort**][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+- [**10 GB GraySort **][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 >[AZURE.NOTE] ソース コードは「付録」にあります。
 
@@ -65,7 +65,7 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 		$resourceGroupName = "<Resource Group Name>"
 		$clusterName = "<HDInsight cluster name>"             # HDInsight cluster name
 		
-		Select-AzureRmSubscription $subscriptionName
+		Select-AzureRmSubscription -SubscriptionName $subscriptionName
 		
 		# Define the MapReduce job
 		$mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -120,7 +120,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 > [AZURE.NOTE] このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 
-この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] (1 行ずつ) から入力を  読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
 **mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

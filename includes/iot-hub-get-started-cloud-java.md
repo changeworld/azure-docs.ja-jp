@@ -181,7 +181,7 @@
     public static void main( String[] args ) throws IOException
     ```
 
-12. **App** クラスの **main** メソッドに次のコードを追加します。IoT Hub で Event Hub 対応エンドポイントに接続する **EventHubClient** インスタンスがこのコードにより作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値で置換します。**{youreventhubcompatiblenamespace}** プレース ホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xxxxnamespace.servicebus.windows.net** の形式になります。
+12. **App** クラスの **main** メソッドに次のコードを追加します。IoT Hub で Event Hub 対応エンドポイントに接続する **EventHubClient** インスタンスがこのコードにより作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値で置換します。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xxxxnamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの ****sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
 
     ```
     String policyName = "iothubowner";
@@ -228,4 +228,4 @@
 [lnk-event-hubs-overview]: event-hubs-overview.md
 [lnk-processd2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->
