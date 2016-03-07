@@ -299,7 +299,9 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 13.  **[概要]** の情報を確認します。
 
 	![概要](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
->[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
+
+>[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。
+>インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
 >
 	$pwd = ConvertTo-SecureString -String ProxyUserPassword
 	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd
@@ -752,4 +754,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細についてはこちら](site-recovery-failback-azure-to-vmware-classic.md)を参照してください。
 
-<!-----HONumber=AcomDC_0218_2016-->
+<!-----------HONumber=AcomDC_0218_2016-->
