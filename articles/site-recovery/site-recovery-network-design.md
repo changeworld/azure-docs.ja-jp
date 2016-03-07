@@ -225,7 +225,7 @@ Woodgrove がビジネス要件を満たすためには、次のワークフロ�
 
 #### IP アドレスの変更 (Azure への DR)
 
-「[Networking Infrastructure Setup for Microsoft Azure as a Disaster Recovery Site (障害復旧サイトとして Microsoft Azure を使用するためのネットワーク インフラストラクチャのセットアップ)](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)」ブログ投稿では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。まず、アプリケーションについて説明したうえで、オンプレミスと Azure におけるネットワークの設定を紹介し、最後に、テスト フェールオーバーと計画フェールオーバーを実行する方法について取り上げています。
+「[障害復旧サイトとして Microsoft Azure を使用するためのネットワーク インフラストラクチャのセットアップ](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)」ブログ投稿では、IP アドレスを維持することが要件になっていない場合に、必要な Azure ネットワーク インフラストラクチャをセットアップする方法について説明します。まず、アプリケーションについて説明したうえで、オンプレミスと Azure におけるネットワークの設定を紹介し、最後に、テスト フェールオーバーと計画フェールオーバーを実行する方法について取り上げています。
 
 
 

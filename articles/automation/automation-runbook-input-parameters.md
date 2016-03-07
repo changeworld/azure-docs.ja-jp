@@ -98,9 +98,17 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
 
 4. **Get-AzureVM** アクティビティで使用される 2 つのパラメーターを次のプロパティで作成します。
 
-    * **Parameter1:** 名前 – VMName、型 – String、必須 – いいえ
-
-    * **Parameter2:** 名前 – ServiceName、型 – String、必須 – いいえ、既定値 – カスタム、カスタム既定値 – <仮想マシンを含む既定サービスの名前>
+    * **Parameter1:** 
+    名前 – VMName、
+    型 – String、
+    必須 – いいえ
+	
+    * **Parameter2:** 
+    名前 – ServiceName、
+    型 – String、
+    必須 – いいえ、
+    既定値 – カスタム、
+    カスタム既定値 – <仮想マシンを含む既定サービスの名前>
 
 5. パラメーターを追加したら、**[OK]** をクリックします。パラメーターが **[入力と出力]** ブレードに表示されます。**[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
@@ -116,11 +124,11 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
 [Runbook を起動する](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を構成できます。
 
-![Start using the portal](media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
+![ポータルによる起動](media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
 
 入力ボックスの下にあるラベルで、パラメーターに設定された属性を確認できます。属性は、必須/任意、型、既定値などです。パラメーター名の横にあるヘルプ バルーンでは、パラメーター入力値を決定するために必要なすべての主要情報を確認できます。たとえば、パラメーターが必須か任意かを示す情報です。また、型、既定値 (該当する場合)、その他の役に立つ注記も含まれます。
 
-![Help balloon](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
+![ヘルプ バルーン](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
 
 
 >[AZURE.NOTE] 文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター ボックスに「**EmptyString**」と入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列型パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
@@ -131,7 +139,8 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
     **例:**
 
-      ``` $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
+      ```
+        $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
       ```
@@ -141,7 +150,8 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
     **例:**
 
-      ``` $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
+      ```
+        $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
 
         Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomationRG” -Name “Get-AzureVMGraphical” –ResourceGroupName “RG1” -Parameters $params
       ```
@@ -249,13 +259,13 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 Runbook を特定の時刻に開始するために、Runbook に[スケジュールをリンク](automation-scheduling-a-runbook.md)できます。スケジュールを作成するときに、入力パラメーターを割り当てます。スケジュールで Runbook が起動されるときに、それらの値が使用されます。必須のパラメーター値をすべて指定しないと、スケジュールは保存できません。
 
-![Schedule and assign parameters](media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
+![スケジュールし、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
 
 ### Runbook の Webhook を作成し、パラメーターを割り当てる
 
 Runbook の [Webhook](automation-webhooks.md) を作成し、Runbook 入力パラメーターを構成できます。必須のパラメーター値をすべて指定しないと、Webhook は保存できません。
 
-![Create webhook and assign parameters](media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
+![Webhook を作成し、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
 
 Webhook を利用して Runbook を実行すると、定義した入力パラメーターと共に **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** が送信されます。**WebhookData** パラメーターの詳細を展開するには、このパラメーターをクリックします。
 

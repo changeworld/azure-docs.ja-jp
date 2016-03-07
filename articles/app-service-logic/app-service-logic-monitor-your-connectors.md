@@ -121,7 +121,10 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/> [Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/>
+[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/>
+[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/> 
+[Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
 
 
 <!--Image references-->

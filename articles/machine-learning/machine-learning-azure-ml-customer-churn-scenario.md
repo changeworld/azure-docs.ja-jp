@@ -219,9 +219,9 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 [3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
 
-[4] Big Data Marketing: Engage Your Customers More Effectively and Drive Value (http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+\[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] Cortana Analytics ギャラリーの Telco 顧客離反モデル テンプレート(http://gallery.cortanaanalytics.com/Experiment/Telco-Customer-Churn-5)
+\[5] Cortana Analytics ギャラリーの Telco 顧客離反モデル テンプレート(http://gallery.cortanaanalytics.com/Experiment/Telco-Customer-Churn-5)
 ##付録
 
 ![][10]

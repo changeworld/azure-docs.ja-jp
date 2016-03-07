@@ -30,7 +30,9 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 3. デザイナーの右側のウィンドウに、フローを構成するために使用できる API Apps が表示されます。"BizTalk XPath Extractor" を検索します。これを選択すると、フローに Xpath Extractor が追加され、そのインスタンスがプロビジョニングされます。
 4. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。![BizTalk XPath Extractor のアクション選択][1]
 
-5. [XPath を使用して抽出] を選択します。[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。![BizTalk XPath Extractor の入力][2]
+5. [XPath を使用して抽出] を選択します。
+[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。
+![BizTalk XPath Extractor の入力][2]
 
 	パラメーター|型|パラメーターの説明
 ---|---|---

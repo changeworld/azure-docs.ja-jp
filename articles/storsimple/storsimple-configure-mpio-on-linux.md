@@ -467,23 +467,23 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 |型|コマンド|説明|
 |---|---|---|
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
-|`service iscsid stop`|iSCSI サービスを停止する|
-|`service iscsid restart`|iSCSI サービスを再開する|
-|`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定されたアドレスで使用できるターゲットを検出する|
-|`iscsiadm -m node --login -T <TARGET_IQN>`|ISCSI ターゲットにログインする|
-|`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
-|`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーターの名前を出力する|
-|`iscsiadm –m session –s <sessionid> -P 3`|ホストで検出された iSCSI セッションとボリュームの状態を確認する|
-|`iscsi –m session`|ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する|
+||`service iscsid stop`|iSCSI サービスを停止する|
+||`service iscsid restart`|iSCSI サービスを再開する|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定されたアドレスで使用できるターゲットを検出する|
+||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
+||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
+||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーターの名前を出力する|
+||`iscsiadm –m session –s <sessionid> -P 3`|ホストで検出された iSCSI セッションとボリュームの状態を確認する|
+||`iscsi –m session`|ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する|
 | | | |
-|**マルチパス**|`service multipathd start`|マルチパス デーモンを開始する|
-|`service multipathd stop`|マルチパス デーモンを停止する|
-|`service multipathd restart`|マルチパス デーモンを再開する|
-|`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを開始するようにする|
-|`multipathd –k`|トラブルシューティングのために対話型コンソールを起動する|
-|`multipath –l`|マルチパス接続とデバイスを一覧表示する|
-|`mpathconf --enable`|`/etc/mulitpath.conf` にサンプルの mulitpath.conf ファイルを作成する|
-|
+||**マルチパス**|`service multipathd start`|マルチパス デーモンを開始する|
+||`service multipathd stop`|マルチパス デーモンを停止する|
+||`service multipathd restart`|マルチパス デーモンを再開する|
+||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを開始するようにする|
+||`multipathd –k`|トラブルシューティングのために対話型コンソールを起動する|
+||`multipath –l`|マルチパス接続とデバイスを一覧表示する|
+||`mpathconf --enable`|`/etc/mulitpath.conf` にサンプルの mulitpath.conf ファイルを作成する|
+||||
 
 ## 次のステップ
 

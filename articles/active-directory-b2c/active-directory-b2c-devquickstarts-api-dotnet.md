@@ -219,13 +219,16 @@ public IEnumerable<Models.Task> Get()
 
 ## ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers** to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
+Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。
+<!--add **identity providers** 
+to the policies, allowing you users to sign into the Task Client using social accounts.  You can also 
+-->ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
 
 <!--
 
 ## Next steps
 
-You can now move onto more advanced B2C topics. You may try:
+さらに高度な B2C のトピックに進むことができます. You may try:
 
 [Call a web API from a web app]()
 

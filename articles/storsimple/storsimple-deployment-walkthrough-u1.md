@@ -241,7 +241,8 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 ## 更新プログラムをスキャンして適用する
 
-デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。<!--can take 1-4 hours-->
+デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
+<!--can take 1-4 hours-->
 
 <!--If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 

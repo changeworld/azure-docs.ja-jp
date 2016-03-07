@@ -106,10 +106,12 @@ Azure AD Connect では、2 つのレベルのアクセス管理をサポート�
 #### 手順 1: 適切なアクセス スコープを選択する
 Azure AD Connect Health 内で*すべてのサービス インスタンス* レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 #### 手順 2: ユーザー/グループを追加し、ロールを割り当てる
-1. [構成] セクションから [ユーザー] 部分をクリックします。<br>![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+1. [構成] セクションから [ユーザー] 部分をクリックします。<br>
+![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. [追加] を選択します。
 3. [所有者] などの [ロール] を選択します。<br> ![Azure AD Connect Health RBAC のユーザーの追加](./media/active-directory-aadconnect-health/RBAC_add.png)
-4. 対象となるユーザー/グループの名前または識別子を入力します。1 つまたは複数のユーザー/グループを同時に選択できます。[選択] をクリックします。![Azure AD Connect Health RBAC のユーザーの選択](./media/active-directory-aadconnect-health/RBAC_select_users.png)
+4. 対象となるユーザー/グループの名前または識別子を入力します。1 つまたは複数のユーザー/グループを同時に選択できます。[選択] をクリックします。
+![Azure AD Connect Health RBAC のユーザーの選択](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. [OK] を選択します。<br>
 
 6. ロールの割り当てが完了すると、ユーザー/グループが一覧に表示されます。<br>![Azure AD Connect Health RBAC のユーザー一覧](./media/active-directory-aadconnect-health/RBAC_user_list.png)

@@ -389,9 +389,12 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
-	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例: * **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` * **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` * **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例:
+	* **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+	* **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+	* **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-\*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
 
 		'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -418,7 +421,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
 > [AZURE.WARNING] HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 

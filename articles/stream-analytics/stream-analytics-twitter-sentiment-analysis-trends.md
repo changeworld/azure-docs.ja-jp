@@ -224,7 +224,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ

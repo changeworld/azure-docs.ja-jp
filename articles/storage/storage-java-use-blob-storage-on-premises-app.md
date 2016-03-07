@@ -358,5 +358,6 @@
 - [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 - [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
 <!---HONumber=AcomDC_0224_2016-->

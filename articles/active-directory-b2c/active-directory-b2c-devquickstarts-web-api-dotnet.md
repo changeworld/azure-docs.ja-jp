@@ -87,11 +87,13 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
+この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
+「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
 
-## 6\.タスク Web アプリの構成
+## 6.タスク Web アプリの構成
 
-`TaskWebApp` が Azure AD B2C と通信するために、指定する必要がある一般的なパラメーターがいくつかあります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
+`TaskWebApp` が Azure AD B2C と通信するために、指定する必要がある一般的なパラメーターがいくつかあります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある 
+`web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
 
 ```
 <appSettings>

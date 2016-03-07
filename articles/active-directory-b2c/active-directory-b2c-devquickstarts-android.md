@@ -1,4 +1,11 @@
-<properties pageTitle="Azure AD B2C プレビュー: Android アプリケーションからの Web API の呼び出し | Microsoft Azure" description="この記事では、OAuth 2.0 ベアラー トークンを使用して node.js Web API を呼び出す Android の "To-Do List" アプリを作成する方法を示します。Android アプリと Web API は、どちらも Azure AD B2C を使用してユーザー ID を管理し、ユーザーを認証します。" services="active-directory-b2c" documentationCenter="android" authors="brandwe" manager="msmbaldwin" editor=""/>
+<properties
+	pageTitle="Azure AD B2C プレビュー: Android アプリケーションからの Web API の呼び出し | Microsoft Azure"
+	description="この記事では、OAuth 2.0 ベアラー トークンを使用して node.js Web API を呼び出す Android の "To-Do List" アプリを作成する方法を示します。Android アプリと Web API は、どちらも Azure AD B2C を使用してユーザー ID を管理し、ユーザーを認証します。"
+	services="active-directory-b2c"
+	documentationCenter="android"
+	authors="brandwe"
+	manager="msmbaldwin"
+	editor=""/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -191,7 +198,14 @@ public class Constants {
 
 
 ```
-**SCOPES** - ユーザーがログインしているサーバーから要求するサーバーに渡すスコープです。B2C プレビューでは client\_id を渡します。ただし、これは、読み取りスコープに代わる予定です。このドキュメントはその時点で更新されます。**ADDITIONAL\_SCOPES** - アプリケーションで使用できるその他のスコープです。これは将来使用される予定です。**CLIENT\_ID** - ポータルから取得したアプリケーション ID。**REDIRECT\_URL** - トークンが戻されるリダイレクト先。**EXTRA\_QP** - URL エンコード形式でサーバーに渡す追加のパラメーター。**FB\_POLICY** -呼び出すポリシー。このチュートリアルで最も重要な部分です。**EMAIL\_SIGNIN\_POLICY** - 呼び出すポリシー。このチュートリアルで最も重要な部分です。**EMAIL\_SIGNUP\_POLICY** - 呼び出すポリシー。このチュートリアルで最も重要な部分です。
+**SCOPES** - ユーザーがログインしているサーバーから要求するサーバーに渡すスコープです。B2C プレビューでは client\_id を渡します。ただし、これは、読み取りスコープに代わる予定です。このドキュメントはその時点で更新されます。
+**ADDITIONAL\_SCOPES** - アプリケーションで使用できるその他のスコープです。これは将来使用される予定です。
+**CLIENT\_ID** - ポータルから取得したアプリケーション ID。
+**REDIRECT\_URL** - トークンが戻されるリダイレクト先。
+**EXTRA\_QP** - URL エンコード形式でサーバーに渡す追加のパラメーター。
+**FB\_POLICY** -呼び出すポリシー。このチュートリアルで最も重要な部分です。
+**EMAIL\_SIGNIN\_POLICY** - 呼び出すポリシー。このチュートリアルで最も重要な部分です。
+**EMAIL\_SIGNUP\_POLICY** - 呼び出すポリシー。このチュートリアルで最も重要な部分です。
 
 ### 手順 7: プロジェクトに Android ADAL への参照を追加する
 
@@ -893,7 +907,16 @@ Cookie をクリアしたり、AuthenticationCallback を実装したりする�
  
  **同じファイル** (`ToDoActivity.java`) に次のコードを記述します。
  
- ``` private URL getEndpointUrl() { URL endpoint = null; try { endpoint = new URL(Constants.SERVICE\_URL); } catch (MalformedURLException e) { e.printStackTrace(); } return endpoint; }
+ ```
+    private URL getEndpointUrl() {
+        URL endpoint = null;
+        try {
+            endpoint = new URL(Constants.SERVICE_URL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return endpoint;
+    }
 
  ```
 
@@ -978,12 +1001,14 @@ ADAL は、既定では SharedPreferences のトークンとストアを暗号�
 
 #### Webview のセッション Cookie
 
-Android Webview は、アプリを閉じた後、セッションの Cookie をクリアしません。サンプル コード ```
+Android Webview は、アプリを閉じた後、セッションの Cookie をクリアしません。サンプル コード
+```
 CookieSyncManager.createInstance(getApplicationContext());
 CookieManager cookieManager = CookieManager.getInstance();
 cookieManager.removeSessionCookie();
 CookieSyncManager.getInstance().sync();
-``` でこれを処理できます。Cookie の詳細については、http://developer.android.com/reference/android/webkit/CookieSyncManager.html を参照してください。
+```
+でこれを処理できます。Cookie の詳細については、http://developer.android.com/reference/android/webkit/CookieSyncManager.html を参照してください。
  
 
 <!---HONumber=AcomDC_0224_2016-->

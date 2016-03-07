@@ -120,7 +120,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
     ![チェックイン入力](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名*が更新されました**" というコミット メッセージが表示されます。
+6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名* が更新されました**" というコミット メッセージが表示されます。
 
 
 

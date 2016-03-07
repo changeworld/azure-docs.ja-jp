@@ -55,11 +55,11 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
   1. ターゲット デバイスを指定します。これは、複製が作成される場所です。同じデバイスを選択することも、別のデバイスを指定することもできます。別のクラウド サービス プロバイダー (Azure 以外) に関連付けられたボリュームを選択する場合、ターゲット デバイスのドロップダウン リストには物理デバイスのみが表示されます。別のクラウド サービスのプロバイダーに関連付けられたボリュームを仮想デバイス上に複製することはできません。
 
-        >[AZURE.NOTE] Make sure that the capacity required for the clone is lower than the capacity available on the target device.
+        >[AZURE.NOTE] 複製に必要な容量がターゲット デバイスで使用可能な容量を下回っていることを確認してください。
 
   2. 複製の一意の [ボリューム名] を指定します。名前は 3 文字以上 127 文字以下にする必要があります。
     
-        >[AZURE.NOTE] The **Clone Volume As** field will be **Tiered** even if you are cloning a locally pinned volume. You cannot change this setting; however, if you need the cloned volume to be locally pinned as well, you can convert the clone to a locally pinned volume after you successfully create the clone. For information about converting a tiered volume to a locally pinned volume, go to [Change the volume type](storsimple-manage-volumes-u2.md#change-the-volume-type).
+        >[AZURE.NOTE] ローカル固定ボリュームを複製する場合でも、**[種類を指定してボリュームをクローン]** フィールドは **[階層化]** になります。 この設定を変更することはできません。ただし、複製されたボリュームをローカル固定にする必要がある場合は、複製の作成が正常に完了した後でローカル固定ボリュームに変換できます。 階層化ボリュームをローカル固定ボリュームに変換する方法については、「[ボリュームの種類を変更する](storsimple-manage-volumes-u2.md#change-the-volume-type)」を参照してください。
 
         ![Clone wizard 1](./media/storsimple-clone-volume-u2/clone1.png) 
 
