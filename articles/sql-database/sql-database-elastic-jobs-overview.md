@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="02/23/2016" 
 	ms.author="ddove;sidneyh" />
 
 # エラスティック データベース ジョブの概要
@@ -23,7 +23,7 @@
 * [Elastic Database プール](sql-database-elastic-pool.md)のすべてのデータベース
 * シャード セット ([Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成) 
  
-インストール手順については、「[エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
+インストール手順については、「[エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。「[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」も参照してください。
 
 現在、**Elastic Database ジョブ**は顧客がホストする Azure クラウド サービスです。**ジョブ**と呼ばれるアドホック タスクとスケジュールされた管理タスクを実行できます。ジョブを利用すると、Transact-SQL スクリプトで管理作業を実行することで、大規模なグループの Azure SQL Database を簡単かつ信頼できる方法で管理できます。
 
@@ -91,7 +91,7 @@
 * **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
 * **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。既定のサービス層は、S0 です。詳細については、「[SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 * **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
-* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます (「[Azure Cloud Services および Virtual Machines の診断機能](../service-fabric/cloud-services-dotnet-diagnostics.md)」を参照してください)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
+* **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます (「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 ## エラスティック データベース ジョブの機能
 1.	Azure SQL Database には、すべてのメタデータと状態データが保存される管理データベースが指定されています。
@@ -116,7 +116,7 @@
 4.	すべてのジョブのタスクが完了すると、コントローラーのジョブの状態は完了に更新されます。ジョブ実行中の任意の時点で、ジョブ実行の現在の状態を確認する PowerShell API を使用できます。PowerShell API から返されるすべての時刻は、UTC 形式です。必要に応じて、取り消し要求を開始してジョブを停止できます。 
 
 ## 次のステップ
-[コンポーネントをインストールし](sql-database-elastic-jobs-service-installation.md)、[データベース グループ内の各データベースにログインを作成し、追加します](sql-database-security.md)。ジョブの作成と管理の詳細については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。
+[コンポーネントをインストールし](sql-database-elastic-jobs-service-installation.md)、[データベース グループ内の各データベースにログインを作成し、追加します](sql-database-security.md)。ジョブの作成と管理の詳細については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -124,4 +124,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

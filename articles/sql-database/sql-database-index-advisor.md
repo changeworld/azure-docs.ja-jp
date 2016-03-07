@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="01/23/2015"
+   ms.date="01/23/2016"
    ms.author="sstein"/>
 
 # SQL Database Index Advisor
@@ -33,7 +33,7 @@ Index Advisor は、次の処理によって、データベースのパフォー
 
 ### アクセス許可
 
-推奨インデックスを表示し作成するには、Azure における適切な [ロールベースのアクセス制御](role-based-access-control-configure.md)権限が必要です。
+推奨インデックスを表示し作成するには、Azure における適切な [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)権限が必要です。
 
 - 推奨インデックスを表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。
 - インデックスの作成またはドロップおよびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
@@ -179,4 +179,4 @@ Index Advisor は、推奨インデックスに加え、SQL データベース�
 
 推奨インデックスを監視し、引き続きパフォーマンスの調整対象とします。データベースのワークロードは動的であり、継続的に変化します。Index Advisor では、お使いのデータベースのパフォーマンスを向上させる可能性があるインデックスの監視と推奨を継続します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

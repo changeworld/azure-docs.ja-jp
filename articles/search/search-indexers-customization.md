@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="eugenesh"/>
 
 #Azure Search Indexer のカスタマイズ
@@ -117,4 +117,4 @@ Azure Search ではユーザーがキーを使用してドキュメントを参�
 以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](https://feedback.azure.com/forums/263029-azure-search/)で送信できます。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

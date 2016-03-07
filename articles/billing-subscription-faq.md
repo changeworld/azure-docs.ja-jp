@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="02/24/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
@@ -44,6 +44,18 @@
 - [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
 **サブスクリプション**
+
+- [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
+
+- [月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
+
+- [Azure サポート プランを上位プランにアップグレードするには?](#how-do-i-upgrade-to-a-higher-tier-azure-support-plan)
+
+-	[Azure サポートはいつ課金されますか?](#when-will-i-be-billed-for-azure-support)
+
+- [期間が終わるとどうなりますか?](#what-happens-at-the-end-of-the-term)
+
+- [Azure サポート プランを解約するにはどうすればよいですか?](#how-do-i-cancel-my-azure-support-plan)
 
 - [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
 
@@ -133,6 +145,39 @@ Azure サービス レベル アグリーメントは、オンプレミスのマ
 
 ## サブスクリプション
 
+### Azure サポートの購入方法は?
+Azure サポート プランは、オンラインで、またはエンタープライズ契約を介してご購入いただけます。オンラインでは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)のページから Developer、Standard、Professional Direct の各サポート プランを購入できます。サポート プランを購入するには、Microsoft Azure アカウントの所有者である必要があります。
+
+エンタープライズ契約 (EA) を通じて Microsoft Azure を購入した場合は、ラージ アカウント リセラー (LAR) に連絡すれば、エンタープライズ契約に Standard サポート プランまたは Professional Direct サポート プランを追加できます。Developer サポートは、エンタープライズ契約を通じてはご利用いただけません。
+
+### 月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?
+
+Azure サポートの月額固定料金は、アカウントに含まれるサブスクリプション数やユーザー数に関係なく、1 つのアカウントが対象になります。
+
+1 つのアカウントの下にあるすべてのサブスクリプションには、同一のサポート プランが適用されます。サポート プランの付いたアカウントの下にあるいずれかのサブスクリプションに対して管理者または所有者アクセス権限を持つすべてのユーザーも、自分がアクセス権限を持つサブスクリプションを所有する特定のアカウントに対するサポートを受ける資格があります。
+
+Microsoft Azure のアカウントには、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)からアクセスできます。そのポータルから、アカウントに含まれていて、サポートの対象になるサブスクリプションの一覧を確認できます。
+
+### Azure サポート プランを上位プランにアップグレードするには?
+
+上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、"サブスクリプション管理" を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
+
+### Azure サポートはいつ課金されますか?
+
+Azure サポート プランをオンラインで購入すると、直ちに、最初の月に対する料金が課金されます。その後、各請求サイクルの最初の日に、月額が課金されます。エンタープライズ契約 (EA) でのご購入の場合は、契約で規定された請求サイクルが適用されます。
+
+### 期間が終わるとどうなりますか?
+
+6 か月の期間が終了すると、プランは自動的に更新され、次の 6 か月間について同じ Azure サポート プランが同じ支払い方法を使用して開始されます。アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)から、自動更新機能をオフにすることを選択できます。
+
+自動更新をご希望でない場合は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、対象のサポート プランを選択してから、[更新の詳細の変更] をクリックし、自動更新の既定オプションをオフにします。
+
+### Azure サポート プランを解約するにはどうすればよいですか?
+
+アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、[アカウント センター] を選択し、[サブスクリプション] を選択することにより、Azure サポート プランを解約できます。サブスクリプションを所有している場合、サブスクリプションの一覧が表示されます。解約を希望するサブスクリプションを選択します。画面の右側にサブスクリプションの詳細がオプションの一覧と一緒に表示されます。[キャンセル] を選択して次に進みます。サブスクリプションを所有していない場合は、"使用できるサブスクリプションがありません" というメッセージが表示されます。
+
+ただし、Azure サポート プランの期間は 6 か月単位であり、Microsoft では、その期間全体について引き続き料金のコミットメントを必須としております。期間の満了前に解約した場合でも、残りの期間についてのコミットメントが免除されることはなく、既にお支払いいただいた料金の払い戻しもありません。詳細については、「[Azure サブスクリプションをキャンセルする方法](billing-how-to-cancel-azure-subscription.md)」を参照してください。
+
 ### Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。
 
 [Azure サポート](https://azure.microsoft.com/support/options/)に詳細をお問い合わせください。Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
@@ -210,4 +255,4 @@ Azure は、世界の 140 を超える国で購入でき、課金は多数の通
 
 現在、Azure または SQL Database を SPLA で提供する計画はありません。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

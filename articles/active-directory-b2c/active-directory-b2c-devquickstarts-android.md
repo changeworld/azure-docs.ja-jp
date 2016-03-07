@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="02/17/2016"
 	ms.author="brandwe"/>
 
 # Azure AD B2C プレビュー: Android アプリケーションからの Web API の呼び出し
@@ -49,7 +49,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 - アプリケーションに **Web アプリまたは Web API** を含めます。
 - `urn:ietf:wg:oauth:2.0:oob` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
 - アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -78,7 +78,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-Android.git
 ```
 
-> [AZURE.NOTE]**スケルトンをダウンロードすることは、このチュートリアルを完了するために必要な作業です。** 完全に機能するアプリケーションを Android 上に実装するのは複雑な作業であるため、**スケルトン**には、この後のチュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは B2C を Android アプリケーションに追加するトピックと深い関わりはありません。
+> [AZURE.NOTE] **スケルトンをダウンロードすることは、このチュートリアルを完了するために必要な作業です。** 完全に機能するアプリケーションを Android 上に実装するのは複雑な作業であるため、**スケルトン**には、この後のチュートリアルを完了した後で実行される UX コードが含まれています。これは、開発者の時間を短縮するための手段です。UX コードは B2C を Android アプリケーションに追加するトピックと深い関わりはありません。
 
 また、完成済みのアプリも、[.zip 形式で入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
 
@@ -210,7 +210,7 @@ public class Constants {
 ### 手順 7: プロジェクトに Android ADAL への参照を追加する
 
 
-> [AZURE.NOTE]ADAL for Android は、インテント ベースのモデルを使用して認証を呼び出します。インテントは、アプリの橋渡し的役割を果たします。このサンプルでは (ADAL for Android の使用全般に言えることですが) インテントを利用し、アプリ間で情報を受け渡ししています。
+> [AZURE.NOTE]	ADAL for Android は、インテント ベースのモデルを使用して認証を呼び出します。インテントは、アプリの橋渡し的役割を果たします。このサンプルでは (ADAL for Android の使用全般に言えることですが) インテントを利用し、アプリ間で情報を受け渡ししています。
 
 
 最初に、使用する Intents() を含め、対象アプリケーションのレイアウトを Android に伝える必要があります。これらのインテントについては後で詳しく説明します。
@@ -760,14 +760,14 @@ public class ToDoActivity extends Activity {
 
   callback はオブジェクト AuthenticationResult を返します。これには accesstoken、期限切れの日付、idtoken の情報が含まれています。
 
-> [AZURE.NOTE]Microsoft Intune のポータル サイト アプリでは、ブローカー コンポーネントを提供しています。そのアプリがユーザーのデバイスにインストールされている可能性があります。それによってデバイス上のすべてのアプリケーションに SSO が提供されるため、その点を見越した開発を行うようお勧めします。ADAL for Android は、Authenticator で作成されたユーザー アカウントが 1 つ存在する場合、ブローカー アカウントを使用します。ブローカーを使用するには、開発者がブローカー用に特殊な redirectUri を登録する必要があります。redirectUri の形式は msauth://packagename/Base64UrlencodedSignature です。アプリの redirectUri は、`brokerRedirectPrint.ps1` スクリプトを使用して取得できます。また、API 呼び出し `mContext.getBrokerRedirectUri()` を使用することもできます。署名は、Google Play ストアからの署名証明書に関連付けられています。
+> [AZURE.NOTE]	Microsoft Intune のポータル サイト アプリでは、ブローカー コンポーネントを提供しています。そのアプリがユーザーのデバイスにインストールされている可能性があります。それによってデバイス上のすべてのアプリケーションに SSO が提供されるため、その点を見越した開発を行うようお勧めします。ADAL for Android は、Authenticator で作成されたユーザー アカウントが 1 つ存在する場合、ブローカー アカウントを使用します。ブローカーを使用するには、開発者がブローカー用に特殊な redirectUri を登録する必要があります。redirectUri の形式は msauth://packagename/Base64UrlencodedSignature です。アプリの redirectUri は、`brokerRedirectPrint.ps1` スクリプトを使用して取得できます。また、API 呼び出し `mContext.getBrokerRedirectUri()` を使用することもできます。署名は、Google Play ストアからの署名証明書に関連付けられています。
 
  ブローカー ユーザーをスキップするには、次のようにコードを記述します。
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
     ```
-> [AZURE.NOTE]この B2C クイック スタートのサンプル コードは簡潔にするために、ブローカーをスキップしています。
+> [AZURE.NOTE] この B2C クイック スタートのサンプル コードは簡潔にするために、ブローカーをスキップしています。
 
 次に、いくつかのヘルパー メソッドを作成します。Task API の認証メソッドを呼び出すとき、トークンの取得だけは、これらのヘルパー メソッドで行います。
 
@@ -1011,6 +1011,4 @@ CookieSyncManager.getInstance().sync();
 でこれを処理できます。Cookie の詳細については、http://developer.android.com/reference/android/webkit/CookieSyncManager.html を参照してください。
  
 
-<!---HONumber=AcomDC_1125_2015-->
-
-
+<!---HONumber=AcomDC_0224_2016-->

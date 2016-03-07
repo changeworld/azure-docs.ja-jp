@@ -1,6 +1,6 @@
 <properties 
    pageTitle="リソース マネージャーで PowerShell を使用してルーティングを制御し、仮想アプライアンスを使用する | Microsoft Azure"
-   description="Azure PowerShell でルーティングを制御し仮想アプライアンスを使用する方法を説明する"
+   description="リソース マネージャーで PowerShell を使用してルーティングを制御し、仮想アプライアンスを使用する方法について説明します"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/23/2016"
    ms.author="telmos" />
 
-#PowerShell でユーザー定義のルート (UDR) を作成する
+#PowerShell を使用してリソース マネージャーでユーザー定義のルート (UDR) を作成する
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
@@ -56,7 +56,7 @@
 		Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
 			-AddressPrefix 192.168.1.0/24 -RouteTable $routeTable
 
->[AZURE.WARNING]上のコマンドの出力では、仮想ネットワーク構成オブジェクトの内容が示されます。これは、PowerShell を実行しているコンピューターにのみ存在します。これらの設定を Azure に保存するには、**Set-AzureVirtualNetwork** コマンドレットを実行する必要があります。
+>[AZURE.WARNING] 上のコマンドの出力では、仮想ネットワーク構成オブジェクトの内容が示されます。これは、PowerShell を実行しているコンピューターにのみ存在します。これらの設定を Azure に保存するには、**Set-AzureVirtualNetwork** コマンドレットを実行する必要があります。
 
 7. 新しいサブネット構成を Azure に保存します。
 
@@ -68,7 +68,7 @@
 		ResourceGroupName : TestRG
 		Location          : westus
 		Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-		Etag              : W/"7df26c0e-652f-4754-bc4e-733fef7d5b2b"
+		Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 		ProvisioningState : Succeeded
 		Tags              : 
 		                    Name         Value
@@ -236,4 +236,4 @@
 		NetworkSecurityGroup : null
 		Primary              : True
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

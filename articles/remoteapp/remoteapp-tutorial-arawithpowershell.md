@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Powershell とともに Azure RemoteApp を使用開始する | Microsoft Azure"
-   description="Powershell とともに Azure RemoteApp を使用開始する方法の詳細"
+   pageTitle="Azure RemoteApp での PowerShell コマンドレットの使用 | Microsoft Azure"
+   description="Azure RemoteApp で Windows PowerShell コマンドレットを使用する方法について説明します。"
    services="remoteapp"
    documentationCenter=""
    authors="guscatalano"
@@ -13,24 +13,35 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="12/05/2015"
-   ms.author="guscatal;spatnaik;elizapo"/>
+   ms.date="02/23/2016"
+   ms.author="elizapo"/>
 
 
 
-# Powershell とともに Azure RemoteApp を使用開始する
+# Azure RemoteApp での Windows PowerShell コマンドレットの使用
 =====================================
 
+ Azure RemoteApp PowerShell コマンドレットを使用して、コレクションを管理、保守できます。次の情報を使用して、作業を開始しましょう。
 
-## コマンドレットの取得
+## コマンドレットの取得 
 -------------
-最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードする必要があります。RemoteApp のコマンドレットもそれに含まれています。
+最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードします。RemoteApp のコマンドレットもそこに含まれています。
 
-Azure RemoteApp のコマンドレットのヘルプについては、[こちら](https://msdn.microsoft.com/library/mt428031.aspx)で確認してください。
+詳しくは、[Azure RemoteApp のコマンドレットのヘルプ](https://msdn.microsoft.com/library/mt428031.aspx)をご覧ください。
 
 ## サブスクリプションを使用するために Azure コマンドレットを構成します。
 ------------------
 [このガイド](../powershell-install-configure.md)に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
+
+次の手順に従って、すぐに作業を開始できます。
+
+1.	[Azure PowerShell コマンドレット](http://go.microsoft.com/?linkid=9811175)をダウンロードしてインストールします。
+2.	Microsoft Azure PowerShell を起動します。
+3.	**Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。  
+4.	**Get-AzureSubscription** を実行して、自分のアカウントに関連付けられたサブスクリプションを表示します。 
+5.	**Select-AzureSubscription** を実行し、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
+
+これで、Azure PowerShell コンソールが構成され、使用できるようになりました。Azure PowerShell コンソールを起動するたびに、2 ～ 5 の手順を繰り返してください。
 
 ## Create a cloud collection (クラウド コレクションを作成する)
 --------------------
@@ -99,5 +110,6 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppWorkspace
 - Set-AzureRemoteAppWorkspace
 - Get-AzureRemoteAppOperationResult
+ 
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/23/2015"
+	ms.date="02/16/2016"
 	ms.author="cephalin"/>
 
 # Azure App Service のカスタム ドメイン名の構成
@@ -112,7 +112,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 - 168\.62.48.183 にマップされた **contoso.com**
 - **contoso.azurewebsites.net** にマップされた **www.contoso.com**
 
->[AZURE.NOTE] Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns-web-sites-custom-domain)」をご覧ください。
+>[AZURE.NOTE] Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns/dns-web-sites-custom-domain)」をご覧ください。
 
 <a name="awverify" />
 ## awverify レコードの作成 (A レコードのみ)
@@ -155,4 +155,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

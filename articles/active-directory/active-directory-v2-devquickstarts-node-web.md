@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 Node.js Web アプリ | Microsoft Azure"
+	pageTitle="Azure AD v2.0 NodeJS Web アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Node JS Web アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -13,30 +13,25 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="02/20/2016"
 	ms.author="brandwe"/>
 
-# アプリ モデル v2.0 プレビュー: NodeJS Web アプリへのサインインを追加する
+# サインインを nodeJS Web アプリに追加する
 
 
-  >[AZURE.NOTE]
-    この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 
 ここでは、Passport を使用して次の操作を行います。
 
-- Azure AD と v2.0 アプリ モデルを使用するアプリにユーザーをサインインします。
+- Azure AD と v2.0 エンドポイントを使用するアプリにユーザーをサインインします。
 - ユーザーについての情報を表示します。
 - ユーザーをアプリからサインアウトします。
 
 **Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
 
-これを行うには、次の手順を実行する必要があります。
-
-1. アプリを登録します。
-2. Passport-azure-ad 戦略を使用するようにアプリを設定する
-3. Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
-4. ユーザーに関するデータを印刷する
+## ダウンロード
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
@@ -68,7 +63,7 @@
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
+- さらに、クイック スタートのスケルトンで、`passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
@@ -76,7 +71,7 @@
 これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
 ## 3. passport-node-js 戦略を使用するようにアプリを設定する
-ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。 Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 -	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
     -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
@@ -282,7 +277,7 @@ app.get('/logout', function(req, res){
 
 -	これらについて詳しく説明しましょう。
     -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
-    - `/account` ルートは、***ユーザーが認証されていることを確認した後*** (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
     - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
     - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
@@ -419,8 +414,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
-[Secure a Web API with the v2.0 app model in node.js (Node.js の v2.0 アプリ モデルで Web App をセキュリティ保護する) >>](active-directory-v2-devquickstarts-webapi-nodejs.md)
+[v2.0 エンドポイントを使用して node.js web api をセキュリティ保護する >>](active-directory-v2-devquickstarts-node-api.md)
 
-その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。 - [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

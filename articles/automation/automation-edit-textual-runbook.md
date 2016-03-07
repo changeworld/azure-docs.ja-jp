@@ -12,8 +12,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="01/19/2016"
-	ms.author="bwren" />
+	ms.date="02/18/2016"
+	ms.author="magoedte;bwren" />
 
 # Azure Automation でのテキスト形式の Runbook の編集
 
@@ -25,7 +25,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 
 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) 使用する場合は、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-## Azure プレビュー ポータルで Runbook を編集するには
+## Azure ポータルで Runbook を編集するには
 
 編集するためにテキスト エディターで Runbook を開くには、次の手順を使用します。
 
@@ -144,4 +144,4 @@ Windows PowerShell を使用して Runbook を編集するには、任意のエ�
 - [スケジュール](automation-schedules.md)
 - [変数](automation-variables.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps での FTP コネクタの使用 | Microsoft Azure App Service"
 	description="FTP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="rajram"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="app-service\logic"
 	documentationCenter=""/>
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="02/11/2016"
 	ms.author="rajram"/>
 
 # FTP コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [FTP API](../connectors/create-api-ftp.md) をクリックしてください。
+
 FTP サーバーに接続して、データまたはファイルを移動します。FTP コネクタの主な機能は、次のとおりです。
 
 - 必要に応じて FTP サーバーからファイルを取得する
@@ -138,7 +140,7 @@ FTP コネクタでは、次の操作がサポートされています。
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -160,4 +162,4 @@ FTP コネクタでは、次の操作がサポートされています。
 [13]: ./media/app-service-logic-connector-ftp/ConfiguredUploadFile.PNG
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -19,7 +19,7 @@
 
 # Azure CLI を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure CLI を使用して HDInsight クラスターを作成する方法について説明します。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
@@ -134,4 +134,4 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 - [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
 - [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

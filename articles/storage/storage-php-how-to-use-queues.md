@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="02/17/2016"
 	ms.author="tomfitz"/>
 
 # PHP から Queue ストレージを使用する方法
@@ -42,12 +42,13 @@ Azure キュー ストレージにアクセスする PHP アプリケーショ�
 
 Azure キュー ストレージで API を使用するには次が必要になります。
 
-1. [require\_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+1. [require\_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE]この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE]
+この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -115,7 +116,7 @@ Azure キュー ストレージ クライアントをインスタンス化する
 		echo $code.": ".$error_message."<br />";
 	}
 
-> [AZURE.NOTE]メタデータ キーでは大文字と小文字は区別されません。すべてのキーはサービスから小文字で返されます。
+> [AZURE.NOTE] メタデータ キーでは大文字と小文字は区別されません。すべてのキーはサービスから小文字で返されます。
 
 
 ## メッセージをキューに追加する
@@ -380,7 +381,7 @@ Azure キュー ストレージ クライアントをインスタンス化する
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
-[require_once]: http://www.php.net/manual/en/function.require-once.php
-[Azure Portal]: portal.azure.com
+[require\_once]: http://www.php.net/manual/en/function.require-once.php
+[Azure Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

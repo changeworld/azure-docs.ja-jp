@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="javascript" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="02/23/2016" 
 	ms.author="ricksal"/>
 
 
@@ -31,7 +31,7 @@ JavaScript バックエンド モバイル サービスを使用すると、サ�
 
 サーバー スクリプトのメイン関数のシグネチャは、スクリプトが使用されるコンテキストによって異なります。スクリプト間で共有される共通スクリプト コードを nodes.js モジュールとして定義することもできます。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-個々のサーバー スクリプト オブジェクトおよび関数の詳細については、「[Mobile Services server script reference (Mobile Services のサーバー スクリプト リファレンス)]」を参照してください。
+個々のサーバー スクリプト オブジェクトおよび関数の詳細については、「[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]」を参照してください。
 
 
 ##<a name="table-scripts"></a>テーブル操作
@@ -106,7 +106,7 @@ JavaScript バックエンド モバイル サービスを使用すると、サ�
  
 + **respond 関数**: カスタム応答を返します。
 
-> [AZURE.IMPORTANT]スクリプトに、**execute** も **respond** も呼び出されないコード パスが含まれている場合、操作が応答しなくなることがあります。
+> [AZURE.IMPORTANT] スクリプトに、**execute** も **respond** も呼び出されないコード パスが含まれている場合、操作が応答しなくなることがあります。
 
 次のスクリプトでは、**execute** 関数を呼び出して、クライアントによって要求されたデータ操作を完了します。
 
@@ -453,7 +453,7 @@ Mobile Services を使用すると、決まったスケジュールでのジョ�
 
 スケジュールされたジョブは、次のいずれかの方法で定義できます。
 
-+ [Azure クラシック ポータル]のスケジューラの **[スクリプト]** タブで
++ [Azure クラシック ポータル]のスケジューラのーの **[スクリプト]** タブで。
 
 	![3][3]
 
@@ -513,7 +513,7 @@ Mobile Services では、スクリプトで **require** グローバル関数を
 
 モバイル サービスに対応する package.json ファイルまたはカスタム モジュールをリポジトリにコミットした後、**require** を使用してそのモジュールを名前によって参照します。
 
->[AZURE.NOTE]package.json 内で指定するモジュール、またはモバイル サービスにアップロードするモジュールは、サーバー スクリプト コード内でのみ使用されます。これらのモジュールは、Mobile Services ランタイムによって使用されることはありません。
+>[AZURE.NOTE] package.json 内で指定するモジュール、またはモバイル サービスにアップロードするモジュールは、サーバー スクリプト コード内でのみ使用されます。これらのモジュールは、Mobile Services ランタイムによって使用されることはありません。
 
 ###<a name="helper-functions"></a>方法: ヘルパー関数を使用する
 
@@ -661,7 +661,7 @@ Mobile Services には、テーブルにアクセスするための 2 つの方�
 
 		var todoItemsTable = request.service.tables.getTable('TodoItem');
 
-> [AZURE.NOTE]共有関数は、**tables** オブジェクトに直接アクセスできません。共有関数内で tables オブジェクトを関数に渡す必要があります。
+> [AZURE.NOTE] 共有関数は、**tables** オブジェクトに直接アクセスできません。共有関数内で tables オブジェクトを関数に渡す必要があります。
 
 [table オブジェクト]を一度取得すると、1 つ以上のテーブル操作関数 (挿入、更新、削除、または読み取り) を呼び出すことができます。次の例では、permissions テーブルからユーザーのアクセス許可を読み取ります。
 
@@ -924,7 +924,7 @@ Stream|サポートされていません
 
 ログに書き込むには、グローバル [console オブジェクト]を使用します。情報レベルの警告をログに記録するには、**log** 関数または **info** 関数を使用します。**warning** 関数および **error** 関数では、それぞれのレベルをログに記録します。これらは、ログ内で強調されます。
 
-> [AZURE.NOTE]モバイル サービスのログを表示するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にログオンし、モバイル サービスを選択して、**[ログ]** タブをクリックします。
+> [AZURE.NOTE] モバイル サービスのログを表示するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にログオンし、モバイル サービスを選択して、**[ログ]** タブをクリックします。
 
 また、[console オブジェクト]のログ関数で、パラメーターを使用してメッセージを書式設定することもできます。次の例では、メッセージ文字列のパラメーターとして JSON オブジェクトを指定します。
 
@@ -989,7 +989,7 @@ Stream|サポートされていません
 [4]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
 
 <!-- URLs. -->
-[Mobile Services server script reference (Mobile Services のサーバー スクリプト リファレンス)]: http://msdn.microsoft.com/library/windowsazure/jj554226.aspx
+[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]: http://msdn.microsoft.com/library/windowsazure/jj554226.aspx
 [Mobile Services でのバックエンド ジョブの計画に関するページ]: /develop/mobile/tutorials/schedule-backend-tasks/
 [モバイル サービスでのバックエンド ジョブの計画]: /develop/mobile/tutorials/schedule-backend-tasks/
 [request object]: http://msdn.microsoft.com/library/windowsazure/jj554218.aspx
@@ -1056,4 +1056,4 @@ Stream|サポートされていません
 [Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

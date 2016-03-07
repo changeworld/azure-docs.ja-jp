@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    ms.author="chackdan"/>
 
 
@@ -72,8 +72,9 @@
 
 	b.**[アプリケーション入力エンドポイント]** フィールドにすべてのポートをコンマで区切って追加します。TCP クライアント接続エンドポイント - 既定で 19000 なので、指定する必要はありません。たとえば、サンプル アプリケーション WordCount の場合、ポート 83 を開く必要があります。この設定は、アプリケーション パッケージの servicemanifest.xml ファイルにあります(複数の servicemanifest.xml ファイルが存在する場合があります)。
 
-    c.ほとんどのサンプル アプリケーションはポート 80 と 8081 を使用するので、このクラスターにサンプルをデプロイする場合はそれらを追加します。![ポート][Ports]
+    c.ほとんどのサンプル アプリケーションはポート 80 と 8081 を使用するので、このクラスターにサンプルをデプロイする場合はそれらを追加します。
 
+![ポート][Ports]
 10. "NodeTypeName" の既定の配置プロパティはシステムによって追加されるので、**[配置プロパティ]** を構成する必要はありません。アプリケーションに必要な場合は、追加することもできます。
 
 ## セキュリティを構成する
@@ -112,10 +113,12 @@
 
 1. **[参照]** に移動し、**[Service Fabric クラスター]** をクリックします。
 
-2. クラスターを探してクリックします。![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
+2. クラスターを探してクリックします。
 
-3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
+![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
+3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。
 
+![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
   クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、「[Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)」を参照してください。
 
 >[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
@@ -189,11 +192,16 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
+## 仮想マシン スケール セット (VMSS) インスタンスまたはクラスター ノードへの RDP 接続 
+
+クラスターで指定する NodeType ごとに、VMSS がセットアップされます。詳細については、「[How to RDP into your VMSS instance (VMSS インスタンスに RDP 接続する方法)](service-fabric-cluster-nodetypes.md)」を参照してください。
+
 ## 次のステップ
 
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 - [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
+- [How to RDP into your VMSS instance (VMSS インスタンスに RDP 接続する方法)](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
@@ -207,4 +215,4 @@
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

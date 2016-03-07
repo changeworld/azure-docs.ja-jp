@@ -20,7 +20,7 @@
 
 #HDInsight での Linux ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 このドキュメントでは、クラスターで使用できるオプションの構成に加え、Azure で Linux ベースの HDInsight クラスターを作成するさまざまな方法を学習します。HDInsight は、Azure クラウド プラットフォーム上のサービスとして Apache Hadoop、Apache Storm、および Apache HBase を提供します。
 
@@ -268,4 +268,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

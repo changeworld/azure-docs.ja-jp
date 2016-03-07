@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="02/20/2016" 
 	ms.author="anwestg"/>
 
 # Azure App Service Web Apps の企業向け製品・サービスに関するホワイトペーパー #
@@ -83,9 +83,9 @@ App Service Web Apps では、小規模な社内開発やテスト ワークロ�
 
 Microsoft Azure Platform では、ロール ベースの承認制御 (Role Based Authorization Control: RBAC) によって、Web Apps 内部のリソースへのエンタープライズ レベルの制御が可能になります。RBAC によって、企業は Azure 環境にある自社の資産に対し、ユーザーをグループに割り当て、グループには Web アプリのような資源に対して必要な許可を与えることで、独自のアクセス管理ポリシーを実装する能力が得られます。Azure での RBAC の詳細については、[http://aka.ms/azurerbac](../role-based-access-control-configure/) を参照してください。Web Apps を活用することで、Web アプリケーションが安全な環境にデプロイされているという確信が持てるうえ、自社の資産がデプロイされている領域を完全に制御できます。
 
-Azure App Service Environment [http://aka.ms/aseintro] は、Azure App Service の活用を望む企業ユーザー向けの新しい Premium サービス プラン オプションであり、完全に分離された専用の環境をお届けします。ASE により、企業ユーザーは高スケールのメリットを活用できるアプリケーションをデプロイすることができ、送受信ネットワーク トラフィック全体を完全に制御できるようになります。さらに、アプリケーションで、仮想ネットワーク経由でのオンプレミスのリソースへの高速かつセキュアな接続も可能になります。
+Azure App Service Environment [http://aka.ms/aseintro](http://aka.ms/aseintro) は、Azure App Service の活用を望む企業ユーザー向けの新しい Premium サービス プラン オプションであり、完全に分離された専用の環境をお届けします。ASE により、企業ユーザーは高スケールのメリットを活用できるアプリケーションをデプロイすることができ、送受信ネットワーク トラフィック全体を完全に制御できるようになります。さらに、アプリケーションで、仮想ネットワーク経由でのオンプレミスのリソースへの高速かつセキュアな接続も可能になります。
 
-また、App Service Web Apps では、データ ウェアハウスや SharePoint 環境などの社内リソースへの接続能力を提供することで、オンプレミスの投資を十分に活用することができます。[高度なソリューション]で説明したように、ハイブリッド接続や Virtual Network Connectivity を活用すれば、オンプレミスのインフラストラクチャおよびサービスへの接続を確立できます。
+また、App Service Web Apps では、データ ウェアハウスや SharePoint 環境などの社内リソースへの接続能力を提供することで、オンプレミスの投資を十分に活用することができます。「[高度なソリューション](#highlevel)」で説明したように、ハイブリッド接続や仮想ネットワーク接続を活用すれば、オンプレミスのインフラストラクチャおよびサービスへの接続を確立できます。
 
 ### グローバルな規模 ###
 
@@ -135,7 +135,7 @@ Azure プラットフォームでは、Web アプリケーションのプライ�
 #### オンプレミスのリソースへの接続性 ####
 App Service Web Apps では、データベースなど、オンプレミスのリソースへの接続方式として複数のオプションが用意されており、既存の高付加価値インフラストラクチャの再利用が可能になっています。次のオプションを利用できます。
 
-- App Service Environment は仮想ネットワークのサブネット内に分離されて作成されるため、この環境は、同じ仮想ネットワーク内に配置されたプライベート エンドポイントと通信できます - [http://aka.ms/appserviceasenetworking]
+- App Service Environment は仮想ネットワークのサブネット内に分離されて作成されるため、この環境は、同じ仮想ネットワーク内に配置されたプライベート エンドポイントと通信できます - [http://aka.ms/appserviceasenetworking](http://aka.ms/appserviceasenetworking)
 - Web Apps Virtual Network Integration では、Web Apps と Azure Virtual Network の統合がサポートされており、Virtual Network で稼働中のリソースへのアクセスが可能です。それをサイト間 VPN でオンプレミスのネットワークに接続させれば、オンプレミス システムへの直接接続環境が得られます。
 - ハイブリッド接続は、Azure BizTalk Services の機能で、SQL Server、MySQL、HTTP Web API、および大部分のカスタム Web サービスといった個別のオンプレミス リソースへの簡単な接続方法を提供します。
 
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

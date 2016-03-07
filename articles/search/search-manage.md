@@ -14,14 +14,14 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="heidist"/>
 
 # Microsoft Azure で検索サービスを管理する
 
 Azure Search は、カスタムの検索アプリケーションで使用できる HTTP ベースの API を備えたクラウドベースのサービスです。この検索サービスでは、全文検索テキスト分析のためのエンジン、高度な検索機能、検索データ ストレージ、クエリ コマンド構文が用意されています。
 
-この記事では、[Azure ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。
+この記事では、[Azure ポータル](https://portal.azure.com)で検索サービスを管理する方法について説明します。新しい検索トラフィック分析機能を使用して、インデックス レベルでアクティビティの詳細を把握することもできます。詳細については、「[Azure Search の検索トラフィックの分析](search-traffic-analytics.md)」を参照してください。
 
 または、管理 REST API を使用することができます。詳細については、「[Azure Search 管理 REST API の使用](search-get-started-management-api.md)」と「[Azure Search 管理 REST API](http://msdn.microsoft.com/library/azure/dn832684.aspx)」をご覧ください。
 
@@ -36,14 +36,14 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 容量を考慮して計画し、課金の影響を理解するには、以下のリンクをお勧めします。
 
-+	[Azure Search サービスの制限](search-limits-quotas-capacity.md)
-+	[料金の詳細](http://go.microsoft.com/fwlink/p/?LinkdID=509792)
++	[制限および制約 (Azure Search)](search-limits-quotas-capacity.md)
++	[Pricing Details (料金の詳細)](http://go.microsoft.com/fwlink/p/?LinkdID=509792)
 
 サインアップする準備ができたら「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
 
 ##検索分析
 
-ユーザーの検索行動に関するデータ収集を可能にし、検索サービスがどのように実行されているか、どのような用語が使用されているか、それらの用語はヒットを返しているかなどを確認することができます。こうしたデータを分析し、視覚化するための最善の方法は、Power BI コンテンツ パックを使用することです。まず、検索トラフィックの分析を有効にします。方法については、[Azure Search トラフィックの分析](https://azure.microsoft.com/blog/analyzing-your-azure-search-traffic/)に関するページを参照してください。
+ユーザーの検索行動に関するデータ収集を可能にし、検索サービスがどのように実行されているか、どのような用語が使用されているか、それらの用語はヒットを返しているかなどを確認することができます。こうしたデータを分析し、視覚化するための最善の方法は、Power BI コンテンツ パックを使用することです。まず、検索トラフィックの分析を有効にします。方法については、「[Analyzing your Azure Search traffic (Azure Search トラフィックの分析)](https://azure.microsoft.com/blog/analyzing-your-azure-search-traffic/)」を参照してください。
 
 <a id="sub-2"></a>
 ## 管理タスク
@@ -66,7 +66,7 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 サービス ダッシュボードからサービス URL を取得するには:
 
-1.	[Azure クラシック ポータル](https://portal.azure.com)にサインインします。
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。
 2.	**[参照]**、**[すべて]**、**[検索サービス]** の順にクリックします。
 3.	目的の検索サービスの名前をクリックして、ダッシュボードを開きます。
 4.	**[プロパティ]** をクリックしてプロパティ ページを開きます。ページの上部にサービス URL が表示されています。後ですばやくアクセスできるように、このページを固定できます。
@@ -75,7 +75,7 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 開発者から API バージョンに関する問い合わせがある可能性もあります。Azure Search API のコーディング要件として、要求では常に API バージョンを指定する必要があります。これは、開発者が以前のバージョンを引き続き使用して、適時に新しいバージョンに移行できるようにするための要件です。
 
-API バージョンはポータル ページに表示されないため、管理者はこの情報を提供できません。現在および以前の API バージョンについては、「[Azure Search REST API](http://go.microsoft.com/fwlink/p/?LinkdID=509922)」を参照してください。
+API バージョンはポータル ページに表示されないため、管理者はこの情報を提供できません。現在および以前の API バージョンについては、「[Azure Search REST API (Azure Search REST API)](http://go.microsoft.com/fwlink/p/?LinkdID=509922)」を参照してください。
 
 
 <a id="sub-4"></a>
@@ -104,7 +104,7 @@ API キーを取得または再生成するには、サービス ダッシュボ
 
 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
 
-Search Service API を使用して、ドキュメントとインデックスの数を取得できます。価格レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
+Search Service API を使用して、ドキュメントとインデックスの数を取得できます。価格レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](search-limits-quotas-capacity.md)」を参照してください。
 
 +	[インデックス統計の取得](http://msdn.microsoft.com/library/dn798942.aspx)
 +	[ドキュメントのカウント](http://msdn.microsoft.com/library/dn798924.aspx)
@@ -147,7 +147,7 @@ Search Service API を使用して、ドキュメントとインデックスの�
 
 特定のパーティションにどのインデックス シャードが格納されているかを検出する方法はありません。各パーティションで約 25 GB のストレージが提供されるため、現在のパーティションの数で対応できるサイズまでストレージを削減する必要があります。1 つのパーティションに戻す場合は、12 個のシャードをすべて収める必要があります。
 
-将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search サービス REST API)](http://msdn.microsoft.com/library/dn798942.aspx)」を使用) 実際にどのくらい使用したかを確認します。
+将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](http://msdn.microsoft.com/library/dn798942.aspx)」を使用) 実際にどのくらい使用したかを確認します。
 
 ### 複数のデータ センターにわたる、スケールとサービスのデプロイに関するベスト プラクティス (ビデオ)
 
@@ -166,7 +166,7 @@ Search Service API を使用して、ドキュメントとインデックスの�
 <a id="sub-8"></a>
 ## 管理アクセスのロールを設定する
 
-Azure は、カスタム管理ツールを使用している場合、ポータルで、または、Azure リソース マネージャー API で管理するすべてのサービスに対して、グローバルなロールベースの承認モデルを用意しています。所有者、共同作成者、および閲覧者のロールは、各ロールに割り当てる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルを設定します。ロール メンバーシップの詳細については、「[Azure クラシック ポータルでのロール ベースのアクセス制御](../role-based-access-control-configure.md)」をご覧ください。
+Azure は、カスタム管理ツールを使用している場合、ポータルで、または、Azure リソース マネージャー API で管理するすべてのサービスに対して、グローバルなロールベースの承認モデルを用意しています。所有者、共同作成者、および閲覧者のロールは、各ロールに割り当てる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルを設定します。ロール メンバーシップの詳細については、「[Azure クラシック ポータルでのロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」をご覧ください。
 
 Azure Search の観点から、ロールベースのアクセス制御は次の管理タスクを決定します。
 
@@ -177,7 +177,7 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 共同作成者|ロール管理を除き、アクセス レベルは所有者と同じです。たとえば、共同作成者は `api-key` を再生成できますが、ロール メンバーシップは変更できません。
 閲覧者|サービスの状態とクエリのキーを表示します。このロールのメンバーは、サービスの開始または停止ができず、管理キーの表示もできません。
 
-ロールは、サービス エンドポイントへのアクセス権を付与しないことに注意してください。インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。詳細については、「[Azure クラシック ポータルでのロール ベースのアクセス制御](../role-based-access-control-configure.md)」で「管理用の承認とデータ操作」をご覧ください。
+ロールは、サービス エンドポイントへのアクセス権を付与しないことに注意してください。インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。詳細については、「[Azure ポータルでのロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」で「管理用の承認とデータ操作」をご覧ください。
 
 ロールは、サービスが作成された後のアクセス制御を行います。サブスクリプションの管理者だけが、サブスクリプションに検索サービスを追加できます。
 
@@ -200,4 +200,4 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -20,7 +20,7 @@
 
 #Azure プレビュー ポータルを使用して HDInsight に Linux ベースのクラスターを作成する
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure プレビュー ポータルは、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。このドキュメントでは、プレビュー ポータルと Web ブラウザーを使用して、Linux ベースの HDInsight クラスターを新たに作成する際に役立つ情報を紹介しています。
 
@@ -182,4 +182,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

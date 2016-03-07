@@ -19,7 +19,7 @@
 
 # HDInsight での Windows ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 HDInsight クラスターの作成を計画する方法について説明します。
 
@@ -220,4 +220,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM テンプレート](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

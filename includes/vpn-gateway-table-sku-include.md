@@ -1,18 +1,19 @@
-There are 3 VPN Gateway SKUs:
+次の 3 つの VPN Gateway の SKU があります。
 
 - Basic
 - Standard
-- High Performance
+- 高性能
 
-The table below shows the gateway types and the estimated aggregate throughput. 
-Pricing does differ between gateway SKUs. For information about pricing, see [VPN Gateway Pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/). This table applies to both the Resource Manager and classic deployment models.
+次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。料金はゲートウェイの SKU によって異なります。料金については、「[VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)」を参照してください。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 
-|    | **VPN Gateway throughput** | **VPN Gateway max IPsec tunnels** | **ExpressRoute Gateway throughput** | **VPN Gateway and ExpressRoute coexist**|
+| | **VPN Gateway のスループット** | **VPN Gateway の IPsec トンネルの最大数** | **ExpressRoute ゲートウェイのスループット** | **VPN Gateway と ExpressRoute の共存**|
 |--- |----------------------------|-----------------------------------|-------------------------------------|-----------------------------------------|
-| **Basic SKU**              |  100 Mbps | 10                         |  500 Mbps                           | No   |
-| **Standard SKU**           |  100 Mbps | 10                         | 1000 Mbps                           | Yes  |
-| **High Performance SKU**   | 200 Mbps  | 30                         | 2000 Mbps                           | Yes  |
+| **Basic SKU** | 100 Mbps | 10 | 500 Mbps | いいえ |
+| **Standard SKU** | 100 Mbps | 10 | 1000 Mbps | あり |
+| **高性能 SKU** | 200 Mbps | 30 | 2000 Mbps | あり |
 
 
-**Note:** The VPN throughput is a rough estimate based on the measurements between VNets in the same Azure region. It is not a guarantee of what you can get for cross-premises connections across the Internet, but should be used as a maximum possible measure.
+**注:** VPN のスループットは、同一 Azure リージョン内の VNet 間での測定値に基づく大まかな推定値です。インターネット経由でのクロスプレミス接続ではこの値は達成可能な最大値であり、このスループットが保証されるわけではありません。
+
+<!---HONumber=AcomDC_0224_2016-->

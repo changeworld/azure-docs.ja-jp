@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Azure | ホスト型クラウド検索サービス" 
+	pageTitle="Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Azure | 検索ナビゲーションのカテゴリ" 
 	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。" 
 	services="search" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/18/2016" 
 	ms.author="heidist"/>
 
 #Azure Search でファセット ナビゲーションを実装する方法
@@ -29,10 +29,6 @@
 ファセット ナビゲーションの実装は検索テクノロジによって異なり、非常に複雑な場合があります。Azure Search のファセット ナビゲーションは、スキーマで事前に指定されている属性フィールドを使用して、クエリ時に作成されます。アプリケーションで作成するクエリでは、*ファセット クエリ パラメーター*を送信して、そのドキュメント結果セットに対して使用できるファセット フィルターの値を受け取る必要があります。ドキュメント結果セットを実際にトリミングするには、アプリケーションで `$filter` 式を適用する必要があります。
 
 アプリケーション開発の観点からは、クエリを構成するコードの記述が作業のかなりの部分を占めます。範囲の設定やファセットの結果の数の取得の組み込みサポートなど、ファセット ナビゲーションによるアプリケーション動作の多くは、サービスによって提供されます。また、サービスには、ナビゲーション構造が扱いにくくなるのを防ぐ実用的な既定値も含まれています。
-
-実際のエクスペリエンスについては、CodePlex の [Azure Search AdventureWorks カタログ](https://azuresearchadventureworksdemo.codeplex.com/)のサンプルを参照してください。
-
-また、「[Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」もご覧ください。45:25 の部分に、ファセットの実装方法のデモがあります。
 
 この記事の内容は次のとおりです。
 
@@ -128,7 +124,7 @@ Web アプリケーションの場合は、増分変更を更新できるので�
   ![][2]
  
 
-> [AZURE.TIP]検索結果ページを設計するときは、ファセットをクリアするためのメカニズムを追加することを忘れないでください。チェック ボックスを使用すれば、ユーザーはフィルターをクリアする方法が簡単にわかります。その他のレイアウトでは、階層リンク パターンや別の創造的な方法が必要になる場合があります。たとえば、AdventureWorks Catalog サンプル アプリケーションでは、[AdventureWorks Catalog] というタイトルをクリックして検索ページをリセットできます。
+> [AZURE.TIP] 検索結果ページを設計するときは、ファセットをクリアするためのメカニズムを追加することを忘れないでください。チェック ボックスを使用すれば、ユーザーはフィルターをクリアする方法が簡単にわかります。その他のレイアウトでは、階層リンク パターンや別の創造的な方法が必要になる場合があります。たとえば、AdventureWorks Catalog サンプル アプリケーションでは、[AdventureWorks Catalog] というタイトルをクリックして検索ページをリセットできます。
 
 <a name="buildindex"></a>
 ##インデックスの作成
@@ -143,7 +139,7 @@ AdventureWorks Catalog サンプル アプリケーションのスキーマを�
  
 ID や名前など、ファセットに使用されてはならない文字列フィールドの `Facetable` がオフになっていることに注意してください。必要のないフィールドのファセットをオフにすることで、インデックスのサイズが小さくなり、一般にパフォーマンスが向上します。
 
-> [AZURE.TIP]ベスト プラクティスとしては、各フィールドのインデックス属性の完全なセットを含めます。ほとんどすべてのフィールドは `Facetable` が既定でオンになりますが、各属性を意識的に設定すると、スキーマの各決定の意味を熟慮するのに役立ちます。
+> [AZURE.TIP] ベスト プラクティスとしては、各フィールドのインデックス属性の完全なセットを含めます。ほとんどすべてのフィールドは `Facetable` が既定でオンになりますが、各属性を意識的に設定すると、スキーマの各決定の意味を熟慮するのに役立ちます。
 
 <a name="checkdata"></a>
 ##データ品質のチェック 
@@ -227,7 +223,7 @@ Azure Search では、検索コーパスはインデックスを生成するド�
 
 ファセットの結果と検索結果の違いに注意してください。検索結果は、クエリに一致するすべてのドキュメントです。ファセットの結果は、各ファセットの値と一致するものです。この例では、検索結果には、ファセット分類リスト (この例では 5) に含まれていない都市名が含まれます。ファセット ナビゲーションによって除外された結果は、ユーザーがファセットをクリアするか、または都市以外の他のファセットを選択することによって、表示されるようになります。
 
-> [AZURE.NOTE]複数の種類があるときの `count` の説明は混乱する可能性があります。Azure Search API、サンプル コード、ドキュメントで count が使用される方法についてのまとめを以下に示します。
+> [AZURE.NOTE] 複数の種類があるときの `count` の説明は混乱する可能性があります。Azure Search API、サンプル コード、ドキュメントで count が使用される方法についてのまとめを以下に示します。
 
 - `@colorFacet.count`<br/> プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
 
@@ -302,7 +298,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
 この記事で参照されている例は、Codeplex の Azure Search を使用した Adventure Works のデモに含まれます。検索結果を使用するときは、クエリ構造での変更について URL をご覧ください。このアプリケーションは、ユーザーが 1 つを選択すると URI にファセットを追加します。
 
-1.	サンプル アプリケーションを構成してください (「[Azure Search による最初の検索ソリューションの作成](search-create-first-solution.md)」を参照)。 
+1.	サービスの URL と API キーを使用するためのサンプル アプリケーションを構成します。 
 
 	CatalogIndexer プロジェクトの Program.cs ファイルで定義されているスキーマに注意してください。スキーマでは、color、listPrice、size、weight、categoryName、modelName がファセット可能なフィールドとして指定されています。ファセット ナビゲーションで実際に実装されているのは、一部のフィールド (color、listPrice、categoryName) だけです。
 
@@ -335,6 +331,8 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
 - [ファセット検索のための設計に関する記事](http://www.uie.com/articles/faceted_search/)
 - [ファセット ナビゲーションの設計パターンに関する記事](http://alistapart.com/article/design-patterns-faceted-navigation)
+
+また、「[Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」もご覧ください。45:25 の部分に、ファセットの実装方法のデモがあります。
 
 <!--Anchors-->
 [How to build it]: #howtobuildit
@@ -372,4 +370,4 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

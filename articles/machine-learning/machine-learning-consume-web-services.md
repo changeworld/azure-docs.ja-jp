@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd"
-	ms.date="02/10/2016"
+	ms.date="02/21/2016"
 	ms.author="garye" />
 
 
@@ -127,7 +127,7 @@ API ヘルプ ページを表示するには、サービスのダッシュボー
 
 ヘルプ ページの下部に、コード例が表示されます。c# の実装のコード例を次に示します。
 
-**サンプル コード**
+**C# のコード サンプル**
 
 	using System;
 	using System.Collections.Generic;
@@ -198,6 +198,58 @@ API ヘルプ ページを表示するには、サービスのダッシュボー
 	        }
 	    }
 	}
+
+**Java のコード サンプル**
+
+次のサンプル コードでは、Java で REST API 要求を構築する方法を示しています。REST API が正しく予測できるように必要な API 詳細が変数 (apikey and apiurl) に指定され、正しい JSON オブジェクトが変数 jsonBody に指定されているものと想定されています。完全なコードは github ([https://github.com/nk773/AzureML\_RRSApp](https://github.com/nk773/AzureML_RRSApp)) からダウンロードできます。この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。
+
+	/**
+	 * Download full code from github - [https://github.com/nk773/AzureML_RRSApp](https://github.com/nk773/AzureML_RRSApp)
+ 	 */
+    	/**
+     	  * Call REST API for retrieving prediction from Azure ML 
+     	  * @return response from the REST API
+     	  */	
+    	public static String rrsHttpPost() {
+        
+        	HttpPost post;
+        	HttpClient client;
+        	StringEntity entity;
+        
+        	try {
+            		// create HttpPost and HttpClient object
+            		post = new HttpPost(apiurl);
+            		client = HttpClientBuilder.create().build();
+            
+            		// setup output message by copying JSON body into 
+            		// apache StringEntity object along with content type
+            		entity = new StringEntity(jsonBody, HTTP.UTF_8);
+            		entity.setContentEncoding(HTTP.UTF_8);
+            		entity.setContentType("text/json");
+
+            		// add HTTP headers
+            		post.setHeader("Accept", "text/json");
+            		post.setHeader("Accept-Charset", "UTF-8");
+        
+            		// set Authorization header based on the API key
+            		post.setHeader("Authorization", ("Bearer "+apikey));
+            		post.setEntity(entity);
+
+            		// Call REST API and retrieve response content
+            		HttpResponse authResponse = client.execute(post);
+            
+            		return EntityUtils.toString(authResponse.getEntity());
+            
+        	}
+        	catch (Exception e) {
+            
+            		return e.toString();
+        	}
+    
+    	}
+    
+    	
+ 
 
 ### BES の例
 RR サービスとは異なり、BES サービスは非同期です。つまり、BES API は単に実行対象のジョブをキューに登録し、呼び出し元はジョブの状態をポーリングして、完了すると表示します。バッチ ジョブで現在サポートされている操作を次に示します。
@@ -435,4 +487,202 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 	    }
 	}
 
-<!---HONumber=AcomDC_0211_2016-->
+#### Java for BES のコード サンプル
+バッチ実行サービス REST API では、下の図のように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。完全なコードは [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) で確認できます。この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。
+
+
+	{ "GlobalParameters": {}, 
+    	"Inputs": { "input1": { "ConnectionString": 	"DefaultEndpointsProtocol=https;
+			AccountName=myAcctName; AccountKey=Q8kkieg==", 
+        	"RelativeLocation": "myContainer/sampleinput.csv" } }, 
+    	"Outputs": { "output1": { "ConnectionString": 	"DefaultEndpointsProtocol=https;
+			AccountName=myAcctName; AccountKey=kjC12xQ8kkieg==", 
+        	"RelativeLocation": "myContainer/sampleoutput.csv" } } 
+	} 
+
+
+#####BES ジョブを作成する	
+	    
+	    /**
+	     * Call REST API to create a job to Azure ML 
+	     * for batch predictions
+	     * @return response from the REST API
+	     */	
+	    public static String besCreateJob() {
+	        
+	        HttpPost post;
+	        HttpClient client;
+	        StringEntity entity;
+	        
+	        try {
+	            // create HttpPost and HttpClient object
+	            post = new HttpPost(apiurl);
+	            client = HttpClientBuilder.create().build();
+	            
+	            // setup output message by copying JSON body into 
+	            // apache StringEntity object along with content type
+	            entity = new StringEntity(jsonBody, HTTP.UTF_8);
+	            entity.setContentEncoding(HTTP.UTF_8);
+	            entity.setContentType("text/json");
+	
+	            // add HTTP headers
+	            post.setHeader("Accept", "text/json");
+	            post.setHeader("Accept-Charset", "UTF-8");
+	        
+	            // set Authorization header based on the API key
+				// note a space after the word "Bearer " - don't miss that
+	            post.setHeader("Authorization", ("Bearer "+apikey));
+	            post.setEntity(entity);
+	
+	            // Call REST API and retrieve response content
+	            HttpResponse authResponse = client.execute(post);
+	            
+	            jobId = EntityUtils.toString(authResponse.getEntity()).replaceAll(""", "");
+	            
+	            
+	            return jobId;
+	            
+	        }
+	        catch (Exception e) {
+	            
+	            return e.toString();
+	        }
+	    
+	    }
+	    
+#####以前に作成した BES ジョブを開始する	        
+	    /**
+	     * Call REST API for starting prediction job previously submitted 
+	     * 
+	     * @param job job to be started 
+	     * @return response from the REST API
+	     */	
+	    public static String besStartJob(String job){
+	        HttpPost post;
+	        HttpClient client;
+	        StringEntity entity;
+	        
+	        try {
+	            // create HttpPost and HttpClient object
+	            post = new HttpPost(startJobUrl+"/"+job+"/start?api-version=2.0");
+	            client = HttpClientBuilder.create().build();
+	         
+	            // add HTTP headers
+	            post.setHeader("Accept", "text/json");
+	            post.setHeader("Accept-Charset", "UTF-8");
+	        
+	            // set Authorization header based on the API key
+	            post.setHeader("Authorization", ("Bearer "+apikey));
+	
+	            // Call REST API and retrieve response content
+	            HttpResponse authResponse = client.execute(post);
+	            
+	            if (authResponse.getEntity()==null)
+	            {
+	                return authResponse.getStatusLine().toString();
+	            }
+	            
+	            return EntityUtils.toString(authResponse.getEntity());
+	            
+	        }
+	        catch (Exception e) {
+	            
+	            return e.toString();
+	        }
+	    }
+#####以前に作成した BES ジョブをキャンセルする
+	    
+	    /**
+	     * Call REST API for canceling the batch job 
+	     * 
+	     * @param job job to be started 
+	     * @return response from the REST API
+	     */	
+	    public static String besCancelJob(String job) {
+	        HttpDelete post;
+	        HttpClient client;
+	        StringEntity entity;
+	        
+	        try {
+	            // create HttpPost and HttpClient object
+	            post = new HttpDelete(startJobUrl+job);
+	            client = HttpClientBuilder.create().build();
+	         
+	            // add HTTP headers
+	            post.setHeader("Accept", "text/json");
+	            post.setHeader("Accept-Charset", "UTF-8");
+	        
+	            // set Authorization header based on the API key
+	            post.setHeader("Authorization", ("Bearer "+apikey));
+	
+	            // Call REST API and retrieve response content
+	            HttpResponse authResponse = client.execute(post);
+	         
+	            if (authResponse.getEntity()==null)
+	            {
+	                return authResponse.getStatusLine().toString();
+	            }
+	            return EntityUtils.toString(authResponse.getEntity());
+	            
+	        }
+	        catch (Exception e) {
+	            
+	            return e.toString();
+	        }
+	    }
+	    
+###その他のプログラミング環境
+API ヘルプ ページの swagger ドキュメントを利用し、[swagger.io](http://swagger.io/) サイトの指示に従うことで、他のさまざまな言語でコードを生成することもできます。[swagger.io](http://swagger.io/swagger-codegen/) にアクセスし、指示に従い、swagger コード、java、apache mvn をダウンロードします。以下は、他のプログラミング言語で swagger を設定する方法のまとめです。
+
+* Java 7 以降がインストールされていることを確認する
+* apache mvn をインストールする (ubuntu の場合、*apt-get install mvn* を使用します)
+* swagger の github にアクセスし、swagger プロジェクトを zip ファイルとしてダウンロードする
+* swagger を解凍する
+* swagger のソース ディレクトリから *mvn パッケージ*を実行し、swagger ツールを構築する
+
+これですべての swagger ツールを使用できます。Java クライアント コードを生成する手順は次のとおりです。
+
+* Azure ML API ヘルプ ページに移動する (たとえば、[ここ](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs)から)
+* Azure ML REST API 用の swagger.json の URL を見つける (API ヘルプ ページの上部の最後から 2 番目の箇条書き)
+* swagger ドキュメント リンクをクリックする (たとえば、[こちら](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)から)
+* 「[swagger の Read Me ファイル](https://github.com/swagger-api/swagger-codegen/blob/master/README.md)」にある次のコマンドを使用し、クライアント コードを生成する
+
+**クライアント コードを生成するサンプル コマンド ライン**
+
+	java -jar swagger-codegen-cli.jar generate\
+	 -i https://ussouthcentral.services.azureml.net:443/workspaces/\
+	fb62b56f29fc4ba4b8a8f900c9b89584/services/26a3afce1767461ab6e73d5a206fbd62/swagger.json\
+	 -l java -o /home/username/sample
+
+* 下に表示されている swagger [API ヘルプ ページ](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)のサンプルにある "host"、"basePath"、"/swagger.json" フィールドの値を組み合わせ、上のコマンド ラインで使用される swagger URL を構築する
+
+**サンプル API ヘルプ ページ**
+
+
+	{
+	  "swagger": "2.0",
+	  "info": {
+	    "version": "2.0",
+	    "title": "Sample 5: Binary Classification with Web Service: Adult Dataset [Predictive Exp.]",
+	    "description": "No description provided for this web service.",
+	    "x-endpoint-name": "default"
+	  },
+	  "host": "ussouthcentral.services.azureml.net:443",
+	  "basePath": "/workspaces/afbd553b9bac4c95be3d040998943a4f/services/26a3afce1767461ab6e73d5a206fbd62",
+	  "schemes": [
+	    "https"
+	  ],
+	  "consumes": [
+	    "application/json"
+	  ],
+	  "produces": [
+	    "application/json"
+	  ],
+	  "paths": {
+	    "/swagger.json": {
+	      "get": {
+	        "summary": "Get swagger API document for the web service",
+	        "operationId": "getSwaggerDocument",
+	        
+
+<!---HONumber=AcomDC_0224_2016-->

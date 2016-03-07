@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="rajeshramabathiran"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/11/2015"
+   ms.date="02/11/2016"
    ms.author="rajram"/>
 
 
 # SMTP コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [SMTP API](../connectors/create-api-smtp.md) をクリックしてください。
+
 SMTP サーバーに接続して、電子メール (添付ファイルを含むメールを含む) を送信します。SMTP コネクタの [電子メールの送信] アクションを使用すると、指定されたメール アドレスにメールを送信できます。
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、ワークフローの一環としてデータの取得と処理のためのコネクタを提供します。この SMTP コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
@@ -54,7 +56,7 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 
 6. **[作成]** を選択します。
 
-> [AZURE.IMPORTANT]SMTP サーバーによっては、このコネクタの動作方法によって問題が発生する場合があります (SendGrid および Gmail)。SendGrid から電子メールを送信する場合は、[GitHub リポジトリ](https://github.com/logicappsio/SendGridAPI)のカスタム API を使用して SendGrid API と直接やり取りすることができます。
+> [AZURE.IMPORTANT] SMTP サーバーによっては、このコネクタの動作方法によって問題が発生する場合があります (SendGrid および Gmail)。SendGrid から電子メールを送信する場合は、[GitHub リポジトリ](https://github.com/logicappsio/SendGridAPI)のカスタム API を使用して SendGrid API と直接やり取りすることができます。
 
 ## ロジック アプリで SMTP コネクタを使用する
 コネクタが作成されたら、ロジック アプリのアクションとして SMTP コネクタを使用できます。これを行うには、次の手順を実行します。
@@ -89,7 +91,7 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -103,4 +105,4 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

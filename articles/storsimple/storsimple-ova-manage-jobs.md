@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="02/22/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用した StorSimple Virtual Array のジョブの表示 (プレビュー)
@@ -60,8 +60,16 @@
  
     ![[ジョブの詳細] ページ](./media/storsimple-ova-manage-jobs/ovajobs2.png)
 
+#### 仮想マシンがハイパーバイザーで一時停止しているときにジョブが失敗する
+
+StorSimple Virtual Array でジョブが進行しているときや、デバイス (ハイパーバイザーにプロビジョニングされた仮想マシン) が 15 分以上一時停止しているときにジョブが失敗します。これは、StorSimple Virtual Array の時間と Microsoft Azure 時間との同期が失われてしまった場合に発生します。次のスクリーンショットは、復元ジョブのエラーの例です。
+
+![復元ジョブの失敗](./media/storsimple-ova-manage-jobs/restorejobfailure.png)
+
+これらのエラーは、ジョブのバックアップ、復元、更新、およびフェールオーバーで発生します。仮想マシンを Hyper-V にプロビジョニングした場合、コンピューターは最終的にハイパーバイザーと同期します。このエラーが発生したら、ジョブの再起動をお試しください。
+
 ## 次のステップ
 
-[ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法](storsimple-ova-web-ui-admin.md)を確認します。
+[ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="harishkragarwal"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/30/2015"
+   ms.date="02/18/2016"
    ms.author="sameerch"/>
 
 
 # SAP コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 オンプレミスの SAP に接続して、RFC の呼び出し、メタデータの取得を実行します。ファイアウォールの内側にあるオンプレミスにインストールされた SAP の操作が必要になる場合があるシナリオがあります。SAP コネクタをフローで使用すると、さまざまなシナリオを実現できます。例をいくつか示します。
 
 1.	Web またはモバイル ユーザーのフロント エンドを介して、SAP に存在するデータの一部を公開する
@@ -60,6 +62,8 @@ SAP コネクタでは、*任意の* SAP エンドポイントに接続するた
 3. 開始されるインストール プロセスに従い、要求に応じてプライマリ接続文字列を入力します。
 4. セットアップ プロセスが完了すると、次のようなダイアログ ボックスが表示されます。![][3]
 
+詳細については、「[オンプレミスの SAP サーバーと統合する](app-service-logic-integrate-with-an-on-premise-sap-server.md)」を参照してください。
+
 もう一度作成した API アプリを参照すると、ハイブリッド接続の状態が "接続中" と表示されます。![][4]
 
 注: セカンダリ接続文字列に切り替える場合は、ハイブリッドのセットアップをやり直して、プライマリ接続文字列の代わりにセカンダリ接続文字列を指定します。
@@ -79,7 +83,7 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -94,4 +98,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

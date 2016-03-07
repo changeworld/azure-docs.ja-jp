@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/21/2016"
 	ms.author="tarcher"/>
 
 # DevTest ラボへの Git アーティファクト リポジトリの追加
+
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to add your private Artifacts Repository in a DevTest Lab](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab) (DevTest Lab でプライベート アーティファクト リポジトリを追加する方法)
 
 ## 概要
 
@@ -115,4 +117,4 @@
     3. アーティファクト リポジトリに保存された**個人用アクセス トークン**を入力します。
     4. **[保存]** をタップします。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

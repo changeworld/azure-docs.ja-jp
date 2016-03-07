@@ -113,7 +113,7 @@ IoT Hub に関するその他の情報:
 [IoT Hub のガイダンス]: iot-hub-guidance.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
+[Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

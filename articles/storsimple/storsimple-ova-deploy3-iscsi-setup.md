@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="02/08/2016"
+   ms.date="02/18/2016"
    ms.author="alkohli" />
 
 
@@ -76,7 +76,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
     ![ネットワークの設定ページ](./media/storsimple-ova-deploy3-iscsi-setup/image6.png)
 
-    デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。
+    デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。ネットワーク インターフェイスは IPv4 だけで構成するか、IPv4 と IPv6 の両方で構成することができます。IPv6 だけで構成することはできません。
 
 5. DNS サーバーは必須です。これは、デバイスがクラウド ストレージのサービス プロバイダーとやり取りしたり、デバイスがファイル サーバーとして構成されている場合にデバイスを名前により解決したりする際に使用されます。**[DNS サーバー]** の**ネットワークの設定**ページで、以下の操作を行います。
 
@@ -310,4 +310,4 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 <!--Reference link-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

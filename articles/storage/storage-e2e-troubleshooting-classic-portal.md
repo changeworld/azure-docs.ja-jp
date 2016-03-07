@@ -3,7 +3,7 @@
 	description="Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル" 
 	services="storage" 
 	documentationCenter="dotnet" 
-	authors="tamram" 
+	authors="robinsh" 
 	manager="carmonm"/>
 
 <tags 
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
-	ms.author="tamram"/>
+	ms.date="02/23/2016" 
+	ms.author="robinsh"/>
 
 # Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング 
 
@@ -58,7 +58,7 @@ Azure Storage の操作では、その通常の機能の一部として 299 を�
 
 以下の例では、Azure Blob Storage への要求に関するいくつかの 400 番台のエラーと、その考えられる原因を示します。これらのエラーは、300 および 500 番台のエラーと同様に、いずれも低い成功率の一因となる可能性があります。
 
-以下の一覧は不完全であるという点に注意してください。通常の Azure Storage エラーおよび各ストレージ サービスに特有のエラーの詳細については、MSDN の「[状態コードとエラー コード](http://msdn.microsoft.com/library/azure/dd179382.aspx)」を参照してください。
+以下の一覧は不完全であるという点に注意してください。通常の Azure Storage エラーおよび各ストレージ サービスに特有のエラーの詳細については、「[状態コードとエラー コード](http://msdn.microsoft.com/library/azure/dd179382.aspx)」を参照してください。
 
 **ステータス コード 404 (Not Found) の例**
 
@@ -88,7 +88,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 ### サーバー側のログとメトリックを構成する
 
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure クラシック ポータル](https://manage.windowsazure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
+まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。[Azure クラシック ポータル](https://manage.windowsazure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。ログとメトリックの構成の詳細については、「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」を参照してください。
 
 **Azure クラシック ポータルの使用**
 
@@ -130,7 +130,7 @@ Azure の PowerShell を使用するには、[Azure PowerShell のインスト�
 
 ### .NET のクライアント側のログを構成する
 
-.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、MSDN の「[.NET ストレージ クライアント ライブラリによるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」を参照してください。
+.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、「[.NET ストレージ クライアント ライブラリによるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」を参照してください。
 
 クライアント側のログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
 
@@ -194,7 +194,7 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-サーバー側のログのダウンロードの詳細については、「[Downloading Storage Logging log data (ストレージ ログのログ データのダウンロード)](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
+サーバー側のログのダウンロードの詳細については、「[ストレージ ログのログ データのダウンロード](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
 
 ## Microsoft Message Analyzer を使用してログ データを分析する
 
@@ -345,9 +345,9 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて |
+| PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
 | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
 | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
 | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
@@ -373,4 +373,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
  
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

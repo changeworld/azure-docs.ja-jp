@@ -19,7 +19,7 @@
 
 # ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
@@ -444,4 +444,4 @@ Visual Studio とリソース グループの使用の概要については、�
 	  }
 	}
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

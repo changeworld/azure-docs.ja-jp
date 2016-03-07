@@ -13,19 +13,18 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/30/2016"
+	ms.date="02/21/2016"
 	ms.author="tarcher"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 
 ## 概要
 
-この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](/app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
+この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、[NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md/#create-a-table "How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)")に関するページを参照してください。
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md#create-a-table)」を参照してください。
 
-
-一部のコード スニペットは、[手動で呼び出される](vs-storage-webjobs-getting-started-blobs.md#manual)関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
+一部のコード スニペットは、手動で呼び出される関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 
 ## エンティティをテーブルに追加する方法
 
@@ -98,7 +97,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ### テーブルから 1 つのエンティティを読み取る方法
 
-1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ **Table** 属性コンストラクターがあります。
+1 つのテーブル エンティティにバインドするときに、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ **Table** 属性コンストラクターがあります。
 
 次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた **Person** エンティティのテーブル行を読み取ります。
 
@@ -124,7 +123,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ## .NET ストレージ API を直接使用して、テーブルを操作する方法
 
-テーブルを操作する際に、**CloudTable** オブジェクトを使用して、より柔軟に **Table** 属性を使用することもできます。
+テーブルを操作するときに、**CloudTable** オブジェクトを使用して、より柔軟に **Table** 属性を使用することもできます。
 
 次のコード サンプルは、**CloudTable** オブジェクトを使用して、1 つのエンティティを *Ingress* テーブルに追加します。
 
@@ -142,16 +141,16 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 		    tableBinding.Execute(insertOperation);
 		}
 
-**CloudTable** オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](./storage-dotnet-how-to-use-tables.md)」をご覧ください。
+**CloudTable** オブジェクトの使用方法の詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」を参照してください。
 
 ## キューのハウツー記事で紹介されている関連トピック
 
-キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない WebJobs SDK のシナリオについては、「[WebJobs SDK を使用して Azure キュー ストレージを操作する方法](vs-storage-webjobs-getting-started-queues.md)」をご覧ください。
+キュー メッセージによってトリガーされるテーブルの処理方法、テーブル処理に固有ではない Web ジョブ SDK のシナリオの詳細については、「[Azure Queue Storage と Visual Studio 接続済みサービス (Web ジョブ プロジェクト) を使用する](vs-storage-webjobs-getting-started-queues.md)」を参照してください。
 
 
 
 ## 次のステップ
 
-この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブおよび Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブのドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

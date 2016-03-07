@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="02/18/2016"
 	ms.author="tarcher"/>
 
 # ラボのポリシーの定義
+
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to author custom artifacts](/documentation/videos/how-to-set-vm-policies-in-a-devtest-lab) (カスタム アーティファクトを作成する方法)
 
 ## 概要
 
@@ -100,4 +102,4 @@ VM の最大数のポリシーでは、現在のラボで作成できる VM の�
 
 1. **[保存]** をタップします。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -261,7 +261,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 詳細については、「[StorSimple の高可用性の要件](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)」の「**ネットワーク インターフェイス**」を参照してください。
 
->[AZURE.NOTE]10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用している場合は、提供されている QSFP-SFP+ アダプターを使用します。詳細については、「[StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」を参照してください。
+>[AZURE.NOTE] 10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用している場合は、提供されている QSFP-SFP+ アダプターを使用します。詳細については、「[StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」を参照してください。
     
 
    
@@ -283,7 +283,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 6. コンソールで Enter キーを押して、接続が機能していることを確認します。シリアル コンソール メニューが表示されます。
 
->[AZURE.NOTE]**ライトアウト管理**: デバイスがリモートのデータセンターまたはアクセスが制限されたコンピューター ルームに設置されている場合は、両方のコントローラーへのシリアル接続が常にシリアル コンソール スイッチまたは同様の機器に接続されていることを確認してください。これにより、帯域外リモート制御が可能になり、ネットワーク切断や予期しない障害が発生した場合に操作がサポートされます。
+>[AZURE.NOTE] **ライトアウト管理**: デバイスがリモートのデータセンターまたはアクセスが制限されたコンピューター ルームに設置されている場合は、両方のコントローラーへのシリアル接続が常にシリアル コンソール スイッチまたは同様の機器に接続されていることを確認してください。これにより、帯域外リモート制御が可能になり、ネットワーク切断や予期しない障害が発生した場合に操作がサポートされます。
 
 これでデバイスに電源、ネットワーク アクセス、およびシリアル接続用のケーブルが接続されました。次のステップでは、ソフトウェアを構成してデバイスをデプロイします。
 
@@ -291,4 +291,4 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 [オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)方法を説明します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

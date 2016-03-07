@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="12/17/2015"
+   ms.date="01/21/2016"
    ms.author="guayan"/>
 
 # Microsoft 管理の API または IT 管理の API を登録する
@@ -75,7 +75,7 @@ API | 説明 | 手順のリンク
 
 
 #### IT 管理の API
-> [AZURE.NOTE]Microsoft 管理の API は**すべて** IT 管理にもできることを忘れないでください。次の API は IT のみで管理され、Microsoft 管理にすることはできません。
+> [AZURE.NOTE] Microsoft 管理の API は**すべて** IT 管理にもできることを忘れないでください。次の API は IT のみで管理され、Microsoft 管理にすることはできません。
 
 API | 説明 | 手順のリンク
 --- | --- | ---
@@ -107,21 +107,22 @@ API | 説明 | 手順のリンク
 
 ## Microsoft 管理の API または IT 管理の API を登録する
 
-1. [Azure ポータル](https://portal.azure.com/)で、**[PowerApps]** を選択して、**[API の管理]**: を選択します。  
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウント (*ユーザー名*@*YourCompany*.com) を使用してサインインします。会社のサブスクリプションに自動的にサインインされます。
+2. **[参照]** を選択し、**[PowerApps]** を選択して、**[API の管理]** を選択します。 
 ![][17]
-2. [API の管理] で、**[追加]**: を選択します。  
+3. [API の管理] で、**[追加]** を選択します。 
 ![][18]  
-3. **[API の追加]** に、API のプロパティを入力します。  
+4. **[API の追加]** で、API のプロパティを入力します。  
 
 	- **[名前]** に、API の名前を入力します。入力した名前が、API のランタイム URL に含まれていることを確認してください。名前は意味があり、組織内で一意のものにしてください。
 	- **[ソース]** で、**[利用可能な API から]**: を選択します。  
 	![][19]
-4. **[API]** を選択して、登録する API を選択します。  
+5. **[API]** を選択して、登録する API を選択します。
 ![][20]
-5. 特定の API を選択し、構成可能なプロパティをすべて追加します。
-6. **[追加]** を選択して、手順を完了します。
+6. 特定の API を選択し、構成可能なプロパティをすべて追加します。
+7. **[追加]** を選択して、手順を完了します。
 
-> [AZURE.TIP]API を登録すると、その API が App Service Environment に登録されます。API が App Service Environment に登録されると、同じ App Service Environment 内の他のアプリでも使用することができます。
+> [AZURE.TIP] API を登録すると、その API が App Service Environment に登録されます。API が App Service Environment に登録されると、同じ App Service Environment 内の他のアプリでも使用することができます。
 
 
 ## まとめと次のステップ
@@ -155,4 +156,4 @@ API | 説明 | 手順のリンク
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

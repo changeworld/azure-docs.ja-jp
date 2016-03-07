@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="storsimple"
@@ -21,7 +21,7 @@
 
 この手順は StorSimple 8000 シリーズのデバイスのすべてのモデルに適用できます。
 
->[AZURE.NOTE]この手順は、StorSimple 仮想デバイスでは使用できません。詳細については、仮想デバイスのホスト サーバーを構成する方法を参照してください。
+>[AZURE.NOTE] この手順は、StorSimple 仮想デバイスでは使用できません。詳細については、仮想デバイスのホスト サーバーを構成する方法を参照してください。
 
 ## マルチパスについて 
 
@@ -207,7 +207,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 ホストとデータのインターフェイスがルーティング可能な場合は、前の図の構成によって、デバイスとホスト間に 4 つの独立したパスが生成されます。
 
->[AZURE.IMPORTANT]
+>[AZURE.IMPORTANT] 
 >
 >- マルチパスでは、1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 つのネットワーク インターフェイスを使用しているときは、どちらも同じ種類である必要があります。
 >- StorSimple デバイス上で、DATA0、DATA1、DATA4、および DATA5 が 1 GbE インターフェイスで、DATA2 および DATA3 が 10 GbE ネットワーク インターフェイスです。
@@ -285,7 +285,8 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 
 
-> [AZURE.NOTE]`path_grouping_policy` の最も一般的な値は次のとおりです。
+> [AZURE.NOTE] 
+`path_grouping_policy` の最も一般的な値は次のとおりです。
 	
 > - failover = 優先順位グループごとに 1 つのパス
 > - multibus = 1 つの優先順位グループにすべての有効なパス
@@ -467,21 +468,21 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 |---|---|---|
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
 ||`service iscsid stop`|iSCSI サービスを停止する|
-||`service iscsid restart`|iSCSI サービスを再起動する|
-||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する|
+||`service iscsid restart`|iSCSI サービスを再開する|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定されたアドレスで使用できるターゲットを検出する|
 ||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
 ||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
-||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーター名を出力する|
-||`iscsiadm –m session –s <sessionid> -P 3`|ホスト上で検出された iSCSI セッションとボリュームの状態を確認する|
-||`iscsi –m session`|ホストと StorSimple デバイス間で確立されたすべての iSCSI セッションを表示する|
+||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーターの名前を出力する|
+||`iscsiadm –m session –s <sessionid> -P 3`|ホストで検出された iSCSI セッションとボリュームの状態を確認する|
+||`iscsi –m session`|ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する|
 | | | |
-|**マルチパス**|`service multipathd start`|マルチパス デーモンを起動する|
+||**マルチパス**|`service multipathd start`|マルチパス デーモンを開始する|
 ||`service multipathd stop`|マルチパス デーモンを停止する|
-||`service multipathd restart`|マルチパス デーモンを再起動する|
-||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを起動できるようにする|
-||`multipathd –k`|トラブルシューティング用に対話型コンソールを起動する|
+||`service multipathd restart`|マルチパス デーモンを再開する|
+||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを開始するようにする|
+||`multipathd –k`|トラブルシューティングのために対話型コンソールを起動する|
 ||`multipath –l`|マルチパス接続とデバイスを一覧表示する|
-||`mpathconf --enable`|`/etc/mulitpath.conf` でサンプル mulitpath.conf ファイルを作成する|
+||`mpathconf --enable`|`/etc/mulitpath.conf` にサンプルの mulitpath.conf ファイルを作成する|
 ||||
 
 ## 次のステップ
@@ -491,4 +492,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="adinah"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -34,7 +34,7 @@ StorSimple の更新プログラムの機能を使用すると、StorSimple デ�
 
 通常の更新プログラムは中断を伴わないため、デバイスが通常モードのときにインストールできます。通常の更新プログラムは、Microsoft Update Web サイトを通じて各デバイス コントローラーに適用されます。
 
-> [AZURE.IMPORTANT]更新プロセス中にコントローラーのフェールオーバーが発生する場合があります。ただし、このフェールオーバーはシステムの可用性や操作に影響しません。
+> [AZURE.IMPORTANT] 更新プロセス中にコントローラーのフェールオーバーが発生する場合があります。ただし、このフェールオーバーはシステムの可用性や操作に影響しません。
 
 - Azure クラシック ポータルで通常の更新プログラムをインストールする方法の詳細については、「[Azure クラシック ポータルを使用した通常の更新プログラムのインストール](#install-regular-updates-via-the-azure-classic-portal)」を参照してください。
 
@@ -46,7 +46,7 @@ StorSimple の更新プログラムの機能を使用すると、StorSimple デ�
 
 メンテナンス モードの更新プログラムをインストールする方法の詳細については、「[StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple)」を参照してください。
 
-> [AZURE.IMPORTANT]メンテナンス モードの更新プログラムは、各コントローラーに個別に適用する必要があります。
+> [AZURE.IMPORTANT] メンテナンス モードの更新プログラムは、各コントローラーに個別に適用する必要があります。
 
 ## Azure クラシック ポータルを使用した通常の更新プログラムのインストール
 
@@ -58,7 +58,7 @@ Azure クラシック ポータルを使用して、StorSimple デバイスに�
 
 また、StorSimple 用 Windows PowerShell を使用して、通常 (標準モード) の更新プログラムを適用できます。
 
-> [AZURE.IMPORTANT]StorSimple 用 Windows PowerShell を使用して定期的に更新をインストールできますが、Azure クラシック ポータルから定期的に更新プログラムをインストールすることをお勧めします。Update 1 以降では、ポータルから更新プログラムをインストールする前に事前チェックが実行されるようになります。こうした事前チェックにより、エラーを回避してより滑らかなエクスペリエンスを実現します。
+> [AZURE.IMPORTANT] StorSimple 用 Windows PowerShell を使用して定期的に更新をインストールできますが、Azure クラシック ポータルから定期的に更新プログラムをインストールすることをお勧めします。Update 1 以降では、ポータルから更新プログラムをインストールする前に事前チェックが実行されるようになります。こうした事前チェックにより、エラーを回避してより滑らかなエクスペリエンスを実現します。
 
 [AZURE.INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
@@ -68,7 +68,7 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 
 メンテナンス モードの更新プログラムを適用する必要がある場合は、インストールが必要な更新プログラムがあることを示すアラートを Azure クラシック ポータルから受信します。このアラートには、StorSimple 用 Windows PowerShell を使用して更新プログラムをインストールする手順が含まれます。デバイスを更新した後、同じ手順を使用してデバイスを通常モードに変更します。手順については、「[手順 4: メンテナンス モードを終了するには](#step4)」を参照してください。
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT] 
 > 
 > - メンテナンス モードに入る前に、Azure クラシック ポータルの **[メンテナンス]** ページで **[ハードウェアの状態]** を確認して、両方のデバイス コントローラーが正常な状態であることを確かめます。コントローラーが正常な状態でない場合は次の手順を Microsoft サポートにお問い合わせください。詳細については、[Microsoft サポートに問い合わせる] を参照してください。 
 > - メンテナンス モードを使用するとき、1 つのコントローラーに最初に更新プログラムを適用してから、その他のコントローラーに適用する必要があります。
@@ -119,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 - [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,7 +1,9 @@
-A Site-to-Site connection and an ExpressRoute connection can be configured to coexist. See the table below for more information. We update this table as new articles, new deployment models and tools become available for this configuration. When an article is available, we link directly to it from the table.
+サイト間接続と ExpressRoute 接続は、共存するように構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイ モデル、ツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
 
-| **Deployment Models and Tools** | **Classic Deployment**  | **Resource Manager Deployment**|
+| **デプロイメント モデルとツール** | **クラシック デプロイメント** | **リソース マネージャーのデプロイメント**|
 |-----------------------------|-------------|---------------------|
-| **Classic Portal**          | Not Supported          | Not Supported                  |
-| **Azure Portal**            | Not Supported         | Not Supported                  |
-| **PowerShell** | [Article](../articles/expressroute/expressroute-howto-coexist-classic.md) | Not Supported |
+| **クラシック ポータル** | サポートされていません | サポートされていません |
+| **Azure ポータル** | サポートされていません | サポートされていません |
+| **PowerShell** | [記事](../articles/expressroute/expressroute-howto-coexist-classic.md) | サポートされていません |
+
+<!---HONumber=AcomDC_0224_2016-->

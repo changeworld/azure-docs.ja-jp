@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps での OneDrive コネクタの使用 | Microsoft Azure App Service"
 	description="OneDrive コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="rajeshramabathiran"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="app-service\logic"
 	documentationCenter=""/>
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/11/2015"
+	ms.date="02/11/2016"
 	ms.author="rajram"/>
 
 # OneDrive コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [OneDrive API](../connectors/create-api-onedrive.md) をクリックしてください。
+
 OneDrive に接続して、ファイルのアップロード、ダウンロード、および削除を実行できます。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この OneDrive コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## Logic App 用の OneDrive コネクタを作成する ##
@@ -78,7 +80,7 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -97,4 +99,4 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
 [OneDrive API の定義]: https://msdn.microsoft.com/library/dn974227.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

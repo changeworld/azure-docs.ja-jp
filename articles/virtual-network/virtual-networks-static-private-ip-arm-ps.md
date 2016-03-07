@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="PowerShell を使用して ARM モードで静的プライベート IP を設定する方法 | Microsoft Azure"
-   description="静的 IP (DIP) とそれらを PowerShell を使用して ARM モードで管理する方法を理解します。"
+   pageTitle="PowerShell を利用し、Azure リソース マネージャーで静的プライベート IP アドレスを設定する方法 | Microsoft Azure"
+   description="静的プライベート IP アドレスとそれを PowerShell を利用して Azure リソース マネージャーで管理する方法について"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/20/2015"
+   ms.date="02/23/2016"
    ms.author="telmos" />
 
-# PowerShell での静的プライベート IP アドレスの設定方法
+# PowerShell を利用し、リソース マネージャーで静的プライベート IP アドレスを設定する方法
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
@@ -192,4 +192,4 @@
 - [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service、Cloud Services、および Virtual Machines の比較"
-	description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure App Service、Cloud Services、Virtual Machines) を使用するかについて説明します。"
+	pageTitle="Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較"
+	description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure App Service、Cloud Services、Virtual Machines、Service Fabric) を使用するかについて説明します。"
 	services="app-service\web, virtual-machines, cloud-services"
 	documentationCenter=""
 	authors="tdykstra"
@@ -12,15 +12,15 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="11/19/2015"
+	ms.topic="article"
+	ms.date="02/22/2016"
 	ms.author="tdykstra"/>
 
-# Azure App Service、Cloud Services、および Virtual Machines の比較
+# Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較
 
 ## 概要
 
-Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][]、[Cloud Services][]、[Virtual Machines][])。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
+Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][]、[Cloud Services][]、[Virtual Machines][]、[Service Fabric][])。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
 
 Azure App Service は、ほとんどの Web アプリに適しています。デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。既にあるサイトは、[オンライン移行ツール](https://www.migratetoazure.net/)を使用して簡単に Azure App Service へ移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。[Web ジョブ][]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
 
@@ -79,7 +79,7 @@ Azure App Service は、過去の IIS6 アプリケーションの移行に伴�
 
 ### <a id="smallbusiness"></a>スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。
 
-このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure App Service が最適なソリューションです。無料の Web アプリにはいずれも、Azure によって提供されるドメインが付属しています (*your\_company*.azurewebsites.net)。また、統合デプロイ/管理ツールや、導入作業を支援するアプリケーション ギャラリーも、このプラットフォームに含まれています。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。Azure App Service を使用すると、次のことができます。
+このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure App Service が最適なソリューションです。無料の Web アプリにはいずれも、Azure によって提供されるドメインが付属しています (*your\_company*.azurewebsites.net)。また、統合デプロイメント/管理ツールや、導入作業を支援するアプリケーション ギャラリーも、このプラットフォームに含まれています。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。Azure App Service を使用すると、次のことができます。
 
 - Free レベルから開始し、必要に応じてスケールアップできます。
 - アプリケーション ギャラリーを使用して、WordPress などの一般的な Web アプリケーションをすばやくセットアップできます。
@@ -138,36 +138,36 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 ##<a name="features"></a>機能の比較
 
-次の表では、最善の選択ができるように、App Service、Cloud Services、および Virtual Machines の機能を比較しています。それぞれのホスティング方法に関する最新の SLA 情報については、[Azure サービス レベル アグリーメント](/support/legal/sla/)を参照してください。
+次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。それぞれのホスティング方法に関する最新の SLA 情報については、[Azure サービス レベル アグリーメント](/support/legal/sla/)を参照してください。
 
-機能|App Service (Web Apps)|Cloud Services (Web ロール)|Virtual Machines|メモ
----|---|---|---|---
-ほぼ即時のデプロイ|○|||アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。
-再デプロイなしでの大型マシンへのスケールアップ|○|||
-Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。|○|||
-複数のデプロイ環境 (運用環境とステージング環境)|○|○||
-OS の自動更新の管理|○|○||
-シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動)|○|○||
-GIT、FTP によるコードのデプロイ|○||○|
-Web デプロイによるコードのデプロイ|○||○|Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。
-WebMatrix サポート|○||○|
-Service Bus、Storage、SQL Database のようなサービスへのアクセス|○|○|○|
-多層アーキテクチャの Web 層または Web サービス層のホスト|○|○|○|
-多層アーキテクチャの中間層のホスト|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。
-統合されたサービスとしての MySQL のサポート|○|○|○|Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、Azure ポータル ワークフローの一部として統合することはできません。
-ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート|○|○|○|
-再デプロイなしでの複数インスタンスへのスケールアウト|○|○|○|Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
-SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate.md)に関するページを参照してください。
-Visual Studio 統合|○|○|○|
-リモート デバッグ|○|○|○|
-TFS によるコードのデプロイ|○|○|○|
-[Azure Virtual Network](/services/virtual-network/) によるネットワークの分離|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](/blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
-[Azure Traffic Manager](/services/traffic-manager/) のサポート|○|○|○|
-統合エンドポイント監視|○|○|○|
-サーバーへのリモート デスクトップ アクセス||○|○|
-カスタム MSI のインストール||○|○|
-スタートアップ タスクの定義と実行||○|○|
-ETW イベントのリッスン||○|○|
+機能|App Service (Web Apps)|Cloud Services (Web ロール)|Virtual Machines|Service Fabric|メモ
+---|---|---|---|---|---
+ほぼ即時のデプロイ|○|||○|アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。
+再デプロイなしでの大型マシンへのスケールアップ|○|||○|
+Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。|○|||○|
+複数のデプロイ環境 (運用環境とステージング環境)|○|○||○|Service Fabric を使用すると、アプリ用の複数の環境を所有したり、アプリの複数のバージョンを並行してデプロイしたりできます。
+OS の自動更新の管理|○|○|||OS の自動更新が今後の Service Fabric リリースで予定されています。
+シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動)|○|○|||
+GIT、FTP によるコードのデプロイ|○||○||
+Web デプロイによるコードのデプロイ|○||○||Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。
+WebMatrix サポート|○||○||
+Service Bus、Storage、SQL Database のようなサービスへのアクセス|○|○|○|○|
+多層アーキテクチャの Web 層または Web サービス層のホスト|○|○|○|○|
+多層アーキテクチャの中間層のホスト|○|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。
+統合されたサービスとしての MySQL のサポート|○|○|○||Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、Azure ポータル ワークフローの一部として統合することはできません。
+ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート|○|○|○|○|Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてデプロイできます。
+再デプロイなしでの複数インスタンスへのスケールアウト|○|○|○|○|Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
+SSL のサポート|○|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate.md)に関するページを参照してください。
+Visual Studio 統合|○|○|○|○|
+リモート デバッグ|○|○|○||
+TFS によるコードのデプロイ|○|○|○|○|
+[Azure Virtual Network](/services/virtual-network/) によるネットワークの分離|○|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](/blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
+[Azure Traffic Manager](/services/traffic-manager/) のサポート|○|○|○|○|
+統合エンドポイント監視|○|○|○||
+サーバーへのリモート デスクトップ アクセス||○|○|○|
+カスタム MSI のインストール||○|○|○|Service Fabric を使用すると、任意のゲスト実行可能ファイルを 1 つの[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてホストしたり、任意のアプリを VM にインストールしたりできます。
+スタートアップ タスクの定義と実行||○|○|○|
+ETW イベントのリッスン||○|○|○|
 
 
 > [AZURE.NOTE]
@@ -183,11 +183,13 @@ ETW イベントのリッスン||○|○|
 * [Azure App Service](/documentation/services/app-service/)
 * [Azure Cloud Services](/documentation/services/cloud-services/)
 * [Azure Virtual Machines](/documentation/services/virtual-machines/)
+* [Service Fabric](/documentation/services/service-fabric)
 
   [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
   [Azure App Service]: /services/app-service/
   [Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
   [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
+  [Service Fabric]: /services/service-fabric
   [ClearDB]: http://www.cleardb.com/
   [Web ジョブ]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
   [Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
@@ -200,6 +202,5 @@ ETW イベントのリッスン||○|○|
   [servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

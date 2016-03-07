@@ -1,12 +1,14 @@
-The table below lists the requirements for policy-based and route-based VPN gateways. This table applies to both the Resource Manager and classic deployment models. For the classic model, Policy-based VPN gateways are the same as Static gateways, and Route-based gateways are the same as Dynamic gateways.
+次の表は、ポリシー ベースとルート ベースの VPN ゲートウェイの要件を示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。クラシック モデルでは、ポリシー ベースの VPN ゲートウェイは静的ゲートウェイと同じです。また、ルート ベースのゲートウェイは動的ゲートウェイと同じです。
 
 
-|   | **Policy-based Basic VPN Gateway** | **Route-based Basic VPN Gateway** | **Route-based Standard VPN Gateway**   | **Route-based High Performance VPN Gateway** |
+| | **ポリシー ベースの Basic VPN Gateway** | **ルート ベースの Basic VPN Gateway** | **ルート ベースの Standard VPN Gateway** | **ルート ベースの高性能 VPN Gateway** |
 |---|---------------------------------------|---------------------------------------|----------------------------|----------------------------------|
-|    **Site-to-Site connectivity   (S2S)**  | Policy-based VPN configuration        | Route-based VPN configuration  | Route-based VPN configuration     | Route-based VPN configuration    |
-| **Point-to-Site connectivity (P2S**)      | Not supported   | Supported (Can coexist with S2S)  | Supported (Can coexist with S2S)  | Supported (Can coexist with S2S) |
-| **Authentication method**                 |    Pre-shared key  | Pre-shared key for S2S connectivity, Certificates for P2S connectivity | Pre-shared key for S2S connectivity, Certificates for P2S connectivity | Pre-shared key for S2S connectivity, Certificates for P2S connectivity |
-| **Maximum number of S2S connections**       | 1                              | 10                                                                    | 10                                | 30                               |
-| **Maximum number of P2S connections**       | Not supported                  | 128                                                                   | 128                               | 128                              |
-|**Active routing support (BGP)**           | Not supported                  | Not supported                                                         | Not supported                     | Not supported                    |
+| **サイト間接続 (S2S)** | ポリシー ベースの VPN の構成 | ルート ベースの VPN の構成 | ルート ベースの VPN の構成 | ルート ベースの VPN の構成 |
+| **ポイント対サイト接続 (P2S**) | サポートされていません | サポートされています (S2S と共存可能) | サポートされています (S2S と共存可能) | サポートされています (S2S と共存可能) |
+| **認証方法** | 事前共有キー | S2S 接続用の事前共有キー、P2S 接続用の証明書 | S2S 接続用の事前共有キー、P2S 接続用の証明書 | S2S 接続用の事前共有キー、P2S 接続用の証明書 |
+| **S2S 接続の最大数** | 1 | 10 | 10 | 30 |
+| **P2S 接続の最大数** | サポートされていません | 128 | 128 | 128 |
+|**アクティブ ルーティングのサポート (BGP)** | サポートされていません | サポートされていません | サポートされていません | サポートされていません |
  
+
+<!---HONumber=AcomDC_0224_2016-->

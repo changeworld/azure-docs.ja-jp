@@ -12,20 +12,20 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
-	ms.author="bwren" />
+	ms.date="02/18/2016"
+	ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook のテスト
 Runbook のテスト時には[ドラフト バージョン](automation-creating-importing-runbook.md#publishing-a-runbook)が実行され、そのバージョンで行われるすべてのアクションが完了します。ジョブ履歴は作成されませんが、[テスト出力] ウィンドウに[出力](automation-runbook-output-and-messages.md#output-stream)および[警告とエラー](automation-runbook-output-and-messages.md#message-streams) ストリームが表示されます。[詳細ストリーム](automation-runbook-output-and-messages.md#message-streams)のメッセージは、[$VerbosePreference 変数](automation-runbook-output-and-messages.md#preference-variables)が [Continue] に設定されている場合のみ [出力] ウィンドウに表示されます。
 
 ドラフト バージョンの実行中でも、Runbook ではワークフローを通常どおり実行して、環境内のリソースに対するすべてのアクションを行います。このため、Runbook をテストするのは非運用環境のリソースのみにしてください。
 
-[Runbook の種類](automation-runbook-types.md)ごとのテスト手順は同じであり、Azure プレビュー ポータルのテキスト エディターでのテストとグラフィカル エディターでのテストに違いはありません。
+[Runbook の種類](automation-runbook-types.md)ごとのテスト手順は同じであり、Azure ポータルのテキスト エディターでのテストとグラフィカル エディターでのテストに違いはありません。
 
 
-## Azure プレビュー ポータルで Runbook をテストするには
+## Azure ポータルで Runbook をテストするには
 
-Azure プレビュー ポータルではすべての[種類の Runbook ](automation-runbook-types.md)を使用することができます。
+Azure ポータルではすべての[種類の Runbook ](automation-runbook-types.md)を使用することができます。
 
 1. [テキスト エディター](automation-editing-a-runbook#Portal)または[グラフィカル エディター](automation-graphical-authoring-intro.md)のどちらかで、ドラフト バージョンの Runbook を開きます。
 2. **[テスト]** ボタンをクリックして [テスト] ブレードを開きます。
@@ -55,4 +55,4 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

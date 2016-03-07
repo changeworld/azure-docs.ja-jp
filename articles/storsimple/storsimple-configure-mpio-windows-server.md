@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -23,7 +23,7 @@ StorSimple ソリューションの可用性を高めるためには、StorSimpl
 
 MPIO はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。このトピックでは、Windows Server 2012 R2 が実行され、StorSimple 物理デバイスに接続されているホストに MPIO 機能をインストールし、その機能を使用するための手順を説明します。
 
->[AZURE.NOTE]**StorSimple 仮想デバイスでは、MPIO がサポートされていません。**
+>[AZURE.NOTE] **StorSimple 仮想デバイスでは、MPIO がサポートされていません。**
 
 次の手順に従って、StorSimple デバイスに MPIO を構成します。
 
@@ -85,7 +85,7 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 	- StorSimple デバイスの DATA ポートの IP アドレスを入力します (たとえば、「DATA 0」と入力します)。
 	- **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-	>[AZURE.IMPORTANT]**iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
+	>[AZURE.IMPORTANT] **iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
 
 4. デバイスの 2 番目のネットワーク インターフェイス (DATA 1 など) に対して手順 2. ～ 3. を繰り返します。これらのインターフェイスは iSCSI に対応している必要があることに注意してください。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)に関するセクションを参照してください。
 5. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、**[ターゲット]** タブを選択します。**[検出されたターゲット]** に StorSimple デバイスのターゲット IQN が表示されます。![iSCSI イニシエーターのプロパティ、[ターゲット] タブ](./media/storsimple-configure-mpio-windows-server/IC741007.png)
@@ -122,13 +122,13 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 	- パス確認を有効化する = オフ
 
 
->[AZURE.NOTE]**既定のパラメーターは変更しないでください。**
+>[AZURE.NOTE] **既定のパラメーターは変更しないでください。**
 
 ## 手順 4. 高可用性と負荷分散のために MPIO を構成する
 
 高可用性と負荷分散を基にしたマルチパスでは、複数のセッションを手動で追加し、利用可能なさまざまなパスを宣言する必要があります。たとえば、ホストの 2 つのインターフェイスが SAN に接続されていて、デバイスの 2 つのインターフェイスが SAN に接続されている場合は、4 つのセッションに適切なパスの順列を構成する必要があります (各 DATA インターフェイスおよびホスト インターフェイスが異なる IP サブネット上にあってルーティング可能ではない場合は、必要なセッションは 2 つだけです)。
 
->[AZURE.IMPORTANT]**1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 種類のネットワーク インターフェイスを使用する場合は、どちらも同じ種類である必要があります。**
+>[AZURE.IMPORTANT] **1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 種類のネットワーク インターフェイスを使用する場合は、どちらも同じ種類である必要があります。**
 
 次の手順では、2 つのネットワーク インターフェイスを持つ StorSimple デバイスが 2 つのネットワーク インターフェイスを持つホストに接続されている場合に、セッションを追加する方法について説明します。
 
@@ -173,4 +173,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

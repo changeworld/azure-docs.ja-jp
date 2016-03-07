@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/30/2015"
+   ms.date="02/11/2016"
    ms.author="sameerch"/>
 
 
 # Microsoft SQL コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [SQL Azure API](../connectors/create-api-sqlazure.md) をクリックしてください。
+
 オンプレミスの SQL Server または Azure SQL Database に接続し、情報またはデータの作成と変更を行います。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。SQL コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
 - Web またはモバイル アプリケーションを使用して、SQL データベースに存在するデータの一部を公開する。
@@ -56,8 +58,8 @@ SQL コネクタでは、次のトリガーとアクションを使用できま�
 オンプレミス | あり | 既定値は False です。Azure SQL データベースに接続する場合は False を入力します。オンプレミスの SQL Server に接続する場合は True を入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 パートナー サーバー名 | いいえ | プライマリ サーバーを使用できない場合は、代替サーバーまたはバックアップ サーバーとして、パートナー サーバーを入力できます。
-テーブル | いいえ | コネクタによって更新可能なデータベース テーブルの一覧を示します。たとえば、「*OrdersTable*」や「*EmployeeTable*」と入力します。テーブルが入力されない場合はすべてのテーブルを使用できます。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
-ストアド プロシージャ | いいえ | コネクタによって呼び出すことができる、既存のストアド プロシージャを入力します。たとえば、「*sp\_IsEmployeeEligible*」や「*sp\_CalculateOrderDiscount*」と入力します。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
+テーブル | いいえ | コネクタによって更新可能なデータベース テーブルの一覧を示します。たとえば、「 *OrdersTable* 」や「 *EmployeeTable* 」と入力します。テーブルが入力されない場合はすべてのテーブルを使用できます。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
+ストアド プロシージャ | いいえ | コネクタによって呼び出すことができる、既存のストアド プロシージャを入力します。たとえば、「 *sp\_IsEmployeeEligible* 」や「 *sp\_CalculateOrderDiscount* 」と入力します。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
 Data Available Query (データの存在確認クエリ) | トリガのサポート | SQL Server データベース テーブルのポーリングに使用できるデータが存在するかどうかを調べる SQL ステートメント。これは、存在するデータの行数を表す数値を返します。例: SELECT COUNT(*) from table\_name。
 データ ポーリング クエリ | トリガーのサポート | SQL Server データベース テーブルをポーリングするための SQL ステートメント。任意の数の SQL ステートメントをセミコロンで区切って指定できます。このステートメントはトランザクション的に実行され、データがロジック アプリで安全に保存される場合にのみコミットされます。例: SELECT * FROM table\_name; DELETE FROM table\_name。<br/><br/>**注**<br/>同じデータが再度ポーリングされないように、選択したデータを削除、移動、または更新して無限ループを回避するポーリング ステートメントを指定する必要があります。
 
@@ -161,4 +163,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

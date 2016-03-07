@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/09/2016"
+   ms.date="02/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して StorSimple アラートを表示および管理する
@@ -254,4 +254,4 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 [StorSimple エラーと運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)の詳細について確認します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

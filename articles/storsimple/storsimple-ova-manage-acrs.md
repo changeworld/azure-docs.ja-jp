@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/12/2016"
+   ms.date="02/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して、StorSimple Virtual Array のアクセス制御レコードを管理する (プレビュー)
@@ -114,4 +114,4 @@ ACR を削除するには、Azure クラシック ポータルの **[構成]** �
 
 - [ボリュームの追加と ACR の構成](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

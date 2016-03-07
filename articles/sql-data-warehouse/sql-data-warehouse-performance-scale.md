@@ -58,6 +58,8 @@ SQL Data Warehouse 独自の機能として、オンデマンドでコンピュ�
 
 この一時停止アクションにより、コンピューティング リソースはデータ センターで使用可能なリソースのプールに戻り、再開アクションにより、設定した DWU に必要なコンピューティング リソースが取得され、Data Warehouse インスタンスにそれらが割り当てられます。
 
+> [AZURE.NOTE] ストレージはコンピューティングとは切り離されているため、一時停止によってストレージが影響を受けることはありません。
+
 コンピューティング機能の一時停止と再開は、[Azure クラシック ポータル][] で REST API または Powershell を介して行うことができます。一時停止すると実行中のアクティビティまたはキューに入れられたアクティビティはすべてキャンセルされ、戻ったときにコンピューティング リソースを数秒で再開できます。
 
 次のコードは、PowerShell を使用して一時停止を実行する方法を示しています。
@@ -73,9 +75,9 @@ PowerShell を使用すれば、サービスの再開も非常に簡単に行う
 Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
-PowerShell の使用の詳細については、「[Introduction to PowerShell cmdlets (PowerShell コマンドレットの概要)][]」記事を参照してください。
+PowerShell の使用方法の詳細については、「[SQL Data Warehouse での PowerShell コマンドレットと REST API の使用][]」を参照してください。
 
-> [Azure.Note]ストレージはコンピューティングとは切り離されているため、一時停止によってストレージが影響を受けることはありません。
+
 
 ## 次のステップ
 パフォーマンスの概要については、[パフォーマンスの概要][]に関するページを参照してください。
@@ -84,7 +86,7 @@ PowerShell の使用の詳細については、「[Introduction to PowerShell cm
 
 <!--Article references-->
 [パフォーマンスの概要]: sql-data-warehouse-overview-performance.md
-[Introduction to PowerShell cmdlets (PowerShell コマンドレットの概要)]: sql-data-warehouse-get-started-powershell-cmdlets.md
+[SQL Data Warehouse での PowerShell コマンドレットと REST API の使用]: sql-data-warehouse-reference-powershell-cmdlets.md
 
 <!--MSDN references-->
 
@@ -93,4 +95,4 @@ PowerShell の使用の詳細については、「[Introduction to PowerShell cm
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

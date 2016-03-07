@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
+   pageTitle="Azure Search Service REST API バージョン 2015-02-28-Preview) | Microsoft Azure | Azure Search Preview API"
    description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
    services="search"
    documentationCenter="na"
@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="02/04/2016"
+   ms.date="02/16/2016"
    ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
 この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
-- Azure Search でクエリに [Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)を使用できるようになりました。Lucene クエリ パーサーを使用するには、Search 操作で `queryType` を指定します。`moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
+- [Search Documents](#SearchDocs) API の `moreLikeThis` クエリ パラメーター。特定のドキュメントに関連する別のドキュメントを検索します。
 
-`2015-02-28-Preview` のいくつかの追加機能は、別のドキュメントに記載されています。学習した内容は次のとおりです。
+`2015-02-28-Preview` REST API の一部にに関する情報が個別に文書化されています。学習した内容は次のとおりです。
 
 - [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
 - [インデクサー](search-api-indexers-2015-02-28-preview.md)
@@ -619,7 +619,7 @@ Azure Search は、さまざまな言語をサポートしています。各言�
 
 既定のスコアリング プロファイルはバックグラウンドで実行され、検索セットの各項目の検索スコアがコンピューティングされます。内部的な名前のないスコアリング プロファイルを使用できます。または、クエリ文字列にカスタム プロファイルが指定されていない場合に常に呼び出される既定値として、カスタム プロファイルを使用するように `defaultScoringProfile` を設定します。
 
-詳細については、「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](search-api-scoring-profiles-2015-02-28.md)」を参照してください。
+詳細については、「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](search-api-scoring-profiles-2015-02-28-preview.md)」を参照してください。
 
 **CORS のオプション**
 
@@ -736,7 +736,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `Content-Type`: 必須。これを `application/json` に設定します
-- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
+- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求は、(クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含む必要があります。
 
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
@@ -1029,7 +1029,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Add Documents** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](.search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -1150,7 +1150,7 @@ ________________________________________
 
 **GET ではなく、POST を使用する場合**
 
-HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 17 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
+HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
 
 > [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、「[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)」および「[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)」をご覧ください。**要求**
 
@@ -1639,7 +1639,9 @@ Suggestion 要求はターゲット ドキュメントの検索候補を示す�
 
 **GET ではなく、POST を使用する場合**
 
-HTTP GET を使用して **Suggestions** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
+HTTP GET を使用して **Suggestions** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、フィルター文字列のサイズそのものではなく、フィルターに含まれる句の数が制限要因になります。
+
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、フィルター式を任意に複雑にすることはできません。フィルターにおける複雑さの制限の詳細については、「[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)」をご覧ください。
 
 **要求**
 
@@ -1772,4 +1774,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,4 +1,4 @@
-<!--author=SharS last changed: 12/14/15-->
+<!--author=SharS last changed: 02/22/2016-->
 
 ### デバイスを構成して登録するには
 
@@ -16,7 +16,7 @@
   
 5. 次の手順を実行して、デバイスで必要な最小のネットワーク設定を構成します。
 
-    > [AZURE.IMPORTANT]これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
+    > [AZURE.IMPORTANT] これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
 
       1. コマンド プロンプトにパスワードを入力します。デバイスの既定のパスワードは **Password1** です。
 
@@ -32,11 +32,11 @@
        - プライマリ DNS サーバーの IP アドレス
        - プライマリ NTP サーバーの IP アドレス
  
-        > [AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。
+        > [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。
 
       4. 必要に応じて、Web プロキシ サーバーを構成します。
 
-      >[AZURE.IMPORTANT]Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。
+      > [AZURE.IMPORTANT] Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。
 
 6. Ctrl キーを押しながら C キーを押してセットアップ ウィザードを終了します。
  
@@ -97,7 +97,7 @@
 
 14. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、[手順 2. (サービス登録キーの取得)](storsimple-get-service-registration-key-gov.md) で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
 
-      >[AZURE.NOTE]Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。
+      > [AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。
 
 	![StorSimple 登録進行状況](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
 
@@ -105,7 +105,9 @@
 	
 	![StorSimple によるデバイスの登録 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)
 
-      >[AZURE.IMPORTANT]シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。> >サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
+      > [AZURE.IMPORTANT] シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。
+      > 
+      > サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
 
 16. シリアル コンソールを終了します。
 
@@ -117,9 +119,11 @@
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov-u2/HCS_DeviceOnline-gov-include.png) 
   
         If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
-      
-        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](https://msdn.microsoft.com/library/dn772371.aspx). If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
+
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+
+        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager Service-to-device communication.
      
         
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

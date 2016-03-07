@@ -49,7 +49,7 @@ PowerShell Workflow Runbook のパラメーター定義には次の一般形式�
      )
 ```
 
->[AZURE.NOTE] パラメーターを定義するとき、**Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。また、PowerShell ワークフロー Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
+>[AZURE.NOTE] パラメーターを定義するとき、**Mandatory** 属性を指定しない場合、既定でパラメーターは任意と見なされます。また、PowerShell Workflow Runbook のパラメーターに既定値を設定した場合、**Mandatory** 属性値に関係なく、PowerShell は任意のパラメーターとして扱います。
 
 例として、PowerShell Workflow Runbook に仮想マシン (1 台の VM またはサービス内の全 VM) の詳細を出力する入力パラメーターを構成します。下のスクリーンショットでわかるように、この Runbook には 2 つのパラメーターがあります。仮想マシンの名前とサービスの名前です。
 
@@ -75,7 +75,7 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
 
 すべての仮想マシンを取得する [**Get-AzureVM**](https://msdn.microsoft.com/library/azure/dn495236.aspx)。
 
-[**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。**Get-AzureVM** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシンの名前**と**サービス アカウントの名前**です。これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。以下は入力パラメーターを追加する手順です。
+[**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。**Get-AzureVM** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシンの名前**と**サービスの名前**です。これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。以下は入力パラメーターを追加する手順です。
 
 1. **[Runbook]** ブレードからグラフィカル Runtbook を選択し、[編集](automation-graphical-authoring-intro.md)します。
 
@@ -102,13 +102,13 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
     名前 – VMName、
     型 – String、
     必須 – いいえ
-
+	
     * **Parameter2:** 
     名前 – ServiceName、
     型 – String、
     必須 – いいえ、
     既定値 – カスタム、
-    カスタム既定値 – \<仮想マシンを含む既定サービスの名前>
+    カスタム既定値 – <仮想マシンを含む既定サービスの名前>
 
 5. パラメーターを追加したら、**[OK]** をクリックします。パラメーターが **[入力と出力]** ブレードに表示されます。**[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
@@ -131,7 +131,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 ![ヘルプ バルーン](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
 
 
->[AZURE.NOTE]文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター ボックスに「**EmptyString**」と入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列型パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
+>[AZURE.NOTE] 文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター ボックスに「**EmptyString**」と入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列型パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
 
 - **PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる**
 
@@ -145,7 +145,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
         Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
       ```
 
-    - **Azure リソース マネージャー コマンドレット:** [Start-AzureRMAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、リソース グループに作成された Automation Runbook を起動できます。
+    - **Azure リソース マネージャー コマンドレット:** [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、リソース グループに作成された Automation Runbook を起動できます。
 
 
     **例:**
@@ -153,10 +153,10 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
       ```
         $params = @{“VMName”=”WSVMClassic”;”ServiceName”=”WSVMClassicSG”}
 
-        Start-AzureRMAutomationRunbook -AutomationAccountName “TestAutomationRG” -Name “Get-AzureVMGraphical” –ResourceGroupName “RG1” -Parameters $params
+        Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomationRG” -Name “Get-AzureVMGraphical” –ResourceGroupName “RG1” -Parameters $params
       ```
 
->[AZURE.NOTE]PowerShell コマンドレットで Runbook を起動すると、既定のパラメーター **MicrosoftApplicationManagementStartedBy** が値 **PowerShell** で作成されます。このパラメーターは **[ジョブの詳細]** ブレードに表示されます。
+>[AZURE.NOTE] PowerShell コマンドレットで Runbook を起動すると、既定のパラメーター **MicrosoftApplicationManagementStartedBy** が値 **PowerShell** で作成されます。このパラメーターは **[ジョブの詳細]** ブレードに表示されます。
 
 - **SDK で Runbook を起動し、パラメーターを割り当てる**
 
@@ -224,7 +224,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 * **subscription-id:** Azure のサブスクリプション ID。  
 * **cloud-service-name:** 要求の送信先とするクラウド サービスの名前。  
 * **automation-account-name:** 指定したクラウド サービス内でホストされている Automation アカウントの名前。  
-* **job-id:** ジョブの GUID。PowerShell の GUID は **[GUID]::NewGuid().ToString()** コマンドレットで作成できます。
+* **job-id:** ジョブの GUID。PowerShell の GUID は **[GUID]::NewGuid().ToString()** コマンドで作成できます。
 
 Runbook ジョブにパラメーターを渡すには、要求本文を使用します。JSON 形式で指定される、次の 2 つのプロパティを受け取ります。
 
@@ -253,7 +253,7 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 テスト オプションを利用し、[Runbook の草案バージョンをテスト](automation-testing-runbook.md)すると、**[テスト]** ブレードが開きます。このブレードで、先に作成したパラメーターの値を構成できます。
 
-![テストし、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
+![Test and assign parameters](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
 
 ### スケジュールを Runbook にリンクし、パラメーターを割り当てる
 
@@ -279,4 +279,4 @@ Webhook を利用して Runbook を実行すると、定義した入力パラメ
 - テキスト Runbook を編集する方法については、[テキスト Runbook の編集](automation-edit-textual-runbook.md)に関するページを参照してください。
 - グラフィカル Runbook を編集する方法については、[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

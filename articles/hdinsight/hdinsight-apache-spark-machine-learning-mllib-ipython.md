@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 
@@ -37,15 +37,15 @@
 
 * 仮説テストとサンプル統計の計算
 
-この記事では、ロジスティック回帰を使用した *分類* への簡単なアプローチを提供します。
+この記事では、ロジスティック回帰を使用した*分類*への簡単なアプローチを提供します。
 
 ## 分類およびロジスティック回帰とは
 
-一般的な Machine Learning タスクである *分類* は、入力データをカテゴリに分類するプロセスです。ユーザーが指定した入力データに「ラベル」を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する Machine Learning アルゴリズムを考えてみます。
+一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。ユーザーが指定した入力データに「ラベル」を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する Machine Learning アルゴリズムを考えてみます。
 
-ロジスティック回帰は、分類に使用するアルゴリズムです。Spark のロジスティック回帰 API は、 *二項分類* (入力データを 2 つのグループのいずれかに分類する) に適しています。ロジスティック回帰の詳細については、[Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) を参照してください。
+ロジスティック回帰は、分類に使用するアルゴリズムです。Spark のロジスティック回帰 API は、*二項分類* (入力データを 2 つのグループのいずれかに分類する) に適しています。ロジスティック回帰の詳細については、[Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression) を参照してください。
 
-要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。
+要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる*ロジスティック関数*が生成されます。
 
 ## この記事の目的
 
@@ -63,7 +63,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -71,31 +71,19 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-3. Machine Learning アプリケーションの作成を始めます。Pyspark 環境を設定して、開始する必要があります。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
+3. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
 
 
-		import pyspark
-		from pyspark import SparkConf
-		from pyspark import SparkContext
-		from pyspark.sql import SQLContext
-		%matplotlib inline
-		import matplotlib.pyplot as plt
 		from pyspark.ml import Pipeline
 		from pyspark.ml.classification import LogisticRegression
 		from pyspark.ml.feature import HashingTF, Tokenizer
 		from pyspark.sql import Row
 		from pyspark.sql.functions import UserDefinedFunction
 		from pyspark.sql.types import *
-		import atexit
-		
-		sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-		sqlContext = SQLContext(sc)
-		atexit.register(lambda: sc.stop())
-
 
 ## 入力データフレームを作成する
 
-構造化データに対して変換を実行するために使用できる SQLContext がし既にあります。最初のタスクは、サンプル データ ((**Food\_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。次のスニペットは、Spark クラスターに関連付けられている既定のストレージ コンテナーにデータがアップロードされていることを前提としています。
+構造化データに対して変換を実行するために使用できる SQLContext が既にあります。最初のタスクは、サンプル データ ((**Food\_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。次のスニペットは、Spark クラスターに関連付けられている既定のストレージ コンテナーにデータがアップロードされていることを前提としています。
 
 1. 生のデータが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。 
 
@@ -118,7 +106,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		inspections.take(1)
 
 
-	出力次のように表示されます。
+	出力は次のように表示されます。
 
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -143,19 +131,21 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 	      '(41.97583445690982, -87.7107455232781)']]
 
 
-3. 上記の出力により、入力ファイルのスキーマのアイデアが提供されます。ファイルには、すべての施設名、施設の種類、アドレス、検査のデータ、場所などが含まれています。予測分析に役立ついくつかの列を選択し、結果をデータフレームとしてグループ化しましょう。
+3. 上記の出力により、入力ファイルのスキーマのアイデアが提供されます。ファイルには、すべての施設名、施設の種類、アドレス、検査のデータ、場所などが含まれています。予測分析に役立ついくつかの列を選択し、結果をデータフレームとしてグループ化しましょう。次に、これを使って一時テーブルを作成します。
 
 
 		schema = StructType([
-		        StructField("id", IntegerType(), False), 
-		        StructField("name", StringType(), False), 
-		        StructField("results", StringType(), False), 
-		        StructField("violations", StringType(), True)])
-		
+        StructField("id", IntegerType(), False), 
+        StructField("name", StringType(), False), 
+        StructField("results", StringType(), False), 
+        StructField("violations", StringType(), True)])
+
 		df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
+		df.registerTempTable('CountResults')
 
-4. これで、 *データフレーム* 、`df` を取得できました。ここで分析を実行できます。データフレームで対象の 4 列 (**id**、**name**、**results**、および **violations**) が含まれています。データの小さなサンプルを取得します。
-
+4. これで、データフレーム、`df` を取得できました。ここで分析を実行できます。**CountResults** という一時テーブルも作成できました。データフレームで対象の 4 列 (**id**、**name**、**results**、および **violations**) が含まれています。
+	
+	データの小さなサンプルを取得します。
 
 		df.show(5)
 
@@ -177,81 +167,96 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 ## データを理解する
 
-データセットの内容を理解しましょう。たとえば、**results** 列のさまざまな値は何でしょうか。
+1. データセットの内容を理解しましょう。たとえば、**results** 列のさまざまな値は何でしょうか。
 
 
 	df.select('results').distinct().show()
 
 	
-出力次のように表示されます。
+	出力は次のように表示されます。
 
-    # -----------------
-	# THIS IS AN OUTPUT
-	# -----------------
-
-	+--------------------+
-    |             results|
-    +--------------------+
-    |                Fail|
-    |Business Not Located|
-    |                Pass|
-    |  Pass w/ Conditions|
-    |     Out of Business|
-    +--------------------+
+	    # -----------------
+		# THIS IS AN OUTPUT
+		# -----------------
+	
+		+--------------------+
+	    |             results|
+	    +--------------------+
+	    |                Fail|
+	    |Business Not Located|
+	    |                Pass|
+	    |  Pass w/ Conditions|
+	    |     Out of Business|
+	    +--------------------+
     
-グラフ化することで、これらの結果の分布の理解に役立ちます。
+2. グラフ化することで、これらの結果の分布の理解に役立ちます。一時テーブル **CountResults** には既にデータが入力されています。テーブルに対し次の SQL クエリを実行して、結果がどのように分布しているかを分析できます。
 
-	countResults = df.groupBy('results').count().collect()
-	labels = [row.results for row in countResults]
-	sizes = [row.count for row in countResults]
-	colors = ['turquoise', 'seagreen', 'mediumslateblue', 'palegreen', 'coral']
-	plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
-	plt.axis('equal')
+		%%sql -o countResultsdf
+		SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
 
+	`%%sql` マジックの後に `-o countResultsdf` と続けて、クエリの出力を Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持します。出力は、[Pandas](http://pandas.pydata.org/) データフレームとして、**countResultsdf** という名前を指定して保存します。
+	
+	出力は次のように表示されます。
+	
+	![SQL クエリ出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL クエリ出力")
 
-出力次のように表示されます。
+	`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
 
-    
-![出力結果](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_13_1.png)
+3. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成することもできます。プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。これにより、コードは Jupyter サーバーでローカルに実行されます。
 
+		%%local
+		%matplotlib inline
+		import matplotlib.pyplot as plt
+		
+		
+		labels = countResultsdf['results']
+		sizes = countResultsdf['cnt']
+		colors = ['turquoise', 'seagreen', 'mediumslateblue', 'palegreen', 'coral']
+		plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
+		plt.axis('equal')
 
-検査には、5 つの個別の結果があることを確認できます。
+	出力次のように表示されます。
 
-* 事業体が存在しない 
-* 不合格
-* 合格
-* 条件付きで合格
-* 廃業 
-
-違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。「Pass w/ Conditions」は Pass であるため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。その他の結果のデータ (「Business Not Located」、「Out of Business」) は使用できないため、トレーニング セットから削除します。いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
-
-先に進み、既存のデータフレーム (`df`) を、各検査がラベルと違反のペアとして表される新しいデータフレームに変換します。ここでは、ラベル `0.0` は失敗、ラベル `1.0` は成功、ラベル `-1.0` はこれら 2 つ以外の何らかの結果であることを表します。新しいデータ フレームを計算するときに、これらのその他の結果は除外されます。
-
-
-	def labelForResults(s):
-	    if s == 'Fail':
-	        return 0.0
-	    elif s == 'Pass w/ Conditions' or s == 'Pass':
-	        return 1.0
-	    else:
-	        return -1.0
-	label = UserDefinedFunction(labelForResults, DoubleType())
-	labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
+	![出力結果](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_13_1.png)
 
 
-ラベル付けされたデータから 1 つの行を取得し、内容を確認してみましょう。
+4. 検査には、5 つの個別の結果があることを確認できます。
+	
+	* 事業体が存在しない 
+	* 不合格
+	* 合格
+	* 条件付きで合格
+	* 廃業 
+
+	違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。「Pass w/ Conditions」は Pass であるため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。その他の結果のデータ (「Business Not Located」、「Out of Business」) は使用できないため、トレーニング セットから削除します。いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
+
+5. 先に進み、既存のデータフレーム (`df`) を、各検査がラベルと違反のペアとして表される新しいデータフレームに変換します。ここでは、ラベル `0.0` は失敗、ラベル `1.0` は成功、ラベル `-1.0` はこれら 2 つ以外の何らかの結果であることを表します。新しいデータ フレームを計算するときに、これらのその他の結果は除外されます。
 
 
-	labeledData.take(1)
+		def labelForResults(s):
+		    if s == 'Fail':
+		        return 0.0
+		    elif s == 'Pass w/ Conditions' or s == 'Pass':
+		        return 1.0
+		    else:
+		        return -1.0
+		label = UserDefinedFunction(labelForResults, DoubleType())
+		labeledData = df.select(label(df.results).alias('label'), df.violations).where('label >= 0')
 
 
-出力次のように表示されます。
+	ラベル付けされたデータから 1 つの行を取得し、内容を確認してみましょう。
 
-    # -----------------
-	# THIS IS AN OUTPUT
-	# -----------------
 
-	[Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
+		labeledData.take(1)
+
+
+	出力次のように表示されます。
+	
+	    # -----------------
+		# THIS IS AN OUTPUT
+		# -----------------
+	
+		[Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
 
 
 ## 入力データ フレームからロジスティック回帰モデルを作成する
@@ -275,79 +280,106 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 前に作成したモデルを使用し、どのくらい違反が観察されたかに基づいて、新しい検査結果を*予測*できます。データセット **Food\_Inspections1.csv** でこのモデルをトレーニングしました。2 つ目のデータセット **Food\_Inspections2.csv** を使用して、新しいデータでこのモデルの強度を*評価*します。この 2 つ目のデータ セット (**Food\_Inspections2.csv**) は、クラスターに関連付けられている既定のストレージ コンテナーに既に存在している必要があります。
 
-次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。
+1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。スニペットは、データフレームに基づいた一時テーブル **Predictions** も作成します。
 
 
-	testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+		testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
 	             .map(csvParse) \
 	             .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
-	testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
-	predictionsDf = model.transform(testDf)
-	predictionsDf.columns
+		testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
+		predictionsDf = model.transform(testDf)
+		predictionsDf.registerTempTable('Predictions')
+		predictionsDf.columns
 
 
-出力次のように表示されます。
-
-    # -----------------
-	# THIS IS AN OUTPUT
-	# -----------------
+	出力次のように表示されます。
 	
-	['id',
-     'name',
-     'results',
-     'violations',
-     'words',
-     'features',
-     'rawPrediction',
-     'probability',
-     'prediction']
+	    # -----------------
+		# THIS IS AN OUTPUT
+		# -----------------
+		
+		['id',
+	     'name',
+	     'results',
+	     'violations',
+	     'words',
+	     'features',
+	     'rawPrediction',
+	     'probability',
+	     'prediction']
 
-予測のいずれかを確認します。このスニペットを実行します。
+2. 予測のいずれかを確認します。このスニペットを実行します。
 
-	predictionsDf.take(1)
+		predictionsDf.take(1)
 
-テスト データ セットの最初のエントリの予測が表示されます。
+	テスト データ セットの最初のエントリの予測が表示されます。
 
-`model.transform()` メソッドは、同じスキーマを持つ新しいデータに同じ変換を適用し、データの分類方法の予測に到達します。予測がどれだけ正確だったかを把握するための簡単な統計を実行できます。
+3. `model.transform()` メソッドは、同じスキーマを持つ新しいデータに同じ変換を適用し、データの分類方法の予測に到達します。予測がどれだけ正確だったかを把握するための簡単な統計を実行できます。
 
 
-	numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR 
-	                                      (prediction = 1 AND (results = 'Pass' OR 
-	                                                           results = 'Pass w/ Conditions'))""").count()
-	numInspections = predictionsDf.count()
+		numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR 
+		                                      (prediction = 1 AND (results = 'Pass' OR 
+		                                                           results = 'Pass w/ Conditions'))""").count()
+		numInspections = predictionsDf.count()
+		
+		print "There were", numInspections, "inspections and there were", numSuccesses, "successful predictions"
+		print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
+
+	出力は次のようになります。
 	
-	print "There were", numInspections, "inspections and there were", numSuccesses, "successful predictions"
-	print "This is a", str((float(numSuccesses) / float(numInspections)) * 100) + "%", "success rate"
-
-出力は次のようになります。
-
-    # -----------------
-	# THIS IS AN OUTPUT
-	# -----------------
-
-	There were 9315 inspections and there were 8087 successful predictions
-    This is a 86.8169618894% success rate
-
-
-Spark を使用するロジスティック回帰の使用により、英語による違反の説明と、特定の会社が食品検査で合格か不合格かの関係を示す精密モデルが表示されます。最終的なグラフを作成すると、このテスト結果についての理解に役立ちます。
-
+	    # -----------------
+		# THIS IS AN OUTPUT
+		# -----------------
 	
-	failSuccess = predictionsDf.where("prediction = 0 AND results = 'Fail'").count()
-	failFailure = predictionsDf.where("prediction = 0 AND results <> 'Fail'").count()
-	passSuccess = predictionsDf.where("prediction = 1 AND results <> 'Fail'").count()
-	passFailure = predictionsDf.where("prediction = 1 AND results = 'Fail'").count()
-	labels = ['True positive', 'False positive', 'True negative', 'False negative']
-	sizes = [failSuccess, failFailure, passSuccess, passFailure]
-	plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
-	plt.axis('equal')
+		There were 9315 inspections and there were 8087 successful predictions
+	    This is a 86.8169618894% success rate
 
 
-次の出力が表示されます。
+	Spark を使用するロジスティック回帰の使用により、英語による違反の説明と、特定の会社が食品検査で合格か不合格かの関係を示す精密モデルが表示されます。
 
-![予測の出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_26_1.png)
+## 予測を視覚化する
+
+最終的なグラフを作成すると、このテスト結果についての理解に役立ちます。
+
+1. 先ほど作成した一時テーブル **Predictions** のさまざまな予測や結果を抽出することから始めます。
+
+		%%sql -o predictionstable
+		SELECT prediction, results FROM Predictions
+
+2. 上のスニペット **predictionstable** は、SQL クエリの出力を保持する Jupyter サーバー上のローカル データフレームです。ここで、`%%local` マジックを使用して、ローカルに保持されたデータフレームに対して後続のコード スニペットを実行します。
+
+		%%local
+		failSuccess = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results == 'Fail')]['prediction'].count()
+		failFailure = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results <> 'Fail')]['prediction'].count()
+		passSuccess = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results <> 'Fail')]['prediction'].count()
+		passFailure = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results == 'Fail')]['prediction'].count()
+		failSuccess,failFailure,passSuccess,passFailure
+
+	出力は次のようになります。
+	
+		# -----------------
+		# THIS IS AN OUTPUT
+		# -----------------
+	
+		(276, 46, 1917, 261)
+
+3. 最後に、次のスニペットを使用してプロットを生成します。
+
+		%%local
+		%matplotlib inline
+		import matplotlib.pyplot as plt
+		
+		labels = ['True positive', 'False positive', 'True negative', 'False negative']
+		sizes = [failSuccess, failFailure, passSuccess, passFailure]
+		plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+		plt.axis('equal')
+	
+	次の出力が表示されます。
+	
+	![予測の出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_26_1.png)
 
 
-このグラフでは、「positive」の結果は食品検査の不合格を指し、「negative」の結果は、食品検査の合格を指します。これは、約 12.6% の偽陰性 (false negative) 率、約 16.0% の偽陽性 (false positive) 率に対応します。
+	このグラフでは、「positive」の結果は食品検査の不合格を指し、「negative」の結果は、食品検査の合格を指します。
 
 ## Notebook をシャットダウンする
 
@@ -387,4 +419,4 @@ Spark を使用するロジスティック回帰の使用により、英語に�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

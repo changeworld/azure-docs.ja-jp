@@ -3,7 +3,7 @@
 	description="Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。"
 	services="storage"
 	documentationCenter=""
-	authors="tamram"
+	authors="robinsh"
 	manager="carmonm"
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
-	ms.author="tamram"/>
+	ms.date="02/19/2016"
+	ms.author="robinsh"/>
 
 # Azure ポータルでのストレージ アカウントの監視
 
@@ -120,7 +120,7 @@
 	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
 
-6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
+6. すべてのサービスについてメトリックを選択したら、[OK] \(チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
 7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 
@@ -157,4 +157,4 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

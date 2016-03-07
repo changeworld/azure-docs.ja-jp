@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Search を使用しているユーザー: ケース スタディとお客様事例 | Microsoft Azure | ホスト型クラウド検索サービス"
+	pageTitle="Azure Search を使用しているユーザー: ケース スタディとお客様事例 | Microsoft Azure | ユーザー シナリオ"
 	description="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search に関するケース スタディとお客様事例"
 	services="search"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="11/13/2015"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # Azure Search を使用しているユーザー: ケース スタディとお客様事例
@@ -61,4 +61,4 @@ Weichert Realtors はクラウドに移行中です。また、それによっ�
 [5]: ./media/search-case-studies/weichert_m.png
 [xomni]: ./media/search-case-studies/xomni_m.png
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

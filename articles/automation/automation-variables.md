@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/27/2016"
-   ms.author="bwren" />
+   ms.date="02/18/2016"
+   ms.author="magoedte;bwren" />
 
 # Azure Automation での変数アセット
 
@@ -29,7 +29,7 @@ Automation 変数は、Runbook または DSC 構成でエラーが発生した�
 
 変数が作成されると、暗号化して保存するように指定できます。変数が暗号化されると、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913772.aspx) コマンドレットからは取得できません。暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## 変数の型
 
@@ -67,7 +67,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 1. ウィザードを完了し、チェック ボックスをクリックして新しい変数を保存します。
 
 
-### Azure プレビュー ポータルで新しい変数を作成するには
+### Azure ポータルで新しい変数を作成するには
 
 1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[変数]** 部分をクリックして **[変数]** ブレードを開きます。
@@ -188,4 +188,4 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

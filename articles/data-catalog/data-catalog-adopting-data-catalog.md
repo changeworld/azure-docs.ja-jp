@@ -10,7 +10,7 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic=" hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
    ms.date="01/28/2016"
@@ -172,4 +172,4 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 -	[データ ソースの注釈付け](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
 - [メタデータのクラウドソーシング](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

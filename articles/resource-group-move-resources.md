@@ -90,7 +90,7 @@ SQL データベースをそのサーバーから個別に移動することは�
 
     PS C:\> $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
     PS C:\> $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId ($webapp.ResourceId, $plan.ResourceId)
+    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 
 新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
 
@@ -118,4 +118,4 @@ SQL データベースをそのサーバーから個別に移動することは�
 - [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="02/23/2016" 
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database の管理
@@ -35,7 +35,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure クラシック ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
-	Add-AzureRmAccount
+	Login-AzureRmAccount
 
 正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
 
@@ -127,4 +127,4 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

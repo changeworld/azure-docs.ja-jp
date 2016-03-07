@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps での SFTP コネクタの使用 | Microsoft Azure App Service"
 	description="SFTP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="anuragdalmia"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="app-service\logic"
 	documentationCenter=""/>
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="02/11/2016"
 	ms.author="sameerch"/>
 
 # SFTP コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [SFTP API](../connectors/create-api-sftp.md) をクリックしてください。
+
 SFTP コネクタを使用して、SFTP サーバー間でデータを移動します。ファイルのダウンロード、アップロード、一覧取得を SFTP サーバー間で行うことができます。
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この SFTP コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
@@ -56,7 +58,7 @@ API アプリが作成されたら、Logic App のトリガーやアクション
 
 5.	これで、フローで SFTP コネクタを使用できるようになりました。今後は、SFTP トリガー ("TriggerOnFileAvailable") を使って取得したファイルを、フローの他のアクションで使用できます。
 
-	> [AZURE.IMPORTANT]SFTP トリガー "TriggerOnFileAvailable" は、取得したファイルを処理した後、そのファイルを削除します。
+	> [AZURE.IMPORTANT] SFTP トリガー "TriggerOnFileAvailable" は、取得したファイルを処理した後、そのファイルを削除します。
 
 6.	SFTP トリガーの入力プロパティを次のように構成します。
 
@@ -84,7 +86,7 @@ API アプリが作成されたら、Logic App のトリガーやアクション
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -105,4 +107,4 @@ API アプリが作成されたら、Logic App のトリガーやアクション
 [11]: ./media/app-service-logic-connector-sftp/img11.PNG
 [12]: ./media/app-service-logic-connector-sftp/img12.PNG
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

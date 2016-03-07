@@ -348,9 +348,6 @@ B2C テナント内に定義されたカスタム属性は、B2CGraphClient を�
 - Graph API を呼び出すときは、[`api-version=beta`](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx) を使用します。
 - コンシューマー ユーザーの作成と更新を行うときは、上記で説明したいくつかの必須プロパティがあります。
 
-> [AZURE.IMPORTANT]
-B2C アプリで Azure AD Graph API を使用する場合は、Azure AD B2C の基礎にあるディレクトリ サービスのレプリケーション特性を考慮する必要があります (詳細については、[こちらの記事](http://blogs.technet.com/b/ad/archive/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-geo-distributed-cloud-directory.aspx)を参照してください)。コンシューマーが **サインアップ** ポリシーを使用して B2C にサインアップしたすぐ後に、アプリ内で Azure AD Graph API を使用してユーザー オブジェクトを読み取ろうとしてもできない場合があります。その際は、レプリケーション プロセスが完了するまで数秒待つ必要があります。一般公開時には、Azure AD Graph API とディレクトリ サービスによって提供される "書き込みと読み取りの整合性保証" について、より具体的なガイダンスを公開する予定です。
-
 Graph API を使用した B2C テナントに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

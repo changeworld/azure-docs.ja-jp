@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="02/22/2016"
    ms.author="carlrab"/>
 
-# SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する
+# SQL Database へ移行する前に SSMS との SQL Server データベースの互換性に関する問題を修正する
 
 移行元の SQL Server データベースに互換性がないことがわかった場合は、いくつかのオプションを使用して、データベース互換性の問題を修正します。
 
@@ -33,4 +33,4 @@ SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transac
 
 [移行方法を選択](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)します。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

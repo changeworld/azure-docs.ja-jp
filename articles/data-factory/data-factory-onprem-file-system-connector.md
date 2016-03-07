@@ -486,7 +486,7 @@ fileName | テーブルでフォルダー内の特定のファイルを参照す
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
 形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。**Format プロパティは現在、オンプレミスのファイル システムには対応していません。ここで説明しているように、この対応は間もなく開始される予定です。** | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<p>使用可能な値: * (複数の文字) および ? (単一の文字)。</p><p>例 1: "fileFilter": "*.log"</p>例 2: "fileFilter": 2014-1-?.txt"</p><p>**注**: fileFilter は入力の FileShare データセットに適用できます</p> | いいえ
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 > [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
 
@@ -608,4 +608,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

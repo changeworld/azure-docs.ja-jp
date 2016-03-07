@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 9/23/15-->
+<!--author=alkohli last changed:02/22/16-->
 
 #### SAS ケーブルの取り付け方法
 
@@ -13,7 +13,7 @@
     |1|主エンクロージャ|
     |2|EBOD エンクロージャ|
 
-2. 主エンクロージャと EBOD エンクロージャのシリアル番号を見つけます。シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。両方のエンクロージャのシリアル番号が一致している必要があります。シリアル番号が一致しない場合は、直ちに [Microsoft サポートに連絡してください](storsimple-contact-microsoft-support.md)。次の図を参考にしてシリアル番号を見つけてください。
+2. 主エンクロージャと EBOD エンクロージャのシリアル番号を見つけます。シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。両方のエンクロージャのシリアル番号が一致している必要があります。シリアル番号が一致しない場合は、直ちに [Microsoft サポートに連絡してください](../articles/storsimple/storsimple-contact-microsoft-support.md)。次の図を参考にしてシリアル番号を見つけてください。
 
     ![シリアル番号の位置を示すエンクロージャの背面図](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
 
@@ -46,4 +46,4 @@
     |5、6|主エンクロージャの SAS ポート (EBOD のラベル)|
     |7、8|EBOD エンクロージャの SAS ポート (ポート A)|
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

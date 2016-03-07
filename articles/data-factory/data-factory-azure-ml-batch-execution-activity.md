@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/06/2015" 
+	ms.date="02/06/2016" 
 	ms.author="spelluru"/>
 
 # Azure Machine Learning アクティビティを使用して予測パイプラインを作成する   
 ## 概要
 
-> [AZURE.NOTE]Azure Data Factory サービスについては、「[Azure Data Factory の概要](data-factory-introduction.md)」および「[Azure Data Factory を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline.md)」を参照してください。
+> [AZURE.NOTE] Azure Data Factory サービスについては、「[Azure Data Factory の概要](data-factory-introduction.md)」および「[Azure Data Factory を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline.md)」を参照してください。
 
 ## はじめに
 
@@ -61,7 +61,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 ### シナリオ: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
 このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Azure Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は **webServiceInput** JSON プロパティを使用して Web サービスに入力として渡され、**DecisionTreeResultBlob** は **webServiceOutputs** JSON プロパティを使用して Web サービスに出力として渡されます。
 
-> [AZURE.NOTE]**webServiceInput** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
+> [AZURE.NOTE] **webServiceInput** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
 
 
 	{
@@ -104,7 +104,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 	  }
 	}
 
-> [AZURE.NOTE]AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。たとえば、上の JSON スニペットでは、DecisionTreeInputBlob は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
+> [AZURE.NOTE] AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。たとえば、上の JSON スニペットでは、DecisionTreeInputBlob は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 
 ### 例
 
@@ -218,7 +218,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 		}
 5. 最後に、**AzureMLBatchExecution** アクティビティを含むパイプラインを作成します。このパイプラインは、入力データセットから入力ファイルの場所を取得し、Azure Machine Learning バッチ実行 API を呼び出して、出力データセットで指定された BLOB にバッチ実行の出力をコピーします。 
 
-	> [AZURE.NOTE]AzureMLBatchExecution アクティビティは、0 個以上の入力と 1 個以上の出力を使用できます。
+	> [AZURE.NOTE] AzureMLBatchExecution アクティビティは、0 個以上の入力と 1 個以上の出力を使用できます。
 
 		{
 		  "name": "PredictivePipeline",
@@ -262,7 +262,7 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 
 	**start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
-	> [AZURE.NOTE]AzureMLBatchExecution アクティビティへの入力の指定は省略可能です。
+	> [AZURE.NOTE] AzureMLBatchExecution アクティビティへの入力の指定は省略可能です。
 
 ### シナリオ: リーダー/ライター モジュールを使用してさまざまなストレージ内のデータを参照する
 
@@ -270,7 +270,7 @@ Azure ML を実験するときのもう 1 つの一般的なシナリオは、�
 
 リーダー/ライター モジュールの各プロパティには Web サービスのパラメーターを使用するのがよい方法です。これらの Web パラメーターを使用すると、実行時に値を構成できます。たとえば、Azure SQL Database: XXX.database.windows.net を使用するリーダー モジュールで実験を作成できます。Web サービスをデプロイした後、Web サービスのコンシューマーを有効にして、YYY.database.windows.net という名前の別の Azure SQL Server を指定できます。Web サービスのパラメーターを使用して、この値を構成できます。
 
-> [AZURE.NOTE]Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。最初のシナリオでは、Azure ML Web サービスに対して入力と出力を指定する方法を説明しました。このシナリオでは、リーダー/ライター モジュールのプロパティに対応するパラメーターを Web サービスに渡します。
+> [AZURE.NOTE] Web サービスの入力と出力は、Web サービスのパラメーターとは異なるものです。最初のシナリオでは、Azure ML Web サービスに対して入力と出力を指定する方法を説明しました。このシナリオでは、リーダー/ライター モジュールのプロパティに対応するパラメーターを Web サービスに渡します。
 
 Web サービス パラメーターを使用するシナリオを見てみましょう。Azure Machine Learning がサポートするデータ ソース (例: Azure SQL Database) の 1 つからデータを読み取るためにリーダー モジュールを使用する Azure Machine Learning Web サービスをデプロイしてあります。バッチ実行が実行された後、ライター モジュールを使用して結果が書き込まれます (Azure SQL Database)。Web サービスの入力と出力は実験では定義されていません。この場合は、リーダー/ライター モジュールに関連する Web サービス パラメーターを設定することをお勧めします。これにより、AzureMLBatchExecution アクティビティを使用するときにリーダー/ライター モジュールを構成できます。Web サービスのパラメーターは、次に示すように、アクティビティの JSON の **globalParameters** セクションで指定します。
 
@@ -290,7 +290,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
     	}
   	}
  
-> [AZURE.NOTE]Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
+> [AZURE.NOTE] Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 
 ### リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る
 ビッグ データ パイプライン (Pig、Hive など) は、拡張子が付いていない出力ファイルを 1 つ以上生成できます。たとえば、外部 Hive テーブルを指定するとき、外部 Hive テーブルのデータを 000000\_0 という名前で Azure BLOB ストレージに格納できます。実験では、リーダー モジュールを使用して複数のファイルを読み取り、予測に使用できます。
@@ -755,7 +755,7 @@ AzureMLBatchScoring アクティビティを引き続き使用する場合は、
     	}
   	}
  
-> [AZURE.NOTE]Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
+> [AZURE.NOTE] Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 
 ## 関連項目
 
@@ -772,4 +772,4 @@ AzureMLBatchScoring アクティビティを引き続き使用する場合は、
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

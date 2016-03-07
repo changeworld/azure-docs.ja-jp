@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="11/17/2015"
+	ms.date="02/19/2016"
 	ms.author="huvalo"/>
 
 
@@ -26,7 +26,7 @@ Bottle Web フレームワークを使用して Web アプリを作成します 
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -56,7 +56,6 @@ Python と Git は既にインストールされていると思いますが、Py
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
 1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。 
-2. **[Web + モバイル]** をクリックします。
 3. 検索ボックスに、「python」と入力します。
 4. 検索結果で **[Bottle]** を選択し、**[作成]** をクリックします。
 5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Bottle アプリを構成します。**[作成]** をクリックします。
@@ -397,4 +396,4 @@ Azure Table Storage と MongoDB の使用方法については、次のリンク
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="02/12/2016"
    ms.author="hascipio" />
 
 # Azure Marketplace へのプランの発行方法
@@ -47,6 +47,7 @@
 - [Get support as a publisher (発行元としてサポートを受ける)][suppt-general]
 - [Understanding seller insights reporting (Seller Insights レポートを理解する)][suppt-rpt-insights]
 - [Understanding Payout reporting (支払いレポートを理解する)][suppt-rpt-payouts]
+- [How to change your Cloud Solution Provider reseller incentive (Cloud Solution Provider のリセラー インセンティブを変更する方法)](marketplace-publishing-csp-incentive.md)
 - [Troubleshooting Common Publishing Problems in the Marketplace (Marketplace での発行に関してよくある問題のトラブルシューティング)][suppt-common]
 
 ## その他のリソース
@@ -81,4 +82,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

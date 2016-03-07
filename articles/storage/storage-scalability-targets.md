@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="12/04/2015"
+   ms.date="02/21/2016"
    ms.author="robinsh" />
 
 # Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
@@ -29,7 +29,7 @@
 
 >ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返しはじめます。このような状況になった場合、アプリケーションで指数関数的バックオフによる再試行ポリシーを使用する必要があります。指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
 
-アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム ディスカウント料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム料金については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 
 ## Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
@@ -58,7 +58,7 @@
 
 Azure Storage に格納されているデータを含むすべてのオブジェクト (BLOB、メッセージ、エンティティ、およびファイル) はパーティションに属し、パーティション キーによって識別されます。Azure Storage では、BLOB、メッセージ、エンティティ、およびファイルのトラフィック ニーズに合わせて、どのようにこれらのオブジェクトの負荷をサーバー間で分散するかがパーティションによって決まります。パーティション キーはストレージ アカウント内で一意であり、BLOB、メッセージ、またはエンティティを見つけるために使用されます。
 
-上の「[標準的なストレージ アカウントのスケーラビリティ ターゲット](#scalability-targets-for-standard-storage-accounts)」の表は、サービスごとの 1 つのパーティションにおけるパフォーマンス ターゲットの一覧です。
+上の「[標準的なストレージ アカウントのスケーラビリティ ターゲット](#standard-storage-accounts)」の表は、サービスごとの 1 つのパーティションにおけるパフォーマンス ターゲットの一覧です。
 
 パーティションは、各ストレージ サービスの負荷分散およびスケーラビリティに以下のような影響を与えます。
 
@@ -80,9 +80,9 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 
 - [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
-- [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal/)
+- [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

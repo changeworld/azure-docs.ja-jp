@@ -20,7 +20,7 @@
 
 # インメモリ OLTP ストレージの監視
 
-[インメモリ](sql-database-in-memory.md)を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。Premium サービス レベルは、それぞれにインメモリ ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベル](sql-database-service-tiers.md#service-tiers-for-single-databases)に関する記事を参照してください。この上限を超過すると、挿入操作や更新操作が (エラー 41805 で) 失敗することがあります。その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。Premium サービス レベルは、それぞれにインメモリ ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベル](sql-database-service-tiers.md#service-tiers-for-single-databases)に関する記事を参照してください。この上限を超過すると、挿入操作や更新操作が (エラー 41805 で) 失敗することがあります。その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
 ## データがインメモリ ストレージの上限に収まるかどうかを判断する
 
@@ -58,4 +58,4 @@ Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレ�
 ## 次のステップ
 「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

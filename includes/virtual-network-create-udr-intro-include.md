@@ -5,6 +5,6 @@
 - 侵入検出システム (ID) を使用したトラフィックの監視
 - ファイアウォールを使用したトラフィックの制御
 
-UDR および IP 転送の詳細については、「[ユーザー定義のルートと IP 転送](./virtual-networks-udr-overview.md)」を参照してください。
+UDR および IP 転送の詳細については、「[ユーザー定義のルートと IP 転送](../articles/virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

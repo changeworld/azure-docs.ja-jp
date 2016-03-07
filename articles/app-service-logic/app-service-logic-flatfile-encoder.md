@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="01/19/2016"
+   ms.date="02/18/2016"
    ms.author="rajram"/>
 
 # BizTalk Flat File Encoder
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 BizTalk Flat File Encoder コネクタを使用して、フラット ファイル データ (Excel ファイルや CSV ファイルなど) と XML データの相互運用を行います。フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
 
@@ -69,4 +71,4 @@ Azure のスタート ページから API アプリを起動するには、API �
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

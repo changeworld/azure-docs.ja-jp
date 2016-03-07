@@ -4,7 +4,7 @@
 	services="sql-database"  
 	documentationCenter=""
 	authors="sidneyh"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/23/2016"
 	ms.author="sidneyh" />
 
 # エラスティック データベース Split-Merge ツールに関するチュートリアル
@@ -42,11 +42,11 @@
 
 ### Split-Merge サービスの構成
 
-1. Split/Merge ビットをダウンロードしたフォルダーで、**SplitMergeService.cspkg** に付属の **ServiceConfiguration.Template.cscfg** ファイルのコピーを作成し、**ServiceConfiguration.cscfg** という名前を付けます。
+1. Split-Merge アセンブリをダウンロードしたフォルダーで、**SplitMergeService.cspkg** に付属の **ServiceConfiguration.Template.cscfg** ファイルのコピーを作成し、**ServiceConfiguration.cscfg** という名前に変更します。
 
-2. 使い慣れたテキスト エディターで、ServiceConfiguration.cscfg を開きます。証明書の拇印の形式などの入力値が検証されるため、Visual Studio を使用することをお勧めします。
+2. 証明書の拇印の形式などの入力値を検証する Visual Studio などのテキスト エディターで、**ServiceConfiguration.cscfg** を開きます。
 
-3. 新しいデータベースを作成するか、Split/Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
+3. 新しいデータベースを作成するか、または Split-Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
 
 	**重要**: 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。詳細については、「[Windows 照合順序名 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」をご覧ください。
 
@@ -334,4 +334,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

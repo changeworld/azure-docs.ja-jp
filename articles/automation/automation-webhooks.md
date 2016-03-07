@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
-   ms.author="bwren;sngun"/>
+   ms.date="02/18/2016"
+   ms.author="magoedte;bwren;sngun"/>
 
 # Azure Automation Webhook
 
-Webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。![Webhook](media/automation-webhooks/webhooks-overview.png)
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)で、Webhook と、Runbook を開始する他のメソッドを比較できます
 
@@ -28,7 +28,7 @@ Webhook を使用することにより、単一の HTTP 要求を通して Azure
 | プロパティ | 説明 |
 |:---|:---|
 |名前 | Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。<br>ベスト プラクティスとして、Webhook を使用するクライアントに関連した名前を Webhook に付ける必要があります。 |
-|URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。これは、Webhook を作成するときに自動的に生成されます。カスタム URL を指定することはできません。<br> <br>この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。その理由で、これはパスワードと同じように扱う必要があります。セキュリティ上の理由から、Webhook の作成時に Azure プレビュー ポータルで表示できるのは URL だけです。将来の使用に備えて、URL を安全な場所にメモしてください。 |
+|URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。これは、Webhook を作成するときに自動的に生成されます。カスタム URL を指定することはできません。<br> <br>この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。その理由で、これはパスワードと同じように扱う必要があります。セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。将来の使用に備えて、URL を安全な場所にメモしてください。 |
 |有効期限 | 証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。Webhook の作成後に、この有効期限を変更することはできません。また、有効期限に達した後に、Webhook を再度有効にすることもできません。この場合、別の Webhook を作成して現在の Webhook を置き換え、クライアントを更新して新しい Webhook を使用する必要があります。 |
 | 有効 | 既定では、Webhook は作成時に有効になります。Disabled に設定した場合、クライアントはそれを使用できなくなります。**Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
 
@@ -38,7 +38,7 @@ Webhook は、Runbook がその Webhook によって開始されたときに使�
 
 Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
-![Webhookdata](media/automation-webhooks/webhookdata.png)
+![Webhookdata プロパティ](media/automation-webhooks/webhook-data-properties.png)
 
 **$WebhookData** オブジェクトには、次のプロパティがあります。
 
@@ -59,9 +59,9 @@ Webhook の作成時に $WebhookData の値を指定した場合、クライア�
 
 上記の Runbook で、WebhookData パラメーターに次のプロパティがあるとします。
 
-1. WebhookName: MyWebhook
-2. RequestHeader: From=Test User
-3. RequestBody: [“VM1”, “VM2”]
+1. WebhookName: *MyWebhook*
+2. RequestHeader: *From=Test User*
+3. RequestBody: *[“VM1”, “VM2”]*
 
 この場合は、次の JSON 値を WebhookData パラメーター用の UI に渡します。
 
@@ -70,7 +70,7 @@ Webhook の作成時に $WebhookData の値を指定した場合、クライア�
 ![UI から WebhookData パラメーターを開始する](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 
->[AZURE.NOTE]すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
+>[AZURE.NOTE] すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
 
 ## セキュリティ
 
@@ -82,9 +82,9 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 
 ## Webhook の作成
 
-次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure プレビュー ポータルに作成します。
+次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
-1. Azure プレビュー ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。 
+1. Azure ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。 
 3. ブレードの上部にある **Webhook** をクリックして、**[Webhook の追加]** ブレードを開きます。<br> ![Webhook ボタン](media/automation-webhooks/webhooks-button.png)
 4. **[新しい Webhook の作成]** をクリックして、**[Webhook ブレードの作成]** を開きます。
 5. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。これらのプロパティの詳細については、「[Webhook の詳細](#details-of-a-webhook)」を参照してください。
@@ -272,4 +272,4 @@ Azure アラートを通知システムとして使用するだけでなく、�
 - Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0224_2016-->

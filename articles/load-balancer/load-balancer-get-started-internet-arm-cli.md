@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/16/2015"
+   ms.date="02/12/2015"
    ms.author="joaoma" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサーの作成の開始
@@ -49,7 +49,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 ## リソース マネージャーを使用するための CLI のセットアップ
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../../articles/xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
@@ -78,7 +78,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 	azure network public-ip create -g NRPRG -n NRPPublicIP -l eastus -d loadbalancernrp -a static -i 4
 
 
->[AZURE.IMPORTANT]ロード バランサーはその FQDN としてパブリック IP のドメイン ラベルを使用します。これはロード バランサー FQDN としてクラウド サービスを使用する従来のデプロイメントからの変更点です。この例では、FQDN は *loadbalancernrp.eastus.cloudapp.azure.com* になります。
+>[AZURE.IMPORTANT] ロード バランサーはその FQDN としてパブリック IP のドメイン ラベルを使用します。これはロード バランサー FQDN としてクラウド サービスを使用する従来のデプロイメントからの変更点です。この例では、FQDN は *loadbalancernrp.eastus.cloudapp.azure.com* になります。
 
 ## ロード バランサーの作成
 
@@ -106,19 +106,19 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 次の例では、以下の項目が作成されます。
 
-- ポート 3441 ～ 3389 のすべての受信トラフィックを変換する NAT 規則。<sup>1</sup>
-- ポート 3442 ～ 3389 のすべての受信トラフィックを変換する NAT 規則。
+- ポート 21 のすべての受信トラフィックをポート 22 に転送する NAT 規則<sup>1</sup>
+- ポート 23 のすべての受信トラフィックをポート 22 に転送する NAT 規則
 - バックエンド プールのアドレスでポート 80 ～ 80 に入ってくるすべてのトラフィックを分散するロード バランサー規則。
 - *HealthProbe.aspx* という名前のページで正常性状態を確認するプローブ規則。
 
-<sup>1</sup> NAT 規則は、ロード バランサーの背後にある特定の仮想マシン インスタンスに関連付られています。ポート 3341 への着信ネットワーク トラフィックは、以下の例の NAT 規則に関連付けられている特定の仮想マシンのポート 3389 に送信されます。NAT 規則、UDP または TCP のプロトコルを選択する必要があります。両方のプロトコルを、同じポートに割り当てることはできません。
+<sup>1</sup> NAT 規則は、ロード バランサーの背後にある特定の仮想マシン インスタンスに関連付られます。ポート 21 への着信ネットワーク トラフィックは、以下の例の NAT 規則に関連付けられている特定の仮想マシンのポート 22 に送信されます。NAT 規則、UDP または TCP のプロトコルを選択する必要があります。両方のプロトコルを、同じポートに割り当てることはできません。
 
 ### 手順 1
 
 NAT 規則を作成します。
 
-	azure network lb inbound-nat-rule create -g nrprg -l nrplb -n rdp1 -p tcp -f 3441 -b 3389
-	azure network lb inbound-nat-rule create -g nrprg -l nrplb -n rdp2 -p tcp -f 3442 -b 3389
+	azure network lb inbound-nat-rule create -g nrprg -l nrplb -n ssh1 -p tcp -f 21 -b 22
+	azure network lb inbound-nat-rule create -g nrprg -l nrplb -n ssh2 -p tcp -f 23 -b 22
 
 パラメーター:
 
@@ -184,20 +184,20 @@ NAT 規則を作成します。
 	data:      Backend address pool          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool
 	data:
 	data:    Inbound NAT rules:
-	data:      Name                          : rdp1
+	data:      Name                          : ssh1
 	data:      Provisioning state            : Succeeded
 	data:      Protocol                      : Tcp
-	data:      Frontend port                 : 3441
-	data:      Backend port                  : 3389
+	data:      Frontend port                 : 21
+	data:      Backend port                  : 22
 	data:      Enable floating IP            : false
 	data:      Idle timeout in minutes       : 4
 	data:      Frontend IP configuration     : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/frontendIPConfigurations/NRPfrontendpool
 	data:
-	data:      Name                          : rdp2
+	data:      Name                          : ssh2
 	data:      Provisioning state            : Succeeded
 	data:      Protocol                      : Tcp
-	data:      Frontend port                 : 3442
-	data:      Backend port                  : 3389
+	data:      Frontend port                 : 23
+	data:      Backend port                  : 22
 	data:      Enable floating IP            : false
 	data:      Idle timeout in minutes       : 4
 	data:      Frontend IP configuration     : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/frontendIPConfigurations/NRPfrontendpool
@@ -270,7 +270,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 	azure vm create --resource-group nrprg --name web1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
->[AZURE.IMPORTANT]ロード バランサーの VM は、同じ可用性セットに含まれている必要があります。可用性セットを作成するには、`azure availset create` を使用します。
+>[AZURE.IMPORTANT] ロード バランサーの VM は、同じ可用性セットに含まれている必要があります。可用性セットを作成するには、`azure availset create` を使用します。
 
 出力は次のようになります。
 
@@ -291,7 +291,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 	+ Creating VM "web1"
 	info:    vm create command OK
 
->[AZURE.NOTE]"**This is a NIC without publicIP configured**" という情報メッセージは、想定どおりの動作です。これは、ロード バランサー用に作成される NIC は、ロード バランサーのパブリック IP アドレスを使用してインターネットに接続されるためです。
+>[AZURE.NOTE] "**This is a NIC without publicIP configured**" という情報メッセージは、想定どおりの動作です。これは、ロード バランサー用に作成される NIC は、ロード バランサーのパブリック IP アドレスを使用してインターネットに接続されるためです。
 
 *lb-nic1-be* NIC は *rdp1* NAT 規則に関連付けられているため、ロード バランサーのポート 3441 で RDP を使用して *web1* に接続することができます。
 
@@ -322,10 +322,10 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 ## 次のステップ
 
-[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

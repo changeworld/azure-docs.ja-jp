@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="11/18/2015"
+	ms.date="02/20/2016"
 	ms.author="huvalo"/>
 
 
@@ -40,7 +40,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -74,9 +74,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 2. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** をクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzurePlusNew.png) -->
-
-	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
+  	<!-- ![New Button](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
 5. ストレージ アカウントのブレードの **[設定]** 部をクリックします。アカウント名とプライマリ キーをメモします。
 
@@ -104,7 +102,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、Azure テーブル ストレージでシリアル化されます。
 
-	> [AZURE.NOTE]Python 2.7 仮想環境では、Visual Studio で例外による中断が発生する場合があります。`F5` を押して Web プロジェクトの読み込みを続行します。
+	> [AZURE.NOTE] Python 2.7 仮想環境では、Visual Studio で例外による中断が発生する場合があります。`F5` を押して Web プロジェクトの読み込みを続行します。
 
 1.  アプリケーションが、**Azure テーブル ストレージ** リポジトリを使用していることを確認するには、**[情報]** ページを確認します。
 
@@ -114,7 +112,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
 
-> [AZURE.NOTE]これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
+> [AZURE.NOTE] これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
 
 1.  **[サーバー エクスプローラー]**を開きます。**[Azure]**、**[ストレージ]**、使用するストレージ アカウント、**[テーブル]** の順に展開します。
 
@@ -213,4 +211,4 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -56,8 +56,6 @@ Data Management Gateway で Teradata データベースに接続するには、[
 	        "type": "OnPremisesTeradata",
 	        "typeProperties": {
 	            "server": "<server>",
-	            "database": "<database>",
-	            "schema": "<schema>",
 	            "authenticationType": "<authentication type>",
 	            "username": "<username>",
 	            "password": "<password>",
@@ -92,7 +90,6 @@ Data Management Gateway で Teradata データベースに接続するには、[
 	        "type": "RelationalTable",
 	        "linkedServiceName": "OnPremTeradataLinkedService",
 	        "typeProperties": {
-	            "tableName": "MyTable"
 	        },
 	        "availability": {
 	            "frequency": "Hour",
@@ -227,9 +224,7 @@ Data Management Gateway で Teradata データベースに接続するには、[
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティを **OnPremisesTeradata** に設定する必要があります | はい
-server | Teradata のサーバーの名前です。 | はい
-database | Teradata のデータベースの名前です。 | はい 
-schema | データベース内のスキーマの名前です。 | いいえ
+server | Teradata のサーバーの名前です。 | あり
 authenticationType | Teradata データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
@@ -241,11 +236,8 @@ gatewayName | Data Factory サービスが、オンプレミスの Teradata デ�
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
 
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**RelationalTable** 型のデータセット (Teradata データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。現時点では、Teradata データセットでサポートされる種類のプロパティはありません。
 
-プロパティ | 説明 | 必須
--------- | ----------- | --------
-tableName | リンクされたサービスが参照する Teradata データベース インスタンスのテーブルの名前です。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
 
 ## Teradata のコピー アクティビティの type プロパティ
 
@@ -257,7 +249,7 @@ tableName | リンクされたサービスが参照する Teradata データベ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ (**データセット**の **tableName** が指定されている場合)
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | はい
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -316,4 +308,4 @@ Xml | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

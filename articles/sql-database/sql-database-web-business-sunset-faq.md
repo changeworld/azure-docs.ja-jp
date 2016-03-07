@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="12/01/2015"
+   ms.date="02/23/2016"
    ms.author="sstein" />
 
 # Web および Business Edition の終了に関する FAQ
@@ -31,13 +31,13 @@ Web データベースおよび Business データベースをアップグレー
 
 ## Azure ポータルで Web Edition および Business Edition のデータベースが提供終了と表示されるのはどうしてですか
 
-Web Edition および Business Edition のデータベースは、2015年 9 月以降利用できなくなるため、ポータルでは、Web データベースおよび Business データベースに提供終了のラベル表示をしています。Web Edition および Business Edition のデータベースはまだ通常どおりプロビジョニングおよび管理できますが、新しいデータベースでは、Basic、Standard、または Premium サービス階層を使用することが最善であるということを提供終了のラベルで注意喚起しています。また、すべての Web Edition および Business Edition のデータベースを Standard、Basic、または Premium にアップグレードする必要があることも、提供終了のラベルで注意喚起しています。既存の Web データベースまたは Business データベースを新しいサービス階層にアップグレードする方法の詳細については、「[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」を参照してください。
+Web Edition および Business Edition のデータベースは、2015年 9 月以降利用できなくなるため、ポータルでは、Web データベースおよび Business データベースに提供終了のラベル表示をしています。また、すべての Web Edition および Business Edition のデータベースを Standard、Basic、または Premium にアップグレードする必要があることも、提供終了のラベルで注意喚起しています。既存の Web データベースまたは Business データベースを新しいサービス階層にアップグレードする方法の詳細については、「[Azure SQL Database V12 へのアップグレード](sql-database-upgrade-server-portal.md)」を参照してください。
 
 ## 既存の Web Edition および Business Edition のデータベースをアップグレードする最適な新しいサービス階層はどれでしょうか
 
 既存の Web データベースまたは Business データベースに適した新しいサービス階層とパフォーマンス レベルを選択する場合、アプリケーションで必要な具体的な機能およびパフォーマンスを考慮する必要があります。
 
-前述のお勧めの価格レベルを使用するか、適切な新しいサービス階層を選択する際の詳細情報を、「[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」で参照してください。
+前述のお勧めの価格レベルを使用するか、適切な新しいサービス階層を選択する際の詳細情報を、「[Azure SQL Database V12 へのアップグレード](sql-database-upgrade-server-portal.md)」で参照してください。
 
 ## Microsoft が新しいサービス階層を導入するのはなぜですか
 
@@ -66,6 +66,6 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 [サービス階層](sql-database-service-tiers.md)
 
-[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
+[Azure SQL Database V12 へのアップグレード](sql-database-upgrade-server-portal.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

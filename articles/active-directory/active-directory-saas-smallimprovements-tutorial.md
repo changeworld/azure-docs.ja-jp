@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="02/22/2016"
 	ms.author="jeedes"/>
 
 
@@ -35,7 +35,7 @@ Azure AD と Small Improvements の統合を構成するには、次のものが
 - Small Improvements でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -87,19 +87,19 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 **Small Improvements で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Small Improvements** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
+1. Azure クラシック ポータルの **Small Improvements** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![Configure Single Sign-On][6]<br>
 
-2. **[ユーザーの Small Improvements へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_03.png)<br>
+2. **[ユーザーの Small Improvements へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_03.png)<br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_04.png) <br>
 
-    > [AZURE.NOTE]アカウントのドメイン名を構成するには、Small Improvements サポート チーム ([Support@small-improvements.com](mailto:support@small-improvements.com)) に連絡してください。これは、シングル サインオンが動作するために必要です。
+    > [AZURE.NOTE] アカウントのドメイン名を構成するには、Small Improvements サポート チーム ([Support@small-improvements.com](mailto:support@small-improvements.com)) に連絡してください。これは、シングル サインオンが動作するために必要です。
 
 
     a.**[サインオン URL]** ボックスに、ユーザーが Small Improvements アプリケーションへのサインオンに使用する URL を入力します。b.**[次へ]** をクリックします。
 
 
-4. **[Small Improvements でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_05.png) <br>
+4. **[Small Improvements でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -108,13 +108,13 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Small Improvements 企業サイトにサインオンします。
 
-1. メイン ダッシュ ボード ページで、左側の **[管理]** ボタンをクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_06.png)<br>
+1. メイン ダッシュ ボード ページで、左側の **[管理]** ボタンをクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_06.png)<br>
 
 
-1. **[統合]** セクションで、**[SAML SSO]** ボタンをクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_07.png)<br>
+1. **[統合]** セクションで、**[SAML SSO]** ボタンをクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_07.png)<br>
 
 
-1. [SSO セットアップ] ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_08.png)<br>
+1. [SSO セットアップ] ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_08.png)<br>
 
     a.Azure クラシック ポータルで、**[Small Improvements でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[HTTP エンドポイント]** テキスト ボックスに貼り付けます。
 
@@ -127,9 +127,9 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 	e.**[保存]** をクリックします。
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
 
 
 
@@ -204,7 +204,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で、**[Small Improvements]** を選択します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_50.png) <br>
+2. アプリケーションの一覧で、**[Small Improvements]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -243,4 +243,4 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 [204]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

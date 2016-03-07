@@ -4,15 +4,15 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.workload="NA"
+   ms.date="02/22/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
@@ -279,4 +279,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

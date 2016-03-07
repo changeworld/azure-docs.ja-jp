@@ -19,7 +19,7 @@
 
 #.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。このドキュメントでは、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
 
@@ -358,4 +358,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

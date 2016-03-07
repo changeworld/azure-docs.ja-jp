@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 アプリ モデルへの変更 |Microsoft Azure"
+	pageTitle="Azure AD v2.0 エンドポイントへの変更 | Microsoft Azure"
 	description="アプリ モデル v2.0 パブリック プレビュー プロトコルに対して行われた変更について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/11/2016"
+	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
 # v2.0 の認証プロトコルに対する重要な更新
@@ -67,12 +67,10 @@ v2.0 エンドポイントは、トークンに関連するメタデータを含
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-応答は、次の JSON オブジェクトのようになります。
-
-```
+応答は、次の JSON オブジェクトのようになります。```
 { 
 	"token_type": "Bearer",
-	"expires_in": "3599",
+	"expires_in": 3599,
 	"scope": "https://outlook.office.com/mail.read",
 	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
@@ -87,7 +85,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 { 
 	"token_type": "Bearer",
-	"expires_in": "3599",
+	"expires_in": 3599,
 	"scope": "https://outlook.office.com/mail.read",
 	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
@@ -113,7 +111,7 @@ https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_exp
 ```
 { 
 	"token_type": "Bearer",
-	"id_token_expires_in": "3599",
+	"id_token_expires_in": 3599,
 	"scope": "openid",
 	"id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
@@ -145,7 +143,7 @@ client_id=...
 ```
 { 
 	"aud": "580e250c-8f26-49d0-bee8-1c078add1609",
-	"iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0",
+	"iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0 ",
 	"iat": 1449520283,
 	"nbf": 1449520283,
 	"exp": 1449524183,
@@ -186,7 +184,7 @@ https://login.microsoftonline.com/{some-guid}/v2.0/
 ここでの guid は、トークンを発行した Azure AD テナントの tenantId でした。これらの変更により、issuer 値は、両方のトークンおよび OpenID Connect 検出ドキュメントで
 
 ```
-https://login.microsoftonline.com/{some-guid}/v2.0
+https://login.microsoftonline.com/{some-guid}/v2.0 
 ```
 
 次のようになります。
@@ -212,12 +210,10 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 ## プロトコルの変更はどれくらいの頻度で発生するのですか?
 今後、認証プロトコルには大きな変更はないと予測しています。近いうちにこの種の更新を行わなくて済むよう、意図的にこれらの変更を 1 つのリリースにバンドルしています。もちろん、集中型の v2.0 認証サービスにユーザーが利用できる機能は追加し続けますが、それらは追加型の変更で、既存のコードは壊さないものにします。
 
-このような理由で、v2.0 エンドポイントはまだプレビュー状態のままです。つまり、これに依存する実稼働アプリをリリースするときには注意をする必要があり、このような状況が起こる場合に備え準備しておいてください。v2.0 エンドポイントが GA に達した場合にのみ、開発者がサービスの現在の状態の依存関係を使用することを推奨します。
-
 最後に、プレビュー期間中にお試しいただいたことに感謝したいと思います。これまで、早期に採用していただいた方々の洞察および体験は非常に貴重でした。今後も引き続きご意見やアイディアを共有していただけると幸いです。
 
 コーディングをお楽しみください!
 
 Microsoft ID 部門
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

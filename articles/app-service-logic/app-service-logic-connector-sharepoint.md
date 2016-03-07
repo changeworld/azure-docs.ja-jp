@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/30/2015"
+   ms.date="02/11/2016"
    ms.author="sameerch"/>
 
 # SharePoint コネクタの使用を開始して、SharePoint コネクタをロジック アプリに追加する
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理します。さらに、ドキュメントやリスト項目の作成、更新、取得、削除などの操作を実行できます。オンプレミスの SharePoint サーバーを使用する場合は、コネクタの構成の一部として Service Bus 接続文字列を入力し、サーバーに接続するオンプレミスのリスナー エージェントをインストールすることができます。
 
 SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラリー アプリでは、SharePoint とやり取りするメカニズムとしてトリガーとアクションを使用できます。
@@ -35,7 +37,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 	名前 | 必須 | 説明
 --- | --- | ---
 サイトの URL | はい | SharePoint Web サイトの完全な URL を入力します。たとえば、「 *https://microsoft.sharepoint.com/teams/wabstest* 」のように入力します。
-ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
+ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 
 5. 完了すると、パッケージの設定は次のようになります。  
 ![][1]
@@ -57,7 +59,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 認証モード | はい | SharePoint サイトへの接続に使用する認証モードを指定します。設定できるオプションは次のとおりです。<ul><li>既定</li><li>WindowsAuthentication</li><li>FormBasedAuthentication</li></ul><br/><br/>[既定] を選択した場合は、SharePoint コネクタを実行している資格情報が使用されます。ユーザー名/パスワードは必要ありません。その他の認証の種類では、ユーザー名とパスワードが必要です。<br/><br/>**注** 匿名認証はサポートされていません。
 ユーザー名 | いいえ | 認証モードが [既定] でない場合は、SharePoint サイトへの接続に使用する有効なユーザー名を入力します。
 パスワード | いいえ | 認証モードが [既定] でない場合は、SharePoint サイトへの接続に使用する有効なパスワードを入力します。
-ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
+ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 
 5. 完了すると、パッケージの設定は次のようになります。  
@@ -465,11 +467,11 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
-パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](app-service-api-manage-in-portal.md)」を参照してください。
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
 
 
 <!--Image references-->
@@ -481,4 +483,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [6]: ./media/app-service-logic-connector-sharepoint/image_5.png
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

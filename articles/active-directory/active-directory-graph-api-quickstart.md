@@ -15,14 +15,14 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="11/17/2015"
+      ms.date="02/22/2016"
       ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
 
 Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476(Azure.100).aspx)) を参照してください。
 
-> [AZURE.IMPORTANT]Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
+> [AZURE.IMPORTANT] Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
 
 ## Graph API URL の作成方法
 
@@ -60,7 +60,7 @@ Graph API メタデータ ファイルが返るようにするには、URL の t
 
 Azure AD Graph API 用の Graph Explorer を使用して、アプリケーションの作成時にディレクトリ データをクエリできます。
 
-> [AZURE.IMPORTANT]Graph Explorer では、ディレクトリへのデータの書き込みやディレクトリからのデータの削除は実行できません。Graph Explorer で実行できるのは、Azure AD ディレクトリに対する読み取り操作のみです。
+> [AZURE.IMPORTANT] Graph Explorer では、ディレクトリへのデータの書き込みやディレクトリからのデータの削除は実行できません。Graph Explorer で実行できるのは、Azure AD ディレクトリに対する読み取り操作のみです。
 
 次に示す図は、Graph Explorer に移動し、[デモ会社を使用する] を選択し、デモ ディレクトリのすべてのユーザーを表示するために「`https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.5`」と入力した場合に表示される出力です。
 
@@ -94,7 +94,7 @@ Graph Explorer の次の機能と制限事項に注意してください。 - �
 2. 新しいセキュリティ グループを作成するため、プルダウン メニューから HTTP メソッドとして **[Post]** を選択します。グループ オブジェクトに対する操作と権限の詳細については、「[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」の「[グループ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity)」を参照してください。
 3. **[Post]** の横にあるフィールドに、要求 URL として次のように入力します。`https://graph.windows.net/mytenantdomain/groups?api-version=1.5`
 
-    > [AZURE.NOTE]mytenantdomain は、各自の Azure AD ディレクトリのドメイン名に置き換える必要があります。
+    > [AZURE.NOTE] mytenantdomain は、各自の Azure AD ディレクトリのドメイン名に置き換える必要があります。
 
 4. [Post] プルダウンのすぐ下にあるフィールドに、次のように入力します。
 
@@ -104,7 +104,7 @@ Authorization: your access token
 Content-Type: application/json
 ```
 
-    > [AZURE.NOTE]&lt;your access token&gt; は、各自の Azure AD ディレクトリ用のアクセス トークンに置き換えます。
+    > [AZURE.NOTE] &lt;your access token&gt; は、各自の Azure AD ディレクトリ用のアクセス トークンに置き換えます。
 
 5. **[Request body]** フィールドに、次のように入力します。
 
@@ -125,4 +125,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 
 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

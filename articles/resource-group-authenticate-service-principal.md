@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="11/18/2015"
+   ms.date="02/21/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
@@ -25,9 +25,11 @@
 Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を利用できます。Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。Azure CLI がインストールされていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。ポータルを使用してこれらの手順を実行する方法の詳細については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」を参照してください。
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、[Azure Active Directory とは何ですか。](active-directory/active-directory-whatis.md)を参照してください。
+1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
 2. サービス プリンシパル - 他のリソースにアクセスする必要がある、ディレクトリ内のアプリケーションのインスタンス。
-3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)を参照してください。
+3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。
+
+アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
 ## パスワードによるサービス プリンシパルの認証 - PowerShell
 
@@ -312,4 +314,4 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

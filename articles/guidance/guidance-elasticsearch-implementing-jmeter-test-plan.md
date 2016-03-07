@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Elasticsearch 用の JMeter テスト プランを実装するための考慮事項 | Microsoft Azure"
+   pageTitle="Elasticsearch 用の JMeter テスト計画を実装する | Microsoft Azure"
    description="JMeter で Elasticsearch のパフォーマンス テストを実行する方法。"
    services=""
    documentationCenter="na"
@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/05/2016"
-   ms.author="mabsimms"/>
+   ms.date="02/18/2016"
+   ms.author="masimms"/>
    
-# Elasticsearch の JMeter テスト計画を実装するための考慮事項
+# Elasticsearch 用の JMeter テスト計画を実装する
 
-これは[一連の記事の一部](guidance-elasticsearch-introduction.md)です。
+これは[一連の記事の一部](guidance-elasticsearch.md)です。
 
-Elasticsearch に対して実施されるパフォーマンス テストは、JMeter テスト計画を、クラスターにデータをアップロードするなどのタスクを実行する JUnit テストとして組み込まれる Java コードと共に使用することで実装されました。テスト計画と JUnit コードは、「Maximizing Data Ingestion Performance with Elasticsearch on Azure (Azure での Elasticsearch によるデータ取り込みパフォーマンスの最大化)」と「Maximizing Data Aggregation and Query Performance with Elasticsearch on Azure (Azure での Elasticsearch によるデータ集約とクエリのパフォーマンスの最大化)」で説明されています。
+Elasticsearch に対して実施されるパフォーマンス テストは、JMeter テスト計画を、クラスターにデータをアップロードするなどのタスクを実行する JUnit テストとして組み込まれる Java コードと共に使用することで実装されました。テスト計画と JUnit コードは、「[Azure での Elasticsearch のデータ インジェスト パフォーマンスのチューニング][]」と「[Tuning Data Aggregation and Query Performance for Elasticsearch on Azure (Azure で Elasticsearch のデータの集計とクエリのパフォーマンスを調整する)][]」で説明されています。
 
 このドキュメントの目的は、これらのテスト計画の作成と実行から得られる主要なエクスペリエンスを要約することです。Apache JMeter Web サイトの [JMeter Best Practices (JMeter ベスト プラクティス)](http://jmeter.apache.org/usermanual/best-practices.html) ページに、JMeter を効果的に使用するための一般的なアドバイスが記載されています。
 
@@ -33,11 +33,13 @@ JMeter テスト計画を作成するときに考慮する必要がある項目�
 
 - スレッド グループ内のスレッドが多すぎないようにします。スレッドの数が多すぎると、JMeter が「メモリ不足」例外で失敗します。単一の JMeter サーバーで多数のスレッドを実行するのではなく、それぞれが少数のスレッドを実行する従属サーバーを追加することをお勧めします。
 
-![](./media/guidance-elasticsearch-jmeter-testing1.png)
+![](./media/guidance-elasticsearch/jmeter-testing1.png)
 
-- クラスターのパフォーマンスを評価するために、テスト計画に[パフォーマンス メトリック コレクター](http://jmeter-plugins.org/wiki/PerfMon/) プラグインを組み込みます。これは、JMeter の標準プラグインの 1 つとして利用できる JMeter リスナーです。未加工のパフォーマンス データを CSV 形式でファイルに保存し、テストの完了後に処理します。そのほうが、データがキャプチャされたときに処理するよりも効率的であり、JMeter に与える負荷が軽くなります。Excel などのツールを使用してデータをインポートし、分析するためのグラフを生成できます。
+- クラスターのパフォーマンスを評価するために、テスト計画に[パフォーマンス メトリック コレクター](http://jmeter-plugins.org/wiki/PerfMon/) プラグインを組み込みます。これは、JMeter の標準プラグインの 1 つとして利用できる JMeter リスナーです。未加工のパフォーマンス データを CSV 形式でファイルに保存し、テストの完了後に処理します。そのほうが、データがキャプチャされたときに処理するよりも効率的であり、JMeter に与える負荷が軽くなります。 
 
-![](./media/guidance-elasticsearch-jmeter-testing2.png)
+Excel などのツールを使用してデータをインポートし、分析するためのグラフを生成できます。
+
+![](./media/guidance-elasticsearch/jmeter-testing2.png)
 
 次の情報をキャプチャすることを考慮する必要があります。
 
@@ -57,19 +59,19 @@ sh:-c:vmstat 1 5 | awk 'BEGIN { line=0;total=0;}{line=line+1;if(line&gt;1){total
 
 - 個別の集計レポート リスナーを使用して、パフォーマンスと、成功した操作と失敗した操作の回数を記録します。成功データと失敗データを別々のファイルにキャプチャします。
 
-![](./media/guidance-elasticsearch-jmeter-testing3.png)
+![](./media/guidance-elasticsearch/jmeter-testing3.png)
 
 - 各 JMeter テスト ケースをできるだけシンプルにして、パフォーマンスを特定のテスト操作に直接関連付けできるようにします。複雑なロジックを必要とするテスト ケースでは、そのロジックを JUnit テスト内にカプセル化し、JMeter の JUnit 要求サンプラーを使用してテストを実行することを検討します。
 
 - HTTP 要求サンプルを使用して、GET、POST、PUT、DELETE などの HTTP 操作を実行します。たとえば、POST クエリを使用し、*[ボディ データ]* ボックスにクエリの詳細を指定することで、Elasticsearch 検索を実行できます。
 
-![](./media/guidance-elasticsearch-jmeter-testing4.png)
+![](./media/guidance-elasticsearch/jmeter-testing4.png)
 
 - 反復と再利用を容易にするために、JMeter テスト計画をパラメーター化します。その後、スクリプトを使用してテスト計画の実行を自動化できます。
 
 ## JUnit テストの実装
 
-1 つまたは複数の JUnit テストを作成することで、複雑なコードを JMeter テスト計画に組み込むことができます。JUnit テストは、Eclipse などの Java IDE を使用して記述できます。「How-To: Create and Deploy a JMeter JUnit Sampler for Testing Elasticsearch Performance (操作方法: Elasticsearch のパフォーマンスをテストするために JMeter JUnit サンプラーを作成してデプロイする )」に、適切な開発環境をセットアップする方法に関する情報が記載されています。
+1 つまたは複数の JUnit テストを作成することで、複雑なコードを JMeter テスト計画に組み込むことができます。JUnit テストは、Eclipse などの Java IDE を使用して記述できます。「[Elasticsearch のパフォーマンスをテストするための JMeter JUnit サンプラーをデプロイする][]」に、適切な開発環境をセットアップする方法に関する情報が記載されています。
 
 JUnit テスト用のコードを記述するときに従う必要があるいくつかのベスト プラクティスを次に示します。
 
@@ -84,7 +86,7 @@ private String clusterName = "";
 private int itemsPerBatch = 0;
 
 /* JUnit test class constructor */
-public ElasticSearchLoadTest2(String params) {
+public ElasticsearchLoadTest2(String params) {
 	/* params is a string containing a set of comma separated values for:
 		hostName
 		indexName
@@ -134,4 +136,9 @@ public void bulkInsertTest() throws IOException {
 }
 ```
 
-<!---HONumber=AcomDC_0211_2016-->
+[Running Elasticsearch on Azure]: guidance-elasticsearch-running-on-azure.md
+[Azure での Elasticsearch のデータ インジェスト パフォーマンスのチューニング]: guidance-elasticsearch-tuning-data-ingestion-performance.md
+[Elasticsearch のパフォーマンスをテストするための JMeter JUnit サンプラーをデプロイする]: guidance-elasticsearch-deploying-jmeter-junit-sampler.md
+[Tuning Data Aggregation and Query Performance for Elasticsearch on Azure (Azure で Elasticsearch のデータの集計とクエリのパフォーマンスを調整する)]: guidance-elasticsearch-tuning-data-aggregation-and-query-performance.md
+
+<!---HONumber=AcomDC_0224_2016-->

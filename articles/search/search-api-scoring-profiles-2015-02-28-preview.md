@@ -1,5 +1,5 @@
 <properties
-	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Microsoft Azure | ホスト型クラウド検索サービス"
+	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Azure Search Preview API"
 	description="Azure Search は、ユーザーが定義したスコアリング プロファイルに基づき、ランク付けされた結果を調整するホスト型のクラウド検索サービスです。"
 	services="search"
 	documentationCenter=""
@@ -14,11 +14,11 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.author="heidist"
-	ms.date="11/04/2015" />
+	ms.date="02/18/2016" />
 
 # スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。
+> [AZURE.NOTE] この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) のドキュメントで説明されている `2015-02-28` バージョンとここで説明する `2015-02-28-Preview` バージョンの間に違いはありませんが、API 全体についてのドキュメントを提供するため、ここにも掲載しておきます。
 
 ## 概要
 
@@ -55,7 +55,7 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&api-version=2015-02-28-Preview
 
-このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview/#SearchDocs.md)」を参照してください。
+このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview/#SearchDocs)」を参照してください。
 
 スコアリング プロファイルの詳細な例を確認するには、「[例](#example)」をクリックします。
 
@@ -372,4 +372,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!----HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0224_2016-->

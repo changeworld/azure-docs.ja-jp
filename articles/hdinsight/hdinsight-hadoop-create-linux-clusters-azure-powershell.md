@@ -19,7 +19,7 @@
 
 #Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このドキュメントでは、Azure PowerShell を使用して Linux ベースの HDInsight クラスターをプロビジョニングする方法について説明し、スクリプト例を示します。
 
@@ -140,4 +140,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

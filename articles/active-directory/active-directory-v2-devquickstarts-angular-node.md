@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD AngularJS の概要 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 AngularJS の概要 | Microsoft Azure"
 	description="ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,22 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
 
-# アプリ モデル v2.0 プレビュー: AngularJS シングル ページ アプリへのサインインの追加 - NodeJS
+# AngularJS シングル ページ アプリへのサインインの追加 - NodeJS
 
-この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory のアプリ モデル v2.0 を使用して AngularJS アプリに追加します。アプリ モデル v2.0 を使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
+この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
 
 このサンプルは、タスクをバックエンドの REST API に格納する簡単な To-Do List シングル ページ アプリであり、NodeJS で記述され、Azure AD の OAuth ベアラー トークンを使用して保護されています。AngularJS アプリは、オープン ソースの JavaScript 認証ライブラリ [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用して、サインイン プロセス全体を処理し、REST API を呼び出すためのトークンを取得します。[Microsoft Graph](https://graph.microsoft.com) や Azure リソース マネージャー API などの他の REST API に対する認証にも、同じパターンを適用できます。
+
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 ## ダウンロード
 
 始めるには、[node.js](https://nodejs.org) をダウンロードしてインストールする必要があります。その後は、スケルトン アプリを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip)できます。
 
 ```
-git clone --branch skeleton https://github.com/AzureADQuickStarst/AppModelv2-SinglePageApp-AngularJS-NodeJS.git
+git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS.git
 ```
 
 スケルトン アプリには、簡単な AngularJS アプリ用の定型コードがすべて含まれますが、ID 関連の部分はまったく含まれません。代わりに、完全なサンプルを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/complete.zip)することもできます。
@@ -231,10 +234,10 @@ node server.js
 
 ブラウザーで `http://localhost:8080` にアクセスします。個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインします。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
-アプリ モデル v2.0 プレビューについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
+v2.0 エンドポイントについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
 - [GitHub の Azure 用サンプル >>](https://github.com/Azure-Samples)
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

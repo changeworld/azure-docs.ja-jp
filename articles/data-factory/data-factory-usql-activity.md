@@ -49,10 +49,10 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | はい
-accountName | Azure Data Lake Analytics アカウント名。 | はい
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
+accountName | Azure Data Lake Analytics アカウント名。 | あり
 dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
-authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | はい 
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
 subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
 sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | はい
@@ -62,9 +62,8 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
  
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
-| 非 AAD ユーザー (@hotmail.com、@live.com など) | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがData Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にある。 | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがData Factory のテナントと同じテナントにある。 | 14 日 |
+| Azure Active Directory (@hotmail.com、@live.com など) によって管理されていないユーザー | 12 時間 |
+| Azure Active Directory (AAD) によって管理されているユーザー | | OAuth ベースのリンクされたサービスに基づいて、最後のスライス実行からスライスが 14 日間実行しない場合、最後のスライス実行から 14 日です。<p>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。</p> |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -156,7 +155,7 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | はい
+type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | あり
 scriptPath | U-SQL スクリプトを含むフォルダーのパス。 | いいえ (スクリプトを使用する場合)
 scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)
 script (スクリプト) | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。例: "script" : "CREATE DATABASE test". | いいえ (scriptPath と scriptLinkedService を使用する場合)
@@ -258,4 +257,4 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

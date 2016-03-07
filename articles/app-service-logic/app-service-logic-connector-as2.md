@@ -4,7 +4,7 @@
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
    authors="rajeshramabathiran" 
-   manager="dwrede" 
+   manager="erikre" 
    editor=""/>
 
 <tags
@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="12/17/2015"
+   ms.date="02/18/2016"
    ms.author="rajram"/>
 
 # AS2 コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 AS2 コネクタを使って、AS2 (Applicability Statement 2) トランスポート プロトコルにより企業間通信でメッセージの送受信を行います。データはインターネット経由で安全かつ確実に転送されます。セキュリティはデジタル証明書と暗号化を使用して実現されています。
 
 AS2 コネクタをビジネス ワークフローに追加し、ロジック アプリ内の企業間ワークフローの一部としてデータを処理できます。
@@ -36,8 +38,8 @@ AS2 コネクタで使用する前に、次の項目を自分で作成する必�
 要件 | 説明
 --- | ---
 TPM API アプリ | AS2 コネクタを作成する前に、[BizTalk 取引先管理コネクタ][1]を作成する必要があります。<br/><br/>**注**: TPM API アプリの名前を確認してください。 
-Azure SQL Database | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注**: 接続文字列をこのデータベースにコピーしてください。<br/><br/>[Azure SQL Database を作成する方法](../sql-database-get-started.md)
-Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注**: アーカイブを有効にする場合は、接続文字列をこの Blob Storage にコピーしてください。<br/><br/>[Azure Storage アカウントについて](../storage-create-storage-account.md)
+Azure SQL Database | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注**: 接続文字列をこのデータベースにコピーしてください。<br/><br/>[Azure SQL Database を作成する方法](../sql-database/sql-database-get-started.md)
+Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注**: アーカイブを有効にする場合は、接続文字列をこの Blob Storage にコピーしてください。<br/><br/>[Azure Storage アカウントについて](../storage/storage-create-storage-account.md)
 
 ## AS2 コネクタの作成
 
@@ -97,9 +99,11 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 アクションが正常に終了すると、HTTP 200 の応答コードを返します。
 
 ## コネクタでできること
+[AS2 メッセージをアーカイブ](app-service-logic-archive-as2-messages.md)できます。
+
 ロジック アプリの詳細については、「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -117,4 +121,4 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="02/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用した StorSimple Virtual Array の管理 (プレビュー)
@@ -75,13 +75,15 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |目的の操作|移動先の UI ページ|実行する手順|
 |---|---|---|
 |サービスを作成する</br>サービスを削除する</br>サービス登録キーを取得する</br>サービス登録キーを再生成する|StorSimple Manager サービス|[StorSimple Manager サービスをデプロイする](storsimple-ova-manage-service.md)|
+|サービス データ暗号化キーを変更する</br>操作ログを表示する|StorSimple Manager サービス → [ダッシュボード]|[StorSimple サービス ダッシュボードを使用する](storsimple-ova-service-dashboard.md)|
 |仮想アレイを非アクティブ化する</br>仮想アレイを削除する|StorSimple Manager サービス → [デバイス]|[仮想アレイを非アクティブ化または削除する](storsimple-ova-deactivate-and-delete-device.md)|
 |障害復旧とデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>仮想デバイスにフェールオーバーする</br>ビジネス継続性障害復旧 (BCDR)</br>障害復旧時のエラー|StorSimple Manager サービス → [デバイス]|[StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー](storsimple-ova-failover-dr.md)|
 |共有やボリュームをバックアップする</br>手動バックアップを実行する</br>バックアップ スケジュールを変更する</br>既存のバックアップを表示する|StorSimple Manager サービス → [バックアップ カタログ]|[StorSimple Virtual Array をバックアップする](storsimple-ova-backup.md)|
 |バックアップ セットから共有を復元する</br>バックアップ セットからボリュームを復元する</br>項目レベルの回復 (ファイル サーバーのみ)|StorSimple Manager サービス → [バックアップ カタログ]|[StorSimple Virtual Array のバックアップから復元する](storsimple-ova-restore.md)|
 |ストレージ アカウントについて</br>ストレージ アカウントを追加する</br>ストレージ アカウントを編集する</br>ストレージ アカウントを削除する|StorSimple Manager サービス → [構成]|[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-ova-manage-storage-accounts.md)|
 |アクセス制御レコードについて</br>アクセス制御レコードを追加または変更する</br>アクセス制御レコードを削除する|StorSimple Manager サービス → [構成]|[StorSimple Virtual Array のアクセス制御レコードを管理する](storsimple-ova-manage-acrs.md)|
-|アラート設定を構成する</br>アラート通知を受け取る</br>アラートを管理する</br>アラートを確認する|StorSimple Manager サービス → [アラート]|[StorSimple Virtual Array のアラートを表示し、管理する](storsimple-ova-manage-alerts.md)
+|ジョブの詳細を表示する|StorSimple Manager サービス → [ジョブ]| [StorSimple Virtual Array ジョブを管理する](storsimple-ova-manage-jobs.md)|
+|アラート設定を構成する</br>アラート通知を受け取る</br>アラートを管理する</br>アラートを確認する|StorSimple Manager サービス → [アラート]|[StorSimple Virtual Array のアラートを表示し、管理する](storsimple-ova-manage-alerts.md)|
 |デバイス管理者のパスワードを変更する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple Virtual Array デバイス管理者パスワードを変更する](storsimple-ova-change-device-admin-password.md)|
 |ソフトウェアの更新プログラムをインストールする|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[仮想アレイを更新する](storsimple-ova-update.md)|
 
@@ -94,4 +96,4 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ##次のステップ
 Web UI とその使用方法については、「[StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

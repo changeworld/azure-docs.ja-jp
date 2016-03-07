@@ -20,18 +20,17 @@
 
 ## 概要
 
-このドキュメントは、API を使用していた Capptain ユーザーが Azure Mobile Engagement に移行する場合のガイドです。認証メカニズムを新しい API で動作させる方法について詳しく説明します。
+認証メカニズムを新しい API で動作させる方法について詳しく説明します。
 
 有効な Azure サブスクリプションを持っており、いずれかの[開発者チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を使用して Mobile Engagement アプリを作成してあることが前提です。
 
 ## 認証
 
-Capptain API から新しい Azure Mobile Engagement API に移行するときの主な相違点は、認証に関する部分です。以前の API は、基本認証をサポートしていました。新しい API では、Microsoft Azure Active Directory ベースの OAuth トークンを認証に使用する必要があります。
+認証には、Microsoft Azure Active Directory ベースの OAuth トークンを使用する必要があります。
 
 API の要求を認証するには、すべての要求に Authorization ヘッダーが追加されている必要があります。次のような形式でなければなりません。
 
 	Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
-
 
 >[AZURE.NOTE] Azure Active Directory のトークンは 1 時間で有効期限が切れます。
 
@@ -130,9 +129,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 	これらの値を参照できるようにコピーします。アクセス トークンを取得するには、`{TENANT_ID}` として TenantId を、`{CLIENT_ID}` として ApplicationId を、`{CLIENT_SECRET}` として Secret を使用します。
 
-
 8. Microsoft Azure 管理ポータルで、新しい AD アプリケーションが **[会社が所有するアプリケーションを表示する]** で表示されることを確認します。
-
 
 #### 有効なトークンを取得する手順
 
@@ -166,9 +163,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 401 ステータス コードが返される場合は、応答本文を確認します。トークンの有効期限が切れている可能性があります。その場合は、新しいトークンを取得します。
 
-
 ##API の使用
-
 
 有効なトークンが手に入ったので、API 呼び出しを行う準備ができました。
 
@@ -187,7 +182,6 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 	![](./media/mobile-engagement-api-authentication/mobile-engagement-api-uri-params.png)
 
-
 >[AZURE.NOTE] <br/> 1.[API ルート アドレス] は以前の API のためのものなので無視してください。<br/> 2. アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

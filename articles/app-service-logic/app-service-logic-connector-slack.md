@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps での Slack コネクタの使用 | Microsoft Azure App Service"
 	description="Slack コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="rajeshramabathiran" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/11/2015"
+	ms.date="02/11/2016"
 	ms.author="rajram"/>
 
 # Slack コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Slack API](../connectors/create-api-slack.md) をクリックしてください。
+
 Slack チャネルに接続し、チームにメッセージを投稿します。コネクタを "ワークフロー" の一部として Logic Apps で使用し、さまざまなタスクを実行できます。ワークフローで Slack コネクタを使用すると、他のコネクタを使用してさまざまなシナリオを実現できます。たとえば、ワークフローで [Facebook コネクタ](app-service-logic-connector-facebook.md)を使用して、Slack チャネルにメッセージを投稿できます。
 
 ## トリガーとアクション
@@ -42,7 +44,7 @@ Slack コネクタでは、次のトリガーとアクションを使用でき�
 
 ## ロジック アプリのアクションとしてのコネクタの使用
 
-> [AZURE.IMPORTANT]コネクタとロジック アプリは、常に同じリソース グループに作成する必要があります。
+> [AZURE.IMPORTANT] コネクタとロジック アプリは、常に同じリソース グループに作成する必要があります。
 
 Slack コネクタが作成されると、ロジック アプリにアクションとして追加できます。
 
@@ -81,7 +83,7 @@ Slack コネクタでは REST API が使用できるため、ロジック アプ
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -99,4 +101,4 @@ Slack コネクタでは REST API が使用できるため、ロジック アプ
 [8]: ./media/app-service-logic-connector-slack/img8.PNG
 [9]: ./media/app-service-logic-connector-slack/img9.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

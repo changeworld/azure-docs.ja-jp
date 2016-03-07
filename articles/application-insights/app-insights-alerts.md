@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/22/2016" 
+	ms.date="02/19/2016" 
 	ms.author="awills"/>
  
 # Application Insights のアラートの設定
@@ -100,6 +100,10 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 * **サーバー応答時間**と、Web アプリケーションのサーバー側の**失敗した要求**。アラートの設定に加えて、これらのメトリックを監視して、高い要求レートでメトリックが過度に変動するかどうかを確認します。これは、アプリケーションでのリソースの不足を示している可能性があります。
 * **サーバー例外** - サーバー例外を表示するには、[追加のセットアップ](app-insights-asp-net-exceptions.md)を実行する必要があります。
 
+## Automation
+
+* [PowerShell を使用したアラートの設定の自動化](app-insights-powershell-alerts.md)
+* [Webhook を使用したアラートへの対応の自動化](../azure-portal/insights-webhooks-alerts.md)
 
 ## 関連項目
 
@@ -119,4 +123,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

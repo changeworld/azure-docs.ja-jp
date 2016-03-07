@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/01/2015"
+	ms.date="02/22/2016"
 	ms.author="raynew"/>
 
 
@@ -23,7 +23,7 @@ Azure Site Recovery は、仮想マシンと物理サーバーのレプリケー
 
 この記事では、2 つのオンプレミス データセンター間またはオンプレミスのデータセンターと Azure の間で、Site Recovery を使って VMM クラウド内の Hyper-V 仮想マシンをレプリケートする場合に、ネットワーク設定を最適に構成するのに役立つネットワーク マッピングについて説明します。VMM クラウドを使用していない Hyper-V VM をレプリケートする場合、または VMware VM や物理サーバーをレプリケートする場合は、この記事の内容は当てはまりません。
 
-この記事について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
 ## 概要
@@ -123,4 +123,4 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 
 ネットワーク マッピングに関する理解が深まったところで、[Site Recovery をデプロイしてみましょう](site-recovery-best-practices.md)。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

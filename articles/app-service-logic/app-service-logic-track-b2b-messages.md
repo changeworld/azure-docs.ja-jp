@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="12/07/2015"
+   ms.date="02/18/2016"
    ms.author="rajram"/>
 
 
 # B2B メッセージを追跡する
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 ## B2B 追跡情報
 B2B 通信には取引先間のメッセージ処理が関係します。リレーションシップは、取引先との 2 者間の契約として定義されます。通信が確立されると、期待どおりに通信が行われているかどうかを監視する手段が必要になります。
@@ -45,4 +47,4 @@ X12 API アプリのインスタンスを作成したら、このインスタン
 [1]: ./media/app-service-logic-track-b2b-messages/AS2Tracking.png
 [2]: ./media/app-service-logic-track-b2b-messages/EDIFACTTracking.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0224_2016-->

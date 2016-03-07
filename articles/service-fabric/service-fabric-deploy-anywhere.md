@@ -1,9 +1,9 @@
 <properties
    pageTitle="Azure Service Fabric を使用して任意の場所にデプロイする (Windows Server および Linux) | Microsoft Azure"
-   description="Service Fabric クラスターは Windows Server および Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。"
+   description="Service Fabric クラスターは Windows Server または Linux で実行されます。つまり、Windows Server または Linux を実行できる任意の場所に Service Fabric アプリケーションをデプロイしてホストできます。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="kunalds"
+   authors="Chackdan"
    manager="timlt"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/19/2015"
-   ms.author="kunalds"/>
+   ms.date="02/10/2016"
+   ms.author="chackdan"/>
 
 # Service Fabric を使用して Windows Server または Linux の「任意の場所にデプロイ」する
 "任意の場所にデプロイ" 機能の追加により、Azure Service Fabric を使用すると、Windows Server または Linux を実行している VM またはコンピューターに Service Fabric クラスターを作成できます。つまり、オンプレミスかクラウド プロバイダーかを問わず、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に Service Fabric アプリケーションをデプロイして実行できます。
@@ -24,13 +24,13 @@
 この機能のテクニカル プレビューは、2016 年の第 1 四半期にリリースされる予定です。
 
 ## サポートされているオペレーティング システム
-クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます。 * Windows Server 2012 R2 * Windows Server 2016 * Linux
+クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます。 * Windows Server 2012 * Windows Server 2012 R2 * Windows Server 2016 * Linux
 
 ## サポートされているプログラミング言語
 Service Fabric アプリケーションは、次のプログラミング言語を使用して作成できます。 * C# * Java
 
 ## クラスターの作成と構成
-Service Fabric は、Microsoft ダウンロード センターからセットアップ パッケージをダウンロードできます。このパッケージをダウンロードした後、構成ファイルに変更を加えてクラスターの設定を指定する必要があります。クラスター設定の編集を終えたら、セットアップ スクリプトを実行して、クラスター設定で指定した複数のコンピューターにまたがるクラスターを作成します。
+Service Fabric で用意されているセットアップ パッケージをダウンロードできます。このパッケージをダウンロードした後、構成ファイルに変更を加えてクラスターの設定を指定する必要があります。クラスター設定の編集を終えたら、セットアップ スクリプトを実行して、クラスター設定で指定した複数のコンピューターにまたがるクラスターを作成します。
 
 セットアップ プロセスの詳細については、2016 年第 1 四半期にこの機能のプレビューがリリースされる際に公開されます。
 
@@ -50,7 +50,8 @@ Azure で Service Fabric クラスターを実行すると、"任意の場所に
 
 * **Azure ポータル**: Azure ポータルを使用すると、クラスターの作成と管理が容易になります。
 * **Azure リソース マネージャー**: Azure リソース マネージャーを使用すると、クラスターでユニットとして使用されているリソースの管理が容易になり、コストの追跡と要求を簡素化できます。
+* **Azure リソース**: Service Fabric クラスターは ARM リソースなので、Azure の他の ARM リソースと同じようにモデル化できます。
 * **診断**: Azure では、Azure 診断および Operational Insights との統合が提供されます。
 * **自動スケール**: Azure 上のクラスターのために、組み込みの自動スケール機能を提供します。"任意の場所にデプロイ" 機能を使用するその他の環境では、自動スケール機能を自社で構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -15,13 +15,13 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/16/2016" 
+	ms.date="02/18/2016" 
 	ms.author="jeffstok"
 />
 
-# Stream Analytics を使って IOT ソリューションを構築する #
+# Stream Analytics を使って IOT ソリューションを構築する
 
-## はじめに ##
+## はじめに
 
 このチュートリアルでは、データに隠された知見を Azure Stream Analytics を使ってリアルタイムで突き止める方法を説明します。蓄積されたデータではなく今まさに発生しているデータをいかに活用するかというテーマに今日、多くの開発者が取り組んでいます。Azure のストリーム処理サービスを利用すると、データのストリーム (クリック ストリーム、ログ、デバイスによって生成されたイベントなど) に履歴レコードや参照データを組み合わせて、すばやく簡単にビジネス インサイトを導き出すことができます。Azure Stream Analytics は、Microsoft Azure の徹底した管理によってホストされたリアルタイム ストリーム計算処理サービスであるため、高い障害回復力とスケーラビリティ、低遅延が実現され、短時間での立ち上げが可能となっています。
 
@@ -33,7 +33,7 @@
 -   Azure Streaming Analytics を使って顧客向けのストリーミング ソリューションを自信を持って開発する。
 -   監視機能とログ機能の使用経験を問題のトラブルシューティングに活かす。
 
-## 前提条件 ##
+## 前提条件
 
 このチュートリアルを正常に完了するための前提条件は次のとおりです。
 
@@ -41,20 +41,21 @@
 -   Visual Studio 2015 または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 -   [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 -   コンピューターの管理特権
--   [GitHub](https://github.com/streamanalytics/samples/releases) からダウンロードした最新版の TollApp.zip
+-   Microsoft Download Center から [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) をダウンロードします。
+-   省略可能: [GitHub](https://github.com/streamanalytics/samples/tree/master/TollApp) の TollApp イベント ジェネレーターのソース コード
 
-## シナリオの説明 - "料金所" ##
+## シナリオの説明 - "料金所"
 
 
 高速道路には必ず料金所があります。海外に行くと、橋やトンネルに料金所が設けられていることもあります。それぞれの料金所には複数の料金所ブースがあり、それぞれ手動式と自動式とに分けられます。停車して通行料金を精算するのが手動式です。一方、車両が料金所ブースを通過する際、ブース上方に設置されているセンサーが、車両のフロントガラスに貼り付けられた RFID カードをスキャンするのが自動式です。車両が料金所を通過した事実は、イベント ストリームとして簡単に可視化でき、そのストリームを介して必要な処理を実行することができます。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
 
-## 受信データ ##
+## 受信データ
 
 操作の対象となるのは、料金所の入口と出口に設置されたセンサーによって生成される 2 つのデータ ストリームと、車両の登録データが格納された静的なルックアップ データセットです。
 
-### 入口データ ストリーム ###
+### 入口データ ストリーム
 
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。
   
@@ -108,7 +109,7 @@
 | ExitTime | 車両が料金所ブースから出た日時 (UTC) |
 | LicensePlate | 車両のナンバー プレートの番号 |
 
-###商用車の登録データ
+### 商用車の登録データ
 
 商用車登録データベースを使用します。特定の時点の静的なデータであり変化しません。
   
@@ -148,7 +149,7 @@ Azure アカウントをお持ちでない場合は、<http://azure.microsoft.co
 
 必要なリソースはすべて、GitHub の TollApp フォルダーにある Setup.ps1 スクリプトを使って作成できます。時間を節約するために、このスクリプトを実行することをお勧めします。Azure ポータルでこれらのリソースを構成する方法については、Azure ポータルでチュートリアル リソースを構成する方法について書かれた付録を参照してください。
 
-関連する [TollApp](https://github.com/streamanalytics/samples/releases) フォルダーとファイルをダウンロードして保存します。必ず最新版をダウンロードしてください。
+関連する [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
 
 [Microsoft Azure PowerShell] ウィンドウを**管理者として**開きます。まだ Azure PowerShell をお持ちでない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順に従ってインストールしてください。
 
@@ -224,7 +225,7 @@ Azure 管理ポータルの左側にある [SQL データベース] メニュー
 
 ポート番号を除いたサーバー名をコピーします (例: *servername*.database.windows.net)。
 
-##Visual Studio からデータベースに接続する
+## Visual Studio からデータベースに接続する
 
 出力データベースに格納されているクエリの結果には、Visual Studio を使用してアクセスします。
 
@@ -256,7 +257,7 @@ Azure 管理ポータルの左側にある [SQL データベース] メニュー
   
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
   
-##イベント ジェネレーター - TollApp サンプル プロジェクト
+## イベント ジェネレーター - TollApp サンプル プロジェクト
 
 PowerShell スクリプトは、TollApp というサンプル アプリケーション プログラムを使用して、イベントの送信を自動的に開始します。別途処理を実行する必要はありません。
 
@@ -278,7 +279,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image22.png)
 
-##入力ソースの定義
+## 入力ソースの定義
 
 ポータルで作成した分析ジョブをクリックします。
 
@@ -344,7 +345,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image36.jpg)
 
-##出力の定義
+## 出力の定義
 
 [出力] タブに移動し、[出力の追加] をクリックします。
 
@@ -358,7 +359,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.jpg)
 
-##Azure Stream Analytics クエリ
+## Azure Stream Analytics クエリ
 
 [クエリ] タブには、入力データに対して変換を実行する SQL クエリが表示されます。
 
@@ -368,7 +369,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 初めての Azure Stream Analytics ジョブを作成する前に、いくつかのシナリオとクエリ構文について詳しく見ていきましょう。
 
-##Azure Stream Analytics クエリ言語について
+## Azure Stream Analytics クエリ言語について
 -----------------------------------------------------
 
 料金所ブースに入る車両の台数をカウントしなければならなくなったとします。絶えず発生するイベントであるため、"期間" の定義が不可欠となります。そこで目的を少し変更し、"3 分ごとに料金所ブースに入る車両の台数" を調べることにします。これを一般に "タンブリング カウント" といいます。
@@ -383,7 +384,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 詳細については、クエリにおける[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[時間枠](https://msdn.microsoft.com/library/azure/dn835019.aspx)の概念についての記事を MSDN でご覧ください。
 
-##Azure Stream Analytics クエリのテスト
+## Azure Stream Analytics クエリのテスト
 
 初めての Azure Stream Analytics クエリを作成したら、TollApp フォルダーの以下のパスに格納されているサンプル データ ファイルを使ってクエリをテストします。
 
@@ -411,7 +412,7 @@ Azure 管理ポータルを開き、先ほど作成した Azure Stream Analytics
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.jpg)
 
-##テスト 2 - 各車両が料金所ブースを通過するのにかかる総時間を調べる
+## テスト 2 - 各車両が料金所ブースを通過するのにかかる総時間を調べる
 
 効率と顧客満足を評価するために、車両が料金所を通過するのにかかる平均時間を調べるとします。
 
@@ -435,7 +436,7 @@ Azure 管理ポータルを開き、先ほど作成した Azure Stream Analytics
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image45.png)
 
-##テスト 3 – 登録が期限切れとなっているすべての商用車を調べる
+## テスト 3 – 登録が期限切れとなっているすべての商用車を調べる
 
 Azure Stream Analytics では、特定の時点の静的データを使用して経時的に発生するデータ ストリームを結合することができます。この機能のデモとして、次のテストを行います。
 
@@ -457,7 +458,7 @@ Azure Stream Analytics では、特定の時点の静的データを使用して
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image47.png)
 
-##Stream Analytics ジョブの開始
+## Stream Analytics ジョブの開始
 
 
 初めての Azure Stream Analytics クエリを作成したところで、必要な構成を行ってジョブを開始します。テスト 3 で作成したクエリを保存してください。出力テーブル **TollDataRefJoin** のスキーマに適合した出力結果が、このクエリによって生成されます。
@@ -474,13 +475,13 @@ Azure Stream Analytics では、特定の時点の静的データを使用して
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.jpg)
 
-##Visual Studio での結果の確認
+## Visual Studio での結果の確認
 
 Visual Studio のサーバー エクスプローラーを開いて TollDataRefJoin テーブルを右クリックします。[テーブル データの表示] を選択すると、ジョブの出力結果が表示されます。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image51.jpg)
 
-##Azure Stream Analytics ジョブのスケールアウト
+## Azure Stream Analytics ジョブのスケールアウト
 
 Azure Stream Analytics は、エラスティックな拡張と高い負荷のデータ処理に対応するように設計されています。Azure Stream Analytics クエリで **PARTITION BY** 句を使用すると、そのステップをスケールアウトして処理するようシステムに命令することができます。PartitionId は、システムによって追加される特殊な列で、入力 (イベント ハブ) のパーティション ID と一致します。
 
@@ -500,7 +501,7 @@ Azure Stream Analytics は、エラスティックな拡張と高い負荷のデ
 
 これでジョブを開始すると、より多くのコンピューティング リソースに処理が分散され、スループットが向上します。TollApp アプリケーションから送信されるイベントも TollId でパーティション分割されることに注目してください。
 
-##Monitoring
+## Monitoring
 
 [監視] タブには、実行中のジョブに関する統計情報が表示されます。
 
@@ -516,13 +517,13 @@ Azure Stream Analytics は、エラスティックな拡張と高い負荷のデ
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image56.png)
 
-##まとめ
+## まとめ
 
 このチュートリアルでは、Azure Stream Analytics サービスの概要を紹介しました。デモンストレーションでは、Stream Analytics ジョブの入力と出力の構成方法を説明しました。イベント データをリアルタイムで扱ううえでの一般的な課題と、Azure Stream Analytics の SQL に似た単純なクエリを使ってそれを解決する方法について、通行料金データを例に説明しました。その中で触れた SQL 拡張機能の概念は、経時的に発生するデータを扱う際に必要となります。データ ストリームを結合する方法や、データ ストリームの利用価値を静的な参照データで高める方法についても紹介しました。また、クエリをスケールアウトしてスループットを高める方法について説明しました。
 
 このチュートリアルで取り上げた内容はあくまで入門的な位置付けであり、ここでは紹介しきれない情報も数多くあります。SAQL 言語を使ったクエリ パターンの詳細については、[こちら](stream-analytics-stream-analytics-query-patterns.md)を参照してください。Azure Stream Analytics の詳細については、[オンライン ドキュメント](https://azure.microsoft.com/documentation/services/stream-analytics/)を参照してください。
 
-##Azure アカウントのクリーンアップ
+## Azure アカウントのクリーンアップ
 
 Azure ポータルから Stream Analytics ジョブを停止してください。
 
@@ -534,4 +535,4 @@ PowerShell ウィンドウで「.\\Cleanup.ps1」と入力します。これに�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

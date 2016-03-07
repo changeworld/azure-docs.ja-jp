@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/01/2015" 
+	ms.date="02/23/2016" 
 	ms.author="ddove; sidneyh"/>
 
 #エラスティック データベース ジョブ コンポーネントのアンインストール
@@ -29,7 +29,7 @@
 
 ##PowerShell を使用してエラスティック データベース ジョブ コンポーネントをアンインストールする
 
-1.	Microsoft Azure PowerShell コマンド ウィンドウを開き、cd tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の tools サブディレクトリに移動します。
+1.	Microsoft Azure PowerShell コマンド ウィンドウを開き、**cd tools** と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxｘx.x フォルダー以下の tools サブディレクトリに移動します。
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
@@ -61,7 +61,5 @@
 エラスティック データベース ジョブの概要については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。
 
 <!--Image references-->
-[1]: ./media/sql-database-elastic-job-uninstall/
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

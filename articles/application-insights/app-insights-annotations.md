@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Application Insights のデプロイの注釈 | Microsoft Azure"
+    pageTitle="Application Insights のリリース注釈 | Microsoft Azure"
     description="Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。"
     services="application-insights"
     documentationCenter=".net"
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="02/22/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
@@ -30,7 +30,7 @@
 1. [Visual Studio Team Services](https://www.visualstudio.com/ja-JP/get-started/setup/sign-up-for-visual-studio-online) プロジェクトにサインインします。
 2. Visual Studio Marketplace で[リリース注釈拡張機能を取得](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)して、Team Services アカウントに追加します。
 
-![Team Service Web ページの右上で Marketplace を開くアカウントで Application Insights 注釈を検索してインストール](./media/app-insights-annotations/10.png)
+![Team Service Web ページの右上で Marketplace を開くSelect Visual Team Services and then under Build and Release, choose See More.](./media/app-insights-annotations/10.png)
 
 この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。
 
@@ -42,11 +42,11 @@
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインし、アプリケーションを監視する Application Insights リソースを開きます (まだリソースを作成していない場合は、[この時点で作成します](app-insights-overview.md))。
 2. **[設定]**、**[API アクセス]** の順に開き、**Application Insights ID** をコピーします。
 
-    ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。[API アクセス] を開きます。ファイル](./media/app-insights-annotations/20.png)
+    ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。[API アクセス] を開きます。アプリケーション ID をコピーする](./media/app-insights-annotations/20.png)
 
 2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-    タスクを追加し、メニューから \[Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
 
     [API アクセス] ブレードからコピーした **Application ID** を貼り付けます。
 
@@ -69,8 +69,13 @@
 
 5. 最後に、リリースの定義を**保存**します。
 
-## デプロイの注釈
+## リリース注釈
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。注釈は、メトリックス エクスプローラーのグラフに表示されます。
 
-<!---HONumber=AcomDC_0121_2016-->
+要求元、ソース管理の分岐、リリース定義、環境などを含む、リリースに関する詳細を表示するための注釈マーカーをクリックします。
+
+
+![任意のリリース注釈マーカーをクリックします。](./media/app-insights-annotations/60.png)
+
+<!---HONumber=AcomDC_0224_2016-->

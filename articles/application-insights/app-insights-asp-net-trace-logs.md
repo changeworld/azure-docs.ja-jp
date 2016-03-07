@@ -12,21 +12,34 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="02/22/2016" 
 	ms.author="awills"/>
  
 # Application Insights の .NET トレース ログを調べる  
 
 ASP.NET アプリケーションで NLog、log4Net、System.Diagnostics.Trace を診断追跡に使用している場合、ログを [Visual Studio Application Insights][start] に送信し、そこで調査したり、検索したりできます。ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。
 
-> [AZURE.NOTE]ログ キャプチャ モジュールは必要ですか。 ログ キャプチャ モジュールは、サード パーティ製のロガーの場合は便利なアダプターですが、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、[Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) を直接呼び出すことを検討してください。
-
-[プロジェクトに Application Insights をまだ設定していない場合][start]、今すぐ設定します。プロジェクトには、ファイル `ApplicationInsights.config` と、NuGet パッケージ `Microsoft.ApplicationInsights.Web` が必要です。
+> [AZURE.NOTE] ログ キャプチャ モジュールは必要ですか。 ログ キャプチャ モジュールは、サード パーティ製のロガーの場合は便利なアダプターですが、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、[Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) を直接呼び出すことを検討してください。
 
 
-##  ログ記録フレームワークにアダプターをインストールする
+## アプリにログ記録フレームワークをインストールする
 
-ログ記録フレームワーク (log4Net、NLog、System.Diagnostics.Trace) を使用している場合、それらのログを他の利用統計情報と共に Application Insights に送信するアダプターをインストールできます。
+選択したログ記録フレームワークをプロジェクトにインストールします。インストールすると、app.config か web.config にエントリが追加されます。
+
+> System.Diagnostics.Trace を使用している場合は、web.config にエントリを追加する必要があります。
+
+## ログを収集するよう Application Insights を構成する
+
+まだ実行していない場合は、**[Application Insights をプロジェクトに追加](app-insights-asp-net.md)**します。Log Collector を含めるオプションが表示されます。
+
+または、ソリューション エクスプローラーでプロジェクトを右クリックし、**Application Insights を構成**します。Log Collector を含めるオプションを選択します。
+
+*Application Insights のメニューや Log Collector のオプションが表示されない場合は、* [トラブルシューティング](#troubleshooting)をお試しください。
+
+
+## 手動のインストール
+
+Application Insights インストーラーでサポートされていない種類のプロジェクト (Windows デスクトップ プロジェクトなど) の場合は、手動でインストールします。
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。 
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。
@@ -41,7 +54,7 @@ ASP.NET アプリケーションで NLog、log4Net、System.Diagnostics.Trace �
 
 NuGet パッケージは、必要なアセンブリをインストールし、web.config または app.config も変更します。
 
-#### 診断ログの呼び出しを挿入する
+## 診断ログの呼び出しを挿入する
 
 System.Diagnostics.Trace を使用する場合、通常の呼び出しは次のようになります。
 
@@ -66,7 +79,9 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 ## ログを調査する
 
-[the Application Insights ポータル][portal]のアプリの [概要] ブレードで、[[検索][diagnostic]] を選択します。
+アプリをデバッグ モードで実行するかデプロイします。
+
+[Application Insights ポータル][portal]のアプリの [概要] ブレードで、[[検索][diagnostic]] を選択します。
 
 ![Application Insights で、[検索] を選択する](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
 
@@ -79,7 +94,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 * 同じユーザー要求に関連する (つまり、OperationId が同じ) 他の利用統計情報を探す 
 * このページの構成をお気に入りとして保存する
 
-> [AZURE.NOTE]**サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+> [AZURE.NOTE] **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## 次のステップ
 
@@ -90,6 +105,22 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 
 ## トラブルシューティング
+
+### Java の場合はどうすればよいですか。
+
+[Java ログ アダプター](app-insights-java-trace-logs.md)を使用します。
+
+### プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
+
+* お使いの開発用コンピューターに Application Insights Tools がインストールされているか確認してください。Visual Studio の [ツール] メニューで [拡張機能と更新プログラム] を選択し、Application Insights Tools を探します。Application Insights Tools が [インストール済み] タブにない場合は、[オンライン] タブを開いてインストールします。
+* Application Insights Tools でサポートされていない種類のプロジェクトである可能性があります。[手動でインストール](#manual-installation)してください。
+
+### 構成ツールにログ アダプターのオプションがありません
+
+* まずログ記録フレームワークをインストールする必要があります。
+* System.Diagnostics.Trace を使用している場合は、必ず [`web.config` に構成](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)してください。
+* 最新バージョンの Application Insights Tools を使用しているか確認します。 Visual Studio の **[ツール]** メニューで **[拡張機能と更新プログラム]** を選択し、**[更新]** タブを開きます。Application Insights Tools が表示されていたら、クリックして更新します。
+
 
 ### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 
@@ -129,4 +160,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

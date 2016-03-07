@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/18/2015"
+	ms.date="02/23/2016"
 	ms.author="nicking"/>
 
 # REST を使用して App Service アプリのバックアップと復元を実行する
@@ -92,7 +92,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE]エラー メッセージは HTTP 応答のログ プロパティにあります。
+>[AZURE.NOTE] エラー メッセージは HTTP 応答のログ プロパティにあります。
 
 <a name="schedule-automatic-backups"></a>
 ## 自動バックアップのスケジュールを作成する
@@ -225,9 +225,9 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE]セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信し、空の JSON オブジェクトを要求本文に追加します。サーバーからの応答に、SAS URL を含む、そのバックアップのすべての情報が含まれます。
+>[AZURE.NOTE] セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信し、空の JSON オブジェクトを要求本文に追加します。サーバーからの応答に、SAS URL を含む、そのバックアップのすべての情報が含まれます。
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

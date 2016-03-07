@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="02/18/2016"
 	ms.author="klam"/>
 
 # ロジック アプリ テンプレートを使用する
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 ロジック アプリ テンプレートは、独自の統合アプリケーションの構築をすぐに開始できる、精選された既成の Logic Apps のセットです。
 
@@ -44,4 +46,4 @@ Twitter、Yammer、電子メールなどのソーシャルメディア サービ
 いずれかのテンプレートを選択したら、自分のロジック アプリを作成したときと同様にデプロイを完了します。詳細な手順については、「[ロジック アプリを作成する](app-service-logic-create-a-logic-app.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="02/21/2016"
 	ms.author="tarcher"/>
 
 # ASP.NET プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
@@ -36,4 +36,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
 詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0224_2016-->

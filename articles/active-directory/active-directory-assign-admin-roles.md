@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="02/18/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory (Azure AD) の管理者ロールの割り当て
@@ -94,7 +94,7 @@
 
 - Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
 
-- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated directory.md)」を参照してください。
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 - [ユーザーの管理](active-directory-create-users.md)
 
@@ -102,4 +102,4 @@
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

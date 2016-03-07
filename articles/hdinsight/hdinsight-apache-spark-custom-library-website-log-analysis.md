@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="02/17/2016" 
 	ms.author="nitinme"/>
 
 # カスタム ライブラリを使用した HDInsight Spark でのログの分析 (Linux)
 
 この Notebook では、HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。使用するカスタム ライブラリは、**iislogparser.py** と呼ばれる Python ライブラリです。
 
-> [AZURE.TIP] このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**Python** フォルダーにある **Analyze logs with Spark using a custom library.ipynb** Notebook を実行します。
+> [AZURE.TIP] このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**PySpark** フォルダーにある **Analyze logs with Spark using a custom library.ipynb (カスタム library.ipynb を使用した Spark でのログの分析)** Notebook を実行します。
 
 **前提条件:**
 
@@ -44,7 +44,7 @@
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -52,21 +52,11 @@
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. 必要なモジュールをインポートし、Spark コンテキストと SQL コンテキストを作成します。次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
 
 
-		import pyspark
-		from pyspark import SparkConf
-		from pyspark import SparkContext
-		from pyspark.sql import SQLContext
-		%matplotlib inline
-		import matplotlib.pyplot as plt
 		from pyspark.sql import Row
 		from pyspark.sql.types import *
-		import atexit
-		sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-		sqlContext = SQLContext(sc)
-		atexit.register(lambda: sc.stop())
 
 
 5. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。クラスターに関連付けられている既定のストレージ アカウント内のデータ (**\\HdiSamples\\HdiSamples\\WebsiteLogSampleData\\SampleLog\\909f2b.log**) にアクセスすることができます。
@@ -93,11 +83,9 @@
 
 ## カスタム Python ライブラリを使用してログ データを分析する
 
-7. 上の出力の最初の数行にはヘッダー情報が含まれており、残りの各行は、そのヘッダーで説明されているスキーマと一致します。このようなログの解析は、複雑である場合があります。そこで、このようなログの解析を簡単にするために、カスタム Python ライブラリ (**iislogparser.py**) を使用します。既定では、このライブラリは HDInsight の Spark クラスターに含まれています。
+7. 上の出力の最初の数行にはヘッダー情報が含まれており、残りの各行は、そのヘッダーで説明されているスキーマと一致します。このようなログの解析は、複雑である場合があります。そこで、このようなログの解析を簡単にするために、カスタム Python ライブラリ (**iislogparser.py**) を使用します。既定では、このライブラリは、HDInsight の Spark クラスターの **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py** に含まれます。
 
-	しかし、このライブラリは `PYTHONPATH` に含まれていないため、`import iislogparser` のような import ステートメントで使用することはできません。このライブラリを使用するには、すべてのワーカー ノードに配布する必要があります。
-
-	以下のスニペットを実行して、Spark クラスター内のすべてのワーカー ノードにライブラリを配布します。
+	しかし、このライブラリは `PYTHONPATH` に含まれていないため、`import iislogparser` のような import ステートメントで使用することはできません。このライブラリを使用するには、すべてのワーカー ノードに配布する必要があります。次のスニペットを実行します。
 
 
 		sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
@@ -184,12 +172,35 @@
 		 (u'/blogposts/mvc4/step1.png', 98.0)]
 
 
-13. また、この情報をプロットの形式で表示することもできます。プロットは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
+13. また、この情報をプロットの形式で表示することもできます。プロットを作成する最初の手順として、まず、一時テーブル **AverageTime** を作成します。テーブル グループは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
 
 		avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
-		minutes = avgTimeTakenByMinute.map(lambda pair: pair[0]).collect()
-		time = avgTimeTakenByMinute.map(lambda pair: pair[1]).collect()
-		plt.plot(minutes, time, marker='o', linestyle='--')
+		schema = StructType([StructField('Minutes', IntegerType(), True),
+		                     StructField('Time', FloatType(), True)])
+		                     
+		avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
+		avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
+
+14. 次に、以下の SQL クエリを実行して、**AverageTime** テーブル内のすべてのレコードを取得できます。
+
+		%%sql -o averagetime
+		SELECT * FROM AverageTime
+
+	`%%sql` マジックの後に `-o averagetime` と続けて、クエリの出力を Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持します。出力は、[Pandas](http://pandas.pydata.org/) データフレームとして、**averagetime** という名前で保持されます。
+
+	出力は次のように表示されます。
+
+	![SQL クエリ出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL クエリ出力")
+
+	`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
+
+15. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。これにより、コードは Jupyter サーバーでローカルに実行されます。
+
+		%%local
+		%matplotlib inline
+		import matplotlib.pyplot as plt
+		
+		plt.plot(averagetime['Minutes'], averagetime['Time'], marker='o', linestyle='--')
 		plt.xlabel('Time (min)')
 		plt.ylabel('Average time taken for request (ms)')
 
@@ -197,7 +208,7 @@
 
 	![Matplotlib output](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib output")
 
-14. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
+16. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
 	
 
 ## <a name="seealso"></a>関連項目
@@ -233,4 +244,4 @@
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0224_2016-->

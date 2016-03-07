@@ -16,10 +16,6 @@ Python 固有のすべてのデプロイメント手順をスキップする場�
 
     \.skipPythonDeployment
 
-Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
-
-    \.skipDjango 
-
 デプロイメントをより密接に制御するために、次のファイルを作成して、既定のデプロイメント スクリプトをオーバーライドできます。
 
     \.deployment
@@ -33,4 +29,4 @@ Django アプリケーションで静的なファイルの収集をスキップ�
 
 [Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

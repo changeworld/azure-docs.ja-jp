@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/14/2015"
+	ms.date="01/14/2016"
 	ms.author="sstein"/>
 
 # SQL Database チュートリアル: Always Encrypted による機密データの保護 (Windows 証明書ストア)
@@ -52,7 +52,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 ## 空の SQL データベースを作成する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ + ストレージ]**、**[SQL Database]** の順にクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。Azure ポータルでデータベースを作成する詳しい手順については、[SQL データベースの作成に関するページ](sql-database-getting-started.md)を参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。Azure ポータルでデータベースを作成する詳しい手順については、[SQL データベースの作成に関するページ](sql-database-get-started.md)を参照してください。
 
 	![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 
@@ -545,4 +545,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always%20encrypted/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

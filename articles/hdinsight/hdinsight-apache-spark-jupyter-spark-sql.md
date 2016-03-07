@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="02/17/2016"
 	ms.author="nitinme"/>
 
 
@@ -110,11 +110,20 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 10. 作成が完了したら、スタート画面で Spark クラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
-
-
 ## <a name="jupyter"></a>Jupyter Notebook を使用して Spark SQL クエリを実行する
 
-このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。
+このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。既定では、Jupyter Notebook には **Python2** カーネルが付属しています。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つの追加のカーネルが用意されています。次のとおりです。
+
+* **PySpark** (Python で記述されたアプリケーション用)
+* **Spark** (Scala で記述されたアプリケーション用)
+
+この記事では、PySpark カーネルを使用します。記事「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」で、PySpark カーネルを使用する利点に関する詳細を確認できますが、主な利点のいくつかをここで紹介します。
+
+* Spark、SQL、Hive のコンテキストを設定する必要がありません。これらは自動的に設定されます。
+* 別のセル マジック (%%sql、%%hive など) を使用して、コード スニペットを付けずに SQL または Hive クエリを直接実行します。
+* SQL または Hive クエリの出力は、自動的に視覚化されます。
+
+### PySpark カーネルを使用した Jupyter Notebook の作成 
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
@@ -124,7 +133,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -132,17 +141,11 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. 必要なモジュールをインポートし、Spark コンテキストと SQL コンテキストを作成します。次のコード サンプルを空のセルに貼り付けて、**Shift + Enter** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
 
-		from pyspark import SparkContext
-		from pyspark.sql import SQLContext
 		from pyspark.sql.types import *
 		
-		# Create Spark and SQL contexts
-		sc = SparkContext('yarn-client')
-		sqlContext = SQLContext(sc)
-
-	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **Python 2** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
+	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
 
 	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
 
@@ -164,37 +167,19 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 		
 		# Register the data fram as a table to run queries against
 		hvacdf.registerTempTable("hvac")
+
+5. PySpark カーネルを使用しているため、`%%sql` マジックを使用して作成した一時テーブル **hvac** で SQL クエリを直接実行できます。`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
 		
-		# Run queries against the table and display the data
-		data = sqlContext.sql("select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13"")
-		data.show()
+		%%sql
+		SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = "6/1/13"")
 
-5. ジョブが正常に完了すると、次の出力が表示されます。
+5. ジョブが正常に完了すると、既定で次の出力が表示されます。
 
-		+----------+---------+------+
-		|buildingID|temp_diff|  date|
-		+----------+---------+------+
-		|         4|        8|6/1/13|
-		|         3|        2|6/1/13|
-		|         7|      -10|6/1/13|
-		|        12|        3|6/1/13|
-		|         7|        9|6/1/13|
-		|         7|        5|6/1/13|
-		|         3|       11|6/1/13|
-		|         8|       -7|6/1/13|
-		|        17|       14|6/1/13|
-		|        16|       -3|6/1/13|
-		|         8|       -8|6/1/13|
-		|         1|       -1|6/1/13|
-		|        12|       11|6/1/13|
-		|         3|       14|6/1/13|
-		|         6|       -4|6/1/13|
-		|         1|        4|6/1/13|
-		|        19|        4|6/1/13|
-		|        19|       12|6/1/13|
-		|         9|       -9|6/1/13|
-		|        15|      -10|6/1/13|
-		+----------+---------+------+
+ 	![クエリ結果のテーブル出力](./media/hdinsight-apache-spark-jupyter-spark-sql/tabular.output.png "クエリ結果のテーブル出力")
+
+	他の視覚化でも結果を表示できます。たとえば、ある出力の領域グラフは次のようになります。
+
+	![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "クエリ結果の領域グラフ")
 
 
 6. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
@@ -250,4 +235,4 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

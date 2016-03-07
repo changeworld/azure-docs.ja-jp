@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="02/17/2016"
 	ms.author="tomfitz"/>
 
 
@@ -23,7 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure Table サービスの詳細については、「[次のステップ](#NextSteps)」を参照してください。
+このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure Table サービスの詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -48,7 +48,7 @@ Azure Table サービス API を使用するには、次の要件があります
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE]この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE] この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -435,7 +435,7 @@ Azure Table サービス クライアントをインスタンス化するには�
 		echo $code.": ".$error_message."<br />";
 	}
 
-Table バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
+テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
 
 ## テーブルを削除する
 
@@ -478,4 +478,4 @@ Table バッチ処理の詳細については、「[エンティティ グルー
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0224_2016-->

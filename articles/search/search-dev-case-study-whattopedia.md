@@ -12,7 +12,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="search" 
-	ms.date="11/04/2015" 
+	ms.date="02/18/2016" 
 	ms.author="heidist"/>
 
 # Azure Search 開発者向けのケース スタディ
@@ -64,7 +64,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 - [Azure Search](https://azure.microsoft.com/services/search/)
 - [MVC 4 を使用する Azure Websites ](https://azure.microsoft.com/services/websites/)
-- [スケジュールされたタスク用の Azure Web ジョブ](../websites-webjobs-resources.md)
+- [スケジュールされたタスク用の Azure Web ジョブ](../app-service-web/websites-webjobs-resources.md)
 - [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/)
 - [SendGrid 電子メール配信](https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
@@ -421,4 +421,4 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

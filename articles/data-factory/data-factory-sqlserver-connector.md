@@ -206,11 +206,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	   }
 	}
 
-> [AZURE.NOTE] 上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
->  
-> または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
->  
-> SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+ 
+SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 
 SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
@@ -469,6 +467,8 @@ SqlSource に **sqlReaderQuery** が指定されている場合、コピー ア�
 
 SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
+> [AZURE.NOTE] **sqlReaderStoredProcedureName** を使用する場合は、データセット JSON の **tableName** プロパティの値を指定する必要があります。これは、現時点での製品の制限です。ただし、このテーブルに対して実行される検証はありません。
+
 ### SqlSink
 
 **SqlSink** では次のプロパティがサポートされます。
@@ -505,6 +505,76 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
 	>   
 	> 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
+## ターゲット データベースの ID 列
+このセクションでは、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
+
+**ソース テーブル:**
+
+	create table dbo.SourceTbl
+	(
+	       name varchar(100),
+	       age int
+	)
+
+**対象テーブル:**
+
+	create table dbo.TargetTbl
+	(
+	       id int identity(1,1),
+	       name varchar(100),
+	       age int
+	)
+
+
+ターゲット テーブルには ID 列があることに注意してください。
+
+**ソース データセット JSON の定義**
+
+	{
+	    "name": "SampleSource",
+	    "properties": {
+	        "published": false,
+	        "type": " SqlServerTable",
+	        "linkedServiceName": "TestIdentitySQL",
+	        "typeProperties": {
+	            "tableName": "SourceTbl"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": 1
+	        },
+	        "external": true,
+	        "policy": {}
+	    }
+	}
+
+**対象データセット JSON の定義**
+
+	{
+	    "name": "SampleTarget",
+	    "properties": {
+	        "structure": [
+	            { "name": "name" },
+	            { "name": "age" }
+	        ],
+	        "published": false,
+	        "type": "AzureSqlTable",
+	        "linkedServiceName": "TestIdentitySQLSource",
+	        "typeProperties": {
+	            "tableName": "TargetTbl"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": 1
+	        },
+	        "external": false,
+	        "policy": {}
+	    }	
+	}
+
+
+ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -567,4 +637,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

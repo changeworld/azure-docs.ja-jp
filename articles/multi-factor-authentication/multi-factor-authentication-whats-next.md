@@ -195,7 +195,7 @@ Azure AD テナントの種類| 使用可能な信頼できる IP オプショ�
 6. [サービス設定] ページの [信頼できる IP] で、次のいずれかを選択します。
 
 	- イントラネットから発信するフェデレーション ユーザーからの要求の場合 - 企業ネットワークからサインインするすべてのフェデレーション ユーザーは、AD FS によって発行されたクレームを使用して多要素認証をバイパスします。 
-	- 特定の範囲のパブリック IP からの要求の場合 - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。最大で 12 の IP アドレスの範囲を入力できます。
+	- 特定の範囲のパブリック IP からの要求の場合 - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。最大で 50 の IP アドレス範囲を入力できます。
 
 7. [保存] をクリックします。
 8. 更新が適用されたら、[閉じる] をクリックします。
@@ -362,8 +362,8 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 :------------- | :------------- | 
 [電話の呼び出し](multi-factor-authentication-end-user-first-time-mobile-phone.md)| 認証電話に自動音声通話を行います。ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。この電話番号は、オンプレミスの Active Directory には同期されません。
 [電話へのテキスト メッセージ](multi-factor-authentication-end-user-first-time-mobile-phone.md)|ユーザーに確認コードを含むテキスト メッセージが送信されます。ユーザーには、確認コードを使用してテキスト メッセージに返信するか、確認コードをサインイン インターフェイスに入力するよう求めるプロンプトが表示されます。
-[モバイル アプリでの通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリはアカウントに対する未承認のアクセスを防止し、不正なトランザクションを停止します。電話または登録されたデバイスに対するプッシュ通知によって行われます。通知を確認し、適切である場合は [確認] をタップするだけです。または、[拒否] を選択することもできます。あるいは、[拒否] を選択して不正通知を報告することも可能です。不正通知の報告方法については、「Multi-Factor Authentication における [拒否] と [不正通知] 機能の使用法」をご覧ください。</br></br>Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、および [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で使用できます。|
-[モバイル アプリからの確認コード](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードにより、ユーザー名とパスワードと共に入力し、2 番目の形式の認証が行われます。</li><br><p> Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+[モバイル アプリでの通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリはアカウントに対する未承認のアクセスを防止し、不正なトランザクションを停止します。電話または登録されたデバイスに対するプッシュ通知によって行われます。通知を確認し、適切である場合は [確認] をタップするだけです。または、[拒否] を選択することもできます。あるいは、[拒否] を選択して不正通知を報告することも可能です。不正通知の報告方法については、「Multi-Factor Authentication における [拒否] と [不正通知] 機能の使用法」をご覧ください。</br></br>Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、および [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で使用できます。|
+[モバイル アプリからの確認コード](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードにより、ユーザー名とパスワードと共に入力し、2 番目の形式の認証が行われます。</li><br><p> Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
 
 ### 認証方法を有効または無効にする方法
 
@@ -376,4 +376,4 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/10/2016"
+   ms.date="02/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して、StorSimple Virtual Array のアラートを表示および管理する (プレビュー)
@@ -195,4 +195,4 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 - [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -14,10 +14,10 @@ Android SDK の開発が継続中であるため、Android Studio にインス�
 2. [プロジェクト エクスプローラー] タブの [**Gradle スクリプト**] で、**build.gradle (modeule: app)** ファイルを開きます。**compileSdkVersion** と **buildToolsVersion** が、インストールされた最新の SDK バージョンに設定されていることを確認します。タグは、次のようになります。
  
 	 	    compileSdkVersion 'Google Inc.:Google APIs:23'
-    		buildToolsVersion "23.0.0"
+    		buildToolsVersion "23.0.2"
 	
 3. Android Studio Project Explorer でプロジェクト ノードを右クリックし、[**Properties**] を右クリックして、左の列から [**Android**] を選択します。**[Project Build Target]** が、**[targetSdkVersion]** と同じ SDK バージョンに設定されていることを確認します。
 
 4. Android Studio では Eclipse と異なり、ターゲットの SDK バージョンと最小の SDK バージョンを指定するためにマニフェスト ファイルを使用しません。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0224_2016-->

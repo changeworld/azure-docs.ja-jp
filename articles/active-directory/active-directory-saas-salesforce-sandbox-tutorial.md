@@ -12,14 +12,15 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="12/18/2015" 
+    ms.date="02/22/2016" 
     ms.author="jeedes" />
 
 
 #チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521878)をクリックしてください。
   
-このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
+このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。
+Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
   
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -43,7 +44,7 @@
 
 ###Salesforce Sandbox のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-salesforce-sandbox-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +69,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Salesforce に対する認証を行えるようにする方法について説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC749323.png "シングル サインオンの構成")
 
@@ -110,17 +111,17 @@
     ![SAML シングル サインオンの設定](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781027.png "SAML シングル サインオンの設定")
 
     1.  [名前] ボックスに、構成の名前を入力します (例: *SPSSOWAAD\_Test*)。
-    2.  Azure ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
     3.  これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「**https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
     4.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     5.  **[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     6.  **[SAML ID の場所]** では、**[ID は Subject ステートメントの NameIdentifier 要素にあります]** を選択します。
-    7.  Azure ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-    8.  Azure ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
+    7.  Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
+    8.  Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
     9.  **[サービス プロバイダーが開始した要求のバインド]** では、**[HTTP POST]** を選択します。
     10. **[保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-salesforce-sandbox-tutorial/IC781028.png "Configure Single Sign-On")
 
@@ -165,7 +166,7 @@
 
 6.  そのメールを確認し、セキュリティ トークンの値をコピーします。
 
-7.  Microsoft Azure 管理ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
+7.  Azure クラシック ポータルの **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
 
     ![ユーザー プロビジョニングの構成](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769573.png "Configure user provisioning")
 
@@ -190,7 +191,7 @@
 
 ###ユーザーを Salesforce Sandbox に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Salesforce Sandbox** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -198,10 +199,10 @@
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "Yes")
+    ![あり](./media/active-directory-saas-salesforce-sandbox-tutorial/IC767830.png "あり")
   
 10 分待ってから、アカウントが Salesforce Sandbox と同期できたことをご確認ください。
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0224_2016-->

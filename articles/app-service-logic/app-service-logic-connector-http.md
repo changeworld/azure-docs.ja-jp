@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="12/17/2015"
+   ms.date="02/11/2016"
    ms.author="prkumar"/>
 
 
 # HTTP リスナーと HTTP アクションの使用を開始し、ロジック アプリにこれらを追加する
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 HTTP リソースに直接接続して、HTTP 要求をリッスンし、HTTP Web 要求を構成します。次のような一部のシナリオで、直接の HTTP 接続が必要になる場合があります。
 
 1.	Web ユーザーまたはモバイル ユーザーの対話型のフロント エンドをサポートするロジック アプリを開発する。
@@ -61,7 +63,7 @@ API アプリが作成されると、ロジック アプリのトリガーとし
 9.	最後に、応答を送信するには、もう一つの HTTP リスナーを追加して、HTTP 応答の送信アクションを選択します。要求 ID に HTTP リスナーから取得した要求 ID を設定して、返す対象の応答の本文と HTTP ステータスに入力します。![][9]
 
 ## HTTP アクションの使用
-HTTP アクションは、Logic Apps がネイティブでサポートしており、使用可能にするために最初に API アプリを作成する必要はありません。ロジック アプリの任意の場所に HTTP アクションを挿入し、呼び出しの URI、ヘッダーおよび本文を選択できます。HTTP アクションはクライアント側のセキュリティの複数のオプションをサポートします。[クライアント側のセキュリティ オプションに関するページ](../scheduler-outbound-authentication.md)を参照してください。
+HTTP アクションは、Logic Apps がネイティブでサポートしており、使用可能にするために最初に API アプリを作成する必要はありません。ロジック アプリの任意の場所に HTTP アクションを挿入し、呼び出しの URI、ヘッダーおよび本文を選択できます。HTTP アクションはクライアント側のセキュリティの複数のオプションをサポートします。[クライアント側のセキュリティ オプションに関するページ](../scheduler/scheduler-outbound-authentication.md)を参照してください。
 
 HTTP アクションの出力は、ヘッダーと本文です。これらは、その他のアクションとコネクタの出力を使用する場合と同様、フローのさらに下流で使用することができます。
 
@@ -72,7 +74,7 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
-> [AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-http/1.png
@@ -86,4 +88,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0224_2016-->

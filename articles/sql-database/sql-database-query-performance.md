@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="02/03/2015"
+   ms.date="02/03/2016"
    ms.author="sstein"/>
 
 # Azure SQL Database Query Performance Insight
@@ -33,7 +33,7 @@
  
 ## アクセス許可
 
-Query Performance Insight を使用するには、次の[ロール ベースのアクセス制御](role-based-access-control-configure.md)権限が必要です。
+Query Performance Insight を使用するには、次の[ロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)権限が必要です。
 
 - リソース消費上位クエリおよびチャートを表示するには、**リーダー**、**所有者**、**共同作成者**、**SQL DB の共同作業者**、または **SQL Server の共同作業者**の権限が必要です。 
 - クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB の共同作業者**、または **SQL Server の共同作業者**の権限が必要です。
@@ -170,4 +170,4 @@ SQL Database のパフォーマンス向上のため、さらに **[Query Perfor
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

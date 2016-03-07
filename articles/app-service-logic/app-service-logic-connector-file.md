@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps での File コネクタの使用 | Microsoft Azure App Service"
 	description="File コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="rajeshramabathiran"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="app-service\logic"
 	documentationCenter=""/>
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/11/2015"
+	ms.date="02/10/2016"
 	ms.author="rajram"/>
 
 # File コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 ファイル システムに接続して、アップロードやダウンロードなど、ホスト コンピューター上のファイルの操作を行います。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、データの取得と処理のためのコネクタを提供します。この File コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 File コネクタは、ホスト ファイル システムへのハイブリッド接続にハイブリッド接続マネージャーを使用します。
@@ -58,7 +60,7 @@ API アプリが作成されたら、Logic App のアクションとして File 
 
 7. これらを構成すると、フローでトリガーとアクションを使用できるようになります。同様に、他のアクションも構成できます。
 
-> [AZURE.NOTE]ファイル トリガーは、ファイルをフォルダーから正常に読み取った後、そのファイルを削除します。
+> [AZURE.NOTE] ファイル トリガーは、ファイルをフォルダーから正常に読み取った後、そのファイルを削除します。
 
 ## File コネクタの REST API ##
 ロジック アプリの外部のコネクタを使用するには、そのコネクタで公開されている REST API を活用できます。[参照]、[API App]、[File コネクタ] の順に選択して、この API 定義を表示できます。[概要] セクションの [API の定義] レンズをクリックすると、このコネクタで公開されているすべての API が表示されます。![][7]
@@ -68,7 +70,7 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -85,4 +87,4 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 [File コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

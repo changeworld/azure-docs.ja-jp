@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="heidist"/>
 
 #API バージョン 2014* から API バージョン 2015* へのプレビューの移行#
@@ -144,4 +144,4 @@ API バージョン `2015-02-28` は SLA でサポートされています。[�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->

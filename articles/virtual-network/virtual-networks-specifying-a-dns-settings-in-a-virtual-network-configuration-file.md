@@ -1,27 +1,30 @@
 <properties 
-   pageTitle="Virtual Network 構成ファイルでの DNS 設定の指定 | Microsoft Azure"
-   description="仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法"
+   pageTitle="仮想ネットワーク構成ファイルでの DNS 設定の指定 | Microsoft Azure"
+   description="クラシック デプロイ モデルで仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法"
    services="virtual-network"
    documentationCenter="na"
-   authors="joaoma"
+   authors="telmosampaio"
    manager="carmonm"
-   editor="tysonn" />
+   editor="tysonn" 
+   tags="azure-service-management" />
 <tags 
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/25/2015"
-   ms.author="joaoma" />
+   ms.date="02/23/2016"
+   ms.author="telmos" />
 
 # 仮想ネットワーク構成ファイルでの DNS 設定の指定
 
 ネットワーク構成ファイルの 2 つの要素を使用して、ドメイン ネーム システム (DNS) の設定 **DnsServers** と **DnsServerRef** を指定することができます。**DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。その後、**DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。
 
->[AZURE.IMPORTANT] ネットワーク構成ファイルの構成方法について詳しくは、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。ネットワーク構成ファイルに含まれる各要素については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。
 
 ネットワーク構成ファイルは、次の要素を含むことができます。各要素のタイトルは、要素値の設定に関する追加情報を提供するページにリンクされています。
+
+>[AZURE.IMPORTANT] ネットワーク構成ファイルの構成方法について詳しくは、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。ネットワーク構成ファイルに含まれる各要素については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
 
 [Dns 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
 
@@ -47,10 +50,8 @@
 
 ## 次のステップ
 
-[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
+- [Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)について理解します。
+- [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
+- [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
 
-[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
-
-[Azure サービス構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)
-
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0224_2016-->

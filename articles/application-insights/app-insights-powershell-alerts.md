@@ -12,12 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/22/2016" 
+	ms.date="02/19/2016" 
 	ms.author="awills"/>
  
 # PowerShell を使用して Application Insights のアラートを設定する
 
 [Visual Studio Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。
+
+さらに、[Webhook を設定してアラートへの対応を自動化](../azure-portal/insights-webhooks-alerts.md)できます。
 
 ## 1 回限りのセットアップ
 
@@ -31,7 +33,7 @@
 
 ## Connect to Azure
 
-Azure PowerShell を起動して、[サブスクリプションに接続](powershell-install-configure.md)します。
+Azure PowerShell を起動して、[サブスクリプションに接続](../powershell-install-configure.md)します。
 
 ```PowerShell
 
@@ -131,6 +133,9 @@ performanceCounter | [パフォーマンス](app-insights-configuration-with-app
 remoteDependencyFailed| [依存関係](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
 request、<br/>requestFailed|[サーバー要求](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
 
+## Webhook
+
+[アラートへの対応を自動化](../azure-portal/insights-webhooks-alerts.md)できます。アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## 関連項目
 
@@ -138,8 +143,9 @@ request、<br/>requestFailed|[サーバー要求](app-insights-configuration-wit
 * [Application Insights を構成するスクリプト](app-insights-powershell-script-create-resource.md)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
 * [Microsoft Azure 診断の Application Insights への結合を自動化する](app-insights-powershell-azure-diagnostics.md)
+* [アラートへの対応を自動化する](../azure-portal/insights-webhooks-alerts.md)
 
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0224_2016-->
