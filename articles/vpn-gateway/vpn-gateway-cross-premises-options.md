@@ -43,7 +43,7 @@
 | **SLA** | [SLA](https://azure.microsoft.com/support/legal/sla/) | [SLA](https://azure.microsoft.com/support/legal/sla/) | [SLA](https://azure.microsoft.com/support/legal/sla/) |
 | **料金** | [料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) | [料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) | [料金](https://azure.microsoft.com/pricing/details/expressroute/) |
 | **テクニカル ドキュメント** | [VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) | [VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) | [ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/) |
-| ****FAQ ** | [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md) | [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md) | [ExpressRoute に関する FAQ](../expressroute/expressroute-faqs.md) |
+| **FAQ ** | [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md) | [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md) | [ExpressRoute に関する FAQ](../expressroute/expressroute-faqs.md) |
 
 
 ## サイト間接続

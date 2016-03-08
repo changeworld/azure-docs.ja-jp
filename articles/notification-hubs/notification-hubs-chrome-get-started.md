@@ -380,7 +380,8 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 	- *client* は、HTTP POST 要求に使用する **XMLHttpRequest** のインスタンスです。**Authorization** ヘッダーは **sasToken** を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
 
-最後に、フォルダーについて次のビューが表示されます。![][21]
+最後に、フォルダーについて次のビューが表示されます。
+   	![][21]
 
 ###Chrome アプリケーションのセットアップとテスト
 
@@ -454,7 +455,9 @@ REST API を使用して通知を送信する方法の例については、「Ja
 
 ## <a name="next-steps"> </a>次のステップ
 
-この簡単な例では、Chrome アプリケーションに通知をブロードキャストしました。Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。特定のユーザーを対象とする方法については、チュートリアル「[Azure Notification Hubs によるユーザーへの通知]」をご覧ください。対象グループごとにユーザーを区分する場合は、「[Azure Notification Hubs を使用したニュース速報の送信]」をご覧ください。
+この簡単な例では、Chrome アプリケーションに通知をブロードキャストしました。
+Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
+特定のユーザーを対象とする方法については、チュートリアル「[Azure Notification Hubs によるユーザーへの通知]」をご覧ください。対象グループごとにユーザーを区分する場合は、「[Azure Notification Hubs を使用したニュース速報の送信]」をご覧ください。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG

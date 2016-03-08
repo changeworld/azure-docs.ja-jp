@@ -1,7 +1,7 @@
 1.	オンラインの [Microsoft Azure ポータル](https://portal.azure.com/)にサインインします。
 2.	ジャンプバーで **[新規]**、**[データ + ストレージ]**、**[DocumentDB]** の順にクリックします。
 
-	![Screen shot of the Azure portal to create a database, highlighting the New button, Data + storage in the Create blade, and Azure DocumentDB in the Data + Storage blade](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+	![[作成] ブレードの [新規] ボタンと [データ + ストレージ]、および [データ + ストレージ] ブレードの Azure DocumentDB が強調表示された、データベース作成用の Azure プレビュー ポータルのスクリーン ショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 
 3. **[新しい DocumentDB アカウント]** ブレードで、DocumentDB アカウントに対して必要な構成を指定します。
 
@@ -16,7 +16,8 @@
 
 	- **[場所]** を使用して、DocumentDB アカウントのホストの場所を指定します。
 
-4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントの作成には数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
+4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントの作成には数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。
+	![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
 
 	または、通知ハブから進行状況を監視できます。
 
