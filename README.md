@@ -51,11 +51,12 @@ azure-content リポジトリ内のコンテンツは、[Azure.Microsoft.com](ht
 
 *\articles* フォルダーには、ドキュメント記事がマークダウン ファイルとして書式設定され、*.md* の拡張子を付加して格納されています。
 
-このルート ディレクトリ内の記事は、Azure.Microsoft.com に **http://azure.microsoft.com/documentation/articles/{article-name-without-md}/* のパスで発行されています。
+このルート ディレクトリ内の記事は、Azure.Microsoft.com に *http://azure.microsoft.com/documentation/articles/{article-name-without-md}/* のパスで発行されています。
 
 * **記事のファイル名:** [ファイルの名前付けに関するこちらのガイダンス](./contributor-guide/file-names-and-locations.md)をご覧ください。
 
-サービス別のフォルダーに格納されている記事は、Azure.Microsoft.com に *http://azure.microsoft.com/documentation/articles/service-folder/{article-name-without-md}/* のパスで発行されています。
+サービス別のフォルダーに格納されている記事は、Azure.Microsoft.com に 
+*http://azure.microsoft.com/documentation/articles/service-folder/{article-name-without-md}/* のパスで発行されています。
 
 * **メディア用サブフォルダー:** *\articles* フォルダーには、ルート ディレクトリ記事のメディア ファイル用に *\media* フォルダーが含まれており、内部には各記事の画像が格納されたサブフォルダーが含まれています。サービス別フォルダーにも、それぞれのサービス フォルダー内の記事用のメディア フォルダーが含まれています。記事の画像フォルダーの名前は、記事ファイルの名前から *.md* ファイル拡張子を除いたものが設定されています。
 
@@ -103,4 +104,4 @@ Git Bash をインストールしてローカルで作業する場合は、ロ�
 
 すべてのガイダンス トピックについては、[こちらの作成協力者ガイドのインデックス](./contributor-guide/contributor-guide-index.md)をご覧ください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0307_2016-->
