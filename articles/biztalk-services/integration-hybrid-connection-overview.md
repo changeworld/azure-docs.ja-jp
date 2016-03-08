@@ -1,11 +1,11 @@
 <properties
 	pageTitle="ハイブリッド接続の概要 | Microsoft Azure"
-	description="セキュリティ、TCP ポート、サポートされる構成を含め、ハイブリッド接続について説明します。MABS、WABS。"
+	description="ハイブリッド接続、セキュリティ、TCP ポート、サポートされる構成について説明します。MABS、WABS。"
 	services="biztalk-services"
 	documentationCenter=""
 	authors="MandiOhlinger"
-	manager="dwrede"
-	editor="cgronlun"/>
+	manager="erikre"
+	editor=""/>
 
 <tags
 	ms.service="biztalk-services"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/01/2015"
+	ms.date="02/29/2016"
 	ms.author="mandia"/>
 
 
 # ハイブリッド接続の概要
-この記事では、ハイブリッド接続の概要を示し、サポートされる構成および必要な TCP ポートを一覧表示します。
+ハイブリッド接続の概要では、サポートされる構成と必要な TCP ポートを示します。
 
 
 ## ハイブリッド接続とは
@@ -35,7 +35,7 @@
 - ハイブリッド接続を使用するアプリケーションは、ハイブリッド接続を通じて発行される特定のオンプレミス リソースにのみ接続します。
 - SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用するすべてのオンプレミス リソースに接続できます。
 
-	> [AZURE.NOTE]現在は、動的ポート (FTP パッシブ モードまたは拡張パッシブ モードなど) を使用する TCP ベースのサービスはサポートされていません。
+	> [AZURE.NOTE] 現在は、動的ポート (FTP パッシブ モードまたは拡張パッシブ モードなど) を使用する TCP ベースのサービスはサポートされていません。
 
 - Web Apps でサポートされるすべてのフレームワーク (.NET、PHP、Java、Python、Node.js) と Mobile Apps でサポートされるすべてのフレームワーク (Node.js、.NET) で使用できます。
 - Web アプリとモバイル アプリは、これらがローカル ネットワークに配置されている場合とまったく同じ方法でオンプレミス リソースにアクセスできます。たとえば、オンプレミスで使用される接続文字列は Azure でも使用できます。
@@ -74,7 +74,7 @@
 
 「[Create and Manage Hybrid Connections (ハイブリッド接続の作成と管理)](integration-hybrid-connection-create-manage.md)」を参照してください。
 
-アプリケーションの承認は、ハイブリッド接続とは独立しています。適切であればどのような種類の承認方法でも使用できます。承認方法は、Azure クラウドとオンプレミスのコンポーネントとの間でサポートされているエンド ツー エンドの承認方法によって異なります。たとえば、Azure アプリケーションはオンプレミスの SQL Server にアクセスします。このシナリオでは、SQL 承認を、サポートされるエンド ツー エンドの承認方法として使用できます。
+*アプリケーションの承認は、ハイブリッド接続とは独立しています*。適切であればどのような種類の承認方法でも使用できます。承認方法は、Azure クラウドとオンプレミスのコンポーネントとの間でサポートされているエンド ツー エンドの承認方法によって異なります。たとえば、Azure アプリケーションはオンプレミスの SQL Server にアクセスします。このシナリオでは、SQL 承認を、サポートされるエンド ツー エンドの承認方法として使用できます。
 
 #### TCP ポート
 ハイブリッド接続では、プライベート ネットワークからの送信 TCP 接続または送信 HTTP 接続のみが必要です。ネットワークへの受信接続を許可するために、ファイアウォール ポートを開いたり、ネットワーク境界の構成を変更したりする必要はありません。
@@ -91,7 +91,7 @@
 
 ## 次のステップ
 
-[ハイブリッド接続の作成と管理](integration-hybrid-connection-create-manage.md)<br/> [Azure Web サイトをオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md)<br/> [Azure Web アプリからオンプレミス SQL Server に接続する](../web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> [Azure Mobile Services とハイブリッド接続](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)
+[ハイブリッド接続の作成と管理](integration-hybrid-connection-create-manage.md)<br/> [Azure Web サイトをオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/> [Azure Web アプリからオンプレミス SQL Server に接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> [Azure Mobile Services とハイブリッド接続](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)
 
 
 ## 関連項目
@@ -103,4 +103,4 @@
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

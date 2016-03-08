@@ -29,7 +29,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 ![Azure Data Lake Analytics プロセスのフロー図](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
 
 1. Data Lake Analytics アカウントを作成します。
-2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure BLOB ストレージ アカウントからデータを読み取ることができます。   
+2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure Blob Storage アカウントからデータを読み取ることができます。   
 3. U-SQL スクリプトを開発します。
 4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは BLOB ストレージ アカウントに出力を保存します。
 
@@ -45,7 +45,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。Data Lake Analytics アカウントを作成するには、以下を指定する必要があります。
 
-- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。[Azure リソース マネージャー](resource-group-overview.md)を使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
+- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。[Azure リソース マネージャー](../resource-group-overview.md)を使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
 
 	サブスクリプションのリソース グループを列挙するには:
     
@@ -68,7 +68,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 	        -Name "<Your Data Lake account name>" `
 	        -Location "<Azure Data Center>"  # For example, "East US 2"
 
-	> [AZURE.NOTE]Data Lake アカウント名には小文字と数字のみを含める必要があります。
+	> [AZURE.NOTE] Data Lake アカウント名には小文字と数字のみを含める必要があります。
 
 
 
@@ -135,9 +135,9 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 	$dataLakeAnalyticsName = "<DataLakeAnalyticsAccountName>"
 	$dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticName).Properties.DefaultDataLakeAccount
 
->[AZURE.NOTE]Azure ポータルでは、既定の Data Lake Store アカウントにサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。手順については、「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account)」を参照してください。
+>[AZURE.NOTE] Azure ポータルでは、既定の Data Lake Store アカウントにサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。手順については、「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#upload-data-to-the-default-data-lake-store-account)」を参照してください。
 
-Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。Azure BLOB ストレージへのデータのアップロードについては、「[Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)」を参照してください。
+Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。Azure BLOB ストレージへのデータのアップロードについては、「[Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)」を参照してください。
 
 ##Data Lake Analytics ジョブを送信する
 
@@ -174,7 +174,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE]パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
+    >[AZURE.NOTE] パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
     
 	
 **ジョブを送信するには**
@@ -217,4 +217,4 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0302_2016-->

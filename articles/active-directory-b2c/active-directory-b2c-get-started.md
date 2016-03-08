@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.topic="get-started-article"
+	ms.date="02/25/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure AD B2C テナントを作成する
@@ -74,4 +74,4 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
 
 「[Azure Active Directory B2C プレビュー: アプリケーションを登録する](active-directory-b2c-app-registration.md)」を読み、Azure AD B2C にアプリケーションを登録する方法と、クイック スタート アプリケーションを構築する方法を学習します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

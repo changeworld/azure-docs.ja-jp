@@ -3,7 +3,7 @@
    description="Azure Automation を初めて使用するときに必要な構成手順について説明します。"
    services="automation"
    documentationCenter=""
-   authors="SnehaGunda"
+   authors="MGoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/18/2016"
+   ms.date="02/23/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation の構成
@@ -94,4 +94,4 @@ Runbook のすべての[チェックポイント](http://technet.microsoft.com/l
 - [Azure Automation: Azure Active Directory を使用して Azure を認証する](https://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/)
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -12,19 +12,21 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
-# チュートリアル: Azure PowerShell を使用した Data Factory の作成と監視
+# チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-get-started.md)
-- [Using Data Factory Editor](data-factory-get-started-using-editor.md)
-- [Using PowerShell](data-factory-monitor-manage-using-powershell.md)
-- [Using Visual Studio](data-factory-get-started-using-vs.md)
+- [チュートリアルの概要](data-factory-get-started.md)
+- [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
+- [Visual Studio の使用](data-factory-get-started-using-vs.md)
+- [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 
 
-チュートリアル「[Azure Data Factory を使ってみる][adf-get-started]」では、[Azure ポータル][azure-portal]を使用して Azure Data Factory を作成し、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure Data Factory を作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインでは、Azure BLOB から Azure SQL Database にデータをコピーします。
+チュートリアル「[Azure Data Factory を使ってみる][adf-get-started]」では、[Azure ポータル][azure-portal]を使用して Azure Data Factory を作成し、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure Data Factory を作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
+
+コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 > [AZURE.IMPORTANT] 
 「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
@@ -57,7 +59,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 [手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** という Data Factory に作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
 [手順 5. データセットとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
 
-## <a name="CreateDataFactory"></a>手順 1: Azure Data Factory を作成する
+## <a name="CreateDataFactory"></a> 手順 1. Azure データ ファクトリを作成する
 この手順では、Azure PowerShell を使用して、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
@@ -423,6 +425,8 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 
+## 関連項目
+Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 
 [adf-tutorial]: data-factory-tutorial.md
@@ -444,4 +448,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

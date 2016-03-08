@@ -1,70 +1,160 @@
 <properties
-	pageTitle="REST 呼び出しを使用して Azure Search のクエリを作成する | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理、並べ替え、ファセットを行います (.NET ライブラリまたは SDK を使用)。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""
-    tags="azure-portal"/>
+    pageTitle="REST API を使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理、並べ替え、ファセットを行います。"
+    services="search"
+    documentationCenter=""
+	authors="ashmaka"
+/>
 
 <tags
-	ms.service="search"
-	ms.devlang="rest-api"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="02/17/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="na"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="02/29/2016"
+    ms.author="ashmaka"/>
 
-# REST 呼び出しを使用して Azure Search のクエリを作成する
+# REST API を使用した Azure Search インデックスの照会
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
-- [Search Explorer](search-explorer.md)
+- [概要](search-query-overview.md)
+- [Search エクスプローラー](search-explorer.md)
 - [Fiddler](search-fiddler.md)
 - [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+- [REST ()](search-query-rest-api.md)
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスに対するクエリを作成する方法について説明します。以下の内容の一部は、[ドキュメントの検索 (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx) に関するページから抜粋したものです。詳しいコンテキストについては、元の記事を参照してください。
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスを照会する方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-rest-api.md)し、[インデックスにデータを読み込んでいます](search-import-data-rest-api.md)。
 
-インポートの前提条件として、既存のインデックスの準備が完了しており、検索可能なデータを提供するドキュメントと共に読み込まれていることが挙げられます。
+## I.Azure Search サービスのクエリ API キーの識別
+Azure Search REST API に対するすべての検索操作で鍵となるコンポーネントは、プロビジョニングしたサービスに対して生成された *API キー*です。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-REST API を使用してインデックスを検索するには、GET HTTP 要求を発行します。クエリ パラメーターは、HTTP 要求の URL 内で定義します。
+1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
+2. Azure Search サービスのブレードに移動します。
+3. "キー" アイコンをクリックします。
 
-**要求と要求ヘッダー**:
+サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
+  * プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+  * *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
-URL では、サービス名、インデックス名、適切な API バージョンを提供する必要があります。URL の最後のクエリ文字列では、クエリ パラメーターを指定します。クエリ文字列内のパラメーターの 1 つで、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは "2015-02-28") を指定する必要があります。
+インデックスを照会する目的では、いずれかのクエリ キーを使用できます。クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
-要求ヘッダーとして、Content-Type を定義し、サービスのプライマリまたはセカンダリ管理キーを提供する必要があります。
+## II.クエリの作成
+[REST API を使用してインデックスを検索する](https://msdn.microsoft.com/library/azure/dn798927.aspx)方法は 2 とおりあります。その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義される HTTP POST 要求を発行する方法です。もう 1 つは、要求 URL にクエリ パラメーターが定義される HTTP GET 要求を発行する方法です。POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](https://msdn.microsoft.com/library/azure/dn798927.aspx)です。そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
-	GET https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2015-02-28
-	Content-Type: application/JSON
-	api-key:[primary admin key or secondary admin key]
+POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2015-02-28`) を要求 URL に指定する必要があります。GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。この URL の形式については、以下を参照してください。
 
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。クエリ文字列のパラメーターの詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2015-02-28
 
-**例**:
+POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
 
-さまざまなクエリ文字列を含むいくつかの例を次に示します。これらの例では、"hotels" という名前のダミーのインデックスを使用しています。
+Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。クエリの各種パラメーターの詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)を参照してください。以下にも、クエリの例をいくつか紹介します。
 
-用語 "quality" のインデックス全体を検索します。
+#### クエリの例
 
-	GET https://[service name].search.windows.net/indexes/hotels/docs?search=quality&$orderby=lastRenovationDate desc&api-version=2015-02-28
-	Content-Type: application/JSON
-	api-key:[primary admin key or secondary admin key]
+"hotels" という名前のインデックスに対するクエリの例をいくつか紹介します。これらのクエリは、GET と POST の両方の形式で示します。
 
-インデックス全体を検索します。
+次のクエリは、インデックス全体で "budget" という単語を探し、`hotelName` フィールドのみを返します。
 
-	GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&api-version=2015-02-28
-	Content-Type: application/JSON
-	api-key:[primary admin key or secondary admin key]
+```
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2015-02-28
 
-インデックス全体を検索し、特定のフィールド (lastRenovationDate) で並べ替えます。
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2015-02-28
+{
+    "search": "budget",
+    "select": "hotelName"
+}
+```
 
-	GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2015-02-28
-	Content-Type: application/JSON
-	api-key:[primary admin key or secondary admin key]
+次のクエリは、インデックス全体で 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
 
-クエリが成功すると状態コード "200 OK" が返され、検索結果は応答本文に JSON 形式で格納されています。詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)の「Response (応答)」セクションを参照してください。
+```
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2015-02-28
 
-<!---HONumber=AcomDC_0224_2016-->
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2015-02-28
+{
+    "search": "*",
+    "filter": "baseRate lt 150",
+    "select": "hotelId,description"
+}
+```
+
+次のクエリは、インデックス全体を検索し、特定のフィールド (`lastRenovationDate`) の降順で並べ替えます。そして上位 2 件の結果を取得し、`hotelName` と `lastRenovationDate` のみを表示します。
+
+```
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2015-02-28
+
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2015-02-28
+{
+    "search": "*",
+    "orderby": "lastRenovationDate desc",
+    "select": "hotelName,lastRenovationDate",
+    "top": 2
+}
+```
+
+## III.HTTP 要求の送信
+これで、HTTP 要求 の URL (GET の場合) または本文 (POST の場合) の一部としてクエリを作成したので、要求ヘッダーを定義し、クエリを送信できます。
+
+#### 要求と要求ヘッダー
+GET の場合は 2 つ、POST の場合は 3 つ、要求ヘッダーを定義する必要があります。
+1. `api-key` ヘッダーは、上記のステップ I で特定したクエリ キーに設定する必要があります。`api-key` ヘッダーとして管理者キーを使うこともできますが、クエリ キーを使うことをお勧めします。クエリ キーなら、インデックスとドキュメントへの読み取り専用アクセスを排他的に付与できるためです。
+2. `Accept` ヘッダーを `application/json` に設定する必要があります。
+3. POST の場合のみ、`Content-Type` ヘッダーも `application/json` に設定する必要があります。
+
+Azure Search REST API を使用して "hotels" インデックスを検索するための HTTP GET 要求を以下に示します。ここでは、"motel" という単語を検索するシンプルなクエリを使っています。
+
+```
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2015-02-28
+Accept: application/json
+api-key: [query key]
+```
+
+これも同じクエリの例ですが、今回は HTTP POST を使っています。
+
+```
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2015-02-28
+Content-Type: application/json
+Accept: application/json
+api-key: [query key]
+
+{
+    "search": "motel"
+}
+```
+
+クエリ要求が成功すると状態コード `200 OK` が返され、検索結果は応答本文で JSON として返されます。上記のクエリの結果がどのような形になるかを以下に示します。ここでは、"hotels" インデックスに[この記事](search-import-data-rest-api.md)のサンプル データが読み込まれているものとします (この JSON はわかりやすく整形されています)。
+
+```JSON
+{
+    "value": [
+        {
+            "@search.score": 0.59600675,
+            "hotelId": "2",
+            "baseRate": 79.99,
+            "description": "Cheapest hotel in town",
+            "description_fr": "Hôtel le moins cher en ville",
+            "hotelName": "Roach Motel",
+            "category": "Budget",
+            "tags":["motel", "budget"],
+            "parkingIncluded": true,
+            "smokingAllowed": true,
+            "lastRenovationDate": "1982-04-28T00:00:00Z",
+            "rating": 1,
+            "location": {
+                "type": "Point",
+                "coordinates": [-122.131577, 49.678581],
+                "crs": {
+                    "type":"name",
+                    "properties": {
+                        "name": "EPSG:4326"
+                    }
+                }
+            }
+        }
+    ]
+}
+```
+
+詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、[この記事](https://msdn.microsoft.com/library/azure/dn798925.aspx)を参照してください。
+
+<!---HONumber=AcomDC_0302_2016-->

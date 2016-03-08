@@ -1,18 +1,18 @@
-<properties 
-	 pageTitle="Azure の Content Delivery Network (CDN) を有効にする方法" 
-	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。" 
-	 services="cdn" 
-	 documentationCenter="" 
-	 authors="camsoper" 
-	 manager="dwrede" 
+<properties
+	 pageTitle="Azure の Content Delivery Network (CDN) を有効にする方法"
+	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。"
+	 services="cdn"
+	 documentationCenter=""
+	 authors="camsoper"
+	 manager="erikre"
 	 editor=""/>
-<tags 
-	 ms.service="cdn" 
-	 ms.workload="media" 
-	 ms.tgt_pltfrm="na" 
-	 ms.devlang="na" 
-	 ms.topic="article" 
-	 ms.date="01/20/2016" 
+<tags
+	 ms.service="cdn"
+	 ms.workload="media"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="get-started-article"
+	 ms.date="02/25/2016" 
 	 ms.author="casoper"/>
 
 
@@ -25,7 +25,7 @@ Azure 管理ポータルを使用して送信元の CDN を有効にできます
 
 CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
-> [AZURE.NOTE]既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
+> [AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 >
 > CDN の価格は、CDN プロファイル レベルで適用されます。Standard と Premium の CDN 機能を組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 
@@ -35,7 +35,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 1. [Azure 管理ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
 
     新しい CDN プロファイル ブレードが表示されます。
-    
+
     ![新しい CDN プロファイル][new-cdn-profile]
 
 2. CDN プロファイルの名前を入力します。
@@ -57,24 +57,24 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 1. [Microsoft Azure 管理ポータル](https://portal.azure.com)で CDN プロファイルに移動します。これは、前の手順でダッシュボードにピン留めしている可能性があります。ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
 
     CDN プロファイル ブレードが表示されます。
-    
+
     ![CDN プロファイル][cdn-profile-settings]
-    
+
 2. **[エンドポイントの追加]** ボタンをクリックします。
 
     ![[エンドポイントの追加] ボタン][cdn-new-endpoint-button]
 
     **[エンドポイントの追加]** ブレードが表示されます。
-    
+
     ![[エンドポイントの追加] ブレード][cdn-add-endpoint]
 
 3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<EndpointName>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
 
 4. **[配信元の種類]** ドロップダウンで、配信元の種類を選択します。
-	
+
 	![CDN 配信元の種類](./media/cdn-create-new-endpoint/cdn-origin-type.png)
 
-5. **[配信元ホスト名]** ドロップダウンで、配信元のドメインを選択または入力します。ドロップダウンに、手順 4 で指定した種類の利用可能な配信元がすべて一覧表示されます。**[配信元の種類]** として [カスタムの配信元] を選択した場合は、カスタムの配信元のドメインを入力します。
+5. **[配信元ホスト名]** ドロップダウンで、配信元のドメインを選択または入力します。ドロップダウンに、手順 4 で指定した種類の利用可能な配信元がすべて一覧表示されます。**[配信元の種類]** として *[カスタムの配信元]* を選択した場合は、カスタムの配信元のドメインを入力します。
 
 6. **[元のパス]** ボックスに、キャッシュするリソースへのパスを入力するか、空のままにして、手順 5 で指定したドメインでのリソースをキャッシュするようにします。
 
@@ -88,7 +88,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     ![CDN エンドポイント][cdn-endpoint-success]
 
-    > [AZURE.NOTE]エンドポイントはすぐには使用できません。登録が CDN ネットワークに反映されるまでに最大で 90 分かかる場合があります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 404 を受け取る場合があります。
+    > [AZURE.NOTE] エンドポイントはすぐには使用できません。登録が CDN ネットワークに反映されるまでに最大で 90 分かかる場合があります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 404 を受け取る場合があります。
 
 ##関連項目
 - [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](cdn-map-content-to-custom-domain.md)
@@ -99,6 +99,5 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 [cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
- 
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0302_2016-->

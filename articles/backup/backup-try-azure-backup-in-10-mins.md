@@ -62,13 +62,13 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     ストレージ冗長オプションを選択する最適なタイミングは、コンテナーの作成直後で、コンピューターをコンテナーに登録する前です。項目が資格情報コンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
 
-    プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、Windows Server から Azure にバックアップする場合)、geo 冗長ストレージ オプション (既定値) の選択を検討する必要があります。
+    プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、Windows Server から Azure にバックアップする場合)、[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage) オプション (既定値) の選択を検討する必要があります。
 
-    Azure を第 3 のバックアップ ストレージ エンドポイントとして使用している場合 (たとえば、オンプレミスのローカルのバックアップ コピーには SCDPM を使用し、Azure は長期保存に使用する場合) は、ローカル冗長ストレージの選択を検討する必要があります。これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
+    Azure を第 3 のバックアップ ストレージ エンドポイントとして使用している場合 (たとえば、オンプレミスのローカル バックアップ コピーには SCDPM を使用し、Azure は長期保存に使用する場合) は、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)の選択を検討する必要があります。これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
 
     a.作成したコンテナーをクリックします。
 
-    b.[クイック スタート] ページで、**[構成]** をクリックします。
+    b.クイック スタート ページで、**[構成]** をクリックします。
 
     ![Configure Vault status](./media/backup-try-azure-backup-in-10-mins/configure-vault.png)
 
@@ -77,8 +77,6 @@ Windows コンピューターのファイルとデータを Azure にバック�
     **[Geo 冗長]** が既定のオプションであるため、**[ローカル冗長]** を選択した場合は **[保存]** をクリックする必要があります。
 
     ![GRS](./media/backup-try-azure-backup-in-10-mins/geo-redundant.png)
-
-    >[AZURE.NOTE] ストレージ冗長オプションの詳細については、こちらの[概要](../storage/storage-redundancy.md)記事を参照してください。
 
     d.左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックし、**[Recovery Services]** のリソースの一覧に戻ります。
 
@@ -90,7 +88,7 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     ![Creating Vault status](./media/backup-try-azure-backup-in-10-mins/demo-vault-active-full-screen.png)
 
-5. **[クイック スタート]** ページで **[コンテナー資格情報のダウンロード]** をクリックします。
+5. **クイック スタート** ページで **[コンテナー資格情報のダウンロード]** をクリックします。
 
     ![ダウンロード](./media/backup-try-azure-backup-in-10-mins/downloadvc.png)
 
@@ -98,7 +96,7 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     >[AZURE.NOTE] コンテナーの資格情報ファイルは登録ワークフロー中しか使用されず、48 時間後に期限切れとなります。
 
-6. **[保存]** をクリックしてコンテナー資格情報をローカル アカウントの**ダウンロード** フォルダーにダウンロードするか、**[保存]** メニューから **[名前を付けて保存]** を選択して保存場所を指定します。
+6. **[保存]** をクリックして、コンテナー資格情報をローカル アカウントの**ダウンロード** フォルダーにダウンロードするか、**[保存]** メニューの **[名前を付けて保存]** を選択して、保存場所を指定します。
 
     ![Select backup vault](./media/backup-try-azure-backup-in-10-mins/save.png)
 
@@ -108,11 +106,11 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     次に、バックアップ エージェントをダウンロードする必要があります。
 
-7. 左側のナビゲーション ウィンドウの **[Recovery Services]** をクリックして、サーバーに登録するバックアップ コンテナーを選択します。
+7. 左側のナビゲーション ウィンドウの **[Recovery Services]** をクリックして、サーバーに登録するバックアップ コンテナーをクリックします。
 
     ![Select backup vault](./media/backup-try-azure-backup-in-10-mins/recovery-services-select-vault.png)
 
-8. [クイック スタート] ページで **[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]、[保存]** の順にクリックするか、**[保存]** メニューの **[名前を付けて保存]** を選択してエージェントの場所を指定します。
+8. クイック スタート ページで **[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]、[保存]** の順にクリックするか、**[保存]** メニューの **[名前を付けて保存]** を選択してエージェントの場所を指定します。
 
     ![エージェントの保存](./media/backup-try-azure-backup-in-10-mins/agent.png)
 
@@ -130,7 +128,7 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     ![Scratch and Cache](./media/backup-try-azure-backup-in-10-mins/recovery-services-agent-setup-wizard-1.png)
 
-3. 既定のプロキシ設定を使用して引き続きインターネットに接続することができます。また、インターネットへの接続にプロキシ サーバーを使用する場合は、**[プロキシ構成]** 画面で **[カスタムのプロキシ設定を使用します]** チェック ボックスをオンにし、プロキシ サーバーの詳細を入力します。
+3. 既定のプロキシ設定を使用して引き続きインターネットに接続することができます。また、インターネットへの接続にプロキシ サーバーを使用する場合は、**[プロキシの構成]** 画面で **[カスタムのプロキシ設定を使用する]** チェック ボックスをオンにし、プロキシ サーバーの詳細を入力します。
 
     認証済みのプロキシを使用する場合は、ユーザー名とパスワードの詳細を入力します。
 
@@ -200,7 +198,7 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     ![Windows Server のバックアップ項目](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule.png)
 
-5. バックアップ コピーのための**保有ポリシー**を選択します。必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
+5. バックアップ コピーのための**保持ポリシー**を選択します。必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
 
     >[AZURE.NOTE] バックアップ スケジュールの詳細については、こちらの[記事](backup-azure-backup-cloud-as-tape.md)で説明されています。
 
@@ -224,11 +222,11 @@ Windows コンピューターのファイルとデータを Azure にバック�
 
     ![Windows Server の初回バックアップ](./media/backup-try-azure-backup-in-10-mins/backup-schedule-created.png)
 
-9. mmc スナップインで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
+9. MMC スナップインで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/snap-in-backup-now.png)
 
-10. **[確認]** 画面で、ウィザードでマシンのバックアップに使される設定を確認し、**[バックアップ]** をクリックします。
+10. **[確認]** 画面で、ウィザードでマシンのバックアップに使用される設定を確認し、**[バックアップ]** をクリックします。
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now-confirmation.png)
 
@@ -248,4 +246,4 @@ Windows コンピューターのファイルとデータを Azure にバック�
 - [Windows Server のバックアップ](backup-azure-backup-windows-server.md)の詳細を参照します。
 - [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

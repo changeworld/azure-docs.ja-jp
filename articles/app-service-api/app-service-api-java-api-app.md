@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="11/27/2015"
+	ms.date="02/22/2016"
 	ms.author="bradygaster"/>
 
 # Azure App Service での Java API アプリの構築とデプロイ
@@ -195,14 +195,14 @@ swagger.io オンライン エディターを使用して、API の構造を表�
             }
   
             @Override
-            public Response contactsGet()
+            public Response contactsGet(SecurityContext securityContext)
             throws NotFoundException {
                 ArrayList<Contact> list = loadContacts();
                 return Response.ok().entity(list).build();
                 }
   
             @Override
-            public Response contactsGetById(Integer id)
+            public Response contactsGetById(Integer id, SecurityContext securityContext)
             throws NotFoundException {
                 ArrayList<Contact> list = loadContacts();
                 Contact ret = null;
@@ -262,7 +262,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 	![Set up Java in the API App blade](media/app-service-api-java-api-app/set-up-java.png)
 
-1. **[デプロイメント資格情報]** 設定メニュー項目をクリックし、API アプリへのファイル発行に使用するユーザー名とパスワードを指定します。
+1. **[デプロイ資格情報]** 設定メニュー項目をクリックし、API アプリへのファイル発行に使用するユーザー名とパスワードを指定します。
 
 	![デプロイメント資格情報の設定](media/app-service-api-java-api-app/deployment-credentials.png)
 
@@ -295,4 +295,4 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 Azure での Java の使用に関する詳細については、「[Java デベロッパー センター](/develop/java/)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

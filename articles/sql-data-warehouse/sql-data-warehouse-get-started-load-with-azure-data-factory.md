@@ -34,19 +34,19 @@
 
 ## 開始する前に
 
-Azure Data Factory を理解するには、[Azure Data Factory サービスの概要](../data-factory/data-factory-introduction.md)に関するページを参照してください。
+Azure Data Factory を理解するには、「[Azure Data Factory サービスの概要](../data-factory/data-factory-introduction.md)」を参照してください。
 
 ### リソースを作成または識別する
 
 このチュートリアルを開始する前に、次のリソースを用意する必要があります。
 
-   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[Create a storage account (ストレージ アカウントを作成)](../storage/storage-create-storage-account/#create-a-storage-accoun/)」する方法を参照してください。 
+   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account/#create-a-storage-accoun/)」を参照してください。 
 
-   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング](sql-data-warehouse-get-started-provision.md)する方法を学習してください。データ ウェアハウスはあるが、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む](sql-data-warehouse-get-started-manually-load-samples.md)ことができます。
+   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング](sql-data-warehouse-get-started-provision.md)する方法を学習してください。データ ウェアハウスはあっても、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む](sql-data-warehouse-get-started-manually-load-samples.md)ことができます。
 
-   + **Azure Data Factory**: Azure Data Factory によって実際の読み込みが実行されるので、データ移動パイプラインの作成に使用できるデータ ファクトリが必要です。まだ適切なデータ ファクトリがない場合は、「[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成](../data-factory/data-factory-build-your-first-pipeline-using-editor.md)」の手順 1 に従って作成してください。
+   + **Azure Data Factory**: Azure Data Factory によって実際の読み込みが実行されるので、データ移動パイプラインの作成に使用できるデータ ファクトリが必要です。まだ適切なデータ ファクトリがない場合は、「[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成](../data-factory/data-factory-build-your-first-pipeline-using-editor.md)」の手順 1. に従って作成してください。
 
-   + **AZCopy**: サンプル データをローカル クライアントから Azure Storage BLOB にコピーするには、AZCopy が必要です。インストールの手順については、「[AZCopy のドキュメント](../storage/storage-use-azcopy.md)」を参照してください。
+   + **AZCopy**: サンプル データをローカル クライアントから Azure Storage BLOB にコピーするには、AZCopy が必要です。インストールの手順については、[AZCopy のドキュメント](../storage/storage-use-azcopy.md)を参照してください。
 
 ## 手順 1: サンプル データを Azure Storage BLOB にコピーする
 
@@ -132,21 +132,6 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
     ````
     {
-        "name": "<dataset name>",
-        "properties": {
-		    "type": "AzureSqlDWTable",
-		    "linkedServiceName": "<linked data warehouse name>",
-		    "typeProperties": {
-		      "tableName": "FactInternetSales"
-		    },
-		    "availability": {
-		      "frequency": "Hour",
-		      "interval": 1
-		    }
-        }
-    }
-
-    {
 	    "name": "DWDataset",
 		"properties": {
 		    "type": "AzureSqlDWTable",
@@ -227,7 +212,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 以下のトピックでは、Azure Data Factory に関する詳細情報を提供します。Azure SQL Database または HDinsight について説明しますが、この情報は Azure SQL Data Warehouse にも該当します。
 
 - [チュートリアル: Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
-- [チュートリアル: Azure Storage BLOB から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
+- [チュートリアル: Azure Storage BLOB から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
 - [実際のシナリオのチュートリアル](../data-factory/data-factory-tutorial.md)。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

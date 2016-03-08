@@ -1,3 +1,3 @@
- >[AZURE.NOTE]Azure には現在、リソース マネージャーとクラシック (サービス管理とも呼ばれます) の 2 種類のデプロイメント モデルがあることを理解しておくことが重要です。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+ >[AZURE.NOTE] Azure には現在、Resource Manager とクラシック (サービス管理とも呼ばれます) の 2 種類のデプロイ モデルがあることを理解しておくことが重要です。デプロイ モデルについては、「[Azure デプロイ モデル](../articles/azure-classic-rm.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

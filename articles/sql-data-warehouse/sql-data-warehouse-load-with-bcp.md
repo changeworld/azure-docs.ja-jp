@@ -10,10 +10,10 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="02/25/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 
@@ -49,7 +49,7 @@ bcp では次のことができます。
 - インストールされた bcp コマンド ライン ユーティリティ
 - インストールされた SQLCMD コマンド ライン ユーティリティ
 
->[AZURE.NOTE]bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
+>[AZURE.NOTE] bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
 
 ## SQL Data Warehouse へのデータのインポート
 
@@ -78,7 +78,7 @@ WITH
 );
 GO
 ```
->[AZURE.NOTE]WITH 句で使用できるオプションの詳細については、開発トピック グループの「[テーブル設計][]」を参照してください。
+>[AZURE.NOTE] WITH 句で使用できるオプションの詳細については、開発トピック グループの「[テーブル設計][]」を参照してください。
 
 ### 手順 2: ソース データ ファイルを作成する
 
@@ -101,7 +101,7 @@ GO
 
 これをローカル一時ディレクトリ C:\\Temp\\DimDate2.txt に保存します。
 
-> [AZURE.NOTE]bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII でエンコードされたファイルを使用するか、ファイルに UTF-16 エンコードを使用してください。
+> [AZURE.NOTE] bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII でエンコードされたファイルを使用するか、ファイルに UTF-16 エンコードを使用してください。
 
 ### 手順 3: データに接続し、インポートする
 bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
@@ -174,7 +174,7 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 20150101,1,3
 ```
 
->[AZURE.NOTE]分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。queryout パラメーターを使用して、実行する Transact-SQL クエリを指定することもできます。
+>[AZURE.NOTE] 分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。queryout パラメーターを使用して、実行する Transact-SQL クエリを指定することもできます。
 
 ## 次のステップ
 読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
@@ -196,4 +196,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0302_2016-->

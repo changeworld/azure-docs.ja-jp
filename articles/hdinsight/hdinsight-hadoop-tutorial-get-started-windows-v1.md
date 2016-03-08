@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/29/2015"
+   ms.date="02/25/2016"
    ms.author="nitinme"/>
 
 
@@ -281,4 +281,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

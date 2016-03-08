@@ -3,17 +3,17 @@
     		description="Azure File Storage を使用してクラウドにファイル データを格納し、Azure 仮想マシン (VM) から、または Windows を実行しているオンプレミスのアプリケーションからクラウド ファイル共有をマウントします。"
             services="storage"
             documentationCenter=".net"
-            authors="robinsh"
-            manager="carmonm"
-            editor="" />
+            authors="mine-msft"
+            manager="aungoo"
+            editor="tysonn" />
 
 <tags ms.service="storage"
       ms.workload="storage"
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="02/19/2016"
-      ms.author="robinsh" />
+      ms.date="02/29/2016"
+      ms.author="minet" />
 
 # Windows で Azure File Storage を使用する
 
@@ -261,7 +261,7 @@ File Storage をプログラミングする場合、.NET と Java のストレ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション\]**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -580,6 +580,14 @@ Azure ストレージ分析で File Storage のメトリックがサポートさ
 
 	File Storage に大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 
+13. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
+
+	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/ja-JP/kb/3114025)」を参照してください。
+
+14. **IBM MQ での Azure File Storage の使用**
+
+	IBM は、IBM MQ ユーザーが IBM のサービスで Azure File Storage を構成する際にガイドとなるドキュメントを公開しました。詳細については、「[How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure File Service でセットアップする方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
+
 ## 次のステップ
 
 Azure File Storage の詳細については、次のリンクを参照してください。
@@ -607,4 +615,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

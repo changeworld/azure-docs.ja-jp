@@ -36,7 +36,7 @@ SQL Database の[エラスティック データベース プール](sql-databas
 
 単一のデータベースまたはエラスティック データベースのどちらを使用したとしても、それに固定されることはありません。単一のデータベースをエラスティック データベース プールと組み合わせ、単一のデータベースとプールのサービス階層を変更することで、革新的なデザインを作成することができます。さらに、Azure の強力さと幅広さを利用して、さまざまな Azure サービスを SQL Database とうまく組み合わせることにより、独自の最新アプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
-しかし、データベースとデータベース プールの相対的なパフォーマンスはどのようにして比較できますか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? 答えは、単一のデータベースのデータベース トランザクション ユニット (DTU) とエラスティック データベースとデータベース プールのエラスティック DTU (eDTU) です。
+しかし、データベースとデータベース プールの相対的なパフォーマンスはどのようにして比較できますか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? 答えは、単一のデータベースの場合はデータベース トランザクション ユニット (DTU)、エラスティック データベースとデータベース プールの場合はエラスティック DTU (eDTU) です。
 
 ## DTU について
 
@@ -61,4 +61,4 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

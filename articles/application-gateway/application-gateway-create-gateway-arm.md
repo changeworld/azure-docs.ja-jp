@@ -22,9 +22,9 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 
 > [AZURE.SELECTOR]
-- [Azure Classic PowerShell steps](application-gateway-create-gateway.md)
-- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-- [Azure Resource Manager template ](application-gateway-create-gateway-arm-template.md)
+- [Azure クラシックの PowerShell の手順](application-gateway-create-gateway.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 
 
 <BR>
@@ -33,7 +33,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 
->[AZURE.IMPORTANT] Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイメント モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[PowerShell を使用した Application Gateway のクラシック デプロイメントの作成](application-gateway-create-gateway.md)」を参照してください。
+>[AZURE.IMPORTANT] Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](../azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure リソース マネージャーを使用した Application Gateway の作成について説明します。クラシック バージョンを使用する場合は、「[Application Gateway の作成、起動、または削除](application-gateway-create-gateway.md)」を参照してください。
 
 
 
@@ -50,7 +50,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
+- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 
 
 
 
@@ -71,32 +71,23 @@ Application Gateway を作成するために必要な手順を次に示します
 
 ## リソース マネージャーのリソース グループの作成
 
-Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 ### 手順 1.
+Azure Login-AzureRmAccount へのログイン
 
-		Login-AzureRmAccount
-
-
-
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 ### 手順 2.
-
 アカウントのサブスクリプションを確認します。
 
 		Get-AzureRmSubscription
 
-資格情報を使用して認証を行うよう求められます。<BR>
-
 ### 手順 3.
-
 使用する Azure サブスクリプションを選択します。<BR>
-
 
 		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
-
 ### 手順 4.
-
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
@@ -105,8 +96,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
-
->[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Create an application gateway with custom probes by using PowerShell (PowerShell を使用してカスタム プローブで Application Gateway を作成する)](application-gateway-create-probe-ps.md)」を参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
+>[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Azure Resource Manager で PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する](application-gateway-create-probe-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
 
 
 
@@ -174,7 +164,6 @@ Application Gateway を作成する前に、すべての構成項目を設定す
 
 	$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
-
 ### 手順 5.
 
 "fipconfig01" という名前のフロントエンド IP 構成を作成し、このフロントエンド IP 構成にパブリック IP アドレスを関連付けます。
@@ -213,9 +202,9 @@ Application Gateway のインスタンスのサイズを構成します。
 
 Application Gateway を削除するには、次の手順を実行します。
 
-1. ゲートウェイを停止するには、**Stop-AzureRmApplicationGateway** コマンドレットを使用します。
-2. ゲートウェイを削除するには、**Remove-AzureRmApplicationGateway** コマンドレットを使用します。
-3. ゲートウェイが削除されたことを確認するには、**Get-AzureRmApplicationGateway** コマンドレットを使用します。
+1. **Stop-AzureRmApplicationGateway** コマンドレットを使用してゲートウェイを停止します。
+2. **Remove-AzureRmApplicationGateway** コマンドレットを使用してゲートウェイを削除します。
+3. **Get-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
 ### 手順 1.
 
@@ -225,7 +214,7 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 
 ### 手順 2.
 
-Application Gateway を停止するには、**Stop-AzureRmApplicationGateway** を使用します。
+**Stop-AzureRmApplicationGateway** を使用して、Application Gateway を停止します。
 
 	Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
 
@@ -248,13 +237,13 @@ Application Gateway が停止状態になったら、**Remove-AzureRmApplication
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 
-内部ロード バランサーとともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

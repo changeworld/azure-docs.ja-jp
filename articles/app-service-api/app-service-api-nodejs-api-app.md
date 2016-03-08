@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="node"
 	ms.topic="get-started-article"
-	ms.date="11/27/2015"
+	ms.date="02/25/2015"
 	ms.author="bradygaster"/>
 
 # Azure App Service での Node.js API アプリの構築とデプロイ
@@ -21,7 +21,7 @@
 [AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
 ## 前提条件
-1. [Node.js](nodejs.org) が開発用コンピューターで実行されている (このサンプルでは、Node.js バージョン 4.2.2 がインストールされていることを前提としています)。
+1. [Node.js](http://nodejs.org) が開発用コンピューターで実行されている (このサンプルでは、Node.js バージョン 4.2.2 がインストールされていることを前提としています)。
 1. [GitHub](https://github.com/) アカウント
 1. Microsoft Azure [無料試用版アカウント](https://azure.microsoft.com/pricing/free-trial/)
 1. ローカルの開発用ワークステーションに Git がインストールされている
@@ -243,4 +243,4 @@ Azure App Service が提供する組み込みの継続的な配信機能を使�
 
 このサンプルを応用すれば、ハンドラーにコードを追加して、データベースや、API アプリ インスタンスのディスクにデータを格納できるようになります。[継続的なデプロイ] を有効にしたので、API アプリの機能を変更し、拡張する操作は、コードを変更して Git リポジトリにプッシュする操作と同じくらい簡単になります。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

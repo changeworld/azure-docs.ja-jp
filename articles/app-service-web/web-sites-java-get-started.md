@@ -18,8 +18,8 @@
 # Azure App Service での Java Web アプリの作成
 
 > [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [.NET](web-sites-dotnet-get-started.md)
+- [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
 - [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
@@ -27,9 +27,9 @@
 
 このチュートリアルでは、[Azure ポータル](https://portal.azure.com/)を使用して [Azure App Service で Java Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)を作成する方法について説明します。Azure ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする][]か、[無料試用版にサインアップ][]してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする]か、[無料試用版にサインアップ]してください。
 >
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成][]」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成]」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Java アプリケーション オプション
 
@@ -53,7 +53,7 @@
 	* 最初から自分で Web コンテナーを構成したい。 
 	* App Service でサポートされていないバージョンの Java を使用して自分でアップロードしたい。
 
-	これらの場合は、Azure ポータルを使ってアプリを作成して、適切なランタイム ファイルを手動で指定できます。このとき、ファイルは App Service プランのストレージ領域クォータに対してカウントされます。詳細については、[Azure へのカスタム Java Web アプリのアップロード](https://acom-sandbox.azurewebsites.net/ja-JP/documentation/articles/web-sites-java-custom-upload/)に関するページを参照してください。
+	これらの場合は、Azure ポータルを使ってアプリを作成して、適切なランタイム ファイルを手動で指定できます。このとき、ファイルは App Service プランのストレージ領域クォータに対してカウントされます。詳細については、[Azure へのカスタム Java Web アプリのアップロード](web-sites-java-custom-upload.md)に関するページを参照してください。
 
 ## <a name="portal"></a> Java Web アプリの作成と構成
 
@@ -81,7 +81,7 @@
 
 	![](./media/web-sites-java-get-started/newwebapp2.png)
  
-8. Web アプリが作成されたら、**[Web Apps]、{作成した Web アプリ}** の順にクリックします。
+8. Web アプリが作成されたら、**[Web アプリ]、{作成した Web アプリ}** の順にクリックします。
  
 	![](./media/web-sites-java-get-started/selectwebapp.png)
 
@@ -91,7 +91,7 @@
 
 11. 目的の **[Java バージョン]** を選択します。
 
-12. 目的の **[Java マイナー バージョン]** を選択します。**[最新]** を選択すると、お使いのアプリで、その Java メジャー バージョン向けの App Service で使用できる最新のマイナー バージョン使用することになります。**[最新]** 項目は Java アプリに一意で、**[アプリケーションの設定]** から作成されます。ギャラリーから Java アプリを作成する場合は、ユーザーが自身のコンテナーと JVM 変更を管理する必要があります。
+12. 目的の **[Java マイナー バージョン]** を選択します。**[最新]** を選択すると、お使いのアプリで、その Java メジャー バージョン向けの App Service で使用できる最新のマイナー バージョン使用することになります。**[最新]** 項目は、**[アプリケーションの設定]** で作成された Java アプリに対して一意です。ギャラリーから Java アプリを作成する場合は、ユーザーが自身のコンテナーと JVM 変更を管理する必要があります。
 
 12. 目的の **[Web コンテナー]** を選択します。"**最新**" で始まるコンテナー名を選択すると、お使いのアプリは、App Service で使用できる Web コンテナー メジャー バージョンの最新バージョンに保たれます。
 
@@ -176,7 +176,6 @@ Azure での Java アプリケーションの開発の詳細については、[J
 <!-- External Links -->
 [Visual Studio サブスクライバーの特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
-
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

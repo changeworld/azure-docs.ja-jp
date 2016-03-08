@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="12/22/2015"
+	ms.topic="get-started-article"
+	ms.date="02/25/2016"
 	ms.author="swkrish"/>
 
 
@@ -31,7 +31,7 @@
 
 Azure ポータルまたは Azure クラシック ポータルから B2C 機能ブレードに移動できます。
 
-### 1.Azure ポータルからアクセスする
+### 1\.Azure ポータルからアクセスする
 
 B2C 機能ブレードがスタート画面にピン留めされている場合、B2C テナントのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインするとすぐに、B2C 機能ブレードが表示されます。
 
@@ -42,7 +42,7 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
     > [AZURE.IMPORTANT]
     You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a user from any tenant cannot access it.
 
-### 2.Azure クラシック ポータルからアクセスする
+### 2\.Azure クラシック ポータルからアクセスする
 
 サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします (これは、Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントです)。 左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。**[クイック スタート]** タブ (表示される最初のタブ) で、**[管理]** の **[B2C 設定の管理]** をクリックします。新しいブラウザー ウィンドウまたはタブで、B2C 機能ブレードが開きます。
 
@@ -68,4 +68,4 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

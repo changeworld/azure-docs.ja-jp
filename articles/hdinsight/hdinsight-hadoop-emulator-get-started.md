@@ -14,7 +14,7 @@
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="11/29/2015"
 	ms.author="nitinme"/>
 
@@ -48,7 +48,11 @@ HDInsight Emulator は、Hadoop サンドボックスによく似たローカル
 
 Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用してインストールします。
 
-> [AZURE.NOTE] 現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。<ul> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li> <li>Hortonworks Data Platform</li> </ul>
+> [AZURE.NOTE] 現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。
+><ul>
+> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li>
+> <li>Hortonworks Data Platform</li>
+> </ul>
 
 
 **HDInsight Emulator をインストールするには**
@@ -259,7 +263,22 @@ jar ファイルとソース ファイルは C:\\Hadoop\\GettingStarted\\Java �
 
 		hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>パラメーター</td><td>注</td></tr> <tr><td>w3c\_scenarios.jar</td><td>この jar ファイルは C:\\hdp\\GettingStarted\\Java フォルダーにあります。</td></tr> <tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>この型は、次のどちらかに置き換えることができます。<ul> <li>microsoft.hadoop.w3c.AverageTimeTaken</li> <li>microsoft.hadoop.w3c.ErrorsByPage</li> </ul></td></tr> <tr><td>/w3c/input/small/data\_w3c\_small.txt</td><td>この入力ファイルは、次のどちらかに置き換えることができます。<ul> <li>/w3c/input/medium/data\_w3c\_medium.txt</li> <li>/w3c/input/large/data\_w3c\_large.txt</li> </ul></td></tr> <tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr> </table>
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>パラメーター</td><td>注</td></tr>
+	<tr><td>w3c_scenarios.jar</td><td>この jar ファイルは C:\hdp\GettingStarted\Java フォルダーにあります。</td></tr>
+	<tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>型は、次のどちらかに置き換えることができます。
+	<ul>
+	<li>microsoft.hadoop.w3c.AverageTimeTaken</li>
+	<li>microsoft.hadoop.w3c.ErrorsByPage</li>
+	</ul></td></tr>
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>入力ファイルは、次のどちらかに置き換えることができます。
+	<ul>
+	<li>/w3c/input/medium/data_w3c_medium.txt</li>
+	<li>/w3c/input/large/data_w3c_large.txt</li>
+	</ul></td></tr>
+	<tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr>
+	</table>
 
 4. 次のコマンドを実行して、出力ファイルの内容を表示します。
 
@@ -317,8 +336,17 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
         C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\hive-0.13.0.2.1.3.0-1981\\bin\\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3ctotalhitsbypage.hql</td><td> この Hive スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3caveragetimetaken.hql</li> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3cerrorsbypage.hql</li> </ul> </td></tr>
-
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr>
+	<tr><td>C:\hdp\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> Hive スクリプト ファイルは、次のいずれかに置き換えることができます。
+	<ul>
+	<li>C:\hdp\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li>
+	<li>C:\hdp\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li>
+	</ul>
+	</td></tr>
+	
 	</table>
 
 	w3ctotalhitsbypage.hql HiveQL スクリプトの内容は次のとおりです。
@@ -359,12 +387,25 @@ Pig 処理では、*Pig Latin* と呼ばれるデータ フロー言語が使用
 
 		C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\pig-0.12.1.2.1.3.0-1981\\bin\\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Pig\\w3c\\TotalHitsForPage.pig</td><td>この Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\AverageTimeTaken.pig</li> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\ErrorsByPage.pig</li> </ul> </td></tr> <tr><td>/w3c/input/small/data\_w3c\_small.txt</td><td> このパラメーターは次のようなもっと大きなファイルに置き換えることができます。
-
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr>
+	<tr><td>C:\hdp\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td> Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。
 	<ul>
-<li>/w3c/input/medium/data_w3c_medium.txt</li>
-<li>/w3c/input/large/data_w3c_large.txt</li>
-</ul></td></tr> </table>
+	<li>C:\hdp\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li>
+	<li>C:\hdp\GettingStarted\Pig\w3c\ErrorsByPage.pig</li>
+	</ul>
+	</td></tr>
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td> このパラメーターはもっと大きなファイルに置き換えることができます。
+	
+	<ul>
+	<li>/w3c/input/medium/data_w3c_medium.txt</li>
+	<li>/w3c/input/large/data_w3c_large.txt</li>
+	</ul>
+	
+	</td></tr>
+	</table>
 
 	出力は次のようになります。
 
@@ -497,4 +538,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

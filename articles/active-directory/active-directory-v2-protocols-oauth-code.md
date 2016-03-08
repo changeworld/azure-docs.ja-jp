@@ -13,7 +13,7 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
@@ -21,7 +21,7 @@
 
 デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。アプリ モデル v2.0 による OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
-<!-- TODO: Need link to libraries -->
+<!-- TODO: Need link to libraries -->	
 
 > [AZURE.NOTE]
 	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
@@ -275,4 +275,4 @@ curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-fo
 | trace\_id | 診断に役立つ、要求の一意の識別子。 |
 | correlation\_id | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

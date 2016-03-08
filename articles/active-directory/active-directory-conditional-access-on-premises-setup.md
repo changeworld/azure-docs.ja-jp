@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.topic="get-started-article"
+	ms.date="02/26/2016"
 	ms.author="femila"/>
 
 
@@ -42,23 +42,23 @@ Azure Active Directory Device Registration Service の条件付きアクセス �
 * Azure Active Directory テナント
 * Windows Server Active Directory (Windows Server 2008 以降)
 * Windows Server 2012 R2 の更新されたスキーマ
-* Azure Active Directory Premium のサブスクリプション
+* Azure Active Directory Premium のライセンス
 * Azure AD に対する SSO 用に構成された Windows Server 2012 R2 フェデレーション サービス
 * Windows Server 2012 R2 Web アプリケーション プロキシ Microsoft Azure Active Directory Connect (Azure AD Connect)。[Azure AD Connect はここからダウンロード](http://www.microsoft.com/ja-JP/download/details.aspx?id=47594)
-* 確認済みドメイン 
+* 確認済みドメイン
 
 このリリースの既知の問題
 -------------------------------------------------------------------------------
 * デバイス ベースの条件付きアクセス ポリシーには、Azure Active Directory から Active Directory へのデバイス オブジェクトの書き戻しが必要です。デバイス オブジェクトを Active Directory に書き戻すには、最大 3 時間かかる可能性があります。
-* iOS7 デバイスの場合、クライアント証明書の認証時に、常に証明書の選択が求められます。 
-* iOS8.3 以前の iOS8 の一部のバージョンは機能しない場合があります。 
+* iOS7 デバイスの場合、クライアント証明書の認証時に、常に証明書の選択が求められます。
+* iOS8.3 以前の iOS8 の一部のバージョンは機能しない場合があります。
 
 ## シナリオの前提条件
-このシナリオでは、Azure AD テナントとローカルの Active Directory で構成されたハイブリッド環境があることを前提としています。これらのテナントは、Azure AD の接続を使用して、確認済みドメインと SSO 対応 AD FS を介して接続されている必要があります。次のチェックリストを使用すると、上記で説明した段階に環境を構成できます。
+このシナリオでは、Azure AD テナントとオンプレミスの Active Directory で構成されたハイブリッド環境があることを前提としています。これらのテナントは、Azure AD の接続を使用して、確認済みドメインと SSO 対応 AD FS を介して接続されている必要があります。次のチェックリストを使用すると、上記で説明した段階に環境を構成できます。
 
 チェックリスト: 条件付きアクセスのシナリオの前提条件
 --------------------------------------------------------------
-ローカルの Active Directory と Azure AD テナントを接続します。
+オンプレミスの Active Directory と Azure AD テナントを接続します。
 
 ## Azure Active Directory Device Registration サービスの構成
 組織用に Azure Active Directory Device Registration Service をデプロイおよび構成するには、以下のガイドに従います。
@@ -89,11 +89,11 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 | タスク | リファレンス |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。完了したら、このガイドに戻ります。 | [Azure AD Connect でのデバイスの書き戻しの有効化](#Active Directory ドメイン サービス スキーマをアップグレードする) |
-	 
+
 
 ##[省略可能] パート 4: 多要素認証を有効にする
 
-多要素認証に関するいくつかのオプションのいずれかを構成することを強くお勧めします。MFA が必要な場合は、「[ユーザーに適した多要素のセキュリティ ソリューションの選択](multi-factor-authentication-get-started.md)」をご覧ください。これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
+多要素認証に関するいくつかのオプションのいずれかを構成することを強くお勧めします。MFA が必要な場合は、「[ユーザーに適した多要素のセキュリティ ソリューションの選択](../multi-factor-authentication/multi-factor-authentication-get-started.md)」をご覧ください。これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
 
 ## パート 5: 検証
 
@@ -109,20 +109,20 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 
 
 
-## Azure Active Directory をローカルの Active Directory と統合する
-これにより、Azure AD Connect を使用して Azure AD テナントをローカルの Active Directory と統合できます。これらの手順は Azure ポータルで使用できますが、このセクションに記載されている特別な指示に留意してください。
+## Azure Active Directory をオンプレミスの Active Directory と統合する
+これにより、Azure AD Connect を使用して Azure AD テナントをオンプレミスの Active Directory と統合できます。これらの手順は Azure クラシック ポータルで使用できますが、このセクションに記載されている特別な指示に留意してください。
 
-1.	Azure ポータルに管理者としてサインインします。
+1.	Azure AD でグローバル管理者であるアカウントを使用して Azure クラシック ポータルにログインします。
 2.	左ウィンドウで、**[Active Directory]** を選択します。
 3.	**[ディレクトリ]** タブでディレクトリを選択します。
 4.	**[ディレクトリの統合]** タブを選択します。
-5.	**デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をローカル ディレクトリと統合します。
+5.	**デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をオンプレミスのディレクトリと統合します。
   1.	ドメインを追加します。
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
   >[AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。[AZURE.NOTE] プレビュー機能を構成する必要はありません。
-  
-   
+
+
 
 
 ## Active Directory ドメイン サービス スキーマをアップグレードする
@@ -130,7 +130,7 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 Active Directory スキーマのアップグレードを行うと、それを元に戻すことはできません。これは最初にテスト環境で実行することをお勧めします。
 
 1. エンタープライズ管理者権限とスキーマ管理者権限を両方とも有するアカウントでドメイン コントローラーにログインします。
-2. **[media]\\support\\adprep** ディレクトリとサブディレクトリを、いずれかの Active Directory ドメイン コントローラーにコピーします。 
+2. **[media]\\support\\adprep** ディレクトリとサブディレクトリを、いずれかの Active Directory ドメイン コントローラーにコピーします。
 3. ここで、[media] は Windows Server 2012 R2 インストール メディアへのパスです。
 4. コマンド プロンプトから、adprep ディレクトリに移動し、**adprep.exe /forestprep** を実行します。画面の手順に従ってスキーマのアップグレードを完了します。
 
@@ -163,7 +163,7 @@ Active Directory スキーマのアップグレードを行うと、それを元
 
 ### デバイスの書き戻しを行うために Azure AD Connect を準備する
 
-1.	「パート 1: AAD Connect を準備する」を完了します。 
+1.	「パート 1: Azure AD Connect を準備する」を完了します。
 
 
 ## Azure Active Directory Device Registration を使用してデバイスをワークプレースに参加させる
@@ -249,4 +249,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

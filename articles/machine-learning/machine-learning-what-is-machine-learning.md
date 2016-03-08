@@ -13,7 +13,7 @@
     ms.workload="data-services"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="article"
+    ms.topic="get-started-article"
     ms.date="02/02/2016"
     ms.author="cgronlun;tedway;olgali"/>
 
@@ -118,4 +118,4 @@ Azure Machine Learning では、モデルはトレーニング データを処�
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -10,7 +10,7 @@ editor="cgronlun"/>
 <tags
 ms.service="hdinsight"
 ms.devlang="na"
-ms.topic="article"
+ms.topic="get-started-article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
 ms.date="01/12/2016"
@@ -45,13 +45,13 @@ Web トラフィックに SSH トンネルを使用するには、以下が必�
 
 * SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
 
-	> [AZURE.NOTE]`ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
+	> [AZURE.NOTE] `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
 
 * SOCKS プロキシを使用するように構成できる Web ブラウザー
 
 * __(省略可能)__: [FoxyProxy](http://getfoxyproxy.org/,) などのプラグイン。FoxyProxy は、トンネル経由で特定の要求のみをルーティングするルールを適用できます。
 
-	> [AZURE.WARNING]FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
+	> [AZURE.WARNING] FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
 
 ##<a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
 
@@ -105,13 +105,13 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 ##ブラウザーからトンネルを使用する
 
-> [AZURE.NOTE]このセクションの手順では、FireFox ブラウザーを使用します。FireFox は、Linux、UNIX、Macintosh OS X、Windows の各システムで無料で使用できるためです。Google Chrome、Microsoft Edge、Apple Safari などの最近のブラウザーでも動作するはずですが、一部の手順で使用されている FoxyProxy プラグインがブラウザーによっては動作しない可能性があります。
+> [AZURE.NOTE] このセクションの手順では、FireFox ブラウザーを使用します。FireFox は、Linux、UNIX、Macintosh OS X、Windows の各システムで無料で使用できるためです。Google Chrome、Microsoft Edge、Apple Safari などの最近のブラウザーでも動作するはずですが、一部の手順で使用されている FoxyProxy プラグインがブラウザーによっては動作しない可能性があります。
 
 1. **SOCKS v5** プロキシとして **localhost:9876** を使用するようにブラウザーを構成します。Firefox の設定は次のようになります。9876 以外のポートを使用する場合は、そのポート番号に変更します。
 
 	![Firefox の設定の画像](./media/hdinsight-linux-ambari-ssh-tunnel/socks.png)
 
-	> [AZURE.NOTE]**[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
+	> [AZURE.NOTE] **[リモート DNS]** を選択するとドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。選択しないと、DNS はローカルに解決されます。
 
 2. Firefox でプロキシ設定を有効または無効にして、[http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トラフィックがトンネルを経由しているかどうかを確認します。設定が有効の場合、IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
 
@@ -173,16 +173,16 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnquicklinks.png)
 
-	> [AZURE.NOTE]インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、__[Quick Links]__ を選択したときにメニューではなく待機インジケーターが表示されることがあります。その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
+	> [AZURE.NOTE] インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、__[Quick Links]__ を選択したときにメニューではなく待機インジケーターが表示されることがあります。その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
 
 
-	> [AZURE.TIP]モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、__[Quick Links]__ メニューの一部のエントリが画面の右側で切れて表示されることがあります。その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
+	> [AZURE.TIP] モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、__[Quick Links]__ メニューの一部のエントリが画面の右側で切れて表示されることがあります。その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
 
 4. 次のようなページが表示されます。
 
 	![YARN ResourceManager の UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
 
-	> [AZURE.TIP]このページの URL は、\_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
+	> [AZURE.TIP] このページの URL は、\_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
 
 ##次のステップ
 
@@ -196,4 +196,4 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0302_2016-->

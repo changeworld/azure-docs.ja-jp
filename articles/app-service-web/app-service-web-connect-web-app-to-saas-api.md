@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na" 
-	ms.date="12/24/2015"
+	ms.date="02/26/2016"
 	ms.author="cfowler"/>
 
 # Azure App Service の API アプリに Web アプリを接続する
@@ -47,7 +47,7 @@
 
 	![既存の API アプリを選択](./media/app-service-web-connect-web-app-to-saas-api/4-Add-Azure-API-App-SDK-Dialog.png)
 
-	>[AZURE.NOTE]API アプリに接続するためのクライアント コードが Swagger API エンドポイントから自動的に生成されます。
+	>[AZURE.NOTE] API アプリに接続するためのクライアント コードが Swagger API エンドポイントから自動的に生成されます。
 
 1. 生成される API コードを活用するには、HomeController.cs ファイルを開き、`Contact` アクションを次のコードに置き換えます。
 
@@ -64,28 +64,29 @@
 	![HomeController.cs コードの更新](./media/app-service-web-connect-web-app-to-saas-api/5-Write-Code-Which-Leverages-Swagger-Generated-Code.png)
 
 1. 連絡先の動的リストを反映するよう、以下のコードで `Contact` ビューを更新します。
-	<pre>// Add to the very top of the view file
-	@model IList&lt;MyContactsList.Web.Models.Contact&gt;
+	<pre>// ビュー ファイルの最上部に追加
+	@model IList&lt;MyContactsList.Web.Models.Contact>
 	
-	// Replace the default email addresses with the following
-    &lt;h3&gt;Public Contacts&lt;/h3&gt;
-    &lt;ul&gt;
-        @foreach (var contact in Model)
-        {
-            &lt;li&gt;&lt;a href=&quot;mailto:@contact.EmailAddress&quot;&gt;@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a&gt;&lt;/li&gt;
-        }
-    &lt;/ul&gt; 
+	// 既定の電子メール アドレスを以下で置換
+	&lt;h3>Public Contacts&lt;/h3>
+	&lt;ul>
+	    @foreach (var contact in Model)
+	    {
+	        &lt;li>&lt;a href="mailto:@contact.EmailAddress">@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a>&lt;/li>
+	    }
+	&lt;/ul> 
 	</pre>
+
 	![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
 
 ## App Service の Web Apps に Web アプリケーションをデプロイする
 
 [Azure Web アプリのデプロイ方法](web-sites-deploy.md)に関するページにある手順に従ってください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0302_2016-->

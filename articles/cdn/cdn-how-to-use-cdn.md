@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="CDN を使用する方法 | Microsoft Azure" 
-	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。" 
-	services="cdn" 
-	documentationCenter=".net" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="CDN を使用する方法 | Microsoft Azure"
+	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。"
+	services="cdn"
+	documentationCenter=".net"
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="01/20/2016" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="02/25/2016"
 	ms.author="casoper"/>
 
 
@@ -27,20 +27,20 @@ CDN を使用して Azure データをキャッシュすることには、次の
 - 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型の配信スケール。
 - ユーザー要求を分散させ、コンテンツをグローバル エッジ POP から配信することによる、配信元へのトラフィックの削減。
 
->[AZURE.TIP]Azure CDN では、さまざまな配信元からコンテンツを配信できます。Azure 内で統合された配信元には、App Service、Cloud Services、Blob Storage、Media Services が含まれます。パブリックにアクセスできる Web アドレスを使用して、カスタム配信元を定義することもできます。
+>[AZURE.TIP] Azure CDN では、さまざまな配信元からコンテンツを配信できます。Azure 内で統合された配信元には、App Service、Cloud Services、Blob Storage、Media Services が含まれます。パブリックにアクセスできる Web アドレスを使用して、カスタム配信元を定義することもできます。
 
 ##CDN を有効にする方法
 
 1. 配信元を指すエンドポイントで CDN プロファイルを作成します。
 
 	CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。CDN プロファイルを作成すると、選択した配信元を使用して、新しい CDN エンドポイントを作成できます。
-	
-	>[AZURE.NOTE]既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
+
+	>[AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 	>
 	> CDN の価格は、CDN プロファイル レベルで適用されます。Standard と Premium の CDN 機能を組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
-	
+
 	CDN のプロファイルとエンドポイントの作成に関する詳細なチュートリアルについては、「[Azure の Content Delivery Network (CDN) を有効にする方法](cdn-create-new-endpoint.md)」を参照してください。
-	
+
 2. CDN 構成を設定する
 
 	CDN エンドポイントでは、[キャッシュ ポリシー](cdn-caching-policy.md)、[クエリ文字列のキャッシュ](cdn-query-string.md)、[ルール エンジン](cdn-rules-engine.md)など、さまざまな機能を有効にすることができます。詳細については、左側の **[管理]** メニューを参照してください。
@@ -55,10 +55,12 @@ CDN が Azure ストレージ アカウントで有効になると、パブリ�
 
 最適なパフォーマンスを実現するには、10 GB より小さいサイズの BLOB の配信に CDN のエッジ キャッシュを使用します。
 
-ストレージ アカウントに対して CDN アクセスを有効にすると、管理ポータルでは、次の形式で CDN ドメイン名が提供されます。`http://<identifier>.azureedge.net/`このドメイン名を使ってパブリック コンテナー内の BLOB にアクセスできます。たとえば、myaccount というストレージ アカウントに music というパブリック コンテナーがある場合は、次の URL のどちらかを使えば、そのコンテナー内の BLOB にアクセスできます。
+ストレージ アカウントに対して CDN アクセスを有効にすると、管理ポータルでは、次の形式で CDN ドメイン名が提供されます。`http://<identifier>.azureedge.net/`このドメイン名を使ってパブリック コンテナー内の BLOB にアクセスできます。たとえば、パブリック コンテナーがある場合は、次の URL のどちらかを使うと、そのコンテナー内の BLOB にアクセスできます。
 
-- **Azure BLOB サービスの URL**: `http://myAccount.blob.core.windows.net/music/` 
-- **Azure CDN の URL**: `http://<identifier>.azureedge.net/music/` 
+- **Azure BLOB サービスの URL**: `http://<account>.blob.core.windows.net/<container>/`
+- **Azure CDN の URL**: `http://<identifier>.azureedge.net/<container>/`
+
+> [AZURE.TIP] 上記の例では、ストレージ アカウント*全体*で CDN エンドポイントを参照しました。それに応じて、CDN URL にコンテナーを含める必要があります。**[元のパス]** パラメーターを使用すると、ルート CDN URL で特定のコンテナーを参照することができます。
 
 ## Azure Websites からのコンテンツのキャッシュ
 
@@ -66,9 +68,9 @@ Web サイトから CDN を有効にして、画像、スクリプト、スタ�
 
 Web サイトに対して CDN アクセスを有効にすると、管理ポータルでは、次の形式で CDN ドメイン名が提供されます。`http://<identifier>.azureedge.net/`このドメイン名を使用して、Web サイトからオブジェクトを取得できます。たとえば、パブリック コンテナー名が cdn で、画像ファイルの名前が music.png の場合、ユーザーは次の 2 つのどちらかの URL でオブジェクトにアクセスできます。
 
-- **Azure Web サイトの URL**: `http://mySiteName.azurewebsites.net/cdn/music.png` 
+- **Azure Web サイトの URL**: `http://mySiteName.azurewebsites.net/cdn/music.png`
 - **Azure CDN の URL**: `http://<identifier>.azureedge.net/cdn/music.png`
- 
+
 ## Azure クラウド サービスからのコンテンツのキャッシュ
 
 Azure クラウド サービスによって提供される CDN にオブジェクトをキャッシュすることができます。
@@ -78,7 +80,7 @@ Azure クラウド サービスによって提供される CDN にオブジェ�
 
 - 静的コンテンツをキャッシュする場合のみ CDN を使用する。
 
-	>[AZURE.WARNING]揮発性が高いコンテンツまたは動的コンテンツをキャッシュすると、パフォーマンスに悪影響を与えたり、コンテンツの問題が発生したりする可能性があり、コストの増加につながります。
+	>[AZURE.WARNING] 揮発性が高いコンテンツまたは動的コンテンツをキャッシュすると、パフォーマンスに悪影響を与えたり、コンテンツの問題が発生したりする可能性があり、コストの増加につながります。
 - クラウド サービスが運用環境にデプロイされている必要がある。
 - クラウド サービスが HTTP を使用してポート 80 でオブジェクトを提供する必要がある。
 - クラウド サービスでは、キャッシュまたは配信するコンテンツをクラウド サービスの /cdn フォルダーに配置する必要がある。
@@ -86,8 +88,8 @@ Azure クラウド サービスによって提供される CDN にオブジェ�
 クラウド サービスに対して CDN アクセスを有効にすると、管理ポータルでは、次の形式で CDN ドメイン名が提供されます。`http://<identifier>.azureedge.net/`このドメイン名を使用して、クラウド サービスからオブジェクトを取得できます。たとえば、クラウド サービス名が myHostedService で、コンテンツを配信する ASP.NET Web ページが music.aspx の場合、ユーザーは次の 2 つのどちらかの URL を使用してオブジェクトにアクセスできます。
 
 
-- **Azure クラウド サービスの URL**: `http://myHostedService.cloudapp.net/music.aspx` 
-- **Azure CDN の URL**: `http://<identifier>.azureedge.net/music.aspx` 
+- **Azure クラウド サービスの URL**: `http://myHostedService.cloudapp.net/music.aspx`
+- **Azure CDN の URL**: `http://<identifier>.azureedge.net/music.aspx`
 
 ## カスタム配信元からコンテンツをキャッシュする
 
@@ -97,14 +99,14 @@ Azure クラウド サービスによって提供される CDN にオブジェ�
 
 - 静的コンテンツをキャッシュする場合のみ CDN を使用する。
 
-	>[AZURE.WARNING]揮発性が高いコンテンツまたは動的コンテンツをキャッシュすると、パフォーマンスに悪影響を与えたり、コンテンツの問題が発生したりする可能性があり、コストの増加につながります。
+	>[AZURE.WARNING] 揮発性が高いコンテンツまたは動的コンテンツをキャッシュすると、パフォーマンスに悪影響を与えたり、コンテンツの問題が発生したりする可能性があり、コストの増加につながります。
 - カスタム発信元のコンテンツは、パブリック IP アドレスを持つサーバーでホストする必要があります。CDN のエッジ ノードでは、ファイアウォールの内側にあるイントラネット サーバーから資産を取得できません。
 
 カスタム配信元に対して CDN アクセスを有効にすると、Azure ポータルでは、次の形式で CDN ドメイン名が提供されます。`http://<identifier>.azureedge.net/`このドメイン名を使用して、カスタム配信元からオブジェクトを取得できます。たとえば、www.contoso.com にあるサイトで、コンテンツを配信する ASP.NET Web ページが music.aspx の場合、ユーザーは次の 2 つのどちらかの URL を使用してオブジェクトにアクセスできます。
 
 
-- **カスタム発信元の URL**: `http://www.contoso.com/music.aspx` 
-- **Azure CDN の URL**: `http://<identifier>.azureedge.net/music.aspx` 
+- **カスタム発信元の URL**: `http://www.contoso.com/music.aspx`
+- **Azure CDN の URL**: `http://<identifier>.azureedge.net/music.aspx`
 
 ## クエリ文字列を含む特定のコンテンツのキャッシュ
 
@@ -147,4 +149,4 @@ Microsoft Azure CDN は、[CDN リソース プロバイダーの REST API](http
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0302_2016-->

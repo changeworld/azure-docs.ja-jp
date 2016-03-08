@@ -15,7 +15,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/13/2015"
+   ms.date="02/25/2016"
    ms.author="nitinme"/>
 
 
@@ -251,4 +251,4 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->
