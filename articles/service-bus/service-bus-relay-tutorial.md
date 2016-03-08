@@ -475,7 +475,7 @@ namespace Microsoft.ServiceBus.Samples
 	using System.ServiceModel;
 	```
 
-1. 前の手順を繰り返して、Microsoft.ServiceBus.dll と [Microsoft.ServiceBus](https://msdn.microsoft.com/library/microsoft.servicebus.aspx) 名前空間への参照をプロジェクトに追加します。
+1. [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をインストールします。
 
 1. 次の例に示すように、サービス コントラクトの定義を名前空間に追加します。この定義は **Service** プロジェクトで使用される定義と同じです。`Microsoft.ServiceBus.Samples` 名前空間の先頭に次のコードを追加する必要があります。
 
@@ -823,4 +823,4 @@ Service Bus の詳細については、次のトピックを参照してくだ�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

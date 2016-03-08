@@ -11,7 +11,7 @@
 <tags
    ms.service="hdinsight"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
    ms.date="01/08/2016"
@@ -35,7 +35,7 @@ HDInsight の Apache Storm は、管理されるクラスターとして、Azure
 
 	* さまざまなプログラミング言語をサポートしています: Java を使用してデータを読み取り、C# を使用して処理できます。
 	
-		> [AZURE.NOTE]C# トポロジは、Windows ベースの HDInsight クラスターでのみサポートされています。
+		> [AZURE.NOTE] C# トポロジは、Windows ベースの HDInsight クラスターでのみサポートされています。
 
 	* **Trident** Java インターフェイスを使用して、メッセージの「厳密に 1 回」処理、「トランザクション」のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジを作成します。
 
@@ -101,7 +101,7 @@ Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。
 
 作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。すべての HDInsight クラスターで、データの処理中でも、クラスター内のノード数を変更できます。
 
-> [AZURE.NOTE]スケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始されていたトポロジを再調整する必要があります。
+> [AZURE.NOTE] スケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始されていたトポロジを再調整する必要があります。
 
 ###サポート
 
@@ -138,7 +138,7 @@ Apache Storm は、HDInsight や Hadoop から使用することが一般的な 
 
 * **スパウト**: データ ソースのデータを利用し、1 つ以上の**ストリーム**を発します。
 
-	> [AZURE.NOTE]多くの場合、データは、Kafka、Azure Service Bus queues、Event hubs などのキューから読み取られます。システムが停止した場合、キューが確実にデータを保持します。
+	> [AZURE.NOTE] 多くの場合、データは、Kafka、Azure Service Bus queues、Event hubs などのキューから読み取られます。システムが停止した場合、キューが確実にデータを保持します。
 
 * **ボルト**: **ストリーム**を利用し、**タプル**に対して処理を実行します。**ストリーム**を発する場合もあります。ボルトは、キュー、HDInsight HBase、BLOB、その他のデータ ストアなどの、外部ストレージへのデータの書き込みも処理します。
 
@@ -220,4 +220,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0302_2016-->

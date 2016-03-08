@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="12/07/2015"
+	ms.date="02/29/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service での ASP.NET Web アプリの作成
 
 > [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [.NET](web-sites-dotnet-get-started.md)
+- [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
 - [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
@@ -79,7 +79,7 @@ Azure アカウントにサインアップする前に Azure App Service を開�
 
 3. ターゲット フレームワークとして **[.NET Framework 4.5.2]** が選択されていることを確認します。
 
-4.  [Azure Application Insights](app-insights-overview.md) は、Web アプリの可用性、パフォーマンス、利用状況を監視します。Application Insights を使わない場合は、**[Application Insights をプロジェクトに追加する]** チェック ボックスをオフにします。
+4.  [Azure Application Insights](../application-insights/app-insights-overview.md) は、Web アプリの可用性、パフォーマンス、利用状況を監視します。Application Insights を使わない場合は、**[Application Insights をプロジェクトに追加する]** チェック ボックスをオフにします。
 
 4. アプリケーションに「**MyExample**」という名前を付けます。
 
@@ -301,4 +301,4 @@ Web アプリをテストしてデバッグしているときにリモート サ
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

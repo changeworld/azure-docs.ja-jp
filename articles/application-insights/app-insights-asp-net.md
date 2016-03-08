@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="ASP.NET 向けの Application Insights" 
-	description="オンプレミスまたは Microsoft Azure Web アプリケーションのパフォーマンス、可用性、使用状況を Application Insights で分析します。" 
+	pageTitle="Application Insights を使用した ASP.NET の Web アプリの分析" 
+	description="オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、利用状況の分析。" 
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -11,8 +11,8 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.topic="get-started-article" 
+	ms.date="02/28/2016" 
 	ms.author="awills"/>
 
 
@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Application Insights SDK は実行中の Web アプリケーションから Azure ポータルにテレメトリを送信します。Azure ポータルにサインインすれば、アプリのパフォーマンスや使用状況をグラフで確認できます。
+Application Insights SDK は実行中の Web アプリケーションから Azure ポータルに分析テレメトリを送信します。Azure ポータルにサインインすると、アプリのパフォーマンスや使用状況をグラフで確認できます。
 
 ![パフォーマンス監視グラフのサンプル](./media/app-insights-asp-net/10-perf.png)
 
@@ -68,13 +68,13 @@ Azure にサインインしているアカウントを選択します。資格�
 2. [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
 3. `ApplicationInsights.config` にインストルメンテーション キーを挿入し、SDK がポータルにテレメトリを送信できるようにします。
 
-最初に Azure にサインインしないと、SDK がリソースに接続されずにインストールされます。Visual Studio の診断ハブでは、デバッグ時に Application Insights テレメトリを表示および検索することができます。他の手順は後で完了することができます。
+最初に Azure にサインインしないと、SDK がリソースに接続されずにインストールされます。Visual Studio の検索ウィンドウでは、デバッグ時に Application Insights Telemetry を表示および検索することができます。他の手順は後で完了することができます。
 
 ## <a name="run"></a> プロジェクトの実行
 
 F5 キーを使用してアプリケーションを実行して、試します。さまざまなページが開き、いくつかのテレメトリが生成されます。
 
-Visual Studio で、送信されたイベント数が表示されます。
+Visual Studio で、ログに記録されたイベント数が表示されます。
 
 ![Visual Studio では、Application Insights ボタンはデバッグ時に表示されます。](./media/app-insights-asp-net/appinsights-09eventcount.png)
 
@@ -83,7 +83,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ### 診断検索
 
-[検索] ウィンドウには、Application Insights ポータルに送信されたイベントが示されます。(ポータルにも同等の検索機能があります。)
+[検索] ウィンドウには、ログに記録されたイベントが表示されます (Application Insights を設定する際に Azure にサインインした場合は、ポータルで同じイベントを検索できるようになります)。
 
 ![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-asp-net/34.png)
 
@@ -105,6 +105,8 @@ Visual Studio で、送信されたイベント数が表示されます。
 [Azure ポータル][portal]に Application Insights のリソースを開きます。
 
 ![プロジェクトを右クリックして Azure ポータルを開く](./media/app-insights-asp-net/appinsights-04-openPortal.png)
+
+このアプリに Application Ingsights を追加する際に Azure にサインインしなかった場合は、ここでサインインします。**[Application Insights の構成]** を選択します。こうすると、デプロイ後も引き続き実行中のアプリのテレメトリを表示できます。テレメトリは、Application Insights ポータルに表示されます。
 
 ### メトリック: 集計データ
 
@@ -161,9 +163,9 @@ Application Insights サーバー テレメトリが生成されると、診断�
 
 これは、ポータルにテレメトリを送信する前に、いくつかの[カスタム テレメトリ](app-insights-api-custom-events-metrics.md)をデバッグする場合に特に役立ちます。
 
-* *最初に、ポータルにテレメトリを送信する Application Insights を完全に構成しましたが、今は、Visual Studio でテレメトリだけを表示したくなりました。*
+* *最初に、ポータルにテレメトリを送信するよう Application Insights を完全に構成しましたが、今は、Visual Studio でテレメトリだけを表示したくなりました。*
 
-    ApplicationInsights.config から行 `<instrumentationkey>...` をコメント アウトします。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
+    ApplicationInsights.config から行 `<instrumentationkey>...` をコメントにします。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
 
 
 
@@ -212,4 +214,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

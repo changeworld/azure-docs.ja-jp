@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/16/2016"
+	ms.date="02/29/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -49,11 +49,11 @@ Azure AD Connect は [Microsoft ダウンロード センター](http://go.micro
 
 | 解決策 | シナリオ |
 | ----- | ----- |
-| 開始する前に | <li>[Azure AD Connect: ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md)</li> |
+| 開始する前に - [ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md) | <li>Azure AD Connect のインストールを開始する前に実行する手順です。</li> |
 | [簡単設定](active-directory-aadconnect-get-started-express.md) | <li>単一のフォレスト AD がある場合に推奨される既定のオプションです。</li> <li>ユーザーは、パスワード同期により、同じパスワードを使ってサインインします。</li>
 | [カスタマイズした設定](active-directory-aadconnect-get-started-custom.md) | <li>複数のフォレストがある場合に使用されます。多くのオンプレミス [トポロジ](active-directory-aadconnect-topologies.md)がサポートされます。</li> <li>フェデレーション用の ADFS などのサインイン オプションをカスタマイズするか、サード パーティの ID プロバイダーを使います。</li> <li>フィルター処理やライトバックなどの同期機能をカスタマイズします。</li>
 | [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
-| Azure AD Sync からのアップグレード | <li>これは、シームレスなインプレース アップグレードです。</li>
+| [Azure AD Sync または Azure AD Connect からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)| <li>複数の方法から自由に選択できます。</li>
 
 
 [インストール後に](active-directory-aadconnect-whats-next.md)想定どおりに動作していることをことを確認し、ユーザーにライセンスを割り当てる必要があります。
@@ -93,7 +93,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能は既定で有効になっており、多数のクラウド ディレクトリが同時に削除されるのを防ぐことができます。既定では実行ごとに 500 件の削除が許可されていますが、組織のサイズに応じて変更できます。
 
-[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)は、簡単設定を使用したインストールのために既定で有効にされ、Azure AD Connect が最新のリリースで常に最新の状態になるようにします。
+[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)は、簡単設定を使用したインストールでは既定で有効になっており、Azure AD Connect が最新のリリースで常に最新の状態になるようにします。
 
 ### 機能を構成する次のステップ
 
@@ -131,7 +131,7 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 | トピック | |
 | --------- | --------- |
 | バージョン履歴 | [バージョン履歴](active-directory-aadconnect-version-history.md) |
-| DirSync、Azure ADSync、Azure AD Connect の比較 | [ディレクトリ統合ツールの比較](active-directory-aadconnect-get-started-tools-comparison.md) |
+| DirSync、Azure ADSync、Azure AD Connect の比較 | [ディレクトリ統合ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md) |
 | 同期される属性 | [同期される属性](active-directory-aadconnectsync-attributes-synchronized.md) |
 | Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](active-directory-aadconnect-health.md) |
 | よく寄せられる質問 | [Azure AD Connect の FAQ](active-directory-aadconnect-faq.md) |
@@ -144,4 +144,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

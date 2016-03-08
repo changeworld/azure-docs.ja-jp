@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2015"
+	ms.date="03/01/2016"
 	ms.author="piyushjo" />
 
 # Mobile Engagement 戦略の定義
@@ -28,7 +28,7 @@
 
 ## Mobile Engagement による目標の達成
 
-*リテンション期間と使用率について説明しましたが、その目的は何でしょうか。*
+*保有期間と使用率について説明しましたが、その目的は何でしょうか。*
 
 Mobile Engagement 戦略を構築するには、最初にアプリの目標と主要業績評価指標 (KPI) を確認する必要があります。
 
@@ -60,7 +60,7 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 
 対象ユーザーの関心を引く際にできるだけ状況に即したものにするには、エンド ユーザーの行動を理解して、その状況をリアルタイムで把握することが非常に重要です。データ収集により、マーケティング担当者はユース ケースにとって重要な項目に重点を置き、モバイル エンゲージメント戦略目標を達成できます。これまでに設定した目標の達成は、実際のベスト プラクティスが分析であらゆるデータを収集することではなく、調べたい項目とユース ケースに重点を置くことができるデータのみを収集することである理由にもなります。これは、ソリューションの使用方法を開始、試行、テスト、学習し、スマート プッシュ通知に対処して、アプリケーションのリテンション期間を延ばして成功に導くための優れた方法です。
 
->[AZURE.NOTE]データが多すぎるとデータが生かされないことを忘れないでください。
+>[AZURE.NOTE] データが多すぎるとデータが生かされないことを忘れないでください。
 
 ### ユース ケースとベスト プラクティス
 
@@ -121,7 +121,7 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 ### 次のステップ
 
 - Mobile Engagement の基本概念の詳細については、[Mobile Engagement の概念]に関するページを参照してください。
-- Azure Mobile Engagement アカウントの作成については、[こちらのページ](mobile-engagement-create-account.md)を参照してください。
+- Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始するには、「[Azure Mobile Engagement アプリの作成](mobile-engagement-create.md)」を参照してください。
 - ベスト プラクティスの詳細については、[こちらのページ](mobile-engagement-getting-started-best-practices.md)を参照してください。
 - サンプル ゲーム アプリで Mobile Engagement を実装する方法の詳細については、[ゲーム アプリのシナリオ](mobile-engagement-gaming-scenario.md)に関するページを参照してください。 
 - サンプル メディア アプリで Mobile Engagement を実装する方法の詳細については、[メディア アプリのシナリオ](mobile-engagement-media-scenario.md)に関するページを参照してください。 
@@ -135,4 +135,4 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 [Mobile Engagement の概念]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
 [チュートリアル]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -60,7 +60,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、ダラス、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、東京、ワシントン DC |
 |**China Telecom Global** | サポートされています | サポートされていません | 香港 |
-|**Cologix** | 近日対応予定 | サポートされていません | モントリオール+、トロント+ |
+|**Cologix** | 近日対応予定 | 近日対応予定 | モントリオール+、トロント+ |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン |
 | **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
 | **CoreSite** | サポートされています | サポートされています | ロサンゼルス | 
@@ -73,11 +73,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **Megaport** | サポートされています | サポートされています | ダラス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シドニー、ワシントン DC |
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
-| **NTT Communications** | サポートされています | 近日対応予定 | ロンドン、東京 |
+| **NTT Communications** | サポートされています | サポートされています | ロンドン、東京 |
 | **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされています | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
-| **ソフトバンク** | 近日対応予定 | サポートされていません | 大阪、東京 | 
+| **ソフトバンク** | 近日対応予定 | 近日対応予定 | 大阪、東京 | 
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | サポートされています | アムステルダム、チェンナイ、香港、ロンドン、ムンバイ、シンガポール、ワシントン DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | サポートされています | サポートされています | アムステルダム、ロンドン |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン、シドニー |
@@ -141,4 +141,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

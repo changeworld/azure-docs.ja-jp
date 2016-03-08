@@ -3,7 +3,7 @@
 	description="Azure 仮想マシンを検出、登録、バックアップする手順について説明します。"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
+	authors="markgalioto"
 	manager="jwhit"
 	editor=""
 	keywords="仮想マシンのバックアップ; バックアップ、仮想マシン; バックアップと障害復旧; VM のバックアップ"/>
@@ -49,7 +49,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
     プロセスが完了すると、通知が変更されます。
 
-    ![Discovery done](./media/backup-azure-vms/discovery-complete.png)
+    ![discover-done](./media/backup-azure-vms/discovery-complete.png)
 
 ##  手順 2. Azure 仮想マシンを登録する
 Azure Backup サービスに関連付けるために、Azure 仮想マシンを登録します。登録は、通常、1 回限りの操作です。
@@ -131,7 +131,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
     ![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## 初回バックアップ
-ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが*初回バックアップ*となります。
+ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが *初回バックアップ* となります。
 
 保護を構成した直後に初回バックアップをトリガーするには:
 
@@ -164,4 +164,4 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 - [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

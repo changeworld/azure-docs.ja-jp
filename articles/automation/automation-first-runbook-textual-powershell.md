@@ -3,7 +3,7 @@
     description="簡単な PowerShell Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
     services="automation"
     documentationCenter=""
-    authors="SnehaGunda"
+    authors="mgoedtel"
     manager="stevenka"
     editor="tysonn"/>
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/18/2016"
+    ms.date="02/23/2016"
     ms.author="magoedte;sngun"/>
 
 # 初めての PowerShell Runbook
@@ -50,7 +50,7 @@
 Runbook に直接コードを入力するか、ライブラリ コントロールからコマンドレット、Runbook、資産を選択し、関連するパラメーターを使って Runbook に追加できます。このチュートリアルでは、Runbook に直接コードを入力します。
 
 1.	作成した Runbook は現在空であるため、「 *Write-Output "Hello World."* 」と入力します。  
-2.	![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
+	![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
 2.	**[保存]** をクリックして Runbook を保存します。  
 	![Save Button](media/automation-first-runbook-textual-powershell/automation-save-button.png)  
 
@@ -120,7 +120,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 この Runbook では、Runbook にハードコードした仮想マシンを開始しますが、Runbook を開始するときに仮想マシンを指定できるようにすればもっと便利です。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
 
 1.	*VMName* と *VMServiceName* のパラメーターを Runbook に追加して、次の図に示すように、**Start-AzureVM** コマンドレットでこれらの変数を使用します。  
-	![パラメーターの追加](media/automation-first-runbook-textual-powershell/automation-add-parameter.png)  
+	![Add Parameter](media/automation-first-runbook-textual-powershell/automation-add-parameter.png)  
 2.	Runbook を保存してテスト ウィンドウを開きます。テストで使用される 2 つの入力変数の値を指定できることに注意してください。
 3.	テスト ウィンドウを閉じます。
 4.	**[発行]** をクリックして、新しいバージョンの Runbook を発行します。
@@ -145,4 +145,4 @@ PowerShell Runbook のライフサイクル、機能、および管理は、Powe
 -	Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 -	PowerShell スクリプトのサポート機能の詳細については、「[Announcing Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

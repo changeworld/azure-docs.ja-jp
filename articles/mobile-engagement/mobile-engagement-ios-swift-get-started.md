@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="swift"
 	ms.topic="get-started-article"
-	ms.date="09/22/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 # Swift で IOS アプリ の Azure Mobile Engagement を開始する
 
 > [AZURE.SELECTOR]
-- [Universal Windows](mobile-engagement-windows-store-dotnet-get-started.md)
+- [ユニバーサル Windows](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
 - [iOS | Obj C](mobile-engagement-ios-get-started.md)
 - [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
@@ -31,7 +31,7 @@
 このチュートリアルには、次のものが必要です。
 
 + XCode 6 または XCode 7。Mac アプリ ストアからインストールできます。
-+ [Mobile Engagement iOS SDK]
++ [モバイル エンゲージメント iOS SDK]
 + プッシュ通知証明書 (.p12)。Apple Dev Center で入手できます
 
 > [AZURE.NOTE] このチュートリアルでは、Swift バージョン 2.0 を使用します。
@@ -66,7 +66,7 @@
 
 	![][2]
 
-5. `Build Phases` タブを開き、`Link Binary With Libraries` メニューで次に示すように、フレームワークを追加します。**注**: `CoreLocation, CFNetwork, CoreTelephony, and SystemConfiguration` を含める必要があります。
+5. `Build Phases` タブを開き、`Link Binary With Libraries` メニューで、次に示すように、フレームワークを追加します。**注**: `CoreLocation, CFNetwork, CoreTelephony, and SystemConfiguration` を含める必要があります。
 
 	![][3]
 
@@ -200,6 +200,7 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 <!-- URLs. -->
 [Mobile Engagement iOS SDK]: http://aka.ms/qk2rnj
+[モバイル エンゲージメント iOS SDK]: http://aka.ms/qk2rnj
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-ios-get-started/xcode-add-files.png
@@ -209,4 +210,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

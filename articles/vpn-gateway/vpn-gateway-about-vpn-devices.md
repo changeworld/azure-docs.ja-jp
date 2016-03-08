@@ -9,10 +9,10 @@
 <tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/14/2015"
+   ms.date="03/02/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
@@ -44,18 +44,18 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Barracuda Networks, Inc. | Barracuda Firewall | Barracuda Firewall 6.5 | [Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) | 互換性なし |
 | Brocade | Vyatta 5400 vRouter | 仮想ルーター 6.6R3 GA | [構成の手順](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) | 互換性なし |
 | Check Point | セキュリティ ゲートウェイ | R75.40、R75.40VS | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco | ASA | 8\.3 | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=717348) | 互換性なし |
-| Cisco | ASR | IOS 15.1 (ポリシー ベース)、IOS 15.2 (ルート ベース) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=717348) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=717348) |
-| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=717348) | [Cisco のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=717348) |
+| Cisco | ASA | 8\.3 | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 互換性なし |
+| Cisco | ASR | IOS 15.1 (ポリシー ベース)、IOS 15.2 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
+| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge MPX アプライアンス、または VPX 仮想アプライアンス | 該当なし | [統合の手順](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 互換性なし |
 | Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP シリーズ | 該当なし | [構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 互換性なし |
 | Fortinet | FortiGate | FortiOS 5.0.7 | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) |
 | Internet Initiative Japan (IIJ) | SEIL シリーズ | SEIL/x 4.60、SEIL/B1 4.60、SEIL/x86 3.20 | [構成の手順](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | 互換性なし |
-| Juniper | SRX | JunOS 10.2 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | J シリーズ | JunOS 10.4r9 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | ISG | ScreenOS 6.3 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | SSG | ScreenOS 6.2 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
+| Juniper | SRX | JunOS 10.2 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
+| Juniper | J シリーズ | JunOS 10.4r9 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
+| Juniper | ISG | ScreenOS 6.3 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
+| Juniper | SSG | ScreenOS 6.2 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft | ルーティングとリモート アクセス サービス | Windows Server 2012 | 互換性なし | [Microsoft のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Openswan | Openswan | 2\.6.32 | (近日対応予定) | 互換性なし |
 | Palo Alto Networks | PAN-OS 5.0 またはそれ以上を実行しているすべてのデバイス | PAN-OS 5x またはそれ以上 | [Palo Alto Networks](https://support.paloaltonetworks.com/) | 互換性なし |
@@ -148,4 +148,4 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

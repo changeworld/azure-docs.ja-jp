@@ -12,8 +12,8 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="02/17/2016"
+	ms.topic="hero-article"
+	ms.date="03/01/2016"
 	ms.author="stepsic"/>
 
 # SaaS サービスを接続する新しいロジック アプリを作成します。
@@ -24,7 +24,7 @@
 | [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
 | [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
 
-このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
+このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートをメールボックスに保存できるようにするまでの流れを見ていきます。
 
 このシナリオを使用するには、以下が必要です。
 
@@ -38,22 +38,16 @@
 2. [すべて] で「logic apps」を検索し、**[Logic App (プレビュー)]** を選択します。**[新規]**、**[Web + モバイル]** を順に選択して、**[Logic App (プレビュー)]** を選択してもかまいません。 
 3. ロジック アプリの名前を入力し、App Service プランを選択して、**[作成]** を選択します。この手順は、読者が既に App Service プランを利用していること、また必要なプロパティについて理解していることを前提としています。それ以外の場合はまず、「[Azure App Service プランの詳細な概要](azure-web-sites-web-hosting-plans-in-depth-overview.md)」をご覧ください。 
 
-4. ロジック アプリを最初に開いたときに、トリガーが必要となります。たとえば、**[繰り返し]** を使用することができます。![定期的なアイテム](./media/app-service-logic-create-a-logic-app/recurrence.png)
+4. ロジック アプリを最初に開いたときに、トリガーが必要となります。トリガー検索ボックスで「**twitter**」を検索して選択します。
 
-	[繰り返し] を使用した場合、ロジック アプリは、選択した時間に基づいて継続的に実行されます。たとえば、30 秒おき、5 時間おき、毎日午前 8 時 (太平洋標準時)、毎日午前 2 時 (東部標準時) にロジック アプリを実行することができます。ロジック アプリから [繰り返し] を削除することもできます。[繰り返し] を削除した場合、ロジック アプリを手動で開始することになります。
+7. Twitter で検索するキーワードを入力します。![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
-5. ただしこのチュートリアルでは、条件に一致するツイートが投稿されたときに都度、トリガーを作動させることにします。[`...`] メニューをクリックして [繰り返し] トリガーを削除します。
-
-6. トリガー検索ボックスで「**twitter**」を検索して選択します。
-
-7. Twitter から検索するキーワードを入力します。![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
-
-5. 正符号を選択して **[アクションの追加]** または **[条件の追加]** を選択します。 ![Plus](./media/app-service-logic-create-a-logic-app/plus.png)
+5. プラス記号を選択して **[アクションの追加]** または **[条件の追加]** を選択します。 ![Plus](./media/app-service-logic-create-a-logic-app/plus.png)
 6. **[アクションの追加]** を選択すると、利用可能なアクションを含んだすべてのコネクタが一覧表示されます。ここからロジック アプリに追加するコネクタとアクションを選択できます。たとえば、**[Office 365 - 電子メールの送信]** など、さまざまな Office 365 アクションを選択できます。 ![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
 
 7. 今度は、電子メールに使用するパラメーターを入力する必要があります。 ![パラメーター](./media/app-service-logic-create-a-logic-app/parameters.png)
 
-8. 最後に **[保存]** を選択すれば、ロジック アプリがライブ状態となります。
+8. 最後に **[保存]** を選択すると、ロジック アプリがライブ状態となります。
 
 ## 作成後にロジック アプリを管理する
 
@@ -73,4 +67,4 @@
 [Azure portal]: https://portal.azure.com
 [ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

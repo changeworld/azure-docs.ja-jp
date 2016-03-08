@@ -19,11 +19,11 @@
 
 # .NET を使用した Azure Search へのデータのインポート
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
+- [概要](search-what-is-data-import.md)
+- [ポータル](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
-- [REST](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [REST ()](search-import-data-rest-api.md)
+- [インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用してインデックスにデータを読み込む方法について説明します。以下の内容は、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」から抜粋したものです。エンド ツー エンドの手順については、元の記事を参照してください。
 
@@ -98,7 +98,7 @@
 
         try
         {
-            var batch = IndexBatch.Upload(sitecoreItems);
+            var batch = IndexBatch.Upload(documents);
             indexClient.Documents.Index(batch);
         }
         catch (IndexBatchException e)
@@ -119,10 +119,10 @@
 
 2 番目の部分では、各 `Hotel` に対して `IndexAction` を作成した後、それらを新しい `IndexBatch` にグループ化します。その後、バッチは `Documents.Index` メソッドによって Azure Search インデックスにアップロードされます。
 
-> [AZURE.NOTE] この例では、単にドキュメントをアップロードします。既存ドキュメントに変更をマージする場合や、ドキュメントを削除する場合は、対応する `Merge`、`MergeOrUpload`、または `Delete` の各メソッドを使用できます。
+> [AZURE.NOTE] この例では、単にドキュメントをアップロードします。既存のドキュメントに変更をマージする場合や、ドキュメントを削除する場合は、対応する `Merge`、`MergeOrUpload`、または `Delete` の各メソッドを使用できます。
 
 このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。サービスの負荷が高いときにドキュメントのインデックスを作成すると、これが発生する場合があります。**コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 最後に、メソッドは 2 秒間遅延します。インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

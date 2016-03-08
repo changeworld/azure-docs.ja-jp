@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure B2C プレビュー用に nodeJS Web アプリへのサインインを追加する | Microsoft Azure"
-	description="B2C テナントでユーザーをサインインさせる Node.js Web アプリを作成する方法。"
+	pageTitle="Azure B2C プレビュー用に Node.js Web アプリへのサインインを追加する | Microsoft Azure"
+	description="B2C テナントを使用してユーザーをサインインさせる Node.js Web アプリを作成する方法。"
 	services="active-directory-b2c"
 	documentationCenter=""
 	authors="brandwe"
@@ -12,69 +12,68 @@
 	ms.workload="identity"
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
-	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.topic="hero-article"
+	ms.date="02/25/2016"
 	ms.author="brandwe"/>
 
-# B2C プレビュー: NodeJS Web アプリへのサインインを追加する
 
+# B2C プレビュー: Node.js Web アプリへのサインインの追加
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-> [AZURE.NOTE]
-	この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を学習してください。
+**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Restify Web アプリケーションに、支障をきたすことなくインストールされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。
 
-**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
+> [AZURE.NOTE] この記事では、Azure Active Directory B2C を使用してサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが認証された後の Web API の呼び出しを中心に説明します。まだ Azure AD B2C の基本を理解していない場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で学習してください。
 
-これを行うには、次の手順を実行する必要があります。
+Azure Active Directory (Azure AD) 用の認証手法を開発しました。このモジュールをインストールし、Azure AD `passport-azure-ad` プラグインを追加します。
 
-1. アプリケーションを Azure AD に登録する
-2. Passport の azure-ad-passport プラグインを使用するようにアプリをセットアップする
+そのためには、次の手順を実行する必要があります。
+
+1. Azure AD を使用してアプリケーションを登録する
+2. Passport の `passport-azure-ad` プラグインを使用するようにアプリをセットアップする
 3. Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
-4. ユーザーに関するデータを印刷する
+4. ユーザー データを出力する
 
-このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)できます。スケルトンを複製することもできます。
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
-完成したアプリケーションは、このチュートリアルの終わりにも示しています。
+完成したアプリケーションは、このチュートリアルの終わりに示しています。
 
-> [AZURE.WARNING] 	B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
+> [AZURE.WARNING] 	この B2C プレビューでは、Web API タスク サーバーとそのサーバーに接続するクライアントの両方に同じ**クライアント ID**/**アプリケーション ID** およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルにも当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、新しい値を作成するのではなく、それらの値を使用してください。
 
-## 1\.Azure AD B2C ディレクトリの取得
+## Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、[B2C ディレクトリを作成](active-directory-b2c-get-started.md)してから先に進んでください。
 
-## 2\.アプリケーションの作成
+## アプリケーションの作成
 
-次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。このとき、
+次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。次を行ってください。
 
-- アプリケーションに **Web アプリまたは Web API** を含めます。
-- `http://localhost/TodoListService` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
-- アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
+- アプリケーションに **Web アプリ**または **Web API** を含めます。
+- **[応答 URL]** に「`http://localhost/TodoListService`」と入力します。これはこのサンプル コードで使用する既定の URL です。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。この情報は後で必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
+- アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## 3\.ポリシーの作成
+## ポリシーの作成
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook を使用したサインイン) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
-- すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。
+- サインアップ ポリシーで、**[表示名]** と他のサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション要求として**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
+3 つのポリシーを作成した後は、いつでもアプリをビルドできます。
 
 この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、「[Azure AD B2C プレビュー: .NET Web アプリを構築する](active-directory-b2c-devquickstarts-web-dotnet.md)」から始めてください。
 
+## ディレクトリに前提条件を追加する
 
-
-## 4\.ディレクトリに前提条件を追加する
-
-コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
+コマンド ラインで、ルート フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。次のコマンドを実行します。
 
 - `npm install express`
 - `npm install ejs`
@@ -89,24 +88,23 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
+さらに、クイック スタートのスケルトンでは、プレビュー用に `passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
+これにより、`passport-azure-ad` が依存するライブラリがインストールされます。
 
-これにより、passport-azure-ad が依存するライブラリがインストールされます。
+## Passport-Node.js 戦略を使用するようにアプリを設定する
+OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などの操作を行うために使用されます。
 
-## 5\.passport-node-js 戦略を使用するようにアプリを設定する
-ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
-
--	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
-    -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
-    -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
-    - `tenantName:` は、アプリの**テナント名** です (例: contoso.onmicrosoft.com)。
+プロジェクトのルートにある `config.js` ファイルを開いて、アプリの構成値を `exports.creds` セクションに入力します。
+- `clientID`: 登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
+- `returnURL`: ポータルで入力した**リダイレクト URI** です。
+- `tenantName`: アプリのテナント名です (例: **contoso.onmicrosoft.com**)。
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-- 次に、プロジェクトのルートにある `app.js` ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
+プロジェクトのルートにある `app.js` ファイルを開きます。次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
 
 
 ```JavaScript
@@ -118,14 +116,14 @@ var log = bunyan.createLogger({
 });
 ```
 
-- その後、今参照した戦略を使用してログイン要求を処理します。
+今参照した戦略を使用してサインイン要求を処理します。
 
 ```JavaScript
-// Use the OIDCStrategy within Passport. (Section 2)
+// Use the OIDCStrategy in Passport (Section 2).
 //
-//   Strategies in passport require a `validate` function, which accept
-//   credentials (in this case, an OpenID identifier), and invoke a callback
-//   with a user object.
+//   Strategies in Passport require a "validate" function that accepts
+//   credentials (in this case, an OpenID identifier), and invokes a callback
+//   by using a user object.
 passport.use(new OIDCStrategy({
     callbackURL: config.creds.returnURL,
     realm: config.creds.realm,
@@ -156,21 +154,21 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
+Passport は、Twitter や Facebook などのすべての戦略に、同様のパターンを使用します。すべての戦略記述者がこのパターンに準拠しています。戦略を調べると、パラメーターとして token と `done` を持つ `function()` が渡されることがわかります。戦略は、すべての作業が終わった後で返されます。もう一度要求しなくて済むように、ユーザーを格納し、トークンを保存します。
 
 > [AZURE.IMPORTANT]
-上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
+上記のコードでは、サーバーが認証したすべてのユーザーを受け入れています。これが自動登録です。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーは受け入れないようにする必要があります。このようなパターンは、コンシューマー アプリでよく見られます。これによって、Facebook を使用した登録を許可できるものの、後で追加情報の入力が求められます。このアプリケーションがサンプルでなければ、返されるトークン オブジェクトから電子メール アドレスを抽出した後、追加情報の入力をユーザーに要求できます。ここでは、テスト サーバーであるため、単純にユーザーをメモリ内データベースに追加します。
 
-- 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
+Passport で必要な、サインインしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザー情報のシリアル化と逆シリアル化が含まれます。
 
 ```JavaScript
 
 // Passport session setup. (Section 2)
 
-//   To support persistent login sessions, Passport needs to be able to
-//   serialize users into and deserialize users out of the session.  Typically,
-//   this will be as simple as storing the user ID when serializing, and finding
-//   the user by ID when deserializing.
+//   To support persistent sign-in sessions, Passport needs to be able to
+//   serialize users into and deserialize users out of sessions. Typically,
+//   this is as simple as storing the user ID when Passport serializes a user
+//   and finding the user by ID when Passport deserializes that user.
 passport.serializeUser(function(user, done) {
   done(null, user.email);
 });
@@ -181,7 +179,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// array to hold logged in users
+// Array to hold users who have signed in
 var users = [];
 
 var findByEmail = function(email, fn) {
@@ -197,7 +195,7 @@ var findByEmail = function(email, fn) {
 
 ```
 
-- 次に、express エンジンを読み込むコードを追加します。ここでは、Express が提供する既定の /views と /routes のパターンを使用します。
+Express エンジンを読み込むコードを追加します。以下では、Express が提供する既定の `/views` と `/routes` のパターンを使用していることがわかります。
 
 ```JavaScript
 
@@ -214,8 +212,8 @@ app.configure(function() {
   app.use(cookieParser());
   app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
   app.use(bodyParser.urlencoded({ extended : true }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
+  // Initialize Passport!  Also use passport.session() middleware to support
+  // persistent sign-in sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
@@ -224,7 +222,7 @@ app.configure(function() {
 
 ```
 
-- 最後に、実際のログイン要求を `passport-azure-ad` エンジンに渡す POST ルートを追加します。
+実際のサインイン要求を `passport-azure-ad` エンジンに渡す `POST` ルートを追加します。
 
 ```JavaScript
 
@@ -232,23 +230,23 @@ app.configure(function() {
 
 // GET /auth/openid
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in OpenID authentication will involve redirecting
-//   the user to their OpenID provider.  After authenticating, the OpenID
-//   provider will redirect the user back to this application at
+//   request. The first step in OpenID authentication involves redirecting
+//   the user to an OpenID provider. After the user is authenticated,
+//   the OpenID provider redirects the user back to this application at
 //   /auth/openid/return
 
 app.get('/auth/openid',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    log.info('Authenitcation was called in the Sample');
+    log.info('Authentication was called in the Sample');
     res.redirect('/');
   });
 
 // GET /auth/openid/return
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
+//   request. If authentication fails, the user will be redirected back to the
+//   sign-in page. Otherwise, the primary route function will be called.
+//   In this example, it redirects the user to the home page.
 app.get('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
@@ -258,9 +256,9 @@ app.get('/auth/openid/return',
 
 // POST /auth/openid/return
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
+//   request. If authentication fails, the user will be redirected back to the
+//   sign-in page. Otherwise, the primary route function will be called.
+//   In this example, it will redirect the user to the home page.
 
 app.post('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -270,11 +268,11 @@ app.post('/auth/openid/return',
   });
 ```
 
-## 4\.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
+## Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持などの細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
+これで、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持の詳細は、すべて `passport-azure-ad` が処理します。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、サインインしているユーザーに関する追加情報を収集することです。
 
-- まず、既定のメソッド、login メソッド、account メソッド、logout メソッドを `app.js` ファイルに追加します。
+まず、既定のメソッド、sign-in メソッド、account メソッド、sign-out メソッドを `app.js` ファイルに追加します。
 
 ```JavaScript
 
@@ -302,23 +300,23 @@ app.get('/logout', function(req, res){
 
 ```
 
--	これらについて詳しく説明しましょう。
-    -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
-    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
-    - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
-    - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
+これらのメソッドについて詳しく説明します。
+- `/` ルートは、`index.ejs` ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
+- まず、`/account` ルートは、ユーザーが認証されていることを確認します (この実装は下記のとおりです)。次に、ユーザーに関する追加情報を取得できるように、要求でユーザーを渡します。
+- `/login` ルートは、`passport-azure-ad` から `azuread-openidconnect` 認証子を呼び出します。成功しなかった場合、ルートはユーザーを `/login` にリダイレクトして戻します。
+- `/logout` は、`logout.ejs` (およびそのルート) を呼び出します。これにより、Cookie をクリアし、ユーザーを `index.ejs` に返します。
 
 
-- `app.js` の最後の部分に、上記の `/account` で使用される EnsureAuthenticated メソッドを追加します。
+`app.js` の最後の部分に、`/account` ルートで使用される `EnsureAuthenticated` メソッドを追加します。
 
 ```JavaScript
 
-// Simple route middleware to ensure user is authenticated. (Section 4)
+// Simple route middleware to ensure that the user is authenticated. (Section 4)
 
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
+//   Use this route middleware on any resource that needs to be protected. If
+//   the request is authenticated (typically via a persistent sign-in session),
+//   then the request will proceed. Otherwise, the user will be redirected to the
+//   sign-in page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
@@ -326,7 +324,7 @@ function ensureAuthenticated(req, res, next) {
 
 ```
 
-- 最後に、`app.js` でサーバー自体を実際に作成します。
+最後に、`app.js` でサーバー自体を作成します。
 
 ```JavaScript
 
@@ -335,11 +333,11 @@ app.listen(3000);
 ```
 
 
-## 5\.ポリシーを呼び出すビューおよびルートを express に作成する
+## ポリシーを呼び出すビューおよびルートを Express に作成する
 
-`app.js` が完成しました。次に実行する必要があるのは、サインインおよびサインアップ ポリシーを呼び出すことができるルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
+これで `app.js` が完成しました。次に実行する必要があるのは、サインイン ポリシーとサインアップ ポリシーを呼び出すことができるルートとビューを追加することです。これにより、作成済みの `/logout` ルートと `/login` ルートも処理されます。
 
-- ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
+ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
 
 ```JavaScript
 
@@ -352,7 +350,7 @@ exports.index = function(req, res){
 };
 ```
 
-- ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
+ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
 ```JavaScript
 
@@ -365,70 +363,68 @@ exports.list = function(req, res){
 };
 ```
 
-これらは、要求 (存在する場合はユーザーも) をビューに渡すだけの単純なルートです。
+これらは、要求をビューに渡すだけの単純なルートです。存在する場合はユーザーも渡されます。
 
-- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは、サインインおよびサインアウト用のポリシーを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在することを示します。
+ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは、サインイン ポリシーとサインアウト ポリシーを呼び出す単純なページです。また、アカウント情報を取得するためにも使用できます。ユーザーがサインインしている証拠を示すために要求でユーザーを渡す際に、条件付きの `if (!user)` を使用できることに注目してください。
 
 ```JavaScript
 <% if (!user) { %>
-	<h2>Welcome! Please log in.</h2>
-	<a href="/login/?p=your facebook policy">Sign In with Facebook</a>
-	<a href="/login/?p=your email sign-in policy">Sign In With Email</a>
-	<a href="/login/?p=your email sign-up policy">Sign Up With Email</a>
+	<h2>Welcome! Please sign in.</h2>
+	<a href="/login/?p=your facebook policy">Sign in with Facebook</a>
+	<a href="/login/?p=your email sign-in policy">Sign in with email</a>
+	<a href="/login/?p=your email sign-up policy">Sign up with email</a>
 <% } else { %>
 	<h2>Hello, <%= user.displayName %>.</h2>
-	<a href="/account">Account Info</a></br>
-	<a href="/logout">Log Out</a>
+	<a href="/account">Account info</a></br>
+	<a href="/logout">Log out</a>
 <% } %>
 ```
 
-- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` によってユーザー要求内に配置された追加情報を表示できるようにします。
+ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azure-ad` がユーザー要求の中に配置された追加情報を表示できるようにします。
 
 ```Javascript
 <% if (!user) { %>
-	<h2>Welcome! Please log in.</h2>
-	<a href="/login">Log In</a>
+	<h2>Welcome! Please sign in.</h2>
+	<a href="/login">Sign in</a>
 <% } else { %>
 <p>displayName: <%= user.displayName %></p>
 <p>givenName: <%= user.name.givenName %></p>
 <p>familyName: <%= user.name.familyName %></p>
 <p>UPN: <%= user._json.upn %></p>
 <p>Profile ID: <%= user.id %></p>
-<p>Full Claimes</p>
+<p>Full Claims</p>
 <%- JSON.stringify(user) %>
 <p></p>
 <a href="/logout">Log Out</a>
 <% } %>
 ```
 
-最後に、アプリを構築して実行します。
+これで、アプリを構築して実行できます。
 
 `node app.js` を実行し、`http://localhost:3000` に移動します。
 
 
-電子メールまたは Facebook でアプリケーションにサインアップまたはサインインします。サインアウトし、別のユーザーとしてサインインします。
-
-
+電子メールまたは Facebook を使用してアプリにサインアップまたはサインインします。サインアウトし、別のユーザーとしてサインインします。
 
 ##次のステップ
 
-参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製することもできます。
+参考のため、完成したサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
-これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
+さらに高度なトピックに進むことができます。次のトピックをご覧ください。
 
-[Node.js の B2C モデルで Web App をセキュリティ保護する >>](active-directory-b2c-devquickstarts-api-node.md)
+[Node.js の B2C モデルを使用して Web API をセキュリティで保護する](active-directory-b2c-devquickstarts-api-node.md)
 
 <!--
 
 For additional resources, check out:
-You can now move onto more advanced B2C topics.  You may want to try:
+You can now move on to more advanced B2C topics. You might try:
 
-[Calling a node.js Web API from a node.js Web App >>]()
+[Call a Node.js web API from a Node.js web app]()
 
 [Customizing the your B2C App's UX >>]()
 
 -->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

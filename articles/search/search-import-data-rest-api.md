@@ -1,87 +1,170 @@
 <properties
-	pageTitle="REST API を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-	description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""
+    pageTitle="REST API を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法"
+    services="search"
+    documentationCenter=""
+    authors="ashmaka"
+    manager=""
+    editor=""
     tags=""/>
 
 <tags
-	ms.service="search"
-	ms.devlang="rest-api"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="02/17/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="rest-api"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="02/29/2016"
+    ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search へのデータのインポート
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
+- [概要](search-what-is-data-import.md)
+- [ポータル](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
-- [REST](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスにデータを読み込む方法について説明します。内容の一部は、「[ドキュメントの追加、更新、または削除 (Azure Search サービス REST API)](https://msdn.microsoft.com/library/azure/dn798930.aspx)」のものです。詳しいコンテキストについては、元の記事を参照してください。
-
-REST API を使用してインデックスにドキュメントをプッシュするには、POST HTTP 要求をサービスの URL エンドポイントに発行します。
-
-**要求と要求ヘッダー**:
-
-URL では、サービスの名前と適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは "2015-02-28") を指定する必要があります。
-
-要求ヘッダーでは、Content-Type を定義し、サービスのプライマリ管理キーを提供する必要があります。
-
-	POST https://[servicename].search.windows.net/indexes/[indexname]/docs/index?api-version=2015-02-28
-	Content-Type: application/JSON
-	api-key:[primary admin key]
+- [REST ()](search-import-data-rest-api.md)
+- [インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 
-**要求本文**:
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-rest-api.md)してあります。
 
+REST API を使用してインデックスにドキュメントをプッシュするには、HTTP POST 要求をインデックスの URL エンドポイントに発行します。HTTP 要求の本文は、追加、変更、または削除するドキュメントを含む JSON オブジェクトです。
 
-	{
-		"value": [
-			{
-				"@search.action": "upload",
-				"hotelId": "1",
-				"baseRate": 199.0,
-				"description": "Best hotel in town",
-				"description_fr": "Meilleur hôtel en ville",
-				"hotelName": "Fancy Stay",
-				"category": "Luxury",
-				"tags": ["pool", "view", "wifi", "concierge"],
-				"parkingIncluded": false,
-				"smokingAllowed": false,
-				"lastRenovationDate": "2010-06-27T00:00:00Z",
-				"rating": 5,
-				"location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-			},
-			{
-				"@search.action": "upload",
-				"hotelId": "2",
-				"baseRate": 79.99,
-				"description": "Cheapest hotel in town",
-				"description_fr": "Hôtel le moins cher en ville",
-				"hotelName": "Roach Motel",
-				"category": "Budget",
-				"tags": ["motel", "budget"],
-				"parkingIncluded": true,
-				"smokingAllowed": true,
-				"lastRenovationDate": "1982-04-28T00:00:00Z",
-				"rating": 1,
-				"location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-			}
-		]
-	}
+## I.Azure Search サービスの管理者 API キーの識別
+REST API を使用してサービスに対する HTTP 要求を発行する場合、*各* API 要求には、プロビジョニングした Search サービスに対して生成された API キーを含める必要があります。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-この例では、検索アクションとして "upload" を使用しています。既存のドキュメントを更新および削除するときは、"merge"、"mergeOrUpload"、"delete" を使用できます。
+1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
+2. Azure Search サービスのブレードに移動します。
+3. "キー" アイコンをクリックします。
 
-インデックスの更新が成功すると、状態コード "200 OK" を受け取ります。要求内の少なくとも 1 つの項目のインデックスが正常に作成されなかった場合は、"207" 状態コードを受け取ります。
+サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
+  * プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+  * *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
-ドキュメント アクションおよび成功/エラー応答の詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。
+データをインデックスにインポートする目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
 
-<!---HONumber=AcomDC_0224_2016-->
+## II.利用するインデックス作成アクションの決定
+REST API を使用する場合は、JSON 要求本文を利用して HTTP POST 要求を Azure Search インデックスのエンドポイント URL に発行します。HTTP 要求本文内の JSON オブジェクトには、インデックスへの追加、更新、削除を行うドキュメントを表す JSON オブジェクトを含む "value" という 1 つの JSON 配列が含まれます。
+
+"value" 配列内の各 JSON オブジェクトは、インデックスを作成するドキュメントを表します。これらの各オブジェクトにはドキュメントのキーが含まれます。また、これらの各オブジェクトで、目的のインデックス作成アクション (アップロード、マージ、削除など) を指定します。以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
+
+@search.action | 説明 | 各ドキュメントに必要なフィールド | メモ
+--- | --- | --- | ---
+`upload` | `upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 | キーのほか、定義するその他すべてのフィールド | 既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null` に設定されます。この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。
+`merge` | 指定されたフィールドで既存のドキュメントを更新します。ドキュメントがインデックスに存在しない場合、マージは失敗します。 | キーのほか、定義するその他すべてのフィールド | マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`Collection(Edm.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` にはなりません。
+`mergeOrUpload` | このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同様の処理になります。ドキュメントが存在しない場合は、`upload` と同様の処理になり、新しいドキュメントが挿入されます。| キーのほか、定義するその他すべてのフィールド | - `delete` | 指定されたドキュメントをインデックスから削除します。| キーのみ | キー フィールド以外の指定したすべてのフィールドが無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに *merge* を使用して、フィールドを明示的に null に設定します。
+
+## III.HTTP 要求と要求本文の構築
+インデックス アクションに必要なフィールド値を収集したので、実際の HTTP 要求と JSON 要求本文を構築してデータをインポートする準備が整いました。
+
+#### 要求と要求ヘッダー
+URL では、サービス名とインデックス名 (この場合は "hotels") のほか、適切な API バージョン (このドキュメントが書かれた時点で最新の API バージョンは `2015-02-28`) を指定する必要があります。`Content-Type` および `api-key` 要求ヘッダーを定義する必要があります。後者については、サービスの管理者キーのいずれかを使用してください。
+
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+    Content-Type: application/json
+    api-key: [admin key]
+
+#### 要求本文
+
+```JSON
+{
+    "value": [
+        {
+            "@search.action": "upload",
+            "hotelId": "1",
+            "baseRate": 199.0,
+            "description": "Best hotel in town",
+            "description_fr": "Meilleur hôtel en ville",
+            "hotelName": "Fancy Stay",
+            "category": "Luxury",
+            "tags": ["pool", "view", "wifi", "concierge"],
+            "parkingIncluded": false,
+            "smokingAllowed": false,
+            "lastRenovationDate": "2010-06-27T00:00:00Z",
+            "rating": 5,
+            "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+        },
+        {
+            "@search.action": "upload",
+            "hotelId": "2",
+            "baseRate": 79.99,
+            "description": "Cheapest hotel in town",
+            "description_fr": "Hôtel le moins cher en ville",
+            "hotelName": "Roach Motel",
+            "category": "Budget",
+            "tags": ["motel", "budget"],
+            "parkingIncluded": true,
+            "smokingAllowed": true,
+            "lastRenovationDate": "1982-04-28T00:00:00Z",
+            "rating": 1,
+            "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+        },
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "3",
+            "baseRate": 129.99,
+            "description": "Close to town hall and the river"
+        },
+        {
+            "@search.action": "delete",
+            "hotelId": "6"
+        }
+    ]
+}
+```
+
+この例では、検索アクションとして `upload`、`mergeOrUpload`、`delete` を使用しています。
+
+この例の "hotels" インデックスには、既にさまざまなドキュメントが設定されているものとします。`merge` を使用する場合はすべてのドキュメント フィールドを指定する必要はなく、`delete` を使用する場合はドキュメント キー (`hotelId`) のみを指定しました。
+
+また、単一のインデックス作成要求に含めることのできるドキュメントは最大 1,000 個 (または 16 MB) であることにも注意が必要です。
+
+## IV.HTTP 応答コードの理解
+#### 200
+インデックス作成要求を正常に送信すると、状態コード `200 OK` の HTTP 応答が届きます。HTTP 応答の JSON 本文は次のようになります。
+
+```JSON
+{
+    "value": [
+        {
+            "key": "unique_key_of_document",
+            "status": true,
+            "errorMessage": null
+        },
+        ...
+    ]
+}
+```
+
+#### 207
+1 つ以上の項目のインデックスが正常に作成されなかった場合は、状態コード `207` が返されます。HTTP 応答の JSON 本文には、失敗したドキュメントに関する情報が格納されます。
+
+```JSON
+{
+    "value": [
+        {
+            "key": "unique_key_of_document",
+            "status": false,
+            "errorMessage": "The search service is too busy to process this document. Please try again later."
+        },
+        ...
+    ]
+}
+```
+
+> [AZURE.NOTE] これは多くの場合、Search サービスでの負荷が、インデックス作成要求に対して `503` 応答が返され始めるポイントに到達していることを表します。この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。要求をすぐに再試行しても、状況が長引くだけです。
+
+#### 429
+インデックスあたりのドキュメント数に対するクォータを超過した場合は、状態コード `429` が返されます。
+
+#### 503
+要求内のどの項目についても正常にインデックスが作成されなかった場合は、状態コード `503` が返されます。このエラーは、システムが過負荷の状態にあり、この時点では要求を処理できないことを示します。
+
+> [AZURE.NOTE] この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。要求をすぐに再試行しても、状況が長引くだけです。
+
+ドキュメント アクションおよび成功/エラー応答の詳細については、「[こちらのページ](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、[この記事](https://msdn.microsoft.com/library/azure/dn798925.aspx)を参照してください。
+
+## 次へ
+Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。
+
+<!---HONumber=AcomDC_0302_2016-->

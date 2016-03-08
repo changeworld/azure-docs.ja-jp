@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Java Web プロジェクトで Application Insights を使う | Microsoft Azure"
-	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します"
+	pageTitle="Application Insights を使用した Java Web アプリの分析 | Microsoft Azure"
+	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します。"
 	services="application-insights"
     documentationCenter="java"
 	authors="alancameronwills"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/24/2016"
+	ms.date="03/02/2016"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -52,7 +52,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 *プロジェクトに適した方法を選択してください。*
 
-#### Eclipse で動的 Web プロジェクトを作成している場合:
+#### Eclipse を使用して Maven または動的 Web プロジェクトを作成している場合:
 
 [Application Insights SDK for Java プラグイン][eclipse]を使用します。
 
@@ -80,7 +80,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     </dependencies>
 
 
-* *ビルド エラーかチェックサムの検証エラーが発生していますか。* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
+* *ビルド エラーかチェックサムの検証エラーが発生していますか。* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
 * *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### Gradle を使用している場合:
@@ -98,7 +98,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。*
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に最新バージョンがあります。*
 * *新しい SDK に更新するには*
  * プロジェクトの依存関係を更新します。
 
@@ -118,7 +118,7 @@ SDK を手動で追加する:
 
 * *変更が発行されたときに SDK を更新するには*
  * 最新の [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.zip) をダウンロードして、古いものと置き換えます。
- * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
+ * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
 
 
@@ -398,4 +398,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

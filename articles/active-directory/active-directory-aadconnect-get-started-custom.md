@@ -163,7 +163,9 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 ここでは、Web アプリケーション プロキシ サーバーとする、特定のサーバーを入力します。Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。テストおよびパイロット デプロイ用に単一の Web アプリケーション プロキシ サーバーをインストールし、追加のサーバーをデプロイすることをお勧めします。追加のサーバーをデプロイするには、初期インストール後に、再度 Azure AD Connect を開き、Web アプリケーション プロキシを追加のサーバーにデプロイします。通常は、イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
 
 > [AZURE.NOTE]
-<li> Azure AD Connect のインストールに使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、十分なアクセス許可を持つアカウントの資格情報を入力するように求められます。</li> <li> この手順を構成する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバー間に HTTP/HTTPS 接続があることを確認します。</li> <li>さらに、認証要求の通過を許可するために、Web アプリケーション サーバーと AD FS サーバー間の HTTP/HTTPS 接続が設定されていることを確認します。</li>
+<li> Azure AD Connect のインストールに使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、十分なアクセス許可を持つアカウントの資格情報を入力するように求められます。</li>
+<li> この手順を構成する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバーとの間に HTTP/HTTPS 接続があることを確認してください。</li>
+<li> また、認証要求の通過を許可するために、Web アプリケーション サーバーと AD FS サーバーとの間に HTTP/HTTPS 接続が設定されていることを確認してください。</li>
 
 ![Web アプリ](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
 
@@ -191,11 +193,19 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/adfs6.png)
 
 
+### フェデレーション用に選択された Azure AD ドメインの検証
+
+オンプレミスのディレクトリとフェデレーションするドメインを選択すると、まだ検証されていない場合はドメインを検証するために必要な情報が Azure AD Connect から提供されます。ドメイン名の検証を完了するためにドメイン名レジストラーや DNS がホストされている場所で作成する必要のある DNS レコードが、下記のページに表示されます。</br>
+
+![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/verifyfeddomain.png)
+
+> [AZURE.NOTE] AD Connect では、構成段階でドメインの検証を試みます。ドメイン DNS がホストされている場所で必要な DNS レコードを追加せずに構成を続行すると、ウィザードでは構成を完了することができません。</br>
+
 ## ページの構成および確認
 実際の構成はこのページで行われます。
 
 > [AZURE.NOTE]
-インストールを続行する前に、フェデレーションを構成している場合は、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成していることを確認します。
+インストールを続行する前に、フェデレーションを構成している場合は、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成していることを確認してください。
 
 ![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -217,9 +227,9 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 さらに、次の検証手順を実行します。
 
-- イントラネットのドメイン参加しているマシンのインターネット エクスプローラーからブラウザー サインインを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。**注:** 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
+- イントラネットのドメイン参加しているマシンの Internet Explorer からブラウザー サインインを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。**注:** 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
 - エクストラネットの任意のデバイスからブラウザー サインインを検証する: 自宅のマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、サインイン ID とパスワード資格情報を入力します。
-- リッチ クライアントのサインインを検証する: https://testconnectivity.microsoft.com に接続し、[**Office 365**] タブを選択し、[**Office 365 シングル サインオン テスト**] を選択します。
+- リッチ クライアントのサインインを検証する: https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
 
 ## 次のステップ
 インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトし、もう一度 Windows にサインインします。
@@ -228,4 +238,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/20/2015"
+   ms.date="02/26/2016"
    ms.author="seanmck"/>
 
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
@@ -117,6 +117,10 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
 3. 最後に、WordCountService のパーティションの一覧を見てみましょう。
 
+    ```powershell
+    Get-ServiceFabricPartition 'fabric:/WordCount/WordCountService'
+    ```
+
     ![PowerShell でサービスのパーティションを表示する][ps-getsfpartitions]
 
     先ほど使用した一連のコマンドは、すべての Service Fabric PowerShell コマンドと同様に、ローカルまたはリモートで接続する可能性のあるどのクラスターでも利用できます。
@@ -166,7 +170,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
 ## 次のステップ
 - いくつかのビルド済みのアプリケーションをデプロイし、アップグレードしたので、今度は [Visual Studio で自身のアプリケーションをビルドしてみます](service-fabric-create-your-first-application-in-visual-studio.md)。
-- この記事の中でローカル クラスターで実行したアクションはすべて、[Azure クラスター](service-fabric-cluster-creation-via-portal.md)でも実行することができます。
+- この記事の中でローカル クラスターに対して実行したアクションはすべて、[Azure クラスター](service-fabric-cluster-creation-via-portal.md)に対しても実行することができます。
 - この記事で実行したアップグレードは、非常に基本的なものです。Service Fabric アップグレードの機能と柔軟性の詳細については、「[アップグレードに関するドキュメント](service-fabric-application-upgrade.md)」を参照してください。
 
 <!-- Images -->
@@ -186,4 +190,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->
