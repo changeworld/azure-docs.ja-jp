@@ -118,12 +118,12 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov-u2/HCS_DeviceOnline-gov-include.png) 
   
-        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
+        デバイスの状態が [オフライン] の場合は、デバイスがオンラインになるまで数分待ちます。 
 
-        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+        数分待ってもデバイスがまだオフラインである場合は、[StorSimple ソフトウェア、高可用性、ネットワークの要件](../articles/storsimple/storsimple-system-requirements.md) で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。 
 
-        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager Service-to-device communication.
+        ポート 9354 は Service Bus によって StorSimple Manager のサービスとデバイス間の通信に使用されているため、このポートが送信用に開かれていることを確認してください。
      
         
 
-<!---HONumber=AcomDC_0224_2016-->
+<!-----HONumber=AcomDC_0224_2016-->
