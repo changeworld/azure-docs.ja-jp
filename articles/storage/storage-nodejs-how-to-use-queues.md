@@ -331,4 +331,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!----HONumber=AcomDC_0218_2016-->

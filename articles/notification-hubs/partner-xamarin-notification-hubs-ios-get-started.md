@@ -328,4 +328,4 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!----HONumber=AcomDC_0218_2016-->

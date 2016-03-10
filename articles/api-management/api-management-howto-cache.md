@@ -164,4 +164,4 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_1217_2015-->
+<!-----HONumber=AcomDC_1217_2015-->
