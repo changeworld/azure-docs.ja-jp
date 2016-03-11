@@ -89,9 +89,18 @@ JMeter サーバー コンピューターに次のテスト スクリプト パ�
 
 * [query-config-win.ini](https://github.com/mspnp/azure-guidance/blob/master/ingestion-and-query-tests/query-config-win.ini) と [query-config-nix.ini](https://github.com/mspnp/azure-guidance/blob/master/ingestion-and-query-tests/query-config-nix.ini)。これらの 2 つのファイルには、同じ情報が含まれています。*win* ファイルは Windows のファイル名とパスに合わせて書式設定されています。*nix* ファイルは Linux のファイル名とパスに合わせて書式設定されています。
 
-  ```ini [DEFAULT] debug=true #if true shows console logs.
+  ```ini
+  [DEFAULT]
+  debug=true #if true shows console logs.
 
-  [RUN] pathreports=C:\\Users\\administrator1\\jmeter\\test-results\\ #path where tests results are saved. jmx=C:\\Users\\administrator1\\testplan.jmx #path to the JMeter test plan. machines=10.0.0.1,10.0.02,10.0.0.3 #IPs of the Elasticsearch data nodes separated by commas. reports=aggr,err,tps,waitio,cpu,network,disk,response,view #Name of the reports separated by commas. tests=idx1 #Elasticsearch index name to test. properties=run.properties #Name of the properties file. ```
+  [RUN]
+  pathreports=C:\\Users\\administrator1\\jmeter\\test-results\\ #path where tests results are saved.
+  jmx=C:\\Users\\administrator1\\testplan.jmx #path to the JMeter test plan.
+  machines=10.0.0.1,10.0.02,10.0.0.3 #IPs of the Elasticsearch data nodes separated by commas.
+  reports=aggr,err,tps,waitio,cpu,network,disk,response,view #Name of the reports separated by commas.
+  tests=idx1 #Elasticsearch index name to test.
+  properties=run.properties #Name of the properties file.
+  ```
 
   このファイルを編集し、テスト結果の場所、実行する JMeter テスト計画の名前、Elasticsearch データ ノードの IP アドレス、生成される生パフォーマンス データを含むレポート、テスト対象のインデックスの名前を指定します。*run.properties* ファイルが別のフォルダーまたはディレクトリにある場合、このファイルに完全パスを指定します。
 
@@ -115,4 +124,4 @@ JMeter サーバー コンピューターに次のテスト スクリプト パ�
 [Creating a Performance Testing Environment for Elasticsearch on Azure (Azure で Elasticsearch のパフォーマンス テスト環境を構築する)]: guidance-elasticsearch-creating-performance-testing-environment.md
 [Deploying a JMeter JUnit Sampler for Testing Elasticsearch Performance (Elasticsearch パフォーマンスをテストするために JMeter JUnit サンプラーをデプロイする)]: guidance-elasticsearch-deploying-jmeter-junit-sampler.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!-----HONumber=AcomDC_0224_2016-->
