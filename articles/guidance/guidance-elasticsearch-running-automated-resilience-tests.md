@@ -121,7 +121,11 @@ JMeter マスターが Linux で実行されている場合、PLINK をダウン
 | `verbose` | スクリプトが詳細モードで出力するかどうかを示します。 | `true` |
 | `remote` | JMeter テストをローカルとリモート サーバーのどちらで実行するかを示します。 | `true` |
 | `cluster.clusterName` | Elasticsearch クラスターの名前。 | `elasticsearch` |
-| `cluster.jumpboxIp` | ジャンプボックス マシンの IP アドレス。 |-| | `cluster.username` | クラスターのデプロイ時に作成した管理ユーザー。 |-| | `cluster.password` | 管理ユーザーのパスワード。 |-| | `cluster.loadBalancer.ip` | Elasticsearch のロード バランサーの IP アドレス。 |-| | `cluster.loadBalancer.url` | ロード バランサーのベース URL。 |-|
+| `cluster.jumpboxIp` | ジャンプボックス マシンの IP アドレス。 |-| 
+| `cluster.username` | クラスターのデプロイ時に作成した管理ユーザー。 |-| 
+| `cluster.password` | 管理ユーザーのパスワード。 |-| 
+| `cluster.loadBalancer.ip` | Elasticsearch のロード バランサーの IP アドレス。 |-| 
+| `cluster.loadBalancer.url` | ロード バランサーのベース URL。 |-|
 
 ## テストの実行
 
