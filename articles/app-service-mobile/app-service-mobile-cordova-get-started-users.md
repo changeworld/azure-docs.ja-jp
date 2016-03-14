@@ -40,7 +40,7 @@
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-1. **Visual Studio** でプロジェクトを開き、<tt>www/index.html</tt> ファイルを編集のために開きます。
+1. **Visual Studio** でプロジェクトを開き、編集する `www/index.html` ファイルを開きます。
 
 2. head セクションで `Content-Security-Policy` メタ タグを見つけます。許可されているソースの一覧に OAuth ホストを追加する必要があります。
 
@@ -54,16 +54,17 @@
 
     サンプルの Content-Security-Policy (Azure Active Directory に実装されている) は次のようになっています。
 
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 
+			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
-    <tt>https://login.windows.net</tt> を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、「[Content-Security-Policy documentation (Content-Security-Policy のドキュメント)]」を参照してください。
+    `https://login.windows.net` を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
 
     一部の認証プロバイダーについては、適切なモバイル デバイスで使用する場合、Content-Security-Policy を変更する必要がありません。たとえば、Android デバイスで Google 認証を使用する場合は、Content-Security-Policy を変更する必要はありません。
 
-3. <tt>www/js/index.js</tt> ファイルを編集のために開きます。このプロジェクトは既に加えた変更だけでビルドして実行できますが、login() メソッドを明示的に呼び出して、ログイン アクションを開始することをお勧めします。`onDeviceReady()` メソッドを見つけます。クライアント作成コードの下に、次のコードを追加します。
+3. 編集する `www/js/index.js` ファイルを開き、`onDeviceReady()` メソッドを見つけて、クライアント作成コードの下に次のコードを追加します。
 
         // Login to the service
-        client.login('SDK Provider_Name')
+        client.login('SDK_Provider_Name')
             .then(function () {
 
                 // BEGINNING OF ORIGINAL CODE
@@ -82,23 +83,23 @@
 
             }, handleError);
 
-    たとえば、Azure Active Directory の場合は、次のコードを使用します。
+    テーブル参照を作成し、UI を更新する既存のコードはこのコードで置き換えられることに注意してください。
 
-        client.login('aad')
+    login() メソッドは、プロバイダーでの認証を開始します。login() メソッドは、JavaScript Promise を返す非同期関数です。初期化の残りの部分は promise の応答内に配置されているため、login() メソッドが完了するまで実行されません。
 
-    login() メソッドは、JavaScript Promise を返す非同期関数です。初期化の残りの部分は promise の応答内に配置されているため、login() メソッドが完了するまで実行されません。
+4. 先ほど追加したコードで、`SDK_Provider_Name` を実際のログイン プロバイダーの名前に置き換えます。たとえば、Azure Active Directory の場合、`client.login('aad')` を使用します。
 
 4. プロジェクトを実行します。プロジェクトの初期化が終了すると、アプリケーションにより、選択した認証プロバイダーの OAuth ログイン ページが表示されます。
 
 ##<a name="next-steps"></a>次のステップ
 
-* Azure App Service を使用した[認証の詳細]を確認してください。
+* Azure App Service を使用した[認証の詳細]を確認します。
 * このチュートリアルの続きとして、Apache Cordova アプリに[プッシュ通知]を追加します。
 
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-cordova-get-started.md
-[Content-Security-Policy documentation (Content-Security-Policy のドキュメント)]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Content-Security-Policy に関するドキュメント]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [プッシュ通知]: app-service-mobile-cordova-get-started-push.md
 [認証の詳細]: app-service-mobile-auth.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

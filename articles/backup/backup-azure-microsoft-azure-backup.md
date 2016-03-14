@@ -35,13 +35,13 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 | Location (場所) | 最小要件 | 追加説明 |
 | -------- | -------------------- | ----------------------- |
-| Azure | Azure IaaS 仮想マシン<br><br>A2 標準: 2 コア、3.5 GB RAM | 手始めに、Windows Server 2012 R2 Datacenter の単純なギャラリー イメージを使用することができます。[Azure Backup Server (DPM) を使用した IaaS ワークロードの保護](https://technet.microsoft.com/library/jj852163.aspx)には、数多くの注意点があります。マシンのデプロイ前に、必ずこの記事によく目を通してください。 |
+| Azure | Azure IaaS 仮想マシン<br><br>A2 Standard: 2 コア、3.5 GB RAM | 手始めに、Windows Server 2012 R2 Datacenter の単純なギャラリー イメージを使用することができます。[Azure Backup Server (DPM) を使用した IaaS ワークロードの保護](https://technet.microsoft.com/library/jj852163.aspx)には、数多くの注意点があります。マシンのデプロイ前に、必ずこの記事によく目を通してください。 |
 | オンプレミスの  
- | HYPER-V VM、<br> VMWare VM、<br>または物理ホスト<br><br>2 コア、4 GB RAM | Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイ時する場合は、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)の連携について理解してください。 |
+ | Hyper-V、<br> VMWare VM、<br>または物理ホスト<br><br>2 コア、4 GB RAM | Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイするときは、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)が連携するしくみの詳細を確認してください。 |
 
 > [AZURE.NOTE] Azure Backup Server は、Windows Server 2012 R2 Datacenter を設定済みのマシンにインストールすることをお勧めします。前提条件の多くは、最新バージョンの Windows オペレーティング システムを使用すると自動的に満たされます。
 
-このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。デプロイメント後の、新しいドメインへの既存の Azure Backup Server の移動は*サポートされていません*。
+このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。デプロイメント後の、新しいドメインへの既存の Azure Backup Server マシンの移動は*サポートされていません*。
 
 ## 2\.バックアップ資格情報コンテナー
 
@@ -67,7 +67,7 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[復旧サービス] ページに [アクティブ] と表示されます。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
 
-  > [AZURE.IMPORTANT] コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#azure-backup---storage-redundancy-options)」をご覧ください。
+  > [AZURE.IMPORTANT] コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。この[概要](../storage/storage-redundancy.md)に記載されている [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)オプションの詳細をご覧ください。
 
 
 ## 3\.ソフトウェア パッケージ
@@ -86,21 +86,21 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
     ![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter1.png)
 
-3. すべてのファイルを選択して **[次へ]** をクリックします。Microsoft Azure Backup のダウンロード ページからすべてのファイルをダウンロードして、すべてのファイルを同じフォルダーに配置します。![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+3. すべてのファイルを選択し、**[次へ]** をクリックします。Microsoft Azure Backup のダウンロード ページからすべてのファイルをダウンロードし、すべてのファイルを同じフォルダーに配置します。![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
     すべてのファイルをまとめてダウンロードするとサイズが 3 G を超えるため、10 Mbps のダウンロード リンクでは、ダウンロードが完了するまでに最大で 60 分かかることがあります。
 
 
 ### ソフトウェア パッケージの抽出
 
-すべてのファイルをダウンロードしたら、**MicrosoftAzureBackupInstaller.exe** をクリックします。**Microsoft Azure Backup Setup Wizard** が開始され、指定した場所にセットアップ ファイルが解凍されます。ウィザードの手順を続行し、**[抽出]** ボタンをクリックして抽出プロセスを開始します。
+すべてのファイルをダウンロードしたら、**MicrosoftAzureBackupInstaller.exe** をクリックします。**Microsoft Azure Backup セットアップ ウィザード**が開始され、指定した場所にセットアップ ファイルが抽出されます。ウィザードの手順を続行し、**[抽出]** ボタンをクリックして抽出プロセスを開始します。
 
 > [AZURE.WARNING] セットアップ ファイルを抽出するには、少なくとも 4 GB の空き領域が必要です。
 
 
 ![Microsoft Azure Backup Setup Wizard](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-抽出プロセスが完了したら、Microsoft Azure Backup Server のインストールを開始するために、抽出された *setup.exe* を起動するチェック ボックスをオンにして、**[完了]** ボタンをクリックします。
+抽出プロセスが完了したら、Microsoft Azure Backup Server のインストールを開始するために、抽出された *setup.exe* を起動するチェック ボックスをオンにし、**[完了]** をクリックします。
 
 ### ソフトウェア パッケージのインストール
 
@@ -108,11 +108,11 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
     ![Microsoft Azure Backup Setup Wizard](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
-2. [ようこそ] 画面で、**[次へ]** をクリックします。*[前提条件の確認]* セクションが表示されます。この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。**[次へ]** をクリックします。
+2. ようこそ画面で **[次へ]** をクリックします。*[前提条件の確認]* セクションが表示されます。この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。**[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
-3. Microsoft Azure Backup Server には SQL Server Standard が必要であり、Azure Backup Server のインストール パッケージには、適切な SQL Server バイナリがバンドルされています。新しく Azure Backup Server のインストールを開始するには、**[Install new Instance of SQL Server with this Setup]** (この設定で新しい SQL Server のインスタンスをインストール) オプションをオンにして、**[確認してインストール]** をクリックします。前提条件が正常にインストールされたら、**[次へ]** をクリックします。
+3. Microsoft Azure Backup Server には SQL Server Standard が必要であり、Azure Backup Server のインストール パッケージには、適切な SQL Server バイナリがバンドルされています。新しい Azure Backup Server のインストールを開始するには、**[このセットアップを使用して、SQL Server の新しいインスタンスをインストールします]** をオンにし、**[確認してインストール]** をクリックします。前提条件が正常にインストールされたら、**[次へ]** をクリックします。
 
     ![Azure Backup Server - SQL check](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -157,13 +157,13 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。ディスクを追加する方法の詳細については、「[記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
 
-> [AZURE.NOTE] Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。現在の Azure Backup Server のアーキテクチャでは、Azure Backup のコンテナーにはデータの*二次*コピーが保持され、一次 (必須の) バックアップ コピーはローカル ストレージに保持されます。
+> [AZURE.NOTE] Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの *2 番目の*コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
 
 ## 4\.ネットワーク接続
 
 ![step4](./media/backup-azure-microsoft-azure-backup/step4.png)
 
-Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。マシンが Azure と接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
+Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
 
 同時に、Azure のサブスクリプションが正常な状態である必要があります。サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://account.windowsazure.com/Subscriptions)にログインします。
 
@@ -191,10 +191,10 @@ Azure Backup Server マシンが Azure に接続できるようになると、�
 
 ### サブスクリプションの状態の処理
 
-Azure サブスクリプションの状態が*有効期限切れ*または*プロビジョニング解除済み*である場合、*アクティブ*状態にすることができます。ただし、状態が*アクティブ*でない間は、製品の動作に次のような影響が及びます。
+Azure サブスクリプションの状態が*有効期限切れ*または*プロビジョニング解除済み*である場合、*アクティブ*状態にすることができます。ただし、状態が*アクティブ*でない間は、製品の動作に次のような影響があります。
 
-- サブスクリプションが*プロビジョニング解除済み*の場合、プロビジョニングが解除されている期間は機能を使用することができません。*アクティブ*になると、製品のバックアップ/復元機能を使用できるようになります。ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。ただし、Azure に保持されるバックアップ データは、サブスクリプションが*プロビジョニング解除済み*状態になると失われ、回復できなくなります。
-- サブスクリプションが*有効期限切れ*になった場合は、再び*アクティブ*になるまで機能を使用できなくなるだけです。サブスクリプションが*有効期限切れ*になった期間に予定されていたバックアップは、実行されません。
+- サブスクリプションが*プロビジョニング解除済み*の場合、プロビジョニングが解除されている期間は機能を使用できません。*アクティブ*になると、製品のバックアップ/復元機能を使用できるようになります。ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。ただし、Azure に保持されるバックアップ データは、サブスクリプションが*プロビジョニング解除済み*状態になると失われ、回復できなくなります。
+- サブスクリプションが*有効期限切れ*になった場合は、再び*アクティブ*になるまで機能を使用できなくなるだけです。サブスクリプションが*有効期限切れ*になった期間に予定されていたバックアップは実行されません。
 
 
 ## トラブルシューティング
@@ -204,7 +204,7 @@ Microsoft Azure Backup サーバーがセットアップ段階 (またはバッ�
 
 ## 次のステップ
 
-[DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx)について、Microsoft TechNet サイトのページで詳細を確認してください。このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
+Microsoft TechNet サイトの「[System Center 2012 R2 Data Protection Manager (DPM) 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx)」で詳細を確認します。このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 
@@ -212,4 +212,4 @@ Microsoft Azure Backup サーバーがセットアップ段階 (またはバッ�
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

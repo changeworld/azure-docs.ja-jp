@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/04/2016"
+   ms.date="02/29/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
+- [ポータルの使用](data-lake-store-get-started-portal.md)
+- [PowerShell の使用](data-lake-store-get-started-powershell.md)
+- [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
+- [Azure CLI の使用](data-lake-store-get-started-cli.md)
+- [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 
 Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
 
@@ -32,6 +32,21 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 * Visual Studio 2013 または 2015以下の手順では、Visual Studio 2015 を使用します。
 * **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+* Azure Active Directory (AAD) アプリケーションを作成し、**クライアント ID** および**応答 URI** を取得します。AAD アプリケーションと、クライアント ID を取得する方法の手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。応答 URI は、アプリケーションを作成したらポータルから使用することもできます。
+
+## Azure Active Directory を使用して認証する方法
+
+次のコード スニペットでは、認証のための 2 つのメソッドを提供します。
+
+* **対話型**。アプリケーションを使用するユーザー サインイン。これは、次のコード スニペットでメソッド `AuthenticateUser` に実装されます。
+
+* **非対話型**。アプリケーションが独自の資格情報を提供します。これは、次のコード スニペットでメソッド `AuthenticateAppliaction` に実装されます。
+
+次のコード スニペットでは、どちらの方法でもメソッドを提供しますが、この記事では `AuthenticateUser` メソッドを使用します。このメソッドでは、AAD アプリケーションのクライアント ID と応答 URI を提供する必要があります。前提条件のリンクでは、これらを取得する方法について説明します。
+
+>[AZURE.NOTE] 代わりにコード スニペットを変更して、`AuthenticateApplication` メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。 「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、 クライアント認証キーを生成し、取得する方法についても説明します。
+
+
 
 ## .NET アプリケーションの作成
 
@@ -55,15 +70,19 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 	2. **[Nuget パッケージの管理]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
 	3. 以下の Data Lake Store パッケージを検索してインストールします。
 	
-		* Microsoft.Azure.Management.DataLake.Store
-		* Microsoft.Azure.Management.DataLake.StoreUploader
-        * Microsoft.IdentityModel.Clients.ActiveDirectory
+		* `Microsoft.Azure.Management.DataLake.Store`
+		* `Microsoft.Azure.Management.DataLake.StoreUploader`
 
 		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
 
-	4. **NuGet パッケージ マネージャー**を閉じます。
+	4. Azure Active Directory 認証用の `Microsoft.IdentityModel.Clients.ActiveDirectory` パッケージもインストールします。
 
-7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、コード スニペットに subscriptionId、dataLakeAccountName、localPath などのパラメーター値を指定します。
+		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/adl.install.azure.auth.png "新しい Azure Data Lake アカウントの作成")
+
+
+	5. **NuGet パッケージ マネージャー**を閉じます。
+
+7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**APPLICATION-CLIENT-ID**、**APPLICATION-REPLY-URI**、および**SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
 
 	このコードでは、Data Lake Store アカウントの作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 	
@@ -103,10 +122,8 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
                     string remoteFilePath = remoteFolderPath + "file.txt";
                     
                     // Authenticate the user
-                    // For more information about applications and instructions on how to get a client ID, see: 
-                    //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
                     var tokenCreds = AuthenticateUser("common", "https://management.core.windows.net/",
-                        "<APPLICATION-CLIENT-ID>", new Uri("https://<APPLICATION-REDIRECT-URI>")); // TODO: Replace bracketed values.
+                        "<APPLICATION-CLIENT-ID>", new Uri("https://<APPLICATION-REPLY-URI>")); // TODO: Replace bracketed values.
                     
                     SetupClients(tokenCreds, "<SUBSCRIPTION-ID>"); // TODO: Replace bracketed value.
 
@@ -300,7 +317,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 ## 次のステップ
 
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-- [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
+- [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="12/15/2015" 
+	ms.date="02/26/2016" 
 	ms.author="cephalin"/>
 
 # AD FS の認証を使用して Azure App Service で .NET MVC Web アプリを作成する
@@ -82,13 +82,13 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 5.	App\_Start\\Startup.Auth.cs で、静的文字列定義を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
 	private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
-    <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
-    <mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
-    <mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
-    <mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
-
-    <mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
-    </pre>
+	<mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
+	<mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
+	<mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
+	<mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
+	
+	<mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
+	</pre>
 
 6.	次に、Web.config に対応する変更を加えます。Web.config を開き、アプリ設定を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
@@ -102,9 +102,10 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 	  <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /></del></mark>
 	  <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /></mark>
 	  <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /></mark>
-
+	
 	&lt;/appSettings>
 	</pre>
+
 	それぞれの環境に合わせてキーの値を入力してください。
 
 7.	アプリケーションをビルドしてエラーがないことを確認します。
@@ -134,9 +135,9 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 11. Visual Studio で、プロジェクトの **Web.Release.config** を開きます。次の XML を `<configuration>` タグに挿入し、発行した Web アプリの URL でキー値を置き換えます。
 	<pre class="prettyprint">
-&lt;appSettings>
-   &lt;add key="ida:RPIdentifier" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
-&lt;/appSettings></pre>
+	&lt;appSettings>
+	   &lt;add key="ida:RPIdentifier" value="<mark>[e.g. https://mylobapp.azurewebsites.net/]</mark>" xdt:Transform="SetAttributes" xdt:Locator="Match(key)" />
+	&lt;/appSettings></pre>
 
 この作業を完了すると、Visual Studio のデバッグ環境用と Azure に発行した Web アプリ用の 2 つの RP 識別子がプロジェクトに構成されたことになります。この 2 つの環境のそれぞれに対して AD FS に RP 信頼を設定します。デバッグ中は、**Debug** 構成を AD FS に対応させるために Web.config のアプリ設定が使用されます。発行時 (既定では、**Release** 構成が発行されたとき) は、Web.Release.config のアプリ設定の変更が組み込まれた、変換された Web.config がアップロードされます。
 
@@ -198,18 +199,20 @@ AD FS を使用してサンプル アプリケーションの認証を実際に�
 10.	**[カスタム規則を使ってクレームを送信する]** を選択し、**[次へ]** をクリックします。
 11.	次の規則言語を **[カスタムの規則]** ボックスに貼り付けます。この規則に **Per Session Identifier** という名前を付けて、**[完了]** をクリックします。  
 	<pre class="prettyprint">
-c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
-c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
-	=> add(
-		store = "_OpaqueIdStore",
-		types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
-		query = "{0};{1};{2};{3};{4}",
-		param = "useEntropy",
-		param = c1.Value,
-		param = c1.OriginalIssuer,
-		param = "",
-		param = c2.Value);
-</pre>これで、次のようなカスタム規則が作成されました。
+	c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] &amp;&amp;
+	c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant"]
+		=> add(
+			store = "_OpaqueIdStore",
+			types = ("<mark>http://contoso.com/internal/sessionid</mark>"),
+			query = "{0};{1};{2};{3};{4}",
+			param = "useEntropy",
+			param = c1.Value,
+			param = c1.OriginalIssuer,
+			param = "",
+			param = c2.Value);
+	</pre>
+
+	これで、次のようなカスタム規則が作成されました。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/6-per-session-identifier.png)
 
@@ -262,31 +265,33 @@ RP 信頼構成にロール クレームとしてグループ メンバーシッ
 1. Controllers\\HomeController.cs を開きます。
 2. 認証されたユーザーが持つセキュリティ グループ メンバーシップを使用して、次のように `About` と `Contact` の操作メソッドを装飾します。  
 	<pre class="prettyprint">
-    <mark>[Authorize(Roles="Test Group")]</mark>
-    public ActionResult About()
-    {
-    ViewBag.Message = "Your application description page.";
+	<mark>[Authorize(Roles="Test Group")]</mark>
+	public ActionResult About()
+	{
+	    ViewBag.Message = "Your application description page.";
+	
+	    return View();
+	}
+	
+	<mark>[Authorize(Roles="Domain Admins")]</mark>
+	public ActionResult Contact()
+	{
+	    ViewBag.Message = "Your contact page.";
+	
+	    return View();
+	}
+	</pre>
 
-    return View();
-    }
-
-    <mark>[Authorize(Roles="Domain Admins")]</mark>
-    public ActionResult Contact()
-    {
-    ViewBag.Message = "Your contact page.";
-
-    return View();
-}
-</pre>この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
+	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 
 3. `F5` キーを押してデバッガーを起動してサインインし、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、`~/About/Index` ページが正常に表示されます。
 4. 次に、**[Contact]** をクリックします。この例の **Test User** には、この操作は承認されません。ただし、ブラウザーは AD FS にリダイレクトされ、次のメッセージが表示されます。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/13-authorize-adfs-error.png)
 
-	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。  
+	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。
 	<pre class="prettyprint">
-	Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details.
+	Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>同じクライアント ブラウザー セッションで、最後の '11' 秒間に '6' 回の要求が行われました。</mark> 詳しくは、管理者に問い合わせてください。
 	   at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
 	   at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
 	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
@@ -351,4 +356,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../biztalk-servic
  
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -15,13 +15,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/11/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # Google Drive API の概要
-Google Drive に接続して、ファイルの作成、行の取得などを行います。
+Google Drive に接続して、ファイルの作成、行の取得などを行います。Google Drive API は次のツールから使用できます。
 
-Google Drive API は、PowerApps とロジック アプリから使用できます。
+- PowerApps 
+- Logic Apps 
 
 Google Drive では、次の操作を実行できます。
 
@@ -29,9 +30,9 @@ Google Drive では、次の操作を実行できます。
 - 画像、ニュースなどを検索するアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、動画を検索し、Twitter を使用して Twitter フィードに動画を投稿することができます。
 - PowerApps Enterprise に Google Drive API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 
 ## トリガーとアクション
@@ -47,7 +48,7 @@ Google Drive には、次のアクションがあります。トリガーはあ�
 ## Google Drive への接続を作成する
 
 ### PowerApps に構成を追加する
-Google Drive を PowerApps Enterprise に追加するときに、Google Drive アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Google アプリケーションには、**リダイレクト URL** 値も使用されます。Google Drive アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
+Google Drive を PowerApps Enterprise に追加するときに、Google Drive アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Google アプリケーションでは、**リダイレクト URL** 値も使用されます。Google Drive アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
 
 1. [Google Developers Console][5] にサインインし、**[Create an empty project]** を選択します。![Google Developers Console][6]
 
@@ -57,7 +58,7 @@ Google Drive を PowerApps Enterprise に追加するときに、Google Drive �
 5. **[Enable API]** を選択します。 ![Google Drive API を有効にする][10]  
 6. Drive API を有効にするときは、**[Credentials]** および **[OAuth 2.0 Client ID]** を選択します。 ![資格情報を追加する][12]  
 7. **[Configure consent screen]** を選択します。
-8. **[OAuth consent screen]** の **[Product Name]** を入力し、**[Save]** を選択します。![Configure consent screen][13]  
+8. **[OAuth consent screen]** で **[Product Name]** を入力し、**[Save]** を選択します。![Configure consent screen][13]  
 9. [Create Client ID] ページで次のようにします。  
 
 	1. **[Application type]** で **[Web application]** を選択します。
@@ -76,14 +77,15 @@ Google Drive を PowerApps Enterprise に追加するときに、Google Drive �
 ロジック アプリにこの API を追加するとき、Google Drive に接続するロジック アプリを承認する必要があります。
 
 1. Google Drive アカウントにサインインします。
-2. **[Authorize]** を選択して、ロジック アプリが Google Drive に接続して使用することを許可します。 
+2. ロジック アプリが Google Drive に接続して使用することを許可します。 
 
-接続を作成したら、フォルダー パスやファイル名など、Google Drive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、フォルダー パスやファイル名など、Google Drive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ Google Drive 接続を使用できます。
 
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### ファイルを作成する    
 Google Drive にファイルをアップロードします。```POST: /datasets/default/files```
@@ -274,7 +276,7 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 |dataset|string|○|path|なし |Google シートファイルの一意識別子|
 |テーブル|string|○|path| なし|ワークシートの一意識別子|
 |id|string|○|path|なし |更新する行の一意識別子|
-|item|ItemInternalId: string |○|body|なし |更新された値がある行|
+|item|ItemInternalId: string |○|body|なし |更新された値のある行|
 
 #### Response
 |名前|説明|
@@ -296,7 +298,7 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -306,7 +308,7 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -361,9 +363,9 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 
 
 ## 次のステップ
-Google Drive を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
+Google Drive を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 
 <!--References-->
@@ -376,4 +378,4 @@ Google Drive を PowerApps Enterprise に追加したら、この API をアプ�
 [13]: ./media/create-api-googledrive/configure-consent-screen.png
 [14]: ./media/create-api-googledrive/create-client-id.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

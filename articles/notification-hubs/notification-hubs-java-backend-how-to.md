@@ -3,7 +3,7 @@
 	description="Java バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="ysxu" 
+	authors="wesmc7777" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="java" 
 	ms.topic="article" 
 	ms.date="11/01/2015" 
-	ms.author="yuaxu"/>
+	ms.author="wesmc"/>
 
 # Java から Notification Hubs を使用する方法
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -303,4 +303,4 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

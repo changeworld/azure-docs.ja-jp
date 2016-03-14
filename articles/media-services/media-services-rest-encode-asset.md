@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/28/2016" 
+	ms.date="03/01/2016" 
 	ms.author="juliako"/>
 
 
@@ -22,14 +22,13 @@
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encode-asset.md)
-- [REST](media-services-rest-encode-asset.md)
-- [Portal](media-services-manage-content.md#encode)
+- [REST ()](media-services-rest-encode-asset.md)
+- [ポータル](media-services-manage-content.md#encode)
 
 ##概要
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、Media Services の組み込み Media Encoder を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を確認するには、[Media Services Standard のタスク プリセット](https://msdn.microsoft.com/ja-JP/library/mt269960)に関するページを参照してください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証](https://msdn.microsoft.com/library/azure/dn750842.aspx)する必要があります。
-
+エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を確認する場合は、「[Task Presets for MES (Media Encoder Standard)](http://msdn.microsoft.com/library/mt269960)」をご覧ください。
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。
 
@@ -51,9 +50,10 @@
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
 >https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+>
+>JSON を使用し、要求で **\_\_metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 
-
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Media Encoder Standard でエンコードするときは、[こちら](https://msdn.microsoft.com/ja-JP/library/mt269960)で指定されているタスク構成のプリセットを使うことができます。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Media Encoder Standard でエンコードするときは、[こちら](http://msdn.microsoft.com/library/mt269960)で指定されているタスク構成のプリセットを使用できます。
 	
 要求:
 
@@ -91,7 +91,7 @@
 - タスクは、サイクルを形成することはできません。
 - JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
 - Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
-- InputMediaAssets は、Media Services で作成した 1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
+- InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
 - OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)\_NewJob" になります。
 
 
@@ -275,4 +275,4 @@
 
 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

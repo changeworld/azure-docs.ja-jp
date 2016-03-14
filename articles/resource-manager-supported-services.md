@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/22/2016"
+   ms.date="03/01/2016"
    ms.author="tomfitz"/>
 
 # リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ
@@ -31,12 +31,13 @@ Azure ポータルとクラシック ポータルでサポートされている�
 
 | サービス | リソース マネージャーが有効 | REST API | スキーマ | クイック スタート テンプレート |
 | ------- | ------------------------ |-------- | ------ | ------ |
-| Batch   | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
+| Batch  
+ | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
 | Dynamics Lifecycle Services | はい | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (プレビュー) | はい | [Service Fabric Rest](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
 | Virtual Machines | あり | [VM REST](https://msdn.microsoft.com/library/azure/mt163647.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) | [Microsoft.Compute](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Compute%22&type=Code) |
-| Virtual Machines (クラシック) | 制限あり | - | - | 
-| リモート アプリ | いいえ | - | - | | Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
+| Virtual Machines (クラシック) | 制限あり | - | - | | リモート アプリ | いいえ | - | - |
+| Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイ モデルではなくクラシック デプロイ モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -151,9 +152,11 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 リソースをデプロイするときに、リソース プロバイダーと種類に関する情報を取得しなければならないケースは少なくありません。この情報は、REST API、Azure PowerShell、Azure CLI のいずれかを使って取得できます。
 
+リソース プロバイダーを使用するには、そのリソース プロバイダーをアカウントに登録する必要があります。既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。次の例は、リソース プロバイダーの登録状態を取得し、必要に応じてリソース プロバイダーを登録する方法を示しています。
+
 ### REST API
 
-使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録状態を取得するには、[すべてのリソース プロバイダーの表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。
+使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録状態を取得するには、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。リソース プロバイダーを登録する必要がある場合は、「[リソース プロバイダーへのサブスクリプションの登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)」をご覧ください。
 
 ### PowerShell
 
@@ -181,6 +184,10 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
     sites/slots/extensions          {Brazil South, East Asia, East US, Japan East...} {20...
     ...
     
+リソース プロバイダーを登録するには、名前空間を指定します。
+
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+
 ### Azure CLI
 
 使用可能なすべてのリソース プロバイダーを取得する例を次に示します。
@@ -201,6 +208,10 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 特定のリソース プロバイダーの情報は、次のコマンドでファイルに保存できます。
 
     azure provider show Microsoft.Web -vv --json > c:\temp.json
+
+リソース プロバイダーを登録するには、名前空間を指定します。
+
+    azure provider register -n Microsoft.ServiceBus
 
 ## サポートされているリージョン
 
@@ -292,4 +303,4 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

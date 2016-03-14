@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # 既にライブの Java Web アプリ向けの Application Insights
@@ -23,7 +23,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 
 使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です。
 
-> [AZURE.NOTE]このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
+> [AZURE.NOTE] このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
 
 ## 1\.Application Insights のインストルメンテーション キーを取得する
 
@@ -139,4 +139,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

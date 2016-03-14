@@ -30,7 +30,9 @@
 
 次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure リソース マネージャー**の表などがあります。制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。特に記載のない限り、制限はすべてのリージョンに適用されます。
 
-> [AZURE.NOTE] Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。コア クォータを例に説明します。コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。<!-- --> 結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイメントを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
+> [AZURE.NOTE] Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。コア クォータを例に説明します。コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
+<!-- -->
+結果として、1 つのリージョンのワークロードに対して Azure リソース グループのクォータがどれくらい必要かを判断し、デプロイメントを検討している各リージョンでその量を要求するのが便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイメントの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
 
 
 ## サービス固有の制限
@@ -48,6 +50,7 @@
 - [CDN](#cdn-limits)
 - [Cloud Services](#cloud-services-limits)
 - [Data Factory](#data-factory-limits)
+- [Data Lake Analytics](#data-lake-analytics-limits)
 - [DNS](#dns-limits)
 - [DocumentDB](#documentdb-limits)
 - [IoT Hub](#iot-hub-limits)
@@ -179,17 +182,15 @@
 
 ### Search の制限
 
-価格レベルは、容量と検索サービスの制限を決定します。
+価格レベルによって、容量と検索サービスの制限が決定されます。レベルは次のとおりです。
 
-####Standard レベル
+- **Free**: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
+- **Basic (プレビュー)**: 小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。このレベルは現在プレビュー段階であり、割引料金で提供されます。
+- **Standard (S1 および S2)**: 運用環境のワークロード向けです。大容量バージョン (**S2**) は、要求すれば利用できます (azuresearch_contact@microsoft.com) に電子メールで要求します)。
 
-[AZURE.INCLUDE [azure-search-limits-standard](../includes/azure-search-limits-standard.md)]
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
 
-####Shared レベル (マルチテナントサービスの一部。Azure サブスクライバーは無料)
-
-[AZURE.INCLUDE [azure-search-limits-free](../includes/azure-search-limits-free.md)]
-
-キー、レプリカとパーティションの組み合わせ、要求、応答に関する制限と、さまざまなワークロードで高可用性を実現する方法の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
+ドキュメントのサイズ、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」をご覧ください。
 
 ### Media Services の制限
 
@@ -220,6 +221,8 @@
 
 [AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
+### Data Lake Analytics の制限
+[AZURE.INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
 ### Stream Analytics の制限
 
@@ -282,4 +285,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="02/26/2016"
 	ms.author="asmalser"/>
 
 #Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ
@@ -54,9 +54,7 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 
 特定のユーザーに対し、選択された属性に格納されている値がない場合は、トークンでその要求は発行されません。
 
-**注:** **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、オンプレミスの Active Directory から AAD Connect ツールの最新のプレビューを使用してユーザー データを同期する場合にのみサポートされます。Connect ツールのプレビューは、次のリンクからダウンロードすることができます。
-
-http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=53949
+**注:** **user.onpremisesecurityidentifier** と **user.onpremisesamaccountname** は、[Azure AD Connect ツール](active-directory-aadconnect.md)を使用してオンプレミスの Active Directory のユーザー データを同期する場合にのみサポートされます。
 
 ## 関連記事
 
@@ -70,4 +68,4 @@ http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

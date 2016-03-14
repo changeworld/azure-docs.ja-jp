@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="02/25/2016" 
 	ms.author="v-donntr"/>
 
 
@@ -345,7 +345,7 @@ Azure クラシック ポータルにログインし、**[Web Apps]** をクリ�
 
 ## Web アプリへのアプリケーションのデプロイ
 
-AzureWebDemo を実行して新しい Web アプリを作成したら、旧ポータルにログインし、**[Web Apps]** をクリックして、**[Web アプリ]** の一覧から **[WebDemoWebApp]** を選択します。Web アプリのダッシュボード ページで、**[参照]** をクリックして移動します (または、URL `webdemowebapp.azurewebsites.net` をクリックします)。コンテンツがまだ Web アプリに発行されていないため、空のプレースホルダー ページが表示されます。
+AzureWebDemo を実行して新しい Web アプリを作成したら、旧ポータルにログインし、**[Web Apps]** をクリックして、**[Web アプリ]** の一覧から **[WebDemoWebApp]** を選択します。Web アプリのダッシュ ボード ページで、**[参照]** をクリックして移動します (または、URL `webdemowebapp.azurewebsites.net` をクリックします)。コンテンツがまだ Web アプリに発行されていないため、空のプレースホルダー ページが表示されます。
 
 次に、"Hello World" アプリケーションを作成し、これを Web アプリにデプロイします。
 
@@ -541,7 +541,14 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 1. FileZilla で、**[ファイル] > [サイト マネージャー]** の順にクリックします。
 2. **[サイト マネージャー]** ダイアログ ボックスで、**[新しいサイト]** をクリックします。新しい空の FTP サイトが表示され、**[Select Entry]** に名前を指定するように求められます。この手順では、`AzureWebDemo-FTP` という名前を付けます。
 
-    **[全般]** タブで次の設定を指定します。- **[ホスト]:** ダッシュボードからコピーした **FTP ホスト名**を入力します。- **[ポート]:** (これはパッシブ転送であり、使用するポートをサーバーが決定するため、空白のままにします。) - **[プロトコル]:** FTP - File Transfer Protocol - **[暗号化]:** Use plain FTP - **[ログオン タイプ]:** 通常 - **[ユーザー]:** ダッシュボードからコピーしたデプロイ / FTP ユーザーを入力します。これは完全な FTP ユーザー名であり、その形式は *Web アプリ名\\ユーザー名*になります。 - **[パスワード]:** デプロイ資格情報を設定したときに指定したパスワードを入力します。
+    **[一般]** タブで、次の設定を指定できます。
+    - **[ホスト]:** ダッシュボードからコピーした **FTP ホスト名**を入力します。
+    - **[ポート]:** (これはパッシブ転送であり、サーバーが使用するポートを決定するため、空白のままにします。)
+    - **[プロトコル]:** FTP ファイル転送プロトコル
+    - **[暗号化]:** 平文 FTP を使用
+    - **[ログオンの種類]:** 通常
+    - **[ユーザ]:** ダッシュボードからコピーしたデプロイ/FTP ユーザーを入力します。これは、*Web アプリ名\\デプロイ ユーザー名*という形式の完全な FTP ユーザー名です。
+    - **[パスワード]**: デプロイ資格情報を設定したときに指定したパスワードを入力します。
 
     **[転送設定]** タブで **[パッシブ]** を選択します。
 
@@ -594,10 +601,10 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh690946.aspx
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure AD ディレクトリとは]: http://technet.microsoft.com/library/jj573650.aspx
-[Azure の管理証明書の作成とアップロード]: http://msdn.microsoft.com/library/azure/gg551722.aspx
+[Azure の管理証明書の作成とアップロード]: ../cloud-services/cloud-services-certs-create.md
 [Key and Certificate Management Tool (keytool) (キーと証明書管理ツール (keytool))]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
-[WebSiteManagementClient]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html
+[WebSiteManagementClient]: http://azure.github.io/azure-sdk-for-java/com/microsoft/azure/management/websites/WebSiteManagementClient.html
 [WebSpaceNames]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

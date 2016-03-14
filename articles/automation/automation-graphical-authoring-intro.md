@@ -3,7 +3,7 @@
    description="グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
    services="automation"   
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags 
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/18/2016"
+   ms.date="02/23/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation でのグラフィカル作成
@@ -419,4 +419,4 @@ PowerShell 式をデータ ソースとして使用し、[アクティビティ 
 - [演算子](https://technet.microsoft.com/library/hh847732.aspx)
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

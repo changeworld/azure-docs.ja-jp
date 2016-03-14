@@ -74,7 +74,7 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 
 この時点で、プロジェクトは Mobile Services SDK を参照しなくなります。
 
-次に、Mobile Apps SDK の参照を追加します。このアップグレードでは、ほとんどの開発者が `Micrsoft.Azure.Mobile.Server.Quickstart` パッケージをダウンロードしてインストールしようと考えます。これにより、必要な設定全体を取得できるからです。
+次に、Mobile Apps SDK の参照を追加します。このアップグレードでは、ほとんどの開発者が `Microsoft.Azure.Mobile.Server.Quickstart` パッケージをダウンロードしてインストールしようと考えます。これにより、必要な設定全体を取得できるからです。
 
 SDK の違いにより、かなり多くのコンパイラ エラーが発生しますが、これらは簡単に対処でき、このセクションの残りの部分で説明します。
 
@@ -277,4 +277,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

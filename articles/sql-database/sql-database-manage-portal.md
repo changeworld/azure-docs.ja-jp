@@ -21,11 +21,11 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-manage-portal.md)
+- [Azure ポータル](sql-database-manage-portal.md)
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-[Azure ポータル](https://portal.azure.com/)を使用すると、Azure SQL データベースと論理サーバーを作成、監視、管理できます。この記事では、いくつかの一般的なタスクについて説明します。
+[Azure ポータル](https://portal.azure.com/)では、Azure SQL Database と論理サーバーを作成、監視、管理できます。この記事では、いくつかの一般的なタスクについて説明します。
 
 ![Database Overview](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
@@ -34,14 +34,14 @@
 
 Azure ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
 
-- [SQL Database を復元する](sql-database-point-in-time-restore-tutorial-management-portal.md)
+- [SQL Database を復元する](sql-database-user-error-recovery.md)
 - [Visual Studio で SQL Database を開く](sql-database-connect-query.md)
 - [SQL Database をエクスポートする](sql-database-export.md)
 
 ## 2\.データベースの監視
 ![Database monitoring](./media/sql-database-manage-portal/sqldatabase_monitoring.png)
 
-Azure SQL Database には、既定で、データベース スループット単位 (DTU)、データベース サイズ、接続の正常性の監視グラフが備わっています。これらの監視グラフは、CPU の割合、データ IO の割合、デッドロック、ログ IO の割合、またはファイアウォールによってブロックされた要求の割合のグラフも作成するようにカスタマイズおよび拡張できます。監視グラフをカスタマイズする方法の詳細については、[こちら][Azure part monitoring]を参照してください。
+Azure SQL Database は、データベース トランザクション ユニット (DTU)、データベース サイズ、接続の正常性の監視グラフを既定で備えています。これらの監視グラフは、CPU の割合、データ IO の割合、デッドロック、ログ IO の割合、またはファイアウォールによってブロックされた要求の割合のグラフも作成するようにカスタマイズおよび拡張できます。監視グラフをカスタマイズする方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
 さらに、アラート ルールは、指定したメトリックを監視して、事前に設定されたしきい値に達したときに指定の管理者と共同管理者に警告するように設定できます。Azure クラシック ポータルでアラート ルールを設定する方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
@@ -85,4 +85,4 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
   [AzureDb Auditing]: http://azure.microsoft.com/documentation/articles/sql-database-auditing-get-started/
   [AzureDb datamasking]: http://azure.microsoft.com/documentation/articles/sql-database-dynamic-data-masking-get-started/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

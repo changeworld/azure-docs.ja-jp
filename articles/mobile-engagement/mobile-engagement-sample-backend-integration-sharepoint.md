@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/12/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement - API の統合
@@ -26,7 +26,7 @@
 
 このチュートリアルで扱うシナリオでは、まず SharePoint のビジネス ユーザーが SharePoint リストにマーケティング データを入力します。そして、自動化されたプロセスが利用可能な REST API を使用してこのリストから項目を取得し、Mobile Engagement システムと通信して、SharePoint のデータからマーケティング キャンペーンを作成します。
  
-> [AZURE.IMPORTANT]おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する 2 つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。
+> [AZURE.IMPORTANT] おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する 2 つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。
 
 ## SharePoint の統合
 1. サンプルの SharePoint リストは次のようなものです。**Title**、**Category**、**NotificationTitle**、**Message**、**URL** はアナウンスの作成に使用されます。**IsProcessed** という名前の列がありますが、これはコンソール プログラム形式のサンプル自動化プロセスで使用されます。このコンソール プログラムを Azure WebJob として実行しスケジュールを設定することも、SharePoint ワークフローを直接使用して、この SharePoint リストに項目が挿入された場合にアナウンスが作成およびアクティブ化されるように設定することもできます。このサンプルで使用するコンソール プログラムは、SharePoint リスト内の項目を調べ、項目ごとに Azure Mobile Engagement でアナウンスを作成してから、最後にアナウンスの作成が成功した場合に **IsProcessed** フラグを true にマークします。
@@ -105,7 +105,7 @@
             return returnValue;
         }  
 
-3. アナウンス形式のキャンペーンの作成については、[ドキュメント](https://msdn.microsoft.com/library/dn913754.aspx)を参照してください。キャンペーンの `kind` を*アナウンス*に設定し、[ペイロード](https://msdn.microsoft.com/library/dn913749.aspx)を指定して FormUrlEncodedContent として渡すようにする必要があります。
+3. アナウンス形式のキャンペーンの作成については、[ドキュメント](https://msdn.microsoft.com/library/azure/mt683750.aspx)を参照してください。キャンペーンの `kind` を*アナウンス*に設定し、[ペイロード](https://msdn.microsoft.com/library/azure/mt683751.aspx)を指定して FormUrlEncodedContent として渡すようにする必要があります。
 
 		static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
             string notificationMessage, string notificationCategory, string actionURL)
@@ -195,7 +195,7 @@
 
 8. アナウンス キャンペーンが作成されると、IsProcessed が false であったリスト項目が true に設定されることにも注目してください。
 
-このサンプルでは、ほとんどの必須プロパティを指定する単純なアナウンス キャンペーンを作成しました。このサンプルは、[こちら](https://msdn.microsoft.com/library/dn913749.aspx)の情報を参考にしてポータルから好きなだけカスタマイズすることができます。
+このサンプルでは、ほとんどの必須プロパティを指定する単純なアナウンス キャンペーンを作成しました。このサンプルは、[こちら](https://msdn.microsoft.com/library/azure/mt683751.aspx)の情報を参考にしてポータルから好きなだけカスタマイズすることができます。
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-sample-backend-integration-sharepoint/sharepointlist.png
@@ -207,4 +207,4 @@
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -74,6 +74,7 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
 このアプリケーションでは、単一のエンドポイント (`/tables/TodoItem`) でモバイルに最適化された WebAPI が作成され、動的スキーマを使用する基になる SQL データ ストアへの非認証アクセスが可能になります。次のクライアント ライブラリのクイック スタートに従う場合に適しています。
 
 - [Android クライアントのクイック スタート]
+- [Apache Cordova クライアントのクイック スタート]
 - [iOS クライアントのクイック スタート]
 - [Windows ストア クライアントのクイック スタート]
 - [Xamarin.iOS クライアントのクイック スタート]
@@ -131,7 +132,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)](http://git-scm.com/book/en/Getting-Started-Installing-Git)」を参照してください。
 
-2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
+2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイメント用のユーザー名とパスワードをメモしておきます。
 
 3. モバイル アプリ バックエンドのブレードで、**[Git クローン URL]** の設定をメモしておきます。
 
@@ -429,6 +430,67 @@ access プロパティには、次の 3 つの値を使用できます。
   - *disabled* は、このテーブルが現在無効になっていることを示します。
 
 access プロパティが定義されていない場合は、非認証アクセスが許可されます。
+
+### <a name="howto-tables-getidentity"></a>方法: テーブルで認証要求を使用する
+
+認証が設定されている場合に、要求されている要求の数を設定することができます。これらの要求は `context.user` オブジェクトでは通常使用できません。ただし、`context.user.getIdentity()` メソッドで取得できます。`getIdentity()` メソッドは、オブジェクトに解決される Promise を返します。オブジェクトは、認証方法 (facebook、google、twitter、microsoftaccount または aad) によってキー付けされます。
+
+たとえば、Microsoft アカウント認証を設定し、電子メール アドレス要求を要求する場合は、次のレコードに電子メール アドレスを追加できます。
+
+    var azureMobileApps = require('azure-mobile-apps');
+
+    // Create a new table definition
+    var table = azureMobileApps.table();
+
+    table.columns = {
+        "emailAddress": "string",
+        "text": "string",
+        "complete": "boolean"
+    };
+    table.dynamicSchema = false;
+    table.access = 'authenticated';
+
+    /**
+    * Limit the context query to those records with the authenticated user email address
+    * @param {Context} context the operation context
+    * @returns {Promise} context execution Promise
+    */
+    function queryContextForEmail(context) {
+        return context.user.getIdentity().then((data) => {
+            context.query.where({ emailAddress: data.microsoftaccount.claims.emailaddress });
+            return context.execute();
+        });
+    }
+
+    /**
+    * Adds the email address from the claims to the context item - used for
+    * insert operations
+    * @param {Context} context the operation context
+    * @returns {Promise} context execution Promise
+    */
+    function addEmailToContext(context) {
+        return context.user.getIdentity().then((data) => {
+            context.item.emailAddress = data.microsoftaccount.claims.emailaddress;
+            return context.execute();
+        });
+    }
+
+    // Configure specific code when the client does a request
+    // READ - only return records belonging to the authenticated user
+    table.read(queryContextForEmail);
+
+    // CREATE - add or overwrite the userId based on the authenticated user
+    table.insert(addEmailToContext);
+
+    // UPDATE - only allow updating of record belong to the authenticated user
+    table.update(queryContextForEmail);
+
+    // DELETE - only allow deletion of records belong to the authenticated uer
+    table.delete(queryContextForEmail);
+
+    module.exports = table;
+
+どのような要求が使用できるかを確認するには、Web ブラウザーを使用し、サイトの `/.auth/me` エンドポイントを表示します 。
 
 ### <a name="howto-tables-disabled"></a>方法: 特定のテーブル操作へのアクセスを無効にする
 
@@ -766,6 +828,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 
 <!-- URLs -->
 [Android クライアントのクイック スタート]: app-service-mobile-android-get-started.md
+[Apache Cordova クライアントのクイック スタート]: app-service-mobile-cordova-get-started.md
 [iOS クライアントのクイック スタート]: app-service-mobile-ios-get-started.md
 [Xamarin.iOS クライアントのクイック スタート]: app-service-mobile-xamarin-ios-get-started.md
 [Xamarin.Android クライアントのクイック スタート]: app-service-mobile-xamarin-android-get-started.md
@@ -803,4 +866,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

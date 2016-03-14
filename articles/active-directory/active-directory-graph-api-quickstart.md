@@ -15,7 +15,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="02/22/2016"
+      ms.date="02/25/2016"
       ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
@@ -70,7 +70,8 @@ Azure AD Graph API 用の Graph Explorer を使用して、アプリケーショ
 
 **クエリを実行する**:クエリを実行するには、要求テキスト ボックスにクエリを入力し、**[取得]** をクリックするか、**Enter** キーを押します。結果が応答ボックスに表示されます。たとえば、`https://graph.windows.net/graphdir1.onmicrosoft.com /groups?api-version=1.5` は、デモ ディレクトリ内のすべてのグループ オブジェクトを一覧表示します。
 
-Graph Explorer の次の機能と制限事項に注意してください。 - リソース セットのオートコンプリート機能。これを確認するには、**[デモ会社を使用する]** をクリックし、(会社の URL が表示されている) 要求テキスト ボックスをクリックします。ドロップダウン リストからリソース セットを選択できます。
+Graph Explorer の次の機能と制限事項に注意してください。
+- リソース セットのオートコンプリート機能。これを確認するには、**[デモ会社を使用する]** をクリックし、(会社の URL が表示されている) 要求テキスト ボックスをクリックします。ドロップダウン リストからリソース セットを選択できます。
 
 - アドレス指定のエイリアスとして “me” と “myorganization” の使用をサポートします。たとえば、`https://graph.windows.net/me?api-version=1.5` を使用してサインインしているユーザーのユーザー オブジェクトを返し、`https://graph.windows.net/myorganization/users?api-version=1.5` を使用して現在のディレクトリのすべてのユーザーを返すことができます。デモ会社に対して “me” エイリアスを使用するとエラーが返ります。これは、要求を行うサインイン ユーザーが存在しないためです。
 
@@ -125,4 +126,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 
 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

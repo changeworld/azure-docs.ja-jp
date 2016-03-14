@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/14/2016"   
+	ms.date="03/01/2016"   
 	ms.author="juliako"/>
 
 
@@ -27,11 +27,11 @@
 
 Media Services は、動的パッケージと静的パッケージをサポートしています。静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 または Smooth Streaming ファイルを含むアセットの作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
->[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
+>[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
 
 ただし、静的パッケージが必要なシナリオもあります。
 
-- 外部エンコーダーで (たとえば、サードパーティ エンコーダーを使用して) エンコードされたアダプティブ ビットレート MP4 を検証する。
+- 外部エンコーダー (サード パーティのエンコーダーなど) を使用してエンコードされたアダプティブ ビットレート MP4 を検証する
 
 静的パッケージを使用して、次のタスクを実行することもできます。ただし、動的暗号化を使用することが推奨されます。
 
@@ -42,13 +42,13 @@ Media Services は、動的パッケージと静的パッケージをサポー�
 
 ## 外部エンコーダーを使用してエンコードされたアダプティブ ビットレート MP4 を検証する
 
-Media Services Encoder でエンコードしていないアダプティブ ビットレート (マルチビットレート) MP4 ファイルのセットを使用する場合、ファイルを検証してから次の処理に進む必要があります。Media Services Packager では、MP4 ファイルのセットを含む資産が検証し、資産を Smooth Streaming または HLS にパッケージ化できるかどうかを確認することができます。検証タスクに失敗すると、タスクを処理しているジョブはエラーで完了します。検証タスクのプリセットが定義された XML については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」を参照してください。
+Media Services のエンコーダーでエンコードされていない一連のアダプティブ ビットレート (マルチビットレート) MP4 ファイルを使用する場合は、ファイルを検証してから次の処理に進む必要があります。Media Services Packager では、MP4 ファイルのセットを含む資産が検証し、資産を Smooth Streaming または HLS にパッケージ化できるかどうかを確認することができます。検証タスクに失敗すると、タスクを処理しているジョブはエラーで完了します。検証タスクのプリセットが定義された XML については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」を参照してください。
 
->[AZURE.NOTE]Media Services Encoder を使用して生成するか、Media Services Packager を使用してコンテンツを検証して、実行時の問題を防ぎます。オンデマンド ストリーミング サーバーで実行時にソース ファイルを解析できない場合、HTTP 1.1 エラー “415 Unsupported Media Type” を受け取ります。サーバーで繰り返しソース ファイルを解析できない場合、オンデマンド ストリーミング サーバーのパフォーマンスに影響があり、他の要求の処理に使用できる帯域幅が減る可能性があります。Azure Media Services には、オンデマンド ストリーミング サービスに関するサービス レベル アグリーメント (SLA) が用意されています。ただし、サーバーが上記のように誤用されている場合、この SLA は適用されません。
+>[AZURE.NOTE]実行時の問題を回避するには、Media Encoder Standard を使用して生成するか、Media Services Packager を使用してコンテンツを検証します。オンデマンド ストリーミング サーバーで実行時にソース ファイルを解析できない場合、HTTP 1.1 エラー “415 Unsupported Media Type” を受け取ります。サーバーで繰り返しソース ファイルを解析できない場合、オンデマンド ストリーミング サーバーのパフォーマンスに影響があり、他の要求の処理に使用できる帯域幅が減る可能性があります。Azure Media Services には、オンデマンド ストリーミング サービスに関するサービス レベル アグリーメント (SLA) が用意されています。ただし、サーバーが上記のように誤用されている場合、この SLA は適用されません。
 
 このセクションでは、検証タスクの処理方法について説明します。また、JobStatus.Error で完了したジョブの状態とエラー メッセージを確認する方法についても説明します。
 
-Media Services Packager を使用して MP4 ファイルを検証するには、独自のマニフェスト (.ism) ファイルを作成し、ソース ファイルと共に Media Services アカウントにアップロードする必要があります。Azure Media Encoder で生成される .ism ファイルのサンプルを以下に示します。ファイル名の大文字と小文字は区別されます。また、.ism ファイルのテキストは UTF-8 エンコード形式にする必要があります。
+Media Services Packager を使用して MP4 ファイルを検証するには、独自のマニフェスト (.ism) ファイルを作成し、ソース ファイルと共に Media Services アカウントにアップロードする必要があります。Media Encoder Standard で生成された .ism ファイルのサンプルを次に示します。ファイル名の大文字と小文字は区別されます。また、.ism ファイルのテキストは UTF-8 エンコード形式にする必要があります。
 
 	
 	<?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -519,13 +519,13 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 	        /// <returns>The output asset.</returns>
 	        private static IAsset EncodeMP4IntoMultibitrateMP4sTask(IJob job, IAsset asset)
 	        {
-	            // Get the SDK extension method to  get a reference to the Azure Media Encoder.
+	            // Get the SDK extension method to  get a reference to the Media Encoder Standard.
 	            IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
-	                MediaProcessorNames.AzureMediaEncoder);
+	                MediaProcessorNames.MediaEncoderStandard);
 	
 	            ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
 	               encoder,
-	               "H264 Adaptive Bitrate MP4 Set 720p",
+	               "H264 Multiple Bitrate 720p",
 	               TaskOptions.None);
 	
 	            // Specify the input Asset
@@ -864,13 +864,13 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
 	        /// <returns>The output asset.</returns>
 	        private static IAsset EncodeSingleMP4IntoMultibitrateMP4sTask(IJob job, IAsset asset)
 	        {
-	            // Get the SDK extension method to  get a reference to the Azure Media Encoder.
+	            // Get the SDK extension method to  get a reference to the Media Encoder Standard.
 	            IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
-	                MediaProcessorNames.AzureMediaEncoder);
+	                MediaProcessorNames.MediaEncoderStandard);
 	
 	            ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
 	               encoder,
-	               "H264 Adaptive Bitrate MP4 Set 720p",
+	               "H264 Multiple Bitrate 720p",
 	               TaskOptions.None);
 	
 	            // Specify the input Asset
@@ -1235,13 +1235,13 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 	        /// <returns>The output asset.</returns>
 	        private static IAsset EncodeSingleMP4IntoMultibitrateMP4sTask(IJob job, IAsset asset)
 	        {
-	            // Get the SDK extension method to  get a reference to the Azure Media Encoder.
+	            // Get the SDK extension method to  get a reference to the Media Encoder Standard.
 	            IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
-	                MediaProcessorNames.AzureMediaEncoder);
+	                MediaProcessorNames.MediaEncoderStandard);
 	
 	            ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
 	               encoder,
-	               "H264 Adaptive Bitrate MP4 Set 720p",
+	               "H264 Multiple Bitrate 720p",
 	               TaskOptions.None);
 	
 	            // Specify the input Asset
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="02/26/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -35,7 +35,7 @@ Azure Multi-Factor Auth プロバイダーを介して MFA 管理ポータルに
 [キャッシュ](#caching)|キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。 |認証キャッシュの設定および構成方法
 [信頼できる IP](#trusted-ips)|信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの多要素認証をバイパスできるようにする多要素認証の機能です。|多要素認証の対象外となる IP アドレスの構成および設定	
 [アプリ パスワード](#app-passwords)|アプリ パスワードは、MFA (multi-factor authentication: 多要素認証) を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。|アプリ パスワードに関する情報
-[記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止 (パブリック プレビュー)](#suspend-multi-factor-authentication-for-remembered-devices-and-browsers-public-preview)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間 MFA を一時停止できます。|この機能の有効化と日数の設定に関する情報
+[記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の記憶](#remember-multi-factor-authentication-for-devices-users-trust)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。|この機能の有効化と日数の設定に関する情報
 [選択可能な検証方法 (パブリック プレビュー)](#selectable-verification-methods-public-preview)|ユーザーが使用できる認証方法を選択できます。|電話やテキスト メッセージなど、特定の認証方法の有効化または無効化に関する情報
 
 
@@ -331,25 +331,25 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ![アプリ パスワード](./media/multi-factor-authentication-whats-next/myapp.png)
 
-## 記憶されたデバイスとブラウザーに対する Multi-Factor Authentication を一時停止する (パブリック プレビュー)
+## ユーザーが信頼するデバイスに対する Multi-Factor Authentication を記憶する
 
-記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止は、ユーザーが MFA を使用して正常にサインインした後、設定された日数にわたって MFA を一時停止するオプションをユーザーに与えることができる機能です。これはすべての MFA ユーザー向けの無料の機能であり、ユーザーの使いやすさを向上させます。ただし、ユーザーが MFA を一時停止できるため、この機能はアカウントのセキュリティを低下させる可能性があります。
+ユーザーが信頼するデバイスとブラウザーに対する Multi-Factor Authentication の記憶は、すべての MFA ユーザー向けの無料の機能です。ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、MFA を省略できるようにすることが可能です。これにより、ユーザーの利便性を強化できます。
 
-ユーザー アカウントのセキュリティを確保するために、次に該当する場合はデバイスの Multi-Factor Authentication を復元する必要があります。
+ただし、ユーザーは信頼済みデバイスに対する MFA を記憶させることができるため、この機能によってアカウントのセキュリティが低下する可能性があります。アカウントのセキュリティを確保するために、次のいずれかのシナリオでは、デバイスに対する Multi-Factor Authentication を復元する必要があります。
 
 - 企業アカウントが侵害されている場合
 - 記憶されたデバイスが紛失または盗まれた場合
 
 > [AZURE.NOTE] この機能は、ブラウザーのクッキーのキャッシュとして実装されます。ブラウザーのクッキーが有効でない場合は機能しません。
 
-### 記憶されたデバイスに対する MFA の一時停止を有効化/無効化する方法
+### Multi-Factor Authentication の記憶を有効/無効にする方法
 
 1. Azure クラシック ポータルにサインインします。
 2. 左側の [Active Directory] をクリックします。
-3. [Active Directory] の下の記憶されたデバイスに対する MFA の一時停止を設定するディレクトリをクリックします。
+3. [Active Directory] で、デバイスに対する Multi-Factor Authentication の記憶を設定するディレクトリをクリックします。
 4. 選択したディレクトリで、[構成] をクリックします。
 5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
-6. [サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の **[デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する]** をオン/オフします。![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png)
+6. [サービスの設定] ページの [ユーザーのデバイス設定の管理] で、**[信頼済みのデバイスで Multi-Factor Authentication を記憶することをユーザーに許可する]** をオンまたはオフにします。![デバイスの記憶](./media/multi-factor-authentication-whats-next/remember.png)
 8. 一時停止を許可する日数を設定します。既定値は 14 日です。
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
@@ -362,8 +362,8 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 :------------- | :------------- | 
 [電話の呼び出し](multi-factor-authentication-end-user-first-time-mobile-phone.md)| 認証電話に自動音声通話を行います。ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。この電話番号は、オンプレミスの Active Directory には同期されません。
 [電話へのテキスト メッセージ](multi-factor-authentication-end-user-first-time-mobile-phone.md)|ユーザーに確認コードを含むテキスト メッセージが送信されます。ユーザーには、確認コードを使用してテキスト メッセージに返信するか、確認コードをサインイン インターフェイスに入力するよう求めるプロンプトが表示されます。
-[モバイル アプリでの通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリはアカウントに対する未承認のアクセスを防止し、不正なトランザクションを停止します。電話または登録されたデバイスに対するプッシュ通知によって行われます。通知を確認し、適切である場合は [確認] をタップするだけです。または、[拒否] を選択することもできます。あるいは、[拒否] を選択して不正通知を報告することも可能です。不正通知の報告方法については、「Multi-Factor Authentication における [拒否] と [不正通知] 機能の使用法」をご覧ください。</br></br>Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、および [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で使用できます。|
-[モバイル アプリからの確認コード](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードにより、ユーザー名とパスワードと共に入力し、2 番目の形式の認証が行われます。</li><br><p> Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+[モバイル アプリでの通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリはアカウントに対する未承認のアクセスを防止し、不正なトランザクションを停止します。電話または登録されたデバイスに対するプッシュ通知によって行われます。通知を確認し、適切である場合は [確認] をタップするだけです。または、[拒否] を選択することもできます。あるいは、[拒否] を選択して不正通知を報告することも可能です。不正通知の報告方法については、「Multi-Factor Authentication における [拒否] と [不正通知] 機能の使用法」をご覧ください。</br></br>Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、および [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で使用できます。|
+[モバイル アプリからの確認コード](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードにより、ユーザー名とパスワードと共に入力し、2 番目の形式の認証が行われます。</li><br><p> Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
 
 ### 認証方法を有効または無効にする方法
 
@@ -372,8 +372,8 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 3. Active Directory で、認証方法を有効または無効にするディレクトリをクリックします。
 4. 選択したディレクトリで、[構成] をクリックします。
 5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
-6. [サービスの設定] ページの検証オプションで、対象のオプションをオンまたはオフにします。</br></br>![デバイスの一時停止](./media/multi-factor-authentication-whats-next/authmethods.png)
+6. [サービスの設定] ページの検証オプションで、使用するオプションをオンまたはオフにします。</br></br>![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

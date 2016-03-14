@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # collectd: Application Insights での Unix パフォーマンス メトリック
@@ -40,7 +40,7 @@
 Unix サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](http://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://azuredownloads.blob.core.windows.net/applicationinsights/applicationinsights-collectd-1.0.1.jar)をダウンロードします。バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html)をダウンロードします。バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java` にコピーします。
 3. `/etc/collectd/collectd.conf` を編集します:
  * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java)が有効になっていることを確認します。
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

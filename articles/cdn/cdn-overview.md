@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure CDN の概要" 
-	description="Azure Content Delivery Network (CDN) の概要と、CDN を使用して BLOB と静的コンテンツをキャッシュして高帯域幅コンテンツを配信する方法について説明します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure CDN の概要"
+	description="Azure Content Delivery Network (CDN) の概要と、CDN を使用して BLOB と静的コンテンツをキャッシュして高帯域幅コンテンツを配信する方法について説明します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/20/2016" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -28,11 +28,11 @@ CDN では、世界各地の物理ノードにコンテンツをキャッシュ�
 CDN を使用して Azure データをキャッシュすると、次のような利点があります。
 
 - コンテンツ ソースから遠く離れた場所にいる、コンテンツの読み込みに数多くの "インターネット トリップ" が必要なアプリケーションを使用しているエンド ユーザーに対する、パフォーマンスとユーザー エクスペリエンスの向上
-- 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型の配信スケール 
+- 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型の配信スケール
 
 
 >[AZURE.IMPORTANT] CDN エンドポイントを作成または有効にした場合、世界中に反映されるまでに最大で 90 分かかることがあります。
- 
+
 最初にオブジェクトに対する要求が CDN に行われると、オブジェクトはオブジェクトのソースの元の場所から直接取得されます。この配信元には、Azure ストレージ アカウント、Web アプリ、クラウド サービス、パブリック Web 要求を受け入れる任意のカスタム配信元などがあります。CDN 構文を使用して要求が行われると、その要求は、要求が行われた場所から最も近い CDN エンドポイントにリダイレクトされ、オブジェクトへのアクセスが提供されます。オブジェクトがそのエンドポイントで見つからない場合は、サービスから取得され、そのエンドポイントにキャッシュされます。有効期間 (TTL) の設定はキャッシュされたオブジェクトでも維持されています。
 
 ## Standard の機能
@@ -61,4 +61,4 @@ Premium CDN レベルには Standard レベルのすべての機能に加え、�
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 - [リアルタイム統計](cdn-real-time-stats.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

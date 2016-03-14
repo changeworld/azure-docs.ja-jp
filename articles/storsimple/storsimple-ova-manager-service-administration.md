@@ -3,7 +3,7 @@
    description="Azure クラシック ポータルで StorSimple Manager サービスを使用して、StorSimple のオンプレミスの仮想アレイを管理する方法を説明します。"
    services="storsimple"
    documentationCenter=""
-   authors="SharS"
+   authors="alkohli"
    manager="carmonm"
    editor="" />
 <tags 
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/18/2016"
-   ms.author="v-sharos" />
+   ms.date="03/01/2016"
+   ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用した StorSimple Virtual Array の管理 (プレビュー)
+# StorSimple Manager サービスを使用した StorSimple Virtual Array の管理
 
 ![セットアップ プロセス フロー](./media/storsimple-ova-manager-service-administration/manage4.png)
 
@@ -58,11 +58,11 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|
 |---|---|---|
 |StorSimple Manager サービス|ダッシュ ボード (サービス)|ダッシュ ボード (デバイス)|
-|デバイス →|監視|
-|バックアップ カタログ|共有 (ファイル サーバー) または</br>ボリューム (iSCSI サーバー)|
-|構成 (サービス)|構成 (デバイス)|
-|ジョブ|メンテナンス|
-|アラート|
+||デバイス →|監視|
+||バックアップ カタログ|共有 (ファイル サーバー) または</br>ボリューム (iSCSI サーバー)|
+||構成 (サービス)|構成 (デバイス)|
+||ジョブ|メンテナンス|
+||アラート|
 
 ## StorSimple Manager サービスを使用した管理タスクの実行
 
@@ -96,4 +96,4 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ##次のステップ
 Web UI とその使用方法については、「[StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

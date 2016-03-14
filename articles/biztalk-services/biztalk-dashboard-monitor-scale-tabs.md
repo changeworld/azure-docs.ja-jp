@@ -4,8 +4,8 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
-	editor="cgronlun"/>
+	manager="erikre" 
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
@@ -33,9 +33,9 @@ BizTalk サービスのエディションによっては、ここに示したオ
     <tr>
         <td><strong>ツールの入手</strong></td>
 
-        <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。 これらのテンプレートは、BizTalk サービスにデプロイされる<strong>BizTalk サービス</strong> (ブリッジ) および <strong>BizTalk サービス アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
+        <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。これらのテンプレートでは、BizTalk Services にデプロイされる <strong>BizTalk Services</strong> (ブリッジ) および <strong>BizTalk Services アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
         <br/><br/>
-		作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使用して開始する方法に関するページ</a> および <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストールに関するページ</a> を参照してください。
+		作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">BizTalk Services SDK を使い始める方法</a>に関するページおよび「<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk サービス SDK のインストール</a>」をご覧ください。
         </td>
     </tr>
 
@@ -44,7 +44,7 @@ BizTalk サービスのエディションによっては、ここに示したオ
 
         <td>Azure でホストされている Azure BizTalk サービス ポータルを開きます。ここで、パートナーを追加し、X12 契約、AS2 契約、および EDIFACT EDI 契約を作成します。
         <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>で、作業を開始する手順を説明しています。
+        作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルでの EDI メッセージングのコンポーネントの構成</a>に関するページをご覧ください。
         </td>
     </tr>
 
@@ -339,7 +339,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 Azure の Web サイトでハイブリッド接続を作成するには、[ハイブリッド接続: Azure Web サイトから内部設置型リソースへの接続に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=397538)を参照してください。
 
-Azure Mobile Services でハイブリッド接続を使用するには、[Azure Mobile Services とハイブリッド接続に関するページ](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)を参照してください。
+Azure Mobile Services でハイブリッド接続を使用するには、[Azure Mobile Services とハイブリッド接続に関するページ](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)を参照してください。
 
 Azure BizTalk サービスでハイブリッド接続を作成または管理するには、「[ハイブリッド接続](integration-hybrid-connection-overview.md)」を参照してください。
 
@@ -365,4 +365,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

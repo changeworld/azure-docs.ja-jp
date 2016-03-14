@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="02/29/2016"
 	ms.author="MehrdadMzfr" />
 
 #Engagement を iOS に統合する方法
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 - [iOS](mobile-engagement-ios-integrate-engagement.md)
 - [Android](mobile-engagement-android-integrate-engagement.md)
 
 この手順では、iOS アプリケーションで Engagement の分析機能、監視機能を有効化する最も簡単な方法を説明します。
 
-> [AZURE.IMPORTANT]Engagement SDK には iOS6 以降が必要です。アプリケーションのデプロイ ターゲットは iOS6 以降である必要があります。
+> [AZURE.IMPORTANT] Engagement SDK には iOS6 以降が必要です。アプリケーションのデプロイ ターゲットは iOS6 以降である必要があります。
 
 次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報をコンピューティングするのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([iOS アプリで高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-ios-use-engagement-api.md))。
 
@@ -37,15 +37,14 @@ Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェク�
 
 Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
- -   `AdSupport.framework` - リンクを `Optional` として設定します。
- -   `SystemConfiguration.framework`
- -   `CoreTelephony.framework`
- -   `CFNetwork.framework`
- -   `CoreLocation.framework`
- -   `libxml2.dylib`
+> -   `AdSupport.framework` - リンクを `Optional` として設定します。
+> -   `SystemConfiguration.framework`
+> -   `CoreTelephony.framework`
+> -   `CFNetwork.framework`
+> -   `CoreLocation.framework`
+> -   `libxml2.dylib`
 
-> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
-
+> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます <ios-sdk-engagement-idfa>。
 
 ##エンゲージメント SDK を初期化する
 
@@ -100,7 +99,7 @@ Engagement でのユーザー、セッション、アクティビティ、クラ
 
 `UIViewController` クラスをオーバーロードできないか、オーバーロードしたくない場合は、`EngagementAgent` のメソッドを直接呼び出して、活動を開始できます。
 
-> [AZURE.IMPORTANT]iOS SDK は、アプリケーションが閉じられると、`endActivity()` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `startActivity` メソッドを呼び出し、`endActivity` メソッドは*決して*呼び出さないようにすることを*強く*お勧めします。このメソッドを呼び出すと現在のセッションを強制的に終了します。
+> [AZURE.IMPORTANT] iOS SDK は、アプリケーションが閉じられると、`endActivity()` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `startActivity` メソッドを呼び出し、`endActivity` メソッドは*決して*呼び出さないようにすることを*強く*お勧めします。このメソッドを呼び出すと現在のセッションを強制的に終了します。
 
 ##場所レポート
 
@@ -145,7 +144,7 @@ iOS 8 以降では、アプリケーションの Info.plist ファイルにキ�
 
 	[[EngagementAgent shared] setBackgroundRealtimeLocationReport:YES withLaunchOptions:launchOptions];
 
-> [AZURE.NOTE]アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> [AZURE.NOTE] アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
 
 この機能を実装すると、アプリケーションが背景になったときに、[startMonitoringSignificantLocationChanges] が呼び出されます。これにより、新しい場所イベントが発生すると、アプリケーションが背景に自動的に再起動されることに注意してください。
 
@@ -209,4 +208,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -103,7 +103,7 @@ Azure AD Connect を使用したオンプレミスのディレクトリ統合の
 
 ## オンプレミスのディレクトリとフェデレーションするカスタム ドメインを確認する
 
-1.  Azure AD Connect をダウンロードして実行します。Azure AD Connect ツールによって、[指定された DNS エントリの追加を求めるメッセージが表示されます](active-directory-aadconnect-get-started-custom.md#select-the-azure-ad-domain-that-you-wish-to-federate)。
+1.  Azure AD Connect をダウンロードして実行します。Azure AD Connect ツールによって、[指定された DNS エントリの追加を求められます](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
 ## 第 3 レベルのドメイン名
 
@@ -125,4 +125,4 @@ Azure AD では、"europe.contoso.com" などの第 3 レベルのドメイン�
 - [カスタム ドメイン名の DNS レジストラーを変更する](active-directory-add-domain-change-registrar.md)
 - [Azure Active Directory からカスタム ドメインを削除する](active-directory-add-domain-delete-domain.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="03/01/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -52,7 +52,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 ##例の説明
 
-[hdinsight-java-storm-eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub) の例には、2 つのトポロジが含まれています。
+[hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) の例には、2 つのトポロジが含まれています。
 
 __com.microsoft.example.EventHubWriter__ は、Azure Event Hub にランダムなデータを書き込みます。データはスパウトで生成され、ランダムなデバイス ID とデバイス値です。この例では、文字列 ID と数値を出力する何らかのハードウェアをシミュレートしています。
 
@@ -280,10 +280,12 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 4. **[構成]** を選択し、次の情報を使用して新しいアクセス ポリシーを 2 つ作成します。
 
 	<table>
-<tr><th>名前</th><th>アクセス許可</th></tr>
-<tr><td>ライター</td><td>送信</td></tr>
-<tr><td>閲覧者</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (ライター) とリッスン (リーダー) に使用する共有アクセス ポリシーが作成されます。
+	<tr><th>名前</th><th>アクセス許可</th></tr>
+	<tr><td>ライター</td><td>送信</td></tr>
+	<tr><td>閲覧者</td><td>リッスン</td></tr>
+	</table>
+
+	アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (ライター) とリッスン (リーダー) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-storm-develop-csharp-event-hub-topology/policy.png)
 
@@ -291,7 +293,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 ## プロジェクトのダウンロードとビルド
 
-1. GitHub からプロジェクトをダウンロードします ([hdinsight-java-storm-eventhub](https://github.com/Blackmist/hdinsight-java-storm-eventhub))。パッケージを zip アーカイブとしてダウンロードするか、[git](https://git-scm.com/) を使用してローカルにプロジェクトの複製を作成します。
+1. GitHub からプロジェクトをダウンロードします ([hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub))。パッケージを zip アーカイブとしてダウンロードするか、[git](https://git-scm.com/) を使用してローカルにプロジェクトの複製を作成します。
 
 2. 次のコマンドを使用して、プロジェクトに含まれるパッケージをローカルの Maven リポジトリにインストールします。その結果、Event Hub スパウトとボルトが有効になるだけでなく、HdfsBolt を使用して Azure Storage (WASB) に出力できるようになります。
 
@@ -476,4 +478,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

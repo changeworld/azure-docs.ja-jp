@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="Azure Content Delivery Network (CDN) ルール エンジンの一致条件と機能詳細" 
-	description="このトピックでは、Azure Content Delivery Network (CDN) ルール エンジンで利用できる一致条件と機能について詳しく説明します。" 
-	services="cdn" 
-	documentationCenter="" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure Content Delivery Network (CDN) ルール エンジンの一致条件と機能詳細"
+	description="このトピックでは、Azure Content Delivery Network (CDN) ルール エンジンで利用できる一致条件と機能について詳しく説明します。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/02/2015" 
+<tags
+	ms.service="cdn"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
 	ms.author="casoper"/>
 
 
 # CDN ルール エンジンの一致条件と機能詳細
-	
+
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件と機能について詳しく説明します。
 
-> [AZURE.NOTE]このルール エンジンには Premium CDN 層が必要です。Standard と Premium の CDN 層の機能については、「[Azure Content Delivery Network の概要](cdn-overview.md)」を参照してください。
+> [AZURE.NOTE] このルール エンジンには Premium CDN 層が必要です。Standard と Premium の CDN 層の機能については、「[Azure Content Delivery Network の概要](cdn-overview.md)」を参照してください。
 
 ## 一致条件
 
@@ -45,7 +45,7 @@
 -----|--------
 AS Number (AS 番号) | 特定のネットワークから送信される要求を識別します。
 Country (国) | 指定した国から送信される要求を識別します。
- 
+
 
 ### Origin (配信元)
 
@@ -102,9 +102,9 @@ URL Query Wildcard (URL クエリ ワイルドカード) | 指定値を要求の
 名前 | 目的
 -----|--------
 Deny Access (アクセス拒否) | すべての要求を拒否し、「403 Forbidden」応答を返すかどうかを決定します。
-Token Auth (トークン認証) | トークン基準の認証を要求に適用するかどうかを決定します。 
-Token Auth Denial Code (トークン認証拒否コード) | トークン基準の認証により要求が拒否されるとき、ユーザーに返す応答の種類を決定します。 
-Token Auth Ignore URL Case (トークン認証の URL 大文字/小文字の無視) | トークン基準の認証で URL を比較するとき、大文字と小文字を区別するかどうかを決定します。 
+Token Auth (トークン認証) | トークン基準の認証を要求に適用するかどうかを決定します。
+Token Auth Denial Code (トークン認証拒否コード) | トークン基準の認証により要求が拒否されるとき、ユーザーに返す応答の種類を決定します。
+Token Auth Ignore URL Case (トークン認証の URL 大文字/小文字の無視) | トークン基準の認証で URL を比較するとき、大文字と小文字を区別するかどうかを決定します。
 Token Auth Parameter (トークン認証パラメーター) | トークン基準の認証のクエリ文字列パラメーターの名前を変更するかどうかを決定します。
 
 ### Caching (キャッシュ)
@@ -114,29 +114,29 @@ Token Auth Parameter (トークン認証パラメーター) | トークン基準
 名前 | 目的
 -----|--------
 Bandwidth Parameters (帯域幅パラメーター) | 帯域幅調整パラメーター (すなわち、ec\_rate と ec\_prebuf) が有効になっているかどうかを決定します。
-Bandwidth Throttling (帯域幅調整) | エッジ サーバーからの応答の帯域幅を調整します。 
+Bandwidth Throttling (帯域幅調整) | エッジ サーバーからの応答の帯域幅を調整します。
 Bypass Cache (キャッシュ バイパス) | 要求がキャッシュ技術を活用できるかどうかを判断します。
 Cache-Control Header Treatment (キャッシュ制御ヘッダーの処理) | 外部最長有効期間機能がアクティブになっているとき、エッジ サーバーでキャッシュ制御ヘッダーの生成を制御します。
-Cache-Key Query String (キャッシュキー クエリ文字列) | 要求に関連付けられているクエリ文字列パラメーターをキャッシュキーに含めるかどうかを決定します。 
-Cache-Key Rewrite (キャッシュキー書き換え) | 要求に関連付けられているキャッシュ キーを書き換えます。 
-Complete Cache Fill (完全キャッシュ入力) | 要求の結果、エッジ サーバーで一部のキャッシュが不足したときの動作を決定します。 
-Compress File Types (圧縮ファイルの種類) | サーバーで圧縮されるファイル形式を定義します。 
+Cache-Key Query String (キャッシュキー クエリ文字列) | 要求に関連付けられているクエリ文字列パラメーターをキャッシュキーに含めるかどうかを決定します。
+Cache-Key Rewrite (キャッシュキー書き換え) | 要求に関連付けられているキャッシュ キーを書き換えます。
+Complete Cache Fill (完全キャッシュ入力) | 要求の結果、エッジ サーバーで一部のキャッシュが不足したときの動作を決定します。
+Compress File Types (圧縮ファイルの種類) | サーバーで圧縮されるファイル形式を定義します。
 Default Internal Max-Age (既定の内部最長有効期間) | エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。
-Expires Header Treatment (Expires ヘッダーの処理) | 外部最長有効期間機能がアクティブになっているとき、エッジ サーバーで Expires ヘッダーの生成を制御します。 
-External Max-Age (外部最長有効期間) | ブラウザーとエッジ サーバーの間のキャッシュ再有効化の最長有効期間を決定します。 
-Force Internal Max-Age (内部最長有効期間の強制) | エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。 
-H.264 Support (HTTP Progressive Download) (H.264 サポート (HTTP プログレッシブ ダウンロード)) | コンテンツのストリーム配信に使用される H.264 ファイル形式の種類を決定します。 
+Expires Header Treatment (Expires ヘッダーの処理) | 外部最長有効期間機能がアクティブになっているとき、エッジ サーバーで Expires ヘッダーの生成を制御します。
+External Max-Age (外部最長有効期間) | ブラウザーとエッジ サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
+Force Internal Max-Age (内部最長有効期間の強制) | エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
+H.264 Support (HTTP Progressive Download) (H.264 サポート (HTTP プログレッシブ ダウンロード)) | コンテンツのストリーム配信に使用される H.264 ファイル形式の種類を決定します。
 Honor No-Cache Request (キャッシュなし要求の許可) | HTTP クライアントのキャッシュなし要求を配信元サーバーに転送するかどうかを決定します。
 Ignore Origin No-Cache (配信元のキャッシュなしを無視する) | 配信元サーバーから提供された特定の指令を CDN が無視するかどうかを決定します。
-Ignore Unsatisfiable Ranges (満たされない範囲を無視する) | 要求で「416 Requested Range Not Satisfiable」ステータス コードが生成されるとき、クライアントに返される応答を決定します。 
+Ignore Unsatisfiable Ranges (満たされない範囲を無視する) | 要求で「416 Requested Range Not Satisfiable」ステータス コードが生成されるとき、クライアントに返される応答を決定します。
 Internal Max-Stale (内部 Max-Stale) | エッジ サーバーが配信元サーバーでキャッシュされたアセットを再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされたアセットをエッジ サーバーから提供できる期間を制御します。
-Partial Cache Sharing (部分キャッシュ共有) | 部分的にキャッシュされたコンテンツを要求で生成できるかどうかを決定します。 
-Prevalidate Cached Content (キャッシュされたコンテンツの事前検証) | TTL が期限切れになる前に、キャッシュされたコンテンツに早期検証の資格が与えられるかどうかを決定します。 
+Partial Cache Sharing (部分キャッシュ共有) | 部分的にキャッシュされたコンテンツを要求で生成できるかどうかを決定します。
+Prevalidate Cached Content (キャッシュされたコンテンツの事前検証) | TTL が期限切れになる前に、キャッシュされたコンテンツに早期検証の資格が与えられるかどうかを決定します。
 Refresh Zero-Byte Cache Files (ゼロバイト キャッシュ ファイルの更新) | ゼロバイトのキャッシュ アセットに対する HTTP クライアントの要求をエッジ サーバーが処理する方法を決定します。
-Set Cacheable Status Codes (キャッシュ可能ステータス コードの設定) | 結果としてコンテンツがキャッシュされるステータス コードのセットを定義します。 
+Set Cacheable Status Codes (キャッシュ可能ステータス コードの設定) | 結果としてコンテンツがキャッシュされるステータス コードのセットを定義します。
 Stale Content Delivery on Error (エラー時の古いコンテンツ配信) | キャッシュ再検証中にエラーが発生したとき、または顧客の配信元サーバーから要求されたコンテンツを取得するとき、期限切れになったキャッシュ済みコンテンツを配信するかどうかを決定します。
-Stale While Revalidate (古いキャッシュを返し、同時に再検証) | 古いクライアントを要求元に提供することをエッジ サーバーに許可し、同時に再検証する 
-Comment (コメント) | Comment (コメント) 機能では、ルール内にメモを追加できます。 
+Stale While Revalidate (古いキャッシュを返し、同時に再検証) | 古いクライアントを要求元に提供することをエッジ サーバーに許可し、同時に再検証する
+Comment (コメント) | Comment (コメント) 機能では、ルール内にメモを追加できます。
 
 ### Header (ヘッダー)
 
@@ -144,11 +144,11 @@ Comment (コメント) | Comment (コメント) 機能では、ルール内に�
 
 名前 | 目的
 -----|--------
-Age Response Header (Age 応答ヘッダー) | 要求元に送信する応答に Age 応答ヘッダーを追加するどうかを決定します。 
+Age Response Header (Age 応答ヘッダー) | 要求元に送信する応答に Age 応答ヘッダーを追加するどうかを決定します。
 Debug Cache Response Headers (キャッシュ応答ヘッダーのデバッグ) | 要求されたアセットのキャッシュ ポリシーに関する情報を提供する X-EC-Debug 応答ヘッダーを応答に追加できるかどうかを決定します。
 Modify Client Request Header (クライアント要求ヘッダーの修正) | 要求のヘッダーを上書き、追加、削除します。
 Modify Client Response Header (クライアント応答ヘッダーの修正) | 応答のヘッダーを上書き、追加、削除します。
-Set Client IP Custom Header (クライアント IP カスタム ヘッダーの設定) | 要求側クライアントの IP アドレスをカスタム要求ヘッダーとして要求に追加することを許可します。 
+Set Client IP Custom Header (クライアント IP カスタム ヘッダーの設定) | 要求側クライアントの IP アドレスをカスタム要求ヘッダーとして要求に追加することを許可します。
 
 ### Logs (ログ)
 
@@ -156,7 +156,7 @@ Set Client IP Custom Header (クライアント IP カスタム ヘッダーの�
 
 名前 | 目的
 -----|--------
-Custom Log Field 1 (カスタム ログ フィールド 1) | 生ログ ファイルのカスタム ログ フィールドに割り当てられる形式とコンテンツを決定します。 
+Custom Log Field 1 (カスタム ログ フィールド 1) | 生ログ ファイルのカスタム ログ フィールドに割り当てられる形式とコンテンツを決定します。
 Log Query String (ログ クエリ文字列) | アクセス ログに URL と共にクエリ文字列を保存するかどうかを決定します。
 
 ### Optimize (最適化)
@@ -165,9 +165,9 @@ Log Query String (ログ クエリ文字列) | アクセス ログに URL と共
 
 名前 | 目的
 -----|--------
-Edge Optimizer (エッジ オプティマイザー) | エッジ オプティマイザーを要求に適用できるかどうかを決定します。 
-Edge Optimizer – Instantiate Configuration (エッジ オプティマイザー - 構成のインスタンス化) | サイトに関連付けられているエッジ オプティマイザー構成をインスタンス化またはアクティベートします。 
- 
+Edge Optimizer (エッジ オプティマイザー) | エッジ オプティマイザーを要求に適用できるかどうかを決定します。
+Edge Optimizer – Instantiate Configuration (エッジ オプティマイザー - 構成のインスタンス化) | サイトに関連付けられているエッジ オプティマイザー構成をインスタンス化またはアクティベートします。
+
 
 ### Origin (配信元)
 
@@ -175,8 +175,8 @@ Edge Optimizer – Instantiate Configuration (エッジ オプティマイザー
 
 名前 | 目的
 -----|--------
-Maximum Keep-Alive Requests (最大キープアライブ要求) | キープアライブ接続の最大要求数を定義します。この数に達すると終了となります。 
-Proxy Special Headers (プロキシーの特殊ヘッダー) | エッジ サーバーから配信元サーバーに転送される CDN 固有要求ヘッダーを定義します。 
+Maximum Keep-Alive Requests (最大キープアライブ要求) | キープアライブ接続の最大要求数を定義します。この数に達すると終了となります。
+Proxy Special Headers (プロキシーの特殊ヘッダー) | エッジ サーバーから配信元サーバーに転送される CDN 固有要求ヘッダーを定義します。
 
 ### Specialty (専門)
 
@@ -185,8 +185,8 @@ Proxy Special Headers (プロキシーの特殊ヘッダー) | エッジ サー�
 名前 | 目的
 -----|--------
 Cacheable HTTP Methods (キャッシュ可能 HTTP メソッド) | ネットワークでキャッシュ可能な追加 HTTP メソッドのセットを決定します。
-Cacheable Request Body Size (キャッシュ可能要求の本文サイズ) | POST 応答でキャッシュ可能かどうかを決定するしきい値を定義します。 
- 
+Cacheable Request Body Size (キャッシュ可能要求の本文サイズ) | POST 応答でキャッシュ可能かどうかを決定するしきい値を定義します。
+
 
 ### URL
 
@@ -194,9 +194,9 @@ Cacheable Request Body Size (キャッシュ可能要求の本文サイズ) | PO
 
 名前 | 目的
 -----|--------
-Follow Redirects (リダイレクトのフォロー) | 顧客の配信元サーバーから返される Location (場所) ヘッダーに定義されているホスト名に要求をリダイレクトできるかどうかを決定します。 
-URL Redirect (URL リダイレクト) | Location (場所) ヘッダー経由で要求をリダイレクトします。 
-URL Rewrite (URL 書き換え) | 要求 URL を書き換えます。 
+Follow Redirects (リダイレクトのフォロー) | 顧客の配信元サーバーから返される Location (場所) ヘッダーに定義されているホスト名に要求をリダイレクトできるかどうかを決定します。
+URL Redirect (URL リダイレクト) | Location (場所) ヘッダー経由で要求をリダイレクトします。
+URL Rewrite (URL 書き換え) | 要求 URL を書き換えます。
 
 ### Web アプリケーション ファイアウォール
 
@@ -206,4 +206,4 @@ Web アプリケーション ファイアウォール機能は、要求が Web �
 * [Azure CDN の概要](cdn-overview.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

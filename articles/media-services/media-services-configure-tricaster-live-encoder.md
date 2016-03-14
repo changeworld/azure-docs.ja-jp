@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako,cenkdin,anilmur" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="02/03/2016"   
+	ms.date="03/01/2016"   
 	ms.author="juliako"/>
 
 #NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -27,6 +27,9 @@
 このトピックでは、[NewTek TriCaster](http://newtek.com/products/tricaster-40.html) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
+
+>[AZURE.NOTE]Azure Media Services への投稿フィードで送信に Tricaster を使用する場合、フィード間の迅速なカットやスレートとの間の切り替えなど、Tricaster の一部の機能を使用すると、ライブでビデオ/オーディオの誤作動が発生する可能性があります。AMS チームがこれらの問題の解決に取り組んでいます。問題が解決するまで、これらの機能を使用しないことをお勧めします。
+
 
 ##前提条件
 
@@ -162,4 +165,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

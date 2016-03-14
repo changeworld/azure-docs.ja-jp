@@ -387,7 +387,7 @@
 * 
     クライアント側のアプリのロケールです。テレメトリ項目で明示的に指定しない場合、ユーザー エージェントのフィールドの処理により指定されます。 
 
-    *例*<br/> ru<br/>zh-CN<br/>de-DE<br/>unknown
+    *例*<br/> ru<br/>ja-JP<br/>de-DE<br/>unknown
 
 **machineName**
 
@@ -475,11 +475,13 @@
 
     ipv4 context.location.clientip      
 * 
-    xxx.xxx.xxx.xxx 形式のクライアントの IPv4 アドレス。   
+    xxx.xxx.xxx.xxx 形式のクライアントの IPv4 アドレス。
+
+     プライバシーの問題に対処するために、最後のオクテットは常に 0 に設定されます。
 
     *既定:* Null の場合、データ コレクションのエンドポイントでキャプチャされる HTTP IP に設定されます
 
-    *例*<br/> 0.123.63.143<br/>123.203.131.197
+    *例*<br/> 186.123.63.0<br/>123.203.131.0
 
 **continent**
 
@@ -629,7 +631,7 @@
 
     *派生:* &lt;telemetryType.name&gt; に標準化します。
 
-**remoteDependencyType**
+**type**
 
     string remotedependency.remotedependencytype      Max: 100
 * 
@@ -989,4 +991,4 @@
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

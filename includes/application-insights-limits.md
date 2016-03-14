@@ -14,6 +14,7 @@
 プロパティ値の長さ | 1,000 | 1,000
 トレースおよび例外のメッセージ長 | 10000 | 10000
 メトリック名の長さ | 100 | 100
+可用性テスト | 10 | 10
 
 <sup>1</sup> データ ポイントとは、個々のメトリック値またはイベントに、プロパティと測定値を付加したものです。
 
@@ -21,4 +22,4 @@
  
 [Application Insights の価格とクォータについて](../articles/application-insights/app-insights-pricing.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

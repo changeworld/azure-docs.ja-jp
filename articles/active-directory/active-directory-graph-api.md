@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/08/2016"
+   ms.date="02/25/2016"
    ms.author="mbaldwin" />
 
 # Azure Active Directory Graph API
 
-> [AZURE.IMPORTANT]Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
+> [AZURE.IMPORTANT] Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
 
 Azure Active Directory Graph API を使用すると、REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API では、ユーザー オブジェクトへの次のような一般的な操作がサポートされています。
 
@@ -66,4 +66,4 @@ Graph API により、多くのアプリケーション シナリオを実現で
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,24 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/27/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のデプロイ - ポータルの準備 (プレビュー)
+# StorSimple Virtual Array のデプロイ - ポータルの準備
 
 ![](./media/storsimple-ova-deploy1-portal-prep/getstarted4.png)
 
 ## 概要 
 
-この記事は、v 1.1.1.0 (パブリック プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最初の記事です。仮想アレイをプロビジョニングする前に、StorSimple Manager サービスを作成して構成するために必要な準備について説明します。また、デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
+この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最初の記事です。仮想アレイをプロビジョニングする前に、StorSimple Manager サービスを作成して構成するために必要な準備について説明します。また、デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、デプロイ構成チェックリストを確認することをお勧めします。ポータルの準備は 10 分ほどで完了します。
 
 この記事に記載されている StorSimple のデプロイ情報は、StorSimple Virtual Arrays にのみ適用されます。
-
-> [AZURE.IMPORTANT]
-> 
-> このパブリック プレビューは、評価とデプロイ計画策定のみを目的としています。このプレビューの運用環境へのインストールはサポートされていません。
 
 ### 作業開始
 
@@ -43,7 +39,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | **#** | **手順** | **作業内容** | **参照ドキュメント**|
 |------|-------------------------------------------|--------------------------------------------------------------------------------|------------------------|
 |1\. | **Azure クラシック ポータルのセットアップ** | StorSimple 仮想デバイスをプロビジョニングする前に、StorSimple Manager サービスを作成して構成します。 |[ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)| 
-|2\. | **Virtual Array のプロビジョニング** | Hyper-V の場合: Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システムに StorSimple 仮想デバイスをプロビジョニングして接続します。<br></br> <br></br> VMware の場合: VMware ESXi 5.5 以降を実行するホスト システムに StorSimple オンプレミス仮想デバイスをプロビジョニングして接続します。| [HYPER-V で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)|
+|2\. | **Virtual Array のプロビジョニング** | Hyper-V の場合: Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システムに StorSimple 仮想デバイスをプロビジョニングして接続します。<br></br> <br></br> VMware の場合: VMware ESXi 5.5 以降を実行するホスト システムに StorSimple オンプレミス仮想デバイスをプロビジョニングして接続します。<br></br>| [HYPER-V で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)|
 |3\. | **Virtual Array のセットアップ** | ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。これで、SMB 共有をプロビジョニングできます。<br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。これで、iSCSI ボリュームをプロビジョニングできます。| [ファイル サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-iscsi-setup.md)|
 
 #### デプロイに関するビデオ
@@ -143,6 +139,9 @@ StorSimple Manager サービスが稼働したら、サービス登録キーを�
 
 サービス登録キーを取得したら、ホスト システムに仮想デバイスをプロビジョニングするために、適切な仮想デバイスのイメージをダウンロードする必要があります。仮想デバイスのイメージはオペレーティング システムに固有で、Azure クラシック ポータルの [クイック スタート] ページからダウンロードできます。
 
+> [AZURE.IMPORTANT] StorSimple Virtual Array で実行されているソフトウェアは、Storsimple Manager サービスとの組み合わせでのみ使用できます。
+
+
 [Azure クラシック ポータル](https://manage.windowsazure.com/)で、次の手順を実行します。
 
 #### 仮想デバイスのイメージを取得するには
@@ -150,15 +149,20 @@ StorSimple Manager サービスが稼働したら、サービス登録キーを�
 1.  **[StorSimple Manager]** サービス ページで、作成したサービスをクリックします。この操作により、**[クイック スタート]** ページが表示されます (**[クイック スタート]** ページには、クイック スタート アイコン ![](./media/storsimple-ova-deploy1-portal-prep/image8.png) をクリックすることによっていつでもアクセスできます)。
 
 
-1.  データセンター上のネットワーク共有で適切な VHD をダウンロードします。次の 2 種類が用意されています。
+1.  データセンター上のネットワーク共有で適切な VHD または VHDX をダウンロードします。個別の画像は以下で使用できます:
 
+	-   HYPER-V 2012 以降
+	
 	-   HYPER-V 2008 R2 以降用
 
 	-   VMWare ESXi 5.5 以降用
 
+	> [AZURE.IMPORTANT] StorSimple Virtual Array で実行されているソフトウェアは、Storsimple Manager サービスとの組み合わせでのみ使用できます。
+
+
 1.  仮想デバイスのプロビジョニングに使用するホスト オペレーティング システム用のイメージをクリックします。Microsoft ダウンロード センターが表示されます。
 
-1.  HYPER-V を使用する場合は、HYPER-V 2008 R2 以降用の VHD をダウンロードします。VMware を使用する場合は、VMDK をダウンロードします。VHD は 4.77 GB の zip 形式のファイルであり、VMDK は 4.75 GB のファイルです。ファイルのダウンロードにかかる時間は、インターネット接続の速度によって異なります。
+1.  HYPER-V を使用する場合は、VHDX for Hyper-V 2012 または HYPER-V 2008 R2 以降用の VHD をダウンロードします。VMware を使用する場合は、VMDK をダウンロードします。VHDX は 4.77 GB の zip 形式のファイル、VHD は 4.77 GB のファイルであり、VMDK は 4.75 GB のファイルです。ファイルのダウンロードにかかる時間は、インターネット接続の速度によって異なります。
 
 2.  ファイルを解凍し、ローカル ドライブに展開した場所を書き留めます。
 
@@ -207,4 +211,4 @@ StorSimple Virtual Array の使用を開始するための詳細な手順を説�
 
 -   [VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

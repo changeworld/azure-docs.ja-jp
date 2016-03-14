@@ -3,8 +3,8 @@
    description="IaaS VM のバックアップ中に、Azure Backup が BitLocker や dmcrypt を使用して、どのように暗号化されたデータを扱うかについて学習します。この記事では、暗号化されているディスクを扱う場合のバックアップおよび復元エクスペリエンスにおける違いについて説明します。"
    services="backup"
    documentationCenter=""
-   authors="aashishr"
-   manager="shreeshd"
+   authors="markgalioto"
+   manager="jwhit"
    editor=""/>
 <tags
    ms.service="backup"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
    ms.date="11/27/2015"
-   ms.author="aashishr"/>
+   ms.author="markgal; jimpark"/>
 
 # VM のバックアップ中の暗号化されているディスクの処理
 
@@ -62,4 +62,4 @@ Azure で VM データの暗号化を検討している企業のソリューシ�
 - [デプロイ ガイド - PDF](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [SecureVM のデプロイと使用 - ビデオ](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

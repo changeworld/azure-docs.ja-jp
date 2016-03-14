@@ -3,7 +3,7 @@
 	description="Application Insights の Visual Studio ツールの最新の更新内容。" 
 	services="application-insights" 
     documentationCenter=""
-	authors="dimazaid" 
+	authors="aruna" 
 	manager="douge"/>
 <tags 
 	ms.service="application-insights" 
@@ -11,10 +11,29 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
-	ms.author="dimazaid"/>
+	ms.date="02/26/2016" 
+	ms.author="acearun"/>
  
-# Application Insights Tools for Visual Studio v 4.2 のリリース ノート
+# Application Insights Tools for Visual Studio のリリース ノート
+
+## バージョン 4.3
+### ローカル デバッグ セッションからのテレメトリの検索
+このリリースでは、Visual Studio デバッグ セッションで生成された Application Insights テレメトリを検索する機能が導入されました。以前は、Application Insights でアプリを登録していた場合のみ検索可能でした。このリリースでは、ローカルのテレメトリを検索するために、アプリに Application Insights SDK のみインストールする必要があります。
+
+#### Application Insights SDK を使用する ASP.NET アプリケーションがある場合
+
+- アプリケーションをデバッグします。
+- 次のいずれかの方法で、Application Insights の [検索] を開く
+	- [表示] メニュー -> [その他のウィンドウ] -> Application Insights の [検索]
+	- Application Insights のツール バー ボタンをクリックします。
+	- ソリューション エクスプ ローラーで、[ApplicationInsights.config] -> [デバッグ セッションのテレメトリの検索]の順に展開します。
+- Application Insights にサインアップしていない場合、[検索] ウィンドウは [デバッグ セッションのテレメトリ] モードで開きます。
+- ローカルのテレメトリを表示するには、[検索] アイコンをクリックします。
+
+![アップロード完了](./media/app-insights-release-notes-vsix/LocalSearch.png)
+
+
+
 ##バージョン 4.2
 このリリースでは、イベントのコンテキストでのデータ検索を容易にする機能、複数のデータ イベントからコードに移動する機能、およびログ データを Application Insights に送信するための非常に簡単なエクスペリエンスが追加されました。この拡張機能は月単位で更新されます。フィードバックや機能についてリクエストがある場合は、aidevtools@microsoft.com に送信してください。
 ###- 0 クリックのログ記録エクスペリエンス
@@ -87,4 +106,4 @@ Application Insights 拡張機能の今後のリリースでは、HockeyApp と 
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

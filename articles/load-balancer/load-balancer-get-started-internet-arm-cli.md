@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/12/2015"
+   ms.date="02/24/2016"
    ms.author="joaoma" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサーの作成の開始
@@ -328,4 +328,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

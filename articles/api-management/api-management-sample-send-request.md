@@ -1,20 +1,20 @@
 <properties
-   pageTitle="HTTP 要求を生成するための API Management サービスの使用"
-   description="API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。"
-   services="api-management"
-   documentationCenter=""
-   authors="darrelmiller"
-   manager=""
-   editor=""/>
+	pageTitle="HTTP 要求を生成するための API Management サービスの使用"
+	description="API で外部サービスを呼び出すための API Management での要求と応答ポリシーの使用方法について説明します。"
+	services="api-management"
+	documentationCenter=""
+	authors="darrelmiller"
+	manager=""
+	editor=""/>
 
 <tags
-   ms.service="api-management"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="02/01/2016"
-   ms.author="v-darmi"/>
+	ms.service="api-management"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="02/19/2016"
+	ms.author="v-darmi"/>
 
 
 # Azure API Management サービスからの外部サービスの使用
@@ -269,4 +269,4 @@ Azure API Management サービスには、HTTP トラフィックに選択的に
 
 > [AZURE.VIDEO send-request-and-return-response-policies]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

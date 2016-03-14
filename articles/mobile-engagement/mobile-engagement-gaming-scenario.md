@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="11/23/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo"/>
 
 #ゲーム アプリで Mobile Engagement を実装する
@@ -69,4 +69,4 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

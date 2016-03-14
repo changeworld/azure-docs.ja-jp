@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Azure"
     description="Azure Active Directory で Zscaler ZSCloud を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="02/29/2016" 
+    ms.author="jeedes" />
 
 
 #チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
@@ -40,7 +40,7 @@
 
 ###ZScaler ZSCloud のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-zscaler-zscloud-tutorial/IC700993.png "Active Directory")
 
@@ -72,7 +72,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **ZScaler ZSCloud** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **ZScaler ZSCloud** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800278.png "Configure Single Sign-On")
 
@@ -111,7 +111,7 @@
 
     ![シングル サインオン](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800209.png "シングル サインオン")
 
-    1.  Azure ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[認証のためにユーザーに表示される SAML ポータルの URL]** テキスト ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[認証のためにユーザーに表示される SAML ポータルの URL]** ボックスに貼り付けます。
     2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。
     3.  ダウンロードした証明書をアップロードするには、**[Zscaler pem]** をクリックします。
     4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
@@ -123,7 +123,7 @@
     1.  **[保存]** をクリックします。
     2.  **[今すぐ認証する]** をクリックします。
 
-11. Azure ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+11. Azure クラシック ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800282.png "Configure Single Sign-On")
 
@@ -190,7 +190,7 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
 
 ###ユーザーを ZScaler ZSCloud に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **ZScaler ZSCloud** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -202,4 +202,4 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

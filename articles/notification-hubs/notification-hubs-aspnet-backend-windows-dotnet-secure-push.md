@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="02/29/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
 
 > [AZURE.SELECTOR]
-- [Windows Universal](notification-hubs-windows-dotnet-secure-push.md)
+- [Windows ユニバーサル](notification-hubs-windows-dotnet-secure-push.md)
 - [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
 - [Android](notification-hubs-aspnet-backend-android-secure-push.md)
 
@@ -43,7 +43,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「[ユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE]このチュートリアルは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の説明に従って通知が作成され、構成されていることを前提としています。また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
+> [AZURE.NOTE] このチュートリアルは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の説明に従って通知が作成され、構成されていることを前提としています。また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -186,4 +186,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

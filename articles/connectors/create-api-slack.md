@@ -48,6 +48,19 @@ Slack API を使用するには、最初に**接続**を作成し、以下のプ
 | ---|---|---|
 |トークン|あり|Slack の資格情報を指定します|
 
+次の手順に従って、Slack にサインインし、ロジック アプリの Slack **接続**の構成を完了します。
+
+1. **[繰り返し]** を選択します。
+2. **[頻度]** を選択し、**[間隔]** を入力します。
+3. **[アクションの追加]** を選択します。![Slack の構成][1]  
+4. 検索ボックスに「Slack」と入力し、名前に Slack が含まれたすべてのエントリが返されるまで待ちます。
+5. **[Slack - メッセージの投稿]** を選択します。
+6. **[Slack にサインイン]** をクリックします。![Slack の構成][2]
+7. アプリケーションを承認するために、Slack 資格情報を入力してサインインします。![Slack の構成][3]  
+8. 組織のログイン ページにリダイレクトされます。Slack がロジック アプリと対話することを**承認**します。![Slack の構成][5] 
+9. 承認が完了すると、ロジック アプリにリダイレクトされます。**[Slack - すべてのメッセージを取得]** セクションを構成して、ロジック アプリを完成させます。必要な他のトリガーやアクションを追加します。![Slack の構成][6]
+10. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。
+
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -63,10 +76,10 @@ Slack API を使用するには、最初に**接続**を作成し、以下のプ
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
 |channel|string|○|query|なし|メッセージを送信するチャネル、プライベート グループ、IM チャネル。名前 (例: #general) またはエンコードされた ID を指定できます。|
-|text|string|○|query|なし|送信するメッセージのテキスト。書式設定オプションについては、https://api.slack.com/docs/formatting.| を参照してください。
+|text|string|○|query|なし|送信するメッセージのテキスト。書式設定オプションについては、https://api.slack.com/docs/formatting.| をご覧ください。
 |username|string|×|query|なし|ボットの名前|
 |as\_user|ブール値|×|query|なし|ボットとしてではなく、認証されたユーザーとして、メッセージを投稿するには、true を渡します|
-|parse|string|×|query|なし|メッセージの処理方法を変更します。詳細については、https://api.slack.com/docs/formatting.| を参照してください。
+|parse|string|×|query|なし|メッセージの処理方法を変更します。詳細については、https://api.slack.com/docs/formatting.| をご覧ください。
 |link\_names|integer|×|query|なし|チャネル名とユーザー名を検索してリンクします。|
 |unfurl\_links|ブール値|×|query|なし|主にテキストベースのコンテンツの展開を有効にするには、true を渡します。|
 |unfurl\_media|ブール値|×|query|なし|メディア コンテンツの展開を無効にするには、false を渡します。|
@@ -92,7 +105,7 @@ Slack API を使用するには、最初に**接続**を作成し、以下のプ
 
 ## オブジェクト定義: 
 
- **Message**: Yammer メッセージ
+ **Message**: Slack メッセージ
 
 Message の必須プロパティ:
 
@@ -129,7 +142,7 @@ Message の必須プロパティ:
 
 
 
- **PostOperationRequest**: Yammer に投稿する Yammer コネクタの post 要求を表します
+ **PostOperationRequest**: Slack に投稿する Slack コネクタの post 要求を表します。
 
 PostOperationRequest の必須プロパティ:
 
@@ -244,7 +257,7 @@ YammmerEntity の必須プロパティ:
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 ## オブジェクト定義: 
 
- **WebResultModel**:Bing の Web 検索結果
+ **WebResultModel**: Bing の Web 検索結果
 
 WebResultModel の必須プロパティ:
 
@@ -265,7 +278,7 @@ WebResultModel の必須プロパティ:
 
 
 
- **VideoResultModel**:Bing の動画検索結果
+ **VideoResultModel**: Bing の動画検索結果
 
 VideoResultModel の必須プロパティ:
 
@@ -417,7 +430,7 @@ CompositeSearchResultModel の必須プロパティ:
 
 ## オブジェクト定義: 
 
- **PostOperationResponse**: Slack への投稿に対する Slack コネクタの post 操作の応答を表します
+ **PostOperationResponse**: Slack への投稿に対する Slack コネクタの post 操作の応答を表します。
 
 PostOperationResponse の必須プロパティ:
 
@@ -438,7 +451,7 @@ PostOperationResponse の必須プロパティ:
 
 
 
- **MessageItem**: チャネルのメッセージ。
+ **MessageItem**: チャネル メッセージ。
 
 MessageItem の必須のプロパティ:
 
@@ -461,4 +474,11 @@ MessageItem の必須のプロパティ:
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+[1]: ./media/create-api-slack/connectionconfig1.png
+[2]: ./media/create-api-slack/connectionconfig2.png
+[3]: ./media/create-api-slack/connectionconfig3.png
+[4]: ./media/create-api-slack/connectionconfig4.png
+[5]: ./media/create-api-slack/connectionconfig5.png
+[6]: ./media/create-api-slack/connectionconfig6.png
+
+<!---HONumber=AcomDC_0302_2016-->

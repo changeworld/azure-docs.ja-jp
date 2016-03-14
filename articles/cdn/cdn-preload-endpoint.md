@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure CDN エンドポイント上の資産を事前に読み込む" 
-	description="CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure CDN エンドポイント上の資産を事前に読み込む"
+	description="CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/20/2016" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
 	ms.author="casoper"/>
-	
+
 # Azure CDN エンドポイント上の資産を事前に読み込む
 
 既定では、資産は要求されたときに初めてキャッシュされます。つまり、各リージョンからの最初の要求は時間がかかる場合があります。これは、エッジ サーバーにキャッシュされたコンテンツがなく、配信元サーバーに要求を転送する必要があるためです。コンテンツを事前に読み込んでおくと、この最初のヒットの待機時間を回避できます。
@@ -33,28 +33,28 @@
 2. リスト内のエンドポイントをクリックします。エンドポイント ブレードが開きます。
 
 3. CDN エンドポイント ブレードで、[読み込み] ボタンをクリックします。
-	
+
 	![CDN エンドポイント ブレード](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
-	
+
 	[読み込み] ブレードが開きます。
-	
+
 	![CDN 読み込みブレード](./media/cdn-preload-endpoint/cdn-load-blade.png)
-	
+
 4. 読み込む各資産の完全パスを **[パス]** テキストボックスに入力します (*/pictures/kitten.png* など)。
 
 	> [AZURE.TIP] テキストを入力すると、**[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
 	>
 	> パスには相対 URL を指定します。ワイルドカードとしてアスタリスク (*) を使用できます。
-	
+
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-paths.png)
-    
+
 5. **[読み込み]** ボタンをクリックします。
 
 	![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-button.png)
-	
+
 
 ## 関連項目
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

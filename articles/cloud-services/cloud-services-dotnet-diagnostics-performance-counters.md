@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/25/2015"
+   ms.date="02/29/2016"
    ms.author="robb" />
 
 # Azure アプリケーションでのパフォーマンス カウンターの作成と使用
@@ -22,9 +22,9 @@
 また、Windows Server、IIS、ASP.NET で使用できるパフォーマンス カウンターでは、Azure の Web ロール、worker ロール、Virtual Machines のパフォーマンス データを収集して状態を把握することもできます。カスタム パフォーマンス カウンターを作成して使用することもできます。
 
 パフォーマンス カウンターのデータを確認するには、
-1.リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールを通じてアプリケーション ホストを直接調べるか、
-2.System Center Operations Manager の Azure 管理パック、または 
-3.Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。
+1. リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールでアプリケーション ホストを直接調べるか、
+2. System Center Operations Manager の Azure 管理パック、または
+3. Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。  
 
 [Azure クラシック ポータル](http://manage.azure.com/)でアプリケーションのパフォーマンスを監視する方法の詳細については、[Cloud Services の監視方法](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)に関する記述を参照してください。
 
@@ -71,7 +71,7 @@ Azure は、Windows Server、IIS、および ASP.NET スタックで使用でき
 
 Azure は、Web ロールと worker ロールのカスタム パフォーマンス カウンターの作成と変更をサポートしています。カスタム パフォーマンス カウンターを使用すると、アプリケーション固有の動作を追跡および監視できます。管理者特権のアクセス許可を使用して、スタートアップ タスク、Web ロール、または worker ロール用のカスタム パフォーマンス カウンターのカテゴリと指定子を作成または削除できます。
 
->[AZURE.NOTE]カスタム パフォーマンス カウンターに変更を加えるコードを実行するには、管理者特権のアクセス許可が必要です。コードが Web ロールまたは worker ロールに含まれる場合、ロールを正しく初期化するために、ロールの ServiceDefinition.csdef ファイルにタグ <Runtime executionContext="elevated" /> を含める必要があります。
+>[AZURE.NOTE] カスタム パフォーマンス カウンターに変更を加えるコードを実行するには、管理者特権のアクセス許可が必要です。コードが Web ロールまたは worker ロールに含まれる場合、ロールを正しく初期化するために、ロールの ServiceDefinition.csdef ファイルにタグ <Runtime executionContext="elevated" /> を含める必要があります。
 
 カスタム パフォーマンス カウンターのデータを診断エージェントを使用して Azure Storage に送信できます。
 
@@ -83,7 +83,7 @@ Azure は、Web ロールと worker ロールのカスタム パフォーマン�
 
 構成された各パフォーマンス カウンター インスタンスは指定したサンプリング レートで記録され、サンプリングされたデータは、スケジュール設定された転送要求またはオンデマンドの転送要求によってストレージ アカウントに転送されます。自動転送を毎分 1 回の頻度でスケジュール設定することもできます。診断エージェントによって転送されたパフォーマンス カウンター データは、ストレージ アカウント内のテーブル WADPerformanceCountersTable に保存されます。このテーブルには、標準の Azure Storage API メソッドを使用してアクセスし、クエリを実行することができます。WADPerformanceCountersTable テーブルに対してクエリを実行し、テーブル内のパフォーマンス カウンター データを表示する例については、[Microsoft Azure PerformanceCounters のサンプル](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9)を参照してください。
 
->[AZURE.NOTE]診断エージェントの転送頻度やキューの待機時間によっては、ストレージ アカウント内の最新のパフォーマンス カウンター データが数分前のデータになる場合があります。
+>[AZURE.NOTE] 診断エージェントの転送頻度やキューの待機時間によっては、ストレージ アカウント内の最新のパフォーマンス カウンター データが数分前のデータになる場合があります。
 
 ## 診断構成ファイルを使用してパフォーマンス カウンターを有効にする
 
@@ -144,7 +144,7 @@ counterSpecifier 属性は、収集するパフォーマンス カウンター�
 
 Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
->[AZURE.NOTE]以下の手順は、Azure SDK 2.4 以前にのみ適用されます。Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
+>[AZURE.NOTE] 以下の手順は、Azure SDK 2.4 以前にのみ適用されます。Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
 接続文字列を設定するには、次の手順に従います。
 
@@ -179,7 +179,7 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 2. Runtime 要素を WebRole または WorkerRole 要素に追加して、 昇格された権限で実行できるようにします。
 
     ```
-    <RuntimeexecutionContext="elevated"/>
+    <runtime executioncontext="elevated"/>
     ```
 3. ファイルを保存します。
 4. 診断ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) を開き、次のコードを DiagnosticMonitorConfiguration に追加します。 
@@ -318,11 +318,6 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 
 
 ## 次のステップ
+[Azure 診断に関するその他の記事を確認します](../azure-diagnostics.md)。
 
-これで、パフォーマンス カウンターの収集の基本を学習できました。より複雑なトラブルシューティング シナリオを実装する方法については、次のリンク先を参照してください。
-
-[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス](https://msdn.microsoft.com/library/azure/hh771389.aspx)
-
-[Cloud Services の監視方法](./how-to-monitor-a-cloud-service.md)
-
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -78,7 +78,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
     	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 
-## 仮想ネットワークと、フロント エンド IP プールのパブリック IP アドレスの作成
+## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
 ### 手順 1.
 
@@ -136,9 +136,16 @@ NAT 規則を作成します。
 
 ### 手順 3.
 
-正常性プローブを作成します。
-
+正常性プローブを作成します。プローブは次の 2 とおりの方法で構成できます。
+ 
+HTTP プローブ
+	
 	$healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+または
+
+TCP プローブ
+	
+	$healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 
 ### 手順 4.
 
@@ -159,13 +166,13 @@ NIC の作成先となる Virtual Network と Virtual Network のサブネット
 
 ### 手順 2.
 
-*lb-nic1-be* という名前の NIC を作成し、それを最初の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
+ *lb-nic1-be* という名前の NIC を作成し、それを最初の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
 	
 	$backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 
 ### 手順 3.
 
-*lb-nic2-be* という名前の NIC を作成し、それを 2 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
+ *lb-nic2-be* という名前の NIC を作成し、それを 2 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
 
 	$backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 
@@ -285,9 +292,9 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 	$slb | Set-AzureRmLoadBalancer
 
-## ロード バランサーの削除
+## Load Balancer の削除
 
-コマンド `Remove-AzureLoadBalancer` を使用して、リソース グループ "NRP-RG" から、前に作成された "NRP-LB" という名前のロード バランサーを削除します。
+`Remove-AzureLoadBalancer` コマンドを使用して、"NRP-RG" というリソース グループから、以前に作成された "NRP-LB" という名前のロード バランサーを削除します。
 
 	Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
@@ -295,10 +302,10 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 ## 次のステップ
 
-[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,6 +1,6 @@
 <properties
-pageTitle="ロジック アプリで SharePoint Server API を使用する | Microsoft Azure"
-description="ロジック アプリと PowerApps で Azure App Service SharePoint Server API を使用する方法の概要について説明します。"
+pageTitle="ロジック アプリまたは PowerApps で SharePoint Online API を使用する | Microsoft Azure"
+description="ロジック アプリと PowerApps で Azure App Service SharePoint Online API を使用する方法の概要について説明します。"
 services=""	
 documentationCenter="" 	
 authors="msftman"	
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/18/2016"
+ms.date="02/26/2016"
 ms.author="deonhe"/>
 
-# SharePoint API の概要
+# SharePoint Online API の概要
 
 SharePoint Connection Provider には、SharePoint リストを操作する API があります。
 
@@ -70,9 +70,21 @@ SharePoint API を使用するには、最初に**接続**を作成し、以下�
 
 |プロパティ| 必須|説明|
 | ---|---|---|
-|トークン|あり|SharePoint の資格情報を指定します|  
+|トークン|あり|SharePoint の資格情報を指定します|
 
->[AZURE.TIP] 他のロジック アプリ、PowerApps、またはその両方でこの接続を使用できます。
+**SharePoint Online** に接続するには、SharePoint Online で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力する必要があります。認証されたら、ロジック アプリで SharePoint Online API を使用できるようになります。
+
+ロジック アプリのデザイナーで、次の手順に従って SharePoint にサインインし、ロジック アプリで使用する**接続**を作成します。
+
+1. 検索ボックスに「SharePoint」と入力し、名前に SharePoint が含まれたすべてのエントリが返されるまで待ちます。![SharePoint の構成][1]  
+2. **[SharePoint Online - ファイルの作成時]** を選択します。   
+3. **[SharePoint Online にサインイン]** をクリックします。![SharePoint の構成][2]    
+4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。![SharePoint の構成][3]     
+5. 認証が完了すると、ロジック アプリにリダイレクトされます。SharePoint の **[ファイルの作成時]** ダイアログを構成して、ロジック アプリを完成させます。![SharePoint の構成][4]  
+6. ロジック アプリを完成させるために必要な他のトリガーやアクションを追加できます。   
+7. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。  
+
+>[AZURE.TIP] 他のロジック アプリまたは PowerApps、あるいはその両方でこの接続を使用できます。
 
 ## SharePoint REST API リファレンス
 #### このドキュメントの対象バージョン: 1.0
@@ -612,7 +624,7 @@ DataSet の必須プロパティ:
 
 
 
- **Table**:
+ **テーブル**:
 
 Table の必須プロパティ:
 
@@ -683,4 +695,10 @@ TablesList の必須プロパティ:
 ## 次のステップ
 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [PowerApps の作成](../power-apps/powerapps-get-started-azure-portal.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+[1]: ./media/create-api-sharepointonline/connectionconfig1.png
+[2]: ./media/create-api-sharepointonline/connectionconfig2.png
+[3]: ./media/create-api-sharepointonline/connectionconfig3.png
+[4]: ./media/create-api-sharepointonline/connectionconfig4.png
+[5]: ./media/create-api-sharepointonline/connectionconfig5.png
+
+<!---HONumber=AcomDC_0302_2016-->

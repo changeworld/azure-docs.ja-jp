@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # Java Web アプリでの依存関係、例外、および実行時間の監視
@@ -80,7 +80,7 @@ xml ファイルの内容を設定します。次の例を編集して、必要�
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
               reportExecutionTime="true"
-              signature="(Ljava/lang/String:I)V" />
+              signature="(Ljava/lang/String;I)V" />
         </Class>
         
       </Instrumentation>
@@ -122,4 +122,4 @@ Application Insights リソースで、集計されたリモートの依存関�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する"
+	pageTitle="チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする"
 	description="このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure BLOB から Azure SQL Database にデータをコピーする方法を示します。"
 	services="data-factory"
 	documentationCenter=""
@@ -16,14 +16,16 @@
 	ms.date="02/01/2016"
 	ms.author="spelluru"/>
 
-# チュートリアル: Azure BLOB から Azure SQL にデータをコピーする
+# チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-get-started.md)
-- [Using Data Factory Editor](data-factory-get-started-using-editor.md)
-- [Using PowerShell](data-factory-monitor-manage-using-powershell.md)
-- [Using Visual Studio](data-factory-get-started-using-vs.md)
+- [チュートリアルの概要](data-factory-get-started.md)
+- [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
+- [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
+- [Visual Studio の使用](data-factory-get-started-using-vs.md)
 
-この記事のチュートリアルは、Azure Data Factory サービスの使用をスムーズに開始するのに役立ちます。このチュートリアルでは、Azure Data Factory を作成し、その Data Factory 内にパイプラインを作成して、Azure Blob Storage から Azure SQL Database にデータをコピーする方法について説明します。
+このチュートリアルでは、Azure Data Factory を作成し、コピー アクティビティを含むパイプラインを作成して、Azure BLOB ストレージから Azure SQL Database にデータをコピーする方法について説明します。
+
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.NOTE] Data Factory サービスの詳細については、記事「[Azure Data Factory サービスの概要][data-factory-introduction]」を参照してください。
 
@@ -31,7 +33,7 @@
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[無料試用版][azure-free-trial]のページを参照してください。
-- **Azure ストレージ アカウント**。このチュートリアルでは、Blob Storage を**ソース** データ ストアとして使用します。Azure ストレージ アカウントがない場合の作成手順については、[ストレージ アカウントの作成][data-factory-create-storage]に関する記事を参照してください。
+- **Azure ストレージ アカウント**。このチュートリアルでは、BLOB ストレージを**ソース** データ ストアとして使用します。Azure ストレージ アカウントがない場合の作成手順については、[ストレージ アカウントの作成][data-factory-create-storage]に関する記事を参照してください。
 - **Azure SQL データベース**。このチュートリアルでは、Azure SQL Database を**ターゲット** データ ストアとして使用します。このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「[Azure SQL Database を作成して構成する方法][data-factory-create-sql-database]」を参照してください。
 - **SQL Server 2012/2014 または Visual Studio 2013**。サンプル データベースを作成して、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
@@ -98,7 +100,9 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 - Azure クラシック ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある "[Data Factory エディターの使用](data-factory-get-started-using-editor.md)" というリンクをクリックします。
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-monitor-manage-using-powershell.md)」というリンクをクリックします。
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-get-started-using-vs.md)」というリンクをクリックします。
- 
+
+## アクティビティ
+Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 
 <!--Link references-->
@@ -111,4 +115,4 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

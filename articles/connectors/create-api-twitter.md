@@ -14,16 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/23/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 
 # Twitter API の使用
-Twitter に接続し、ツイートを投稿したり、ユーザーのタイムラインを取得したりします。
+Twitter に接続し、ツイートを投稿したり、ユーザーのタイムラインを取得したりします。Twitter API は次のツールから使用できます。
 
-Twitter API は PowerApps Enterprise とロジック アプリから使用できます。
+- PowerApps 
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Twitter コネクタ](../app-service-logic/app-service-logic-connector-twitter.md)をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Twitter コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-twitter.md)」をご覧ください。
 
 Twitter で次のことができます。
 
@@ -32,9 +33,9 @@ Twitter で次のことができます。
 - アクションを使用し、ツイートを投稿したり、検索したりします。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、新しいツイートが表示されたら、Facebook にそのツイートを投稿できます。
 - PowerApps Enterprise に Twitter API を追加します。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 
 ## トリガーとアクション
@@ -50,35 +51,36 @@ Twitter には、次のトリガーとアクションが含まれています。
 ## Twitter への接続を作成する
 
 ### PowerApps に構成を追加する
-PowerApps Enterprise に Twitter を追加するとき、Twitter アプリケーションの**コンシューマー キー**と**コンシューマー シークレット**を入力します。**リダイレクト URL** 値も Twitter アプリケーションで使用されます。Twitter アプリケーションがない場合、次の手順でアプリケーションを作成できます。
+Twitter を PowerApps Enterprise に追加するときに、Twitter アプリケーションの**コンシューマー キー**と**コンシューマー シークレット**の値を入力します。Twitter アプリケーションでは、**リダイレクト URL** 値も使用されます。Twitter アプリケーションがない場合、次の手順でアプリケーションを作成できます。
 
-1. [Twitter アプリ](https://apps.twitter.com)にサインインします。
+1. [Twitter](https://apps.twitter.com) にサインインします。
 
 2. **[Create New App]** を選択します。 ![Twitter アプリ ページ][6]
 
 3. **[Create an application]** では次のようにします。
    
-	1. **[Name]**、**[Description]**、**[Website]** に任意の値を入力します。
-	2. **[Callback url]** に、Azure ポータルで Twitter API を追加するときに表示される **[Redirect URL]** 値を入力します。
-	5. 規約に同意し、**Twitter アプリケーションを作成します**。  
+	1. **[Name]**、**[Description]**、**[Website]** に必要な値を入力します。
+	2. **[Callback url]** に、Azure ポータルで Twitter API を追加したときに表示される**リダイレクト URL** 値を入力します。
+	5. 規約に同意し、**Twitter アプリケーションを作成**します。  
 
 	![Twitter アプリの作成][7]
 
-Twitter 構成の**コンシューマー キー**値と**コンシューマー シークレット**値をコピーし、Azure ポータルで貼り付けます。
+**コンシューマー キー**値と**コンシューマー シークレット**値をコピーして、Azure ポータルの Twitter 構成に貼り付けます。
 
 
 ### ロジック アプリに構成を追加する
 ロジック アプリにこの API を追加するとき、Twitter アカウントに接続するロジック アプリを承認する必要があります。
 
 1. Twitter アカウントにサインインします。
-2. **[Authorize]** を選択し、ロジック アプリが Twitter アカウントに接続し、使用することを許可します。 
+2. **[Authorize]** を選択し、ロジック アプリが Twitter アカウントに接続して使用することを許可します。 
 
-接続を作成したら、ツイートのテキストなど、Twitter プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、ツイートのテキストなど、Twitter プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでこの同じ Twitter 接続を使用できます。
 
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### 新しいツイートを投稿する 
 ツイート。```POST: /posttweet```
@@ -101,11 +103,11 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### 新しいツイートが表示されたとき 
-検索クエリに一致する新しいツイートが投稿されたとき、ワークフローをトリガーします。 ```GET: /onnewtweet```
+検索クエリに一致する新しいツイートが投稿されたときにワークフローをトリガーします。```GET: /onnewtweet```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|searchQuery|string|○|query|なし|クエリ テキスト (Twitter 対応のクエリ演算子を使用できます。 http://www.twitter.com/search)|
+|searchQuery|string|○|query|なし|クエリ テキスト (Twitter でサポートされているクエリ演算子を使用できます。http://www.twitter.com/search)|
 
 #### Response
 |名前|説明|
@@ -121,7 +123,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### ホーム タイムラインを取得する 
-自分と自分のフォロワーが投稿した最近のツイートとリツイートを取得します。 ```GET: /hometimeline```
+自分と自分のフォロワーが投稿した最近のツイートとリツイートを取得します。```GET: /hometimeline```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -140,7 +142,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### ユーザーを取得する 
-指定されたユーザーに関する詳細情報を取得します (例: ユーザー名、説明、フォロワー数など)。 ```GET: /user```
+指定されたユーザーに関する詳細情報を取得します (例: ユーザー名、説明、フォロワー数など)。```GET: /user```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -159,7 +161,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### ユーザーのタイムラインを取得する 
-指定したユーザーが投稿した最近のツイートをまとめて取得します。 ```GET: /usertimeline```
+指定したユーザーが投稿した最近のツイートをまとめて取得します。```GET: /usertimeline```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -179,11 +181,11 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### ツイートを検索する 
-指定されたクエリに一致する関連するツイートをまとめて取得します。 ```GET: /searchtweets```
+指定されたクエリに一致する関連するツイートをまとめて取得します。```GET: /searchtweets```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|searchQuery|string|○|query|なし|クエリ テキスト (Twitter 対応のクエリ演算子を使用できます。 http://www.twitter.com/search)|
+|searchQuery|string|○|query|なし|クエリ テキスト (Twitter でサポートされているクエリ演算子を使用できます。http://www.twitter.com/search)|
 |maxResults|integer|×|query|20|取得するツイートの最大数|
 
 #### Response
@@ -199,7 +201,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### フォロワーを取得する 
-指定されたユーザーをフォローしているユーザーを取得します。 ```GET: /followers```
+指定されたユーザーをフォローしているユーザーを取得します。```GET: /followers```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -219,7 +221,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### 自分のフォロワーを取得する 
-自分をフォローしているユーザーを取得します。 ```GET: /myfollowers```
+自分をフォローしているユーザーを取得します。```GET: /myfollowers```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -238,7 +240,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### フォローを取得する 
-指定されたユーザーがフォローしているユーザーを取得します。 ```GET: /friends```
+指定されたユーザーがフォローしているユーザーを取得します。```GET: /friends```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -258,7 +260,7 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ### 自分のフォローを取得する 
-自分がフォローしているユーザーを取得します。 ```GET: /myfriends```
+自分がフォローしているユーザーを取得します。```GET: /myfriends```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -316,13 +318,13 @@ Twitter 構成の**コンシューマー キー**値と**コンシューマー �
 
 
 ## 次のステップ
-Dropbox API を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
+Twitter API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 <!--References-->
 
 [6]: ./media/create-api-twitter/twitter-apps-page.png
 [7]: ./media/create-api-twitter/twitter-app-create.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

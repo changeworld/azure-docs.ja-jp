@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/22/2016"
+	ms.date="02/29/2016"
 	ms.author="kgremban"/>
 
 # Azure コマンド ライン インターフェイスを使用したロールベースのアクセス制御の管理
@@ -24,6 +24,9 @@
 - [REST API](role-based-access-control-manage-access-rest.md)
 
 ## ロールベースのアクセス制御 (RBAC) ロールの一覧
+
+>[AZURE.IMPORTANT] この記事のコマンドレットを使用するには、[Azure CLI をインストール](../xplat-cli-install.md)しておく必要があります。
+
 ###	使用可能なすべてのロールの表示
 使用可能なすべてのロールを表示するには、次のコマンドを使用します。
 
@@ -54,7 +57,7 @@
 
 ###	ユーザーへのロールの割り当て (ユーザーのグループに割り当てられているロールを含む) の表示
 
-次に、ユーザー **sameert@aaddemo.com* に有効なロール割り当ての例を示します。
+次の例は、ユーザー **sameert@aaddemo.com* に対して有効なロールの割り当てを示しています。
 
 ![RBAC Azure コマンド ライン - ユーザー別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -129,7 +132,7 @@
 
 ## カスタム ロールの削除
 
-カスタム ロールを削除するには、最初に `azure role show` コマンドを使用し、ロールの **ID** を決定します。次に、`azure role delete` コマンドを使用し、**ID** を指定してロールを削除します。
+カスタム ロールを削除するには、まず、`azure role show` コマンドを使用してロールの **ID** を特定します。次に、`azure role delete` コマンドで **ID** を指定してロールを削除します。
 
 次の例では、*Virtual Machine Operator* カスタム ロールが削除されます。
 
@@ -154,4 +157,4 @@
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

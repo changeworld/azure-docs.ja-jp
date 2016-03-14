@@ -79,7 +79,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 [ファクトリ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx)パターンを使用して **ShardMapManager** オブジェクトが作成されます。**[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
 
-**ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。**ShardMapManager** には、任意の数のシャード マップを含めることができます。多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
+**注意:** **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。**ShardMapManager** には、任意の数のシャード マップを含めることができます。多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
 
 次のコードでは、アプリケーションは、[TryGetSqlShardMapManager メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)を使用して既存の **ShardMapManager** を開こうとします。グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは [CreateSqlShardMapManager メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)を使用してこれを作成します。
 
@@ -120,7 +120,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 ### 影響を受けるのはメタデータのみ 
 
-**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。 「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
+**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。 「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
 ## シャード マップの設定の例
  
@@ -237,7 +237,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 シャード マップ マネージャーは、ほとんどの場合、アプリに固有のデータ操作を実行するためのデータベース接続を必要とするアプリケーションで使用されます。これらの接続は、正しいデータベースに関連付けられている必要があります。これを**データ依存ルーティング**といいます。このようなアプリケーションの場合は、GSM データベースに対する読み取り専用アクセス権限を持つ資格情報を使用してファクトリからシャード マップ マネージャー オブジェクトをインスタンス化します。後で個々の接続要求により、適切なシャード データベースに接続するために必要な資格情報が提供されます。
 
-(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションはマップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」を参照してください。
+(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションは、マップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」をご覧ください。
 
 詳細については、「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。
 
@@ -263,7 +263,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
     データは **UpdateMapping** 操作に合わせてシャード間で移動することが必要になる場合があるため、これらのメソッドを使いながら移動操作を別個に実行する必要があります。
 
-* マッピングをオンラインまたはオフラインにするには: **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** と **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** を使用して、マッピングのオンライン ステータスを制御します。
+* マッピングをオンラインまたはオフラインにするには: **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** と **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** を使用して、マッピングのオンライン状態を制御します。
 
     マッピングが "オフライン" 状態のときは、シャード マッピングに対して特定の操作のみを実行できます (**UpdateMapping**、**DeleteMapping** など)。マッピングがオフラインのとき、そのマッピングに含まれるキーに基づくデータに依存する要求はエラーを返します。さらに、範囲が初めてオフラインになったときは、変更が加えられている範囲に対するクエリによって一貫性のない結果または不完全な結果が生成されるのを防ぐために、影響を受けるシャードへのすべての接続が自動的に強制終了されます。
 
@@ -282,4 +282,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

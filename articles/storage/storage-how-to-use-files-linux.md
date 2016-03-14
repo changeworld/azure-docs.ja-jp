@@ -3,8 +3,8 @@
         description="この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。Linux を実行している Azure の仮想マシン (VM) または SMB 3.0 をサポートするオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
         services="storage"
         documentationCenter="na"
-        authors="jasontang501"
-        manager="jahogg"
+        authors="mine-msft"
+        manager="aungoo"
         editor="tysonn" />
 
 <tags ms.service="storage"
@@ -12,8 +12,8 @@
       ms.tgt_pltfrm="na"
       ms.devlang="na"
       ms.topic="article"
-      ms.date="02/15/2016"
-      ms.author="jutang" />
+      ms.date="02/29/2016"
+      ms.author="minet" />
 
 
 # Linux で Azure File Storage を使用する方法
@@ -139,4 +139,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

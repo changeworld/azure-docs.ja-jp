@@ -24,7 +24,7 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。詳�
 
 **推定所要時間:** 20 分
 
->[AZURE.NOTE]このチュートリアルでは、いずれかの手順に含まれる Azure アプリケーションの記述方法については説明していません。Key Vault でキーやシークレットを使用するためのアプリケーションの承認方法について説明しています。
+>[AZURE.NOTE]  このチュートリアルでは、いずれかの手順に含まれる Azure アプリケーションの記述方法については説明していません。Key Vault でキーやシークレットを使用するためのアプリケーションの承認方法について説明しています。
 >
 >現時点では、Azure ポータルで Azure Key Vault を構成できません。代わりに、クロスプラットフォーム コマンドライン インターフェイスの手順を使用します。また、Azure PowerShell の手順については、[対応するチュートリアル](key-vault-get-started.md)をご覧ください。
 
@@ -68,7 +68,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
     azure login
 
->[AZURE.NOTE]ログインによる方法は組織のアカウントでのみ機能します。組織のアカウントは、組織で管理されるユーザーであり、組織の Azure Active Directory テナントで定義されています。
+>[AZURE.NOTE]  ログインによる方法は組織のアカウントでのみ機能します。組織のアカウントは、組織で管理されるユーザーであり、組織の Azure Active Directory テナントで定義されています。
 
 
 組織のアカウントが現在なく、Azure サブスクリプションへのログインに Microsoft アカウントを使用している場合は、次に示している手順を使用して組織のアカウントを簡単に作成できます。
@@ -153,7 +153,7 @@ Azure Key Vault に追加したパスワードは、その URI を使用する�
 この手順は通常、開発者が別のコンピューター上で行います。これは Azure Key Vault に固有のものではありませんが、完全を期すために説明します。
 
 
->[AZURE.IMPORTANT]チュートリアルを完了するには、この手順で登録するアカウント、資格情報コンテナー、アプリケーションがすべて同じ Azure ディレクトリに格納されている必要があります。
+>[AZURE.IMPORTANT] チュートリアルを完了するには、この手順で登録するアカウント、資格情報コンテナー、アプリケーションがすべて同じ Azure ディレクトリに格納されている必要があります。
 
 Key Vault を使用するアプリケーションは、Azure Active Directory から取得したトークンを使用して認証する必要があります。これを行うには、アプリケーションの所有者は、まず Azure Active Directory でアプリケーションを登録する必要があります。登録の最後に、アプリケーションの所有者は次の値を取得します。
 
@@ -185,11 +185,11 @@ Azure Active Directory にアプリケーションを登録するには:
 
 たとえば、資格情報コンテナー名が ContosoKeyVault で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 
-    azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perm-to-keys '["decrypt","sign"]'
+    azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '["decrypt","sign"]'
 
 その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
-	azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perm-to-secrets '["get"]'
+	azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '["get"]'
 
 ## ハードウェア セキュリティ モジュール (HSM) を使用する場合 ##
 
@@ -256,4 +256,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0302_2016-->

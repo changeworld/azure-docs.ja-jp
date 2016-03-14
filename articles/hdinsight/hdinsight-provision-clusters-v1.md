@@ -47,7 +47,9 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
  
 - **オペレーティング システム**
 
-	HDInsight クラスターは、次の 2 つのオペレーティング システムのいずれかでプロビジョニングできます。- **HDInsight on Windows (Windows Server 2012 R2 Datacenter)**: - **HDInsight on Linux (Ubuntu 12.04 LTS for Linux)**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
+	次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターをプロビジョニングすることができます。
+	- **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**:
+	- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。 
 
 
 - **HDInsight のバージョン**
@@ -78,16 +80,25 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
 
-	HDInsight 用 HBase クラスターは 3 つのロールでデプロイされます。- ヘッド サーバー (2 ノード) - リージョン サーバー (1 ノード以上) - Master/Zookeeper ノード (3 ノード)
+	HDInsight の HBase クラスターは 3 つのロールでデプロイされます。
+	- ヘッド サーバー (2 つのノード)
+	- リージョン サーバー (1 つ以上のノード)
+	- マスター/Zookeeper ノード (3 つのノード)
 	
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
 
-	HDInsight 用 Storm クラスターは 3 つのロールでデプロイされます。Nimbus ノード (2 ノード) - Supervisor サーバー (1 ノード以上) - Zookeeper ノード (3 ノード)
+	HDInsight の Storm クラスターは 3 つのロールでデプロイされます。
+	- Nimbus ノード (2 つのノード)
+	- Supervisor サーバー (1 つ以上のノード)
+	- Zookeeper ノード (3 つのノード)
 	
 
 	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
 
-	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
+	HDInsight 用 Spark クラスターは、次の 3 つのロールでデプロイされます。
+	- ヘッド ノード (2 ノード)
+	- ワーカー ノード (少なくとも 1 ノード)
+	- Zookeeper ノード (3 ノード) (A1 Zookeeper では無料)
 
 	クラスターの有効期間中、これらのノードの使用量に対して課金されます。課金は、クラスターが作成された時点で開始され、クラスターが削除されると終了します (クラスターを割り当て解除したり、保留にしたりすることはできません)。クラスター サイズはクラスターの価格に影響します。学習目的の場合、データ ノードを 1 つ使用することをお勧めします。HDInsight の価格の詳細については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
@@ -686,8 +697,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
-		Install-Package Microsoft.Azure.Common.Authentication -pre
+		Install-Package Microsoft.Azure.Common.Authentication -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
+		Install-Package Microsoft.Azure.Management.Resources -Pre
 
 	これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
@@ -700,6 +712,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		using Microsoft.Azure.Common.Authentication.Models;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Models;
+		using Microsoft.Azure.Management.Resources;
 
 		namespace CreateHDICluster
 		{
@@ -728,6 +741,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		        {
 		            var tokenCreds = GetTokenCloudCredentials();
 		            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+		            
+		            var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+		            resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 		
 		            _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 		
@@ -801,4 +817,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

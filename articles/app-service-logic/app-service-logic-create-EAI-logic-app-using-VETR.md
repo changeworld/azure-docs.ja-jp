@@ -10,7 +10,7 @@
 <tags
    ms.service="app-service-logic"
    ms.devlang="multiple"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="02/18/2016"
@@ -118,4 +118,4 @@ Azure ポータルで、**[+新規]**、**[Web + モバイル]**、**[ロジッ�
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

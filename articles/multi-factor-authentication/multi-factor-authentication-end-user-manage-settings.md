@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="02/25/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
@@ -124,6 +124,9 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 新しい電話を用意し、mfa が使用する 1 つ目の連絡先番号を変更する必要がある場合、2 つの方法のいずれかでそれを実行できます。
 
+>[AZURE.IMPORTANT]
+2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
+
 最初の方法は、2 つ目の認証方法を使用することです。2 つ目の認証用電話番号を指定していた場合は、その番号を使用してサインインします。![セットアップ](./media/multi-factor-authentication-end-user-manage/altphone.png)上のスクリーン ショットでは、2 つの電話番号がセットアップされています。1 つ目は末尾が 67 の番号で、2 つ目は末尾が 30 の番号です。
   
 代替の電話番号を使用してサインインするには、通常どおりサインインしてから、単に **[別の確認オプションを使用する]** を選択するだけです。![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
@@ -131,9 +134,6 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 それから 2 つ目の電話番号を選択します。ここでは、**[折り返し先: X XXXXXXXX30]** を選択します。
 
 ![Alternate phone](./media/multi-factor-authentication-end-user-manage/altphone2.png)
-
->[AZURE.IMPORTANT]
-2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
 
 2 つ目の方法は、管理者または代わりに mfa を設定した人に連絡することです。これは、2 つ目の認証電話番号を構成していない場合にのみ必要となります。そうでなければ、管理者または mfa を設定した人に連絡して設定のクリアを依頼する必要があります。それによって、次回サインインしたときに再度[多要素認証をセットアップする](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)ようにメッセージが表示されます。
 
@@ -172,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

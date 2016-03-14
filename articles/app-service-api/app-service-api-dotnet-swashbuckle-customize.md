@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/24/2015" 
+	ms.date="02/22/2016" 
 	ms.author="bradyg"/>
 
 # Swashbuckle が生成する API 定義をカスタマイズする 
@@ -201,7 +201,7 @@ Visual Studio を使用して REST API のクライアント コードを再生�
         	    throw ex;
 		}
 
-このデモのコードは、[この GitHub リポジトリ](https://github.com/Azure-Samples/API-Apps-DotNet-Swashbuckle-Customization-MultipleResponseCodes)にあります。XML ドキュメントのコメントでマークアップされた Web API プロジェクトと共に、この API 用に生成されたクライアントを含むコンソール アプリケーション プロジェクトがあります。
+このデモのコードは、[この GitHub リポジトリ](https://github.com/Azure-Samples/app-service-api-dotnet-swashbuckle-swaggerresponse)にあります。XML ドキュメントのコメントでマークアップされた Web API プロジェクトと共に、この API 用に生成されたクライアントを含むコンソール アプリケーション プロジェクトがあります。
 
 ### SwaggerResponse 属性を使用して、想定される応答コードをカスタマイズする
 
@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

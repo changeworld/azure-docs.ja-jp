@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="03/01/2016"  
 	ms.author="juliako"/>
 
 #ライブ ストリーミングのトラブルシューティング ガイド
@@ -65,6 +65,12 @@
 
 	**トラブルシューティングの手順**: AMSE ツールで、[ストリーミング エンドポイント] タブに移動し、1 つのストリーミング ユニットで実行されているストリーミング エンドポイントがあることを確認します。
 	
+###問題: エンコーダーのログを確認したい 
+
+- **潜在的な問題**: 問題のデバッグに役立つログが見つかりません。
+
+	**トラブルシューティングの手順**: 通常、Wirecast のログは C:\\Users{username}\\AppData\\Roaming\\Wirecast\\ にあります。
+
 >[AZURE.NOTE] このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure クラシック ポータルを使用して、サポート チケットを送信してください。
 
 ##Media Services のラーニング パス
@@ -75,4 +81,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

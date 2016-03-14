@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 
@@ -51,7 +51,7 @@
 
 			[[EngagementAgent shared] endActivity];
 
-> [AZURE.WARNING]1 つの用途のアプリケーションを複数のセッションに分割する場合を除いて、**絶対に**自分でこの関数を呼び出さないでください。この関数を呼び出すと現在のセッションがすぐに終了するため、後続の `startActivity()` への呼び出しでは新しいセッションが開始されます。この関数は、アプリケーションを閉じると、SDK によって自動的に呼び出されます。
+> [AZURE.WARNING] 1 つの用途のアプリケーションを複数のセッションに分割する場合を除いて、**絶対に**自分でこの関数を呼び出さないでください。この関数を呼び出すと現在のセッションがすぐに終了するため、後続の `startActivity()` への呼び出しでは新しいセッションが開始されます。この関数は、アプリケーションを閉じると、SDK によって自動的に呼び出されます。
 
 ##イベントを報告する
 
@@ -219,7 +219,7 @@
 
 これには `arrays(NSArray, NSMutableArray)`、`numbers(NSNumber class)`、`strings(NSString, NSMutableString)`、`urls(NSURL)`、`data(NSData, NSMutableData)`、`NSDictionary`、またはその他の インスタンスが含まれます。
 
-> [AZURE.NOTE]追加のパラメーターは、JSON でシリアル化されます。上記以外の別のオブジェクトを渡す場合は、クラス内に次のメソッドを実装する必要があります。
+> [AZURE.NOTE] 追加のパラメーターは、JSON でシリアル化されます。上記以外の別のオブジェクトを渡す場合は、クラス内に次のメソッドを実装する必要があります。
 >
 			 -(NSString*)JSONRepresentation;
 >
@@ -283,4 +283,4 @@
 
 	{"birthdate":"1983-12-07","gender":"female"}
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

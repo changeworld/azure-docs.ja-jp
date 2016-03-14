@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="01/22/2016"
+   	ms.date="02/29/2016"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -57,8 +57,8 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
 4. HDInsight クラスターのテンプレートを作成します。基本的なテンプレートの例を次に示します。
 
-    * [Linux ベースのクラスター、SSH パブリック キーを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/hdinsight-linux-ssh-publickey)
-    * [Linux ベースのクラスター、SSH アカウントのパスワードを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/hdinsight-linux-ssh-password)
+    * [Linux ベースのクラスター、SSH パブリック キーを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-publickey)
+    * [Linux ベースのクラスター、SSH アカウントのパスワードを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)
 
     これらのテンプレートのいずれでも、HDInsight が使用する既定の Azure ストレージ アカウントが作成されます。
 
@@ -83,7 +83,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 5. 次を利用して空のリソース グループを作成します。__RESOURCEGROUPNAME__ をこのグループに使用する名前に置き換えます。__LOCATION__ を HDInsight クラスターを作成するデータ センターに置き換えます。
 
         azure group create RESOURCEGROUPNAME LOCATION
-    
+
     > [AZURE.NOTE] 場所の名前にスペースが含まれる場合は、名前を引用符で囲みます。たとえば、"South Central US" のようになります。
 
 6. 次のコマンドを利用し、このリソース グループの最初のデプロイメントを作成します。__PATHTOTEMPLATE__ を __azuredeploy.json__ テンプレート ファイルのパスに置き換えます。__PATHTOPARAMETERSFILE__ を __azuredeploy.parameters.json__ ファイルのパスに置き換えます。__RESOURCEGROUPNAME__ を前の手順で作成したグループの名前に置き換えます。
@@ -95,7 +95,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 7. デプロイメントの完了には約 15 分かかることがあります。次のコマンドでデプロイメントに関する情報を表示できます。__RESOURCEGROUPNAME__ を前の手順で使用したリソース グループの名前に置き換えます。
 
         azure group log show -l RESOURCEGROUPNAME
-    
+
     デプロイメントが完了すると、__Status__ フィールドに __Succeeded__.という値が表示されます。デプロイメント中にエラーが発生した場合、次のコマンドでエラーに関する詳細を取得できます。
 
         azure group log show -l -v RESOURCEGROUPNAME
@@ -121,4 +121,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

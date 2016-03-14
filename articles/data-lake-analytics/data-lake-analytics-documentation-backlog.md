@@ -48,7 +48,7 @@ U-SQL | ADLS 認証オプション | 1 | Pending | [@ArindamC](https://github.co
 
 領域 |トピック | location
 ------------- | ------------- | -------------- 
-サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](../data-lake-analytics-manage-use-powershell.md)
+サービス | ARM テンプレートを使用する他の Azure サービスとの Data Lake Analytics のデプロイメント調整 | [location](data-lake-analytics-manage-use-powershell.md)
 
 ## バックログに関するフィードバックの送信方法
 バックログに関するフィードバックを送信する場合に使用できる以下のようないくつかのオプションがあります。
@@ -57,4 +57,4 @@ U-SQL | ADLS 認証オプション | 1 | Pending | [@ArindamC](https://github.co
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

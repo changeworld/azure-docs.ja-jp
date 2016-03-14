@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 #SDK の内容
@@ -42,4 +42,4 @@
 
 > エンゲージメント ビュー コントローラーとリーチ SDK のソース コード (エンゲージメント クラスをニーズに適応させたいパワー ユーザー向け)。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

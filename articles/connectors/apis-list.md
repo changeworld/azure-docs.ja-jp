@@ -1,5 +1,5 @@
 <properties
-	pageTitle="マネージ API の一覧 | Microsoft Azure App Service"
+	pageTitle="Microsoft が管理する API の一覧 | Microsoft Azure App Service"
 	description="Azure App Service でロジック アプリを構築する場合に使用できる、Microsoft が管理する API の完全な一覧を取得する"
 	services="app-service\logic"
 	documentationCenter=""
@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="03/02/2016"
 	ms.author="deonhe"/>
 
-# ここでは、Microsoft が管理する、アプリ構築用の API の一覧を示します。
+# マネージ API の一覧
 
-アイコンをクリックすると、これらの API を活用して、対象のサービスを呼び出すアプリを簡単に構築する方法を確認できます。これらの API を使用すると、ロジック アプリまたはパワー アプリのいずれか、または両方を構築できます。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、[コネクタの一覧](../app-service-logic/app-service-logic-connectors-list.md)をご覧ください。
+
+アイコンをクリックすると、これらの API を活用して、対象のサービスを呼び出すアプリを簡単に構築する方法を確認できます。これらの API を使用して、ロジック アプリまたは PowerApps のいずれかあるいは両方を構築できます。
 
 料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
@@ -29,16 +31,14 @@
 |-----------|-----------|-----------|-----------|
 |[![API アイコン][blobicon]<br/>**Azure BLOB**][azureblobdoc]|[![API アイコン][bingsearchicon]<br/>**Bing Search**][bingsearchdoc]|[![API アイコン][boxicon]<br/>**Box**][boxDoc]|[![API アイコン][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|
 |[![API アイコン][dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][googledriveicon]<br/>**Google Drive**][googledrivedoc]|
-|[![API アイコン][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**ユーザー**][office365usersdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**ビデオ**][office365videodoc]|
+|[![API アイコン][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|
 |[![API アイコン][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API アイコン][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API アイコン][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API アイコン][sftpicon]<br/>**SFTP**][sftpdoc]|
-|[![API アイコン][sharepointicon]<br/>**SharePoint**<br/>**Server**][sharepointdoc]|[![API アイコン][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API アイコン][smtpicon]<br/>**SMTP**][smtpdoc]|[![API アイコン][sqlicon]<br/>**SQL Azure**][sqldoc]|
+|[![API アイコン][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API アイコン][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API アイコン][smtpicon]<br/>**SMTP**][smtpdoc]|[![API アイコン][sqlicon]<br/>**SQL Azure**][sqldoc]|
 |[![API アイコン][twilioicon]<br/>**Twilio**][twiliodoc]|[![API アイコン][twittericon]<br/>**Twitter**][twitterdoc]|[![API アイコン][yammericon]<br/>**Yammer**][yammerdoc] | |
 
 
-> [AZURE.NOTE] これらの API は、サービスの 2015-12-01-preview バージョンで動作します。
-
 ### トリガーとして使用できる API もあります。
-いくつかの API は、特定のイベントが発生したときにアプリに通知するトリガーになります。たとえば、FTP API には、OnUpdatedFile トリガーがあります。このトリガーをリッスンし、トリガーが起動されるたびにアクションを実行するロジック アプリまたはパワー アプリを構築できます。
+いくつかの API は、特定のイベントが発生したときにアプリに通知するトリガーになります。たとえば、FTP API には、OnUpdatedFile トリガーがあります。このトリガーをリッスンし、トリガーが起動されるたびにアクションを実行するロジック アプリまたは PowerApp を構築できます。
 
 2 種類のトリガーがあります。
 
@@ -50,7 +50,7 @@
 API は、アプリ内でアクションとして使用することもできます。アクションは、アプリの実行時に使用できるデータの検索に役立ちます。たとえば、注文を処理するときに、SQL データベースから顧客データを検索することが必要になる場合があります。または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、API によって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義された操作にマップされます。
 
 
-[新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md) [今すぐロジック アプリを構築する](../app-service-logic/app-service-logic-create-a-logic-app.md) [今すぐパワー アプリの使用を開始する](../power-apps/powerapps-get-started-azure-portal.md)
+[新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md) [今すぐロジック アプリを構築する](../app-service-logic/app-service-logic-create-a-logic-app.md) [今すぐ PowerApps の使用を開始する](../power-apps/powerapps-get-started-azure-portal.md)
 
 <!--API Documentation-->
 [azureblobdoc]: ./create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"
@@ -70,7 +70,7 @@ API は、アプリ内でアクションとして使用することもできま�
 [onedrivedoc]: ./create-api-onedrive.md "個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧の取得などの操作を実行できます。"
 [salesforcedoc]: ./create-api-salesforce.md "Salesforce アカウントに接続し、アカウント、潜在顧客、営業案件などを管理します。"
 [servicebusdoc]: ./create-api-servicebus.md "Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。"
-[sharepointdoc]: ./create-api-sharepointserver.md "オンプレミスの Microsoft SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理できます。既定の資格情報、OAuth 2.0、Windows 認証、およびフォームベース認証などのさまざまな認証方法がサポートされています。"
+[sharepointdoc]: ./create-api-sharepointonline.md "SharePoint Online に接続して、ドキュメントやリスト項目を管理します。"
 [slackdoc]: ./create-api-slack.md "Slack に接続し、Slack チャネルにメッセージを投稿します。"
 [sftpdoc]: ./create-api-sftp.md "SFTP に接続して、ファイルのアップロード、取得、削除などの操作を実行できます。"
 [smtpdoc]: ./create-api-smtp.md "SMTP サーバーに接続して、添付ファイルを含む電子メールを送信します。"
@@ -103,4 +103,4 @@ API は、アプリ内でアクションとして使用することもできま�
 [twittericon]: ./media/apis-list/twittericon.png
 [yammericon]: ./media/apis-list/yammericon.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

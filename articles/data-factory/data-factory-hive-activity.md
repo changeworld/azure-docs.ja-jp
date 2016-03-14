@@ -61,7 +61,7 @@ inputs | Hive アクティビティによって使用される入力 | いいえ
 outputs | Hive アクティビティによって生成される出力 | あり 
 linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 | あり 
 script (スクリプト) | Hive スクリプトをインラインに指定します | いいえ
-スクリプトのパス | Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません | いいえ 
+スクリプトのパス | Hive スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません。ファイル名は大文字と小文字が区別されます。 | いいえ 
 defines | 'hiveconf' を使用して Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します | いいえ
 
 ## 例
@@ -214,4 +214,4 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 			SUM(Duration)
 		FROM HiveSampleIn Group by ProfileID
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="tdykstra"/>
 
 
@@ -58,8 +58,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
->[AZURE.NOTE]  
-Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
+	>[AZURE.NOTE]  
+	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -708,4 +708,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

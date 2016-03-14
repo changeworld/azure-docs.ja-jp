@@ -13,22 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/20/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli"/>
 
 
-# StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする (プレビュー)
+# StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする
 
 ![](./media/storsimple-ova-deploy2-provision-vmware/vmware4.png)
 
 ## 概要 
-このプロビジョニング チュートリアルは、v 1.1.1.0 (パブリック プレビュー) を実行する StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。このチュートリアルでは、VMware ESXi 5.5 以降を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。
+このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、VMware ESXi 5.5 以降を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。
 
 仮想デバイスをプロビジョニングして接続するには、管理者特権が必要です。プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
-> [AZURE.IMPORTANT]
-> 
-> このパブリック プレビューは、評価のみを目的としています。このプレビューの運用環境へのインストールはサポートされていません。
 
 ## プロビジョニングの前提条件
 
@@ -104,19 +101,19 @@
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image2.png)
 
-1.  まず、VMDK を ESXi サーバーにアップロードします。右側のウィンドウの **[Configuration]** タブに移動します。**[Hardware]** で **[Storage]** を選択します。
+1.  まず、VMDK を ESXi サーバーにアップロードします。右側のウィンドウの **[構成]** タブに移動します。**[ハードウェア]** で **[ストレージ]** を選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image3.png)
 
-1.  右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。データストアには、OS とデータ ディスク用の十分な空き領域が必要です。
+1.  右側のウィンドウの **[データストア]** で VMDK をアップロードするデータストアを選択します。データストアには、OS とデータ ディスク用の十分な空き領域が必要です。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image4.png)
 
-1.  右クリックして **[Browse Datastore]** を選択します。
+1.  右クリックして **[データストアを参照]** を選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image5.png)
 
-1.  A **Datastore Browser** のウィンドウが表示されます。
+1.  **[データストア ブラウザー]** のウィンドウが表示されます。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image6.png)
 
@@ -124,11 +121,11 @@
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image8.png)
 
-1.  **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。
+1.  **[データストア ブラウザー]** の左側のウィンドウに新しいフォルダーが表示されます。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image9.png)
 
-1.  アップロード アイコン ![](./media/storsimple-ova-deploy2-provision-vmware/image10.png) をクリックして、**[Upload File]** を選択します。
+1.  アップロード アイコン ![](./media/storsimple-ova-deploy2-provision-vmware/image10.png) をクリックして、**[ファイルのアップロード]** を選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image11.png)
 
@@ -136,7 +133,7 @@
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image12.png)
 
-1.  **[Open]** をクリックします。指定されたデータストアへの VMDK ファイルのアップロードが開始されます。
+1.  **[開く]** をクリックします。指定されたデータストアへの VMDK ファイルのアップロードが開始されます。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image13.png)
 
@@ -148,81 +145,81 @@
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image15.png)
 
-1.  A **[New Virtual Machine]** ウィンドウが表示されます。**[Configuration]** ページで **[Custom]** を選択します。**[Next]** をクリックします。![](./media/storsimple-ova-deploy2-provision-vmware/image16.png)
+1.  **[新しい仮想マシンの作成]** ウィンドウが表示されます。**[構成]** ページで **[カスタム]** を選択します。**[次へ]** をクリックします。![](./media/storsimple-ova-deploy2-provision-vmware/image16.png)
 
-2.  **[Name and Location]** ページで、仮想マシンの名前を指定します。この名前は、手順 8 で指定したフォルダー名と一致する必要があります (推奨されるベスト プラクティス)。
+2.  **[名前と場所]** ページで、仮想マシンの名前を指定します。この名前は、手順 8 で指定したフォルダー名と一致する必要があります (推奨されるベスト プラクティス)。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image17.png)
 
-1.  **[Storage]** ページで、VM のプロビジョニングに使用するデータストアを選択します。
+1.  **[ストレージ]** ページで、VM のプロビジョニングに使用するデータストアを選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image18.png)
 
-1.  **[Virtual Machine Version]** ページで **[Virtual Machine Version: 8]** を選択します。今回のリリースでは、このオプションのみがサポートされていることに注意してください。
+1.  **[仮想マシンのバージョン]** ページで **[仮想マシンバージョン: 8]** を選択します。今回のリリースでは、このオプションのみがサポートされていることに注意してください。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image19.png)
 
-1.  **[Guest Operating System]** ページで、**[Guest Operating System]** に **[Windows]** を選択します。**[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
+1.  **[ゲスト オペレーティング システム]** ページで、**[ゲスト オペレーティング システム]** に **[Windows]** を選択します。**[バージョン]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image20.png)
 
-1.  **[CPUs]** ページで、**[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。**[Next]** をクリックします。
+1.  **[CPUs]** ページで、**[仮想ソケット数]** と **[仮想ソケットごとのコア数]** を **[コアの合計数]** が 4 (またはそれ以上) になるように調整します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image21.png)
 
-1.  **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。**[Next]** をクリックします。
+1.  **[メモリー]** ページで RAM を 8 GB (またはそれ以上) に指定します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image22.png)
 
-1.  **[Network]** ページでネットワーク インターフェイスの数を指定します。ネットワーク インターフェイスの最小要件は 1 つです。
+1.  **[ネットワーク]** ページでネットワーク インターフェイスの数を指定します。ネットワーク インターフェイスの最小要件は 1 つです。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image23.png)
 
-1.  **[SCSI Controller]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
+1.  **[SCSI コントローラー]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image24.png)
 
-1.  **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。**[Next]** をクリックします。
+1.  **[ディスクの選択]** ページで **[既存の仮想ディスクを使用]** を選択します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image25.png)
 
-1.  **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。**[Browse Datastores]** ダイアログ ボックスが開きます。VMDK をアップロードした場所に移動します。ファイルを選択し、**[OK]** をクリックします。**[Next]** をクリックします。
+1.  **[既存のディスクの選択]** ページの **[ディスクファイルパス]** で **[参照]** をクリックします。**[データストアを参照]** ダイアログ ボックスが開きます。VMDK をアップロードした場所に移動します。ファイルを選択し、**[OK]** をクリックします。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image26.png)
 
-1.  **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
+1.  **[詳細オプション]** ページで既定値をそのまま使用して、**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image27.png)
 
-1.  **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。**[Edit the virtual machine settings before completion]** をオンにします。**[Continue]** をクリックします。
+1.  **[準備完了]** ページで、新しい仮想マシンに関連するすべての設定を確認します。**[完了前に仮想マシン設定を編集]** をオンにします。**[続行]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image28.png)
 
-1.  **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。**[New Hard Disk]** を選択します。**[Add]** をクリックします。
+1.  **[仮想マシンのプロパティ]** ページの **[ハードウェア]** タブでデバイス ハードウェアを見つけます。**[新しいハードディスク]** を選択します。**[追加]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image29.png)
 
-1.  **[Add Hardware]** ウィンドウが表示されます。**[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、**[Next]** をクリックします。
+1.  **[ハードウェアの追加]** ウィンドウが表示されます。**[デバイスの種類]** ページの **[追加するデバイスの種類を選択]** から **[ハードディスク]** を選択して、**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image30.png)
 
-1.  **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。**[Next]** をクリックします。
+1.  **[ディスクの選択]** ページで **[新しい仮想ディスクの作成]** を選択します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image31.png)
 
-1.  **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。**[Disk Provisioning]** で **[Thin Provision]** を選択します。**[Next]** をクリックします。
+1.  **[ディスクの作成]** ページで **[ディスクサイズ]** を 500 GB (またはそれ以上) に変更します。**[ディスク プロビジョニング]** で **[仮想プロビジョニング]** を選択します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image32.png)
 
-1.  **[Advanced Options]** ページで既定値をそのまま使用します。
+1.  **[詳細オプション]** ページで既定値をそのまま使用します。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image33.png)
 
-1.  **[Ready to Complete]** ページでディスク オプションを確認します。**[Finish]** をクリックします。
+1.  **[完了準備]** ページでディスク オプションを確認します。**[完了]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image34.png)
 
-1.  [Virtual Machine Properties] ページに戻ります。新しいハード ディスクが仮想マシンに追加されます。**[Finish]** をクリックします。
+1.  [Virtual Machine Properties] ページに戻ります。新しいハード ディスクが仮想マシンに追加されます。**[完了]** をクリックします。
   
 	![](./media/storsimple-ova-deploy2-provision-vmware/image35.png)
 
@@ -238,11 +235,11 @@
 
 #### 仮想デバイスを起動するには
 
-1.  仮想デバイスを起動します。vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。**[Power]**、**[Power on]** の順に選択します。これで、仮想マシンの電源がオンになります。vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
+1.  仮想デバイスを起動します。vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。**[Power]**、**[Power on]** の順に選択します。これで、仮想マシンの電源がオンになります。vSphere client のページ下部の **[最近のタスク]** ウィンドウで状態を確認できます。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image37.png)
 
-1.  設定タスクの完了には数分かかります。デバイスが起動したら **[Console]** タブに移動します。デバイスにログインするには Ctrl + Alt + Del キーを押します。[Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。既定のユーザーは StorSimpleAdmin で、既定のパスワードは Password1 です。
+1.  設定タスクの完了には数分かかります。デバイスが起動したら **[コンソール]** タブに移動します。デバイスにログインするには Ctrl + Alt + Del キーを押します。[Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは*Password1* です。
 
 	![](./media/storsimple-ova-deploy2-provision-vmware/image38.png)
 
@@ -295,4 +292,4 @@
 
 -   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0302_2016-->

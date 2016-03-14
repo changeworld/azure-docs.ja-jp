@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2016" 
+	ms.date="03/01/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -21,7 +21,10 @@
 
 連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
-(メトリックや検索ブレードでの表示内容を、[1 回だけエクスポートする](app-insights-metrics-explorer.md#export-to-excel)場合には、ブレードの上部で [エクスポート] をクリックします。また、Power BI でデータを参照する場合、[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)を利用してください。このアダプターでは、連続エクスポートは使用*されません*。)
+>[AZURE.NOTE] [Power BI のデータを探索](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)する場合は、連続エクスポートを使用せずにこれを実行できます。
+>
+>また、メトリックや検索ブレードでの表示内容の [1 回限りのエクスポート](app-insights-metrics-explorer.md#export-to-excel)を実行する場合は、ブレードの上部で [エクスポート] をクリックします。
+
 
 ## ストレージ アカウントの作成
 
@@ -81,7 +84,7 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 
 ポータルでストレージを直接検査することができます。**[参照]** をクリックしてストレージ アカウントを選択し、**[コンテナー]** を開きます。
 
-Visual Studio で Azure Storage を検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド]、**[Microsoft Azure SDK for .NET の取得]** の順に開きます)。
+Visual Studio で Azure ストレージを検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド]、**[Microsoft Azure SDK for .NET の取得]** の順に開きます)。
 
 BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナーが表示されます。各ファイルの URI は、Application Insights のリソース名、そのインストルメンテーション キー、テレメトリの種類/日付/時刻から派生します (リソース名はすべて小文字になり、インストルメンテーション キーのダッシュは省略されます)。
 
@@ -209,4 +212,4 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="01/08/2016"
+ ms.date="03/01/2016"
  ms.author="larryfr"/>
 
 # Power BI を使用した Apache Storm トポロジのデータの視覚化
@@ -63,7 +63,7 @@ Power BI を使用すると、データをレポートとして表示したり�
 
 ## 例のダウンロード
 
-[HDInsight C# Storm Power BI の例](https://github.com/Blackmist/hdinsight-csharp-storm-powerbi)をダウンロードします。ダウンロードするには、[git](http://git-scm.com/) を使用してフォーク/複製するか、**ダウンロード** リンクを使用してアーカイブの ZIP ファイルをダウンロードします。
+[HDInsight C# Storm Power BI の例](https://github.com/Azure-Samples/hdinsight-dotnet-storm-powerbi)をダウンロードします。ダウンロードするには、[git](http://git-scm.com/) を使用してフォーク/複製するか、**ダウンロード** リンクを使用してアーカイブの ZIP ファイルをダウンロードします。
 
 ## サンプルの構成
 
@@ -139,4 +139,4 @@ Power BI を使用すると、データをレポートとして表示したり�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

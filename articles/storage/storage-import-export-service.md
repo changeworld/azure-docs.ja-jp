@@ -1,8 +1,8 @@
 <properties
 	pageTitle="Import/Export を使用した Blob Storage へのデータの転送 | Microsoft Azure"
 	description="Azure クラシック ポータルでインポート ジョブおよびエクスポート ジョブを作成し、データを BLOB ストレージに転送する方法について説明します。"
-	authors="robinsh"
-	manager="carmonm"
+	authors="renashahmsft"
+	manager="aungoo"
 	editor="tysonn"
 	services="storage"
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="02/29/2016"
 	ms.author="renash"/>
 
 
@@ -51,7 +51,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 1.	**サブスクリプションおよびストレージ アカウント:** 既存の Azure サブスクリプションと、Import/Export サービスを使用するための 1 つ以上の従来のストレージ アカウントを持っている必要があります。各ジョブを使用できるのは、1 つの従来のストレージ アカウントとの間でのデータ転送だけです。言い換えると、ジョブは、複数のストレージ アカウントに対して使用できません。新しいストレージ アカウントの作成については、「[ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。 
 
-  > [AZURE.NOTE] ARM ストレージ アカウントがある場合は、Azure のサポートにお問い合わせください。
+  > [AZURE.NOTE] ARM モデルを使用するストレージ アカウントは、まだサポートされていません。
 
 2.	**ハード ドライブ:** インポート/エクスポート サービスで使用できるのは、3.5 インチ SATA II/III 内部ハード ドライブだけです。最大 8 TB までのハード ドライブがサポートされます。インポート ジョブの場合は、ドライブの最初のデータ ボリュームだけが処理されます。データ ボリュームは NTFS でフォーマットされている必要があります。大部分のコンピューターには、SATA II/III ディスクを外部 SATA II/III USB アダプターで外部接続できます。
 3.	**BitLocker 暗号化:** ハード ドライブに格納されたデータはすべて、数字のパスワードで保護された暗号化キーを使って、BitLocker で暗号化する必要があります。
@@ -230,7 +230,8 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 - いいえ。すべてのドライブは、BitLocker で準備する必要があります。
 
-**エクスポート ジョブを作成するときに、ディスクの準備作業を実行する必要がありますか。** - いいえ、ただしいくつかの事前チェックをお勧めします。Azure Import/Export ツールの PreviewExport コマンドを使用して、必要なディスクの数を確認します。詳細については、「[Previewing Drive Usage for an Export Job (エクスポート ジョブのドライブ使用量のプレビュー)](https://msdn.microsoft.com/library/azure/dn722414.aspx)」を参照してください。使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
+**エクスポート ジョブを作成するときに、ディスクの準備作業を実行する必要はありますか。**
+- いいえ。ただし、いくつかの事前チェックをお勧めします。Azure Import/Export ツールの PreviewExport コマンドを使用して、必要なディスクの数を確認します。詳細については、「[Previewing Drive Usage for an Export Job](https://msdn.microsoft.com/library/azure/dn722414.aspx)」をご覧ください。使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
 
 ### 発送
 
@@ -274,9 +275,9 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 - ハード ドライブのみを発送してください。電源ケーブルや USB ケーブルなどは同梱しないでください。
 
-通信会社の Web サイトにパッケージが配送されたことが示されているときに、**クラシック ポータルのジョブの状態が *[発送]* となっているのはなぜですか。**
+**通信会社の Web サイトにパッケージが配送されたことが示されているときに、クラシック ポータルのジョブの状態が *[発送]* となっているのはなぜですか。**
 
-- ポータルの状態は、ドライブの処理が開始したときに *[発送]* から *[転送]* に変わります。ドライブが施設に到着しているが、処理が開始していない場合、ジョブの状態は *[発送]* と表示されます。
+- ポータルの状態は、ドライブの処理が開始されたときに *[発送]* から *[転送]* に変わります。ドライブが施設に到着していても、処理が開始されていない場合、ジョブの状態は *[発送]* と表示されます。
 
 ## 関連項目
 
@@ -287,4 +288,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

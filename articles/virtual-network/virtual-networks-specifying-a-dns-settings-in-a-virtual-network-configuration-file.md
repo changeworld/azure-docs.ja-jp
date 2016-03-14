@@ -7,7 +7,7 @@
    manager="carmonm"
    editor="tysonn" 
    tags="azure-service-management" />
-<tags 
+<tags  
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -15,6 +15,7 @@
    ms.workload="infrastructure-services"
    ms.date="02/23/2016"
    ms.author="telmos" />
+
 
 # 仮想ネットワーク構成ファイルでの DNS 設定の指定
 
@@ -51,7 +52,7 @@
 ## 次のステップ
 
 - [Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)について理解します。
-- [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
-- [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
+- [Azure サービスの構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
+- [ネットワーク構成ファイルを使用して仮想ネットワークを構成](virtual-networks-using-network-configuration-file.md)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

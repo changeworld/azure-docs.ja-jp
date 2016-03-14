@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="02/24/2016"
    ms.author="joaoma" />
 
 # サービス構成ファイルでの DNS 設定の指定
@@ -29,7 +29,7 @@
         <DnsServer name="ID3" IPAddress="IPAddress3" />
       </DnsServers>
 
->[AZURE.WARNING]**DnsServer** 要素の **name** 属性は、参照名としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります。
+>[AZURE.WARNING] **DnsServer** 要素の **name** 属性は、参照名としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります。
 
 ## 関連項目
 
@@ -41,4 +41,4 @@
 
 [管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

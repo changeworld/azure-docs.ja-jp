@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 #Windows Phone Silverlight で Engagement API を使用する方法
@@ -48,7 +48,7 @@
 
 ユーザー アクティビティが変更されるたびに `StartActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
 
-> [AZURE.IMPORTANT]アプリケーションが終了すると SDK は EndActivity メソッドを自動的に呼び出します。したがって、EndActivity メソッドを呼び出すと現在のセッションが強制的に終了されるので、このメソッドを呼び出さないようにし、ユーザーのアクティビティが変わる際には常に StartActivity メソッドを呼び出すことを強くお勧めします。
+> [AZURE.IMPORTANT] アプリケーションが終了すると SDK は EndActivity メソッドを自動的に呼び出します。したがって、EndActivity メソッドを呼び出すと現在のセッションが強制的に終了されるので、このメソッドを呼び出さないようにし、ユーザーのアクティビティが変わる際には常に StartActivity メソッドを呼び出すことを強くお勧めします。
 
 #### 例
 
@@ -324,7 +324,7 @@ Extras データはシリアル化されるため、Extras に独自の型を挿
 			
 			EngagementAgent.Instance.SendEvent("Event", extras);
 
-> [AZURE.WARNING]その他の型のオブジェクトを配置する場合、ToString() メソッドは、人間が判読できる文字列を返すように実装されていることを確認します。
+> [AZURE.WARNING] その他の型のオブジェクトを配置する場合、ToString() メソッドは、人間が判読できる文字列を返すように実装されていることを確認します。
 
 ### 制限
 
@@ -379,4 +379,4 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 			{"subscription":"2013-12-07","premium":"true"}
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

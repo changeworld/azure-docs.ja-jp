@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="02/29/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs と .NET バックエンドによるユーザーへの通知
@@ -48,7 +48,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 
 
-> [AZURE.NOTE]バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](../mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users.md)をご覧ください。
+> [AZURE.NOTE] バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](../mobile-services/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)をご覧ください。
 
 
 
@@ -365,7 +365,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 ## 次のステップ
 
-* 対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
+* 対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
 * Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」を参照してください。
 
 
@@ -384,7 +384,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 <!-- URLs. -->
 [Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started.md
 [安全なプッシュ]: notification-hubs-aspnet-backend-windows-dotnet-secure-push.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

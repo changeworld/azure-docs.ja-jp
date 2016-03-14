@@ -13,16 +13,17 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="02/29/2016"
 	ms.author="kgremban"/>
 
-# Windows PowerShell を使用した役割ベースのアクセス制御の管理 #
+# Windows PowerShell を使用した役割ベースのアクセス制御の管理
 
 > [AZURE.SELECTOR]
 - [Windows PowerShell](role-based-access-control-powershell.md)
 - [Azure CLI](role-based-access-control-xplat-cli.md)
 
-Azure ポータルと Azure リソース管理 API のロール ベースの Access Control (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
+
+Azure ポータルと Azure リソース管理 API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
 このチュートリアルでは、Windows PowerShell を使って RBAC を管理する方法について学習します。役割の割り当てを作成して確認するプロセスについて説明します。
 
@@ -34,11 +35,13 @@ Windows PowerShell を使って RBAC を管理するには、その前に以下�
 
 - Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
 
-- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../install-configure-powershell.md)」をご覧ください。
+- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
+
+>[AZURE.IMPORTANT] この記事のコマンドレットを使用するには、PowerShell に [Azure Resource Manager のコマンドレットをインストール](https://msdn.microsoft.com/library/mt125356.aspx)しておく必要があります。
 
 このチュートリアルは、Windows PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
 
-このチュートリアルに表示されているコマンドレットの詳しいヘルプを確認には、`Get-Help` コマンドレットを使用します。
+このチュートリアルで示されているコマンドレットの詳しいヘルプを取得するには、`Get-Help` コマンドレットを使用します。
 
 	Get-Help <cmdlet-name> -Detailed
 
@@ -48,7 +51,7 @@ Windows PowerShell を使って RBAC を管理するには、その前に以下�
 
 また、次のチュートリアルをお読みになり、Windows PowerShell での Azure リソース マネージャーのセット アップと使用について詳しく理解してください。
 
-- [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
+- [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 - [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
 
 
@@ -73,7 +76,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
     # Use the subscription name to select the one you want to work on.
     PS C:\> Select-AzureSubscription -SubscriptionName <subscription name>
 
-詳細については、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
+詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## 既存の役割の割り当ての確認
 
@@ -112,7 +115,10 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
     PS C:\> Get-AzureRoleDefinition
 
-割り当てるスコープ: スコープには 3 つのレベルがあります。 - 現在のサブスクリプション - リソース グループ (リソース グループの一覧を取得するには、`PS C:\> Get-AzureResourceGroup` と入力します) - リソース (リソースの一覧を取得するには、`PS C:\> Get-AzureResource` と入力します)
+割り当てるスコープ: スコープには 3 つのレベルがあります。
+  - 現在のサブスクリプション
+  - リソース グループ。リソース グループのリストを取得するには、「`PS C:\> Get-AzureResourceGroup`」と入力します。
+  - リソース 。リソースのリストを取得するには、「`PS C:\> Get-AzureResource`」と入力します。
 
 次に、`New-AzureRoleAssignment` を使ってロールの割り当てを作成します。次に例を示します。
 
@@ -139,19 +145,19 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 これらの 2 つのコマンドレットでは、読み取りのアクセス許可があるリソース グループまたはリソースのみが返されます。また、持っているアクセス許可も表示します。
 
-続いて、`New-AzureResourceGroup` などの他のコマンドレットを実行しようとすると、アクセス許可がない場合にはアクセス拒否エラーを受け取ります。
+`New-AzureResourceGroup` などの他のコマンドレットを実行しようとしたときに、アクセス許可がない場合は、アクセス拒否エラーが発生します。
 
 ## 次のステップ
 
 Windows PowerShell を使用した役割ベースのアクセス制御の管理の詳細と、関連トピックについては、以下を参照してください。
 
-- [Azure のロール ベースのアクセス制御](../role-based-access-control-configure.md)
+- [Azure のロール ベースのアクセス制御](role-based-access-control-configure.md)
 - [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
-- [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](../azure-preview-portal-using-resource-groups.md): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
+- [Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md): Azure Resource Manager について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
-- [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli-install.md)
+- [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

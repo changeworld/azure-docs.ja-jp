@@ -1,5 +1,5 @@
 <properties
-   pageTitle="StorSimple Virtual Array のバックアップからの復元 (プレビュー)"
+   pageTitle="StorSimple Virtual Array のバックアップから復元する"
    description="StorSimple Virtual Array のバックアップを復元する方法について詳しく説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -13,19 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/23/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のバックアップからの復元 (プレビュー)
+# StorSimple Virtual Array のバックアップから復元する
 
 ## 概要 
 
-この記事は、v 1.1.1.0 (パブリック プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。この記事では、StorSimple Virtual Array の共有またはボリュームのバックアップ セットから復元する方法について手順を追って説明します。また、ファイル サーバーとして構成された StorSimple Virtual Array での項目レベルの回復のしくみについても詳しく説明します。
-
-> [AZURE.IMPORTANT]
-> 
-> - このパブリック プレビューは、評価とデプロイ計画策定のみを目的としています。このプレビューの運用環境へのインストールはサポートされていません。
-> - StorSimple Virtual Array で問題が発生した場合は、[StorSimple MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=StorSimple)に問題を投稿してください。
+この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。この記事では、StorSimple Virtual Array の共有またはボリュームのバックアップ セットから復元する方法について手順を追って説明します。また、ファイル サーバーとして構成された StorSimple Virtual Array での項目レベルの回復のしくみについても詳しく説明します。
 
 
 ## バックアップ セットからの共有の復元
@@ -42,7 +37,7 @@
 
 2.  ページの下部にある **[新規としてリストア]** をクリックします。
 
-3.  これにより、**新しい共有として復元**ウィザードが開始されます。**[名前と場所の指定]** ページで次のことを行います。
+3.  これにより、**新しい共有としてリストア** ウィザードが開始されます。**[名前と場所の指定]** ページで、次の手順を実行します。
 
 
 	1.  ソース デバイス名を確認します。これは、復元する共有が含まれたデバイスである必要があります。デバイスの選択項目は淡色表示されています。別のソース デバイスを選択するには、ウィザードを終了し、バックアップ セットを選択し直す必要があります。
@@ -98,7 +93,7 @@
 
 2.  復元ジョブが完了すると、復元が開始され、別の通知が表示されます。復元の進行状況を監視するには、**[ジョブの表示]** をクリックします。これにより、**[ジョブ]** ページが表示されます。
 
-3.  復元ジョブの進行状況を追跡できます。復元が完全に完了したら、デバイスの **[ボリューム]** ページに戻ります。
+3.  復元ジョブの進行状況を追跡できます。復元が 100% 完了したら、デバイスの **[ボリューム]** ページに戻ります。
 
 4.  デバイスのボリュームの一覧に、復元された新しいボリュームが表示されます。復元操作では、同じ種類のボリュームに復元されます。階層化ボリュームは階層化ボリュームとして復元され、ローカル固定ボリュームはローカル固定ボリュームとして復元されます。
 
@@ -115,9 +110,9 @@
 	この方法では、最新の 5 つのバックアップが表示されます。これには、既定のスケジュールされたバックアップと手動バックアップの両方が含まれます。
 
 	
-	-   **スケジュールされたバックアップ**の名前は、"&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC" という形式で指定されています。
+	-   **スケジュールされたバックアップ**には、"&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC" の形式で名前が付けられています。
 
-	-   **手動バックアップ**の名前は、"Ad-hoc-YYYYMMDD-HHMMSS-UTC" という形式で指定されています。
+	-   **手動バックアップ**には、"Ad-hoc-YYYYMMDD-HHMMSS-UTC" の形式で名前が付けられています。
 	
 		![](./media/storsimple-ova-restore/image14.png)
 
@@ -137,4 +132,4 @@ StorSimple Virtual Array 上で共有を作成し、共有をバックアップ�
 
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="02/17/2016"
+	ms.date="02/29/2016"
 	ms.author="wesmc"/>
 
 # Azure Mobile Engagement - 認証への API の使用
@@ -50,7 +50,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 	- 下部のバーの **[エンドポイントの表示]** をクリックして、**[OAuth 2.0 トークン エンドポイント URL]** をコピーします。このドキュメントでは `https://login.microsoftonline.com/{TENANT_ID}/oauth2/token` と呼びます。 <br/>                                    
 2. [Azure CLI](../xplat-cli-install.md) を使用して、サービス プリンシパルに Reader や Owner などのロールを割り当てます。
 
-	Windows 上にいる場合は、`PATH` 環境変数を変更して `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI\bin` を追加し、Azure コマンドを使用できるようにします。
+	Windows を使用している場合は、`PATH` 環境変数を変更して `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI\bin` を追加し、Azure コマンドを使用できるようにします。
 
 	Azure コマンド ライン インターフェイス (CLI) で次のコマンドを実行してアカウントをセットアップします。
 
@@ -92,11 +92,9 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 これは、PowerShell スクリプトを使用する前述の手順を実行するもう 1 つの方法です。
 
-1. Azure PowerShell の最新バージョンを入手します。
+1. Azure PowerShell の最新バージョンを入手します。ダウンロードの手順については、この[リンク](../powershell-install-configure.md)を参照してください。 
 
-	最新バージョンの 1.2.1 は、[こちら](https://github.com/Azure/azure-powershell/releases/tag/v1.2.1-February2016)からダウンロードできます。
-
-2. 管理者モードで Windows PowerShell を開き、[Azure リソース マネージャー コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)がインストールされていることを確認します。
+2. 管理者モードで Windows PowerShell を開き、[Azure Resource Manager のコマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)がインストールされていることを確認します。
 
 		Install-Module AzureRM
 		Install-AzureRM
@@ -125,11 +123,11 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 	このスクリプトでは、ServicePrincipal に割り当てる「名前」を求められます。任意の名前を指定できます。
 
-	スクリプトが完了すると、プログラムを使用して AD で認証を行うために必要な 4 つの値、**TenantId**、**SubscriptionId**、**ApplicationId**、**Secret** が表示されます。
+	スクリプトが完了すると、プログラムを使用して AD で認証を行うために必要な 4 つの値 (**TenantId**、**SubscriptionId**、**ApplicationId**、**Secret**) が表示されます。
 
 	これらの値を参照できるようにコピーします。アクセス トークンを取得するには、`{TENANT_ID}` として TenantId を、`{CLIENT_ID}` として ApplicationId を、`{CLIENT_SECRET}` として Secret を使用します。
 
-8. Microsoft Azure 管理ポータルで、新しい AD アプリケーションが **[会社が所有するアプリケーションを表示する]** で表示されることを確認します。
+8. Microsoft Azure 管理ポータルで、**[会社が所有するアプリケーションを表示する]** に新しい AD アプリケーションが表示されていることを確認します。
 
 #### 有効なトークンを取得する手順
 
@@ -155,7 +153,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 	5391911","resource":"https://management.core.windows.net/","access_token":{ACCESS_T
 	OKEN}}
 
-この例には、POST パラメーターの URL エンコードが含まれました。`resource` の値は実際には `https://management.core.windows.net/` です。URL エンコード `{CLIENT_SECRET}` にも注意してください。特殊文字が含まれることがあります。
+この例に含まれている POST パラメーターの URL エンコードの `resource` 値は、実際には `https://management.core.windows.net/` です。URL エンコード `{CLIENT_SECRET}` にも注意してください。特殊文字が含まれていることがあります。
 
 すべての API 呼び出しに、次の Authorization 要求ヘッダーを含めます。
 
@@ -182,6 +180,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 	![](./media/mobile-engagement-api-authentication/mobile-engagement-api-uri-params.png)
 
->[AZURE.NOTE] <br/> 1.[API ルート アドレス] は以前の API のためのものなので無視してください。<br/> 2. アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。
+>[AZURE.NOTE] <br/>
+>1. API ルート アドレスは以前の API 用であるため、無視してください。<br/> 2. アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

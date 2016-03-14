@@ -42,8 +42,9 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ管理コンソールで次の Nuget コマンドを実行します。
 
-		Install-Package Microsoft.Azure.Common.Authentication -pre
+		Install-Package Microsoft.Azure.Common.Authentication -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
+		Install-Package Microsoft.Azure.Management.Resources -Pre
 
 6. ソリューション エクスプローラーで、**Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
 
@@ -55,6 +56,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 		using Microsoft.Azure.Common.Authentication.Models;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Models;
+		using Microsoft.Azure.Management.Resources;
 		
 		namespace CreateHDInsightCluster
 		{
@@ -82,7 +84,10 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 		
 					var tokenCreds = GetTokenCloudCredentials();
 					var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-		
+					
+					var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+					resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+					
 					_hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 				
 					var parameters = new ClusterCreateParameters
@@ -220,4 +225,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

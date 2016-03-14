@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="02/29/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Dropbox for Business の統合
@@ -110,7 +110,7 @@
 
      5.3.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。  
 
-     >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+	> [AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
      5.4.**[証明書の選択]** をクリックし、**Base-64 でエンコードされた証明書ファイル**を参照します。
@@ -120,7 +120,6 @@
 
 
 6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC749329.png "シングル サインオンの構成")
-
 
 
 
@@ -190,4 +189,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0302_2016-->

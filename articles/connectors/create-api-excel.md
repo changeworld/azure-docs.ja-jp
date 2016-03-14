@@ -14,22 +14,20 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/23/2016"
+ms.date="02/25/2016"
 ms.author="deonhe"/>
 
 # Excel API を使ってみる
 
-Excel に接続して行の挿入、削除などを行います。
+Excel に接続して行の挿入、削除などを行います。Excel API は次のツールから使用できます。
 
-Excel API は PowerApps Enterprise から使用できます。
+- PowerApps
 
 Excel で次の操作を実行できます。
 
 - Excel API を PowerApps Enterprise に追加。その後、ユーザーはアプリ内でこの API を使用できます。 
 
-PowerApps Enterprise での API の追加方法について詳しくは、「[Register an API in PowerApps (PowerApps での API の登録)](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
-
-ロジック アプリでの操作の追加については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
 
 ## トリガーとアクション
 Excel には次のアクションが含まれています。トリガーはありません。
@@ -41,19 +39,18 @@ Excel には次のアクションが含まれています。トリガーはあ�
 すべての API は、JSON および XML 形式のデータに対応します。
 
 ## Swagger REST API リファレンス
-#### このドキュメントはバージョン 1.0 を対象としています。
-
+適用されるバージョン: 1.0。
 
 ### Excel テーブルに新しい行を挿入します。
-**```POST: /datasets/{dataset}/tables/{table}/items```**
+```POST: /datasets/{dataset}/tables/{table}/items```
 
 
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|データセット|string|○|path|なし|Excel ファイル名|
+|dataset|string|○|path|なし|Excel ファイル名|
 |テーブル|string|○|path|なし|Excel テーブル名|
-|項目| |○|本文|なし|指定された Excel テーブルに挿入する行|
+|項目| |○|body|なし|指定された Excel テーブルに挿入する行|
 
 
 ### Response
@@ -62,18 +59,18 @@ Excel には次のアクションが含まれています。トリガーはあ�
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
-------
+
 
 
 
 ### Excel テーブルから 1 つの行を取得します。
-**```GET: /datasets/{dataset}/tables/{table}/items/{id}```**
+```GET: /datasets/{dataset}/tables/{table}/items/{id}```
 
 
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|データセット|string|○|path|なし|Excel ファイル名|
+|dataset|string|○|path|なし|Excel ファイル名|
 |テーブル|string|○|path|なし|Excel テーブル名|
 |id|string|○|path|なし|取得する行の一意識別子|
 
@@ -84,20 +81,20 @@ Excel には次のアクションが含まれています。トリガーはあ�
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
-------
+
 
 
 
 ### Excel テーブルから行を削除します。
-**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```**
+```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
 
 
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|データセット|string|○|path|なし|Excel ファイル名|
+|dataset|string|○|path|なし|Excel ファイル名|
 |テーブル|string|○|path|なし|Excel テーブル名|
-|id|string|○|path|なし|削除する行の一意識別子。|
+|id|string|○|path|なし|削除する行の一意識別子|
 
 
 ### Response
@@ -106,21 +103,21 @@ Excel には次のアクションが含まれています。トリガーはあ�
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
-------
+
 
 
 
 ### Excel テーブルの既存の行を更新します。
-**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```**
+```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
 
 
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|データセット|string|○|path|なし|Excel ファイル名|
+|dataset|string|○|path|なし|Excel ファイル名|
 |テーブル|string|○|path|なし|Excel テーブル名|
 |id|string|○|path|なし|更新する行の一意識別子|
-|item| |○|本文|なし|更新された値のある行|
+|item| |○|body|なし|更新された値のある行|
 
 
 ### Response
@@ -129,7 +126,7 @@ Excel には次のアクションが含まれています。トリガーはあ�
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
-------
+
 
 
 
@@ -139,7 +136,7 @@ Excel には次のアクションが含まれています。トリガーはあ�
 
 | 名前 | データ型 | 必須|
 |---|---|---|
-|表形式|未定義|×|
+|tabular|未定義|×|
 |BLOB|未定義|×|
 
 #### TabularDataSetsMetadata
@@ -209,6 +206,6 @@ Excel には次のアクションが含まれています。トリガーはあ�
 
 
 ## 次のステップ
-[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [パワー アプリの作成](../power-apps/powerapps-get-started-azure-portal.md)
+[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [PowerApps の作成](../power-apps/powerapps-get-started-azure-portal.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

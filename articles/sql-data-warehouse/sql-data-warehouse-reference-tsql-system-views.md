@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/17/2016"
+   ms.date="02/26/2016"
    ms.author="barbkess;sonyama"/>
 
 # システム ビュー
@@ -27,8 +27,6 @@
 - [sys.pdw\_diag\_sessions](http://msdn.microsoft.com/library/mt203890.aspx)
 - [sys.pdw\_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
 - [sys.pdw\_index\_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
-- [sys.pdw\_loader\_backup\_run\_details](http://msdn.microsoft.com/library/mt203877.aspx)
-- [sys.pdw\_loader\_backup\_runs](http://msdn.microsoft.com/library/mt203884.aspx)
 - [sys.pdw\_nodes\_column\_store\_dictionaries](http://msdn.microsoft.com/library/mt203902.aspx)
 - [sys.pdw\_nodes\_column\_store\_row\_groups](http://msdn.microsoft.com/library/mt203880.aspx)
 - [sys.pdw\_nodes\_column\_store\_segments](http://msdn.microsoft.com/library/mt203916.aspx)
@@ -232,4 +230,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

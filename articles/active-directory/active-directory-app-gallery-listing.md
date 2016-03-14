@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/29/2015"
+   ms.date="02/19/2016"
    ms.author="mbaldwin"/>
 
 
@@ -33,7 +33,7 @@ Azure Active Directory でのシングル サインオンをサポートする�
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 
-* [Azure AD Consent フレームワーク]( https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework/)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+* [Azure AD Consent フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
 
 * Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
 
@@ -97,4 +97,4 @@ SAML 2.0 をサポートするすべてのアプリケーションは、[この�
 > 
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

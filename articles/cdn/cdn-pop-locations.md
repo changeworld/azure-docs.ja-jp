@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Azure コンテンツ配信ネットワーク (CDN) の POP の場所" 
-	description="このトピックでは、Azure コンテンツ配信ネットワーク (CDN) の POP の場所の一覧を示します。" 
-	services="cdn" 
-	documentationCenter="" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure コンテンツ配信ネットワーク (CDN) の POP の場所"
+	description="このトピックでは、Azure コンテンツ配信ネットワーク (CDN) の POP の場所の一覧を示します。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/02/2015" 
+<tags
+	ms.service="cdn"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
 	ms.author="casoper"/>
 
 
 #Azure コンテンツ配信ネットワーク (CDN) の POP の場所
 
 このトピックでは、Microsoft Azure CDN の現在の POP の場所を示します。
-   
+
 
 ![CDN の POP の場所](./media/cdn-pop-locations/CDN_POP_locations_update.png)
 
@@ -76,6 +76,6 @@
 ##オーストラリア
 
 - メルボルン
-- シドニー 
+- シドニー
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/04/2015" 
+	ms.date="02/29/2016" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
@@ -549,7 +549,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project ](https://www.owasp.org/index.php/Main_Page)(OWASP)」および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))」を参照してください。
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「(https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))[XSRF] (CSRF)」を参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -724,7 +724,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
@@ -814,5 +814,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-
-<!------HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

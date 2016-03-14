@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/29/2015" 
+	ms.date="02/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -34,4 +34,4 @@ Microsoft Azure HDInsight では、クラスターで Hadoop タスクを実行�
 
 * [HDInsight のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

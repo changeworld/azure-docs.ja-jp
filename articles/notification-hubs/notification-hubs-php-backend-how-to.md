@@ -3,7 +3,7 @@
 	description="PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="ysxu" 
+	authors="wesmc7777" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="php" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="11/01/2015" 
-	ms.author="yuaxu"/>
+	ms.date="02/29/2016" 
+	ms.author="wesmc"/>
 
 # PHP から Notification Hubs を使用する方法
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -106,7 +106,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 	}
 
 ### 通知を送信する
-最初に、通知を表すクラスの定義を使用します。
+最初に、通知を表すクラスを定義します。
 
 	class Notification {
 		public $format;
@@ -255,4 +255,4 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

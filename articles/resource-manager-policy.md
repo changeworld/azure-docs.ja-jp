@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="12/18/2015"
+	ms.date="02/26/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # ポリシーを使用したリソース管理とアクセス制御
@@ -46,7 +46,7 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
 ## ポリシー定義の構造
 
-ポリシー定義は JSON を使用して作成します。これは、条件が満たされた場合に何が発生するかを伝えるアクションおよび効果を定義する 1 つ以上の条件および論理演算子で構成されます。
+ポリシー定義は JSON を使用して作成します。これは、条件が満たされた場合に何が発生するかを伝えるアクションおよび効果を定義する 1 つ以上の条件および論理演算子で構成されます。[http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でスキーマが公開されています。
 
 ポリシーには、基本的に次が含まれます。
 
@@ -90,15 +90,45 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
 ## フィールドおよびソース
 
-条件は、フィールドおよびソースを使用して構成します。フィールドは、リソース要求ペイロードのプロパティを表します。ソースは、要求自体の特性を表します。
+条件は、フィールドおよびソースを使用して構成します。フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。ソースは、要求自体の特性を表します。
 
 次のフィールドおよびソースがサポートされています。
 
-フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***。
+フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**
 
 ソース: **action**
 
+プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
+
+    GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
+	
+エイリアスの定義は次のようになります。ご覧のように、プロパティ名が変更された場合も、エイリアスではさまざまな API バージョンでのパスを定義します。
+
+    "aliases": [
+      {
+        "name": "Microsoft.Storage/storageAccounts/sku.name",
+        "paths": [
+          {
+            "path": "Properties.AccountType",
+            "apiVersions": [ "2015-06-15", "2015-05-01-preview" ]
+          }
+        ]
+      }
+    ]
+
+現在サポートされているエイリアスは次のとおりです。
+
+| エイリアス名 | 説明 |
+| ---------- | ----------- |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Storage/storageAccounts、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| Microsoft.Cache/Redis/enableNonSslPort | |
+| Microsoft.Cache/Redis/shardCount | |
+
+
 アクションの詳細については、「[RBAC - 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」を参照してください。現時点では、ポリシーは、PUT 要求でのみ機能します。
+
 
 ## ポリシー定義の例
 
@@ -168,6 +198,35 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
         "effect" : "deny"
       }
     }
+
+### 承認された SKU の使用
+
+次の例は、プロパティのエイリアスを使用して SKU を制限する方法を示しています。この例では、Standard\_LRS と Standard\_GRS のみ、ストレージ アカウントで使用することが認められます。
+
+    {
+      "if": {
+        "allOf": [
+          {
+            "source": "action",
+            "like": "Microsoft.Storage/storageAccounts/*"
+          },
+          {
+            "not": {
+              "allof": [
+                {
+                  "field": "Microsoft.Storage/storageAccounts/accountType",
+                  "in": ["Standard_LRS", "Standard_GRS"]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+    
 
 ### 命名規則
 
@@ -327,4 +386,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

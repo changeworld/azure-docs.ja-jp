@@ -120,9 +120,9 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
     a.**[SAML-enabled]** で **[Yes]** を選択します。
 
-    b.Azure クラシック ポータルの **[UserEcho でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーして貼り付けます。ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[SAML SSO URL]** ボックスに貼り付けます。
+    b.Azure クラシック ポータルで、[UserEcho でのシングル サインオンの構成] ダイアログ ページの **[シングル サインオン サービス URL]** の値をコピーし、**[SAML SSO URL]** ボックスに貼り付けます。
 
-    c.Azure クラシック ポータルで、**[UserEcho でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** テキストボックスに貼り付けます。
+    c.Azure クラシック ポータルで、[UserEcho でのシングル サインオンの構成] ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** ボックスに貼り付けます。
 
     d.ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[X.509 Certificate]** ボックスに貼り付けます。
 
@@ -253,4 +253,4 @@ Britta に招待状が送信され、UserEcho の使用を開始できるよう�
 [204]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

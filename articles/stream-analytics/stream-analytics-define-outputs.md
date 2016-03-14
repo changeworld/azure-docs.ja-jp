@@ -3,7 +3,7 @@
 	description="データ ストレージ オプションをターゲットにした Stream Analytics データ変換出力について説明します。また、分析結果に Power BI を使用します。"
 	keywords="データ変換、分析結果、データ ストレージ オプション"
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
-	documentationCenter=""
+	documentationCenter="" 
 	authors="jeffstokes72"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="02/04/2016"
+	ms.date="03/02/2016"
 	ms.author="jeffstok"/>
 
 # 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
@@ -39,7 +39,7 @@ Stream Analytics ジョブを作成するときは、データ変換出力の使
 
 ## BLOB ストレージ ##
 
-BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。Azure BLOB ストレージとその使用法の説明については、「[How to use Blobs (BLOB の使用方法)](./articles/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。Azure BLOB ストレージとその使用法の説明については、「[How to use Blobs (BLOB の使用方法)](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 
 次の表に、BLOB 出力を作成するためのプロパティ名とその説明を示します。
 
@@ -118,7 +118,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE] 現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE] 現時点では、Power BI 出力の作成と構成は Azure クラシック ポータルでのみサポートされています。
 
 ### Power BI アカウントを承認する
 
@@ -159,7 +159,7 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 
 ## テーブル ストレージ
 
-[Azure テーブル ストレージ](./articles/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
+[Azure テーブル ストレージ](../storage/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
@@ -267,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,30 +1,17 @@
-Resource|Free|Basic (Preview) <sup>6</sup>|S1|S2
+リソース|無料|Basic (プレビュー) <sup>6</sup>|S1|S2
 ---|---|---|---|----
-Maximum search services|N/A|---|12 per Azure subscription|12 per Azure subscription
-Maximum storage size <sup>1</sup>|50 MB or 10,000 documents|2 GB per service|25 GB per partition or 300 GB documents per service|100 GB per partition or 1.2 TB per service
-Maximum documents hosted|10,000 total|1 million per service|15 million per partition (up to 180 million documents per service)|60 million per partition (up to 720 million documents per service)
-Maximum indexes|3|5|50|200
-Maximum indexers|3|5|50|200
-Maximum indexer datasources|3|5|50|200
-Index: maximum fields per index|1000|100 <sup>5</sup>|1000|1000
-Index: maximum scoring profiles per index|16|16|16|16
-Index: maximum functions per profile|8|8|8|8
-Indexers: maximum indexing load per invocation|10,000 documents|Limited only by maximum documents|Limited only by maximum documents|Limited only by maximum documents
-Indexers: maximum running time|3 minutes|24 hours|24 hours|24 hours
-Queries per second (QPS) <sup>2</sup>|N/A|~3 per replica|~15 per replica|~60 per replica
-Scale out: maximum search units (SU) <sup>3</sup>|N/A|Up to 3 units (3 replicas and 1 partition)|36 units|36 units
-Pricing <sup>4</sup>|N/A|$75 per SU per month|$250 per SU per month|$1000 per SU per month
+最大検索サービス|該当なし|---|Azure サブスクリプションあたり 12|Azure サブスクリプションあたり 12 最大ストレージ サイズ <sup>1</sup>|50 MB または 10,000 ドキュメント|サービスあたり 2 GB|パーティションあたり 25 GB またはサービスあたり 300 GB ドキュメント|パーティションあたり 100 GB またはサービスあたり1.2 TB ホストされる最大ドキュメント|合計 10,000|サービスあたり 100 万|パーティションあたり1,500 万 (サービスあたり最大 18,000 万ドキュメント)|パーティションあたり6,000 万 (サービスあたり最大 720 万ドキュメント) 最大インデックス|3|5|50|200 最大インデクサー|3|5|50|200 最大インデクサー データソース|3|5|50|200 インデックス: インデックスあたりの最大フィールド|1000|100 <sup>5</sup>|1000|1000 インデックス: インデックスあたりの最大スコアリング プロファイル|16|16|16|16 インデックス: プロファイルあたりの最大関数|8|8|8|8 インデクサー: 呼び出しあたりの最大インデックス作成負荷|10,000 ドキュメント|最大ドキュメントによってのみ制限|最大ドキュメントによってのみ制限|最大ドキュメントによってのみ制限 インデクサー: 最大実行時間|3 分|24 時間|24 時間|24 時間 秒あたりのクエリ (QPS) <sup>2</sup>|該当なし|レプリカあたり最大 3|レプリカあたり最大 15|レプリカあたり最大 60 スケール アウト: 最大検索単位数 (SU) <sup>3</sup>|該当なし|最大 3 ユニット (3 レプリカと 1 パーティション)|36 ユニット|36 ユニット 価格 <sup>4</sup>|該当なし|月あたり SU ごとに 75 ドル|月あたり SU ごとに 250ドル|月あたり SU ごとに 1000 ドル
 
-<sup>1</sup> Storage size is either a fixed amount or the number of documents per service, whichever comes first.
+<sup>1</sup> ストレージ サイズは固定量またはサービスあたりのドキュメントの数のいずれか早い方です。
 
-<sup>2</sup> QPS is an approximation based on heuristics, using simulated and actual customer workloads to derive estimated values. Exact QPS throughput will vary depending on your data and the nature of the query.
+<sup>2</sup> QPS は、推定値を取得するためにシミュレーションされた実際の顧客のワークロードを使用する、ヒューリスティックに基づく概数です。正確な QPS スループットはデータとクエリの性質によって異なります。
 
-<sup>3</sup> Search units are the billable unit for either a replica or a partition. You need both for both storage, indexing, and query operations. See [Capacity Planning](../articles/search/search-capacity-planning.md) for valid combinations of replicas and partitions that keep you within the maximum limit of 3 or 36 units, for Basic and Standard respectively.
+<sup>3</sup> 検索単位数はレプリカまたはパーティションのいずれかの課金対象項目です。ストレージ、インデックス作成の両方と、クエリ操作の両方が必要です。Basic と Standard のそれぞれで 3 または 36 ユニットの最大制限内で保持するレプリカとパーティションの有効な組み合わせについては、 「[容量計画](../articles/search/search-capacity-planning.md)」を参照してください。
 
-<sup>4</sup> Price is for the U.S. market, illustrating relative costs among alternative tiers. Different markets have different prices. Refer to the [Pricing page](https://azure.microsoft.com/pricing/details/search/) for rates in other currencies. The rate is per search unit (SU). At the S1 level, a configuration of 3 search units (say 3 replicas and 1 partition) would cost $750 per month on average. If you scale down to fewer SU within the month, the bill is prorated so that you are charged only for what you use.
+<sup>4</sup> 価格は米国市場向けであり、別のレベル間での相対的なコストを示します。さまざまな市場で価格が異なります。他の通貨の価格については、「[Search の価格](https://azure.microsoft.com/pricing/details/search/)」を参照してください。価格は検索単位数 (SU) です。S1 レベルでは、3 検索単位数の構成 (たとえば、3 レプリカと 1 パーティション) が、平均で月あたり 750 ドルかかります。1 か月より少ない SU をスケールダウンすると、使用する場合にのみ料金が発生するように比例配分で課金されます。
 
-<sup>5</sup> This is not a typo. Basic tier has a limit of 100 fields per index. It is the only tier that has this lower limit.
+<sup>5</sup> タイプミスではありません。Basic レベルにはインデックスあたり 100 フィールドの制限があります。この下限がある唯一のレベルです。
 
-<sup>6</sup> [Basic tier](http://aka.ms/azuresearchbasic) is available at an introductory rate of 50% off the full price during the preview period.
+<sup>6</sup> [Basic レベル](http://aka.ms/azuresearchbasic)は、プレビュー期間中では全額 50% オフの導入価格で利用できます。
 
-
+<!---HONumber=AcomDC_0302_2016-->

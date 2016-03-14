@@ -12,8 +12,8 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="12/14/2015"
+	ms.topic="article"
+	ms.date="02/29/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service に .NET Web ジョブを作成する
@@ -124,10 +124,10 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	SQL 接続文字列は、ストレージ アカウント名とアクセス キーのプレースホルダーを持つ場合の例です。これは、ストレージ アカウントの名前とキーを持つ接続文字列と置き換えられます。
 
-	<pre class="prettyprint">&lt;connectionStrings&gt;
-	  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" /&gt;
-	  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-	&lt;/connectionStrings&gt;</pre>
+	<pre class="prettyprint">&lt;connectionStrings>
+	  &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
+	  &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+	&lt;/connectionStrings></pre>
 
 	ストレージ接続文字列は AzureWebJobsStorage という名前になります。これは、Web ジョブ SDK が既定で使用する名前であるためです。Azure 環境では 1 つの接続文字列を設定する必要しかないため、ここでも同じ名前が使用されます。
 
@@ -149,16 +149,16 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 6. ContosoAdsWeb プロジェクトで *Web.config* ファイルを開きます。
 
 	このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。ストレージ アカウントは、アプリケーション データ用とログ用とで使い分けることができるほか、[データ用に複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を使用することができます。このチュートリアルでは、1 つのストレージ アカウントを使用します。接続文字列には、ストレージ アカウント キーのプレースホルダーがあります。
-  	<pre class="prettyprint">&lt;configuration&gt;
-    &lt;connectionStrings&gt;
-        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
-    &lt;/connectionStrings&gt;
-        &lt;startup&gt;
-            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
-    &lt;/startup&gt;
-&lt;/configuration&gt;</pre>
+  	<pre class="prettyprint">&lt;configuration>
+	&lt;connectionStrings>
+	    &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+	    &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/>
+	    &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/>
+	&lt;/connectionStrings>
+	    &lt;startup>
+	        &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+	&lt;/startup>
+	&lt;/configuration></pre>
 
 	既定では、Web ジョブ SDK は、AzureWebJobsStorage および AzureWebJobsDashboard という名前の接続文字列を探します。代替として、[希望する接続文字列を格納し、それを明示的に `JobHost` オブジェクトに渡すこともできます。](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#config)
 
@@ -356,7 +356,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 	このページの **[関数の再生]** をクリックすると、Web ジョブ SDK フレームワークは関数を再度呼び出すため、その機会に、最初に関数へ渡すデータを変更することができます。
 
->[AZURE.NOTE]テストを終了した時点で、Web アプリケーションと SQL Database インスタンスを削除してください。Web アプリは無料ですが、SQL Database インスタンスとストレージ アカウントは有料です (サイズが小さいため少額)。また、Web アプリケーションを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成して表示する可能性があります。クラシック ポータルで、Web アプリの **[ダッシュボード]** タブに移動し、ページ下部の **[削除]** をクリックします。その後、SQL Database インスタンスを同時に削除するためのチェック ボックスをオンにします。一時的に他のユーザーがこの Web アプリにアクセスできないようにするには、代わりに **[停止]** をクリックします。その場合、引き続き、SQL Database とストレージ アカウントについては料金が生じます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
+>[AZURE.NOTE] テストを終了した時点で、Web アプリケーションと SQL Database インスタンスを削除してください。Web アプリは無料ですが、SQL Database インスタンスとストレージ アカウントは有料です (サイズが小さいため少額)。また、Web アプリケーションを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成して表示する可能性があります。クラシック ポータルで、Web アプリの **[ダッシュボード]** タブに移動し、ページ下部の **[削除]** をクリックします。その後、SQL Database インスタンスを同時に削除するためのチェック ボックスをオンにします。一時的に他のユーザーがこの Web アプリにアクセスできないようにするには、代わりに **[停止]** をクリックします。その場合、引き続き、SQL Database とストレージ アカウントについては料金が生じます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
 
 ## <a id="create"></a>アプリケーションを最初から作成する
 
@@ -474,7 +474,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 	- *Global.asax.cs*  
 	- *Controllers* フォルダー: *AdController.cs*
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml* ファイル
-	- *Views\\Home* フォルダー: *Index.cshtml*
+- *Views\\Home* フォルダー: *Index.cshtml*
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -489,7 +489,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 
 以降のセクションでは、Web ジョブ SDK および Azure Storage の BLOB とキューの操作に関連するコードについて説明します。
 
-> [AZURE.NOTE]Web ジョブ SDK に固有のコードについては、[Program.cs と Functions.cs](#programcs) に関するセクションを参照してください。
+> [AZURE.NOTE] Web ジョブ SDK に固有のコードについては、[Program.cs と Functions.cs](#programcs) に関するセクションを参照してください。
 
 ### ContosoAdsCommon - Ad.cs
 
@@ -776,7 +776,7 @@ Web ジョブ SDK は、キュー メッセージを受信したときに、こ�
 
 Web ジョブ SDK の属性を使用する関数を記述する方法の詳細については、以下のリソースを参照してください。
 
-* [Web ジョブ SDK を使用して Azure Queue Storage を操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
+* [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
 * [Web ジョブ SDK で Azure Blob Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 * [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 * [Web ジョブ SDK で Azure Service Bus を使用する方法](websites-dotnet-webjobs-sdk-service-bus.md)
@@ -821,4 +821,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!------HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

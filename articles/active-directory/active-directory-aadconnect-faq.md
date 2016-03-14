@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="02/29/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect の FAQ
@@ -28,11 +28,14 @@
 ## ネットワーク
 **Q: ファイアウォールやネットワーク デバイスなど、ネットワーク上で接続を開ける最大時間を制限するものがあります。Azure AD Connect を使用する場合、クライアント側のタイムアウトしきい値はどのくらいにすればいいでしょうか。** すべてのネットワーク ソフトウェアや物理デバイスなど、接続を開ける最大時間を制限するものは、Azure AD Connect クライアントがインストールされているサーバーと Azure Active Directory 間の接続に対して少なくとも 5 分 (300 秒) のしきい値を使用する必要があります。これは、以前リリースされたすべての Microsoft Identity 同期ツールにも適用されます。
 
-**Q: Office 365 の証明書を更新するように求める電子メールを受信した場合はどうすればいいですか。** [こちら](active-directory-aadconnect-o365-certs.md)の記事に記載されているガイダンスに従って、証明書を更新してください。
-
 **Q: SLD (シングル ラベル ドメイン) はサポートされていますか。** いいえ、Azure AD Connect は、SLD を使用するオンプレミスのフォレスト/ドメインはサポートしていません。
 
 **Q: 「ドット形式」の NetBios 名はサポートされていますか。** いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
+
+## フェデレーション
+**Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**「[Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md)」に記載されているガイダンスに従って、証明書を更新してください。
+
+**Q: O365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。** 「[Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md)」に記載されているガイダンスに従ってください。
 
 ## 環境
 **Q: Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。** いいえ。サーバー名を変更すると、同期エンジンが SQL データベースに接続できなくなり、サービスを開始できなくなります。
@@ -46,7 +49,7 @@
 ## カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。** このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
-**Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。** いいえ。このオプションはすべての構成設定を取得しないため、使用すべきではありません。代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。
+**Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。** いいえ。このオプションはすべての構成設定を取得しないため、使用すべきではありません。代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。「[Move custom configuration from active to staging server](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)」をご覧ください。
 
 ## トラブルシューティング
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**
@@ -63,4 +66,4 @@
 
 - このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

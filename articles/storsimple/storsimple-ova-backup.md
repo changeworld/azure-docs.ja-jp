@@ -12,25 +12,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/22/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array (プレビュー) のバックアップ
+# StorSimple Virtual Array をバックアップする
 
 ## 概要 
 
-このチュートリアルは、v 1.1.1.0 (プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。
+このチュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。
 
 StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サーバーとして構成できる、ハイブリッド クラウド ストレージのオンプレミス仮想デバイスです。バックアップの作成、バックアップからの復元、障害復旧が必要な場合にデバイスのフェールオーバーを実行できます。ファイル サーバーとして構成した場合は、項目レベルの回復もできます。このチュートリアルでは、Azure クラシック ポータルまたは StorSimple Web UI を使用して、StorSimple Virtual Array のスケジュールされたバックアップと手動バックアップを作成する方法について説明します。
 
->[AZURE.IMPORTANT] 
->
->- StorSimple Virtual Array はプレビュー段階であり、評価とデプロイ計画策定を目的としています。このプレビューの運用環境へのインストールはサポートされていません。 
->- StorSimple Virtual Array で問題が発生した場合は、[StorSimple MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=StorSimple)に問題を投稿してください。
 
 ## 共有やボリュームをバックアップする
 
-バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。StorSimple デバイスの共有やボリュームをバックアップするには、**スケジュールされたバックアップ**か**手動バックアップ**を使用します。これらの各方法について、以下のセクションで説明します。
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。StorSimple デバイスの共有やボリュームをバックアップするには、**スケジュールされたバックアップ**または**手動バックアップ**を使用します。これらの各方法について、以下のセクションで説明します。
 
 > [AZURE.NOTE] このリリースでは、スケジュールされたバックアップは既定のポリシーによって作成されます。既定のポリシーは毎日決まった時刻に実行し、デバイスのすべての共有/ボリュームをバックアップします。現時点では、スケジュールされたバックアップ用にカスタム ポリシーを作成することはできません。
 
@@ -106,6 +102,6 @@ StorSimple Virtual Array 上で共有を作成し、共有をバックアップ�
 
 ## 次のステップ
 
-[StorSimple Virtual Array 管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
+[StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

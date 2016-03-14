@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##1.概要
+##1\.概要
 このドキュメントは、API リファレンスです。最初に、ドキュメント『Azure Machine Learning Recommendations – クイック スタート』をお読みください。
 
 Azure Machine Learning の Recommendations API は、次の論理グループに分割できます。
@@ -33,7 +33,7 @@ Azure Machine Learning の Recommendations API は、次の論理グループに
 - <ins>基本モデル</ins> – モデルで基本的な操作が可能な API (例: モデルの作成、更新、削除)。
 - <ins>高度なモデル</ins> – モデルの高度なデータ分析を取得できるようにする API。
 - <ins>ビジネス ルールのモデル</ins> – モデルの推奨結果に関するビジネス ルールを管理できるようにする API。
-- <ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタデータ情報が含まれています。
+- <ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタ データ情報が含まれています。
 - <ins>機能</ins> - 項目のインサイトをカタログに表示でき、この情報を使用してより良い推奨事項を構築する方法を有効にする API。
 - <ins>使用状況データ</ins> – モデルの使用状況データに関する基本操作を実行できる API。基本フォームの使用状況データは、&#60;userId&#62;,&#60;itemId&#62; のペアを含む行で構成されます。
 - <ins>ビルド</ins> – モデルのビルドを起動し、このビルドに関連する基本操作を実行できるようにする API。モデルのビルドは、有効な使用状況データが存在する場合に起動できます。
@@ -150,7 +150,7 @@ OData XML
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -213,7 +213,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -284,7 +284,7 @@ OData XML
 |:--------			|:--------								|
 |	id | モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
 **応答**:
@@ -302,7 +302,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -346,7 +346,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -583,7 +583,7 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	buildId |	省略可能 – 成功したビルドを識別する数値。 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -663,7 +663,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -806,12 +806,12 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 ##7.ビジネス ルールのモデル
 
-サポートされるルールの種類を次に示します。
-<strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。 
+サポートされるルールの種類は次のとおりです。
+- <strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。 
 
 - <strong>FeatureBlockList</strong> - Feature BlockList では、機能の値に基づいて項目をブロックできます。
 
-*1 つの BlockList ルールで 1000 個以上の項目を送信しないでください。呼び出しがタイムアウトになる場合があります。1000 個以上の項目をブロックする必要がある場合は、複数の BlockList 呼び出しを行うことができます。*
+*1 つの BlockList ルールで 1000 個を超える項目を送信しないでください。呼び出しがタイムアウトになる場合があります。1000 個を超える項目をブロックする必要がある場合は、複数の BlockList 呼び出しを行うことができます。*
 
 - <strong>Upsale</strong> - Upsale では項目を強制的に推奨事項の結果の一部として返すことができます。
 
@@ -834,7 +834,7 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -892,9 +892,9 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供する際は、そのアイテムの 外部 ID が使用されていることを確認する(カタログ ファイルで使用した ID と同じ)</ins><br>
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> 
 <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
 <ins>FeatureBlockList ルールを追加するには:</ins><br>
 <br>
@@ -953,7 +953,7 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	filterId |	フィルターの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -970,7 +970,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -991,7 +991,7 @@ HTTP 状態コード: 200
 
 注: ファイルの最大サイズは、200 MB です。
 
-* * 形式の詳細 * *
+** 形式の詳細 **
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -1020,8 +1020,8 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-API は、インポートのレポートを返します。
-- `feed\entry\content\properties\LineCount` – 受け入れられた行数。
+この API では、インポートのレポートが返されます。
+- `feed\entry\content\properties\LineCount` – 受け入れられる行数。
 - `feed\entry\content\properties\ErrorCount` – エラーのために挿入されなかった行数。
 
 OData XML
@@ -1058,7 +1058,7 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1161,7 +1161,7 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	token |	カタログ項目の名前のトークン。3 文字以上にする必要があります。 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1170,12 +1170,12 @@ HTTP 状態コード: 200
 
 応答には、カタログ項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed/entry/content/properties/ExternalId` – カタログ項目の外部 ID。顧客が指定したカタログ項目。
 - `feed/entry/content/properties/InternalId` – カタログ項目の内部 ID。Azure Machine Learning Recommendations が生成したカタログ項目。
 - `feed/entry/content/properties/Name` – カタログ項目の名前。
-- `feed/entry/content/properties/Category` – カタログ項目のカテゴリ。
-- `feed/entry/content/properties/Description` – カタログ項目の説明。
-- `feed/entry/content/properties/Metadata` – カタログ項目のメタデータ。
+- `feed/entry/content/properties/Rating` – (将来的に使用)
+- `feed/entry/content/properties/Reasoning` – (将来的に使用)
+- `feed/entry/content/properties/Metadata` – (将来的に使用)
+- `feed/entry/content/properties/FormattedRating` – (将来的に使用)
 
 OData XML
 
@@ -1381,7 +1381,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	forModelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1448,7 +1448,7 @@ OData XML
 | endDate |	終了日。形式: yyyy/MM/ddTHH:mm:ss |
 | eventTypes |	イベント種類のコンマ区切りの文字列。すべてのイベントを取得する場合は null 値。 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1531,7 +1531,7 @@ OData XML
 | modelId |	モデルの一意識別子 |
 | フィールド |	モデルの使用状況ファイルの一意識別子。 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1571,7 +1571,7 @@ HTTP 状態コード: 200
 | fid |	モデルの使用状況ファイルの一意識別子。 |
 | ダウンロード | 1 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1627,7 +1627,7 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 | フィールド | 削除するファイルの一意識別子 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1646,7 +1646,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -1670,7 +1670,7 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/>有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 
@@ -1753,7 +1753,7 @@ OData XML
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 |rankBuildId| 順位付けのビルドの一意識別子。最後の順位付けのビルドの場合は -1。|
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 
@@ -1915,8 +1915,8 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | modelId |	モデルの一意識別子 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-|
-| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「ビルド パラメーター」のセクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+|||
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **応答**:
 
@@ -1991,8 +1991,8 @@ OData XML
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例を参照してください。<br>最大長: 50 |
 | buildType | 呼び出すビルドの種類: <br/> - 推奨事項のビルドは、'Recommendation' <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt'
 | apiVersion | 1\.0 |
-|
-| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、「ビルド パラメーター」のセクションを参照してください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+|||
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、パラメーターのビルド セクションを参照してください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **応答**:
 
@@ -2091,17 +2091,17 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態:
-- Created - ビルド要求のエントリが作成されました。
-- Queued – ビルド要求がトリガーされ、キューに登録されました。
-- Building – ビルドが処理中です。
+有効なビルド状態:
+- Created – ビルド要求エントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューされます。
+- Building - ビルドが処理中です。
 - Success - ビルドが正常に終了しました。
-- Error - ビルドがエラーで終了しました。
-- Cancelled - ビルドは取り消されました。
-- Cancelling - ビルドは取り消されます。
+- Error – ビルドでエラーが発生して終了しました。
+- Cancelled – ビルドが取り消されました。
+- Cancelling – ビルドが取り消されます。
 
-ビルドの種類の有効な値:
-- Rank - 順位付けのビルド。
+ビルドの種類における有効な値:
+- Rank - 順番付けのビルド。
 - Recommendation - 推奨事項のビルド。
 
 
@@ -2175,18 +2175,18 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態:
-- Created - ビルド要求のエントリが作成されました。
-- Queued – ビルド要求がトリガーされ、キューに登録されました。
-- Building – ビルドが処理中です。
+有効なビルド状態:
+- Created – ビルド要求エントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューされます。
+- Building - ビルドが処理中です。
 - Success - ビルドが正常に終了しました。
-- Error - ビルドがエラーで終了しました。
-- Cancelled - ビルドは取り消されました。
-- Cancelling - ビルドは取り消されます。
+- Error – ビルドでエラーが発生して終了しました。
+- Cancelled – ビルドが取り消されました。
+- Cancelling – ビルドが取り消されます。
 
 
-ビルドの種類の有効な値:
-- Rank - 順位付けのビルド。
+ビルドの種類における有効な値:
+- Rank - 順番付けのビルド。
 - Recommendation - 推奨事項のビルド。
 
 
@@ -2229,7 +2229,7 @@ OData XML
 ###11.6.ビルドの削除
 ビルドを削除します。
 
-注意: <br>アクティブなビルドを削除することはできません。削除する前に、そのモデルを別のアクティブなビルドに変更する必要があります。<br>進行中のビルドを削除することはできません。まず、「<strong>ビルドのキャンセル</strong>」を呼び出してビルドを取り消す必要があります。
+注意: <br>アクティブなビルドを削除することはできません。削除する前に、そのモデルを別のアクティブなビルドに更新する必要があります。<br>進行中のビルドを削除することはできません。まず、「<strong>ビルドのキャンセル</strong>」を呼び出してビルドを取り消す必要があります。
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -2276,9 +2276,9 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-この API は、キーと値の要素のコレクションを返します。各要素は、パラメーターとその値を表します。
-- `feed/entry/content/properties/Key` – ビルドのパラメーター名。
-- `feed/entry/content/properties/Value` – ビルドのパラメーターの値。
+この API は、キーと値の要素のコレクションを返します。各要素は、パラメーターとその値を表します:
+- `feed/entry/content/properties/Key` – パラメーター名をビルドします。
+- `feed/entry/content/properties/Value` – パラメーターの値をビルドします。
 
 次の表は、各キーを表す値を示しています。
 
@@ -2479,7 +2479,7 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemIds | 推奨項目のコンマ区切りの一覧。<br>アクティブなビルドが FBT の種類の場合は、1 つの項目のみを送信できます。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 |
+| numberOfResults | 必要な結果の数 <br> 最大: 150 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | apiVersion | 1\.0 |
 
@@ -2488,11 +2488,11 @@ OData XML
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 次の応答例には、10 個の推奨項目が含まれています。
 
@@ -2669,11 +2669,11 @@ OData XML
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2699,13 +2699,13 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 
-応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。
-- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` – 項目の名前。
-- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。
-- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (任意)。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` - 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 次の応答例には、3 個の推奨項目セットが含まれています。
 
@@ -2791,15 +2791,15 @@ OData XML
 HTTP 状態コード: 200
 
 
-応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには次のデータが含まれます。
-- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` – 項目の名前。
-- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目の ID (任意)。
-- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (任意)。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` - 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
-12\.3 の応答の例をご覧ください。
+12\.3 の応答の例を参照してください。
 
 ###12.5.ユーザーの推奨事項の取得（アクティブなビルド）
 
@@ -2808,8 +2808,8 @@ HTTP 状態コード: 200
 API では、ユーザーの使用率の履歴に基づいて予測される項目の一覧を返します。
 
 注:
- 1．FBT ビルドに対するユーザーの推奨事項はありません。
- 2.アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
+ 1. FBT ビルドに対するユーザーの推奨事項はありません。
+ 2. アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
 
 | HTTP メソッド | URI |
 |:--------|:--------|
@@ -2828,11 +2828,11 @@ API では、ユーザーの使用率の履歴に基づいて予測される項�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2843,8 +2843,8 @@ HTTP 状態コード: 200
 API では、ユーザーとその他に提供された項目の使用率の履歴に基づいて予測される項目の一覧を返します。
 
 注:
- 1．FBT ビルドに対するユーザーの推奨事項はありません。
- 2.アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
+ 1. FBT ビルドに対するユーザーの推奨事項はありません。
+ 2. アクティブなビルドが FBT の場合、このメソッドはエラーを返します。
 
 
 | HTTP メソッド | URI |
@@ -2865,15 +2865,15 @@ API では、ユーザーとその他に提供された項目の使用率の履�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
-###12.7.ユーザーの推奨事項の取得 (特定のビルド)
+###12\.7.ユーザーの推奨事項の取得 (特定のビルド)
 
 「推奨事項」の種類の特定のビルドでユーザーの推奨事項を取得します。
 
@@ -2900,16 +2900,16 @@ API では、ユーザーの使用率の履歴 (特定のビルドで使用) に
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
 
-###12.8.ユーザーの推奨事項と項目リストの取得（特定のビルド）
+###12\.8.ユーザーの推奨事項と項目リストの取得（特定のビルド）
 
 「推奨事項」とその他の項目リストの種類の特定のビルドでユーザーの推奨事項を取得します。
 
@@ -2938,11 +2938,11 @@ API では、ユーザーとその他の項目リストにおける使用率の�
 HTTP 状態コード: 200
 
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリは、次のデータを持っています:
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨事項の評価。値が大きいと信頼度が高くなります。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (例: 推奨事項の説明)。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2972,9 +2972,9 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目 ID。
-- `Feed\entry\content\properties\Name` –項目の名前。
+応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
 - `Feed\entry\content\properties\Rating` – 該当なし。
 - `Feed\entry\content\properties\Reasoning` – 該当なし。
 
@@ -3006,7 +3006,7 @@ OData XML
 </feed>
 
 ##14.通知
-Azure Machine Learning Recommendations は、システムで永続的なエラーが発生した際に、通知を作成します。通知には 3 つの種類があります。
+Azure Machine Learning Recommendations は、システムで永続的なエラーが発生した際に、通知を作成します。通知には次の 3 種類があります。
 1.	ビルドの失敗 - この通知は、すべてのビルドの失敗により生成されます。
 2.	データ取得プロセスの失敗 - この通知は、1 つのモデルの使用状況イベント処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
 3.	推奨の使用の失敗 - この通知は、1 つのモデルの推奨要求処理で、最後の 5 分間に 100 を超えるエラーが発生した場合に生成されます。
@@ -3024,7 +3024,7 @@ Azure Machine Learning Recommendations は、システムで永続的なエラ�
 |:--------			|:--------								|
 | modelId | 省略可能なパラメーター。省略すると、すべてのモデルのすべての通知が取得されます。<br>有効な値: モデルの一意識別子。|
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答:**
@@ -3076,7 +3076,7 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -3094,7 +3094,7 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -3111,4 +3111,4 @@ HTTP 状態コード: 200
 © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

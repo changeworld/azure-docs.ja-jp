@@ -17,6 +17,10 @@
 	ms.author="heidist"/>
 
 # Azure Search 管理 REST API の使用
+> [AZURE.SELECTOR]
+- [ポータル](search-manage.md)
+- [PowerShell](search-manage-powershell.md)
+- [REST API](search-get-started-management-api.md)
 
 Azure Search REST 管理 API は、ポータルでプログラムを使用して管理タスクを実行するものです。サービス管理操作には、サービスの作成または削除、サービスのスケーリング、およびキーの管理があります。このチュートリアルには、サービス管理 API を示すサンプル クライアント アプリケーションが用意されています。また、ローカル開発環境でサンプルを実行するのに必要な構成手順も含まれます。
 
@@ -204,4 +208,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

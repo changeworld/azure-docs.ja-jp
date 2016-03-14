@@ -19,8 +19,8 @@
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする
 
 > [AZURE.SELECTOR]
-- [Enhanced](site-recovery-vmware-to-azure-classic.md)
-- [Legacy](site-recovery-vmware-to-azure-classic-legacy.md)
+- [拡張](site-recovery-vmware-to-azure-classic.md)
+- [レガシ](site-recovery-vmware-to-azure-classic-legacy.md)
 
 Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
@@ -86,7 +86,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 ### ソース環境の考慮事項
 
-- **1 日の変更率の上限** - 保護されたマシンは、1 つのプロセス サーバーのみを使用できます。または、1 つのプロセス サーバーは最大 2 TB の 1 日の変更率に対応できます。そのため、保護されたマシンでサポートされる 1 日のデータ変化率の上限は 2 TB です。
+- **1 日の変更率の上限** - 保護されたマシンは、1 つのプロセス サーバーのみを使用できます。また、1 つのプロセス サーバーは 1 日に最大 2 TB のデータ変更に対応できます。そのため、保護されたマシンでサポートされる 1 日のデータ変化率の上限は 2 TB です。
 - **最大スループット** - レプリケートされたマシンは、Azure の 1 つのストレージ アカウントに属することができます。Standard ストレージ アカウントは、1 秒間に最大 20,000 要求を処理できます。ソース マシン全体の IOPS 数を 20,000 以下に抑えることをお勧めします。たとえば、5 個のディスクが搭載されたソース マシンで、各ディスクから 120 IOPS (8K サイズ) が生成される場合、Azure 内のディスクごとの IOPS 制限は 500 になります。必要なストレージ アカウントの数は、合計ソース IOPS/20000 です。 
  
 
@@ -184,7 +184,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 --- | ---
 **Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
 **Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[標準の地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium Storage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については[こちら](../storage/storage-introduction.md)を参照してください。
-**Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure 仮想ネットワークは、Site Recovery コンテナーと同じリージョン内にある必要があります。<br/><br/>Azure へのフェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (Azure ExpressRoute) の設定が必要になります。 
+**Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure Virtual Network は、Site Recovery コンテナーと同じリージョン内にある必要があります。<br/><br/>Azure へのフェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (Azure ExpressRoute) の設定が必要になります。 
 
 
 ### オンプレミスの前提条件
@@ -193,7 +193,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 --- | ---
 **管理サーバー** | 仮想マシンまたは物理サーバーで実行されているオンプレミス Windows 2012 R2 サーバーが必要です。すべてのオンプレミス Site Recovery コンポーネントは、この管理サーバーにインストールされます。<br/><br/>このサーバーは高可用 VMware VM としてデプロイすることをお勧めします。フェールオーバーしたのが VM か物理サーバーかに関係なく、Azure からオンプレミス サイトへのフェールバック先は常に VMware VM です。VMware VM として管理サーバーを構成していない場合、フェールバック トラフィックを受信するために、VMware VM として別にマスター ターゲット サーバーを設定する必要があります。<br/><br/>管理サーバーには静的 IP アドレスを割り当てる必要があります。<br/><br/>サーバーのホスト名は 15 文字以下にする必要があります。<br/><br/>オペレーティング システムのロケールは、英語のみにする必要があります。<br/><br/>管理サーバーからインターネットにアクセスできる必要があります。<br/><br/>サーバーからの送信アクセスが必要です。具体的には、(MySQL をダウンロードするための) Site Recovery コンポーネントのセットアップ中に HTTP 80 の一時アクセス、レプリケーション管理のための HTTPS 443 の継続的な送信アクセス、レプリケーション トラフィックのための HTTPS 9443 (このポートは変更できます) の継続的な送信アクセスです。<br/><br/>管理サーバーから次の URL にアクセスできることを確認します: <br/>- *.hypervrecoverymanager.windowsazure.com<br/>- *.accesscontrol.windows.net<br/>- *.backup.windowsazure.com<br/>- *.blob.core.windows.net<br/>- *.store.core.windows.net<br/>-http://www.msftncsi.com/ncsi.txt<br/>- [ http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi "http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi")<br/><br/>サーバーに IP アドレスベースのファイアウォール規則が設定されている場合には、その規則で Azure との通信が許可されているかどうかを確認してください。[Azure Datacenter の IP の範囲](https://www.microsoft.com/download/details.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。また、サブスクリプションの Azure リージョンと米国西部の IP アドレスの範囲をホワイト リストに追加する必要があります。[http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi "http://dev.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi") という URL は、MySQL のダウンロード用です。 
 **VMware vCenter/ESXi ホスト**: | VMware 仮想マシンを管理し、最新の更新プログラムがインストールされた ESX/ESXi バージョン 6.0、5.5、または 5.1 を実行する 1 つ以上の VMware vSphere ESX/ESXi ハイパーバイザーが必要です。<br/><br/> ESXi ホストを管理する VMware vCenter サーバーをデプロイすることをお勧めします。最新の更新プログラムがインストールされた vCenter バージョン 6.0 または 5.5 を実行する必要があります。<br/><br/>Site Recovery は、クロス vCenter vMotion、仮想ボリューム、記憶域 DRS など、vCenter および vSphere 6.0 の新しい機能をサポートしていません。Site Recovery のサポートは、バージョン 5.5 で提供されていた機能に限定されます。
-**保護されたマシン**: | **Azure**<br/><br/>保護するマシンは、Azure VM を作成するための [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。<br><br/>フェールオーバー後に Azure VM に接続する場合、ローカル ファイアウォールでリモート デスクトップ接続を有効にする必要があります。<br/><br/>保護されたマシンの各ディスクの容量は、1023 GB 以下にする必要があります。VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。1 TB を超えるハード ディスクがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>共有ディスク ゲスト クラスターはサポートされていません。クラスター化されたデプロイメントがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) ブートはサポートされていません。<br/><br/>マシン名は 1 ～ 63 文字 (英字、数字、ハイフン) にする必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンの保護後に Azure 名を変更することができます。<br/><br/>**VMware VM**<br/><br>管理サーバー (構成サーバー) には VMware vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br/>保護対象の VMware VM には、VMware ツールをインストールし、実行する必要があります。<br/><br/>ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後は単一の NIC に変換されます。<br/><br/>保護された VM に iSCSI ディスクがある場合、VM が Azure にフェールオーバーしたときに、Site Recovery は保護された VM iSCSI ディスクを VHD ファイルに変換します。Azure VM から iSCSI ターゲットに到達できる場合、iSCSI ターゲットに接続すると、基本的に Azure VM 上の VHD ディスクとソース iSCSI ディスクという 2 つのディスクを確認できます。この場合、フェールオーバーした Azure VM にある iSCSI ターゲットを切断する必要があります。<br/><br/>Site Recovery に必要な VMware ユーザーのアクセス許可については、[こちら](#vmware-permissions-for-vcenter-access)を参照してください。<br/><br/> **Windows Server マシン (VMware VM または物理サーバー)**<br/><br/>サーバーはサポートされる 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または SP1 以降がインストールされた Windows Server 2008 R2) を実行する必要があります。<br/><br/>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\\Windows) は英語のみで指定する必要があります。<br/><br/>オペレーティング システムは C:\\ ドライブにインストールする必要があります。また、OS ディスクは Windows 基本ディスクにする必要があります (OS は Windows ダイナミック ディスクにインストールしないでください)。<br/><br/>Windows サーバーのモビリティ サービスのプッシュ インストールのために管理者アカウント (Windows マシンのローカル管理者である必要があります) を用意する必要があります。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。詳細については[こちら](#install-the-mobility-service-with-push-installation)を参照してください。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートしています。フェールバック時に、1 つ目のソース VM と RDM ディスクを使用できる場合、Site Recovery は RDM ディスクを再利用します。使用できない場合、フェールバック時に Site Recovery は各ディスク用に新しい VMDK ファイルを作成します。<br/><br/>**Linux マシン**<br/><br/>サポートされる 64 ビット オペレーティング システムが必要です。具体的には、Red Hat Enterprise Linux 6.7、Centos 6.5、6.6、6.7、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel Release 3 (UEK3) を実行する Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3 です。<br/><br/>保護されたマシンの /etc/hosts ファイルには、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリを含める必要があります。<br/><br/>フェールオーバー後に Secure Shell クライアント (ssh) を使用して Linux を実行している Azure 仮想マシンに接続する場合、保護されたマシンの Secure Shell サービスがシステムの起動時に自動的に開始されるように設定します。また、ファイアウォール規則で ssh 接続を許可します。<br/><br/>ホスト名、マウント ポイント、デバイス名、Linux システム パスとファイル名 (例: /etc/、/usr) は英語のみで指定する必要があります。<br/><br/>ファイル システム (EXT3、ETX4、ReiserFS、XFS)、Multipath software-Device Mapper (multipath)、Volume manager (LVM2) の記憶域を搭載した Linux マシンの場合にのみ、保護を有効にすることができます。HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。ReiserFS ファイルシステムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートします。Linux のフェールバックの場合、Site Recovery は RDM ディスクを再利用しません。代わりに、対応する各 RDM ディスク用に新しい VMDK ファイルを作成します。 
+**保護されたマシン** | **Azure**<br/><br/>保護するマシンは、Azure VM を作成するための [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。<br><br/>フェールオーバー後に Azure VM に接続する場合、ローカル ファイアウォールでリモート デスクトップ接続を有効にする必要があります。<br/><br/>保護されたマシンの各ディスクの容量は、1023 GB 以下にする必要があります。VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。1 TB を超えるハード ディスクがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>共有ディスク ゲスト クラスターはサポートされていません。クラスター化されたデプロイメントがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) ブートはサポートされていません。<br/><br/>マシン名は 1 ～ 63 文字 (英字、数字、ハイフン) にする必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンの保護後に Azure 名を変更することができます。<br/><br/>**VMware VM**<br/><br>管理サーバー (構成サーバー) には VMware vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br/>保護対象の VMware VM には、VMware ツールをインストールし、実行する必要があります。<br/><br/>ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後は単一の NIC に変換されます。<br/><br/>保護された VM に iSCSI ディスクがある場合、VM が Azure にフェールオーバーしたときに、Site Recovery は保護された VM iSCSI ディスクを VHD ファイルに変換します。Azure VM から iSCSI ターゲットに到達できる場合、iSCSI ターゲットに接続すると、基本的に Azure VM 上の VHD ディスクとソース iSCSI ディスクという 2 つのディスクを確認できます。この場合、フェールオーバーした Azure VM にある iSCSI ターゲットを切断する必要があります。<br/><br/>Site Recovery に必要な VMware ユーザーのアクセス許可については、[こちら](#vmware-permissions-for-vcenter-access)を参照してください。<br/><br/> **Windows Server マシン (VMware VM または物理サーバー)**<br/><br/>サーバーはサポートされる 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または SP1 以降がインストールされた Windows Server 2008 R2) を実行する必要があります。<br/><br/>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\\Windows) は英語のみで指定する必要があります。<br/><br/>オペレーティング システムは C:\\ ドライブにインストールする必要があります。また、OS ディスクは Windows 基本ディスクにする必要があります (OS は Windows ダイナミック ディスクにインストールしないでください)。<br/><br/>Windows サーバーのモビリティ サービスのプッシュ インストールのために管理者アカウント (Windows マシンのローカル管理者である必要があります) を用意する必要があります。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。詳細については[こちら](#install-the-mobility-service-with-push-installation)を参照してください。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートしています。フェールバック時に、1 つ目のソース VM と RDM ディスクを使用できる場合、Site Recovery は RDM ディスクを再利用します。使用できない場合、フェールバック時に Site Recovery は各ディスク用に新しい VMDK ファイルを作成します。<br/><br/>**Linux マシン**<br/><br/>サポートされる 64 ビット オペレーティング システムが必要です。具体的には、Red Hat Enterprise Linux 6.7、Centos 6.5、6.6、6.7、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel Release 3 (UEK3) を実行する Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3 です。<br/><br/>保護されたマシンの /etc/hosts ファイルには、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリを含める必要があります。<br/><br/>フェールオーバー後に Secure Shell クライアント (ssh) を使用して Linux を実行している Azure 仮想マシンに接続する場合、保護されたマシンの Secure Shell サービスがシステムの起動時に自動的に開始されるように設定します。また、ファイアウォール規則で ssh 接続を許可します。<br/><br/>ホスト名、マウント ポイント、デバイス名、Linux システム パスとファイル名 (例: /etc/、/usr) は英語のみで指定する必要があります。<br/><br/>ファイル システム (EXT3、ETX4、ReiserFS、XFS)、Multipath software-Device Mapper (multipath)、Volume manager (LVM2) の記憶域を搭載した Linux マシンの場合にのみ、保護を有効にすることができます。HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。ReiserFS ファイルシステムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートします。Linux のフェールバックの場合、Site Recovery は RDM ディスクを再利用しません。代わりに、対応する各 RDM ディスク用に新しい VMDK ファイルを作成します。 
 
 
 ## ステップ 1: コンテナーの作成
@@ -226,7 +226,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 ## 手順 4: コンテナー登録キーをダウンロードする
 
-1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[Recovery Services]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
+1. 管理サーバーから Azure の Site Recovery コンソールを開きます。**[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure-classic/quick-start-icon.png)
 
@@ -273,7 +273,9 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 	![前提条件](./media/site-recovery-vmware-to-azure-classic/combined-wiz4.png)
 
->[AZURE.WARNING] **[グローバル時間の同期]** 前提条件の確認で警告が表示される場合は、システム クロックの時刻がタイム ゾーンと同じであることを確認します。+ + ![TimeSyncIssue](./media/site-recovery-vmware-to-azure-classic/time-sync-issue.png)
+>[AZURE.WARNING] **[グローバル時間の同期]** 前提条件の確認で警告が表示される場合は、システム クロックの時刻がタイム ゾーンと同じであることを確認します。
+ +	
+ +	![TimeSyncIssue](./media/site-recovery-vmware-to-azure-classic/time-sync-issue.png)
 
 8. **[MySQL の構成]** で、MySQL サーバー インスタンスにログオンするための資格情報を作成します。特殊文字 ('\_'、'!'、'@'、'$'、'\\'、'%') を指定できます。
 
@@ -299,13 +301,11 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 13.  **[概要]** の情報を確認します。
 
 	![概要](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
-
->[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。
->インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
+>[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
 >
 	$pwd = ConvertTo-SecureString -String ProxyUserPassword
 	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd
-	net stop obengin
+ 	net stop obengine 
 	net start obengine
 	 
 
@@ -510,7 +510,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 4. 「*`sudo ./install -t both -a host -R Agent -d /usr/local/ASR -i <IP address> -p <port> -s y -c https -P passphrase.txt`*」と入力して、モビリティ サービスをインストールします。
 5. 管理サーバーの内部 IP アドレスを指定し、ポート 443 を選択します。
 
-**次のようにコマンド ラインからインストールすることもできます**。
+**次のようにコマンド ラインからインストールすることもできます。**
 
 1. 管理サーバーの C:\\Program Files (x86)\\InMage Systems\\private\\connection のパスフレーズをコピーし、管理サーバーに "passphrase.txt" というファイル名で保存します。次のコマンドを実行します。この例で、管理サーバーの IP アドレスは 104.40.75.37、HTTPS ポートは 443 です。
 
@@ -754,4 +754,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細についてはこちら](site-recovery-failback-azure-to-vmware-classic.md)を参照してください。
 
-<!-----------HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

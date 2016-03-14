@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="11/30/2015" 
+    ms.date="02/26/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh698319.aspx -->
@@ -43,22 +43,22 @@ Java 用 Azure ライブラリの Javadoc コンテンツは、Javadoc コンテ
 
 [Azure Toolkit for Eclipse][]
 
-[Creating a Hello World Application for Azure in Eclipse (Eclipse での Azure 用 Hello World アプリケーションの作成)][]
+[Azure の Hello World アプリケーションを Eclipse で作成する][]
 
-[Installing the Azure Toolkit for Eclipse (Azure Toolkit for Eclipse のインストール)][]
+[Azure Toolkit for Eclipse のインストール][]
 
-Java での Azure の使用方法の詳細については、「[Azure Java Developer Center][]」をご覧ください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Creating a Hello World Application for Azure in Eclipse (Eclipse での Azure 用 Hello World アプリケーションの作成)]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse (Azure Toolkit for Eclipse のインストール)]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
 [ic553487]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553487.png
 [ic553488]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553488.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

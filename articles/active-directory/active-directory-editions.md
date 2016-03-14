@@ -117,7 +117,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 
 
-<br> <hr>
+<br>
+<hr>
 ## 共通機能
 #### ディレクトリ オブジェクト 
 
@@ -152,7 +153,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 
 
-<br> <hr>
+<br>
+<hr>
 #### シングル サインオン (SSO)
 
 **種類:** 共通機能
@@ -172,7 +174,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [Azure Active Directory (AD) を使ったアプリケーションの管理](active-directory-enable-sso-scenario.md)
 
-<br> <hr>
+<br>
+<hr>
 #### クラウド ユーザーに対するセルフサービスのパスワード変更
 
 **種類:** 共通機能
@@ -188,7 +191,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 - [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 
 
-<br> <hr>
+<br>
+<hr>
 #### 接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン) 
 
 **種類:** 共通機能
@@ -204,7 +208,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<br> <hr>
+<br>
+<hr>
 #### セキュリティ/使用量レポート
 
 **種類:** 共通機能
@@ -220,7 +225,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<br> <hr>
+<br>
+<hr>
 
 ## Premium および Basic の機能
 #### グループ ベースのアクセス管理/プロビジョニング
@@ -238,7 +244,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md)
 
-<br> <hr>
+<br>
+<hr>
 #### クラウド ユーザーに対するセルフサービスのパスワード リセット
 
 **種類:** Basic の機能
@@ -254,7 +261,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [ユーザーおよび管理者の Azure AD のパスワード リセット](active-directory-passwords.md)
 
-<br> <hr>
+<br>
+<hr>
 #### 企業ブランド (ログオン ページ/アクセス パネルのカスタマイズ)
 
 **種類:** Basic の機能
@@ -270,7 +278,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<br> <hr>
+<br>
+<hr>
 #### アプリケーション プロキシ
 
 **種類:** Basic の機能
@@ -286,7 +295,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
 
-<br> <hr>
+<br>
+<hr>
 #### SLA 99.9%
 
 **種類:** Basic の機能
@@ -302,7 +312,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)
 
-<br> <hr>
+<br>
+<hr>
 
 ## Premium の機能
 #### セルフサービスによるグループとアプリの管理/セルフサービスによるアプリケーションの追加/動的なグループ
@@ -350,7 +361,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 
-<br> <hr>
+<br>
+<hr>
 #### MIM CAL + MIM サーバー 
 
 Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は、Windows Server OS で実行されるため、サーバーで Windows Server の有効なライセンス コピーが実行されている限り、そのサーバー上に Microsoft Identity Manager をインストールでき、使用することができます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
@@ -383,7 +395,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 
 - [管理されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md)
 
-<br> <hr>
+<br>
+<hr>
 #### Connect Health
 
 **種類:** Premium の機能
@@ -399,7 +412,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 
 - [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)
 
-<br> <hr>
+<br>
+<hr>
 #### グループ アカウントの自動パスワード ロールオーバー
 
 **種類:** Premium の機能
@@ -412,7 +426,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | | | ![○][12]| |
 
 
-<br> <hr>
+<br>
+<hr>
 ## Azure Active Directory Join – Windows 10 のみの関連機能
 #### Azure AD へのデバイスの参加、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による Bitlocker 回復
 
@@ -448,10 +463,11 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 **使用可能なプレビュー機能**
 
 - [B2B コラボレーション](active-directory-b2b-collaboration-overview.md)
-- 条件付きアクセス
 - [管理単位](active-directory-administrative-units-management.md)
 - Privileged Identity Management
 - [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
+- [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
+- [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 
 
@@ -467,4 +483,4 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="01/15/2016"
+	ms.date="02/19/2016"
 	ms.author="v-darmi"/>
 
 
@@ -73,4 +73,4 @@ Azure API Management では、レートとクォータのスロットルを通�
 
 > [AZURE.VIDEO advanced-request-throttling-with-azure-api-management]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0302_2016-->

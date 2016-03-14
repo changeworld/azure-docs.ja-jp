@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights とは何か?" 
-	description="ライブ Web またはデバイス アプリケーションの使用状況とパフォーマンスを追跡します。問題を検出し、優先順位を付け、診断します。継続的に監視し、ユーザーが満足するように改善します。" 
+	pageTitle="Application Insights による分析" 
+	description="デバイスと Web アプリの分析。ライブ Web アプリケーションの使用状況とパフォーマンスを追跡します。問題を検出し、優先順位を付け、診断します。継続的に監視し、ユーザーが満足するように改善します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -151,4 +151,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

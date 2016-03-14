@@ -31,7 +31,8 @@
   ![図][img-pubportal-sol-templ-new]
 
 ### 3\.最初にトポロジを作成する
-ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。次の手順に従ってプランを定義します: - トポロジの作成: "トポロジ識別子" は通常、ソリューション テンプレートのトポロジ名です。トポロジ識別子は、次に示すように URL で使用されます。
+ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。次の手順に従ってプランを定義します。
+- トポロジの作成: 通常、"トポロジ識別子" はソリューション テンプレートのトポロジ名です。トポロジ識別子は、次に示すように URL で使用されます。
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
@@ -40,7 +41,9 @@
 - 新しいバージョンを追加します。
 
 ### 4\.トポロジのバージョンの認定を受ける
-トポロジの特定バージョンをプロビジョニングするために必要な、すべてのファイルを含む zip ファイルをアップロードします。この zip ファイルには、ルート ディレクトリの *mainTemplate.json* ファイル、 *createUiDefinition.json* ファイル、リンクされているテンプレート、および必要とされるすべてのスクリプトを含める必要があります。
+トポロジの特定バージョンをプロビジョニングするために必要な、すべてのファイルを含む zip ファイルをアップロードします。この zip ファイルには、次のファイルを含める必要があります。
+- ルート ディレクトリの *mainTemplate.json* および *createUiDefinition.json* ファイル。
+- リンクされたテンプレートと必要なすべてのスクリプト。
 
 zip ファイルをアップロードしたら、**[証明書の要求]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
@@ -67,11 +70,11 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 
 - Azure リソースマネージャー: [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/)および[単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
 
-- ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../storage/storage-premium-storage-preview-portal/#scalability-and-performance-targets-whja-JPing-premium-storage)
+- ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)
 
 [img-pubportal-menu-sol-templ]: media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]: media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

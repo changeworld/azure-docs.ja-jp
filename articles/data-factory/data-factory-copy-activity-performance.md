@@ -63,11 +63,11 @@
 3. **構成をデータ全体に拡大する**。実行結果とパフォーマンスに問題がなければ、図中のデータ全体を網羅するようにデータセットの定義とパイプラインのアクティブな期間を拡張することができます。
 
 ## パフォーマンス リファレンス
-> [AZURE.IMPORTANT]**免責事項:** 以下のデータは、ガイダンスとして、また大まかな計画策定用の参考として公開したものです。帯域幅、ハードウェア、構成などがクラス最良の条件であることを前提とします。このデータは参照用としてのみ使用してください。観察するデータ移動のスループットは、さまざまな変数の影響を受けます。データ移動のニーズを満たすようにパフォーマンスをチューニングして向上させることが可能な方法については、後述のセクションを参照してください。パフォーマンス向上のための機能強化が行われた場合、このデータは更新されます。
+> [AZURE.IMPORTANT] **免責事項:** 以下のデータは、ガイダンスとして、また大まかな計画策定用の参考として公開したものです。帯域幅、ハードウェア、構成などがクラス最良の条件であることを前提とします。このデータは参照用としてのみ使用してください。観察するデータ移動のスループットは、さまざまな変数の影響を受けます。データ移動のニーズを満たすようにパフォーマンスをチューニングして向上させることが可能な方法については、後述のセクションを参照してください。パフォーマンス向上のための機能強化が行われた場合、このデータは更新されます。
 
 ![パフォーマンス マトリックス](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
-> [AZURE.NOTE]**近日公開予定:** 現在、基本的なパフォーマンス特性を向上させる処理を行っており、まもなく上記の表は、より高いスループット値に更新されます。
+> [AZURE.NOTE] **近日公開予定:** 現在、基本的なパフォーマンス特性を向上させる処理を行っており、まもなく上記の表は、より高いスループット値に更新されます。
 
 注意する点:
 
@@ -76,19 +76,19 @@
 - Microsoft Azure データ ストアの場合、ソースとシンクは同じ Azure リージョンにあります。
 - ハイブリッド (オンプレミスからクラウド、またはクラウドからオンプレミス) のデータ移動では、次の構成を使用して、オンプレミスのデータ ストアとは異なるコンピューター上で Data Management Gateway (単一インスタンス) がホストされました。ゲートウェイ上で 1 つアクティビティを実行した場合、コピー操作では、このコンピューターの CPU/メモリ リソースおよびネットワーク帯域幅のごく一部しか消費されませんでした。
 	<table>
-<tr>
-	<td>CPU</td>
-	<td>32 Cores 2.20GHz Intel Xeon® E5-2660 v2</td>
-</tr>
-<tr>
-	<td>メモリ</td>
-	<td>128 GB</td>
-</tr>
-<tr>
-	<td>ネットワーク</td>
-	<td>インターネット インターフェイス: 10 Gbps。イントラネット インターフェイス: 40 Gbps</td>
-</tr>
-</table>
+	<tr>
+		<td>CPU</td>
+		<td>32 Cores 2.20GHz Intel Xeon® E5-2660 v2</td>
+	</tr>
+	<tr>
+		<td>メモリ</td>
+		<td>128 GB</td>
+	</tr>
+	<tr>
+		<td>ネットワーク</td>
+		<td>インターネット インターフェイス: 10 Gbps。イントラネット インターフェイス: 40 Gbps</td>
+	</tr>
+	</table>
 
 ## ソースに関する考慮事項
 ### 全般
@@ -218,10 +218,10 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
 - Azure Storage (Azure BLOB、Azure Table など): [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md) と [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage//storage-performance-checklist.md)
-- Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md#monitoring-performance)し、データベース スループット ユニット (DTU) の割合を確認できます。
+- Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md#monitoring-performance)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 - Azure SQL Data Warehouse: その機能は、Data Warehouse ユニット (DWU) で測定されます。「[SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール](../sql-data-warehouse/sql-data-warehouse-performance-scale.md)」を参照してください。
 - Azure DocumentDB: [Performance level in DocumentDB (DocumentDB のパフォーマンス レベル)](../documentdb/documentdb-performance-levels.md)
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0302_2016-->

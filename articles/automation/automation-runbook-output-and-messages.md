@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Azure Automation での Runbook の出力および メッセージ | Microsoft Azure"
    description="Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/27/2016"
-   ms.author="bwren" />
+   ms.date="03/02/2016"
+   ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の出力および メッセージ
 
@@ -51,7 +51,7 @@ Runbook に含まれている関数から出力ストリームに書き込むと
 	   Write-Verbose "Verbose outside of function"
 	   Write-Output "Output outside of function"
 	   $functionOutput = Test-Function
-	
+
 	   Function Test-Function
 	   {
 	      Write-Verbose "Verbose inside of function"
@@ -77,7 +77,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 	Workflow Test-Runbook
 	{
 	   [OutputType([string])]
-	
+
 	   $output = "This is some string output."
 	   Write-Output $output
 	}
@@ -93,7 +93,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。アクティビティによってストリームに書き込むことができる場合もあります。
 
 	#The following lines create a warning message and then an error message that will suspend the runbook.
-	
+
 	$ErrorActionPreference = "Stop"
 	Write-Warning –Message "This is a warning message."
 	Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
@@ -107,7 +107,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 詳細メッセージを作成するには、[Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
 	#The following line creates a verbose message.
-	
+
 	Write-Verbose –Message "This is a verbose message."
 
 ### デバッグ ストリーム
@@ -152,20 +152,42 @@ Windows Powershell では、[Get-AzureAutomationJobOutput](http://msdn.microsoft
 
 次の例は、サンプル Runbook を開始し、完了するまで待機します。完了すると、その出力ストリームがジョブから収集されます。
 
-	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" 
-	
+	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+
 	$doLoop = $true
 	While ($doLoop) {
 	   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
 	   $status = $job.Status
-	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped") 
+	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped")
 	}
-	
+
 	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+
+### グラフィカル作成
+
+グラフィカル Runbook では、追加のログ記録はアクティビティ レベルのトレースの形式で使用できます。トレースには Basic および Detailed の 2 つのレベルがあります。Basic トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの試行数および開始時刻など、アクティビティの再試行に関連する情報を確認できます。Detailed トレースでは、各アクティビティの Basic トレースと入出力のデータを取得します。現時点では詳細ストリームを使用してトレース レコードが書き込まれるため、トレースを有効にする場合は、詳細ログを有効にする必要があることに注意してください。トレースが有効になっているグラフィカル Runbook では、Basic トレースは同じ目的を達成し、より有益であるため、進捗状況レコードを記録する必要はありません。
+
+![グラフィカル作成のジョブ ストリーム ビュー](media/automation-runbook-output-and-messages/job_streams_view_blade.png)
+
+グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが上記のスクリーンショットから確認できます。この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。トレース レコードは、特に多数存在させることができます。グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
+
+**アクティビティ レベルのトレースを有効にするには、次の手順に従います。**
+
+ 1. Azure ポータルで、Automation アカウントを開きます。
+
+ 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
+
+ 3. [Runbook] ブレードで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
+
+ 4. 選択した Runbook の [設定] ブレードで、**[ログ記録とトレース]** をクリックします。
+
+ 5. [詳細レコードの記録] の下の [ログ記録とトレース] ブレードで、 **[オン]** をクリックして詳細ログを有効にし、アクティビティ レベルのトレースで、必要なトレースのレベルに基づいてトレース レベルを **Basic** または **Detailed** に変更します。<br>
+
+    ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging_and_tracing_settings_blade.png)
 
 ## 関連記事:
 
 - [Runbook ジョブの追跡](automation-runbook-execution.md)
 - [子 Runbook](http://msdn.microsoft.com/library/azure/dn857355.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

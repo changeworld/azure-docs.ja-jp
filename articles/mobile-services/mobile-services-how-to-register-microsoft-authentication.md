@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="02/25/2016" 
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
@@ -31,7 +31,7 @@
 
 ##Windows デベロッパー センターで Windows ストア アプリを登録する
 
-Windows ストア アプリを最初に Windows デベロッパー センターで登録する必要があります。
+Windows ストア アプリを最初に Windows デベロッパー センターで登録する必要があります。登録により、Windows アプリでシングル サインオンの動作を使用できるようになります。
 
 >[AZURE.NOTE]Windows Phone 8、Windows Phone 8.1 Silverlight、および Windows 以外のアプリは、このセクションをスキップできます。
 
@@ -48,12 +48,16 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 6. 新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックします。
 
 7. **[プッシュ通知]** ページで、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[ライブ サービス サイト]** をクリックします。
+ 
+	これにより、アプリの Microsoft アカウント アプリ設定ページが表示されます。
 
-これにより、アプリの Microsoft アカウント ページが表示されます。次に、アプリで Microsoft 認証を使用するために Azure が必要とする認証資格情報を取得します。
+8. **パッケージ SID** 値をメモしておきます。この SID をAzure ポータルで保存して、Windows アプリのシングル サインオンとプッシュ通知を有効にすることができます。
+
+次に、Windows アプリの Microsoft アカウント認証を構成します (次のセクションの手順 4 から始めます)。
 
 ## Microsoft アカウントの登録の構成と Mobile Services への接続
 
-このセクションの最初の手順は、Windows Phone 8、Windows Phone 8.1 Silverlight、および Windows 以外のストア アプリにのみ適用されます。これらのアプリの場合、Windows ストア アプリでだけ使用可能なパッケージ セキュリティ ID (SID) も無視できます。
+前のセクションで Windows アプリを既に登録した場合は、手順 2 にスキップできます。
 
 1. Windows ストア アプリ以外の場合、Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]](http://go.microsoft.com/fwlink/p/?LinkId=262039) ページに移動し、Microsoft アカウントでログオンして (必要な場合)、**[アプリケーションの作成]** をクリックし、**[アプリケーション名]** を入力して、**[同意する]** をクリックします。
 
@@ -74,7 +78,7 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
    	![Microsoft アカウント アプリの設定](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth.png)
 
 
-    > [AZURE.NOTE]クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。Windows ストア アプリの登録でのみ、パッケージ SID フィールドが表示されます。
+    > [AZURE.NOTE] クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。Windows ストア アプリの登録でのみ、パッケージ SID フィールドが表示されます。
 
 4. [Microsoft Azure クラシック ポータル]で、モバイル サービスの **[ID]** タブをクリックし、ID プロバイダーから入手したクライアント ID、クライアント シークレット、パッケージ SID を入力して、**[保存]** をクリックします。
 
@@ -93,4 +97,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 [Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

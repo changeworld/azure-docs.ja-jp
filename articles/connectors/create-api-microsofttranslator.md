@@ -15,13 +15,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/11/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # Microsoft Translator API の概要
-Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。
+Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。Microsoft Translator API は次のツールから使用できます。
 
-Microsoft Translator は、PowerApps Enterprise とロジック アプリから使用できます。
+- PowerApps 
+- Logic Apps 
 
 Microsoft Translator では、次の操作を実行できます。
 
@@ -29,9 +30,9 @@ Microsoft Translator では、次の操作を実行できます。
 - アクションを使用して、テキストの翻訳、言語の検出などを行うことができます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Dropbox で新しいファイルが作成されたときに、Microsoft Translator を使用してファイル内のテキストを別の言語に翻訳することができます。
 - PowerApps Enterprise に Microsoft Translator API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
 Microsoft Translator には、次のアクションがあります。トリガーはありません。
@@ -45,7 +46,7 @@ Microsoft Translator には、次のアクションがあります。トリガ�
 ## Microsoft Translator への接続を作成する
 
 ### PowerApps に構成を追加する
-Microsoft Translator を PowerApps Enterprise に追加するときに、Microsoft Translator アプリケーションの**クライアント ID** と**クライアント シークレット**の値を入力します。Translator アプリケーションがない場合は、次の手順で作成できます。
+Microsoft Translator を PowerApps Enterprise に追加するときに、Microsoft Translator アプリケーションの **クライアント ID** と**クライアント シークレット**の値を入力します。Translator アプリケーションがない場合は、次の手順で作成できます。
 
 1. [Azure Data Market 開発者ページ][5]に移動し、Microsoft アカウントでサインインします。 
 
@@ -53,16 +54,17 @@ Microsoft Translator を PowerApps Enterprise に追加するときに、Microso
 
 	1. **[クライアント ID]** の値を入力します。
 	2. アプリケーションの**名前**を入力します。
-	3. **リダイレクト URL** のダミー値を入力します。たとえば、「**https://contosoredirecturl*」のように入力します。
+	3. **リダイレクト URL** のダミー値を入力します。たとえば、「**https://contosoredirecturl*」と入力します。
 4. **説明**を入力します。
 	5. **[作成]** を選択します。  
 
 	![アプリケーションの登録][6]
 
-**クライアント ID** と**クライアント シークレット**をコピーし、Azure ポータルの Translator の構成に貼り付けます。
+**クライアント ID** と**クライアント シークレット**の値をコピーし、Azure ポータルの Translator 構成に貼り付けます。
 
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### 言語を検出する    
 指定したテキストのソース言語を検出します。```GET: /Detect```
@@ -79,12 +81,12 @@ Microsoft Translator を PowerApps Enterprise に追加するときに、Microso
 
 
 ### テキストを音声に変換する    
-指定したテキストを wave 形式の音声ストリームとして音声に変換します。```GET: /Speak```
+指定したテキストを wave 形式のオーディオ ストリームとして音声に変換します。```GET: /Speak```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
 |query|string|○|query|なし |変換するテキスト|
-|言語|string|○|query|なし |音声を生成する言語コード (例: 'en-us')|
+|言語|string|○|query|なし |音声を生成する言語コード (例: 'ja-JP')|
 
 #### Response
 |名前|説明|
@@ -144,13 +146,13 @@ Microsoft Translator がサポートするすべての言語を取得します�
 
 
 ## 次のステップ
-Microsoft Translator API を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
+Microsoft Translator API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 
 <!--References-->
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="11/02/2015"
+   ms.date="02/19/2016"
    ms.author="mobandyo;sirishap;bryanla"/>
 
 # Cloud Cruiser と Microsoft Azure Billing API の統合
@@ -213,12 +213,13 @@ _UsageAPI_ シートで Usage API から情報を抽出して処理し、_Publis
 + Cloud Cruiser のブックとレポートの作成手順については、Cloud Cruiser のオンライン [ドキュメント](http://docs.cloudcruiser.com/)を参照してください (有効なログインが必要です)。Cloud Cruiser の詳細については、[info@cloudcruiser.com](mailto:info@cloudcruiser.com) に問い合わせてください。
 + Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。
 + 両方の API の詳細については、「[Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。
-+ サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
++ サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API Code Samples」を参照してください。
 
 ### 詳細情報
 + Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
 <!--Image references-->
+ 
 [1]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Create-New-Workbook-Collection.png "図 1 - 新しいコレクションの作成"
 [2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "図 2 - 新しいコレクションからのデータのインポート"
 [3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "図 3 - RateCard API から収集したデータを処理する変換ステップ"
@@ -234,4 +235,4 @@ _UsageAPI_ シートで Usage API から情報を抽出して処理し、_Publis
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

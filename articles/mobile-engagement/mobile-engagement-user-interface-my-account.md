@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="11/22/2015"
+   ms.date="02/29/2016"
    ms.author="piyushjo"/>
 
 # アカウント プロファイルとテスト デバイスを管理する方法
  
-この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。詳細については、「[Azure Mobile Engagement アカウントの作成](mobile-engagement-create-account.md)」を参照してください。
+この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
  
 [マイ アカウント] ページにアクセスするには、ページ上部のアカウントをクリックします。
 
@@ -27,7 +27,7 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 ![MyAccount1][7]
 
 ## プロファイル:
-アカウント設定を次のように表示または変更できます。[[ホーム]](mobile-engagement-interface-home.md) から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
+アカウント設定を次のように表示または変更できます。[[ホーム]](mobile-engagement-user-interface-home.md) から、メール アドレスに基づいて別のユーザーに自分のアプリケーションを使用するアクセス許可を与えることもできます。
 
 ![MyAccount2][8]
 
@@ -151,4 +151,4 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
  
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

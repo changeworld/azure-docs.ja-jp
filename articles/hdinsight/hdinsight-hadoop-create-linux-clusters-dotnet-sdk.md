@@ -48,8 +48,9 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
-        Install-Package Microsoft.Azure.Common.Authentication -pre
+        Install-Package Microsoft.Azure.Common.Authentication -Pre
         Install-Package Microsoft.Azure.Management.HDInsight -Pre
+        Install-Package Microsoft.Azure.Management.Resources -Pre
 
     これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
@@ -63,6 +64,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         using Microsoft.Azure.Common.Authentication.Models;
         using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Models;
+        using Microsoft.Azure.Management.Resources;
 
         namespace CreateHDInsightCluster
         {
@@ -100,6 +102,9 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
                     var tokenCreds = GetTokenCloudCredentials();
                     var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+                    
+                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+                    var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 
                     _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 
@@ -358,4 +363,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

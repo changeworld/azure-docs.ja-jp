@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="02/24/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
@@ -362,6 +362,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | -------- | ----------- | -------- |
 | tableName | リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 | あり
 
+### Data Factory によるスキーマ
+Azure Table などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。
+
+1.	データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory サービスはスキーマとしてこの構造を優先します。この場合、行に列の値が含まれていないと、null 値が指定されます。
+2.	データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
+
+したがって、スキーマのないデータ ソースでは、**structure** プロパティを使用してデータの構造を指定するのがベスト プラクティスです。
+
 ## Azure テーブルのコピー アクティビティの type プロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
@@ -518,4 +526,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -3,7 +3,7 @@
 	description="Azure で仮想マシンをバックアップする計画を立てる際の重要な考慮事項"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
+	authors="markgalioto"
 	manager="jwhit"
 	editor=""
 	keywords="VM のバックアップ, 仮想マシンのバックアップ"/>
@@ -121,4 +121,4 @@ Azure Backup を使用してバックアップされている Azure 仮想マシ
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [VM のバックアップに関する問題のトラブルシューティング](backup-azure-vms-troubleshoot.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

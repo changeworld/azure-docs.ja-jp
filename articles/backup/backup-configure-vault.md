@@ -30,7 +30,7 @@
 大まかに示した上記の手順が既に完了している場合は、[Windows コンピューターのバックアップ](backup-azure-backup-windows-server.md)を開始できます。まだ完了していない場合は、以下の詳しい手順に従って環境を構築してください。
 
 ## 開始する前に
-Windows コンピューターをバックアップするための環境を準備するには、Azure アカウントが必要です。アカウントがない場合は、[無料試用版のアカウント](https://azure.microsoft.com/pricing/free-trial/)を数分で作成することができます。
+Windows コンピューターをバックアップするための環境を準備するには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 
 ## バックアップ資格情報コンテナーの作成
 ファイルとデータを Windows コンピューターまたは Data Protection Manager (DPM) から Azure にバックアップしたり、IaaS VM を Azure にバックアップしたりする場合には、データを保存する地理的リージョンにバックアップ コンテナーを作成する必要があります。　
@@ -53,22 +53,46 @@ Windows コンピューターをバックアップするための環境を準備
 
     ![Creating Vault](./media/backup-configure-vault/creatingvault1.png)
 
-    バックアップ コンテナーが作成された後、コンテナーが正常に作成されたことを示すメッセージが表示されます。また、Recovery Services 用のリソースにも、このコンテナーが "**アクティブ**" として表示されます。![Creating Vault status](./media/backup-configure-vault/backupvaultstatus1.png)
+    バックアップ コンテナーが作成された後、コンテナーが正常に作成されたことを示すメッセージが表示されます。この資格情報コンテナーはまた、Recovery Services 用のリソースで **Active** としてリストされます。
 
-> [AZURE.IMPORTANT] ストレージ冗長オプションを識別する最適なタイミングは、コンテナーの作成直後かつ、いずれかのコンピューターがコンテナーに登録される前です。項目が資格情報コンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
->
-> **ストレージ冗長オプションの詳細については、こちらの[概要](backup-azure-storage-redundancy-options.md)を参照してください。**
+    ![Creating Vault status](./media/backup-configure-vault/backupvaultstatus1.png)
+
+    >[AZURE.IMPORTANT] ストレージ冗長オプションを識別する最適なタイミングは、コンテナーの作成直後かつ、いずれかのコンピューターがコンテナーに登録される前です。項目が資格情報コンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
+
+4. **ストレージ冗長**オプションを選択します。
+
+    Azure をプライマリ バックアップ ストレージ エンドポイントとして使用する場合 (Windows Server から Azure にバックアップする場合など) は、[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage) オプション (既定値) の選択を検討します。
+
+    Azure を第 3 のバックアップ ストレージ エンドポイントとして使用する場合 (オンプレミスのローカル バックアップ コピーには SCDPM を使用し、長期保存には Azure を使用する場合など) は、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)の選択を検討します。これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
+
+    この[概要](../storage/storage-redundancy.md)に記載されている [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細をご覧ください。
+
+    a.作成したコンテナーをクリックします。
+
+    b.[クイック スタート] ページで、**[構成]** をクリックします。
+
+    ![Configure Vault status](./media/backup-try-azure-backup-in-10-mins/configure-vault.png)
+
+    c.適切なストレージ冗長オプションを選択します。
+
+    **[Geo 冗長]** が既定のオプションであるため、**[ローカル冗長]** を選択した場合は **[保存]** をクリックする必要があります。
+
+    ![GRS](./media/backup-try-azure-backup-in-10-mins/geo-redundant.png)
+
+    d.左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックして、**[Recovery Services]** のリソースの一覧に戻ります。
+
+    ![Select backup vault](./media/backup-try-azure-backup-in-10-mins/rs-left-nav.png)
 
 ## 資格情報コンテナーの資格情報ファイルのダウンロード
 データを Azure にバックアップする前に、オンプレミスのサーバー (Windows クライアントまたは Windows Server または Data Protection Manager サーバー) をバックアップ資格情報コンテナーで認証する必要があります。認証は "資格情報コンテナーの資格情報" を使用して実行されます。コンテナーの資格情報ファイルは、Azure ポータルから安全なチャネルを介してダウンロードされます。この証明書の秘密キーは、Azure Backup サービスの管理外となり、ポータルにもサービスにも保存されません。
 
-[コンテナーの資格情報を使用して Azure Backup サービスとの間で認証を行うしくみ](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)を参照してください。
+[コンテナー資格情報を使用した Azure Backup サービスでの認証](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)の詳細をご覧ください。
 
 **コンテナーの資格情報ファイルをローカル コンピューターにダウンロードするには:**
 
 1. [管理ポータル](https://manage.windowsazure.com/)にサインインします。
 
-2. 左側のナビゲーション ウィンドウの **[Recovery Services]** をクリックして、作成したバックアップ コンテナーを選択します。
+2. 左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックし、作成したバックアップ コンテナーを選択します。
 
 3.  クラウド アイコンをクリックして、バックアップ コンテナーの *[クイック スタート]* ビューに移動します。
 
@@ -97,7 +121,7 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
 2. **[Recovery Services]** をクリックし、サーバーに登録するバックアップ資格情報コンテナーを選択します。
 
-3. [クイック スタート] ページで **[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]、[保存]** の順にクリックします。
+3. [クイック スタート] ページで、**[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]、[保存]** の順にクリックします。
 
     ![エージェントの保存](./media/backup-configure-vault/agent.png)
 
@@ -115,7 +139,7 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
     ![登録](./media/backup-configure-vault/register.png)
 
-7. ダウンロードしておいた*コンテナーの資格情報ファイル*を **[資格情報コンテナーの識別]** 画面で参照し、選択します。
+7. **[資格情報コンテナーの識別]** 画面で、以前にダウンロードした*コンテナー資格情報ファイル*を参照して選択します。
 
     ![コンテナー資格情報](./media/backup-configure-vault/vc.png)
 
@@ -123,9 +147,9 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
     セットアップ アプリケーションがアクセスできる場所に、コンテナーの資格情報ファイルがあることを確認します。アクセス関連のエラーが発生した場合は、資格情報コンテナーの資格情報ファイルをこのコンピューターの一時的な場所にコピーし、操作をやり直してください。
 
-    コンテナーの資格情報の資格情報が無効であるというエラー (例: "無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。") が発生した場合、ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。ポータルから新しい資格情報コンテナーの資格情報ファイルをダウンロードしてから操作をやり直してください。このエラーは通常、ユーザーが *[コンテナー資格情報のダウンロード]* オプションを連続でクリックした場合に発生します。この場合、最後のコンテナーの資格情報ファイルだけが有効です。
+    コンテナーの資格情報の資格情報が無効であるというエラー (例: "無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。") が発生した場合、ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。ポータルから新しい資格情報コンテナーの資格情報ファイルをダウンロードしてから操作をやり直してください。通常、このエラーはユーザーが *[コンテナー資格情報のダウンロード]* オプションを連続でクリックした場合に発生します。この場合、最後のコンテナーの資格情報ファイルだけが有効です。
 
-8. **[暗号化の設定]** 画面で、パスフレーズを*生成*するか、パスフレーズ (最小 16 文字) を*指定*することができます。必ず安全な場所にパスフレーズを保存してください。
+8. **[暗号化の設定]** 画面で、パスフレーズを*生成*するか、パスフレーズ (16 文字以上) を*指定*できます。必ず安全な場所にパスフレーズを保存してください。
 
     ![暗号化](./media/backup-configure-vault/encryption.png)
 
@@ -136,9 +160,9 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
     これで、コンピューターがコンテナーに正しく登録され、Microsoft Azure へのバックアップを開始できる状態になりました。
 
 ## 次のステップ
-- [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)へのサインアップ
-- [Windows Server または Windows クライアントをバックアップする](backup-azure-backup-windows-server.md)
-- 不明点がある場合は「[Azure Backup サービス - FAQ](backup-azure-backup-faq.md)」を参照する
-- [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスする
+- [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップします。
+- [Windows Server または Windows クライアントをバックアップします](backup-azure-backup-windows-server.md)。
+- 不明点がある場合は、「[Azure Backup サービス - FAQ](backup-azure-backup-faq.md)」を参照します。
+- [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)を参照します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

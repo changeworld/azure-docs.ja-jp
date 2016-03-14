@@ -14,15 +14,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/11/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # Box API の概要
-Box に接続し、ファイルの作成、削除などを行います。
+Box に接続し、ファイルの作成、削除などを行います。Box API は次のツールから使用できます。
 
-Box API は、ロジック アプリから使用できます。
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Box コネクタ](../app-service-logic/app-service-logic-connector-box.md)をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Box コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-box.md)」をご覧ください。
 
 Box では、次の操作を実行できます。
 
@@ -30,7 +30,7 @@ Box では、次の操作を実行できます。
 - ファイルを作成または更新するときにトリガーを使用できます。
 - ファイルのコピー、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Box でファイルを変更するときに、Office 365 でそのファイルを取得して電子メールで送信することができます。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
 Box には、次のトリガーとアクションがあります。
@@ -47,11 +47,12 @@ Box には、次のトリガーとアクションがあります。
 1. Box アカウントにサインインします。
 2. **[Authorize]** を選択し、ロジック アプリが Box に接続し、使用することを許可します。 
 
-接続を作成したら、Box のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、Box のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ Box 接続を使用できます。
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### ファイルを作成する
 Box にファイルをアップロードします。```POST: /datasets/default/files```
@@ -228,7 +229,7 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -238,7 +239,7 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -259,6 +260,6 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->
