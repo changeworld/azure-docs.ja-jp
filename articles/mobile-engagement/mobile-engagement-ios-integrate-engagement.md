@@ -32,7 +32,8 @@
 
 ##Engagement SDK を iOS プロジェクトに埋め込む
 
-[ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
+[ここ](http://aka.ms/qk2rnj)から iOS SDK をダウンロードします。
+Engagement SDK の iOS プロジェクトへの追加: Xcode でプロジェクトを右クリックし、**[Add files to ...]** を選択して、`EngagementSDK` フォルダーを選択します。
 
 Engagement では追加のフレームワークを動作させる必要がある: プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、[**Build phases**] タブを開き、[**Link Binary With Libraries**] メニューでこれらのフレームワークを追加します。
 
@@ -67,7 +68,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 

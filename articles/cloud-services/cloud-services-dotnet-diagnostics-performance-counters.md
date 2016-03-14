@@ -56,7 +56,16 @@ Azure は、Windows Server、IIS、および ASP.NET スタックで使用でき
 |ASP.NET v4.0.30319 |Requests Rejected |ASP.NET 用のパフォーマンス カウンター|
 |メモリ |Available MBytes |メモリ パフォーマンス カウンター|
 |メモリ |Committed Bytes |メモリ パフォーマンス カウンター|
-|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター| |TCPv4 |Connection Failures |TCP オブジェクト| |TCPv4 |Connections Established |TCP オブジェクト| |TCPv4 |Connections Reset |TCP オブジェクト| |TCPv4 |Segments Sent/sec |TCP オブジェクト| |Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
+|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター|
+|TCPv4 |Connection Failures |TCP オブジェクト|
+|TCPv4 |Connections Established |TCP オブジェクト|
+|TCPv4 |Connections Reset |TCP オブジェクト|
+|TCPv4 |Segments Sent/sec |TCP オブジェクト|
+|Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
 
 ## カスタム パフォーマンス カウンターの作成とアプリケーションへの追加
 

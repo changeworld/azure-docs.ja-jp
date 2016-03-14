@@ -51,7 +51,7 @@ Windows デベロッパー センターを通じてユニバーサル Windows �
 
 1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウントでアプリを構成するのに使用します。
 
-2. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
 3. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
@@ -59,7 +59,7 @@ Windows デベロッパー センターを通じてユニバーサル Windows �
  
 	![][0]
 
-	>[AZURE.NOTE]リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/microsoftaccount/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
+	>[AZURE.NOTE] リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/microsoftaccount/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
 6. **[アプリ設定]** をクリックして、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
@@ -98,7 +98,7 @@ Windows デベロッパー センターを通じてユニバーサル Windows �
 
 <!-- URLs. -->
 
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure ポータル]: https://portal.azure.com/
 
 <!---HONumber=AcomDC_0302_2016-->

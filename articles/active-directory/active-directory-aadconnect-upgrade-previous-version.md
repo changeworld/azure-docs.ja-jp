@@ -19,7 +19,7 @@
 # Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure AD Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。Azure AD Connect を常に最新リリースにしておくことをお勧めします。
 
-DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
+DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Microsoft Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
 
 Azure AD Connect のアップグレードには複数の方法があります。
 
@@ -49,7 +49,7 @@ Azure AD Connect のアップグレードには複数の方法があります。
 
 注: 3 台または 4 台のサーバーでこの方法を行うのが好まれる場合があります。ステージング サーバーでアップグレードが行われるため、この期間中は[障害復旧](active-directory-aadconnectsync-operations.md#disaster-recovery)用のバックアップ サーバーがありません。最大 4 台のサーバーを使用すると、新しいバージョンにアップグレードされた新しいプライマリ/スタンバイ サーバーのセットを準備でき、引き継ぎ用のステージング サーバーを常に確保できます。
 
-以下の手順は、Azure AD Sync または FIM + Azure AD コネクタのソリューションからの移行にも使用できます。この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行 (並列デプロイとも呼ばれます) 方法が、「[Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」で説明されています。
+以下の手順は、Azure AD Sync または FIM + Azure AD コネクタのソリューションからの移行にも使用できます。この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行 (並列デプロイとも呼ばれます) 方法が、「[Azure AD Connect: Microsoft Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」で説明されています。
 
 ### スウィング移行の手順
 
