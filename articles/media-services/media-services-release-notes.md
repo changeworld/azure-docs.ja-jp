@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/11/2016"
+ 	ms.date="03/01/2016"
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2016 年 2 月のリリース](#feb_changes16)
 - [2016 年 1 月のリリース](#jan_changes_16)
 - [2015 年 12 月のリリース](#dec_changes_15)
 - [2015 年 11 月のリリース](#nov_changes_15)
@@ -79,6 +80,16 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 
 Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
 
+##<a id="feb_changes16"></a>2016 年 2 月のリリース
+
+最新バージョンの Azure Media Services SDK for .NET (3.5.3) には、Widevine 関連のバグ修正が含まれています。Widevine で暗号化された複数の資産で AssetDeliveryPolicy を再利用できないという問題がありました。このバグ修正の一環として、**WidevineBaseLicenseAcquisitionUrl** プロパティが SDK に追加されました。
+	
+	Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+	    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+	{
+	    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+	    
+	};
 
 ##<a id="jan_changes_16"></a>2016 年 1 月のリリース
 
@@ -648,4 +659,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

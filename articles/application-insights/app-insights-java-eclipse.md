@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2016" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -49,7 +49,16 @@ Java プロジェクトごとに、残りの手順に従います。
 ## Azure で Application Insights のリソースを作成する
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 
+2. 新しい Application Insights リソースを作成します。  
+
+    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-eclipse/01-create.png)  
+3. アプリケーションの種類を [Java Web アプリケーション] に設定します。  
+
+    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-eclipse/02-create.png)  
+4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後でコード プロジェクトに貼り付けます。  
+
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/03-key.png)
+
 
 ## アプリケーションの正常性と利用状況の監視
 
@@ -260,4 +269,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

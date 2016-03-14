@@ -36,8 +36,8 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 |領域|最適化|
 |---|---|
 |**VM サイズ**|[DS3](virtual-machines-size-specs.md#standard-tier-ds-series) 以上 (SQL Enterprise Edition の場合)。<br/><br/>[DS2](virtual-machines-size-specs.md#standard-tier-ds-series) 以上 (SQL Standard Edition および Web Edition の場合)。|
-|**ストレージ**|[Premium Storage](../storage/storage-premium-storage-preview-portal.md) を使用します。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure [geo 冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
-|**ディスク**|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
+|**ストレージ**|[Premium Storage](../storage/storage-premium-storage.md) を使用します。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure [geo 冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
+|**ディスク**|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
 |**I/O**|データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。|
 |**機能固有**|BLOB ストレージに直接バックアップします。|
 
@@ -75,7 +75,7 @@ Premium Storage をサポートする VM の場合は、Premium Storage をサ�
 
 ### データ ディスク
 
-- **データ ファイルとログ ファイル用のデータ ディスクの数**: 少なくとも、2 つの [P30 ディスク](../storage/storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を含めます。スループットを向上させるために、データ ディスクを追加することが必要になる場合もあります。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage-preview-portal.md)に関する記事で [VM サイズ](virtual-machines-size-specs.md)およびディスク サイズごとの IOPS を示す表をご覧ください。さらに多くの帯域幅が必要な場合は、追加のディスクを接続し、ディスク ストライピングを使用できます。Premium Storage を使用しない場合は、ご使用の [VM サイズ](virtual-machines-size-specs.md)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。ディスク ストライピングの詳細については、下記の関連セクションをご覧ください。
+- **データ ファイルとログ ファイル用のデータ ディスクの数**: 少なくとも、2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を含めます。スループットを向上させるために、データ ディスクを追加することが必要になる場合もあります。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage.md)に関する記事で [VM サイズ](virtual-machines-size-specs.md)およびディスク サイズごとの IOPS を示す表をご覧ください。さらに多くの帯域幅が必要な場合は、追加のディスクを接続し、ディスク ストライピングを使用できます。Premium Storage を使用しない場合は、ご使用の [VM サイズ](virtual-machines-size-specs.md)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。ディスク ストライピングの詳細については、下記の関連セクションをご覧ください。
 
 - **キャッシュ ポリシー**: データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
 
@@ -123,6 +123,6 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-sql-server-security-considerations.md)に関するページをご覧ください。
 
-SQL Server 仮想マシンに関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)に関するページをご覧ください。
+SQL Server 仮想マシンに関する他のトピックについては、[Azure 仮想マシンにおける SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0302_2016-->

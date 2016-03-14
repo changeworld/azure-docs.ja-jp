@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/07/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のシステム要件 (プレビュー)
+# StorSimple Virtual Array のシステム要件
 
 ## 概要
 
@@ -34,10 +34,6 @@
  
 - 7000 シリーズ デバイスについては、「[StorSimple System Requirements](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)」をご覧ください。
 
-> [AZURE.IMPORTANT]
-> 
-> - このパブリック プレビューは、評価のみを目的としています。このプレビューの運用環境へのインストールはサポートされていません。
-> - StorSimple Virtual Array で問題が発生した場合は、[StorSimple MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=StorSimple)に問題を投稿してください。  
 
 ## ソフトウェア要件
 
@@ -57,7 +53,7 @@
 |----------------------------------------------|----------------------------|
 | 最小仮想プロセッサ (コア) 数 | 4 |
 | 最小メモリ (RAM) | 8 GB |
-| ディスク領域<sup>1</sup> | OS ディスク - 80 GB<br></br>データ ディスク - 500 GB ～ 8 TB|
+| ディスク領域<sup>1</sup> | OS ディスク - 80 GB <br></br>データ ディスク - 500 GB ～ 8 TB|
 | 最小ネットワーク インターフェイス数 | 1 |
 | 最小インターネット帯域幅<sup>2</sup> | 5 Mbps |
 
@@ -100,6 +96,6 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 
 ## 次のステップ
 
--   [StorSimple Virtual Array をデプロイするためにポータルを準備](storsimple-ova-deploy1-portal-prep.md)します。
+-   [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-ova-deploy1-portal-prep.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

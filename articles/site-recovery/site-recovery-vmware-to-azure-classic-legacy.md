@@ -12,8 +12,8 @@
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧)
 
 > [AZURE.SELECTOR]
-- [Enhanced](site-recovery-vmware-to-azure-classic.md)
-- [Legacy](site-recovery-vmware-to-azure-classic-legacy.md)
+- [拡張](site-recovery-vmware-to-azure-classic.md)
+- [レガシ](site-recovery-vmware-to-azure-classic-legacy.md)
 
 
 Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
@@ -25,7 +25,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - **VMware 仮想マシンを Azure にレプリケートする** - Site Recovery をデプロイして、オンプレミス VMware 仮想マシンから Azure Storage へのレプリケーション、フェールオーバー、および復旧を調整します。
 - **物理サーバーを Azure にレプリケートする** - Azure Site Recovery をデプロイして、Windows および Linux オンプレミス物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整します。
 
->[AZURE.NOTE] この記事で説明されているシナリオには、**旧式の手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
+>[AZURE.NOTE] この記事で説明されているシナリオには、**レガシの手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
 
 
 ## 強化されたデプロイへの移行
@@ -43,7 +43,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 開始する前に、次のことに注意してください。
 
 - 強化されたデプロイに移行するためのメンテナンス期間を計画することをお勧めします。
-- **[コンピューターの移行]** オプションは、旧式のデプロイ中に作成された既存の保護グループがある場合にのみ使用できます。
+- **[コンピューターの移行]** オプションは、従来のデプロイ中に作成された既存の保護グループがある場合にのみ使用できます。
 - 移行手順の完了後、資格情報の更新と、保護グループに追加するための仮想マシンの検出および更新に、15 分以上かかることがあります。待機する代わりに、手動で更新することもできます。 
 
 移行手順は、次のとおりです。
@@ -93,7 +93,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 **コンポーネント** | **デプロイ** | **詳細**
 --- | --- | ---
 **構成サーバー** | <p>Site Recovery と同じサブスクリプションに Azure Standard A3 仮想マシンとしてデプロイします。</p> <p>Site Recovery ポータルでセットアップします。</p> | このサーバーは、保護されたマシン、プロセス サーバー、および Azure のマスター ターゲット サーバー間のやり取りを調整します。レプリケーションを設定し、フェールオーバーが発生した場合に Azure での復旧を調整します。
-**マスター ターゲット サーバー** | <p>Azure 仮想マシンとしてデプロイします。Windows マシンを保護する場合は Windows Server 2012 R2 ギャラリー イメージに基づく Windows サーバーとして、Linux マシンを保護する場合は OpenLogic CentOS 6.6 ギャラリー イメージに基づく Linux サーバーとしてデプロイします。</p> <p>このサーバーには、Standard A4、Standard D14、および Standard DS4 の 3 つのサイズを利用できます。<p><p>サーバーは、構成サーバーと同じ Azure ネットワークに接続されます。</p><p>Site Recovery ポータルでセットアップします。</p> | <p>Azure ストレージ アカウントの Blob Storage に作成された接続済みの VHD を使用して、保護されたマシンからレプリケートされたデータを受け取って保持します。</p> <p>Premium Storage アカウントを使用して一貫性のある高パフォーマンスおよび短い待機時間を必要とするワークロードの保護を構成する場合は特に、Standard DS4 を選択します。</p>
+**マスター ターゲット サーバー** | <p>Azure 仮想マシンとしてデプロイします。Windows マシンを保護する場合は Windows Server 2012 R2 ギャラリー イメージに基づく Windows サーバーとして、Linux マシンを保護する場合は OpenLogic CentOS 6.6 ギャラリー イメージに基づく Linux サーバーとしてデプロイします。</p> <p>このサーバーには、Standard A4、Standard D14、および Standard DS4 の 3 つのサイズを利用できます。<p><p>サーバーは、構成サーバーと同じ Azure ネットワークに接続されます。</p><p>Site Recovery ポータルでセットアップします。</p> | <p>Azure ストレージ アカウントの BLOB ストレージに作成された接続済みの VHD を使用して、保護されたマシンからレプリケートされたデータを受け取って保持します。</p> <p>Premium Storage アカウントを使用して一貫性のある高パフォーマンスおよび短い待機時間を必要とするワークロードの保護を構成する場合は特に、Standard DS4 を選択します。</p>
 **プロセス サーバー** | <p>Windows Server 2012 R2 を実行するオンプレミスの仮想サーバーまたは物理サーバーとしてデプロイします。</p> <p>保護するマシンと同じネットワークおよび LAN セグメントにプロセス サーバーを配置することをお勧めします。ただし、保護されたマシンがプロセス サーバーに対する L3 ネットワーク可視性を持っている場合は、プロセス サーバーを異なるネットワーク上で実行することもできます。<p>Site Recovery ポータルでセットアップして構成サーバーに登録します。</p> | <p>保護されたマシンは、オンプレミスのプロセス サーバーにレプリケーション データを送信します。ディスク ベースのキャッシュを使用して受信したレプリケーション データをキャッシュします。プロセス サーバーはこのデータを使用してさまざまな操作を実行します。</p><p>マスター ターゲット サーバーにデータを送信する前に、キャッシュ、圧縮、暗号化することによってデータを最適化します。</p><p>モビリティ サービスのプッシュ インストールを処理します。</p><p>VMware 仮想マシンの自動検出を実行します。</p>
 **オンプレミスのマシン** | VMware ハイパーバイザーで稼働しているオンプレミスの仮想マシン、または Windows や Linux を実行しているオンプレミスの物理サーバーです。 | 仮想マシンおよびサーバーに適用されるレプリケーションを設定します。マシンを個別にフェールオーバーすることもできますが、より一般的には、まとめてフェールオーバーする複数の仮想マシンを含む復旧計画の一部としてフェールオーバーします。
 **モビリティ サービス** | <p>保護する個々の仮想マシンまたは物理サーバーにインストールします。</p><p>手動でインストールすることも、サーバーの保護が有効になったときにプロセス サーバーによって自動的にプッシュしてインストールすることもできます。 | モビリティ サービスは、初期レプリケーション (再同期) の一環としてプロセス サーバーにデータを送信します。 サーバーが保護状態に達すると (再同期が完了すると)、モビリティ サービスは、ディスクへの書き込みのインメモリ キャプチャを実行し、それをプロセス サーバーに送信します。Windows Server のアプリケーションの整合性は、VSS フレームワークを使って実現されます。
@@ -197,7 +197,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | --- 
 **Azure アカウント** | [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium ストレージ アカウント](../storage/storage-premium-storage-preview-portal.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
+**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium ストレージ アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
@@ -382,7 +382,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
 
->[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage.md)を使用して IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
 
 
 3. Windows マスター ターゲット サーバーの仮想マシンは、以下のエンドポイントで作成されます (パブリック エンドポイントは、デプロイの種類がパブリック インターネットである場合にのみ作成されます)。
@@ -695,7 +695,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 3. **[仮想マシンの選択]** で VMware 仮想マシンを保護している場合は、仮想マシンを管理している vCenter サーバー (または仮想マシンが実行している EXSi ホスト) を選択し、マシンを選択します。
 
 	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)	
-4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、[Premium Storage アカウント](../storage/storage-premium-storage-preview-portal.md)を選択します。ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
+4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、[Premium Storage アカウント](../storage/storage-premium-storage.md)を選択します。ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
 
 	![vCenter サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
 
@@ -804,4 +804,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

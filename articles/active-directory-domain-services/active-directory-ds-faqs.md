@@ -56,6 +56,8 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 #### Azure AD ドメイン サービスによって提供されるドメインのスキーマは拡張できますか。
 いいえ。スキーマは、Microsoft が管理対象ドメインを管理することで管理されます。Azure AD ドメイン サービスでは、スキーマの拡張機能はサポートされていません。
 
+### Azure AD ドメイン サービスで提供される DNS レコードは変更できますか。
+はい。管理グループ (AAD DC Administrators) に属するユーザーは、DNS レコードを変更する DNS 管理者アクセス許可を持ちます。
 
 ### 課金と可用性
 
@@ -74,4 +76,4 @@ Azure AD Domain Services を利用できる Azure のリージョンの一覧に
 #### Azure AD Domain Services はいつ一般公開される予定ですか。
 現時点では、このサービスの一般公開予定は決まっていません。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

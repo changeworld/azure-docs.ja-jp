@@ -4,7 +4,7 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
@@ -59,7 +59,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 左側のナビゲーション ウィンドウで **[Active Directory]** をクリックして Access Control の値を取得することもできます。
 
-> [AZURE.IMPORTANT]**Active Directory** を使用して Access Control 名前空間を作成したときに、サービス ID が自動的に作成されることは**ありません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
+> [AZURE.IMPORTANT] **Active Directory** を使用して Access Control 名前空間を作成したときに、サービス ID が自動的に作成されることは**ありません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
 
 
 ## Service Bus 発行者名および発行者キー
@@ -71,9 +71,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 2. 左のナビゲーション ウィンドウで、[**Service Bus**] を選択します。
 3. 名前空間を選択します。タスク バーで [**接続情報**] をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。  
 
-まとめると次のようになります:  
-発行者名 = 既定の発行者  
-発行者キー = 既定のキー
+まとめると次のようになります: 発行者名 = 既定の発行者 発行者キー = 既定のキー
 
 ## 次へ
 Azure BizTalk サービスに関するその他のトピック:
@@ -94,4 +92,4 @@ Azure BizTalk サービスに関するその他のトピック:
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

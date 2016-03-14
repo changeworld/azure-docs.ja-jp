@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015" 
+	ms.date="02/26/2016" 
 	ms.author="erikre"/>
 
 # Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
@@ -22,7 +22,7 @@
 
 このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。
 
-> [AZURE.NOTE]この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。
+> [AZURE.NOTE] この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。
 
 ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure App Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
@@ -71,7 +71,7 @@ ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上�
 
 		dnvm use 1.0.0-update1 –p
 
-> [AZURE.NOTE]OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
+> [AZURE.NOTE] OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
 
 ## Web アプリの作成 
 
@@ -83,7 +83,7 @@ ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上�
 
 		npm install -g yo grunt-cli generator-aspnet bower
 
-	> [AZURE.NOTE]npm バージョンが古くなっていること示す警告が表示される場合があります。この警告は、このチュートリアルには影響しません。
+	> [AZURE.NOTE] npm バージョンが古くなっていること示す警告が表示される場合があります。この警告は、このチュートリアルには影響しません。
 
 3. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
 
@@ -115,7 +115,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 		dnx: Run Command
 
-	> [AZURE.NOTE]Omnisharp サーバーが実行されていない場合は、起動されます。上のコマンドを再入力します。
+	> [AZURE.NOTE] Omnisharp サーバーが実行されていない場合は、起動されます。上のコマンドを再入力します。
 
 	次に、次のコマンドを選択して Web アプリを実行します。
 		
@@ -123,7 +123,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 	コマンド ウィンドウに、アプリケーションが起動したことが示されます。コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 	
-	> [AZURE.NOTE]**コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。
+	> [AZURE.NOTE] **コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。
 
 2. ブラウザーを開き、次の URL に移動します。
 
@@ -169,7 +169,7 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 4. このチュートリアルで作成した Web アプリを選択します。
 
-5. Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的デプロイの設定]** をクリックします。
+5. Web アプリのブレードで、**[設定]**、**[継続的なデプロイ]** の順にクリックします。
 
 	![Azure Web アプリ ホスト](./media/web-sites-create-web-app-using-vscode/14-azure-deployment.png)
 
@@ -241,7 +241,7 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 		To https://user@testsite.scm.azurewebsites.net/testsite.git
 		[new branch]      master -> master
 
-> [AZURE.NOTE]アプリを変更した場合は、組み込み Git 機能を使用して VS コードに直接再パブリッシュできます。これを行うには、**[すべてコミット]** オプションに続けて **[プッシュ]** オプションを選択します。**[プッシュ]** オプションは、**[すべてコミット]** ボタンと **[更新]** ボタンの隣のドロップダウン メニューに含まれています。
+> [AZURE.NOTE] アプリを変更した場合は、組み込み Git 機能を使用して VS コードに直接再パブリッシュできます。これを行うには、**[すべてコミット]** オプションに続けて **[プッシュ]** オプションを選択します。**[プッシュ]** オプションは、**[すべてコミット]** ボタンと **[更新]** ボタンの隣のドロップダウン メニューに含まれています。
 
 プロジェクトで共同作業を行う必要がある場合は、Azure へのプッシュの間に GitHub へのプッシュを実行することを考慮してください。
 
@@ -262,4 +262,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0302_2016-->

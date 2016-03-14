@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2015"
+	ms.date="02/16/2016"
 	ms.author="nitinme"/>
 
 # Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
@@ -62,16 +62,18 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Script Action を使ってクラスターをカスタマイズする")
 
 	<table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>名前</td>
-		<td>スクリプト アクションの名前を指定します。</td></tr>
-	<tr><td>スクリプト URI</td>
-		<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</td></tr>
-	<tr><td>ヘッド/ワーカー</td>
-		<td>カスタマイズ スクリプトが実行されるノード (**[ヘッド]** または **[ワーカー]**) を指定します。</b>
-	<tr><td>パラメーター</td>
-		<td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
-</table>クラスターに複数のコンポーネントをインストールするには、Enter キーを押して複数のスクリプト アクションを追加します。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>名前</td>
+			<td>スクリプト アクションの名前を指定します。</td></tr>
+		<tr><td>スクリプト URI</td>
+			<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</td></tr>
+		<tr><td>ヘッド/ワーカー</td>
+			<td>カスタマイズ スクリプトが実行されるノード (**[ヘッド]** または **[ワーカー]**) を指定します。</b>
+		<tr><td>パラメーター</td>
+			<td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
+	</table>
+
+	クラスターに複数のコンポーネントをインストールするには、Enter キーを押して複数のスクリプト アクションを追加します。
 
 3. **[選択]** をクリックしてスクリプト アクションの構成を保存し、クラスターの作成を続行します。
 
@@ -175,6 +177,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
 		Install-Package Microsoft.Azure.Common.Authentication -Pre
+		Install-Package Microsoft.Azure.Management.Resources -Pre
 
 2. Program.cs ファイルで次の using ステートメントを使用します。
 
@@ -187,6 +190,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		using Microsoft.Azure.Common.Authentication;
 		using Microsoft.Azure.Common.Authentication.Factories;
 		using Microsoft.Azure.Common.Authentication.Models;
+		using Microsoft.Azure.Management.Resources;
 
 3. クラスのコードを次のコードに置き換えます。
 
@@ -212,6 +216,9 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
             var tokenCreds = GetTokenCloudCredentials();
             var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+            
+            var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+            resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 
             _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 
@@ -316,4 +323,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

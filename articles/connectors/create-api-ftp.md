@@ -14,15 +14,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/11/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # FTP API の概要
-FTP サーバーに接続して、ファイルを管理します。FTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。
+FTP サーバーに接続して、ファイルのアップロードやファイルの削除など、ファイルを管理します。FTP API は次のツールから使用できます。
 
-FTP API は、ロジック アプリから使用できます。
+- Logic Apps
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [FTP コネクタ](../app-service-logic/app-service-logic-connector-ftp.md)をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[FTP コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-ftp.md)」をご覧ください。
 
 FTP では、次の操作を実行できます。
 
@@ -30,7 +30,7 @@ FTP では、次の操作を実行できます。
 - ファイルが更新されたときに、トリガーを使用できます。
 - ファイルの作成、ファイルの内容の取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ファイルの内容を取得し、SQL Database をアップロードすることができます。 
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 
 ## トリガーとアクション
@@ -38,7 +38,7 @@ FTP では、次のトリガーとアクションを使用できます。
 
 トリガー | アクション
 --- | ---
-<ul><li>更新されたファイルを取得する</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>更新されたファイルを取得する</li><li>ファイルを取得する</li></ul>
+<ul><li>更新されたファイルを取得する</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>更新されたファイルを取得する</li><li>ファイルを更新する</li></ul>
 
 すべての API は、JSON および XML 形式のデータに対応します。
 
@@ -51,11 +51,12 @@ FTP では、次のトリガーとアクションを使用できます。
 |ユーザー名| あり | ユーザー名を入力して、FTP サーバーに接続します。|
 |パスワード | あり | ユーザー名のパスワードを入力します。|
 
-接続を作成したら、ソース ファイルや宛先フォルダーなど、FTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、ソース ファイルや宛先フォルダーなど、FTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ FTP 接続を使用できます。
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### ファイルを作成する
 FTP サーバーにファイルをアップロードします。```POST: /datasets/default/files```
@@ -213,7 +214,7 @@ FTP サーバーのファイルを更新します。```PUT: /datasets/default/fi
 
 | 名前 | データ型 | 必須 |
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -223,7 +224,7 @@ FTP サーバーのファイルを更新します。```PUT: /datasets/default/fi
 
 | 名前 | データ型 | 必須 |
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -244,6 +245,6 @@ FTP サーバーのファイルを更新します。```PUT: /datasets/default/fi
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

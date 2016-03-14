@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサル アプリ SDK コンテンツ
@@ -57,4 +57,4 @@
 - `EngagementPageOverlay.cs` : `Overlay` アナウンスと通知の表示コード。
   
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/29/2015" 
+	ms.date="02/26/2016" 
 	ms.author="nitinme"/>
 
 # Script Action を使って HDInsight クラスターをカスタマイズする
@@ -69,16 +69,18 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
 	
 	<table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>名前</td>
-		<td>スクリプト アクションの名前を指定します。</td></tr>
-	<tr><td>スクリプト URI</td>
-		<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</td></tr>
-	<tr><td>ノードの種類</td>
-		<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
-	<tr><td>パラメーター</td>
-		<td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
-</table>複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>名前</td>
+			<td>スクリプト アクションの名前を指定します。</td></tr>
+		<tr><td>スクリプト URI</td>
+			<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</td></tr>
+		<tr><td>ノードの種類</td>
+			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
+		<tr><td>パラメーター</td>
+			<td>スクリプトで必要な場合は、パラメーターを指定します。</td></tr>
+	</table>
+
+	複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。
 
 3. チェック マークをクリックして、クラスターのプロビジョニングを開始します。
   
@@ -176,4 +178,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-v1/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

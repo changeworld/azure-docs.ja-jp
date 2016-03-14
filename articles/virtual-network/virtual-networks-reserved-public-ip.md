@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="予約済み IP | Microsoft Azure"
    description="予約済み IP およびそれらを管理する方法について説明します。"
    services="virtual-network"
@@ -6,7 +6,7 @@
    authors="telmosampaio"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -34,12 +34,12 @@ Azure における [IP アドレス](virtual-network-ip-addresses-overview-class
   - 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
 1. 予約済み IP は、いくつ使用できますか。  
   - 現時点では、すべての Azure サブスクリプションで 20 個の予約済み IP を使用できるようになっています。しかし、予約済み IP の追加を要求することができます。詳細については、[サブスクリプションとサービスの制限](../azure-subscription-service-limits/)のページを参照してください。
-1. 予約済み IP に料金はかかりますか。 
+1. 予約済み IP に料金はかかりますか。
   - 料金については、[予約済み IP アドレスの価格詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページを参照してください。
-1. どうやって IP アドレスを予約するのですか。 
-  - PowerShell または [Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を使用して、特定のリージョンから予約済み IP を要求します。Azure はそのリージョンの IP アドレスを予約し、サブスクリプションに関連付けます。その後、そのリージョンの予約済み IP を使用できます。管理ポータルを使用して IP アドレスを予約することはできません。
-1. 予約済み IP を VNet ベースのアフィニティ グループで使用できますか。 
-  - 予約済み IP はリージョン VNet に対してのみサポートされます。アフィニティ グループに関連付けられている VNet に対してはサポートされません。リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet およびアフィニティ グループについて](virtual-networks-migrate-to-regional-vnet.md)を参照してください。 
+1. どうやって IP アドレスを予約するのですか。
+  - PowerShell または [Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を使用して、特定のリージョンの IP アドレスを予約します。この予約済み IP アドレスは、サブスクリプションに関連付けられます。管理ポータルを使用して IP アドレスを予約することはできません。
+1. 予約済み IP を VNet ベースのアフィニティ グループで使用できますか。
+  - 予約済み IP はリージョン VNet に対してのみサポートされます。アフィニティ グループに関連付けられている VNet に対してはサポートされません。リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet およびアフィニティ グループについて](virtual-networks-migrate-to-regional-vnet.md)を参照してください。
 
 ## 予約済み VIP の管理方法
 
@@ -54,12 +54,12 @@ Azure における [IP アドレス](virtual-network-ip-addresses-overview-class
 	ReservedIPName       : MyReservedIP
 	Address              : 23.101.114.211
 	Id                   : d73be9dd-db12-4b5e-98c8-bc62e7c42041
-	Label                : 
+	Label                :
 	Location             : Central US
 	State                : Created
 	InUse                : False
-	ServiceName          : 
-	DeploymentName       : 
+	ServiceName          :
+	DeploymentName       :
 	OperationDescription : Get-AzureReservedIP
 	OperationId          : 55e4f245-82e4-9c66-9bd8-273e815ce30a
 	OperationStatus      : Succeeded
@@ -67,6 +67,13 @@ Azure における [IP アドレス](virtual-network-ip-addresses-overview-class
 IP アドレスが予約されると、サブスクリプションとの関連付けは、サブスクリプションが削除されるまで維持されます。上記の予約済み IP を削除するには、次の PowerShell コマンドを実行します。
 
 	Remove-AzureReservedIP -ReservedIPName "MyReservedIP"
+
+## 既存のクラウド サービスの IP アドレスを予約する方法
+
+*- ServiceName* パラメーターを追加することで、既存のクラウド サービスの IP アドレスを予約できます。*米国中部*の *TestService* クラウド サービスの IP アドレスを予約するには、次の PowerShell コマンドを実行します。
+
+	New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US" -ServiceName TestService
+
 
 ## 予約済み IP を新しいクラウド サービスに関連付ける方法
 次のスクリプトによって新しい予約済み IP が作成され、*TestService* という名前の新しいクラウド サービスに関連付けられます。
@@ -97,7 +104,7 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 ## サービス構成ファイルを使用して、クラウド サービスに予約済み IP を関連付ける方法
 サービスの構成 (CSCFG) ファイルを使用すると、クラウド サービスに予約済み IP を関連付けることもできます。次の xml サンプルでは、*MyReservedIP* という予約済み VIP が使用されるようにクラウド サービスを構成する方法を示しています。
-	
+
 	<?xml version="1.0" encoding="utf-8"?>
 	<ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
 	  <Role name="WebRole1">
@@ -117,10 +124,10 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 ## 次のステップ
 
-- 従来のデプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)の動作を理解します。
+- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)のしくみを理解します。
 
 - [予約済みプライベート IP アドレス](../virtual-networks-reserved-private-ip)について理解する。
 
 - [インスタンス レベル パブリック IP (ILPIP) アドレス](../virtual-networks-instance-level-public-ip)について理解する。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

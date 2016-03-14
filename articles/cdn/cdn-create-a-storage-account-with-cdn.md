@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="CDN を使用する方法 | Microsoft Azure" 
-	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。" 
-	services="cdn" 
-	documentationCenter=".net" 
-	authors="camsoper" 
-	manager="dwrede" 
+<properties
+	pageTitle="CDN を使用する方法 | Microsoft Azure"
+	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。"
+	services="cdn"
+	documentationCenter=".net"
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/02/2015" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
 	ms.author="casoper"/>
 
 
@@ -71,7 +71,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 1. [Azure 管理ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
 
     新しい CDN プロファイル ブレードが表示されます。
-    
+
     ![新しい CDN プロファイル][new-cdn-profile]
 
 2. CDN プロファイルの名前を入力します。
@@ -93,15 +93,15 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 1. [Microsoft Azure 管理ポータル](https://portal.azure.com)で CDN プロファイルに移動します。これは、前の手順でダッシュボードにピン留めしている可能性があります。ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
 
     CDN プロファイル ブレードが表示されます。
-    
+
     ![CDN プロファイル][cdn-profile-settings]
-    
+
 2. **[エンドポイントの追加]** ボタンをクリックします。
 
     ![[エンドポイントの追加] ボタン][cdn-new-endpoint-button]
 
     **[エンドポイントの追加]** ブレードが表示されます。
-    
+
     ![[エンドポイントの追加] ブレード][cdn-add-endpoint]
 
 3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<EndpointName>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
@@ -154,4 +154,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -16,8 +16,7 @@
 
    	 -   StorSimple Manager と Azure Storage は別々の場所に置くことができます。その場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。Azure Storage のアカウントを作成するには、ポータルで Azure Storage サービスに移動し、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」に記載されている手順に従います。このアカウントが作成されたら、それを StorSimple Manager サービスに追加します。それには、「[サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service)」に記載されている手順を実行してください。
    	 
-   	 -   プレビューでは、StorSimple Manager サービスを作成できるのは米国西部と東日本のみです。
-	
+   	 	
 	1.  **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。サブスクリプションは、課金アカウントにリンクされます。このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
 
 	1.  **[新しい Azure ストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。別の場所でデータが必要になる場合、このボックスをオフにします。
@@ -32,4 +31,4 @@
 
 	サービスの状態が **"アクティブ"** に変わります。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

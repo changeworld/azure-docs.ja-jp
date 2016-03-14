@@ -14,16 +14,17 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/22/2016"
-ms.author="deonhe"/>
+ms.date="02/25/2016"
+ms.author="mandia"/>
 
 # OneDrive API の概要
 
-OneDrive に接続してファイルを管理します。OneDrive のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
+OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive API は次のツールから使用できます。
 
-OneDrive API は PowerApps Enterprise とロジック アプリから使用できます。
+- PowerApps 
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [OneDrive API](../app-service-logic/app-service-logic-connector-onedrive.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[OneDrive コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-onedrive.md)」をご覧ください。
 
 OneDrive では、次の操作を実行できます。
 
@@ -32,33 +33,32 @@ OneDrive では、次の操作を実行できます。
 - ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、OneDrive で新しいファイルを作成すると、Office 365 を使用してそのファイルを電子メールで送信できます。
 - PowerApps Enterprise に OneDrive API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
 OneDrive API には、次のトリガーとアクションがあります。
 
 | トリガー | アクション|
 | --- | --- |
-|<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>フォルダー内のファイルを一覧表示する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ルート フォルダーを一覧表示する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
+|<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>フォルダー内のファイルを一覧表示する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ルート フォルダーを表示する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
 
 すべての API は、JSON および XML 形式のデータに対応します。
 
 ## OneDrive への接続を作成する
 
 ### PowerApps に構成を追加する
-OneDrive を PowerApps Enterprise に追加するときに、OneDrive アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。OneDrive アプリケーションには、**リダイレクト URL** 値も使用されます。OneDrive アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
+OneDrive を PowerApps Enterprise に追加するときに、OneDrive アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。OneDrive アプリケーションでは、**リダイレクト URL** 値も使用されます。OneDrive アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
 
 1. _Microsoft アカウント デベロッパー センター_の[アプリケーション作成ページ][5]に移動し、_Microsoft アカウント_でサインインします。
 
-2. **アプリケーション名**を入力し、契約に同意します。  
-![新しい OneDrive アプリケーション][6]
+2. **アプリケーション名**を入力し、規約に同意します。![新しい OneDrive アプリケーション][6]
 
 3. 次のように設定します。
 
 	1. **[API 設定]** を選択します。  
-	2. **[リダイレクト URL]** を Azure ポータルで新しい OneDrive API を追加するときに表示される値に設定します。  
+	2. **[リダイレクト URL]** を、Azure ポータルで新しい OneDrive API を追加したときに表示された値に設定します。  
 	3. 変更を**保存**します。  
 
 	![OneDrive アプリケーションの API 設定][7]
@@ -71,12 +71,12 @@ OneDrive を PowerApps Enterprise に追加するときに、OneDrive アプリ�
 1. OneDrive アカウントにサインインします。
 2. ロジック アプリが OneDrive に接続して使用することを許可します。 
 
-接続を作成したら、フォルダー パスやファイル名など、OneDrive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、フォルダー パスやファイル名など、OneDrive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ接続を使用できます。
 
 ## Swagger REST API リファレンス
-#### このドキュメントの対象バージョン: 1.0
+適用されるバージョン: 1.0。
 
 
 ### ID を使用してファイルのメタデータを取得する
@@ -94,7 +94,7 @@ ID を使用して、OneDrive のファイルのメタデータを取得しま�
 
 
 ### ファイルを更新する
-OneDrive でファイルを更新します。```PUT: /datasets/default/files/{id}```
+OneDrive のファイルを更新します。```PUT: /datasets/default/files/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -281,7 +281,7 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -292,7 +292,7 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -315,13 +315,13 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 
 
 ## 次のステップ
-OneDrive API を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
+OneDrive API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 
 [5]: https://account.live.com/developers/applications/create
 [6]: ./media/create-api-onedrive/onedrive-new-app.png
 [7]: ./media/create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,6 +1,8 @@
-Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources and lets you do analytics on exabytes of data. When the job completes, it winds down resources automatically, and you pay only for the processing power used. As you increase or decrease the size of data stored or the amount of compute used, you don’t have to rewrite code. Many of the default limits can be easily raised for your subscription by contacting support. 
+Data Lake Analytics により、分散インフラストラクチャや複雑なコードの管理という複雑なタスクも簡単に行うことができます。リソースを動的にプロビジョニングするので、エクサバイト規模のデータも分析できます。ジョブが完了するとリソースが自動的に縮小され、使用した処理能力の分だけのお支払いで済みます。保存するデータのサイズや使用するコンピューティングの量を増やしたり減らしたりする際に、コードを書き直す必要はありません。サブスクリプションの既定の上限の多くは、サポートに連絡することで簡単に引き上げることができます。
 
-**Resource** | **Default Limit**
+**リソース** | **既定の制限**
 -------- | ------------- | -------------
-max concurrent jobs | 3 
-Max parallelism per job | 20
+最大同時実行ジョブ数 | 3 
+ジョブあたりの最大並列処理数 | 20
+
+<!---HONumber=AcomDC_0302_2016-->

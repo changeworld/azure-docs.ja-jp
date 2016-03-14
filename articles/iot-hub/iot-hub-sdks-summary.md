@@ -68,8 +68,8 @@ Azure IoT サービス ライブラリのオンライン API リファレンス 
 [Java 用 Azure IoT サービス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/java/service/readme.md
 [Node.js 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/readme.md
 [Node.js 用 Azure IoT サービス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/service/README.md
-[OS Platforms and hardware compatibility]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[Microsoft Azure Certified for IoT プログラム]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md#certified
+[OS Platforms and hardware compatibility]: iot-hub-tested-configurations.md
+[Microsoft Azure Certified for IoT プログラム]: iot-hub-tested-configurations.md#microsoft-azure-certified-for-iot
 
 [Internet of Things (IoT) .NET (モノのインターネット (IoT) .NET)]: https://msdn.microsoft.com/library/mt488521.aspx
 [Microsoft Azure IoT device SDK for C (C 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/c/api_reference/index.html
@@ -79,4 +79,4 @@ Azure IoT サービス ライブラリのオンライン API リファレンス 
 [Microsoft Azure IoT service SDK for Java (Java 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/index.html
 [Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.0/index.html
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

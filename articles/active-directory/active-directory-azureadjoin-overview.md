@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="02/26/2016"
 	ms.author="femila"/>
 
 # Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張
@@ -79,4 +79,4 @@ Azure AD 参加には、次の機能があります。
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

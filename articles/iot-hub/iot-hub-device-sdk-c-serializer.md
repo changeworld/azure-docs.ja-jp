@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="11/10/2015"
+     ms.date="02/23/2016"
      ms.author="obloch"/>
 
 # C 用 Microsoft Azure IoT device SDK – シリアライザーの詳細
@@ -528,17 +528,25 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 ## マクロの構成
 
-**シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は次のとおりです。
+**シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は azure-c-shared-utility ライブラリで参照できます。再帰オプションを使用して GitHub から Azure-iot-sdk リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
 
 ```
-.\\c\\common\\tools\\macro\_utils\_h\_generator.
+.\\c\\azure-c-shared-utility
+```
+
+ライブラリを複製していない場合は、[ここ](https://github.com/Azure/azure-c-shared-utility)に表示されます。
+
+共有ユーティリティ ライブラリ内には、次のフォルダーが表示されます:
+
+```
+azure-c-shared-utility\\macro\_utils\_h\_generator.
 ```
 
 このフォルダーには、**macro\_utils\_h\_generator.sln** と呼ばれる Visual Studio ソリューションがあります。
 
   ![](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.PNG)
 
-このソリューションのプログラムは、\\c\\common\\inc ディレクトリにある **macro\_utils.h** ファイルを生成します。SDK には、既定の macro\_utils.h ファイルが含まれています。このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
+このソリューションのプログラムは、 **macro\_utils.h** ファイルを生成します。SDK には、既定の macro\_utils.h ファイルが含まれています。このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
 
 考慮が必要な 2 つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の 2 行で定義されています。
 
@@ -658,4 +666,4 @@ serializer_deinit();
 
 また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。さらに、詳細を知るために役立つリソースとして、[SDK ドキュメント](https://github.com/Azure/azure-iot-sdks)も参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

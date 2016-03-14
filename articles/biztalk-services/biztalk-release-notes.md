@@ -4,8 +4,8 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="msftman" 
-	manager="dwrede" 
-	editor="cgronlun"/>
+	manager="erikre" 
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="02/29/2016" 
 	ms.author="deonhe"/>
 
 # Azure BizTalk Services のリリース ノート
@@ -38,7 +38,7 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 * 契約のテンプレートを作成するためのオプションが廃止されました。  
 * 送信側契約は、スキーマごとに異なる区切り記号セットを指定できるようになりました。この構成は、送信側契約のプロトコル設定で指定します。詳細については、「[Azure BizTalk Services での X12 アグリーメントの作成](https://msdn.microsoft.com/library/azure/hh689847.aspx)」および「[Azure BizTalk Services で EDIFACT アグリーメントを作成する](https://msdn.microsoft.com/library/azure/dn606267.aspx)」を参照してください。同じ目的のために、TPM OM API にも 2 つの新しいエンティティが追加されました。「[X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx)」および「[EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)」を参照してください。  
 * 派生型を含む標準 XSD コンストラクトがサポートされるようになりました。「[マップでの標準 XSD コンストラクトの使用](https://msdn.microsoft.com/library/azure/dn793987.aspx)」および「[マッピングのシナリオと例で派生型を使用する](https://msdn.microsoft.com/library/azure/dn793997.aspx)」を参照してください。  
-* AS2 でメッセージ署名のための新しい MIC アルゴリズムと新しい暗号化アルゴリズムがサポートされるようになりました。「[Azure BizTalk Services で AS2 アグリーメントを作成する](https://msdn.microsoft.com/library/azure/hh689890.aspx)」を参照してください。
+* AS2 でメッセージ署名のための新しい MIC アルゴリズムと新しい暗号化アルゴリズムがサポートされるようになりました。「[Azure BizTalk Services で AS2 アグリーメントを作成する](https://msdn.microsoft.com/library/azure/hh689890.aspx)」をご覧ください。
 ## 既知の問題
 
 ### BizTalk Services ポータル更新後の接続に関する問題
@@ -49,7 +49,9 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 この問題を解決するには、Visual Studio 2012 Update 3 RC 1 をインストールします。
 
 ### カスタム バインド プロジェクトの参照
-Visual Studio ソリューションの BizTalk Services プロジェクトにおける次の状況が該当します。* 同一の Visual Studio ソリューションに BizTalk Services プロジェクトとカスタム バインド プロジェクトがある。BizTalk Services プロジェクトに、このカスタム バインド プロジェクト ファイルへの参照がある。* BizTalk Services プロジェクトに、カスタム バインド/動作 DLL への参照がある。
+Visual Studio ソリューションの BizTalk Services プロジェクトでの次の状況について考えてみます。
+* 同じ Visual Studio ソリューションに、BizTalk Services プロジェクトとカスタム バインド プロジェクトがある。BizTalk Services プロジェクトには、このカスタム バインド プロジェクト ファイルへの参照が含まれている。 
+* BizTalk Services プロジェクトには、このカスタム バインド/動作 DLL への参照が含まれている。
 
 Visual Studio では、ソリューションが正常に "ビルド" されます。その後、ソリューションを "リビルド" または "クリーン" した後で、リビルドまたはクリーンを再度行うと、次のエラーが発生します。<Path to DLL> から "bin\\Debug\\FileName.dll" にファイルをコピーできません。ファイル ‘bin\\Debug\\FileName.dll’ は、別のプロセスで使用されているため、アクセスできません。
 
@@ -83,9 +85,10 @@ AS2 メッセージの添付ファイルは送信と受信のどちらでもサ�
 ### リソース: パスの記憶  
 **リソース**を追加する際、リソースを追加するために前に使用したパスがダイアログ ウィンドウに記憶されていない場合があります。前に使用したパスを記憶するには、Internet Explorer の **[信頼済みサイト]** に BizTalk Services ポータル Web サイトを追加してみてください。
 ### ブリッジのエンティティ名を変更し、変更を保存しないでプロジェクトを閉じると、再度エンティティを開いたときにエラーが発生する
-次の順序で操作が実行されるシナリオが該当します。* ブリッジ (XML 一方向ブリッジなど) を BizTalk サービス プロジェクトに追加する。
+次の順序で操作が実行されるシナリオが該当します。
+* ブリッジ (XML 一方向ブリッジなど) を BizTalk Services プロジェクトに追加する。  
 
-* ブリッジの名前を変更するために [エンティティ名] プロパティの値を指定する。これによって、関連する .bridgeconfig ファイルの名前が指定した名前に変更される。  
+* ブリッジの名前を変更するために [エンティティ名] プロパティの値を指定する。これによって、関連する .bridgeconfig ファイルの名前が指定した名前に変更される。
 
 * 変更を保存しないで .bcs ファイルを閉じる (Visual Studio のタブを閉じる)。
 
@@ -97,7 +100,8 @@ BizTalk サービス プロジェクトでは、プロジェクトに追加さ�
 ### XML 要求-応答ブリッジの応答メッセージの文字セットが常に UTF-8 になる
 このリリースでは、XML 要求-応答ブリッジの応答メッセージの文字セットは常に UTF-8 に設定されます。
 ### ユーザー定義のデータ型
-BizTalk アダプター サービス機能に含まれている BizTalk Adapter Pack アダプターでは、アダプター操作でユーザー定義のデータ型を使用できます。ユーザー定義のデータ型を使用する際は、ファイル (.dll) をドライブ \\Program Files\\Microsoft BizTalk Adapter Service\\BAServiceRuntime\\bin\\ か BizTalk アダプター サービスをホストしているサーバーのグローバル アセンブリ キャッシュ (GAC) にコピーします。コピーしなかった場合、クライアントに次のエラーが発生する可能性があります。```<s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+BizTalk アダプター サービス機能に含まれている BizTalk Adapter Pack アダプターでは、アダプター操作でユーザー定義のデータ型を使用できます。ユーザー定義のデータ型を使用する際は、ファイル (.dll) をドライブ \\Program Files\\Microsoft BizTalk Adapter Service\\BAServiceRuntime\\bin\\ か BizTalk アダプター サービスをホストしているサーバーのグローバル アセンブリ キャッシュ (GAC) にコピーします。コピーしなかった場合、クライアントで次のエラーが発生する可能性があります。
+```<s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <faultcode>s:Client</faultcode>
   <faultstring xml:lang="ja-JP">The UDT with FullName "File, FileUDT, Version=Value, Culture=Value, PublicKeyToken=Value" could not be loaded. Try placing the assembly containing the UDT definition in the Global Assembly Cache.</faultstring>
   <detail>
@@ -105,8 +109,8 @@ BizTalk アダプター サービス機能に含まれている BizTalk Adapter 
       <ExceptionCode>ERROR_IN_SENDING_MESSAGE</ExceptionCode>
     </AFConnectRuntimeFault>
   </detail>
-</s:Fault> ```
-> [AZURE.IMPORTANT]GACUtil.exe を使用して、ファイルをグローバル アセンブリ キャッシュにインストールすることをお勧めします。GACUtil.exe には、このツールと Visual Studio コマンド ライン オプションの使用方法に関する説明があります。
+</s:Fault> ```  
+> [AZURE.IMPORTANT] GACUtil.exe を使用して、ファイルをグローバル アセンブリ キャッシュにインストールすることをお勧めします。GACUtil.exe には、このツールと Visual Studio コマンド ライン オプションの使用方法に関する説明があります。
 
 ### BizTalk アダプター サービス Web サイトの再起動
 **BizTalk アダプター サービス ランタイム***をインストールすると、**BAService** アプリケーションが含まれた **BizTalk アダプター サービス** Web サイトが IIS に作成されます。**BAService** アプリケーションでは、オンプレミスのサービス エンドポイントの範囲をクラウドまで拡大するために、リレー バインドを内部で使用しています。サービスがオンプレミスでホストされている場合、オンプレミス サービスが開始されて初めて、対応するリレー エンドポイントが Service Bus に登録されます。
@@ -119,11 +123,18 @@ LOB コンポーネントのアドレスとエンティティ名には特殊文�
 ### "マップのテスト" プロパティが表示されない
 "**マップのテスト**" プロパティが Visual Studio に表示されない現象は、**[プロパティ]** ウィンドウと **[ソリューション エクスプローラー]** ウィンドウが同時にドックされていない場合に発生します。これを解決するには、**[プロパティ]** ウィンドウと **[ソリューション エクスプローラー]** ウィンドウをドックします。
 ### [DateTime 再フォーマット] ボックスの一覧がグレー表示される
-"DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。この問題を解決するには、以下の手順に従って、画面を **[小 - 100% (既定)]** に設定します。1.**[コントロール パネル]** を開き、**[デスクトップのカスタマイズ]** をクリックします。2.**[ディスプレイ]** をクリックします。3.**[小 - 100% (既定)]** をクリックし、**[適用]** をクリックします。
+"DateTime 再フォーマット" マップ操作がデザイン画面に追加されて構成されると、[フォーマット] ボックスの一覧がグレー表示される場合があります。これは、コンピューターのディスプレイが **[中 – 125%]** または **[大 – 150%]** に設定されている場合に発生することがあります。この問題を解決するには、次の手順に従って、ディスプレイを **[小 - 100% (既定)]** に設定します。
+1. **[コントロール パネル]** を開き、**[デスクトップのカスタマイズ]** をクリックします。
+2. **[ディスプレイ]** をクリックします。
+3. **[小 - 100% (既定)]** をクリックし、**[適用]** をクリックします。
 
 これで、**[フォーマット]** ボックスの一覧は正常に動作するようになります。
 ### BizTalk Services ポータルの契約が重複している
-次のシナリオが該当します。1.取引先管理 OM API を使用して契約を作成する。2.BizTalk Services ポータルで、契約を 2 つの異なるタブで開く。3.両方のタブで契約をデプロイする。4.結果として、両方の契約がデプロイされ、BizTalk Services ポータルのエントリが重複する。
+次のシナリオで考えてみましょう。
+1. 取引先管理 OM API を使用して契約を作成する。
+2. BizTalk Services ポータルで、契約を 2 つの異なるタブで開く。
+3. 両方のタブで契約をデプロイする。
+4. 結果として、両方の契約がデプロイされ、BizTalk Services ポータルのエントリが重複する。
 
 **対処法**:BizTalk Services ポータルで重複する契約の 1 つを開き、デプロイを解除します。
 
@@ -147,7 +158,8 @@ BizTalk サービス プロジェクトで名前ベースの動作を使用し�
 ### WCF を使用したブリッジへのメッセージ送信が拡張しない
 WCF を使用してブリッジに送信されたメッセージが拡張しない場合、スケーラブルなクライアントが必要であれば、代わりに HttpWebRequest を使用してください。
 ### アップグレード: BizTalk Services プレビューから一般公開 (GA) にアップグレードした後にトークン プロバイダーのエラーが発生する
-アクティブなバッチが含まれた EDI 契約または AS2 契約がある場合、BizTalk Services をプレビューから GA にアップグレードすると、次のエラーが発生することがあります。* エラー: トークン プロバイダーはセキュリティ トークンを提供できませんでした。トークン プロバイダーから返されるメッセージ: リモート名を解決できませんでした。
+アクティブなバッチが含まれた EDI 契約または AS2 契約がある場合、BizTalk Servicesをプレビューから GA にアップグレードすると、次のエラーが発生することがあります。
+* エラー: トークン プロバイダーは、セキュリティ トークンを提供できませんでした。トークン プロバイダーから返されるメッセージ: リモート名を解決できませんでした。
 
 * バッチ タスクがキャンセルされます。
 
@@ -174,4 +186,4 @@ BizTalk Services プレビュー サブスクリプションに XML ブリッジ
 
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

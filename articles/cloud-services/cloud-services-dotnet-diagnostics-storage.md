@@ -12,7 +12,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="10/21/2015"
+  ms.date="02/20/2016"
   ms.author="robb" />
 
 # Azure Storage への診断データの保存と表示
@@ -52,7 +52,7 @@ SDK 2.5 以降では、診断データの転送要求は構成ファイルを介
 SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介して、またプログラムによって、診断データの転送を要求することができます。プログラムを使用した方法では、オンデマンド転送を行うこともできます。
 
 
->[AZURE.IMPORTANT]Azure ストレージ アカウントに診断データを転送する場合、診断データが使用するストレージ リソースのコストが発生します。
+>[AZURE.IMPORTANT] Azure ストレージ アカウントに診断データを転送する場合、診断データが使用するストレージ リソースのコストが発生します。
 
 ## 診断データの保存
 
@@ -83,14 +83,15 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 ## 診断データを表示するツール
 ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。次に例を示します。
 
-- **Visual Studio のサーバー エクスプローラー** - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。データは、ローカルのストレージ エミュレーター アカウントから表示でき、Azure 向けに作成したストレージ アカウントからも表示できます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照](https://msdn.microsoft.com/library/ff683677.aspx)」をご覧ください。
+- Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md)」をご覧ください。
 
-- **Azure ストレージ エクスプローラー (Neudesic)** - [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)は、Azure ストレージ プロジェクト内のデータ (Azure アプリケーションのログを含む) を調査したり変更したりするための実用的な GUI ツールです。ツールをダウンロードするには、「[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)」を参照してください。
+- [Azure Stotage エクスプローラー (Neudesic)](http://azurestorageexplorer.codeplex.com/) は、Azure Stprage プロジェクト内のデータ (Azure アプリケーションのログを含む) の調査や変更に使用できる実用的な GUI ツールです。
 
-- Azure 診断マネージャー (Cerebrata) - [Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) は、Microsoft Azure 診断を管理するための Windows (WPF) ベースのクライアントです。Azure 内のアプリケーションによって収集された診断データの表示、ダウンロード、および管理ができます。ツールをダウンロードするには、「[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)」を参照してください。
+- [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
+
 
 ## 次のステップ
 
 [Azure 診断で Cloud Services アプリケーションのフローをトレースする](cloud-services-dotnet-diagnostics-trace-flow.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

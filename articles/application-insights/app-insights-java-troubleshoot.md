@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/21/2015" 
+	ms.date="03/01/2016" 
 	ms.author="awills"/>
  
 # Java 用 Application Insights のトラブルシューティングおよび Q&A
@@ -24,7 +24,7 @@
 
 *Eclipse で、Maven または Gradle を使用して Application Insights SDK を追加すると、ビルドまたはチェックサムの検証エラーが発生します。*
 
-* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[1.0,)</version>`、または (Gradle) `version:'1.0.+'`) を使用している場合、代わりに特定のバージョン (`1.0.2` など) を指定してみてください。最新のバージョンの[リリース ノート](app-insights-release-notes-java.md)を参照してください。
+* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[1.0,)</version>`、または (Gradle) `version:'1.0.+'`) を使用している場合、代わりに特定のバージョン (`1.0.2` など) を指定してみてください。最新のバージョンの[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)を参照してください。
 
 ## データが表示されない 
 
@@ -33,7 +33,7 @@
 * 少し待ってから、[最新の情報に更新] をクリックします。グラフは周期的に自動で更新されますが、手動で更新することもできます。更新間隔は、グラフの時間範囲によって異なります。
 * プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。
 * この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
-* ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
+* ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 * プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、[Error] から始まるエントリを調べます。
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
@@ -46,7 +46,9 @@
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
 * データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
+#### 予期しているデータがすべて表示されません
 
+* [クォータと価格] ブレードを開き、[サンプリング](app-insights-sampling.md)を実行中かどうかを確認します (転送率が 100% の場合、サンプリングは実行されていません)。 Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。これにより、テレメトリの月間クォータの上限を超えないようにすることができます。 
 
 ## 使用状況データがない
 
@@ -138,4 +140,4 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="02/29/2016"
 	ms.author="jeedes"/>
 
 
@@ -85,15 +85,15 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 **QuickHelp で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **[QuickHelp]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
+1. Azure AD ポータルの **[QuickHelp]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![Configure Single Sign-On][6]<br>
 
 2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][7]<br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![アプリケーションの設定の構成][8]<br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure App Settings][8]<br>
  
      a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*))。
 
-     >[AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
+     > [AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
      b.**[次へ]** をクリックします。
 
@@ -255,4 +255,4 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

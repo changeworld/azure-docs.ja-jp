@@ -20,7 +20,7 @@
 > [AZURE.SELECTOR]
 - [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
 - [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
-- [GA Release](../articles/storsimple/storsimple-virtual-device.md)
+- [GA リリース](../articles/storsimple/storsimple-virtual-device.md)
 
 ##概要
 StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。
@@ -36,8 +36,8 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **最大容量** | 30 TB | 64 TB |
 | **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** | Update 2 より前または Update 2 以降を実行しているバージョン | Update 2 以降を実行しているバージョン |
-| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧は、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」を参照してください。 |
-| **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
+| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」をご覧ください |
+| **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -118,7 +118,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 
 - 仮想デバイスのホスト サーバーとなる VM の[アクセス制御レコード](storsimple-manage-acrs.md)を追加します。
 
-- 仮想デバイスと同じリージョンにある[ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account)を使用します。ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら]()、Premium Storage アカウントの場合は[こちら](storage-premium-storage-preview-portal.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)を参照してください。
+- 仮想デバイスと同じリージョンにある[ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account)を使用します。ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら]()、Premium Storage アカウントの場合は[こちら](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)を参照してください。
 
 - 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
@@ -146,8 +146,7 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
-[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 
@@ -282,4 +281,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法を理解します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

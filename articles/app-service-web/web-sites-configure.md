@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="02/26/2016" 
 	ms.author="tdykstra"/>
 
 
@@ -50,7 +50,7 @@
 
 <a name="alwayson"></a>**常時接続**。既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。これにより、システムではリソースを節約できます。基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
+**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] (既定) のままにしておきます。
 
 **自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
@@ -177,4 +177,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

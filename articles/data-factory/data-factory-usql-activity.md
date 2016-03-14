@@ -62,8 +62,8 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
  
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
-| Azure Active Directory (@hotmail.com、@live.com など) によって管理されていないユーザー | 12 時間 |
-| Azure Active Directory (AAD) によって管理されているユーザー | | OAuth ベースのリンクされたサービスに基づいて、最後のスライス実行からスライスが 14 日間実行しない場合、最後のスライス実行から 14 日です。<p>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。</p> |
+| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など) | 12 時間 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント | | スライスの最後の実行から 14 日後。<p>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。</p> |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -156,7 +156,7 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
 type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | あり
-scriptPath | U-SQL スクリプトを含むフォルダーのパス。 | いいえ (スクリプトを使用する場合)
+scriptPath | U-SQL スクリプトを含むフォルダーのパス。ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)
 scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)
 script (スクリプト) | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。例: "script" : "CREATE DATABASE test". | いいえ (scriptPath と scriptLinkedService を使用する場合)
 degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ
@@ -257,4 +257,4 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

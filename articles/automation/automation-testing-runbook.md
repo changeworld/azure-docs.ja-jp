@@ -3,7 +3,7 @@
 	description="Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。この記事では、Runbook のテスト方法と出力の見方について説明します。"
 	services="automation"
 	documentationCenter=""
-	authors="bwren"
+	authors="mgoedtel"
 	manager="stevenka"
 	editor="tysonn" />
 <tags 
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="02/18/2016"
+	ms.date="02/23/2016"
 	ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook のテスト
@@ -55,4 +55,4 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/20/2016"
-   ms.author="joaoma" />
+   ms.date="02/24/2016"
+   ms.author="telmos" />
 
 # VM とロール インスタンスの名前解決
 
@@ -181,4 +181,4 @@ VM およびロール インスタンスで使用するように複数の DNS �
 
 [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

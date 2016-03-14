@@ -14,15 +14,16 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/22/2016"
+ms.date="02/25/2016"
 ms.author="deonhe"/>
 
 # Salesforce API の概要
-Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。
+Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。Salesforce API は次のツールから使用できます。
 
-Salesforce API は PowerApps Enterprise とロジック アプリから使用できます。
+- PowerApps 
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Salesforce API](../app-service-logic/app-service-logic-connector-salesforce.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Salesforce コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-salesforce.md)」をご覧ください。
 
 Salesforce では、次の操作を実行できます。
 
@@ -31,23 +32,23 @@ Salesforce では、次の操作を実行できます。
 - Azure Blob の作成、オブジェクトの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Salesforce で新しいオブジェクトを作成するときに、Office 365 を使用して電子メールを送信できます。
 - PowerApps Enterprise に Salesforce API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
 Salesforce API には、次のトリガーとアクションがあります。
 
 | トリガー | アクション|
 | --- | --- |
-|<ul><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li></ul> | <ul><li>オブジェクトを作成する</li><li>オブジェクトを取得する</li><li>オブジェクトの作成時に</li><li>オブジェクトの変更時</li><li>オブジェクトを削除する</li><li>オブジェクトを取得する</li><li>オブジェクトの種類 (SObjects) を取得する</li><li>オブジェクトを更新する</li></ul>
+|<ul><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li></ul> | <ul><li>オブジェクトを作成する</li><li>オブジェクトを取得する</li><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li><li>オブジェクトを削除する</li><li>オブジェクトを取得する</li><li>オブジェクトの種類 (SObjects) を取得する</li><li>オブジェクトを更新する</li></ul>
 
 すべての API は、JSON および XML 形式のデータに対応します。
 
 ## Salesforce への接続を作成する 
 
 ### PowerApps に構成を追加する
-Salesforce を PowerApps Enterprise に追加するときに、Salesforce アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Salesforce アプリケーションには、**リダイレクト URL** 値も使用されます。Salesforce アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
+Salesforce を PowerApps Enterprise に追加するときに、Salesforce アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Salesforce アプリケーションでは、**リダイレクト URL** 値も使用されます。Salesforce アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
 
 1. [Salesforce の開発者向けホームページにサインイン][5]し、プロファイルを選択して、**[Setup]** を選択します。![Salesforce のホーム ページ][6]
 
@@ -55,10 +56,10 @@ Salesforce を PowerApps Enterprise に追加するときに、Salesforce アプ
 
 4. **[New Connected App]** で次のようにします。
 
-	1. **[Connected App Name]** の値を入力します。  
-	2. **[API Name]** の値を入力します。  
-	3. **[Contact Email]** の値を入力します。  
-	4. _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を Azure ポータルに新しい Salesforce API を追加したときに表示された値に設定します。  
+	1. **[Connected App Name]** に値を入力します。  
+	2. **[API Name]** に値を入力します。  
+	3. **[Contact Email]** に値を入力します。  
+	4. _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を、Azure ポータルで新しい Salesforce API を追加したときに表示される値に設定します。  
 
 5. _[Selected OAuth scopes]_ で、次のスコープを **[Selected OAuth Scopes]** に追加します。
 
@@ -77,12 +78,12 @@ Salesforce を PowerApps Enterprise に追加するときに、Salesforce アプ
 1. Salesforce アカウントにサインインします。
 2. ロジック アプリが Salesforce アカウントに接続して使用することを許可します。 
 
-接続を作成したら、テーブル名など、Salesforce のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、テーブル名など、Salesforce のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ接続を使用できます。
 
 ## Swagger REST API リファレンス
-#### このドキュメントの対象バージョン: 1.0
+適用されるバージョン: 1.0。
 
 
 ### オブジェクトを作成する
@@ -152,7 +153,7 @@ Salesforce オブジェクトを更新します。```PATCH: /datasets/default/ta
 
 
 ### オブジェクトの作成時
-Salesforce にオブジェクトが作成されたときにフローをトリガーします。```GET: /datasets/default/tables/{table}/onnewitems```
+Salesforce のオブジェクトが作成されたときにフローをトリガーします。```GET: /datasets/default/tables/{table}/onnewitems```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -203,7 +204,7 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 
 | 名前 | データ型 | 必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -214,7 +215,7 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 
 | 名前 | データ型 | 必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -274,9 +275,9 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 
 
 ## 次のステップ
-Salesforce API を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
+Salesforce API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 
 [5]: https://developer.salesforce.com
@@ -284,4 +285,4 @@ Salesforce API を PowerApps Enterprise に追加したら、この API をア�
 [7]: ./media/create-api-salesforce/salesforce-create-app.png
 [8]: ./media/create-api-salesforce/salesforce-new-app.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

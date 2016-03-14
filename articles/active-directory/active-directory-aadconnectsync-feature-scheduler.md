@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="02/26/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect 同期: スケジューラ
@@ -50,6 +50,8 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 `Set-ADSyncScheduler` で、これらのすべての設定を変更できます。パラメーター IsStagingModeEnabled は、インストール ウィザードだけで設定できます。
 
+スケジューラの構成は Azure AD に保存されます。ステージング サーバーがある場合、プライマリ サーバーでの変更 (IsStagingModeEnabled を除く) はステージング サーバーにも影響します。
+
 ## スケジューラの開始
 スケジューラは、既定では 30 分ごとに実行されます。場合によっては、スケジュールされたサイクル間に同期サイクルを実行したり、別の種類を実行する必要があったりします。
 
@@ -82,7 +84,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 同期サイクルの実行中は、構成を変更できません。スケジューラが処理を終了するまで待つこともできますが、すぐに変更を行うことができるように、スケジューラを停止することもできます。現在のサイクルを停止しても害はなく、処理されなかったすべての変更は次回の実行で処理されます。
 
-1. まず、PowerShell コマンドレット `Stop-ADSyncSyncCycle` で、現在のサイクルを停止するようにスケジューラに指示します。
+1. まず、PowerShell コマンドレット `Stop-ADSyncSyncCycle` で、現在のサイクルを停止するようスケジューラに指示します。
 2. スケジューラを停止しても、現在のコネクタの現在のタスクは停止しません。コネクタを強制的に停止させるには、以下の操作を行います。![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png)
     - [スタート] メニューから **[同期サービス]** を起動します。**[コネクタ]** に移動し、状態が **[実行中]** のコネクタを強調表示して、[操作] で **[停止]** を選択します。
 
@@ -96,4 +98,4 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

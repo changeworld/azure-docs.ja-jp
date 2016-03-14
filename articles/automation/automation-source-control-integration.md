@@ -3,7 +3,7 @@
     description="この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。"
     services="automation"
     documentationCenter=""
-    authors="SnehaGunda"
+    authors="mgoedtel"
     manager="stevenka"
     editor="tysonn" />    
 <tags 
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="infrastructure-services"
-    ms.date="02/18/2016"
+    ms.date="02/23/2016"
     ms.author="magoedte;sngun" />
 
 # Azure Automation でのソース管理の統合
@@ -120,7 +120,7 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
     ![チェックイン入力](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名* が更新されました**" というコミット メッセージが表示されます。
+6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名*が更新されました**" というコミット メッセージが表示されます。
 
 
 
@@ -156,6 +156,9 @@ GitHub アカウントから切断するには、[リポジトリの同期] ブ�
 
 ## 次のステップ
 
-ソース管理の統合の詳細については、次のリソースを参照してください。- [Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/) - [お気に入りのソース管理システムに関するアンケート](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d) - [Azure Automation: Visual Studio Team Services を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
+ソース管理の統合の詳細については、次のリソースをご覧ください。
+- [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+- [好みのソース管理システムの投票](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
+- [Azure Automation: Integrating Runbook Source Control using Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

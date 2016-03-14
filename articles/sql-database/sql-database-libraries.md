@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="02/23/2016"
 	ms.author="pehteh"/>
 
 # SQL Database と SQL Server の接続ライブラリ
@@ -28,10 +28,10 @@ Microsoft からリリースされているライブラリを次の表に示し�
 | :--- | :--- | :--- | :--- | :--- | :-- |
 | .NET | クロスプラットフォーム (.NET) | [ADO.NET、System.Data.SqlClient](http://www.microsoft.com/download/details.aspx?id=30653) | 4\.5 以降 | .NET Framework 用 SQL Server プロバイダー | . |
 | PHP | Windows | [PHP for SQL Server](http://www.microsoft.com/download/details.aspx?id=20098) | 2\.0 以降 | SQL Server 用 PHP ドライバー | [リンク](http://msdn.microsoft.com/library/dn865013.aspx) |
-| Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2\.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](http://msdn.microsoft.com/library/dn425070.aspx) |
+| Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2\.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](https://msdn.microsoft.com/library/mt654048.aspx) |
 | ODBC | Windows | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=36434) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](http://msdn.microsoft.com/library/jj730308.aspx) |
-| ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
-| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | . |
+| ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](https://msdn.microsoft.com/ja-JP/library/hh568451.aspx) |
+| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](https://msdn.microsoft.com/ja-JP/library/hh568451.aspx) |
 
 ### ODBC のサポート
 
@@ -52,20 +52,22 @@ Microsoft OLE DB Provider for DB2 バージョン 5.0 (Data Provider) では、I
 
 ## サード パーティ製のライブラリ
 
-> [AZURE.IMPORTANT]サード パーティのライセンス条項に基づいてサード パーティからリリースされているライブラリを次の表に示します。これらのライブラリの使用にあたっては、該当するサード パーティのライセンスを確認しその内容に従う必要があります。これらのライブラリについては、お客様がその使用に伴うリスクを負います。Microsoft は、ユーザーの利便性のためにのみこの情報を提供し、明示的または黙示的にかかわらず、これらの情報についていかなる責任も負わないものとします。いかなる記述も、その種類を問わず、Microsoft による保証を暗示するものではありません。<br/><br/>GitHub.com 上で **Azure** によって所有されている [azure-content](http://github.com/Azure/azure-content/) リポジトリを使ってこの「サード パーティ製のライブラリ」セクションの情報を更新および管理する責任は、開発者のパブリック コミュニティにあります。Microsoft では、このセクションを更新することを開発者に奨励しています。特定のサード パーティ製のライブラリについては社外により専門的な知識を持つ人がいるため、Microsoft の担当者がこのセクション内の情報を管理することは*ありません*。ありがとうございます。
+> [AZURE.IMPORTANT] サード パーティのライセンス条項に基づいてサード パーティからリリースされているライブラリを次の表に示します。これらのライブラリの使用にあたっては、該当するサード パーティのライセンスを確認しその内容に従う必要があります。これらのライブラリについては、お客様がその使用に伴うリスクを負います。Microsoft は、ユーザーの利便性のためにのみこの情報を提供し、明示的または黙示的にかかわらず、これらの情報についていかなる責任も負わないものとします。いかなる記述も、その種類を問わず、Microsoft による保証を暗示するものではありません。<br/><br/>GitHub.com 上で **Azure** によって所有されている [azure-content](http://github.com/Azure/azure-content/) リポジトリを使ってこの「サード パーティ製のライブラリ」セクションの情報を更新および管理する責任は、開発者のパブリック コミュニティにあります。Microsoft では、このセクションを更新することを開発者に奨励しています。特定のサード パーティ製のライブラリについては社外により専門的な知識を持つ人がいるため、Microsoft の担当者がこのセクション内の情報を管理することは*ありません*。ありがとうございます。
 
 他の会社、コミュニティなど、サード パーティからリリースされているライブラリを次の表に示します。Microsoft からリリースされているライブラリについては、このトピックの前のセクションで紹介しています。
 
 | プラットフォーム | ライブラリ |
 | :-- | :-- |
-| Python | [pymssql *(org、stable)*](http://pymssql.org/en/stable/)<br/><br/>[pymssql *(org)*](http://pymssql.org/) |
-| Node.js | [Tedious *(npmjs)*](http://www.npmjs.com/package/tedious) |
-| Node.js | [Node-MSSQL *(github、patriksimek)*](https://github.com/patriksimek/node-mssql)<br/><br/>[Node-MSSQL *(npmjs)*](https://www.npmjs.com/package/node-mssql)<br/><br/>[Node-MSSQL-Connector *(npmjs)*](https://www.npmjs.com/package/node-mssql-connector) |
-| Node.js | [Edge.js *(github com、tjanczuk)*](https://github.com/tjanczuk/edge)<br/><br/>[Edge.js *(tjanczuk、github io)*](http://tjanczuk.github.io/edge/) |
-| ()。 | [FreeTDS *(org)*](http://www.freetds.org/) |
+| Ruby | [tinytds *(org、stable)*](https://rubygems.org/gems/tiny_tds/versions/0.7.0) |
+| GO | [go-mssqldb *(org、stable)*](https://github.com/denisenkom/go-mssqldb) |
+| Python | [pymssql *(org、stable)*](http://pymssql.org/en/stable/) |
+| Node.js | [Node-MSSQL *(npmjs)*](https://www.npmjs.com/package/node-mssql)<br/><br/>[Node-MSSQL-Connector *(npmjs)*](https://www.npmjs.com/package/node-mssql-connector) |
+| C++ | [FreeTDS *(org)*](http://www.freetds.org/) |
+
+
 
 <!--
 https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 -->
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

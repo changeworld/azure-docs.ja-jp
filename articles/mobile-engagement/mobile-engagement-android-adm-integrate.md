@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 
 #ADM を Engagement に統合する方法
 
-> [AZURE.IMPORTANT]このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
+> [AZURE.IMPORTANT] このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
 >
 > このドキュメントは、いつでも実施できるキャンペーンをサポートする Reach モジュールを統合した場合にのみ役立ちます。アプリケーションに Reach キャンペーンを統合するには、Engagement Reach を Android に統合する方法に関するドキュメントを先にお読みください。
 
@@ -29,7 +29,7 @@ ADM を統合すると、Amazon Android デバイスを対象とした場合に�
 
 SDK にプッシュされた ADM ペイロードのデータ オブジェクトには常に `azme` キーが含まれています。そのため、アプリケーションで別の目的で ADM を使用する場合、そのキーに基づいてプッシュをフィルター処理できます。
 
-> [AZURE.IMPORTANT]Amazon Device Messaging によってサポートされるのは Android 4.0.3 以降を実行している Amazon Kindle デバイスのみですが、このコードはその他のデバイスでも安全に統合することができます。
+> [AZURE.IMPORTANT] Amazon Device Messaging によってサポートされるのは Android 4.0.3 以降を実行している Amazon Kindle デバイスのみですが、このコードはその他のデバイスでも安全に統合することができます。
 
 ##ADM にサインアップする
 
@@ -112,4 +112,4 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [統合 ADM]: https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

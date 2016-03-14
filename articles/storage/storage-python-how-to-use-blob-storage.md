@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/11/2016"
-	ms.author="emgerner"/>
+	ms.date="02/29/2016"
+	ms.author="jehine"/>
 
 # Python から Azure BLOB ストレージを使用する方法
 
@@ -57,14 +57,14 @@
 
 ## コンテナーに BLOB をアップロードする
 
-Block BLOB を作成し、データをアップロードするには、**create\_block\_blob\_from\_path**、**create\_block\_blob\_from\_stream**、**create\_block\_blob\_from\_bytes**、または **create\_block\_blob\_from\_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+ブロック BLOB を作成し、データをアップロードするには、**create\_blob\_from\_path**、**create\_blob\_from\_stream**、**create\_blob\_from\_bytes**、または **create\_blob\_from\_text** メソッドを使用します。これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-**create\_block\_blob\_from\_path** は、指定のパスからファイルの内容をアップロードし、**create\_block\_blob\_from\_stream** は既に開いているファイルやストリームから内容をアップロードします。**create\_block\_blob\_from\_bytes** は、バイトの配列をアップロードし、**create\_block\_blob\_from\_text** は、指定のエンコード (既定では UTF-8) を使用して指定のテキスト値をアップロードします。
+**create\_blob\_from\_path** は指定のパスからファイルの内容をアップロードし、**create\_blob\_from\_stream** は既に開いているファイルやストリームから内容をアップロードします。**create\_blob\_from\_bytes** は、バイトの配列をアップロードし、**create\_blob\_from\_text** は、指定のエンコード (既定では UTF-8) を使用して指定のテキスト値をアップロードします。
 
 次の例では、**sunset.png** ファイルの内容を **myblob** BLOB にアップロードします。
 
 	from azure.storage.blob import ContentSettings
-	block_blob_service.create_block_blob_from_path(
+	block_blob_service.create_blob_from_path(
         'mycontainer',
         'myblockblob',
         'sunset.png',
@@ -125,4 +125,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

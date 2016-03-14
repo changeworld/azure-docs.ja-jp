@@ -14,15 +14,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/11/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # SFTP API の概要
-SFTP サーバーに接続して、ファイルを管理します。SFTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。
+SFTP サーバーに接続して、ファイルを管理します。SFTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。SFTP API は次のツールから使用できます。
 
-SFTP API は、ロジック アプリから使用できます。
+- Logic Apps
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [SFTP コネクタ](../app-service-logic/app-service-logic-connector-sftp.md)をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[SFTP コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-sftp.md)」をご覧ください。
 
 SFTP では、次の操作を実行できます。
 
@@ -30,7 +30,7 @@ SFTP では、次の操作を実行できます。
 - ファイルが更新されたときに、トリガーを使用できます。
 - ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ファイルの内容を取得し、SQL Database をアップロードすることができます。 
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 
 ## トリガーとアクション
@@ -51,17 +51,18 @@ SFTP では、次のトリガーとアクションを使用できます。
 |ホスト サーバー アドレス| あり | 完全修飾ドメイン (FQDN) または SFTP サーバーの IP アドレスを入力します。|
 |ユーザー名| あり | ユーザー名を入力して、SFTP サーバーに接続します。|
 |パスワード | あり | ユーザー名のパスワードを入力します。|
-|SSH サーバー ホスト キーのフィンガー プリント | あり | SSH サーバーのパブリック ホスト キーのフィンガープリントを入力します。<br/><br/>通常、サーバー管理者からこのキーを付与できます。```WinSCP``` または ```ssh-keygen-g3 -F``` ツールを使用して、キーのフィンガー プリントを取得することもできます。 | 
+|SSH サーバー ホスト キーのフィンガー プリント | あり | SSH サーバーのパブリック ホスト キーのフィンガープリントを入力します。<br/><br/>通常、このキーはサーバー管理者から入手できます。```WinSCP``` または ```ssh-keygen-g3 -F``` ツールを使用して、キーのフィンガープリントを取得することもできます。 | 
 
-接続を作成したら、フォルダー パスやファイルなど、SFTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、フォルダー パスやファイルなど、SFTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ SFTP 接続を使用できます。
 
 
 ## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
 ### ファイルを作成する
-SFTP 内のファイルをアップロードします。```POST: /datasets/default/files```
+SFTP のファイルをアップロードします。```POST: /datasets/default/files```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -190,7 +191,7 @@ SFTP を使用してファイルの内容を更新します。```PUT: /datasets/
 
 
 ### ファイルの作成時または変更時 
-SFTP 内のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
+SFTP のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -216,7 +217,7 @@ SFTP 内のファイルが変更されたときにフローをトリガーしま
 
 | 名前 | データ型 | 必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -226,7 +227,7 @@ SFTP 内のファイルが変更されたときにフローをトリガーしま
 
 | 名前 | データ型 | 必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -247,6 +248,6 @@ SFTP 内のファイルが変更されたときにフローをトリガーしま
 
 
 ## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

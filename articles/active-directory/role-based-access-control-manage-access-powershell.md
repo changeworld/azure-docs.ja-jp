@@ -13,16 +13,21 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/22/2016"
+	ms.date="02/29/2016"
 	ms.author="kgremban"/>
 
 # Azure PowerShell を使用したロールベースのアクセス制御の管理
+
 > [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 - [REST API](role-based-access-control-manage-access-rest.md)
 
+
 ## ロールベースのアクセス制御 (RBAC) ロールの一覧
+
+>[AZURE.IMPORTANT] この記事のコマンドレットを使用するには、PowerShell に [Azure Resource Manager のコマンドレットをインストール](https://msdn.microsoft.com/library/mt125356.aspx)しておく必要があります。
+
 ### 使用可能なすべてのロールの表示
 割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、次のコマンドを使用します。
 
@@ -64,7 +69,7 @@
 
 ## アクセス権の付与
 ### オブジェクト ID の検索
-以下のコマンド シーケンスを使用するには、オブジェクト ID を検索しておく必要があります。使用するサブスクリプション ID が既にわかっていることを前提としています。それ以外の場合は、MSDN の 「[Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx)」をご覧ください。
+以下のコマンド シーケンスを使用するには、オブジェクト ID を検索しておく必要があります。使用するサブスクリプション ID が既にわかっていることを前提としています。それ以外の場合は、MSDN の「[Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx)」をご覧ください。
 
 #### Azure AD グループのオブジェクト ID の検索
 Azure AD グループのオブジェクト ID を取得するには、次のコマンドを使用します。
@@ -151,4 +156,4 @@ Azure AD サービス プリンシパル使用のオブジェクト ID の検索
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

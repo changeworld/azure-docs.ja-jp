@@ -12,21 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="02/17/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli" />
 
-# Web UI を使用した StorSimple Virtual Array の管理 (プレビュー)
+# Web UI を使用した StorSimple Virtual Array の管理
 
 ![セットアップ プロセス フロー](./media/storsimple-ova-web-ui-admin/manage4.png)
 
 ## 概要
 
-この記事のチュートリアルは、v 1.1.1.0 (プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれます) に適用されます。この記事では、StorSimple Virtual Array で実行できる一部の複雑なワークフローと管理タスクについて説明します。StorSimple Virtual Array の管理には、StorSimple Manager サービス UI (ポータル UI とも呼ばれます) とデバイスのローカル Web UI の 2 種類の UI を使用できます。この記事では、Web UI を使用して実行できるタスクについて説明します。
-
->[AZURE.IMPORTANT] 
->
->- StorSimple Virtual Array はプレビュー段階であり、評価とデプロイ計画策定を目的としています。このプレビューの運用環境へのインストールはサポートされていません。 
->- StorSimple Virtual Array で問題が発生した場合は、[StorSimple MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=StorSimple)に問題を投稿してください。
+この記事のチュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれます) に適用されます。この記事では、StorSimple Virtual Array で実行できる一部の複雑なワークフローと管理タスクについて説明します。StorSimple Virtual Array は、StorSimple Manager サービス UI (ポータル UI とも呼ばれます) とデバイスのローカル Web UI を使用して管理できます。この記事では、Web UI を使用して実行できるタスクについて説明します。
 
 この記事には次のチュートリアルが含まれています。
 
@@ -136,4 +131,4 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 
 [StorSimple Manager サービスを使用してデバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

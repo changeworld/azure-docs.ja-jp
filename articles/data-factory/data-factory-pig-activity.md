@@ -68,7 +68,7 @@ inputs | Pig のアクティビティによって使用される入力 | いい�
 outputs | Pig のアクティビティによって生成される出力 | あり
 linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 | あり
 script (スクリプト) | Pig スクリプトをインラインに指定します | いいえ
-スクリプトのパス | Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません | いいえ
+スクリプトのパス | Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません。ファイル名は大文字と小文字が区別されます。 | いいえ
 defines | Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します | いいえ
 
 ## 例
@@ -186,4 +186,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
 		Store PigSampleOut into '$Output' USING PigStorage (','); 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

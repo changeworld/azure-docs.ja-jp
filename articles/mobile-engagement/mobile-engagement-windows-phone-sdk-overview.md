@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement の Windows Phone Silverlight SDK 概要
@@ -55,4 +55,4 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -31,14 +31,14 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 ## チュートリアル
 1. Visual Studio 2012 または 2013 を使用して、C# .NET コンソール アプリケーションを作成します。
 	<ol type="a">
-	<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
-	<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
-	<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。</li> 
-	<li>右側にあるプロジェクトの種類の一覧から <b>[コンソール アプリケーション]</b> を選択します。</li>
-	<li><b>[名前]</b> に「<b>DataFactoryAPITestApp</b>」と入力します。</li> 
-	<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
-	<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
-</ol>
+		<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
+		<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
+		<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。</li> 
+		<li>右側にあるプロジェクトの種類の一覧から <b>[コンソール アプリケーション]</b> を選択します。</li>
+		<li><b>[名前]</b> に「<b>DataFactoryAPITestApp</b>」と入力します。</li> 
+		<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
+		<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
+	</ol>
 2. <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> にカーソルを合わせ、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
 3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b> 
 
@@ -205,6 +205,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 11. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
 
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+
             // create a pipeline
         Console.WriteLine("Creating a pipeline");
         DateTime PipelineActivePeriodStartTime = new DateTime(2014, 8, 9, 0, 0, 0, 0, DateTimeKind.Utc);
@@ -261,7 +263,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 	
 
-12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure クラシック ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
+12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure クラシック ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。 
  
 		public static string GetAuthorizationHeader()
         {
@@ -392,4 +394,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

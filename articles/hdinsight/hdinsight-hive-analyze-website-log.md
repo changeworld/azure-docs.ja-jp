@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/29/2015" 
+	ms.date="02/25/2016" 
 	ms.author="nitinme"/>
 
 # Web サイトのログを分析するための HDInsight での Hive の使用
@@ -47,7 +47,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 	
 	入力を要求されたら、クラスターをプロビジョニングするときに使用した管理者名とパスワードを使用して認証します。
   
-2. 表示された Web ページで **[概要ギャラリー]** タブをクリックし、**[サンプル]** カテゴリにある **[Web サイト ログ分析]** サンプルを選択します。
+2. 表示された Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル データを使用したソリューション]** カテゴリにある **[Web サイトのログの分析]** サンプルをクリックします。
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
@@ -61,4 +61,4 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

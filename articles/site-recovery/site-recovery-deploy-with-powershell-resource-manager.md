@@ -31,7 +31,8 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 > [AZURE.NOTE] Azure Site Recovery PowerShell コマンドレットを使用すると、現在、VMM サイト対 VMM サイト、VMM サイト対 Azure、Hyper-V サイト対 Azure のシナリオを構成できます。その他の ASR シナリオについても近々サポートされる予定です。
 
-この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Windows PowerShell の概要](http://technet.microsoft.com/library/hh857337.aspx)」と「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
+この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
+- 「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
 
 ## 主要な機能
@@ -109,7 +110,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
 2. 次のコマンドを使用して、Azure Recovery Services の新しい資格情報コンテナーを作成します。
 
-		$vault = New-AzureRmRecoveryServicesVault -Name <string> -ResouceGroupName <string> -Location <string>
+		$vault = New-AzureRmRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
 	既存の資格情報コンテナーの一覧は、`Get-AzureRmRecoveryServicesVault` コマンドレットを使用して取得できます。
 
@@ -261,4 +262,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

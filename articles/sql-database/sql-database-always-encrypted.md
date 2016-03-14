@@ -1,11 +1,11 @@
 <properties
-	pageTitle="SQL Database チュートリアル: Always Encrypted による機密データの保護 |Microsoft Azure"
+	pageTitle="データベース暗号化を使用して SQL データベースで機密データを保護する |Microsoft Azure"
 	description="SQL Database の機密データをわずか数分で保護します。"
-	keywords="SQL Database チュートリアル、SQL Database データの暗号化"	
+	keywords="sql データベース, sql の暗号化, データベースの暗号化, 暗号化キー, 機密データ, Always Encrypted"	
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 
@@ -15,15 +15,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/14/2016"
+	ms.date="02/29/2016"
 	ms.author="sstein"/>
 
-# SQL Database チュートリアル: Always Encrypted による機密データの保護 (Windows 証明書ストア)
+# データベース暗号化を使用して SQL データベースで機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
 
+> [AZURE.SELECTOR]
+- [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
+- [Windows 証明書ストア](sql-database-always-encrypted.md)
+
+この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)を使用して、SQL データベースで機密データを保護し、Windows 証明書ストアで暗号化キーを格納する方法について説明します。
 
 Always Encrypted は Azure SQL Database と SQL Server の新しい暗号化テクノロジです。常に暗号化した状態でデータを扱うので、データの使用中だけでなく、クライアント/サーバー間の移動中も機密データを保護することができます。データベース システム内で機密データがプレーンテキストとして表示されることはありません。プレーンテキスト データにアクセスできるのは、キーへのアクセス権を持つクライアント アプリケーションとアプリケーション サーバーだけです。詳細については、[Always Encrypted (データベース エンジン) に関するページ](https://msdn.microsoft.com/library/mt163865.aspx)を参照してください。
 
-このチュートリアルでは、SQL Server Management Studio (SSMS) を使ってわずか数分で SQL Database に Always Encrypted を実装し、機密データを保護する方法について説明します。
 
 Always Encrypted を使用するようデータベースを構成したら、Visual Studio を使って、暗号化されたデータを扱う C# クライアント アプリケーションを作成します。
 
@@ -70,7 +74,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 
 
 1. SSMS を開きます (まだ開いていない場合は、**[接続]**、**[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開きます)。
-2. サーバー名と資格情報を入力します。サーバー名がわからない場合は、[SQL Database] ブレードか、先ほどコピーした接続文字列で確認できます。*.database.windows.net* を含む完全なサーバー名を入力してください。
+2. サーバー名と資格情報を入力します。サーバー名がわからない場合は、[SQL Database] ブレードか、先ほどコピーした接続文字列で確認できます。*database.windows.net* を含む完全なサーバー名を入力してください。
 
 	![接続文字列のコピー](./media/sql-database-always-encrypted/ssms-connect.png)
 
@@ -533,7 +537,7 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 
 - 別のコンピューターからこのサンプルを実行する。別のコンピューターからは暗号化キーにアクセスできず、プレーンテキスト データにもアクセスできないので、サンプルは正常に実行されません。 
 - [キーのローテーションとクリーンアップを行う](https://msdn.microsoft.com/library/mt607048.aspx)。
-- [Always Encrypted で既に暗号化されているデータを移行する](https://msdn.microsoft.com/library/mt621539.aspx)。
+- [Always Encrypted で既に暗号化されているデータを移行する。](https://msdn.microsoft.com/library/mt621539.aspx)
 - 他のクライアント コンピューターに Always Encrypted 証明書をデプロイする。
 
 
@@ -545,4 +549,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always%20encrypted/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

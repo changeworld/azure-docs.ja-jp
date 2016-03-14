@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Azure Automation の共通エラーのトラブルシューティングのヒント | Microsoft Azure"
    description="この記事では、Azure Automation の使用時に発生する共通エラーを解消するための基本的トラブルシューティング手順を紹介します。"
    services="automation"
    documentationCenter=""
-   authors="SnehaGunda"
+   authors="mgoedtel"
    manager="stevenka"
-   editor="tysonn" 
+   editor="tysonn"
    tags="top-support-issue"/>
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/25/2016"
+   ms.date="03/02/2016"
    ms.author="sngun; v-reagie"/>
 
 # Azure Automation の共通エラーのトラブルシューティングのヒント
@@ -42,7 +42,7 @@
 
 3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。Azure Active Directory アカウントを正しく設定する方法については、「[Authenticating to Azure using Azure Active Directory (Azure Active Directory を使用して Azure を認証する)](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」というブログ投稿を参照してください。
 
-  <br/>
+
 ### シナリオ: Azure サブスクリプションが見つかりません
 
 **エラー:** Select-AzureSubscription コマンドレットまたは Select-AzureRmSubscription コマンドレットの使用時に「The subscription named ``<subscription name>`` cannot be found (<サブスクリプション名> という名前のサブスクリプションが見つかりません)」というエラーが発生します。
@@ -57,36 +57,35 @@
     * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。  
     * 出力にサブスクリプション詳細が含まれる場合、**Select-AzureSubscription** コマンドレットを利用し、正しいサブスクリプション名または ID を使用していることを確認します。   
 
-  <br/>
+
 ### シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
 
-**エラー:** Azure のユーザー名とパスワードで Azure に対して認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
+**エラー:** Azure のユーザー名とパスワードで Azure に対して認証するとき、“Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)” というエラーが発生します。
 
 **エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
 **トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure リソース マネージャー コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)方法に関する記事と [Azure リソース マネージャーでサービス プリンシパルを認証する](./resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
-  <br/>
-## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする  
+
+## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする
+
 ### シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 
 **エラー:** Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``.Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
 **エラーの理由:** Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。
 
-**トラブルシューティングのヒント:**
-
-次の 3 つの解決策のいずれでもこの問題は解決されます。
+**トラブルシューティングのヒント:** 次の 3 つの解決策のいずれでもこの問題は解決されます。
 
 1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。  
 2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。  
 
 3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
-  <br/>
+
 ### シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
 
-**エラー:** Runbook ジョブが失敗し、「The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)」というエラーが発生します。
+**エラー:** Runbook ジョブが失敗し、"The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)" というエラーが発生します。
 
 **エラーの理由:** ジョブの実行がアカウントの 500 分の無料クォータを超えるとこのエラーが発生します。このクォータは、ジョブをテストする、ポータルからジョブを開始する、Webhook でジョブを実行する、Azure ポータルまたはデータセンターを利用して実行するジョブをスケジュールするなど、あらゆる種類のジョブ実行タスクに適用されます。Automation の料金については、「[Automation の料金](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
@@ -97,10 +96,10 @@
 3. **[設定]**、**[価格レベルと使用状況]**、**[価格レベル]** の順に選択します。  
 4. **[価格レベルの選択]** ブレードで、**[Basic]** を選択します。    
 
-  <br/>
+
 ### シナリオ: Runbook の実行時にコマンドレットが認識されない
 
-**エラー:** Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
+**エラー:** Runbook ジョブが失敗し、"``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)" というエラーが発生します。
 
 **エラーの理由:** このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。この原因としては、コマンドレットが含まれるモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
 
@@ -114,8 +113,15 @@
 
 - ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
-  <br/>
-## モジュールのインポート時の共通エラーをトラブルシューティングする 
+
+### シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
+
+**エラーの理由:** これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。ただし、返されるエラー メッセージでは "次" のオプションは提供されません。さまざまな理由から Runbook は中断されることがあります。ほとんどの場合、中断はエラーのために発生します。たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどはすべて、Runbook が中断する原因になり、再開時には最後のチェックポイントから開始します。
+
+**トラブルシューティングのヒント:** この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#Checkpoints)」を参照してください。"フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks (Runbook でのチェックポイントの使用)](https://azure.microsoft.com/ja-JP/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」を参照してください。
+
+
+## モジュールのインポート時の共通エラーをトラブルシューティングする
 
 ### シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
@@ -131,9 +137,7 @@
 
 - モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットが使用されています。完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
 
-**トラブルシューティングのヒント:**
-
-次の解決策のいずれでもこの問題は解決されます。
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
 
 - モジュールの形式が次のようになっていることを確認します。 ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
 
@@ -141,7 +145,6 @@
 
 - 参照される .dll がモジュール フォルダーにあることを確認します。
 
-  <br/>
 
 ## Desired State Configuration (DSC) の使用時に発生する一般的なエラーをトラブルシューティングする  
 
@@ -180,16 +183,16 @@
 
 **トラブルシューティングのヒント:** この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/limitation_dsc)に関するブログ投稿にある手順に従ってください。
 
-### シナリオ: DSC 構成で資格情報が使用できない 
+
+### シナリオ: DSC 構成で資格情報が使用できない
 
 **エラー:** DSC コンパイル ジョブが中断され、“型 ``<some resource name>`` のプロパティ 'Credential' の処理中に System.InvalidOperationException エラーが発生しました: 暗号化されたパスワードを変換してプレーンテキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです“ というエラーが表示された。
 
 **エラーの理由:** 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定しなかった。
 
-**トラブルシューティングのヒント:** 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
+**トラブルシューティングのヒント:**
+- 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
 
-
-  <br/>
 
 ## 次のステップ
 
@@ -203,4 +206,4 @@
 
 - Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

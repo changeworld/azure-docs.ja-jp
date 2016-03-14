@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="01/29/2016"
+  ms.date="02/24/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -62,6 +62,15 @@ API アプリとして簡単にデプロイできる DocumentDB REST API Swagger
 
 [Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
 
+
+### fluent-plugin-documentdb
+
+*作成者: Yoichi Kawasaki*
+
+fluent-plugin-documentdb は、Azure DocumentDB に出力するための Fluentd プラグインです。
+
+[Github](https://github.com/yokawasa/fluent-plugin-documentdb) および [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb) でご覧ください。
+
 <br/><br/>
 
 *上記以外にも、多数のオープン ソース DocumentDB プロジェクトを [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) でご覧いただけます。*
@@ -80,7 +89,13 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 **コミュニティへの投稿:**
 
-* [**Azure DocumentDB のサーバー側スクリプティング**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *作成者: Robert Sheldon*
+* [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *作成者: Yoichi Kawasaki*
+
+* [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *作成者: Peter Mannerhult*
+
+* [**What to love and hate about Azure’s DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *作成者: George Saadeh*
+
+* [**Azure DocumentDB Server-Side Scripting**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *作成者: Robert Sheldon*
 
 * [**Azure Stream Analytics 用のデータ シンクとしてのDocumentDB**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) - *作成者: Jan Hentschel*
 
@@ -138,7 +153,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 | [Meetup: Azure Austin](http://www.meetup.com/azureaustin/events/228209275/) | Merwan Chinta | テキサス州オースティン | 2016 年 1 月 28 日 | 該当なし |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | Vincent-Philippe Lauzon | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | 該当なし |
 | [会合: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | David Makogon | ワシントン州シアトル | 2015 年 11 月 12 日 | 該当なし |
-| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/) | Jeff Renz、Andrew Hoh、Aravind Ramachandran、John Macintyre | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | 該当なし |
+| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/) | Jeff Renz、Andrew Hoh、Aravind Ramachandran、John Macintyre | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | [Developing Modern Applications on Azure](https://www.youtube.com/watch?v=k5Z24HX-RyQ) |
 | [CloudDevelop 2015](http://www.clouddevelop.org/) | David Makogon、Ryan Crawcour | オハイオ州コロンバス | 2015 年 10 月 23 日 | 該当なし |
 | [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | Leonard Lobel | ソフィア (ブルガリア) | 2015 年 10 月 10 日 | 該当なし |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/eventhome.aspx) | Leonard Lobel | オポルト (ポルトガル) | 2015 年 10 月 3 日 | 該当なし |
@@ -167,6 +182,8 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | 表示 | 講演者 | 日付 | エピソード |
 | ------------------------------------------- | ----------------------- | ------------------ | ------- |
+| Integration User Group | Han Wong | 2016 年 2 月 17 日 | [Analyze and visualize non-relational data with DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
+| Channel 9: Modern Applications | Tara Shankar Jana | 2016 年 12 月 13 日 | [Take a modern approach to data in your apps](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
 | NinjaTips | Miguel Quintero | 2015 年 12 月 10 日 | [DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
 | Integration User Group | Howard Edidin | 2015 年 11 月 9 日 | [医療の統合のための Azure DocumentDB - パート 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
 | Integration User Group | Howard Edidin | 2015 年 10 月 5 日 | [医療の統合のための Azure DocumentDB](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
@@ -267,4 +284,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

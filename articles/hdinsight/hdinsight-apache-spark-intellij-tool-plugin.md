@@ -71,15 +71,16 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 2. 次のウィンドウで、プロジェクトの詳細を指定します。
 
-	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
-
 	* プロジェクト名とプロジェクトの場所を指定します。
 	* **Project SDK** の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックし、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
+	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
 	
 		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
 	* **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。
+
+		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
+
 	* **[完了]** をクリックします。
 
 3. クラスター上で実行されるコードを最終的に含めるアーティファクト (パッケージ化された jar) を作成するためのプロジェクト構造を定義します。
@@ -204,16 +205,16 @@ Windows コンピューターでのローカル Spark Scala アプリケーシ�
 
 2. 次のウィンドウで、プロジェクトの詳細を指定します。
 
-	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-local-project-details.png)
-
 	* プロジェクト名とプロジェクトの場所を指定します。
 	* **Project SDK** の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックし、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
+	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
 	
 		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
 	* **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。
 	* **[完了]** をクリックします。
+
+		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-local-project-details.png)
 
 3. クラスター上で実行されるコードを最終的に含めるアーティファクト (パッケージ化された jar) を作成するためのプロジェクト構造を定義します。
 
@@ -317,4 +318,4 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

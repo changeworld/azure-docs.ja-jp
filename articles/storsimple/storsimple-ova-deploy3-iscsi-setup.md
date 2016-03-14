@@ -12,24 +12,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="02/18/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli" />
 
 
-# StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする (プレビュー)
+# StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする
 
 ![iscsi セットアップ プロセス フロー](./media/storsimple-ova-deploy3-iscsi-setup/iscsi4.png)
 
 ## 概要
 
-このデプロイメント チュートリアルは、v 1.1.1.0 パブリック プレビュー リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。このチュートリアルでは、初期セットアップを実行し、StorSimple iSCSI サーバーを登録し、デバイス セットアップを完了した後、StorSimple 仮想デバイス iSCSI サーバーでボリュームを作成、マウント、初期化、フォーマットする方法を説明します。この記事に記載されている StorSimple のセットアップ情報は、StorSimple Virtual Array にのみ適用されます。
+このデプロイメント チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、初期セットアップを実行し、StorSimple iSCSI サーバーを登録し、デバイス セットアップを完了した後、StorSimple 仮想デバイス iSCSI サーバーでボリュームを作成、マウント、初期化、フォーマットする方法を説明します。この記事に記載されている StorSimple のセットアップ情報は、StorSimple Virtual Array にのみ適用されます。
 
 ここで説明する手順の完了には、約 30 分から 1 時間かかります。この記事に記載されている情報は、StorSimple Virtual Array にのみ適用されます。
-
->[AZURE.IMPORTANT] 
->
->- StorSimple Virtual Array はプレビュー段階であり、評価とデプロイ計画策定を目的としています。このプレビューの運用環境へのインストールはサポートされていません。 
->- StorSimple Virtual Array で問題が発生した場合は、[StorSimple MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=StorSimple)に問題を投稿してください。
 
 ## セットアップの前提条件
 
@@ -82,7 +77,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
     1. プライマリおよびセカンダリ DNS サーバーが自動的に構成されます。静的 IP アドレスを構成することを選択した場合は、DNS サーバーを指定できます。高可用性を確保するため、プライマリとセカンダリ DNS サーバーを構成することをお勧めします。
 
-    2. **[適用]** をクリックします。これにより、ネットワークの設定が適用、検証されます。
+    2. **[Apply]** をクリックします。これにより、ネットワークの設定が適用、検証されます。
 
 6. **デバイスの設定**ページで以下の操作を実行します。
 
@@ -94,7 +89,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
         デバイスをドメインに参加させる場合は、**ドメイン名**を入力します (下記参照)。
 
-    4. **[適用]** をクリックします。
+    4. **[Apply]** をクリックします。
 
     5. ダイアログ ボックスが表示されます。ドメインの資格情報を指定された形式で入力します。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) をクリックします。ドメインの資格情報が検証されます。資格情報が間違っていると、エラー メッセージが表示されます。
 
@@ -291,7 +286,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
 
 ## 次のステップ
 
-ローカル Web UI を使用して、[StorSimple Virtual Array を管理する方法](storsimple-ova-web-ui-admin.md)を確認します。
+[ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
 
 ## 付録 A: Windows Server ホストの IQN を取得する
 
@@ -310,4 +305,4 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 <!--Reference link-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

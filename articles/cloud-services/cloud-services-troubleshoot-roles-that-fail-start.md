@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="01/20/2016"
+   ms.date="02/25/2016"
    ms.author="daleche" />
 
 # クラウド サービス ロールが起動しないときのトラブルシューティング
@@ -71,7 +71,7 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 
 1. Azure SDK 1.3 以上がインストールされていることを確認します。
 
-2. Visual Studio を利用したソリューションのデプロイメントの際に、[リモート デスクトップ接続の構成...] を選択します。リモート接続の構成方法については、[Azure ロールでリモート デスクトップを使用する](https://msdn.microsoft.com/library/gg443832.aspx)方法に関するページを参照してください。
+2. Visual Studio を利用したソリューションのデプロイメントの際に、[リモート デスクトップ接続の構成...] を選択します。リモート デスクトップ接続の構成の詳細については、「[Azure ロールでのリモート デスクトップの使用](../vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
 
 3. Microsoft Azure クラシック ポータルで、インスタンスのステータスが **[準備完了]** として表示されたら、いずれかのロール インスタンスをクリックします。
 
@@ -167,4 +167,4 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

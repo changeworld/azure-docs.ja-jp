@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="02/29/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法
@@ -224,7 +224,7 @@ Azure Storage API を直接操作する場合は、`CloudStorageAccount` パラ�
 
 ## <a id="createqueue"></a> キュー メッセージの処理中にキュー メッセージを作成する方法
 
-新しいキュー メッセージを作成する関数を記述するには、`Queue` 属性を使用します。`QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することも可能です
+新しいキュー メッセージを作成する関数を記述するには、`Queue` 属性を使用します。`QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することもできます。
 
 ### 文字列のキュー メッセージ
 
@@ -578,7 +578,7 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 
 次に示したのは、Azure BLOB におけるアプリケーション ログの例です。2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-また Azure テーブルでは、`Console.Out` と `Console.Error` ログは次のようになります。
+また、Azure テーブルでは、`Console.Out` と `Console.Error` のログは次のようになります。
 
 ![テーブル内の INFO ログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableinfo.png)
 
@@ -611,4 +611,4 @@ public static void ErrorMonitor(
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

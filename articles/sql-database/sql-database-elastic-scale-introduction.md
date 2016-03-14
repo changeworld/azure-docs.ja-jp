@@ -21,7 +21,7 @@
 **Elastic Database** 機能では、**Azure SQL Database** の実質的に無制限のデータベースのリソースを使用して、トランザクションの作業負荷に対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。Elastic Database は、次の機能で構成されています。
 
 * Elastic Database ツール: 2 つのツールによって、シャーディング データベース ソリューションの開発および管理を簡略化します。そのツールとは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)と、[Elastic Database 分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)です。 
-* [Elastic Database プール](sql-database-elastic-pool-guidance.md) (プレビュー): プールはデータベースのコレクションで、いつでもデータベースの追加や削除が可能です。プール内のデータベースは、固定量のリソース (データベース スループット ユニット: DTU) を共有します。支払い金額はそのリソースの量に応じて一定であるため、パフォーマンスを管理しながらコストを簡単に計算できます。 
+* [Elastic Database プール](sql-database-elastic-pool-guidance.md) (プレビュー): プールはデータベースのコレクションで、いつでもデータベースの追加や削除が可能です。プール内のデータベースは、固定量のリソース (データベース トランザクション ユニット (DTU)) を共有します。支払い金額はそのリソースの量に応じて一定であるため、パフォーマンスを管理しながらコストを簡単に計算できます。 
 * [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md)(プレビュー): ジョブを使用して、多数の Azure SQL databases を管理します。ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行します。
 * [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー): 複数のデータベースにまたがる Transact-SQL クエリを実行することができます。これにより、Excel、PowerBI、Tableau などのレポート作成ツールに接続できます。
 
@@ -108,4 +108,4 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

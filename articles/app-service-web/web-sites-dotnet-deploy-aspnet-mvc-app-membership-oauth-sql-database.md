@@ -13,11 +13,9 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="12/07/2015" 
 	ms.author="riande"/>
-
-
 
 # 認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ
 
@@ -37,7 +35,7 @@
 * Azure SQL Database を使用してリレーショナル データをクラウドに保存する方法
 * データベースを使用する Web プロジェクトを、Azure App Service の [Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)にデプロイする方法
 
->[AZURE.NOTE]これは長いチュートリアルです。Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「[Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。トラブルシューティングの情報については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+>[AZURE.NOTE] これは長いチュートリアルです。Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「[Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。トラブルシューティングの情報については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
 >Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -106,7 +104,6 @@
 	Visual Studio は ContactManager Web プロジェクトを作成し、指定したリソース グループと App Service プランを作成し、指定した名前で Web アプリを Azure App Service に作成します。
 
 ### ページのヘッダーとフッターを設定する
-
 
 1. **ソリューション エクスプローラー**の *Views\\Shared* フォルダーにある *Layout.cshtml* ファイルを開きます。
 
@@ -271,8 +268,7 @@
 
 ASP.NET MVC のスキャフォールディング機能によって、作成、読み取り、更新、削除 (CRUD 操作) を実行するコードを自動的に生成できます。
 
-
-1. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
+1. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
  
 1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
@@ -282,10 +278,11 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 	
 	![Add Scaffold dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr6.png)
 
-
 1. **[モデル クラス]** ボックスで **Contact (ContactManager.Models)** を選択します。(下図を参照)。
+
 1. **[データ コンテキスト クラス]** で **ApplicationDbContext (ContactManager.Models)** を選択します。この **ApplicationDbContext** が、メンバーシップ DB と連絡先データの両方に使用されます。
-1. **[コントローラー名]** テキスト入力ボックスで、コントローラー名として「CmController」と入力します。 
+
+1. **[コントローラー名]** テキスト入力ボックスで、コントローラー名として「CmController」と入力します。
 
 	![New data ctx dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss5.PNG)
 
@@ -316,7 +313,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. *Migrations\\Configuration.cs* ファイルを開きます。 
+3. *Migrations\\Configuration.cs* ファイルを開きます。
 
 4. 次の `using` ステートメントを追加します。
 
@@ -391,11 +388,9 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![MVC view of data][rx2]
 
-
-
 ## OAuth2 プロバイダーを追加する
 
->[AZURE.NOTE]Google および Facebook の開発者ポータル サイトの使用方法の詳細な手順については、このチュートリアルから ASP.NET サイト上のチュートリアルへのリンクを参照してください。ただし、Google と Facebook のサイトの更新頻度はこれらのチュートリアルよりも高いため、チュートリアルは最新の状態でない場合もあります。手順に従っていて問題が発生した場合は、このチュートリアルの最後にある Disqus のお勧めのコメントで、変更内容の一覧を確認してください。
+>[AZURE.NOTE] Google および Facebook の開発者ポータル サイトの使用方法の詳細な手順については、このチュートリアルから ASP.NET サイト上のチュートリアルへのリンクを参照してください。ただし、Google と Facebook のサイトの更新頻度はこれらのチュートリアルよりも高いため、チュートリアルは最新の状態でない場合もあります。手順に従っていて問題が発生した場合は、このチュートリアルの最後にある Disqus のお勧めのコメントで、変更内容の一覧を確認してください。
 
 [OAuth](http://oauth.net/ "http://oauth.net/") は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Google のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。Facebook を認証プロバイダーとして使用する方法については、[Facebook、Twitter、LinkedIn、Google の OAuth2 サインオンを使用した MVC 5 アプリケーション](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)に関するページを参照してください。
 
@@ -418,8 +413,8 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. 次の **AddUserAndRole** メソッドをクラスに追加します。
 
-		 bool AddUserAndRole(ContactManager.Models.ApplicationDbContext context)
-		 {
+		bool AddUserAndRole(ContactManager.Models.ApplicationDbContext context)
+		{
 		    IdentityResult ir;
 		    var rm = new RoleManager<IdentityRole>
 		        (new RoleStore<IdentityRole>(context));
@@ -428,14 +423,14 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 		        new UserStore<ApplicationUser>(context));
 		    var user = new ApplicationUser()
 		    {
-		       UserName = "user1@contoso.com",
+		        UserName = "user1@contoso.com",
 		    };
 		    ir = um.Create(user, "P_assw0rd1");
 		    if (ir.Succeeded == false)
-		       return ir.Succeeded;
+		        return ir.Succeeded;
 		    ir = um.AddToRole(user.Id, "canEdit");
 		    return ir.Succeeded;
-		 }
+		}
 
 1. 新しいメソッドを **Seed** メソッドから呼び出します。
 
@@ -450,7 +445,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー *user1@contoso.com* を作成して、*user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
+	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する  ##
 
@@ -506,7 +501,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 		Update-Database
 
-**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー *user1@contoso.com* を作成し、*canEdit* ロールに追加します。
+**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー **user1@contoso.com* を作成し、*canEdit* ロールに追加します。
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する ##
 
@@ -514,8 +509,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. *App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次の内容に置き換えます (2 つのフィルターを追加します)。
 
-		public static void
-		RegisterGlobalFilters(GlobalFilterCollection filters)
+		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 		    filters.Add(new HandleErrorAttribute());
 		    filters.Add(new System.Web.Mvc.AuthorizeAttribute());
@@ -538,7 +532,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	グローバルに検索すると、Account コントローラーのログイン メソッドや登録メソッドで *AllowAnonymous* が使われていることがわかります。
 
-1. *CmController.cs* の *Cm* コントローラーで、データの変更 (Create、Edit、Delete、つまり、Index と Details を除くすべてのアクション メソッド) を伴う HttpGet メソッドと HttpPost メソッドに `[Authorize(Roles = "canEdit")]` を追加します。追加後のコードは次のようになります。 
+1. *CmController.cs* の *Cm* コントローラーで、データの変更 (Create、Edit、Delete、つまり、Index と Details を除くすべてのアクション メソッド) を伴う HttpGet メソッドと HttpPost メソッドに `[Authorize(Roles = "canEdit")]` を追加します。追加後のコードは次のようになります。
 
 		// GET: Cm/Create
 		[Authorize(Roles = "canEdit")]
@@ -584,7 +578,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. まだ前のセッションにログインしている場合は、**ログアウト** リンクをクリックします。
 
-1. **[About]** または **[Contact]** リンクをクリックします。匿名ユーザーはこれらのページを表示できないため、ログイン ページにリダイレクトされます。 
+1. **[About]** または **[Contact]** リンクをクリックします。匿名ユーザーはこれらのページを表示できないため、ログイン ページにリダイレクトされます。
 
 1. **[Register as a new user]** リンクをクリックし、メール アドレスが **joe@contoso.com* であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
 
@@ -594,9 +588,9 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. このページ上の編集リンクをクリックすると、ログイン ページにリダイレクトされます (新しいローカル ユーザーが *canEdit* ロールに追加されていないため)。
 
-1. ユーザー名 *user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
+1. ユーザー名 **user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
 
-	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、*user1@contoso.com* が追加されていることを確認します。
+	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、**user1@contoso.com* が追加されていることを確認します。
 
 1. データを変更できることを確認します。
 
@@ -612,15 +606,15 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 2. **[v]** アイコンをクリックして **ApplicationDbContext** の **[リモート接続文字列]** を選択し、プロジェクトの作成時に作成したデータベースを選択します。
    
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
+	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. **ContactManagerContext** で、**[Code First Migrations を実行する]** を選択します。
 
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
+	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
 
 1. **[発行]** をクリックします。
 
-1. *user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
+1. **user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
 
 1. ログアウトします。
 
@@ -632,7 +626,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **サーバー エクスプローラー**で、**[Azure]、[App Service]、{リソース グループ}、{Web アプリ}** の順に移動します。
 
-4. Web アプリを右クリックし、**[停止]** を選択します。 
+4. Web アプリを右クリックし、**[停止]** を選択します。
 
 	また、[Azure ポータル](https://portal.azure.com/)から Web アプリのブレードに進み、ブレード上部の **[停止]** アイコンをクリックする方法もあります。
 
@@ -640,9 +634,9 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 ### AddToRoleAsync の削除、発行、テスト
 
-1. Account コントローラーの **ExternalLoginConfirmation** メソッドから次のコードをコメント アウト、または削除します。`await UserManager.AddToRoleAsync(user.Id, "canEdit");`
+1. Account コントローラーの **ExternalLoginConfirmation** メソッドから次のコードをコメント アウトまたは削除します。
 
-		
+		await UserManager.AddToRoleAsync(user.Id, "canEdit");
 
 1. プロジェクトをビルドします。これにより、ファイルの変更が保存され、コンパイル エラーがないか確認が行われます。
 
@@ -657,9 +651,12 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 	![start web app](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss15.png)
 
 5. Visual Studio に戻り、**[発行]** をクリックします。
-3. Azure アプリケーションが既定のブラウザーで起動します。ログインして、ログアウトすると、匿名ユーザーとしてホーム ページを表示できます。  
+
+3. Azure アプリケーションが既定のブラウザーで起動します。ログインして、ログアウトすると、匿名ユーザーとしてホーム ページを表示できます。
+
 4. **[About]** リンクをクリックします。ログイン ページにリダイレクトされます。
-5. ログイン ページの **[登録]** リンクをクリックし、ローカル アカウントを作成します。読み取り専用ページにはアクセスできるが、データの変更を伴うページにはアクセスできない (*canEdit* ロールによって保護されている) ことをこのローカル アカウントを使用して確認します。ローカル アカウント アクセスは、後でこのチュートリアルの中で削除します。 
+
+5. ログイン ページの **[登録]** リンクをクリックし、ローカル アカウントを作成します。読み取り専用ページにはアクセスできるが、データの変更を伴うページにはアクセスできない (*canEdit* ロールによって保護されている) ことをこのローカル アカウントを使用して確認します。ローカル アカウント アクセスは、後でこのチュートリアルの中で削除します。
 
 	![Register](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss16.PNG)
 
@@ -681,8 +678,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	**注:** このアプリケーションで Google からログアウトし、同じブラウザーで別の Google アカウントにログインすることはできません。1 つのブラウザーを使用している場合は、Google に移動してログアウトする必要があります。同じサード パーティの認証システム (Google など) に属している別のアカウントでログオンするためには、異なるブラウザーを使用する必要があります。
 
-Google アカウント情報の氏名を入力しないと、NullReferenceException が発生します。
-
+	Google アカウント情報の氏名を入力しないと、NullReferenceException が発生します。
 
 ## SQL Azure DB を調べる ##
 
@@ -702,7 +698,7 @@ Google アカウント情報の氏名を入力しないと、NullReferenceExcept
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr8.png)
  
-1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、*user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
+1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、**user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s2.png)
  
@@ -710,7 +706,7 @@ Google アカウント情報の氏名を入力しないと、NullReferenceExcept
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rs1.png)
  
-3. **UserId** が、*user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
+3. **UserId** が、**user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
 
 ## トラブルシューティング
 
@@ -801,4 +797,4 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="02/29/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -24,8 +24,19 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 関連リンク:
 
+- Azure AD Connect の[以前のバージョンから最新リリースにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.110.0
+リリース日: 2016 年 2 月
+
+**修正された問題:**
+
+- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードは機能しません。
+- インストール時に、インストール ウィザードの最後で **[..同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラは有効になりません。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
+- サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## 1\.1.105.0
 リリース日: 2016 年 2 月
@@ -42,8 +53,8 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **プレビューから GA に昇格した機能:**
 
-- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 **新しいプレビュー機能:**
 
@@ -237,4 +248,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

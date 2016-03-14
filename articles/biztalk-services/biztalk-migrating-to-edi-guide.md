@@ -4,8 +4,8 @@
 	services="biztalk-services"
 	documentationCenter="na"
 	authors="MandiOhlinger"
-	manager="dwrede"
-	editor="dwrede"/>
+	manager="erikre"
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="02/29/2016"
 	ms.author="mandia"/>
 
 
@@ -142,4 +142,4 @@ Microsoft Azure BizTalk Services は定期的なマイルストーンで更新�
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0302_2016-->

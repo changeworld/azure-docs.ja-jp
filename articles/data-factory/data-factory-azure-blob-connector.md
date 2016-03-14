@@ -386,7 +386,7 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。例: myblobcontainer\\myblobfolder\\ | あり |
-| fileName | <p>blob. fileName の名前は任意です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。</p><p>出力データセットに fileName が指定されていないとき、「Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>)」の形式でファイルが生成されます。 | いいえ |
+| fileName | <p>blob. fileName の名前は省略可能です。この名前は大文字と小文字が区別されます。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。</p><p>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの活用](#Leveraging-partitionedBy-property)」セクションを参照してください。 | いいえ
 | BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
@@ -478,7 +478,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- | 
-| treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。 | TRUE<br/>FALSE | いいえ |
+| treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。<p>**quoteChar** プロパティを指定した場合、このプロパティでは引用符で囲まれた空の文字列も null として処理される場合があることに注意してください。</p> | TRUE (既定値) <br/>FALSE | いいえ |
 | skipHeaderLineCount | スキップする必要がある行数を指定します。入力データセットで **TextFormat** を利用しているときにのみ適用されます。 | 0 から最大値までの整数。 | いいえ | 
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 | True (既定値)、False | いいえ | 
 
@@ -511,4 +511,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

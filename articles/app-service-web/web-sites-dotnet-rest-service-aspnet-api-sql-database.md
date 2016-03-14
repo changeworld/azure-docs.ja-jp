@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/04/2015" 
+	ms.date="02/29/2016" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
@@ -46,11 +46,11 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
-	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)
+	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.png)
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[Web API]** をオンにし、**[認証の変更]** をクリックします。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.png)
 
 1. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
@@ -60,7 +60,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[クラウドでホスト]** がチェックされていることを確認して、[**OK**] をクリックします。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
+	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.png)
 
 Azure にまだサインしていない場合は、サインインするように求められます。
 
@@ -123,7 +123,7 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 ### ローカルでアプリケーションを実行する
 
-1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
 
 これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
@@ -205,11 +205,11 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、**[Entity Framework を使用した、ビューのある MVC コントローラー]** を選択し、**[追加]** をクリックします。
 
- ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
+ ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.png)
 
 6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキストの種類]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
 
-	![Add Controller dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr9.PNG)
+	![Add Controller dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr9.png)
 
 	ダイアログ ボックスで、"HomeController という名前のファイルは既に存在します。ファイルを置き換えますか?" とたずねられます。**[はい]** をクリックします。新しいプロジェクトで作成した home コントローラーで上書きされます。連絡先リストに新しい home コントローラーが使用されるようになります。
 
@@ -508,7 +508,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
-	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
+	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.png)
 
 4. **[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「ContactsController」と入力します。**[モデル クラス]** で [Contact (ContactManager.Models)] を選択します。**[データ コンテキスト クラス]** で既定値をそのまま使用します。
 
@@ -549,7 +549,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project ](https://www.owasp.org/index.php/Main_Page)(OWASP)」および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))」を参照してください。
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))XSRF (CSRF)」を参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -702,7 +702,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. **[ContactsManagerContext(ContactsManagerContext)]** の下で、**v** アイコンをクリックして、*リモート接続文字列*を連絡先データベースの接続文字列に変更します。**[ContactDB]** をクリックします。
 
-	![設定](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
+	![[設定]](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
 
 7. **[Code First Migrations の実行 (アプリケーションの起動時に実行)]** チェック ボックスをオンにします。
 
@@ -724,7 +724,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
@@ -814,5 +814,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-
-<!------HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0302_2016-->

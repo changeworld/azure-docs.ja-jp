@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="11/13/2015"
+	ms.date="02/25/2016"
 	ms.author="huguesv"/>
 
 
@@ -35,10 +35,11 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
  - [Python Tools 2.2 for Visual Studio サンプル VSIX]
  - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015]
  - [Python 2.7 (32 ビット)]
+ - Django 1.6 以前
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -94,7 +95,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Azure ポータル]にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**[ SQL database \]** の順にクリックします。
+1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**[SQL database]** の順にクリックします。
 
   	<!-- ![New Button](./media/web-sites-python-ptvs-django-sql/PollsCommonAzurePlusNew.png) -->
 
@@ -197,7 +198,7 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 - [SQL Database]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 
 <!--Link references-->
@@ -219,4 +220,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL Database]: /documentation/services/sql-database/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0302_2016-->

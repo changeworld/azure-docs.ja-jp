@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/23/2015" 
+	ms.date="03/01/2016" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -194,7 +194,7 @@
 
 ### 連続エクスポート
 
-データを外部で処理できるよう、連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
+データを外部で処理できるように連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
 
 ### Power BI
 
@@ -214,4 +214,4 @@
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -3,8 +3,8 @@
 	description="メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="02/25/2016" 
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード
@@ -30,7 +30,7 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 - [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
 
-- [エンコーダーの比較](media-services-encode-asset.md#compare_encoders)セクションでは、**メディア エンコーダー プレミアム ワークフロー**、**Media Encoder Standard**、**Azure Media Encoder** のエンコード機能を比較します。
+- 「[エンコーダーの比較](media-services-encode-asset.md#compare_encoders)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
 
 このトピックでは、.NET を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示します。
 
@@ -279,4 +279,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

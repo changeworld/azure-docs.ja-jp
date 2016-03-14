@@ -15,12 +15,12 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="02/22/2016"
+      ms.date="02/25/2016"
       ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
 
-Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476(Azure.100).aspx)) を参照してください。
+Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と「[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476(Azure.100).aspx)」を参照してください。
 
 > [AZURE.IMPORTANT] Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
 
@@ -70,7 +70,8 @@ Azure AD Graph API 用の Graph Explorer を使用して、アプリケーショ
 
 **クエリを実行する**:クエリを実行するには、要求テキスト ボックスにクエリを入力し、**[取得]** をクリックするか、**Enter** キーを押します。結果が応答ボックスに表示されます。たとえば、`https://graph.windows.net/graphdir1.onmicrosoft.com /groups?api-version=1.5` は、デモ ディレクトリ内のすべてのグループ オブジェクトを一覧表示します。
 
-Graph Explorer の次の機能と制限事項に注意してください。 - リソース セットのオートコンプリート機能。これを確認するには、**[デモ会社を使用する]** をクリックし、(会社の URL が表示されている) 要求テキスト ボックスをクリックします。ドロップダウン リストからリソース セットを選択できます。
+Graph Explorer の次の機能と制限事項に注意してください。
+- リソース セットのオートコンプリート機能。これを確認するには、**[デモ会社を使用する]** をクリックし、(会社の URL が表示されている) 要求テキスト ボックスをクリックします。ドロップダウン リストからリソース セットを選択できます。
 
 - アドレス指定のエイリアスとして “me” と “myorganization” の使用をサポートします。たとえば、`https://graph.windows.net/me?api-version=1.5` を使用してサインインしているユーザーのユーザー オブジェクトを返し、`https://graph.windows.net/myorganization/users?api-version=1.5` を使用して現在のディレクトリのすべてのユーザーを返すことができます。デモ会社に対して “me” エイリアスを使用するとエラーが返ります。これは、要求を行うサインイン ユーザーが存在しないためです。
 
@@ -125,4 +126,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 
 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

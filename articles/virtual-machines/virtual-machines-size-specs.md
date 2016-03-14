@@ -35,7 +35,7 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 *   G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 
-*   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」を参照してください。
+*   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
 *   A シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
 
@@ -67,15 +67,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |[Standard\_A0 (極小)](#standard-tier-a-series) |50 |
 |[Standard\_A1 ～ 4 (小～大)](#standard-tier-a-series) |100 |
 |[Standard\_A5 ～ 7](#standard-tier-a-series) |100 |
-|[A8 ～ A11](#standard-tier-a-series) |225 *|
-|[D1-14](#standard-tier-d-series) |160 |
-|[D1-14v2](#standard-tier-dv2-series) |210 - 250 *|
-|[DS1-14](#standard-tier-ds-series) |160 |
-|[G1-5](#standard-tier-g-series) |180 - 240 *|
-|[GS1-5](#standard-tier-gs-series) |180 - 240 *|
+|[A8 ～ A11](#standard-tier-a-series) |225 *| |[D1-14](#standard-tier-d-series) |160 | |[D1-14v2](#standard-tier-dv2-series) |210 - 250 *| |[DS1-14](#standard-tier-ds-series) |160 | |[G1-5](#standard-tier-g-series) |180 - 240 *| |[GS1-5](#standard-tier-gs-series) |180 - 240 *|
 
 
-\* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
+* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
 
 
 
@@ -164,7 +159,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS13 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 25,600 256 MB/秒 |
 |Standard\_DS14 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 50,000 512 MB/秒 |
 
-**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」を参照してください。
+**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
 ## Standard レベル: G シリーズ
 
@@ -193,4 +188,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 [A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!-----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -14,15 +14,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/23/2016"
+   ms.date="02/25/2016"
    ms.author="mandia"/>
 
 # Azure Blob Storage API の概要
-Azure Blob に接続して、ファイルの作成、ファイルの削除など、BLOB コンテナーのファイルを管理します。
+Azure Blob に接続して、ファイルの作成、ファイルの削除など、BLOB コンテナーのファイルを管理します。Azure Blob ストレージ API は、次のツールから使用できます。
 
-Azure Blob Storage API は、ロジック アプリから使用できます。
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Azure Storage BLOB コネクタ](../app-service-logic/app-service-logic-connector-azurestorageblob.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Azure Storage Blob コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-azurestorageblob.md)」をご覧ください。
 
 Azure Blob Storage では、次の操作を実行できます。
 
@@ -36,7 +36,7 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 
 | トリガー | アクション|
 | --- | --- |
-| ありません。 | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>メタデータを取得する</li><li>使用しているファイルのメタデータを取得する</li><li>ファイルを更新する</li></ul> |
+| ありません。 | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>使用しているファイルのメタデータを取得する</li><li>ファイルを更新する</li></ul> |
 
 すべての API は、JSON および XML 形式のデータに対応します。
 
@@ -48,7 +48,7 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 |Azure ストレージ アカウント名 | ○ | Blob Storage アカウントの名前|
 |Azure Storage アカウントのアクセス キー | ○ | Blob Storage アカウントへのアクセス キー|
 
-接続を作成したら、フォルダー パスやファイル名など、BLOB のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、フォルダー パスやファイル名など、BLOB のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ BLOB 接続を使用できます。
  
@@ -57,7 +57,7 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 適用されるバージョン: 1.0。
 
 ### ファイルを作成する
-ファイルを Azure Blob Storage にアップロードします。```POST: /datasets/default/files```
+ファイルを Azure BLOB ストレージにアップロードします。```POST: /datasets/default/files```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -72,7 +72,7 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 |default|操作に失敗しました。|
 
 ### ファイルをコピーする
-ファイルを Azure Blob Storage にコピーします。```POST: /datasets/default/copyFile```
+ファイルを Azure BLOB ストレージにコピーします。```POST: /datasets/default/copyFile```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -88,7 +88,7 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 
 
 ### ファイルを削除する
-Azure Blob Storage からファイルを削除します。```DELETE: /datasets/default/files/{id}```
+Azure BLOB ストレージからファイルを削除します。```DELETE: /datasets/default/files/{id}```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -102,7 +102,7 @@ Azure Blob Storage からファイルを削除します。```DELETE: /datasets/d
 
 
 ### アーカイブをフォルダーに抽出する
-Azure Blob Storage のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/ExtractFolderV2```
+Azure BLOB ストレージのフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/ExtractFolderV2```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -118,7 +118,7 @@ Azure Blob Storage のフォルダーにアーカイブ ファイル (例: .zip)
 
 
 ### ファイルの内容を取得する
-ID を使用して Azure Blob Storage からファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
+ID を使用して Azure BLOB ストレージからファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -132,7 +132,7 @@ ID を使用して Azure Blob Storage からファイルの内容を取得しま
 
 
 ### パスを使用してファイルの内容を取得する
-パスを使用して Azure Blob Storage からファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
+パスを使用して Azure BLOB ストレージからファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -146,7 +146,7 @@ ID を使用して Azure Blob Storage からファイルの内容を取得しま
 
 
 ### ファイルのメタデータを取得する
-ファイル ID を使用して、Azure Blob Storage からファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
+ファイル ID を使用して、Azure Blob ストレージからファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -160,7 +160,7 @@ ID を使用して Azure Blob Storage からファイルの内容を取得しま
 
 
 ### パスを使用してファイルのメタデータを取得する
-パスを使用して、Azure Blob Storage からファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
+パスを使用して、Azure Blob ストレージからファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -174,7 +174,7 @@ ID を使用して Azure Blob Storage からファイルの内容を取得しま
 
 
 ### ファイルを更新する
-Azure Blob Storage のファイルを更新します。```PUT: /datasets/default/files/{id}```
+Azure Blob ストレージのファイルを更新します。```PUT: /datasets/default/files/{id}```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -200,7 +200,7 @@ Azure Blob Storage のファイルを更新します。```PUT: /datasets/default
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -210,7 +210,7 @@ Azure Blob Storage のファイルを更新します。```PUT: /datasets/default
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|×|
+|source セクション|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -232,6 +232,6 @@ Azure Blob Storage のファイルを更新します。```PUT: /datasets/default
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

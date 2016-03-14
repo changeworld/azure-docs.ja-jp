@@ -3,7 +3,7 @@
    description="Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags 
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/19/2016"
+   ms.date="02/23/2016"
    ms.author="magoedte;bwren"/>
 
 # Azure Automation での Runbook の開始
@@ -189,4 +189,4 @@ jsmith
 
 -	この記事の Runbook アーキテクチャでは、ハイブリッド Runbook の概要について説明します。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

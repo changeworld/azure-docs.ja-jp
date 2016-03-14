@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="10/22/2015"
+   ms.date="02/26/2016"
    ms.author="piyushjo"/>
 
 # Azure Mobile Engagement - トラブルシューティング ガイド
@@ -28,7 +28,7 @@
 1. 「[チュートリアルの概要](mobile-engagement-windows-store-dotnet-get-started.md)」に記載されている、統合を行うために必要な手順がすべて完了しています。
 2. 最新バージョンのプラットフォーム SDK を使用しています。 
 3. エミュレーターのみに特有の問題もあるため、実際のデバイスとエミュレーターの両方でテストを行います。 
-4. [ここ](azure-subscription-service-limits.md)に説明する、Mobile Engagement のどの制限/スロットルにも到達していません。
+4. [ここ](../azure-subscription-service-limits.md)に説明する、Mobile Engagement のどの制限/スロットルにも到達していません。
 5. Mobile Engagement サービス バックエンドに接続できない場合またはデータが継続的に読み込まれないという状況が発生している場合は、[ここ](https://azure.microsoft.com/status/)の説明を確認して進行中のサービス インシデントが存在しないことを確認します。
 
 ## 「監視」に関する問題
@@ -88,7 +88,8 @@
 	
 	    	<meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 	    
-	- Android マニフェスト ファイル内でアクセス許可が不足していないこと、または不適切な構成がないことを確認します。
+	- Android マニフェスト ファイルでアクセス許可の不足や不適切な構成がないことを確認します。
+	- クライアント アプリに追加するプロジェクト番号が、GCM サーバー キーを取得したアカウントと同じアカウントのものであることを確認します。このアカウントが一致していないと、プッシュを送信できなくなります。 
 	- システム通知は受信しているがアプリ内通知は受信していないという場合は、Android マニフェスト ファイル内に適切なアイコンが指定されていない可能性があるので、「[通知セクションのアイコンを指定する](mobile-engagement-android-get-started.md)」を確認してください。 
 	- BigPicture 通知を送信する場合に、外部イメージ サーバーを使用する場合は、それらのサーバーが HTTP の "GET" と "HEAD" をサポートする必要があります。
 
@@ -120,4 +121,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 	- Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
 	- 表示されるエラー メッセージとシナリオを含むエラーの詳細
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

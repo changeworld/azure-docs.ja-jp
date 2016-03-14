@@ -10,7 +10,7 @@
 
 <tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article"
 
-	ms.date="11/19/2015"
+	ms.date="02/26/2016"
 
 	ms.author="femila"/>
 
@@ -72,7 +72,7 @@ Azure AD Connect サーバーで、次の PowerShell コマンドを実行しま
     Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
 
 
-コマンドレット $aadAdminCred = Get-Credential を実行するときは、Get-Credential ポップアップが表示されたら *user@example.com* の形式で資格情報のユーザー名を入力します。
+コマンドレット $aadAdminCred = Get-Credential を実行するときは、Get-Credential ポップアップが表示されたら **user@example.com* の形式で資格情報のユーザー名を入力します。
 
 コマンドレット Initialize-ADSyncDomainJoinedComputerSync ... を実行するときは、[*connector account name*] を、Active Directory コネクタ アカウントとして使用するドメイン アカウントに置き換えます。
 
@@ -144,4 +144,4 @@ Active Directory のグループ ポリシーを使用すると、自動的に A
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

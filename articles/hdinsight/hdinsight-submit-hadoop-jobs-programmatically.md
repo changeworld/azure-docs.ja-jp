@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="02/29/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -58,7 +58,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 1. Visual Studio で、C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ マネージャー コンソールから、次のコマンドを実行します。
 
-		Install-Package Microsoft.Azure.Common.Authentication -pre
+		Install-Package Microsoft.Azure.Common.Authentication -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
 2. 次のコードを使用します。
@@ -98,7 +98,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		
 					var tokenCreds = GetTokenCloudCredentials();
 					var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-		
+
+					var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);  
+ 					var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");  
+
 					_hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 		
 					var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
@@ -266,4 +269,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

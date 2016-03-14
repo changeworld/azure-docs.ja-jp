@@ -11,10 +11,11 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/09/2016"
+	ms.date="03/02/2016"
 	ms.author="ashmaka"/>
 
 # Azure Search とは
+
 Azure Search は、サーバーとインフラストラクチャの管理を Microsoft に委任するクラウドの Search-as-a-service (サービスとしての検索) ソリューションです。データを取り込んだら、Web サイトやモバイル アプリケーションに検索機能を追加して、すぐに利用を開始できます。簡単な [REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) または [.NET SDK](search-howto-dotnet-sdk.md) を使用してアプリケーションに強力な検索エクスペリエンスを簡単に追加できるので、検索インフラストラクチャを管理する必要も、検索のエキスパートになる必要もありません。
 
 ## ユーザーに強力な検索エクスペリエンスを提供する
@@ -58,9 +59,9 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 ### 1\.サービスのプロビジョニング
 [Azure ポータル](https://portal.azure.com/)または [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn832684.aspx) を使用して、Azure Search サービスを高速化できます。
 
-サービスの構成方法に応じて、他の Azure Search サブスクライバーと共有する Free レベル、またはリソースをサービス専用にする Standard [価格レベル](https://azure.microsoft.com/pricing/details/search/)を利用します。サービスをプロビジョニングするときに、サービスをホストするデータ センターのリージョンも選択します。
+検索サービスの構成方法に応じて、他の Azure Search サブスクライバーとサービスを共有する Free レベル、またはリソースを独自のサービス専用にする[価格レベル](https://azure.microsoft.com/pricing/details/search/)を利用します。サービスをプロビジョニングするときに、サービスをホストするデータ センターのリージョンも選択します。
 
-標準レベルで Azure Search を使用している場合、2 次元でサービスを拡大できます。1) 重いクエリの負荷を処理するために、レプリカを追加して、容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して、記憶域を追加します。ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
+選択したサービスのレベルに応じて、2 つの次元でサービスを拡張できます。1) クエリの大きな負荷を処理するために、レプリカを追加して容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して記憶域を追加します。ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
 
 ### 2\.インデックスの作成
 コンテンツを Azure Search サービスにアップロードする前に、まず Azure Search インデックスを定義する必要があります。インデックスは、データを保持し、検索クエリを受け付けることができるデータベース テーブルに似ています。データベースのフィールドに似た、検索するドキュメントの構造にマップするインデックス スキーマを定義します。
@@ -82,4 +83,4 @@ Azure Search インデックスを入力したら、REST API または .NET SDK 
 
 Azure アカウントがない場合は、サインアップ不要で 60 分の無料のセッションをお試しいただけます。「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/p/?LinkId=618214)」に移動し、[Web App] を選択します。 次に、[ASP.NET + Azure Search] テンプレートを選択して開始します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

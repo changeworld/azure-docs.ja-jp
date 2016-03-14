@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="02/26/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境への受信トラフィックを制御する方法
@@ -49,12 +49,12 @@ App Service 環境で使用されるポートの一覧を次に示します。
 ## 発信接続と DNS の要件 ##
 App Service 環境を適切に機能させるには、世界中の Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要です。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
 
-App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャも必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[新しい管理ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
+App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャも必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[Azure ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
 次の一覧に、App Service Environment の接続性と DNS 要件の詳細を示します。
 
 -  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
--  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、次のドメインで解決されます: *database.windows.net*。
+-  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
 -  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
 -  *ocsp.msocsp.com* への送信ネットワーク接続これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
@@ -147,5 +147,6 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NewPortal]: https://portal.azure.com
 
 <!-- IMAGES -->
+ 
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

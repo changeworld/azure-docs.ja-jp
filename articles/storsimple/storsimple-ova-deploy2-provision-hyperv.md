@@ -13,22 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/20/2016"
+   ms.date="03/01/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする (プレビュー)
+# StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする
 
 ![](./media/storsimple-ova-deploy2-provision-hyperv/hyperv4.png)
 
 ## 概要 
 
-このプロビジョニング チュートリアルは、v 1.1.1.0 (パブリック プレビュー) を実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) にのみ適用されます。このチュートリアルでは、Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングする方法について説明します。
+このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングする方法について説明します。
 
 仮想デバイスをプロビジョニングして構成するには、管理者特権が必要です。プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
-> [AZURE.IMPORTANT]
-> 
-> このパブリック プレビューは、評価のみを目的としています。このプレビューの運用環境へのインストールはサポートされていません。
 
 ## プロビジョニングの前提条件
 
@@ -41,6 +38,8 @@
 -   [StorSimple Virtual Array のポータルの準備](storsimple-ova-deploy1-portal-prep.md)に関するページの手順がすべて完了していること。
 
 -   Azure ポータルから Hyper-V の仮想デバイスのイメージをダウンロードしていること。詳細については、「[手順 3: 仮想デバイスのイメージをダウンロードする](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image)」を参照してください。
+	
+	> [AZURE.IMPORTANT] StorSimple Virtual Array で実行されているソフトウェアは、Storsimple Manager サービスとの組み合わせでのみ使用できます。
 
 ### StorSimple 仮想デバイスの場合 
 
@@ -97,7 +96,7 @@
 
 #### 仮想デバイスをプロビジョニングするには
 
-1.  Windows Server ホストで、ローカル ドライブにある仮想デバイスのイメージをコピーします。これは、Azure ポータルからダウンロードしたイメージです。このイメージは手順の後半で使用するため、コピーした場所をメモしておきます。
+1.  Windows Server ホストで、ローカル ドライブにある仮想デバイスのイメージをコピーします。これは、Azure ポータルからダウンロードしたイメージ (VHD または VHDX) です。このイメージは手順の後半で使用するため、コピーした場所をメモしておきます。
 
 2.  **サーバー マネージャー**を開きます。右上隅の **[ツール]** をクリックして **[Hyper-V マネージャー]** を選択します。
 
@@ -113,11 +112,11 @@
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image3.png)
 
-1.  [**名前と場所を指定**] ページで仮想デバイスの **[名前]** を入力します。**[次へ]** をクリックします。
+1.  **[名前と場所を指定]** ページで仮想デバイスの **[名前]** を入力します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
 
-1.  **[世代の指定]** ページで、**[第 1 世代]** を選択します。**[次へ]** をクリックします。
+1.  VHD を使用する場合は、**[世代の指定]** ページで、**[第 1 世代]** を選択します。(Windows Server 2012 以降について) VHDX を使用する場合は、**[第 2 世代]**を選択します。**[次へ]** をクリックします。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image5.png)
 
@@ -194,7 +193,10 @@
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image19.png)
 
-1.  **[設定]** ページが再び表示されます。**[OK]** をクリックすると **[設定]** ページが終了し、Hyper-V マネージャーのウィンドウが表示されます。
+1.  **[設定]** ページが再び表示されます。VHDX を使用している場合にのみ、この手順を実行します。VHD および第 1 世代の仮想マシンを使用する場合は、この手順をスキップして次に進みます。ここで、仮想マシンでセキュア ブートを無効にする必要があります。新しい第 2 世代の仮想マシンを作成する場合は、セキュア ブートが既定で有効になります。第 2 世代の仮想マシンの **[設定]** ページで、**[ハードウェア]** の下の **[ファームウェ ア]** を選択し、**[セキュア ブートを有効にする]** チェック ボックスをオフにします。
+
+
+2.  **[設定]** ページが再び表示されます。**[OK]** をクリックすると **[設定]** ページが終了し、Hyper-V マネージャーのウィンドウが表示されます。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image20.png)
 
@@ -274,4 +276,4 @@ Hyper-V で StorSimple Virtual Array をプロビジョニングする方法を�
 
 -   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

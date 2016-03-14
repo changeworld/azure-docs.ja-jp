@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="03/01/2016" 
 	ms.author="juliako"/>
 
 
@@ -21,8 +21,8 @@
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-get-media-processor.md)
-- [REST](media-services-rest-get-media-processor.md)
- 
+- [REST ()](media-services-rest-get-media-processor.md)
+
 
 ##概要
 
@@ -32,28 +32,28 @@
 
 メディア プロセッサ名|説明|詳細情報
 ---|---|---
-Azure Media Encoder|Azure Media Encoder を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#azure_media_encoder)
-メディア エンコーダー スタンダード|Media Encoder Standard を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#media_encoder_standard)
-メディア エンコーダー Premium ワークフロー|メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。|[メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media_encoder_premium_wokrflow)
-Azure Media Indexer| メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。|[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)
-Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|		[Azure Media Hyperlapse](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
-Storage Decryption| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
-Azure Media Packager|メディア アセットを .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973635.aspx)
-Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
+メディア エンコーダー スタンダード|オンデマンド エンコードのための標準機能を備えています。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)
+メディア エンコーダー Premium ワークフロー|メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。|[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)
+Azure Media Indexer| メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。|[Azure Media Indexer](media-services-index-content.md)
+Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|[Azure Media Hyperlapse](media-services-hyperlapse-content.md)
+Azure Media Encoder|償却対象
+Storage Decryption| 償却対象|
+Azure Media Packager|償却対象|
+Azure Media Encryptor|償却対象|
 
 ##メディア プロセッサの取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、[Media Services にプログラムから接続する方法]に関するページで説明しているように、モジュール レベルの変数 **\_context** を使用してサーバー コンテキストを参照しています。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、[Media Services にプログラムから接続する方法](media-services-dotnet-connect_programmatically.md)に関するページで説明しているように、モジュール レベルの変数 **\_context** を使用してサーバー コンテキストを参照しています。
 
 	private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
 	{
-	     var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-	        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-	
-	    if (processor == null)
-	        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-	
-	    return processor;
+		var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+		ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+		
+		if (processor == null)
+		throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+		
+		return processor;
 	}
 
 
@@ -66,10 +66,7 @@ Azure Media Encryptor|PlayReady Protection を使用してメディア資産を�
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ##次のステップ
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、[資産をエンコードする方法][]に関するトピックに進み、Azure Media Encoder を使用して資産をエンコードする方法を学習します。
 
-[資産をエンコードする方法]: media-services-encode-asset.md
-[Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
-[Media Services にプログラムから接続する方法]: ../media-services-set-up-computer/
+これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」に進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

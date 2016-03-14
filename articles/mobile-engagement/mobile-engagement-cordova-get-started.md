@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
 	ms.topic="article" 
-	ms.date="09/22/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 # Cordova/Phonegap 用 Azure Mobile Engagement の使用
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows ユニバーサル](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
 - [iOS | Obj C](mobile-engagement-ios-get-started.md)
 - [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
@@ -64,7 +64,7 @@
 		$ cordova platform add ios 
 		$ cordova run ios
 
-3. 次を実行して **Android** のプロジェクトを構成し、その構成を Android エミュレーターで実行します。Android SDK エミュレーターで、ターゲットが Google API (Google Inc.) に、CPU/ABI が Google API ARM に設定されていることを確認してください。
+3. 次のコマンドを実行して **Android** のプロジェクトを構成し、その構成を Android エミュレーターで実行します。Android SDK エミュレーターで、ターゲットが Google API (Google Inc.) に、CPU/ABI が Google API ARM に設定されていることを確認してください。
 
 		$ cordova platform add android
 		$ cordova run android
@@ -245,4 +245,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

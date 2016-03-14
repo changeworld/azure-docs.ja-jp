@@ -76,18 +76,24 @@ Apache Cordova アプリ プロジェクトでプッシュ通知を処理する�
 
 ### Apache Cordova プッシュ プラグインをインストールする
 
-Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。これらの機能は、[npm] または GitHub で公開されているプラグインによって提供されます。ネットワーク プッシュ通知の処理には、`phonegap-plugin-push` プラグインを使用します。コマンド ラインからインストールするには、次のコマンドを実行します。
+Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。これらの機能は、[npm](https://www.npmjs.com/) または GitHub で公開されているプラグインによって提供されます。ネットワーク プッシュ通知の処理には、`phonegap-plugin-push` プラグインを使用します。
+
+次のいずれかの方法でプッシュ プラグインをインストールできます。
+
+**コマンド プロンプトから:**
 
     cordova plugin add phonegap-plugin-push
 
-Visual Studio 内にプラグインをインストールするには:
+**Visual Studio 内から:**
 
-1.  ソリューション エクスプローラー内から `config.xml` ファイルを開きます。
-2.  **[プラグイン]** (左側)、**[カスタム]** (上側) の順にクリックします。
-3.  インストール元として **[Git]** を選択し、「`https://github.com/phonegap/phonegap-plugin-push`」と入力します。
+1.  ソリューション エクスプローラーから `config.xml` ファイルを開きます。
+2.  **[プラグイン]**、**[カスタム]** の順にクリックし、 **[Git]** をインストール元として選択し、`https://github.com/phonegap/phonegap-plugin-push` をソースとして入力します。
+	
+	![](./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png)
+	
 4.  インストール元の横にある矢印をクリックし、**[追加]** をクリックします。
 
-これでプッシュ プラグインがインストールされます。
+これでプッシュ プラグインがインストールされました。
 
 ### Android Google Play Services をインストールする
 
@@ -107,64 +113,69 @@ PhoneGap プッシュ プラグインでは、プッシュ通知に Google Play 
 
 ### スタートアップ時のプッシュにデバイスを登録する
 
-ログイン プロセスのコールバック時、つまり `onDeviceReady()` メソッドの一番下に `registerForPushNotifications()` の呼び出しを追加します。
+1. ログイン プロセスのコールバック時、つまり **onDeviceReady** メソッドの一番下に **registerForPushNotifications** の呼び出しを追加します。
 
-    // Login to the service
-    client.login('google')
-        .then(function () {
-            // Create a table reference
-            todoItemTable = client.getTable('todoitem');
+ 
+		// Login to the service.
+		client.login('google')
+		    .then(function () {
+		        // Create a table reference
+		        todoItemTable = client.getTable('todoitem');
+		
+		        // Refresh the todoItems
+		        refreshDisplay();
+		
+		        // Wire up the UI Event Handler for the Add Item
+		        $('#add-item').submit(addItemHandler);
+		        $('#refresh').on('click', refreshDisplay);
+		
+				// Added to register for push notifications.
+		        registerForPushNotifications();
+		
+		    }, handleError);
 
-            // Refresh the todoItems
-            refreshDisplay();
+	この例では、認証が成功した後の **registerForPushNotifications** の呼び出しを表しています。これはアプリでプッシュ通知と認証の両方を使用する場合にお勧めします。
 
-            // Wire up the UI Event Handler for the Add Item
-            $('#add-item').submit(addItemHandler);
-            $('#refresh').on('click', refreshDisplay);
+2. 次のように、新しい `registerForPushNotifications()` メソッドを追加します。
 
-            registerForPushNotifications();
+	    // Register for Push Notifications.
+		// Requires that phonegap-plugin-push be installed.
+	    var pushRegistration = null;
+	    function registerForPushNotifications() {
+	        pushRegistration = PushNotification.init({
+	            android: {
+	                senderID: 'Your_Project_ID'
+	            },
+	            ios: {
+	                alert: 'true',
+	                badge: 'true',
+	                sound: 'true'
+	            },
+	            wns: {
+	
+	            }
+	        });
+	
+	        pushRegistration.on('registration', function (data) {
+	            client.push.register('gcm', data.registrationId);
+	        });
+	
+	        pushRegistration.on('notification', function (data, d2) {
+	            alert('Push Received: ' + data.message);
+	        });
+	
+	        pushRegistration.on('error', handleError);
+	    }
 
-        }, handleError);
-
-次のように `registerForPushNotifications()` を実装します。
-
-    /**
-     * Register for Push Notifications - requires the phonegap-plugin-push be installed
-     */
-    var pushRegistration = null;
-    function registerForPushNotifications() {
-        pushRegistration = PushNotification.init({
-            android: {
-                senderID: 'YourProjectID'
-            },
-            ios: {
-                alert: 'true',
-                badge: 'true',
-                sound: 'true'
-            },
-            wns: {
-
-            }
-        });
-
-        pushRegistration.on('registration', function (data) {
-            client.push.register('gcm', data.registrationId);
-        });
-
-        pushRegistration.on('notification', function (data, d2) {
-            alert('Push Received: ' + data.message);
-        });
-
-        pushRegistration.on('error', handleError);
-    }
-
-_YourProjectID_ を、[Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
+3. 上記のコードで、`Your_Project_ID` を、[Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
 ## 発行されたモバイル サービスに対してアプリケーションをテストする
 
 Android フォンを USB ケーブルで直接接続して、アプリケーションをテストできます。**Google Android エミュレーター**の代わりに、**[デバイス]** を選択します。Visual Studio によってデバイスにアプリケーションがダウンロードされ、アプリケーションが実行されます。デバイスでアプリケーションを操作します。
 
 開発環境を強化しましょう。[Mobizen] などの画面共有アプリケーションは、PC の Web ブラウザーに Android の画面を表示できるため、Android アプリケーションの開発に役立ちます。
+
+Android エミュレーターで Android アプリをテストすることもできます。まず、エミュレーターに Google アカウントを追加してください。
 
 ##<a name="next-steps"></a>次のステップ
 
@@ -184,4 +195,4 @@ Android フォンを USB ケーブルで直接接続して、アプリケーシ�
 [Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/ja-JP/features/cordova-vs.aspx
 [Azure Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

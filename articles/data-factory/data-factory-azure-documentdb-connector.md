@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="02/24/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した DocumentDB との間でのデータの移動
@@ -379,6 +379,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 	  }
 	}
 
+### Data Factory によるスキーマ
+DocumentDB などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。
+
+1.	データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory サービスはスキーマとしてこの構造を優先します。この場合、行に列の値が含まれていないと、null 値が指定されます。
+2.	データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
+
+したがって、スキーマのないデータ ソースでは、**structure** プロパティを使用してデータの構造を指定するのがベスト プラクティスです。
+
 ## Azure DocumentDB のコピー アクティビティの type プロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
@@ -411,7 +419,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 	**回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
  
-3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割]( https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
 
 	**回答:** いいえ。 
 4. **質問:** 1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
@@ -419,4 +427,4 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
      
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0302_2016-->

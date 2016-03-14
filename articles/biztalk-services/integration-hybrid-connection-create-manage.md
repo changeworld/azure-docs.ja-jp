@@ -4,8 +4,8 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
-	editor="cgronlun"/>
+	manager="erikre" 
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
@@ -33,7 +33,7 @@
 
 ハイブリッド接続は、Azure ポータルで Web Apps と BizTalk Services の**いずれか**を使用して作成できます。
 
-**Web サイトを使用してハイブリッド接続を作成する**には、「[Azure Web アプリをオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md)」を参照してください。
+**Web サイトを使用してハイブリッド接続を作成する**には、「[Azure Web アプリをオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。
 
 **BizTalk Services でハイブリッド接続を作成する**には、以下の手順に従います。
 
@@ -61,9 +61,9 @@ Port | オンプレミス リソースのポート番号を入力します。た
 
 ## <a name="LinkWebSite"></a>Azure Web Apps または Azure Mobile Apps の関連付け
 
-既存のハイブリッド接続に Azure Web Apps を関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。「[Azure Web アプリをオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md)」を参照してください。
+既存のハイブリッド接続に Azure Web Apps を関連付けるには、ハイブリッド接続ブレードで **[既存のハイブリッド接続を使用する]** を選択します。「[Azure Web アプリをオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。
 
-既存のハイブリッド接続に Azure Mobile Apps を関連付けるには、モバイル サービスの変更時または作成時に、**[ハイブリッド接続の追加]** を選択します。「[Connect to an on-premises SQL Server from Azure Mobile Services and Hybrid Connections (ハイブリッド接続を使用した Azure Mobile Services から内部設置型 SQL Server への接続)](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+既存のハイブリッド接続に Azure Mobile Apps を関連付けるには、モバイル サービスの変更時または作成時に、**[ハイブリッド接続の追加]** を選択します。「[Connect to an on-premises SQL Server from Azure Mobile Services and Hybrid Connections (ハイブリッド接続を使用した Azure Mobile Services から内部設置型 SQL Server への接続)](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
 
 ## <a name="InstallHCM"></a>オンプレミスへの Hybrid Connection Manager のインストール
@@ -71,7 +71,7 @@ Port | オンプレミス リソースのポート番号を入力します。た
 ハイブリッド接続の作成後、オンプレミス リソースに Hybrid Connection Manager をインストールします。Hybrid Connection Manager は Azure Web Apps または BizTalk サービスからダウンロードできます。BizTalk Services の手順は以下のとおりです。
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk サービスを選択します。 
+2. 左側のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. タスク バーで **[オンプレミス設定]** をクリックします。![On-Premises Setup][HCOnPremSetup]
 5. **[インストールと構成]** を選択して、オンプレミスのシステムで Hybrid Connection Manager を実行またはダウンロードします。 
@@ -85,7 +85,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 3. On the on-premises resource, install the Hybrid Connection Manager from the MSI file. 
 4. Using Windows PowerShell, type: 
 > Add-HybridConnection -ConnectionString “*Your On-Premises Connection String that you copied*” 
--->
+--> 
 
 #### その他
 - ハイブリッド接続では、以下のオペレーティング システムにインストールされているオンプレミス リソースがサポートされます。
@@ -119,7 +119,9 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 	**[接続の管理]** でアプリケーション接続文字列と内部設置型接続文字列が一覧表示されます。接続文字列をコピーすることも、接続文字列で使用するアクセス キーを再生成することもできます。
 
-	**[再生成]** を選択すると、接続文字列内で使用される共有アクセス キーが変更されます。次の操作を実行します。 - Azure クラシック ポータルで、Azure アプリケーションの **[キーの同期]** を選択します。 - **[オンプレミス設定]** を再実行します。[オンプレミス設定] を再実行すると、更新されたプライマリ接続文字列がオンプレミス リソースによって使用されるように自動的に構成されます。
+	**[再生成]** を選択すると、接続文字列内で使用される共有アクセス キーが変更されます。以下の手順を実行します。
+	- Azure クラシック ポータルで、Azure アプリケーションの **[キーの同期]** を選択します。
+	- **[オンプレミス設定]** を再実行します。[オンプレミス設定] を再実行すると、更新されたプライマリ接続文字列がオンプレミス リソースによって使用されるように自動的に構成されます。
 
 
 #### ハイブリッド接続で使用するオンプレミス リソースを管理するグループ ポリシーの使用
@@ -138,7 +140,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 ## 次へ
 
-[Azure Web Apps をオンプレミス リソースに接続する](../web-sites-hybrid-connection-get-started.md) [Azure Web Apps からオンプレミス SQL Server に接続する](../web-sites-hybrid-connection-connect-on-premises-sql-server.md) [Azure Mobile Services とハイブリッド接続](../mobile-services-dotnet-backend-hybrid-connections-get-started.md) [ハイブリッド接続の概要](integration-hybrid-connection-overview.md)
+[Azure Web Apps をオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md) [Azure Web Apps からオンプレミス SQL Server に接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md) [Azure Mobile Services とハイブリッド接続](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md) [ハイブリッド接続の概要](integration-hybrid-connection-overview.md)
 
 
 ## 関連項目
@@ -150,4 +152,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0302_2016-->

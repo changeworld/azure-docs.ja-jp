@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/28/2016" 
+ 	ms.date="03/01/2016" 
 	ms.author="juliako"/>
 
 #REST API を使用したオンデマンド コンテンツ配信の概要
@@ -81,12 +81,9 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
 1. アクセス トークンを取得します。 
-2. Media Services URI に接続します。 
-	
-	>[AZURE.NOTE]
-	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。その新しい URI に再度コールする必要があります。
-	> 
-	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
+2. Media Services URI に接続します。  
+
+	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されることに注意してください。その新しい URI に再度コールする必要があります。ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 3. 新しい URL に後続の API 呼び出しを投稿します。 
 	
 	たとえば、接続しようとした後に次のようなメッセージが表示されます。
@@ -368,7 +365,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 	
 	{"Name":"NewUploadPolicy", "DurationInMinutes":"440", "Permissions":"2"} 
 
-**HTTP 要求**
+**HTTP 応答**
 
 	If successful, the following response is returned:
 	
@@ -673,7 +670,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
 - コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 
 
-次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Media Encoder Standard ** を使用して一連のアダプティブ ビットレート mp4 にトランスコードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
+次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。このタスクは、**Media Encoder Standard** を使用して、mezzanine ファイルを一連のアダプティブ ビットレート NP4 にトランスコードするよう指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
 
 ### メディア プロセッサを取得する
 
@@ -726,7 +723,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブとそれに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。Media Services SDK はバッチ処理を使用します。ただし、このトピックのコード例では、読みやすくするためにタスクをインラインで定義します。バッチ処理の詳細については、[Open Data Protocol (OData) のバッチ処理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしているすべての[タスク プリセット](https://msdn.microsoft.com/ja-JP/library/mt269960)の一覧が含まれています。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Media Encoder Standard プロセッサがサポートしているすべてのタスク プリセットの一覧については、「[Task Presets for MES (Media Encoder Standard)](http://msdn.microsoft.com/library/mt269960)」をご覧ください。
 
 **HTTP 要求**
 	
@@ -1201,13 +1198,9 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
 このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
-##その他のリソース
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動的パッケージ化機能とモバイル デバイス</a>
-
 
 
 <!-- URLs. -->
   [Azure クラシック ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0302_2016-->

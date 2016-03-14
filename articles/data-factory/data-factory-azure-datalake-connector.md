@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="02/25/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
@@ -417,9 +417,8 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
-| 非 AAD ユーザー (@hotmail.com、@live.com など) | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースが Data Factory のテナントとは異なる[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)にある。 | 12 時間 |
-| AAD ユーザーと OAuth ベースのソースがData Factory のテナントと同じテナントにある。 | 14 日 |
+| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など) | 12 時間 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント | | スライスの最後の実行から 14 日後。<p>OAuth ベースのリンクされたサービスに基づくスライスを、少なくとも 14 日に 1 回実行する場合は 90 日後。</p> |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -448,22 +447,22 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
         }
     }
 
-コードで使用する Data Factory クラスに関する詳細は、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」のトピックを参照してください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
+コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
  
 
 ## Azure Data Lake データセットの type プロパティ
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
 
-**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。**AzureDataLakeStore** 型のデータセットの typeProperties セクションには次のプロパティがあります。
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。**AzureDataLakeStore** 型のデータセットの typeProperties セクションには、次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
-| fileName | <p>Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。</p><p>出力データセットに fileName が指定されていない場合、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) という形式の名前でファイルが生成されます。 | いいえ |
+| fileName | <p>Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。</p><p>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
 | BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ |
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
 前述のように、時系列データの動的な folderPath と fileName を指定するとき、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用できます。
@@ -587,7 +586,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、sources と sinks の種類によって異なります。
 
-**AzureDataLakeStoreSource** の **typeProperties** セクションでは次のプロパティがサポートされます。
+**AzureDataLakeStoreSource** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -595,11 +594,11 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 
 
-**AzureDataLakeStoreSink** の **typeProperties** セクションでは次のプロパティがサポートされます。
+**AzureDataLakeStoreSink** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。</p> | いいえ |
+| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外の場合は、自動生成されたファイル名になります。</p> | いいえ |
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -608,4 +607,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

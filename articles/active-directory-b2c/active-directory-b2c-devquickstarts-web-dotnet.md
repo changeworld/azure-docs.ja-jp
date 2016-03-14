@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="02/19/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: .NET Web アプリを構築する
@@ -323,7 +323,7 @@ ID プロバイダーを B2C ディレクトリに追加した後、3 つの各�
 
 いろいろなポリシーを試して、サンプル アプリへの影響を確認できます。ID を追加または削除したり、アプリケーションの要求を操作したり、サインアップ属性を変更してみます。ポリシー、認証要求、および OWIN すべてが互いにどのように結び付いているかを理解できるまで、いろいろ試してみてください。
 
-参考のため、完全なサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。Github から複製することもできます。
+参考のため、完全なサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。GitHub から複製することもできます。
 
 ```
 git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -341,4 +341,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0302_2016-->

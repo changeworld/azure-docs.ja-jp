@@ -8,12 +8,12 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-mobile"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="03/02/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用の管理されたクライアントの使用方法
@@ -54,8 +54,7 @@ Mobile Apps バックエンドに新しいテーブルを作成する方法に�
 
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される `MobileServiceClient` オブジェクトを作成します。
 
-	MobileServiceClient client = new MobileServiceClient(
-	"MOBILE_APP_URL");
+	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
 
 上記のコードで、`MOBILE_APP_URL` を、[Azure ポータル](https://portal.azure.com/)のモバイル アプリ バックエンド用のブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。
 
@@ -258,12 +257,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような Json.NET を利用できます。
-	JObject jo = new JObject();
-	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-	jo.Add("Text", "Hello World");
-	jo.Add("Complete", false);
-	var inserted = await table.UpdateAsync(jo);
+型指定されていないデータを挿入するには、次のような Json.NET を利用できます。 JObject jo = new JObject(); jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D"); jo.Add("Text", "Hello World"); jo.Add("Complete", false); var inserted = await table.UpdateAsync(jo);
 
 更新を行うときは ID を指定する必要があることに注意してください。バックエンドはそれによって更新するインスタンスを識別します。ID は、`InsertAsync` の呼び出しの結果から取得できます。"Id" の値を指定しないで項目を更新しようとすると、`ArgumentException` が発生します。
 
@@ -583,7 +577,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 ## <a name="package-sid"></a>方法: Windows ストアのパッケージ SID を取得する
 
-Windows アプリでは、プッシュ通知と特定の認証モードを有効にするにはパッケージ SID が必要です。この値を取得するには:
+Windows アプリの場合、プッシュ通知を有効にするにはパッケージ SID が必要です。この値を取得するには:
 
 1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインし、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
@@ -676,7 +670,7 @@ In the most simplified form, you can use the client flow as shown in this snippe
 
 ####Single sign-in using Microsoft Account with the Live SDK
 
-To be able to authenticate users, you must register your app at the Microsoft account Developer Center. You must then connect this registration with your Mobile App backend. Complete the steps in [Register your app to use a Microsoft account login](mobile-services-how-to-register-microsoft-authentication.md) to create a Microsoft account registration and connect it to your Mobile App backend. If you have both Windows Store and Windows Phone 8/Silverlight versions of your app, register the Windows Store version first.
+To be able to authenticate users, you must register your app at the Microsoft account Developer Center. You must then connect this registration with your Mobile App backend. Complete the steps in [Register your app to use a Microsoft account login](app-service-mobile-how-to-configure-microsoft-authentication.md) to create a Microsoft account registration and connect it to your Mobile App backend. If you have both Windows Store and Windows Phone 8/Silverlight versions of your app, register the Windows Store version first.
 
 The following code authenticates using Live SDK and uses the returned token to sign-in to your Mobile App backend.
 
@@ -844,7 +838,7 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 
 
 <!-- URLs. -->
-[Add authentication to your app]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
+[Add authentication to your app]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
@@ -854,8 +848,6 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md/#Commands_to_manage_mobile_services
-[Optimistic Concurrency Tutorial]: mobile-services-windows-store-dotnet-handle-database-conflicts.md
 [MobileServiceClient]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 [IncludeTotalCount]: http://msdn.microsoft.com/library/windowsazure/dn250560.aspx
 [Skip]: http://msdn.microsoft.com/library/windowsazure/dn250573.aspx
@@ -865,4 +857,4 @@ Mobile Apps クライアント ライブラリは、Json.NET を使用して、�
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->

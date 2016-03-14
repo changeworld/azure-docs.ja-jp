@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="11/14/2015"
+	ms.date="02/19/2016"
 	ms.author="brandwe"/>
 
 
@@ -23,7 +23,10 @@
 
 Azure AD を使用すると、数行のコードを追加するだけで、Web アプリの ID 管理を外部委託し、シングル サインインおよびサインアウトを提供することが、簡単に実現できます。Java Web アプリでは、コミュニティ主導型の ADAL4J の Microsoft 実装を使用することで、これを実現できます。
 
-  ここでは、Azure AD を ID プロバイダーとして使用してユーザーをアプリにサインインする機能、ユーザーに関する一部の情報を表示する機能、アプリからユーザーをサインアウトする機能を、ADAL4J を使用して実装します。
+  ここでは、ADAL4J を使用して次のことを行います。
+- ID プロバイダーとして Azure AD を使用して、ユーザーをアプリにサインインします。
+- ユーザーについての情報を表示します。
+- ユーザーをアプリからサインアウトします。
 
 これを行うには、次の手順を実行する必要があります。
 
@@ -265,4 +268,4 @@ public class PublicClient {
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0302_2016-->

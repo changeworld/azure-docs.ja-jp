@@ -1,36 +1,37 @@
-## Create a backup vault for a VM
+## VM 用のバックアップ コンテナーの作成
 
-A backup vault is an entity that stores all the backups and recovery points that have been created over time. The backup vault also contains the backup policies that will be applied to the virtual machines being backed up.
+バックアップ コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。バックアップ コンテナーには、バックアップ対象の仮想マシンに適用されるバックアップ ポリシーも含まれています。
 
-This image shows the relationships between the various Azure Backup entities:
-![Azure Backup entities and relationships](./media/backup-create-vault-for-vms/vault-policy-vm.png)
+次の図は、さまざまな Azure Backup エンティティの関係を示しています。![Azure Backup のエンティティとの関係](./media/backup-create-vault-for-vms/vault-policy-vm.png)
 
-To create a backup vault:
+バックアップ資格情報コンテナーを作成するには:
 
-1. Sign in to the [Azure portal](http://manage.windowsazure.com/).
+1. [Azure ポータル](http://manage.windowsazure.com/)にサインインします。
 
-2. In the Azure portal click **New** > **Hybrid Integration** > **Backup**. When you click **Backup**, you will automatically switch to the classic portal (shown after the Note).
+2. Azure ポータルで、**[新規]**、**[ハイブリッド統合]**、**[バックアップ]** の順にクリックします。**[バックアップ]** をクリックすると、クラシック ポータルに自動的に切り替わります (「注」の後の図を参照)。
 
-    ![Ibiza portal](./media/backup-create-vault-for-vms/Ibiza-portal-backup01.png)
+    ![Ibiza ポータル](./media/backup-create-vault-for-vms/Ibiza-portal-backup01.png)
 
-    >[AZURE.NOTE] If your subscription was last used in the classic portal, then your subscription may open in the classic portal. In this event, to create a backup vault, click **New** > **Data Services** > **Recovery Services** > **Backup Vault** > **Quick Create** (see the image below).
+    >[AZURE.NOTE] サブスクリプションがクラシック ポータルで最後に使用されていた場合、クラシック ポータルでそのサブスクリプションが開いていることがあります。この場合、バックアップ コンテナーを作成するには、**[新規]**、**[Data Services]**、**[Recovery Services]**、**[バックアップ コンテナー]**、**[簡易作成]** の順にクリックします (次の図を参照)。
 
-    ![Create backup vault](./media/backup-create-vault-for-vms/backup_vaultcreate.png)
+    ![バックアップ資格情報コンテナーの作成](./media/backup-create-vault-for-vms/backup_vaultcreate.png)
 
-3. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens.
+3. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は、Azure サブスクリプションで一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
-4. In **Region**, select the geographic region for the vault. The vault must be in the same region as the virtual machines that you want to protect. If you have virtual machines in multiple regions, you must create a backup vault in each region. There is no need to specify storage accounts to store the backup data--the backup vault and the Azure Backup service handle this automatically.
+4. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。資格情報コンテナーは、保護する仮想マシンと同じリージョンにある必要があります。仮想マシンが複数のリージョンにある場合は、リージョンごとにバックアップ コンテナーを作成する必要があります。バックアップ データを格納するストレージ アカウントを指定する必要はありません。バックアップ資格情報コンテナーと Azure Backup サービスはこれを自動的に処理します。
 
-5. In **Subscription** select the subscription you want to associate with the backup vault. There will be multiple choices only if your organizational account is associated with multiple Azure subscriptions.
+5. **[サブスクリプション]** で、バックアップ コンテナーに関連付けるサブスクリプションを選択します。組織アカウントが複数の Azure サブスクリプションに関連付けられている場合にのみ、複数の選択肢が表示されます。
 
-5. Click **Create Vault**. It can take a while for the backup vault to be created. Monitor the status notifications at the bottom of the portal.
+5. **[資格情報コンテナーの作成]** をクリックします。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。ポータルの下部にある状態通知を監視します。
 
-    ![Create vault toast notification](./media/backup-create-vault-for-vms/creating-vault.png)
+    ![資格情報コンテナーのトースト通知の作成](./media/backup-create-vault-for-vms/creating-vault.png)
 
-6. A message will confirm that the vault has been successfully created. It will be listed on the **recovery services** page as **Active**. Make sure to choose the appropriate storage redundancy option right after the vault has been created. Read more about [setting the storage redundancy option in the backup vault](backup-configure-vault.md#azure-backup---storage-redundancy-options).
+6. コンテナーが正常に作成されたことを確認するメッセージが表示されています。**[復旧サービス]** ページに、コンテナーが **[アクティブ]** と表示されます。コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#azure-backup---storage-redundancy-options)」をご覧ください。
 
-    ![List of backup vaults](./media/backup-create-vault-for-vms/backup_vaultslist.png)
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-create-vault-for-vms/backup_vaultslist.png)
 
-7. Click the backup vault to go to the **Quick Start** page, where the instructions for backing up Azure virtual machines are shown.
+7. バックアップ資格情報コンテナーをクリックして **[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。
 
-    ![Virtual machine backup instructions on the Dashboard page](./media/backup-create-vault-for-vms/vmbackup-instructions.png)
+    ![ダッシュボード ページの仮想マシンのバックアップ手順](./media/backup-create-vault-for-vms/vmbackup-instructions.png)
+
+<!---HONumber=AcomDC_0302_2016-->

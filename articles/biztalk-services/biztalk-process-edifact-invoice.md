@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="msftman"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="12/02/2015"
-   ms.author="Deonhe"/>
+   ms.date="02/29/2016"
+   ms.author="deonhe"/>
 
 # チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
 BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を構成し、デプロイできます。このチュートリアルでは、EDIFACT 契約を作成し、取引先間で請求書を交換する方法について説明します。このチュートリアルは、EDIFACT メッセージを交換している Northwind と Contoso という 2 社の取引先を対象とするエンド ツー エンドのビジネス ソリューションに基づいて作成されています。
@@ -46,7 +46,7 @@ BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を�
 
 ## 前提条件
 
-*   Service Bus 名前空間が必要です。名前空間を作成する手順については、[Service Bus サービスの名前空間を作成または変更する方法](https://msdn.microsoft.com/library/hh690931.aspx)に関するページを参照してください。このチュートリアルでは、「**edifactbts**」という名前の Service Bus 名前空間が既にプロビジョニングされているものと想定しています。
+*   Service Bus 名前空間が必要です。名前空間を作成する手順については、[Service Bus サービスの名前空間を作成または変更する方法](https://msdn.microsoft.com/library/azure/hh674478.aspx)に関するページを参照してください。このチュートリアルでは、「**edifactbts**」という名前の Service Bus 名前空間が既にプロビジョニングされているものと想定しています。
 
 *   BizTalk Services サブスクリプションが必要です。手順については、[Azure クラシック ポータルを使用して BizTalk サービスを作成する方法](http://go.microsoft.com/fwlink/?LinkID=302280)に関するページを参照してください。このチュートリアルでは、「**contosowabs**」という名前の BizTalk Services サブスクリプションがあるものと想定しています。
 
@@ -113,7 +113,7 @@ Contoso と Northwind の間の取引先契約を作成します。取引先契�
     3.  **[プロトコル]** タブの **[スキーマ]** セクションで、**EFACT\_D93A\_INVOIC.xsd** スキーマをアップロードします。このスキーマは、サンプル パッケージと共に提供されています。
 
         ![][4]  
-    4.  **[トランスポート]** タブで、Service Bus キューの詳細を指定します。送信側の契約については、**northwindreceive** キューを使用して EDIFACT 請求書を Northwind に送信します。処理中にエラーが発生し、保留になったメッセージがあれば、**suspended** キューにルーティングされます。これらのキューは「[手順 1. Service Bus キューを作成する](#BKMK_Queue)」で作成したキューです。
+    4.  **[トランスポート]** タブで、Service Bus キューの詳細を指定します。送信側の契約については、**northwindreceive** キューを使用して EDIFACT 請求書を Northwind に送信します。処理中にエラーが発生し、保留になったメッセージがあれば、**suspended** キューにルーティングされます。これらのキューは、(このトピックの)「**手順 1. Service Bus キューを作成する**」で作成したものです。
 
         ![][5]
 
@@ -129,7 +129,8 @@ Contoso と Northwind の間の取引先契約を作成します。取引先契�
 
     4.  **[ルート]** タブで、Northwind から Contoso にのみ受信確認を送信するためのフィルターを作成します。**[ルートの設定]** で、**[追加]** をクリックし、ルーティング フィルターを作成します。
 
-        ![][6] 1.**[ルール名]**、**[ルート ルール]**、**[ルーティング先]** に、図に示すように値を入力します。
+        ![][6]
+        1.  **[ルール名]**、**[ルート ルール]**、**[ルーティング先]** に、図に示すように値を入力します。
 
         2.  **[保存]** をクリックします。
 
@@ -312,4 +313,4 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0302_2016-->
