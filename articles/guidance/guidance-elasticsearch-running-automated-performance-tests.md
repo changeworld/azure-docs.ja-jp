@@ -124,4 +124,4 @@ JMeter サーバー コンピューターに次のテスト スクリプト パ�
 [Creating a Performance Testing Environment for Elasticsearch on Azure (Azure で Elasticsearch のパフォーマンス テスト環境を構築する)]: guidance-elasticsearch-creating-performance-testing-environment.md
 [Deploying a JMeter JUnit Sampler for Testing Elasticsearch Performance (Elasticsearch パフォーマンスをテストするために JMeter JUnit サンプラーをデプロイする)]: guidance-elasticsearch-deploying-jmeter-junit-sampler.md
 
-<!-----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0224_2016-->
