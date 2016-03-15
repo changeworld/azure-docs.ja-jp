@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Visual Studio を使用した初めての Azure Data Factory パイプラインの作成"
+	pageTitle="最初の Data Factory の作成 (Visual Studio) | Microsoft Azure"
 	description="このチュートリアルでは、Visual Studio を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 	services="data-factory"
 	documentationCenter=""
@@ -16,13 +16,13 @@
 	ms.date="02/16/2016"
 	ms.author="spelluru"/>
 
-# Visual Studio を使用した初めての Azure Data Factory パイプラインの作成
+# Microsoft Visual Studio を使用した Azure の初めての Data Factory の作成
 > [AZURE.SELECTOR]
 - [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
 - [Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
-- [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
+- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 
 
 この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成する方法について説明します。
@@ -256,6 +256,7 @@
 
 	アクティビティ JSON では、**linkedServiceName** に指定されたコンピューティング **HDInsightOnDemandLinkedService** で Hive スクリプトが実行されるように指定します。
 
+	> [ACOM.NOTE] 上の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。 
 3. **HiveActivity1.json** ファイルを保存します。
 
 ### 依存関係として partitionweblogs.hql と input.log を追加する 
@@ -449,4 +450,4 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

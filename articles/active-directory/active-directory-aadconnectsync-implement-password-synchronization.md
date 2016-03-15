@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/12/2016"
+	ms.date="03/07/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -71,7 +71,7 @@ Azure AD でこのサービスを有効にする場合、シングル サイン�
 
 **パスワードの有効期限のポリシー**
 
-ユーザーがパスワード同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。つまり、オンプレミス環境でユーザーのパスワードの期限が切れても、クラウド サービスにはその期限切れパスワードを使用して引き続きログインできる可能性があります。
+ユーザーがパスワード同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。つまり、オンプレミス環境でユーザーのパスワードの期限が切れても、クラウド サービスには次のパスワード同期サイクル後に新しいパスワードを使用して引き続きログインできます。
 
 クラウドのパスワードは、次にユーザーがオンプレミス環境でパスワードを変更したときに更新されます。
 
@@ -159,4 +159,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

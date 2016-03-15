@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/07/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での開発者ポータルのカスタマイズ
@@ -99,4 +99,4 @@
 [bootstrap]: http://getbootstrap.com/
 [LESS 変数]: http://getbootstrap.com/css/
 
-<!----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -12,17 +12,17 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="02/22/2016"
+	ms.topic="hero-article" 
+	ms.date="03/01/2016"
 	ms.author="klam"/>
 
 #Logic Apps とは
 
 | クイック リファレンス |
 | --------------- |
-| [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
+| [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
 | [Logic Apps のマネージ API 関連ドキュメント](https://azure.microsoft.com/documentation/articles/apis-list) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps) |
 
 Azure App Service は、Web アプリ、モバイル アプリ、統合アプリの作成を容易にする、開発者向けの完全に管理された PaaS (サービスとしてのプラットフォーム) です。Logic Apps はこのスイートの一部であり、技術系ユーザーや開発者が、使いやすいビジュアル デザイナーを使用してビジネス プロセスの実行とワークフローを自動化できます。
 
@@ -30,9 +30,14 @@ Azure App Service は、Web アプリ、モバイル アプリ、統合アプリ
 
 ![フロー アプリ デザイナー](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
 
-SQL DB の新しいレコードを自動的にレプリケートし、フロント デスクにメールを送信できます。また、ネガティブなツイートを自動的に検出し、スラック チャネルに送信することもできます。
+既に説明したように、Logic Apps を使うと、ビジネス プロセスを自動化できます。いくつかの例を次に示します。
+ 
+* SQL DB の新しいレコードを自動的にレプリケートし、フロント デスクにメールを送信できます。   
+* ネガティブなツイートを自動的に検出し、スラック チャネルに送信できます。
 
-##なぜ Logic Apps か
+こうしたシナリオはすべてビジュアル デザイナーで、コードを 1 行も記述することなく構成できます。[ロジック アプリの構築を今すぐ開始][create]しましょう。
+
+## なぜ Logic Apps か
 
 開発者は Logic Apps を使用することで、トリガーで開始され、一連のステップを実行するワークフローを設計できます。各ステップでは、認証とベスト プラクティス (チェックポイント処理や永続的な実行など) に確実に対処しながら、API を呼び出します。
 
@@ -69,9 +74,9 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [biztalk]: app-service-logic-what-are-biztalk-api-apps.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
 [create]: app-service-logic-create-a-logic-app.md
-[managedapis]: app-service-logic-connectors-list.md
+[managedapis]: ../connectors/apis-list.md
 [tpm]: app-service-logic-create-a-trading-partner-agreement.md
 [rules]: app-service-logic-use-biztalk-rules.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

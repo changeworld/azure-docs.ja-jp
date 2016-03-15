@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/18/2016"
+	ms.date="03/09/2016"
 	ms.author="heidist"/>
 
 # Azure ポータルでの Azure Search サービスの作成
@@ -25,7 +25,7 @@ Azure Search は、Free (Shared) から Basic、Standard までの価格レベ�
 
 ## Azure Search を無料でサブスクリプションに追加する
 
-Azure Search は、管理者が共有サービスを選択することによって無料で既存の Azure サブスクリプションに追加できます。[無料試用版サブスクリプション](../../includes/free-trial-note.md)にサインアップしてご検討ください。
+Azure Search は、管理者が共有サービスを選択することによって無料で既存の Azure サブスクリプションに追加できます。[Azure 無料試用版サブスクリプション](../../includes/free-trial-note.md)にサインアップしてご検討ください。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
@@ -56,27 +56,27 @@ Azure Search は、管理者が共有サービスを選択することによっ�
 ジャンプバーで、通知を確認します。サービスが使用できるようになると、通知が表示されます。
 
 <a id="sub-3"></a>
-## Standard レベルの Search サービスを追加して専用リソースを手に入れる
+## Basic または Standard レベルの Search サービスを追加して専用リソースを手に入れる
 
-多くのお客様は、まず Free サービスから始め、ワークロードの増大に合わせて Standard レベルに切り替えます。Standard レベルは、Azure データ センター内の本人だけが使用できる専用リソースを提供します。
+多くのお客様は、まず Free サービスから始め、ワークロードの増大に合わせて Basic または Standard レベルに切り替えます。Basic および Standard レベルは、Azure データ センター内の本人だけが使用できる専用リソースを提供します。
 
-Azure Search の操作には、ストレージとサービス レプリカの両方が必要です。Standard レベルでは、リソースを追加するオプションがない Free サービスとは異なり、スケールアップしてストレージまたはクエリのサポートを追加することができます。自分のワークロードにとってより重要なリソースを増やせます。
+Azure Search の操作には、ストレージとサービス レプリカの両方が必要です。Standard レベルでは、リソースを追加するオプションがない Free サービスとは異なり、スケールアップしてストレージまたはクエリのサポートを追加することができます。自分のワークロードにとってより重要なリソースを増やせます。Basic では、スケールアップはレプリカについてのみ可能で、また、最大 3 つまでという制限があります。
 
-Standard レベルを使うには、その価格レベルで新しい Search サービスを作成する必要があります。この記事の前の手順を繰り返せば、新しい Azure Search サービスを作成できます。専用リソースの設定には時間がかかる場合があります (最大 15 分以上)。
+Basic または Standard レベルを使うには、その価格レベルで新しい Search サービスを作成する必要があります。この記事の前の手順を繰り返せば、新しい Azure Search サービスを作成できます。専用リソースの設定には時間がかかる場合があります (最大 15 分以上)。
 
-Free バージョンのインプレース アップグレードはありません。スケールの拡張を可能とする Standard に切り替えるには、新しいサービスが必要です。検索アプリケーションで使用するインデックスとドキュメントをリロードする必要があります。
+Free バージョンのインプレース アップグレードはありません。スケールの拡張を可能とするレベルに切り替えるには、新しいサービスが必要です。検索アプリケーションで使用するインデックスとドキュメントをリロードする必要があります。
 
-Standard レベルの Azure Search サービスは 1 つのレプリカとパーティションから開始されますが、リソースの上位レベルで簡単に変更できます。
+Basic または Standard レベルの Azure Search サービスは 1 つのレプリカとパーティションから開始されますが、リソースの上位レベルで簡単に変更できます。
 
 1.	サービスを作成してから、サービス ダッシュボードに戻ります。
 
 2.	[**スケール**] タイルをクリックします。
 
-3.	スライダーを使用して、レプリカ、パーティション、または両方を追加します。
+3.	スライダーを使用して、Standard レベルのレプリカ、パーティション、または両方を追加します。Basic では、最大 3 つまでレプリカを増やすことができます。
 
 追加のレプリカおよびパーティションは、検索単位で課金されます。リソースの追加に応じて、特定のリソース構成に必要な検索単位の合計数がページに表示されます。
 
-「[価格の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカの組み合わせの選び方については、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
+「[価格の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカの組み合わせの選び方については、「[容量計画](search-capacity-planning.md)」を参照してください。
 
 <a id="sub-2"></a>
 ## Azure Search サービスのサービス名と API キーの取得
@@ -107,13 +107,9 @@ Azure Search 構成の最後の手順では、サービスがクライアント 
 
 - [Azure ポータルで Search エクスプローラーを使用して Azure Search インデックスに対してクエリを実行する](search-explorer.md)
 
-- [.NET での Azure Search の使用](search-get-started-dotnet.md)
-
 - [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)
 
 - [Microsoft Azure で検索サービスを管理する](search-manage.md)
-
-
 
 
 <!--Anchors-->
@@ -127,4 +123,4 @@ Azure Search 構成の最後の手順では、サービスがクライアント 
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

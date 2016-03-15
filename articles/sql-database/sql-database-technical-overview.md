@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="12/22/2015"
+   ms.date="03/08/2016"
    ms.author="shkurhek"/>
 
 # SQL Database とは SQL Database の概要、技術の詳細、DTU の説明
@@ -61,4 +61,6 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!---HONumber=AcomDC_0302_2016-->
+- 「[All topics for Azure sql-database service (Azure SQL Database サービスに関するすべてのトピック)](sql-database-index-all-articles.md)」のタイトルと説明のインデックスをご覧ください。
+
+<!---HONumber=AcomDC_0309_2016-->

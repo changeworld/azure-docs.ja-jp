@@ -4,7 +4,7 @@
 	services="redis-cache,app-service" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -19,8 +19,8 @@
 # Azure Redis Cache の使用方法
 
 > [AZURE.SELECTOR]
-- [.Net](cache-dotnet-how-to-use-azure-redis-cache.md)
-- [Node.js](cache-nodejs-get-started.md)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [Node.JS](cache-nodejs-get-started.md)
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
 
@@ -47,7 +47,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 <a name="create-cache"></a>
 ## キャッシュの作成
 
-キャッシュを作成するには、まず [Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+キャッシュを作成するには、まず [Azure ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
 >[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、ARM テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
 >
@@ -57,7 +57,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 ![新しいキャッシュ][NewCacheMenu]
 
->[AZURE.NOTE] Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
+>[AZURE.NOTE] Azure アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
@@ -98,7 +98,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 **[オンライン検索]** ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
->[AZURE.NOTE]厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**\[StackExchange.Redis\]** を選択します。
+>[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
 
 ![StackExchange.Redis NuGet package][StackExchangeNuget]
 
@@ -314,8 +314,8 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
-[Azure プレビュー ポータル]: https://portal.azure.com/
+[Cache の価格詳細]: http://www.windowsazure.com/pricing/details/cache/
+[Azure ポータル]: https://portal.azure.com/
 
 [Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
@@ -336,4 +336,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

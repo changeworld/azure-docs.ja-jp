@@ -14,13 +14,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse の作成
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-get-started-provision.md)
+- [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
@@ -61,17 +61,17 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
   > + 複数のデータベースを、それぞれのパフォーマンスに影響を与えずにホストできます。
   > + 名前にはカタカナの *"サーバー"* を使用しています。SQL **サーバー**が Azure の論理サーバーであるのに対し、SQL **Server** は Microsoft のオンプレミス データベース製品です。
 
-1. **[サーバー]**、**[新しいサーバーの作成]** をクリックします。サーバーの料金は発生しません。使用する V12 論理 SQL サーバーが既にある場合は、既存のサーバーを選択し、次の手順に進みます。 
+1. **[サーバー]**、**[新しいサーバーの作成]** をクリックします。サーバーの料金は発生しません。使用する V12 論理 SQL サーバーが既にある場合は、既存のサーバーを選択し、次の手順に進みます。
 
     ![新しいサーバーの作成](./media/sql-data-warehouse-get-started-provision/create-server.png)
 
 3. **新しいサーバー**の情報を入力します。
-    
+
 	- **[サーバー名]**: 論理サーバーの名前を入力します。これは、地理的な場所ごとに一意です。
 	- **[サーバー管理者名]**: サーバーの管理者アカウントのユーザー名を入力します。
-	- **[パスワード]**: サーバーの管理者パスワードを入力します。 
+	- **[パスワード]**: サーバーの管理者パスワードを入力します。
 	- **[場所]**: サーバーの地理的な場所を選択します。データの転送時間を短縮するために、このデータベースがアクセスする他のデータ リソースと地理的に近い場所にサーバーを配置することをお勧めします。
-	- **[V12 サーバーの作成]**: SQL Data Warehouse の場合は常に [はい] を選択してください。 
+	- **[V12 サーバーの作成]**: SQL Data Warehouse の場合は常に [はい] を選択してください。
 	- **[Azure サービスにサーバーへのアクセスを許可する]**: SQL Data Warehouse の場合は常にオンになります。
 
     >[AZURE.NOTE] サーバー名、サーバー管理者名、パスワードは、必ずどこかに記録してください。この情報は、サーバーにログオンするときに必要になります。
@@ -83,23 +83,23 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 ## 手順 3: データベースを構成して作成する
 
 論理 SQL サーバーを選択したら、データベースの作成に着手します。
- 
-2. **[SQL Data Warehouse]** ブレードで、残りのフィールドに必要事項を入力します。 
+
+2. **[SQL Data Warehouse]** ブレードで、残りのフィールドに必要事項を入力します。
 
     ![データベースを作成する](./media/sql-data-warehouse-get-started-provision/create-database.png)
-    
-    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。データベースのパフォーマンス レベルは、スライダーを左右に動かして調整します。データベースの作成後に調整することもできます。 
+
+    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。データベースのパフォーマンス レベルは、スライダーを左右に動かして調整します。データベースの作成後に調整することもできます。
 
         > [AZURE.NOTE] SQL Data Warehouse では、パフォーマンスを Data Warehouse ユニット (DWU) で測定します。DWU を増やすと、データベース操作に使用できるコンピューティング リソースが SQL Data Warehouse によって増やされます。ワークロードのパフォーマンスと DWU との関係は、ワークロードを実行するうちにわかるようになります。
-        > 
+        >
         > パフォーマンス レベルは、データベースの作成後に迅速かつ簡単に変更できます。たとえば、データベースを使用していない場合は、左にスライダーを移動し、コストを削減します。または、さらにリソースが必要な場合はパフォーマンスを上げます。コストを 0 にするには、データベースを一時停止します。これが、SQL Data Warehouse の拡張性です。
 
     - **[ソースの選択]**: **[ソースの選択]**、**[サンプル]** の順にクリックします。この時点で使用できるサンプル データベースは 1 つだけなので、[サンプル] を選択すると、**[サンプルの選択]** に AdventureWorksDW が自動的に設定されます。
-  
+
         ![サンプルの選択](./media/sql-data-warehouse-get-started-provision/select-source.png)
 
     - **[リソース グループ]**: 既定値を保持できます。リソース グループは、Azure リソースのコレクション管理のサポートを目的としたコンテナーです。[リソース グループ](../azure-portal/resource-group-portal.md)に関する詳細情報を参照してください。
-    
+
     - **[サブスクリプション]**: このデータベースで請求する、サブスクリプションを選択します。
 
 1. **[作成]** をクリックして SQL Data Warehouse データベースを作成します。
@@ -135,4 +135,4 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!-----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

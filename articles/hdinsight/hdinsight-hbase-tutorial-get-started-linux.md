@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/04/2016"
+	ms.date="03/03/2016"
 	ms.author="jgao"/>
 
 
@@ -26,6 +26,8 @@
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
 
 このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ###前提条件
 
@@ -41,14 +43,18 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2FHbase.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
     - **ClusterName**: 作成する HBase クラスターの名前を入力します。
-    - **ClusterStorageAccountName**: 各クラスターには Azure Blob Storage アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。
     - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
-    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。その他のパラメーターは省略可能です。  
+    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。
+     
+    その他のパラメーターは省略可能です。
+    
+    各クラスターには Azure Blob Storage アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。クラスターの既定のストレージ アカウント名は、クラスター名に "store" が追加されたものです。これは、テンプレートの variables セクションでハードコードされます。
+        
 3. **[OK]** をクリックしてパラメーターを保存します。
 4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 5. **[法律条項]** をクリックし、**[作成]** をクリックします。
@@ -250,7 +256,9 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
 
+##クラスターを削除する
 
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## 次のステップ
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
@@ -287,4 +295,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/17/2016"
+	ms.date="03/07/2016"
 	ms.author="nitinme"/>
 
 
@@ -23,6 +23,8 @@
 HDInsight で Apache Spark クラスターを作成し、Spark クラスターで [Jupyter](https://jupyter.org) Notebook を使用して Spark SQL の対話型クエリを実行する方法について説明します。
 
    ![HDInsight で Apache Spark を使用します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark を使用します手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 **前提条件:**
 
@@ -52,7 +54,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
     ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.createcluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
 
-3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ドロップダウン メニューから **[Ubuntu]** を選択して、Spark のバージョンを選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
+3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Spark]** を選択し、**[クラスターのオペレーティング システム]** ドロップダウン メニューから **[Linux]** を選択して、Spark のバージョンを選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
 	![クラスターの名前と種類の入力](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.createcluster.2.png "クラスターの名前と種類の入力")
 
@@ -184,6 +186,10 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 6. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 
 ## <a name="seealso"></a>関連項目
 
@@ -235,4 +241,4 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

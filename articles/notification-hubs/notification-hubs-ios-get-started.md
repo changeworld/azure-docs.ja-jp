@@ -42,7 +42,7 @@
 + iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   >[AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、iOS シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、iOS シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
@@ -56,7 +56,7 @@
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="6">
 <li>
 <p>上部にある <b>[構成]</b> タブをクリックし、Apple 通知設定の <b>[アップロード]</b> ボタンをクリックして、証明書の拇印をアップロードします。次に、前にエクスポートした <b>.p12</b> 証明書と、その証明書のパスワードを選択します。</p>
 <p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。<b>[運用]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合のみ使用します。</p>
@@ -92,7 +92,7 @@
 
    	![][10]
 
-5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを*ハブ名*と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
+5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを *ハブ名* と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
 
 		#ifndef HubInfo_h
 		#define HubInfo_h
@@ -436,7 +436,7 @@
 11. プロジェクトをビルドし、エラーがないことを確認します。
 
 
-> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] (ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
+> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] \(ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべての通知ペイロードが記載されています。
 
@@ -507,4 +507,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

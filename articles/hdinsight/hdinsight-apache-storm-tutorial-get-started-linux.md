@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/12/2016"
+   ms.date="03/07/2016"
    ms.author="larryfr"/>
 
 
@@ -25,6 +25,8 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 > [AZURE.NOTE] この記事の手順では、Linux ベースの HDInsight クラスターを作成します。HDInsight クラスターで Windows ベースの Storm を作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」を参照してください。
 
 ## 開始する前に
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 Apache Storm チュートリアルを正常に完了するには、次の条件を満たす必要があります。
 
@@ -74,7 +76,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 	![[データ ソース] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/datasource.png)
 	
-	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、__[データ ソース]__ ブレードのエントリを理解してください。
+	現在、HDInsight クラスターのデータ ソースとして Azure Storage アカウントを選択できます。次の説明を参照して、__[データ ソース]__ ブレードのエントリを理解してください。
 	
 	- __[選択方法]__: サブスクリプションのストレージ アカウントを参照可能にする場合は、__[すべてのサブスクリプションから]__ を設定します。既存のストレージ アカウントの __[ストレージ名]__ と __[アクセス キー]__ を入力する場合は、__[アクセス キー]__ を設定します。
     
@@ -90,7 +92,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
     
     - __[クラスター AAD ID]__: これを使用して、クラスターが Azure Data Lake Store へのアクセスに使用する Azure Active Directory ID を選択します。
     
-        > [AZURE.NOTE] これはこのドキュメントでは使用しないため、既定の設定のままでかまいません。HDInsight でのこのエントリと Azure Data Lake Store の使用については、「[Create an HDInsight cluster with Data Lake Store using Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+        > [AZURE.NOTE] これはこのドキュメントでは使用しないため、既定の設定のままでかまいません。HDInsight でのこのエントリと Azure Data Lake Store の使用については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 		
 	- __[選択]__: これを使用してデータ ソースの構成を保存します。
 	
@@ -102,7 +104,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
     
 	__[選択]__ ボタンを使用して、__[ノード価格レベル]__ 情報がを保存します。
 
-8. __[オプションの構成]__ を選択します。このブレードでは、クラスターを__Virtual Network__に参加させたり、__[スクリプト操作]__ を使用してクラスターをカスタマイズしたりできるほか、__カスタム メタストア__を使用して Hive と Oozie 用のデータを保持したりできます。
+8. __[オプションの構成]__ を選択します。このブレードでは、クラスターを __Virtual Network__ に参加させたり、__[スクリプト操作]__ を使用してクラスターをカスタマイズしたりできるほか、__カスタム メタストア__を使用して Hive と Oozie 用のデータを保持したりできます。
 
 	![[オプションの構成] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/optionalconfiguration.png)
     
@@ -215,6 +217,10 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 ワードカウント トポロジの **[トポロジの概要]** ページに戻り、**[トポロジのアクション]** セクションで **[強制終了]** を選択します。メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##概要
 
 この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジをデプロイ、監視、管理する方法について説明しました。
@@ -233,4 +239,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

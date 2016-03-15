@@ -256,7 +256,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
     WebClient webClient = new WebClient();
     webClient.Headers[HttpRequestHeader.Authorization] = token;
 
-    byte[] response = webClient.UploadData(fullAddress, "DELETE", newbyte[0]);
+    byte[] response = webClient.UploadData(fullAddress, "DELETE", new byte[0]);
     string responseStr = Encoding.UTF8.GetString(response);
 
     Console.WriteLine(responseStr);
@@ -633,4 +633,4 @@ namespace Microsoft.ServiceBus.Samples
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

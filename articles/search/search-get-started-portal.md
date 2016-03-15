@@ -19,8 +19,8 @@
 
 # ポータルから Azure Search を使用する
 > [AZURE.SELECTOR]
-- [Portal](search-get-started-portal.md)
-- [.NET](search-get-started-dotnet.md)
+- [ポータル](search-get-started-portal.md)
+- [.NET](search-howto-dotnet-sdk.md)
 
 ここでは、ポータルに組み込まれている機能を使い、コーディングなしで Microsoft Azure Search を利用する方法を紹介します。
 
@@ -184,4 +184,4 @@ Azure 仮想マシン上の Azure SQL Database または SQL Server などその
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

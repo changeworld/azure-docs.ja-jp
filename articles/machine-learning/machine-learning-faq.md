@@ -13,7 +13,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="01/25/2016"
 	ms.author="paulettm"/>
 
@@ -25,7 +25,7 @@
 
 **Azure Machine Learning とは**
 
-Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。ブラウザーさえあれば、サインアップ、データのアップロード、機械学習の実験をすぐに始めることができます。ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。詳細については、「[Azure Machine Learning サービスの概要](/services/machine-learning/)」に関するページをご覧ください。機械学習の重要な用語や概念など基本事項については、[Azure Machine Learning の概要](machine-learning-what-is-machine-learning.md)に関するページを参照してください。
+Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。ブラウザーさえあれば、サインアップ、データのアップロード、機械学習の実験をすぐに始めることができます。ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。詳細については、「[Azure Machine Learning サービスの概要](https://azure.microsoft.com/services/machine-learning/)」に関するページをご覧ください。機械学習の重要な用語や概念など基本事項については、[Azure Machine Learning の概要](machine-learning-what-is-machine-learning.md)に関するページを参照してください。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -63,7 +63,7 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 ### Machine Learning 用データのインポートとエクスポート
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
-データは、ローカル ファイルをデータセットとしてアップロードする方法、またはデータをインポートするリーダー モジュールを使用する方法のいずれかの方法で Machine Learning Studio に読み込むことができます。ローカル ファイルは、Machine Learning Studio に新しいデータセットを追加することでアップロードできます。サポートされているファイル形式の詳細については、「[Import training data into Machine Learning Studio (Machine Learning Studio へのトレーニング データのインポート)](machine-learning-import-data.md)」をご覧ください。
+データは、ローカル ファイルをデータセットとしてアップロードする方法、またはデータをインポートするリーダー モジュールを使用する方法のいずれかの方法で Machine Learning Studio に読み込むことができます。ローカル ファイルは、Machine Learning Studio に新しいデータセットを追加することでアップロードできます。サポートされているファイル形式の詳細については、「[Import training data into Machine Learning Studio (Machine Learning Studio へのトレーニング データのインポート)](machine-learning-data-science-import-data.md)」をご覧ください。
 
 
 #### <a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
@@ -221,7 +221,7 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
  **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
- 
+
  ****エラー コードの詳細はどこで入手できますか。 エラー コードの詳細は[こちら](https://msdn.microsoft.com/library/azure/dn905910.aspx)をご覧ください。
 
 ## 拡張性
@@ -293,7 +293,7 @@ Machine Learning Studio は、ワークフローを実行する際に中間デ�
 
 **どこで Azure ML のトレーニングを受講できますか。**
 
-[Azure Machine Learning ドキュメント センター](/services/machine-learning/)に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure ML を使用した運用環境へのデプロイまで、データ技術のライフ サイクルをひととおり説明します。
+[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/services/machine-learning/)に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure ML を使用した運用環境へのデプロイまで、データ技術のライフ サイクルをひととおり説明します。
 
 Machine Learning Center には継続的に新しい資料が追加されます。Machine Learning Center に追加の教材が必要な場合は、[ユーザー フィードバック フォーラム](https://windowsazure.uservoice.com/forums/257792-machine-learning)で要求を送信できます。
 
@@ -314,4 +314,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

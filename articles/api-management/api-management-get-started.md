@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="12/07/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -59,7 +59,7 @@ Azure API Management を任意のバックエンドで実行し、それに基�
 
 ## <a name="create-service-instance"> </a>API Management インスタンスの作成
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[Azure クラシック ポータル][]にサインインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** の順にクリックします。
 
@@ -73,13 +73,13 @@ API Management を使用するにあたって最初に行うことは、サー�
 
 **[組織名]** フィールドに「**Contoso Ltd.**」と入力し、**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。
 
->[AZURE.NOTE]API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][]」を参照してください。
+>[AZURE.NOTE] API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][]」を参照してください。
 
 ![新しい API Management サービス][api-management-create-instance-step2]
 
 API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。既定では、新しい API Management サービス インスタンスは、Developer レベルで作成されます。Standard レベルまたは Premium レベルを選択するには、**[詳細設定]** チェック ボックスをオンにし、次の画面で希望のレベルを選択します。
 
->[AZURE.NOTE]Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。このチュートリアルは、どのレベルを使用しても完了できます。API Management レベルの詳細については、「[API Management の価格][]」をご覧ください。
+>[AZURE.NOTE] Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。このチュートリアルは、どのレベルを使用しても完了できます。API Management レベルの詳細については、「[API Management の価格][]」をご覧ください。
 
 チェック ボックスをクリックすると、サービス インスタンスが作成されます。
 
@@ -93,7 +93,7 @@ API は、クライアント アプリケーションから呼び出すことの
 
 API は、手動で作成して操作を追加することも、インポートすることもできます。このチュートリアルでは、Microsoft によって提供され、Azure でホストされる、サンプル電卓 Web サービスの API をインポートします。
 
->[AZURE.NOTE]API を作成して手動で操作を追加する方法については、「[API を作成する方法](api-management-howto-create-apis.md)」と「[API に操作を追加する方法](api-management-howto-add-operations.md)」をご覧ください。
+>[AZURE.NOTE] API を作成して手動で操作を追加する方法については、「[API を作成する方法](api-management-howto-create-apis.md)」と「[API に操作を追加する方法](api-management-howto-add-operations.md)」をご覧ください。
 
 API の構成は、Azure クラシック ポータルから発行者ポータルにアクセスして行います。発行者ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
@@ -111,6 +111,8 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 4. **[保存]** をクリックして、API をインポートします。
 
 ![新しい API を追加する][api-management-import-new-api]
+
+>[AZURE.NOTE] **API Management** は現在、インポート用にバージョン 1.2 と 2.0 両方の Swagger ドキュメントをサポートしています。[Swagger 2.0 の仕様](http://swagger.io/specification)で `host`、`basePath`、および `schemes` プロパティがオプションである旨が示されていても、Swagger 2.0 ドキュメントに**必ず**これらのプロパティを含めるようにしてください。そうしないとインポートが行われません。
 
 API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
@@ -163,7 +165,7 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 **Basic Calculator** のグラフの上にマウス ポインターを合わせると、指定された期間での API の使用量について特定のメトリックが表示されます。
 
->[AZURE.NOTE]グラフに線が表示されない場合は、開発者ポータルに戻って API を数回呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
+>[AZURE.NOTE] グラフに線が表示されない場合は、開発者ポータルに戻って API を数回呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
 
 **[詳細の表示]** をクリックすると、表示されたメトリックの拡大版を含む、API の概要ページが表示されます。
 
@@ -243,4 +245,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

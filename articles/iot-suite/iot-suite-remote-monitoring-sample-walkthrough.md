@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="10/21/2015"
+ ms.date="03/02/2016"
  ms.author="stevehob"/>
 
 # リモート監視の事前構成済みソリューションのチュートリアル
@@ -78,51 +78,14 @@ IoT Suite リモート監視の事前構成済みソリューションは、遠�
 
 ### Azure Stream Analytics ジョブ
 
-**ジョブ 1: テレメトリ**は、2 つの方法で、受信するデバイス テレメトリ ストリームに対して動作します。最初の方法では、デバイスからのすべてのテレメトリ メッセージを永続的な Blob Storage に送信します。2 番目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算します。このデータも BLOB ストレージに送信されます。このジョブは、次のクエリ定義を使用します。
 
-```
-WITH 
-    [StreamData]
-AS (
-    SELECT
-        *
-    FROM 
-      [IoTHubStream] 
-    WHERE
-        [ObjectType] IS NULL -- Filter out device info and command responses
-) 
-
-SELECT
-    *
-INTO
-    [Telemetry]
-FROM
-    [StreamData]
-
-SELECT
-    DeviceId,
-    AVG (Humidity) AS [AverageHumidity], 
-    MIN(Humidity) AS [MinimumHumidity], 
-    MAX(Humidity) AS [MaxHumidity], 
-    5.0 AS TimeframeMinutes 
-INTO
-    [TelemetrySummary]
-FROM
-    [StreamData]
-WHERE
-    [Humidity] IS NOT NULL
-GROUP BY
-    DeviceId, 
-    SlidingWindow (mi, 5)
-```
-
-**ジョブ 2: デバイス情報**は、受信するメッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用します。
+**ジョブ 1: デバイス情報**は、受信するメッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用します。
 
 ```
 SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
 ```
 
-**ジョブ 3: 規則**は、デバイスごとのしきい値に対する温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューションに含まれる規則エディターで設定されます。デバイスと値の各ペアは、**参照データ**として Stream Analytics に読み込まれる BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、次のクエリ定義を使用します。
+**ジョブ 2: 規則**は、デバイスごとのしきい値に対する温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューションに含まれる規則エディターで設定されます。デバイスと値の各ペアは、**参照データ**として Stream Analytics に読み込まれる BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、次のクエリ定義を使用します。
 
 ```
 WITH AlarmsData AS 
@@ -161,6 +124,44 @@ FROM AlarmsData
 SELECT *
 INTO DeviceRulesHub
 FROM AlarmsData
+```
+
+**ジョブ 3: テレメトリ**は、2 つの方法で、受信するデバイス テレメトリ ストリームに対して動作します。最初の方法では、デバイスからのすべてのテレメトリ メッセージを永続的な Blob Storage に送信します。2 番目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算します。このデータも BLOB ストレージに送信されます。このジョブは、次のクエリ定義を使用します。
+
+```
+WITH 
+    [StreamData]
+AS (
+    SELECT
+        *
+    FROM 
+      [IoTHubStream] 
+    WHERE
+        [ObjectType] IS NULL -- Filter out device info and command responses
+) 
+
+SELECT
+    *
+INTO
+    [Telemetry]
+FROM
+    [StreamData]
+
+SELECT
+    DeviceId,
+    AVG (Humidity) AS [AverageHumidity], 
+    MIN(Humidity) AS [MinimumHumidity], 
+    MAX(Humidity) AS [MaxHumidity], 
+    5.0 AS TimeframeMinutes 
+INTO
+    [TelemetrySummary]
+FROM
+    [StreamData]
+WHERE
+    [Humidity] IS NOT NULL
+GROUP BY
+    DeviceId, 
+    SlidingWindow (mi, 5)
 ```
 
 ### イベント プロセッサ
@@ -224,4 +225,4 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -3,7 +3,7 @@
    description="Azure Active Directory レポートで使用可能なさまざまなレポートが一覧表示します。"
    services="active-directory"
    documentationCenter=""
-   authors="curtand"
+   authors="dhanyahk"
    manager="stevenpo"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/10/2016"
-   ms.author="curtand;kenhoff"/>
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
 # Azure Active Directory レポートの使用の開始
 
@@ -156,4 +156,4 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 > [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

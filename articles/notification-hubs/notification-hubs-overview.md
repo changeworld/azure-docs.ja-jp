@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="02/11/2016"
 	ms.author="wesmc"/>
 
@@ -127,7 +127,13 @@ Mobile Apps の開発者は、次のワークフローで Notification Hubs を�
     + Mobile Apps ではセキュリティの目的で登録時にすべてのタグを除去することに注意してください。タグをデバイスに関連付けるには、Notification Hubs をバックエンドから直接操作します。
 3. Notification Hubs を使用してアプリのバックエンドから通知を送信する
 
-この統合は、開発者にいくつかの便利な機能を提供します。- **Mobile Apps クライアント SDK。** これらの複数プラットフォームの SDK は登録用のシンプルな API を提供し、モバイル アプリに自動的にリンクされている通知ハブと対話します。開発者は Notification Hubs の資格情報を掘り下げて追加のサービスを操作する必要はありません。+ SDK は自動的に指定のデバイスを Mobile Apps の認証済みユーザー ID にタグ付けしてユーザー シナリオへのプッシュを有効にします。+ SDK は自動的に Mobile Apps のインストール ID を Notification Hubs に登録する GUID として使用し、開発者が複数サービスの GUID を維持する手間を省きます。- **インストール モデル。** Mobile Apps は Notification Hubs の最新のプッシュ モデルと簡単に連携し、プッシュ通知サービスと連携する JSON インストール内のデバイスに関連付けられたすべてのプッシュ プロパティを表します。- **柔軟性。** 開発者は統合中でも常に Notification Hubs を直接操作することを選択できます。- **[Azure ポータル]の統合されたエクスペリエンス。** 機能としてのプッシュが Mobile Apps に視覚的に表示され、開発者は Mobile Apps を通じて関連付けられた通知ハブを簡単に操作できます。
+この統合は、開発者にいくつかの便利な機能を提供します。
+- **Mobile Apps クライアント SDK。** これらの複数プラットフォームの SDK は登録用のシンプルな API を提供し、モバイル アプリに自動的にリンクされている通知ハブと対話します。開発者は Notification Hubs の資格情報を掘り下げて追加のサービスを操作する必要はありません。
+    + SDK は自動的に指定のデバイスを Mobile Apps の認証済みユーザー ID にタグ付けしてユーザー シナリオへのプッシュを有効にします。
+    + SDK は自動的に Mobile Apps のインストール ID を Notification Hubs に登録する GUID として使用し、開発者が複数サービスの GUID を維持する手間を省きます。
+- **インストール モデル。** Mobile Apps は Notification Hubs の最新のプッシュ モデルと簡単に連携し、プッシュ通知サービスと連携する JSON インストール内のデバイスに関連付けられたすべてのプッシュ プロパティを表します。
+- **柔軟性。** 開発者は統合中でも常に Notification Hubs を直接操作することを選択できます。
+- **[Azure ポータル]の統合されたエクスペリエンス。** 機能としてのプッシュが Mobile Apps に視覚的に表示され、開発者は Mobile Apps を通じて関連付けられた通知ハブを簡単に操作できます。
 
 
 
@@ -165,4 +171,4 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Azure ポータル]: https://portal.azure.com
   [タグ]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

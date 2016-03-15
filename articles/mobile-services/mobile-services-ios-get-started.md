@@ -18,15 +18,12 @@
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
-
-[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
-
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Create an iOS app in Azure Mobile Apps (Mobile Apps での iOS アプリの作成)](../app-service-mobile/app-service-mobile-android-get-started.md)」を参照してください。
 
 このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。
 
@@ -95,4 +92,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET バックエンド バージョン]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

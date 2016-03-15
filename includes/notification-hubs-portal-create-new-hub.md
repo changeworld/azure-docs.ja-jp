@@ -1,6 +1,6 @@
 
 
-1. [Azure ポータル](https://portal.windowsazure.com/)にログインし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com)にログインし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[新規]**、**[Web + モバイル]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -22,4 +22,4 @@
 
    	![Azure ポータル - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

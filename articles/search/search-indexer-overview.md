@@ -14,14 +14,14 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="01/24/2016"
+	ms.date="03/09/2016"
 	ms.author="heidist"/>
 
 # Azure Search のインデクサー
 > [AZURE.SELECTOR]
-- [Overview](search-indexer-overview.md)
-- [Portal](search-import-data-portal.md)
-- [Blob Storage (preview)](search-howto-indexing-azure-blob-storage.md)
+- [概要](search-indexer-overview.md)
+- [ポータル](search-import-data-portal.md)
+- [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)
 - [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
 
@@ -35,10 +35,12 @@ Azure Search の**インデクサー**は、検索可能なデータとメタデ
 
 - [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) (または Azure 仮想マシン内の SQL Server)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Azure BLOB ストレージ](search-howto-indexing-azure-blob-storage.md) (現時点ではプレビュー段階です。PDF、Office ドキュメント、HTML、XML からテキストを抽出します。)
+- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (現時点ではプレビュー段階です。PDF、Office ドキュメント、HTML、XML からテキストを抽出します。)
 
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
-[.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx) と [サービスの REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)は、インデクサーとデータ ソースの管理をサポートします。または、**データのインポート** ウィザードを使用する場合は、ポータルでインデクサーを構成することもできます。
+[.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx) と [サービスの REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) は、インデクサーとデータ ソースの管理をサポートします。
 
-<!---HONumber=AcomDC_0128_2016-->
+または、**データのインポート** ウィザードを使用する場合は、ポータルでインデクサーを構成することもできます。サンプル データや DocumentDB インデクサーを使用して、ウィザードを使ってインデックスを作成し、読み込む方法のクイック チュートリアルについては、「[ポータルから Azure Search を使用する](search-get-started-portal)」を参照してください。
+
+<!---HONumber=AcomDC_0309_2016-->

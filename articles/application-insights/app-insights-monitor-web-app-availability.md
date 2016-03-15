@@ -112,7 +112,6 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-  
 ![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
@@ -233,6 +232,10 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 ![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
+
+## Automation
+
+[PowerShell スクリプトにより、Web テスト](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)を自動的に設定できます。
 
 ## 疑問がある場合 問題が発生した場合
 
@@ -390,4 +393,4 @@ Web テストを許可するためにファイアウォールを開く必要が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

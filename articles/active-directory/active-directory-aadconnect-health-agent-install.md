@@ -138,7 +138,9 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成できます。
 
 >[AZURE.NOTE]
-- エージェントは、Microsoft Windows HTTP サービスではなく、System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は機能しません。- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。 - 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
+- エージェントが Microsoft Windows HTTP サービスではなく System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は使用できません。
+- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。
+- 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
 
 ### Health エージェントのプロキシ構成の変更
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成する場合、以下のオプションがあります。
@@ -193,7 +195,7 @@ role パラメーターは、現在、以下の値を受け取ります。
 
 コマンドで - ShowResults フラグを使用すると、詳細ログが表示されます。次の例を使用してください。
 
-    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResults
+    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResult
 
 >[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
 
@@ -207,4 +209,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

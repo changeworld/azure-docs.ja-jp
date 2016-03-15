@@ -14,13 +14,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-#TSQL で SQL Data Warehouse を作成する 
+#TSQL で SQL Data Warehouse を作成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-get-started-provision.md)
+- [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-TSQL.md)
 - [PowerShell](sql-data-warehouse-get-started-create-powershell.md)
 
@@ -76,4 +76,4 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用して Azure Blob Storage を使用する | Microsoft Azure"
-	description="Azure Blob (オブジェクト) Storage を使用してクラウドにファイル データを格納します。コンテナーの作成、Blob コンテンツのアップロード、ダウンロード、一覧表示、削除など、単純な Blob Storage 操作を開始します。"
+	description="Azure Blob Storage (オブジェクト ストレージ) を使用してクラウドにファイル データを格納します。コンテナーの作成、Blob コンテンツのアップロード、ダウンロード、一覧表示、削除など、単純な Blob Storage 操作を開始します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/14/2016"
+	ms.date="02/25/2016"
 	ms.author="tamram"/>
 
 
@@ -32,6 +32,12 @@ Azure Blob Storage は、クラウドにファイル データを格納するサ
 **推定所要時間:** 45 分
 
 **前提条件:**
+
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)。
+
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -374,4 +380,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

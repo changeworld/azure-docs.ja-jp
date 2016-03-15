@@ -1,3 +1,11 @@
->[AZURE.NOTE]これは **Azure Mobile Services** のトピックです。Microsoft Azure では、すべての新しいモバイル バックエンドのデプロイに、Azure App Service Mobile Apps が推奨されています。Azure App Service Mobile Apps の使用方法については、「[App Service Mobile Apps ドキュメント センター](/documentation/services/app-service/mobile)」を参照してください。
+<style>
+.note.note-warning {
+    background-color: #e3dc6c !important;
+}
+</style>
 
-<!---HONumber=AcomDC_1210_2015-->
+>[AZURE.WARNING] これは **Azure Mobile Services** のトピックです。このサービスは、Azure App Service Mobile Apps に置き換えられました。すべての新しいモバイル バックエンド デプロイには、Azure Mobile Apps を使用することをお勧めします。[サイトを Azure App Service に移行する](../articles/app-service-mobile/app-service-mobile-migrating-from-mobile-services.md)ことを検討してください。
+>
+> Azure Mobile Apps の使用を開始するには、[Azure Mobile Apps ドキュメント センター](/documentation/learning-paths/appservice-mobileapps/)を参照してください。
+
+<!---HONumber=AcomDC_0309_2016-->

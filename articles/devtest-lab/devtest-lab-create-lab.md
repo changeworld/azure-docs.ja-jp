@@ -28,7 +28,7 @@ DevTest ラボを作成するには、次のものが必要です。
 
 ## ラボを作成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 1. **[参照]** をタップします。
 
@@ -61,4 +61,4 @@ DevTest ラボを作成するには、次のものが必要です。
 
 - [アーティファクトを含む VM を Azure DevTest ラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

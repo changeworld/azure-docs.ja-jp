@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="12/16/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # キャッシュを追加して Azure API Management のパフォーマンスを向上させる
@@ -22,7 +22,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 このガイドでは、API の応答のキャッシュを追加して、サンプルの Echo API 操作のポリシーを構成する方法を示します。その後は、開発者ポータルで操作を呼び出してキャッシュの動作を確認することができます。
 
->[AZURE.NOTE]ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+>[AZURE.NOTE] ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 ## 前提条件
 
@@ -32,7 +32,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
->[AZURE.NOTE]それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][]」を参照してください。
+>[AZURE.NOTE] それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][]」を参照してください。
 
 最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
@@ -89,7 +89,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 		</outbound>
 	</policies>
 
->[AZURE.NOTE]ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
+>[AZURE.NOTE] ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
 
@@ -164,4 +164,4 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!-----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0309_2016-->

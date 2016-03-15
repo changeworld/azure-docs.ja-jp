@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="01/09/2016"
+	ms.date="03/04/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service での Java Web アプリの作成
@@ -178,4 +178,4 @@ Azure での Java アプリケーションの開発の詳細については、[J
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

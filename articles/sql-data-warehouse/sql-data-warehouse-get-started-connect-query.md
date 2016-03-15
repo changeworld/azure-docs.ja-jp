@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio を使用した接続とクエリ
@@ -46,7 +46,7 @@
 
 1. Visual Studio を開きます。
 2. [表示] メニューから **SQL Server オブジェクト エクスプローラー**を開きます。
- 
+
 ![][2]
 
 3. **[SQL Server の追加]** をクリックします。
@@ -91,4 +91,4 @@
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

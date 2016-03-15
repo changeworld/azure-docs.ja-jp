@@ -1,29 +1,29 @@
-<properties 
-   pageTitle="Data Lake Store の使用 | Azure" 
-   description="Azure PowerShell を使用して、Data Lake Store アカウントを作成し、基本的な操作を実行する" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="Data Lake Store の使用 | Azure"
+   description="Azure PowerShell を使用して、Data Lake Store アカウントを作成し、基本的な操作を実行する"
+   services="data-lake-store"
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="01/04/2016"
    ms.author="nitinme"/>
 
 # Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
+- [ポータルの使用](data-lake-store-get-started-portal.md)
+- [PowerShell の使用](data-lake-store-get-started-powershell.md)
+- [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
+- [Azure CLI の使用](data-lake-store-get-started-cli.md)
+- [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 
 Azure PowerShell を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、「[Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
 
@@ -37,7 +37,7 @@ Azure PowerShell を使用して、Azure Data Lake Store アカウントを作�
 
 ##Azure PowerShell 1.0 以上をインストールする
 
-「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md#prerequisites)」の「前提条件」セクションを参照してください。
+「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md#prerequisites)」の「前提条件」セクションを参照してください。
 
 ## Azure Data Lake Store アカウントを作成する
 
@@ -45,15 +45,15 @@ Azure PowerShell を使用して、Azure Data Lake Store アカウントを作�
 
         # Log in to your Azure account
 		Login-AzureRmAccount
-        
+
 		# List all the subscriptions associated to your account
 		Get-AzureRmSubscription
-		
-		# Select a subscription 
+
+		# Select a subscription
 		Set-AzureRmContext -SubscriptionId <subscription ID>
-        
+
 		# Register for Azure Data Lake Store
-		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore" 
+		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 
 2. Azure Data Lake Store アカウントは、Azure リソース グループに関連付けられます。まず、Azure リソース グループを作成します。
@@ -118,8 +118,8 @@ Azure Data Lake Store アカウントにディレクトリを作成し、デー�
 
 ファイルを削除するには、次のコマンドを使用します。
 
-	Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv 
-	
+	Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+
 確認を求めるメッセージが表示されたら、「**Y**」と入力して、項目を削除します。削除する複数のファイルがある場合は、すべてのパスをコンマで区切って指定できます。
 
 	Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
@@ -143,7 +143,7 @@ Data Lake Store アカウントを削除するには、以下のコマンドを�
 ## 次のステップ
 
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-- [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
+- [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

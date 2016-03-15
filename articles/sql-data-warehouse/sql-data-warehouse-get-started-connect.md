@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
@@ -26,7 +26,7 @@
 
 ## 前提条件
 
-+ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベース。このデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-provision.md)に関するページを参照してください。 
++ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベース。このデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-provision.md)に関するページを参照してください。
 + Visual Studio の SQL Server Data Tools。インストールの手順とオプションの詳細については、[Visual Studio または SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
 
 ## 手順 1. Azure SQL サーバーの完全修飾名を検索する
@@ -45,7 +45,7 @@
 
 1. Visual Studio を開きます。
 2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順に選択します。
- 
+
     ![SQL Server Object Explorer][2]
 
 3. **[SQL Server の追加]** アイコンをクリックします。
@@ -70,7 +70,7 @@
 
 サーバーへの接続が完了したので、次はクエリを記述してみましょう。
 
-1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。 
+1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。
 
 2. **[新しいクエリ]** を選択します。新しいクエリ ウィンドウが開きます。
 
@@ -108,4 +108,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="02/08/2016"
+   ms.date="03/03/2016"
    ms.author="maroche"/>
 
 
@@ -51,4 +51,7 @@
 ##概要
 **Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。データ ソースが登録され探索されると、ユーザーは **Azure Data Catalog** ポータルの [開く] メニューから、または適切なデータ ツールを使用してデータソースに接続できるようになります。
 
-<!---HONumber=AcomDC_0224_2016-->
+## 関連項目
+- データ ソースに接続する方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
+
+<!---HONumber=AcomDC_0309_2016-->
