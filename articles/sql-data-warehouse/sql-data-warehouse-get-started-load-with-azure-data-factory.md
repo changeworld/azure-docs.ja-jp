@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/16/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure Data Factory を使用してデータを読み込む
@@ -40,7 +40,7 @@ Azure Data Factory を理解するには、「[Azure Data Factory サービス�
 
 このチュートリアルを開始する前に、次のリソースを用意する必要があります。
 
-   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account/#create-a-storage-accoun/)」を参照してください。 
+   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account/#create-a-storage-accoun/)」を参照してください。
 
    + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング](sql-data-warehouse-get-started-provision.md)する方法を学習してください。データ ウェアハウスはあっても、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む](sql-data-warehouse-get-started-manually-load-samples.md)ことができます。
 
@@ -158,7 +158,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
     "name": "<Pipeline Name>",
     "properties": {
         "description": "<Description>",
-        "activities": [ 
+        "activities": [
           {
             "type": "Copy",
     		"typeProperties": {
@@ -215,4 +215,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 - [チュートリアル: Azure Storage BLOB から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
 - [実際のシナリオのチュートリアル](../data-factory/data-factory-tutorial.md)。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,0 +1,5 @@
+
+
+> [AZURE.WARNING] HDInsight クラスターは、使用されているかどうかにかかわらず、時間単位で課金されます。使用後は、クラスターを必ず削除してください。クラスターの削除については、「[How to delete an HDInsight cluster (HDInsight クラスターを削除する方法)](../articles/hdinsight/hdinsight-delete-cluster.md)」を参照してください。
+
+<!---HONumber=AcomDC_0309_2016-->

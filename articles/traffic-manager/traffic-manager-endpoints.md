@@ -12,18 +12,18 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma" />
 
 # エンドポイントの追加と削除、有効化と無効化
 
 Azure App Service の Web Apps 機能では、データセンター内の Web サイト向けに、Web サイトのモードに関係なく、フェールオーバーとラウンド ロビンによるトラフィック ルーティング機能があらかじめ用意されています。Azure Traffic Manager を使用すると、異なるデータセンター内の Web サイトやクラウド サービスに対して、フェールオーバーとラウンド ロビンによるトラフィックルーティング方法を指定できます。この機能の実現に必要な最初の手順は、Traffic Manager にクラウド サービスまたは Web サイトのエンドポイントを追加することです。
 
->[AZURE.NOTE]Azure クラシック ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして追加することはできません。REST API [Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772) または Windows PowerShell [Add-AzureTrafficManagerEndpoint](http://go.microsoft.com/fwlink/p/?LinkId=400774) を使用する必要があります。
+>[AZURE.NOTE] Azure クラシック ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして追加することはできません。REST API [Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772) または Windows PowerShell [Add-AzureTrafficManagerEndpoint](http://go.microsoft.com/fwlink/p/?LinkId=400774) を使用する必要があります。
 
 Traffic Manager プロファイルを構成する個々のエンドポイントを無効にすることもできます。エンドポイントには、クラウド サービスと Web サイトの両方が含まれます。無効にしたエンドポイントはその後もプロファイルの一部として残りますが、プロファイルは、エンドポイントが含まれていないかのように機能します。この操作は、メンテナンス モードのエンドポイントや再デプロイされるエンドポイントを一時的に削除するときに役立ちます。エンドポイントが稼働状態になって再度動作すると、有効にすることができます。
 
->[AZURE.NOTE]エンドポイントの無効化は、Azure でのデプロイメント状態とは関係ありません。正常なエンドポイントは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。また、あるプロファイルでエンドポイントを無効化しても、そのエンドポイントの他のプロファイルでの状態には影響しません。
+>[AZURE.NOTE] エンドポイントの無効化は、Azure でのデプロイメント状態とは関係ありません。正常なエンドポイントは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。また、あるプロファイルでエンドポイントを無効化しても、そのエンドポイントの他のプロファイルでの状態には影響しません。
 
 ## クラウド サービスまたは Web サイトのエンドポイントを追加するには
 
@@ -36,7 +36,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 6. このプロファイルでエンドポイントとして追加する Web サイトを一覧から選択します。Web サイトの名前をクリアすると、エンドポイントの一覧から削除されます。選択できる Web サイトは、各 Azure データセンター (リージョンとも呼ばれます) につき 1 つだけです。複数の Web サイトをホストしているデータセンター内の Web サイトを選択する場合、1 つの Web サイトを選択すると、そのデータセンター内の他の Web サイトは選択できなくなります。また、一覧には標準 Web サイトのみが表示されます。
 7. このプロファイルのエンドポイントを選択したら、右下にあるチェックマークをクリックして変更を保存します。
 
->[AZURE.NOTE] *フェールオーバー* トラフィック ルーティング方法を使用している場合は、エンドポイントを追加または削除した後で、[構成] ページの [フェールオーバー優先度リスト] を調整して、構成に必要なフェールオーバー順序を反映させてください。詳細については、「[フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-load-balancing.md)」をご覧ください。
+>[AZURE.NOTE] *フェールオーバー*トラフィック ルーティング方法を使用している場合は、エンドポイントを追加または削除した後で、[構成] ページの [フェールオーバー優先度リスト] を調整して、構成に必要なフェールオーバー順序を反映させてください。詳細については、「[フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)」をご覧ください。
 
 ## エンドポイントを無効にするには
 
@@ -60,7 +60,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 3. [エンドポイント] ページで、プロファイルから削除するエンドポイントの名前をクリックします。
 4. ページの下部にある **[削除]** をクリックします。
 
->[AZURE.NOTE]Azure クラシック ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして削除することはできません。Windows PowerShell を使用する必要があります。詳細については、[Remove-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/dn690251.aspx) に関するページを参照してください。
+>[AZURE.NOTE] Azure クラシック ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして削除することはできません。Windows PowerShell を使用する必要があります。詳細については、[Remove-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/dn690251.aspx) に関するページを参照してください。
 
 ## 次のステップ
 
@@ -75,4 +75,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # SQLCMD を使用した接続とクエリ
@@ -78,9 +78,9 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 これで接続してクエリを実行することができます。[PowerBI で接続][]してみてください。
 
 [PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
- 
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

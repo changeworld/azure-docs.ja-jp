@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/12/2016"
+   ms.date="03/03/2016"
    ms.author="cherylmc"/>
 
 
@@ -127,11 +127,15 @@ Microsoft は、パブリック ピアリングと Microsoft ピアリングを�
 | | 米国中北部 | 12076:51007 |
 | | 米国中南部 | 12076:51008 |
 | | 米国中央部 | 12076:51009 |
+| | カナダ中部 | 12076:51020 |
+| | カナダ東部 | 12076:51021 |
 | **南アメリカ** | | |
 | | ブラジル南部 | 12076:51014 |
 | **ヨーロッパ** | | |
 | | 北ヨーロッパ | 12076:51003 |
 | | 西ヨーロッパ | 12076:51002 |
+| | 英国北部 | 12076:51022 |
+| | 英国南部 2 | 12076:51023 |
 | **アジア太平洋** | | |
 | | 東アジア | 12076:51010 |
 | | 東南アジア | 12076:51011 |
@@ -170,8 +174,8 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 
 - ExpressRoute 接続を構成します。
 
-	- [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure リソース マネージャーを使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
-	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[リソース マネージャー デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
-	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[リソース マネージャー VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
+	- [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
+	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
+	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

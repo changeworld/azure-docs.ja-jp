@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -12,8 +12,8 @@
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.topic="hero-article" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 #API Management とは
@@ -26,7 +26,7 @@ API Management を使用するには、管理者が API を作成します。API
 
 このトピックでは、API Management の重要な概念を簡単に説明します。
 
->[AZURE.NOTE]詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーをご覧ください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
+>[AZURE.NOTE] 詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーをご覧ください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
 >
 > - API の一般的な要件と課題
 >     - API の分離とファサードの提供
@@ -114,4 +114,4 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,6 +1,6 @@
 <properties
     pageTitle="REST API を使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
-    description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理、並べ替え、ファセットを行います。"
+    description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。"
     services="search"
     documentationCenter=""
 	authors="ashmaka"
@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="02/29/2016"
+    ms.date="03/09/2016"
     ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search インデックスの照会
@@ -33,8 +33,9 @@ Azure Search REST API に対するすべての検索操作で鍵となるコン�
 3. "キー" アイコンをクリックします。
 
 サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
-  * プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
-  * *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
+
+ - プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+ - *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
 インデックスを照会する目的では、いずれかのクエリ キーを使用できます。クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
@@ -47,7 +48,15 @@ POST でも GET でも、*サービス名*、*インデックス名*、適切な
 
 POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
 
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。クエリの各種パラメーターの詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)を参照してください。以下にも、クエリの例をいくつか紹介します。
+#### クエリの種類
+
+Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。主に使用するクエリの種類は、`search` と `filter` の 2 種類です。`search` クエリは、インデックスのすべての_検索可能_フィールドで 1 つ以上の語句を検索し、Google や Bing などの検索エンジンに期待されるように機能します。`filter` クエリは、インデックスのすべての_フィルター処理可能_フィールドでブール式を評価します。`search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
+
+検索とフィルターは、一緒に使用することも、別々に使用することもできます。一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
+
+フィルター式の構文は、[OData フィルター言語](https://msdn.microsoft.com/library/azure/dn798921.aspx)のサブセットです。各検索クエリで、[簡略構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を使用できます。
+
+クエリの各種パラメーターの詳細については、「[ドキュメントの検索](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。以下にも、クエリの例をいくつか紹介します。
 
 #### クエリの例
 
@@ -65,7 +74,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-次のクエリは、インデックス全体で 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
+次のクエリは、フィルターをインデックスに追加して 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2015-02-28
@@ -122,7 +131,7 @@ api-key: [query key]
 }
 ```
 
-クエリ要求が成功すると状態コード `200 OK` が返され、検索結果は応答本文で JSON として返されます。上記のクエリの結果がどのような形になるかを以下に示します。ここでは、"hotels" インデックスに[この記事](search-import-data-rest-api.md)のサンプル データが読み込まれているものとします (この JSON はわかりやすく整形されています)。
+クエリ要求が成功すると状態コード `200 OK` が返され、検索結果は応答本文で JSON として返されます。上記のクエリの結果がどのような形になるかを以下に示します。ここでは、"hotels" インデックスに「[REST API を使用した Azure Search へのデータのインポート](search-import-data-rest-api.md)」のサンプル データが読み込まれているものとします (この JSON はわかりやすく整形されています)。
 
 ```JSON
 {
@@ -155,6 +164,6 @@ api-key: [query key]
 }
 ```
 
-詳細については、[こちらのページ](https://msdn.microsoft.com/library/azure/dn798927.aspx)の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、[この記事](https://msdn.microsoft.com/library/azure/dn798925.aspx)を参照してください。
+詳細については、「[ドキュメントの検索](https://msdn.microsoft.com/library/azure/dn798927.aspx)」の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP 状態コード (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

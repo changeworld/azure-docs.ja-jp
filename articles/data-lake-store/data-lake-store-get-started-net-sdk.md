@@ -1,19 +1,19 @@
-<properties 
-   pageTitle="Data Lake Store .NET SDK を使用してアプリケーションを開発する | Azure" 
-   description="Data Lake Store .NET SDK を使用してアプリケーションを開発する" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="Data Lake Store .NET SDK を使用してアプリケーションを開発する | Azure"
+   description="Data Lake Store .NET SDK を使用してアプリケーションを開発する"
+   services="data-lake-store"
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="02/29/2016"
+   ms.workload="big-data"
+   ms.date="03/07/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
@@ -69,23 +69,23 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 	1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 	2. **[Nuget パッケージの管理]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
 	3. 以下の Data Lake Store パッケージを検索してインストールします。
-	
+
 		* `Microsoft.Azure.Management.DataLake.Store`
 		* `Microsoft.Azure.Management.DataLake.StoreUploader`
 
 		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "新しい Azure Data Lake アカウントの作成")
 
-	4. Azure Active Directory 認証用の `Microsoft.IdentityModel.Clients.ActiveDirectory` パッケージもインストールします。
+	4. Azure Active Directory 認証用の `Microsoft.IdentityModel.Clients.ActiveDirectory` パッケージもインストールします。パッケージの安定バージョンがインストールされるように、**[プレリリースを含める]** チェック ボックスを*オフ*にします。
 
 		![Nuget ソースの追加](./media/data-lake-store-get-started-net-sdk/adl.install.azure.auth.png "新しい Azure Data Lake アカウントの作成")
 
 
 	5. **NuGet パッケージ マネージャー**を閉じます。
 
-7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**APPLICATION-CLIENT-ID**、**APPLICATION-REPLY-URI**、および**SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
+7. **Program.cs** を開き、既存のコード ブロックを次のコードに置き換えます。また、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**APPLICATION-CLIENT-ID**、**APPLICATION-REPLY-URI**、および **SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
 
 	このコードでは、Data Lake Store アカウントの作成、ストアでのフォルダーの作成、ファイルのアップロード、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
-	
+
         using System;
         using System.IO;
         using System.Security;
@@ -115,16 +115,16 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
                     _adlsAccountName = "<DATA-LAKE-STORE-NAME>"; // TODO: Replace this value with the name for a NEW Store account.
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                     _location = "East US 2";
-                    
+
                     string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = @"C:\local_path\file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
-                    
+
                     // Authenticate the user
                     var tokenCreds = AuthenticateUser("common", "https://management.core.windows.net/",
                         "<APPLICATION-CLIENT-ID>", new Uri("https://<APPLICATION-REPLY-URI>")); // TODO: Replace bracketed values.
-                    
+
                     SetupClients(tokenCreds, "<SUBSCRIPTION-ID>"); // TODO: Replace bracketed value.
 
                     // Run sample scenarios
@@ -185,7 +185,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
                 // Authenticate the user with AAD through an interactive popup.
                 // You need to have an application registered with AAD in order to authenticate.
-                //   For more information and instructions on how to register your application with AAD, see: 
+                //   For more information and instructions on how to register your application with AAD, see:
                 //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
                 public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
                 {
@@ -199,7 +199,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
                 // Authenticate the application with AAD through the application's secret key.
                 // You need to have an application registered with AAD in order to authenticate.
-                //   For more information and instructions on how to register your application with AAD, see: 
+                //   For more information and instructions on how to register your application with AAD, see:
                 //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
                 public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
                 {
@@ -240,7 +240,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
                 {
                     var response = _adlsClient.Account.List(_adlsAccountName);
                     var accounts = new List<DataLakeStoreAccount>(response);
-                    
+
                     while (response.NextPageLink != null)
                     {
                         response = _adlsClient.Account.ListNext(response.NextPageLink);
@@ -320,4 +320,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/21/2016"
+	ms.date="03/04/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps の認証と承認
@@ -85,7 +85,7 @@ App Service 認証を使わずにサービス間の認証を行う場合、ク�
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
 
-## クライアント認証
+## モバイル クライアント認証
 
 モバイル クライアントから認証を処理する方法の詳細については、[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
   
@@ -102,7 +102,7 @@ OAuth 2.0、OpenID Connect、JSON Web トークン (JWT) の詳細について�
 * [OAuth2、OpenID Connect と JSON Web トークン (JWT) の概要 - PluralSight コース](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction) 
 * [ASP.NET での複数のクライアント用 RESTful API の構築とセキュリティ保護 - PluralSight コース](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
 
-Azure Active Directory を使用する認証の詳細については、次のリソースを参照してください。
+Azure Active Directory の詳細については、次のリソースを参照してください。
 
 * [Azure AD のシナリオ](http://aka.ms/aadscenarios)
 * [Azure AD 開発者ガイド](http://aka.ms/aaddev)
@@ -110,6 +110,6 @@ Azure Active Directory を使用する認証の詳細については、次のリ
 
 ## 次のステップ
 
-この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
+この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

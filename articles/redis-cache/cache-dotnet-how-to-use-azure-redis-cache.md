@@ -4,7 +4,7 @@
 	services="redis-cache,app-service" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -19,8 +19,8 @@
 # Azure Redis Cache の使用方法
 
 > [AZURE.SELECTOR]
-- [.Net](cache-dotnet-how-to-use-azure-redis-cache.md)
-- [Node.js](cache-nodejs-get-started.md)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [Node.JS](cache-nodejs-get-started.md)
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
 
@@ -47,7 +47,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 <a name="create-cache"></a>
 ## キャッシュの作成
 
-キャッシュを作成するには、まず [Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+キャッシュを作成するには、まず [Azure ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
 >[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、ARM テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
 >
@@ -57,7 +57,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 ![新しいキャッシュ][NewCacheMenu]
 
->[AZURE.NOTE] Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
+>[AZURE.NOTE] Azure アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
@@ -98,7 +98,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 **[オンライン検索]** ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
->[AZURE.NOTE]厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**\[StackExchange.Redis\]** を選択します。
+>[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
 
 ![StackExchange.Redis NuGet package][StackExchangeNuget]
 
@@ -261,7 +261,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [キャッシュに接続する]: #connect-to-cache
 [オブジェクトをキャッシュに追加する、キャッシュから削除する]: #add-object
 [Specify the expiration of an object in the cache]: #specify-expiration
-[ASP.NET セッション状態をキャッシュに格納する]: #store-session
+[Store ASP.NET session state in the cache]: #store-session
 
   
 <!-- IMAGES -->
@@ -293,7 +293,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [http://redis.io/clients]: http://redis.io/clients
 [他の言語での Azure Redis Cache の開発]: http://msdn.microsoft.com/library/azure/dn690470.aspx
 [Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
-[Azure Redis セッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=398249
+[Azure Redis Session State Provider]: http://go.microsoft.com/fwlink/?LinkId=398249
 [How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
@@ -306,18 +306,18 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Azure Redis Cache でのキャッシュの構成]: http://msdn.microsoft.com/library/azure/dn793612.aspx
+[Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
 [StackExchange.Redis の構成モデル]: http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md
 
-[キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
+[Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
-[Azure プレビュー ポータル]: https://portal.azure.com/
+[Cache の価格詳細]: http://www.windowsazure.com/pricing/details/cache/
+[Azure ポータル]: https://portal.azure.com/
 
-[Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
 
 [Migrate to Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
@@ -336,4 +336,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

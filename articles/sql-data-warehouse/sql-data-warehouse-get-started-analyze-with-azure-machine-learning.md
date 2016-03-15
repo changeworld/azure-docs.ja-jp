@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/25/2016"
+   ms.date="03/03/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # Azure Machine Learning を使用したデータの分析
@@ -29,16 +29,16 @@
 [SQL Data Warehouse の作成][]に関するページに、サンプル データを設定したデータベースのプロビジョニング方法が示されています。SQL Data Warehouse データベースは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
 
-## 手順 1. データを取得する 
+## 手順 1. データを取得する
 AdventureWorksDW データベースの dbo.vTargetMail ビューからデータを読み取ります。
 
 1. [Azure Machine Learning Studio][] にサインインし、[実験] をクリックします。
 2. **[+ 新規]** をクリックし、**[空の実験]** を選択します。
 3. 実験の名前として「対象を絞ったマーケティング」と入力します。
 4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
-5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。 
+5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ**を指定します。
-   
+
    ```
    SELECT [CustomerKey]
       ,[GeographyKey]
@@ -140,4 +140,4 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

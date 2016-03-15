@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-      ms.date="02/29/2016"
+      ms.date="03/03/2016"
       ms.author="minet" />
 
 # Windows で Azure File Storage を使用する
@@ -255,29 +255,11 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 ## File Storage を使用した開発
 
-File Storage をプログラミングする場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[Azure .NET ストレージ クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)を使用してファイル共有を操作する方法を示します。
+File Storage をプログラミングする場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/mt347887.aspx)を使用してファイル共有を操作する方法を示します。
 
-### コンソール アプリケーションの作成とアセンブリの取得
+[AZURE.INCLUDE [storage-dotnet-install-library-include](../../includes/storage-dotnet-install-library-include.md)]
 
-Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
-
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から \[コンソール アプリケーション]**をクリックします。
-2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
-3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
-
-### ストレージ アカウントの資格情報を app.config ファイルに保存
-
-次に、プロジェクトの app.config ファイルに資格情報を保存します。次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
-
-	<?xml version="1.0" encoding="utf-8" ?>
-	<configuration>
-	    <startup>
-	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-	    </startup>
-	    <appSettings>
-	        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
-	    </appSettings>
-	</configuration>
+[AZURE.INCLUDE [storage-dotnet-save-connection-string-include](../../includes/storage-dotnet-save-connection-string-include.md)]
 
 > [AZURE.NOTE] 最新バージョンの Azure ストレージ エミュレーターでは、File Storage がサポートされません。File Storage を使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
@@ -285,8 +267,8 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 
 ソリューション エクスプローラーで program.cs ファイルを開き、このファイルに次の名前空間宣言を追加します。
 
-	using Microsoft.WindowsAzure;
-	using Microsoft.WindowsAzure.Storage;
+	using Microsoft.Azure; // Namespace for Azure Configuration Manager
+	using Microsoft.WindowsAzure.Storage; // Namespaces for Storage Client Library
 	using Microsoft.WindowsAzure.Storage.Blob;
 	using Microsoft.WindowsAzure.Storage.File;
 
@@ -425,7 +407,7 @@ Shared Access Signature の作成および使用の詳細については、「[S
 
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。「[AzCopy を使用した Azure ファイル ストレージでのファイル コピー](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy)」を参照してください。
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。「[AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)」を参照してください。
 
 > [AZURE.NOTE] BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトを認証する必要があります。
 
@@ -528,6 +510,55 @@ Azure ストレージ分析で File Storage のメトリックがサポートさ
 
 [Azure ポータル](https://portal.azure.com)から File Storage のメトリックを有効にすることができます。REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
+次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、File Storage のメトリックを有効にする方法を示します。
+
+最初に、次の `using` ステートメントを program.cs ファイルと、上で追加したファイルに追加します。
+
+	using Microsoft.WindowsAzure.Storage.File.Protocol;
+	using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+
+BLOB、テーブル、キューのストレージは `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` タイプを使用しますが、File Storage はその独自のタイプ、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` タイプを使用することに注意してください。ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
+
+    // Parse your storage connection string from your application's configuration file.
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    // Create the File service client.
+    CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
+
+    // Set metrics properties for File service.
+    // Note that the File service currently uses its own service properties type,
+    // available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
+    fileClient.SetServiceProperties(new FileServiceProperties()
+    {
+        // Set hour metrics
+        HourMetrics = new MetricsProperties()
+        {
+            MetricsLevel = MetricsLevel.ServiceAndApi,
+            RetentionDays = 14,
+            Version = "1.0"
+        },
+        // Set minute metrics
+        MinuteMetrics = new MetricsProperties()
+        {
+            MetricsLevel = MetricsLevel.ServiceAndApi,
+            RetentionDays = 7,
+            Version = "1.0"
+        }
+    });
+
+    // Read the metrics properties we just set.
+    FileServiceProperties serviceProperties = fileClient.GetServiceProperties();
+    Console.WriteLine("Hour metrics:");
+    Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
+    Console.WriteLine(serviceProperties.HourMetrics.RetentionDays);
+    Console.WriteLine(serviceProperties.HourMetrics.Version);
+    Console.WriteLine();
+    Console.WriteLine("Minute metrics:");
+    Console.WriteLine(serviceProperties.MinuteMetrics.MetricsLevel);
+    Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
+    Console.WriteLine(serviceProperties.MinuteMetrics.Version);
+
+
 ## File Storage のよく寄せられる質問
 
 1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
@@ -556,7 +587,7 @@ Azure ストレージ分析で File Storage のメトリックがサポートさ
 
 	現在これはサポートされていません。
  
-7. **現在 File Storage のレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
+7. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
 
 	RA-GRS もサポート予定ですが、まだ予定は公表できません。
 
@@ -615,4 +646,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

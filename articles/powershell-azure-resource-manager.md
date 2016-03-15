@@ -442,7 +442,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 
 - リソース グループからリソースを削除するには、**Remove-AzureRmResource** コマンドレットを使用します。このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
 
-	このコマンドは、TestRG リソース グループから TestSite Web サイトを削除します。
+	このコマンドは、TestRG1 リソース グループから TestSite Web サイトを削除します。
 
 		Remove-AzureRmResource -Name TestSite -ResourceGroupName TestRG1 -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01
 
@@ -463,4 +463,4 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

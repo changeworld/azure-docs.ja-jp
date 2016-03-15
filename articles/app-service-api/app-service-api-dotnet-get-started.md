@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/05/2016"
+	ms.date="03/09/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service で API Apps と ASP.NET を使用する
@@ -461,9 +461,10 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
  
 4. API アプリの **[アプリケーションの設定]** ブレードで下へスクロールして **[アプリの設定]** セクションに移動し、次のキーと値を追加します。
 
-	|キー|値|例
-	|---|---|---|
-	|toDoListDataAPIURL|https://{your data tier API app name}.azurewebsites.net|https://todolistdataapi0121.azurewebsites.net|
+	| **キー** | toDoListDataAPIURL |
+	|---|---|
+	| **値** | https://{your data tier API app name}.azurewebsites.net |
+	| **例** | https://todolistdataapi0121.azurewebsites.net |
 
 4. **[保存]** をクリックします。
 
@@ -477,7 +478,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 13. ブラウザーのアドレス バーの URL に「swagger」を追加し、Enter キーを押します。(URL は `http://{apiappname}.azurewebsites.net/swagger` です。)
 
-	ブラウザーには、ToDoListDataAPI と同様の Swagger UI が表示されますが、今回の `owner` は、Get 操作の必須フィールドではありません。これは、中間層 API アプリからデータ層 API アプリに値が送信されているためです。(認証のチュートリアルでは、`owner` パラメーターの実際のユーザー ID を中間層から送信しますが、ここではアスタリスクをハードコーディングしています。)
+	ブラウザーには、ToDoListDataAPI と同様の Swagger UI が表示されますが、今回の `owner` は、Get 操作の必須フィールドではありません。これは、中間層 API アプリからデータ層 API アプリに値が送信されているためです (認証のチュートリアルでは、`owner` パラメーターの実際のユーザー ID を中間層から送信しますが、ここではアスタリスクをハードコーディングしています)。
 
 12. Get メソッドや他のメソッドを試して、中間層 API アプリからデータ層 API アプリが正常に呼び出されていることを確認します。
 
@@ -485,7 +486,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 ## <a id="creating"></a> 省略可能: API アプリ プロジェクトをゼロから作成する
 
-このチュートリアルでは、App Service にデプロイする ASP.NET Web API プロジェクトをダウンロードしており、新しいプロジェクトをゼロから作成することはしていません。API アプリにデプロイするプロジェクトを作成する場合は、標準的な Web API プロジェクトを作成し、Swashbuckle パッケージをインストールするか、**[Azure API アプリ]** という、プロジェクトの新規作成テンプレートを使用してください。このテンプレートを使用するには、**[ファイル]、[新規]、[プロジェクト]、[ASP.NET Web アプリケーション]、[Azure API アプリ]** の順にクリックします。
+このチュートリアルでは、App Service にデプロイする ASP.NET Web API プロジェクトをダウンロードしており、新しいプロジェクトをゼロから作成することはしていません。API アプリにデプロイするプロジェクトを作成する場合は、標準的な Web API プロジェクトを作成して Swashbuckle パッケージをインストールするか、**[Azure API アプリ]** という新しいプロジェクト テンプレートを使用することができます。このテンプレートを使用するには、**[ファイル]、[新規]、[プロジェクト]、[ASP.NET Web アプリケーション]、[Azure API アプリ]** の順にクリックします。
 
 ![](./media/app-service-api-dotnet-get-started/apiapptemplate.png)
 
@@ -517,7 +518,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 ## 省略可能: Azure Resource Manager テンプレートにおける API 定義の URL
 
-このチュートリアルでは、Visual Studio と Azure ポータルにおける API 定義の URL を見てきました。API アプリに使用する API 定義の URL は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。
+このチュートリアルでは、Visual Studio と Azure ポータルにおける API 定義の URL を見てきました。API アプリに使用する API 定義の URL は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) で [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。
 
 API 定義プロパティを設定する Azure Resource Manager テンプレートの例については、[このチュートリアルのサンプル アプリケーションのリポジトリにある azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を参照してください。テンプレートに次のようなセクションがあります。
 
@@ -529,4 +530,4 @@ API 定義プロパティを設定する Azure Resource Manager テンプレー�
 
 このチュートリアルでは、API アプリを作成し、それにコードをデプロイし、クライアント コードを生成し、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

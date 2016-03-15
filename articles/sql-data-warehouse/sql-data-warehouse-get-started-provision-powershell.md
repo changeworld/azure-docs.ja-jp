@@ -13,13 +13,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/25/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-get-started-provision.md)
+- [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
@@ -42,7 +42,7 @@ PowerShell をまだセットアップしていない場合は、ダウンロー
 	```
 	Get-AzureRmSubscription	-SubscriptionName "MySubscription" | Select-AzureRmSubscription
 	```
-   
+
 ## SQL Data Warehouse データベースを作成する
 SQL Data Warehouse をデプロイするには、New-AzureRmSQLDatabase コマンドレットを使用します。コマンドを実行する前に、次の前提条件を満たしていることを確認してください。
 
@@ -71,14 +71,14 @@ New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "myn
  + **DatabaseName**: 作成する SQL Data Warehouse の名前。
  + **ServerName**: 作成の際に使用するサーバーの名前 (V12 にする必要があります)。
  + **ResourceGroupName**: 使用するリソース グループ。サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
- + **Edition**: SQL Data Warehouse を作成するには、エディションを "DataWarehouse" に設定する必要があります。 
+ + **Edition**: SQL Data Warehouse を作成するには、エディションを "DataWarehouse" に設定する必要があります。
 
 コマンド リファレンスについては、「[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619339.aspx)」を参照してください。
 
 パラメーターのオプションについては、「[Create Database (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt204021.aspx)」を参照してください。
 
 ## 次のステップ
-SQL Data Warehouse のプロビジョニングが完了したら、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
+SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
 
 プログラムでの SQL Data Warehouse の管理方法について詳しくは、[Powershell][] または [REST API][] のドキュメントを参照してください。
 
@@ -96,4 +96,4 @@ SQL Data Warehouse のプロビジョニングが完了したら、[サンプル
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
 [Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

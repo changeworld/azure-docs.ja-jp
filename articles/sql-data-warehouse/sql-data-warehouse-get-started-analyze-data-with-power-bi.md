@@ -13,15 +13,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Power BI でデータを視覚化する
 
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。「[Create a SQL Data Warehouse (SQL Data Warehouse の作成)](sql-data-warehouse-get-started-provision.md)」では、作成方法が示されています。
-> 
+> [AZURE.NOTE] このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。「[Create a SQL Data Warehouse (SQL Data Warehouse の作成)](sql-data-warehouse-get-started-provision.md)」では、作成方法が示されています。
+>
 > SQL Data Warehouse データベースは既にあっても、サンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
 > [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
@@ -31,7 +31,7 @@
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
 1. [Azure ポータル][]にサインインします。
-2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。 
+2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。
 
     ![データベースの検索][1]
 
@@ -57,7 +57,7 @@ Power BI を開き、AdventureWorksDW データベースに接続するには:
 
 Power BI を使用して AdventureWorksDW サンプル データを分析する準備が整いました。分析を実行するため、AdventureWorksDW には AggregateSales という名前のビューがあります。このビューには、会社の売上高を分析するための重要なメトリックがいくつか含まれています。
 
-1. 郵便番号に基づく売上高の地図を作成するには、右側のフィールド ペインにある [AggregateSales] ビューをクリックして展開します。[PostalCode] 列と [SalesAmount] 列をクリックして選択します。 
+1. 郵便番号に基づく売上高の地図を作成するには、右側のフィールド ペインにある [AggregateSales] ビューをクリックして展開します。[PostalCode] 列と [SalesAmount] 列をクリックして選択します。
 
     ![Power BI select AggregateSales][6]
 
@@ -66,7 +66,7 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
     ![Power BI マップ][7]
 
 2. この手順では、顧客の所得ごとの売上高を表示する棒グラフを作成します。これを作成するには、展開した AggregateSales ビューにアクセスします。[SalesAmount] フィールドをクリックします。[Customer Income] フィールドを左方向へドラッグし、[軸] にドロップします。
-    
+
     ![Power BI select axis][8]
 
     棒グラフは左側に移動しました。
@@ -110,4 +110,4 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

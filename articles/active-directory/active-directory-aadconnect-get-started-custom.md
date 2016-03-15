@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/22/2016"
+	ms.date="03/04/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -40,7 +40,7 @@
 | オプションの構成 | 説明 |
 | ------------- | ------------- |
 | 既存の SQL Server を使用する | SQL Server 名とインスタンス名を指定することができます。使用するデータベース サーバーが既にある場合は、このオプションを選択します。SQL Server での参照が有効になっておらず、ポート番号を指定する必要がある場合は、**[インスタンス名]** ボックスに、インスタンス名、コンマ、ポート番号の順に入力してください。 |
-| 既存のサービス アカウントを使用する | 既定では Azure AD Connect は、使用する同期サービス用のローカル サービス アカウントを作成します。パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。リモート SQL Srver を使用する場合は、ドメインでのサービス アカウントとパスワードが必要です。このような場合は、使用するサービス アカウントを入力します。サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。「[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)」を参照してください |
+| 既存のサービス アカウントを使用する | 既定では Azure AD Connect は、使用する同期サービス用のローカル サービス アカウントを作成します。パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。リモート SQL Srver または認証が非ちうようなプロキシを使用する場合は、ドメインでのサービス アカウントとパスワードが必要です。このような場合は、使用するサービス アカウントを入力します。サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。「[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)」を参照してください |
 | カスタム同期グループを指定する | 同期サービスがインストールされている場合、既定では、Azure AD Connect によって 4 つのグループがサーバーでローカルに作成されます。これらのグループは。管理者グループ、オペレーター グループ、参照グループ、およびパスワード再設定グループです。独自のグループを指定する場合は、ここから行うことができます。グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。 |
 
 ## ユーザーのサインイン
@@ -238,4 +238,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

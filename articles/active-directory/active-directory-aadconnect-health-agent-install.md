@@ -31,7 +31,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -50,14 +50,11 @@
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AD FS 診断サービス  
+- Azure AD Connect Health AD FS Diagnostics Service
+- Azure AD Connect Health AD FS Insights Service
+- Azure AD Connect Health AD FS Monitoring Service
 
-- Azure AD Connect Health AD FS 分析サービス  
-
-- Azure AD Connect Health AD FS 監視サービス  
-
-
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install5.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
 
 
 ### Windows Server 2008 R2 サーバーへのエージェントのインストール
@@ -113,7 +110,7 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。
 
-![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
+![AD FS audit logs](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
@@ -138,7 +135,9 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成できます。
 
 >[AZURE.NOTE]
-- エージェントは、Microsoft Windows HTTP サービスではなく、System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は機能しません。- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。 - 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
+- エージェントが Microsoft Windows HTTP サービスではなく System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は使用できません。
+- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。
+- 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
 
 ### Health エージェントのプロキシ構成の変更
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成する場合、以下のオプションがあります。
@@ -193,7 +192,7 @@ role パラメーターは、現在、以下の値を受け取ります。
 
 コマンドで - ShowResults フラグを使用すると、詳細ログが表示されます。次の例を使用してください。
 
-    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResults
+    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResult
 
 >[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
 
@@ -207,4 +206,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

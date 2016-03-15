@@ -22,9 +22,9 @@
 Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
-- [Azure Classic PowerShell](application-gateway-create-gateway.md)
-- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-- [Azure Resource Manager template](application-gateway-create-gateway-arm-template.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 
 <BR>
 
@@ -54,11 +54,11 @@ GitHub から直接 Azure リソース マネージャー テンプレートを�
 
 GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。再利用するには、次の手順に従ってください。
 
-1. https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/ に移動します。
+1. [[Application Gateway の作成]](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-create) に移動します。
 2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
 3. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 4. Azure リソース マネージャー テンプレートを使用したことがある場合は、手順 7 に進みます。
-5. 保存したファイルを開き、 5 行目にある **parameters** の内容を参照します。Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
+5. 保存したファイルを開き、5 行目にある **parameters** の内容を参照します。Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
 
 	| パラメーター | 説明 |
 	|---|---|
@@ -116,7 +116,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
 ## PowerShell を使用した Azure リソース マネージャー テンプレートのデプロイ
 
-Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
 ### 手順 1.
 
@@ -191,7 +191,7 @@ Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のイ
 
 Azure CLI を使用してダウンロードした Azure リソース マネージャー テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -200,13 +200,13 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 		info:	New mode is arm
 
-3. 必要に応じて、次のように **azure group create** コマンドで新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+3. 必要に応じて、次のように **azure group create** コマンドで新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 		azure group create -n appgatewayRG -l eastus
 
 **-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
-**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
+**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*eastus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
@@ -248,7 +248,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 
 ### 手順 1.
-「[パブリック IP での Application Gateway の作成](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
+「[Create an application gateway with public IP (パブリック IP での Application Gateway の作成)](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
 
 
 ### 手順 2.
@@ -284,4 +284,4 @@ SSL オフロードを構成する場合は、「[SSL オフロードの Applica
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

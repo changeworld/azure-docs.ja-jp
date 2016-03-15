@@ -82,7 +82,9 @@ Windows システムに Putty をダウンロードし、実行します。
 
 ![Putty 接続](media/putty2.png)
 
-`Tunnels` および `configure` の次の転送ポートを選択します: - **ソース ポート:** あなたの優先設定 (Mesos の場合は 80、Swarm の場合は 2375) - **ターゲット:** localhost:80 (Mesos) または localhost:2375 (Swarm)
+`Tunnels` および `configure` の次の転送ポートを選択します:
+- **ソース ポート:** 使用する優先設定 (Mesos の場合は 80、Swarm の場合は 2375)
+- **ターゲット:** localhost:80 (Mesos) または localhost:2375 (Swarm)
 
 次の例は Mesos で構成されていますが、Docker Swarm でも同様です。
 
@@ -98,7 +100,7 @@ Mesos のトンネルを構成したら、関連エンドポイントに次の�
 
 - Mesos - `http://localhost/mesos`
 - Marathon - `http://localhost/marathon`
-- Chronos -`http://localhost/chronos`. 
+- Chronos -`http://localhost/chronos` 
 
 Docker Swarm のトンネルが構成されると、Swarm クラスターに Docker CLI 経由でアクセスできます。最初に「`DOCKER_HOST`」という名前の Windows 環境変数を値 ` :2375` で構成する必要があります。
 
@@ -108,4 +110,4 @@ Docker Swarm のトンネルが構成されると、Swarm クラスターに Doc
  
 - [ACS と Mesos を使用する](./container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/28/2016" 
+	ms.date="03/06/2016" 
 	ms.author="awills"/>
 
 
@@ -94,7 +94,7 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 ### 例外
 
-[例外の監視を設定](app-insights-asp-net-exception-mvc.md)している場合は、例外レポートが [検索] ウィンドウに表示されます。
+[例外の監視を設定](app-insights-asp-net-exceptions.md)している場合は、例外レポートが [検索] ウィンドウに表示されます。
 
 スタック トレースを取得するには、例外をクリックします。Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
@@ -126,7 +126,7 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 [検索の詳細についてはこちらを参照してください。](app-insights-diagnostic-search.md)
 
-* *関連するイベントがない場合 - * [サーバー例外](app-insights-asp-net-exception-mvc.md)と[依存関係](app-insights-asp-net-dependencies.md)を設定します。
+* *関連するイベントがない場合 - * [サーバー例外](app-insights-asp-net-exceptions.md)と[依存関係](app-insights-asp-net-dependencies.md)を設定します。
 
 
 ## データが表示されない場合
@@ -150,7 +150,7 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 [このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
-> [AZURE.NOTE] \(ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+> [AZURE.NOTE] (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 
 ## テレメトリのデバッグ
@@ -172,7 +172,7 @@ Application Insights サーバー テレメトリが生成されると、診断�
 ## 次のステップ
 
 - [ユーザーとページのデータ](../article/application-insights/app-insights-javascript.md#selector1)
-- [Exceptions](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
+- [Exceptions](../article/application-insights/app-insights-asp-net-exceptions.md#selector1)
 - [依存関係](../article/application-insights/app-insights-asp-net-dependencies.md#selector1)
 - [可用性](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
 
@@ -214,4 +214,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->
