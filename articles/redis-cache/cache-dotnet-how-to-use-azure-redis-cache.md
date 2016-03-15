@@ -261,7 +261,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [キャッシュに接続する]: #connect-to-cache
 [オブジェクトをキャッシュに追加する、キャッシュから削除する]: #add-object
 [Specify the expiration of an object in the cache]: #specify-expiration
-[Store ASP.NET session state in the cache]: #store-session
+[ASP.NET セッション状態をキャッシュに格納する]: #store-session
 
   
 <!-- IMAGES -->
@@ -293,7 +293,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [http://redis.io/clients]: http://redis.io/clients
 [他の言語での Azure Redis Cache の開発]: http://msdn.microsoft.com/library/azure/dn690470.aspx
 [Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
-[Azure Redis Session State Provider]: http://go.microsoft.com/fwlink/?LinkId=398249
+[Azure Redis セッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=398249
 [How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
@@ -306,18 +306,18 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
+[Azure Redis Cache でのキャッシュの構成]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
 [StackExchange.Redis の構成モデル]: http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md
 
-[Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
+[キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
 [Cache の価格詳細]: http://www.windowsazure.com/pricing/details/cache/
 [Azure ポータル]: https://portal.azure.com/
 
-[Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
 
 [Migrate to Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347

@@ -92,7 +92,7 @@
 
    	![][10]
 
-5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを*ハブ名*と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
+5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを *ハブ名* と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
 
 		#ifndef HubInfo_h
 		#define HubInfo_h
@@ -436,7 +436,7 @@
 11. プロジェクトをビルドし、エラーがないことを確認します。
 
 
-> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] (ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
+> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] \(ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべての通知ペイロードが記載されています。
 
