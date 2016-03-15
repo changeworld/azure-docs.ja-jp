@@ -112,7 +112,7 @@ BizTalk ルール API アプリを作成したら、次にボキャブラリを�
 
    ![Alt text][4]
 
-2. [ボキャブラリの定義] を選択します。ボキャブラリ作成画面が表示されます。  
+2.[ボキャブラリの定義] を選択します。ボキャブラリ作成画面が表示されます。  
 3.[追加] を選択して、新しいボキャブラリ定義の追加を開始します。
 現在、ボキャブラリの定義では、リテラルと XML の 2 つの型がサポートされています。
 
@@ -251,4 +251,4 @@ BizTalk ルールは明示的なフォワード チェーンをサポートし�
 [10]: ./media/app-service-logic-use-biztalk-rules/APIDef.PNG
 [11]: ./media/app-service-logic-use-biztalk-rules/PublicAnon.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!------HONumber=AcomDC_0224_2016-->

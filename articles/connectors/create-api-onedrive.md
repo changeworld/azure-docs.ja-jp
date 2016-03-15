@@ -53,7 +53,9 @@ OneDrive を PowerApps Enterprise に追加するときに、OneDrive アプリ�
 
 1. _Microsoft アカウント デベロッパー センター_の[アプリケーション作成ページ][5]に移動し、_Microsoft アカウント_でサインインします。
 
-2. **アプリケーション名**を入力し、規約に同意します。![新しい OneDrive アプリケーション][6]
+2. **アプリケーション名**を入力し、規約に同意します。
+
+	![新しい OneDrive アプリケーション][6]
 
 3. 次のように設定します。
 
@@ -324,4 +326,4 @@ OneDrive API を PowerApps Enterprise に追加したら、この API をアプ�
 [6]: ./media/create-api-onedrive/onedrive-new-app.png
 [7]: ./media/create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!-----HONumber=AcomDC_0302_2016-->
