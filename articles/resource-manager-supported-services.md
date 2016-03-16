@@ -304,5 +304,5 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!------HONumber=AcomDC_0302_2016-->
+<!---------HONumber=AcomDC_0302_2016-->
 
