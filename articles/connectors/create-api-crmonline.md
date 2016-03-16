@@ -63,7 +63,7 @@ PowerApps Enterprise に CRM Online を追加するときに、Dynamics CRM Onli
 3. **[アプリケーションのプロパティ]** で次の操作を行います。
 
 	1. アプリケーションの**サインオン URL** を入力します。PowerApps の AAD に対して認証するので、_https://login.windows.net_ のサインオン URL を設定します。
-2. アプリの有効な**アプリ ID URI** を入力します。  
+	2. アプリの有効な**アプリ ID URI** を入力します。  
 	3. **[OK]** を選択します。  
 
 	![AAD アプリケーションの追加 - アプリケーションのプロパティ][10]
@@ -80,11 +80,14 @@ PowerApps Enterprise に CRM Online を追加するときに、Dynamics CRM Onli
 
 1. **[繰り返し]** を選択します。
 2. **[頻度]** を選択し、**[間隔]** を入力します。
-3. **[アクションの追加]** を選択します。![CRM Online の構成][13]
+3. **[アクションの追加]** を選択します。  
+![CRM Online の構成][13]
 4. 検索ボックスに CRM を入力し、名前に CRM を含むすべてのエントリが戻されるまで検索を待機します。
 5. **[Dynamics CRM Online - 新しいレコードの作成]** を選択します。
-6. **[Dynamics CRM Online へのサインイン]**を選択します。![CRM Online の構成][14]
-7. CRM Online の資格情報を入力し、アプリケーションを承認するためにサインインします。 ![CRM Online の構成][15]  
+6. **[Dynamics CRM Online へのサインイン]**を選択します。  
+![CRM Online の構成][14]
+7. CRM Online の資格情報を入力し、アプリケーションを承認するためにサインインします。
+![CRM Online の構成][15]  
 8. サインインした後、その他のトリガーと必要なアクションを追加することによって完了するロジック アプリに戻ります。
 9. メニュー バー上の **[保存]** を選択して、作業内容を保存します。
 
@@ -300,3 +303,4 @@ CRM Online API を PowerApps Enterprise に追加したら、この API をア�
 [15]: ./media/create-api-crmonline/crmconfig3.png
 
 <!---HONumber=AcomDC_0302_2016-->
+
