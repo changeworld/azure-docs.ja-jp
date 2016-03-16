@@ -48,7 +48,7 @@
 
 9. **[Advanced]** タブをクリックし、**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加して、**[Save Changes]** をクリックします。
 
-> [AZURE.NOTE] リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
+	> [AZURE.NOTE] リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
 10. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、**[App Review]** をクリックし、**[Make todolist-complete-nodejs public]** を有効にして、Facebook 認証を使用した汎用パブリック アクセスを有効にします。
 

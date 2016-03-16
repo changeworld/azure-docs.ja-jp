@@ -54,8 +54,8 @@ Microsoft Translator を PowerApps Enterprise に追加するときに、Microso
 
 	1. **[クライアント ID]** の値を入力します。
 	2. アプリケーションの**名前**を入力します。
-	3. **リダイレクト URL** のダミー値を入力します。たとえば、「**https://contosoredirecturl*」と入力します。
-4. **説明**を入力します。
+	3. **リダイレクト URL** のダミー値を入力します。たとえば、「*https://contosoredirecturl*」と入力します。
+	4. **説明**を入力します。
 	5. **[作成]** を選択します。  
 
 	![アプリケーションの登録][6]
@@ -156,3 +156,4 @@ Microsoft Translator API を PowerApps Enterprise に追加したら、この AP
 [6]: ./media/create-api-microsofttranslator/register-your-application.png
 
 <!---HONumber=AcomDC_0302_2016-->
+

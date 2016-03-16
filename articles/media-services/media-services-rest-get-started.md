@@ -91,7 +91,7 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 			HTTP/1.1 301 Moved Permanently
 			Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-		この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
+	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
 ###アクセス トークンの取得
 

@@ -74,7 +74,8 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 1. Visual Studio で**サーバー エクスプローラー** ウィンドウを開きます。
 
-2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
+![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
 
 3. Azure の資格情報を使用してサインインします。
 
@@ -474,7 +475,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 	- *Global.asax.cs*  
 	- *Controllers* フォルダー: *AdController.cs*
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml* ファイル
-- *Views\\Home* フォルダー: *Index.cshtml*
+	- *Views\\Home* フォルダー: *Index.cshtml*
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -822,3 +823,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
 <!---HONumber=AcomDC_0302_2016-->
+
