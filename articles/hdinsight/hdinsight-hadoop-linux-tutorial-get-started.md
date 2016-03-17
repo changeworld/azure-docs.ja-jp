@@ -72,7 +72,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを
 
 1. **https://&lt;ClusterName>.azurehdinsight.net** に移動します。&lt;ClusterName> は、Ambari を開くために前のセクションで作成したクラスターです。
 2. Hadoop ユーザー名と前のセクションで指定したパスワードを入力します。既定のユーザー名は **admin** です。
-3. 次のスクリーンショットのように [**Hive View**] (Hive ビュー) を開きます。
+3. 次のスクリーンショットのように \[**Hive View**] (Hive ビュー) を開きます。
 
     ![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 4. ページの __[Query Editor]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
@@ -151,4 +151,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!-------HONumber=AcomDC_0309_2016-->
+<!------------HONumber=AcomDC_0309_2016-->
