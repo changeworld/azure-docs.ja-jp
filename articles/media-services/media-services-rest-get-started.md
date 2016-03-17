@@ -86,7 +86,7 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されることに注意してください。その新しい URI に再度コールする必要があります。ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 3. 新しい URL に後続の API 呼び出しを投稿します。 
 	
-		たとえば、接続しようとした後に次のようなメッセージが表示されます。
+	たとえば、接続しようとした後に次のようなメッセージが表示されます。
 		
 			HTTP/1.1 301 Moved Permanently
 			Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
