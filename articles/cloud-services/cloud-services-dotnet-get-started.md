@@ -815,4 +815,4 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Cloud Services の管理方法](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
 
-<!----HONumber=AcomDC_0204_2016-->
+<!------HONumber=AcomDC_0204_2016-->

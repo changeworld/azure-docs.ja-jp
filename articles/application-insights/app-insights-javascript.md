@@ -238,4 +238,4 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!----HONumber=AcomDC_0224_2016-->
+<!------HONumber=AcomDC_0224_2016-->
