@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="03/07/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning のアプリケーション例: Frequently Bought Together
@@ -21,7 +21,7 @@
 
 ## 重要: このサービスは推奨されていません
 
-このサービスによって提供される Frequently Bought Together 機能は、より広範囲にわたる [Recommendations API](http://gallery.azureml.net/MachineLearningAPI/3574432384684cac9cc766e57729ea4c) に統合されました。このサービスではなく、Recommendations を使用することをお勧めします。
+**このサービスによって提供される Frequently Bought Together 機能は、より広範囲にわたる [Recommendations API](http://gallery.azureml.net/MachineLearningAPI/3574432384684cac9cc766e57729ea4c) に統合されました。このサービスではなく、Recommendations を使用することをお勧めします。**
 
 ##概要
 
@@ -39,4 +39,4 @@ Frequently Bought Together Web サービスをサブスクライブすると、[
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure Mobile Engagement 認証 API の概要"
-	description="これは、Capptain API による認証を使用していたユーザーが新しい Azure Mobile Engagement API を認証に使用する必要がある場合の移行ガイドです。" 
+	pageTitle="Mobile Engagement REST API での認証"
+	description="Azure Mobile Engagement REST API を使用して認証を行う方法について説明します" 
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="wesmc7777"
+	authors="piyushjo"
 	manager="erikre"
 	editor=""/>
 
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="02/29/2016"
+	ms.date="03/07/2016"
 	ms.author="wesmc"/>
 
-# Azure Mobile Engagement - 認証への API の使用
+# Mobile Engagement REST API での認証
 
 ## 概要
 
@@ -183,4 +183,4 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 >[AZURE.NOTE] <br/>
 >1. API ルート アドレスは以前の API 用であるため、無視してください。<br/> 2. アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

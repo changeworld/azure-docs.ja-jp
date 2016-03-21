@@ -23,14 +23,17 @@ Azure Service Fabric の Testability シナリオにより、開発者は個別�
 ## サンプルのカスタム シナリオ
 このテストは、[グレースフル エラーと非グレースフル エラー](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)に対するビジネス ワークロードの割り込みについてのシナリオを示します。最適な結果を得るには、サービスの運用中またはコンピューティング中にエラーを発生させる必要があります。
 
-4 つのワークロード A、B、C、D を公開するサービスの例を見てみましょう。各ワークロードはワークフローのセットに対応し、コンピューティング、ストレージ、またはその両方の可能性があります。わかりやすくするために、例からワークロードを抽出してみましょう。この例で実行されるエラーは、RestartNode (コンピューターの再起動をシミュレートする非グレースフル エラー)、RestartDeployedCodePackage (サービス ホスト プロセスのクラッシュをシミュレートする非グレースフル エラー)、RemoveReplica (レプリカの削除をシミュレートするグレースフル エラー)、MovePrimary (Service Fabric のロード バランサーによってトリガーされるレプリカの移動をシミュレートするグレースフル エラー) です。
+4 つのワークロード A、B、C、D を公開するサービスの例を見てみましょう。各ワークロードはワークフローのセットに対応し、コンピューティング、ストレージ、またはその両方の可能性があります。わかりやすくするために、例からワークロードを抽出してみましょう。この例では、次のエラーが実行されています。
+  + RestartNode: コンピューターの再起動をシミュレートするアングレースフル エラー。
+  + RestartDeployedCodePackage: サービス ホスト プロセスのクラッシュをシミュレートするアングレースフル エラー。
+  + RemoveReplica: レプリカの削除をシミュレートするグレースフル エラー。
+  + MovePrimary: Service Fabric Load Balancer によってトリガーされるレプリカの移動をシミュレートするグレースフル エラー。
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
 
 using System;
 using System.Fabric;
-using System.Fabric.Testability;
 using System.Fabric.Testability.Scenario;
 using System.Threading;
 using System.Threading.Tasks;
@@ -147,9 +150,9 @@ class Test
     {
         Array values = Enum.GetValues(typeof(T));
         T workload = (T)values.GetValue(random.Next(values.Length));
-        return T;
+        return workload;
     }
 }
 ```
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="CLI を使用して Azure DNS の DNS レコード セットとレコードを管理する | Microsoft Azure" 
+   pageTitle="Azure CLI を使用して Azure DNS の DNS レコード セットとレコードを管理する | Microsoft Azure" 
    description="Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。レコード セットとレコードに対する操作のための CLI コマンドをすべて紹介します。" 
    services="dns" 
    documentationCenter="na" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="01/21/2016"
+   ms.date="03/04/2016"
    ms.author="joaoma"/>
 
 # CLI を使用して DNS レコードを管理する方法
@@ -22,7 +22,7 @@
 - [Azure CLI](dns-operations-recordsets-cli.md)
 - [PowerShell](dns-operations-recordsets.md)
 
-このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
+このガイドでは、クロス プラットフォームの Azure CLI を使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
 >[AZURE.NOTE] Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
 
@@ -242,4 +242,4 @@ DNS ゾーンとレコードを作成したら、 [ドメインを Azure DNS に
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

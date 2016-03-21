@@ -3,9 +3,9 @@
 	description="Stretch Database の候補となるデータベースとテーブルを特定する方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -63,4 +63,4 @@ Stretch Database を有効にします。
 ## 関連項目
 [Surface area limitations and blocking issues for Stretch Database (Stretch Database のセキュリティ制約とブロック問題)](sql-server-stretch-database-limitations.md) [Enable Stretch Database for a database (データベースの Stretch Database を有効にする)](sql-server-stretch-database-enable-database.md) [Enable Stretch Database for a table (テーブルの Stretch Database を有効にする)](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

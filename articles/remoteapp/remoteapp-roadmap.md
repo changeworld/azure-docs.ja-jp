@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="02/16/2016"
+    ms.date="03/08/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
@@ -29,7 +29,7 @@
 |Azure リソース マネージャー (ARM) のサポート||○|
 |Azure v2 リソースのサポート| |○|
 |Cloud Solution Provider (CSP)||○|
-|インド リージョンでの可用性|○||
+|インド リージョンでの可用性||○|
 |英国リージョンでの可用性||○|
 
 
@@ -47,4 +47,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

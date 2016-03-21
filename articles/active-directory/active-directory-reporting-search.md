@@ -3,8 +3,8 @@
 	description="Azure Active Directory のセキュリティ、アクティビティ、および監査レポートを検索する方法"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="mbaldwin"
+	authors="dhanyahk"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,18 +13,18 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="12/07/2015"
-	ms.author="kenhoff"/>
+	ms.date="03/07/2016"
+	ms.author="dhanyahk"/>
 
 # Azure Active Directory のレポート検索
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
-Azure Active Directory には、ディレクトリ管理者向けに、複数のレポートにわたってユーザーのセキュリティ、アクティビティ、および監査イベントを検索する機能が用意されています。
+Azure Active Directory (Azure AD) には、ディレクトリ管理者向けに、複数のレポートにわたってユーザーのセキュリティ、アクティビティ、および監査イベントを検索する機能が用意されています。
 
-検索パネルを表示するには、**Microsoft Azure 管理ポータル、Azure Active Directory、[レポート]** の順に移動します。 パネルは、レポートの一覧の上部にあります。
+検索パネルを表示するには、**Azure クラシック ポータル、Azure Active Directory、[レポート]** の順に移動します。 パネルは、レポートの一覧の上部にあります。
 
-特定のユーザーのアクティビティまたは監査イベントを検索するには、[開始] および [終了] フィールドで日付範囲を選択し、ユーザーの UPN または表示名を入力した後、チェックマーク ボタンをクリックします。
+特定のユーザーのアクティビティまたは監査イベントを検索するには、[開始] および [終了] フィールドで日付範囲を選択し、ユーザーの UPN または表示名を入力した後、チェックマーク (OK) ボタンをクリックします。
 
 ## 検索に含まれるレポート
 
@@ -36,9 +36,9 @@ Azure Active Directory には、ディレクトリ管理者向けに、複数の
 複数のエラー後のサインイン | いいえ
 複数の地域からのサインイン | いいえ
 不審なアクティビティのある IP アドレスからのサインイン | いいえ
-感染している可能性があるデバイスからのサインイン | いいえ
+感染している可能性があるデバイスからのサインイン | なし
 不規則なサインイン アクティビティ | いいえ
-異常なサインイン アクティビティがあるユーザー | いいえ
+異常なサインイン アクティビティがあるユーザー | なし
 資格情報が漏洩したユーザー | いいえ
 監査レポート | あり
 パスワード リセット アクティビティ | あり
@@ -58,4 +58,4 @@ RMS デバイスの利用状況 | いいえ
  - [Azure Active Directory レポート](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

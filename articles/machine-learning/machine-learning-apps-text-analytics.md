@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/22/2016"
+	ms.date="03/08/2016"
 	ms.author="onewth"/>
 
 
@@ -58,7 +58,7 @@ API は、入力テキストの要点を示す文字列のリストを返しま�
                
 	Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
 
-アカウントのアカウント キーは [Azure データ マーケット](https://datamarket.azure.com/account/keys)で確認できます。
+アカウントのアカウント キーは [Azure データ マーケット](https://datamarket.azure.com/account/keys)で確認できます。現在、入力形式および出力形式として受け付けられるのは JSON だけであることに注意してください。XML はサポートされていません。
 
 ---
 
@@ -383,4 +383,4 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 | TopicId | レコードが割り当てられているトピック ID。 |
 | Distance | レコードがトピックに属する確実性。Distance がゼロに近ければ、それだけ確実性が高くなります。 |
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

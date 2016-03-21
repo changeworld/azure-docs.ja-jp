@@ -133,10 +133,14 @@ Power BI を使用すると、データをレポートとして表示したり�
 
     ![[トポロジの概要] の [強制終了 (Kill)] ボタン](./media/hdinsight-storm-power-bi-topology/killtopology.png)
 
+## クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ## 次のステップ
 
 このドキュメントでは、REST を使用して Strom トポロジのデータを Power BI に送信する方法を説明します。他の Azure テクノロジを使用する方法については、以下をご覧ください。
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

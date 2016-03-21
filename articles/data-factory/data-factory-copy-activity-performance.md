@@ -1,5 +1,5 @@
 <properties
-	pageTitle="コピー アクティビティのパフォーマンスとチューニングに関するガイド"
+	pageTitle="コピー アクティビティのパフォーマンスとチューニングに関するガイド | Microsoft Azure"
 	description="コピー アクティビティによる Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。"
 	services="data-factory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/07/2016"
 	ms.author="spelluru"/>
 
 
@@ -224,4 +224,4 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

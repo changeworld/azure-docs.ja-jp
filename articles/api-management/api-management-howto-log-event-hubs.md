@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Event Hubs にイベントを記録する方法
@@ -80,7 +80,7 @@ API Management のロガーは、[API Management REST API](http://aka.ms/smapi) 
 
 要求を実行したとき、ロガーが作成されると、状態コード `201 Created` が返されます。
 
->[AZURE.NOTE]その他のリターン コードとその理由については、[ロガーの作成に関するページ](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)を参照してください。リスト、更新、削除など、その他の操作の実行方法については、[ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) エンティティのドキュメントを参照してください。
+>[AZURE.NOTE] その他のリターン コードとその理由については、[ロガーの作成に関するページ](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)を参照してください。その他、リスト、更新、削除など、各種操作の実行方法については、[ロガー](https://msdn.microsoft.com/library/azure/mt592020.aspx) エンティティのドキュメントを参照してください。
 
 ## log-to-eventhub ポリシーの構成
 
@@ -133,4 +133,4 @@ API Management でロガーを構成したら、必要なイベントを記録�
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

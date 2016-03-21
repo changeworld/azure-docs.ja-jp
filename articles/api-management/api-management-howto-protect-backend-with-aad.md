@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -166,7 +166,7 @@ Web API プロジェクトの構成と公開プロセスの一環として、バ
 
 ![Add permissions][api-management-aad-add-permissions]
 
->[AZURE.NOTE]**Windows** **Azure Active Directory** が他のアプリケーションに対するアクセス許可の下に表示されない場合、**[アプリケーション追加]** をクリックし、その一覧から追加します。
+>[AZURE.NOTE] **Windows** **Azure Active Directory** が他のアプリケーションに対するアクセス許可の下に表示されない場合、**[アプリケーション追加]** をクリックし、その一覧から追加します。
 
 Azure AD アプリケーションが API Management 開発者ポータルに構成されたら、後の手順で使用するために **App Id URI** を書き留めておきます。
 
@@ -291,7 +291,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 **[保存]** をクリックして構成を保存し、キーを表示します。
 
->[AZURE.IMPORTANT]このキーを書き留めておきます。Azure Active Directory の構成ウィンドウを閉じると、キーは再表示できません。
+>[AZURE.IMPORTANT] このキーを書き留めておきます。Azure Active Directory の構成ウィンドウを閉じると、キーは再表示できません。
 
 キーをクリップボードにコピーしてパブリッシャー ポータルに戻り、キーを **[クライアント シークレット]** テキストボックスに貼り付けて **[保存]** をクリックします。
 
@@ -413,4 +413,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

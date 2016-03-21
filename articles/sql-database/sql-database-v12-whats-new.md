@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="03/08/2016" 
 	ms.author="genemi"/>
 
 
@@ -24,7 +24,7 @@
 このトピックでは、Azure SQL Database の新しい V12 バージョンを V11 バージョンと比べたときの多くのメリットについて説明します。
 
 
-V12 には継続的に機能が追加されます。したがって、Azure のサービス更新情報に間する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
+V12 には継続的に機能が追加されます。したがって、Azure のサービス更新情報に関する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
 
 
 - サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
@@ -37,15 +37,20 @@ Azure SQL Database のリソース制限に関する最新情報は「<br/>[Azur
 ## SQL Server との強化されたアプリケーションの互換性
 
 
-SQL Database V12 の主要な目的は、Microsoft SQL Server 2014 との互換性を強化することでした。その他の領域では、V12 はプログラミングの重要な領域で SQL Server との対応を実現しました。次に例を示します。
+SQL Database V12 の主な目標は、Microsoft SQL Server 2014 との互換性を改善し、新しいバージョンの SQL Server がリリースされた場合にも互換性を維持することです。その他の領域では、V12 はプログラミングの重要な領域で SQL Server との対応を実現しました。次に例を示します。
 
 
 - [ウィンドウ関数](http://msdn.microsoft.com/library/bb934097.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx) 
+
 - [XML インデックス](http://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
+
 - [変更の追跡](http://msdn.microsoft.com/library/bb933875.aspx)
+
 - [SELECT...INTO](http://msdn.microsoft.com/library/ms188029.aspx)
+
 - [フルテキスト検索](http://msdn.microsoft.com/library/ms142571.aspx)
 
+- [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](http://msdn.microsoft.com/library/mt629158.aspx)
 
 SQL Database でまだサポートされていない一部の機能については、[ここ](sql-database-transact-sql-information.md)を参照してください。
 
@@ -161,4 +166,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

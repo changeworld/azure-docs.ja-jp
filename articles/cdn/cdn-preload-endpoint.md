@@ -40,11 +40,11 @@
 
 	![CDN 読み込みブレード](./media/cdn-preload-endpoint/cdn-load-blade.png)
 
-4. 読み込む各資産の完全パスを **[パス]** テキストボックスに入力します (*/pictures/kitten.png* など)。
+4. 読み込む各資産の完全パスを **[パス]** テキストボックスに入力します (`/pictures/kitten.png` など)。
 
 	> [AZURE.TIP] テキストを入力すると、**[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
 	>
-	> パスには相対 URL を指定します。ワイルドカードとしてアスタリスク (*) を使用できます。
+	> パスは[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)、`^(?:\/[a-zA-Z0-9-_.\u0020]+)+$` に準拠する相対 URL にする必要があります。資産ごとに独自のパスが必要です。資産を事前に読み込むためのワイルドカード機能はありません。
 
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-paths.png)
 
@@ -52,9 +52,10 @@
 
 	![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-button.png)
 
+> [AZURE.NOTE] 読み込み要求は、CDN プロファイルごとに 1 分あたり 10 件に制限されています。
 
 ## 関連項目
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

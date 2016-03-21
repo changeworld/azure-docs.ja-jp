@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="01/09/2016" 
+    ms.date="03/04/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -74,7 +74,7 @@ Azure ストレージ アカウントは、JDK、アプリケーション サー
 1. **[ストレージ アカウント]** ダイアログ ボックスで、編集するストレージ アカウントをクリックし、**[削除]** をクリックします。
 2. ストレージ アカウントの削除を求めるメッセージが表示されたら、**[OK]** をクリックします。
 
->[AZURE.NOTE]**[ストレージ アカウント]** ダイアログ ボックスでのストレージ アカウントの削除は、Eclipse 内で表示できるストレージ アカウントの一覧からのみアカウントを削除します。ストレージ アカウントは、Azure サブスクリプションからは削除されません。また、ストレージ アカウントは、Eclipse でサブスクリプションの詳細を再読み込みした後に、再度表示される場合があります。
+>[AZURE.NOTE] **[ストレージ アカウント]** ダイアログ ボックスでのストレージ アカウントの削除は、Eclipse 内で表示できるストレージ アカウントの一覧からのみアカウントを削除します。ストレージ アカウントは、Azure サブスクリプションからは削除されません。また、ストレージ アカウントは、Eclipse でサブスクリプションの詳細を再読み込みした後に、再度表示される場合があります。
 
 ## 関連項目 ##
 
@@ -100,4 +100,4 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

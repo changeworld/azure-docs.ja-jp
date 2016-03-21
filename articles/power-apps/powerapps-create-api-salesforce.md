@@ -14,14 +14,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Salesforce API の作成
+# PowerApps Enterprise で新しい Salesforce API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-salesforce.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
+
+組織の (テナント) App Service 環境に新しい Salesforce API を追加します。
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。![][14]
 
@@ -39,7 +45,7 @@
 
 9. Salesforce アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する Salesforce アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
 
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -58,7 +64,10 @@
 
 4. **[New Connected App]** で次のようにします。
 
-	a) **[Connected App Name]** の値を入力します。 b) **[API Name]** の値を入力します。 c) **[Contact Email]** の値を入力します。 d) _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を (このトピックで) 新しい Salesforce API を Azure ポータルで追加したときに受け取ったリダイレクト URL に設定します。
+	1. **[Connected App Name]** に値を入力します。  
+	2. **[API Name]** に値を入力します。  
+	3. **[Contact Email]** に値を入力します。  
+	4. _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を、(このトピックで) Azure ポータルを使用して新しい Salesforce API を追加したときに表示されたリダイレクト URL に設定します。  
 
 5. _[Selected OAuth scopes]_ で、次のスコープを **[Selected OAuth Scopes]** に追加します。
 
@@ -70,6 +79,10 @@
 6. 変更を**保存**します。 ![Salesforce の新しいアプリ][8]
 
 新しい Salesforce アプリが作成されます。Azure ポータルの Salesforce API 構成でこのアプリケーションを使用できます。
+
+## REST API に関するページを参照してください。
+
+[Salesforce REST API](../connectors/create-api-salesforce.md) リファレンスを参照してください。
 
 ## まとめと次のステップ
 このトピックでは、Salesforce API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -88,4 +101,4 @@
 [14]: ./media/powerapps-create-api-salesforce/browseall.png
 [15]: ./media/powerapps-create-api-salesforce/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

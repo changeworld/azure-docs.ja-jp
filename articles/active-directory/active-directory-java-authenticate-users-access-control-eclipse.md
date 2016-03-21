@@ -13,14 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="01/09/2016" 
+    ms.date="03/04/2016" 
     ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 
 このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
-> [AZURE.NOTE]Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
+> [AZURE.NOTE]
+Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
 
 ## ACS とは
 
@@ -310,4 +311,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

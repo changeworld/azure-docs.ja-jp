@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
+	ms.date="03/04/2016"
 	ms.author="jgao"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
@@ -247,11 +247,11 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
 2. このページで、次の値を選択します。
 
 	<table border="1">
-<tr><th>名前</th><th>値</th></tr>
-<tr><td>Filter Year</td><td>2013 </td></tr>
-<tr><td>Filter Period</td><td>January</td></tr>
-<tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
-</table>
+	<tr><th>名前</th><th>値</th></tr>
+	<tr><td>Filter Year</td><td>2013 </td></tr>
+	<tr><td>Filter Period</td><td>January</td></tr>
+	<tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
+	</table>
 
 3. **[Download]** をクリックします。
 4. ファイルを **C:\\Tutorials\\FlightDelay\\2013Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
@@ -263,10 +263,10 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブを実行する最も�
 1. 次のパラメーターを準備します。
 
 	<table border="1">
-<tr><th>変数名</th><th>メモ</th></tr>
-<tr><td>$storageAccountName</td><td>データのアップロード先となる Azure ストレージ アカウント。</td></tr>
-<tr><td>$blobContainerName</td><td>データのアップロード先となる BLOB コンテナー。</td></tr>
-</table>
+	<tr><th>変数名</th><th>メモ</th></tr>
+	<tr><td>$storageAccountName</td><td>データのアップロード先となる Azure ストレージ アカウント。</td></tr>
+	<tr><td>$blobContainerName</td><td>データのアップロード先となる BLOB コンテナー。</td></tr>
+	</table>
 2. Azure PowerShell ISE を開きます。
 3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
 
@@ -372,10 +372,10 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 1. 次のパラメーターを準備します。
 
 	<table border="1">
-<tr><th>変数名</th><th>メモ</th></tr>
-<tr><td>$storageAccountName</td><td>HiveQL スクリプトのアップロード先となる Azure ストレージ アカウント。</td></tr>
-<tr><td>$blobContainerName</td><td>HiveQL スクリプトのアップロード先となる BLOB コンテナー。</td></tr>
-</table>
+	<tr><th>変数名</th><th>メモ</th></tr>
+	<tr><td>$storageAccountName</td><td>HiveQL スクリプトのアップロード先となる Azure ストレージ アカウント。</td></tr>
+	<tr><td>$blobContainerName</td><td>HiveQL スクリプトのアップロード先となる BLOB コンテナー。</td></tr>
+	</table>
 2. Azure PowerShell ISE を開きます。
 
 3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。
@@ -559,13 +559,13 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 1. 次のパラメーターを準備します。
 
 	<table border="1">
-<tr><th>変数名</th><th>メモ</th></tr>
-<tr><td>$sqlDatabaseServerName</td><td>Azure SQL Database サーバーの名前。新しいサーバーを作成する場合は、何も入力しないでください。</td></tr>
-<tr><td>$sqlDatabaseUsername</td><td>Azure SQL Database サーバーのログイン名。$sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。$sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。</td></tr>
-<tr><td>$sqlDatabasePassword</td><td>Azure SQL Database サーバーのログイン パスワード。</td></tr>
-<tr><td>$sqlDatabaseLocation</td><td>この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。</td></tr>
-<tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。空白のままにすると、"HDISqoop" というデータベースが作成されます。Sqoop ジョブ出力用のテーブル名は AvgDelays です。</td></tr>
-</table>
+	<tr><th>変数名</th><th>メモ</th></tr>
+	<tr><td>$sqlDatabaseServerName</td><td>Azure SQL Database サーバーの名前。新しいサーバーを作成する場合は、何も入力しないでください。</td></tr>
+	<tr><td>$sqlDatabaseUsername</td><td>Azure SQL Database サーバーのログイン名。$sqlDatabaseServerName が既存のサーバーである場合、ログイン名とログイン パスワードを使用してサーバーを認証します。$sqlDatabaseServerName が既存のサーバーでない場合、ログイン名とログイン パスワードを使用して新しいサーバーを作成します。</td></tr>
+	<tr><td>$sqlDatabasePassword</td><td>Azure SQL Database サーバーのログイン パスワード。</td></tr>
+	<tr><td>$sqlDatabaseLocation</td><td>この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。</td></tr>
+	<tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。空白のままにすると、"HDISqoop" というデータベースが作成されます。Sqoop ジョブ出力用のテーブル名は AvgDelays です。</td></tr>
+	</table>
 2. Azure PowerShell ISE を開きます。
 3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。
 
@@ -742,4 +742,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="02/24/2016"
 	ms.author="tamram"/>
 	
 # Windows ストア アプリでの Azure Storage の使用方法
@@ -22,9 +22,9 @@
 
 ## 必要なツールのダウンロード
 
-- [Visual Studio 2012](http://msdn.microsoft.com/library/windows/apps/br211384) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、および展開を簡単に実行できます。
-- [Windows ランタイム用 Azure Storage クライアント ライブラリ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/05/windows-azure-storage-client-library-for-windows-runtime.aspx)は、Azure Storage を操作するためのクラス ライブラリを提供します。
-- [Windows ストア アプリ用 WCF Data Services ツール](http://www.microsoft.com/download/details.aspx?id=30714)は、Visual Studio 2012 以降の "サービス参照の追加" 機能を拡張し、Windows ストア アプリ用のクライアント側 OData をサポートします。
+- [Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx) では、Windows ストア アプリケーションのビルド、デバッグ、ローカライズ、パッケージ化、および展開を簡単に実行できます。Visual Studio 2012 以降が必要です。
+- [Windows ランタイム用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、Azure Storage を操作するためのクラス ライブラリを提供します。
+- [Windows ストア アプリケーション用 WCF Data Services ツール](http://www.microsoft.com/download/details.aspx?id=30714)は、Visual Studio の [サービス参照の追加] 機能を拡張し、Windows ストア アプリケーション用のクライアント側 OData サポートを追加します。
 
 ## アプリケーションの開発
 
@@ -87,4 +87,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

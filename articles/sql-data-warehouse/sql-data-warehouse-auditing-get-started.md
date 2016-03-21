@@ -1,29 +1,29 @@
-<properties 
-   pageTitle="SQL Data Warehouse データベース監査の使用 | Microsoft Azure" 
-   description="SQL Data Warehouse データベース監査の使用" 
-   services="sql-data-warehouse" 
-   documentationCenter="" 
-   authors="twounder" 
-   manager="barbkess" 
+<properties
+   pageTitle="SQL Data Warehouse データベース監査の使用 | Microsoft Azure"
+   description="SQL Data Warehouse データベース監査の使用"
+   services="sql-data-warehouse"
+   documentationCenter=""
+   authors="twounder"
+   manager="barbkess"
    editor=""/>
 
-<tags 
-   ms.service="sql-data-warehouse" 
-   ms.workload="data-management" 
-   ms.tgt_pltfrm="na" 
-   ms.devlang="na" 
-   ms.topic="article" 
-   ms.date="01/07/2016" 
+<tags
+   ms.service="sql-data-warehouse"
+   ms.workload="data-management"
+   ms.tgt_pltfrm="na"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.date="03/03/2016" 
    ms.author="mausher;barbkess;sonyama"/>
- 
-# SQL Data Warehouse データベース監査の使用 
+
+# SQL Data Warehouse データベース監査の使用
 Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
 監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。標準準拠をサポートする Azure プログラムの詳細については、「<a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Microsoft Azure のトラスト センター</a>」を参照してください。
 
-+ [データベース監査の基本] 
++ [データベース監査の基本]
 + [データベースに対する監査を設定する]
 + [監査ログとレポートを分析する]
 
@@ -66,7 +66,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 	![][1]
 
 3. 監査構成ブレードで、最初に **[監査設定をサーバーから継承]** チェック ボックスをオフにします。これにより、特定のデータベースの設定を指定できます。
-	
+
 	![][2]
 
 4. 次に、**[オン]** ボタンをクリックして監査を有効にします。
@@ -103,7 +103,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 ##<a id="subheading-4">運用環境での使用手法</a>
 このセクションでは、上のスクリーン キャプチャーについて説明します。<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure クラシック ポータル</a>を使用できます。
- 
+
 
 ##<a id="subheading-5"></a>ストレージ キーの再生成
 
@@ -116,7 +116,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 3. 監査構成ブレードに戻り、[**ストレージ アクセス キー**] を [*セカンダリ*] から [*プライマリ*] に切り替え、[**保存**] をクリックします。
 
 4. ストレージの UI に戻り、*セカンダリ アクセス キー*を**再生成** (次のキー更新サイクルの準備として) します。
-  
+
 ##<a id="subheading-6"></a>Automation
 Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。auditing コマンドレットにアクセスにするには、Azure リソース マネージャー モードで PowerShell を実行する必要があります。
 
@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0309_2016-->

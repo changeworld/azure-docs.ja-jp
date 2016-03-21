@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="03/03/2016" 
 	ms.author="nitinme"/>
 
 
@@ -55,7 +55,9 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 1. IntelliJ IDEA の [ようこそ] 画面が再び表示されたら、**[Configure (構成)]** をクリックし、**[Plugins (プラグイン)]** をクリックします。
 
-2. 次の画面の左下隅にある **[Browse Repositories (リポジトリの参照)]** をクリックします。**[リポジトリの参照]** ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ]** を選択し、**[インストール]** をクリックします。
+2. 次の画面の左下隅にある **[Browse Repositories (リポジトリの参照)]** をクリックします。**[Browse Repositories (リポジトリの参照)]** ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ (Preview)]** を選択し、**[Install (インストール)]** をクリックします。
+
+	![HDInsight プラグインのインストール](./media/hdinsight-apache-spark-intellij-tool-plugin/install-hdinsight-plugin.png)
 
 3. メッセージが表示されたら、**[Restart IntelliJ IDEA (IntelliJ IDEA の再起動)]** ボタンをクリックして、IDE を再起動します。
 
@@ -73,7 +75,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 	* プロジェクト名とプロジェクトの場所を指定します。
 	* **Project SDK** の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
+	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックし、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
 	
 		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
@@ -160,7 +162,7 @@ HDInsight プラグインを使用してさまざまな操作を実行できま�
 
 ### クラスターのストレージ コンテナーにアクセスする
 
-1. **[View (ビュー)]** メニューの **[Tool Windows (ツール ウィンドウ)]** をポイントし、**[HDInsight Explore]** をクリックします。メッセージが表示されたら、Azure サブスクリプションにアクセスするための資格情報を入力します。
+1. **[View (ビュー)]** メニューの **[Tool Windows (ツール ウィンドウ)]** をポイントし、**[HDInsight Explorer]** をクリックします。メッセージが表示されたら、Azure サブスクリプションにアクセスするための資格情報を入力します。
 
 2. **[HDInsight]** ルート ノードを展開して、使用できる HDInsight Spark クラスターの一覧を表示します。
 
@@ -191,7 +193,7 @@ IntelliJ IDEA 用の HDInsight Tools プラグインを使用すると、ワー�
 
 ### 前提条件
 
-Windows コンピューターでのローカル Spark Scala アプリケーションの実行中に [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) (Windows 上に WinUtils.exe が不足しているために発生する) に説明されているような例外が発生する場合があります。このエラーを回避するには、[実行可能ファイルをここからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\\WinUtils\\bin** のような場所に保存する必要があります。次に、環境変数 **HADOOP\_HOME** を追加し、この変数の値を **C\\WinUtils** に設定します。
+Windows コンピューターでのローカル Spark Scala アプリケーションの実行中に [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) (Windows 上に WinUtils.exe が不足しているために発生する) に説明されているような例外が発生する場合があります。このエラーを回避するには、[実行可能ファイルをここからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\\WinUtils\\bin** などの場所に保存する必要があります。次に、環境変数 **HADOOP\_HOME** を追加し、この変数の値を **C\\WinUtils** に設定します。
 
 ### ローカル Spark Scala アプリケーションの実行	 
 
@@ -207,7 +209,7 @@ Windows コンピューターでのローカル Spark Scala アプリケーシ�
 
 	* プロジェクト名とプロジェクトの場所を指定します。
 	* **Project SDK** の場合、Java のバージョンは必ず 7 より新しいものを指定します。
-	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックして、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
+	* **Scala SDK** の場合、**[Create (作成)**] をクリックし、**[Download (ダウンロード)]** をクリックし、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
 	
 		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
@@ -285,7 +287,7 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 		<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-4. 変更を保存します。これで、アプリケーションは HDInsight ツール プラグインと互換性を持つようになります。これをテストするには、Project Explorer でプロジェクト名を右クリックします。ポップアップ メニューで、**[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]** を選択できるようになるはずです。
+4. 変更を保存します。これで、アプリケーションは HDInsight ツール プラグインと互換性を持つようになります。これをテストするには、Project Explorer でプロジェクト名を右クリックします。ポップアップ メニューで、**[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]** のオプションが表示されるようになったはずです。
 
 ## <a name="seealso"></a>関連項目
 
@@ -318,4 +320,4 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

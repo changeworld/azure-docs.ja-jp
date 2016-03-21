@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="antonba"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -68,4 +68,4 @@ API Management サービスが VPN に接続された後で仮想ネットワー
 [チュートリアル: サイト間クロスプレミス接続用の仮想ネットワークの作成]: ../virtual-networks-create-site-to-site-cross-premises-connectivity
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

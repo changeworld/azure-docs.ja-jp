@@ -43,9 +43,9 @@
 	次に、クラスの本文に次のコードを置き換えます。
 
 	```
-	class SimpleEventProcessor : IEventProcessor
-	    {
-	        Stopwatch checkpointStopWatch;
+    class SimpleEventProcessor : IEventProcessor
+	{
+	    Stopwatch checkpointStopWatch;
 
 	    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
 	    {
@@ -82,7 +82,7 @@
             }
 	    }
 	}
-	````
+    ````
 
 	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
@@ -108,7 +108,9 @@
       string eventProcessorHostName = Guid.NewGuid().ToString();
       EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
       Console.WriteLine("Registering EventProcessor...");
-      eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>().Wait();
+      var options = new EventProcessorOptions();
+      options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
+      eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
 
       Console.WriteLine("Receiving. Press enter key to stop worker.");
       Console.ReadLine();
@@ -116,13 +118,13 @@
     }
 	````
 
-> [AZURE.NOTE]このチュートリアルでは、[EventProcessorHost][] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost][] の複数のインスタンスを実行することをお勧めします (「[イベント処理のスケール アウトのサンプル][]」をご覧ください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost][] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要][]」と「[Event Hubs のプログラミング ガイド][]」のトピックを参照してください。
+> [AZURE.NOTE] このチュートリアルでは、[EventProcessorHost][] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost][] の複数のインスタンスを実行することをお勧めします (「[イベント処理のスケール アウトのサンプル][]」をご覧ください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost][] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要][]」と「[Event Hubs のプログラミング ガイド][]」のトピックを参照してください。
 
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure クラシック ポータル]: http://manage.windowsazure.com
@@ -134,4 +136,4 @@
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0309_2016-->

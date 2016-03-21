@@ -3,8 +3,8 @@
    description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="nkolli1"
+   manager="shivamg"
    editor=""/>
 <tags
    ms.service="backup"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
    ms.date="01/28/2016"
-   ms.author="jimpark;"/>
+   ms.author="jimpark;nkolli;trinadhk"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、ネットワークとストレージのコストを抑えます。Azure Backup はデータを圧縮するだけでなく、一度だけ全コンテンツをバックアップし、その後は差分/増分をバックアップするという作業も行います。そのため、10TB ファイル ボリュームがバックアップされている場合、Azure Backup は初期レプリケーション (IR) として 10TB を送信し、差分レプリケーションとして差分のみを送信します。そのため、IR の際に最大 WAN 帯域幅が必要になります。IR で WAN の依存関係を減らすために、Azure Backup は Azure Import/Export サービスによるオフライン バックアップをサポートします。
@@ -119,4 +119,4 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 - Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage/storage-import-export-service.md)をご覧ください。
 - ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

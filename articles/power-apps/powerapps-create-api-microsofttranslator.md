@@ -14,18 +14,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Microsoft Translator API の作成
+# PowerApps Enterprise に新しい Microsoft Translator API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-microsofttranslator.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-microsofttranslator.md)
+
+組織の (テナント) App Service 環境に Microsoft Translator API を追加する
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、自動的に会社のサブスクリプションにサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。![][7]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「powerapps」と入力します。![][8]
+3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][8]
 
 4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
 
@@ -55,12 +61,19 @@ ID とシークレットの値が割り当てられた既存の Microsoft Transl
 
 3. **[アプリケーションの登録]**で次の操作を行います。
 
-	a) **クライアント ID** の値を入力します。b) アプリケーションの**名前**を入力します。c) **リダイレクト URL** のダミー値を入力します。たとえば、「**https://contosoredirecturl*」と入力します。d) **説明**を入力します。e) **[作成]** をクリックします。
+	1. **[クライアント ID]** の値を入力します。  
+	2. アプリケーションの**名前**を入力します。  
+	3. **リダイレクト URL** のダミー値を入力します。たとえば、「**https://contosoredirecturl*」と入力します。
+4. **説明**を入力します。  
+	5. **[作成]** を選択します。  
 
 	![アプリケーションの登録][6]
 
 新しい Microsoft Translator アプリケーションが作成されます。Azure ポータルの Microsoft Translator API 構成でこのアプリケーションを使用できます。
 
+## REST API に関するページを参照してください。
+
+[Microsoft Translator REST API](../connectors/create-api-microsofttranslator.md) リファレンス。
 
 ## まとめと次のステップ
 このトピックでは、Microsoft Translator API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -78,4 +91,4 @@ ID とシークレットの値が割り当てられた既存の Microsoft Transl
 [7]: ./media/powerapps-create-api-microsofttranslator/browseall.png
 [8]: ./media/powerapps-create-api-microsofttranslator/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

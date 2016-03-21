@@ -22,9 +22,9 @@
 
 # Stream Analytics ジョブへのストリーミング データ入力または参照データの追加
 
-Event Hubs からのストリーミング データ入力または BLOG ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
+Event Hubs からのストリーミング データ入力または BLOB ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
 
-Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](./storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。
+Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。Stream Analytics は、ジョブ サブスクリプションの内部および外部で [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) および [Azure BLOB](../storage/storage-dotnet-how-to-use-blobs.md) ストレージとの最上位の統合が行われます。
 
 この記事は、[Stream Analytics のラーニング パス](/documentation/learning-paths/stream-analytics/)の 1 ステップです。
 
@@ -88,4 +88,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

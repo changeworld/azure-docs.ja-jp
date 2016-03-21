@@ -1,0 +1,49 @@
+<properties
+   pageTitle="Service Fabric クラスター リソース マネージャー - 移動コスト"
+   description="Service Fabric サービスの移動コストの概要"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="masnider"
+   manager="timlt"
+   editor=""/>
+
+<tags
+   ms.service="Service-Fabric"
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="03/03/2016"
+   ms.author="masnider"/>
+
+# 移動コスト
+クラスターに対して行う変更と特定のソリューションのスコアを決定するときに考慮するもう 1 つの重要な要因は、そのソリューションを実現するための全体的なコストです。
+
+サービス インスタンスまたはレプリカを移動すると少なくとも CPU 時間やネットワーク帯域幅のコストがかかり、ステートフル サービスの場合は、古いレプリカをシャット ダウンする前の状態のコピーを作成するために必要なディスクの領域のコストもかかります。リソース マネージャーによって構成されるソリューションのコストが最小限であることが望ましいのは明らかですが、クラスター内のリソースの割り当てが大幅に向上するソリューションも無視したくありません。
+
+Service Fabric リソース マネージャーには、コストを計算して制限する方法が 2 つあります。第一に、リソース マネージャーはクラスターの新しいレイアウトを計画するときに、実行するすべての移動を個別にカウントします。2 つのソリューションの全体的なバランス (スコア) がほぼ同じになる単純な例では、1 つを最低コスト (移動の合計数) にします。この方法は、既定の負荷または静的な負荷の場合と同じ問題が発生するまではうまくいきます。すべての移動が等しい複雑なシステムではそうはいきません。一部のコストがはるかに高くなる可能性があります。そこで、負荷と同じように、特定の時点でサービスの移動に要するコストをサービスが自己報告する手段を用意します。
+
+コード
+
+```csharp
+this.ServicePartition.ReportMoveCost(MoveCost.Medium);
+```
+
+MoveCost には、Zero、Low、Medium、High の 4 つのレベルがあります。これらは相互の相対的なレベルに過ぎません。ただし Zero は、レプリカの移動にコストがかからず、ソリューションのスコアに対してカウントしてはならないことを意味します。移動コストを High に設定しても、レプリカが移動されないことが保証されるわけではありません。相応の理由がない限り移動されないだけです。
+
+![移動するレプリカを選択する際の要因としての移動コスト][Image1]
+
+移動コストは、同等のバランスを維持したまま全体的な中断が最小限になるソリューションを見つけるのに役立ちます。サービスのコストの概念はさまざまなものに関係する可能性がありますが、最も一般的なものは次のとおりです。
+
+1.	サービスが移動する必要のある状態またはデータの量
+2.	クライアント切断のコスト (そのため、プライマリ レプリカを移動するコストは、セカンダリ レプリカの移行コストより高くなります)
+3.	実行中の操作を中断するコスト (一部のデータ ストア レベル操作はコストがかかり、特定の時点を過ぎると、必要でなければ処理を中止したくはありません)そのため、操作の実行中はコストを高くして、サービスのレプリカまたはインスタンスが移動される可能性を低くし、操作が完了したら元に戻します。
+
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+## 次のステップ
+- [メトリックの詳細](service-fabric-cluster-resource-manager-metrics.md)
+- [クラスターでのクラスター リソース マネージャーの負荷分散について (Learn about how the Cluster Resource Manager Balances Load in the Cluster)](service-fabric-cluster-resource-manager-balancing.md)
+
+[Image1]: ./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
+
+<!---HONumber=AcomDC_0309_2016-->

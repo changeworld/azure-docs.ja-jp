@@ -75,7 +75,9 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ![スクリーンショットは、Azure ポータルの証明書の拇印を示しています。][CertificateUpgrade]
 
->[AZURE.NOTE] クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。1.Azure Key Vault に新しい証明書をアップロードします。手順については、「[Service Fabric クラスターのセキュリティ保護](service-fabric-cluster-security.md)」を参照してください。そのドキュメントの手順 2. から開始します。2.証明書がデプロイされるように、クラスターを構成するすべての仮想マシン (VM) を更新します。そのためには、[Azure Key Vault チームのブログ](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
+>[AZURE.NOTE] クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。
+1. Azure Key Vault に新しい証明書をアップロードします。手順については、[Service Fabric のセキュリティ](service-fabric-cluster-security.md)に関するページを参照してください。そのドキュメントの手順 2. から開始します。
+2. 証明書がデプロイされるように、クラスターを構成するすべての仮想マシン (VM) を更新します。更新方法については、[Azure Key Vault チームのブログ](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
 
 ### アプリケーション ポート
 
@@ -100,11 +102,11 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ノードの種類ごとに、アプリケーションで使用するカスタム配置プロパティを追加できます。NodeType は、明示的に追加せずに使用できる、既定のプロパティです。
 
->[AZURE.NOTE] 配置プロパティの使用方法の詳細については、「[配置の制約の概要](service-fabric-placement-constraint.md)」を参照してください。
+>[AZURE.NOTE] 配置の制約の使用方法、ノードのプロパティ、プロパティの定義方法については、Service Fabric クラスター リソース マネージャー ドキュメントの「[Describing Your Cluster (クラスターの説明)](service-fabric-cluster-resource-manager-cluster-description.md)」の「Placement Constraints and Node Properties (配置の制約とノードのプロパティ)」を参照してください。
 
 ### 容量メトリック
 
-ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。容量メトリックを使用して負荷をレポートする方法の詳細については、「[動的な負荷レポートの概要](service-fabric-resource-balancer-dynamic-load-reporting.md)」を参照してください。
+ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。負荷をレポートする容量メトリックの使用方法については、Service Fabric クラスター リソース マネージャー ドキュメントの「[Describing Your Cluster (クラスターの説明)](service-fabric-cluster-resource-manager-cluster-description.md)」と「[Metrics and Load (メトリックと負荷)](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
 
 ### クラスターを構成する VM の OS 修正プログラム
 
@@ -124,4 +126,4 @@ Microsoft は、クラスターで実行されるファブリック コードと
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="データベース暗号化を使用して SQL Database で機密データを保護する |Microsoft Azure"
 	description="SQL Database の機密データをわずか数分で保護します。"
-	keywords="sql データベース, sql の暗号化, データベースの暗号化, 暗号化キー, 機密データ, Always Encrypted"	
+	keywords="データの暗号化, 暗号化キー, クラウドの暗号化"	
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -15,19 +15,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="03/02/2016"
 	ms.author="sstein"/>
 
-# データベース暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
+# データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
 > [AZURE.SELECTOR]
 - [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
 - [Windows 証明書ストア](sql-database-always-encrypted.md)
 
 
-この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)を使用して、SQL データベースで機密データを保護し、Azure Key Vault で暗号化キーを格納する方法について説明します。
+この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)でデータ暗号化を使用して SQL データベースの機密データを保護し、Azure Key Vault で暗号化キーを格納する方法について説明します。
 
-Always Encrypted は Azure SQL Database と SQL Server の新しい暗号化テクノロジです。常に暗号化した状態でデータを扱うので、データの使用中だけでなく、クライアント/サーバー間の移動中も機密データを保護することができます。データベース システム内で機密データがプレーンテキストとして表示されることはありません。プレーンテキスト データにアクセスできるのは、キーへのアクセス権を持つクライアント アプリケーションとアプリケーション サーバーだけです。詳細については、「[Always Encrypted (データベース エンジン)](https://msdn.microsoft.com/library/mt163865.aspx)」を参照してください。
+Always Encrypted は Azure SQL Database と SQL Server の新しいデータ暗号化テクノロジです。常に暗号化した状態でデータを扱うので、データの使用中だけでなく、クライアント/サーバー間の移動中も機密データを保護することができます。データベース システム内で機密データがプレーンテキストとして表示されることはありません。データ暗号化の構成後に、プレーンテキスト データにアクセスできるのは、キーへのアクセス権を持つクライアント アプリケーションとアプリケーション サーバーだけです。詳細については、[Always Encrypted (データベース エンジン) に関するページ](https://msdn.microsoft.com/library/mt163865.aspx)を参照してください。
 
 
 Always Encrypted を使用するようデータベースを構成したら、Visual Studio を使って、暗号化されたデータを扱う C# クライアント アプリケーションを作成します。
@@ -264,6 +264,26 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
     // Enable Always Encrypted.
     connStringBuilder.ColumnEncryptionSetting = 
        SqlConnectionColumnEncryptionSetting.Enabled;
+
+## Azure Key Vault プロバイダーを登録する
+
+次のコードは、Azure Key Vault プロバイダーを ADO.NET ドライバーに登録する方法を示しています。
+
+    private static ClientCredential _clientCredential;
+
+    static void InitializeAzureKeyVaultProvider()
+    {
+       _clientCredential = new ClientCredential(clientId, clientSecret);
+
+       SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
+          new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
+
+       Dictionary<string, SqlColumnEncryptionKeyStoreProvider> providers =
+          new Dictionary<string, SqlColumnEncryptionKeyStoreProvider>();
+
+       providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
+       SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
+    }
 
 
 
@@ -669,4 +689,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

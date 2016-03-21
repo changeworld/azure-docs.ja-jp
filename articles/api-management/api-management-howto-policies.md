@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/02/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 
@@ -23,22 +23,22 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ポリシー ステートメントとその設定の一覧については、「[Azure API Management ポリシー リファレンス][]」を参照してください。
 
-ポリシーは、API コンシューマーとマネージ API の間に配置されたプロキシ内で適用されます。プロキシは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
+ポリシーは、API コンシューマーとマネージ API の間に配置されたゲートウェイ内で適用されます。ゲートウェイは、すべての要求を受け取り、通常はそれらの要求をそのまま基底の API に転送します。ただし、ポリシーを使用すると、受信要求と送信応答の両方に変更を適用できます。
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。[制御フロー][] ポリシーや[変数の設定][]ポリシーなど、一部のポリシーはポリシーの式に基づいています。詳細については、「[詳細なポリシー][]」と「[ポリシーの式][]」をご覧ください。
 
 ## <a name="scopes"> </a>ポリシーの構成方法
 ポリシーは、グローバルに構成することも、[成果物][]、[API][]、または[操作][]をスコープとして構成することもできます。ポリシーを構成するには、パブリッシャー ポータルのポリシー エディターに移動します。
 
-![Policies menu][policies-menu]
+![[ポリシー] メニュー][policies-menu]
 
-ポリシー エディターは、[ポリシー スコープ] \(上部)、ポリシーを編集するための [ポリシー定義] \(左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
+ポリシー エディターは、[ポリシー スコープ] (上部)、ポリシーを編集するための [ポリシー定義] (左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
 
-![Policies editor][policies-editor]
+![ポリシー エディター][policies-editor]
 
 ポリシーの構成を開始するには、ポリシーを適用するスコープを最初に選択する必要があります。次のスクリーンショットでは、**[スターター]** 成果物が選択されています。ポリシー名の横の四角形は、既にポリシーがこのレベルで適用されていることを示します。
 
-![Scope][policies-scope]
+![スコープ][policies-scope]
 
 ポリシーが既に適用されているため、定義ビューに構成が表示されます。
 
@@ -56,7 +56,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 たとえば、着信要求を指定された IP アドレスに制限する新しいステートメントを追加するには、`inbound` XML 要素内にカーソルを置き、**[呼び出し元 IP の制限]** ステートメントをクリックします。
 
-![Restriction policies][policies-restrict]
+![制限ポリシー][policies-restrict]
 
 これで、ステートメントを構成する方法を示す XML スニペットが `inbound` 要素に追加されます。
 
@@ -148,4 +148,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

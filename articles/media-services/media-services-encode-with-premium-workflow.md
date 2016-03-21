@@ -18,9 +18,9 @@
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 
->[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
+>[AZURE.NOTE]- プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 >
->このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
+>- このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
 ##概要
 
@@ -35,8 +35,6 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 このトピックでは、.NET を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示します。
 
 **メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルは .workflow 拡張子を持ち、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
-
->[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 
 ##エンコード
 
@@ -279,4 +277,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

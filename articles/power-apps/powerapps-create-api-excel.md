@@ -5,7 +5,7 @@
     suite="powerapps"
 	documentationCenter="" 
 	authors="rajeshramabathiran"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,16 +14,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Excel API の作成
+# PowerApps Enterprise で新しい Excel API を作成する
+
+組織の (テナント) App Service 環境に新しい Excel API を追加する
 
 ## Azure ポータルでの API の作成
 
 1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
-2. タスク バーで **[参照]** を選択します。![][4]
+2. タスク バーの **[参照]** をクリックします。![][4]
 
 3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][5]
 
@@ -53,4 +55,4 @@
 [4]: ./media/powerapps-create-api-excel/browseall.png
 [5]: ./media/powerapps-create-api-excel/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への SQL コードの移行
@@ -55,9 +55,23 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次の�
 ### 共通テーブル式
 SQL Data Warehouse 内の共通テーブル式 (CTE) の現在の実装には、次の機能と制限事項があります。
 
-**CTE 機能** CTE は SELECT ステートメントで指定できます。CTE は CREATE VIEW ステートメントで指定できます。CTE は CREATE TABLE AS SELECT (CTAS) ステートメントで指定できます。CTE は CREATE REMOTE TABLE AS SELECT (CRTAS) ステートメントで指定できます。CTE は CREATE EXTERNAL TABLE AS SELECT (CETAS) ステートメントで指定できます。リモート テーブルは CTE から参照できます。外部テーブルは CTE から参照できます。複数の CTE クエリ定義を CTE に定義できます。
+**CTE 機能**
++ CTE は、SELECT ステートメントで指定できます。
++ CTE は、CREATE VIEW ステートメントで指定できます。
++ CTE は、CREATE TABLE AS SELECT (CTAS) ステートメントで指定できます。
++ CTE は、CREATE REMOTE TABLE AS SELECT (CRTAS) ステートメントで指定できます。
++ CTE は、CREATE EXTERNAL TABLE AS SELECT (CETAS) ステートメントで指定できます。
++ リモート テーブルは、CTE から参照できます。
++ 外部テーブルは、CTE から参照できます。
++ 複数の CTE クエリ定義は、CTE で定義できます。
 
-**CTE の制限事項** CTE の後ろには単一の SELECT ステートメントを続ける必要があります。INSERT、UPDATE、DELETE、および MERGE のステートメントはサポートされていません。それ自体への参照を含む共通テーブル式 (再帰共通テーブル式) はサポートされていません (下のセクションを参照)。複数の WITH 句を CTE に指定することはできません。たとえば、CTE\_query\_definition にサブクエリが含まれている場合、そのサブクエリには別の CTE を定義する入れ子になった WITH 句を含めることはできません。ORDER BY 句は、TOP 句が指定されている場合を除き、CTE\_query\_definition で使用することはできません。バッチの一部であるステートメントで CTE を使用すると、それより前のステートメントでは後ろにセミコロンが必要です。CTE が sp\_prepare で準備されているステートメントで使用されると、PDW の他の SELECT ステートメントと同じように動作します。ただし、CTE が sp\_prepare で準備される CETAS の一部として使用される場合、バインドを sp\_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp\_prepare はエラーを検出せずに渡されますが、代わりに sp\_execute でエラーがスローされます。
+**CTE の制限事項**
++ CTE の後ろには単一の SELECT ステートメントを続ける必要があります。INSERT、UPDATE、DELETE、MERGE ステートメントはサポートされていません。
++ 自己参照を含む共通テーブル式 (再帰共通テーブル式) は、サポートされていません (以下のセクションを参照してください)。
++ CTE で、複数の WITH 句を指定することはできません。たとえば、CTE\_query\_definition にサブクエリが含まれている場合、そのサブクエリに、別の CTE を定義する入れ子になった WITH 句を含めることはできません。
++ TOP 句が指定されている場合を除き、ORDER BY 句は、CTE\_query\_definition で使用できません。
++ バッチの一部であるステートメントで CTE を使用する場合は、前のステートメント末尾にセミコロンを付ける必要があります。
++ Sp\_prepare によって作成されるステートメントで使用される場合、CTE は PDW の他の SELECT ステートメントと同様に動作します。ただし、CTE が sp\_prepare で準備される CETAS の一部として使用される場合、バインドを sp\_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp\_prepare はエラーを検出せずに渡されますが、代わりに sp\_execute でエラーがスローされます。
 
 ### 再帰共通テーブル式 (CTE)
 
@@ -80,17 +94,17 @@ SQL Data Warehouse 内の共通テーブル式 (CTE) の現在の実装には、
 たとえば、次のコードは、@@ROWCOUNT 情報を取得するための代替ソリューションです。
 
 ```
-SELECT  SUM(row_count) AS row_count 
-FROM    sys.dm_pdw_sql_requests 
-WHERE   row_count <> -1 
-AND     request_id IN 
-                    (   SELECT TOP 1    request_id 
-                        FROM            sys.dm_pdw_exec_requests 
-                        WHERE           session_id = SESSION_ID() 
+SELECT  SUM(row_count) AS row_count
+FROM    sys.dm_pdw_sql_requests
+WHERE   row_count <> -1
+AND     request_id IN
+                    (   SELECT TOP 1    request_id
+                        FROM            sys.dm_pdw_exec_requests
+                        WHERE           session_id = SESSION_ID()
                         ORDER BY end_time DESC
                     )
 ;
-``` 
+```
 
 ## 次のステップ
 コード開発について詳しくは、[開発の概要][]に関するページを参照してください。
@@ -117,4 +131,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -18,13 +18,13 @@
 
 # 新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+- [Azure Portal と Azure PowerShell の使用](data-factory-monitor-manage-pipelines.md)
+- [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 
 この記事では、**監視と管理アプリ**を使用してパイプラインを監視、管理、デバッグする方法について説明します。また、そのアプリを使用し、アラートを作成して障害時に通知を受け取る方法についても説明します。
       
 ## 監視と管理アプリの起動 
-監視と管理アプリを起動するには、該当するデータ ファクトリの **[Data Factory]** ブレードで **[監視アプリ]** タイルをクリックします。
+監視と管理アプリを起動するには、該当するデータ ファクトリの **[DATA FACTORY]** ブレードで **[監視アプリ]** タイルをクリックします。
 
 ![Monitoring tile on Data Factory home page](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
@@ -193,7 +193,7 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 
 別のアクティビティ ウィンドウに切り替えるには、上部にあるカレンダー ビューでそのアクティビティ ウィンドウをクリックします。上部にある**左矢印**/**右矢印**ボタンを使用すると、前/次の週のアクティビティ ウィンドウを表示することもできます。
 
-下部のウィンドウにあるツール バー ボタンを使用して、アクティビティ ウィンドウを**再実行**したり、そのウィンドウの詳細を**更新**したりできます。
+下部のウィンドウにあるツール バー ボタンを使用して、アクティビティ ウィンドウを**再実行**したり、そのウィンドウの詳細を**更新**したりすることができます。
 
 
 ## システム ビューの使用
@@ -281,7 +281,7 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 -------------- | ------ | ----------
 アクティビティの実行が開始されました | 開始済み | 開始中
 アクティビティの実行が完了しました | Succeeded | Succeeded 
-アクティビティの実行が完了しました | Failed| リソースの割り当ての失敗<p>実行の失敗</p><p>タイムアウト</p><p>検証の失敗</p><p>中止</p>
+アクティビティの実行が完了しました | Failed| リソースの割り当ての失敗<br/><br/>実行の失敗<br/><br/>タイムアウト<br/><br/>検証の失敗<br/><br/>中止
 オンデマンド HDI クラスターの作成が開始されました | 開始済み | &nbsp; |
 オンデマンド HDI クラスターが正常に作成されました | Succeeded | &nbsp; |
 オンデマンド HDI クラスターが削除されました | Succeeded | &nbsp; |
@@ -295,4 +295,4 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
     
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

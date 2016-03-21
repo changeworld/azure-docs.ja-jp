@@ -1,21 +1,20 @@
-<BR> 
+<BR>
 ## FAQ 
-### How much do reverse DNS records cost?
-They’re free!  There is no additional cost for reverse DNS records or queries.
-### Will my reverse DNS records resolve from the internet?
-Yes. Once you set the reverse DNS property for your Cloud Service, Azure manages all the DNS delegations and DNS zones required to ensure that reverse DNS record resolves for all internet users.
-### Will a default reverse DNS record be created for my Cloud Services?
-No. Reverse DNS will be an opt-in feature. No default reverse DNS record will be created if you choose not to configure one.
-What is the format for the fully-qualified domain name (FQDN)?
-FQDNs are specified in forward order, and must be terminated by a dot (e.g., “app1.contoso.com.”).
-### What happens if the validation checks for the reverse DNS I’ve specified fail?
-Where the validation for reverse DNS checks fail, the service management operation will fail. Please correct the reverse DNS value as required, and retry.
-### Can I manage reverse DNS for my Azure Website?
-Reverse DNS is not supported for Azure Websites. Reverse DNS is supported for Azure PaaS roles and IaaS virtual machines.
-### Can I configure multiple reverse DNS records for my Cloud Service?
-No. Azure supports a single reverse DNS record for each Azure Cloud Service. Each Azure Cloud Service however can have their own reverse DNS record.
-### Can I host the ARPA zones for my Azure-assigned IPs on Azure DNS within my own subscription, or on my own authoritative DNS servers?
-No. Azure does not support the onward delegation of ARPA zones. Azure hosts the ARPA zones for all available IPs, and enables customers to create reverse DNS records within these ARPA zones.
-### Can I host ARPA zones for my ISP-assigned IP blocks on Azure DNS?
-No. Azure DNS does not currently support reverse DNS records in customers DNS zones.
+### 逆引き DNS レコードのコストはどのくらいですか?
+無料です。 逆引き DNS レコードまたはクエリに追加コストはかかりません。
+### 逆引き DNS レコードはインターネットから解決しますか?
+はい。Cloud Services の逆引き DNS プロパティを設定すると、Azure は、すべてのインターネット ユーザーについて逆引き DNS レコードを解決するために必要なすべての DNS 委任と DNS ゾーンを管理します。
+### Cloud Services の既定の逆引き DNS レコードは作成されますか?
+いいえ。逆引き DNS はオプトイン機能です。既定の逆引き DNS レコードを構成しない設定の場合、レコードは作成されません。完全修飾ドメイン名 (FQDN) の形式とは何ですか? FQDN は順方向で指定します。末尾にはドットを指定する必要があります (例: “app1.contoso.com.”)。
+### 指定した逆引き DNS の検証チェックが失敗すると、どうなりますか?
+逆引き DNS の検証チェックが失敗すると、サービス管理操作は失敗します。必要に応じて逆引き DNS 値を修正し、再試行してください。
+### Azure Websites では逆引き DNS を管理できますか?
+Azure Websites では、逆引き DNS はサポートされていません。Azure PaaS ロールと IaaS 仮想マシンでは、逆引き DNS がサポートされます。
+### Cloud Services 用に複数の逆引き DNS を構成できますか?
+いいえ、Azure は Azure Cloud Services ごとに 1 つの逆引き DNS レコードをサポートしています。ただし、各 Azure Cloud Services は、独自の逆引き DNS レコードを持つことができます。
+### 自分のサブスクリプション内の Azure DNS で、または所有している承認 DNS サーバーで、Azure から割り当てられた IP の ARPA ゾーンをホストできますか?
+いいえ。Azure は ARPA ゾーンの以降の委任をサポートしていません。Azure は、すべての使用可能な IP の ARPA ゾーンをホストします。また、ユーザーは ARPA ゾーン内で逆引き DNS レコードを作成できます。
+### ISP から割り当てられた Azure DNS 上の IP ブロックの ARPA ゾーンをホストできますか?
+いいえ。現在、Azure DNS は、お客様の DNS ゾーン内の逆引き DNS レコードをサポートしていません。
 
+<!---HONumber=AcomDC_0309_2016-->

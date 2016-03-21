@@ -4,7 +4,7 @@
 	services="redis-cache"
 	documentationCenter="na"
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor="tysonn" />
 <tags 
 	ms.service="cache"
@@ -12,14 +12,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="12/16/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
 
 このトピックでは、Azure Redis Cache インスタンスの構成を確認し、更新する方法と、Azure Redis Cache インスタンス用の既定の Redis サーバー構成について説明します。
 
->[AZURE.NOTE]Premium Cache 機能の構成と使用について詳しくは、「[Premium Azure Redis Cache のデータ永続化の構成方法](cache-how-to-premium-persistence.md)」、「[Premium Azure Redis Cache の Redis クラスタリングの構成方法](cache-how-to-premium-clustering.md)」、および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
+>[AZURE.NOTE] Premium Cache 機能の構成と使用について詳しくは、「[Premium Azure Redis Cache のデータ永続化の構成方法](cache-how-to-premium-persistence.md)」、「[Premium Azure Redis Cache の Redis クラスタリングの構成方法](cache-how-to-premium-clustering.md)」、および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 
 ## Redis Cache の設定の構成
 
@@ -90,7 +90,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 **maxmemory-reserved** 設定は、フェールオーバーに伴うレプリケーションなどのキャッシュ以外の操作のために予約されているメモリの量を、MB 単位で構成するものです。また、断片化率が高い場合も使用できます。この値を設定すると、負荷が変化するときでも、Redis サーバーの稼働状態がより安定します。この値は、書き込みが大量に発生するワークロードに対しては、高く設定する必要があります。メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
->[AZURE.IMPORTANT]**maxmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
+>[AZURE.IMPORTANT] **maxmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
 
 ## キースペース通知 (詳細設定)
 
@@ -98,7 +98,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ![Redis Cache の高度な設定](./media/cache-configure/IC808319.png)
 
->[AZURE.IMPORTANT]キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュと Premium キャッシュに対してのみ使用可能です。
+>[AZURE.IMPORTANT] キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュと Premium キャッシュに対してのみ使用可能です。
 
 詳細については、[Redis キースペース通知](http://redis.io/topics/notifications)に関するトピックを参照してください。サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
 
@@ -116,20 +116,20 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 **[OK]** をクリックして永続化の構成を保存します。
 
->[AZURE.IMPORTANT]Redis のデータ永続化は、Premium Cache でのみ使用できます。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
+>[AZURE.IMPORTANT] Redis のデータ永続化は、Premium Cache でのみ使用できます。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 
 <a name="cluster-size"></a>
 ## Redis クラスター サイズ
 
 クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
->[AZURE.NOTE]Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
+>[AZURE.NOTE] Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
 
 ![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
 
->[AZURE.IMPORTANT]Redis クラスタリングは、Premium キャッシュでのみ使用できます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+>[AZURE.IMPORTANT] Redis クラスタリングは、Premium キャッシュでのみ使用できます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
 
 ## ユーザーとタグ
@@ -144,7 +144,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 新しい Azure Redis Cache インスタンスに適用される既定の Redis 構成値は、次のとおりです。
 
->[AZURE.NOTE]`StackExchange.Redis.IServer.ConfigSet` メソッドを使用してこのセクションの設定を変更することはできません。このセクションのいずれかのコマンドでこのメソッドを呼び出すと、次のような例外がスローされます。
+>[AZURE.NOTE] `StackExchange.Redis.IServer.ConfigSet` メソッドを使用してこのセクションの設定を変更することはできません。このセクションのいずれかのコマンドでこのメソッドを呼び出すと、次のような例外がスローされます。
 >
 >`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >  
@@ -178,7 +178,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 ## Azure Redis Cache でサポートされない Redis コマンド
 
->[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理はマイクロソフトによって管理されるため、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
+>[AZURE.IMPORTANT] Azure Redis Cache インスタンスの構成と管理はマイクロソフトによって管理されるため、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
 >
 >-	BGREWRITEAOF
 >-	BGSAVE
@@ -195,7 +195,7 @@ Redis コマンドの詳細については、[http://redis.io/commands](http://r
 
 **Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュと Premium キャッシュに対して使用できます。
 
->[AZURE.IMPORTANT]Redis コンソールは、VNET またはクラスタリングとは動作しません。
+>[AZURE.IMPORTANT] Redis コンソールは、VNET またはクラスタリングとは動作しません。
 >
 >-	[VNET](cache-how-to-premium-vnet.md): キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。Redis コンソールは、VNET の一部ではない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュに接続できません。
 >-	[クラスタリング](cache-how-to-premium-clustering.md): Redis コンソールは、現時点ではクラスタリングをサポートしていない redis-cli.exe クライアントを使用します。GitHub で Redis リポジトリの[不安定な](http://redis.io/download)ブランチにある redis-cli ユーティリティは、`-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。詳細については、[http://redis.io](http://redis.io) の [Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)で「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
@@ -213,4 +213,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0309_2016-->

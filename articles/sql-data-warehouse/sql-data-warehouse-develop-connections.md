@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
-# SQL Data Warehouse への接続 
+# SQL Data Warehouse への接続
 SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。
 
 この記事では、SQL Data Warehouse への接続に関する次の点について説明します。
@@ -29,9 +29,9 @@ SQL Data Warehouse に接続するには、認証のためのセキュリティ�
 ## 認証
 SQL Data Warehouse に接続するには、次の情報を提供する必要があります。
 
-- 完全修飾サーバー名 
+- 完全修飾サーバー名
 - SQL 認証の指定
-- ユーザー名 
+- ユーザー名
 - パスワード
 - 既定のデータベース (省略可)
 
@@ -42,7 +42,7 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 1. SQL Server オブジェクト エクスプ ローラーで、SSDT または アプリケーションの接続文字列を使用してサーバーを登録する際に、 既定のデータベースを指定する。たとえば、ODBC 接続に InitialCatalog パラメーターを含めます。
 2. SSDT でセッションを作成する前に、まずユーザー データベースを強調表示する。
 
-> [AZURE.NOTE]SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、[接続およびクエリ][]の概要についての記事を参照してください。
+> [AZURE.NOTE] SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、[接続およびクエリ][]の概要についての記事を参照してください。
 
 重要事項を繰り返しますが、接続目的でデータベースを切り替えるための TRANSACT-SQL ステートメント **USE <your DB>** はサポートされていません。
 
@@ -98,7 +98,7 @@ SQL Data Warehouse では、接続およびオブジェクトの作成中にい�
 ただし、SQL Data Warehouse は分散 MPP システムであるため、セッション ID および要求 ID の両方は、SQL Server とは少し異なる方法で表示されます。
 
 セッションおよび要求は、それぞれの ID によって論理的に示されます。
-	
+
 | ID | 値の例 |
 | :--------- | :------------ |
 | セッション ID | SID123456 |
@@ -158,4 +158,4 @@ WHERE   s.[session_id] <> SESSION_ID()
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -37,7 +37,7 @@ Bing Search では、次の操作を実行できます。
 
 PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+Logic Apps に操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
 Bing Search には、次のアクションがあります。トリガーはありません。
@@ -47,9 +47,6 @@ Bing Search には、次のアクションがあります。トリガーはあ�
 なし | <ul><li>Web を検索する</li><li>動画を検索する</li><li>画像を検索する</li><li>ニュースを検索する</li><li>関連項目を検索する</li><li>候補を検索する</li><li>すべてを検索する</li></ul>
 
 すべての API は、JSON および XML 形式のデータに対応します。
-
-## その他の構成を追加する
-Bing Search を PowerApps Enterprise に追加すると、アクセス キーの入力を求められます。Bing Search キーを取得していない場合は、無料の [Bing Search サービス](https://datamarket.azure.com/dataset/bing/search)を使用してキーを取得します。
 
 
 ## Swagger REST API リファレンス
@@ -297,8 +294,7 @@ Bing Search から Web サイト、動画、画像など、すべてを取得し
 
 ## 次のステップ
 
-Bing Search API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
-
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0302_2016-->
+[API リスト](apis-list.md)に戻ります。
+<!---HONumber=AcomDC_0309_2016-->

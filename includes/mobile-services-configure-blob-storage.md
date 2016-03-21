@@ -1,6 +1,6 @@
 新しい Todo 項目が挿入された場合に SAS を生成する、新しい挿入スクリプトが登録されます。
 
-0. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)を参照してください。
+0. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../articles/storage/storage-create-storage-account.md)を参照してください。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
@@ -78,7 +78,7 @@
 
    	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の `sasQueryString` プロパティに割り当てます。`imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライアント UI でのバインド中にイメージを表示できるようになります。
 
-	>[AZURE.NOTE]このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って [generateSharedAccessSignature メソッド](http://go.microsoft.com/fwlink/?LinkId=390455)</a>を呼び出すことができます。次に例を示します。
+	>[AZURE.NOTE] このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って [generateSharedAccessSignature メソッド](http://go.microsoft.com/fwlink/?LinkId=390455)</a>を呼び出すことができます。次に例を示します。
 	>                 
 	>     blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);
 
@@ -91,4 +91,4 @@
 <!-- URLs. -->
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

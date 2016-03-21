@@ -14,20 +14,43 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="01/23/2016"
+	ms.date="03/08/2016"
 	ms.author="heidist"/>
 
-#Azure Search: チュートリアル、ビデオ デモ、サンプル
+#Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
 
 次のビデオ、デモ、チュートリアル、サンプル アプリを使って作業をスピードアップできます。
 
+##コード サンプル
+
+- [**デモ サイトのコード サンプル: ニューヨーク市 (NYC) ジョブ Web サイト**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)では、ASP.NET MVC を使用して、NYC のジョブ データについてのライブ デモ Azure Search サイトのソースを提供します。
+
+- [**.NET クライアント ライブラリのコード サンプル**](https://github.com/Azure-Samples/search-dotnet-getting-started)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
+
+- [**REST API のコード サンプル**](https://github.com/Azure-Samples/search-rest-api-getting-started)は、REST API の使用方法を説明するサンプル コードを提供します。
+
+上記のすべてのコード サンプルは、特定のシナリオで Azure Search を使用する方法を示す他のサンプルと共に、Azure サンプル Github リポジトリにあります ([**[Azure Samples] > [Azure Search]**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search))。
+
 ##デモ サイト
 
-[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。
+これらのサイトは、検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。
+
+[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。このアプリケーションでは、[簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。コードを変更して、[Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。
 
 [**ASP.NET MVC コンボ アプリで App Service + Azure Search を試す**](search-tryappservice.md)は、オンラインで変更して ASP.NET アプリケーションのさまざまな検索機能を試すことのできるデータ、機能 Web アプリケーション、ソース コードを掲載した、Azure Search の無料のセッションです (1 時間)。
 
 [**Azure Search デモ サイト**](https://searchsamples.azurewebsites.net/#/)は、Azure Search のためのデモ アプリを集めたサイトです。Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。
+
+##トップ 5
+
+次に、上位にランクされた Azure Search のチュートリアルとビデオをいくつか紹介します。
+
+- [ビデオ: Microsoft Virtual Academy の Azure Search の概要](https://mva.microsoft.com/ja-JP/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382)は Azure Search の知識を深めるために優れたリソースです。
+- [ビデオ: AzureCon 2015: Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)は、Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスを提供します。 
+- [.NET クライアント ライブラリのコード サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
+- 「[チュートリアル: .NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」では、Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
+- 「[チュートリアル: ポータルから Azure Search を使用する](search-get-started-portal.md)」は、コードを書かずに、インデックスとデータを取得する純粋なポータル ベースのチュートリアルです。このチュートリアルは、ポータルで一般的なタスクを実行する方法を学習するために役立ちます。
+
 
 ##ビデオ
 
@@ -35,7 +58,7 @@
 ----|------------|-----------
 [Channel9 Data Exposed: Azure Search のカスタム アナライザー、検索分析、および ポータル クエリ](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search)|2016 年 1 月|21 分。カスタム アナライザーによって、トークナイザーとトークン フィルターの構成が可能になります。検索分析によって、ユーザーが入力した検索用語や、検索インデックスの有効性についての洞察を得ることができます。Search エクスプローラーは、ポータルからクエリを実行する、組み込みのクエリ ツールです。 
 [Channel9 Data Exposed: Azure Search の拡張機能](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements)|2015 年 11 月|17 分。StackExchange データのデータの取り込み。Azure ポータルでのインデックスの作成。インデクサーがサポートされているデータ ソースをクロールして Azure Search インデックスにデータをプルする方法について学びます。言語アナライザー。Lucene クエリ式。
-[Azure Search とは](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|2015 年 10 月|1 分半で説明する Azure Search の概要。
+[Azure Search とは](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|2015 年 10 月|1、2 分で説明します。 Azure Search の概要。
 [AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|2015 年 9 月|Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスです (プレゼンター: Pablo Castro)。 
 [Build 2015: 最新データ](http://channel9.msdn.com/Events/Build/2015/2-663)|2015 年 6 月|この 29 分のセッションでは、Azure Search が最新のデータ革命にどのように組み込まれるかを説明します (プレゼンター: Shawn Bice、Pablo Castro)。
 [Build 2015: Azure Search を使用した Mobile および WebApps における優れた検索エクスペリエンスの実現](http://channel9.msdn.com/Events/Build/2015/2-745)|2015 年 6 月|1 時間。Pablo Castro が Microsoft Build 2015 を使って説明します。
@@ -55,13 +78,12 @@
 
 チュートリアル|説明
 -----------|-----------
+[.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)|Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
 [Azure Search を使用して StackExchange のデータを検索する方法](search-howto-stackexchange-data.md)|Azure Search と統合されたアプリケーションで StackExchange データを全文検索します。
 [Azure Search と D3.js を使用して対話型データの視覚化をビルドする方法](https://azure.microsoft.com/blog/2015/07/14/how-to-use-azure-search-with-d3-js-to-build-interactive-data-visualizations/)|画像検索機能をカスタム アプリに追加する方法を示すブログ投稿とサンプル コードを掲載しています。
-[.NET での Azure Search の使用](search-get-started-dotnet.md)|マネージ コードで Azure Search を操作する方法について説明します。
 [NodeJS での Azure Search の使用](search-get-started-nodejs.md)|NodeJS で Azure Search を操作する方法について説明します。
 [Java での Azure Search の使用](search-get-started-java.md)|Eclipse や Apache Tomcat サーバーを使って、Azure Search を使用するサンプル アプリケーションを構築して実行する Java プログラマー向けのチュートリアルです。
 [Azure Search のシナリオと機能](https://azure.microsoft.com/blog/2014/08/28/azure-search-scenarios-and-capabilities/)|現在の機能で実現されるプライマリ シナリオについて説明したブログ投稿です。
-[.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)|Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
 [検索候補を検索アプリケーションに追加する方法](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)|一般的にオート コンプリートと呼ばれる検索候補を実行する方法を説明します。このデモでは、Azure Search の検索候補を活用する MVC4 アプリケーションの作成、Twitter typeahead.js ライブラリを使用した JavaScript での効率的な自動補完コンポーネントの構築、ファジー検索候補を使用して、ユーザーがスペルを間違えても検索候補を表示される方法など、多くのトピックの手順について説明します。
 [TechNet バーチャル ラボ: Microsoft Azure Search アプリケーションの構築](http://go.microsoft.com/?linkid=9874663)|開発環境、ツール、ドキュメント、およびデータが用意されたバーチャル ラボ。ラボを完了するには、Azure アカウント (試用版のサブスクリプションまたは個人の Azure サブスクリプションのいずれか) が必要です。
 [Azure Search を使用した地理空間検索アプリの開発](search-create-geospatial.md)|Bing Maps および座標を使用して、地理空間検索をサポートします。
@@ -69,35 +91,4 @@
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-##サンプル コード サイト
-
-Azure Search のサンプル コードがある以下のサイトを参照してください。
-
-- [https://github.com/Azure-Samples](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=+only%3Asources+search)
-- [https://github.com/AzureSearch](https://github.com/AzureSearch) 
-- [https://github.com/liamca/AzureSearchDemos](https://github.com/liamca/AzureSearchDemos)
-- [https://github.com/MicrosoftLearning/AzureSearch-MVA](https://github.com/MicrosoftLearning/AzureSearch-MVA)
-
-##サンプル コード一覧
-
-- [**.NET-2015-02-28 クライアント ライブラリのコード サンプル**](https://github.com/AzureSearch/.NET-2015-02-28-Sample)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
-- [**「Java で Azure Search を使ってみる」チュートリアルのコード サンプル**](https://github.com/Azure-Samples/search-java-getting-started)
-- [**「Azure Search を使ってみる」チュートリアルのコード サンプル**](https://github.com/Azure-Samples/search-dotnet-getting-started)
-- [**Java インデクサー デモのコード サンプル**](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo)
-- [**NodeJS インデクサー デモのコード サンプル**](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)
-- [**ASP.NET MVC を利用した NYC ジョブ Web サイト サンプル**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)では、NYC ジョブ データでライブ デモ Azure Search サイトが構築されます。
-- [**search-dotnet-management-api**](https://github.com/Azure-Samples/search-dotnet-management-api/) は、管理 REST API を使用する Windows コンソール アプリケーションです。
-- [**Cortana for Windows Phone を利用した音声認識サンプル**](https://github.com/Azure-Samples/search-dotnet-windows-phone-cortana-speech)は、Windows Phone の音声認識を利用し、Azure Search に対して検索する方法を示します。
-- [**「よく一緒に購入されている品目」推奨事項サンプル**](https://github.com/liamca/AzureSearchDemos/tree/master/Recommendations)では、Active Data Factory、SQL Database、BLOB ストレージ、HDInsight を利用し、製品が同時に購入される頻度に基づき、製品推奨事項を実装します。
-- [**AzSearchAutoScaleWeb**](https://github.com/liamca/AzureSearchDemos/tree/master/AzSearchAutoScaleWeb) は、Azure Search サービスを自動拡大/縮小する方法を示したサンプル コードです。
-- [**BabyNameJS**](https://github.com/liamca/AzureSearchDemos/tree/master/BabyNamesJS) はチュートリアルでデータを提供する index.html ファイルです。
-
-CodePlex で、最新バージョンと関連のあるパブリック プレビュー期間中に公開された古いサンプルがいくつか記載されています。
-
-- [**AdventureWorks デモ**](https://azuresearchadventureworksdemo.codeplex.com/)は、ASP.NET MVC 4 アプリケーションです。
-- [**提案デモ**](https://azsearchsuggestions.codeplex.com/SourceControl/latest)は、ASP.NET MVC 4 アプリケーションです。
-- [**GeoSearch サンプル**](https://azuresearchgeospatial.codeplex.com/)は、ASP.NET MVC 4 アプリケーションです。
-- [**SQL Server と Azure Search の同期サンプル**](http://sqlserver2azuresearch.codeplex.com/) は、埋め込み型のローカルのデータベースから SQL Server の行セットを読み込む Windows コンソール アプリケーションです。
-- [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイルを定義し、実行し、更新する Windows コンソール アプリケーションです。
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

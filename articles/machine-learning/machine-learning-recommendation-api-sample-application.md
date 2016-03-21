@@ -3,7 +3,7 @@
 	description="Azure ML Recommendation サンプル アプリケーション" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="luisca" 
+	authors="LuisCabrer" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/02/2016" 
 	ms.author="luisca"/>
 
 
-# Machine Learning の Recommendations API の一般的な操作
+# サンプル アプリケーションを使用した Recommendations API のチュートリアル
 
 ##目的
 
-このドキュメントでは、[サンプル アプリケーション](http://1drv.ms/1xeO2F3)を使用して、Machine Learning の Recommendations API を使用する方法を示しています。
+このドキュメントでは、[サンプル アプリケーション](https://code.msdn.microsoft.com/Recommendations-144df403)を使用して、Machine Learning の Recommendations API を使用する方法を示しています。
 
 このアプリケーションは、すべての機能や API の使用を意図したものではありません。Machine Learning の Recommendation サービスを初めて使用する際に実行する一般的な操作の一部を示します。
 
@@ -90,4 +90,4 @@ API の詳細については、Microsoft Azure Marketplace のドキュメント
 サンプル アプリケーションは、運用環境での実行を意図していません。カタログに提供されたデータはごく小さく、意味のある推奨モデルとはなりませんが、デモの目的でのみ提供されています。
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

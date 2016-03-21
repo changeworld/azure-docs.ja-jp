@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/23/2016"
+   ms.date="03/02/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Web アプリケーション ファイアウォールを追加する
@@ -42,7 +42,7 @@ Azure Security Center では、Web アプリケーションを保護するため
 10. **[Web アプリケーション ファイアウォールのセットアップの完了]** を選択します。新しいブレードが開きます。トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
 11. 対象の Web アプリケーションを選択します。Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。手順を完了した後、**[トラフィックを制限]** を選択します。セキュリティ センターによって WAF が接続されます。![][6]
 
-> [AZURE.NOTE] 自動プロビジョニング プロセスは、個別の VNet にデプロイされている WAF パッケージ (リソース マネージャーのデプロイ モデルを使用して作成) に基づいています。VM (クラシック) 上で保護されている Web アプリケーションへのアクセスは、NSG のみを使用する WAF アプライアンスに制限されます。今後、このサポートは、全面的にカスタマイズされた WAF パッケージのデプロイ (クラシック) へと拡張される予定です。Azure リソースの詳細については、「[クラシック デプロイ モデルとリソース マネージャーのデプロイ モデル](../azure-classic-rm.md)」を参照してください。
+> [AZURE.NOTE] セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。Azure リソースの詳細については、「[クラシック デプロイ モデルとリソース マネージャーのデプロイ モデル](../azure-classic-rm.md)」を参照してください。
 
 その WAF からのログは完全に統合されます。セキュリティ センターは、重要なセキュリティ アラートを表示できるように、ログの収集と分析を自動的に開始できます。
 
@@ -54,7 +54,7 @@ Azure Security Center では、Web アプリケーションを保護するため
 
 セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」 -- セキュリティ ポリシーの構成方法について説明します。
+- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
 - 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法について説明します。
 - 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 - セキュリティの警告の管理および応答の方法について説明します。
 - 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明します。
@@ -69,4 +69,4 @@ Azure Security Center では、Web アプリケーションを保護するため
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

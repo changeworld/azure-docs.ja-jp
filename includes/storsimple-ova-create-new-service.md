@@ -23,7 +23,7 @@
 
 	1.  **[StorSimple Manager の作成]** をクリックしてサービスを作成します。
 
-		![](./media/storsimple-ova-create-new-service/image1-include.png)
+		![](./media/storsimple-ova-create-new-service/image1m-include.png)
 
 	**[サービス]** ランディング ページが表示されます。サービスの作成には数分かかります。サービスが正常に作成されると通知が表示されます。
 
@@ -31,4 +31,4 @@
 
 	サービスの状態が **"アクティブ"** に変わります。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

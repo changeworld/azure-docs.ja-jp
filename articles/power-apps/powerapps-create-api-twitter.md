@@ -14,14 +14,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Twitter API の作成
+# PowerApps Enterprise で新しい Twitter API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-twitter.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-twitter.md)
+
+組織の (テナント) App Service 環境に新しい Twitter API を追加します。
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。 
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。 
 
 2. タスク バーの **[参照]** をクリックします。![][14]
 
@@ -39,7 +45,7 @@
 
 9. Twitter アプリケーションの*コンシューマー キー*と*コンシューマー シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する Twitter アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
 
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -56,13 +62,22 @@
 
 3. **[Create an application]** では次のようにします。
    
-	a) **[Name]** の値を入力します。 b) **[Description]** の値を入力します。 c) **[Website]** の値を入力します。 d) **[Callback url]** に、先に Azure ポータルで新しい Twitter API を追加したときに受け取ったリダイレクト URL を設定します。 e) 開発者規約に同意し、**[Create your Twitter application]** を選択します。
+	1. **[Name]** の値を入力します。  
+	2. **[Description]** の値を入力します。  
+	3. **[Website]** の値を入力します。  
+	4. **[Callback url]** を、(このトピックで) Azure ポータルを使用して新しい Twitter API を追加したときに受け取ったリダイレクト URL に設定します。  
+	5. 開発者規約に同意し、**[Create your Twitter application]** を選択します。  
 
 	![Twitter アプリの作成][7]
 
 4. アプリが正常に作成されると、アプリのページにリダイレクトされます。
 
 新しい Twitter アプリが作成されます。Azure ポータルの Twitter API 構成でこのアプリケーションを使用できます。
+
+## REST API に関するページを参照してください。
+
+[Twitter REST API](../connectors/create-api-twitter.md) リファレンスを参照してください。
+
 
 ## まとめと次のステップ
 このトピックでは、Twitter API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -81,4 +96,4 @@
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

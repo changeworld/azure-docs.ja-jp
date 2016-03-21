@@ -3,9 +3,9 @@
 	description="Stretch Database で、透過的かつ安全に履歴データを Microsoft Azure クラウドに移行する方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -19,6 +19,8 @@
 # Stretch Database の概要
 
 Stretch Database は、透過的かつ安全に履歴データを Microsoft Azure クラウドに移行します。
+
+すぐに Stretch Database を開始する場合は、「[[Stretch Database を有効にする] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」を参照してください。
 
 ## Stretch Database の利点
 Stretch Database には次の利点があります。
@@ -121,4 +123,4 @@ Stretch Database は、既存のデータベースのアクセス許可モデル
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

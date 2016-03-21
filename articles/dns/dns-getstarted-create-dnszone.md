@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/24/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma"/>
 
 # Powershell で Azure DNS の使用を開始する
@@ -23,13 +23,15 @@
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 - [PowerShell](dns-getstarted-create-dnszone.md)
 
-ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。<BR><BR> ドメインのホストを開始するには、まず DNS ゾーンを作成する必要があります。特定のドメイン用に作成された DNS レコードは、そのドメインの DNS ゾーン内に含まれます。<BR><BR> 以下の手順では、Microsoft Azure PowerShell を使用します。Azure DNS コマンドレットを使用するために、必ず最新の Azure PowerShell に更新してください。Microsoft Azure コマンド ライン インターフェイス、REST API、または SDK を使用して、同じ手順を実行することもできます。<BR><BR>
+ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。
+
+ドメインのホストを開始するには、まず DNS ゾーンを作成する必要があります。特定のドメイン用に作成された DNS レコードは、そのドメインの DNS ゾーン内に含まれます。
+
+以下の手順では、Microsoft Azure PowerShell を使用します。Azure DNS コマンドレットを使用するために、必ず最新の Azure PowerShell に更新してください。同じ手順を、Azure ポータルまたはクロスプラットフォーム CLI を使用しても実行できます。
 
 Azure PowerShell を使用して Azure DNS を管理するには、次の手順を完了しておく必要があります。
 
-
-Azure DNS では、Azure リソース マネージャー (ARM) を使用します。Azure PowerShell 1.0.0 以降の場合は次の手順を実行します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。<BR><BR>
-
+Azure DNS では、Azure リソース マネージャー (ARM) を使用します。Azure PowerShell 1.0.0 以降の場合は次の手順を実行します。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 ### 手順 1.
 Azure アカウントにログインする (資格情報を使用して認証を行うよう求められます)
@@ -55,14 +57,16 @@ Azure DNS サービスは Microsoft.Network リソース プロバイダーに�
 
 	PS c:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
-
-
 ## Etag とタグ
 
 ### Etag
-たとえば、2 人のユーザーまたは 2 つのプロセスが同時に DNS レコードを変更しようとするとします。どちらの変更が優先されるでしょうか。 また、優先された側は、他のユーザーまたはプロセスによって行われた変更を上書きしたことに気付くのでしょうか。<BR><BR> Azure DNS は、Etag を使用して同じリソースへの同時変更を安全に処理します。各 DNS リソース (ゾーンまたはレコード セット) には、関連付けられている Etag があります。リソースが取得されるときは、常に Etag も取得されます。リソースを更新する場合は、Azure DNS がサーバー上の Etag の一致を確認できるように Etag を返すこともできます。リソースを更新するたびに Etag が再生成されるため、Etag の不一致は同時変更が発生していることを示します。Etag は、既存のリソースがないことを確認するために、新しいリソースの作成時にも使用されます。
+たとえば、2 人のユーザーまたは 2 つのプロセスが同時に DNS レコードを変更しようとするとします。どちらの変更が優先されるでしょうか。 また、優先された側は、他のユーザーまたはプロセスによって行われた変更を上書きしたことに気付くのでしょうか。
 
-Azure DNS PowerShell は、既定で、ゾーンおよびレコード セットへの同時変更のブロックに Etag を使用します。オプションの "-Overwrite" スイッチを使用すると、Etag チェックを実行しないように設定できます。この場合、発生したすべての同時変更が上書きされます。<BR><BR> Azure DNS REST API のレベルでは、HTTP ヘッダーを使用して Etag を指定します。次の表に各ヘッダーの動作を示します。
+Azure DNS は、Etag を使用して同じリソースへの同時変更を安全に処理します。各 DNS リソース (ゾーンまたはレコード セット) には、関連付けられている Etag があります。リソースが取得されるときは、常に Etag も取得されます。リソースを更新する場合は、Azure DNS がサーバー上の Etag の一致を確認できるように Etag を返すこともできます。リソースを更新するたびに Etag が再生成されるため、Etag の不一致は同時変更が発生していることを示します。Etag は、既存のリソースがないことを確認するために、新しいリソースの作成時にも使用されます。
+
+Azure DNS PowerShell は、既定で、ゾーンおよびレコード セットへの同時変更のブロックに Etag を使用します。オプションの "-Overwrite" スイッチを使用すると、Etag チェックを実行しないように設定できます。この場合、発生したすべての同時変更が上書きされます。
+
+Azure DNS REST API のレベルでは、HTTP ヘッダーを使用して Etag を指定します。次の表に各ヘッダーの動作を示します。
 
 |ヘッダー|動作|
 |------|--------|
@@ -83,12 +87,10 @@ DNS ゾーンは、New-AzureRmDnsZone コマンドレットを使用して作成
 
 	PS C:\> New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
->[AZURE.NOTE]Azure DNS では、ゾーン名を指定する際に末尾に '.' を付けないでください。たとえば、'contoso.com.' ではなく 'contoso.com' にします。<BR>
+>[AZURE.NOTE] Azure DNS では、ゾーン名を指定する際に末尾に '.' を付けないでください。たとえば、'contoso.com.' ではなく 'contoso.com' にします。<BR>
 
 
 これで、Azure DNS に DNS ゾーンが作成されました。DNS ゾーンを作成すると、次の DNS レコードも作成されます。<BR>
-
-
 
 - 'Start of Authority' (SOA) レコード。このレコードは、すべての DNS ゾーンのルートに存在します。
 - 権威ネーム サーバー (NS) レコード。このレコードは、どのネーム サーバーがゾーンをホストしているのかを表します。Azure DNS は、ネーム サーバーのプールを使用しているため、Azure DNS 内のゾーンによって、割り当てられるネーム サーバーは異なる場合があります。詳細については、[Azure DNS へのドメインの委任](dns-domain-delegation.md)に関するページを参照してください。<BR>
@@ -116,7 +118,7 @@ DNS ゾーンは、New-AzureRmDnsZone コマンドレットを使用して作成
                   ns4-01.azure-dns.info}
 	Tags              : {}
 
->[AZURE.NOTE]DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
+>[AZURE.NOTE] DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
 
 
 最初の DNS ゾーンを作成したところで、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/library/jj590781.aspx)などの DNS ツールを使用してそのゾーンをテストできます。<BR>
@@ -145,4 +147,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

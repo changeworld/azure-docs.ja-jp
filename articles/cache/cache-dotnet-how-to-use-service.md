@@ -4,7 +4,7 @@
 	services="cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure Managed Cache Service の使用方法
@@ -410,7 +410,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 これで、Managed Cache Service の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   MSDN リファレンス: [Azure Redis Cache][]
--	Managed Cache Service への移行方法を確認する: [Azure Managed Cache Service への移行][]
+-	マネージ キャッシュ サービスへの移行方法を確認する: [Azure Managed Cache Service への移行][]
 -   サンプルをチェックする: [Azure Managed Cache Service のサンプル][]
 
 <!-- INTRA-TOPIC LINKS -->
@@ -485,4 +485,4 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

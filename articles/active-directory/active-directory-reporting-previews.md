@@ -3,7 +3,7 @@
    description="パブリックおよびプライベート プレビューでの Azure Active Directory のレポート"
    services="active-directory"
    documentationCenter=""
-   authors="kenhoff"
+   authors="dhanyahk"
    manager="mbaldwin"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/07/2015"
-   ms.author="kenhoff"/>
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
 # Azure Active Directory のレポートのプレビュー
 
@@ -54,4 +54,4 @@ RMS 対応アプリケーションの利用状況 | パブリック プレビュ
 **プライベート プレビュー レポート** |
 すべてのユーザーのサインイン アクティビティ | プライベート プレビュー
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

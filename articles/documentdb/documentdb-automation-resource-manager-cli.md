@@ -15,14 +15,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="03/04/2016" 
 	ms.author="mimig"/>
 
 # Azure リソース マネージャーのテンプレートと Azure CLI を利用し、DocumentDB アカウントを自動作成する
 
 > [AZURE.SELECTOR]
-- [Azure Portal](documentdb-create-account.md)
-- [Azure CLI and ARM](documentdb-automation-resource-manager-cli.md)
+- [Azure ポータル](documentdb-create-account.md)
+- [Azure CLI と ARM](documentdb-automation-resource-manager-cli.md)
 
 この記事では、Azure リソース マネージャーのテンプレートと Azure CLI (コマンドライン インターフェイス) を利用し、DocumentDB データベース アカウントを自動作成する方法について説明します。Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
@@ -75,9 +75,10 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 
 コマンド シェルでは、次の出力も提供します。
 
-    -info:    Added subscription Visual Studio Ultimate with MSDN
-	+
-	info:    login command OK
+    /info:    Added subscription Visual Studio Ultimate with MSDN
+    info:    Setting subscription "Visual Studio Ultimate with MSDN" as default
+    +
+    info:    login command OKK
 
 ここで説明する対話式のログイン方法以外に、Azure CLi でログインする方法もあります。他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
 
@@ -89,7 +90,9 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 
 次の出力が生成されます。
 
-	info:    New mode is arm
+    info:    Executing command config mode
+    info:    New mode is arm
+    info:    config mode command OK
 
 `azure config mode asm` と入力することで、既定のコマンド セットに戻すことができます。
 
@@ -268,8 +271,8 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
 
- - `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。
- - `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。
+ - `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
+ - `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
  - `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。 
  - `<deploymentname>` は、デプロイメント名 (省略可能) です。
 
@@ -351,4 +354,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

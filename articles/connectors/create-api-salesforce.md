@@ -14,14 +14,20 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="03/03/2016"
 ms.author="deonhe"/>
 
 # Salesforce API の概要
 Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。Salesforce API は次のツールから使用できます。
 
-- PowerApps 
 - Logic Apps 
+- PowerApps
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-salesforce.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
+
+&nbsp;
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Salesforce コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-salesforce.md)」をご覧ください。
 
@@ -34,7 +40,7 @@ Salesforce では、次の操作を実行できます。
 
 PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 Salesforce API には、次のトリガーとアクションがあります。
@@ -47,32 +53,6 @@ Salesforce API には、次のトリガーとアクションがあります。
 
 ## Salesforce への接続を作成する 
 
-### PowerApps に構成を追加する
-Salesforce を PowerApps Enterprise に追加するときに、Salesforce アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Salesforce アプリケーションでは、**リダイレクト URL** 値も使用されます。Salesforce アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
-
-1. [Salesforce の開発者向けホームページにサインイン][5]し、プロファイルを選択して、**[Setup]** を選択します。![Salesforce のホーム ページ][6]
-
-3. **[Create]** を選択し、**[Apps]** を選択します。**[Apps]** ページで、**[Connected Apps]** の **[New]** を選択します。![Salesforce がアプリを作成する][7]
-
-4. **[New Connected App]** で次のようにします。
-
-	1. **[Connected App Name]** に値を入力します。  
-	2. **[API Name]** に値を入力します。  
-	3. **[Contact Email]** に値を入力します。  
-	4. _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を、Azure ポータルで新しい Salesforce API を追加したときに表示される値に設定します。  
-
-5. _[Selected OAuth scopes]_ で、次のスコープを **[Selected OAuth Scopes]** に追加します。
-
-	- 自分の Chatter データにアクセスして管理する (chatter\_api)
-	- 自分のデータにアクセスして管理する (api)
-	- 自分の一意の識別子へのアクセスを許可する (openid)
-	- いつでも自分に代わって要求を実行する (refresh\_token、offline\_access)
-
-6. 変更を**保存**します。 ![Salesforce の新しいアプリ][8]
-
-**アプリ キー**値と**アプリ シークレット**値をコピーして、Azure ポータルの Salesforce 構成に貼り付けます。
-
-### ロジック アプリに構成を追加する
 ロジック アプリにこの API を追加するとき、Salesforce に接続するロジック アプリを承認する必要があります。
 
 1. Salesforce アカウントにサインインします。
@@ -275,9 +255,10 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 
 
 ## 次のステップ
-Salesforce API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+
+[API リスト](apis-list.md)に戻ります。
 
 
 [5]: https://developer.salesforce.com
@@ -285,4 +266,4 @@ Salesforce API を PowerApps Enterprise に追加したら、この API をア�
 [7]: ./media/create-api-salesforce/salesforce-create-app.png
 [8]: ./media/create-api-salesforce/salesforce-new-app.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/06/2015"
+   ms.date="03/08/2016"
    ms.author="seanmck"/>
 
 # Service Fabric アプリケーションと次の手順
@@ -31,9 +31,9 @@ Azure Service Fabric アプリケーションが作成されました。この�
 
 - サービス用に作成するパーティション数などの環境に固有のアプリケーション構成を維持するために使用する (ローカルとクラウドの) 2 つのアプリケーション パラメーター ファイル。
 
-- コマンドラインまたは自動化された継続的インテグレーション パイプラインの一環としての、アプリケーションをデプロイするために使用するデプロイメント スクリプト。
+- コマンドラインまたは自動化された継続的インテグレーションおよびデプロイ パイプラインの一環としての、アプリケーションをデプロイするために使用するデプロイ スクリプト。
 
-- アプリケーションを説明するアプリケーション マニフェスト。
+- アプリケーションを説明するアプリケーション マニフェスト。マニフェストは、ApplicationPackageRoot フォルダーにあります。
 
 ### Reliable Services
 新しい Reliable Service を追加すると、Visual Studio はソリューションにサービス プロジェクトを追加します。サービス プロジェクトには、選択したタイプに応じて `StatelessService` または `StatefulService` から拡張するクラスが含まれています。
@@ -86,4 +86,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->
