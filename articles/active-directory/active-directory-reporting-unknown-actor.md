@@ -3,7 +3,7 @@
    description="Azure Active Directory のレポートでの 'Unknown Actor' イベントの説明"
    services="active-directory"
    documentationCenter=""
-   authors="kenhoff"
+   authors="SSalahAhmed"
    manager="mbaldwin"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/07/2015"
-   ms.author="kenhoff"/>
+   ms.date="03/04/2016"
+   ms.author="saah"/>
 
 # Azure Active Directory での 'Unknown Actor' イベントのレポート
 
@@ -28,7 +28,7 @@
 
 ![](./media/active-directory-reporting-unknown-actor/spd-actor.png)
 
-これは既知のバグであり、解決に向けて鋭意取り組んでいます。
+これは既知のバグであり、現在解決に向けて取り組んでいます。
 
 ## イベントが処理される前に、ユーザーがディレクトリから削除されました
 
@@ -36,8 +36,8 @@
 
 ![](./media/active-directory-reporting-unknown-actor/unknown-actor.png)
 
-これは既知のバグであり、解決に向けて鋭意取り組んでいます。
+これは既知のバグであり、現在解決に向けて取り組んでいます。
 
 <!-- ![](./media/active-directory-reporting-unknown-actor/uid-actor.png) -->
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での統計の管理
@@ -36,7 +36,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 ## 統計が必要な理由
 適切な統計がない場合、SQL Data Warehouse で実現されるパフォーマンスは得られません。SQL Data Warehouse では、テーブルと列の統計は自動的には生成されないので、開発者が自分で作成する必要があります。テーブルの作成時に統計を作成し、統計を設定したら統計を更新することをお勧めします。
 
-> [AZURE.NOTE]SQL Server を使用する場合、必要に応じて単一列統計の作成と更新が自動的に実行されます。SQL Data Warehouse はこの点で異なります。SQL Data Warehouse では、データが分散しているため、すべての分散データにわたる統計が自動的に集計されるわけではありません。集計された統計が生成されるのは、開発者が統計を作成および更新したときだけです。
+> [AZURE.NOTE] SQL Server を使用する場合、必要に応じて単一列統計の作成と更新が自動的に実行されます。SQL Data Warehouse はこの点で異なります。SQL Data Warehouse では、データが分散しているため、すべての分散データにわたる統計が自動的に集計されるわけではありません。集計された統計が生成されるのは、開発者が統計を作成および更新したときだけです。
 
 ## 統計を作成する場合
 最新の統計の一貫性のあるセットは、SQL Data Warehouse の重要な部分です。そのため、テーブルのデザインの一環として統計を作成することが重要です。
@@ -45,9 +45,11 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 
 複数列統計は、列が複合結合句やグループ化句に含まれる場合にのみ、クエリ オプティマイザーで使用されます。現在、複合フィルターでは複数列統計のメリットは得られません。
 
-そのため、SQL Data Warehouse の開発を開始するときは、次のパターンを実装することをお勧めします。- すべてのテーブルのすべての列の単一列統計を作成します。- クエリの結合句とグループ化句で使用される列の複数列統計を作成します。
+SQL Data Warehouse 開発を始めた場合、次のパターンを実装することをお勧めします。
+- 各テーブルの各列に 1 列の統計情報を作成する
+- クエリの joins 句と group by 句で使用される列に複数列の統計情報を作成する
 
-データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、[「統計管理の実装」](## 統計管理の実装) をご覧ください。
+データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、「統計管理の実装」(## 統計管理の実装) をご覧ください。
 
 ## 統計を更新する場合
 統計の更新をデータベース管理ルーチンに含めることが重要です。データベース内のデータの分布が変わったら、統計を更新する必要があります。そうしないと、クエリのパフォーマンスが十分に最適化されない可能性があり、労力をかけてクエリのトラブルシューティングをさらに行うだけの価値がなくなります。
@@ -134,7 +136,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
-> [AZURE.NOTE]クエリ オプティマイザーが分散クエリ プランを選択するときに、フィルター選択された統計の使用も考慮されるようにするには、クエリが統計オブジェクトの定義の範囲内である必要があります。前の例では、クエリの WHERE 句で col1 の値として 2000101 ～ 20001231 の値を指定する必要があります。
+> [AZURE.NOTE] クエリ オプティマイザーが分散クエリ プランを選択するときに、フィルター選択された統計の使用も考慮されるようにするには、クエリが統計オブジェクトの定義の範囲内である必要があります。前の例では、クエリの WHERE 句で col1 の値として 2000101 ～ 20001231 の値を指定する必要があります。
 
 ### E.すべてのオプションを使用した単一列統計の作成
 
@@ -150,7 +152,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 複数列統計を作成するには、これまでの例を使用するだけですが、複数の列を指定します。
 
-> [AZURE.NOTE]クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
+> [AZURE.NOTE] クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 
 次の例では、ヒストグラムは *product\_category* で使用されます。列間の統計は、*product\_category* と *product\_sub\_c\\ategory* で計算されます。
 
@@ -165,7 +167,7 @@ CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category)
 統計を作成する方法の 1 つとして、テーブルの作成後に CREATE STATISTICS コマンドを発行します。
 
 ```
-CREATE TABLE dbo.table1 
+CREATE TABLE dbo.table1
 (
    col1 int
 ,  col2 int
@@ -314,7 +316,7 @@ UPDATE STATISTICS dbo.table1;
 
 これは使いやすいステートメントです。このステートメントはテーブルのすべての統計を更新するので、必要以上の処理が実行される可能性があります。パフォーマンスが問題でない場合は、これが、統計が最新の状態であることを保証する最も簡単で最も包括的な方法であることは確かです。
 
-> [AZURE.NOTE]テーブルのすべての統計を更新する場合、SQL Data Warehouse では、統計ごとにテーブルのスキャンを実行してサンプリングします。テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
+> [AZURE.NOTE] テーブルのすべての統計を更新する場合、SQL Data Warehouse では、統計ごとにテーブルのスキャンを実行してサンプリングします。テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
 
 `UPDATE STATISTICS` プロシージャの実装については、[一時テーブル]に関する記事をご覧ください。実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、最終的な結果は同じです。
 
@@ -380,7 +382,7 @@ JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
 JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
 JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
 JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
-WHERE   1=1 
+WHERE   1=1
 AND     st.[user_created] = 1
 ;
 ```
@@ -459,4 +461,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0309_2016-->

@@ -95,9 +95,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
         ![資格情報](./media/storsimple-ova-deploy3-iscsi-setup/image8.png)
         
-           > [AZURE.NOTE]
-	   > 
-	   > iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
+	   	> [AZURE.NOTE] iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
 	   
 
     6. **[Apply]** をクリックします。これにより、デバイスの設定が適用、検証されます。
@@ -305,4 +303,4 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 <!--Reference link-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

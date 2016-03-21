@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="01/09/2016" 
+	ms.date="03/04/2016" 
 	ms.author="robmcm"/>
 
 # Azure へのカスタム Java Web アプリのアップロード
@@ -72,7 +72,7 @@ web.config ファイルで必要に応じて環境変数を設定できます。
                                     
 **stdoutLogFile** (Default="d:\\home\\LogFiles\\httpPlatformStdout.log")。 **processPath** で指定されたプロセスの **stdout** と **stderr** を記録するログの絶対ファイル パス。
                                     
-> [AZURE.NOTE]`%HTTP_PLATFORM_PORT%` は特殊なプレースホルダーであり、**arguments** の一部として、または **httpPlatform** **environmentVariables** リストの一部として指定する必要があります。このプレース ホルダーは、**HttpPlatformHandler** によって内部で生成されたポートに置き換えられるため、**processPath** で指定されたプロセスがこのポートをリッスンできるようになります。
+> [AZURE.NOTE] `%HTTP_PLATFORM_PORT%` は特殊なプレースホルダーであり、**arguments** の一部として、または **httpPlatform** **environmentVariables** リストの一部として指定する必要があります。このプレース ホルダーは、**HttpPlatformHandler** によって内部で生成されたポートに置き換えられるため、**processPath** で指定されたプロセスがこのポートをリッスンできるようになります。
 
 ## デプロイ
 
@@ -257,4 +257,4 @@ Java の詳細については、[Java デベロッパー センター](/develop/
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

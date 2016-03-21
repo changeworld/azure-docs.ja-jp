@@ -15,11 +15,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="03/07/2016"
 	ms.author="cjiang"/>
 
 # Azure Marketplace の料金について
-この記事では、Marketplace 注文に関連した料金を確認する方法の概要を説明します。課金内容を確認する際のいくつかの注意点として、さまざまな価格の種類 (基本のみ、使用量のみ、基本 + 使用量) があります。Marketplace で行う注文ごとに月単位の請求サイクルが発生することに注意してください。これらのトピックについては、以下で詳しく説明します。
+この記事では、Marketplace での注文に関連した料金を確認する方法の概要を説明します。課金内容を確認する際のいくつかの注意点として、さまざまな価格の種類 (基本のみ、使用量のみ、基本 + 使用量) があります。Marketplace で行う注文ごとに月単位の請求サイクルが発生することに注意してください。これらのトピックについては、以下で詳しく説明します。
 
 ## Marketplace の課金内容を確認する
 [Azure アカウント ポータル](https://account.windowsazure.com/subscriptions/)にログインすると、現在の課金情報と過去の課金情報を確認したりダウンロードしたりすることができます。
@@ -27,10 +27,15 @@
 課金内容を表示またはダウンロードするには、次の手順を実行します。
 
 1. 組織 ID を使用して Azure アカウント ポータルにサインインします。
-2. **[Marketplace]** をクリックします。表示される一覧は、Azure アカウントで行われたすべての Marketplace 注文を含む一覧です。注文は親の Azure サブスクリプションの名前と ID でグループ化されていることに気付きます。![Marketplace orders](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
+2. **[Marketplace]** をクリックします。表示される一覧には、Azure アカウントで行われた Marketplace でのすべての注文が含まれます。注文は親の Azure サブスクリプションの名前と ID でグループ化されていることがわかります。![Marketplace orders](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
 3. 表示された注文のいずれかをクリックすると、その注文の現在の請求サイクルの概要が表示されます。さまざまな価格モデルの説明については、「[Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)」を参照してください。![Order summary](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
 
-この概要ビューには、各注文の次の情報が表示されます。- 価格 - 請求サイクル - 購入日 - 関連付けられた親サブスクリプション - 請求通貨
+概要ビューには、各注文に関する次の情報が含まれています。
+- 料金
+- 請求サイクル
+- 購入日
+- 関連する親サブスクリプション
+- 請求通貨
 
 この情報の表示方法にはいくつか変更が加えられたことに注意してください。以前は、注文の価格が税込みで表示されていました。この点が更新され、お住まいの国に応じて、表示価格を外税方式または内税方式にできるようになりました。また、価格の位置は、右側のナビゲーションから中央に移動されました。このような料金が関連付けられている Azure サブスクリプションを見つけやすくするために、Azure サブスクリプションの名前と ID も **[支払い方法の変更]** オプションと共に右側のナビゲーションに追加されました。
 
@@ -49,9 +54,12 @@
 2. 変更後の支払い方法を選択します。**[支払い方法]** オプションを使用すると、クレジット カードを選択できます。**[支払い方法を追加する]** オプションを使用すると、新しいクレジット カードを追加できます。![Change payment method](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
 
 ## 注文管理
-概要ページでは、**[注文の管理]** リンクが表示されます。このリンクをクリックすると、ポータルが表示されます。ここでは、すべての Marketplace 注文の表示、サービス正常性の確認、サポートの要求を行うことができます。![ポータル](./media/billing-understand-your-azure-marketplace-charges/portal.jpg)
+概要ページでは、**[注文の管理]** リンクが表示されます。このリンクをクリックすると、ポータルが表示されます。ここでは、Marketplace でのすべての注文の表示、サービス正常性の確認、サポートの要求を行うことができます。![ポータル](./media/billing-understand-your-azure-marketplace-charges/portal.jpg)
 
-サポートを要求するには、**[ヘルプとサポート]** タイルをクリックします。これにより、次の **[ヘルプとサポート]** ページが表示されます。このページでは、次の操作を実行できます。- 新しいサポート要求を開く。 - 既存のサポート要求を管理する。 - リソースの正常性を管理する。
+サポートを要求するには、**[ヘルプとサポート]** タイルをクリックします。次のような **[ヘルプとサポート]** ページが表示されます。このページでは、次の操作を実行できます。
+- 新しいサポート要求を送信します。
+- 既存のサポート要求を管理します。
+- リソース ヘルスを管理します。
 
 ![サポートの要求](./media/billing-understand-your-azure-marketplace-charges/request-support.jpg)
 
@@ -65,4 +73,4 @@
 1. **[請求履歴]** ページで **[料金の表示]** をクリックします。新しいタブが開いて、[注文履歴](https://account.microsoft.com/billing/orders#/)が表示されます。課金サービス ポータルで未処理の利用状況データにアクセスして取得する場合は、ページの下部にあるサポート リンクをクリックしてサポートに問い合わせる必要があることに注意してください。![Order history](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
 2. 確認する注文を特定して **[詳細]** をクリックし、料金の内訳を表示します。この内訳には、小計、税、合計料金が含まれます。![Order details](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

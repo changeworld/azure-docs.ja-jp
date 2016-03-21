@@ -14,15 +14,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="03/03/2016"
    ms.author="mandia"/>
 
 
 # Twitter API の使用
 Twitter に接続し、ツイートを投稿したり、ユーザーのタイムラインを取得したりします。Twitter API は次のツールから使用できます。
 
-- PowerApps 
 - Logic Apps 
+- PowerApps
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-twitter.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-twitter.md)
+
+&nbsp;
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Twitter コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-twitter.md)」をご覧ください。
 
@@ -35,7 +41,7 @@ Twitter で次のことができます。
 
 PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 
 ## トリガーとアクション
@@ -50,31 +56,12 @@ Twitter には、次のトリガーとアクションが含まれています。
 
 ## Twitter への接続を作成する
 
-### PowerApps に構成を追加する
-Twitter を PowerApps Enterprise に追加するときに、Twitter アプリケーションの**コンシューマー キー**と**コンシューマー シークレット**の値を入力します。Twitter アプリケーションでは、**リダイレクト URL** 値も使用されます。Twitter アプリケーションがない場合、次の手順でアプリケーションを作成できます。
-
-1. [Twitter](https://apps.twitter.com) にサインインします。
-
-2. **[Create New App]** を選択します。 ![Twitter アプリ ページ][6]
-
-3. **[Create an application]** では次のようにします。
-   
-	1. **[Name]**、**[Description]**、**[Website]** に必要な値を入力します。
-	2. **[Callback url]** に、Azure ポータルで Twitter API を追加したときに表示される**リダイレクト URL** 値を入力します。
-	5. 規約に同意し、**Twitter アプリケーションを作成**します。  
-
-	![Twitter アプリの作成][7]
-
-**コンシューマー キー**値と**コンシューマー シークレット**値をコピーして、Azure ポータルの Twitter 構成に貼り付けます。
-
-
-### ロジック アプリに構成を追加する
 ロジック アプリにこの API を追加するとき、Twitter アカウントに接続するロジック アプリを承認する必要があります。
 
 1. Twitter アカウントにサインインします。
 2. **[Authorize]** を選択し、ロジック アプリが Twitter アカウントに接続して使用することを許可します。 
 
-接続を作成したら、ツイートのテキストなど、Twitter プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+接続を作成したら、ツイートのテキストなど、Twitter プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
 
 >[AZURE.TIP] 他のロジック アプリでこの同じ Twitter 接続を使用できます。
 
@@ -318,13 +305,14 @@ Twitter を PowerApps Enterprise に追加するときに、Twitter アプリケ
 
 
 ## 次のステップ
-Twitter API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+
+[API リスト](apis-list.md)に戻ります。
 
 <!--References-->
 
 [6]: ./media/create-api-twitter/twitter-apps-page.png
 [7]: ./media/create-api-twitter/twitter-app-create.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

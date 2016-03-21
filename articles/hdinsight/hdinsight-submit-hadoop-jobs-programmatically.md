@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="03/09/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -27,7 +27,7 @@ Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する�
 > - [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 > - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-###前提条件
+##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
@@ -72,6 +72,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		using Microsoft.Azure.Common.Authentication;
 		using Microsoft.Azure.Common.Authentication.Factories;
 		using Microsoft.Azure.Common.Authentication.Models;
+        using Microsoft.Azure.Management.Resources;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Job;
 		using Microsoft.Azure.Management.HDInsight.Job.Models;
@@ -89,8 +90,12 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		
 				private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
 				private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
-				private const string ExistingClusterUsername = "admin";
-				private const string ExistingClusterPassword = "**********";
+				private const string ExistingClusterUsername = "<Cluster Username>";
+				private const string ExistingClusterPassword = "<Cluster User Password>";
+                
+                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
+                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
+                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
 		
 				static void Main(string[] args)
 				{
@@ -169,12 +174,25 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 						Arguments = ConvertArgsToString(args)
 					};
 		
-					System.Console.WriteLine("Submitting the Hive job to the cluster...");
-					var response = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
-					System.Console.WriteLine("Validating that the response is as expected...");
-					System.Console.WriteLine("Response status code is " + response.StatusCode);
-					System.Console.WriteLine("Validating the response object...");
-					System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
+                    Console.WriteLine("Submitting the Hive job to the cluster...");
+                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
+                    var jobId = jobResponse.JobSubmissionJsonResponse.Id;
+                    Console.WriteLine("Validating that the response is as expected...");
+                    Console.WriteLine("Response status code is " + jobResponse.StatusCode);
+                    Console.WriteLine("Validating the response object...");
+                    Console.WriteLine("JobId is " + jobId);
+
+                    Console.WriteLine("Waiting for the job completion ...");
+                    // Wait for job completion
+                    var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
+                    while (!jobDetail.Status.JobComplete)
+                    {
+                        jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
+                    }
+
+                    // Get job output
+                    var outputResponse = _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, DefaultStorageAccountName, DefaultStorageAccountKey,
+                        DefaultStorageContainerName);
 				}
 		
 				private static void SubmitSqoopJob()
@@ -269,4 +287,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

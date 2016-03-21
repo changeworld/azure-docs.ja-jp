@@ -13,13 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/25/2016"
+   ms.date="03/04/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での同時実行とワークロード管理
 SQL Data Warehouse では、予測可能なパフォーマンスを広く提供するために、ワークロードの同時実行とコンピューティング リソースの割り当ての両方を管理するメカニズムを実装しています。
 
 この記事では、同時実行とワークロード管理の機能がどのように実装されたか、そしてこれらの機能をデータ ウェアハウスでどのように制御できるかについて説明しながら、両機能の概念を紹介します。
+
+>[AZURE.NOTE] SQL Data Warehouse は、マルチテナント ワークロードではなく、マルチユーザー ワークロードをサポートします。
 
 ## 同時実行
 SQL Data Warehouse が、**同時実行クエリ**と**同時実行スロット**の 2 つの概念によって管理されていることを理解することは重要です。
@@ -32,7 +34,7 @@ SQL Data Warehouse が、**同時実行クエリ**と**同時実行スロット*
 
 1. SQL Data Warehouse の DWU 設定
 2. ユーザーが属する**リソース クラス**
-3. クエリまたは操作が同時実行スロット モデルによって管理されるかどうか 
+3. クエリまたは操作が同時実行スロット モデルによって管理されるかどうか
 
 > [AZURE.NOTE] すべてのクエリが同時実行スロットのクエリ規則によって管理されるわけではありません。ただし、ほとんどのユーザーのクエリに適用されます。クエリや操作によっては、同時実行スロットをまったく消費しません。ただし、これらのクエリや操作は同時実行クエリの上限によって制限されているため、両方のルールについて説明しています。詳細については、以下の[リソース クラスの例外](#exceptions)のセクションをご覧ください。
 
@@ -46,8 +48,8 @@ SQL Data Warehouse が、**同時実行クエリ**と**同時実行スロット*
 -->
 
 | 使用される同時実行スロット数 | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 |
-| :--------------------------- | :---- | :---- | :---- | :---- | :---- | :---- | :----- | :----- | :----- | :----- | 
-| 同時クエリの最大数 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 
+| :--------------------------- | :---- | :---- | :---- | :---- | :---- | :---- | :----- | :----- | :----- | :----- |
+| 同時クエリの最大数 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 |
 | 同時実行スロットの最大数 | 4 | 8 | 12 | 16 | 20 | 24 | 40 | 48 | 60 | 80 |
 
 SQL Data Warehouse のクエリ ワークロードは、これらのしきい値範囲内で稼働する必要があります。同時実行クエリの数が 32 を超えたり、同時実行スロットの数が超過した場合は、両方のしきい値が満たされるまで、クエリはキューに配置されます。
@@ -145,16 +147,16 @@ SQL Data Warehouse には、データベース ロールを使用してリソー
 - ALTER TABLE REBUILD
 - CREATE INDEX
 - CREATE CLUSTERED COLUMNSTORE INDEX
-- CREATE TABLE AS SELECT 
-- データの読み込み 
+- CREATE TABLE AS SELECT
+- データの読み込み
 - Data Movement Service (DMS) によって実行されるデータ移動操作
 
 次のステートメントでは、リソース クラスは**考慮されません。**
 
 - CREATE TABLE
-- ALTER TABLE ...SWITCH PARTITION 
-- ALTER TABLE ...SPLIT PARTITION 
-- ALTER TABLE ...MERGE PARTITION 
+- ALTER TABLE ...SWITCH PARTITION
+- ALTER TABLE ...SPLIT PARTITION
+- ALTER TABLE ...MERGE PARTITION
 - DROP TABLE
 - ALTER INDEX DISABLE
 - DROP INDEX
@@ -181,13 +183,14 @@ SQL Data Warehouse には、データベース ロールを使用してリソー
 Removed as these two are not confirmed / supported under SQLDW
 - CREATE REMOTE TABLE AS SELECT
 - CREATE EXTERNAL TABLE AS SELECT
-- REDISTRIBUTE 
+- REDISTRIBUTE
 -->
+
 > [AZURE.NOTE] 動的管理ビューとカタログ ビューに対して排他的に実行される `SELECT` クエリは、リソース クラスで**管理されません**。
 
 エンド ユーザーのクエリの大半がリソース クラスで管理される可能性が高いことにご注意ください。一般的に、処理中のクエリのワークロードは、プラットフォームで特別に除外されている場合を除き、同時実行クエリと同時実行スロットの両方のしきい値内に収まる必要があります。エンド ユーザーは、同時実行スロット モデルからクエリ除外を選択することはできません。いずれかのしきい値を超えたクエリは、キューに配置されます。キューに配置されたクエリは、まず優先順位に従って、次に送信時刻に従って処理されます。
 
-### 内部 
+### 内部
 
 SQL Data Warehouse のワークロード内部では、管理はもう少し複雑になります。リソース クラスは、リソース ガバナー内の一般的なワークロード管理グループ セットに動的にマッピングされます。使用されるグループは、ウェアハウスの DWU 値によって異なります。ただし、SQL Data Warehouse で使用されるワークロード グループは合計 8 個あります。次に例を示します。
 
@@ -247,7 +250,7 @@ AS
 	JOIN	sys.dm_pdw_nodes pn										ON	wg.pdw_node_id	= pn.pdw_node_id
 	WHERE   wg.name like 'SloDWGroup%'
 	AND     rp.name = 'SloDWPool'
-) 
+)
 SELECT	pool_name
 ,		pool_max_mem_MB
 ,		group_name
@@ -260,7 +263,7 @@ SELECT	pool_name
 ,       group_active_request_count
 ,       group_queued_request_count
 FROM	rg
-ORDER BY 
+ORDER BY
 	node_name
 ,	group_request_max_memory_grant_pcnt
 ,	group_importance
@@ -313,14 +316,14 @@ AND     ro.[is_fixed_role]  = 0
 
 増加ワークロード管理ロールにユーザーを追加するには、次のクエリを使用します。
 
-``` 
-EXEC sp_addrolemember 'largerc', 'newperson' 
+```
+EXEC sp_addrolemember 'largerc', 'newperson'
 ```
 
 ワークロード管理ロールからユーザーを削除するのには、次のクエリを使用します。
 
-``` 
-EXEC sp_droprolemember 'largerc', 'newperson' 
+```
+EXEC sp_droprolemember 'largerc', 'newperson'
 ```
 
 > [AZURE.NOTE] smallrc からユーザーを削除することはできません。
@@ -354,7 +357,7 @@ FROM    sys.dm_pdw_exec_requests r
 SQL Data Warehouse には、同時実行を評価するための特定の待機の種類があります。
 
 次に例を示します。
- 
+
 - LocalQueriesConcurrencyResourceType
 - UserConcurrencyResourceType
 - DmsConcurrencyResourceType
@@ -452,4 +455,4 @@ FROM	sys.dm_pdw_wait_stats w
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

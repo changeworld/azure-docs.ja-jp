@@ -3,7 +3,7 @@
 	description="Azure Active Directory に同期される属性の一覧を示します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="andkjell"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="03/07/2016"
 	ms.author="markusvi;andkjell"/>
 
 
 # Azure AD Connect Sync: Azure Active Directory に同期される属性
 
-このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。<br> 属性は、関連する Azure AD アプリによってグループ化されます。
+このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。属性は、関連する Azure AD アプリによってグループ化されます。
 
+## 同期する属性
+よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように、既定の属性を維持することです。場合によっては、組織で一部の属性をクラウドに同期させたくないことがあります。この場合は、以下の属性のリストから開始し、PII (個人を特定できる情報) を含み、同期できないものを特定します。次に、インストール時に、[Azure AD アプリと属性フィルター](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの選択を解除します。
+
+属性の選択を解除する場合は、注意を払う必要があり、絶対に同期できないもののみを選択解除する必要があります。
 
 ## Office 365 ProPlus
 
@@ -456,4 +460,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

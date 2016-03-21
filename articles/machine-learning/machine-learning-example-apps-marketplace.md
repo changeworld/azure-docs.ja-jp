@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="03/02/2016" 
 	ms.author="luisca"/>
 
 # Azure Marketplace での Machine Learning のアプリ
@@ -51,10 +51,5 @@ Azure Machine Learning を使用して、データ サイエンティストは�
 [ドキュメント](machine-learning-apps-text-analytics.md)
 
  
- ##Customer Churn Prediction## Customer Churn Prediction は、Azure Machine Learning で構築される顧客離れ分析サービスです。このサービスは、顧客 (プレーヤー、サブスクライバー、ユーザーなど) がどのようなときに企業との関係やサービスの解約を望むかを予測することを目的としています。企業との関係を辞める可能性の高い顧客を予測できるため、企業は、顧客との交渉の機会を高め、解約の可能性を削減することができます。
 
-[データ マーケットのリンク](https://datamarket.azure.com/dataset/amla/customer-churn-prediction)
-
-[ドキュメント](https://churn.cloudapp.net/documentation)
-
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

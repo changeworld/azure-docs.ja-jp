@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Machine Learning バッチ実行アクティビティを使用して予測パイプラインを作成する | Microsoft Azure" 
+	pageTitle="Machine Learning のアクティビティの使用 | Microsoft Azure" 
 	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -772,4 +772,4 @@ AzureMLBatchScoring アクティビティを引き続き使用する場合は、
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

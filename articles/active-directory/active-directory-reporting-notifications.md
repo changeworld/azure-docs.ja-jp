@@ -3,9 +3,9 @@
 	description="疑わしいサインインに対して Azure Active Directory のレポート通知を使用する方法。"
 	services="active-directory"
 	documentationCenter=""
-	authors="SSalahAhmed"
-	manager="gchander"
-	editor="LisaToft"/>
+	authors="dhanyahk"
+	manager="stevenpo"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2015"
-	ms.author="saah;kenhoff"/>
+	ms.date="03/07/2016"
+	ms.author="dhanyahk"/>
 
 # Azure Active Directory のレポート通知
 
@@ -36,18 +36,19 @@
 
 ## 電子メールに記載されているレポートには、どのようにアクセスできますか。
 
-リンクをクリックすると、Azure 管理ポータル内のレポート ページにリダイレクトされます。レポートにアクセスするには、次の両方の条件を満たす必要があります。
+リンクをクリックすると、Azure クラシック ポータル内のレポート ページにリダイレクトされます。レポートにアクセスするには、次の両方の条件を満たす必要があります。
 
 - Azure サブスクリプションの管理者または共同管理者
-- ディレクトリのグローバル管理者であり、Active Directory Premium ライセンスが割り当てられている詳しくは、「Azure Active Directory のエディション」を参照してください。
+
+- ディレクトリのグローバル管理者であり、Active Directory Premium ライセンスが割り当てられている詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 ## 電子メールの通知を無効にすることができますか。
 
-はい。Azure 管理ポータル内で異常なサインインに関連する通知をオフにするには、**[構成]** をクリックして **[通知]** セクションの下で **[無効]** をクリックします。
+はい。Azure クラシック ポータル内で異常なサインインに関連する通知をオフにするには、**[構成]** をクリックして **[通知]** セクションの下で **[無効]** をクリックします。
 
-## 次の手順
+## 参照トピック
 - 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 「[View your access and usage reports (アクセスおよび使用状況のレポートの表示)](active-directory-view-access-usage-reports.md)」を参照してください
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

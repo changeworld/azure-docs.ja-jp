@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse と他のサービスの併用
@@ -30,7 +30,7 @@ SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービ
 Power BI との統合によって、SQL Data Warehouse のコンピューティング パワーを、Power BI の動的なレポート作成や視覚化と併せて活用することができます。現在、Power BI との統合には次のものが含まれています。
 
 + **Direct Connect**: SQL Data Warehouse に対する論理的プッシュダウンを備えた、さらに高度な接続です。これにより、分析の速度と規模を高めることができます。
-+ **Power BI で開く**: ［Power BI で開く］ ボタンは、Power BI にインスタンス情報を渡し、よりシームレスな接続を可能にします。 
++ **Power BI で開く**: ［Power BI で開く］ ボタンは、Power BI にインスタンス情報を渡し、よりシームレスな接続を可能にします。
 
 詳細については、「[SQL Data Warehouse での Power BI の使用](./sql-data-warehouse-integrate-power-bi.md)」または「[Power BI documentation (Power BI ドキュメント)](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)」をご覧ください。
 
@@ -44,7 +44,7 @@ Azure Data Factory は、抽出 - 読み込みの複雑なパイプラインを�
 ##Azure Machine Learning
 Azure Machine Learning は、完全に管理されたを分析サービスで、大規模な予測ツール セットを活用する複雑なモデルを作成できます。SQL Data Warehouse は、次の機能により、これらのモデルのソースと変換先の両方としてサポートされています。
 
-+ **データの読み取り**: T-SQL を使用して、SQL Data Warehouse に対して大規模にモデルを駆動します。 
++ **データの読み取り**: T-SQL を使用して、SQL Data Warehouse に対して大規模にモデルを駆動します。
 + **データの書き込み**: 任意のモデルから SQL Data Warehouse に変更を戻します。
 
 詳細については、「[SQL Data Warehouse での Azure Machine Learning の使用](./sql-data-warehouse-integrate-azure-machine-learning.md)」または「[Machine Learning documentation (Machine Learning ドキュメント)](https://azure.microsoft.com/services/machine-learning/)」をご覧ください。
@@ -71,4 +71,4 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

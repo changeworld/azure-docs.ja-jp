@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="03/07/2016"
 	ms.author="femila"/>
 
 # Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -48,7 +48,8 @@ Windows 7 コンピューターでコマンド プロンプトを開き、次の
     
     %ProgramFiles%\Microsoft Workplace Join\AutoWorkplace.exe /leave
 
->[AZURE.NOTE]このコマンドは、コンピューターにサインインしている各ドメイン ユーザーのコンテキストで実行する必要があります。Windows 7 ドメイン参加済みデバイス用のイベント ビューアーとエラー
+>[AZURE.NOTE]
+このコマンドは、コンピューターにサインインしている各ドメイン ユーザーのコンテキストで実行する必要があります。Windows 7 ドメイン参加済みデバイス用のイベント ビューアーとエラー
 
 Windows 7 コンピューターの Windows イベント ログには、社内参加に関連するメッセージが表示されます。社内参加の成功したイベントと失敗したイベントの両方のメッセージが表示されます。イベント ログは、イベント ビューアーの [アプリケーションとサービス ログ] の [Microsoft - 社内参加] にあります。
 
@@ -57,7 +58,8 @@ Windows 7 コンピューターの Windows イベント ログには、社内参
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 - [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

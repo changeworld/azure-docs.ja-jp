@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="02/01/2016"
+   ms.date="03/09/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure Active Directory 認証を使用して SQL Database に接続する
@@ -65,7 +65,11 @@ Azure SQL Database に包含データベース ユーザーを作成するには
 
 ## Azure AD の機能と制限事項
 
-Azure Active Directory の次のメンバーは、Azure SQL Server でプロビジョニングできます。- ネイティブ メンバー: 管理対象ドメインまたは顧客のドメイン内の Azure AD に作成されたメンバー。詳細については、「[Azure AD への独自のドメイン名の追加](https://azure.microsoft.com/documentation/articles/active-directory-add-domain/)」を参照してください。- フェデレーション ドメインのメンバー: フェデレーション ドメインで Azure AD に作成されたメンバー。詳細については、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」参照してください。- ネイティブ メンバーまたはフェデレーション ドメインのメンバーである他の Azure Active Directory からインポートされたメンバー。- セキュリティ グループとして作成された Active Directory グループ。
+Azure Active Directory の次のメンバーは、Azure SQL サーバーにプロビジョニングできます。
+- ネイティブ メンバー: 管理対象ドメインまたは顧客のドメインの Azure AD で作成したメンバー。詳細については、[Azure AD に独自のドメイン名を追加](https://azure.microsoft.com/documentation/articles/active-directory-add-domain/)を参照してください。
+- フェデレーション ドメインのメンバー: フェデレーション ドメインを使用して Azure AD で作成されたメンバー。詳細については、[現在 Microsoft Azure は Windows Server Active Directory とのフェデレーションをサポート](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)を参照してください。
+- ネイティブ メンバーまたはフェデレーション ドメインのメンバーであるその他の Azure Active ディレクトリからインポートされたメンバー。
+- セキュリティ グループとして作成された Active Directory グループ。
 
 Microsoft アカウント (outlook.com、hotmail.com、live.com など) またはその他のゲスト アカウント (gmail.com、yahoo.com など) はサポートされていません。アカウントとパスワードを使用して [https://login.live.com](https://login.live.com) にログインできる場合は、Azure SQL Database の Azure AD 認証でサポートされていない Microsoft アカウントを使用しています。
 
@@ -130,11 +134,13 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 各 Azure SQL Server の開始には、Azure SQL Server 全体の管理者である 1 つのサーバー管理者アカウントを使用します。Azure AD アカウントであるもう 1 つのサーバー管理者を作成する必要があります。このプリンシパルは、master データベースの包含データベース ユーザーとして作成されます。管理者の場合、サーバー管理者アカウントは、すべてのユーザー データベースの **db\_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。サーバー管理者アカウントの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」と、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」の「**ログインとユーザー**」セクションを参照してください。
 
+geo レプリケーションで Azure Active Directory を使用する場合は、プライマリ サーバーとセカンダリ サーバーの両方で Azure Active Directory 管理者を構成する必要があります。サーバーに Azure Active Directory 管理者がいない場合、Azure Active Directory へのログイン時に、"Cannot connect" サーバー エラーが生じます。
+
 > [AZURE.NOTE] Azure AD アカウント (Azure SQL Server の管理者アカウントを含む) に基づいていないユーザーは、Azure AD に基づくユーザーを作成できません。これは、Azure AD で提示されるデータベース ユーザーを検証するアクセス許可がないためです。
 
-### Azure クラシック ポータルを使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします。
+### Azure ポータルを使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします。
 
-1. [Azure クラシック ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。
+1. [Azure ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。
 
 	![choose-ad][8]
 2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ブレードの上部にある **[設定]** をクリックします。
@@ -245,7 +251,7 @@ Azure AD の管理対象ドメインを使用して Azure AD のプリンシパ�
 この方法を使用するのは、Azure とフェデレーションされていないドメインの資格情報を使用して Windows にログオンしている場合や、初期ドメインまたはクライアント ドメインに基づく Azure AD で Azure AD 認証を使用する場合です。
 
 1. Management Studio を起動して、**[データベース エンジンへの接続]** (または **[サーバーへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory パスワード認証]** を選択します。
-2. **[ユーザー名]** ボックスに、**username@domain.com** 形式で Azure Active Directory のユーザー名を入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+2. **[ユーザー名]** ボックスに、****username@domain.com** 形式で Azure Active Directory のユーザー名を入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 4. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。
 
@@ -265,9 +271,9 @@ Azure AD ベースの包含データベース ユーザー (データベース�
 	CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;
 	CREATE USER [alice@fabrikam.onmicrosoft.com] FROM EXTERNAL PROVIDER;
 
-Azure AD またはフェデレーション ドメインのグループを表す包含データベース ユーザーを作成するには、次のようにします。
+Azure AD またはフェデレーション ドメインのグループを表す包含データベース ユーザーを作成するには、セキュリティ グループの表示名を指定します。
 
-	CREATE USER [Nurses] FROM EXTERNAL PROVIDER;
+	CREATE USER [ICU Nurses] FROM EXTERNAL PROVIDER;
 
 
 Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「[CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
@@ -329,4 +335,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

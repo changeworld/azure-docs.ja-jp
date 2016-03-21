@@ -3,9 +3,9 @@
 	description="Stretch Database を有効にする前に解決する必要のあるブロック問題について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -92,4 +92,4 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 ## 関連項目
 [Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md) [Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md) [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

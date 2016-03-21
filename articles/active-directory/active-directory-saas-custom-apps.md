@@ -21,7 +21,7 @@
 
 [Azure Active Directory Premium](active-directory-editions.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
 
-* SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合
+* SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
 * [パスワードベースの SSO](active-directory-appssoaccess-whatis.md/#password-based-single-sign-on) を使用する HTML ベースのサインイン ページがある任意の Web アプリケーションのセルフサービス統合
 * ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning))
 * [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md/#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
@@ -52,8 +52,26 @@
 アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。**[次へ]** を選択すると、アプリケーションの SAML エンドポイントに対応する 3 つの異なる URL を入力するように求められます。
 
 ![][4]
+ 
+次のとおりです。
 
-ダイアログのツールヒント アイコンでは、各 URL とその使用方法に関する詳細が示されます。これらを入力したら、**[次へ]** をクリックして次の画面に進みます。この画面には、Azure AD からの SAML トークンを受け入れられるようにアプリケーション側で構成する必要がある内容についての情報が示されます。
+* **サインオン URL (SP によって開始される場合のみ)** - このアプリケーションにサインインするときにユーザーがアクセスする場所。サービス プロバイダーによって開始されるシングル サインオンを実行するようにアプリケーションが構成されている場合は、ユーザーがこの URL に移動すると、認証とログオンを行うために、そのユーザーはサービス プロバイダーによって Azure AD にリダイレクトされます。このフィールドに URL が入力されている場合、Azure AD はその URL を使用して Office 365 と Azure AD アクセス パネルからアプリケーションを起動します。このフィールドへの入力が省略されている場合、Azure AD は、アプリケーションが Office 365、Azure AD アクセス パネル、または Azure AD シングル サインオン URL ([ダッシュボード] タブからコピー可能) から起動されたときに、ID プロバイダーによって開始されるサインオンを実行します。
+
+* **発行者の URL** - 発行者の URL は、シングル サインオンの構成対象のアプリケーションを一意に識別する URL であることが必要です。これは、SAML トークンの **Audience** パラメーターとして Azure AD からアプリケーションに返される値であり、アプリケーションではこの値を検証する必要があります。また、この値はアプリケーションによって提供される SAML メタデータ内に **Entity ID** として表示されます。SAML トークンの Entity ID または Audience 値の詳細については、アプリケーションの SAML ドキュメントを確認してください。アプリケーションに返された SAML トークン内に表示される Audience URL の例を以下に示します。
+
+```
+    <Subject>
+    <NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecificed">chad.smith@example.com</NameID>
+        <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />
+      </Subject>
+      <Conditions NotBefore="2014-12-19T01:03:14.278Z" NotOnOrAfter="2014-12-19T02:03:14.278Z">
+        <AudienceRestriction>
+          <Audience>https://tenant.example.com</Audience>
+        </AudienceRestriction>
+      </Conditions>
+```
+
+* **応答 URL** - 応答 URL は、アプリケーションが SAML トークンを受け取ることになっている場所です。これは **Assertion Consumer Service (ACS) URL** とも呼ばれています。SAML トークンの応答 URL または ACS URL の詳細については、アプリケーションの SAML ドキュメントを確認してください。これらを入力したら、**[次へ]** をクリックして次の画面に進みます。この画面には、Azure AD からの SAML トークンを受け入れられるようにアプリケーション側で構成する必要がある内容についての情報が示されます。 
 
 ![][5]
 
@@ -126,4 +144,4 @@ HTML サインイン ページがある Web アプリケーションの[パス�
 [6]: ./media/active-directory-saas-custom-apps/customapp6.png
 [7]: ./media/active-directory-saas-custom-apps/customapp7.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

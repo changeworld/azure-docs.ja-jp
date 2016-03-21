@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="03/07/2016"
 	ms.author="femila"/>
 
 # Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -54,7 +54,7 @@ Windows 8.1 マシンの Windows イベント ログには、デバイスの登�
 
 ## 関連トピック
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
-- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
+- [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -3,9 +3,9 @@
 	description="Stretch Database のデータベースを設定する方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="03/09/2016"
 	ms.author="douglasl"/>
 
 # データベースの Stretch Database を有効にする
@@ -128,6 +128,8 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 -   [Stretch 対応データベースをバックアップし、復元します](sql-server-stretch-database-backup.md)。
 
 ## 関連項目
-[Stretch Database のデータベースとテーブルの特定](sql-server-stretch-database-identify-databases.md) [ALTER DATABASE SET オプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
+[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+[ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
+
+<!---HONumber=AcomDC_0309_2016-->

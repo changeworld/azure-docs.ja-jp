@@ -3,9 +3,9 @@
 	description="Stretch Database の管理とトラブルシューティングの方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -53,4 +53,4 @@ Stretch Database に構成された SQL Server テーブルに関連付けられ
 ## 関連項目
 [Stretch Database を監視する](sql-server-stretch-database-monitor.md) [Stretch 対応データベースをバックアップし、復元する](sql-server-stretch-database-backup.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="03/05/2016" 
 	ms.author="awills"/>
  
 # Application Insights のアラートの設定
@@ -48,6 +48,8 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 *[アラートの追加] ボタンが表示されない場合は、*組織アカウントを使用していることを確認してください。 所有者または投稿者が、アプリケーションのリソースにアクセスする場合に、アラートを設定できます。[設定] -> [ユーザー] を表示します。[アクセス制御の詳細情報][roles]。
 
+> [AZURE.NOTE] [アラート] ブレードで、アラートが既に設定されていることがわかります。NRT プロアクティブ診断は[こちら](app-insights-nrt-proactive-diagnostics.md)でご確認いただけます。これは要求の失敗率という指標を監視する自動アラートです。これを無効にしない限り、要求の失敗率に独自のアラートを設定する必要はありません。
+
 ## アラートの表示
 
 アラートの状態が非アクティブとアクティブとの間で変化すると、メールが送信されます。
@@ -58,13 +60,10 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ![](./media/app-insights-alerts/010-alert-drop.png)
 
-状態の変更履歴は、操作イベント ログにも表示されます。
+状態の変更履歴は監査ログにあります。
 
-![下部付近の [概要] ブレードで、[過去 1 週間のイベント] をクリックします。](./media/app-insights-alerts/09-alerts.png)
+![[概要] ブレードで、[設定]、[監査ログ] の順にクリックします](./media/app-insights-alerts/09-alerts.png)
 
-*これらの「イベント」は、利用統計情報イベントまたはカスタム イベントに関係しますか。*
-
-* いいえ。これらの操作イベントは、このアプリケーション リソースに対する操作のみの記録です。 
 
 
 ## アラートのしくみ
@@ -127,4 +126,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

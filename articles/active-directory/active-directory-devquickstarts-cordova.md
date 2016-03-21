@@ -77,25 +77,27 @@ Apache Cordova がコンピューターにセットアップされていない�
 
 ## *1.アプリケーションを Azure AD に登録する*
 
-注: この手順は省略可能です。このチュートリアルでは、事前に準備された値を用意しています。これにより独自のテナントで何もプロビジョニングしなくても、実行するサンプルを参照できます。ただし、この手順を必ず実行し、プロセスをよく理解することをお勧めします。このプロセスは、独自のアプリケーションを作成する際に必要になります。
+注: この__手順は省略可能__です。このチュートリアルでは、事前に準備された値を用意しています。これにより独自のテナントで何もプロビジョニングしなくても、実行するサンプルを参照できます。ただし、この手順を必ず実行し、プロセスをよく理解することをお勧めします。このプロセスは、独自のアプリケーションを作成する際に必要になります。
 
 Azure AD は、認識しているアプリケーションに対してのみトークンを発行します。アプリケーションから Azure AD を使用するには、アプリケーション用のエントリをテナントで事前に作成しておく必要があります。新しいアプリケーションをテナントに登録するには、次の手順を実行します。
 
-- Microsoft Azure の管理ポータルにサインインします。
-- 左側のナビゲーションで [Active Directory] をクリックします。
-- アプリケーションの登録先となるテナントを選択します。
-- [アプリケーション] タブをクリックし、下部のドロアーで [追加] をクリックします。
-- 画面の指示に従い、新しい "ネイティブ クライアント アプリケーション" を作成します。
-    - アプリケーションの [名前] には、エンドユーザーがアプリケーションの機能を把握できるような名前を設定します。
-    -	"リダイレクト URI" は、トークンをアプリに返すために使用される URI です。「`http://MyDirectorySearcherApp`」を入力します。
+-	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	左側のナビゲーションで **[Active Directory]** をクリックします。
+-	アプリケーションの登録先となるテナントを選択します。
+-	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
+-	画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します (Cordova アプリは HTML ベースですが、ここではネイティブ クライアント アプリケーションを作成するため、`Native Client Application` オプションを選択する必要があります。そうしないと、アプリケーションが機能しません)。
+    -	アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
+    -	**リダイレクト URI** は、トークンをアプリに返すために使用される URI です。「`http://MyDirectorySearcherApp`」を入力します。
 
-登録が完了すると、AAD により、アプリに一意のクライアント ID が割り当てられます。この値は、以降のセクションで必要になります。この値は、新しく作成されたアプリの [構成] タブに表示されます。
+登録が完了すると、AAD により、アプリに一意のクライアント ID が割り当てられます。この値は、以降のセクションで必要になります。この値は、新しく作成されたアプリの **[構成]** タブに表示されます。
 
-## *2.チュートリアルに必要なリポジトリを複製する*
+`DirSearchClient Sample` を実行するには、_Azure AD Graph API_ をクエリするための新しく作成されたアプリのアクセス許可を付与します。
+-	**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[デリゲートされたアクセス許可]** で **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+
+## *2.チュートリアルに必要なサンプル アプリ リポジトリを複製する*
 
 シェルまたはコマンド ラインから、次のコマンドを入力します。
 
-    git clone https://github.com/AzureAD/azure-activedirectory-library-for-cordova.git
     git clone -b skeleton https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova.git
 
 ## *3.Cordova アプリケーションを作成する*
@@ -111,17 +113,17 @@ Cordova アプリケーションを作成するには、複数の方法を使用
 
 Graph API を呼び出すために必要な、ホワイトリスト プラグインを追加します。
 
-     cordova plugin add https://github.com/apache/cordova-plugin-whitelist.git
+     cordova plugin add cordova-plugin-whitelist
 
 次に、すべてのサポート対象プラットフォームを追加します。実稼働するサンプルにするために、少なくとも次の 1 つのコマンドを実行する必要があります。iOS を Windows 上で、または Windows/Windows Phone を Mac 上でエミュレートすることはできないことに注意してください。
 
-    cordova platform add android@97718a0a25ec50fedf7b023ae63bfcffbcfafb4b
+    cordova platform add android
     cordova platform add ios
     cordova platform add windows
 
 最後に、Cordova プラグイン用の ADAL をプロジェクトに追加できます。
 
-    cordova plugin add ../azure-activedirectory-library-for-cordova
+    cordova plugin add cordova-plugin-ms-adal
 
 ## *3.ユーザーを認証して AAD からトークンを取得するコードを追加する*
 
@@ -164,14 +166,17 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
     },
 ```
-この関数を、2 つの主要な部分に分解することによって調べてみましょう。このサンプルは、特定の 1 テナントに関連付けるのではなく、どのテナントでも機能するように設計されています。これは "/common" エンドポイントを使用します。これによってユーザーは、認証時に任意のアカウントを入力することができ、認証要求は、そのアカウントが所属しているテナントに渡されます。メソッドの最初の部分では、ADAL キャッシュに既に保管されたトークンが存在するかどうかを検査し、存在する場合には、そのトークンの送信元のテナントを使用して ADAL を再初期化します。これは追加のプロンプトを回避するために必要です。"/common" を使用すると、必ずユーザーに新しいアカウントの入力が求められるからです。```javascript
+この関数を、2 つの主要な部分に分解することによって調べてみましょう。このサンプルは、特定の 1 テナントに関連付けるのではなく、どのテナントでも機能するように設計されています。これは "/common" エンドポイントを使用します。これによってユーザーは、認証時に任意のアカウントを入力することができ、認証要求は、そのアカウントが所属しているテナントに渡されます。メソッドの最初の部分では、ADAL キャッシュに既に保管されたトークンが存在するかどうかを検査し、存在する場合には、そのトークンの送信元のテナントを使用して ADAL を再初期化します。これは追加のプロンプトを回避するために必要です。"/common" を使用すると、必ずユーザーに新しいアカウントの入力が求められるからです。
+```javascript
         app.context = new Microsoft.ADAL.AuthenticationContext(authority);
         app.context.tokenCache.readItems().then(function (items) {
             if (items.length > 0) {
                 authority = items[0].authority;
                 app.context = new Microsoft.ADAL.AuthenticationContext(authority);
             }
-```メソッドの 2 番目の部分では、適切な tokewn 要求を実行します。`acquireTokenSilentAsync` メソッドは、ADAL に、UX を表示せずに指定されたリソースのトークンを返すように要求します。これが起きる可能性があるのは、キャッシュに既に適切なアクセス トークンが保管されているか、またはプロンプトを表示させずに新しいアクセス トークンを取得するために使用できる更新トークンがある場合です。試行に失敗する場合は、`acquireTokenAsync` に戻ります。これはユーザーにはっきりと認証を求めるプロンプトを表示します。```javascript
+```
+メソッドの 2 番目の部分では、適切なトークン要求を実行します。`acquireTokenSilentAsync` メソッドは、ADAL に、UX を表示せずに指定されたリソースのトークンを返すように要求します。これが起きる可能性があるのは、キャッシュに既に適切なアクセス トークンが保管されているか、またはプロンプトを表示させずに新しいアクセス トークンを取得するために使用できる更新トークンがある場合です。試行に失敗する場合は、`acquireTokenAsync` に戻ります。これはユーザーにはっきりと認証を求めるプロンプトを表示します。
+```javascript
             // Attempt to authorize user silently
             app.context.acquireTokenSilentAsync(resourceUri, clientId)
             .then(authCompletedCallback, function () {
@@ -181,7 +186,8 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
                     app.error("Failed to authenticate: " + err);
                 });
             });
-```ここまででトークンを取得したので、最後に Graph API を呼び出し、必要な検索クエリを実行することができます。次のスニペットを、`authenticate` 定義のすぐ下に挿入します。
+```
+トークンを取得したので、最後に Graph API を呼び出し、必要な検索クエリを実行することができます。次のスニペットを、`authenticate` 定義のすぐ下に挿入します。
 
 ```javascript
 // Makes Api call to receive user list.
@@ -213,22 +219,29 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 ## *4.実行*
 これでアプリは実行準備完了です。 操作は非常に簡単です。アプリが起動したら、表示したいユーザーのエイリアスをテキスト ボックスに入力して、ボタンをクリックするだけです。認証情報が求められます。認証と検索に成功すると、検索対象のユーザーの属性が表示されます。その後の実行では、前に取得したトークンがキャッシュ内に存在しているので、プロンプトが表示されずに検索が行われます。アプリを実行するための具体的な手順は、プラットフォームごとに異なります。
 
+####Windows 10:
 
-##### Windows タブレット/PC アプリケーション バージョンを構築して実行する場合
+   タブレット/PC: `cordova run windows --archs=x64 -- --appx=uap`
+
+   モバイル (PC に接続されている Windows10 モバイル デバイスが必要): `cordova run windows --archs=arm -- --appx=uap --phone`
+
+   __注__: 最初の実行時に、開発者ライセンスのサインインが求められることがあります。詳細については、「[開発者用ライセンスの取得 (ストア アプリ)](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx)」を参照してください。
+
+####Windows 8.1 タブレット/PC:
 
    `cordova run windows`
 
    __注__: 最初の実行時に、開発者ライセンスのサインインが求められることがあります。詳細については、「[開発者用ライセンスの取得 (ストア アプリ)](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx)」を参照してください。
 
-
-##### Windows Phone 8.1 でアプリケーションを構築して実行する場合
+####Windows Phone 8.1:
 
    コネクテッド デバイスで実行するには、`cordova run windows --device -- --phone` を実行します。
 
    既定のエミュレーターで実行するには、`cordova emulate windows -- --phone` を実行します。
 
    `cordova run windows --list -- --phone` を使用すると、選択可能なすべての対象を表示できます。`cordova run windows --target=<target_name> -- --phone` を使用すると、特定のデバイスまたはエミュレーターでアプリケーションを実行できます (たとえば、`cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`)。
-##### Android デバイスで構築して実行する場合
+
+####Android:
 
    コネクテッド デバイスで実行するには、`cordova run android --device` を実行します。
 
@@ -238,7 +251,7 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
    `cordova run android --list` を使用すると、選択可能なすべての対象を表示できます。`cordova run android --target=<target_name>` を使用すると、特定のデバイスまたはエミュレーターでアプリケーションを実行できます (たとえば、`cordova run android --target="Nexus4_emulator"`)。
 
-##### iOS デバイスで構築して実行する場合
+####iOS:
 
    コネクテッド デバイスで実行するには、`cordova run ios --device` を実行します。
 
@@ -250,10 +263,10 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
 `cordova run --help` を使用すると、追加の構築オプションと実行オプションを参照できます。
 
-参照用の完全なサンプル (構成値を除く) が、ここで提供されています。ここからは上級のさらに興味深いシナリオに移動することができます。次のチュートリアルを試してみてください。
+完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient)をクリックしてください。ここからは上級のさらに興味深いシナリオに移動することができます。次のチュートリアルを試してみてください。
 
 [Azure AD による Node.JS Web API のセキュリティ保護 >>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

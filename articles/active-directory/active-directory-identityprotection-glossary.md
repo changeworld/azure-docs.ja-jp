@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Identity Protection の用語集 |Microsoft Azure"
-	description="Identity Protection の用語集。"
+	pageTitle="Azure Active Directory Identity Protection 用語集 | Microsoft Azure"
+	description="Azure Active Directory Identity Protection 用語集"
 	services="active-directory"
-	keywords="azure active directory identity protection, cloud app discovery, アプリケーションの管理"
+	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集"
 	documentationCenter=""
 	authors="markusvi"
 	manager="stevenpo"
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/01/2016"
+	ms.date="03/04/2016"
 	ms.author="markvi"/>
 
-# Identity Protection の用語集 
+# Azure Active Directory Identity Protection 用語集 
 
 
 ### 危険 (ユーザー)	
@@ -164,4 +164,4 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

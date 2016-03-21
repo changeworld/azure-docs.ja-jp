@@ -14,18 +14,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい OneDrive API の作成
+# PowerApps Enterprise で新しい OneDrive API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-onedrive.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-onedrive.md)
+
+組織の (テナント) App Service 環境に新しい OneDrive API を追加します。
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、自動的に会社のサブスクリプションにサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。![][14]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「powerapps」と入力します。![][15]
+3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][15]
 
 4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
 
@@ -39,7 +45,7 @@
 
 9. OneDrive アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する OneDrive アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
 
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -55,11 +61,17 @@
 
 3. 設定ページで次の操作を行います。
 
-	a) **[API 設定]** を選択します。b) リダイレクト URL を、(このトピックで) Azure ポータルで新しい OneDrive API を追加したときに受け取ったリダイレクト URL に設定します。c) **[保存]** をクリックします。
+	1. **[API 設定]** を選択します。  
+	2. Redirect URL を、(このトピックで) Azure ポータルを使用して新しい OneDrive API を追加したときに受け取ったリダイレクト URL に設定します。  
+	3. [**保存**] を選択します。  
 
 	![OneDrive アプリケーションの API 設定][7]
 
 新しい OneDrive アプリケーションが作成されます。Azure ポータルの OneDrive API 構成でこのアプリケーションを使用できます。
+
+## REST API に関するページを参照してください。
+
+[Onedrive REST API](../connectors/create-api-onedrive.md) リファレンスを参照してください。
 
 ## まとめと次のステップ
 このトピックでは、OneDrive API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -77,4 +89,4 @@
 [14]: ./media/powerapps-create-api-onedrive/browseall.png
 [15]: ./media/powerapps-create-api-onedrive/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -162,7 +162,7 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
 
 データを表示するには、いくつかの方法があります。このセクションでは、Azure ポータルと `hdfs` コマンドを使用して、データを表示します。
 
-> [AZURE.NOTE] Azure Data Lake Store のいくつかのファイルにデータが同期されるように、トポロジを数分間実行してから出力データを確認します。
+> [AZURE.NOTE] Azure Data Lake Store のいくつかのファイルにデータが同期されるように、出力データを確認する前にトポロジを数分間実行します。
 
 * __[Azure ポータル](https://portal.azure.com)から__: ポータルで、HDInsight で使用した Azure Data Lake Store を選択します。
 
@@ -217,8 +217,12 @@ __Windows ベースの HDInsight の場合__:
 
     ![topology actions](./media/hdinsight-storm-write-data-lake-store/topologyactions.png)
 
+## クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##次のステップ
 
 これで、Storm を使用して Azure Data Lake Store に書き込む方法を学習できました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

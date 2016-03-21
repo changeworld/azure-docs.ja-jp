@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="03/08/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 - Alcumus Info Exchange にアクセスする Azure AD ユーザーを制御できます。 
 - ユーザーが自分の Azure AD アカウントで自動的に Alcumus Info Exchange にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -56,7 +56,7 @@ Azure AD への Alcumus Info Exchange の統合を構成するには、ギャラ
 
 **ギャラリーから Alcumus Info Exchange を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -87,19 +87,19 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にし、Alcumus Info Exchange アプリケーションでのシングル サインオンを構成することです。<br>
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にし、Alcumus Info Exchange アプリケーションでシングル サインオンを構成することです。<br>
 
 **Alcumus Info Exchange で Azure AD のシングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **[Alcumus Info Exchange]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6]
+1. Azure クラシック ポータルの **Alcumus Info Exchange** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6]
 
-2. **[ユーザーの Alcumus Info Exchange へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][7]
+2. **[ユーザーの Alcumus Info Exchange へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][7]
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD Single Sign-On][8]<br>
  
      3\.1. **[応答 URL]** テキスト ボックスに、Alcumus Info Exchange サポート チームによってセットアップされたコンシューマー URL を入力します。
 
-     >[AZURE.NOTE] 適切な値がわからない場合は、Alcumus Info Exchange サポート チーム ([helpdesk@alcumusgroup.com](mailto:helpdesk@alcumusgroup.com)) にお問い合わせください。
+     > [AZURE.NOTE] 適切な値がわからない場合は、Alcumus Info Exchange サポート チーム ([helpdesk@alcumusgroup.com](mailto:helpdesk@alcumusgroup.com)) にお問い合わせください。
 
      3\.2.**[次へ]** をクリックします。
  
@@ -108,7 +108,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 5. Alcumus Info Exchange サポート チーム ([helpdesk@alcumusgroup.com](mailto:helpdesk@alcumusgroup.com)) に連絡してメタデータ ファイルを提供し、SSO を有効にする必要があることを伝えます。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![What is Azure AD Connect][10]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]
 
@@ -116,11 +116,11 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、[**Active Directory]** をクリックします。<br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-alcumus-info-tutorial/create_aaduser_02.png) 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-alcumus-info-tutorial/create_aaduser_02.png) 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -204,4 +204,4 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
 [205]: ./media/active-directory-saas-alcumus-info-tutorial/tutorial_general_205.png
 [400]: ./media/active-directory-saas-alcumus-info-tutorial/tutorial_alcumus_402.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

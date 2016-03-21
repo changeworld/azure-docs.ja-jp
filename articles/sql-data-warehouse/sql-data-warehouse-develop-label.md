@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
@@ -37,9 +37,9 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 	FROM    sys.dm_pdw_exec_requests r
 	WHERE   r.[label] = 'My Query Label'
 	;
-	``` 
+	```
 
-> [AZURE.NOTE]クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
+> [AZURE.NOTE] クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
 
 
 ## 次のステップ
@@ -54,4 +54,4 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

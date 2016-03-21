@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/01/2015"
+   ms.date="03/08/2016"
    ms.author="seanmck"/>
 
 # Reliable Actors フレームワークにおけるポリモーフィズム
@@ -78,4 +78,4 @@ Reliable Actors フレームワークでは、アクター型によって実装�
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

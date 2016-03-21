@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="01/09/2016" 
+    ms.date="03/04/2016" 
     ms.author="robmcm" />
 
 # How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
@@ -24,7 +24,8 @@
 
 ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
-> [AZURE.NOTE]Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
+> [AZURE.NOTE]
+Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
 
 ## 前提条件
 
@@ -195,4 +196,4 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -14,17 +14,23 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="03/03/2016"
 ms.author="mandia"/>
 
 # OneDrive API の概要
 
 OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive API は次のツールから使用できます。
 
-- PowerApps 
 - Logic Apps 
+- PowerApps
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[OneDrive コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-onedrive.md)」をご覧ください。
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-onedrive.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-onedrive.md)
+
+&nbsp;
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [OneDrive API](../app-service-logic/app-service-logic-connector-onedrive.md) をクリックしてください。
 
 OneDrive では、次の操作を実行できます。
 
@@ -35,7 +41,7 @@ OneDrive では、次の操作を実行できます。
 
 PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 OneDrive API には、次のトリガーとアクションがあります。
@@ -48,26 +54,6 @@ OneDrive API には、次のトリガーとアクションがあります。
 
 ## OneDrive への接続を作成する
 
-### PowerApps に構成を追加する
-OneDrive を PowerApps Enterprise に追加するときに、OneDrive アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。OneDrive アプリケーションでは、**リダイレクト URL** 値も使用されます。OneDrive アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
-
-1. _Microsoft アカウント デベロッパー センター_の[アプリケーション作成ページ][5]に移動し、_Microsoft アカウント_でサインインします。
-
-2. **アプリケーション名**を入力し、規約に同意します。
-
-	![新しい OneDrive アプリケーション][6]
-
-3. 次のように設定します。
-
-	1. **[API 設定]** を選択します。  
-	2. **[リダイレクト URL]** を、Azure ポータルで新しい OneDrive API を追加したときに表示された値に設定します。  
-	3. 変更を**保存**します。  
-
-	![OneDrive アプリケーションの API 設定][7]
-
-**アプリ キー**値と**アプリ シークレット**値をコピーして、Azure ポータルの OneDrive 構成に貼り付けます。
-
-### ロジック アプリに構成を追加する
 ロジック アプリにこの API を追加するとき、OneDrive に接続するロジック アプリを承認する必要があります。
 
 1. OneDrive アカウントにサインインします。
@@ -317,13 +303,13 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 
 
 ## 次のステップ
-OneDrive API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
+[API リスト](apis-list.md)に戻ります。
 
 [5]: https://account.live.com/developers/applications/create
 [6]: ./media/create-api-onedrive/onedrive-new-app.png
 [7]: ./media/create-api-onedrive/onedrive-app-api-settings.png
 
-<!-----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

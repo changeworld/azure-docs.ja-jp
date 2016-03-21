@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのソリューションの移行
@@ -28,7 +28,7 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 - [スキーマの移行][]
 - [データの移行][]
 - [コードの移行][]
- 
+
 ## 次のステップ
 開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
@@ -52,4 +52,4 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

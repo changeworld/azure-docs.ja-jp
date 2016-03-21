@@ -97,11 +97,11 @@ Service Fabric では、異なる環境で障害の規模が異なっても、�
 
 ### C での Testability の使用#
 
-Testability の機能は、System.Fabric.Testability.dll に含まれています。この dll は、Microsoft.ServiceFabric.Testability.nupack という NuGet パッケージ内にあります。Testability の機能を使用するためには、この NuGet パッケージを参照先としてプロジェクトに含める必要があります。
+Testability の機能は、System.Fabric.dll に含まれています。この dll は、Microsoft.ServiceFabric.nupack という NuGet パッケージ内にあります。Testability の機能を使用するためには、この NuGet パッケージを参照先としてプロジェクトに含める必要があります。
 
 ### PowerShell での Testability の使用
 
-Testability PowerShell を使用するには、ランタイム MSI をインストールする必要があります。MSI がインストールされると、ServiceFabricTestability PowerShell モジュールが自動的に読み込まれ、開発者が使用できるようになります。
+Testability PowerShell を使用するには、ランタイム MSI をインストールする必要があります。MSI がインストールされると、ServiceFabric PowerShell モジュールが自動的に読み込まれ、開発者が使用できるようになります。
 
 ## まとめ
 
@@ -115,4 +115,4 @@ Testability PowerShell を使用するには、ランタイム MSI をインス�
   - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
   - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -3,8 +3,8 @@
    description="Azure Active Directory でレポート イベントを表示するのにかかる時間"
    services="active-directory"
    documentationCenter=""
-   authors="kenhoff"
-   manager="mbaldwin"
+   authors="dhanyahk"
+   manager="stevenpo"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/07/2015"
-   ms.author="kenhoff"/>
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
 # Azure Active Directory レポートの待機時間
 
@@ -52,4 +52,4 @@ RMS 対応アプリケーションの利用状況 | 2 時間 | 4 時間 | 8 時�
 **プライベート プレビュー レポート** | | |
 すべてのユーザーのサインイン アクティビティ | 2 時間 | 4 時間 | 8 時間
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

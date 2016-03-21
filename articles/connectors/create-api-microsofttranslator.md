@@ -15,14 +15,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="03/02/2016"
    ms.author="mandia"/>
 
 # Microsoft Translator API の概要
 Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。Microsoft Translator API は次のツールから使用できます。
 
-- PowerApps 
 - Logic Apps 
+- PowerApps
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-microsofttranslator.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-microsofttranslator.md)
 
 Microsoft Translator では、次の操作を実行できます。
 
@@ -42,25 +46,6 @@ Microsoft Translator には、次のアクションがあります。トリガ�
 なし | <ul><li>言語を検出する</li><li>テキストを音声に変換する</li><li>テキストを翻訳する</li><li>言語を取得する</li><li>音声の言語を取得する</li></ul>
 
 すべての API は、JSON および XML 形式のデータに対応します。
-
-## Microsoft Translator への接続を作成する
-
-### PowerApps に構成を追加する
-Microsoft Translator を PowerApps Enterprise に追加するときに、Microsoft Translator アプリケーションの **クライアント ID** と**クライアント シークレット**の値を入力します。Translator アプリケーションがない場合は、次の手順で作成できます。
-
-1. [Azure Data Market 開発者ページ][5]に移動し、Microsoft アカウントでサインインします。 
-
-2. **[アプリケーションの登録]** を選択します。
-
-	1. **[クライアント ID]** の値を入力します。
-	2. アプリケーションの**名前**を入力します。
-	3. **リダイレクト URL** のダミー値を入力します。たとえば、「 *https://contosoredirecturl* 」と入力します。
-	4. **説明**を入力します。
-	5. **[作成]** を選択します。  
-
-	![アプリケーションの登録][6]
-
-**クライアント ID** と**クライアント シークレット**の値をコピーし、Azure ポータルの Translator 構成に貼り付けます。
 
 
 ## Swagger REST API リファレンス
@@ -139,21 +124,21 @@ Microsoft Translator がサポートするすべての言語を取得します�
 
 #### Language: Microsoft Translator で翻訳できる言語の言語モデル
 
-| 名前 | データ型 | 必須|
+|プロパティ名 | データ型 | 必須|
 |---|---|---|
 |コード|string|×|
 |名前|string|×|
 
 
 ## 次のステップ
-Microsoft Translator API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+
+[API リスト](apis-list.md)に戻ります。
 
 
 <!--References-->
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0302_2016-->
-
+<!---HONumber=AcomDC_0309_2016-->

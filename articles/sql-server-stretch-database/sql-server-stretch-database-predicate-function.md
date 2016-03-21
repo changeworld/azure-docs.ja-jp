@@ -1,11 +1,11 @@
 <properties
-	pageTitle="移行する行を選択するインライン テーブル値関数を記述する (Stretch Database) | Microsoft Azure"
-	description="移行する行を選択するフィルター述語の作成方法について説明します。"
+	pageTitle="移行する行の選択にフィルター述語を使用する (Stretch Database) | Microsoft Azure"
+	description="移行する行の選択にフィルター述語を使用する方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -16,7 +16,7 @@
 	ms.date="02/26/2016"
 	ms.author="douglasl"/>
 
-# 移行する行を選択するインライン テーブル値関数を記述する (Stretch Database)
+# 移行する行の選択にフィルター述語を使用する (Stretch Database)
 
 別個のテーブルに履歴データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。その一方で、テーブルに過去と現在の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。フィルター述語では、インライン テーブル値関数を呼び出す必要があります。このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
 
@@ -409,4 +409,4 @@ GO
 ## 関連項目
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

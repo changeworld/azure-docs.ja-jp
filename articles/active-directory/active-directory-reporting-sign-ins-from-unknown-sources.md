@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="SSalahAhmed"
-	manager="gchander"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2015"
+	ms.date="03/04/2016"
 	ms.author="saah;kenhoff"/>
 
 # 不明なソースからのサインイン
-<p>このレポートは、ディレクトリに正常にサインインしたユーザーで、割り当てられたクライアント IP アドレスがマイクロソフトによって匿名のプロキシ IP アドレスとして認識されているユーザーを示します。このようなプロキシは、自分のコンピューターの IP アドレスを隠したいユーザーによって使用されることが多く、悪意のある目的で使用される場合があります。</p><p> このレポートの結果は、そのアドレスとプロキシの IP アドレスから、ユーザーがディレクトリに正常にサインインした回数を示します。</p>
+このレポートは、ディレクトリに正常にサインインしたユーザーで、割り当てられたクライアント IP アドレスがマイクロソフトによって匿名のプロキシ IP アドレス (Tor IP アドレスなど) として認識されているユーザーを示します。このようなプロキシは、自分のコンピューターの IP アドレスを隠したいユーザーによって使用されることが多く、悪意のある目的で使用される場合があります。
+
+このレポートの結果は、そのアドレスとプロキシの IP アドレスから、ユーザーがディレクトリに正常にサインインした回数を示します。
 
 
 ![不明なソースからのサインイン](./media/active-directory-reporting-sign-ins-from-unknown-sources/signInsFromUnknownSources.PNG)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -4,7 +4,7 @@
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
@@ -28,7 +28,7 @@ Azure CLI は、任意のプラットフォームから Azure インフラスト
 
 Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
 
--	Azure アカウントが必要です。アカウントがない場合は、[無料試用版アカウント](https://azure.microsoft.com/pricing/free-trial/)をほんの少しの時間で作成することができます。
+-	Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)をほんの少しの時間で作成することができます。
 -	[Azure CLI のインストール](../xplat-cli-install.md)を実行します。
 -	Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、`azure login` コマンドを使用して Azure CLI からログインすることができます。相違点を理解して選択するには、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」を参照してください。
 -	以下のコマンドを実行する前に、`azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。詳細については、「[Azure リソース マネージャー モードの設定](../virtual-machines/xplat-cli-azure-resource-manager.md#setting-the-azure-resource-manager-mode)」を参照してください。
@@ -271,4 +271,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,11 +1,12 @@
 <properties
-pageTitle="Office 365 Outlook API をロジック アプリに追加する | Microsoft Azure"
-description="Office 365 Outlook API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="dwrede"	
-editor="" tags="connectors" />
+	pageTitle="PowerApps Enterprise または Logic Apps に Office 365 Outlook API を追加する | Microsoft Azure"
+	description="Office 365 Outlook API と REST API パラメーターの概要"
+	services=""	
+	documentationCenter="" 	
+	authors="msftman"	
+	manager="erikre"	
+	editor="" 
+	tags="connectors" />
 
 <tags
 ms.service="multiple"
@@ -13,15 +14,21 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="02/25/2016"
+ms.date="03/03/2016"
 ms.author="mandia"/>
 
 # Office 365 Outlook API の概要 
 
 Office 365 Outlook に接続して、メールの取得、メールの返信、予定表と連絡先の更新などを行います。Office 365 Outlook API は、以下のツールから使用できます。
 
-- PowerApps 
 - Logic Apps 
+- PowerApps
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-office365-outlook.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-outlook.md)
+
+&nbsp;
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Office 365 API](../app-service-logic/app-service-logic-connector-office365.md) をクリックしてください。
 
@@ -32,9 +39,9 @@ Office 365 Outlook では、次のことができます。
 - メールへの返信、新しい予定表イベントの作成などの各種操作を使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Salesforce に新しいオブジェクトがある場合は、そのオブジェクトを取得し、Office 365 Outlook の連絡先を更新できます。 
 - PowerApps Enterprise に Office 365 Outlook API を追加します。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 
@@ -49,63 +56,12 @@ Office 365 Outlook API では、次のトリガーとアクションを使用で
 
 ## Office 365 への接続を作成する
 
-### PowerApps に構成を追加する
-この API を PowerApps Enterprise に追加するとき、Office 365 Azure Active Directory (AAD) アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Office 365 アプリケーションには、**リダイレクト URL** 値も使用されます。Office 365 アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
-
-1. [Azure ポータル][5]で **[Active Directory]** を開き、組織のテナント名を開きます。
-2. **[アプリケーション]** タブを選択し、**[追加]** をクリックします。  
-![AAD テナント アプリケーション][7]
-
-3. **[アプリケーションの追加]** で次の操作を行います。
-
-	1. アプリケーションの **[名前]** を入力します。  
-	2. アプリケーションの種類は **[Web]** のままにします。  
-	3. **[次へ]** を選択します。  
-
-	![AAD アプリケーションの追加 - アプリケーション情報][8]
-
-6. **[アプリケーションのプロパティ]** で次の操作を行います。
-
-	1. アプリケーションの**サインオン URL** を入力します。PowerApps の AAD に対して認証するので、_https://login.windows.net_ のサインオン URL を設定します。
-	2. アプリの有効な**アプリ ID URI** を入力します。  
-	3. **[OK]** を選択します。  
-
-	![AAD アプリケーションの追加 - アプリケーションのプロパティ][9]
-
-7. 完了すると、新しい AAD アプリケーションが開きます。**[構成]** をクリックします。  
-![Contoso AAD アプリケーション][10]
-
-8. **OAuth 2** セクションの _[応答 URL]_ を、Azure ポータルで Office 365 Outlook API を追加したときに表示されたリダイレクト URL 値に設定します。**[アプリケーションの追加]** をクリックします。  
-![Contoso AAD アプリケーションの構成][11]
-
-9. **[他のアプリケーションに対するアクセス許可]** で、**[Office 365 Exchange Online]** を選択し、**[OK]** をクリックします。  
-![Contoso アプリケーションでのデリゲート][12]
-
-	構成ページに戻り、_[他のアプリケーションに対するアクセス許可]_ の一覧に _Office 365 Exchange Online_ が追加されていることを確認します。
-
-10. **Office 365 Exchange Online** の **[デリゲートされたアクセス許可]** を選択し、次のアクセス許可を選択します。
-
-	- ユーザーの連絡先の読み取りと書き込み
-	- ユーザーの連絡先の読み取り
-	- ユーザーの予定表の読み取りと書き込み
-	- ユーザーの予定表の読み取り
-	- ユーザーとしてのメールの送信
-	- ユーザーのメールの読み取りと書き込み
-	- ユーザーのメールの読み取り
-
-	![Contoso アプリケーションでのアクセス許可のデリゲート][13]
-
-新しい Azure Active Directory アプリケーションが作成されます。**アプリ キー**値と**アプリ シークレット**値をコピーして、Azure ポータルの Office 365 Outlook API 構成に貼り付けます。
-
-「[アプリケーションを Azure AD に追加する方法と理由](../active-directory/active-directory-how-applications-are-added.md)」に AAD アプリケーションに関する有用な情報があります。
-
-### ロジック アプリに構成を追加する
 この API をロジック アプリに追加する場合は、Office 365 Outlook アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
 1. Office 365 Outlook アカウントにサインインします。
 2. ロジック アプリが Office 365 アカウントに接続して使用することを許可します。 
 
-接続を作成したら、受信トレイ フォルダー パスやメール メッセージなど、Office 365 Outlook のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、受信トレイ フォルダー パスやメール メッセージなど、Office 365 Outlook のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、前述の Office 365 Outlook 接続を使用できます。
 
@@ -114,8 +70,7 @@ Office 365 Outlook API では、次のトリガーとアクションを使用で
 
 
 ### イベントが間もなく開始されるとき 
-予定表イベントが間もなく開始されるときにフローをトリガーします。  
-```GET: /Events/OnUpcomingEvents```
+予定表イベントが間もなく開始されるときにフローをトリガーします。```GET: /Events/OnUpcomingEvents```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -135,8 +90,7 @@ Office 365 Outlook API では、次のトリガーとアクションを使用で
 
 
 ### 電子メールを取得する 
-フォルダーから電子メールを取得します。  
-```GET: /Mail```
+フォルダーから電子メールを取得します。```GET: /Mail```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -161,8 +115,7 @@ Office 365 Outlook API では、次のトリガーとアクションを使用で
 
 
 ### 電子メールを送信する 
-電子メール メッセージを送信します。  
-```POST: /Mail```
+電子メール メッセージを送信します。```POST: /Mail```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -182,8 +135,7 @@ Office 365 Outlook API では、次のトリガーとアクションを使用で
 
 
 ### 電子メールを削除する 
-ID を指定して電子メール メッセージを削除します。  
-```DELETE: /Mail/{messageId}```
+ID を指定して電子メール メッセージを削除します。```DELETE: /Mail/{messageId}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -202,8 +154,7 @@ ID を指定して電子メール メッセージを削除します。
 
 
 ### 既読としてマークする 
-電子メール メッセージを既読とマークします。  
-```POST: /Mail/MarkAsRead/{messageId}```
+電子メール メッセージを既読とマークします。```POST: /Mail/MarkAsRead/{messageId}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -222,8 +173,7 @@ ID を指定して電子メール メッセージを削除します。
 
 
 ### メッセージに返信する 
-電子メール メッセージに返信します。  
-```POST: /Mail/ReplyTo/{messageId}```
+電子メール メッセージに返信します。```POST: /Mail/ReplyTo/{messageId}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -244,8 +194,7 @@ ID を指定して電子メール メッセージを削除します。
 
 
 ### 添付ファイルを取得する 
-ID を指定してメッセージの添付ファイルを取得します。  
-```GET: /Mail/{messageId}/Attachments/{attachmentId}```
+ID を指定してメッセージの添付ファイルを取得します。```GET: /Mail/{messageId}/Attachments/{attachmentId}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -265,8 +214,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 新しい電子メールの着信時 
-新しい電子メールを着信したときにフローをトリガーします。  
-```GET: /Mail/OnNewEmail```
+新しい電子メールを着信したときにフローをトリガーします。```GET: /Mail/OnNewEmail```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -292,8 +240,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### オプションを指定して電子メールを送信する 
-複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます。  
-```POST: /mailwithoptions/$subscriptions```
+複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます。```POST: /mailwithoptions/$subscriptions```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -313,8 +260,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 承認の電子メールを送信します 
-承認の電子メールを送信し、To に指定した受信者からの返信を待ちます。  
-```POST: /approvalmail/$subscriptions```
+承認の電子メールを送信し、To に指定した受信者からの返信を待ちます。```POST: /approvalmail/$subscriptions```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -337,8 +283,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 予定表を取得する 
-予定表を取得します。  
-```GET: /datasets/calendars/tables```
+予定表を取得します。```GET: /datasets/calendars/tables```
 
 この呼び出しには、パラメーターはありません。
 
@@ -353,8 +298,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### Get events 
-予定表から項目を取得します。  
-```GET: /datasets/calendars/tables/{table}/items```
+予定表から項目を取得します。```GET: /datasets/calendars/tables/{table}/items```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -373,8 +317,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### イベントを作成する 
-新しいイベントを作成します。  
-```POST: /datasets/calendars/tables/{table}/items```
+新しいイベントを作成します。```POST: /datasets/calendars/tables/{table}/items```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -390,8 +333,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### イベントを取得する 
-予定表から特定の項目を取得します。  
-```GET: /datasets/calendars/tables/{table}/items/{id}```
+予定表から特定の項目を取得します。```GET: /datasets/calendars/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -407,8 +349,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### インベントリを削除する 
-予定表項目を削除します。  
-```DELETE: /datasets/calendars/tables/{table}/items/{id}```
+予定表項目を削除します。```DELETE: /datasets/calendars/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -424,8 +365,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### イベントを更新する 
-予定表項目の一部を更新します。  
-```PATCH: /datasets/calendars/tables/{table}/items/{id}```
+予定表項目の一部を更新します。```PATCH: /datasets/calendars/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -442,8 +382,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 新しい項目の作成時 
-新しい予定表項目が作成されたときにトリガーされます。  
-```GET: /datasets/calendars/tables/{table}/onnewitems```
+新しい予定表項目が作成されたときにトリガーされます。```GET: /datasets/calendars/tables/{table}/onnewitems```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -462,8 +401,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 項目の更新時 
-予定表項目が変更されたときにトリガーされます。  
-```GET: /datasets/calendars/tables/{table}/onupdateditems```
+予定表項目が変更されたときにトリガーされます。```GET: /datasets/calendars/tables/{table}/onupdateditems```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -482,8 +420,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先フォルダーを取得する 
-連絡先フォルダーを取得します。  
-```GET: /datasets/contacts/tables```
+連絡先フォルダーを取得します。```GET: /datasets/contacts/tables```
 
 この呼び出しには、パラメーターはありません。
 
@@ -496,8 +433,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先を取得する 
-連絡先フォルダーから連絡先を取得します。  
-```GET: /datasets/contacts/tables/{table}/items```
+連絡先フォルダーから連絡先を取得します。```GET: /datasets/contacts/tables/{table}/items```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -516,8 +452,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先を作成する 
-新しい連絡先を作成します。  
-```POST: /datasets/contacts/tables/{table}/items```
+新しい連絡先を作成します。```POST: /datasets/contacts/tables/{table}/items```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -533,8 +468,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先を取得する 
-連絡先フォルダーから特定の連絡先を取得します。  
-```GET: /datasets/contacts/tables/{table}/items/{id}```
+連絡先フォルダーから特定の連絡先を取得します。```GET: /datasets/contacts/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -550,8 +484,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先を削除する 
-連絡先を削除します。  
-```DELETE: /datasets/contacts/tables/{table}/items/{id}```
+連絡先を削除します。```DELETE: /datasets/contacts/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -567,8 +500,7 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ### 連絡先を更新する 
-連絡先の一部を更新します。  
-```PATCH: /datasets/contacts/tables/{table}/items/{id}```
+連絡先の一部を更新します。```PATCH: /datasets/contacts/tables/{table}/items/{id}```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -821,9 +753,10 @@ ID を指定してメッセージの添付ファイルを取得します。
 
 
 ## 次のステップ
-Office 365 API を PowerApps Enterprise に追加したら、この API をアプリで利用する[許可をユーザーに与えます](../power-apps/powerapps-manage-api-connection-user-access.md)。
 
-[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+
+[API リスト](apis-list.md)に戻ります。
 
 <!--References-->
 [5]: https://portal.azure.com
@@ -835,5 +768,4 @@ Office 365 API を PowerApps Enterprise に追加したら、この API をア�
 [12]: ./media/create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook.png
 [13]: ./media/create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook-permissions.png
 
-<!---HONumber=AcomDC_0302_2016-->
-
+<!---HONumber=AcomDC_0309_2016-->

@@ -18,7 +18,7 @@
 # クラウド サービスごとの複数の VIP
 Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。このパブリック IP アドレスは、Azure Load Balancer にリンクされているため VIP (仮想 IP) と呼ばれますが、実際はクラウド サービス内の VM インスタンスではありません。クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
 
-ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。たとえば、クラウド サービスは、既定の SLSL ポート 443 を使用して SSL 接続を必要とする複数の Web サイト、異なる顧客をホストする各サイト、テナントをホストできます。このようなシナリオでは、Web サイトごとに異なるパブリック IP アドレスを持つ必要があります。次の図は、同じパブリック ポートで複数の SSL 証明書が必要な一般的なマルチテナント Web ホスティングを示しています。
+ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。たとえば、クラウド サービスは、既定のポート 443 を使用して SSL 接続を必要とする複数の Web サイト、異なる顧客をホストする各サイト、テナントをホストできます。このようなシナリオでは、Web サイトごとに異なるパブリック IP アドレスを持つ必要があります。次の図は、同じパブリック ポートで複数の SSL 証明書が必要な一般的なマルチテナント Web ホスティングを示しています。
 
 ![Multi VIP SSL scenario](./media/load-balancer-multivip/Figure1.png)
 
@@ -148,11 +148,11 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 
 [インターネットに接続するロード バランサーの概要](load-balancer-internet-overview.md)
 
-[インターネットに接続するロード バランサーの開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの開始](load-balancer-get-started-internet-arm-ps.md)
 
 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

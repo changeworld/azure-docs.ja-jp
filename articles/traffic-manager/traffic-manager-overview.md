@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma" />
 
 # Traffic Manager について
@@ -56,10 +56,10 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
 1. **Azure クラウド サービス、Azure の Web サイト、またはその他のエンドポイントを運用環境にデプロイします**。Traffic Manager プロファイルを作成するときに、そのプロファイルは、サブスクリプションに関連付けられている必要があります。次に、同じサブスクリプションに含まれる運用環境で、クラウド サービスおよび標準的な層の Web サイトのエンドポイントを追加します。エンドポイントが Azure の運用環境ではなく、ステージング環境にあり、または同じサブスクリプションに含まれない場合は、外部エンドポイントとして追加できます。クラウド サービスの詳細については、[クラウド サービス](http://go.microsoft.com/fwlink/p/?LinkId=314074)を参照してください。Web サイトの詳細については、[Web サイト](http://go.microsoft.com/fwlink/p/?LinkId=393327)を参照してください。
 2. **Traffic Manager ドメインの名前を決定します**。一意のプレフィックスを持つドメインの名前を検討してください。ドメインの後半部分、trafficmanager.net は固定されています。詳細については、[ベスト プラクティス](#best-practices)を参照してください
 3. **使用する監視の構成を決定します**。Traffic Manager は、トラフィック ルーティング方法に関係なく、オンラインであることを確認するために、エンドポイントを監視します。監視設定を構成した後 Traffic Manager は、すべてのエンドポイントがオフラインであることを検出するか、プロファイルに含まれるいずれかのエンドポイントの状態を検出できなくなるまで、監視システムに従って、オフラインであるエンドポイントにトラフィックを送信しません。監視の詳細については、[Traffic Manager の監視](traffic-manager-monitoring.md)に関するページを参照してください。
-4. **使用するトラフィック ルーティング方法を決定します**。次の 3 つの異なるトラフィック ルーティング方法を使用できます。時間をかけて、要件に適合する最適な方法を理解してください。後で方法を変更する必要がある場合は、いつでも変更できます。各方法では、わずかに異なる構成手順が必要であることにも注意してください。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)」をご覧ください。
+4. **使用するトラフィック ルーティング方法を決定します**。次の 3 つの異なるトラフィック ルーティング方法を使用できます。時間をかけて、要件に適合する最適な方法を理解してください。後で方法を変更する必要がある場合は、いつでも変更できます。各方法では、わずかに異なる構成手順が必要であることにも注意してください。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
 5. **プロファイルを作成し、設定を構成します**。REST API、Windows PowerShell、または Azure クラシック ポータルを使用して、Traffic Manager プロファイルを作成し、設定を構成することができます。詳細については、[Traffic Manager 設定の構成方法](#how-to-configure-traffic-manager-settings)を参照してください以下の手順は、Azure クラシック ポータルの**簡易作成**を使用することを前提としています。 
    - **Traffic Manager プロファイルの作成** - Azure クラシック ポータルで簡易作成を使用してプロファイルを作成するには、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」を参照してください。
-   - **トラフィック ルーティング方法の設定の構成** – [簡易作成] で、プロファイルのトラフィック ルーティング方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順は、トラフィック ルーティング方法に対応する次のトピックをご覧ください: 「[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-load-balancing.md)」、「[フェールオーバーによるトラフィック ルーティング 方法の構成](traffic-manager-configure-failover-load-balancing.md)」、「[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-load-balancing.md)」
+   - **トラフィック ルーティング方法の設定の構成** – [簡易作成] で、プロファイルのトラフィック ルーティング方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順は、トラフィック ルーティング方法に対応する次のトピックをご覧ください: 「[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)」、「[フェールオーバーによるトラフィック ルーティング 方法の構成](traffic-manager-configure-failover-routing-method.md)」、「[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)」
    
    >[AZURE.NOTE] ラウンド ロビンによるトラフィック ルーティング方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](https://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
 
@@ -102,7 +102,7 @@ REST API を使用して Traffic Manager プロファイルの作成と構成を
 - **定義** – 定義には、ポリシー設定と監視設定が含まれています。定義はプロファイルに対応しています。1 つのプロファイルには定義を 1 つだけ指定できます。定義に含まれている設定の多くは Azure クラシック ポータルに表示され、Azure ポータルで構成できますが、定義そのものは Azure クラシック ポータルに表示されません。
 - **DNS オプション** – DNS オプションは各定義に含まれています。ここで DNS TTL を構成します。
 - **監視** – 監視設定は各定義に含まれています。ここで、プロトコル、ポート、相対パス、ファイル名を構成します。監視設定は Azure クラシック ポータルに表示され、Azure クラシック ポータルで構成できます。詳細については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
-- **ポリシー** – ポリシー設定は各定義に含まれます。ポリシーでは、トラフィック ルーティング方法とエンドポイントを指定します。ポリシーに含まれる設定の一部は Azure クラシック ポータルに表示され、Azure ポータルで構成できますが、ポリシーそのものは Azure クラシック ポータルに表示されません。詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)」をご覧ください。
+- **ポリシー** – ポリシー設定は各定義に含まれます。ポリシーでは、トラフィック ルーティング方法とエンドポイントを指定します。ポリシーに含まれる設定の一部は Azure クラシック ポータルに表示され、Azure ポータルで構成できますが、ポリシーそのものは Azure クラシック ポータルに表示されません。詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
 
 ## Windows PowerShell を使用した設定の構成
 
@@ -172,4 +172,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

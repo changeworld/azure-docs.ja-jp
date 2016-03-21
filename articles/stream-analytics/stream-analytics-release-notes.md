@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Stream Analytics のリリース ノート | Microsoft Azure" 
-	description="Stream Analytics GA のリリース ノート" 
+	description="Stream Analytics のリリース ノート" 
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,10 +13,18 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/16/2016" 
+	ms.date="03/03/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics のリリース ノート
+
+## Stream Analytics の 2016 年 3 月 3 日付リリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+新しい Stream Analytics クエリ言語項目 | SAQL には [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "GetType の MSDN ページ")、[TRY\_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "TRY_CAST MSDN ページ")、[REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "REGEXMATCH MSDN ページ") があります。
 
 ## Stream Analytics の 2015 年 12 月 10 日付けリリースに関するノート ##
 
@@ -25,7 +33,7 @@
 タイトル | 説明
 ---|---
 REST API バージョン更新 | REST API バージョンが 2015-10-01 に更新されました。詳細については、MSDN の [Stream Analytics の管理 REST API リファレンスに関する記事](https://msdn.microsoft.com/library/azure/dn835031.aspx)、および「[Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)」を参照してください。
-Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。チュートリアルは[ここ](stream-analytics-machine-learning-integration-tutorial.md)にあります。一般的なブログ告知は[ここ](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)にあります。
+Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。詳細については「[チュートリアル](stream-analytics-machine-learning-integration-tutorial.md)」と、「[汎用的なブログのアナウンス](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)」を参照してください。
 
 ## Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート ##
 
@@ -133,4 +141,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

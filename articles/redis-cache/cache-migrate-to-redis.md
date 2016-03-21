@@ -4,7 +4,7 @@
     services="redis-cache"
     documentationCenter="na"
     authors="steved0x"
-    manager="dwrede"
+    manager="erikre"
     editor="tysonn" />
 <tags 
     ms.service="cache"
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="12/03/2015"
+    ms.date="03/04/2016"
     ms.author="sdanie" />
 
 # Managed Cache Service から Azure Redis Cache への移行
@@ -71,7 +71,7 @@ Azure Redis Cache のキャッシュは、[Azure ポータル](https://portal.az
 -	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
 -	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](cache-manage-cli.md)」を参照してください。
 
->[AZURE.NOTE] Azure Redis Cache を使用するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)を参照してください。
+>[AZURE.NOTE] Azure Redis Cache を使用するには、Azure アカウントが必要です。アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)を参照してください。
 
 ## キャッシュ クライアントを構成する
 
@@ -195,4 +195,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

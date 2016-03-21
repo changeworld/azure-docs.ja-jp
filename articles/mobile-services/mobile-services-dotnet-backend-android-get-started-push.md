@@ -17,11 +17,10 @@
 	ms.author="ricksal"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
-
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
+> このトピックの Mobile Apps バージョンについては、「[Add push notifications to your Android app (Android アプリにプッシュ通知を追加する)](../app-service-mobile/app-service-mobile-android-get-started-push.md)」を参照してください。
+ 
 &nbsp;
-
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
@@ -117,4 +116,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [登録者へのブロードキャスト通知の送信]: ../notification-hubs-windows-store-dotnet-send-breaking-news.md
 [登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

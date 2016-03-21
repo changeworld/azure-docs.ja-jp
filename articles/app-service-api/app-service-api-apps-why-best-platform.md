@@ -40,7 +40,16 @@ API Apps には、次の機能が用意されています。
 
 さらに、API Apps、Web Apps、および Mobile Apps の機能は互換性があります。つまり、API Apps のインスタンスで、Web 開発とモバイル開発用の機能と Web Apps と Mobile Apps が提供するホスティングを活用できます。この逆もあてはまります。たとえば、Web アプリを使用して API をホストでき、同時に Swagger メタデータを活用してクライアント コードを生成し、CORS を活用してブラウザーのクロス ドメイン アクセスを実行できます。詳細については、「[Web Apps の概要](../app-service-web/app-service-web-overview.md)」と「[Mobile Apps の概要](../app-service-mobile/app-service-mobile-value-prop.md)」を参照してください。
 
->[AZURE.NOTE] [Azure API Management](../api-management/api-management-key-concepts.md) を使用することで、App Service API Apps でホストされる API へのクライアント アクセスを制御できます。API Apps では認証サービスを提供します。その他に、API Apps ではなく API Management が提供するアクセス管理機能もあります。たとえば、エンドポイント統合やスロットルなどです。
+## Azure API Management を使用して API Apps を強化する 
+
+API Apps と [Azure API Management](../api-management/api-management-key-concepts.md) は補完的なサービスです。
+
+* API Management は API 管理関連のサービスです。API Management フロントエンドを API に配置し、使用率を監視し、調整したり、入力と出力を操作したり、複数の API を 1 つに統合したりします。管理対象の API は任意の場所でホストできます。
+* API Apps は API のホスト関連のサービスです。このサービスには API の開発と使用を支援する機能がありますが、API Management で行うような監視、調整、操作、統合は行いません。 
+
+API Management を利用し、API Apps がホストする API を管理するか、API Management なしで API Apps を使用できます。
+
+API Management と API Apps の一部の機能には同じような働きがあります。たとえば、両方とも CORS サポートを自動化できます。2 つのサービスを共に使用する場合、CORS には API Management を使用します。これが API アプリのフロントエンドとして機能するためです。
 
 ## <a id="concepts"></a> API Apps の概念
 
@@ -57,4 +66,4 @@ API Apps に関する既知の問題の一覧については、[API Apps の既�
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

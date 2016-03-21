@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/24/2016"
+	ms.date="02/24/2016"
 	ms.author="dineshm"/>
 
 
@@ -22,7 +22,8 @@
 [AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## 概要  
-[Java 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+
+[Java 用 Azure Storage クライアント ライブラリ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 ## エンベロープ手法による暗号化と復号化    
 暗号化と復号化のプロセスは、エンベロープ手法に倣います。
@@ -34,8 +35,7 @@
 
 2.	ユーザー データは、この CEK を使用して暗号化されます。
 
-3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。
-ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
+3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
 
 4.	暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
 
@@ -116,8 +116,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 1.	シークレットをオフラインで作成し、Key Vault にアップロードします。  
 
-2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。
-キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
+2.	シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
 
 3.	暗号化ポリシーの作成時に、入力としてキャッシュ リゾルバーを使用します。Key Vault の使用方法について詳しくは、暗号化コードのサンプルを参照してください。<fix URL>
 
@@ -241,9 +240,11 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 
 ## 次のステップ  
 
-- [Azure Storage Client Library for Java の Maven パッケージ](https://github.com/Azure/azure-storage-java) をダウンロードする  
+- [Azure Storage Client Library for Java の Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) をダウンロードする  
 - GitHub から [Azure Storage Client Library for Java のソースコード](https://github.com/Azure/azure-storage-java) をダウンロードする   
-- Azure Key Vault Maven [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする
+- Java Maven パッケージの Azure Key Vault Maven Library をダウンロードする:
+	- [コア](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) パッケージ
+	- [クライアント](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) パッケージ
 - [Azure Key Vault ドキュメント](../key-vault/key-vault-whatis.md)を参照する  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

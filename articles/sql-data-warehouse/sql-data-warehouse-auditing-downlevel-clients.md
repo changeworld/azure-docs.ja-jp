@@ -1,22 +1,22 @@
-<properties 
-   pageTitle="SQL Data Warehouse - データ監査のためのダウンレベル クライアントのサポート | Microsoft Azure" 
-   description="データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します" 
-   services="sql-data-warehouse" 
-   documentationCenter="" 
-   authors="twounder" 
-   manager="barbkess" 
+<properties
+   pageTitle="SQL Data Warehouse - データ監査のためのダウンレベル クライアントのサポート | Microsoft Azure"
+   description="データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します"
+   services="sql-data-warehouse"
+   documentationCenter=""
+   authors="twounder"
+   manager="barbkess"
    editor=""/>
 
-<tags 
-   ms.service="sql-database" 
-   ms.workload="data-management" 
-   ms.tgt_pltfrm="na" 
-   ms.devlang="na" 
-   ms.topic="article" 
-   ms.date="01/07/2016" 
+<tags
+   ms.service="sql-database"
+   ms.workload="data-management"
+   ms.tgt_pltfrm="na"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.date="03/03/2016" 
    ms.author="mausher;barbkess;sonyama"/>
- 
-# SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート 
+
+# SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 
 
 [監査](sql-data-warehouse-auditing-get-started.md)は TDS リダイレクションに対応する SQL クライアントと連動します。
@@ -38,6 +38,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
- 
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

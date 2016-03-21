@@ -3,7 +3,7 @@
 
 ## シミュレート済みデバイスへの Azure BLOB URI の送信
 
-このセクションでは、「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」で作成した **SendCloudtoDevice** コンソール アプリケーションを変更して、共有アクセス署名と共に Azure BLOB URI が含まれるようにします。これにより、クラウド バックエンドは、クラウドからデバイスへのメッセージの受信者にのみ BLOB への書き込みアクセス権を付与できます。
+このセクションでは、「IoT Hub を使用したクラウドからデバイスへのメッセージの送信」で作成した **SendCloudtoDevice** コンソール アプリケーションを変更して、共有アクセス署名と共に Azure BLOB URI が含まれるようにします。これにより、クラウド バックエンドは、クラウドからデバイスへのメッセージの受信者にのみ BLOB への書き込みアクセス権を付与できます。
 
 1. Visual Studio で **SendCloudtoDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。 
 
@@ -43,7 +43,7 @@
             return blob.Uri + sasBlobToken;
         }
 
-    このメソッドにより、新しい BLOB リファレンスが作成され、「[BLOB サービスによる SAS の作成および使用](https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-shared-access-signature-part-2/)」で説明されているように共有アクセス署名 URI が生成されます。上記のメソッドで生成される署名 URI の有効期限は 24 時間です。ターゲット デバイスでファイルをアップロードするのにこれ以上の時間を要する場合は (接続頻度が低い場合や、容量の大きいファイルをアップロードするには接続の信頼性が低い場合など)、署名の有効期限の延長を検討してください。
+    このメソッドにより、新しい BLOB リファレンスが作成され、「[BLOB ストレージでの SAS の作成と使用](../storage/storage-dotnet-shared-access-signature-part-2.md)」で説明されているように共有アクセス署名 URI が生成されます。上記のメソッドで生成される署名 URI の有効期限は 24 時間です。ターゲット デバイスでファイルをアップロードするのにこれ以上の時間を要する場合は (接続頻度が低い場合や、容量の大きいファイルをアップロードするには接続の信頼性が低い場合など)、署名の有効期限の延長を検討してください。
 
 5. 次の方法で **SendCloudToDeviceMessageAsync** を変更します。
 
@@ -61,13 +61,13 @@
 
 <!-- Links -->
 
-[Azure ストレージについて]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/#create-a-storage-account
+[Azure ストレージについて]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 [Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[Transient Fault Handling]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,14 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="barbkess;sonyama"/>
 
 # SQL Data Warehouse の参照トピック
 
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
 
-[Transact-SQL 言語要素][] [Transact-SQL ステートメント][] [Transact-SQL システム ビュー][] [PowerShell コマンドレット][]
+[Transact-SQL 言語要素][]
+
+[Transact-SQL ステートメント][]
+
+[Transact-SQL システム ビュー][]
+
+[PowerShell コマンドレット][]
 
 
 
@@ -39,4 +45,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

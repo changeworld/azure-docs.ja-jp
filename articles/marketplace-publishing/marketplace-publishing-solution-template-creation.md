@@ -36,7 +36,7 @@
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
-  Azure プレビュー ポータル: https://ms.portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
+  Azure ポータル: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 
 - 新しいバージョンを追加します。
 
@@ -46,16 +46,6 @@
 - リンクされたテンプレートと必要なすべてのスクリプト。
 
 zip ファイルをアップロードしたら、**[証明書の要求]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
-
-以下の手順を実行すると、顧客向けに実際にデプロイメントを行わずに、作成エクスペリエンスを検証することもできます。
-
-1. *createUiDefinition.json* を保存して、絶対 URL を生成します。この URL は、パブリックにアクセスできる必要があります。
-2. [http://www.url-encode-decode.com/](http://www.url-encode-decode.com/) にあるツールを使用して URL をエンコードします。
-3. 太字のテキストを、検証が必要な *createUiDefinition.json* の場所 (エンコードされた URL) に置き換えます。
-
-  > https://portal.azure.com/?clientOptimizations=false#blade/Microsoft_Azure_Compute/CreateMultiVmWizardBlade/internal_bladeCallId/anything/internal_bladeCallerParams/ **{"initialData":{},"providerConfig":{"createUiDefinition":"http://yoururltocreateuidefinition.jsonURLencoded"}}**
-
-4. 任意のブラウザーで URL をコピーして貼り付けると、createUiDefinition.json ファイルのカスタマー エクスペリエンスを参照できます。
 
   > [AZURE.TIP] 開発者がソリューション テンプレートのトポロジを作成して認定を取得する間、会社のビジネス、マーケティング、法務の部門はマーケティングおよび法的なコンテンツの作業を進めることができます。
 
@@ -77,4 +67,4 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 [link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

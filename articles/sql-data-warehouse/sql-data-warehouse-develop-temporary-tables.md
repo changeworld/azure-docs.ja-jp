@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の一時テーブル
@@ -124,7 +124,7 @@ DROP TABLE #stats_ddl;
 
 場合によっては、この手法を使ってインライン関数や複数ステートメント関数を置き換えることもできます。
 
-> [AZURE.NOTE]このソリューションを拡張することもできます。1 つのテーブルだけを更新する場合は、たとえば、#stats\_ddl テーブルをフィルター処理するだけで済みます。
+> [AZURE.NOTE] このソリューションを拡張することもできます。1 つのテーブルだけを更新する場合は、たとえば、#stats\_ddl テーブルをフィルター処理するだけで済みます。
 
 ## 一時テーブルの制限事項
 SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。
@@ -147,4 +147,4 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    ms.author="barbkess;sonyama"/>
 
 #Transact-SQL トピック
@@ -127,4 +127,4 @@ TSQL の例については、[SQL Data Warehouse の開発の概要][]に関す�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

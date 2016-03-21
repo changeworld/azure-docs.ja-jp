@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API を作成する方法
@@ -99,4 +99,4 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
 [Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法]: api-management-howto-mutual-certificates.md
 [Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法]: api-management-howto-oauth2.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

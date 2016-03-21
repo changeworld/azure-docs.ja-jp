@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
@@ -22,7 +22,7 @@ API Management では複数リージョンのデプロイメントがサポー�
 
 API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure クラシック ポータルで簡単に追加できます。各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
-> [AZURE.IMPORTANT]複数リージョンのデプロイメントは、**[Premium][]** レベルでのみ提供されます。
+> [AZURE.IMPORTANT] 複数リージョンのデプロイメントは、**[Premium][]** レベルでのみ提供されます。
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
 
@@ -40,7 +40,7 @@ API Management サービス インスタンスの Azure クラシック ポー�
 
 ![リージョンの追加][api-management-add-region]
 
-リージョンを選択したら、**[ユニット\]** ボックスの一覧から新しいリージョンのユニット数を選択します。
+リージョンを選択したら、[ユニット] ボックスの一覧から新しいリージョンのユニット数を選択します。
 
 ![ユニットの指定][api-management-select-units]
 
@@ -75,4 +75,4 @@ API Management サービス インスタンスの Azure クラシック ポー�
 [ユニット]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

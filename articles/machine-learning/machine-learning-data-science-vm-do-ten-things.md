@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/13/2016"
+	ms.date="03/04/2016"
 	ms.author="gokuma;weig;bradsev" />
 
 # データ サイエンス仮想マシンでできる 10 のこと 
@@ -86,7 +86,7 @@ Notebook から、任意のライブラリを使って、データの探索、�
 
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。
 
->[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] \(使ってみる) をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
+>[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] (使ってみる) をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
 
 ### Python のモデルを構築して運用可能な状態にする
 
@@ -321,7 +321,7 @@ Azure Machine Learning Studio では、**リーダー モジュール**を使用
 	from time import time
 	import pyodbc
 	import os
-	from azure.storage import BlobService
+	from azure.storage.blob import BlobService
 	import tables
 	import time
 	import zipfile
@@ -894,4 +894,4 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 ## まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。他にもさまざまな手段で分析環境を強化することができます。
 
-<!------HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -16,18 +16,17 @@
 	ms.date="02/16/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C プレビュー: Azure Active Directory B2C のサポート要求を提出する方法
+# Azure Active Directory B2C プレビュー: サポート要求の提出
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を提出するには、次の手順に従います。
+Azure ポータルで Azure Active Directory (Azure AD) B2C のサポート要求を提出するには、次の手順に従います。
 
 1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
-2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。Azure サブスクリプションと Azure AD テナントの関係について詳しくは、[こちらの記事](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)をご覧ください。
+2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。詳細については、「[Azure サブスクリプションが Azure AD に関連付けられる方法](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)」を参照してください。
 
     ![Support - Switch tenants](./media/active-directory-b2c-support/support-switch-dir.png)
 
-    
 3. テナントを切り替えた後、**[ヘルプとサポート]** をクリックします。
 
     ![Support - Help + Support](./media/active-directory-b2c-support/support-support.png)
@@ -40,7 +39,7 @@ Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を�
 
     - **[問題の種類]** は **[技術]** です。
 	- 適切な**サブスクリプション**を選択します。
-    - **[サービス]** で **[Active Directory]** を選択します。
+    - **[サービス]** は **[Active Directory]** です。
     - 適切な**サポート プラン**を選択します。サポート プランがない場合は、[ここ](https://azure.microsoft.com/ja-JP/support/plans/)からサインアップできます。
 
     ![Support - Basics](./media/active-directory-b2c-support/support-basics.png)
@@ -52,11 +51,11 @@ Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を�
     - 適切な**カテゴリ**を選択します。
 	- **[詳細]** フィールドに問題の説明を入力します。B2C テナントの名前、問題の説明、エラー メッセージ、関連付け ID (ある場合) などの詳細情報を入力します。
     - **[期間]** フィールドに問題が発生した日時 (タイム ゾーンを含む) を入力します。
-    - **[ファイルのアップロード]** で、問題の解決に役立つと思われるスクリーンショットやファイルをすべてアップロードします。
+    - **[ファイルのアップロード]** で、問題の解決に役立つと思われるすべてのスクリーンショットやファイルをアップロードします。
 
     ![Support - Problem](./media/active-directory-b2c-support/support-problem.png)
 
-7. **[連絡先]** ブレードで、自分の連絡先情報を追加します。**[作成]** をクリックします。*注: プレビュー期間中は、Azure AD B2C のサポートは英語でのみ提供されます。*
+7. **[連絡先情報]** ブレードで、自分の連絡先情報を追加します。**[作成]** をクリックします。*注: プレビュー期間中は、Azure AD B2C のサポートは英語でのみ提供されます。*
 
     ![Support - Contact](./media/active-directory-b2c-support/support-contact.png)
 
@@ -71,4 +70,4 @@ B2C テナントで新しい Azure サブスクリプションにサインアッ
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

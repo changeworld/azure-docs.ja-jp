@@ -14,14 +14,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Office 365 Outlook API の作成
+# PowerApps Enterprise で新しい Office 365 Outlook API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-office365-outlook.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-outlook.md)
+
+組織の (テナント) App Service 環境に Office 365 Outlook API を追加する
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、自動的に会社のサブスクリプションにサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。![][14]
 
@@ -39,7 +45,7 @@
 
 9. Office 365 Azure Active Directory (AAD) アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*の値を入力します。これらがない場合は、このトピックの「PowerApps Office 365 API で使用する AAD アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
  
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -54,7 +60,7 @@
 
 2. **[参照]** をクリックし、**[Active Directory]** を選択します。
 
-	>[AZURE.NOTE]これにより、Azure クラシック ポータルで Active Directory が開きます。
+	>[AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
 
 3. 組織のテナント名を選択します。![Azure Active Directory の起動][6]
 
@@ -62,13 +68,17 @@
 
 5. **[アプリケーションの追加]** で次の操作を行います。
 
-	a) アプリケーションの**名前**を入力します。b) アプリケーションの種類は **Web** のままにしておきます。c) **[次へ]** をクリックします。
+	1. アプリケーションの **[名前]** を入力します。  
+	3. アプリケーションの種類は **[Web]** のままにします。  
+	3. **[次へ]** を選択します。  
 
 	![AAD アプリケーションの追加 - アプリケーション情報][8]
 
 6. **[アプリケーションのプロパティ]** で次の操作を行います。
 
-	a) アプリケーションの**サインオン URL** を入力します。AAD を使用して PowerApps に対する認証を行うので、サインオン URL を _https://login.windows.net_ に設定します。b) アプリケーションの有効な**アプリケーション ID URI** を入力します。c) **[OK]** をクリックします。
+	1. アプリケーションの**サインオン URL** を入力します。PowerApps の AAD に対して認証するので、サインオン URL を _https://login.windows.net_ に設定します。
+2. アプリの有効な**アプリ ID URI** を入力します。  
+	3. **[OK]** を選択します。  
 
 	![AAD アプリケーションの追加 - アプリケーションのプロパティ][9]
 
@@ -94,6 +104,13 @@
 
 新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの Office 365 Outlook API 構成でこのアプリケーションを使用できます。
 
+「[アプリケーションを Azure AD に追加する方法と理由](../active-directory/active-directory-how-applications-are-added.md)」に AAD アプリケーションに関する有用な情報があります。
+
+## REST API に関するページを参照してください。
+
+[Office 365 Outlook REST API](../connectors/create-api-office365-outlook.md) リファレンス。
+
+
 ## まとめと次のステップ
 このトピックでは、Office 365 Users API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
 
@@ -116,4 +133,4 @@
 [14]: ./media/powerapps-create-api-office365-outlook/browseall.png
 [15]: ./media/powerapps-create-api-office365-outlook/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

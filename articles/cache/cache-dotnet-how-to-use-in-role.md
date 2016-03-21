@@ -4,7 +4,7 @@
 	services="cache" 
 	documentationCenter=".net" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 
@@ -38,7 +38,7 @@ In-Role Cache は、Azure アプリケーションにキャッシュ レイヤ�
 
 In-Role Cache では、Azure クラウド サービス (ホステッド サービスとも呼ばれます) のロール インスタンスをホストしている仮想マシンのメモリの一部を使用してキャッシュを行う方法が提供されます。デプロイのオプションの点で柔軟性が向上し、キャッシュのサイズは非常に大きくすることができ、キャッシュ固有のクォータの制限がなくなりました。
 
->[AZURE.IMPORTANT]Azure SDK 2.6 以降、In-Role Cache は Microsoft Azure Storage SDK バージョン 4.3 を使用しています。以前のバージョンの Azure SDK では、In-Role Cache は Azure Storage SDK 1.7 を使用していました。Azure SDK 2.6 より前のバージョンで In-Role Cache を使用しているアプリケーションは、2016 年 8 月 1 日に Azure Storage バージョン 2011-08-18 が使用停止になる前に、Azure SDK 2.6 に移行する必要があります。詳細については、「[Azure SDK 2.6 リリース ノート - インロール キャッシュ](../azure-sdk-dotnet-release-notes-2_6.md#in-role-cache-updates)」および[Microsoft Azure Storage Service のバージョンの削除に関する最新情報: 2016 年まで延長](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に関するページを参照してください。
+>[AZURE.IMPORTANT] Azure SDK 2.6 以降、In-Role Cache は Microsoft Azure Storage SDK バージョン 4.3 を使用しています。以前のバージョンの Azure SDK では、In-Role Cache は Azure Storage SDK 1.7 を使用していました。Azure SDK 2.6 より前のバージョンで In-Role Cache を使用しているアプリケーションは、2016 年 8 月 1 日に Azure Storage バージョン 2011-08-18 が使用停止になる前に、Azure SDK 2.6 に移行する必要があります。詳細については、「[Azure SDK 2.6 リリース ノート - インロール キャッシュ](../azure-sdk-dotnet-release-notes-2_6.md#in-role-cache-updates)」および[Microsoft Azure Storage Service のバージョンの削除に関する最新情報: 2016 年まで延長](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に関するページを参照してください。
 
 ロール インスタンスでのキャッシュには、次のような利点があります。
 
@@ -131,9 +131,9 @@ In-Role Cache のキャッシュにアクセスするには、クライアント
 
 ![RoleCache4][RoleCache4]
 
-**[ インロール キャッシュ ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
+**[インロール キャッシュ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
 
->一覧に **[ インロール キャッシュ ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
+>一覧に **[インロール キャッシュ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
 
 ![RoleCache5][RoleCache5]
 
@@ -343,7 +343,7 @@ In-Role Cache 用の出力キャッシュ プロバイダーを有効にする�
 
 この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。使用できるオプションの詳細については、[OutputCache ディレクティブに関するページ][]を参照してください。
 
-In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細については、[インロール キャッシュの出力キャッシュ プロバイダーに関するページ][]を参照してください。
+インロール キャッシュの出力キャッシュ プロバイダーの使い方の詳細については、[インロール キャッシュの出力キャッシュ プロバイダーに関するページ][]を参照してください。
 
 <a name="next-steps"></a>
 ## 次のステップ
@@ -353,7 +353,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 -   MSDN リファレンス: [In-Role Cache][]
 -   In-Role Cache への移行方法を確認する: [Microsoft Azure のキャッシュのインロール キャッシュへの移行][]
 -   サンプルをチェックする: [In-Role Cache のサンプル][]
--	TechEd 2013 の「[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][]」セッションで、In-Role Cache に関する説明をご覧ください。
+-	TechEd 2013 の「[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][]」セッションで、インロール キャッシュに関する説明をご覧ください。
 
 <!-- INTRA-TOPIC LINKS -->
 [次の手順]: #next-steps
@@ -375,7 +375,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [方法: ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
 [Target a Supported .NET Framework Profile]: #prepare-vs-target-net
  
-<!-- IMAGES -->
+<!-- IMAGES --> 
 [RoleCache1]: ./media/cache-dotnet-how-to-use-in-role/cache8.png
 [RoleCache2]: ./media/cache-dotnet-how-to-use-in-role/cache9.png
 [RoleCache3]: ./media/cache-dotnet-how-to-use-in-role/cache10.png
@@ -407,7 +407,7 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
-[最適な Azure のキャッシュ オファリング]: cache-faq.md#which-azure-cache-offering-is-right-for-me
+[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

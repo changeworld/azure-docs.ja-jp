@@ -19,8 +19,8 @@
 
 # Azure Data Factory のパイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+- [Azure ポータルの使用/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
+- [Monitoring and Management App の使用](data-factory-monitor-manage-app.md)
 
 Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
 
@@ -275,9 +275,9 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ### Azure PowerShell の使用
 
-Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。このコマンドレットの構文やその他の詳細については、「[Set-AzureDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx)」を参照してください。
+Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。このコマンドレットの構文やその他の詳細については、「[Set-AzureRmDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx)」を参照してください。
 
-**例:** 次の例では、Azure データ ファクトリ "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "Waiting" に設定します。
+**例:** 次の例では、Azure Data Factory "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "Waiting" に設定します。
 
 **注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が "Waiting" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
 
@@ -296,7 +296,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 
 これらのユーザー イベントに対してアラートを作成し、サブスクリプションの管理者と共同管理者に電子メール通知を送信するよう構成できます。さらに、条件が満たされた場合に電子メール通知を受け取る必要があるユーザーの追加の電子メール アドレスを指定できます。これは、Data Factory を常時監視するのではなく、障害が発生したら通知を受け取るようにする場合に非常に便利です。
 
-> [AZURE.NOTE] この時点で、ポータルにアラートは表示されません。すべてのアラートを確認するには、「[Monitoring and Management App (監視と管理アプリ)](data-factory-monitor-manage-app.md)」を参照してください。
+> [AZURE.NOTE] この時点で、ポータルにアラートは表示されません。すべてのアラートを確認するには、「[Monitoring and Management App](data-factory-monitor-manage-app.md)」を参照してください。
 
 #### アラートの定義の指定:
 アラートの定義を指定するには、アラートの対象となる操作を記述する JSON ファイルを作成します。以下の例では、アラートによって RunFinished 操作に関する電子メール通知が送信されます。具体的には、データ ファクトリで実行が完了し、その実行が失敗していた場合 (Status = FailedExecution) に電子メール通知が送信されます。
@@ -349,7 +349,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 操作の名前 | 状態 | 副状態
 -------------- | ------ | ----------
 RunStarted | 開始済み | Starting
-RunFinished | Failed / Succeeded | <p>FailedResourceAllocation</p><p>Succeeded</p><p>FailedExecution</p><p>TimedOut</p><p><Canceled/p><p>FailedValidation</p><p>Abandoned</p>
+RunFinished | Failed / Succeeded | FailedResourceAllocation<br/><br/>Succeeded<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/><Canceled<br/><br/>FailedValidation<br/><br/>Abandoned
 OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
@@ -545,7 +545,9 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
  
 上のサンプルの subscriptionId、resourceGroupName、dataFactoryName を、適切な値に置き換えます。
 
-現在、*metricName* がサポートしている値は FailedRuns と SuccessfulRuns の 2 つです。
+現在、*metricName* がサポートしている値は次の 2 つです。
+- FailedRuns
+- SuccessfulRuns
 
 **アラートのデプロイ:**
 
@@ -581,4 +583,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

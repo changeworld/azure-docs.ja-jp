@@ -13,8 +13,8 @@
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="01/29/2016"
+	ms.topic="article"
+	ms.date="03/07/2016"
 	ms.author="jgao"/>
 
 
@@ -36,7 +36,9 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 
 
-**前提条件**
+###開始する前に
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
@@ -326,7 +328,9 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 7. **Main** 関数の最初の 3 つの変数を設定します。
 8. **F5** キーを押してアプリケーションを実行します。
 
+##クラスターを削除する
 
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## 次の手順
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
@@ -365,4 +369,4 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

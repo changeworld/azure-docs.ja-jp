@@ -17,14 +17,15 @@
 	ms.author="ricksal"/>
 
 
-# Mobile Services 向け Android クライアント ライブラリの使用方法
-
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
+# モバイル サービス向け Android クライアント ライブラリの使用方法
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[How to use the Android client library for Mobile Apps (Mobile Apps 向け Android クライアント ライブラリの使用方法)](../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md)」を参照してください。
+ 
 このガイドでは、AzureMobile Services 向け Android クライアントを使用して一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理、クライアントのカスタマイズなどです。
 
 Mobile Services を初めて使用する場合は、クイックスタート チュートリアル「[Mobile Services を使い始める]」を先に完了しておく必要があります。このチュートリアルを完了すると、Android Studio がインストールされ、アカウントの構成、初めてのモバイル サービスの作成、Mobile Services SDK のインストールに役立ちます。Mobile Services SDK は、Android 2.2 以降をサポートしていますが、Android 4.2 以降にビルドすることをお勧めします。
@@ -35,7 +36,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 
 ##<a name="setup"></a>セットアップと前提条件
 
-前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成](http://go.microsoft.com/fwlink/p/?LinkId=298592)」を参照してください。このトピックで使用するコードでは、次の列を含むテーブル ToDoItem を想定しています。
+前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成](http://go.microsoft.com/fwlink/p/?LinkId=298592)」を参照してください。このトピックで使用するコードでは、次の列を含むテーブル *ToDoItem* を想定しています。
 
 - id
 - text
@@ -52,18 +53,18 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure Mobile Services によって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/p/?LinkId=296271)」を参照してください。
 
 ##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
-次のコードは、モバイル サービスにアクセスするために使用される [MobileServiceClient](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) オブジェクトを生成します。このコードは、**MAIN** アクションと **LAUNCHER** カテゴリとして AndroidManifest.xml で指定された Activity クラスの `onCreate` メソッドにあります。
+次のコードは、モバイル サービスにアクセスするために使用される [MobileServiceClient](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) オブジェクトを生成します。このコードは、**MAIN** アクションと **LAUNCHER** カテゴリとして *AndroidManifest.xml* で指定された Activity クラスの `onCreate` メソッドにあります。
 
 		MobileServiceClient mClient = new MobileServiceClient(
 				"MobileServiceUrl", // Replace with the above Site URL
 				"AppKey", 			// replace with the Application Key
 				this)
 
-前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure クラシック ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
+前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure クラシック ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
 
 ##<a name="instantiating"></a>方法: テーブル参照を作成する
 
-Java は厳密に型指定された言語であるため、モバイル サービスのデータを照会または変更する最も簡単な方法は型指定されたプログラミング モデルを使用する方法です (後で型指定されないモデルについて説明します)。このモデルは、クライアントとモバイル サービスの間でデータを送信するときに [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) ライブラリを使用して JSON にシームレスなシリアル化と非シリアル化を提供します。開発者は何も作業する必要がありません。フレームワークによってすべてが処理されます。
+Java は厳密に型指定された言語であるため、モバイル サービスのデータを照会または変更する最も簡単な方法は*型指定されたプログラミング モデル*を使用する方法です (後で*型指定されない*モデルについて説明します)。このモデルは、クライアントとモバイル サービスの間でデータを送信するときに [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) ライブラリを使用して JSON にシームレスなシリアル化と非シリアル化を提供します。開発者は何も作業する必要がありません。フレームワークによってすべてが処理されます。
 
 データを照会または変更するためには、最初に [**MobileServiceClient**](http://go.microsoft.com/fwlink/p/?LinkId=296835) の [getTable](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) メソッドを呼び出して **MobileServiceTable** オブジェクトを作成します。ここでは、このメソッドの 2 つのオーバーロードに注目します。
 
@@ -72,7 +73,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 	    public <E> MobileServiceTable<E> getTable(String name, Class<E> clazz);
 	}
 
-次のコードで、mClient は、モバイル サービス クライアントへの参照です。
+次のコードで、*mClient* は、モバイル サービス クライアントへの参照です。
 
 [1 つ目のオーバーロード](http://go.microsoft.com/fwlink/p/?LinkId=296839)は、クラス名とテーブル名が同じ場合に使用されています。
 
@@ -94,7 +95,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 ### <a name="showAll"></a>方法: テーブルからすべての項目を返す
 
-次のコードは、ToDoItem テーブル内のすべての項目を返します。この項目をアダプターに追加して、UI に表示します。このコードは、クイックスタート チュートリアル「[Mobile Services を使い始める]」で説明されているコードに似ています。
+次のコードは、*ToDoItem* テーブル内のすべての項目を返します。この項目をアダプターに追加して、UI に表示します。このコードは、クイックスタート チュートリアル「[Mobile Services を使い始める]」で説明されているコードに似ています。
 
 		new AsyncTask<Void, Void, Void>() {
 
@@ -123,12 +124,12 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 このようなクエリでは [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) オブジェクトを使用します。
 
-結果の変数は、クエリの結果セットを返します。`mToDoTable.execute().get()` ステートメントの次のコードは、個々の行を表示する方法を示します。
+*結果*の変数は、クエリの結果セットを返します。`mToDoTable.execute().get()` ステートメントの次のコードは、個々の行を表示する方法を示します。
 
 
 ### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
-次のコードは、ToDoItem テーブルから、complete フィールドが false に等しいすべての項目を返します。mToDoTable は、以前に作成したモバイル サービス テーブルへの参照です。
+次のコードは、*ToDoItem* テーブルから、*complete* フィールドが *false* に等しいすべての項目を返します。*mToDoTable* は、以前に作成したモバイル サービス テーブルへの参照です。
 
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -152,15 +153,15 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 数値フィールドと文字列フィールドを特定の値と比較するにはこれだけで十分ですが、それ以外のさまざまな操作を行うことができます。
 
-たとえば、日付をフィルター処理できます。日付フィールド全体を比較できるほか、[**year**](http://go.microsoft.com/fwlink/p/?LinkId=298467)、[**month**](http://go.microsoft.com/fwlink/p/?LinkId=298468)、[**day**](http://go.microsoft.com/fwlink/p/?LinkId=298469)、[**hour**](http://go.microsoft.com/fwlink/p/?LinkId=298470)、[**minute**](http://go.microsoft.com/fwlink/p/?LinkId=298471)、[**second**](http://go.microsoft.com/fwlink/p/?LinkId=298472) などのメソッドを使用して日付の一部を比較することもできます。次の部分的なコードでは、期限 (due) が 2013 に等しい項目のフィルターを追加しています。
+たとえば、日付をフィルター処理できます。日付フィールド全体を比較できるほか、[**year**](http://go.microsoft.com/fwlink/p/?LinkId=298467)、[**month**](http://go.microsoft.com/fwlink/p/?LinkId=298468)、[**day**](http://go.microsoft.com/fwlink/p/?LinkId=298469)、[**hour**](http://go.microsoft.com/fwlink/p/?LinkId=298470)、[**minute**](http://go.microsoft.com/fwlink/p/?LinkId=298471)、[**second**](http://go.microsoft.com/fwlink/p/?LinkId=298472) などのメソッドを使用して日付の一部を比較することもできます。次の部分的なコードでは、期限 (*due*) が 2013 に等しい項目のフィルターを追加しています。
 
 		mToDoTable.where().year("due").eq(2013).execute().get();
 
-[**startsWith**](http://go.microsoft.com/fwlink/p/?LinkId=298473)、[**endsWith**](http://go.microsoft.com/fwlink/p/?LinkId=298474)、[**concat**](http://go.microsoft.com/fwlink/p/?LinkId=298475)、[**subString**](http://go.microsoft.com/fwlink/p/?LinkId=298477)、[**indexOf**](http://go.microsoft.com/fwlink/p/?LinkId=298488)、[**replace**](http://go.microsoft.com/fwlink/p/?LinkId=298491)、[**toLower**](http://go.microsoft.com/fwlink/p/?LinkId=298492)、[**toUpper**](http://go.microsoft.com/fwlink/p/?LinkId=298493)、[**trim**](http://go.microsoft.com/fwlink/p/?LinkId=298495)、[**length**](http://go.microsoft.com/fwlink/p/?LinkId=298496) などのメソッドを使用すると、文字列フィールドに対してさまざまな複雑なフィルターを適用できます。次の部分的なコードでは、text 列が "PRI0" で始まるテーブル行をフィルター処理します。
+[**startsWith**](http://go.microsoft.com/fwlink/p/?LinkId=298473)、[**endsWith**](http://go.microsoft.com/fwlink/p/?LinkId=298474)、[**concat**](http://go.microsoft.com/fwlink/p/?LinkId=298475)、[**subString**](http://go.microsoft.com/fwlink/p/?LinkId=298477)、[**indexOf**](http://go.microsoft.com/fwlink/p/?LinkId=298488)、[**replace**](http://go.microsoft.com/fwlink/p/?LinkId=298491)、[**toLower**](http://go.microsoft.com/fwlink/p/?LinkId=298492)、[**toUpper**](http://go.microsoft.com/fwlink/p/?LinkId=298493)、[**trim**](http://go.microsoft.com/fwlink/p/?LinkId=298495)、[**length**](http://go.microsoft.com/fwlink/p/?LinkId=298496) などのメソッドを使用すると、文字列フィールドに対してさまざまな複雑なフィルターを適用できます。次の部分的なコードでは、*text* 列が "PRI0" で始まるテーブル行をフィルター処理します。
 
 		mToDoTable.where().startsWith("text", "PRI0").execute().get();
 
-数値フィールドに対しては、[**add**](http://go.microsoft.com/fwlink/p/?LinkId=298497)、[**sub**](http://go.microsoft.com/fwlink/p/?LinkId=298499)、[**mul**](http://go.microsoft.com/fwlink/p/?LinkId=298500)、[**div**](http://go.microsoft.com/fwlink/p/?LinkId=298502)、[**mod**](http://go.microsoft.com/fwlink/p/?LinkId=298503)、[**floor**](http://go.microsoft.com/fwlink/p/?LinkId=298505)、[**ceiling**](http://go.microsoft.com/fwlink/p/?LinkId=298506)、[**round**](http://go.microsoft.com/fwlink/p/?LinkId=298507) などのメソッドを使用してさまざまな複雑なフィルターを適用できます。次の部分的なコードでは、duration が偶数のテーブル行をフィルター処理します。
+数値フィールドに対しては、[**add**](http://go.microsoft.com/fwlink/p/?LinkId=298497)、[**sub**](http://go.microsoft.com/fwlink/p/?LinkId=298499)、[**mul**](http://go.microsoft.com/fwlink/p/?LinkId=298500)、[**div**](http://go.microsoft.com/fwlink/p/?LinkId=298502)、[**mod**](http://go.microsoft.com/fwlink/p/?LinkId=298503)、[**floor**](http://go.microsoft.com/fwlink/p/?LinkId=298505)、[**ceiling**](http://go.microsoft.com/fwlink/p/?LinkId=298506)、[**round**](http://go.microsoft.com/fwlink/p/?LinkId=298507) などのメソッドを使用してさまざまな複雑なフィルターを適用できます。次の部分的なコードでは、*duration* が偶数のテーブル行をフィルター処理します。
 
 		mToDoTable.where().field("duration").mod(2).eq(0).execute().get();
 
@@ -182,7 +183,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 ### <a name="sorting"></a>方法: 返されるデータを並べ替える
 
-次のコードは、ToDoItems テーブルから、text フィールドの値に基づいて昇順に並べ替えられたすべての項目を返します。mToDoTable は、以前に作成したモバイル サービス テーブルへの参照です。
+次のコードは、*ToDoItems* テーブルから、*text* フィールドの値に基づいて昇順に並べ替えられたすべての項目を返します。*mToDoTable* は、以前に作成したモバイル サービス テーブルへの参照です。
 
 		mToDoTable.orderBy("text", QueryOrder.Ascending).execute().get();
 
@@ -190,11 +191,11 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 2 番目のパラメーターでは、[**QueryOrder**](http://go.microsoft.com/fwlink/p/?LinkId=298521) 列挙を使用して、昇順または降順のどちらで並べ替えを行うかを指定します。
 
-**where** メソッドを使用してフィルター処理を行う場合、**where** メソッドは **orderBy** メソッドの前に呼び出す必要があります。
+***where*** メソッドを使用してフィルター処理を行う場合、***where*** メソッドは ***orderBy*** メソッドの前に呼び出す必要があります。
 
 ### <a name="paging"></a>方法: ページにデータを返す
 
-最初の例は、テーブルから最初の 5 つの項目を選択する方法を示しています。このクエリは、ToDoItems テーブルから項目を返します。mToDoTable は、以前に作成したモバイル サービス テーブルへの参照です。
+最初の例は、テーブルから最初の 5 つの項目を選択する方法を示しています。このクエリは、*ToDoItems* テーブルから項目を返します。*mToDoTable* は、以前に作成したモバイル サービス テーブルへの参照です。
 
        final MobileServiceList<ToDoItem> result = mToDoTable.top(5).execute().get();
 
@@ -206,7 +207,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 ### <a name="selecting"></a>方法: 特定の列を選択する
 
-次のコードは、ToDoItems テーブルからすべての項目を返したうえで complete フィールドと text フィールドのみを表示する方法を示しています。mToDoTable は、以前に作成したモバイル サービス テーブルへの参照です。
+次のコードは、*ToDoItems* テーブルからすべての項目を返したうえで *complete* フィールドと *text* フィールドのみを表示する方法を示しています。*mToDoTable* は、以前に作成したモバイル サービス テーブルへの参照です。
 
 		mToDoTable.select("complete", "text").execute().get();
 
@@ -221,7 +222,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 そのしくみは、使用しているクエリ メソッドによって [**MobileServiceQuery&lt;T&gt;**](http://go.microsoft.com/fwlink/p/?LinkId=298551) オブジェクトを返し、次にこのオブジェクトで追加のメソッドを呼び出します。一連のメソッドを終了し、クエリを実際に実行するには、[**execute**](http://go.microsoft.com/fwlink/p/?LinkId=298554) メソッドを呼び出します。
 
-次にコード サンプルを示します。ここで、mToDoTable は、モバイル サービスの ToDoItem テーブルへの参照です。
+次にコード サンプルを示します。ここで、*mToDoTable* は、モバイル サービスの *ToDoItem* テーブルへの参照です。
 
 		mToDoTable.where().year("due").eq(2013)
 						.and().startsWith("text", "PRI0")
@@ -230,14 +231,14 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 					.orderBy(duration, QueryOrder.Ascending).top(20)
 					.execute().get();
 
-メソッドを連結する場合の主な要件として、where メソッドと述語を最初に記述する必要があります。それ以降、アプリケーションのニーズに最も合う順番で後続のメソッドを呼び出すことができます。
+メソッドを連結する場合の主な要件として、*where* メソッドと述語を最初に記述する必要があります。それ以降、アプリケーションのニーズに最も合う順番で後続のメソッドを呼び出すことができます。
 
 
 ##<a name="inserting"></a>方法: モバイル サービスにデータを挿入する
 
 次のコードは、テーブルに新しい行を挿入する方法を示しています。
 
-最初に、ToDoItem クラスのインスタンスをインスタンス化し、そのプロパティを設定します。
+最初に、*ToDoItem* クラスのインスタンスをインスタンス化し、そのプロパティを設定します。
 
 		ToDoItem mToDoItem = new ToDoItem();
 		mToDoItem.text = "Test Program";
@@ -311,7 +312,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 
 ##<a name="updating"></a>方法: モバイル サービスのデータを更新する
 
-次のコードは、テーブルのデータを更新する方法を示しています。この例では、item は、いくつかの変更が加えられた ToDoItem テーブルの行への参照です。次のメソッドは、テーブルと UI アダプターを更新します。
+次のコードは、テーブルのデータを更新する方法を示しています。この例では、*item* は、いくつかの変更が加えられた *ToDoItem* テーブルの行への参照です。次のメソッドは、テーブルと UI アダプターを更新します。
 
 	private void updateItem(final ToDoItem item) {
 	    if (mClient == null) {
@@ -400,7 +401,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
     }
 
 ##<a name="lookup"></a>方法: 特定の項目を検索する
-一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を id で検索する必要がある場合があります。その方法を次のコードに示します (ここでは id 値として `0380BAFB-BCFF-443C-B7D5-30199F730335` を想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、Azure クラシック ポータルのサービスに移動して、**[データ]** タブをクリックし、テストする ID をコピーします。
+一般的にクエリを使って特定の条件を満たした項目のコレクションを取得する代わりに、特定の項目を *id* で検索する必要がある場合があります。その方法を次のコードに示します (ここでは id 値として `0380BAFB-BCFF-443C-B7D5-30199F730335` を想定しています)。実際のアプリケーションでは、何らかの方法で ID を選択し、これを変数として渡すことができます。ここでは、テストを簡単にするため、Azure クラシック ポータルのサービスに移動して、**[データ]** タブをクリックし、テストする ID をコピーします。
 
     /**
      * Lookup specific item from table and UI
@@ -448,7 +449,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 
 
 
-**onCreate** メソッドの Mobile Services クライアントのインスタンス (ここでは、mClient 変数) を作成した後は、次のコードを使用して **MobileServiceJsonTable** のインスタンスを作成します。
+**onCreate** メソッドの Mobile Services クライアントのインスタンス (ここでは、*mClient* 変数) を作成した後は、次のコードを使用して **MobileServiceJsonTable** のインスタンスを作成します。
 
 
             // Get the Mobile Service Json Table to use
@@ -464,7 +465,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 		item.addProperty("text", "Wake up");
 		item.addProperty("complete", false);
 
-次に、このオブジェクトを挿入します。[**insert**](http://go.microsoft.com/fwlink/p/?LinkId=298535) メソッドに渡されるコールバック関数は、[**TableJsonOperationCallback**](http://go.microsoft.com/fwlink/p/?LinkId=298532) クラスのインスタンスです。insert メソッドのパラメーターが JsonObject である点に注目してください。
+次に、このオブジェクトを挿入します。[**insert**](http://go.microsoft.com/fwlink/p/?LinkId=298535) メソッドに渡されるコールバック関数は、[**TableJsonOperationCallback**](http://go.microsoft.com/fwlink/p/?LinkId=298532) クラスのインスタンスです。*insert* メソッドのパラメーターが JsonObject である点に注目してください。
 
         // Insert the new item
         new AsyncTask<Void, Void, Void>() {
@@ -489,7 +490,7 @@ Mobile Services では、テーブル ID として一意のカスタム文字列
 
 ### <a name="json_delete"></a>方法: 型指定のないテーブルから削除する
 
-次のコードでは、インスタンス (このケースでは前の **insert** の例で作成したのと同じ JsonObject のインスタンス) を削除する方法を示します。このコードは、型指定されたものと同じですが、このメソッドは **JsonObject** を参照するため、署名が異なります。
+次のコードでは、インスタンス (このケースでは前の **insert** の例で作成したのと同じ *JsonObject* のインスタンス) を削除する方法を示します。このコードは、型指定されたものと同じですが、このメソッドは **JsonObject** を参照するため、署名が異なります。
 
 
          mToDoTable.delete(item);
@@ -548,11 +549,11 @@ ID を使用してインスタンスを直接削除することもできます�
 - 画面レイアウト
 - これらの 2 つを連結するアダプター
 
-次のサンプル コードでは、モバイル サービス テーブル ToDoItem のデータを配列に返します。これは、データ アプリケーションで一般的なパターンの 1 つです。一般に、データベース クエリでは、行のコレクションが返されます。クライアントは、これをリストまたは配列に取得します。この例では、配列はデータ ソースです。
+次のサンプル コードでは、モバイル サービス テーブル *ToDoItem* のデータを配列に返します。これは、データ アプリケーションで一般的なパターンの 1 つです。一般に、データベース クエリでは、行のコレクションが返されます。クライアントは、これをリストまたは配列に取得します。この例では、配列はデータ ソースです。
 
 コードで、デバイスに表示されるデータのビューを定義する画面レイアウトを指定します。
 
-これらの 2 つをアダプターによってバインドします。アダプターは、このコードでは ArrayAdapter&lt;ToDoItem&gt; クラスの拡張です。
+これらの 2 つをアダプターによってバインドします。アダプターは、このコードでは *ArrayAdapter&lt;ToDoItem&gt;* クラスの拡張です。
 
 ### <a name="layout"></a>方法: レイアウトを定義する
 
@@ -566,7 +567,7 @@ ID を使用してインスタンスを直接削除することもできます�
     </ListView>
 
 
-前のコードで、listitem 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、row\_list\_to\_do.xml ファイルに含まれています。
+前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、*row\_list\_to\_do.xml* ファイルに含まれています。
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -583,14 +584,14 @@ ID を使用してインスタンスを直接削除することもできます�
 
 ### <a name="adapter"></a>方法: アダプターを定義する
 
-このビューのデータ ソースは ToDoItem の配列であるため、ArrayAdapter<ToDoItem> クラスからアダプターをサブクラス化します。このサブクラスでは、row\_list\_to\_do レイアウトを使用してすべての ToDoItem のビューを生成します。
+このビューのデータ ソースは *ToDoItem* の配列であるため、*ArrayAdapter<ToDoItem>* クラスからアダプターをサブクラス化します。このサブクラスでは、*row\_list\_to\_do* レイアウトを使用してすべての *ToDoItem* のビューを生成します。
 
-コードでは、ArrayAdapter&lt;E&gt; クラスの拡張である次のクラスを定義します。
+コードでは、*ArrayAdapter&lt;E&gt;* クラスの拡張である次のクラスを定義します。
 
 	public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 
-アダプターの getView メソッドはオーバーライドする必要があります。その方法の 1 つを次のサンプル コードに示します。詳細はアプリケーションによって異なります。
+アダプターの *getView* メソッドはオーバーライドする必要があります。その方法の 1 つを次のサンプル コードに示します。詳細はアプリケーションによって異なります。
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
@@ -617,7 +618,7 @@ ID を使用してインスタンスを直接削除することもできます�
 	ToDoItemAdapter mAdapter;
 	mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 
-ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレイアウトへの参照であることに注意してください。コンストラクターの呼び出しに続けて、次のコードを記述します。このコードは、最初に **ListView** への参照を取得します。次に、setAdapter を呼び出して、作成したアダプターを使用するようにそれ自体を構成します。
+ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレイアウトへの参照であることに注意してください。コンストラクターの呼び出しに続けて、次のコードを記述します。このコードは、最初に **ListView** への参照を取得します。次に、*setAdapter* を呼び出して、作成したアダプターを使用するようにそれ自体を構成します。
 
 	ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
 	listViewToDo.setAdapter(mAdapter);
@@ -625,7 +626,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 ### <a name="use-adapter"></a>方法: アダプターを使用する
 
-これで、データ バインドを使用する準備が整いました。次のコードでは、モバイル サービス テーブルの項目を取得した後、アダプターをクリアしています。次に、アダプターの add メソッドを呼び出して、返された項目をアダプターに設定しています。
+これで、データ バインドを使用する準備が整いました。次のコードでは、モバイル サービス テーブルの項目を取得した後、アダプターをクリアしています。次に、アダプターの *add* メソッドを呼び出して、返された項目をアダプターに設定しています。
 
     public void showAll(View view) {
         new AsyncTask<Void, Void, Void>() {
@@ -651,7 +652,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
         }.execute();
     }
 
-ToDoItem テーブルを変更したときにその結果を表示するには、その都度アダプターを呼び出す必要があります。変更はレコード単位で加えられるため、操作の対象はコレクションではなく行になります。項目を挿入する場合は、アダプターの add メソッドを呼び出します。項目を削除する場合は、remove メソッドを呼び出します。
+*ToDoItem* テーブルを変更したときにその結果を表示するには、その都度アダプターを呼び出す必要があります。変更はレコード単位で加えられるため、操作の対象はコレクションではなく行になります。項目を挿入する場合は、アダプターの *add* メソッドを呼び出します。項目を削除する場合は、*remove* メソッドを呼び出します。
 
 ##<a name="custom-api"></a>方法: カスタム API の呼び出し
 
@@ -664,7 +665,7 @@ ToDoItem テーブルを変更したときにその結果を表示するには�
 
 Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、バックエンドで承認ルールを実装することもできます。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
 
-サーバー フローとクライアント フローという 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
+*サーバー* フローと*クライアント* フローという 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 アプリケーションで認証を有効にするには、次の 3 つの手順を実行する必要があります。
 
@@ -699,7 +700,7 @@ Mobile Services は、ユーザーを認証するために使用できる次の�
 		import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
 		import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-2. アクティビティ クラスの **onCreate** メソッドで、`MobileServiceClient` オブジェクトを作成するコードの後に、次のコード行を追加します。`MobileServiceClient` オブジェクトへの参照は mClient であると想定しています。
+2. アクティビティ クラスの **onCreate** メソッドで、`MobileServiceClient` オブジェクトを作成するコードの後に、次のコード行を追加します。`MobileServiceClient` オブジェクトへの参照は *mClient* であると想定しています。
 
 	    // Login using the Google provider.
 
@@ -721,7 +722,7 @@ Mobile Services は、ユーザーを認証するために使用できる次の�
 
     このコードでは、Google ログインを使用してユーザーを認証します。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、 MicrosoftAccount、Facebook、Twitter、WindowsAzureActiveDirectory のいずれかに変更します。
+    > [AZURE.NOTE] Google 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_ MicrosoftAccount_、_Facebook_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 
 3. アプリケーションを実行したときに、選択した ID プロバイダーを使ってサインインします。
@@ -788,7 +789,7 @@ Mobile Services は、ユーザーを認証するために使用できる次の�
 	}
 
 
-トークンが期限切れになった場合はどのような処理が行われるでしょうか。 その場合、トークンを使用して接続を試みると、"401 許可されていません" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。Mobile Services の呼び出しと Mobile Services からの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードは、401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。
+トークンが期限切れになった場合はどのような処理が行われるでしょうか。 その場合、トークンを使用して接続を試みると、"*401 許可されていません*" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。Mobile Services の呼び出しと Mobile Services からの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードは、401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。
 
 
 ##<a name="customizing"></a>方法: クライアントをカスタマイズする
@@ -843,7 +844,7 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 - mDuration
 
 
-クライアントの名前は、サーバー上のToDoItem テーブルの列名と一致する JSON 名にシリアル化する必要があります。<a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用してこの操作を行うコードを次に示します。
+クライアントの名前は、サーバー上の*ToDoItem* テーブルの列名と一致する JSON 名にシリアル化する必要があります。<a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用してこの操作を行うコードを次に示します。
 
 	@com.google.gson.annotations.SerializedName("text")
 	private String mText;
@@ -870,7 +871,7 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 
 そのためには、<a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a> ライブラリを使用します。Android クライアント ライブラリは、このライブラリをバックグラウンドで使用して Java オブジェクトを Azure Mobile Services に送信される JSON データにシリアル化します。
 
-次のコードでは、FieldNamingStrategy() メソッドが定義された setFieldNamingStrategy() メソッドを使用しています。このメソッドでは、すべてのフィールド名について、最初の文字 ("m") を削除し、その次の文字を小文字にすることを指定しています。さらに、このコードは、出力 JSON の再フォーマットを有効にしています。
+次のコードでは、*FieldNamingStrategy()* メソッドが定義された *setFieldNamingStrategy()* メソッドを使用しています。このメソッドでは、すべてのフィールド名について、最初の文字 ("m") を削除し、その次の文字を小文字にすることを指定しています。さらに、このコードは、出力 JSON の再フォーマットを有効にしています。
 
 	client.setGsonBuilder(
 	    MobileServiceClient
@@ -937,4 +938,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0309_2016-->

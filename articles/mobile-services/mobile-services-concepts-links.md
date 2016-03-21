@@ -20,8 +20,6 @@
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
-&nbsp;
-
 以下のリンクのトピックでは、Microsoft Azure Mobile Services の特定の動作に関する情報を説明します。これらの同じトピックは Azure クラシック ポータルのヘルプとして利用できます。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
@@ -86,4 +84,4 @@
 - [エラー処理](https://msdn.microsoft.com/library/azure/jj631632.aspx)
 - [ショートカット キー](https://msdn.microsoft.com/library/azure/jj552469.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

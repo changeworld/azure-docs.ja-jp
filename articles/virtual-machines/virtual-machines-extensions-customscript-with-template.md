@@ -17,7 +17,7 @@
    ms.date="11/01/2015"
    ms.author="kundanap"/>
 
-# Azure リソース マネージャー テンプレートでのカスタム スクリプト拡張機能の使用
+# Azure Resource Manager テンプレートでのカスタム スクリプト拡張機能の使用
 
 この記事では、Linux VM または Windows VM のブートストラップ ワークロード用に、カスタム スクリプト拡張機能を使用して Azure リソース マネージャー テンプレートを作成する方法の概要を説明します。
 
@@ -96,10 +96,10 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 上記の例で、ファイルの URL とファイル名を独自の設定に置き換えます。
 
-テンプレートを作成したら、Azure CLI または Azure Powershell を使用してテンプレートをデプロイできます。
+テンプレートを作成したら、Azure CLI または Azure PowerShell を使用してそのテンプレートをデプロイできます。
 
 カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成する完全なサンプルについては、次の例をご覧ください。
 
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a>。</br> <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

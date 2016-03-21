@@ -28,6 +28,11 @@ Dropbox に接続して、ファイルの作成、ファイルの取得など、
 - [Logic Apps](../articles/connectors/create-api-dropbox.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-dropbox.md)
 
+&nbsp;
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Dropbox コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-dropbox.md)」をご覧ください。
+
+
 Dropbox では、次の操作を実行できます。
 
 - Dropbox から取得したデータに基づいてビジネス フローを構築できます。 
@@ -37,7 +42,7 @@ Dropbox では、次の操作を実行できます。
 
 PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 Dropbox には、次のトリガーとアクションがあります。
@@ -50,30 +55,6 @@ Dropbox には、次のトリガーとアクションがあります。
 
 ## Dropbox への接続を作成する
 
-### PowerApps に構成を追加する
-Dropbox を PowerApps Enterprise に追加するときに、Dropbox アプリケーションの**アプリ キー**と**アプリ シークレット**の値を入力します。Dropbox アプリケーションでは、**リダイレクト URL** 値も使用されます。Dropbox アプリケーションがない場合は、次の手順でアプリケーションを作成できます。
-
-1. [Dropbox][1] にサインインします。
-2. Dropbox 開発者向けサイトに移動し、**[My Apps]** を選択します。![Dropbox 開発者向けサイト][8]  
-3. **[Create app]** をクリックします。![Dropbox でのアプリケーションの作成][9]  
-4. **[Create a new app on the Dropbox platform]** で次の操作を行います。  
-
-	1. **[Choose API]** で、**[Dropbox API]** を選択します。
-	2. **[Choose the type of access you need]** で **[Full Dropbox...]** を選択します。  
-	3. アプリの名前を入力します。  
-
-	![Dropbox のアプリケーション作成ページ 1][10]
-
-5. アプリケーション設定ページで次の操作を行います。
-
-	1. **[OAuth 2]** に、Azure ポータルで Dropbox API を追加したときに表示された**リダイレクト URL** 値を入力します。**[追加]** を選択します。  
-	2. **[Show]** リンクをクリックして、**アプリ シークレット**を表示します。  
-
-	![Dropbox のアプリケーション作成ページ 2][11]
-
-**アプリ キー**値と**アプリ シークレット**値をコピーして、Azure ポータルの Dropbox 構成に貼り付けます。
-
-### ロジック アプリに構成を追加する
 ロジック アプリにこの API を追加するとき、Dropbox に接続するロジック アプリを承認する必要があります。
 
 1. Dropbox アカウントにサインインします。
@@ -290,9 +271,10 @@ Dropbox フォルダー内のファイルが変更されたときにフローを
 |FileLocator|string|×|
 
 ## 次のステップ
-Dropbox API を PowerApps Enterprise に追加したら、この API をアプリで使用するための[アクセス許可をユーザーに付与](../power-apps/powerapps-manage-api-connection-user-access.md)します。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+
+[API リスト](apis-list.md)に戻ります。
 
 
 <!--References-->
@@ -304,4 +286,4 @@ Dropbox API を PowerApps Enterprise に追加したら、この API をアプ�
 [10]: ./media/create-api-dropbox/dropbox-create-app-page1.png
 [11]: ./media/create-api-dropbox/dropbox-create-app-page2.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

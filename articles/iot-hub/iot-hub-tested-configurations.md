@@ -36,7 +36,7 @@ Azure IoT ライブラリは、次のオペレーティング システム プ�
 
 |Windows OS プラットフォーム | バージョン|
 |:---------------|:------------:|
-|Windows デスクトップ| 7、8、10 |
+|Windows デスクトップ| 10 |
 |Windows IoT Core| 10 |
 |Windows Server| 2012 R2|
 
@@ -53,12 +53,12 @@ Azure IoT ライブラリは、次のオペレーティング システム プ�
 
 |OS プラットフォーム| バージョン|プロトコル|
 |:---------|:----------:|:----------:|
-|Debian Linux| 7\.5 | HTTPS、AMQP、MQTT |
-|Fedora Linux| 20 | HTTPS、AMQP、MQTT |
+|Debian Linux| 7\.5 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
+|Fedora Linux| 20 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
 |mbed OS| 2\.0 | HTTPS、AMQP |
 |TI-RTOS| 2\.x | HTTPS |
-|Ubuntu Linux| 14\.04 | HTTPS、AMQP、MQTT |
-|Windows デスクトップ| 7、8、10 | HTTPS、AMQP、MQTT |
+|Ubuntu Linux| 14\.04 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
+|Windows デスクトップ| 10 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
 |Yocto Linux|2\.1 | HTTPS、AMQP|
 
 
@@ -70,7 +70,7 @@ Azure IoT ライブラリは、次のオペレーティング システム プ�
 
 |ランタイム| バージョン|プロトコル|
 |:---------|:----------:|:----:|
-|Node.js| 4\.1.0 | HTTPS|
+|Node.js| 4\.1.0 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
 
 
 
@@ -80,14 +80,14 @@ Azure IoT ライブラリは、次のオペレーティング システム プ�
 
 |ランタイム| バージョン|プロトコル|
 |:---------|:----------:|----|
-|Java SE (Windows)| 1\.7 | HTTPS、AMQP |
-|Java SE (Linux)| 1\.8 | HTTPS、AMQP|
+|Java SE (Windows)| 1\.8 | HTTPS、AMQP、MQTT |
+|Java SE (Linux)| 1\.8 | HTTPS、AMQP、MQTT|
 
 Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストされています。
 
 |ランタイム| バージョン|プロトコル|
 |:---------|:----------:|:-----|
-|Java SE| 1\.8 | HTTPS、AMQP |
+|Java SE| 1\.8 | HTTPS、AMQP、MQTT |
 
 
 ## CSharp
@@ -96,8 +96,8 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 
 |OS プラットフォーム| バージョン|プロトコル|
 |:---------|:----------:|:----------:|
-|Windows デスクトップ| 7、8、10 | HTTPS、AMQP|
-|Windows IoT Core|10 | HTTPS|
+|Windows デスクトップ| 10 | HTTPS、AMQP、MQTT、AMQP over WebSockets |
+|Windows IoT Core|10 | HTTPS |
 
 管理対象エージェントのコードには、Microsoft .NET Framework 4.5 が必要です。
 
@@ -127,6 +127,7 @@ Java 用 Microsoft Azure IoT サービス SDK は、次の構成でテストさ�
 |[ADLINK MXE-200](http://www.adlinktech.com/PD/web/PD_detail.php?cKind=&pid=1505&seq=&id=&sid=&category=Fanless-Embedded-Computer_Integrated-Embedded-Computer&utm_source=) |Windows 10 | C#|
 |[ADLINK MXE-202i](http://www.adlinktech.com/PD/web/PD_detail.php?pid=1589) |Wind River | JavaScript|
 |[ADLINK MXE-5400](http://www.adlinktech.com/PD/web/PD_detail.php?pid=1318) |Windows 10 | C#|
+|[ADLINK NuPRO-E43](http://www.adlinktech.com/index.php) |Windows 10 | C#|
 |[Advantech Co., ARK-2121L](http://www.advantech.com/products/ark-2000_series_embedded_box_pcs/ark-2121l/mod_dd092808-0832-44bc-b38a-945eb7e016bd) |Windows 10 | C#|
 |[Advantech Co., ARK-1123C](http://www.advantech.com/products/92d96fda-cdd3-409d-aae5-2e516c0f1b01/ark-1123c/mod_0b91165c-aa8c-485d-8d25-fde6f88f4873) |Windows 10 | C#|
 |[Advantech Co., LTD UNO-1372G](http://www.advantech.com/products/gf-bvl2/uno-1372g/mod_8e63b3c9-b606-4725-a1af-94fccb98bb1a) |Windows 10 | C#|
@@ -186,4 +187,4 @@ Certified for IoT デバイスを使用したソリューションの開発に�
 
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

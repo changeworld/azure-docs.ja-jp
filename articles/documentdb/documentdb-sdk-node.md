@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="02/02/2016" 
+	ms.date="03/08/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -26,16 +26,20 @@
 
 ##DocumentDB Node.js SDK
 
-<table> 
-<tr><td>**ダウンロード**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr> 
-<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr> 
+<table>
+<tr><td>**ダウンロード**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>
+<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-node/tree/master/source)</td></tr>
 <tr><td>**ドキュメント**</td><td>[Node.js SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-node/)</td></tr>
-<tr><td>**サンプル**</td><td>[Node.js Code サンプル](https://github.com/Azure/azure-documentdb-node/tree/master/samples)</td></tr>
-<tr><td>**使用**</td><td>[Node.js SDK の使用](documentdb-nodejs-get-started.md)</td></tr>
+<tr><td>**サンプル**</td><td>[Node.js コード サンプル](https://github.com/Azure/azure-documentdb-node/tree/master/samples)</td></tr>
+<tr><td>**概要**</td><td>[Node.js SDK の概要](documentdb-nodejs-get-started.md)</td></tr>
 <tr><td>**現在サポートされているプラットフォーム**</td><td>[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)<br/>[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)</td></tr>
 </table></br>
 
 ##リリース ノート
+###<a name="1.5.6"/>1.5.6</a>
+
+- 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました
+
 ###<a name="1.5.5"/>1.5.5</a>
 
 - hashParitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
@@ -120,27 +124,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.5.5](#1.5.5) | 2016 年 2 月 2 日 |--- 
-| [1\.5.4](#1.5.4) | 2016 年 2 月 1 日 |--- 
-| [1\.5.2](#1.5.2) | 2016 年 1 月 26 日 |--- 
-| [1\.5.2](#1.5.2) | 2016 年 1 月 22 日 |--- 
-| [1\.5.1](#1.5.1) | 2016 年 1 月 4 日 |--- 
-| [1\.5.0](#1.5.0) | 2015 年 12 月 31 日 |--- 
-| [1\.4.0](#1.4.0) | 2015 年 10 月 6 日 |--- 
-| [1\.3.0](#1.3.0) | 2015 年 10 月 6 日 |--- 
-| [1\.2.2](#1.2.2) | 2015 年 9 月 10 日 |--- 
-| [1\.2.1](#1.2.1) | 2015 年 8 月 15 日 |--- 
-| [1\.2.0](#1.2.0) | 2015 年 8 月 5 日 |--- 
-| [1\.1.0](#1.1.0) | 2015 年 7 月 9 日 |--- 
-| [1\.0.3](#1.0.3) | 2015 年 6 月 4 日 |--- 
-| [1\.0.2](#1.0.2) | 2015 年 5 月 23 日 |--- 
-| [1\.0.1](#1.0.1) | 2015 年 5 月 15 日 |--- 
-| [1\.0.0](#1.0.0) | 2015 年 4 月 8 日 |--- 
-|0.9.4-prelease | 2015 年 4 月 06 日 | 2016 年 2 月 29 日 
-| 0.9.3-prelease | 2015 年 1 月 14 日 | 2016 年 2 月 29 日 
-| 0.9.2-prelease | 2014 年 12 月 18 日 | 2016 年 2 月 29 日 
-| 0.9.1-prelease | 2014 年 8 月 22 日 | 2016 年 2 月 29 日 
-| 0.9.0-prelease | 2014 年 8 月 21 日 | 2016 年 2 月 29 日
+| [1\.5.6](#1.5.6) | 2016 年 3 月 8 日 |--- | [1\.5.5](#1.5.5) | 2016 年 2 月 2 日 |--- | [1\.5.4](#1.5.4) | 2016 年 2 月 1 日 |--- | [1\.5.2](#1.5.2) | 2016 年 1 月 26 日 |--- | [1\.5.2](#1.5.2) | 2016 年 1 月 22 日 |--- | [1\.5.1](#1.5.1) | 2016 年 1 月 4 日 |--- | [1\.5.0](#1.5.0) | 2015 年 12 月 31 日 |--- | [1\.4.0](#1.4.0) | 2015 年 10 月 6 日 |--- | [1\.3.0](#1.3.0) | 2015 年 10 月 6 日 |--- | [1\.2.2](#1.2.2) | 2015 年 9 月 10 日 |--- | [1\.2.1](#1.2.1) | 2015 年 8 月 15 日 |--- | [1\.2.0](#1.2.0) | 2015 年 8 月 5 日 |--- | [1\.1.0](#1.1.0) | 2015 年 7 月 9 日 |--- | [1\.0.3](#1.0.3) | 2015 年 6 月 4 日 |--- | [1\.0.2](#1.0.2) | 2015 年 5 月 23 日 |--- | [1\.0.1](#1.0.1) | 2015 年 5 月 15 日 |--- | [1\.0.0](#1.0.0) | 2015 年 4 月 8 日 |--- |0.9.4-prelease | 2015 年 4 月 06 日 | 2016 年 2 月 29 日 | 0.9.3-prelease | 2015 年 1 月 14 日 | 2016 年 2 月 29 日 | 0.9.2-prelease | 2014 年 12 月 18 日 | 2016 年 2 月 29 日 | 0.9.1-prelease | 2014 年 8 月 22 日 | 2016 年 2 月 29 日 | 0.9.0-prelease | 2014 年 8 月 21 日 | 2016 年 2 月 29 日
 
 
 ## FAQ
@@ -150,4 +134,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

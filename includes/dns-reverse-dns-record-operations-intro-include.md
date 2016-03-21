@@ -1,11 +1,9 @@
-## What are reverse DNS records?
+## 逆引き DNS レコードとは
 
-Reverse DNS records are used in a variety of situations. Server validation and authenticating server requests among them. For example, reverse DNS records are widely used in combating e-mail spam by verifying that the sender of an e-mail message by verifying its reverse DNS record, and also, if that host was recognized as authorized to send e-mail from the originating domain.<BR>
-Reverse DNS records, or PTR records, are DNS record types that enable the translation of a publically routable IP address back to a name. In DNS, names such as app1.contoso.com, are resolved to IP addresses in a process that is called forward resolution. With reverse DNS, this process is reversed to enable the resolution of the name given its IP address.<BR>
-For more information on Reverse DNS records, please see [here](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).<BR>
+逆引き DNS レコードは、さまざまな状況で使用されます。これらのレコードは、サーバーの検証および認証時に要求されます。たとえば、逆引き DNS レコードは、スパム電子メールの除去に広く使用されています。電子メール メッセージの送信者の逆引き DNS レコードを検証することで、送信者の検証、およびホストに元のドメインから電子メールを送信する権限が認められているどうかの検証が行われます。<BR> 逆引き DNS レコード (PTR レコードとも呼ばれます) は、パブリックにルーティング可能な IP アドレスを名前に変換する DNS レコードの一種です。DNS では、前方解決と呼ばれるプロセスで、app1.contoso.com のような名前が IP アドレスに対して解決されます。逆引き DNS を使用することで、このプロセスを逆向きにして、指定した IP アドレスに対して名前を解決できるようになります。<BR> 逆引き DNS レコードの詳細については、[こちら](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)を参照してください。<BR>
 
-## How does Azure support reverse DNS records for your Azure services?
+## Azure での Azure サービスの逆引き DNS レコードのサポートのしくみ
 
-Microsoft works with a number of registries to secure an adequate supply of publically routable IP blocks. Each of these blocks is then delegated to Microsoft-owned and operated authoritative DNS servers. Microsoft hosts the reverse DNS zones for all publically routable IP blocks assigned to it. <BR>
-Azure enables to specify a custom fully-qualified domain name (FQDN) for public routable IPs assigned to deployments. These custom FQDNs will then be returned from and reverse DNS lookup for that IP.<BR> 
-Azure provides reverse DNS support for all assigned publically routable IPs at no additional cost, and for services deployed using the classic and ARM deployment models.
+Microsoft では、パブリックにルーティング可能な IP ブロックを十分に提供できるように、多くのレジストリを使用しています。これらの各ブロックは、Microsoft が所有し運用する権威 DNS サーバーに委託されています。Microsoft は、デプロイに割り当てられたすべてのパブリックにルーティング可能な IP ブロックに対して、逆引き DNS ゾーンをホストしています。<BR>Azure では、デプロイに割り当てられたパブリックにルーティング可能な IP に対して、カスタムの完全修飾ドメイン名 (FQDN) を指定できます。これらのカスタム FQDN がこうした IP から返されると、その IP に対して逆引き DNS 参照が行われます。<BR> Azure では、割り当て済みのすべてのパブリックにルーティング可能な IP に対しては無料で、またクラシック デプロイ モデルおよび ARM デプロイ モデルを使用してデプロイされたサービスに対しても、逆引き DNS レコードをサポートしています。
+
+<!---HONumber=AcomDC_0309_2016-->

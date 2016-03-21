@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/09/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのハッシュ分散と、クエリ パフォーマンスに与える影響
@@ -70,7 +70,7 @@
 
 ハッシュ分散キー:
 
-1. ハッシュ列は更新できないので、静的な値か。 
+1. ハッシュ列は更新できないので、静的な値か。
 2. クエリで `JOIN`、`GROUP BY`、`DISTINCT`、または `HAVING` 句を使用しているか。
 2. `WHERE` 句は使用していないか。
 3. 多数の異なる値は、少なくとも、1000 個あるか。
@@ -103,4 +103,4 @@
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

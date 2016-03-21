@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="03/07/2016"
 	ms.author="billmath"/>
 
 
@@ -44,6 +44,10 @@ AD FS 2.0 以降を使用している場合、Office 365 または Azure AD で�
 
 (AD FS 2.0 を使用している場合は、Add-Pssnapin Microsoft.Adfs.Powershell を最初に実行する必要があることに注意してください)
 
+結果の出力で、次の設定を確認します。
+	
+	AutoCertificateRollover :True
+
 (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
 
 
@@ -51,7 +55,10 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 この `(your_FS_name) ` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。
 
-例: https://fs.contos.com/federationmetadata/2007-06/federationmetadata.xml
+例: https://fs.contospocom/federationmetadata/2007-06/federationmetadata.xml
+
+## 証明書を手動で更新する場合
+AD FS 証明書を手動で更新する場合は常に、[このセクション](#if-your-metadata-is-not-publicly-accessible)の Office 365 フェデレーションの信頼プロパティを手動で更新する手順に示すように、PowerShell コマンド Update-MsolFederatedDomain を使用して、Office 365 ドメインを更新する必要があります。
 
 ## AutoCertificateRollover プロパティが False に設定されている場合
 
@@ -77,9 +84,11 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 - 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
 
 - 次のコマンドを再度実行して、更新内容を確認します。PS C:\>Get-ADFSCertificate –CertificateType token-signing
+	- 次の 2 つの証明書が表示されます。そのうちの 1 つは、NotAfter の日付が約 1 年後で、IsPrimary の値が False です。
+
 - 次に、以下の手順に従って、Office 365 フェデレーションの信頼されたプロパティを手動で更新します。
 
-次の 2 つの証明書が表示されます。そのうちの 1 つは、NotAfter の日付が約 1 年後で、IsPrimary の値が False です。
+
 
 
 ### 以下の手順に従って、Office 365 のフェデレーション信頼プロパティを手動で更新します。
@@ -92,4 +101,4 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 
 >[AZURE.NOTE] contoso.com や fabrikam.com などの複数の最上位のドメインをサポートする必要がある場合は、すべてのコマンドレットで SupportMultipleDomain スイッチを使用する必要があります。詳細については、複数の最上位のドメインのサポートに関するページを参照してください。最後に、すべての Web アプリケーション プロキシ サーバーが[Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164)のロールアップで更新されていることを確認します。更新されていない場合は、プロキシが新しい証明書の更新に失敗し、機能が停止する可能性があります。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

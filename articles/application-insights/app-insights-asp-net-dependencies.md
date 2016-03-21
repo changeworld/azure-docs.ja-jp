@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/10/2016" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
 
 
@@ -46,6 +46,10 @@
 [Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
 ### アプリが IIS サーバーで実行されている場合
+
+Web アプリが .NET 4.6 以降で実行される場合、アプリに [Application Insights SDK をインストール](app-insights-asp-net.md)すれば、依存関係が自動的に追跡されます。他に必要なものはありません。
+
+それ以外の場合、サーバーに Application Insights Status Monitor をインストールしてください。
 
 1. IIS Web サーバーで、管理者の資格情報を使用してログインします。
 2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
@@ -91,7 +95,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールと worker ロールに追加します。](app-insights-cloudservices.md)
+[スクリプトを Web ロールと worker ロールに追加](app-insights-cloudservices.md#dependencies)します。あるいは、[.NET Framework 4.6 以降](../cloud-services/cloud-services-dotnet-install-dotnet.md)をインストールします。
 
 ## <a name="diagnosis"></a>依存関係のパフォーマンスの問題の診断
 
@@ -185,7 +189,6 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 [diagnostic]: app-insights-diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[perf]: app-insights-web-monitor-performance.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-asp-net-dependencies.md
@@ -193,4 +196,4 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

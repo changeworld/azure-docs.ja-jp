@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="02/05/2016"
+   ms.date="03/02/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用してストレージ アカウントを管理する (プレビュー)
+# StorSimple Manager サービスを使用してストレージ アカウントを管理する
 
 ## 概要
 
@@ -24,7 +24,7 @@
 - ストレージ アカウント 
 - アクセス制御レコード 
 
-このチュートリアルでは、**[構成]** ページを使用して StorSimple Virtual Array 用のストレージ アカウントを追加、編集、または削除する方法について説明します。このチュートリアルの情報は、パブリック プレビュー ソフトウェアを実行する StorSimple Virtual Array にのみ適用されます。
+このチュートリアルでは、**[構成]** ページを使用して StorSimple Virtual Array 用のストレージ アカウントを追加、編集、または削除する方法について説明します。このチュートリアルの情報は、2016 年 3 月 GA リリースのソフトウェアを実行する StorSimple Virtual Array にのみ適用されます。
 
  ![[構成] ページ](./media/storsimple-ova-manage-storage-accounts/configure_service_page.png)
 
@@ -101,4 +101,4 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 - [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

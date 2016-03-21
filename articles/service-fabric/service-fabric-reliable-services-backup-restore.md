@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="03/03/2016"
    ms.author="mcoskun"/>
 
 # Reliable Services のバックアップと復元
@@ -22,7 +22,7 @@ Azure Service Fabric は高可用性プラットフォームであり、複数�
 
 たとえば、次のシナリオではサービスのデータをバックアップすることが望まれます。
 
-* Service Fabric クラスター全体または特定のパーティションを実行しているすべてのノードが永久に失われた場合。これは、状態が geo レプリケーションされない場合、クラスター全体が 1 か所のデータ センターにある場合、データ センター全体が停止した場合などに起こる可能性があります。
+* Service Fabric クラスター全体または特定のパーティションを実行しているすべてのノードが永久に失われた場合。
 
 * 状態が誤って削除されたり、破損したりするなどの管理エラー。これは、十分な権限を持つ管理者が誤ってサービスを削除した場合に起こる可能性があります。
 
@@ -158,4 +158,4 @@ Reliable State Manager には、**IReliableStateManager.RestoreAsync** API を�
 
 **RestoreAsync** は最初、それが呼び出されたプライマリ レプリカの既存状態をすべて削除します。次に、Reliable State Manager はバックアップ フォルダーに存在するすべての Reliable Objects を作成します。次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。この手順により、復元したステートに一貫性が与えられます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

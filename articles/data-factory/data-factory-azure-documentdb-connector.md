@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB との間でのデータの移動 | Azure Data Factory" 
+	pageTitle="DocumentDB との間でのデータの移動 | Microsoft Azure" 
 	description="Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。" 
 	services="data-factory, documentdb" 
 	documentationCenter="" 
@@ -399,15 +399,15 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | ------------ | --------------- | ------------------ | ------------ |
-| query | データを読み取るためのクエリを指定します。 | DocumentDB でサポートされているクエリ文字列。<p>例: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00"</p> | いいえ <p>指定されていない場合に実行される SQL ステートメント: select <columns defined in structure> from mycollection </p>
-| nestingSeparator | ドキュメントが入れ子であることを示す特殊文字 | 任意の文字。<p>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。Azure Data Factory を利用すると、nestingSeparator で階層が示されます。上記の例では「.」です。区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。</p> | いいえ
+| query | データを読み取るためのクエリを指定します。 | DocumentDB でサポートされているクエリ文字列。<br/><br/>例: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00" | いいえ <br/><br/>指定されていない場合に実行される SQL ステートメント: select <columns defined in structure> from mycollection 
+| nestingSeparator | ドキュメントが入れ子であることを示す特殊文字 | 任意の文字。<br/><br/>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。Azure Data Factory を利用すると、nestingSeparator で階層が示されます。上記の例では「.」です。区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 | いいえ
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | -------- | ----------- | -------------- | -------- |
-| nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<p>上記の例の場合: 出力テーブルの Name.First は DocumentDB 文書で次の JSON 構造を生成します。</p><p>"Name": {<br/> "First": "John"<br/>},</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | いいえ | 
-| writeBatchSize | DocumentDB サービスに文書の作成を要求する並列要求の数。<p>このプロパティを利用し、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。</p><p>スロットルは、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっと良いコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。</p> | 整数値 | いいえ |
+| nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<br/><br/>上記の例の場合: 出力テーブルの Name.First は DocumentDB 文書で次の JSON 構造を生成します。<br/><br/>"Name": {<br/> "First": "John"<br/>}, | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は . (ドット) です。 | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は . (ドット) です。 | いいえ | 
+| writeBatchSize | DocumentDB サービスに文書の作成を要求する並列要求の数。<br/><br/>このプロパティを利用し、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 | 整数値 | いいえ |
 | writeBatchTimeout | タイムアウトする前に操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ |
  
 ## 付録
@@ -419,7 +419,7 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 	**回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
  
-3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割]( https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
 
 	**回答:** いいえ。 
 4. **質問:** 1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
@@ -427,4 +427,4 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
      
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

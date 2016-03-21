@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API Inspector を使用して呼び出しをトレースする方法
@@ -24,7 +24,7 @@ API Management には、API のデバッグとトラブルシューティング�
 
 このガイドでは、API Inspector の使い方を順をおって説明していきます。
 
->[AZURE.NOTE]API インスペクター トレースは、[管理者](api-management-howto-create-groups.md)アカウントに属するサブスクリプション キーが要求に含まれている場合に限り生成され利用できるようになります。
+>[AZURE.NOTE] API インスペクター トレースは、[管理者](api-management-howto-create-groups.md)アカウントに属するサブスクリプション キーが要求に含まれている場合に限り生成され利用できるようになります。
 
 ## <a name="trace-call"> </a> API Inspector を使用した呼び出しのトレース
 
@@ -261,4 +261,4 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->
