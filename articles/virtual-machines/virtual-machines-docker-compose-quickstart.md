@@ -6,7 +6,7 @@
    authors="dlepow"
    manager="timlt"
    editor=""
-   tags="azure-resource-manager,azure-service-management"/>
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
@@ -14,21 +14,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="08/07/2015"
+   ms.date="11/16/2015"
    ms.author="danlep"/>
 
-# Azure 仮想マシンでの Docker および Compose の概要
+# Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する
 
 この記事では、Docker と [Compose](http://github.com/docker/compose) を使用して、Azure の Linux 仮想マシンで複雑なアプリケーションを定義し、実行する方法について説明します。Compose (*Fig* の後継) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。次に、VM 上でアプリケーションを実行するためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。たとえば、この記事では、バックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示していますが、Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [リソース マネージャー モデル](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/)。
 
 
-Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](http://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
+Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](https://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
 
 ## 手順 1: Docker ホストとしての Linux VM のセットアップ
 
-Azure のさまざまな手順と Azure Markeplace で入手できるイメージを使用して、Linux VM を作成し、Docker ホストとしてセットアップできます。たとえば、Docker VM 拡張機能を使用して Ubuntu VM を作成する簡単な手順については、「[Using the Docker VM Extension from the Azure Command-Line Interface (Azure コマンド ライン インターフェイスでの Docker VM 拡張機能の使用)](virtual-machines-docker-with-xplat-cli-install.md)」をご覧ください。Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされます。前述の記事の例では、サービス管理モードで [Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) を使用して、VM を作成する方法を示しています。
+Azure のさまざまな手順と Azure Markeplace で入手できるイメージを使用して、Linux VM を作成し、Docker ホストとしてセットアップできます。たとえば、Docker VM 拡張機能を使用して Ubuntu VM を作成する簡単な手順については、「[Using the Docker VM Extension from the Azure Command-Line Interface (Azure コマンド ライン インターフェイスでの Docker VM 拡張機能の使用)](virtual-machines-docker-with-xplat-cli.md)」をご覧ください。Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされます。前述の記事の例では、サービス管理モードで [Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) を使用して、VM を作成する方法を示しています。
 
 ## 手順 2: Compose のインストール
 
@@ -49,18 +49,14 @@ Compose のインストールをテストするには、次のコマンドを実
 $ docker-compose --version
 ```
 
-のような出力が表示されます。
-```
-docker-compose 1.3.2
-```
-のような出力が表示されます。
+`docker-compose 1.4.1` のような出力が表示されます。
 
 
 ## 手順3: docker-compose.yml 構成ファイルの作成
 
 次に、`docker-compose.yml` というテキスト構成ファイルを作成して、VM 上で実行される Docker コンテナーを定義します。このファイルでは、各コンテナーで実行するイメージ (イメージは Dockerfile からのビルドも使用できます)、必要な環境変数と依存関係、ポート、コンテナー間のリンクなどを指定します。yml ファイルの構文の詳細については、[docker-compose.yml のリファレンス](http://docs.docker.com/compose/yml/)のページを参照してください。
 
-VM 上に作業ディレクトリを作成し、任意のテキスト エディターを使用して `docker-compose.yml` を作成します。簡単な例を試すために、次のテキストをファイルにコピーしてください。この構成では、[DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB SQL Database がインストールされます。
+VM 上に作業ディレクトリを作成し、任意のテキスト エディターを使用して `docker-compose.yml` を作成します。簡単な例を試すために、次のテキストをファイルにコピーしてください。この構成では、[DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB データベースがインストールされます。
 
  ```
  wordpress:
@@ -77,16 +73,16 @@ db:
 
 ```
 
-## 手順4: Start the containers with Compose
+## 手順 4: Compose によるコンテナーの起動
 
-In the working directory on your VM, simply run the following command.
+VM の作業ディレクトリで、次のコマンドを実行するだけです。
 
 ```
 $ docker-compose up -d
 
 ```
 
-This starts the Docker containers specified in `docker-compose.yml`. You'll see output similar to:
+ これにより、`docker-compose.yml` で指定された Docker コンテナーが起動されます。次のような出力が表示されます:
 
 ```
 Creating wordpress\_db\_1...
@@ -121,8 +117,8 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 ## 次のステップ
 
-* 複数コンテナー アプリのビルドとデプロイのその他の例については、[Compose CLI リファレンス](http://docs.docker.com/compose/cli/)と[ユーザー ガイド](http://docs.docker.com/compose/)を参照してください。
-* 自分で用意するか[コミュニティ](http://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
+* 複数コンテナー アプリのビルドとデプロイのその他の例については、[Compose CLI リファレンス](http://docs.docker.com/compose/reference/)と[ユーザー ガイド](http://docs.docker.com/compose/)を参照してください。
+* 自分で用意するか[コミュニティ](https://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
 * Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、
 [Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
 
@@ -130,4 +126,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

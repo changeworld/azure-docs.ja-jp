@@ -1,19 +1,19 @@
-<properties 
- pageTitle="Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法" 
- description="" 
- services="cdn" 
- documentationCenter=".NET" 
- authors="zhangmanling" 
- manager="dwrede" 
+<properties
+ pageTitle="Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法"
+ description=""
+ services="cdn"
+ documentationCenter=".NET"
+ authors="camsoper"
+ manager="erikre"
  editor=""/>
-<tags 
- ms.service="cdn" 
- ms.workload="media" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="09/01/2015" 
- ms.author="mazha"/>
+<tags
+ ms.service="cdn"
+ ms.workload="media"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="02/25/2016" 
+ ms.author="casoper"/>
 
 #Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法
 
@@ -25,12 +25,12 @@
 
 次の XML は、3 日間の最大有効期間を指定するように **clientCache** を設定する例を示します。
 
-	<configuration> 
-	  <system.webServer> 
-	        <staticContent> 
-	            <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="3.00:00:00" /> 
-	        </staticContent> 
-	  </system.webServer> 
+	<configuration>
+	  <system.webServer>
+	        <staticContent>
+	            <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="3.00:00:00" />
+	        </staticContent>
+	  </system.webServer>
 	</configuration>
 
 **UseMaxAge** を指定して、Cache-Control: max-age=<nnn> ヘッダーを **CacheControlMaxAge** 属性に指定された値に基づいて応答に追加します。**cacheControlMaxAge** 属性の期間の形式は、<days>.<hours>:<min>:<sec> です。**clientCache** ノードの詳細については、[クライアント キャッシュ<clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)に関するページを参照してください。
@@ -50,4 +50,4 @@
 
 [Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

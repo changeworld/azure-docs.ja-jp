@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="sahajs"/>
+   ms.date="01/07/2016"
+   ms.author="sahajs;barbkess;sonyama"/>
 
 # DMV を利用してワークロードを監視する
 
@@ -131,7 +131,7 @@ ORDER BY step_index;
 
 ### 手順 4a: SQL 手順の実行進行状況を見つける
 
-要求 ID と手順インデックスを利用し、クエリの SQL 手順の一環として、SQL Server クエリ分散に関する情報を取得します。ノード ID と SPID を保存します。
+要求 ID と手順インデックスを利用し、クエリの SQL 手順の一環として、SQL Server クエリ分散に関する情報を取得します。分散の ID と SPID を保存します。
 
 ```
 
@@ -149,7 +149,7 @@ WHERE request_id = 'QID33209' AND step_index = 2;
 ```
 
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node. 
--- Replace node_id and spid with values from previous query.
+-- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 
@@ -203,4 +203,4 @@ SQL Data Warehouse の管理に関するヒントについては、「[SQL Data 
 
 <!--MSDN references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

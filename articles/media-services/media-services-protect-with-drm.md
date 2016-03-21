@@ -4,17 +4,10 @@
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako,Mingfeiy"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
-<tags
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article" 
-	ms.date="11/06/2015"
-	ms.author="juliako"/>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="get-started-article" ms.date="03/01/2016"" ms.author="juliako"/>
 
 
 #PlayReady または Widevine の動的共通暗号化を使用する
@@ -22,14 +15,15 @@
 > [AZURE.SELECTOR]
 - [.NET](media-services-protect-with-drm.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 Microsoft Azure Media Services を使用すると、暗号化した MPEG-DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) ライセンスで保護して配信できます。Widevine DRM ライセンスで暗号化された DASH ストリームを配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
 Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されます。また、Media Services で提供される API を使用して、保護されたコンテンツをユーザーが再生するときに PlayReady DRM ランタイムが適用する権限と制限を構成できます。ユーザーが PlayReady で保護されたコンテンツを要求すると、プレーヤー アプリケーションが AMS ライセンス サービスにライセンスを要求します。AMS ライセンス サービスは、プレーヤーが承認されていれば、ライセンスをプレーヤーに発行します。PlayReady ライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
 
->[AZURE.NOTE]現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
->
-> 詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
+Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると Widevine ライセンス テンプレートを構成し、Widevine ライセンスを取得することもできます。
+
+[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、[Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。詳細については、「コンテンツ キー承認ポリシーを構成する」を参照してください。
 
@@ -37,7 +31,12 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 このトピックには、PlayReady や Widevine など複数の DRM で保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。このトピックでは、認証ポリシーを使用する PlayReady ライセンス配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが PlayReady または Widevine のライセンスを受け取ることができるようになります。また、DASH を介した PlayReady または Widevine DRM による動的な暗号化を使用する方法も説明します。
 
->[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、[Media Services のスケールの設定方法](media-services-manage-origins.md#scale_streaming_endpoints)に関するトピックをご覧ください。
+>[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+
+
+##サンプルのダウンロード
+
+この記事で説明されているサンプルは、[こちら](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)からダウンロードできます。
 
 ##動的共通暗号化と DRM ライセンス配信サービスの構成
 
@@ -45,16 +44,14 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 1. 資産を作成し、その資産にファイルをアップロードします。 
 1. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
-1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
-1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。 
+1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。 
+1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
+
+	コンテンツ キー承認ポリシーを作成するときは、配信方法 (PlayReady または Widevine)、制限 (オープンまたはトークン)、クライアントへのキー配信方法を定義するキー配信種類に固有の情報 ([PlayReady](media-services-playready-license-template-overview.md) または [Widevine](media-services-widevine-license-template-overview.md) ライセンス テンプレート) を指定する必要があります。 
 1. 資産の配信ポリシーを構成します。配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady または Widevine のライセンス取得 URL が含まれます。 
  
 	同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
-
->[AZURE.NOTE]現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
->
-> 詳細については、[Axinom](media-services-axinom-integration.md) および [castLabs](media-services-castlabs-integration.md) との統合を参照してください。
 
 このトピックの最後に、詳細な .NET の例があります。
 
@@ -67,6 +64,8 @@ Media Services では、キーを要求するユーザーを承認する複数�
 ##現時点での制限事項
 
 資産の配信ポリシーを追加または更新する場合は、関連するロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
+
+Azure Media Services で Widevine を使用して暗号化するときの制限事項として、現在は複数のコンテンツ キーはサポートされていません。
 
 ##資産を作成し、その資産にファイルをアップロードする
 
@@ -90,7 +89,7 @@ Media Services では、コンテンツ キーに、資産を暗号化すると�
 
 ##<a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーを構成する必要があります。キーがクライアント (プレーヤー) に配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーを構成する必要があります。キーがクライアント (プレーヤー) に配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
 
 詳細については、「[コンテンツ キー承認ポリシーを構成する](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)」を参照してください。
 
@@ -132,11 +131,16 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 ##<a id="example"></a>例
 
-1. 新しいコンソール プロジェクトを作成します。
-1. NuGet を使用して、Azure Media Services .NET SDK Extensions をインストールして追加します。このパッケージをインストールすると、Media Services .NET SDK が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
-2. その他の参照 (System.Runtime.Serialization と System.Configuration) を追加します。
-2. アカウント名とキー情報が含まれた構成ファイルを追加します。
 
+次の例では、Azure Media Services SDK for .Net バージョン 3.5.2 で導入された機能を示します (具体的には、Widevine ライセンス テンプレートを定義し、Azure Media Services に Widevine ライセンスを要求する機能)。パッケージのインストールには、次の Nuget パッケージ コマンドを使用しました。
+
+	PM> Install-Package windowsazure.mediaservices -Version 3.5.2
+
+
+1. 新しいコンソール プロジェクトを作成します。
+1. NuGet を使用して、Azure Media Services .NET SDK をインストールして追加します。
+2. その他の参照 System.Configuration を追加します。
+2. アカウント名とキー情報が含まれた構成ファイルを追加します。
 	
 		<?xml version="1.0" encoding="utf-8"?>
 		<configuration>
@@ -153,6 +157,8 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 			  </appSettings>
 		</configuration>
 
+1. コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。詳細については、「[ストリーミング エンドポイントの構成](media-services-dotnet-get-started.md#configure-streaming-endpoint-using-the-portal)」を参照してください。
+
 1. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 	
 	必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
@@ -162,14 +168,14 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		using System.Configuration;
 		using System.IO;
 		using System.Linq;
-		using System.Text;
 		using System.Threading;
-		using System.Threading.Tasks;
 		using Microsoft.WindowsAzure.MediaServices.Client;
 		using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
 		using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+		using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
+		using Newtonsoft.Json;
 		
-		namespace CommonDynamicEncryptAndKeyDeliverySvc
+		namespace DynamicEncryptionWithDRM
 		{
 		    class Program
 		    {
@@ -216,7 +222,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
 		            Console.WriteLine("PlayReady License Key delivery URL: {0}", key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense));
 		            Console.WriteLine();
-		    
+		
 		            if (tokenRestriction)
 		                tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
 		            else
@@ -240,21 +246,20 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		                // Note, you need to pass the key id Guid because we specified 
 		                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
 		                Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-		
-		                //The GenerateTestToken method returns the token without the word “Bearer” in front
-		                //so you have to add it in front of the token string. 
 		                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey, DateTime.UtcNow.AddDays(365));
 		                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 		                Console.WriteLine();
 		            }
 		
-
-		            string url = GetStreamingOriginLocator(encodedAsset);
-		            Console.WriteLine("Encrypted MPEG-DASH URL: {0}/Manifest(format=mpd-time-csf) ", url);
+		            // You can use the http://amsplayer.azurewebsites.net/azuremediaplayer.html player to test streams.
+		            // Note that DASH works on IE 11 (via PlayReady), Edge (via PlayReady), Chrome (via Widevine).
 		
+		            string url = GetStreamingOriginLocator(encodedAsset);
+		            Console.WriteLine("Encrypted DASH URL: {0}/manifest(format=mpd-time-csf)", url);
 		
 		            Console.ReadLine();
 		        }
+		
 		
 		        static public IAsset UploadFileAndCreateAsset(string singleFilePath)
 		        {
@@ -265,7 +270,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            }
 		
 		            var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-		            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted);
+		            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.None);
 		
 		            var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
 		
@@ -289,41 +294,52 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            return inputAsset;
 		        }
 		
-	
-				static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-				{
-				    // Declare a new job.
-				    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-				    // Get a media processor reference, and pass to it the name of the 
-				    // processor to use for the specific task.
-				    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-				
-				    // Create a task with the encoding details, using a string preset.
-				    // In this case "H264 Multiple Bitrate 720p" preset is used.
-				    ITask task = job.Tasks.AddNew("My encoding task",
-				        processor,
-				        "H264 Multiple Bitrate 720p",
-				        TaskOptions.None);
-				
-				    // Specify the input asset to be encoded.
-				    task.InputAssets.Add(asset);
-				    // Add an output asset to contain the results of the job. 
-				    // This output is specified as AssetCreationOptions.None, which 
-				    // means the output asset is not encrypted. 
-				    task.OutputAssets.AddNew("Output asset",
-				        AssetCreationOptions.None);
-				
-				    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-				    job.Submit();
-				    job.GetExecutionProgressTask(CancellationToken.None).Wait();
-				
-				    return job.OutputMediaAssets[0];
-				}
-
+		
+		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+		        {
+		            // Declare a new job.
+		            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+		            // Get a media processor reference, and pass to it the name of the 
+		            // processor to use for the specific task.
+		            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+		
+		            // Create a task with the encoding details, using a string preset.
+		            // In this case "H264 Multiple Bitrate 720p" preset is used.
+		            ITask task = job.Tasks.AddNew("My encoding task",
+		                processor,
+		                "H264 Multiple Bitrate 720p",
+		                TaskOptions.None);
+		
+		            // Specify the input asset to be encoded.
+		            task.InputAssets.Add(asset);
+		            // Add an output asset to contain the results of the job. 
+		            // This output is specified as AssetCreationOptions.None, which 
+		            // means the output asset is not encrypted. 
+		            task.OutputAssets.AddNew("Output asset",
+		                AssetCreationOptions.None);
+		
+		            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+		            job.Submit();
+		            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+		
+		            return job.OutputMediaAssets[0];
+		        }
+		
+		        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+		        {
+		            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+		            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+		
+		            if (processor == null)
+		                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+		
+		            return processor;
+		        }
+		
 		
 		        static public IContentKey CreateCommonTypeContentKey(IAsset asset)
 		        {
-		            // Create Common Encryption content key
+		            // Create envelope encryption content key
 		            Guid keyId = Guid.NewGuid();
 		            byte[] contentKey = GetRandomBuffer(16);
 		
@@ -339,78 +355,86 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            return key;
 		        }
 		
-		    static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
-		    {
-		
-		        // Create ContentKeyAuthorizationPolicy with Open restrictions 
-		        // and create authorization policy          
-		
-		        List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
+		        static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
 		        {
-		            new ContentKeyAuthorizationPolicyRestriction 
-		            { 
-		                Name = "Open", 
-		                KeyRestrictionType = (int)ContentKeyRestrictionType.Open, 
-		                Requirements = null
-		            }
-		        };
 		
-		        // Configure PlayReady license template.
-		        string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
-		
-		        IContentKeyAuthorizationPolicyOption policyOption =
-		            _context.ContentKeyAuthorizationPolicyOptions.Create("",
-		                ContentKeyDeliveryType.PlayReadyLicense,
-		                    restrictions, newLicenseTemplate);
-		
-		        IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
-		                    ContentKeyAuthorizationPolicies.
-		                    CreateAsync("Deliver Common Content Key with no restrictions").
-		                    Result;
-		
-		
-		        contentKeyAuthorizationPolicy.Options.Add(policyOption);
-		
-		        // Associate the content key authorization policy with the content key.
-		        contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
-		        contentKey = contentKey.UpdateAsync().Result;
-		    }
-		
-		        public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
-		        {
-		            string tokenTemplateString = GenerateTokenRequirements();
-		
-		            IContentKeyAuthorizationPolicy policy = _context.
-		                                    ContentKeyAuthorizationPolicies.
-		                                    CreateAsync("HLS token restricted authorization policy").Result;
+		            // Create ContentKeyAuthorizationPolicy with Open restrictions 
+		            // and create authorization policy          
 		
 		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-		            {
-		                new ContentKeyAuthorizationPolicyRestriction 
-		                { 
-		                    Name = "Token Authorization Policy", 
-		                    KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-		                    Requirements = tokenTemplateString, 
-		                }
-		            };
+		                    {
+		                        new ContentKeyAuthorizationPolicyRestriction
+		                        {
+		                            Name = "Open",
+		                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+		                            Requirements = null
+		                        }
+		                    };
 		
-		            // Configure PlayReady license template.
-		            string newLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
+		            // Configure PlayReady and Widevine license templates.
+		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
 		
-		            IContentKeyAuthorizationPolicyOption policyOption =
-		                _context.ContentKeyAuthorizationPolicyOptions.Create("Token option",
+		            string WidevineLicenseTemplate = ConfigureWidevineLicenseTemplate();
+		
+		            IContentKeyAuthorizationPolicyOption PlayReadyPolicy =
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("",
 		                    ContentKeyDeliveryType.PlayReadyLicense,
-		                        restrictions, newLicenseTemplate);
+		                        restrictions, PlayReadyLicenseTemplate);
+		
+		            IContentKeyAuthorizationPolicyOption WidevinePolicy =
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("",
+		                    ContentKeyDeliveryType.Widevine,
+		                    restrictions, WidevineLicenseTemplate);
 		
 		            IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
 		                        ContentKeyAuthorizationPolicies.
 		                        CreateAsync("Deliver Common Content Key with no restrictions").
 		                        Result;
-		            
-		            policy.Options.Add(policyOption);
 		
-		            // Add ContentKeyAutorizationPolicy to ContentKey
-		            contentKeyAuthorizationPolicy.Options.Add(policyOption);
+		
+		            contentKeyAuthorizationPolicy.Options.Add(PlayReadyPolicy);
+		            contentKeyAuthorizationPolicy.Options.Add(WidevinePolicy);
+		            // Associate the content key authorization policy with the content key.
+		            contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
+		            contentKey = contentKey.UpdateAsync().Result;
+		        }
+		
+		        public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
+		        {
+		            string tokenTemplateString = GenerateTokenRequirements();
+		
+		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
+		                    {
+		                        new ContentKeyAuthorizationPolicyRestriction
+		                        {
+		                            Name = "Token Authorization Policy",
+		                            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+		                            Requirements = tokenTemplateString,
+		                        }
+		                    };
+		
+		            // Configure PlayReady and Widevine license templates.
+		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
+		
+		            string WidevineLicenseTemplate = ConfigureWidevineLicenseTemplate();
+		
+		            IContentKeyAuthorizationPolicyOption PlayReadyPolicy =
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("Token option",
+		                    ContentKeyDeliveryType.PlayReadyLicense,
+		                        restrictions, PlayReadyLicenseTemplate);
+		
+		            IContentKeyAuthorizationPolicyOption WidevinePolicy =
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("Token option",
+		                    ContentKeyDeliveryType.Widevine,
+		                        restrictions, WidevineLicenseTemplate);
+		
+		            IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
+		                        ContentKeyAuthorizationPolicies.
+		                        CreateAsync("Deliver Common Content Key with token restrictions").
+		                        Result;
+		
+		            contentKeyAuthorizationPolicy.Options.Add(PlayReadyPolicy);
+		            contentKeyAuthorizationPolicy.Options.Add(WidevinePolicy);
 		
 		            // Associate the content key authorization policy with the content key
 		            contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
@@ -430,7 +454,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
 		
 		            return TokenRestrictionTemplateSerializer.Serialize(template);
-		        } 
+		        }
 		
 		        static private string ConfigurePlayReadyLicenseTemplate()
 		        {
@@ -450,12 +474,11 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            //Configure whether the license is persistent (saved in persistent storage on the client) 
 		            //or non-persistent (only held in memory while the player is using the license).  
 		            licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
-		           
+		
 		            // AllowTestDevices controls whether test devices can use the license or not.  
 		            // If true, the MinimumSecurityLevel property of the license
 		            // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
 		            licenseTemplate.AllowTestDevices = true;
-		
 		
 		            // You can also configure the Play Right in the PlayReady license by using the PlayReadyPlayRight class. 
 		            // It grants the user the ability to playback the content subject to the zero or more restrictions 
@@ -478,31 +501,58 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		
 		            return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
 		        }
-
 		
-				static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
-				{
-				    Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-				
-				    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-				        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-				    {
-				        {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-				        {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl,"http://testurl"},
-				        
-				    };
-				
-				    var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
-				            "AssetDeliveryPolicy",
-				        AssetDeliveryPolicyType.DynamicCommonEncryption,
-				        AssetDeliveryProtocol.Dash,
-				        assetDeliveryPolicyConfiguration);
-				
-				   
-				    // Add AssetDelivery Policy to the asset
-				    asset.DeliveryPolicies.Add(assetDeliveryPolicy);
-				
-				}
+		
+		        private static string ConfigureWidevineLicenseTemplate()
+		        {
+		            var template = new WidevineMessage
+		            {
+		                allowed_track_types = AllowedTrackTypes.SD_HD,
+		                content_key_specs = new[]
+		                {
+		                            new ContentKeySpecs
+		                            {
+		                                required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+		                                security_level = 1,
+		                                track_type = "SD"
+		                            }
+		                        },
+		                policy_overrides = new
+		                {
+		                    can_play = true,
+		                    can_persist = true,
+		                    can_renew = false
+		                }
+		            };
+		
+		            string configuration = JsonConvert.SerializeObject(template);
+		            return configuration;
+		        }
+		
+		        static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
+		        {
+		            Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
+		            Uri widevineURl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+		                {
+		                            {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+		                            {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl, widevineURl.ToString()},
+		
+		                };
+		
+		            var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
+		                    "AssetDeliveryPolicy",
+		                AssetDeliveryPolicyType.DynamicCommonEncryption,
+		                AssetDeliveryProtocol.Dash,
+		                assetDeliveryPolicyConfiguration);
+		
+		
+		            // Add AssetDelivery Policy to the asset
+		            asset.DeliveryPolicies.Add(assetDeliveryPolicy);
+		
+		        }
+		
 		
 		        /// <summary>
 		        /// Gets the streaming origin locator.
@@ -520,6 +570,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		                                         FirstOrDefault();
 		
 		            // Create a 30-day readonly access policy. 
+                	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
 		            IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 		                TimeSpan.FromDays(30),
 		                AccessPermissions.Read);
@@ -531,6 +582,14 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		
 		            // Create a URL to the manifest file. 
 		            return originLocator.Path + assetFile.Name;
+		        }
+		
+		        static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
+		        {
+		            Console.WriteLine(string.Format("{0}\n  State: {1}\n  Time: {2}\n\n",
+		                ((IJob)sender).Name,
+		                e.CurrentState,
+		                DateTime.UtcNow.ToString(@"yyyy_M_d__hh_mm_ss")));
 		        }
 		
 		        static private byte[] GetRandomBuffer(int length)
@@ -545,53 +604,8 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		
 		            return returnValue;
 		        }
-
-
-				static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
-				{
-				    Console.WriteLine("Job state changed event:");
-				    Console.WriteLine("  Previous state: " + e.PreviousState);
-				    Console.WriteLine("  Current state: " + e.CurrentState);
-				    switch (e.CurrentState)
-				    {
-				        case JobState.Finished:
-				            Console.WriteLine();
-				            Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-				            break;
-				        case JobState.Canceling:
-				        case JobState.Queued:
-				        case JobState.Scheduled:
-				        case JobState.Processing:
-				            Console.WriteLine("Please wait...\n");
-				            break;
-				        case JobState.Canceled:
-				        case JobState.Error:
-				
-				            // Cast sender as a job.
-				            IJob job = (IJob)sender;
-				
-				            // Display or log error details as needed.
-				            break;
-				        default:
-				            break;
-				    }
-				}
-				
-				
-				static private IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-				{
-				    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-				    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-				
-				    if (processor == null)
-				        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-				
-				    return processor;
-				}
 		    }
 		}
-
-
 
 ##Media Services のラーニング パス
 
@@ -604,6 +618,10 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 ##関連項目
 
+[CENC とマルチ DRM およびアクセス制御](media-services-cenc-with-multidrm-access-control.md)
+
 [Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-<!---HONumber=Nov15_HO3-->
+[Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+
+<!---HONumber=AcomDC_0302_2016-->

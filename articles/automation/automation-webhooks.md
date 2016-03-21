@@ -1,9 +1,9 @@
 <properties 
-   pageTitle="Azure Automation Webhook"
+   pageTitle="Azure Automation Webhook | Microsoft Azure"
    description="HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags 
@@ -12,14 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/08/2015"
-   ms.author="bwren;sngun"/>
+   ms.date="02/23/2016"
+   ms.author="magoedte;bwren;sngun"/>
 
 # Azure Automation Webhook
 
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Online、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。
-
-![Webhook](media/automation-webhooks/webhooks-overview.png)
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)で、Webhook と、Runbook を開始する他のメソッドを比較できます
 
@@ -30,17 +28,17 @@
 | プロパティ | 説明 |
 |:---|:---|
 |名前 | Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。<br>ベスト プラクティスとして、Webhook を使用するクライアントに関連した名前を Webhook に付ける必要があります。 |
-|URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。これは、Webhook を作成するときに自動的に生成されます。カスタム URL を指定することはできません。<br> <br>この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。その理由で、これはパスワードと同じように扱う必要があります。セキュリティ上の理由から、Webhook の作成時に Azure プレビュー ポータルで表示できるのは URL だけです。将来の使用に備えて、URL を安全な場所にメモしてください。 |
+|URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。これは、Webhook を作成するときに自動的に生成されます。カスタム URL を指定することはできません。<br> <br>この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。その理由で、これはパスワードと同じように扱う必要があります。セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。将来の使用に備えて、URL を安全な場所にメモしてください。 |
 |有効期限 | 証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。Webhook の作成後に、この有効期限を変更することはできません。また、有効期限に達した後に、Webhook を再度有効にすることもできません。この場合、別の Webhook を作成して現在の Webhook を置き換え、クライアントを更新して新しい Webhook を使用する必要があります。 |
 | 有効 | 既定では、Webhook は作成時に有効になります。Disabled に設定した場合、クライアントはそれを使用できなくなります。**Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
 
 
 ### パラメーター
-Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
+Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
 Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
-![Webhookdata](media/automation-webhooks/webhookdata.png)
+![Webhookdata プロパティ](media/automation-webhooks/webhook-data-properties.png)
 
 **$WebhookData** オブジェクトには、次のプロパティがあります。
 
@@ -53,9 +51,26 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 
 **$WebhookData** パラメーターのサポートに必要な Webhook の構成はありません。また、これを受け入れるために Runbook は必要ありません。Runbook がパラメーターを定義していない場合は、クライアントから送信された要求の詳細は無視されます。
 
-Webhook の作成時に $WebhookData の値を指定した場合、クライアントの要求本文にデータが含まれていなくても、クライアントの POST 要求からのデータで Webhook が Runbook を開始した時点でその値はオーバーライドされます。Webhook 以外の方法を使用して $WebhookData が含まれる Runbook を開始する場合、Runbook で認識される $Webhookdata の値を指定することができます。Runbook が正しく処理できるように、この値は $Webhookdata と同じプロパティを持つオブジェクトでなければなりません。
+Webhook の作成時に $WebhookData の値を指定した場合、クライアントの要求本文にデータが含まれていなくても、クライアントの POST 要求からのデータで Webhook が Runbook を開始した時点でその値はオーバーライドされます。Webhook 以外の方法を使用して $WebhookData が含まれる Runbook を開始する場合、Runbook で認識される $Webhookdata の値を指定することができます。この値は $Webhookdata と同じ[プロパティ](#details-of-a-webhook)を持つオブジェクトにする必要があります。それにより、Runbook は、Webhook によって渡された実際の WebhookData を操作しているかのように適切な処理を実行できます。
 
->[AZURE.NOTE]すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
+たとえば、Azure ポータルから次の Runbook を開始するときにテスト用のサンプル WebhookData を渡す場合、WebhookData はオブジェクトであるため、UI に JSON として渡す必要があります。
+
+![UI からの WebhookData パラメーター](media/automation-webhooks/WebhookData-parameter-from-UI.png)
+
+上記の Runbook で、WebhookData パラメーターに次のプロパティがあるとします。
+
+1. WebhookName: *MyWebhook*
+2. RequestHeader: *From=Test User*
+3. RequestBody: *[“VM1”, “VM2”]*
+
+この場合は、次の JSON 値を WebhookData パラメーター用の UI に渡します。
+
+* {"WebhookName":"MyWebhook", "RequestHeader":{"From":"Test User"}, "RequestBody":"["VM1","VM2"]"}
+
+![UI から WebhookData パラメーターを開始する](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
+
+
+>[AZURE.NOTE] すべての入力パラメーターの値は、Runbook のジョブに記録されます。つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
 
 ## セキュリティ
 
@@ -67,9 +82,9 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 
 ## Webhook の作成
 
-次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure プレビュー ポータルに作成します。
+次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
-1. Azure プレビュー ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。 
+1. Azure ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。 
 3. ブレードの上部にある **Webhook** をクリックして、**[Webhook の追加]** ブレードを開きます。<br> ![Webhook ボタン](media/automation-webhooks/webhooks-button.png)
 4. **[新しい Webhook の作成]** をクリックして、**[Webhook ブレードの作成]** を開きます。
 5. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。これらのプロパティの詳細については、「[Webhook の詳細](#details-of-a-webhook)」を参照してください。
@@ -108,8 +123,10 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 	$uri = "https://s1events.azure-automation.net/webhooks?token=8ud0dSrSo%2fvHWpYbklW%3c8s0GrOKJZ9Nr7zqcS%2bIQr4c%3d"
 	$headers = @{"From"="user@contoso.com";"Date"="05/28/2015 15:47:00"}
     
-    $vms  = @([pscustomobject]@{Name="vm01";ServiceName="vm01"})
-    $vms += @([pscustomobject]@{Name="vm02";ServiceName="vm02"})
+    $vms  = @(
+    			@{ Name="vm01";ServiceName="vm01"},
+    			@{ Name="vm02";ServiceName="vm02"}
+    		)
 	$body = ConvertTo-Json -InputObject $vms 
 
 	$response = Invoke-RestMethod -Method Post -Uri $uri -Headers $headers -Body $body
@@ -169,7 +186,7 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 
 ## Azure アラートに応じて Runbook を開始する
 
-Webhook 対応の Runbook を使用して、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。現在、Automation アカウントではメトリックしかサポートしていません。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](Azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
+Webhook 対応の Runbook を使用して、[Azure アラート](../azure-portal/insights-receive-alert-notifications.md)に対応することができます。Azure 内のリソースは、Azure アラートを活用してパフォーマンス、可用性、および利用状況などの統計を収集することで監視できます。Azure リソースの監視メトリックまたはイベントに基づいて通知を受け取ることができます。現在、Automation アカウントではメトリックしかサポートしていません。指定したメトリックの値が割り当て済みのしきい値を超えた場合、または構成済みのイベントがトリガーされた場合に、アラートの解決を担当するサービス管理者または共同管理者に通知が送信されます。メトリックとイベントの詳細については、[Azure アラート](../azure-portal/insights-receive-alert-notifications.md)に関する記事を参照してください。
 
 Azure アラートを通知システムとして使用するだけでなく、アラートに応じて Runbook を開始することもできます。Azure Automation には、Azure アラートを使用して Webhook 対応の Runbook を開始する機能があります。メトリックが構成済みのしきい値を超えると、アラート ルールがアクティブになって Automation Webhook がトリガーされ、この Webhook により Runbook が実行されます。
 
@@ -179,12 +196,12 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 仮想マシンなどの Azure リソースを例に取ると、このマシンの CPU 使用率は重要なパフォーマンス メトリックの 1 つです。長期間にわたり CPU 使用率が 100% になるか特定の値を超えた場合、仮想マシンを再起動して問題を解決する必要があります。この問題は、CPU 使用率をメトリックとするアラート ルールを仮想マシンに構成することで解決できます。ここで、CPU 使用率はほんの一例であり、Azure リソースに構成できるメトリックは他にも多数あります。また、この問題を解決するために行うアクションは仮想マシンの再起動ですが、他のアクションを実行するように Runbook を構成することもできます。
 
-このアラート ルールがアクティブになって Webhook 対応の Runbook をトリガーするときに、ルールから Runbook にアラート コンテキストが送信されます。[アラート コンテキスト](Azure-portal/insights-receive-alert-notifications.md)には、**SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId**、および **Timestamp** など、Runbook がアクション対象のリソースを特定するために必要になる詳細が含まれています。アラート コンテキストは Runbook に送信される **WebhookData** オブジェクトの本文部に埋め込まれており、**Webhook.RequestBody** プロパティを使用して評価することができます。
+このアラート ルールがアクティブになって Webhook 対応の Runbook をトリガーするときに、ルールから Runbook にアラート コンテキストが送信されます。[アラート コンテキスト](../azure-portal/insights-receive-alert-notifications.md)には、**SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId**、および **Timestamp** など、Runbook がアクション対象のリソースを特定するために必要になる詳細が含まれています。アラート コンテキストは Runbook に送信される **WebhookData** オブジェクトの本文部に埋め込まれており、**Webhook.RequestBody** プロパティを使用して評価することができます。
 
 
 ### 例
 
-サブスクリプション内に Azure 仮想マシンを作成し、[CPU パーセンテージ メトリックを監視するアラート](Azure-portal/insights-receive-alert-notifications.md)に関連付けます。アラートの作成時には、[Webhook] フィールドに、Webhook の作成中に生成された Webhook の URL を必ず入力してください。
+サブスクリプション内に Azure 仮想マシンを作成し、[CPU パーセンテージ メトリックを監視するアラート](../azure-portal/insights-receive-alert-notifications.md)に関連付けます。アラートの作成時には、[Webhook] フィールドに、Webhook の作成中に生成された Webhook の URL を必ず入力してください。
 
 次のサンプル Runbook は、アラート ルールがアクティブになるとトリガーされ、アクション対象のリソースを特定するために Runbook が必要とするアラート コンテキストのパラメーターを収集します。
 
@@ -249,10 +266,10 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
  
 
-## 関連記事:
+## 次のステップ
 
-- [Runbook の開始](automation-starting-a-runbook.md)
-- [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md)
+- Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+- Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

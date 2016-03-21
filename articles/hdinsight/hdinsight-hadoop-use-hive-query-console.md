@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="02/16/2016"
    ms.author="larryfr"/>
 
 # クエリ コンソールを使用して Hive クエリを実行
@@ -23,7 +23,7 @@
 
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
-> [AZURE.NOTE]クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
+> [AZURE.NOTE] クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
 
 
 ##<a id="prereq"></a>前提条件
@@ -45,6 +45,7 @@
 
 	テキスト `Select * from hivesampletable` を次の HiveQL ステートメントに置き換えます。
 
+        set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
@@ -56,7 +57,7 @@
     * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
     * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
-    > [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+    > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
     > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
@@ -88,6 +89,12 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
+
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
+
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
+
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
@@ -108,18 +115,17 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-[hdinsight-storage]: hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
-[Powershell-install-configure]: install-configure-powershell.md
+[Powershell-install-configure]: powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=Oct15_HO3-->
+[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
+
+<!---HONumber=AcomDC_0218_2016-->

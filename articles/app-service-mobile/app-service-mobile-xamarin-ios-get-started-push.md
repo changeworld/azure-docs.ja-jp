@@ -1,73 +1,76 @@
-<properties 
-	pageTitle="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を追加する" 
-	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
+<properties
+	pageTitle="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を追加する"
+	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
-	ms.devlang="dotnet" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/22/2015" 
+	ms.date="02/04/2016"
 	ms.author="wesmc"/>
 
 # Xamarin iOS アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
-このチュートリアルでは、[Xamarin.iOS クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [Xamarin.iOS のクイック スタート] チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
-
-[iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
+最初に、このチュートリアルの基になっている [Xamarin.iOS のクイック スタート チュートリアル](app-service-mobile-xamarin-ios-get-started.md)を完了しておく必要があります。Xamarin.iOS クイック スタート プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料試用版のサイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリ バックエンドを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。Xamarin Studio を使用して、Mac で Xamarin.iOS アプリを実行するほうが簡単であることに注意してください。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
+* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、Xamarin.iOS Build Host を実行するネットワーク接続された Mac にアクセスする必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
 
-* 物理的な iOS デバイス
+* 物理的な iOS デバイスiOS シミュレーターでは、プッシュ通知はサポートされていません。
 
-* [クイック スタート チュートリアル](../app-service-mobile-xamarin-ios-get-started.md)を完了していること。
+* [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)。Apple Push Notification サービス (APNS) に登録する場合に必要です。
 
-##<a name="create-hub"></a>通知ハブを作成する
+* [Xamarin.iOS クイック スタート チュートリアル](app-service-mobile-xamarin-ios-get-started.md)を完了してください。
 
-[AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-## <a id="register"></a>アプリをプッシュ通知用に登録する
+##Apple の開発者ポータルにプッシュ通知のアプリを登録する
 
-[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Notification Hubs Xamarin で Apple プッシュ通知を有効にする](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
-## プッシュ通知を送信するように Azure を構成する
+##プッシュ通知を送信するようにモバイル アプリを構成する
 
-[AZURE.INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
+通知を送信するようにアプリを構成するには、新しいハイブリッドを作成し、使用するプラットフォームの通知サービスに合わせて構成します。
 
-##<a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+1. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[Mobile Apps]**、作成したモバイル アプリ、**[設定]**、**[モバイル]**、**[プッシュ]**、**[通知ハブ]**、**[+ 通知ハブ]** の順にクリックし、新しい通知ハブの名前と名前空間を指定してから、**[OK]** をクリックします。
 
-[AZURE.INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
+	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-configure-notification-hub.png)
 
-## <a name="publish-the-service"></a>サーバー プロジェクトを Azure にデプロイする
+2. [通知ハブの作成] ブレードで、**[作成]** をクリックします。
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
+3. **[プッシュ]**、**[Apple (APNs)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。
 
-## <a name="configure-app"></a>Xamarin.iOS プロジェクトを構成する
+	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
+
+これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+
+##プッシュ通知を送信するようにサーバー プロジェクトを更新する
+
+[AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
+
+##Xamarin.iOS プロジェクトを構成する
 
 [AZURE.INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-## <a name="add-push"></a>アプリケーションにプッシュ通知を追加する
+##アプリケーションにプッシュ通知を追加する
 
 1. **QSTodoService** で次のプロパティを追加して、**AppDelegate** でモバイル クライアントを取得できるようにします。
-        
+
             public MobileServiceClient GetClient {
             get
             {
@@ -81,7 +84,8 @@
 
 1. 次の `using` ステートメントを **AppDelegate.cs** ファイルの先頭に追加します。
 
-        using Microsoft.WindowsAzure.MobileServices;
+		using Microsoft.WindowsAzure.MobileServices;
+		using Newtonsoft.Json.Linq;
 
 2. **AppDelegate** で、**FinishedLaunching** イベントをオーバーライドします。
 
@@ -89,27 +93,39 @@
         {
             // registers for push for iOS8
             var settings = UIUserNotificationSettings.GetSettingsForTypes(
-                UIUserNotificationType.Alert 
-                | UIUserNotificationType.Badge 
-                | UIUserNotificationType.Sound, 
+                UIUserNotificationType.Alert
+                | UIUserNotificationType.Badge
+                | UIUserNotificationType.Sound,
                 new NSSet());
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings); 
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
             UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
             return true;
         }
 
-3. 同じファイルで **RegisteredForRemoteNotifications** イベントをオーバーライドします。
+3. 同じファイルで **RegisteredForRemoteNotifications** イベントをオーバーライドします。このコードでは、サーバーでサポートされているすべてのプラットフォームに送信される単純なテンプレート通知を登録します。
+
+	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](../notification-hubs/notification-hubs-templates.md)」を参照してください。
+
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
             MobileServiceClient client = QSTodoService.DefaultService.GetClient;
 
+            const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
+
+            JObject templates = new JObject();
+            templates["genericMessage"] = new JObject
+            {
+                {"body", templateBodyAPNS}
+            };
+
             // Register for push with your mobile app
             var push = client.GetPush();
-            push.RegisterAsync(deviceToken);
+            push.RegisterAsync(deviceToken, templates);
         }
+
 
 4. 次に、**DidReceivedRemoteNotification** イベントをオーバーライドします。
 
@@ -134,8 +150,8 @@
 ## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
 1. **[Run]** ボタンを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
-	
-	> [AZURE.NOTE]アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+
+	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
 2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
 
@@ -152,10 +168,5 @@
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
-[Azure Management Portal]: https://manage.windowsazure.com/
-[apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-
- 
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

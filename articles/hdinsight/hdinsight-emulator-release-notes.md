@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/29/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jgao"/>
 
 
@@ -23,7 +23,8 @@
 
 
 
-> [AZURE.NOTE]バージョン番号を確認する最も簡単な方法は、[プログラムの追加と削除] で **[Microsoft HDInsight Emulator for Azure]** (Version 1.0.0.0 以降の場合) または **[Microsoft HDInsight 開発者プレビュー]** (Version 1.0.0.0 より前の場合) の項目を探すことです。
+> [AZURE.NOTE] 
+バージョン番号を確認する最も簡単な方法は、[プログラムの追加と削除] で **[Microsoft HDInsight Emulator for Azure]** (Version 1.0.0.0 以降の場合) または **[Microsoft HDInsight 開発者プレビュー]** (Version 1.0.0.0 より前の場合) の項目を探すことです。
 
 ## Version 2.0.0.0、2014 年 8 月 29 日リリース
 
@@ -89,7 +90,7 @@
 
 * 新しい HDInsight ダッシュボードには次の機能があります。
  
-	* ローカル インストールのほか、Azure HDInsight サービスを使用してリモートで実行されているクラスターも含む、複数のクラスターに接続します。HDInsight サービスの詳細については、[http://azure.microsoft.com/documentation/services/hdinsight/](http://azure.microsoft.com/documentation/services/hdinsight/) を参照してください。
+	* ローカル インストールのほか、Azure HDInsight サービスを使用してリモートで実行されているクラスターも含む、複数のクラスターに接続します。HDInsight サービスの詳細については、[http://azure.microsoft.com/documentation/services/hdinsight/](https://azure.microsoft.com/documentation/services/hdinsight/) を参照してください。
  
 	* ローカル クラスターで Azure BLOB ストレージを構成します。詳細な手順は以下を参照してください。
 
@@ -276,4 +277,4 @@
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

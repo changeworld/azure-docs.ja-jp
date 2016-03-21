@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/07/2015"
+	ms.date="01/28/2016"
 	ms.author="juliako"/>
 
 
@@ -34,11 +34,11 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 ![動的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
->[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+>[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
 ##一般的なシナリオ
 
-1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「[Media Services Encoder でサポートされる形式の一覧](media-services-azure-media-encoder-formats)」を参照)。
+1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「[Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)」を参照してください)。
 
 1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
 
@@ -46,56 +46,31 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 1. コンテンツにアクセスしてストリーミングするストリーミング URL を構築します。
 
->[AZURE.NOTE]すべての MP4 ファイルの形式が動的パッケージによってサポートされているわけではありません。詳細については、「[動的パッケージでサポートされていない形式](media-services-dynamic-packaging-overview.md#unsupported_formats)」を参照してください。
 
 ##動的ストリーミング用のアセットの準備
 
 動的ストリーミング用にアセットを準備するには、2 つのオプションがあります。
 
-- マスター ファイルをアップロードし、Azure Media Encoder を使用して H.264 MP4 アダプティブ ビットレートのセットを生成します。
-- 既存のアダプティブ ビットレート セットをアップロードし、Media Packager を使用してそれらを検証します。
+1. [マスター ファイルをアップロードします](media-services-dotnet-upload-files.md)。
+2. [Media Encoder Standard エンコーダーを使用して、H.264 MP4 アダプティブ ビットレート セットを生成します](media-services-dotnet-encode-with-media-encoder-standard.md)。
+3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
-###マスター ファイルをアップロードし、Azure Media Encoder を使用して H.264 MP4 アダプティブ ビットレートのセットを生成します。
+-または-
+ 
+1. 事前にエンコードされた MP4 ファイルをアップロードします。 
 
-アセットをアップロードしてエンコードする方法については、次の記事を参照してください。
-
-
-**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
-
-[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
-
-**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
-
-[AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
-
-
-###既存のアダプティブ ビットレート セットをアップロードし、Media Packager を使用してそれらを検証します。
-
-Media Services Encoder でエンコードされていないアダプティブ ビットレート MP4 ファイルのセットをアップロードする場合、通常はこのタスクを実行します。「[外部エンコーダーを使用してエンコードされたアダプティブ ビットレート MP4 を検証する](https://msdn.microsoft.com/library/azure/dn750842.aspx)」トピックでは、このタスクを実現する方法を示しています。
-
-##コンテンツをクライアントにストリーミングする
-
-アダプティブ ビットレート セットを作成したら、オンデマンド ロケーターを作成して、スムーズ ストリーミング、MPEG DASH、HLS、および HDS (Adobe Primetime/Access のライセンス所有者にのみ使用) のためのストリーミング URL を構成できます。
-
-ロケーターを作成し、動的パッケージを使用してコンテンツをストリームする方法については、次のトピックを参照してください。
-
-[顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)。
-
-**.NET** または **REST API** を使用してアセット配信ポリシーを構成します。
-
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
-
-**Microsoft Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
-
-[AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
+	>[AZURE.NOTE] このオプションは推奨されません。
+	
+2. [事前にエンコードされたファイルを検証します](media-services-static-packaging.md#validating-adaptive-bitrate-mp4s-encoded-with-external-encoders)。
+3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
 
 ##<a id="unsupported_formats"></a>動的パッケージでサポートされない形式
 
 動的パッケージでは、次のソース ファイルの形式はサポートされません。
 
-- Dolby Digital Plus の MP4 ファイル。
-- Dolby Digital Plus のスムーズ ファイル。
+- ドルビー デジタル mp4 ファイル。
+- ドルビー デジタル スムーズ ファイル。
 
 ##Media Services のラーニング パス
 
@@ -105,4 +80,4 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=AcomDC_0204_2016-->

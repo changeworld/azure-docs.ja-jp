@@ -32,13 +32,13 @@
 
 クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。HDInsight でのスケール アウトを向上させる方法が 2 つあります。
 
-- プロビジョニング時に、Azure プレビュー ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用して worker ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure プレビュー ポータル上に表示された worker ノード構成を示しています。
+- プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
 	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
 
 - 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
 
-HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](http://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ##Tez を有効にする
 
@@ -87,7 +87,7 @@ Windows ベースの HDInsight クラスターの場合は、プロビジョニ�
 	New-AzureHDInsightCluster -Name $clusterName -Location $location -Credential $hdiCredential
 
     
-> [AZURE.NOTE]Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
+> [AZURE.NOTE] Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
     
 
 ## Hive パーティション分割
@@ -214,11 +214,11 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 ##<a id="nextsteps"></a>次のステップ
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。詳細については、次の記事を参照してください。
 
-- [HDInsight での Apache Hive の使用](../hdinsight-using-hive.md)
+- [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
 - [HDInsight での Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data.md)
 - [HDInsight での Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)
 - [HDInsight での Hadoop で Hive クエリ コンソールを使用したセンサー データの分析](hdinsight-hive-analyze-sensor-data.md)
-- [Web サイトのログを分析するための HDInsight での Hive の使用](../hdinsight-hive-analyze-web-site-log.md)
+- [Web サイトのログを分析するための HDInsight での Hive の使用](hdinsight-hive-analyze-website-log.md)
 
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
@@ -226,4 +226,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

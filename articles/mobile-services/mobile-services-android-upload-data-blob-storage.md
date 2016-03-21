@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="01/21/2016"
 	ms.author="ricksal"/>
 
 # Android デバイスから Azure Storage へのイメージのアップロード
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
@@ -31,7 +35,7 @@ Mobile Services では、SQL Database を使用してデータを保存します
 
 このチュートリアルには、次のものも必要です。
 
-+ [Azure ストレージ アカウント](../storage-create-storage-account.md)
++ [Azure ストレージ アカウント](../storage/storage-create-storage-account.md)
 + カメラ付きの Android デバイス
 
 ## アプリの動作
@@ -45,12 +49,12 @@ Mobile Services では、SQL Database を使用してデータを保存します
 
 SAS とは
 
-Azure Storage サービスにデータをアップロードするために必要な資格情報をクライアント アプリ内に保存するのは安全ではありません。代わりに、これらの資格情報をモバイル サービスに保存し、それらを使用して、新しいイメージをアップロードするためのアクセス許可を付与する SAS (Shared Access Signature) を生成します。SAS は有効期間が 5 分間の資格情報で、Mobile Services によってクライアント アプリに安全に返されます。アプリケーションは、この一時的な資格情報を使用してイメージをアップロードします。詳細については、[Shared Access Signature の第 1 部である SAS モデル](storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
+Azure Storage サービスにデータをアップロードするために必要な資格情報をクライアント アプリ内に保存するのは安全ではありません。代わりに、これらの資格情報をモバイル サービスに保存し、それらを使用して、新しいイメージをアップロードするためのアクセス許可を付与する SAS (Shared Access Signature) を生成します。SAS は有効期間が 5 分間の資格情報で、Mobile Services によってクライアント アプリに安全に返されます。アプリケーションは、この一時的な資格情報を使用してイメージをアップロードします。詳細については、[Shared Access Signature の第 1 部である SAS モデル](../storage/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
 ## サンプル コード
 [ここ](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages)に、このアプリの完成したクライアント ソース コードがあります。このコードを実行するには、このチュートリアルの Mobile Services バックエンドの部分を完了する必要があります。
 
-## 管理ポータルで登録されている挿入スクリプトを更新する
+## Azure クラシック ポータルで登録されている挿入スクリプトを更新する
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../../includes/mobile-services-configure-blob-storage.md)]
 
@@ -369,7 +373,7 @@ Azure Storage サービスにデータをアップロードするために必要
 
 4. **[Upload]** を押します。通常どおり、ToDoItem が一覧に追加されていることを確認します。
 
-5. Microsoft Azure ポータルで、ストレージ アカウントに移動します。**[コンテナー]** タブを押し、一覧内のコンテナーの名前を押します。
+5. Azure クラシック ポータルで、ストレージ アカウントに移動します。**[コンテナー]** タブを押し、一覧内のコンテナーの名前を押します。
 
 6. アップロードされている BLOB ファイルの一覧が表示されます。いずれかのファイルを選択し、**[ダウンロード]** を押します。
 
@@ -416,10 +420,10 @@ Azure Storage サービスにデータをアップロードするために必要
 [Mobile Services のサーバー スクリプト リファレンス]: mobile-services-how-to-use-server-scripts.md
 [Mobile Services の使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

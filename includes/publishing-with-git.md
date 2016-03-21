@@ -1,14 +1,14 @@
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、BitBucket、CodePlex、Dropbox、Git、GitHub、Mercurial、TFS など、ソース コード管理やリポジトリ ツールから Web Apps への継続的なデプロイをサポートしています。これらのツールを使用すると、アプリケーションのコンテンツとコードをメンテナンスすることができ、必要なときに変更を Azure Web アプリにすばやく簡単にプッシュできます。
 
-この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket、CodePlex、Dropbox、GitHub、Mercurial などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的な展開に TFS を使用する方法の詳細については、「[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]」を参照してください。
+この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket、CodePlex、Dropbox、GitHub、Mercurial などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的なデプロイメントに TFS を使用する方法の詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信]」を参照してください。
 
-> [AZURE.NOTE]この記事に記載されている Git コマンドの多くは、[Mac および Linux 用 Azure コマンド ライン ツール](/develop/nodejs/how-to-guides/command-line-tools/)を使用して Web アプリを作成する際に自動的に実行されます。
+> [AZURE.NOTE] この記事に記載されている Git コマンドの多くは、[Mac および Linux 用 Azure コマンド ライン ツール](/develop/nodejs/how-to-guides/command-line-tools/)を使用して Web アプリを作成する際に自動的に実行されます。
 
 ## <a id="Step1"></a>手順 1: Git のインストール
 
 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
-> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
+> [AZURE.NOTE] オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
 ## <a id="Step2"></a>手順 2: ローカル リポジトリの作成
 
@@ -30,7 +30,7 @@ Git をインストールするために必要な手順は、オペレーティ�
 
 ## <a id="Step3"></a>手順 3: Web ページの追加
 
-Web アプリでは、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。この例では、静的 .html ファイルを使用します。
+Web Apps では、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。この例では、静的 .html ファイルを使用します。
 
 1. テキスト エディターを使用して、Git リポジトリ (先ほど作成した MyGitRepository ディレクトリ) のルートに **index.html** という名前の新しいファイルを作成します。
 
@@ -42,7 +42,7 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 
 		git add index.html 
 
-	> [AZURE.NOTE]git コマンドのヘルプを見つけるには、コマンドの後に「-help」または「--help」と入力します。たとえば、add コマンドのパラメーターのオプションを見つけるには、「git add -help」と入力します。より詳細なヘルプを見つけるには、「git add --help」と入力します。
+	> [AZURE.NOTE] git コマンドのヘルプを見つけるには、コマンドの後に「-help」または「--help」と入力します。たとえば、add コマンドのパラメーターのオプションを見つけるには、「git add -help」と入力します。より詳細なヘルプを見つけるには、「git add --help」と入力します。
 
 4. 次に、次のコマンドを使用して、リポジトリへの変更をコミットします。
 
@@ -58,9 +58,9 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 
 次に示している手順を実行して、Web アプリに対して Git リポジトリを有効にします。
 
-1. [Azure プレビュー ポータル]にログインします。
+1. [Azure ポータル]にログインします。
 
-2. Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的なデプロイの設定]** をクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
+2. Web アプリのブレードで、**[設定]、[継続的なデプロイ]** の順にクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
 
 	![ローカルの Git リポジトリ](./media/publishing-with-git/azure1-local-git.png)
 
@@ -76,7 +76,7 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 
 次に示している手順に従って、ローカル Git を使用して Web アプリを Azure に発行します。
 
-1. Web アプリのブレードの [デプロイ] セクションで、**[デプロイが見つかりませんでした]** をクリックします。
+1. Web アプリのブレードで、**[設定]、[プロパティ]** の順にクリックし、**[Git の URL]** を確認します。
 
 	![](./media/publishing-with-git/azure3-repo-details.png)
 
@@ -88,13 +88,13 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 
 		git remote add azure https://username@needsmoregit.scm.azurewebsites.net:443/NeedsMoreGit.git
 
-    > [AZURE.NOTE]この **remote** コマンドは、名前付きの参照をリモート リポジトリに追加します。この例では、Web アプリのリポジトリに「azure」という名前の参照を作成しています。
+    > [AZURE.NOTE] この **remote** コマンドは、名前付きの参照をリモート リポジトリに追加します。この例では、Web アプリのリポジトリに「azure」という名前の参照を作成しています。
 
 1. コマンド ラインで次のコマンドを使用して、ローカル リポジトリから "azure" リモートに現在のリポジトリのコンテンツをプッシュします。
 
 		git push azure master
 
-	ポータルで展開資格情報をリセットしたときに作成したパスワードの入力を求められます。パスワードを入力します (パスワードを入力しても Gitbash によってコンソールにアスタリスクはエコーされません)。次のような出力が表示されます。
+	ポータルでデプロイメント資格情報をリセットしたときに作成したパスワードの入力を求められます。パスワードを入力します (パスワードを入力しても Gitbash によってコンソールにアスタリスクはエコーされません)。次のような出力が表示されます。
 
 		Counting objects: 6, done.
 		Compressing objects: 100% (2/2), done.
@@ -108,7 +108,7 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 		To https://username@needsmoregit.scm.azurewebsites.net:443/NeedsMoreGit.git
 		* [new branch]		master -> master
 
-	> [AZURE.NOTE]Web アプリに対して作成したリポジトリでは、プッシュ要求のターゲットがそのリポジトリの <strong>master</strong> 分岐であると想定しています。そのため、この分岐が Web アプリのコンテンツとして使用されます。
+	> [AZURE.NOTE] Web アプリに対して作成したリポジトリでは、プッシュ要求のターゲットがそのリポジトリの <strong>master</strong> 分岐であると想定しています。そのため、この分岐が Web アプリのコンテンツとして使用されます。
 
 2. Azure ポータルの Web アプリのブレードに戻ります。**[デプロイが見つかりませんでした]** が **[アクティブなデプロイ]** に変わり、直近のプッシュのログ エントリが表示されます。
 
@@ -132,13 +132,13 @@ Web アプリでは、さまざまなプログラミング言語で作成され�
 
 ローカル Git を使用してローカル ファイルを Azure にプッシュすると、ローカル プロジェクトから Azure の Web アプリに更新を手動でプッシュできるようになります。一方、BitBucket、CodePlex、Dropbox、GitHub、または Mercurial からデプロイすると、プロジェクトから最新の更新が Azure によってプルされる継続的なデプロイ プロセスが有効になります。
 
-どちらの方法でも、プロジェクトが Web アプリにデプロイされます。ただし、複数の人がプロジェクトに携わっており、だれが最新の更新を行ったかに関係なく、常に最新バージョンが発行されるようにする場合は、継続的なデプロイが便利です。また、継続的な展開は、上記のいずれかのツールをアプリケーションの中央リポジトリとして使用する場合にも便利です。
+どちらの方法でも、プロジェクトが Web Apps にデプロイされます。ただし、複数の人がプロジェクトに携わっており、だれが最新の更新を行ったかに関係なく、常に最新バージョンが発行されるようにする場合は、継続的なデプロイが便利です。また、継続的なデプロイメントは、上記のいずれかのツールをアプリケーションの中央リポジトリとして使用する場合にも便利です。
 
 GitHub、CodePlex、BitBucket からファイルを展開するには、これらのサービスのいずれかにローカル プロジェクトを発行している必要があります。これらのサービスにプロジェクトを発行する方法の詳細については、「[Create a Repo (GitHub) (Repo の作成 (GitHub))]」、「[Using Git with CodePlex (CodePlex での Git の使用)]」、「[Create a Repo (BitBucket) (Repo の作成 (BitBucket))]」、「[Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]」、「[Quick Start - Mercurial (Mercurial のクイック スタート)]」を参照してください。
 
 1. まず、継続的なデプロイ用に選択したリポジトリに Web アプリのファイルを配置します。
 
-2. ポータルの Web アプリのブレードで、**[デプロイ]** セクションにスクロールし、**[継続的なデプロイの設定]** をクリックします。**[ソースの選択]** をクリックし、(たとえば) **[GitHub]** をクリックします。
+2. ポータルの Web アプリのブレードで、**[設定]、[継続的な配信]** の順にクリックします。**[ソースの選択]** をクリックし、(たとえば) **[GitHub]** をクリックします。
 
 	![](./media/publishing-with-git/azure6-setup-github.png)
 	
@@ -150,7 +150,7 @@ GitHub、CodePlex、BitBucket からファイルを展開するには、これ�
   
 	![](./media/publishing-with-git/azure7-setup-github-configure.png)
 
-	> [AZURE.NOTE]GitHub または Bitbucket を使用して継続的な展開を有効にする場合、パブリック プロジェクトとプライベート プロジェクトの両方が表示されます。
+	> [AZURE.NOTE] GitHub または Bitbucket を使用して継続的なデプロイメントを有効にする場合、パブリック プロジェクトとプライベート プロジェクトの両方が表示されます。
 
 Azure によって、選択したリポジトリとの関連付けが作成され、指定された分岐からファイルがプルされます。このプロセスが完了したら、Web アプリのブレードの **[デプロイ]** セクションに、デプロイが成功したことを示す** [アクティブなデプロイ]** メッセージが表示されます。
 
@@ -160,7 +160,7 @@ Azure によって、選択したリポジトリとの関連付けが作成さ�
 
 ### <a id="Step75"></a>BitBucket、CodePlex、Dropbox、GitHub、Mercurial からの Visual Studio ソリューションのデプロイ
 
-Visual Studio ソリューションを Azure App Service の Web アプリにプッシュすることは、単純な index.html ファイルをプッシュすることと同じくらい簡単です。Web Apps のデプロイ プロセスでは、NuGet 依存関係の復元やアプリケーション バイナリの構築などのすべての詳細が合理化されます。Git リポジトリでコードのみを維持し、Web Apps で残りを処理する、ソース管理のベスト プラクティスに従うことができます。
+Visual Studio ソリューションを Azure App Service の Web Apps にプッシュすることは、単純な index.html ファイルをプッシュすることと同じくらい簡単です。Web Apps のデプロイ プロセスでは、NuGet 依存関係の復元やアプリケーション バイナリの構築などのすべての詳細が合理化されます。Git リポジトリでコードのみを維持し、Web Apps デプロイメントで残りを処理する、ソース管理のベスト プラクティスに従うことができます。
 
 Visual Studio ソリューションを Web Apps にプッシュする手順は、ソリューションとリポジトリを次のように構成するのであれば、[前のセクション](#Step7)と同じです。
 
@@ -182,21 +182,19 @@ Visual Studio ソリューションを Web Apps にプッシュする手順は�
 		_app/
 		nuget.exe
 
-	>[AZURE.NOTE]GitHub を使用する場合、リポジトリの作成時に、必要に応じて Visual Studio 固有の .gitignore ファイルを生成できます。これには、すべての一般的な一時ファイル、ビルド結果などが含まれます。ファイルは、特定のニーズに合わせてカスタマイズできます。
+	>[AZURE.NOTE] GitHub を使用する場合、リポジトリの作成時に、必要に応じて Visual Studio 固有の .gitignore ファイルを生成できます。これには、すべての一般的な一時ファイル、ビルド結果などが含まれます。ファイルは、特定のニーズに合わせてカスタマイズできます。
 
 -	.sln ファイルをリポジトリ ルートに入れて、ソリューションのディレクトリ ツリー全体をリポジトリに追加します。
-
--	Visual Studio ソリューションで、[NuGet パッケージの復元を有効にして](http://docs.nuget.org/Consume/Package-Restore)、Visual Studio が自動的に失われたパッケージを復元できるよにします。
 
 説明のとおりにリポジトリを設定し、いずれかのオンライン Git リポジトリからの継続的な発行のために Azure の Web アプリを構成したら、Visual Studio で ASP.NET アプリケーションをローカルで開発し、オンライン Git リポジトリに変更をプッシュするだけで、コードを継続的にデプロイできます。
 
 ## 継続的なデプロイの無効化
 
-継続的なデプロイメントは、**[デプロイ]** ブレードから無効にできます。Web アプリのブレードの **[デプロイ]** セクションで、**[アクティブなデプロイ]** をクリックします。次に、**[切断]** をクリックします。
+継続的なデプロイメントは、**[デプロイ]** ブレードから無効にできます。Web アプリのブレードで、**[設定]、[継続的なデプロイ]** の順にクリックします。次に、**[切断]** をクリックします。
 
 ![git-DisconnectFromGitHub](./media/publishing-with-git/azure5-disconnect.png)
 
-別のソースからの発行を設定する場合は、確認メッセージで **[はい]** を選択した後、Web アプリのブレードに戻り、**[継続的なデプロイの設定]** をクリックできます。
+別のソースからの発行を設定する場合、確認メッセージで **[はい]** を選択した後、Web アプリのブレードに戻り、**[設定]、[継続的なデプロイ]** の順にクリックします。
 
 ## <a id="Step8"></a>トラブルシューティング
 
@@ -265,14 +263,13 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 * [Git に関するドキュメント]
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [Azure Developer Center]: http://azure.microsoft.com/develop/overview/
-[Azure プレビュー ポータル]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../articles/install-configure-powershell.md
@@ -296,6 +293,6 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Create a Repo (BitBucket) (Repo の作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Quick Start - Mercurial (Mercurial のクイック スタート)]: http://mercurial.selenic.com/wiki/QuickStart
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
-[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
+[Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 仮想マシンのエンドポイントのセットアップ"
-	description="Azure 上で仮想マシンとの通信を許可するように Azure ポータルでエンドポイントをセットアップする方法について説明します。"
+	pageTitle="クラシック仮想マシンでのエンドポイントのセットアップ | Microsoft Azure"
+	description="Azure 上で仮想マシンとの通信を許可するように Azure クラシック ポータルでエンドポイントをセットアップする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -11,46 +11,39 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/28/2015"
+	ms.date="01/06/2016"
 	ms.author="cynthn"/>
 
-#仮想マシンに対してエンドポイントを設定する方法
+# クラシック Azure 仮想マシンでエンドポイントをセットアップする方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-同じクラウド サービスまたは仮想ネットワーク内であれば、Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを使用して他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。
 
-Azure ポータルで仮想マシンを作成すると、リモート デスクトップ、Windows PowerShell リモート処理、Secure Shell (SSH) 用の各エンドポイントが自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
+クラシック デプロイメント モデルを使用して Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。
 
-[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
+Azure クラシック ポータルで仮想マシンを作成すると、選択したオペレーティング システムに応じて、一般的なエンドポイント (リモート デスクトップ、Windows PowerShell リモート処理、Secure Shell (SSH) 用のエンドポイントなど) が通常は自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
 
-- [ネットワーク セキュリティ グループについて](virtual-networks-nsg.md)
-
-ネットワーク セキュリティ グループは仮想マシンへのアクセスを制御しますが、ポート転送機能はないことに注意してください。ポート転送については、次の記事を参照してください。
-
-- [Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始](../load-balancer/load-balancer-arm-powershell.md)
-
-各エンドポイントには、パブリック ポートとプライベート ポートがあります。
+各エンドポイントには、*パブリック ポート*と*プライベート ポート*があります。
 
 - パブリック ポートは、インターネットから仮想マシンに発信される着信トラフィックをリッスンするときに、Azure Load Balancer によって使用されます。
 - プライベート ポートは、一般的に仮想マシンで実行されているアプリケーションまたはサービスを宛先とする着信トラフィックをリッスンする仮想マシンによって使用されます。
 
-周知のネットワーク プロトコルの IP プロトコルと TCP ポートまたは UDP ポートの既定値は、Azure ポータルでエンドポイントを作成するときに提示されます。カスタム エンドポイントの場合、正しい IP プロトコル (TCP または UDP) と、パブリック ポートとプライベート ポートを指定することが必要になります。着信トラフィックを複数の仮想マシンにランダムに分散するには、複数のエンドポイントで構成される負荷分散セットを作成する必要があります。
+周知のネットワーク プロトコルの IP プロトコルと TCP ポートまたは UDP ポートの既定値は、Azure クラシック ポータルでエンドポイントを作成するときに提示されます。カスタム エンドポイントの場合、正しい IP プロトコル (TCP または UDP) と、パブリック ポートとプライベート ポートを指定することが必要になります。着信トラフィックを複数の仮想マシンにランダムに分散するには、複数のエンドポイントで構成される負荷分散セットを作成する必要があります。
 
 エンドポイントを作成した後、アクセス制御リスト (ACL) を使用して、発信元 IP アドレスに基づいて、エンドポイントのパブリック ポートを宛先とする着信トラフィックの許可または拒否に役立つルールを定義できます。ただし、仮想マシンが Azure Virtual Network 内にある場合、ネットワーク セキュリティ グループを代わりに使用する必要があります。詳細については、「[ネットワーク セキュリティ グループについて](virtual-networks-nsg.md)」を参照してください。
 
 > [AZURE.NOTE]Azure 仮想マシンのファイアウォールの構成は、リモート デスクトップと Secure Shell (SSH) に関連付けられているポートで自動的に行われます。Windows PowerShell リモート処理についても、ほとんどの場合は自動的に行われます。他のすべてのエンドポイントに対して指定されているポートについては、仮想マシンのファイアウォールは自動的には構成されません。仮想マシンにエンドポイントを作成するとき、仮想マシンのファイアウォールで、エンドポイントの構成に対応するプロトコルとプライベート ポートでトラフィックが許可されていることを確認する必要があります。
 
-##エンドポイントの作成
+## エンドポイントの作成
 
-1.	まだサインインしていない場合は、Azure ポータルにサインインします。
+1.	まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 2.	**[Virtual Machines]** をクリックし、構成する仮想マシンの名前をクリックします。
 3.	**[エンドポイント]** をクリックします。**[エンドポイント]** ページには、仮想マシンの現在のすべてのエンドポイントが表示されます。
 
-	![Endpoints](./media/virtual-machines-set-up-endpoints/endpointswindows.png)
+	![エンドポイント](./media/virtual-machines-set-up-endpoints/endpointswindows.png)
 
 4.	タスク バーで **[追加]** をクリックします。
 5.	**[仮想マシンにエンドポイントを追加します]** ページで、エンドポイントの種類を選択します。
@@ -68,25 +61,25 @@ Azure ポータルで仮想マシンを作成すると、リモート デスク�
 
 ![エンドポイントの作成に成功](./media/virtual-machines-set-up-endpoints/endpointwindowsnew.png)
 
-Azure PowerShell コマンドレットを使用してこれを設定するには、[Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx) を参照してください。
+Azure PowerShell コマンドレットを使用してこれを設定するには、[Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx) を参照してください。サービス管理モードで Azure CLI を使用している場合は、**azure vm endpoint create** コマンドを使用します。
 
-##エンドポイントの ACL の管理
+## エンドポイントの ACL の管理
 
 トラフィックを送信できるコンピューターを定義するために、エンドポイント上の ACL によって、発信元 IP アドレスに基づいてトラフィックを制限できます。エンドポイントの ACL を追加、変更、削除するには、次のステップに従います。
 
-> [AZURE.NOTE]エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
+> [AZURE.NOTE] エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
 
 仮想マシンが Azure 仮想ネットワーク内にある場合は、ACL の代わりにネットワーク セキュリティ グループを使用することをお勧めします。詳細については、「[ネットワーク セキュリティ グループについて](virtual-networks-nsg.md)」を参照してください。
 
-1.	まだサインインしていない場合は、Azure ポータルにサインインします。
+1.	まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 2.	**[Virtual Machines]** をクリックし、構成する仮想マシンの名前をクリックします。
 3.	**[エンドポイント]** をクリックします。一覧から適切なエンドポイントを選択します。
 
-    ![ACL list](./media/virtual-machines-set-up-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
+    ![ACL リスト](./media/virtual-machines-set-up-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
 
 5.	タスク バーの **[ACL の管理]** をクリックし、**[HTTPS エンドポイントの ACL の詳細の指定]** ダイアログ ボックスを開きます。
 
-    ![Specify ACL details](./media/virtual-machines-set-up-endpoints/EndpointACLdetails.png)
+    ![ACL の詳細に指定](./media/virtual-machines-set-up-endpoints/EndpointACLdetails.png)
 
 6.	一覧内の行を使用して、ACL のルールの追加、削除、編集を行い、順序を変更します。**[リモート サブネット]** の値は、インターネットからのトラフィックを着信する IP アドレスの範囲です。Azure ロード バランサーでは、この値を使用して、発信元 IP アドレスに基づいてトラフィックを許可または拒否します。IP アドレスの範囲は、CIDR 形式 (アドレス プレフィックス形式とも呼ばれる) で指定してください。たとえば、「131.107.0.0/16」と入力します。
 
@@ -94,10 +87,11 @@ Azure PowerShell コマンドレットを使用してこれを設定するには
 
 ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に整列されている必要があります。例と詳細については、[ネットワーク アクセス制御リストの概要](../virtual-network/virtual-networks-acl/)に関するページを参照してください。
 
-Azure PowerShell コマンドレットを使用してこれを設定するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)」を参照してください。
+Azure PowerShell コマンドレットを使用してこれを設定するには、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)に関するページを参照してください。
+
 
 ## その他のリソース
 
-[Azure インフラストラクチャ サービスの負荷分散](virtual-machines-load-balance.md)
+[リソース マネージャーで PowerShell を使用して、インターネットに接続するロード バランサーを作成を開始する](load-balancer-get-started-internet-arm-ps.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

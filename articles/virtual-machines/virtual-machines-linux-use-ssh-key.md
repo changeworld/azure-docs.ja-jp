@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.date="12/15/2015" 
 	ms.author="rasquill"/>
 
 #Azure 上の Linux または Mac における SSH の使用方法
@@ -23,7 +23,7 @@
 - [Windows](../articles/virtual-machines/virtual-machines-windows-use-ssh-key.md)
 - [Linux/Mac](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)
 
-このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[プレビュー ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでもリソース マネージャー デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
+このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[Azure ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでもリソース マネージャー デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
 
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]Windows コンピューターが Azure で Linux VM と安全に通信するためにこのような種類のファイルを作成する方法については、「[Windows で SSH 鍵を使用する](virtual-machines-windows-use-ssh-key.md)」を参照してください。
 
@@ -33,7 +33,7 @@ Azure の基本的 ssh 設定には **ssh-rsa** の 2048 ビットの公開/秘�
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[プレビュー モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
+1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[Azure モデル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
 2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。 
 
 ## SSH で使用する鍵の作成
@@ -72,7 +72,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 	別の秘密鍵ファイルから .pem ファイルを作成する場合、`-key` 引数を変更します。
 
-> [AZURE.NOTE]従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
+> [AZURE.NOTE] 従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
 
 .pem ファイルを DER 形式でエンコードされた X509 証明書ファイルに変換するには。
 
@@ -86,7 +86,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 ### 例: id\_rsa.pub ファイルで VM を作成する
 
-最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(他の引数は前に作成されました。)
+最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa.pub` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(他の引数は前に作成されました。)
 
 	azure vm create \
 	--nic-name testnic \
@@ -96,7 +96,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	--storage-account-name computeteststore 
 	--image-urn canonical:UbuntuServer:14.04.3-LTS:latest \
 	--username ops \
-	-ssh-publickey-file ~/.ssh/id_rsa \
+	-ssh-publickey-file ~/.ssh/id_rsa.pub \
 	testrg testvm westeurope linux
 
 次の例では、リソース マネージャー テンプレートと Azure CLI と共に **ssh-rsa** 形式を利用し、文字列として `~/.ssh/id_rsa.pub` のユーザー名とコンテンツで保護される Ubuntu VM が作成されます。(この場合、公開鍵の文字列が読みやすいように短くされます。)
@@ -161,7 +161,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 ## VM に接続する
 
-**ssh** コマンドは、ログオンするためのユーザー名、コンピューターのネットワーク アドレス、アドレスに接続するポート、その他さまざまな特殊バリエーションを受け取ります。(**ssh** の詳細については、最初に[ここ](https://en.wikipedia.org/wiki/Secure_Shell)をご覧ください。)
+**ssh** コマンドは、ログオンするためのユーザー名、コンピューターのネットワーク アドレス、アドレスに接続するポート、その他さまざまな特殊バリエーションを受け取ります。(**ssh** の詳細については、こちらの [Secure Shell に関する記事](https://en.wikipedia.org/wiki/Secure_Shell)などを参考にしてください)。
 
 サブドメインとデプロイメント場所を指定しているだけの場合、リソース マネージャー デプロイメントの一般的な使用方法は次のようになります。
 
@@ -256,15 +256,13 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 
 ### 例: .pem 鍵と従来のデプロイメントを使用した SSH セッションの出力
 
-`~/.ssh/id_rsa` ファイルから作成した .pem ファイルを利用して VM を作成した場合、その VM に直接 ssh 接続できます。その場合、`~/.ssh/id_rsa` で証明書ハンドシェイクに秘密鍵が使用されることに注意してください。これは次の例のようになります。
+`~/.ssh/id_rsa` ファイルから作成した .pem ファイルを利用して VM を作成した場合、その VM に直接 ssh 接続できます。その場合、`~/.ssh/id_rsa` で証明書ハンドシェイクに秘密鍵が使用されることに注意してください(VM 作成プロセスでは、.pem から公開鍵が計算されて、その ssh-rsa 形式が `~/.ssh/authorized_users` に格納されます)。 接続は次の例のようになります。
 
 	ssh ops@testpemasm.cloudapp.net -p 22
 	The authenticity of host 'testpemasm.cloudapp.net (40.83.178.221)' can't be established.
 	RSA key fingerprint is dc:bb:e4:cc:59:db:b9:49:dc:71:a3:c8:37:36:fd:62.
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.cloudapp.net,40.83.178.221' (RSA) to the list of known hosts.
-	Saving password to keychain failed
-	Identity added: /Users/rasquill/.ssh/id_rsa (/Users/rasquill/.ssh/id_rsa)
 	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
 
 	* Documentation:  https://help.ubuntu.com/
@@ -298,4 +296,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="11/30/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加 
@@ -68,7 +68,7 @@
 
 	これで、ページからモバイル サービスにログインできるようになります。
 
-2. app.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
+2. page.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
 	
 		function refreshAuthDisplay() {
 			var isLoggedIn = client.currentUser !== null;
@@ -101,7 +101,7 @@
 			$("#logged-in button").click(logOut);
 		});
 
-    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、*microsoftaccount*、*facebook*、*twitter*、*google*、*aad* のいずれかに変更します。
+    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、 *microsoftaccount* 、 *facebook* 、 *twitter* 、 *google* 、 *aad* のいずれかに変更します。
 
 	>[AZURE.IMPORTANT]PhoneGap アプリでは、次のプラグインもプロジェクトに追加する必要があります。<ul><li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li> <li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
 
@@ -132,9 +132,7 @@
 <!-- URLs. -->
 [モバイル サービスの使用]: mobile-services-html-get-started.md
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
-
-[Azure Management Portal]: https://manage.windowsazure.com/
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_1210_2015-->

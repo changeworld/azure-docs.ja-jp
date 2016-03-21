@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.topic="get-started-article"
+	ms.date="02/17/2016"
 	ms.author="billmath"/>
 
 
@@ -21,7 +21,7 @@
 
 
 
-# Azure AD Connect Health エージェントのインストール 
+# Azure AD Connect Health エージェントのインストール
 
 このドキュメントでは、AD FS と同期用に Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。
 
@@ -115,7 +115,7 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 
 ![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
-> [AZURE.WARNING]グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
+> [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
 [//]: # "エージェントのプロキシ構成セクションの開始"
 
@@ -126,10 +126,10 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 
 - Azure AD Connect Health AadSync Insights Service
 - Azure AD Connect Health AadSync Monitoring Service
- 
+
 ![Azure AD Connect Health for Sync の確認](./media/active-directory-aadconnect-health-sync/services.png)
 
->[Azure.NOTE]Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health.md#requirements)で要件を参照してください。
+>[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health.md#requirements)で要件を参照してください。
 
 
 
@@ -137,12 +137,15 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 ## HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成できます。
 
->[AZURE.NOTE]- エージェントは、Microsoft Windows HTTP サービスではなく、System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は機能しません。- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。 - 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
+>[AZURE.NOTE]
+- エージェントが Microsoft Windows HTTP サービスではなく System.Net を使用して Web 要求を行うので、"Netsh WinHttp set ProxyServerAddress" は使用できません。
+- 構成済みの Http プロキシ アドレスを使用して、暗号化された Https メッセージがパススルーされます。
+- 認証されたプロキシ (HTTPBasic を使用) はサポートされていません。
 
 ### Health エージェントのプロキシ構成の変更
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成する場合、以下のオプションがあります。
 
->[AZURE.NOTE]プロキシ設定を更新するには、すべての Azure AD Connect Health エージェント サービスを再起動する必要があります。次のコマンドを実行します。<br> Restart-Service AdHealth*
+>[AZURE.NOTE] プロキシ設定を更新するには、すべての Azure AD Connect Health エージェント サービスを再起動する必要があります。次のコマンドを実行します。<br> Restart-Service AdHealth*
 
 #### 既存のプロキシ設定のインポート
 
@@ -178,7 +181,23 @@ WinHTTP プロキシ設定をインポートするには、Health エージェ�
 	Get-AzureAdConnectHealthProxySettings
 
 
-[//]: # "エージェントのプロキシ構成セクションの終了"
+## Azure AD Connect Health サービスへの接続テスト
+Azure AD Connect Health エージェントが Azure AD Connect Health サービスとの接続を失うことになるような問題が発生することがあります。ネットワークの問題、アクセス許可の問題や、その他のさまざまな理由があります。
+
+エージェントが Azure AD Connect Health サービスに 2 時間以上データを送信できない場合は、"ヘルス サービス データが最新ではありません" というアラートが表示されます。 その場合は、エージェントの問題が発生しているコンピューターで以下の PowerShell コマンドを実行して、Azure AD Connect Health エージェントが Azure AD Connect Health サービスにデータをアップロードできるかどうかをテストできるようになりました。
+
+    Test-AzureADConnectHealthConnectivity -Role Adfs
+
+role パラメーターは、現在、以下の値を受け取ります。
+	
+- Adfs
+- 同期
+
+コマンドで - ShowResults フラグを使用すると、詳細ログが表示されます。次の例を使用してください。
+
+    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResult
+
+>[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
 
 
 ## 関連リンク
@@ -188,5 +207,6 @@ WinHTTP プロキシ設定をインポートするには、Health エージェ�
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
+* [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

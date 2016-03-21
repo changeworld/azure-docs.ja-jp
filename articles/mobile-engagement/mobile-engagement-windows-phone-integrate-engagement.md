@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 #Windows Phone Silverlight Engagement SDK 統合
 
 > [AZURE.SELECTOR] 
-- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
+- [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md) 
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
 - [iOS](mobile-engagement-ios-integrate-engagement.md) 
 - [Android](mobile-engagement-android-integrate-engagement.md) 
@@ -35,7 +35,7 @@ Mobile Engagement SDK for Windows Silverlight は次を対象としたアプリ�
 -   Windows Phone 8.0
 -   Windows Phone 8.1 Silverlight
 
-> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、「[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)」を参照してください。
+> [AZURE.NOTE] Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、「[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)」を参照してください。
 
 ##Mobile Engagement Silverlight SDK をインストールする
 
@@ -60,7 +60,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `<connectionString>` タグと `<\connectionString>` タグの間のアプリケーション接続文字列。
 
-代わりに指定を実行時に行う場合は、Engagement エージェントを初期化する前に、次のメソッドを呼び出すことができます。
+代わりに指定を実行時に行う場合は、 Engagement エージェントを初期化する前に、次のメソッドを呼び出すことができます。
 
 	/* Engagement configuration. */
 	EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -69,7 +69,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 	/* Initialize Engagement agent with above configuration. */
 	EngagementAgent.Instance.Init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure 管理ポータルに表示されます。
+アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
 
 ### Engagement の初期化
 
@@ -95,7 +95,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		   EngagementAgent.Instance.OnActivated(e);
 		}
 
-> [AZURE.WARNING]Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。ただし、`EngagementAgent.Instance.Init` メソッドは UI スレッドではなく専用スレッドで実行する点にご注意ください。
+> [AZURE.WARNING] Engagement の初期化は、アプリケーションの別の場所には追加しないことを強くお勧めします。ただし、`EngagementAgent.Instance.Init` メソッドは UI スレッドではなく専用スレッドで実行する点にご注意ください。
 
 ##基本的なレポート
 
@@ -137,7 +137,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		  }
 		}
 
-> [AZURE.WARNING]ページが `OnNavigatedTo` メソッドから継承する場合は、`base.OnNavigatedTo(e)` の呼び出しに注意します。呼び出しが行われないと、アクティビティがレポートされません。実際には、`EngagementPage` は `OnNavigatedTo` メソッド内の `StartActivity` を呼び出します。
+> [AZURE.WARNING] ページが `OnNavigatedTo` メソッドから継承する場合は、`base.OnNavigatedTo(e)` の呼び出しに注意します。呼び出しが行われないと、アクティビティがレポートされません。実際には、`EngagementPage` は `OnNavigatedTo` メソッド内の `StartActivity` を呼び出します。
 
 #### XAML ファイル
 
@@ -199,7 +199,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		   EngagementAgent.Instance.StartActivity("MyPage");
 		}
 
-> [AZURE.IMPORTANT]セッションは正常に終了してください。
+> [AZURE.IMPORTANT] セッションは正常に終了してください。
 >
 > この SDK は、アプリケーションが閉じられると、`EndActivity` メソッドを自動的に呼び出します。そのため、ユーザーのアクティビティが変化するごとに `StartActivity` メソッドを呼び出し、`EndActivity` メソッドは**決して**呼び出さないことを**強く**お勧めします。このメソッドは、現在のユーザーがアプリケーションを終了したと Engagement サーバーに通知するため、すべてのアプリケーション ログが影響を受けるからです。
 
@@ -215,7 +215,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 Engagement の自動クラッシュ レポート機能を無効にできます。その場合、未処理の例外が発生しても、Engagement は何も行いません。
 
-> [AZURE.WARNING]この機能を無効にする場合は、アプリで未処理のクラッシュが発生した場合に Engagement からクラッシュを送信せず、**さらに**セッションとジョブも閉じられませんのでご注意ください。
+> [AZURE.WARNING] この機能を無効にする場合は、アプリで未処理のクラッシュが発生した場合に Engagement からクラッシュを送信せず、**さらに**セッションとジョブも閉じられませんのでご注意ください。
 
 自動クラッシュ レポートを無効にするには、宣言されている方法に基づいて構成をカスタマイズします:
 
@@ -244,7 +244,7 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 
 バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。保存できるログは 300 項目に制限されていることに気を付けてください。送信時間が長すぎる場合は、ログがいくつか失われる可能性があります。
 
-> [AZURE.WARNING]バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
+> [AZURE.WARNING] バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

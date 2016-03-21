@@ -12,8 +12,8 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="10/21/2015"
+	ms.topic="hero-article"
+	ms.date="03/01/2016"
 	ms.author="stepsic"/>
 
 # SaaS サービスを接続する新しいロジック アプリを作成します。
@@ -21,153 +21,33 @@
 | クイック リファレンス |
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-logic-connectors-list/) |
+| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
 | [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
 
-このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
+このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートをメールボックスに保存できるようにするまでの流れを見ていきます。
 
-このシナリオでは、以下のものが必要になります。
+このシナリオを使用するには、以下が必要です。
 
 - Azure サブスクリプション
 - Twitter アカウント
-- Dropbox アカウント
+- Office 365 アカウント
 
-<!--- TODO: Add try it now information here -->
+## ツイートを電子メールで送信する新しいロジック アプリを作成する
 
-## コネクタを取得する
+1. Azure ポータルのダッシュボードで **[Marketplace]** を選択します。 
+2. [すべて] で「logic apps」を検索し、**[Logic App (プレビュー)]** を選択します。**[新規]**、**[Web + モバイル]** を順に選択して、**[Logic App (プレビュー)]** を選択してもかまいません。 
+3. ロジック アプリの名前を入力し、App Service プランを選択して、**[作成]** を選択します。この手順は、読者が既に App Service プランを利用していること、また必要なプロパティについて理解していることを前提としています。それ以外の場合はまず、「[Azure App Service プランの詳細な概要](azure-web-sites-web-hosting-plans-in-depth-overview.md)」をご覧ください。 
 
-まずは、使用するコネクタとして [Dropbox Connector](app-service-logic-connector-dropbox.md) と [Twitter Connector](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。Twitter API でリダイレクトが行われるため、無料のアプリを Twitter に登録する必要もあります。コネクタを作成する手順は、以下のとおりです。
+4. ロジック アプリを最初に開いたときに、トリガーが必要となります。トリガー検索ボックスで「**twitter**」を検索して選択します。
 
-1. Azure ポータルにサインインします。
+7. Twitter で検索するキーワードを入力します。![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
-2. ホーム画面の [[Marketplace]](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps) をクリックし、Twitter を検索します (または、[ここをクリックします](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2))。
+5. プラス記号を選択して **[アクションの追加]** または **[条件の追加]** を選択します。 ![Plus](./media/app-service-logic-create-a-logic-app/plus.png)
+6. **[アクションの追加]** を選択すると、利用可能なアクションを含んだすべてのコネクタが一覧表示されます。ここからロジック アプリに追加するコネクタとアクションを選択できます。たとえば、**[Office 365 - 電子メールの送信]** など、さまざまな Office 365 アクションを選択できます。 ![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
 
-3. **[Twitter Connector]** を選択し、**[作成]** をクリックします。すべての設定が表示されます。名前は **Twitter Connector** のままでかまいません。
-4. **[パッケージの設定]** を選択します。ここに、Twitter アプリケーションからの情報を入力する必要があります。次の手順で、無料のアプリケーションを設定できます。
-	1. [[Twitter アプリの登録ページ]](http://apps.twitter.com) に移動します。
-	2. 新しいアプリを作成します。
-	3. 名前と説明を入力します。Web サイトの URL とコールバック URL として、任意の URL を入力できます (空白にはしないでください)。
-	4. 登録が完了したら、Twitter の **Consumer Key** を Azure の **clientId** フィールドにコピーし、Twitter の **Consumer Secret** を **clientSecret** にコピーします。
-	5. Azure ウィンドウで **[OK]** をクリックして、他の API 設定に戻ります。
+7. 今度は、電子メールに使用するパラメーターを入力する必要があります。 ![パラメーター](./media/app-service-logic-create-a-logic-app/parameters.png)
 
-5. **[App Service プランの新規作成]** に、プランの名前を入力します。
-
-	>[AZURE.NOTE]このセクションに示した手順では、新しい App Service のプランを作成することを前提に話を進めています。既存の App Service プランを使用する場合は、**[既存の選択]** をクリックして既存のプランを選択した後、このセクションの最後の手順に進んでください。すべてのアプリをホストするプランが必要です。
-
-6.  新しいプランの**価格レベル**を選択します。
-
-	>[AZURE.NOTE]既定では、Logic Apps 向けにお勧めとされるプランのみが表示されます。利用可能なプランをすべて表示する場合には、**[すべて表示]** をクリックしてください。ロジック アプリを Free レベルで実行する場合には、実行間隔は 1 時間ごと、使用できるアクションは 1 か月につき 1,000 回までとなります。
-
-7. フローの**リソース グループ**を作成します。
-
-	リソース グループは、アプリのコンテナーとしての役割を果たすものです。同じアプリのリソースはすべて、同じリソース グループに入ります。
-
-8. Azure サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
-
-9. ロジック アプリの**場所**を選択します。
-
-	![[API アプリの作成] ビュー](./media/app-service-logic-create-a-logic-app/gallery.png)
-
-10. **[作成]** をクリックします。1 ～ 2 分でプロビジョニングが始まります。
-
-11. [Dropbox](https://portal.azure.com/#create/microsoft_com.DropboxConnector.0.2.2) についても、同じ手順を繰り返します。
-
-## ロジック アプリを起動する
-
-次は、新しいロジック アプリを作成します。
-
-1. 画面左下の **[+ 新規]** をクリックします。**[Web + Mobile]** を展開し、**[ロジック アプリ]** をクリックします。
-
- 	[ロジック アプリの作成] ビューが表示されるので、開始するための基本設定を入力していきます。
-
-	![[ロジック アプリの作成] ビュー](./media/app-service-logic-create-a-logic-app/createlogicapp.png)
-
-2. **[名前]** には、ロジック アプリの名前として意味のある文字列を入力します。
-
-3. **App Service** プランには、コネクタの作成時に使用したものを選択します。これにより、場所、サブスクリプション、リソース グループが自動的に選択されます。
-
-基本となる設定は以上ですが、**[作成]** はまだクリックしないでください。次に、ワークフローにトリガーとアクションを追加します。
-
-## トリガーを追加する
-
-トリガーとは、ロジック アプリの実行の引き金となるものです。ここでは、繰り返しトリガーを追加します。このトリガーは、事前に設定したスケジュールでワークフローを開始するためのものです。
-
-1. **[ロジック アプリの作成]** ビューで、**[トリガーとアクション]** をクリックします。
-
-	フローを表示するデザイナーが全画面表示されるほか、作業のひな形となるテンプレートが表示されます。
-	
-2. このチュートリアルでは、**ゼロから作成**します。利用できそうなテンプレートがあれば、適宜使用してください。
-    
-    右側には、トリガーを設定できるサービスが一覧表示されています。
-
-3. 上部のセクションで、**[繰り返し]** をクリックします。
-
-	繰り返しの設定を指定するためのボックスが表示されます。
-
-	![定期的なアイテム](./media/app-service-logic-create-a-logic-app/recurrence.png)
-
-4.  (1 時間ごとなど) 繰り返しの **[頻度]** と **[間隔]** を選択し、緑色のチェック マークをクリックします。
-
-次に、フローにアクションを追加します。
-
-## Twitter アクションを追加する
-
-アクションとは、ワークフローの動作を指します。アクションの数には上限はありません。また、アクションを調整して、あるアクションの情報がその次のアクションに送られるようにすることもできます。
-
-1. 右側のウィンドウで、**[Twitter Connector]** をクリックします。
-
-2. 読み込みが終わったら **[承認]** をクリックし、Twitter アカウントにサインインして **[アプリを認証]** をクリックします。
-
-	これにより、コネクタが Twitter アカウントにアクセスできるようになります。Twitter コネクタに用意されている処理のリストが表示されます。
-
-	![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
-
-	> [AZURE.NOTE]**[承認]** ボタンは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、[OAUTH のセキュリティ](app-service-logic-oauth-security.md)に関するページを参照してください。
-
-3. **[ツイートの検索]** をクリックし、**[クエリの指定]** に「`#MicrosoftAzure`」などの文字を入力して、緑色のチェック マークをクリックします。
-
-	![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
-
-これで、Twitter コネクタがワークフローの一部となりました。
-
-## Dropbox アクションを追加してアプリを作成する
-
-最後に、ツイートを Dropbox のファイルにアップロードするアクションを追加します。
-
-1. 右側のウィンドウで、**[Dropbox Connector]** をクリックします。
-
-2. プロビジョニングが完了したら **[承認]** をクリックし、Dropbox アカウントにサインインして **[許可]** をクリックします。
-
-	![Dropbox コネクタの承認](./media/app-service-logic-create-a-logic-app/authorize.png)
-
-	これで、コネクタが Dropbox アカウントにアクセスできるようになります。Dropbox コネクタに用意されている処理のリストが表示されます。
-
-4. **[ファイルのアップロード]** をクリックします。
-
-	Dropbox コネクタの設定が表示されるので、ここで Twitter の検索結果のデータを Dropbox に送るように設定していきます。
-
-	![Dropbox](./media/app-service-logic-create-a-logic-app/dropbox.png)
-
-3. **[ファイルパス]** フィールドには、「`/tweet.txt`」と入力します。
-
-4. **[コンテンツ]** フィールドは、`...` ボタン、**[ツイートのテキスト]** オプションの順にクリックします。
-
-	これによって、値 `@first(body('twitterconnector')).TweetText` がテキスト ボックスに入力されます。この値の各部の意味は、以下のとおりです。
-
-	部分 | 説明
-	------------------------------------------ | ------------
-	 `@` | 実際の値ではなく、関数を入力しようとしていることを示します。
-	`actions('twitterconnector').outputs.body` | Twitter コネクタのクエリの結果として返されたツイートを取得します。
-	`first()` | ツイートの検索アクションによって返されるのはリストであるものの、アップロードするのは 1 つのファイルのみとなります。
-	`.TweetText` | ツイート メッセージのプロパティを選択します。
-
-5. 緑色のチェック マークをクリックして、コネクタの設定を保存します。
-
-5. これで、設計が完了しました。デザイナーの左上の **[コード ビュー]** をクリックしてみましょう。デザイナーで作成したワークフローを定義する JSON コードが確認できます。このコードについては、[次のトピック][Use logic app features]で詳しく説明します。
-
-6. 画面下の **[OK]** ボタンをクリックし、**[作成]** ボタンをクリックします。
-
-	新しいロジック アプリが作成されます。
+8. 最後に **[保存]** を選択すると、ロジック アプリがライブ状態となります。
 
 ## 作成後にロジック アプリを管理する
 
@@ -185,7 +65,6 @@
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
-[Use logic app features]: app-service-logic-use-logic-app-features.md
-[ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
+[ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

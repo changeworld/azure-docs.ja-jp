@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="02/29/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK を使用して Azure テーブル ストレージを使用する方法
@@ -22,7 +22,7 @@
 
 このガイドでは、[WebJobs SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用して Azure Storage テーブルを読み書きする方法を示す C# コード サンプルについて説明します。
 
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
+このガイドは、Visual Studio で[ストレージ アカウント](websites-dotnet-webjobs-sdk-get-started.md)または[複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法を理解していることを前提としています。
 		
 一部のコード スニペットは、[手動で呼び出される](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)関数で使用される `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 
@@ -141,7 +141,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 		    tableBinding.Execute(insertOperation);
 		}
 
-`CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](../storage-dotnet-how-to-use-tables.md)」をご覧ください。
+`CloudTable` オブジェクトの使用方法の詳細については、「[.NET からテーブル ストレージを使用する方法](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
 ## <a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
 
@@ -163,4 +163,4 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

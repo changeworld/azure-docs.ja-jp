@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/18/2015"
+	ms.date="02/08/2016"
 	ms.author="msolhab;bradsev" />
 
 
@@ -28,7 +28,7 @@
 
 以下の各セクションに、サンプル シナリオを示します。シナリオごとに、考えられるデータ サイエンスまたは高度な分析のフローと、サポートする Azure リソースの説明があります。
 
->[AZURE.NOTE]**以下のすべてのシナリオでは、以下の操作を行う必要があります。**
+>[AZURE.NOTE] **以下のすべてのシナリオでは、以下の操作を行う必要があります。**
 
 *   [ストレージ アカウントの作成](storage-whatis-account.md)
 *   [Azure ML ワークスペースを作成する](machine-learning/machine-learning-create-workspace.md)
@@ -168,7 +168,7 @@
 
     f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
- >[AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+ > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -208,7 +208,7 @@
 
 	f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
-> [AZURE.NOTE]大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+> [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -264,7 +264,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
     d.Hive クエリを実行してデータベースとテーブルを作成し、BLOB ストレージから Hive テーブルにデータを読み込みます。
 
- 	> [AZURE.NOTE]データが大きい場合、ユーザーはパーティションを使用して Hive テーブルを作成できます。次に、ヘッド ノードの Hadoop コマンド ラインで `for` ループを使用し、パーティション分割された Hive テーブルにデータを読み込むことができます。
+ 	> [AZURE.NOTE] データが大きい場合、ユーザーはパーティションを使用して Hive テーブルを作成できます。次に、ヘッド ノードの Hadoop コマンド ラインで `for` ループを使用し、パーティション分割された Hive テーブルにデータを読み込むことができます。
 
 6.  Hadoop コマンド ラインでデータを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -314,4 +314,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

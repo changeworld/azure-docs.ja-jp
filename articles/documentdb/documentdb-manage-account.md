@@ -1,56 +1,64 @@
-<properties 
-	pageTitle="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する | Microsoft Azure" 
-	description="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する方法Azure プレビュー ポータルを使用してアカウントを表示、コピー、削除、およびアカウントにアクセスする方法について説明したガイドを紹介します。" 
-	keywords="Azure プレビュー ポータル, documentdb, azure, Microsoft azure"
-	services="documentdb" 
-	documentationCenter="" 
-	authors="AndrewHoh" 
-	manager="jhubbard" 
+<properties
+	pageTitle="Azure ポータルを使用して DocumentDB アカウントを管理する | Microsoft Azure"
+	description="Azure ポータルを使用して DocumentDB アカウントを管理する方法について説明します。Azure ポータルを使用してアカウントを表示、コピー、削除、およびアカウントにアクセスする方法について説明したガイドを紹介します。"
+	keywords="Azure ポータル, documentdb, azure, Microsoft azure"
+	services="documentdb"
+	documentationCenter=""
+	authors="AndrewHoh"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/22/2015" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/26/2016"
 	ms.author="anhoh"/>
 
-# Azure プレビュー ポータルで DocumentDB アカウントを管理する方法
+# DocumentDB アカウントの管理方法
 
-Azure プレビュー ポータルで、キーおよび一貫性の設定を操作する方法と、アカウントを削除する方法について説明します。
+キーと整合性レベルを使用する方法について説明します。また、Azure ポータルでアカウントを削除する方法についても説明します。
 
 ## <a id="keys"></a>アクセス キーを表示、コピー、および再生成する
 DocumentDB アカウントを作成すると、2 つのマスター アクセス キーが生成され、DocumentDB アカウントにアクセスする際の認証に使用できます。2 つのアクセス キーが提供されるので、DocumentDB アカウントを中断することなくキーを再生成できます。
 
-[Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[キー]** パーツにアクセスし、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
+[Microsoft Azure ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[要点]** バーから **[キー]** ブレードにアクセスして、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
 
-![Azure プレビュー ポータルのスクリーン ショット、[キー] ブレード](media/documentdb-manage-account/keys.png)
+![Azure ポータルのスクリーン ショット、[キー] ブレード](./media/documentdb-manage-account/keys.png)
 
-### Azure プレビュー ポータルでアクセス キーを表示およびコピーする
+別の方法として、**[すべての設定]** ブレードから **[キー]** エントリにアクセスすることもできます。
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+![[すべての設定] ブレード、[キー] ブレード](./media/documentdb-manage-account/allsettingskeys.png)
 
-2.      **[概要]** レンズで、**[キー]** をクリックします。
+**[キー]** ブレードには、[データ移行ツール](documentdb-import-data.md)からアカウントに接続する際に使用できるプライマリおよびセカンダリ接続文字列も含まれています。
+
+また、ユーザーに DocumentDB への読み取り専用アクセスを提供する読み取り専用キーも含まれています。読み取りとクエリは読み取り専用操作ですが、作成、削除、置換はそうではありません。
+
+### Azure ポータルでアクセス キーを表示およびコピーする
+
+1.      [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+
+2.      **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
 
 3.      **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
 
-  ![Azure プレビュー ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/image004.jpg)
+  ![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### アクセス キーを再生成する
 
 接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
 
-> [AZURE.WARNING]アクセス キーを再生成すると、現在のキーに依存するすべてのアプリケーションが影響を受けます。アクセス キーを使用して DocumentDB アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
+> [AZURE.WARNING] アクセス キーを再生成すると、現在のキーに依存するすべてのアプリケーションが影響を受けます。アクセス キーを使用して DocumentDB アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
 
 DocumentDB アカウントを使用するアプリケーションまたはクラウド サービスがある場合、キーを再生成すると、キーを切り替えない限り接続が失われます。次の手順は、キーの切り替えに含まれるプロセスの概要を示します。
 
 1.      DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
 
-2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
+2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
-3.      [概要] レンズで、**[キー]** をクリックします。
+3.      **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
 
 4.      **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを再生成することを確認します。
 
@@ -75,34 +83,32 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 ### DocumentDB アカウントの既定の整合性を指定するには
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1.      [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 
-2.      **[構成]** レンズで、**[既定の整合性]** をクリックします。
+2.      アカウント ブレードで、**[設定]** ブレードをまだ開いていない場合は、上部のコマンド バーの **[設定]** アイコンをクリックします。
 
-3.      **[既定の整合性]** ブレードで、DocumentDB アカウントに設定する既定の整合性レベルを選択します。
+3.      **[すべての設定]** ブレードで、**[機能]** の **[既定の整合性]** エントリをクリックします。
 
-![既定の整合性セッション](./media/documentdb-manage-account/image005.png)
+![既定の整合性セッション](./media/documentdb-manage-account/chooseandsaveconsistency.png)
 
-![制限付きの既定の整合性](./media/documentdb-manage-account/image006.png)
+4.      **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[保存]** をクリックします。
 
-4.      **[保存]** をクリックします。
-
-5.      Azure プレビュー ポータルの通知ハブで、操作の進行状況を監視できます。
+5.      Azure ポータルの通知ハブで、操作の進行状況を監視できます。
 
 *DocumentDB アカウントの既定の整合性に加えた変更が有効になるまで、数分かかることがあります。*
 
-## <a id="delete"></a>方法: Azure プレビュー ポータルで DocumentDB アカウントを削除する
-使用しなくなった DocumentDB アカウントを Azure プレビュー ポータルで削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
+## <a id="delete"></a> Azure ポータルで DocumentDB アカウントを削除する方法
+使用しなくなった DocumentDB アカウントを Azure ポータルで削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
 
-![Azure プレビュー ポータルで DocumentDB アカウントを削除する方法](./media/documentdb-manage-account/image009.png)
+![Azure ポータルで DocumentDB アカウントを削除する方法](./media/documentdb-manage-account/deleteaccountconfirmation.png)
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。 
+1.      [Azure ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。 
 
 2.      **[DocumentDB アカウント]** ブレードで、**[削除]** コマンドをクリックします。
 
 3.      確認ブレードで、DocumentDB アカウント名を入力して、そのアカウントを削除することを確認します。
 
-4.      確認ブレードの **[削除]** ボタンをクリックします。
+4.      確認ブレードで **[削除]** ボタンをクリックします。
 
 ## <a id="next"></a>次のステップ
 
@@ -110,7 +116,4 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409) で Azure DocumentDB に関するドキュメントを参照してください。
 
- 
- 
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

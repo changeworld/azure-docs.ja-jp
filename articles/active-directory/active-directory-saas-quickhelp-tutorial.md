@@ -3,7 +3,7 @@
 	description="Azure Active Directory と QuickHelp の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/06/2015"
-	ms.author="markusvi"/>
+	ms.date="02/29/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と QuickHelp の統合
@@ -35,7 +35,7 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 - QuickHelp でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -60,8 +60,8 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]<br>
-4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
+4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>![アプリケーション][4]<br>
 6. 検索ボックスに、「**QuickHelp**」と入力します。<br><br>![アプリケーション][5]<br>
 7. 結果ウィンドウで **[QuickHelp]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][500]<br>
@@ -85,20 +85,20 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 **QuickHelp で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **[QuickHelp]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
+1. Azure AD ポータルの **[QuickHelp]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![Configure Single Sign-On][6]<br>
 
-2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][7]<br>
+2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][7]<br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![アプリケーションの設定の構成][8]<br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure App Settings][8]<br>
  
      a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*))。
 
-     >[AZURE.NOTE]サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
+     > [AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
      b.**[次へ]** をクリックします。
 
  
-4. **[QuickHelp でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。<br><br>![What is Azure AD Connect][9]<br>
+4. **[QuickHelp でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。<br><br>![Azure AD Connect の概要][9]<br>
 
 
 
@@ -107,7 +107,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 2. 上部のメニューで **[管理者]** をクリックします。<br><br>![シングル サインオンの構成][21]<br>
 
 
-1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![シングル サインオンの構成][22]<br>
+1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。<br><br>![Configure Single Sign-On][22]<br>
 
 1. **[認証設定]** をクリックします。
 
@@ -117,21 +117,21 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     b.ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
 
-    d.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    c.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
-    e.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    d.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
 
-    f.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+    e.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
 
-    g.**[ 操作バー ]** で、**[保存]** をクリックします。
-
-
+    f.**[ 操作バー ]** で、**[保存]** をクリックします。
 
 
 
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]<br>
+
+
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Connect の概要][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]
 
@@ -139,7 +139,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
@@ -255,4 +255,4 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

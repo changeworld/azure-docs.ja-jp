@@ -3,17 +3,25 @@
 	description="Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
 	services="backup"
 	documentationCenter=""
-	authors="SamirMehta"
+	authors="giridharreddy"
 	manager="jwhit"
-	editor=""/>
+	editor=""
+	keywords="System Center Data Protection Manager, Data Protection Manager, DPM バックアップ"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/05/2015" ms.author="sammehta"; "jimpark"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/12/2016"
+	ms.author="giridham;jimpark"/>
 
 # DPM を使用して Azure へのワークロードをバックアップするための準備
 
 > [AZURE.SELECTOR]
-- [Azure Backup](backup-azure-microsoft-azure-backup.md)
-- [SCDPM](backup-azure-dpm-introduction.md)
+- [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
+- [System Center DPM](backup-azure-dpm-introduction.md)
 
 この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。この記事を読むと次のことが理解できます。
 
@@ -39,7 +47,7 @@ DPM サーバーのバックアップに Azure Backup を使用するビジネ�
 
 スナップショットが作成されると、データは Azure Backup サービスによってバックアップ コンテナーに転送されます。このサービスは、最新のバックアップから変更されたブロックのみを識別して転送することで、バックアップ ストレージとネットワークの効率を高めます。データ転送が完了すると、スナップショットが削除され、回復ポイントが作成されます。この回復ポイントは、Microsoft Azure 管理ポータルで確認できます。
 
->[AZURE.NOTE]Linux 仮想マシンでは、ファイル整合性のバックアップのみが可能です。
+>[AZURE.NOTE] Linux 仮想マシンでは、ファイル整合性のバックアップのみが可能です。
 
 ## 前提条件
 DPM データをバックアップするために Azure Backup を準備するには、次のようにします。
@@ -63,7 +71,7 @@ DPM データをバックアップするために Azure Backup を準備する�
 - DPM は、ほとんどのワークロードを Azure Backup にバックアップできます。サポート対象の詳細な一覧については、次に示す Azure Backup サポートの項目を参照してください。
 - Azure Backup に格納されているデータは、"テープにコピー" オプションでは回復できません。
 - Azure Backup 機能が有効になっている Azure アカウントを使用する必要があります。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。[Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
-- Azure Backup を使用するには、バックアップ対象のサーバーに Azure Backup エージェントがインストールされていることが必要です。各サーバーには、キャッシュ場所として 2.5 GB のローカル空きストレージ スペースが必要です (推奨は 15 GB です)。
+- Azure Backup を使用するには、バックアップ対象のサーバーに Azure Backup エージェントがインストールされていることが必要です。各サーバーをローカル ストレージとして使用するには、バックアップするデータのサイズの 10% 以上の空き領域が必要です。たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 10 GB の空き領域が必要です。最小要件は 10% ですが、キャッシュの場所には 15% のローカル ストレージ空き領域を使用することが推奨されます。
 - データは、Azure コンテナー ストレージに格納されます。Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
 
 Azure へのバックアップがサポートされているファイルの種類は、次のとおりです。
@@ -83,6 +91,6 @@ Azure へのバックアップがサポートされているファイルの種�
 - 圧縮ストリーム
 - スパース ストリーム
 
->[AZURE.NOTE]System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
+>[AZURE.NOTE] System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

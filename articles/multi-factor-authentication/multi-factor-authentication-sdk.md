@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
-# Building Multi-Factor Authentication into Custom Apps (SDK)
+# カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 
 Azure Multi-Factor Authentication ソフトウェア開発キット (SDK) では、Azure AD テナントにあるアプリケーションのサインインおよびトランザクション プロセスに通話とテキスト メッセージの検証を直接作成することができます。
 
@@ -33,7 +33,7 @@ API は Azure Active Directory に登録されているユーザーにアクセ�
 
 ## Azure Multi-Factor Authentication SDK のダウンロード 
 
-Azure Multi-Factor Authentication SDK は 2 とおりの方法でダウンロードできます。どちらも Azure ポータルから実行できます。1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。2 つ目の方法では、サービス設定を使用します。2 つ目の方法には、多要素認証プロバイダーまたは Azure AD Premium ライセンスが必要です。
+Azure Multi-Factor Authentication SDK は 2 とおりの方法でダウンロードできます。どちらも Azure ポータルから実行できます。1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。2 つ目の方法では、サービス設定を使用します。2 つ目の方法には、Multi-Factor Auth プロバイダー、あるいは Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスが必要です。
 
 
 ### Azure ポータルから Azure Multi-Factor Authentication SDK をダウンロードするには
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication SDK は 2 とおりの方法でダウンロー
 3. Azure AD のインスタンスをダブルクリックします。
 4. 上部の **[構成]** をクリックします。
 5. 多要素認証の **[サービス設定の管理]** を選択します。![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
-6. サービス設定ページで、画面の下部にある **[ポータルに移動する]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download3.png)
+6. サービス設定ページで、画面の下部にある **[ポータルに移動する]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download3a.png)
 7. これにより、新しいページが開きます。左側の下部で、[SDK] をクリックします。
 8. 言語を選択し、関連するダウンロード リンクのいずれかをクリックします。
 9. ダウンロードしたファイルを保存します。
@@ -70,8 +70,8 @@ SDK 内には、次の項目があります。
 - Multi-Factor Authentication の**ソース ファイル**
 - Multi-Factor Authentication サービスとの通信に使用する**クライアント証明書**
 - 証明書の**秘密キー**
-- **呼び出し結果**。 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
-- **例**。 Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
+- **呼び出し結果。** 呼び出し結果コードの一覧です。このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。これらは認証ステータス コードではありません。
+- **例。** Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
 
 
 >[AZURE.WARNING]クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。このファイルを共有しないよう、または紛失にはご注意ください。これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
@@ -191,4 +191,4 @@ SDK 内には、次の項目があります。
 	    }
 	}
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

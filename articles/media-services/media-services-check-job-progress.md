@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/07/2015"   
+	ms.date="02/03/2016"    
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -255,7 +255,6 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 	        }
 	 
 	
-	        // Upload a video file, and encode to Smooth Streaming format
 	        public static IJob SubmitEncodingJobWithNotificationEndPoint(string inputMediaFilePath)
 	        {
 	            // Declare a new job.
@@ -267,12 +266,12 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 	
 	            // Get a media processor reference, and pass to it the name of the 
 	            // processor to use for the specific task.
-	            IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
+	            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 	
 	            // Create a task with the conversion details, using a configuration file. 
-	            ITask task = job.Tasks.AddNew("My Mp4 to Smooth Task",
+	            ITask task = job.Tasks.AddNew("My encoding Task",
 	                processor,
-	                "H264 Smooth Streaming 720p",
+	                "H264 Multiple Bitrate 720p",
 	                Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.None);
 	
 	            // Specify the input asset to be encoded.
@@ -437,4 +436,4 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

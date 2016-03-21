@@ -3,7 +3,7 @@
 	description="宣言型のプロビジョニングの式について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="andkjell"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -23,9 +23,9 @@ Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入�
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。メソッドやステートメントはありません。代わりに、関数を入れ子にして、プログラム フローを記述します。
 
-詳細については、「[Office 2013 Visual Basic for Applications 言語リファレンスへようこそ」をご覧ください](https://msdn.microsoft.com/library/gg264383(v=office.15).aspx)
+詳細については、「[Office 2013 Visual Basic for Applications 言語リファレンスへようこそ](https://msdn.microsoft.com/library/gg264383.aspx)」を参照してください。
 
-属性は厳密に型指定されます。単一値の文字列属性を想定している関数では、複数値や異なる型の属性は受け入れられません。また、大文字と小文字が区別されます。関数名と属性名のいずれも、適切に大文字と小文字を使用する必要があります。そのようにしない場合、エラーがスローされます。
+属性は厳密に型指定されます。関数は、正しい型の属性のみを受け取ります。また、大文字と小文字が区別されます。関数名と属性名のいずれも、適切に大文字と小文字を使用する必要があります。そのようにしない場合、エラーがスローされます。
 
 ## 言語の定義と識別子
 
@@ -65,7 +65,7 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 次の例では、ユーザーが属しているドメインの NetBIOS 名をメタバース属性ドメインに取り込みます。
 
-`domain <- %Domain.Netbios%`
+`domain` <- `%Domain.Netbios%`
 
 ### 演算子
 
@@ -85,13 +85,13 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 文字列属性は、既定では、インデックス可能で、最大長は 448 文字に設定されています。それより多い文字を含む可能性がある文字列属性を使用する場合は、属性フローに次の式を含めるようにします。
 
-`attributeName <- Left([attributeName],448)`
+`attributeName` <- `Left([attributeName],448)`
 
 ### userPrincipalSuffix の変更
 
-Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、ログイン ID として適切でない場合があります。Azure AD Connect Sync インストール ウィザードを使用すると、mail など異なる属性を選択できます。ただし、場合によっては、属性を計算する必要があります。たとえば、Contoso 社に 2 つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。テスト テナント内のユーザーについて、ログイン ID に含まれるサフィックスのみを変更しようと検討しています。
+Active Directory の userPrincipalName 属性は、常にユーザーに認識されるわけではなく、サインイン ID として適切でない場合があります。Azure AD Connect Sync インストール ウィザードを使用すると、mail など異なる属性を選択できます。ただし、場合によっては、属性を計算する必要があります。たとえば、Contoso 社に 2 つの Azure AD ディレクトリがあり、一方は運用環境用、もう一方はテスト用であるとします。テスト テナント内のユーザーについて、サインイン ID に含まれるサフィックスのみを変更しようと検討しています。
 
-`userPrincipalName <- Word([userPrincipalName],1,"@") & "@contosotest.com"`
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`
 
 この式では、最初の @ 記号の左側のすべてを使用し (Word)、固定文字列をそこに連結します。
 
@@ -99,7 +99,7 @@ Active Directory の userPrincipalName 属性は、常にユーザーに認識�
 
 Active Directory の一部の属性は、Active Directory ユーザーとコンピューターでは単一値に見えますが、スキーマでは複数値になっています。例として挙げられるのが、説明属性です。
 
-`description <- IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
 
 この式で属性が値を持つ場合は、属性の最初のアイテムを使用し (Item)、先頭と末尾のスペースを削除して (Trim)、文字列の最初の 448 文字を維持します (Left)。
 
@@ -111,7 +111,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 送信同期ルールでは、使用する定数として NULL および IgnoreThisFlow の 2 つがあります。いずれも、提供する値が属性フローにないことを示しますが、相違点は、提供する値が他のルールにもないときの動作です。接続されたディレクトリに既存の値がある場合、NULL は属性に delete をステージングして既存の値を削除しますが、IgnoreThisFlow は既存の値を維持します。
 
-#### ImportedValue
+### ImportedValue
 
 ImportedValues 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。たとえば、ImportedValue("proxyAddresses") などです。
 
@@ -119,7 +119,7 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
 
 この場合の例は、標準の同期ルールである Exchange の In from AD – User Common で確認できます。そこでは、Exchange ハイブリッドにおいて、Exchange Online で追加された値を、その値が正常にエクスポートされたことが確認された場合にのみ同期する必要があります。
 
-`proxyAddresses <- RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
+`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
 
 全関数の一覧については、「[Azure AD Connect Sync: 関数参照](active-directory-aadconnectsync-functions-reference.md)」を参照してください。
 
@@ -131,4 +131,4 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
 
 <!--Image references-->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

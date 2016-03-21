@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/02/2015" 
+	ms.date="11/11/2015" 
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
@@ -95,7 +95,4 @@
 [アプリに認証を追加する]: ../mobile-services-windows-store-dotnet-get-started-users.md
 [アプリケーションにプッシュ通知を追加する]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
- 
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

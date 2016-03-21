@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 #Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
 
-[AZURE.INCLUDE [samples セレクター](../../includes/hdinsight-run-samples-selector.md)]
+[AZURE.INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブの実行を始めるときに役立つサンプルが用意されています。これらのサンプルは、HDInsight によって管理されるクラスターを作成して、それぞれのクラスターで利用できます。これらのサンプルを実行すると、Hadoop クラスターで Azure PowerShell コマンドレットを使用してジョブを実行するのに慣れることができます。
 
@@ -44,11 +44,11 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
  
 **前提条件**:
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - **HDInsight クラスター**。クラスターを作成できるさまざまな方法については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)」を参照してください。
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
-## ワード カウント - Java 
+## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
 MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
@@ -65,7 +65,7 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 		$resourceGroupName = "<Resource Group Name>"
 		$clusterName = "<HDInsight cluster name>"             # HDInsight cluster name
 		
-		Select-AzureRmSubscription $subscriptionName
+		Select-AzureRmSubscription -SubscriptionName $subscriptionName
 		
 		# Define the MapReduce job
 		$mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -114,7 +114,7 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 
 3. 最初の 3 つの変数を設定し、スクリプトを実行します。
 
-## ワード カウント - C# ストリーミング
+## <a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
@@ -148,7 +148,7 @@ Hadoop ストリーミング インターフェイスの詳細については、
 	
 		example/data/StreamingOutput/wc.txt/part-00000		
 								
-## Pi 推定
+## <a name="hdinsight-sample-pi-estimator"></a>Pi 推定
 
 Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
@@ -163,7 +163,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 									-ClassName "pi" `
 									-Arguments "16", "10000000"
 
-## 10 GB GraySort
+## <a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
 
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
@@ -183,7 +183,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
 **ジョブを送信するには**
 
-- 「[ワード カウント - Java](#word-count-java)」の手順に従い、以下のジョブ定義を使用します。
+- 「[ワード カウント - Java](#word-count-java)」の手順に従って、以下のジョブ定義を使用します。
 
 	$teragen = New-AzureRmHDInsightMapReduceJobDefinition `
 								-JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teragen" ` -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
@@ -982,15 +982,15 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [hdinsight-introduction]: hdinsight-hadoop-introduction.md
 
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
 [hdinsight-samples]: hdinsight-run-samples.md
-[hdinsight-sample-10gb-graysort]: hdinsight-sample-10gb-graysort.md
-[hdinsight-sample-csharp-streaming]: hdinsight-sample-csharp-streaming.md
-[hdinsight-sample-pi-estimator]: hdinsight-sample-pi-estimator.md
-[hdinsight-sample-wordcount]: hdinsight-sample-wordcount.md
+[hdinsight-sample-10gb-graysort]: #hdinsight-sample-10gb-graysort
+[hdinsight-sample-csharp-streaming]: #hdinsight-sample-csharp-streaming
+[hdinsight-sample-pi-estimator]: #hdinsight-sample-pi-estimator
+[hdinsight-sample-wordcount]: #hdinsight-sample-wordcount
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
@@ -998,4 +998,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0224_2016-->

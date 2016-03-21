@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="12/14/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs を使用したニュース速報の送信
@@ -25,9 +25,9 @@
 
 ##概要
 
-このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.1 (Silverlight 以外) アプリにブロードキャストする方法について説明します。Windows Phone 8.1 Silverlight を対象としている場合は、[Windows Phone](notification-hubs-ios-send-breaking-news.md) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
+このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.1 (Silverlight 以外) アプリにブロードキャストする方法について説明します。Windows Phone 8.1 Silverlight を対象としている場合は、[Windows Phone](notification-hubs-windows-phone-send-breaking-news.md) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
-ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs の概要]」を参照してください。
+ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs のルーティングとタグ式](notification-hubs-routing-tag-expressions.md)」を参照してください。
 
 ##前提条件
 
@@ -78,10 +78,10 @@
             hub = new NotificationHub(hubName, listenConnectionString);
         }
 
-        public async Task StoreCategoriesAndSubscribe(IEnumerable<string> categories)
+        public async Task<Registration> StoreCategoriesAndSubscribe(IEnumerable<string> categories)
         {
             ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
-            await SubscribeToCategories(categories);
+            return await SubscribeToCategories(categories);
         }
 
 		public IEnumerable<string> RetrieveCategories()
@@ -90,19 +90,34 @@
             return categories != null ? categories.Split(','): new string[0];
         }
 
-        public async Task SubscribeToCategories(IEnumerable<string> categories = null)
+        public async Task<Registration> SubscribeToCategories(IEnumerable<string> categories = null)
         {
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
             if (categories == null)
             {
-                IEnumerable<string> categories = RetrieveCategories();
+                categories = RetrieveCategories();
             }
 
-            await hub.RegisterNativeAsync(channel.Uri, categories);
+            // Using a template registration to support notifications across platforms.
+			// Any template notifications that contain messageParam and a corresponding tag expression
+			// will be delivered for this registration.
+
+            const string templateBodyWNS = "<toast><visual><binding template="ToastText01"><text id="1">$(messageParam)</text></binding></visual></toast>";
+
+            return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "simpleWNSTemplateExample",
+					categories);
         }
 
-    このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
+    このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。*RegisterNativeAsync* メソッドを呼び出す代わりに、*RegisterTemplateAsync* を呼び出して、テンプレート登録を使用してカテゴリに登録することに注意してください。
+	
+	さらに、テンプレートの名前 ("simpleWNSTemplateExample") も指定します。複数のテンプレートを登録する可能性があり (たとえば、トースト通知用のテンプレートとタイル通知用のテンプレートなど)、それらを更新または削除するには名前を付ける必要があるためです。
+
+	同じタグを持つ複数のテンプレートがデバイスによって登録された場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信される点に注意してください (テンプレートごとに 1 つずつ)。この動作は、同じ論理メッセージによって複数のビジュアル通知を生成する必要がある場合に役立ちます。たとえば、Windows ストア アプリケーションにバッジとトーストの両方を表示する場合などです。
+
+	テンプレートの詳細については、「[テンプレート](notification-hubs-templates.md)」を参照してください。
+
+
 
 
 4. App.xaml.cs プロジェクト ファイルで、次のプロパティを **App** クラスに追加します。
@@ -131,9 +146,9 @@
             if (ScienceToggle.IsOn) categories.Add("Science");
             if (SportsToggle.IsOn) categories.Add("Sports");
 
-            await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(categories);
+            var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(categories);
 
-            var dialog = new MessageDialog("Subscribed to: " + string.Join(",", categories));
+            var dialog = new MessageDialog("Subscribed to: " + string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
@@ -148,32 +163,38 @@
 
 > [AZURE.NOTE]Windows Notification Service (WNS) によって割り当てられたチャネル URI はいつでも変更される可能性があるために、通知エラーを回避するため通知を頻繁に登録してください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
 
-1. App.xaml.cs ファイルを開き、**async** 修飾子を **OnLaunched** メソッドに追加します。
+1. App.xaml.cs ファイルを開き、**InitNotificationsAsync** メソッドを更新して、`notifications` クラスを使用してカテゴリに基づいて購読します。
 
-2. **OnLaunched** メソッドで、**InitNotificationsAsync** メソッドへの既存の呼び出しを見つけて、次のコード行に置き換えます。
+		// *** Remove or comment out these lines *** 
+	    //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+	    //var hub = new NotificationHub("your hub name", "your listen connection string");
+	    //var result = await hub.RegisterNativeAsync(channel.Uri);
+	
+	    var result = await notifications.SubscribeToCategories();
 
-		await notifications.SubscribeToCategories();
-
-	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。「Notification Hubs の使用」チュートリアルの一部として **InitNotificationsAsync** メソッドが作成されましたが、このトピックでは必要ありません。
+	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。**InitNotificationsAsync** メソッドは「[Notification Hubs の使用][get-started]」チュートリアルの一部として作成されました。
 
 3. MainPage.xaml.cs プロジェクト ファイルで、*OnNavigatedTo* メソッドに次のコードを追加します。
 
-		var categories = ((App)Application.Current).notifications.RetrieveCategories();
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var categories = ((App)Application.Current).notifications.RetrieveCategories();
 
-        if (categories.Contains("World")) WorldToggle.IsOn = true;
-        if (categories.Contains("Politics")) PoliticsToggle.IsOn = true;
-        if (categories.Contains("Business")) BusinessToggle.IsOn = true;
-        if (categories.Contains("Technology")) TechnologyToggle.IsOn = true;
-        if (categories.Contains("Science")) ScienceToggle.IsOn = true;
-        if (categories.Contains("Sports")) SportsToggle.IsOn = true;
+            if (categories.Contains("World")) WorldToggle.IsOn = true;
+            if (categories.Contains("Politics")) PoliticsToggle.IsOn = true;
+            if (categories.Contains("Business")) BusinessToggle.IsOn = true;
+            if (categories.Contains("Technology")) TechnologyToggle.IsOn = true;
+            if (categories.Contains("Science")) ScienceToggle.IsOn = true;
+            if (categories.Contains("Sports")) SportsToggle.IsOn = true;
+        }
 
 	これにより、以前に保存されたカテゴリの状態に基づいてメイン ページが更新されます。
 
 これで、アプリケーションが完成し、デバイスのローカル ストレージに一連のカテゴリを格納できるようになりました。ローカル ストレージは、ユーザーがカテゴリの選択を変更したときに通知ハブに登録するために使用されます。次に、このアプリケーションにカテゴリ通知を送信できるバックエンドを定義します。
 
-##バックエンドから通知を送信する
+##タグ付けされた通知の送信
 
-[AZURE.INCLUDE [notification-hubs-back-end](../../includes/notification-hubs-back-end.md)]
+[AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ##アプリケーションを実行して通知を生成する
 
@@ -207,9 +228,6 @@
 
 	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。
 
-+ [Notification Hubs によるユーザーへの通知]
-
-	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
 
 <!-- Anchors. -->
@@ -230,15 +248,14 @@
 <!-- URLs.-->
 [get-started]: /manage/services/notification-hubs/getting-started-windows-dotnet/
 [Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
-[Notification Hubs によるユーザーへの通知]: /manage/services/notification-hubs/notify-users
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Azure Management Portal]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

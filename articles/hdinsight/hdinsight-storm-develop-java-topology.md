@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="01/29/2016"
    ms.author="larryfr"/>
 
 #HDInsight で Apache Storm と Maven を使用する基本的なワード カウント アプリケーションの Java ベースのトポロジの開発
@@ -22,6 +22,8 @@
 Maven を使用して HDInsight での Apache Storm の Java ベース トポロジを作成する基本的な手順を説明します。Maven と Java を使用した基本的なワード カウント アプリケーションの作成手順をご覧いただけます。ここでは Eclipse の使用を前提としていますが、お好きなテキスト エディターをお使いいただけます。
 
 このドキュメントの手順を完了したら、HDInsight で Apache Storm にデプロイできる基本的なトポロジが完成します。
+
+> [AZURE.NOTE]このトポロジの完全バージョンは、[https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) で入手できます。
 
 ##前提条件
 
@@ -31,7 +33,7 @@ Maven を使用して HDInsight での Apache Storm の Java ベース トポロ
 
 * メモ帳、<a href="http://www.gnu.org/software/emacs/" target="_blank">Emacs<a>、<a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a>、<a href="https://atom.io/" target="_blank">Atom.io</a>、<a href="http://brackets.io/" target="_blank">Brackets.io</a> などのテキスト エディター。また、<a href="https://eclipse.org/" target="_blank">Eclipse</a> (バージョン Luna またはそれ以降) などの統合開発環境 (IDE) を使用することもできます。
 
-	> [AZURE.NOTE]お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
+	> [AZURE.NOTE] お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
 
 ##環境変数を構成する
 
@@ -85,7 +87,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 コンパイル時に、Maven がこの情報を使用して Maven レポジトリで **storm-core** を検索します。まず、ローカル コンピューター上のレポジトリを検索します。ファイルが見つからない場合は、パブリックの Maven レポジトリをダウンロードして、それをローカル レポジトリに保存します。
 
-> [AZURE.NOTE]追加したセクションの `<scope>provided</scope>` 行に注目してください。この行によって、Maven に作成されるすべての JAR ファイルから **storm-core** を除外するよう指示しています。storm-core はシステムから提供されるためです。これで、作成するパッケージのサイズが抑えられ、HDInsight クラスターの Storm に含まれる**storm-core** ビットを確実に使用できます。
+> [AZURE.NOTE] 追加したセクションの `<scope>provided</scope>` 行に注目してください。この行によって、Maven に作成されるすべての JAR ファイルから **storm-core** を除外するよう指示しています。storm-core はシステムから提供されるためです。これで、作成するパッケージのサイズが抑えられ、HDInsight クラスターの Storm に含まれる**storm-core** ビットを確実に使用できます。
 
 ##ビルド構成
 
@@ -148,7 +150,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。これは、(<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-Starter のサンプル</a>) で提供されているスパウトを変更したバージョンです。
 
-> [AZURE.NOTE]外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
+> [AZURE.NOTE] 外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
 >
 > * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a>: Twitter から読み取りを行うスパウトの例
 >
@@ -240,7 +242,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 コードのコメントに目を通して、スパウトの仕組みを理解してください。
 
-> [AZURE.NOTE]このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
+> [AZURE.NOTE] このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
 
 ###ボルトを作成する
 
@@ -250,7 +252,7 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 * **WordCount**: 各単語が発生した回数をカウントします。
 
-> [AZURE.NOTE]ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
+> [AZURE.NOTE] ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
 
 **src\\main\\java\\com\\microsoft\\example** ディレクトリに、**SplitSentence.java** と **WordCount.Java** という 2 つの新しいファイルを作成します。ファイルの内容として、次を使用します。
 
@@ -467,4 +469,4 @@ Trident アプリケーションの例については、「[HDInsight での Apa
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

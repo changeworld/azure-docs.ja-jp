@@ -3,7 +3,7 @@
 	description="このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。" 
 	services="app-service\web" 
 	documentationCenter=".net" 
-	authors="Erikre" 
+	authors="erikre" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/06/2015" 
-	ms.author="erikre"/>
+	ms.date="02/29/2016" 
+	ms.author="tdykstra"/>
 
 
 # メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET Web フォーム アプリケーションを作成して Azure App Service にデプロイする
@@ -22,7 +22,8 @@
 ##概要
 このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。
 
->[AZURE.NOTE]このチュートリアルの MVC バージョンについては、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」を参照してください。
+>[AZURE.NOTE] 
+このチュートリアルの MVC バージョンについては、「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」を参照してください。
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。
 
@@ -39,9 +40,10 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 今回は、Entity Framework を使用してデータベースにアクセスするシンプルな連絡先リスト Web アプリケーションを、ASP.NET 4.5 Web フォームを基盤に開発します。以下は、データベースへの読み取り/書き込みアクセスを許可する Web フォーム ページの画像です。
 
-![Contacts - Edit Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms00.png)
+![連絡先 - 編集ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms00.png)
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料試用版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、「[App Service を試す](https://tryappservice.azure.com/)」にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] 
+このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">Visual Studio サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料試用版にサインアップ</a>してください。アカウントにサインアップする前に Azure を実際に使ってみるには、「[App Service を試す](https://tryappservice.azure.com/)」にアクセスしてください。Azure で、有効期限付きの ASP.NET スターター サイトを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ##開発環境を設定する 
 最初に、Visual Studio 2013 と Azure SDK for .NET をインストールして開発環境を設定します。
@@ -50,13 +52,14 @@ Azure アカウントは無料で開くことができます。また、まだ V
 2. [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。  
 
 3. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
-4. **Web Platform Installer** のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。![Web Platform Installer](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-01.png)  
+4. **Web Platform Installer** のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。![Web プラットフォーム インストーラー](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-01.png)  
 
       この SDK をインストール済みの場合、インストールされる項目の数は 0 になります。インストールされる項目の数は **[Web Platform Installer]** ウィンドウの左下に表示されます。
 
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。
 
-	>[AZURE.NOTE]Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
+	>[AZURE.NOTE]  
+	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -68,10 +71,10 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 Azure SQL Database は、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL Database でも動作します。
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com/)で、左側のタブにある **[Web Apps]** をクリックし、**[新規]** をクリックします。![Web Platform Installer](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-02.png)
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、左側のタブにある **[Web Apps]** をクリックし、**[新規]** をクリックします。![Web プラットフォーム インストーラー](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-02.png)
 2. **[Web アプリ]**、**[カスタム作成]** の順にクリックします。![カスタム作成](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-03.png)**新しい Web アプリ - カスタム作成**ウィザードが開きます。  
 
-3. ウィザードの **[Web アプリの作成]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。この図に表示されている URL は既に取得されている可能性が高いため、**別の URL を選択する必要があります**。![Contacts - Create New Web Site](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-04.png)
+3. ウィザードの **[Web アプリの作成]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。この図に表示されている URL は既に取得されている可能性が高いため、**別の URL を選択する必要があります**。![連絡先 - 新規 Web サイト作成](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/Intro-SecureWebForms-04.png)
 4. [Web ホスティング プラン] ドロップダウン リストで、現在の所在地に最も近いリージョンを選択します。この設定によって、使用する VM が実行されるデータ センターが指定されます。
 5. **[データベース]** ボックスの一覧の **[無料の 20 MB SQL データベースの作成]** を選択します。
 6. **[DB 接続文字列名]** ボックスは、既定値の *DefaultConnection* をそのまま使用します。
@@ -82,18 +85,18 @@ Azure SQL Database は、SQL Server テクノロジに基づいて構築され�
 11. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。
 12. 終了したら、ダイアログ ボックスの右下にあるチェック マークをクリックします。
 
-**Azure 管理ポータル**が **[Web Apps]** ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web アプリ]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
+**Azure クラシック ポータル**が **[Web Apps]** ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web アプリ]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
 ##ASP.NET Web フォーム アプリケーションを作成する 
 Web アプリを作成しましたが、まだその中にコンテンツがありません。次のステップでは、Azure に発行する Visual Studio Web アプリケーションを作成します。
 ###プロジェクトを作成する 
-1. Visual Studio の **[ファイル]** メニューで、**[新しいプロジェクト]** を選択します。![File Menu - New Project](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms01.png)  
+1. Visual Studio の **[ファイル]** メニューで、**[新しいプロジェクト]** を選択します。![[ファイル] メニュー - [新しいプロジェクト]](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms01.png)  
 2. 左側で、**[テンプレート]**、**[Visual C#]**、**[Web]** テンプレート グループの順に選択します。 
 3. 中央の列で **[ASP.NET Web アプリケーション]** を選択します。
 4. プロジェクトに *ContactManager* という名前を付けて、**[OK]** をクリックします。![[新しいプロジェクト] ダイアログ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms02.png)  
 
       このチュートリアル シリーズでは、プロジェクトの名前を **ContactManager** としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。
 
-5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Web フォーム]** テンプレートを選択します。**[クラウドでのホスト]** チェック ボックスをオフにして (オンになっている場合)、**[OK]** をクリックします。![New ASP.NET Project dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms03.png) Web フォーム アプリケーションが作成されます。
+5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Web フォーム]** テンプレートを選択します。**[クラウドでのホスト]** チェック ボックスをオフにして (オンになっている場合)、**[OK]** をクリックします。![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms03.png) Web フォーム アプリケーションが作成されます。
 
 ###マスター ページを更新する
 ASP.NET Web フォームでは、マスター ページを使うことで、アプリケーションのページに共通のレイアウトを適用することができます。これには、アプリケーションのすべてのページ (またはページ グループ) に適用する外観、操作性、標準の動作を定義するマスター ページを 1 つ作成します。次に、表示するコンテンツが格納されるコンテンツ ページを個別に作成します。ユーザーがコンテンツ ページを要求すると、ASP.NET はコンテンツ ページとマスター ページをマージします。これによって、マスター ページのレイアウトとコンテンツ ページのコンテンツが組み合わされ、出力されます。今回の新しいサイトでは、アプリケーションの名前とリンクを更新する必要があります。このリンクは、連絡先の詳細を表示するページを参照するリンクです。これらの変更を実施するには、マスター ページの HTML を変更します。
@@ -194,31 +197,32 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 ###ローカルでアプリケーションを実行する 
  
 1. **ソリューション エクスプローラー**で *Default.aspx* ページを右クリックし、**[スタート ページに設定]** を選択します。 
-2. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。アプリケーションの既定のページが、既定のブラウザー ウィンドウに表示されます。![Contacts - Create New Web Site](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms04.png)  
+2. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。アプリケーションの既定のページが、既定のブラウザー ウィンドウに表示されます。![連絡先 - 新規 Web サイト作成](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms04.png)  
 
 これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベースの機能と、連絡先データを表示および編集するためのページは、後ほど追加します。
 ###Azure にアプリケーションをデプロイする
 現在、アプリケーションを作成してローカルで実行しています。このアプリケーションを Azure にデプロイします。
 
-1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。![Select Publish](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms05.png)**[Web の発行]** ダイアログ ボックスが表示されます。  
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。![[発行] の選択](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms05.png)**[Web の発行]** ダイアログ ボックスが表示されます。  
 
 2. **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Azure Web アプリ]** をクリックします。
 	  
-3. まだサインインしていない場合、**[既存の Web アプリを選択]** ダイアログ ボックスの **[サインイン]** をクリックします。サインインしたら、このチュートリアルの最初に作成した Web アプリを選択します。**[OK]** をクリックして続行します。![Select Existing Web Site dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms07.png) Visual Studio によって発行設定がダウンロードされます。
-4. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms08.png) Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的なステータスが表示されます。![Web Publishing Activity](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms09.png)  
+3. まだサインインしていない場合、**[既存の Web アプリを選択]** ダイアログ ボックスの **[サインイン]** をクリックします。サインインしたら、このチュートリアルの最初に作成した Web アプリを選択します。**[OK]** をクリックして続行します。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms07.png) Visual Studio によって発行設定がダウンロードされます。
+4. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms08.png) Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的なステータスが表示されます。![Web の発行アクティビティ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms09.png)  
 
-これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。![App in Browser](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms10.png)
+これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。![ブラウザーでのアプリ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms10.png)
 
->[AZURE.NOTE]既に存在する Web アプリへの発行でエラーが発生した場合、その発行先を消去してから新しいファイルを追加します。その後、アプリケーションをもう一度発行しますが、**[Web の発行]** ダイアログ ボックスで **[設定]** タブを選択します。次に構成に **[デバッグ]** を設定して、**[発行先のその他のファイルを削除]** オプションを選択し、**[発行]** をクリックして、アプリケーションをもう一度デプロイします。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms11.png)
+>[AZURE.NOTE] 
+既に存在する Web アプリへの発行でエラーが発生した場合、その発行先を消去してから新しいファイルを追加します。その後、アプリケーションをもう一度発行しますが、**[Web の発行]** ダイアログ ボックスで **[設定]** タブを選択します。次に構成に **[デバッグ]** を設定して、**[発行先のその他のファイルを削除]** オプションを選択し、**[発行]** をクリックして、アプリケーションをもう一度デプロイします。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms11.png)
 
 ##アプリケーションにデータベースを追加する 
 次に、Web フォーム アプリケーションを更新して、連絡先を表示および更新して既定のデータベースにデータを保存する機能を追加します。Web フォーム プロジェクトを作成した際にデータベースも既定で作成されています。アプリケーションは Entity Framework を使用してこのデータベースにアクセスし、データベース内のデータを更新します。
 ###データ モデル クラスを追加する 
 まず、コードを使ってシンプルなデータ モデルを作成します。このデータ モデルが `Contacts` というクラスに格納されます。`Contacts` というクラス名にした理由は、Web Forms テンプレートが作成した Contact.aspx.cs ファイルに格納されている `Contact` クラスとのクラス名の競合を避けるためです。
 
-1. **ソリューション エクスプローラー**で *Models* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。![Select Class](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms12.png) **[新しい項目の追加]** ダイアログ ボックスが表示されます。  
+1. **ソリューション エクスプローラー**で *Models* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。![クラスの選択](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms12.png) **[新しい項目の追加]** ダイアログ ボックスが表示されます。  
 
-2. 新しいクラスに *Contacts.cs* という名前を付けます。![Add New Item dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13.png)
+2. 新しいクラスに *Contacts.cs* という名前を付けて **[追加]** をクリックします。![[新しい項目の追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13.png)
 3. 既定のコードを以下のコードに置き換えます。  
 
 		using System.ComponentModel.DataAnnotations;
@@ -251,19 +255,19 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 1. Visual Studio のメニュー バーで **[ツール]**、**[拡張機能と更新プログラム]** の順に選択します。**[拡張機能と更新プログラム]** ダイアログ ボックスが表示されます。
 2. ダイアログ ボックスの左側のウィンドウで、**[オンライン]**、**[Visual Studio ギャラリー]**、**[ツール]**、**[スキャフォールディング]** の順に選択します。
 3. 「Web Forms Scaffolding」が一覧に表示されない場合は、ダイアログ ボックス右側の検索ボックスに「Web Forms Scaffolding」と入力します。  
-4. Forms Scaffolder がインストールされていない場合は、**[ダウンロード]** を選択して Web Forms Scaffolding をインストールします。必要に応じて Visual Studio を再起動します。確認された場合は、プロジェクトへの変更を必ず保存してください。![Extensions and Updates dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/ExtensionsAndUpdatesDB.png)  
+4. Forms Scaffolder がインストールされていない場合は、**[ダウンロード]** を選択して Web Forms Scaffolding をインストールします。必要に応じて Visual Studio を再起動します。確認された場合は、プロジェクトへの変更を必ず保存してください。![[拡張機能と更新プログラム] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/ExtensionsAndUpdatesDB.png)  
 5. プロジェクトをビルドします (**Ctrl + Shift + B**)。プロジェクトは、スキャフォールディング機能を使用する前にビルドする必要があります。  
 6. **ソリューション エクスプローラー**で*プロジェクト*を右クリックし、**[追加]**、**[新しいスキャフォールディング項目]** の順に選択します。**[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
-7. 左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択して、**[追加]** をクリックします。![Add Scaffold dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13a.png) **[Web フォーム ページの追加]** ダイアログ ボックスが表示されます。  
+7. 左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択して、**[追加]** をクリックします。![[スキャフォールディングの追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13a.png) **[Web フォーム ページの追加]** ダイアログ ボックスが表示されます。  
 
-8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contacts (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。![Add Web Forms Pages dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13b.png)
+8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contacts (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。![[Web フォーム ページの追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13b.png)
 
 Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*、*Insert.aspx* の各ページを格納する新しいフォルダーが作成されます。また、*DynamicData* フォルダーも作成されます。このフォルダーには *EntityTemplates* フォルダーと *FieldTemplates* フォルダーが格納されています。`ApplicationDbContext` はメンバーシップ データベースと連絡先データの両方に使用されます。
 
 ###データ モデルを使用するようにアプリケーションを構成する 
 次の作業では、作成したデータ モデルに基づいてデータベースを作成するための Code First Migrations 機能を有効化すると共に、サンプル データとデータ初期化子を追加します。
 
-1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順に選択します。![Add Web Forms Pages dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13c.png)  
+1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順に選択します。![[Web フォーム ページの追加] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13c.png)  
 2. [パッケージ マネージャー コンソール] ウィンドウで、次のコマンドを入力します。  
 
 		enable-migrations
@@ -343,29 +347,29 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
 
 		update-database
 
-`update-database` によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます。![Package Manager Console](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13d.png)
+`update-database` によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます。![パッケージ マネージャー コンソール](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms13d.png)
 
 ###アプリケーションをローカルで実行してデータを表示する 
 次に、アプリケーションを実行して連絡先の表示を確認します。
 
 1. 最初にプロジェクトをビルドします (**Ctrl + Shift + B**)。  
 2. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。ブラウザーが開き、*Default.aspx* ページが表示されます。
-3. ページ最上部の **Contact Demo** リンクを選択して *Contact List* ページを表示します。![Contacts List Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms17.png)  
+3. ページ最上部の **Contact Demo** リンクを選択して *Contact List* ページを表示します。![連絡先リスト ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms17.png)  
 
 ##プロジェクトに対して SSL を有効にする 
 Secure Sockets Layer (SSL) は、Web サーバーと Web クライアント間の通信に定義されたプロトコルで、暗号化によって通信の安全性を強化することができます。SSL を使わないと、クライアントとサーバー間で送信されるデータが、ネットワークに物理的にアクセスできる第三者によるパケット スニッフィングの標的になります。また、プレーンな HTTP を使用すると、いくつかの一般的な認証方式の安全性も低下します。具体的には、基本認証とフォーム認証で送信する資格情報が暗号化されません。安全性を確保するには、これらの認証方式で SSL を使用する必要があります。
 
 1. **ソリューション エクスプローラー**で **ContactManager** プロジェクトをクリックし、**F4 キー**を押して **[プロパティ]** ウィンドウを表示します。 
 2. **[SSL が有効]** を `true` に変更します。 
-3. 後で使用するための **SSL URL** をコピーします。以前に SSL Web アプリを作成したことがなければ、SSL URL は `https://localhost:44300/` になります (下記参照)。![Project Properties](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms18.png)  
+3. 後で使用するための **SSL URL** をコピーします。以前に SSL Web アプリを作成したことがなければ、SSL URL は `https://localhost:44300/` になります (下記参照)。![プロジェクトのプロパティ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms18.png)  
 4. **ソリューション エクスプローラー**で **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 5. 左側のタブで **[Web]** をクリックします。
-6. 先ほど保存した **SSL URL** を使用するように **[プロジェクトの URL]** を変更します。![Project Web Properties](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms19.png)  
+6. 先ほど保存した **SSL URL** を使用するように **[プロジェクトの URL]** を変更します。![プロジェクトの Web プロパティ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms19.png)  
 7. **CTRL + S キーを押して**ページを保存します。
 8. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。Visual Studio により、SSL の警告を回避するためのオプションが表示されます。  
-9. IIS Express SSL 証明書を信頼する場合は **[はい]** をクリックして続行します。![IIS Express SSL certificate details](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms20.png) セキュリティ警告が表示されます。  
+9. IIS Express SSL 証明書を信頼する場合は **[はい]** をクリックして続行します。![IIS Express SSL 証明書の詳細](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms20.png) セキュリティ警告が表示されます。  
 
-10. **[はい]** をクリックしてローカルホストに証明書をインストールします。![Security Warning dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21.png) ブラウザー ウィンドウが表示されます。
+10. **[はい]** をクリックしてローカルホストに証明書をインストールします。![セキュリティ警告ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21.png) ブラウザー ウィンドウが表示されます。
 
 ローカルで SSL を使用して Web アプリケーションを簡単にテストできるようになりました。
 
@@ -389,9 +393,9 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 3. [Google Developers Console](https://console.developers.google.com/) にアクセスします。Google デベロッパーの電子メール アカウント (gmail.com) でサインインする必要があります。Google アカウントを持っていない場合は、**[Create an account]** リンクを選択します。**Google Developers Console** が表示されます。![Google Developers Console](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21a.png)
 
-4. **[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。![Google - New Project](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21b.png) 新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
-5. 左側のタブで **[APIs & auth]**、**[Credentials]** の順にクリックします。
-6. **[OAuth]** にある **[Create New Client ID]** をクリックします。**[Create Client ID]** ダイアログ ボックスが表示されます。![Google - Create Client ID](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21c.png)  
+4. **[Select a project]** から**[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。![Google - 新しいプロジェクト](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21b.png) 新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
+5. **Google Developers Console** ドロップダウン メニューから、 **[API Manager]**、**[Credentials]** の順にクリックします。
+6. **[OAuth]** にある **[Create New Client ID]** をクリックします。**[Create Client ID]** ダイアログ ボックスが表示されます。![Google - クライアント ID の作成](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21c.png)  
 7. **[Create Client ID]** ダイアログ ボックスでは、アプリケーションの種類を既定の **[Web application]** のままにします。  
 8. **[Authorized JavaScript Origins]** には、このチュートリアルで前に使用した SSL URL を設定します (他の SSL プロジェクトを作成していない限り ****https://localhost:44300/**)。この URL がアプリケーションのオリジンです。このサンプルではローカルホストのテスト URL を入力するだけですが、アカウントには複数の URL を入力できます (ローカルホストおよび本稼働用)。
 
@@ -401,7 +405,7 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 	この値は、ASP.NET OAuth ユーザーが Google の OAuth サーバーとの通信に使用する URI です。必ず、先ほど使用した SSL URL を使用してください (他の SSL プロジェクトを作成していない限り ****https://localhost:44300/**)。
  
-10. **[Create Client ID]** ボタンをクリックします。
+10. **[Create]** ボタンをクリックします。
 11. Visual Studio で、*Startup.Auth.cs* ページの `UseGoogleAuthentication` メソッドを更新します。これを行うには、**アプリケーション ID** と**アプリケーション シークレット**をコピーして、そのメソッドに貼り付けます。次に示す**アプリケーション ID** と**アプリケーション シークレット**の値はサンプルであり、動作しません。  
 
 		using System;
@@ -467,9 +471,9 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 12. **Ctrl キーを押しながら F5 キーを押して**アプリケーションをビルドし、実行します。**[Log in]** リンクをクリックします。
 13. **[Use another service to log in]** の **[Google]** をクリックします。![ログイン](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21d.png)  
-14. 資格情報の入力が必要な場合、Google のサイトにリダイレクトされるので、リダイレクト先のサイトで資格情報を入力します。![Google - Sign in](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21e.png)  
-15. 資格情報を入力すると、先ほど作成した Web アプリケーションへの権限の付与が求められます。![Project Default Service Account](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21f.png)  
-16. **[Accept]** をクリックします。クリックすると、リダイレクトによって **ContactManager** アプリケーションの **[Register]** ページに戻ります。このページで Google アカウントを登録することができます。![Register with your Google Account](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21g.png)  
+14. 資格情報の入力が必要な場合、Google のサイトにリダイレクトされるので、リダイレクト先のサイトで資格情報を入力します。![Google - サインイン](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21e.png)  
+15. 資格情報を入力すると、先ほど作成した Web アプリケーションへの権限の付与が求められます。![プロジェクトのデフォルト サービス アカウント](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21f.png)  
+16. **[Accept]** をクリックします。クリックすると、リダイレクトによって **ContactManager** アプリケーションの **[Register]** ページに戻ります。このページで Google アカウントを登録することができます。![Google アカウントへの登録](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms21g.png)  
 17. Google アカウントに使用するローカルの電子メール登録名を変更できますが、通常は既定の電子メール エイリアス (認証に使用したエイリアス) を変更しません。**[Log in]** をクリックします。
 
 ##メンバーシップ API を使用してアクセスを制限する 
@@ -637,11 +641,11 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 ###アプリケーションを発行する 
 1. Visual Studio でプロジェクトをビルドします (**Ctrl + Shift + B**)。
-2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。![Publish menu option](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22.png) **[Web の発行]** ダイアログ ボックスが表示されます。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22a.png)  
-3. **[プロファイル]** タブで発行先に **[Azure Web アプリ]** をクリックします (選択されていない場合)。![Publish Web dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms23.png)  
+2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。![[発行] メニュー オプション](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22.png) **[Web の発行]** ダイアログ ボックスが表示されます。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms22a.png)  
+3. **[プロファイル]** タブで発行先に **[Azure App Service]** をクリックします (選択されていない場合)。![[Web の発行] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms23.png)  
 4. **[サインイン]** をクリックします (サインインしていない場合)。
-5. **[既存の Web アプリ]** ドロップダウン ボックスで、このチュートリアルで作成した Web アプリを選択し、**[OK]** をクリックします。![Select Existing Web Site dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms25.png) プロファイルに対する変更の保存が確認された場合は、**[はい]** を選択します。
-6. **[設定]** タブをクリックします。![Select Existing Web Site dialog box](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26.png)  
+5. **[既存の Web アプリ]** ドロップダウン ボックスで、このチュートリアルで作成した Web アプリを選択し、**[OK]** をクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms25.png) プロファイルに対する変更の保存が確認された場合は、**[はい]** を選択します。
+6. **[設定]** タブをクリックします。![既存の Web サイト選択ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26.png)  
 7. **[構成]** ドロップダウン ボックスを **[デバッグ]** に設定します。
 8. **[ApplicationDbContext]** の**下向き矢印**アイコンをクリックして、**ContactDB** に設定します。
 9. **[Code First Migrations を実行]** チェック ボックスをオンにします。  
@@ -649,15 +653,16 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 10. **[発行]** をクリックします。アプリケーションが Azure に発行されます。
 
->[AZURE.NOTE]発行プロファイルの作成後、Visual Studio を再起動した場合、接続文字列がドロップダウン リストに表示されない場合があります。その場合は、先ほど作成した発行プロファイルを編集する代わりに、先ほどと同じ方法で新しい発行プロファイルを作成し、以降の **[設定]** タブの手順に従ってください。)
+>[AZURE.NOTE]  
+発行プロファイルの作成後、Visual Studio を再起動した場合、接続文字列がドロップダウン リストに表示されない場合があります。その場合は、先ほど作成した発行プロファイルを編集する代わりに、先ほどと同じ方法で新しい発行プロファイルを作成し、以降の **[設定]** タブの手順に従ってください。)
 
 ###Azure のアプリケーションを確認する 
-1. ブラウザーで **[Contact Demo]** リンクをクリックします。[Contacts List] が表示されます。![Contacts listed in Browser](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms27.png)  
+1. ブラウザーで **[Contact Demo]** リンクをクリックします。[Contacts List] が表示されます。![ブラウザーでの連絡先一覧](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms27.png)  
 
-2. **[Contacts List]** ページで **[Create New]** を選択します。![Contacts listed in Browser](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms29.png) 連絡先の変更が許可されたアカウントでログインしていない場合、**[ログイン]** ページにリダイレクトされます。
-3. 次の電子メール アドレスとパスワードを入力して **[Log in]** ボタンをクリックします。**電子メール**: `canEditUser@wideworldimporters.com` **パスワード**: `Pa$$word1` ![Log in Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms28.png)  
+2. **[Contacts List]** ページで **[Create New]** を選択します。![ブラウザーでの連絡先一覧](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms29.png) 連絡先の変更が許可されたアカウントでログインしていない場合、**[ログイン]** ページにリダイレクトされます。
+3. 次の電子メール アドレスとパスワードを入力して **[Log in]** ボタンをクリックします。**電子メール**: `canEditUser@wideworldimporters.com` **パスワード**: `Pa$$word1` ![ログイン ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms28.png)  
 
-4. 各フィールドに新しいデータを入力して **[Insert]** ボタンをクリックします。![Add New Contact Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms30.png) 新しいレコードが追加された *EditContactList.aspx* ページが表示されます。![Add New Contact Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms31.png)
+4. 各フィールドに新しいデータを入力して **[Insert]** ボタンをクリックします。![新規連絡先追加ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms30.png) 新しいレコードが追加された *EditContactList.aspx* ページが表示されます。![新規連絡先追加ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms31.png)
 
 5. **[Log off]** リンクを選択します。
 
@@ -666,35 +671,36 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 1. Visual Studio の **[表示]** メニューで **[サーバー エクスプローラー]** を選択します。 
 2. **サーバー エクスプローラー**で **[Web アプリ]** に移動します。
-3. 各 Web アプリのインスタンスを右クリックし、**[Web アプリの停止]** を選択します。![Stop Web Site menu item](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26a.png)  
+3. 各 Web アプリのインスタンスを右クリックし、**[Web アプリの停止]** を選択します。![Web サイト停止メニュー項目](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26a.png)  
 
-	Microsoft Azure 管理ポータルから Web アプリを選択し、ページ下部の **[停止]** アイコンをクリックする方法もあります。![Add New Contact Page](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26b.png)
+	Azure クラシック ポータルから Web アプリを選択し、ページ下部の **[停止]** アイコンをクリックする方法もあります。![新規連絡先追加ページ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms26b.png)
 
 ##データベースを確認する 
 データベースを直接表示して変更する方法も理解しておく必要があります。データベースを直接操作する方法を知っておくことで、データベースのデータを確認し、各テーブルにおけるデータの格納方法を把握できるようになります。
 
 ###SQL Azure DB を調べる 
 1. Visual Studio で**サーバー エクスプローラー**を開き、**[ContactDB]** に移動します。
-2. **[ContactDB]** を右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。![Open in SQL Server Object Explorer menu item](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms32.png)  
+2. **[ContactDB]** を右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。![[SQL Server オブジェクト エクスプローラーで開く] メニュー項目](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms32.png)  
 3. **[ファイアウォール ルールの追加]** ダイアログ ボックスが表示されたら、**[ファイアウォール ルールを追加]** をクリックします。**[SQL データベース]** を展開できず、**ContactDB** を Visual Studio で表示できない場合は、手順に従って特定のファイアウォール ポート (またはポート範囲) を開放する必要があります。これには、**MVC チュートリアル**の最後に記載されている「[Azure のファイアウォール ルールを設定する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の手順を実行します。または、アプリケーションをローカルでビルド、実行し (Visual Studio で **Ctrl キーを押しながら F5 キーを押す**)、データを追加して、ローカル データベースのデータを確認する方法もあります。  
 
 4. **[サーバーへの接続]** ダイアログ ボックスが表示された場合、このチュートリアルの冒頭で作成した**パスワード**を入力して **[接続]** ボタンをクリックします。パスワードを思い出せない場合は、ローカルのプロジェクト ファイルから見つけることができます。これには、**ソリューション エクスプローラー**で *Properties* フォルダー、*PublishProfiles* フォルダーの順に展開し、*contactmanager.pubxml* ファイルを開き (別の名前が付けられている可能性があります)、発行パスワードを検索します。
 
 5. **[contactDB]** データベース、**[テーブル]** の順に展開します。
-6. **[dbo.AspNetUsers]** テーブルを右クリックし、**[データの表示]** を選択します。![View Data menu item](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms34.png) canEditUser@contoso.com ユーザーに関連付けられているデータが表示されます。![ContactManager window](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms35.png)  
+6. **[dbo.AspNetUsers]** テーブルを右クリックし、**[データの表示]** を選択します。![[データの表示] メニュー項目](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms34.png) canEditUser@contoso.com ユーザーに関連付けられているデータが表示されます。![ContactManager ウィンドウ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms35.png)  
 
 ###データベースを編集して、管理者ロールにユーザーを追加する 
 先ほどは、コードを使用してユーザーを canEdit ロールに追加しました。それ以外にも、メンバーシップ テーブル内のデータを直接操作する方法もあります。以下の手順では、その方法を使用してロールにユーザーを追加します。
 
-1. **SQL Server オブジェクト エクスプローラー**で **[dbo.AspNetUserRoles]** を右クリックし、**[データの表示]** を選択します。![AspNetUserRoles data](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms36.png)  
-2. *RoleId* をコピーし、空の (新しい) 行に貼り付けます。![AspNetUserRoles data](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms37.png)  
+1. **SQL Server オブジェクト エクスプローラー**で **[dbo.AspNetUserRoles]** を右クリックし、**[データの表示]** を選択します。![AspNetUserRoles データ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms36.png)  
+2. *RoleId* をコピーし、空の (新しい) 行に貼り付けます。![AspNetUserRoles データ](./media/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/SecureWebForms37.png)  
 3. **dbo.AspNetUsers** テーブルで、ロールを割り当てるユーザーを特定し、ユーザーの *ID* をコピーします。
 4. コピーした *ID* を、**AspNetUserRoles** テーブルの新しい行の **[UserId]** フィールドに追加します。  
 
->[AZURE.NOTE]もっと簡単にユーザーとロールを管理できるように現在ツールを作成しています。
+>[AZURE.NOTE]  
+もっと簡単にユーザーとロールを管理できるように現在ツールを作成しています。
 
 ##次のステップ
-ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)](http://www.asp.net/web-forms)」や、[Microsoft Azure のチュートリアルとガイド](http://azure.microsoft.com/documentation/services/web-sites/#net)を参照してください。
+ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)](http://www.asp.net/web-forms)」や、[Microsoft Azure のチュートリアルとガイド](https://azure.microsoft.com/documentation/services/web-sites/#net)を参照してください。
 
 このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力を得て執筆した MVC チュートリアル「[認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」の内容に基づいています。
 
@@ -702,4 +708,4 @@ ASP.NET Web フォームの詳細については、ASP.NET Web アプリの「[L
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

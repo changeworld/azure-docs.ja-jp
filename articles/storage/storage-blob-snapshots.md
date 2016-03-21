@@ -1,19 +1,19 @@
 <properties
-	pageTitle="BLOB のスナップショットの作成 | Microsoft Azure"
-	description="Azure Storage BLOB のスナップショットを作成するためのガイド"
+	pageTitle="BLOB の読み取り専用スナップショットの作成 | Microsoft Azure"
+	description="BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/01/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/19/2016"
 	ms.author="tamram"/>
 
 # BLOB のスナップショットの作成
@@ -97,7 +97,7 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 - 2 つのブロックに格納されているデータが同一であるかどうかを判断する方法は、Azure BLOB サービスには用意されていません。アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。料金は一意のブロックに対して発生するため、スナップショットがある BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
 
-> [AZURE.NOTE]不要な料金を避けるためにも、スナップショットは慎重に管理してください。スナップショットは次のように管理することをお勧めします。
+> [AZURE.NOTE] 不要な料金を避けるためにも、スナップショットは慎重に管理してください。スナップショットは次のように管理することをお勧めします。
 
 > - まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
 
@@ -125,4 +125,4 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

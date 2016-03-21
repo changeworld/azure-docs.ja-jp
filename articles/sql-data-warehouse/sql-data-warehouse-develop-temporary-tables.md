@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/19/2015"
-   ms.author="twounder;JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の一時テーブル
 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。一時テーブルはローカル一時テーブルとして定義されます。SQL Server テーブルとは異なり、セッション内のどこからでもアクセスできます。
@@ -147,4 +147,4 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

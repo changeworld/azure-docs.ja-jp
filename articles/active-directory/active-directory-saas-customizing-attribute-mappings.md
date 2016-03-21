@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/09/2016"
 	ms.author="markusvi"/>
 
 
@@ -26,7 +26,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 Azure AD ポータルでこの機能にアクセスするには、SaaS アプリケーションのツールバーで [属性] をクリックします。
 
-> [AZURE.NOTE]**[属性]** リンクは SaaS アプリケーションでユーザー プロビジョニングを有効にしている場合にのみ使用できます。
+> [AZURE.NOTE] **[属性]** リンクは SaaS アプリケーションでユーザー プロビジョニングを有効にしている場合にのみ使用できます。
 
 
 ![Salesforce][1]
@@ -81,8 +81,16 @@ SaaS アプリケーションが正常に機能するために必要となる属
 Microsoft Azure AD では、同期プロセスの非常に効率的な実装を提供します。初期化された環境では、更新が必要なオブジェクトのみが同期サイクル中に処理されます。属性マッピングの更新は、同期サイクルのパフォーマンスに影響を与えます。これは、属性マッピングの構成を更新するには、すべての管理オブジェクトを再評価する必要があるためです。このため、推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
 
 
+##関連記事
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+- [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+- [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-customizing-attribute-mappings/ic765497.png
@@ -90,4 +98,4 @@ Microsoft Azure AD では、同期プロセスの非常に効率的な実装を�
 [3]: ./media/active-directory-saas-customizing-attribute-mappings/ic775420.png
 [4]: ./media/active-directory-saas-customizing-attribute-mappings/ic775421.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -3,7 +3,7 @@
 	description="Azure でクラシック デプロイ モデルを使用して作成した Linux 仮想マシンに Jupyter/IPython Notebook をデプロイする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="crwilcox"
 	manager="wpickett"
 	editor=""
 	tags=“azure-service-management,azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/20/2015"
-	ms.author="huvalo"/>
+	ms.date="11/10/2015"
+	ms.author="crwilcox"/>
 
 # Azure での Jupyter Notebook
 
@@ -41,7 +41,7 @@ Notebook サービスが自分のシナリオに合っていない場合でも�
 
 [ここ][portal-vm-linux]に記載されている手順に従って、*Ubuntu* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、Ubuntu Server 14.04 LTS を使用します。ユーザー名は *azureuser* を想定しています。
 
-仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: *****、および宛先 (プライベート) ポート: **9999**。
+仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: *****、および宛先 (プライベート) ポート: **9999**。
 
 ![スクリーンショット](./media/virtual-machines-python-ipython-notebook/azure-add-endpoint.png)
 
@@ -195,8 +195,8 @@ Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-[portal-vm-linux]: https://azure.microsoft.com/JA-JP/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
+[portal-vm-linux]: https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [リポジトリ]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

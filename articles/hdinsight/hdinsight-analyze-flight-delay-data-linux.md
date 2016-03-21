@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Linux ベースの HDInsight での Hive を使用したフライトの遅延データの分析 | Microsoft Azure" 
-	description="Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL データベースにデータをエクスポートする方法について説明します。" 
+	description="Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL Database にデータをエクスポートする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="Blackmist" 
@@ -14,24 +14,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="02/03/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
 
 Linux ベースの HDInsight で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
 
-> [AZURE.NOTE]このドキュメントの各部分は Windows ベースの HDInsight クラスター (Python と Hive など) で使用できますが、多くの手順は Linux ベースのクラスターに固有のものです。Windows ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
+> [AZURE.NOTE] このドキュメントの各部分は Windows ベースの HDInsight クラスター (Python と Hive など) で使用できますが、多くの手順は Linux ベースのクラスターに固有のものです。Windows ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 
 ###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __HDInsight クラスター__。新しい Linux ベースの HDInsight クラスターを作成する手順については、「[Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
-- __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がまだない場合、SQL Database を作成するには、「[How to create and configure an Azure SQL Database (Azure SQL Database を作成して構成する方法)](../sql-database/sql-database-create-configure.md)」をご覧ください。
+- __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がない場合は、[SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
 - __Azure CLI__。Azure CLI をインストールしていない場合、詳しい手順については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
@@ -53,7 +53,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 	__FILENAME__ を zip ファイルの名前に置き換えます。__USERNAME__ を HDInsight クラスターの SSH ログインに置き換えます。CLUSTERNAME を HDInsight クラスターの名前に置き換えます。
 	
-	> [AZURE.NOTE]パスワードを使用して SSH ログインを認証する場合、パスワードの入力を求められます。公開キーを使用している場合、`-i` パラメーターを使用し、対応する秘密キーのパスを指定することが必要な場合があります。たとえば、「`scp -i ~/.ssh/id_rsa FILENAME.csv USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように指定します。
+	> [AZURE.NOTE] パスワードを使用して SSH ログインを認証する場合、パスワードの入力を求められます。公開キーを使用している場合、`-i` パラメーターを使用し、対応する秘密キーのパスを指定することが必要な場合があります。たとえば、「`scp -i ~/.ssh/id_rsa FILENAME.csv USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように指定します。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。
 
@@ -63,7 +63,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 	
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows)
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 	
 3. 接続したら、次のコマンドを使用して .zip ファイルを解凍します。
 
@@ -179,7 +179,7 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 		data:    Server Name i1qwc540ts
 		info:    sql server create command OK
 
-> [AZURE.IMPORTANT]このコマンドによって返されるサーバーの名前に注意してください。これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は `<shortname>.database.windows.net` です。
+> [AZURE.IMPORTANT] このコマンドによって返されるサーバーの名前に注意してください。これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は `<shortname>.database.windows.net` です。
 
 2. 次のコマンドを使用して **sqooptest** という名前のデータベースを SQL Database サーバーに作成します。
 
@@ -187,13 +187,13 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
     コマンドが完了すると、"OK" というメッセージが返されます。
 
-	> [AZURE.NOTE]アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
+	> [AZURE.NOTE] アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
 	>
 	> `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
 ##SQL Database テーブルの作成
 
-> [AZURE.NOTE]SQL Database に接続してテーブルを作成するには、多くの方法があります。次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
+> [AZURE.NOTE] SQL Database に接続してテーブルを作成するには、多くの方法があります。次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
 
 1. SSH を使用して Linux ベースの HDInsight クラスターに接続し、SSH セッションから次の手順を実行します。
 
@@ -285,7 +285,6 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-[powershell-install-configure]: ../install-configure-powershell.md
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
@@ -305,4 +304,4 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,25 +1,25 @@
-<properties 
-    pageTitle="C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Azure" 
-    description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。" 
-    documentationCenter=".net" 
+<properties
+    pageTitle="C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Azure"
+    description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。"
+    documentationCenter=".net"
     services="storage"
-    authors="tamram" 
-    manager="carolz" 
-    editor=""/>
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/23/2015" 
-    ms.author="zhimingyuan;tamram"/>
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/14/2016"
+    ms.author="dineshm"/>
 
 # C++ での Azure Storage のリソース一覧の取得
 
 一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
 
->[AZURE.NOTE]このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 1.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 2.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
 
 ストレージ クライアント ライブラリを使用すると、Azure Storage 内のオブジェクトをさまざまな方法で一覧取得または照会することができます。この記事では、以下のシナリオを扱います。
 
@@ -33,7 +33,7 @@
 
 ## 非同期と同期
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ (プロジェクト Casablanca)](http://casablanca.codeplex.com/) 上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。次に例を示します。
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。次に例を示します。
 
 	pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 
@@ -54,7 +54,7 @@ C++ 用ストレージ クライアント ライブラリは [C++ REST ライブ
 
 セグメント化された一覧取得操作に対する応答は次のとおりです。
 
--	<i>\_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。 
+-	<i>\_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
 -	*continuation\_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。返される結果がそれ以上無い場合、継続トークンは null になります。
 
 たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。コードは、「[サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)」にあります。
@@ -75,15 +75,15 @@ C++ 用ストレージ クライアント ライブラリは [C++ REST ライブ
 	        process_diretory(it->as_directory());
 	    }
 	}
-	
+
 	    token = segment.continuation_token();
 	}
 	while (!token.empty());
 
 1 ページで返される結果の数は、各 API のオーバーロードのパラメーター *max\_results* を使用して制御できることに注意してください。次に例を示します。
-	
-	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing, 
-		blob_listing_details::values includes, int max_results, const continuation_token& token, 
+
+	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
+		blob_listing_details::values includes, int max_results, const continuation_token& token,
 		const blob_request_options& options, operation_context context)
 
 *max\_results* パラメーターを指定しない場合、1 ページでは、既定の上限値である 5000 個までの結果が返されます。
@@ -124,7 +124,7 @@ SDK のこのようにどん欲な一覧取得 API は、C#、Java、JavaScript 
 	    {
 	        process_entity(*it);
 	    }
-	
+
 	    token = segment.continuation_token();
 	} while (!token.empty());
 
@@ -162,7 +162,7 @@ C# または Oracle Java SDK を使用しているのであれば、列挙型プ
 
 どん欲な一覧取得と比べて、限定的な一覧取得では必要な場合にのみデータをフェッチします。この一覧取得では、次の反復子が次のセグメントへと移動した場合にのみ、Azure Storage から秘密裏にデータをフェッチします。そのため、メモリ使用量は制限されたサイズに抑えられ、動作は高速になります。
 
-限定的一覧取得 API は、バージョン 1.0.0 の C++ 用ストレージ クライアント ライブラリに含まれています。
+限定的一覧取得 API は、バージョン 2.2.0 の C++ 用ストレージ クライアント ライブラリに含まれています。
 
 ## まとめ
 
@@ -182,6 +182,6 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ 用 Azure Storage クライアント ライブラリのドキュメント](http://azure.github.io/azure-storage-cpp/)
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
--	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

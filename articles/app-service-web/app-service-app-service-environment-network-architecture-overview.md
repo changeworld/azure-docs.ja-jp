@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="02/26/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境のネットワーク アーキテクチャの概要
@@ -30,6 +30,8 @@ App Service 環境は、常にパブリック仮想 IP アドレス (VIP) を持
 ![一般的なネットワーク フロー][GeneralNetworkFlows]
 
 App Service 環境は、さまざまな顧客のプライベート エンドポイントと通信できます。たとえば、App Service 環境で実行されるアプリは、同じ仮想ネットワーク トポロジ内の IaaS 仮想マシンで実行されているデータベース サーバーに接続できます。
+
+>[AZURE.IMPORTANT] ネットワーク図を見ると、"その他のコンピューター リソース" が App Service 環境とは別のサブネットにデプロイされています。ASE と同じサブネットにリソースをデプロイすると、(特定の ASE 内のルーティングを除き) ASE からそれらのリソースへの接続がブロックされます。代わりに (同じ VNET 内の) 別のサブネットにデプロイします。そうすると、App Service 環境から接続できるようになります。追加の構成は必要ありません。
 
 App Service 環境は、App Service 環境の管理と運用を行うために必要な SQL DB と Azure Storage リソースとも通信します。Azure Storage 環境が通信する SQL と Storage リソースの一部は、App Service 環境と同じリージョン内に配置されますが、それ以外のリソースは、リモート Azure リージョンに配置されます。その結果、App Service 環境が正常に機能するためには、インターネットへの発信接続が常に必要です。
 
@@ -87,4 +89,4 @@ App Service 環境への発信インターネット アクセスを許可する�
 [OutboundNetworkAddresses]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundNetworkAddresses-1.png
 [CallsBetweenAppServiceEnvironments]: ./media/app-service-app-service-environment-network-architecture-overview/CallsBetweenEnvironments-1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

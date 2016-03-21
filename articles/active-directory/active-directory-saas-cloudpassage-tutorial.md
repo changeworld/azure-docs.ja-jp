@@ -3,7 +3,7 @@
 	description="Azure Active Directory と CloudPassage の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
-	ms.author="markvi"/>
+	ms.date="01/26/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と CloudPassage の統合
@@ -23,7 +23,8 @@
 
 - CloudPassage にアクセスする Azure AD ユーザーを制御できます。 
 - ユーザーが自分の Azure AD アカウントで自動的に CloudPassage にサインオンできるようにします (シングル サインオン)。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。 
+- 
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -35,7 +36,7 @@ CloudPassage と Azure AD の統合を構成するには、次のものが必要
 - CloudPassage でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -56,12 +57,12 @@ Azure AD への CloudPassage の統合を構成するには、ギャラリーか
 
 ### ギャラリーから CloudPassage を追加するには、次の手順に従います。
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br> ![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くために、ディレクトリ ビューで、上部のメニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]
-4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]
+4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>![アプリケーション][4]
 6. 検索ボックスに、「**CloudPassage**」と入力します。<br><br>![アプリケーション][5]
 7. 結果ウィンドウで **[CloudPassage]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![アプリケーション][6]
@@ -83,11 +84,11 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD シングル サインオンを有効にし、CloudPassage アプリケーションでのシングル サインオンを構成することです。<br> CloudPassage アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットにこの例を示します。<br><br>![Configure Single Sign-On][21]
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD シングル サインオンを有効にし、CloudPassage アプリケーションでのシングル サインオンを構成することです。<br> CloudPassage アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットにこの例を示します。<br><br>![Configure Single Sign-On][21]
 
 **CloudPassage との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure AD ポータルの **CloudPassage** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][7]
+1. Azure AD クラシック ポータルの **CloudPassage** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][7]
 
 2. **[ユーザーの CloudPassage へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On][8]
 
@@ -101,41 +102,41 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 
 
-4. **[CloudPassage でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。<br><br>![シングル サインオンの構成][11]
+4. **[CloudPassage でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。<br><br>![Configure Single Sign-On][11]
 
 5. 別の Web ブラウザーのウィンドウで、管理者として CloudPassage 企業サイトにサインオンします。
 
-6. 上部のメニューの **[Settings]** をクリックし、次に **[Site Administration]** をクリックします。 <br><br> ![シングル サインオンの構成][12]
+6. 上部のメニューの **[Settings]** をクリックし、次に **[Site Administration]** をクリックします。 <br><br> ![Configure Single Sign-On][12]
 
-7. **[Authentication Settings]** タブをクリックします。<br><br> ![シングル サインオンの構成][13]
-
-
-8. **[Single Sign-On Settings]** セクションで、次の手順に従います。<br><br>![シングル サインオンの構成][14]
+7. **[Authentication Settings]** タブをクリックします。<br><br> ![Configure Single Sign-On][13]
 
 
-     8\.1.Azure ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[SAML issuer URL]** テキスト ボックスに貼り付けます。
+8. **[Single Sign-On Settings]** セクションで、次の手順に従います。<br><br>![Configure Single Sign-On][14]
 
-     8\.2.Azure ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[サービス プロバイダー (SP) によって開始されたエンドポイント]** の値をコピーし、**[SAML endpoint URL]** テキスト ボックスに貼り付けます。
 
-     8\.3.Azure ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[ログアウト URL]** の値をコピーし、**[Logout landing page]** テキスト ボックスに貼り付けます。
+     8\.1.Azure クラシック ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[SAML issuer URL]** テキスト ボックスに貼り付けます。
+
+     8\.2.Azure クラシック ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[サービス プロバイダー (SP) によって開始されたエンドポイント]** の値をコピーし、**[SAML endpoint URL]** テキスト ボックスに貼り付けます。
+
+     8\.3.Azure クラシック ポータルの **[CloudPassage でのシングル サインオンの構成]** ダイアログ ページで **[ログアウト URL]** の値をコピーし、**[Logout landing page]** テキスト ボックスに貼り付けます。
 
      8\.4.ダウンロードした証明書から **Base-64** でエンコードされたファイルを作成します。
           
-      >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+      >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
      8\.5.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーし、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
 
      8\.6**[保存]** をクリックします。
 
 
-9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成][15]
+9. Azure AD クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On][15]
 
 
-10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![シングル サインオンの構成][16]
+10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Configure Single Sign-On][16]
 
 
 
-11. 上部のメニューの **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。<br><br>![シングル サインオンの構成][17]
+11. 上部のメニューの **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。<br><br>![Configure Single Sign-On][17]
 
 12. 必要なユーザー属性を追加するために、次の表の各行に対して、次の手順を実行します。<br>
 
@@ -158,33 +159,33 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 ### Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br><br> [ユーザー] の一覧で **[Britta Simon]** を選択します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_01.png)
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br><br> [ユーザー] の一覧で **[Britta Simon]** を選択します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_01.png)
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_02.png) 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_02.png) 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. ユーザーの一覧を表示するために、上部のメニューの **[ユーザー]** をクリックします。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_03.png)
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_03.png)
  
-4. **[ユーザーの追加]** ダイアログを開くために、下部にあるツール バーの **[ユーザーの追加]** をクリックします。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_04.png)
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_04.png)
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_05.png)
   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
   2. **[ユーザー名]** テキスト ボックスに「**BrittaSimon**」と入力します。
   3. [次へ] をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_06.png)
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_06.png)
   1. **[名]** ボックスに「**Britta**」と入力します。  
   2. **[姓]** ボックスに「**Simon**」と入力します。
   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-  4. **[ロール]** の一覧で **[ユーザー]** を選択します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
   5. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_07.png)
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_08.png)
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_08.png)
   1. **[新しいパスワード]** の値を書き留めます。
   2. **[完了]** をクリックします。   
 
@@ -230,12 +231,12 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 
 **Britta Simon を CloudPassage に割り当てるには、次の手順を実行します。**
 
-1. Azure ポータルで、アプリケーション ビューを開くために、ディレクトリ ビューで、トップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![ユーザーの割り当て][26]
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![ユーザーの割り当て][26]
 2. アプリケーションの一覧で **[CloudPassage]** を選択します。<br><br>![ユーザーの割り当て][27]
 1. 上部のメニューの **[ユーザー]** をクリックします。<br> <br><br>![ユーザーの割り当て][25]
-1. [ユーザー] の一覧で **[Britta Simon]** を選択します。
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーの **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][29]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][29]
 
 
 
@@ -281,4 +282,4 @@ CloudPassage での Azure AD シングル サインオンを構成してテス�
 [29]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_16.png
 [30]: ./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_17.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

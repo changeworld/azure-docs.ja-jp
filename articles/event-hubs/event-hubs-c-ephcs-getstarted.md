@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.workload="core"
+	ms.workload="na"
 	ms.tgt_pltfrm="c"
 	ms.devlang="csharp"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="12/09/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -24,13 +24,13 @@
 
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、「[Event Hubs の概要]」をご覧ください。
+詳細については、「[Event Hubs の概要][]」をご覧ください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# [イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# [イベント プロセッサ ホスト][] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要です。
 
-+ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines-linux-tutorial.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
++ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-tutorial.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
 
 + Microsoft Visual Studio Express 2013 for Windows
 
@@ -38,7 +38,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 ## Event Hub を作成する
 
-1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
@@ -79,7 +79,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 これで、アプリケーションを実行する準備が整いました。
 
-1.	Visual Studio から **Receiver** プロジェクトを実行し、すべてのパーティションの受信側が起動するまで待機します。
+1.	Visual Studio 内で **Receiver** プロジェクトを実行し、すべてのパーティションに対してレシーバーが起動するまで待機します。
 
    	![][21]
 
@@ -91,10 +91,10 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-- [Event Hubs を使用する完全なサンプル アプリケーション]
-- [Event Hubs でイベント処理の拡張]サンプル
-- Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
-- [Event Hubs の概要]
+- [Event Hub を使用する完全なサンプル アプリケーション][]
+- [Event Hubs でイベント処理の拡張][]サンプル
+- Service Bus キューを使用する[キューに格納されたメッセージング ソリューション][]
+- [Event Hubs の概要][]
 
 <!-- Images. -->
 [1]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub1.png
@@ -110,11 +110,11 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [24]: ./media/event-hubs-c-ephcs-getstarted/receive-eph-c.png
 
 <!-- Links -->
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
-[キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

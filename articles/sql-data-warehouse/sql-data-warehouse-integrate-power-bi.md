@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/23/2015"
-   ms.author="lodipalm"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Power BI の使用
 Azure SQL Database の場合と同様、SQL Data Warehouse Direct Connect を使用すると、強力な論理プッシュ ダウンと共に Power BI の分析機能を活用できます。Direct Connect では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。これを SQL Data Warehouse のスケールで組み合わすことで、テラバイト単位のデータに対して動的レポートを数分で作成できます。さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。
@@ -33,7 +33,7 @@ Direct Connect を使用するときは、次の点に注意してください�
 ## [Power BI で開く] ボタンの使用
 SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、[Power BI で開く] ボタンを使用することです。このボタンをクリックすると、Power BI で新しいダッシュボードの作成をシームレスに開始できます。
 
-1.	作成を開始するには、Azure ポータルで SQL Data Warehouse インスタンスに移動します。
+1.	作成を開始するには、Azure クラシック ポータルで SQL Data Warehouse インスタンスに移動します。
 2.	[Power BI で開く] ボタンをクリックします。
 3.	直接サインインできない場合、または Power BI アカウントがない場合は、サインインする必要があります。  
 4.	SQL Data Warehouse の情報があらかじめ入力された SQL Data Warehouse 接続ページにリダイレクトされます。
@@ -50,7 +50,7 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 6.	 新しいデータセットをクリックして、データベース内のすべてのテーブルとビューを確認できます。列を選択すると、ソースにクエリが送信されて、ビジュアルが動的に作成されます。これらのビジュアルは新しいレポートに保存され、ダッシュボードに固定できます。
 
 ## パラメーターの値の検索
-Azure ポータルでは、サーバーの完全修飾名とデータベース名を検索できます。現時点で Azure プレビュー ポータルに表示されるは、SQL Data Warehouse のみであることに注意してください。
+Azure クラシック ポータルでは、サーバーの完全修飾名とデータベース名を検索できます。現時点で Azure ポータルに表示されるは、SQL Data Warehouse のみであることに注意してください。
 
 
 <!--Image references-->
@@ -63,4 +63,4 @@ Azure ポータルでは、サーバーの完全修飾名とデータベース�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

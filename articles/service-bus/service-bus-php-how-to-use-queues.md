@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="10/14/2015" 
+	ms.date="01/26/2016" 
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -26,9 +26,9 @@
 
 ## PHP アプリケーションの作成
 
-Windows Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Windows Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
-> [AZURE.NOTE]PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
+> [AZURE.NOTE] PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
 
 このガイドで使用するサービス機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
@@ -38,21 +38,21 @@ Windows Azure BLOB サービスにアクセスする PHP アプリケーショ�
 
 ## Service Bus を使用するようにアプリケーションを構成する
 
-Azure Service Bus キュー API を使用するには、次の操作を行います。
+Service Bus キュー API を使用するには、次の操作を行います。
 
 1. [require\_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE]この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE] この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
-## Azure Service Bus 接続の設定
+## Service Bus 接続の設定
 
 Service Bus クライアントをインスタンス化するには、まず次の形式の有効な接続文字列が必要です。
 
@@ -108,7 +108,7 @@ Service Bus キューの管理処理は **ServiceBusRestProxy** クラスを使�
 		echo $code.": ".$error_message."<br />";
 	}
 
-> [AZURE.NOTE]`ServiceBusRestProxy` オブジェクトの `listQueues` メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE] `ServiceBusRestProxy` オブジェクトの `listQueues` メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## 方法: キューにメッセージを送信する
 
@@ -209,4 +209,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

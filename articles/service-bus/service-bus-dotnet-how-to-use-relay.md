@@ -9,17 +9,17 @@
 
 <tags
 	ms.service="service-bus"
-	ms.workload="tbd"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="10/07/2015"
+	ms.date="01/26/2016"
 	ms.author="sethm"/>
 
 
 # Azure Service Bus Relay サービスの使用方法
 
-この記事では、Service Bus Relay サービスの使用方法について説明します。サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と、Microsoft Azure .NET SDK の一部である Service Bus アセンブリに含まれている拡張機能を使用しています。Service Bus Relay の詳細については、「[Service Bus のリレー型メッセージング](service-bus-relay-overview.md)」の概要を参照してください。
+この記事では、Service Bus Relay サービスの使用方法について説明します。サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。Service Bus Relay の詳細については、「[Service Bus のリレー型メッセージング](service-bus-relay-overview.md)」の概要を参照してください。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
@@ -39,11 +39,11 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 サービス名前空間を作成するには:
 
-1.  [Azure ポータル][]にログオンします。
+1.  [Azure クラシック ポータル][]にログオンします。
 
-2.  Azure ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  Azure ポータルの下のウィンドウで、**[作成]** をクリックします。
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
 
 	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
@@ -53,17 +53,17 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-	> [AZURE.IMPORTANT]アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
+	> [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
 
 6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** レベル) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
 	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
 
-	作成した名前空間が Azure ポータルに表示され、アクティブになります。これには少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
+	作成した名前空間がポータルに表示され、アクティブになります。これには少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してリレー接続の作成などの管理操作を実行するには、名前空間の共有アクセス署名 (SAS) の承認規則を構成する必要があります。SAS の詳細については、「[Service Bus での共有アクセス署名認証][]」を参照してください。
+新規作成した名前空間に対してリレー接続の作成などの管理操作を実行するには、名前空間の Shared Access Signature (SAS) の承認規則を構成する必要があります。SAS の詳細については、「[Service Bus での Shared Access Signature 認証][]」を参照してください。
 
 1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
 
@@ -75,7 +75,7 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 ## Service Bus NuGet パッケージの取得
 
-Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -265,17 +265,13 @@ using (var ch = cf.CreateChannel())
 
 これで、Service Bus Relay サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-- [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
+- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 - Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
-  [Create a Service Namespace]: #create_namespace
-  [Obtain the Default Management Credentials for the Namespace]: #obtain_credentials
-  [Get the Service Bus NuGet Package]: #get_nuget_package
-  [How to: Use Service Bus to Expose and Consume a SOAP Web Service  with TCP]: #how_soap
-  [Azure ポータル]: http://manage.windowsazure.com
-  [Service Bus での共有アクセス署名認証]: service-bus-shared-access-signature-authentication.md
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
+  [Service Bus での Shared Access Signature 認証]: service-bus-shared-access-signature-authentication.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

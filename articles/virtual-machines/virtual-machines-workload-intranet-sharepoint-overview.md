@@ -6,7 +6,7 @@
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="12/17/2015"
 	ms.author="josephd"/>
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
-このトピックには、従来のデプロイ モデルを使用して、イントラネットのみの SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。ファームには次のコンピューターが含まれます。
+このトピックには、イントラネットのみの SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。ファームには次のコンピューターが含まれます。
 
 - 2 台の SharePoint Web サーバー
 - 2 台の SharePoint アプリケーション サーバー
@@ -35,9 +35,47 @@
 
 ロールごとに 2 台のマシンで高可用性を保証します。すべての仮想マシンは 1 つのリージョンに存在します。特定のロール用の仮想マシンの各グループは、専用の可用性セットに含まれます。
 
+## 部品表
+
+この基本的な構成には、次の一連の Azure サービスとコンポーネントが必要です。
+
+- 9 つの仮想マシン
+- 4 つの追加データ ディスク (ドメイン コント ローラーと、SQL サーバーを実行する仮想マシン用)
+- 4 つの可用性セット
+- 1 つのクロスプレミス仮想ネットワーク
+- 1 つのストレージ アカウント
+- 1 つの Azure サブスクリプション
+
+こちらが仮想マシンとそれぞれのこの構成に対する既定のサイズになります。
+
+項目 | 仮想マシンの説明 | ギャラリー イメージ | 既定サイズ
+--- | --- | --- | ---
+1\. | 最初のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2
+2\. | 2 番目のドメイン コントローラー | Windows Server 2012 R2 Datacenter | A2
+3\. | 最初のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+4\. | 2 番目のデータベース サーバー | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+5\. | クラスターのマジョリティ ノード | Windows Server 2012 R2 Datacenter | A1
+6\. | 最初の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+7\. | 2 番目の SharePoint アプリケーション サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+8\. | 最初の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+9\. | 2 番目の SharePoint Web サーバー | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4
+
+この構成の推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
+
+1. [**モジュール**] で、[**コンピューティング**] をクリックし、[**仮想マシン**] を必要なだけクリックして 9 つの仮想マシンを作成してください。
+2. 各仮想マシンで次を選択してください。
+	- 目的のリージョン
+	- 種類には **Windows**
+	- 価格レベルには **Standard**
+	- **インスタンスのサイズ**には、上記の表での既定のサイズもしくは目的のサイズ
+
+> [AZURE.NOTE] Azure 料金計算ツールでは、SQL Server 2014 Enterprise を実行している 2 つの仮想マシンの SQL Server ライセンスの追加のコストは含まれません。詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションを参照してください。
+
+## デプロイのフェーズ
+
 この構成を次のフェーズでデプロイします。
 
-- [フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)。ストレージ アカウント、クラウド サービス、およびクロスプレミス仮想ネットワークを作成します。
+- [フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)。ストレージ アカウント、可用性セット、およびクロスプレミス仮想ネットワークを作成します。
 - [フェーズ 2: ドメイン コントローラーを構成する](virtual-machines-workload-intranet-sharepoint-phase2.md)。レプリカ Active Directory ドメイン サービス (AD DS) ドメイン コントローラーを作成して構成します。
 - [フェーズ 3: SQL Server インフラストラクチャを構成する](virtual-machines-workload-intranet-sharepoint-phase3.md)。SQL Server 仮想マシンを作成して構成し、SharePoint 用に準備して、クラスターを作成します。
 - [フェーズ 4: SharePoint サーバーを構成する](virtual-machines-workload-intranet-sharepoint-phase4.md)。4 つの SharePoint 仮想マシンを作成して構成します。
@@ -50,30 +88,17 @@
 次の点に注意してください。
 
 - SharePoint の実装に関する経験が豊富な場合は、フェーズ 3 ～ 5 の指示を自由に調整して、ニーズに最も適したファームを構築してください。
-- 既存の Azure ハイブリッド クラウド実装が既にある場合は、フェーズ 1 および 2 の指示を自由に調整するかスキップし、適切なサブネットで新しい SharePoint ファームをホストしてください。
-- すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
+- 既存の Azure ハイブリッド クラウド デプロイが既にある場合は、フェーズ 1 および 2 の指示を自由に調整するかスキップし、適切なサブネットで新しい SharePoint ファームをホストしてください。
+- すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を使用できます。
 
 この構成の開発/テスト環境または概念実証環境を構築する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)」を参照してください。
 
 SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
 
-> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
+> [AZURE.NOTE] Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](https://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## 次のステップ
 
-このワークロードの構成を開始するには、「[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)」に進んでください。
+- [フェーズ 1](virtual-machines-workload-intranet-sharepoint-phase1.md) を使用して、このワークロードの構成を開始します。
 
-
-## その他のリソース
-
-[SharePoint と SQL Server AlwaysOn のインフォグラフィック](http://go.microsoft.com/fwlink/?LinkId=394788)
-
-[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)
-
-[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

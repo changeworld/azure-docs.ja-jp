@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="05/20/2015" 
+	ms.date="11/17/2015" 
 	ms.author="huvalo"/>
 	
 # Linux VM での Django Hello World Web アプリケーション
@@ -25,7 +25,7 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]リソース マネージャー モデル。
 
 
 このチュートリアルでは、Linux 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
@@ -45,14 +45,11 @@
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
-1. [ここ][portal-vm]に記載されている手順に従って、*Ubuntu Server 14.04 LTS* ディストリビューションの Azure 仮想マシンを作成します。
+1. [ここ](virtual-machines-linux-tutorial-portal-rm.md)に記載されている手順に従って、*Ubuntu Server 14.04 LTS* ディストリビューションの Azure 仮想マシンを作成します。必要に応じて、SSH 公開キーではなくパスワード認証を選択できます。
 
-  **注:** 仮想マシンの作成*のみ*を行う必要があります。「*仮想マシンを作成後、ログオンする方法*」というセクションの前まで学習してください。
+1. ポート 80 への受信 http トラフィックが許可されるように、[ここ](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)にある手順に従って、ネットワーク セキュリティ グループを編集します。
 
-1. Azure で、ポート **80** トラフィックを Web から仮想マシン上のポート **80** に転送します。
-	* Azure ポータルで新しく作成した仮想マシンに移動し、*[エンドポイント]* タブをクリックします。
-	* 画面の下部にある *[追加]* ボタンをクリックします。![エンドポイントの追加](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-add-endpoint.png)
-	* *TCP* プロトコルの*パブリック ポート 80* を*プライベート ポート 80* として開きます。![port80](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-port80.png)
+1. 既定では、新しい仮想マシンに完全修飾ドメイン名 (FQDN) は含まれていません。[ここ](virtual-machines-create-fqdn-on-portal.md)にある手順に従って、作成することができます。この手順を省略しても、このチュートリアルを完了できます。
 
 ## <a id="setup"></a>開発環境の設定
 
@@ -62,14 +59,14 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 1.  新しい**ターミナル** ウィンドウを起動します。
     
-1.  次のコマンドを入力して、Azure VM に接続します。
+1.  次のコマンドを入力して、Azure VM に接続します。FQDN を作成していない場合は、Azure クラシック ポータルの仮想マシン概要に表示されるパブリック IP アドレスを使用して接続できます。
 
 		$ ssh yourusername@yourVmUrl
 
 1.  次のコマンドを入力して、Django をインストールします。
 
-		$ sudo apt-get install python-setuptools
-		$ sudo easy_install django
+		$ sudo apt-get install python-setuptools python-pip
+		$ sudo pip install django
 
 1.  次のコマンドを入力して、Apache と mod-wsgi をインストールします。
 
@@ -78,7 +75,7 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 ## 新しい Django アプリケーションの作成
 
-1.  上のセクションで使用した**ターミナル** ウィンドウを開き、SSH キーを使用して VM にログインします。
+1.  上のセクションで使用した**ターミナル** ウィンドウを開き、SSH キーを使用して仮想マシンにログインします。
     
 1.  次のコマンドを入力して、新しい Django プロジェクトを作成します。
 
@@ -104,10 +101,10 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 ## Apache の設定
 
-1.  Apache 仮想ホスト構成ファイル **/etc/apache2/sites-available/helloworld.conf** を作成します。下記にコンテンツを設定します。*yourVmUrl* は、使用するマシンの実際の URL に置き換えてください (たとえば、*pyubuntu.cloudapp.net*)。
+1.  Apache 仮想ホスト構成ファイル **/etc/apache2/sites-available/helloworld.conf** を作成します。下記にコンテンツを設定し、*yourVmName* を使用しているマシンの実際の名前に置き換えてください (例: *pyubuntu*)。
 
 		<VirtualHost *:80>
-		ServerName yourVmUrl
+		ServerName yourVmName
 		</VirtualHost>
 		WSGIScriptAlias / /var/www/helloworld/helloworld/wsgi.py
 		WSGIPythonPath /var/www/helloworld
@@ -129,8 +126,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
 
-
-[portal-vm]: /manage/linux/tutorials/virtual-machine-from-gallery/
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

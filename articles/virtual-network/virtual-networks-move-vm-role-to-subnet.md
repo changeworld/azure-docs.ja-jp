@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/04/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # VM またはロール インスタンスを別のサブネットに移動する方法
@@ -51,4 +51,4 @@ VM に対して静的 DIP が指定されている場合は、VM を新しいサ
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

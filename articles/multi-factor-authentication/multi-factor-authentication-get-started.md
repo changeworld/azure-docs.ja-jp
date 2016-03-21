@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/24/2015" 
+	ms.date="03/03/2016" 
 	ms.author="billmath"/>
 
 #ユーザーに適した多要素のセキュリティ ソリューションの選択
@@ -42,7 +42,7 @@ VPN、RDG などのリモート アクセス| |* |
 
 ## ユーザーが配置される場所
 
-次に、ユーザーが位置する場所で異なりますが、クラウドでの多要素認証か、MFA Server を使用するオンプレミスの多要素認証か、使用する適切なソリューションを判断できます。
+次に、ユーザーが配置される場所に応じて、使用する適切なソリューションを判断できます。これは、クラウドでの多要素認証か、MFA Server を使用するオンプレミスの多要素認証のどちらかです。
 
 
 
@@ -65,20 +65,20 @@ DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、A
 第 2 要素としての双方向 SMS | | ● 
 第 2 要素としてのハードウェア トークン | | ● 
 MFA をサポートしていないクライアントのアプリ パスワード | ● |  
-認証方法の管理制御 | | ● 
+認証方法の管理制御 | (パブリック プレビュー版) | ● 
 PIN モード | | ●
 不正アクセスのアラート | ● | ●
 MFA レポート | ● | ● 
-ワンタイム バイパス | ● | ● 
+ワンタイム バイパス | | ● 
 音声通話のカスタムあいさつ文 | ● | ● 
 音声通話のカスタマイズ可能な発信元 ID | ● | ● 
 信頼できる IP | ● | ● 
-記憶されたデバイスでの MFA の中断 (パブリック プレビュー) | ● |  
+信頼済みデバイスの MFA の記憶 (パブリック プレビュー) | ● |  
 条件付きアクセス | ● | ● 
-キャッシュ | ● | ● 
+キャッシュ | | ● 
 
 クラウドの多要素認証を使用するか、オンプレミスの MFA Server を使用するかを決定しました。これで、Azure Multi-Factor Authentication の設定と使用を開始できます。**適したシナリオのアイコンを選択してください。**
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

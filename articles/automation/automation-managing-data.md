@@ -3,7 +3,7 @@
    description="この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。現在は、データの保持、Azure Automation のバックアップ、Azure Automation での障害復旧が含まれています。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="SnehaGunda"
    manager="stevenka"
    editor="tysonn" />
 <tags 
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/02/2015"
+   ms.date="02/03/2016"
    ms.author="bwren;sngun" />
 
 # Azure Automation のデータの管理
@@ -30,8 +30,8 @@ Azure Automation は、90 日を超えるジョブを自動的に削除した後
 |データ|ポリシー|
 |:---|:---|
 |アカウント|ユーザーによってアカウントが削除された日から 90 日後に完全に消去されます。|
-|アセット|ユーザーによって資産が削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
-|Modules (モジュール)|ユーザーによってモジュールが削除された日から 90 日後に、またはモジュールを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
+|資産|ユーザーによって資産が削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
+|モジュール|ユーザーによってモジュールが削除された日から 90 日後に、またはモジュールを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
 |Runbooks|ユーザーによってリソースが削除された日から 90 日後に、またはリソースを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。|
 |ジョブ|最終更新日から 90 日後に削除された後、完全に消去されます。これは、ジョブが完了、停止、または中断された後に実行されます。|
 |ノード構成/MOF ファイル| 古いノード構成は、新しいノード構成が生成された後、90 日間で完全に削除されます。|
@@ -65,7 +65,7 @@ Azure Automation から証明書をエクスポートすることはできませ
 
 ### DSC の構成
 
-Microsoft Azure 管理ポータルまたは Windows PowerShell の [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) コマンドレットを使用して、構成 をスクリプト ファイルにエクスポートできます。これらの構成は、別のオートメーション アカウントでインポートして使用できます。
+Microsoft Azure 管理ポータルまたは Windows PowerShell の [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) コマンドレットを使用して、構成をスクリプト ファイルにエクスポートできます。これらの構成は、別のオートメーション アカウントでインポートして使用できます。
 
 
 ##Azure Automation での geo レプリケーション
@@ -84,4 +84,4 @@ Azure Automation アカウントでの標準である geo レプリケーショ�
 
 万一、プライマリ リージョンのデータが失われた場合、Microsoft はその復旧を試みます。プライマリ リージョンを復元できない場合は、geo フェールオーバーが実行されます。影響を受けた顧客には、サブスクリプションを通じてこのことが通知されます。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/29/2015"
+   ms.date="01/27/2016"
    ms.author="tomfitz"/>
 
 # ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する
 
 ## 概要
-アプリケーションでサブスクリプションのリソースにアクセスするか、リソースを変更する必要があるとき、ポータルを利用し、Active Directory アプリケーションを作成し、適切なアクセス許可を持つロールにそれを割り当てることができます。ポータルを使用して Active Directory アプリケーションを作成すると、実際、アプリケーションとサービス プリンシパルの両方が作成されます。アクセス許可を設定するとき、サービス プリンシパルを使用します。
+リソースへのアクセスまたは変更が必要な自動プロセスまたはアプリケーションがある場合、クラシック ポータルを使用して Active Directory アプリケーションを作成する方法があります。クラシック ポータルを使用して Active Directory アプリケーションを作成すると、実際にはアプリケーションとサービス プリンシパルの両方が作成されます。アプリケーションの実行には、アプリケーション独自の ID、またはアプリケーションにサインインしたユーザーの ID を使用できます。アプリケーションを認証するこれら 2 つの方法は、対話型 (ユーザーのサインイン) と非対話型 (アプリケーションが用意した独自の資格情報) と呼ばれます。非対話型モードの場合、正しいアクセス許可を持つロールにサービス プリンシパルを割り当てる必要があります。
 
-このトピックでは、Azure ポータルを使用して、新しいアプリケーションとサービス プリンシパルを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、Microsoft Azure ポータルを使用する必要があります。この機能は、今後のリリースで、Azure プレビュー ポータルに追加されます。プレビュー ポータルを使用し、アプリケーションをロールに割り当てることができます。
+このトピックでは、クラシック ポータルを使用して、新しいアプリケーションとサービス プリンシパルを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、クラシック ポータルを使用する必要があります。この機能は、今後のリリースで、Azure ポータルに追加されます。ポータルを使用して、アプリケーションをロールに割り当てることができます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 
 ## 概念
 1. Azure Active Directory (AAD) - クラウド用に構築された ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
@@ -31,9 +31,11 @@
 アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
 
-## アプリケーション オブジェクトとサービス プリンシパル オブジェクトを作成する
+## アプリケーションを作成する
 
-1. [ポータル](https://manage.windowsazure.com/)によって Azure アカウントにログインします。
+対話型アプリケーションと非対話型アプリケーションに合わせて Active Directory アプリケーションを作成し、構成する必要があります。
+
+1. [従来のポータル](https://manage.windowsazure.com/)によって Azure アカウントにログインします。
 
 2. 左側のペインで **[Active Directory]** を選択します。
 
@@ -59,16 +61,29 @@
 
      ![新規アプリケーション][10]
 
-6. アプリケーションの名前を入力し、使用するアプリケーションの種類を選択します。アプリケーションのサービス プリンシパルは Azure リソース マネージャーでの認証に使用するため、 **[Web アプリケーションや Web API]** の作成を選択して、[次へ] ボタンをクリックします。
+6. アプリケーションの名前を入力し、使用するアプリケーションの種類を選択します。作成するアプリケーションの種類を選択します。このチュートリアルでは、**[Web アプリケーションや Web API]** を選択して作成し、[次へ] をクリックします。
 
      ![アプリケーションの名前指定][9]
 
-7. アプリのプロパティを入力します。**[サインオン URL]** には、アプリケーションについて説明する web サイトの URI を指定します。Web サイトの存在は検証されません。**[アプリケーション ID/URI]** には、アプリケーションを識別する URI を指定します。エンドポイントの一意性や存在は検証されません。**[完了]** をクリックして、AAD アプリケーションを作成します。
+7. アプリのプロパティを入力します。**[サインオン URL]** には、アプリケーションについて説明する web サイトの URI を指定します。Web サイトの存在は検証されません。**[アプリケーション ID/URI]** には、アプリケーションを識別する URI を指定します。エンドポイントの一意性や存在は検証されません。アプリケーションの種類で **[ネイティブ クライアント アプリケーション]** を選択した場合は、**[リダイレクト URI]** の値を指定します。**[完了]** をクリックして、AAD アプリケーションを作成します。
 
      ![アプリケーションのプロパティ][4]
 
-## アプリケーションの認証キーを作成する
-ポータルでは、ユーザーのアプリケーションが選択されているはずです。
+これでアプリケーションが作成されます。
+
+## クライアント ID とテナント ID の取得
+
+アプリケーションにプログラムでアクセスするときは、アプリケーションの ID が必要です。**[構成]** タブをクリックし、**[クライアント ID]** をコピーします。
+  
+   ![クライアント ID][5]
+
+場合によっては、認証要求とともにテナント ID を渡す必要があります。テナント ID を取得するには、画面の下部にある **[エンドポイントの表示]** を選択して、次のように ID を取得します。
+
+   ![テナント ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
+
+## 認証キーを作成する
+
+独自の資格情報でアプリケーションを実行する場合、そのアプリケーションのキーを作成する必要があります。
 
 1. **[構成]** タブをクリックして、 アプリケーションのパスワードを構成します。
 
@@ -82,23 +97,66 @@
 
      ![保存][13]
 
-     保存されたキーが表示され、それをコピーすることができます。
+     保存されたキーが表示され、それをコピーすることができます。キーは後からは取得できないため、今すぐコピーしてください。
 
      ![保存されたキー][8]
-
-4. これで、サービス プリンシパルとして認証するためにそのキーを使用できます。サインインするためには、**キー**に加えて**クライアント ID** が必要です。**[クライアント ID]** に移動して、それをコピーしてください。
-  
-     ![クライアント ID][5]
-
 
 これで、アプリケーションの準備が完了し、サービス プリンシパルがテナントに作成されました。サービス プリンシパルとしてサインインするときには、以下を使用してください。
 
 * **クライアント ID** - ユーザー名として。
 * **キー** - パスワードとして。
 
-## ロールにアプリケーションを割り当てる
+## 委任されたアクセス許可を設定する
 
-[プレビュー ポータル](https://portal.azure.com)を使用し、アクセスが必要なリソースにアクセスできるロールに Active Directory アプリケーションを割り当てることができます。ロールにアプリケーションを割り当てる方法の詳細については、「[Azure Active Directory のロール ベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
+アプリケーションから、サインイン済みユーザーの代理でリソースにアクセスする場合、そのアプリケーションに対して、他のアプリケーションにアクセスできる委任されたアクセス許可を付与する必要があります。この設定は、**[構成]** タブの **[他のアプリケーションに対するアクセス許可]** で行います。Azure Active Directory の既定では、委任されたアクセス許可は有効です。この委任されたアクセス許可は変更しないでください。
+
+1. **[アプリケーションの追加]** を選択します。
+
+2. リストから **[Azure Service Management API]** を選択します。
+
+      ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
+
+3. **Access Azure Service Management (プレビュー)** の委任されたアクセス許可をサービス管理 API に追加します。
+
+       ![アクセス許可の選択](./media/resource-group-create-service-principal-portal/select-permissions.png)
+
+4. 変更を保存します。
+
+## マルチテナント アプリケーションを構成する
+
+他の Azure Active Directory のユーザーがアプリケーションに同意してサインインできるようにするには、マルチテナント機能を有効にする必要があります。**[構成]** タブで、**[アプリケーションはマルチテナントです]** を **[はい]** に設定します。
+
+![マルチテナント](./media/resource-group-create-service-principal-portal/multi-tenant.png)
+
+## アプリケーションをロールに割り当てる
+
+サインインしたユーザーの ID でアプリケーションが実行されていない場合、アプリケーションをロールに割り当てて、アクションを実行するアクセス許可を付与する必要があります。アプリケーションをロールに割り当てるには、クラシック ポータルから [Azure ポータル](https://portal.azure.com)に切り替えます。アプリケーションをどのロールにどのようなスコープで追加するかを決める必要があります。利用可能なロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。
+
+1. ポータルで、アプリケーションを割り当てるスコープのレベルに移動します。このトピックでは、リソース グループに移動し、リソース グループ ブレードで **[アクセス]** アイコンを選択します。
+
+     ![ユーザーの選択](./media/resource-group-create-service-principal-portal/select-users.png)
+
+2. **[追加]** を選択します。
+
+     ![select add](./media/resource-group-create-service-principal-portal/select-add.png)
+
+3. **[閲覧者]** ロール (または、アプリケーションを割り当てる任意のロール) を選択します。
+
+     ![select role](./media/resource-group-create-service-principal-portal/select-role.png)
+
+4. ロールに追加できるユーザーの一覧が初めて表示される場合、アプリケーションは表示されません。グループとユーザーのみが表示されます。
+
+     ![show users](./media/resource-group-create-service-principal-portal/show-users.png)
+
+5. アプリケーションを見つけるには、検索する必要があります。アプリケーションの名前を入力し始めると、使用可能なオプションの一覧が変更されます。アプリケーションが一覧に表示されたら、選択します。
+
+     ![assign to role](./media/resource-group-create-service-principal-portal/assign-to-role.png)
+
+6. **[OK]** を選択して、ロールの割り当てを完了します。リソース グループのロールに割り当てられたユーザーの一覧にアプリケーションが表示されるようになりました。
+
+     ![show](./media/resource-group-create-service-principal-portal/show-app.png)
+
+ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal)」を参照してください。
 
 ## アクセス トークンをコードで取得する
 
@@ -109,12 +167,12 @@
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
     PM> Update-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Safe
 
-アプリケーションで、次のようなメソッドを追加し、トークンを取得します。
+ID とシークレットを使用してサインインするには、次の方法でトークンを取得します。
 
     public static string GetAccessToken()
     {
         var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantId or tenant name}");  
-        var credential = new ClientCredential(clientId: "{application id}", clientSecret: "{application password}");
+        var credential = new ClientCredential(clientId: "{client id}", clientSecret: "{application password}");
         var result = authenticationContext.AcquireToken(resource: "https://management.core.windows.net/", clientCredential:credential);
 
         if (result == null) {
@@ -126,11 +184,33 @@
         return token;
     }
 
+ユーザーの代理でサインインするには、次の方法でトークンを取得します。
+
+    public static string GetAcessToken()
+    {
+        var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
+        var result = authenticationContext.AcquireToken(resource: "https://management.core.windows.net/", {client id}, new Uri({redirect uri});
+
+        if (result == null) {
+            throw new InvalidOperationException("Failed to obtain the JWT token");
+        }
+
+        string token = result.AccessToken;
+
+        return token;
+    }
+
+トークンを要求ヘッダーで渡すには、次のコードを使用します。
+
+    string token = GetAcessToken();
+    request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+
+
 ## 次のステップ
 
-- セキュリティ ポリシーの指定方法の詳細については、「[リソースへのアクセスの管理と監査](resource-group-rbac.md)」を参照してください。  
-- これらの手順のデモ動画が必要であれば、「[Enabling Programmatic Management of an Azure Resource with Azure Active Directory (Azure Active Directory で Azure リソースのプログラムによる管理を有効にする)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)」をご覧ください。
-- Azure PowerShell または Azure CLI を利用し、Active Directory のアプリケーションとサービス プリンシパルを使用する方法については、認証時の証明書の利用方法も含め、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。
+- セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。  
+- これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
+- 認証に証明書を利用する方法を含む、Azure PowerShell または Azure CLI で Active Directory のアプリケーションとサービス プリンシパルを操作する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。
 - Azure リソース マネージャーを使用したセキュリティの実装のガイダンスについては、「[Azure Resource Manager のセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
 
@@ -149,4 +229,4 @@
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0224_2016-->

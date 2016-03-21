@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Visual Studio を使用したストレージ エミュレーターの構成と使用"
+   pageTitle="Visual Studio を使用したストレージ エミュレーターの構成と使用 | Microsoft Azure"
    description="Visual Studio を使用したストレージ エミュレーターの構成と使用"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="storage"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/24/2015"
-   ms.author="kempb" />
+   ms.date="12/18/2015"
+   ms.author="tarcher" />
 
 # Visual Studio を使用したストレージ エミュレーターの構成と使用
 
@@ -43,4 +43,4 @@ Visual Studio で初めてサービスを実行またはデバッグすると、
 
 ストレージ エミュレーターをはじめとするストレージ アカウント内の BLOB とテーブルのデータについては、サーバー エクスプローラーの Azure の [ストレージ] ノードを使用してデータを表示したり設定を変更したりすることができます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](https://msdn.microsoft.com/library/azure/ff683677.aspx)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

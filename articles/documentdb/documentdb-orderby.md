@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="02/03/2016" 
 	ms.author="arramac"/>
 
 # Order By を使用した DocumentDB の並べ替え
@@ -79,7 +79,7 @@ DocumentDB では、クエリあたり、1 つの数値プロパティ、文字�
 
 DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この 2 つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。
 
->[AZURE.NOTE]文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
+>[AZURE.NOTE] 文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
 >
 >REST API の 2015-06-03 より前のバージョンでは、文字列と数値の両方において既定のコレクションのインデックス作成ポリシーはハッシュとなっていました。これが、文字列についてはハッシュ、数値については範囲というように変更されました。
 
@@ -100,7 +100,7 @@ DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサ�
     await client.CreateDocumentCollectionAsync(databaseLink, 
         booksCollection);  
 
->[AZURE.NOTE]Order By では、RangeIndex でインデックスが作成されるデータ型 (文字列と数値) の結果しか返さないので注意してください。たとえば、既定のインデックスポリシーに、数値に対する RangeIndex しか含まれていない場合、文字列値を使用したパスに対する Order By はドキュメントを返しません。
+>[AZURE.NOTE] Order By では、RangeIndex でインデックスが作成されるデータ型 (文字列と数値) の結果しか返さないので注意してください。たとえば、既定のインデックスポリシーに、数値に対する RangeIndex しか含まれていない場合、文字列値を使用したパスに対する Order By はドキュメントを返しません。
 
 ### 1 つのプロパティに対する Order By のインデックス作成
 Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう 1 つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。
@@ -125,14 +125,7 @@ Title プロパティ (文字列) のみに対する Order By のインデック
         });
 
 ## サンプル
-この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
-
-## 今後予定された機能
-
-今回導入された Order By サポートは、今後のサービス更新で拡張される予定です。現在、次の追加機能に取り組んでおり、お客様からのフィードバックを基に、これらの機能強化のリリースを優先して行う予定です。
-
-- 動的なインデックス作成ポリシー: コレクション作成後の Azure ポータルでのインデックス作成ポリシーの変更のサポート
-- 複合インデックスのサポートによる、より効率的な Order By の実現と、複数のプロパティでの Order By のサポート
+この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
 ## FAQ
 
@@ -168,13 +161,13 @@ Order By を使用してクエリ結果を並べ替えるには、並べ替え�
 
 ## 次のステップ
 
-[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)をフォークして、データの並べ替えを始めましょう。
+[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)をフォークして、データの並べ替えを始めましょう。
 
 ## 参照
 * [DocumentDB クエリのリファレンス](documentdb-sql-query.md)
 * [DocumentDB インデックス作成ポリシー リファレンス](documentdb-indexing-policies.md)
 * [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.OrderBy)
+* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

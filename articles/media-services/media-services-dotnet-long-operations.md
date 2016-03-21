@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -195,4 +195,4 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

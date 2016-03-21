@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor=""/>
 
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
+	ms.date="02/05/2016" 
 	ms.author="genemi"/>
 
 
@@ -27,7 +27,7 @@
 V12 には継続的に機能が追加されます。したがって、Azure のサービス更新情報に間する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
 
 
-- サービスを [[SQL Database]](http://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
+- サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
 - SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)でフィルター処理します。
 
 
@@ -53,7 +53,7 @@ SQL Database でまだサポートされていない一部の機能について�
 ## Premium のパフォーマンスの向上、新しいパフォーマンス レベル
 
 
-V12 では、すべての Premium パフォーマンス レベルに割り当てられているデータベース スループット ユニット (DTU) を追加料金なしで 25% 引き上げました。さらに大きなパフォーマンスの向上は、次のような新機能で実現できます。
+V12 では、すべての Premium パフォーマンス レベルに割り当てられているデータベース トランザクション ユニット (DTU) を追加料金なしで 25% 引き上げました。さらに大きなパフォーマンスの向上は、次のような新機能で実現できます。
 
 
 - メモリ内[列ストア インデックス](http://msdn.microsoft.com/library/gg492153.aspx)のサポート
@@ -132,7 +132,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 以前のバージョンの SQL Database サービスでデータベースまたは論理サーバーが実行されているかどうかは、次の方法で簡単に確認できます。
 
 
-1. [Azure プレビュー ポータル](http://portal.azure.com/)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 2. **[参照]** をクリックします。
 3. **[SQL Server]** をクリックします。
 4. サーバーまたはデータベースの隣のアイコンから、現在の状態がわかります。
@@ -150,7 +150,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 V12 の論理サーバーでのみ、V12 データベースをホストできます。V12 サーバーは V12 データベースのみをホストできます。
 
 
-まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
+まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-plan-prepare-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
 
 
 ## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開リージョン
@@ -159,6 +159,6 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 - 2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
 - V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
 
-[Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+[Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

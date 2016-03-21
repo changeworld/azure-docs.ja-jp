@@ -3,7 +3,7 @@
    description="Azure でホストされているサービスからのセキュリティ ログの生成、収集、および分析の概要について説明します。組織のセキュリティおよびコンプライアンス担当者など、日常的に情報資産の管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
-   authors="TerryLanfear"
+   authors="nayak-mahesh"
    manager="msStevenPo"
    editor=""/>
 
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/13/2015"
+   ms.date="12/10/2015"
    ms.author="mnayak;tomsh;terrylan"/>
 
 # Microsoft Azure のセキュリティと監査ログの管理
 
-Azure を使用すると、セキュリティ イベントを生成し、Azure Infrastructure as a Service (IaaS) および Platform as a Service (PaaS) ロールからサブスクリプションの中央ストレージに収集できます。その後、ユーザーは [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/) を使用して収集されたイベントを集計し、分析できます。さらに、これらの収集されたイベントをオンプレミスのセキュリティ情報およびイベント管理 (SIEM) システムにエクスポートして継続的に監視できます。
+Azure を使用すると、セキュリティ イベントを生成し、Azure Infrastructure as a Service (IaaS) および Platform as a Service (PaaS) ロールからサブスクリプションの中央ストレージに収集できます。その後、ユーザーは [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/) を使用して収集されたイベントを集計し、分析できます。さらに、これらの収集されたイベントをオンプレミスのセキュリティ情報およびイベント管理 (SIEM) システムにエクスポートして継続的に監視できます。
 
 Azure のセキュリティ ログ、分析、および監視のライフサイクルには次のものが含まれます。
 
@@ -32,9 +32,9 @@ Azure のセキュリティ ログ、分析、および監視のライフサイ�
 ## ログの生成
 セキュリティ イベントは、仮想マシンの **システム**、**セキュリティ**、および**アプリケーション**の各チャネルの Windows イベント ログで生成されます。データが失われることなくイベントがログに記録されるようにするには、イベント ログのサイズを適切に構成することが重要です。イベント ログのサイズは、監査ポリシーの設定が生成するイベントの数と、定義されているイベント収集ポリシーに基づいて決定します。詳細については、[セキュリティ監査の監視と管理の計画](http://technet.microsoft.com/library/ee513968.aspx#BKMK_4)に関するページを参照してください。
 
->[AZURE.NOTE]Windows イベント転送 (WEF) または Azure 診断 (「[ログの収集](#log-collection)」セクションを参照) を使用して Cloud Services または Virtual Machines からログを取得する場合、システム停止の影響の可能性を考慮します。たとえば、WEF 環境がしばらくダウンした場合は、時間が長くなっても大丈夫なようにログのサイズが十分に大きいこと、またはログ データ喪失の可能性に備えられていることを、確認する必要があります。
+>[AZURE.NOTE] Windows イベント転送 (WEF) または Azure 診断 (「[ログの収集](#log-collection)」セクションを参照) を使用して Cloud Services または Virtual Machines からログを取得する場合、システム停止の影響の可能性を考慮します。たとえば、WEF 環境がしばらくダウンした場合は、時間が長くなっても大丈夫なようにログのサイズが十分に大きいこと、またはログ データ喪失の可能性に備えられていることを、確認する必要があります。
 
-[Azure Virtual Machines Marketplace](http://azure.microsoft.com/marketplace/virtual-machines/#microsoft) から作成されて Azure または仮想マシンにデプロイされる Cloud Services アプリケーションの場合、オペレーティング システム セキュリティ イベントのセットは既定で有効になります。ユーザーは、オペレーティング システムの監査ポリシーをカスタマイズすることによって、監査対象のイベントを追加、削除、または変更できます。詳細については、[セキュリティ ポリシー設定リファレンス](http://technet.microsoft.com/library/jj852210.aspx)に関するページを参照してください。
+[Azure Virtual Machines Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/#microsoft) から作成されて Azure または仮想マシンにデプロイされる Cloud Services アプリケーションの場合、オペレーティング システム セキュリティ イベントのセットは既定で有効になります。ユーザーは、オペレーティング システムの監査ポリシーをカスタマイズすることによって、監査対象のイベントを追加、削除、または変更できます。詳細については、[セキュリティ ポリシー設定リファレンス](http://technet.microsoft.com/library/jj852210.aspx)に関するページを参照してください。
 
 次の方法を使用して、オペレーティング システム (監査ポリシーの変更など) および Windows コンポーネント (IIS など) から追加のログを生成できます。
 
@@ -93,7 +93,7 @@ Azure の Cloud Services または Virtual Machines からのセキュリティ 
 ##	Windows イベント転送でのセキュリティ イベント データ収集
 ドメインに参加している Azure Virtual Machines の場合、オンプレミスのドメイン参加コンピューターと同じ方法でグループ ポリシー設定を使用して WEF を構成できます。詳細については、[ハイブリッド クラウド](http://www.microsoft.com/server-cloud/solutions/hybrid-cloud.aspx)に関するページを参照してください。
 
-この方法を使用すると、IaaS サブスクリプションを購入し、[ExpressRoute](http://azure.microsoft.com/services/expressroute/) またはサイト間 VPN を使用してそれを企業ネットワークに接続した後、Azure 内の仮想マシンを企業ドメインに参加させることができます。その後は、ドメインに参加しているコンピューターから WEF を構成できます。
+この方法を使用すると、IaaS サブスクリプションを購入し、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) またはサイト間 VPN を使用してそれを企業ネットワークに接続した後、Azure 内の仮想マシンを企業ドメインに参加させることができます。その後は、ドメインに参加しているコンピューターから WEF を構成できます。
 
 イベント転送は、ソースとコレクターの 2 つの部分に分かれます。ソースは、セキュリティ ログを生成するコンピューターです。コレクターは、イベント ログを収集して統合する中央のサーバーです。IT 管理者はイベントをサブスクライブすることで、リモート コンピューター (イベント ソース) から転送されるイベントを受信して格納できます。詳細については、「[イベントを転送して収集するようコンピューターを構成する](http://technet.microsoft.com/library/cc748890.aspx)」を参照してください。
 
@@ -218,7 +218,7 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 
 - タイムスタンプは日付/時刻の値であり、エンティティが最後に変更されたときを追跡するためにサーバー上に保持されます。
 
->[AZURE.NOTE]Azure Storage のテーブルの最大行サイズは、1 MB に制限されています。アカウントが 2012 年 6 月より後に作成された場合、ストレージ アカウントは BLOB、キュー、およびテーブルからのデータを最大 200 TB まで格納できます。そのため、BLOB およびキューがストレージ領域を使用しない場合、テーブルのサイズは最大 200 TB まで拡大できます。2012 年 6 月以前に作成されたアカウントには、100 TB の制限があります。
+>[AZURE.NOTE] Azure Storage のテーブルの最大行サイズは、1 MB に制限されています。アカウントが 2012 年 6 月より後に作成された場合、ストレージ アカウントは BLOB、キュー、およびテーブルからのデータを最大 200 TB まで格納できます。そのため、BLOB およびキューがストレージ領域を使用しない場合、テーブルのサイズは最大 200 TB まで拡大できます。2012 年 6 月以前に作成されたアカウントには、100 TB の制限があります。
 
 Storage Explorer ではテーブルのデータを編集することもできます。テーブル ビューの特定の行をダブルクリックして、次に示すような [エンティティの編集] ウィンドウを開きます。
 
@@ -230,7 +230,7 @@ Storage Explorer ではテーブルのデータを編集することもできま
 ##### ステップ 1: 対象のイベントを含むように構成ファイルを更新する
 前の例で作成した Azure 診断ファイルを、Windows アプリケーション イベント ログ エラーの種類を含むように更新する必要があります。
 
->[AZURE.NOTE]既存の Azure 診断の構成設定を、新しい構成ファイルとマージする必要があります。新しいファイルで定義された設定により、既存の構成は上書きされます。
+>[AZURE.NOTE] 既存の Azure 診断の構成設定を、新しい構成ファイルとマージする必要があります。新しいファイルで定義された設定により、既存の構成は上書きされます。
 
 既存の構成設定を取得するには、**Get-AzureVMDiagnosticsExtension** コマンドレットを使用します。既存の構成を取得するサンプルの Azure PowerShell スクリプトを次に示します。
 
@@ -396,7 +396,7 @@ Azure 診断エージェントがストレージ テーブルにイベントを�
 ファイアウォールの変更を検出するため、ファイアウォール変更イベントを含むように既存の構成を更新します。
 
 #### ステップ 1: 既存の構成を取得する
->[AZURE.NOTE]既存の構成は、新しい構成設定で上書きされます。したがって、既存の Azure 診断の構成設定を新しい構成ファイルとマージすることが重要です。
+>[AZURE.NOTE] 既存の構成は、新しい構成設定で上書きされます。したがって、既存の Azure 診断の構成設定を新しい構成ファイルとマージすることが重要です。
 
 既存の構成設定を取得するには、**Get-AzureServiceDiagnosticsExtension** コマンドレットを使用します。
 
@@ -527,7 +527,7 @@ Azure 診断エージェントがストレージ テーブルにイベント デ
 - 既存の Azure 診断の構成設定と行う変更をマージします。既存の構成設定は、新しい構成ファイルで上書きされます。
 - **転送期間のスケジュール設定**の間隔を適切に選択します。転送間隔が短いとデータの関連性は増えますが、ストレージのコストと処理のオーバーヘッドが増加します。
 
->[AZURE.NOTE]収集されるデータ量に大きな影響を与えるもう 1 つの変数は、ログのレベルです。ログ レベルでログをフィルター処理する方法の例を次に示します。
+>[AZURE.NOTE] 収集されるデータ量に大きな影響を与えるもう 1 つの変数は、ログのレベルです。ログ レベルでログをフィルター処理する方法の例を次に示します。
 
     System!*[System[(Level =2)]]
 
@@ -535,7 +535,7 @@ Azure 診断エージェントがストレージ テーブルにイベント デ
 
 - 不要になった診断データを Azure Storage から定期的に消去します。
 
->[AZURE.NOTE]診断データの詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。診断データを格納するコンテナーとテーブルは、他のコンテナーやテーブルと同じであり、他のデータの場合と同じように BLOB やエンティティをそこから削除できます。ストレージ クライアント ライブラリの 1 つを使用してプログラムで、または[ストレージ エクスプローラー クライアント](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)を使用して手動で、診断データを削除できます。
+>[AZURE.NOTE] 診断データの詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。診断データを格納するコンテナーとテーブルは、他のコンテナーやテーブルと同じであり、他のデータの場合と同じように BLOB やエンティティをそこから削除できます。ストレージ クライアント ライブラリの 1 つを使用してプログラムで、または[ストレージ エクスプローラー クライアント](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)を使用して手動で、診断データを削除できます。
 
 - サービスのデータとセキュリティ ログのデータを異なるストレージ アカウントに格納するのが最善の方法です。このように分離すると、セキュリティ ログ データの保存が運用サービス データのストレージ パフォーマンスに影響しません。
 - 組織のコンプライアンス ポリシーとデータ分析および監視の要件に基づいて、ログの保持期間を選択します。
@@ -572,7 +572,7 @@ Azure サブスクリプション リソースに関連する操作のログは�
 ## その他のリソース
 次のリソースでは、Microsoft Azure およびそれに関連する Microsoft サービスに関する一般情報を提供します。
 
-- [Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/)
+- [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)
 
     セキュリティとプライバシーが Azure の開発に埋め込まれる方法と、Azure が国際および業界固有の標準のセットを満たす方法について説明します
 
@@ -614,4 +614,4 @@ Azure サブスクリプション リソースに関連する操作のログは�
 [19]: ./media/azure-security-audit-log-management/sec-view-blob-container.png
 [20]: ./media/azure-security-audit-log-management/sec-hdinsight-analysis.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

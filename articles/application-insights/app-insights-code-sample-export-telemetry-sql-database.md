@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
+	ms.date="01/05/2016" 
 	ms.author="awills"/>
  
 # コード サンプル: Application Insights からエクスポートされたデータの解析
@@ -31,7 +31,7 @@
 
 作業を開始するには:
 
-1. [Microsoft Azure のアカウント](http://azure.microsoft.com/pricing/)を取得します。
+1. [Microsoft Azure のアカウント](https://azure.microsoft.com/pricing/)を取得します。
 2. [Azure ポータル][portal]で、アプリに新しい Application Insights リソースを追加します。
 
     ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択し、アプリケーションの種類を選択します](./media/app-insights-code-sample-export-telemetry-sql-database/010-new-asp.png)
@@ -467,7 +467,7 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
 
 これは、PageView で生成されるテーブルのスキーマです。
 
-> [AZURE.NOTE]このスクリプトを実行する必要はありません。JSON の属性によって、テーブルの列が決まります。
+> [AZURE.NOTE] このスクリプトを実行する必要はありません。JSON の属性によって、テーブルの列が決まります。
 
     CREATE TABLE [dbo].[PageViewPerformances](
 	[Id] [uniqueidentifier] NOT NULL,
@@ -543,4 +543,4 @@ Visual Studio で、ストレージ アカウントの接続文字列で worker 
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

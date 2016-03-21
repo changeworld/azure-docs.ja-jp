@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して Sybase からデータを移動する 
@@ -30,9 +30,12 @@ Data Factory は、他のデータ ストアから Sybase へのデータの移�
 
 Data Management Gateway で Sybase データベースに接続するには、[Sybase のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)を Data Management Gateway と同じシステムにインストールする必要があります。
 
-## サンプル: Sybase から Azure BLOB にデータをコピーする
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
 
-下のサンプルで確認できる要素:
+## サンプル: Sybase から Azure BLOB にデータをコピーする
+このサンプルは、Sybase データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesSybase](data-factory-onprem-sybase-connector.md#sybase-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
@@ -217,13 +220,13 @@ Data Management Gateway で Sybase データベースに接続するには、[Sy
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティを **OnPremisesSybase** に設定する必要があります | はい
-server | Sybase サーバーの名前です。 | あり
-database | Sybase データベースの名前です。 | あり 
+server | Sybase サーバーの名前です。 | はい
+database | Sybase データベースの名前です。 | はい 
 schema | データベース内のスキーマの名前です。 | いいえ
-authenticationType | Sybase データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり
+authenticationType | Sybase データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ
-gatewayName | Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 | あり 
+gatewayName | Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 | はい 
 
 オンプレミスの Sybase データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -235,7 +238,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 | あり
+tableName | リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合)
 
 ## Sybase のコピー アクティビティの type プロパティ 
 
@@ -247,7 +250,7 @@ tableName | リンクされたサービスが参照する Sybase データベー
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ (**データセット**の **tableName** が指定されている場合)
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -264,4 +267,4 @@ Sybase では、T-SQL と T-SQL 型をサポートします。sql 型から .NET
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

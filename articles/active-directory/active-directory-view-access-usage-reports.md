@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="12/07/2015"
 	ms.author="kenhoff;Justinha;curtand"/>
 
+
 # アクセスおよび使用状況レポートを表示します。
+
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
@@ -31,7 +34,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 > [AZURE.NOTE]
 >
 - いくつかの高度な異常およびリソース使用状況レポートは、[Azure Active Directory Premium](active-directory-get-started-premium.md) を有効にした場合にのみ使用可能です。高度なレポートでは、アクセスのセキュリティ、潜在的な脅威への対処を向上させ、デバイスへのアクセスやアプリケーションの使用状況に関する分析機能を利用できます。
-- 中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+- 中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 ## レポート
 
@@ -64,7 +67,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ## レポートのエディション
 
-|	レポート |	無料 |	基本 |	プレミアム |
+|	レポート |	無料 |	基本 |	Premium |
 |	------												|	----	|	-----	|	--------	|
 |	**異常アクティビティ レポート**
 |	不明なソースからのサインイン |	✓ |	✓ |	✓ |
@@ -163,7 +166,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 事前に統合された Microsoft アプリケーションには、Office 365、Sharepoint、Microsoft Azure 管理ポータルなどが含まれます。
 
-![アプリケーションの使用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
+![アプリケーションの利用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
 
 ### アプリケーションの使用状況: 詳細
@@ -218,7 +221,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ----------------------								| ---------		|
 | [アクセス パネル](http://myapps.microsoft.com/)へのサインイン | あり |
 | [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)へのサインイン | あり |
-| Microsoft Azure [ポータル](http://portal.azure.com/)へのサインイン | あり |
+| Microsoft Azure [ポータル](https://portal.azure.com/)へのサインイン | あり |
 | [Office 365 ポータル](http://portal.office.com/)へのサインイン | あり |
 | Outlook などのネイティブのアプリケーションへのサインイン (次の例外を参照してください) | あり |
 | アクセス パネルを通じた Salesforce などのフェデレーション/プロビジョニング アプリケーションへのサインイン | あり |
@@ -250,7 +253,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 1. Microsoft Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
 2. [レポート] ページで、閲覧またはダウンロードするレポート をクリックします。
 
-    > [AZURE.NOTE]Azure Active Directory のレポート機能を初めて使用した場合は、内容を選択するためのメッセージが表示されます。同意する場合は、チェック マーク アイコンをクリックして続行します。
+    > [AZURE.NOTE] Azure Active Directory のレポート機能を初めて使用した場合は、内容を選択するためのメッセージが表示されます。同意する場合は、チェック マーク アイコンをクリックして続行します。
 
 3. [間隔] の横にあるドロップダウン メニューをクリックしてから、このレポートを生成するときに使用する、次のいずれかの期間をクリックします。
     - 過去 24 時間
@@ -275,4 +278,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

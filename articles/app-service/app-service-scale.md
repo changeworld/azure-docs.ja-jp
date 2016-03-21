@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/29/2015" 
+	ms.date="01/09/2016" 
 	ms.author="stepsic"/>
 
 # Azure App Service における価格レベルのスケーリング
@@ -28,7 +28,7 @@ App Service プランの詳細については、[App Service プラン](../web-s
 
 専用の [App Service 環境](app-service-app-service-environment-intro.md)を使用する場合、スケーリングの動作は異なります。詳細については、「[App Service 環境内での Web アプリのスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
 
-> [AZURE.NOTE]**Free** モードから **Basic**、**Standard**、または **Premium** モードに切り替える前に、Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、[Microsoft Azure サブスクリプション][azuresubscriptions]に関するページを参照してください。
+> [AZURE.NOTE] **Free** モードから **Basic**、**Standard**、または **Premium** モードに切り替える前に、Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、[Microsoft Azure サブスクリプション][azuresubscriptions]に関するページを参照してください。
 
 <a name="scalingsharedorbasic"></a> <a name="scalingstandard"></a>
 
@@ -62,7 +62,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	
 	![SQL Database のスケーリング](./media/app-service-scale/ScaleDatabase.png)
 	
-4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[Geo レプリケーション]** パートをクリックします。
+4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[ジオ (主要地域) レプリケーション]** パートをクリックします。
 	
 	![SQL Database の geo レプリケーションの設定](./media/app-service-scale/GeoReplication.png)
 	
@@ -85,12 +85,12 @@ Azure に存在する各種コンピューティング階層については、[�
 
 - すべてのユーザー (開発者を含む) が関心を持つ料金や機能など、App Service プランのその他すべての機能の詳細については、[App Service の料金の詳細](/pricing/details/web-sites/)に関するページを参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <a name="Next Steps"></a>
 ## 次のステップ
 
-- Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイト](/pricing/free-trial/)」を参照してください。
+- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
 - 料金、サポート、および SLA については、次のリンクを参照してください。
 	
 	[データ転送の料金詳細](/pricing/details/data-transfers/)
@@ -116,8 +116,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	- [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](/documentation/videos/how-azure-web-sites-scale/)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- LINKS -->
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkId=309169
@@ -131,4 +130,4 @@ Azure に存在する各種コンピューティング階層については、[�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

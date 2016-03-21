@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.date="12/17/2015" 
 	ms.author="szark"/>
 
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Azure に Linux 仮想マシンをプロビジョニングするとき、後で VM へのログインに使用できる、ルート以外のユーザー名を指定する必要があります。新規ユーザーの名前を選択するか、管理ポータルでプロビジョニングする場合は既定の名前である "azureuser" を使用できます。
+Azure に Linux 仮想マシンをプロビジョニングするとき、後で VM へのログインに使用できる、ルート以外のユーザー名を指定する必要があります。新規ユーザーの名前を選択するか、Azure クラシック ポータルでプロビジョニングする場合は既定の名前である "azureuser" を使用できます。
 
 ほとんどの場合、新規ユーザーは基本イメージ上に存在せず、プロビジョニング プロセス中に作成されます。VM ユーザーが既に基本 VM イメージ上に存在する場合、Azure Linux エージェントは VM の作成時に渡された情報に基づいて、そのユーザーのパスワードや SSH キーを構成します。
 
@@ -251,4 +251,4 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

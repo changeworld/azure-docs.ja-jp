@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/11/2015"
+	ms.date="02/23/2016"
 	ms.author="tomfitz"/>
 
 
@@ -21,13 +21,13 @@
 
 リソース マネージャーを使用すると、タグを適用してリソースを理論的に整理できます。タグは、定義したプロパティによりリソースを識別するキーと値のペアで構成されます。同じカテゴリに属すリソースとしてマークするには、これらのリソースに同じタグを適用します。
 
-特定のタグを持つリソースを表示した場合、すべてのリソース グループからリソースが表示されます。同じリソース グループ内のリソースに限定されないため、デプロイメント関係にとらわれずにリソースを整理できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
+特定のタグを持つリソースを表示した場合、すべてのリソース グループからリソースが表示されます。同じリソース グループ内のリソースに限定されないため、デプロイ関係にとらわれずにリソースを整理できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
 
 リソースまたはリソース グループに追加する各タグは、サブスクリプション全体の分類に自動的に追加されます。タグの名前でサブスクリプションの分類を事前設定し、リソースとして使用する値を後でタグ付けすることもできます。
 
 各リソースまたはリソース グループには、最大で 15 個のタグを含めることができます。タグ名は 512 文字まで、タグ値は 256 文字までに制限されます。
 
-> [AZURE.NOTE]タグを適用できるのは、リソース マネージャーの操作をサポートするリソースのみです。仮想マシン、Virtual Network、またはストレージをクラシック デプロイ モデル (Azure ポータル、[Service Management API](../services/api-management/) など) を通して作成した場合、リソースにタグを適用することはできません。タグ付けが必要な場合は、リソース マネージャーを介してこれらのリソースを再デプロイする必要があります。その他のすべてのリソースでは、タグ付けがサポートされています。
+> [AZURE.NOTE] タグを適用できるのは、リソース マネージャーの操作をサポートするリソースのみです。仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルや Service Management API など) を使用して作成した場合、そのリソースにタグを適用することはできません。タグ付けが必要な場合は、リソース マネージャーを介してこれらのリソースを再デプロイする必要があります。その他のすべてのリソースでは、タグ付けがサポートされています。
 
 ## テンプレート内のタグ
 
@@ -51,9 +51,40 @@
         }
     ]
 
-## プレビュー ポータルでのタグ
+現時点で、リソース マネージャーはタグの名前と値のオブジェクトの処理をサポートしません。代わりに、タグの値のオブジェクトを渡すことはできますが、次のように、タグ名を指定する必要があります。
 
-プレビュー ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
+    {
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "tagvalues": {
+          "type": "object",
+          "defaultValue": {
+            "dept": "Finance",
+            "project": "Test"
+          }
+        }
+      },
+      "resources": [
+      {
+        "apiVersion": "2015-06-15",
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "examplestorage",
+        "tags": {
+          "dept": "[parameters('tagvalues').dept]",
+          "project": "[parameters('tagvalues').project]"
+        },
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "accountType": "Standard_LRS"
+        }
+      }]
+    }
+
+
+## ポータルでのタグ
+
+ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
 
 ![リソース ブレードとリソース グループのブレードの [タグ] 部分](./media/resource-group-using-tags/tag-icon.png)
 
@@ -139,7 +170,7 @@
     rbacdemo-group
     tag-demo
 
-Azure PowerShell 1.0 プレビューよりも前のバージョンで特定のタグが付けられたリソースを取得するには、次のコマンドを使用します。
+Azure PowerShell 1.0 よりも前のバージョンで特定のタグが付けられたリソースを取得するには、次のコマンドを使用します。
 
     PS C:\> Get-AzureResourceGroup -Tag @{ Name="env"; Value="demo" } | %{ $_.ResourceGroupName }
     rbacdemo-group
@@ -168,7 +199,7 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 ## タグ付けと課金
 
-サービスがサポートされていれば、タグを使用して課金データをグループ化できます。たとえば、 [Azure リソース マネージャーに統合された Virtual Machines](/virtual-machines/virtual-machines-azurerm-versus-azuresm.md) を使用すると、仮想マシンの課金データを整理するためのタグを定義および適用できます。異なる組織向けに複数の VM を実行している場合は、タグを使用すると、コスト センターごとに課金データをグループ化できます。また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
+サービスがサポートされていれば、タグを使用して課金データをグループ化できます。たとえば、 [Azure リソース マネージャーに統合された Virtual Machines](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md) を使用すると、仮想マシンの課金データを整理するためのタグを定義および適用できます。異なる組織向けに複数の VM を実行している場合は、タグを使用すると、コスト センターごとに課金データをグループ化できます。また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
 タグに関する情報は、[Azure Resource Usage API と RateCard API](billing-usage-rate-card-overview.md) から、あるいは [Azure アカウント ポータル](https://account.windowsazure.com/)または [EA ポータル](https://ea.azure.com)からダウンロードできる使用状況のコンマ区切り値 (CSV) ファイルから取得できます。課金情報へのプログラムによるアクセスの詳細については、「[Microsoft Azure リソースの消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。REST API の操作については、「[Azure Billing REST API Reference (Azure Billing REST API リファレンス)](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください。
 
@@ -181,6 +212,6 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。定義するポリシーには、場合によっては、すべてのリソースに特定のタグを設定することが必要になります。詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 - リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)」をご覧ください。
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
-- プレビュー ポータルの使用方法の概要については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](./resource-group-portal.md)」をご覧ください。  
+- ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」をご覧ください。  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/29/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
@@ -53,7 +53,7 @@
  
     > [AZURE.IMPORTANT]パスワードは登録前に収集されますが、適用されるのは、デバイスの登録に成功した後になります。パスワードの適用に失敗した場合、必要な (複雑さの要件を満たした) パスワードが収集されるまで、パスワードを再入力するように求められます。
 
-4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Manager サービスにデバイスを登録します。登録するには、Azure の管理ポータルから[サービス登録キーを取得](storsimple-manage-service.md#get-the-service-registration-key)し、セットアップ ウィザードにキーを入力する必要があります。デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。
+4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Manager サービスにデバイスを登録します。登録するには、Azure クラシック ポータルから[サービス登録キーを取得](storsimple-manage-service.md#get-the-service-registration-key)し、セットアップ ウィザードにキーを入力する必要があります。デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。
 
 ## デバイスのデプロイ時に発生する一般的なエラー
 
@@ -119,7 +119,7 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 
 > [AZURE.IMPORTANT]通常、パスワードを適用できなかった場合、成功するまで繰り返しパスワードの入力を求められます。まれに、パスワードを適用できないことがあります。その場合、デバイスを登録して続行することもできますが、パスワードは変更されません。変更されなかったのがデバイス管理者のパスワードなのか、StorSimple Snapshot Manager のパスワードなのかは通知されません。この状況が生じた場合は、両方のパスワードを変更することをお勧めします。
 
-パスワードのリセットは、StorSimple Manager サービスの管理ポータルから実行できます。詳細については、次を参照してください。
+Azure クラシック ポータルで StorSimple Manager サービスを使用してパスワードをリセットできます。詳細については、次を参照してください。
 
 - [デバイス管理者のパスワードの変更](storsimple-change-passwords.md#change-the-device-administrator-password)
 - [StorSimple Snapshot Manager のパスワードの変更](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
@@ -307,7 +307,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
 4. Access Control Service (ACS) トークンを確認します。Web の例外がスローされた場合は、ゲートウェイの問題が発生した、プロキシ認証が行われなかった、DNS が正しくない、認証に失敗した、などの原因が考えられます。次のエラーが表示されることがあります。
 
    - ErrorCode.CiSApplianceGateway – HttpStatusCode.BadGateway 例外を示します。名前解決サービスがホスト名を解決できませんでした。 
-   - ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP ステータス コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。 
+   - ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。 
    - ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
    - ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
    
@@ -316,7 +316,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
 5. クラウド サービスの接続を確認します。サービスによって Web の例外がスローされた場合は、次のエラーが表示されることがあります。
 
   - ErrorCode.CiSApplianceGateway – HttpStatusCode.BadGateway 例外を示します。中間プロキシ サーバーが別のプロキシまたは元のサーバーから正しくない要求を受け取りました。
-  - ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP ステータス コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。 
+  - ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。 
   - ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
   - ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
   
@@ -380,7 +380,7 @@ StorSimple デバイスで Update 1 を実行している場合、Verbose スイ
 
 **サンプル出力 - StorSimple リリースを実行しているオフライン デバイス (2014 年 7 月)**
 
-このサンプルは、管理ポータルでの状態が**オフライン**のデバイスの出力です。
+このサンプルは、Azure クラシック ポータルでの状態が**オフライン**のデバイスの出力です。
 
      Checking device state: Success 
      Device is registered successfully 
@@ -577,4 +577,4 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

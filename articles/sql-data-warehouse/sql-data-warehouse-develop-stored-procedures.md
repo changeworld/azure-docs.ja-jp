@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のストアド プロシージャ 
 
@@ -90,8 +90,8 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[nest level]: https://msdn.microsoft.com/ja-jp/library/ms187371.aspx
+[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

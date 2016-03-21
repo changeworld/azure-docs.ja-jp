@@ -13,21 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="mausher;nicw;barbkess;JRJ@BigBangData.co.uk;"/>
+   ms.date="01/07/2016"
+   ms.author="mausher;nicw;barbkess;jrj;sonyama;"/>
 
 # SQL Data Warehouse の管理ツール
 このトピックでは、SQL Data Warehouse を管理するためのツールやオプションを説明して比較し、ニーズに合ったツールを選択できるようにします。適切なツールを選択するには、管理対象のデータベースの数、タスク、タスクの実行頻度を考慮します。
 
-## Azure ポータル
-[Azure ポータル][]は、データベースの作成、更新、削除、およびデータベース リソースの監視を行うことができる Web ベースの管理ポータルです。このツールは、Azure を使い始めたばかりの場合や、管理対象のデータ ウェアハウス データベースの数が少ない場合、またはすばやく作業を行う必要がある場合に便利です。
+## Azure クラシック ポータル
+[Azure クラシック ポータル][]は、データベースの作成、更新、削除、およびデータベース リソースの監視を行うことができる Web ベースのクラシック ポータルです。このツールは、Azure を使い始めたばかりの場合や、管理対象のデータ ウェアハウス データベースの数が少ない場合、またはすばやく作業を行う必要がある場合に便利です。
 
 ポータルには、現在と過去のパフォーマンス DWU 設定、使用中のストレージ量、成功および失敗した SQL 接続、およびインスタンスで実行されているクエリやそれらの詳細を把握できる視覚化情報とデータのセットが網羅されたメトリックが含まれています。
 
 ## Visual Studio での SQL Server Data Tools	
 Visual Studio の [SQL Server Data Tools][] (SSDT) は、コンピューター上で実行し、クラウドでデータベースに対する接続、管理、および開発を行うことができるクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
-SSDT には SQL Server Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプトを実行できます。SQL Data Warehouse にすばやく接続するには、Azure ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
+SSDT には SQL Server Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプトを実行できます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
 
 SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tools][] (SSDT) の最新バージョンをダウンロードできます。
 
@@ -43,9 +43,9 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 [接続]: sql-data-warehouse-develop-connections.md
 
 <!--MSDN references-->
-[SQL Server Data Tools]: https://msdn.microsoft.com/ja-jp/library/mt204009.aspx
+[SQL Server Data Tools]: https://msdn.microsoft.com/library/mt204009.aspx
 
 <!--Other web references-->
-[Azure ポータル]: http://portal.azure.com/
+[Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

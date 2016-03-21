@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Wikispaces の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Wikispaces でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを完了すると、Wikispaces に割り当てた Azure AD ユーザーは、Wikispaces 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Wikispaces に割り当てた Azure AD ユーザーは、Wikispaces 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -50,7 +50,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-wikispaces-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-wikispaces-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -72,11 +72,11 @@
 
 1.  Azure AD ポータルの **[Wikispaces]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787188.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787188.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Wikispaces へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-wikispaces-tutorial/IC787189.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787189.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページの **[Wikispaces サインオン URL]** テキストボックスに、"**http://company.wikispaces.net*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -84,7 +84,7 @@
 
 4.  **[Wikispaces でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787191.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787191.png "Configure Single Sign-On")
 
 5.  Wikispaces サポート チームに、メタデータ ファイルを送信します。
 
@@ -92,7 +92,7 @@
 
 6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-wikispaces-tutorial/IC787192.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787192.png "Configure Single Sign-On")
 
 ##ユーザー プロビジョニングの構成
   
@@ -133,10 +133,10 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-wikispaces-tutorial/IC787195.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-wikispaces-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-wikispaces-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

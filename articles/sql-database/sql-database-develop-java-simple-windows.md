@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Windows 上で JDBC を含む Java を使用して、SQL Database に接続する" 
+<properties
+	pageTitle="Windows 上で JDBC を含む Java を使用して、SQL Database に接続する"
 	description="Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。サンプルは JDBC を使用し、Windows クライアント コンピューター上で実行されます。"
-	services="sql-database" 
-	documentationCenter="" 
-	authors="LuisBosquez" 
-	manager="jeffreyg" 
+	services="sql-database"
+	documentationCenter=""
+	authors="LuisBosquez"
+	manager="jeffreyg"
 	editor="genemi"/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="09/28/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="12/17/2015"
 	ms.author="lbosq"/>
 
 
@@ -27,19 +27,20 @@
 このトピックでは、Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。Java サンプルは、Java Development Kit (JDK) バージョン 1.8 に依存します。サンプルは、JDBC ドライバーを使用して、Azure SQL Database に接続されます。
 
 
-## 必要条件
+## 前提条件
 
+### ドライバーとライブラリ
 
 - [Microsoft JDBC Driver for SQL Server - SQL JDBC 4](http://www.microsoft.com/download/details.aspx?displaylang=en&id=11774).
 - [Java Development Kit 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) を実行する任意のオペレーティング システム プラットフォーム
-- SQL Azure の既存のデータベース。「[トピックの開始](sql-database-get-started.md)」ページで、サンプル データベースの作成方法と接続文字列を取得する方法についてご確認ください。
 
+### SQL Database
 
-## テスト環境
+「[作業の開始](sql-database-get-started.md)」ページで、データベースを作成する方法についてご確認ください。
 
+### SQL テーブル
 
 このトピックの Java コード例は、次のようなテスト テーブルが Azure SQL Database のデータベース内に既に存在していることを前提としています。
-
 
 <!--
 Could this instead be a #tempPerson table, so that the Java code sample could be fully self-sufficient and be runnable (with automatic cleanup)?
@@ -55,16 +56,14 @@ Could this instead be a #tempPerson table, so that the Java code sample could be
 	);
 
 
-## SQL Database の接続文字列
+## 手順 1. 接続文字列を取得する
 
-
-このコード サンプルは、接続文字列を使用して`Connection`オブジェクトを作成します。[Azure プレビュー ポータル](http://portal.azure.com/)を使用して、接続文字列を検索することができます、接続文字列の検索の詳細については、「[Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)」をご覧ください。
-
+[AZURE.INCLUDE [sql-database-include-connection-string-jdbc-20-portalshots](../../includes/sql-database-include-connection-string-jdbc-20-portalshots.md)]
 
 > [AZURE.NOTE]JTDS JDBC ドライバーを使用している場合は、接続文字列の URL に "ssl=require" を追加し、JVM の次のオプションを設定する必要があります。"-Djsse.enableCBCProtection=false"。この JVM オプションはセキュリティの脆弱性を修正するプログラムを無効にするため、このオプションを設定する前に、どのようなリスクがあるかを必ず理解しておいてください。
 
 
-## Java サンプル コード
+## 手順 2. Java コード サンプルをコンパイルする
 
 
 Java サンプル コードの全体について説明します。後続のセクションには小さい Java セグメントをコピー アンド ペーストする場所を示すコメントが含まれています。このセクションのサンプルはコメントの近くでコピー アンド ペーストしなくてもコンパイルされ、実行されますが、接続して、終了するのみになります。コメントを次に示します。
@@ -80,36 +79,36 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 	import java.sql.*;
 	import com.microsoft.sqlserver.jdbc.*;
-	
+
 	public class SQLDatabaseTest {
-	
+
 		public static void main(String[] args) {
 			String connectionString =
-				"jdbc:sqlserver://your_server.database.windows.net:1433;" 
+				"jdbc:sqlserver://your_server.database.windows.net:1433;"
 				+ "database=your_database;"
 				+ "user=your_user@your_server;"
-				+ "password={your_password};"
+				+ "password=your_password;"
 				+ "encrypt=true;"
 				+ "trustServerCertificate=false;"
 				+ "hostNameInCertificate=*.database.windows.net;"
-				+ "loginTimeout=30;"; 
-	
+				+ "loginTimeout=30;";
+
 			// Declare the JDBC objects.
 			Connection connection = null;
 			Statement statement = null;
 			ResultSet resultSet = null;
 			PreparedStatement prepsInsertPerson = null;
 			PreparedStatement prepsUpdateAge = null;
-	
+
 			try {
 				connection = DriverManager.getConnection(connectionString);
-	
+
 				// INSERT two rows into the table.
 				// ...
-	
+
 				// TRANSACTION and commit for an UPDATE.
 				// ...
-	
+
 				// SELECT rows from the table.
 				// ...
 			}
@@ -137,7 +136,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 - your\_password
 
 
-## テーブルに 2 つの行を挿入します
+## 手順 3. 行を挿入する
 
 
 この Java セグメントは、TRANSACT-SQL の INSERT ステートメントを発行して、Person テーブルに 2 つの行を挿入します。一般的な順序は次のとおりです。
@@ -157,7 +156,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 	String insertSql = "INSERT INTO Person (firstName, lastName, age) VALUES "
 		+ "('Bill', 'Gates', 59), "
 		+ "('Steve', 'Ballmer', 59);";
-	
+
 	prepsInsertPerson = connection.prepareStatement(
 		insertSql,
 		Statement.RETURN_GENERATED_KEYS);
@@ -170,8 +169,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 	}
 
 
-## トランザクションと更新プログラムのコミット
-
+## 手順 4. トランザクションをコミットする
 
 次の Java コードのセグメントは、TRANSACT-SQL の UPDATE ステートメントを発行して、person テーブルのすべての行の `age` 値を増やします。一般的な順序は次のとおりです。
 
@@ -186,22 +184,22 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 	// Set AutoCommit value to false to execute a single transaction at a time.
 	connection.setAutoCommit(false);
-	
+
 	// Write the SQL Update instruction and get the PreparedStatement object.
 	String transactionSql = "UPDATE Person SET Person.age = Person.age + 1;";
 	prepsUpdateAge = connection.prepareStatement(transactionSql);
-	
+
 	// Execute the statement.
 	prepsUpdateAge.executeUpdate();
-	
+
 	//Commit the transaction.
 	connection.commit();
-	
+
 	// Return the AutoCommit value to true.
 	connection.setAutoCommit(true);
 
 
-## テーブルから行を選択する
+## 手順 5. クエリを実行する
 
 
 この Java セグメントは、TRANSACT-SQL SELECT ステートメントを実行して、Person テーブルから更新されたすべての行を表示します。一般的な順序は次のとおりです。
@@ -219,7 +217,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 	String selectSql = "SELECT firstName, lastName, age FROM dbo.Person";
 	statement = connection.createStatement();
 	resultSet = statement.executeQuery(selectSql);
-	
+
 	// Iterate through the result set and print the attributes.
 	while (resultSet.next()) {
 		System.out.println(resultSet.getString(2) + " "
@@ -230,4 +228,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

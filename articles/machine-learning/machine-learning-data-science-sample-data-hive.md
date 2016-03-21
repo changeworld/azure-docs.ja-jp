@@ -3,7 +3,7 @@
 	description="Azure HDInsight (Hadopop) Hive テーブルのデータをダウンサンプリングする"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
-	authors="hangzh-msft"
+	authors="bradsev,hangzh-msft"
 	manager="paulettm" 
 	editor="cgronlun"  />
 
@@ -13,28 +13,32 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/07/2016"
 	ms.author="hangzh;bradsev" />
 
 # Azure HDInsight Hive テーブル内のデータのサンプリング
 
-この**メニュー**は、多様なストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
-
 ## はじめに
 
-分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
-
-この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、
+この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングする方法について説明します。一般的に使用されている 3 つのサンプリング方法である、
 
 * 一様ランダム サンプリング 
 * グループごとのランダム サンプリング 
 * 階層サンプリング
 
-Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン コンソールから Hive クエリを送信する必要があります。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
+**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-## <a name="uniform"></a>一様ランダム サンプリング ##
+次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+このサンプリング タスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+
+
+## Hive クエリを送信する方法
+Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
+
+## <a name="uniform"></a>一様ランダム サンプリング
 一様ランダム サンプリングとは、データ セットの各行にサンプリングされる機会が均等にあるという意味です。これを実装するには、追加のフィールド rand() を、内部の "select"クエリのデータセットに追加し、そのランダム フィールドについての条件を外部の "select" クエリに追加します。
 
 クエリの使用例を次に示します。
@@ -52,7 +56,7 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 
 ここで、`<sample rate, 0-1>` は、ユーザーがサンプリングするレコードの割合を指定しています。
 
-## <a name="group"></a>グループごとのランダム サンプリング ##
+## <a name="group"></a>グループごとのランダム サンプリング
 
 カテゴリ別のデータをサンプリングする場合、カテゴリ変数の一部が特定の値であるすべてのインスタンスを含めるか除外することができます。これが「グループごとのサンプリング」が意味するものです。たとえば、値 NY、MA、CA、NJ、PA などを持つカテゴリ変数 "State" がある場合に、サンプリングされているかどうかにかかわらず同じ州のレコードを常に一緒にしておくことができます。
 
@@ -105,4 +109,4 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 Hive で使用できるより高度なサンプリング方法については、「[LanguageManual Sampling (LanguageManual のサンプリング)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」をご覧ください。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

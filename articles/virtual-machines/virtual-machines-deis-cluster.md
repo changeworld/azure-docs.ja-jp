@@ -1,6 +1,6 @@
 <properties
    pageTitle="3 ノード Deis クラスターのデプロイ | Microsoft Azure"
-   description="Azure 上で3 ノード Devis クラスターを展開"
+   description="この記事では、Azure リソース マネージャー テンプレートを使って、Azure 上で3 ノード Devis クラスターを作成する方法を説明します。"
    services="virtual-machines"
    documentationCenter=""
    authors="HaishiBai"
@@ -30,7 +30,7 @@
 
 次の手順を実行するため、以下の項目が必要となります。
 
- * 有効な Azure サブスクリプション有効なサブスクリプションがない場合は、[azure.com](https://azure.microsoft.com)から無償の試用版を取得できます
+ * 有効な Azure サブスクリプション有効なサブスクリプションがない場合は、[azure.com](https://azure.microsoft.com/)から無償の試用版を取得できます
  * Azure リソース グループを使用する職場または学校の ID 。個人のアカウントをお持ちの場合で、Microsoft id を使用してログインする場合 [個人の アカウントから作業の ID を作成する](resource-group-create-work-id-from-personal.md)ことができます。
  * または、いずれかの--クライアント オペレーティング システムに応じて、 [Azure PowerShell](powershell-install-configure.md) または [、Mac、Linux、および Windows 用の Azure CLI](xplat-cli-install.md)が必要です。
  * [OpenSSL](https://www.openssl.org/)。OpenSSL を使用して、必要な証明書が生成されます。
@@ -90,9 +90,9 @@
         ./deploy-deis.sh -n "[resource group name]" -l "West US" -f ./azuredeploy.json -e ./azuredeploy-parameters.json
         -c ./cloud-config.yaml  
 
-11. リソース グループがプロビジョニングされると、Azure ポータルで、グループ内のすべてのリソースを確認できます。次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の 3 つの VM を伴う仮想ネットワークが含まれます。このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
+11. リソース グループがプロビジョニングされると、Azure クラシック ポータルで、グループ内のすべてのリソースを確認できます。次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の 3 つの VM を伴う仮想ネットワークが含まれます。このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
 
-  ![Azure ポータルでプロビジョニングされているリソース グループ](media/virtual-machines-deis-cluster/resource-group.png)
+  ![Azure クラシック ポータルでプロビジョニングされているリソース グループ](media/virtual-machines-deis-cluster/resource-group.png)
 
 ## クライアントをインストールします。
 
@@ -113,11 +113,11 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 
         export DEISCTL_TUNNEL=[public ip of the load balancer]:2223
 
-テンプレートは 2223 をインスタンス 1 に、 2224 をインスタンス 2 に、2225 をインスタンス 3 にマップするインバウンド NAT 規則を定義します。これは、deisctl ツールを使用するための冗長性を提供します。これらのルールは Azure ポータルで確認することができます。
+テンプレートは 2223 をインスタンス 1 に、 2224 をインスタンス 2 に、2225 をインスタンス 3 にマップするインバウンド NAT 規則を定義します。これは、deisctl ツールを使用するための冗長性を提供します。これらのルールは Azure クラシック ポータルで確認することができます。
 
 ![Load Balancer 上の NAT ルール](media/virtual-machines-deis-cluster/nat-rules.png)
 
-> [AZURE.NOTE]現在、テンプレートは 3 ノード クラスタのみをサポートしています。これは、ループ構文をサポートしていない Azure リソース マネージャー テンプレート NAT ルール定義の制限によるものです。
+> [AZURE.NOTE] 現在、テンプレートは 3 ノード クラスタのみをサポートしています。これは、ループ構文をサポートしていない Azure リソース マネージャー テンプレート NAT ルール定義の制限によるものです。
 
 ## Deis プラットフォームのインストールと開始
 
@@ -128,7 +128,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
     deisctl install platform
     deisctl start platform
 
-> [AZURE.NOTE]プラットフォームの開始には少し時間がかかります (10 分ほど)。特に、ビルダー サービスの開始には時間が長くかかることがあります。また時々、試行が成功するかかる場合があります。 操作応答を停止する場合は、入力してみて `ctrl+c` をコマンドの実行を中断し、再試行してください。
+> [AZURE.NOTE] プラットフォームの開始には少し時間がかかります (10 分ほど)。特に、ビルダー サービスの開始には時間が長くかかることがあります。また時々、試行が成功するかかる場合があります。 操作応答を停止する場合は、入力してみて `ctrl+c` をコマンドの実行を中断し、再試行してください。
 
 すべてのサービスが実行されているかどうかを確認するには `deisctl list` を使用できます。
 
@@ -258,4 +258,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

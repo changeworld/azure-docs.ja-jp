@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple Manager サービスのダッシュボード | Microsoft Azure"
-   description="StorSimple Manager サービス ダッシュ ボードについて説明すると共に、サービス ダッシュ ボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
+   description="StorSimple Manager サービス ダッシュボードについて説明すると共に、サービス ダッシュボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -12,20 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/17/2015"
+   ms.date="02/01/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスのダッシュボードを使用する
 
 ## 概要
 
-StorSimple Manager サービスのダッシュ ボード ページには、StorSimple Manager サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とする内容は、強調表示されます。このチュートリアルでは、ダッシュ ボード ページを紹介してから、ダッシュ ボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
+StorSimple Manager サービスのダッシュボード ページには、StorSimple Manager サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とする内容は、強調表示されます。このチュートリアルでは、ダッシュボード ページを紹介してから、ダッシュボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
 
 ![サービスのダッシュボード](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
 
-**図 1: StorSimple Manager サービスのダッシュ ボード**
-
-StorSimple Manager サービスのダッシュ ボードには、次の情報が表示されます。
+StorSimple Manager サービスのダッシュボードには、次の情報が表示されます。
 
 - **グラフ**の領域には、デバイスに関連するメトリック グラフが表示されます。ここでは、すべてのデバイスで使用されるプライマリ ストレージと、一定期間デバイスによって使用されるクラウド ストレージを確認できます。グラフの右上隅にあるコントロールを使用して、1 週間、1 か月、3 か月、または 1 年間のタイム スケールを指定できます。
 
@@ -45,7 +43,7 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 ## サービス登録キーの表示または再生成
 
-サービス登録キーを使用して、Microsoft Azure StorSimple デバイスを StorSimple Manager サービスに登録します。これにより、Microsoft Azure 管理ポータルにデバイスが表示され、管理操作の対象となります。キーは最初のデバイスで作成され、残りのすべてのデバイスと共有されます。
+サービス登録キーを使用して、Microsoft Azure StorSimple デバイスを StorSimple Manager サービスに登録します。これにより、Azure クラシック ポータルにデバイスが表示され、管理操作の対象となります。キーは最初のデバイスで作成され、残りのすべてのデバイスと共有されます。
 
 **[登録キー]** (ページの下部にある) をクリックすると、**[サービス登録キー]** ダイアログ ボックスが表示されます。ここでは、現在のサービス登録キーをクリップボードにコピーすることも、サービス登録キーを再生成することもできます。
 
@@ -59,7 +57,7 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 サービス データ暗号化キーの変更は、次の 3 つの手順からなるプロセスです。
 
-1. 管理ポータルを使用して、サービス データ暗号化キーを変更できるようにデバイスを承認します。
+1. Azure クラシック ポータルを使用して、サービス データ暗号化キーを変更できるようにデバイスを承認します。
 2. StorSimple 用 Windows PowerShell を使用して、サービス データ暗号化キーの変更を開始します。
 3. StorSimple デバイスを複数使用している場合は、他のすべてのデバイスでサービス データ暗号化キーを更新します。
 
@@ -78,4 +76,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

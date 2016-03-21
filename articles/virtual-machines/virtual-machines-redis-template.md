@@ -670,4 +670,4 @@ node-resources.json は、メインの azuredeploy.json ファイルから呼び
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

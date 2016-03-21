@@ -10,10 +10,10 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/06/2015"
+   ms.date="03/03/2016"
    ms.author="maroche"/>
 
 
@@ -29,25 +29,7 @@
 データ ソースが登録されると、Catalog はその場所を追跡し、メタデータのインデックスを作成して、ユーザーがデータ ソースを検索、参照、検出し、その場所を使用して任意のアプリケーションまたはツールで接続できるようにします。
 
 ## サポートされているソース
-現在のプレビューでは、**Azure Data Catalog** は以下のデータ ソースとオブジェクトの種類の登録をサポートしています。
-
-* SQL Server Database Engine のテーブルとビュー
-* Oracle データベースのテーブルとビュー
-* SQL Server Analysis Services Multidimensional Dimension、Measure、KPI
-* SQL Server Analysis Services 表形式テーブル
-* SQL Server Reporting Services レポート
-* Azure Storage BLOB およびディレクトリ
-* HDFS のファイルとディレクトリ
-* Apache Hive テーブル
-* Teradata テーブルと Teradata ビュー
-
-> [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database と Microsoft Azure SQL Data Warehouse も含まれます
-
-<br/>
-
-> [AZURE.NOTE]SQL Server Reporting Services のサポートはネイティブ モードのサーバーのみであり、SharePoint モードはまだサポートされていません
-
-<br/>
+現在サポートされているデータ ソースの一覧については、「[データ カタログ DSR](data-catalog-dsr.md)」を参照してください。<br/>
 
 
 ## 構造メタデータ
@@ -67,7 +49,7 @@
 **Azure Data Catalog** データ ソース登録ツールでは、ユーザーは登録される各テーブルおよびビューにデータのスナップショット プレビューを組み込むことができます。ユーザーが登録の間にプレビューの組み込みを選択した場合、登録ツールは各テーブルおよびビューから最大 20 個のレコードを組み込みます。このスナップショットは、構造メタデータおよび記述メタデータと共に Catalog にコピーされます。
 
 
-> [AZURE.NOTE]多くの列を含む幅の広いテーブルでは、プレビューに組み込まれるレコードが 20 より少ない場合があります。
+> [AZURE.NOTE]  多くの列を含む幅の広いテーブルでは、プレビューに組み込まれるレコードが 20 より少ない場合があります。
 
 
 ## データ プロファイルの組み込み
@@ -83,8 +65,7 @@
 
 これらの統計は、構造メタデータおよび記述メタデータと共に Catalog にコピーされます。
 
-> [AZURE.NOTE]テキスト列と日付列には、該当するデータ プロファイル内の平均または標準偏差の統計情報は取り込まれません。
-
+> [AZURE.NOTE]  テキスト列と日付列には、該当するデータ プロファイル内の平均または標準偏差の統計情報は取り込まれません。
 
 ## 登録の更新
 
@@ -95,4 +76,7 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および検出することができます。
 
-<!---HONumber=Nov15_HO3-->
+## 関連項目
+- データ ソースの登録方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
+
+<!---HONumber=AcomDC_0309_2016-->

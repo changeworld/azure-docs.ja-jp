@@ -1,5 +1,5 @@
 <properties
-	pageTitle="C# および Apache Storm でのイベント ハブの使用 | Microsoft Azure"
+	pageTitle="C# および Apache Storm での Event Hubs の使用 | Microsoft Azure"
 	description="このチュートリアルでは、C# でイベントを送信し、Apache Storm クラスターでそれを受信するするための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
@@ -38,7 +38,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 ## Event Hub を作成する
 
-1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
@@ -89,7 +89,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 Event Hub を作成し、データを送受信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
-- [Event Hubs を使用する完全なサンプル アプリケーション][]
+- [Event Hub を使用する完全なサンプル アプリケーション][]
 - [Event Hubs でイベント処理の拡張][]サンプル
 - Service Bus キューを使用する[キューに格納されたメッセージング ソリューション][]
 
@@ -105,12 +105,12 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [22]: ./media/event-hubs-csharp-storm-getstarted/receive-storm1.png
 
 <!-- Links -->
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

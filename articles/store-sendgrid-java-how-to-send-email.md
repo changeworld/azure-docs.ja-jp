@@ -82,7 +82,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
 4.  メッセージを作成し、**To**、**From**、**Subject**、およびコンテンツの値を設定します。このコードは「[方法: 電子メールを作成する](#bkmk_HowToCreateEmail)」に示しています。
-5.  *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。このコードは、「[方法: 電子メールを送信する][How to: Send an Email]」セクションに示しています。
+5.  *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。このコードは、「[方法: 電子メールを送信する](How to: Send an Email)」セクションに示しています。
 
 ## 方法: 電子メールを作成する
 
@@ -205,4 +205,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->

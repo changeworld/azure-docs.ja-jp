@@ -1,4 +1,4 @@
-<properties pageTitle="Application Insights for C++ apps" description="Analyze usage and performance of your C++ app with Application Insights." services="application-insights" documentationCenter="cpp" authors="crystk" manager="jakubo""/>
+<properties pageTitle="Application Insights for C++ apps" description="Analyze usage and performance of your C++ app with Application Insights." services="application-insights" documentationCenter="cpp" authors="crystk" manager="douge""/>
 
 <tags 
     ms.service="application-insights" 
@@ -6,7 +6,7 @@
     ms.tgt_pltfrm="universal" 
     ms.devlang="na" 
     ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="11/17/2015" 
     ms.author="crystk"/>
 
 # C++ アプリ向けの Application Insights
@@ -27,7 +27,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-windows-cpp/01-universal.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。To get back to it next time you login to Azure, you should find a tile for it on the start screen.あるいは、[参照] ボタンをクリックして探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
 
 ####  インストルメンテーション キーをコピーします。
 
@@ -56,7 +56,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 #### 今後のバージョンに、SDK を更新するには
 
-新しい [SDK がリリースされた](app-insights-release-notes-windows-cpp.md)場合。
+新しい [SDK がリリースされた](https://github.com/Microsoft/ApplicationInsights-CPP/releases)場合。
 
 * NuGet パッケージ マネージャーで、インストールされている SDK を選択し、アップグレード アクションを選択します。
 * 新しいバージョン番号を使用して、インストール手順を繰り返します。
@@ -140,4 +140,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

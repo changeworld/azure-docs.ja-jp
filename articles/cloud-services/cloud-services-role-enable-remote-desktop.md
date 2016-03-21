@@ -12,15 +12,15 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="10/14/2015" 
+ms.date="02/17/2016" 
 ms.author="saurabh"/>
 
 # Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
 >[AZURE.SELECTOR]
-- [Azure Portal](cloud-services-role-enable-remote-desktop.md)
+- [Azure classic portal](cloud-services-role-enable-remote-desktop.md)
 - [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-- [Visual Studio](https://msdn.microsoft.com/library/gg443832.aspx)
+- [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
 
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
@@ -28,8 +28,8 @@ ms.author="saurabh"/>
 サービス定義にリモート デスクトップ モジュールを含めることで開発時にロールのリモート デスクトップ接続を有効にするか、リモート デスクトップ拡張機能を使用してリモート デスクトップを有効にすることができます。アプリケーションのデプロイ後でもアプリケーションを再デプロイすることなくリモート デスクトップを有効にできるため、リモート デスクトップ拡張機能を使用する方法が推奨されます。
 
 
-## ポータルからリモート デスクトップを構成する
-ポータルでは、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能の方法を使用します。クラウド サービスの **[構成]** ページでは、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
+## Azure クラシック ポータルからリモート デスクトップを構成する
+Azure クラシック ポータルでは、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能アプローチを使用します。クラウド サービスの **[構成]** ページでは、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
 
 
 1. **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
@@ -38,7 +38,7 @@ ms.author="saurabh"/>
     
     ![クラウド サービス リモート](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
     
-    > [AZURE.WARNING]初めてリモート デスクトップを有効にして OK (チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
+    > [AZURE.WARNING]初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
     
 
 3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
@@ -61,7 +61,7 @@ ms.author="saurabh"/>
 ## ロール インスタンスへのリモート接続
 ロールでリモート デスクトップが有効化されると、各種ツールを使用してロール インスタンスにリモート接続できるようになります。
 
-ポータルからロール インスタンスに接続するには:
+Azure クラシック ポータルからロール インスタンスに接続するには:
     
   1.   **[インスタンス]** をクリックして、**[インスタンス]** ページを開きます。
   2.   リモート デスクトップが構成されたロール インスタンスを選択します。
@@ -93,7 +93,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 この方法を使用すると、開発時にアプリケーションのリモート デスクトップを有効にすることができます。この方法では、サービス構成ファイルに暗号化パスワードを保存する必要があり、リモート デスクトップ構成を更新した場合はアプリケーションを再デプロイする必要があります。こうした欠点を回避するには、前述のリモート デスクトップ拡張機能ベースの方法を使用してください。
 
-サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](https://msdn.microsoft.com/library/gg443832.aspx)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
+サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](../vs-azure-tools-remote-desktop-roles.md)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
 
 ### サービス モデルでの接続をセットアップする 
 **Imports** 要素を使用して、[ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) ファイルに **RemoteAccess** モジュール と **RemoteForwarder** モジュールをインポートします。
@@ -121,7 +121,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
     </WebRole>
 </ServiceDefinition>
 ```
-[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
+[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](../cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -145,6 +145,6 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 ## その他のリソース
 
-[クラウド サービスの構成方法](cloud-services-how-to-configure.md)
+[Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

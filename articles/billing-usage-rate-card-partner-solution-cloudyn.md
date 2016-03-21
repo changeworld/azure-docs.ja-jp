@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="11/02/2015"
+   ms.date="02/19/2016"
    ms.author="mobandyo;bryanla"/>
 
 # Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供 
@@ -31,7 +31,7 @@ Usage API のデータと、RateCard API のデータ (使用状況[単位]料�
 ## Cloudyn と RateCard API および Usage API との統合
 RateCard API には、いくつかの入力パラメーターが必要です (リージョン情報、通貨、ロケールなど)。その中で最も重要なパラメーターは OfferDurableID です。OfferDurableID では、ユーザーが使用している Azure プラン タイプを指定します (従量課金制、以前の 6 か月および 12 か月のコミットメント プラン、MSDN プラン、MPN プラン、キャンペーン プランなど)。OfferDurableID については、[Azure の使用状況と課金ポータル](https://account.windowsazure.com/Subscriptions)の OfferDurableID を参照してください。
 
-[Cloudyn for Azure](https://www.cloudyn.com/microsoft-azure/) サービスを登録すると、OfferDurableID コードを追加できます。追加した後は、Cloudyn から RateCard API 経由で関連する料金情報を取得することができます。各種プラン タイプについては、「[Microsoft Azure プランの詳細](http://azure.microsoft.com/en-gb/support/legal/offer-details/)」ページを参照してください。
+[Cloudyn for Azure](https://www.cloudyn.com/microsoft-azure/) サービスを登録すると、OfferDurableID コードを追加できます。追加した後は、Cloudyn から RateCard API 経由で関連する料金情報を取得することができます。各種プラン タイプについては、「[Microsoft Azure プランの詳細](https://azure.microsoft.com/support/legal/offer-details/)」ページを参照してください。
 
 ![Cloudyn ITFM エンジンの概要][2]
 
@@ -77,7 +77,7 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 + サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
 
 ## 詳細情報
-+ Microsoft Azure エンタープライズ契約 (EA) プランの詳細については、「[エンタープライズ向け Azure のライセンス](http://azure.microsoft.com/pricing/enterprise-agreement/)」を参照してください。
++ Microsoft Azure エンタープライズ契約 (EA) プランの詳細については、「[エンタープライズ向け Azure のライセンス](https://azure.microsoft.com/pricing/enterprise-agreement/)」を参照してください。
 + Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 + クラウドの使用量を把握するために必要なその他のツール群については、Gartner の記事「[IT 財務管理 (ITFM) ツールの市場ガイド](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)」を参照してください。
 
@@ -90,4 +90,4 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

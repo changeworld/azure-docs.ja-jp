@@ -27,6 +27,6 @@
 
 ![ビデオ](./media/storsimple-take-backup/Video_icon.png) **ビデオ**
 
-StorSimple のバックアップ方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/)を参照してください。
+StorSimple のバックアップ方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

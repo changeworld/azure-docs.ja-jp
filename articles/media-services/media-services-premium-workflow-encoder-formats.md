@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
 
-**注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
+>[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
+>
+>このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
 このドキュメントには、以前のパブリック プレビュー バージョンの**メディア エンコーダー プレミアム ワークフロー**でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
 
@@ -136,4 +138,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="02/29/2016" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
 
-このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 Community Edition の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
@@ -44,7 +44,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. Visual Studio 2013 を起動します。
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET MVC 5 Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
 	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)
 
@@ -58,7 +58,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。
 
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[クラウドでホスト]** がチェックされていることを確認して、[**OK**] をクリックします。
 
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
 
@@ -131,7 +131,7 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][PublishVSSolution]
+	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
 
 	**Web の発行**ウィザードが開きます。
 
@@ -187,7 +187,7 @@ Azure サーバーにファイルをコピーする処理が開始されます�
     		}
 		}
 
-**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
+**Contact** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
 
 ### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
@@ -310,7 +310,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	![パッケージ マネージャー コンソールのコマンド][addcode009]
 
-	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
+	**update-database** によって、データベースを作成する最初の移行が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
@@ -500,10 +500,11 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
 
-	Install-Package knockoutjs
+		Install-Package knockoutjs
+
 ## Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する
 
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
@@ -548,7 +549,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))XSRF (CSRF)」を参照してください。
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「(https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))[XSRF] (CSRF)」を参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -624,11 +625,13 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
 
-	using ContactManager.Filters;
+		using ContactManager.Filters;
 
 1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
 
-	[ValidateHttpAntiForgeryToken] public IHttpActionResult PutContact(int id, Contact contact) {
+		[ValidateHttpAntiForgeryToken]
+	        public IHttpActionResult PutContact(int id, Contact contact)
+	        {
 
 1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
@@ -683,6 +686,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                }
                ko.applyBindings(new ContactsViewModel());
             </script>
+		 }
 
 
 ## Azure および SQL データベースにアプリケーションの更新を発行する
@@ -720,7 +724,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
@@ -739,8 +743,7 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成とデプロイの自動化に関するご意見をお待ちしております。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
@@ -811,4 +814,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

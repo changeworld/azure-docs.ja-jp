@@ -13,22 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/02/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc" />
 
-# ExpressRoute 回線への VNet のリンク
+# ExpressRoute 回線への仮想ネットワークのリンク
 
 > [AZURE.SELECTOR]
 - [PowerShell - Classic](expressroute-howto-linkvnet-classic.md)
+- [PowerShell - Resource Manager] (expressroute-howto-linkvnet-arm.md)  
 - [Template - Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
-この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、クラシック デプロイメント モデルを使用してデプロイされた VNet に適用されます。Azure リソース マネージャーのデプロイメント方法を使用してデプロイされた仮想ネットワークをリンクする場合は、テンプレートを使用して行うことができます。テンプレートに移動する場合は、上のタブを参照してください。
+この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、クラシック デプロイメント モデルを使用してデプロイされた VNet に適用されます。Azure Resource Manager デプロイメント モデルを使用してデプロイされた仮想ネットワークをリンクする場合は、「[ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
+- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
 - アクティブな ExpressRoute 回線が必要です。 
 	- 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)し、接続プロバイダー経由で回線を有効にしてください。 
@@ -48,7 +49,7 @@
 
 複数のサブスクリプションで ExpressRoute 回線を共有することができます。下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。組織内の各部門はサービスのデプロイ用に固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。組織内の他のサブスクリプションも ExpressRoute 回線を使用できます。
 
->[AZURE.NOTE]専用回線の接続と帯域幅の料金は、ExpressRoute 回線の所有者が負担することになります。すべての仮想ネットワークが同じ帯域幅を共有します。
+>[AZURE.NOTE] 専用回線の接続と帯域幅の料金は、ExpressRoute 回線の所有者が負担することになります。すべての仮想ネットワークが同じ帯域幅を共有します。
 
 ![サブスクリプション間接続](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
@@ -149,4 +150,4 @@
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0204_2016-->

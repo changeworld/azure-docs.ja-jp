@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/11/2015"
+	ms.date="02/12/2016"
 	ms.author="yuridio"/>
 
 # ハイブリッド ID ソリューションのコンテンツ管理要件の決定
@@ -32,7 +32,8 @@
 - データ分類: データ分類に従って、ユーザーまたはグループのアクセス レベルを特定します。 
 - データ漏えい保護: データを保護して漏えいを防ぐ処理を行うセキュリティ保護は、ユーザーの ID を検証するために、ID システムと対話する必要があります。これは監査証跡のためにも重要です。
 
->[AZURE.NOTE]データ分類のベスト プラクティスとガイドラインの詳細については、[クラウドに備えたデータ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)に関するドキュメントを参照してください。
+>[AZURE.NOTE]
+データ分類のベスト プラクティスとガイドラインの詳細については、[クラウドに備えたデータ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)に関するドキュメントを参照してください。
 
 ハイブリッド ID ソリューションを計画する場合、組織の要件に従って次のチェック項目に回答してください。
 
@@ -50,13 +51,14 @@
 - 外部ビジネス パートナーと共有するすべてのドキュメント/コンテンツを暗号化する必要はありますか。
 - 特定の種類の電子メールに対して会社のポリシー (全員に返信しない、転送しない) を適用する必要はありますか。
  
->[AZURE.NOTE]回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
+>[AZURE.NOTE]
+回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
 
 
 ## 次のステップ
 [アクセス制御要件の決定](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

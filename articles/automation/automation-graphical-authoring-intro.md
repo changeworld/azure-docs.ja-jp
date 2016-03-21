@@ -3,7 +3,7 @@
    description="グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
    services="automation"   
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags 
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
-   ms.author="bwren" />
+   ms.date="02/23/2016"
+   ms.author="magoedte;bwren" />
 
 # Azure Automation でのグラフィカル作成
 
@@ -30,7 +30,7 @@ Azure Automation の Runbook はすべて Windows PowerShell ワークフロー�
 
 ## グラフィカル エディターの概要
 
-Azure プレビュー ポータルでグラフィカル Runbook を作成または編集することで、グラフィカル エディターを開くことができます。
+Azure ポータルでグラフィカル Runbook を作成または編集することで、グラフィカル エディターを開くことができます。
 
 ![グラフィカル ワークスペース](media/automation-graphical-authoring-intro/graphical-editor.png)
 
@@ -40,6 +40,10 @@ Azure プレビュー ポータルでグラフィカル Runbook を作成また�
 
 ### キャンバス
 キャンバスは Runbook を設計する場所です。ライブラリ コントロールのノードから Runbook にアクティビティを追加し、リンクで接続して Runbook のロジックを定義します。
+
+キャンバスの下部にあるコントロールを使用して、拡大または縮小できます。
+
+![グラフィカル ワークスペース](media/automation-graphical-authoring-intro/canvas-zoom.png)
 
 ### ライブラリ コントロール
 
@@ -75,7 +79,7 @@ Azure プレビュー ポータルでグラフィカル Runbook を作成また�
 
 ### グラフィカル Runbook のテスト
 
-発行バージョンの Runbook を変更せずに、ドラフト バージョンの Runbook を Azure プレビュー ポータルでテストしたり、新しい Runbook を発行前にテストしたりすることができます。これにより、発行バージョンを置き換える前に、Runbook が正常に機能していることを確認することができます。Runbook のテスト時に、ドラフトの Runbook が実行され、行われたすべての操作が完了します。ジョブ履歴は作成されませんが、出力がテスト出力ペインに表示されます。
+発行バージョンの Runbook を変更せずに、ドラフト バージョンの Runbook を Azure ポータルでテストしたり、新しい Runbook を発行前にテストしたりすることができます。これにより、発行バージョンを置き換える前に、Runbook が正常に機能していることを確認することができます。Runbook のテスト時に、ドラフトの Runbook が実行され、行われたすべての操作が完了します。ジョブ履歴は作成されませんが、出力がテスト出力ペインに表示されます。
 
 Runbook のテスト コントロールを開くには、編集対象の Runbook を開いてから [**テスト ペイン**] ボタンをクリックします。
 
@@ -131,7 +135,7 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 |Automation の資格情報資産|Automation の資格情報を入力として選択します。|  
 |Automation の証明書資産|Automation の証明書を入力として選択します。|  
 |Automation の接続資産|Automation の接続を入力として選択します。| 
-|PowerShell 式|簡単な [PowerShell 式](#powershell-expressions)を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
+|PowerShell 式|簡単な [PowerShell](#powershell-expressions) 式を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
 |空の文字列|空の文字列値です。|
 |Null|Null 値です。|
 |選択解除|以前に構成された値をクリアします。|
@@ -140,6 +144,38 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 #### 省略可能な追加パラメーター
 
 すべてのコマンドレットで、追加のパラメーターを指定することができます。これらは、PowerShell の共通パラメーターまたはその他のカスタム パラメーターです。PowerShell 構文を使用してパラメーターを指定できるテキスト ボックスが表示されます。たとえば、**Verbose** 共通パラメーターを使用する場合は、**"-Verbose: $True"** を指定します。
+
+### 再試行アクティビティ
+
+**再試行動作**を使用すると、特定の条件を満たすまで、アクティビティを複数回実行できます。この機能は、複数回実行するアクティビティや、エラーが発生しやすく、成功までに複数回の試行が必要なアクティビティに使用できます。
+
+アクティビティの再試行を有効にするときに、遅延と条件を設定できます。遅延とは、アクティビティを次回実行するまでに Runbook が待機する時間 (秒単位または分単位) です。遅延を指定しない場合、アクティビティの完了後すぐに再実行されます。
+
+![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-delay.png)
+
+再試行の条件とは、アクティビティの実行後のたびに評価される PowerShell 式です。式が True に解決されると、アクティビティは再実行されます。式が False に解決されると、アクティビティは再実行されず、Runbook は次のアクティビティに移ります。
+
+![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-condition.png)
+
+再試行の条件は、アクティビティの再試行に関する情報にアクセスできる $RetryData という変数を使用できます。この変数には、次の表のプロパティがあります。
+
+| プロパティ | 説明 |
+|:--|:--|
+| NumberOfAttempts | アクティビティが実行された回数。 |
+| 出力 | 最後に実行されたアクティビティの出力。 |
+| TotalDuration | 初回のアクティビティが開始されてからの経過時間。 |
+| StartedAt | 初回のアクティビティが開始された時刻 (UTC 形式)。 |
+
+次に、アクティビティの再試行条件の例を示します。
+
+	# Run the activity exactly 10 times.
+	$RetryData.NumberOfAttempts -ge 10 
+
+	# Run the activity repeatedly until it produces any output.
+	$RetryData.Output.Count -ge 1 
+
+	# Run the activity repeatedly until 2 minutes has elapsed. 
+	$RetryData.TotalDuration.TotalMinutes -ge 2
 
 ### ワークフロー スクリプト コントロール
 
@@ -239,7 +275,11 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
 
 ### チェックポイント
 
-Runbook で[チェックポイント](automation-powershell-workflow/#checkpoints)を設定するための同じガイダンスがグラフィカル Runbook にも適用されます。チェックポイントを設定する必要がある場合は、Checkpoint-Workflow コマンドレットのアクティビティを追加することができます。次に、このアクティビティの後に Add-AzureAccount を続ける必要があります (Runbook が別のワーカーのこのチェックポイントから開始する場合)。
+任意のアクティビティで *Checkpoint Runbook* を選択して、グラフィカル Runbook の[チェックポイント](automation-powershell-workflow/#checkpoints)を設定することができます。この場合、アクティビティの実行後にチェックポイントが設定されます。
+
+![チェックポイント](media/automation-graphical-authoring-intro/set-checkpoint.png)
+
+Runbook でチェックポイントを設定するための同じガイダンスがグラフィカル Runbook にも適用されます。Runbook で Azure コマンドレットを使用する場合、Runbook が一時停止され、別のワーカーでこのチェックポイントから再起動するときは、Add-AzureRMAccount を使用してチェックポイントを設定したアクティビティに従います。
 
 
 ## Azure リソースの認証
@@ -258,9 +298,9 @@ Runbook の開始時と各チェックポイント後に認証を行う必要が
 
 ### Runbook の入力
 
-Runbook では、Azure プレビュー ポータルで Runbook を開始する場合はユーザーから、現在の Runbook が子として使用されている場合は別の Runbook からの入力が必要になる可能性があります。たとえば、仮想マシンを作成する Runbook がある場合、Runbook を開始するたびに仮想マシンの名前や他のプロパティなどの情報提供が必要になることがあります。
+Runbook では、Azure ポータルで Runbook を開始する場合はユーザーから、現在の Runbook が子として使用されている場合は別の Runbook からの入力が必要になる可能性があります。たとえば、仮想マシンを作成する Runbook がある場合、Runbook を開始するたびに仮想マシンの名前や他のプロパティなどの情報提供が必要になることがあります。
 
-Runbook の入力を受け入れる場合は、1 つ以上の入力パラメーターを定義します。Runbook が開始されるたびに、これらのパラメーターの値を指定します。Azure プレビュー ポータルで Runbook を開始すると、Runbook の入力パラメーターのそれぞれの値を指定するように求められます。
+Runbook の入力を受け入れる場合は、1 つ以上の入力パラメーターを定義します。Runbook が開始されるたびに、これらのパラメーターの値を指定します。Azure ポータルで Runbook を開始すると、Runbook の入力パラメーターのそれぞれの値を指定するように求められます。
 
 Runbook の入力パラメーターには、Runbook ツールバーの [**入力と出力**] ボタンをクリックしてアクセスできます。
 
@@ -276,7 +316,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの [**入力
 |:---|:---|
 | 名前 | パラメーターの一意の名前です。これに含めることができるのは英数字のみです。スペースを含めることはできません。 |
 | 説明 | 入力パラメーターのオプションの説明です。 |
-| 型 | パラメーター値に必要なデータ型です。Azure プレビュー ポータルでは、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
+| 型 | パラメーター値に必要なデータ型です。Azure ポータルでは、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
 | 必須 | パラメーターの値を指定する必要があるかどうかを示します。既定値が定義されていない各必須パラメーターの値を指定しないと、Runbook を開始できません。 |
 | 既定値 | パラメーターに値が指定されていない場合は、使用する値を指定します。Null または特定の値を指定できます。 |
 
@@ -379,4 +419,4 @@ PowerShell 式をデータ ソースとして使用し、[アクティビティ 
 - [演算子](https://technet.microsoft.com/library/hh847732.aspx)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

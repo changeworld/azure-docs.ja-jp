@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/10/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # API アプリとしての Web API プロジェクトの構成
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -83,4 +85,4 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
 # Traffic Manager の監視について
 
-Azure Traffic Manager は、クラウド サービスや Web サイトなどのエンドポイントを確実に利用できるように監視します。正常に監視を動作させるには、Traffic Manager プロファイルで指定したすべてのエンドポイントに対して、同じ方法で設定する必要があります。監視を構成した後、管理ポータルで、Traffic Manager により、エンドポイントやプロファイルの状態が表示されます。管理ポータルの Traffic Manager プロファイルの [構成] ページで、監視の設定を構成できます。次の設定を指定できます。
+Azure Traffic Manager は、クラウド サービスや Web サイトなどのエンドポイントを確実に利用できるように監視します。正常に監視を動作させるには、Traffic Manager プロファイルで指定したすべてのエンドポイントに対して、同じ方法で設定する必要があります。監視を構成した後、Azure クラシック ポータルで、Traffic Manager により、エンドポイントやプロファイルの状態が表示されます。Azure クラシック ポータルの Traffic Manager プロファイルの [構成] ページで、監視の設定を構成できます。次の設定を指定できます。
 
 - **プロトコル** – HTTP または HTTPS を選択します。HTTPS 監視は、その証明書の存在のみをチェックして、SSL 証明書が有効であるかどうかを検証しないことに注意することが重要です。
 
@@ -27,7 +27,7 @@ Azure Traffic Manager は、クラウド サービスや Web サイトなどの�
 
 ## 正常性状態の監視について
 
-Azure Traffic Manager は、管理ポータルで、プロファイルとエンドポイント サービスの正常性状態を表示します。プロファイルとエンドポイントの両方の [状態] 列には、最新のモニター状態が表示されます。この状態を使用すると、Traffic Manager の監視設定に従って、プロファイルの正常性を把握できます。プロファイルが正常な場合は、DNS クエリが、プロファイルのトラフィック ルーティング設定 (ラウンド ロビン、パフォーマンス、フェールオーバー) に基づいて、サービスに配信されます。Traffic Manager の監視システムが監視状態の変更を検出すると、管理ポータルで、状態エントリが更新されます。状態の変更を更新するまでに、最大 5 分かかることがあります。
+Azure Traffic Manager は、Azure クラシック ポータルで、プロファイルとエンドポイント サービスの状態を表示します。プロファイルとエンドポイントの両方の [状態] 列には、最新のモニター状態が表示されます。この状態を使用すると、Traffic Manager の監視設定に従って、プロファイルの正常性を把握できます。プロファイルが正常な場合は、DNS クエリが、プロファイルのトラフィック ルーティング設定 (ラウンド ロビン、パフォーマンス、フェールオーバー) に基づいて、サービスに配信されます。Traffic Manager の監視システムが監視状態の変更を検出すると、Azure クラシック ポータルで、状態エントリが更新されます。状態の変更を更新するまでに、最大 5 分かかることがあります。
 
 ### エンドポイント監視の状態
 
@@ -103,20 +103,16 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 
 1. プロファイルに追加する予定の各エンドポイントに、同じ名前のファイルを作成します。
 2. エンドポイントごとに、Web ブラウザーを使用して、ファイルへのアクセスをテストします。URL は、特定のエンドポイントのドメイン名 (クラウド サービスまたは Web サイト)、ファイルのパス、ファイル名で構成されます。 
-3. 管理ポータルの**監視の設定** の **相対パスとファイル名** フィールドで、パスとファイル名を指定します。
+3. Azure クラシック ポータルの**[監視の設定]** の [**相対パスとファイル名]** フィールドで、パスとファイル名を指定します。
 4. 構成の変更を完了したら、クリックして、ページの下部にある**保存** をクリックします。
 
 ## 関連項目
 
-[Traffic Manager について](traffic-manager-overview.md)
+[プロファイルの作成](traffic-manager-manage-profiles.md)
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
-
-[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
+[エンドポイントの追加](traffic-manager-endpoints.md)
 
 [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

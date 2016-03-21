@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="02/29/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK で Azure Service Bus を使用する方法
@@ -26,12 +26,21 @@
 
 コード スニペットは、この例のように `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
 
-		static void Main(string[] args)
-		{
-		    JobHost host = new JobHost();
-		    host.RunAndBlock();
-		}
-		
+```
+public class Program
+{
+   public static void Main()
+   {
+      JobHostConfiguration config = new JobHostConfiguration();
+      config.UseServiceBus();
+      JobHost host = new JobHost(config);
+      host.RunAndBlock();
+   }
+}
+```
+
+[Service Bus の完全なコード例](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs)は、GitHub.com の azure-webjobs-sdk-samples リポジトリにあります。
+
 ## <a id="prerequisites"></a>前提条件
 
 Service Bus を使用するには、他の WebJobs SDK パッケージに加えて、[Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet パッケージをインストールする必要があります。
@@ -146,6 +155,17 @@ Service Bus トピックにメッセージを受信したときに SDK が呼び
 
 トピックにメッセージを作成するには、キュー名の場合と同様に、`ServiceBus` 属性にトピック名を指定します。
 
+## リリース 1.1 で追加された機能
+
+1\.1 リリースでは、次の機能が追加されました。
+
+* `ServiceBusConfiguration.MessagingProvider` を使用して、メッセージ処理を詳細にカスタマイズできます。
+* `MessagingProvider` は、Service Bus の `MessagingFactory` と `NamespaceManager` のカスタマイズをサポートします。
+* `MessageProcessor` 戦略パターンでは、キュー/トピックごとにプロセッサを指定できます。
+* メッセージ処理の同時実行が既定でサポートされています。 
+* `ServiceBusConfiguration.MessageOptions` を使用して、`OnMessageOptions` を簡単にカスタマイズできます。
+* `ServiceBusTriggerAttribute`/`ServiceBusAttribute` で、[AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) を指定できます (管理権限がない場合)。 
+
 ## <a id="queues"></a>ストレージ キューのハウツー記事で紹介されている関連トピック
 
 Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。
@@ -166,4 +186,4 @@ Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK 
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

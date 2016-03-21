@@ -6,7 +6,7 @@
 	authors="fashah" 
 	manager="jacob.spoelstra" 
 	editor="" 
-	videoId="" 
+	videoId=""
 	scriptId="" />
 
 <tags 
@@ -15,19 +15,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="02/08/2016" 
 	ms.author="fashah;bradsev" />
 
 # Azure Machine Learning 用にデータを Azure SQL Database に移動する
-
-この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
-
-[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 ## はじめに
 **このトピック**では、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
 
 Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
+
+次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
 次の表は、Azure SQL Database にデータを移動するためのオプションをまとめたものです。
 
@@ -40,12 +40,12 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 ## <a name="prereqs"></a>前提条件
 ここに記載されているこの手順には次のものが必要です。
 
-* **Azure サブスクリプション**。サブスクリプションがない場合は、[無料評価版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+* **Azure サブスクリプション**。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
 * **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、「[最初の Azure SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-**データ**: 移行プロセスは、[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。NYC タクシー データセットには乗車データと料金についての情報が含まれています。投稿で説明されているように、NYC タクシー データセットは[この](http://www.andresmh.com/nyctaxitrips/) Azure BLOB ストレージで入手できます。これらのファイルのサンプルと説明については、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」をご覧ください。
+**データ**: 移行プロセスは、[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。NYC タクシー データセットには乗車データと料金についての情報が含まれています。投稿で説明されているように、NYC タクシー データセットは Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)で入手できます。これらのファイルのサンプルと説明については、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」をご覧ください。
  
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。NYC タクシー データセットを自身のオンプレミス SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](machine-learning-data-science-process-sql-walkthrough.md#dbload)」に記載されている手順に従います。これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
@@ -86,4 +86,4 @@ Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移�
 
 オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
 
-<!-----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

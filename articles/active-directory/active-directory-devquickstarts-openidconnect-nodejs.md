@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/25/2016"
 	ms.author="brandwe"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -134,7 +134,7 @@ passport.use(new OIDCStrategy({
 Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT] 
 上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
 - 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
@@ -243,15 +243,15 @@ app.post('/auth/openid/return',
   });
   ```
 
-## 4. Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
+## 4.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-これまでに、アプリは、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと適切に通信するように構成されています。  `passport-azure-ad`  は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての煩わしい処理を実行します。  残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
+OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持などの細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
-- まず、既定のメソッド、login メソッド、account メソッド、および logout メソッドを `app.js`  ファイルに追加します。
+- まず、既定のメソッド、login メソッド、account メソッド、logout メソッドを `app.js` ファイルに追加します。
 
 ```JavaScript
 
-// ルート (セクション 4)
+//Routes (Section 4)
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -276,29 +276,29 @@ app.get('/logout', function(req, res){
 ```
 
 -	これらについて詳しく説明しましょう。
-    -	`/`  ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
-    - `/account`  ルートは、***ユーザーが認証されていることを確認した後*** (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
-    - `/login`  ルートは、`passport-azuread`  から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
-    - `/logout`  は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
+    -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
+    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
+    - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
-- `app.js`  の最後の部分に、上記の `/account`  で使用される EnsureAuthenticated メソッドを追加します。
+- `app.js` の最後の部分に、上記の `/account` で使用される EnsureAuthenticated メソッドを追加します。
 
 ```JavaScript
 
-// ユーザーが認証されることを保証する単純なルート ミドルウェアです。(セクション 4)
+// Simple route middleware to ensure user is authenticated. (Section 4)
 
-//   保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。  If
-//   要求が認証された場合 (通常は永続的なログイン セッションを経由します)、
-//   要求は先に進みます。それ以外の場合、ユーザーは
-//   ログインページにリダイレクトされます。
+//   Use this route middleware on any resource that needs to be protected.  If
+//   the request is authenticated (typically via a persistent login session),
+//   the request will proceed.  Otherwise, the user will be redirected to the
+//   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
 ```
 
-- 最後に、`app.js` でサーバーそのものを実際に作成します。
+- 最後に、`app.js` でサーバー自体を実際に作成します。
 
 ```JavaScript
 
@@ -348,7 +348,6 @@ exports.list = function(req, res){
 	<a href="/account">Account Info</a></br>
 	<a href="/logout">Log Out</a>
 <% } %>
-
 ```
 
 - ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
@@ -368,7 +367,6 @@ exports.list = function(req, res){
 <p></p>
 <a href="/logout">Log Out</a>
 <% } %>
-
 ```
 
 - 最後に、レイアウトを追加して、見やすくします。ルート ディレクトリの下に '/views/layout.ejs' ビューを作成します。
@@ -416,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

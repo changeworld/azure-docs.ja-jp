@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2015"
+   ms.date="12/28/2015"
    ms.author="masashin"/>
 
 # 再試行サービス固有のガイダンス
@@ -41,11 +41,11 @@
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz* (カスタム検出戦略を実装) | 宣言型およびプログラムによる | コードのブロック | カスタム |
 **Topaz: <a href="http://msdn.microsoft.com/library/dn440719.aspx">エンタープライズ ライブラリ 6.0</a> に含まれる一時的エラー処理アプリケーション ブロックの表示名。このガイダンスで説明されているとおり、ほとんどの種類のサービスに対して、カスタム検出戦略を Topaz と一緒に使用できます。Topaz の既定の戦略は、このガイダンスの末尾にある「[一時的エラー処理アプリケーション ブロック (Topaz) の戦略](#transient-fault-handling-application-block-topaz-strategies)」のセクションに示しています。このブロック (Topaz) は、現在のところオープン ソース フレームワークであり、Microsoft により直接サポートされていないことに注意してください。
 
-> [AZURE.NOTE]Azure の組み込み再試行メカニズムのほとんどには、再試行ポリシーに組み込まれている機能以外に、さまざまな種類のエラーや例外に対して異なる再試行ポリシーを適用する方法は現在のところありません。したがって、この記事の執筆時点で選択できる最良のガイダンスは、最適な平均的パフォーマンスと可用性を提供するポリシーを構成することです。ポリシーを微調整する 1 つの方法は、ログ ファイルを分析して、発生する一時的エラーの種類を判別することです。たとえば、エラーの多くがネットワーク接続問題に関連している場合、最初の再試行を長時間待つのではなく、すぐに再試行することができます。
+> [AZURE.NOTE] Azure の組み込み再試行メカニズムのほとんどには、再試行ポリシーに組み込まれている機能以外に、さまざまな種類のエラーや例外に対して異なる再試行ポリシーを適用する方法は現在のところありません。したがって、この記事の執筆時点で選択できる最良のガイダンスは、最適な平均的パフォーマンスと可用性を提供するポリシーを構成することです。ポリシーを微調整する 1 つの方法は、ログ ファイルを分析して、発生する一時的エラーの種類を判別することです。たとえば、エラーの多くがネットワーク接続問題に関連している場合、最初の再試行を長時間待つのではなく、すぐに再試行することができます。
 
 ## Microsoft Azure Storage の再試行ガイドライン
 
-Microsoft Azure Storage サービスには、テーブル、BLOB ストレージ、ファイル、およびストレージ キューが含まれています。
+Microsoft Azure Storage サービスには、テーブル、Blob Storage、ファイル、およびストレージ キューが含まれています。
 
 ### 再試行メカニズム
 
@@ -212,7 +212,7 @@ namespace RetryCodeSamples
 
 ## 詳細
 
-- [Azure Storage Client Library Retry Policy Recommendations (Microsoft Azure Storage クライアント ライブラリの再試行ポリシーに対する推奨事項)](http://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
+- [Azure Storage Client Library Retry Policy Recommendations (Microsoft Azure Storage クライアント ライブラリの再試行ポリシーに対する推奨事項)](https://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
 - [Storage Client Library 2.0 – Implementing Retry Policies (Storage Client Library 2.0 – 再試行ポリシーの実装)](http://gauravmantri.com/2012/12/30/storage-client-library-2-0-implementing-retry-policies/)
 
 ## Entity Framework 6 を使用して SQL Database にアクセスする場合の再試行ガイドライン
@@ -290,7 +290,7 @@ public class BloggingContextConfiguration : DbConfiguration
 
 EF6 を使用して SQL Database にアクセスする場合は、次のガイドラインを検討します。
 
-* 適切なサービス オプション (Standard または Premium) を選択します。共有インスタンスは、共有サーバーの他のテナントによる使用状況により、通常よりも長い接続遅延や調整の影響を受ける可能性があります。予測可能なパフォーマンスと信頼性の高い低待機時間での操作が必要な場合は、Premium オプションを選択することを検討してください。
+* 適切なサービス オプション (Shared または Premium) を選択します。共有インスタンスは、共有サーバーの他のテナントによる使用状況により、通常よりも長い接続遅延や調整の影響を受ける可能性があります。予測可能なパフォーマンスと信頼性の高い低待機時間での操作が必要な場合は、Premium オプションを選択することを検討してください。
 * 固定間隔戦略を Azure SQL Database で使用することは推奨されていません。代わりに、指数バックオフ戦略を使用します。サービスがオーバーロードする可能性があり、遅延が長くなれば回復するための時間をより多くとることができるからです。
 * 接続を定義するときは、接続タイムアウトとコマンド タイムアウトに適切な値を選択します。タイムアウトは、ビジネス ロジック設計と十分なテストの両方に基づいた値にします。この値は、時間の経過によるデータの量やビジネス プロセスの変化に応じて、変更することが必要になる場合があります。タイムアウトが短すぎると、データベースがビジー状態の場合に、接続が途中でエラーになる可能性があります。タイムアウトが長すぎると、接続エラーを検出するまで長く待ちすぎて、再試行ロジックが正常に機能しなくなる可能性があります。コンテキストの保存時に実行されるコマンドの数は簡単には特定できないとしても、タイムアウトの値は、エンドツーエンド待機時間の構成要素です。既定のタイムアウトは、**DbContext** インスタンスの **CommandTimeout** プロパティを設定することで変更できます。
 * Entity Framework は、構成ファイルで定義されている再試行構成をサポートします。ただし、Azure 上で最大の柔軟性を実現するために、アプリケーション内でプログラムを使用して構成を作成することを検討してください。再試行ポリシーの特定のパラメーター (再試行数や再試行間隔など) は、サービス構成ファイルに格納して、実行時に適切なポリシーを作成するために使用することができます。これにより、アプリケーションを再起動する必要なしに設定を変更できます。
@@ -302,7 +302,7 @@ EF6 を使用して SQL Database にアクセスする場合は、次のガイ�
 | 対話型、UI、<br />またはフォアグラウンド | 2 秒 | Exponential | MaxRetryCount<br />MaxDelay | 3<br />750 ミリ秒 | 試行 1 - 0 秒の遅延<br />試行 2 - 750 ミリ秒の遅延<br />試行 3 - 750 ミリ秒の遅延 |
 | バック グラウンド<br />またはバッチ | 30 秒 | Exponential | MaxRetryCount<br />MaxDelay | 5<br />12 秒 | 試行 1 - 0 秒の遅延<br />試行 2 - 最大 1 秒の遅延<br />試行 3 - 最大 3 秒の遅延<br />試行 4 - 最大 7 秒の遅延<br />試行 5 - 12 秒の遅延 |
 
-> [AZURE.NOTE]エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
+> [AZURE.NOTE] エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
 
 ## 例 (Entity Framework 6 による SQL Database アクセス)
 
@@ -355,7 +355,7 @@ Entity Framework の再試行メカニズムを使用する他の例について
 
 ## 詳細
 
-* [Windows Azure SQL Database Performance and Elasticity Guide (Windows Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
+* [Microsoft Azure SQL Database Performance and Elasticity Guide (Microsoft Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
 
 ## ADO.NET の再試行ガイドラインを使用する SQL Database
 
@@ -413,7 +413,7 @@ Azure SQL Database にアクセスする際に、構成済みの再試行ポリ�
 
 ADO.NET を使用して SQL Database にアクセスする場合は、次のガイドラインを検討します。
 
-* 適切なサービス オプション (Standard または Premium) を選択します。共有インスタンスは、共有サーバーの他のテナントによる使用状況により、通常よりも長い接続遅延や調整の影響を受ける可能性があります。予測可能性の高いパフォーマンスと信頼性の高い低待機時間での操作が必要な場合は、Premium オプションを選択することを検討してください。
+* 適切なサービス オプション (Shared または Premium) を選択します。共有インスタンスは、共有サーバーの他のテナントによる使用状況により、通常よりも長い接続遅延や調整の影響を受ける可能性があります。予測可能性の高いパフォーマンスと信頼性の高い低待機時間での操作が必要な場合は、Premium オプションを選択することを検討してください。
 * データの不整合の原因となる非べき等操作を避けるために、再試行は必ず適切なレベルまたはスコープで実行します。理想的には、すべての操作はべき等にして、不整合を発生させずに繰り返し実行できるようにする必要があります。これが当てはまらない場合、再試行は、操作が失敗した場合に、関連するすべての変更を元に戻すことができるレベルまたはスコープで (たとえば 1 トランザクションのスコープ内で) 実行する必要があります。詳細については、「[Cloud Service Fundamentals Data Access Layer – Transient Fault Handling (クラウド サービスの基本データ アクセス層 – 一時的エラー処理)](http://social.technet.microsoft.com/wiki/contents/articles/18665.cloud-service-fundamentals-data-access-layer-transient-fault-handling.aspx#Idempotent_Guarantee)」を参照してください。
 * 固定間隔戦略は、非常に短い間隔でごくわずかな回数の再試行が実行されるのみという対話型のシナリオを除き、Azure SQL Database での使用は推奨されていません。代わりに、ほとんどのシナリオで、指数バックオフ戦略を使用することを考慮してください。
 * 接続を定義するときは、接続タイムアウトとコマンド タイムアウトに適切な値を選択します。タイムアウトが短すぎると、データベースがビジー状態の場合に、接続が途中でエラーになる可能性があります。タイムアウトが長すぎると、接続エラーを検出するまで長く待ちすぎて、再試行ロジックが正常に機能しなくなる可能性があります。タイムアウトの値は、エンドツーエンド待機時間の構成要素です。これはすべての再試行向けの再試行ポリシーに指定される再試行遅延に、事実上追加されます。
@@ -429,7 +429,7 @@ ADO.NET を使用して SQL Database にアクセスする場合は、次のガ�
 | 対話型、UI、<br />またはフォアグラウンド | 2 秒 | FixedInterval | 再試行回数<br />再試行間隔<br />最初の高速再試行 | 3<br />500 ミリ秒<br />true | 試行 1 - 0 秒の遅延<br />試行 2 - 500 ミリ秒の遅延<br />試行 3 - 500 ミリ秒の遅延 |
 | バックグラウンド<br />またはバッチ | 30 秒 | ExponentialBackoff | 再試行の回数<br />最小バックオフ<br />最大バックオフ<br />デルタ バックオフ<br />最初の高速再試行 | 5<br />0 秒<br />60 秒<br />2 秒<br />false | 試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 
-> [AZURE.NOTE]エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
+> [AZURE.NOTE] エンドツーエンド待機時間のターゲットには、サービスへの接続用の既定のタイムアウトが想定されます。接続タイムアウトにより長い時間を指定する場合、エンドツーエンド待機時間は、すべての再試行についてこの追加時間分だけ延長されます。
 
 ### 例 (ADO.NET による SQL Database アクセス)
 
@@ -437,7 +437,7 @@ ADO.NET を使用して SQL Database にアクセスする場合は、次のガ�
 
 ただし、一時的エラー処理アプリケーション ブロックの現在のバージョンでは、これらの方法は SQL Database に対する非同期操作をネイティブにサポートしていません。推奨される手法では、SQL Database などの Azure サービスにアクセスするには、非同期技法のみを使用することが求められます。このため、一時的エラー処理アプリケーション ブロックを SQL Database と一緒に使用するには、次の技法について考慮する必要があります。
 
-バージョン 5 の C# 言語では、簡略化された非同期サポートを使用して、ブロック (Topaz) により提供される非同期バージョンのメソッドを作成することができます。たとえば、次のコードは、非同期バージョンの **ExecuteReaderWithRetry** 拡張メソッドをどのように作成できるかを示しています。元のコードへの変更や追加が強調表示されます。Topaz のソース コードは、GitHub の「[Transient Fault Handling Application Block ("Topaz") (一時的エラー処理アプリケーション ブロック ("Topaz"))](http://topaz.codeplex.com/SourceControl/latest)」から入手できます。
+バージョン 5 の C# 言語では、簡略化された非同期サポートを使用して、ブロック (Topaz) により提供される非同期バージョンのメソッドを作成することができます。たとえば、次のコードは、非同期バージョンの **ExecuteReaderWithRetry** 拡張メソッドをどのように作成できるかを示しています。元のコードへの変更や追加が強調表示されます。Topaz のソース コードは、Codeplex の「[Transient Fault Handling Application Block ("Topaz") (一時的エラー処理アプリケーション ブロック ("Topaz"))](http://topaz.codeplex.com/SourceControl/latest)」から入手できます。
 
 ```csharp
 public async static Task<SqlDataReader> ExecuteReaderWithRetryAsync(this SqlCommand command, RetryPolicy cmdRetryPolicy,
@@ -493,7 +493,7 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 
 SQL Database を最大限に活用することに関する一般的なガイダンスについては、次を参照してください。
 
-* [Windows Azure SQL Database Performance and Elasticity Guide (Windows Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
+* [Microsoft Azure SQL Database Performance and Elasticity Guide (Microsoft Azure SQL Database のパフォーマンスと弾力性に関するガイド)](http://social.technet.microsoft.com/wiki/contents/articles/3507.windows-azure-sql-database-performance-and-elasticity-guide.aspx)
 * [Minimizing Connection Pool errors in SQL Azure (SQL Azure での接続プール エラーの最小化)](http://blogs.msdn.com/b/adonet/archive/2011/11/05/minimizing-connection-pool-errors-in-sql-azure.aspx)
 
 ## Service Bus の再試行ガイドライン
@@ -517,8 +517,6 @@ Service Bus から返される例外は、クライアントが操作を再試�
 
 	namespaceManager.Settings.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                                             maxBackoff: TimeSpan.FromSeconds(30),
-	                                                             deltaBackoff: TimeSpan.FromSeconds(2),
-	                                                             terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                                             maxRetryCount: 3);
 
 このコードでは、わかりやすくするために名前付きパラメーターを使用していることに注意してください。ただし、どのパラメーターも省略可能ではないので、名前は省略することもできます。
@@ -530,8 +528,6 @@ Service Bus から返される例外は、クライアントが操作を再試�
 
 	messagingFactory.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                                    maxBackoff: TimeSpan.FromSeconds(30),
-	                                                    deltaBackoff: TimeSpan.FromSeconds(2),
-	                                                    terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                                    maxRetryCount: 3);
 
 メッセージング クライアントに対して再試行ポリシーを設定するか、または既定のポリシーをオーバーライドするには、その **RetryPolicy** プロパティを、必要なポリシー クラスのインスタンスを使用して設定します。
@@ -539,8 +535,6 @@ Service Bus から返される例外は、クライアントが操作を再試�
 ```csharp
 client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                        maxBackoff: TimeSpan.FromSeconds(30),
-	                                        deltaBackoff: TimeSpan.FromSeconds(2),
-	                                        terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                        maxRetryCount: 3);
 ```
 
@@ -619,8 +613,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(0),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(1.75),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(4),
 		                maxRetryCount: 3);
 
 		        // Policies cannot be specified on a per-operation basis.
@@ -644,8 +636,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(1),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(2),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(5),
 		                maxRetryCount: 3);
 
 
@@ -664,8 +654,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(0.1),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(2),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(5),
 		                maxRetryCount: 3);
 
 
@@ -725,7 +713,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 |----------------------|-----------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 構成オプション | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最大 5,000 ミリ秒に SyncTimeout を加算<br />1,000 | 最初の接続操作中に接続試行を繰り返す回数。<br />接続操作のタイムアウト (ミリ秒)。再試行間の遅延ではありません。<br />同期操作に用いることができる時間 (ミリ秒)。 |
 
-> [AZURE.NOTE]SyncTimeout は、操作のエンドツーエンド待機時間に影響を与えます。ただし、一般に、同期操作の使用は推奨されません。詳細については、「[Pipelines and Multiplexers (パイプラインとマルチプレクサー)](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)」を参照してください。
+> [AZURE.NOTE] SyncTimeout は、操作のエンドツーエンド待機時間に影響を与えます。ただし、一般に、同期操作の使用は推奨されません。詳細については、「[Pipelines and Multiplexers (パイプラインとマルチプレクサー)](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)」を参照してください。
 
 ## 再試行使用のガイダンス
 
@@ -899,7 +887,7 @@ Azure Search は、Web サイトまたはアプリケーションへの強力で
 Azure Search を使用する場合は、次のガイドラインについて検討します。
 
 * エラーの種類を判断するには、サービスによって返される状態コードを使用します。状態コードは、「[HTTP 状態コード (Azure Search)](http://msdn.microsoft.com/library/dn798925.aspx)」で定義されています。状態コード 503 (サービス利用不可) は、サービスが過負荷であり、要求をすぐには処理できないことを示します。適切なアクションは、サービスが回復するための時間が経過するのを待ち、それから操作を再試行することです。遅延間隔があまりに短いと、その後に再試行しても、利用できない状態を長引かせてしまう可能性があります。
-* REST 操作の再試行に関する一般情報については、このガイダンスの後のほうにある「[一般的な REST および再試行のガイドライン](#general-rest-and-retry-guidelines)」のセクションを参照してください。
+* REST 操作の再試行に関する一般情報については、このガイダンスの後の方にある「[一般的な REST および再試行のガイドライン](#general-rest-and-retry-guidelines)」セクションを参照してください。
 
 ## 詳細
 
@@ -952,16 +940,14 @@ Azure Active Directory を使用する場合は、次のガイドラインにつ
 
 ## 例 (Azure Active Directory)
 
-次のコード例は、一時的エラー処理アプリケーション ブロック (Topaz) を使用して、ADAL のクライアントでの使用に適したカスタムの一時的エラー検出戦略を定義する方法を示しています。このコードは、後述のコード リストで定義されているとおり、型 **AdalDetectionStrategy** のカスタム検出戦略に基づいて、新しい **RetryPolicy** を作成します。Topaz のカスタム検出戦略は、**ITransientErrorDetectionStrategy** インターフェイスを実装し、再試行を行う必要がある場合は true を返し、エラーが一時的なものと見なせず再試行を行うべきでない場合は **false** を返します。
+次のコード例は、一時的エラー処理アプリケーション ブロック (Topaz) を使用して、ADAL のクライアントでの使用に適したカスタムの一時的エラー検出戦略を定義する方法を示しています。このコードは、後述のコード リストで定義されているとおり、**AdalDetectionStrategy** 型のカスタム検出戦略に基づいて、新しい **RetryPolicy** を作成します。Topaz のカスタム検出戦略は、**ITransientErrorDetectionStrategy** インターフェイスを実装し、再試行を行う必要がある場合は true を返し、エラーが一時的なものと見なせず再試行を行うべきでない場合は **false** を返します。
 
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
 	using System.Net;
-	using System.Text;
 	using System.Threading.Tasks;
+	using Microsoft.Practices.TransientFaultHandling;
 	using Microsoft.IdentityModel.Clients.ActiveDirectory;
-	using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
 
 	namespace RetryCodeSamples
 	{
@@ -1121,4 +1107,4 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 | **Linear (固定間隔)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 再試行の回数。<br />再試行間の遅延。<br />最初の再試行をすぐに行うかどうかを示します。 |
 一時的エラー処理アプリケーション ブロックの使用例については、このガイダンスで前述されている、ADO.NET と Azure Active Directory を使用する Azure SQL Database についての「例」のセクションを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

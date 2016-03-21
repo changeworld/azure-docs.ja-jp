@@ -13,8 +13,8 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.topic="get-started-article"
+	ms.date="02/03/2016"
 	ms.author="garye"/>
 
 # Azure Machine Learning Studio とは
@@ -31,7 +31,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 **Azure Machine Learning Studio** では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。***データセット***と分析***モジュール***を対話型の***キャンバス***にドラッグ アンド ドロップし、それらを相互に接続して***実験***を完成させ、Machine Learning Studio で***実行***できます。モデルのさまざまな設計を試す際は、実験を***編集***して必要に応じて***保存***し、再度実行できます。準備が整ったら、***トレーニング実験***を***予測実験***に変換します。さらに、***Web サービス***として***発行***し、第三者が利用できるようそのモデルを公開します。
 
->[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
+>[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
 
 データセットとモジュールを視覚的に接続すれば予測分析モデルが完成するため、プログラミングは必要ありません。
 
@@ -93,7 +93,7 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 モジュールとは、データに対して実行できるアルゴリズムのことです。Machine Learning Studio には、データの受信機能や、データのトレーニング、スコア付け、検証などに対応したさまざまなモジュールが用意されています。提供されるモジュールには以下のようなものがあります。
 
 - [ARFF への変換][convert-to-arff] - .NET でシリアル化されたデータセットを属性関係ファイル フォーマット (ARFF) に変換します。
-- [基本統計値][elementary-statistics] - 平均や標準偏差などの基本的な統計値を計算します。
+- [基本統計値の計算][elementary-statistics] - 平均や標準偏差などの基本的な統計値を計算します。
 - [線形回帰][linear-regression] - オンライン傾斜降下に基づく線形回帰モデルを作成します。
 - [モデルのスコア付け][score-model] - トレーニングされた分類か回帰モデルをスコア付けします。
 
@@ -115,4 +115,4 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

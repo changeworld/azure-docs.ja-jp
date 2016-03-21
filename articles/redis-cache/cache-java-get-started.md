@@ -4,7 +4,7 @@
 	services="redis-cache"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="10/23/2015"
+	ms.date="03/04/2016"
 	ms.author="sdanie"/>
 
 # Java で Azure Redis Cache を使用する方法
 
 > [AZURE.SELECTOR]
-- [.Net](cache-dotnet-how-to-use-azure-redis-cache.md)
-- [Node.js](cache-nodejs-get-started.md)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [Node.JS](cache-nodejs-get-started.md)
 - [Java](cache-java-get-started.md)
 - [Python](cache-python-get-started.md)
 
@@ -38,7 +38,7 @@ Azure Redis Cache を使用すると、Microsoft が管理している専用の 
 
 ## Azure で Redis Cache を作成する
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
+[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** の順にクリックし、**[Redis Cache]** を選択します。
 
   ![][1]
 
@@ -47,7 +47,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
   ![][2]
 
 
-キャッシュを作成したら、プレビュー ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
+キャッシュを作成したら、Azure ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
 
   ![][4]
 
@@ -66,7 +66,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 	import redis.clients.jedis.Jedis;
 	import redis.clients.jedis.JedisShardInfo;
 
-	/* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the preview portal */
+	/* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the Azure Portal */
 	public class App
 	{
 	  public static void main( String[] args )
@@ -93,4 +93,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [3]: ./media/cache-java-get-started/cache03.png
 [4]: ./media/cache-java-get-started/cache04.png
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0309_2016-->

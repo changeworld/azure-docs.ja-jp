@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure での NoSQL テクノロジについて | Microsoft Azure" 
-	description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。" 
+	description="Azure NoSQL が役立つリレーショナル データベースに適していないデータを管理する方法について説明します。DocumentDB、テーブル ストレージ、HBase、HDInsight、およびSQL Database。" 
 	editor="cgronlun" 
 	manager="jhubbard" 
 	services="documentdb, storage, hdinsight" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/21/2015" 
+	ms.date="12/01/2015" 
 	ms.author="mimig"/>
 
 # Microsoft Azure での NoSQL について
@@ -26,9 +26,10 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
  - リレーショナル テクノロジの簡単な概要
  - Azure NoSQL テクノロジ (DocumentDB、テーブル ストレージ、HBase、HDInsight) の紹介。
  - NoSQL テクノロジと Azure SQL Database の比較。 
+ - DocumentDB、テーブル ストレージ、HBase、HDInsight、およびSQL Database をいつ使用するか
 
 **PDF ダウンロード:** [「Understanding NoSQL on Microsoft Azure (Microsoft Azure での NoSQL について)」](http://go.microsoft.com/fwlink/p/?LinkId=330292)
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

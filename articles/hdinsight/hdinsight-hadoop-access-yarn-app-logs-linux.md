@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/19/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス
 
 このドキュメントでは、Azure HDInsight の Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
 
-> [AZURE.NOTE]このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターについては、「[プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)」をご覧ください。
+> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターについては、「[プログラムで HDInsight の Hadoop の YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs.md)」をご覧ください。
 
 ## 前提条件
 
@@ -96,4 +96,4 @@ SSH トンネルを作成したら、次の手順に従って YARN のログを�
 [binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して PostgreSQL からデータを移動する
@@ -30,9 +30,13 @@ Data Factory は、PostgreSQL から他のデータ ストアへのデータ移�
 
 Data Management Gateway で PostgreSQL Databases に接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ## サンプル: PostgreSQL から Azure BLOB にデータをコピーする
 
-下のサンプルで確認できる要素:
+このサンプルは、PostgreSQL データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#postgresql-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
@@ -214,14 +218,14 @@ Data Management Gateway で PostgreSQL Databases に接続するには、[Postgr
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | あり
-server | PostgreSQL サーバーの名前です。 | あり 
-database | PostgreSQL データベースの名前です。 | あり 
+type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | はい
+server | PostgreSQL サーバーの名前です。 | はい 
+database | PostgreSQL データベースの名前です。 | はい 
 schema | データベース内のスキーマの名前です。 | いいえ 
-authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり 
+authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい 
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
-gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | あり 
+gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | はい 
 
 オンプレミスの PostgreSQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -233,7 +237,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 | はい 
+tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
 
 ## PostgreSQL のコピー アクティビティの type プロパティ
 
@@ -245,7 +249,7 @@ tableName | リンクされたサービスが参照する PostgreSQL Databases �
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ (**データセット**の **tableName** が指定されている場合)
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -263,11 +267,11 @@ PostgreSQL Databases 型 |	PostgreSQL エイリアス | .NET Framework 型
 abstime | | Datetime
 bigint | int8 | Int64
 bigserial | serial8 | Int64
-bit [ (n) ] | | Byte, String
-bit varying [ (n) ] | varbit | Byte, String
-ブール値 | bool | Boolean
+bit [ (n) ] | | Byte、String
+bit varying [ (n) ] | varbit | Byte、String
+boolean | bool | Boolean
 box | | Byte, String
-bytea | | Byte, String
+bytea | | Byte、String
 character [ (n) ] | char [ (n) ] | String
 character varying [ (n) ] | varchar [ (n) ] | String
 cid | | String
@@ -285,25 +289,25 @@ interval [ fields ] [ (p) ] | | Timespan
 json | | String
 jsonb | | Byte
 line | | Byte, String
-lseg | | Byte, String
-macaddr | | Byte, String
-money | | 小数点
-numeric [ (p, s) ] | decimal [ (p, s) ] | 小数点
+lseg | | Byte、String
+macaddr | | Byte、String
+money | | Decimal
+numeric [ (p, s) ] | decimal [ (p, s) ] | Decimal
 numrange | | String
 oid | | Int32
 path | | Byte, String
 pg\_lsn | | Int64
-point | | Byte, String
-polygon | | Byte, String
+point | | Byte、String
+polygon | | Byte、String
 real | float4 | Single
 smallint | int2 | Int16
 smallserial | serial2 | Int16
 serial | serial4 | Int32
-テキスト | | String
+text | | String
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

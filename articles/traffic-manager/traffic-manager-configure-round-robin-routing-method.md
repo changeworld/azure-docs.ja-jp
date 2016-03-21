@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
 # ラウンド ロビンによるトラフィック ルーティング方法の構成
@@ -23,8 +23,8 @@
 
 ## 一連のエンドポイントにトラフィックをルーティングする (ラウンド ロビン方式)
 
-1. 管理ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
-2. 管理ポータルの [Traffic Manager] ペインで、変更するエンドポイント設定が含まれた Traffic Manager プロファイルを見つけ、プロファイル名の右にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
+1. Azure クラシック ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
+2. Azure クラシック ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
 3. プロファイルのページで、ページの上部にある **[エンドポイント]** をクリックし、構成に含めるサービス エンドポイントが存在することを確認します。エンドポイントを追加または削除する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 4. プロファイル ページで、上部にある **[構成]** をクリックし、構成ページを開きます。
 5. **[トラフィック ルーティング方法の設定]** で、トラフィック ルーティング方法が **[ラウンド ロビン]** に設定されていることを確認します。他の方法に設定されている場合は、ドロップダウン リストで **[ラウンド ロビン]** をクリックします。
@@ -35,21 +35,21 @@
 
 ## 次のステップ
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
+
+[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)
+
+[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
+
+[フェールオーバーのルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)
+
+[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
+
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
 [Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
 
 [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
 
-[Traffic Manager について](../traffic-manager-overview.md)
-
-[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
-
-[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

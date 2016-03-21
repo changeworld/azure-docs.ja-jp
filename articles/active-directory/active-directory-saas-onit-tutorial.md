@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Onit の統合 | Microsoft Azure" 
     description="Azure Active Directory で Onit を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Onit の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Onit でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、Onit に割り当てた Azure AD ユーザーは、Onit 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Onit に割り当てた Azure AD ユーザーは、Onit 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -37,7 +37,7 @@
 
 ###Onit のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-onit-tutorial/IC700993.png "Active Directory")
 
@@ -49,13 +49,13 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-onit-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-onit-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-onit-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス**に、「**Onit**」と入力します。
+6.  **[検索ボックス]** に、「**Onit**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-onit-tutorial/IC791167.png "アプリケーション ギャラリー")
 
@@ -64,7 +64,7 @@
     ![Onit](./media/active-directory-saas-onit-tutorial/IC795325.png "Onit")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Onit に対する認証を行えるようにする方法を説明します。Onit にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、[証明書の拇印の値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Onit に対する認証を行えるようにする方法を説明します。Onit にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
   
 Onit アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを　**SAML トークンの属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
 
@@ -93,17 +93,17 @@ Onit アプリケーションは、特定の形式の SAML アサーションを
 
 4.  ブラウザーで、**[戻る]** をクリックして、**[クイック スタート]** ダイアログをもう一度開きます。
 
-5.  [シングル サインオンの構成] ダイアログ ボックスを開くには、 **[シングル サインオンの構成]** をクリックします。
+5.  **[シングル サインオンの構成]** ダイアログ ボックスを開くには、 **[シングル サインオンの構成]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-onit-tutorial/IC791170.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-onit-tutorial/IC791170.png "Configure Single Sign-On")
 
 6.  **[ユーザーの Onit へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-onit-tutorial/IC791171.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-onit-tutorial/IC791171.png "Configure Single Sign-On")
 
-7.  **[アプリ URL の構成]** ページの **[Onit サインオン URL]** テキストボックスに、ユーザーが Onit アプリケーションのサインオンに使用する URL (例: "**https://ms-sso-test.onit.com*”)) を入力して、**[次へ]** をクリックします。
+7.  **[アプリ URL の構成]** ページの **[Onit サインオン URL]** テキストボックスに、ユーザーが Onit アプリケーションのサインオンに使用する URL (例: "**https://ms-sso-test.onit.com*”) を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-onit-tutorial/IC791172.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-onit-tutorial/IC791172.png "Configure App URL")
 
 8.  **[Onit でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -113,9 +113,9 @@ Onit アプリケーションは、特定の形式の SAML アサーションを
 
 10. 上部のメニューで **[管理]** をクリックします。
 
-    ![管理](./media/active-directory-saas-onit-tutorial/IC791174.png "管理")
+    ![Administration](./media/active-directory-saas-onit-tutorial/IC791174.png "Administration")
 
-11. **[コーポレーションの編集]** をクリックします。
+11. **コーポレーションの編集** をクリックします。
 
     ![コーポレーションの編集](./media/active-directory-saas-onit-tutorial/IC791175.png "コーポレーションの編集")
 
@@ -132,9 +132,9 @@ Onit アプリケーションは、特定の形式の SAML アサーションを
     3.  Azure ポータルの **[Onit でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーし、**[IDP ログアウト URL]** ボックスに貼り付けます。
     4.  エクスポートした証明書から **[拇印]** の値をコピーして、**[IDP 証明書の指紋 (SHA1)]** ボックスに貼り付けます。  
 
-        >[AZURE.TIP]詳細については、[証明書のサムプリント値を取得する方法](http://youtu.be/YKQF266SAxI)についてのビデオをご覧ください。
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-    5.  **[SSO 型]** として **[SAML]** を選びます。
+    5.  **SSO 型** として **SAML** を選びます。
     6.  **[SSO ログイン ボタンのテキスト]** テキストボックスに、任意のボタンのテキストを入力します。
     7.  **[SSO を使用してログイン: 次のドメインとユーザーに必要]** を選び、該当するテキストボックスにテスト ユーザーの電子メール アドレスを入力し、**[更新]** をクリックします。![コーポレーションの編集](./media/active-directory-saas-onit-tutorial/IC791178.png "コーポレーションの編集")
 
@@ -151,7 +151,7 @@ Azure AD ユーザーが Onit にログインできるようにするには、�
 
 2.  **[ユーザーの追加]** をクリックします。
 
-    ![管理](./media/active-directory-saas-onit-tutorial/IC791180.png "管理")
+    ![Administration](./media/active-directory-saas-onit-tutorial/IC791180.png "Administration")
 
 3.  **[ユーザーの追加]** ダイアログ ページで、次の手順に従います。
 
@@ -164,7 +164,7 @@ Azure AD ユーザーが Onit にログインできるようにするには、�
 
 >[AZURE.NOTE]Onit から提供されている他の Onit ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -172,14 +172,14 @@ Azure AD ユーザーが Onit にログインできるようにするには、�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  Onit アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Onit** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-onit-tutorial/IC791182.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-onit-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-onit-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

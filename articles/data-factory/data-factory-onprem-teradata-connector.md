@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して Teradata からデータを移動する
@@ -30,9 +30,13 @@ Data Factory は、他のデータ ストアから Teradata へのデータの�
 
 Data Management Gateway で Teradata データベースに接続するには、[Teradata の .NET データ プロバイダー](http://go.microsoft.com/fwlink/?LinkId=278886)を Data Management Gateway と同じシステムにインストールする必要があります。
 
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
 ### サンプル: Teradata から Azure BLOB にデータをコピーする
 
-下のサンプルで確認できる要素:
+このサンプルは、Teradata データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesTeradata](data-factory-onprem-teradata-connector.md#teradata-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
@@ -52,8 +56,6 @@ Data Management Gateway で Teradata データベースに接続するには、[
 	        "type": "OnPremisesTeradata",
 	        "typeProperties": {
 	            "server": "<server>",
-	            "database": "<database>",
-	            "schema": "<schema>",
 	            "authenticationType": "<authentication type>",
 	            "username": "<username>",
 	            "password": "<password>",
@@ -88,7 +90,6 @@ Data Management Gateway で Teradata データベースに接続するには、[
 	        "type": "RelationalTable",
 	        "linkedServiceName": "OnPremTeradataLinkedService",
 	        "typeProperties": {
-	            "tableName": "MyTable"
 	        },
 	        "availability": {
 	            "frequency": "Hour",
@@ -222,26 +223,21 @@ Data Management Gateway で Teradata データベースに接続するには、[
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **OnPremisesTeradata** に設定する必要があります | あり
+type | type プロパティを **OnPremisesTeradata** に設定する必要があります | はい
 server | Teradata のサーバーの名前です。 | あり
-database | Teradata のデータベースの名前です。 | あり 
-schema | データベース内のスキーマの名前です。 | いいえ
-authenticationType | Teradata データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり
+authenticationType | Teradata データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
-gatewayName | Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 | あり
+gatewayName | Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 | はい
 
 オンプレミスの Teradata データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
 ## Teradata データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
 
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**RelationalTable** 型のデータセット (Teradata データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。現時点では、Teradata データセットでサポートされる種類のプロパティはありません。
 
-プロパティ | 説明 | 必須
--------- | ----------- | --------
-tableName | リンクされたサービスが参照する Teradata データベース インスタンスのテーブルの名前です。 | あり 
 
 ## Teradata のコピー アクティビティの type プロパティ
 
@@ -253,7 +249,7 @@ tableName | リンクされたサービスが参照する Teradata データベ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | はい
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -278,15 +274,15 @@ Byte | Byte
 VarByte | Byte
 BigInt | Int64
 ByteInt | Int16
-小数点 | 小数点
+Decimal | Decimal
 Double | Double
-整数 | Int32
+Integer | Int32
 Number | Double
 SmallInt | Int16
-日付 | DateTime
-時刻 | TimeSpan
+Date | DateTime
+Time | TimeSpan
 Time With Time Zone | String
-タイムスタンプ | DateTime
+Timestamp | DateTime
 Timestamp With Time Zone | DateTimeOffset
 Interval Day | TimeSpan
 Interval Day To Hour | TimeSpan
@@ -312,4 +308,4 @@ Xml | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!--------HONumber=AcomDC_0224_2016-->

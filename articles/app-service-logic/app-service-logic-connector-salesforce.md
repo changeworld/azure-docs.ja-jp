@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="02/11/2016"
    ms.author="sameerch"/>
 
 
 # Salesforce コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Salesforce API](../connectors/create-api-salesforce.md) をクリックしてください。
+
 Salesforce に接続して、取引先企業、潜在顧客などのエンティティを作成、変更します。Salesforce に関連する一般的な統合シナリオを次に示します。
 
 - Salesforce と ERP システム (SAP、QuickBooks など) との間のアカウントの同期
@@ -81,9 +83,9 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 19. Salesforce アカウントに "Contoso" という名前の新しいアカウントが作成されたことを確認します。
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -106,4 +108,4 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 [14]: ./media/app-service-logic-connector-salesforce/14_Update_Account_Address.png
 [15]: ./media/app-service-logic-connector-salesforce/15_Create_new_salesforce_connector.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

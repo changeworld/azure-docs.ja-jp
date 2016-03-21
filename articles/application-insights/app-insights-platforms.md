@@ -1,9 +1,9 @@
 <properties
-	pageTitle="Application Insights: 言語とプラットフォーム | Microsoft Azure"
-	description="Application Insights で使用できる言語とプラットフォーム"
+	pageTitle="Application Insights: 言語、プラットフォーム、統合| Microsoft Azure"
+	description="Application Insights で利用できる言語、プラットフォーム、統合"
 	services="application-insights"
     documentationCenter=""
-	authors="alancameronwills"
+	authors="OlegAnaniev-MSFT"
 	manager="douge"/>
 
 <tags
@@ -12,18 +12,16 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/17/2015"
+	ms.date="03/02/2016"
 	ms.author="awills"/>
 
-# Application Insights: 言語とプラットフォーム
-
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
+# Application Insights: 言語、プラットフォーム、統合
 
 以下は、これまでに把握している実装です (サード パーティによるものも含む)。
 
 ## 言語
 
-+ [C#|VB (.NET)](app-insights-start-monitoring-app-health-usage.md)
++ [C#|VB (.NET)](app-insights-asp-net.md)
 + [C#|VB (Windows ストア)](app-insights-windows-get-started.md)
 + [C++ (Windows ストア)](app-insights-windows-cpp.md)
 + [Java](app-insights-java-get-started.md)
@@ -34,32 +32,29 @@
 + [Ruby](https://rubygems.org/gems/application_insights)
 + [その他](#projects)
 
-## プラットフォーム
+## プラットフォームとフレームワーク
 
 + [Angular](https://www.npmjs.com/package/angular-applicationinsights)
-+ [ASP.NET](app-insights-start-monitoring-app-health-usage.md)
++ [ASP.NET](app-insights-asp-net.md)
 + [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android)
-+ [Azure Web アプリと VM](../insights-perf-analytics.md)
++ [Azure Web アプリと VM](../azure-portal/insights-perf-analytics.md)
 + [Azure Cloud Services](app-insights-cloudservices.md) &#151; Web ロールと worker ロールの両方を含む
-+ [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 + [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
-+ [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
++ [Docker](app-insights-docker.md)
++ [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 + [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [J2EE](app-insights-java-get-started.md)
 + [J2EE - 既にライブとなっているアプリ用](app-insights-java-live.md)
-+ [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-+ [Microsoft CRM](app-insights-sample-mscrm.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
-+ [Orchard](https://orchardazureappinsights.codeplex.com) 
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
-+ [SharePoint](app-insights-sharepoint.md)
-+ [SLAB](https://github.com/fidmor89/SLAB_AppInsights) セマンティック ログ
++ [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
++ [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 + [Windows ストア C#|VB](app-insights-windows-get-started.md)
 + [Windows ストア C++](app-insights-windows-cpp.md)
 + [Windows デスクトップのアプリケーションとサービス、および worker ロール](app-insights-windows-desktop.md)
-+ [WordPress](https://wordpress.org/plugins/application-insights/)
++ [Xamarin](https://github.com/Microsoft/ApplicationInsights-Xamarin)
 + [その他](#projects)
 
 
@@ -67,20 +62,27 @@
 
 +	[Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +	[Java、Log4J、または Logback](app-insights-java-trace-logs.md)
-+   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights)&#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と連携
++   [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights)&#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と連携
 +   [クラウド ベースのロード テスト](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
+
+
+## コンテンツ管理システム
+
++ [Concrete](https://github.com/fidmor89/appInsights-Concrete)
++ [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
++ [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
++ [Orchard](https://orchardazureappinsights.codeplex.com) 
++ [SharePoint](app-insights-sharepoint.md)
++ [WordPress](https://wordpress.org/plugins/application-insights/)
+
+## エクスポートとデータの分析
+
++ [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
++ [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
++ [Stream Analytics](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> 独自の SDK をビルドする
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-
-
-
-[Cordova](http://cordova.apache.org/)
-
-[JavaScript を使用した Windows ストア アプリ](https://msdn.microsoft.com/library/windows/apps/br211385.aspx)
-
-<!--Link references-->
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

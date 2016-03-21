@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/16/2015"
+   ms.date="01/08/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
@@ -25,7 +25,7 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 
 また、ボリューム コンテナーには次の属性があります。
 
-- **ボリューム** – ボリューム コンテナー内に含まれる、仮想プロビジョニングされた StorSimple ボリューム。ボリューム コンテナーには、最大で 256 台の仮想プロビジョニングされた StorSimple ボリュームを含めることができます。
+- **ボリューム** – ボリューム コンテナー内に含まれる、階層化された、またはローカルに固定された StorSimple ボリューム。ボリューム コンテナーには、最大で 256 台の StorSimple ボリュームを含めることができます。
 
 - **暗号化** – ボリューム コンテナーごとに定義できる暗号化キー。このキーは、StorSimple デバイスからクラウドに送信されるデータの暗号化に使用します。ミリタリーグレードの AES-256 ビット キーは、ユーザー入力のキーで使用します。データをセキュリティで保護するために、クラウド ストレージの暗号化を常に有効にすることをお勧めします。
 
@@ -43,7 +43,7 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 
 ## ボリューム コンテナーを追加する
 
-ボリューム コンテナーを作成するには、次の手順を実行します。
+ボリューム コンテナーを追加するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-add-volume-container](../../includes/storsimple-add-volume-container.md)]
 
@@ -66,4 +66,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 - [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

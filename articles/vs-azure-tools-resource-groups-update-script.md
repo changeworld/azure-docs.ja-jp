@@ -3,9 +3,9 @@
 	description="Azure リソース グループ デプロイメント プロジェクトに付属する PowerShell スクリプトを手動で更新するのに必要な手順について説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
-	editor="tlee" />
+	editor="" />
 
  <tags
 	ms.service="azure-resource-manager"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="11/10/2015"
-	ms.author="kempb" />
+	ms.date="02/04/2016"
+	ms.author="tarcher" />
 
 # Azure リソース グループ プロジェクトの PowerShell スクリプトの更新
 
@@ -59,7 +59,7 @@ Visual Studio の Azure リソース グループ デプロイメント プロ�
 
 	```
 	$StorageAccountKey = (Get-AzureRMStorageAccountKey -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName).Key1
-	$StorageAccountContext = New-AzureRMStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+	$StorageAccountContext = (Get-AzureRmStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName).Context
 	```
 
 1. 87 行目の次のコードを置き換えます。
@@ -94,19 +94,12 @@ Visual Studio の Azure リソース グループ デプロイメント プロ�
 		-Location $ResourceGroupLocation `
 		-Verbose -Force -ErrorAction Stop
 
-	Test-AzureRmResourceGroupDeployment `
+	New-AzureRMResourceGroupDeployment `
+		-Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 		-ResourceGroupName $ResourceGroupName `
 		-TemplateFile $TemplateFile `
 		-TemplateParameterFile $TemplateParametersFile `
 		@OptionalParameters `
-		-ErrorAction Stop 	
-
-	New-AzureRMResourceGroupDeployment
-		-Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
-	    -ResourceGroupName $ResourceGroupName `
-	    -TemplateFile $TemplateFile `
-	    -TemplateParameterFile $TemplateParametersFile `
-	    @OptionalParameters `
 		-Verbose -Force
 	```
 
@@ -212,21 +205,14 @@ New-AzureRMResourceGroup `
 	-Location $ResourceGroupLocation `
 	-Verbose -Force -ErrorAction Stop
 
-Test-AzureRmResourceGroupDeployment `
+New-AzureRMResourceGroupDeployment `
+	-Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 	-ResourceGroupName $ResourceGroupName `
 	-TemplateFile $TemplateFile `
 	-TemplateParameterFile $TemplateParametersFile `
 	@OptionalParameters `
-	-ErrorAction Stop 	
-
-New-AzureRMResourceGroupDeployment `
-	-Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $TemplateFile `
-    -TemplateParameterFile $TemplateParametersFile `
-    @OptionalParameters `
 	-Verbose -Force
 
 ```
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

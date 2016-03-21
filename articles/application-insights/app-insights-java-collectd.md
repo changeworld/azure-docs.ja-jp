@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # collectd: Application Insights での Unix パフォーマンス メトリック
@@ -27,7 +27,7 @@
 
 ## インストルメンテーション キーの取得
 
-[Microsoft Azure ポータル](http://portal.azure.com)で、データを表示する [Application Insights](start) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
+[Microsoft Azure ポータル](https://portal.azure.com)で、データを表示する [Application Insights](start) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

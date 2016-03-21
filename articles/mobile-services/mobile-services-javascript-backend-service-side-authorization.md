@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="javascript"
-	ms.date="08/25/2015"
+	ms.date="11/30/2015"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
@@ -28,7 +28,7 @@
 
 ## <a name="register-scripts"></a>スクリプトを登録する
 
-1. [[Azure 管理ポータル]]にログオンし、[**Mobile Services**]をクリックして、お使いのモバイル サービスをクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+1. [Azure クラシック ポータル]にログオンし、**[Mobile Services]**、モバイル サービスの順にクリックします。**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 2. **[スクリプト]** をクリックし、**挿入**操作を選択して、既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
@@ -39,7 +39,7 @@
 
 	このスクリプトは、挿入前に項目に認証済みユーザーのユーザー ID を追加します。
 
-    >[AZURE.NOTE][動的スキーマ](https://msdn.microsoft.com/library/azure/jj193175.aspx) が有効であることを確認します。それ以外の場合、*userId* 列は自動的には追加されません。新しいモバイル サービスの既定ではこの設定は有効になります。
+    >[AZURE.NOTE] [動的スキーマ](https://msdn.microsoft.com/library/azure/jj193175.aspx) が有効であることを確認します。それ以外の場合、*userId* 列は自動的には追加されません。新しいモバイル サービスの既定ではこの設定は有効になります。
 
 3. 同様に、既存の**読み取り**操作を次の関数で置き換えます。このスクリプトは、ユーザーが自身に挿入した項目だけを受信できるように、返された TodoItem オブジェクトをフィルターします。
 
@@ -67,7 +67,7 @@
 [My Apps dashboard]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [既存の Mobile Services アプリケーションに認証を追加]: /develop/mobile/tutorials/get-started-with-users-ios
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

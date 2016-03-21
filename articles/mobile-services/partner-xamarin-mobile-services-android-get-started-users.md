@@ -13,14 +13,19 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="02/11/2016" 
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
-<p>このトピックでは、Xamarin.Android アプリから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
+<p>このトピックでは、Xamarin.Android アプリから Azure Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile Services によって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
@@ -28,7 +33,7 @@
 2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3. [アプリケーションに認証を追加する]
 
-このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「Mobile Services の使用」を完了している必要があります。
+このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
 このチュートリアルを完了するには、Xamarin.Android および Android SDK 4.2 以降のバージョンが必要です。
 
@@ -42,11 +47,11 @@
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-3. Eclipse で、チュートリアル「Mobile Services の使用」を完了したときに作成したプロジェクトを開きます。
+3. Xamarin Studio で、チュートリアル [Mobile Services の使用]を実行したときに作成したプロジェクトを開きます。
 
-4. **[実行]** メニューの **[実行]** をクリックして、アプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
+4. **[実行]** メニューの **[デバッグの開始]** をクリックして、アプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
-	 この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	 この問題は、認証されないユーザーとしてアプリケーションが Mobile Services にアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -73,7 +78,7 @@
 
     これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Microsoft アカウント ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
-    > [AZURE.NOTE]Microsoft 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_Facebook_、_Google_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+    > [AZURE.NOTE] Microsoft 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、_Facebook_、_Google_、_Twitter_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
@@ -89,7 +94,7 @@
             await InitLocalStoreAsync();
 
             // Get the Mobile Service Table instance to use
-            toDoTable = client.GetTable<ToDoItem>();
+            toDoTable = client.GetSyncTable<ToDoItem>();
 
             textNewToDo = FindViewById<EditText>(Resource.Id.textNewToDo);
 
@@ -107,16 +112,16 @@
 		await CreateTable();
 
 
-6. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。
+6. **[実行]** メニューの **[デバッグの開始]** をクリックしてアプリケーションを開始し、選択した ID プロバイダーでサインインします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services をクエリしてデータを更新できるようになります。
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
 
 ## 完成したサンプルの入手
 [完成したサンプル プロジェクト]をダウンロードします。**applicationURL** 変数と **applicationKey** 変数を独自の Azure 設定で更新してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。
 
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register
@@ -133,8 +138,9 @@
 [15]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. -->
+[Mobile Services の使用]: partner-xamarin-mobile-services-android-get-started.md
+[モバイル サービスの使用]: partner-xamarin-mobile-services-android-get-started.md
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
-[Azure Management Portal]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

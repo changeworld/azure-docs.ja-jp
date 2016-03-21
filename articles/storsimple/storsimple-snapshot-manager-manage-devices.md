@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
@@ -30,7 +30,7 @@ StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノード�
 
 | 結果の列 |説明 |
 |:----------------|:--------------------| 
-| 名前 | Microsoft Azure 管理ポータルで構成されているデバイスの名前|
+| 名前 | Azure クラシック ポータルで構成されているデバイスの名前|
 | モデル | デバイスのモデル番号|
 | バージョン | デバイスにインストールされているソフトウェアのバージョン |
 | 状態 | デバイスが使用できるかどうか |
@@ -82,7 +82,7 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 
 3. **[デバイス]** ドロップダウン ボックスで、デバイスまたは仮想デバイスの IP アドレスを選択します。
 
-4. **[パスワード]** テキスト ボックスに、Microsoft Azure 管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。StorSimple Snapshot Manager により、指定したデバイスが検索されます。
+4. **[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。StorSimple Snapshot Manager により、指定したデバイスが検索されます。
 
     - デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。 
 
@@ -190,11 +190,11 @@ StorSimple デバイスを追加または置き換えるには、以下の手順
 
 ## 有効期限が切れたデバイス パスワードの変更
 
-パスワードを入力して、StorSimple Snapshot Manager で StorSimple デバイスを認証する必要があります。このパスワードは、Windows PowerShell インターフェイスを使用してデバイスを設定するときに構成します。ただし、パスワードは期限切れになる場合があります。この場合、Microsoft Azure 管理ポータルを使用してパスワードを変更することができます。次に、デバイスはパスワードが期限切れになる前に StorSimple Snapshot Manager で構成されていたため、デバイスを StorSimple Snapshot Manager で再認証する必要があります。
+パスワードを入力して、StorSimple Snapshot Manager で StorSimple デバイスを認証する必要があります。このパスワードは、Windows PowerShell インターフェイスを使用してデバイスを設定するときに構成します。ただし、パスワードは期限切れになる場合があります。この場合、Azure クラシック ポータルを使用してパスワードを変更することができます。次に、デバイスはパスワードが期限切れになる前に StorSimple Snapshot Manager で構成されていたため、デバイスを StorSimple Snapshot Manager で再認証する必要があります。
 
 #### 有効期限が切れたパスワードを変更するには
 
-1. Microsoft Azure 管理ポータルで StorSimple Manager サービスを開始します。
+1. Azure クラシック ポータルで StorSimple Manager サービスを開始します。
 
 2. **[デバイス]**、**[デバイスの構成]** の順にクリックします。
 
@@ -263,4 +263,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用したボリュームの表示と管理方法](storsimple-snapshot-manager-manage-volumes.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

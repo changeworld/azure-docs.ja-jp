@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="02/02/2016"
 	ms.author="cephalin"/>
 # Azure App Service でのフライト デプロイ (ベータ テスト)
 
@@ -32,7 +32,7 @@
 このチュートリアルでは、次のシナリオを組み合わせながら、運用環境の App Service アプリをテストする方法について説明します。
 
 - ベータ アプリに[運用環境のトラフィックをルーティング](app-service-web-test-in-production-get-start.md)する
-- 効果的なメトリックを得るための[インストルメントをアプリ](app-insights-web-track-usage.md)に実装する
+- 効果的なメトリックを得るための[インストルメントをアプリ](../application-insights/app-insights-web-track-usage.md)に実装する
 - ベータ版のアプリを継続的にデプロイし、実際のアプリのメトリックを追跡する
 - 運用環境のアプリとベータ版のアプリとでメトリックを比較し、コードに加えた変更の結果を確認する
 
@@ -44,19 +44,19 @@
 -	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。
 -	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi) ビット
 -	以下の事柄の基礎知識:
-	-	[Azure リソース マネージャー ](resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください)
+	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください)
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 運用 Web アプリをセットアップする
 
->[AZURE.NOTE]このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
+>[AZURE.NOTE] このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->GitHub 資格情報を Azure に保存するには、Web アプリを [Azure プレビュー ポータル](https://portal.azure.com)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
 
 一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオでは、開発とテストの済んだテンプレートを運用環境にデプロイします。
 
@@ -84,7 +84,7 @@
 	![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
 
 7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
-5.	[Azure プレビュー ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
+5.	[Azure ポータル](https://portal.azure.com/)にログインして、何が作成されたかを調べます。
 
 	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository\_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
@@ -97,7 +97,7 @@
 5. Visual Studio で *&lt;repository\_root>*\\src\\MultiChannelToDo.sln を開きます。
 6. ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]**、**[復元]** の順に選択して、すべての Nuget パッケージを復元します。
 6. **[MultiChannelToDo.Web]** を右クリックして、**[Application Insights テレメトリの追加]**、**[設定を構成する]**、[リソース グループを ToDoApp*&lt;your\_suffix>* に変更]、**[Application Insights をプロジェクトに追加]** の順に選択します。
-7. Azure プレビュー ポータルで、**MultiChannelToDo.Web** Application Insight リソースのブレードを開きます。次に、**[アプリケーションの使用状況]** 領域で、**[ブラウザーのページ読み込みデータを収集する方法を説明します]**、[コードのコピー] の順にクリックします。
+7. Azure ポータルで、**MultiChannelToDo.Web** Application Insight リソースのブレードを開きます。次に、**[アプリケーションの使用状況]** 領域で、**[ブラウザーのページ読み込みデータを収集する方法を説明します]**、[コードのコピー] の順にクリックします。
 7. コピーした JS インストルメンテーション コードを *&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml の終了 `<heading>` タグの直前に追加します。Application Insights リソースの一意のインストルメンテーション キーが格納されています。
 
         <script type="text/javascript">
@@ -174,7 +174,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 このセクションでは、複数のデプロイ スロットを構成し、スロット固有のテレメトリを同じ Application Insights リソースに送信します。こうすることで、異なるスロット (デプロイ環境) からのトラフィック間でテレメトリ データを比較できるので、アプリに対する変更の効果が見やすくなります。同時に、運用アプリについては必要に応じて監視を継続できるよう、運用環境のトラフィックを他のトラフィックから分離することができます。
 
-ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](app-insights-api-custom-events-metrics.md#js-initializer)します。サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ([カスタムのイベントとメトリックのための Application Insights API](app-insights-api-custom-events-metrics.md) に関するページを参照)。
+ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer)します。サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ([カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md) に関するページを参照)。
 
 1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の 2 つの `//` コメントに挟まれたコードを追加します。
 
@@ -215,7 +215,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 5. **[お気に入り]** ボタンをクリックして、現在のメトリックス エクスプローラーの設定を **"Custom events: Production"** などとして保存します。後でデプロイ スロット ビューとの間で簡単に切り替えることができます。
 
-    > [AZURE.TIP]さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](app-insights-export-power-bi.md)することを検討してください。
+    > [AZURE.TIP] さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](../application-insights/app-insights-export-power-bi.md)することを検討してください。
 
 ### スロット固有のタグをサーバー アプリのメトリックに追加する
 こちらも片手落ちにならないようサーバー側のアプリもセットアップしましょう。ただし、JavaScript でインストルメントを実装したクライアント アプリとは異なり、サーバー アプリのスロット固有タグは .NET コードで実装します。
@@ -279,7 +279,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
     スクリプトの完了後、元のリソース グループに含まれていたリソースをすべて維持したうえで、最初に作成した "Staging" スロットと同じ構成を持った "beta" という名前のスロットが新たに作成されます。
 
-    >[AZURE.NOTE]ここで紹介した各種デプロイ環境の作成手法は、[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)で用いられているものとは異なります。ここで作成しているのはデプロイ スロットを含んだデプロイ環境です。リソース グループを含んだデプロイ環境ではありません。リソース グループによるデプロイ環境を利用した場合、運用環境を開発者から遠ざけることができますが、運用環境でのテストは困難となります。運用環境でのテストは、スロットから成るデプロイ環境の方が簡単です。
+    >[AZURE.NOTE] ここで紹介した各種デプロイ環境の作成手法は、[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)で用いられているものとは異なります。ここで作成しているのはデプロイ スロットを含んだデプロイ環境です。リソース グループを含んだデプロイ環境ではありません。リソース グループによるデプロイ環境を利用した場合、運用環境を開発者から遠ざけることができますが、運用環境でのテストは困難となります。運用環境でのテストは、スロットから成るデプロイ環境の方が簡単です。
 
 必要であれば、次の方法でアルファ版のアプリを作成することもできます。
 
@@ -328,7 +328,7 @@ ToDoApp アプリケーションのコードによれば **BUTTON** イベント
 
 3. Application Insights リソースで、environment="beta" としてメトリックをフィルタリングします。
 
-    > [AZURE.NOTE]フィルタリングしたビューを別のお気に入りとして保存しておくと、メトリック エクスプローラーの表示を運用環境とベータ環境とで簡単に切り替えることができます。
+    > [AZURE.NOTE] フィルタリングしたビューを別のお気に入りとして保存しておくと、メトリック エクスプローラーの表示を運用環境とベータ環境とで簡単に切り替えることができます。
 
 Application Insights で、次のような画面が表示されているとします。
 
@@ -369,10 +369,10 @@ Azure App Service を使用すると、中小規模の企業が顧客向けの�
 -   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 -   [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
 -	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
--	[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
+-	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 -	[JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
 -	[Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
--	[Azure PowerShell](powershell-install-configure.md)
+-	[Azure PowerShell](../powershell-install-configure.md)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

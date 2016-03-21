@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の変数の代入
 SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。
@@ -76,4 +76,4 @@ SELECT および UPDATE は変数代入には使用できません。
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

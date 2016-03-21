@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="jasonnewyork"
 	manager="tadb"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="01/12/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure Storage の監視、診断、およびトラブルシューティング
+
+[AZURE.INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
+
+## 概要
 
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらを組み合わせたものにデプロイできます。一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
@@ -65,7 +69,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 	+ [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]
 	+ [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]
 	+ [付録 4: Excel を使用したメトリックおよびログ データの表示]
-	+ [付録 5: Application Insights for Visual Studio Online を使用した監視]
+	+ [付録 5: Application Insights for Visual Studio Team Services を使用した監視]
 
 ## <a name="introduction"></a>はじめに
 
@@ -98,17 +102,13 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 
 Windows のパフォーマンス監視に詳しい人は、Storage メトリックのことを Windows パフォーマンス モニターのカウンターに相当する Azure Storage の機能だと考えることができます。Storage メトリックでは、サービス可用性、サービスに対する要求の総数、サービスに対する要求の成功率などの、包括的なメトリック (Windows パフォーマンス モニターの用語で言えばカウンター) のセットを利用できます (利用できるメトリックの全リストについては、MSDN の「<a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">Storage Analytics Metrics のテーブル スキーマ</a>」を参照してください)。Storage サービスでメトリックを収集および集計する間隔は、1 時間または 1 分を指定できます。メトリックを有効にしてストレージ アカウントを監視する方法の詳細については、MSDN の<a href="http://go.microsoft.com/fwlink/?LinkId=510865" target="_blank">ストレージ メトリックの有効化</a>に関するページを参照してください。
 
-Azure ポータルに表示する時間単位のメトリックを選択できます。また、時間単位メトリックが特定のしきい値を超えた際に必ず電子メールで管理者に通知するようにルールを構成することもできます (詳細については、「<a href="http://msdn.microsoft.com/library/azure/dn306638.aspx" target="_blank">方法: Azure でアラート通知を受け取り、アラート ルールを管理する</a>」を参照してください)。Storage サービスは、最大限メトリックを収集しますが、すべてのストレージ操作を記録するわけではありません。
+[Azure ポータル](https://portal.azure.com)に表示する時間単位のメトリックを選択できます。また、時間単位メトリックが特定のしきい値を超えた際に必ず電子メールで管理者に通知するようにルールを構成することもできます (詳細については、「<a href="http://msdn.microsoft.com/library/azure/dn306638.aspx" target="_blank">方法: Azure でアラート通知を受け取り、アラート ルールを管理する</a>」を参照してください)。Storage サービスは、最大限メトリックを収集しますが、すべてのストレージ操作を記録するわけではありません。
 
-図 2 に、ストレージ アカウントの可用性、要求の総数、平均待機時間などのメトリックを表示できるポータルの [監視] ページを示しています。可用性が特定のレベルを下回った場合に管理者にアラートを送信する通知ルールもセットアップされています。このデータからは、調査対象領域として、成功率が 100% より低い Table サービスが候補に挙げられます (詳細については、セクション「[メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある]」を参照してください)。
-
-![][2]
-
-*図 2 ポータルでのストレージ メトリックの表示*
+Azure ポータルでは、ストレージ アカウントの可用性、要求の総数、平均待機時間などのメトリックを表示できます。可用性が特定のレベルを下回った場合に管理者にアラートを送信する通知ルールもセットアップされています。このデータからは、調査対象領域として、成功率が 100% より低いテーブル サービスが候補に挙げられます (詳細については、セクション「[メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある]」を参照してください)。
 
 次の方法により、Azure アプリケーションを継続して監視し、アプリケーションが正常であり、予期されるパフォーマンスが実現されていることを確認する必要があります。
 
-- アプリケーションのメトリックの基準値を決定します。こうしておくと、現行データと比較して Azure ストレージおよびアプリケーションの動作の重大な変化を見つけることができます。メトリックの基準値はアプリケーションごとに異なることが多いため、アプリケーションのパフォーマンス テストを実行する際に決定する必要があります。
+- アプリケーションのメトリックの基準値を決定します。こうしておくと、現行データと比較して Azure Storage およびアプリケーションの動作の重大な変化を見つけることができます。メトリックの基準値はアプリケーションごとに異なることが多いため、アプリケーションのパフォーマンス テストを実行する際に決定する必要があります。
 - 分単位のメトリックを記録し、それらを使用して、エラーの数や要求レートが急増するなどの予期しないエラーや異常がないかどうか積極的に監視します。
 - 時間単位のメトリックを記録し、それらを使用して、エラーの数や要求レートの平均などの平均値を監視します。
 - 診断ツールを使用して潜在的な問題を調査します。後でセクション「[ストレージ問題の診断]」で説明します。
@@ -121,17 +121,17 @@ Azure ポータルに表示する時間単位のメトリックを選択でき�
 
 ### <a name="monitoring-service-health"></a>サービス正常性の監視
 
-Microsoft Azure ポータル (<a href="https://portal.azure.com" target="_blank">https://portal.azure.com</a>) を使用することにより、世界中のすべての Azure リージョンの Storage サービス (およびその他の Azure サービス) の正常性を確認できます。これにより、アプリケーションで使用しているリージョンの Storage サービスに制御不能な問題による影響が発生していないかどうか、素早く確認できます。
+[Azure ポータル](https://portal.azure.com)を使用することにより、世界中のすべての Azure リージョンの Storage サービス (およびその他の Azure サービス) の正常性を確認できます。これにより、アプリケーションで使用しているリージョンの Storage サービスに制御不能な問題による影響が発生していないかどうか、素早く確認できます。
 
-Azure ポータルには、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。注: この情報は、以前は Azure サービス ダッシュボード (<a href="http://status.azure.com" target="_blank">http://status.azure.com</a>) に履歴データと共に提供されていました。
+[Azure ポータル](https://portal.azure.com)には、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。注: この情報は、以前は Azure サービス ダッシュボード (<a href="http://status.azure.com" target="_blank">http://status.azure.com</a>) に履歴データと共に提供されていました。
 
-ポータルによって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を取ることを検討しても良いでしょう。このような外部から監視する方法の例としては、<a href="http://www.keynote.com/solutions/monitoring/web-monitoring" target="_blank">Keynote</a>、<a href="https://www.gomeznetworks.com/?g=1" target="_blank">Gomez</a>、Application Insights for Visual Studio Online が提供しているサービスがあります。Application Insights for Visual Studio Online の詳細については、付録「[付録 5: Application Insights for Visual Studio Online を使用した監視]」を参照してください。
+[Azure ポータル](https://portal.azure.com)によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。このような外部から監視する方法の例としては、<a href="http://www.keynote.com/solutions/monitoring/web-monitoring" target="_blank">Keynote</a>、<a href="https://www.gomeznetworks.com/?g=1" target="_blank">Gomez</a>、Application Insights for Visual Studio Team Services が提供しているサービスがあります。Application Insights for Visual Studio Team Services の詳細については、付録「[付録 5: Application Insights for Visual Studio Team Services を使用した監視]」を参照してください。
 
 ### <a name="monitoring-capacity"></a>容量監視
 
 ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。このデータは、BLOB サービスの監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。**$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">Storage Analytics Metrics のテーブル スキーマ</a>」を参照してください。
 
-> [AZURE.NOTE]ストレージ アカウントの容量制限に近づいていることを示す早期警告として、これらの値を監視する必要があります。Azure ポータルのストレージ アカウント用の **[監視]** ページで、ストレージの合計使用量が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
+> [AZURE.NOTE] ストレージ アカウントの容量制限に近づいていることを示す早期警告として、これらの値を監視する必要があります。Azure ポータルで、ストレージの合計使用量が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
 
 BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx" target="_blank">Azure Storage の課金 (帯域幅、トランザクション、および容量)</a> に関するブログ記事を参照してください。
 
@@ -141,7 +141,7 @@ BLOB などのさまざまなストレージ オブジェクトのサイズを�
 
 100% より低い値は、一部のストレージ要求が失敗したことを示します。失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 (**ServerTimeoutError** など) を参照して調べることができます。要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、**Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。ページ「<a href="http://msdn.microsoft.com/library/azure/hh343260.aspx" target="_blank"></a>」に、ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧を示しています。
 
-Azure ポータルでは、ストレージ アカウントの **[監視]** ページで、サービスの **Availability** が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
+[Azure ポータル](https://portal.azure.com)で、サービスの **Availability** が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
 
 このガイドの「[トラブルシューティング ガイダンス]」セクションでは、Storage サービスの可用性に関する一般的な問題について説明します。
 
@@ -149,13 +149,13 @@ Azure ポータルでは、ストレージ アカウントの **[監視]** ペ�
 
 Storage サービスのパフォーマンスを監視するには、時間単位および分単位のメトリック テーブルにある次のメトリックを使用します。
 
-- **AverageE2ELatency** および **AverageServerLatency** の値は、Storage サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。**AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、**AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」を参照してください。
+- **AverageE2ELatency** 列と **AverageServerLatency** 列の値は、ストレージ サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。**AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、**AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」を参照してください。
 - **TotalIngress** および **TotalEgress** 列の値は、Storage サービスまたは特定の API 操作タイプの送受信データの総量 (バイト単位) を示します。
 - **TotalRequests** 列の値は、API 操作の Storage サービスが受信した要求の総数を示します。**TotalRequests** は、Storage サービスが受信した要求の総数です。
 
 一般には、調査が必要な問題が存在することを示すインジケーターとして、これらの値のいずれかに予期しない変化が生じていないか監視します。
 
-Azure ポータルでは、ストレージ アカウントの **[監視]** ページで、このサービスのパフォーマンス メトリックのいずれかが指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
+[Azure ポータル](https://portal.azure.com)で、このサービスのパフォーマンス メトリックのいずれかが指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
 
 このガイドの「[トラブルシューティング ガイダンス]」セクションでは、Storage サービスのパフォーマンスに関する一般的な問題について説明します。
 
@@ -180,7 +180,7 @@ Azure ポータルでは、ストレージ アカウントの **[監視]** ペ�
 
 ### <a name="service-health-issues"></a>サービス正常性の問題
 
-一般に、サービス正常性の問題は制御不能です。Azure ポータルに、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス地理冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
+一般に、サービス正常性の問題は制御不能です。[Azure ポータル](https://portal.azure.com)では、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス geo 冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
 
 ### <a name="performance-issues"></a>パフォーマンスの問題
 
@@ -194,7 +194,7 @@ Azure ポータルでは、ストレージ アカウントの **[監視]** ペ�
 
 アプリケーションのユーザーから、クライアント アプリケーションの報告したエラーについて通知されることがあります。ストレージ メトリックにも、Storage サービスのさまざまな種類のエラーの数が記録されます。たとえば、**NetworkError**、**ClientTimeoutError**、**AuthorizationError** などがあります。ストレージ メトリックにはエラーの種類ごとの数しか記録されませんが、サーバー側のログ、クライアント側のログ、およびネットワーク ログを調べれば個々の要求に関する詳細を取得できます。一般に、要求が失敗した理由は、Storage サービスから返される HTTP 状態コードに示されます。
 
-> [AZURE.NOTE]たとえば、一時的なネットワークの状態によるエラーやアプリケーション エラーなど、断続的なエラーが表示される場合があります。
+> [AZURE.NOTE] たとえば、一時的なネットワークの状態によるエラーやアプリケーション エラーなど、断続的なエラーが表示される場合があります。
 
 次の MSDN のリソースは、ストレージ関連の状態コードおよびエラー コードの理解に役立ちます。
 
@@ -244,7 +244,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
 - サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID\] 列に表示されます。
 
-> [AZURE.NOTE]複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
+> [AZURE.NOTE] 複数の要求が同じクライアント要求 ID を共有する可能性があります。クライアントがこの値を割り当てることができるからです (一方、ストレージ クライアント ライブラリは新しい値を自動的に割り当てます)。クライアントから再試行する場合には、必ず同じクライアント要求 ID を共有します。クライアントからの送信されるバッチの場合、バッチのクライアント要求 ID は 1 つだけです。
 
 
 ### <a name="server-request-id"></a>サーバー要求 ID
@@ -255,7 +255,7 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、サーバー要求 ID は、応答メッセージの **x-ms-request-id** HTTP ヘッダー値として表示されます。
 - ストレージ クライアント ライブラリが作成するクライアント側のログの場合、サーバー要求 ID は、サーバー応答の詳細が示されているすべてのログ エントリの **[操作テキスト]** 列に表示されます。
 
-> [AZURE.NOTE]Storage サービスは受け取るすべての要求に対して必ず固有のサーバー要求 ID を割り当て、クライアントが実行するすべての再試行操作およびバッチに含まれるすべての操作において、サーバー要求 ID が固有になるようにします。
+> [AZURE.NOTE] Storage サービスは受け取るすべての要求に対して必ず固有のサーバー要求 ID を割り当て、クライアントが実行するすべての再試行操作およびバッチに含まれるすべての操作において、サーバー要求 ID が固有になるようにします。
 
 ストレージ クライアント ライブラリがクライアントで **StorageException** をスローする場合、**RequestInformation** プロパティには、**ServiceRequestID** プロパティが含まれる **RequestResult** オブジェクトが入ります。また、**RequestResult** オブジェクトには **OperationContext** インスタンスからもアクセスできます。
 
@@ -353,17 +353,17 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 ### <a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い
 
-ポータル監視ツールに基づいて示されている以下の例の場合、**AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
+[Azure ポータル](https://portal.azure.com)監視ツールに基づいて示されている以下の例の場合、**AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
 
 ![][4]
 
 Storage サービスが正常な要求に関して算出するのはメトリック **AverageE2ELatency** だけで、**AverageServerLatency** の場合とは異なり、このメトリックにはククライアントがデータを送信し、Storage サービスから確認応答を受け取るまでの時間が含まれます。そのため、**AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
 
-> [AZURE.NOTE]Storage Logging ログ データの個々のストレージ操作に関して、**E2ELatency** と **ServerLatency** を表示することもできます。
+> [AZURE.NOTE] Storage Logging ログ データの個々のストレージ操作に関して、**E2ELatency** と **ServerLatency** を表示することもできます。
 
 #### クライアントのパフォーマンス上の問題に関する調査
 
-クライアントの応答が低下する理由の 1 つとして考えられるのは、使用可能な接続またはスレッドの数に限界がある場合です。この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
+クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
 
 Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx" target="_blank">小さな要求に不親切な Nagle アルゴリズム</a>に関する Microsoft Azure Storage チームのブログ記事を参照してください。Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。以下の例は、worker ロールの **Application\_Start** メソッドに関係する部分です。
 
@@ -387,7 +387,13 @@ Microsoft Message Analyzer によるネットワーク問題のトラブルシ�
 
 このシナリオの場合、最も可能性が高い原因は、Storage サービスに到達するストレージ要求の遅延です。クライアントの要求が BLOB サービスにうまく送られない原因を調査する必要があります。
 
-要求送信でクライアントに遅延が生じる理由として、使用可能な接続またはスレッドの数に限りがあるという可能性があります。クライアントが複数回試行したかどうか、その場合にはその理由についても調査しなければなりません。この調査はプログラムで実行できます。その場合、要求に関連した **OperationContext** オブジェクトを調べ、**ServerRequestId** 値を取得します。詳しくは、『[サーバー要求 ID]』セクションにあるコード サンプルを参照してください。
+要求送信でクライアントに遅延が生じる理由の 1 つとして、使用可能な接続またはスレッドの数が制限されていることが考えられます。
+
+クライアントが複数回再試行したかどうかを確認し、試行している場合はその理由を調査する必要があります。クライアントが複数回再試行しているかどうかを確認するには、以下を実行できます。
+
+- Storage Analytics のログを調べます。再試行が複数回発生している場合は、クライアント要求 ID が同じでサーバー要求 ID が異なる複数の操作があります。
+- クライアントのログを調べます。詳細ログに、再試行が発生したことが示されます。
+- コードをデバッグし、要求に関連付けられた **OperationContext** オブジェクトのプロパティをチェックします。操作が再試行されている場合、**RequestResults** プロパティに複数の重複しないサーバー要求 ID が含まれます。各要求の開始時刻と終了時刻をチェックすることもできます。詳細については、「[サーバー要求 ID]」セクションのコード サンプルを参照してください。 
 
 クライアントに問題がない場合、パケット損失などの考えられるネットワーク問題について調査してください。Wireshark または Microsoft Message Analyzer などのツールを使用して、ネットワーク問題を調査できます。
 
@@ -403,7 +409,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 また **AverageServerLatency** 値が高いという症状は、テーブルやクエリがうまく設計されていないために、スキャン操作が生じたり、前後にアンチ パターンが存在したりする場合に起こり得ます。詳しくは、『[メトリックが PercentThrottlingError の増加を示す]』を参照してください。
 
-> [AZURE.NOTE]注意が必要な他の問題を含む総合的なチェック リストについては、[拡張可能でパフォーマンスの高い Storage ベースのアプリケーションを設計するためのチェックリスト](storage-performance-checklist.md)のページを参照してください。
+> [AZURE.NOTE] 注意が必要な他の問題を含む総合的なチェック リストについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)」を参照してください。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>キューのメッセージ配信で予期しない遅延が発生する
 
@@ -431,23 +437,23 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装する必要があります。それにより、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化するのに役立ちます。ストレージ クライアント ライブラリを使用して再試行ポリシーを実装する方法の詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx" target="_blank">Microsoft.WindowsAzure.Storage.RetryPolicies Namespace</a>」を参照してください。
 
-> [AZURE.NOTE]アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
+> [AZURE.NOTE] アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>PercentThrottlingError エラーの永続的増加
 
-**PercentThrottlingError** 値が継続的に高くなるのが、トランザクション量がずっと増加しているという状況の後に生じる場合、またはアプリケーションで最初のロード テストを実行するときに生じる場合には、アプリケーションがストレージ パーティションをどのように使用しているか、およびストレージ アカウントのスケーラビリティ ターゲットに近づいているかを評価する必要があります。たとえば、(単一パーティションとしてカウントされる) キューで調整エラーが生じる場合、トランザクションを複数パーティションに分散するためにキューを追加することを考慮する必要があります。テーブルで調整エラーが生じる場合、より広い範囲のパーティション キー値を使用して複数のパーティションにトランザクションを分散させるため、異なるパーティション スキームを使用することを考慮する必要があります。この問題が生じる一般的な原因の 1 つは、日付をパーティション キーとして選択し、特定の日のすべてのデータを 1 つのパーティションに書き込むという、前後にあるアンチ パターンです。この場合、ロード中に、書き込みボトルネックとなるおそれがあります。別のパーティション設計を考慮するか、BLOB ストレージを使用する方がよいソリューションとなるかどうかを考えてください。また、トラフィックの急増が原因となって調整が生じているのか確認し、要求パターンを平滑化する方法を調べる必要もあります。
+**PercentThrottlingError** 値が継続的に高くなるのが、トランザクション量がずっと増加しているという状況の後に生じる場合、またはアプリケーションで最初のロード テストを実行するときに生じる場合には、アプリケーションがストレージ パーティションをどのように使用しているか、およびストレージ アカウントのスケーラビリティ ターゲットに近づいているかを評価する必要があります。たとえば、(単一パーティションとしてカウントされる) キューで調整エラーが生じる場合、トランザクションを複数パーティションに分散するためにキューを追加することを考慮する必要があります。テーブルで調整エラーが生じる場合、より広い範囲のパーティション キー値を使用して複数のパーティションにトランザクションを分散させるため、異なるパーティション スキームを使用することを考慮する必要があります。この問題が生じる一般的な原因の 1 つは、日付をパーティション キーとして選択し、特定の日のすべてのデータを 1 つのパーティションに書き込むという、前後にあるアンチ パターンです。この場合、ロード中に、書き込みボトルネックとなるおそれがあります。別のパーティション設計を考慮するか、Blob Storage を使用する方がよいソリューションとなるかどうかを考えてください。また、トラフィックの急増が原因となって調整が生じているのか確認し、要求パターンを平滑化する方法を調べる必要もあります。
 
 トランザクションを複数のパーティションに分散する場合であっても、ストレージ アカウントに設定されているスケーラビリティ限界に注意してください。たとえば、10 個のキューを使用し、それぞれで毎秒最大で 2,000 メッセージ (各メッセージは 1 KB) を処理した場合、ストレージ アカウントの 1 秒あたり 20,000 メッセージという全体の限界に達します。1 秒あたり 20,000 を超えるエンティティを処理する必要がある場合、複数のストレージ アカウントの使用を考慮しなければなりません。また、要求とエンティティのサイズは、Storage サービスがクライアントを調整する時期に影響を与えることも考えておく必要があります。つまり、要求とエンティティが大きくなると、より早く調整される可能性があるのです。
 
 クエリの設計が非効率的な場合も、テーブル パーティションのスケーラビリティ限界に達する原因となる可能性があります。たとえば、1 つのパーティションのエンティティの 1% だけを選択するフィルターが指定されたクエリが、パーティション内のすべてのエンティティをスキャンする場合、各エンティティにアクセスする必要があります。エンティティを読み取る操作それぞれが、パーティション内のトランザクション数合計に含まれるので、すぐにスケーラビリティ ターゲットに達してしまいます。
 
-> [AZURE.NOTE]パフォーマンス テストを実行すると、アプリケーションにおける非効率的なクエリ設計が明らかになります。
+> [AZURE.NOTE] パフォーマンス テストを実行すると、アプリケーションにおける非効率的なクエリ設計が明らかになります。
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>メトリックが PercentTimeoutError の増加を示す
 
 メトリックが、いずれかの Storage サービスの **PercentTimeoutError** が増加していることを示しています。同時に、クライアントは、ストレージ操作により「500 操作タイムアウト」HTTP ステータス メッセージを大量に受け取ります。
 
-> [AZURE.NOTE]パーティションを新しいサーバーに移動するときに、Storage サービスの負荷分散要求としてタイムアウト エラーが一時的に表示される場合もあります。
+> [AZURE.NOTE] パーティションを新しいサーバーに移動するときに、Storage サービスの負荷分散要求としてタイムアウト エラーが一時的に表示される場合もあります。
 
 **PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックを統合したメトリックです。
 
@@ -463,7 +469,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 ### <a name="the-client-is-receiving-403-messages"></a>クライアントが HTTP 403 (許可されていません) のメッセージを受け取る
 
-クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの共有アクセス署名 (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
+クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの Shared Access Signature (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
 
 ソース|詳細度|詳細度|クライアント要求 ID|操作テキスト
 ---|---|---|---|---
@@ -471,7 +477,7 @@ Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|場所 Primary、場所モ
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14 への同期要求を開始しています。
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|応答を待機しています。
 Microsoft.WindowsAzure.Storage|警告|2|85d077ab -…|応答の待機中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。
-Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|応答を受け取りました。Status code = 403, Request ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = , ETag = .
+Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|応答を受け取りました。状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = .
 Microsoft.WindowsAzure.Storage|警告|2|85d077ab -…|操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。
 Microsoft.WindowsAzure.Storage|情報|3 |85d077ab -…|操作を再試行する必要があるかどうかを検査しています。再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|次の場所が、場所モードに基づいてプライマリに設定されています。
@@ -481,8 +487,8 @@ Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシー�
 
 - 一般に、クライアントがすぐに使用できるように SAS を作成する場合には開始時刻は設定しないでください。現行時間を使用して SAS を生成するホストと、Storage サービスのクロックに小さな差異が存在すると、有効になっていない SAS を Storage サービスが受け取る可能性があります。
 - SAS に非常に短い有効期限は設定しないでください。やはり、SAS を生成するホストと Storage サービス間のクロックに小さい差異があると、予想されていたよりも明らかに早く SAS の有効期限が切れる恐れがあります。
-- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank">Microsoft Azure Storage の新機能</a>に関するページを参照してください。
-- ストレージ アクセス キーを再生成すると (Azure ポータルのストレージ アカウントの任意のページで **[アクセス キーの管理]** をクリックします)、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
+- SAS キーのバージョン パラメーター (例: **sv=2015-04-05**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。 常に最新バージョンの[ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用することをお勧めします。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、[Microsoft Azure Storage の新機能](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx)に関するページを参照してください。
+- ストレージ アクセス キーを再生成すると、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
 
 SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名を使用したアクセスの委任</a>」を注意深くお読みください。
 
@@ -516,7 +522,7 @@ de8b1c3c-...|BLOB を作成する **UploadFromStream** メソッド。ここで�
 07b26a5d-...|https://domemaildist.blob.core.windows.net/azuremmblobcontainer への同期要求を開始しています。
 07b26a5d-...|StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.
 07b26a5d-...|応答を待機しています。
-07b26a5d-... | 応答を受け取りました。Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag = ";0x8D14D2DC63D059B";.
+07b26a5d-... | 応答を受け取りました。状態コード = 200、要求 ID = eeead849-...Content-MD5 = 、ETag = ";0x8D14D2DC63D059B";.
 07b26a5d-... | 応答ヘッダーは正常に処理されました。残りの操作を処理しています。
 07b26a5d-... | 応答の本文をダウンロードしています。
 07b26a5d-... | 操作は正常に完了しました。
@@ -609,13 +615,13 @@ JavaScript クライアントを使用していて Storage サービスから HT
     SEC7120: Origin http://localhost:56309 not found in Access-Control-Allow-Origin header.
     SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
-> [AZURE.NOTE]クライアント側の JavaScript の問題をトラブルシューティングするときには、Internet Explorer の F12 開発者ツールを使用して、ブラウザーと Storage サービスの間で交換されたメッセージをトレースできます。
+> [AZURE.NOTE] クライアント側の JavaScript の問題をトラブルシューティングするときには、Internet Explorer の F12 開発者ツールを使用して、ブラウザーと Storage サービスの間で交換されたメッセージをトレースできます。
 
 これらのエラーは、Web ページがそのページのドメインとは異なるドメインの API を呼び出さないようにする <a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">Same Origin Policy</a> セキュリティ制限を Web ブラウザーで実装しているために発生します。
 
 この JavaScript の問題を回避するには、クライアントがアクセスする Storage サービスにクロス オリジン リソース共有 (CORS) を構成します。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn535601.aspx" target="_blank">Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート</a>」を参照してください。
 
-以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して BLOB ストレージ サービスの BLOB へのアクセスを許可する BLOB サービスを構成する方法を示しています。
+以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して Blob Storage サービスの BLOB へのアクセスを許可する BLOB サービスを構成する方法を示しています。
 
     CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
     // Set the service properties.
@@ -633,7 +639,7 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 #### <a name="network-failure"></a>ネットワーク エラー
 
-状況によっては、ネットワーク パケットの紛失が原因で、Storage サービスが HTTP 404 メッセージをクライアントに返すことがあります。たとえば、クライアント アプリケーションがエンティティを Table サービスから削除するときに、クライアントが、Table サービスからの "HTTP 404 (未検出)" 状態メッセージを報告するストレージ例外をスローすることがあります。Table ストレージ サービスのテーブルを調べると、要求どおりにサービスがエンティティを削除したことがわかります。
+状況によっては、ネットワーク パケットの紛失が原因で、Storage サービスが HTTP 404 メッセージをクライアントに返すことがあります。たとえば、クライアント アプリケーションがエンティティを Table サービスから削除するときに、クライアントが、Table サービスからの "HTTP 404 (未検出)" 状態メッセージを報告するストレージ例外をスローすることがあります。Table Storage サービスのテーブルを調べると、要求どおりにサービスがエンティティを削除したことがわかります。
 
 クライアントにおける例外の詳細には、Table サービスによって割り当てられた要求 ID (7e84f12d…) が含まれます。この情報を使用し、ログ ファイルの **request-id-header** 列で検索することによりサーバー側のストレージ ログにある要求の詳細を検索できます。メトリックを使用して、このようなエラーが発生した時刻を特定し、エラーがメトリックに記録された時刻に基づいてログ ファイルを検索することもできます。このログ エントリには、状態メッセージ "HTTP (404) Client Other Error" を出して削除が失敗したことが示されます。同じログ エントリの **client-request-id** 列には、クライアントによって生成された要求 ID (813ea74f…) も含まれています。
 
@@ -669,7 +675,7 @@ JavaScript クライアントを使用していて Storage サービスから HT
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>ストレージ使用量の予期しない増加が容量メトリックに示される
 
 
-突然、ストレージ アカウントの使用量に予期しない変化が生じた場合は、まず、可用性メトリックを参照して理由を調べます。たとえば、領域を解放すると想定していたアプリケーション固有のクリーンアップ操作が、(領域の解放に使用する SAS トークンの期限が切れていたなどの理由で) 想定どおりに機能しなかったために削除要求の失敗の数が増加し、その結果、BLOB ストレージの使用量が増加した可能性があります。
+突然、ストレージ アカウントの使用量に予期しない変化が生じた場合は、まず、可用性メトリックを参照して理由を調べます。たとえば、領域を解放すると想定していたアプリケーション固有のクリーンアップ操作が、(領域の解放に使用する SAS トークンの期限が切れていたなどの理由で) 想定どおりに機能しなかったために削除要求の失敗の数が増加し、その結果、Blob Storage の使用量が増加した可能性があります。
 
 ### <a name="you-are-experiencing-unexpected-reboots"></a>多数の VHD が接続されている Azure Virtual Machines が予期せず再起動する
 
@@ -723,7 +729,7 @@ SDK をインストールしようとすると、ローカル マシンへのス
 
 ### <a name="you-have-a-different-issue-with-a-storage-service"></a>Storage サービスで別の問題が発生する
 
-これまでのトラブルシューティング セクションに、Storage サービスで発生している問題が含まれていない場合は、以下のアプローチによって問題を診断およびトラブルシューティングする必要があります。
+これまでのトラブルシューティング セクションに、ストレージ サービスで発生している問題が含まれていない場合は、以下のアプローチによって問題を診断およびトラブルシューティングする必要があります。
 
 - メトリックを参照して、想定していた基準の動作から変化しているものがないか調べます。メトリックから、問題が一時的か永続的か、また問題がどのストレージ操作に影響しているのかを判断できます。
 - メトリック情報を使用してサーバー側のログ データを検索することで、発生している問題に関するより詳細な情報を得ることができます。その情報を基に、問題をトラブルシューティングして解決できる可能性があります。
@@ -743,7 +749,7 @@ Microsoft Message Analyzer の使用方法の詳細については、「[付録 
 
 Fiddler は、クライアント アプリケーションと、使用する Azure Storage サービスの間の HTTP および HTTPS トラフィックを分析するのに役立つツールです。Fiddler は <a href="http://www.telerik.com/fiddler" target="_blank">http://www.telerik.com/fiddler</a> からダウンロードできます。
 
-> [AZURE.NOTE]Fiddler は HTTPS トラフィックをデコードできます。Fiddler のドキュメントをよく読み、このツールがデコードする方法およびセキュリティ上の影響を理解してください。
+> [AZURE.NOTE] Fiddler は HTTPS トラフィックをデコードできます。Fiddler のドキュメントをよく読み、このツールがデコードする方法およびセキュリティ上の影響を理解してください。
 
 この付録では、Fiddler をインストールしたローカル マシンと Azure Storage サービスの間のトラフィックをキャプチャするための Fiddler の構成方法について簡単に説明します。
 
@@ -781,7 +787,7 @@ WireShark は、[**packetlist**] ウィンドウに存在するエラーをす�
 
 ![][8]
 
-> [AZURE.NOTE]Wireshark の使用方法の詳細については、『<a href="http://www.wireshark.org/docs/wsug_html_chunked/" target="_blank">Wireshark Users Guide</a>』を参照してください。
+> [AZURE.NOTE] Wireshark の使用方法の詳細については、『<a href="http://www.wireshark.org/docs/wsug_html_chunked/" target="_blank">Wireshark Users Guide</a>』を参照してください。
 
 ### <a name="appendix-3"></a>付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ
 
@@ -789,11 +795,11 @@ Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HT
 
 #### Microsoft Message Analyzer を使用した Web トレース セッションの構成
 
-Microsoft Message Analyzer を使用した HTTP および HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、[**File**] メニューで [**Capture/Trace**] をクリックします。使用可能なトレース シナリオのリストで、[**Web Proxy**] を選択します。[**Trace Scenario Configuration**] パネルの [**HostnameFilter**] テキストボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は Azure ポータルで調べられます)。たとえば、Azure ストレージ アカウントの名前が **contosodata** である場合は、[**HostnameFilter**] テキストボックスに以下を追加する必要があります。
+Microsoft Message Analyzer を使用した HTTP および HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、[**File**] メニューで [**Capture/Trace**] をクリックします。使用可能なトレース シナリオのリストで、[**Web Proxy**] を選択します。**[Trace Scenario Configuration]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure ポータル](https://portal.azure.com)で調べられます)。たとえば、Azure ストレージ アカウントの名前が **contosodata** である場合は、[**HostnameFilter**] テキストボックスに以下を追加する必要があります。
 
     contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
 
-> [AZURE.NOTE]空白文字でホスト名を区切ります。
+> [AZURE.NOTE] 空白文字でホスト名を区切ります。
 
 トレース データの収集を開始する準備ができたら、[**Start With**] ボタンをクリックします。
 
@@ -817,9 +823,9 @@ Microsoft Message Analyzer の Local Link Layer トレースの詳細につい�
 
 ### <a name="appendix-4"></a>付録 4: Excel を使用したメトリックおよびログ データの表示
 
-さまざまなツールを使用して、Excel に簡単に読み込んで表示したり分析したりできる区切り形式で、ストレージ メトリック データを Azure テーブル ストレージからダウンロードすることができます。Azure BLOB ストレージのストレージ ログ データは、既に、Excel に読み込み可能な区切り形式のデータです。しかし、「<a href="http://msdn.microsoft.com/library/azure/hh343259.aspx" target="_blank">Storage Analytics のログの形式</a>」および「<a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">Storage Analytics Metrics のテーブル スキーマ</a>」の情報にある該当する列見出しを追加する必要があるでしょう。
+さまざまなツールを使用して、Excel に簡単に読み込んで表示したり分析したりできる区切り形式で、ストレージ メトリック データを Azure Table Storage からダウンロードすることができます。Azure Blob Storage のストレージ ログ データは、既に、Excel に読み込み可能な区切り形式のデータです。しかし、「<a href="http://msdn.microsoft.com/library/azure/hh343259.aspx" target="_blank">Storage Analytics のログの形式</a>」および「<a href="http://msdn.microsoft.com/library/azure/hh343264.aspx" target="_blank">Storage Analytics Metrics のテーブル スキーマ</a>」の情報にある該当する列見出しを追加する必要があるでしょう。
 
-BLOB ストレージからダウンロードしたストレージ ログ データを Excel にインポートするには、以下の手順に従います。
+Blob Storage からダウンロードしたストレージ ログ データを Excel にインポートするには、以下の手順に従います。
 
 - [**データ**] メニューで [**テキストから**] をクリックします。
 - 表示するログ ファイルを参照し、[**インポート**] をクリックします。
@@ -827,14 +833,14 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 [**テキスト ファイル ウィザード**] の手順 2 で、[**セミコロン**] のみを区切り文字として選択し、[**文字列の引用符**] として二重引用符を選択します。[**完了**] をクリックし、ワークブックでデータを配置する場所を選択します。
 
-### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Online を使用した監視
+### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Team Services を使用した監視
 
-パフォーマンスおよび可用性の監視の一環として、Visual Studio Online の Application Insights 機能を使用することもできます。このツールは、以下を実行できます。
+パフォーマンスおよび可用性の監視の一環として、Visual Studio Team Services の Application Insights 機能を使用することもできます。このツールは、以下を実行できます。
 
 - Web サービスが使用可能および応答可能であることを確認できます。アプリケーションが Web サイトであるか、Web サービスを使用するデバイス アプリである場合、世界中の複数の場所から数分ごとに URL をテストし、問題がある場合には通知することができます。
 - Web サービスのパフォーマンス上の問題または例外をすばやく診断できます。CPU やその他のリソースが限界まで使用されていることを検出したり、例外からスタック トレースを取得したり、ログ トレース全体を簡単に検索したりできます。アプリのパフォーマンスの低下が許容できる限界を超えている場合には、電子メールを送信できます。.NET と Java の両方の Web サービスを監視できます。
 
-この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn481095.aspx" target="_blank">Application Insights for Visual Studio Online</a>」を参照してください。
+この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/dn481095.aspx" target="_blank">Application Insights for Visual Studio Team Services</a>」を参照してください。
 
 
 <!--Anchors-->
@@ -852,7 +858,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [サービス正常性の問題]: #service-health-issues
 [パフォーマンスの問題]: #performance-issues
 [エラーの診断]: #diagnosing-errors
-[Storage エミュレーターの問題]: #storage-emulator-issues
+[ストレージ エミュレーターの問題]: #storage-emulator-issues
 [ストレージ ログ ツール]: #storage-logging-tools
 [ネットワーク ログ ツールの使用]: #using-network-logging-tools
 
@@ -885,7 +891,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 [メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある]: #metrics-show-low-percent-success
 [ストレージ使用量の予期しない増加が容量メトリックに示される]: #capacity-metrics-show-an-unexpected-increase
-[多数の VHD が接続されている Virtual Machines が予期せず再起動する]: #you-are-experiencing-unexpected-reboots
+[多数の VHD が接続されている仮想マシンが予期せず再起動する]: #you-are-experiencing-unexpected-reboots
 [開発またはテストでのストレージ エミュレーターの使用に起因する問題]: #your-issue-arises-from-using-the-storage-emulator
 [機能 "X" がストレージ エミュレーターで機能しない]: #feature-X-is-not-working
 [ストレージ エミュレーターを使用するとエラー "HTTP ヘッダーのいずれかの値の形式が正しくありません" が発生する]: #error-HTTP-header-not-correct-format
@@ -898,11 +904,10 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]: #appendix-2
 [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]: #appendix-3
 [付録 4: Excel を使用したメトリックおよびログ データの表示]: #appendix-4
-[付録 5: Application Insights for Visual Studio Online を使用した監視]: #appendix-5
+[付録 5: Application Insights for Visual Studio Team Services を使用した監視]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png
-[2]: ./media/storage-monitoring-diagnosing-troubleshooting/portal-screenshot.png
 [3]: ./media/storage-monitoring-diagnosing-troubleshooting/hour-minute-metrics.png
 [4]: ./media/storage-monitoring-diagnosing-troubleshooting/high-e2e-latency.png
 [5]: ./media/storage-monitoring-diagnosing-troubleshooting/fiddler-screenshot.png
@@ -912,4 +917,4 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

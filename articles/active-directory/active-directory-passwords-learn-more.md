@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # パスワード管理の詳細情報
@@ -25,6 +25,7 @@
   - [パスワード ライトバックのセキュリティ モデル](#password-writeback-security-model)
 * [**パスワード リセット ポータルのしくみ**](#how-does-the-password-reset-portal-work)
   - [パスワードのリセットで使用されるデータ](#what-data-is-used-by-password-reset)
+  - [ユーザーのパスワード リセット データにアクセスする方法](#how-to-access-password-reset-data-for-your-users)
 
 ## パスワード ライトバックの概要
 パスワード ライトバックは [Azure Active Directory Connect](active-directory-aadconnect) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
@@ -100,7 +101,7 @@
 ### パスワードのリセットで使用されるデータ
 次の表は、このデータがパスワードのリセット時に使用される場所と方法を示し、組織に適した認証オプションを決定する際に役立つように作られています。この表では、このデータを検証しない入力パスからユーザーに代わってデータを指定する場合の形式の要件も示しています。
 
-> [AZURE.NOTE]会社電話は、現在ユーザーはディレクトリでこのプロパティを編集できないため、登録ポータルに表示されません。
+> [AZURE.NOTE] 会社電話は、現在ユーザーはディレクトリでこのプロパティを編集できないため、登録ポータルに表示されません。
 
 <table>
           <tbody><tr>
@@ -261,24 +262,121 @@
           </tr>
         </tbody></table>
 
-<br/> <br/> <br/>
+###ユーザーのパスワード リセット データにアクセスする方法
+####同期によって設定できるデータ
+次のフィールドは、オンプレミスから同期することができます。
 
-**その他のリソース**
+* 携帯電話
+* 会社電話
 
+####Azure AD PowerShell を使用して設定できるデータ
+次のフィールドは、Azure AD PowerShell と Graph API を使用してアクセスすることができます。
 
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理の概要](active-directory-passwords-getting-started.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
-* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* 連絡用メール アドレス
+* 携帯電話
+* 会社電話
+* 認証用電話
+* 認証用メール
+
+####登録 UI でのみ設定できるデータ
+次のフィールドは、SSPR 登録 UI でのみアクセスできます (https://aka.ms/ssprsetup)
+
+* セキュリティの質問と回答
+
+####ユーザーの登録時に発生すること
+ユーザーが登録するとき、登録ページには**常に**次のフィールドが設定されます。
+
+* 認証用電話
+* 認証用メール
+* セキュリティの質問と回答
+
+**[携帯電話]** または **[連絡用メール アドレス]** に値が指定されている場合、ユーザーはそれらを使用してすぐにパスワードをリセットすることができます。これはユーザーがサービスに登録していない場合でも実行できます。さらに、これらの値は、ユーザーが初めて登録するときに表示され、ユーザーは必要に応じてそれらを変更することができます。ただし、ユーザーが正常に登録された後、これらの値は、それぞれ **[認証用電話]** フィールドと **[認証用メール]** フィールドの固定値になります。
+
+これは、SSPR を使用できるように多数のユーザーをブロック解除すると同時に、ユーザーが登録プロセス中にこの情報を確認できるようにする便利な方法として利用できます。
+
+####PowerShell を使用したパスワード リセット データの設定
+次のフィールドの値は、Azure AD PowerShell を使用して設定することができます。
+
+* 連絡用メール アドレス
+* 携帯電話
+* 会社電話
+
+操作を開始する前に、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。インストールした後、次の手順に従って各フィールドを構成できます。
+
+#####連絡用メール アドレス
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
+```
+
+#####携帯電話
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
+```
+
+#####会社電話
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+```
+
+####PowerShell を使用したパスワード リセット データの読み取り
+次のフィールドの値は、Azure AD PowerShell を使用して読み取ることができます。
+
+* 連絡用メール アドレス
+* 携帯電話
+* 会社電話
+* 認証用電話
+* 認証用メール
+
+操作を開始する前に、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。インストールした後、次の手順に従って各フィールドを構成できます。
+
+#####連絡用メール アドレス
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
+```
+
+#####携帯電話
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select MobilePhone
+```
+
+#####会社電話
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
+```
+
+#####認証用電話
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
+```
+
+#####認証用メール
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
+```
+
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 
 
 
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

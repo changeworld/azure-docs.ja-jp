@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="01/12/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -98,31 +98,35 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 クラスター作成時、既存の Azure ストレージ アカウントとコンテナーを使用するか、新しく作成するかを選択します。後になって、何を選択したかを忘れることもあります。Ambari REST API を使用して、既定のストレージ アカウントとコンテナーを調べることができます。
 
-1. 次のコマンドを使用して、HDFS の構成情報を取得します。
+1. 次のコマンドを使用して、curl を使用する HDFS の構成情報を取得し、[jq](https://stedolan.github.io/jq/) を使用してフィルター処理します。
 
-        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1"
+        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+    
+    > [AZURE.NOTE] このコードは、この情報が含まれるサーバーに適用される最初の構成を返します (`service_config_version=1`)。クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
 
-2. 返された JSON データで、`fs.defaultFS` エントリを見つけます。これには、既定のコンテナーとストレージ アカウント名が次のような形式で含まれています。
+    このコードは、次のような値を返します。ここで、__CONTAINER__ は既定のコンテナー、__ACCOUNTNAME__ は Azure ストレージ アカウント名です。
 
-        wasb://CONTAINTERNAME@STORAGEACCOUNTNAME.blob.core.windows.net
+        wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
-	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールしている場合は、次のコマンドを使用すると `fs.defaultFS` エントリのみが返されます。
-	>
-	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'`
+1. ストレージ アカウントのリソース グループを取得し、[Azure CLI](../xplat-cli-install.md) を使用します。次のコマンドで、__ACCOUNTNAME__ を、Ambari から取得したストレージ アカウント名に置き換えてください。
 
-3. ストレージ アカウントの認証に使用するキー、または、クラスターに関連付けられているセカンダリ ストレージ アカウントを見つけるために、次のコマンドを使用します。
+        azure storage account list --json | jq '.[] | select(.name=="ACCOUNTNAME").resourceGroup'
+    
+    アカウントのリソース グループ名が返されます。
+    
+    > [AZURE.NOTE] このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
+    >
+    > `azure config mode arm`
+    
+2. ストレージ アカウントのキーを取得します。__GROUPNAME__ を、前の手順で取得したリソース グループ名に置き換えてください。__ACCOUNTNAME__ を、ストレージ アカウント名に置き換えてください。
 
-		curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1"
+        azure storage account keys list -g GROUPNAME ACCOUNTNAME --json | jq '.storageAccountKeys.key1'
 
-4. 返された JSON データで、`fs.azure.account.key` で始まるエントリを見つけます。エントリ名の残りの部分は、ストレージ アカウント名です。たとえば、「`fs.azure.account.key.mystorage.blob.core.windows.net`」のように入力します。このエントリに格納されている値が、ストレージ アカウントの認証に使用するキーです。
+    アカウントのプライマリ キーが返されます。
 
-	> [AZURE.TIP][jq](http://stedolan.github.io/jq/) をインストールした場合は、次のコマンドを使用してキーおよび値の一覧を取得できます。
-	>
-	> `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties as $in | $in | keys[] | select(. | contains("fs.azure.account.key.")) as $item | $item | ltrimstr("fs.azure.account.key.") | { storage_account: ., storage_account_key: $in[$item] }'`
+次のように Azure ポータルを使用して、ストレージ情報を検索することもできます。
 
-次のように Azure プレビュー ポータルを使用して、ストレージ情報を検索することもできます。
-
-1. [Azure プレビュー ポータル](https://portal.azure.com/)で HDInsight クラスターを選択します。
+1. [Azure ポータル](https://portal.azure.com/)で HDInsight クラスターを選択します。
 
 2. __[Essentials]__ セクションで、__[すべての設定]__ を選択します。
 
@@ -192,22 +196,13 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* __Storm UI__: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
-		1. [クラスターへの SSH トンネルを作成し、Ambari Web UI を開きます](hdinsight-linux-ambari-ssh-tunnel.md)。
-
-		2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-
-			![クイック リンクの Storm UI エントリ](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
-
-			これにより、Storm UI が表示されます。
-
-			![Storm UI](./media/hdinsight-hadoop-linux-information/storm-ui.png)
+		1. Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
 
 		3. 再調整するトポロジを選択し、__[再調整]__ ボタンをクリックします。再調整の操作が実行されるまでの待ち時間を入力します。
 
 HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
 
-* [Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md#scaling)
+* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md#scaling)
 
 * [Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md#scaling)
 
@@ -252,4 +247,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

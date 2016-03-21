@@ -1,11 +1,11 @@
 <properties
-	title="Elastic database Split-Merge tool tutorial"
 	pageTitle="エラスティック データベース Split-Merge ツールに関するチュートリアル | Microsoft Azure"
 	description="エラスティック データベース ツールによる分割とマージ"
-	metaKeywords="elastic database tools, split and merge, Azure SQL Database sharding, elastic scale, splitting and merging elastic databases"
-	services="sql-database" documentationCenter=""  
-	manager="jeffreyg"
-	authors="sidneyh"/>
+	services="sql-database"  
+	documentationCenter=""
+	authors="sidneyh"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/14/2015"
+	ms.date="02/23/2016"
 	ms.author="sidneyh" />
 
 # エラスティック データベース Split-Merge ツールに関するチュートリアル
@@ -33,20 +33,20 @@
 
     ![使用できるサービス][1]
 
-3. 診断の出力に使用する Azure Storage アカウントを作成します。Azure プレビュー ポータルにアクセスします。左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
+3. 診断の出力に使用する Azure Storage アカウントを作成します。Azure ポータルにアクセスします。左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
 
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。Azure プレビュー ポータルにアクセスします。左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、および **[作成]** の順にクリックします。
+4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。Azure ポータルにアクセスします。左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、および **[作成]** の順にクリックします。
 
 
 ## 分割-結合サービスの構成
 
 ### Split-Merge サービスの構成
 
-1. Split/Merge ビットをダウンロードしたフォルダーで、**SplitMergeService.cspkg** に付属の **ServiceConfiguration.Template.cscfg** ファイルのコピーを作成し、**ServiceConfiguration.cscfg** という名前を付けます。
+1. Split-Merge アセンブリをダウンロードしたフォルダーで、**SplitMergeService.cspkg** に付属の **ServiceConfiguration.Template.cscfg** ファイルのコピーを作成し、**ServiceConfiguration.cscfg** という名前に変更します。
 
-2. 使い慣れたテキスト エディターで、ServiceConfiguration.cscfg を開きます。証明書の拇印の形式などの入力値が検証されるため、Visual Studio を使用することをお勧めします。
+2. 証明書の拇印の形式などの入力値を検証する Visual Studio などのテキスト エディターで、**ServiceConfiguration.cscfg** を開きます。
 
-3. 新しいデータベースを作成するか、Split/Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
+3. 新しいデータベースを作成するか、または Split-Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
 
 	**重要**: 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。詳細については、「[Windows 照合順序名 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」をご覧ください。
 
@@ -60,7 +60,7 @@
 ### セキュリティの構成
 サービスのセキュリティを構成する詳細な手順については、「[Split-Merge セキュリティ構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
 
-このチュートリアルを完了するのに適したシンプルなテスト デプロイという目的のため、最小限の構成の手順セットを行ってサービスを起動および実行します。以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
+このチュートリアルの簡単なテスト デプロイのため、最小限の構成の手順セットを行ってサービスを起動および実行します。以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
 
 ### 自己署名証明書の作成
 
@@ -91,7 +91,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 ### クラウド サービスへの PFX ファイルのアップロード
 
-[Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+[Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. **[クラウド サービス]** を選択します。
 2. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
@@ -102,7 +102,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 ### サービス構成ファイルの更新
 
-上記でコピーした証明書のサムプリントを、次の設定で、サムプリントと属性値に貼り付けます。ワーカー ロール:
+上記でコピーした証明書の拇印を、次の設定で、サムプリントと属性値に貼り付けます。worker ロール:
 
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -154,7 +154,7 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 
 ### Web ブラウザーを使用した接続
 
-Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure 管理ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、****http://** を ****https://** で置き換えます。この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、****http://** を ****https://** で置き換えます。この URL のページをブラウザーに読み込みます。
 
 ### PowerShell スクリプトを使用したテスト
 
@@ -252,7 +252,7 @@ Split-Merge サービスの Web エンドポイントを決定します。エン
             -SplitMergeServiceEndpoint 'https://mysplitmergeservice.cloudapp.net' `
             -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
 
-    下記のエラーが表示された場合に最も考えられるのは、Web エンドポイントの証明書に問題があることす。任意の Web ブラウザーを使用して Web エンドポイントに接続を試み、認証エラーになるかご確認ください。
+    下記のエラーが表示された場合に最も考えられるのは、Web エンドポイントの証明書に問題があることす。任意の Web ブラウザーを使用して Web エンドポイントに接続を試み、証明書エラーになるかご確認ください。
 
         Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.
 
@@ -334,4 +334,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/08/2015"  
+	ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
@@ -24,18 +24,24 @@
 - [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
+
+
+
+>[AZURE.NOTE]
+このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+
 ##概要
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
 
->[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
+ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 
 ##一般的なライブ ストリーミング シナリオ
 
 次の手順では、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクを示します。
 
->[AZURE.NOTE]現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+>[AZURE.NOTE] 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 
 1. ビデオ カメラをコンピューターに接続します。オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。詳しくは、「[Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
@@ -53,9 +59,9 @@
 
 2. 資産を作成します。
 3. 再生時に資産を動的に暗号化する場合は、次の手順を実行します。
-	1. コンテンツ キーを作成します。
-	1. コンテンツ キー承認ポリシーの構成
-	1. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
+1. コンテンツ キーを作成します。
+1. コンテンツ キー承認ポリシーの構成
+1. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
 3. プログラムを作成し、作成した資産を使用するよう指定します。
 1. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
 
@@ -66,7 +72,7 @@
 1. イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。
 1. プログラムを削除し、資産を削除 (オプション) します。
 
-##このトピックの内容
+## 学習内容
 
 このトピックでは Media Services .NET SDK を使用したチャネルとプログラムでさまざまな操作を実行する方法を示します。多くの操作は実行時間が長いため、長時間の操作を管理する .NET API が使用されます。
 
@@ -82,6 +88,18 @@
 1. チャネルと関連付けられているすべてのリソースをクリーンアップします。
 
 
+##前提条件
+
+チュートリアルを完了するには次のものが必要です。
+
+- このチュートリアルを完了するには、Azure アカウントが必要です。 
+	
+	アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
+- Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
+- Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
+- Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
+- シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
+
 ##考慮事項
 
 - 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
@@ -89,16 +107,8 @@
 
 ##サンプルのダウンロード
 
-[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
+[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)からサンプルを取得し、実行します。
 
-##前提条件
-チュートリアルを完了するには次のものが必要です。
-
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
-- Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
-- Visual Studio 2010 SP1 以降。
-- Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
-- シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
 ##With Media Services SDK for .NET を使用して開発を行うためにセットアップします。
 
@@ -108,7 +118,7 @@
 ##Media Services への接続
 ベスト プラクティスとして、Media Services 名とアカウント キーを格納するために app.config ファイルを使用する必要があります。
 
->[AZURE.NOTE]名前とキーの値を確認するには、Azure ポータルに移動して、Media Services アカウントを選択し、ポータル ウィンドウの下にある [キーの管理] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
+>[AZURE.NOTE]名前とキーの値を確認するには、Azure クラシック ポータルに移動して、Media Services アカウントを選択し、ポータル ウィンドウの下にある [キーの管理] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
 
 app.config ファイルに appSettings セクションを追加し、Media Services のアカウント名とアカウント キーに値を設定します。
 
@@ -340,6 +350,7 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 	        /// <returns></returns>
 	        public static ILocator CreateLocatorForAsset(IAsset asset, TimeSpan ArchiveWindowLength)
 	        {
+             	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
 	            var locator = _context.Locators.CreateLocator
 	                (
 	                    LocatorType.OnDemandOrigin,
@@ -522,4 +533,4 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 
 このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

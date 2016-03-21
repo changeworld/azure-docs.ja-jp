@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/27/2015"
+   ms.date="01/08/2016"
    ms.author="larryfr"/>
 
 #Ambari REST API を使用した HDInsight クラスターの管理
@@ -111,6 +111,10 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
     
     アカウントのリソース グループ名が返されます。
     
+    > [AZURE.NOTE]このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
+    >
+    > `azure config mode arm`
+    
 2. ストレージ アカウントのキーを取得します。__GROUPNAME__ を、前の手順で取得したリソース グループ名に置き換えてください。__ACCOUNTNAME__ を、ストレージ アカウント名に置き換えてください。
 
         azure storage account keys list -g GROUPNAME ACCOUNTNAME --json | jq '.storageAccountKeys.key1'
@@ -131,4 +135,4 @@ REST API の完全なリファレンスについては、「[Ambari API リフ�
 
 > [AZURE.NOTE]HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

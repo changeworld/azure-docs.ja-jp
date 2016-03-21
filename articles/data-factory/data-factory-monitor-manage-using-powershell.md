@@ -12,28 +12,41 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
-# チュートリアル: Azure PowerShell を使用した Data Factory の作成と監視
+# チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-get-started.md)
-- [Using Data Factory Editor](data-factory-get-started-using-editor.md)
-- [Using PowerShell](data-factory-monitor-manage-using-powershell.md)
-- [Using Visual Studio](data-factory-get-started-using-vs.md)
+- [チュートリアルの概要](data-factory-get-started.md)
+- [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
+- [Visual Studio の使用](data-factory-get-started-using-vs.md)
+- [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 
 
-チュートリアル「[Azure Data Factory を使ってみる][adf-get-started]」では、[Azure プレビュー ポータル][azure-preview-portal]を使用して Azure Data Factory を作成し、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure Data Factory を作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインでは、Azure BLOB から Azure SQL Database にデータをコピーします。
+チュートリアル「[Azure Data Factory を使ってみる][adf-get-started]」では、[Azure ポータル][azure-portal]を使用して Azure Data Factory を作成し、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure Data Factory を作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
 
-> [AZURE.NOTE]この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
->  
->  Azure PowerShell 1.0 プレビューを使用する場合は、[ここ](https://msdn.microsoft.com/library/dn820234.aspx)に記載されているコマンドレットを使用する必要があります。たとえば、New-AzureDataFactory を使用する代わりに、New-AzureRMDataFactory を使用します。
+コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
-
+> [AZURE.IMPORTANT] 
+「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
+>   
+> この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス](https://msdn.microsoft.com/library/dn820234.aspx)」を参照してください。
+  
 
 ##前提条件
-チュートリアルの概要のトピックに一覧表示されている前提条件とは別に、Azure PowerShell がコンピューターにインストールされている必要があります。まだインストールしていない場合は、[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。
+チュートリアルの「概要」トピックに記載されている前提条件とは別に、次をインストールする必要があります。
+
+- **Azure PowerShell**「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。
+
+Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用する場合は、[ここ][old-cmdlet-reference]に記載されているコマンドレットを使用する必要があります。また、Data Factory コマンドレットを使用する前に、次のコマンドを実行する必要があります。
+
+1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+	1. **Add-AzureAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+	2. **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+	3. **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
+4. Azure Data Factory コマンドレットは AzureResourceManager モードでのみ使用できるため、**Switch-AzureMode AzureResourceManager** を実行して、このモードに切り替えます。
+  
 
 ##このチュートリアルの内容
 次の表に、このチュートリアルの一部として実行する手順と、その説明を示します。
@@ -46,33 +59,30 @@
 [手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** という Data Factory に作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
 [手順 5. データセットとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
 
-## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
+## <a name="CreateDataFactory"></a> 手順 1. Azure データ ファクトリを作成する
 この手順では、Azure PowerShell を使用して、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。
 
-1. **Azure PowerShell** を起動して次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	- **Add-AzureAccount** を実行し、Azure プレビュー ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
+1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
 	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure プレビュー ポータルで使用したものと同じである必要があります。 
-2. Azure Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
-
-		Switch-AzureMode AzureResourceManager 
+	- **Select-AzureSubscription <Name of the subscription>** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 3. 次のコマンドを実行して、**ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
    
-		New-AzureResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
 	このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。 
-4. **New-AzureDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前の Data Factory を作成します。  
+4. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前の Data Factory を作成します。  
 
-		New-AzureDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
+		New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
 
-	Azure Data Factory の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactoryPSH" という名前のデータ ファクトリは使用できません"** というエラーが発生した場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactoryPSH" という名前のデータ ファクトリは使用できません"** というエラーが発生した場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 
-	> [AZURE.NOTE]データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+	> [AZURE.NOTE] データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
 ## <a name="CreateLinkedServices"></a>手順 2. リンクされたサービスを作成する
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
 
-この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure Storage アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
 
 ### Azure ストレージ アカウント用にリンクされたサービスを作成する
 1.	次の内容で **C:\\ADFGetStartedPSH** に **StorageLinkedService.json** という名前の JSON ファイルを作成します。ADFGetStartedPSH フォルダーがない場合は作成します。
@@ -89,19 +99,19 @@
 
 	**accountname** をストレージ アカウントの名前に、**accountkey** を Azure ストレージ アカウントのキーに置き換えます。
 2.	**Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。 
-3.	**New-AzureDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** および **DataFactoryName** パラメーターの値を渡す必要があります。または、**Get-AzureDataFactory** を使用して DataFactory オブジェクトを取得すると、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力しなくてもオブジェクトを渡すことができます。**Get-AzureDataFactory** コマンドレットの出力を変数 **$df** に割り当てるには、次のコマンドを実行します。 
+3.	**New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** および **DataFactoryName** パラメーターの値を渡す必要があります。または、**Get-AzureRmDataFactory** を使用して DataFactory オブジェクトを取得すると、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力しなくてもオブジェクトを渡すことができます。**Get-AzureRmDataFactory** コマンドレットの出力を変数 **$df** に割り当てるには、次のコマンドを実行します。 
 
-		$df=Get-AzureDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+		$df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
 
-4.	これで、**New-AzureDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **StorageLinkedService** を作成できます。
+4.	これで、**New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされた **StorageLinkedService** サービスを作成できます。
 
-		New-AzureDataFactoryLinkedService $df -File .\StorageLinkedService.json
+		New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
 
-	**Get-AzureDataFactory** コマンドレットを実行して出力を **$df** 変数に割り当てていない場合、ResourceGroupName および DataFactoryName パラメーターの値を次のように指定する必要があります。
+	**Get-AzureRmDataFactory** コマンドレットを実行して出力を **$df** 変数に割り当てていない場合、ResourceGroupName および DataFactoryName パラメーターの値を次のように指定する必要があります。
 		
-		New-AzureDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
+		New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
 
-	チュートリアルの途中で Azure PowerShell を閉じた場合、次に Azure PowerShell を起動したときに、Get-AzureDataFactory コマンドレットを実行してチュートリアルを完了する必要があります。
+	チュートリアルの途中で Azure PowerShell を閉じた場合、次に Azure PowerShell を起動したときに、Get-AzureRmDataFactory コマンドレットを実行してチュートリアルを完了する必要があります。
 
 ### Azure SQL Database 用にリンクされたサービスを作成する
 1.	次の内容で AzureSqlLinkedService.json という名前の JSON ファイルを作成します。
@@ -120,7 +130,7 @@
 
 2.	次のコマンドを実行して、リンクされたサービスを作成します。
 	
-		New-AzureDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
+		New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
 
 	Azure SQL Server で **[Azure サービスへのアクセスを許可する]** の設定がオンになっていることを確認します。この設定を確認してオンにするには、次の手順を実行します。
 
@@ -170,10 +180,11 @@
 
 	SQL Server 2014 がコンピューターにインストールされている場合は、記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。
 
-	Visual Studio 2013 がコンピューターにインストールされている場合: Azure プレビュー ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL Server のファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
+	Visual Studio 2013 がコンピューターにインストールされている場合: Azure ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL Server のファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
 		
 ### 入力テーブルの作成 
-テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
+テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。  
+この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
 
 1.	以下の内容を記述した **EmpBlobTable.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -191,8 +202,9 @@
 			      }
 			    ],
 			    "type": "AzureBlob",
-			    "linkedServiceName": "AzureStorageLinkedService1",
+			    "linkedServiceName": "StorageLinkedService",
 			    "typeProperties": {
+				  "fileName": "emp.txt",
 			      "folderPath": "adftutorial/",
 			      "format": {
 			        "type": "TextFormat",
@@ -211,7 +223,8 @@
 	
 	- dataset の **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** は **StorageLinkedService** に設定されています。 
-	- **folderPath** が **adftutorial** コンテナーに設定されています。フォルダー内の BLOB の名前を指定することもできます。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
+	- **folderPath** が **adftutorial** コンテナーに設定されています。 
+	- **fileName** は **emp.txt** に設定されています。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
 	- format の **type** が **TextFormat** に設定されています。
 	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。	
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
@@ -236,7 +249,7 @@
 
 2.	次のコマンドを実行して、Data Factory データセットを作成します。
 
-		New-AzureDataFactoryDataset $df -File .\EmpBlobTable.json
+		New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
 
 ### 出力テーブルの作成
 手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (**emp**) をポイントする **EmpSQLTable** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
@@ -278,7 +291,7 @@
 
 2.	次のコマンドを実行して、Data Factory データセットを作成します。
 	
-		New-AzureDataFactoryDataset $df -File .\EmpSQLTable.json
+		New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
 
 
 ## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
@@ -310,9 +323,7 @@
 			            "type": "BlobSource"
 			          },
 			          "sink": {
-			            "type": "SqlSink",
-			            "writeBatchSize": 10000,
-			            "writeBatchTimeout": "00:60:00"
+			            "type": "SqlSink"
 			          }
 			        },
 			        "Policy": {
@@ -324,8 +335,8 @@
 			        }
 			      }
 			    ],
-			    "start": "2015-07-12T00:00:00Z",
-			    "end": "2015-07-13T00:00:00Z",
+			    "start": "2015-12-09T00:00:00Z",
+			    "end": "2015-12-10T00:00:00Z",
 			    "isPaused": false
 			  }
 			}
@@ -345,20 +356,20 @@
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 2.	次のコマンドを実行して、Data Factory テーブルを作成します。 
 		
-		New-AzureDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
+		New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
 
 **お疲れさまでした。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
 
 ## <a name="MonitorDataSetsAndPipeline"></a>手順 5. データセットとパイプラインを監視する
 このステップでは、Azure PowerShell を使用して、Azure Data Factory の状況を監視します。
 
-1.	**Get-AzureDataFactory** を実行して $df 変数に出力を割り当てます。
+1.	**Get-AzureRmDataFactory** を実行して変数 $df に出力を割り当てます。
 
-		$df=Get-AzureDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+		$df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
  
-2.	**Get-AzureDataFactorySlice** を実行し、**EmpSQLTable** のすべてのスライスの詳細を表示します。これは、パイプラインの出力テーブルです。
+2.	**Get-AzureRmDataFactorySlice** を実行し、**EmpSQLTable** のすべてのスライスの詳細を表示します。これは、パイプラインの出力テーブルです。
 
-		Get-AzureDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T00:00:00
+		Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T00:00:00
 
 	**StartDateTime** パラメーターで、年、月、日の部分を現在の年、月、日に置き換えます。この値は、JSON パイプラインの **Start** の値と一致します。
 
@@ -372,7 +383,7 @@
 		Start             : 3/3/2015 12:00:00 AM
 		End               : 3/3/2015 1:00:00 AM
 		RetryCount        : 0
-		Status            : PendingExecution
+		Status            : Waiting
 		LatencyStatus     :
 		LongRetryCount    : 0
 
@@ -384,13 +395,13 @@
 		Start             : 3/4/2015 11:00:00 PM
 		End               : 3/4/2015 12:00:00 AM
 		RetryCount        : 0
-		Status            : PendingExecution
+		Status            : Waiting
 		LatencyStatus     : 
 		LongRetryCount    : 0
 
-3.	**Get-AzureDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。上記の出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。例: 2014-03-03T22:00:00Z。
+3.	**Get-AzureRmDataFactoryRun** を実行して、**特定**のスライスに関するアクティビティの実行の詳細を取得します。上記の出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。例: 2014-03-03T22:00:00Z。
 
-		Get-AzureDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T22:00:00
+		Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T22:00:00
 
 	次のような出力が表示されます。
 
@@ -414,6 +425,8 @@
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 
+## 関連項目
+Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 
 [adf-tutorial]: data-factory-tutorial.md
@@ -421,18 +434,18 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 
-[cmdlet-reference]: https://msdn.microsoft.com/library/dn820234.aspx
+[cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234.aspx
+[old-cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[data-factory-create-storage]: ../storage-create-storage-account.md
 
 [adf-get-started]: data-factory-get-started.md
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [download-azure-powershell]: ../powershell-install-configure.md
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-monitor-manage-using-powershell/getstarted-storage-explorer.png
 
-[sql-management-studio]: ../sql-database-manage-azure-ssms.md#Step2
+[sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

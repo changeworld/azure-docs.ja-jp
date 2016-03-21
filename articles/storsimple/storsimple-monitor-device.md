@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="11/05/2015"
+   ms.date="01/29/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの監視 
@@ -21,13 +21,13 @@
 
 StorSimple Manager サービスを使用して、StorSimple ソリューション内にある特定の StorSimple デバイスを監視できます。I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいて、カスタム グラフを作成できます。
 
-特定のデバイスの監視情報を表示するには、Azure ポータルで、StorSimple Manager サービスを選択し、**[監視]** タブをクリックして、デバイスの一覧から選択します。**[監視]** ページには、次の情報が表示されます。
+特定のデバイスの監視情報を表示するには、Azure クラシック ポータルで、StorSimple Manager サービスを選択し、**[監視]** タブをクリックして、デバイスの一覧から選択します。**[監視]** ページには、次の情報が表示されます。
 
 ## I/O パフォーマンス 
 
 **I/O パフォーマンス**は、ホスト サーバーの iSCSI イニシエーター インターフェイスとデバイスとの間またはデバイスとクラウドとの間の読み取り操作と書き込み操作の数に関連するメトリックを追跡します。このパフォーマンスは、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
 
-次の表では、実稼働環境のデバイスの全ボリュームに対する、デバイスへのイニシエーター用 IO を示しています。プロットされたメトリックは、1 秒あたりの読み取りと書き込みバイト数、1 秒あたりの読み取りと書き込み IO 操作、読み取りと書き込み待機時間です。
+次の表では、運用環境のデバイスの全ボリュームに対する、デバイスへのイニシエーター用 IO を示しています。プロットされたメトリックは、1 秒あたりの読み取りと書き込みバイト数、1 秒あたりの読み取りと書き込み IO 操作、読み取りと書き込み待機時間です。
 
 ![イニシエーターからデバイスへの IO パフォーマンス](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_InitiatorTODevice_For_AllVolumesM.png)
 
@@ -44,6 +44,7 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 ## 容量使用率 
 
 **容量使用率**は、ボリューム、ボリューム コンテナー、デバイスで使用されるデータ ストレージ領域の容量に関連するメトリックを追跡します。プライマリ ストレージ、クラウド ストレージ、またはデバイス ストレージの容量の使用率に基づいて、レポートを作成できます。容量使用率は、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
+
 
 プライマリ、クラウド、デバイス ストレージ容量は次のように説明できます。
 
@@ -74,6 +75,10 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 ![クラウド スナップショット前のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
 
 ![クラウド スナップショット後のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes1M.png)
+
+Update 2 以降を使用している場合は、次に示すように、プライマリ ストレージ容量の使用率を個別ボリューム別、全ボリューム、全階層化ボリューム、全ローカル ボリュームの単位で表示できます。全ローカル ボリュームで表示すると、使用されているローカル階層の量を簡単に把握できます。
+
+![全ローカル ボリュームのプライマリの容量使用率](./media/storsimple-monitor-device/localvolumes.png)
 
 
 ###クラウド ストレージの容量使用率
@@ -111,7 +116,7 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 ## デバイスのパフォーマンス 
 
-**デバイスのパフォーマンス**は、デバイスのパフォーマンスに関連するメトリックを追跡します。次の表では、実稼働環境のデバイスに対する CPU 使用率の統計値を示しています。
+**デバイスのパフォーマンス**は、デバイスのパフォーマンスに関連するメトリックを追跡します。次の表では、運用環境のデバイスに対する CPU 使用率の統計値を示しています。
 
 ![デバイスの CPU 使用率](./media/storsimple-monitor-device/StorSimple_DeviceMonitor_DevicePerformance1M.png)
 
@@ -121,4 +126,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

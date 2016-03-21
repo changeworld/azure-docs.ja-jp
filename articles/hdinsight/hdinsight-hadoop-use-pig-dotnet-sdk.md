@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/02/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -43,13 +43,13 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
 
-> [AZURE.NOTE]後で使用するため、証明書にはわかりやすい名前を付けてください。
+> [AZURE.NOTE] 後で使用するため、証明書にはわかりやすい名前を付けてください。
 
 ##<a id="subscriptionid"></a>サブスクリプション ID の検索
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. [Azure プレビュー ポータル][preview-portal] にアクセスします。
+1. [Azure ポータル][preview-portal] にアクセスします。
 
 2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
 
@@ -89,54 +89,54 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。既存のコードを次のコードに置き換えます。
 
-		using System;
-		using Microsoft.Azure.Management.HDInsight.Job;
-		using Microsoft.Azure.Management.HDInsight.Job.Models;
-		using Hyak.Common;
-		
-		namespace HDInsightSubmitPigJobsDotNet
-		{
-		    class Program
-		    {
-		        static void Main(string[] args)
-		        {
-					var ExistingClusterName = "<HDInsightClusterName>";
-					var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
-					var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
-					var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
-		
-		            // The Pig Latin statements to run
-		            string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
-		                "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
-		                "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
-		                "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
-		                "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
-		                "RESULT = order FREQUENCIES by COUNT desc;" +
-		                "DUMP RESULT;";
-		
-		
-		            HDInsightJobManagementClient _hdiJobManagementClient;
-		            var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
-		            _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-		
-		            // Define the Pig job
-		            var parameters = new PigJobSubmissionParameters()
-		            {
-		                UserName = ExistingClusterUsername,
-		                Query = queryString,
-		            };
-		
-		            System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
-		            var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
-		            System.Console.WriteLine("Validating that the response is as expected...");
-		            System.Console.WriteLine("Response status code is " + response.StatusCode);
-		            System.Console.WriteLine("Validating the response object...");
-		            System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-		            Console.WriteLine("Press ENTER to continue ...");
-		            Console.ReadLine();
-		        }
-		    }
-		}
+        using System;
+        using Microsoft.Azure.Management.HDInsight.Job;
+        using Microsoft.Azure.Management.HDInsight.Job.Models;
+        using Hyak.Common;
+        
+        namespace HDInsightSubmitPigJobsDotNet
+        {
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    var ExistingClusterName = "<HDInsightClusterName>";
+                    var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
+                    var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
+                    var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
+        
+                    // The Pig Latin statements to run
+                    string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
+                        "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
+                        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
+                        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
+                        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
+                        "RESULT = order FREQUENCIES by COUNT desc;" +
+                        "DUMP RESULT;";
+        
+        
+                    HDInsightJobManagementClient _hdiJobManagementClient;
+                    var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
+                    _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
+        
+                    // Define the Pig job
+                    var parameters = new PigJobSubmissionParameters()
+                    {
+                        UserName = ExistingClusterUsername,
+                        Query = queryString,
+                    };
+        
+                    System.Console.WriteLine("Submitting the Pig job to the cluster...");
+                    var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
+                    System.Console.WriteLine("Validating that the response is as expected...");
+                    System.Console.WriteLine("Response status code is " + response.StatusCode);
+                    System.Console.WriteLine("Validating the response object...");
+                    System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
+                    Console.WriteLine("Press ENTER to continue ...");
+                    Console.ReadLine();
+                }
+            }
+        }
 
 7. **F5** キーを押してアプリケーションを起動します。
 8. **ENTER** キーを押してアプリケーションを閉じます。
@@ -155,7 +155,7 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md) 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

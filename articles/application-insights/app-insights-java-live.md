@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/21/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # 既にライブの Java Web アプリ向けの Application Insights
@@ -21,22 +21,22 @@
 
 J2EE サーバーで既に実行されている Web アプリケーションがある場合、[Appliction Insight](app-insights-overview.md) を使用すると、コードの変更やプロジェクトの再コンパイルなしで監視を開始できます。この方法では、サーバーに送信される HTTP 要求、未処理の例外、パフォーマンス カウンターに関する情報が取得されます。
 
-使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションが必要です。
+使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です。
 
-> [AZURE.NOTE]このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
+> [AZURE.NOTE] このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
 
 ## 1\.Application Insights のインストルメンテーション キーを取得する
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします。
 2. 新しい Application Insights リソースを作成します。
 
-    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-get-started/01-create.png)
+    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-live/01-create.png)
 3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
-    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
+    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-live/02-create.png)
 4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後でコード プロジェクトに貼り付けます。
 
-    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-live/03-key.png)
 
 ## 2\.SDK のダウンロード
 
@@ -111,18 +111,18 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 
 HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
-![サンプル データ](./media/app-insights-java-get-started/5-results.png)
+![サンプル データ](./media/app-insights-java-live/5-results.png)
  
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。
 
-![](./media/app-insights-java-get-started/6-barchart.png)
+![](./media/app-insights-java-live/6-barchart.png)
 
  
 
 要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
  
-![](./media/app-insights-java-get-started/7-instance.png)
+![](./media/app-insights-java-live/7-instance.png)
 
 
 [メトリックの詳細についてはこちらをご覧ください。](app-insights-metrics-explorer.md)
@@ -139,4 +139,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

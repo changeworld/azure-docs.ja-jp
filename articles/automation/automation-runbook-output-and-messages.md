@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Azure Automation での Runbook の出力および メッセージ | Microsoft Azure"
    description="Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
-   ms.author="bwren" />
+   ms.date="03/02/2016"
+   ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の出力および メッセージ
 
@@ -21,14 +21,14 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](http://msdn.microsoft.com/library/azure/dn879147.aspx)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。各ストリームの詳細については、後続のセクションで説明します。
 
-| Stream | Description | Published | Test|
+| ストリーム | 説明 | 公開先 | テスト|
 |:---|:---|:---|:---|
-|Output|Objects intended to be consumed by other runbooks.|Written to the job history.|Displayed in the Test Output Pane.|
-|Warning|Warning message intended for the user.|Written to the job history.|Displayed in the Test Output Pane.|
-|Error|Error message intended for the user.Unlike an exception, the runbook continues after an error message by default.|Written to the job history.|Displayed in the Test Output Pane.|
-|Verbose|Messages providing general or debugging information.|Written to job history only if verbose logging is turned on for the runbook.|Displayed in the Test Output pane only if $VerbosePreference is set to Continue in the runbook.|
-|Progress|Records automatically generated before and after each activity in the runbook.The runbook should not attempt to create its own progress records since they are intended for an interactive user.|Written to job history only if progress logging is turned on for the runbook.|Not displayed in the Test Output Pane.|
-|Debug|Messages intended for an interactive user.Should not be used in runbooks.|Not written to job history.|[テスト出力] ペインには書き込まれません。|
+|出力|他の Runbook によって使用されることを目的とするオブジェクト。|ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウに表示されます。|
+|警告|ユーザー向けの警告メッセージ。|ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウに表示されます。|
+|エラー|ユーザー向けのエラー メッセージ例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。|ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウに表示されます。|
+|詳細|全般的なまたはデバッグ情報を提供するメッセージ。|Runbook の詳細ログが有効な場合のみ、ジョブ履歴に書き込まれます。|Runbook で $VerbosePreference が Continue に設定されている場合のみ、[テスト出力] ウィンドウに表示されます。|
+|進捗状況|Runbook の各アクティビティの前後に自動的に生成されるレコード。Runbook では、独自の進行状況レコードを作成しないでください。これらのレコードは対話型ユーザー向けです。|Runbook の進行状況ログが有効な場合のみ、ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウには表示されません。|
+|デバッグ|対話型ユーザー向けのメッセージ。Runbook では使用しないでください。|ジョブ履歴には書き込まれません。|[テスト出力] ペインには書き込まれません。|
 
 ## 出力ストリーム
 
@@ -42,16 +42,16 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 
 ### 関数からの出力
 
-Runbook に含まれている関数から出力ストリームに書き込むと、出力は Runbook に戻されます。If the runbook assigns that output to a variable, then it is not written to the output stream.Writing to any other streams from within the function will write to the corresponding stream for the runbook.
+Runbook に含まれている関数から出力ストリームに書き込むと、出力は Runbook に戻されます。Runbook がその出力を変数に代入する場合、出力は出力ストリームに書き込まれません。関数内から他のストリームへの書き込みは、Runbook の対応するストリームに書き込まれます。
 
-Consider the following sample runbook.
+次のサンプル Runbook で考えてみましょう。
 
 	Workflow Test-Runbook
 	{
 	   Write-Verbose "Verbose outside of function"
 	   Write-Output "Output outside of function"
 	   $functionOutput = Test-Function
-	
+
 	   Function Test-Function
 	   {
 	      Write-Verbose "Verbose inside of function"
@@ -59,7 +59,7 @@ Consider the following sample runbook.
 	   }
 	}
 
-The output stream for the runbook job would be:
+Runbook ジョブの出力ストリームは次のようになります。
 
 	Output outside of function
 
@@ -70,14 +70,14 @@ Runbook ジョブの詳細ストリームは次のようになります。
 
 ### 出力のデータ型の宣言
 
-ワークフローでは、[OutputType 属性](http://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定できます。この属性は実行時に影響はありませんが、設計時にRunbook 作成者に対して Runbook の予想される出力を通知します。As the toolset for runbooks continues to evolve, the importance of declaring output data types at design time will increase in importance.As a result, it is a best practice to include this declaration in any runbooks that you create.
+ワークフローでは、[OutputType 属性](http://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定できます。この属性は実行時に影響はありませんが、設計時にRunbook 作成者に対して Runbook の予想される出力を通知します。Runbook 用のツールセットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性は高まり続けます。その結果、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
 
-The following sample runbook outputs a string object and includes a declaration of its output type.Runbook が特定の型の配列を出力する場合でも、型の配列ではなく、型を指定してください。
+次のサンプル Runbook は、文字列オブジェクトを出力し、その出力の型宣言が含まれています。Runbook が特定の型の配列を出力する場合でも、型の配列ではなく、型を指定してください。
 
 	Workflow Test-Runbook
 	{
 	   [OutputType([string])]
-	
+
 	   $output = "This is some string output."
 	   Write-Output $output
 	}
@@ -88,26 +88,26 @@ The following sample runbook outputs a string object and includes a declaration 
 
 ### 警告およびエラー ストリーム
 
-警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。They are written to the job history when a runbook is executed, and are included in the Test Output Pane in the Azure Management Portal when a runbook is tested.既定では、Runbook は警告またはエラーの後も引き続き実行されます。警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#PreferenceVariables)を設定します。たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
+警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Microsoft Azure 管理ポータルの [テスト出力] ウィンドウに表示されます。既定では、Runbook は警告またはエラーの後も引き続き実行されます。警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#PreferenceVariables)を設定します。たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
 
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。アクティビティによってストリームに書き込むことができる場合もあります。
 
 	#The following lines create a warning message and then an error message that will suspend the runbook.
-	
+
 	$ErrorActionPreference = "Stop"
 	Write-Warning –Message "This is a warning message."
 	Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 
 ### 詳細ストリーム
 
-詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。Runbook では[デバッグ ストリーム](#Debug)を使用できないため、デバッグ情報には詳細メッセージを使用します。既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。To store verbose messages, configure published runbooks to Log Verbose Records on the Configure tab of the runbook in the Azure Management Portal.In most cases, you should keep the default setting of not logging verbose records for a runbook for performance reasons.このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
+詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。Runbook では[デバッグ ストリーム](#Debug)を使用できないため、デバッグ情報には詳細メッセージを使用します。既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。詳細メッセージを格納するには、Microsoft Azure 管理ポータルの Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
 
 [Runbook のテスト時](http://msdn.microsoft.com/library/azure/dn879147.aspx)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。[Runbook のテスト時](http://msdn.microsoft.com/library/azure/dn879147.aspx)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。この変数が設定されると、Azure 管理ポータルの [テスト出力] ペインに詳細メッセージが表示されます。
 
 詳細メッセージを作成するには、[Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
 	#The following line creates a verbose message.
-	
+
 	Write-Verbose –Message "This is a verbose message."
 
 ### デバッグ ストリーム
@@ -116,7 +116,7 @@ The following sample runbook outputs a string object and includes a declaration 
 
 ## 進捗状況レコード
 
-Runbook を (Azure 管理ポータルの Runbook の [構成] タブで) 進捗状況レコードが記録されるように構成すると、各アクティビティの実行前後にレコードがジョブ履歴に書き込まれます。In most cases, you should keep the default setting of not logging progress records for a runbook in order to maximize performance.Turn on this option only to troubleshoot or debug a runbook.Runbook のテスト時には、Runbook が進歩状況レコードを記録するように構成されている場合でも、進歩状況メッセージは表示されません。
+Runbook を (Azure 管理ポータルの Runbook の [構成] タブで) 進捗状況レコードが記録されるように構成すると、各アクティビティの実行前後にレコードがジョブ履歴に書き込まれます。ほとんどの場合、パフォーマンスを最大化するために、進行状況レコードを記録しないという Runbook の既定の設定を保持する必要があります。このオプションは、Runbook のトラブルシューティングやデバッグを行うためにのみ有効にします。Runbook のテスト時には、Runbook が進歩状況レコードを記録するように構成されている場合でも、進歩状況メッセージは表示されません。
 
 [Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
 
@@ -124,9 +124,9 @@ Runbook を (Azure 管理ポータルの Runbook の [構成] タブで) 進捗�
 
 Windows PowerShell では[ユーザー設定変数](http://technet.microsoft.com/library/hh847796.aspx)を使用して、異なる出力ストリームに送信されるデータへの応答方法を決定します。これらの変数を Runbook で設定することで、異なるストリームに送信されるデータへの応答方法を制御できます。
 
-The following table lists the preference variables that can be used in runbooks with their valid and default values.Note that this table only includes the values that are valid in a runbook.Additional values are valid for the preference variables when used in Windows PowerShell outside of Azure Automation.
+次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。この表には、Runbook で有効な値のみが含まれることに注意してください。Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 
-| Variable| Default Value| Valid Values|
+| 変数| 既定値| 有効な値|
 |:---|:---|:---|
 |WarningPreference|Continue|Stop<br>Continue<br>SilentlyContinue|
 |ErrorActionPreference|Continue|Stop<br>Continue<br>SilentlyContinue|
@@ -134,10 +134,10 @@ The following table lists the preference variables that can be used in runbooks 
 
 次の表では、Runbook で有効なユーザー設定変数値の動作を一覧表示します。
 
-| Value| Behavior|
+| 値| 動作|
 |:---|:---|
-|Continue|Logs the message and continues executing the runbook.|
-|SilentlyContinue|Continues executing the runbook without logging the message.This has the effect of ignoring the message.|
+|Continue|メッセージを記録し、Runbook の実行を続けます。|
+|SilentlyContinue|メッセージを記録せずに Runbook の実行を続けます。これはメッセージを無視する効果があります。|
 |Stop|メッセージを記録し、Runbook を中断します。|
 
 ## Runbook の出力とメッセージの取得
@@ -148,24 +148,46 @@ Runbook ジョブの詳細は、Azure 管理ポータルの Runbook の [ジョ�
 
 ### Windows PowerShell
 
-Windows Powershell では、[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/dn690268.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。You can specify Any to return all streams for the job.
+Windows Powershell では、[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/dn690268.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。[Any] を指定して、ジョブのすべてのストリームを返すことができます。
 
-The following example starts a sample runbook and then waits for it to complete.完了すると、その出力ストリームがジョブから収集されます。
+次の例は、サンプル Runbook を開始し、完了するまで待機します。完了すると、その出力ストリームがジョブから収集されます。
 
-	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" 
-	
+	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+
 	$doLoop = $true
 	While ($doLoop) {
 	   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
 	   $status = $job.Status
-	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped") 
+	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped")
 	}
-	
+
 	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+
+### グラフィカル作成
+
+グラフィカル Runbook では、追加のログ記録はアクティビティ レベルのトレースの形式で使用できます。トレースには Basic および Detailed の 2 つのレベルがあります。Basic トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの試行数および開始時刻など、アクティビティの再試行に関連する情報を確認できます。Detailed トレースでは、各アクティビティの Basic トレースと入出力のデータを取得します。現時点では詳細ストリームを使用してトレース レコードが書き込まれるため、トレースを有効にする場合は、詳細ログを有効にする必要があることに注意してください。トレースが有効になっているグラフィカル Runbook では、Basic トレースは同じ目的を達成し、より有益であるため、進捗状況レコードを記録する必要はありません。
+
+![グラフィカル作成のジョブ ストリーム ビュー](media/automation-runbook-output-and-messages/job_streams_view_blade.png)
+
+グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが上記のスクリーンショットから確認できます。この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。トレース レコードは、特に多数存在させることができます。グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
+
+**アクティビティ レベルのトレースを有効にするには、次の手順に従います。**
+
+ 1. Azure ポータルで、Automation アカウントを開きます。
+
+ 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
+
+ 3. [Runbook] ブレードで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
+
+ 4. 選択した Runbook の [設定] ブレードで、**[ログ記録とトレース]** をクリックします。
+
+ 5. [詳細レコードの記録] の下の [ログ記録とトレース] ブレードで、 **[オン]** をクリックして詳細ログを有効にし、アクティビティ レベルのトレースで、必要なトレースのレベルに基づいてトレース レベルを **Basic** または **Detailed** に変更します。<br>
+
+    ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging_and_tracing_settings_blade.png)
 
 ## 関連記事:
 
 - [Runbook ジョブの追跡](automation-runbook-execution.md)
 - [子 Runbook](http://msdn.microsoft.com/library/azure/dn857355.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

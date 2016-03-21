@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics 上のジョブをプログラムで監視する |Microsoft Azure" 
-	description="REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。" 
+	description="REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブをプログラムで監視する方法の詳細について説明します。"
+	keywords=".net モニター、ジョブ モニター、監視アプリ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,20 +14,20 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
 
-# プログラムでの Stream Analytics ジョブの監視 
-この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
+# Stream Analytics ジョブ モニターをプログラムで作成する
+ この記事では、Stream Analytics ジョブの監視を有効にする方法を示します。REST API、Azure SDK、または Powershell を介して作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にできます。または、この記事にある手順に従って、有効にするプロセスを自動化することもできます。監視データは、Stream Analytics ジョブ用の Azure ポータルの [監視] タブに表示されます。
 
-![[ジョブ] タブの監視](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
+![ジョブ モニター、[ジョブ] タブ](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
 
 ## 前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - Visual Studio 2012 または 2013。
-- [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。
+- [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール。
 - 監視を有効にする必要がある、既存の Stream Analytics ジョブ。
 
 ## プロジェクトのセットアップ
@@ -138,7 +139,8 @@
 
 次のコードは、**既存の** Stream Analytics ジョブに対して監視を有効にします。コードの最初の部分では、Stream Analytics サービスに対して GET 要求を実行して、特定の Stream Analytics ジョブに関する情報を取得します。コードの後半部分では、GET 要求で取得した "Id" プロパティをパラメーターとして Put メソッドが Insights サービスに送信され、Stream Analytics ジョブの監視を有効にします。
 
-> [AZURE.WARNING]Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。**
+> [AZURE.WARNING]
+Azure Portal から、または次のコードを使用してプログラムにより、別の Stream Analytics ジョブの監視を有効にしている場合、**前に監視を有効にしたときと同じストレージ アカウント名を指定することをお勧めします。**
 > 
 > ストレージ アカウントは、特定のジョブ自体ではなく、Stream Analytics ジョブを作成したリージョンに関連付けられます。
 > 
@@ -178,4 +180,4 @@
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

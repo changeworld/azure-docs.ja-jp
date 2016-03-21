@@ -13,14 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/05/2016"
 	ms.author="hangzh;bradsev" />
 
 #Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する
-
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
 ## はじめに
 Azure HDInsight Hadoop クラスターに格納されているデータの特徴を生成する Hive クエリの例を紹介します。これらの Hive クエリでは、埋め込みの Hive のユーザー定義関数 (UDF) を使用します。また、そのスクリプトも用意されています。
@@ -28,6 +24,10 @@ Azure HDInsight Hadoop クラスターに格納されているデータの特徴
 [NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有のクエリの例も、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
 
 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
+
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+
 
 ## 前提条件
 この記事では、以下のことを前提としています。
@@ -190,4 +190,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 [15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

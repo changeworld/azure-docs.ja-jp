@@ -3,7 +3,7 @@
 	description="Visual Studio の JavaScript プロジェクトで Mobile Services を使用する方法" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -13,14 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
-	ms.date="09/17/2015" 
-	ms.author="tarcher"/>
+	ms.date="01/05/2016" 
+	ms.author="mlearned"/>
 
 # Visual Studio 接続済みサービスを使用して Azure Mobile Services を追加した後の JavaScript の使用開始
-
-> [AZURE.SELECTOR]
-> - [Getting Started](vs-mobile-services-javascript-getting-started.md)
-> - [What Happened](vs-mobile-services-javascript-what-happened.md)
 
 これらの例で使用されているコードを実行するために行う必要がある最初のステップは、接続しているモバイル サービスの種類によります。
 
@@ -80,7 +76,7 @@ where メソッドを使用してクエリを変更できます。次の例で�
             todoItems.splice(todoItems.indexOf(item), 1, item);
         });
 
-#####エントリを削除する
+##エントリを削除する
 
 データ テーブルの行を削除します。返された [Promise]() オブジェクト上の [done](https://msdn.microsoft.com/library/dn802826.aspx) メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
@@ -90,6 +86,6 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 
 
-[モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

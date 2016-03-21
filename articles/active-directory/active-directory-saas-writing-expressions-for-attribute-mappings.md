@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/09/2016"
 	ms.author="markusvi"/>
 
 
@@ -305,6 +305,14 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 - **出力**: "Australia/Brisbane"
 
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
 
-<!---HONumber=Oct15_HO4-->
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+- [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+- [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+
+<!---HONumber=AcomDC_0211_2016-->

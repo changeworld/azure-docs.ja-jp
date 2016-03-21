@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor="tglee"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,19 +13,10 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="02/21/2016"
 	ms.author="tarcher"/>
 
 # ASP.NET 5 プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
-
-> [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-aspnet5-getting-started-blobs.md)
-> - [What Happened](vs-storage-aspnet5-what-happened.md)
-
-> [AZURE.SELECTOR]
-> - [Blobs](vs-storage-aspnet5-getting-started-blobs.md)
-> - [Queues](vs-storage-aspnet5-getting-started-queues.md)
-> - [Tables](vs-storage-aspnet5-getting-started-tables.md)
 
 ## リファレンスの追加
 
@@ -47,4 +38,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 
 詳細については、「[ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

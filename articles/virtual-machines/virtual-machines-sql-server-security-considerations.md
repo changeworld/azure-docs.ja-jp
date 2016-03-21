@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/19/2015"
+	ms.date="12/04/2015"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
@@ -25,7 +25,7 @@
 
 SQL Server のセキュリティ ベスト プラクティスの詳細については、「[SQL Server 2008 R2 Security Best Practices - Operational and Administrative Tasks (SQL Server 2008 R2 のセキュリティに関するベスト プラクティス - 運用作業と管理作業)](http://download.microsoft.com/download/1/2/A/12ABE102-4427-4335-B989-5DA579A4D29D/SQL_Server_2008_R2_Security_Best_Practice_Whitepaper.docx)」を参照してください。
 
-Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠したソリューションを構築できます。Azure での法規制遵守に関する情報については、[Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/)を参照してください。
+Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠したソリューションを構築できます。Azure での法規制遵守に関する情報については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)を参照してください。
 
 次に示すのは、Azure VM の SQL Server インスタンスへの接続とその構成の際に考慮する必要がある、セキュリティに関する推奨事項の一覧です。
 
@@ -62,4 +62,4 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

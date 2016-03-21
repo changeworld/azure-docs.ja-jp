@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と UserVoice の統合
@@ -56,7 +56,7 @@
 
     ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-uservoice-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  **検索ボックス**に、「**UserVoice**」と入力します。
+6.  **検索ボックス**に「**UserVoice**」と入力します。
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-uservoice-tutorial/IC777513.png "アプリケーション ギャラリー")
 
@@ -66,11 +66,11 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで UserVoice に対する認証を行うことができるようにする方法を説明します。UserVoice のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで UserVoice に対する認証を行うことができるようにする方法を説明します。UserVoice のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **UserVoice** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[UserVoice]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777515.png "シングル サインオンの構成")
 
@@ -78,38 +78,38 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777516.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページで、**[UserVoice サインイン URL]** ボックスに、"*https://\<テナント名>.UserVoice.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[UserVoice サインイン URL]** ボックスに、"*https://\<テナント名>.UserVoice.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-uservoice-tutorial/IC777517.png "アプリケーション URL の構成")
 
-4.  **[UserVoice でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルを **c:\\UserVoice.cer** としてローカルに保存します。
+4.  **[UserVoice でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\UserVoice.cer** としてローカルに保存します。
 
     ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777518.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザーのウィンドウで、UserVoice 企業サイトに管理者としてログインします。
 
-6.  上部のツール バーの [Settings] をクリックし、[Web portal] を選択します。
+6.  上部のツール バーの [設定] をクリックし、[Web ポータル] を選択します。
 
-    ![設定](./media/active-directory-saas-uservoice-tutorial/IC777519.png "設定")
+    ![設定](./media/active-directory-saas-uservoice-tutorial/IC777519.png "[設定]")
 
-7.  **[Web portal]** タブの **[User authentication]** セクションで、**[Edit]** をクリックして **[Edit User Authentication]** ダイアログ ページを開きます。
+7.  **[Web ポータル]** タブの **[ユーザー認証]** セクションで、**[編集]** をクリックして **[ユーザー認証の編集]** ダイアログ ページを開きます。
 
     ![Web ポータル](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web ポータル")
 
-8.  **[Edit User Authentication]** ダイアログ ページで、次の手順を実行します。
+8.  **[ユーザー認証の編集]** ダイアログ ページで、次の手順に従います。
 
     ![ユーザー認証の編集](./media/active-directory-saas-uservoice-tutorial/IC777521.png "ユーザー認証の編集")
 
-    1.  **[Single Sign-On (SSO)]** をクリックします。
-    2.  Azure ポータルの **[UserVoice でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、**[SSO Remote Sign-In]** ボックスに貼り付けます。
-    3.  Azure ポータルの **[UserVoice でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[SSO Remote Sign-Out]** ボックスに貼り付けます。
-    4.  エクスポートした証明書から **[拇印]** の値をコピーし、**[Current certificate SHA1 fingerprint]** ボックスに貼り付けます。  
+    1.  **[シングル サインオン]** をクリックします。
+    2.  Azure ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SSO リモート サインイン]** ボックスに貼り付けます。
+    3.  Azure ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[SSO リモート サインアウト]** ボックスに貼り付けます。
+    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[現在の証明書 SHA1 フィンガープリント]** ボックスに貼り付けます。  
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書のサムプリント値を取得する方法）](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-    5.  **[Save authentication settings]** をクリックします。
+    5.  **[認証設定の保存]** をクリックします。
 
-9.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777522.png "シングル サインオンの構成")
 
@@ -121,26 +121,26 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
 
 1.  **UserVoice** テナントにログインします。
 
-2.  **[Settings]** に移動します。
+2.  **[設定]** に移動します。
 
     ![設定](./media/active-directory-saas-uservoice-tutorial/IC777811.png "設定")
 
-3.  **[General]** をクリックします。
+3.  **[全般]** をクリックします。
 
-4.  **[Agents and permissions]** をクリックします。
+4.  **[エージェントとアクセス許可]** をクリックします。
 
     ![エージェントとアクセス許可](./media/active-directory-saas-uservoice-tutorial/IC777812.png "エージェントとアクセス許可")
 
-5.  **[Add admins]** をクリックします。
+5.  **[管理者の追加]** をクリックします。
 
     ![管理者の追加](./media/active-directory-saas-uservoice-tutorial/IC777813.png "管理者の追加")
 
-6.  **[Invite admins]** ダイアログで、次の手順を実行します。
+6.  **[管理者の招待]** ダイアログで、次の手順を実行します。
 
     ![管理者の招待](./media/active-directory-saas-uservoice-tutorial/IC777814.png "管理者の招待")
 
-    1.  [EMAILS] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[Add]** をクリックします。
-    2.  **[Invite]** をクリックします。
+    1.  [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
+    2.  **[招待]** をクリックします。
 
 >[AZURE.NOTE]UserVoice から提供されている他の UserVoice ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -158,8 +158,8 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-uservoice-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する" 
-	description="このチュートリアルでは、Azure ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
+	pageTitle="Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへの Live Encoding を実行するチャネルを作成する" 
+	description="このチュートリアルでは、Azure クラシック ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako,anilmur" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
-#Azure ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
+#Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -32,7 +32,7 @@
 
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
->[AZURE.NOTE]現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+>[AZURE.NOTE] 現在、ライブ イベントの最大推奨時間は 8 時間です。チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
 
 1. ビデオ カメラをコンピューターに接続します。オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかで出力できます。詳しくは、「[Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 	
@@ -58,7 +58,7 @@
 
 ##このチュートリアルの内容
 
-このチュートリアルでは、Microsoft Azure 管理ポータルを使用して、次のタスクを実行します。
+このチュートリアルでは、Azure クラシック ポータルを使用して、次のタスクを実行します。
 
 2.  ストリーミング エンドポイントを構成します。
 3.  ライブ エンコードを実行できるチャネルを作成します。
@@ -71,7 +71,7 @@
 ##前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
@@ -85,7 +85,7 @@
 
 ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
@@ -98,14 +98,14 @@
 	新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
 	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格設定の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
  
 ##チャネルの作成
 
-1.	[管理ポータル](http://manage.windowsazure.com/)で、[Media Services] をクリックし、目的の Media Services アカウント名をクリックします。
+1.	[Azure クラシック ポータル](http://manage.windowsazure.com/)で、[Media Services] をクリックし、目的の Media Services アカウント名をクリックします。
 2.	[チャネル] ページを選択します。
 3.	[追加+] を選択し、新しいチャネルを追加します。
 
@@ -142,7 +142,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 ![standard4][standard4]
 
->[AZURE.NOTE]現時点では、チャネルの開始に最大 30 分ほどかかる場合があります。チャネルのリセットには最大 5 分かかります。
+>[AZURE.NOTE] 現時点では、チャネルの開始に最大 30 分ほどかかる場合があります。チャネルのリセットには最大 5 分かかります。
 
 チャネルを作成すると、[**エンコーダー**] タブが選択可能になり、このタブにチャネル構成が表示されます。また、広告とスレートも管理できます。
 
@@ -215,7 +215,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 [**チャネル**] ページで [**ストリーミングの停止**] をクリックすると、既定のプログラムが停止し、削除されます。資産は保持されており、[**コンテンツ**] ページから発行もしくは発行の取り消しができます。
 
-[**コンテンツ**] ページに切り替えると、プログラム用に作成した資産が表示されます。
+[**コンテンツ**] ページに切り替えると、プログラム用に作成したアセットが表示されます。
 
 ![contentasset](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-content-assets.png)
 
@@ -276,4 +276,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

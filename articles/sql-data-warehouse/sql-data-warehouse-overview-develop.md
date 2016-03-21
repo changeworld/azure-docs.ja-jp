@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の設計上の決定と コーディング技法
 
@@ -79,4 +79,4 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

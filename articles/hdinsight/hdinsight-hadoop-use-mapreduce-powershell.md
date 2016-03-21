@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/16/2015"
+   ms.date="02/04/2016"
    ms.author="larryfr"/>
 
 #PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
@@ -51,18 +51,17 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 1. エディターを使用して、次のコードを **mapreducejob.ps1** として保存します。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
 
-		#Specify the values
-		$clusterName = "CLUSTERNAME"
-		$creds=Get-Credential
-        		
-		# Login to your Azure subscription
-		# Is there an active Azure subscription?
-		$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-		if(-not($sub))
-		{
-		    Login-AzureRmAccount
-		}
-        
+        #Specify the values
+        $clusterName = "CLUSTERNAME"
+                
+        # Login to your Azure subscription
+        # Is there an active Azure subscription?
+        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+        if(-not($sub))
+        {
+            Login-AzureRmAccount
+        }
+
         #Get HTTPS/Admin credentials for submitting the job later
         $creds = Get-Credential
         #Get the cluster info so we can get the resource group, storage, etc.
@@ -80,39 +79,39 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
             -StorageAccountName $storageAccountName `
             -StorageAccountKey $storageAccountKey
             
-		#Define the MapReduce job
-		#NOTE: If using an HDInsight 2.0 cluster, use hadoop-examples.jar instead.
-		# -JarFile = the JAR containing the MapReduce application
-		# -ClassName = the class of the application
-		# -Arguments = The input file, and the output directory
-		$wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+        #Define the MapReduce job
+        #NOTE: If using an HDInsight 2.0 cluster, use hadoop-examples.jar instead.
+        # -JarFile = the JAR containing the MapReduce application
+        # -ClassName = the class of the application
+        # -Arguments = The input file, and the output directory
+        $wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
             -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
             -ClassName "wordcount" `
             -Arguments `
                 "wasb:///example/data/gutenberg/davinci.txt", `
                 "wasb:///example/data/WordCountOutput"
 
-		#Submit the job to the cluster
-		Write-Host "Start the MapReduce job..." -ForegroundColor Green
-		$wordCountJob = Start-AzureRmHDInsightJob `
+        #Submit the job to the cluster
+        Write-Host "Start the MapReduce job..." -ForegroundColor Green
+        $wordCountJob = Start-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobDefinition $wordCountJobDefinition `
             -HttpCredential $creds
 
-		#Wait for the job to complete
-		Write-Host "Wait for the job to complete..." -ForegroundColor Green
-		Wait-AzureRmHDInsightJob `
+        #Wait for the job to complete
+        Write-Host "Wait for the job to complete..." -ForegroundColor Green
+        Wait-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobId $wordCountJob.JobId `
             -HttpCredential $creds
         # Download the output
         Get-AzureStorageBlobContent `
-            -Blob example/data/WordCountOutput/* `
+            -Blob 'example/data/WordCountOutput/part-r-00000' `
             -Container $container `
             -Destination output.txt `
             -Context $context
-		# Print the output
-		Get-AzureRmHDInsightJobOutput `
+        # Print the output
+        Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $wordCountJob.JobId `
             -DefaultContainer $container `
@@ -140,7 +139,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 	この出力は、ジョブが正常に完了したことを示しています。
 
-	> [AZURE.NOTE]**ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
+	> [AZURE.NOTE] **ExitCode** が 0 以外の値の場合は、[トラブルシューティング](#troubleshooting)をご覧ください
 
     この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーへのダウンロードしたファイルの格納も行います。
 
@@ -148,7 +147,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 MapReduce ジョブの出力は *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
 
-> [AZURE.NOTE]MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
+> [AZURE.NOTE] MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
 ##<a id="troubleshooting"></a>トラブルシューティング
 
@@ -162,7 +161,7 @@ MapReduce ジョブの出力は *part-r-#####* という名前のファイルに
             -DefaultContainer $container `
             -DefaultStorageAccountName $storageAccountName `
             -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds
+            -HttpCredential $creds `
             -DisplayOutputType StandardError
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
@@ -183,4 +182,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

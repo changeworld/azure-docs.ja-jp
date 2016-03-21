@@ -1,4 +1,11 @@
-<properties pageTitle="Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス) |Microsoft Azure " description="Visual Studio を使用して Azure AD に接続する MVC プロジェクト Web API の変更点について説明します services="active-directory" services="active-directory" documentationCenter="" authors="TomArcher" manager="douge" editor="tglee"/>
+<properties
+	pageTitle="WebApi プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Azure"
+	description="Visual Studio を使用して Azure AD に接続するときに WebApi プロジェクトで何が起こるかについて説明します。"
+  services="active-directory"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -6,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="12/18/2015"
 	ms.author="tarcher"/>
 
 # Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
@@ -64,7 +71,7 @@
 
 ウィザードで選択したディレクトリに Azure AD アプリケーションが作成されました。
 
-[Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
+[Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
 ##*[個々のユーザー アカウントの認証を無効にする]* がオンになっている場合、プロジェクトにはどのような変更が加えられますか。
 NuGet パッケージのリファレンスが削除されるほか、ファイルが削除およびバックアップされます。プロジェクトの状態によっては、追加のリファレンスやファイルを手動で削除したり、必要に応じてコードを変更しなければならない場合があります。
@@ -107,6 +114,6 @@ NuGet パッケージのリファレンスが削除されるほか、ファイ�
 ###Azure Active Directory アプリが更新された
 Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ida:Password* として使用される追加のキーが作成されました。
 
-[Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
+[Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

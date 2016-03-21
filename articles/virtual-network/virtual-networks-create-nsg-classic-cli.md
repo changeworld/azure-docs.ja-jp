@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-service-management"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/15/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 # Azure CLI で NSG (クラシック) を作成する方法
@@ -27,14 +27,14 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-以下の Azure CLI のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[VNet を作成して](virtual-networks-create-vnet-classic-cli)テスト環境を構築します。
+以下の Azure CLI のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[VNet を作成して](virtual-networks-create-vnet-classic-cli.md)テスト環境を構築します。
 
 ## フロントエンドのサブネットの NSG を作成する方法
-上記のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
+上記のシナリオに基づいて **NSG-FrontEnd** という名前の NSG を作成するには、次の手順に従います。
 
 1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
-2. 次に示すように、**azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
+2. 次に示すように、**`azure config mode`** コマンドを実行してクラシック モードに切り替えます。
 
 		azure config mode asm
 
@@ -42,7 +42,7 @@
 
 		info:    New mode is asm
 
-3. **azure network nsg create** コマンドを実行して NSG を作成します。
+3. **`azure network nsg create`** コマンドを実行して NSG を作成します。
 
 		azure network nsg create -l uswest -n NSG-FrontEnd
 
@@ -77,7 +77,7 @@
 	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
 	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
 
-4. **azure network nsg rule create** コマンドを実行して、インターネットからポート 3389 (RDP) へのアクセスを許可する規則を作成します。
+4. **`azure network nsg rule create`** コマンドを実行して、インターネットからポート 3389 (RDP) へのアクセスを許可する規則を作成します。
 
 		azure network nsg rule create -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
 
@@ -111,7 +111,7 @@
 	- **-e (または --destination-address-prefix)**。CIDR または既定のタグを使用する接続先アドレスのプレフィックス。
 	- **-u (または --destination-port-range)**。接続先ポート、またはポート範囲です。	
 
-5. **azure network nsg rule create** コマンドを実行して、インターネットからポート 80 (HTTP) へのアクセスを許可する規則を作成します。
+5. **`azure network nsg rule create`** コマンドを実行して、インターネットからポート 80 (HTTP) へのアクセスを許可する規則を作成します。
 
 		azure network nsg rule create -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
 
@@ -132,7 +132,7 @@
 		data:    Priority                        : 200
 		info:    network nsg rule create command OK
 
-6. **azure network nsg subnet add** コマンドを実行して、NSG をフロントエンドのサブネットにリンクさせます。
+6. **`azure network nsg subnet add`** コマンドを実行して、NSG をフロントエンドのサブネットにリンクします。
 
 		azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd 
 
@@ -148,7 +148,7 @@
 ## バックエンドのサブネットの NSG を作成する方法
 上記のシナリオに基づいて *NSG-BackEnd* という名前の NSG を作成するには、次の手順に従います。
 
-3. **azure network nsg create** コマンドを実行して NSG を作成します。
+3. **`azure network nsg create`** コマンドを実行して NSG を作成します。
 
 		azure network nsg create -l uswest -n NSG-BackEnd
 
@@ -183,7 +183,7 @@
 	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
 	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
 
-4. **azure network nsg rule create** コマンドを実行して、フロントエンドのサブネットからポート 1433 (SQL) へのアクセスを許可する規則を作成します。
+4. **`azure network nsg rule create`** コマンドを実行して、フロントエンドのサブネットからポート 1433 (SQL) へのアクセスを許可する規則を作成します。
 
 		azure network nsg rule create -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
 
@@ -205,7 +205,7 @@
 		info:    network nsg rule create command OK
 
 
-5. **azure network nsg rule create** コマンドを実行して、インターネットへのアクセスを拒否する規則を作成します。
+5. **`azure network nsg rule create`** コマンドを実行して、インターネットへのアクセスを拒否する規則を作成します。
 
 		azure network nsg rule create -a NSG-BackEnd -n web-rule -c Deny -p Tcp -r Outbound -y 200 -f * -o * -e Internet -u 80
 
@@ -226,7 +226,7 @@
 		data:    Priority                        : 200
 		info:    network nsg rule create command OK
 
-6. **azure network nsg subnet add** コマンドを実行して、NSG をバックエンドのサブネットにリンクさせます。
+6. **`azure network nsg subnet add`** コマンドを実行して、NSG をバックエンドのサブネットにリンクします。
 
 		azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd 
 
@@ -239,4 +239,4 @@
 		info:    Creating a network security group "NSG-BackEndX"
 		info:    network nsg subnet add command OK
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0211_2016-->

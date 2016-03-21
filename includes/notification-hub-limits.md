@@ -3,9 +3,9 @@
 |----|----|----|----|
 | 含まれるプッシュ | 100 万 | 1000 万 | 1000 万 |
 | アクティブなデバイス | 500 | 無制限 | 無制限 |
-| タグ サイズのブロードキャスト | 10K | 10K | 無制限 |
-| タグの数 (ブロードキャスト グループ) | 3K | 3K (ブロードキャスト先デバイスが 5 個未満でない場合) | 無制限 |
 
-これらの制限に関する詳細と価格の詳細については、[Notification Hubs の価格](http://azure.microsoft.com/pricing/details/notification-hubs/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+
+これらの制限に関する詳細と価格の詳細については、[Notification Hubs の価格](https://azure.microsoft.com/pricing/details/notification-hubs/)を参照してください。
+
+<!---HONumber=AcomDC_0218_2016-->

@@ -4,7 +4,7 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
@@ -39,7 +39,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 ### Access Control 発行者名および発行者キーをコピーして貼り付けるには
 
-1. [Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** を選択します。
 3. BizTalk サービスを選択します。 
 4. タスク バーの **[接続情報]** をクリックします。Access Control 名前空間、既定の発行者 (発行者名)、既定のキー (発行者キー) が一覧に表示され、コピーして貼り付けることができます。  
@@ -49,7 +49,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 [**ACS 管理ポータルを開く**] を選択して Access Control の値を取得することもできます。
 
-1. [Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** を選択します。
 3. BizTalk サービスを選択します。
 4. [接続情報] をクリックし、**[ACS 管理ポータルを開く]** をクリックします。
@@ -59,7 +59,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 左側のナビゲーション ウィンドウで **[Active Directory]** をクリックして Access Control の値を取得することもできます。
 
-> [AZURE.IMPORTANT]**Active Directory** を使用して Access Control 名前空間を作成したときに、サービス ID が自動的に作成されることは**ありません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
+> [AZURE.IMPORTANT] **Active Directory** を使用して Access Control 名前空間を作成したときに、サービス ID が自動的に作成されることは**ありません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
 
 
 ## Service Bus 発行者名および発行者キー
@@ -67,7 +67,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 ### Service Bus 発行者名および発行者キーを取得するには
 
-1. [Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左のナビゲーション ウィンドウで、[**Service Bus**] を選択します。
 3. 名前空間を選択します。タスク バーで [**接続情報**] をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。  
 
@@ -87,11 +87,11 @@ Azure BizTalk サービスに関するその他のトピック:
 ## 関連項目
 -  [方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk Services: プロビジョニングの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

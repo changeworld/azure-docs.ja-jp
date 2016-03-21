@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="11/06/2015"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
@@ -57,7 +57,7 @@ Pig での UDF の使用例については、以下のドキュメントを参�
 
 前の例では、ログ レベルは ERROR です。
 
-> [AZURE.NOTE]また、[Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB にアップロードすることもできます。手順については、「[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)」を参照してください。HDInsight と共に Azure ストレージの BLOB を使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」を参照してください。
+> [AZURE.NOTE] また、[Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB にアップロードすることもできます。手順については、「[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)」を参照してください。HDInsight と共に Azure ストレージの BLOB を使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
 サンプル データは、HDInsight が Hadoop クラスターの既定のファイル システムとして使用する Azure BLOB ストレージに格納されています。HDInsight では、**wasb** プレフィックスを使用して、BLOB に格納されたファイルにアクセスすることができます。たとえば、sample.log ファイルにアクセスするには、次の構文を使用します。
 
@@ -65,7 +65,7 @@ Pig での UDF の使用例については、以下のドキュメントを参�
 
 WASB が HDInsight の既定のストレージであるため、Pig Latin から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE]上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE] 上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 
 ##<a id="job"></a>サンプル ジョブについて
@@ -122,11 +122,11 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
-[pigtask]: http://msdn.microsoft.com/ja-JP/library/mt146781(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
+[pigtask]: http://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: ../hdinsight-get-started.md
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
@@ -146,4 +146,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

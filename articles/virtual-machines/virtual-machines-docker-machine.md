@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="09/22/2015"
+   ms.date="01/04/2016"
    ms.author="rasquill"/>
 
 # Azure で docker マシンを使用する方法
@@ -39,7 +39,7 @@
 
 [contributing to machine](https://github.com/docker/machine#contributing) の手順でも、自分で **docker-machine** をビルドできます。ビルドには 1 GB 以上の空き容量が必要になりますが、これでご希望の環境を自由にビルドできるようになります。
 
-> [AZURE.NOTE]プラットフォーム バージョンに応じて[シンボリック リンク](http://en.wikipedia.org/wiki/Symbolic_link)も作成できますが、このチュートリアルでは動作を明確に示すため、バイナリ ディレクトリを使用します。結果として、**docker-machine** ドキュメントで示された `docker-machine env` などのコマンドではなく、`docker-machine_linux-amd64 env` を使用しています。symlink でもバイナリ名ディレクトリでも自由に作成できますが、使用している名前を変更する場合は下記の手順で変更する必要がありますのでご注意ください。
+> [AZURE.NOTE] プラットフォーム バージョンに応じて[シンボリック リンク](http://en.wikipedia.org/wiki/Symbolic_link)も作成できますが、このチュートリアルでは動作を明確に示すため、バイナリ ディレクトリを使用します。結果として、**docker-machine** ドキュメントで示された `docker-machine env` などのコマンドではなく、`docker-machine_linux-amd64 env` を使用しています。symlink でもバイナリ名ディレクトリでも自由に作成できますが、使用している名前を変更する場合は下記の手順で変更する必要がありますのでご注意ください。
 
 <br />
 
@@ -49,7 +49,7 @@
 
 次に、Azure で ID やアクセス許可を確認する必要があるため、証明書とキー ファイルを作成します。これは **docker-machine** がご利用の Azure 仮想マシンと通信してリモートでコンテナーを作成して管理するためにも必要です。これらのファイルがすでにディレクトリにある場合、おそらく Docker で使用したものですが、再利用できます。ただし、ベスト プラクティスとしては、**docker-machine** のテストのため、別のディレクトリに作成して docker-machine を指定することをお勧めします。
 
-> [AZURE.NOTE]**docker-machine** を何度も使うことになる場合は、同じ証明書とキー ファイルを再利用してください。**docker-machine** では一連のクライアント証明書が同様に作成されます。作成された証明書は `~/.docker/machine` で検証できます。これらの証明書を別のコンピューターに移す場合は、**docker-machine** 証明書フォルダーも同様に移す必要があります。これによって、動作の検証などの目的で **docker-machine** を別のプラットフォームで使う場合でも、問題なく動作させることが可能になります。
+> [AZURE.NOTE] **docker-machine** を何度も使うことになる場合は、同じ証明書とキー ファイルを再利用してください。**docker-machine** では一連のクライアント証明書が同様に作成されます。作成された証明書は `~/.docker/machine` で検証できます。これらの証明書を別のコンピューターに移す場合は、**docker-machine** 証明書フォルダーも同様に移す必要があります。これによって、動作の検証などの目的で **docker-machine** を別のプラットフォームで使う場合でも、問題なく動作させることが可能になります。
 
 Linux ディストリビューションの使用経験があれば、コンピューターの特定の場所にこれらのファイルが既にある可能性もあります。[この手順は Docker HTTPS ドキュメントで詳細に説明されています](https://docs.docker.com/articles/https/)。以下に、この手順を最も簡単に行う方法を示します。
 
@@ -62,7 +62,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 
 		openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-2. 証明書の .cer ファイルを Azure にアップロードします。[Azure ポータル](https://manage.windowsazure.com)で、下図のとおりサービス エリアの左下にある **[設定]** をクリックします。
+2. 証明書の .cer ファイルを Azure にアップロードします。[Azure クラシック ポータル](https://manage.windowsazure.com)で、下図のとおりサービス エリアの左下にある **[設定]** をクリックします。
 
 	![][portalsettingsitem]
 
@@ -70,7 +70,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 
 	![][managementcertificatesitem]
 
-	ページ下部にある **[アップロード]** ![][uploaditem] をクリックし、上記の手順で作成した **mycert.cer** ファイルをアップロードします。
+	ページ下部にある **アップロード** ![][uploaditem] をクリックし、上記の手順で作成した **mycert.cer** ファイルをアップロードします。
 
 3. ポータルの同じ **[設定]** ウィンドウで、**[サブスクリプション]** をクリックして VM の作成時に使ったサブスクリプション ID をキャプチャします。この ID は次の手順で使用します (サブスクリプション ID はコマンドラインで Azure CLI コマンド `azure account list` を使っても確認できます。アカウントに保持している各サブスクリプションの ID が表示されます)。
 
@@ -106,7 +106,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 	    INFO[0368] "machine-name" has been created and is now the active machine.
 	    INFO[0368] To point your Docker client at it, run this in your shell: $(docker-machine_linux-amd64 env machine-name)
 
-    > [AZURE.NOTE]VM が作成され、使用できる状態になるまでに数分かかる場合もあります。VM が **ReadyRole** の状態になるまでの待ち時間に、Azure CLI を使用して「`azure vm list`」と入力し、新しい Docker ホストの状態を確認できます。
+    > [AZURE.NOTE] VM が作成され、使用できる状態になるまでに数分かかる場合もあります。VM が **ReadyRole** の状態になるまでの待ち時間に、Azure CLI を使用して「`azure vm list`」と入力し、新しい Docker ホストの状態を確認できます。
 
 5. Docker とマシンの環境変数をターミナル セッション向けに設定します。最後の行に記述されているとおり、直ちに **env** コマンドを実行して必要な環境変数をエクスポートし、特定のマシンにおける Docker クライアントで直接使用します。
 
@@ -140,7 +140,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 	    ID: W3FZ:BCZW:UX24:GDSV:FR4N:N3JW:XOC2:RI56:IWQX:LRTZ:3G4P:6KJK
 	    WARNING: No swap limit support
 
-> [AZURE.NOTE]このチュートリアルでは、VM 1 つを作成する **docker-machine** について説明していますが、上記の手順を繰り返すことで、数の制限なく複数作成することも可能です。複数作成する場合、VM と Docker を切り替える最善の方法は、インラインで **env** コマンドを使用して各コマンドに **docker** 環境変数を設定することです。たとえば、**docker info**を異なる VM で使用するには、「`docker $(docker-machine env <VM name>) info`」と入力すると、**env** コマンドによってその VM で使用する Docker 接続情報が設定されます。
+> [AZURE.NOTE] このチュートリアルでは、VM 1 つを作成する **docker-machine** について説明していますが、上記の手順を繰り返すことで、数の制限なく複数作成することも可能です。複数作成する場合、VM と Docker を切り替える最善の方法は、インラインで **env** コマンドを使用して各コマンドに **docker** 環境変数を設定することです。たとえば、**docker info**を異なる VM で使用するには、「`docker $(docker-machine env <VM name>) info`」と入力すると、**env** コマンドによってその VM で使用する Docker 接続情報が設定されます。
 
 ## 設定完了。Docker ハブから Docker とイメージを使ってリモートでいくつかのアプリケーションを実行
 
@@ -158,7 +158,7 @@ Linux ディストリビューションの使用経験があれば、コンピ�
 
 ただし、[Docker Hub](https://registry.hub.docker.com/) からの [nginx](https://registry.hub.docker.com/_/nginx/) など、アプリケーションを作成してインターネットですぐに確認することも可能です。
 
-> [AZURE.NOTE]**-P** オプションを使ってイメージに対するランダム ポートを **Docker** にアサインすることと、**-d** オプションを使用してコンテナーがバックグラウンドで継続的に実行される状態になっていることをご確認ください (これを実行しないと、nginx を起動してもすぐにシャットダウンしますので、確実に設定してください)。
+> [AZURE.NOTE] **-P** オプションを使ってイメージに対するランダム ポートを **Docker** にアサインすることと、**-d** オプションを使用してコンテナーがバックグラウンドで継続的に実行される状態になっていることをご確認ください (これを実行しないと、nginx を起動してもすぐにシャットダウンしますので、確実に設定してください)。
 
 	$ docker run --name machinenginx -P -d nginx
     Unable to find image 'nginx:latest' locally
@@ -201,7 +201,7 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-[Docker のユーザーガイド](https://docs.docker.com/userguide/)をご確認いただき、Microsoft Azure でアプリケーションをいくつか作成してみましょう。または、Azure で [**Docker** と Swarm](https://github.com/docker/swarm) を使って(virtual-machines-docker-swarm) Docker と Azure での Swarm の使用方法をご確認ください。
+[Docker のユーザーガイド](https://docs.docker.com/userguide/)をご確認いただき、Microsoft Azure でアプリケーションをいくつか作成してみましょう。または、[Azure で Docker Swarm] を使って、Docker と Azure での [Swarm](https://github.com/docker/swarm) の使用方法をご確認ください。
 
 <!--Image references-->
 [nginx]: ./media/virtual-machines-docker-machine/nginxondocker.png
@@ -213,5 +213,6 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
+[Azure で Docker Swarm]: virtual-machines-docker-swarm.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

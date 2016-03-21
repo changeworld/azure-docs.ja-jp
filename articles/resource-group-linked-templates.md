@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/04/2015"
+   ms.date="12/07/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのリンクされたテンプレートの使用
@@ -44,7 +44,7 @@
       } 
     ] 
 
-リソース マネージャー サービスはリンクされたテンプレートにアクセスできる必要があります。このため、リンクされたテンプレートには、ローカル ファイルまたはローカル ネットワーク上でのみ使用できるファイルは指定できません。**http** または **https** のいずれかを含む値のみを指定できます。オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次に示すように、その項目の URI を使用します。
+リソース マネージャー サービスはリンクされたテンプレートにアクセスできる必要があります。このため、リンクされたテンプレートには、ローカル ファイルまたはローカル ネットワーク上でのみ使用できるファイルは指定できません。**http** または **https** のいずれかを含む URI 値のみを指定できます。オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次に示すように、その項目の URI を使用します。
 
     "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
@@ -102,6 +102,12 @@
         }
     }
 
+[deployment()](../resource-group-template-functions/#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。これは、テンプレートの場所が変更された場合や (バージョン管理などのため)、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。
+
+    "variables": {
+        "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+    }
+
 ## リンクされたテンプレートから値を渡す
 
 リンクされたテンプレートからメイン テンプレートに値を渡す必要がある場合は、リンクされたテンプレートの **outputs** セクションで値を作成できます。例については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
@@ -110,4 +116,4 @@
 - [テンプレートの作成](./resource-group-authoring-templates.md)
 - [テンプレートのデプロイ](resource-group-template-deploy.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

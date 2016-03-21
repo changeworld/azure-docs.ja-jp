@@ -3,7 +3,7 @@
 	description="C 用 Azure IoT device SDK に含まれている IoTHubClient ライブラリの使用について説明します"
 	services="iot-hub"
 	documentationCenter=""
-	authors="MichelBarnett"
+	authors="olivierbloch"
 	manager="timlt"
 	editor=""/>
 
@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="11/10/2015"
-     ms.author="michelb"/>
+     ms.date="02/23/2016"
+     ms.author="obloch"/>
 
 # C 用 Microsoft Azure IoT デバイス SDK – IoTHubClient の詳細
 
@@ -239,7 +239,7 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-この文字列は IoT Hub 名、IoT Hub サフィックス、デバイス ID、共有アクセス キーの 4 つの情報で構成されます。Azure プレビュー ポータルで IoT Hub インスタンスを作成するときに、IoT Hub の完全修飾ドメイン名 (FQDN) を取得します。これにより、IoT Hub 名 (FQDN の最初の部分) と IoT Hub サフィックス (FQDN の残りの部分) を取得できます。デバイス ID と共有アクセス キーは、([前の記事](iot-hub-device-sdk-c-intro.md)の説明のように) IoT Hub にデバイスを登録するときに取得します。
+この文字列は IoT Hub 名、IoT Hub サフィックス、デバイス ID、共有アクセス キーの 4 つの情報で構成されます。Azure ポータルで IoT Hub インスタンスを作成するときに、IoT Hub の完全修飾ドメイン名 (FQDN) を取得します。これにより、IoT Hub 名 (FQDN の最初の部分) と IoT Hub サフィックス (FQDN の残りの部分) を取得できます。デバイス ID と共有アクセス キーは、([前の記事](iot-hub-device-sdk-c-intro.md)の説明のように) IoT Hub にデバイスを登録するときに取得します。
 
 **IoTHubClient\_CreateFromConnectionString** は、ライブラリを初期化する方法の 1 つです。必要に応じて、接続文字列ではなくこれらの個々のパラメーターを使用して、新しい **IOTHUB\_CLIENT\_HANDLE** を作成できます。これは次のコードで実現します。
 
@@ -278,4 +278,4 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 この記事は、**C 用 Azure IoT デバイス SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。[次の記事](iot-hub-device-sdk-c-serializer.md)では、**serializer** ライブラリについて同様に詳細を紹介します。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

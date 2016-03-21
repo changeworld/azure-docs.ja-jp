@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter="windows"
 	authors="ggailey777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,20 +13,23 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="javascript"
 	ms.topic="get-started-article"
-	ms.date="11/06/2015"
+	ms.date="03/06/2016"
 	ms.author="glenga"/>
 
 # Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
-[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
+&nbsp;
 
-このチュートリアルでは、Azure のモバイル サービスを使用して Windows ストア JavaScript アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Create a Windows app with Mobile Apps (Mobile Apps による Windows アプリの作成)](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started.md)」を参照してください。
+
+このチュートリアルでは、Azure Mobile Services を使用して Windows ストア JavaScript アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
 * [Visual Studio 2013 Express for Windows]
 
 ## 新しいモバイル サービスを作成する
@@ -35,9 +38,9 @@
 
 ## 新しい Windows ストア アプリを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービスに接続する新しい Windows ストア 8.1 JavaScript アプリを作成できます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、モバイル サービスに接続する新しい Windows ストア 8.1 JavaScript アプリを作成できます。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows]** を選択し、**[新しい Windows ストア アプリを作成する]** を展開します。
@@ -64,11 +67,11 @@
 
 4. (オプション) アプリを再実行し、アプリケーションの起動後に前の手順で保存したデータがモバイル サービスから読み込まれる点に注目してください。
  
-4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+4. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
    	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
->[AZURE.NOTE]モバイル サービスにアクセスして default.js ファイルにあるデータを照会および挿入するコードを確認できます。
+>[AZURE.NOTE] モバイル サービスにアクセスして default.js ファイルにあるデータを照会および挿入するコードを確認できます。
 
 ## 次のステップ
 クイックスタートを完了しました。次は、[HTML/JavaScript 向け Mobile Services クライアント](mobile-services-html-how-to-use-client-library.md)の操作について説明します。
@@ -86,6 +89,6 @@
 <!-- URLs. -->
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

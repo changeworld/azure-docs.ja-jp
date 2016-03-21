@@ -7,13 +7,24 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="jimpark"; "aashishr"; "sammehta"; "anuragm"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/28/2016"
+	ms.author="jimpark; aashishr; anuragm"/>
 
 
 # PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
+
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## PowerShell 環境のセットアップ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+
 PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell に正しい環境があることを確認してください。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
 ```
@@ -33,7 +44,7 @@ Sample DPM scripts: Get-DPMSampleScript
 開始するには
 
 1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
-2. **Switch-AzureMode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
+2. **Switch-azuremode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
 
 ```
 PS C:\> Switch-AzureMode AzureResourceManager
@@ -49,7 +60,7 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
 
 ### バックアップ コンテナーの作成
 
-> [AZURE.WARNING]顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
 
 **New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -87,7 +98,7 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
+| /q | サイレント インストール | - | 
 | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
 | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
 | /m | Microsoft Update のオプトイン | - |
@@ -122,7 +133,7 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 
 これにより、"TestingServer" という名前の DPM サーバーは、Microsoft Azure Backup コンテナーに、指定されたコンテナーの資格情報を使用して登録されます。
 
-> [AZURE.IMPORTANT]コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
+> [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
 
 ### 初期構成の設定
 DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、およびステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
@@ -171,7 +182,7 @@ PS C:\> $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPl
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -EncryptionPassphrase $Passphrase
 ```
 
-> [AZURE.IMPORTANT]設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
+> [AZURE.IMPORTANT] 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
 
 この時点で、必要な変更はすべて ```$setting``` オブジェクトに行われています。変更を忘れずにコミットします。
 
@@ -225,7 +236,7 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 この手順を、選択したすべてのデータソースが保護グループに追加されるまで必要なだけ繰り返します。1 つのデータソースで開始して、保護グループを作成するためのワークフローを完了し、後で保護グループにさらにデータソースを追加することもできます。
 
 ### データ保護方法の選択
-データソースが保護グループに追加されたら、次の手順は、[Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。また、[Add-DPMChildDatasource](https://technet.microsoft.com/JA-JP/library/hh881732.aspx) コマンドレットに -Online フラグを付けて、保護対象のデータソースをクラウドに指定する必要があります。
+データソースが保護グループに追加されたら、次の手順は、[Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。また、[Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) コマンドレットに -Online フラグを付けて、保護対象のデータソースをクラウドに指定する必要があります。
 
 ```
 PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -280,7 +291,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 ### DPM レプリカと回復ポイントのボリューム サイズの変更
-DPM レプリカとシャドウ コピーのボリューム サイズは、[Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/JA-JP/library/hh881618(v=sc.20).aspx) コマンドレットを使用して変更することもできます。次に例を示します。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
+DPM レプリカとシャドウ コピーのボリューム サイズは、[Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) コマンドレットを使用して変更することもできます。次に例を示します。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### 保護グループに対する変更のコミット
 最後に、DPM が新しい保護グループの構成ごとにバックアップを実行する前に、変更をコミットする必要があります。これを実行するには、[Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) コマンドレットを使用します。
@@ -319,6 +330,7 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
 ## 次のステップ
-Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+- Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
+
+<!---HONumber=AcomDC_0204_2016-->

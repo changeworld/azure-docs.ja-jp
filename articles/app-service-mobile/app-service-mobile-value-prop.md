@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Mobile Apps とは"
+	pageTitle="モバイル アプリとは"
 	description="App Service が企業のモバイル アプリにもたらす利点について説明します。"
 	services="app-service\mobile"
 	documentationCenter=""
@@ -12,24 +12,22 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.topic="get-started-article"
+	ms.date="02/04/2016"
 	ms.author="kirillg"/>
 
 # <a name="getting-started"></a>Mobile Apps とは
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 Azure App Service は、プロの開発者のための完全に管理されたサービスとしてのプラットフォーム (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
 
 ![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
 
-##Mobile Apps を使用する理由
-*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。Mobile Apps では、次のことを実行できます。
+##モバイル アプリを使用する理由
+*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。モバイル アプリでは、次のことを実行できます。
 
-- **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。  
+- **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。
 - **エンタープライズ システムへの接続** - Mobile Apps を使用して、企業へのサインオンを数分で追加し、企業のオンプレミス リソースまたはクラウド リソースに接続することができます。
-- **SaaS API に簡単に接続** - 40 を超える SaaS API コネクタを使用して、所属する企業が現在使用している SaaS API に、アプリを簡単に統合することができます。CRM と請求システムの両方でアカウントの状態を更新する場合、 Mobile Apps から企業の SaaS API をすぐに使用できます。
+- **SaaS API に簡単に接続** - 40 を超える SaaS API コネクタを使用して、所属する企業が現在使用している SaaS API に、アプリを簡単に統合することができます。CRM と請求システムの両方でアカウントの状態を更新する場合、 モバイル アプリから企業の SaaS API をすぐに使用できます。
 - **同期を使用したオフライン対応のアプリの構築** - オフラインでも動作し、企業のデータ ソースや SaaS API と接続したときに Mobile Apps を使用してバックグラウンドでデータを同期するアプリを構築することにより、モバイル ユーザーの生産性が向上します。
 - **瞬時に多数のユーザーへプッシュ通知** - 顧客のニーズに合わせてカスタマイズされ、適切なタイミングで送信される、任意のデバイスへの即時のプッシュ通知によって顧客の関心を引きます。
 
@@ -44,17 +42,12 @@ Mobile Apps の使用を開始するには、[作業の開始]に関するチュ
 
 Azure App Service プラットフォームの詳細については、[Azure App Service] に関するページを参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!-- URLs. -->
-[Migrate your Mobile Service to App Service]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
+[Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 
-[Management Portal]: https://manage.windowsazure.com/
-[XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[JavaScript backend version]: ../mobile-services-ios-get-started.md
- 
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

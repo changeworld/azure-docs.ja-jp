@@ -7,15 +7,20 @@
 	manager="dwrede"
 	editor="mollybos"/>
 <tags
-	ms.service="mobile-services" 
+	ms.service="mobile-services"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 # シングル モバイル サービスから複数のデバイス プラットフォームをサポートする
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 モバイル アプリ開発で Azure モバイル サービスを使用する主なメリットの 1 つに、複数のクライアント プラットフォームでアプリをサポートするシングル バックエンド サービスの使用があります。モバイル サービスでは、すべての主要デバイス プラットフォームに対してネイティブ クライアント ライブラリを提供するため、シングル バックエンド サービスとクロスプラットフォーム開発者ツールを使用して簡単にアプリが開発できます。このトピックではシングル モバイル サービス バックエンドを使用しながら複数のクライアント プラットフォームでアプリを実行させるための考慮事項について説明します。
 
@@ -145,7 +150,6 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
 
 
 <!-- URLs -->
-[Azure Management portal]: https://manage.windowsazure.com
 [Azure Notification Hubs]: /develop/net/how-to-guides/service-bus-notification-hubs/
 [SSO Windows Store]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
 [SSO Windows Phone]: /develop/mobile/tutorials/single-sign-on-wp8/
@@ -171,4 +175,4 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
 [Building universal Windows apps for all Windows devices]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [Universal Windows app project for Azure Mobile Services using MVVM]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

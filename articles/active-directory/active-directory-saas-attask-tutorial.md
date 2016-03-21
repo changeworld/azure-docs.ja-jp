@@ -3,7 +3,7 @@
 	description="Azure Active Directory と @Task の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
-	ms.author="markusvi"/>
+	ms.date="12/18/2015"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と @Task の統合
@@ -102,7 +102,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
      b.**[次へ]** をクリックします。
 
-4. **[@Task でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存して、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][9] <br>
+4. **[@Task でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存して、**[次へ]** をクリックします。<br><br>![Azure AD Connect の概要][9] <br>
 
 
 
@@ -125,15 +125,15 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
     e.**[保存]** をクリックします。
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]<br>
+6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Connect の概要][10]<br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Connect の概要][11]
 
 
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
@@ -257,4 +257,4 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 [204]: ./media/active-directory-saas-attask-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-attask-tutorial/tutorial_general_205.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1223_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 Node.js Web アプリ | Microsoft Azure"
+	pageTitle="Azure AD v2.0 NodeJS Web アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Node JS Web アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -13,37 +13,33 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="02/20/2016"
 	ms.author="brandwe"/>
 
-# アプリ モデル v2.0 プレビュー: NodeJS Web アプリへのサインインを追加する
+# サインインを nodeJS Web アプリに追加する
 
 
-  >[AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 
 ここでは、Passport を使用して次の操作を行います。
 
-- Azure AD と v2.0 アプリ モデルを使用するアプリにユーザーをサインインします。
+- Azure AD と v2.0 エンドポイントを使用するアプリにユーザーをサインインします。
 - ユーザーについての情報を表示します。
 - ユーザーをアプリからサインアウトします。
 
 **Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
 
-これを行うには、次の手順を実行する必要があります。
+## ダウンロード
 
-1. アプリを登録します。
-2. Passport-azure-ad 戦略を使用するようにアプリを設定する
-3. Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
-4. ユーザーに関するデータを印刷する
-
-このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) で管理されています。理解するために、[アプリのスケルトンを .zip としてダウンロードする](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)か、複製できます。
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-## 1\.アプリを登録します
+## 1. アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
@@ -67,7 +63,7 @@
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
+- さらに、クイック スタートのスケルトンで、`passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
@@ -77,7 +73,7 @@
 ## 3. passport-node-js 戦略を使用するようにアプリを設定する
 ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。 Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、アプリの構成値を `exports.creds` セクションに入力します。
+-	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
     -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
     -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
     - `clientSecret` は、ポータルで生成したシークレットです。
@@ -112,7 +108,7 @@ passport.use(new OIDCStrategy({
     responseType: config.creds.responseType,
     responseMode: config.creds.responseMode,
     skipUserProfile: config.creds.skipUserProfile
-    //scope: config.creds.scope
+    scope: config.creds.scope
   },
   function(iss, sub, profile, accessToken, refreshToken, done) {
     log.info('Example: Email address we received was: ', profile.email);
@@ -135,7 +131,8 @@ passport.use(new OIDCStrategy({
 ```
 Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
-> [AZURE.IMPORTANT]上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
+> [AZURE.IMPORTANT]
+上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
 - 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
 
@@ -281,8 +278,8 @@ app.get('/logout', function(req, res){
 -	これらについて詳しく説明しましょう。
     -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
     - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
-    - `/login` ルートは、`passport-azuread` から azuread-openidconnect 認証子を呼び出します。これが失敗した場合、ユーザーはもう一度 /login にリダイレクトされます。
-    - `/logout` は、Cookie をクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
+    - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
+    - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
 - `app.js` の最後の部分に、上記の `/account` で使用される EnsureAuthenticated メソッドを追加します。
@@ -343,7 +340,7 @@ exports.list = function(req, res){
 
 これらは、要求 (存在する場合はユーザーも) をビューに渡すだけの単純なルートです。
 
-- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは login メソッドと logout メソッドを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在することを示します。
+- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは login メソッドと logout メソッドを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在していることの証拠です。
 
 ```JavaScript
 <% if (!user) { %>
@@ -356,7 +353,7 @@ exports.list = function(req, res){
 <% } %>
 ```
 
-- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` によってユーザー要求内に配置された追加情報を表示できるようにします。
+- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
 
 ```Javascript
 <% if (!user) { %>
@@ -417,8 +414,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
-[Secure a Web API with the v2.0 app model in node.js (Node.js の v2.0 アプリ モデルで Web App をセキュリティ保護する) >>](active-directory-v2-devquickstarts-webapi-nodejs.md)
+[v2.0 エンドポイントを使用して node.js web api をセキュリティ保護する >>](active-directory-v2-devquickstarts-node-api.md)
 
-その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。 - [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

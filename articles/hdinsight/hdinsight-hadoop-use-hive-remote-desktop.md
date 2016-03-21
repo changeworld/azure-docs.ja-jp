@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/09/2015"
+   ms.date="02/16/2016"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での Hive と Hadoop の使用
@@ -23,7 +23,7 @@
 
 この記事では、リモート デスクトップを使用して HDInsight クラスターに接続し、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを実行する方法について説明します。
 
-> [AZURE.NOTE]このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL については、「[HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
+> [AZURE.NOTE] このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。この例で使用される HiveQL については、「[HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -63,7 +63,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
-		> [AZURE.NOTE]基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+		> [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     	>
     	> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
@@ -85,7 +85,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
     * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
 
-		> [AZURE.NOTE]**EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
+		> [AZURE.NOTE] **EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
 
     * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
 
@@ -113,6 +113,11 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
+
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
+
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 
@@ -134,18 +139,14 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-[hdinsight-storage]: hdinsight-use-blob-storage.md
+
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-get-started.md
+
 
 [Powershell-install-configure]: ../powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

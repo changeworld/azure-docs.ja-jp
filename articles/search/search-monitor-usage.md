@@ -14,14 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required" 
-   ms.date="11/04/2015"
+   ms.date="02/04/2016"
    ms.author="heidist"/>
 
 # Azure Search サービスでの使用状況と統計の監視
 
 インデックスとドキュメントのサイズの増加率を追跡することで、サービスに設定した上限に達する前に、容量を事前に調整することができます。
 
-リソースの使用状況を監視するために、数値と統計を [Azure ポータル](https://portal.azure.com)で簡単に表示できます。カスタム サービス管理ツールを作成すれば、情報をプログラムから取得することもできます。この記事では、この両方の手法について手順を説明します。
+リソースの使用状況を監視するために、サービスの数値と統計を [Azure ポータル](https://portal.azure.com)で簡単に表示できます。カスタム サービス管理ツールを作成すれば、情報をプログラムから取得することもできます。この記事では、この両方の手法について手順を説明します。
+
+新しい検索トラフィック分析機能を使用して、インデックス レベルでアクティビティの詳細を把握することもできます。詳細については、「[Azure Search の検索トラフィックの分析](search-traffic-analytics.md)」を参照してください。
 
 ##ポータルでの数値とメトリックの表示 
 
@@ -39,7 +41,7 @@
 
 Azure Search REST API または .NET SDK を使用することにより、プログラムからサービス メトリックにアクセスできます。[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を使用して Azure SQL Database または DocumentDB からのインデックスの読み込む際には、必要な数値を取得するために追加されている API を使用できます。
 
-  + [Get Index Statistics](https://msdn.microsoft.com/library/azure/dn798942.aspx)
+  + [インデックス統計の取得](https://msdn.microsoft.com/library/azure/dn798942.aspx)
   + [ドキュメントの数](https://msdn.microsoft.com/library/azure/dn798924.aspx)
   + [インデクサーの状態の取得](https://msdn.microsoft.com/library/azure/dn946884.aspx)
 
@@ -57,4 +59,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

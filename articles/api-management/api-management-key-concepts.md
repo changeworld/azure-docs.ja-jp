@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -12,8 +12,8 @@
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/05/2015" 
+	ms.topic="hero-article" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 #API Management とは
@@ -26,7 +26,7 @@ API Management を使用するには、管理者が API を作成します。API
 
 このトピックでは、API Management の重要な概念を簡単に説明します。
 
->[AZURE.NOTE]詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーをご覧ください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
+>[AZURE.NOTE] 詳細については、[クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper)に関する PDF ホワイトペーパーをご覧ください。CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。
 >
 > - API の一般的な要件と課題
 >     - API の分離とファサードの提供
@@ -88,7 +88,7 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
 ## <a name="developer-portal"> </a> 開発者ポータル
 
-開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。開発者ポータルの URL は、API Management サービス インスタンスの Azure ポータルのダッシュボードに設置されます。
+開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。開発者ポータルの URL は、API Management サービス インスタンスの Azure クラシック ポータルのダッシュボードに配置されます。
 
 カスタム コンテンツを追加したり、スタイルをカスタマイズしたり、貴社のブランドを追加したりすることによって、開発者ポータルのルック アンド フィールをカスタマイズすることができます。
 
@@ -114,4 +114,4 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

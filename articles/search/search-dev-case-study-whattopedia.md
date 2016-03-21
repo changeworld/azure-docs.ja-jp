@@ -12,7 +12,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="search" 
-	ms.date="11/04/2015" 
+	ms.date="02/18/2016" 
 	ms.author="heidist"/>
 
 # Azure Search 開発者向けのケース スタディ
@@ -52,7 +52,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
  
 ### 高レベルのコンポーネント
 
-サイトだけでなく、ビジネスを構築しました。作業全体をサポートするには、広範なツールとアプリケーションを要しました。開発用に Visual Studio および Visual Studio Online、ソース管理とスクラム管理用に Team Foundation Service (TFS) Online、 通信とコラボレーション用に Office 365、そして当然ながら、サイトに関連するすべての操作とストレージ用に Microsoft Azure を採用しました。Visual Studio により、IDE は Azure への直接プロビジョニングを提供し、TFS Online への統合により、さらなる生産性向上を実現しました。
+サイトだけでなく、ビジネスを構築しました。作業全体をサポートするには、広範なツールとアプリケーションを要しました。開発用に Visual Studio および Visual Studio Team Services、ソース管理とスクラム管理用に Team Foundation Service (TFS) Online、 通信とコラボレーション用に Office 365、そして当然ながら、サイトに関連するすべての操作とストレージ用に Microsoft Azure を採用しました。Visual Studio により、IDE は Azure への直接プロビジョニングを提供し、TFS Online への統合により、さらなる生産性向上を実現しました。
 
 次の図は、WhatToPedia インフラストラクチャで使用される高レベルのコンポーネントを示しています。
 
@@ -62,12 +62,12 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 前の図の緑色のボックスは、WhatToPedia ソリューションが次のサービスに基づいて構築されていることを示しています。
 
-- [Azure Search](http://azure.microsoft.com/services/search/)
-- [MVC 4 を使用する Azure Websites ](http://azure.microsoft.com/services/websites/)
-- [スケジュールされたタスク用の Azure Web ジョブ](../websites-webjobs-resources.md)
-- [Azure SQL Database](http://azure.microsoft.com/services/sql-database/)
-- [Azure BLOB ストレージ](http://azure.microsoft.com/services/storage/)
-- [SendGrid 電子メール配信](http://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
+- [Azure Search](https://azure.microsoft.com/services/search/)
+- [MVC 4 を使用する Azure Websites ](https://azure.microsoft.com/services/websites/)
+- [スケジュールされたタスク用の Azure Web ジョブ](../app-service-web/websites-webjobs-resources.md)
+- [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/)
+- [SendGrid 電子メール配信](https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/)
 
 ソリューションの中核は、データと検索です。Reseller プロバイダーからエンドユーザーへのデータ フローを次に示します。
 
@@ -110,7 +110,7 @@ Azure Search はプロジェクトに大きな変革をもたらしました。A
 
 **Azure Search サービスの構成**
 
-1. Azure ポータルにログインし、サブスクリプションに Search サービスを追加しました。共有バージョン (サブスクリプションは無料) を使用しました。
+1. Azure クラシック ポータルにログインし、サブスクリプションに Search サービスを追加しました。共有バージョン (サブスクリプションは無料) を使用しました。
 2. インデックスを作成します。プロトタイプについて、ポータル UI を使用して検索フィールドを定義し、スコアリング プロファイルを作成しました。このスコアリング プロファイルは、場所のデータ: 国 | 市区町村 | 住所に基づいています (スコアリング プロファイルの追加に関するページを参照)。
 3. サービスの URL と管理者 API キーを構成ファイルにコピーします。このキーは、ポータルの Search サービス ページにあり、サービスに対する認証に使用されます。
 	
@@ -170,7 +170,7 @@ Azure Web ジョブを使用して、インデックスに対してデータを�
 
 ジョブは、スケジュール済みの Web タスクとして 5 分ごとに実行するようにスケジュールされます。計算によると、サービス タスクは 3 分間に約 3,000 のドキュメントをアップロードしますが、これは要件の範囲内でした。
 
-> [AZURE.NOTE]Azure Search には、最近導入されたプロトタイプ インデクサー機能があります。この機能は、最初のリリースで使用するには間に合いませんでしたが、データ読み込み操作を自動化するためのインデクサー ジョブを使用したのと同じ問題を解決すると考えられます。
+> [AZURE.NOTE] Azure Search には、最近導入されたプロトタイプ インデクサー機能があります。この機能は、最初のリリースで使用するには間に合いませんでしたが、データ読み込み操作を自動化するためのインデクサー ジョブを使用したのと同じ問題を解決すると考えられます。
 
 
 ###バックアップ戦略
@@ -179,7 +179,7 @@ Azure Web ジョブを使用して、インデックスに対してデータを�
 
 まず、TFS Online で Web サイトのソース コードを保持することにより、サイトがダウンした場合は TFS から再パブリッシュすることで再構築できることがわかっています。
 
-Azure SQL Database 内のサブスクライバー データは、最も重要な資産です。このデータは、組み込み機能を使用してバックアップします (「[Azure SQL Database のバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)」を参照)。バックアップ スケジュールは、週 1 回のデータベースの完全バックアップ、1 日 1 回のデータベースの差分バックアップ、および 5 分ごとのトランザクション ログ バックアップです。データのサイズを考えれば、このソリューションは、直接のデータ ボリュームおよびプロジェクションされたデータ ボリュームにとって十分です。
+Azure SQL Database 内のサブスクライバー データは、最も重要な資産です。このデータは、組み込み機能を使用してバックアップします (「[Azure SQL データベースのバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)」を参照)。バックアップ スケジュールは、週 1 回のデータベースの完全バックアップ、1 日 1 回のデータベースの差分バックアップ、および 5 分ごとのトランザクション ログ バックアップです。データのサイズを考えれば、このソリューションは、直接のデータ ボリュームおよびプロジェクションされたデータ ボリュームにとって十分です。
 
 3 つ目として、イメージおよびビデオ ファイルを Azure BLOB ストレージに格納します。このデータの最終的なバックアップ計画をまだ評価中であり、潜在的なソリューションとして Cloudberry Explorer for Azure を検討しています。ここでは、Web ジョブを使用してイメージやビデオを別の場所にコピーします。
 
@@ -193,7 +193,7 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 
 実装中の最大の課題は、プレビュー バージョンであるため、情報および共有エクスペリエンスを見つけるのが困難であった点です。全容の一端が明らかになると、REST API および JSON データ形式によって Azure Search サービスは使用がごく簡単であることがわかりました。JQuery JSON.Net などのほとんどのオープン ソース プラグインからフレームワークを直接呼び出すことがき、また、実験やデバッグを迅速に行うために Fiddler などのツールを使用できました。
 
-> [AZURE.NOTE]これにより、データを用意するだけでなく、プロトタイプの構築担当者はテクノロジがどのように動作するかを早期に理解できました。また、生産性が向上するとともに、組み込み機能の真価を享受することができました。検索クエリの構造、ファセット ナビゲーション、フィルターなどを強化する必要がある場合は、プロトタイピングに時間がかかることが予想されます。
+> [AZURE.NOTE] これにより、データを用意するだけでなく、プロトタイプの構築担当者はテクノロジがどのように動作するかを早期に理解できました。また、生産性が向上するとともに、組み込み機能の真価を享受することができました。検索クエリの構造、ファセット ナビゲーション、フィルターなどを強化する必要がある場合は、プロトタイピングに時間がかかることが予想されます。
 
 ###検索プレゼンテーション ページでのファセットの制御
 
@@ -203,7 +203,7 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 
 ###タスクのスケジュール設定用の Web ジョブ
 
-変革をもたらしたのは、Azure Search だけではありません。Web ジョブを使用して Azure Search へのデータ読み込み操作を自動化する方法は、私たちの以前のアプローチよりもはるかに優れたものでした。以前のアプローチでは、検索インデックスを更新するためにスケジュールされたタスクと共に、Windows スケジューラを実行する専用の VM を使用する必要がありました。Web ジョブは、構成とデバッグが簡単で、当然ながら専用の VM にかかる料金よりもはるかに安価でした。
+変革をもたらしたのは、Azure Search だけではありません。Web ジョブを使用して Azure Search へのデータ読み込み操作を自動化する方法は、私たちの以前のアプローチよりもはるかに優れたものでした。以前のアプローチでは、検索インデックスを更新するためにスケジュールされたタスクと共に、Windows Scheduler を実行する専用の VM を使用する必要がありました。Web ジョブは、構成とデバッグが簡単で、当然ながら専用の VM にかかる料金よりもはるかに安価でした。
 
 ###イメージを更新するための Azure BLOB ストレージ エクスプローラー
 
@@ -217,7 +217,7 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 
 - [Azure Search 専用の MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuresearch)
 - [StackOverflow にもタグが付けられています](http://stackoverflow.com/questions/tagged/azure-search)
-- [Azure.com のドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)
+- [Azure.com のドキュメント ページ](https://azure.microsoft.com/documentation/services/search/)
 - [MSDN の Azure Search ドキュメント](http://msdn.microsoft.com/library/azure/dn798933.aspx)
 
 
@@ -421,4 +421,4 @@ Azure SQL Database 内のサブスクライバー データは、最も重要な
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

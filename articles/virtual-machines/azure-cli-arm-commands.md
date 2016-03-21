@@ -1,7 +1,7 @@
 <properties
 	pageTitle="リソース マネージャーで Azure CLI を使用する | Microsoft Azure"
 	description="Azure リソース マネージャー モードで Mac、Linux、および Windows 用の Azure CLI を使用して Azure のリソースを管理する方法について説明します。"
-	services="virtual-machines,mobile-services,cloud-services"
+	services="virtual-machines,virtual-network,mobile-services,cloud-services"
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="11/18/2015"
 	ms.author="danlep"/>
 
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-command-line-tools.md)
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines/virtual-machines-command-line-tools.md).
 
-この記事では、Azure リソース マネージャー モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure プレビュー ポータルを使用しても同じタスクの多くを実行できます。
+この記事では、Azure リソース マネージャー モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure ポータルを使用しても同じタスクの多くを実行できます。
 
 Azure リソース マネージャーを使用することにより、リソースのグループ (仮想マシン、Web サイト、データベースなど) を 1 つのデプロイ可能なユニットとして作成できます。そうすることで、アプリケーションのすべてのリソースのデプロイ、更新、または削除が、1 回の連携した操作で実行できます。デプロイメント用 JSON テンプレートでグループ リソースについて説明して、このテンプレートをテスト、ステージング、運用環境などのさまざまな環境に使用することができます。
 
@@ -31,7 +31,7 @@ Azure リソース マネージャーを使用することにより、リソー�
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションやステータス コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。--json スイッチは非常によく使用されるもので、リソースの情報、状態、およびログを返す Azure CLI 操作の結果を取得したり理解したりする上で重要です。このスイッチでもテンプレートを使用します。**jq** や **jsawk** などの JSON パーサー ツールをインストールするか、好みの言語ライブラリを使用できます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。--json スイッチは非常によく使用されるもので、リソースの情報、状態、およびログを返す Azure CLI 操作の結果を取得したり理解したりする上で重要です。このスイッチでもテンプレートを使用します。**jq** や **jsawk** などの JSON パーサー ツールをインストールするか、好みの言語ライブラリを使用できます。
 
 ## 命令型のアプローチと宣言型のアプローチ
 
@@ -43,18 +43,18 @@ Azure リソース マネージャーを使用することにより、リソー�
 
 Azure CLI でリソース マネージャー モードを使用するためのセットアップ要件は次のとおりです。
 
-- Azure アカウント ([無料試用版はここから](http://azure.microsoft.com/pricing/free-trial/))
+- Azure アカウント ([無料試用版はここから](https://azure.microsoft.com/pricing/free-trial/))
 - [Azure CLI のインストール](../xplat-cli-install.md)
-- Azure Active Directory ID またはサービス プリンシパルを使用するための [Azure CLI の構成](../xplat-cli-connect.md)
+
 
 アカウントを用意して Azure CLI をインストールしたら、
 
+- 職場または学校のアカウント、あるいは Microsoft アカウント ID を使用するように [Azure CLI を構成します](../xplat-cli-connect.md)。
 - `azure config mode arm` を入力して、リソース マネージャー モードに切り替えます。
-- プロンプトで「`azure login`」と入力し、職場または学校の ID を使用して Azure アカウントにログインします。
 
 
-## Azure アカウント: アカウント情報および発行設定の管理
-Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
+## Azure アカウント: アカウント情報の管理
+Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。
 
 **インポートされたサブスクリプションを一覧表示します**
 
@@ -185,7 +185,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	group log show [options] [name]
 
-**リソース グループのデプロイを管理するコマンド**
+**リソース グループのデプロイメントを管理するコマンド**
 
 	group deployment create [options] [resource-group] [name]
 	group deployment list [options] <resource-group> [state]
@@ -198,6 +198,125 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	group template show [options] <name>
 	group template download [options] [name] [file]
 	group template validate [options] <resource-group>
+
+## Azure HDInsight: HDInsight クラスターを管理するコマンド
+
+**クラスターの構成ファイルを作成するコマンドまたはこのファイルに追加するコマンド**
+
+	hdinsight config create [options] <configFilePath> <overwrite>
+	hdinsight config add-config-values [options] <configFilePath>
+	hdinsight config add-script-action [options] <configFilePath>
+
+例: クラスターを作成するときに実行するスクリプト アクションを含む構成ファイルの作成
+
+	hdinsight config create "C:\myFiles\configFile.config"
+	hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
+
+**リソース グループにクラスターを作成するコマンド**
+
+	hdinsight cluster create [options] <clusterName>
+	 
+例: Linux クラスターでの Storm の作成
+
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
+	
+	info:    Executing command hdinsight cluster create
+	+ Submitting the request to create cluster...
+	info:    hdinsight cluster create command OK
+
+例: スクリプト アクションによるクラスターの作成
+
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
+	
+	info:    Executing command hdinsight cluster create
+	+ Submitting the request to create cluster...
+	info:    hdinsight cluster create command OK
+	
+パラメーターのオプション:
+
+	-h, --help                                                 output usage information
+	-v, --verbose                                              use verbose output
+	-vv                                                        more verbose with debug output
+	--json                                                     use json output
+	-g --resource-group <resource-group>                       The name of the resource group
+	-c, --clusterName <clusterName>                            HDInsight cluster name
+	-l, --location <location>                                  Data center location for the cluster
+	-y, --osType <osType>                                      HDInsight cluster operating system
+	'Windows' or 'Linux'
+	--version <version>                                        HDInsight cluster version
+	--clusterType <clusterType>                                HDInsight cluster type.
+	Hadoop | HBase | Spark | Storm
+	--defaultStorageAccountName <storageAccountName>           Storage account url to use for default HDInsight storage
+	--defaultStorageAccountKey <storageAccountKey>             Key to the storage account to use for default HDInsight storage
+	--defaultStorageContainer <storageContainer>               Container in the storage account to use for HDInsight default storage
+	--headNodeSize <headNodeSize>                              (Optional) Head node size for the cluster
+	--workerNodeCount <workerNodeCount>                        Number of worker nodes to use for the cluster
+	--workerNodeSize <workerNodeSize>                          (Optional) Worker node size for the cluster)
+	--zookeeperNodeSize <zookeeperNodeSize>                    (Optional) Zookeeper node size for the cluster
+	--userName <userName>                                      Cluster username
+	--password <password>                                      Cluster password
+	--sshUserName <sshUserName>                                SSH username (only for Linux clusters)
+	--sshPassword <sshPassword>                                SSH password (only for Linux clusters)
+	--sshPublicKey <sshPublicKey>                              SSH public key (only for Linux clusters)
+	--rdpUserName <rdpUserName>                                RDP username (only for Windows clusters)
+	--rdpPassword <rdpPassword>                                RDP password (only for Windows clusters)
+	--rdpAccessExpiry <rdpAccessExpiry>                        RDP access expiry.
+	For example 12/12/2015 (only for Windows clusters)
+	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster. 
+	Value is a GUID for Windows cluster and ARM resource ID for Linux cluster)
+	--subnetName <subnetName>                                  (Optional) Subnet for the cluster
+	--additionalStorageAccounts <additionalStorageAccounts>    (Optional) Additional storage accounts.
+	Can be multiple.
+	In the format of 'accountName#accountKey'.
+	For example, --additionalStorageAccounts "acc1#key1;acc2#key2"
+	--hiveMetastoreServerName <hiveMetastoreServerName>        (Optional) SQL Server name for the external metastore for Hive
+	--hiveMetastoreDatabaseName <hiveMetastoreDatabaseName>    (Optional) Database name for the external metastore for Hive
+	--hiveMetastoreUserName <hiveMetastoreUserName>            (Optional) Database username for the external metastore for Hive
+	--hiveMetastorePassword <hiveMetastorePassword>            (Optional) Database password for the external metastore for Hive
+	--oozieMetastoreServerName <oozieMetastoreServerName>      (Optional) SQL Server name for the external metastore for Oozie
+	--oozieMetastoreDatabaseName <oozieMetastoreDatabaseName>  (Optional) Database name for the external metastore for Oozie
+	--oozieMetastoreUserName <oozieMetastoreUserName>          (Optional) Database username for the external metastore for Oozie
+	--oozieMetastorePassword <oozieMetastorePassword>          (Optional) Database password for the external metastore for Oozie
+	--configurationPath <configurationPath>                    (Optional) HDInsight cluster configuration file path
+	-s, --subscription <id>                                    The subscription id
+	--tags <tags>                                              Tags to set to the cluster.
+	Can be multiple.
+	In the format of 'name=value'.
+	Name is required and value is optional.
+	For example, --tags tag1=value1;tag2
+
+
+**クラスターを削除するコマンド**
+
+	hdinsight cluster delete [options] <clusterName>
+
+**クラスターの詳細を表示するコマンド**
+
+	hdinsight cluster show [options] <clusterName>
+
+**すべてのクラスターを一覧表示するコマンド (指定されている場合は、特定のリソース グループ内)**
+
+	hdinsight cluster list [options]
+
+**クラスターのサイズを変更するコマンド**
+
+	hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
+
+**クラスターの HTTP アクセスを有効にするコマンド**
+
+	hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
+
+**クラスターの HTTP アクセスを無効にするコマンド**
+
+	hdinsight cluster disable-http-access [options] <clusterName>
+
+**クラスターの RDP アクセスを有効にするコマンド**
+
+	hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
+
+**クラスターの HTTP アクセスを無効にするコマンド**
+
+	hdinsight cluster disable-rdp-access [options] <clusterName>
 
 ## Azure Insights: Insights (イベント、アラート ルール、自動スケール設定、メトリック) の監視に関連するコマンド
 
@@ -1252,21 +1371,23 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 
 パラメーターのオプション:
-	-h、--help                                   利用状況情報の出力
-	-v、--verbose                                詳細出力を使用 --json JSON 出力の使用
-	-g、--resource-group <resource-group>        リソース グループ名
-	-n、--name <name>                            パブリック IP の名前
-	-l、--location <location>                    場所
-	-d、--domain-name-label <domain-name-label>  ドメイン名のラベル。
-	これにより、DNS が <domain-name-label>.<location>.cloudapp.azure.com に設定されます。
-	-a, --allocation-method <allocation-method> 割り当て方法 [静的][動的]
-	-i, --idletimeout <idletimeout>             アイドル タイムアウト (分)
-	-f, --reverse-fqdn <reverse-fqdn>           FQDN の反転
-	-t, --tags <tags>                           タグの一覧。
-	複数指定できます。"名前 = 値" の形式です。
-	名前は必須で、値は省略可能です。
-	たとえば、-t tag1=value1;tag2
-	-s, --subscription <subscription>           サブスクリプション識別子
+
+	-h, --help                                   output usage information
+	-v, --verbose                                use verbose output
+	--json                                       use json output
+	-g, --resource-group <resource-group>        the name of the resource group
+	-n, --name <name>                            the name of the public ip
+	-l, --location <location>                    the location
+	-d, --domain-name-label <domain-name-label>  the domain name label.
+	This set DNS to <domain-name-label>.<location>.cloudapp.azure.com
+	-a, --allocation-method <allocation-method>  the allocation method [Static][Dynamic]
+	-i, --idletimeout <idletimeout>              the idle timeout in minutes
+	-f, --reverse-fqdn <reverse-fqdn>            the reverse fqdn
+	-t, --tags <tags>                            the list of tags.
+	Can be multiple. In the format of "name=value".
+	Name is required and value is optional.
+	For example, -t tag1=value1;tag2
+	-s, --subscription <subscription>            the subscription identifier
 <br>
 
 	network public-ip set [options] <resource-group> <name>
@@ -1684,9 +1805,9 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>
 
-**リソース グループ内の仮想マシンを一覧表示します**
+**アカウント内の仮想マシンを一覧表示します**
 
-	vm list [options] <resource-group>
+	vm list [options]
 
 **リソース グループ内の仮想マシンを 1 つ取得します**
 
@@ -1728,7 +1849,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	vm get-instance-view [options] <resource-group> <name>
 
-**Virtual Machine 上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
+**仮想マシン上のリモート デスクトップ アクセスまたは SSH の設定をリセットし、管理者または sudo の権限を持つアカウントのパスワードをリセットできます**
 
 	vm reset-access [options] <resource-group> <name>
 
@@ -1758,4 +1879,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

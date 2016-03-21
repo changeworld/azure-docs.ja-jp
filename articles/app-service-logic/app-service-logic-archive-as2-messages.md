@@ -13,13 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="08/23/2015"
+   ms.date="02/18/2016"
    ms.author="rajram"/>
 
 
 # AS2 コネクタ メッセージのアーカイブの概要
 
-**AS2 コネクタ**は、メッセージをアーカイブする機能を公開します。アーカイブによって、パッケージ設定の一部である **Azure BLOB コンテナー**にメッセージが格納されます。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+[AS2 コネクタ](app-service-logic-connector-as2.md)は、メッセージをアーカイブする機能を公開します。アーカイブによって、パッケージ設定の一部である **Azure BLOB コンテナー**にメッセージが格納されます。
 
 アーカイブ機能は、次の 2 つの時点で、メッセージと受信確認 (MDN) の両方に公開されます。
 
@@ -39,4 +41,4 @@ AS2 コネクタの API アプリ インスタンスを参照して [追跡] を
 [1]: ./media/app-service-logic-archive-as2-messages/Tracking.jpg
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

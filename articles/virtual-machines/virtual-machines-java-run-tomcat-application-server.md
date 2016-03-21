@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"
+	editor=""
     tags="azure-service-management" />
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm"/>
 
 # クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
@@ -40,7 +40,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 
 ## 仮想マシンを作成するには
 
-1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。**[JDK 6 Windows Server 2012]** は、JDK 7 で実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
 4. **[次へ]** をクリックします。
@@ -63,7 +63,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 
 ## 仮想マシンにリモート ログインするには
 
-1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログオンします。
 2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. 仮想マシンが起動すると、接続を許可するポップアップ メニューがページ下部に表示されます。
@@ -89,7 +89,7 @@ Java アプリケーション サーバーを仮想マシンにコピーする�
 Tomcat が実行されていることを外部コンピューターから確認するには、エンドポイントを作成してポートを開く必要があります。
 
 ## 仮想マシンのエンドポイントを作成するには
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2. **[仮想マシン]** をクリックします。
 3. Java アプリケーション サーバーを実行している仮想マシンの名前をクリックします。
 4. **[エンドポイント]** をクリックします。
@@ -114,7 +114,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 9. **[プロファイル]** 画面で、**[ドメイン]**、**[プライベート]**、および **[パブリック]** の各チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。![新しい受信の規則のプロファイル][NewRuleProfile]
 10. **[名前]** 画面で、**HttpIn** などの規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。![新しい受信の規則の名前][NewRuleName]
 
-これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、**http://*your\_DNS\_name*.cloudapp.net**(***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を使用します。
+これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、****http://*your\_DNS\_name*.cloudapp.net**(***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を使用します。
 
 ## アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、**webapps** フォルダーに追加することもできます。たとえば、Java Service Page (JSP) で基本的な動的 Web プロジェクトを作成して WAR ファイルとしてエクスポートし、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーして、ブラウザーで実行することができます。
@@ -125,7 +125,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
     自動的に開始する設定の利点は、仮想マシンが再起動された場合 (再起動を伴うソフトウェア更新プログラムのインストール後など) に、Tomcat を開始できる点です。
 
 ## 次のステップ
-Java アプリケーションに含めることができる他のサービス (Azure Storage、Service Bus、SQL Database など) については、[Java デベロッパー センター](http://azure.microsoft.com/develop/java/)を参照してください。
+Java アプリケーションに含めることができる他のサービス (Azure Storage、Service Bus、SQL Database など) については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)を参照してください。
 
 [virtual_machine_tomcat]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -146,4 +146,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

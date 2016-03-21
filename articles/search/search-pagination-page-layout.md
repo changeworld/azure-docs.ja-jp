@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="heidist"/>
 
 #Azure Search でのページ検索結果の表示方法#
@@ -22,7 +22,7 @@
  
 以下に示すべての例において、データまたは情報を検索結果ページに表示するためのページ関連オプションは、Azure Search サービスに送信される[検索ドキュメント](http://msdn.microsoft.com/library/azure/dn798927.aspx)要求で指定します。要求には、GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。
 
-> [AZURE.NOTE]有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。要求構文の詳細については、「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」ドキュメントを参照してください。
+> [AZURE.NOTE] 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。要求構文の詳細については、「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」ドキュメントを参照してください。
 
 ## 合計ヒット数とページ数 ##
 
@@ -82,7 +82,7 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 
  ![][5]
  
-> [AZURE.NOTE]既定のスコアリングは多くのシナリオに使用可能ですが、カスタムのスコアリング プロファイルに基づいた関連性を使用することをお勧めします。カスタムのスコアリング プロファイルを使用すると、ユーザーのビジネスに有益な項目をブーストすることができます。詳細は、「[スコアリング プロファイルの追加](http://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
+> [AZURE.NOTE] 既定のスコアリングは多くのシナリオに使用可能ですが、カスタムのスコアリング プロファイルに基づいた関連性を使用することをお勧めします。カスタムのスコアリング プロファイルを使用すると、ユーザーのビジネスに有益な項目をブーストすることができます。詳細は、「[スコアリング プロファイルの追加](http://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
 
 ## ファセット ナビゲーション ##
 
@@ -114,4 +114,4 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

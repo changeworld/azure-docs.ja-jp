@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="NA"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="09/15/2015"
 	ms.author="donnam"/>
 
@@ -20,4 +20,4 @@
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

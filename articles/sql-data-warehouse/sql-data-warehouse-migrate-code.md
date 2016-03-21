@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への SQL コードの移行
 
@@ -34,8 +34,8 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次の�
 - OUTPUT 句
 - インライン ユーザー定義関数
 - 複数ステートメント関数
+- [共通テーブル式](#Common-table-expressions)
 - [再帰共通テーブル式 (CTE)](#Recursive-common-table-expressions-(CTE)
-- [CTE を介した更新](#Updates-through-CTEs)
 - CLR 関数およびプロシージャ
 - $partition 関数
 - テーブル変数
@@ -52,13 +52,16 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次の�
 
 幸運なことに、これらの制限の大部分は回避できます。上記の関連する開発記事に説明が記載されています。
 
+### 共通テーブル式
+SQL Data Warehouse 内の共通テーブル式 (CTE) の現在の実装には、次の機能と制限事項があります。
+
+**CTE 機能** CTE は SELECT ステートメントで指定できます。CTE は CREATE VIEW ステートメントで指定できます。CTE は CREATE TABLE AS SELECT (CTAS) ステートメントで指定できます。CTE は CREATE REMOTE TABLE AS SELECT (CRTAS) ステートメントで指定できます。CTE は CREATE EXTERNAL TABLE AS SELECT (CETAS) ステートメントで指定できます。リモート テーブルは CTE から参照できます。外部テーブルは CTE から参照できます。複数の CTE クエリ定義を CTE に定義できます。
+
+**CTE の制限事項** CTE の後ろには単一の SELECT ステートメントを続ける必要があります。INSERT、UPDATE、DELETE、および MERGE のステートメントはサポートされていません。それ自体への参照を含む共通テーブル式 (再帰共通テーブル式) はサポートされていません (下のセクションを参照)。複数の WITH 句を CTE に指定することはできません。たとえば、CTE\_query\_definition にサブクエリが含まれている場合、そのサブクエリには別の CTE を定義する入れ子になった WITH 句を含めることはできません。ORDER BY 句は、TOP 句が指定されている場合を除き、CTE\_query\_definition で使用することはできません。バッチの一部であるステートメントで CTE を使用すると、それより前のステートメントでは後ろにセミコロンが必要です。CTE が sp\_prepare で準備されているステートメントで使用されると、PDW の他の SELECT ステートメントと同じように動作します。ただし、CTE が sp\_prepare で準備される CETAS の一部として使用される場合、バインドを sp\_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp\_prepare はエラーを検出せずに渡されますが、代わりに sp\_execute でエラーがスローされます。
+
 ### 再帰共通テーブル式 (CTE)
 
-これは、応急処置のない複雑なシナリオです。CTE をいくつかの手順に分けて処理する必要があります。通常、再帰的な中間クエリの反復処理時に、一時テーブルに値を取り込むといった非常に複雑なループを使用できます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
-
-### CTE を介した更新
-
-CTE が非再帰的である場合、サブクエリを使用するようにクエリを書き換えることができます。再帰 CTE の場合、まず前に説明しているように、結果セットを作成してから、最終的な結果をターゲット テーブルに結合し、更新を実行する必要があります。
+これは複雑な移行シナリオで、CTE を分解したり、順番に処理したりする場合に最適です。通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
 ### システム関数
 
@@ -114,4 +117,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

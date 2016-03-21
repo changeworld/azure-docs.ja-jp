@@ -5,7 +5,7 @@
    documentationCenter="NA"
    authors="lodipalm"
    manager="barbkess"
-   editor="jrowlandjones"/>
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="11/04/2015"
-   ms.author="lodipalm;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのデータのロード
 SQL Data Warehouse には、データをロードするために以下のような多数のオプションが用意されています。
@@ -25,7 +25,7 @@ SQL Data Warehouse には、データをロードするために以下のよう�
 - SQL Server Integration Services (SSIS)
 - サード パーティ製のデータ ロード ツール
 
-SQL Data Warehouse では上記のすべてのメソッドを使用できますが、PolyBase が Azure BLOB ストレージからの読み込みを透過的に並列処理する機能を使用すると、データの読み込みが最速になります。[PolyBase を使用して読み込む][]方法を参照してください。また、ユーザーの多くがオンプレミス ソースから 100 GB 単位から 10 TB 単位の初期読み込みを要求した場合のように、以下のセクションでは、初期データ読み込みについていくつかのガイダンスを提供します。
+SQL Data Warehouse では上記のすべてのメソッドを使用できますが、PolyBase が Azure BLOB Storage からの読み込みを透過的に並列処理する機能を使用すると、データの読み込みが最速になります。[PolyBase を使用して読み込む][]方法を参照してください。また、ユーザーの多くがオンプレミス ソースから 100 GB 単位から 10 TB 単位の初期読み込みを要求した場合のように、以下のセクションでは、初期データ読み込みについていくつかのガイダンスを提供します。
 
 ## SQL Server から SQL Data Warehouse への初期ロード 
 オンプレミスの SQL Server インスタンスから SQL Data Warehouse にロードをするには、以下の手順をお勧めします。
@@ -37,17 +37,19 @@ SQL Data Warehouse では上記のすべてのメソッドを使用できます�
 
 次のセクションでは、各ステップをより詳しく説明し、処理の例を提供します。
 
-> [AZURE.NOTE]SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
+> [AZURE.NOTE] SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
 
 ## BCP によるファイルのエクスポート
 
 Azure へのファイルの移動の準備として、ファイルをフラット ファイルにエクスポートする必要があります。これには BCP コマンドライン ユーティリティを使用すると最適です。まだユーティリティがない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンド ライン ユーティリティ) からダウンロードできます。サンプルの BCP コマンドは、次のようになります。
 
 ```
-bcp "<Directory><File>" -c -T -S <Server Name> -d <Database Name>
+bcp "select top 10 * from <table>" queryout "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Query
+or
+bcp <table> out "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Table
 ```
 
-このコマンドは、クエリの結果を、指定したディレクトリのファイルにエクスポートします。複数の BCP コマンドを個別のテーブルごとに一度に実行して、並行処理できます。そのため、サーバーのコアごとに 1 つの BCP プロセスまで実行できますが、構成が違う場合には少し控えめの処理を試行して、自分の環境に最適な処理を確かめてください。
+スループットを最大化するために、個々のテーブルに対して、または 1 つのテーブル内の個々のパーティションに対して、BCP コマンドを複数同時に実行して、プロセスの並列化を試みることができます。これにより、BCP で使用される CPU を、BCP が実行されているサーバー内の複数のコアに分散できます。SQL DW または PDW システムから抽出する場合は、BCP コマンドに引数 -q (引用符で囲まれた識別子) を追加する必要があります。また、使用環境で Active Directory を使用していない場合は、-U と -P を追加してユーザー名とパスワードを指定する必要があります。
 
 さらに、PolyBase を使用してロードする際には、PolyBase が UTF-16 をまだサポートしておらず、すべてのファイルが UTF-8 でなければならないことに注意してください。これは、BCP コマンドで "-c" フラグを使用することで容易に解決し、また、フラット ファイルを下記のコードで UTF-16 から UTF-8 に変換することもできます。
 
@@ -58,11 +60,11 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 ファイルへのデータのエクスポートに成功したら、ファイルを Azure に移動します。これは、次のセクションで述べる AZCopy もしくは "インポート/エクスポート" サービスで実行可能です。
 
 ## AZCopy またはインポート/エクスポートを使用した Azure へのロード
-5 から 10 TB の範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
+5 から 10 テラバイトもの範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
 
 次のステップで、AZCopy を使って、オンプレミスから Azure ストレージ アカウントにデータを移動する方法を詳しく説明します。同じリージョンに Azure ストレージ アカウントがない場合、[Azure Storage のドキュメント][]に従ってアカウントを 1 つ作成できます。異なるリージョンのストレージ アカウントからもデータをロードできます。しかし、この場合は最適なパフォーマンスとなりません。
 
-> [AZURE.NOTE]本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
+> [AZURE.NOTE] 本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
 
 BCP を使って作成されたファイルのセットができたら、Azure powershell から、または、powershell スクリプトの実行により、AZCopy を簡単に実行できます。AZCopy を実行する際のプロンプトのおおよその形式は次のようになります。
 
@@ -110,7 +112,6 @@ WITH
     FORMAT_TYPE = DELIMITEDTEXT 
 ,   FORMAT_OPTIONS  (
                         FIELD_TERMINATOR ='|' 
-                    ,   USE_TYPE_DEFAULT = TRUE
                     )
 );
 
@@ -151,7 +152,8 @@ WITH
 CREATE TABLE <Table Name> 
 WITH 
 (
-	CLUSTERED COLUMNSTORE INDEX
+	CLUSTERED COLUMNSTORE INDEX,
+	DISTRIBUTION = <HASH(<Column Name>)>/<ROUND_ROBIN>
 )
 AS 
 SELECT  * 
@@ -180,8 +182,8 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 
 <!--Article references-->
 [Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: sql-data-warehouse-load-with-polybase.md
-[PolyBase を使用して読み込む]: sql-data-warehouse-load-with-polybase.md
+[PolyBase を使用したデータのロード]: sql-data-warehouse-get-started-load-with-polybase.md
+[PolyBase を使用して読み込む]: sql-data-warehouse-get-started-load-with-polybase.md
 [solution partners]: sql-data-warehouse-solution-partners.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [スキーマの移行]: sql-data-warehouse-migrate-schema.md
@@ -201,4 +203,4 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

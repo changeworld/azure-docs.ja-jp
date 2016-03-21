@@ -1,11 +1,11 @@
 <properties
-   pageTitle="Azure Active Directory を使ったアプリケーションの管理 | Microsoft Azure"
-   description="この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="ihenkel"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="Azure Active Directory を使ったアプリケーションの管理 | Microsoft Azure"
+    description="この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="stevenpo"
+    editor=""/>
 
    <tags
       ms.service="active-directory"
@@ -13,12 +13,10 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="10/16/2015"
-      ms.author="inhenk"/>
+      ms.date="02/16/2016"
+      ms.author="markvi"/>
 
-# Azure Active Directory (AD) を使ったアプリケーションの管理
-
-## 概要
+# Azure Active Directory でのアプリケーションの管理
 
 企業には、実際のワークフローやコンテンツへの対応以外に、すべてのアプリケーションに関して 2 つの基本的な要件があります。
 
@@ -30,7 +28,7 @@
 
 コンピューティングの用語では次のように説明できます。
 
-- *だれ*は、*ID* と呼ばれ、具体的にはユーザーとグループで構成されるデータ ストアです。
+- *だれ*は、*ID* と呼ばれ、具体的にはユーザーとグループの管理です。
 
 - *何*は、*アクセス管理*と呼ばれ、具体的には保護対象のリソースへのアクセス管理です。
 
@@ -40,7 +38,7 @@
 
 - ID 管理者は、すべてのアプリケーションのそれぞれでユーザー アカウントを個別に作成して更新する必要があります。この作業は重複していて時間がかかります。
 
-- ユーザーは、特にセキュリティ上の理由からすべてのアプリケーションに同じパスワードを使用しないように推奨されているため、使用する必要があるアプリケーションにアクセスするには複数の資格情報を記憶する必要があります。その結果、ユーザーは自分のパスワードをメモしたり、他のパスワード管理のソリューションを使用したりすることになり、別のデータ セキュリティ リスクが生じる傾向があります。
+- ユーザーは、使用する必要があるアプリケーションにアクセスするため、複数の資格情報を記憶する必要があります。その結果、ユーザーは自分のパスワードをメモしたり、他のパスワード管理のソリューションを使用したりすることになり、別のデータ セキュリティ リスクが生じる傾向があります。
 
 - 重複していて時間のかかる作業のせいで、ユーザーや管理者が会社の収益を拡大するビジネス アクティビティに携わる時間が減ることになります。
 
@@ -52,15 +50,24 @@
 
 - セキュリティと監視のツールでは、包括的なエンド ツー エンド シナリオを実現するために、追加のカスタマイズと統合が必要になります。
 
-## アプリケーションと統合される Azure Active Directory (AD)
+## アプリケーションと統合される Azure Active Directory
 
-Azure Active Directory (AD) は、Microsoft の包括的な Identity as a Service (IDaaS) ソリューションであり、クラウド サービスとしての IAM の実現、組み込みのアクセス管理、シングル サインオン (SSO)、Salesforce、Google Apps、Box、Concur などの[何千ものアプリケーションと事前に統合された](https://azure.microsoft.com/marketplace/active-directory/)レポート機能を提供します。Azure AD を使用すると、パートナーと顧客 (ビジネスまたはコンシューマー) 向けに発行したアプリケーションに同じ ID およびアクセス管理の機能が備わるため、ユーザーや管理者は主要なビジネスのみに集中できます。
+Azure Active Directory は、マイクロソフトの包括的なサービスとしての ID (IDaaS) ソリューションであり、次のような特色があります。
 
-Azure AD の価値は、"ただの" クラウド アプリケーションの価値をはるかに凌ぐものです。セキュリティで保護されたリモート アクセスを提供することで、VPN などの従来のリモート アクセス管理システムを使用せずに、オンプレミスのアプリケーションと併用することもできます。
+- クラウド サービスとして IAM を有効化 
+
+- 一元的なアクセス管理、シングル サインオン (SSO)、およびレポート機能を提供
+
+- Salesforce、Google Apps、Box、Concur などのアプリケーション ギャラリーの[数千のアプリケーション](https://azure.microsoft.com/marketplace/active-directory/)に対する統合アクセス管理のサポート
+
+
+Azure Active Directory を使用すると、パートナーと顧客 (ビジネスまたはコンシューマー) 向けに発行したすべてのアプリケーションに同じ ID およびアクセス管理の機能が備わります。<br> これにより、運用コストを大幅に減らすことができます。
 
 アプリケーション ギャラリーにまだ一覧表示されていないアプリケーションの実装が必要な場合はどうなるでしょうか。 これにはアプリケーション ギャラリーのアプリケーションに SSO を構成する場合よりも少し時間がかかりますが、簡単に構成するためのウィザードが Azure AD に用意されています。
 
-Azure AD は、すべてのアプリケーションにアクセスの一元管理とシングル サインオン (SSO) を提供することで、データ セキュリティと生産性の問題に解決策を提供しています。
+Azure AD の価値は、"ただの" クラウド アプリケーションの価値をはるかに凌ぐものです。セキュリティで保護されたリモート アクセスを提供することで、オンプレミス アプリケーションで使用することもできます。セキュリティで保護されたリモート アクセスを使用すると、VPN やその他の従来のリモート アクセス管理の実装が不要になります。
+
+Azure AD は、すべてのアプリケーションにアクセスの一元管理とシングル サインオン (SSO) を提供することで、主要データ セキュリティと生産性の問題に解決策を提供しています。
 
 - ユーザーは、1 回のサインオンで複数のアプリケーションにアクセスできるため、収入を増やすアクティビティやビジネスの運営に多くの時間を費やすことができます。
 
@@ -124,4 +131,8 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 アプリケーションを Azure AD と統合して使用を開始するには、[Azure Active Directory とアプリケーションの統合を開始するためのガイド](active-directory-integrating-applications-getting-started.md)を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+## 関連項目
+
+[Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+<!---HONumber=AcomDC_0218_2016-->

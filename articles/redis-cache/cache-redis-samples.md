@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/25/2015" 
+	ms.date="12/17/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のサンプル 
@@ -35,6 +35,7 @@
 -	Redis リストと並べ替えられたセットを使用する
 -	JsonConvert シリアライザーを使用し、.NET オブジェクトを保存する
 -	Redis セットを使用し、タグ付けを実装する
+-	Redis クラスターの操作
 
 詳細については、github の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」文書を参照してください。他の用途シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
 
@@ -65,7 +66,7 @@
 
 ## カスタム監視のサンプル
 
-「[Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)」サンプルは、Azure プレビュー ポータルの外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
+「[Redis Cache の監視データへのアクセス](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)」サンプルは、Azure ポータルの外部から Azure Redis Cache の監視データにアクセスする方法を示しています。
 
 ## PHP と Redis を使用して記述された Twitter 形式の複製
 
@@ -75,4 +76,4 @@
 
 「[帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)」サンプルでは、クライアントで使用されている帯域幅を監視できます。帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

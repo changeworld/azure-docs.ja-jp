@@ -21,17 +21,17 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](azure-cli-arm-commands.md)。
 
-この記事では、サービス管理モード (asm モード) で Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure ポータルを使用しても同じタスクの多くを実行できます。サービス管理モードで Azure サービスを使用する場合であっても、Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスを作成および管理する場合と概念上はほぼ変わりません。
+この記事では、サービス管理モード (asm モード) で Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure クラシック ポータルを使用しても同じタスクの多くを実行できます。サービス管理モードで Azure サービスを使用する場合であっても、Websites、Virtual Machines、Virtual Networks、Storage など、個々の Azure の概念やサービスを作成および管理する場合と概念上はほぼ変わりません。
 
-> [AZURE.NOTE]開始するには、まず [Azure CLI をインストール](../xplat-cli-install.md)し、[アカウントに関連付けられている使用する Azure のリソースにログオン](../xplat-cli-connect.md)します。
+> [AZURE.NOTE]開始するには、まず [Azure CLI をインストール](../xplat-cli-install.md)して、[ログオンし、アカウントに関連付けられている Azure のリソースを使用](../xplat-cli-connect.md)します。
 
 ## 記事の適用範囲
 
-この記事では、クラシック (サービス管理) デプロイメント モデルで一般的に使用されている Azure CLI コマンドの構文とオプションについて触れています。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。サービス管理モードのコマンド ラインでの現在のコマンド構文とオプションを確認するには、「`azure help`」と入力します。特定のコマンドのヘルプを表示するには、「`azure help [command]`」と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
+この記事では、クラシック (サービス管理) デプロイメント モデルで一般的に使用されている Azure CLI コマンドの構文とオプションについて触れています。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。サービス管理モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションやステータス コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。
 
 ## サービス管理モードの設定
 
@@ -42,11 +42,11 @@
 >[AZURE.NOTE]Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
 ## アカウント情報および発行設定の管理
-Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
+Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
 **account download [options]**
 
-このコマンドは、ブラウザーを起動して、Azure ポータルから .publishsettings ファイルをダウンロードします。
+このコマンドは、ブラウザーを起動して、Azure クラシック ポータルから .publishsettings ファイルをダウンロードします。
 
 	~$ azure account download
 	info:   Executing command account download
@@ -192,13 +192,13 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ![Azure の技術解説図](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
-**create-new** BLOB ストレージ (この図では e:) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
+**create-new** BLOB ストレージ (この図では e:\\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
 このコマンドは、新しい Azure の仮想マシンを作成します。既定では、各仮想マシン (vm) はそれぞれのクラウド サービス上に作成されます。ただし、ここで説明しているように -c オプションを使用すると、仮想マシンが既存のクラウド サービスに追加されるように指定できます。
 
-vm create コマンドは、Azure ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
+vm create コマンドは、Azure クラシック ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
 --location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
 
@@ -210,7 +210,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 このコマンドでは、次のオプション パラメーターがサポートされています。
 
-**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
+**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure クラシック ポータルから設定および管理できます。<br /> **-b, --subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
 この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-JP-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
@@ -2240,9 +2240,9 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Removing firewall rule
 	info:    sql firewallrule delete command OK
 
-## Virtual Network の管理用コマンド
+## 仮想ネットワークの管理用コマンド
 
-これらのコマンドを使用して、Virtual Network を管理します。
+これらのコマンドを使用して、仮想ネットワークを管理します。
 
 **network vnet create [options] &lt;location>**
 
@@ -2283,7 +2283,7 @@ Virtual Network の詳細を表示します。
 
 **vnet list**
 
-既存のすべての Virtual Network の一覧を表示します。
+既存のすべての仮想ネットワークの一覧を表示します。
 
 	~$ azure network vnet list
 	info:    Executing command network vnet list
@@ -2350,4 +2350,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

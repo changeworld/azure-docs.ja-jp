@@ -1,30 +1,29 @@
 1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
 	
         private MobileServiceUser user;
-        private async System.Threading.Tasks.Task Authenticate()
+        private async Task Authenticate()
         {
             while (user == null)
             {
                 string message;
                 try
                 {
-                    user = await App.MobileService
-                        .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
-                    message =
-                        string.Format("You are now logged in - {0}", user.UserId);
+                    user = await App.MobileServiceDotNetClient.LoginAsync(MobileServiceAuthenticationProvider.Twitter);
+                    message = string.Format("You are now logged in - {0}", user.UserId);
                 }
                 catch (InvalidOperationException)
                 {
                     message = "You must log in. Login Required";
                 }
 
-                MessageBox.Show(message);
+                var dialog = new MessageDialog(message);
+                await dialog.ShowAsync();
             }
         }
 
-    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。
+    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Twitter ログインを使用して認証されます。
 
-    >[AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>MobileServiceAuthenticationProvider</strong> の値をプロバイダーに対応する値に変更してください。</p> </div>
+    >[AZURE.NOTE]Twitter 以外の ID プロバイダーを使用している場合は、上記の <strong>MobileServiceAuthenticationProvider</strong> の値を実際のプロバイダーに対応する値に変更してください。</p></div>
 
 2. 既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。
 
@@ -51,4 +50,4 @@
 
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

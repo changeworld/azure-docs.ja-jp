@@ -1,6 +1,6 @@
 <properties
    pageTitle="ロール割り当て用のリソース マネージャー テンプレート | Microsoft Azure"
-   description="デプロイ時にロールの割り当てを作成するためのリソース マネージャーのスキーマを示しています。"
+   description="テンプレートを使ってロールの割り当てをデプロイするためのリソース マネージャー スキーマを示します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/10/2015"
+   ms.date="01/04/2016"
    ms.author="tomfitz"/>
 
-# ロールの割り当て: テンプレート スキーマ
+# ロールの割り当てテンプレート スキーマ
 
 ロールに指定したスコープで、ユーザー、グループ、またはサービス プリンシパルを割り当てます。
 
@@ -43,22 +43,22 @@
 
 | 名前 | 型 | 必須 | 使用できる値 | 説明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| type | enum | あり | **Microsoft.Authorization/roleAssignments** | 作成するリソースの種類。 |
-| apiVersion | enum | あり | **2015-07-01** | リソースの作成に使用する API バージョン。 |  
-| name | string | あり | グローバル一意識別子 | 新しいロールの割り当て用の識別子。 |
+| type | enum | はい | **Microsoft.Authorization/roleAssignments** | 作成するリソースの種類。 |
+| apiVersion | enum | はい | **2015-07-01** | リソースの作成に使用する API バージョン。 |  
+| name | string | はい | グローバル一意識別子 | 新しいロールの割り当て用の識別子。 |
 | dependsOn | array | いいえ | リソース名またはリソースの一意識別子のコンマ区切りリスト。 | このロールの割り当てが依存するリソースのコレクション。あるリソースに範囲指定されたロールを割り当てるとき、そのリソースが同じテンプレートにデプロイされている場合は、そのリソースが最初にデプロイされるように、この要素にそのリソース名を含めます。 | 
-| プロパティ | オブジェクト | あり | (下記参照) | ロール定義、プリンシパルおよびスコープを識別するオブジェクト。 |  
+| properties | オブジェクト | はい | (下記参照) | ロール定義、プリンシパルおよびスコープを識別するオブジェクト。 |  
 
 ### プロパティ オブジェクト
 
 | 名前 | 型 | 必須 | 使用できる値 | 説明 |
 | ------- | ---- | ---------------- | -------- | ----------- |
-| roleDefinitionId | 文字列 | あり | **/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}** | ロールの割り当てで使用する既存のロール定義識別子。 |
-| principalId | 文字列 | あり | グローバル一意識別子 | 既存のプリンシパルの識別子。これは、ディレクトリ内の ID にマップされ、ユーザー、サービス プリンシパルまたはセキュリティ グループを指すことができます。 |
-| scope | 文字列 | あり | リソース グループの場合:<br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}**<br /><br />For resource:<br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}** | このロールが割り当てられるスコープ。 |
+| roleDefinitionId | string | はい | **/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}** | ロールの割り当てで使用する既存のロール定義識別子。 |
+| principalId | string | はい | グローバル一意識別子 | 既存のプリンシパルの識別子。これは、ディレクトリ内の ID にマップされ、ユーザー、サービス プリンシパルまたはセキュリティ グループを指すことができます。 |
+| scope | string | はい | リソース グループの場合:<br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}**<br /><br />For resource:<br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}** | このロールが割り当てられるスコープ。 |
 
 
-## ロック リソースの使用方法
+## ロールの割り当てリソースを使用する方法
 
 デプロイ時にロールに、ユーザー、グループ、またはサービス プリンシパルを追加する必要がある場合に、テンプレートにロール割り当てを追加します。ロール割り当ては上位レベルのスコープから継承されるので、サブスクリプション レベルで既にロールにプリンシパルを追加している場合は、そのリソース グループまたはリソースには再割り当てする必要はありません。
 
@@ -119,10 +119,17 @@
         "outputs": {}
     }
 
+## クイック スタート テンプレート
+
+次のテンプレートでは、ロールの割り当てリソースを使用する方法を紹介しています。
+
+- [組み込みロールをリソース グループに割り当てる](https://github.com/Azure/azure-quickstart-templates/tree/master/101-rbac-builtinrole-resourcegroup)
+- [組み込みロールを既存の VM に割り当てる](https://github.com/Azure/azure-quickstart-templates/tree/master/101-rbac-builtinrole-virtualmachine)
+- [既存の複数の VM に組み込みロールを割り当てる](https://github.com/Azure/azure-quickstart-templates/tree/master/201-rbac-builtinrole-multipleVMs)
 
 ## 次のステップ
 
 - テンプレートの構造の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- ロールベースのアクセス制御の詳細については、「[Azure Active Directory のロール ベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
+- ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

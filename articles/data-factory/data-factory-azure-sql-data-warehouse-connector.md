@@ -13,12 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/29/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動
 
-この記事では、Data Factory のコピー アクティビティを利用し、Azure SQL Data Warehouse と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure SQL Data Warehouse と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、コピー アクティビティによるデータ移動の一般概要のほか、SQL Data Warehouse でサポートされるデータ ソースとシンクについて紹介している「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づいています。
+
+次のサンプルは、Azure SQL Data Warehouse と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、「[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)」で説明されているシンクのいずれかに、任意のソースからデータを**直接**コピーすることができます。
+
+> [AZURE.NOTE] 
+Azure Data Factory の概要については、「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
+> 
+> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
+
 
 ## サンプル: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
 
@@ -193,7 +201,7 @@
 	   }
 	}
 
-> [AZURE.NOTE]上記の例では、SqlDWSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Data Warehouse ソースに対してこのクエリを実行します。
+> [AZURE.NOTE] 上記の例では、SqlDWSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Data Warehouse ソースに対してこのクエリを実行します。
 >  
 > または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 >  
@@ -486,29 +494,29 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
-| ビット | Boolean |
+| bit | Boolean |
 | char | String、Char |
 | date | DateTime |
 | Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| 小数点 | 小数点 |
+| Decimal | Decimal |
 | FILESTREAM 属性 (varbinary(max)) | Byte |
 | Float | Double |
 | image | Byte | 
 | int | Int32 | 
-| money | 小数点 |
+| money | Decimal |
 | nchar | String、Char |
 | ntext | String、Char |
-| 数値 | 小数点 |
+| numeric | Decimal |
 | nvarchar | String、Char |
 | real | Single |
 | rowversion | Byte |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | 小数点 | 
+| smallmoney | Decimal | 
 | sql\_variant | Object * |
-| テキスト | String、Char |
+| text | String、Char |
 | time | TimeSpan |
 | timestamp | Byte |
 | tinyint | Byte |
@@ -523,4 +531,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

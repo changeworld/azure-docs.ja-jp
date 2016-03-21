@@ -4,7 +4,7 @@
 	services="app-service\logic"
 	documentationCenter=""
 	authors="MandiOhlinger"
-	manager="dwrede"
+	manager="erikre"
 	editor="cgronlun"/>
 
 <tags
@@ -12,17 +12,19 @@
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.topic="get-started-article"
+	ms.date="02/11/2016"
 	ms.author="mandia"/>
 
 
 # Logic Apps で使用するコネクタと API Apps の一覧
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [API 一覧](../connectors/apis-list.md)をクリックしてください。
+
 このトピックでは、マイクロソフトによって作成された、Logic Apps 内で使用できるすべてのコネクタと API Apps を示します。
 
-料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](http://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
+料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
-> [AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## コアのコネクタ
 次の表に、コアのコネクタとして使用できる、マイクロソフトによって作成された使用可能なすべてのコネクタと API Apps を示します。
@@ -32,8 +34,7 @@
 [Azure HDInsight](app-service-logic-connector-hdinsight.md) | Azure で Hadoop クラスターを作成し、別の Hadoop ジョブを送信するには、このコネクタを使用します。
 [Azure の Service Bus](app-service-logic-connector-azureservicebus.md) | Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。
 [Azure Storage Blob](app-service-logic-connector-azurestorageblob.md) | BLOB ストレージに接続して、BLOB の取得、削除、一覧の取得などを実行できます。 
-Bing 検索 | Web、イメージ、ニュース、ビデオを対象に Bing 検索します。
-Bing 翻訳 | Bing を使用して、テキストを別の言語に翻訳します。
+[Bing 翻訳ツール](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Bing を使用して、テキストを別の言語に翻訳します。
 [Box](app-service-logic-connector-box.md) | Box に接続して、ファイルのアップロード、取得、削除、一覧の取得や、その他のファイル タスクを実行できます。
 [Chatter](app-service-logic-connector-chatter.md) | Chatter に接続して、メッセージの投稿と検索を実行できます。新しいメッセージを取得することもできます。
 [Dropbox](app-service-logic-connector-dropbox.md) | Dropbox に接続して、ファイルの取得、削除、一覧の取得や、その他のファイル タスクを実行できます。
@@ -67,10 +68,10 @@ Bing 翻訳 | Bing を使用して、テキストを別の言語に翻訳しま�
 [BizTalk X12](app-service-logic-connector-x12.md) | 企業間通信で X12 プロトコルを使用して、メッセージを送受信します。
 [BizTalk XML Validator](app-service-logic-xml-validator.md) | 定義済みの XML スキーマを基準として XML データを検証します。既存のスキーマを使用することも、フラット ファイルのインスタンス、JSON のインスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
 [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | 選択した XPath に基づいて XML コンテンツを検索し、データを抽出します。
-DB2 コネクタ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
+[DB2 コネクタ](app-service-logic-connector-db2.md) | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 [ファイル](app-service-logic-connector-file.md) | このコネクタを使用すると、オンプレミスのファイル システムやネットワークに接続して、ファイルのアップロード、削除、一覧の取得などのさまざまなファイル タスクを実行できます。
 [FTP<br/>FTPS](app-service-logic-connector-ftp.md) | FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などのさまざまな FTP タスクを実行できます。
-Informix | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
+[Informix](app-service-logic-connector-informix.md) | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 [Microsoft SQL Server](app-service-logic-connector-sql.md) | オンプレミスの SQL Server または Azure SQL Database に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除できます。
 MQ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM WebSphere MQ Server Version 8 に接続します。オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。コネクタには、Microsoft Client for MQ も含まれています。<br/><br/>トリガーはありません。アクションはありません。<br/><br/>**注** 現在のところ、Logic Apps で使用することはできません。
 [Oracle Database](app-service-logic-connector-oracle.md) | オンプレミスの Oracle Database に接続して、データベース テーブルのエントリを作成、更新、取得、削除できます。
@@ -94,4 +95,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

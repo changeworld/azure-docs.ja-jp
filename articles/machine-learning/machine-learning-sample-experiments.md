@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="09/28/2015"
+    ms.date="02/01/2016"
     ms.author="chhavib;olgali"/>
 
 # サンプル実験を使用した新しい実験の作成
@@ -24,19 +24,23 @@
 ## Cortana Analytics ギャラリーを参照する
 1. [ギャラリー](http://gallery.azureml.net/)にアクセスします。
 2. **[Trending experiments]** または **[Microsoft sample experiments]** に移動して参照します。
-3. 結果を絞り込むには、次のように検索とフィルターを使用します。![](./media/machine-learning-sample-experiments/image1.png) 
-4. 実験をクリックして詳細を表示します。実験を実行、変更するには、**[Open in Studio]** をクリックします。![](./media/machine-learning-sample-experiments/image2.png) 
-5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認](http://azure.microsoft.com/pricing/details/machine-learning/) ![](./media/machine-learning-sample-experiments/image3.png) 
+3. 結果を絞り込むには、次のように検索とフィルターを使用します。
+![](./media/machine-learning-sample-experiments/image1.png) 
+4. 実験をクリックして詳細を表示します。実験を実行、変更するには、**[Open in Studio]** をクリックします。
+![](./media/machine-learning-sample-experiments/image2.png) 
+5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認]( https://azure.microsoft.com/pricing/details/machine-learning/)
+
+![](./media/machine-learning-sample-experiments/image3.png) 
 
 ## Studio でテンプレートとして使用する
 1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net) にサインインしたら、**[新規]*** をクリックして新しい実験を作成します。
 2. サンプルのコンテンツを参照し、テンプレートとして使用するものを 1 つ選択します。
 
 ## 次のステップ
-- [データを準備する](machine-learning-import-data.md)
+- [データを準備する](machine-learning-data-science-import-data.md)
 - [実験で R の使用を試す](machine-learning-r-quickstart.md)
 - [サンプルの R 実験を確認する](machine-learning-r-csharp-web-service-examples.md)
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0204_2016-->

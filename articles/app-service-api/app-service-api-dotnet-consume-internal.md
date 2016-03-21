@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/30/2015" 
+	ms.date="01/08/2016" 
 	ms.author="bradyg"/>
 
 # .NET クライアントからの Azure App Service での内部 API アプリの使用 
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -265,4 +267,4 @@ App Service SDK は、Swagger API の定義を利用してクライアント ク
 App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

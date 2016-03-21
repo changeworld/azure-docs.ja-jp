@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="09/22/2015"
+	ms.date="01/04/2016"
 	ms.author="rasquill"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
@@ -24,14 +24,9 @@
 
 このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI から Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
-+ [Azure で Docker VM 拡張機能を使用する方法]
-+ [Linux および Windows 向けの仮想マシン拡張機能]
-+ [Azure 向けのコンテナーおよびコンテナー管理リソース]
-+ [次のステップ]
 
 ##Azure で Docker VM 拡張機能を使用する方法
 Azure で Docker VM 拡張機能を使用するには、バージョン 0.8.6 以降の [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) をインストールする必要があります (この記事の執筆時点で最新バージョンは 0.8.10 です)。Azure CLI は Mac、Linux、Windows のいずれにもインストールできます。
-
 
 
 Azure 上で Docker を使用するためのプロセスはシンプルです。
@@ -67,10 +62,10 @@ bash またはターミナル セッションから、次の Azure CLI コマン
 
 `azure vm image list | grep Ubuntu-14_04`
 
-`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-JA-JP-30GB` など、イメージ名のいずれかを選び、次のコマンドを入力して、そのイメージを使用した新しい VM を作成します。
+`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-ja-JP-30GB` など、イメージ名のいずれかを選び、次のコマンドを入力して、そのイメージを使用した新しい VM を作成します。
 
 ```
-azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-JA-JP-30GB" <username> <password>
+azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-ja-JP-30GB" <username> <password>
 ```
 
 各値の説明:
@@ -160,16 +155,12 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Subheading 1]: #subheading-1
 [Subheading 2]: #subheading-2
 [Subheading 3]: #subheading-3
-[次のステップ]: #next-steps
+[Next steps]: #next-steps
 
-[Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
-[Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
-[Azure 向けのコンテナーおよびコンテナー管理リソース]: #Container-and-Container-Management-Resources-for-Azure
+[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+[Container and Container Management Resources for Azure]: #Container-and-Container-Management-Resources-for-Azure
 
-<!--Image references-->
-[5]: ./media/markdown-template-for-new-articles/octocats.png
-[6]: ./media/markdown-template-for-new-articles/pretty49.png
-[7]: ./media/markdown-template-for-new-articles/channel-9.png
 
 
 <!--Link references-->
@@ -181,4 +172,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

@@ -1,20 +1,20 @@
 <properties
-   pageTitle="チュートリアル: Azure Active Directory と NetSuite の統合 | Microsoft Azure"
-   description="Azure Active Directory で NetSuite を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="liviodlc"
-   manager="TerryLanfear"
-   editor=""/>
+    pageTitle="チュートリアル: Azure Active Directory と NetSuite の統合 | Microsoft Azure"
+    description="Azure Active Directory で NetSuite を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="liviodlc"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="10/20/2015"
-   ms.author="liviodlc"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="02/09/2016"
+    ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と NetSuite を統合する方法
 
@@ -22,13 +22,13 @@
 
 ##前提条件
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
 
 2. [NetSuite](http://www.netsuite.com/portal/home.shtml) サブスクリプションに対する管理者アクセス権が必要です。どちらのサービスにも無料試用版のアカウントを使用できます。
 
 ##手順 1. NetSuite をディレクトリに追加する
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Select Active Directory from the left navigation pane.][0]
 
@@ -64,7 +64,7 @@
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 3. **[アプリケーション設定の構成]** ページで、**[応答 URL]** フィールドに、NetSuite のテナントの URL を次のいずれかの形式を使用して入力します。
 	- `https://<tenant-name>.netsuite.com/saml2/acs`
@@ -186,7 +186,7 @@
 
 ##手順 3. 自動化されたユーザー プロビジョニングを有効にする
 
-> [AZURE.NOTE]既定では、プロビジョニングされたユーザーは NetSuite 環境のルートの下位項目に追加されます。
+> [AZURE.NOTE] 既定では、プロビジョニングされたユーザーは NetSuite 環境のルートの下位項目に追加されます。
 
 1. Azure Active Directory の NetSuite の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
 
@@ -220,7 +220,10 @@
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインし、**[NetSuite]** をクリックします。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
 [0]: ./media/active-directory-saas-netsuite-tutorial/azure-active-directory.png
 [1]: ./media/active-directory-saas-netsuite-tutorial/applications-tab.png
@@ -256,4 +259,4 @@
 [31]: ./media/active-directory-saas-netsuite-tutorial/assign-users.png
 [32]: ./media/active-directory-saas-netsuite-tutorial/assign-confirm.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

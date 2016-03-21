@@ -13,14 +13,14 @@
     ms.topic="article" 
     ms.tgt_pltfrm="NA" 
     ms.workload="data-services" 
-    ms.date="10/28/2015" 
+    ms.date="02/01/2016" 
     ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
 
 DocumentDB データの優れた検索機能を実装する場合は、DocumentDB の Azure Search インデクサーをご使用ください。 この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure DocumentDB と Azure Search を統合する方法を説明します。
 
-このセットアップを行うには、[Azure Search アカウントをセットアップ](../search-get-started.md#start-with-the-free-service)し (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
+このセットアップを行うには、[Azure Search アカウントをセットアップ](../search/search-get-started.md#start-with-the-free-service)し (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
 
 ##<a id="Concepts"></a>Azure Search インデクサーの概念
 
@@ -88,7 +88,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
         "softDeleteMarkerValue" : "the value that identifies a document as deleted" 
     }
 
-> [AZURE.NOTE]カスタムのプロジェクションを使用している場合は、SELECT 句にプロパティを含める必要があります。
+> [AZURE.NOTE] カスタムのプロジェクションを使用している場合は、SELECT 句にプロパティを含める必要があります。
 
 ###<a id="CreateDataSourceExample"></a>要求本文の例
 
@@ -121,7 +121,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2: インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search/search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -137,7 +137,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 |ブール値|Edm.Boolean、Edm.String|
 |整数などの数値|Edm.Int32、Edm.Int64、Edm.String|
 |浮動小数点などの数値|Edm.Double、Edm.String|
-|文字列|Edm.String|
+|String|Edm.String|
 |プリミティブ型の配列。例: "a"、"b"、"c" |Collection(Edm.String)|
 |日付などの文字列| Edm.DateTimeOffset、Edm.String|
 |GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } | Edm.GeographyPoint |
@@ -164,7 +164,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
        }]
      }
 
-###応答
+###Response
 
 インデックスが正常に作成された場合、HTTP 201 Created 応答を受け取ります。
 
@@ -265,9 +265,9 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 ご利用ありがとうございます。 DocumentDB のインデクサーを使用して、Azure DocumentDB を Azure Search と統合する方法についての説明は以上で終了です。
 
- - Azure DocumentDB の詳細については、[ここ](/services/documentdb/)をクリックしてください。
+ - Azure DocumentDB の詳細については、「[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)」を参照してください。
 
- - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
+ - Azure Search の詳細については、「[Search サービス ページ](https://azure.microsoft.com/services/search/)」を参照してください。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/26/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での統計の管理
  SQL Data Warehouse では、統計を使用して分散クエリのさまざまな実行方法のコストを評価します。統計が正確であれば、クエリ オプティマイザーはクエリのパフォーマンスを向上させる高品質のクエリ プランを生成できます。
@@ -74,7 +74,7 @@ SQL Data Warehouse で実現されるクエリのパフォーマンスを得る�
 - 静的な分布列の更新頻度を減らすことを検討します。
 - 各統計オブジェクトは系列で更新されることに注意してください。特に、多数の統計オブジェクトが含まれた幅の広いテーブルでは、`UPDATE STATISTICS <TABLE_NAME>` を実装するだけでは十分とはいえない場合があります。
 
-> [AZURE.NOTE][昇順キー] の詳細については、SQL Server 2014 の基数推定モデルに関するホワイト ペーパーをご覧ください。
+> [AZURE.NOTE] [昇順キー] の詳細については、SQL Server 2014 の基数推定モデルに関するホワイト ペーパーをご覧ください。
 
 詳細については、MSDN の[基数推定][]に関するページをご覧ください。
 
@@ -381,7 +381,7 @@ JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
 JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
 JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
 WHERE   1=1 
-AND     sts.[user_created] = 1
+AND     st.[user_created] = 1
 ;
 ```
 
@@ -441,8 +441,8 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 <!--Image references-->
 
 <!--Link references--In actual articles, you only need a single period before the slash.-->
-[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop/
-[一時テーブル]: ./sql-data-warehouse-develop-temporary-tables/
+[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
+[一時テーブル]: ./sql-data-warehouse-develop-temporary-tables.md
 
 <!-- External Links -->
 [基数推定]: https://msdn.microsoft.com/library/dn600374.aspx
@@ -459,4 +459,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016--->

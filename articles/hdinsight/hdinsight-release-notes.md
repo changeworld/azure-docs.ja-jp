@@ -14,11 +14,86 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="01/27/2016"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2016 年 1 月 27 日リリース
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.817.2028315 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.817.2028315 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.817.2028315 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.817.2028315 (HDP 2.2.9.1-1)
+* HDInsight (Windows) 3.3.0.817.2028315 (HDP 2.3.3.1-5 - 変更なし)
+* HDInsight (Linux) 3.2.1000.4072335 (HDP 2.2.9.1-1)
+* HDInsight (Linux) 3.3.1000.4072335 (HDP 2.3.3.1-1)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースで、すべての HDInsight クラスターの HDInsight のバージョンを更新しました| サービス | すべて| 該当なし
+
+## HDInsight 3.1 の 2015 年 12 月 2 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.763.1931434 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.763.1931434 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.763.1931434 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.763.1931434 (HDP 2.2.7.1-34 - 変更なし)
+* HDInsight (Windows) 3.3.1000.0 (HDP 2.3.3.1-5)
+* HDInsight (Linux) 3.2.1000.0.6392801 (HDP 2.2.7.1-34 - 変更なし)
+* HDInsight (Linux) 3.3.1000.0 (HDP 2.3.3.0-3039)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターに HDInsight 3.3 バージョンが追加され、HDInsight バージョンが更新されました | このリリースでは、HDInsight v3.3 (HDP 2.3 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.3 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-component-versioning/)を参照してください。| サービス | すべて| 該当なし
+
+## HDInsight の 2015 年 11 月 30 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.757.1923908 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.757.1923908 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.757.1923908 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.757.1923908 (HDP 2.2.7.1-34)
+* HDInsight (Linux) 3.2.1000.0.6392801 (HDP 2.2.7.1-34)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight バージョンと HDInsight 3.2 クラスターの HDP バージョンの更新 (Windows と Linux) | このリリースでは、HDInsight と HDP のバージョンが更新されています | サービス | すべて| 該当なし
+
+
+## HDInsight の 2015 年 10 月 27 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.726.1866228 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.726.1866228 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.726.1866228 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.726.1866228 (HDP 2.2.7.1-33)
+* HDInsight (Linux) 3.2.1000.0.6035701 (HDP 2.2.7.1-33)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 (Windows と Linux) | このリリースでは、HDInsight と HDP のバージョンが更新されています | サービス | すべて| 該当なし
+| 大文字のクラスターを含む Jupyter for Windows Spark クラスターを修正しました | DNS 名が大文字で指定されたクラスターは、元の要求チェックのため、Jupyter Notebook で問題が発生していました。今回の修正では、Jupyter の構成の DNS 名を小文字に変更されました。 | サービス | HDInsight Spark (Windows)| 該当なし
+
 
 ## HDInsight 3.1 の 2015 年 10 月 20 日リリース
 
@@ -633,7 +708,7 @@
 
 <tr>
 <td>HDInsight 3.2 クラスター</td>
-<td>Hadoop 2.6/HDP2.2 は HDInsight 3.2 クラスターで使用できます。これにはすべてのオープン ソース コンポーネントの主要な更新プログラムが含まれます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/" target="_blank">HDInsight での新機能</a>」と「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">HDP 2.2.0.0 リリース ノート</a>」をご覧ください。</td>
+<td>Hadoop 2.6/HDP2.2 は HDInsight 3.2 クラスターで使用できます。これにはすべてのオープン ソース コンポーネントの主要な更新プログラムが含まれます。詳細については、「HDInsight での新機能」と「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">HDP 2.2.0.0 リリース ノート</a>」をご覧ください。</td>
 <td>オープンソース ソフトウェア</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -641,7 +716,7 @@
 
 <tr>
 <td>Linux での HDInsight (プレビュー)</td>
-<td>Ubuntu Linux で実行されているクラスターをデプロイできます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-get-started/" target ="_blank">Linux での HDInsight の概要</a>」をご覧ください。</td>
+<td>Ubuntu Linux で実行されているクラスターをデプロイできます。詳細については、「Linux での HDInsight の概要」をご覧ください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -649,7 +724,7 @@
 
 <tr>
 <td>Storm の一般公開</td>
-<td>Apache Storm クラスターは一般で使用できます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-storm-getting-started/" target="_blank">HDInsight での Storm 使用方法の概要</a>」をご覧ください。</td>
+<td>Apache Storm クラスターは一般で使用できます。詳細については、「HDInsight での Storm 使用方法の概要」をご覧ください。</td>
 <td>サービス</td>
 <td>Storm</td>
 <td>該当なし</td>
@@ -665,7 +740,7 @@
 
 <tr>
 <td>クラスター スケーリング</td>
-<td>実行する HDInsight クラスター用データ ノードの数は、削除または再作成しなくても変更できます。現時点では、Hadoop クエリと Apache Storm クラスターの種類にのみこの機能がありますが、Apache HBase クラスターの種類も近日中にサポートされます。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-cluster-scaling/" target="_blank">HDInsight のクラスターのスケール設定</a>」をご覧ください。</td>
+<td>実行する HDInsight クラスター用データ ノードの数は、削除または再作成しなくても変更できます。現時点では、Hadoop クエリと Apache Storm クラスターの種類にのみこの機能がありますが、Apache HBase クラスターの種類も近日中にサポートされます。詳細については、HDInsight クラスターの管理に関するページを参照してください。</td>
 <td>サービス</td>
 <td>Hadoop、Storm</td>
 <td>該当なし</td>
@@ -673,7 +748,7 @@
 
 <tr>
 <td>Visual Studio ツール</td>
-<td>Apache Storm のツール一式に加えて、Visual Studio で Apache Hive のツールが更新され、ステートメント入力候補、ローカル検証、改善されたデバッグ サポートが追加されました。詳細については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">HDInsight Hadoop Tools for Visual Studio の使用開始</a>」をご覧ください。</td>
+<td>Apache Storm のツール一式に加えて、Visual Studio で Apache Hive のツールが更新され、ステートメント入力候補、ローカル検証、改善されたデバッグ サポートが追加されました。詳細については、「HDInsight Hadoop Tools for Visual Studio の使用開始」をご覧ください。</td>
 <td>ツール</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -681,7 +756,7 @@
 
 <tr>
 <td>DocumentDB 用 Hadoop コネクタ</td>
-<td>DocumentDB 用 Hadoop コネクタを使用すれば、DocumentDB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。詳細とチュートリアルについては、「<a href="http://azure.microsoft.com/documentation/articles/documentdb-run-hadoop-with-hdinsight/" target="_blank">DocumentDB と HDInsight を使用した Hadoop ジョブの実行</a>」をご覧ください。</td>
+<td>DocumentDB 用 Hadoop コネクタを使用すれば、DocumentDB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。詳細とチュートリアルについては、「DocumentDB と HDInsight を使用した Hadoop ジョブの実行」をご覧ください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -880,8 +955,8 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </tr>
 
 <tr>
-<td><a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">クラスターのカスタマイズの一般公開</a></td>
-<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-spark-install/" target="_blank">Spark</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-r-scripts/" target="_blank">R</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-solr-install/" target="_blank">Solr</a>、<a href = "http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-giraph-install/" target="_blank">Giraph</a> モジュールをインストールするプロセスを説明しています。またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
+<td><a href = "hdinsight-hadoop-customize-cluster.md" target="_blank">クラスターのカスタマイズの一般公開</a></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。この機能の能力を示すために、一般的な <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a>、<a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> モジュールをインストールするプロセスを説明しています。またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。</p></td>
 <td>機能の一般公開</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1087,7 +1162,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 </tr>
 
 <tr>
-<td>クラスター デプロイ ID</td>
+<td>クラスター デプロイメント ID</td>
 <td>SDK の最新バージョン (1.3.3.1.5426.29232) より、ユーザーは、HDInsight が各クラスターに対して発行した一意の ID にアクセスできます。これにより、作成とドロップのシナリオで DNS 名を再利用する場合に、ユーザーがクラスターのインスタンスを一意に特定できるようになります。</td>
 <td>SDK</td>
 <td>すべて</td>
@@ -1107,7 +1182,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 * Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
-* HDInsight クラスターの既定のデプロイのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
+* HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
 
 <table border="1"> <tr><th>コンポーネント</th><th>メモリ割り当て</th></tr> <tr><td> yarn.scheduler.minimum-allocation</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td> yarn.scheduler.maximum-allocation</td><td>6144 MB (変更なし)</td></tr> <tr><td>yarn.nodemanager.resource.memory</td><td>6144 MB (変更なし)</td></tr> <tr><td>mapreduce.map.memory</td><td>768 MB (以前は 512 MB)</td></tr> <tr><td>mapreduce.map.java.opts</td><td>opts=-Xmx512m (以前は -Xmx410m)</td></tr> <tr><td>mapreduce.reduce.memory</td><td>1536 MB (以前は 1024 MB)</td></tr> <tr><td>mapreduce.reduce.java.opts</td><td>opts=-Xmx1024m (以前は -Xmx819m)</td></tr> <tr><td>yarn.app.mapreduce.am.resource</td><td>768 MB (以前は 1024 MB)</td></tr> <tr><td>yarn.app.mapreduce.am.command</td><td>opts=-Xmx512m (以前は -Xmx819m)</td></tr> <tr><td>mapreduce.task.io.sort</td><td>256 MB (以前は 200 MB)</td></tr> <tr><td>tez.am.resource.memory</td><td>1536 MB (変更なし)</td></tr>
 
@@ -1117,7 +1192,7 @@ HDInsight で使用される Hortonworks Data Platform で YARN および MapRed
 
 Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
-* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureHDInsightCluster** または **Invoke-Hive**) を使用してジョブを送信する場合、エラー メッセージ "*クラスター<clustername>が HTTP サービスのアクセス用に構成されていません*" または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ "*クラスター<clustername>が HTTP サービスのアクセス用に構成されていません*" または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
 
 * これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK にアクセスし、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure/)」から Azure PowerShell ツールにアクセスできます。
 
@@ -1138,7 +1213,7 @@ Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスタ�
 	* これにより、メモリ上限が低いために特定の Hive クエリで発生する次のエラーに対処します。"コンテナーは物理メモリ上限を超過して実行しています"
 	* クラスター作成時に Azure PowerShell で以下のコマンドを使用すると、この構成値を使用していない既定値の 512 に戻すことができます。
 
-		Add-AzureHDInsightConfigValues -Core @{"templeton.mapper.memory.mb"="512";}
+		Add-AzureRmHDInsightConfigValues -Core @{"templeton.mapper.memory.mb"="512";}
 
 
 * zookeeper ロールのホスト名が *zookeeper* に変更されました。これはクラスター内の名前解決には影響しますが、外部の REST API には影響しません。ホスト名 *zookeepernode* を使用するコンポーネントがある場合は、新しい名前を使用するようにそのコンポーネントを更新する必要があります。3 つの zookeeper ノードの新しい名前は以下のとおりです。
@@ -1149,7 +1224,7 @@ Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスタ�
 
 ## 2014 年 8 月 15 日より前に作成されたクラスターに関する留意事項
 
-Azure PowerShell または HDInsight SDK とクラスター間でのバージョンの相違のために、Azure PowerShell または HDInsight SDK のエラー メッセージ "Cluster <clustername> is not configured for HTTP services access" または操作によっては、"Cannot connect to cluster" が表示される場合があります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。Azure PowerShell または HDInsight SDK の以前のバージョンでは、この機能が正しく解釈されません。その結果、ジョブの送信の操作で失敗します。HDInsight SDK API または Azure PowerShell コマンドレットを使用して Use-AzureHDInsightCluster や Invoke-AzureHDInsightHiveJob などのジョブを送信する場合、これらの操作は上に示したエラー メッセージで失敗する可能性があります。
+Azure PowerShell または HDInsight SDK とクラスター間でのバージョンの相違のために、Azure PowerShell または HDInsight SDK のエラー メッセージ "Cluster <clustername> is not configured for HTTP services access" または操作によっては、"Cannot connect to cluster" が表示される場合があります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。Azure PowerShell または HDInsight SDK の以前のバージョンでは、この機能が正しく解釈されません。その結果、ジョブの送信の操作で失敗します。HDInsight SDK API または Azure PowerShell コマンドレットを使用して Use-AzureRmHDInsightCluster や Invoke-AzureRmHDInsightHiveJob などのジョブを送信する場合、これらの操作は上に示したエラー メッセージで失敗する可能性があります。
 
 これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。最新の HDInsight SDK へは [NuGet][nuget-link] からアクセスできます。[Microsoft Web Platform インストーラー][webpi-link]から Azure PowerShell ツールにアクセスできます。
 
@@ -1160,7 +1235,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 	* 東アジア
 	* 米国中北部
 	* 米国中南部
-* HDInsight バージョン 1.6 (HDP 1.1、Hadoop 1.0.3) と HDInsight バージョン 2.1 (HDP1.3、Hadoop 1.2) は、Azure ポータルから削除されます。これらのバージョンの Hadoop クラスターは、Azure PowerShell コマンドレット ([New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能](../hdinsight-component-versioning/)」のページを参照してください。
+* HDInsight バージョン 1.6 (HDP 1.1、Hadoop 1.0.3) と HDInsight バージョン 2.1 (HDP1.3、Hadoop 1.2) は、Azure ポータルから削除されます。これらのバージョンの Hadoop クラスターは、Azure PowerShell コマンドレット ([New-AzureRmHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。詳細については、「[HDInsight で提供されるクラスター バージョンの新機能](../hdinsight-component-versioning/)」のページを参照してください。
 * このリリースでは、Hortonworks Data Platform (HDP) が以下のように変更されました。
 
 <table border="1"> <tr><th>HDP</th><th>変更</th></tr> <tr><td>HDP 1.3 / HDI 2.1</td><td>変更なし</td></tr> <tr><td>HDP 2.0 / HDI 3.0</td><td>変更なし</td></tr> <tr><td>HDP 2.1 / HDI 3.1</td><td>zookeeper: ['3.4.5.2.1.3.0-1948'] -> ['3.4.5.2.1.3.2-0002']</td></tr>
@@ -1366,4 +1441,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/13/2015"
+	ms.date="01/15/2016"
 	ms.author="cynthn"/>
 
 # 仮想マシンのイメージについて
@@ -23,7 +23,7 @@
 
 イメージは、Azure でオペレーティング システムを持つ新しい仮想マシンを提供するために使用します。また、イメージには 1 つ以上のデータ ディスクも保持できます。イメージは複数のソースから利用できます。
 
--	Azure は、[Marketplace](http://azure.microsoft.com/gallery/virtual-machines/) でイメージを提供しています。最近のバージョンの Windows Server や Linux オペレーティング システムのディストリビューションがあります。また、いくつかのイメージには、SQL Server などのアプリが含まれます。MSDN 特典や MSDN の従量課金制サブスクライバーでは、その他のイメージにアクセスできます。
+-	Azure は、[Marketplace](https://azure.microsoft.com/gallery/virtual-machines/) でイメージを提供しています。最近のバージョンの Windows Server や Linux オペレーティング システムのディストリビューションがあります。また、いくつかのイメージには、SQL Server などのアプリが含まれます。MSDN 特典や MSDN の従量課金制サブスクライバーでは、その他のイメージにアクセスできます。
 -	オープン ソース コミュニティは、[VM Depot](http://vmdepot.msopentech.com/List/Index) でイメージを提供しています。
 -	また、既存の Azure 仮想マシンをキャプチャしてイメージとして使用するか、イメージをアップロードすることで、Azure 内で独自のイメージを使用することもできます。
 
@@ -35,7 +35,7 @@ Azure 内の仮想マシンや、他の場所で稼働している仮想マシ�
 
 ## イメージの操作
 
-Azure サブスクリプションに使用できるイメージの管理には、Mac、Linux、Windows、Azure PowerShell モジュール用の Azure コマンド ライン インターフェイス (CLI) を使用することができます。いくつかのイメージ タスクには Azure ポータルを使用することもできますが、コマンドラインの方が多くのオプションを使用できます。
+Azure サブスクリプションに使用できるイメージの管理には、Mac、Linux、Windows、Azure PowerShell モジュール用の Azure コマンド ライン インターフェイス (CLI) を使用することができます。いくつかのイメージ タスクには Azure クラシック ポータルを使用することもできますが、コマンドラインの方が多くのオプションを使用できます。
 
 リソース マネージャーのデプロイでのこれらのツールの使用方法の詳細については、「[PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](resource-groups-vm-searching.md)」をご覧ください。
 
@@ -49,9 +49,10 @@ Azure サブスクリプションに使用できるイメージの管理には�
 -	**特定ファミリ内のすべてのイメージを取得する**: `Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
 -	**VM イメージの検索**: `Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName` は、VM イメージにのみ適用される DataDiskConfiguration プロパティをフィルタリングします。この例では、ラベルとイメージの名前のみの出力もフィルタリングします。
 -	**一般化されたイメージを保存する**: `Save-AzureVMImage –ServiceName "myServiceName" –Name "MyVMtoCapture" –OSState "Generalized" –ImageName "MyVmImage" –ImageLabel "This is my generalized image"`
--	**専用のイメージを保存する**: `Save-AzureVMImage –ServiceName "mySvc2" –Name "MyVMToCapture2" –ImageName "myFirstVMImageSP" –OSState "Specialized" -Verbose`
->[Azure.Tip]オペレーティング システム ディスクだけではなく、データ ディスクも含む VM イメージを作成する場合は、OSState パラメーターが必要です。パラメーターを使用しない場合、コマンドレットは、OS イメージを作成します。パラメーターの値は、オペレーティング システム ディスクを再利用できるように準備されているかどうかによって、イメージを一般化するか、または専用化するかを示しています。
+-	**[専用のイメージを保存する]**: `Save-AzureVMImage –ServiceName "mySvc2" –Name "MyVMToCapture2" –ImageName "myFirstVMImageSP" –OSState "Specialized" -Verbose`
+>[Azure.Tip] オペレーティング システム ディスクだけではなく、データ ディスクも含む VM イメージを作成する場合は、OSState パラメーターが必要です。パラメーターを使用しない場合、コマンドレットは、OS イメージを作成します。パラメーターの値は、オペレーティング システム ディスクを再利用できるように準備されているかどうかによって、イメージを一般化するか、または専用化するかを示しています。
 -	**イメージの削除**: `Remove-AzureVMImage –ImageName "MyOldVmImage"`
+
 
 ## その他のリソース
 
@@ -59,4 +60,4 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

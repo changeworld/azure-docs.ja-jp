@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps と Mobile Apps の認証
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -214,4 +216,4 @@ Azure の [ASP.NET Identity](http://www.asp.net/identity) や [Thinktecture](htt
 
 * [アクセス トークンを取得し、Mobile Apps の SharePoint API を呼び出す](../app-service-mobile/app-service-mobile-dotnet-backend-get-started-connect-to-enterprise.md#obtain-token)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

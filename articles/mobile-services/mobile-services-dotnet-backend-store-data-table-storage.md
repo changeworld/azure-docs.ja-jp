@@ -1,22 +1,24 @@
-<properties 
-	pageTitle="テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成 | Azure Mobile Services" 
-	description=".NET バックエンド モバイル サービスに Azure テーブル ストレージを使用する方法について学習します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成 | Azure Mobile Services"
+	description=".NET バックエンド モバイル サービスに Azure テーブル ストレージを使用する方法について学習します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="09/14/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="glenga"/>
 
 # テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
 このトピックでは、.NET バックエンド モバイル サービスで非リレーショナル データ ストアを使用する方法を説明します。このチュートリアルでは、既定の Azure SQL Database のデータ ストアではなく Azure テーブル ストレージが使用されるように、Azure Mobile Services のクイック スタート プロジェクトを変更します。
 
@@ -34,12 +36,12 @@
 
   	これによって、Azure ストレージ サービス用のサポートが、モバイル サービス プロジェクトに追加されます。
 
-3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage-create-storage-account.md)を参照してください。
+3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)を参照してください。
 
-4. 管理ポータルで、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
+4. [Azure クラシック ポータル]で、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
 5. **Storage アカウント名**と**アクセス キー**をメモします。
- 
+
 6. モバイル サービスで [**構成**] タブをクリックして、下にスクロールして [**接続文字列**] を表示します。`StorageConnectionString` という**名前**で、次の形式で表されるストレージ アカウント接続文字列である**値**を含む新しい接続文字列を入力します。
 
 		DefaultEndpointsProtocol=https;AccountName=<ACCOUNT_NAME>;AccountKey=<ACCESS_KEY>;
@@ -83,12 +85,12 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
         {
             base.Initialize(controllerContext);
 
-            // Create a new Azure Storage domain manager using the stored 
+            // Create a new Azure Storage domain manager using the stored
             // connection string and the name of the table exposed by the controller.
             string connectionStringName = "StorageConnectionString";
             var tableName = controllerContext.ControllerDescriptor.ControllerName.ToLowerInvariant();
-            DomainManager = new StorageDomainManager<TodoItem>(connectionStringName, 
-                tableName, Request, Services);          
+            DomainManager = new StorageDomainManager<TodoItem>(connectionStringName,
+                tableName, Request, Services);
         }
 
 	これで、ストレージ アカウントの接続文字列を使用して、要求されたコント ローラーの新しいストレージ ドメイン マネージャーが作成されます。
@@ -99,7 +101,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
         {
             // Call QueryAsync, passing the supplied query options.
             return DomainManager.QueryAsync(options);
-        } 
+        }
 
 	SQL Database とは異なり、このバージョンは IQueryable <TEntity> を返しません。そのため、 結果はバインドすることができますが、クエリ内で使用することはできません。
 
@@ -119,8 +121,8 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 ## <a name="test-application"></a>アプリケーションをテストする
 
-1. モバイル サービスの .NET バックエンド プロジェクトを再発行します (省略可能)。 
-	
+1. モバイル サービスの .NET バックエンド プロジェクトを再発行します (省略可能)。
+
 	.NET バックエンド プロジェクトを Azure に発行する前に、モバイル サービスをローカルでテストすることもできます。ローカルまたは Azure でテストするかどうかにかかわらず、モバイル サービスでは Azure テーブル ストレージが使用されます。
 
 4. モバイル サービスに接続されている、クイック スタート クライアント アプリを実行します。
@@ -128,7 +130,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 	クイック スタート チュートリアルに従って以前に追加した項目は、表示されないことに注意してください。これは、現時点でテーブル ストアが空だからです。
 
 5. 新しい項目を追加して、データベースの変更を生成します。
- 
+
 	アプリとモバイル サービスは以前と同様に動作しますが、データが格納される場所が SQL Database ではなく非リレーショナル ストアになったという点が異なります。
 
 ##次のステップ
@@ -137,7 +139,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 + [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
 
-+ [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
++ [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-universal-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
 
 <!-- Anchors. -->
 [Create a non-relational store]: #create-store
@@ -150,9 +152,8 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 <!-- URLs. -->
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

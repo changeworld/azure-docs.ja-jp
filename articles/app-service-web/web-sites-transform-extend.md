@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="02/25/2016"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリの高度な構成と拡張機能
@@ -26,7 +26,7 @@
 ##<a id="transform"></a>ApplicationHost.config を使用した高度な構成
 App Service プラットフォームにより、Web アプリ構成の柔軟性と制御を実現できます。IIS の標準的な ApplicationHost.config 構成ファイルは、App Service 内で直接編集することはできませんが、プラットフォームは XML ドキュメント変換 (XDT) に基づく宣言型の ApplicationHost.config 変換モデルをサポートします。
 
-この変換機能を利用するには、XDT の内容を使用して ApplicationHost.xdt ファイルを作成し、Web アプリのルートの直下に配置します。場合によっては、変更を反映するために Web App を再起動する必要があります。
+この変換機能を利用するには、XDT の内容を使用して ApplicationHost.xdt ファイルを作成し、[Kudu Console](https://github.com/projectkudu/kudu/wiki/Kudu-console) 内のサイトのルート (d:\\home\\site) の直下に配置します。場合によっては、変更を反映するために Web App を再起動する必要があります。
 
 PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追加する方法を、次の applicationHost.xdt サンプルに示します。
 
@@ -46,7 +46,7 @@ PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追�
 
 変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\\Transform で利用できます。
 
-その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
+その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples) を参照してください。
 
 **メモ**<br /> `system.webServer` の下にあるモジュールの一覧に所属している要素の削除や並べ替えは実行できませんが、この一覧への追加は可能です。
 
@@ -171,15 +171,14 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 
 開発や調査の際に、`WEBSITE_PRIVATE_EXTENSIONS` キーと値 `0` を使用したアプリ設定を追加して、Web アプリのすべてのプライベート (プレインストールされていない) 拡張を無効にすることはできません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

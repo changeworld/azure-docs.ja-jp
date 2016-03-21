@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2015"
+	ms.date="02/03/2016"
 	ms.author="garye"/>
 
 
 # チュートリアル手順 6: Azure Machine Learning Web サービスにアクセスする
 
-これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発](machine-learning-walkthrough-develop-predictive-solution.md)」の最後の手順です。
+これは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」の最後の手順です。
 
 
 1.	[Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -31,15 +31,17 @@
 
 ----------
 
-Web サービスとして役に立つためには、ユーザーが Web サービスにデータを送信し、結果を受信できるようにする必要があります。Web サービスを Azure Web サービスとして提供することで、以下のいずれかの方法でデータを受信して返すことができるようになります。
+このチュートリアルで前の手順では、信用リスク予測モデルを使用する Web サービスをデプロイしました。ここで、ユーザーが Web サービスにデータを送信し、結果を受信できるようにする必要があります。
 
--	**要求/応答** - ユーザーが HTTP プロトコルを使用して 1 行以上のクレジット データをサービスに送信し、サービスが結果のセットを返します。
--	**Batch 実行** - ユーザーが Azure BLOB の URL をサービスに送信します。この BLOB には 1 行以上のクレジット データが含まれています。サービスは結果を別の BLOB に保存し、この BLOB のURL を返します。  
+Web サービスを Azure Web サービスとして提供すると、以下のいずれかの方法で、REST API によりデータを受信して返すことができるようになります。
 
-開発者は、Web サービスの **[ダッシュボード]** タブにある 2 種類のリンク先に記載された情報を活用して、サービスにアクセスするためのコードを記述することができます。**[要求/応答]** 行の **[API ヘルプ ページ]** リンクをクリックして表示されるページには、サービスの要求/応用プロトコルを使用するためのサンプル コードがあります。同様に、**[バッチ実行]** 行のリンクでは、サービスにバッチ要求を実行するためのサンプル コードを確認できます。
+-	**要求/応答** - ユーザーが HTTP プロトコルを使用して 1 行以上のクレジット データをサービスに送信し、サービスが 1 つ以上の結果のセットを返します。
+-	**バッチ実行** - ユーザーが Azure BLOB に 1 行以上のクレジット データを格納し、そのBLOB の場所をサービスに送信します。サービスは、データのすべての行を入力 BLOB に格納し、結果を別の BLOB に格納し、この BLOB のURL を返します。  
 
-API ヘルプ ページには、R、C#、Python の各プログラミング言語に対応したサンプルがあります。
+Web サービスにアクセスするための最もすばやくて簡単な方法は、[Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/) で入手できる Web アプリ テンプレートを利用する方法です。このような Web アプリ テンプレートを使用すると、Web サービスの入力データとサービスで返される内容を認識するカスタム Web アプリを構築できます。必要な操作は、Web サービスおよびデータへのアクセスを許可することだけで、後の処理はテンプレートによって行われます。
 
-これらの Web サービスにアクセスして使用する方法の詳細については、「[Machine Learning の実験から発行された Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+Web アプリ テンプレートの使用方法の詳細については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+R、C#、Python プログラミング言語で提供されるスターター コードを使用して、Web サービスにアクセスするカスタム アプリケーションを開発することもできます。詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0211_2016-->

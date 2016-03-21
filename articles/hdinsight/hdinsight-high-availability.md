@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 
@@ -49,8 +49,8 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 
 
 
-## アクティブなヘッド ノードのサービスの状態を確認する
-アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、「[Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)」を参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態]** アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
+## アクティブ ヘッド ノードのサービスの状態の確認
+アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)に関するページを参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態]** アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
 
 ![](./media/hdinsight-high-availability/Hadoop.Service.Availability.Status.png)
 
@@ -63,7 +63,7 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 ![](./media/hdinsight-high-availability/Hadoop.Head.Node.Log.Files.png)
 
 
-## ヘッド ノードのサイズを構成する
+## ヘッド ノード サイズの構成
 既定では、ヘッド ノードは L サイズの仮想マシン (VM) として割り当てられます。このサイズは、クラスター上で実行されるほとんどの Hadoop ジョブを管理するには十分です。ただし、XL サイズの VM がヘッド ノードに必要となるシナリオもあります。その例の 1 つに、クラスターで小さな Oozie ジョブを多数管理しなければならない場合があります。
 
 XL サイズの VM は、Azure PowerShell コマンドレットまたは HDInsight SDK を使用して構成できます。
@@ -100,10 +100,10 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
     };
 
 
-**参照**
+## 次のステップ
 
-- [ZooKeeper](http://zookeeper.apache.org/)
+- [Apache ZooKeeper](http://zookeeper.apache.org/)
 - [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)
 - [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

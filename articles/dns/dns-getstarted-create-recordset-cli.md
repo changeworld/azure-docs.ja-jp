@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="01/20/2016"
    ms.author="joaoma"/>
 
 
@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
-- [Azure Powershell steps](dns-getstarted-create-recordset.md)
+- [PowerShell](dns-getstarted-create-recordset.md)
 
 
 
@@ -46,7 +46,7 @@ Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CN
 
 これはレコード セットの例です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類の DNS レコードのコレクションです。ほとんどのレコード セットには 1 つのレコードが含まれていますが、上の例のように複数のレコードが含まれているレコード セットも珍しくはありません (SOA および CNAME という種類のレコード セットは例外で、DNS 標準により、これらの種類では同じ名前を持つ複数のレコードが許可されません)。
 
-Time-to-Live (TTL) は、各レコードが再度クエリされるまでクライアントによってキャッシュされる期間を指定します。上の例では、TTL は 3600 秒、つまり 1 時間です。TTL は、各レコードではなく、レコード セットに対して指定されるため、そのレコード セット内のすべてのレコードに同じ値が使用されます。
+Time-to-Live (TTL) は、各レコードが再度照会されるまでクライアントによってキャッシュされる期間を指定します。上の例では、TTL は 3600 秒、つまり 1 時間です。TTL は、各レコードではなく、レコード セットに対して指定されるため、そのレコード セット内のすべてのレコードに同じ値が使用されます。
 
 >[AZURE.NOTE]Azure DNS は、レコード セットを使用して DNS レコードを管理します。
 
@@ -122,4 +122,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

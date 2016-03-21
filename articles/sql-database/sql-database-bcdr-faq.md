@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="07/14/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # ビジネス継続性に関する FAQ
@@ -48,7 +48,7 @@
 
 ## 7\.サーバーでデータベースを一括復元する方法を教えてください。
 
-一括復元を実行する機能は組み込まれていません。このタスクは [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトで実行できます。
+一括復元を実行する機能は組み込まれていません。このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
 ## 8\.標準 geo レプリケーションとアクティブ geo レプリケーションの違いは何ですか。
 
@@ -58,11 +58,6 @@
 
 ## 9\.標準 geo レプリケーションやアクティブ geo レプリケーションを使用する場合のレプリケーションの遅延時間とは何ですか。
 
-geo レプリケーションでは連続コピーを使用します。そのため、[sys.dm\_continuous\_copy\_status](https://msdn.microsoft.com/library/azure/dn741329.aspx) 動的管理ビュー (DMV) を使用して、最新のレプリケーション時刻とその他の情報を取得します。
+[sys.dm\_geo\_replication\_link\_status](https://msdnstage.redmond.corp.microsoft.com/library/mt575504.aspx) 動的管理ビュー (DMV) を使用して、前回のレプリケーション時刻や前回のレプリケーション遅延など、レプリケーション リンクに関する情報を取得します。
 
-
-
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

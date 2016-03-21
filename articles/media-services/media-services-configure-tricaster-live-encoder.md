@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako,cenkdin,anilmur" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="03/01/2016"   
 	ms.author="juliako"/>
 
 #NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -22,44 +22,47 @@
 - [Tricaster](media-services-configure-tricaster-live-encoder.md)
 - [Elemental Live](media-services-configure-elemental-live-encoder.md)
 - [Wirecast](media-services-configure-wirecast-live-encoder.md)
-- [FMLE](media-services-configure-fmle-live-encoder.md) 
+- [FMLE](media-services-configure-fmle-live-encoder.md)
 
 このトピックでは、[NewTek TriCaster](http://newtek.com/products/tricaster-40.html) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Microsoft Azure 管理ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
+このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
+
+>[AZURE.NOTE]Azure Media Services への投稿フィードで送信に Tricaster を使用する場合、フィード間の迅速なカットやスレートとの間の切り替えなど、Tricaster の一部の機能を使用すると、ライブでビデオ/オーディオの誤作動が発生する可能性があります。AMS チームがこれらの問題の解決に取り組んでいます。問題が解決するまで、これらの機能を使用しないことをお勧めします。
+
 
 ##前提条件
 
 - [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。 
-- 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。 
+- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。
+- 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 - ツールを起動し、AMS アカウントに接続します。
 
 ##ヒント
 
-- 可能な限り、有線のインターネット接続を使用します。 
-- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。  
+- 可能な限り、有線のインターネット接続を使用します。
+- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 - ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
- 
+
 ## チャネルの作成
 
-1.  AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。メニューから **[チャネルの作成]** を選択します。  
+1.  AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。メニューから **[チャネルの作成]** を選択します。
 
-	![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
+![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
 2. チャネルの名前を指定します。説明フィールドは省略可能です。[チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。それ以外の設定はすべてそのままにしておくことができます。
 
 
-	 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
- 
+**[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+
 3. **[チャネルの作成]** をクリックします。![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
->[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
 
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp)ことができます。
 
->[AZURE.IMPORTANT]チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 
 ##<a id=configure_tricaster_rtmp></a>NewTek TriCaster エンコーダーを構成する
 
@@ -119,7 +122,7 @@
 
 	![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
->[AZURE.IMPORTANT]**[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 
 ##再生をテストする
   
@@ -162,4 +165,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

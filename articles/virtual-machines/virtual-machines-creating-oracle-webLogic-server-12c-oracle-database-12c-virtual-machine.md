@@ -46,7 +46,7 @@
 
 	c.この時点ではエンドポイントを追加しないでください。
 
-9.	リソース グループを選択または作成します。詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+9.	リソース グループを選択または作成します。詳細については、「[Azure ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
 10. **[サブスクリプション]** を選択します。
 
@@ -71,4 +71,4 @@
 
 [Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

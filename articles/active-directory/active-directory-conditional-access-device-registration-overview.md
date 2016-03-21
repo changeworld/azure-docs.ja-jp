@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/02/2015"
+	ms.date="11/24/2015"
 	ms.author="femila"/>
 
 # Azure Active Directory Device Registration の概要
@@ -77,6 +77,10 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 ## 関連トピック
 
-Azure AD Device Registration を使用して、ドメイン参加済みの Windows 7 デバイスおよび Windows 8.1 デバイスを登録することができます。次のトピックでは、Windows 7 デバイスおよび Windows 8.1 デバイス上でデバイス登録を構成するために必要な前提条件と手順について詳しく説明します。Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
+Azure AD Device Registration を使用して、ドメイン参加済みの Windows 7 デバイスおよび Windows 8.1 デバイスを登録することができます。次のトピックでは、Windows 7 デバイスおよび Windows 8.1 デバイス上でデバイス登録を構成するために必要な前提条件と手順について詳しく説明します。
 
-<!---HONumber=Oct15_HO3-->
+- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md) 
+- [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+
+<!---HONumber=AcomDC_1203_2015-->

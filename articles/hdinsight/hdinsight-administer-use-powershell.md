@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="01/04/2016"
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -29,16 +29,46 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-	> [AZURE.NOTE]この記事で説明する PowerShell スクリプトは、Azure リソース マネージャー モードを使用します。サンプルを確実に動作させるには、Microsoft Web Platform Installer を使用して最新の Azure PowerShell をダウンロードしてください。
+##Azure PowerShell 1.0 以上をインストールする
+
+最初に 0.9x バージョンをアンインストールする必要があります。
+
+インストールされている PowerShell のバージョンを確認するには:
+
+	Get-Module *azure*
+	
+以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
+
+Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
+
+- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
+
+		# Install the Azure Resource Manager modules from PowerShell Gallery
+		Install-Module AzureRM
+		Install-AzureRM
+		
+		# Install the Azure Service Management module from PowerShell Gallery
+		Install-Module Azure
+		
+		# Import AzureRM modules for the given version manifest in the AzureRM module
+		Import-AzureRM
+		
+		# Import Azure Service Management module
+		Import-Module Azure
+
+	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
+
+- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
+
+WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
 
 ##クラスターの作成
 
 HDInsight クラスターを使用するには、Azure ストレージ アカウントに Azure リソース グループと BLOB コンテナーが必要です。
 
-- Azure リソース グループは、Azure リソース用の論理的なコンテナーです。Azure リソース グループと HDInsight クラスターを同じ場所にする必要はありません。詳細については、[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)をご覧ください。
+- Azure リソース グループは、Azure リソース用の論理的なコンテナーです。Azure リソース グループと HDInsight クラスターを同じ場所にする必要はありません。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 - HDInsight は、Azure ストレージ アカウントの BLOB コンテナーを既定のファイル システムとして使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントとストレージ コンテナーが必要です。既定のストレージ アカウントと HDInsight クラスターは、同じ場所に存在する必要があります。
 
 [AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
@@ -64,7 +94,7 @@ HDInsight クラスターを使用するには、Azure ストレージ アカウ
 [AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
 
 
-Azure プレビュー ポータルを使用した Azure ストレージ アカウントの作成については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。
+Azure ポータルを使用した Azure ストレージ アカウントの作成については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -73,7 +103,7 @@ Azure プレビュー ポータルを使用した Azure ストレージ アカ�
 	# List the keys for a Storage account
 	Get-AzureRmStorageAccountKey -ResourceGroupName <Azure Resource Group Name> -name $storageAccountName <Azure Storage Account Name>
 
-プレビュー ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
+ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
 
 **Azure Storage コンテナーを作成するには**
 
@@ -134,7 +164,7 @@ Azure PowerShell では、HDInsight の作成プロセス中に BLOB コンテ�
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE]HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
+>[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -202,7 +232,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 	# Credential option 1
 	$hadoopUserName = "admin"
-	$hadoopUserPassword = "Pass@word123"
+	$hadoopUserPassword = "<Enter the Password>"
 	$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
 	$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
 
@@ -211,9 +241,9 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 	
 	Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 
->[AZURE.NOTE]アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
+>[AZURE.NOTE] アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
-これは、プレビュー ポータルを使用して行うこともできます。[Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
+これは、ポータルを使用して行うこともできます。[Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページを参照してください。
 
 ##HTTP ユーザーの資格情報の更新
 
@@ -235,7 +265,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 ##リソース グループの検索
 
-ARM モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。リソース グループを検索するには
+ARM モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。リソース グループを検索するには:
 
 	$clusterName = "<HDInsight Cluster Name>"
 	
@@ -271,7 +301,7 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 ## 関連項目
 * [HDInsight コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]
-* [Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -283,14 +313,14 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-provision-custom-options]: hdinsight-provision-clusters.md#configuration
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -298,8 +328,8 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

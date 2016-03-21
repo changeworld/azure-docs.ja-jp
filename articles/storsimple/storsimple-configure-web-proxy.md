@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの Web プロキシを構成する
@@ -33,7 +33,7 @@ Web プロキシの構成が完了したら、Microsoft Azure StorSimple Manager
 
 - セットアップ ウィザードとコマンドレットを使用して Web プロキシを構成する
 - コマンドレットを使用して Web プロキシを有効にする
-- 管理ポータルで Web プロキシ設定を表示する
+- Azure クラシック ポータルで Web プロキシ設定を表示する
 - Web プロキシの構成中のエラーをトラブルシューティングする
 
 
@@ -65,9 +65,9 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 
 	既定では、TCP ポート番号 8080 が指定されています。
 
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。[Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。[NTLM] (NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。既定の認証は NTLM です。詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。
+4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。[Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。[NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。既定の認証は NTLM です。詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。
 
-	> [AZURE.IMPORTANT]**StorSimple Manager サービスのデバイス監視グラフは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっている場合に正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
+	> [AZURE.IMPORTANT] **StorSimple Manager サービスのデバイス監視グラフは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっている場合に正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
 
 5. 認証を使用している場合は、**Web プロキシ ユーザー名**と **Web プロキシ パスワード**を指定します。また、パスワードの確認も必要です。
 
@@ -75,7 +75,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 
 初めてデバイスを登録する場合は、登録に進みます。デバイスが既に登録されている場合、ウィザードは終了します。構成した設定は保存されます。
 
-また、Web プロキシも有効になります。「[Web プロキシを有効にする](#enable-web-proxy)」の手順を省略し、すぐに、「[管理ポータルで Web プロキシ設定を表示する](#view-web-proxy-settings-in-the-management-portal)」に進むことができます。
+また、Web プロキシも有効になります。「[Web プロキシを有効にする](#enable-web-proxy)」の手順を省略し、すぐに、「[Azure クラシック ポータルで Web プロキシ設定を表示する](#view-web-proxy-settings-in-the-azure-classic-portal)」に進むことができます。
 
 
 ## StorSimple 用 Windows PowerShell のコマンドレットを使用して Web プロキシを構成する
@@ -100,7 +100,7 @@ Web プロキシ設定を構成するための代替手段として、StorSimple
 
 Web プロキシは、既定では無効になっています。StorSimple デバイスで Web プロキシ設定を構成したら、StorSimple 用 Windows PowerShell を使用して Web プロキシ設定を有効にする必要があります。
 
-> [AZURE.NOTE]**セットアップ ウィザードを使用して Web プロキシを構成した場合、この手順は必要ありません。セットアップ ウィザードのセッションの後、Web プロキシは既定で自動的に有効になります。**
+> [AZURE.NOTE] **セットアップ ウィザードを使用して Web プロキシを構成した場合、この手順は必要ありません。セットアップ ウィザードのセッションの後、Web プロキシは既定で自動的に有効になります。**
 
 StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで Web プロキシを有効にします。
 
@@ -116,9 +116,9 @@ StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで 
 
 	![Configure Web Proxy On StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## 管理ポータルで Web プロキシ設定を表示する
+## Azure クラシック ポータルで Web プロキシ設定を表示する
 
-Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。管理ポータル内から変更することはできません。ただし、構成済みの設定を管理ポータルで表示することはできます。次の手順を実行して、Web プロキシを表示します。
+Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。クラシック ポータル内から変更することはできません。ただし、構成済みの設定をクラシック ポータルで表示することはできます。次の手順を実行して、Web プロキシを表示します。
 
 #### Web プロキシ設定を表示するには
 1. **[StorSimple Manager サービス]、[デバイス]** の順に移動します。デバイスを選択してクリックし、**[構成]** に移動します。
@@ -140,10 +140,10 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 |6\.|0x8007138f - クラスター リソースが見つかりません|プラットフォーム サービス クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。|デバイスで出荷時の設定にリセットすることが必要になる場合があります。プラットフォーム リソースの作成が必要になる場合があります。Microsoft サポートに対処法をお問い合わせください。|
 |7\.|0x8007138c - クラスター リソースがオンラインではありません|プラットフォームまたはデータパス クラスター リソースがオンラインではありません。|Microsoft サポートに連絡し、データパスとプラットフォーム サービス リソースがオンラインになるようにしてください。|
 
-> [AZURE.NOTE]
+> [AZURE.NOTE] 
 > 
 > -  上記のエラー メッセージの一覧ですべてを網羅しているわけではありません。 
-> - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの管理ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、管理ポータルではデバイスの状態が **"オフライン"** になります。
+> - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの Azure クラシック ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、クラシック ポータルではデバイスの状態が **"オフライン"** になります。
 
 ## 次のステップ
 
@@ -151,4 +151,4 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

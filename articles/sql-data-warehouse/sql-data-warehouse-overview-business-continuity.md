@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="sahajs"/>
+   ms.date="02/17/2016"
+   ms.author="sahajs;barbkess;sonyama"/>
 
 
 # SQL Data Warehouse でのビジネス継続性の計画
@@ -66,7 +66,7 @@ geo リストアは、破壊的なイベントが原因でデータベースを�
 <!--Article references-->
 [business continuity overview]: ../sql-database/sql-database-business-continuity.md
 [Finalize a recovered database]: ../sql-database/sql-database-recovered-finalize.md
-[Azure storage redundancy options (Azure ストレージ冗長オプション)]: storage-redundancy/#read-access-geo-redundant-storage-ra-grs.md
+[Azure storage redundancy options (Azure ストレージ冗長オプション)]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [ビジネス継続性の概要]: ../sql-database/sql-database-business-continuity.md
 [SQL Data Warehouse でのデータベースのユーザー エラーからの復旧]: sql-data-warehouse-business-continuity-recover-from-user-error.md
 
@@ -78,4 +78,4 @@ geo リストアは、破壊的なイベントが原因でデータベースを�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

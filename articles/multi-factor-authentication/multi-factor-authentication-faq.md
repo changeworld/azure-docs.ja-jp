@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)" 
-	description="Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。" 
+	description="Azure Multi-factor authentication (MFA) に関してよく寄せられる質問の一覧を提供します。MFA は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。" 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="02/16/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
@@ -27,7 +27,7 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 [Microsoft サポート技術情報 (KB) の検索](http://search.microsoft.com/supportresults.aspx?form=mssupport&q=phonefactor)
 
-- Microsoft Azure Multi-Factor Authentication Server (電話要素) のサポートに関する一般的な障害対応の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
+- Microsoft Azure Multi-Factor Authentication Server (PhoneFactor) のサポートに関する一般的な障害対応の技術的な解決策については、Microsoft サポート技術情報 (KB) を検索してください。
 
 [Microsoft Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
 
@@ -35,15 +35,11 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 [パスワード 発行](mailto:phonefactorsupport@microsoft.com)
 
-- 従来の Phonefactor ユーザーで、パスワードのリセットについて不明な点がある場合や、パスワードのリセットのヘルプが必要な場合は、以下のリンクをクリックしてサポート ケースを開いてください。
+- 従来の PhoneFactor ユーザーで、パスワードのリセットについて不明な点がある場合や、パスワードのリセットのヘルプが必要な場合は、以下のリンクをクリックしてサポート ケースを開いてください。
 
-[Microsoft Azure Multi-Factor Authentication Server (電話要素) のカスタマー サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)
+[Microsoft Azure Multi-Factor Authentication Server (PhoneFactor) のカスタマー サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)
 
-- このリンクを使用してマイクロソフトのサポート担当者にお問い合わせください。サポート オプションを判断するためいくつかの質問をお尋ねします。サポート オプションとしては、電子メール、オンラインでの送信、電話サポートがあります。 
-
-[Microsoft Azure Multi-Factor Authentication Server (電話要素) に関する一般的な問い合わせ](http://azure.microsoft.com/services/multi-factor-authentication)
-
-- Microsoft Azure Multi-factor Authentication Server (電話要素) について、または本製品の購入方法や利用できる各種サポート オプションについてご質問がある場合、[pfsales@microsoft.com](mailto:pfsales@microsoft.com) 宛に電子メールを送信してください。 
+- このリンクを使用してマイクロソフトのサポート担当者にお問い合わせください。サポート オプションを判断するためいくつかの質問をお尋ねします。サポート オプションとしては、電子メール、オンラインでの送信、電話サポートがあります。
 
 
 
@@ -77,26 +73,52 @@ Azure Multi-factor Authentication に関する質問に回答しています。�
 
 **Q: 組織に対する Azure Multi-Factor Authentication 関連の請求はどのように行われますか。**
 
-Microsoft Azure 管理ポータルで多要素認証プロバイダーを作成するときに「ユーザーごと」または「認証ごと」のどちらかの請求/使用法モデルを選択します。これは、使用量をベースとしたリソースで、仮想マシンや Web サイトと同様に、組織の Azure サブスクリプションに対して課金されます。
+Azure Multi-Factor Authentication は、ユーザーごとおよび認証ごとの課金オプション付きスタンドアロン サービスとして、または Azure Active Directory Premium、Enterprise Mobility Suite、および Enterprise Cloud Suite とのセットで利用できます。スタンドアロン サービスは、使用量ベースで利用可能であり、Azure 年額コミットメントに対して毎月請求されます。または、Microsoft エンタープライズ契約、Open Volume License プログラム、Cloud Solution Providers プログラム、および Direct を通じて入手できる、ユーザーごとの年間ランセンスでも利用できます。
+
+>[AZURE.IMPORTANT]
+オーストラリア リージョンをご利用いただけるのは、オーストラリアまたはニュージーランドに事業の活動場所を持つお客様のみです。
+
+課金モデル | 料金
+------------- | ------------- |
+ユーザーごとの使用量 (Azure 年額コミットメント)| $1.40/月 (認証回数の制限なし)
+認証ごとの使用量 (Azure 年額コミットメント)|$1.40/10 認証回数
+ユーザーごとの年間ライセンス (Direct)|$1.40/月 (認証回数の制限なし)
+ユーザーごとの年間ライセンス (ボリューム ライセンス)|[エンタープライズ契約の担当者](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx)にお問い合わせください。
 
 **Q: 「ユーザーごと」の請求モデルは、Multi-Factor Authentication が有効なユーザー数に基づきますか、それとも確認を実行するユーザー数に基づいて課金されるのでしょうか。**
 
 請求は、Multi-Factor Authentication が有効なユーザーの数に基づいて行われます。
+
+**Q: Multi-Factor Authentication の請求はどのように行われますか。**
+
+ユーザーごとまたは認証ごとの使用量課金/使用モデルを使用する場合、管理者は Microsoft Azure クラシック ポータルで Multi-Factor Auth プロバイダーを作成するときに、使用の種類を選択します。これは、仮想マシンや Web サイトと同様に、組織の Azure サブスクリプションに対して課金されるリソースです。ライセンス モデルを使用する場合は、Azure Multi-Factor Authentication ライセンスが購入され、ユーザーに割り当てられます。これは、Office 365 や他のサブスクリプション製品と同様です。
+
+**Q: 管理者用の Azure Multi-Factor Authentication の無料版はありますか。**
+
+使用量ベースの Azure Multi-Factor Auth プロバイダーが、対応する Azure Active Directory にリンクされていない場合は、"Azure 管理者用 MFA" と呼ばれる Azure Multi-Factor Authentication 機能の一部が、Azure グローバル管理者に無料で提供されます。Multi-Factor Auth プロバイダーを使用すると、MFA が有効になっているディレクトリ内のすべての管理者とユーザーが、Azure Multi-Factor Authentication のフル バージョンにアップグレードされます。
+
+**Q: Office 365 ユーザー用の Azure Multi-Factor Authentication の無料版はありますか。**
+
+使用量ベースの Azure Multi-Factor Auth プロバイダーが、対応する Azure Active Directory にリンクされていない場合は、"Office 365 用 MFA" と呼ばれる Azure Multi-Factor Authentication 機能の一部が、O365 ライセンスを割り当てられているユーザーに無料で提供されます。Multi-Factor Auth プロバイダーを使用すると、MFA が有効になっているディレクトリ内のすべての管理者とユーザーが、Azure Multi-Factor Authentication のフル バージョンにアップグレードされます。
+
+**Q: ユーザーごとと認証ごとの使用量課金モデルは、いつでも切り替えることができますか。**
+
+課金モデルはリソースの作成中に選択するため、リソースをプロビジョニングした後に変更することはできません。ただし、新しい Multi-Factor Authentication リソースを作成して元のリソースを置き換えることは可能です。ユーザー設定と構成オプションを新しいリソースに転送することはできません。
+
+**Q: 使用量課金とライセンス モデルは、いつでも切り替えることができますか。**
+
+Azure Multi-Factor Authentication、Azure Active Directory Premium、Enterprise Mobility Suite、および Enterprise Cloud Suite ライセンスは、いつでも購入できます。既にユーザーごとの Azure Multi-Factor Auth プロバイダーを持っているディレクトリにライセンスが追加されると、所有ライセンス数分が使用量ベース課金から差し引かれます。MFA が有効になっているすべてのユーザーにライセンスが割り当てられたら、管理者は Azure Multi-Factor Auth プロバイダーを削除できます。組織は、認証ごとの使用量課金とライセンス モデルを混在させることはできません。認証ごとの Multi-Factor Auth プロバイダーがディレクトリにリンクされている場合、組織は所有しているライセンスにかかわらず、すべての MFA 検証要求に対して課金されます。
+
+**Q: 組織が Azure Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。**
+
+使用量ベースの課金モデルを使用する場合、Azure Active Directory は必要ありません。ディレクトリへの Multi-Factor Authentication プロバイダーのリンクはオプションです。ディレクトリにリンクされていない場合、組織はオンプレミスの Azure Multi-factor Authentication Server または SDK を使用できます。ライセンス モデルを使用する場合は、Azure Active Directory が必要です。これは、ライセンスが購入されてディレクトリ内のユーザーに割り当てられると、ライセンスがディレクトリに追加されるためです。
+
 
 ## 使いやすさ
 
 **Q: 電話に応答が届かない場合、または電話を忘れた場合はどうすればよいでしょうか。**
 
 予備の電話番号を構成している場合は、サインイン ページでプロンプトが表示されたらその電話番号を選択して再試行します。別の方法を構成していない場合には、管理者に連絡して、メインの電話番号 (携帯また職場) に割り当てられている電話番号を更新してもらってください。
-
-**Q: 管理者ロールからユーザーを削除しましたが、多要素認証を無効にするのを忘れ、一覧に表示されなくなってしまいました。この機能をどのようにすれば削除できますか。**
-
-- 使用しているポータルに応じて、左側のウィンドウで、[ユーザー] または [ユーザーとグループ] をクリックします。
-- 編集するユーザーの隣にあるチェック ボックスをオンにして、[編集] または編集アイコンをクリックします。
-- [設定] をクリックし、[ロールの割り当て] で [はい] を選択し、以前の管理者ロールにユーザーを追加します。
-- 多要素認証ページに移動します。対象アカウントが、ページ上にある一覧の上部に表示されているはずです。 
-- 前述の手順に従って、アカウントの多要素認証を無効にします。 
-- この時点で、管理者ロールから対象アカウントを削除できます。
 
 
 **Q: ユーザーから連絡を受けたときにアカウントがロックアウトされている場合、管理者はどうすればよいでしょうか。**
@@ -131,6 +153,13 @@ Azure MFA Server を使用している場合は、サードパーティの OATH 
 
 したがって、ActiveIdentity トークンが TOTP OATH トークンで、Azure MFA Server にインポート可能な CSV ファイルにシークレット キー ファイルを取得できる場合は、それらを使用できます。OATH トークンは、AD FS、RADIUS (クライアント システムでアクセス チャレンジ応答を処理できる場合) および IIS フォーム ベース認証で使用できます。
 
+**Q: Azure MFA Server を使用して、ターミナル サービスのセキュリティを保護できますか。**
+
+はい。ただし、Windows Server 2012 R2 以降を使用している場合は、RD ゲートウェイを使用するときにだけ可能です。
+
+Windows Server 2012 以前のバージョンで Azure MFA Server が LSA セキュリティ パッケージに接続した方法は、セキュリティの変更のため、Windows Server 2012 R2 では機能しなくなりました。そのため、Windows 2012 以前のターミナル サービスのバージョンでは、単に [Windows 認証でアプリケーションをセキュリティで保護する](multi-factor-authentication-get-started-server-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)手順に従うだけで済みます。
+
+しかし、Windows Server 2012 R2 を使用している場合は、RD ゲートウェイが必要になります。
 
 ## エラー
 
@@ -149,6 +178,6 @@ Azure MFA Server を使用している場合は、サードパーティの OATH 
 
 現時点では、追加のセキュリティ確認は、ブラウザーからアクセスできるアプリケーションまたはサービスでのみ使用できます。Windows Powershell など、ローカル コンピューターにインストールされている非ブラウザー アプリケーション (リッチ クライアント アプリケーションとも呼ばれます) は、追加のセキュリティ確認に必要なアカウントでは機能しません。この場合、アプリケーション生成エラー 0x800434D4L が表示されることがあります。
 
-これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、[「管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする」](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)) をご覧ください。
+これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)」 を参照してください。
 
-<!----HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

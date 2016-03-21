@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="SQL Data Warehouse Transparent Data Encryption (TDE) TSQL の概要| Microsoft Azure" 
-	description="SQL Data Warehouse Transparent Data Encryption (TDE) TSQL の概要" 
-	services="sql-data-warehouse" 
-	documentationCenter="" 
-	authors="twounder" 
-	manager="" 
-	editor=""/>
+   pageTitle="SQL Data Warehouse Transparent Data Encryption (TDE) TSQL の概要| Microsoft Azure" 
+   description="SQL Data Warehouse Transparent Data Encryption (TDE) TSQL の概要" 
+   services="sql-data-warehouse" 
+   documentationCenter="" 
+   authors="twounder" 
+   manager="barbkess" 
+   editor=""/>
 
 <tags 
-	ms.service="sql-data-warehouse" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/21/2015" 
-	ms.author="twounder"/>
+   ms.service="sql-data-warehouse" 
+   ms.workload="data-management" 
+   ms.tgt_pltfrm="na" 
+   ms.devlang="na" 
+   ms.topic="article" 
+   ms.date="01/07/2016" 
+   ms.author="mausher;barbkess;sonyama"/>
  
 # Transparent Data Encryption (TDE) の概要
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-encryption-tde.md)
+- [Azure Classic Portal](sql-data-warehouse-encryption-tde.md)
 - [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
 
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
@@ -66,11 +66,11 @@ FROM
 
  
 <!--Anchors-->
-[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/ja-JP/library/bb934049.aspx
+[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

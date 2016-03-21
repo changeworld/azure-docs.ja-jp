@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="" 
 	tags=""/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="02/05/2016" 
 	ms.author="genemi"/>
 
 
@@ -33,28 +33,28 @@
 *XEvents* は「拡張イベント」の非公式のニックネームで、ブログや他の非公式な場所で使われます。
 
 
-> [AZURE.NOTE]2015 年 10 月より、Azure SQL Database において拡張イベント セッション機能がプレビュー レベルでアクティブ化します。完全一般公開 (GA) の日付はまだ設定されていません。
+> [AZURE.NOTE] 2015 年 10 月より、Azure SQL Database において拡張イベント セッション機能がプレビュー レベルでアクティブ化します。完全一般公開 (GA) の日付はまだ設定されていません。
 > 
-> GA のお知らせの際は、Azure の[サービス更新](http://azure.microsoft.com/updates/?service=sql-database)ページに投稿されます。
+> GA のお知らせの際は、Azure の[サービス更新](https://azure.microsoft.com/updates/?service=sql-database)ページに投稿されます。
 
 
 ## 前提条件
 
 
-このトピックは、以下の知識をある程度持っていることを想定しています。
+このトピックは、以下の知識をお持ちのユーザーを想定しています。
 
 
-- [Azure SQL Database サービス](http://azure.microsoft.com/services/sql-database/)。
+- [Azure SQL Database サービス](https://azure.microsoft.com/services/sql-database/)。
 
 
 - Microsoft SQL Server の[拡張イベント](http://msdn.microsoft.com/library/bb630282.aspx)。
  - 拡張イベントに関するドキュメントの大部分は、SQL Server と SQL Database の両方に適用されます。
 
 
-イベント ファイルを[ターゲット](#AzureXEventsTargets)として選択する際、以下の項目について事前に明確にしておくと便利です。
+イベント ファイルを[ターゲット](#AzureXEventsTargets)として選択する際、以下の項目についての知識が役立ちます。
 
 
-- [Azure Storage サービス](http://azure.microsoft.com/services/storage/)
+- [Azure Storage サービス](https://azure.microsoft.com/services/storage/)
 
 
 - PowerShell
@@ -67,9 +67,9 @@
 関連するトピックで次の 2 つのコード サンプルを提供します。
 
 
-- [SQL Database の拡張イベントのためのリング バッファーのターゲット コード](sql-database-xevent-code-ring-buffer.md)
+- [SQL Database の拡張イベントのためのリング バッファー ターゲット コード](sql-database-xevent-code-ring-buffer.md)
  - 短く単純な Transact-SQL スクリプト。
- - コード サンプルのトピックで強調しているように、リング バッファーのターゲットの作業が完了したら、alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` ステートメントの実行によりそのリソースを解放する必要があります。後ほど、`ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` によりリング バッファーの他のインスタンスを追加できます。
+ - コード サンプルのトピックで強調しているように、リング バッファー ターゲットの作業が完了したら、alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` ステートメントの実行によりそのリソースを解放する必要があります。後ほど、`ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` によりリング バッファーの他のインスタンスを追加できます。
 
 
 - [SQL Database の拡張イベントのためのイベント ファイル ターゲット コード](sql-database-xevent-code-event-file.md)
@@ -259,7 +259,7 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 - [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
-拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。ただし、サンプルが Microsoft SQL Server と Azure SQL Database のどちらを対象にしているのかを常に確認しなければなりません。それにより、サンプルを実行するのにわずかな変更が必要かどうか判断できます。
+拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。それにより、サンプルを実行するのにわずかな変更が必要かどうか判断できます。
 
 
 <!--
@@ -269,4 +269,4 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

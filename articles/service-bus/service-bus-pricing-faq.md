@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/09/2015"
+   ms.date="12/28/2015"
    ms.author="sethm" />
 
 # Service Bus の価格に関する FAQ
 
-このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。Microsoft Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。Service Bus の価格の詳細については、[Service Bus の価格の詳細](http://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。Microsoft Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。Service Bus の価格の詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
 
->[AZURE.NOTE]Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](http://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
+>[AZURE.NOTE] Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](../event-hubs/event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 - [Service Bus の課金方法を教えてください](#how-do-you-charge-for-service-bus)
 - [Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)
@@ -32,7 +32,7 @@
 
 ## Service Bus の課金方法を教えてください
 
-Service Bus の価格の詳細については、「[Service Bus の料金と課金](https://msdn.microsoft.com/library/dn831889.aspx)」および [Service Bus の価格の詳細](http://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)」を参照してください。
+Service Bus の価格の詳細については、「[Service Bus の料金と課金](https://msdn.microsoft.com/library/dn831889.aspx)」および [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)」を参照してください。
 
 ## Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください
 
@@ -84,7 +84,7 @@ Azure の他のサービスと同様、Service Bus では、リソースが公�
 
 - **名前空間あたりの同時リレー リスナー数** - Service Bus では、サービスの名前空間あたりの同時リレー リスナー数が 2000 に制限されます。このクォータに達すると、その後のリレー リスナーのオープン要求は拒否され、呼び出し元のコードが例外を受け取ります。
 
-- **サービスの名前空間あたりのトピック/キュー数** - サービスの名前空間のトピック/キュー (永続的なストレージを利用したエンティティ) の最大数は 10,000 に制限されます。このクォータに達すると、以後、サービスの名前空間に対する新しいトピック/キューの作成要求は拒否されます。この場合、Azure ポータルにエラー メッセージが表示されるか、または呼び出し元のクライアント コードが例外を受け取ります。どちらになるかは、作成要求をポータルとクライアント コードのどちらで行ったかによって決まります。
+- **サービスの名前空間あたりのトピック/キュー数** - サービスの名前空間のトピック/キュー (永続的なストレージを利用したエンティティ) の最大数は 10,000 に制限されます。このクォータに達すると、以後、サービスの名前空間に対する新しいトピック/キューの作成要求は拒否されます。この場合、[Azure クラシック ポータル][]にエラー メッセージが表示されるか、または呼び出し元のクライアント コードが例外を受け取ります。どちらになるかは、作成要求をポータルとクライアント コードのどちらで行ったかによって決まります。
 
 - **メッセージ サイズ クォータ**
 	- **キュー/トピック/サブスクリプション**
@@ -96,7 +96,7 @@ Azure の他のサービスと同様、Service Bus では、リソースが公�
 
 	上記のサイズ クォータを超えるメッセージは拒否され、呼び出し元のコードが例外を受け取ります。
 
-- **トピックごとのサブスクリプション数** - トピックごとの最大サブスクリプション数は 2,000 に制限されます。このクォータに達すると、以後、そのトピックに対する新しいサブスクリプションの作成要求は拒否されます。この場合、管理ポータルにエラー メッセージが表示されるか、または呼び出し元のクライアント コードが例外を受け取ります。どちらになるかは、作成要求をポータルとクライアント コードのどちらで行ったかによって決まります。
+- **トピックごとのサブスクリプション数** - トピックごとの最大サブスクリプション数は 2,000 に制限されます。このクォータに達すると、以後、そのトピックに対する新しいサブスクリプションの作成要求は拒否されます。この場合、[Azure クラシック ポータル][]にエラー メッセージが表示されるか、または呼び出し元のクライアント コードが例外を受け取ります。どちらになるかは、作成要求をポータルとクライアント コードのどちらで行ったかによって決まります。
 
 - **トピックごとの SQL フィルター数** - トピックごとの最大 SQL フィルター数は 2,000 に制限されます。このクォータに達すると、その後、そのトピックに追加のフィルターを作成する要求は拒否され、呼び出し元のコードが例外を受け取ります。
 
@@ -111,7 +111,9 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Azure Service Bus Premium メッセージングの概要(Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
+- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_0204_2016-->

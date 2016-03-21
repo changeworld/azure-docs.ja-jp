@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/05/2015" 
+	ms.date="02/03/2016" 
 	ms.author="juliako"/>
 
 #既存の Blob を Media Services 資産にコピーする
 
 このトピックでは、ストレージ アカウントから新しい Microsoft Azure Media Services 資産に blob をコピーする方法について説明します。
 
-blob は、Media Services アカウントに関連付けられた (または関連付けられていない) ストレージ アカウントに存在します。このトピックでは、ストレージ アカウントから Media Services 資産に blob をコピーする方法について説明します。データ センター間でもコピーできることにご注意ください。ただし、これによって料金が発生する可能性があります。価格の詳細については、「[データ転送](http://azure.microsoft.com/pricing/#header-11)」をご覧ください。
+blob は、Media Services アカウントに関連付けられた (または関連付けられていない) ストレージ アカウントに存在します。このトピックでは、ストレージ アカウントから Media Services 資産に blob をコピーする方法について説明します。データ センター間でもコピーできることにご注意ください。ただし、これによって料金が発生する可能性があります。価格の詳細については、「[データ転送](https://azure.microsoft.com/pricing/#header-11)」をご覧ください。
 
->[AZURE.NOTE]Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
+>[AZURE.NOTE] Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 
 ##サンプルのダウンロード
 
-[ここ](http://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)からサンプルを取得し、実行します。
+[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)からサンプルを取得し、実行します。
 
 ##前提条件
 
@@ -72,7 +72,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 		</appSettings>
 
 
-##ストレージ アカウントから Media Services 資産に blob をコピーします。
+##Storage アカウントから Media Services 資産に blob をコピーします。
 
 以下のコード例では次のタスクを実行します。
 
@@ -227,6 +227,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 		            Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).First();
 		
 		        // Create a 30-day readonly access policy. 
+            // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
 		        IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 		            TimeSpan.FromDays(30),
 		            AccessPermissions.Read);
@@ -315,4 +316,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

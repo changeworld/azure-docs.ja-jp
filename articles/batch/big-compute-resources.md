@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ビッグ コンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
-   description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
+   pageTitle="クラウドのバッチと HPC のワークロードのリソース | Microsoft Azure"
+   description="Azure で大規模並列、Batch、高性能コンピューティング (HPC) ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
    authors="dlepow"
@@ -10,10 +10,10 @@
 <tags
    ms.service="multiple"
    ms.devlang="multiple"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="09/29/2015"
+   ms.date="01/26/2016"
    ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -25,16 +25,16 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [Batch と HPC ソリューション](batch-hpc-solutions.md)
 
-* [ビデオ: Azure と HPC を使用したクラウドでの大規模なコンピューティング](http://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
+* [ビデオ: Azure と HPC を使用したクラウドでの大規模なコンピューティング](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
 
 ## Azure Batch
 
-[Batch](http://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
+[Batch](https://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
 
-* [ドキュメント](http://azure.microsoft.com/documentation/services/batch/)
+* [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
-* [API リファレンス](https://msdn.microsoft.com/library/azure/dn820177.aspx)
+* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) と [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) の API リファレンス
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
@@ -50,25 +50,29 @@ Azure の大規模なコンピューティング オプションについて説�
 
 HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料 HPC ソリューションであり、Windows と Linux HPC の両方のワークロードを実行できます。
 
-* [HPC Pack 2012 R2 Update 2 をダウンロードする](https://www.microsoft.com/ja-jp/download/details.aspx?id=47755)
+* [HPC Pack 2012 R2 Update 3 をダウンロードする](https://www.microsoft.com/download/details.aspx?id=49922)
 
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
 
 * [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
 
-* [HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+* [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
+
+* [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 
 * [Windows HPC フォーラム](https://social.microsoft.com/Forums/home?category=windowshpc)
 
 ### Linux と OSS クラスターのソリューション
 
-これらの Azure クイック スタート テンプレートを使用して、オープン ソース ツールを備えた Linux HPC クラスターをデプロイします。
+次の Azure テンプレートを使用して、Linux HPC クラスターをデプロイします。
 
-* [SLURM クラスターの起動](http://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
+* [SLURM クラスターの起動](https://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 
-* [トルク クラスターの起動](http://azure.microsoft.com/documentation/templates/torque-cluster/)
+* [トルク クラスターの起動](https://azure.microsoft.com/documentation/templates/torque-cluster/)
+
+* [Intel Cloud Edition for Lustre Software - Eval](https://azure.microsoft.com/marketplace/partners/intel/lustre-cloud-edition-evaleval-lustre-2-7/)
 
 ## Microsoft MPI
 
@@ -81,44 +85,64 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
 
-
 ## コンピューティング集中型インスタンス
 
-Azure では、Linux および Windows の HPC ワークロードを実行するために、コンピューティング集中型の [A8、A9、A10、A11 インスタンス](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)などの[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。
+Azure では、Linux と Windows の HPC ワークロードを実行するために[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、コンピューティング集中型の [A8 や A9](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md) インスタンスはバックエンド RDMA ネットワークに接続できます。
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
 
 ## アーキテクチャの設計図
 
-* [大規模なコンピューティング - 金融サービス](http://go.microsoft.com/fwlink/?LinkId=536378) (PDF) では、リスク管理、レポート、シミュレーション用のクラウドで大規模なコンピューター処理とデータ分析を運用し、調整する方法を示しています。
+* [Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
 
 ## サンプルとデモ
 
 * [Azure Batch のコード サンプル](https://github.com/Azure/azure-batch-samples)
 
-* [Batch Apps Blender のサンプル](https://github.com/Azure/azure-batch-apps-blender)と[ブログの投稿](http://azure.microsoft.com/blog/2015/01/26/blender-on-azure-batch/)
-
 ## 関連する Azure サービス
 
-* [Data Factory](http://azure.microsoft.com/documentation/services/data-factory/)
+* [Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
-* [Machine Learning](http://azure.microsoft.com/documentation/services/machine-learning/)
+* [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
-* [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
+* [HDInsight](https://azure.microsoft.com/documentation/services/hdinsight/)
 
-* [Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-* [Cloud Services](http://azure.microsoft.com/documentation/services/cloud-services/)
+* [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
-* [Media Services](http://azure.microsoft.com/documentation/services/media-services/)
+* [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
+
+## 顧客事例
+
+
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
+
+* [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
+
+* [Ludwig Institute of Cancer Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5830)
+
+* [Microsoft Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=15634)
+
+* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
+
+* [Mitsubishi UFJ Securities International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=26266)
+
+* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
+
+
+
+
 
 
 
 ## 次のステップ
 
-* 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
-* また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
+* 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
+* また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Druva の統合 | Microsoft Azure" 
     description="Azure Active Directory で Druva を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Druva の統合
 
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Druva でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、Druva に割り当てた Azure AD ユーザーは、Druva 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Druva に割り当てた Azure AD ユーザーは、Druva 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -37,7 +37,7 @@
 
 ###Druva のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-druva-tutorial/IC700993.png "Active Directory")
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-druva-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-druva-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -64,25 +64,25 @@
     ![Druva](./media/active-directory-saas-druva-tutorial/IC795086.png "Druva")
 ##シングル サインオンの構成
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Druva に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Druva に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットにこの例を示します。
+Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
 
 ![SAML トークンの属性](./media/active-directory-saas-druva-tutorial/IC795087.png "SAML トークンの属性")
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Druva** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure Active Directory ポータルの **Druva** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-druva-tutorial/IC795027.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-druva-tutorial/IC795027.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Druva へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-druva-tutorial/IC795088.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-druva-tutorial/IC795088.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページの **[Druva のサインオン URL]** ボックスに、ユーザーが Druva アプリケーションにサインオンする際に使用する URL (例: **https://cloud.druva.com/home/*”)) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-druva-tutorial/IC795089.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-druva-tutorial/IC795089.png "Configure App URL")
 
 4.  **[Druva でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターにローカルに保存します。
 
@@ -92,7 +92,7 @@ Druva アプリケーションでは、特定の形式の SAML アサーショ�
 
 6.  **[管理]、[設定]** の順にクリックします。
 
-    ![設定](./media/active-directory-saas-druva-tutorial/IC795091.png "設定")
+    ![Settings](./media/active-directory-saas-druva-tutorial/IC795091.png "Settings")
 
 7.  [シングル サインオンの設定] ダイアログで、次の手順を実行します。
 
@@ -102,14 +102,14 @@ Druva アプリケーションでは、特定の形式の SAML アサーショ�
     2.  Azure ポータルの **[Druva でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
     3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[ID プロバイダー証明書]** ボックスに貼り付けます。
     5.  **[設定]** ページを開くには、**[保存]** をクリックします。
 
 8.  **[設定]** ページで、**[SSO トークンの生成]** をクリックします。
 
-    ![設定](./media/active-directory-saas-druva-tutorial/IC795093.png "設定")
+    ![Settings](./media/active-directory-saas-druva-tutorial/IC795093.png "Settings")
 
 9.  **[シングル サインオン認証トークン]** ダイアログで、次の手順を実行します。
 
@@ -118,11 +118,11 @@ Druva アプリケーションでは、特定の形式の SAML アサーショ�
     1.  **[コピー]** をクリックします。
     2.  **[閉じる]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-druva-tutorial/IC795095.png "Configure Single Sign-On")
 
-11. 上部のメニューで **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+11. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-druva-tutorial/IC795096.png "属性")
 
@@ -130,7 +130,7 @@ Druva アプリケーションでは、特定の形式の SAML アサーショ�
 
 	|属性名|属性値|
     |---|---|
-    |insync\_auth\_token|<*クリップボードの値*>|
+    |insync\_auth\_token|<クリップボードの値>|
 
     1.  上記の表の各データ行で、**[ユーザー属性の追加]** をクリックします。
     2.  **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
@@ -148,11 +148,11 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 
 2.  **[管理]、[ユーザー]** の順にクリックします。
 
-    ![ユーザーの管理](./media/active-directory-saas-druva-tutorial/IC795097.png "ユーザーの管理")
+    ![Manage Users](./media/active-directory-saas-druva-tutorial/IC795097.png "Manage Users")
 
 3.  **[Create New]** をクリックします。
 
-    ![ユーザーの管理](./media/active-directory-saas-druva-tutorial/IC795098.png "ユーザーの管理")
+    ![Manage Users](./media/active-directory-saas-druva-tutorial/IC795098.png "Manage Users")
 
 4.  [新しいユーザーの作成] ダイアログで、次の手順を実行します。
 
@@ -171,14 +171,14 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  Druva アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Druva** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-druva-tutorial/IC795100.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-druva-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-druva-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

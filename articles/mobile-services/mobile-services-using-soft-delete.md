@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | Microsoft Azure" 
-	description="アプリケーション内で Azure Mobile Services の論理削除機能を使用する方法を説明します。" 
-	documentationCenter="" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | Microsoft Azure"
+	description="アプリケーション内で Azure Mobile Services の論理削除機能を使用する方法を説明します。"
+	documentationCenter=""
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="09/28/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="02/11/2016"
 	ms.author="wesmc"/>
 
 # Mobile Services での論理削除の使用方法
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 ##概要
 
@@ -31,7 +36,7 @@ JavaScript または .NET バックエンドで作成されたテーブルは、
 
 * [Mobile Services でのオフライン データの同期]機能を使用すると、クライアント SDK は自動的に削除済みのレコードをクエリし、それらをローカル データベースから削除します。論理削除が有効でない場合は、クライアント SDK がローカル ストアからどのレコードを削除するか認識できるように、バックエンドに追加コードを記述する必要があります。記述しないと、クライアント ローカル ストアとバックエンドの間でこれらの削除済みレコードに関して矛盾が生じるため、クライアント メソッド `PurgeAsync()` を呼び出して、ローカル ストアを消去する必要があります。
 * アプリケーションによっては、データを決して物理的に削除しない、または監査の後のみデータを削除するなどのビジネス要件があります。論理削除機能は、このようなシナリオで役立ちます。
-* 論理削除を使用して "削除の取り消し" 機能を実装することにより、誤って削除されたデータを回復できます。ただし、論理削除済みのレコードはデータベース内の領域を占有するので、スケジュールされたジョブを作成して、論理削除済みのレコードを一定期間ごとに物理的に削除することを検討する必要があります。この例については、「.NET バックエンドでの論理削除の使用方法」と「JavaScript バックエンドでの論理削除の使用方法」をご覧ください。また、これらの物理的に削除されたレコードがデバイスのローカル データ ストアに残存しないように、クライアント コードで定期的に `PurgeAsync()` を呼び出す必要があります。
+* 論理削除を使用して "削除の取り消し" 機能を実装することにより、誤って削除されたデータを回復できます。ただし、論理削除済みのレコードはデータベース内の領域を占有するので、スケジュールされたジョブを作成して、論理削除済みのレコードを一定期間ごとに物理的に削除することを検討する必要があります。この例については、「[.NET バックエンドでの論理削除の使用方法](#using-with-dotnet)」および「[JavaScript バックエンドでの論理削除の使用方法](#using-with-javascript)」を参照してください。また、これらの物理的に削除されたレコードがデバイスのローカル データ ストアに残存しないように、クライアント コードで定期的に `PurgeAsync()` を呼び出す必要があります。
 
 
 
@@ -44,7 +49,7 @@ JavaScript または .NET バックエンドで作成されたテーブルは、
 次の手順は、.NET バックエンド モバイル サービスの論理削除を有効にする方法を示しています。
 
 1. Visual Studio で、.NET バックエンド モバイル サービス プロジェクトを開きます。
-2. .NET バックエンド プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+2. .NET バックエンド プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 3. パッケージ マネージャー ダイアログで、更新プログラムの下にある **Nuget.org** をクリックし、[Microsoft Azure Mobile Services .NET バックエンド](http://go.microsoft.com/fwlink/?LinkId=513165) NuGet パッケージのバージョン 1.0.402 以降をインストールします。
 3. Visual Studio のソリューション エクスプローラーで、.NET バックエンド プロジェクトの下の **Controllers** ノードを展開し、コントローラー ソースを開きます。たとえば、*TodoItemController.cs*。
 4. コントローラーの `Initialize()` メソッドで、`enableSoftDelete: true` パラメーターを EntityDomainManager コンストラクターに渡します。
@@ -65,7 +70,7 @@ JavaScript または .NET バックエンドで作成されたテーブルは、
 
 JavaScript バックエンドの既存のテーブルで論理削除を有効にするには、次の手順に従います。
 
-1. [管理ポータル]で、モバイル サービスをクリックします。その後、[データ] タブをクリックします。
+1. [Azure クラシック ポータル]で 、モバイル サービス をクリックします。その後、[データ] タブをクリックします。
 2. データ ページで、目的のテーブルをクリックして選択します。コマンド バーにある **[論理削除の有効化]** をクリックします。テーブルの論理削除が既に有効な場合、このボタンは表示されませんが、テーブルの [**参照**] または [**列**] タブをクリックすると *\_deleted* 列を表示できます。
 
     ![][0]
@@ -82,23 +87,23 @@ JavaScript バックエンドの既存のテーブルで論理削除を有効に
     public class SampleJob : ScheduledJob
     {
         private MobileService1Context context;
-     
-        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, 
+
+        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor,
             CancellationToken cancellationToken)
         {
             base.Initialize(scheduledJobDescriptor, cancellationToken);
             context = new MobileService1Context();
         }
-     
+
         public override Task ExecuteAsync()
         {
             Services.Log.Info("Purging old records");
             var monthAgo = DateTimeOffset.UtcNow.AddDays(-30);
-     
+
             var toDelete = context.TodoItems.Where(x => x.Deleted == true && x.UpdatedAt <= monthAgo).ToArray();
             context.TodoItems.RemoveRange(toDelete);
             context.SaveChanges();
-     
+
             return Task.FromResult(true);
         }
     }
@@ -108,17 +113,17 @@ JavaScript バックエンドの既存のテーブルで論理削除を有効に
 
 
 
-##JavaScript バックエンドでの論理削除の使用方法
+## <a name="using-with-javascript"></a>JavaScript バックエンドでの論理削除の使用方法
 
 テーブル スクリプトを使用して、JavaScript バックエンド Mobile Services での論理削除機能に関連するロジックを追加します。
 
 削除の取り消し要求を検出するには、更新テーブル スクリプトで "undelete" プロパティを使用します。
-    
+
     function update(item, user, request) {
         if (request.undelete) { /* any undelete specific code */; }
     }
 削除済みレコードをスクリプトのクエリ結果に含めるには、"includeDeleted" パラメーターを true に設定します。
-    
+
     tables.getTable('softdelete_scenarios').read({
         includeDeleted: true,
         success: function (results) {
@@ -158,9 +163,6 @@ JavaScript バックエンド Mobile Services でのスケジュール ジョブ
 <!-- URLs. -->
 [SQL bit 型]: http://msdn.microsoft.com/library/ms177603.aspx
 [Mobile Services でのオフライン データの同期]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-[管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

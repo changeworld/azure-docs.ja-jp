@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple Manager サービスをデプロイする | Microsoft Azure"
-   description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
+   description="Azure クラシック ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/14/2015"
+   ms.date="12/01/2015"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスをデプロイする
 
 ## 概要
 
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure 管理ポータルでデバイスを管理できます。このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
 
 StorSimple Manager のランディング ページには、StorSimple ストレージ デバイスの管理に使用できるすべての StorSimple Manager サービスの一覧が示されています。各 StorSimple Manager について、以下の情報が [StorSimple Manager] ページに表示されます。
 
@@ -115,4 +115,4 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

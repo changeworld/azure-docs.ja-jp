@@ -1,42 +1,43 @@
-<properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+<properties
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 #Engagement を Android に統合する方法
 
-> [AZURE.SELECTOR] 
-- [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
-- [iOS](mobile-engagement-ios-integrate-engagement.md) 
-- [Android](mobile-engagement-android-integrate-engagement.md) 
+> [AZURE.SELECTOR]
+- [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
+- [Android](mobile-engagement-android-integrate-engagement.md)
 
 この手順では、Engagement の分析機能と監視機能を Android アプリでアクティブ化するための最も簡単な方法について説明します。
 
-> [AZURE.IMPORTANT]Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
- 
+> [AZURE.IMPORTANT] Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
+
 ユーザー、セッション、アクティビティ、クラッシュ、および技術に関するすべての統計をコンピューティングするために必要なログ レポートをアクティブ化するには、以下の手順で十分です。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([Android で高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-android-use-engagement-api.md))。
 
 ##Android プロジェクトに Engagement SDK とサービスを埋め込む
 
-Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
+Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードします。`mobile-engagement-VERSION.jar` を選択して、Andorid プロジェクトの `libs` フォルダーに配置します (libs フォルダーが存在しない場合は作成します)。
 
-> [AZURE.IMPORTANT]アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
+> [AZURE.IMPORTANT]
+アプリケーション パッケージを ProGuard でビルドする場合は、いくつかのクラスを保持する必要があります。次の構成スニペットを使うことができます。
 >
-> 
+>
 			-keep public class * extends android.os.IInterface
 			-keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 			<methods>;
@@ -65,11 +66,11 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 -   `<Your application name>` を自分のアプリケーションの名前に変更します。
 
-> [AZURE.TIP]`android:label` 属性を使って、エンド ユーザーの電話の "実行中のサービス" 画面に表示される Engagement サービスの名前を選択することができます。この属性には `"<Your application name>Service"` を設定することをお勧めします (例: `"AcmeFunGameService"`)。
+> [AZURE.TIP] `android:label` 属性を使って、エンド ユーザーの電話の "実行中のサービス" 画面に表示される Engagement サービスの名前を選択することができます。この属性には `"<Your application name>Service"` を設定することをお勧めします (例: `"AcmeFunGameService"`)。
 
 `android:process` 属性を指定すると、Engagement サービスが独自のプロセスで実行されることが保証されます (Engagement をアプリケーションと同じプロセス内で実行すると、メイン/UI スレッドの反応が遅くなる可能性があります)。
 
-> [AZURE.NOTE]`Application.onCreate()` に配置したすべてのコードとその他のアプリケーション コールバックは、Engagement サービスを含むすべてのアプリケーションのプロセスで実行されます。望ましくない副作用が発生する可能性があります (Engagement のプロセス内の不要なメモリとスレッドの割り当て、重複するブロードキャストの受信側またはサービスなど)。
+> [AZURE.NOTE] `Application.onCreate()` に配置したすべてのコードとその他のアプリケーション コールバックは、Engagement サービスを含むすべてのアプリケーションのプロセスで実行されます。望ましくない副作用が発生する可能性があります (Engagement のプロセス内の不要なメモリとスレッドの割り当て、重複するブロードキャストの受信側またはサービスなど)。
 
 `Application.onCreate()` をオーバーライドする場合は、次のコード スニペットを `Application.onCreate()` 関数の先頭に追加することをお勧めします。
 
@@ -77,7 +78,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			 {
 			   if (EngagementAgentUtils.isInDedicatedEngagementProcess(this))
 			     return;
-			
+
 			   ... Your code...
 			 }
 
@@ -94,10 +95,10 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 **エンゲージメントを使用しない場合:**
 
 			package com.company.myapp;
-			
+
 			import android.app.Activity;
 			import android.os.Bundle;
-			
+
 			public class MyApp extends Activity
 			{
 			  @Override
@@ -111,10 +112,10 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 **エンゲージメントを使用する場合:**
 
 			package com.company.myapp;
-			
+
 			import com.microsoft.azure.engagement.activity.EngagementActivity;
 			import android.os.Bundle;
-			
+
 			public class MyApp extends EngagementActivity
 			{
 			  @Override
@@ -125,7 +126,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			  }
 			}
 
-> [AZURE.IMPORTANT]`EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
+> [AZURE.IMPORTANT] `EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
 
 サブクラスの `FragmentActivity` と `MapActivity` が用意されていますが、**ProGuard** を使うアプリケーションで発生する問題を避けるために、`engagement.jar` には含まれていません。
 
@@ -135,7 +136,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 `Activity` クラスをオーバーロードできない、またはそうしたくない場合は、代わりに `EngagementAgent` のメソッドを直接呼び出すことによって、アクティビティの開始と終了を実行できます。
 
-> [AZURE.IMPORTANT]Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションは実際には閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
+> [AZURE.IMPORTANT] Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションは実際には閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
 
 たとえば次のようになります。
 
@@ -148,7 +149,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			    String activityNameOnEngagement = EngagementAgentUtils.buildEngagementActivityName(getClass()); // Uses short class name and removes "Activity" at the end.
 			    EngagementAgent.getInstance(this).startActivity(this, activityNameOnEngagement, null);
 			  }
-			
+
 			  @Override
 			  protected void onPause()
 			  {
@@ -231,7 +232,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
     engagementConfiguration.setBackgroundRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-> [AZURE.NOTE]アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> [AZURE.NOTE] アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
 
 バックグラウンド ロケーション レポートは、ユーザーがデバイスを再起動すると停止します。以下を追加することで、起動時に自動的に再開されるように設定できます。
 
@@ -270,7 +271,7 @@ Mobile Engagement の場合、次のアクセス許可で実行時に承認が�
     public void onCreate(Bundle savedInstanceState)
     {
       /* Other code... */
-    
+
       /* Request permissions */
       requestPermissions();
     }
@@ -288,7 +289,7 @@ Mobile Engagement の場合、次のアクセス許可で実行時に承認が�
          */
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
           requestPermissions(new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION }, 0);
-    
+
         /* Only if you want to keep features using external storage */
         if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
           requestPermissions(new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1);
@@ -380,6 +381,5 @@ Engagement では、この設定を管理するために設定ファイル内で
 
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

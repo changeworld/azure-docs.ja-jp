@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
 
 #  Application Insights による Windows ストア アプリと Windows Phone アプリの使用状況の監視
@@ -153,4 +153,4 @@ The data will appear in the Custom Events grid.メトリックス エクスプ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

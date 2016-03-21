@@ -2,18 +2,19 @@
  pageTitle="リモート監視の事前構成済みソリューションのチュートリアル | Microsoft Azure"
  description="Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
  services=""
+ suite="iot-suite"
  documentationCenter=""
  authors="stevehob"
  manager="timlt"
  editor=""/>
 
 <tags
- ms.service="na"
+ ms.service="iot-suite"
  ms.devlang="na"
- ms.topic="article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="10/21/2015"
+ ms.date="03/02/2016"
  ms.author="stevehob"/>
 
 # リモート監視の事前構成済みソリューションのチュートリアル
@@ -48,7 +49,7 @@ IoT Suite リモート監視の事前構成済みソリューションは、遠�
 | Model Number | デバイスのモデル番号 |
 | Serial Number | デバイスのシリアル番号 |
 | Firmware | デバイスのファームウェアの現在のバージョン |
-| プラットフォーム | デバイスのプラットフォーム アーキテクチャ |
+| Platform | デバイスのプラットフォーム アーキテクチャ |
 | Processor | デバイスを実行しているプロセッサ |
 | Installed RAM | デバイスに搭載されている RAM の量 |
 | Hub Enabled State | デバイスの IoT Hub の状態プロパティ |
@@ -77,11 +78,91 @@ IoT Suite リモート監視の事前構成済みソリューションは、遠�
 
 ### Azure Stream Analytics ジョブ
 
-**ジョブ 1: テレメトリ**は、2 つのコマンドを使用して、受信するデバイス テレメトリ ストリームに対して動作します。最初のコマンドは、デバイスからのすべてのテレメトリ メッセージを永続的な BLOB ストレージに送信します。2 番目のコマンドは、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算します。このデータも BLOB ストレージに送信されます。
 
-**ジョブ 2: デバイス情報**は、受信するメッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。
+**ジョブ 1: デバイス情報**は、受信するメッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用します。
 
-**ジョブ 3: 規則**は、デバイスごとのしきい値に対する温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューションに含まれる規則エディターで設定されます。デバイスと値の各ペアは、**参照データ**として Stream Analytics に読み込まれる BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。
+```
+SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
+```
+
+**ジョブ 2: 規則**は、デバイスごとのしきい値に対する温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューションに含まれる規則エディターで設定されます。デバイスと値の各ペアは、**参照データ**として Stream Analytics に読み込まれる BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、次のクエリ定義を使用します。
+
+```
+WITH AlarmsData AS 
+(
+SELECT
+     Stream.DeviceID,
+     'Temperature' as ReadingType,
+     Stream.Temperature as Reading,
+     Ref.Temperature as Threshold,
+     Ref.TemperatureRuleOutput as RuleOutput,
+     Stream.EventEnqueuedUtcTime AS [Time]
+FROM IoTTelemetryStream Stream
+JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+WHERE
+     Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
+
+UNION ALL
+
+SELECT
+     Stream.DeviceID,
+     'Humidity' as ReadingType,
+     Stream.Humidity as Reading,
+     Ref.Humidity as Threshold,
+     Ref.HumidityRuleOutput as RuleOutput,
+     Stream.EventEnqueuedUtcTime AS [Time]
+FROM IoTTelemetryStream Stream
+JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+WHERE
+     Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
+)
+
+SELECT *
+INTO DeviceRulesMonitoring
+FROM AlarmsData
+
+SELECT *
+INTO DeviceRulesHub
+FROM AlarmsData
+```
+
+**ジョブ 3: テレメトリ**は、2 つの方法で、受信するデバイス テレメトリ ストリームに対して動作します。最初の方法では、デバイスからのすべてのテレメトリ メッセージを永続的な Blob Storage に送信します。2 番目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算します。このデータも BLOB ストレージに送信されます。このジョブは、次のクエリ定義を使用します。
+
+```
+WITH 
+    [StreamData]
+AS (
+    SELECT
+        *
+    FROM 
+      [IoTHubStream] 
+    WHERE
+        [ObjectType] IS NULL -- Filter out device info and command responses
+) 
+
+SELECT
+    *
+INTO
+    [Telemetry]
+FROM
+    [StreamData]
+
+SELECT
+    DeviceId,
+    AVG (Humidity) AS [AverageHumidity], 
+    MIN(Humidity) AS [MinimumHumidity], 
+    MAX(Humidity) AS [MaxHumidity], 
+    5.0 AS TimeframeMinutes 
+INTO
+    [TelemetrySummary]
+FROM
+    [StreamData]
+WHERE
+    [Humidity] IS NOT NULL
+GROUP BY
+    DeviceId, 
+    SlidingWindow (mi, 5)
+```
 
 ### イベント プロセッサ
 
@@ -108,7 +189,7 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 - デバイスのコマンド履歴を表示する
 
 ### クラウド ソリューションの動作を確認する
-[Azure プレビュー ポータル](https://portal.azure.com)にアクセスし、指定したソリューション名の付いたリソース グループに移動すると、プロビジョニングされたリソースを確認できます。
+[Azure ポータル](https://portal.azure.com)にアクセスし、指定したソリューション名の付いたリソース グループに移動すると、プロビジョニングされたリソースを確認できます。
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/azureportal_01.png)
 
@@ -144,4 +225,4 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

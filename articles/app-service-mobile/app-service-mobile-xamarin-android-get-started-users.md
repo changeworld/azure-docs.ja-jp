@@ -1,34 +1,28 @@
-<properties 
-	pageTitle="Xamarin Android での Mobile Apps の認証の使用" 
-	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+<properties
+	pageTitle="Xamarin Android での Mobile Apps の認証の使用"
+	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/27/2015" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="02/04/2016"
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.Android アプリの作成]に関するチュートリアルを完了している必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
-
-##<a name="create-gateway"></a>App Service ゲートウェイを作成する
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-gateway](../../includes/app-service-mobile-dotnet-backend-create-gateway.md)]
 
 ##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
@@ -38,62 +32,79 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-<ol start="4">
-<li><p>Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
-   
-   	<p>これは、認証されないユーザーとして Mobile App バックエンドにアプリがアクセスしようとするために生じます。<em>TodoItem</em> テーブルは今すぐ認証が必要です。</p></li>
-</ol>
+Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。これは、認証されないユーザーとして Mobile App バックエンドにアプリがアクセスしようとするために生じます。*TodoItem* テーブルは今すぐ認証が必要です。
 
 次に、認証されたユーザーで Mobile App のバックエンドからリソースを要求するように、クライアント アプリを更新します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-1. **TodoActivity** クラスに次のプロパティを追加します。
+ユーザーが **[サインイン]** ボタンをタップし認証されてからデータを表示する必要がある場合は、アプリを更新します。
 
-			private MobileServiceUser user;
+1. **TodoActivity** クラスに次のコードを追加します。
 
-2. **TodoActivity** クラスに次のメソッドを追加します。
-
-	        private async Task Authenticate()
-	        {
+	    // Define a authenticated user.
+	    private MobileServiceUser user;
+	    private async Task<bool> Authenticate()
+	    {
+	            var success = false;
 	            try
 	            {
-	                user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.Facebook);
-	                CreateAndShowDialog(string.Format("you are now logged in - {0}", user.UserId), "Logged in!");
+	                // Sign in with Facebook login using a server-managed flow.
+	                user = await client.LoginAsync(this,
+	                    MobileServiceAuthenticationProvider.Facebook);
+	                CreateAndShowDialog(string.Format("you are now logged in - {0}",
+	                    user.UserId), "Logged in!");
+
+	                success = true;
 	            }
 	            catch (Exception ex)
 	            {
 	                CreateAndShowDialog(ex, "Authentication failed");
 	            }
-	        }
+	            return success;
+	    }
 
-    これにより、ユーザーを認証する新しいメソッドが作成されます。上記のサンプル コードでは、ユーザーは Facebook ログインを使用して認証されます。認証されると、ダイアログを使用してユーザー ID が表示されます。
+        [Java.Interop.Export()]
+        public async void LoginUser(View view)
+        {
+            // Load data only after authentication succeeds.
+            if (await Authenticate())
+            {
+                //Hide the button after authentication succeeds.
+                FindViewById<Button>(Resource.Id.buttonLoginUser).Visibility = ViewStates.Gone;
 
-    > [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+                // Load the data.
+                OnRefreshItemsSelected();
+            }
+        }
 
-3. **OnCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
+    これにより、ユーザーを認証する新しいメソッドと、新しい **[サインイン]** ボタンのメソッド ハンドラーが作成されます。上記のサンプル コードでは、ユーザーは Facebook ログインを使用して認証されます。認証されると、ダイアログを使用してユーザー ID が表示されます。
 
-		// Create the Mobile Service Client instance, using the provided
-		// Mobile Service URL, Gateway URL and key
-		client = new MobileServiceClient (applicationURL, gatewayURL, applicationKey);
-		
-		await Authenticate(); // Added for authentication
+    > [AZURE.NOTE] Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
-	この呼び出しは、認証プロセスを開始し、認証プロセスを非同期に待機します。
+3. **OnCreate** メソッド内の次のコード行を削除またはコメント アウトします。
 
+		OnRefreshItemsSelected ();
 
-4. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
+4. Activity\_To\_Do.axml ファイル内の既存の *AddItem* ボタンの前に次の *LoginUser* ボタン定義を追加します。
+
+      	<Button
+            android:id="@+id/buttonLoginUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="LoginUser"
+            android:text="@string/login_button_text" />
+
+5. 次の要素を Strings.xml リソース ファイルに追加します。
+
+		<string name="login_button_text">Sign in</string>
+
+6. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
 
    	ログインに成功すると、アプリケーションにログイン ID と todo 項目の一覧が表示され、データを更新することができます。
 
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-
 [Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
 
-[Azure Management Portal]: https://portal.azure.com
- 
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

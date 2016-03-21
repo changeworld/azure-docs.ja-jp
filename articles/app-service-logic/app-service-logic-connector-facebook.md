@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="rajeshramabathiran"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="11/11/2015"
+   ms.date="02/11/2016"
    ms.author="rajram"/>
 
 
 # Facebook コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Facebook API](../connectors/create-api-facebook.md) をクリックしてください。
+
 Facebook アカウントに接続して、メッセージを投稿したり、写真を公開したりできます。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
 Facebook コネクタでは、次のことを行えます。
@@ -56,12 +58,12 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 
 同様に、Facebook コネクタのアクションを使用してフローを作成できます。次のフローでは、Yammer グループに投稿された新しいメッセージを取得し、ユーザーによって管理されている Facebook ページに同じ投稿を発行します。![][11]
 
-> [AZURE.TIP]Facebook ページの ID や Yammer グループの ID を取得するには、URL に埋め込まれた数値コードを見つけます。
+> [AZURE.TIP] Facebook ページの ID や Yammer グループの ID を取得するには、URL に埋め込まれた数値コードを見つけます。
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -80,4 +82,4 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 [10]: ./media/app-service-logic-connector-facebook/img10.png
 [11]: ./media/app-service-logic-connector-facebook/img11.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

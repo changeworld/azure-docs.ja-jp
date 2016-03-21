@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/26/2015"
+   ms.date="01/27/2016"
    ms.author="bwren" />
 
 # Azure Automation のスケジュール
 
 Automation のスケジュールは、Runbook を自動的に実行するためのスケジュール設定に使用します。Runbook を 1 回実行する単一の日付時刻が可能です。または、Runbook を複数回実行する反復スケジュールが可能です。スケジュールは、Runbook からは通常はアクセスできません。
 
->[AZURE.NOTE]スケジュールは、現時点では Azure Automation DSC 構成をサポートしていません。
+>[AZURE.NOTE]  スケジュールは、現時点では Azure Automation DSC 構成をサポートしていません。
 
 ## Windows PowerShell コマンドレット
 
-以下の表にあるコマンドレットを使用すると、Windows PowerShell で使用される変数を Azure Automation で作成して管理できます。これらは、[Azure PowerShell モジュール](../powershell-install-configure.md)の一部として出荷されます。
+Azure Automation から Windows PowerShell を使用してスケジュールを作成したり管理したりするには、以下の表に示したコマンドレットを使用します。これらは、[Azure PowerShell モジュール](../powershell-install-configure.md)の一部として出荷されます。
 
 |コマンドレット|説明|
 |:---|:---|
@@ -37,15 +37,15 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 
 ## 新しいスケジュールを作成する
 
-### Azure ポータルで新しいスケジュールを作成するには
+### Azure クラシック ポータルで新しいスケジュールを作成するには
 
 
-1. Automation アカウントから、ウィンドウ上部にある **[資産]** をクリックします。
+1. Automation アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
 1. **[スケジュールの追加]** をクリックします。
-1. ウィザードを完了し、チェック ボックスをクリックして新しい変数を保存します。
+1. ウィザードを完了し、チェックボックスをクリックして新しいスケジュールを保存します。
 
-### Azure プレビュー ポータルで新しいスケジュールを作成するには
+### Azure ポータルで新しいスケジュールを作成するには
 
 1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[スケジュール]** 部分をクリックして、**[スケジュール]** ブレードを開きます。
@@ -68,4 +68,4 @@ Automation のスケジュールは、Runbook を自動的に実行するため�
 - [Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

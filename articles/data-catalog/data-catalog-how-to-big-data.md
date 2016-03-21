@@ -1,6 +1,6 @@
 <properties
    pageTitle="'ビッグ データ' のデータ ソースを操作する方法"
-   description="Azure BLOB ストレージや Hadoop HDFS などの 'ビッグ データ' のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する操作方法に関する記事"
+   description="Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの ";ビッグ データ"; のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -10,10 +10,10 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="08/25/2015"
+   ms.date="02/08/2016"
    ms.author="maroche"/>
 
 
@@ -68,4 +68,4 @@
 ## 概要
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

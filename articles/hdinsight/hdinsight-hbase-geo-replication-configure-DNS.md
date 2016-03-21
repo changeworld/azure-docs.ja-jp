@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/28/2015"
+   ms.date="12/02/2015"
    ms.author="jgao"/>
 
 # 2 つの Azure 仮想ネットワーク間の DNS の構成
@@ -40,9 +40,9 @@ Azure 仮想ネットワークに DNS サーバーを追加して構成し、仮
 ##前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 	PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
@@ -54,7 +54,7 @@ Azure 仮想ネットワークに DNS サーバーを追加して構成し、仮
 
 - **VPN で接続された 2 つの Azure 仮想ネットワーク**。方法については、「[2 つの Azure 仮想ネットワーク間の VPN 接続の構成][hdinsight-hbase-geo-replication-vnet]」を参照してください。
 
->[AZURE.NOTE]Azure のサービス名と仮想マシン名は一意である必要があります。このチュートリアルで使用する名前は、Contoso-[Azure Service/VM name]-[EU/US] です。たとえば、Contoso-VNet-EU は北ヨーロッパ データ センターの Azure 仮想ネットワークです。Contoso-DNS-US は East U.S. データ センターの DNS サーバー VM です。独自の名前を使用する必要があります。
+>[AZURE.NOTE] Azure のサービス名と仮想マシン名は一意である必要があります。このチュートリアルで使用する名前は、Contoso-[Azure Service/VM name]-[EU/US] です。たとえば、Contoso-VNet-EU は北ヨーロッパ データ センターの Azure 仮想ネットワークです。Contoso-DNS-US は East U.S. データ センターの DNS サーバー VM です。独自の名前を使用する必要があります。
  
  
 ##DNS サーバーとして使用する Azure 仮想マシンの作成
@@ -98,7 +98,7 @@ Azure 仮想ネットワークに DNS サーバーを追加して構成し、仮
 
 ##2 つの仮想マシンへの静的 IP アドレスの設定
 
-DNS サーバーには静的 IP アドレスが必要です。この手順は、Azure ポータルから行うことはできません。Azure PowerShell を使用します。
+DNS サーバーには静的 IP アドレスが必要です。この手順は、Azure クラシック ポータルから行うことはできません。Azure PowerShell を使用します。
 
 **2 つの仮想マシンに静的 IP アドレスを構成するには**
 
@@ -120,7 +120,7 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 **Contoso-DNS-EU の DNS サーバー ロールを追加するには**
 
-1.	Azure ポータルで、左側の **[Virtual Machines]** をクリックします。 
+1.	Azure クラシック ポータルで、左側の **[Virtual Machines]** をクリックします。 
 2.	**Contoso-DNS-EU** をクリックします。
 3.	上部にある **[ダッシュボード]** をクリックします。
 4.	下部の **[接続]** をクリックし、指示に従って RDP 経由で仮想マシンに接続します。
@@ -142,7 +142,7 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 **2 つの DNS サーバーを登録するには**
 
-1.	Azure ポータルで、**[新規]**、**[NETWORK SERVICES]**、**[仮想ネットワーク]**、**[DNS サーバーの登録]** の順にクリックします。
+1.	Azure クラシック ポータルで、**[新規]**、**[NETWORK SERVICES]**、**[仮想ネットワーク]**、**[DNS サーバーの登録]** の順にクリックします。
 2.	次のように入力します。
 	- **名前**: Contoso-DNS-EU
 	- **DNS サーバーの IP アドレス**: 10.1.0.4 – IP アドレスは DNS サーバー仮想マシンの IP アドレスと一致している必要があります。
@@ -153,7 +153,7 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 **2 つの仮想ネットワークに 2 つの DNS サーバーを割り当てるには**
 
-1.	管理ポータルの左側のウィンドウで、**[ネットワーク]** をクリックします。
+1.	クラシック ポータルの左側のウィンドウで、**[ネットワーク]** をクリックします。
 2.	**Contoso-VNet-EU** をクリックします。
 3.	**[構成]** をクリックします。
 4.	**[DNS サーバー]** セクションで、**Contoso-DNS-EU** を選択します。
@@ -164,7 +164,7 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 **仮想マシンを再起動するには**
 
-1. Azure ポータルで、左側の **[Virtual Machines]** をクリックします。
+1. Azure クラシック ポータルで、左側の **[Virtual Machines]** をクリックします。
 2. **Contoso-DNS-EU** をクリックします。
 3. 上部にある **[ダッシュボード]** をクリックします。
 4. 下部の **[再起動]** をクリックします。
@@ -175,7 +175,7 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 各仮想ネットワーク上の DNS サーバーは、その仮想ネットワーク内の DNS 名のみを解決できます。ピア仮想ネットワークでの名前解決のためにピア DNS サーバーを指し示すには、条件付フォワーダーを構成する必要があります。
 
-条件付フォワーダーを構成するには、2 つの DNS サーバーのドメイン サフィックスを知っている必要があります。DNS サフィックスは、仮想マシンの作成時に使用したクラウド サービスの構成によって異なることがあります。仮想ネットワークで使用されている DNS サフィックスごとに、条件付フォワーダーを追加する必要があります。
+条件付フォワーダーを構成するには、2 つの DNS サーバーのドメイン サフィックスを知っている必要があります。DNS サフィックスは、仮想マシンの作成時に使用した Cloud Services の構成によって異なることがあります。仮想ネットワークで使用されている DNS サフィックスごとに、条件付フォワーダーを追加する必要があります。
 
 **2 つの DNS サーバーのドメイン サフィックスを調べるには**
 
@@ -216,8 +216,8 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 [hdinsight-hbase-geo-replication]: hdinsight-hbase-geo-replication.md
 [hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-VNets.md
-[powershell-install]: ../install-configure-powershell.md
+[powershell-install]: powershell-install-configure.md
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-DNS/HDInsight.HBase.VPN.diagram.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

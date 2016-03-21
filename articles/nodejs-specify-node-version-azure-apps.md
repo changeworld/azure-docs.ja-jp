@@ -1,10 +1,20 @@
-<properties pageTitle="Node.js のバージョンの指定" description="Azure Websites と Cloud Services で使用される Node.js のバージョンを指定する方法を説明します。" services="" documentationCenter="nodejs" authors="MikeWasson" manager="wpickett" editor="mollybos"/>
+<properties
+	pageTitle="Node.js のバージョンの指定"
+	description="Azure Websites と Cloud Services で使用される Node.js のバージョンを指定する方法を説明します。"
+	services=""
+	documentationCenter="nodejs"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="08/31/2015" ms.author="mwasson"/>
-
-
-
-
+<tags
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="01/09/2016"
+	ms.author="robmcm"/>
 
 # Azure アプリケーションでの Node.js のバージョンの指定
 
@@ -12,13 +22,7 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 
 ##既定のバージョン
 
-Azure が提供する Node.js のバージョンは常に更新されます。別に指定しない場合、最新のバージョンを使用します。現在含まれているバージョンは次のとおりです。
-
-- 4\.x.x: 4.0.0
-- 0\.12.x: 0.12.6、0.12.3、0.12.2、0.12.0
-- 0\.10.x: 0.10.32、0.10.31、0.10.29、0.10.28、10.26、0.10.24、0.10.21、0.10.18、0.10.5
-- 0\.8.x: 0.8.28、0.8.27、0.8.26、0.8.19 0.8.2
-- 0\.6.x: 0.6.20、0.6.17
+Azure が提供する Node.js のバージョンは常に更新されます。別に指定しない場合、最新のバージョンを使用します。
 
 > [AZURE.NOTE]Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションをデプロイした場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。
 
@@ -39,7 +43,7 @@ Web サイトでアプリケーションをホストしている場合は、環�
 
 ##PowerShell で Cloud Services のバージョンを指定する
 
-クラウド サービスでアプリケーションをホストしており、Windows Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
+クラウド サービスでアプリケーションをホストしており、Microsoft Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
 	Set-AzureServiceProjectRole WebRole1 Node 0.8.4
 
@@ -98,4 +102,4 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
 [Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

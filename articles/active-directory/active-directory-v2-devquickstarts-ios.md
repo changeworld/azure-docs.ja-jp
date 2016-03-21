@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 iOS アプリ | Microsoft Azure"
+	pageTitle="Azure AD v2.0 iOS アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する iOS アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,13 +13,14 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="02/20/2016"
 	ms.author="brandwe"/>
 
-# アプリ モデル v2.0 プレビュー: iOS アプリへのサインインの追加
+# v2.0 エンドポイントを使用してサインインを iOS アプリに追加する
 
 iOS のクイック スタート チュートリアルは、まだ準備ができていません...後でもう一度確認して、Twitter の @AzureAD から最新情報をチェックしてください。
 
-> [AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスとの統合手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -1,32 +1,32 @@
-<properties 
-	pageTitle="出力の定義 | Microsoft Azure" 
-	description="Stream Analytics 出力について" 
-	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
-	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage" 
+<properties
+	pageTitle="データ変換出力: ストレージ、分析のオプション | Microsoft Azure"
+	description="データ ストレージ オプションをターゲットにした Stream Analytics データ変換出力について説明します。また、分析結果に Power BI を使用します。"
+	keywords="データ変換、分析結果、データ ストレージ オプション"
+	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
 	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="paulettm" 
+	authors="jeffstokes72"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="11/12/2015" 
+<tags
+	ms.service="stream-analytics"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="03/02/2016"
 	ms.author="jeffstok"/>
 
-# Stream Analytics 出力について
+# 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
 
-Stream Analytics ジョブを作成するときの考慮事項として、ジョブの出力がどのように使用されるかということが挙げられます。データ変換のコンシューマーには、Stream Analytics ジョブの結果がどのように表示されますか。 出力の解析にどのツールを使用しますか。 データの保存またはウェアハウジングは必要ですか。
+Stream Analytics ジョブを作成するときは、データ変換出力の使用方法を考慮します。Stream Analytics ジョブの結果はどのように表示しますか。 データ分析結果の表示にどのツールを使用しますか。 データ ストレージ オプションは要件ですか。
 
-さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、ジョブ出力を保存および表示するための 7 つの異なるメソッドが用意されています。SQL Database、BLOB ストレージ、Event Hubs、Service Bus キュー、Service Bus トピック、Power BI、テーブル ストレージが、サポートされている出力すべてです。これにより、データのウェアハウジングやその他の目的のためのジョブ出力の使用や保存において柔軟性を得たり、ジョブ出力を簡単に表示したりすることができます。
+さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
 
 ## SQL Database ##
 
-[Azure SQL Database](http://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
 | プロパティ名 | 説明 |
 |---------------|-------------|
@@ -39,7 +39,7 @@ Stream Analytics ジョブを作成するときの考慮事項として、ジョ
 
 ## BLOB ストレージ ##
 
-BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。Azure BLOB ストレージとその使用法の説明については、「[How to use Blobs (BLOB の使用方法)](./articles/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。Azure BLOB ストレージとその使用法の説明については、「[How to use Blobs (BLOB の使用方法)](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 
 次の表に、BLOB 出力を作成するためのプロパティ名とその説明を示します。
 
@@ -116,9 +116,9 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | 形式 | JSON 型のみに適用されます。行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 |
 ## Power BI
 
-Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、Stream Analytics ユーザーに豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
+Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE]現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
+> [AZURE.NOTE] 現時点では、Power BI 出力の作成と構成は Azure クラシック ポータルでのみサポートされています。
 
 ### Power BI アカウントを承認する
 
@@ -145,7 +145,7 @@ Power BI アカウントを認証すると、Power BI 出力のプロパティ�
 
 Power BI 出力およびダッシュボードの構成のチュートリアルについては、[Azure Stream Analytics & Power BI](stream-analytics-power-bi-dashboard.md) の記事を参照してください。
 
-> [AZURE.NOTE]Power BI ダッシュボードにデータセットとテーブルを明示的に作成しないでください。ジョブが開始され、このジョブによって出力が Power BI に流し込まれるときに、データセットとテーブルが自動的に設定されます。ジョブ クエリで結果が生成されない場合、データセットとテーブルは作成されません。また、この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされるので注意してください。
+> [AZURE.NOTE] Power BI ダッシュボードにデータセットとテーブルを明示的に作成しないでください。ジョブが開始され、このジョブによって出力が Power BI に流し込まれるときに、データセットとテーブルが自動的に設定されます。ジョブ クエリで結果が生成されない場合、データセットとテーブルは作成されません。また、この Stream Analytics ジョブで指定したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされるので注意してください。
 
 ### Power BI の承認を更新する
 
@@ -159,7 +159,7 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 
 ## テーブル ストレージ
 
-[Azure テーブル ストレージ](./articles/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
+[Azure テーブル ストレージ](../storage/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
@@ -210,7 +210,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 ## DocumentDB
 
-[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性のあるパフォーマンス、および迅速な開発を実現します。
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は完全に管理された NoSQL ドキュメント データベース サービスであり、スキーマのないデータに対するクエリとトランザクション、予測可能で信頼性のあるパフォーマンス、および迅速な開発を実現します。
 
 次の表に、DocumentDB 出力を作成するためのプロパティ名とその説明を示します。
 
@@ -267,4 +267,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

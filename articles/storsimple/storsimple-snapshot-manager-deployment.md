@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="01/07/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager MMC スナップインのデプロイ
@@ -23,11 +23,15 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 このチュートリアルでは構成要件に加え、StorSimple Snapshot Manager のインストール、削除、およびアップグレード手順についても説明します。
 
+>[AZURE.NOTE]
+>
+>- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>
+>- StorSimple デバイスに StorSimple Update 2 をインストールする場合は、**StorSimple Update 2 をインストールする前に**、最新バージョンの StorSimple Snapshot Manager をダウンロードしてインストールする必要があります。最新バージョンの StorSimple Snapshot Manager には下位互換性があり、製品版のすべての Microsoft Azure StorSimple で動作します。以前のバージョンの StorSimple Snapshot Manager を使用している場合は更新する必要があります (新しいバージョンをインストールする前に、以前のバージョンをアンインストールする必要はありません)。
+
 ## StorSimple Snapshot Manager のインストール
 
-StorSimple Snapshot Manager は、Windows Server® 2008 R2 SP1、Windows Server 2012、または Windows Server 2012 R2 オペレーティング システムを実行しているコンピューターにインストールできます。
-
->[AZURE.NOTE]Windows 2008 R2 を実行しているサーバーでは、Windows Server 2008 SP1 と Windows Management Framework 3.0 をインストールする必要もあります。
+StorSimple Snapshot Manager は、Windows Server 2008 R2 SP1、Windows Server 2012、または Windows Server 2012 R2 オペレーティング システムを実行しているコンピューターにインストールできます。Windows 2008 R2 を実行しているサーバーでは、Windows Server 2008 SP1 と Windows Management Framework 3.0 をインストールする必要もあります。
 
 Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナップインをインストールまたはアップグレードする前に、Microsoft Azure StorSimple デバイスとホスト サーバーが正しく構成されていることを確認してください。
 
@@ -35,7 +39,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 
 次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
 
->[AZURE.IMPORTANT]開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)
+>[AZURE.IMPORTANT] 開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)
 > 」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。
 <br>
  
@@ -49,7 +53,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
     - Windows Server 2012
     - Windows Server 2012 R2
  
-    >[AZURE.NOTE]StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
+    StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
 
 3. すべての Microsoft Azure StorSimple 構成要件を満たしていることを確認します。詳細については、「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」を確認してください。
 
@@ -95,7 +99,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
 
-       >[AZURE.IMPORTANT]StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
+       >[AZURE.IMPORTANT] StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
  
 4. **[完了時に展開されたファイルを表示する]** チェック ボックスを選択し、**[抽出]** をクリックします。
 
@@ -129,7 +133,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
     ![デバイスの構成](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png)
 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** ボックスに、Microsoft Azure 管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
+3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
 
 4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。[デバイスへの接続を検証](#to-verify-the-connection)して、接続が正常に追加されたことを確認できます。
 
@@ -257,4 +261,4 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
 - StorSimple Snapshot Manager の使用方法については、「[StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

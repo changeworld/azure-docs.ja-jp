@@ -3,7 +3,7 @@
 	description="Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 	services="app-service\web"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="10/13/2015"
-	ms.author="mwasson"/>
+	ms.date="02/04/2016"
+	ms.author="robmcm"/>
 
 # Azure App Service での Node.js Web アプリの作成
 
@@ -30,7 +30,7 @@
 
 学習内容:
 
-* Azure プレビュー ポータルを使用して Azure App Service で Web アプリを作成する方法
+* Azure ポータルを使用して Azure App Service で Web アプリを作成する方法
 * Node.js アプリケーションを Web アプリの Git リポジトリにプッシュすることでその Web アプリにデプロイする方法
 
 完成したアプリケーションにより、ブラウザーに "hello world" という短い文字列が出力されます。
@@ -39,7 +39,8 @@
 
 より複雑な Node.js アプリケーションを使用したチュートリアルとサンプル コード、または Azure での Node.js の使用方法に関するその他のトピックについては、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+> [AZURE.NOTE]
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -47,11 +48,11 @@
 
 Azure App Service で Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
-[Git](http://git-scm.com/%20target="_blank) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、App Service Web アプリの特徴です。
+[Git](http://git-scm.com/) は、Azure の Web サイトをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。このデプロイ方法は、App Service Web アプリの特徴です。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ポータルの左上にある **[+ 新規]** アイコンをクリックします。
+2. Azure ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
 3. **[Web + モバイル]** をクリックし、**[Web アプリ]** をクリックします。
 
@@ -65,7 +66,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 6. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
 
 7. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -176,9 +177,9 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 5. アプリを表示するには、Azure ポータルで **[Web アプリ]** パーツの **[参照]** ボタンをクリックします。
 
-	![Browse button](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
+	![[参照] ボタン](./media/web-sites-nodejs-develop-deploy-mac/browsebutton.png)
 
-	![Hello world in Azure](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
+	![Azure、Hello World](./media/web-sites-nodejs-develop-deploy-mac/helloworldazure.png)
 
 ## アプリケーションへの変更の発行
 
@@ -210,7 +211,7 @@ Node.js は、アプリケーションで使用できるモジュールのリッ
 
 Azure へのデプロイ後にアプリケーションで問題が発生した場合、問題の診断については、「[Azure App Service で Node.js Web アプリをデバッグする方法](web-sites-nodejs-debug.md)」を参照してください。
 
-この記事では、Web アプリの作成に Azure ポータルを使用しています。[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](../install-configure-powershell.md) を使用して、同じ操作を行うこともできます。
+この記事では、Web アプリの作成に Azure ポータルを使用しています。[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)または [Azure PowerShell](../powershell-install-configure.md) を使用して、同じ操作を行うこともできます。
 
 Azure で Node.js アプリケーションを開発する方法の詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
@@ -224,4 +225,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=AcomDC_0211_2016-->

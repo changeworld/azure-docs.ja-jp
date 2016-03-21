@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	ms.author="krisragh"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
@@ -73,4 +73,4 @@ function insert(item, user, request) {
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

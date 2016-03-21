@@ -9,11 +9,11 @@
 次の手順では、新しい ASP.NET WebAPI バックエンドを作成する方法を説明します。
 
 
-> [AZURE.NOTE]**重要**: このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。確認するには、Visual Studio を起動します。**[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。**NuGet Package Manager for Visual Studio 2013** を探し、バージョンが 2.8.50313.46 以降であることを確認します。違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
+> [AZURE.NOTE] **重要**: このチュートリアルを始める前に、最新の NuGet パッケージ マネージャーがインストールされていることを確認してください。確認するには、Visual Studio を起動します。**[ツール]** メニューの **[拡張機能と更新プログラム]** をクリックします。**NuGet Package Manager for Visual Studio 2013** を探し、バージョンが 2.8.50313.46 以降であることを確認します。違う場合は、アンインストールしてから、NuGet パッケージ マネージャーをもう一度インストールしてください。
 > 
 > ![][B4]
 
-> [AZURE.NOTE]Web サイトのデプロイ用に Visual Studio [Azure SDK](http://azure.microsoft.com/downloads/) がインストールされていることを確認してください。
+> [AZURE.NOTE] Web サイトのデプロイ用に Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) がインストールされていることを確認してください。
 
 1. Visual Studio または Visual Studio Express を起動します。**[サーバー エクスプローラー]** をクリックして Azure アカウントにサインインします。Visual Studio でアカウントの Web サイト リソースを作成するには、サインインする必要があります。
 2. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックし、**[テンプレート]**、**[Visual C#] ** の順に展開します。次に、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックし、「**AppBackend**」という名前を入力して、**[OK]** をクリックします。 
@@ -101,7 +101,7 @@
 	        }
 	    }
 
-	> [AZURE.NOTE]**セキュリティに関する注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。
+	> [AZURE.NOTE] **セキュリティに関する注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。
 
 4. **App\_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に、次のコードを追加してメッセージ ハンドラーを登録します。
 
@@ -132,7 +132,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
+6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure クラシック ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
 
 		public class Notifications
         {
@@ -364,4 +364,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

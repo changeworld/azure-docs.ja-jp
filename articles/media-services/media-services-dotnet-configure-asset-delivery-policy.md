@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="10/18/2015"  
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 #.NET SDK を使用して資産の配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
+
+##概要
 
 Media Services で暗号化した資産を配信する場合、コンテンツ配信ワークフローの手順の 1 つとして、資産の配信ポリシーを構成します。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
@@ -52,6 +54,14 @@ HDS
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
 資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
+
+##考慮事項
+
+- 資産に対して OnDemand (ストリーミング) ロケーターが存在するときは、資産に関連付けられている AssetDeliveryPolicy を削除することはできません。ポリシーを削除する前に、資産からポリシーを削除することをお勧めします。
+- 資産配信ポリシーが設定されていない場合、ストレージ暗号化資産のストリーミング ロケーターは作成できません。資産がストレージ暗号化資産でない場合はロケーターを作成でき、資産配信ポリシーのない暗号化されていない資産がストリーミングされます。
+- 1 つの資産に複数の資産配信ポリシーを関連付けることができますが、特定の AssetDeliveryProtocol を処理する方法は 1 つだけ指定できます。つまり、AssetDeliveryProtocol.SmoothStreaming プロトコルを指定する 2 つの配信ポリシーをリンクしようとすると、エラーが発生します。これは、クライアントが Smooth Streaming 要求を行ったときにどのポリシーを適用するか、システムがわからないためです。  
+- 既存のストリーミング ロケーターを持つ資産が存在する場合、その資産に新しいポリシーをリンクすることはできません (資産から既存のポリシーのリンクを解除するか、資産に関連付けられている配信ポリシーを更新できます)。先にストリーミング ロケーターを削除し、ポリシーを調整した後、ストリーミング ロケーターを再作成する必要があります。ストリーミング ロケーターを再作成するときに同じ locatorId を使用できますが、コンテンツが最初の CDN またはダウンストリーム CDN によってキャッシュされる可能性があるため、クライアントで問題が発生しないことを確認する必要があります。  
+
 
 ##資産の配信ポリシーを解除する 
 
@@ -101,33 +111,35 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
             assetDeliveryPolicy.AssetDeliveryPolicyType);
     }
 
-Azure Media Services では、Widevine による暗号化を追加することもできます。次の例は、PlayReady と Widevine の両方をアセット配信ポリシーに追加する方法を示しています。
+Azure Media Services では、Widevine による暗号化を追加することもできます。次の例は、PlayReady と Widevine の両方を資産の配信ポリシーに追加する方法を示しています。
 
-	static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
-	{
-	    Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-	
-	    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-	        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-	    {
-	        {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-	        {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl,"http://testurl"},
-	        
-	    };
-	
-	    var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
-	            "AssetDeliveryPolicy",
-	        AssetDeliveryPolicyType.DynamicCommonEncryption,
-	        AssetDeliveryProtocol.Dash,
-	        assetDeliveryPolicyConfiguration);
-	
-	   
-	    // Add AssetDelivery Policy to the asset
-	    asset.DeliveryPolicies.Add(assetDeliveryPolicy);
-	
-	}
 
->[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。アセット配信プロトコルには必ず DASH を指定してください。
+    static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
+    {
+        Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
+        Uri widevineURl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+
+        Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+            new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+        {
+            {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+            {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineURl.ToString()},
+
+        };
+
+        var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
+                "AssetDeliveryPolicy",
+            AssetDeliveryPolicyType.DynamicCommonEncryption,
+            AssetDeliveryProtocol.Dash,
+            assetDeliveryPolicyConfiguration);
+
+
+        // Add AssetDelivery Policy to the asset
+        asset.DeliveryPolicies.Add(assetDeliveryPolicy);
+
+    }
+
+>[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。資産配信プロトコルには必ず DASH を指定してください。
 
 
 ##DynamicEnvelopeEncryption 資産の配信ポリシー 
@@ -260,17 +272,24 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         /// <summary>
         /// None.
         /// </summary>
-        None,
+        None = 0,
 
         /// <summary>
         /// Use PlayReady License acquistion protocol
         /// </summary>
-        PlayReadyLicense,
+        PlayReadyLicense = 1,
 
         /// <summary>
         /// Use MPEG Baseline HTTP key protocol.
         /// </summary>
-        BaselineHttp
+        BaselineHttp = 2,
+
+        /// <summary>
+        /// Use Widevine License acquistion protocol
+        ///
+        </summary>
+        Widevine = 3
+
     }
 
 ###<a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
@@ -329,4 +348,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

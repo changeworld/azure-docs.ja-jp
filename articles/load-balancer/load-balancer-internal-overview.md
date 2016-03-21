@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/12/2015"
+   ms.date="12/09/2015"
    ms.author="joaoma" />
 
 
@@ -27,7 +27,7 @@
 
 次のような多くの新しい構成で ILB を使用をできます。
 
-Azure 内部負荷分散 (ILB) は、リージョン スコープを持つクラウド サービスまたは仮想ネットワーク内にある仮想マシン間に負荷分散を提供します。リージョン スコープを持つ仮想ネットワークの使用と構成については、Azure ブログの「[Regional Virtual Networks (リージョン仮想ネットワーク)](http://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」をご覧ください。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。
+Azure 内部負荷分散 (ILB) は、リージョン スコープを持つクラウド サービスまたは仮想ネットワーク内にある仮想マシン間に負荷分散を提供します。リージョン スコープを持つ仮想ネットワークの使用と構成については、Azure ブログの「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」をご覧ください。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。
 
 ILB は、次の新しい種類の負荷分散を使用できます。
 
@@ -92,4 +92,4 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

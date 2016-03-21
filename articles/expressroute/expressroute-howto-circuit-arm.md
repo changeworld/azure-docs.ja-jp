@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を構成する | Microsoft Azure"
-   description="この記事では、ExpressRoute 回線の作成およびプロビジョニング手順について説明します。この記事では回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。"
+   pageTitle="Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する | Microsoft Azure"
+   description="この記事では、ExpressRoute 回線を作成してプロビジョニングする方法について説明します。また、回線の確認、更新、または削除およびプロビジョニング解除の方法も示します。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
@@ -10,352 +10,357 @@
 <tags
    ms.service="expressroute"
    ms.devlang="na"
-   ms.topic="article" 
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/06/2015"
+   ms.date="12/04/2015"
    ms.author="cherylmc"/>
 
-# Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する
+# リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する
 
-> [AZURE.SELECTOR]
-[PowerShell - Classic](expressroute-howto-circuit-classic.md)
-[PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
+   > [AZURE.SELECTOR]
+   [PowerShell - Classic](expressroute-howto-circuit-classic.md)
+   [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
 
-この記事では、PowerShell コマンドレットと Azure リソース マネージャー デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、Windows PowerShell コマンドレットと Azure リソース マネージャー デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。以下の手順では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
+   [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要になります。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
-- 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページと[ワークフロー](expressroute-workflows.md)ページを確認してください。
+ExpressRoute 回線を作成するには、次のことが必要です。
 
-## ExpressRoute 回線を作成してプロビジョニングするには
+- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) を取得します。PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)ページの手順に従ってください。
+- 構成を開始する前に、[前提条件](expressroute-prerequisites.md)ページと[ワークフロー](expressroute-workflows.md)ページを確認してください。
 
-1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
+## ExpressRoute 回線の作成とプロビジョニング
 
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+**手順 1.ExpressRoute 用の PowerShell モジュールをインポートします。**
 
-	    Install-Module AzureRM
+ExpressRoute コマンドレットの使用を開始するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行します。
 
-		Install-AzureRM
+```
+Install-Module AzureRM
 
-	既知のセマンティック バージョン範囲内の AzureRM.* モジュールをすべてインポートします。
+Install-AzureRM
+```
 
-		Import-AzureRM
+既知のセマンティック バージョン範囲内の AzureRM モジュールをすべてインポートします。
 
-	既知のセマンティック バージョン範囲内の選択したモジュールのみをインポートすることもできます。
-		
-		Import-Module AzureRM.Network 
+```
+Import-AzureRM
+```
 
-	ご使用のアカウントにログオンします。
+既知のセマンティック バージョン範囲内の選択したモジュールをインポートすることもできます。
 
-		Login-AzureRmAccount
+```
+Import-Module AzureRM.Network
+```
 
-	ExpressRoute 回線を作成するサブスクリプションを選択します。
-		
-		Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
-			
+ご使用のアカウントにサインインします。
 
+```
+Login-AzureRmAccount
+```
 
-2. **プロバイダー、ロケーション、およびサポートされている帯域幅のリストを取得します。**
+ExpressRoute 回線を作成するサブスクリプションを選択します。
 
-	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureRmExpressRouteServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。
+```
+Select-AzureRmSubscription -SubscriptionId "<subscription ID>"   			
+```
 
-		PS C:\> Get-AzureRmExpressRouteServiceProvider
+**手順 2.サポートされているプロバイダー、ロケーション、および帯域幅のリストを取得します。**
 
-	接続プロバイダーがそこにリストされているかどうかを確認します。回線を作成する際に必要になるため、以下の項目を書き留めておいてください。
-	
-	- 名前
-	- PeeringLocations
-	- BandwidthsOffered
+ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureRmExpressRouteServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。
 
-	これで、ExpressRoute 回線を作成する準備が整いました。
+```
+PS C:\> Get-AzureRmExpressRouteServiceProvider
+```
 
-		
-3. **ExpressRoute 回線を作成します。**
+接続プロバイダーがそこにリストされているかどうかを確認します。以下の項目は、後で回線を作成する際に必要になるため、書き留めておいてください。
 
-	ExpressRoute 回線を作成する前に、リソース グループがまだない場合はまず作成する必要があります。以下のコマンドを実行してこれを行うことができます。
+- 名前
+- PeeringLocations
+- BandwidthsOffered
 
-		New-AzureRmResourceGroup -Name “ExpressRouteResourceGroup” -Location "West US"
+これで、ExpressRoute 回線を作成する準備が整いました。
 
-	以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
+**ステップ 3: ExpressRoute 回線を作成します。**
 
-	以下に、新しいサービス キーの要求の例を示します。
+リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。リソース グループを作成するには、次のコマンドを実行します。
 
-		New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+```
+New-AzureRmResourceGroup -Name “ExpressRouteResourceGroup” -Location "West US"
+```
 
-	必ず、適切な SKU レベルと SKU ファミリを指定してください。
- 
-	 - SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。Standard SKU を取得する場合は *Standard*、Premium アドオンの場合は *Premium* を指定できます。
-	 - SKU ファミリによって、課金の種類が決まります。従量制課金データ プランの場合は *metereddata*、無制限データ プランの場合は *unlimiteddata" を選択できます。**注:** 回線が作成された後で、課金の種類を変更することはできません。
+以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。以下に、新しいサービス キーの要求の例を示します。
 
-	応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
+```
+New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+```
 
-		get-help New-AzureRmExpressRouteCircuit -detailed 
+必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-4. **すべての ExpressRoute 回線の一覧を表示します。**
+- SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。Standard SKU を取得する場合は *Standard*、Premium アドオンの場合は *Premium* を指定できます。
+- SKU ファミリによって、課金の種類が決まります。従量制課金データ プランの場合は *metereddata*、無制限データ プランの場合は *unlimiteddata* を選択できます。**注:** 回線が作成された後で、課金の種類を変更することはできません。
 
-	*Get-AzureRmExpressRouteCircuit* コマンドを実行することで、作成したすべての ExpressRoute 回線の一覧を取得できます。
+応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-		#Getting service key
-		Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+```
+get-help New-AzureRmExpressRouteCircuit -detailed
+```
 
-	応答は、以下の例のようになります。
+**手順 4.すべての ExpressRoute 回線の一覧を表示します。**
 
-		Name                             : ExpressRouteARMCircuit
-		ResourceGroupName                : ExpressRouteResourceGroup
-		Location                         : westus
-		Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-		Etag                             : W/"################################"
-		ProvisioningState                : Succeeded
-		Sku                              : {
-		                                     "Name": "Standard_MeteredData",
-		                                     "Tier": "Standard",
-		                                     "Family": "MeteredData"
-		                                   }
-		CircuitProvisioningState         : Enabled
-		ServiceProviderProvisioningState : NotProvisioned
-		ServiceProviderNotes             : 
-		ServiceProviderProperties        : {
-		                                     "ServiceProviderName": "Equinix",
-		                                     "PeeringLocation": "Silicon Valley",
-		                                     "BandwidthInMbps": 200
-		                                   }
-		ServiceKey                       : **************************************
-		Peerings                         : []
+作成したすべての ExpressRoute 回線の一覧を取得するには、*Get-AzureRmExpressRouteCircuit* コマンドを実行します。
 
+```
+#Getting service key
+Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+```
 
-	この情報は、*Get-AzureRmExpressRouteCircuit* コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは *ServiceKey* フィールドに一覧表示されます。
+応答は、次の例のようになります。
 
-		Get-AzureRmExpressRouteCircuit
-
-	応答は、以下の例のようになります。
-
-		Name                             : ExpressRouteARMCircuit
-		ResourceGroupName                : ExpressRouteResourceGroup
-		Location                         : westus
-		Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-		Etag                             : W/"################################"
-		ProvisioningState                : Succeeded
-		Sku                              : {
-		                                     "Name": "Standard_MeteredData",
-		                                     "Tier": "Standard",
-		                                     "Family": "MeteredData"
-		                                   }
-		CircuitProvisioningState         : Enabled
-		ServiceProviderProvisioningState : NotProvisioned
-		ServiceProviderNotes             : 
-		ServiceProviderProperties        : {
-		                                     "ServiceProviderName": "Equinix",
-		                                     "PeeringLocation": "Silicon Valley",
-		                                     "BandwidthInMbps": 200
-		                                   }
-		ServiceKey                       : **************************************
-		Peerings                         : []
-
-
-
-	以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
-
-		get-help Get-AzureRmExpressRouteCircuit -detailed 
-
-5. **プロビジョニングのためにサービス キーを接続プロバイダーに送信します。**
-
-	新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
-	
-		ServiceProviderProvisioningState : NotProvisioned
-		
-		CircuitProvisioningState         : Enabled
-
-	*ServiceProviderProvisioningState* はサービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供し、Statusは Microsoft 側での状態を示します。ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
-
-		ServiceProviderProvisioningState : Provisioned
-		
-		CircuitProvisioningState         : Enabled
-
-	回線は、接続プロバイダーが有効にしている間、次の状態になります。
-
-		ServiceProviderProvisioningState : Provisioned
-		
-		Status                           : Enabled
-
-
-
-5. **回線キーのステータスと状態を定期的に確認します。**
-
-	これにより、プロバイダーがいつ回線を有効にしたのかが分かります。回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
-
-		Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-
-	応答は、以下の例のようになります。
-
-		Name                             : ExpressRouteARMCircuit
-		ResourceGroupName                : ExpressRouteResourceGroup
-		Location                         : westus
-		Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-		Etag                             : W/"################################"
-		ProvisioningState                : Succeeded
-		Sku                              : {
-		                                     "Name": "Standard_MeteredData",
-		                                     "Tier": "Standard",
-		                                     "Family": "MeteredData"
-		                                   }
-		CircuitProvisioningState         : Enabled
-		ServiceProviderProvisioningState : Provisioned
-		ServiceProviderNotes             : 
-		ServiceProviderProperties        : {
-		                                     "ServiceProviderName": "Equinix",
-		                                     "PeeringLocation": "Silicon Valley",
-		                                     "BandwidthInMbps": 200
-		                                   }
-		ServiceKey                       : **************************************
-		Peerings                         : []
-
-6. **ルーティング構成を作成します。**
-	
-	詳しい手順については、[ExpressRoute 回線のルーティング構成 (回線ピアリングの作成と変更)](expressroute-howto-routing-arm.md) に関するページを参照してください。
-
-7. **ExpressRoute 回線への VNet のリンク**
-
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-arm.md)に関するページを参照してください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
-
-##  ExpressRoute 回線の状態を取得するには
-
-この情報は、*Get-AzureRmExpressRouteCircuit* コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。
-
-		Get-AzureRmExpressRouteCircuit
-
-		Name                             : ExpressRouteARMCircuit
-		ResourceGroupName                : ExpressRouteResourceGroup
-		Location                         : westus
-		Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-		Etag                             : W/"################################"
-		ProvisioningState                : Succeeded
-		Sku                              : {
-		                                     "Name": "Standard_MeteredData",
-		                                     "Tier": "Standard",
-		                                     "Family": "MeteredData"
-		                                   }
-		CircuitProvisioningState         : Enabled
-		ServiceProviderProvisioningState : Provisioned
-		ServiceProviderNotes             : 
-		ServiceProviderProperties        : {
-		                                     "ServiceProviderName": "Equinix",
-		                                     "PeeringLocation": "Silicon Valley",
-		                                     "BandwidthInMbps": 200
-		                                   }
-		ServiceKey                       : **************************************
-		Peerings                         : []
-
-呼び出しに対するパラメーターとしてリソース グループ名と回線名を渡すことで、特定の ExpressRoute 回線に関する情報を取得できます。
-
-		Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-
-	The response will be something similar to the example below:
-
-		Name                             : ExpressRouteARMCircuit
-		ResourceGroupName                : ExpressRouteResourceGroup
-		Location                         : westus
-		Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-		Etag                             : W/"################################"
-		ProvisioningState                : Succeeded
-		Sku                              : {
-		                                     "Name": "Standard_MeteredData",
-		                                     "Tier": "Standard",
-		                                     "Family": "MeteredData"
-		                                   }
-		CircuitProvisioningState         : Enabled
-		ServiceProviderProvisioningState : Provisioned
-		ServiceProviderNotes             : 
-		ServiceProviderProperties        : {
-		                                     "ServiceProviderName": "Equinix",
-		                                     "PeeringLocation": "Silicon Valley",
-		                                     "BandwidthInMbps": 200
-		                                   }
-		ServiceKey                       : **************************************
-		Peerings                         : []
+```
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_MeteredData",
+                                     "Tier": "Standard",
+                                     "Family": "MeteredData"
+   		                           }
+CircuitProvisioningState          : Enabled
+ServiceProviderProvisioningState  : NotProvisioned
+ServiceProviderNotes              :
+ServiceProviderProperties         : {
+                                      "ServiceProviderName": "Equinix",
+                                      "PeeringLocation": "Silicon Valley",
+                                      "BandwidthInMbps": 200
+                                    }
+ServiceKey                        : **************************************
+Peerings                          : []
+```
+
+この情報は、*Get-AzureRmExpressRouteCircuit* コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは *ServiceKey* フィールドに一覧表示されます。
+
+```
+Get-AzureRmExpressRouteCircuit
+```
+
+応答は、次の例のようになります。
+
+```
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_MeteredData",
+                                     "Tier": "Standard",
+                                     "Family": "MeteredData"
+   		                           }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : NotProvisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                     "ServiceProviderName": "Equinix",
+                                     "PeeringLocation": "Silicon Valley",
+                                     "BandwidthInMbps": 200
+   		                           }
+ServiceKey                       : **************************************
+Peerings                         : []
+```
 
 以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-		get-help get-azurededicatedcircuit -detailed 
+```
+get-help Get-AzureRmExpressRouteCircuit -detailed
+```
 
-## ExpressRoute 回線を変更するには
+**手順 5.プロビジョニングのためにサービス キーを接続プロバイダーに送信します。**
 
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。
+新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
-以下の操作を行うことができます。
+```
+ServiceProviderProvisioningState : NotProvisioned
 
-- ダウンタイムを発生させることなく、ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にする。
-- ダウンタイムを発生させることなく、ExpressRoute 回線の帯域幅を増やす。
+CircuitProvisioningState         : Enabled
+```
 
-制限および制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
+*ServiceProviderProvisioningState* はサービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供し、Statusは Microsoft 側での状態を示します。ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
-### ExpressRoute Premium アドオンを有効にする方法
+```
+ServiceProviderProvisioningState : Provisioned
 
-次の PowerShell スニペットを使用して、既存の回線の ExpressRoute Premium アドオンを有効にできます。
+CircuitProvisioningState         : Enabled
+```
 
-		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
-		$ckt.Sku.Name = "Premium"
-		$ckt.sku.Name = "Premium_MeteredData"
+```
+ServiceProviderProvisioningState : Provisioned
 
-		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-	
-		
-これで、回線の ExpressRoute Premium アドオン機能が有効になります。このコマンドが正常に実行された時点で、Premium アドオン機能の課金が始まることに注意してください。
+Status                           : Enabled
+```
 
-### ExpressRoute Premium アドオンを無効にする方法
+**手順 6.回線キーのステータスと状態を定期的に確認します。**
 
-次の PowerShell コマンドレットを使用して、既存の回線の ExpressRoute Premium アドオンを無効にできます。
-	
-		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-		
-		$ckt.Sku.Tier = "Standard"
-		$ckt.sku.Name = "Standard_MeteredData"
-		
-		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+回線キーのステータスと状態をチェックすると、いつプロバイダーによって回線が有効にされたかがわかります。回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
+```
+Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+```
 
-これで回線の Premium アドオンが無効になります。
+応答は、次の例のようになります。
 
-標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗する可能性があることに注意してください。
+```
+Name                             : ExpressRouteARMCircuit
+ResourceGroupName                : ExpressRouteResourceGroup
+Location                         : westus
+Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                     "Name": "Standard_MeteredData",
+                                     "Tier": "Standard",
+                                     "Family": "MeteredData"
+                                   }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             :
+ServiceProviderProperties        : {
+                                     "ServiceProviderName": "Equinix",
+                                     "PeeringLocation": "Silicon Valley",
+                                     "BandwidthInMbps": 200
+   	                            }
+ServiceKey                       : **************************************
+Peerings                         : []
 
-- Premium から標準にダウングレードする前に、回線にリンクされている仮想ネットワークの数が 10 未満であることを確認する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
-- 他の地理的リージョンではすべての仮想ネットワークのリンクを解除する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
-- プライベート ピアリングの場合、ルート テーブルのサイズを 4000 ルート未満にする必要があります。ルート テーブルのサイズが 4000 ルートを超える場合、BGP セッションがドロップし、アドバタイズされたプレフィックスの数が 4000 未満になるまで再度有効になりません。
+**Step 7.  Create your routing configuration.**
 
+For step-by-step instructions, refer to the [ExpressRoute circuit routing configuration (create and modify circuit peerings)](expressroute-howto-routing-arm.md).
 
-### ExpressRoute 回線の帯域幅を更新する方法
+**Step 8.  Link a virtual network to an ExpressRoute circuit.**
 
-プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを確認してください。既存の回線のサイズを超えるサイズを選択することができます。必要なサイズを決定した後、次のコマンドを使用して、回線のサイズを変更することができます。
+Next, link a virtual network to your ExpressRoute circuit. You can use [this template](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection) when you work with the Resource Manager deployment mode. We're currently working on steps to accomplish this by using PowerShell.
 
-		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+## Get the status of an ExpressRoute circuit
 
-		$ckt.ServiceProviderProperties.BandwidthInMbps = 1000
+You can retrieve this information at any time by using the *Get-AzureRmExpressRouteCircuit* cmdlet. Making the call with no parameters will list all circuits.
 
-		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
+Get-AzureRmExpressRouteCircuit
+```
 
-回線のサイズは、Microsoft 側で増やされます。接続プロバイダーに連絡し、この変更に合わせて接続プロバイダー側の構成を更新するよう求める必要があります。更新された帯域幅のオプションの課金は、この時点から開始されます。
+The response will be similar to the following example:
 
->[AZURE.IMPORTANT]中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
+```
+Name : ExpressRouteARMCircuit ResourceGroupName : ExpressRouteResourceGroup Location : westus Id : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit Etag : W/"################################" ProvisioningState : Succeeded Sku : { "Name": "Standard\_MeteredData", "Tier": "Standard", "Family": "MeteredData" } CircuitProvisioningState : Enabled ServiceProviderProvisioningState : Provisioned ServiceProviderNotes : ServiceProviderProperties : { "ServiceProviderName": "Equinix", "PeeringLocation": "Silicon Valley", "BandwidthInMbps": 200 } ServiceKey : ************************************** Peerings :
+```
 
-## ExpressRoute 回線を削除してプロビジョニング解除するには
+You can get information on a specific ExpressRoute circuit by passing the resource group name and circuit name as a parameter to the call:
 
-ExpressRoute 回線は、次のコマンドを実行して削除できます。
+```
+Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+```
 
-		Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
+The response will look similar to the following example:
 
-この操作を正常に行うには、ExpressRoute からすべての仮想ネットワークのリンクを解除する必要があることに注意してください。この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
+```
+Name : ExpressRouteARMCircuit ResourceGroupName : ExpressRouteResourceGroup Location : westus Id : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit Etag : W/"################################" ProvisioningState : Succeeded Sku : { "Name": "Standard\_MeteredData", "Tier": "Standard", "Family": "MeteredData" } CircuitProvisioningState : Enabled ServiceProviderProvisioningState : Provisioned ServiceProviderNotes : ServiceProviderProperties : { "ServiceProviderName": "Equinix", "PeeringLocation": "Silicon Valley", "BandwidthInMbps": 200 } ServiceKey : ************************************** Peerings :
+```
 
-ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が有効の場合、状態は有効状態から*無効化中*に移ります。サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金は続行されます。
+You can get detailed descriptions of all parameters by running the following:
 
-ユーザーが上記のコマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、回線のプロビジョニングが解除され、課金が停止します。
+```
+get-help get-azurededicatedcircuit -detailed
+```
+
+## Modify an ExpressRoute circuit
+
+You can modify certain properties of an ExpressRoute circuit without impacting connectivity.
+
+You can do the following, with no downtime:
+
+- Enable or disable an ExpressRoute premium add-on for your ExpressRoute circuit.
+- Increase the bandwidth of your ExpressRoute circuit.
+
+For more information on limits and limitations, refer to the [ExpressRoute FAQ](expressroute-faqs.md) page.
+
+### Enable the ExpressRoute premium add-on
+
+You can enable the ExpressRoute premium add-on for your existing circuit by using the following PowerShell snippet:
+
+```
+$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+
+$ckt.Sku.Name = "Premium" $ckt.sku.Name = "Premium\_MeteredData"
+
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
+
+The circuit will now have the ExpressRoute premium add-on features enabled. Note that Microsoft will begin billing you for the premium add-on capability as soon as the command has successfully run.
+
+### Disable the ExpressRoute premium add-on
+
+You can disable the ExpressRoute premium add-on for the existing circuit by using the following PowerShell cmdlet:
+
+```
+$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+
+$ckt.Sku.Tier = "Standard" $ckt.sku.Name = "Standard\_MeteredData"
+
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
+
+The premium add-on is now disabled for the circuit.
+
+Note that this operation can fail if you are using resources greater than what is permitted for the standard circuit.
+
+- Before you downgrade from premium to standard, you must ensure that the number of virtual networks linked to the circuit is less than 10. If you don't do so, your update request fails and Microsoft will bill you at premium rates.
+- You must unlink all virtual networks in other geopolitical regions. If you don't do so, your update request will fail and Microsoft will bill you at premium rates.
+- Your route table must be less than 4,000 routes for private peering. If your route table size is greater than 4,000 routes, the BGP session drops and won't be reenabled until the number of advertised prefixes goes below 4,000.
+
+### Update the ExpressRoute circuit bandwidth
+
+For supported bandwidth options for your provider, check the [ExpressRoute FAQ](expressroute-faqs.md) page. You can pick any size greater than the size of your existing circuit. After you decide what size you need, use the following command to resize your circuit:
+
+```
+$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+
+$ckt.ServiceProviderProperties.BandwidthInMbps = 1000
+
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
+
+Your circuit will be sized up on the Microsoft side. Then you must contact your connectivity provider to update configurations on their side to match this change. After you make this notification, Microsoft will begin billing you for the updated bandwidth option.
+
+**Important**: You cannot reduce the bandwidth of an ExpressRoute circuit without disruption. Downgrading bandwidth requires you to deprovision the ExpressRoute circuit and then reprovision a new ExpressRoute circuit.
+
+## Delete and deprovision an ExpressRoute circuit
+
+You can delete your ExpressRoute circuit by running the following command:
+
+```
+Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit" ```
+
+この操作を成功させるには、ExpressRoute 回線からすべての仮想ネットワークのリンクを解除する必要があることに注意してください。この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
+
+ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が有効の場合、状態は有効状態から*無効化中*に移ります。サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
+
+ユーザーが上記のコマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、Microsoft は回線のプロビジョニングを解除し、課金を停止します。
 
 ## 次のステップ
 
-- [ルーティングの構成](expressroute-howto-routing-arm.md)
-- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md) 
+回線を作成したら、次の操作を必ず実行します。
 
-<!---HONumber=Nov15_HO3-->
+- [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
+- [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
+
+<!---HONumber=AcomDC_0302_2016-->

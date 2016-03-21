@@ -27,9 +27,9 @@
 
 ### サービス名前空間を作成し、SAS キーを取得するには
 
-1. 「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/hh690931.aspx)」の手順に従い、Azure ポータルで名前空間を作成します。
+1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
-2. Azure ポータルのメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
+2. ポータルのメイン ウィンドウで、前の手順で作成したサービス名前空間の名前をクリックします。
 
 3. **[構成]** をクリックして、名前空間の共有アクセス ポリシーを表示します。
 
@@ -300,7 +300,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 	この手順では、以前に定義した既定の **webHttpRelayBinding** を使用するサービスを構成します。また、既定の **sbTokenProvider** を使用します。この値は次の手順で定義します。
 
-6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS\_KEY" キーを、手順 1 で Azure ポータルから取得した*Shared Access Signature (SAS)* に置き換えます。
+6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS\_KEY" キーを、手順 1. で [Azure クラシック ポータル][]から取得した *Shared Access Signature* (SAS) に置き換えます。
 
 	```
 	<behaviors>
@@ -582,4 +582,6 @@ namespace Microsoft.ServiceBus.Samples
 
 - [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_0121_2016-->

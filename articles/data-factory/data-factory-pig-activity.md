@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Pig アクティビティ
@@ -61,14 +61,14 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | アクティビティの名前 | あり
+name | アクティビティの名前 | はい
 description | アクティビティの用途を説明するテキストです。 | いいえ
 type | HDInsightPig | あり
 inputs | Pig のアクティビティによって使用される入力 | いいえ
 outputs | Pig のアクティビティによって生成される出力 | あり
 linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 | あり
 script (スクリプト) | Pig スクリプトをインラインに指定します | いいえ
-スクリプトのパス | Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません | いいえ
+スクリプトのパス | Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません。ファイル名は大文字と小文字が区別されます。 | いいえ
 defines | Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します | いいえ
 
 ## 例
@@ -96,11 +96,11 @@ defines | Pig スクリプト内で参照するキーと値のペアとしてパ
 Data Factory パイプラインでこの Pig スクリプトを実行するには、以下の手順を実行する必要があります。
 
 1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。このリンクされたサービスを "HDInsightLinkedService" と呼ぶことにしましょう。
-2.	[リンクされたサービス](data-factory-azure-storage-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
+2.	[リンクされたサービス](data-factory-azure-blob-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを "StorageLinkedService" と呼ぶことにしましょう。
 3.	入力と出力のデータを指定する[データセット](data-factory-create-datasets.md)を作成します。入力データセットは "PigSampleIn"、出力データセットは "PigSampleOut" と呼ぶことにしましょう。
 4.	上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。データをホストするリンクされたサービスがこのクエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成し、アクティビティの構成でこのリンクされたサービスを参照します。**scriptPath** を使用して pig スクリプト ファイルへのパスを指定し、**scriptLinkedService** を使用して、このスクリプト ファイルを含む Azure Storage を指定します。
 	
-	> [AZURE.NOTE]また、**script** プロパティを使えば、アクティビティ定義で Pig スクリプトをインライン化することもできます。ただし、JSON ドキュメント内でスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題の原因となる場合があるため、この方法はお勧めできません。手順 4. の使用をお勧めします。
+	> [AZURE.NOTE] また、**script** プロパティを使えば、アクティビティ定義で Pig スクリプトをインライン化することもできます。ただし、JSON ドキュメント内でスクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題の原因となる場合があるため、この方法はお勧めできません。手順 4. の使用をお勧めします。
 5. HDInsightPig アクティビティで以下のパイプラインを作成し、データを処理します。
 
 		{
@@ -186,4 +186,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
 		Store PigSampleOut into '$Output' USING PigStorage (','); 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

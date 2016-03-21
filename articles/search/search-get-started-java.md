@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Java での Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="プログラミング言語として Java を使用して Azure でクラウド ホステッド検索アプリケーションを作成する方法を説明します。"
+	description="プログラミング言語として Java を使用して Azure でホスト型クラウド検索アプリケーションを作成する方法を説明します。"
 	services="search"
 	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
+	authors="EvanBoyle"
+	manager="pablocas"
 	editor="v-lincan"/>
 
 <tags
@@ -13,12 +13,17 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/04/2015"
-	ms.author="heidist"/>
+	ms.date="03/08/2016"
+	ms.author="evboyle"/>
 
 # Java での Azure Search の使用
+> [AZURE.SELECTOR]
+- [ポータル](search-get-started-portal.md)
+- [.NET](search-howto-dotnet-sdk.md)
 
 検索エクスペリエンスとして Azure Search を使用するカスタム Java 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
+
+このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[Azure ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
 
 このサンプルをビルドしてテストするには次のソフトウェアを使用しました。
 
@@ -28,17 +33,13 @@
 
 - [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Microsoft Azure 管理ポータル](https://portal.azure.com)でサインアップできます。
-
-> [AZURE.TIP]このチュートリアルのソース コードは、Github の [Azure Search Java デモ](http://go.microsoft.com/fwlink/p/?LinkId=530197)からダウンロードしてください。
-
 ## データについて
 
 このサンプル アプリケーションでは、[United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
 このアプリケーションでは、**SearchServlet.java** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。オンライン データ ソースに対する定義済みの資格情報と接続情報は、プログラム コードで提供されます。データ アクセスに関しては、これ以上の構成は必要ありません。
 
-> [AZURE.NOTE]このデータセットにフィルターを提供し、Free 価格レベルのドキュメントを 10,000 件未満に制限しました。Standard レベルを使用する場合は、この制限は適用されず、より大きなデータセットを使用するようにこのコードを変更できます。各価格レベルの容量の詳細については、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
+> [AZURE.NOTE] このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。標準レベルを使用する場合は、この制限は適用されず、より大きなデータセットを使用するようにこのコードを変更できます。各価格レベルの容量の詳細については、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
 
 ## プログラム ファイルについて
 
@@ -52,48 +53,19 @@
 - config.properties: Search サービスの URL と API キーを設定します
 - Pom.xml: Maven が依存します
 
-
-## サービスの作成
-
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-
-2. ジャンプバーで、**[新規]** > **[データ + ストレージ]** > **[検索]** をクリックします。
-
-     ![][1]
-
-3. サービス名、価格レベル、リソース グループ、サブスクリプション、および場所を構成します。これらの設定は必須であり、サービスがプロビジョニングされた後は変更できません。
-
-     ![][2]
-
-	- **[サービス名]** はスペースなし、15 文字以下の小文字で、一意である必要があります。この名前は、Azure Search サービスのエンドポイントの一部になります。名前付け規則の詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。
-
-	- [**価格レベル**] では、容量と課金を決定します。どちらのレベルも同じ機能を提供しますが、リソース レベルが異なります。
-
-		- **[Free]** レベルは、他のサブスクライバーと共有されているクラスター上で実行されます。Free 版はチュートリアルを試用して概念実証コードを書くには十分な機能を提供しますが、運用アプリケーションには対応していません。Free サービスは、通常は数分でデプロイできます。
-		- **[Standard]** レベルは専用リソースで実行され、拡張性に優れています。最初、Standard サービスは 1 つのレプリカと 1 つのパーティションを使用してプロビジョニングされますが、サービスを作成した後で容量を調整することができます。Standard サービスをデプロイするには、通常は約 15 分かかります。
-
-	- **リソース グループ**は、一般的な目的で使用するサービスとリソースのコンテナーです。たとえば、Azure Search、Azure Websites、Azure BLOB ストレージを使用してカスタム検索アプリケーションを構築する場合は、リソース グループを作成することで、これらのサービスをポータル管理ページにまとめておくことができます。
-
-	- **[サブスクリプション]** では、複数のサブスクリプションがある場合に、複数のサブスクリプションから選択できます。
-
-	- **[場所]** はデータ センターのリージョンです。現時点では、すべてのリソースは同じデータ センターで実行する必要があります。複数のデータ センターにリソースを分散させることはできません。
-
-4. **[作成]** をクリックしてサービスをプロビジョニングします。
-
-ジャンプバーで、通知を確認します。サービスが使用できるようになると、通知が表示されます。
-
 <a id="sub-2"></a>
 ## Azure Search サービスのサービス名と API キーの取得
 
-サービスを作成した後は、ポータルに戻って URL および `api-key` を取得できます。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
+Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。
 
-1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。
-
-2. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
+3. 使用するサービスを選択します。
+4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
   	![][3]
 
-3. サービスの URL と管理者キーをコピーします。後で **config.properties** ファイルに追加するときに必要になります。
+5. サービスの URL と管理者キーをコピーします。後で **config.properties** ファイルに追加するときに必要になります。
 
 ## サンプル ファイルのダウンロード
 
@@ -123,7 +95,7 @@
 
 1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
 
-2. この記事で前述の手順を参照し、[Azure ポータル](https://portal.azure.com) でサービスの URL と API キーを探して、**config.properties** に入力する値を取得します。
+2. この記事で前述の手順を参照し、[Azure ポータル](https://portal.azure.com)でサービスの URL と API キーを探して、**config.properties** に入力する値を取得します。
 
 3. **config.properties** で、「API キー」をサービスの API キーに置き換えます。次に、サービス名 (URL http://servicename.search.windows.net の最初のコンポーネント) で同じファイルの「サービス名」を置き換えます。
 
@@ -189,7 +161,7 @@
 
 5. **Search.jsp** を右クリックし、**[Run As]**、**[Run on Server]** の順に選択します。Apache Tomcat サーバーを選択し、**[Run]** をクリックします。
 
-> [AZURE.TIP]既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。Project Explorer で、**Search.jsp** を右クリックし、**[Run As]**、**[Run Configurations]** の順に選択します。Apache Tomcat サーバーを選択します。**[Arguments]** をクリックします。**[Workspace]** または **[File System]** をクリックして、プロジェクトを含むフォルダーを設定します。
+> [AZURE.TIP] 既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。Project Explorer で、**Search.jsp** を右クリックし、**[Run As]**、**[Run Configurations]** の順に選択します。Apache Tomcat サーバーを選択します。**[Arguments]** をクリックします。**[Workspace]** または **[File System]** をクリックして、プロジェクトを含むフォルダーを設定します。
 
 アプリケーションを実行すると、ブラウザー ウィンドウが開き、語句を入力するための検索ボックスが表示されます。
 
@@ -213,9 +185,9 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 
 これは、Java と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
-Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](search-pagination.md)を変更したり、[ファセット ナビゲーション](search-faceted-navigation.md)を実装したりしてみてください。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
+Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](search-pagination-page-layout.md)を変更したり、[ファセット ナビゲーション](search-faceted-navigation.md)を実装したりしてみてください。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
 
-Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。他のリソースについては、[ドキュメントのページ](http://azure.microsoft.com/documentation/services/search/)を参照してください。[ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
+Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。[ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG
@@ -231,4 +203,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

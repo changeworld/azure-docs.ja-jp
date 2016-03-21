@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="11/04/2015"
+	ms.date="12/15/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (iOS アプリ)
@@ -37,16 +37,16 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Mobile Services iOS SDK]
++ [Mobile Services iOS SDK バージョン 1.2.4]
 + [Xcode 7][Install Xcode]
 + iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、iOS シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   > [AZURE.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、iOS シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
 
 [AZURE.INCLUDE [Notification Hubs による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
@@ -56,7 +56,7 @@
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="6">
 <li>
 <p>上部にある <b>[構成]</b> タブをクリックし、Apple 通知設定の <b>[アップロード]</b> ボタンをクリックして、証明書の拇印をアップロードします。次に、前にエクスポートした <b>.p12</b> 証明書と、その証明書のパスワードを選択します。</p>
 <p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。<b>[運用]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合のみ使用します。</p>
@@ -86,11 +86,13 @@
 
    	![][9]
 
-4. [Mobile Services iOS SDK] のバージョン 1.2.4 をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+
+	>[AZURE.NOTE] Notification Hubs SDK は現在、Xcode 7 におけるビットコードをサポートしていません。プロジェクトの **[Build Options]** で **[Enable Bitcode]** を **[No]** に設定する必要があります。
 
    	![][10]
 
-5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを*ハブ名*と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
+5. **HubInfo.h** という名前の新しいヘッダー ファイルをプロジェクトに追加します。このファイルに通知ハブの定数が保存されます。次の定義を追加し、文字列リテラルのプレースホルダーを *ハブ名* と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。
 
 		#ifndef HubInfo_h
 		#define HubInfo_h
@@ -157,7 +159,7 @@
 ## 通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、[Azure クラシック ポータル]で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
 
 ![][30]
 
@@ -253,6 +255,7 @@
 		{
 			[super viewDidLoad];
 			[self ParseConnectionString];
+			[_notificationMessage setDelegate:self];
 		}
 
 		-(NSString *)CF_URLEncodedString:(NSString *)inputString
@@ -321,7 +324,7 @@
 		}
 
 
-8. Ctrl キーを押しながら **[Send Notification]** ボタンを ViewController.m にドラッグし、**Touch Down** に対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
+8. Ctrl キーを押しながら **[Send Notification]** ボタンを ViewController.m にドラッグし、**Touch Down** イベントに対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
 
 		- (IBAction)SendNotificationMessage:(id)sender
 		{
@@ -433,7 +436,7 @@
 11. プロジェクトをビルドし、エラーがないことを確認します。
 
 
-> [AZURE.NOTE]Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] \(ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
+> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、[ビルド設定] の [ビットコードの有効化] \(ENABLE\_BITCODE) を [いいえ] に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべての通知ペイロードが記載されています。
 
@@ -446,7 +449,7 @@ iOS でプッシュ通知をテストするには、デバイスにアプリケ�
 
 	![][33]
 
-2. Azure ポータルからテスト通知を送信することができます。アプリ内で通知を送信するためのコードを追加した場合は、テキスト フィールドの内部をタッチして、通知メッセージを入力します。入力後、キーボードの **Send** キーまたはビュー内の **[Send Notification]** ボタンを押して、通知メッセージを送信します。
+2. [Azure クラシック ポータル]からテスト通知を送信することができます。アプリ内で通知を送信するためのコードを追加した場合は、テキスト フィールドの内部をタッチして、通知メッセージを入力します。入力後、キーボードの **Send** キーまたはビュー内の **[Send Notification]** ボタンを押して、通知メッセージを送信します。
 
 	![][34]
 
@@ -486,13 +489,14 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 
 <!-- URLs. -->
+[Mobile Services iOS SDK バージョン 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
-[Azure portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
@@ -503,4 +507,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!----HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

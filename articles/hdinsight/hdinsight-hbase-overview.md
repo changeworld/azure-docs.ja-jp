@@ -14,8 +14,8 @@
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/17/2015"
+	ms.topic="get-started-article"
+	ms.date="01/14/2016"
 	ms.author="jgao"/>
 
 
@@ -82,7 +82,7 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 
 [hbase-get-started]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/
 
@@ -94,4 +94,4 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 [apache-hadoop]: http://hadoop.apache.org/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

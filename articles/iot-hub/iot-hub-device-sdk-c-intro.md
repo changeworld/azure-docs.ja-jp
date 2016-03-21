@@ -3,7 +3,7 @@
 	description="C 用 Azure IoT デバイス SDK のサンプル コードについて説明し、操作を開始します。"
 	services="iot-hub"
 	documentationCenter=""
-	authors="MichelBarnett"
+	authors="olivierbloch"
 	manager="timlt"
 	editor=""/>
 
@@ -13,16 +13,16 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="11/10/2015"
-     ms.author="michelb"/>
+     ms.date="02/23/2016"
+     ms.author="obloch"/>
 
 # C 用 Azure IoT デバイス SDK の概要
 
-**Azure IoT デバイス SDK** は、**Azure IoT Hub** サービスとのイベントの送信とメッセージの受信のプロセスを簡略化するために設計された一連のライブラリです。SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、**C 用 Azure IoT デバイス SDK** について説明します。
+**Azure IoT デバイス SDK** は、**Azure IoT Hub** サービスとのイベントの送信とメッセージの受信のプロセスを簡略化するために設計された一連のライブラリです。SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、**C 用 Azure IoT device SDK** について説明します。
 
 C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。これにより、さまざまなプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境で操作する場合に適しています。
 
-SDK がテストされたプラットフォームは幅広くあります ([SDK ドキュメント](https://github.com/Azure/azure-iot-sdks/tree/master/c)を参照してください)。この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされているプラットフォーム全体でまったく同じです。
+この SDK は幅広いプラットフォームでテストされています (詳細は、「[プラットフォームと互換性の一覧](iot-hub-tested-configurations.md)」を参照してください)。この記事には、Windows プラットフォームで実行されるサンプル コードのチュートリアルが含まれますが、この記事で説明するコードはサポートされるプラットフォーム全体でまったく同じであることに留意してください。
 
 この記事では、C 用 Azure IoT デバイス SDK のアーキテクチャについて紹介します。また、デバイスのライブラリを初期化する方法、IoT Hub にイベントを送信する方法や IoT Hub からメッセージを受信する方法の例を示します。この記事の情報は、SDK を使用し始めるにあたり十分な内容ですが、ライブラリに関する追加情報を入手できる場所も紹介します。
 
@@ -36,51 +36,50 @@ SDK がテストされたプラットフォームは幅広くあります ([SDK 
 
   ![](media/iot-hub-device-sdk-c-intro/01-MasterBranch.PNG)
 
-このリポジトリには、Azure IoT デバイス SDK のファミリ全体が含まれています。ただし、この記事では、**c** フォルダーにある *C 用* Azure IoT デバイス SDK を取り扱います。
+このリポジトリには、Azure IoT デバイス SDK のファミリ全体が含まれています。ただし、この記事では、**c** フォルダーにある *C 用* Azure IoT device SDK を取り扱います。
 
   ![](media/iot-hub-device-sdk-c-intro/02-CFolder.PNG)
 
-SDK の中心となる実装は、リポジトリ内の **common**、**iothub\_client**、**serializer** の各フォルダーにあります。**common** フォルダーには、ライブラリ全体で使用される共有コードが格納されています (通常、**common** フォルダーのコードは直接使用しないでください)。一方、**iothub\_client** フォルダーと **serializer** フォルダーには、ユーザーのコードで使用する SDK の 2 つの独立した層の実装が格納されています。
-
--   **IoTHubClient**: **iothub\_client** フォルダーには、SDK の **IoTHubClient** ライブラリ内の最下位の API 層の実装が格納されています。**IoTHubClient** ライブラリには、IoT Hub にイベントを送信するだけでなく IoT Hub からメッセージを受信する API が含まれます。このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが、IoT Hub と通信するためのその他の詳細は自動で処理されます。
-
--   **serializer**: **serializer** フォルダーには、**serializer** ライブラリの実装が格納されています。**serializer** ライブラリは、**IoTHubClient** が提供する機能の上にモデリング機能を追加します。**serializer** ライブラリを使用する場合は、まず、IoT Hub から受信するメッセージだけでなく IoT Hub に送信するイベントを指定するモデルを定義します。いったんモデルを定義すれば、SDK が提供する API にアクセスして、シリアル化の詳細を気にすることなく、イベントやメッセージを簡単に処理できます。
+* SDK のコア実装は、SDK (**IoTHubClient** ライブラリ) 内の最下位の API 層の実装が格納されている **iothub\_client** フォルダーで見つけることができます。**IoTHubClient** ライブラリには、IoT Hub にメッセージを送信するだけでなく IoT Hub からメッセージを受信するために、未加工メッセージングを実装する API が含まれます。このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが (最終的には以下のシリアライザー サンプルを使用)、IoT Hub と通信するためのその他の詳細は自動で処理されます。
+* **serializer** フォルダーには、クライアント ライブラリを使用して Azure IoT Hub に送信する前にデータをシリアル化する方法を示す、ヘルパー関数とサンプルが含まれます。シリアライザーの使用は必須ではなく、利便性のためだけに提供されていることに注意してください。**serializer** ライブラリを使用する場合は、まず、IoT Hub から受信するメッセージだけでなく IoT Hub に送信するイベントを指定するモデルを定義します。一度モデルを定義すれば、SDK が提供する API サーフェスにアクセスして、シリアル化の詳細を心配することなく、イベントやメッセージを簡単に処理できます。ライブラリは、複数のプロトコル (AMQP、MQTT) を使用してトランスポートを実装するその他のオープン ソース ライブラリによって異なります。
+* **IoTHubClient** ライブラリは、次のその他のオープン ソース ライブラリによって異なります。
+   * [Azure C 共有ユーティリティ](https://github.com/Azure/azure-c-shared-utility) ライブラリ。複数の Azure 関連 C SDK で必要となる基本タスク (文字列、一覧の操作、IO など) に一般的な機能を提供します。
+   * [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) ライブラリ。リソース制約デバイス用に最適化された AMQP のクライアント側の実装です。
+   * [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) ライブラリ。MQTT プロトコルを実装する汎用目的ライブラリで、リソース制約デバイス用に最適化されています。
 
 これらはすべて、サンプル コードを確認した方が簡単に理解できます。次のセクションでは、SDK に含まれているいくつかのサンプル アプリケーションについて説明します。API の動作のしくみの概要だけでなく、SDK のアーキテクチャの層のさまざまな機能を理解するうえで役立つ内容です。
 
 ## サンプルを実行する前に
 
-C 用 Azure IoT デバイス SDK でサンプルを実行する前に、開発環境の準備とデバイスの資格情報の取得の 2 つのタスクを完了する必要があります。SDK に含まれる [readme ファイル](https://github.com/Azure/azure-iot-sdks/tree/master/c)に、両方のタスクの手順が説明されています。次のセクションで、これらの手順について追加でコメントしています。
+C 用 Azure IoT デバイス SDK のサンプルを実行する前に、インスタンスがない場合は、Azure サブスクリプションでサービスのインスタンスを作成し、次の 2 つのタスクを完了する必要があります。
+* 開発環境を準備する
+* デバイスの資格情報を取得する
+
+Azure サブスクリプションで Azure IoT Hub のインスタンスを作成する必要がある場合は、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md)の手順に従います。
+
+[Readme ファイル](https://github.com/Azure/azure-iot-sdks/tree/master/c)には、開発環境を準備する方法とデバイスの資格情報を取得する方法を提供する SDK が含まれます。次のセクションで、これらの手順について追加でコメントしています。
 
 ### 開発環境の準備
 
+パッケージは一部のプラットフォーム (Windows 用 NuGet、Debian と Ubuntu 用 apt\_get など) に提供され、利用可能な場合にサンプルはこれらのパッケージを使用しますが、次の手順では、コードから直接ライブラリとサンプルをビルドする方法について詳しく説明します。
+
 最初に、GitHub から SDK のコピーを入手して、ソースを作成する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)の **master** ブランチからソースのコピーを取得します。
 
-ソースのコピーをダウンロードしたら、SDK の記事「[開発環境を準備する](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)」で説明されている手順を行う必要があります。Windows 用に実行する必要がある作業のほとんどが、[Qpid Proton ライブラリの準備](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md#preparing-qpid-proton-libraries-in-windows)および[環境の検証](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md#verify-your-environment)に関係しています。ここでは、準備ガイドで説明されている手順を完了するのに役立ついくつかのヒントを紹介します。
+ソースのコピーをダウンロードしたら、SDK の記事「[開発環境を準備する](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)」で説明されている手順を完了する必要があります。
 
--   **PROTON\_PATH** 環境変数を作成する場合は、次に示すように、**システム**環境変数にします。
 
-  ![](media/iot-hub-device-sdk-c-intro/07-EnvironmentVariables.PNG)
+ここでは、準備ガイドで説明されている手順を完了するのに役立ついくつかのヒントを紹介します。
 
 -   **CMake** ユーティリティをインストールするとき、**すべてのユーザー**の PATH システム環境変数に **CMake** を追加するオプションを選択します (**現在のユーザー**に追加しても効果は同じです)。
 
   ![](media/iot-hub-device-sdk-c-intro/08-CMake.PNG)
 
--   必ず、適切なバージョンの Python をインストールしてください。Windows では通常、x86 バージョンをインストールします。
 
-  ![](media/iot-hub-device-sdk-c-intro/09-Python.PNG)
-
-インストーラーの既定のオプションを使用できます。
-
-- Python ディレクトリを **PATH** システム環境変数に追加します。Windows では、次のようになります。
-- 
-![](media/iot-hub-device-sdk-c-intro/16-PythonPath.PNG)
-
--   **Developer Command Prompt for VS2015** を開く前に、Git コマンド ライン ツールをインストールします。これらのツールをインストールするには、次の手順を実行します。
+-   **開発者コマンド プロンプト for VS2015** を開く前に、Git コマンド ライン ツールをインストールします。これらのツールをインストールするには、次の手順を実行します。
 
 	1. **Visual Studio 2015** セットアップ プログラムを起動します (または **[プログラムと機能]** コントロール パネルの **[Microsoft Visual Studio 2015]** を選択して **[変更]** をクリックします)。
 	
-	2. インストーラーで **[Git for Windows]** 機能が選択されていることを確認します。ただし、IDE 統合機能を使用する場合は、**[GitHub Extension for Visual Studio]** オプションもオンにしてください。
+	2. インストーラーで **[Git for Windows]** 機能が選択されていることを確認します。ただし、IDE 統合機能を使用するために、**[GitHub Extension for Visual Studio]** オプションもオンにすることができます。
 
   		![](media/iot-hub-device-sdk-c-intro/10-GitTools.PNG)
 
@@ -90,21 +89,24 @@ C 用 Azure IoT デバイス SDK でサンプルを実行する前に、開発�
 
   		![](media/iot-hub-device-sdk-c-intro/11-GitToolsPath.PNG)
 
-**build\_proton.cmd** スクリプトをコマンド プロンプトから実行すると、このスクリプトが GitHub リポジトリから Proton ソースをダウンロードし、Proton ライブラリを作成します。
 
-MQTT サンプルを実行する場合は、SDK ドキュメントの [Apache MQTT ライブラリの構築](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md#building-the-apache-mqtt-library-in-windows)に関するページの手順に従ってください。最後は必ず **build.cmd** を実行します。
-
-以上の手順が済んだら、サンプル アプリケーションをコンパイルする準備は完了です。
+[「開発環境を準備する」](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md) ページで説明されているすべての手順を完了すると、サンプル アプリケーションをコンパイルする準備ができます。
 
 ### デバイスの資格情報の取得
 
-これで開発環境をセットアップできたので、最後にデバイスの資格情報のセットを取得します。デバイスを IoT Hub にアクセスできるようにするには、まず、そのデバイスを IoT Hub のデバイスのレジストリに追加する必要があります。デバイスを追加すると、そのデバイスを IoT Hub に接続するために必要な、デバイスの資格情報のセットが得られます。次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は**デバイスの接続文字列**の形式であると想定されています。
+これで開発環境がセットアップできましたので、次にデバイスの資格情報のセットを取得します。デバイスを IoT Hub にアクセスできるようにするには、まず、そのデバイスを IoT Hub デバイス レジストリに追加する必要があります。デバイスを追加すると、そのデバイスを IoT Hub に接続するために必要な、デバイスの資格情報のセットが得られます。次のセクションで確認するサンプル アプリケーションでは、これらの資格情報は**デバイスの接続文字列**の形式であると想定されています。
 
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer) ツール (Azure IoT デバイス SDK を含む) は、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。デバイス エクスプローラーを使用してデバイスを追加すると、対応する接続文字列が表示されます。この接続文字列は、サンプル アプリケーションを実行するために必要です。
+SDK のオープン ソース リポジトリで提供されるツールがいくつかあり、IoT Hub を管理するために役立ちます。その 1 つは、デバイス エクスプローラーと呼ばれる Windows アプリケーションです。もう 1 つは、iothub-explorer と呼ばれる node.js ベースのクロス プラットフォーム CLI ツールです。これらのツールの詳細については、[こちら](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md)を参照してください。
+
+この記事では、Windows のサンプルの実行を説明するときに、デバイス エクスプ ローラー ツールを使用しています。ただし、CLI ツールを使用する場合は、iothub-explorer を使用することもできます。
+
+[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer) ツールは、Azure IoT サービス ライブラリを使用して、デバイスの追加など、IoT Hub のさまざまな機能を実行します。デバイス エクスプローラーを使用してデバイスを追加すると、対応する接続文字列が表示されます。この接続文字列は、サンプル アプリケーションを実行するために必要です。
 
 このプロセスにまだ詳しくない方のために、次の手順で、デバイス エクスプローラーを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-**Visual Studio 2015** の **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)** を開き、ソリューションをビルドします。プログラムを実行すると、次のインターフェイスが表示されます。
+[SDK リリース ページ](https://github.com/Azure/azure-iot-sdks/releases)で、デバイス エクスプローラー ツールの Windows インストーラーを見つけることができます。ただし、**Visual Studio 2015** で **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)** を開くコードから直接ツールを実行して、ソリューションをビルドすることもできます。
+
+プログラムを実行すると、次のインターフェイスが表示されます。
 
   ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
 
@@ -116,7 +118,7 @@ IoT Hub の接続文字列を構成したら、**[管理]** タブをクリッ�
 
 ここで、IoT Hub に登録されたデバイスを管理します。
 
-**[作成]** をクリックしてデバイスを作成することができます。ダイアログ ボックスに、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。ここで必要なのは、**[デバイス ID]** を入力して、**[作成]** をクリックするだけです。
+**[作成]** をクリックしてデバイスを作成することができます。ダイアログ ボックスが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。ここで必要なのは、**[デバイス ID]** を入力して、**[作成]** をクリックすることだけです。
 
   ![](media/iot-hub-device-sdk-c-intro/05-CreateDevice.PNG)
 
@@ -132,7 +134,7 @@ IoT Hub の接続文字列を構成したら、**[管理]** タブをクリッ�
 static const char* connectionString = "[device connection string]";
 ```
 
-ここにご使用のデバイスの接続文字列を入力し、ソリューションを再コンパイルすると、サンプルを実行することができます。
+ここに使用しているデバイスの接続文字列を入力し、ソリューションを再コンパイルすると、サンプルを実行することができます。
 
 ## IoTHubClient
 
@@ -146,11 +148,9 @@ azure-iot-sdks リポジトリ内の **iothub\_client** フォルダーに **sam
 
   ![](media/iot-hub-device-sdk-c-intro/17-iothub-client-sample-amqp-githubpackages.PNG)
 
-SDK を使った作業には必ず **Microsoft.Azure.IoTHub.Common** パッケージが必要となります。このサンプルは AMQP に依存しているため、**Apache.QPID.Proton.AzureIoT** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを追加する必要があります (HTTP にも同等のパッケージが存在します)。サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
+SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを追加する必要があります (HTTP と MQTT にも同等のパッケージが存在します)。サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
 **iothub\_client\_sample\_amqp.c** ソース ファイルでサンプル アプリケーションの実装を見つけることができます。
-
-  ![](media/iot-hub-device-sdk-c-intro/13-iothub_client_sample_amqp_c.PNG)
 
 このサンプル アプリケーションを使用して、**IoTHubClient** ライブラリの使用に必要な内容を説明します。
 
@@ -163,7 +163,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-この関数 (デバイス エクスプローラーから取得したもの) にデバイスの接続文字列のコピーを渡していることに注意してください。また、使用するプロトコルを指定します。この例では AMQP を使用しますが、HTTP も使用できます。
+この関数 (デバイス エクスプローラーから取得したもの) にデバイスの接続文字列のコピーを渡していることに注意してください。また、使用するプロトコルを指定します。この例では AMQP を使用しますが、MQTT と HTTP も使用できます。
 
 有効な **IOTHUB\_CLIENT\_HANDLE** がある場合、最初にその API を呼び出して、IoT Hub とのイベントの送信とメッセージの受信を実行することができます。次で確認します。
 
@@ -198,7 +198,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 }
 ```
 
-メッセージの処理が終了したときに **IoTHubMessage\_Destroy** 関数を呼び出しています。この呼び出しを行って、メッセージを作成したときに割り当てられたリソースを解放する必要があります。
+メッセージの処理が終了したときに呼び出される **IoTHubMessage\_Destroy** 関数に注意してください。この呼び出しを行って、メッセージを作成したときに割り当てられたリソースを解放する必要があります。
 
 ### メッセージの受信
 
@@ -242,7 +242,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 これにより、以前に割り当てられていたリソースが、**IoTHubClient\_CreateFromConnectionString** 関数によって解放されます。
 
-ご覧のように、**IoTHubClient** ライブラリを使用すると、簡単にイベントの送信とメッセージの受信を実行できます。使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
+見てわかるように、**IoTHubClient** ライブラリを使用すると、簡単にイベントの送信とメッセージの受信を実行できます。使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
 
 **IoTHubClient** ライブラリでは、デバイスから IoT Hub に送信されるイベントをシリアル化する方法を正確に制御することもできます。これが利点になる場合もありますが、この実装の詳細が関心の対象にならない場合もあります。その場合は、次のセクションで説明する **serializer** ライブラリの使用を検討することができます。
 
@@ -261,8 +261,6 @@ azure-iot-sdks リポジトリ内の **serializer** フォルダー内には **s
 ほとんどは前のサンプルにもありましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。これは、**serializer** ライブラリを使用するときに必要です。
 
 **simplesample\_amqp.c** ファイルでサンプル アプリケーションの実装を見つけることができます。
-
-  ![](media/iot-hub-device-sdk-c-intro/15-simplesample_amqp_c.PNG)
 
 次のセクションで、このサンプルの主要な部分について説明します。
 
@@ -308,7 +306,7 @@ END_NAMESPACE(WeatherStation);
 
 ### イベントの送信
 
-このモデルは、IoT Hub に送信できるイベントを定義します。この例では、**WITH\_DATA** マクロを使用して定義した 2 つのイベントのうちの 1 つを使用することを意味します。たとえば、**WindSpeed** イベントを IoT Hub に送信する場合は、そのためにいくつかの手順を実行する必要があります。最初に、送信するデータを設定します。
+このモデルは、IoT Hub に送信できるイベントを定義します。この例では、**WITH\_DATA** マクロを使用して、定義した 2 つのイベントのうちの 1 つを使用することを意味します。たとえば、**WindSpeed** イベントを IoT Hub に送信する場合は、そのためにいくつかの手順を実行する必要があります。最初に、送信するデータを設定します。
 
 ```
 myWeather->WindSpeed = 15;
@@ -354,7 +352,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-このコードは、**iothub\_client\_sample\_amqp** アプリケーションで見た内容とよく似ています。そこでは、バイト配列からメッセージを作成し、**IoTHubClient\_SendEventAsync** を使用して IoT Hub に送信しました。その後で必要なのは、以前に割り当てたメッセージ ハンドルとシリアル化されたデータ バッファーの解放のみです。
+このコードは、**iothub\_client\_sample\_amqp** アプリケーションで確認した内容とよく似ています。そこでは、バイト配列からメッセージを作成し、**IoTHubClient\_SendEventAsync** を使用して IoT Hub に送信しました。その後で必要なのは、以前に割り当てたメッセージ ハンドルとシリアル化されたデータ バッファーの解放のみです。
 
 **IoTHubClient\_SendEventAsync** の最後から 2 番目のパラメーターは、データが正常に送信されたときに呼び出されるコールバック関数の参照です。コールバック関数の例を次に示します。
 
@@ -369,7 +367,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 }
 ```
 
-2 番目のパラメーターは、ユーザーのコンテキストを指すポインターです。これは **IoTHubClient\_SendEventAsync** に渡したのと同じポインターです。この場合、このコンテキストは単純なカウンターですが、任意の内容にすることができます。
+2 番目のパラメーターは、ユーザーのコンテキストを指すポインターです。これは **IoTHubClient\_SendEventAsync** に渡したのと同じポインターです。ここでは、このコンテキストは単純なカウンターですが、任意の内容にすることができます。
 
 イベントの送信に必要なものは以上です。残りは、メッセージを受信する方法の説明のみです。
 
@@ -460,4 +458,4 @@ serializer_deinit();
 
 この記事では、**C 用 Azure IoT デバイス SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。次の記事では、[IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/11/2016"
 	ms.author="jgao"/>
 
 
@@ -32,7 +32,7 @@ Avro システムにおけるオブジェクトのシリアル化表現は、ス
 ##Hadoop のシナリオ
 Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイル (Avro オブジェクト コンテナー ファイル) の形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。
 
-##Microsoft Avro ライブラリにおけるシリアル化
+##Avro ライブラリでのシリアル化
 .NET Library for Avro では、オブジェクトをシリアル化する方法として次の 2 つの方法をサポートしています。
 
 - **リフレクション**: これらの型に対応する JSON スキーマは、シリアル化する .NET 型のデータのコントラクト属性を考慮に入れたうえで、自動的に作成されます。
@@ -41,14 +41,16 @@ Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache
 ストリームのライターとリーダーの両方でデータ スキーマがわかっている場合は、データをスキーマなしで送信できます。Avro オブジェクト コンテナー ファイルを使用する場合は、ファイル内にスキーマを保存する必要があります。データ圧縮に使用するコーデックなどの他のパラメーターを指定することもできます。これらのシナリオについては、次のコード例で詳しく説明します。
 
 
-## Microsoft Avro ライブラリの前提条件
+## Avro Library のインストール
+
+ライブラリをインストールするには、以下が必要です。
 
 - <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
 - <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 以降)
 
 Newtonsoft.Json.dll 依存関係は Microsoft Avro ライブラリのインストールと共に自動的にダウンロードされます。この手順は、次のセクションで説明しています。
 
-## Microsoft Avro ライブラリのインストール
+
 Microsoft Avro ライブラリは、NuGet パッケージとして配布されています。この NuGet パッケージは、次の手順に従って Visual Studio からインストールできます。
 
 1. **[プロジェクト]** タブの **[NuGet パッケージの管理]** を選択します。
@@ -59,11 +61,10 @@ Newtonsoft.Json.dll (6.0.4 以降) 依存関係も Microsoft Avro ライブラ�
 
 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリのホーム ページ</a>にアクセスして現在のリリース ノートを参照することをお勧めします。
 
-##Microsoft Avro ライブラリのソース コード
 
 Microsoft Avro ライブラリのソース コードは、<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリのホーム ページ</a>から入手できます。
 
-##Microsoft Avro ライブラリを使用したスキーマのコンパイル
+##Avro ライブラリを使用したスキーマのコンパイル
 
 Microsoft Avro ライブラリには、コード生成ユーティリティがあります。このユーティリティにより、あらかじめ定義した JSON スキーマに基づいて、C# のデータ型を自動的に作成できます。このコード生成ユーティリティは、バイナリの実行可能ファイルとして配布されませんが、次の手順に従って簡単に作成できます。
 
@@ -90,7 +91,7 @@ Microsoft Avro ライブラリには、コード生成ユーティリティが�
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:. /nf:my.own.nspace
 
-##<a name="samples"></a>Microsoft Avro ライブラリのサンプルについて
+## サンプル
 このトピックで紹介する 6 つの例は、Microsoft Avro ライブラリでサポートされている、それぞれ異なるシナリオに対応しています。Microsoft Avro ライブラリは、あらゆるストリームに対応するように設計されています。これらの例では、簡潔性と一貫性のために、ファイル ストリームやデータベースではなくメモリ ストリームを使用してデータを操作しています。運用環境では、実際のシナリオ要件、データ ソースとその量、パフォーマンス制約、その他の要因に応じて方法を選択してください。
 
 最初の 2 つの例では、リフレクションと汎用レコードを使用してデータをメモリ ストリーム バッファーにシリアル化および逆シリアル化する方法を紹介します。これらの 2 つのケースのスキーマは、アウト オブ バンドでリーダーとライターによって共有されると見なされます。
@@ -1402,4 +1403,4 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 [deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

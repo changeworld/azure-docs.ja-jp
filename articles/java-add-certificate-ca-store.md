@@ -5,7 +5,7 @@
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="multiple" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="01/09/2016" 
 	ms.author="robmcm"/>
 
 # 証明書を Java CA 証明書ストアに追加する方法
@@ -56,4 +56,4 @@ Azure で使用するルート証明書の詳細については、[Azure ルー�
 
 Java の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

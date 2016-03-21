@@ -13,10 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="10/02/2015"
+	ms.date="12/07/2015"
 	ms.author="kenhoff"/>
 
 # Azure Active Directory レポートの保持ポリシー
+
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
+
 Azure AD レポートは、次に示す一定期間データを保存します。
 
 レポート | 説明
@@ -45,4 +48,4 @@ RMS の利用状況 | 30 日
 RMS デバイスの利用状況 | 30 日
 RMS 対応アプリケーションの利用状況 | 30 日
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

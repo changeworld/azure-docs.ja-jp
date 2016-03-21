@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/11/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure SDK for .NET とは
@@ -36,7 +36,7 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 - [Microsoft Azure ストレージ エミュレーター](#stgemulator)
 - [Microsoft Azure Storage Tools](#stgtools)
 - [Microsoft Azure Libraries for .NET](#libraries)
-- [HDInsight Tools for Visual Studio](#hdinsight) および [Microsoft Hive ODBC ドライバー](#hdinsight)
+- [HDInsight Tools for Visual Studio および Microsoft Hive ODBC ドライバー](#hdinsight)
 - [Microsoft Azure Mobile App SDK V1.0](#mobile)
 - [Microsoft Azure PowerShell](#ps)
 
@@ -48,22 +48,22 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 この製品をインストールすると、Azure の Web サイトで次のことができるようになります。
 
-* [Azure の Web サイトに Web プロジェクトを発行する](web-sites-dotnet-get-started.md)
-* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](websites-dotnet-deploy-webjobs.md)
-* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [Azure の Web サイトに Web プロジェクトを発行する](app-service-web/web-sites-dotnet-get-started.md)
+* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](app-service-web/websites-dotnet-deploy-webjobs.md)
+* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
 * [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
-* [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
-* [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug) 
+* [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
+* [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug) 
 
->[AZURE.NOTE]これらの機能は Visual Studio の更新版にも含まれているため、Azure SDK for .NET をインストールしなくても利用できます。
+>[AZURE.NOTE] これらの機能は Visual Studio の更新版にも含まれているため、Azure SDK for .NET をインストールしなくても利用できます。
 
 ###<a id="tools"></a>Microsoft Azure Tools for Microsoft Visual Studio
 
 この製品を利用すると、Azure のリソース (主に Cloud Services および仮想マシン) で次のことができるようになります。
 
-* [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services-dotnet-get-started.md)
+* [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services/cloud-services-dotnet-get-started.md)
 * [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines-dotnet-create-visual-studio-powershell.md)
+* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-dotnet-create-visual-studio-powershell.md)
 * [PowerShell デプロイメント スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
 * [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)
 * サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する 
@@ -99,11 +99,11 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 ###<a id="hdinsight"></a>HDInsight Tools for Visual Studio および Microsoft Hive ODBC ドライバー
 
-サーバー エクスプローラーの HDInsight ツールを使用すると、Hive データベースと HDInsight クラスターにリンクされたストレージ アカウントを移動したり、テーブルを作成したり、Hive クエリを送信できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+サーバー エクスプローラーの HDInsight ツールを使用すると、Hive データベースと HDInsight クラスターにリンクされたストレージ アカウントを移動したり、テーブルを作成したり、Hive クエリを送信できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
-###<a id="mobile">Microsoft Azure Mobile App SDK
+###<a id="mobile"></a>Microsoft Azure Mobile App SDK V1.0
 
-[Azure App Service の Mobile Apps](app-service-mobile-value-prop-preview.md) を使用するためのツールです。
+[Azure App Service の Mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) を使用するためのツールです。
 
 ###<a id="ps"></a>Microsoft Azure PowerShell
 
@@ -119,9 +119,9 @@ SDK をインストールしたときに、Azure 向けアプリケーション�
 
   	**クライアント ライブラリのローカル コピー。** Azure SDK for .NET は、いくつかの Azure クライアント ライブラリ (ストレージ、サービス バス、キャッシュなど) 用の NuGet パッケージをユーザーのコンピューターにコピーします。これらのクライアント ライブラリは、新規のクラウド サービス プロジェクトに自動的に含められるため、インターネットに接続していない場合でも、Visual Studio はローカルの NuGet パッケージでプロジェクトを作成できます。一般に、クライアント ライブラリは SDK よりも頻繁に更新されているため、NuGet.org で入手できるクライアント ライブラリの方が SDK によってインストールされるものよりも新しい場合が多いことに注意してください。
 
-	**クライアント ライブラリが含まれるプロジェクト テンプレート。** [Azure クラウド サービス](cloud-services-dotnet-get-started.md)および [Azure モバイル サービス](mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)のプロジェクト テンプレートのみに、いくつかのクライアント ライブラリが自動的に含まれます。これらのテンプレートに他のライブラリを含める場合や、他のテンプレートを使用する場合は、必要な[クライアント ライブラリの NuGet パッケージ](http://go.microsoft.com/fwlink/?LinkId=510472)をインストールしてください。
+	**クライアント ライブラリが含まれるプロジェクト テンプレート。** [Azure クラウド サービス](cloud-services/cloud-services-dotnet-get-started.md)および [Azure モバイル サービス](mobile-services/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)のプロジェクト テンプレートのみに、いくつかのクライアント ライブラリが自動的に含まれます。これらのテンプレートに他のライブラリを含める場合や、他のテンプレートを使用する場合は、必要な[クライアント ライブラリの NuGet パッケージ](http://go.microsoft.com/fwlink/?LinkId=510472)をインストールしてください。
 
-* [Azure モバイル サービスのプロジェクト テンプレート](mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)
+* [Azure モバイル サービスのプロジェクト テンプレート](mobile-services/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md)
 
 	モバイル サービスのテンプレートは、Visual Studio 2013 Update 2 以降でのみ利用できます。Azure SDK for .NET をインストールしても、Visual Studio 2012 以前および Visual Studio 2013 Update 1 以前のバージョンでは利用できません。
 
@@ -186,4 +186,4 @@ Azure SDK for .NET (クライアント ライブラリを含む) のソース �
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/documentation/api/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

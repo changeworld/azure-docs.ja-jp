@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング | Microsoft Azure"
-   description="グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
-   services="active-directory"
-   documentationCenter=""
-   authors="liviodlc"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング | Microsoft Azure"
+    description="グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
+    services="active-directory"
+    documentationCenter=""
+    authors="liviodlc"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/28/2015"
-   ms.author="liviodlc"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="02/09/2016"
+    ms.author="liviodlc"/>
 
 #Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
 
@@ -53,7 +53,7 @@
 
 ##アクセス パネル拡張機能が有効になっていることを確認する
 
-Internet Explorer でアクセス パネルが有効になっていることを確認するには:
+Internet Explorer でアクセス パネル拡張機能が有効になっていることを確認するには:
 
 1. Internet Explorer で、ウィンドウの右上隅にある **[歯車]** アイコンをクリックします。次に、**[インターネット オプション]** を選択します。<br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
 
@@ -103,6 +103,10 @@ InPrivate ブラウズ モードを使用している場合:
 
 拡張機能のアンインストールで問題が発生する場合は、[Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) ツールを使用して削除することも可能です。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+## 関連記事
 
-<!---HONumber=Oct15_HO3-->
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+- [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)
+
+<!---HONumber=AcomDC_0211_2016-->

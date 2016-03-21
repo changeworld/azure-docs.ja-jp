@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+ 	ms.date="03/01/2016"  
 	ms.author="juliako"/>
 
 
@@ -23,6 +23,29 @@
 
 Microsoft Azure Media Services は OData ベースの HTTP 要求を受け付けるサービスであり、詳細 JSON または atom+pub で応答が可能です。Media Services は、Azure 設計ガイドラインに準拠しているため、Media Services に接続するときに各クライアントが使用する必要がある必須 HTTP ヘッダーのセットと、使用できる省略可能なヘッダーのセットがあります。次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
 
+##考慮事項 
+
+REST を使用するときには、次の考慮事項が適用されます。
+
+- パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
+
+- JSON を使用し、要求で **\_\_metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。verbose に設定していない場合、Odata は要求内の **\_\_metadata** プロパティを認識しません。
+
+		POST https://media.windows.net/API/Jobs HTTP/1.1
+		Content-Type: application/json;odata=verbose
+		Accept: application/json;odata=verbose
+		DataServiceVersion: 3.0
+		MaxDataServiceVersion: 3.0
+		x-ms-version: 2.11
+		Authorization: Bearer <token> 
+		Host: media.windows.net
+		
+		{
+			"Name" : "NewTestJob", 
+			"InputMediaAssets" : 
+				[{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+		. . . 
+		
 
 ## Media Services でサポートされている標準の HTTP 要求ヘッダー
 
@@ -38,7 +61,7 @@ MaxDataServiceVersion|小数点|3\.0
 
 
 
->[AZURE.NOTE]Media Services は、OData を使用して REST　APIを介して管理している資産メタデータ レポジトリを公開するため、DataServiceVersion および MaxDataServiceVersion ヘッダーをどの要求にも含める必要があります。含めない場合、Media Services は使用中の DataServiceVersion の値を3.0 と見なします。
+>[AZURE.NOTE] Media Services は、OData を使用して REST　APIを介して管理している資産メタデータ レポジトリを公開するため、DataServiceVersion および MaxDataServiceVersion ヘッダーをどの要求にも含める必要があります。含めない場合、Media Services は使用中の DataServiceVersion の値を3.0 と見なします。
 
 省略可能なヘッダーのセットを次に示します。
 
@@ -81,6 +104,10 @@ PUT|オブジェクトの置き換え、または名前付きのオブジェク�
 MERGE|名前付きプロパティを変更して、既存のオブジェクトを更新します。
 HEAD|GET 応答に対するオブジェクトのメタデータを返します。
 
+##制限事項
+
+パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。
+
 
 ## Media Services のモデルの検出
 
@@ -99,10 +126,10 @@ Media Services のエンティティを見つけやすくするには、$metadat
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
   
-  [Management Portal]: http://manage.windowsazure.com/
+  [Azure Classic Portal]: http://manage.windowsazure.com/
 
 
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

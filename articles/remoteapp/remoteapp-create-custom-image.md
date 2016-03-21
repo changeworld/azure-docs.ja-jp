@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/12/2015" 
+	ms.date="02/02/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のカスタム テンプレート イメージの作成方法
 Azure RemoteApp では、ユーザーと共有するすべてのプログラムをホスティングするために Windows Server 2012 R2 のテンプレート イメージを使用します。カスタム RemoteApp テンプレート イメージを作成するには、既存のイメージを使うことも新しく作成することもできます。
 
 
-> [AZURE.TIP]Azure VM からイメージを作成できることをご存知でしたか。 これは本当の話で、イメージをインポートする時間を削減できます。手順は、[こちら](remoteapp-image-on-azurevm.md)で確認してください。
+> [AZURE.TIP] Azure VM からイメージを作成できることをご存知でしたか。 これは本当の話で、イメージをインポートする時間を削減できます。手順は、[こちら](remoteapp-image-on-azurevm.md)で確認してください。
 
 Azure RemoteApp で使用するためにアップロードできるイメージの要件は次のとおりです。
 
@@ -33,7 +33,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - ディスクはマスター ブート レコード (MBR) パーティション分割のスタイルを使用して初期化しなければなりません。GUID パーティション テーブル (GPT) パーティション分割のスタイルはサポートされていません。
 - VHD には Windows Server 2012 R2 の単一インストールが含まれていなければなりません。複数のボリュームを含むことはできますが、Windows がインストールされるのは 1 ボリュームのみです。
 - リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能がインストール済みでなければなりません。
-- リモート デスクトップ接続ブローカーの役割をインストール*しないで* ください。
+- リモート デスクトップ接続ブローカーのロールをインストール*しないで* ください。
 - 暗号化ファイル システム (EFS) は無効にする必要があります。
 - イメージはパラメーター **/oobe /generalize /shutdown** を使用して SYSPREP を実施済みでなければなりません (**/mode:vm** パラメーターは使用しないでください)。
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
@@ -43,10 +43,10 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 サービスを作成する前に、以下の操作が必要です。
 
-- RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。
+- RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。詳細については、「[Configure Azure Active Directory for RemoteApp](remoteapp-ad.md)」を参照してください。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-- [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
+- [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 
 
@@ -142,4 +142,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

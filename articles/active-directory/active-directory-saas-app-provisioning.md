@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化 | Microsoft Azure"
-   description="Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。"
-   services="active-directory"
-   documentationCenter=""
-   authors="liviodlc"
-   manager="TerryLanfear"
-   editor=""/>
+    pageTitle="Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化 | Microsoft Azure"
+    description="Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。"
+    services="active-directory"
+    documentationCenter=""
+    authors="liviodlc"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/08/2015"
-   ms.author="liviodlc"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="02/09/2016"
+    ms.author="liviodlc"/>
 
 #Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -69,7 +69,7 @@ Azure AD は 5 ～ 10 分ごとに変更を確認します。SaaS アプリが�
 
 **エンジニアリング チームにフィードバックを送信する方法はありますか。**
 
-[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 ##自動プロビジョニングのしくみ
 
@@ -104,8 +104,16 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 自動ユーザー プロビジョニングをサポートするアプリに対して、まず、外部のプログラムでユーザーの作成、保守、削除を自動化するのに必要なエンドポイントを提供する必要があります。そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。これをサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成でき、この作業の優先順位は現在と将来の顧客のニーズによって決まります。
 
-他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からメッセージを送信してください。
+他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からメッセージを送信してください。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
 
-<!---HONumber=Oct15_HO3-->
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+- [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+- [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+
+<!---HONumber=AcomDC_0211_2016-->

@@ -12,7 +12,7 @@
 	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="11/06/2015" 
 	ms.author="sethm"/>
 
@@ -125,4 +125,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

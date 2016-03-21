@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/27/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
@@ -28,7 +28,7 @@
 
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -104,7 +104,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 **[GET Resource]** 操作を選択し、**[コンソールを開く]** をクリックして、ドロップダウンで **[認証コード]** を選択します。
 
-![Open console][api-management-open-console]
+![コンソールを開く][api-management-open-console]
 
 **[認証コード]** が選択されると、OAuth 2.0 プロバイダーのサインイン フォームがあるポップアップ ウィンドウが表示されます。この例では、サインイン フォームは Azure Active Directory によって提供されています。
 
@@ -160,4 +160,4 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API に操作を追加する方法
@@ -22,31 +22,31 @@ API Management 内の API を使用するためには、操作を追加する必
 
 ## <a name="add-operation"> </a>操作の追加
 
-操作を API に追加して構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。
+操作を API に追加して構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+>まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
 
-API Management ポータルで目的の API を選択し、**[操作]** タブを選択します。
+パブリッシャー ポータルで目的の API を選択し、**[操作]** タブを選択します。
 
 ![操作][api-management-operations]
 
 **[操作の追加]** をクリックして新しい操作を追加します。**[新しい操作]** が表示され、**[署名]** タブが既定で選択されます。
 
-![Add operation][api-management-add-operation]
+![追加操作][api-management-add-operation]
 
 **[HTTP 動詞]** ボックスの一覧で適切な HTTP 動詞を選択します。
 
-![HTTP method][api-management-http-method]
+![HTTP メソッド][api-management-http-method]
 
 1 つ以上の URL パス セグメントと 0 個以上のクエリ文字列パラメーターから構成される URL フラグメントを入力して、URL テンプレートを定義します。URL テンプレートは、API のベース URL に付加され、単一の HTTP 操作を識別します。URL テンプレートには、中かっこで識別される 1 つまたは複数の名前付き変数部分を含めることができます。テンプレート パラメーターと呼ばれるこれらの変数部分には、要求が API Management プラットフォームによって処理されるときに要求の URL から抽出された値が動的に割り当てられます。
 
-![URL template][api-management-url-template]
+![URL テンプレート][api-management-url-template]
 
 必要に応じて、**[書き換え URL テンプレート]** に値を指定します。これにより、標準 URL テンプレートを使用してフロントエンドで受け取った要求を処理する一方で、書き換えテンプレートに従って変換された URL を介してバックエンドを呼び出すことができます。書き換えテンプレートでは、URL テンプレートのテンプレート パラメーターを使用する必要があります。次の例に、前の例の Web サービスでパス セグメントとしてエンコードされるコンテンツ タイプを、URL テンプレートを使用して API Management プラットフォーム経由で発行される API のクエリ パラメーターとして渡す方法を示します。
 
-![URL template rewrite][api-management-url-template-rewrite]
+![URL テンプレートの再書き込み][api-management-url-template-rewrite]
 
 操作の呼び出し元は、`/customers?customerid=ALFKI` という形式を使用します。この値は、バックエンド サービスが起動されたときに `/Customers('ALFKI')` にマップされます。
 
@@ -84,7 +84,7 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 -	**[値]** - このパラメーターに割り当てることができる値。値の 1 つを既定値としてマークすることができます (オプション)。
 -	**[必須]** - このパラメーターを必須にするには、このチェック ボックスをオンにします。 
 
-![Request parameters][api-management-request-parameters]
+![要求パラメーター][api-management-request-parameters]
 
 ## <a name="request-body"> </a>要求本文
 
@@ -96,7 +96,7 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 
 **[表現の追加]** をクリックし、目的のコンテンツ タイプの名前 (application/json など) を入力してドロップダウン リストの項目を絞り込み、目的の名前を選択します。次に、選択した形式の目的の要求本文の例をボックスに貼り付けます。
 
-![Request body][api-management-request-body]
+![要求本文][api-management-request-body]
 
 表現に加えて、オプションのテキスト説明を **[説明]** ボックスに指定することもできます。
 
@@ -106,15 +106,15 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 
 応答を追加するには、**[追加]** をクリックし、目的の状態コードを入力して表示される項目を絞り込みます。この例では、状態コード **[200 OK]** を選択します。ドロップダウン リストにコードが表示されたら、目的のコードを選択します。応答コードが作成され、操作に追加されます。
 
-![Response code][api-management-response-code]
+![応答コード][api-management-response-code]
 
 **[表現の追加]** をクリックし、目的のコンテンツ タイプの名前 (application/json など) を入力してドロップダウン リストの項目を絞り込み、目的の名前を選択します。
 
-![Body content type][api-management-response-body-content-type]
+![本分コンテンツの種類][api-management-response-body-content-type]
 
 選択した形式の応答本文の例をボックスに貼り付けます。
 
-![Response body][api-management-response-body]
+![応答本文][api-management-response-body]
 
 必要に応じて、オプションの説明を **[説明]** ボックスに追加します。
 
@@ -164,4 +164,4 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 [成果物を作成して発行する方法]: api-management-howto-add-products.md
 [Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

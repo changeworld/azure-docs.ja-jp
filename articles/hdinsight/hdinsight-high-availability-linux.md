@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="01/08/2016"
 	ms.author="larryfr"/>
 
 #HDInsight における Hadoop クラスターの可用性と信頼性
 
 Azure HDInsight によってデプロイされる Linux ベースの Hadoop クラスターでは、第 2 のヘッド ノードが使用されます。これによって、Azure で実行される Hadoop サービスとジョブの可用性と信頼性が向上します。
 
-> [AZURE.NOTE]このドキュメントの手順は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターを使用する場合は、「[HDInsight におけるWindows ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability.md)」で Windows 固有の情報を参照してください。
+> [AZURE.NOTE] このドキュメントの手順は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターを使用する場合は、「[HDInsight におけるWindows ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability.md)」で Windows 固有の情報を参照してください。
 
 ##ヘッド ノードについて
 
@@ -29,7 +29,7 @@ Hadoop のいくつかの実装には、データ (ワーカー) ノードの障
 
 HDInsight クラスターには、セカンダリ ヘッド ノードが用意されています。これにより、プライマリ ノードで障害が発生した場合に、マスター サービスとコンポーネントの実行をセカンダリ ノードで継続できます。
 
-> [AZURE.IMPORTANT]両方のヘッド ノードは、クラスター内で同時にアクティブに実行されます。HDFS や YARN などの一部のサービスは、常にどちらかのヘッド ノードで「アクティブ」になります (他方のヘッド ノードでは「スタンバイ」になります)。HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
+> [AZURE.IMPORTANT] 両方のヘッド ノードは、クラスター内で同時にアクティブに実行されます。HDFS や YARN などの一部のサービスは、常にどちらかのヘッド ノードで「アクティブ」になります (他方のヘッド ノードでは「スタンバイ」になります)。HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
 
 ノード ヘッドでマスター サービスを選択し、そのサービスを確実に動作させるために [ZooKeeper](http://zookeeper.apache.org/) ノード (ZK) が使用され、データ (ワーカー) ノードとゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブであるかがわかります。
 
@@ -128,7 +128,7 @@ SSH 経由でヘッド ノードに接続している間、ログ ファイル�
 
 ###Ambari
 
-> [AZURE.NOTE]Ambari を通してログ ファイルにアクセスするには、SSH トンネルが必要です。これは、個々のサービスの Web サイトはインターネット上に公開されていないためです。SSH トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
+> [AZURE.NOTE] Ambari を通してログ ファイルにアクセスするには、SSH トンネルが必要です。これは、個々のサービスの Web サイトはインターネット上に公開されていないためです。SSH トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 Ambari Web UI から、ログを表示するサービス (例: YARN) を選択し、**[クイック リンク]** を使用してログを表示するヘッド ノードを選択します。
 
@@ -136,11 +136,11 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 
 ## ヘッド ノードのサイズの構成方法 ##
 
-ヘッド ノードのサイズは、クラスターの作成中にのみ選択できます。ヘッド ノードの既定のサイズは **A3** であり、これは 4 コア、7 GB のメモリ、285 GB のローカル ストレージを提供します。「[HDInsight の料金](http://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
+ヘッド ノードのサイズは、クラスターの作成中にのみ選択できます。「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
 
-新しいクラスターを作成するときに、ノードのサイズを指定できます。この後、[Azure プレビュー ポータル][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法についての情報を示します。
+新しいクラスターを作成するときに、ノードのサイズを指定できます。この後、[Azure ポータル][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法についての情報を示します。
 
-* **Azure プレビュー ポータル**: 新しいクラスターを作成するときに、ヘッド ノードとデータ (ワーカー) ノードの両方でそのサイズ (価格レベル) を設定できます。
+* **Azure ポータル**: 新しいクラスターを作成するときに、ヘッド ノードとデータ (worker) ノードの両方でそのサイズ (価格レベル) を設定できます。
 
 	![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/headnodesize.png)
 
@@ -166,4 +166,4 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

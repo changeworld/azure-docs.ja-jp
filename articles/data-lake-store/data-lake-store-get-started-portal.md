@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Data Lake Store の使用を開始する | Azure" 
+   pageTitle="Data Lake Store の使用 | Azure" 
    description="ポータルを使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します" 
    services="data-lake-store" 
    documentationCenter="" 
@@ -10,41 +10,42 @@
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/05/2015"
+   ms.date="01/04/2016"
    ms.author="nitinme"/>
 
-# Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する
+# Azure ポータルで Azure Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-get-started-portal.md)
 - [Using PowerShell](data-lake-store-get-started-powershell.md)
 - [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Using Azure CLI](data-lake-store-get-started-cli.md)
+- [Using Node.js](data-lake-store-manage-use-nodejs.md)
 
-Azure プレビュー ポータルを使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、「[Azure Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
+Azure ポータルを使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、「[Azure Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
 
 ## 前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## <a name="signup"></a>Azure サブスクリプションを Data Lake Store パブリック プレビューに対して有効にする
 
 まず、Azure サブスクリプションを Data Lake Store パブリック プレビューに対して有効にする必要があります。以下の手順に従ってください。
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 2. **[新規]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。
 3. **[新しい Data Lake Store]** ブレードで、**[プレビュー版にサインアップ]** をクリックします。情報を確認し、**[OK]** をクリックします。パブリック プレビューに対して Azure サブスクリプションが有効になると、電子メールを受信します。
 
-	![パブリック プレビューへのサインアップ](./media/data-lake-store-get-started-portal/preview-signup.png "新しい Azure Data Lake アカウントの作成")
+	![パブリック プレビューにサインアップ](./media/data-lake-store-get-started-portal/preview-signup.png "新しい Azure Data Lake アカウントの作成")
 
 ## Azure Data Lake Store アカウントを作成する
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. **[新規]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。**[Azure Data Lake Store]** ブレードに表示された情報を確認し、ブレードの左下隅にある **[作成]** をクリックします。
 
@@ -52,7 +53,7 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Store アカ
 
 	![新しい Azure Data Lake Store アカウントの作成](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "新しい Azure Data Lake アカウントの作成")
 
-	- **[サブスクリプション]**:新しい Data Lake Store アカウントを作成するサブスクリプションを選択します。
+	- **[サブスクリプション]**: 新しい Data Lake Store アカウントを作成するサブスクリプションを選択します。
 	- **[リソース グループ]**:既存のリソース グループを選択するか、**[リソース グループの作成]** をクリックしてリソース グループを作成します。リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。詳細については、[Azure のリソース グループ](resource-group-overview.md#resource-groups)に関する記述を参照してください。
 	- **[場所]**: Data Lake Store アカウントを作成する場所を選択します。
 
@@ -72,22 +73,22 @@ Data Lake Store アカウントにフォルダーを作成し、データの管�
 
 2. Data Lake Store アカウントのブレードで、**[データ エクスプローラー]** をクリックします。
 
-	![Data Lake Store アカウントでのフォルダー作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Store アカウントでのフォルダー作成")
+	![Data Lake Store アカウントにフォルダーを作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Store アカウントにフォルダーを作成")
 
 3. Data Lake Store アカウントのブレードで、**[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、**[OK]** をクリックします。
 	
-	![Data Lake Store アカウントでのフォルダー作成](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Store アカウントでのフォルダー作成")
+	![Data Lake Store アカウントにフォルダーを作成](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Store アカウントにフォルダーを作成")
 	
 	新しく作成されたフォルダーが **[データ エクスプローラー]** ブレードに表示されます。レベルに上限なく入れ子になったフォルダーを作成できます。
 
-	![Data Lake アカウントでのフォルダー作成](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Data Lake アカウントでのフォルダー作成")
+	![Data Lake アカウントにフォルダーを作成](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Data Lake アカウントにフォルダーを作成")
 
 
 ## <a name="uploaddata"></a>Azure Data Lake Store アカウントにデータをアップロードする
 
 データは、Azure Data Lake Store アカウントのルート レベルに直接をアップロードすることも、アカウント内に作成したフォルダーにアップロードすることもできます。次の画面キャプチャでは、**[データ エクスプローラー]** ブレードからサブフォルダーにファイルをアップロードする手順を示しています。この画面キャプチャの場合、ファイルは、階層リンクで示されているサブフォルダー (赤色の四角形で示されています) にアップロードされます。
 
-アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 ![データのアップロード](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "データのアップロード")
 
@@ -100,7 +101,7 @@ Data Lake Store アカウントにフォルダーを作成し、データの管�
 
 * **[プレビュー]** をクリックすると、ブラウザーから直接、ファイルのプレビューが表示されます。プレビューの形式を指定することもできます。**[プレビュー]** をクリックし、**[ファイルのプレビュー]** ブレードの **[形式]** をクリックします。**[ファイルのプレビュー形式]** ブレードで、表示する行数、使用するエンコード、使用する区切り記号などのオプションを指定します。
 
-  ![ファイルのプレビュー形式](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "ファイルのプレビュー形式")
+  ![ファイル プレビューのフォーマット](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "ファイル プレビューのフォーマット")
 
 * ファイルをコンピューターにダウンロードするには、**[ダウンロード]** をクリックします。
 
@@ -120,9 +121,9 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 
 ![Data Lake アカウントの削除](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake アカウントの削除")
 
-## Data Lake Store アカウントを作成するその他の方法
+## Data Lake Store アカウントの他の作成方法
 
-- [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
+- [Azure PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
 - [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 - [Azure CLI で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-cli.md)
 
@@ -133,4 +134,4 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

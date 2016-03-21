@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Azure" 
 	description="Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。" 
-	services="active-directory, virtual-network" 
+	services="active-directory, virtual-network"
+    keywords="Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ"
 	documentationCenter="" 
 	authors="markusvi" 
 	manager="stevenpo" 
@@ -13,7 +14,7 @@
 	ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-	ms.date="10/20/2015" 
+	ms.date="01/25/2016" 
 	ms.author="markusvi"/>
 
 
@@ -31,16 +32,16 @@
 
 このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。アプリケーション サーバーを実行する VM およびドメイン コントローラーを実行する VM は、Azure Virtual Network の専用のクラウド サービスにインストールされます。また、フォールト トレランス向上のため、可用性セットにも含まれます。
 
-![][1] 7
+![Azure Virtual Network の仮想マシンでの Active Directory フォレスト][1] 7
 ## オンプレミスの場合との違い
 
 ドメイン コントローラーのオンプレミスへのインストールと Azure へのインストールにそれほど大きな違いはありません。主な違いを次の表に示します。
 
 構成対象 | オンプレミスの  | Azure Virtual Network	
 ------------- | -------------  | ------------
-**ドメイン コントローラーの IP アドレス**  | ネットワーク アダプターのプロパティの静的 IP アドレスを割り当てる   | Set-AzureStaticVNetIP コマンドレットを実行して、静的 IP アドレスを割り当てる
-**DNS クライアント リゾルバー**  | ドメイン メンバーのネットワーク アダプターのプロパティの優先および代替 DNS サーバー アドレスを設定する   | 仮想ネットワークのプロパティの DNS サーバー アドレスを設定する
-**Active Directory データベース ストレージ**  | 既定の保存先を C:\\ から変更する (省略可能)  | 既定の保存先を C:\\ から変更する (必須)
+**ドメイン コントローラーの IP アドレス** | ネットワーク アダプターのプロパティの静的 IP アドレスを割り当てる | Set-AzureStaticVNetIP コマンドレットを実行して、静的 IP アドレスを割り当てる
+**DNS クライアント リゾルバー** | ドメイン メンバーのネットワーク アダプターのプロパティの優先および代替 DNS サーバー アドレスを設定する | 仮想ネットワークのプロパティの DNS サーバー アドレスを設定する
+**Active Directory データベース ストレージ** | 既定の保存先を C:\\ から変更する (省略可能) | 既定の保存先を C:\\ から変更する (必須)
 
 
 
@@ -137,4 +138,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
  
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

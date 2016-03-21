@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/29/2015"
+   ms.date="02/19/2016"
    ms.author="mbaldwin"/>
 
 
 # Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
 
-Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
+Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
 
 * **OpenID Connect** - 認証には OpenID Connect を使用し、構成には Azure AD Consent API を使用して Azure AD と直接統合します。統合を始めたばかりで、アプリケーションが SAML をサポートしていない場合、このモードが推奨されます。
 
@@ -29,11 +29,11 @@ Azure Active Directory でのシングル サインオンをサポートする�
 
 ##OpenID Connect 統合
 
-アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。また、次の情報を記載し、waadpartners@microsoft.comに送信してください。
+アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。また、次の情報を記載し、waadpartners@microsoft.com に送信してください。
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 
-* [Azure AD Consent フレームワーク](https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+* [Azure AD Consent フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
 
 * Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
 
@@ -65,11 +65,11 @@ Azure Active Directory でのシングル サインオンをサポートする�
 
 ##SAML の統合
 
-SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。アプリケーションと Azure AD の統合をテストし終わったら、次の情報を <waadpartners@microsoft.com>に送信してください。
+SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](active-directory-saas-custom-apps.md)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。アプリケーションと Azure AD の統合をテストし終わったら、次の情報を <waadpartners@microsoft.com>に送信してください。
 
 * Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
 
-* [ここ](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)の説明に従って、アプリケーションの SAML サインオン URL (エンティティ ID) と Reply URL (Assertion Consumer Service) 値を記載してください。通常、SAML メタデータ ファイルの一部としてこれらの値を入力している場合は、それも送信してください。
+* [ここ](active-directory-saas-custom-apps.md)の説明に従って、アプリケーションの SAML サインオン URL (エンティティ ID) と Reply URL (Assertion Consumer Service) 値を記載してください。通常、SAML メタデータ ファイルの一部としてこれらの値を入力している場合は、それも送信してください。
 
 * SAML 2.0 を使用してアプリケーションの ID プロバイダーとして Azure AD を構成する方法を簡単に説明してください。セルフサービス管理ポータルで ID プロバイダーとしての Azure AD の構成がアプリケーションでサポートされている場合、前述の資格情報にそれを設定する機能を含めてください。
 
@@ -89,7 +89,7 @@ SAML 2.0 をサポートするすべてのアプリケーションは、[この�
 > 
 > 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
 > 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、[Azure Active Directory Marketplace](https://azure.microsoft.com/ja-JP/marketplace/active-directory/) を参照してください)。
+> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、[Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) をご覧ください):
 > 
 > アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
 > 
@@ -97,4 +97,4 @@ SAML 2.0 をサポートするすべてのアプリケーションは、[この�
 > 
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

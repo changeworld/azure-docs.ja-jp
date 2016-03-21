@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="vm-linux"
   ms.workload="infrastructure-services"
-  ms.date="06/17/2015" 
+  ms.date="02/01/2016" 
   ms.author="ahmetb" />
 
 # Azure への独自のプライベート Docker Registry のデプロイ
@@ -28,7 +28,7 @@
 このドキュメントでは以下のことが想定されています。
 
 1. 読者は Docker の使用方法を理解しており、格納する Docker イメージを持っている。(そうでない場合は、 [Docker について学習](https://www.docker.com)してください)
-2. Docker エンジンがインストールされているサーバーがある。(そうでない場合は、 [Azure ですぐに行って](http://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/)ください。)
+2. Docker エンジンがインストールされているサーバーがある。(そうでない場合は、 [Azure ですぐに行って](https://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/)ください。)
 
 
 ## プライベート Docker レジストリとは
@@ -82,7 +82,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 3698ddfebc6f        registry:2          "registry cmd/regist   2 seconds ago       Up 1 seconds        0.0.0.0:5000->5000/tcp   registry
 ```
 
-> [AZURE.IMPORTANT]Docker Registry へのセキュリティの構成については、このドキュメントでは説明しません。前記のデプロイ コマンドを使用した場合、仮想マシン エンドポイントまたはロード バランサーでレジストリ ポートへのポートを開くと、誰でも既定で認証することなくレジストリにアクセスできます。
+> [AZURE.IMPORTANT] Docker Registry へのセキュリティの構成については、このドキュメントでは説明しません。前記のデプロイ コマンドを使用した場合、仮想マシン エンドポイントまたはロード バランサーでレジストリ ポートへのポートを開くと、誰でも既定で認証することなくレジストリにアクセスできます。
 >
 > レジストリ インスタンスとイメージを保護する方法については、[Docker Registry の構成][registry-config]に関するドキュメントを参照してください。
 
@@ -96,4 +96,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

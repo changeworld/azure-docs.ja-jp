@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/07/2015"  
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 # 環境をセットアップする
@@ -24,9 +24,11 @@
 - [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
 <a id="create_account"></a>
 
+以下の手順は、Azure Media Services で開発を行うために必要な前提条件を説明したものです。
+
 ## Media Services アカウントを作成する
 
-Azure Media Services アカウントを作成するには、Azure ポータル、.NET SDK、または REST API を使用します。
+Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET SDK、または REST API を使用します。
 
 <a id="setup_dev_env"></a>
 ## 開発環境を設定する  
@@ -51,4 +53,4 @@ Azure Media Services アカウントを作成するには、Azure ポータル�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure ポータルの HDInsight に関する記事の索引 | Microsoft Azure"
-   description="Azure ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure プレビュー ポータルをお勧めします。"
+   pageTitle="Azure クラシック ポータルの HDInsight に関する記事の索引 | Microsoft Azure"
+   description="Azure クラシック ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure ポータルをお勧めします。"
    services="hdinsight"
    documentationCenter="na"
    authors="cjgronlund"
@@ -16,25 +16,25 @@
    ms.date="08/17/2015"
    ms.author="cjgronlund"/>
 
-# Azure ポータルの HDInsight に関する記事の索引
+# Azure クラシック ポータルの HDInsight に関する記事の索引
 
-この索引ページを使用して、[Azure ポータル](https://manage.windowsazure.com/)の HDInsight に関する記事を探すことができます。Azure HDInsight は、 オープン ソースである Hadoop と Hortonworks Data Platform のクラウド ディストリビューションです。
+この索引ページを使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)の HDInsight に関する記事を探すことができます。Azure HDInsight は、 オープン ソースである Hadoop と Hortonworks Data Platform のクラウド ディストリビューションです。
 
 
-> [AZURE.IMPORTANT]このドキュメントのインデックス ページは、現在の Azure ポータルにソリューションをデプロイしているユーザーを対象としています。
+> [AZURE.IMPORTANT]このドキュメントのインデックス ページは、現在の Azure クラシック ポータルにソリューションをデプロイしているユーザーを対象としています。
 >
-> 新しい HDInsight クラスターでは、**Azure プレビュー ポータル**を使用することをお勧めします。
+> 新しい HDInsight クラスターでは、**Azure ポータル**を使用することをお勧めします。
 >
-> * [HDInsight プレビュー ポータルのドキュメント](/documentation/services/hdinsight/)にアクセス
-> * [Azure プレビュー ポータル](https://portal.azure.com/)にアクセス
+> * [HDInsight ポータルのドキュメント](/documentation/services/hdinsight/)にアクセス
+> * [Azure ポータル](https://portal.azure.com/)にアクセスします。
 >
-> プレビュー ポータルの利点については、「[DevOps は最高](/overview/preview-portal/)」を参照してください。
+> ポータルの利点については、「[DevOps は最高](/overview/preview-portal/)」を参照してください。
 >
-> Azure ポータルでの HDInsight のアップグレードは 2015 年 7 月に終了し、その後は Azure プレビュー ポータルが引き継ぎます。
+> Azure クラシック ポータルでの HDInsight のアップグレードは 2015 年 7 月に終了し、その後は Azure ポータルが引き継ぎます。
 
 ## 作業開始
 
-HDInsight で Hadoop を初めて使用する場合は、「[HDInsight のドキュメント](/documentation/services/hdinsight/)」ページを参照して、Azure プレビュー ポータルの使用を開始してください。
+HDInsight で Hadoop を初めて使用する場合は、「[HDInsight のドキュメント](/documentation/services/hdinsight/)」ページを参照して、Azure ポータルの使用を開始してください。
 
 ## Linux
 
@@ -81,7 +81,7 @@ Linux と Linux クラスターの使用に関するすべての記事につい�
 
 ## Apache Spark
 
-Azure プレビュー ポータルでの Apache Spark ネイティブ クラスターの使用に関する記事については、「[HDInsight のドキュメント](/documentation/services/hdinsight/)」ページを参照してください、
+Azure ポータルでの Apache Spark ネイティブ クラスターの使用に関する記事については、「[HDInsight のドキュメント](/documentation/services/hdinsight/)」ページを参照してください、
 
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 * [Hadoop クラスターで Spark をインストールして使用する](hdinsight-hadoop-spark-install.md)
@@ -133,4 +133,4 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

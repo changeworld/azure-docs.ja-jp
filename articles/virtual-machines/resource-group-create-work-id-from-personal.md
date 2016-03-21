@@ -1,6 +1,6 @@
 <properties
    pageTitle="AAD の職場または学校の ID を作成する |Microsoft Azure"
-   description="Resource Manager デプロイ モデルとクラシック デプロイ モデルで使用する Azure Active Directory の職場または学校の ID を作成する方法について説明します。"
+   description="リソース マネージャー デプロイ モデルとクラシック デプロイ モデルで使用する Azure Active Directory の職場または学校の ID を作成する方法について説明します。"
    services="virtual-machines"
    documentationCenter=""
    authors="squillace"
@@ -14,25 +14,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure"
-   ms.date="09/01/2015"
+   ms.date="12/08/2015"
    ms.author="rasquill"/>
 
 # Azure Active Directory を使用して職場または学校の ID を作成する
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-MSDN Azure クレジットを活用するために、個人の Azure アカウントを作成した場合や、個人の MSDN サブスクリプションがあり、Azure アカウントを作成した場合、*Microsoft アカウント* ID を使用して作成しています。Azure の優れた機能の中でも[リソース グループ テンプレート](../resource-group-overview.md)はその一例ですが、作業にあたって職場または学校のアカウント (Azure Active Directory で管理される ID) が必要です。
+MSDN Azure クレジットを活用するために、個人の Azure アカウントを作成した場合や、個人の MSDN サブスクリプションがあり、Azure アカウントを作成した場合、*Microsoft アカウント* ID を使用して作成しています。Azure の優れた機能の中でも[リソース グループ テンプレート](../resource-group-overview.md)はその一例ですが、作業にあたって職場または学校のアカウント (Azure Active Directory で管理される ID) が必要です。下の指示に従って、新しい職場または学校のアカウントを作成できます。個人の Azure アカウントを持つことで得られるメリットの 1 つは、既定の Azure Active Directory ドメインが付属することです。それを使用して職場または学校のアカウントを新規に作成し、アカウントが必要な Azure 機能で利用できます。
 
-
-個人の Azure アカウントを持つことで得られるメリットの 1 つは、既定の Azure Active Directory ドメインが付属することです。これを使用して職場や学校のアカウントを新規に作成し、アカウントを要求する Azure 機能で利用できます。
+ただし、最近の変更によって、[ここ](../xplat-cli-connect.md)で説明されている `azure login` 対話型ログイン方法を使用するすべての種類の Azure アカウントでサブスクリプションを管理できるようになっています。そのメカニズムを使用することも、次の指示に従うこともできます。
 
 > [AZURE.NOTE]管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
 
-手順は簡単です。Azure ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
+手順は簡単です。Azure クラシック ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
 
-## Azure ポータルで既定のディレクトリを見つける
+## Azure クラシック ポータルで既定のディレクトリを見つける
 
-まず、個人の Microsoft アカウント ID で [Azure ポータル](https://manage.windowsazure.com) にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
+まず、個人の Microsoft アカウント ID で [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
 
 ![Azure Active Directory](./media/resource-group-create-work-id-from-personal/azureactivedirectorywidget.png)
 
@@ -62,7 +61,7 @@ MSDN Azure クレジットを活用するために、個人の Azure アカウ�
 
 ![](./media/resource-group-create-work-id-from-personal/addingauserwithdirectorydropdown.png)
 
-Ahmet の詳細を追加しますが、適切な **[ロール]** 値を選択してください。**[グローバル管理者]** を使用すると確実ですが、使用できる場合には、下位のロールを使用することをお勧めします。この例では、**[ユーザー]** ロールを使用します (これらのロールの詳細については、[こちら](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1)をご覧ください)。 操作の各ログで Multi-Factor Authentication を使用する必要がない場合は、Multi-Factor Authentication を有効にしないでください。終了したら、矢印をクリックします。
+Ahmet の詳細を追加しますが、適切な **[ロール]** 値を選択してください。**[グローバル管理者]** を使用すると確実ですが、使用できる場合には、下位のロールを使用することをお勧めします。この例では、**[ユーザー]** ロールを使用します (詳細については、「[ロール別の管理者権限](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1)」を参照してください)。 操作の各ログで Multi-Factor Authentication を使用する必要がない場合は、Multi-Factor Authentication を有効にしないでください。終了したら、矢印をクリックします。
 
 ![](./media/resource-group-create-work-id-from-personal/userprofileuseradmin.png)
 
@@ -113,9 +112,9 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
 
 ## 次のステップ
 
-新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](xplat-cli-azure-resource-manager.md)を使用できます。
+新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](../xplat-cli-azure-resource-manager.md)を使用できます。
 
-     azure login
+    azure login
     info:    Executing command login
     warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
     Username: ahmet@aztrainpassxxxxxoutlook.onmicrosoft.com
@@ -144,4 +143,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -5,7 +5,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 	
 3. 必要に応じて、次に示すように、新しいリソース グループを作成します。このシナリオでは、*TestRG* という名前のリソース グループを作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
-		New-AzureResourceGroup -Name TestRG -Location centralus
+		New-AzureRmResourceGroup -Name TestRG -Location centralus
 
 	予想される出力:
 	
@@ -22,7 +22,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 4. 次に示すように、*TestVNet* という名前の新しい VNet を作成します。
 
-		New-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
+		New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
 			-AddressPrefix 192.168.0.0/16 -Location centralus	
 		
 	予想される出力:
@@ -47,13 +47,13 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 5. 次に示すように、仮想ネットワーク オブジェクトを変数に格納します。
 
-		$vnet = Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+		$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 	
-	>[AZURE.TIP]**$vnet = New-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** を実行すると、手順 3. と手順 4. を組み合わせることができます。
+	>[AZURE.TIP]**$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** を実行すると、手順 4. と手順 5. を組み合わせることができます。
 
 6. 次に示すように、新しい VNet 変数にサブネットを追加します。
 
-		Add-AzureVirtualNetworkSubnetConfig -Name FrontEnd `
+		Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
 			-VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
 		
 	予想される出力:
@@ -89,12 +89,12 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 7. 作成するサブネットごとに、上記の手順 6. を繰り返します。このシナリオでは、次のコマンドで *BackEnd* サブネットを作成します。
 
-		Add-AzureVirtualNetworkSubnetConfig -Name BackEnd `
+		Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
 			-VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
 
-8. サブネットは作成されますが、この時点では、上記の手順 4. で作成する、VNet の取得に使用するローカル変数にのみ格納されています。Azure への変更を保存するには、次のように **Set-AzureVirtualNetwork** コマンドレットを実行します。
+8. サブネットは作成されますが、この時点では、上記の手順 4. で作成する、VNet の取得に使用するローカル変数にのみ格納されています。Azure への変更を保存するには、次のように **Set-AzureRmVirtualNetwork** コマンドレットを実行します。
 
-		Set-AzureVirtualNetwork -VirtualNetwork $vnet	
+		Set-AzureRmVirtualNetwork -VirtualNetwork $vnet	
 		
 	予想される出力:
 
@@ -137,4 +137,4 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                      }
 		                    ]
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="09/28/2015"
+ ms.date="02/03/2016"
  ms.author="dobett"/>
 
 # IoT Hub へのアクセスの構成と管理
@@ -22,12 +22,14 @@
 
 ## ネットワーク接続
 
-デバイスは、AMQP または HTTPS のいずれかのプロトコルを使用して Azure の IoT Hub と通信します。通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
+デバイスは、さまざまなプロトコルを使用して Azure の IoT Hub と通信できます。通常、プロトコルの選択は、ソリューションの特定の要件によって左右されます。次の表に、デバイスが特定のプロトコルを使用できるようにするために開く必要がある送信ポートを示します。
 
 | プロトコル | ポート |
 | -------- | ------- |
 | HTTPS | 443 |
 | AMQP | 5671 |
+| AMQP over WebSocket | 443 |
+| MQTT | 8883 |
 
 Azure リージョンに IoT Hub を作成すると、そのハブはハブの存続期間中同じ IP アドレスを保持します。ただし、障害復旧シナリオでは、Microsoft によって IoT Hub が別のスケール ユニットに移動されると、新しい IP アドレスが割り当てられます。
 
@@ -42,11 +44,11 @@ IoT Hub のその他の管理エンドポイントへのアクセスも、*iothu
 この記事には、開発環境およびテスト環境を構成する IT プロフェッショナルと開発者向けの具体的な情報が含まれています。Azure IoT Hub サービスについてさらに学習するには、次のリンクを使用してください。
 
 - [What is Azure IoT Hub? (Azure IoT Hub とは)][lnk-iothub]
-- ["Security" in the Azure IoT Hub developer guide (「Azure IoT Hub 開発者ガイド」の「セキュリティ」)][lnk-devguide]セクションには、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
-- 「[Azure プレビュー ポータルを使用した IoT Hub の管理][lnk-manage-portal]」には、Azure プレビュー ポータルを使用して IoT Hub を管理する方法が記載されています。
+- [「Azure IoT Hub 開発者ガイド」の「セキュリティ」セクション][lnk-devguide]には、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
+- 「[Manage IoT Hub through the Azure Portal (Azure ポータルを使用した IoT Hub の管理)][lnk-manage-portal]」には、Azure ポータルを使用して IoT Hub を管理する方法が記載されています。
 
 [lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

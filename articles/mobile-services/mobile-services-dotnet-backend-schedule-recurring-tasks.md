@@ -1,28 +1,33 @@
-<properties 
+<properties
 	pageTitle=".NET バックエンド モバイル サービスのバックエンド タスクのスケジュール | Microsoft Azure"
 	description="Azure Mobile Services のスケジューラを使用し、日程に基づいて実行される .NET バックエンド ジョブを定義します。"
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="09/14/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="02/07/2016"
 	ms.author="glenga"/>
 
-# Mobile Services での繰り返し発生するジョブのスケジュール 
+# Mobile Services での繰り返し発生するジョブのスケジュール
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 - [Javascript backend](mobile-services-schedule-recurring-tasks.md)
- 
-このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
+
+このトピックでは、Azure クラシック ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
 + 古いデータ レコードまたは重複しているデータ レコードの取得。
 + 外部データ (ツイート、RSS エントリ、場所情報など) の要求と格納。
@@ -70,13 +75,13 @@
 	これで新しいアセンブリの参照が追加されます。
 
 2. この新しいクラスで、次の **using** ステートメントを追加します。
- 
+
 		using Microsoft.WindowsAzure.Mobile.Service;
 		using System.ComponentModel.DataAnnotations;
 
 3. **Updates** クラス定義を次のコードで置き換えます。
 
-		public class Updates 
+		public class Updates
 	    {
 	        [Key]
 	        public int UpdateId { get; set; }
@@ -92,18 +97,18 @@
 
 	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。
 
-	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL Database に対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
+	>[AZURE.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL Database に対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納することを目的とした、スケジュールされたジョブを作成します。
 
-##<a name="add-job"></a>新しいスケジュール済みジョブを作成する  
+##<a name="add-job"></a>新しいスケジュール済みジョブを作成する
 
 1. ScheduledJobs フォルダーを展開し、SampleJob.cs プロジェクト ファイルを開きます。
 
-	**ScheduledJob** から継承されたこのクラスは、スケジュール可能なジョブを表し、そのジョブは Microsoft Azure の管理ポータルで定期的なスケジュールで、またはオンデマンドで実行されます。
+	**ScheduledJob** から継承されたこのクラスは、スケジュール可能なジョブを表し、そのジョブは Azure クラシック ポータルで定期的なスケジュールで、またはオンデマンドで実行されます。
 
 2. SampleJob.cs の内容を次のコードに置き換えます。
- 
+
 		using System;
 		using System.Linq;
 		using System.Threading;
@@ -114,7 +119,7 @@
 		using LinqToTwitter;
 		using todolistService.Models;
 		using todolistService.DataObjects;
-		
+
 		namespace todolistService
 		{
 		    // A simple scheduled job which can be invoked manually by submitting an HTTP
@@ -124,29 +129,29 @@
 		        private todolistContext context;
 		        private string accessToken;
 		        private string accessTokenSecret;
-		
-		        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, 
+
+		        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor,
 					CancellationToken cancellationToken)
 		        {
 		            base.Initialize(scheduledJobDescriptor, cancellationToken);
-		
+
 		            // Create a new context with the supplied schema name.
 		            context = new todolistContext();
 		        }
-		
+
 		        public async override Task ExecuteAsync()
-		        {            
-		            // Try to get the stored Twitter access token from app settings.  
+		        {
+		            // Try to get the stored Twitter access token from app settings.
 		            if (!(Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN", out accessToken) |
 		            Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN_SECRET", out accessTokenSecret)))
 		            {
 		                Services.Log.Error("Could not retrieve Twitter access credentials.");
 		            }
-		
+
 		            // Create a new authorizer to access Twitter v1.1 APIs
 		            // using single-user OAUth 2.0 credentials.
 		            MvcAuthorizer auth = new MvcAuthorizer();
-		            SingleUserInMemoryCredentialStore store = 
+		            SingleUserInMemoryCredentialStore store =
 		                new SingleUserInMemoryCredentialStore()
 		            {
 		                ConsumerKey = Services.Settings.TwitterConsumerKey,
@@ -154,13 +159,13 @@
 		                OAuthToken = accessToken,
 		                OAuthTokenSecret = accessTokenSecret
 		            };
-		
+
 		            // Set the credentials for the authorizer.
 		            auth.CredentialStore = store;
-		
+
 		            // Create a new LINQ to Twitter context.
 		            TwitterContext twitter = new TwitterContext(auth);
-		
+
 		            // Get the ID of the most recent stored tweet.
 		            long lastTweetId = 0;
 		            if (context.Updates.Count() > 0)
@@ -170,7 +175,7 @@
 		                               select u).Take(1).SingleOrDefault()
 		                                            .TweetId;
 		            }
-		
+
 		            // Execute a search that returns a filtered result.
 		            var response = await (from s in twitter.Search
 		                                  where s.Type == SearchType.Search
@@ -178,13 +183,13 @@
 		                                  && s.SinceID == Convert.ToUInt64(lastTweetId + 1)
 		                                  && s.ResultType == ResultType.Recent
 		                                  select s).SingleOrDefaultAsync();
-		
+
 		            // Remove retweets and replies and log the number of tweets.
 		            var filteredTweets = response.Statuses
 		                .Where(t => !t.Text.StartsWith("RT") && t.InReplyToUserID == 0);
 		            Services.Log.Info("Fetched " + filteredTweets.Count()
 		                + " new tweets from Twitter.");
-		
+
 		            // Store new tweets in the Updates table.
 		            foreach (Status tweet in filteredTweets)
 		            {
@@ -196,10 +201,10 @@
 		                        Author = tweet.User.Name,
 		                        Date = tweet.CreatedAt
 		                    };
-		
+
 		                context.Updates.Add(newTweet);
 		            }
-		
+
 		            await context.SaveChangesAsync();
 		        }
 		        protected override void Dispose(bool disposing)
@@ -214,7 +219,7 @@
 		}
 
 	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name*Service と *mobile&#95;service&#95;name*Context) に置き換える必要があります。
-   	
+
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
 ##<a name="run-job-locally"></a>スケジュールされたジョブをローカルでテストする
@@ -228,7 +233,7 @@
 2. **[実際に使ってみる]** をクリックして、**[POST jobs/{jobName}]** をクリックします。
 
 	![][8]
- 
+
 4. **[実際にこれを使ってみる]** をクリックして、「`Sample`」を **{jobName}** パラメーター値として入力し、**[送信]** をクリックします。
 
 	![][9]
@@ -239,20 +244,20 @@
 
 	この新しいツイートは、データ テーブル内の行として入力されます。
 
-##<a name="register-job"></a>サービスを発行して新しいジョブを登録する 
+##<a name="register-job"></a>サービスを発行して新しいジョブを登録する
 
 このジョブを **Scheduler** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、Mobile Services がこのジョブを実行できるようになります。
 
-3. モバイル サービス プロジェクトを Azure に対して再発行します。 
+3. モバイル サービス プロジェクトを Azure に対して再発行します。
 
-4. [Microsoft Azure 管理ポータル]で、[モバイル サービス] をクリックして、アプリケーションをクリックします。
+4. [Azure クラシック ポータル]にログインし、[Mobile Services]、アプリケーションの順にクリックします。
 
 2. **[Scheduler]** タブをクリックし、**[作成]** をクリックします。
 
     >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
 3. [Scheduler] ダイアログ ボックスで、**[ジョブ名]** に「_Sample_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
-   
+
    	![][4]
 
    	これにより、**Sample** という名前の新しいジョブが作成されます。
@@ -263,11 +268,11 @@
 
 	>[AZURE.NOTE]引き続き POST 要求を使用して、スケジュールされたジョブを開始することができます。ただし、認証の既定はユーザーを対象にしており、要求のヘッダーにアプリケーション キーを含める必要があることを意味します。
 
-4. (省略可能) [Microsoft Azure 管理ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
+4. (省略可能) [Azure クラシック ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![][6]
 
-5. 管理ポータルでクエリを実行して、アプリケーションによって加えられた変更を表示します。クエリは次のようになりますが、スキーマ名として `todolist` の代わりにモバイル サービスの名前を使用します。
+5. Azure クラシック ポータルで、クエリを実行してアプリによって加えられた変更を表示します。クエリは次のようになりますが、スキーマ名として `todolist` の代わりにモバイル サービスの名前を使用します。
 
         SELECT * FROM [todolist].[Updates]
 
@@ -294,10 +299,10 @@
 [9]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/mobile-service-try-this-out.png
 
 <!-- URLs. -->
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Register your apps for Twitter login with Mobile Services]: mobile-services-how-to-register-twitter-authentication.md
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

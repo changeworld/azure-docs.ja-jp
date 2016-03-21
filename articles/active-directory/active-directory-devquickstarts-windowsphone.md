@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 
@@ -43,7 +43,7 @@ Windows Phone アプリを開発する場合、Azure AD を使用すると、Act
 ## *1.ディレクトリ検索アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -171,6 +171,5 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [Protect a Web API using Bearer tokens from Azure AD (Azure AD からのベアラー トークンを使用することによる Web API の保護)](active-directory-devquickstarts-webapi-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

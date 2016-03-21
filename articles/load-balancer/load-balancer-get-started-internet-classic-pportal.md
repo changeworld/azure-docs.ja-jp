@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="プレビュー ポータルを使用したインターネットに接続するクラシック デプロイメント モデルのロード バランサーの作成の開始 | Microsoft Azure"
-   description="プレビュー ポータルを使用し、インターネットに接続するクラシック デプロイメント モデルのロード バランサーを作成する方法について説明します"
+   pageTitle="Azure ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
+   description="Azure ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -14,24 +14,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/03/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
-#ポータル ビューを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
+# Azure ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャー PowerShell を使用してロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+
  
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 
 
-## プレビュー ポータルを使用したロード バランサーのエンドポイントの作成	
+## Azure ポータルを使用したロード バランサーのエンドポイントの作成	
 
-プレビュー ポータルを使用してインターネットに接続するロード バランサー (クラシック) デプロイメント モデルを作成するには、次の手順に従います。
+Azure ポータルを使用してインターネットに接続するロード バランサー (クラシック) デプロイメント モデルを作成するには、次の手順に従います。
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 
@@ -65,4 +66,4 @@
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

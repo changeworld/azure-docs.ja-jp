@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure BLOB との間でのデータの移動 | Azure Data Factory" 
-	description="Azure Data Factory を使用して Azure BLOB ストレージに、または Azure BLOB ストレージからデータを移動する方法を説明します。" 
+	description="Azure Data Factory を使用して Azure BLOB Storage に、または Azure BLOB Storage からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,11 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure BLOB と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+
+次のサンプルは、Azure BLOB ストレージと Azure SQL Database との間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+ 
 
 ## サンプル: Azure BLOB から Azure SQL にデータをコピーする
 下のサンプルで確認できる要素:
@@ -53,6 +56,8 @@
 	    }
 	  }
 	}
+
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
 
 **Azure BLOB の入力データセット:**
 
@@ -225,6 +230,9 @@
 	  }
 	}
 
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+
+
 **Azure SQL の入力データセット:**
 
 このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
@@ -254,9 +262,11 @@
 	  }
 	}
 
+
 **Azure BLOB の出力データセット:**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+
 	
 	{
 	  "name": "AzureBlobOutput",
@@ -362,14 +372,10 @@
 		}
 	}
 
-## Azure Storage のリンクされたサービスのプロパティ
+## リンクされたサービス
+Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。これら 2 つのリンクされたサービスには、これ以外の相違点はありません。ニーズに適したリンクされたサービスを選択します。以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
 
-Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
-| type | type プロパティを **AzureStorage** に設定する必要があります。 | あり |
-| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure ポータルから Azure ストレージの connectionString を取得できます。 | あり |
+[AZURE.INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## Azure BLOB データセットの type プロパティ
 
@@ -380,10 +386,10 @@ Azure Storage のリンクされたサービスを利用し、Azure ストレー
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。例: myblobcontainer\\myblobfolder\\ | あり |
-| fileName | <p>blob. fileName の名前は任意です。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。</p><p>出力データセットに fileName が指定されていないとき、「Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>)」の形式でファイルが生成されます。 | いいえ |
+| fileName | <p>blob. fileName の名前は省略可能です。この名前は大文字と小文字が区別されます。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。</p><p>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの活用](#Leveraging-partitionedBy-property)」セクションを参照してください。 | いいえ
 | BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
 前述のように、時系列データに対して動的な folderPath と fileName を指定するときに、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用できます。
@@ -422,8 +428,8 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| columnDelimiter | ファイルの列の区切り記号として使用される文字です。このタグは任意です。既定値はコンマです (,)。 | いいえ |
-| rowDelimiter | ファイルの行の区切り記号として使用される文字です。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
+| columnDelimiter | ファイルの列の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値はコンマです (,)。 | いいえ |
+| rowDelimiter | ファイルの行の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
 | escapeChar | <p>コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として「$」を定義し、ソースで文字列「Hello$, world」を使用できます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ | 
 | quoteChar | <p>この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ |
 | nullValue | <p>BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は「\\N」です。</p><p>たとえば、上記のサンプルに基づくと、BLOB の「NaN」は SQL Server などにコピーされるときに null 値として変換されます。</p> | いいえ |
@@ -472,7 +478,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- | 
-| treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。 | TRUE<br/>FALSE | いいえ |
+| treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。<p>**quoteChar** プロパティを指定した場合、このプロパティでは引用符で囲まれた空の文字列も null として処理される場合があることに注意してください。</p> | TRUE (既定値) <br/>FALSE | いいえ |
 | skipHeaderLineCount | スキップする必要がある行数を指定します。入力データセットで **TextFormat** を利用しているときにのみ適用されます。 | 0 から最大値までの整数。 | いいえ | 
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 | True (既定値)、False | いいえ | 
 
@@ -492,7 +498,7 @@ recursive | copyBehavior | 行われる動作
 true | preserveHierarchy | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲット フォルダ Folder1 の構造はソースと同じになります。<p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>.  
 true | flattenHierarchy | <p>ソース フォルダ Folder1 が次のような構造の場合: </p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲットの Folder1 の構造は次のようになります: <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 の自動生成された名前</p>
 true | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲットの Folder1 の構造は次のようになります: <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1、File2、File3、File4、File 5 の内容は、自動生成されたファイル名を持つ 1 つのファイルにマージされます。</p>
-false | preserveHierarchy | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲット フォルダ Folder1 の構造は次のようになります。<p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/></p><p>Subfolder1 と File3、File4、File5 は取得されません</p>。
+false | preserveHierarchy | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲット フォルダ Folder1 の構造は次のようになります。<p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/></p><p>Subfolder1 と File3、File4、File5 は取得されません。</p>
 false | flattenHierarchy | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲット フォルダ Folder1 の構造は次のようになります。<p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/></p><p>Subfolder1 と File3、File4、File5 は取得されません。</p>
 false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造の場合:</p> <p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5</p>ターゲット フォルダ Folder1 の構造は次のようになります。<p>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 と File2 の内容は、自動生成されたファイル名 (File1 の自動生成された名前) を持つ 1 つのファイルにマージされます。</p><p>Subfolder1 と File3、File4、File5 は取得されません。</p>.
 
@@ -505,4 +511,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

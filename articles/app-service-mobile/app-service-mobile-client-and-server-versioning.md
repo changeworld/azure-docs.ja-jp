@@ -1,9 +1,9 @@
 <properties
-  pageTitle="Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理 | Azure App Service"
+  pageTitle="Mobile Apps と Mobile Services のクライアントとサーバーの SDK バージョン管理 | Azure App Service"
   description="Mobile Services と Azure Mobile Apps のクライアント SDK およびサーバー SDK バージョンとの互換性の一覧"
   services="app-service\mobile"
   documentationCenter=""
-  authors="lindydonna" 
+  authors="lindydonna"
   manager="dwrede"
   editor=""/>
 
@@ -13,15 +13,12 @@
   ms.tgt_pltfrm="mobile-multiple"
   ms.devlang="dotnet"
   ms.topic="article"
-  ms.date="11/09/2015"
+  ms.date="02/04/2016"
   ms.author="donnam"/>
 
 # Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
-
-<!-- Azure App Service offers a number of platform benefits over Mobile Services, including continuous integration and deployment, staging lots, and VNET support.
- -->
 
 Mobile Apps のクライアント/サーバー SDK は Mobile Services のクライアント/サーバー SDK にもともと基づいていますが、互いに互換性が*ありません*。つまり、*Mobile Apps* クライアント SDK と共に *Mobile Apps* サーバー SDK を使用する必要があり、*Mobile Services* の場合も同様です。この契約は、クライアント/サーバー SDK により使用される特殊なヘッダー値 `ZUMO-API-VERSION` により適用されます。
 
@@ -45,7 +42,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 バージョン チェックを除外できます。その場合、アプリ設定 **MS\_SkipVersionCheck** に **true** 値を設定します。これは web.config か Azure ポータルの [アプリケーション設定] セクションで指定します。
 
-> [AZURE.NOTE]Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。テストを完了し、動作変更によりアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
+> [AZURE.NOTE] Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。テストを完了し、動作変更によりアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
 
 ## すべてのバージョンの互換性のまとめ
 
@@ -82,17 +79,18 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 | サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
-| .NET | [WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | ****バージョン ヘッダーなし ** | | Node.js | (coming soon) | **バージョン ヘッダーなし** |
+| .NET | [WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) | **バージョン ヘッダーなし** |
+| Node.js | (近日対応予定) | **バージョン ヘッダーなし** |
 
 <!-- TODO: add Node npm version -->
 
 ### Mobile Services バックエンドの動作
 
-| ZUMO-API-VERSION | MS\_SkipVersionCheck の値 | Response |
+| ZUMO-API-VERSION | MS\_SkipVersionCheck の値 | 応答 |
 | ---------------- | ---------------------------- | -------- |
 | 指定なし | 任意 | 200 - OK |
 | 任意の値 | True | 200 - OK |
-| 任意の値 | 偽/指定なし | 400 - 正しくない要求 | 
+| 任意の値 | 偽/指定なし | 400 - 正しくない要求 |
 
 ## <a name="2.0.0"></a>Azure Mobile Apps クライアントとサーバー
 
@@ -101,21 +99,20 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 バージョン チェックは **Azure Mobile Apps** の次のバージョンのクライアント SDK から導入されました。
 
 | クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
-| -------------------               | ------------------------                                                  | -----------------    |
-| 管理されたクライアント (Windows、Xamarin) | [2\.0.0-beta-3](https://www.nuget.org/packages/WindowsAzure.MobileServices/2.0.0-beta-3) | 2\.0.0 |
-| iOS | [3\.0.0-beta4](http://go.microsoft.com/fwlink/?LinkID=529823) | 2\.0.0 |
-| Android | 3\.0.0-beta1 | 2\.0.0 |
-| HTML | 2\.0.0-beta2 | 2\.0.0 |
+| -------------------               | ------------------------  | -----------------    |
+| 管理されたクライアント (Windows、Xamarin) | [2\.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) | 2\.0.0 |
+| iOS | [3\.0.0](http://go.microsoft.com/fwlink/?LinkID=529823) | 2\.0.0 |
+| Android | [3\.0.0](http://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) | 3\.0.0 |
 
-<!-- TODO: add Android and HTML versions when released -->
+<!-- TODO: add HTML version when released -->
 
 ### Mobile *Apps* サーバー SDK
 
 バージョン チェックは次のサーバー SDK バージョンに含まれています。
 
-| サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
+| サーバー プラットフォーム | SDK | 同意済みのバージョン ヘッダー |
 | ---------------- | ------------------------------------------------------------                                                   | ----------------------- |
-| .NET | [Microsoft.Azure.Mobile.Server.* バージョン 0.3.x (以降)](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) | 2\.0.0 |
+| .NET | [Microsoft.Azure.Mobile.Server.](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) | 2\.0.0 |
 | Node.js | [azure-mobile-apps バージョン 1.0-beta1 (以降)](https://www.npmjs.com/package/azure-mobile-apps) | 2\.0.0 |
 
 ### Mobile Apps バックエンドの動作
@@ -139,6 +136,6 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[Mobile Service を Azure App Service に移行する]: app-service-mobile-dotnet-backend-migrating-from-mobile-services.md
+[Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

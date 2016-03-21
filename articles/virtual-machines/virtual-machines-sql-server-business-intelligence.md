@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/19/2015"
+	ms.date="12/11/2015"
 	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server Business Intelligence
@@ -27,11 +27,11 @@ Microsoft Azure 仮想マシン ギャラリーには、SQL Server インスト�
 
 Microsoft Azure Virtual Machines の SQL Server のライセンスを取得するには、次の 2 つの方法があります。
 
-1. ソフトウェア アシュアランスの一部であるライセンス モビリティを利用する。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
+1. ソフトウェア アシュアランスの一部であるライセンス モビリティを利用する。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 
-1. SQL Server がインストールされている Azure Virtual Machines の時間単位の料金を支払う。「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションをご覧ください。
+1. SQL Server がインストールされている Azure Virtual Machines の時間単位の料金を支払う。「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションをご覧ください。
 
-ライセンスと現在の料金の詳細については、「[Virtual Machines Licensing FAQ (Virtual Machines のライセンスに関するFAQ)](http://azure.microsoft.com/pricing/licensing-faq/%20)」 をご覧ください。
+ライセンスと現在の料金の詳細については、「[Virtual Machines Licensing FAQ (Virtual Machines のライセンスに関するFAQ)](https://azure.microsoft.com/pricing/licensing-faq/%20/)」 をご覧ください。
 
 ## Azure 仮想マシン ギャラリーで提供される SQL Server イメージ
 
@@ -41,7 +41,7 @@ Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を
 
 ![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 次の PowerShell スクリプトは、ImageName に "SQL Server" が含まれた Azure イメージのリストを返します。
 
-	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Microsoft Azure Management Portal
+	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
 	
 	$subscriptionID = ""    # REQUIRED: Provide your subscription ID.
 	$subscriptionName = "" # REQUIRED: Provide your subscription name.
@@ -108,7 +108,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 	![SQL Server サービス](./media/virtual-machines-sql-server-business-intelligence/IC650107.gif)
 
-	>[AZURE.NOTE]サポートされている BI シナリオでは、SQL Server データベース エンジンが必要です。1 つのサーバー VM のトポロジでは、データベース エンジンが同じ VM 上で実行されている必要があります。
+	>[AZURE.NOTE] サポートされている BI シナリオでは、SQL Server データベース エンジンが必要です。1 つのサーバー VM のトポロジでは、データベース エンジンが同じ VM 上で実行されている必要があります。
 
 	詳細については、「[Reporting Services のアンインストール](https://msdn.microsoft.com/library/hh479745.aspx)」および「[Analysis Services のインスタンスをアンインストールする方法](https://msdn.microsoft.com/library/ms143687.aspx)」をご覧ください。
 
@@ -152,7 +152,7 @@ Microsoft Azure Virtual Machines を使用するデプロイの例を以下に�
 
 SQL Server の仮想マシン ギャラリー イメージには、Reporting Services ネイティブ モードがインストールされていますが、レポート サーバーは構成されていません。このセクションの手順では、Reporting Services レポート サーバーを構成します。Reporting Services ネイティブ モードの構成の詳細については、「[Reporting Services ネイティブ モードのレポート サーバーのインストール](https://msdn.microsoft.com/library/ms143711.aspx)」をご覧ください。
 
->[AZURE.NOTE]Windows PowerShell スクリプトを使用したレポート サーバーの構成に関する類似コンテンツについては、「[ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-sql-server-create-native-mode-report-server-powershell.md)」をご覧ください。
+>[AZURE.NOTE] Windows PowerShell スクリプトを使用したレポート サーバーの構成に関する類似コンテンツについては、「[ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-sql-server-create-native-mode-report-server-powershell.md)」をご覧ください。
 
 ### 仮想マシンへの接続と Reporting Services 構成マネージャーの起動
 
@@ -160,7 +160,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 - で接続するには、仮想マシンの名前をクリックし、**[接続]** をクリックします。リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
 
-	![connect to azure virtual machine](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
+	![Azure 仮想マシンに接続](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
 
 - Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
 
@@ -170,7 +170,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 		
 		Myservice.cloudapp.net:63133
 		
-		詳細については、「[What is a Cloud Service? (クラウド サービスとは)](http://www.windowsazure.com/manage/services/cloud-services/what-is-a-cloud-service/)」を参照してください。
+		詳細については、「[What is a Cloud Service? (クラウド サービスとは)](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/)」を参照してください。
 
 **Reporting Services 構成マネージャーを起動します。**
 
@@ -314,7 +314,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 または、C:\\SQLServer\_12.0\_full\\setup.exe か C:\\SQLServer\_11.0\_full\\setup.exe を実行します。
 
->[AZURE.NOTE]SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
+>[AZURE.NOTE] SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
 >
 >Microsoft Azure 仮想マシンから選択したイメージを何度もカスタマイズする必要がある場合は、独自の SQL Server イメージを作成することを検討してください。SQL Server 2012 SP1 CU2 で、Analysis Services SysPrep 機能が有効になりました。詳細については、「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」をご覧ください。
 
@@ -388,7 +388,9 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).| |**1433**|TCP|SQL Server Management Studio (*).| |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
+|**80**|TCP|レポート サーバー リモート アクセス (*).|
+|**1433**|TCP|SQL Server Management Studio (*).|
+|**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
 |**ユーザー定義**|TCP|選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。|
@@ -409,7 +411,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-- [Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/)
+- [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 - [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)
 
@@ -421,7 +423,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [多次元モデリング (Adventure Works チュートリアル)](https://technet.microsoft.com/library/ms170208.aspx)
 
-- [Azure ドキュメント センター](http://azure.microsoft.com/documentation/)
+- [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)
 
 - [Using Power BI in a Hybrid Environment (ハイブリッド環境での Power BI の使用)](https://msdn.microsoft.com/library/dn798994.aspx)
 
@@ -431,4 +433,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

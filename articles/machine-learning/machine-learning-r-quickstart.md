@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/08/2015"
+	ms.date="02/04/2016"
 	ms.author="larryfr"/>
 
 # Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -25,7 +25,7 @@ Stephen F Elston, Ph.D.
 
 このクイック スタート チュートリアルは、R プログラミング言語を使用した Azure Machine Learning の拡張を迅速に開始するのに役立ちます。この R プログラミング チュートリアルに従って作業することで、Azure Machine Learning 内で R コードを作成、テスト、実行することができます。チュートリアルでは、Azure Machine Learning で R 言語を使用し、包括的な予測ソリューションを作成します。
 
-Microsoft Azure Machine Learning には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。強力な R 言語は、分析の共通言語という特徴があります。幸いにも Azure Machine Learning の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Azure Machine Learning のデプロイのスケーラビリティを容易に高めることができます。
+Microsoft Azure Machine Learning には、多くの強力なマシン ラーニング モジュールとデータ操作モジュールが含まれています。強力な R 言語は、分析の共通言語という特徴があります。幸いにも Azure Machine Learning の分析とデータ操作は、R を使用して拡張できます。この組み合わせにより、R の柔軟性と深い分析を活用して、Azure Machine Learning のデプロイメントのスケーラビリティを容易に高めることができます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -238,13 +238,24 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 	source("src/yourfile.R") # Reads a zipped R script
 	load("src/yourData.rdata") # Reads a zipped R data file
 
-> [AZURE.NOTE]Azure Machine Learning は zip 内のファイルを、src/ ディレクトリに存在するように扱うため、このディレクトリ名をファイル名のプレフィックスにする必要があります。
+> [AZURE.NOTE] Azure Machine Learning は zip 内のファイルを、src/ ディレクトリに存在するように扱うため、このディレクトリ名をファイル名のプレフィックスにする必要があります。たとえば、zip のルートに `yourfile.R` と `yourData.rdata` というファイルが含まれている場合、`source` と `load` を使用するときに `src/yourfile.R` と `src/yourData.rdata` のようにアドレスを指定します。
 
 データセットの読み込みについては、既に[データセットの読み込み](#loading)で説明しました。前のセクションで示した R スクリプトを作成してテストした後は、次の作業を行います。
 
-1. R スクリプトを .R ファイルに保存します。このスクリプト ファイルの名前を "simpleplot.R" にします。  
+1. R スクリプトを .R ファイルに保存します。このスクリプト ファイルの名前を "simpleplot.R" にします。内容は次のとおりです。
 
-2.  zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。
+        ## Only one of the following two lines should be used
+        ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+        ## If in RStudio, use the second line with read.csv()
+        cadairydata <- maml.mapInputPort(1)
+        # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
+        str(cadairydata)
+        pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
+        ## The following line should be executed only when running in
+        ## Azure Machine Learning Studio
+        maml.mapOutputPort('cadairydata')
+
+2.  zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。Windows の場合、ファイルを右クリックし、__[送る]__、__[圧縮フォルダー]__ の順に選択します。この操作で、"simpleplot.R" ファイルを含む新しい zip ファイルが作成されます。
 
 3.	ファイルを、Machine Learning Studio の**データセット**に追加し、種類を **zip** に指定します。データセットに zip ファイルが表示されるようになります。
 
@@ -252,7 +263,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 5.	**zip データ** アイコンの出力を、[R スクリプトの実行][execute-r-script]モジュールの**スクリプト バンドル**入力に接続します。
 
-6.	[R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。たとえば、「`source("src/SimplePlot.R")`」と入力します。
+6.	[R スクリプトの実行][execute-r-script]モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。たとえば、「`source("src/simpleplot.R")`」と入力します。
 
 7.	必ず **[保存]** をクリックします。
 
@@ -279,7 +290,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
     [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
     [ModuleOutput] }
 
-ページをダブルクリックすると、追加のデータが読み込まれ、次のように表示されます。
+さらに下にスクロールすると、次のように列に関する詳細情報が表示されます。
 
 	[ModuleOutput] [1] "Loading variable port1..."
 	[ModuleOutput]
@@ -305,7 +316,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 これらの結果はほとんど予想どおりであり、228 個の記録と 9 個の列が含まれています。列の名前、R データの型、各列のサンプルが表示されています。
 
-> [AZURE.NOTE][R スクリプトの実行][execute-r-script]モジュールの R デバイス出力からは、出力された同じ内容を簡単に入手できます。次のセクションでは、[R スクリプトの実行][execute-r-script]モジュールの出力について説明します。
+> [AZURE.NOTE] [R スクリプトの実行][execute-r-script]モジュールの R デバイス出力からは、出力された同じ内容を簡単に入手できます。次のセクションでは、[R スクリプトの実行][execute-r-script]モジュールの出力について説明します。
 
 ####データセット 2
 
@@ -462,7 +473,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 このデータセットに適用する必要があるフィルター処理はわずかです。cadairydata データフレームの列を調べると、2 つの不要な列があるのがわかります。最初の列には行番号のみが含まれ、あまり役に立ちません。二番目の Year.Month 列には、重複する情報が含まれています。次の R コードを使用して、これらの列を簡単に除外できます。
 
-> [AZURE.NOTE]これからこのセクションで、[R スクリプトの実行][execute-r-script]モジュールに追加するコードを示します。`str()` 関数の**前**に、新しく各行を追加します。この関数を使用し、Azure Machine Learning Studio で結果を検証します。
+> [AZURE.NOTE] これからこのセクションで、[R スクリプトの実行][execute-r-script]モジュールに追加するコードを示します。`str()` 関数の**前**に、新しく各行を追加します。この関数を使用し、Azure Machine Learning Studio で結果を検証します。
 
 次の行を、[R スクリプトの実行][execute-r-script]モジュールの R コードに追加します。
 
@@ -598,7 +609,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 2. 各ケースで値 NA を返します。副作用がより少ないその他の選択肢も多数存在します。たとえば、ゼロ ベクトル、またはオリジナルの入力ベクトルを返すこともできます。
 
-3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`stop()` ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
+3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、 ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を `stop()` が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
 
 4. 例外が発生せず、処理が突然中断しないように、対数計算は `tryCatch()` の中に含まれています。`tryCatch()` を使用しない場合、R 関数により発生したほとんどのエラーは、停止信号になっていしまい、処理が中断します。
 
@@ -1309,7 +1320,7 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 - DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。https://www.datacamp.com/courses/introduction-to-r では R に関する対話型チュートリアルが無料で提供されています。  
 
-- Clarkson 大学のKelly Black 助教授による R クイック チュートリアル http://www.cyclismo.org/tutorial/R/
+- Clarkson 大学の Kelly Black 助教授による R クイック チュートリアル http://www.cyclismo.org/tutorial/R/
 
 - http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html には 60 以上の R に関するリソースが記載されています。
 
@@ -1347,4 +1358,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

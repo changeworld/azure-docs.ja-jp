@@ -1,28 +1,25 @@
 
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com)にログインし、画面の下部にある **[+新規]** をクリックします。
 
-2. **[App Services]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
+2. **[新規]**、**[Web + モバイル]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
 
-   	![](./media/notification-hubs-portal-create-new-hub/notification-hubs-create-from-portal.png)
+   	![Azure ポータル - 通知ハブを作成](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
 
-
-3. **通知ハブ名**を入力します。該当する**リージョン**と**サブスクリプション**を選択します。
+3. **[通知ハブ]** フィールドには必ず一意の名前を指定してください。**[リージョン]**、**[サブスクリプション]**、**[リソース グループ]** (既に 1 つ用意している場合) を選択します。
  
-	ハブの作成先となる Service Bus 名前空間が既に存在する場合は、その**名前空間名**を選択します。それ以外の場合、ハブ名に基づいて作成される既定の**名前空間名**を必要に応じて使用してください。
+	ハブを作成する Service Bus 名前空間を既に用意している場合、**[名前空間]** フィールドの **[既存項目の選択]** オプションでそれを選択します。Service Bus 名前空間がない場合、ハブ名に基づいて作成される既定の名前を利用できます。
 
-	**[新しい通知ハブを作成する]** をクリックします。
+	準備ができたら、**[作成]** をクリックします。
 
-   	![通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-create-from-portal2.png)
+   	![Azure ポータル - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. 名前空間と通知ハブが作成されると、Service Bus の名前空間が表示されます。前の手順で作成したハブの名前空間 (通常は ***通知ハブ名*-ns**) をクリックします。
+4. 名前空間と通知ハブが作成されたら、それぞれのポータル ページに移動します。
 
-5. 該当する名前空間ページで、上部にある **[Notification Hubs]** タブをクリックし、前の手順で作成した通知ハブをクリックします。これにより、新しい通知ハブのダッシュボードが開きます。
+   	![Azure ポータル - 通知ハブのポータル ページ](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
+       
+5. **[設定]** をクリックし、**[アクセス ポリシー]** をクリックします。2 つの接続文字列をメモします。これは後でプッシュ通知を処理する際に必要になります。
 
-6. 新しいハブのダッシュボードで、**[接続文字列の表示]** をクリックします。2 つの接続文字列をメモします。これらは、後で使用します。
+   	![Azure ポータル - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-   	![](./media/notification-hubs-portal-create-new-hub/notification-hubs-view-connection-strings.png)
-
-	![](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings.png)
-
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

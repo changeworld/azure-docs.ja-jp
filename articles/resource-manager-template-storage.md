@@ -1,6 +1,6 @@
 <properties
    pageTitle="ストレージのリソース マネージャー テンプレート | Microsoft Azure"
-   description="ストレージ アカウントのリソース マネージャーのスキーマを示しています。"
+   description="テンプレートを使ってストレージ アカウントをデプロイするためのリソース マネージャー スキーマを示します。"
    services="azure-resource-manager,storage"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/25/2015"
+   ms.date="01/04/2016"
    ms.author="tomfitz"/>
 
-# ストレージ アカウント - テンプレート スキーマ
+# ストレージ アカウント テンプレート スキーマ
 
 ストレージ アカウントを作成します。
 
@@ -41,17 +41,17 @@
 
 | 名前 | 型 | 必須 | 使用できる値 | 説明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| type | enum | あり | **Microsoft.Storage/storageAccounts** | 作成するリソースの種類。 |
-| apiVersion | enum | あり | **2015-06-15** <br /> **2015-05-01-preview** | リソースの作成に使用する API バージョン。 | 
-| name | string | あり | 3 ～ 24 文字、数字と小文字のみ | 作成するストレージ アカウントの名前。Azure 内で重複しない、一意の名前にしてください。次の例で示すように、名前付け規則では [uniqueString](resource-group-template-functions.md#uniquestring) 関数の使用を検討してください。 |
-| location | string | あり | 有効なリージョンを確認するには、[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)を参照します。 | ストレージ アカウントをホストするリージョン。 |
-| プロパティ | オブジェクト | あり | (下記参照) | 作成するストレージ アカウントの種類を指定するオブジェクト。
+| type | enum | はい | **Microsoft.Storage/storageAccounts** | 作成するリソースの種類。 |
+| apiVersion | enum | はい | **2015-06-15** <br /> **2015-05-01-preview** | リソースの作成に使用する API バージョン。 | 
+| name | string | はい | 3 ～ 24 文字、数字と小文字のみ | 作成するストレージ アカウントの名前。Azure 全体で重複しない、一意の名前にしてください。次の例で示すように、名前付け規則では [uniqueString](resource-group-template-functions.md#uniquestring) 関数の使用を検討してください。 |
+| location | string | はい | 有効なリージョンを確認するには、[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)を参照します。 | ストレージ アカウントをホストするリージョン。 |
+| properties | オブジェクト | はい | (下記参照) | 作成するストレージ アカウントの種類を指定するオブジェクト。
 
 ### プロパティ オブジェクト
 
 | 名前 | 型 | 必須 | 使用できる値 | 説明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| accountType | string | あり | **Standard\_LRS**<br />Standard\_ZRS<br />Standard\_GRS<br />Standard\_RAGRS<br />Premium\_LRS | ストレージ アカウントの種類。使用できる値は、標準のローカル冗長、標準のゾーン冗長、標準の地理冗長、標準の読み取りアクセス地理冗長、および Premium ローカル冗長に対応しています。これらのアカウントの種類については、「[Azure Storage のレプリケーション](./storage/storage-redundancy.md)」を参照してください。 |
+| accountType | string | はい | **Standard\_LRS**<br />Standard\_ZRS<br />Standard\_GRS<br />Standard\_RAGRS<br />Premium\_LRS | ストレージ アカウントの種類。使用できる値は、Standard ローカル冗長、Standard ゾーン冗長、Standard geo 冗長、Standard 読み取りアクセス geo 冗長、および Premium ローカル冗長に対応しています。これらのアカウントの種類については、「[Azure Storage のレプリケーション](./storage/storage-redundancy.md)」を参照してください。 |
 
 	
 ## 例
@@ -78,9 +78,22 @@
 	    "outputs": {}
     }
 
+## クイック スタート テンプレート
+
+ストレージ アカウントを含んだクイック スタート テンプレートは多数存在します。以下のテンプレートで、いくつかの一般的なシナリオを紹介しています。
+
+- [標準的なストレージ アカウントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create)
+- [Windows VM の単純なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+- [Linux VM の単純なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+- [ストレージ アカウントを配信元とする CDN プロファイルと CDN エンドポイントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-cdn-with-storage-account)
+- [9 つの VM から成る高可用性 SharePoint ファームを PowerShell DSC 拡張を使って作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-server-farm-ha)
+- [WAD を有効にした 5 ノードの安全な Service Fabric クラスターから成る単純なデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)
+- [4 つの空のデータ ディスクを使って Windows イメージから仮想マシンを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)
+
+
 ## 次のステップ
 
-- ストレージの一般情報については、「[Microsoft Azure Storage の概要](./storage/storage-introduction.md)」を参照してください。
-- Virtual Machine で新しいストレージ アカウントを使用するテンプレートの例については、「[単純な Linux VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-linux-vm/)」または「[単純な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)」を参照します。
+- Storage の一般情報については、「[Microsoft Azure Storage の概要](./storage/storage-introduction.md)」を参照してください。
+- 仮想マシンで新しいストレージ アカウントを使用するテンプレートの例については、「[単純な Linux VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-linux-vm/)」または「[単純な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)」を参照します。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0107_2016-->

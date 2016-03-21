@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.workload="tbd"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/17/2015"
+	ms.date="02/20/2016"
 	ms.author="robb"/>
 
 
@@ -43,7 +43,7 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 ### トレース リスナーを追加する
 
 1. ロールに応じて web.config または app.config ファイルを開きます。
-2. 次のコードを ファイルに追加します。
+2. 次のコードをファイルに追加します。Version 属性を変更して、参照するアセンブリのバージョン番号を使用します。Azure SDK の更新プログラムがある場合を除き、アセンブリのバージョンは Azure SDK のリリースごとに必ずしも変更されるわけではありません。
 
 	```
 	<system.diagnostics>
@@ -51,7 +51,7 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 			<listeners>
 				<add type="Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitorTraceListener,
 		          Microsoft.WindowsAzure.Diagnostics,
-		          Version=1.0.0.0,
+		          Version=2.8.0.0,
 		          Culture=neutral,
 		          PublicKeyToken=31bf3856ad364e35"
 		          name="AzureDiagnostics">
@@ -61,6 +61,8 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 		</trace>
 	</system.diagnostics>
 	```
+	>[AZURE.IMPORTANT] Microsoft.WindowsAzure.Diagnostics アセンブリへのプロジェクト参照があることを確認してください。参照先の Microsoft.WindowsAzure.Diagnostics アセンブリのバージョンと一致するように上記の xml のバージョン番号を更新します。
+
 3. 構成ファイルを保存します。
 
 リスナーの詳細については、「[トレース リスナー](https://msdn.microsoft.com/library/4y5y10s7.aspx)」を参照してください。
@@ -71,10 +73,11 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
 ### コードにトレース ステートメントを追加するには
 
 1. アプリケーション用のソース ファイルを開きます。たとえば、worker ロールまたは Web ロール用の <RoleName>.cs ファイルを開きます。
-2. 次の using ステートメントがまだ追加されていない場合は、追加します: ```
+2. 次の using ステートメントを追加します (まだ追加されていない場合)。
+	```
 	    using System.Diagnostics;
 	```
 3. Trace ステートメントを追加し、アプリケーションの状態に関する情報をキャプチャします。Trace ステートメントの出力は、さまざまな方法で書式設定できます。詳細については、「[トレース ステートメントをアプリケーション コードに追加する方法](https://msdn.microsoft.com/library/zd83saa2.aspx)」を参照してください。
 4. ソース ファイルを保存します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

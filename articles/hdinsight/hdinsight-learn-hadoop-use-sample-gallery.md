@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="10/29/2015"
+   ms.date="02/04/2016"
    ms.author="jgao"/>
 
 # HDInsight 概要ギャラリーを使用して Hadoop について説明する
@@ -40,12 +40,12 @@ HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケ�
 
 <center><a href="https://www.youtube.com/embed/7ePbHot1SN4">https://www.youtube.com/embed/7ePbHot1SN4></a></center>
 
-ダッシュボードには、http://<YourHDInsightClusterName>.azurehdinsight.net/ を参照するか、Azure プレビュー ポータルからアクセスできます。
+ダッシュボードには、http://<YourHDInsightClusterName>.azurehdinsight.net/ を参照してアクセスするか、Azure ポータルからアクセスできます。
 
 **概要ギャラリーからサンプルを実行するには**
 
-1. [Azure プレビュー ポータル][azure.portal]にサインインします。
-2. 左メニューから **[参照]** をクリックし、**[HDInsight クラスター]**、クラスター名の順にクリックします。
+1. [Azure ポータル][azure.portal]にサインインします。
+2. 左側のメニューから **[参照]** をクリックし、**[HDInsight クラスター]**、クラスター名の順にクリックします。
 3. 上部のメニューから **[ダッシュボード]** をクリックします。
 4. HTTP ユーザー (別名: クラスター ユーザー) のユーザー名とパスワードを入力します。
 6. ページの上部にある **[概要ギャラリー]** をクリックします。
@@ -68,4 +68,4 @@ HDInsight に関するその他の資料。
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

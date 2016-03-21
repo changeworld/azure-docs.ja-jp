@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na" 
  ms.devlang="dotnet" 
  ms.topic="article" 
- ms.date="08/04/2015" 
+ ms.date="12/04/2015" 
  ms.author="krisragh"/>
  
  
@@ -24,7 +24,7 @@ Azure プラットフォーム サービスのコアである Azure Scheduler �
 
 ### geo 冗長サービスのデプロイ
 
-Azure Scheduler は、現在 Azure が対応しているほとんどすべての geo リージョンで UI を介して利用できます。Azure Scheduler を使用できるリージョンの一覧については、[このページ](http://azure.microsoft.com/regions/#services)を参照してください。ホストされているリージョン内のデータ センターが使用不可と表示されている場合、Azure Scheduler のフェールオーバー機能により、他のデータ センターからそのサービスを利用できます。
+Azure Scheduler は、現在 Azure が対応しているほとんどすべての geo リージョンで UI を介して利用できます。Azure Scheduler を使用できるリージョンの一覧については、[このページ](https://azure.microsoft.com/regions/#services)を参照してください。ホストされているリージョン内のデータ センターが使用不可と表示されている場合、Azure Scheduler のフェールオーバー機能により、他のデータ センターからそのサービスを利用できます。
 
 ### geo リージョンのジョブ レプリケーション
 
@@ -61,24 +61,24 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 代替エンドポイントを構成する方法については、「[errorAction](scheduler-concepts-terms.md#action-and-erroraction)」を参照してください。
 
 ## 関連項目
- 
+
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
  
- [Scheduler Concepts, Terminology, and Entity Hierarchy (Scheduler の概念、用語集、エンティティ階層構造)](scheduler-concepts-terms.md)
- 
- [管理ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
- 
- [Plans and Billing in Azure Scheduler (Azure Scheduler のプランと課金)](scheduler-plans-billing.md)
- 
- [How to Build Complex Schedules and Advanced Recurrence with Azure Scheduler (Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法)](scheduler-advanced-complexity.md)
- 
- [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
- 
- [Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)](scheduler-powershell-reference.md)
- 
- [Scheduler の制限、規定値、エラー コード](scheduler-limits-defaults-errors.md)
- 
- [Scheduler 送信認証](scheduler-outbound-authentication.md)
+ [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+
+ [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
+
+ [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
+
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
+
+ [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+
+ [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
  
  
 [1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
@@ -87,4 +87,4 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

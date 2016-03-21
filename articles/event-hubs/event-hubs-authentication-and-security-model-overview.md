@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Event Hubs 認証とセキュリティ モデルの概要 | Microsoft Azure"
-   description="Event Hubs の FAQ"
+   description="Event Hubs の認証とセキュリティ モデルの概要"
    services="event-hubs"
    documentationCenter="na"
    authors="sethmanheim"
@@ -11,8 +11,8 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="10/07/2015"
+   ms.workload="na"
+   ms.date="01/26/2016"
    ms.author="sethm" />
 
 # Event Hubs の認証とセキュリティ モデルの概要
@@ -25,13 +25,13 @@ Event Hubs のセキュリティ モデルは、次の要件に対応します�
 
 ## デバイスの認証
 
-Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](service-bus-shared-access-signature-authentication.md) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
+Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](../service-bus/service-bus-shared-access-signature-authentication.md) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
 
 通常、Event Hub はデバイスごとに 1 つのパブリッシャーを使用します。Event Hub のパブリッシャーに送信されるすべてのメッセージは、その Event Hub 内でキューに格納されます。パブリッシャーは、きめの細かいアクセス制御と調整を行うことができます。
 
 各デバイスには、デバイスにアップロードされる一意のトークンが割り当てられます。一意のトークンは、異なる一意のパブリッシャーにアクセス権を与えるように生成されます。トークンを所有するデバイスは、1 つのパブリッシャーにのみ送信でき、それ以外のパブリッシャーには送信できません。複数のデバイスが同じトークンを共有する場合、これらのデバイスは 1 つのパブリッシャーを共有します。
 
-推奨されませんが、Event Hub への直接アクセスを許可するトークンをデバイスに割り当てることができます。このようなトークンを保持するデバイスは、Event Hub にメッセージを直接送信できます。このようなデバイスは調整の対象になりません。さらに、Event Hub への送信を禁止するブラックリストの対象にすることはできません。
+推奨されませんが、Event Hub への直接アクセスを許可するトークンをデバイスに割り当てることができます。このトークンを保持するデバイスは、Event Hub にメッセージを直接送信できます。このようなデバイスは調整の対象になりません。さらに、Event Hub への送信を禁止するブラックリストの対象にすることはできません。
 
 すべてのトークンは、SAS キーで署名されます。通常、すべてのトークンは、同じキーで署名されます。デバイスはキーを認識しません。これによって、デバイスがトークンを生成することを防いでいます。
 
@@ -50,7 +50,7 @@ Uri uri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, string.
 TokenProvider td = TokenProvider.CreateSharedAccessSignatureTokenProvider(namespaceManageKeyName, namespaceManageKey);
 NamespaceManager nm = new NamespaceManager(namespaceUri, namespaceManageTokenProvider);
 
-// Create Event Hub with a SAS rule that allows sending to that Event Hub.
+// Create Event hub with a SAS rule that allows sending to that Event hub
 EventHubDescription ed = new EventHubDescription("MY_EVENT_HUB") { PartitionCount = 32 };
 string eventHubSendKeyName = "EventHubSendKey";
 string eventHubSendKey = SharedAccessAuthorizationRule.GenerateRandomKey();
@@ -154,4 +154,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

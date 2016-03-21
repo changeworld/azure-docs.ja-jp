@@ -1,9 +1,9 @@
 
 <properties
-    pageTitle="Azure RemoteApp で Azure Active Directory テナントを変更する"
+    pageTitle="Azure RemoteApp で Azure Active Directory テナントを変更する | Microsoft Azure"
     description="Azure RemoteApp に関連付けられている Azure Active Directory テナントの変更方法について説明します。"
     services="remoteapp"
-    documentationCenter="" 
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="11/04/2015"
+    ms.date="02/05/2016"
     ms.author="elizapo" />
 
 
@@ -22,7 +22,7 @@
 
 Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユーザーのアクセスを許可します。Azure RemoteApp で使用可能な唯一の Azure AD テナントは、Azure サブスクリプションに関連付けられているテナントです。ポータルの **[設定]** ページで、関連付けられているサブスクリプションを確認できます。**[サブスクリプション]** タブの **[ディレクトリ]** 列に注目します。
 
-> [AZURE.NOTE]この変更を完了するには、まず、すべての Azure RemoteApp コレクションの既存の Azure Active Directory テナントからすべてのユーザーを削除します。これを行うには、Azure ポータルに移動し、**[Azure RemoteApp]** タブに進み、すべての Azure RemoteApp コレクションを開きます。**[ユーザー]** タブに進み、現在の Azure Active Directory テナントに属しているユーザーを削除します。すべての既存の Azure RemoteApp コレクションに対して繰り返します。この作業を行わないと、コレクションを作成またはパッチできません。
+> [AZURE.NOTE] この変更を完了するには、まず、すべての Azure RemoteApp コレクションの既存の Azure Active Directory テナントからすべてのユーザーを削除します。これを行うには、Azure ポータルに移動し、**[Azure RemoteApp]** タブに進み、すべての Azure RemoteApp コレクションを開きます。**[ユーザー]** タブに進み、現在の Azure Active Directory テナントに属しているユーザーを削除します。すべての既存の Azure RemoteApp コレクションに対して繰り返します。この作業を行わないと、コレクションを作成またはパッチできません。
 
 別のテナントを使用する場合は、この手順を使用して、サブスクリプションの関連付けを変更します。
 
@@ -37,8 +37,8 @@ Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユー�
 3. ポータルからサインアウトし、前の手順で指定した Microsoft アカウントを使用して再度サインインします。
 
 
-4. **[新規]、[ App Services]、[Active Directory]、[ディレクトリ]、[カスタム作成]** の順にクリックします。
-5. **[ディレクトリ]** の下で、**[既存のディレクトリの使用]** を選択します。これからサインアウトしなければならないので、**[サインアウトする準備ができました]** を選択します。 
+4. **[新規]、[App Services]、[Active Directory]、[ディレクトリ]、[カスタム作成]** の順にクリックします。
+5. **[ディレクトリ]** の下で、**[既存のディレクトリの使用]** を選択します。これからサインアウトしなければならないので、**[サインアウトする準備ができました]** を選択します。
 6. 追加するディレクトリのグローバル管理者としてポータルに再度サインインします。(グローバル管理者になっていなかった場合、サインインしてサインアウトした後にグローバル管理者になります。)
 7. サインインすると、サブスクリプションで既存の AD テナントを使用するか問われます。**[続行]** をクリックし、**[今すぐサインアウト]** をクリックします。
 5. 再度サインインし、**[設定] -> [サブスクリプション]** に戻ります。サブスクリプションを選択し、**[ディレクトリの編集]** をクリックします。使用する Azure AD テナントを選択します。
@@ -47,4 +47,4 @@ Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユー�
 
 これで新しい Azure AD テナントを使用し、Azure サブスクリプションへのアクセスを制御したり、Azure RemoteApp 内のユーザー アクセスを構成したりできます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

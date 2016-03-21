@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service で .NET クライアントから API アプリ使用する 
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -205,4 +207,4 @@ API アプリを呼び出すには、次の例のように、クライアント 
 API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

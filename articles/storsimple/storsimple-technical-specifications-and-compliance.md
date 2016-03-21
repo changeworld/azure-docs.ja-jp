@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
  <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="10/27/2015"
+   ms.date="01/20/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの技術的仕様とコンプライアンス
@@ -170,6 +170,6 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 ## 次のステップ
 
-StorSimple デバイスの仕様については、[StorSimple 8000 シリーズの仕様](http://storsimple.seagate.com/Specifications-8000)をダウンロードしてください。
+StorSimple デバイスをデータセンターにデプロイする準備ができました。詳細については、「[オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

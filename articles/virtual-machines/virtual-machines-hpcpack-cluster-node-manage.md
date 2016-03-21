@@ -13,7 +13,7 @@ ms.service="virtual-machines"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="09/28/2015"
+ ms.date="01/08/2016"
  ms.author="danlep"/>
 
 # Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
@@ -29,20 +29,21 @@ Azure VM で HPC Pack クラスターを作成した場合、クラスターに�
 
 * **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、従来 (サービス管理) のデプロイ モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
 
-* **Azure 管理証明書または発行設定ファイル** - ヘッド ノードで次のいずれかを行う必要があります。
+* **Azure 発行設定ファイルまたは管理証明書** - ヘッド ノードで次のいずれかを行う必要があります。
 
-    * **Azure 発行設定ファイルをインポートします**。これを行うには、ヘッド ノードで次の Azure PowerShell コマンドレットを実行します。 ```
-        Get-AzurePublishSettingsFile  
-Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
-        ```
+    * **Azure 発行設定ファイルをインポートします**。これを行うには、ヘッド ノードで次の Azure PowerShell コマンドレットを実行します。
+
+    ```
+    Get-AzurePublishSettingsFile
+
+    Import-AzurePublishSettingsFile –PublishSettingsFile <publish settings file>
+    ```
+
     * **ヘッド ノードで Azure 管理証明書を構成します**。.cer ファイルがある場合、それを CurrentUser\\My 証明書ストアにインポートし、Azure 環境 (either AzureCloud または AzureChinaCloud) に対して次の Azure PowerShell コマンドレットを実行します。
 
     ```
     Set-AzureSubscription -SubscriptionName <Sub Name> -SubscriptionId <Sub ID> -Certificate (Get-Item Cert:\CurrentUser\My<Cert Thrumbprint>) -Environment <AzureCloud | AzureChinaCloud>
     ```
-
-
-
 
 ## コンピューティング ノード VM の追加
 
@@ -59,7 +60,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 * **ServiceName** - 新しいコンピューティング ノード VM が追加されるクラウド サービスの名前。
 
-* **ImageName** - Azure VM イメージ名。これは Azure ポータルまたは Azure PowerShell コマンド **Get-AzureVMImage** から取得できます。このイメージは次の要件を満たしている必要があります。
+* **ImageName** - Azure VM イメージ名。これは Azure クラシック ポータルまたは Azure PowerShell コマンドレットの **Get-AzureVMImage** で取得できます。このイメージは次の要件を満たしている必要があります。
 
     1. Windows オペレーティング システムをインストールする必要があります。
 
@@ -73,13 +74,13 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
 * **DomainUserName** - ドメイン ユーザー名。これは新しい VM をドメインに追加するときに使用されます。
 
-* **DomainUserPassword*** ドメイン ユーザーのパスワード
+* **DomainUserPassword** - ドメイン ユーザーのパスワード。
 
-* **NodeNameSeries** (省略可能) - コンピューティング ノードの命名規則パターン。&lt;*Root\_Name*&gt;&lt;*Start\_Number*&gt;% の形式にする必要があります。たとえば、｢MyCN%10%｣は MyCN11 から始まる一連のコンピューティング ノード名を意味します。指定されていない場合、HPC クラスターに構成されているノード命名規則が使用されます。
+* **NodeNameSeries** (省略可能) - コンピューティング ノードの名前付けパターン。&lt;*Root\_Name*&gt;&lt;*Start\_Number*&gt;% の形式である必要があります。たとえば、｢MyCN%10%｣は MyCN11 から始まる一連のコンピューティング ノード名を意味します。指定されていない場合、HPC クラスターに構成されているノード命名規則が使用されます。
 
 ### 例
 
-次の例では、「hpccnimage1」という VM イメージを基盤として、「hpcservice1」というクラウド サービスに大型のコンピューティング ノード VM が 20 追加されます。
+次の例では、*hpccnimage1* という VM イメージに基づいて、*hpcservice1* というクラウド サービスに、サイズが Large のコンピューティング ノード VM を 20 個追加します。
 
 ```
 Add-HPCIaaSNode.ps1 –ServiceName hpcservice1 –ImageName hpccniamge1
@@ -102,9 +103,9 @@ Remove-HPCIaaSNode.ps1 -Node <Object> [-DeleteVHD] [-Force] [-Confirm] [<CommonP
 
 ### パラメーター
 
- * **Name** - 削除するクラスター ノードの名前。ワイルドカードを利用できます。パラメーター セット名は「Name」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
+* **Name** - 削除するクラスター ノードの名前。ワイルドカードを利用できます。パラメーター セット名は「Name」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
 
-* **Node** * 削除するノードの HpcNode オブジェクト。これは HPC PowerShell コマンドレットの [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx) から取得できます。パラメーター セット名は「Node」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
+* **Node** - 削除するノードの HpcNode オブジェクト。これは HPC PowerShell コマンドレットの [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx) で取得できます。パラメーター セット名は「Node」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
 
 * **DeleteVHD** (省略可能) - 削除される VM の関連ディスクの削除設定。
 
@@ -164,7 +165,7 @@ Stop-HPCIaaSNode.ps1 -Node <Object> [-Force] [<CommonParameters>]
 
 * **Name** - 停止するクラスター ノードの名前。ワイルドカードを利用できます。パラメーター セット名は「Name」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
 
-* **Node** - 停止するノードの HpcNode オブジェクト。これは HPC PowerShell コマンドレットの Get-HpcNode から取得できます。パラメーター セット名は「Node」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
+* **Node** - 停止するノードの HpcNode オブジェクト。これは HPC PowerShell コマンドレットの [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx) で取得できます。パラメーター セット名は「Node」です。「**Name**」パラメーターと「**Node**」パラメーターの両方を指定することはできません。
 
 * **Force** (省略可能) - 停止前に HPC ノードを強制的にオフラインにする設定。
 
@@ -176,6 +177,6 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 ## 次のステップ
 
-* クラスターのジョブやタスクの現在のワークロードに合わせ、Azure コンピューティング リソースを自動的に拡大縮小する方法については、「[HPC Pack クラスターの Azure コンピューティング リソースを拡大縮小する](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
+* クラスターのジョブやタスクの現在のワークロードに合わせて、クラスター ノードを自動的に拡大縮小する方法については、「[クラスター ワークロードに合わせ、HPC Pack クラスターで Azure コンピューティング リソースを自動的に拡大縮小する](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-kindle"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="11/04/2015"
+	ms.date="02/29/2016"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Kindle アプリ)
@@ -74,7 +74,7 @@
 
 ## アプリケーションの設定
 
-> [AZURE.NOTE]アプリケーションを作成する場合は、API レベル 17 以上を使用します。
+> [AZURE.NOTE] アプリケーションを作成する場合は、API レベル 17 以上を使用します。
 
 ADM ライブラリを Eclipse プロジェクトに追加します。
 
@@ -251,7 +251,7 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 2. エミュレーターで、上部からスワイプして **[設定]**、**[マイ アカウント]** の順にクリックし、有効な Amazon アカウントに登録します。
 3. Eclipse で、アプリを実行します。
 
-> [AZURE.NOTE]問題が発生した場合は、エミュレーター (またはデバイス) の時間を確認します。時刻値は正確である必要があります。Kindle エミュレーターの時刻を変更するには、Android SDK platform-tools ディレクトリで次のコマンドを実行します。
+> [AZURE.NOTE] 問題が発生した場合は、エミュレーター (またはデバイス) の時間を確認します。時刻値は正確である必要があります。Kindle エミュレーターの時刻を変更するには、Android SDK platform-tools ディレクトリで次のコマンドを実行します。
 
 		adb shell  date -s "yyyymmdd.hhmmss"
 
@@ -281,4 +281,4 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

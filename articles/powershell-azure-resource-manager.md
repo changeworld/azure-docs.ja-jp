@@ -12,8 +12,8 @@
 	ms.workload="multiple" 
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/16/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/17/2016" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
@@ -34,11 +34,9 @@ Azure リソース マネージャーでは、Azure リソースに関するま�
   + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
   
   + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
-- Azure PowerShell
+- Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
-
-このチュートリアルは、PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
+このチュートリアルは、PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。
 
 ## デプロイ対象
 
@@ -83,7 +81,7 @@ Azure リソース マネージャーでは、Azure リソースに関するま�
 
 ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
 
-Azure アカウントにログインするには、**Login-AzureRmAccount** コマンドレットを使用します。Azure PowerShell 1.0 Preview より前のバージョンでは、**Add-AzureAccount** コマンドを使用します。
+Azure アカウントにログインするには、**Login-AzureRmAccount** コマンドレットを使用します。
 
     PS C:\> Login-AzureRmAccount
 
@@ -91,7 +89,7 @@ Azure アカウントにログインするには、**Login-AzureRmAccount** コ�
 
 アカウント設定の有効期限が切れるため、ときどき更新する必要があります。アカウント設定を更新するには、**Login-AzureRmAccount** をもう一度実行します。
 
->[AZURE.NOTE]リソース マネージャー モジュールでは Login-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
+>[AZURE.NOTE] リソース マネージャー モジュールでは Login-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
 
 ## リソースの種類の場所を取得する
 
@@ -304,6 +302,9 @@ Web サイトなどの特定の種類のリソースについてサポートさ�
                 "name": "[variables('siteName')]",
                 "type": "Microsoft.Web/sites",
                 "location": "[resourceGroup().location]",
+                "tags": {
+                    "team": "webdev"
+                },
                 "dependsOn": [
                     "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
                 ],
@@ -340,7 +341,7 @@ Web サイトなどの特定の種類のリソースについてサポートさ�
 
     PS C:\> New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -TemplateFile c:\Azure\Templates\azuredeploy.json
 
-リソース グループとテンプレートの場所を指定します。テンプレートがローカルでない場合は、-TemplateUri パラメーターを使用してテンプレートの URI を指定できます。
+リソース グループとテンプレートの場所を指定します。テンプレートがローカルでない場合は、**-TemplateUri** パラメーターを使用してテンプレートの URI を指定できます。**-Mode** パラメーターを **Incremental** または **Complete** のいずれかに設定できます。既定では、リソース マネージャーはデプロイ中に増分更新を実行するため、**増分**が必要な場合に **-Mode** を設定する必要はありません。これらのデプロイ モード間の相違については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
 ###動的なテンプレート パラメーター
 
@@ -356,6 +357,8 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
     Supply values for the following parameters:
     (Type !? for Help.)
     administratorLoginPassword: ********
+
+テンプレートに、テンプレートをデプロイするコマンドに、パラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 コマンドを実行してリソースが作成されると、メッセージが返されます。最終的に、デプロイの結果が表示されます。
 
@@ -384,9 +387,9 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 
 - サブスクリプションのすべてのリソース グループを取得するには、**Get-AzureRmResourceGroup** コマンドレットを使用します。
 
-		PS C:\>Get-AzureRmResourceGroup
+		PS C:\> Get-AzureRmResourceGroup
 
-		ResourceGroupName : TestRG
+		ResourceGroupName : TestRG1
 		Location          : westus
 		ProvisioningState : Succeeded
 		Tags              :
@@ -394,21 +397,38 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 		
 		...
 
-- リソース グループのリソースを取得するには、**Get-AzureRmResource** コマンドレットとその ResourceGroupName パラメーターを使用します。パラメーターがない場合、Get-AzureRmResource は Azure サブスクリプション内のすべてのリソースを取得します。
+      特定のリソース グループだけを取得する場合は、**Name** パラメーターを指定します。
+      
+          PS C:\> Get-AzureRmResourceGroup -Name TestRG1
 
-		PS C:\> Get-AzureRmResource -ResourceGroupName TestRG1
+- リソース グループのリソースを取得するには、**Find-AzureRmResource** コマンドレットとその **ResourceGroupNameContains** パラメーターを使用します。パラメーターがない場合、Find-AzureRmResource は Azure サブスクリプション内のすべてのリソースを取得します。
+
+        PS C:\> Find-AzureRmResource -ResourceGroupNameContains TestRG1
 		
-		Name              : exampleserver
-                ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Sql/servers/tfserver10
-                ResourceName      : exampleserver
-                ResourceType      : Microsoft.Sql/servers
-                Kind              : v12.0
-                ResourceGroupName : TestRG1
-                Location          : westus
-                SubscriptionId    : {guid}
+        Name              : exampleserver
+        ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Sql/servers/tfserver10
+        ResourceName      : exampleserver
+        ResourceType      : Microsoft.Sql/servers
+        Kind              : v12.0
+        ResourceGroupName : TestRG1
+        Location          : westus
+        SubscriptionId    : {guid}
                 
-                ...
+        ...
 	        
+- 上記のテンプレートには、1 つのリソースにタグが含まれています。タグを使用して、サブスクリプションのリソースを論理的に整理できます。**Find-AzureRmResource** コマンドと **Find-AzureRmResourceGroup** コマンドを使用して、リソースをタグで照会します。
+
+        PS C:\> Find-AzureRmResource -TagName team
+
+        Name              : ExampleSiteuxq53xiz5etmq
+        ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Web/sites/ExampleSiteuxq53xiz5etmq
+        ResourceName      : ExampleSiteuxq53xiz5etmq
+        ResourceType      : Microsoft.Web/sites
+        ResourceGroupName : TestRG1
+        Location          : westus
+        SubscriptionId    : {guid}
+                
+      タグを使用して実行できることはほかにも多数あります。詳細については、[タグを使用した Azure リソースの整理](resource-group-using-tags.md)に関するページを参照してください。
 
 ## リソース グループへの追加
 
@@ -422,7 +442,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 
 - リソース グループからリソースを削除するには、**Remove-AzureRmResource** コマンドレットを使用します。このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
 
-	このコマンドは、TestRG リソース グループから TestSite Web サイトを削除します。
+	このコマンドは、TestRG1 リソース グループから TestSite Web サイトを削除します。
 
 		Remove-AzureRmResource -Name TestSite -ResourceGroupName TestRG1 -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01
 
@@ -443,4 +463,4 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./virtual-machines/resource-group-deploy-debug.md)」を参照してください。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

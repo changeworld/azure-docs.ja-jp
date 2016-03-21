@@ -13,11 +13,16 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="12/16/2015"
 	ms.author="krisragh;donnam"/>
 
 
 # Mobile Services でのオフライン データの同期との競合の処理
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
@@ -139,4 +144,4 @@
 [オフライン データの使用]: mobile-services-ios-get-started-offline-data.md
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

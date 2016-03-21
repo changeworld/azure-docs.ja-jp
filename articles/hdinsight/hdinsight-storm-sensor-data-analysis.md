@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
 HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー データを処理し、D3.js を使用して表示する方法を説明します。このドキュメントでは、Azure 仮想ネットワークを使用して、HDInsight の Storm を HDInsight の HBase に接続し、HBase にトポロジからのデータを保存する方法についても説明します。
 
-> [AZURE.NOTE]このドキュメントの情報は、HDInsight クラスター上の Windows ベースの Storm の使用に基づいています。HDInsight で Linux ベースの Storm から Azure Event Hub を操作する方法の詳細については、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、HDInsight クラスター上の Windows ベースの Storm の使用に基づいています。HDInsight で Linux ベースの Storm から Azure Event Hub を操作する方法の詳細については、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
 
 ## 前提条件
 
 * Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* [HDInsight クラスターでの Apache Storm](../hdinsight-storm-getting-started.md)
+* [HDInsight クラスターでの Apache Storm](hdinsight-apache-storm-tutorial-get-started.md)
 
 * [Node.js](http://nodejs.org/): Web ダッシュボードに使用され、Event Hub にセンサー データを送信するために使用します。
 
@@ -36,11 +36,11 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 * [Git](http://git-scm.com/)
 
-> [AZURE.NOTE]Java、JDK、Maven、Git は、[Chocolatey NuGet](http://chocolatey.org/) パッケージ マネージャーからも入手できます。
+> [AZURE.NOTE] Java、JDK、Maven、Git は、[Chocolatey NuGet](http://chocolatey.org/) パッケージ マネージャーからも入手できます。
 
 ## アーキテクチャ
 
-![architecture diagram](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
+![アーキテクチャ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/devicesarchitecture.png)
 
 この例は、次のコンポーネントで構成されています。
 
@@ -58,7 +58,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 	* [Socket.io](http://socket.io/) は Storm トポロジと Web サイト間のリアルタイムの通信に使用します。
 
-		> [AZURE.NOTE]これは実装の詳細になります。未加工の Websocket や SignalR など、すべての通信フレームワークを使用できます。
+		> [AZURE.NOTE] これは実装の詳細になります。未加工の Websocket や SignalR など、すべての通信フレームワークを使用できます。
 
 	* [D3.js](http://d3js.org/) は、Web サイトに送信されるデータのグラフ化に使用します。
 
@@ -68,9 +68,9 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 このトポロジのダイアグラムを次に示します。
 
-![topology diagram](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
+![トポロジ ダイアグラム](./media/hdinsight-storm-sensor-data-analysis/sensoranalysis.png)
 
-> [AZURE.NOTE]これは、トポロジの非常に簡略化されたビューです。実行時に、各コンポーネントのインスタンスは、読み取られている Event Hub のパーティションごとに作成されます。これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
+> [AZURE.NOTE] これは、トポロジの非常に簡略化されたビューです。実行時に、各コンポーネントのインスタンスは、読み取られている Event Hub のパーティションごとに作成されます。これらのインスタンスはクラスター内のノード間に配布され、次のようにデータはルーティングされます。
 >
 > * スパウトからパーサーへのデータは負荷分散されます。
 > * パーサーからダッシュボードと HBase (使用する場合) へのデータは、同じデバイスからのメッセージは、常に同じコンポーネントにフローされるようにデバイス ID によってグループ化されます。
@@ -87,13 +87,13 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 この例を使用する前に、Storm トポロジが読み取る Azure Event Hub を作成する必要があります。また、Event Hub からのデータの読み取りに使用されるコンポーネントは、クラスターでのみ使用できるため、HDInsight トポロジに Storm を作成する必要があります。
 
-> [AZURE.NOTE]Event Hub スパウトは、最終的には Maven から使用できます。
+> [AZURE.NOTE] Event Hub スパウトは、最終的には Maven から使用できます。
 
 ### Event Hub の構成
 
 Event Hub は、この例のデータ ソースです。新しい Event Hub を作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
 
 2. **[新しい Event Hub の追加]** ダイアログで **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。最後に、矢印をクリックして続行します。
 
@@ -113,7 +113,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### HDInsight クラスターに Storm を作成する
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
 2. 左側のウィンドウにある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
@@ -123,7 +123,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 5. このクラスターで使用する**データ ノード**の数に 1 を入力します。
 
-	> [AZURE.NOTE]この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
+	> [AZURE.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
 
 6. 管理者の**ユーザー名**と**パスワード**を入力し、矢印をクリックして続行します。
 
@@ -155,7 +155,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 			dashboard/ - this is the node.js web dashboard
 			SendEvents/ - utilities to send fake sensor data
 
-> [AZURE.NOTE]このドキュメントでは、このサンプルに含まれるコードの詳細については説明していませんが、コードは完全にコメント化されています。
+> [AZURE.NOTE] このドキュメントでは、このサンプルに含まれるコードの詳細については説明していませんが、コードは完全にコメント化されています。
 
 **Config.properties** ファイルを開き、Event Hub を作成するときに使用した以前の情報を追加します。この情報を追加したら、ファイルを保存します。
 
@@ -202,7 +202,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### データの生成を開始する
 
-> [AZURE.NOTE]このセクションの手順では、任意のプラットフォームで実行できるように、Node.js を使用します。その他の言語の例については、**Sendevent** ディレクトリをご覧ください。
+> [AZURE.NOTE] このセクションの手順では、任意のプラットフォームで実行できるように、Node.js を使用します。その他の言語の例については、**Sendevent** ディレクトリをご覧ください。
 
 
 1. 新しいコマンド プロンプトかターミナルを開き、ディレクトリを **hdinsight-eventhub-example/SendEvents/nodejs** に変更し、次のコマンドを使用して、アプリケーションで必要な依存関係をインストールします。
@@ -256,9 +256,9 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 ### Web サイトのダッシュボードを発行する
 
-1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
+1. Azure Web サイトにダッシュボードをデプロイするには、「[Node.js Web サイトの構築と Azure へのデプロイ](../app-service-web/web-sites-nodejs-develop-deploy-mac.md)」の手順に従います。Web サイトの URL が、**mywebsite.azurewebsites.net** のようになることに注意してください。
 
-2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
+2. Web サイトが作成されたら、Azure クラシック ポータル内のサイトに移動して、**[構成]** タブを選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
 2. **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts\\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
 
@@ -288,7 +288,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 この例で HBase を使用する場合は、HDInsight クラスター上の Storm と HDInsight クラスター上の HBase を格納する Azure Virtual Network を作成する必要があります。
 
-1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. ページ下部で、**[+ 新規]** > **[Network Services]** > **[Virtual Network]** > **[簡易作成]** をクリックします。
 
@@ -316,7 +316,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 9. ページの下部に示される既定のサブネット名は、**Subnet-1** です。**[サブネットの追加]** をクリックして「**Subnet-2**」を追加します。これらのサブネットには、Storm クラスターと HBase クラスターが収容されます。
 
-	> [AZURE.NOTE]この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、worker ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイは失敗します。
+	> [AZURE.NOTE] この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、worker ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイは失敗します。
 	>
 	> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
@@ -324,7 +324,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 ### 仮想ネットワークに Storm クラスターと HBase クラスターを作成します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
 2. 左側のウィンドウにある **[HDInsight]** をクリックし、ページの左下隅にある **[+ 新規]** をクリックします。
 
@@ -334,7 +334,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 5. このクラスターで使用する**データ ノード**の数に 1 を入力します。**[リージョン/仮想ネットワーク]** に、先ほど作成した Azure Virtual Network を選択します。**[仮想ネットワーク サブネット]** に **Subnet-1** を選択します。
 
-	> [AZURE.NOTE]この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
+	> [AZURE.NOTE] この記事で使用するクラスターのコストを最小限に抑えるには、**クラスター サイズ**を 1 に削減し、使用終了後にクラスターを削除します。
 
 6. 管理者の **[ユーザー名]** と **[パスワード]** を入力し、矢印を選択して続行します。
 
@@ -377,7 +377,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 	これで、HBase ボルトが有効になります。
 
-	> [AZURE.NOTE]HBase ボルトは、ローカルでテストしている場合ではなく、Storm クラスターにデプロイしている場合にのみ有効にする必要があります。
+	> [AZURE.NOTE] HBase ボルトは、ローカルでテストしている場合ではなく、Storm クラスターにデプロイしている場合にのみ有効にする必要があります。
 
 ### HBase データと Storm データ
 
@@ -422,4 +422,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

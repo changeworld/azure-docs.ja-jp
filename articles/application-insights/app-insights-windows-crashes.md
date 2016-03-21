@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
+	ms.date="11/21/2015" 
 	ms.author="awills"/>
 
 # Application Insights による Windows ストア アプリと Windows Phone アプリでのクラッシュの検出と診断
@@ -102,4 +102,4 @@
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

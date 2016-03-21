@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="01/19/2016"
 	ms.author="jolevy"/>
 
 
@@ -24,7 +24,7 @@
 
 ## Azure Automation とは
 
-[Azure Automation](http://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して実行時間の長いタスク、手動タスク、エラーが発生しやすいタスク、頻繁に繰り返されるタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮することができます。
+[Azure Automation](https://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して実行時間の長いタスク、手動タスク、エラーが発生しやすいタスク、頻繁に繰り返されるタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮することができます。
 
 Azure Automation は、組織の拡大に伴って変化するニーズに対応可能な、信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
 
@@ -40,7 +40,9 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure クラウド サービスを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
-[Azure Automation の使用](../automation/automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+- [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
+- [初めての Runbook](../automation/automation-first-runbook-graphical.md)
+- [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

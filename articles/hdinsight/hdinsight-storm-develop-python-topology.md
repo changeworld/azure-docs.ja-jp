@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/08/2015"
+   ms.date="02/01/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -25,6 +25,8 @@ Apache Storm では複数の言語がサポートされています。これに�
 * Python 2.7 以上
 
 * Java JDK 1.7 以上
+
+* [Leiningen](http://leiningen.org/)
 
 ##Storm の複数言語サポート
 
@@ -54,7 +56,7 @@ __storm.py__ モジュールを使用して、データを使用する Python �
 
 ##Java トポロジを使用する Python コンポーネント
 
-> [AZURE.NOTE]この例は、__JavaTopology__ ディレクトリの https://github.com/Blackmist/hdinsight-python-storm-wordcount で参照できます。これは Maven ベースのプロジェクトです。Maven に慣れていない場合は、Storm トポロジの Maven プロジェクトの作成の詳細について、[HDInsight での Apache Storm を使用する Java ベース トポロジの開発](hdinsight-storm-develop-java-topology.md)に関するページを参照してください。
+> [AZURE.NOTE] この例は、__JavaTopology__ ディレクトリの [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) にあります。これは Maven ベースのプロジェクトです。Maven に慣れていない場合は、Storm トポロジの Maven プロジェクトの作成の詳細について、[HDInsight での Apache Storm を使用する Java ベース トポロジの開発](hdinsight-storm-develop-java-topology.md)に関するページを参照してください。
 
 Python (または他の JVM 言語コンポーネント) を使用する Java ベース トポロジは最初は Java コンポーネントを使用しているように思えますが、各 Java スパウト/ボルトを見ると、コードは次のようになっています。
 
@@ -70,7 +72,7 @@ Python (または他の JVM 言語コンポーネント) を使用する Java �
 
 これには、このプロジェクトから構築される jar の `/multilang` フォルダー内のファイルがすべて含まれます。
 
-> [AZURE.IMPORTANT]ここでは、`/multilang/resources` ではなく、`/multilang` ディレクトリのみが指定されることに注意してください。Storm には `resources` ディレクトリの JVM 以外のリソースが必要であるため、内部的に既に検索されています。このフォルダーにコンポーネントを配置することで、Java コードでは名前での参照のみが可能になります。たとえば、「`super("python", "countbolt.py");`」のように入力します。考えてみると、Storm が多言語リソースへのアクセス時に `resources` ディレクトリをルート (/) と見なすようにする別の方法もあります。
+> [AZURE.IMPORTANT] ここでは、`/multilang/resources` ではなく、`/multilang` ディレクトリのみが指定されることに注意してください。Storm には `resources` ディレクトリの JVM 以外のリソースが必要であるため、内部的に既に検索されています。このフォルダーにコンポーネントを配置することで、Java コードでは名前での参照のみが可能になります。たとえば、「`super("python", "countbolt.py");`」のように入力します。考えてみると、Storm が多言語リソースへのアクセス時に `resources` ディレクトリをルート (/) と見なすようにする別の方法もあります。
 >
 > このプロジェクト例の場合、`storm.py` モジュールは `/multilang/resources` ディレクトリに含まれます。
 
@@ -106,11 +108,11 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 
         最後に、__[送信]__ を選択してトポロジを開始します。
 
-> [AZURE.NOTE]Storm トポロジは、開始すると停止 (強制終了) するまで実行されます。 トポロジを停止するには、コマンドラインから `storm kill TOPOLOGYNAME` コマンドを使用するか (Linux クラスターへの SSH セッションなどの場合)、Storm UI を使用して、トポロジを選択してから __[強制終了]__ ボタンをクリックします。
+> [AZURE.NOTE] Storm トポロジは、開始すると停止 (強制終了) するまで実行されます。 トポロジを停止するには、コマンドラインから `storm kill TOPOLOGYNAME` コマンドを使用するか (Linux クラスターへの SSH セッションなどの場合)、Storm UI を使用して、トポロジを選択してから __[強制終了]__ ボタンをクリックします。
 
 ##Clojure トポロジを使用する Python コンポーネント
 
-> [AZURE.NOTE]この例は、__ClojureTopology__ ディレクトリの https://github.com/Blackmist/hdinsight-python-storm-wordcount で参照できます。
+> [AZURE.NOTE] この例は、__ClojureTopology__ ディレクトリの [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) にあります。
 
 このトポロジは、[新しい Clojure プロジェクトを作成](https://github.com/technomancy/leiningen/blob/stable/doc/TUTORIAL.md#creating-a-project)するための [Leiningen](http://leiningen.org) を使用して作成されたものです。その後、スキャフォールディングされたプロジェクトには次の変更が加えられました。
 
@@ -165,7 +167,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 
             最後に、__[送信]__ を選択してトポロジを開始します。
 
-> [AZURE.NOTE]Storm トポロジは、開始すると停止 (強制終了) するまで実行されます。 トポロジを停止するには、コマンドラインから `storm kill TOPOLOGYNAME` コマンドを使用するか (Linux クラスターへの SSH セッション)、Storm UI を使用して、トポロジを選択してから __[強制終了]__ ボタンをクリックします。
+> [AZURE.NOTE] Storm トポロジは、開始すると停止 (強制終了) するまで実行されます。 トポロジを停止するには、コマンドラインから `storm kill TOPOLOGYNAME` コマンドを使用するか (Linux クラスターへの SSH セッション)、Storm UI を使用して、トポロジを選択してから __[強制終了]__ ボタンをクリックします。
 
 ##Pyleus フレームワーク
 
@@ -175,7 +177,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 * __MessagePack ベースのシリアライザー__: JSON の代わりに、既定のシリアル化として MessagePack が使用されます。これにより、コンポーネント間でより速くメッセージングを行うことができます。
 * __依存関係の管理__: Virtualenv を使用することで、Python の依存関係がすべての worker ノードに確実にデプロイされるようになります。これには、Virtualenv を worker ノードにインストールする必要があります。
 
-> [AZURE.IMPORTANT]Pyleus では、開発環境に Storm が必要です。基本的な Apache Storm 0.9.3 ディストリビューションを使用すると、HDInsight で提供されるバージョンの Storm と jar の互換性がなくなるようです。したがって、次の手順では、開発環境として HDInsight クラスターを使用します。
+> [AZURE.IMPORTANT] Pyleus では、開発環境に Storm が必要です。基本的な Apache Storm 0.9.3 ディストリビューションを使用すると、HDInsight で提供されるバージョンの Storm と jar の互換性がなくなるようです。したがって、次の手順では、開発環境として HDInsight クラスターを使用します。
 
 ビルド環境として HDInsight ヘッド ノードを使用することで、例の Pyleus トポロジを正常にビルドできます。
 
@@ -184,7 +186,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
     * __名前__: ここには単にわかりやすい名前を指定します。
     * \_\_ スクリプト URI\_\_: 値として `https://hditutorialdata.blob.core.windows.net/customizecluster/pythonvirtualenv.sh` を使用します。このスクリプトは、ノードに Python Virtualenv をインストールします。
     
-        > [AZURE.NOTE]このドキュメントの後述の Streamparse フレームワークで使用されるいくつかのディレクトリも作成されます。
+        > [AZURE.NOTE] このドキュメントの後述の Streamparse フレームワークで使用されるいくつかのディレクトリも作成されます。
         
     * __Nimbus__: この項目をオンにすると、スクリプトが Nimbus (ヘッド) ノードに適用されるようになります。
     * __Supervisor__: この項目をオンにすると、スクリプトが Supervisor (worker) ノードに適用されるようになります。
@@ -230,7 +232,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 * __依存関係の管理__: Virtualenv を使用することで、Python の依存関係がすべての worker ノードに確実にデプロイされるようになります。これには、Virtualenv を worker ノードにインストールする必要があります。
 * __リモート デプロイメント__: Streamparse は SSH オートメーションを使用して worker ノードにコンポーネントをデプロイすることができ、Nimbus と通信するために SSH トンネルを作成できます。したがって、開発環境から HDInsight などの Linux ベース クラスターに簡単にデプロイできます。
 
-> [AZURE.IMPORTANT]Streamparse は、Windows では使用できない [Unix 信号](https://en.wikipedia.org/wiki/Unix_signal)を予期するコンポーネントに依存します。開発環境は Linux、Unix、または OS X である必要があり、HDInsight クラスターは Linux ベースである必要があります。
+> [AZURE.IMPORTANT] Streamparse は、Windows では使用できない [Unix 信号](https://en.wikipedia.org/wiki/Unix_signal)を予期するコンポーネントに依存します。開発環境は Linux、Unix、または OS X である必要があり、HDInsight クラスターは Linux ベースである必要があります。
 
 1. HDInsight クラスター上に新しい Storm をプロビジョニングする場合、Python Virtualenv がクラスター ノード上に存在することを確認する必要があります。新しい Linux ベースの HDInsight クラスターを作成する場合は、[クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster.md)で次のスクリプト アクション設定を使用します。
 
@@ -241,7 +243,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
     
     その他の項目は空白のままにします。
     
-    > [AZURE.WARNING]Streamparse を使用してリモートでデプロイするには、__公開キー__を使用して、HDInsight クラスターの SSH ユーザーをセキュリティで保護する必要もあります。
+    > [AZURE.WARNING] Streamparse を使用してリモートでデプロイするには、__公開キー__を使用して、HDInsight クラスターの SSH ユーザーをセキュリティで保護する必要もあります。
     >
     > HDInsight での SSH キーの使用について詳しくは、次のいずれかのドキュメントを参照してください。
     >
@@ -304,7 +306,7 @@ Linux ベースの HDInsight クラスターが作成されたら、次の手順
     
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
     
-    > [AZURE.NOTE]完全なパスは、使用するオペレーティング システムに応じて異なる場合があります。たとえば、OS X では、パスは `/private/tmp/com.apple.launchd.vq2rfuxaso/Listeners` のようになる場合があります。ただし、エージェントが実行されている場合はいくつかのパスが返されます。
+    > [AZURE.NOTE] 完全なパスは、使用するオペレーティング システムに応じて異なる場合があります。たとえば、OS X では、パスは `/private/tmp/com.apple.launchd.vq2rfuxaso/Listeners` のようになる場合があります。ただし、エージェントが実行されている場合はいくつかのパスが返されます。
     
     何も返されない場合は、`ssh-agent` コマンドを使用して、エージェントを開始します。
     
@@ -345,4 +347,4 @@ Linux ベースの HDInsight クラスターが作成されたら、次の手順
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

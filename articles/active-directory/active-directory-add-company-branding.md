@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/30/2015" 
+	ms.date="02/12/2016" 
 	ms.author="MarkVi"/>
 
 # サインイン ページとアクセス パネル ページに対する会社のブランドの追加
@@ -21,7 +21,7 @@
 > [AZURE.NOTE]
 >
 - 会社のブランド化は、Azure Active Directory の Premium または Basic エディションにアップグレードする場合にのみ使用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-- Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
+- Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 多くの企業は、管理するすべての Web サイトとサービスに一貫したルック アンド フィールを適用することを希望しています。このようにすると、エンド ユーザーは、その企業のサイトを利用するたびに、混乱することはありません。Azure Active Directory ではこの機能を提供し、エンド ユーザーに直接表示される次の Web ページの外観をカスタマイズし、ロゴとカラー スキームに会社のロゴを含めることができます。
 
@@ -80,7 +80,8 @@
 大きな図および背景色 | ページの左側に表示されます。ユーザーがサインインする目的のサイトに通常表示される画像を置き換えます。背景色は、低帯域幅接続、または非常に狭い画面上では、大きな図の代わりに表示される可能性があります。
 サインイン ページのテキスト | ユーザーが職場または学校のアカウントを使用してサインインする前に、ユーザーに有用な情報を伝える必要がある場合に、ページ フッターの上に表示されます。たとえば、ヘルプ デスクへの電話番号や法的声明を記載できます。
 
-> [AZURE.NOTE]すべての要素は省略できます。たとえば、バナー ロゴを指定して、大きな図を指定しない場合、サインイン ページには、ロゴと目的のサイト (つまり、Office 365 のカリフォルニア幹線道路の画像) 用の図が表示されます。
+> [AZURE.NOTE]
+すべての要素は省略できます。たとえば、バナー ロゴを指定して、大きな図を指定しない場合、サインイン ページには、ロゴと目的のサイト (つまり、Office 365 のカリフォルニア幹線道路の画像) 用の図が表示されます。
 
 このページのすべての要素をローカライズすることもできます。カスタマイズ可能な要素の「既定」のセットを構成した後は、さまざまなロケールに対して追加のバージョンを構成できます。さまざまな要素を混在させたり、一致させたりすることもできます。たとえば、次のようなことができます。
 
@@ -185,4 +186,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

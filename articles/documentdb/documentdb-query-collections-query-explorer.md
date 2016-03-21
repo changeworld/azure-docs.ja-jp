@@ -1,81 +1,82 @@
-<properties 
-	pageTitle="クエリ エクスプローラーを使用した、DocumentDB コレクションに対する SQL クエリの作成、編集、実行 | Microsoft Azure" 
-	description="DocumentDB クエリ エクスプローラーについて説明します。これは、DocumentDB コレクションに対して SQL クエリを作成、編集、実行する Azure プレビュー ポータル ツールです。" 
-	services="documentdb" 
-	authors="AndrewHoh" 
-	manager="jhubbard" 
-	editor="monicar" 
+<properties
+	pageTitle="DocumentDB クエリ エクスプローラー: SQL クエリ エディター |Microsoft Azure"
+	description="DocumentDB クエリ エクスプローラーについて説明します。これは、SQL クエリを作成して NoSQL DocumentDB コレクションに対して実行するための、Azure ポータルの SQL クエリ エディターです。"
+	keywords="SQL クエリの記述, SQL クエリ エディター"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/08/2015" 
+	ms.date="02/23/2016"
 	ms.author="anhoh"/>
 
-# クエリ エクスプローラーを使用した、DocumentDB コレクションに対する SQL クエリの作成、編集、実行 #
+# クエリ エクスプローラーを使用して DocumentDB に対する SQL クエリを作成、編集、実行する 
 
-この記事では、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) クエリ エクスプローラーの概要について説明します。これは、DocumentDB コレクションに対するクエリを作成、編集、実行できる Microsoft Azure プレビュー ポータル ツールです。
+この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) クエリ エクスプローラーの概要について説明します。これは、[DocumentDB コレクション](documentdb-create-collection)に対する SQL クエリを作成、編集、実行できる Azure ポータルのツールです。
 
-このチュートリアルを完了すると、次の質問に回答できるようになります。
+1. Azure ポータルで、ジャンプバーの **[DocumentDB アカウント]** をクリックします。**[DocumentDB アカウント]** が表示されない場合は、**[参照]** をクリックし、**[DocumentDB アカウント]** をクリックします。
 
--	Web ブラウザーを使用して DocumentDB コレクションに対するクエリを簡単に作成、編集、実行するにはどうすればよいか。
--	Web ブラウザーを使用して DocumentDB のクエリ結果ページ間を簡単に移動するにはどうすればよいか。
--	DocumentDB クエリの構文エラーをトラブルシューティングするにはどうすればよいか。 
+2. **[DocumentDB アカウント]** ブレードの上部にある **[クエリ エクスプローラー]** をクリックします。
 
-##<a id="Launch"></a>クエリ エクスプローラーの起動と移動##
+	![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
 
-クエリ エクスプローラーは、DocumentDB のアカウント、データベース、コレクションのいずれかのブレードから起動することができます。
-  
-1. DocumentDB アカウントまたはデータベース ブレードの上部で、**クエリ エクスプローラー** コマンドをクリックします。
+    >[AZURE.NOTE] クエリ エクスプローラーは、データベース ブレードとコレクション ブレードにも表示されます。
 
-	![クエリ エクスプローラー コマンドのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
+3. **[クエリ エクスプローラー]** ブレードで、ドロップダウン リストから、クエリの対象となる**データベース**と**コレクション**を選択し、実行するクエリを入力します。
 
-2. または、各ブレードの下部には **[開発者ツール]** レンズがあり、その中に **[クエリ エクスプローラー]** タイルがあります。
-	
-	![クエリ エクスプローラーのパーツのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryexplorerpart.png)
+    **[データベース]** と **[コレクション]** の各ドロップダウン リストには、クエリ エクスプローラーを起動したコンテキストに応じて値が設定されています。
 
-2. このタイルをクリックすると、クエリ エクスプローラーが起動します。
+    既定のクエリ `SELECT TOP 100 * FROM c` が表示されています。既定のクエリをそのまま使用することも、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)または「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」で説明されている SQL クエリ言語を使用して独自のクエリを作成することもできます。
 
-	**[データベース]** と **[コレクション]** の各ドロップダウン リスト ボックスには、クエリ エクスプローラーを起動したコンテキストに応じて値が設定されています。たとえば、データベース ブレードから起動した場合には、現在のデータベースが設定されます。コレクション ブレードから起動した場合には、現在のコレクションが設定されます。
+    **[クエリの実行]** をクリックして、結果を表示します。
 
-	![クエリ エクスプローラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
+	![Screenshot of writing SQL queries in Query Explorer, a SQL query editor](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
 
-##<a id="Create"></a>クエリ エクスプローラーを使用したクエリの作成、編集、実行##
+4. **[結果]** ブレードには、クエリの出力が表示されます。
 
-クエリ エクスプローラーを使用すると、DocumentDB コレクションに対するクエリを簡単に作成、編集、実行することができ、基本的なキーワードや値を含めて強調表示できるので、クエリの作成エクスペリエンスが向上します。
+	![Screenshot of results of writing SQL queries in Query Explorer](./media/documentdb-query-collections-query-explorer/queryresults1.png)
 
-- 最初にクエリ エクスプローラーを開くと、既定のクエリ SELECT * FROM 句が表示されます。既定のクエリをそのまま使用するか、独自のクエリを作成して、**[クエリの実行]** ボタンをクリックすると、結果が表示されます。「[DocumentDB のクエリ](documentdb-sql-query.md)」で説明されているように、クエリ エクスプローラーは DocumentDB SQL クエリ言語をサポートしています。
+## 結果を操作する
 
-	![クエリ エクスプローラーのクエリ結果のスクリーンショット](./media/documentdb-query-collections-query-explorer/queryresults1.png)
+既定では、クエリ エクスプローラーは 100 個ずつ結果を返します。クエリの結果が 100 個を超える場合は、**[次のページ]** と **[前のページ]** のコマンドを使用して結果セット間を移動できます。
 
-- また、複数のクエリを入力し、実行するクエリを強調表示して **[クエリの実行]** ボタンをクリックすると、結果が表示されます。
+![クエリ エクスプローラーの改ページ位置の自動調整のサポート](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
 
-	![クエリ エクスプローラーの強調表示と実行のスクリーンショット](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
+クエリが成功すると、**[情報]** ウィンドウに、要求の課金、クエリによって生じるラウンド トリップの数、現在表示されている結果のセット、より多くの結果があるかどうか、などのメトリックが表示されます。これらには、先ほど説明したように、**[次のページ]** コマンドを使用してアクセスすることができます。
 
-- **[ファイルの読み込み]** コマンドを使用して、既存のファイルの内容を読み込むことができます。
+![クエリ エクスプローラーのクエリ情報のスクリーンショット](./media/documentdb-query-collections-query-explorer/queryinformation.png)
 
-	![クエリ エクスプローラーの [ファイルの読み込み] のスクリーンショット](./media/documentdb-query-collections-query-explorer/loadqueryfile.png)
+## 複数のクエリを使用する
 
-- 既定では、クエリ エクスプローラーは 100 個ずつ結果を返します。クエリの結果が 100 個を超える場合は、**[次のページ]** と **[前のページ]** のコマンドを使用して結果セット間を移動できます。
+複数のクエリを使用していて、それらをすばやく切り替えたい場合は、**[クエリ エクスプローラー]** ブレードのクエリ テキスト ボックスにすべてのクエリを入力します。その後、実行するクエリを強調表示して **[クエリの実行]** をクリックすると、結果が表示されます。
 
-	![クエリ エクスプローラーの改ページ位置の自動調整のサポート](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
+![Screenshot of writing multiple SQL queries in Query Explorer (a SQL query editor) and highlighting and running individual queries](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
 
-- クエリが成功すると、ここに示すように、要求の課金などの情報が表示されます。さらに多くの結果がある場合は、先ほど説明したように **[次のページ]** コマンドを使用してアクセスすることができます。
+## ファイルから SQL クエリ エディターにクエリを追加する
 
-	![クエリ エクスプローラーのクエリ情報のスクリーンショット](./media/documentdb-query-collections-query-explorer/queryinformation.png)
+**[ファイルの読み込み]** コマンドを使用して、既存のファイルの内容を読み込むことができます。
 
-- 同様に、クエリがエラーになった場合には、トラブルシューティングに役立つようなエラーの一覧がクエリ エクスプローラーに表示されます。
+![Screenshot showing how to load SQL queries from a file into Query Explorer using Load File](./media/documentdb-query-collections-query-explorer/loadqueryfile.png)
 
-	![クエリ エクスプローラーのクエリ エラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryerror.png)
+## トラブルシューティング
 
-##<a name="NextSteps"></a>次のステップ
+クエリがエラーになった場合には、トラブルシューティングに役立つようなエラーの一覧がクエリ エクスプローラーに表示されます。
 
-- DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
-- クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](documentdb-sql-query.md)をクリックしてください。
- 
+![クエリ エクスプローラーのクエリ エラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
-<!---HONumber=Oct15_HO4-->
+## ポータル以外で DocumentDB SQL クエリを実行する
+
+Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。他の方法の詳細については、「[SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)」を参照してください。
+
+## 次のステップ
+
+クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。また、[Query Playground](https://www.documentdb.com/sql/demo)で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
+
+<!---HONumber=AcomDC_0224_2016-->

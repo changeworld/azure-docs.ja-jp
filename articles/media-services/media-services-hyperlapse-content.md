@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/19/2015"   
+	ms.date="02/12/2015"   
 	ms.author="adsolank"/>
 
 
@@ -21,16 +21,16 @@
 
 Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成するメディア プロセッサ (MP) です。[Microsoft Research のデスクトップ版 Hyperlapse Pro および電話ベースの Hyperlapse Mobile](http://aka.ms/hyperlapse) とはクラウド ベースの兄弟である、Azure Media Services 向けの Microsoft Hyperlapse では大規模な Azure Media Services メディア処理プラットフォームを利用して、Hyperlapse の一括処理を水平方向にスケーリングし、並列化します。
 
->[AZURE.IMPORTANT]Azure Media Services 向けの Microsoft Hyperlapse は、無料のパブリック プレビュー段階です。ジョブは、入力アセットの最初の 10,000 フレームに制限されます。
+>[AZURE.IMPORTANT] Azure Media Services 向けの Microsoft Hyperlapse は、無料のパブリック プレビュー段階です。ジョブは、入力資産の最初の 10,000 フレームに制限されます。
 
 
 > Microsoft Hyperlapse は、移動カメラを使用する最初のユーザー コンテンツで最適に機能するように設計されています。静止カメラの映像は引き続き動作しますが、Azure Media Hyperlapse メディア プロセッサのパフォーマンスと品質は他の種類のコンテンツに対して保証できません。Azure Media Services 向けの Microsoft Hyperlapse に関する詳細といくつかのビデオ例については、パブリック プレビューの[概要のブログ投稿](http://aka.ms/azurehyperlapseblog)を確認してください。
 
 Azure Media Hyperlapse ジョブでは、低速度撮影のビデオ フレームとその速度 (たとえば、最初の 10,000 フレームは 2 倍速) を指定する構成ファイルと共に、MP4、MOV、または WMV ファイルを入力として使用します。出力は、入力ビデオの安定した低速度撮影画像となります。
 
-最新の Azure Media Hyperlapse の更新プログラムについては、[Media Services のブログ](http://azure.microsoft.com/blog/topics/media-services/)を参照してください。
+最新の Azure Media Hyperlapse の更新プログラムについては、[Media Services のブログ](https://azure.microsoft.com/blog/topics/media-services/)を参照してください。
 
-## Hyperlapse におけるアセット
+## Hyperlapse における資産
 
 最初に、必要な入力ファイルを Azure Media Services にアップロードする必要があります。コンテンツのアップロードと管理に関する概念の詳細については、[コンテンツ管理の記事](media-services-manage-content.md#upload)をお読みください。
 
@@ -76,11 +76,11 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 
 ###  <a id="sample_code"></a> AMS .NET SDK を使用する Microsoft Hyperlapse
 
-次のメソッドは、アセットとしてメディア ファイルをアップロードし、Azure Media Hyperlapse メディア プロセッサでジョブを作成します。
+次のメソッドは、資産としてメディア ファイルをアップロードし、Azure Media Hyperlapse メディア プロセッサでジョブを作成します。
 
-> [AZURE.NOTE]このコードを動作させるには、スコープ内に "context" という名前の CloudMediaContext が既に存在している必要があります。この詳細については、[コンテンツ管理の記事](media-services-manage-content.md)をお読みください。
+> [AZURE.NOTE] このコードを動作させるには、スコープ内に "context" という名前の CloudMediaContext が既に存在している必要があります。この詳細については、[コンテンツ管理の記事](media-services-manage-content.md)をお読みください。
 
-> [AZURE.NOTE]上記の JSON または XML の準拠する構成プリセットには、"hyperConfig" という文字列引数が必要です。
+> [AZURE.NOTE] 上記の JSON または XML の準拠する構成プリセットには、"hyperConfig" という文字列引数が必要です。
 
 	static bool RunHyperlapseJob(string input, string output, string hyperConfig)
 	{
@@ -221,4 +221,4 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 
 <!-- URLs. -->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,16 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="02/08/2016" 
 	ms.author="bradsev" />
 
 # Python を使用して Azure BLOB ストレージ間でデータを移動する
 
-以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
-
-[AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
-
 ## はじめに
+このトピックでは、Python API を使用して BLOB の一覧表示、アップロード、ダウンロードを行う方法について説明します。
 
 Azure SDK で提供される Python API を使用して、以下のことを行うことができます。
 
@@ -32,18 +29,23 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 - コンテナー内の BLOB を一覧表示する
 - BLOB を削除する
 
-このセクションでは、BLOB を一覧表示、アップロード、およびダウンロードする方法について説明します。Python API を使用する方法の詳細については、「[Python から Azure BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage.md)」を参照してください。
+Python API を使用する方法の詳細については、「[Python から Azure BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage.md)」を参照してください。
 
-> [AZURE.NOTE][Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
+以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
 
-> [AZURE.NOTE]Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+[AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
+
+
+> [AZURE.NOTE] [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
+
+> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ## 前提条件
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
-- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/ja-JP/pricing/free-trial/)」を参照してください。
-- ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
+- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+- ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
 
 ## BLOB へのデータのアップロード
 
@@ -123,4 +125,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

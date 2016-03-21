@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="big-compute"
-   ms.date="09/29/2015"
+   ms.date="01/08/2016"
    ms.author="danlep"/>
 
 # HPC Pack IaaS デプロイ スクリプトを使用し、Azure VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
@@ -36,10 +36,10 @@ HPC Pack クラスターの計画に関する背景情報については、HPC P
 * **Azure サブスクリプション** - Azure Global または Azure China サービスのサブスクリプションを利用できます。ご利用のサブスクリプションの制限によりデプロイ可能なクラスター ノードの数と種類が変わります。詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
 
-* **Azure PowerShell 0.8.7 以降がインストールされ、設定されている Windows クライアント コンピューター** - 「[Azure PowerShell をインストールし、設定する方法](../powershell-install-configure.md)」を参照してください。このスクリプトは Azure サービス管理で実行されます。
+* **Azure PowerShell 0.8.7 以降がインストールされ、構成されている Windows クライアント コンピューター** - 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。このスクリプトは Azure サービス管理で実行されます。
 
 
-* **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行すると、スクリプトのバージョンを確認できます。この記事はバージョン 4.4.0 のスクリプトに基づきます。
+* **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行して、スクリプトのバージョンを確認します。この記事はバージョン 4.4.0 のスクリプトに基づきます。
 
 * **スクリプトの設定ファイル** - HPC クラスターを設定するためにスクリプトにより使用される XML ファイルを作成する必要があります。情報とサンプルについては、この記事の後半のセクションを参照してください。
 
@@ -69,22 +69,23 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 
 * **NoCleanOnFailure** (省略可能) - デプロイできなかった Azure VM を削除しません。デプロイできなかった VM を最初に手動で削除してから、スクリプトを再実行し、デプロイを続行します。そうしないと、デプロイは失敗します。
 
-* **PSSessionSkipCACheck** (省略可能)- このスクリプトで VM がデプロイされたすべてのクラウド サービスに対して、Azure により、自己署名付きの証明書が自動生成されます。クラウド サービスのすべての VM でこの証明書を既定の Windows リモート管理 (WinRM) 証明書として使用します。これらの Azure VM で HPC 機能をデプロイするために、既定で、このスクリプトにより、これらの証明書が一時的にローカル コンピューター/クライアント コンピューターの信頼されたルート証明機関ストアにインストールされ、スクリプト実行中、「信頼されない CA」セキュリティ エラーが非表示になります。スクリプトが完了すると、証明書は削除されます。このパラメーターが指定されている場合、証明書はクライアント コンピューターにインストールされず、セキュリティ警告が非表示になります。
+* **PSSessionSkipCACheck** (省略可能) - このスクリプトで VM がデプロイされたすべてのクラウド サービスに対して、Azure によって自己署名証明書が自動的に生成されます。クラウド サービスのすべての VM がこの証明書を既定の Windows リモート管理 (WinRM) 証明書として使用します。これらの Azure VM で HPC 機能をデプロイするために、スクリプトによって、これらの証明書がローカル コンピューター/クライアント コンピューターの信頼されたルート証明機関ストアに既定で一時的にインストールされ、スクリプトの実行中、"信頼できない CA" セキュリティ エラーが抑制されます。スクリプトが完了すると、証明書は削除されます。このパラメーターが指定されている場合、証明書はクライアント コンピューターにインストールされず、セキュリティ警告が非表示になります。
 
     >[AZURE.IMPORTANT]本稼働デプロイの場合、このパラメーターは推奨されません。
 
 ### 例
 
-次の例では、「MyConfigFile.xml」という構成ファイルを使用して新しい HPC Pack クラスターを作成し、クラスターをインストールするための管理者資格情報を指定します。 ```
-New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
-<username> –AdminPassword <password>
+次の例では、*MyConfigFile.xml* という構成ファイルを使用して新しい HPC Pack クラスターを作成し、クラスターをインストールするための管理者資格情報を指定します。
+
 ```
+New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
+```
+
 ### 追加の考慮事項
 
-* このスクリプトは Azure Marketplace の HPC Pack VM イメージを使用し、クラスター ヘッド ノードを作成します。現在のイメージは HPC Pack 2012 R2 更新プログラム 2 をインストールした Windows Server 2012 R2 Datacenter に基づいています。
+* このスクリプトは Azure Marketplace の HPC Pack VM イメージを使用し、クラスター ヘッド ノードを作成します。最新のイメージは、HPC Pack 2012 R2 Update 3 がインストールされた Windows Server 2012 R2 Datacenter に基づいています。
 
 * このスクリプトでは、任意で、HPC Pack Web ポータルまたは HPC Pack REST API を通してジョブ送信を有効にできます。
-
 
 * このスクリプトでは、追加ソフトウェアをインストールするか、その他の設定を構成する場合、カスタムの構成前スクリプトと構成後スクリプトを任意で実行できます。
 
@@ -97,7 +98,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 ### 例 1
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターにはローカル データベースを持つヘッド ノードが 1 つあり、BGInfo VM 拡張機能が適用されたコンピューティング ノードが 12 あります。Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。すべてのクラウド サービスは東アジアの場所に直接作成されます。コンピューティング ノードは 3 つのクラウド サービスと 3 つのストレージ アカウントで作成されます (すなわち、MyHPCCNService01 と mycnstorage01 の MyHPCCN-0001 ～ MyHPCCN-0005、MyHPCCNService02 と mycnstorage02 の MyHPCCN-0006 ～ MyHPCCN0010、MyHPCCNService03 と mycnstorage03 の MyHPCCN-0011 ～ MyHPCCN-0012)。コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターにはローカル データベースを持つヘッド ノードが 1 つあり、BGInfo VM 拡張機能が適用されたコンピューティング ノードが 12 あります。Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。すべてのクラウド サービスは東アジアの場所に直接作成されます。コンピューティング ノードは、3 つのクラウド サービスと 3 つのストレージ アカウントで作成されます (_MyHPCCNService01_ と _mycnstorage01_ の _MyHPCCN-0001_ ～ _MyHPCCN-0005_、_MyHPCCNService02_ と _mycnstorage02_ の _MyHPCCN-0006_ ～ _MyHPCCN0010_、_MyHPCCNService03_ と _mycnstorage03_ の _MyHPCCN-0011_ ～ _MyHPCCN-0012_)。コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -161,7 +162,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 ### 例 2
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ヘッド ノードが 1 つ、500GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行するコンピューティング ノードが 5 つ含まれています。クラウド サービス MyHPCCNService はアフィニティ グループ MyIBAffinityGroup で作成されます。その他のクラウド サービスはアフィニティ グループ MyAffinityGroup で作成されます。HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ヘッド ノードが 1 つ、500GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行するコンピューティング ノードが 5 つ含まれています。クラウド サービス MyHPCCNService は、アフィニティ グループ *MyIBAffinityGroup* で作成されます。その他のクラウド サービスはすべて、アフィニティ グループ *MyAffinityGroup* で作成されます。HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -215,7 +216,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 ### 例 3
 
-次の構成ファイルでは、新しいドメイン フォレストと、が作成され、ローカル データベースを持つヘッド ノードを 1 つと Linux コンピューティング ノードを 20 を含む HPC Pack クラスターがデプロイされます。すべてのクラウド サービスは東アジアの場所に直接作成されます。Linux コンピューティング ノードは 4 つのクラウド サービスと 4 つのストレージ アカウントで作成されます (すなわち、MyLnxCNService01 と mylnxstorage01 の MyLnxCN-0001 ～ MyHPCCN-0005、MyLnxCNService02 と mylnxstorage02 の MyLnxCN-0006 ～ MyLnxCN-0010、MyLnxCNService03 と mylnxstorage03 の MyLnxCN-0011 ～ MyLnxCN-0015、MyLnxCNService04 と mylnxstorage04 の MyLnxCN-0016 ～ MyLnxCN-0020)。コンピューティング ノードは OpenLogic CentOS バージョン 7.0 Linux イメージから作成されます。
+次の構成ファイルでは、新しいドメイン フォレストと、が作成され、ローカル データベースを持つヘッド ノードを 1 つと Linux コンピューティング ノードを 20 を含む HPC Pack クラスターがデプロイされます。すべてのクラウド サービスは東アジアの場所に直接作成されます。Linux コンピューティング ノードは、4 つのクラウド サービスと 4 つのストレージ アカウントで作成されます (_MyLnxCNService01_ と _mylnxstorage01_ の _MyLnxCN-0001_ ～ _MyLnxCN-0005_、_MyLnxCNService02_ と _mylnxstorage02_ の _MyLnxCN-0006_ ～ _MyLnxCN-0010_、_MyLnxCNService03_ と _mylnxstorage03_ の _MyLnxCN-0011_ ～ _MyLnxCN-0015_、_MyLnxCNService04_ と _mylnxstorage04_ の _MyLnxCN-0016_ ～ _MyLnxCN-0020_)。コンピューティング ノードは OpenLogic CentOS バージョン 7.0 Linux イメージから作成されます。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -303,7 +304,7 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 ### 例 5
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ローカル データベースを持つヘッド ノードが 1 つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート AzureTemplate1 に対して中サイズの Azure ノードが 3 つ作成されます。ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ローカル データベースを持つヘッド ノードが 1 つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート _AzureTemplate1_ に対して、中サイズの Azure ノードが 3 つ作成されます。ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -386,8 +387,8 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName
 
 * クラスターでテスト ワークロードを実行してみます。たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
 
-* スクリプトを使用してクラスターを作成し、HPC ワークロードを実行するチュートリアルについては、「[Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-excel-cluster-hpcpac)」または「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)」を参照してください。
+* スクリプトを使用してクラスターを作成し、HPC ワークロードを実行するチュートリアルについては、「[Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-excel-cluster-hpcpac)」、「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)」、「[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-cluster-hpcpack-openfoam.md)」を参照してください。
 
 * HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。「[Azure の HPC Pack クラスターでコンピューティング ノードを管理する](virtual-machines-hpcpack-cluster-node-manage.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

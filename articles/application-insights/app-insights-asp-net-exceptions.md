@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights を利用し、ASP.NET アプリの障害と例外を診断する" 
-	description="要求の利用統計情報とともに例外をキャプチャすることで診断機能が高まるようにアプリを構成します。" 
+	description="要求テレメトリと共に ASP.NET アプリから例外を取り込みます。" 
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -12,20 +12,44 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="11/17/2015" 
 	ms.author="awills"/>
- 
-# Application Insights を利用し、ASP.NET アプリの障害と例外を診断する  
+
+
+# Application Insights の設定: 例外の診断
+
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
+
 
 [Visual Studio Application Insights][start] を利用してアプリケーションを監視すれば、要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
 
 ASP.NET アプリを監視するには、アプリケーションに [Application Insights SDK を追加する][greenbrown]か、[IIS サーバーに Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension][azure] を追加する必要があります。
 
-## 障害の診断 
+## Visual Studio を使用して例外を診断する
 
-概要ブレードの [障害] タイルには、例外と失敗した HTTP 要求のグラフ、最も頻繁に発生する障害の原因となる要求 URL の一覧が表示されます。
+デバッグに役立てるため、Visual Studio でアプリ ソリューションを開きます。
 
-![障害の選択](./media/app-insights-asp-net-exceptions/012-start.png)
+サーバー上または開発用コンピューターで、F5 キーを使用してアプリケーションを実行します。
+
+Visual Studio で Application Insights の [検索] ウィンドウを開き、アプリからのイベントを表示するように設定します。これは、デバッグ時に [Application Insights] ボタンをクリックするだけで実行できます。
+
+![プロジェクトを右クリックし、[Application Insights] を選択して開きます。](./media/app-insights-asp-net-exceptions/34.png)
+
+レポートをフィルター処理して例外だけを表示することができます。
+
+*例外が表示されませんか? 「[例外のキャプチャ](#exceptions)」を参照してください。*
+
+例外レポートをクリックしてスタック トレースを表示します。
+
+![例外をクリックします。](./media/app-insights-asp-net-exceptions/35.png)
+
+関連ファイルを開くには、スタック トレース内の明細行参照をクリックします。
+
+## Azure ポータルを使用して障害を診断する
+
+アプリの Application Insights の概要の [障害] タイルには、例外と失敗した HTTP 要求のグラフ、最も頻繁に発生する障害の原因となる要求 URL の一覧が表示されます。
+
+![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)
 
 一覧にある失敗した要求の種類を 1 つクリックし、障害の個別発生を表示します。そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
 
@@ -45,6 +69,8 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/050-exception-properties.png)
 
 [診断検索の詳細][diagnostic]。
+
+
 
 ## 依存関係の障害
 
@@ -73,6 +99,9 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
+
+
+> [AZURE.NOTE] アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。同じ操作に含まれるイベントは、グループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください。](app-insights-sampling.md)
 
 ### 要求の POST データを表示する方法
 
@@ -351,7 +380,7 @@ IExceptionLogger の実装を追加します。
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger()); 
         }
       }
-  {
+  }
 
 [サンプル](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -429,7 +458,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 [Status Monitor][redfield] がサーバー上にインストールされている場合は、.NET によって測定された例外レートに関するグラフを取得できます。これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
 
-メトリック エクスプ ローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に一覧表示された中から **[例外レート]** を選択します。
+メトリックス エクスプローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に一覧表示された中から **[例外レート]** を選択します。
 
 .NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。
 
@@ -441,11 +470,11 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [netlogs]: app-insights-asp-net-trace-logs.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

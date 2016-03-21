@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="12/08/2015"
 	ms.author="roalexan" />
 
 
@@ -26,23 +26,23 @@
 
 ##Azure API Management とは
 
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](http://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](https://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ##Azure ML とは
 
-AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。[ここ](http://azure.microsoft.com/services/machine-learning/)をクリックして、AzureML の詳細についてご覧ください。
+AzureML は、高度な分析ソリューションを簡単に構築、デプロイ、共有できる、機械学習用の Azure サービスです。[ここ](https://azure.microsoft.com/services/machine-learning/)をクリックして、AzureML の詳細についてご覧ください。
 
 ##前提条件
 
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](http://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
 * AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
 * Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
 ##API Management インスタンスの作成
 
-API Management を使用して、AzureML Web サービスを管理する手順を次に示します。まず、サービス インスタンスを作成します。[管理ポータル](https://manage.windowsazure.com/)にログインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** をクリックします。
+API Management を使用して、AzureML Web サービスを管理する手順を次に示します。まず、サービス インスタンスを作成します。[クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** をクリックします。
 
 ![create-instance](./media/machine-learning-manage-web-service-endpoints-using-api-management/create-instance.png)
 
@@ -60,11 +60,11 @@ API Management を使用して、AzureML Web サービスを管理する手順�
 
 サービス インスタンスが作成されたら、API を作成します。API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。API の操作は、既存の Web サービスに引き渡されます。このガイドでは、既存の AzureML RRS と BES Web サービスにプロキシする API を作成します。
 
-API は API パブリッシャー ポータルから作成され、構成されます。このポータルには、Azure の管理ポータルからアクセスします。パブリッシャー ポータルに到達するには、サービス インスタンスを選択します。
+API は API パブリッシャー ポータルから作成され、構成されます。このポータルには、Azure クラシック ポータルからアクセスします。パブリッシャー ポータルに到達するには、サービス インスタンスを選択します。
 
 ![select-service-instance](./media/machine-learning-manage-web-service-endpoints-using-api-management/select-service-instance.png)
 
-ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。
+ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
 ![manage-service](./media/machine-learning-manage-web-service-endpoints-using-api-management/manage-service.png)
 
@@ -116,7 +116,7 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ##開発者ポータルから操作を呼び出す
 
-開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。このガイドの手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。管理ポータルの右上にあるメニューから **[開発者ポータル]** をクリックします。
+開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。このガイドの手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。クラシック ポータルの右上のメニューから **[開発者ポータル]** をクリックします。
 
 ![developer-portal](./media/machine-learning-manage-web-service-endpoints-using-api-management/developer-portal.png)
 
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

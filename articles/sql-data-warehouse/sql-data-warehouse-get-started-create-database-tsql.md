@@ -1,26 +1,26 @@
 <properties
-	pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
-	description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="lodipalm"
-	manager="barbkess"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
+   description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="lodipalm"
+   manager="barbkess"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
 
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="get-started-article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
-   ms.author="lodipalm"/>
+   ms.date="03/03/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-data-warehouse-get-started-provision.md)
+- [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
@@ -32,7 +32,7 @@
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - 見ることができます。Visual Studio の無償版については、[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)に関するページを参照してください。
-- V12 論理 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 論理 SQL サーバーがない場合は、[Azure プレビュー ポータルのチュートリアル][]で作成方法を参照してください。
+- V12 論理 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 論理 SQL サーバーがない場合は、[Azure ポータルのチュートリアル][]で作成方法を参照してください。
 
 ## Visual Studio でデータベースを作成する
 
@@ -51,9 +51,9 @@
 SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU の数を示し、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、DW2000 のいずれかの値を指定できます。これらのパラメーターと課金の関係については、[価格のページ][]を参照してください。
 
 ## 次のステップ
-SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
+SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
 
-[Azure プレビュー ポータルのチュートリアル]: ./sql-data-warehouse-get-started-provision.md
+[Azure ポータルのチュートリアル]: ./sql-data-warehouse-get-started-provision.md
 [接続とクエリ]: ./sql-data-warehouse-get-started-connect.md
 [移行]: ./sql-data-warehouse-overview-migrate.md
 [開発]: ./sql-data-warehouse-overview-develop.md
@@ -61,4 +61,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

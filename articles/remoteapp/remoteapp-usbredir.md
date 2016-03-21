@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="11/04/2015" 
+    ms.date="02/11/2016" 
     ms.author="elizapo" />
 
 
@@ -42,39 +42,39 @@ Azure RemoteApp では、USB デバイスをリダイレクトするために、
 
 さらに優れた方法、つまり 2 番目のオプションでは、次の手順に従って、特定のデバイス クラス GUID を見つけます。
 
-1. デバイス マネージャーを開き、リダイレクトするデバイスを探して右クリックし、プロパティを開きます。![デバイス マネージャーを開く](./media/remoteapp-usbredir/ra-devicemanager.png)
-2. **[詳細]** タブで、**[クラス GUID]** プロパティを選択します。表示された値は、その種類のデバイスのクラス GUID です。![カメラのプロパティ](./media/remoteapp-usbredir/ra-classguid.png)
+1. デバイス マネージャーを開き、リダイレクトするデバイスを探して右クリックし、プロパティを開きます。![Open the Device Manager](./media/remoteapp-usbredir/ra-devicemanager.png)
+2. **[詳細]** タブで、**[クラス GUID]** プロパティを選択します。表示された値は、その種類のデバイスのクラス GUID です。![Camera properties](./media/remoteapp-usbredir/ra-classguid.png)
 3. このクラス GUID 値を使用して、それに対応するデバイスをリダイレクトします。
 
 次に例を示します。
 
-		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "usbdevicestoredirect:s:<Class Guid value>"
 
 複数のデバイス リダイレクトを 1 つのコマンドレットにまとめることができます。たとえば、ローカル ストレージと USB Web カメラをリダイレクトする場合、コマンドレットは次のようになります。
 
-		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`usbdevicestoredirect:s:<Class Guid value>"
 
 クラス GUID でデバイス リダイレクトを設定すると、指定されたコレクション内でそのクラス GUID に対応するすべてのデバイスがリダイレクトされます。たとえば、ローカル ネットワーク上の複数のコンピューターに同じ USB Web カメラが搭載されている場合、1 つのコマンドレットを実行して、すべての Web カメラをリダイレクトすることができます。
 
 ## デバイス インスタンス ID を使用した USB デバイスのリダイレクト
 
-より細かく制御したい場合やデバイスごとにリダイレクトを制御する場合は、**USB\\InstanceID** リダイレクト パラメーターを使用できます。
+より細かく制御する場合やデバイスごとにリダイレクトを制御する場合は、**USB\\InstanceID** リダイレクト パラメーターを使用できます。
 
 この方法の最も難しい部分は、USB デバイス インスタンス ID を見つけるところです。コンピューターと特定の USB デバイスへのアクセス権が必要になります。その後、次の手順に従います。
 
 1. 「[デバイスやリソースをリモート デスクトップ セッションで使用する方法](http://windows.microsoft.com/ja-JP/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)」の説明に従い、リモート デスクトップ セッションでデバイス リダイレクトを有効にします。
 2. リモート デスクトップ接続を開き、**[オプションの表示]** をクリックします。
-3. **[名前を付けて保存]** をクリックし、現在の接続設定を RDP ファイルに保存します。![設定を RDP ファイルとして開く](./media/remoteapp-usbredir/ra-saveasrdp.png)
+3. **[名前を付けて保存]** をクリックし、現在の接続設定を RDP ファイルに保存します。![Save the settings as an RDP file](./media/remoteapp-usbredir/ra-saveasrdp.png)
 4. ファイル名と場所 (たとえば、"MyConnection.rdp" と "This PC\\Documents") を選択し、ファイルを保存します。
 5. テキスト エディターで MyConnection.rdp ファイルを開き、リダイレクトするデバイスのインスタンス ID を検索します。
 
 ここで、見つかったインスタンス ID を次のコマンドレットで使用します。
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB<Device InstanceID value>"
+	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "usbdevicestoredirect:s: USB<Device InstanceID value>"
 
 
 
 ### サポートのお願い 
-記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[GitHub で編集]** をクリックして、変更を加えることができます。変更はこちらで確認し、承認されると、変更点や改善点がこのページに反映されます。
+記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory のパイプラインの監視と管理" 
-	description="Microsoft Azure 管理ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
+	description="Azure クラシック ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,19 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/04/2016" 
 	ms.author="spelluru"/>
 
+
 # Azure Data Factory のパイプラインの監視と管理
+> [AZURE.SELECTOR]
+- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
+- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+
 Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
 
 この記事では、パイプラインを監視、管理、およびデバッグする方法について説明します。また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。
 
 ## パイプラインとアクティビティの状態の理解
-Azure プレビュー ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
+Azure ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
 
 ### Data Factory に移動する
-1.	[Azure プレビュー ポータル](http://portal.azure.com)にサインインします。
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。
 2.	**[すべて参照]** をクリックし、**[Data Factory]** を選択します。
 	
 	![[すべて参照] -> [Data Factory]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -117,7 +122,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 <td>Ready</td><td></td><td>スライスは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>Skipped</td><td></td><td>スライスは実行されていません。</td>
+<td>Skipped</td><td></td><td>スライスは処理されていません。</td>
 </tr>
 <tr>
 <td>なし</td><td></td><td>別のステータスで存在していたが、リセットされたスライスです。</td>
@@ -166,28 +171,28 @@ Azure PowerShell を使用してパイプラインを管理できます。たと
 
 **PartitionProductsUsagePipeline** を中断するには、次の PowerShell コマンドを実行します。
 
-	Suspend-AzureDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+	Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
 次に例を示します。
 
-	Suspend-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+	Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
 **PartitionProductsUsagePipeline** の問題が解決されたら、次の PowerShell コマンドを実行して中断されているパイプラインを再開できます。
 
-	Resume-AzureDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+	Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
 次に例を示します。
 
-	Resume-AzureDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+	Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
 
 ## パイプラインをデバッグする
-Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure ポータルおよび Azure PowerShell で提供されています。
+Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure クラシック ポータルおよび Azure PowerShell で提供されています。
 
 ### パイプラインのエラーを発見する
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。次のメカニズムを使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
-#### Azure ポータルを使用してエラーをデバッグします。
+#### Azure クラシック ポータルを使用してエラーをデバッグします。
 
 1.	Data Factory のホーム ページで、**[データセット]** タイルの **[エラーあり]** をクリックします。
 	
@@ -207,29 +212,26 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 #### PowerShell を使用してエラーをデバッグする
 1.	**Azure PowerShell** を起動します。
-2.	Data Factory コマンドレットは **AzureResourceManager** モードでのみ使用できるので、このモードに切り替えます。
-
-		switch-azuremode AzureResourceManager
 3.	**Get-AzureDataFactorySlice** コマンドを実行してスライスとその状態を確認します。[状態] が **[Failed]** になっているスライスが表示されます。
 
-		Get-AzureDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+		Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
 	
 	次に例を示します。
 
 
-		Get-AzureDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+		Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
 
 	**StartDateTime** を、Set-AzureDataFactoryPipelineActivePeriod に対して指定した StartDateTime の値に置き換えます。
-4. **Get-AzureDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+4. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
-		Get-AzureDataFactoryRun [-ResourceGroupName] <String> [-
+		Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-
 		DataFactoryName] <String> [-TableName] <String> [-StartDateTime] 
 		<DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
 	
 	次に例を示します。
 
 
-		Get-AzureDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+		Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
 
 	StartDateTime の値は、前の手順でメモしたエラーまたは問題のあるスライスの開始日時です。日時は二重引用符で囲む必要があります。
 5. 	エラーの詳細を含む (以下のような) 出力結果が表示されます。
@@ -258,12 +260,12 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 	
 6. 	上記出力結果の ID 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
-	Save-AzureDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\\Test"
+	Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\\Test"
 
 
-## Azure ポータルを使用して
+## パイプラインのエラーを再実行する
 
-### パイプラインのエラーを再実行する
+### Azure クラシック ポータルの使用
 
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
@@ -273,15 +275,13 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ### Azure PowerShell の使用
 
-Set-AzureDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。
+Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラーを再実行できます。このコマンドレットの構文やその他の詳細については、「[Set-AzureDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx)」を参照してください。
 
-	Set-AzureDataFactorySliceStatus [-ResourceGroupName] <String> [-DataFactoryName] <String> [-TableName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Status] <String> [[-UpdateType] <String> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+**例:** 次の例では、Azure データ ファクトリ "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "Waiting" に設定します。
 
-**例:** 次の例では、Azure Data Factory "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "PendingExecution" に設定します。
+**注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が "Waiting" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
 
-**注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が、"PendingExecution" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
-
-	Set-AzureDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status PendingExecution -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+	Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 
 
 ## アラートを作成する
@@ -295,6 +295,8 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 - オンデマンド HDInsight クラスターが作成および削除された場合。
 
 これらのユーザー イベントに対してアラートを作成し、サブスクリプションの管理者と共同管理者に電子メール通知を送信するよう構成できます。さらに、条件が満たされた場合に電子メール通知を受け取る必要があるユーザーの追加の電子メール アドレスを指定できます。これは、Data Factory を常時監視するのではなく、障害が発生したら通知を受け取るようにする場合に非常に便利です。
+
+> [AZURE.NOTE] この時点で、ポータルにアラートは表示されません。すべてのアラートを確認するには、「[Monitoring and Management App (監視と管理アプリ)](data-factory-monitor-manage-app.md)」を参照してください。
 
 #### アラートの定義の指定:
 アラートの定義を指定するには、アラートの対象となる操作を記述する JSON ファイルを作成します。以下の例では、アラートによって RunFinished 操作に関する電子メール通知が送信されます。具体的には、データ ファクトリで実行が完了し、その実行が失敗していた場合 (Status = FailedExecution) に電子メール通知が送信されます。
@@ -323,7 +325,7 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
 	                        "operationName": "RunFinished",
 	                        "status": "Failed",
-	                            "subStatus": "FailedExecution"   
+	                        "subStatus": "FailedExecution"   
 	                    }
 	                },
 	                "action": 
@@ -348,16 +350,16 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 -------------- | ------ | ----------
 RunStarted | 開始済み | Starting
 RunFinished | Failed / Succeeded | <p>FailedResourceAllocation</p><p>Succeeded</p><p>FailedExecution</p><p>TimedOut</p><p><Canceled/p><p>FailedValidation</p><p>Abandoned</p>
-SliceOnTime | 進行中 | Ontime
-SliceDelayed | 進行中 | Late
 OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
 
-#### アラートのデプロイ 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
+上記の例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf     -TemplateFile .\ADFAlertFailedSlice.json  
+#### アラートのデプロイ 
+アラートをデプロイするには、次の例に示すように、Azure PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** を使用します。
+
+	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
 
 リソース グループのデプロイメントが正常に終了すると、次のメッセージが表示されます。
 
@@ -377,9 +379,9 @@ OnDemandClusterDeleted | Succeeded
 	Outputs           :
 
 #### Azure リソース グループのデプロイメント一覧の取得
-デプロイした Azure リソース グループのデプロイメント一覧を取得するには、次の例に示すように、**Get-AzureResourceGroupDeployment** コマンドレットを使用します。
+デプロイした Azure リソース グループの一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
 
-	Get-AzureResourceGroupDeployment -ResourceGroupName adf
+	Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
 	
 	DeploymentName    : ADFAlertFailedSlice
 	ResourceGroupName : adf
@@ -392,26 +394,71 @@ OnDemandClusterDeleted | Succeeded
 
 
 #### ユーザー イベントのトラブルシューティング
-**[操作]** タイルをクリックした後で生成されるすべてのイベントを見ることができ、**[イベント]** ブレードに表示されるすべての動作にアラートを設定できます。
-
-![操作](./media/data-factory-monitor-manage-pipelines/operations.png)
-
-次の PowerShell コマンドを実行すると、作成されたすべてのアラートが表示されます。これは、リソース タイプが **microsoft.insights/alertrules** であるメトリックとイベントのアラート設定を表示します。
-
-	Get-AzureResourceGroup -Name $resourceGroupName
-
-	ResourceGroupName : mdwevent
-	Location          : westus
-	ProvisioningState : Succeeded
-	Resources         :
-                    Name                  Type                                 Location
-                    ====================  ===================================  ========
-                    abhieventtest1        Microsoft.DataFactory/dataFactories  westus
-                    abhieventtest2        Microsoft.DataFactory/dataFactories  westus
-                    FailedValidationRuns  microsoft.insights/alertrules        eastus
 
 
-ポータルのブレードにアラート生成イベントが表示されるのに、電子メール通知を受け取らない場合は、指定されている電子メール アドレスが外部の送信者からの電子メールを受信するように設定されているかどうかを確認します。アラートの電子メールが、電子メールの設定によってブロックされている可能性があります。
+- **[操作]** タイルをクリックした後で生成されるすべてのイベントを見ることができ、**[イベント]** ブレードに表示されるすべての動作にアラートを設定できます。
+
+	![操作](./media/data-factory-monitor-manage-pipelines/operations.png)
+
+
+- アラートの追加、取得、削除に使用できる PowerShell コマンドレットについては、「[Azure Insights Cmdlets (Azure Insights コマンドレット)](https://msdn.microsoft.com/library/mt282452.aspx)」という記事を参照してください。以下に、**Get-AlertRule** コマンドレットの使用例をいくつか示します。
+
+
+		PS C:\> get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
+			
+				Properties :
+		        Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
+		        Condition   :
+				DataSource :
+				EventName             :
+				Category              :
+				Level                 :
+				OperationName         : RunFinished
+				ResourceGroupName     :
+				ResourceProviderName  :
+				ResourceId            :
+				Status                : Failed
+				SubStatus             : FailedExecution
+				Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
+		        Condition  	:
+				Description : One or more of the data slices for the Azure Data Factory has failed processing.
+				Status      : Enabled
+				Name:       : ADFAlertsSlice
+				Tags       :
+				$type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
+				Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
+				Location   : West US
+				Name       : ADFAlertsSlice
+		
+		PS C:\> Get-AlertRule -res $resourceGroup
+	
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+				Location   : West US
+				Name       : FailedExecutionRunsWest0
+		
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
+				Location   : West US
+				Name       : FailedExecutionRunsWest3
+	
+		PS C:\> Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
+		
+				Properties : Microsoft.Azure.Management.Insights.Models.Rule
+				Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+				Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+				Location   : West US
+				Name       : FailedExecutionRunsWest0
+
+	以下の get-help コマンドを実行すると、Get-AlertRule コマンドレットの詳細および例が示されます。
+
+		get-help Get-AlertRule -detailed 
+		get-help Get-AlertRule -examples
+
+
+- ポータルのブレードにアラート生成イベントが表示されるのに、電子メール通知を受け取らない場合は、指定されている電子メール アドレスが外部の送信者からの電子メールを受信するように設定されているかどうかを確認します。アラートの電子メールが、電子メールの設定によってブロックされている可能性があります。
 
 ### メトリックでのアラート
 Data Factory では、さまざまなメトリックを収集し、メトリックに対してアラートを作成できます。Data Factory のスライスに対して次のメトリックのアラートを監視および作成できます。
@@ -502,9 +549,9 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 **アラートのデプロイ:**
 
-アラートをデプロイするには、次の例に示すように Azure PowerShell コマンドレットの **New-AzureResourceGroupDeployment** を使用します。
+アラートをデプロイするには、次の例に示すように、Azure PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** を使用します。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
+	New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
 
 デプロイが成功すると、次のメッセージが表示されます。
 
@@ -522,4 +569,16 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!---HONumber=Nov15_HO3-->
+
+**Add-AlertRule** コマンドレットを使用して、アラート ルールをデプロイすることもできます。詳細と例については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」トピックを参照してください。
+
+## データ ファクトリを別のリソース グループまたはサブスクリプションに移動する
+データ ファクトリを別のリソース グループまたはサブスクリプションに移動するには、データ ファクトリのホーム ページの **[移動]** コマンド バー ボタンを使用します。
+
+![データ ファクトリの移動](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
+
+また、関連するリソース (データ ファクトリに関連付けられたアラートなど) も併せて移動することができます。
+
+![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
+
+<!---HONumber=AcomDC_0224_2016-->

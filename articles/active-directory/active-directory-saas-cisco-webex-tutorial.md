@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Cisco Webex の統合 | Microsoft Azure" 
     description="Azure Active Directory で Cisco Webex を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="MarkusVi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,17 +11,18 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Cisco Webex の統合
 
-このチュートリアルでは、Azure と Cisco Webex の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Cisco Webex の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Cisco Webex テナント
 
-このチュートリアルを終了すると、Cisco Webex に割り当てた Azure AD ユーザーは、Cisco Webex 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Cisco Webex に割り当てた Azure AD ユーザーは、Cisco Webex 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -37,7 +38,7 @@
 
 ###Cisco Webex のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-cisco-webex-tutorial/IC700993.png "Active Directory")
 
@@ -64,13 +65,13 @@
     ![Cisco Webex](./media/active-directory-saas-cisco-webex-tutorial/IC777616.png "Cisco Webex")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Cisco Webex に対する認証を行えるようにする方法を説明します。  
-この手順の途中で、Base-64 でエンコードされた証明書を作成する必要があります。  
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Cisco Webex に対する認証を行えるようにする方法を説明します。
+この手順の途中で、Base-64 でエンコードされた証明書を作成する必要があります。
 この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Cisco Webex** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure AD ポータルの **Cisco Webex** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-cisco-webex-tutorial/IC777617.png "シングル サインオンの構成")
 
@@ -82,8 +83,8 @@
 
     ![アプリケーション URL の構成](./media/active-directory-saas-cisco-webex-tutorial/IC777619.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、Cisco Webex テナント URL を入力します (例: **http://contoso.webex.com*))。
-2.  **[Cisco Webex 応答 URL]** ボックスに、**Cisco Webex AssertionConsumerService URL** を入力します (例: **https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*))。
+    1.  **[サインオン URL]** ボックスに、Cisco Webex テナント URL を入力します (例: *http://contoso.webex.com*)。
+	2.  **[Cisco Webex 応答 URL]** ボックスに、**Cisco Webex AssertionConsumerService URL** を入力します (例: *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*)。
 
 4.  **[Cisco Webex でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -106,7 +107,7 @@
     1.  **[Federation Protocol]** ボックスの一覧で、**[SAML 2.0]** を選択します。
     2.  ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     3.  Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
     4.  **[Import SAML Metadata]** をクリックし、Base-64 でエンコードされた証明書を貼り付けます。
@@ -144,13 +145,13 @@ Azure AD ユーザーが Cisco Webex にログインできるようにするに�
 
 ##ユーザーの割り当て
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、ユーザーにアプリケーションへのアクセス権を付与する必要があります。
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 ###ユーザーを Cisco Webex に割り当てるには、次の手順を実行します。
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  Cisco Webex アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Cisco Webex** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-cisco-webex-tutorial/IC777627.png "ユーザーの割り当て")
 
@@ -160,4 +161,4 @@ Azure AD ユーザーが Cisco Webex にログインできるようにするに�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

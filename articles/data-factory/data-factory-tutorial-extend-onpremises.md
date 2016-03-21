@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)" 
-	description="ここでは、Azure ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
+	pageTitle="チュートリアル: 出力データを SQL Server データベースにコピーする (Azure クラシック ポータル)" 
+	description="ここでは、Azure クラシック ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 
-# チュートリアル: オンプレミスの SQL Server データベースへのキャンペーンの有効性のデータのコピー 
+# チュートリアル: 出力データをオンプレミスの SQL Server データベースにコピーする (Azure クラシック ポータル) 
 このチュートリアルでは、パイプラインがオンプレミスのデータを扱えるようにするため、その環境を設定する方法を学びます。
  
 パーティション -> 強化 -> 分析のワークフローを含む最初のチュートリアルにおいて、ログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性のアウトプットが Azure SQL データベースにコピーされました。分析のため、所属する組織内にあるオンプレミスの SQL Server にこのデータを移動することも可能です。
@@ -28,7 +28,7 @@
 
 この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル][datafactorytutorial]を実行する**必要があります**。
 
-**(推奨)** パイプラインを作成して内部設置型の SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
+**(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
 
 
 このチュートリアルでは、次の手順に従います。
@@ -51,7 +51,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 すでに使用できるデータ ゲートウェイがある場合は、この手順をスキップします。
 
-1.	論理データ ゲートウェイを作成します。**Azure プレビュー ポータル**で、Data Factory の **[Data Factory]** ブレードの **[関連付けられているサービス]** をクリックします。
+1.	論理データ ゲートウェイを作成します。**Azure ポータル**で、Data Factory の **[Data Factory]** ブレードの **[関連付けられているサービス]** をクリックします。
 2.	コマンド バーの **[+ データ ゲートウェイ]** をクリックします。  
 3.	**[新しいデータ ゲートウェイ]** ブレードで、**[作成]** をクリックします。
 4.	**[作成]** ブレードで、データ ゲートウェイの **[名前]** に「**MyGateway**」と入力します。
@@ -60,7 +60,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 7.	**[構成]** ブレードが表示されます。 
 8.	**[構成]** ブレードで、**[このコンピューターに直接インストール]** をクリックします。これによりゲートウェイのダウンロード、インストール、およびコンピューター上での構成が行われ、サービスに登録されます。すでにコンピューターにインストール済みのゲートウェイがあり、それをポータル上に作成したこの論理ゲートウェイにリンクさせたい場合、このブレード上のキーを使用して Data Management Gateway Manager (プレビュー) ツールでゲートウェイの再登録をします。
 
-	![Data Management Gateway Configuration Manager][image-data-factory-datamanagementgateway-configuration-manager]
+	![Data Management Gateway 構成マネージャー][image-data-factory-datamanagementgateway-configuration-manager]
 
 9. **[OK]** をクリックして **[構成]** ブレードを閉じ、**[OK]** をクリックして **[作成]** ブレードを閉じます。**[関連付けられているサービス]** ブレードの **MyGateway** の状態が **[良好]** に変わるまで待ちます。また、**Data Management Gateway Configuration Manager (プレビュー)** ツールを起動し、ゲートウェイの名前がポータル上の名前と一致すること、および**状態**が **[登録済み]** であることを確認することもできます。最新の状態を確認するため、場合によっては [リンクされたサービス] ブレードをいったん閉じて再度開く必要があります。画面が最新の状態に更新されるまで、数分かかる場合があります。
 
@@ -97,7 +97,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 ### リンクされたサービスの作成
 
-1.	**Azure プレビュー ポータル**で、**LogProcessingFactory** の **[Data Factory]** ブレードにある **[作成者とデプロイ]** タイルをクリックします。
+1.	**Azure ポータル**で、**LogProcessingFactory** の **[Data Factory]** ブレードにある **[作成者とデプロイ]** タイルをクリックします。
 2.	**Data Factory エディター**で、ツール バーの **[新しいデータ ストア]** クリックして、**[オンプレミスの SQL Server データベース]** を選択します。
 3.	JSON スクリプトで、次の手順に従います。 
 	1.	**<servername>** を、SQL Server データベースをホストしているサーバーの名前に置き換えます。
@@ -153,7 +153,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 [adfintroduction]: data-factory-introduction.md
 [useonpremisesdatasources]: data-factory-move-data-between-onprem-and-cloud.md
 
-[azure-preview-portal]: http://portal.azure.com
+[azure-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -169,4 +169,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

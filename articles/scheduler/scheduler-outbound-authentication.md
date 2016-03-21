@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na" 
  ms.devlang="dotnet" 
  ms.topic="article" 
- ms.date="08/04/2015" 
+ ms.date="12/04/2015" 
  ms.author="krisragh"/>
  
 # Scheduler 送信認証
@@ -234,10 +234,14 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 |:--|:--|
 |_authentication (親要素)_ |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。|
 |_type_ |必須。認証の種類。ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth` を使用する必要があります。|
-|_tenant_ |必須。テナント識別子は、AD テナントを識別するために使用される ID です。|
+|_tenant_ |必須。Azure AD テナントのテナント ID です。|
 |_audience_ |必須。https://management.core.windows.net/.| に設定します。
 |_clientId_ |必須。Azure AD アプリケーションのクライアント識別子を指定します。|
 |_secret_ |必須。トークンを要求しているクライアントのシークレット。|
+
+### テナント ID の確認
+
+Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAccount` を実行すると確認できます。
 
 ## ActiveDirectoryOAuth 認証の応答本文
 
@@ -247,7 +251,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 |:--|:--|
 |_authentication (親要素)_ |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。|
 |_type_ |認証の種類。ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth` を使用します。|
-|_tenant_ |AD テナントを識別するためのテナント識別子。|
+|_tenant_ |Azure AD テナントのテナント ID です。 |
 |_audience_ |https://management.core.windows.net/.| に設定します。
 |_clientId_ |Azure AD アプリケーションのクライアント識別子。|
 
@@ -272,7 +276,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 			"x-ms-version": "2013-03-01"
 		  },
 		  "authentication":{  
-			"tenant":"contoso.com",
+			"tenant":"01234567-89ab-cdef-0123-456789abcdef",
 			"audience":"https://management.core.windows.net/",
 			"clientId":"8a14db88-4d1a-46c7-8429-20323727dfab",
 			"secret": "&lt;secret-key&gt;",
@@ -310,7 +314,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 			"x-ms-version": "2013-03-01"
 		  },
 		  "authentication":{  
-			"tenant":"contoso.com",
+			"tenant":"01234567-89ab-cdef-0123-456789abcdef",
 			"audience":"https://management.core.windows.net/",
 			"clientId":"8a14db88-4d1a-46c7-8429-20323727dfab",
 			"type":"ActiveDirectoryOAuth"
@@ -333,24 +337,27 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 
 ## 関連項目
  
+
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
  
- [Scheduler Concepts, Terminology, and Entity Hierarchy (Scheduler の概念、用語集、エンティティ階層構造)](scheduler-concepts-terms.md)
- 
- [管理ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
- 
- [Plans and Billing in Azure Scheduler (Azure Scheduler のプランと課金)](scheduler-plans-billing.md)
- 
- [How to Build Complex Schedules and Advanced Recurrence with Azure Scheduler (Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法)](scheduler-advanced-complexity.md)
- 
- [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
- 
- [Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)](scheduler-powershell-reference.md)
- 
- [Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
- 
- [Scheduler の制限、規定値、エラー コード](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+
+ [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
+
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
+
+ [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
+
+ [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+
+
+  
+
  
   
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

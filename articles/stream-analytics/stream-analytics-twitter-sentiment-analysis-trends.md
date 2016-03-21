@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Stream Analytics でのリアルタイム Twitter センチメント分析 |Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
-	keywords="リアルタイム Twitter,センチメント分析,ソーシャル メディア分析,ソーシャル メディア分析ツール"
+	keywords="リアルタイム Twitter 傾向分析、センチメント分析、ソーシャル メディア分析、傾向分析の例"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,23 +14,24 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="11/06/2015"
+	ms.date="02/18/2016"
 	ms.author="jeffstok"/>
 
 
 # ソーシャル メディア分析: Azure Stream Analytics での Twitter センチメントのリアルタイム分析
 
-このチュートリアルでは、Twitter イベントを Event Hubs にリアルタイムに取り込み、Stream Analytics クエリを記述してデータを分析してから、その結果を保存するかダッシュボードを使用してリアルタイムに洞察を提供することで、センチメント分析ソリューションを作成する方法を学習します。
+Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。Stream Analytics クエリを記述してデータを分析し、後で精読するために結果を保存するか、ダッシュボードを利用し、[Power BI](https://powerbi.com/) で洞察をリアルタイム表示します。
 
-ソーシャル メディア分析ツールは、組織がソーシャル メディアへの大量投稿に含まれるトレンディング トピック、重要なテーマや考え方を理解するのに役立ちます。センチメント分析 (「意見マイニング」ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。
+ソーシャル メディア分析ツールは、組織がソーシャル メディアへの大量投稿に含まれるトレンディング トピック、重要なテーマや考え方を理解するのに役立ちます。センチメント分析 (「意見マイニング」ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。リアルタイム Twitter 傾向分析が優れた例となります。ハッシュタグ サブスクリプション モデルにより、特定のキーワードに耳を澄ませ、フィードに基づいてセンチメント分析を展開できます。
 
-## シナリオ
+## シナリオ - リアルタイムのセンチメント分析
 
-ニュース メディア Web サイトは、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。そのため、Twitter データのリアルタイム センチメント分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を利用します。特に、Twitter のトレンディング トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。
+ニュース メディア Web サイトは、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。そのため、Twitter データのリアルタイム センチメント分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を利用します。特に、Twitter のトレンディング トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。そのため、基本的に、このソーシャル メディア フィードに基づいたセンチメント分析エンジンが必要となります。
 
 ## 前提条件
-1.	このチュートリアルでは、Twitter アカウントが必要です。  
-2.	このチュートリアルでは、GitHub にある Twitter クライアント アプリケーションを使用します。[ここ](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)からダウンロードし、次の手順に従って、ソリューションを設定します。
+1.	Twitter アカウントと [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) 
+2.	Microsoft Download Center の [TwitterClient.zip](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip)
+3.	省略可能: [Github](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient) の twitter クライアントのソース コード 
 
 ## イベント ハブ入力とコンシューマー グループの作成
 
@@ -55,16 +56,15 @@ Event Hub を作成するには、次の手順に従います。
 
 アプリケーションを設定するには、次の手順に従います。
 
-1.	[TwitterClient ソリューションをダウンロードします](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)。
-2.	App.config を開き、oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret を、自身の値を設定した Twitter トークンに置き換えます。  
+1.	[TwitterClient ソリューションをダウンロードします。](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip)
+2.	TwitterClient.exe.config を開き、oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret を、自身の値を設定した Twitter トークンに置き換えます。  
 
 	[OAuth アクセス トークンを生成する手順](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 	トークンを生成するには、空のアプリケーションを作成する必要がある点に注意してください。  
-3.	App.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。
-4.	*省略可能:* 検索するキーワードを調整します。既定で、このアプリケーションでは "Azure、Skype、XBox、Microsoft、シアトル" が検索されます。必要な場合は、App.config の twitter\_keywords の値を調整できます。
-5.	ソリューションをビルドします。
-6.	アプリケーションを起動します。CreatedAt、Topic、SentimentScore の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
+3.	TwitterClient.exe.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。
+4.	*省略可能:* 検索するキーワードを調整します。既定で、このアプリケーションでは "Azure、Skype、XBox、Microsoft、シアトル" が検索されます。必要な場合は、TwitterClient.exe.config の twitter\_keywords の値を調整できます。
+5.	**TwitterClient.exe** を実行し、アプリケーションを起動します。CreatedAt、Topic、SentimentScore の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
 
 	![センチメント分析: イベント ハブに送信される SentimentScore 値。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-sentiment-output-to-event-hub.png)
 
@@ -81,7 +81,8 @@ Event Hub を作成するには、次の手順に従います。
 	* **[リージョン]**: ジョブを実行するリージョンを選択します。パフォーマンスを向上させ、リージョン間のデータ転送が有料にならないように、同じリージョンにジョブとイベント ハブを配置することを検討します。
 	* **[ストレージ アカウント]**: このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用するストレージ アカウントを選択します。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。
 
-3.	Stream Analytics ジョブを一覧表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。![Stream Analytics サービス アイコン](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+3.	Stream Analytics ジョブを一覧表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。  
+	![Stream Analytics サービス アイコン](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
 
 4.	新しいジョブが **[作成済み]** の状態で表示されます。ページの下部にある **[開始]** ボタンが無効になっていることがわかります。ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があります。
 
@@ -224,7 +225,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -236,4 +237,5 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Nov15_HO3-->
+<!------HONumber=AcomDC_0224_2016-->
+

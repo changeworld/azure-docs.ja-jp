@@ -10,18 +10,18 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="11/03/2015"
-   ms.author="mausher;barbkess"/>
+   ms.date="03/03/2016"
+   ms.author="mausher;barbkess;sonyama"/>
 
 
 # bcp を使用したデータの読み込み
 
 > [AZURE.SELECTOR]
 - [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-- [PolyBase](sql-data-warehouse-load-with-polybase-short.md)
+- [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 - [BCP](sql-data-warehouse-load-with-bcp.md)
 
 
@@ -49,7 +49,7 @@ bcp では次のことができます。
 - インストールされた bcp コマンド ライン ユーティリティ
 - インストールされた SQLCMD コマンド ライン ユーティリティ
 
->[AZURE.NOTE]bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
+>[AZURE.NOTE] bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
 
 ## SQL Data Warehouse へのデータのインポート
 
@@ -65,20 +65,20 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I
 接続したら、sqlcmd プロンプトで次のテーブル スクリプトをコピーし、Enter キーを押します。
 
 ```
-CREATE TABLE DimDate2 
+CREATE TABLE DimDate2
 (
     DateId INT NOT NULL,
     CalendarQuarter TINYINT NOT NULL,
     FiscalQuarter TINYINT NOT NULL
 )
-WITH 
+WITH
 (
     CLUSTERED COLUMNSTORE INDEX,
     DISTRIBUTION = ROUND_ROBIN
 );
 GO
 ```
->[AZURE.NOTE]WITH 句で使用できるオプションの詳細については、開発トピック グループの「[テーブル設計][]」を参照してください。
+>[AZURE.NOTE] WITH 句で使用できるオプションの詳細については、開発トピック グループの「[テーブル設計][]」を参照してください。
 
 ### 手順 2: ソース データ ファイルを作成する
 
@@ -101,7 +101,7 @@ GO
 
 これをローカル一時ディレクトリ C:\\Temp\\DimDate2.txt に保存します。
 
-> [AZURE.NOTE]bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII でエンコードされたファイルを使用するか、ファイルに UTF-16 エンコードを使用してください。
+> [AZURE.NOTE] bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII でエンコードされたファイルを使用するか、ファイルに UTF-16 エンコードを使用してください。
 
 ### 手順 3: データに接続し、インポートする
 bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
@@ -134,7 +134,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### 手順 4: 新しくロードしたデータの統計を作成する 
+### 手順 4: 新しくロードしたデータの統計を作成する
 
 Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
 
@@ -174,7 +174,7 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 20150101,1,3
 ```
 
->[AZURE.NOTE]分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。queryout パラメーターを使用して、実行する Transact-SQL クエリを指定することもできます。
+>[AZURE.NOTE] 分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。queryout パラメーターを使用して、実行する Transact-SQL クエリを指定することもできます。
 
 ## 次のステップ
 読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
@@ -196,4 +196,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

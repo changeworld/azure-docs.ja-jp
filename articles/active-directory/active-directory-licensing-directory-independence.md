@@ -1,6 +1,6 @@
 <properties
-   pageTitle="複数の Azure AD ディレクトリを追加および管理する | Microsoft Azure"
-   description="ディレクトリを完全に独立したリソースとして説明する、Azure AD ディレクトリの追加と管理のための手順とベスト プラクティス"
+   pageTitle="複数の Azure Active Directory ディレクトリの追加と管理 | Microsoft Azure"
+   description="Azure Active Directory ディレクトリの追加と管理のための手順とベスト プラクティスについて説明します。ディレクトリを完全に独立したリソースとして説明しています。"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/21/2015"
+   ms.date="01/05/2016"
    ms.author="curtand"/>
 
-# 複数の Azure AD ディレクトリを追加および管理する
+# 複数の Azure Active Directory ディレクトリの追加と管理
 
-Azure AD の各ディレクトリは、完全に独立したリソースです。つまり、対等であり、フル機能を備え、管理対象の他のディレクトリから論理的に独立しています。ディレクトリ間に親子関係はありません。このディレクトリ間の独立には、リソースの独立、管理上の独立、同期の独立があります。
+Azure Active Directory (Azure AD) の各ディレクトリは、完全に独立したリソースです。つまり、対等であり、フル機能を備え、管理対象の他のディレクトリから論理的に独立しています。ディレクトリ間に親子関係はありません。このディレクトリ間の独立には、リソースの独立、管理上の独立、同期の独立があります。
 
 ##リソースの独立
 
@@ -34,10 +34,10 @@ Azure AD の各ディレクトリは、完全に独立したリソースです�
 
 ##Azure AD ディレクトリを追加する
 
-Azure 管理ポータルで Azure AD ディレクトリを追加するには、左側で Active Directory 拡張機能を選択し、**[追加]** をタップします。
+Azure クラシック ポータルで Azure AD ディレクトリを追加するには、左側で Azure Active Directory 拡張機能を選択し、**[追加]** をタップします。
 
 > [AZURE.NOTE]他の Azure リソースとは異なり、ディレクトリは Azure サブスクリプションの子リソースではありません。Azure サブスクリプションを取り消した場合や、期限切れを許可した場合でも、Azure PowerShell、Azure Graph API、Office 365 管理センターなどの他のインターフェイスを使用して、ディレクトリ データに引き続きアクセスできます。また、ディレクトリに別のサブスクリプションを関連付けることもできます。
 
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、[Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

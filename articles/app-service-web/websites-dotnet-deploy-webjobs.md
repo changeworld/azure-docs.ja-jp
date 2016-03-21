@@ -13,14 +13,14 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="na" 
-	ms.date="09/22/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用して Web ジョブを展開する
 
 ## 概要
 
-このトピックでは、Visual Studio を使用して、コンソール アプリケーション プロジェクトを [Azure Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=529714)として [App Service](http://go.microsoft.com/fwlink/?LinkId=390226) の Web アプリにデプロイする方法を説明します。[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web ジョブをデプロイする方法については、「[Web ジョブでバックグラウンド タスクを実行する](web-sites-create-web-jobs.md)」を参照してください。
+このトピックでは、Visual Studio を使用して、コンソール アプリケーション プロジェクトを [Azure Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=529714)として [App Service](http://go.microsoft.com/fwlink/?LinkId=390226) の Web アプリにデプロイする方法を説明します。[Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法については、「[Web ジョブでバックグラウンド タスクを実行する](web-sites-create-web-jobs.md)」を参照してください。
 
 Visual Studio では Web ジョブ対応のコンソール アプリケーション プロジェクトをデプロイする場合に、2 つのタスクを実行します。
 
@@ -100,8 +100,7 @@ Web ジョブのデプロイメント機能は、[Visual Studio 2013 Update 3](h
 
 	同じソリューション内の Web プロジェクトがデプロイされたときに Web ジョブとして自動的にデプロイされるように構成して、プロジェクトを作成します。Web ジョブを、関連する Web アプリケーションが実行する Web アプリケーションと同じアプリケーションで実行する場合に、このオプションを使用します。
 
-SDK 2.4 リリースでは、Web ジョブの新しいプロジェクト テンプレートは、コンソール アプリケーション プロジェクトを作成して Web ジョブのデプロイメントを有効にする方法と比較して、それほど簡単ではありません。将来的には、Web ジョブの新しいプロジェクト テンプレートは、自動的に適切な Web ジョブ SDK NuGet パッケージをインストールするようになり、[Web ジョブ SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 開発において今より使いやすくなります。それまでは、[Web ジョブ SDK のチュートリアル](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)に示すように、手動でパッケージをインストールすることで Web ジョブ SDK を使用するようプロジェクトを構成できます。
-
+> [AZURE.NOTE]Web ジョブの new-project テンプレートは、NuGet パッケージを自動的にインストールし、[Web ジョブ SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 用にコードを *Program.cs* に含めます。Web ジョブ SDK を使用しない場合や、継続的な Web ジョブではなくスケジュールされた Web ジョブを使用する場合は、*Program.cs* 内の `host.RunAndBlock` ステートメントを削除または変更します。
 
 ### <a id="createnolink"></a> 独立した Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
   
@@ -127,7 +126,7 @@ SDK 2.4 リリースでは、Web ジョブの新しいプロジェクト テン�
 
 ![Add Azure WebJob dialog](./media/websites-dotnet-deploy-webjobs/aaw2.png)
 
-このダイアログのフィールドは、Azure の管理ポータルの **[新しいジョブ]** ダイアログのフィールドに対応しています。詳細については、「[Web ジョブでのバックグラウンド タスクの実行](web-sites-create-web-jobs.md)」を参照してください。
+このダイアログのフィールドは、Azure ポータルの **[新しいジョブ]** ダイアログのフィールドに対応しています。詳細については、「[Web ジョブでのバックグラウンド タスクの実行](web-sites-create-web-jobs.md)」を参照してください。
 
 スケジュールされた Web ジョブの場合 (継続的な Web ジョブではなく)、Visual Studio は [Azure Scheduler](/services/scheduler/) ジョブ コレクションが存在しない場合はコレクションを作成し、コレクション内にジョブを作成します。
 
@@ -197,7 +196,5 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

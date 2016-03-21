@@ -27,9 +27,9 @@
 
 ## ツールの選択肢
 
-### GUI: Azure プレビュー ポータル
+### GUI: Azure ポータル
 
-Azure ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。Azure プレビュー ポータルを使用して、仮想マシンを作成します。
+Azure クラシック ポータルのグラフィカル ユーザー インターフェイスを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。Azure ポータルを使用して、仮想マシンを作成します。
 
 [Windows を実行する仮想マシンの作成][]
 
@@ -67,7 +67,7 @@ Azure PowerShell については、以下をご覧ください。
 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する]: virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md
 [Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理]: virtual-machines-deploy-rmtemplates-powershell.md
 [リソース マネージャーと PowerShell で Windows VM を作成する]: virtual-machines-create-windows-powershell-resource-manager.md
-[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する]: virtual-machines-create-windows-powershell-resource-manager-template-simple.md
+[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する]: virtual-machines-create-windows-powershell-resource-manager-template.md
 
 
 [Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択]: resource-groups-vm-searching.md
@@ -79,4 +79,4 @@ Azure PowerShell については、以下をご覧ください。
 
 [Azure hybrid cloud test environments]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

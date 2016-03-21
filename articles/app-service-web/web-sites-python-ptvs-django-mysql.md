@@ -11,16 +11,16 @@
 	ms.service="app-service-web" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="get-started-article" 
-	ms.date="08/30/2015"
-	ms.author="huguesv"/>
+	ms.devlang="python"
+	ms.topic="hero-article" 
+	ms.date="02/25/2016"
+	ms.author="huvalo"/>
 
 # Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と MySQL 
 
 > [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [.NET](web-sites-dotnet-get-started.md)
+- [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
 - [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
@@ -39,10 +39,11 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
  - [Python Tools 2.2 for Visual Studio サンプル VSIX]
  - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015]
  - [Python 2.7 (32 ビット)]
+ - Django 1.6 以前
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -98,14 +99,13 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 次の手順に従って、無料プランでデータベースを作成できます。
 
-1.  [Azure ポータル]にログインします。
+1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。次に、**[データ + ストレージ]**、**[Azure Marketplace]**の順にクリックします。
+1.  ナビゲーション ウィンドウの上部にある **[新規]** をクリックします。**[データ + ストレージ]**、**[MySQL データベース]** の順にクリックします。
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-django-mysql/PollsCommonAzurePlusNew.png)-->
+  
 
 1.  検索ボックスに「**mysql**」と入力し、次に **[MySQL データベース]** をクリックし、**[作成]** をクリックします。
-
   	<!-- ![Choose Add-on Dialog](./media/web-sites-python-ptvs-django-mysql/PollsDjangoClearDBAddon1.png) -->
 
 1.  新しいリソース グループを作成することで、新しい MySQL データベースを構成し、適切な場所を選択します。
@@ -195,7 +195,6 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->
@@ -203,7 +202,7 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [Azure Cloud Services]: ../cloud-services-python-ptvs.md
 
 <!--External Link references-->
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Python Tools 2.2 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
@@ -218,4 +217,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

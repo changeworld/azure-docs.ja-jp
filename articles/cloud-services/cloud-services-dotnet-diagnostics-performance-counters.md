@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure 診断でのパフォーマンス カウンターの使用 | Microsoft Azure"
-   description="Azure Cloud Services と Virtual Machines で、パフォーマンス カウンターを使用して、ボトルネックの特定とパフォーマンスの調整を行います。"
+   description="Azure Cloud Services と仮想マシンで、パフォーマンス カウンターを使用して、ボトルネックの特定とパフォーマンスの調整を行います。"
    services="cloud-services"
    documentationCenter=".net"
    authors="rboucher"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/25/2015"
+   ms.date="02/29/2016"
    ms.author="robb" />
 
 # Azure アプリケーションでのパフォーマンス カウンターの作成と使用
@@ -21,9 +21,12 @@
 
 また、Windows Server、IIS、ASP.NET で使用できるパフォーマンス カウンターでは、Azure の Web ロール、worker ロール、Virtual Machines のパフォーマンス データを収集して状態を把握することもできます。カスタム パフォーマンス カウンターを作成して使用することもできます。
 
-パフォーマンス カウンターのデータを確認するには、1.リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールを通じてアプリケーション ホストを直接調べるか、2.System Center Operations Manager の Azure 管理パック、または 3.Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。
+パフォーマンス カウンターのデータを確認するには、
+1. リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールでアプリケーション ホストを直接調べるか、
+2. System Center Operations Manager の Azure 管理パック、または
+3. Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。  
 
-[Azure 管理ポータル](http://manage.azure.com/)でアプリケーションのパフォーマンスを監視する方法の詳細については、[クラウド サービスの監視方法](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)に関する記述を参照してください。
+[Azure クラシック ポータル](http://manage.azure.com/)でアプリケーションのパフォーマンスを監視する方法の詳細については、[Cloud Services の監視方法](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)に関する記述を参照してください。
 
 ログとトレース戦略を作成し、診断機能やその他の手法で問題のトラブルシューティングを行って Azure アプリケーションを最適化する方法の詳細なガイダンスについては、[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス](https://msdn.microsoft.com/library/azure/hh771389.aspx)を参照してください。
 
@@ -53,13 +56,22 @@ Azure は、Windows Server、IIS、および ASP.NET スタックで使用でき
 |ASP.NET v4.0.30319 |Requests Rejected |ASP.NET 用のパフォーマンス カウンター|
 |メモリ |Available MBytes |メモリ パフォーマンス カウンター|
 |メモリ |Committed Bytes |メモリ パフォーマンス カウンター|
-|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター| |TCPv4 |Connection Failures |TCP オブジェクト| |TCPv4 |Connections Established |TCP オブジェクト| |TCPv4 |Connections Reset |TCP オブジェクト| |TCPv4 |Segments Sent/sec |TCP オブジェクト| |Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト| |Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
+|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター|
+|TCPv4 |Connection Failures |TCP オブジェクト|
+|TCPv4 |Connections Established |TCP オブジェクト|
+|TCPv4 |Connections Reset |TCP オブジェクト|
+|TCPv4 |Segments Sent/sec |TCP オブジェクト|
+|Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
 
 ## カスタム パフォーマンス カウンターの作成とアプリケーションへの追加
 
 Azure は、Web ロールと worker ロールのカスタム パフォーマンス カウンターの作成と変更をサポートしています。カスタム パフォーマンス カウンターを使用すると、アプリケーション固有の動作を追跡および監視できます。管理者特権のアクセス許可を使用して、スタートアップ タスク、Web ロール、または worker ロール用のカスタム パフォーマンス カウンターのカテゴリと指定子を作成または削除できます。
 
->[AZURE.NOTE]カスタム パフォーマンス カウンターに変更を加えるコードを実行するには、管理者特権のアクセス許可が必要です。コードが Web ロールまたは worker ロールに含まれる場合、ロールを正しく初期化するために、ロールの ServiceDefinition.csdef ファイルにタグ <Runtime executionContext="elevated" /> を含める必要があります。
+>[AZURE.NOTE] カスタム パフォーマンス カウンターに変更を加えるコードを実行するには、管理者特権のアクセス許可が必要です。コードが Web ロールまたは worker ロールに含まれる場合、ロールを正しく初期化するために、ロールの ServiceDefinition.csdef ファイルにタグ <Runtime executionContext="elevated" /> を含める必要があります。
 
 カスタム パフォーマンス カウンターのデータを診断エージェントを使用して Azure Storage に送信できます。
 
@@ -71,7 +83,7 @@ Azure は、Web ロールと worker ロールのカスタム パフォーマン�
 
 構成された各パフォーマンス カウンター インスタンスは指定したサンプリング レートで記録され、サンプリングされたデータは、スケジュール設定された転送要求またはオンデマンドの転送要求によってストレージ アカウントに転送されます。自動転送を毎分 1 回の頻度でスケジュール設定することもできます。診断エージェントによって転送されたパフォーマンス カウンター データは、ストレージ アカウント内のテーブル WADPerformanceCountersTable に保存されます。このテーブルには、標準の Azure Storage API メソッドを使用してアクセスし、クエリを実行することができます。WADPerformanceCountersTable テーブルに対してクエリを実行し、テーブル内のパフォーマンス カウンター データを表示する例については、[Microsoft Azure PerformanceCounters のサンプル](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9)を参照してください。
 
->[AZURE.NOTE]診断エージェントの転送頻度やキューの待機時間によっては、ストレージ アカウント内の最新のパフォーマンス カウンター データが数分前のデータになる場合があります。
+>[AZURE.NOTE] 診断エージェントの転送頻度やキューの待機時間によっては、ストレージ アカウント内の最新のパフォーマンス カウンター データが数分前のデータになる場合があります。
 
 ## 診断構成ファイルを使用してパフォーマンス カウンターを有効にする
 
@@ -83,7 +95,7 @@ Azure アプリケーションで、パフォーマンス カウンターを有�
 
 ## 手順 1. パフォーマンス カウンターからデータを収集して保存する
 
-Visual Studio ソリューションに診断ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集と保存を構成できます。そのためには、診断ファイルにパフォーマンス カウンターを追加します。パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。その後、データが Azure Table サービスの WADPerformanceCountersTable テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。診断データを保存する前に、[Azure 管理ポータル](http://manage.windowsazure.com/)でストレージ アカウントを作成する必要があります。ベスト プラクティスとして、Azure アプリケーションと同じ地理的な場所にあるストレージ アカウントを特定することにより、外部帯域幅のコストが生じないようにしたり、遅延時間を短縮することができます。
+Visual Studio ソリューションに診断ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集と保存を構成できます。そのためには、診断ファイルにパフォーマンス カウンターを追加します。パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。その後、データが Azure Table サービスの WADPerformanceCountersTable テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。診断データを保存する前に、[Azure クラシック ポータル](http://manage.windowsazure.com/)でストレージ アカウントを作成する必要があります。ベスト プラクティスとして、Azure アプリケーションと同じ地理的な場所にあるストレージ アカウントを特定することにより、外部帯域幅のコストが生じないようにしたり、遅延時間を短縮することができます。
 
 ### 診断ファイルにパフォーマンス カウンターを追加する
 
@@ -132,11 +144,11 @@ counterSpecifier 属性は、収集するパフォーマンス カウンター�
 
 Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
->[AZURE.NOTE]以下の手順は、Azure SDK 2.4 以前にのみ適用されます。Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
+>[AZURE.NOTE] 以下の手順は、Azure SDK 2.4 以前にのみ適用されます。Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
 接続文字列を設定するには、次の手順に従います。
 
-1. 任意のテキスト エディターを使用して ServiceConfiguration.Cloud.cscfg ファイルを開き、ストレージの接続文字列を設定します。*AccountName* 値と *AccountKey* 値は、管理ポータルのストレージ アカウント ダッシュボードにある [キーの管理] に表示されます。
+1. 任意のテキスト エディターを使用して ServiceConfiguration.Cloud.cscfg ファイルを開き、ストレージの接続文字列を設定します。ストレージ アカウント ダッシュボードの Azure クラシック ポータルの [キーの管理] の下に、*AccountName* 値と *AccountKey* 値があります。
 
     ```
     <ConfigurationSettings>
@@ -167,7 +179,7 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 2. Runtime 要素を WebRole または WorkerRole 要素に追加して、 昇格された権限で実行できるようにします。
 
     ```
-    <RuntimeexecutionContext="elevated"/>
+    <runtime executioncontext="elevated"/>
     ```
 3. ファイルを保存します。
 4. 診断ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) を開き、次のコードを DiagnosticMonitorConfiguration に追加します。 
@@ -229,7 +241,7 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 
 ## 手順 3. パフォーマンス カウンターのデータのクエリを実行する
 
-アプリケーションが展開されたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure Storage に保存されます。Visual Studio のサーバー エクスプローラー、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) (Cerebrata) などのツールを使用して、WADPerformanceCountersTable テーブルにあるパフォーマンス カウンター データを確認します。[C#](../storage/storage-dotnet-how-to-use-tables.d)、[Java](../storage/storage-java-how-to-use-table-storage.md)、[Node.js](../storage/storage-nodejs-how-to-use-table-storage.md)、[Python](../storage/storage-python-how-to-use-table-storage.md)、[Ruby](../storage/storage-ruby-how-to-use-table-storage.md)、[PHP](../storage/storage-php-how-to-use-table-storage.md) を使用して、Table サービスをプログラムにより照会することもできます。
+アプリケーションがデプロイされたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure ストレージに保存されます。Visual Studio のサーバー エクスプローラー、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) (Cerebrata) などのツールを使用して、WADPerformanceCountersTable テーブルにあるパフォーマンス カウンター データを確認します。[C#](../storage/storage-dotnet-how-to-use-tables.d)、[Java](../storage/storage-java-how-to-use-table-storage.md)、[Node.js](../storage/storage-nodejs-how-to-use-table-storage.md)、[Python](../storage/storage-python-how-to-use-table-storage.md)、[Ruby](../storage/storage-ruby-how-to-use-table-storage.md)、[PHP](../storage/storage-php-how-to-use-table-storage.md) を使用して、Table サービスをプログラムにより照会することもできます。
 
 次の C# の例は、WADPerformanceCountersTable テーブルに対する簡単なクエリを示しており、CSV ファイルに診断データを保存します。パフォーマンス カウンターが CSV ファイルに保存されたら、Microsoft Excel や他のツールのグラフ作成機能を使用してデータを視覚化できます。必ず、Microsoft.WindowsAzure.Storage.dll への参照を追加してください。これは、Azure SDK for .NET (2012 年 10 月) 以降に含まれています。このアセンブリは、%Program Files%\\Microsoft SDKs\\Microsoft Azure.NET SDK\\version-num\\ref\\ ディレクトリにインストールされます。
 
@@ -306,11 +318,6 @@ Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルの�
 
 
 ## 次のステップ
+[Azure 診断に関するその他の記事を確認します](../azure-diagnostics.md)。
 
-これで、パフォーマンス カウンターの収集の基本を学習できました。より複雑なトラブルシューティング シナリオを実装する方法については、次のリンク先を参照してください。
-
-[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス](https://msdn.microsoft.com/library/azure/hh771389.aspx)
-
-[クラウド サービスの監視方法](./how-to-monitor-a-cloud-service.md)
-
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

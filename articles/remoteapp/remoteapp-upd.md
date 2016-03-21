@@ -1,7 +1,7 @@
 
 <properties 
-    pageTitle="Azure RemoteApp のユーザー プロファイル データ | Microsoft Azure"
-	description="Azure RemoteApp でのユーザー データの格納およびアクセス方法について説明します"
+    pageTitle="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法 | Microsoft Azure"
+	description="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法について説明します。"
 	services="remoteapp"
 	documentationCenter="" 
 	authors="lizap" 
@@ -13,10 +13,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="10/28/2015" 
+    ms.date="12/04/2015" 
     ms.author="elizapo" />
-
-
 
 # Azure RemoteApp によるユーザー データと設定の保存方法
 
@@ -27,6 +25,9 @@ Azure RemoteApp では、デバイスとセッションにわたってユーザ�
 各 UPD には 50 GB の永続的なストレージがあり、ユーザー データとアプリケーションの両方の設定が格納されています。
 
 ユーザー プロファイル データの詳細については、次をお読みください。
+
+>[AZURE.NOTE]UPD を無効にする必要がありますか。 UPD を無効にできるようになりました。詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD)](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx) に関するページを参照してください。
+
 
 ## 管理者がデータにアクセスするには、どうすればよいですか。
 
@@ -46,6 +47,8 @@ Azure RemoteApp では、デバイスとセッションにわたってユーザ�
 Azure RemoteApp では、セッション間で Outlook の状態 (メールボックス、PST) が保存されます。これを有効にするには、PST をユーザー プロファイル データ (c:\\users <username>) に格納する必要があります。これはデータの既定の場所なので、この場所を変更しない限り、データはセッション間で保持されます。
 
 また、Outlook では "キャッシュ" モードを使用し、検索には "サーバー/オンライン" モードを使用することをお勧めします。
+
+Outlook および Azure RemoteApp の使用方法の詳細については、[この記事](remoteapp-outlook.md)を参照してください。
 
 ## 共有データ ソリューションを使用できますか。
 はい。Azure RemoteApp は共有データ ソリューション、特に OneDrive for Business と Dropbox をサポートしています。ただし、OneDrive Consumer (個人用) と Box はサポートされていないことに注意してください。
@@ -76,6 +79,14 @@ Azure RemoteApp では、セッション間で Outlook の状態 (メールボ�
 ## コレクションに対して UPD を無効にできますか。
 
 はい、サブスクリプションの UPD を無効にするように Azure RemoteApp に依頼できます。ただし、これをご自身で行うことはできません。これは、サブスクリプション内のすべてのコレクションに対して UPD が無効になることを意味します。
+
+UPD を無効にする必要があるのは、次のような場合です。
+
+- ユーザー データへの完全なアクセスと制御が必要な場合 (金融機関など、監査やレビューの目的のため)。
+- サードパーティのユーザー プロファイル管理ソリューションがオンプレミスにあり、ドメインに参加している Azure RemoteApp デプロイでその使用を続ける必要がある場合。この場合、プロファイル エージェントがゴールド イメージに読み込まれている必要があります。 
+- 任意のローカル データ ストレージが不要な場合、またはクラウド (OneDrive for Business など) にすべてのデータがあったり、ファイル共有のため、Azure RemoteApp を使用してデータのローカルへの保存を制御する必要がある場合。
+
+詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD) の無効化](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx)に関するページを参照してください。
 
 ## ユーザーによるシステム ドライブへのデータ保存を制限できますか。
 
@@ -126,4 +137,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 いいえ。Azure RemoteApp ではサポートされません。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1217_2015-->

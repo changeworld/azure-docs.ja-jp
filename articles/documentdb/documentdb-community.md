@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="11/05/2015"
+  ms.date="02/24/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -45,6 +45,32 @@ Microsoft Azure DocumentDB サービス用のクライアント管理ビュー�
 [Github](https://github.com/mingaliu/DocumentDBStudio) でご覧ください。
 
 
+### DoQmentDB
+
+*作者: Ariel Mashraki*
+
+DoQmentDB は Node.js promise ベースのクライアントであり、DocumentDB の上に MongoDB タイプの層を与えます。
+
+[Github](https://github.com/a8m/doqmentdb) および [npm](https://www.npmjs.com/package/doqmentdb) でご覧ください。
+
+
+### DocumentDB 用 Swagger REST API
+
+*作者: Howard Edidin*
+
+API アプリとして簡単にデプロイできる DocumentDB REST API Swagger ファイル。
+
+[Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
+
+
+### fluent-plugin-documentdb
+
+*作成者: Yoichi Kawasaki*
+
+fluent-plugin-documentdb は、Azure DocumentDB に出力するための Fluentd プラグインです。
+
+[Github](https://github.com/yokawasa/fluent-plugin-documentdb) および [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb) でご覧ください。
+
 <br/><br/>
 
 *上記以外にも、多数のオープン ソース DocumentDB プロジェクトを [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) でご覧いただけます。*
@@ -62,6 +88,32 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 <br/>
 
 **コミュニティへの投稿:**
+
+* [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *作成者: Yoichi Kawasaki*
+
+* [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *作成者: Peter Mannerhult*
+
+* [**What to love and hate about Azure’s DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *作成者: George Saadeh*
+
+* [**Azure DocumentDB Server-Side Scripting**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *作成者: Robert Sheldon*
+
+* [**Azure Stream Analytics 用のデータ シンクとしてのDocumentDB**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) - *作成者: Jan Hentschel*
+
+* [**稼働中の Azure DocumentDB!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) - *作成者: Alexandre Walsh および Marc-Olivier Duval*
+
+* [**Azure Search インデックサー – DocumentDB クエリ (スペイン語)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) - *作成者: Matthias Quaranta*
+
+* [**Azure DocumentDB の SQL クエリ基礎**](http://beachside.hatenablog.com/entry/2015/12/06/000045) - *作成者: Atsushi Yokohama*
+
+* [**データ ポイント - Aurelia と DocumentDB の出会い: 仲人の旅**](https://msdn.microsoft.com/magazine/mt620011.aspx) - *作者: Julie Lerman*
+
+* [**コードとしてのインフラストラクチャと Node.js + Azure DocumentDB ソリューションの連続的デプロイメント**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) - *作者: Thiago Almedia*
+
+* [**ビジネス上、DocumentDb が一部のプロジェクトで合理的な理由**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) - *作者: Samuel Uresin*
+
+* [**Azure DocumentDB の開発ことはじめ - Client クラスの開発（1/2）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作成者: Atsushi Yokohama*
+
+* [**Azure DocumentDB を使うときに知っておきたいいくつかのこと**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者: Atsushi Yokohama*
 
 * [**Azure DocumentDB における RequestRateTooLarge エラーの処理とパフォーマンスのテスト**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *投稿者: Azim Uddin*
 
@@ -87,57 +139,67 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 ### 直近および今後のイベント
 
-| イベント名 | 場所 | 日付 | ハッシュタグ |
-| ------------------------------------------------------------------------------- | -------------------- | ------------------- | ------- |
-| [Integration User Group](http://www.integrationusergroup.com/) | ウェビナー | 2015 年 11 月 9 日 | [#IntegrationMonday](https://twitter.com/hashtag/integrationmonday) |
-| [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | [#msdevmtl](https://twitter.com/hashtag/msdevmtl) |
+| イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
+| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | ------- |
+| [Meetup: CloudTalk](http://www.meetup.com/CloudTalk/events/227963695/) | Andrew Liu | ワシントン州ベルビュー | 2016 年 3 月 3 日 | 該当なし
+| SQLBits XV | 未定 | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
 
-*イベントを主催する予定ですか? お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
+*イベントで講演を行ったり、イベントを主催していますか。 お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
 
 ### 過去のイベントと記録
 
-| イベント名 | 場所 | 日付 | 記録 |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------- | --------- |
-| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/Home.asp) | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | 該当なし |
-| [CloudDevelop 2015](http://www.clouddevelop.org/) | オハイオ州コロンバス | 2015 年 10 月 23 日 | 該当なし |
-| [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | ソフィア (ブルガリア) | 2015 年 10 月 10 日 | 該当なし |
-| [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/eventhome.aspx) | オポルト (ポルトガル) | 2015 年 10 月 3 日 | 該当なし |
-| [AzureCon](https://azure.microsoft.com/azurecon/) | 仮想イベント | 2015 年 9 月 29 日 | [Azure data and analytics platform (Azure データ/分析プラットフォーム)](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[Working with NoSQL Data in DocumentDB (DocumentDB での NoSQL データの使用)](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
-| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx) | ユトレヒト (オランダ) | 2015 年 9 月 26 日 | [Azure DocumentDB の概要](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
-| [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | カリフォルニア州サンフランシスコ | 2015 年 9 月 15 日 | 該当なし |
-| [Belarus Azure User Group Meet-Up](https://www.facebook.com/events/786540124800276/) | ミンスク、ベラルーシ | 2015 年 9 月 9 日 | [Introduction to DocumentDB concept overview, consistency levels, sharding strategies](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
-| [NoSQL Now!](http://nosql2015.dataversity.net/) | カリフォルニア州サンホセ | 2015 年 8 月 18 ～ 20 日 | 該当なし |
-| [@Scale Seattle](http://www.atscaleconference.com/) | ワシントン州シアトル | 2015 年 6 月 17 日 | [Azure DocumentDB を使用した、スキーマに依存しないインデックス作成](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
-| [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) | リスボン (ポルトガル) | 2015 年 6 月 15 日 | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
-| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | ニューヨーク州ニューヨーク | 2015 年 5 月 19 日 | [Azure DocumentDB: 大規模にスケーラブルなマルチテナント ドキュメント データベース サービス](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
-| [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | ロンドン (英国) | 2015 年 5 月 19 日 | 該当なし |
-| [Ignite](http://ignite.microsoft.com/) | イリノイ州シカゴ | 2015 年 5 月 4 日～ 8 日 | [ビデオ: SELECT Latest FROM Microsoft Azure DocumentDB (Microsoft Azure DocumentDB の最新情報)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[ビデオ: Microsoft Azure DocumentDB and Azure HDInsight: Better Together (Microsoft Azure DocumentDB と Azure HDInsight: その相乗効果)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
-| [Build 2015](http://www.buildwindows.com/) | カリフォルニア州サンフランシスコ | 2015 年 4 月 29 日～ 5 月 1 日 | [Azure の NoSQL サービスの次なる目玉: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
-| [Global Azure Bootcamp 2015 - Spain](http://azurebootcamp.es/) | マドリード (スペイン) | 2015 年 4 月 25 日 | [#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure (Azure で実行される #DEAN DocumentDB、Express、AngularJS、NodeJS)](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
-| [Meetup: Charlotte Microsoft Cloud](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/) | ノースカロライナ州シャーロット | 2015 年 4 月 8 日 | 該当なし |
-| [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | コペンハーゲン (デンマーク) | 2015 年 5 月 19 日 | 該当なし |
-| [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | ワシントン州シアトル | 2015 年 5 月 14 日 | 該当なし |
-| [Meetup: Istanbul Azure Meetup](http://www.meetup.com/istanbul-azure-meetup/events/220325538/) | イスタンブール (トルコ) | 2015 年 3 月 7 日 | 該当なし |
-| [Meetup: Great Lakes Area .Net User Group](http://www.meetup.com/Great-Lakes-Area-NET-User-Group-MIGANG/events/220364576/) | ミシガン州サウスフィールド | 2015 年 2 月 18 日 | 該当なし |
-| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) | スウェーデン、ストックホルム | 2015 年 1 月 28 日～ 29 日 | [Azure の DocumentDB - クラウドのための新しい NoSQL オプション](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
+| イベント名 | 講演者 | 場所 | 日付 | 記録 |
+| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [Meetup: Azure Austin](http://www.meetup.com/azureaustin/events/228209275/) | Merwan Chinta | テキサス州オースティン | 2016 年 1 月 28 日 | 該当なし |
+| [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | Vincent-Philippe Lauzon | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | 該当なし |
+| [会合: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | David Makogon | ワシントン州シアトル | 2015 年 11 月 12 日 | 該当なし |
+| [PASS Summit 2015](http://www.sqlpass.org/summit/2015/) | Jeff Renz、Andrew Hoh、Aravind Ramachandran、John Macintyre | ワシントン州シアトル | 2015 年 10 月 27 日～ 30 日 | [Developing Modern Applications on Azure](https://www.youtube.com/watch?v=k5Z24HX-RyQ) |
+| [CloudDevelop 2015](http://www.clouddevelop.org/) | David Makogon、Ryan Crawcour | オハイオ州コロンバス | 2015 年 10 月 23 日 | 該当なし |
+| [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/eventhome.aspx) | Leonard Lobel | ソフィア (ブルガリア) | 2015 年 10 月 10 日 | 該当なし |
+| [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/eventhome.aspx) | Leonard Lobel | オポルト (ポルトガル) | 2015 年 10 月 3 日 | 該当なし |
+| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon、Ryan Crawcour、John Macintyre | 仮想イベント | 2015 年 9 月 29 日 | [Azure data and analytics platform (Azure データ/分析プラットフォーム)](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[Working with NoSQL Data in DocumentDB (DocumentDB での NoSQL データの使用)](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
+| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/eventhome.aspx) | Leonard Lobel | ユトレヒト (オランダ) | 2015 年 9 月 26 日 | [Azure DocumentDB の概要](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
+| [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | Andrew Liu | カリフォルニア州サンフランシスコ | 2015 年 9 月 15 日 | 該当なし |
+| [Belarus Azure User Group Meet-Up](https://www.facebook.com/events/786540124800276/) | Alex Zyl | ミンスク、ベラルーシ | 2015 年 9 月 9 日 | [Introduction to DocumentDB concept overview, consistency levels, sharding strategies](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
+| [NoSQL Now!](http://nosql2015.dataversity.net/) | David Makogon、Ryan Crawcour | カリフォルニア州サンホセ | 2015 年 8 月 18 ～ 20 日 | 該当なし |
+| [@Scale Seattle](http://www.atscaleconference.com/) | Dharma Shukla | ワシントン州シアトル | 2015 年 6 月 17 日 | [Azure DocumentDB を使用した、スキーマに依存しないインデックス作成](https://www.youtube.com/watch?v=VJQ_5qFFVP4) |
+| [Tech Refresh 2015](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015) | Bruno Lopes | リスボン (ポルトガル) | 2015 年 6 月 15 日 | [DocumentDB 101](https://channel9.msdn.com/Events/DXPortugal/Tech-Refresh-2015/DPDEV01) |
+| [Meetup:Seattle Scalability Meetup](http://www.meetup.com/Seattle-Scalability-Meetup/events/204010442/) | Dharma Shukla | ワシントン州シアトル | 2015 年 5 月 27 日 | 該当なし |
+| [Database Month](http://www.databasemonth.com/database/azure-documentdb) | Dharma Shukla | ニューヨーク州ニューヨーク | 2015 年 5 月 19 日 | [Azure DocumentDB: 大規模にスケーラブルなマルチテナント ドキュメント データベース サービス](https://www.youtube.com/watch?v=iZsqBc3Dkbk) |
+| [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | ロンドン (英国) | 2015 年 5 月 19 日 | 該当なし |
+| [DevIntersection](https://devintersection.com/) | Andrew Liu | アリゾナ州スコッツデール | 2015 年 5 月 18 ～ 21 日 | 該当なし |
+| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh、John Macintyre | イリノイ州シカゴ | 2015 年 5 月 4 日～ 8 日 | [ビデオ: SELECT Latest FROM Microsoft Azure DocumentDB (Microsoft Azure DocumentDB の最新情報)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[ビデオ: Microsoft Azure DocumentDB and Azure HDInsight: Better Together (Microsoft Azure DocumentDB と Azure HDInsight: その相乗効果)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Build 2015](http://www.buildwindows.com/) | Ryan Crawcour | カリフォルニア州サンフランシスコ | 2015 年 4 月 29 日～ 5 月 1 日 | [Azure の NoSQL サービスの次なる目玉: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
+| [Global Azure Bootcamp 2015 - Spain](http://azurebootcamp.es/) | Luis Ruiz Pavon、Roberto Gonzalez | マドリード (スペイン) | 2015 年 4 月 25 日 | [#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure (Azure で実行される #DEAN DocumentDB、Express、AngularJS、NodeJS)](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
+| [Meetup: Charlotte Microsoft Cloud](http://www.meetup.com/Charlotte-Microsoft-Cloud/events/221503519/) | Jamie Rance | ノースカロライナ州シャーロット | 2015 年 4 月 8 日 | 該当なし |
+| [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | Christian Holm Diget | コペンハーゲン (デンマーク) | 2015 年 5 月 19 日 | 該当なし |
+| [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | Andrew Liu | ワシントン州シアトル | 2015 年 5 月 14 日 | 該当なし |
+| [Meetup: Istanbul Azure Meetup](http://www.meetup.com/istanbul-azure-meetup/events/220325538/) | Daron Yondem | イスタンブール (トルコ) | 2015 年 3 月 7 日 | 該当なし |
+| [Meetup: Great Lakes Area .Net User Group](http://www.meetup.com/Great-Lakes-Area-NET-User-Group-MIGANG/events/220364576/) | Michael Collier | ミシガン州サウスフィールド | 2015 年 2 月 18 日 | 該当なし |
+| [TechX Azure](https://www.youtube.com/channel/UCDRlI2E4z5qmHsBXTrFOE2Q) | Magnus Mårtensson | スウェーデン、ストックホルム | 2015 年 1 月 28 日～ 29 日 | [Azure の DocumentDB - クラウドのための新しい NoSQL オプション](https://www.youtube.com/watch?v=Hw7hDYoChNI) |
 
 ### ビデオとポッドキャスト
 
-| 表示 | 日付 | エピソード |
-| ------------------------------------------- | ------------------ | ------- |
-| Integration User Group | 2015 年 10 月 5 日 | [医療の統合のための Azure DocumentDB](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
-| DX Italy - #TecHeroes | 2015 年 10 月 2 日 | [#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
-| Microsoft Cloud Show - Podcast | 2015 年 9 月 30 日 | [エピソード 099 - Azure DocumentDB with Andrew Liu (Azure DocumentDB に関する Andrew Liu とのトーク)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
-| .NET Rocks! - Podcast | 2015 年 9 月 29 日 | [Data on DocumentDB with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB に関するデータ)](https://www.dotnetrocks.com/?show=1197) |
-| Data Exposed | 2015 年 9 月 28 日 | [What's New with Azure DocumentDB Since GA (GA 以降の Azure DocumentDB の新機能)](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
-| The Azure Podcast | 2015 年 9 月 17 日 | [Episode 94: azpodcast.com re-architecture (エピソード 94: azpodcast.com の再アーキテクチャ)](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
-| Cloud Cover | 2015 年 9 月 4 日 | [Episode 185: DocumentDB Updates with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB の最新情報)](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
-| CodeChat 033 | 2015 年 7 月 28 日 | [Greg Doerr on Azure DocumentDB (Greg Doerr が語る Azure DocumentDB)](https://channel9.msdn.com/Shows/codechat/033) |
-| In-Memory Technologies PASS Virtual Chapter | 2015 年 5 月 25 日 | [Hello DocumentDB](https://www.youtube.com/watch?v=itFXQCd9-dI) |
-| Data Exposed | 2015 年 4 月 8 日 | [DocumentDB General Availibility and What's New! (DocumentDB の一般提供と新機能)](https://channel9.msdn.com/Shows/Data-Exposed/DocumentDB-General-Availability-and-Whats-New) |
-| Data Exposed | 2015 年 3 月 17 日 | [Java SDK for DocumentDB](https://channel9.msdn.com/Shows/Data-Exposed/Java-SDK-for-DocumentDB) |
-| #DevHangout | 2015 年 3 月 11 日 | [DocumentDB、Microsoft Azure の NoSQL データの基礎](https://www.youtube.com/watch?v=8Ud3jB8KOBA) |
-| Data Architecture Virtual Chapter PASS | 2015 年 2 月 25 日 | [DocumentDB の概要](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
+| 表示 | 講演者 | 日付 | エピソード |
+| ------------------------------------------- | ----------------------- | ------------------ | ------- |
+| Integration User Group | Han Wong | 2016 年 2 月 17 日 | [Analyze and visualize non-relational data with DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
+| Channel 9: Modern Applications | Tara Shankar Jana | 2016 年 12 月 13 日 | [Take a modern approach to data in your apps](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
+| NinjaTips | Miguel Quintero | 2015 年 12 月 10 日 | [DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
+| Integration User Group | Howard Edidin | 2015 年 11 月 9 日 | [医療の統合のための Azure DocumentDB - パート 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
+| Integration User Group | Howard Edidin | 2015 年 10 月 5 日 | [医療の統合のための Azure DocumentDB](http://www.integrationusergroup.com/?event=azure-documentdb-and-biztalk) |
+| DX Italy - #TecHeroes | Alessandro Melchiori | 2015 年 10 月 2 日 | [#TecHeroes - DocumentDB](https://channel9.msdn.com/Shows/TecHeroes/TecHeroes-DocumentDB) |
+| Microsoft Cloud Show - Podcast | Andrew Liu | 2015 年 9 月 30 日 | [エピソード 099 - Azure DocumentDB with Andrew Liu (Azure DocumentDB に関する Andrew Liu とのトーク)](http://www.microsoftcloudshow.com/podcast/Episodes/099-azure-documentdb-with-andrew-liu) |
+| .NET Rocks! - Podcast | Ryan Crawcour | 2015 年 9 月 29 日 | [Data on DocumentDB with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB に関するデータ)](https://www.dotnetrocks.com/?show=1197) |
+| Data Exposed | Ryan Crawcour | 2015 年 9 月 28 日 | [What's New with Azure DocumentDB Since GA (GA 以降の Azure DocumentDB の新機能)](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-with-Azure-DocumentDB-Since-GA) |
+| The Azure Podcast | Cale Teeter | 2015 年 9 月 17 日 | [Episode 94: azpodcast.com re-architecture (エピソード 94: azpodcast.com の再アーキテクチャ)](http://azpodcast.azurewebsites.net/post/Episode-94-azpodcastcom-re-architecture) |
+| Cloud Cover | Ryan Crawcour | 2015 年 9 月 4 日 | [Episode 185: DocumentDB Updates with Ryan CrawCour (Ryan CrawCour が提供する DocumentDB の最新情報)](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-185-DocDB-Updates-with-Ryan-CrawCour) |
+| CodeChat 033 | Greg Doerr | 2015 年 7 月 28 日 | [Greg Doerr on Azure DocumentDB (Greg Doerr が語る Azure DocumentDB)](https://channel9.msdn.com/Shows/codechat/033) |
+| NoSql Central | King Wilder | 2015 年 5 月 25 日 | [ゴルフ トラッカー - AngularJS、WebApi 2、および DocumentDB 上での Web アプリケーションの構築方法に関するビデオによる概要](http://www.nosqlcentral.net/Story/Details/videos/kahanu/1-documentdb-golf-tracker-overview) |
+| In-Memory Technologies PASS Virtual Chapter | Stephen Baron | 2015 年 5 月 25 日 | [Hello DocumentDB](https://www.youtube.com/watch?v=itFXQCd9-dI) |
+| Data Exposed | Ryan Crawcour | 2015 年 4 月 8 日 | [DocumentDB General Availibility and What's New! (DocumentDB の一般提供と新機能)](https://channel9.msdn.com/Shows/Data-Exposed/DocumentDB-General-Availability-and-Whats-New) |
+| Data Exposed | Andrew Liu | 2015 年 3 月 17 日 | [Java SDK for DocumentDB](https://channel9.msdn.com/Shows/Data-Exposed/Java-SDK-for-DocumentDB) |
+| #DevHangout | Gustavo Alzate Sandoval | 2015 年 3 月 11 日 | [DocumentDB、Microsoft Azure の NoSQL データの基礎](https://www.youtube.com/watch?v=8Ud3jB8KOBA) |
+| Data Architecture Virtual Chapter PASS | Ike Ellis | 2015 年 2 月 25 日 | [DocumentDB の概要](https://www.youtube.com/watch?v=7BQYdFUkz6s) |
 
 
 ### オンライン クラス
@@ -169,14 +231,6 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | [![StackOverflow](./media/documentdb-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) | 言語に依存しない、プログラマのための共同編集の質問と回答のサイトです。弊社のタグ [azure-documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) をフォローしてください。 |
 | [![MSDN](./media/documentdb-community/msdn.png)](http://go.microsoft.com/fwlink/?LinkId=631655) | Web Sites、DocumentDB など、Microsoft Azure の機能とサービスのサポートおよびフィードバックを得る際にお勧めです。 |
-
-<br/><br/>
-
-### インターネット リレー チャットと業務時間
-
-`chat.freenode.net` の `#documentdb` チャネルに任意の [IRC クライアント](http://www.irchelp.org/)を使用して接続するか、Freenode の [WebChat](http://webchat.freenode.net/?channels=documentdb) を使用してご使用の Web チャネルでこのチャネルに接続することによって、IRC 経由でリアルタイムに弊社とチャットすることができます。
-
-毎週金曜日の 11 時から 24 時 (太平洋標準時) まで IRC でお待ちしております。
 
 <br/><br/>
 
@@ -215,4 +269,19 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | Hadoop コネクタ | [azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) | [Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
 | データ移行ツール | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=46436) |
 
-<!---HONumber=Nov15_HO3-->
+<hr/>
+
+## DocumentDB ウィザード
+
+<hr/>
+
+DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できるように他者を献身的に支援した模範的コミュニティ リーダーです。並外れた情熱、実世界の知識、技術的専門知識をコミュニティや DocumentDB チームと共有します。
+
+| | | | |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) <br/> [Allan Mitchell](https://twitter.com/allansqlis) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup) <br/> [Jen Stirrup](https://twitter.com/jenstirrup) | [![Lenni Lobel](./media/documentdb-community/wizard-lenni-lobel.jpg)](https://twitter.com/lennilobel) <br/> [Lenni Lobel](https://twitter.com/lennilobel) | [![Mihail Mateev](./media/documentdb-community/wizard-mihail-mateev.jpg)](https://twitter.com/mihailmateev) <br/> [Mihail Mateev](https://twitter.com/mihailmateev)|
+| [![Larry Maccherone](./media/documentdb-community/wizard-larry-maccherone.jpg)](https://twitter.com/lmaccherone) <br/> [Larry Maccherone](https://twitter.com/lmaccherone) | [![Howard Edidin](./media/documentdb-community/wizard-howard-edidin.jpg)](https://twitter.com/hsedidin) <br/> [Howard Edidin](https://twitter.com/hsedidin)
+
+DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
+
+<!---HONumber=AcomDC_0302_2016-->

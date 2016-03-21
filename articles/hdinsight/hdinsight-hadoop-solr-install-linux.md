@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
 
 このトピックでは、スクリプト アクションを使用して Azure HDInsight に Solr をインストールする方法について説明します。Solr は強力な検索プラットフォームで、Hadoop が管理するデータに対してエンタープライズ レベルの検索機能を提供します。HDInsight クラスターに Solr をインストールした後で、Solr を使用したデータの検索方法についても説明します。
 
-> [AZURE.NOTE]このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの Solr の操作については、「[HDInsight Hadoop クラスターに Solr をインストールして使用する (Windows)](hdinsight-hadoop-solr-install.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの Solr の操作については、「[HDInsight Hadoop クラスターに Solr をインストールして使用する (Windows)](hdinsight-hadoop-solr-install.md)」を参照してください。
 
 このトピックで使用するサンプル スクリプトは、既定の構成で Solr クラスターを作成します。この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、それに応じてスクリプトと Solr バイナリを変更する必要があります。
 
@@ -42,7 +42,7 @@
 
 HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh) の読み取り専用 Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+> [AZURE.NOTE] Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -57,7 +57,7 @@ HDInsight クラスターに Solr をインストールするためのサンプ�
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
+4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usesolr"></a>HDInsight で Solr を使用する方法
 
@@ -75,7 +75,7 @@ HDInsight クラスターに Solr をインストールするためのサンプ�
 
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-	> [AZURE.IMPORTANT]このドキュメントの後半の手順で、SSL トンネルを使用して Solr Web UI に接続します。これらの手順を使用するには、SSL トンネルを確立し、それをブラウザーで使用するように構成する必要があります。
+	> [AZURE.IMPORTANT] このドキュメントの後半の手順で、SSL トンネルを使用して Solr Web UI に接続します。これらの手順を使用するには、SSL トンネルを確立し、それをブラウザーで使用するように構成する必要があります。
 	>
 	> 詳細については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
@@ -283,7 +283,7 @@ Solar を手動で停止または開始する必要がある場合は、次の�
 
 	hadoop fs -copyFromLocal snapshot.20150806185338855.tgz /example/data
 
-	> [AZURE.NOTE]Solr スナップショットを格納するための専用ディレクトリを作成することもできます。たとえば、「`hadoop fs -mkdir /solrbackup`」のように入力します。
+	> [AZURE.NOTE] Solr スナップショットを格納するための専用ディレクトリを作成することもできます。たとえば、「`hadoop fs -mkdir /solrbackup`」のように入力します。
 
 Solr のバックアップと復元の操作の詳細については、[SolrCores のバックアップの作成と復元](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores)に関するページを参照してください。
 
@@ -302,10 +302,8 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 
 
 
-
-[hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="02/11/2016"
    ms.author="sameerch"/>
 
 
 # ロジック アプリで Yammer コネクタを使用する #
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Yammer API](../connectors/create-api-yammer.md) をクリックしてください。
+
 Yammer、メッセージの投稿アクション、新しいメッセージを取得するトリガーに接続します。
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
@@ -71,9 +73,9 @@ Yammer コネクタは、ロジック アプリ内でアクションとして使
 - 	**[タグ ユーザー]** - メッセージにタグ付けする必要があるユーザー ネットワーク名の配列。![][10] ![][11]
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -92,4 +94,4 @@ Yammer コネクタは、ロジック アプリ内でアクションとして使
 [10]: ./media/app-service-logic-connector-yammer/img10.PNG
 [11]: ./media/app-service-logic-connector-yammer/img11.PNG
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

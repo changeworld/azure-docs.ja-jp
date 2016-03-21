@@ -13,12 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="01/19/2016" 
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
 
-SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、**Azure SQL Database** または **Azure SQL Data Warehouse** でストアド プロシージャを呼び出すことができます。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
+
+
+- Azure SQL Database 
+- Azure SQL Data Warehouse  
+- エンタープライズ内または Azure VM 内の SQL Server データベース。データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上に Data Management Gateway をインストールする必要があります。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースまたは Azure VM でホストされているデータ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
+
+この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## 構文
 	{
@@ -42,17 +49,19 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | アクティビティの名前 | あり
+name | アクティビティの名前 | はい
 description | アクティビティの用途を説明するテキストです。 | いいえ
-type | SqlServerStoredProcedure | あり
+type | SqlServerStoredProcedure | はい
 inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力データセット。ストアド プロシージャ アクティビティへの入力は、このアクティビティと他のアクティビティを関連付けるときの依存関係管理にのみ使用されます。入力データセットは、ストアド プロシージャでパラメーターとして使用できません。 | いいえ
-outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Database または Azure SQL Data Warehouse を Data Factory にリンクするリンク サービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | あり
-storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | あり
+outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Database または Azure SQL Data Warehouse または SQL Server Database を Data Factory にリンクするリンクされたサービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | はい
+storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | はい
 storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します | いいえ
 
 ## サンプルのチュートリアル
 
 ### サンプル テーブルとストアド プロシージャ
+> [AZURE.NOTE] このサンプルでは、Azure SQL Database を使用しますが、SQL Data Warehouse and SQL Server Database でも同じ方法で機能します。
+
 1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の**テーブル**を作成します。datetimestamp 列は、対応する ID が生成された日付と時刻です。 
 
 		CREATE TABLE dbo.sampletable
@@ -65,8 +74,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
 		GO
 
-	Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。
-	![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
+	Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。 ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
 
 2. **sampletable** にデータを挿入する**ストアド プロシージャ**を作成します。
 
@@ -81,7 +89,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 	> [AZURE.IMPORTANT] パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
 	
 ### Data Factory を作成する。  
-4. [Azure プレビュー ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
+4. [Azure ポータル](https://portal.azure.com/)にログインした後、次の操作を行います。
 	1.	左側のメニューの **[新規]** をクリックします。 
 	2.	**[作成]** ブレードの **[データ分析]** をクリックします。
 	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
@@ -93,14 +101,14 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 	4.	**[OK]** をクリックします。
 4.	リソース グループを選択した後、データ ファクトリを作成する正しいサブスクリプションを使用していることを確認します。
 5.	**[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
-6.	Azure プレビュー ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
+6.	Azure ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
 
 ### Azure SQL のリンク サービスを作成する  
 データ ファクトリの作成後、Azure SQL Database をデータ ファクトリに関連付ける Azure SQL リンク サービスを作成します。これは、sampletable テーブルと sp\_sample ストアド プロシージャを含んだデータベースです。
 
 7.	**[SProcDF]** の **[DATA FACTORY]** ブレードの **[作成とデプロイ]** をクリックします。Data Factory エディタが起動します。 
 2.	コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL]** を選択します。Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。 
-4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。**username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
+4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。****username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
 5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 ### 出力データセットの作成
@@ -126,7 +134,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 ### SqlServerStoredProcedure アクティビティでパイプラインを作成する
 今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
  
-9. コマンド バーの **... (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
+9. コマンド バーの **[...] (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
 9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
 
 		{
@@ -199,4 +207,4 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		}
 	}
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

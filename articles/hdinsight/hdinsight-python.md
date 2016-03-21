@@ -14,16 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="10/16/2015" 
+	ms.date="02/10/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
 
 Hive と Pig は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive と Pig では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。この記事では、Hive と Pig で Python UDF を使用する方法について説明します。
 
-> [AZURE.NOTE]この記事で説明する手順は、HDInsight クラスター バージョン 2.1、3.0、3.1、3.2 に適用されます。
+> [AZURE.NOTE] この記事で説明する手順は、HDInsight クラスター バージョン 2.1、3.0、3.1、3.2 に適用されます。
 
+##必要条件
 
+* HDInsight クラスター (Windows ベースまたは Linux ベース)
+
+* テキスト エディター
+
+    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。エディターで LF または CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+    
 ##<a name="python"></a>HDInsight の Python
 
 Python2.7 は HDInsight 3.0 以降のクラスターに既定でインストール済みです。このバージョンの Python と共に Hive を使用することで、ストリームを処理できます (Hive と Python の間のデータの受け渡しには STDOUT/STDIN を使用します)。
@@ -54,7 +61,7 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 	FROM hivesampletable
 	ORDER BY clientid LIMIT 50;
 
-> [AZURE.NOTE]Windows ベースの HDInsight クラスターでは、**USING** 句で python.exe への完全パスを指定する必要があります。これは常に `D:\Python27\python.exe` です。
+> [AZURE.NOTE] Windows ベースの HDInsight クラスターでは、**USING** 句で python.exe への完全パスを指定する必要があります。これは常に `D:\Python27\python.exe` です。
 
 この例では以下のように処理されます。
 
@@ -155,7 +162,7 @@ Linux ベースの HDInsight クラスターを使用している場合は、次
 
 ###SSH
 
-SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
+SSH の使用に関する詳細については、「Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank"></a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
@@ -217,7 +224,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 ###PowerShell
 
-次の手順では、Azure PowerShell を使用します。まだインストールと構成が終了していない場合は、以下の手順に進む前に「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
+次の手順では、Azure PowerShell を使用します。まだインストールと構成が終了していない場合は、以下の手順に進む前に「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
@@ -255,7 +262,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 	このスクリプトは、HDInsight クラスターの情報を取得してから、既定のストレージ アカウント用にアカウントとキーを抽出します。その後、ファイルをコンテナーのルートにアップロードします。
 
-	> [AZURE.NOTE]スクリプトをアップロードする他の方法については、ドキュメント「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で確認できます。
+	> [AZURE.NOTE] スクリプトをアップロードする他の方法については、ドキュメント「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で確認できます。
 
 ファイルのアップロード後、次の PowerShell スクリプトを使用してジョブを開始します。ジョブが完了すると、PowerShell コンソールに出力が書き込まれます。
 
@@ -394,6 +401,22 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 ##<a name="troubleshooting"></a>トラブルシューティング
 
+###ジョブ実行時のエラー
+
+Hive ジョブを実行しているときに、次のようなエラーが発生する場合があります。
+
+    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+    
+この問題は、streaming.py ファイルの行末が原因で生じる場合があります。多くの Windows 版エディターでは行末に既定でCRLF が使用されていますが、Linux アプリケーションでは通常、行末は LF であることを前提としています。
+
+LF の行末を作成できないエディターを使用している場合、または行末に使用されている記号が不明な場合は、ファイルを HDInsight にアップロードする前に次の PowerShell ステートメントを使用し、CR 文字を削除します。
+
+    $original_file ='c:\path\to\streaming.py'
+    $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
+    [IO.File]::WriteAllText($original_file, $text)
+
+###PowerShell スクリプト
+
 例の実行に使用した両方の PowerShell スクリプトには、ジョブのエラー出力を表示するコメント行が含まれています。ジョブについて想定された出力が確認できない場合は、次の行をコメント解除し、エラー情報で問題が示されるかどうかを確認してください。
 
 	# Get-AzureRmHDInsightJobOutput `
@@ -414,7 +437,7 @@ Pig|/PigPython/stderr<p>/PigPython/stdout
 
 ##<a name="next"></a>次のステップ
 
-既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Windows Azure HDInsight (Python モジュールを Windows Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
+既定では提供されない Python モジュールを読み込む必要がある場合は、方法を「[How to deploy a Python module to Microsoft Azure HDInsight (Python モジュールを Microsoft Azure HDInsight にデプロイする方法)](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)」で参照してください。
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、以下をご覧ください。
 
@@ -424,4 +447,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

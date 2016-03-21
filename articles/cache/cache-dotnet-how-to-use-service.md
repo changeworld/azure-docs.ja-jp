@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure マネージ キャッシュ サービスの使用方法" 
+	pageTitle="Azure Managed Cache Service の使用方法" 
 	description="Azure Managed Cache Service を使用して Azure アプリケーションのパフォーマンスを向上させる方法を説明します" 
 	services="cache" 
 	documentationCenter="" 
@@ -13,42 +13,42 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
-# Azure マネージ キャッシュ サービスの使用方法
+# Azure Managed Cache Service の使用方法
 
 このガイドでは、**Azure Managed Cache Service** の基本的な使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。Azure Cache の使用方法の詳細については、「[次のステップ][]」を参照してください。
 
->アプリケーションに適した Azure のキャッシュ オファリングを選択する方法については、「[最適な Azure のキャッシュ オファリング][]」を参照してください。
+>[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。日付と移行のガイドラインの詳細については、「[どの Azure Cache を利用すればよいですか](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)」を参照してください。
 
 <a name="what-is"></a>
-## Azure マネージ キャッシュ サービスとは
+## Azure Managed Cache Service とは
 
-Azure マネージ キャッシュ サービスとは、拡張性の高い分散型メモリ内ソリューションです。これを使用すると、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションを作成できます。
+Azure Managed Cache Service とは、拡張性の高い分散型メモリ内ソリューションです。これを使用すると、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションを作成できます。
 
-Azure マネージ キャッシュ サービスには、次のような機能があります。
+Azure Managed Cache Service には、次のような機能があります。
 
 -   セッション状態とページ出力キャッシュに対応した、構築済みの ASP.NET プロバイダーにより、アプリケーション コードを変更しなくても Web アプリケーションの機能を強化できます。
 -   任意のシリアル化可能なマネージ オブジェクトをキャッシュできます。たとえば、 CLR オブジェクト、行、XML、バイナリ データなどです。
 -   Azure と Windows Server AppFabric の両方で、開発モデルの一貫性を確保できます。
 
-マネージ キャッシュ サービスを使用すると、マイクロソフトによって管理されている、セキュリティで保護された専用キャッシュにアクセスできます。マネージ キャッシュ サービスを使用して作成されたキャッシュには、Azure Web サイト、Web ロールとワーカー ロール、および仮想マシンで実行されている Azure 内のアプリケーションからアクセスできます。
+Managed Cache Service を使用すると、マイクロソフトによって管理されている、セキュリティで保護された専用キャッシュにアクセスできます。Managed Cache Service を使用して作成されたキャッシュには、Azure Websites、Web ロールと Worker ロール、および Virtual Machines で実行されている Azure 内のアプリケーションからアクセスできます。
 
-マネージ キャッシュ サービスは、次の 3 つのレベルで利用できます。
+Managed Cache Service は、次の 3 つのレベルで利用できます。
 
--	基本 - 128 MB ～ 1 GB のキャッシュ
--	標準 - 1 GB ～ 10 GB のキャッシュ
--	プレミアム - 5 GB ～ 150 GB のキャッシュ
+-	Basic - 128 MB ～ 1 GB のキャッシュ
+-	Standard - 1 GB ～ 10 GB のキャッシュ
+-	Premium - 5 GB ～ 150 GB のキャッシュ
 
 各レベルは、機能と料金ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細][]」を参照してください。
 
-このガイドでは、マネージ キャッシュ サービスの基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[Azure マネージ キャッシュ サービスの概要に関するページ][]を参照してください。
+このガイドでは、Managed Cache Service の基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[Azure Managed Cache Service の概要に関するページ][]を参照してください。
 
 <a name="getting-started-cache-service"></a>
-## キャッシュ サービスの概要
+## Cache Service の概要
 
-マネージ キャッシュ サービスは、簡単に使い始めることができます。使い始めるには、キャッシュをプロビジョニングして構成します。次に、キャッシュ クライアントを構成してキャッシュにアクセスできるようにします。キャッシュ クライアントを構成すると、使い始めることができます。
+Managed Cache Service は、簡単に使い始めることができます。使い始めるには、キャッシュをプロビジョニングして構成します。次に、キャッシュ クライアントを構成してキャッシュにアクセスできるようにします。キャッシュ クライアントを構成すると、使い始めることができます。
 
 -	[キャッシュの作成][]
 -	[キャッシュの構成][]
@@ -57,9 +57,9 @@ Azure マネージ キャッシュ サービスには、次のような機能が
 <a name="create-cache"></a>
 ## キャッシュの作成
 
-マネージ キャッシュ サービスのキャッシュ インスタンスは、PowerShell コマンドレットを使用して作成されます。
+Managed Cache Service のキャッシュ インスタンスは、PowerShell コマンドレットを使用して作成されます。
 
->PowerShell コマンドレットを使用して Managed Cache Service インスタンスを作成すると、そのインスタンスは [Azure 管理ポータル][]で表示および構成できるようになります。
+>PowerShell コマンドレットを使用して Managed Cache Service インスタンスを作成すると、そのインスタンスは [Azure クラシック ポータル][]で表示および構成できるようになります。
 
 Managed Cache Service インスタンスを作成するには、Azure PowerShell コマンド ウィンドウを開きます。
 
@@ -79,19 +79,19 @@ Managed Cache Service インスタンスを作成するには、Azure PowerShell
 
 **Sku** と**メモリ**の組み合わせにより、キャッシュのサイズが決定されます。Managed Cache Service は、次の 3 つのレベルで利用できます。
 
--	基本 - キャッシュ サイズ 128 MB ～ 1 GB (128 MB ずつ増分)、既定で名前付きキャッシュ 1 つ
--	標準 - キャッシュ サイズ 1 GB ～ 10 GB (1 GB ずつ増分)、通知と最大 10 の名前付きキャッシュのサポート
--	プレミアム - キャッシュ サイズ 5 GB ～ 150 GB (5 GB ずつ増分)、通知、高可用性、および最大 10 の名前付きキャッシュのサポート
+-	Basic - キャッシュ サイズ 128 MB ～ 1 GB (128 MB ずつ増分)、既定で名前付きキャッシュ 1 つ
+-	Standard - キャッシュ サイズ 1 GB ～ 10 GB (1 GB ずつ増分)、通知と最大 10 の名前付きキャッシュのサポート
+-	Premium - キャッシュ サイズ 5 GB ～ 150 GB (5 GB ずつ増分)、通知、高可用性、および最大 10 の名前付きキャッシュのサポート
 
 アプリケーションのニーズを満たす **Sku** と**メモリ**を選択します。一部のキャッシュ機能 (通知や高可用性など) は、特定のキャッシュ オファリングでのみ使用できる点に注意してください。アプリケーションに最適なキャッシュ オファリングとサイズを選択する方法の詳細については、「[キャッシュ オファリング][]」を参照してください。
 
- 次の例では、128 MB の基本キャッシュが contosocache という名前で、South Central US リージョンに作成されます。
+ 次の例では、128 MB の Basic キャッシュが contosocache という名前で、South Central US リージョンに作成されます。
 
 	New-AzureManagedCache -Name contosocache -Location "South Central US" -Sku Basic -Memory 128MB
 
 >キャッシュを作成する際に使用できるすべてのパラメーターと値の一覧については、[New-AzureManagedCache][] コマンドレットのドキュメントを参照してください。
 
-PowerShell コマンドレットを呼び出した後、キャッシュが作成されるまで数分かかる場合があります。キャッシュが作成されると、その新しいキャッシュは `Running` 状態になり、既定の設定で使用することができ、[Azure 管理ポータル][]で表示および構成することができます。キャッシュの構成をカスタマイズするには、次の「[キャッシュの構成][]」セクションを参照してください。
+PowerShell コマンドレットを呼び出した後、キャッシュが作成されるまで数分かかる場合があります。キャッシュが作成されると、その新しいキャッシュは `Running` 状態になり、既定の設定で使用することができ、[Azure クラシック ポータル][]で表示および構成することができます。キャッシュの構成をカスタマイズするには、次の「[キャッシュの構成][]」セクションを参照してください。
 
 Azure PowerShell ウィンドウで作成の進捗状況をモニタリングできます。キャッシュが使用可能になると、次の例に示すように [New-AzureManagedCache][] コマンドレットでキャッシュ情報が表示されます。
 
@@ -124,7 +124,7 @@ Azure PowerShell ウィンドウで作成の進捗状況をモニタリングで
 <a name="enable-caching"></a>
 ## キャッシュの構成
 
-管理ポータルにあるキャッシュの **[構成]** タブでは、キャッシュのオプションを構成できます。各キャッシュには**既定の**名前付きキャッシュがあり、標準およびプレミアム キャッシュ オファリングでは最大 9 つの名前付きキャッシュ (合計 10) がサポートされます。名前付きキャッシュにはそれぞれ独自のオプション セットがあり、柔軟性の高い方法でキャッシュを構成できます。
+Azure クラシック ポータルにあるキャッシュの **[構成]** タブでは、キャッシュのオプションを構成できます。各キャッシュには**既定の**名前付きキャッシュがあり、Standard および Premium キャッシュ オファリングでは最大 9 つの名前付きキャッシュ (合計 10) がサポートされます。名前付きキャッシュにはそれぞれ独自のオプション セットがあり、柔軟性の高い方法でキャッシュを構成できます。
 
 ![NamedCaches][NamedCaches]
 
@@ -148,7 +148,7 @@ Azure PowerShell ウィンドウで作成の進捗状況をモニタリングで
 
 キャッシュ クラスターでさまざまなキャッシュ操作が発生したときに、アプリケーションが非同期通知を受け取ることができるようにするキャッシュ通知です。キャッシュ通知は、ローカルにキャッシュされた自動無効化も行います。詳細については、「[Azure のキャッシュ サービス (プレビュー) の通知][]」を参照してください。
 
->通知は、標準およびプレミアム キャッシュ オファリングでのみ使用できます。基本キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
+>通知は、Standard および Premium キャッシュ オファリングでのみ使用できます。Basic キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
 
 ## 高可用性 ##
 
@@ -156,7 +156,7 @@ Azure PowerShell ウィンドウで作成の進捗状況をモニタリングで
 
 その名が示すとおり、高可用性を使用すると、各キャッシュ項目に必要なメモリの量が 2 倍に増えます。容量計画を行うときは、このメモリの影響を考慮に入れてください。詳細については、「[Azure のキャッシュ サービス (プレビュー) の高可用性][]」を参照してください。
 
->高可用性は、プレミアム キャッシュ オファリングでのみ使用できます。基本および標準 キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
+>高可用性は、Premium キャッシュ オファリングでのみ使用できます。Basic および Standard キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
 
 ## 削除 ##
 
@@ -169,7 +169,7 @@ Azure PowerShell ウィンドウで作成の進捗状況をモニタリングで
 <a name="NuGet"></a>
 ## キャッシュ クライアントの構成
 
-マネージ キャッシュ サービスを使用して作成されたキャッシュには、Azure Web サイト、Web ロールとワーカー ロール、および仮想マシンで実行されている Azure アプリケーションからアクセスできます。キャッシュ クライアント アプリケーションの構成を容易にする NuGet パッケージが用意されています。
+Managed Cache Service を使用して作成されたキャッシュには、Azure Websites、Web ロールと Worker ロール、および Virtual Machines で実行されている Azure アプリケーションからアクセスできます。キャッシュ クライアント アプリケーションの構成を容易にする NuGet パッケージが用意されています。
 
 Cache NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -179,7 +179,7 @@ Cache NuGet パッケージを使用してクライアント アプリケーシ�
 
 ![NuGetPackage][NuGetPackage]
 
-NuGet パッケージは、いくつかの処理を行います。アプリケーションの構成ファイルに必要な構成を追加したり、必要なアセンブリ参照を追加したりします。クラウド サービス プロジェクトの場合、クラウド サービスの ServiceConfiguration.cscfg ファイルにキャッシュ クライアント診断レベル設定も追加します。
+NuGet パッケージは、いくつかの処理を行います。アプリケーションの構成ファイルに必要な構成を追加したり、必要なアセンブリ参照を追加したりします。クラウド サービス プロジェクトの場合、Cloud Services の ServiceConfiguration.cscfg ファイルにキャッシュ クライアント診断レベル設定も追加します。
 
 >ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法: ASP.NET セッション状態をキャッシュに格納する]」および「[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][]」を参照してください。
 
@@ -222,17 +222,17 @@ NuGet パッケージは、次の構成要素をロールの web.config また�
 
 構成が追加されたら、新たに追加された構成で次の 2 つの項目を置き換えます。
 
-1. **[Cache role name or Service Endpoint]** を、管理ポータルのダッシュボードに表示されるエンドポイントに置き換えます。
+1. **[Cache role name or Service Endpoint]** を、Azure クラシック ポータルのダッシュボードに表示されるエンドポイントに置き換えます。
 
 	![エンドポイント][Endpoint]
 
-2. securityProperties セクションをコメント解除し、**[Authentication Key]** を認証キーに置き換えます。認証キーは、キャッシュ ダッシュボードから **[キーの管理]** をクリックすることで管理ポータルに表示されます。
+2. securityProperties セクションをコメント解除し、**[Authentication Key]** を認証キーに置き換えます。認証キーは、キャッシュ ダッシュボードから **[キーの管理]** をクリックすることで Azure クラシック ポータルに表示されます。
 
 	![AccessKeys][AccessKeys]
 
 >これらの設定を適切に構成しないと、クライアントはキャッシュにアクセスできません。
 
-クラウド サービス プロジェクトの場合、NuGet パッケージは、キャッシュ クライアント ロールの ServiceConfiguration.cscfg 内の **ConfigurationSettings** に、**ClientDiagnosticLevel** 設定も追加します。次の例は、ServiceConfiguration.cscfg ファイルの **WebRole1** セクションで、**ClientDiagnosticLevel** は 1 になっています (**ClientDiagnosticLevel** の既定値)。
+Cloud Services プロジェクトの場合、NuGet パッケージは、キャッシュ クライアント ロールの ServiceConfiguration.cscfg 内の **ConfigurationSettings** に、**ClientDiagnosticLevel** 設定も追加します。次の例は、ServiceConfiguration.cscfg ファイルの **WebRole1** セクションで、**ClientDiagnosticLevel** は 1 になっています (**ClientDiagnosticLevel** の既定値)。
 
     <Role name="WebRole1">
       <Instances count="1" />
@@ -331,7 +331,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 <a name="specify-expiration"></a>
 ## 方法: キャッシュ内のオブジェクトの有効期限を指定する
 
-既定では、キャッシュ内の項目はキャッシュに置かれてから 10 分で期限切れになります。これは、管理ポータルのキャッシュの [構成] タブにある **[時間 (分)]** 設定で構成できます。
+既定では、キャッシュ内の項目はキャッシュに置かれてから 10 分で期限切れになります。これは、Azure クラシック ポータルのキャッシュの [構成] タブにある **[時間 (分)]** 設定で構成できます。
 
 ![NamedCaches][NamedCaches]
 
@@ -407,10 +407,10 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 <a name="next-steps"></a>
 ## 次のステップ
 
-これで、マネージ キャッシュ サービスの基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
+これで、Managed Cache Service の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   MSDN リファレンス: [Azure Redis Cache][]
--	マネージ キャッシュ サービスへの移行方法を確認する: [Azure Managed Cache Service への移行][]
+-	Managed Cache Service への移行方法を確認する: [Azure Managed Cache Service への移行][]
 -   サンプルをチェックする: [Azure Managed Cache Service のサンプル][]
 
 <!-- INTRA-TOPIC LINKS -->
@@ -449,7 +449,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
   
    
 <!-- LINKS -->
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Azure Managed Cache Service のセッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320835
 [Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
@@ -462,13 +462,12 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
 [How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Azure マネージ キャッシュ サービスの概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Azure Managed Cache Service の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
 [OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
 [Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
 [NuGet パッケージ マネージャーのインストールのページ]: http://go.microsoft.com/fwlink/?LinkId=240311
 [キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
-[Management Portal]: https://manage.windowsazure.com/
 [Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
 [キャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
 [Capacity planning]: http://go.microsoft.com/fwlink/?LinkId=320167
@@ -483,7 +482,7 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Add-AzureAccount]: http://msdn.microsoft.com/library/dn495128.aspx
 [Select-AzureSubscription]: http://msdn.microsoft.com/library/dn495203.aspx
 
-[最適な Azure のキャッシュ オファリング]: cache-faq.md#which-azure-cache-offering-is-right-for-me
+[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1210_2015-->

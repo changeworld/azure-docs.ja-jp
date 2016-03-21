@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="barbkess;sonyama"/>
 
 # SQL Data Warehouse の参照トピック
 
@@ -39,4 +39,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

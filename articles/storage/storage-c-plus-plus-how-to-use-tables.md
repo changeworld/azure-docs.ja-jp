@@ -4,8 +4,8 @@
     services="storage"
     documentationCenter=".net"
     authors="tamram"
-    manager="adinah"
-    editor=""/>
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags
     ms.service="storage"
@@ -13,17 +13,17 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="09/23/2015"
-    ms.author="tamram"/>
+    ms.date="02/17/2016"
+    ms.author="dineshm"/>
 
 # C++ から Table ストレージを使用する方法
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
 ## 概要  
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)を利用しています。紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
+このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
 
->[AZURE.NOTE]このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 1.0.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/) 経由で入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
@@ -46,12 +46,12 @@ Azure Storage API を使用してテーブルにアクセスする C++ ファイ
 	#include "was/table.h"
 
 ## Azure Storage 接続文字列の設定  
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションを実行する場合は、次の形式でストレージ接続文字列を入力する必要があります。[*AccountName*] と [*AccountKey*] の値には、ストレージ アカウントの名前とストレージ アカウントのストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションを実行する場合は、次の形式でストレージ接続文字列を入力する必要があります。*AccountName* と *AccountKey* の値には、[Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とストレージ アカウントのストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection string with your values.
 	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 
-ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](http://azure.microsoft.com/downloads/) と共にインストールされた、Azure [ストレージ エミュレーター](storage-use-emulator.md)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
+ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Azure [ストレージ エミュレーター](storage-use-emulator.md)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection string with Azure storage emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -359,7 +359,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 		std::wcout << std::endl;
 	}
 
->[AZURE.NOTE]すべてのプロパティを取得するよりも、エンティティからいくつかのプロパティを照会する方が効率的です。
+>[AZURE.NOTE] すべてのプロパティを取得するよりも、エンティティからいくつかのプロパティを照会する方が効率的です。
 
 ## エンティティを削除する
 エンティティは、取得後に簡単に削除できます。エンティティを取得したら、削除するエンティティを指定して **table\_operation::delete\_entity** を呼び出します。**cloud\_table.execute** メソッドを呼び出します。次のコードは、"Jeff" の行キーと "Smith" のパーティション キーを持つエンティティを取得して削除します。
@@ -412,6 +412,6 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
--	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0224_2016-->

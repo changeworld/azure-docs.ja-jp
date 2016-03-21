@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # Password Management のデプロイとユーザー トレーニング
@@ -48,12 +48,14 @@
 組織内のユーザーがパスワード リセットで使用するデータを指定する方法はいくつかあります。
 
 - [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)または[ Office 365 管理ポータル](https://portal.microsoftonline.com)でユーザーを編集する
-- AADSync を使用して、ユーザー プロパティをオンプレミスの Active Directory ドメインから Azure AD に同期する
-- Windows PowerShell を使用してユーザーのプロパティを編集する
+- Azure AD Sync を使用して、ユーザー プロパティをオンプレミスの Active Directory ドメインから Azure AD に同期する
+- [この手順に従って](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)、Windows PowerShell を使用してユーザー プロパティを編集します。
 - ユーザーが登録ポータル ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) に移動できるように設定して、自分のデータを登録してもらう
-- **[ユーザーに SSPR の登録を要求する]** 構成オプションを **[はい]** に設定して、ユーザーがアクセス パネル ([http://myapps.microsoft.com](http://myapps.microsoft.com)) にサインインしたときにパスワード リセットの登録を行うことを求める
+- パスワードのリセットのために、Azure AD アカウントへのサインイン時に登録を必須にするには、[**[サインイン時にユーザーに登録を求めますか?]**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) 構成オプションを **[はい]** に設定します。
 
-システムでパスワード リセットを機能させるためにユーザーが登録を行う必要はありません。たとえば、ローカル ディレクトリに既存の電話番号がある場合は、Azure AD に同期することで、パスワード リセットで自動的に使用できます。
+システムでパスワード リセットを機能させるためにユーザーが登録を行う必要はありません。たとえば、ローカル ディレクトリに既存の携帯電話または会社の電話番号がある場合は、Azure AD に同期することで、パスワード リセットで自動的に使用できます。
+
+詳細については、[パスワードのリセットのデータの使用方法](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)と [PowerShell で各認証フィールドを設定する方法](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)に関するセクションを参照してください。
 
 ## ユーザーにパスワード リセットを展開する最善の方法
 パスワード リセットの一般的な展開手順を次に示します。
@@ -121,24 +123,25 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 
 これらのプロパティの使用方法については、「[パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)」を参照してください。
 
+PowerShell でこのデータの参照と設定を行う方法については、[PowerShell からユーザーのパスワード リセット データにアクセスする方法](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)に関するセクションを参照してください。
+
 ## サンプル トレーニング資料
 パスワード リセットのデプロイと使用を IT 組織とユーザーに短時間で浸透させるサンプル トレーニング資料を準備しています。しばらくお待ちください。
 
 
 <br/> <br/> <br/>
 
-**その他のリソース**
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理の概要](active-directory-passwords-getting-started.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
-* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
-* [詳細情報](active-directory-passwords-learn-more.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 
@@ -150,4 +153,4 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

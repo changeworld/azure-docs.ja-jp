@@ -4,7 +4,7 @@
    services="dns" 
    documentationCenter="na" 
    authors="joaoma" 
-   manager="Adinah" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,16 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="09/22/2015"
+   ms.date="01/21/2016"
    ms.author="joaoma"/>
 
 # CLI を使用して DNS レコードを管理する方法
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-operations-recordsets-cli.md)
-- [Azure Powershell](dns-operations-recordsets.md)
+- [PowerShell](dns-operations-recordsets.md)
 
 このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
+
+>[AZURE.NOTE] Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。したがって、"azure config mode arm" コマンドを使用して、リソース マネージャー モードを使用するように Azure CLI を構成するようにする必要があります。
+
+>"エラー: 'dns' は、Azure のコマンドではありません" と表示される場合は、多くの場合、リソース マネージャー モードではなく、ASM モードで Azure CLI を使用していることが原因です。
 
 DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。詳細については、「[レコード セットとレコードについて](dns-getstarted-create-recordset.md#Understanding-record-sets-and-records)」を参照してください。
 
@@ -30,24 +34,22 @@ DNS レコード セットと個々の DNS レコードの違いを理解する�
 
 レコード セットは、`azure network dns record-set create` コマンドを使用して作成します。レコード セット名、ゾーン、Time-to-Live (TTL)、レコードの種類を指定する必要があります。
 
->[AZURE.NOTE]レコード セット名は、ゾーン名を除いた相対名にする必要があります。たとえば、"contoso.com" ゾーン内のレコード セット名 "www" によって、完全修飾名 "www.contoso.com" を持つレコード セットが作成されます。
+レコード セット名は、ゾーン名を除いた相対名にする必要があります。たとえば、"contoso.com" ゾーン内のレコード セット名 "www" によって、完全修飾名 "www.contoso.com" を持つレコード セットが作成されます。
 
->ゾーンの頂点のレコード セットの場合は、レコード セット名として "@" (引用符を含みます) を使用します。レコード セットの完全修飾名はゾーン名と同じになります。この場合は "contoso.com" です。
+ゾーンの頂点のレコード セットの場合は、レコード セット名として "@" (引用符を含みます) を使用します。レコード セットの完全修飾名はゾーン名と同じになります。この場合は "contoso.com" です。
 
 Azure DNS では、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT というレコードの種類がサポートされています。SOA という種類のレコード セットは、各ゾーンと共に自動的に作成されるため、個別には作成できません。[レコードの種類 SPF は、DNS 標準で推奨されておらず、レコードの種類 TXT を使用して SPF レコードを作成することが推奨されている](http://tools.ietf.org/html/rfc7208#section-3.1)ことに注意してください。
 
 	azure network dns record-set create myresourcegroup contoso.com  www  A --ttl 300
 
 
->[AZURE.IMPORTANT]CNAME レコード セットは、同じ名前を持つ他のレコード セットとは共存できません。たとえば、相対名 "www" を持つ CNAME と相対名 "www" を持つ A レコードを同時に作成することはできません。ゾーンの頂点 (名前は '@') には、ゾーンの作成時に作成された NS および SOA レコード セットが必ず含まれるため、ゾーンの頂点で CNAME レコード セットを作成することはできません。これらの制約は、DNS 標準から生じるものであり、Azure DNS の制限事項ではありません。
+>[AZURE.IMPORTANT] CNAME レコード セットは、同じ名前を持つ他のレコード セットとは共存できません。たとえば、相対名 "www" を持つ CNAME と相対名 "www" を持つ A レコードを同時に作成することはできません。ゾーンの頂点 (名前は '@') には、ゾーンの作成時に作成された NS および SOA レコード セットが必ず含まれるため、ゾーンの頂点で CNAME レコード セットを作成することはできません。これらの制約は、DNS 標準から生じるものであり、Azure DNS の制限事項ではありません。
 
 ### ワイルドカード レコード
 
-Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wiki/Wildcard_DNS_record)をサポートしています。ワイルドカード レコードは、一致する名前を含むクエリに対してに返されます (非ワイルドカード レコード セットに、より近い一致がない場合)。
+Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wiki/Wildcard_DNS_record)をサポートしています。ワイルドカード レコードは、一致する名前を含むクエリに対してに返されます (非ワイルドカード レコード セットに、より近い一致がない場合)。ワイルドカード レコード セットを作成するには、レコード セット名 "*" を使用するか、最初のラベルが "*" の名前 ("*.foo" など) を使用します。
 
->[AZURE.NOTE]ワイルドカード レコード セットを作成するには、レコード セット名 "*" を使用するか、最初のラベルが "*" の名前 ("*.foo" など) を使用します。
-
->ワイルドカード レコード セットは、NS と SOA を除くすべてのレコードの種類でサポートされています。
+ワイルドカード レコード セットは、NS と SOA を除くすべてのレコードの種類でサポートされています。
 
 ## レコード セットの取得
 既存のレコード セットを取得するには、`azure network dns record-set show` を使用し、リソース グループ、ゾーン名、レコード セットの相対名、レコードの種類を指定します。
@@ -87,7 +89,7 @@ Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wi
 	
 	azure network dns record-set create myresourcegroup  contoso.com "test-a"  A --ttl 300
 
->[AZURE.NOTE]--ttl パラメーターを定義しないと、値は既定で 4 (秒) になります。
+>[AZURE.NOTE] --ttl パラメーターを定義しないと、値は既定で 4 (秒) になります。
 
 
 A レコード セットを作成した後、`azure network dns record-set add-record` でレコード セットに IPv4 アドレスを追加します。
@@ -106,7 +108,7 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 	
 	azure network dns record-set add-record  myresourcegroup contoso.com  test-cname CNAME -c "www.contoso.com"
 
->[AZURE.NOTE]CNAME レコードでは、単一の文字列値だけを使用できます。
+>[AZURE.NOTE] CNAME レコードでは、単一の文字列値だけを使用できます。
 
 ### 1 つのレコードを含む MX レコード セットの作成
 
@@ -225,7 +227,7 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 ## レコード セットの削除
 レコード セットは、Remove-AzureDnsRecordSet コマンドレットを使用して削除できます。
 
->[AZURE.NOTE]ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "@") の SOA および NS レコード セットは削除できません。これらはゾーンの削除時に自動的に削除されます。
+>[AZURE.NOTE] ゾーンの作成時に自動的に作成される、ゾーンの頂点 (名前は "@") の SOA および NS レコード セットは削除できません。これらはゾーンの削除時に自動的に削除されます。
 
 次の例では、A レコード セット "test-a" を contoso.com DNS ゾーンから削除します。
 
@@ -234,9 +236,10 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 オプションの "-q" スイッチを使用すると、確認プロンプトが表示されないように設定できます。
 
 
-##関連項目
+## 次のステップ
 
-[レコード セットとレコードの作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンに対する操作の実行](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
+DNS ゾーンとレコードを作成したら、 [ドメインを Azure DNS に委任](dns-domain-delegation.md)できます。<BR> CLI を使用して [DNS ゾーンを管理する](dns-operations-dnszones-cli.md)方法を確認します。<BR> [.NET SDK を使用して操作を自動化](dns-sdk.md)して、Azure DNS 操作をアプリケーション内にコーディングすることもできます。
+
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

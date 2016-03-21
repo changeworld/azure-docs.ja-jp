@@ -1,23 +1,28 @@
-<properties 
-	pageTitle="Xamarin.Android 向け Mobile Services の使用 | Microsoft Azure" 
-	writer="craigd" 
-	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Xamarin.Android 向け Mobile Services の使用 | Microsoft Azure"
+	writer="craigd"
+	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="hero-article" 
-	ms.date="11/05/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="02/10/2016"
 	ms.author="donnam"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
@@ -39,7 +44,7 @@
 
 ダウンロードしたクイック スタート プロジェクトには、Xamarin.Android 向けの Azure Mobile Services コンポーネントが含まれています。このプロジェクトではバージョン 4.2 以降の Android をターゲットにしていますが、Mobile Services SDK ではバージョン 2.2 以降があれば問題ありません。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5)を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5)を参照してください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -47,11 +52,11 @@
 
 ## 新しい Xamarin.Android アプリを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリを変更して、モバイル サービスに接続することができます。
 
 ここでは、モバイル サービスに接続された新しい Xamarin.Android アプリを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
@@ -77,7 +82,7 @@
 
 3. **[Run]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。エミュレーターまたは接続されている USB デバイスを選択するよう求めるメッセージが表示されます。
 
-	> [AZURE.NOTE]プロジェクトを Android エミュレーターで実行できるようにするには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
+	> [AZURE.NOTE] プロジェクトを Android エミュレーターで実行できるようにするには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
 4. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Add]** をクリックします。
 
@@ -85,9 +90,10 @@
 
 	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
+	> [AZURE.NOTE]
+   	モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータをクエリおよび挿入するコードを確認できます。
 
-6. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+6. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
 	![][11]
 
@@ -104,7 +110,7 @@
 
 * [プッシュ通知の使用] アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法](partner-xamarin-mobile-services-how-to-use-client-library.md) モバイル サービスに対してクエリを実行する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
+
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
@@ -138,7 +144,6 @@
 [Xamarin.Android]: http://xamarin.com/download
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Azure]: http://azure.microsoft.com/
-[Management Portal]: https://manage.windowsazure.com/
- 
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

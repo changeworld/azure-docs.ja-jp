@@ -1,6 +1,7 @@
+
 <properties 
-   pageTitle="Azure ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
-   description="Azure ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
+   pageTitle="Azure クラシック ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
+   description="Azure クラシック ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -14,16 +15,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
+   ms.date="12/07/2015"
    ms.author="joaoma" />
 
-# Azure ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
+# Azure クラシック ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイ モデルについて説明します。Azure リソース マネージャー デプロイ モデルについて確認する場合は、「[リソース マネージャーを使用したインターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-arm-ps.md)」を参照してください。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -34,7 +35,7 @@
 
 **仮想マシンの負荷分散セットを構成するには**
 
-1. Azure ポータルで、**[仮想マシン]** をクリックし、負荷分散セットの仮想マシンの名前をクリックします。
+1. Azure クラシック ポータルで、**[Virtual Machines]** をクリックし、負荷分散セットの仮想マシンの名前をクリックします。
 2.	**[エンドポイント]** をクリックし、**[追加]** をクリックします。
 
 4.	**[仮想マシンにエンドポイントを追加します]** ページで、右矢印をクリックします。
@@ -46,11 +47,11 @@
 
 5.	**[負荷分散セットの作成]** を選択し、右矢印をクリックします。
 
-6.	**[負荷分散セットの構成]** ページで、負荷分散セットの名前を入力し、Azure Load Balancer のプローブ動作の値を割り当てます。ロード バランサーはプローブを使用して、負荷分散セット内の仮想マシンが着信トラフィックを受信できるかどうかを判断します。
+6.	**[負荷分散セットの構成]** ページで、負荷分散セットの名前を入力し、Azure Load Balancer のプローブ動作の値を割り当てます。Load Balancer はプローブを使用して、負荷分散セット内の仮想マシンが着信トラフィックを受信できるかどうかを判断します。
 
 7.	チェック マークをクリックして、負荷分散されたエンドポイントを作成します。仮想マシンの **[エンドポイント]** ページの **[負荷分散セット名]** 列に **[はい]** が表示されます。
 
-8.	ポータルで、**[仮想マシン]**、負荷分散セットの追加の仮想マシンの名前、**[エンドポイント]**、**[追加]** の順にクリックします。
+8.	ポータルで、**[Virtual Machines]**、負荷分散セットの追加の仮想マシンの名前、**[エンドポイント]**、**[追加]** の順にクリックします。
 
 9.	**[仮想マシンにエンドポイントを追加します]** ページで、**[既存の負荷分散セットにエンドポイントを追加する]** をクリックし、負荷分散セットの名前を選択して、右矢印をクリックします。
 
@@ -66,4 +67,4 @@
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

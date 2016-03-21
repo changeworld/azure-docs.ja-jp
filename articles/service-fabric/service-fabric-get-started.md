@@ -10,30 +10,28 @@
 <tags
    ms.service="service-fabric"
    ms.devlang="dotNet"
-   ms.topic="hero-article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/15/2015"
+   ms.date="02/09/2016"
    ms.author="seanmck"/>
 
 # 開発環境を準備する
- 開発コンピューターで [Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールし、ローカル クラスターをセットアップする必要があります。
-
- >[AZURE.NOTE]次の手順は、新しいコンピューターを設定するためのものです。以前のバージョンの Service Fabric がインストールされている場合は、[開発環境の更新手順](service-fabric-update-your-development-environment.md)に従ってください。
+ 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
 次のオペレーティング システムのバージョンがサポートされます。
 
-- Windows 8/8.1
+- Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
 
 ### Visual Studio 2015
 
-Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[ここ][2]から入手できます。
+Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
 
-> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 をインストールしたくない場合は、Azure 仮想マシン ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。
+> [AZURE.NOTE] サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio 2015 をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -55,55 +53,18 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## ローカル クラスターをインストールして開始します。
-ローカル クラスターは、最終的に 1 台の開発用コンピューター上で稼働中に使用する複数のコンピューターのトポロジを表わしています。ローカル クラスターをセットアップするには次の手順に従います。
-
-
-1. その他のすべての PowerShell ウィンドウを閉じて、管理者として新しいウィンドウを起動します。
-
-2. クラスター セットアップ ディレクトリに移動します。
-
-    ```powershell
-    cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"
-    ```
-
-3. 実行
-
-    ```powershell
-    .\DevClusterSetup.ps1
-    ```
-
-すぐにノード情報と、クラスターが正常に作成されたことを示す出力が表示されます。Service Fabric ホスト サービスとネーム サービスの起動中に警告が表示されることがあります。これは正常なことであり、すぐにクラスターに関する基本的な情報が表示されます。
-
-> [AZURE.NOTE]ローカル クラスターは、Azure で実行されるものとまったく同じランタイムを使用します。シミュレートやエミュレートは実行されません。唯一の違いは、Azure の場合のようにノードが複数のコンピューターに分配されるのではなく、すべてのノードが 1 台のコンピューターで実行されることです。
-
-## クラスター セットアップの検証
-
-SDK に付属している Service Fabric エクスプローラー ツールを使用して、クラスターが正常に作成されたことを確認できます。
-
-1. 次のコマンドを実行して、Service Fabric Explorer を起動します。
-
-    ```powershell
-    . "$env:ProgramW6432\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe"
-    ```
-
-2. 左上隅の [Onebox/ローカル クラスター] ノードを展開します。
-
-3. アプリケーションとノードのビューが緑になっていることを確認します。
-
-緑ではない要素があるか、エラーが表示されている場合は、しばらく待ってから [更新] ボタンをクリックします。引き続き問題がある場合は、「[セットアップのトラブルシューティング手順](service-fabric-troubleshoot-local-cluster-setup.md)」を確認してください。
-
 ## 次のステップ
 開発環境の設定が完了しました。これで、アプリのビルドと実行を開始できます。
 
-- [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
-- [Reliable Services API の使用](service-fabric-reliable-services-quick-start.md)
-- [Reliable Actors API の使用](service-fabric-reliable-actors-get-started.md)
-- [GitHub での Service Fabric サンプルの確認](https://github.com/azure/servicefabric-samples)
+- [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
+- [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
+- [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
+- [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+- [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

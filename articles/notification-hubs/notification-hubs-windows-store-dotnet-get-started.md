@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="10/21/2015"
+	ms.date="12/14/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Windows ストア アプリ)
@@ -37,11 +37,11 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ Microsoft Visual Studio Express 2013 for Windows Update 2<br/>Visual Studio のこのバージョンでは、ユニバーサル アプリ プロジェクトを作成する必要があります。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
++ Microsoft Visual Studio Express 2013 for Windows Update 2 以降<br/>ユニバーサル アプリ プロジェクトを作成するには、Visual Studio のこのバージョンが必要です。Windows ストア アプリのみを作成する場合は、Visual Studio 2012 Express for Windows 8 が必要です。
 
 + アクティブな Windows ストア アカウント
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)を参照してください。
 
 このチュートリアルを完了することは、Windows ストア アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
@@ -49,7 +49,7 @@
 
 Windows ストア アプリにプッシュ通知を送信するには、アプリケーションを Windows ストアに関連付ける必要があります。さらに、WNS に統合するために通知ハブを構成する必要があります。
 
-1. アプリケーションをまだ登録していない場合は、<a href="http://go.microsoft.com/fwlink/p/?LinkID=266582" target="_blank">Windows デベロッパー センター</a>に移動し、Microsoft アカウントでサインインし、**[新しいアプリの作成]** をクリックします。
+1. アプリケーションをまだ登録していない場合は、[Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?LinkID=266582)に移動し、Microsoft アカウントでサインインし、**[新しいアプリの作成]** をクリックします。
 
 
 2. アプリの名前を入力し、**[アプリの名前の予約]** をクリックします。
@@ -78,7 +78,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 7. (省略可能) Windows Phone ストア アプリ プロジェクトのステップ 4.～6. を繰り返します。
 
-8. Windows デベロッパー センターで新しいアプリケーションのページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックし、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
+8. [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?LinkID=266582)で新しいアプリケーションのページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックし、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
 
    	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-live-services.png)
 
@@ -86,7 +86,8 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
    	![][6]
 
- 	> [AZURE.WARNING]クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
+ 	> [AZURE.WARNING]
+	クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
 ##通知ハブを構成する
 
@@ -143,7 +144,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
     このコードにより、WNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。
 
-    >[AZURE.NOTE]"hub name" プレースホルダーは、ポータルの **[Notification Hubs]** タブに表示される通知ハブの名前 (たとえば、前の例では **mynotificationhub2**) に置き換えてください。また、接続文字列プレースホルダーを、先に取得した **DefaultListenSharedAccessSignature** 接続文字列に置き換えます。
+    >[AZURE.NOTE]"hub name" プレースホルダーは、[Azure クラシック ポータル]の **[Notification Hubs]** タブに表示される通知ハブの名前 (たとえば、前の例では **mynotificationhub2**) に置き換えてください。また、接続文字列プレースホルダーを、先に取得した **DefaultListenSharedAccessSignature** 接続文字列に置き換えます。
 
 5. App.xaml.cs 内で、**OnLaunched** イベント ハンドラーの先頭に、次に示す新しい **InitNotificationsAsync** メソッドへの呼び出しを追加します。
 
@@ -171,7 +172,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 ##通知を送信する 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、[Azure クラシック ポータル]で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
 
@@ -185,7 +186,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
 
 * **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services バックエンドからの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
+* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services Backend からの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
 
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
 
@@ -228,7 +229,7 @@ Windows ストア アプリにプッシュ通知を送信するには、アプ�
             await hub.SendWindowsNativeNotificationAsync(toast);
         }
 
-   	"hub name" プレースホルダーは、ポータルの **[通知ハブ]** タブに表示される通知ハブの名前に置き換えてください。また、接続文字列プレースホルダーを、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えます。
+   	"hub name" プレースホルダーは、[Azure クラシック ポータル]の **[Notification Hubs]** タブに表示される通知ハブの名前に置き換えてください。また、接続文字列プレースホルダーを、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えます。
 
 	>[AZURE.NOTE]**リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列には通知を送信するアクセス許可はありません。
 
@@ -273,7 +274,7 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [20]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-windows-universal-app-install-package.png
 
 <!-- URLs. -->
-[Azure portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
@@ -283,4 +284,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

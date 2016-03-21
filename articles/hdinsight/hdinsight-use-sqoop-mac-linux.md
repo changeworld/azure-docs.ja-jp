@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/09/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (SSH)
@@ -23,7 +23,7 @@
 
 Linux ベースの HDInsight クラスターと Azure SQL Database または SQL Server データベースの間のインポートとエクスポートに Sqoop を使用する方法について説明します。
 
-> [AZURE.NOTE]この記事の手順では、Linux ベースの HDInsight クラスターへの接続に SSH を使用します。Windows クライアントでは、「[HDInsight の Hadoop での Sqoop の使用 (PowerShell)](hdinsight-use-sqoop.md)」で説明されているように、Azure PowerShell を使用して Linux ベースのクラスターで Sqoop を使用することもできます。
+> [AZURE.NOTE] この記事の手順では、Linux ベースの HDInsight クラスターへの接続に SSH を使用します。Windows クライアントでは、「[HDInsight の Hadoop での Sqoop の使用 (PowerShell)](hdinsight-use-sqoop.md)」で説明されているように、Azure PowerShell を使用して Linux ベースのクラスターで Sqoop を使用することもできます。
 
 ##Sqoop とは
 
@@ -83,23 +83,23 @@ HDInsight クラスターにはサンプル データがいくつか付属して
         data:    Server Name i1qwc540ts
         info:    sql server create command OK
 
-    > [AZURE.IMPORTANT]このコマンドによって返されるサーバーの名前に注意してください。これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。
+    > [AZURE.IMPORTANT] このコマンドによって返されるサーバーの名前に注意してください。これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。
 
 2. 次のコマンドを使用して **sqooptest** という名前のデータベースを SQL Database サーバーに作成します。
 
-        sql db create [options] <serverName> sqooptest <adminLogin> <adminPassword>
+        azure sql db create [options] <serverName> sqooptest <adminLogin> <adminPassword>
 
     コマンドが完了すると、"OK" というメッセージが返されます。
 
-	> [AZURE.NOTE]アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
+	> [AZURE.NOTE] アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
 	>
-	> `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
+	> `azure sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
 
 ##テーブルの作成
 
-> [AZURE.NOTE]SQL Database に接続してテーブルを作成するには、多くの方法があります。次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
+> [AZURE.NOTE] SQL Database に接続してテーブルを作成するには、多くの方法があります。次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
 
-1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22`です。
+1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
 
 	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
 
@@ -126,19 +126,19 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 5. `1>` プロンプトで、以下の行を入力します。
 
         CREATE TABLE [dbo].[mobiledata](
-		[clientid] [nvarchar](50),
-		[querytime] [nvarchar](50),
-		[market] [nvarchar](50),
-		[deviceplatform] [nvarchar](50),
-		[devicemake] [nvarchar](50),
-		[devicemodel] [nvarchar](50),
-		[state] [nvarchar](50),
-		[country] [nvarchar](50),
-		[querydwelltime] [float],
-		[sessionid] [bigint],
-		[sessionpagevieworder] [bigint])
+        [clientid] [nvarchar](50),
+        [querytime] [nvarchar](50),
+        [market] [nvarchar](50),
+        [deviceplatform] [nvarchar](50),
+        [devicemake] [nvarchar](50),
+        [devicemodel] [nvarchar](50),
+        [state] [nvarchar](50),
+        [country] [nvarchar](50),
+        [querydwelltime] [float],
+        [sessionid] [bigint],
+        [sessionpagevieworder] [bigint])
         GO
-		CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
+        CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
         GO
 
     `GO` ステートメントを入力すると、前のステートメントが評価されます。最初に、**mobiledata** テーブルが作成され、次にクラスター化インデックスがそのテーブルに追加されます (SQL Database が必要)。
@@ -202,11 +202,11 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 * HDInsight と SQL Server の両方が、同じ Azure Virtual Network に存在する必要があります。
 
-    > [AZURE.NOTE]HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
+    > [AZURE.NOTE] HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
 
     SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
 
-    > [AZURE.NOTE]**ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
+    > [AZURE.NOTE] **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
 
     仮想ネットワークの作成と構成方法の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
 
@@ -247,8 +247,8 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -258,9 +258,9 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-install]: ../install-configure-powershell.md
+[powershell-install]: powershell-install-configure.md
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

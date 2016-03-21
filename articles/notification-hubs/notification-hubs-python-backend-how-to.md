@@ -3,7 +3,7 @@
 	description="Python バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="ysxu" 
+	authors="wesmc7777"
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="python" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="11/01/2015" 
-	ms.author="yuaxu"/>
+	ms.date="02/29/2016" 
+	ms.author="wesmc"/>
 
 # Python で Notification Hubs を使用する方法
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 		
 MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
-> [AZURE.NOTE]これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
+> [AZURE.NOTE] これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
 
-> [AZURE.NOTE]このサンプルは Python 3.4 を使用して書き込まれます。
+> [AZURE.NOTE] このサンプルは Python 3.4 を使用して書き込まれます。
 
 このトピックでは、次の方法について説明します。
 
@@ -33,7 +33,7 @@ MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.co
 
 選択したモバイル プラットフォームの「[Notification Hubs の使用](notification-hubs-windows-store-dotnet-get-started.md)」に従って、Python のバックエンド部分を実装します。
 
-> [AZURE.NOTE]このサンプルの範囲は通知の送信のみに制限され、登録の管理は行いません。
+> [AZURE.NOTE] このサンプルの範囲は通知の送信のみに制限され、登録の管理は行いません。
 
 ## クライアント インターフェイス
 メイン クライアント インターフェイスは、[.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx) で利用可能なものと同じメソッドを提供できます。これでこのサイトで現在利用でき、インターネット上のコミュニティから提供されたすべてのチュートリアルとサンプルを直接訳せるようになります。
@@ -42,6 +42,7 @@ MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.co
 
 たとえば、クライアントを作成する場合:
 
+	isDebug = True
 	hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 	
 Windows トースト通知を送信する場合:
@@ -390,4 +391,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

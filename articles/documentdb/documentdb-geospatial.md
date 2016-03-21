@@ -13,18 +13,18 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="10/27/2015" 
+    ms.date="02/03/2016" 
     ms.author="arramac"/>
     
 # Azure DocumentDB で地理空間データを扱う
 
-この記事では、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) の地理空間機能を紹介します。この記事では次の方法を取り上げています。
+この記事では、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) の地理空間機能を紹介します。この記事では次の方法を取り上げています。
 
 - 空間データを Azure DocumentDB に保存する方法
 - Azure DocumentDB 内の地理空間データを SQL や LINQ で照会する方法
 - DocumentDB の空間インデックスを有効または無効にする方法
 
-コード サンプルについては、こちらの [Github プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.Spatial)を参照してください。
+コード サンプルについては、こちらの [Github プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)を参照してください。
 
 ## 空間データの概要
 
@@ -43,7 +43,7 @@ DocumentDB は、[GeoJSON 仕様](http://geojson.org/geojson-spec.html)を使用
        "coordinates":[ 31.9, -4.8 ]
     }
 
->[AZURE.NOTE]GeoJSON 仕様では、まず経度を指定し、次に緯度を指定します。他の地図作成アプリケーションと同様、経度と緯度は角度であり、度 (°) の単位で表されます。経度値は、グリニッジ子午線を基準とする -180°～ 180.0°の範囲で測定され、緯度値は、赤道を基準とする -90.0°～ 90.0°の範囲で測定されます。
+>[AZURE.NOTE] GeoJSON 仕様では、まず経度を指定し、次に緯度を指定します。他の地図作成アプリケーションと同様、経度と緯度は角度であり、度 (°) の単位で表されます。経度値は、グリニッジ子午線を基準とする -180°～ 180.0°の範囲で測定され、緯度値は、赤道を基準とする -90.0°～ 90.0°の範囲で測定されます。
 >
 > DocumentDB では座標が WGS-84 測地系で解釈されます。座標参照系の詳細については、以下を参照してください。
 
@@ -77,7 +77,7 @@ GeoJSON は、Point に加え、LineString と Polygon をサポートしてい�
        ]
     }
 
->[AZURE.NOTE]GeoJSON 仕様では、最後に指定された座標ペアが、最初に指定された座標ペアとちょうど重なり、閉じた形状になっていることが、有効なポリゴンの条件となります。
+>[AZURE.NOTE] GeoJSON 仕様では、最後に指定された座標ペアが、最初に指定された座標ペアとちょうど重なり、閉じた形状になっていることが、有効なポリゴンの条件となります。
 >
 >ポリゴン内のポイントは、反時計回りに指定する必要があります。時計回りに指定されたポリゴンは、その中の領域を逆にしたものを表します。
 
@@ -177,7 +177,7 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
       "id": "WakefieldFamily"
     }]
 
-インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。空間インデックスの詳細については、以降のセクションを参照してください。指定されたパスに空間インデックスがない場合でも、`x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。その場合 .NET では、省略可能な引数 **FeedOptions** を、[EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。
+インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。空間インデックスの詳細については、以降のセクションを参照してください。指定されたパスに空間インデックスがない場合でも、`x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。その場合、.NET では、省略可能な引数 **FeedOptions** を、[EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。
 
 ポイントがポリゴン内に存在するかどうかは、ST\_WITHIN を使用してチェックできます。通常ポリゴンは、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。
 
@@ -198,7 +198,7 @@ ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだ
       "id": "WakefieldFamily",
     }]
     
->[AZURE.NOTE]DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
+>[AZURE.NOTE] DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
 
 空間オブジェクトが有効であるかどうかは、ST\_ISVALID と ST\_ISVALIDDETAILED を使用してチェックできます。たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。ST\_ISVALID で返されるのはブール値だけであるのに対し、ST\_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
 
@@ -276,7 +276,7 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 
 /* (すべてのパス) の空間インデックスを含んだインデックス作成ポリシーを指定した場合、コレクション内で検出されたすべてのポイントがインデックス化され、効率的な空間クエリ (ST\_WITHIN および ST\_DISTANCE) の実行が可能となります。空間インデックスには精度値がありません。必ず既定の精度値を使用してください。
 
-以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。Azure プレビュー ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
+以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。Azure ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
 
 **インデックス作成ポリシーの JSON でコレクションの空間インデックスを有効にする**
 
@@ -345,14 +345,14 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
         await Task.Delay(TimeSpan.FromSeconds(1));
     }
 
-> [AZURE.NOTE]ドキュメント内の GeoJSON の location 値が無効であったり形式が正しくなかったりした場合、空間クエリ用のインデックスは作成されません。ST\_ISVALID と ST\_ISVALIDDETAILED を使用して location 値を検証できます。
+> [AZURE.NOTE] ドキュメント内の GeoJSON の location 値が無効であったり形式が正しくなかったりした場合、空間クエリ用のインデックスは作成されません。ST\_ISVALID と ST\_ISVALIDDETAILED を使用して location 値を検証できます。
 
 ## 次のステップ
 DocumentDB の地理空間機能の基本的な使い方を身に付けたら、次に段階に進みましょう。
 
-- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.Spatial)を参考にして実際にコードを作成する
+- [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/e880a71bc03c9af249352cfa12997b51853f47e5/samples/code-samples/Geospatial/Program.cs)を参考にして実際にコードを作成する
 - [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間クエリを実際に体験してみる
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

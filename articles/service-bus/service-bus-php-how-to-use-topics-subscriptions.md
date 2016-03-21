@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="02/08/2016" 
 	ms.author="sethm"/>
 
 
@@ -27,9 +27,9 @@
 
 ## PHP アプリケーションの作成
 
-Windows Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
-> [AZURE.NOTE]PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
+> [AZURE.NOTE] PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
 
 この記事では、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできるサービス機能の使用方法について説明します。
 
@@ -46,7 +46,7 @@ Service Bus API を使用するには、以下の手順を実行します。
 
 次の例では、オートローダー ファイルをインクルードし、**ServiceBusService** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE]この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE] この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
 
 ```
 require_once 'vendor\autoload.php';
@@ -115,7 +115,7 @@ catch(ServiceException $e){
 }
 ```
 
-> [AZURE.NOTE]`ServiceBusRestProxy` オブジェクトで `listTopics` メソッドを使用することで、指定した名前のトピックがサービス名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE] `ServiceBusRestProxy` オブジェクトで `listTopics` メソッドを使用することで、指定した名前のトピックがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## サブスクリプションを作成する
 
@@ -143,7 +143,7 @@ try	{
 catch(ServiceException $e){
 	// Handle exception based on error codes and messages.
 	// Error codes and messages are here: 
-	// http://msdn.microsoft.com/library/windowsazure/dd179357
+	// http://msdn.microsoft.com/library/azure/dd179357
 	$code = $e->getCode();
 	$error_message = $e->getMessage();
 	echo $code.": ".$error_message."<br />";
@@ -154,7 +154,7 @@ catch(ServiceException $e){
 
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。SqlFilter の詳細については、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」を参照してください。
 
-> [AZURE.NOTE]サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。さらに、新しいサブスクリプションにはそれぞれ、既定の**ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。`ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
+> [AZURE.NOTE] サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。さらに、新しいサブスクリプションにはそれぞれ、既定の**ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。`ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
 
 次の例では、3 を超えるカスタム **MessageNumber** プロパティを持つメッセージだけを **SqlFilter** で選択する、**HighMessages** というサブスクリプションを作成します (メッセージへのカスタム プロパティの追加の詳細については、「[メッセージをトピックに送信する](#send-messages-to-a-topic)」を参照してください)。
 
@@ -211,7 +211,7 @@ try	{
 catch(ServiceException $e){
 	// Handle exception based on error codes and messages.
 	// Error codes and messages are here: 
-	// http://msdn.microsoft.com/library/windowsazure/hh780775
+	// http://msdn.microsoft.com/library/azure/hh780775
 	$code = $e->getCode();
 	$error_message = $e->getMessage();
 	echo $code.": ".$error_message."<br />";
@@ -278,7 +278,7 @@ try	{
 catch(ServiceException $e){
 	// Handle exception based on error codes and messages.
 	// Error codes and messages are here:
-	// http://msdn.microsoft.com/library/windowsazure/hh780735
+	// http://msdn.microsoft.com/library/azure/hh780735
 	$code = $e->getCode();
 	$error_message = $e->getMessage();
 	echo $code.": ".$error_message."<br />";
@@ -316,7 +316,7 @@ try	{
 catch(ServiceException $e){
 	// Handle exception based on error codes and messages.
 	// Error codes and messages are here: 
-	// http://msdn.microsoft.com/library/windowsazure/dd179357
+	// http://msdn.microsoft.com/library/azure/dd179357
 	$code = $e->getCode();
 	$error_message = $e->getMessage();
 	echo $code.": ".$error_message."<br />";
@@ -338,4 +338,4 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 [require-once]: http://php.net/require_once
 [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

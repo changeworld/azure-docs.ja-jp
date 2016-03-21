@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/02/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法
@@ -66,4 +66,4 @@
 VM をデプロイすると、単一のスケール ユニットにデプロイされます。アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。このため、アフィニティ グループから VM を削除しても影響はありません。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/13/2015"
+   ms.date="01/21/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 操作タスクおよび考慮事項
@@ -44,7 +44,7 @@
 
 **準備**
 
-1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。これにより、同期エンジンを手動で実行することができます。
+1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。これにより、同期エンジンを手動で実行することができます。 ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/readytoconfigure.png)
 2. いったんログオフして、ログオンし直します。[スタート] メニューの **[同期サービス]** を選択します。
 
 **インポートおよび同期**
@@ -76,7 +76,7 @@
 **アクティブなサーバーの切り替え**
 
 1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) を設定します。
-2. "ステージング モード" のサーバーでインストール ウィザードを実行して、ステージング モードを無効にします。
+2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。 ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/additionaltasks.png)
 
 ## 障害復旧
 実装の設計には、同期サーバーを喪失する障害の発生時の対処方法を計画することが含まれます。モデルにはさまざまなものがあり、どのモデルを使用するかは、次の要素を含むいくつかの要素に依存します。
@@ -114,4 +114,4 @@ Azure AD Connect に付属している SQL Server Express を使用しない場�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

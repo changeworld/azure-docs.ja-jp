@@ -1,20 +1,19 @@
 <properties
-   pageTitle="Azure AD Connect のトポロジ | Microsoft Azure"
-   description="このトピックでは、Azure AD Connect のサポートされているトポロジとサポートされていないトポロジについて詳しく説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="stevenpo"
-   editor=""/>
-
+    pageTitle="Azure AD Connect: サポートされるトポロジ | Microsoft Azure"
+    description="このトピックでは、Azure AD Connect のサポートされているトポロジとサポートされていないトポロジについて詳しく説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="AndKjell"
+    manager="stevenpo"
+    editor=""/>
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="10/13/2015"
-   ms.author="andkjell"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+	ms.topic="get-started-article"
+    ms.date="02/12/2016"
+    ms.author="andkjell"/>
 
 # Azure AD Connect のトポロジ
 
@@ -56,9 +55,17 @@ Azure AD Connect ウィザードには、ユーザーを統合する方法とし
 
 一般的なトポロジである[分離トポロジ](#multiple-forests-separate-topologies)、[フル メッシュ](#multiple-forests-full-mesh-with-optional-galsync)、および[アカウント リソース](#multiple-forests-account-resource-forest)については、次のセクションで説明します。
 
-Azure AD Connect Sync で提供される既定の構成は、次の内容を前提としています。1.ユーザーが持つ有効なアカウントは 1 つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。これには、パスワード同期とフェデレーションの両方が該当します。userPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。2.ユーザーのメールボックスは 1 つのみです。3.ユーザーのメールボックスをホストするフォレストは、Exchange のグローバル アドレス一覧 (GAL) で確認できる属性に対して最適なデータ品質を備えています。ユーザーにメールボックスがない場合、どのフォレストを使用してもこれらの属性値を提供できます。4.リンクされたメールボックスがある場合は、ログインに使用される別のアカウントも別のフォレストにあります。
+Azure AD Connect Sync で提供される既定の構成は、次の内容を前提としています。
 
-環境がこれらの前提と一致しない場合は、次のようになります。複数のアクティブなアカウントまたは複数のメールボックスがある場合、同期エンジンは 1 つを選び、他は無視します。リンクされたメールボックスがあり、他にはアカウントがない場合、これらのアカウントは Azure AD にエクスポートされず、ユーザーはどのグループのメンバーにもなりません。DirSync では、リンクされたメールボックスは通常のメールボックスとして表されるので、これはマルチ フォレスト シナリオをよりよくサポートするための意図的に異なる動作です。
+1.	ユーザーが持つ有効なアカウントは 1 つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。これには、パスワード同期とフェデレーションの両方が該当します。userPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。
+2.	ユーザーのメールボックスは 1 つのみです。
+3.	ユーザーのメールボックスをホストするフォレストは、Exchange のグローバル アドレス一覧 (GAL) で確認できる属性に対して最適なデータ品質を備えています。ユーザーにメールボックスがない場合、どのフォレストを使用してもこれらの属性値を提供できます。
+4.	リンクされたメールボックスがある場合は、ログインに使用される別のアカウントも別のフォレストにあります。
+
+環境がこれらの前提と一致しない場合は、次のようになります。
+
+-	複数のアクティブなアカウントまたは複数のメールボックスがある場合、同期エンジンは 1 つを選び、他は無視します。
+-	リンクされたメールボックスはあるが、その他のアカウントがない場合、それらのアカウントは Azure AD にはエクスポートされず、そのユーザーはどのグループのメンバーにもなりません。DirSync では、リンクされたメールボックスは通常のメールボックスとして表されるので、これはマルチ フォレスト シナリオをよりよくサポートするための意図的に異なる動作です。
 
 ### 複数のフォレスト、1 つの Azure AD ディレクトリに対する複数の同期サーバー
 ![MultiForestMultiSyncUnsupported](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
@@ -108,8 +115,8 @@ Office 365 の一部のワークロードでは、サポートされるトポロ
 
 | ワークロード | |
 | --------- | --------- |
-| Exchange Online |	オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/JA-JP/library/jj873754.aspx)」を参照してください。 |
-| Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/JA-JP/library/dn933910.aspx)」を参照してください。 |
+| Exchange Online |	オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。 |
+| Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/ja-JP/library/dn933910.aspx)」を参照してください。 |
 
 ## ステージング サーバー
 ![StagingServer](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -142,7 +149,10 @@ Azure AD Connect 同期サーバーと Azure AD ディレクトリには、1:1 �
 
 このトポロジでは、1 つの Azure AD ディレクトリだけが、オンプレミス Active Directory を持つ Exchange ハイブリッドを有効にできます。
 
-オブジェクトの相互排他的なセットの要件は、書き戻しにも適用されます。そのため、単一構成のオンプレミスを前提としている一部の書き戻し機能は、このトポロジではサポートされません。そうした機能として、既定の構成でのグループの書き戻し、デバイスの書き戻しなどがあります。
+オブジェクトの相互排他的なセットの要件は、書き戻しにも適用されます。そのため、単一構成のオンプレミスを前提としている一部の書き戻し機能は、このトポロジではサポートされません。次のトピックがあります。
+
+-	既定の構成によるグループの書き戻し
+-	デバイスの書き戻し
 
 ### Azure AD ディレクトリでの各オブジェクトの複数の使用
 ![SingleForestMultiDirectoryUnsupported](./media/active-directory-aadconnect-topologies/SingleForestMultiDirectoryUnsupported.png) ![SingleForestMultiConnectorsUnsupported](./media/active-directory-aadconnect-topologies/SingleForestMultiConnectorsUnsupported.png)
@@ -167,4 +177,4 @@ Azure AD のディレクトリは、分離するように設計されていま�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

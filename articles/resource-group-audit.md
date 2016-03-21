@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/27/2015" 
+	ms.date="12/02/2015" 
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
@@ -27,7 +27,7 @@
 1. 監査ログは、90 日間のみ保持されます。
 2. 15 日以内の範囲のみ照会することができます。
 
-Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを利用し、監査ログから情報を取得できます。
+Azure PowerShell、Azure CLI、REST API、Azure ポータルを利用し、監査ログから情報を取得できます。
 
 ## PowerShell
 
@@ -144,9 +144,9 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 監査ログを利用するための REST 操作は [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) に含まれています。監査ログのイベントを取得するには、「[サブスクリプションで管理イベントを一覧表示する](https://msdn.microsoft.com/library/azure/dn931934.aspx)」を参照してください。
 
-## プレビュー ポータル
+## ポータル
 
-プレビュー ポータルでログに記録された操作を表示することもできます。監査ログのブレードを選択するだけです。
+ポータルでログに記録された操作を表示することもできます。監査ログのブレードを選択するだけです。
 
 ![監査ログの選択](./media/resource-group-audit/select-audit.png)
 
@@ -158,8 +158,8 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 ## 次のステップ
 
-- セキュリティ ポリシーの設定方法の詳細については、「[リソースへのアクセスの管理](resource-group-rbac.md)」を参照してください。
+- セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 - サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

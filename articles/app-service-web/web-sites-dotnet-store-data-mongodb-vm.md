@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="02/29/2016" 
 	ms.author="cephalin"/>
 
 
@@ -22,7 +22,7 @@
 
 Git を使用すると、ASP.NET アプリケーションを Azure App Service Web Apps にデプロイできます。このチュートリアルでは、Azure の仮想マシンで実行されている MongoDB データベースに接続する、ASP.NET MVC の単純なフロントエンド タスク一覧アプリケーションをビルドします。[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。開発用コンピューターで ASP.NET アプリケーションを実行してテストした後、Git を使用してアプリケーションを App Service Web Apps にアップロードします。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 背景知識 ##
@@ -48,7 +48,7 @@ Git を使用すると、ASP.NET アプリケーションを Azure App Service W
 このチュートリアルは、Azure に仮想マシンが作成済みであることを前提としています。仮想マシンの作成後、仮想マシンに MongoDB をインストールする必要があります。
 
 * Windows 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnWindowsVM]」を参照してください。
-* 別の方法として、Linux 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnCentOSLinuxVM]」を参照してください。
+
 
 Azure に仮想マシンを作成して MongoDB をインストールしたら、仮想マシンの DNS 名 (たとえば "testlinuxvm.cloudapp.net") とエンドポイントで指定した MongoDB 用の外部ポートを忘れずに記録してください。この情報は後で必要になります。
 
@@ -147,7 +147,9 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	using System.Web;
 	using MyTaskListApp.Models;
 	using MongoDB.Driver;
+	using MongoDB.Bson;
 	using System.Configuration;
+	
 	
 	namespace MyTaskListApp
 	{
@@ -157,42 +159,42 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	        private bool disposed = false;
 	
 	        // To do: update the connection string with the DNS name
-			// or IP address of your server. 
-			//For example, "mongodb://testlinux.cloudapp.net"
-	        private string connectionString = "mongodb://<vm-dns-name>";
+	        // or IP address of your server. 
+	        //For example, "mongodb://testlinux.cloudapp.net"
+	        private string connectionString = "mongodb://mongodbsrv20151211.cloudapp.net";
 	
 	        // This sample uses a database named "Tasks" and a 
-			//collection named "TasksList".  The database and collection 
-			//will be automatically created if they don't already exist.
+	        //collection named "TasksList".  The database and collection 
+	        //will be automatically created if they don't already exist.
 	        private string dbName = "Tasks";
 	        private string collectionName = "TasksList";
 	
 	        // Default constructor.        
 	        public Dal()
 	        {
-	        }        
+	        }
 	
 	        // Gets all Task items from the MongoDB server.        
 	        public List<MyTask> GetAllTasks()
 	        {
 	            try
 	            {
-	                MongoCollection<MyTask> collection = GetTasksCollection();
-	                return collection.FindAll().ToList<MyTask>();
+	                var collection = GetTasksCollection();
+	                return collection.Find(new BsonDocument()).ToList();
 	            }
 	            catch (MongoConnectionException)
 	            {
-	                return new List<MyTask >();
+	                return new List<MyTask>();
 	            }
 	        }
 	
 	        // Creates a Task and inserts it into the collection in MongoDB.
 	        public void CreateTask(MyTask task)
 	        {
-	            MongoCollection<MyTask> collection = GetTasksCollectionForEdit();
+	            var collection = GetTasksCollectionForEdit();
 	            try
 	            {
-	                collection.Insert(task, SafeMode.True);
+	                collection.InsertOne(task);
 	            }
 	            catch (MongoCommandException ex)
 	            {
@@ -200,19 +202,19 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	            }
 	        }
 	
-	        private MongoCollection<MyTask> GetTasksCollection()
+	        private IMongoCollection<MyTask> GetTasksCollection()
 	        {
-	            MongoServer server = MongoServer.Create(connectionString);
-	            MongoDatabase database = server[dbName];
-	            MongoCollection<MyTask> todoTaskCollection = database.GetCollection<MyTask>(collectionName);
+	            MongoClient client = new MongoClient(connectionString);
+	            var database = client.GetDatabase(dbName);
+	            var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
 	            return todoTaskCollection;
 	        }
 	
-	        private MongoCollection<MyTask> GetTasksCollectionForEdit()
+	        private IMongoCollection<MyTask> GetTasksCollectionForEdit()
 	        {
-	            MongoServer server = MongoServer.Create(connectionString);
-	            MongoDatabase database = server[dbName];
-	            MongoCollection<MyTask> todoTaskCollection = database.GetCollection<MyTask>(collectionName);
+	            MongoClient client = new MongoClient(connectionString);
+	            var database = client.GetDatabase(dbName);
+	            var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
 	            return todoTaskCollection;
 	        }
 	
@@ -468,8 +470,7 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [ASP.NET]: http://www.asp.net/
 [MongoConnectionStrings]: http://www.mongodb.org/display/DOCS/Connections
 [MongoDB]: http://www.mongodb.org
-[InstallMongoOnCentOSLinuxVM]: /manage/linux/common-tasks/mongodb-on-a-linux-vm/
-[InstallMongoOnWindowsVM]: /manage/windows/common-tasks/install-mongodb/
+[InstallMongoOnWindowsVM]: ../virtual-machines/virtual-machines-install-mongodb-windows-server.md
 [VSEWeb]: http://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express
 [VSUlt]: http://www.microsoft.com/visualstudio/eng/2013-downloads
 
@@ -499,4 +500,4 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

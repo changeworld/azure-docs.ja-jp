@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service の API アプリのデバッグ
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -70,7 +72,7 @@
 
 Azure サーバーへのラウンドトリップによってデバッグが低速になる場合など、ローカルでの API アプリのデバッグが必要になることがあります。このセクションでは、Swagger UI をテスト クライアントとして使用して、API アプリをローカルでデバッグする方法について説明します。
 
-2. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com)に移動します。 
+2. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com/)に移動します。 
 
 3. サイド バーで **[参照]** をクリックし、**[API Apps]** を選択します。
 
@@ -136,4 +138,4 @@ Azure サーバーへのラウンドトリップによってデバッグが低�
 
 トラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。API Apps は、Web サービスをホストする追加機能を備えた Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

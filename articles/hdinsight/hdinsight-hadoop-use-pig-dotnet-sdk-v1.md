@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="02/04/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -42,7 +42,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
 
-> [AZURE.NOTE]後で使用するため、証明書にはわかりやすい名前を付けてください。
+> [AZURE.NOTE] 後で使用するため、証明書にはわかりやすい名前を付けてください。
 
 ##<a id="subscriptionid"></a>サブスクリプション ID の検索
 
@@ -130,7 +130,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		                Query = queryString,
 		            };
 		
-		            System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+		            System.Console.WriteLine("Submitting the Pig job to the cluster...");
 		            var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
 		            System.Console.WriteLine("Validating that the response is as expected...");
 		            System.Console.WriteLine("Response status code is " + response.StatusCode);
@@ -161,4 +161,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

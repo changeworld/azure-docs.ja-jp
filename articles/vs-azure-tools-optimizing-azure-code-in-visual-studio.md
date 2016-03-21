@@ -3,17 +3,17 @@
    description="Visual Studio の Azure コード最適化ツールにより、コードの堅牢性とパフォーマンスを向上させる方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="09/08/2015"
-   ms.author="kempb" />
+   ms.date="01/30/2016"
+   ms.author="tarcher" />
 
 # Azure コードの最適化
 
@@ -287,7 +287,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-詳細については、「[Partitioned Service Bus Queues and Topics (Service Bus のパーティション分割されたキューとトピック)](http://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/)」(Microsoft Azure のブログ) をご覧ください。また、「[Service Bus Partitioned Queue (Service Bus のパーティション分割されたキュー)](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f)」のサンプルもご覧ください。
+詳細については、「[Partitioned Service Bus Queues and Topics (Service Bus のパーティション分割されたキューとトピック)](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/)」(Microsoft Azure のブログ) をご覧ください。また、「[Service Bus Partitioned Queue (Service Bus のパーティション分割されたキュー)](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f)」のサンプルもご覧ください。
 
 ## SharedAccessStartTime を設定しない
 
@@ -449,7 +449,7 @@ AP4001
 
 - ASP.NET vNext アプリケーションでは、configuration.json を使用して接続文字列を保存します。
 
-web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン] (https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Windows Azure Web Sites: How Application Strings and Connection Strings Work (Windows Azure Web サイト: アプリケーション文字列と接続文字列の機能)](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
+web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン] (https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Microsoft Azure Web Sites: How Application Strings and Connection Strings Work (Microsoft Azure Web サイト: アプリケーション文字列と接続文字列の機能)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
 
 ## 診断構成ファイルを使用する
 
@@ -530,6 +530,6 @@ public class BlogsController : Controller
 
 ## 次のステップ
 
-Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
+Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

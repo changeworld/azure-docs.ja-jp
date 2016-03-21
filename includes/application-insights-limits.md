@@ -1,4 +1,4 @@
- 制限は、選択する[価格レベル](http://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
+ 制限は、選択する[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
 **リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
@@ -14,11 +14,12 @@
 プロパティ値の長さ | 1,000 | 1,000
 トレースおよび例外のメッセージ長 | 10000 | 10000
 メトリック名の長さ | 100 | 100
+可用性テスト | 10 | 10
 
 <sup>1</sup> データ ポイントとは、個々のメトリック値またはイベントに、プロパティと測定値を付加したものです。
 
 <sup>2</sup> 5,000 万を超える追加容量を購入することができます。
  
-[Application Insights の価格とクォータについて](app-insights-pricing.md)
+[Application Insights の価格とクォータについて](../articles/application-insights/app-insights-pricing.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

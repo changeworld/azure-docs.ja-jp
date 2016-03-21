@@ -1,18 +1,18 @@
-<properties 
-    pageTitle="RemoteApp VNET から Azure VNET に移行する方法"
-    description="RemoteApp VNET から Azure VNET に移行する方法の詳細" 
-    services="remoteapp" 
-	documentationCenter="" 
-    authors="lizap" 
+<properties
+    pageTitle="RemoteApp VNET から Azure VNET に移行する方法の詳細 | Microsoft Azure"
+    description="RemoteApp VNET から Azure VNET に移行する方法の詳細"
+    services="remoteapp"
+	documentationCenter=""
+    authors="lizap"
     manager="mbaldwin" />
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/02/2015" 
+<tags
+    ms.service="remoteapp"
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/07/2016"
     ms.author="elizapo" />
 
 
@@ -48,6 +48,5 @@
 これで完了です。
 
 ご質問がある場合、または特別なサポートが必要な場合は、[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help) に電子メールをお送りください。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

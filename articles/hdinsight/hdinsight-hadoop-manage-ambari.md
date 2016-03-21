@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する |Microsoft Azure"
+   pageTitle="Apache Ambari Web UI を使用して HDInsight クラスターを監視および管理する | Microsoft Azure"
    description="Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/27/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 #Ambari Web UI を使用した HDInsight クラスターの管理
@@ -25,7 +25,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
-> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
+> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
 
 ##<a id="whatis"></a>Ambari とは
 
@@ -37,11 +37,11 @@ Ambari Web UI は既定で Linux ベースの HDInsight クラスターに付属
 
 Ambari Web UI はお使いの HDInsight クラスター( HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。__CLUSTERNAME__ はお使いのクラスターの名前になります。
 
-> [AZURE.IMPORTANT]HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
+> [AZURE.IMPORTANT] HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
 
 ##SSH プロキシ
 
-> [AZURE.NOTE]クラスター用の Ambari にはインターネットから直接アクセスできますが、Ambari Web UI の一部のリンク (JobTracker など) はインターネット上で公開されていません。そのため、これらの機能にアクセスしようとすると、Secure Shell (SSH) トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信しない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。
+> [AZURE.NOTE] クラスター用の Ambari にはインターネットから直接アクセスできますが、Ambari Web UI の一部のリンク (JobTracker など) はインターネット上で公開されていません。そのため、これらの機能にアクセスしようとすると、Secure Shell (SSH) トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信しない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。
 
 Ambari と連携する SSH トンネルの作成の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
@@ -137,7 +137,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 これらのいずれかのリンクを選択すると、ブラウザーに新しいタブが開き、選択したページが表示されます。
 
-> [AZURE.NOTE]いずれかのサービスの **[Quick Links]** リンクを選択すると、クラスターへのプロキシ Web トラフィックに Secure Sockets Layer (SSL) トンネルを使用していない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。これは、この情報を表示するために使用される Web アプリケーションがインターネット上で公開されないためです。
+> [AZURE.NOTE] いずれかのサービスの **[Quick Links]** リンクを選択すると、クラスターへのプロキシ Web トラフィックに Secure Sockets Layer (SSL) トンネルを使用していない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。これは、この情報を表示するために使用される Web アプリケーションがインターネット上で公開されないためです。
 >
 > HDInsight での SSL トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
@@ -153,7 +153,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![hosts ページ](./media/hdinsight-hadoop-manage-ambari/hosts.png)
 
-> [AZURE.NOTE]ホストの追加、使用停止、再任命は HDInsight クラスターでは使用しないことをお勧めします。
+> [AZURE.NOTE] ホストの追加、使用停止、再任命は HDInsight クラスターでは使用しないことをお勧めします。
 
 1. 管理するホストを選択します。
 
@@ -177,11 +177,11 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 	* **[Decommission]** - クラスターからホストを削除します。
 
-		> [AZURE.NOTE]HDInsight クラスターではこの操作は使用しないでください。
+		> [AZURE.NOTE] HDInsight クラスターではこの操作は使用しないでください。
 
 	* **[Recommission]** - 使用停止にしたホストをクラスターに追加します。
 
-		> [AZURE.NOTE]HDInsight クラスターではこの操作は使用しないでください。
+		> [AZURE.NOTE] HDInsight クラスターではこの操作は使用しないでください。
 
 ###<a id="service"></a>サービス
 
@@ -189,7 +189,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![service actions](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
-> [AZURE.WARNING]このメニューには __[サービスの追加]__ が表示されますが、これを使用してサービスを HDInsight クラスターに追加しないでください。新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。スクリプト アクションの使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.WARNING] このメニューには __[サービスの追加]__ が表示されますが、これを使用してサービスを HDInsight クラスターに追加しないでください。新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。スクリプト アクションの使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 
 **[Actions]** ボタンではすべてのサービスを再起動できますが、特定のサービスを開始、停止、または再起動する必要がある場合があります。個々のサービスで操作を実行するには、次の手順に従います。
@@ -200,11 +200,11 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 	![service action](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
-	> [AZURE.NOTE]クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。これを回避するには、**[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
+	> [AZURE.NOTE] クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。これを回避するには、**[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
 
 3. 操作を選択したら、ページ上部の **[# op]** エントリが増分され、バックグラウンド操作が実行されていることが示されます。バックグラウンド操作を表示するように設定されている場合は、バックグラウンド操作の一覧が表示されます。
 
-	> [AZURE.NOTE]サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、**[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
+	> [AZURE.NOTE] サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、**[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
 
 サービスを構成するには、次の手順を実行します。
 
@@ -216,4 +216,12 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 3. 表示されたフィールドを使用して構成を変更し、**[Save]** を選択します。または、以前の構成を選択し、**[Make current]** を選択して以前の設定にロールバックします。
 
-<!---HONumber=Nov15_HO1-->
+##Ambari ビュー
+
+Ambari ビューを使うと、開発者は [Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
+
+* Yarn Queue Manager: このキュー マネージャーでは、シンプルな UI により YARN キューを表示、変更できます。
+* Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。Hive ビューの使用法の詳細については、[HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
+* Tez ビュー: このビューでは、Tez ジョブの実行方法や、ジョブで使用するリソース関する情報を表示することで、ジョブをより良く理解、最適化できます。
+
+<!---HONumber=AcomDC_0211_2016-->

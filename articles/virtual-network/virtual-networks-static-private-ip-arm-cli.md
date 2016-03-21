@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
 />
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/08/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # Azure CLI での静的プライベート IP アドレスの設定方法
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイメント モデルについて説明します。[クラシック デプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
 
 [AZURE.INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -233,7 +233,7 @@
 ## 既存の VM に静的プライベート IP アドレスを追加する方法
 上記のスクリプトを使用して作成された VM によって使用される NIC に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
-	azure netwrok nic set -g TestRG -n TestNIC2 -a 192.168.1.101
+	azure network nic set -g TestRG -n TestNIC2 -a 192.168.1.101
 
 予想される出力:
 
@@ -261,7 +261,7 @@
 ## 次のステップ
 
 - [予約済みパブリック IP](../virtual-networks-reserved-public-ip) アドレスについて理解する。
-- [インスタンス レベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
+- [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

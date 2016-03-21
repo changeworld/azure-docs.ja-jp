@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -39,11 +39,11 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 -	HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
-    > [AZURE.NOTE]HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
+    > [AZURE.NOTE] HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
 
--	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-storm-getting-started.md)」をご覧ください。
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」をご覧ください。
 
-	> [AZURE.NOTE]現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
+	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
 ##テンプレート
 
@@ -62,7 +62,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 | Storm ハイブリッドのサンプル | Java コンポーネントを使用する方法 |
 | Storm サンプル | 基本的なワード カウント トポロジ |
 
-> [AZURE.NOTE]HBase のリーダーとライターのサンプルは、HBase Java API ではなく、HBase REST API を利用して HDInsight の HBase と通信します。
+> [AZURE.NOTE] HBase のリーダーとライターのサンプルは、HBase Java API ではなく、HBase REST API を利用して HDInsight の HBase と通信します。
 
 このドキュメントの手順では、基本的な種類の Storm アプリケーション プロジェクトを使用して新しいトポロジを作成します。
 
@@ -179,7 +179,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 	-	**Counter.cs**: 各単語をカウントし、新しい単語のストリームに出力して各単語をカウントするボルトを実装します。
 
-	> [AZURE.NOTE]これらのボルトはストリームに読み書きするだけですが、ボルトを使用してデータベースやサービスなどのソースとやりとりすることもできます。
+	> [AZURE.NOTE] これらのボルトはストリームに読み書きするだけですが、ボルトを使用してデータベースやサービスなどのソースとやりとりすることもできます。
 
 3.	**Splitter.cs** を開きます。既定では、**Execute** のメソッドのみがあります。これは、ボルトが処理のタプルを受信したときに呼び出されます。ここで、受信したタプルを読み取って処理し、送信タプルを出力できます。
 
@@ -378,19 +378,19 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 1.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[Submit to Storm on HDInsight]** を選択します。
 
-	> [AZURE.NOTE]メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
+	> [AZURE.NOTE] メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
 2.	**[Storm クラスター]** ドロップダウン リストから HDInsight クラスターの Storm を選択して、**[送信]** を選択します。送信が成功したかどうかは、**[出力]** ウィンドウを使用して確認できます。
 
 3.	トポロジが正常に送信されたら、クラスターの **Storm トポロジ**が表示されます。一覧から **[WordCount]** トポロジを選択して、実行中のトポロジに関する情報を表示します。
 
-	> [AZURE.NOTE]また、**サーバー エクスプローラー** から **Storm トポロジ** を表示することもできます。その場合、**[Azure]** > **[HDInsight]** の順に展開して、HDInsight クラスターの [Storm] を右クリックして **[View Storm Topologies]** を選択します。
+	> [AZURE.NOTE] また、**サーバー エクスプローラー** から **Storm トポロジ** を表示することもできます。その場合、**[Azure]** > **[HDInsight]** の順に展開して、HDInsight クラスターの [Storm] を右クリックして **[View Storm Topologies]** を選択します。
 
 	スパウトやボルトのリンクを使用してこれらのコンポーネントに関する情報を表示します。各アイテムを選択すると新しいウィンドウが開きます。
 
 4.	**[トポロジの概要]** ビューで、**[強制終了]** を選択してトポロジを停止します。
 
-	> [AZURE.NOTE]Storm トポロジは非アクティブ化されるか、クラスターが削除されるまで実行し続けます。
+	> [AZURE.NOTE] Storm トポロジは非アクティブ化されるか、クラスターが削除されるまで実行し続けます。
 
 ##トランザクションのトポロジ
 
@@ -428,11 +428,11 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 	-	**HybridTopologyTx\_csharpSpout\_javaBolt** で定義されたトランザクション バージョン
 
-		> [AZURE.NOTE]このバージョンは、Closure コードをテキスト ファイルから Java コンポーネントとして使用する方法も示しています。
+		> [AZURE.NOTE] このバージョンは、Closure コードをテキスト ファイルから Java コンポーネントとして使用する方法も示しています。
 
 プロジェクトの送信時に使用されるトポロジを切り替えるには、単純にクラスターの送信前に `[Active(true)]` のステートメントを使用するトポロジに移動します。
 
-> [AZURE.NOTE]必要なすべての Java ファイルは、このプロジェクトの一部として **JavaDependency** フォルダーに提供されています。
+> [AZURE.NOTE] 必要なすべての Java ファイルは、このプロジェクトの一部として **JavaDependency** フォルダーに提供されています。
 
 ハイブリッド トポロジの作成と送信時には、次のものが使用されます。
 
@@ -450,7 +450,7 @@ SCP.Net バージョン 0.9.4.203 には、Event Hub スパウト (Event Hub か
 
 -	**TopologyBuilder.SetEventHubSpout** メソッド: トポロジに、Event Hub スパウト コンポーネントを追加します。
 
-> [AZURE.NOTE]これらによって、他の Java コンポーネントよりも、Event Hub スパウトの操作が容易になりますが、スパウトによって生成されたデータをシリアル化するには、CustomizedInteropJSONSerializer を引き続き使用する必要があります。
+> [AZURE.NOTE] これらによって、他の Java コンポーネントよりも、Event Hub スパウトの操作が容易になりますが、スパウトによって生成されたデータをシリアル化するには、CustomizedInteropJSONSerializer を引き続き使用する必要があります。
 
 ##SCP.NET を更新する方法
 
@@ -460,7 +460,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 2. パッケージ マネージャーから **[更新プログラム]** を選択します。更新プログラムが利用できる場合、それが一覧表示されます。パッケージをインストールするには、**[更新プログラム]** ボタンをクリックします。
 
-> [AZURE.IMPORTANT]パッケージ更新に NuGet を使用しない以前のバージョンの SCP.NET を利用してプロジェクトが作成された場合、次の手順で新しいバージョンに更新する必要があります。
+> [AZURE.IMPORTANT] パッケージ更新に NuGet を使用しない以前のバージョンの SCP.NET を利用してプロジェクトが作成された場合、次の手順で新しいバージョンに更新する必要があります。
 >
 > 1. **[ソリューション エクスプローラー]** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 > 2. **[検索]** フィールドを利用して **Microsoft.SCP.Net.SDK** を検索し、プロジェクトに追加します。
@@ -471,13 +471,13 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 トポロジのクラスターへのデプロイは簡単ですが、状況によっては、トポロジをローカルでテストする必要が生じる場合があります。次の手順を使用して、お使いの開発環境のローカルでこのチュートリアルのサンプル トポロジを実行してテストします。
 
-> [AZURE.WARNING]ローカル テストは、基本的な C# のみトポロジの場合のみ機能します。エラーが発生するため、ハイブリッド トポロジまたは複数のストリームを使用するトポロジには、ローカル テストを使用しないでください。
+> [AZURE.WARNING] ローカル テストは、基本的な C# のみトポロジの場合のみ機能します。エラーが発生するため、ハイブリッド トポロジまたは複数のストリームを使用するトポロジには、ローカル テストを使用しないでください。
 
 1.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[プロパティ]** を選択します。プロジェクトのプロパティで、**[出力の種類]** を **[コンソール アプリケーション]** に変更します。
 
 	![出力の種類](./media/hdinsight-storm-develop-csharp-visual-studio-topology/outputtype.png)
 
-	> [AZURE.NOTE]トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
+	> [AZURE.NOTE] トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
 2.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[追加]** > **[新しいアイテム]** の順に選択します。**[クラス]** を選択して、クラス名として「**LocalTest.cs**」と入力します。最後に **[追加]** をクリックします。
 
@@ -600,11 +600,11 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 7.	**Windows エクスプローラー**を使用して、たとえば、**C:\\Users<your\_user\_name>\\Documents\\Visual Studio 2013\\Projects\\WordCount\\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
 
-	> [AZURE.NOTE]これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
+	> [AZURE.NOTE] これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
 
 基本的なワード カウント アプリケーションをローカルでテストすることはとても簡単ですが、外部データ ソースとやりとりしたり、複雑なデータ分析を実行したりする複合的なトポロジを扱う場合には非常に役立ちます。そのようなプロジェクトを扱う際は、コンポーネントのコードにブレークポイントとステップを設定して問題を分離する必要が生じる場合もあります。
 
-> [AZURE.NOTE]HDInsight クラスターの Storm にデプロイする前に、必ず **[プロジェクトの種類]** を **[クラス ライブラリ]** に戻すようにしてください。
+> [AZURE.NOTE] HDInsight クラスターの Storm にデプロイする前に、必ず **[プロジェクトの種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
 ###ログ情報
 
@@ -616,7 +616,7 @@ Context.Logger.Info("Component started");
 
 記録された情報は、**[サーバー エクスプローラー]** の **[Hadoop Service Log]** で閲覧できます。HDInsight クラスターの Storm のエントリを展開して、**[Hadoop Service Log]** を展開します。最後に、閲覧するログ ファイルを選択します。
 
-> [AZURE.NOTE]ログは、クラスターで使用する Azure ストレージ アカウントに保存されます。Visual Studio でログインしたサブスクリプションと異なる場合、この情報を閲覧するにはストレージ アカウントのあるサブスクリプションにログインする必要があります。
+> [AZURE.NOTE] ログは、クラスターで使用する Azure ストレージ アカウントに保存されます。Visual Studio でログインしたサブスクリプションと異なる場合、この情報を閲覧するにはストレージ アカウントのあるサブスクリプションにログインする必要があります。
 
 ###エラー情報の表示
 
@@ -656,6 +656,6 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 **HDInsight での Apache HBase**
 
--	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
+-	[HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

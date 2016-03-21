@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で成果物を作成して発行する方法
@@ -22,7 +22,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 ## <a name="create-product"> </a>成果物の作成
 
-操作を API に追加して構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure ポータルで **[管理]** をクリックします。
+操作を API に追加して構成するには、パブリッシャー ポータルを使用します。パブリッシャー ポータルにアクセスするには、API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -32,7 +32,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 ![製品][api-management-products]
 
-![New product][api-management-add-new-product]
+![新しい成果物][api-management-add-new-product]
 
 成果物のわかりやすい名前を **[名前]** フィールドに入力し、成果物の説明を **[説明]** フィールドに入力します。
 
@@ -64,7 +64,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 成果物を発行するには、事前に 1 つまたは複数の API を追加する必要があります。そのためには、**[成果物への API の追加]** をクリックします。
 
-![Add APIs][api-management-add-apis-to-product]
+![API の追加][api-management-add-apis-to-product]
 
 目的の API を選択し、**[保存]** をクリックします。
 
@@ -72,7 +72,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 **[設定]** タブでは、その目的、アクセスできる API、その他の有益な情報など、成果物に関する詳しい情報を入力できます。このタブでは、API を呼び出す開発者を対象に、プレーンテキストまたは HTML マークアップ形式で情報を入力できます。
 
-![Product settings][api-management-product-settings]
+![成果物の設定][api-management-product-settings]
 
 **[サブスクリプションが必要]** をオンにすることにより、サブスクリプションを使用する必要がある保護成果物を作成するか、または、このチェックボックスをオフにすることにより、サブスクリプションなしで呼び出すことができるオープンな成果物を作成します。
 
@@ -86,13 +86,13 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 成果物に含まれる API を呼び出すには、あらかじめ成果物を発行しておく必要があります。成果物の **[概要]** タブで、**[発行]** をクリックし、**[はい。発行します]** をクリックして確認します。以前に発行した成果物をプライベートに設定するには、**[発行の取り消し]** をクリックします。
 
-![Publish product][api-management-publish-product]
+![成果物の発行][api-management-publish-product]
 
 ## <a name="make-visible"> </a>開発者への成果物の公開
 
 **[可視性]** タブでは、開発者ポータルで成果物を表示してサブスクライブすることができるロールを選択できます。
 
-![Product visibility][api-management-product-visiblity]
+![成果物の可視性][api-management-product-visiblity]
 
 グループ内の開発者に対して成果物の可視性を有効または無効にするには、グループの横のチェック ボックスをオンまたはオフにし、**[保存]** をクリックします。
 
@@ -148,4 +148,4 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]: api-management-howto-create-groups.md
 [Azure API Management で成果物を作成して詳細設定を行う方法]: api-management-howto-product-with-rules.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合 | Microsoft Azure" 
     description="Azure Active Directory で Brightspace by Desire2Learn を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,17 +11,18 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
-このチュートリアルでは、Azure と Brightspace by Desire2Learn の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Brightspace by Desire2Learn の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Brightspace by Desire2Learn でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを終了すると、Brightspace by Desire2Learn に割り当てた Azure AD ユーザーは、Brightspace by Desire2Learn 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Brightspace by Desire2Learn に割り当てた Azure AD ユーザーは、Brightspace by Desire2Learn 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +50,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -70,39 +71,41 @@
 
 1.  Azure AD ポータルの **Brightspace by Desire2Learn** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798959.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798959.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Brightspace by Desire2Learn へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798960.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798960.png "Configure Single Sign-On")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "Configure App URL")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが **Brightspace by Desire2Learn** へのサインオンに使用する URL を入力します (例: "**https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*)。
-2.  **[次へ]** をクリックします。
+    1.  **[サインオン URL]** ボックスに、ユーザーが **Brightspace by Desire2Learn** へのサインオンに使用する URL を入力します (例: "*https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*)。
+    2.  **[次へ]** をクリックします。
 
-4.  **[Brightspace by Desire2Learn でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックしてメタデータをコンピューターに保存します。
+4.  **[Brightspace by Desire2Learn でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798962.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798962.png "Configure Single Sign-On")
 
 5.  ダウンロードしたメタデータ ファイルを Brightspace by Desire2Learn サポート チームに送信します。
 
-    >[AZURE.NOTE]Brightspace by Desire2Learn サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE]Brightspace by Desire2Learn サポート チームが、実際に SSO を構成する必要があります。
+    ご使用のサブスクリプションで SSO が有効になると通知されます。
 
 6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798963.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798963.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが Brightspace by Desire2Learn にログインできるようにするには、ユーザーを Brightspace by Desire2Learn にプロビジョニングする必要があります。Brightspace by Desire2Learn の場合、Brightspace by Desire2Learn サポート チームがユーザー アカウントを作成する必要があります。
+Azure AD ユーザーが Brightspace by Desire2Learn にログインできるようにするには、ユーザーを Brightspace by Desire2Learn にプロビジョニングする必要があります。  
+Brightspace by Desire2Learn の場合、Brightspace by Desire2Learn サポート チームがユーザー アカウントを作成する必要があります。
 
 >[AZURE.NOTE]Brightspace by Desire2Learn から提供されている他の Brightspace by Desire2Learn ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、ユーザーにアプリケーションへのアクセス権を付与する必要があります。
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 ###ユーザーを Brightspace by Desire2Learn に割り当てるには、次の手順を実行します。
 
@@ -112,10 +115,10 @@ Azure AD ユーザーが Brightspace by Desire2Learn にログインできるよ
 
     ![ユーザーの割り当て](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798964.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

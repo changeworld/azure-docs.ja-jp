@@ -6,7 +6,7 @@
 	documentationCenter="" 
 	authors="aliuy" 
 	manager="jhubbard" 
-	editor="cgronlun"/>
+	editor="mimig"/>
 
 <tags 
 	ms.service="documentdb" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/11/2015" 
+	ms.date="02/16/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
@@ -50,7 +50,9 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 	-	生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
 	-	この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-データベース トリガー、ストアド プロシージャ、カスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、[Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
+データベース トリガー、ストアド プロシージャ、カスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](documentdb-sdk-dotnet.md) でサポートされます。
+
+**このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/)** を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
 
 ## ストアド プロシージャ
 
@@ -92,7 +94,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 		});
 
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、DocumentDB ストレージに対して実行できるすべての操作へのアクセスを提供します。ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定しています。詳細については、[DocumentDB JavaScript サーバー SDK のドキュメント](http://dl.windowsazure.com/documentDB/jsserverdocs/)を参照してください。
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、DocumentDB ストレージに対して実行できるすべての操作へのアクセスを提供します。ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定しています。詳細については、[DocumentDB JavaScript サーバー SDK のドキュメント](http://azure.github.io/azure-documentdb-js-server/)を参照してください。
 
 この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。
 
@@ -479,7 +481,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 > <br/>
 > 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
 
-サポートされる関数:
+サポートされる関数: 
 <ul>
 <li>
 <b>chain() ... .value([callback] [, options])</b>
@@ -501,7 +503,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>map(transformationFunction [, options] [, callback])</b>
 <ul>
 <li>
-各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を所与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。
+各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を付与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。
 </li>
 </ul>
 </li>
@@ -525,7 +527,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>sortBy([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-与えられた述語を利用し、入力ドキュメントのストリームを昇順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY 句に似ています。
+与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY 句に似ています。 
 </li>
 </ul>
 </li>
@@ -533,7 +535,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>sortByDescending([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-与えられた述語を利用し、入力ドキュメントのストリームを降順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY x DESC 句に似ています。
+与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY x DESC 句に似ています。
 </li>
 </ul>
 </li>
@@ -551,7 +553,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 * 制御フロー (if、for、while など)
 * 関数呼び出し
 
-詳細については、「[サーバー側 JSDocs](http://dl.windowsazure.com/documentDB/jsserverdocs/)」を参照してください。
+詳細については、「[サーバー側 JSDocs](http://azure.github.io/azure-documentdb-js-server/)」を参照してください。
 
 ### 例: JavaScript クエリ API を使用してストアド プロシージャを作成します。
 
@@ -750,7 +752,7 @@ _.chain()
 </table>
 
 ## ランタイム サポート
-[DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
+[DocumentDB JavaScript サーバー側 SDK](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### セキュリティ
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。このため、互いの意図していない副作用に対する安全性が保証されています。
@@ -759,7 +761,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## クライアント SDK のサポート
-[Node.js](http://dl.windowsazure.com/documentDB/nodedocs/) クライアントに加え、DocumentDB では、[.NET](https://msdn.microsoft.com/library/azure/dn783362.aspx)、[Java](http://dl.windowsazure.com/documentdb/javadoc/)、[JavaScript](http://dl.windowsazure.com/documentDB/jsclientdocs/)、および [Python の SDK](http://dl.windowsazure.com/documentDB/pythondocs/) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
+[Node.js](documentdb-sdk-node.md) クライアントに加え、DocumentDB では、[.NET](documentdb-sdk-dotnet.md)、[Java](documentdb-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python の SDK](documentdb-sdk-python.md) をサポートしています。ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。.NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
 
 	var markAntiquesSproc = new StoredProcedure
 	{
@@ -792,7 +794,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(createdStoredProcedure.SelfLink, document, 1920);
 
 
-このサンプルは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn783362.aspx) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
+このサンプルは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
 
 	Trigger preTrigger = new Trigger()
 	{
@@ -901,22 +903,23 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 
 ## サンプル コード
 
-その他のサーバー側のコード例 ([アップデート](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/upsert.js)、[一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
+その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) および [更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
 
 あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。
 
 ## 次のステップ
 
-ストアド プロシージャ、トリガー、およびユーザー定義関数を作成したら、それらを読み込み、スクリプト エクスプローラーを使用して Azure プレビュー ポータルで表示できます。詳細については、「[DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、およびユーザー定義関数の表示](documentdb-view-scripts.md)」を参照してください。
+ストアド プロシージャ、トリガー、およびユーザー定義関数を作成したら、それらを読み込み、スクリプト エクスプローラーを使用して Azure ポータルで表示できます。詳細については、「[DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、およびユーザー定義関数の表示](documentdb-view-scripts.md)」を参照してください。
 
 次のようなリファレンスとリソースでも、DocumentDB のサーバー側プログラミングについて詳しく学ぶことができます。
 
 - [Azure DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)
+- [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 - [JSON](http://www.json.org/) 
 - [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
--	[JavaScript – JSON 型システム](http://www.json.org/js.html) 
--	[セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
--	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
--	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
+- [JavaScript – JSON 型システム](http://www.json.org/js.html) 
+- [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
+- [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+- [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/14/2015"
+	ms.date="11/24/2015"
 	ms.author="femila"/>
 
 # Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
@@ -33,8 +33,8 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 3. AD FS 管理コンソールを開き、**[AD FS]** > **[信頼関係] > [証明書利用者信頼]** に移動します。[Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、**[要求規則の編集…]** を選択します。
 4. **[発行変換規則]** タブで、**[規則の追加]** を選択します。
 5. **[要求規則テンプレート]** ボックスから、**[カスタムの規則を使用して要求を送信する]** を選択します。**[次へ]** を選択します。
-6. **[要求規則名]** ボックスに「*Auth Method Claim Rule*」と入力します。
-7. **[要求規則]** ボックスに次の要求規則を入力します。****
+6. **[要求規則名]** ボックスに「 *Auth Method Claim Rule* 」と入力します。
+7. **[要求規則]** ボックスに次の要求規則を入力します。
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
         => issue(claim = c);
@@ -43,7 +43,7 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 
 追加の Azure Active Directory 証明書利用者信頼の認証クラス参照を構成する
 -----------------------------------------------------------------------------------------------------
-9. フェデレーション サーバーで、Windows PowerShell コマンド ウィンドウを開き、次のように入力します。
+フェデレーション サーバーで、Windows PowerShell コマンド ウィンドウを開き、次のように入力します。
 
 
   `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
@@ -52,21 +52,32 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 
 AD FS グローバル認証ポリシー
 -----------------------------------------------------------------------------
-1. イントラネットで Windows 統合認証を許可するように AD FS グローバル プライマリ認証ポリシーを構成します (これは既定の構成です)。
+イントラネットで Windows 統合認証を許可するように AD FS グローバル プライマリ認証ポリシーを構成します (これは既定の構成です)。
 
 
 Internet Explorer の構成
 ------------------------------------------------------------------------------
-1. Windows デバイスで、Internet Explorer のローカル イントラネットのセキュリティ ゾーンに対して、次の設定を構成します。
-    * 既存のクライアント証明書が 1 つしか存在しない場合の証明書の選択: **有効にする**
-    * アクティブ スクリプト: **有効にする**
-    * イントラネット ゾーンでのみ自動的にログオンする: **オン**
+Windows デバイスで、Internet Explorer のローカル イントラネットのセキュリティ ゾーンに対して、次の設定を構成します。
+
+- 既存のクライアント証明書が 1 つしか存在しない場合の証明書の選択: **有効にする**
+- アクティブ スクリプト: **有効にする**
+- イントラネット ゾーンでのみ自動的にログオンする: **オン**
 
 これらは、Internet Explorer のローカル イントラネットのセキュリティ ゾーンの既定の設定です。Internet Explorer で **[インターネット オプション]** > **[セキュリティ]** > [ローカル イントラネット] > [レベルのカスタマイズ] に移動すると、これらの設定を表示または管理できます。また、Active Directory グループ ポリシーを使用して、これらの設定を構成することもできます。
 
 ネットワーク接続
 -------------------------------------------------------------
 ドメイン参加済みの Windows デバイスを Azure AD に自動的に登録するには、これらのデバイスが AD FS および Active Directory ドメイン コントローラーに接続されている必要があります。このことは、一般的には、マシンが企業ネットワークに接続されている必要があることを意味します。この接続には、ワイヤード (有線) 接続、Wi-Fi 接続、DirectAccess、または VPN を使用できます。
+
+## Azure Active Directory Device Registration の検出を構成する
+Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー アカウント名と既知のデバイス登録サーバー名を組み合わせた、デバイス登録サーバーが検出されます。Azure Active Directory Device Registration サービスに関連付けられた A レコードを参照する DNS CNAME レコードを作成する必要があります。CNAME レコードでは、既知のプレフィックス **enterpriseregistration** の後に、組織のユーザー アカウントで使用されている UPN サフィックスを使用する必要があります。組織で複数の UPN サフィックスを使用している場合は、DNS に複数の CNAME レコードを作成する必要があります。
+
+たとえば、組織で @contoso.com と @region.contoso.com の 2 つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
+
+| エントリ | 型 | Address |
+|-------------------------------------------|-------|------------------------------------|
+| enterpriseregistration.contoso.com | CNAME | enterpriseregistration.windows.net |
+| enterpriseregistration.region.contoso.com | CNAME | enterpriseregistration.windows.net |
 
 ##Windows 7 および Windows 8.1 のドメイン参加済みデバイスの自動デバイス登録を構成する
 
@@ -83,6 +94,12 @@ Azure AD へのデバイス登録により、広範なデバイスの機能が�
 
 モバイル デバイスと従来型デバイスの両方を使用する企業、または Office 365 や Azure AD などの Microsoft サービスを利用する企業は、Azure AD Device Registration サービスを使用して、デバイスを Azure AD に登録する必要があります。企業でモバイル デバイスや Office 365、Azure AD、Microsoft Intune などの Microsoft サービスを利用せずに、代わりにオンプレミス アプリケーションのみをホストする場合、AD FS を使用してデバイスを Active Directory に登録することができます。
 
-AD FS を使用したデバイス登録のデプロイに関する詳細については、[ここ](https://technet.microsoft.com/ja-jp/library/dn486831.aspx)を参照してください。
+AD FS を使用したデバイス登録のデプロイに関する詳細については、[ここ](https://technet.microsoft.com/library/dn486831.aspx)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+## 関連トピック
+
+- [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
+- [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+
+<!---HONumber=AcomDC_1203_2015-->

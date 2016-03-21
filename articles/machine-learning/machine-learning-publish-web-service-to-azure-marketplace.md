@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="02/12/2016" 
 	ms.author="bharaths"/>
 
 # Azure Marketplace への Azure Machine Learning Web サービスの発行 
@@ -37,7 +37,7 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
  まだ完了していない場合は、こちらの[チュートリアル](machine-learning-walkthrough-5-publish-web-service.md)をご覧ください。
 
 ###手順 2: サービスを運用環境にデプロイし、API キーと OData のエンドポイント情報を取得する###
-1. [[Microsoft Azure 管理ポータル]](http://manage.windowsazure.com)で、左側のナビゲーション バーから **[MACHINE LEARNING]** オプションを選択し、ワークスペースを選択します。 
+1. [[Azure クラシック ポータル]](http://manage.windowsazure.com) で、左側のナビゲーション バーから **[MACHINE LEARNING]** オプションを選択し、ワークスペースを選択します。 
 
 2. **[WEB サービス]** タブをクリックし、マーケットプレースに発行する Web サービスを選択します。
 
@@ -84,7 +84,7 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 
 	![Azure Marketplace][image2]
 
-9.	上記の手順 2 で説明したように、Microsoft Azure 管理ポータルから、Web サービスの URL と API キーを取得します。
+9.	上記の手順 2 で説明したように、Azure クラシック ポータルから、Web サービスの URL と API キーを取得します。
 
 10.	[マーケットプレース データ サービスのセットアップ] ダイアログで、OData エンドポイント アドレスを **[サービス URL]** テキスト ボックスに貼り付けます。
 
@@ -109,4 +109,4 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 [odata]: ./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

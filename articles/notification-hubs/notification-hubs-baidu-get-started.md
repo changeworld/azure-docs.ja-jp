@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="mobile-baidu"
 	ms.workload="mobile"
-	ms.date="11/03/2015"
+	ms.date="11/25/2015"
 	ms.author="wesmc"/>
 
 # Baidu での Notification Hubs の使用
@@ -32,7 +32,7 @@ Baidu クラウド プッシュは、プッシュ通知をモバイル デバイ
 + [Mobile Services Android SDK]
 + [Baidu Push Android SDK]
 
->[AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)を参照してください。
 
 
 ##Baidu アカウントを作成する
@@ -141,7 +141,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 ##通知ハブを構成する
 
-1. [Azure ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure クラシック ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[通知ハブ]** の順にクリックし、**[簡易作成]** をクリックします。
 
@@ -187,7 +187,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
     ![][26]
 
-5. [Mobile Services Android SDK] をダウンロードし、解凍します。**notificationhubs** フォルダーを開き、**notification-hubs-x.y.jar** ファイルを Eclipse プロジェクトの **libs** フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
+5. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから notification-hubs-0.4.jar ファイルをダウンロードします。このファイルを Eclipse プロジェクトの **libs** フォルダーに追加し、*libs* フォルダーを最新の情報に更新します。
 
 6. [Baidu Push Android SDK] をダウンロードし、解凍します。**libs** フォルダーを開き、**pushservice-x.y.z** jar ファイル と **armeabi** および **mips** フォルダーを Android アプリケーションの **libs** フォルダーに コピーします。
 
@@ -264,7 +264,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 				public static String NotificationHubConnectionString = "...";
 			}
 
-	**API\_KEY** には前もって Baidu クラウド プロジェクトから取得した値、**NotificationHubName** には Azure ポータルの通知ハブ名、**NotificationHubConnectionString** には Azure ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
+	**API\_KEY** には前もって Baidu クラウド プロジェクトから取得した値、**NotificationHubName** には Azure クラシック ポータルの通知ハブ名、**NotificationHubConnectionString** には Azure クラシック ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
 
 11. **DemoApplication.java** という名前の新しいクラスを追加し、それに次のコードを追加します。
 
@@ -399,7 +399,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 ##アプリケーションに通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure クラシック ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
 
@@ -413,7 +413,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 * **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services バックエンドからの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
+* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services Backend からの通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)) を参照してください。
 
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md)) を参照してください。
 
@@ -459,7 +459,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 アプリケーションが Baidu プッシュ通知サービスから 'userId' と 'channelId' を取得し、通知ハブに登録します。
 
-テスト通知は、ポータルの [デバッグ] タブを使用して送信できます。Visual Studio で .Net コンソール アプリケーションを作成する場合、Visual Studio で F5 キーを押してアプリケーションを実行します。アプリケーションから通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。
+テスト通知は、Azure クラシック ポータルの [デバッグ] タブを使用して送信できます。Visual Studio で .Net コンソール アプリケーションを作成する場合、Visual Studio で F5 キーを押してアプリケーションを実行します。アプリケーションから通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。
 
 
 <!-- Images. -->
@@ -500,7 +500,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

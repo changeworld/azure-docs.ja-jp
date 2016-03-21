@@ -12,8 +12,8 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="10/27/2015"
+	ms.topic="get-started-article"
+	ms.date="01/09/2016"
 	ms.author="jaime.espinosa"/>
 
 
@@ -40,23 +40,22 @@ Azure App Service Web Apps は、エンタープライズ レベルの Web ア�
 ## Web Apps の概念 ##
 
 - **Web Apps ギャラリー** - 常に増え続ける、既存のアプリケーション テンプレートのリストから選択します。Wordpress、Joomla、Drupal など、OSS アプリ コミュニティのベスト アプリを、ワンクリック インストールで利用できます。.NET MVC、Django、CakePHP などのフレームワークを活用すると、アプリケーションの開発プロセスがスムーズに開始できます。
-- **自動スケーリング** - Web Apps では、将来の顧客負荷に対処するため、スケール アップやスケール アウトをすばやく実行できます。VM の数とサイズを手動で選択するか、自動スケールを設定して、負荷またはスケジュールに応じてサーバーをスケーリングします。
-- **継続的な統合** - VSO、GitHub、TeamCity、Hudson、または BitBucket との継続的な統合とデプロイのワークフローを設定します。これにより、コードのチェックインまたは統合テストが成功するたびに、Web アプリを自動的にビルド、テスト、デプロイすることができます。
+- **自動スケーリング** - Web Apps では、将来の顧客負荷に対処するため、スケール アップやスケール アウトをすばやく実行できます。VM の数とサイズを手動で選択するか、auto-scaling を設定して、負荷またはスケジュールに応じてサーバーをスケーリングします。
+- **継続的な統合** - VSTS、GitHub、TeamCity、Hudson、または BitBucket との継続的な統合とデプロイのワークフローを設定します。これにより、コードのチェックインまたは統合テストが成功するたびに、Web アプリを自動的にビルド、テスト、デプロイすることができます。
 - **デプロイメント スロット** - [ステージングされたデプロイメント][Slots]を実行し、Azure App Service の運用環境の Web アプリと同じ運用前環境でコードを検証します。結果に満足したら、スワップ操作を実行することにより、ダウンタイムなしで新しいバージョンのアプリをリリースします。 
 - **運用環境でのテスト** - ステージングされたデプロイメントを次のレベルに移行し、A/B テストを実行して、構成可能な一部のライブ トラフィックで新しいコードを検証します。 
 - **Web ジョブ** - Web Apps VM でプログラムまたはスクリプトを実行します。複数の VM で実行するため、継続的に、またはスケジュールやスケールに基づきジョブを実行します。Azure [Web ジョブ SDK][Webjobs] を使用して Azure Storage または Service Bus と統合します。
-- **ハイブリッド接続** - [ハイブリッド接続](../integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
+- **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
 
 ## 始めに ##
 Web Apps を使用するには、[ASP.NET Web アプリを作成する方法][create]のチュートリアルに従ってください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][appservice] に関するページを参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [appservice]: ../app-service/app-service-value-prop-what-is.md
 [create]: web-sites-dotnet-get-started.md
@@ -65,4 +64,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0224_2016-->

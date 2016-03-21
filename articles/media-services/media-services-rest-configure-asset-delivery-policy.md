@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/18/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #方法: 資産の配信ポリシーを構成する
@@ -54,7 +54,15 @@ HDS
 
 資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
->[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
+
+##考慮事項
+
+- 資産に対して OnDemand (ストリーミング) ロケーターが存在するときは、資産に関連付けられている AssetDeliveryPolicy を削除することはできません。ポリシーを削除する前に、資産からポリシーを削除することをお勧めします。
+- 資産配信ポリシーが設定されていない場合、ストレージ暗号化資産のストリーミング ロケーターは作成できません。資産がストレージ暗号化資産でない場合はロケーターを作成でき、資産配信ポリシーのない暗号化されていない資産がストリーミングされます。
+- 1 つの資産に複数の資産配信ポリシーを関連付けることができますが、特定の AssetDeliveryProtocol を処理する方法は 1 つだけ指定できます。つまり、AssetDeliveryProtocol.SmoothStreaming プロトコルを指定する 2 つの配信ポリシーをリンクしようとすると、エラーが発生します。これは、クライアントが Smooth Streaming 要求を行ったときにどのポリシーを適用するか、システムがわからないためです。  
+- 既存のストリーミング ロケーターを持つ資産が存在する場合、その資産への新しいポリシーのリンク、資産からの既存のポリシーのリンク解除、または資産に関連付けられている配信ポリシーの更新は実行できません。先にストリーミング ロケーターを削除し、ポリシーを調整した後、ストリーミング ロケーターを再作成する必要があります。ストリーミング ロケーターを再作成するときに同じ locatorId を使用できますが、コンテンツが最初の CDN またはダウンストリーム CDN によってキャッシュされる可能性があるため、クライアントで問題が発生しないことを確認する必要があります。  
+ 
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
@@ -272,11 +280,11 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
 	
 	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":7,"Value":"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
->[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。アセット配信プロトコルに必ず DASH (2) を指定してください。
+>[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。資産配信プロトコルに必ず DASH (2) を指定してください。
   
 ###資産を資産配信ポリシーにリンクする
 
-「[アセットをアセット配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
+「[資産を資産配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
 
 
 ##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
@@ -352,30 +360,43 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
         /// Apply Dynamic Common encryption.
         /// </summary>
         DynamicCommonEncryption
-    }
+        }
 
 ###ContentKeyDeliveryType
 
+
     /// <summary>
     /// Delivery method of the content key to the client.
-    /// </summary>
+    ///
+    </summary>
     public enum ContentKeyDeliveryType
     {
         /// <summary>
         /// None.
-        /// </summary>
-        None,
+        ///
+        </summary>
+        None = 0,
 
         /// <summary>
         /// Use PlayReady License acquistion protocol
-        /// </summary>
-        PlayReadyLicense,
+        ///
+        </summary>
+        PlayReadyLicense = 1,
 
         /// <summary>
         /// Use MPEG Baseline HTTP key protocol.
-        /// </summary>
-        BaselineHttp
+        ///
+        </summary>
+        BaselineHttp = 2,
+
+        /// <summary>
+        /// Use Widevine License acquistion protocol
+        ///
+        </summary>
+        Widevine = 3
+
     }
+
 
 ###AssetDeliveryPolicyConfigurationKey
 
@@ -435,4 +456,4 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

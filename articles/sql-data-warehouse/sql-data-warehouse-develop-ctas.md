@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="11/03/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
 CREATE TABLE AS SELECT (CTAS) は、使用可能な T-SQL 機能の中でも最も重要なものの 1 つです。これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成するという、完全に並列化された操作です。CTAS は、テーブルのコピーを作成する最も簡単で高速な方法です。SELECT..INTO の高性能バージョンだと考えてください。このドキュメントでは、CTAS の例とベスト プラクティスについて説明します。
@@ -425,8 +425,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [統計]: ./sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/ja-JP/library/mt204041.aspx
+[CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -7,35 +7,37 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="aashishr"; "jimpark"/>
+<tags 
+	ms.service="backup" 
+	ms.workload="storage-backup-recovery" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/22/2016" 
+	ms.author="markgal"; "aashishr"; "jimpark"/>
 
 
 # PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
+
 この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+
+## Azure PowerShell をインストールするには
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+
+Azure PowerShell 1.0 は、2015 年 10 月にリリースされました。これは 0.9.8 リリースの次のリリースです。特にコマンドレットの命名パター名など、いくつかの重大な変更点があります。1.0 のコマンドレットは、{動詞}-AzureRm{名詞}; という命名パターンに従っているのに対し、0.9.8 の名前には **Rm** が含まれません (たとえば、New-azureresourcegroup ではなく New-AzureRmResourceGroup)。Azure PowerShell 0.9.8 を使用している場合、まず、**Switch-AzureMode AzureResourceManager** コマンドを実行してリソース マネージャー モードを有効にする必要があります。このコマンドは、1.0 以降では必要ありません。
+
+0\.9.8 環境向けに作成されたスクリプトを 1.0 以降の環境で使用する場合、運用前環境でスクリプトを慎重にテストしてから運用環境で使用し、予期しない影響が発生しないようにします。
+
+[PowerShell の最新リリースのダウンロード](https://github.com/Azure/azure-powershell/releases) (バージョン 1.0.0 以降が必要)
+
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
-## セットアップと登録
-開始するには
 
-1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
-2. **Switch-AzureMode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
+## バックアップ資格情報コンテナーの作成
 
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
-
-PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
-
-- バックアップ コンテナーの作成
-- Microsoft Azure Backup エージェントのインストール
-- Microsoft Azure Backup サービスへの登録
-- ネットワークの設定
-- 暗号化の設定
-
-### バックアップ コンテナーの作成
-
-> [AZURE.WARNING]顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+> [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
 
 **New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -44,10 +46,10 @@ PS C:\> New-AzureResourceGroup –Name “test-rg” -Region “West US”
 PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
 ```
 
-**Get-AzureRMBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
+**Get-AzureRMBackupVault** コマンドレットを使用して、サブスクリプション内のバックアップ コンテナー一覧を取得します。
 
 
-### Microsoft Azure Backup エージェントのインストール
+## Microsoft Azure Backup エージェントのインストール
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、管理者特権の PowerShell コンソールで、次のコマンドを実行します。
@@ -62,7 +64,7 @@ PS C:\> MARSAgentInstaller.exe /q
 
 ![インストールされているエージェント](./media/backup-client-automation/installed-agent-listing.png)
 
-#### インストール オプション
+### インストール オプション
 
 コマンドラインで利用可能なすべてのオプションを表示するには、次のコマンドを使用します。
 
@@ -74,7 +76,7 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
+| /q | サイレント インストール | - | 
 | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m | Microsoft Update のオプトイン | - |
@@ -86,7 +88,7 @@ PS C:\> MARSAgentInstaller.exe /?
 | /pw | プロキシ パスワード | - |
 
 
-### Microsoft Azure Backup サービスへの登録
+## Microsoft Azure Backup サービスへの登録
 Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-configure-vault.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
 
 - 有効な Azure サブスクリプションがあること
@@ -117,7 +119,7 @@ Machine registration succeeded.
 
 > [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
 
-### ネットワークの設定
+## ネットワークの設定
 プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
 
 特定の曜日セットに対して、帯域幅の使用を、```work hour bandwidth```オプションと```non-work hour bandwidth```オプションで制御することもできます。
@@ -132,7 +134,7 @@ PS C:\> Set-OBMachineSetting -NoThrottle
 Server properties updated successfully.
 ```
 
-### 暗号化の設定
+## 暗号化の設定
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。
 
 ```
@@ -181,8 +183,6 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 ```
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
-
-> [AZURE.NOTE] 現在、PowerShell コマンドレットでは長期間の保有ポリシーの設定はサポートされていません。長期的な保有期間ポリシーを設定するには、Azure Backup の UI コンソールを使用してください。
 
 保有ポリシーは、コマンドレット [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405) を使用してメインのポリシーと関連付ける必要があります。
 
@@ -595,4 +595,4 @@ Azure Backup for Windows Server/Client の詳細については、以下を参�
 - [Azure Backup の概要](backup-configure-vault.md)
 - [Windows Server のバックアップ](backup-azure-backup-windows-server.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

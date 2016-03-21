@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/09/2015"
+   ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
 # Azure Active Directory のレポートのプレビュー
+
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 レポート | 可用性
 ------------------------------------------------------- | --------------------
@@ -52,4 +54,4 @@ RMS 対応アプリケーションの利用状況 | パブリック プレビュ
 **プライベート プレビュー レポート** |
 すべてのユーザーのサインイン アクティビティ | プライベート プレビュー
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

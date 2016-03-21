@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/23/2015"
+	ms.date="01/12/2016"
 	ms.author="erikre"/>
 
 # Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
-Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
+Azure App Service Web Apps からドメインを購入した場合は、「[Web アプリ用のドメインの購入](custom-dns-web-site-buydomains-web-app.md)」の最後の手順をご覧ください。
 
 この記事では、[Go Daddy](https://godaddy.com) から直接購入したカスタム ドメイン名を [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
 
@@ -50,7 +50,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 
 	既存のレコードを**編集**するには、レコードの横にあるペンと紙のアイコンを選択します。
 
-	> [AZURE.NOTE]新しいレコードを追加する前に、GoDaddy では一般的なサブドメイン (Editor では **[Host]**) の DNS レコード (**[email]**、**[files]**、**[mail]** など) が既に作成されていることに注意してください。使用する名前が既に存在する場合は、新しいレコードを作成せずに既存のレコードを変更してください。
+	> [AZURE.NOTE] 新しいレコードを追加する前に、GoDaddy では一般的なサブドメイン (Editor では **[Host]**) の DNS レコード (**[email]**、**[files]**、**[mail]** など) が既に作成されていることに注意してください。使用する名前が既に存在する場合は、新しいレコードを作成せずに既存のレコードを変更してください。
 
 4. レコードを追加する場合は、まずレコードの種類を選択する必要があります。
 
@@ -67,7 +67,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 5. **[Add Another]** をクリックします。
 6. レコードの種類として **[CNAME]** を選択し、**[Host]** 値として **[awverify]**、**[Points to]** 値として **[awverify.&lt;yourwebappname&gt;.azurewebsites.net]** を指定します。
 
-	> [AZURE.NOTE]この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure プレビュー ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
+	> [AZURE.NOTE] この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
 
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
@@ -76,10 +76,9 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

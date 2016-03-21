@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/11/2015"
+	ms.date="02/23/2016"
 	ms.author="billmath"/>
 
 # ディレクトリ同期要件の決定
@@ -37,9 +37,11 @@
   - 組織内の UPN は、現在どのような状態ですか。 
   - ユーザーを認証するディレクトリは他にもありますか。
   - 会社は Microsoft Exchange を使用していますか。
-    - ハイブリッド Exchange デプロイメントを利用する予定はありますか。 
+    - ハイブリッド Exchange デプロイを利用する予定はありますか。
+
+同期要件について考えがまとまったら、これらの要件を満たすためにどのツールが適しているかを決定する必要があります。Microsoft では、ディレクトリ統合と同期を実現するための複数のツールを提供しています。詳細については、「[ハイブリッド ID ディレクトリ統合ツールの比較表](active-directory-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
    
-会社の同期要件について考えがまとまったら、これらのディレクトリ サービスを使用するアプリケーションを評価する必要があります。この評価は、これらのアプリケーションをクラウドと統合する技術要件を定義するために重要です。次のチェック項目に回答してください。
+会社の同期要件とこれを実現するツールの準備ができたら、これらのディレクトリ サービスを使用するアプリケーションを評価する必要があります。この評価は、これらのアプリケーションをクラウドに統合する技術要件を定義するために重要です。次のチェック項目に回答してください。
 
 - これらのアプリケーションはクラウドに移行し、ディレクトリを使用する予定ですか。
 - アプリケーションが属性を正常に使用するために、クラウドと同期する必要がある特殊な属性はありますか。
@@ -57,12 +59,13 @@
  - このチェック項目に対する答えがよくわからない場合は、記事「[Azure Active Directory 同期サービスのインストール](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService)」のセクション「パスワード同期のためのアクセス許可」を参照し、それらのアクセス許可にアカウントが既にあるか、またはアカウントを作成する必要があるかを判断してください。
 - 複数フォレストの同期がある場合、同期サーバーから各フォレストにアクセスできますか。
  
->[AZURE.NOTE]回答をメモし、その背後にある論理的根拠を理解してください。「[インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)」では、使用できるオプションを確認します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
+>[AZURE.NOTE]
+回答をメモし、その背後にある論理的根拠を理解してください。「[インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)」では、使用できるオプションを確認します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
 
 ## 次のステップ
 [多要素認証要件の決定](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## 関連項目
-[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-directory-overview.md)
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

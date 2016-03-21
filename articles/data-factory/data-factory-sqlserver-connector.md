@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
@@ -27,6 +27,8 @@
 Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。ゲートウェイ インスタンスの設定は、SQL Server との接続の前提条件です。
 
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターまたはクラウド VM にインストールしてリソースの競合を回避することをお勧めします。
+
+次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 ## サンプル: SQL Server から Azure BLOB にデータをコピーする
 
@@ -204,11 +206,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	   }
 	}
 
-> [AZURE.NOTE]上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
->  
-> または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
->  
-> SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+ 
+SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 
 SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
@@ -391,13 +391,13 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| type | type プロパティは、**OnPremisesSqlServer** に設定されます。 | あり |
-| connectionString | SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 | あり |
-| gatewayName | Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 | あり |
+| type | type プロパティは、**OnPremisesSqlServer** に設定されます。 | はい |
+| connectionString | SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 | はい |
+| gatewayName | Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 | はい |
 | username | Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 
-**New-AzureDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
+**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
@@ -433,7 +433,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
-## SQL Server データセット型のプロパティ
+## SQL Server データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (SQL Server 、Azure BLOB、Azure テーブルなど) で同じです。
 
@@ -445,9 +445,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 ## SQL Server のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
-> [AZURE.NOTE]コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
+> [AZURE.NOTE] コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
@@ -467,6 +467,8 @@ SqlSource に **sqlReaderQuery** が指定されている場合、コピー ア�
 
 SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
+> [AZURE.NOTE] **sqlReaderStoredProcedureName** を使用する場合は、データセット JSON の **tableName** プロパティの値を指定する必要があります。これは、現時点での製品の制限です。ただし、このテーブルに対して実行される検証はありません。
+
 ### SqlSink
 
 **SqlSink** では次のプロパティがサポートされます。
@@ -481,6 +483,98 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
 | storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ | 
 | sqlWriterTableType | 上記のストアド プロシージャで使用するテーブル型のユーザー指定の名前。コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 | テーブルの種類の名前。 | いいえ |
+
+## 接続の問題のトラブルシューティング
+
+1. リモート接続を許可するよう、SQL Server を構成します。**SQL Server Management Studio** を起動し、**サーバー**を右クリックして、**[プロパティ]** をクリックします。一覧から **[接続]** を選択し、**[このサーバーへのリモート接続を許可する]** をオンにします。
+	
+	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
+
+	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。 
+2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **SQL Server ネットワーク構成**を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
+
+	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
+
+	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。 
+3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP プロパティ]** ウィンドウを起動します。
+4. **[IP アドレス]** タブに切り替えます。下にスクロールして **IPAll** セクションを表示します。**TCP ポート** をメモしておきます (既定は **1433**)。
+5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。  
+6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などです。
+
+	> [AZURE.IMPORTANT] 
+	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
+	>   
+	> 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+
+## ターゲット データベースの ID 列
+このセクションでは、ID 列がないソース テーブルから ID 列がある対象テーブルにデータをコピーする例を示します。
+
+**ソース テーブル:**
+
+	create table dbo.SourceTbl
+	(
+	       name varchar(100),
+	       age int
+	)
+
+**対象テーブル:**
+
+	create table dbo.TargetTbl
+	(
+	       id int identity(1,1),
+	       name varchar(100),
+	       age int
+	)
+
+
+ターゲット テーブルには ID 列があることに注意してください。
+
+**ソース データセット JSON の定義**
+
+	{
+	    "name": "SampleSource",
+	    "properties": {
+	        "published": false,
+	        "type": " SqlServerTable",
+	        "linkedServiceName": "TestIdentitySQL",
+	        "typeProperties": {
+	            "tableName": "SourceTbl"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": 1
+	        },
+	        "external": true,
+	        "policy": {}
+	    }
+	}
+
+**対象データセット JSON の定義**
+
+	{
+	    "name": "SampleTarget",
+	    "properties": {
+	        "structure": [
+	            { "name": "name" },
+	            { "name": "age" }
+	        ],
+	        "published": false,
+	        "type": "AzureSqlTable",
+	        "linkedServiceName": "TestIdentitySQLSource",
+	        "typeProperties": {
+	            "tableName": "TargetTbl"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": 1
+	        },
+	        "external": false,
+	        "policy": {}
+	    }	
+	}
+
+
+ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -506,29 +600,29 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
-| ビット | Boolean |
+| bit | Boolean |
 | char | String、Char |
 | date | DateTime |
 | Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| 小数点 | 小数点 |
+| Decimal | Decimal |
 | FILESTREAM 属性 (varbinary(max)) | Byte |
 | Float | Double |
 | image | Byte | 
 | int | Int32 | 
-| money | 小数点 |
+| money | Decimal |
 | nchar | String、Char |
 | ntext | String、Char |
-| 数値 | 小数点 |
+| numeric | Decimal |
 | nvarchar | String、Char |
 | real | Single |
 | rowversion | Byte |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | 小数点 | 
+| smallmoney | Decimal | 
 | sql\_variant | Object * |
-| テキスト | String、Char |
+| text | String、Char |
 | time | TimeSpan |
 | timestamp | Byte |
 | tinyint | Byte |
@@ -543,4 +637,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

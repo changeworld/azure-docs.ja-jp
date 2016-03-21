@@ -11,7 +11,7 @@
 
 4. 次の行を *dependencies* の下に追加します。
 
-   		compile 'com.google.android.gms:play-services-base:6.5.87'
+   		compile 'com.google.android.gms:play-services-gcm:8.4.0'
 
 5. *DefaultConfig* で、*minSdkVersion* を 9 に変更します。
  
@@ -23,4 +23,4 @@
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

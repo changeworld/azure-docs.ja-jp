@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/09/2016"
 	ms.author="zhangya;bradsev" />
 
 
@@ -40,7 +40,7 @@
 * **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
 * **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
-このトピックでは、データ強化プロセスの特徴エンジニアリングと特徴選択についてのみ説明します。データ前処理の手順の詳細については、「[Pre-processing Data in Azure ML Studio (Azure ML Studio のデータ前処理)](http://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)」のビデオをご覧ください。
+このトピックでは、データ強化プロセスの特徴エンジニアリングと特徴選択についてのみ説明します。データ前処理の手順の詳細については、「[Pre-processing Data in Azure ML Studio (Azure ML Studio のデータ前処理)](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)」のビデオをご覧ください。
 
 
 ## データから特徴を作成する - 特徴エンジニアリング
@@ -135,4 +135,4 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

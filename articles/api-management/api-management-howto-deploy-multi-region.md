@@ -13,26 +13,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="12/07/2015"
 	ms.author="sdanie"/>
 
 # 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
 API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの API Management サービスを任意の数の Azure リージョンに分散できます。これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。
 
-API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure ポータルで簡単に追加できます。各リージョンには API Management のプロキシ サーバーがデプロイされており、呼び出しのトラフィックは最も近いプロキシにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いプロキシにリダイレクトされます。
+API Management サービスが最初に作成されたとき、サービスには 1 つの[ユニット][]のみが含まれ、1 つの Azure リージョンに配置されます。このリージョンがプライマリ リージョンに指定されます。リージョンは Azure クラシック ポータルで簡単に追加できます。各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
 > [AZURE.IMPORTANT]複数リージョンのデプロイメントは、**[Premium][]** レベルでのみ提供されます。
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
 
-最初に、ご利用の API Management サービスの Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+最初に、ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
 >まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
-API Management サービス インスタンスの Azure ポータルで **[スケール]** タブに移動します。
+API Management サービス インスタンスの Azure クラシック ポータルで **[スケール]** タブに移動します。
 
 ![[スケール] タブ][api-management-scale-service]
 
@@ -48,7 +48,7 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 
 ## <a name="remove-region"> </a>リージョンから API Management サービス インスタンスを削除する
 
-リージョンから API Management サービス インスタンスを削除するには、API Management サービス インスタンスの Azure ポータルで **[スケール]** タブに移動します。
+リージョンから API Management サービス インスタンスを削除するには、API Management サービス インスタンスの Azure クラシック ポータルで **[スケール]** タブに移動します。
 
 ![[スケール] タブ][api-management-scale-service]
 
@@ -75,4 +75,4 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 [ユニット]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

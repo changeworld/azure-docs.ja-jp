@@ -202,10 +202,10 @@
 
 3. コマンドが終了すると、__wordcountjava\\target__ ディレクトリに __wordcountjava-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
-	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
+	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##</a><a name="test">エミュレーターでプログラムをテストする
+##<a name="test"></a>エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 
@@ -222,7 +222,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 フォルダー|注
 ---|---
-/WordCount|ワード カウント プロジェクトのルート フォルダー。 
+/WordCount|ワード カウント プロジェクトのルート フォルダー。
 /WordCount/Apps|mapper と reducer の実行可能ファイルのフォルダー。
 /WordCount/Input|MapReduce のソース ファイル フォルダー。
 /WordCount/Output|MapReduce の出力ファイル フォルダー。
@@ -231,7 +231,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
 
-> [AZURE.NOTE]Hadoop HDFS のコマンドは大文字と小文字が区別されます。
+> [AZURE.NOTE] Hadoop HDFS のコマンドは大文字と小文字が区別されます。
 
 **データ ファイルをエミュレーター上の HDFS にコピーするには**
 
@@ -304,7 +304,7 @@ MapReduce ジョブを実行するための別のオプションは、Azure Powe
 
 
 ##<a id="upload"></a>Azure BLOB ストレージにデータとアプリケーションをアップロードする
-Azure HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。HDInsight クラスターをプロビジョニングするときは、Azure BLOB ストレージ コンテナーを使用してシステム ファイルを格納します。この既定のコンテナーか別のコンテナー (Azure の同じストレージ アカウント上、またはクラスターと同じデータ センターに配置された別のストレージ アカウント上) をデータ ファイルの格納に使用できます。
+Azure HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。HDInsight クラスターをプロビジョニングするときは、Azure BLOB ストレージ コンテナーを使用してシステム ファイルを格納します。この既定のコンテナーか別のコンテナー (Azure の同じストレージ アカウント上、またはクラスターと同じリージョンに配置された別のストレージ アカウント上) をデータ ファイルの格納に使用できます。
 
 このチュートリアルでは、データ ファイル用と MapReduce アプリケーション用にそれぞれ個別のストレージ アカウント上にコンテナーを作成します。データ ファイルは、エミュレーター ワークステーション上の **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** ディレクトリ内のテキスト ファイルです。
 
@@ -316,7 +316,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$subscriptionName = "<AzureSubscriptionName>"
 		$storageAccountName_Data = "<AzureStorageAccountName>"  
 		$containerName_Data = "<ContainerName>"
-		$location = "<MicrosoftDataCenter>"  # For example, "East US"
+		$location = "<Region>"  # For example, "East US"
 
 	**$subscripionName** 変数は、Azure サブスクリプションに関連付けられます。**$storageAccountName\_Data** と **$containerName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け](http://msdn.microsoft.com/library/windowsazure/dd135715.aspx)」を参照してください
 
@@ -455,7 +455,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		# The Storage account and the HDInsight cluster variables
 		$subscriptionName = "<AzureSubscriptionName>"
 		$stringPrefix = "<StringForPrefix>"
-		$location = "<MicrosoftDataCenter>"     ### Must match the data Storage account location
+		$location = "<Region>"     ### Must match the data Storage account location
 		$clusterNodes = <NumberOFNodesInTheCluster>
 
 		$storageAccountName_Data = "<TheDataStorageAccountName>"
@@ -592,22 +592,22 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 [hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-emulator]: ../hdinsight-get-started-emulator.md
 [hdinsight-emulator-wasb]: ../hdinsight-get-started-emulator.md#blobstorage
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
 
 
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

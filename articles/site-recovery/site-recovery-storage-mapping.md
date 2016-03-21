@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Site Recovery の記憶域マッピング | Microsoft Azure"
-	description="Azure Site Recovery は、オンプレミスに配置されている仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整します。"
+	pageTitle="オンプレミス データセンター間で Hyper-V 仮想マシンをレプリケーションするために、Azure Site Recovery の記憶域をマップする | Microsoft Azure"
+	description="Azure Site Recovery を使用して 2 つのオンプレミス データセンター間で Hyper-V 仮想マシンをレプリケーションするために、記憶域マッピングを準備します。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -10,47 +10,40 @@
 <tags
 	ms.service="site-recovery"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="10/07/2015"
+	ms.date="02/22/2016"
 	ms.author="raynew"/>
 
 
-# Azure Site Recovery の記憶域マッピング
+# Azure Site Recovery を使用して 2 つのオンプレミス データセンター間で Hyper-V 仮想マシンをレプリケーションするために、記憶域マッピングを準備する
 
 
-Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。可能なデプロイ シナリオについては、「[Site Recovery の概要](site-recovery-overview.md)」 を参照してください。
+Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。この記事では記憶域マッピングについて説明します。これを利用すれば、Site Recovery を使って 2 つのオンプレミスの VMM データセンター間で Hyper-V 仮想マシンをレプリケートするときに、記憶域を最適に使用できます。
 
-
-## この記事の内容
-
-記憶域マッピングは、Site Recovery デプロイの重要な要素です。記憶域マッピングにより、記憶域を最大限に活用できます。この記事では、記憶域マッピングについて説明し、記憶域マッピングのしくみの理解に役立つ例を示します。
-
-
-質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## 概要
 
-記憶域マッピングを設定する方法は、Site Recovery デプロイ シナリオによって異なります。
+記憶域マッピングが有効なのは、次のように、Hyper-V レプリカまたは SAN レプリケーションを使用して、VMM クラウドに配置されている Hyper-V 仮想マシンをプライマリ データセンターからセカンダリ データセンターにレプリケートする場合のみです。
 
 
-
-- **オンプレミス間 (Hyper-V レプリカを使用したレプリケーション)** - 次のことを行うために、ソースとターゲットの VMM サーバーの記憶域分類をマップします。
+- **Hyper-V レプリカを使用したオンプレミス間のレプリケーション** - 次の目的で、ソースとターゲットの VMM サーバーで記憶域分類をマップすることで、記憶域マッピングを設定します。
 
 	- **レプリカ仮想マシンのターゲット記憶域の特定** - 仮想マシンは、選択した記憶域ターゲット (SMA 共有またはクラスター共有ボリューム (CSV)) にレプリケートされます。
 	- **レプリカ仮想マシンの配置** - 記憶域マッピングを使用して、Hyper-V ホスト サーバーにレプリカ仮想マシンを最適に配置します。レプリカ仮想マシンは、マップされた記憶域分類にアクセスできるホストに配置されます。
 	- **記憶域マッピングなし** - 記憶域マッピングを構成しない場合、仮想マシンは、レプリカ仮想マシンに関連付けられている Hyper-V ホスト サーバーで指定された既定の記憶域の場所にレプリケートされます。
 
-- **オンプレミス間 (SAN を使用したレプリケーション)** - 次のことを行うために、ソースとターゲットの VMM サーバーの記憶域配列プールをマップします。
-	- **ターゲット記憶域プールの特定** - 記憶域マッピングにより、レプリケーション グループ内の LUN が、マップされたターゲット記憶域プールにレプリケートされます。
+- **SAN を使用したオンプレミス間のレプリケーション** - ソースとターゲットの VMM サーバーで記憶域配列プールをマッピングすることで、記憶域マッピングを設定します。
+	- **プールの指定** - プライマリ プールからレプリケーション データを受け取るセカンダリ記憶域プールを指定します。
+	- **ターゲット記憶域プールの特定** - ソース レプリケーション グループ内の LUN が、マップされたターゲット記憶域プールにレプリケートされるようにします。
 
+## Hyper-V レプリケーション用に記憶域分類を設定する
 
+Site Recovery で Hyper-V レプリカを使ってレプリケートする場合は、ソースとターゲットの VMM サーバーか、1 つの VMM サーバーで (2 つのサイトが同じ VMM サーバーによって管理されている場合)、記憶域分類どうしをマップします。以下の点に注意してください。
 
-## 記憶域分類
-
-ソースとターゲットの VMM サーバーの記憶域分類間でマップするか、2 つのサイトが同じ VMM サーバーによって管理されている場合は、1 つの VMM サーバーの記憶域分類間でマップします。マッピングが適切に構成され、レプリケーションが有効になっていると、プライマリの場所の仮想マシンの仮想ハード ディスクが、マップされたターゲットの場所の記憶域にレプリケートされます。以下の点に注意してください。
-
+- マッピングが適切に構成され、レプリケーションが有効になっていると、プライマリの場所の仮想マシンの仮想ハード ディスクが、マップされたターゲットの場所の記憶域にレプリケートされます。
 - 記憶域分類は、ソースとターゲットのクラウドに配置されたホスト グループで使用できる必要があります。
 - 分類のストレージの種類は同じでなくてもかまいません。たとえば、SMB 共有が含まれているソース分類を、CSV が含まれているターゲット分類にマップすることができます。
 - 詳細については、「[How to create storage classifications in VMM (VMM で記憶域分類を作成する方法)](https://technet.microsoft.com/library/gg610685.aspx)」をご覧ください。
@@ -70,13 +63,13 @@ VMM で分類が適切に構成されている場合、記憶域マッピング�
 
 Site Recovery ポータルの **[リソース]** ページの **[サーバー記憶域]** タブでこれらを構成しました。
 
-![ストレージ マッピングの構成](./media/site-recovery-storage-mapping/StorageMapping1.png)
+![ストレージ マッピングの構成](./media/site-recovery-storage-mapping/storage-mapping1.png)
 
 この例の場合: GOLD 記憶域 (SourceShare1) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは GOLD\_TARGET 記憶域 (TargetShare1) にレプリケートされます。SILVER 記憶域 (SourceShare2) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは SILVER\_TARGET 記憶域 (TargetShare2) にレプリケートされます。その他も同様です。
 
 実際のファイル共有と、VMM でそれらに割り当てられた分類は次のようになります。
 
-![VMM での記憶域分類](./media/site-recovery-storage-mapping/StorageMapping2.png)
+![VMM での記憶域分類](./media/site-recovery-storage-mapping/storage-mapping2.png)
 
 ## 複数の記憶域の場所
 
@@ -103,6 +96,6 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構�
 
 ## 次のステップ
 
-記憶域マッピングについて理解を深めたので、[ベスト プラクティス](site-recovery-best-practices.md)を読み、デプロイの準備をします。
+記憶域マッピングに関する理解が深まったところで、[Azure Site Recovery をデプロイする準備](site-recovery-best-practices.md)を行いましょう。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

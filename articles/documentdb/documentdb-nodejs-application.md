@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="10/20/2015" 
+	ms.date="02/03/2016" 
 	ms.author="ryancraw"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -44,16 +44,16 @@
 
 ## <a name="_Toc395783176"></a>前提条件
 
-> [AZURE.TIP]このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
+> [AZURE.TIP] このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - [Node.js][] バージョン v0.10.29 以降
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
 
-## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントの作成
+## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
 
 最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順2: 新しい Node.js アプリケーションの作成](#_Toc395783178)」に進んでください。
 
@@ -61,7 +61,7 @@
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションの作成
+## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
 
 それでは、[Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成する方法を学習しましょう。
 
@@ -183,7 +183,7 @@
 				
 		module.exports = DocDBUtils;
 
-> [AZURE.TIP]createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> [AZURE.TIP] createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 		
 3. **docdbUtils.js** ファイルを保存して閉じます。
 
@@ -396,7 +396,7 @@
 		
 		module.exports = config;
 
-3. [Microsoft Azure プレビュー ポータル](http://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
+3. [Microsoft Azure ポータル](https://portal.azure.com)の DocumentDB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH\_KEY の値を更新します。
 
 4. **config.js** ファイルを保存して閉じます。
  
@@ -428,6 +428,8 @@
 		app.get('/', taskList.showTasks.bind(taskList));
 		app.post('/addtask', taskList.addTask.bind(taskList));
 		app.post('/completetask', taskList.completeTask.bind(taskList));
+		app.set('view engine', 'jade');
+
 
 
 6. これらの行は、**TaskDao** オブジェクトの新しいインスタンスを DocumentDB への新しい接続によって定義し (**config.js** から読み取った値を使用して)、タスク オブジェクトを初期化して、その後フォーム アクションを **TaskList** コントローラー上のメソッドにバインドします。
@@ -544,7 +546,7 @@
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。手順については、[こちら](../web-sites-publish-source-control-git.md#step4)で確認できます。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この方法の手順については、「[Azure App Service での GIT による継続的なデプロイ](../app-service-web/web-sites-publish-source-control.md)」を参照してください。
 
 2. Git リモートとして Azure Web サイトを追加します。
 
@@ -562,11 +564,11 @@
 
 アプリケーションの完全なソース コードを[GitHub][] からダウンロードできます。
 
-詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、[Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

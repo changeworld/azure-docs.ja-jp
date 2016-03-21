@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # ハイブリッド接続を使用して Azure App Service の API アプリからオンプレミスの SQL Server に接続する
+
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ハイブリッド接続により、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) API アプリを、静的 TCP ポートを使用するオンプレミスのリソースに接続できます。サポートされているリソースには、Microsoft SQL Server、MySQL、HTTP Web APIs、Mobile Services、およびほとんどのカスタム Web サービスが含まれます。
 
 このチュートリアルでは、新しいハイブリッド接続機能を使用してローカルのオンプレミスの SQL Server データベースに接続する App Service API アプリを[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)で作成する方法について説明します。このチュートリアルは、Azure または SQL Server を使用した経験がない読者を対象に作成されています。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -64,16 +66,16 @@
 	</tr>
 </table>
 
-- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
+- オンプレミス リソースの *hostname*:*portnumber* に到達できること 
 
-この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[オンプレミスの SQL Server データベースを作成する](#CreateSQLDB)」から開始できます。
 
 <a name="InstallSQL"></a>
 ## SQL Server Express をインストールし、TCP/IP を有効にして、オンプレミスの SQL Server データベースを作成する
 
-このセクションでは、API アプリで [Azure プレビュー ポータル](https://portal.azure.com)を使用するために、SQL Server Express をインストールし、TCP/IP を有効にして、データベースを作成する方法を説明します。
+このセクションでは、API アプリで [Azure プレビュー ポータル](https://portal.azure.com/)を使用するために、SQL Server Express をインストールし、TCP/IP を有効にして、データベースを作成する方法を説明します。
 
 <a name="InstallSQLDB"></a>
 ### SQL Server Express をインストールする
@@ -200,7 +202,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 10. `SpeakersController.cs` ファイルのコードを次のコードに置き換えます。`connectionString` の <serverName> プレースホルダーと <password> プレースホルダーに独自の値が指定されていることを確認します。<serverName> の値は SQL Server があるマシンの名前、<password> の値は SQL Server をインストールおよび構成したときに設定したパスワードです。
 
-	> [AZURE.NOTE]次のコード スニペットには、パスワードの情報が含まれています。これは、デモを簡潔にするためです。実際の運用環境では、コードに資格情報を格納しないでください。代わりに、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure (ASP.NET および Azure へパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」をご覧ください。
+	> [AZURE.NOTE] 次のコード スニペットには、パスワードの情報が含まれています。これは、デモを簡潔にするためです。実際の運用環境では、コードに資格情報を格納しないでください。代わりに、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure (ASP.NET および Azure へパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」をご覧ください。
 
 		using System;
 		using System.Collections.Generic;
@@ -296,7 +298,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/error-forbidden.png)
 
-2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**Enter** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
+2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**[Enter]** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/swagger-ui.png)
 
@@ -330,7 +332,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 	- 複数の Azure サブスクリプションがある場合は、使用するサブスクリプションを選択します。
 	- **[App Service プラン]** で、既存の App Service プランを選択するか、**[App Service プランの新規作成]** を選択して新しいプランの名前を入力します。 
 	- **[リソース グループ]** で、既存のリソース グループを選択するか、**[新しいリソース グループの作成]** を選択して名前を入力します。名前は一意にする必要があります。アプリ名をプレフィックスとして使用し、@ 記号を除いた Microsoft ID などの個人情報を追加することを検討してください。  
-	- **[アクセス レベル]** で、**[すべてのユーザーが利用できる]** を選択します。これは API を完全にパブリックにするオプションですが、このチュートリアルでは問題ありません。[Azure プレビュー ポータル](https://portal.azure.com)を使用して後でアクセスを制限することができます。
+	- **[アクセス レベル]** で、**[すべてのユーザーが利用できる]** を選択します。これは API を完全にパブリックにするオプションですが、このチュートリアルでは問題ありません。[Azure プレビュー ポータル](https://portal.azure.com/)を使用して後でアクセスを制限することができます。
 	- リージョンを選択します。
 
 	**[OK]** をクリックします。サブスクリプションに API アプリが作成されます。
@@ -353,7 +355,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 ## ハイブリッド接続および BizTalk サービスを作成する ##
 
-1. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com)に移動します。 
+1. ブラウザーで、[Azure プレビュー ポータル](https://portal.azure.com/)に移動します。 
 
 2. 左側の **[すべてを参照]** オプションをクリックします。
 
@@ -377,7 +379,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 	- **[ポート]** には、`1433` (SQL Server の既定のポート) を入力します。
 	- **[BizTalk サービス]** をクリックし、BizTalk サービスの名前を入力します。
 	
-	![ハイブリッド接続の追加](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
+	![Create a hybrid connection](./media/app-service-api-hybrid-on-premises-sql-server/create-biztalk-service.png)
 		
 9. **[OK]** を 2 回クリックします。
 
@@ -430,4 +432,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

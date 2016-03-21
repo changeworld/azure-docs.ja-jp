@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="11/03/2015"
+	ms.date="02/13/2016"
 	ms.author="normesta"/>
 
 
 #Xamarin.iOS アプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ##概要
 
@@ -33,43 +31,46 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* [Visual Studio Community 2013] 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
+* [Visual Studio Community 2013](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
 
 * [Xcode] v7.0 以降と [Xamarin Studio] がインストールされた Mac。
 
-     >[AZURE.NOTE]Visual Studio を使用して Windows コンピューターでアプリをビルドする場合でも、それを行うにはネットワーク接続された Mac にアクセスする必要があります。
+* Visual Studio を実行する Windows ベースのコンピューターでアプリの構築を計画する場合でも、実際にビルドしてデプロイするには、Xamarin.iOS Build Host を実行するネットワークで接続された Mac にアクセスする必要があります。詳細については、[Windows への Xamarin.iOS のインストール](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/)に関するページを参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 新しい Azure Mobile App バックエンドの作成
 
+新しいモバイル アプリ バックエンドを作成するには、次の手順に従います。
+
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## サーバー プロジェクトのダウンロード
+## サーバー プロジェクトの構成
 
-1. お使いの PC で [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成したモバイル アプリ バックエンドをクリックします。
+これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
-2. [Mobile Apps] ブレードで **[設定]** をクリックし、**[Mobile App]** の下で **[クイック スタート]**、**[Xamarin.iOS]** の順にクリックします。
+以下の手順に従って、Node.js または .NET バックエンドを使用するようにサーバー プロジェクトを構成します。
 
-3. **[サーバー プロジェクトをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。圧縮されたプロジェクト ファイルを PC に抽出し、Visual Studio でソリューションを開きます。
+[AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## バックエンドのプロジェクトをローカルでテストします。
+
+## (省略可能) バックエンド プロジェクトのローカルなテスト
+
+上で .NET バックエンド構成を選択した場合は、必要に応じて、バックエンドをローカルにテストできます。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-test-local-service](../../includes/app-service-mobile-dotnet-backend-test-local-service.md)]
 
-## Azure へのサーバー プロジェクトの発行
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service](../../includes/app-service-mobile-dotnet-backend-publish-service.md)]
 
 ## Xamarin.iOS アプリのダウンロードと実行
 
 1. Mac で、[Azure ポータル]をブラウザー ウィンドウで開きます。
 
->[AZURE.NOTE]Mac で Xamarin.iOS アプリを実行するほうが簡単です。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、[Windows への Xamarin.iOS のインストール]に関するページを参照してください。
+	>[AZURE.NOTE] Mac で Xamarin.iOS アプリを実行するほうが簡単です。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
 
-2. **[Xamarin.iOS プロジェクトをダウンロードして実行する]** の下の **[ダウンロード]** ボタンをクリックします。
+2. モバイル アプリの [設定] ブレードで、**[開始]**、**[Xamarin.iOS]** の順にクリックします。手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。次に、**[ダウンロード]** ボタンをクリックします。
 
   	これにより、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
@@ -116,6 +117,6 @@
 [Xamarin]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-[Windows への Xamarin.iOS のインストール]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
+[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="barbkess;JRJ@BigBangData.co.uk;mausher;nicw"/>
+   ms.date="01/08/2016"
+   ms.author="mausher;barbkess;jrj;nicw;sonyama"/>
 
 # パフォーマンスとスケールの概要
-データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速処理する必要があるかということが検討事項になります。
+データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
 
 SQL Data Warehouse はクラウド ベースの分散データベース プラットフォームであり、クエリの解決に使用されるリソースを完全に制御できるだけの規模ですばらしいパフォーマンスが実現されるように設計されています。データ ウェアハウスに割り当てられたデータ ウェアハウス ユニットの数を単に調整するだけで、ウェアハウス リソースのサイズを数秒で柔軟に調整できます。分散型のスケール アウト プラットフォームである SQL Data Warehouse を使用すると、データ ウェアハウスで膨大な量のデータを効率的かつ効果的に処理しながら、ソリューションのコストを完全に制御できます。
 
@@ -69,7 +69,7 @@ SQL Data Warehouse ソリューションの作成に関するガイダンスに�
 [パフォーマンスとスケール]: sql-data-warehouse-performance-scale.md
 [同時実行モデル]: sql-data-warehouse-develop-concurrency.md
 [テーブルの設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key
+[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key.md
 [パフォーマンスを向上させる統計]: sql-data-warehouse-develop-statistics.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
@@ -77,4 +77,4 @@ SQL Data Warehouse ソリューションの作成に関するガイダンスに�
 
 <!--Other web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

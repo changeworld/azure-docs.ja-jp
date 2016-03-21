@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/15/2015" 
-	ms.author="ggailey777"/>
+	ms.date="12/07/2015"
+	ms.author="glenga"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
@@ -61,7 +66,7 @@
 
 7. .\\service\\table サブフォルダーを開くと、TodoItem.json ファイルが含まれていることがわかります。これは、TodoItem テーブルに対する操作のアクセス許可の JSON 表現です。
 
-	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。Scheduler スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、「[ソース管理]」を参照してください。
+	このテーブルにサーバー スクリプトが定義されている場合、<code>TodoItem._&lt;operation&gt;_.js</code> という名前のファイルが 1 つ以上存在します。このファイルには特定のテーブル操作に対応するスクリプトが含まれます。スケジューラ スクリプトとカスタム API スクリプトは、各スクリプトの名前が付けられたフォルダーに別々に格納されます。詳細については、「[ソース管理]」を参照してください。
 
 これでローカル リポジトリが作成できたので、サーバー スクリプトを変更して、モバイル サービスに変更をプッシュ バックできます。
 
@@ -93,7 +98,7 @@
 
 	コミットがモバイル サービスにデプロイされることを示す一連のコマンドが表示されるはずです。
 
-6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
+6. [Azure クラシック ポータル]に戻って、**[データ]** タブ、**TodoItem** テーブル、**[スクリプト]** の順にクリックし、**[挿入]** 操作を選択します。表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
 
 ##<a name="use-npm"></a>サーバー スクリプトで共有コードと Node.js モジュールを活用する
 
@@ -149,8 +154,8 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [モバイル サービスの使用]: mobile-services-ios-get-started.md
 [モバイル サービスのサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure SQL Database のコピー"
+	pageTitle="Azure SQL Database のコピーの作成 | Microsoft Azure"
 	description="Azure SQL Database のコピーの作成"
 	services="sql-database"
 	documentationCenter=""
@@ -10,11 +10,12 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="10/16/2015"
+	ms.date="01/20/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
+
 
 
 # Azure SQL Database のコピー
@@ -22,15 +23,15 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-database-copy.md)
+- [Azure Portal](sql-database-copy.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [SQL](sql-database-copy-transact-sql.md)
 
-次の手順は、[Azure プレビュー ポータル](https://portal.azure.com)を使って SQL データベースをコピーする方法を示しています。データベース コピー操作により新しい SQL データベースが作成されます。コピーは、同じサーバーか別のサーバーで作成するデータベースのスナップショット バックアップです。
+次の手順は、[Azure ポータル](https://portal.azure.com)を使って SQL データベースをコピーする方法を示しています。データベース コピー操作により新しい SQL データベースが作成されます。コピーは、同じサーバーか別のサーバーで作成するデータベースのスナップショット バックアップです。
 
-> [AZURE.NOTE]Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
-コピー プロセスが完了すると、新しいデータベースは、コピー元のデータベースに依存せずに完全に機能するデータベースになります。コピーの完了時点で、新しいデータベースのトランザクションはコピー元のデータベースと同じになります。データベース コピーのサービス層とパフォーマンス レベル (価格レベル) はコピー元のデータベースと同じになります。コピーの完了後、コピーは完全に機能する独立したデータベースになります。ログイン、ユーザー、アクセス許可は非依存で管理できます。
+コピー プロセスが完了すると、新しいデータベースは、コピー元のデータベースに依存せずに完全に機能するデータベースになります。コピーの完了時点で、新しいデータベースのトランザクションはコピー元のデータベースと同じになります。データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) はコピー元のデータベースと同じになります。コピーの完了後、コピーは完全に機能する独立したデータベースになります。ログイン、ユーザー、アクセス許可は非依存で管理できます。
 
 
 データベースを同じ論理サーバーにコピーすると、両方のデータベースで同じログインを利用できます。データベースをコピーするために使用するセキュリティ プリンシパルが、新しいデータベースのデータベース所有者 (DBO) になります。すべてのデータベース ユーザー、アクセス許可、セキュリティ識別子 (SID) がデータベースのコピーにコピーされます。
@@ -47,7 +48,7 @@ SQL Database をコピーするには、以下が必要です。
 
 コピーするデータベースの SQL データベース ブレードを開きます。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
 2.	[参照] > [SQL データベース] の順に選択し、コピーするデータベースにアクセスします。
 3.	SQL データベース ブレードで、**[コピー]** をクリックし、**コピー** ブレードを開きます。
 
@@ -70,7 +71,7 @@ SQL Database をコピーするには、以下が必要です。
     ![通知][3]
 
  
-    ![monitor][4]
+    ![監視][4]
 
 
 
@@ -84,7 +85,7 @@ SQL Database をコピーするには、以下が必要です。
 
 ## 次のステップ
 
-- [SQL Server Management Studio (SSMS) での接続](sql-database-connect-to-database.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 - [データベースを BACPAC にエクスポートする](sql-database-export.md)
 
 
@@ -101,4 +102,4 @@ SQL Database をコピーするには、以下が必要です。
 [3]: ./media/sql-database-copy/copy-notification.png
 [4]: ./media/sql-database-copy/monitor-copy.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Java Web プロジェクトで Application Insights を使う | Microsoft Azure"
-	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します"
+	pageTitle="Application Insights を使用した Java Web アプリの分析 | Microsoft Azure"
+	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します。"
 	services="application-insights"
     documentationCenter="java"
 	authors="alancameronwills"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/22/2015"
+	ms.date="03/02/2016"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -30,7 +30,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](https://azure.microsoft.com/) のサブスクリプション([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)することができます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
 
@@ -52,7 +52,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 *プロジェクトに適した方法を選択してください。*
 
-#### Eclipse で動的 Web プロジェクトを作成している場合:
+#### Eclipse を使用して Maven または動的 Web プロジェクトを作成している場合:
 
 [Application Insights SDK for Java プラグイン][eclipse]を使用します。
 
@@ -80,7 +80,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     </dependencies>
 
 
-* *ビルド エラーかチェックサムの検証エラーが発生していますか。* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
+* *ビルド エラーかチェックサムの検証エラーが発生していますか。* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
 * *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### Gradle を使用している場合:
@@ -98,7 +98,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。*
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に最新バージョンがあります。*
 * *新しい SDK に更新するには*
  * プロジェクトの依存関係を更新します。
 
@@ -117,14 +117,14 @@ SDK を手動で追加する:
  * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。このテレメトリを自動的に収集しない場合、これは省略できます。たとえば、独自に記述する場合です。
 
 * *変更が発行されたときに SDK を更新するには*
- * 最新の [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードして、古いものと置き換えます。
- * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
+ * 最新の [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.zip) をダウンロードして、古いものと置き換えます。
+ * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
 
 
 ## 3\.Application Insights の xml ファイルを追加する
 
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
+ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
@@ -267,7 +267,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 未処理の例外は、自動的に収集されます。
 
-![](./media/app-insights-java-get-started/21-exceptions.png)
+![Scroll down and click the Failures tile](./media/app-insights-java-get-started/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
@@ -364,11 +364,13 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下にスクロールして [可用性] をクリックします。
+
+![Scroll down, click Availability, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
 応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
 
-![Web テストの例](./media/app-insights-java-eclipse/appinsights-10webtestresult.png)
+![Web テストの例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
 [可用性 Web テストの詳細についてはこちら。][availability]
 
@@ -396,4 +398,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

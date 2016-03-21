@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
 	ms.topic="article" 
-	ms.date="09/22/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 # Cordova/Phonegap 用 Azure Mobile Engagement の使用
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows ユニバーサル](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
 - [iOS | Obj C](mobile-engagement-ios-get-started.md)
 - [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
@@ -30,7 +30,7 @@
 
 このチュートリアルでは、Mac を使用して空の Cordova アプリを作成してから、Mobile Engagement SDK と統合します。このアプリは、基本的な分析データを収集し、iOS では Apple Push Notification System (APNS)、Android では Google Cloud Messaging (GCM) を使用してプッシュ通知を受信します。このアプリを、テスト用に iOS デバイスまたは Android デバイスにデプロイします。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このチュートリアルには、次のものが必要です。
 
@@ -40,7 +40,7 @@
 + GCM 用の GCM プロジェクト番号。Google デベロッパー コンソールから入手できます。
 + [Mobile Engagement 用の Cordoca プラグイン](https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-engagement)
 
-> [AZURE.NOTE]Cordova プラグインのソース コードおよび ReadMe ファイルは、[Github](https://github.com/Azure/azure-mobile-engagement-cordova) にあります。
+> [AZURE.NOTE] Cordova プラグインのソース コードおよび ReadMe ファイルは、[Github](https://github.com/Azure/azure-mobile-engagement-cordova) にあります。
 
 ##<a id="setup-azme"></a>Cordova アプリ用に Mobile Engagement を設定する
 
@@ -64,7 +64,7 @@
 		$ cordova platform add ios 
 		$ cordova run ios
 
-3. 次を実行して **Android** のプロジェクトを構成し、その構成を Android エミュレーターで実行します。
+3. 次のコマンドを実行して **Android** のプロジェクトを構成し、その構成を Android エミュレーターで実行します。Android SDK エミュレーターで、ターゲットが Google API (Google Inc.) に、CPU/ABI が Google API ARM に設定されていることを確認してください。
 
 		$ cordova platform add android
 		$ cordova run android
@@ -230,7 +230,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [Cordova Mobile Engagement SDK で使用できるすべてのメソッドの概要](https://github.com/Azure/azure-mobile-engagement-cordova)
 
 <!-- URLs. -->
-[Mobile Engagement iOS SDK]: http://go.microsoft.com/?linkid=9864553
+[Mobile Engagement iOS SDK]: http://aka.ms/qk2rnj
 
 <!-- Images. -->
 
@@ -245,4 +245,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

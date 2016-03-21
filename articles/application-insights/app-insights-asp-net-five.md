@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/23/2015" 
+	ms.date="02/10/2016" 
 	ms.author="awills"/>
 
 # ASP.NET 5 向けの Application Insights
@@ -21,139 +21,43 @@ Visual Studio Application Insights を使うと、Web アプリケーション�
 
 ![例](./media/app-insights-asp-net-five/sample.png)
 
-[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。
+[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
 
-## ASP.NET 5 プロジェクトを作成する
+[サンプルのデモ](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/application-insights/sample)
 
-まだ、それを作成していない場合。
+## 使用の開始
 
-Visual Studio 2015 の標準の ASP.NET 5 プロジェクト テンプレートを使用します。
+Visual Studio 2015 でプロジェクトを作成した場合、Application Insights は既に用意されています。それ以外の場合は、「[ファースト ステップ ガイド](https://github.com/Microsoft/ApplicationInsights-aspnet5/wiki/Getting-Started)」に従ってください、
 
+## Application Insights の使用
 
-## Application Insights リソースの作成
+[Microsoft Azure ポータル](https://portal.azure.com)にサインインし、アプリを監視するために作成したリソースを参照します。
 
-[Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。ASP.NET オプションを選択します。
+別のブラウザー ウィンドウで、しばらくの間、アプリを使用します。Application Insights グラフにデータが表示されます ([更新] のクリックが必要な場合があります)。 開発中は少量のデータのみが表示されますが、これらのグラフは、アプリを発行して多数のユーザーが使用したときに真に有用になります。
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-asp-net-five/01-new-asp.png)
+[概要] ページには、サーバーの応答時間、ページの読み込み時間、および失敗した要求の数を示す、最も関心が高い可能性があるパフォーマンス グラフが表示されます。グラフの詳細とデータを表示するには、グラフをクリックします。
 
-表示される [[リソース][roles]] ブレードには、アプリに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
+ポータルのビューは、次の 2 つの主なカテゴリに分類されます。
 
-アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
+* [メトリックス エクスプローラー](app-insights-metrics-explorer.md): 応答時間、障害発生率、[API](app-insights-api-custom-events-metrics.md) を使用して作成したメトリックスなどのメトリックスと数値のグラフとテーブルを表示します。アプリとそのユーザーの理解を深めるには、プロパティ値によってデータをフィルター処理してセグメント化します。
+* [検索エクスプローラー](app-insights-diagnostic-search.md): 特定の要求、例外、ログ トレース、[API](app-insights-api-custom-events-metrics.md) を使用して作成したイベントなどの個々のイベントを一覧表示します。イベントのフィルター処理と検索、問題を調査するための関連イベント間の移動を行います。
 
-##  インストルメンテーション キーでプロジェクトを構成します。
+## アラート
 
-Application Insights リソースからキーをコピーします。
-
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-asp-net-five/02-props-asp.png)
-
-ASP.NET 5 プロジェクトで、`config.json` にキーを貼り付けます。
-
-    {
-      "ApplicationInsights": {
-        "InstrumentationKey": "11111111-2222-3333-4444-555555555555"
-      }
-    }
-
-または、構成を動的にする場合、このコードをアプリケーションのスタートアップ クラスに追加できます。
-
-    configuration.AddApplicationInsightsSettings(
-      instrumentationKey: "11111111-2222-3333-4444-555555555555");
+* 世界中の場所で Web サイトを継続的にテストして、テストが失敗したときにすぐに電子メールを送信するように[可用性テスト](app-insights-monitor-web-app-availability.md)を設定します。
+* 応答時間や例外発生率などのメトリックスが許容される限界を超えた場合に、それがわかるように[メトリックス アラート](app-insights-monitor-web-app-availability.md)を設定します。
 
 
-## Application Insights をプロジェクトに追加する
+## さらに多くのテレメトリを取得する
 
-
-#### NuGet パッケージを参照する
-
-NuGet パッケージの [最新のリリース番号](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)を探します。
-
-`project.json` を開き、`dependencies` セクションを編集します。
-
-    {
-      "dependencies": {
-        // Replace 0.* with a specific version:
-        "Microsoft.ApplicationInsights.AspNet": "0.*",
-
-       // Add these if they aren't already there:
-       "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta7",
-       "Microsoft.Framework.ConfigurationModel.Json":  "1.0.0-beta7"
-      }
-    }
-
-#### 構成ファイルを解析する
-
-`startup.cs` で:
-
-    using Microsoft.ApplicationInsights.AspNet;
-
-    public IConfiguration Configuration { get; set; }
-
-`Startup` メソッドで:
-
-    public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
-    {
-    	// Setup configuration sources.
-    	var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
-	   		.AddJsonFile("config.json")
-	   		.AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
-    	builder.AddEnvironmentVariables();
-
-    	if (env.IsEnvironment("Development"))
-    	{
-	    	builder.AddApplicationInsightsSettings(developerMode: true);
-    	}
-    
-    	Configuration = builder.build();
-    }
-
-`ConfigurationServices` メソッドで:
-
-    services.AddApplicationInsightsTelemetry(Configuration);
-
-`Configure` メソッドで:
-
-    // Add Application Insights monitoring to the request pipeline as a very first middleware.
-    app.UseApplicationInsightsRequestTelemetry();
-
-    // Any other error handling middleware goes here.
-
-    // Add Application Insights exceptions handling to the request pipeline.
-    app.UseApplicationInsightsExceptionTelemetry();
-
-## JavaScript クライアント インストルメンテーションを追加する
-
-\_Layout.cshtml ファイルがある場合は、その中に次のコードを挿入します。それ以外の場合は、追跡するページにコードを配置します。
-
-ファイルの最上部でインジェクションを定義します。
-
-    @inject Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration TelemetryConfiguration
-
-`</head>` タグの前とその他のスクリプトの前に Html ヘルパーを挿入します。ページから報告するカスタム JavaScript のテレメトリがあれば、このスニペットの後に挿入します。
-
-    <head> 
-
-      @Html.ApplicationInsightsJavaScript(TelemetryConfiguration) 
-
-      <!-- other scripts -->
-    </head>
-
-## アプリケーションを実行する
-
-Visual Studio でアプリケーションをデバッグするか、それを Web サーバーに公開します。
-
-## アプリに関するデータを表示する
-
-[Azure ポータル][portal]に戻り、Application Insights のリソースを参照します。[概要] ブレードにデータがない場合、1 ～ 2 分待ってから [更新] をクリックします。
-
-* [アプリの使用状況の追跡][usage]
-* [パフォーマンス問題の診断][detect]
-* [可用性を監視するための Web テストの設定][availability]
-
+* [依存関係の監視](app-insights-dependencies.md): REST、SQL、その他の外部リソースによる低下が発生しているかどうかを確認します。
+* [API の使用](app-insights-api-custom-events-metrics.md): アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
+* [可用性テスト](app-insights-monitor-web-app-availability.md): 世界中からアプリを常にチェックします。 
 
 
 ## オープン ソース
 
-[コードを読んで協力してください](https://github.com/Microsoft/ApplicationInsights-aspnet5)。
+[コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnet5)
 
 
 <!--Link references-->
@@ -175,4 +79,4 @@ Visual Studio でアプリケーションをデバッグするか、それを We
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

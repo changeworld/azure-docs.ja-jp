@@ -1,6 +1,6 @@
 <properties
-   pageTitle="アプリケーション フレームワーク | Microsoft Azure"
-   description="Azure リソース マネージャー (ARM) でテンプレートを使用して、一般的なアプリケーション フレームワークを作成する方法について説明します。例として、LAMP スタック、SharePoint、SQL Server などがあります。"
+   pageTitle="テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ | Microsoft Azure"
+   description="Azure リソース マネージャー テンプレートを使用して Active Directory、Docker、その他をインストールすることにより、一般的なアプリケーション フレームワークを作成します。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
    authors="squillace"
@@ -14,38 +14,82 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="infrastructure"
-   ms.date="10/21/2015"
+   ms.date="02/03/2016"
    ms.author="rasquill"/>
 
-# テンプレートを使用したアプリケーション フレームワークの作成
+# Azure リソース マネージャー テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ
 
-仮想マシンは、テンプレートを使ってすばやく作成できます。これらのテンプレートだけでなく、テンプレートを検索できます (https://azure.microsoft.com/documentation/templates/))。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイメント モデル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+通常、ワークロードが設計に従って動作するには多くのリソースが必要です。Azure リソース マネージャー テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure PowerShell、または Azure CLI を使用したそれらのデプロイメントについて説明します。
 
+## アプリケーション
 
-| テンプレート | 説明 | テンプレートを見る | 今すぐデプロイする |
-|:---|:---|:---:|:---:|
-| *n* 個の VM をすばやくデプロイする | この Microsoft が作成したテンプレートは、最大 *n* 個の新しい VM を (新しい仮想ネットワークおよびストレージ アカウントと共に) デプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Active Directory フォレストと Active Directory ドメイン | このテンプレートは、(新しい仮想ネットワーク、ストレージ アカウント、ロード バランサーと共に) 新しい VM を 2 つ デプロイし、Active Directory フォレストと Active Directory ドメインを新たに作成します。各 VM は、新しいドメインの DC として作成され、可用性セットに配置されます。また、各 VM には、負荷分散パブリック IP アドレスが割り当てられた RDP エンドポイントが追加されます。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Apache Web サーバー | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して Apache Web サーバーをデプロイします。Ubuntu VM を作成し、Apache2 をインストールして、単純な HTML ファイルを作成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-| Couchbase クラスター | このテンプレートは、Couchbase クラスターを Ubuntu 仮想マシンにデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/couchbase-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcouchbase-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| DataStax クラスター | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、DataStax クラスターを Ubuntu VM にインストールします。[詳細なチュートリアル。](virtual-machines-datastax-template.md)| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/datastax-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdatastax-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| DataStax Enterprise クラスター | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、DataStax Enterprise クラスターを Ubuntu VM にインストールします。[詳細なチュートリアル。](virtual-machines-datastax-enterprise-template.md)| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/datastax-enterprise) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdatastax-enterprise%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Django アプリ | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、Django アプリケーションを Ubuntu VM にデプロイします。Python と Apache のサイレント インストールを実行します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/django-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdjango-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Docker コンテナー | このテンプレートを使用すると、Docker (Docker 拡張機能を使用) と 3 つの Docker コンテナー (Docker Hub から直接取得され、Docker Compose を使ってデプロイ) を使って Ubuntu VM をデプロイすることができます。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-simple-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Elasticsearch クラスター | このテンプレートは、Elasticsearch クラスターを Ubuntu VM 上にデプロイし、テンプレート リンクを使用してデータ ノード スケール ユニットを作成します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Felasticsearch%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Hortonworks HDP | このテンプレートは、CentOS 仮想マシン上に、マルチ サーバーの Hortonworks HDP 2.2 Apache Hadoop デプロイを作成し、クラスターに対して HDP インストールを構成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/hortonworks-on-centos) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fhortonworks-on-centos%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>|
-| Jenkins マスター ノードとスレーブ ノード | このテンプレートは、Ubuntu VM 上に Jenkins マスター ノードをデプロイし、他の 2 つの VM 上に複数の Jenkins スレーブ ノードをデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fjenkins-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Kafka クラスター | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、Kafka クラスターを Ubuntu VM にデプロイします。また、パブリックにアクセスできる VM が 1 つ作成されます。この VM を起点として、Kafka ノードに SSH でアクセスし、診断やトラブルシューティングを行うことができます。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/kafka-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%kafka-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Ubuntu 上の LAMP スタック | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して LAMP アプリケーションをデプロイします。Ubuntu VM を作成し、MySQL、Apache、PHP のサイレント インストールを実行した後、単純な PHP スクリプトを作成します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Flamp-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| MongoDB | このテンプレートは、Linux CustomScript 拡張機能を使用して、Ubuntu 仮想マシン上に Mongo DB をデプロイします。[詳細なチュートリアル。](virtual-machines-mongodb-template.md)| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fmongodb-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Redis クラスター | このテンプレートは、Redis クラスターを Ubuntu 仮想マシンにデプロイします。また、パブリックにアクセスできる VM が 1 つ作成されます。この VM を起点として、Redis ノードに SSH でアクセスし、診断やトラブルシューティングを行うことができます。[詳細なチュートリアル。](virtual-machines-redis-template.md)| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/redis-high-availability) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fredis-high-availability%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| SharePoint ファーム | このテンプレートは、それぞれがパブリック IP アドレス、ロード バランサー、仮想ネットワークを持つ、3 つの新しい Azure VM を作成します。1 つ目の VM を新しいフォレストとドメインのための Active Directory DC として構成し、2 つ目の VM には SQL Server ドメインを結合します。3 つ目は Sharepoint ファームとサイトを使用して構成します。すべての VM がパブリック RDP を備えています。[詳細なチュートリアル。](virtual-machines-rmtemplate-sharepoint-walkthrough.md) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-three-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsharepoint-three-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Spark クラスター | このテンプレートは、Spark クラスターを Ubuntu 仮想マシンにデプロイします。また、パブリックにアクセスできる VM が 1 つ作成されます。この VM を起点として、Spark ノードに SSH でアクセスし、診断やトラブルシューティングを行うことができます。[詳細なチュートリアル。](virtual-machines-spark-template.md)| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/spark-ubuntu-multidisks) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fspark-ubuntu-multidisks%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Tomcat と OpenJDK のインストール | このテンプレートは、OpenJDK と Tomcat を Ubuntu VM にインストールします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/openjdk-tomcat-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fopenjdk-tomcat-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| WordPress | このテンプレートは、完全な LAMP スタックを単一の Ubuntu VM にデプロイした後、WordPress をインストールして初期化します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/wordpress-single-vm-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| ZooKeeper クラスター | このテンプレートは、3 ノードの ZooKeeper クラスターを Ubuntu VM に作成します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/zookeeper-cluster-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fzookeeper-cluster-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+次の表を使用すると、テンプレートで使用されるパラメーターの詳細がわかり、デプロイ前にテンプレートを調べることができ、Azure ポータルからテンプレートを直接デプロイできます。
+
+| アプリケーション | 詳細情報 | テンプレートを見る | すぐにデプロイする |
+|:---|:---:|:---:|:---:|
+| Active Directory | [ギャラリー](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Apache | [ギャラリー](https://azure.microsoft.com/documentation/templates/apache2-on-ubuntu-vm/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+| Couchbase | [ギャラリー](https://azure.microsoft.com/documentation/templates/couchbase-on-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/couchbase-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcouchbase-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| DataStax | [ギャラリー](https://azure.microsoft.com/documentation/templates/datastax-on-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/datastax-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdatastax-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Django | [ギャラリー](https://azure.microsoft.com/documentation/templates/django-app/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/django-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdjango-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Docker | [ギャラリー](https://azure.microsoft.com/documentation/templates/docker-simple-on-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-simple-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Elasticsearch | [ギャラリー](https://azure.microsoft.com/documentation/templates/elasticsearch/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Felasticsearch%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Jenkins | [ギャラリー](https://azure.microsoft.com/documentation/templates/jenkins-on-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fjenkins-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Kafka | [ギャラリー](https://azure.microsoft.com/documentation/templates/kafka-ubuntu-multidisks/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/kafka-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%kafka-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| LAMP | [ギャラリー](https://azure.microsoft.com/ja-JP/documentation/templates/lamp-app/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Flamp-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| MongoDB | [ギャラリー](https://azure.microsoft.com/documentation/templates/mongodb-on-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fmongodb-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Redis | [ギャラリー](https://azure.microsoft.com/documentation/templates/redis-high-availability/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/redis-high-availability) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fredis-high-availability%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| SharePoint | [ギャラリー](https://azure.microsoft.com/documentation/templates/sharepoint-three-vm/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-three-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsharepoint-three-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Spark | [ギャラリー](https://azure.microsoft.com/documentation/templates/spark-ubuntu-multidisks/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/spark-ubuntu-multidisks) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fspark-ubuntu-multidisks%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| Tomcat | [ギャラリー](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/openjdk-tomcat-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fopenjdk-tomcat-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| WordPress | [ギャラリー](https://azure.microsoft.com/documentation/templates/wordpress-single-vm-ubuntu/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/wordpress-single-vm-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| ZooKeeper | [ギャラリー](https://azure.microsoft.com/documentation/templates/zookeeper-cluster-ubuntu-vm/) | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/zookeeper-cluster-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fzookeeper-cluster-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+
+これらのテンプレートだけでなく、[ギャラリー テンプレート](https://azure.microsoft.com/documentation/templates/)を検索できます。
+
+## Azure ポータル
+
+Azure ポータルでは、URL を送信するだけで簡単にテンプレートをデプロイできます。テンプレートをデプロイするには、テンプレート ファイルの名前が必要です。テンプレート ギャラリーのページまたは Github リポジトリで名前を検索できます。次の URL の {template name} をデプロイするテンプレートの名前に変更した後、ブラウザーに入力します。
+
+    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F{template name}%2Fazuredeploy.json
+
+カスタム デプロイメント ブレードが表示されます。
+
+![](./media/virtual-machines-workload-template-ad-domain/azure-portal-template.png)
+
+1.	**[テンプレート]** ウィンドウで、**[保存]** をクリックします。
+2.	**[パラメーター]** をクリックします。**[パラメーター]** ウィンドウで、新しい値を入力、使用できる値から選択、または既定の値をそのまま使用して、**[OK]** をクリックします。
+3.	必要に応じて、**[サブスクリプション]** をクリックし、適切な Azure サブスクリプションを選択します。
+4.	**[リソース グループ]** をクリックし、既存のリソース グループを選択します。または、**[新規作成]** をクリックして、このデプロイメント用の新しいグループを作成します。
+5.	必要に応じて、**[場所]** をクリックし、適切な Azure の場所を選択します。
+6.	必要に応じて、**[法律条項]**をクリックして、テンプレートの使用に関する条項や契約書を確認します。
+7.	**[作成]** をクリックします。
+
+テンプレートによっては、Azure でのリソースのデプロイに時間がかかる場合があります。
+
+## Azure PowerShell
+
+[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
+
+かっこ内のテキストをリソース グループ名、場所、デプロイメント名、およびテンプレート名に置き換えた後、以下のコマンドを実行してリソース グループとデプロイメントを作成します。
+
+	New-AzureRmResourceGroup -Name {resource-group-name} -Location {location}
+	New-AzureRmResourceGroupDeployment -Name {deployment-name} -ResourceGroupName {resource-group-name} -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/{template-name}/azuredeploy.json"
+
+**New-AzureRmResourceGroupDeployment** コマンドを実行すると、テンプレートのパラメーターの値を入力するよう求められます。テンプレートによっては、Azure でのリソースのデプロイに時間がかかる場合があります。
+
+## Azure CLI
+
+[Azure CLI をインストールし](../xplat-cli-install.md)、ログインして、リソース マネージャーのコマンドを有効にします。その方法については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。
+
+かっこ内のテキストをリソース グループ名、場所、デプロイメント名、およびテンプレート名に置き換えた後、以下のコマンドを実行してリソース グループとデプロイメントを作成します。
+
+	azure group create {resource-group-name} {location}
+	azure group deployment create --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/{template-name}/azuredeploy.json {resource-group-name} {deployment-name}
+
+**azure group deployment create** コマンドを実行すると、テンプレートのパラメーターの値を入力するよう求められます。テンプレートによっては、Azure でのリソースのデプロイに時間がかかる場合があります。
 
 ## 次のステップ
 
@@ -53,4 +97,4 @@
 
 [Azure リソース マネージャー](../resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

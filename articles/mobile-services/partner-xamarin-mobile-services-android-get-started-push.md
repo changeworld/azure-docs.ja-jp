@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Xamarin Android アプリへのプッシュ通知の追加 | Microsoft Azure" 
-	description="Azure Mobile Services と Azure Notification Hubs を使用している Xamarin.Android アプリ向けに、Google Cloud Messaging を使用したプッシュ通知を構成する方法について説明します。" 
-	documentationCenter="xamarin" 
-	authors="ggailey777" 
-	manager="dwrede" 
-	services="mobile-services" 
+<properties
+	pageTitle="Xamarin Android アプリへのプッシュ通知の追加 | Microsoft Azure"
+	description="Azure Mobile Services と Azure Notification Hubs を使用している Xamarin.Android アプリ向けに、Google Cloud Messaging を使用したプッシュ通知を構成する方法について説明します。"
+	documentationCenter="xamarin"
+	authors="ggailey777"
+	manager="dwrede"
+	services="mobile-services"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="09/16/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
@@ -40,7 +45,7 @@
 
 ##<a id="update-scripts"></a>通知を送信するように登録済み挿入スクリプトを更新する
 
->[AZURE.TIP]次の手順では、Azure 管理ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
+>[AZURE.TIP]次の手順では、Azure クラシック ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-android-push-insert-script](../../includes/mobile-services-javascript-backend-android-push-insert-script.md)]
 
@@ -81,6 +86,5 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services]: http://components.xamarin.com/view/azure-mobile-services/
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

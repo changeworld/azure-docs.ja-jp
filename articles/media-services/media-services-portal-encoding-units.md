@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure ポータルを使用してメディア処理の規模を設定する方法"
+	pageTitle="Azure クラシック ポータルを使用してメディア処理の規模を設定する方法"
 	description="アカウントにプロビジョニングする [オンデマンド ストリーミング予約ユニット] および [エンコード予約ユニット] の数を指定することで Media Services の規模を設定する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,47 +13,48 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
+	ms.date="01/29/2016"
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用してメディア処理の規模を設定する方法
+# Azure クラシック ポータルを使用してメディア処理の規模を設定する方法
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encoding-units.md)
 - [Portal](media-services-portal-encoding-units.md)
 - [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 ## 概要
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。予約ユニットの種類には、**Basic**、**Standard**、**Premium** があります。たとえば、同じエンコード ジョブを実行した場合、**Standard** 占有ユニットの方が **Basic** 占有ユニットに比べ高速です。詳細については、「[Encoding Reserved Unit Types (エンコード占有ユニットの種類)](http://azure.microsoft.com/blog/author/milanga)」をご覧ください。
+Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。予約ユニットの種類は、**S1**、**S2**、**S3** から選択できます。たとえば、同じエンコード ジョブを実行した場合、**S2** 予約ユニットの方が **S1** 予約ユニットに比べ高速です。詳細については、「[Encoding Reserved Unit Types (エンコード予約ユニットの種類)](https://azure.microsoft.com/blog/author/milanga/)」をご覧ください。
 
-占有ユニットの種類を指定するだけでなく、エンコード占有ユニットを使用して、アカウントをプロビジョニングすることも指定できます。用意したエンコード占有ユニットの数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。たとえば、アカウントの占有ユニットの数が 5 である場合、処理するタスクがある限り、5 個のメディア タスクが並列実行されます。残りのタスクはキューで待機して、実行中のタスクが完了すると直ちにキューから取り出されて順番に処理されます。アカウントに占有ユニットが用意されていない場合、タスクは逐次処理されます。この場合、あるタスクが終了した後、次のタスクが開始するまでの待機時間は、システムのリソースが利用できるかどうかに左右されます。
+予約ユニットの種類を指定するだけでなく、エンコード予約ユニットを使用して、アカウントをプロビジョニングすることも指定できます。用意したエンコード予約ユニットの数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。たとえば、アカウントの予約ユニットの数が 5 である場合、処理するタスクがある限り、5 個のメディア タスクが並列実行されます。残りのタスクはキューで待機して、実行中のタスクが完了すると直ちにキューから取り出されて順番に処理されます。アカウントに予約ユニットが用意されていない場合、タスクは逐次処理されます。この場合、あるタスクが終了した後、次のタスクが開始するまでの待機時間は、システムのリソースが利用できるかどうかに左右されます。
 
->[AZURE.IMPORTANT]予約ユニットは、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットで高速処理は行いません。
+>[AZURE.IMPORTANT] 予約ユニットは、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットで高速処理は行いません。
 
 予約ユニットの種類とエンコード予約ユニットの数を変更するには、以下の手順に従います。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
-2. **[ENCODING]** ページを選択します。
+2. **[エンコード]** ページを選択します。
 
-	**[予約ユニットの種類]** を変更するには、[BASIC]、[STANDARD]、[PREMIUM] のいずれかを押します。
+	**[予約ユニットの種類]** を変更するには、[S1]、[S2]、または [S3] を押します。
 
-	選択した予約ユニットの種類の予約ユニット数を変更するには、**[ENCODING]** スライダーを使用します。
+	選択した予約ユニットの種類の予約ユニット数を変更するには、**[エンコード]** スライダーを使用します。
 
 
 	![[プロセッサ] ページ](./media/media-services-portal-encoding-units/media-services-encoding-scale.png)
 
 
-	>[AZURE.NOTE]シンガポール、香港、大阪、北京、上海のデータ センターでは、Premium 占有ユニットの種類を提供していません。
+	>[AZURE.NOTE] シンガポール、香港、大阪、北京、上海のデータ センターでは、Premium 予約ユニットの種類を提供していません。
 
 3. [保存] ボタンを押して、変更を保存します。
 
-	新しいエンコード占有ユニットは、[保存] をクリックするとすぐに割り当てられます。
+	新しいエンコード予約ユニットは、[保存] をクリックするとすぐに割り当てられます。
 
-	>[AZURE.NOTE]コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
+	>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
 ##クォータと制限
 
@@ -69,4 +70,4 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

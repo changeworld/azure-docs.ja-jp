@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="02/25/2016" 
 	ms.author="awills"/>
 
 # Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
@@ -30,35 +30,35 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* アプリで [Application Insights SDK](app-insights-start-monitoring-app-health-usage.md) をインストールします。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
-* [Application Insights API](app-insights-api-custom-events-metrics.md) を試してみてください。 
+* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
+* [Application Insights API](app-insights-api-custom-events-metrics.md) を試用する。 
 
 
 ## サンプリング
 
 *この機能はベータ版です。*
 
-正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
+[サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
-1. プロジェクトの NuGet パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
+* アダプティブ サンプリングをお勧めします。アダプティブ サンプリングはサンプリングの割合を自動的に調整し、要求が一定の量になるようにします。現在は、ASP.NET サーバー側テレメトリでのみ使用できます。  
+* [固定レート サンプリング](app-insights-sampling.md)も利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
+* インジェスト サンプリングは、Application Insights ポータルでテレメトリを受信したときに動作するので、使用している SDK に関係なく使用できます。ネットワーク上のテレメトリ トラフィックは削減されませんが、Application Insights で処理され、保存される量は削減されます。保持されているテレメトリだけが月間クォータでカウントされます。 
 
-2. 次のスニペットを [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加します。
+### インジェスト サンプリングを有効にするには
 
-```XML
+[設定] バーから [クォータと価格] ブレードを開きます。[サンプリング] をクリックし、サンプリング率を選択します。
 
-    <TelemetryProcessors>
-     <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+### アダプティブ サンプリングを有効にするには
 
-     <!-- Set a percentage close to 100/N where N is an integer. -->
-     <!-- E.g. 50 (=100/2), 33.33 (=100/3), 25 (=100/4), 10, 1 (=100/100), 0.1 (=100/1000) ... -->
-     <SamplingPercentage>10</SamplingPercentage>
-     </Add>
-   </TelemetryProcessors>
+**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
 
-```
+[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) では、アダプティブ アルゴリズムが目標とするテレメトリの最大レートを調整できます。
 
+    <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
 
-Web ページからのデータに対してサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
+### クライアント側のサンプリング
+
+Web ページからのデータに対して固定レートのサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
 
 *JavaScript*
 
@@ -72,10 +72,8 @@ Web ページからのデータに対してサンプリングを行うには、(
 	}); 
 ```
 
-* 100/N (N は整数) と等しいパーセント値 (この例では 10) を設定します。たとえば、50 (=100/2)、33.33 (=100/3)、25 (=100/4)、10 (=100/5) です。 
-* 大量のデータがある場合は、0.1 などの非常に低いサンプリング レートを使用することができます。
-* Web ページとサーバーの両方でサンプリングを設定する場合は、両方で同じサンプリング比率を設定していることを確認してください。
-* クライアント側とサーバー側で、連携して関連する項目を選択します。
+* 100/N (N は整数) と等しいパーセント値 (この例では 10) を設定します。たとえば、50 (=100/2)、33.33 (=100/3)、25 (=100/4)、10 (=100/10) です。 
+* サーバー側でも[固定レート サンプリング](app-insights-sampling.md)を有効にしている場合は、クライアントとサーバーはサンプリングを同期するので、検索で関連のあるページ ビューと要求の間を移動できます。
 
 [サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
@@ -85,13 +83,13 @@ Web ページからのデータに対してサンプリングを行うには、(
 
 テレメトリのフィルター処理を行うには、テレメトリ プロセッサを記述し、それを SDK に登録します。どのテレメトリもこのプロセッサを通過します。テレメトリをストリームから除外するように選択することも、プロパティを追加することもできます。これには、HTTP 要求コレクターや依存関係コレクターなどの標準的なモジュールのテレメトリに加えて、自身で作成したテレメトリも含まれます。たとえば、ロボットからの要求や成功した依存関係の呼び出しについてのテレメトリをフィルターで除外できます。
 
-> [AZURE.WARNING]プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
+> [AZURE.WARNING] プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
 > 
 > 代わりに、[サンプリング](#sampling)の使用を検討します。
 
 ### テレメトリ プロセッサを作成する
 
-1. Application Insights SDK を最新バージョンに (2.0.0-beta2 以降) に更新します。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、"Microsoft.ApplicationInsights" を検索します。
+1. Application Insights SDK を最新バージョンに (2.0.0-beta2 以降) に更新します。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、Microsoft.ApplicationInsights を検索します。
 
 1. フィルターを作成するには、ITelemetryProcessor を実装します。これは、テレメトリ モジュール、テレメトリ初期化子、テレメトリ チャネルと同じく、機能拡張ポイントの 1 つです。
 
@@ -159,22 +157,22 @@ Web ページからのデータに対してサンプリングを行うには、(
 
 名前付きのパブリック プロパティをクラス内に指定することにより、.config ファイルから文字列値を渡すことができます。
 
-> [AZURE.WARNING].config ファイル内の型名とプロパティ名をコード内のクラスおよびプロパティ名と慎重に照合してください。存在しない型またはプロパティが .config ファイルによって参照されていると、SDK は何も通知せずにテレメトリの送信に失敗する場合があります。
+> [AZURE.WARNING] .config ファイル内の型名とプロパティ名をコード内のクラスおよびプロパティ名と慎重に照合してください。存在しない型またはプロパティが .config ファイルによって参照されていると、SDK は何も通知せずにテレメトリの送信に失敗する場合があります。
 
  
 **あるいは**、コード内でフィルターを初期化することもできます。適切な初期化クラス (たとえば Global.asax.cs の AppStart) で、プロセッサをチェーンに挿入します。
 
-    ```C#
+```C#
 
-    var builder = TelemetryConfiguration.Active.GetTelemetryProcessorChainBuilder();
+    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
     builder.Use((next) => new SuccessfulDependencyFilter(next));
 
     // If you have more processors:
     builder.Use((next) => new AnotherProcessor(next));
 
-    TelemetryConfiguration.Active.TelemetryChannel = builder.Build();
+    builder.Build();
 
-    ```
+```
 
 この時点より後に作成された TelemetryClients はプロセッサを使用します。
 
@@ -222,7 +220,7 @@ public void Process(ITelemetry item)
 
 低速な呼び出しの診断のみを実行する場合は、高速呼び出しを除外します。
 
-> [AZURE.NOTE]これによって、ポータルに表示される統計にゆがみが生じます。依存関係のグラフは、依存関係の呼び出しがすべてエラーのように表示されます。
+> [AZURE.NOTE] これによって、ポータルに表示される統計にゆがみが生じます。依存関係のグラフは、依存関係の呼び出しがすべてエラーのように表示されます。
 
 ``` C#
 
@@ -363,7 +361,7 @@ ApplicationInsights.config で:
     </script>
 ```
 
-telemetryItem で使用できる非カスタム プロパティの概要については、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
+telemetryItem で使用できる非カスタム プロパティの概要については、[データ モデル](app-insights-export-data-model.md#lttelemetrytypegt)に関するページを参照してください。
 
 任意の数の初期化子を追加できます。
 
@@ -400,7 +398,7 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 [data]: app-insights-data-retention-privacy.md
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -409,4 +407,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

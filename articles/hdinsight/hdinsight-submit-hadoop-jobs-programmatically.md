@@ -14,25 +14,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="02/29/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
 
 Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する方法と、HDInsight .NET SDK を使用して、MapReduce、Hadoop ストリーミング、Hive ジョブを送信する方法について説明します。
 
-> [AZURE.NOTE]この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
+> [AZURE.NOTE] この記事の手順は、Windows クライアントから実行する必要があります。Linux、OS X、または Unix クライアントを使用して、HDInsight で MapReduce、Hive、または Pig を操作する方法の詳細については、次の記事を参照し、**SSH** または **Curl** のリンクを選択してください。
 >
 > - [HDInsight での Hive の使用](hdinsight-use-hive.md)
-> - [HDInsight での Pig の使用](hdinsight-use-pig.md)
+> - [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 > - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-##前提条件
+###前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **Azure HDInsight クラスター**。手順については、「[HDInsight の使用][hdinsight-get-started]」または「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」を参照してください。
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure HDInsight クラスター**。手順については、「[HDInsight の使用][hdinsight-get-started]」または「[HDInsight で Hadoop クラスターを作成する][hdinsight-provision]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
 
 ##PowerShell を使用して MapReduce ジョブを送信する
 
@@ -58,7 +58,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 1. Visual Studio で、C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ マネージャー コンソールから、次のコマンドを実行します。
 
-		Install-Package Microsoft.Azure.Common.Authentication -pre
+		Install-Package Microsoft.Azure.Common.Authentication -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
 2. 次のコードを使用します。
@@ -98,7 +98,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		
 					var tokenCreds = GetTokenCloudCredentials();
 					var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-		
+
+					var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);  
+ 					var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");  
+
 					_hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 		
 					var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
@@ -212,7 +215,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 						return null;
 					}
 		
-					return string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray());
+					return "&define=" + string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray());
 				}
 				private static string ConvertArgsToString(List<string> args)
 				{
@@ -252,18 +255,18 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 
 [image-hdi-gettingstarted-runmrjob]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.RunMRJob.png
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

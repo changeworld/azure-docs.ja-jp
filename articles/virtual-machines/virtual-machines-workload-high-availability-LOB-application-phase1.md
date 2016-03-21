@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/21/2016" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
@@ -62,14 +62,14 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 **表 S: 仮想ネットワークのサブネット**
 
-> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
+> [AZURE.NOTE] この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
 
 仮想ネットワーク内にドメイン コント ローラーを最初にセットアップするときに使用する 2 つのオンプレミス DNS サーバーについて、表 D に記入します。各 DNS サーバーの表示名および単一の IP アドレスを指定します。この表示名は、DNS サーバーのホスト名またはコンピューター名と一致している必要はありません。記入欄は 2 つですが、さらに追加してもかまいません。IT 部門と相談してこのリストを決定します。
 
-項目 | DNS サーバーの表示名 | DNS サーバーの IP アドレス 
---- | --- | ---
-1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+項目 | DNS サーバーの IP アドレス 
+--- | ---
+1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
 
 **表 D: オンプレミス DNS サーバー**
 
@@ -85,13 +85,24 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 **表 L: ローカル ネットワークのアドレス プレフィックス**
 
-> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+まず Azure PowerShell プロンプトを開始します。
 
-Azure PowerShell プロンプトを開きます。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
-次に、基幹業務アプリケーション用の新しいリソース グループを作成します。
+まず、Azure PowerShell プロンプトを起動し、お使いのアカウントにログインします。
 
-一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
+	Login-AzureRMAccount
+
+次のコマンドを使用して、サブスクリプション名を取得します。
+
+	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+
+Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+
+	$subscr="<subscription name>"
+	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
+
+次に、基幹業務アプリケーション用の新しいリソース グループを作成します。一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
 
 	Get-AzureRMResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
 
@@ -114,7 +125,7 @@ Azure PowerShell プロンプトを開きます。
 
 それぞれのストレージ アカウントには、小文字のアルファベットと数字のみが含まれる、グローバルに一意の名前を選択する必要があります。既存のストレージ アカウントの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureRMStorageAccount | Sort Name | Select Name
+	Get-AzureRMStorageAccount | Sort StorageAccountName | Select StorageAccountName
 
 最初のストレージ アカウントを作成するには、次のコマンドを実行します。
 
@@ -207,18 +218,6 @@ Azure PowerShell プロンプトを開きます。
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-high-availability-LOB-application-phase2.md)」に進んでください。
+- [フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) を使用して、このワークロードを引き続き構成します。
 
-## その他のリソース
-
-[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)
-
-[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
-
-[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
-
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

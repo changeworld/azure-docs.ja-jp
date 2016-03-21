@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: 受信同期のための Workday の構成 | Microsoft Azure" 
-    description="Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    description="Azure Active Directory で受信同期を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: 受信同期のための Workday の構成
 >[AZURE.NOTE]Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory (AD) Premium を利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure AD Premium は現在サポートされていません。
@@ -64,7 +64,7 @@
 
 1.  **Workday Workbench** で、検索ボックスに「**ユーザーの作成**」と入力し、**[統合システム ユーザーの作成]** リンクをクリックします。     
 
-	![ユーザーの作成](./media/active-directory-saas-inbound-synchronization-tutorial/IC750979.png "ユーザーの作成")
+	![create user](./media/active-directory-saas-inbound-synchronization-tutorial/IC750979.png "create user")
 
 2.  新しい統合システム ユーザーのユーザー名とパスワードを指定して、統合システム ユーザーを作成する作業を完了します。このユーザーはプログラムを使用してログオンするため、[次回のサインイン時に新しいパスワードを要求する] オプションはオフのままにしておきます。[セッション タイムアウト (分)] は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
 
@@ -163,9 +163,9 @@
 
 	![設定と管理者の資格情報](./media/active-directory-saas-inbound-synchronization-tutorial/IC750995.png "設定と管理者の資格情報")
 
-	1.  **[WORKDAY 管理ユーザー名]** テキスト ボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。    
+	1.  **[WORKDAY 管理ユーザー名]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。    
     2.  **[WORKDAY 管理パスワード]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーのパスワードを入力します。    
-    3.  **[WORKDAY テナント URL]** テキスト ボックスに、URL または Workday テナントを入力します。    
+    3.  **[WORKDAY テナント URL]** テキストボックスに、URL または Workday テナントを入力します。    
 
 3.  **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。
 
@@ -181,4 +181,4 @@
 
 これで、**[ユーザー]** セクションに移動して、Workday ユーザーがインポートされたかどうかを確認できます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

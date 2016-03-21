@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="08/30/2015"
-	ms.author="huguesv"/>
+	ms.date="02/20/2016"
+	ms.author="huvalo"/>
 
 
 # Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ 
@@ -23,7 +23,7 @@
 
 この投票 Web アプリでは、リポジトリの抽象化を定義します。そのため、異なる種類のリポジトリ (メモリ内、Azure テーブル ストレージ、MongoDB) を簡単に切り替えることができます。
 
-ここでは、Azure ストレージ アカウントを作成する方法、Web アプリが Azure テーブル ストレージを使用するよう構成する方法、[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に Web アプリ を発行する方法を学習します。
+ここでは、Azure ストレージ アカウントを作成する方法、Web アプリが Azure テーブル ストレージを使用するよう構成する方法、および [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) にアプリケーションを発行する方法を学習します。
 
 Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure テーブル ストレージ、MySQL、SQL Database の各サービスを使用した、PTVS での Azure App Service Web Apps の開発を取り上げたその他の記事については、[Python デベロッパー センター]をご覧ください。この記事では App Service について重点的に説明していますが、[Azure Cloud Services] の開発も同様の手順で行います。
 
@@ -37,7 +37,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## プロジェクトを作成する
 
@@ -67,9 +67,9 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します
 
-1.  [Azure ポータル]にログインします。
+1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します
+2. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** ボタンをクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
   	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->
 
@@ -103,6 +103,8 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、Azure テーブル ストレージでシリアル化されます。
 
+	> [AZURE.NOTE] Python 2.7 仮想環境では、Visual Studio で例外による中断が発生する場合があります。`F5` を押して Web プロジェクトの読み込みを続行します。
+
 1.  アプリケーションが、**Azure テーブル ストレージ** リポジトリを使用していることを確認するには、**[情報]** ページを確認します。
 
   	![Web ブラウザー](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleAzureTableStorageAbout.png)
@@ -111,7 +113,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
 
-> [AZURE.NOTE]これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
+> [AZURE.NOTE] これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
 
 1.  **[サーバー エクスプローラー]**を開きます。**[Azure]**、**[ストレージ]**、使用するストレージ アカウント、**[テーブル]** の順に展開します。
 
@@ -181,13 +183,12 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
   - [クラウド サービス プロジェクト]
   - [Microsoft Azure でのリモート デバッグ]
 - [Bottle のドキュメント]
-- [Azure ストレージ]
+- [Azure Storage]
 - [Azure SDK for Python]
 - [Python からテーブル ストレージ サービスを使用する方法]
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」をご覧ください。
 
 
 <!--Link references-->
@@ -211,8 +212,8 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Microsoft Azure でのリモート デバッグ]: http://go.microsoft.com/fwlink/?LinkId=624026
 [Web プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624027
 [クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
-[Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
+[Azure Storage]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

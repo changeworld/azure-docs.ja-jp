@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="msStevenPo"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="01/05/2016"
 	ms.author="curtand"/>
 
 
@@ -51,7 +51,7 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 2.  次のいずれかを実行します。
 
 	- 特定のユーザーのパスワードを期限付きに設定するには、ユーザーのユーザー プリンシパル名 (UPN) またはユーザー ID を使用して、次のコマンドレットを実行します。 `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires \$false`
-  	
+
 	- 組織内のすべてのユーザーのパスワードを期限付きに設定するには、次のコマンドレットを使用します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$false`
 
 ## パスワードを無期限に設定する
@@ -64,4 +64,4 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 
 	- 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

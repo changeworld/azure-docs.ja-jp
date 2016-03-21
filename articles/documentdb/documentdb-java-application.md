@@ -6,7 +6,7 @@
 	documentationCenter="java" 
 	authors="aliuy" 
 	manager="jhubbard" 
-	editor="monicar"/>
+	editor="mimig"/>
 
 <tags 
 	ms.service="documentdb" 
@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="10/20/2015" 
+	ms.date="01/29/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
@@ -34,15 +34,15 @@
 
 ![My ToDo List Java アプリケーション](./media/documentdb-java-application/image1.png)
 
-> [AZURE.TIP]このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトを GitHub からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP] このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトを GitHub からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ##<a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-- [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
-- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](../web-sites-java-get-started.md)。
+- [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
+- [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service-web/web-sites-java-get-started.md)
 
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
@@ -52,7 +52,7 @@ DocumentDB データベース アカウントを Azure でプロビジョニン�
 1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
 2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
 
-![DocumentDB アカウントの作成 - データベース チュートリアルDocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット][1]
+![DocumentDB アカウントの作成 - データベース チュートリアルScreen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][1]
 
 
 ##<a id="CreateJSP"></a>手順 2: Java JSP アプリケーションを作成する
@@ -95,7 +95,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 4. **[Select Dependency]** ウィンドウで、次の操作を行います。
  - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
  - **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
- - **[Version]** ボックスに、「1.4.0」と入力します。
+ - **[Version]** ボックスに「1.5.1」と入力します。
 
 	![DocumentDB Java アプリケーション SDK をインストールする](./media/documentdb-java-application/image13.png)
 
@@ -104,7 +104,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    <dependency>
 		    <groupId>com.microsoft.azure</groupId>
 		    <artifactId>azure-documentdb</artifactId>
-		    <version>1.4.0</version>
+		    <version>1.5.1</version>
 	    </dependency>
 
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
@@ -751,7 +751,7 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
  - [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
  - **[完了]** をクリックします。
 
-3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](../web-sites-java-add-app.md)」を参照してください。
+3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](../app-service-web/web-sites-java-add-app.md)」を参照してください。
 
 	WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
 4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
@@ -786,4 +786,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

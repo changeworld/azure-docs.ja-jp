@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Azure Stream Analytics クエリ パターン | Microsoft Azure"
+	pageTitle="Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Azure"
 	description="一般的な Azure Stream Analytics クエリのパターン"
-	keywords="stream analytics, サンプル, クエリ, 言語, ガイド, パターン"
+	keywords="クエリ例"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,18 +14,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="11/06/2015"
+	ms.date="02/17/2016"
 	ms.author="jeffstok"/>
 
 
-# 一般的な Azure Stream Analytics クエリのパターン  #
+# 一般的 Stream Analytics 使用状況パターンのクエリ例
 
-## はじめに ##
-Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表されます。この言語については、[こちら](https://msdn.microsoft.com/library/azure/dn834998.aspx)をご覧ください。このドキュメントでは、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+## はじめに
 
-## 基本 ##
+Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表されます。この言語については、[Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)をご覧ください。この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
 
-## データ型の変換 ##
+## クエリ例: データ型の変換
 **説明**: 入力ストリームのプロパティの型を定義します。例: 車の重量は入力ストリームでは文字列ですが、合計を計算するために INT に変換する必要があります。
 
 **入力**:
@@ -54,7 +53,8 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: Weight フィールドに対して CAST ステートメントを使用し、型を指定します (サポートされるデータ型の一覧は[こちら](https://msdn.microsoft.com/library/azure/dn835065.aspx)を参照)。
 
-## Like/Not like を使用したパターン マッチング ##
+
+## クエリ例: Like/Not like を使用したパターン マッチング
 **説明**: イベントのフィールド値が特定のパターンと一致することをチェックします。例: A で始まって 9 で終わるライセンス プレートを返します。
 
 **入力**:
@@ -83,7 +83,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: LIKE ステートメントを使用して、LicensePlate フィールドの値が、A で始まり、0 文字以上の任意の文字列があって、9 で終わるかどうかをチェックします。
 
-## 異なるケース/値に異なるロジックを指定する (CASE ステートメント) ##
+## クエリ例: 異なるケース/値に異なるロジックを指定する (CASE ステートメント)
 **説明**: 何らかの条件に基づいてフィールドに異なる計算を適用します。例: 通過した車のメーカー別台数の説明文で、1 の場合とそれ以外の場合を分けて処理します。
 
 **入力**:
@@ -117,8 +117,8 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: CASE 句を使用すると、条件に基づいて異なる計算を適用できます (この例では、集計ウィンドウでの車の台数)。
 
-## 複数の出力にデータを送信する ##
-**説明**: 単一のジョブから複数の出力ターゲットにデータを送信します。例: しきい値ベースのアラートに対してデータを分析し、すべてのイベントを BLOB ストレージにアーカイブします。
+## クエリ例: 複数の出力にデータを送信する
+**説明**: 単一のジョブから複数の出力ターゲットにデータを送信します。例: しきい値ベースのアラートに対してデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
 
 **入力**:
 
@@ -182,9 +182,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 	SELECT * INTO HondaOutput FROM AllRedCars WHERE Make = 'Honda'
 	SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
 
-## パターン ##
-
-## ユニークな値のカウント
+## クエリ例: ユニークな値のカウント
 **説明**: 期間内にストリームに出現するユニークなフィールド値の数をカウントします。例: 2 秒間に料金所を通過した自動車のユニークなメーカーの数。
 
 **入力**:
@@ -227,7 +225,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明:** 初期集計を行って、ユニークなメーカーと期間内のその数を取得します。その後、得られたメーカーの数を集計します。期間内のすべてのユニークな値を渡して同じタイムスタンプを取得した後、最初のステップの2 つの期間を集計しないように 2 番目の集計期間を最小化する必要があります。
 
-## 値が変化したかどうかを判定する ##
+## クエリ例: 値が変化したかどうかを判定する#
 **説明**: 前の値を見て、現在の値と異なるかどうかを判定します。例: 有料道路上の前の自動車は、現在の自動車と同じメーカーか。
 
 **入力**:
@@ -255,7 +253,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: LAG を使用して入力ストリームで 1 つ前のイベントを調べて、Make の値を取得します。次に、現在のイベントの Make と比較し、異なる場合はイベントを出力します。
 
-## 期間内の最初のイベントを検索する ##
+## クエリ例: 期間内の最初のイベントを検索する
 **説明**: 10 分間隔で最初の自動車を検索します。
 
 **入力**:
@@ -309,7 +307,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 	WHERE 
 		IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 
-## 期間内の最後のイベントを検索する ##
+## クエリ例: 期間内の最後のイベントを検索する
 **説明**: 10 分間隔で最後の自動車を検索します。
 
 **入力**:
@@ -354,7 +352,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: クエリには 2 つのステップがあります。第 1 のステップで、10 分の期間内の最後のタイムスタンプを検索します。第 2 のステップで、第 1 のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。
 
-## イベントがないことを検出する ##
+## クエリ例: イベントがないことを検出する
 **説明**: ストリームに特定の条件に一致する値が含まれていないことを確認します。例: 90 秒以内に同じメーカーの自動車が 2 台連続して有料道路に進入したか。
 
 **入力**:
@@ -387,8 +385,37 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **説明**: LAG を使用して入力ストリームで 1 つ前のイベントを調べて、Make の値を取得します。次にそれを現在のイベントの Make と比較して、それらが同じ場合はイベントを出力し、LAG を使用して前の自動車についてのデータを取得します。
 
-## 条件の期間を検出する ##
-**説明**: 条件が発生していた時間の長さを調べます。例: すべての自動車が正しくない (20,000 ポンド超) 結果になるバグがありました。バグの期間を計算します。
+## クエリ例: イベントの間隔を検出する
+**説明**: 特定のイベントの間隔を検出します。たとえば、Web クリック ストリームから、特定の機能に費やされた時間を調べます。
+
+**入力**:
+  
+| User | 機能 | イベント | 時刻 |
+| --- | --- | --- | --- |
+| user@location.com | RightMenu | 開始 | 2015-01-01T00:00:01.0000000Z |
+| user@location.com | RightMenu | End | 2015-01-01T00:00:08.0000000Z |
+  
+**出力**:
+  
+| User | 機能 | 時間 |
+| --- | --- | --- |
+| user@location.com | RightMenu | 7 |
+  
+
+**ソリューション**
+
+````
+    SELECT
+    	[user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+    FROM input TIMESTAMP BY Time
+    WHERE
+    	Event = 'end'
+````
+
+**説明**: LAST 関数を使用して、イベントの種類が "Start" であった最後の Time 値を取得します。LAST 関数に PARTITION BY [user] が使用されていることに注目してください。この指定によって、一意のユーザーごとに結果が計算されます。このクエリでは、"Start" イベントと "Stop" イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です (LIMIT DURATION(hour, 1))。
+
+## クエリ例: 条件の期間を検出する
+**説明**: 条件が発生していた時間の長さを調べます。例: すべての自動車の重量が正しくない (20,000 ポンド超) 結果になるバグがありました。バグの期間を計算します。
 
 **入力**:
 
@@ -416,43 +443,71 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **解決策**:
 
-	SELECT
-	    PrevGood.Time AS StartFault,
-	    ThisGood.Time AS Endfault,
-	    DATEDIFF(second, PrevGood.Time, ThisGood.Time) AS FaultDuraitonSeconds
-	FROM
-	    Input AS ThisGood TIMESTAMP BY Time
-	    INNER JOIN Input AS PrevGood TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, ThisGood) BETWEEN 1 AND 3600
-	    AND PrevGood.Weight < 20000
-	    INNER JOIN Input AS Bad TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, Bad) BETWEEN 1 AND 3600
-	    AND DATEDIFF(second, Bad, ThisGood) BETWEEN 1 AND 3600
-	    AND Bad.Weight >= 20000
-	    LEFT JOIN Input AS MidGood TIMESTAMP BY Time
-	    ON DATEDIFF(second, PrevGood, MidGood) BETWEEN 1 AND 3600
-	    AND DATEDIFF(second, MidGood, ThisGood) BETWEEN 1 AND 3600
-	    AND MidGood.Weight < 20000
-	WHERE
-	    ThisGood.Weight < 20000
-	    AND MidGood.Weight IS NULL
+````
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN weight < 20000 ) [StartFault],
+    [time] [EndFault]
+FROM input
+WHERE
+    [weight] < 20000
+    AND LAG(weight) OVER (LIMIT DURATION(hour, 24)) > 20000
+````
 
-**説明**: 間に含まれるのが異常なイベントだけで正常なイベントは含まれない 2 つの正常なイベントを探します。これらは、少なくとも 1 つの異常イベントの前のイベントと後のイベントです。間に 1 つの異常イベントがある 2 つの正常イベントを取得するには、2 つの JOIN を使用し、重みを調べてタイムスタンプを比較することによって正常 -> 異常 -> 正常を確認します。
+**説明**: LAG を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、その境界を StartFault と StopFault とし、該当する項目を探しています。
 
-「NULL が含まれる、またはイベントを含まない左外部結合」で学習したことを使用して、選択した 2 つの正常イベントの間で正常イベントが発生していないことを確認する方法を知ります。
+## クエリ例: 欠落値を入力する
+**説明**: 欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
 
-これらを組み合わせて、間に他の正常イベントがない正常 -> 異常 -> 正常を取得します。開始正常イベントと終了正常イベントの間の期間を計算して、バグの期間が得られます。
+**入力**:
+
+| t | 値 |
+|--------------------------|-------|
+| "2014-01-01T06:01:00" | 1 |
+| "2014-01-01T06:01:05" | 2 |
+| "2014-01-01T06:01:10" | 3 |
+| "2014-01-01T06:01:15" | 4 |
+| "2014-01-01T06:01:30" | 5 |
+| "2014-01-01T06:01:35" | 6 |
+
+**出力 (最初の 10 行)**:
+
+| windowend | lastevent.t | lastevent.value |
+|--------------------------|--------------------------|--------|
+| 2014-01-01T14:01:00.000Z | 2014-01-01T14:01:00.000Z | 1 |
+| 2014-01-01T14:01:05.000Z | 2014-01-01T14:01:05.000Z | 2 |
+| 2014-01-01T14:01:10.000Z | 2014-01-01T14:01:10.000Z | 3 |
+| 2014-01-01T14:01:15.000Z | 2014-01-01T14:01:15.000Z | 4 |
+| 2014-01-01T14:01:20.000Z | 2014-01-01T14:01:15.000Z | 4 |
+| 2014-01-01T14:01:25.000Z | 2014-01-01T14:01:15.000Z | 4 |
+| 2014-01-01T14:01:30.000Z | 2014-01-01T14:01:30.000Z | 5 |
+| 2014-01-01T14:01:35.000Z | 2014-01-01T14:01:35.000Z | 6 |
+| 2014-01-01T14:01:40.000Z | 2014-01-01T14:01:35.000Z | 6 |
+| 2014-01-01T14:01:45.000Z | 2014-01-01T14:01:35.000Z | 6 |
+
+    
+**解決策**:
+
+    SELECT
+    	System.Timestamp AS windowEnd,
+    	TopOne() OVER (ORDER BY t DESC) AS lastEvent
+    FROM
+    	input TIMESTAMP BY t
+    GROUP BY HOPPINGWINDOW(second, 300, 5)
+
+
+**説明**: このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。[ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ - Azure Stream Analytics")期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
+
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-- [Azure Stream Analytics の使用](../stream.analytics.get.started.md)
+- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

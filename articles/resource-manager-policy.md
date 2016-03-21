@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="11/10/2015"
+	ms.date="02/26/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # ポリシーを使用したリソース管理とアクセス制御
@@ -22,7 +22,7 @@ Azure リソース マネージャーで、カスタム ポリシーを使用し
 
 ポリシー定義を作成し、行為やリソースを具体的に否認します。サブスクリプション、リソース グループ、個別リソースなど、任意の範囲でポリシー定義を割り当てます。
 
-この記事では、ポリシーの作成で使用する、ポリシー定義言語の基本構造について説明します。その後、これらのポリシーをさまざまなスコープに適用する方法と、最後には REST API を使用してこれを実現する方法の例をいくつか紹介します。
+この記事では、ポリシーの作成で使用する、ポリシー定義言語の基本構造について説明します。その後、これらのポリシーをさまざまなスコープに適用する方法と、最後に REST API を使用してこれを実現する方法の例をいくつか紹介します。
 
 現在、ポリシーはプレビューとして利用できます。
 
@@ -36,7 +36,7 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
 ## 一般的なシナリオ
 
-よくあるシナリオの 1 つは、チャージバック目的で部門別のタグが必要性な場合です。適切なコスト センターが関連付けられている場合にのみ、組織で操作を許可し、それ以外の場合は要求を拒否したい場合があります。これにより、実行された操作を適切なコスト センターから請求できるようになります。
+よくあるシナリオの 1 つは、配賦目的で部門別のタグが必要性な場合です。適切なコスト センターが関連付けられている場合にのみ、組織で操作を許可し、それ以外の場合は要求を拒否したい場合があります。これにより、実行された操作を適切なコスト センターから請求できるようになります。
 
 別のよくあるシナリオに、組織が、リソースの作成場所を制御したい場合があります。または、特定の種類のリソースのみのプロビジョニングを許可することによって、リソースへのアクセスを制御したい場合があります。
 
@@ -46,7 +46,7 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
 ## ポリシー定義の構造
 
-ポリシー定義は JSON を使用して作成します。これは、条件が満たされた場合に何が発生するかを伝えるアクションおよび効果を定義する 1 つ以上の条件および論理演算子で構成されます。
+ポリシー定義は JSON を使用して作成します。これは、条件が満たされた場合に何が発生するかを伝えるアクションおよび効果を定義する 1 つ以上の条件および論理演算子で構成されます。[http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でスキーマが公開されています。
 
 ポリシーには、基本的に次が含まれます。
 
@@ -71,10 +71,10 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 | 演算子名 | 構文 |
 | :------------- | :------------- |
 | Not | "not" : {&lt;condition or operator &gt;} |
-| 論理積 | "allOf" : [ {&lt;condition1&gt;},{&lt;condition2&gt;}] |
-| または | "anyOf" : [ {&lt;condition1&gt;},{&lt;condition2&gt;}] |
+| 論理積 | "allOf" : [ {&lt;condition or operator &gt;},{&lt;condition or operator &gt;}] |
+| または | "anyOf" : [ {&lt;condition or operator &gt;},{&lt;condition or operator &gt;}] |
 
-入れ子の条件はサポートされていません。
+リソース マネージャーでは、入れ子になった演算子を使用して複雑なロジックをポリシーに指定できます。たとえば、指定したリソースの種類の特定の場所でのリソースの作成を拒否できます。入れ子になった演算子の例を次に示します。
 
 ## 条件
 
@@ -88,24 +88,53 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 | [ | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;keyName&gt;" |
 
-
 ## フィールドおよびソース
 
-条件は、フィールドおよびソースを使用して構成します。フィールドは、リソース要求ペイロードのプロパティを表します。ソースは、要求自体の特性を表します。
+条件は、フィールドおよびソースを使用して構成します。フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。ソースは、要求自体の特性を表します。
 
 次のフィールドおよびソースがサポートされています。
 
-フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***。
+フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**
 
 ソース: **action**
 
-アクションの詳細については、「[RBAC - 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」を参照してください。
+プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
+
+    GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
+	
+エイリアスの定義は次のようになります。ご覧のように、プロパティ名が変更された場合も、エイリアスではさまざまな API バージョンでのパスを定義します。
+
+    "aliases": [
+      {
+        "name": "Microsoft.Storage/storageAccounts/sku.name",
+        "paths": [
+          {
+            "path": "Properties.AccountType",
+            "apiVersions": [ "2015-06-15", "2015-05-01-preview" ]
+          }
+        ]
+      }
+    ]
+
+現在サポートされているエイリアスは次のとおりです。
+
+| エイリアス名 | 説明 |
+| ---------- | ----------- |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Storage/storageAccounts、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| Microsoft.Cache/Redis/enableNonSslPort | |
+| Microsoft.Cache/Redis/shardCount | |
+
+
+アクションの詳細については、「[RBAC - 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」を参照してください。現時点では、ポリシーは、PUT 要求でのみ機能します。
+
 
 ## ポリシー定義の例
 
 ここでは、上で挙げたシナリオを実現するポリシーを定義する方法を見てをみましょう。
 
-### チャージバック:、部門別のタグが必要
+### 配賦: 部門別のタグが必要
 
 次のポリシーは、"costCenter" キーを含むタグがないすべての要求を拒否します。
 
@@ -170,6 +199,35 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
       }
     }
 
+### 承認された SKU の使用
+
+次の例は、プロパティのエイリアスを使用して SKU を制限する方法を示しています。この例では、Standard\_LRS と Standard\_GRS のみ、ストレージ アカウントで使用することが認められます。
+
+    {
+      "if": {
+        "allOf": [
+          {
+            "source": "action",
+            "like": "Microsoft.Storage/storageAccounts/*"
+          },
+          {
+            "not": {
+              "allof": [
+                {
+                  "field": "Microsoft.Storage/storageAccounts/accountType",
+                  "in": ["Standard_LRS", "Standard_GRS"]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+    
+
 ### 命名規則
 
 次では、"like" の条件でサポートされているワイルドカードの使用例を示しています。この条件は、名前が示しているパターンと一致する場合 (namePrefix*nameSuffix)、要求を拒否するよう示しています。
@@ -184,6 +242,30 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
       "then" : {
         "effect" : "deny"
       }
+    }
+    
+### ストレージ リソースのみに対するタグ要件
+
+次の例は、論理演算子を入れ子にして、ストレージ リソースのみにアプリケーション タグを要求する方法を示しています。
+
+    {
+        "if": {
+            "allOf": [
+              {
+                "not": {
+                  "field": "tags",
+                  "containsKey": "application"
+                }
+              },
+              {
+                "source": "action",
+                "like": "Microsoft.Storage/*"
+              }
+            ]
+        },
+        "then": {
+            "effect": "audit"
+        }
     }
 
 ## ポリシーの割り当て
@@ -291,4 +373,17 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
 
 同様に、Get-AzureRmPolicyAssignment、Set-AzureRmPolicyAssignment、および Remove-AzureRmPolicyAssignment コマンドレットをそれぞれ使用して、ポリシーの割り当てを取得、変更、または削除することもできます。
 
-<!---HONumber=Nov15_HO3-->
+##ポリシー監査イベント
+
+ポリシーを適用した後、ポリシー関連イベントの表示を開始します。このデータを取得するには、ポータルに移動するか、PowerShell を使用します。
+
+拒否効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
+
+    Get-AzureRmLog | where {$_.subStatus -eq "Forbidden"}     
+
+監査効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
+
+    Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
+    
+
+<!---HONumber=AcomDC_0302_2016-->

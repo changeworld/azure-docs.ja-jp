@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/21/2015"
+	ms.date="12/15/2015"
 	ms.author="ningk"/>
 
 #Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法
@@ -32,7 +32,7 @@ Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Sof
 -	Tomcat7 の仮想マシンを準備する方法。
 -	Tomcat7 をインストールする方法。
 
-読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別価格: MSDN、MPN、BizSpark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](http://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
+読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](https://azure.microsoft.com/) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別価格: MSDN、MPN、BizSpark の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](https://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
 
 このトピックは、Tomcat や Linux の基本的な知識を持つ読者を想定しています。
 
@@ -57,8 +57,8 @@ SSH はシステム管理者にとって重要なツールです。ただし、�
 5.	**[キー]** の公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
 6.	**[秘密キーの保存]** をクリックし、privateKey.ppk という名前のファイルに保存します。
 
-###手順 2. Azure プレビュー ポータルでイメージを作成する
-[Azure プレビュー ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、ニーズに合った Linux イメージを選択してイメージを作成します。次の例では、Ubuntu 14.04 イメージを使用します。![][3]
+###手順 2. Azure ポータルでイメージを作成する
+[Azure ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、ニーズに合った Linux イメージを選択してイメージを作成します。次の例では、Ubuntu 14.04 イメージを使用します。![][3]
 
 **[ホスト名]** に、ユーザーとインターネット クライアントがこの仮想マシンにアクセスするのに使用する URL の名前を指定します。DNS 名の最後の部分 (tomcatdemo など) を定義すると、Azure は URL を tomcatdemo.cloudapp.net として生成します。
 
@@ -73,7 +73,7 @@ Azure のエンドポイントはプロトコル (TCP または UDP) の他に�
 
 TCP ポート 8080 は、tomcat がリッスンする既定のポート番号です。このポートを Azure エンドポイントで開くと、ユーザーやその他のインターネット クライアントが tomcat のページにアクセスできるようになります。
 
-1.	Azure プレビュー ポータルで、**[参照]**、**[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。![][5]
+1.	Azure ポータルで、**[参照]**、**[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。![][5]
 2.	仮想マシンにエンドポイントを追加するには、**[エンドポイント]** ボックスをクリックします。![][6]
 3.	**[追加]** をクリックします。  
 	1.	**エンドポイント**では、[エンドポイント] にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」を入力します。  
@@ -90,7 +90,7 @@ TCP ポート 8080 は、tomcat がリッスンする既定のポート番号で
 ###手順 2. 作成したイメージに接続する
 SSH ツールを選択すると、仮想マシンに接続できます。この例では、Putty を使用します。
 
-最初に、Azure プレビュー ポータルから仮想マシンの DNS 名を取得します。**[参照]**、**[仮想マシン]**、仮想マシン名、**[プロパティ]** の順にクリックし、**[プロパティ]** タイルの**ドメイン名**を調べます。
+最初に、Azure ポータルから仮想マシンの DNS 名を取得します。**[参照]**、**[仮想マシン]**、仮想マシン名、**[プロパティ]** の順にクリックし、**[プロパティ]** タイルの**ドメイン名**を調べます。
 
 **[SSH]** フィールドから、SSH 接続のポート番号を取得します。たとえば次のようになります。![][8]
 
@@ -306,4 +306,4 @@ Tomcat サービスを再起動するには:
 [17]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

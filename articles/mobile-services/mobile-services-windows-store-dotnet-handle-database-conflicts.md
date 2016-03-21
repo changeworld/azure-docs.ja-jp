@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | Microsoft Azure" 
-	description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | Microsoft Azure"
+	description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="10/05/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="01/21/2016"
 	ms.author="wesmc"/>
 
 # データベースの書き込み競合の処理
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 
 
@@ -32,10 +37,10 @@
 このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2013 以降
-+ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。 
++ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 + [Azure アカウント]
 + Azure モバイル サービス NuGet パッケージ 1.1.0 以降。最新バージョンを入手するには、次の手順に従います。
-	1. Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+	1. Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 		![][19]
 
@@ -44,7 +49,7 @@
 		![][20]
 
 
- 
+
 
 ##更新を実行できるようにアプリケーションを更新する
 
@@ -85,7 +90,7 @@
 
         private async Task UpdateToDoItem(TodoItem item)
         {
-            Exception exception = null;			
+            Exception exception = null;
             try
             {
                 //update at the remote table
@@ -94,7 +99,7 @@
             catch (Exception ex)
             {
                 exception = ex;
-            }			
+            }
             if (exception != null)
             {
                 await new MessageDialog(exception.Message, "Update Failed").ShowAsync();
@@ -111,18 +116,18 @@
 
 		public class TodoItem
 		{
-			public string Id { get; set; }			
+			public string Id { get; set; }
 			[JsonProperty(PropertyName = "text")]
-			public string Text { get; set; }			
+			public string Text { get; set; }
 			[JsonProperty(PropertyName = "complete")]
-			public bool Complete { get; set; }			
+			public bool Complete { get; set; }
 			[JsonProperty(PropertyName = "__version")]
 			public string Version { set; get; }
 		}
 
-	> [AZURE.NOTE]型指定のないテーブルを使用する場合にオプティミスティック同時実行制御を有効にするには、テーブルの SystemProperties に Version フラグを追加します。
+	> [AZURE.NOTE] 型指定のないテーブルを使用する場合にオプティミスティック同時実行制御を有効にするには、テーブルの SystemProperties に Version フラグを追加します。
 	>
-	>````` 
+	>`````
 	//Enable optimistic concurrency by retrieving __version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 `````
@@ -132,7 +137,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
         private async Task UpdateToDoItem(TodoItem item)
         {
-            Exception exception = null;			
+            Exception exception = null;
             try
             {
                 //update at the remote table
@@ -145,7 +150,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
             catch (Exception ex)
             {
                 exception = ex;
-            }			
+            }
             if (exception != null)
             {
                 if (exception is MobileServicePreconditionFailedException)
@@ -168,27 +173,27 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
         private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
         {
             //Ask user to choose the resolution between versions
-            MessageDialog msgDialog = new MessageDialog(String.Format("Server Text: "{0}" \nLocal Text: "{1}"\n", 
-                                                        serverItem.Text, localItem.Text), 
+            MessageDialog msgDialog = new MessageDialog(String.Format("Server Text: "{0}" \nLocal Text: "{1}"\n",
+                                                        serverItem.Text, localItem.Text),
                                                         "CONFLICT DETECTED - Select a resolution:");
             UICommand localBtn = new UICommand("Commit Local Text");
             UICommand ServerBtn = new UICommand("Leave Server Text");
             msgDialog.Commands.Add(localBtn);
-            msgDialog.Commands.Add(ServerBtn);			
+            msgDialog.Commands.Add(ServerBtn);
             localBtn.Invoked = async (IUICommand command) =>
             {
-                // To resolve the conflict, update the version of the 
+                // To resolve the conflict, update the version of the
                 // item being committed. Otherwise, you will keep
                 // catching a MobileServicePreConditionFailedException.
-                localItem.Version = serverItem.Version;				
-                // Updating recursively here just in case another 
+                localItem.Version = serverItem.Version;
+                // Updating recursively here just in case another
                 // change happened while the user was making a decision
                 await UpdateToDoItem(localItem);
-            };			
+            };
             ServerBtn.Invoked = async (IUICommand command) =>
             {
 				RefreshTodoItems();
-            };			
+            };
             await msgDialog.ShowAsync();
         }
 
@@ -218,7 +223,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 5. パッケージ フォルダー "todolist\_1.0.0.0\_AnyCPU\_Debug\_Test" を 2 台目のコンピューターにコピーします。このコンピューター上でこのパッケージ フォルダーを開き、次に示すように、**Add-AppDevPackage.ps1** PowerShell スクリプトを右クリックして **[PowerShell で実行]** をクリックします。表示される手順に従ってアプリケーションをインストールします。
 
 	![][12]
-  
+
 5. Visual Studio で **[デバッグ]**、**[デバッグの開始]** の順にクリックして、アプリケーション インスタンス 1 を実行します。2 台目のコンピューターの [スタート] 画面で、下向きの矢印ボタンをクリックし、[アプリ 名前順] を表示します。**todolist** アプリケーションをクリックして、アプリケーション インスタンス 2 を実行します。
 
 	アプリケーション インスタンス 1 ![][2]
@@ -227,7 +232,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
 6. アプリケーション インスタンス 1 で、最後の項目のテキストを「**Test Write 1**」に更新した後、`LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。次のスクリーンショットのようになります。
-	
+
 	アプリケーション インスタンス 1 ![][3]
 
 	アプリケーション インスタンス 2 ![][2]
@@ -255,7 +260,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 次の手順で、サーバー更新スクリプトの追加とテストの方法を説明します。
 
-1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
+1. [Azure クラシック ポータル]にログインし、**[Mobile Services]**、アプリケーションの順にクリックします。
 
    	![][7]
 
@@ -269,8 +274,8 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
-		function update(item, user, request) { 
-			request.execute({ 
+		function update(item, user, request) {
+			request.execute({
 				conflict: function (serverRecord) {
 					// Only committing changes if the item is not completed.
 					if (serverRecord.complete === false) {
@@ -282,8 +287,8 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 						request.respond(statusCodes.FORBIDDEN, 'The item is already completed.');
 					}
 				}
-			}); 
-		}   
+			});
+		}
 5. 両方のコンピューターで **todolist** アプリケーションを実行します。インスタンス 2 で最後の項目における TodoItem `text` を変更します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーによってデータベースが更新されます。
 
 	アプリケーション インスタンス 1 ![][4]
@@ -321,7 +326,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 * [アプリへの認証の追加] <br/>アプリケーションのユーザーを認証する方法について説明します。
 
 * [アプリへのプッシュ通知の追加] <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
- 
+
 
 
 <!-- Images. -->
@@ -358,12 +363,10 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [アプリへの認証の追加]: /develop/mobile/tutorials/get-started-with-users-dotnet
 [アプリへのプッシュ通知の追加]: /develop/mobile/tutorials/get-started-with-push-dotnet
 
-[Azure の管理ポータル]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="02/10/2016"
    ms.author="sameerch"/>
 
 
 # Office 365 コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 Office 365 アカウントに接続して、電子メールの送受信、および予定表と連絡先の管理を実行できます。電子メールの送受信や取得、予定表のイベントの作成や削除、連絡先の作成、更新、取得や削除など、さまざまなアクションを実行できます。
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この Office 365 コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
@@ -98,9 +100,9 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 26. トリガーを構成したアカウントに電子メールを送信すると、個人用のメール アカウントに電子メール、Office のメール アカウントに予定表のイベントおよび連絡先が表示されます。また、営業の問い合わせに対してすぐに回答することを知らせる返信も受け取ります。
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-> [AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -129,4 +131,4 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

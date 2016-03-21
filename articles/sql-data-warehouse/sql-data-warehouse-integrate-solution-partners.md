@@ -3,7 +3,7 @@
    description="SQL Data Warehouse と連携するソリューションを提供するサードパーティのパートナーの一覧"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="joliang"
+   authors="jrowlandjones"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="joliang"/>
+   ms.date="02/12/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse ソリューション パートナー
 
@@ -96,9 +96,9 @@ SQL Data Warehouse との統合の詳細については、「[Build integrated s
 [redpoint_global_more]: http://www.redpoint.net/
 [sisense_more]: http://www.sisense.com/
 [snaplogic_more]: http://www.snaplogic.com/
-[sql_sentry_more]: www.sqlsentry.com/solutions/business-analytics/
+[sql_sentry_more]: http://www.sqlsentry.com/solutions/business-analytics/
 [tableau_more]: http://www.tableau.com/
 [targit_more]: http://www.targit.com/en/
 [yellowfin_more]: http://www.yellowfinbi.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -5,7 +5,7 @@
     documentationCenter="java"
     authors="rmcmurray"
     manager="wpickett"
-    editor="jimbe" />
+    editor="" />
 
 <tags
     ms.service="active-directory"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="10/12/2015" 
+    ms.date="01/09/2016" 
     ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
@@ -34,7 +34,7 @@ ACS では、次の機能を使用できます。
 -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
 -   ACS 設定への管理アクセスが可能な管理ポータル。
 
-ACS の詳細については、[Access Control Service 2.0 に関するページ][]を参照してください。
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
 ## 概念
 
@@ -216,7 +216,7 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 
 Azure にデプロイするには、ACS 名前空間の証明書利用者領域と戻り先 URL を変更する必要があります。
 
-1. Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、デプロイするサイトの URL になる**領域**を変更します。**example** を、指定したデプロイの DNS 名に置き換えます。
+1. Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、デプロイするサイトの URL になる**領域**を変更します。**example** を、指定した展開の DNS 名に置き換えます。
 
     ![運用で使用する証明書利用者の領域][relying_party_realm_production]
 
@@ -287,9 +287,9 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [Deploy to Azure]: #deploy_azure
 [Next steps]: #next_steps
 [encutil.exe]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /JA-JP/develop/java/how-to-guides/view-saml-returned-by-acs/
+[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /ja-JP/develop/java/how-to-guides/view-saml-returned-by-acs/
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-[Access Control Service 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
+[アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
 [Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
 [Azure 管理ポータル]: https://manage.windowsazure.com
@@ -310,4 +310,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -14,19 +14,21 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/10/2015"
+	ms.date="01/23/2016"
 	ms.author="heidist"/>
 
 # Azure Search のクエリ
 > [AZURE.SELECTOR]
 - [Overview](search-query-overview.md)
+- [Search Explorer](search-explorer.md)
 - [Fiddler](search-fiddler.md)
-- [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
-埋め込み検索エクスペリエンス用に Azure Search を使用するカスタム ソリューションには、検索クエリを作成して処理のために検索サービスに送るコードが含まれている必要があります。
+埋め込みの検索エクスペリエンス用に Azure Search を統合するカスタム ソリューションには、検索クエリを作成して処理のために検索エンジンに送るコードが含まれている必要があります。
 
-.NET SDK と REST API のどちらかを使用して、クエリを実行するためのメソッドを記述できます。事前のテストまたは探索では、Fiddler や Chrome Postman のようなツールを使用してクエリをサービスに送ることができます。
+.NET SDK と REST API のどちらかを使用して、クエリを実行するためのメソッドを記述できます。事前テストまたは探索のために、Azure ポータルに組み込まれている Search エクスプローラーなどのツールを使用してインデックスに対してクエリを実行することも、または Fiddler を使用して、任意の有効な要求を検索サービスに発行することもできます。
 
-<!---HONumber=Nov15_HO3-->
+コードでクエリを作成する方法を示すサンプルとチュートリアルの一覧は、[ビデオ、チュートリアル、デモ、コード サンプル](search-video-demo-tutorial-list.md)を参照してください。提供されているほぼすべてのサンプルには、Search サービスのクエリを実行するコードが含まれています。
+
+<!---HONumber=AcomDC_0128_2016-->

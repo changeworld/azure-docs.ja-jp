@@ -1,11 +1,11 @@
 <properties
-   pageTitle="Reliable Services API によって提供される WCF ベースの通信スタック"
-   description="この記事では、Reliable Service の API によって提供される WCF ベースの通信スタックについて説明します。"
+   pageTitle="Reliable Services の WCF 通信スタック | Microsoft Azure"
+   description="Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="BharatNarasimman"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,28 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="08/27/2015"
+   ms.date="11/17/2015"
    ms.author="bharatn@microsoft.com"/>
 
 # Reliable Services の WCF ベースの通信スタック
-Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを決定できます。[`CreateCommunicationListener`](../service-fabric-reliable-service-communication.md) メソッドから返される `ICommunicationListener` を介して、選択した通信スタックをプラグインできます。フレームワークでは、WCF ベースの通信を使用したいと考えるサービス作成者に、WCF ベースの通信スタックの実装を提供します。
+Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。[CreateServiceReplicaListeners または CreateServiceInstanceListeners](service-fabric-reliable-service-communication.md) メソッドから返された **ICommunicationListener** を介し、選択した通信スタックをプラグインできます。フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
 
 ## WCF 通信リスナー
-`ICommunicationListener` の WCF 固有の実装は、`WcfCommunicationListener` クラスで提供されています。
+**ICommunicationListener** の WCF 固有の実装は、**Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** クラスによって提供されます。
 
 ```csharp
 
-public WcfCommunicationListener(
-    Type communicationInterfaceType,
-    Type communicationImplementationType);
-
-protected override ICommunicationListener CreateCommunicationListener()
-    {
-        WcfCommunicationListener communicationListener = new WcfCommunicationListener(typeof(ICalculator), this)
+protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+{
+    // TODO: If your service needs to handle user requests, return a list of ServiceReplicaListeners here.
+    return new[] { new ServiceReplicaListener(parameters =>
+        new WcfCommunicationListener(ServiceInitializationParameters,typeof(ICalculator), this)
         {
             //
             // The name of the endpoint configured in the ServiceManifest under the Endpoints section
-            // which identifies the endpoint that the wcf servicehost should listen on.
+            // that identifies the endpoint that the WCF ServiceHost should listen on.
             //
             EndpointResourceName = "ServiceEndpoint",
 
@@ -42,15 +40,14 @@ protected override ICommunicationListener CreateCommunicationListener()
             // Populate the binding information that you want the service to use.
             //
             Binding = this.CreateListenBinding()
-        };
-
-        return communicationListener;
-    }
+        }
+    )};
+}
 
 ```
 
 ## WCF の通信スタック用のクライアントの作成
-WCF を使用するサービスと通信するクライアントを作成するため、フレームワークでは [`ClientCommunicationFactoryBase`](../service-fabric-reliable-service-communication.md) の WCF 固有の実装である `WcfClientCommunicationFactory` を提供しています。
+WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには [ClientCommunicationFactoryBase](service-fabric-reliable-service-communication.md) の WCF 固有の実装である **WcfClientCommunicationFactory** があります。
 
 ```csharp
 
@@ -63,7 +60,7 @@ public WcfCommunicationClientFactory(
 
 ```
 
-WCF 通信チャネルは、`WcfCommunicationClientFactory` によって作成される `WcfCommunicationClient` からアクセスできます。
+WCF 通信チャネルは **WcfCommunicationClientFactory** よって作成された **WcfCommunicationClient** からアクセスできます。
 
 ```csharp
 
@@ -75,7 +72,7 @@ public class WcfCommunicationClient<TChannel> : ICommunicationClient where TChan
 
 ```
 
-クライアント コードでは、`ServicePartitionClient` と共に `WcfCommunicationClientFactory` を使用して、サービス エンドポイントを特定し、サービスと通信を行うことができます。
+クライアント コードでは、**ServicePartitionClient** と共に **WcfCommunicationClientFactory** を使用して、サービス エンドポイントを特定し、サービスと通信できます。
 
 ```csharp
 
@@ -93,11 +90,11 @@ var clientFactory = new WcfCommunicationClientFactory<ICalculator>(
     serviceResolver,// ServicePartitionResolver
     binding,        // Client binding
     null,           // Callback object
-    null);          // donot retry Exception types
+    null);          // do not retry Exception types
 
 
 //
-// Create a client for communicating with the calc service which has been created with
+// Create a client for communicating with the calc service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicationClient<ICalculator>>(
@@ -110,8 +107,11 @@ var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicati
 var result = calculatorServicePartitionClient.InvokeWithRetryAsync(
     client => client.Channel.AddAsync(2, 3)).Result;
 
-
 ```
- 
 
-<!---HONumber=Nov15_HO1-->
+## 次のステップ
+* [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
+
+* [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
+
+<!---HONumber=AcomDC_0128_2016-->

@@ -4,7 +4,7 @@
    services="dns"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -13,16 +13,15 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma"/>
 
 # CLI で Azure DNS の使用を開始する
 
 
-
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-- [Azure Powershell steps](dns-getstarted-create-dnszone.md)
+- [PowerShell](dns-getstarted-create-dnszone.md)
 
 
 ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。
@@ -40,7 +39,7 @@ Azure CLI をインストールします。Windows 用、Linux 用、MAC 用の 
 	Azure network
 
 
->[AZURE.IMPORTANT]DNS コマンドを使用するには、Azure CLI バージョン 0.9.8 以上が必要です。コンピューターに現在インストールされている Azure CLI のバージョンを確認するには、「`azure -v`」と入力します。
+>[AZURE.IMPORTANT] DNS コマンドを使用するには、Azure CLI バージョン 0.9.8 以上が必要です。コンピューターに現在インストールされている Azure CLI のバージョンを確認するには、「`azure -v`」と入力します。
  
 ### 手順 2.
 
@@ -90,7 +89,7 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
     Azure network dns zone create -n contoso.com -g myresourcegroup
 
 
->[AZURE.NOTE]Azure DNS では、ゾーン名を指定する際に末尾に "." を付けないでください。たとえば、"contoso.com." ではなく "contoso.com" とします。
+>[AZURE.NOTE] Azure DNS では、ゾーン名を指定する際に末尾に "." を付けないでください。たとえば、"contoso.com." ではなく "contoso.com" とします。
 
 
 これで、Azure DNS に DNS ゾーンが作成されました。DNS ゾーンを作成すると、次の DNS レコードも作成されます。
@@ -140,7 +139,7 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 	data:
 	info:    network dns-record-set show command OK
 
->[AZURE.NOTE]DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
+>[AZURE.NOTE] DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
 
 最初の DNS ゾーンを作成したところで、nslookup、DIG、**Resolve-DnsName** PowerShell コマンドレットなどの DNS ツールを使用してそのゾーンをテストできます。Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、ゾーンのネーム サーバーの 1 つに DNS クエリを直接送信する必要があります。ゾーンのネーム サーバーは、上の "azure network dns-record-set show" でリスとされるように、NS レコードで与えられます。次のコマンドを実際のゾーンの正しい値に置き換えてください。
 
@@ -170,7 +169,6 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 ## 次のステップ
 
+DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-cli.md)を作成し、インターネット ドメインの名前解決を開始する必要があります。<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)とその DNS ゾーン操作についても学習できます。<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)と [.NET SDK による Azure 操作の自動化](dns-sdk.md)について学習できます。<BR>[Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-[レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/08/2016"
 	ms.author="hangzh;bradsev" />
 
 # Hive クエリを使用して Hive テーブルのデータを探索する 
 
-この**メニュー**は、多様なストレージ環境のデータを探索するツールの使用方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
-
-[AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
-
 ## はじめに
 
 このドキュメントでは、Hive テーブルのデータの探索に使用される Hive スクリプトの例を紹介します。
+
+次の**メニュー**は、ツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+
+[AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 ## 前提条件
 この記事では、以下のことを前提としています。
@@ -80,4 +80,4 @@
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

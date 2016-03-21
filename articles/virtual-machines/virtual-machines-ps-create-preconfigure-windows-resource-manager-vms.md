@@ -19,6 +19,17 @@
 
 # リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する
 
+> [AZURE.SELECTOR]
+- [Portal - Windows](virtual-machines-windows-tutorial.md)
+- [PowerShell](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
+- [PowerShell - Template](virtual-machines-create-windows-powershell-resource-manager-template.md)
+- [Portal - Linux](virtual-machines-linux-tutorial-portal-rm.md)
+- [CLI](virtual-machines-linux-tutorial.md)
+
+<br>
+
+
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-ps-create-preconfigure-windows-vms.md)。
 
 次の手順では、一連の Azure PowerShell のコマンドを作成して Azure の仮想マシンを作成および構成する方法を説明します。この基本的なプロセスを利用すると、簡単な新しい Windows ベースの仮想マシン向けにコマンド セットを作成し、既存のデプロイを拡張できるようになります。また、カスタムの開発環境、テスト環境、IT プロ環境を簡単に構築する複数のコマンド セットを作成することもできます。
@@ -260,7 +271,7 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 	$avName="<availability set name>"
 	Get-AzureRmVMSize -ResourceGroupName $rgName -AvailabilitySetName $avName | Select Name
 
-> [AZURE.NOTE]現在、リソース マネージャーでは、作成時にのみ仮想マシンを可用性セットに追加できます。
+> [AZURE.NOTE] 現在、リソース マネージャーでは、作成時にのみ仮想マシンを可用性セットに追加できます。
 
 VM にデータ ディスクを追加するには、こませに次の行をコピーし、ディスク設定を指定します。
 
@@ -374,14 +385,14 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 ## その他のリソース
 
-[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+[Azure リソース マネージャーにおける Azure Compute、Network、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](../resource-group-overview.md)
 
 [リソース マネージャー テンプレートと PowerShell を使用した Azure Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
-[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template-simple)
+[リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-create-windows-powershell-resource-manager-template.md)
 
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

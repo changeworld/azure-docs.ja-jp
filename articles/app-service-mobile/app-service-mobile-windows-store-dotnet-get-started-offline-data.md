@@ -13,20 +13,18 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/27/2015"
+	ms.date="02/04/2016"
 	ms.author="wesmc"/>
 
 # Windows アプリのオフライン同期を有効にする
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
 
 ## 概要
 
 このチュートリアルでは、Azure モバイル アプリ バックエンドを使用して、Windows 8.1 ストアまたは Phone アプリケーションにオフライン サポートを追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
-このチュートリアルでは、[Windows アプリの作成]に関するチュートリアルの Windows 8.1 アプリ プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このチュートリアルでは、「[Create a Windows app (Windows アプリの作成)]」チュートリアルからの Windows 8.1 アプリ プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
@@ -36,7 +34,7 @@
 
 * Windows 8.1 で実行されている Visual Studio 2013。
 * 「[Create a Windows app (Windows アプリの作成)][create a windows app]」の完了。
-* [Azure Mobile Services SQLite Store バージョン 2.0.0-beta][sqlite store nuget]
+* [Azure Mobile Services SQLite Store][sqlite store nuget]
 * [SQLite for Windows 8.1](http://www.sqlite.org/downloads)
 
 ## オフライン機能をサポートするようにクライアント アプリを更新する
@@ -48,15 +46,11 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
     * **Windows 8.1 Runtime:** [SQLite for Windows 8.1] をインストール。
     * **Windows Phone 8.1**: [SQLite for Windows Phone 8.1] をインストール。
 
-    >[AZURE.NOTE]Internet Explorer を使用している場合は、SQLite をインストールするためにこのリンクをクリックすると、.vsix を .zip ファイルとしてダウンロードするためのプロンプトが表示されることがあります。ファイルに .zip ではなく .vsix 拡張子を付けて、ハード ドライブ上の場所に保存します。エクスプローラーで .vsix ファイルをダブルクリックすると、インストールが実行されます。
+    >[AZURE.NOTE] 次の手順は Windows 10 UAP プロジェクトでも有効ですが、その場合は代わりに [SQLite for Windows 10] をインストールする必要があります。
 
-2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了したプロジェクトを開きます。Windows 8.1 ランタイムおよび Windows Phone 8.1 プロジェクト向けの **WindowsAzure.MobileServices.SQLiteStore** NuGet パッケージをインストールします。
+2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了したプロジェクトを開きます。Windows 8.1 ランタイムおよび Windows Phone 8.1 プロジェクト向けの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージをインストールします。Windows Store 8.1 と Windows Phone 8.1 プロジェクトの両方に NuGet リファレンスを追加します。
 
-    ソリューション エクスプローラーで、ソリューションを右クリックし、**[ソリューション用 Nuget パッケージの管理]** をクリックして NuGet パッケージ マネージャーを実行します。[オンライン] タブで、上部にあるドロップダウン リストから [プレリリースを含める] を選択します。**SQLiteStore** を検索して、`WindowsAzure.MobileServices.SQLiteStore` の 2.0.0-beta をインストールします。
-
-    次に、Windows Store 8.1 と Windows Phone 8.1 プロジェクトの両方に NuGet リファレンスを追加します。
-
-    >[AZURE.NOTE]インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
+    >[AZURE.NOTE] インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
 
 3. ソリューション エクスプローラーで Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの [**参照設定**] を右クリックし、[**拡張**] セクションにある SQLite への参照を追加します。
 
@@ -184,24 +178,21 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 1. 共有プロジェクトで App.xaml.cs を編集します。**MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
 
-         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://your-service.azurewebsites.fail",
-            "https://your-gateway.azurewebsites.fail",
-            ""
-        );
+         public static MobileServiceClient MobileService =
+				new MobileServiceClient("https://your-service.azurewebsites.fail");
+
+	アプリでも認証が使用されている場合、それが原因でサインインは失敗するので注意してください。また、デバイス上で Wi-Fi および移動体通信ネットワークを無効にしてオフライン動作をデモンストレーションすることも、機内モードを使用することもできます。
 
 2. **F5** キーを押し、アプリケーションをビルドして実行します。アプリを起動した際の更新時には同期が失敗することに注意してください。
-3. 新しい todo 項目をいくつか入力し、それぞれについて [**保存**] をクリックします。プッシュはそれぞれ `PushResult.Status=CancelledByNetworkError` で失敗します。新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内にのみ存在します。 
- 
+3. 新しい todo 項目をいくつか入力し、それぞれについて [**保存**] をクリックします。プッシュはそれぞれ `PushResult.Status=CancelledByNetworkError` で失敗します。新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内にのみ存在します。
+
 	`PushResult.Status=CancelledByNetworkError` の例外ダイアログは非表示にできます。そうすれば、クライアント アプリケーションはモバイル アプリ バックエンドに接続されているかのように動作し、作成、読み取り、更新、削除 (CRUD) 操作のすべてをシームレスにサポートします。
 
 4. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
 
-5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
+5. (省略可能) Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** の順に選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。バックエンド データベース内のデータが変更されていないことを確認します。
 
-   Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** の順に選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。
-
-6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。 
+6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
 ## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 
@@ -251,7 +242,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 * [Azure Mobile Apps でのオフライン データ同期]
 
-* [Cloud Cover: Offline Sync in Azure Mobile Services (Cloud Cover: Azure Mobile Services でのオフライン同期)] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 
@@ -271,14 +262,13 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
 [create a windows app]: ../app-service-mobile-windows-store-dotnet-get-started.md
 [Create a Windows app (Windows アプリの作成)]: ../app-service-mobile-windows-store-dotnet-get-started.md
-[Windows アプリの作成]: ../app-service-mobile-windows-store-dotnet-get-started.md
-[sqlite for windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
-[sqlite for windows phone 8.1]: http://go.microsoft.com/fwlink/?LinkId=397953
+[SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
+[SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
+[SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921
 
-[azure mobile app sdk nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/2.0.0-beta
-[sqlite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/2.0.0-beta
- 
-[Cloud Cover: Offline Sync in Azure Mobile Services (Cloud Cover: Azure Mobile Services でのオフライン同期)]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[sqlite store nuget]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
+
+[Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

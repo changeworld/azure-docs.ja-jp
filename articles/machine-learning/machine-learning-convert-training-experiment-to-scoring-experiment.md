@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="02/03/2016"
 	ms.author="garye"/>
 
 # Machine Learning のトレーニング実験から予測実験に変換する
@@ -131,4 +131,4 @@ Web サービスのパラメーターの詳細については、「[Azure Machin
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Marketplace 支払いレポートについて | Microsoft Azure"
-   description="Azure Marketplace 支払いレポートをレビューおよび取り込む方法を学習します。"
+   description="Azure Marketplace 支払いレポートを確認および取り込む方法について説明します。"
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -13,62 +13,103 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/12/2015"
-   ms.author="v-jeana; hascipio"/>
+   ms.date="02/04/2016"
+   ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Azure Marketplace 支払いレポートについて
 
-## 支払いレポートへのアクセス
+## 支払いレポートへのアクセスと表示
 
-一部の支払いレポートは https://publish.windowsazure.com で入手できます。レポートは四半期の終了後 45 日間入手可能であり、返金後に計算されます。
+デベロッパー センターに移行中に、一部の支払いレポートは https://dev.windows.com/ja-JP のデベロッパー センターで利用できる場合がありますが、他の支払いレポートは、https://publish.windowsazure.com の公開ポータルに表示されたままになる可能性があります。
 
-  ![accessingpayoutreport][1]
+支払いレポートは、最新の支払いに関連付けられているすべての Marketplace サービスに対して、**デベロッパー センター**で利用できるようになります。現在、次が対象に含まれています。- VM - B と C プラン - EA で提供されるデータと Dev Services
 
-  1. https://publish.windowsazure.com で発行ポータルに移動します
-  2. **[発行元]** セクションで **[支払いレポート]** をクリックします
-  3. ドロップダウン リストをクリックすると、使用可能なすべての四半期支払いレポートが表示されます。
+支払いレポートは、次の**発行ポータル**に継続して存在します。- Web Direct (レガシ支払いシステムを継続して使用する) で提供されるデータと Dev Services。
 
-## 支払いレポートの読み取り
+レポートは四半期の終了後 45 日間入手可能であり、返金後に計算されます。
 
-四半期ごとの支払額のレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+### デベロッパー センターでの支払いレポートへのアクセス
 
-- 特定の四半期に関連する元帳の項目を探している場合は、ドロップダウン リストからその四半期の支払いレポートを選択します。たとえば、4 月から 6 月 15 日までの元帳項目に関心がある場合、ドロップダウン リストから [4 月から 6 月 15 日] を選択します。
-- 特定の四半期に関連する支払いの詳細を探している場合は、後続の四半期の支払いレポートを選択します。たとえば、4 月から 6 月 15 日までの支払いに関心がある場合、これらの金額は後続の 7 月から 9 月 15 日までの支払いレポートに表示されます。
+1. https://dev.windows.com/ja-JP でデベロッパー センターに移動します。
+2. **[ダッシュボード]** をクリックします。
 
-![readingpayoutreport][2]
+    ![LandingPageDashboardHighlight][1]
+
+3. **[入金状況]** をクリックします。
+
+    ![DashboardPayoutSummary][2]
+
+
+## デベロッパー センターでの支払いレポートの表示
+
+四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+
+- 予約済みの額は、今後の入金サイクルの他に生じる支払いを示します (たとえば、この額は翌月の今後の入金に移動されます)。(事前に顧客の給料が多い場合を除き)、通常、この額は 0 ドルになります。
+- 今後の入金または最近の入金の **[詳細の表示]** リンクをクリックし、これらの支払いに関する注意を確認します。
+- **[入金明細書]** をクリックして、アプリまたは製品の収益の詳細を表示します。
+- **[表示]** リンクをクリックして、個々の明細書を表示します。
+
+    ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
+
+- 個々の明細書の下部にある **[収益の内訳]** フィルターを使用して、存在する場合に複数のアプリまたは製品を表示します。
+
+    ![PayoutSummaryPaymentStatementsFilterControl][4]
+
+
+
+## 発行ポータルでの支払いレポートの表示
+四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+
+1. https://publish.windowsazure.com で発行ポータルに移動します
+2. **[発行元]** セクションで **[支払いレポート]** をクリックします
+3. ドロップダウン リストをクリックすると、使用可能なすべての四半期支払いレポートが表示されます。
+
+    ![accessingpayoutreport][5]
+
+
+### 支払いレポートの読み取り
+
+四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+
+- 特定の四半期に関連する台帳項目を探すには、ドロップダウン リストからその四半期の支払いレポートを選択します。たとえば、2015 年 4 月から 6 月までの台帳項目を確認するには、ドロップダウン リストからその日付範囲を選択します。
+- 特定の四半期に関連する支払いの詳細を探すには、ドロップダウン リストからその四半期の後続の支払いレポートを選択します。たとえば、2015 年 4 月から 6 月までの支払額は、後続の 2015 年 7 月から 9 月までの支払いレポートで確認できます。![readingpayoutreport][6]
 
 - [財務の概要] パネルには、残高、貸方、および借方が分類別に表示されます。
-- 元帳項目は個々のトランザクションを示しています
+- 元帳項目は個々のトランザクションを示します。
 
 ## 定義
 
 **[財務の概要] パネル:**
 
-![financialdefinitions][3]
+![financialdefinitions][7]
 
 **元帳項目:**
 
-![ledgerdefinitions][4]
+![ledgerdefinitions][8]
 
 ## 支払いの質問
 
-支払に関連する質問がある場合は、サポート チームにお問い合わせください。
+支払いに関連する質問がある場合は、サポート チームにお問い合わせください。
 
-![payoutquestions][5]
+![payoutquestions][9]
 
-1. サポート ページに移動します
-2. **[支払い]** を選択します
-3. **[支払いに関連する質問]** を選択します
-4. **[要求の開始]** をクリックします
+1. サポート ページに移動します。
+2. **[支払い]** を選択します。
+3. **[支払いに関連する質問]** を選択します。
+4. **[要求の開始]** をクリックします。
 
-## 次の手順: その他のサポート クエリ
+## 次のステップ
 
-次の問題については、https://portal.azure.com に問題を記録してください
+その他のサポートの問い合わせについては、<https://portal.azure.com> に問題をログしてください。
 
-[1]: ./media/marketplace-publishing-report-payout/accessingpayoutreport.png
-[2]: ./media/marketplace-publishing-report-payout/readingpayoutreport.png
-[3]: ./media/marketplace-publishing-report-payout/financialdefinitions.png
-[4]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
-[5]: ./media/marketplace-publishing-report-payout/payoutquestions.png
+[1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
+[2]: ./media/marketplace-publishing-report-payout/Dashboard-PayoutSummary.png
+[3]: ./media/marketplace-publishing-report-payout/PayoutSummary-UpcomingOrMostRecentPaymentLinksSingleStatementLink.png
+[4]: ./media/marketplace-publishing-report-payout/PayoutSummary-PaymentStatements-SingleStatement-FilterControl.png
+[5]: ./media/marketplace-publishing-report-payout/accessingpayoutreport.png
+[6]: ./media/marketplace-publishing-report-payout/readingpayoutreport.png
+[7]: ./media/marketplace-publishing-report-payout/financialdefinitions.png
+[8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
+[9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

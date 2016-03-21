@@ -35,7 +35,7 @@
 
 また、電子メールを送信するには、SendGrid のユーザー名とパスワードを取得している必要があります。SendGrid を利用し始めるには、「[Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
-さらに、[Windows Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Windows Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
+さらに、[Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## 電子メール送信用の Web フォームの作成
 
@@ -213,7 +213,7 @@
 
 Azure 上で Java から SendGrid を使用する方法を示すために、このコードが用意されています。運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。次に例を示します。
 
-* Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。Java で Azure ストレージ BLOB を使用する方法の詳細については、[Java から BLOB ストレージ サービスを使用する方法に関するページ](http://www.windowsazure.com/develop/java/how-to-guides/blob-storage/)を参照してください。Java で SQL データベースを使用する方法の詳細については、[Java での SQL データベースの使用に関するページ](http://www.windowsazure.com/develop/java/how-to-guides/using-sql-azure-in-java/)を参照してください。
+* Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。Java で Azure ストレージ BLOB を使用する方法の詳細については、[Java から BLOB ストレージ サービスを使用する方法に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)を参照してください。Java で SQL データベースを使用する方法の詳細については、[Java での SQL データベースの使用に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/using-sql-azure-in-java/)を参照してください。
 * `RoleEnvironment.getConfigurationSettings` を使用して、SendGrid のユーザー名とパスワードを Web フォームからではなく、展開の構成設定から取得することもできます。`RoleEnvironment` クラスについては、「[JSP での Azure サービス ランタイム ライブラリの使用に関するページ](http://msdn.microsoft.com/library/windowsazure/hh690948)」と「Azure サービス ランタイム パッケージのドキュメント<http://dl.windowsazure.com/javadoc>」を参照してください。
 * Java での SendGrid の使用については、「[Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
@@ -221,4 +221,4 @@ Azure 上で Java から SendGrid を使用する方法を示すために、こ�
 [emailsent]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailSent.jpg
 [emailresult]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaResult.jpg
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

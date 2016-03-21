@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。" 
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
-	editor=""/>
+<properties
+	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure"
+	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。"
+	services="storage"
+	documentationCenter="nodejs"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="mwasson"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="02/17/2016"
+	ms.author="micurd"/>
 
 
 # Node.js から Queue ストレージを使用する方法
@@ -31,7 +31,7 @@
 
 ## Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションの作成手順については、「[Azure App Service での Node.js Web アプリの作成]」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -66,7 +66,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ]」を参照してください。
 
 ## 方法: キューを作成する
 
@@ -123,7 +123,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 `result` にはメッセージが含まれます。
 
-> [AZURE.NOTE]キューにメッセージがないときに **peekMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
+> [AZURE.NOTE] キューにメッセージがないときに **peekMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
 ## 方法: 次のメッセージをデキューする
 
@@ -147,9 +147,10 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-> [AZURE.NOTE]既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で `options.visibilityTimeout` を使用すれば、別の値を指定できます。
+> [AZURE.NOTE] 既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で `options.visibilityTimeout` を使用すれば、別の値を指定できます。
 
-> [AZURE.NOTE]キューにメッセージがないときに **getMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
+> [AZURE.NOTE]
+キューにメッセージがないときに **getMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
 ## 方法: キューに配置されたメッセージの内容を変更する
 
@@ -237,7 +238,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	var expiryDate = new Date(startDate);
 	expiryDate.setMinutes(startDate.getMinutes() + 100);
 	startDate.setMinutes(startDate.getMinutes() - 100);
-	
+
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
 	    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
@@ -309,28 +310,25 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Azure のデータの格納とアクセス][]に関するページを参照してください。
--   [Azure Storage チームのブログ][]
+-   [Azure のストレージ チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../web-sites-nodejs-develop-deploy-mac.md
-  [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-  [Azure Table サービスを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+  [Azure Portal]: https://portal.azure.com
+  [Azure App Service での Node.js Web アプリの作成]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+  [Node.js Cloud Service with Storage]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [Azure Table サービスを使用する Node.js Web アプリ]: ../app-service-web/storage-nodejs-use-table-storage-web-site.md
 
-  
+
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
   [plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png
   [quick-create-storage]: ./media/storage-nodejs-how-to-use-queues/quick-storage.png
-  
-  
-  
-  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-  [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
- [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
- 
 
-<!---HONumber=Oct15_HO3-->
+
+
+  [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
+
+<!----HONumber=AcomDC_0218_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/02/2015" 
+	ms.date="01/07/2016" 
 	ms.author="genemi"/>
 
 
@@ -30,9 +30,9 @@
 
 
 - 「[プログラムによる Azure SQL Database への接続のガイドライン](http://msdn.microsoft.com/library/azure/ee336282.aspx)」 - 以下の話題が含まれています。
- - [ポートとファイアウォール](sql-database-configure-firewall-settings.md/)
+ - [ポートとファイアウォール](sql-database-configure-firewall-settings.md)
  - Connection strings
-- 「[Azure SQL Database のリソース管理](https://msdn.microsoft.com/library/azure/dn338083.aspx)」 - 以下の話題が含まれています。
+- 「[Azure SQL Database のリソース管理](http://msdn.microsoft.com/library/azure/dn338083.aspx)」 - 以下の話題が含まれています。
  - リソース ガバナンス
  - 制限の適用
  - 調整
@@ -45,7 +45,7 @@
 
 - Azure SQL Database で使用できない Windows 認証ではなく、Azure SQL Database 認証を使用します。
 - 既定の*マスター* データベースではなく、特定のデータベースを明示的に指定してください。
- - Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して、別のデータベースに切り替えることはできません。
+ - Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。
 
 
 ### 包含ユーザー
@@ -53,9 +53,9 @@
 
 SQL Database へのユーザー追加には、以下の選択肢があります。
 
-- **master** データベースに*ログイン*とパスワードを追加し、対応する*ユーザー*を、同じサーバー上の 1 つ以上の他のデータベースに追加する。
+- **マスター**データベースに*ログイン*とパスワードを追加し、それから同じサーバーの 1 つ以上の他のデータベースに対応する*ユーザー*を追加する。
 
-- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**master** 内のどの*ログイン*にもリンクしないようにする。
+- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**マスター**へのいかなる*ログイン*にもリンクしないようにする。
 
 
 包含ユーザーのアプローチには以下のような長所と短所があります。
@@ -85,7 +85,7 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 - クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000-11999 と 14000-14999 を開く必要があります。詳細については、[ここ](sql-database-develop-direct-route-ports-adonet-v12.md)をクリックしてください。
 
 
-- *一時的なエラー*を処理するには、Azure SQL Database と対話するクライアント プログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加します。
+- *一時的エラー*を処理するには、Azure SQL Database と対話するクライアントのプログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
 
 
 ### 接続プール
@@ -128,7 +128,9 @@ Azure システムには、SQL Database サービス内で負荷の大きいワ�
 ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 
-再試行ロジックを示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
+再試行ロジックを示すコード サンプルについては、次の記事をご覧ください。
+
+- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
 
 ### 一時障害のエラー番号
@@ -138,11 +140,17 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 
 
 - [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)
- - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時的なエラーのリストが示されています。
+ - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
  - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-詳細については、「[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」および「[Azure SQL Database への接続の問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」をご覧ください。
+詳細については、以下を参照してください。
+
+- [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
+
+<!--  (per Penny Lee, 2016/01/07.  MightyPen==GeneMi)
+- [Troubleshoot connection problems to Azure SQL Database](http://support.microsoft.com/kb/2980233/)
+-->
 
 
 <a id="e-technologies" name="e-technologies"></a>
@@ -156,7 +164,7 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 Windows、Linux、および Mac OS X で実行するクライアントに使用できるさまざまなコード サンプルがあります。
 
 
-**一般的なサンプル:** PHP、Python、Node.js、.NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
+**一般的なサンプル:** PHP、Python、Node.js、および .NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
 
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
@@ -169,4 +177,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

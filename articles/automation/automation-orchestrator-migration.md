@@ -12,39 +12,39 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/17/2015"
+   ms.date="02/09/2016"
    ms.author="bwren" />
 
 
-# Orchestrator から Azure Automation へ移行する
+# Orchestrator から Azure Automation (ベータ版) へ移行する
 
-Azure Automation の Runbook は Windows PowerShell ワークフローに基づいていますが、[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいています。Azure Automation での[グラフィカル Runbook](automation-runbook-types#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
+[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。Azure Automation での[グラフィカル Runbook](automation-runbook-types#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
 
-[System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) には、Runbook を Orchestrator から Azure Automation に変換するために役立つツールが含まれています。Runbook 自体を変換するだけでなく、Windows PowerShell コマンドレットとモジュールを統合するために使用する、活動が含まれる統合パックも変換する必要があります。
+[System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) には、Runbook を Orchestrator から Azure Automation に変換するために役立つツールが含まれています。Runbook 自体を変換するだけでなく、Runbook で使用される活動を含む統合パックを Windows PowerShell コマンドレットを含む統合モジュールに変換する必要もあります。
 
 Orchestrator Runbook を Azure Automation に変換するための基本的なプロセスを次に示します。これらの各手順の詳細については、以降のセクションで詳しく説明します。
 
 1.  この記事で説明されているツールとモジュールが含まれる [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) をダウンロードします。
-2.  [標準活動モジュール](#standard-activities-module)を Azure Automation にインストールします。このモジュールには、変換後の Runbook が使用する可能性がある、変換されたバージョンの Orchestrator 標準活動が含まれます。
-2.  ご使用の Runbook で使用する統合パック用に、[System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)を Azure Automation にインストールします。
-3.  [統合パック コンバーター](#integration-pack-converter)を使用してカスタムとサード パーティ製の統合パックを変換し、Azure Automation にインストールします。
-4.  手動で、Orchestrator 内のグローバル アセットを Azure Automation に再作成します。この移行を実行する自動化された方式はありません。
-5.  [Runbook コンバーター](#runbook-converter-coming-soon) (近日対応予定) を使用して Orchestrator Runbook を変換し、Azure Automation にインストールします。
-6.  ローカル データセンターで、変換後の Runbook を実行するように [Hybrid Runbook Worker](#hybrid-runbook-worker) を構成します。
+2.  [標準活動モジュール](#standard-activities-module)を Azure Automation にインポートします。このモジュールには、変換後の Runbook が使用する可能性がある、変換されたバージョンの Orchestrator 標準活動が含まれます。
+3.  System Center にアクセスする Runbook で使用する統合パック用に、[System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)を Azure Automation にインポートします。
+4.  [統合パック コンバーター](#integration-pack-converter)を使用してカスタムとサード パーティ製の統合パックを変換し、Azure Automation にインポートします。
+5.  [Runbook コンバーター](#runbook-converter)を使用して Orchestrator Runbook を変換し、Azure Automation にインストールします。
+6.  Azure Automation で必要な Orchestrator のアセットを手動で作成します。Runbook コンバーターではこれらのリソースが変換されません。
+7.  ローカル データ センターで、ローカル リソースにアクセスする変換後の Runbook を実行するように [Hybrid Runbook Worker](#hybrid-runbook-worker) を構成します。
 
 ## Service Management Automation
 
-[Service Management Automation](http://technet.microsoft.com/library/dn469260.aspx) (SMA) は Orchestrator などのローカル データセンターに Runbook を格納して実行します。使用する統合モジュールは Azure Automation と同じです。使用可能な場合には、[Runbook コンバーター](#runbook-converter-coming-soon)が、SMA ではサポートされていないグラフィカル Runbook に Orchestrator Runbook を変換します。SMA に[標準活動モジュール](#standard-activities-module)と [System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)をインストールできますが、[ご利用の Runbook の再作成](http://technet.microsoft.com/library/dn469262.aspx)を手動で実行する必要があります。
+[Service Management Automation](http://technet.microsoft.com/library/dn469260.aspx) (SMA) は Orchestrator などのローカル データセンターに Runbook を格納して実行します。使用する統合モジュールは Azure Automation と同じです。[Runbook コンバーター](#runbook-converter)は、SMA ではサポートされていないグラフィカル Runbook に Orchestrator Runbook を変換します。SMA に[標準活動モジュール](#standard-activities-module)と [System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)をインストールできますが、[ご利用の Runbook の再作成](http://technet.microsoft.com/library/dn469262.aspx)を手動で実行する必要があります。
 
-## ハイブリッド Runbook Worker
+## Hybrid Runbook Worker
 
-Orchestrator の Runbook はデータベース サーバー上に格納され、Runbook サーバーで実行されます。どちらのサーバーもローカル データセンター上にあります。Azure Automation の Runbook は Azure Cloud に格納され、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用してローカル データセンターで実行できます。これが、Orchestrator から変換された Runbook を実行する通常の方法です。これらの Runbook はローカル サーバー上で実行されるように設計されているためです。
+Orchestrator の Runbook はデータベース サーバー上に格納され、Runbook サーバーで実行されます。どちらのサーバーもローカル データセンター上にあります。Azure Automation の Runbook は Azure クラウドに格納され、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用してローカル データセンターで実行できます。これが、Orchestrator から変換された Runbook を実行する通常の方法です。これらの Runbook はローカル サーバー上で実行されるように設計されているためです。
 
 ## 統合パック コンバーター
 
-統合パック コンバーターは、Orchestrator Integration Toolkit (OIT) を使用して作成された統合パックを、Windows PowerShell に基づく統合モジュールに変換します。それらは、Azure Automation または Service Management Automation にインポートできます。
+統合パック コンバーターは、[Orchestrator Integration Toolkit (OIT)](http://technet.microsoft.com/library/hh855853.aspx) を使用して作成された統合パックを、Windows PowerShell に基づく統合モジュールに変換します。この統合モジュールは、Azure Automation または Service Management Automation にインポートできます。
 
-統合パック コンバーターを実行すると、ウィザードが表示され、統合パック (.oip) ファイルを選択できます。次に、ウィザードに、その統合パックに含まれる活動が一覧表示され、移行する活動を選択できます。ウィザードを完了すると、元の統合パックの各活動に対応するコマンドレットが含まれるモジュールが作成されます。
+統合パック コンバーターを実行すると、ウィザードが表示され、統合パック (.oip) ファイルを選択できます。次に、ウィザードに、その統合パックに含まれる活動が一覧表示され、移行する活動を選択できます。ウィザードを完了すると、元の統合パックの各活動に対応するコマンドレットを含む統合モジュールが作成されます。
 
 
 ### パラメーター
@@ -53,11 +53,11 @@ Orchestrator の Runbook はデータベース サーバー上に格納され、
 
 ### モニター活動
 
-Orchestrator のモニター Runbook では、まず[モニター活動](http://technet.microsoft.com/library/hh403827.aspx)から開始され、特定のイベントが呼び出されるのを待機しながら継続的に実行されます。Azure Automation ではモニター Runbook がサポートされていないため、統合パックのモニター活動は変換されません。代わりに、プレース ホルダー コマンドレットが、モニター活動用に統合モジュールに作成されます。このコマンドレットには機能がありませんが、それを使用する変換後 Runbook がインストール可能になります。この Runbook は、Azure Automation で実行することはできませんが、インストールが可能なので、ユーザーが変更できます。
+Orchestrator のモニター Runbook では、まず[モニター活動](http://technet.microsoft.com/library/hh403827.aspx)から開始され、特定のイベントが呼び出されるのを待機しながら継続的に実行されます。Azure Automation ではモニター Runbook がサポートされていないため、統合パックのモニター活動は変換されません。代わりに、プレース ホルダー コマンドレットが、モニター活動用に統合モジュールに作成されます。このコマンドレットには機能がありませんが、それを使用する変換後 Runbook がインストール可能になります。この Runbook は、Azure Automation で実行することはできませんが、インストールが可能なので変更できます。
 
 ### 変換できない統合パック
 
-OIT によって作成されていない統合パック (Microsoft によって作成された一部の統合パックも含まれます) は、このツールを使用して変換できません。Microsoft 提供の統合パックは統合モジュールに変換されているので、Azure Automation または Service Management Automation でインストールが可能です。
+OIT を使用して作成されていない統合パックは、統合パック コンバーターを使用して変換できません。現在このツールを使用して変換できない、Microsoft が提供する統合パックもいくつかあります。このような統合パックを変換したバージョンは、[こちらからダウンロード](#system-center-orchestrator-integration-modules)できるため、Azure Automation または Service Management Automation でインストールできます。
 
 
 ## 標準活動モジュール
@@ -67,11 +67,90 @@ Orchestrator には、統合パックには含まれていないものの多数�
 標準活動モジュールのコマンドレットは、変換された Runbook をサポートするだけでなく、Orchestrator に精通しているユーザーが Azure Automation で新しい Runbook をビルドするために使用できます。標準活動すべての機能はコマンドレットで実行できますが、動作方法が異なる場合があります。変換後の標準活動モジュール内のコマンドレットは、対応する活動と同じように動作し、同じパラメーターを使用します。これによって、既存の Orchestrator Runbook の作成者は Azure Automation の Runbook に移行するのが容易になります。
 
 ## System Center Orchestrator 統合モジュール
-Microsoft は、System Center のコンポーネントと他の製品を自動化する Runbook をビルドするための[統合パック](http://technet.microsoft.com/library/hh295851.aspx)を提供しています。現在、[TechNet](http://www.microsoft.com/download/details.aspx?id=39622) からこうした統合パックの一部をダウンロードする場合、統合パック コンバーターで変換できません。これは、System Center Orchestrator Migration Toolkit の RC リリースで修正予定の既知の問題が原因です。[System Center Orchestrator 統合モジュール](http://www.microsoft.com/download/details.aspx?id=47324&WT.mc_id=rss_alldownloads_all)には、変換されたバージョンの統合パックが含まれ、今回のリリースより前に Azure Automation と Service Management Automation にインポートできるようになっています。
 
-## Runbook コンバーター (近日対応予定)
+Microsoft は、System Center のコンポーネントと他の製品を自動化する Runbook をビルドするための[統合パック](http://technet.microsoft.com/library/hh295851.aspx)を提供しています。現在、これらの統合パックの一部は OIT に基づいていますが、既知の問題により、統合モジュールに変換できません。[System Center Orchestrator 統合モジュール](https://www.microsoft.com/download/details.aspx?id=49555)には、変換されたバージョンの統合パックが含まれ、Azure Automation と Service Management Automation にインポートできるようになっています。
 
-このツールは、Orchestrator Runbook を、Azure Automations にインポートできる[グラフィカル Runbook](automation-runbook-types.md#graph-runbooks) に変換します。このツールの詳細については、使用可能になった段階でこちらでお知らせします。
+このツールの RTM バージョンにより、統合パック コンバーターを使用して変換できる、OIT に基づく統合パックの更新版が公開されます。OIT に基づいていない統合パックの活動を使用する Runbook を変換する場合に役立つガイダンスも提供されます。
+
+## Runbook コンバーター
+
+Runbook コンバーターは、Orchestrator Runbook を、Azure Automation にインポートできる[グラフィカル Runbook](automation-runbook-types.md#graph-runbooks) に変換します。
+
+Runbook コンバーターは、変換を実行する **ConvertFrom-SCORunbook** と呼ばれるコマンドレットを含む PowerShell モジュールとして実装されます。ツールをインストールすると、このコマンドレットを読み込む PowerShell セッションへのショートカットが作成されます。
+
+Orchestrator Runbook を変換して Azure Automation にインポートするための基本的なプロセスを次に示します。以降のセクションでは、ツールの使用と変換後の Runbook の操作についてさらに詳しく説明します。
+
+1. Orchestrator から 1 つ以上の Runbook をエクスポートします。
+2. Runbook のすべての活動の統合モジュールを取得します。
+3. エクスポートされたファイルで Orchestrator Runbook を変換します。
+4. ログの情報を見て、変換を確認して、必要な手動のタスクを判断します。
+4. 変換後の Runbook を Azure Automation にインポートします。
+5. Azure Automation で必要なアセットを作成します。
+6. Azure Automation の Runbook を編集して必要な活動を変更します。
+
+### Runbook コンバーターの使用
+
+**ConvertFrom-SCORunbook** の構文は次のとおりです。
+
+	ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string> 
+
+- RunbookPath - 変換する Runbook を含むエクスポート ファイルへのパス。
+- Module - Runbook の活動を含む統合モジュールのコンマ区切りリスト。
+- OutputFolder - 変換後のグラフィカル Runbook を作成するフォルダーへのパス。 
+
+
+次の例のコマンドは、**MyRunbooks.ois\_export** というエクスポート ファイルの Runbook を変換します。これらの Runbook では、Active Directory と Data Protection Manager の統合パックが使用されています。
+
+	ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks" 
+
+
+### ログ ファイル
+
+Runbook コンバーターでは、変換後の Runbook と同じ場所に次のログ ファイルが作成されます。ファイルが既に存在する場合は、最後に行われた変換の情報で上書きされます。
+
+| ファイル | 目次 |
+|:---|:---|
+| Runbook Converter - Progress.log | 変換が正常に完了した各活動の情報や、変換されなかった各活動の警告など、変換の詳細な手順。 |
+| Runbook Converter - Summary.log | 警告や、実行が必要なフォローアップ タスク (例: 変換後の Runbook に必要な変数の作成) など、最後に行われた変換の概要。 |
+
+### Orchestrator からの Runbook のエクスポート
+
+Runbook コンバーターは、1 つ以上の Runbook が含まれる、Orchestrator からのエクスポート ファイルを扱います。これにより、各 Orchestrator Runbook に対応する Azure Automation Runbook がエクスポート ファイルに作成されます。
+
+Orchestrator から Runbook をエクスポートするには、Runbook Designer で Runbook の名前を右クリックして **[エクスポート]** を選択します。フォルダー内のすべての Runbook をエクスポートするには、フォルダーの名前を右クリックして **[エクスポート]** をクリックします。
+
+
+### Runbook アクティビティ
+
+Runbook コンバーターは、Orchestrator Runbook の各活動を Azure Automation の対応する活動に変換します。変換できない活動の場合は、プレースホルダー活動が警告テキストと共に Runbook に作成されます。変換された Runbook を Azure Automation にインポートした後、これらの活動のいずれかを、必要な機能を実行する有効な活動に置き換える必要があります。
+
+[Standard Activities モジュール](#standard-activities-module)の Orchestrator 活動は変換されます。ただし、Orchestrator 標準活動には、このモジュールに含まれていないため変換されないものもあります。たとえば、**プラットフォーム イベントの送信**は、このイベントが Orchestrator に固有であるため、Azure Automation に対応する活動はありません。
+
+[モニター活動](https://technet.microsoft.com/library/hh403827.aspx)は、Azure Automation に相当する活動がないため、変換されません。[変換後の統合パック](#integration-pack-converter)のモニター活動は例外で、プレースホルダー活動に変換されます。
+
+**modules** パラメーターを使用して統合モジュールへのパスを指定すると、[変換後の統合パック](#integration-pack-converter)の活動が変換されます。System Center 統合パックの場合、[System Center Orchestrator 統合モジュール](#system-center-orchestrator-integration-modules)を使用できます。
+
+
+### Orchestrator のリソース
+
+Runbook コンバーターで変換されるのは Runbook のみで、カウンター、変数、接続など、その他の Orchestrator リソースは変換されません。Azure Automation では、カウンターがサポートされていません。変数と接続はサポートされていますが、手動で作成する必要があります。ログ ファイルでは、Runbook にこのようなリソースが必要かどうかが示され、変換後の Runbook が正常に動作するために Azure Automation に作成する必要がある対応リソースが指定されます。
+
+たとえば、Runbook では、変数を使用して、活動の特定の値を設定することがあります。変換後の Runbook は、活動を変換し、Orchestrator の変数と同じ名前の変数アセットを Azure Automation で指定します。これは、変換後に作成される **Runbook Converter - Summary.log** ファイルに記録されます。Runbook を使用する前に、この変数アセットを Azure Automation で手動で作成する必要があります。
+
+ 
+### 入力パラメーター
+
+Orchestrator の Runbook は、**データの初期化**活動で入力パラメーターを受け取ります。変換対象の Runbook にこのアクティビティが含まれている場合、Azure Automation Runbook の[入力パラメーター](automation-graphical-authoring-intro.md#runbook-input-and-output)は、アクティビティのパラメーターごとに作成されます。変換後の Runbook では、各パラメーターを取得して返す[ワークフロー スクリプト コントロール](automation-graphical-authoring-intro.md#activities)活動が作成されます。入力パラメーターを使用する、Runbook のすべての活動は、この活動からの出力を参照します。
+
+この方法が使用される理由は、Orchestrator Runbook の機能を最もうまく反映するためです。新しいグラフィカル Runbook の活動は、Runbook の入力データ ソースを使用して入力パラメーターを直接参照します。
+
+
+### Runbook 活動の呼び出し
+
+Orchestrator の Runbook は、**Runbook の呼び出し**活動を使用してその他の Runbook を開始します。変換対象となる Runbook にこの活動が含まれていて、**[実行が完了するまで待つ]** オプションが設定されている場合は、変換後の Runbook にこの活動用の Runbook 活動が作成されます。**[実行が完了するまで待つ]** オプションが設定されていない場合は、**Start-AzureAutomationRunbook** を使用して Runbook を開始するワークフロー スクリプト活動が作成されます。変換後の Runbook を Azure Automation にインポートした後、活動で指定された情報を使用して、この活動を変更する必要があります。
+
+
+
 
 ## 関連記事:
 
@@ -81,4 +160,4 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

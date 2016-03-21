@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/21/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 
@@ -58,7 +58,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 Office 365 の要件の詳細については、次のリソースを確認します。
 
 - [Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune)
-- [Office 365 ネットワーク トラフィック管理](https://msft.spoppe.com/teams/cpub/teams/IW_Admin/modsquad/_layouts/15/WopiFrame.aspx?sourcedoc=%7b23f09224-0668-4476-8627-aaff30931439%7d&action=edit&source=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fteams%2Fcpub%2Fteams%2FIW%5FAdmin%2Fmodsquad%2FSitePages%2FHome%2Easpx)
+- [Office 365 ネットワーク トラフィック管理](https://support.office.com/article/Office-365-network-traffic-management-e1da26c6-2d39-4379-af6f-4da213218408)
 - QoS の要件と構成については、[ExpressRoute サービス品質 (QoS) 要求](expressroute-qos.md)に関する記事を参照してください。あなたの VPN にサービスのクラスを複数提供するかどうかを接続プロバイダーにお問い合わせください。 
 
 ## 次のステップ
@@ -71,4 +71,4 @@ Office 365 の要件の詳細については、次のリソースを確認しま
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

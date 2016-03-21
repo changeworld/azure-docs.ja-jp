@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="01/04/2016"
 	ms.author="zarizvi"/>
 	
 # サポートされている移動の構成
@@ -26,4 +26,4 @@ Azure Web アプリ リソースを [ARM Move Resources Api](../resource-group-m
 	* 注: このシナリオでは、変換先のリソース グループにすべてのMicrosoft.Web リソースを含めることはできません。
 * 個々の Web アプリをそれぞれの異なるリソース グループに移動しますが、この時 Web アプリはまだ現行のアプリのサービス プランでホストされています (アプリのサービス プランは古いリソース グループにとどまっています)。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0107_2016-->

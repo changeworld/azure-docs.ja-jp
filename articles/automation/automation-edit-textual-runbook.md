@@ -3,7 +3,7 @@
 	description="この記事では、テキスト エディターを使用して Azure Automation で PowerShell Runbook および PowerShell ワークフロー Runbook の処理を行うためのさまざまな手順について説明します。"
 	services="automation"
 	documentationCenter=""
-	authors="bwren"
+	authors="mgoedtel"
 	manager="stevenka"
 	editor="tysonn" />
 <tags 
@@ -12,8 +12,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="09/23/2015"
-	ms.author="bwren" />
+	ms.date="02/23/2016"
+	ms.author="magoedte;bwren" />
 
 # Azure Automation でのテキスト形式の Runbook の編集
 
@@ -21,11 +21,11 @@ Azure Automation のテキスト エディターを使用して、[PowerShell Ru
 
 このテキスト エディターには、アクティビティ、資産、および子 Runbook のコードを Runbook に挿入するための機能が含まれます。コードを自分で入力しなくても、使用可能なリソースの一覧から選択して、適切なコードを Runbook に挿入できます。
 
-Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバージョンがあります。ワークフローのドラフト バージョンを編集し、実行できるように発行します。発行されたバージョンを編集することはできません。詳細については、「[Runbook の発行](automation-creating-importing-runbook.md#publishing-a-runbook)」を参照してください。
+Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバージョンがあります。Runbook のドラフト バージョンを編集し、実行できるように発行します。発行されたバージョンを編集することはできません。詳細については、「[Runbook の発行](automation-creating-importing-runbook.md#publishing-a-runbook)」を参照してください。
 
 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) 使用する場合は、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-## Azure プレビュー ポータルで Runbook を編集するには
+## Azure ポータルで Runbook を編集するには
 
 編集するためにテキスト エディターで Runbook を開くには、次の手順を使用します。
 
@@ -58,7 +58,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 2. テキスト エディターのキャンバスで、子 Runbook のコードを配置する場所にカーソルを置きます。
 3. ライブラリ コントロールで **[アセット]** ノードを展開します。 
 4. 必要な資産の種類のノードを展開します。
-3. 挿入する資産を右クリックして、**[キャンバスに追加]** を選択します。[変数資産](variable-assets.md)の場合、変数を取得するのか設定するのかに応じて、**["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
+3. 挿入する資産を右クリックして、**[キャンバスに追加]** を選択します。[変数資産](automation-variables.md)の場合、変数を取得するのか設定するのかに応じて、**["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
 4. 資産のコードが Runbook に挿入されます。
 
 
@@ -107,7 +107,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 
 ## Windows PowerShell を使用して Azure Automation の Runbook を編集するには
 
-Windows PowerShell を使用して Runbook を編集するには、任意のエディターを使用してワークフローを編集し、.ps1 ファイルに保存します。[Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) コマンドレットを使用して Runbook の内容を取得した後、[Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) コマンドレットを使用して既存のドラフト ワークフローを変更したものに置き換えることができます。
+Windows PowerShell を使用して Runbook を編集するには、任意のエディターを使用して、.ps1 ファイルに保存します。[Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) コマンドレットを使用して Runbook の内容を取得した後、[Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) コマンドレットを使用して既存のドラフト Runbook を変更したものに置き換えることができます。
 
 ### Windows PowerShell を使用して Runbook の内容を取得するには
 
@@ -124,7 +124,7 @@ Windows PowerShell を使用して Runbook を編集するには、任意のエ�
 
 ### Windows PowerShell を使用して Runbook の内容を変更するには
 
-次のサンプル コマンドでは、Runbook の既存の内容を、ワークフローを含むスクリプト ファイルの内容に置き換える方法を示します。これは「[Windows PowerShell でスクリプト ファイルから Runbook をインポートするには](../automation-creating-or-importing-a-runbook#ImportRunbookScriptPS)」と同じサンプル プロシージャであることに注意してください。
+次のサンプル コマンドでは、Runbook の既存の内容を、スクリプト ファイルの内容に置き換える方法を示します。これは「[Windows PowerShell でスクリプト ファイルから Runbook をインポートするには](../automation-creating-or-importing-a-runbook#ImportRunbookScriptPS)」と同じサンプル プロシージャであることに注意してください。
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -135,7 +135,7 @@ Windows PowerShell を使用して Runbook を編集するには、任意のエ�
 
 ## 関連記事:
 
-- [Azure Automation での Runbook の作成またはインポート](automation-creatnig-importing-runbook.md)
+- [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 - [証明書](automation-certificates.md)
@@ -144,4 +144,4 @@ Windows PowerShell を使用して Runbook を編集するには、任意のエ�
 - [スケジュール](automation-schedules.md)
 - [変数](automation-variables.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

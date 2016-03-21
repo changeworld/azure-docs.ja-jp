@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/01/2016"
 	ms.author="piyushjo" />
 
 
@@ -24,7 +24,7 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 [SDK コンテンツ](mobile-engagement-android-sdk-content.md)について表示するにはここをクリックします。
 
 ##統合手順
-1. ここから開始します: [Mobile Engagement を Android アプリに統合する方法](mobile-engagement-android-integrate-engagement.md)
+1. ここから開始: [Mobile Engagement を Android アプリに統合する方法](mobile-engagement-android-integrate-engagement.md)
 
 2. 通知: [リーチ (通知) を Android アプリに統合する方法](mobile-engagement-android-integrate-engagement-reach.md)
 	1. Google Cloud Messaging (GCM): [GCM を Mobile Engagement に統合する方法](mobile-engagement-android-gcm-integrate.md)
@@ -35,9 +35,9 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 
 ##リリース ノート
 
-##4\.1.1 (11/04/2015)
+##4\.1.5 (02/01/2016)
 
-安定性が向上しました。
+- 安定性が向上しました。
 
 ##4\.1.0 (2015 年 8 月 25 日)
 
@@ -50,6 +50,6 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 
 ##アップグレードの手順
 
-SDK の旧バージョンをアプリケーションに既に統合している場合は、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
+SDK の旧バージョンをアプリケーションに既に統合している場合、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0204_2016-->

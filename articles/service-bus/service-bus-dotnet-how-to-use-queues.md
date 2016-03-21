@@ -9,11 +9,11 @@
 
 <tags
     ms.service="service-bus"
-    ms.workload="tbd"
+    ms.workload="na"
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="10/07/2015"
+    ms.date="01/26/2016"
     ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -26,13 +26,9 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## Service Bus を使用するためのアプリケーションの構成
-
-Service Bus を使用するアプリケーションを作成するときには、Service Bus アセンブリに対する参照を追加して、対応する名前空間を含める必要があります。
-
 ## Service Bus NuGet パッケージの追加
 
-Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+[Service Bus **NuGet** パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -54,7 +50,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 ### Cloud Services を使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure ポータルから構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -82,7 +78,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 </ServiceConfiguration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
 ### Websites または Azure Virtual Machines を使用する場合の接続文字列の構成
 
@@ -97,7 +93,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 </configuration>
 ```
 
-前のセクションで説明したように、Azure ポータルから取得した SAS 名とキー値を使用します。
+前のセクションで説明したように、Azure クラシック ポータルから取得した SAS 名とキー値を使用します。
 
 ## キューを作成する
 
@@ -146,7 +142,7 @@ if (!namespaceManager.QueueExists("TestQueue"))
 }
 ```
 
-> [AZURE.NOTE]指定した名前のキューがサービス名前空間に既に存在するかどうかを確認するには、[NamespaceManager][] オブジェクトで [QueueExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用できます。
+> [AZURE.NOTE] 指定した名前のキューがサービス名前空間に既に存在するかどうかを確認するには、[NamespaceManager][] オブジェクトで [QueueExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用できます。
 
 ## メッセージをキューに送信する
 
@@ -183,7 +179,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus キューでは、[最大 256 KB までのメッセージ](service-bus-quotas.md)をサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[メッセージング エンティティのパーティション分割](service-bus-partitioning.md)」を参照してください。
+Service Bus キューでは、[最大 256 KB までのメッセージ](service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas)をサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 ## キューからメッセージを受信する方法
 
@@ -246,7 +242,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [Service Bus ブローカー メッセージングに関する .NET チュートリアル][]で、Service Bus キューとの間でメッセージを送受信する実用アプリケーションを作成してください。
 -   Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [キュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
   [Service Bus ブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
@@ -259,4 +255,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

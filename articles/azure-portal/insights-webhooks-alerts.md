@@ -1,8 +1,8 @@
 <properties
 	pageTitle="他のシステムに送信するように Azure アラートを構成する方法"
 	description="他の Azure 以外のシステムに Azure アラートを再ルーティングします。"
-	authors="rboucher"
-	manager="ronmart"
+	authors="kamathashwin"
+	manager=""
 	editor=""
 	services="azure-portal"
 	documentationCenter="na"/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/25/2015"
-	ms.author="robb"/>
+	ms.date="02/16/2016"
+	ms.author="ashwink"/>
 
 # アラート用 Webhook の構成方法
 
@@ -73,7 +73,7 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
 }
 ```
 
->[AZURE.NOTE]次の更新で、イベント ("conditionType": "Event") に対するアラートのサポートを追加します。
+>[AZURE.NOTE] 次の更新で、イベント ("conditionType": "Event") に対するアラートのサポートを追加します。
 
 
 | フィールド | 必須 | 値の固定セット | メモ |
@@ -87,11 +87,11 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
 |conditionType |Y |"Metric"、"Event" |2 つの種類のアラートがサポートされています。1 つはメトリックに基づき、もう 1 つはイベントに基づきます。将来的には、イベントのアラートをサポートする予定です。この値を使用することで、アラートがメトリックとイベントのどちらに基づくものであるかを確認できるようになります。|
 |condition |Y | |これには、conditionType に基づいて確認するための特定のフィールドがあります。|
 |metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。|
-|metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds"|	 メトリックで使用できる単位。使用できる値: https://msdn.microsoft.com/ja-jp/library/microsoft.azure.insights.models.unit.aspx|
+|metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds"|	 メトリックで使用できる単位。使用できる値: https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx|
 |metricValue |メトリック アラートの場合 | |アラートの原因となったメトリックの実際の値|
 |threshold |メトリック アラートの場合 | |アラートをアクティブ化するしきい値の値。|
 |windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。5 分から 1 日の間である必要があります。ISO 8601 期間形式。|
-|timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |	収集されたデータの経時的な結合方法。既定値は Average です。使用できる値: https://msdn.microsoft.com/ja-jp/library/microsoft.azure.insights.models.aggregationtype.aspx|
+|timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |	収集されたデータの経時的な結合方法。既定値は Average です。使用できる値: https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx|
 |operator |メトリック アラートの場合 | |データとしきい値を比較するために使用する演算子。|
 |subscriptionId |Y | |Azure サブスクリプション GUID|
 |resourceGroupName |Y | |影響を受けるリソースのリソース グループ名|
@@ -103,7 +103,7 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
 |プロパティ |N |省略可能 |イベントの詳細を含む<Key  Value>ペア (つまり、ディクショナリ<String  String>) のセット。properties フィールドは省略可能です。カスタム UI またはロジック アプリ ベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキーと値を入力できます。Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを Webhook に戻すこともできます。|
 
 
->[AZURE.NOTE]ポータルで properties フィールドを使用することはできません。Insights SDK の今後のリリースでは、アラート API を使用して properties を設定できます。
+>[AZURE.NOTE] ポータルで properties フィールドを使用することはできません。Insights SDK の今後のリリースでは、アラート API を使用して properties を設定できます。
 
 ## 次のステップ
 
@@ -123,4 +123,4 @@ Azure アラートを使用して、メッセージを他のサービスに送�
 
 [Azure キューにメッセージを送信するロジック アプリを使用する場合](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -27,7 +27,7 @@ Azure Government は、スピード、規模、セキュリティ、コンプラ
 
 加えて、Azure Government ではさらに高いレベルのセキュリティやコンプライアンスに関する要求水準を満たしており、米国連邦政府のリスクと認証管理プログラム (FedRAMP)、米国国防総省エンタープライズ クラウド サービス ブローカー (ECSB)、犯罪司法情報サービス部 (CJIS) のセキュリティ ポリシー、医療保険の相互運用性と説明責任に関する法律 (HIPAA) など、秘密性が高く、専用の、米国公的機関のワークロードで採用されています。
 
-下の画像は Azure Government のインフラストラクチャ、ファブリック、サービス、フレームワークのサマリ ビューです。これによって、政府機関のニーズに応えてハイブリッドなクラウド ソリューションの構築が可能になります。一般公開されている最新のサービスの一覧については、[リージョンに関するページ](http://azure.microsoft.com/regions/#services)を参照してください。
+下の画像は Azure Government のインフラストラクチャ、ファブリック、サービス、フレームワークのサマリー ビューです。これによって、政府機関のニーズに応えてハイブリッドなクラウド ソリューションの構築が可能になります。一般公開されている最新のサービスの一覧については、[リージョンに関するページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 ![][2]
 
@@ -39,7 +39,7 @@ Azure で信頼性の高いサービスや機能を公的に提供している�
 
 - **セキュリティ、プライバシー、コンプライアンス** - Microsoft は堅固なセキュリティ、プライバシー、コンプライアンスを制御するフレームワークを備え、加えて ECSB のインパクト レベルや CJIS の非常に高い要求水準を満たすための厳しい制御を保っています。
 
-- **データ ストレージ** - Azure Government 環境は、800 マイル (1,280 km) 離れた 2 つのデータセンターを管理します。すべてのユーザーのデータは米国本土 (CONUS) のデータセンターに保存されます。
+- **データ ストレージ** - Azure Government 環境は、800 マイル (1,287 km) 離れた 2 つのデータセンターを管理します。すべてのユーザーのデータは米国本土 (CONUS) のデータセンターに保存されます。
 
 - **米国の担当者** - Azure Government のオペレーターや管理者はすべて、米国国民であることが確認されています。
 
@@ -80,7 +80,7 @@ Azure で信頼性の高いサービスや機能を公的に提供している�
 - ExpressRoute
 - など
 
-その他のサービスを利用でき、より多くのサービスが継続的に追加される予定です。最新のサービスのリストについては、各リージョンで提供されているサービスを紹介している[リージョンに関するページ](http://azure.microsoft.com/regions/#services)を参照してください。
+その他のサービスを利用でき、より多くのサービスが継続的に追加される予定です。最新のサービスのリストについては、各リージョンで提供されているサービスを紹介している[リージョンに関するページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 現時点では、Azure Government をサポートするデータ センターは、米国政府アイオワ州と米国政府バージニア州です。現在のデータ センターと利用可能なサービスについては、上記リージョン ページをご覧ください。
 
@@ -98,7 +98,7 @@ Azure Government のさらに詳細については、次のページをご覧く
 
 - **[Azure Government のブログ](http://blogs.msdn.com/b/azuregov/)**
 
-- **[Microsoft Azure セキュリティ センター: コンプライアンス](http://azure.microsoft.com/support/trust-center/compliance/)**
+- **[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)**
 
 
 
@@ -117,4 +117,4 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

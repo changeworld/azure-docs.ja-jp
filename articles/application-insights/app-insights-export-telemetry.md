@@ -12,16 +12,19 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="03/01/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
 
 テレメトリに対してカスタマイズした分析を行う必要がありますか。 それとも、特定のプロパティを持つイベントに対して電子メール アラートを送信する必要がありますか。 そのようなケースには、連続エクスポートが最適です。Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。
 
-連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
+連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
-(メトリックや検索ブレードでの表示内容を、[1 回だけエクスポートする](app-insights-metrics-explorer.md#export-to-excel)場合には、ブレードの上部で [エクスポート] をクリックします)。
+>[AZURE.NOTE] [Power BI のデータを探索](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)する場合は、連続エクスポートを使用せずにこれを実行できます。
+>
+>また、メトリックや検索ブレードでの表示内容の [1 回限りのエクスポート](app-insights-metrics-explorer.md#export-to-excel)を実行する場合は、ブレードの上部で [エクスポート] をクリックします。
+
 
 ## ストレージ アカウントの作成
 
@@ -42,7 +45,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 ![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
 
-エクスポートを追加し、データを格納する [Azure ストレージ アカウント](../storage-introduction.md)を選択します。
+エクスポートを追加し、データを格納する [Azure ストレージ アカウント](../storage/storage-introduction.md)を選択します。
 
 ![[追加]、[エクスポート先]、[ストレージ アカウント] の順にクリックし、新しいストアを作成するかまたは既存のストアを使用するかを選択します。](./media/app-insights-export-telemetry/02-add.png)
 
@@ -74,6 +77,8 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 他の計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
 データには、セットアップ済みのすべての[利用可能な Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。
+
+> [AZURE.NOTE] **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## <a name="get"></a> データの確認
 
@@ -141,25 +146,16 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
 連続エクスポートが再開されます。
 
-## Power BI へのエクスポート
+## エクスポート サンプル
 
-[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。アプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
-
-[Power BI への Application Insights のストリーム](app-insights-export-power-bi.md)
-
-![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-telemetry/210.png)
-
-## SQL へのエクスポート
-
-もう 1 つの方法は、SQL データベースにデータを移動して、より強力な分析を実行することです。
-
-Blob ストレージからデータベースにデータを移動する 2 つの方法をサンプルで示します。
 
 * [worker ロールを使用して SQL にエクスポートする][exportcode]
 * [Stream Analytics を使用して SQL にエクスポートする][exportasa]
+* [Stream Analytics を使用して Power BI にエクスポートする](app-insights-export-power-bi.md)
+ * これは Power BI の標準的な利用方法ではないことに注意してください。連続エクスポートを必要としない[アダプター](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)があります。
 
 
-大規模な処理の場合は、[HDInsight](http://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
+大規模な処理の場合は、[HDInsight](https://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。HDInsight は、ビッグ データを管理および分析するためのさまざまなテクノロジを提供します。
 
 
 
@@ -177,15 +173,14 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
     アカウントが組織によって所有されている場合は、所有者または共同作成者グループのメンバーである必要があります。
 
-    <!-- Your account has to be either a paid-for account, or in the free trial period. -->
 
 * *自分のオンプレミスのストアに直接エクスポートできますか。*
 
-    いいえ、できません。現在のところ、エクスポート エンジンは、Azure ストレージでのみ動作します。
+    いいえ、できません。現在のところ、エクスポート エンジンは、Azure Storage でのみ動作します。
 
 * *ストアに格納できるデータの量に制限はありますか。*
 
-    いいえ。データのプッシュ配信は、エクスポートが削除されるまで続行されます。Blob ストレージの制限に達した場合は配信が停止されますが、その制限には非常に大きな値が設定されています。使用するストレージの量を管理するのはお客様です。
+    いいえ。データのプッシュ配信は、エクスポートが削除されるまで続行されます。Blob Storage の制限に達した場合は配信が停止されますが、その制限には非常に大きな値が設定されています。使用するストレージの量を管理するのはお客様です。
 
 * *ストレージに表示される BLOB の数を教えてください。*
 
@@ -217,4 +212,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

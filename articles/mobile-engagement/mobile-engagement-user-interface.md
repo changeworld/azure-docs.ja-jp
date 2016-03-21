@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="08/10/2015"
+   ms.date="02/29/2016"
    ms.author="piyushjo"/>
 
 # Azure Mobile Engagement ユーザー インターフェイス (UI) の使用方法
@@ -35,7 +35,7 @@ Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、
 	- [リーチ - 方法][Link 3]
 - [セグメント][Link 18]
 - [ダッシュボード][Link 19]
-- [設定][Link 20]
+- [[設定]][Link 20]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -105,7 +105,7 @@ Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、
 [Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
 [Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/ja-jp/home?forum=azuremobileengagement
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuremobileengagement
 [Link 9]: http://azure.microsoft.com/services/mobile-engagement/
 [Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
 [Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
@@ -133,4 +133,4 @@ Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

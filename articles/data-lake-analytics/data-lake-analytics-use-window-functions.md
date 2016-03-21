@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する | Azure" 
-   description="U SQL ウィンドウ関数を使用する方法について説明します。" 
+   description="U SQL ウィンドウ関数の使用方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/11/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
 
@@ -23,9 +23,9 @@
 
 ウィンドウ関数は、*ウィンドウ*と呼ばれる行セット内で計算処理を実行するために使用されます。ウィンドウは OVER 句で定義されます。ウィンドウ関数は、いくつかの重要なシナリオを非常に効率的な方法で解決します。
 
-このチュートリアルと学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、[U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)を参照してください。
+このチュートリアルと学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)」をご覧ください。
 
-ウィンドウ関数は、次のカテゴリに分類されます。
+ウィンドウ関数は次のカテゴリに分類されます。
 
 - [レポート集計関数](#reporting-aggregation-functions) (SUM や AVG など)
 - [順位付け関数](#ranking-functions) (DENSE\_RANK、ROW\_NUMBER、NTILE、RANK など)
@@ -35,9 +35,9 @@
 
 - 次の 2 つのチュートリアルを完了します。
 
-    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-use-data-lake-tools.md)。
-    - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)。
-- [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-use-data-lake-tools.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
+    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-data-lake-tools-get-started.md)
+    - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)
+- [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
 - [Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページの説明に従って、Visual Studio U-SQL プロジェクトを作成します。
 
 ## サンプル データセット
@@ -136,7 +136,7 @@
             SUM(Salary) AS TotalSalary
         FROM @employees;
     
->[AZURE.NOTE]出力のテストとチェックの手順については、[Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
+>[AZURE.NOTE] 出力のテストとチェックの手順については、[Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
 
 結果は 1 行 1 列で示されます。$165000 は、テーブル全体の Salary 値の合計です。
 
@@ -144,7 +144,7 @@
 |-----------
 |165000
 
->[AZURE.NOTE]ウィンドウ関数に慣れていない場合は、出力内の数値を覚えておくと役立ちます。
+>[AZURE.NOTE] ウィンドウ関数に慣れていない場合は、出力内の数値を覚えておくと役立ちます。
 
 次のステートメントでは、GROUP BY 句を使用して、部門ごとに給与の総額を計算します。
 
@@ -157,9 +157,9 @@
 
 |DeptName|SalaryByDept
 |--------|------------
-|エンジニアリング|60000
+|Engineering|60000
 |HR|30000
-|役員|50000
+|Executive|50000
 |Marketing|25000
 
 SalaryByDept 列の合計は $165000 です。これは、前のスクリプトの金額と一致します。
@@ -210,10 +210,10 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 |EmpName|DeptName|SalaryByDep
 |-------|--------|-------------------
-|Noah|エンジニアリング|60000
-|Sophia|エンジニアリング|60000
-|Liam|エンジニアリング|60000
-|Mason|役員|50000
+|Noah|Engineering|60000
+|Sophia|Engineering|60000
+|Liam|Engineering|60000
+|Mason|Executive|50000
 |Emma|HR|30000
 |Jacob|HR|30000
 |Olivia|HR|30000
@@ -243,7 +243,7 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 注:
 
-- 既定では、集計関数は null 値を無視します (COUNT を除く)。
+- 既定では、集計関数 (COUNT を除く) は null 値を無視します。
 - 集計関数を OVER 句と共に指定する場合、OVER 句では ORDER BY 句を使用できません。
 
 ### SUM の使用
@@ -260,10 +260,10 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|TotalByDept
 |-----|-------|--------|------|------|-----------
-|1|Noah|エンジニアリング|100|10000|60000
-|2|Sophia|エンジニアリング|100|20000|60000
-|3|Liam|エンジニアリング|100|30000|60000
-|7|Mason|役員|300|50000|50000
+|1|Noah|Engineering|100|10000|60000
+|2|Sophia|Engineering|100|20000|60000
+|3|Liam|Engineering|100|30000|60000
+|7|Mason|Executive|300|50000|50000
 |4|Emma|HR|200|10000|30000
 |5|Jacob|HR|200|10000|30000
 |6|Olivia|HR|200|10000|30000
@@ -283,10 +283,10 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|CountByDept
 |-----|-------|--------|------|------|-----------
-|1|Noah|エンジニアリング|100|10000|3
-|2|Sophia|エンジニアリング|100|20000|3
-|3|Liam|エンジニアリング|100|30000|3
-|7|Mason|役員|300|50000|1
+|1|Noah|Engineering|100|10000|3
+|2|Sophia|Engineering|100|20000|3
+|3|Liam|Engineering|100|30000|3
+|7|Mason|Executive|300|50000|1
 |4|Emma|HR|200|10000|3
 |5|Jacob|HR|200|10000|3
 |6|Olivia|HR|200|10000|3
@@ -308,10 +308,10 @@ GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|MinSalary
 |-----|-------|--------|------|-------------|----------------
-|1|Noah|エンジニアリング|100|10000|10000
-|2|Sophia|エンジニアリング|100|20000|10000
-|3|Liam|エンジニアリング|100|30000|10000
-|7|Mason|役員|300|50000|50000
+|1|Noah|Engineering|100|10000|10000
+|2|Sophia|Engineering|100|20000|10000
+|3|Liam|Engineering|100|30000|10000
+|7|Mason|Executive|300|50000|50000
 |4|Emma|HR|200|10000|10000
 |5|Jacob|HR|200|10000|10000
 |6|Olivia|HR|200|10000|10000
@@ -359,9 +359,9 @@ OVER 句が同じであることに注意してください。結果は次のよ
 
 |クエリ|Latency:int|Vertical|RowNumber|Rank|DenseRank
 |-----|-----------|--------|--------------|---------|--------------
-|Banana|300|イメージ|1|1|1
-|Cherry|300|イメージ|2|1|1
-|Durian|500|イメージ|3|3|2
+|Banana|300|Image|1|1|1
+|Cherry|300|Image|2|1|1
+|Durian|500|Image|3|3|2
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|3|2|2
@@ -381,7 +381,7 @@ RANK() では、ROW\_NUMBER() とは異なり、ウィンドウに ORDER BY 句�
 
 Latency の最初の 2 つの値が同じであるため、RANK 列は (1,1,3) で始まります。その次の値は、Latency 値が 500 に変わったため、3 になります。重要な点は、重複する値に同じ順位が指定された場合でも、RANK の数値は次の ROW\_NUMBER 値に "スキップ" することです。このパターンは、Web バーティカルのシーケンス (2,2,4) で繰り返されていることがわかります。
 
-![U-SQL window function RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
+![U-SQL ウィンドウ関数 RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
 
 ### DENSE\_RANK
 	
@@ -419,9 +419,9 @@ Web バーティカルには 6 行が含まれます。追加の 2 行は最初�
 
 |クエリ|待機時間|Vertical|Quartile
 |-----|-----------|--------|-------------
-|Banana|300|イメージ|1
-|Cherry|300|イメージ|2
-|Durian|500|イメージ|3
+|Banana|300|Image|1
+|Cherry|300|Image|2
+|Durian|500|Image|3
 |Apple|100|Web|1
 |Fig|200|Web|1
 |Papaya|200|Web|2
@@ -458,9 +458,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|Rank|DenseRank|RowNumber
 |-----|-----------|--------|---------|--------------|--------------
-|Banana|300|イメージ|1|1|1
-|Cherry|300|イメージ|1|1|2
-|Durian|500|イメージ|3|2|3
+|Banana|300|Image|1|1|1
+|Cherry|300|Image|1|1|2
+|Durian|500|Image|3|2|3
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|2|2|3
@@ -487,9 +487,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|DenseRank
 |-----|-----------|--------|--------------
-|Banana|300|イメージ|1
-|Cherry|300|イメージ|1
-|Durian|500|イメージ|2
+|Banana|300|Image|1
+|Cherry|300|Image|1
+|Durian|500|Image|2
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
@@ -512,9 +512,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|Rank
 |-----|-----------|--------|---------
-|Banana|300|イメージ|1
-|Cherry|300|イメージ|1
-|Durian|500|イメージ|3
+|Banana|300|Image|1
+|Cherry|300|Image|1
+|Durian|500|Image|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
@@ -537,9 +537,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
     
 |クエリ|待機時間|Vertical|RowNumber
 |-----|-----------|--------|--------------
-|Banana|300|イメージ|1
-|Cherry|300|イメージ|2
-|Durian|500|イメージ|3
+|Banana|300|Image|1
+|Cherry|300|Image|2
+|Durian|500|Image|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|3
@@ -590,9 +590,9 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
     
 |クエリ|待機時間|Vertical|CumeDist
 |-----|-----------|--------|---------------
-|Durian|500|イメージ|1
-|Banana|300|イメージ|0\.666666666666667
-|Cherry|300|イメージ|0\.666666666666667
+|Durian|500|Image|1
+|Banana|300|Image|0\.666666666666667
+|Cherry|300|Image|0\.666666666666667
 |Durian|500|Web|1
 |Cherry|400|Web|0\.833333333333333
 |Fig|300|Web|0\.666666666666667
@@ -604,7 +604,7 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 
 - 値が 500 以下の行は 6 行あるため、CUME\_DIST は 6/6=1 となります。
 - 値が 400 以下の行は 5 行あるため、CUME\_DIST は 5/6=0.83 となります。
-- 値が 300 以下の行は 4 行あるため、CUME\_DIST は 5/6=0.66 となります。
+- E値が 300 以下の行は 4 行あるため、CUME\_DIST は 4/6=0.66 となります。
 - 値が 200 以下の行は 3 行あるため、CUME\_DIST は 3/6=0.5 となります。待機時間の値が同じ行が 2 行あります。
 - 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。 
 
@@ -656,9 +656,9 @@ PERCENT\_RANK 関数で返された値は、バーティカル内のクエリの
 
 |クエリ|Latency:int|Vertical|PercentRank
 |-----|-----------|--------|------------------
-|Banana|300|イメージ|0
-|Cherry|300|イメージ|0
-|Durian|500|イメージ|1
+|Banana|300|Image|0
+|Cherry|300|Image|0
+|Durian|500|Image|1
 |Apple|100|Web|0
 |Fig|200|Web|0\.2
 |Papaya|200|Web|0\.2
@@ -705,9 +705,9 @@ OVER ([ PARTITION BY <identifier,>…[n] ] ) - パーティション キーご�
 
 |クエリ|Latency:int|Vertical|PercentileCont50|PercentilDisc50
 |-----|-----------|--------|-------------------|----------------
-|Banana|300|イメージ|300|300
-|Cherry|300|イメージ|300|300
-|Durian|500|イメージ|300|300
+|Banana|300|Image|300|300
+|Cherry|300|Image|300|300
+|Durian|500|Image|300|300
 |Apple|100|Web|250|200
 |Fig|200|Web|250|200
 |Papaya|200|Web|250|200
@@ -733,14 +733,14 @@ PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 
 ## 関連項目
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure プレビュー ポータルで Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
-- [Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
-- [Azure Data Lake Analytics U-SQL 言語の使用を開始する](data-lake-analytics-u-sql-get-started.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
-- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-powershell.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
+- [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
+- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	ms.author="brandwe"/>
 
 # Azure AD の Android アプリへの統合
@@ -271,7 +271,7 @@ Maven リポジトリから jar ファイルを取得して、プロジェクト
     ```
 
 11. **ブローカー**:
-  Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
+ Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -406,7 +406,7 @@ adb コマンドの他の例については、https://developer.android.com/tool
 
 Fiddler は、最も簡単な HTTP トレース ツールです。これが ADAL ネットワーク トラフィックを正しく記録するように、次のリンク先にある情報を用いて設定します。Fiddler、または Charles などのツールはいずれも、役立つものとするには、暗号化されていない SSL トラフィックを記録するように構成することが必要です。注: この方法で生成されたトレースには、アクセス トークン、ユーザー名、パスワードなどの、非常に機密性の高い情報が含まれている可能性があります。運用環境のアカウントを使用している場合は、それらのトレースを第三者と共有することがないようにしてください。サポートを受けるためにトレースを他者に提供する必要がある場合は、共有しても問題がないユーザー名とパスワードを使う一時的なアカウントを使用して問題を再現します。
 
-+ [Setting Up Fiddler For Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
++ [Configure Fiddler For Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
 + [Configure Fiddler Rules For ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
 
 
@@ -454,6 +454,5 @@ ADAL ライブラリには、次の 2 つの ProgressDialog メッセージの�
 ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthRequest イベントを通して処理される NTLM ダイアログをサポートしています。ダイアログのレイアウトと文字列はカスタマイズすることができます。### 手順 5. iOS ネイティブ クライアントのサンプル コードをダウンロードする
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect - ユーザー サインイン | Microsoft Azure"
+	pageTitle="Azure AD Connect: ユーザー サインイン | Microsoft Azure"
 	description="Azure AD Connect ユーザー サインインのカスタム設定"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	ms.author="billmath"/>
 
 
@@ -63,4 +63,8 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 	- ソフト アカウント ロックアウトや AD パスワードと作業時間のポリシーなどの Active Directory の統合機能
 	- デバイス登録、Azure AD 参加、または Intune MDM ポリシーを使用するオンプレミスとクラウド両方のリソースへの条件付きアクセス
 
-<!---HONumber=Oct15_HO3-->
+
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0128_2016-->

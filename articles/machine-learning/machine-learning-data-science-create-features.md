@@ -13,21 +13,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/05/2016"
 	ms.author="zhangya;bradsev" />
 
 
 # Cortana Analytics Process の特徴エンジニアリング 
 
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 ##はじめに
 
 このトピックでは、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
 
-エンジニアリングと特徴選択は、CAP プロセスの一部です。CAP の概要については、「[Cortana Analytics Process (CAP) とは何か](machine-learning-data-science-the-cortana-analytics-process.md)」を参照してください。 特徴エンジニアリングと特徴選択は、CAP の**特徴の開発**ステップの一部です。* **特徴エンジニアリング**: データに含まれる既存の生の特徴から追加の関連する特徴を作成し、学習アルゴリズムの予測能力を向上するプロセスです。* **特徴選択**: トレーニング プログラムのディメンショナリティを減らすために、元のデータの特徴の主要なサブセットを選択するプロセスです。
+エンジニアリングと特徴選択は、CAP プロセスの一部です。CAP の概要については、「[Cortana Analytics Process (CAP) とは何か](machine-learning-data-science-the-cortana-analytics-process.md)」を参照してください。 特徴エンジニアリングと特徴選択は、CAP の**特徴の開発**ステップの一部です。* **特徴エンジニアリング**: データに含まれる既存の生の特徴から追加の関連する特徴を作成し、学習アルゴリズムの予測力を高めるプロセスです。* **特徴選択**: トレーニング プログラムのディメンショナリティを減らすために、元のデータの特徴の主要なサブセットを選択するプロセスです。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
@@ -95,4 +96,4 @@ Azure Machine Learning には、これらの単語や語句の特徴を都合よ
 必ずしも特徴エンジニアリングや特徴選択を実行する必要はありません。必要があるかどうかは、持っているデータや収集するデータ、選択するアルゴリズム、実験の目的によって異なります。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

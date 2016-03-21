@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/18/2015" 
+	ms.date="02/08/2016" 
 	ms.author="hangzh;bradsev" />
 
 #<a name="heading"></a>Cortana Analytics Process で HDInsight Hadoop クラスターに Hive クエリを送信する
@@ -127,7 +127,7 @@ Azure ストレージ エクスプローラーなどのツールを使用して 
 1. [データの探索](#hive-dataexploration)
 2. [特徴の生成](#hive-featureengineering)
 
-> [AZURE.NOTE]サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)に従って Hive テーブルにデータをアップロードします。
+> [AZURE.NOTE] サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)に従って Hive テーブルにデータをアップロードします。
 
 ###<a name="hive-dataexploration"></a>データの探索
 Hive テーブルでデータを探索するために使用する、いくつかのサンプル Hive スクリプトは次のとおりです。
@@ -179,7 +179,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 4. [[Text] フィールドからの特徴の抽出](#hive-textfeature)
 5. [GPS 座標間の距離の計算](#hive-gpsdistance)
 
-> [AZURE.NOTE]追加の機能を生成したら、それらの機能を既存のテーブルに列として追加するか、追加の機能と主キーで新しいテーブルを作成します。新しいテーブルは、元のテーブルと結合することができます。
+> [AZURE.NOTE] 追加の機能を生成したら、それらの機能を既存のテーブルに列として追加するか、追加の機能と主キーで新しいテーブルを作成します。新しいテーブルは、元のテーブルと結合することができます。
 
 ####<a name="hive-frequencyfeature"></a> 頻度ベースの特徴の生成
 
@@ -274,11 +274,11 @@ Hive テーブルでデータを探索するために使用する、いくつか
 		and dropoff_latitude between 30 and 90
 		limit 10; 
 
-2 つの GPS 座標間の距離を計算する数式は、[ここ](http://www.movable-type.co.uk/scripts/latlong.html) (Peter Lapisu によって作成されました) にあります。彼の Javascript で、関数 toRad() は単に `lat_or_lon*pi/180` であり、これは、角度をラジアンに変換します。ここで、`lat_or_lon` は緯度または経度です。Hive には関数 `atan2` はありませんが、関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は [Wikipedia](http://en.wikipedia.org/wiki/Atan2) に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標間の距離を計算する数式は、[Movable Type Scripts](http://www.movable-type.co.uk/scripts/latlong.html) (Peter Lapisu によって作成されました) にあります。彼の Javascript で、関数 toRad() は単に `lat_or_lon*pi/180` であり、これは、角度をラジアンに変換します。ここで、`lat_or_lon` は緯度または経度です。Hive には関数 `atan2` はありませんが、関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は [Wikipedia](http://en.wikipedia.org/wiki/Atan2) に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![Create workspace][1]
 
-Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
+Hive 埋め込み UDF のリストについては、[UDF 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
 
 ## <a name="tuning"></a>高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
@@ -325,4 +325,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

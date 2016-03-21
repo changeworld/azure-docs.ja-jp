@@ -4,8 +4,8 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
-	editor="cgronlun"/>
+	manager="erikre" 
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services" 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
 
-# BizTalk サービス: サービスの状態のグラフ
+# BizTalk Services: サービスの状態のグラフ
 BizTalk サービスの現在の状態によっては、BizTalk サービスで実行できる操作と実行できない操作があります。
 
-たとえば、Azure 管理ポータルで新しい BizTalk サービスをプロビジョニングするとします。正常に完了すると、BizTalk サービスが Active 状態になります。Active 状態では、BizTalk サービスを停止できます。停止に成功すると、BizTalk サービスは Stopped 状態になります。停止に失敗すると、BizTalk サービスは StopFailed 状態になります。StopFailed 状態では、BizTalk サービスを再起動できます。許可されていない操作を実行しようとした場合 (BizTalk サービスの再開など)、次のエラーが発生します。
+たとえば、Azure クラシック ポータルで新しい BizTalk サービスをプロビジョニングするとします。正常に完了すると、BizTalk サービスが Active 状態になります。Active 状態では、BizTalk サービスを停止できます。停止に成功すると、BizTalk サービスは Stopped 状態になります。停止に失敗すると、BizTalk サービスは StopFailed 状態になります。StopFailed 状態では、BizTalk サービスを再起動できます。許可されていない操作を実行しようとした場合 (BizTalk サービスの再開など)、次のエラーが発生します。
 
 **許可されない操作です**
 
-BizTalk サービスをプロビジョニングするには、「[Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)」を参照してください。
+BizTalk サービスをプロビジョニングするには、「[Azure クラシック ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)」を参照してください。
 
-次の表に、BizTalk サービスの各状態で実行できる操作またはアクションを示します。チェック マークは、その状態で許可される操作を意味します。空のエントリは、その状態で実行できない操作を意味します。
+次の表に、BizTalk サービスの各状態で実行できる操作またはアクションを示します。✔ は、その状態で許可される操作を意味します。空のエントリは、その状態で実行できない操作を意味します。
 
 ## 開始、停止、再起動、中断、再開、および削除の各操作
 <table border="1">
@@ -50,11 +50,11 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <tr>
 <td bgcolor="FAF9F9"><b>Active</b></td>
 <td> </td>
-<td><center>○</center></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>無効</b></td>
@@ -63,7 +63,7 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Suspended</b></td>
@@ -71,17 +71,17 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Stopped</b></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Service Update Failed</b></td>
@@ -90,7 +90,7 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>DisableFailed</b></td>
@@ -99,7 +99,7 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>EnableFailed</b></td>
@@ -108,18 +108,18 @@ BizTalk サービスをプロビジョニングするには、「[Azure 管理�
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>StartFailed<br/>
 StopFailed<br/>
 RestartFailed</b></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>SuspendedFailed<br/>
@@ -127,9 +127,9 @@ ResumeFailed</b></td>
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>CreatedFailed<br/>
@@ -139,16 +139,16 @@ RestoreFailed<br/></b></td>
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>ConfigUpdateFailed</b></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>ScaleFailed</b></td>
@@ -157,7 +157,7 @@ RestoreFailed<br/></b></td>
 <td> </td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 </table>
 <br/>
@@ -180,9 +180,9 @@ RestoreFailed<br/></b></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Active</b></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>無効</b></td>
@@ -194,13 +194,13 @@ RestoreFailed<br/></b></td>
 <td bgcolor="FAF9F9"><b>Suspended</b></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Stopped</b></td>
 <td> </td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Service Update Failed</b></td>
@@ -225,7 +225,7 @@ RestoreFailed<br/></b></td>
 StopFailed<br/>
 RestartFailed</b></td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
 </tr>
 <tr>
@@ -245,20 +245,20 @@ RestoreFailed<br/></b></td>
 <tr>
 <td bgcolor="FAF9F9"><b>ConfigUpdateFailed</b></td>
 <td> </td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>ScaleFailed</b></td>
-<td><center>○</center></td>
+<td><center>✔</center></td>
 <td> </td>
 <td> </td>
 </tr>
 </table>
 
 ## 関連項目
-- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk Services : [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 - [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
@@ -268,4 +268,4 @@ RestoreFailed<br/></b></td>
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -10,15 +10,16 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
-   ms.author="sahajs"/>
+   ms.date="03/03/2016"
+   ms.author="sahajs;barbkess;sonyama"/>
 
 # Azure Machine Learning を使用したデータの分析
 このチュートリアルでは、Azure SQL Data Warehouse のデータを使用して Azure Machine Learning の機械学習予測モデルを作成する方法を使用します。このチュートリアルでは、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works のターゲット マーケティング キャンペーン (自転車店) を作成します。
 
+> [AZURE.VIDEO integrating-azure-machine-learning-with-azure-sql-data-warehouse]
 
 ## 前提条件
 このチュートリアルを進めるには、次のものが必要です。
@@ -28,16 +29,16 @@
 [SQL Data Warehouse の作成][]に関するページに、サンプル データを設定したデータベースのプロビジョニング方法が示されています。SQL Data Warehouse データベースは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
 
-## 手順 1. データを取得する 
+## 手順 1. データを取得する
 AdventureWorksDW データベースの dbo.vTargetMail ビューからデータを読み取ります。
 
 1. [Azure Machine Learning Studio][] にサインインし、[実験] をクリックします。
 2. **[+ 新規]** をクリックし、**[空の実験]** を選択します。
 3. 実験の名前として「対象を絞ったマーケティング」と入力します。
 4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
-5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。 
+5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ**を指定します。
-   
+
    ```
    SELECT [CustomerKey]
       ,[GeographyKey]
@@ -82,11 +83,11 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
-2. [プロパティ] ウィンドウの [最初の出力データセットにおける列の割合] に「0.8」を入力します。![データをトレーニング セットとテスト セットに分割する][6]
+2. [プロパティ] ウィンドウの [最初の出力データセットにおける列の割合] に「0.8」と入力します。![データをトレーニング セットとテスト セットに分割する][6]
 3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
 4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。次に、[プロパティ] ウィンドウで **[列セレクターの起動]** をクリックします。
       - 1 つ目の入力: ML アルゴリズム。
-      - 2 つ目の入力: アルゴリズムをトレーニングするためのデータ。 ![[モデルのトレーニング] モジュールを接続する][7]
+      - 2 つ目の入力: アルゴリズムをトレーニングするためのデータ。![[モデルのトレーニング] モジュールを接続する][7]
 5. 予測する列として **[BikeBuyer]** 列を選択します。![予測する列を選択する][8]
 
 
@@ -114,7 +115,7 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
-予測機械学習モデルの作成の詳細については、[Azure での機械学習の概要][]に関するページを参照してください。
+予測機械学習モデルの作成の詳細については、「[Microsoft Azure での機械学習の概要][]」を参照してください。
 
 
 
@@ -135,8 +136,8 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
-[Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[Microsoft Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0309_2016-->

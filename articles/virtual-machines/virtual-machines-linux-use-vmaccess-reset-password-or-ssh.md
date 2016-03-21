@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure CLI からの Linux VM パスワードのリセット | Microsoft Azure"
-	description="Azure ポータルまたは CLI の VMAccess 拡張機能を使用して、Linux VM パスワードと SSH キー、SSH 構成をリセットし、ユーザー アカウントを削除する方法を説明します。"
+	pageTitle="Azure CLI からの Linux VM のパスワードのリセットとユーザーの追加 |Microsoft Azure"
+	description="Azure ポータルまたは CLI から VMAccess 拡張機能を使用して、Linux VM のパスワードと SSH キーのリセット、SSH 構成のリセット、ユーザー アカウントの追加と削除、ディスクの整合性のチェックを実行する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,23 +14,23 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/28/2015"
+	ms.date="12/15/2015"
 	ms.author="cynthn"/>
 
-# Linux 仮想マシンのパスワードまたは SSH をリセットする方法 #
+# Linux 用 Azure VMAccess 拡張機能を使用してアクセスのリセット、ユーザーの管理、ディスクのチェックを実行する方法#
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイ モデルを使用して作成された仮想マシンを対象としています。
+パスワードを忘れたため、Secure Shell (SSH) キーが正しくないため、または SSH 構成に問題があるために、Azure の Linux 仮想マシンに接続できない場合は、Azure ポータルを使用するか、Azure CLI で VMAccessforLinux 拡張機能を使用して、パスワードまたは SSH キーのリセット、SSH 構成の修正、ディスクの整合性のチェックを行います。
 
-## Azure プレビュー ポータル
+## Azure ポータル
 
-[Azure プレビュー ポータル](https://portal.azure.com)で SSH の構成をリセットするには、**[参照]**、**[仮想マシン]**、*ご使用の Linux 仮想マシン*、**[リモート アクセスのリセット]** の順にクリックします。たとえば次のようになります。
+[Azure ポータル](https://portal.azure.com)で SSH の構成をリセットするには、**[参照]**、**[仮想マシン]**、ご使用の Linux 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。たとえば次のようになります。
 
 ![](./media/virtual-machines-linux-use-vmaccess-reset-password-or-ssh/Portal-RDP-Reset-Linux.png)
 
-sudo 特権または [Azure プレビュー ポータル](https://portal.azure.com)の SSH 公開キーを使用してユーザー アカウントの名前とパスワードをリセットするには、**[参照]**、**[仮想マシン]**、*ご使用の Linux 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。たとえば次のようになります。
+sudo 特権または [Azure ポータル](https://portal.azure.com)の SSH 公開キーを使用してユーザー アカウントの名前とパスワードをリセットするには、**[参照]**、**[仮想マシン]**、ご使用の Linux 仮想マシン、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。たとえば次のようになります。
 
 ![](./media/virtual-machines-linux-use-vmaccess-reset-password-or-ssh/Portal-PW-Reset-Linux.png)
 
@@ -61,6 +61,8 @@ Azure CLI を使用すると、次のタスクを実行できます。
 + [SSH 構成のリセット](#sshconfigresetcli)
 + [ユーザーの削除](#deletecli)
 + [VMAccess 拡張機能の状態の表示](#statuscli)
++ [追加されたディスクの整合性のチェック](#checkdisk)
++ [Linux VM での追加されたディスクの修復](#repairdisk)
 
 ### <a name="pwresetcli"></a>パスワードのリセット
 
@@ -69,7 +71,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 	{
 	"username":"currentusername",
 	"password":"newpassword",
-	"expiration":"2016-01-01",
+	"expiration":"2016-01-01"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -82,7 +84,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 
 	{
 	"username":"currentusername",
-	"ssh_key":"contentofsshkey",
+	"ssh_key":"contentofsshkey"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -96,7 +98,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 	{
 	"username":"currentusername",
 	"ssh_key":"contentofsshkey",
-	"password":"newpassword",
+	"password":"newpassword"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -122,7 +124,7 @@ SSH の構成が望ましい状態でない場合は、VM にアクセスでき�
 手順 1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
 	{
-	"reset_ssh":"True",
+	"reset_ssh":"True"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -136,7 +138,7 @@ VM にログインせずに直接ユーザー アカウントを削除するに�
 手順 1. プレースホルダーの値を置き換えて、次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
 	{
-	"remove_user":"usernametoremove",
+	"remove_user":"usernametoremove"
 	}
 
 手順 2. "vmname" を使用中の仮想マシンの名前に置き換えて、次のコマンドを実行します。
@@ -149,6 +151,34 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 	azure vm extension get
 
+### <a name='checkdisk'<</a>追加されたディスクの整合性のチェック
+
+Linux 仮想マシンのすべてのディスクに対して fsck を実行するには、次の手順を実行する必要があります。
+
+手順 1: 次の内容を含む PublicConf.json という名前のファイルを作成します。チェック ディスクは、仮想マシンに接続されているディスクをチェックするかどうかを表すブール値を受け取ります。
+
+    {   
+    "check_disk": "true"
+    }
+
+手順 2: プレースホルダーの値を置き換えて、次のコマンドを実行します。
+
+   azure vm extension set vm-name VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
+
+### <a name='repairdisk'></a>Linux 仮想マシンでの追加されたディスクの修復
+
+マウントされていないディスクまたはマウント構成エラーが発生したディスクを修復するには、VMAccess 拡張機能を使用して Linux 仮想マシンでマウント構成をリセットします。
+
+手順 1: 次の内容を含む PublicConf.json という名前のファイルを作成します。
+
+    {
+    "repair_disk":"true",
+    "disk_name":"yourdisk"
+    }
+
+手順 2: プレースホルダーの値を置き換えて、次のコマンドを実行します。
+
+    azure vm extension set vm-name VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json
 
 ## Azure PowerShell の使用
 
@@ -165,7 +195,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 > [AZURE.NOTE]$ で始まるコマンド ラインは、後で PowerShell コマンドで使用する PowerShell 変数を設定します。
 
-Azure ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
+Azure クラシック ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
 
 	$vm.GetInstance().ProvisionGuestAgent = $true
 
@@ -179,6 +209,8 @@ Azure ポータルで仮想マシンを作成する場合は、次の追加の�
 + [SSH 構成のリセット](#config)
 + [ユーザーの削除](#delete)
 + [VMAccess 拡張機能の状態の表示](#status)
++ [追加されたディスクの整合性のチェック](#checkdisk)
++ [Linux VM での追加されたディスクの修復](#repairdisk)
 
 ### <a name="password"></a>パスワードのリセット
 
@@ -252,6 +284,25 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 	$vm.GuestAgentStatus
 
+### <a name="checkdisk"<</a>追加されたディスクの整合性のチェック
+
+fsck ユーティリティを使用してディスクの整合性をチェックするには、次のコマンドを実行します。
+
+	$PublicConfig = "{"check_disk": "true"}"
+	$ExtensionName = "VMAccessForLinux"
+	$Publisher = "Microsoft.OSTCExtensions"
+	$Version = "1.*"
+	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PublicConfiguration $PublicConfig | Update-AzureVM
+
+### <a name="checkdisk"<</a>Linux VM での追加されたディスクの修復
+
+fsck ユーティリティを使用してディスクを修復するには、次のコマンドを実行します。
+
+	$PublicConfig = "{"repair_disk": "true", "disk_name": "my_disk"}"
+	$ExtensionName = "VMAccessForLinux"
+	$Publisher = "Microsoft.OSTCExtensions"
+	$Version = "1.*"
+	Set-AzureVMExtension -ExtensionName $ExtensionName -VM $vm -Publisher $Publisher -Version $Version -PublicConfiguration $PublicConfig | Update-AzureVM
 
 ## その他のリソース
 
@@ -263,7 +314,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 <!--Link references-->
 [Azure Linux エージェント ユーザー ガイド]: virtual-machines-linux-agent-user-guide.md
 [Azure PowerShell のインストールと構成の方法]: ../install-configure-powershell.md
-[Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
+[Azure VM 拡張機能とその機能]: virtual-machines-extensions-features.md
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

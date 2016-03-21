@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
+   ms.date="01/16/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更
@@ -28,11 +28,11 @@
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
+- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
 - アクティブな ExpressRoute 回線が必要です。手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。ExpressRoute 回線をプロビジョニングされ、有効になっている状態にする必要があります。そうすれば、以下で説明されているコマンドレットを実行できます。
 
->[AZURE.IMPORTANT]次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
+>[AZURE.IMPORTANT] 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
 
 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。ピアリングは任意の順序で構成することができます。ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。
 
@@ -92,7 +92,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 		New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
 
-	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+	>[AZURE.IMPORTANT] 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
 ### Azure プライベート ピアリングの詳細を取得するには
 
@@ -124,7 +124,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
->[AZURE.WARNING]このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
+>[AZURE.WARNING] このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
 
 	Remove-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 
@@ -186,7 +186,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 		New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
 
-	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+	>[AZURE.IMPORTANT] 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
 ### Azure パブリック ピアリングの詳細を取得するには
 
@@ -271,7 +271,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 	- アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。パブリック IP アドレス プレフィックスのみが受け入れられます。一連のプレフィックスを送信する予定の場合は、コンマ区切りのリストを送信できます。これらのプレフィックスは、RIR/IRR に登録する必要があります。
 	- 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。**これは省略可能です**。
 	- ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-	- いずれかを使用する場合は、MD5 ハッシュ。**これは省略可能です**。
+	- いずれかを使用する場合は、MD5 ハッシュ。**これは省略可能です。**
 	
 	次のコマンドレットを実行して、回線用に Microsoft ピアリングを構成することができます。
 
@@ -318,4 +318,4 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 -  ワークフローの詳細については、「[ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 -  回路ピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

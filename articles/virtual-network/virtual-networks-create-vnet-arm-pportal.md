@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure プレビュー ポータルを使用した仮想ネットワークの作成 |Microsoft Azure"
-   description="ARM で Azure プレビュー ポータルを使用して仮想ネットワークを作成する方法を説明 | リソース マネージャー"
+   pageTitle="Azure ポータルを使用した仮想ネットワークの作成 | Microsoft Azure"
+   description="ARM で Azure ポータルを使用して仮想ネットワークを作成する方法を説明 | リソース マネージャー"
    services="virtual-network"
    documentationCenter=""
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 
@@ -14,10 +14,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/21/2015"
+   ms.date="02/04/2016"
    ms.author="telmos"/>
 
-# Azure プレビュー ポータルを使用した仮想ネットワークの作成
+# Azure ポータルを使用した仮想ネットワークの作成
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
@@ -30,4 +30,4 @@
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

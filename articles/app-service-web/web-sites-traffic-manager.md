@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="02/25/2016" 
 	ms.author="cephalin"/>
 
 # Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
 
-> [AZURE.NOTE]この記事では、Azure App Service Web Apps に関連して、Microsoft Azure トラフィック マネージャーの概要情報を提供します。"Azure トラフィック マネージャー自体の詳細については、この記事の最後にある関連情報を参照してください。
+> [AZURE.NOTE] この記事では、Azure App Service Web Apps に関連して、Microsoft Azure トラフィック マネージャーの概要情報を提供します。"Azure トラフィック マネージャー自体の詳細については、この記事の最後にある関連情報を参照してください。
 
 ## はじめに
 Azure トラフィック マネージャーを使用すると、Web クライアントからの要求を Azure App Service の Web アプリに振り分ける方法を制御できます。Web アプリのエンドポイントが Azure トラフィック マネージャーのプロファイルに追加されると、Azure トラフィック マネージャーは Web アプリの状態 (実行中、停止、または削除済み) を追跡して、トラフィックを受信する必要のあるエンドポイントを決定できるようになります。
@@ -60,7 +60,7 @@ Azure トラフィック マネージャーの概念と技術的概要につい�
 
 Azure トラフィック マネージャーでの負荷分散の詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
-Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](http://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
+Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

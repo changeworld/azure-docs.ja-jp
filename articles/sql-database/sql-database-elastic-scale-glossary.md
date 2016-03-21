@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Elastic Database ツールの用語集 | Microsoft Azure" 
-    description="Elastic Database ツールで使用される用語の説明" 
+    description="エラスティック データベース ツールで使用される用語の説明" 
     services="sql-database" 
     documentationCenter="" 
     manager="jeffreyg" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="11/04/2015" 
+    ms.date="02/01/2016" 
     ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールの用語集
@@ -23,9 +23,9 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 ![Elastic Scale の用語][1]
 
-**データベース**: Azure SQL データベース
+**データベース**: Azure SQL Database。
 
-**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。**マルチシャード クエリ**も参照。
+**データ依存ルーティング**: アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。**[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)**と比較してください。
 
 **グローバル シャード マップ**: **シャード セット**内のシャーディング キーとそれに対応するシャードの間のマップ。グローバル シャード マップは、**シャード マップ マネージャー**に格納されます。**ローカル シャード マップ**も参照。
 
@@ -82,4 +82,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

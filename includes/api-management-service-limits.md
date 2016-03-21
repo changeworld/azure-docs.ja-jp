@@ -6,6 +6,6 @@
 | スケールの単位 | 無制限<sup>1</sup> |
 | Azure Active Directory の統合| 無制限のユーザー アカウント<sup>1</sup> |
 
-<sup>1</sup>API Management に関する制限は、各価格レベルによって異なります。価格レベルとそれに関連する制限については、[API Management の価格](http://azure.microsoft.com/pricing/details/api-management/)を参照してください。
+<sup>1</sup>API Management に関する制限は、各価格レベルによって異なります。価格レベルとそれに関連する制限については、[API Management の価格](https://azure.microsoft.com/pricing/details/api-management/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

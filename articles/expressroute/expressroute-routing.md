@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/06/2015"
+   ms.date="03/03/2016"
    ms.author="cherylmc"/>
 
 
@@ -38,7 +38,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
  - /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
 	 - 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
 	 - それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを指定する必要があります。Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
-	 - [可用性 SLA](http://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。  
+	 - [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。  
 
 #### プライベート ピアリング用の例
 
@@ -59,7 +59,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 - /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
 	- 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
 	- それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
-	- [可用性 SLA](http://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
+	- [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 
 以下のレジストリのいずれかで IP アドレスと AS 番号が自分に登録されていることを確認します。
 
@@ -67,10 +67,9 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 - [APNIC](https://www.apnic.net/)
 - [AFRINIC](https://www.afrinic.net/)
 - [LACNIC](http://www.lacnic.net/)
-- [RIPE NCC](https://www.ripe.net/)
+- [RIPENCC](https://www.ripe.net/)
 - [RADB](http://www.radb.net/)
 - [ALTDB](http://altdb.net/)
-- [LEVEL3](http://rr.Level3.net/)
 
 
 ## 動的なルート交換
@@ -104,7 +103,8 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 **注:** 既定のルートをアドバタイズすると、Windows およびその他の VM のライセンスの認証に失敗します。これを回避する方法については、[このページ](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)を参照してください。
 
-## BGP コミュニティのサポート
+## BGP コミュニティのサポート (近日対応予定)
+
 
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。その理由とコミュニティ値の詳細については以降に示します。ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
 
@@ -118,36 +118,41 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 Microsoft は、パブリック ピアリングと Microsoft ピアリングを介してアドバタイズされるプレフィックスに適切な BGP コミュニティ値をタグ付けして、プレフィックスがホストされるリージョンを示します。ユーザーは、このコミュニティ値に依存して、最適なルーティングを顧客に提供するための適切なルーティングの決定を行うことができます。
 
-| **地理的リージョン** | **Microsoft Azure リージョン (Office 365 の場合も同じ)** | **BGP コミュニティ値** |
+| **地理的リージョン** | **Microsoft Azure リージョン** | **BGP コミュニティ値** |
 |---|---|---|
-| **北米** | | 12076:51201 |
+| **北米** | | |
 | | 米国東部 | 12076:51004 |
 | | 米国東部 2 | 12076:51005 |
 | | 米国西部 | 12076:51006 |
 | | 米国中北部 | 12076:51007 |
 | | 米国中南部 | 12076:51008 |
 | | 米国中央部 | 12076:51009 |
-| **南アメリカ** | | 12076:51202 |
+| | カナダ中部 | 12076:51020 |
+| | カナダ東部 | 12076:51021 |
+| **南アメリカ** | | |
 | | ブラジル南部 | 12076:51014 |
-| **ヨーロッパ** | | 12076:51203 |
+| **ヨーロッパ** | | |
 | | 北ヨーロッパ | 12076:51003 |
 | | 西ヨーロッパ | 12076:51002 |
-| **アジア太平洋** | | 12076:51204 |
+| | 英国北部 | 12076:51022 |
+| | 英国南部 2 | 12076:51023 |
+| **アジア太平洋** | | |
 | | 東アジア | 12076:51010 |
 | | 東南アジア | 12076:51011 |
-| **日本** | 東日本 | 12076:51012 |
+| **日本** | | |
+| | 東日本 | 12076:51012 |
 | | 西日本 | 12076:51013 |
-| **オーストラリア** | オーストラリア東部 | 12076:51015 |
+| **オーストラリア** | | | 
+| | オーストラリア東部 | 12076:51015 |
 | | オーストラリア南東部 | 12076:51016 |
-| **インド** | インド南部 | 12076:51019 |
+| **インド** | | |
+| | インド南部 | 12076:51019 |
 | | インド西部 | 12076:51018 |
 | | インド中部 | 12076:51017 |
-| **グローバル** | **Premium アドオンが有効になっている場合のみサポートされ、発行されます。** | 12076:51000 |
-| **エニーキャスト** | | 12076:51250 |
 
 Microsoft からアドバタイズされるすべてのルートには、適切なコミュニティ値がタグ付けされます。
 
->[AZURE.IMPORTANT]ExpressRoute Premium アドオンが有効になっている場合にのみ、グローバル プレフィックスに適切なコミュニティ値がタグ付けされてアドバタイズされます。
+>[AZURE.IMPORTANT] ExpressRoute Premium アドオンが有効になっている場合にのみ、グローバル プレフィックスに適切なコミュニティ値がタグ付けされてアドバタイズされます。
 
 
 さらに、Microsoft は、所属先のサービスに基づいてプレフィックスにもタグ付けします。これは、Microsoft ピアリングにのみ該当します。次の表に、サービスと BGP コミュニティ値のマッピングを示します。
@@ -163,14 +168,14 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 
 ### ルーティングの基本設定の操作
 
-Microsoft は、ユーザーによって設定されたすべての BGP コミュニティ値を無視します。ユーザーは、ピアリングごとに BGP セッションのペアをセットアップして、[可用性 SLA](http://azure.microsoft.com/support/legal/sla/) が満たされていることを保証する必要があります。ただし、標準的な BGP ルートの操作手法に依存して、ネットワークで優先するリンクを構成できます。各リンクにそれぞれ異なる BGP ローカル基本設定を適用して、ネットワークと Microsoft の間で優先するパスを設定できます。ルートのアドバタイズの先頭に「AS-PATH」を付加して、Microsoft からネットワークへのトラフィック フローに影響を与えることができます。
+Microsoft は、ユーザーによって設定されたすべての BGP コミュニティ値を無視します。ユーザーは、ピアリングごとに BGP セッションのペアをセットアップして、[可用性 SLA](https://azure.microsoft.com/support/legal/sla/) が満たされていることを保証する必要があります。ただし、標準的な BGP ルートの操作手法に依存して、ネットワークで優先するリンクを構成できます。各リンクにそれぞれ異なる BGP ローカル基本設定を適用して、ネットワークと Microsoft の間で優先するパスを設定できます。ルートのアドバタイズの先頭に「AS-PATH」を付加して、Microsoft からネットワークへのトラフィック フローに影響を与えることができます。
 
 ## 次のステップ
 
 - ExpressRoute 接続を構成します。
 
-	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
-	- [ルーティングの構成](expressroute-howto-routing-classic.md)
-	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
+	- [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
+	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
+	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

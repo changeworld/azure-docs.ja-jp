@@ -13,16 +13,20 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="01/20/2016"
 	ms.author="ricksal"/>
 
 # Mobile Services Android アプリへの認証の追加 (JavaScript バックエンド)
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
 ## 概要
 
-このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+このトピックでは、アプリケーションから Azure Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile Services によって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 > [AZURE.VIDEO android-getting-started-with-authentication-in-windows-azure-mobile-services]
 
@@ -33,7 +37,7 @@
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
-## アプリケーションを認証に登録し、モバイル サービスを構成する
+## アプリケーションを認証に登録し、Mobile Services を構成する
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../../includes/mobile-services-register-authentication.md)]
 
@@ -45,27 +49,27 @@
 
 2. **[Run]** メニューの **[Run app]** をクリックし、アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
-	 この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+	 この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、TodoItem テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
 ## アプリケーションに認証を追加する
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app](../../includes/mobile-services-android-authenticate-app.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 ## <a name="cache-tokens"></a>クライアントに認証トークンをキャッシュする
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-with-token](../../includes/mobile-services-android-authenticate-app-with-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="refresh-tokens"></a>トークン キャッシュを更新する
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-refresh-token](../../includes/mobile-services-android-authenticate-app-refresh-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-refresh-token](../../includes/mobile-android-authenticate-app-refresh-token.md)]
 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -99,13 +103,7 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Single sign-on for Windows Store apps by using Live Connect]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started-android
-[Add Mobile Services to an existing app]: /develop/mobile/tutorials/get-started-with-data-android
-[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-android
-[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-android
-[スクリプトを使用したユーザーの認証]: /develop/mobile/tutorials/authorize-users-in-scripts-android
+[Mobile Services の使用]: mobile-services-android-get-started.md
+[スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

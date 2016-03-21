@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ステートフル Reliable Services の診断"
+   pageTitle="ステートフル Reliable Services の診断 | Microsoft Azure"
    description="ステートフル Reliable Services の診断機能"
    services="service-fabric"
    documentationCenter=".net"
@@ -22,11 +22,11 @@
 ## EventSource イベント
 ステートフル Reliable Services の StatefulServiceBase クラスの EventSource 名は、"Microsoft-ServiceFabric-Services" です。このイベント ソースからのイベントは、サービスを [Visual Studio でデバッグしている](service-fabric-debugging-your-application.md)ときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Microsoft Azure 診断](../cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Microsoft Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ## イベント
 
-|イベント名|イベント ID|レベル|イベントの説明|
+|イベント名|イベント ID|Level|イベントの説明|
 |----------|--------|-----|-----------------|
 |StatefulRunAsyncInvocation|1|情報|サービスの RunAsync タスクが開始されたるときに出力されます|
 |StatefulRunAsyncCancellation|2|情報|サービスの RunAsync タスクが取り消されたときに出力されます|
@@ -40,8 +40,8 @@ StatefulRunAsyncInvocation、StatefulRunAsyncCompletion、および StatefulRunA
 
 StatefulRunAsyncSlowCancellation および StatefulRunAsyncFailure イベントはサービスの問題を示しているため、サービスの作成者はこれらのイベントに細心の注意を払う必要があります。
 
-StatefulRunAsyncFailure は、サービスの RunAsync() タスクが例外をスローするたびに出力されます。一般に、スローされる例外は、サービスのエラーやバグを示します。さらに、例外により、サービスが失敗するため、別のノードに移動させられますが、これは、コストのかかる操作で、サービスの移動中に受信要求を遅延させる可能性があります。サービスの作成者は例外の原因を特定し、可能であればそれを軽減する必要があります。
+StatefulRunAsyncFailure は、サービスの RunAsync() タスクが例外をスローするたびに出力されます。一般に、スローされる例外は、サービスのエラーやバグを示します。さらに、この例外はサービスが失敗する原因となるため、別のノードに移動されます。この動作には高い負荷がかかる可能性があるため、サービスの移動中には要求の受信が遅れることがあります。サービスの作成者は例外の原因を特定し、可能であればそれを軽減する必要があります。
 
-StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求に 4 秒より長くかかるたびに出力されます。サービスが、取り消しの完了に時間がかかる場合、サービスが別のノードで速やかに再開される機能に影響し、サービスの全体の可用性に影響を与える可能性があります。
+StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求が 4 秒より長くかかる場合に出力されます。取り消しの完了に時間がかかると、サービスが別のノードで速やかに再開されなくなります。これはサービスの全体の可用性に影響を与える可能性があります。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

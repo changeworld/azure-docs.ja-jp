@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と Kontiki の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Kontiki を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で Kontiki を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Kontiki の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Kontiki でのシングル サインオンが有効なサブスクリプション
   
-このチュートリアルを終了すると、Kontiki に割り当てた Azure AD ユーザーは、Kontiki の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Kontiki に割り当てた Azure AD ユーザーは、Kontiki 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-kontiki-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-kontiki-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -78,7 +78,7 @@
 
 3.  **[アプリケーションの URL を構成する]** ページの **[Kontiki サインオン URL]** テキストボックスに、ユーザーが Kontiki アプリのサインオンに使用する URL (例: "*https://company.mc.eval.kontiki.com/*")) を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-kontiki-tutorial/IC790240.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-kontiki-tutorial/IC790240.png "Configure App URL")
 
 4.  **[Kontiki でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターのローカルに保存します。
 
@@ -88,13 +88,13 @@
 
     >[AZURE.NOTE]シングル サインオンの構成は、Kontiki サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-kontiki-tutorial/IC790242.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
   
 Kontiki へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Kontiki にログインしようとすると、そのユーザーが存在するかどうかが Kontiki によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Kontiki により自動的に作成されます。
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -106,10 +106,10 @@ Kontiki へのユーザー プロビジョニングの構成にあたって必�
 
     ![ユーザーの割り当て](./media/active-directory-saas-kontiki-tutorial/IC790243.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-kontiki-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-kontiki-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

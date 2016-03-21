@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015"
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -23,9 +23,9 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 >[AZURE.NOTE]動的にパッケージ化または暗号化されたコンテンツを再生するには、コンテンツを配信する予定のストリーミング エンドポイントのストリーミング ユニットを必ず 1 つ以上取得するようにしてください。ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
-###Microsoft Azure 管理ポータル Media Services コンテンツ プレーヤー
+###Azure クラシック ポータル Media Services コンテンツ プレーヤー
 
-ビデオは、**Microsoft Azure 管理ポータル**にあるコンテンツ プレーヤーを使用してテストできます。
+**Azure クラシック ポータル**には、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
 
 目的のビデオをクリックし ([発行済](media-services-manage-content.md#publish)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
  
@@ -93,4 +93,4 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

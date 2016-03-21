@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/05/2015" 
+	ms.date="02/03/2016" 
 	ms.author="arramac"/>
 
 # .NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法
 
-Azure DocumentDB は、[SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) と [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してコレクションをプロビジョニングすることによって、アカウントをシームレスにスケールできる (これを**シャーディング**とも言います) ドキュメント データベース サービスです。パーティション分割されたアプリケーションの開発を容易にし、パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のパーティションにスケール アウトされるアプリケーションを構築しやすくする機能を .NET SDK に追加しました。
+Azure DocumentDB は、[SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) と [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してコレクションをプロビジョニングすることによって、アカウントをシームレスにスケールできる (これを**シャーディング**とも言います) ドキュメント データベース サービスです。パーティション分割されたアプリケーションの開発を容易にし、パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のパーティションにスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
 
 この記事では、.NET SDK のクラスとインターフェイスについて確認し、それらを使用してパーティション分割されたアプリケーションを開発する方法を見ていきます。
 
@@ -98,13 +98,13 @@ foreach (UserProfile activeUser in query)
 ## ハッシュ パーティション リゾルバー
 ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。
 
-**ハッシュ パーティション分割:** ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png "ハッシュ パーティション分割")
+**ハッシュ パーティション分割:** ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png)
 
 *N* 個のコレクションに対するシンプルなハッシュ パーティション スキームでは、ドキュメントに対し、*hash(d) mod N* を計算して配置するコレクションを決定します。このシンプルな手法には、コレクションの追加や削除ではうまく機能しないという問題点があります。これらの操作では、ほぼすべてのデータを再配置する必要が生じるためです。[コンシステント ハッシュ](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.3738)というよく知られたアルゴリズムでは、この問題への対処として、コレクションの追加や削除の実行中に必要となるデータ移動の量を最小限に抑えるハッシュ スキームが実装されています。
 
 [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx) クラスには、[IHashGenerator](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.ihashgenerator.aspx) インターフェイスで指定されたハッシュ関数に対してコンシステント ハッシュ リングを構築するロジックが実装されています。HashPartitionResolver は既定で MD5 ハッシュ関数を使用しますが、独自のハッシュ実装に置き換えることができます。HashPartitionResolver の内部では、16 個のハッシュが "仮想ノード" のように各コレクションのハッシュ リング上に作成されます。これにより、複数のコレクションに対してドキュメントが均等に分配されます。ハッシュの個数を変更して、クライアント側の計算量とデータの偏りのバランスをとることもできます。
 
-**HashPartitionResolver を使用したコンシステント ハッシュ:** ![HashPartitionResolver によるハッシュ リング作成を示す図](media/documentdb-sharding/HashPartitionResolver.JPG "コンシステント ハッシュ")
+**HashPartitionResolver を使用したコンシステント ハッシュ:** ![HashPartitionResolver によるハッシュ リング作成を示す図](media/documentdb-sharding/HashPartitionResolver.JPG)
 
 ## 範囲パーティション リゾルバー
 
@@ -114,7 +114,7 @@ foreach (UserProfile activeUser in query)
 
 **範囲パーティション分割:**
 
-![範囲パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-range.png "範囲パーティション分割")
+![範囲パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-range.png)
 
 範囲パーティション分割の特殊なケースとして、範囲が単一の離散値のみの場合があります。このようなケースは "検索パーティション分割" とも呼ばれます。この手法は、リージョンごとのパーティション分割 (たとえば、ノルウェー、デンマーク、スウェーデンを含むスカンジナビア地域についてのパーティション) か、マルチ テナント アプリケーション内のテナントのパーティション分割に使用されるのが一般的です。
 
@@ -131,7 +131,7 @@ foreach (UserProfile activeUser in query)
 
 サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
->[AZURE.NOTE]コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
+>[AZURE.NOTE] コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
 
 ##FAQ
 **DocumentDB がサーバー側のパーティション分割ではなくクライアント側のパーティション分割をサポートしているのはなぜですか。**
@@ -140,10 +140,6 @@ DocumentDB では複数の理由からクライアント側のパーティショ
 
 - 開発者からコレクションの概念を分離しようとすると、一貫性のあるインデックス作成/クエリ実行、高可用性、ACID トランザクションの保証のうち、いずれかの面で妥協せざるを得なくなります。 
 - ドキュメント データベースでは、多くの場合、パーティション分割戦略を定義するうえで柔軟性が必要ですが、サーバー側アプローチではこれに対応できない場合があります。 
-
-**他のプラットフォーム (Node.js、Java、Python) ではパーティション分割がサポートされていないのはなぜですか。**
-
-Microsoft では、.NET SDK のお客様からいただいたフィードバックを基に、他のプラットフォームにもパーティション分割のサポートを段階的にロールアウトする予定です。
 
 **パーティション スキームへのコレクションの追加や削除はどのようにすればよいですか。**
 
@@ -164,7 +160,7 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB の制限](documentdb-limits.md)
-* [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
+* [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

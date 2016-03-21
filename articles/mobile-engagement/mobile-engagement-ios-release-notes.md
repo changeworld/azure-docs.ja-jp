@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="02/29/2016"
 	ms.author="MehrdadMzfr" />
 
 #リリース ノート
+
+##3\.2.1 (12/11/2015)
+
+-   新しいアプリケーション インスタンスがディープ リンクを持つ通知によってトリガーされたときの遅延を修正。 
 
 ##3\.2.0 (10/08/2015)
 
@@ -54,4 +58,4 @@
 -   セキュリティの強化。
 -   SmartAd の追跡が削除されました。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

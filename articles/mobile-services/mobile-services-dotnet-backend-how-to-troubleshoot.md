@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="02/07/2016" 
 	ms.author="wesmc;ricksal"/>
 
 # Mobile Services .NET バックエンドのトラブルシューティング
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 Mobile Services を使用した開発は、通常は手間もかからないのですが、場合によっては問題が発生することもあります。このチュートリアルでは、Mobile Services .NET バックエンドで発生する可能性がある一般的な問題のトラブルシューティングの手法をいくつか説明します。
 
@@ -36,7 +41,8 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 1. **Visual Studio 2013 Update 2** 以降で Mobile Services サーバー プロジェクトを開いて開始します。すぐにプロジェクトを用意できない場合は、**[ファイル]**、**[新規作成]**、**[プロジェクト]** を順に選択してプロジェクトを作成できます。次に、**[クラウド]** ノード、**[Microsoft Azure Mobile Services]** テンプレートを順に選択します。
 2. **F5** キーを押して、アプリケーションをビルドおよび実行します。スタート ページで、**[試してみる]** を選択します。
 
-    >[AZURE.NOTE]サービスがローカルでホストされている場合は、リンクをクリックすると次のページに進みます。ただし、クラウドでホストされている場合は、一連の資格情報を入力するよう求められます。これにより、認証されていないユーザーは、開発者の API とペイロードに関する情報にアクセスできなくなります。ページを参照するには、**空のユーザー名**と、パスワードに**アプリケーション キー**を入力してログインする必要があります。アプリケーション キーを入手するには、**Azure 管理ポータル**で、モバイル サービスの **[ダッシュボード]** タブに移動して、**[キーの管理]** を選択します。
+    >[AZURE.NOTE]
+    サービスがローカルでホストされている場合は、リンクをクリックすると次のページに進みます。ただし、クラウドでホストされている場合は、一連の資格情報を入力するよう求められます。これにより、認証されていないユーザーは、開発者の API とペイロードに関する情報にアクセスできなくなります。ページを参照するには、**空のユーザー名**と、パスワードに**アプリケーション キー**を入力してログインする必要があります。アプリケーション キーを入手するには、Azure クラシック ポータルで、モバイル サービスの **[ダッシュボード]** タブに移動して、**[キーの管理]** を選択します。
     >
     > ![Authentication prompt to access help page][HelpPageAuth]
 
@@ -68,7 +74,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     ![Configure symbol loading][SymbolLoading]
 
-3. 左側の [**シンボル**] ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して (SymbolSource)[http://symbolsource.org] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
+3. 左側の **[シンボル]** ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して [SymbolSource] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
 
     ![Configure symbol server][SymbolServer]
 
@@ -107,9 +113,9 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 ![Logs in Visual Studio Server Explorer][LogsServerExplorer]
 
-同じログは、**Azure 管理ポータル**で、モバイル サービスの **[ログ]** タブでも使用できます。
+同じログは、Azure クラシック ポータルで、モバイル サービスの **[ログ]** タブでも使用できます。
 
-![Logs in Azure Management Portal][LogsPortal]
+![Azure クラシック ポータルのログ][LogsPortal]
 
 <a name="AssemblyResolution"></a>
 ## デバッグによるクラウド アセンブリの問題の解決
@@ -118,7 +124,7 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 必要なアセンブリの*異なるメジャー バージョン*を参照することでバージョンの競合が起こる可能性があります (*マイナー* バージョンは異なってもかまいません)。この現象は、Mobile Services .NET バックエンドが使用するいずれかのパッケージの最新バージョンにアップグレードするよう NuGet から求められるときに頻繁に発生します。
 
->[AZURE.NOTE]Mobile Services は、現在 ASP.NET 5.1 のみに対応しています。現時点で ASP.NET 5.2 はサポートされていません。お使いの ASP.NET NuGet パッケージを 5.2.* にアップグレードすると、デプロイ後にエラーが発生する可能性があります。
+>[AZURE.NOTE] Mobile Services は、現在 ASP.NET 5.1 のみに対応しています。現時点で ASP.NET 5.2 はサポートされていません。お使いの ASP.NET NuGet パッケージを 5.2.* にアップグレードすると、デプロイ後にエラーが発生する可能性があります。
 
 更新されたサービスを Azure に発行するときに、そのいずれかのパッケージをアップグレードする場合は、次のように競合を示す警告ページが表示されます。
 
@@ -154,4 +160,8 @@ SQL Database と共に Mobile Services .NET バックエンドを使用してい
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
 
-<!---HONumber=Oct15_HO3-->
+
+<!-- Links -->
+[SymbolSource]: http://symbolsource.org
+
+<!---HONumber=AcomDC_0211_2016-->

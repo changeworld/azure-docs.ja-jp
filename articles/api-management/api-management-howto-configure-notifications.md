@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="12/07/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で通知と電子メール テンプレートを構成する方法
@@ -22,7 +22,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 
 ## <a name="publisher-notifications"> </a>発行者通知の構成
 
-通知を構成するには、API Management サービスについて Azure ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
+通知を構成するには、API Management サービスについて Azure クラシック ポータルで **[管理]** をクリックします。API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
@@ -30,7 +30,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 
 左側の **[API Management]** メニューの **[通知]** をクリックして、使用可能な通知を表示します。
 
-![Publisher notifications][api-management-publisher-notifications]
+![発行者通知][api-management-publisher-notifications]
 
 通知に対して、次のイベントを構成できます。
 
@@ -46,7 +46,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 
 通知先の電子メール アドレスを指定するには、電子メール アドレス テキスト ボックスに電子メール アドレスを入力します。複数の電子メール アドレスを指定するには、電子メール アドレスをコンマで区切ります。
 
-![Notification recipients][api-management-email-addresses]
+![通知の受信者][api-management-email-addresses]
 
 通知を送信するユーザーを指定するには、**[受信者の追加]** をクリックします。目的のユーザーの横のチェック ボックスをオンにし、**[OK]** をクリックします。
 
@@ -54,7 +54,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 
 通知の受信者を構成したら、**[保存]** をクリックして、更新された通知の受信者を適用します。
 
->変更を保存しないで **[発行者通知]** タブから移動しようとすると、API Management ポータルにその旨を示すメッセージが表示されます。
+>変更を保存しないで **[発行者通知]** タブから移動しようとすると、パブリッシャー ポータルにその旨を示すメッセージが表示されます。
 
 ## <a name="email-templates"> </a>電子メール テンプレートの構成
 
@@ -75,15 +75,15 @@ API Management には、サービスの管理および使用に関連して送�
 
 API Management インスタンスの電子メール テンプレートを表示および構成するには、左側の **[API Management]** メニューの **[通知]** をクリックし、**[電子メール テンプレート]** タブを選択します。
 
-![Email templates][api-management-email-templates]
+![電子メール テンプレート][api-management-email-templates]
 
 特定のテンプレートを表示および構成するには、**[テンプレート]** ボックスの一覧から目的のテンプレートを選択します。
 
-![Email templates list][api-management-email-templates-list]
+![電子メール テンプレートの一覧][api-management-email-templates-list]
 
 それぞれの電子メール テンプレートは、件名がプレーンテキスト形式で記述され、本文定義が HTML 形式で記述されています。必要に応じてそれぞれの項目をカスタマイズできます。
 
-![Email template editor][api-management-email-template]
+![電子メール テンプレート エディター][api-management-email-template]
 
 **[パラメーター]** には、パラメーターの一覧が表示されます。件名または本文にパラメーターを挿入しておくと、電子メールの送信時にパラメーターが指定された値と置き換えられます。パラメーターを挿入するには、パラメーターを挿入する場所にカーソルを置いた状態で、パラメーター名の左側の矢印をクリックします。
 
@@ -114,4 +114,4 @@ API Management インスタンスの電子メール テンプレートを表示�
 [API Management インスタンスの作成]: api-management-get-started.md
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

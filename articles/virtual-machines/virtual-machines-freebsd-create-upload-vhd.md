@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="05/19/2015"
+   ms.date="01/12/2016"
    ms.author="kyliel"/>
 
 # FreeBSD VHD の作成と Azure へのアップロード
@@ -27,13 +27,13 @@
 ##前提条件##
 この記事では、次の項目があることを前提としています。
 
-- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](http://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
+- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
 
-- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](http://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
+- **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](https://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
 
 - **.vhd ファイルにインストールされている FreeBSD オペレーティング システム** - サポートされている FreeBSD オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
-> [AZURE.NOTE]新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [convert-vhd](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは [convert-vhd](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 このタスクの手順は次のとおり 5 つあります。
 
@@ -72,7 +72,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     5\.1 **Python をインストールする**
 
-		# pkg install python27 py27-asn1
+		# pkg install python27
 		# ln -s /usr/local/bin/python2.7 /usr/bin/python
 
     5\.2 **wget をインストールする**
@@ -81,7 +81,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 6. **Azure エージェントをインストールする**
 
-    Azure エージェントの最新版は常に [GitHub](https://github.com/Azure/WALinuxAgent/releases) にあります。FreeBSD 10 以降を正式にサポートしているのは、2.0.10 以降のバージョンです。
+    Azure エージェントの最新版は常に [GitHub](https://github.com/Azure/WALinuxAgent/releases) にあります。FreeBSD 10 以降を正式にサポートしているのは、2.0.10 以降のバージョンです。FreeBSD の Azure エージェントの最新バージョンは 2.0.16 です。
 
 		# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.10/waagent --no-check-certificate
 		# mv waagent /usr/sbin
@@ -104,9 +104,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Microsoft Azure 管理ポータルを使用して、ストレージ アカウントを作成できます。
+仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure 旧ポータルを使用して作成できます。
 
-1. Microsoft Azure 管理ポータルにサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -120,7 +120,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
 
-	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)に関するページを参照してください。
+	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、「[Azure ストレージ アカウントについて](../storage-create-storage-account/#replication-options)」をご覧ください。
 
 	![ストレージ アカウントの詳細の入力](./media/virtual-machines-freebsd-create-upload-vhd/Storage-create-account.png)
 
@@ -141,7 +141,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![コンテナー名](./media/virtual-machines-freebsd-create-upload-vhd/storageaccount_containervalues.png)
 
-    > [AZURE.NOTE]既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、[パブリック BLOB] オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、[パブリック コンテナー] オプションを使用します。
+    > [AZURE.NOTE] 既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、[パブリック BLOB] オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、[パブリック コンテナー] オプションを使用します。
 
 ## 手順 3. Microsoft Azure への接続を準備する ##
 
@@ -181,12 +181,12 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## ステップ 4: .vhd ファイルをアップロードする ##
 
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために管理ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために Azure クラシック ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
 
 
 1. 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
 
-		Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>		
+		Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>
 
 ## ステップ 5: アップロードした VHD で VM を作成する ##
 .vhd をアップロードしたら、サブスクリプションに関連付けられたカスタム イメージの一覧にイメージとして追加し、そのカスタム イメージから仮想マシンを作成できます。
@@ -197,9 +197,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Azure クラシック ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
-    ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
+    ![イメージの追加](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
 3. ギャラリーから仮想マシンを作成します。これで **[マイ イメージ]** で新しいイメージが使用可能になりました。新しいイメージを選択し、表示される画面でホスト名、パスワード、SSH キーなどを設定します。
 
@@ -207,6 +207,6 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 4. プロビジョニングが完了したら、Azure での FreeBSD VM の稼働を確認できます。
 
-	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
+	![Azure での FreeBSD イメージ](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

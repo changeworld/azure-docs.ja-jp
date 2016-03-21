@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="12/16/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs を使用した iOS デバイスへのローカライズ ニュース速報の送信
@@ -25,7 +25,7 @@
 
 ##概要
 
-このトピックでは、Azure 通知ハブの**テンプレート**機能を使用して、言語およびデバイスごとにローカライズしたニュース速報通知をブロードキャストする方法について説明します。このチュートリアルでは、「[通知ハブを使用したニュース速報の送信]」で作成した Windows ストア アプリケーションを使用します。完了すると、興味のあるニュース速報カテゴリに登録して受信する通知の言語を指定し、選択したカテゴリのその言語のプッシュ通知だけを受信できるようになります。
+このトピックでは、Azure Notification Hubs の[テンプレート](notification-hubs-templates.md)機能を使用して、言語およびデバイスごとにローカライズしたニュース速報通知をブロードキャストする方法について説明します。このチュートリアルでは、「[Notification Hubs を使用したニュース速報の送信]」で作成した iOS アプリケーションを使用します。完了すると、興味のあるニュース速報カテゴリに登録して受信する通知の言語を指定し、選択したカテゴリのその言語のプッシュ通知だけを受信できるようになります。
 
 
 このシナリオは次の 2 つに分けられます。
@@ -40,7 +40,7 @@
 
 「[通知ハブを使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルでは、そのコードに基づいているためです。
 
-Visual Studio 2012 も必要です。
+必要に応じて Visual Studio 2012 以降を使用できます。
 
 
 
@@ -66,7 +66,7 @@ Visual Studio 2012 も必要です。
 		}
 	}
 
-テンプレートは有用な機能です。詳細については、「[通知ハブの概要]」の記事を参照してください。テンプレート式言語のリファレンスは、「[方法: Service Bus Notification Hubs (iOS アプリケーション)]」にあります。
+テンプレートは有用な機能です。詳細については、「[テンプレート](notification-hubs-templates.md)」の記事を参照してください。
 
 ##アプリケーションのユーザー インターフェイス
 
@@ -83,7 +83,6 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 ##iOS アプリケーションを構築する
 
-クライアント アプリケーションがローカライズしたメッセージを受信できるようにするには、*ネイティブ*登録 (つまり、テンプレートを指定する登録) をテンプレート登録に置き換える必要があります。
 
 1. Notification.h で、*retrieveLocale* メソッドを追加し、以下に示すように store メソッドと subscribe メソッドを変更します。
 
@@ -126,12 +125,12 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 		    NSString* template = [NSString stringWithFormat:@"{"aps":{"alert":"$(News_%@)"},"inAppMessage":"$(News_%@)"}", localeString, localeString];
 
-		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"newsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
+		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
 
 	ここで、*registerNativeWithDeviceToken* の代わりに *registerTemplateWithDeviceToken* メソッドをどのように使用しているかに注目してください。テンプレートを登録するときは、json テンプレートに加えて、テンプレートの名前も指定する必要があります (アプリケーションにより複数のテンプレートが登録されることがあるため)。それらのニュースの通知を確実に受信できるようにするため、カテゴリをタグとして登録してください。
 
-	最後に、ユーザーの既定の設定からロケールを取得するメソッドを追加します。
+	ユーザーの既定の設定からロケールを取得するメソッドを追加します。
 
 		- (int) retrieveLocale {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -141,7 +140,7 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 		    return locale < 0?0:locale;
 		}
 
-3. ここまでで、Notifications クラスを変更したので、ViewController が新しい UISegmentControl を使用することを確認する必要があります。*viewDidLoad* メソッドに次の行を追加し、現在選択されているロケールが表示されるようにします。
+2. ここまでで、Notifications クラスを変更したので、ViewController が新しい UISegmentControl を使用することを確認する必要があります。*viewDidLoad* メソッドに次の行を追加し、現在選択されているロケールが表示されるようにします。
 
 		self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
 
@@ -158,19 +157,90 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 	        }
 	    }];
 
-4. 最後に、アプリケーションの起動時に登録を正しく更新できるように、AppDelegate.m で *didRegisterForRemoteNotificationsWithDeviceToken* メソッドを更新します。通知の *subscribe* メソッドへの呼び出しを、次のように変更します。
+3. 最後に、アプリケーションの起動時に登録を正しく更新できるように、AppDelegate.m で *didRegisterForRemoteNotificationsWithDeviceToken* メソッドを更新します。通知の *subscribe* メソッドへの呼び出しを、次のように変更します。
 
-		NSSet* categories = [notifications retrieveCategories];
-	    int locale = [notifications retrieveLocale];
-	    [notifications subscribeWithLocale: locale categories:categories completion:^(NSError* error) {
+		NSSet* categories = [self.notifications retrieveCategories];
+	    int locale = [self.notifications retrieveLocale];
+	    [self.notifications subscribeWithLocale: locale categories:categories completion:^(NSError* error) {
 	        if (error != nil) {
 	            NSLog(@"Error registering for notifications: %@", error);
 	        }
 	    }];
 
-##バックエンドからローカライズした通知を送信する
+##(省略可能) ローカライズされたテンプレート通知を .NET コンソール アプリケーションから送信します。
 
 [AZURE.INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
+
+
+
+##(省略可能) ローカライズされたテンプレート通知をデバイスから送信する
+
+Visual Studio にアクセスできない場合でも、ローカライズされたテンプレート通知をデバイス上のアプリから直接送信することをテストできます。単に、前のチュートリアルで定義した `SendNotificationRESTAPI` メソッドにローカライズされたテンプレートのパラメーターを追加できます。
+
+		- (void)SendNotificationRESTAPI:(NSString*)categoryTag
+		{
+		    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
+									 defaultSessionConfiguration] delegate:nil delegateQueue:nil];
+
+		    NSString *json;
+
+		    // Construct the messages REST endpoint
+		    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
+		                                       HUBNAME, API_VERSION]];
+
+		    // Generated the token to be used in the authorization header.
+		    NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
+
+		    //Create the request to add the template notification message to the hub
+		    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+		    [request setHTTPMethod:@"POST"];
+
+		    // Add the category as a tag
+		    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
+
+			// Template notification
+	        json = [NSString stringWithFormat:@"{"messageParam":"Breaking %@ News : %@","
+					"News_English":"Breaking %@ News in English : %@","
+					"News_French":"Breaking %@ News in French : %@","
+					"News_Mandarin":"Breaking %@ News in Mandarin : %@","
+	                categoryTag, self.notificationMessage.text,
+	                categoryTag, self.notificationMessage.text,  // insert English localized news here
+	                categoryTag, self.notificationMessage.text,  // insert French localized news here
+	                categoryTag, self.notificationMessage.text]; // insert Mandarin localized news here
+
+	        // Signify template notification format
+	        [request setValue:@"template" forHTTPHeaderField:@"ServiceBusNotification-Format"];
+
+			// JSON Content-Type
+			[request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+
+		    //Authenticate the notification message POST request with the SaS token
+		    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
+
+		    //Add the notification message body
+		    [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+
+		    // Send the REST request
+		    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
+		               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+	           {
+	           NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
+	               if (error || httpResponse.statusCode != 200)
+	               {
+	                   NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
+	               }
+	               if (data != NULL)
+	               {
+	                   //xmlParser = [[NSXMLParser alloc] initWithData:data];
+	                   //[xmlParser setDelegate:self];
+	                   //[xmlParser parse];
+	               }
+	           }];
+
+		    [dataTask resume];
+		}
+
+
 
 
 ## 次のステップ
@@ -179,9 +249,6 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 - [Notification Hubs によるユーザーへの通知: ASP.NET]
 - [Notification Hubs によるユーザーへの通知: Mobile Services]
-- [Notification Hubs の概要]
-
-テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (iOS アプリ)]」にあります。
 
 
 
@@ -199,7 +266,7 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 
 <!-- URLs. -->
-[方法: Service Bus Notification Hubs (iOS アプリケーション)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-ios
 [通知ハブを使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-ios
 [Mobile Service]: /develop/mobile/tutorials/get-started
@@ -216,11 +283,9 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

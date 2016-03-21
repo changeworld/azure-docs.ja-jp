@@ -1,38 +1,37 @@
-<properties 
-   pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
-   description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar"
-   tags="azure-service-management"/>
+<properties
+	pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
+	description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"
+	tags="azure-service-management"/>
 
-<tags 
-   ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
-   ms.author="jroth" />
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="02/03/2016"
+	ms.author="jroth" />
 
 # オンプレミスの AlwaysOn 可用性グループの Azure への拡張
 
 AlwaysOn 可用性グループは、セカンダリ レプリカを追加することで、データベースのグループの高可用性を実現します。これらのレプリカを使用すると、障害発生時にデータベースをフェールオーバーできます。また、読み取りワークロードやバックアップ タスクをオフロードすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
-
 SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニングし、その VM をレプリカとしてオンプレミスの可用性グループに追加することで、オンプレミスの可用性グループを Microsoft Azure に拡張できます。
 
 このチュートリアルでは、以下があることを前提としています。
 
-- 有効な Azure サブスクリプション[無料試用版](http://azure.microsoft.com/pricing/free-trial)にサインアップできます。
+- 有効な Azure サブスクリプション[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 - 既存のオンプレミスの AlwaysOn 可用性グループ。可用性グループの詳細については、「[AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
-- オンプレミスのネットワークと、Azure Virtual Network 間の接続。この仮想ネットワークを作成する方法の詳細については、「[管理ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
+- オンプレミスのネットワークと、Azure Virtual Network 間の接続。この仮想ネットワークを作成する方法の詳細については、「[Azure クラシック ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 ## Azure レプリカ ウィザードの追加
 
@@ -66,7 +65,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 |**VM ユーザー名**|VM の管理者アカウントになるユーザー名を指定します。|
 |**VM 管理者パスワード**|新しいアカウントのパスワードを指定します。|
 |**パスワードの確認**|確認のためにもう一度新しいアカウントのパスワードを入力します。|
-|**Virtual Network**|新しい VM で使用する Azure Virtual Network を指定します。仮想ネットワークの詳細については、「[Virtual Network の概要](..\virtual-network\virtual-networks-overview.md)」を参照してください。|
+|**Virtual Network**|新しい VM で使用する Azure Virtual Network を指定します。仮想ネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。|
 |**Virtual Network サブネット**|新しい VM で使用する仮想ネットワーク サブネットを指定します。|
 |**ドメイン**|あらかじめ入力されているドメインの値が正しいことを確認します。|
 |**ドメイン ユーザー名**|ローカル クラスター ノード上のローカルの Administrators グループに属しているアカウントを指定します。|
@@ -92,7 +91,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. プロビジョニング プロセスが開始されます。ウィザードが正常に完了したら、**[閉じる]** をクリックして、ウィザードを終了します。
 
->[AZURE.NOTE]Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
+>[AZURE.NOTE] Azure レプリカの追加ウィザードでは、Users\\User Name\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
 
 ## 可用性グループ リスナーの作成
 
@@ -104,4 +103,4 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

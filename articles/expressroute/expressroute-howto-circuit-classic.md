@@ -1,10 +1,10 @@
 <properties
-   pageTitle="PowerShell を使用した ExpressRoute 回線の構成手順 |Microsoft Azure"
+   pageTitle="PowerShell を使用した ExpressRoute 回線の構成手順 | Microsoft Azure"
    description="この記事では、ExpressRoute 回線の作成およびプロビジョニング手順について説明します。この記事では回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
+   ms.date="02/04/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した ExpressRoute 回線の作成と変更
@@ -22,14 +22,14 @@
 [PowerShell - Classic](expressroute-howto-circuit-classic.md)
 [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
 
-この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットと**クラシック** デプロイ モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。**リソース マネージャー** デプロイ モデルを使用して、ExpressRoute 回線を作成および変更する場合は、「[Azure リソース マネージャーと PowerShell を使用して ExpressRoute 回線を作成および変更する](expressroute-howto-circuit-arm.md)」をご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
+- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順を示す、[Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)の手順に従ってください。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページと[ワークフロー](expressroute-workflows.md)ページを確認してください。
 
 ## ExpressRoute 回線を作成してプロビジョニングするには
@@ -43,7 +43,7 @@
 
 2. **プロバイダー、ロケーション、およびサポートされている帯域幅のリストを取得します。**
 
-	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureDedicatedCircuitServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。
+	ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。PowerShell コマンドレット *Get-AzureDedicatedCircuitServiceProvider* を実行すると、この情報が返されます。この情報は後の手順で使用します。コマンドレットを実行すると、結果は次の例のようになります。
 
 		PS C:\> Get-AzureDedicatedCircuitServiceProvider
 
@@ -108,11 +108,11 @@
 		$ServiceProvider = "Equinix"
 		$Location = "Silicon Valley"
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard -BillingType MeteredData 
 
 	または、Premium アドオンを使用して ExpressRoute 回線を作成する場合は、次の例を使用します。Premium アドオンの詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium - BillingType MeteredData
 	
 	
 	応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
@@ -197,7 +197,7 @@
 
 7. **ExpressRoute 回線への VNet のリンク**
 
-	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute 用の仮想ネットワークを作成する必要がある場合は、[ExpressRoute 用の仮想ネットワークの作成](expressroute-howto-createvnet-classic.md)に関するページを参照してください。
+	次に、ExpressRoute 回線に VNet をリンクします。詳しい手順については、[VNet への ExpressRoute 回線のリンク](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。ExpressRoute のクラシック デプロイ モデルを使用して仮想ネットワークを作成する必要がある場合、手順については、「[ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md)」をご覧ください。
 
 ##  ExpressRoute 回線の状態を取得するには
 
@@ -286,7 +286,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 これで回線の Premium アドオンが無効になります。
 
->[AZURE.IMPORTANT]標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
+>[AZURE.IMPORTANT] 標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
 >
 >- Premium から標準にダウングレードする前に、回線にリンクされている仮想ネットワークの数が 10 未満であることを確認する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
 - 他の地理的リージョンではすべての仮想ネットワークのリンクを解除する必要があります。そうしないと、更新要求は失敗し、Premium 料金が課金されます。
@@ -310,7 +310,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 回線のサイズは、Microsoft 側で増やされます。接続プロバイダーに連絡し、この変更に合わせて接続プロバイダー側の構成を更新するよう求める必要があります。更新された帯域幅のオプションの課金は、この時点から開始されます。
 
->[AZURE.IMPORTANT]中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
+>[AZURE.IMPORTANT] 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
 
 ##  ExpressRoute 回線を削除してプロビジョニング解除するには
 
@@ -327,6 +327,5 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 ## 次のステップ
 
 - [ルーティングの構成](expressroute-howto-routing-classic.md)
-- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md) 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

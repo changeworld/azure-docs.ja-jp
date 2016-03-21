@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 
@@ -43,7 +43,7 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 
 **現在のコンポーネントのバージョンの取得**
 
-HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist" ディレクトリの内容を直接確認することです。
+HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist\" ディレクトリの内容を直接確認することです。
 
 
 **リリース ノート**
@@ -54,7 +54,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 HDInsight Windows PowerShell コマンドレットまたは HDInsight .NET SDK を使用してクラスターを作成するときは、"Version" パラメーターを使用して、HDInsight Hadoop クラスターのバージョンを選択することができます。
 
-**[簡易作成]** オプションを使用すると、既定で Hadoop クラスターを作成する HDInsight バージョン 3.1 を取得します。Azure ポータルで **[カスタム作成]** オプションを使用する場合は、**[クラスターの詳細]** ページの **[HDInsight のバージョン]** ボックスで、デプロイされるクラスターのバージョンを選択できます。
+**[簡易作成]** オプションを使用すると、既定で Hadoop クラスターを作成する HDInsight バージョン 3.1 を取得します。Azure クラシック ポータルで **[カスタム作成]** オプションを使用する場合は、**[クラスターの詳細]** ページの **[HDInsight のバージョン]** ボックスで、デプロイされるクラスターのバージョンを選択できます。
 
 ##機能概要
 HDInsight プラットフォームの重要な機能には、次のようなものがあります。
@@ -68,7 +68,7 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 
 - **Storm** - 一般公開が開始された Azure HDInsight の Storm は、リアルタイム分析をすばやく簡単にデプロイできる機能で、数回クリックするだけで数分以内にデプロイが完了します。Azure HDInsight の Apache Storm は、Apache Hadoop エコシステムのオープン ソース プロジェクトの 1 つで、何百万ものイベントを信頼性の高い方法で処理できる分析プラットフォームへのアクセスを提供します。これにより、Hadoop ユーザーは、イベントが発生したときだけでなく、過去のイベントからも洞察を得ることができます。Microsoft では、Visual Studio とのビルトイン統合も提供しており、開発者は Storm を簡単に操作できます。Storm トポロジの開発、デプロイ、およびデバッグを、Visual Studio 内から実行できます。
 
-- **Linux での HDInsight** - Azure HDInsight には、Linux (Ubuntu) 仮想マシン (VM) 上で実行される Hadoop クラスターをプロビジョニングするオプションが用意されています。Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを使用して実行できます。Windows または Linux が実行されているクライアント コンピューターから、Azure ポータル、Azure CLI、または HDInsight .NET SDK (Windows のみ) を使用して Linux 上に HDInsight クラスターをプロビジョニングできます。
+- **Linux での HDInsight** - Azure HDInsight には、Linux (Ubuntu) 仮想マシン (VM) 上で実行される Hadoop クラスターをプロビジョニングするオプションが用意されています。Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを使用して実行できます。Windows または Linux が実行されているクライアント コンピューターから、Azure クラシック ポータル、Azure CLI、または HDInsight .NET SDK (Windows のみ) を使用して Linux 上に HDInsight クラスターをプロビジョニングできます。
 
 - **追加の VM サイズ** - HDInsight クラスターを利用できる VM の種類とサイズが増えました。HDInsight クラスターは、汎用目的でビルドされた A2 ～ A7 サイズ、ソリッド ステート ドライブ (SSD) と 60% 高速のプロセッサを特徴とする D シリーズ ノード、高速ネットワーク用 InfiniBand をサポートする A8 と A9 サイズを利用できます。Azure HDInsight で Apache HBase を使用するお客様は、D シリーズの大容量メモリ構成を利用してパフォーマンスを向上させることができます。また、Azure HDInsight で Apache Storm を使用するお客様は、追加メモリを活用して大規模な参照データ セットを読み込んだり、高速な CPU によってスループットを向上させたりできます。
 
@@ -103,9 +103,9 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform のバージョン、そのリリース日を示します。非推奨となった場合は、サポート有効期限とその日付も記載されます。以下の点に注意してください。
 
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
-* 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
+* 特定のバージョンのサポート期限が切れると、Azure クラシック ポータルから利用できなくなる可能性があります。次の表に、Azure クラシック ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
-<table border="1"> <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure ポータルでの利用</th><th>サポート有効期限</th><th>非推奨となる日</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>2014 年 2 月 11 日</td><td>あり</td><td>2014 年 9 月 17 日</td><td>2015 年 6 月 30 日</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 5 月 12 日</td><td>2015 年 5 月 31 日</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 4 月 26 日</td><td>2015 年 5 月 31 日</td></tr> </table><br>
+<table border="1"> <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure クラシック ポータルで利用可能</th><th>サポート有効期限</th><th>非推奨となる日</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>2014 年 2 月 11 日</td><td>あり</td><td>2014 年 9 月 17 日</td><td>2015 年 6 月 30 日</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 5 月 12 日</td><td>2015 年 5 月 31 日</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 4 月 26 日</td><td>2015 年 5 月 31 日</td></tr> </table><br>
 
 **既定以外のクラスターのデプロイメント**
 
@@ -116,11 +116,11 @@ Hadoop 2.4 では、既定では HDInsight 3.1 クラスターが作成される
 SLA は、"サポート ウィンドウ" の条件で定義されます。サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間を指しています。HDInsight クラスターは、そのバージョンの**サポート有効期限**が現在の日付を過ぎている場合、サポート対象外となります。サポートされている HDInsight クラスターのバージョンの一覧は上記のテーブルに示されています。所定の HDInsight Version X (新しい X+1 バージョンが利用可能なった後) のサポート有効期限は、次の数式で計算した日付のうち、遅い方とされます。
 
 - 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
-- 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) が Azure ポータルで使用可能になった日付に 90 日を加える。
+- 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) が Azure クラシック ポータルで使用可能になった日付に 90 日を加える。
 
 **非推奨となる日**は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。
 
-> [AZURE.NOTE]HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](../cloud-services-guestos-update-matrix.md) で実行されます。
+> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](../cloud-services-guestos-update-matrix.md) で実行されます。
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート##
 
@@ -160,4 +160,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,11 +1,11 @@
 <properties
-   pageTitle="高信頼アクターのイベント"
-   description="Service Fabric 高信頼アクターのイベントの概要"
+   pageTitle="Reliable Actors のイベント | Microsoft Azure"
+   description="Service Fabric Reliable Actors のイベントの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="02/19/2016"
    ms.author="amanbha"/>
 
 
@@ -72,4 +72,4 @@ var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

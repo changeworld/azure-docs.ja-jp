@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="以前の Visual Studio Online バージョンの Application Insights からのアップグレード" 
+	pageTitle="以前の Visual Studio Team Services バージョンの Application Insights からのアップグレード" 
 	description="既存のプロジェクトのアップグレード"
 	services="application-insights" 
     documentationCenter=""
@@ -15,9 +15,9 @@
 	ms.date="06/19/2015" 
 	ms.author="awills"/>
  
-# 以前の Visual Studio Online バージョンの Application Insights からのアップグレード
+# 以前の Visual Studio Team Services バージョンの Application Insights からのアップグレード
 
-このドキュメントは、Visual Studio Online に含まれていた以前のバージョンの Application Insights を今でも使用しているプロジェクトがある場合にのみ役立ちます。このバージョンはいずれ使用できなくなるため、Microsoft Azure 内のサービスである新しいバージョンにアップグレードすることをお勧めします。
+このドキュメントは、Visual Studio Team Services に含まれていた以前のバージョンの Application Insights を今でも使用しているプロジェクトがある場合にのみ役立ちます。このバージョンはいずれ使用できなくなるため、Microsoft Azure 内のサービスである新しいバージョンにアップグレードすることをお勧めします。
 
 ## 自分が所有しているバージョン
 
@@ -73,4 +73,4 @@ ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Nov15_HO4-->

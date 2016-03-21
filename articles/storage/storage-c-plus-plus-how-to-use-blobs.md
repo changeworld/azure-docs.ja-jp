@@ -1,29 +1,29 @@
-<properties 
-    pageTitle="BLOB ストレージを使用する方法 (C++) | Microsoft Azure" 
-    description="Azure で BLOB ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。" 
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="adinah" 
-    editor=""/>
+<properties
+    pageTitle="BLOB ストレージを使用する方法 (C++) | Microsoft Azure"
+    description="Azure で BLOB ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。"
+    services="storage"
+    documentationCenter=".net"
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
 
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-	ms.date="09/23/2015" 
-    ms.author="tamram"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/17/2016"
+    ms.author="dineshm"/>
 
 # C++ から BLOB ストレージを使用する方法  
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## 概要
-このガイドでは、Azure Blob ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
+このガイドでは、Azure Blob ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
 
->[AZURE.NOTE]このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 1.0.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) 経由で入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) 経由で入手できます。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
@@ -47,12 +47,12 @@ Azure Storage API を使用して BLOB にアクセスする C++ ファイルの
 	#include "was/blob.h"
 
 ## Azure のストレージ接続文字列の設定
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時に、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection-string with your values.
 	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 
-ローカルの Windows コンピューターでアプリケーションをテストするには、[Azure SDK](http://azure.microsoft.com/downloads/) と共にインストールされた、Microsoft Azure [ストレージ エミュレーター](https://msdn.microsoft.com/library/azure/hh403989.aspx)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure で使用できる BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
+ローカルの Windows コンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Microsoft Azure [ストレージ エミュレーター](storage-use-emulator.md)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure で使用できる BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection-string with Azure Storage Emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -78,7 +78,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
 この例は、コンテナーがない場合に、コンテナーを作成する方法を示しています。
 
-	try 
+	try
 	{
 		// Retrieve storage account from connection string.
 		azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -189,7 +189,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 
 	std::ofstream outfile("DownloadBlobFile.txt", std::ofstream::binary);
 	std::vector<unsigned char>& data = buffer.collection();
-		
+
 	outfile.write((char *)&data[0], buffer.size());
 	outfile.close();  
 
@@ -235,11 +235,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 -	[C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
--	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
-
-
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

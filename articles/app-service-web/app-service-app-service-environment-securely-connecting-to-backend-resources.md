@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/11/2015" 
+	ms.date="02/10/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境からバックエンド リソースへの安全な接続 #
@@ -21,13 +21,15 @@
 ## 概要 ##
 App Service 環境は常に地域クラシック "v1" [仮想ネットワーク][virtualnetwork]のサブネットに作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。
 
-**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。
+**注:** "v2" ARM によって管理される仮想ネットワーク内で App Service 環境を作成することはできません。
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。
 
 別の例として、機密性の高いエンドポイントがオンプレミスで実行されていて、[サイト対サイト][SiteToSite]の接続または [Azure ExpressRoute][ExpressRoute] 接続を使用して Azure に接続している場合があります。その結果、サイト対サイトまたは ExpressRoute トンネルに接続されている仮想ネットワーク内のリソースのみがオンプレミスのエンドポイントにアクセスできるようになります。
 
 これらのすべてのシナリオで、App Service 環境で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。App Service 環境で実行されているアプリから同じ仮想ネットワーク内の (または同じ仮想ネットワークに接続されている) プライベート エンドポイントへの送信トラフィックは、仮想ネットワーク経由でのみ行われます。プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
+
+App Service 環境から仮想ネットワーク内のエンドポイントへの送信トラフィックには、注意すべき点が 1 つあります。App Service 環境から、App Service 環境と**同じ**サブネットにある仮想マシンのエンドポイントに到達することはできません。App Service 環境が、App Service 環境専用として予約されているサブネットにデプロイされていれば、通常、これは問題にはなりません。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -114,4 +116,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

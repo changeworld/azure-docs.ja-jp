@@ -1,6 +1,6 @@
 <properties
 	pageTitle="CoreOS を使用する方法 |Microsoft Azure"
-	description="CoreOS について説明するほか、Azure 上でクラシック デプロイ モデルで CoreOS 仮想マシン クラスターを作成する方法とその基本的な使用方法について説明します。"
+	description="CoreOS について説明するほか、Azure 上でクラシック デプロイメント モデルで CoreOS 仮想マシン クラスターを作成する方法とその基本的な使用方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
@@ -58,7 +58,7 @@ CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化�
 
 「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」の指示に従って SSH 用の公開キーと秘密キーのペアを作成します(基本的な手順は、以下の指示に記載されています)。 これらのキーを使用してクラスターの VM に接続し、VM が動作中で互いに通信できることを確認します。
 
-> [AZURE.NOTE]このトピックでは、わかりやすくするために、これらのキーがなく、`myPrivateKey.pem` ファイルおよび `myCert.pem` ファイルを作成する必要があることを前提にしています。既に公開キーと秘密キーのペアを `~/.ssh/id_rsa` に保存している場合は、「`openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem`」と入力するだけで、Azure にアップロードする必要のある .pem ファイルを取得できます。
+> [AZURE.NOTE] このトピックでは、わかりやすくするために、これらのキーがなく、`myPrivateKey.pem` ファイルおよび `myCert.pem` ファイルを作成する必要があることを前提にしています。既に公開キーと秘密キーのペアを `~/.ssh/id_rsa` に保存している場合は、「`openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem`」と入力するだけで、Azure にアップロードする必要のある .pem ファイルを取得できます。
 
 1. 作業ディレクトリで、「`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem`」と入力し、秘密キーと秘密キーに関連付けられた X.509 証明書を作成します。
 
@@ -79,7 +79,7 @@ curl https://discovery.etcd.io/new | grep ^http.* > etcdid
 
 引き続き同じ作業ディレクトリで、任意のテキスト エディターを使用して次のテキストを含むファイルを作成し、`cloud-config.yaml` として保存します。(任意のファイル名で保存できますが、次の手順で VM を作成するときに、**azure vm create** コマンドの **--custom-data** オプションでこのファイル名を参照する必要があります)。
 
-> [AZURE.NOTE]「`cat etcdid`」と入力して、上で作成した `etcdid` ファイルから etcd 検出 ID を取得し、次の `cloud-config.yaml` ファイルの `<token>` を、`etcdid`ファイルから生成された番号で置き換えます。最後にクラスターを検証できない場合は、この手順を行っていない可能性があります。
+> [AZURE.NOTE] 「`cat etcdid`」と入力して、上で作成した `etcdid` ファイルから etcd 検出 ID を取得し、次の `cloud-config.yaml` ファイルの `<token>` を、`etcdid`ファイルから生成された番号で置き換えます。最後にクラスターを検証できない場合は、この手順を行っていない可能性があります。
 
 ```
 #cloud-config
@@ -110,7 +110,7 @@ cloud-config ファイルの詳細については、CoreOS ドキュメントの
 
 3. 「`azure service create <cloud-service-name>`」と入力し、基本的なクラスター用にクラウド サービスを作成します。ここで、<*cloud-service-name*> には、CoreOS クラウド サービスの名前を指定します。このサンプルでは、**`coreos-cluster`** という名前を使用します。この名前を再利用して、クラウド サービス内に CoreOS VM インスタンスを作成する場合に選択する必要があります。
 
-	注意: [プレビュー ポータル](https://portal.azure.com)でここまでの作業を確認すると、次の画像で示すように、クラウド サービスの名前がリソース グループとドメインの両方になっていることがわかります。
+	注意: [Azure ポータル](https://portal.azure.com)でここまでの作業を確認すると、次の画像で示すように、クラウド サービスの名前がリソース グループとドメインの両方になっていることがわかります。
 
 	![][CloudServiceInNewPortal]
 
@@ -166,7 +166,7 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 
 `ssh-add ./myPrivateKey.key`
 
-> [AZURE.NOTE]`~/.ssh/id_rsa` キーを既に使用している場合は、`ssh-add ~/.ssh/id_rsa` を使用して追加します。
+> [AZURE.NOTE] `~/.ssh/id_rsa` キーを既に使用している場合は、`ssh-add ~/.ssh/id_rsa` を使用して追加します。
 
 これで、**node-1** で使用したのと同じ **fleetctl** コマンドを使用してリモートでテストできます。ただし、以下のようにリモート引数をいくつか渡します。
 
@@ -209,4 +209,4 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 [YAML]: http://yaml.org/
 [Azure 上の CoreOS で fleet を使ってみる]: virtual-machines-linux-coreos-fleet-get-started.md
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure ポータルを使用してオンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する | Microsoft Azure"
+	pageTitle="Azure クラシック ポータルを使用してオンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する | Microsoft Azure"
 	description="このチュートリアルでは、チャネルがオンプレミスのライブ エンコーダーからマルチ ビットレートのライブ ストリームを受信する基本的な Media Services のライブ ストリーミング アプリケーションを実装する手順について説明します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,36 +13,36 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="01/31/2016"  
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用してオンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する
+# Azure クラシック ポータルを使用してオンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する
 
 [AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
 
 
 このチュートリアルでは、チャネルがオンプレミスのライブ エンコーダーからマルチ ビットレートのライブ ストリームを受信する基本的な Media Services のライブ ストリーミング アプリケーションを実装する手順について説明します。チャネルと関連コンポーネントの操作に関する詳細は、「[オンプレミスのエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」を参照してください。
 
-このチュートリアルでは、Azure ポータルを使用して、次のタスクを実行します。
+このチュートリアルでは、Azure クラシック ポータルを使用して、次のタスクを実行します。
 
 2.  ストリーミング エンドポイントを構成します。
 3.  チャネルを作成します。
 1.  ライブ エンコーダーを作成し、チャネルにライブ ストリームを取り込みます (この手順で Wirecast を使用します)。
 1.  プログラム (およびアセット) を作成します。
-1.  アセットを公開し、ストリーミング URL を取得します。  
+1.  アセットを公開し、ストリーミング URL を取得します。
 1.  コンテンツの再生
 2.  クリーンアップします。
 
 ## 前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+- このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - マルチ ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
 
-## Azure ポータルを使用したストリーミング エンドポイントの構成
+## Azure クラシック ポータルを使用したストリーミング エンドポイントの構成
 
 クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
@@ -50,28 +50,28 @@
 
 動的パッケージ化機能を活用するには、コンテンツの配信元となる*ストリーミング エンドポイント*のストリーミング ユニットを 1 つ以上取得する必要があります。
 
-ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
+ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [**ストリーミング エンドポイント**] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
 3. ストリーミング ユニットの数を指定するには、**[スケール]** タブを選択し、占有容量スライダーを動かします。
 
-	![[スケール] ページ](./media/media-services-portal-get-started-with-live/media-services-origin-scale.png)
+![[スケール] ページ](./media/media-services-portal-get-started-with-live/media-services-origin-scale.png)
 
 4. **[保存]** をクリックして、変更を保存します。
 
-	新しいユニットの割り当ては完了するまでに約 20 分かかります。
+新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
-	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+>
+> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
 
 ## チャネルの作成
 
-Azure ポータルで、**[チャネル]** ページを選択します。次に、**[新規]** をクリックします。**[新しいライブ チャネルを作成する]** ページで、チャネルの名前を入力します。
+Azure クラシック ポータルで、**[チャネル]** ページを選択します。次に、**[新規]** をクリックします。**[新しいライブ チャネルを作成する]** ページで、チャネルの名前を入力します。
 
 ![createchannel](./media/media-services-portal-get-started-with-live/media-services-create-channel.png)
 
@@ -88,15 +88,15 @@ Azure ポータルで、**[チャネル]** ページを選択します。次に�
 
 ![ingesturls](./media/media-services-portal-get-started-with-live/media-services-ingest-urls.png)
 
-取り込み URL に関する詳細は、「[オンプレミスのエンコーダーを使用して、マルチ ビットレートのライブ ストリームをチャネルに送信する](../media-services-channels-overview.md)」を参照してください。
+取り込み URL に関する詳細は、「[オンプレミスのエンコーダーを使用して、マルチ ビットレートのライブ ストリームをチャネルに送信する](media-services-channels-overview.md)」を参照してください。
 
 ## ライブ エンコーダーの構成、およびライブ ストリームの取り込み
 
->[AZURE.NOTE]この手順には、前の手順に記載されているチャネルの取り込み URL が必要です。
+>[AZURE.NOTE] この手順には、前の手順に記載されているチャネルの取り込み URL が必要です。
 
-Wirecast の構成方法、およびストリームの取り込み開始方法に関する詳細は、「[Wirecast の構成](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」を参照してください。
+Wirecast の構成方法、およびストリームの取り込み開始方法に関する詳細は、「[Wirecast の構成](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」を参照してください。
 
->[AZURE.NOTE]何らかの理由でエンコーダーを停止してから再起動する必要がある場合、最初に Azure ポータルの **[リセット]** コマンドをクリックしてチャネルをリセットする必要があります。
+>[AZURE.NOTE] 何らかの理由でエンコーダーを停止してから再起動する必要がある場合、最初に Azure クラシック ポータルの **[リセット]** コマンドをクリックしてチャネルをリセットする必要があります。
 
 
 ## プログラムの作成と管理
@@ -129,25 +129,25 @@ Wirecast の構成方法、およびストリームの取り込み開始方法�
 
 1. **[チャネル]** ページで、**[追加]** をクリックし、新しいプログラムを追加します。
 
-	**[新しいプログラムを作成する]** ページで、プログラム名、アセット名、アーカイブ ウィンドウ、および暗号化オプションを指定します。
+**[新しいプログラムを作成する]** ページで、プログラム名、アセット名、アーカイブ ウィンドウ、および暗号化オプションを指定します。
 
-	![createprogram](./media/media-services-portal-get-started-with-live/media-services-create-program.png)
+![createprogram](./media/media-services-portal-get-started-with-live/media-services-create-program.png)
 
-	**[このプログラムを今すぐ発行]** をオンにすると、発行 URL が作成されます。
+**[このプログラムを今すぐ発行]** をオンにすると、発行 URL が作成されます。
 
-	プログラムをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
+プログラムをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
 
-	プログラムを開始すると、**[再生]** をクリックして、コンテンツの再生を開始できます。
+プログラムを開始すると、**[再生]** をクリックして、コンテンツの再生を開始できます。
 
-	![createdprogram](./media/media-services-portal-get-started-with-live/media-services-created-program.png)
+![createdprogram](./media/media-services-portal-get-started-with-live/media-services-created-program.png)
 
 2. この方法の代わりに、ショートカットを使用して、**[チャネル]** ページの **[ストリーミングの開始]** ボタンをクリックすることもできます。これにより、アセット、プログラム、およびストリーミング ロケーターが作成されます。
 
-	プログラム名は「DefaultProgram」となり、アーカイブ ウィンドウは 1 時間に設定されます。
+プログラム名は「DefaultProgram」となり、アーカイブ ウィンドウは 1 時間に設定されます。
 
-	**[チャネル]** ページから、発行されたプログラムを再生できます。
+**[チャネル]** ページから、発行されたプログラムを再生できます。
 
-	![channelpublish](./media/media-services-portal-get-started-with-live/media-services-channel-play.png)
+![channelpublish](./media/media-services-portal-get-started-with-live/media-services-channel-play.png)
 
 
 **[チャネル]** ページで **[ストリーミングの停止]** をクリックすると、既定のプログラムが停止し、削除されます。アセットは保持されており、[**コンテンツ**] ページから発行もしくは発行の取り消しができます。
@@ -159,7 +159,7 @@ Wirecast の構成方法、およびストリームの取り込み開始方法�
 
 ## コンテンツの再生
 
-コンテンツをストリーミングするために使用できる URL をユーザーに提供するには、ロケーターを作成することにより、前のセクションで説明した方法で最初にアセットを*発行*する必要があります (Azure ポータルを使用してアセットを発行すると、ロケーターが作成されます)。資産に含まれているファイルには、ロケーターを通じてアクセスできます。
+コンテンツをストリーミングするために使用できる URL をユーザーに提供するには、ロケーターを作成することにより、前のセクションで説明した方法で最初にアセットを*発行*する必要があります (Azure クラシック ポータルを使用してアセットを発行すると、ロケーターが作成されます)。資産に含まれているファイルには、ロケーターを通じてアクセスできます。
 
 コンテンツの再生に使用するストリーミング プロトコルによっては、チャネルまたはプログラムの [**URL の発行**] リンクから取得する URL の変更が必要になる場合があります。
 
@@ -167,15 +167,15 @@ Wirecast の構成方法、およびストリームの取り込み開始方法�
 
 既定で、ストリーミング URL には次の形式があり、スムーズ ストリーミング アセットの再生に使用できます。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 
 HLS ストリーミング URL を作成するには、(format=m3u8-aapl) を URL に追加します。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
 MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf) を URL に追加します。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
 コンテンツの配信に関する詳細は、「[コンテンツを配信する](media-services-deliver-content-overview.md)」を参照してください。
 
@@ -205,11 +205,11 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 ## その他のリソース
-- [Microsoft Azure 管理ポータルを使用したライブ ストリーミングの開始](http://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
+- [Microsoft Azure クラシック ポータルを使用したライブ ストリーミングの開始](https://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
 
 <!-- URLs. -->
-[Azure portal]: http://manage.windowsazure.com/
+[Azure Classic Portal]: http://manage.windowsazure.com/
 
 <!-- Images -->
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

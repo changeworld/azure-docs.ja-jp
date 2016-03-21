@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="10/23/2015"
+	ms.date="12/15/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用 (Android アプリ)
@@ -21,7 +21,8 @@
 
 ##概要
 
-このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
+このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。
+Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
 
 このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。
 
@@ -38,7 +39,7 @@
 このチュートリアルには、次のものが必要です。
 
 + Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>からダウンロードできます。
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
++ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
 
 
 このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
@@ -55,10 +56,8 @@
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 
-<ol start="7">
-<li><p>上部にある <b>[構成]</b> タブをクリックし、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> をクリックします。</p>
-</li>
-</ol>
+&emsp;&emsp;7.上部にある **[構成]** タブをクリックし、前のセクションで取得した **API キー**値を入力して、**[保存]** をクリックします。
+
 &emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
 
 これで、通知ハブが GCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
@@ -83,12 +82,21 @@
 
 ###コードの追加
 
-1. <a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">Notification Hubs Android SDK</a> をダウンロードします。.zip ファイルを展開し、**notificationhubs\\notification-hubs-0.3.jar** と **notifications\\notifications-1.0.1.jar** をプロジェクトの **app\\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。**libs** フォルダーを更新します。
+1. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから notification-hubs-0.4.jar ファイルをダウンロードします。Android Studio の [Project View] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグしてください。そのうえでファイルを右クリックし、**[Add as Library]** をクリックします。
+  
+2. **[app]** の Build.Gradle ファイルの **[dependencies]** セクションに次の行を追加します。
 
+	    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
 
-    > [AZURE.NOTE]ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。
+	**[dependencies]** セクションの後に次のリポジトリを追加します。
 
-2. GCM から登録 ID を取得し、それを使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
+		repositories {
+		    maven {
+		        url "http://dl.bintray.com/microsoftazuremobile/SDK"
+		    }
+		}
+
+3. GCM から登録 ID を取得し、それを使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
 
 	AndroidManifest.xml ファイルで、`</application>` タグのすぐ下に次の許可を追加します。`<your package>` は、AndroidManifest.xml ファイルの上部に表示されるパッケージ名に必ず置き換えてください (この例では `com.example.testnotificationhubs`)。
 
@@ -108,6 +116,8 @@
 		import com.google.android.gms.gcm.*;
 		import com.microsoft.windowsazure.messaging.*;
 		import com.microsoft.windowsazure.notifications.NotificationsManager;
+		import android.widget.Toast;
+
 
 
 4. クラスの最上位に、次のプライベート メンバーを追加します。
@@ -122,8 +132,8 @@
 
 	次の 3 つのプレースホルダーを必ず更新します。
 	* **SENDER\_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。
-	* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。
-	* **HubName**: ハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` です。
+	* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure クラシック ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。
+	* **HubName**: Azure のハブのページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` を使用します。
 
 
 
@@ -144,10 +154,10 @@
             	protected Object doInBackground(Object... params) {
                 	try {
                     	String regid = gcm.register(SENDER_ID);
-                    DialogNotify("Registered Successfully","RegId : " +
+                    ToastNotify("Registered Successfully - RegId : " +
 						hub.register(regid).getRegistrationId());
                 	} catch (Exception e) {
-                    	DialogNotify("Exception",e.getMessage());
+                    	ToastNotify("Registration Exception Message - " + e.getMessage());
                     	return e;
                 	}
                 	return null;
@@ -156,7 +166,7 @@
     	}
 
 
-7. アプリが実行され、表示されているときに通知を表示するように、`DialogNotify` メソッドをアクティビティに追加します。また、`onStart`、`onPause`、`onResume`、および `onStop` をオーバーライドして、アクティビティがダイアログを表示するために認識されるかどうかを指定します。
+7. アプリが実行され、表示されているときに通知を表示するように、`ToastNotify` メソッドをアクティビティに追加します。また、`onStart`、`onPause`、`onResume`、`onStop` をオーバーライドして、アクティビティがトーストを表示するために認識されるかどうかを指定します。
 
 	    @Override
 	    protected void onStart() {
@@ -182,43 +192,20 @@
 	        isVisible = false;
 	    }
 
-		/**
-		  * A modal AlertDialog for displaying a message on the UI thread
-		  * when there's an exception or message to report.
-		  *
-		  * @param title   Title for the AlertDialog box.
-		  * @param message The message displayed for the AlertDialog box.
-		  */
-    	public void DialogNotify(final String title,final String message)
-    	{
-	        if (isVisible == false)
-	            return;
-
-        	final AlertDialog.Builder dlg;
-        	dlg = new AlertDialog.Builder(this);
-
-        	runOnUiThread(new Runnable() {
-            	@Override
-            	public void run() {
-                	AlertDialog dlgAlert = dlg.create();
-                	dlgAlert.setTitle(title);
-                	dlgAlert.setButton(DialogInterface.BUTTON_POSITIVE,
-						(CharSequence) "OK",
-						new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                	dlgAlert.setMessage(message);
-                	dlgAlert.setCancelable(false);
-                	dlgAlert.show();
-            	}
-        	});
-    	}
+	    public void ToastNotify(final String notificationMessage)
+	    {
+	        if (isVisible == true)
+	            runOnUiThread(new Runnable() {
+	                @Override
+	                public void run() {
+	                    Toast.makeText(MainActivity.this, notificationMessage, Toast.LENGTH_LONG).show();
+	                }
+	            });
+	    }
 
 8. Android には通知が表示されないため、独自の受信者を記述する必要があります。**AndroidManifest.xml** で、`<application>` 要素内に次の要素を追加します。
 
-	> [AZURE.NOTE]プレースホルダーは、パッケージ名に置き換えてください。
+	> [AZURE.NOTE] プレースホルダーは、パッケージ名に置き換えてください。
 
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -229,7 +216,7 @@
         </receiver>
 
 
-9. [Project] ビューで、**[アプリ]**、**[src]**、** [main]**、**[java]** の順に展開します。**[java]** のパッケージ フォルダーを右クリックして、**[新規]**、**[Java Class (Java クラス)]** と順にクリックします。
+9. [プロジェクト] ビューで、**[アプリ]**、**[src]**、** [main]**、**[java]** と展開します。**[java]** のパッケージ フォルダーを右クリックして、**[新規]**、**[Java Class (Java クラス)]** と順にクリックします。
 
 	![][6]
 
@@ -254,7 +241,7 @@
 
 13. 次のコードを `MyHandler` クラスに追加します。
 
-	このコードは `OnReceive` メソッドを上書きするため、ハンドラーが `AlertDialog` をポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
+	このコードは `OnReceive` メソッドを上書きするため、ハンドラーがトーストをポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
 
     	public static final int NOTIFICATION_ID = 1;
     	private NotificationManager mNotificationManager;
@@ -269,7 +256,7 @@
         	String nhMessage = bundle.getString("message");
 
         	sendNotification(nhMessage);
-        	mainActivity.DialogNotify("Received Notification",nhMessage);
+	        mainActivity.ToastNotify(nhMessage);
     	}
 
     	private void sendNotification(String msg) {
@@ -291,13 +278,13 @@
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		}
 
-14. Android Studio のメニュー バーで、**[Build]**、**[Rebuild Project]** の順にクリックし、エラーが検出されないことを確認します。
+14. Android Studio のメニュー バーで、**[ビルド]**、**[プロジェクトのリビルド]** の順にクリックし、エラーが検出されないことを確認します。
 
 ##通知を送信する
 
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、[Azure クラシック ポータル]で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
 
 ![][30]
 
@@ -307,7 +294,7 @@
 ## (省略可能) アプリから通知を送信する
 
 
-1. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -327,13 +314,17 @@
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
+2. この行を **build.gradle** ファイルの `android` に追加します。
+
+		useLibrary 'org.apache.http.legacy'
+
+3. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
 
 
-3. **MainActivity** ファイルで、`MainActivity` クラスの上に次のステートメント `import` を追加します。
+4. **MainActivity** ファイルで、`MainActivity` クラスの上に次のステートメント `import` を追加します。
 
 		import java.net.URLEncoder;
 		import javax.crypto.Mac;
@@ -350,16 +341,16 @@
 		import org.apache.http.impl.client.DefaultHttpClient;
 
 
-3. **MainActivity** ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
+5. **MainActivity** ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
 
-	`HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。この接続文字列は [Azure ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
+	`HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。この接続文字列は [Azure クラシック ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
 	    private String HubSasKeyValue = null;
 		private String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
 
-4. アクティビティではハブの名前と、ハブの完全な共有アクセス接続文字列を保持します。通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。これを実行するには、接続文字列からキーのデータを解析し、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスで説明したように SaS トークンを作成します。
+6. アクティビティではハブの名前と、ハブの完全な共有アクセス接続文字列を保持します。通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。これを実行するには、接続文字列からキーのデータを解析し、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスで説明したように SaS トークンを作成します。
 
 	**MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して接続文字列を解析します。
 
@@ -389,7 +380,7 @@
 	        }
 	    }
 
-5. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して SaS 認証トークンを作成します。
+7. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して SaS 認証トークンを作成します。
 
         /**
          * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
@@ -442,7 +433,7 @@
         }
 
 
-6. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して、**[通知の送信]** ボタン クリックを処理し、REST API を使用してハブに通知メッセージを送信します。
+8. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して、**[通知の送信]** ボタン クリックを処理し、REST API を使用してハブに通知メッセージを送信します。
 
         /**
          * Send Notification button click handler. This method parses the
@@ -517,9 +508,9 @@
 
 ##次のステップ
 
-この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。次のステップとして、[Notification Hubs を使用したユーザーへのプッシュ通知]に関するチュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
+この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知]」チュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
-対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
+対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
 
 Notification Hubs の全般的な情報については、「[Notification Hubs の概要]」を参照してください。
 
@@ -555,9 +546,9 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 
-<!---HONumber=Nov15_HO1-->
+<!----HONumber=AcomDC_0128_2016-->

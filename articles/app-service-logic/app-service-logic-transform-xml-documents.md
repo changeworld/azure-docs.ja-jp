@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="BizTalk 変換" 
-	description="あるスキーマから別のスキーマへ XML ドキュメントを変換する方法について説明します。" 
+	pageTitle="Azure App Service のロジック アプリでの BizTalk 変換の使用 | Microsoft Azure" 
+	description="あるスキーマから別のスキーマへ XML ドキュメントを変換する方法について説明します" 
 	authors="anuragdalmia" 
 	manager="dwrede" 
 	editor="" 
@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="02/18/2016"
 	ms.author="anuragdalmia"/>
 
-#BizTalk 変換
+# BizTalk 変換
 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 ## 概要
-簡単に言うと、BizTalk 変換 API アプリは、1 つの形式から別の形式へデータを変換します。たとえば、注文書から出荷先住所と請求先住所を取得して、請求書ドキュメントに挿入する場合などです。または、受信メッセージに *YearMonthDay* 形式で現在の日付が含まれる場合、*MonthDayYear* 形式に日付の書式設定を変更する必要があります。
+BizTalk Transform API は、データの形式を変換します。たとえば、注文書から出荷先住所と請求先住所を取得して、請求書ドキュメントに挿入する場合などです。または、受信メッセージに *YearMonthDay* 形式で現在の日付が含まれる場合、*MonthDayYear* 形式に日付の書式設定を変更する必要があります。
 
 Microsoft Azure App Service の変換 API プリを使用してこれを実行できます。変換 (マップともいう) は、送信元 XML スキーマ (入力) と送信先 XML スキーマ (出力) で構成されます。さまざまな組み込み関数を使用すると、文字列操作、条件付き割り当て、算術式、日時の書式設定や、ループ構造の操作などで、データを操作および制御できます。
 
@@ -45,11 +46,11 @@ API Apps の概要ページから、SQL、SAP、SharePoint などのコネクタ
 ## マップを作成および追加する
 変換またはマップは、無料でダウンロードできる [Microsoft Azure BizTalk Services SDK](http://www.microsoft.com/download/details.aspx?id=39087) を使用して Visual Studio で作成します。
 
-マップの作成の詳細については、[Visual Studio でのマップの作成](http://aka.ms/createamapinvs)に関するページを参照してください。マップを作成し、実稼働の準備ができると、Microsoft Azure の管理ポータルで作成した BizTalk 変換 API アプリにマップ (.trfm ファイル) を追加できます。
+マップの作成の詳細については、[Visual Studio でのマップの作成](http://aka.ms/createamapinvs)に関するページを参照してください。マップを作成し、実稼働の準備ができると、Azure ポータルで作成した BizTalk 変換 API アプリにマップ (.trfm ファイル) を追加できます。
 
 アップロード後にマップが変更された場合、更新したマップをアップロードして変換 API アプリの既存のマップと置き換えることができます。
 
-1.	Microsoft Azure 管理ポータル (画面の左側) で **[参照]** を選択し、**[API Apps]** を選択します。**[API Apps]** が表示されない場合、**[すべて]** を選択し、使用可能な一覧から **[API Apps]** を選択します。
+1.	Azure ポータル (画面の左側) で **[参照]** を選択し、**[API Apps]** を選択します。**[API Apps]** が表示されない場合、**[すべて]** を選択し、使用可能な一覧から **[API Apps]** を選択します。
 
 	![][7]
 
@@ -116,4 +117,4 @@ API Apps の概要ページから、SQL、SAP、SharePoint などのコネクタ
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -94,10 +94,9 @@
 [get-started]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started.md
 [Use Notification Hubs to send notifications to users]: ../articles/tutorial-notify-users-mobileservices.md
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
-[Azure Management Portal]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

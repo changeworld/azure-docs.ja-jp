@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="dotnet"
-	ms.date="10/01/2015"
+	ms.date="02/07/2016"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR-LIST (Platform | Backend)]
 - [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
@@ -32,11 +37,11 @@
 
 		public string UserId { get; set; }
 
-	>[AZURE.NOTE]このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
+	>[AZURE.NOTE] このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、[Code First Migrations](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md) を使用する必要があります。
 
 2. Visual Studio で、Controllers フォルダーを展開し、**TodoItemController.cs** を開き、ステートメントを使用して次を追加します。
 
-		using Microsoft.Azure.Mobile.Server.Security;
+		using Microsoft.WindowsAzure.Mobile.Service.Security;
 
 3. **PostTodoItem** メソッドを見つけ、メソッドの先頭に次のコードを追加します。
 
@@ -79,4 +84,4 @@
 <!-- URLs. -->
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

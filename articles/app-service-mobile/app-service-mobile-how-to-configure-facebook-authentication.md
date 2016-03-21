@@ -3,7 +3,7 @@
 	description="App Services アプリケーションに Facebook 認証を構成する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter=""
-	authors="mattchenderson" 
+	authors="mattchenderson"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,56 +13,59 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="02/28/2016"
 	ms.author="mahender"/>
 
-# Facebook ログインを使用するアプリケーションを構成する方法
+# App Service アプリケーションを Facebook ログインを使用するように構成する方法
 
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services](../../includes/app-service-mobile-note-mobile-services.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、認証プロバイダーとして Facebook を使用するように Azure Mobile Apps を構成する方法を示します。
+このトピックでは、認証プロバイダーとして Facebook を使用するように Azure App Service を構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
 
-1. [Microsoft Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
- 
-2. **[設定]**、**[モバイル認証]**、**[Facebook]** の順にクリックします。次に、Facebook ブレードから **リダイレクト URI** をコピーします。リダイレクト URI を Facebook アプリで使用します。
- 
-3. 他のブラウザー ウィンドウで、[Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
+1. [Azure ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
 
-4. (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
+2. 他のブラウザー ウィンドウで、[Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
-5. **[My Apps]** をクリックし、**[Add a New App]** をクリックします。
+3. (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
 
-6. プラットフォームとして **[Website]** を選択します。アプリケーションの一意の名前を選択して、**[Create New Facebook App ID]** をクリックします。
+4. **[My Apps]**、**[Add a New App]**、**[Website]**、**[Skip and Create App ID]** の順にクリックします。
 
-7. ドロップダウン リストから、アプリケーションのカテゴリを選択します。**[Create App ID]** をクリックします。
+5. **[Display name]** にアプリケーションの一意の名前を入力し、**[Category]** でアプリケーションのカテゴリを選択します。次に、**[Create App ID]** をクリックし、セキュリティ チェックを完了します。これで、新しい Facebook アプリケーションの開発者向けダッシュボードに移動します。
 
-8. 次のページで、右上の **[Skip Quick Start]** を選択します。これで、アプリケーションの開発者向けダッシュボードに移動します。
+6. **[App Secret]** フィールドで **[Show]** をクリックし、要求された場合はパスワードを入力して、**[App ID]** と **[App Secret]** の値をメモしておきます。後でアプリケーションを Azure で構成するときにこれらの値を使用します。
 
-9. **[App Secret]** フィールドで **[Show]** をクリックし、要求された場合はパスワードを入力して、**[App ID]** と **[App Secret]** の値をメモしておきます。これらの設定はモバイル アプリの Facebook 認証設定ブレードにて行います。
+	> [AZURE.IMPORTANT] アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-	> [AZURE.NOTE]**セキュリティ上の注意** アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
-
-10. 左側のナビゲーション バーで、**[Settings]** をクリックします。**[App Domains]** にモバイル アプリの **URL** を入力し、**[Contact Email]** に連絡先のメール アドレスを入力します。
+7. 左側のナビゲーション バーの **[Settings]** をクリックします。**[App Domains]** にモバイル アプリの **URL** を入力し、**[Contact Email]** に連絡先のメール アドレスを入力します。
 
     ![][0]
 
-11. 下に Web サイト セクションが表示されない場合は、**[Add Platform]** をクリックして、**[Website]** を選択します。**[Site URL]** フィールドにモバイル アプリの **URL** を入力し、**[Save Changes]** をクリックします。
+8. 下に Web サイト セクションが表示されていない場合は、**[Add Platform]**、**[Website]** の順にクリックし、**[Site URL]** フィールドにモバイル アプリの **URL** を入力して、**[Save Changes]** をクリックします。
 
-12. **[Advanced]** タブをクリックし、**[Valid OAuth redirect URIs]** にさきほどコピーしたモバイル アプリの**リダイレクト URI** を追加します。次に、**[Save Changes]** をクリックします。リダイレクト URI は、パス _/signin-facebook_ が末尾に追加されたモバイル アプリのゲートウェイの URL です。たとえば、「`https://contosogateway.azurewebsites.net/signin-facebook`」のように入力します。HTTPS スキームを使用していることを確認します。
+9. **[Advanced]** タブをクリックし、**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加して、**[Save Changes]** をクリックします。
 
-13. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、左側のナビゲーション バーの **[Status & Review]** をクリックします。その後 **[はい]** をクリックして汎用パブリック アクセスを有効にします。
+	> [AZURE.NOTE] リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
+
+10. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、**[App Review]** をクリックし、**[Make todolist-complete-nodejs public]** を有効にして、Facebook 認証を使用した汎用パブリック アクセスを有効にします。
 
 
-## <a name="secrets"> </a>Facebook の情報をモバイル アプリに追加する
+## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
+1. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックし、**[App Service 認証]** が **[オン]** になっていることを確認します。
 
-12. [Azure 管理ポータル]に戻り、モバイル アプリのFacebook 設定ブレードに再び移動します。以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+2. **[Facebook]** をクリックし、前の手順で取得した App ID と App Secret の値を貼り付けます。必要に応じて、アプリケーションで必要なスコープを有効にし、**[OK]** をクリックします。
 
     ![][1]
+
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+
+3. (省略可能) Facebook によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Facebook]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Facebook にリダイレクトされます。
+
+4. 認証の構成が終了したら、**[保存]** をクリックします。
 
 これで、アプリケーションで認証に Facebook を使用する準備ができました。
 
@@ -78,7 +81,6 @@
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure 管理ポータル]: https://portal.azure.com/
-[Microsoft Azure の管理ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

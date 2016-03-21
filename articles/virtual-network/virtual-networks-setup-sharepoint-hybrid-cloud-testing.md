@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="01/28/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定
@@ -44,7 +44,7 @@
 2.	SQL Server コンピューター (SQL1) を構成する。
 3.	SharePoint サーバー (SP1) を構成する。
 
-Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 ## フェーズ 1: ハイブリッド クラウド環境を設定する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションを持っていない場合は、[Azure の無�
 
 ![](./media/virtual-networks-setup-sharepoint-hybrid-cloud-testing/CreateSPFarmHybridCloud_1.png)
 
-> [AZURE.NOTE]フェーズ 1 では、シミュレートされたハイブリッド クラウド テスト環境を設定することもできます。方法については、「[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)」をご覧ください。
+> [AZURE.NOTE] フェーズ 1 では、シミュレートされたハイブリッド クラウド テスト環境を設定することもできます。方法については、「[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)」をご覧ください。
  
 ## フェーズ 2: SQL Server コンピューター (SQL1) を構成する
 
@@ -113,7 +113,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 7.	[ドライブ文字またはフォルダーへの割り当て] ページで、**[次へ]** をクリックします。
 8.	[ファイル システム形式の選択] ページで、**[次へ]** をクリックします。
 9.	[選択内容の確認] ページで、**[作成]** をクリックします。
-10.	完了したら、**[閉じる]** をクリックします。
+10.	作成されたら、**[閉じる]** をクリックします。
 
 SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンドを実行します。
 
@@ -195,23 +195,8 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
  
 これで、ハイブリッド クラウド環境の SharePoint イントラネット ファームをテストする準備が整いました。
 
-## その他のリソース
+## 次のステップ
 
-[Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
+- [運用ワークロード](../virtual-machines/virtual-machines-workload-intranet-sharepoint-overview.md)をセットアップします。
 
-[SharePoint Server Farm](../virtual-machines/virtual-machines-sharepoint-farm-azure-preview.md)
-
-[テスト用のハイブリッド クラウド環境の設定](virtual-networks-setup-hybrid-cloud-environment-testing.md)
-
-[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)
-
-[テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
-
-[Azure ハイブリッド クラウド テスト環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
-
-[Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

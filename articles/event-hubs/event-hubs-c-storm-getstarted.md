@@ -1,5 +1,5 @@
 <properties
-	pageTitle="C および Apache Storm でのイベント ハブの使用 | Microsoft Azure"
+	pageTitle="C および Apache Storm での Event Hubs の使用 | Microsoft Azure"
 	description="このチュートリアルでは、C でイベントを送信し、Apache Storm クラスターでそれを受信するための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.workload="core"
+	ms.workload="na"
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
 	ms.topic="article" 
-	ms.date="09/01/2015"
+	ms.date="12/09/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -38,7 +38,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 ## Event Hub を作成する
 
-1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -56,7 +56,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 	![][4]
 
-6. ページ上部にある **[構成]** タブをクリックし、**SendRule** という名前のルールを ”送信” 権限で、**ReceiveRule** という別のルールを "リッスン" 権限で追加し、**[保存]** をクリックします。
+6. ページ上部にある **[構成]** タブをクリックし **SendRule** という名前のルールを *Send* 権限で、**ReceiveRule** という別のルールを *Listen* 権限で追加して、**[保存]** をクリックします。
 
 	![][5]
 
@@ -86,8 +86,8 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 Event Hubs と Storm を統合するアプリケーションの開発には、次のリソースを使用できます。
 
-- 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
-- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
+- 「[HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][]」は、Hadoop クラスター内のセンサー データを取り込むための Event Hubs、Storm、および HBase を使用した完全なシナリオ チュートリアルです。
+- 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
 [1]: ./media/event-hubs-c-storm-getstarted/create-event-hub1.png
@@ -101,7 +101,7 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
@@ -111,4 +111,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

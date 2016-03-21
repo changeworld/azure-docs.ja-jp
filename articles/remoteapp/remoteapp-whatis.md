@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/04/2015" 
+	ms.date="02/19/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp とは
@@ -22,13 +22,13 @@ Azure RemoteApp は、Azure をサポートするリモート デスクトップ
 
 Azure RemoteApp では、ほぼすべてのデバイスでアプリとリソースを共有できます。アプリはクラウドでホストされます。つまり、管理者は、ユーザーの需要を満たすためにハードウェアとスケーリングに対処する必要はありません。管理者が実行する必要があるのは共有するアプリのアップロードだけであり、後はユーザーにそれらのアプリを使用してもらうだけです。[ユーザーはデバイスを持ち続け](remoteapp-clients.md)、管理者が Azure ポータルを通してすべてを管理します。さらに、会社の資格情報を使用することを選択して、アプリとデータのセキュリティを確保することもできます。
 
-Azure RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試しになれます](http://azure.microsoft.com/services/remoteapp/)。
+Azure RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試しになれます](https://azure.microsoft.com/services/remoteapp/)。
 
 Azure の RemoteApp について質問はありますか。 「[FAQ (よく寄せられる質問)](remoteapp-faq.md)」を参照してください。
 
 Azure RemoteApp は、[Microsoft の仮想デスクトップ インフラストラクチャ](http://www.microsoft.com/server-cloud/products/virtual-desktop-infrastructure/explore.aspx)の一部です。
 
-**新しい情報!** Azure RemoteApp について詳細を知りたいですか。 または、実際に検証する準備ができていますか。 毎週開催される[専門家にたずねるウェビナー](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)に参加してください。
+**新しい情報!** Azure RemoteApp について詳細を知りたいですか。 または、Azure RemoteApp を規模を拡大して検証する準備ができていますか。 毎週開催される[専門家にたずねるウェビナー](https://azureinfo.microsoft.com/AzureRemoteAppAskTheExperts-Registration-Page.html?ls=Website)に参加してください。
 
 ## Azure RemoteApp コレクション
 [Azure RemoteApp のコレクション](remoteapp-collections.md)には、次の 2 種類があります。
@@ -80,4 +80,4 @@ Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアン
 ### サポートのお願い 
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[GitHub で編集]** をクリックして、変更を加えることができます。変更はこちらで確認し、承認されると、変更点や改善点がこのページに反映されます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

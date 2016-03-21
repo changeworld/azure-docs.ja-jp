@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Hudson で Azure BLOB サービスを使用する方法 | Microsoft Azure"
+	pageTitle="Hudson と BLOB ストレージを使用する方法 | Microsoft Azure"
 	description="Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="10/12/2015" 
+	ms.date="02/21/2016" 
 	ms.author="robmcm"/>
 
 # Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 
 ## 概要
 
-ここでは、Hudson 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして、または、ビルド プロセスで使用されるダウンロード可能なファイルのソースとして Azure BLOB サービスを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。もう 1 つのシナリオとしては、ビルド ジョブ自体にその他のファイルが必要になる場合、たとえば、ビルドの入力で依存関係のダウンロードが必要になる場合などが考えられます。
+ここでは、Hudson 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして、またはビルド プロセスで使用されるダウンロード可能なファイルのソースとして BLOB ストレージを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。もう 1 つのシナリオとしては、ビルド ジョブ自体にその他のファイルが必要になる場合、たとえば、ビルドの入力で依存関係のダウンロードが必要になる場合などが考えられます。
 
 このチュートリアルでは、Microsoft が公開している Hudson CI 用の Azure Storage プラグインを使用します。
 
@@ -28,7 +28,7 @@
 
 Hudson では、開発者がコードの変更を簡単に統合し、ビルドを自動的に頻繁に生成できるようになり、ソフトウェア プロジェクトの継続的な統合が実現されます。これにより、開発者の生産性が向上します。ビルドはバージョン管理され、ビルド アーティファクトをさまざまなリポジトリにアップロードできます。この記事では、Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。また、Azure BLOB ストレージから依存関係をダウンロードする方法も紹介します。
 
-Hudson の詳細については、「[Meet Hudson (Hudson について)][]」を参照してください。
+Hudson の詳細については、「[Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)」を参照してください。
 
 ## BLOB サービスを使用するメリット ##
 
@@ -62,7 +62,7 @@ Hudson CI ソリューションで BLOB サービスを使用するには、次�
 
 - Azure アカウント。Azure アカウントには、<http://www.azure.com> でサインアップできます。
 
-- Azure ストレージ アカウント。まだストレージ アカウントを取得していない場合には、[ストレージ アカウントの作成方法][]を示した記事の手順に従って作成できます。
+- Azure ストレージ アカウント。まだストレージ アカウントを取得していない場合には、「[ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」に記載の手順に従って作成できます。
 
 - 以降では、Hudson CI のビルド アーティファクトで BLOB サービスをリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
@@ -86,11 +86,11 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
 
-    a.[Azure ポータル](https://manage.windowsazure.com)で取得したストレージ アカウント名を入力します。
+    a.[Azure ポータル](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
 
-    b.同様に、Azure ポータルで取得したストレージ アカウント キーを入力します。
+    b.同様に、[Azure ポータル](https://portal.azure.com)で取得したストレージ アカウント キーを入力します。
 
-    c.パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、Azure ポータルでストレージ アカウント用に指定されたエンドポイントを使用します。
+    c.パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](https://portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。
 
     d.**[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
 
@@ -121,7 +121,7 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Hudson が認識できる環境変数へのリンクがあります。環境変数の名前および説明を確認するには、リンクをクリックします。**BUILD\_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 
-8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこの記事では取り扱いません。Shared Access Signature の詳細については、[Shared Access Signature の作成](http://go.microsoft.com/fwlink/?LinkId=279889)に関するページを参照してください)。
+8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこの記事では取り扱いません。共有アクセス署名の詳細については、「[共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、**[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
 11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
@@ -129,7 +129,7 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。コンソール出力でステータスを確認します。ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
 
-    a.[Azure ポータル](https://manage.windowsazure.com)にサインインします。
+    a.[Azure ポータル](https://portal.azure.com)にサインインします。
 
     b.**[Storage]** をクリックします。
 
@@ -161,12 +161,12 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 - **ストレージ アカウント**: Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。これは、アクセスする BLOB の名前空間の 中でも最高レベルに位置するものです。アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
 - **コンテナー**: コンテナーは、一連の BLOB をグループ化します。すべての BLOB はコンテナーに格納されている必要があります。1 つのアカウントに格納できるコンテナーの数は無制限です。また、1 つのコンテナーに保存できる BLOB の数も無制限です。
-- **BLOB**: 任意の種類およびサイズのファイルです。Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、 ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+- **BLOB**: 任意の種類およびサイズのファイルです。Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、 ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
 - **URL 形式**: BLOB は、次の URL 形式を使用してアドレス指定できます。
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
 
-    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合は、Azure ポータル内のエンドポイントを使用して URL エンドポイントを指定します。)
+    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合は、[Azure ポータル](https://portal.azure.com)内のエンドポイントを使用して URL エンドポイントを指定します。)
 
     この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
 
@@ -174,7 +174,12 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 ## 次のステップ
 
-  [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
-  [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
+- [Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+- [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=Oct15_HO3-->
+詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
+
+<!---HONumber=AcomDC_0224_2016-->

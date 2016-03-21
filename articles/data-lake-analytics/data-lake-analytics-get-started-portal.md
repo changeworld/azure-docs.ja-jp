@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する | Azure" 
-   description="Azure プレビュー ポータルを使用して、Data Lake Analytics アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成してから、ジョブを送信する方法について説明します。" 
+   pageTitle="チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する | Azure" 
+   description="Azure ポータルを使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信する方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="mumian" 
@@ -10,17 +10,17 @@
 <tags
    ms.service="data-lake-analytics"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/22/2015"
+   ms.date="01/04/2016"
    ms.author="jgao"/>
 
-# チュートリアル: Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する
+# チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure プレビュー ポータルを使用して、Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) で Data Lake Analytics ジョブを定義して、Data LakeAnalytics アカウントにジョブを送信する方法について説明します。Data Lake Analytics の詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+Azure ポータルを使用して Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) で Data Lake Analytics ジョブを定義して、Data Lake Analytics アカウントにジョブを送信する方法について説明します。Data Lake Analytics の詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
 このチュートリアルでは、タブ区切り値 (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換するジョブを開発します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。最初のジョブが成功したら、U-SQL でのより複雑なデータ変換の記述を開始できます。
 
@@ -33,13 +33,13 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Analytics �
 3. U-SQL スクリプトを開発します。
 4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは BLOB ストレージ アカウントに出力を保存します。
 
-**前提条件**
+###前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-##Data Lake Analytics アカウントの作成
+##Data Lake Analytics アカウントを作成する
 
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。
 
@@ -47,34 +47,34 @@ Azure プレビュー ポータルを使用して、Azure Data Lake Analytics �
 
 **Data Lake Analytics アカウントを作成するには**
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. 新しい [Azure クラシック ポータル](https://portal.azure.com)にサインオンします。
 2. **[新規]**、**[データ + 分析]**、**[Data Lake Analytics]** の順にクリックします。
 6. 次の項目を入力または選択します。
 
     ![Azure Data Lake Analytics ポータルのブレード](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-create-adla.png)
 
 	- **名前**: Analytics アカウントに名前を付けます。
-	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Azure Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
+	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいものを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
-	- **場所**。Data Lake Analytics アカウントの Azure データ センターを選択します。 
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
+	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
 7. **[スタート画面にピン留めする]** を選択します。このチュートリアルに従う場合はこれが必要です。
-8. **[作成]** をクリックします。ポータルのスタート画面が表示されます。新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
+8. **[作成]** をクリックします。ポータルのスタート画面が表示されます。新しいタイルがスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
 	![Azure Data Lake Analytics ポータルのブレード](./media/data-lake-analytics-get-started-portal/data-lake-analytics-portal-blade.png)
 
 
-Data Lake Analytics アカウントが作成されたら、さらに Data Lake Store アカウントや Azure ストレージ アカウントを追加することができます。手順については、[Data Lake Analytics アカウント データ ソースの管理](data-lake-analytics-manage-use-portal.md#manage-account-data-sources)に関する記述を参照してください。
+Data Lake Analytics アカウントが作成されたら、Data Lake Store アカウントや Azure ストレージ アカウントを追加できます。手順については、[Data Lake Analytics アカウント データ ソースの管理](data-lake-analytics-manage-use-portal.md#manage-account-data-sources)に関する記述を参照してください。
 
 ##ソース データの準備
 
 このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure BLOB ストレージに格納できます。
 
-Azure プレビュー ポータルでは、検索ログ ファイルを含む、既定の Data Lake アカウントにいくつかのサンプル データ ファイルをコピーするためのユーザー インターフェイスが提供されます。
+Azure ポータルには、検索ログ ファイルを含むサンプル データ ファイルを既定の Data Lake アカウントにコピーするためのユーザー インターフェイスが用意されています。
 
 **サンプル データ ファイルをコピーするには**
 
-1. Azure プレビュー ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
+1. Azure ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
 2. Data Lake Analytics アカウント名のタイルをクリックします。ここにはアカウントの作成時にピン留めされます。アカウントがそこにピン留めされていない場合は、[ポータルから Data Lake Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#access-adla-account)手順を参照してアカウントを開きます。
 3. **[要点]** ペインを展開してから、**[サンプル ジョブの検索]** をクリックします。**[サンプル ジョブ]** という別のブレードが開きます。
 4. **[サンプル データのコピー]** をクリックしてから **[OK]** をクリックして確定します。
@@ -107,7 +107,7 @@ Azure プレビュー ポータルでは、検索ログ ファイルを含む、
 	![Azure Data Lake Analytics の新しいジョブ ボタン](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job-button.png)
 
     ブレードが表示されない場合は、[ポータルから Data Lake Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#access-adla-account)手順を参照してください。
-4. **[ジョブ名]** を入力してから、以下の U-SQL スクリプトを入力します。
+4. **ジョブ名**を入力し、次の U-SQL スクリプトを入力します。
 
 	![Azure Data Lake Analytics U-SQL ジョブの作成](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job.png)
 
@@ -128,19 +128,19 @@ Azure プレビュー ポータルでは、検索ログ ファイルを含む、
 
 	この U-SQL スクリプトでは、**Extractors.Tsv()** を使用してソース データ ファイルを読み取ってから、**Outputters.Csv()** を使用して csv ファイルを作成します。
     
-    ソース ファイルを別の場所にコピーしない限り、2 つのパスを変更しないでください。出力フォルダーが存在しない場合、Data Lake Analytics によって作成されます。この場合は、単純な相対パスを使用します。
+    ソース ファイルを別の場所にコピーしない限り、2 つのパスを変更しないでください。存在しない場合、Data Lake Analytics は出力フォルダーを作成します。この場合は、単純な相対パスを使用します。
 	
-	既定の Data Lake アカウントに格納されたファイルの相対パスを使用する方が簡単です。絶対パスを使用することもできます。たとえば、次のように入力します。
+	既定の Data Lake アカウントに保存されたファイルの相対パスを使用する方が簡単です。絶対パスを使用することもできます。たとえば、次のように入力します。
     
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
       
 
-    U-SQL の詳細については、[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)と [U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)に関する記述を参照してください。
+    U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」をご覧ください。
      
 5. 上部の **[ジョブの送信]** をクリックします。新しいジョブの詳細ペインが開きます。タイトル バーに、ジョブの状態が示されます。
 6. ジョブの状態が **[成功]** に変わるまで待機します。ジョブが完了したら、ポータルの新しいブレードにジョブの詳細が開きます。
 
-    ![Azure Data Lake Analytics のジョブの詳細](./media/data-lake-analytics-get-started-portal/data-lake-analytics-job-completed.png)
+    ![Azure Data Lake Analytics ジョブの詳細](./media/data-lake-analytics-get-started-portal/data-lake-analytics-job-completed.png)
 
     前述のスクリーンショットから、ジョブが完了する (状態が送信済みから終了に変わる) まで約 1.5 分かかったことがわかります。
     
@@ -155,11 +155,11 @@ Azure プレビュー ポータルでは、検索ログ ファイルを含む、
 
 ##関連項目
 
-- より複雑なクエリを表示する場合は、「[Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)」を参照してください。
-- U-SQL アプリケーションの開発を開始する場合は、「[Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
+- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 - U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-- 管理タスクについては、「[Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」を参照してください。
-- Data Lake Analytics の概要については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+- 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
+- Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」をご覧ください。
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

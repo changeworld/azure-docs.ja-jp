@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="HDInsight への Spark クラスターのプロビジョニングと、Zeppelin および Jupyter から Spark SQL を使用した対話型の分析 |Azure" 
-	description="HDInsight に Apache Spark クラスターをすばやくプロビジョニングし、Zeppelin および Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。" 
+	pageTitle="HDInsight での Spark クラスターの作成と、Zeppelin および Jupyter から Spark SQL を使用した対話型の分析 |Azure" 
+	description="HDInsight に Apache Spark クラスターをすばやく作成し、Zeppelin および Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
@@ -13,82 +13,80 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="12/22/2015" 
 	ms.author="nitinme"/>
 
 
-# クイック スタート: HDInsight の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行
+# クイック スタート: Azure HDInsight での Apache Spark の作成と Spark SQL を使用した対話型クエリの実行 (Windows)
 
 [AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
 
-* [HDInsight の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)
+* [HDInsight での Apache Spark の作成と Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-簡易作成オプションを使用して HDInsight に Apache Spark クラスターをプロビジョニングした後、Web ベースの [Zeppelin](https://zeppelin.incubator.apache.org) および [Jupyter](https://jupyter.org) Notebook を使用して Spark クラスターに対して Spark SQL 対話型クエリを実行します。
+簡易作成オプションを使用して HDInsight に Apache Spark クラスターを作成した後、Web ベースの [Zeppelin](https://zeppelin.incubator.apache.org) と [Jupyter](https://jupyter.org) Notebook を使用して Spark クラスターに対して Spark SQL 対話型クエリを実行する方法を説明します。
 
 
-   ![HDInsight で Apache Spark を使用します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.GetStartedFlow.Spark.png "HDInsight チュートリアルで Apache Spark を使用します手順: ストレージ アカウントを作成し、クラスターをプロビジョニングして、Spark SQL ステートメントを実行します")
+   ![HDInsight で Apache Spark を使用します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark を使用します手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
 
 **前提条件:**
 
-このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-##<a name="storage"></a>Azure ストレージ アカウントの作成
+##<a name="storage"></a>Azure Storage アカウントの作成
 
-HDInsight で HDInsight クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
+HDInsight で HDInsight クラスターを作成するときに、Azure Storage アカウントを指定します。このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターに作成されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
 
 
-**Azure ストレージ アカウントを作成するには**
+**Azure Storage アカウントを作成するには**
 
 1. [Azure ポータル][azure-management-portal]にサインインします。
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
-	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.StorageAccount.QuickCreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル")
+	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.storageaccount.quickcreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル")
 
->[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所
+>[AZURE.NOTE]  ストレージ アカウントは、クラスターでサポートされる場所
 
 一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。**[プライマリ アクセス キー]** (または **[セカンダリ アクセス キー]** 動作しているいずれかのキー) の値を書き留めます。この情報は後で必要になります。詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 	
-##<a name="provision"></a>HDInsight Spark クラスターをプロビジョニングする
+##HDInsight Spark クラスターを作成する
 
-このセクションでは、Spark バージョン 1.3.1 に基づいて HDInsight バージョン 3.2 クラスターをプロビジョニングします。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
+このセクションでは、Spark バージョン 1.3.1 に基づいて HDInsight バージョン 3.2 クラスターを作成します。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
->[AZURE.NOTE]この記事の手順では、基本の構成設定を使用して HDInsight に Apache Spark クラスターを作成します。追加ストレージ、Azure Virtual Network、Hive のメタストアなどを使用した、その他のクラスターの構成設定については、「[カスタム オプションを使用した HDInsight での Apache Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。
+>[AZURE.NOTE] この記事の手順では、基本の構成設定を使用して HDInsight に Apache Spark クラスターを作成します。その他のクラスター構成設定 (追加ストレージ、Azure 仮想ネットワーク、Hive 用のメタストアの使用など) については、[カスタム オプションを使用した HDInsight クラスターの作成](hdinsight-apache-spark-provision-clusters.md)に関するページを参照してください。
 
 
-**Spark クラスターをプロビジョニングするには**
+**Spark クラスターを作成するには**
 
 1. [Azure ポータル][azure-management-portal]にサインインします。 
 
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
-	![HDInsight に Spark クラスターを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.QuickCreateCluster.png "HDInsight に Spark クラスターを作成します")
+	![HDInsight に Spark クラスターを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.quickcreatecluster.png "HDInsight に Spark クラスターを作成します")
 
 
 ##<a name="zeppelin"></a>Zeppelin Notebook を使用して対話型 Spark SQL クエリを実行する
 
-クラスターをプロビジョニングした後、Web ベースの Zeppelin Notebook を使用して、Spark HDInsight クラスターに対して Spark SQL の対話型クエリを実行できます。このセクションでは、クラスターにおいて既定で使用できるサンプル データ ファイル (hvac.csv) を使用していくつかの対話型 Spark SQL クエリを実行します。
+クラスターを作成した後、Web ベースの Zeppelin Notebook を使用して、Spark HDInsight クラスターに対して Spark SQL の対話型クエリを実行できます。このセクションでは、クラスターにおいて既定で使用できるサンプル データ ファイル (hvac.csv) を使用していくつかの対話型 Spark SQL クエリを実行します。
 
->[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
+>[AZURE.NOTE] 以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル][azure-management-portal]の左側のウィンドウで **[HDInsight]** をクリックし、作成した Spark クラスターをクリックします。Spark クラスター ページの下部ウィンドウで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
-
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、**[Note の新規作成]** をクリックします。
 
-	![新しい Zeppelin Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.CreateNewNote.png "新しい Zeppelin Notebook を作成します")
+	![新しい Zeppelin Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.createnewnote.png "新しい Zeppelin Notebook を作成します")
 
 	同じページの **[Notebook]** 見出しの下に、**Note XXXXXXXXX** で名前が始まる新しい Notebook が表示されます。新しい Notebook をクリックします。
 
 3. 新しい Notebook の Web ページで、見出しをクリックし、必要に応じて Notebook の名前を変更します。Enter キーを押して名前の変更を保存します。また、Notebook のヘッダーの右上隅に **[接続]** というステータスが表示されることを確認します。
 
-	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.NewNote.Connected.png "Zeppelin Notebook のステータス")
+	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.newnote.connected.png "Zeppelin Notebook のステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が、関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	新しい Notebook に既定で作成される空の段落に、次のスニペットを貼り付けます。
 
@@ -113,7 +111,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 		
 	**Shift + Enter** キーを押すか、段落の **[プレイ]** ボタンをクリックして、スニペットを実行します。段落の右上隅にあるステータスが、[準備完了]、[保留中]、[実行中]、[完了] の順に進行します。出力が同じ段落の下に表示されます。スクリーンショットは次のようになります。
 
-	![生データから一時テーブルを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Note.LoadDataIntoTable.png "生データから一時テーブルを作成します")
+	![生データから一時テーブルを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.loaddataintotable.png "生データから一時テーブルを作成します")
 
 	各段落にタイトルを指定することもできます。右上隅の **[設定]** アイコンをクリックし、**[タイトルの表示]** をクリックします。
 
@@ -128,7 +126,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	次のスクリーンショットでは出力を示します。
 
-	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Note.SparkSQLQuery1.png "Notebook を使用して Spark SQL ステートメントを実行します")
+	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.sparksqlquery1.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
 	 表示オプション (四角で囲ってある部分) をクリックして、同じ出力の異なる表現に切り替えることができます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上記の画面キャプチャでは、**buildingID** をキーとして使用し、**temp\_diff** の平均を値として使用しています。
 
@@ -142,35 +140,33 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	このスニペットを新しい段落に貼り付けて、**Shift + Enter** キーを押します。次のスクリーンショットでは出力を示します。
 
-	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Note.SparkSQLQuery2.png "Notebook を使用して Spark SQL ステートメントを実行します")
+	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.sparksqlquery2.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
 	後続のクエリでは、ドロップダウンから新しい値を選択し、クエリを再実行できます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上の画面キャプチャでは、**buildingID** をキーとして、**temp\_diff** の平均を値として、**targettemp** をグループとして使用しています。
 
 7. Spark SQL インタープリターを再起動して、アプリケーションを終了します。上部の **[インタープリター]** タブをクリックし、Spark インタープリターの **[再起動]** をクリックします。
 
-	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Zeppelin.Restart.Interpreter.png "Zeppelin インタープリターを再起動します")
+	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.zeppelin.restart.interpreter.png "Zeppelin インタープリターを再起動します")
 
 ##<a name="jupyter"></a>Jupyter Notebook を使用して Spark SQL クエリを実行する
 
 このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。
 
->[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
+>[AZURE.NOTE] 以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル][azure-management-portal]の左側のウィンドウで **[HDInsight]** をクリックし、作成した Spark クラスターをクリックします。Spark クラスター ページの下部ウィンドウで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
-
-	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
 
-	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Note.Jupyter.CreateNotebook.png "新しい Jupyter Notebook を作成します")
+	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
 3. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-	![Notebook の名前を指定します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Note.Jupyter.Notebook.Name.png "Notebook の名前を指定します")
+	![Notebook の名前を指定します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
 4. 必要なモジュールをインポートし、Spark コンテキストと SQL コンテキストを作成します。次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
 
@@ -184,9 +180,9 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **Python 2** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
 
-	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Jupyter.Job.Status.png "Jupyter Notebook ジョブのステータス")
+	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が、関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。このスニペットは、**hvac** という一時テーブルにデータを登録します。
 
@@ -236,28 +232,28 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 6. カーネルを再起動してアプリケーションを終了します。上部のメニュー バーから、**[カーネル]** をクリックし、**[再起動]** をクリックして、プロンプトで再び **[再起動]** をクリックします。
 
-	![Jupyter カーネルを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/HDI.Spark.Jupyter.Restart.Kernel.png "Jupyter カーネルを再起動します")
+	![Jupyter カーネルを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.jupyter.restart.kernel.png "Jupyter カーネルを再起動します")
 
 
 ##<a name="seealso"></a>関連項目
 
 
-* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
-* [HDInsight クラスターでの Spark のプロビジョニング](hdinsight-apache-spark-provision-clusters.md)
-* [HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview-v1.md)
+* [HDInsight クラスターでの Spark の作成](hdinsight-apache-spark-provision-clusters.md)
+* [HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools-v1.md)
+* [Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
 * [リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager-v1.md)
 
 
-[hdinsight-versions]: ../hdinsight-component-versioning/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
-[hdinsight-storage]: ../hdinsight-use-blob-storage/
+[hdinsight-versions]: hdinsight-component-versioning.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account/
+[azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

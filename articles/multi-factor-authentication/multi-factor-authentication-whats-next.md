@@ -13,12 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.date="02/26/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
 
 この記事は、導入した Azure Multi-factor Authentication を管理する際に役立ちます。ここでは、Azure Multi-factor Authentication を最大限に活用できるようにするさまざまなトピックについて説明します。ただし、Azure Multi-factor Authentication のすべてのバージョンですべての機能を使用できるわけではないことに注意してください。
+
+以下のいくつかの機能の構成は、Azure Multi-Factor Authentication 管理ポータルにあります。このポータルにアクセスする方法は 2 つありますが、どちらでも Azure ポータルを使用します。1 つ目の方法では、使用量ベースの MFA を使用している場合に、Multi-Factor Auth プロバイダーを管理します。2 つ目の方法では、MFA サービス設定を使用します。2 つ目の方法には、Multi-Factor Auth プロバイダーか、または Azure MFA、Azure AD Premium、もしくは Enterprise Mobility Suite のライセンスが必要です。
+
+Azure Multi-Factor Auth プロバイダーを介して MFA 管理ポータルにアクセスするには、管理者として Azure ポータルにサインインし、Active Directory オプションを選択します。**[多要素認証プロバイダー]** タブをクリックし、ディレクトリを選択して、下部の **[管理]** ボタンをクリックします。
+
+[MFA サービス設定] ページを介して MFA 管理ポータルにアクセスするには、管理者として Azure ポータルにサインインし、Active Directory オプションを選択します。ディレクトリをクリックし、**[構成]** タブをクリックします。[多要素認証] セクションで、**[サービス設定の管理]** を選択します。[MFA サービス設定] ページの下部にある **[ポータルに移動]** リンクをクリックします。
+
 
 機能| 説明| 内容
 :------------- | :------------- | :------------- | 
@@ -28,8 +35,8 @@
 [キャッシュ](#caching)|キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。 |認証キャッシュの設定および構成方法
 [信頼できる IP](#trusted-ips)|信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの多要素認証をバイパスできるようにする多要素認証の機能です。|多要素認証の対象外となる IP アドレスの構成および設定	
 [アプリ パスワード](#app-passwords)|アプリ パスワードは、MFA (multi-factor authentication: 多要素認証) を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。|アプリ パスワードに関する情報
-[記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止 (パブリック プレビュー)](#suspend-multi-factor-authentication-for-remembered-devices-and-browsers-public-preview)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間 MFA を一時停止できます。|この機能の有効化と日数の設定に関する情報
-
+[記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の記憶](#remember-multi-factor-authentication-for-devices-users-trust)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。|この機能の有効化と日数の設定に関する情報
+[選択可能な検証方法 (パブリック プレビュー)](#selectable-verification-methods-public-preview)|ユーザーが使用できる認証方法を選択できます。|電話やテキスト メッセージなど、特定の認証方法の有効化または無効化に関する情報
 
 
 
@@ -38,16 +45,17 @@
 
 ### 不正アクセスのアラートを設定して構成するには
 
+1.	http://azure.microsoft.com にログオンします。
+2.	このページの上部にある指示に従って、MFA 管理ポータルに移動します。
+3.	Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの [設定] をクリックします。
+4.	[設定] ページの [不正アクセスのアラート] セクションで、[ユーザーが不正アクセスを通報できるようにする] チェックボックスをオンにします。
+5.	不正アクセスが通報されたときにユーザーをブロックする場合は、[不正アクセスを通報したユーザーをブロックする] をオンにします。
+6.	**[案内メッセージ後に入力する不正アクセス通報コード]** テキストボックスに、通話確認中に使用できる数値コードを入力します。ユーザーが # 記号だけでなく、このコードと # 記号を入力すると、不正アクセスのアラートが通報されます。 
+7.	下部にある [保存] をクリックします。
 
-1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
-2. 左側で、[Active Directory] を選択します。
-3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
-4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
-5. Azure Multi-Factor Authentication 管理ポータルで、左側の [設定] をクリックします。
-6. [不正アクセスのアラート] セクションで、[ユーザーが不正アクセスを通報できるようにする] をオンにします。
-7. 不正アクセスが通報されたときにユーザーをブロックする場合は、[不正アクセスを通報したユーザーをブロックする] をオンにします。
-8. [案内メッセージ後に入力する不正アクセス通報コード] の下にあるボックスに、通話確認中に使用できる数値コードを入力します。ユーザーが # 記号ではなくこのコードを入力すると、不正アクセスのアラートが通報されます。
-9. 下部にある [保存] をクリックします。
+>[AZURE.NOTE]
+Microsoft の既定の音声案内では、不正アクセスのアラートを送信するには 0# を押すようにユーザーに指示します。0 以外のコードを使用する場合は、適切な指示を行う独自のカスタム音声案内を記録し、アップロードする必要があります。
+
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/fraud.png)</center>
 
@@ -55,22 +63,25 @@
 不正アクセスのアラートは、2 つの方法で通報できます。モバイル アプリまたは電話を使用します。
 
 ### 不正アクセスのアラートをモバイル アプリを使用して通報するには
-<ol>
-<li>電話に確認が送信されたら、その確認をクリックします。Multi-factor Authentication アプリが起動します。</li>
-<li>不正アクセスを通報するには、[認証を拒否して不正を通報] をクリックします。組織の IT </li> サポート スタッフに通知されることを示すボックスが表示されます。[不正を通報] をクリックします。
-<li>アプリの [閉じる] をクリックします。</li></ol>
+
+
+
+1. 電話に確認が送信されたら、その確認をクリックします。Azure Authenticator アプリが起動します。
+2. 不正アクセスを通報するには、[認証を拒否して不正を通報] をクリックします。組織の IT サポート スタッフに通知することを知らせるメッセージ ボックスが表示されます。 
+3. [不正を通報] をクリックします。
+4. アプリの [閉じる] をクリックします。
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/report1.png)</center>
 
 ### 不正アクセスのアラートを電話で通報するには
-<ol>
-<li>電話に確認通話がかかってきたら、その電話に出ます。</li>
-<li>不正アクセスを通報するには、電話による不正アクセスの通報に対応するように構成されているコードと # 記号を入力します。不正アクセスのアラートが送信されたことを示す通知が出ます。</li>
-<li>電話を切ります。</li></ol>
+
+1. 電話に確認通話がかかってきたら、その電話に出ます。</li>
+2. 不正アクセスを通報するには、電話による不正アクセスの通報に対応するように構成されているコードと # 記号を入力します。不正アクセスのアラートが送信されたことを示す通知が出ます。
+3. 電話を切ります。
 
 ### 不正アクセスの通報を表示するには
 
-1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
+1. [http://azure.microsoft.com](https://azure.microsoft.com/) にログオンします。
 2. 左側で、[Active Directory] を選択します。
 3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
 4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
@@ -84,25 +95,19 @@
 
 ### ワンタイム バイパスを作成するには
 
-<ol>
-<li>[http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。</li>
-<li>左側で、[Active Directory] を選択します。</li>
-<li>上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。</li>
-<li>複数の Multi-Factor Authentication プロバイダーがある場合は、ワンタイム バイパスを作成するユーザーのディレクトリに関連付けられているプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
-<li>Azure Multi-Factor Authentication 管理ポータルで、左側の [ユーザーの管理] の下の [設定] をクリックします。</li>
+1.	http://azure.microsoft.com にログオンします。
+2.	このページの上部にある指示に従って、MFA 管理ポータルに移動します。
+3.	Azure Multi-Factor Authentication 管理ポータルで、左側にテナントまたは Azure MFA プロバイダーの名前と + 記号が表示されている場合は、+ 記号をクリックすると、別の MFA Server レプリケーション グループと Azure Default グループが表示されます。適切なグループをクリックします。
+4.	[ユーザー管理] で **[ワンタイム バイパス]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/create1.png)
+5.	[ワンタイム バイパス] ページで、**[新しいワンタイム バイパス]** をクリックします。
+6.	ユーザーのユーザー名、ワンタイム バイパスが存在する秒数、およびバイパスする理由を入力し、**[バイパス]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/create2.png)
+7.	この時点で、ユーザーは、ワンタイム バイパスの有効期限が切れる前にサインインする必要があります、します。
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/create1.png)</center>
 
-<li>[ワンタイム バイパス] ページで、[新しいワンタイム バイパス] をクリックします。</li>
-<li>ユーザーのユーザー名、ワンタイム バイパスが存在する秒数、およびバイパスする理由を入力し、[バイパス] をクリックします。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/create2.png)</center>
-
-<li>この時点で、ユーザーは、ワンタイム バイパスの有効期限が切れる前にサインインする必要があります、します。</li>
 
 ### ワンタイム バイパス レポートを表示するには
 
-1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
+1. [http://azure.microsoft.com](https://azure.microsoft.com/) にログオンします。
 2. 左側で、[Active Directory] を選択します。
 3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
 4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
@@ -125,59 +130,38 @@
 
 
 ### Azure Multi-factor Authentication でカスタム音声メッセージをセットアップするには
-<ol>
-<li>サポートされているファイル形式のいずれかを使用してカスタム音声メッセージを作成します。この後のカスタム音声メッセージの推奨事項を参照してください。</li>
-<li>[http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。</li>
-<li>左側で、[Active Directory] を選択します。</li>
-<li>上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。</li>
-<li>複数の Multi-Factor Authentication プロバイダーがある場合は、カスタム音声メッセージを構成するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
-<li>Azure Multi-Factor Authentication 管理ポータルで、左側の [音声メッセージ] をクリックします。</li>
+1.	サポートされているファイル形式のいずれかを使用してカスタム音声メッセージを作成します。
+2.	http://azure.microsoft.com にログオンします。
+3.	このページの上部にある指示に従って、MFA 管理ポータルに移動します。
+4.	Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの [音声メッセージ] をクリックします。
+5.	[音声メッセージ] セクションの下にある **[新しい音声メッセージ]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	[構成: 新しい音声メッセージ] ページで、**[音声ファイルの管理]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	[構成: 音声ファイル] ページで、**[音声ファイルのアップロード]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	[構成: 音声ファイルのアップロード] ページで、**[参照]** をクリックし、使用する音声メッセージに移動し、**[開く]** をクリックします。![クラウド](./media/multi-factor-authentication-whats-next/custom4.png)
+9.	説明を追加し、[アップロード] をクリックします。
+10.	これが完了すると、ファイルが正しくアップロードされたことを示すメッセージが表示されます。
+11.	左側の [音声メッセージ] をクリックします。
+12.	[音声メッセージ] セクションの下にある [新しい音声メッセージ] をクリックします。
+13.	[言語] ドロップダウン リストから言語を選択します。
+14.	このメッセージが特定のアプリケーション用である場合は、それを [アプリケーション] ボックスに指定します。
+15.	[メッセージの種類] ドロップダウン リストから、新しいカスタム メッセージで上書きするメッセージの種類を選択します。
+16.	[音声ファイル] ドロップダウンから音声ファイルを選択します。
+17.	**[作成]** をクリックします。音声メッセージが正常に作成されたことを示すメッセージが表示されます。![クラウド](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)</center>
-
-<li>[音声メッセージ] セクションの下にある [新しい音声メッセージ] をクリックします。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)</center>
-
-<li>[構成: 新しい電話メッセージ] ページで、[音声ファイルの管理] をクリックします。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)</center>
-
-<li>[構成: 音声ファイル] ページで、[ 音声ファイルのアップロード ] をクリックします。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)</center>
-
-<li>[構成: 音声ファイルのアップロード] ページで、[参照] をクリックし、使用する音声メッセージに移動し、[開く] をクリックします。</li>
-<li>説明を追加し、[アップロード] をクリックします。</li>
-<li>これが完了すると、ファイルが正しくアップロードされたことを示すメッセージが表示されます。</li>
-<li>左側の [音声メッセージ] をクリックします。</li>
-<li>[音声メッセージ] セクションの下にある [新しい音声メッセージ] をクリックします。</li>
-<li>[言語] ドロップダウン リストから言語を選択します。</li>
-<li>このメッセージが特定のアプリケーション用である場合は、それを [アプリケーション] ボックスに指定します。</li>
-<li>[メッセージの種類] ドロップダウン リストから、新しいカスタム メッセージで上書きするメッセージの種類を選択します。</li>
-<li>[音声ファイル] ドロップダウンから音声ファイルを選択します。</li>
-<li>[作成] をクリックします。音声メッセージが正常に作成されたことを示すメッセージが表示されます。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 ## Azure Multi-Factor Authentication でのキャッシュ
 
-キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。これにより、ユーザーは、この期間内に認証されるのであれば、電話またはテキストの到着を待つ必要がなくなります。
-
+キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。これは主に、VPN などのオンプレミス システムによって複数の検証要求が送信され、最初の要求がまだ処理中である場合に使用されます。これで、処理中の検証にユーザーが成功した後で、後続の要求が自動的に処理されるようになります。キャッシュは Azure AD へのサインインに使用するためのものではない点に注意してください。
 
 
 ### Azure Multi-Factor Authentication でキャッシュを設定するには
-<ol>
 
-1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
-2. 左側で、[Active Directory] を選択します。
-3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
-4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
-5. Azure Multi-Factor Authentication 管理ポータルで、左側の [キャッシュ] をクリックします。
-6. [キャッシュの構成] ページで [新しいキャッシュ] をクリックします。
-7. キャッシュの種類と、キャッシュする秒数を選択します。[作成] をクリックします。
-
+1.	http://azure.microsoft.com にログオンします。
+2.	このページの上部にある指示に従って、MFA 管理ポータルに移動します。
+3.	Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの [キャッシュ] をクリックします。
+4.	[キャッシュの構成] ページで [新しいキャッシュ] をクリックします。
+5.	キャッシュの種類と、キャッシュする秒数を選択します。[作成] をクリックします。
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
@@ -203,28 +187,31 @@ Azure AD テナントの種類| 使用可能な信頼できる IP オプショ�
 
 ### 信頼できる IP アドレスを有効にするには
 
+1. Azure クラシック ポータルにサインインします。
+2. 左側の [Active Directory] をクリックします。
+3. [ディレクトリ] の下の、信頼できる IP を設定するディレクトリをクリックします。
+4. 選択したディレクトリで、[構成] をクリックします。
+5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
+6. [サービス設定] ページの [信頼できる IP] で、次のいずれかを選択します。
+
+	- イントラネットから発信するフェデレーション ユーザーからの要求の場合 - 企業ネットワークからサインインするすべてのフェデレーション ユーザーは、AD FS によって発行されたクレームを使用して多要素認証をバイパスします。 
+	- 特定の範囲のパブリック IP からの要求の場合 - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。最大で 50 の IP アドレス範囲を入力できます。
+
+7. [保存] をクリックします。
+8. 更新が適用されたら、[閉じる] をクリックします。
+
+
+
+![信頼できる IP](./media/multi-factor-authentication-whats-next/trustedips3.png)
+
+
+
  
-<ol>
-<li>Azure 管理ポータルにサインインします。</li>
-<li>左側の [Active Directory] をクリックします。</li>
-<li>[ディレクトリ] の下の、信頼できる IP を設定するディレクトリをクリックします。</li>
-<li>選択したディレクトリで、[構成] をクリックします。</li>
-<li>[多要素認証] セクションで、[サービス設定の管理を] クリックします。</li>
-<li>[サービスの設定] ページの [信頼できる IP] で、次のいずれかを選択します。<ul> <li>イントラネットから発信するフェデレーション ユーザーからの要求の場合 - 企業ネットワークからサインインするすべてのフェデレーション ユーザーは、AD FS によって発行されたクレームを使用して要素認証をバイパスします。
-
-<li>特定の範囲のパブリック IP からの要求の場合 - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。最大で 12 の IP アドレスの範囲を入力できます。</li></ul>
-
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/trustedips.png)</center>
-
-
-<li>[保存] をクリックします。</li>
-<li>更新が適用されたら、[閉じる] をクリックします。</li>
 ## アプリ パスワード
 
-一部のアプリ (Office 2010 以前や Apple Mail など) では、多要素認証は使用できません。これらのアプリを使用するには、従来のパスワードの代わりに ”アプリ パスワード” を使用する必要があります。アプリ パスワードは、多要素認証をバイパスして動作を続行できるようにします。
+一部のアプリ (Office 2010 以前や Apple Mail など) では、多要素認証は使用できません。これらのアプリを使用するには、従来のパスワードの代わりに "アプリ パスワード" を使用する必要があります。アプリ パスワードは、多要素認証をバイパスして動作を続行できるようにします。
 
->[AZURE.NOTE]Office 2013 クライアントのための最新の認証
+>[AZURE.NOTE] Office 2013 クライアントのための最新の認証
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
 
@@ -244,7 +231,7 @@ Azure AD テナントの種類| 使用可能な信頼できる IP オプショ�
 - 現在は、1 ユーザーあたり 40 個というパスワード数の制限があります。この制限を超えて新しいパスワードを作成するには、既存のアプリ パスワードのいずれかを削除する必要があります。
 - ユーザーのアカウントで多要素認証を有効にすると、Outlook や Lync など、ほとんどのブラウザー クライアントでアプリ パスワードを利用できます。ただし、ユーザーに管理者アカウントが割り当てられている場合でも、Windows PowerShell などの非ブラウザー アプリケーションを介してアプリ パスワードで管理操作を実行することはできません。強固なパスワードでサービス アカウントを作成し、PowerShell スクリプトを実行してください。そのアカウントは多要素認証で有効にしないでください。
 
->[AZURE.WARNING]クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境ではアプリ パスワードは機能しません。
+>[AZURE.WARNING]  クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境ではアプリ パスワードは機能しません。
 >
 >オンプレミスの認証にはドメイン パスワードが必要であり、クラウドで認証するにはアプリ パスワードが必要であるため、クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境ではアプリ パスワードは機能しないことに注意してください。
 
@@ -274,7 +261,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 - Azure Multi-Factor Authentication を使用している
 
 
-<center>![Proofup](./media/multi-factor-authentication-whats-next/federated.png)</center>
+![追加のセキュリティ確認](./media/multi-factor-authentication-whats-next/federated.png)
 
  これらのインスタンスでは、以下を実行する必要があります。
 
@@ -288,7 +275,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 
 
-1. Azure 管理ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 2. 左側の [Active Directory] をクリックします。
 3. [ディレクトリ] の下で、有効にするユーザーのディレクトリをクリックします。
 4. 上部の [ユーザー] をクリックします。
@@ -296,7 +283,8 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 6. [多要素認証] ページ上部の [サービス設定] をクリックします。
 7. [ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する] の横のラジオ ボタンがオンになっていることを確認します。
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/trustedips.png)</center>
+
+![アプリ パスワードの作成](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
 ### アプリ パスワードの作成
 ユーザーは、初期登録時にアプリ パスワードを作成できます。登録プロセスの最後に、アプリ パスワードを作成するためのオプションが表示されます。
@@ -321,7 +309,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ### Azure ポータルでアプリ パスワードを作成するには
 --------------------------------------------------------------------------------
-1. Microsoft Azure 管理ポータルにサインインします。
+1. Azure クラシック ポータルにサインインします。
 3. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
 5. 確認ページの上部の [アプリ パスワード] を選択します。
 6. **[作成]** をクリックします。
@@ -329,7 +317,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 8. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
 
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/app2.png)</center>
+![アプリ パスワード](./media/multi-factor-authentication-whats-next/app2.png)
 
 ### Office 365 または Azure のサブスクリプションがない場合にアプリ パスワードを作成するには
 --------------------------------------------------------------------------------
@@ -341,28 +329,51 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 7. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。
 8. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/myapp.png)</center>
+![アプリ パスワード](./media/multi-factor-authentication-whats-next/myapp.png)
 
-## 記憶されたデバイスとブラウザーに対する Multi-Factor Authentication を一時停止する (パブリック プレビュー)
+## ユーザーが信頼するデバイスに対する Multi-Factor Authentication を記憶する
 
-記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止は、ユーザーが MFA を使用して正常にサインインした後、設定された日数にわたって MFA を一時停止するオプションをユーザーに与えることができる機能です。これはすべての MFA ユーザー向けの無料の機能であり、ユーザーの使いやすさを向上させます。ただし、ユーザーが MFA を一時停止できるため、この機能はアカウントのセキュリティを低下させる可能性があります。
+ユーザーが信頼するデバイスとブラウザーに対する Multi-Factor Authentication の記憶は、すべての MFA ユーザー向けの無料の機能です。ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、MFA を省略できるようにすることが可能です。これにより、ユーザーの利便性を強化できます。
 
-ユーザー アカウントのセキュリティを確保するために、次に該当する場合はデバイスの Multi-Factor Authentication を復元する必要があります。
+ただし、ユーザーは信頼済みデバイスに対する MFA を記憶させることができるため、この機能によってアカウントのセキュリティが低下する可能性があります。アカウントのセキュリティを確保するために、次のいずれかのシナリオでは、デバイスに対する Multi-Factor Authentication を復元する必要があります。
 
 - 企業アカウントが侵害されている場合
 - 記憶されたデバイスが紛失または盗まれた場合
 
-> [AZURE.NOTE]この機能は、ブラウザーのクッキーのキャッシュとして実装されます。ブラウザーのクッキーが有効でない場合は機能しません。
+> [AZURE.NOTE] この機能は、ブラウザーのクッキーのキャッシュとして実装されます。ブラウザーのクッキーが有効でない場合は機能しません。
 
-### 記憶されたデバイスに対する MFA の一時停止を有効化/無効化する方法
+### Multi-Factor Authentication の記憶を有効/無効にする方法
 
-<ol>
-<li>Azure 管理ポータルにサインインします。</li>
-<li>左側の [Active Directory] をクリックします。</li>
-<li>[Active Directory] の下の記憶されたデバイスに対する MFA の一時停止を設定するディレクトリをクリックします。</li>
-<li>選択したディレクトリで、[構成] をクリックします。</li>
-<li>[多要素認証] セクションで、[サービス設定の管理を] クリックします。</li>
-<li>[サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の [デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する] をオン/オフします。</li>
-![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>一時停止を許可する日数を設定します。既定値は 14 日です。</li> <li>[保存] をクリックします。</li> 。<li>[閉じる] をクリックします。</li>
+1. Azure クラシック ポータルにサインインします。
+2. 左側の [Active Directory] をクリックします。
+3. [Active Directory] で、デバイスに対する Multi-Factor Authentication の記憶を設定するディレクトリをクリックします。
+4. 選択したディレクトリで、[構成] をクリックします。
+5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
+6. [サービスの設定] ページの [ユーザーのデバイス設定の管理] で、**[信頼済みのデバイスで Multi-Factor Authentication を記憶することをユーザーに許可する]** をオンまたはオフにします。![デバイスの記憶](./media/multi-factor-authentication-whats-next/remember.png)
+8. 一時停止を許可する日数を設定します。既定値は 14 日です。
+9. [保存] をクリックします。
+10. [閉じる] をクリックします。
 
-<!---HONumber=Oct15_HO3-->
+
+## 選択可能な検証方法 (パブリック プレビュー)
+Azure Multi-Factor Authentication を使用しているときにユーザーが使用できる認証方法を選択できるようになりました。この機能は、以前はオンプレミス サーバー バージョンでのみ使用できました。次の表では、ユーザーに対して有効または無効にできるさまざまな認証方法の概要を示します。
+
+メソッド|説明
+:------------- | :------------- | 
+[電話の呼び出し](multi-factor-authentication-end-user-first-time-mobile-phone.md)| 認証電話に自動音声通話を行います。ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。この電話番号は、オンプレミスの Active Directory には同期されません。
+[電話へのテキスト メッセージ](multi-factor-authentication-end-user-first-time-mobile-phone.md)|ユーザーに確認コードを含むテキスト メッセージが送信されます。ユーザーには、確認コードを使用してテキスト メッセージに返信するか、確認コードをサインイン インターフェイスに入力するよう求めるプロンプトが表示されます。
+[モバイル アプリでの通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリはアカウントに対する未承認のアクセスを防止し、不正なトランザクションを停止します。電話または登録されたデバイスに対するプッシュ通知によって行われます。通知を確認し、適切である場合は [確認] をタップするだけです。または、[拒否] を選択することもできます。あるいは、[拒否] を選択して不正通知を報告することも可能です。不正通知の報告方法については、「Multi-Factor Authentication における [拒否] と [不正通知] 機能の使用法」をご覧ください。</br></br>Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、および [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で使用できます。|
+[モバイル アプリからの確認コード](multi-factor-authentication-end-user-first-time-mobile-app.md)|このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードにより、ユーザー名とパスワードと共に入力し、2 番目の形式の認証が行われます。</li><br><p> Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+
+### 認証方法を有効または無効にする方法
+
+1. Azure クラシック ポータルにサインインします。
+2. 左側の [Active Directory] をクリックします。
+3. Active Directory で、認証方法を有効または無効にするディレクトリをクリックします。
+4. 選択したディレクトリで、[構成] をクリックします。
+5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
+6. [サービスの設定] ページの検証オプションで、使用するオプションをオンまたはオフにします。</br></br>![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)
+9. [保存] をクリックします。
+10. [閉じる] をクリックします。
+
+<!---HONumber=AcomDC_0302_2016-->

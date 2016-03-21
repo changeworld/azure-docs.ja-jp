@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="12/14/2015" 
 	ms.author="tdykstra"/>
 
 # Azure Web ジョブ SDK とは
@@ -22,11 +22,11 @@
 
 この記事では、Web ジョブ SDK の特徴を紹介すると共に、一般的な用途を確認し、コードでの使い方の概要を示します。
 
-[WebJobs](websites-webjobs-resources.md) は、同じコンテキストのプログラムやスクリプトを Web アプリとして実行することができる Azure App Service の機能です。Web ジョブ SDK の目的は、Web ジョブとして実行され、Azure Storage のキュー、BLOB、テーブルや、Service Bus キューと組み合わせて動作するコードを記述するタスクを簡素化することです。
+[Web ジョブ](websites-webjobs-resources.md)は、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる Azure App Service の機能です。[Web ジョブ SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。Web ジョブ SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。拡張性にも優れた設計となっており、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。
 
 Web ジョブ SDK には次のコンポーネントが含まれています。
 
-* **NuGet パッケージ**。Visual Studio コンソール アプリケーション プロジェクトに追加する NuGet パッケージは、コードで Azure Storage サービスまたは Service Bus キューを操作するのフレームワークを提供します。   
+* **NuGet パッケージ**。Visual Studio コンソール アプリケーション プロジェクトに追加する NuGet パッケージは、Web ジョブ SDK の属性でメソッドを修飾することによって、コードで使用するフレームワークを提供します。
   
 * **ダッシュボード**。Web ジョブ SDK の一部は、Azure App Service に含まれており、NuGet パッケージを使用するプログラム向けに豊富な監視と診断の機能を提供します。これらの監視および診断機能を使用するためにコードを記述する必要はありません。
 
@@ -46,11 +46,17 @@ Web ジョブ SDK には次のコンポーネントが含まれています。
 
 * [電子メールの送信](https://github.com/victorhurdugaci/AzureWebJobsSamples/tree/master/SendEmailOnFailure)など、バックグラウンド スレッドで実行したいその他の時間のかかるタスク。
 
+* 毎晩のバックアップ操作の実行など、スケジュールに従って実行するタスク。
+
 これらのシナリオの多くでは、Web アプリを複数の VM で実行するように拡張することを検討できます (複数の WebJobs を同時に実行するなど)。一部のシナリオでは、これにより同じデータが複数回処理されることになりますが、WebJobs SDK の組み込みのキュー、BLOB、および Service Bus のトリガーを使用した場合、これは問題にはなりません。SDK では、関数は各メッセージまたは BLOB に対して 1 回のみ処理されます。
+
+また、Web ジョブ SDK では、一般的なエラー処理シナリオを簡単に処理できます。関数が失敗したときに通知を送信するようにアラートを設定できます。また、タイムアウトを設定して、指定した時間制限内に関数が完了しない場合に、その関数を自動的にキャンセルすることができます。
 
 ## <a id="code"></a> コード サンプル
 
-Azure Storage と組み合わせて動作する標準的なタスクを処理するコードは、シンプルです。コンソール アプリケーションで、実行するバックグラウンド タスクのメソッドを記述し、Web ジョブ SDK の属性でそれらを装飾します。`Main` メソッドは、記述したメソッドの呼び出しを調整する `JobHost` オブジェクトを作成します。Web ジョブ SDK フレームワークは、メソッド内で使用した WebJobs SDK 属性に基づいて、そのメソッドを呼び出すタイミングを認識します。
+Azure Storage と組み合わせて動作する標準的なタスクを処理するコードは、シンプルです。コンソール アプリケーションの `Main` メソッドで、記述したメソッドへの呼び出しを調整する `JobHost` オブジェクトを作成します。Web ジョブ SDK フレームワークは、メソッド内で使用した Web ジョブ SDK 属性に基づいて、そのメソッドを呼び出すタイミングと、使用するパラメーター値を認識します。SDK には、関数が呼び出される条件を指定する*トリガー*と、メソッドのパラメーターに対して情報を入出力する方法を指定する*バインダー*が用意されています。
+
+たとえば、[QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md) 属性では、キューでメッセージを受信したときに関数が呼び出され、メッセージの形式がバイト配列またはカスタム型の JSON の場合、そのメッセージは自動的に逆シリアル化されます。[BlobTrigger](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md) 属性では、Azure ストレージ アカウントで新しい BLOB が作成されたときに常にプロセスがトリガーされます。
 
 次に示すのは、キューをポーリングして、受信したキュー メッセージごとに BLOB を作成する単純なプログラムです。
 
@@ -79,9 +85,77 @@ Azure Storage と組み合わせて動作する標準的なタスクを処理す
 
 		writer.WriteLine(inputText);
 
-Web ジョブ SDK のトリガー機能とバインダー機能は、Azure Storage キューと Service Bus キューを操作するために記述する必要のあるコードを大幅に簡素化します。キューと BLOB のプロセスを処理するために必要な低レベルのコードは Web ジョブ SDK フレームワークによって実行されます。フレームワークは、まだ存在していないキューの作成、キューを開く、キュー メッセージの読み込み、処理の完了時のキュー メッセージの削除、まだ存在しない BLOB コンテナーの作成、BLOB への書き込みなどを処理します。
+Web ジョブ SDK のトリガー機能とバインダー機能は、記述する必要のあるコードを大幅に簡素化します。キュー、BLOB、ファイルの処理、またはスケジュールされたタスクの開始に必要な低レベルのコードは、Web ジョブ SDK フレームワークによって実行されます。たとえば、このフレームワークは、まだ存在していないキューの作成、キューのオープン、キュー メッセージの読み取り、処理の完了時のキュー メッセージの削除、まだ存在しない BLOB コンテナーの作成、BLOB への書き込みなどを処理します。
 
-Web ジョブ SDK は Azure Storage を操作するための多数の方法を提供しています。たとえば、`QueueTrigger` 属性で装飾したパラメーターがバイト配列またはカスタム型の場合は、JSON から自動的に逆シリアル化されます。さらに、`BlobTrigger` 属性を使用して、新しい BLOB が Azure ストレージ アカウントで作成されたときに常にプロセスがトリガーされるように指定できます(`QueueTrigger` は新しいキュー メッセージを数秒で見つけますが、`BlobTrigger` が新しい BLOB を検出するまで最大 20 分かかる場合がある点に注意してください。`BlobTrigger` は `JobHost` が起動したときは常に BLOB をスキャンし、その後、新しい BLOB を検出するために定期的に Azure Storage ログを確認します)。
+次のコード例は、1 つの Web ジョブ内でさまざまなトリガー (`QueueTrigger`、`FileTrigger`、`WebHookTrigger`、`ErrorTrigger`) を示しています。
+
+```
+    public class Functions
+    {
+        public static void ProcessQueueMessage([QueueTrigger("queue")] string message,
+        TextWriter log)
+        {
+            log.WriteLine(message);
+        }
+
+        public static void ProcessFileAndUploadToBlob(
+            [FileTrigger(@"import\{name}", "*.*", autoDelete: true)] Stream file,
+            [Blob(@"processed/{name}", FileAccess.Write)] Stream output,
+            string name,
+            TextWriter log)
+        {
+            output = file;
+            file.Close();
+            log.WriteLine(string.Format("Processed input file '{0}'!", name));
+        }
+
+        [Singleton]
+        public static void ProcessWebHookA([WebHookTrigger] string body, TextWriter log)
+        {
+            log.WriteLine(string.Format("WebHookA invoked! Body: {0}", body));
+        }
+
+        public static void ProcessGitHubWebHook([WebHookTrigger] string body, TextWriter log)
+        {
+            dynamic issueEvent = JObject.Parse(body);
+            log.WriteLine(string.Format("GitHub WebHook invoked! ('{0}', '{1}')",
+                issueEvent.issue.title, issueEvent.action));
+        }
+
+        public static void ErrorMonitor(
+        [ErrorTrigger("00:01:00", 1)] TraceFilter filter, TextWriter log,
+        [SendGrid(
+            To = "admin@emailaddress.com",
+            Subject = "Error!")]
+         SendGridMessage message)
+        {
+            // log last 5 detailed errors to the Dashboard
+            log.WriteLine(filter.GetDetailedMessage(5));
+            message.Text = filter.GetDetailedMessage(1);
+        }
+    }
+```
+
+## <a id="schedule"></a> スケジュール設定
+
+`TimerTrigger` 属性は、スケジュールに基づいて実行する関数をトリガーできます。Azure を通じて Web ジョブ全体をスケジュールしたり、Web ジョブ SDK の `TimerTrigger` を使用して、Web ジョブの個々の関数をスケジュールしたりすることができます。コード サンプルを次に示します。
+
+```
+public class Functions
+{
+    public static void ProcessTimer([TimerTrigger("*/15 * * * * *", RunOnStartup = true)]
+    TimerInfo info, [Queue("queue")] out string message)
+    {
+        message = info.FormatNextOccurrences(1);
+    }
+}
+```
+
+その他のサンプル コードについては、GitHub.com の azure-webjobs-sdk-extensions リポジトリ内にある [TimerSamples.cs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/ExtensionsSample/Samples/TimerSamples.cs) を参照してください。
+
+## 機能拡張
+
+Web ジョブ SDK を使用すると、組み込みの機能に制限されずに、カスタムのトリガーやバインダーを記述できるようになります。たとえば、キャッシュ イベントや定期的なスケジュール向けのトリガーを記述できます。[オープン ソースのリポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions)には、[Web ジョブ SDK の拡張に関する詳細なガイド](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)とサンプル コードが含まれており、独自のトリガーやバインダーの記述を始めるときに役立ちます。
 
 ## <a id="workerrole"></a>Web ジョブ以外での WebJobs SDK の使用
 
@@ -89,19 +163,21 @@ Web ジョブ SDK を使用するプログラムは標準的なコンソール �
 
 ただし、ダッシュボードは Azure App Service Web アプリの拡張機能としてのみ使用可能です。Web ジョブ以外で実行する際にもダッシュボードを使いたい場合は、Web ジョブ SDK ダッシュボードの接続文字列が参照するストレージ アカウントを使用するように Web アプリを構成できます。そうすれば、その Web アプリの Web ジョブ ダッシュボードに、別の場所で実行されているプログラムから関数の実行に関するデータが表示されます。その後、URL https://*{webappname}*.scm.azurewebsites.net/azurejobs/#/functions を使用してダッシュボードに接続できます。詳細については、「[Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)](http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx)」を参照してください。ただし、このブログ記事には、既に使用されていない接続文字列名が示されている点に注意してください。
 
-## <a id="nostorage"></a>WebJobs SDK を使用した関数の呼び出し
+## <a id="nostorage"></a>ダッシュボードの機能
 
-Azure Storage のキュー、テーブル、BLOB や、Service Bus キューを直接操作する必要がない場合でも、Web ジョブ SDK にはいくつかの利点があります。
+Web ジョブ SDK には、トリガーやバインダーを使用しない場合でも、次のようないくつかの利点があります。
 
 * ダッシュボードから関数を呼び出すことができる。
 * ダッシュボードから関数を再生することができる。
 * ダッシュボードで、特定の Web ジョブ (Console.Out、Console.Error、トレースなどを使用して書き込まれる、アプリケーション ログ) にリンクされているか、それらを生成した特定の関数の呼び出しにリンクされているログを表示できます (SDK がパラメーターとして関数に渡す `TextWriter` オブジェクトを使用して書き込まれるログ)。 
 
-* 詳細については、「[関数を手動でトリガーする方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)」と「[ログを記述する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)」を参照してください。
+詳細については、「[関数を手動でトリガーする方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)」と「[ログを記述する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)」を参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 
 Web ジョブ SDK の詳細については、「[Azure WebJobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+
+Web ジョブ SDK の最新の機能強化については、「[リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

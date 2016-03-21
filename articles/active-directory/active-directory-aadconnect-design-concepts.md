@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect の設計概念 |Microsoft Azure"
+   pageTitle="Azure AD Connect: 設計概念 |Microsoft Azure"
    description="このトピックでは、特定の実装設計の領域について詳しく説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="10/13/2015"
+   ms.date="02/16/2016"
    ms.author="andkjell"/>
 
-# Azure AD Connect の設計概念
+# Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある部分について説明することです。ここでは特定の部分について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
 
 ## sourceAnchor
@@ -43,7 +43,6 @@ sourceAnchor 属性は、*オブジェクトの有効期間中に変更できな
 - 大文字と小文字の区別がないこと、および大文字と小文字で異なる可能性がある値は避けること
 - オブジェクトの作成時に割り当てる必要があること
 
-
 選択した sourceAnchor が文字列型でない場合、Azure AD Connect では、特殊文字が表示されないように、属性値に対して Base64Encode を実行します。ADFS とは別のフェデレーション サーバーを使用する場合、属性に対して Base64Encode を実行する機能がそのサーバーにも備わっていることを確認してください。
 
 sourceAnchor 属性は、大文字小文字を区別します。値 "JohnDoe" と "johndoe" は同じではありません。
@@ -55,7 +54,6 @@ sourceAnchor 属性は、大文字小文字を区別します。値 "JohnDoe" �
 フォレスト間およびドメイン間でユーザーを移動する場合は、変更されない属性、または移動時にユーザーと共に移動できる属性を探す必要があります。お勧めする方法は、合成属性を導入することです。GUID に見える情報を保持する属性が適しています。オブジェクトの作成中に、新しい GUID が作成され、ユーザーに設定されます。同期エンジン サーバー内にカスタム ルールを作成し、**objectGUID** に基づいてこの値を作成し、ADDS で選択した属性を更新できます。オブジェクトを移動するときは、この値の内容も必ずコピーしてください。
 
 別のソリューションは、変更されないことがわかっている既存の属性を選択することです。一般的に使用される属性に **employeeID** があります。文字が含まれる属性を検討する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。使用しない方がよい属性として、ユーザーの名前を含む属性があります。名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。これらの属性に含まれる @ 文字も sourceAnchor では使用できません。
-
 
 ### sourceAnchor 属性の変更
 Azure AD でオブジェクトを作成して、ID を同期した後に、sourceAnchor 属性の値を変更することはできません。
@@ -69,4 +67,4 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

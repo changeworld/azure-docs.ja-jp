@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/16/2016"
 	ms.author="markusvi"/>
 
 
-# Azure AD Connect Sync: 関数参照
+# Azure AD Connect Sync: 関数リファレンス
 
 
 Azure Active Directory Sync では、同期時の属性値を操作するために関数を使用します。<br> 関数の構文は、次の形式を使用して表されます。<br> `<output type> FunctionName(<input type> <position name>, ..)`
@@ -56,7 +56,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 [DNComponent](#dncomponent) &nbsp;&nbsp;&nbsp;&nbsp; [DNComponentRev](#dncomponentrev) &nbsp;&nbsp;&nbsp;&nbsp; [EscapeDNComponent](#escapedncomponent)
 
-**検査:**
+**評価:**
 
 [IsBitSet](#isbitset) &nbsp;&nbsp;&nbsp;&nbsp; [IsDate](#isdate) &nbsp;&nbsp;&nbsp;&nbsp; [IsEmpty](#isempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsGuid](#isguid) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsNumeric](#isnumeric) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring)
 
@@ -536,7 +536,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **解説:** <br> 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。<br> この関数の逆の関数は IsPresent です。
 
-**例:** <br> `IsNull([displayName])` <br> CS または MV に属性がないか、空の文字列の場合は True を返します。
+**例:** <br> `IsNullOrEmpty([displayName])` <br> CS または MV に属性がないか、空の文字列の場合は True を返します。
 
 
 
@@ -656,7 +656,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列 <br>
 - NumChars: 文字列の左端から数えて返される文字数を指定する数値
 
-**解説:** <br> 文字列内の最初の numChars 文字を含む文字列。
+**解説:** <br> 文字列内の最初の numChars 文字分の文字を含む文字列。
 
 - numChars = 0 の場合、空の文字列を返します。
 - numChars < 0 の場合、入力文字列を返します。
@@ -1058,4 +1058,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 <!--Image references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

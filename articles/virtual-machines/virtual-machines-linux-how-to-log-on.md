@@ -14,22 +14,19 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="12/08/2015"
 	ms.author="rasquill"/>
-
-
 
 
 #Linux を実行する仮想マシンにログオンする方法 #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-linux-tutorial-portal-rm.md)。
 
-Linux オペレーティング システムを実行する仮想マシンへのログオンには、Secure Shell (SSH) クライアントを使用します。
-
 仮想マシンにログオンするときに使用するコンピューターには、SSH クライアントをインストールする必要があります。SSH クライアント プログラムの選択肢は多数あります。たとえば、次のプログラムを選択できます。
 
 - Windows オペレーティング システムを実行しているコンピューターの場合、PuTTY などの SSH クライアントを使用できます。詳細については、[PuTTY Download Page (PuTTY のダウンロード ページ)](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) を参照してください。
-- Linux オペレーティング システムを実行しているコンピューターの場合、OpenSSH などの SSH クライアントを使用できます。詳細については、「[OpenSSH (英語)](http://www.openssh.org/)」を参照してください。
+- Linux オペレーティング システムを実行する仮想マシンでは、Secure Shell (SSH) クライアントを使用してログオンします。このクライアントは、ほぼすべてのディストリビューションに既定でインストールされています。Linux の詳細については、「[SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照してください。
+
 
 >[AZURE.NOTE]要件やトラブルシューティングのヒントについては、「[RDP または SSH を使用した Azure 仮想マシンへの接続](http://go.microsoft.com/fwlink/p/?LinkId=398294)」を参照してください。
 
@@ -56,4 +53,4 @@ Linux オペレーティング システムを実行する仮想マシンへの�
 <!-- LINKS -->
 [Linux 仮想マシンのパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,23 +13,25 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="02/08/2016" 
 	ms.author="hangzh;bradsev" />
 
 # Cortana Analytics Process の Azure HDInsight Hadoop クラスターをカスタマイズする 
 
-このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
-
-[AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
+## はじめに
 
 この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。このカスタマイズでは、Cortana Analytics Process で使用するためのクラスターを準備します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。
 
 このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで使用される手順の詳細については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-hive-queries.md)」をご覧ください。
 
+次のメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
+
 
 ## <a name="customize"></a>Azure HDInsight Hadoop クラスターのカスタマイズ
 
-カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Microsoft Azure 管理ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
+カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
 
 ![Create workspace][1]
 
@@ -39,7 +41,7 @@
 
 構成ページ 2 で **[データ ノード]** の番号を入力し、**[リージョン/仮想ネットワーク]** を選択して、**[ヘッド ノード]** と **[データ ノード]** のサイズを選択します。矢印をクリックして、次の構成ページに進みます。
 
->[AZURE.NOTE]**[リージョン/仮想ネットワーク]** は、HDInsight Hadoop クラスターに使用するストレージ アカウントのリージョンと同じにする必要があります。同じにしないと、4 番目の構成ページで、ユーザーが使用するストレージ アカウントが **[アカウント名]** ドロップダウン リストに表示されません。
+>[AZURE.NOTE] **[リージョン/仮想ネットワーク]** は、HDInsight Hadoop クラスターに使用するストレージ アカウントのリージョンと同じにする必要があります。同じにしないと、4 番目の構成ページで、ユーザーが使用するストレージ アカウントが **[アカウント名]** ドロップダウン リストに表示されません。
 
 ![Create workspace][3]
 
@@ -68,13 +70,13 @@
 
 ユーザーが RDP を介して Hadoop クラスターのヘッド ノードにアクセスするには、その前に Azure での Hadoop クラスターへのリモート アクセスを有効にする必要があります。
 
-1. [**Microsoft Azure 管理ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
+1. [**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
 	
 	![Create workspace][7]
 
 2. **[リモート デスクトップの構成]** ウィンドウで、[ユーザー名]、[パスワード] の各フィールドに入力し、リモート アクセスの有効期限を選択します。チェック マークをクリックして Hadoop クラスターのヘッド ノードへのリモート アクセスを有効にします。
 	
-	>[AZURE.NOTE]
+	>[AZURE.NOTE] 
 	>
 	>1. リモート アクセスのユーザー名とパスワードは、Hadoop クラスターを作成したときに使用するユーザー名とパスワードではありません。これらは別個の資格情報のセットです。
 	>
@@ -102,4 +104,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

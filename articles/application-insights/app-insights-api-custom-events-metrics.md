@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="10/23/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -104,165 +104,26 @@ Application Insights では、*カスタム イベント*はデータ ポイン�
 
     telemetry.trackEvent("WinGame");
 
-ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。[概要] ブレードでカスタム イベントのタイルをクリックします。
+ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。
 
-![portal.azure.com でアプリケーション リソースを参照する](./media/app-insights-api-custom-events-metrics/01-custom.png)
+イベントの数を表示するには、[[メトリックス エクスプローラー]](app-insights-metrics-explorer.md) ブレードを開き、新しいグラフを追加して、[イベント] を選択します。
+
+![](./media/app-insights-api-custom-events-metrics/01-custom.png)
+
+さまざまなイベントの数を比較するには、グラフの種類を [グリッド] に設定し、イベント名でグループ化します。
+
+![](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
 
-グラフはイベント名でグループ化されるため、最も重要なイベントの相対的寄与率を確認できます。これを制御するには、グラフを選択し、グループ化コントロールを使用します。
-
-![グラフを選択し、グループ化を設定する](./media/app-insights-api-custom-events-metrics/02-segment.png)
-
-グラフの下にある一覧から、イベント名を選択します。クリックし、イベントの個別インスタンスを表示します。
+グリッドでイベント名をクリックすると、そのイベントの個々の発生の情報が表示されます。
 
 ![イベントをドリルスルーする](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
 任意のインスタンスをクリックすると、詳細が表示されます。
 
-## <a name="properties"></a>プロパティを使用してデータをフィルター処理、検索、分割する
+検索またはメトリックス エクスプローラーで特定のイベントを対象にするには、ブレードのフィルターを対象となるイベントの名前に設定します。
 
-プロパティと測定値をイベント (およびメトリック、ページ ビュー、その他のテレメトリ データ) に結び付けることができます。
-
-**プロパティ**は、利用状況レポートでテレメトリをフィルター処理するのに使用できる文字列値です。たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けると、人気のあるゲームを確認できます。
-
-文字列の長さには約 1 k の制限があります。(大きなデータの塊を送信する場合、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
-
-**メトリック**はグラフィカルに表示できる数値です。たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。グラフはイベントともに送信されるプロパティ別に分割できます。そのため、ゲームごとに個別グラフまたは積み重ねグラフを表示できます。
-
-メトリック値を正しく表示するには、0 以上にする必要があります。
-
-
-使用できる[プロパティ、プロパティ値、およびメトリックの数には制限](#limits)があります。
-
-
-*JavaScript*
-
-    appInsights.trackEvent
-      ("WinGame",
-         // String properties:
-         {Game: currentGame.name, Difficulty: currentGame.difficulty},
-         // Numeric metrics:
-         {Score: currentGame.score, Opponents: currentGame.opponentCount}
-         );
-
-    appInsights.trackPageView
-        ("page name", "http://fabrikam.com/pageurl.html",
-          // String properties:
-         {Game: currentGame.name, Difficulty: currentGame.difficulty},
-         // Numeric metrics:
-         {Score: currentGame.score, Opponents: currentGame.opponentCount}
-         );
-          
-
-*C#*
-
-    // Set up some properties and metrics:
-    var properties = new Dictionary <string, string> 
-       {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
-    var metrics = new Dictionary <string, double>
-       {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
-
-    // Send the event:
-    telemetry.TrackEvent("WinGame", properties, metrics);
-
-
-*VB*
-
-    ' Set up some properties:
-    Dim properties = New Dictionary (Of String, String)
-    properties.Add("game", currentGame.Name)
-    properties.Add("difficulty", currentGame.Difficulty)
-
-    Dim metrics = New Dictionary (Of String, Double)
-    metrics.Add("Score", currentGame.Score)
-    metrics.Add("Opponents", currentGame.OpponentCount)
-
-    ' Send the event:
-    telemetry.TrackEvent("WinGame", properties, metrics)
-
-
-*Java*
-    
-    Map<String, String> properties = new HashMap<String, String>();
-    properties.put("game", currentGame.getName());
-    properties.put("difficulty", currentGame.getDifficulty());
-    
-    Map<String, Double> metrics = new HashMap<String, Double>();
-    metrics.put("Score", currentGame.getScore());
-    metrics.put("Opponents", currentGame.getOpponentCount());
-    
-    telemetry.trackEvent("WinGame", properties, metrics);
-
-
-> [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
-
-**メトリックを使用した場合**、メトリック エクスプ ローラーを開き、カスタム グループからメトリックを選択します。
-
-![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
-
-*メトリックが表示されない場合、またはカスタムの見出しがない場合は、選択ブレードを閉じて後でやり直してください。パイプラインを介したメトリックの集計が終了するまで 1 時間かかる場合があります。*
-
-**プロパティとメトリックを使用した場合**、プロパティ別にメトリックを分割します。
-
-
-![グループ化を設定し、グループ化基準のプロパティを選択する](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
-
-
-
-**診断検索では**、イベントのそれぞれの発生箇所のプロパティとメトリックを表示できます。
-
-
-![インスタンスを選択し、「...」を選択する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
-
-
-[検索] ボックスを使用して、特定のプロパティ値を持つイベントを表示します。
-
-
-![検索用語を入力する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
-
-[検索式の詳細情報][diagnostic]
-
-#### プロパティとメトリックを設定する別の方法
-
-個別のオブジェクトでイベントのパラメーターを集めたほうが便利であれば、そのようにできます。
-
-    var event = new EventTelemetry();
-
-    event.Name = "WinGame";
-    event.Metrics["processingTime"] = stopwatch.Elapsed.TotalMilliseconds;
-    event.Properties["game"] = currentGame.Name;
-    event.Properties["difficulty"] = currentGame.Difficulty;
-    event.Metrics["Score"] = currentGame.Score;
-    event.Metrics["Opponents"] = currentGame.Opponents.Length;
-
-    telemetry.TrackEvent(event);
-
-
-
-#### <a name="timed"></a> タイミング イベント
-
-何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
-
-
-*C#*
-
-    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-    // ... perform the timed action ...
-
-    stopwatch.Stop();
-
-    var metrics = new Dictionary <string, double>
-       {{"processingTime", stopwatch.Elapsed.TotalMilliseconds}};
-
-    // Set up some properties:
-    var properties = new Dictionary <string, string> 
-       {{"signalSource", currentSignalSource.Name}};
-
-    // Send the event:
-    telemetry.TrackEvent("SignalProcessed", properties, metrics);
-
-
+![[フィルター] を開き、イベント名を展開して、1 つ以上の値を選択する](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
 ## メトリックを追跡する
 
@@ -335,7 +196,29 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
+#### ページ ビューのタイミング
 
+既定では、"ページ ビューの読み込み時間" として報告される時間は、ブラウザーが要求を送信した時点から、ブラウザーのページ読み込みイベントが呼び出されるまで測定されます。
+
+代わりに、次のいずれかを行うことができます。
+
+* [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) の呼び出しで明示的な時間を設定する。
+ * `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`
+* ページ ビューのタイミングの呼び出し (`startTrackPage` と `stopTrackPage`) を使用する。
+
+*JavaScript*
+
+    // To start timing a page:
+    appInsights.startTrackPage("Page1");
+
+...
+
+    // To stop timing and log the page:
+    appInsights.stopTrackPage("Page1", url, properties, measurements);
+
+最初のパラメーターとして使用する名前は、開始呼び出しと停止呼び出しに関連します。既定値は現在のページ名です。
+
+メトリック エクスプローラーに結果として表示されるページ読み込み時間は、開始呼び出しから停止呼び出しまでの時間から取得されます。実際の時間間隔はユーザーが決定します。
 
 ## 要求を追跡する
 
@@ -444,6 +327,21 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) を編集して `DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。
 
 
+
+## データのフラッシュ
+
+通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
+
+*C#*
+
+    telemetry.Flush();
+
+    // Allow some time for flushing before shutdown.
+    System.Threading.Thread.Sleep(1000);
+
+この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-desktop.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
+
+
 ## 認証されたユーザー
 
 Web アプリでは、ユーザーは既定で Cookie により識別されます。ユーザーは、別のコンピューターまたはブラウザーからアプリにアクセスしたり、Cookie を削除した場合、複数回カウントされることがあります。
@@ -485,8 +383,152 @@ ASP.NET Web MVC アプリケーションでの例:
 
 特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索][diagnostic]することもできます。
 
+## <a name="properties"></a>プロパティを使用してデータをフィルター処理、検索、分割する
 
-## <a name="defaults"></a>選択したカスタム テレメトリに既定値を設定する
+プロパティと測定値をイベント (およびメトリック、ページ ビュー、その他のテレメトリ データ) に結び付けることができます。
+
+**プロパティ**は、利用状況レポートでテレメトリをフィルター処理するのに使用できる文字列値です。たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けると、人気のあるゲームを確認できます。
+
+文字列の長さには約 1 k の制限があります。(大きなデータの塊を送信する場合、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
+
+**メトリック**はグラフィカルに表示できる数値です。たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。グラフはイベントともに送信されるプロパティ別に分割できます。そのため、ゲームごとに個別グラフまたは積み重ねグラフを表示できます。
+
+メトリック値を正しく表示するには、0 以上にする必要があります。
+
+
+使用できる[プロパティ、プロパティ値、およびメトリックの数には制限](#limits)があります。
+
+
+*JavaScript*
+
+    appInsights.trackEvent
+      ("WinGame",
+         // String properties:
+         {Game: currentGame.name, Difficulty: currentGame.difficulty},
+         // Numeric metrics:
+         {Score: currentGame.score, Opponents: currentGame.opponentCount}
+         );
+
+    appInsights.trackPageView
+        ("page name", "http://fabrikam.com/pageurl.html",
+          // String properties:
+         {Game: currentGame.name, Difficulty: currentGame.difficulty},
+         // Numeric metrics:
+         {Score: currentGame.score, Opponents: currentGame.opponentCount}
+         );
+          
+
+*C#*
+
+    // Set up some properties and metrics:
+    var properties = new Dictionary <string, string> 
+       {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
+    var metrics = new Dictionary <string, double>
+       {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
+
+    // Send the event:
+    telemetry.TrackEvent("WinGame", properties, metrics);
+
+
+*VB*
+
+    ' Set up some properties:
+    Dim properties = New Dictionary (Of String, String)
+    properties.Add("game", currentGame.Name)
+    properties.Add("difficulty", currentGame.Difficulty)
+
+    Dim metrics = New Dictionary (Of String, Double)
+    metrics.Add("Score", currentGame.Score)
+    metrics.Add("Opponents", currentGame.OpponentCount)
+
+    ' Send the event:
+    telemetry.TrackEvent("WinGame", properties, metrics)
+
+
+*Java*
+    
+    Map<String, String> properties = new HashMap<String, String>();
+    properties.put("game", currentGame.getName());
+    properties.put("difficulty", currentGame.getDifficulty());
+    
+    Map<String, Double> metrics = new HashMap<String, Double>();
+    metrics.put("Score", currentGame.getScore());
+    metrics.put("Opponents", currentGame.getOpponentCount());
+    
+    telemetry.trackEvent("WinGame", properties, metrics);
+
+
+> [AZURE.NOTE] プロパティで個人を特定できる情報を記録しないように注意します。
+
+**メトリックを使用した場合**、メトリック エクスプ ローラーを開き、カスタム グループからメトリックを選択します。
+
+![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
+
+*メトリックが表示されない場合、またはカスタムの見出しがない場合は、選択ブレードを閉じて後でやり直してください。パイプラインを介したメトリックの集計が終了するまで 1 時間かかる場合があります。*
+
+**プロパティとメトリックを使用した場合**、プロパティ別にメトリックを分割します。
+
+
+![グループ化を設定し、グループ化基準のプロパティを選択する](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
+
+
+
+**診断検索では**、イベントのそれぞれの発生箇所のプロパティとメトリックを表示できます。
+
+
+![インスタンスを選択し、「...」を選択する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
+
+
+[検索] ボックスを使用して、特定のプロパティ値を持つイベントを表示します。
+
+
+![検索用語を入力する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
+
+[検索式の詳細情報][diagnostic]
+
+#### プロパティとメトリックを設定する別の方法
+
+個別のオブジェクトでイベントのパラメーターを集めたほうが便利であれば、そのようにできます。
+
+    var event = new EventTelemetry();
+
+    event.Name = "WinGame";
+    event.Metrics["processingTime"] = stopwatch.Elapsed.TotalMilliseconds;
+    event.Properties["game"] = currentGame.Name;
+    event.Properties["difficulty"] = currentGame.Difficulty;
+    event.Metrics["Score"] = currentGame.Score;
+    event.Metrics["Opponents"] = currentGame.Opponents.Length;
+
+    telemetry.TrackEvent(event);
+
+> [AZURE.WARNING] Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。再利用すると、正しくない構成でテレメトリが送信される場合があります。
+
+#### <a name="timed"></a> タイミング イベント
+
+何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
+
+
+*C#*
+
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+    // ... perform the timed action ...
+
+    stopwatch.Stop();
+
+    var metrics = new Dictionary <string, double>
+       {{"processingTime", stopwatch.Elapsed.TotalMilliseconds}};
+
+    // Set up some properties:
+    var properties = new Dictionary <string, string> 
+       {{"signalSource", currentSignalSource.Name}};
+
+    // Send the event:
+    telemetry.TrackEvent("SignalProcessed", properties, metrics);
+
+
+
+## <a name="defaults"></a>カスタム テレメトリの既定のプロパティ
 
 記述するカスタム イベントにいくつかに既定のプロパティ値を設定する場合、TelemetryClient でそれを設定できます。既定値はそのクライアントから送信されたすべてのテレメトリ アイテムに追加されます。
 
@@ -525,23 +567,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 **JavaScript Web クライアント**の場合、[JavaScript テレメトリ初期化子](#js-initializer)を使用します。
 
-
-
-## データのフラッシュ
-
-通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
-
-*C#*
-
-    telemetry.Flush();
-
-    // Allow some time for flushing before shutdown.
-    System.Threading.Thread.Sleep(1000);
-
-この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-desktop.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
-
-
-
+標準コレクション モジュールのデータなど、**すべてのテレメトリにプロパティを追加する**には、[テレメトリ初期化子を作成](app-insights-api-filtering-sampling.md#add-properties)します。
 
 
 ## テレメトリのサンプリング、フィルター処理、および処理 
@@ -550,7 +576,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 
 * テレメトリへの[プロパティの追加](app-insights-api-filtering-sampling.md#add-properties) - たとえば、バージョン番号や、他のプロパティから算出された値などです。
 * [サンプリング](app-insights-api-filtering-sampling.md#sampling)では、表示されるメトリックに影響を与えることなく、また、例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断する機能に影響を与えることなく、アプリからポータルに送信するデータの量が削減されます。
-* [フィルター処理](app-insights-api-filtering-sampling.md#filtering)の場合もまたデータ量が削減されます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+* [フィルター処理](app-insights-api-filtering-sampling.md#filtering)によってもデータ量が削減されます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
 [詳細情報](app-insights-api-filtering-sampling.md)
 
@@ -568,7 +594,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config][config] 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+パフォーマンス カウンター、HTTP 要求、依存関係など、**選択されている標準のコレクターを無効にする**には、[ApplicationInsights.config][config] 内の該当する行を削除するか、コメントにします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 ## <a name="debug"></a>開発者モード
 
@@ -595,7 +621,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-開発、テスト、および実稼働環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
+開発、テスト、および運用環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -645,25 +671,33 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * Web アプリケーションで **Operation** は、現在の HTTP 要求を示します。他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
  * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
  * **名前**: 識別子。通常は HTTP 要求の URL。 
- * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
+ * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **User**: ユーザー情報。 
+* **ユーザー** ユーザー情報。 
 
 
 
 ## 制限
 
-アプリケーションごとのメトリックとイベントの数には制限があります。
+アプリケーションごと (インストルメンテーション キーごと) のメトリックとイベントの数には制限があります。
 
-1. インストルメンテーション キー (つまり、アプリケーション) ごとに 1 秒あたり最大 500 のテレメトリ データ ポイント。これには、SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリック、およびその他のテレメトリの両方が含まれます。
+1. インストルメンテーション キーごとに個別に適用される 1 秒あたりの最大レート。上限を超えると、一部のデータが破棄されます。
+ * TrackTrace 呼び出しとキャプチャされたログ データの場合、1 秒あたり最大 500 データ ポイント (Free 価格レベルの場合、1 秒あたり 100 データ ポイント)。
+ * モジュールまたは TrackException 呼び出しによってキャプチャされた例外の場合、1 秒あたり最大 50 データ ポイント。 
+ * SDK モジュールによって送信される標準テレメトリと、コードによって送信されるカスタム イベント、メトリックなどのテレメトリの両方を含む、他のすべてのデータの場合、1 秒あたり最大 500 データ ポイント (Free 価格レベルの場合、1 秒あたり 100 データ ポイント)。
+1. [価格レベル](app-insights-pricing.md)に応じた 1 か月あたりのデータ総量。
 1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。メトリックとプロパティの名前は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
-2.	各プロパティに対する一意の値は 100 未満であり、プロパティは、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索とフィルタリングに使用できますが、フィルター処理には使用できなくなります。
+2.	各プロパティに対する一意の値は 100 未満であり、プロパティは、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索に使用できますが、フィルター処理には使用できなくなります。
 3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は「その他の値」としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
 
-* *質問: データは、どのくらいの期間保持されますか。*
+*データ速度の上限に達するのを回避する方法*
 
-    [データの保持とプライバシーに関するページ][data]を参照してください。
+* 最新の SDK をインストールして、[サンプリング](app-insights-sampling.md)を使用します。
+
+*データが保持される期間*
+
+* [データの保持とプライバシー][data]に関するページを参照してください。
 
 
 ## リファレンス ドキュメント
@@ -693,9 +727,9 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 
 
-* *REST API はありますか。*
+* *ポータルからデータを取得する REST API はありますか。*
 
-    はい。ただし、まだ公開されていません。
+    はい、近日対応予定です。それまでの間は、[連続エクスポート](app-insights-export-telemetry.md)を使用してください。
 
 ## <a name="next"></a>次のステップ
 
@@ -715,7 +749,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 [data]: app-insights-data-retention-privacy.md
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
@@ -724,4 +758,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

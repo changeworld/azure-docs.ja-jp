@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Innotas の統合 | Microsoft Azure"
     description="Azure Active Directory で Innotas を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Innotas の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Innotas テナント
   
-このチュートリアルを完了すると、Innotas に割り当てた Azure AD ユーザーは、Innotas 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Innotas に割り当てた Azure AD ユーザーは、Innotas 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-innotas-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-innotas-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -70,25 +70,25 @@
 
 1.  Azure AD ポータルの **Innotas** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777334.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-innotas-tutorial/IC777334.png "Configure single sign-on")
 
 2.  **[ユーザーの Innotas へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777335.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-innotas-tutorial/IC777335.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** テキスト ボックスに、"*https://\<テナント名>.Innotas.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** テキストボックスに、"https://\<テナント名>.Innotas.com" のパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-innotas-tutorial/IC777336.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-innotas-tutorial/IC777336.png "Configure app URL")
 
 4.  **[Innotas でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\InnotasMetaData.xml** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777337.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-innotas-tutorial/IC777337.png "Configure single sign-on")
 
 5.  メタデータ ファイルを Innotas サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
 
-6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-innotas-tutorial/IC777338.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-innotas-tutorial/IC777338.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 Innotas へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Innotas にログインしようとすると、そのユーザーが存在するかどうかが Innotas によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Innotas によって自動的に作成されます。
@@ -104,10 +104,10 @@ Innotas へのユーザー プロビジョニングの構成にあたって必�
 
     ![ユーザーの割り当て](./media/active-directory-saas-innotas-tutorial/IC777339.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-innotas-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-innotas-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article" 
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -30,7 +30,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
+* アクティブな Azure アカウント。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
 * [Visual Studio 2013 Express for Windows]
 
 ## 新しいモバイル サービスを作成する
@@ -39,11 +39,11 @@
 
 ## 新しいユニバーサル Windows アプリを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいユニバーサル Windows アプリを作成するか、既存の Windows ストアまたは Windows Phone アプリ プロジェクトを変更してモバイル サービスに接続することができます。
+モバイル サービスを作成したら、Azure クラシック ポータルの簡単なクイック スタートに従って、新しいユニバーサル Windows アプリを作成するか、既存の Windows ストアまたは Windows Phone アプリ プロジェクトを変更してモバイル サービスに接続することができます。
 
 ここでは、モバイル サービスに接続された新しいユニバーサル Windows アプリを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows]** を選択し、**[新しい Windows ストア アプリを作成する]** を展開します。
@@ -75,7 +75,7 @@
 
 * [アプリケーションにプッシュ通知を追加する][Get started with push notifications] アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [.NET クライアント ライブラリを使用する方法](mobile-services-windows-dotnet-how-to-use-client-library.md) Mobile Services にクエリを送信する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
+* [.NET クライアント ライブラリを使用する方法](mobile-services-dotnet-how-to-use-client-library.md) Mobile Services にクエリを送信する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
@@ -95,7 +95,7 @@
 [Get started with push notifications]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=AcomDC_0211_2016-->

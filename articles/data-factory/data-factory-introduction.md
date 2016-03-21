@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="10/28/2015" 
+	ms.date="02/09/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory サービスの概要
@@ -21,7 +21,7 @@
 ## 概要
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
 
-Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。Data Factory を使えば、各種のサービスを管理されたデータ フロー パイプラインにまとめ上げることによって、ビッグ データのコンピューティング ニーズに応える [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](http://azure.microsoft.com/documentation/services/batch/) のほか、分析ソリューションを運用可能にするための [Azure Machine Learning](http://azure.microsoft.com/documentation/services/machine-learning/) などを使ったデータの変換を実現できます。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
+Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。Data Factory を使えば、各種のサービスを管理されたデータ フロー パイプラインにまとめ上げることによって、ビッグ データのコンピューティング ニーズに応える [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) のほか、分析ソリューションを運用可能にするための [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) などを使ったデータの変換を実現できます。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
 
 ![概要](./media/data-factory-introduction/data-factory-overview.png)
 
@@ -57,4 +57,16 @@ Azure Data Factory には、入力および出力データ、処理イベント�
 
 データセット、アクティビティ、パイプライン、およびリンクされたサービスという 4 つの簡単な概念を理解すれば、Azure Data Factory を使用できます。 何もない状態から[最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)ことも、[Data Factory のサンプル](data-factory-samples.md)を示した記事の説明に従って既成のサンプルをデプロイすることもできます。
 
-<!---HONumber=Nov15_HO1-->
+## サポートされているリージョン
+現時点では、データ ファクトリは、**米国西部**と**北ヨーロッパ** リージョンで作成できます。ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
+
+Azure Data Factory 自体は、データを保存しません。Azure Data Factory を使用すると、データ主導型のフローを作成し、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores)間でのデータ移動と、他のリージョンまたはオンプレミス環境にある[コンピューティング サービス](data-factory-compute-linked-services.md)を使用したデータ処理を調整できます。また、プログラムと UI の両方のメカニズムを使用して、[ワークフローを監視および管理](data-factory-monitor-manage-pipelines.md)することもできます。
+
+Azure Data Factory を利用できるリージョンが**米国西部**と**北ヨーロッパ**のみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンで[グローバル](data-factory-data-movement-activities.md#global)に利用できます。データ ストアがファイアウォールの内側にある場合は、オンプレミス環境にインストールされている [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) がデータを移動します。
+
+たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。北ヨーロッパに Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。Data Factory サービスがコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
+
+将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
+  
+
+<!---HONumber=AcomDC_0302_2016-->

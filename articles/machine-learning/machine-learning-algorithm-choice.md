@@ -7,14 +7,14 @@
 	manager="paulettm"
 	editor="cgronlun"
     tags=""/>
-
+    
 <tags
 	ms.service="machine-learning"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="10/13/2015"
+	ms.date="02/10/2016"
 	ms.author="brohrer;garye" />
 
 # Microsoft Azure Machine Learning のアルゴリズムの選択方法
@@ -25,7 +25,7 @@
 
 **Microsoft Azure Machine Learning のアルゴリズム チート シート**を使用すると、Microsoft Azure Machine Learning のアルゴリズム ライブラリから、予測分析ソリューションに適した機械学習アルゴリズムを選択できます。この記事では、その使用方法について説明します。
 
-> [AZURE.NOTE]チート シートをダウンロードし、それを見ながらこの記事を読むには、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」にアクセスしてください。
+> [AZURE.NOTE] チート シートをダウンロードし、それを見ながらこの記事を読むには、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」にアクセスしてください。
 
 このチート シートは非常に特定のユーザーを対象にしていることに注意してください。Azure Machine Learning Studio でアルゴリズムを選択しようとしている機械学習について学部レベルの知識を持つデータ科学初心者です。つまり、一部の一般化と過度の単純化を行いますが、安全な方向に案内します。また、多くのアルゴリズムが一覧にないことも意味します。Azure Machine Learning で使用可能な方法が増えたら、それらを追加します。
 
@@ -37,7 +37,7 @@
 
 同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Analytics ギャラリー](http://gallery.azureml.net/) の次の例を参照してください。[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
 
->[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
+>[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
 ## 機械学習の種類
 
@@ -114,7 +114,7 @@
 |[ローカル詳細サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|大きい特徴セットに好適|
 |[ベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
 |**多クラス分類**| | | | | |
-|[ロジスティック回帰](https://msdn.microsoft.com/JA-JP/library/azure/dn905853.aspx)| |●|●|5| |
+|[ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905853.aspx)| |●|●|5| |
 |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
 |[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
 |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
@@ -237,4 +237,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

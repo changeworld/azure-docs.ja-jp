@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Azure プレビュー ポータルを使用した仮想ネットワークの作成 |Microsoft Azure"
-   description="Azure プレビュー ポータルを使用して仮想ネットワークを作成する方法を説明します。"
+   pageTitle="Azure ポータルを使用した仮想ネットワークの作成 | Microsoft Azure"
+   description="Azure ポータルを使用して仮想ネットワークを作成する方法を説明します。"
    services="virtual-network"
    documentationCenter=""
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
-   tags="classic"/>
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-network"
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/21/2015"
+   ms.date="02/03/2016"
    ms.author="telmos"/>
 
 # Azure プレビュー ポータルを使用した仮想ネットワーク (従来型) の作成
@@ -29,4 +29,4 @@
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-classic-pportal-include](../../includes/virtual-networks-create-vnet-classic-pportal-include.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

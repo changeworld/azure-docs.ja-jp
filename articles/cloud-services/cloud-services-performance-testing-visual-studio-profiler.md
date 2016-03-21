@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル" 
+	pageTitle="コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Azure" 
 	services="cloud-services"
 	description="Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。" 
 	documentationCenter=""
 	authors="TomArcher" 
 	manager="douge" 
-	editor="tglee"
+	editor=""
 	tags="" 
 	/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="09/14/2015" 
+	ms.date="12/21/2015" 
 	ms.author="tarcher"/>
 
 # Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
@@ -186,4 +186,4 @@ Visual Studio プロファイラーでは、エミュレーター内の Azure �
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

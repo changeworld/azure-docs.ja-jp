@@ -1,11 +1,12 @@
-<properties 
-	pageTitle="SendGrid を使用した電子メールの送信 | Microsoft Azure" 
-	description="SendGrid サービスを使用して Azure Mobile Services アプリケーションから電子メールを送信する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="Erikre" 
-	manager="sendgrid" 
+<properties
+	pageTitle="SendGrid を使用した電子メールの送信 | Microsoft Azure"
+	description="SendGrid サービスを使用して Azure Mobile Services アプリケーションから電子メールを送信する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="Erikre"
+	manager="sendgrid"
 	editor=""/>
+
 
 <tags 
 	ms.service="mobile-services" 
@@ -13,11 +14,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
-	ms.author="Erikre"/>
+	ms.date="11/30/2015" 
+	ms.author="glenga"/>
 
 
 # SendGrid を使用した Mobile Services からの電子メールの送信
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 このトピックでは、モバイル サービスに電子メール機能を追加する方法について説明します。このチュートリアルでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信します。完了すると、モバイル サービスは、レコードが挿入されるたびに電子メールを送信します。
 
@@ -37,14 +43,14 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## <a name="add-script"></a>電子メールを送信する新しいスクリプトを登録する
 
-1. [Azure 管理ポータル]にログオンし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。
+1. [Azure クラシック ポータル]にログオンし、**[Mobile Services]** をクリックして、モバイル サービスをクリックします。
 
-2. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+2. Azure クラシック ポータルで、**[データ]** タブ、**TodoItem** テーブルの順にクリックします。
 
 	![][1]
 
 3. **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
-   
+
 	![][2]
 
 	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
@@ -52,8 +58,8 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 4. 挿入関数を次のコードに置き換えます。
 
         var SendGrid = require('sendgrid').SendGrid;
-        
-        function insert(item, user, request) {    
+
+        function insert(item, user, request) {
             request.execute({
                 success: function() {
                     // After the record has been inserted, send the response immediately to the client
@@ -64,8 +70,8 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
             });
 
             function sendEmail(item) {
-                var sendgrid = new SendGrid('**username**', '**password**');       
-                
+                var sendgrid = new SendGrid('**username**', '**password**');
+
                 sendgrid.send({
                     to: '**email-address**',
                     from: '**from-address**',
@@ -88,13 +94,13 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 	- **_from-address_**: 電子メールの送信元アドレス。組織に属する登録済みドメイン アドレスの使用を検討してください。
 
-     >[AZURE.NOTE]登録済みドメインがない場合は、Mobile Service のドメインを **notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
+     > [AZURE.NOTE] 登録済みドメインがない場合は、Mobile Service のドメインを **notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
 
 6. **[保存]** ボタンをクリックします。これで、**TodoItem** テーブルにレコードが挿入されるたびに電子メールが送信されるように、スクリプトを構成できました。
 
 ## <a name="insert-data"></a>テスト データを挿入して電子メールを受け取る
 
-1. クライアント アプリケーション プロジェクトで、クイック スタート アプリケーションを実行します。 
+1. クライアント アプリケーション プロジェクトで、クイック スタート アプリケーションを実行します。
 
 	このトピックでは、クイック スタートの Windows ストア バージョンを示します。
 
@@ -130,10 +136,8 @@ Mobile Services で SendGrid 電子メール サービスを簡単に使用で�
 [Mobile Services の使用]: /develop/mobile/tutorials/get-started
 [sign up page]: https://sendgrid.com/windowsazure.html
 [Multiple User Credentials page]: https://sendgrid.com/credentials
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
 [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics: 入力と出力のログイン資格情報の交換 |Microsoft Azure" 
-	description="Stream Analytics の入力と出力の資格情報を更新する方法について説明します。" 
+	description="Stream Analytics の入力と出力の資格情報を更新する方法について説明します。"
+	keywords="ログイン資格情報"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -13,15 +14,15 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
-#入力/出力の資格情報の交換
+#Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
 
 ##要約
 現在、Azure Stream Analytics では、ジョブの実行中に入力/出力の資格情報を置き換えることができません。
 
-Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
+Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始し、ログイン資格情報を交換するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
 
 ##パート 1: 新しい資格情報セットの準備
 このパートは、次の入力/出力に適用できます。
@@ -58,7 +59,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 ###SQL Database
 
->[AZURE.NOTE]注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
+>[AZURE.NOTE] 注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
 
 1.  Azure の管理ポータルで [SQL データベース] 拡張に移動します。![図 14][graphic14]
 2.  ジョブで使用されている SQL Database を見つけ、同じ行にある**サーバーのリンクをクリック**します。![図 15][graphic15]
@@ -195,4 +196,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

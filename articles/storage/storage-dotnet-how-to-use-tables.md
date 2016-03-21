@@ -1,11 +1,11 @@
 <properties
-	pageTitle=".NET から テーブル ストレージを使用する方法 | Microsoft Azure"
-	description="Microsoft Azure Table ストレージを使用してテーブルを作成および削除する方法、さらにテーブル内のエンティティを挿入および照会する方法について説明します。"
+	pageTitle=".NET を使用して Azure Table Storage を使用する | Microsoft Azure"
+	description="Microsoft の NoSQL データ ストアの Azure Table Storage を使用して非構造化データをクラウドに格納します。テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなど、単純な Table Storage 操作を開始します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,17 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/04/2015"
+	ms.date="02/14/2016"
 	ms.author="tamram"/>
 
 
-# .NET からテーブル ストレージを使用する方法
+# .NET を使用して Azure Table Storage を使用する
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
 ## 概要
 
-この記事では、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。例は C# のコードで記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、テーブルの作成と削除、テーブル エンティティの操作などです。
+Azure Table Storage は、NoSQL の非構造化データをクラウド内に格納するサービスです。Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。テーブル ストレージは、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
+
+テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
+
+このチュートリアルでは、Azure Table Storage を使用して、テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなどの一般的なシナリオの .NET コードを記述する方法を示します。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -414,24 +418,13 @@
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
-<ul>
-<li>利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
-  <ul>
-    <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
-    </li>
-    <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li>
-  </ul>
-</li>
-<li>Azure Storage を使用して実行できるさらに高度なタスクについては、<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure Storage のドキュメント</a>をご覧ください。</li>
-<li><a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</a> を使用して Azure Storage で作業するためのコードの記述を簡略化する方法を学習してください。</li>
-<li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-  <ul>
-    <li>非構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a>を使用します。</li>
-    <li>構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-queues/">キュー ストレージ</a>を使用します。</li>
-    <li>リレーショナル データの格納には、<a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL Database</a> を使用します。</li>
-  </ul>
-</li>
-</ul>
+- 利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
+    - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+- Azure Storage で作業するために記述したコードを簡略化する方法については、[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)を参照してください。
+- Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
+    - 非構造化データを格納するには「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」
+    - リレーショナル データを格納するには「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
@@ -444,7 +437,6 @@
 
   [Introducing Upsert and Query Projection blog post (アップサートおよびクエリ プロジェクションの概要ブログ投稿)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [Storing and accessing data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
@@ -452,4 +444,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0218_2016-->

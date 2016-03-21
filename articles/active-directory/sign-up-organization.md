@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="01/14/2016"
 	ms.author="markvi"/>
 
 
@@ -31,8 +31,8 @@
 
 **その他のリソース**
 
-* [Microsoft Azure のブログ](http://azure.microsoft.com/blog/)
+* [Microsoft Azure のブログ](https://azure.microsoft.com/blog/)
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

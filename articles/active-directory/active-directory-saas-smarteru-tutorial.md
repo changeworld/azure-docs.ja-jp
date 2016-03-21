@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と SmarterU の統合 | Microsoft Azure" 
-    description="SmarterU と Azure Active Directory を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    description="Azure Active Directory で SmarterU を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" 
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と SmarterU の統合
@@ -50,7 +50,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-smarteru-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-smarteru-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -72,19 +72,19 @@
 
 1.  Azure AD ポータルの **[SmarterU]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777323.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777323.png "Configure Single Sign-On")
 
 2.  **[ユーザーの SmarterU へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-smarteru-tutorial/IC777324.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777324.png "Configure Single Sign-On")
 
 3.  **[SmarterU でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために **[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\SmarterUMetaData.cer** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-smarteru-tutorial/IC777325.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777325.png "Configure Single Sign-On")
 
 4.  別の Web ブラウザー ウィンドウで、SmarterU 企業サイトに管理者としてログインします。
 
-5.  上部のツールバーで **[Account Settings]** をクリックします。
+5.  上部のメニューで **[Account Settings]** をクリックします。
 
     ![アカウント設定](./media/active-directory-saas-smarteru-tutorial/IC777326.png "アカウント設定")
 
@@ -99,7 +99,7 @@
     5.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[Okta Metadata]** テキスト ボックスに貼り付けます。
     6.  **[保存]** をクリックします。
 
-7.  Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+7.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-smarteru-tutorial/IC777328.png "Configure Single Sign-On")
 
@@ -138,8 +138,8 @@ Azure AD ユーザーが SmarterU にログインできるようにするには�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-smarteru-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-smarteru-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

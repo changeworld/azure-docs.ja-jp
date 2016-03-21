@@ -12,8 +12,8 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/18/2016" 
 	ms.author="billmath"/>
 
 # IIS 認証
@@ -76,4 +76,4 @@ Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使�
 3. [信頼される IP の追加] ダイアログ ボックスが表示された場合、[単一 IP]、[IP の範囲] または [サブネット] ラジオ ボタンのいずれかを選択します。
 4. ホワイト リストに登録する IP アドレス、IP アドレスまたはサブネットの範囲を入力します。サブネットを入力する場合は、適切なネットマスクを選択し、[OK] ボタンをクリックします。これでホワイト リストが追加されました。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

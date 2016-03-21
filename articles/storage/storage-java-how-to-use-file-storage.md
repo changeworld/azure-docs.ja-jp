@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Java からファイル ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure ファイル サービスを使用して、ファイルをアップロード、ダウンロード、一覧表示、削除する方法について説明します。コード サンプルは Java で記述されています。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+<properties
+	pageTitle="Java からファイル ストレージを使用する方法 | Microsoft Azure"
+	description="Azure ファイル サービスを使用して、ファイルをアップロード、ダウンロード、一覧表示、削除する方法について説明します。コード サンプルは Java で記述されています。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe" />
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="10/26/2015" 
-	ms.author="v-dedomi"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="02/29/2016"
+	ms.author="robmcm"/>
 
 # Java からファイル ストレージを使用する方法
 
@@ -45,12 +45,12 @@ Azure ストレージ API を使用するには、ストレージ サービス�
 ファイル ストレージを使用するには、Azure ストレージ アカウントに接続する必要があります。最初の手順はストレージ アカウントに接続するために使用する接続文字列を構成することです。そのために静的変数を定義しましょう。
 
 	// Configure the connection-string with your values
-	public static final String storageConnectionString = 
-	    "DefaultEndpointsProtocol=http;" + 
-	    "AccountName=your_storage_account_name;" + 
+	public static final String storageConnectionString =
+	    "DefaultEndpointsProtocol=http;" +
+	    "AccountName=your_storage_account_name;" +
 	    "AccountKey=your_storage_account_key";
 
-> [AZURE.NOTE]your\_storage\_account\_name と your\_storage\_account\_key を自分のストレージ アカウントの実際の値に換えます。
+> [AZURE.NOTE] your\_storage\_account\_name と your\_storage\_account\_key を自分のストレージ アカウントの実際の値に換えます。
 
 ## Azure ストレージ アカウントに接続する
 
@@ -75,7 +75,7 @@ Azure ストレージ API を使用するには、ストレージ サービス�
 ファイル ストレージ クライアントを使用し、共有への参照を取得できます。
 
 	// Get a reference to the file share
-	CloudFileShare share = fileClient.getShareReference("sampleshare"); 
+	CloudFileShare share = fileClient.getShareReference("sampleshare");
 
 共有を実際に作成するには、CloudFileShare オブジェクトの **createIfNotExists** メソッドを使用します。
 
@@ -109,9 +109,9 @@ Azure ファイル ストレージ共有には、少なくとも、ファイル�
 	//Get a reference to the root directory for the share.
 	CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-	//Get a reference to the sampledir directory 
+	//Get a reference to the sampledir directory
 	CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-			    
+
 	if (sampleDir.createIfNotExists()) {
 		System.out.println("sampledir created");
 	} else {
@@ -124,7 +124,7 @@ CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、�
 
 	//Get a reference to the root directory for the share.
 	CloudFileDirectory rootDir = share.getRootDirectoryReference();
-		   
+
 	for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 		System.out.println(fileItem.getUri());
 	}
@@ -136,10 +136,10 @@ CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、�
 
 	//Get a reference to the root directory for the share.
 	CloudFileDirectory rootDir = share.getRootDirectoryReference();
-	
+
 	//Get a reference to the directory that contains the file
 	CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-			    
+
 	//Get a reference to the file you want to download
 	CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 
@@ -156,7 +156,7 @@ CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、�
 
 	// Get a reference to the directory where the file to be deleted is in
 	CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
-	
+
 	String filename = "SampleFile.txt"
 	CloudFile file;
 
@@ -174,7 +174,7 @@ CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、�
 	CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
 	// Get a reference to the directory you want to delete
-	CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");	
+	CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
 	// Delete the directory
 	if ( containerDir.deleteIfExists() ) {
@@ -196,10 +196,10 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 
 	   // Get a reference to the file share
 	   CloudFileShare share = fileClient.getShareReference("sampleshare");
-	   
+
 	   if (share.deleteIfExists()) {
 		   System.out.println("sampleshare deleted");
-	   } 
+	   }
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
@@ -208,17 +208,12 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 
 その他の Azure ストレージ API に関する詳細については、次のリンク先をご覧ください。
 
-- [Azure Storage SDK for Java]
-- [Azure ストレージ クライアント SDK リファレンス]
-- [Azure Storage REST API]
-- [Azure のストレージ チーム ブログ]
+- [Java デベロッパー センター](http://azure.microsoft.com/develop/java/)
+- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+- [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
+- [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-[Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-[Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
- 
-
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

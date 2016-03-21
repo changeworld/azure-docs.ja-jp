@@ -13,10 +13,14 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="11/04/2015" 
+	ms.date="02/04/2016" 
 	ms.author="heidist"/>
 
 # Azure Search 管理 REST API の使用
+> [AZURE.SELECTOR]
+- [ポータル](search-manage.md)
+- [PowerShell](search-manage-powershell.md)
+- [REST API](search-get-started-management-api.md)
 
 Azure Search REST 管理 API は、ポータルでプログラムを使用して管理タスクを実行するものです。サービス管理操作には、サービスの作成または削除、サービスのスケーリング、およびキーの管理があります。このチュートリアルには、サービス管理 API を示すサンプル クライアント アプリケーションが用意されています。また、ローカル開発環境でサンプルを実行するのに必要な構成手順も含まれます。
 
@@ -34,16 +38,16 @@ Azure Search REST 管理 API は、ポータルでプログラムを使用して
 
 このチュートリアルは C# で記述された Windows のコンソール アプリケーションを基にしていて、Visual Studio 2012 または 2013 で実行することができます。
 
-クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://azuresearchmgmtapi.codeplex.com/) にあります。
+クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/) にあります。
 
 
 ##アプリケーションの構成
 
-サンプル アプリケーションを実行する前に、認証を有効にして、クライアント アプリケーションからリソース マネージャー エンドポイントに送信された要求が許可されるようにする必要があります。認証要件は、[Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)が基になり、Search サービス管理関連も含め、API を使用して要求されたすべてのポータル関連操作の基盤となります。Azure Search のサービス管理 API は、Azure リソース マネージャーの拡張機能であるため、その依存関係を継承しています。
+サンプル アプリケーションを実行する前に、認証を有効にして、クライアント アプリケーションからリソース マネージャー エンドポイントに送信された要求が許可されるようにする必要があります。認証要件は、[Azure リソース マネージャー](https://msdn.microsoft.com/library/azure/dn790568.aspx)が基になり、Search サービス管理関連も含め、API を使用して要求されたすべてのポータル関連操作の基盤となります。Azure Search のサービス管理 API は、Azure リソース マネージャーの拡張機能であるため、その依存関係を継承しています。
 
 Azure リソース マネージャーには、ID プロバイダーとして Azure Active Directory サービスが必要です。
 
-リソース マネージャーへの要求を許可するアクセス トークンを取得するには、クライアント アプリケーションに Active Directory を呼び出すためのコード セグメントが必要です。このコード セグメントと、コード セグメントを使用する前提条件となる手順は、記事「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」から借用しています。
+リソース マネージャーへの要求を許可するアクセス トークンを取得するには、クライアント アプリケーションに Active Directory を呼び出すためのコード セグメントが必要です。このコード セグメントと、コード セグメントを使用する前提条件となる手順は、記事「[Azure リソース マネージャー要求の認証]()」から借用しています。
 
 前述のリンクの指示に従うか、またはチュートリアルをひととおり実行する場合はこのドキュメントの手順に従ってください。
 
@@ -54,11 +58,11 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 1. ダウンロードしたサンプル クライアント アプリケーションの詳細を登録することによる、AD アプリケーションの構成
 1. 要求の認証を取得するための値を使用したサンプル クライアント アプリケーションのロード
 
-> [AZURE.NOTE][Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
+> [AZURE.NOTE] [Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
 
 ###Active Directory サービスの作成
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
 
 2. 左側のナビゲーション ウィンドウを下へスクロールし、**[Active Directory]** をクリックします。
 
@@ -119,7 +123,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
         private const string SubscriptionId = "<your subscription id>";
         private static readonly Uri RedirectUrl = new Uri("<your redirect url>");
 
-まだ [Codeplex からサンプル アプリケーションをダウンロード](https://azuresearchmgmtapi.codeplex.com/)していない場合は、この手順が必要になります。
+まだ [Github からサンプル アプリケーションをダウンロード](https://github.com/Azure-Samples/search-dotnet-management-api/)していない場合は、この手順が必要になります。
 
 1. Visual Studio で、**ManagementAPI.sln** を開きます。
 
@@ -204,4 +208,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

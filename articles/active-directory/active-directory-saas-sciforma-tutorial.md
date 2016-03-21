@@ -1,6 +1,6 @@
 <properties 
     pageTitle="チュートリアル: Azure AD と Sciforma の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Sciforma を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
+    description="Azure Active Directory で Sciforma を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="markusvi"  
     documentationCenter="na" 
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure AD と Sciforma の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Sciforma テナント
   
-このチュートリアルを完了すると、Sciforma に割り当てた Azure AD ユーザーは、Sciforma 企業サイト (サービス プロバイダーが開始したサインオン) または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Sciforma に割り当てた Azure AD ユーザーは、Sciforma 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-sciforma-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-sciforma-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -104,10 +104,10 @@ Sciforma へのユーザー プロビジョニングの構成にあたって必�
 
     ![ユーザーの割り当て](./media/active-directory-saas-sciforma-tutorial/IC777377.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-sciforma-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-sciforma-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

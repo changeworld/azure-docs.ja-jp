@@ -10,7 +10,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
@@ -47,7 +47,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -96,7 +96,7 @@
     1.  メタデータ ファイルをアップロードするには、**[Choose file]** をクリックします。
     2.  **[変更を保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "シングル サインオンの構成")
 
@@ -116,7 +116,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
     ![ユーザー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785161.png "ユーザー")
 
-4.  **[New User]** をクリックします。
+4.  **[新しいユーザー]** をクリックします。
 
     ![新しいユーザー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785162.png "新しいユーザー")
 
@@ -142,10 +142,10 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
     ![ユーザーの割り当て](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785164.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

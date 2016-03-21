@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/18/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 
@@ -55,7 +55,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 ##AES-128 動的暗号化 
 
->[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
+>[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
@@ -464,6 +464,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         None = 0,
         PlayReadyLicense = 1,
         BaselineHttp = 2,
+        Widevine = 3
     }
 
 
@@ -482,4 +483,4 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

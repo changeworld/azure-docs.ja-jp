@@ -1,29 +1,43 @@
 <properties
-	pageTitle=".NET から BLOB ストレージを使用する方法 | Microsoft Azure"
-	description="Azure BLOB ストレージの概要、コンテナーの作成方法、BLOB コンテンツのアップロード、ダウンロード、一覧表示、および削除を行う方法について説明します。"
+	pageTitle=".NET を使用して Azure Blob Storage を使用する | Microsoft Azure"
+	description="Azure Blob Storage (オブジェクト ストレージ) を使用してクラウドにファイル データを格納します。コンテナーの作成、Blob コンテンツのアップロード、ダウンロード、一覧表示、削除など、単純な Blob Storage 操作を開始します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
 	manager="carmonm"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
 	ms.workload="storage"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
-	ms.date="11/11/2015"
+	ms.topic="hero-article"
+	ms.date="02/25/2016"
 	ms.author="tamram"/>
 
 
-# .NET から BLOB ストレージを使用する方法
+# .NET を使用して Azure Blob Storage を使用する
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## 概要
 
-このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure Storage クライアント ライブラリを使用しています。ストレージ クライアント ライブラリは、BLOB ストレージ REST API の操作を簡略化する SDK です。このガイドで紹介するシナリオでは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、**削除**について説明します。所要時間はおよそ 1 時間です。概要のビデオは、[5 分間で Storage の概要を紹介するビデオ](https://azure.microsoft.com/ja-JP/documentation/videos/azure-storage-5-minute-overview/)に関するページで視聴できます。ガイド「[Azure Storage を 5 分で使い始める](https://azure.microsoft.com/ja-JP/documentation/articles/storage-getting-started-guide/)」も参考にしてください。
+Azure Blob Storage は、クラウドにファイル データを格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
+
+### このチュートリアルについて
+
+このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、BLOB のアップロード、一覧表示、ダウンロード、および削除です。
+
+**推定所要時間:** 45 分
+
+**前提条件:**
+
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)。
+
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -33,11 +47,12 @@
 
 [AZURE.INCLUDE [storage-configure-connection-string-include](../../includes/storage-configure-connection-string-include.md)]
 
-## プログラムで BLOB ストレージにアクセスする
+## プログラムで Blob Storage にアクセスする
 
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
 
 ### 名前空間宣言
+
 プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure;
@@ -82,7 +97,7 @@
 
 ## コンテナーに BLOB をアップロードする
 
-Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
 ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**UploadFromStream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。
 
@@ -146,7 +161,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 		}
 	}
 
-上記のように、BLOB の名前はパス情報を含めて指定することができます。これで、従来のファイル システムと同じように、整理およびスキャン可能な仮想ディレクトリ構造が作成されます。ディレクトリ構造は仮想のみであり、BLOB ストレージで使用できるリソースはコンテナーと BLOB のみであることに注意してください。ただし、ストレージ クライアント ライブラリでは、仮想ディレクトリを参照し、この方法で整理される BLOB の操作プロセスを簡略化するための **CloudBlobDirectory** オブジェクトが提供されます。
+上記のように、BLOB の名前はパス情報を含めて指定することができます。これで、従来のファイル システムと同じように、整理およびスキャン可能な仮想ディレクトリ構造が作成されます。ディレクトリ構造は仮想のみであり、Blob Storage で使用できるリソースはコンテナーと BLOB のみであることに注意してください。ただし、ストレージ クライアント ライブラリでは、仮想ディレクトリを参照し、この方法で整理される BLOB の操作プロセスを簡略化するための **CloudBlobDirectory** オブジェクトが提供されます。
 
 たとえば、`photos` という名前のコンテナーに次の一連のブロック BLOB があったとします。
 
@@ -291,8 +306,8 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 ## 追加 BLOB への書き込み
 
-追加 BLOB は .NET 向け Azure Storage クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
- 
+追加 BLOB は .NET 向け Azure ストレージ クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
+
 追加 BLOB 内の各ブロックは、最大 4 MB のサイズにすることができます。また追加 BLOB には最大 50,000 のブロックを含めることができます。よって追加 BLOB の最大サイズは 195 GB (4 MB X 50,000 ブロック) よりも少し大きくなります。
 
 次の例では、新しい追加 BLOB を作成し、データを追加してシンプルなログ記録操作をシミュレートしています。
@@ -307,7 +322,7 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
     //Get a reference to a container.
     CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
 
-    //Create the container if it does not already exist. 
+    //Create the container if it does not already exist.
     container.CreateIfNotExists();
 
     //Get a reference to an append blob.
@@ -323,7 +338,7 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
     Random rnd = new Random();
     byte[] bytes = new byte[numBlocks];
     rnd.NextBytes(bytes);
-        
+
     //Simulate a logging operation by writing text data and byte data to the end of the append blob.
     for (int i = 0; i < numBlocks; i++)
     {
@@ -338,20 +353,21 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 ## 次のステップ
 
-これで、BLOB ストレージの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-### BLOB ストレージ リファレンス ドキュメント
+### Blob Storage リファレンス ドキュメント
 
 - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 
 ### その他の機能ガイド
 
-- [.NET 用のテーブル ストレージの概要](storage-dotnet-how-to-use-tables.md)
-- [.NET 用のキュー ストレージの概要](storage-dotnet-how-to-use-queues.md)
-- [.NET 用のファイル ストレージの概要](storage-dotnet-how-to-use-files.md)
-- [SQL Database を使用したリレーショナル データの格納](../sql-database/articles/sql-database-dotnet-how-to-use.md)
-- [Web ジョブ SDK で Azure BLOB ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+- [.NET 用の Table Storage の概要](storage-dotnet-how-to-use-tables.md)
+- [.NET 用の Queue Storage の概要](storage-dotnet-how-to-use-queues.md)
+- [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+- [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+- [.NET (c#) からの SQL Database 使用](../sql-database/sql-database-dotnet-how-to-use.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -359,11 +375,9 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
 
-  [Azure Storage]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
- 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0309_2016-->

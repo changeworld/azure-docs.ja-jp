@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/03/2015"
+   ms.date="11/30/2015"
    ms.author="joaoma" />
 
 # インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
@@ -23,11 +23,12 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイ モデルについて説明します。Azure リソース マネージャー デプロイ モデルについて確認する場合は、「[リソース マネージャーを使用したインターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-arm-ps.md)」を参照してください。
-
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-cli.md)についても説明します。
 
 クラウド サービスはロード バランサーで自動的に構成され、サービス モデルを使用してカスタマイズできます。
 
+## サービス定義ファイルを使用してロード バランサーを作成します。
+ 
 Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。クラウド サービスのエンドポイントの設定は、[servicedefinition](https://msdn.microsoft.com/library/azure/gg557553.aspx).csdef で行われます。
 
 次の例は、クラウド デプロイメントの servicedefinition.csdef ファイルを構成する方法を示しています。
@@ -57,7 +58,7 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 
 
-### クラウド サービスのロード バランサーの正常性状態を確認する
+## クラウド サービスのロード バランサーの正常性状態を確認する
 
 
 次に、正常性プローブの例を示します。
@@ -82,4 +83,4 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

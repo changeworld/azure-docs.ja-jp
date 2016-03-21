@@ -13,18 +13,23 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="11/04/2015"
+	ms.date="02/07/2016"
 	ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
->[AZURE.TIP]Microsoft Azure を使用したモバイル開発を初めて行う場合は、Azure Mobile Services の代わりに [Azure Mobile Apps を使用](app-service-mobile-dotnet-backend-ios-get-started-preview.md)してください。Mobile Apps を通じて[さらに多くのメリット](app-service-mobile-value-prop-migration-from-mobile-services-preview.md)が得られます。
+>[AZURE.TIP] Microsoft Azure を使用したモバイル開発を初めて行う場合は、Azure Mobile Services の代わりに [Azure Mobile Apps を使用](../app-service-mobile/app-service-mobile-dotnet-backend-ios-get-started-preview.md)してください。Mobile Apps を通じて[さらに多くのメリット](../app-service-mobile/app-service-mobile-value-prop-migration-from-mobile-services.md)が得られます。
 
 このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。Mobile Services はサーバー側ビジネス ロジックの .NET と Visual Studio を使用します。JavaScript のサーバー側ビジネス ロジックを使用してモバイル サービスを作成する方法については、このトピックの[ JavaScript バックエンド バージョン]をご覧ください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-ios-get-started%2F)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](https://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-ios-get-started%2F)を参照してください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -94,11 +99,8 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [既存の Azure Mobile Services アプリへの認証の追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 [Mobile Services アプリへのプッシュ通知の追加]: mobile-services-dotnet-backend-ios-get-started-push.md
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
-
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-
-[Management Portal]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [ JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-<!---HONumber=Nov15_HO3-->
+<!----HONumber=AcomDC_0211_2016-->

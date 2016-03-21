@@ -22,16 +22,16 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
-パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccess 拡張機能を使用してローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットします。
+パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、Azure ポータルまたは VMAccess 拡張機能を使用してローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットします。
 
-## プレビュー ポータル
+## Azure ポータル
 
-[プレビュー ポータル](https://portal.azure.com)でリモート デスクトップ サービスをリセットするには、**[すべて参照]**、**[仮想マシン (従来のもの)]**、*ご使用の Windows 仮想マシン*、**[リモート アクセスのリセット]** の順にクリックします。次のページが表示されます。
+[Azure ポータル](https://portal.azure.com)でリモート デスクトップ サービスをリセットするには、**[すべて参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[リモート アクセスのリセット]** の順にクリックします。次のページが表示されます。
 
 
 ![](./media/virtual-machines-windows-reset-password/Portal-RDP-Reset-Windows.png)
 
-[プレビュー ポータル](https://portal.azure.com)のローカル管理者アカウントの名前とパスワードをリセットするには、**[すべて参照]**、**[仮想マシン (従来のもの)]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。次のページが表示されます。
+[Azure ポータル](https://portal.azure.com)のローカル管理者アカウントの名前とパスワードをリセットするには、**[すべて参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックします。次のページが表示されます。
 
 ![](./media/virtual-machines-windows-reset-password/Portal-PW-Reset-Windows.png)
 
@@ -57,7 +57,7 @@ VMAccess 拡張機能は使用前にインストールする必要はありま�
 
 **write-host** コマンドで **True** が表示される場合は、VM エージェントがインストールされています。**False** が表示される場合は、Azure ブログの[VM エージェントと拡張機能に関する記事のパート 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409)で手順とダウンロード用リンクをご確認ください。
 
-Azure ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
+ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
 
 	$vm.GetInstance().ProvisionGuestAgent = $true
 
@@ -98,7 +98,7 @@ VMAccess 拡張機能によって仮想マシンで次の 2 つのコマンド�
 
 このコマンドを実行してもリモート デスクトップのアクセスに関する問題が解決しない場合は、[Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行してください。
 
-1.	診断パッケージで、**[Microsoft Azure IaaS (Windows) 診断パッケージ]** をクリックして、新しい診断セッションを作成します。
+1.	診断パッケージで、[**Microsoft Azure IaaS (Windows) 診断パッケージ**] をクリックして、新しい診断セッションを作成します。
 2.	[**Azure VM で発生している問題**] ページで、[**Azure VM との RDP 接続 (再起動が必要)**] の問題を選択します。
 
 詳細については、「[Microsoft Azure IaaS (Windows) の診断パッケージ](http://support.microsoft.com/kb/2976864)」ナレッジベース記事を参照してください。
@@ -108,10 +108,10 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 ## その他のリソース
 
-[Azure VM 拡張機能とその機能](http://msdn.microsoft.com/library/azure/dn606311.aspx)
+[Azure VM 拡張機能とその機能](virtual-machines-extensions-features.md)
 
 [RDP または SSH を使用した Azure Virtual Machines への接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/13/2015"
+   ms.date="01/08/2016"
    ms.author="seanmck"/>
 
 # ローカル開発クラスターのセットアップをトラブルシューティングする
 
-ローカル開発クラスターとの対話中に問題が発生した場合は、次の推奨事項を確認して解決の参考にしてください。
+Azure Service Fabric のローカル開発クラスターとの対話中に問題が発生した場合は、次の推奨事項を確認して解決の参考にしてください。
 
 ## クラスターのセットアップに関するエラー
 
@@ -37,19 +37,29 @@ DevClusterSetup スクリプトの実行中に、次のようなエラーが発�
 
 #### 解決策
 
-現在開いている Powershell ウィンドウを閉じ、新しい Powershell ウィンドウを管理者として開きます。これでスクリプトを正常に実行できるようになります。
+現在開いている PowerShell ウィンドウを閉じ、新しい PowerShell ウィンドウを管理者として開きます。これでスクリプトを正常に実行できるようになります。
 
 ## クラスターの接続に関するエラー
+
+### Service Fabric PowerShell コマンドレットが Azure PowerShell で認識されない
+
+#### 問題点
+
+Azure PowerShell ウィンドウで `Connect-ServiceFabricCluster` などの Service Fabric PowerShell コマンドレットを実行しようとすると失敗し、コマンドレットが認識されないというエラーが表示されます。これは、Azure PowerShell は (OS が 64 ビット版の場合でも) 32 ビット版の Windows PowerShell を使用するのに対し、Service Fabric コマンドレットは 64 ビット環境でしか機能しないためです。
+
+#### 解決策
+
+Service Fabric コマンドレットは常に Windows PowerShell から直接実行します。
 
 ### 型の初期化で例外が発生する
 
 #### 問題点
 
-PowerShell または Service Fabric Explorer でクラスターに接続する際に、System.Fabric.Common.AppTrace で TypeInitializationException が発生します。
+PowerShell でクラスターに接続する際に、System.Fabric.Common.AppTrace で TypeInitializationException エラーが発生します。
 
 #### 解決策
 
-インストール時に Path 変数が正しく設定されませんでした。Windows をログオフして再度ログインしてください。これでパスが最新の状態に更新されます。
+インストール時に Path 変数が正しく設定されませんでした。Windows からサインアウトし、再びサインインしてください。これでパスが最新の状態に更新されます。
 
 ### "object is closed" のエラーが発生してクラスターの接続が失敗する
 
@@ -66,13 +76,13 @@ PowerShell または Service Fabric Explorer でクラスターに接続する�
 
 #### 解決策
 
-現在開いている Powershell ウィンドウを閉じ、新しい Powershell ウィンドウを管理者として開きます。これで正常に接続できるようになります。
+現在開いている PowerShell ウィンドウを閉じ、新しい PowerShell ウィンドウを管理者として開きます。これで正常に接続できるようになります。
 
-### FabricConnectionDeniedException
+### FabricConnectionDeniedException が発生する
 
 #### 問題点
 
-Visual Studio を使用してデバッグしている際に、FabricConnectionDeniedException が発生します。
+Visual Studio を使用してデバッグしている際に、FabricConnectionDeniedException エラーが発生します。
 
 #### 解決策
 
@@ -86,4 +96,4 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 - [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

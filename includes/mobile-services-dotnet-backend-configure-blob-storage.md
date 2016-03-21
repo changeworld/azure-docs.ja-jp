@@ -32,11 +32,11 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 
 新規 TodoItem が挿入されたら **PostTodoItem** メソッドが SAS を生成するように、既存の **TodoItemController** を更新します。また、次のことも実行できます。
 
-0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
+0. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて]を参照してください。
 
-1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-2. **ストレージ アカウント名**と**アクセス キー**をメモします。
+2. **Storage アカウント名**と**アクセス キー**をメモします。
  
 3. モバイル サービスで、**[構成]** タブをクリックし、**[アプリケーション設定]** まで下へスクロールします。次に、ストレージ アカウントから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
@@ -129,7 +129,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 <!-- Images. -->
 
 <!-- URLs. -->
-[How To Create a Storage Account (ストレージ アカウントの作成方法)]: ../articles/storage/storage-create-storage-account.md
+[Azure ストレージ アカウントについて]: ../articles/storage/storage-create-storage-account.md
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

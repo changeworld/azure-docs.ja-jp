@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="01/07/2016"
 	ms.author="curtand"/>
 
 
@@ -45,7 +45,7 @@ Azure AD 認証システムにサインインする必要があるすべての�
 | パスワードの期限切れ | <ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します) </li><li>各ユーザー アカウントの値を構成するには、Set-MsolUser コマンドレットを使用します。</li></ul> |
 | パスワードの履歴 | 前回のパスワードは再使用できません。 |
 | パスワード履歴の期間 | 無期限 |
-| アカウントのロックアウト | <ul><li>ログオンに 10 回失敗 (パスワードの誤入力) した後、ユーザーはログオンの一部として CAPTCHA ダイアログを解決する必要があります。</li><li>さらに 10 回ログオンに失敗 (パスワードの誤入力) し、CAPTCHA ダイアログを適切に解決できないと、ユーザーは一定期間ロックアウトされます。さらにパスワードの入力を間違えると、ロックアウト期間は指数関数的に増加します。</li></ul> |
+| アカウントのロックアウト | 正しくないパスワードを入力してサインイン試行に 10 回失敗したユーザーを、1 分間ロックアウトします。不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 |
 
 
 ## 次のステップ
@@ -55,9 +55,9 @@ Azure AD 認証システムにサインインする必要があるすべての�
 * [パスワード管理の概要](active-directory-passwords-getting-started.md)
 * [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
 * [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで Operational Insights を把握する方法](active-directory-passwords-get-insights.md)
+* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0114_2016-->

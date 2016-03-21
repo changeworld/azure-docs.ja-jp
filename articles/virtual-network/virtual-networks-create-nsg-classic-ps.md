@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/29/2015"
+   ms.date="02/02/2016"
    ms.author="telmos" />
 
 # PowerShell で NSG (クラシック) を作成する方法
@@ -27,10 +27,10 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[VNet を作成して](virtual-networks-create-vnet-classic-netcfg-ps)テスト環境を構築します。
+以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[VNet を作成して](virtual-networks-create-vnet-classic-netcfg-ps.md)テスト環境を構築します。
 
 ## フロントエンドのサブネットの NSG を作成する方法
-上記のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
+上記のシナリオに基づいて **NSG-FrontEnd** という名前の NSG を作成するには、次の手順に従います。
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
@@ -210,4 +210,4 @@
 		           OUTBOUND                                                                                                      
 		           DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

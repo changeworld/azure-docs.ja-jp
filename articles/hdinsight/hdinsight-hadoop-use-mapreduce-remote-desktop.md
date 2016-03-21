@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="02/05/2016"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での MapReduce と Hadoop の使用
@@ -41,7 +41,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 1. HDInsight デスクトップから、**Hadoop コマンド ライン**を起動します。これにより、**c:\\apps\\dist\\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
 
-	> [AZURE.NOTE]Hadoop の更新に応じて、バージョン番号が変わります。**HADOOP\_HOME** 環境変数を使用して、パスを探します。たとえば、`cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
+	> [AZURE.NOTE] Hadoop の更新に応じて、バージョン番号が変わります。**HADOOP\_HOME** 環境変数を使用して、パスを探します。たとえば、`cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
 
 2. **Hadoop** コマンドを使用してサンプルの MapReduce ジョブ実行するには、次のコマンドを使用します。
 
@@ -49,7 +49,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として ****wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は ****wasb:///example/data/WordCountOutput** に格納されます。
 
-	> [AZURE.NOTE]この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
+	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
 
 2. 処理中に詳細が生成され、ジョブが完了すると、次のような情報が返されます。
 
@@ -64,7 +64,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 	ここでは、**\_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
 
-	> [AZURE.NOTE]一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
+	> [AZURE.NOTE] 一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
 
 4. 出力を表示するには、次のコマンドを使用します。
 
@@ -96,4 +96,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

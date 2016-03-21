@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="12/15/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs を使用したニュース速報の送信
@@ -23,9 +23,9 @@
 
 ##概要
 
-このトピックでは、Azure 通知ハブを使用してニュース速報通知を iOS アプリケーションにブロードキャストする方法について説明します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
+このトピックでは、Azure Notification Hubs を使用してニュース速報通知を iOS アプリケーションにブロードキャストする方法について説明します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
-ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[Notification Hubs の概要]」を参照してください。
+ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の_タグ_を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[ルーティングとタグ式](notification-hubs-routing-tag-expressions.md)」を参照してください。
 
 
 ##前提条件
@@ -64,6 +64,8 @@
 
 		@property NSData* deviceToken;
 
+		- (id)initWithConnectionString:(NSString*)listenConnectionString HubName:(NSString*)hubName;
+
 		- (void)storeCategoriesAndSubscribeWithCategories:(NSArray*)categories
 					completion:(void (^)(NSError* error))completion;
 
@@ -75,7 +77,17 @@
 
 		#import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-6. 次のコードを Notifications.m ファイルの実装セクションにコピーし、`<hub name>` プレースホルダーと `<connection string with listen access>` プレースホルダーを、使用する通知ハブの名前と、前に取得した *DefaultListenSharedAccessSignature* の接続文字列で置き換えます。
+6. Notifications.m の implementation セクションに次のコードをコピーします。
+
+	    SBNotificationHub* hub;
+
+		- (id)initWithConnectionString:(NSString*)listenConnectionString HubName:(NSString*)hubName{
+
+		    hub = [[SBNotificationHub alloc] initWithConnectionString:listenConnectionString
+										notificationHubPath:hubName];
+
+			return self;
+		}
 
 		- (void)storeCategoriesAndSubscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -97,37 +109,37 @@
 
 		- (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
 		{
-		    SBNotificationHub* hub = [[SBNotificationHub alloc]
-										initWithConnectionString:@"<connection string with listen access>"
-										notificationHubPath:@"<hub name>"];
+		   //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
 
-		    [hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
+			NSString* templateBodyAPNS = @"{"aps":{"alert":"$(messageParam)"}}";
+
+			[hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
+				jsonBodyTemplate:templateBodyAPNS expiryTemplate:@"0" tags:categories completion:completion];
 		}
 
 
 
-	このクラスは、このデバイスが受信するニュースのカテゴリの格納と取得を行うためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
-
-	> [AZURE.NOTE]クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
+	このクラスは、このデバイスが受信するニュースのカテゴリの格納と取得を行うためにローカル ストレージを使用します。ローカル ストレージには、[テンプレート](notification-hubs-templates.md)登録を使用してこれらのカテゴリを登録するメソッドも格納されます。
 
 7. AppDelegate.h ファイルで、Notifications.h をインポートするためのステートメントを追加し、Notifications クラスのインスタンスのプロパティを追加します。
 
 		#import "Notifications.h"
 
 		@property (nonatomic) Notifications* notifications;
-
-	これにより、AppDelegate で Notification クラスのシングルトン インスタンスが作成されます。
+	
 
 8. AppDelegate.m の **didFinishLaunchingWithOptions** メソッドで、通知インスタンスを初期化するコードをメソッドの先頭に追加します。
+ 
+	`HUBNAME` と `HUBLISTENACCESS` (hubinfo.h に定義されます) は、通知ハブの名前と取得済みの *DefaultListenSharedAccessSignature* の接続文字列によって置き換えが行われる `<hub name>` プレースホルダーと `<connection string with listen access>` プレースホルダーによって既に設定されています。
 
-		self.notifications = [[Notifications alloc] init];
+		self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
 
-	Notification シングルトンが初期化されます。
+	> [AZURE.NOTE]クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
 
 9. AppDelegate.m の **didRegisterForRemoteNotificationsWithDeviceToken** メソッドで、コード内のコードを、デバイス トークンを通知クラスに渡すコードで置き換えます。通知クラスは、通知のカテゴリの登録を実行します。ユーザーがカテゴリの選択内容を変更した場合は、**[サブスクライブ]** ボタンに応答して `subscribeWithCategories` メソッドを呼び出してカテゴリを更新します。
 
-	> [AZURE.NOTE]Apple Push Notification Service (APNS) によって割り当てられたデバイス トークンはいつでも変更される可能性があるので、通知エラーを回避するために通知を頻繁に登録してください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
+	> [AZURE.NOTE]Apple Push Notification サービス (APNS) によって割り当てられたデバイス トークンはいつでも変更される可能性があるので、通知エラーを回避するために通知を頻繁に登録してください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
 
 		self.notifications.deviceToken = deviceToken;
 
@@ -163,6 +175,10 @@
 
 11. ViewController.m で、 AppDelegate.h をインポートするためのステートメントを追加し、次のコードを XCode で生成された **subscribe** メソッドにコピーします。このコードは、ユーザーがユーザー インターフェイスで選択した新しいカテゴリ タグを使用するように通知登録を更新します。
 
+		```
+		#import "Notifications.h"
+		```
+
 		NSMutableArray* categories = [[NSMutableArray alloc] init];
 
 	    if (self.WorldSwitch.isOn) [categories addObject:@"World"];
@@ -176,7 +192,7 @@
 
 	    [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
 	        if (!error) {
-	            [self MessageBox:@"Notification" message:@"Subscribed!"];
+	            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
 	        } else {
 	            NSLog(@"Error subscribing: %@", error);
 	        }
@@ -189,7 +205,7 @@
 
 		// This updates the UI on startup based on the status of previously saved categories.
 
-		Notifications* notifications = [(BreakingNewsAppDelegate*)[[UIApplication sharedApplication]delegate] notifications];
+		Notifications* notifications = [(AppDelegate*)[[UIApplication sharedApplication]delegate] notifications];
 
 	    NSSet* categories = [notifications retrieveCategories];
 
@@ -205,14 +221,21 @@
 これで、アプリは、毎回の起動時に、通知ハブに登録するために使用されるカテゴリ セットをデバイスのローカル ストレージに格納できるようになりました。ユーザーは、実行時にカテゴリの選択を変更し、**subscribe** メソッドをクリックして、デバイスの登録を更新できます。その場合、ニュース速報通知を送信するように、アプリ自体の中で直接アプリを更新します。
 
 
-##通知を送信する
+##(省略可能) タグ付けされた通知の送信
 
-通知は、通常はバックエンド サービスによって送信されますが、このチュートリアルでは、送信通知コードを更新して、アプリから直接ニュース速報通知を送信できるようにします。これを行うには、「[Notification Hubs の使用][get-started]」チュートリアルで定義した`SendNotificationRESTAPI` メソッドを更新します。
+Visual Studio にアクセスできない場合は、次のセクションをスキップし、アプリ自体から通知を送信できます。[Azure クラシック ポータル]で通知ハブの [デバッグ] タブを使用して、適切なテンプレート通知を送信することもできます。
+
+[AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 
-1. ViewController.m で、`SendNotificationRESTAPI` メソッドを次の用に更新して、プラットフォーム通知サービスの `pns` パラメーターとカテゴリ タグのパラメーターを使用するようにします。
+##(省略可能) デバイスから通知を送信する
 
-		- (void)SendNotificationRESTAPI:(NSString*)pns Category:(NSString*)categoryTag
+通常、通知はバックエンド サービスによって送信されますが、アプリからニュース速報通知を直接送信できます。これを行うには、「[Notification Hubs の使用][get-started]」チュートリアルで定義した`SendNotificationRESTAPI` メソッドを更新します。
+
+
+1. ViewController.m で、`SendNotificationRESTAPI` メソッドを次のように更新して、カテゴリ タグのパラメーターを受け取って適切な[テンプレート](notification-hubs-templates.md)通知を送信するようにします。
+
+		- (void)SendNotificationRESTAPI:(NSString*)categoryTag
 		{
 		    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
 									 defaultSessionConfiguration] delegate:nil delegateQueue:nil];
@@ -226,58 +249,22 @@
 		    // Generated the token to be used in the authorization header.
 		    NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
 
-		    //Create the request to add the APNS notification message to the hub
+		    //Create the request to add the template notification message to the hub
 		    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 		    [request setHTTPMethod:@"POST"];
 
 		    // Add the category as a tag
 		    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
-		    // Windows Notification format of the notification message
-		    if ([pns isEqualToString:@"wns"])
-		    {
-		        json = [NSString stringWithFormat:@"<?xml version="1.0" encoding="utf-8"?>"
-		                                           "<toast>"
-		                                           "<visual><binding template="ToastText01">"
-		                                           "<text id="1">Breaking %@ News : %@</text>"
-		                                           "</binding>"
-		                                           "</visual>"
-		                                           "</toast>",
-		                categoryTag, self.notificationMessage.text];
+			// Template notification
+	        json = [NSString stringWithFormat:@"{"messageParam":"Breaking %@ News : %@"}",
+	                categoryTag, self.notificationMessage.text];
 
-		        // Signify windows notification format
-		        [request setValue:@"windows" forHTTPHeaderField:@"ServiceBusNotification-Format"];
+	        // Signify template notification format
+	        [request setValue:@"template" forHTTPHeaderField:@"ServiceBusNotification-Format"];
 
-		        // XML Content-Type
-		        [request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
-
-		        // Set X-WNS-TYPE header
-		        [request setValue:@"wns/toast" forHTTPHeaderField:@"X-WNS-Type"];
-		    }
-
-		    // Google Cloud Messaging Notification format of the notification message
-		    if ([pns isEqualToString:@"gcm"])
-		    {
-		        json = [NSString stringWithFormat:@"{"data":{"message":"Breaking %@ News : %@"}}",
-		                categoryTag, self.notificationMessage.text];
-		        // Signify gcm notification format
-		        [request setValue:@"gcm" forHTTPHeaderField:@"ServiceBusNotification-Format"];
-
-				// JSON Content-Type
-				[request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-		    }
-
-		    // Apple Notification format of the notification message
-		    if ([pns isEqualToString:@"apns"])
-		    {
-		        json = [NSString stringWithFormat:@"{"aps":{"alert":"Breaking %@ News : %@"}}",
-		                categoryTag, self.notificationMessage.text];
-		        // Signify apple notification format
-		        [request setValue:@"apple" forHTTPHeaderField:@"ServiceBusNotification-Format"];
-
-				// JSON Content-Type
-				[request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-		    }
+			// JSON Content-Type
+			[request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
 		    //Authenticate the notification message POST request with the SaS token
 		    [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
@@ -288,19 +275,20 @@
 		    // Send the REST request
 		    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
 		               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-		               {
-		               NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
-		                   if (error || httpResponse.statusCode != 200)
-		                   {
-		                       NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
-		                   }
-		                   if (data != NULL)
-		                   {
-		                       //xmlParser = [[NSXMLParser alloc] initWithData:data];
-		                       //[xmlParser setDelegate:self];
-		                       //[xmlParser parse];
-		                   }
-		               }];
+	           {
+	           NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
+	               if (error || httpResponse.statusCode != 200)
+	               {
+	                   NSLog(@"\nError status: %d\nError: %@", httpResponse.statusCode, error);
+	               }
+	               if (data != NULL)
+	               {
+	                   //xmlParser = [[NSXMLParser alloc] initWithData:data];
+	                   //[xmlParser setDelegate:self];
+	                   //[xmlParser parse];
+	               }
+	           }];
+
 		    [dataTask resume];
 		}
 
@@ -318,11 +306,10 @@
 									@"Technology", @"Science", @"Sports", nil];
 
 		    // Lets send the message as breaking news for each category to WNS, GCM, and APNS
+			// using a template.
 		    for(NSString* category in categories)
 		    {
-		        [self SendNotificationRESTAPI:@"wns" Category:category];
-		        [self SendNotificationRESTAPI:@"gcm" Category:category];
-		        [self SendNotificationRESTAPI:@"apns" Category:category];
+		        [self SendNotificationRESTAPI:category];
 		    }
 		}
 
@@ -339,7 +326,7 @@
 
 	**[購読]** を選択すると、アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
 
-2. ニュース速報として送信するメッセージを入力し、**[通知の送信]** ボタンを押します。
+2. ニュース速報として送信するメッセージを入力し、**[通知の送信]** ボタンを押します。または、通知を生成する .NET コンソール アプリケーションを実行します。
 
 	![][2]
 
@@ -356,9 +343,7 @@
 
 	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。
 
-+ **[Notification Hubs によるユーザーへの通知]**
 
-	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
 
 
@@ -376,12 +361,12 @@
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: /manage/services/notification-hubs/breaking-news-localized-dotnet/
+[Notification Hubs を使用したローカライズ ニュース速報のブロードキャスト]: notification-hubs-ios-send-localized-breaking-news.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/dn530749.aspx
+[Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

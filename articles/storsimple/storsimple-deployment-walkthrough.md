@@ -4,20 +4,23 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="adinah"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/17/2015"
+   ms.workload="NA"
+   ms.date="02/22/2016"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイスのデプロイ
 
-[AZURE.INCLUDE [storsimple-version-selector](../../includes/storsimple-version-selector.md)]
+> [AZURE.SELECTOR]
+- [Update 2](../articles/storsimple/storsimple-deployment-walkthrough-u2.md)
+- [Update 1](../articles/storsimple/storsimple-deployment-walkthrough-u1.md)
+- [GA Release](../articles/storsimple/storsimple-deployment-walkthrough.md)
 
 ## 概要
 
@@ -31,7 +34,7 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。これ�
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、構成チェック リストを確認することをお勧めします。デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
-> [AZURE.NOTE]Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
 ## デプロイの手順
 
@@ -72,7 +75,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | **デバイスを構成して登録する** | DATA 0 のネットワーク設定 | Data 0 IP アドレス:</br>サブネット マスク:</br>ゲートウェイ:</br>プライマリ DNS サーバー:</br>プライマリ NTP サーバー:</br>Web プロキシ サーバーの IP/FQDN (省略可能):</br>Web プロキシ ポート:| |
 | | デバイス管理者のパスワード | パスワードは、小文字、大文字、数字、および特殊文字を含む 8 ～ 15 文字にする必要があります。 | |
 | | StorSimple Snapshot Manager のパスワード | パスワードは、小文字、大文字、数字、および特殊文字を含む 14 ～ 15 文字にする必要があります。| |
-| | サービス登録キー | このキーは、Azure ポータルから生成されます。 | |
+| | サービス登録キー | このキーは、Azure クラシック ポータルから生成されます。 | |
 | | サービス データ暗号化キー | このキーは、デバイスが StorSimple 用 Windows PowerShell を使用して管理サービスに登録されると作成されます。このキーをコピーし、安全な場所に保存しておきます。| |
 | | | | |
 | **デバイスの最小セットアップを完了する** | デバイスの表示名 | デバイスのわかりやすい名前です。 | |
@@ -109,11 +112,11 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 開始する前に次の点を確認します。
 
-- アクセスの資格情報を持つ Microsoft アカウントがある。
+- アクセスの資格情報を持つ Microsoft アカウントがあること。
 
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
 
-- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](http://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
+- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
 
 - PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -143,7 +146,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | | | |
 | **NTP** | NTP サーバーを入力するとすぐに時刻の同期が開始されます。`time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 | [このスクリプトをダウンロードして使用してください](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。 |
 | | | |
-| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com | % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
+| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com &#124; % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
 | | トラフィックをプロキシ経由でルーティングできるかどうか。 | デバイスでプロキシを構成した後、DNS の検証、NTP チェック、または HTTP チェックを 1 回実行します。これによって、プロキシまたは他の場所でトラフィックがブロックされているかどうかが明確になります。 |
 | | | |
 | **登録** | 送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
@@ -156,30 +159,31 @@ StorSimple デバイスをデータセンター内にデプロイするには、
 
 StorSimple Manager サービスでは、複数の StorSimple デバイスを管理できます。StorSimple デバイスを初めてデプロイする場合は、新しい StorSimple Manager サービスを作成する必要があります。
 
-> [AZURE.IMPORTANT]既に StorSimple Manager サービスがあり、そのサービスを使用して StorSimple デバイスをデプロイする場合は、この手順をスキップしてください。
+> [AZURE.IMPORTANT] 既に StorSimple Manager サービスがあり、そのサービスを使用して StorSimple デバイスをデプロイする場合は、この手順をスキップしてください。
 
 StorSimple Manager サービスの新しいインスタンスを作成するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
-> [AZURE.IMPORTANT]サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
+> [AZURE.IMPORTANT] サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
-> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
+> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。
+> ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
 
 ## 手順 2. サービス登録キーを取得する
 
 StorSimple Manager サービスが稼働したら、サービス登録キーを取得する必要があります。このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
 
-Azure ポータルで、次の手順を実行します。
+Azure クラシック ポータルで、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
 
 ## 手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する
 
-> [AZURE.IMPORTANT]この構成を実行する前に、両方 (アクティブおよびパッシブ) のコントローラーで、DATA 0 以外のすべてのネットワーク インターフェイスの接続を解除してください。
+> [AZURE.IMPORTANT] この構成を実行する前に、両方 (アクティブおよびパッシブ) のコントローラーで、DATA 0 以外のすべてのネットワーク インターフェイスの接続を解除してください。
 
-次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。詳細については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)｣を参照してください。
+次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。詳細については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。
 
 [AZURE.INCLUDE [storsimple-configure-and-register-device](../../includes/storsimple-configure-and-register-device.md)]
 
@@ -191,7 +195,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 - 1 つ以上のネットワーク インターフェイスで iSCSI を有効にします。
 - 両方のコントローラーに固定の IP アドレスを割り当てます。
 
-デバイスの最小セットアップを完了するには、Azure ポータルで次の手順を実行します。
+デバイスの最小セットアップを完了するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup.md)]
 
@@ -202,15 +206,15 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。StorSimple デバイス上のボリュームのプロビジョニングを開始する前に、ボリューム コンテナーを作成する必要があります。
 
-ボリューム コンテナーを作成するには、Azure ポータルで次の手順を実行します。
+ボリューム コンテナーを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
 ## 手順 6. ボリュームを作成する
 
-ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。ボリュームを作成するには、Azure ポータルで次の手順を実行します。
+ボリューム コンテナーを作成したら、サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングできます。ボリュームを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
-> [AZURE.IMPORTANT]StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
+> [AZURE.IMPORTANT] StorSimple Manager は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを作成することはできません。
 
 [AZURE.INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume.md)]
 
@@ -230,7 +234,7 @@ MPIO を構成しない場合は、次の手順を実行して、StorSimple ボ�
 
 バックアップにより、特定の時点のボリュームを保護し、復元時間を最小限に抑えながら回復性を向上させることができます。StorSimple デバイスでは、ローカル スナップショットとクラウド スナップショットという 2 種類のバックアップを実行できます。どちらの種類のバックアップも、**[スケジュール設定]** または **[手動]** で実行できます。
 
-スケジュールされたバックアップを作成するには、Azure ポータルで次の手順を実行します。
+スケジュールされたバックアップを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-take-backup](../../includes/storsimple-take-backup.md)]
 
@@ -242,7 +246,7 @@ MPIO を構成しない場合は、次の手順を実行して、StorSimple ボ�
 
 別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
-Azure ポータルの **[StorSimple Manager サービス]** ページで次の手順に従います。
+Azure クラシック ポータルの **[StorSimple Manager サービス]** ページで次の手順に従います。
 
 [AZURE.INCLUDE [storsimple-configure-new-storage-account](../../includes/storsimple-configure-new-storage-account.md)]
 
@@ -257,14 +261,14 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 デバイスの更新には、1 ～ 4 時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
 
-> [AZURE.NOTE]ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
+> [AZURE.NOTE] ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
 
 #### デバイスを更新するには
 1.	デバイスの **[クイック スタート]** ページで、**[デバイス]** をクリックします。物理デバイスを選択し、**[メンテナンス]**、**[更新プログラムのスキャン]** を順にクリックします。  
 2.	利用可能な更新プログラムをスキャンするジョブが作成されます。更新プログラムが利用できる場合、**[更新プログラムのスキャン]** が **[更新プログラムのインストール]** に変わります。**[更新プログラムのインストール]** をクリックします。更新プログラムをインストールする前に、DATA 2 および DATA 3 を無効にするように要求されることがあります。これらのネットワーク インターフェイスを無効にしないと、更新プログラムのインストールが失敗する場合があります。
 3.	更新ジョブが作成されます。**[ジョブ]** に移動して、更新の状態を監視します。
 
-	> [AZURE.NOTE]更新ジョブが開始されるとすぐ、状態は 50% として表示されます。その後は、更新ジョブが完了した後で、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
+	> [AZURE.NOTE] 更新ジョブが開始されるとすぐ、状態は 50% として表示されます。その後は、更新ジョブが完了した後で、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
 
 4.	デバイスが正常に更新された後、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にしていた場合は有効にします。
 
@@ -279,7 +283,7 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 
 ## 手動バックアップの作成
 
-StorSimple デバイスの 1 つのボリュームに対し、オンデマンドの手動バックアップを作成するには、Azure ポータルで次の手順を実行します。
+StorSimple デバイスの 1 つのボリュームに対し、オンデマンドの手動バックアップを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
 [AZURE.INCLUDE [手動バックアップの作成](../../includes/storsimple-create-manual-backup.md)]
 
@@ -290,4 +294,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

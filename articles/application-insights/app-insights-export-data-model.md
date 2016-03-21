@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="11/11/2015" 
 	ms.author="awills"/>
 
 # Application Insights エクスポート データ モデル
@@ -314,7 +314,7 @@
 
     string context.application.version      Max: 100
 * 
-    クライアント アプリケーションのアプリケーション バージョン 
+    クライアント アプリケーションのアプリケーション バージョン[不明] に設定されている場合は利用できません。 
 
     *例*<br/> 2015.5.21.3<br/>NokiaMailBye\_CD\_20150227.4
 
@@ -374,39 +374,12 @@
 * 
     サーバーのデプロイ ID 
 
-**deviceId**
-
-    string context.device.id      Max: 100
-* 
-    クライアントの一意の ID。生成された ID です。デバイスでローカルに保存し、MAC アドレスや類似の変更不可能な ID などの PII にしないでください。   
-
-**deviceModel**
-
-    string context.device.devicemodel      Max: 100
-* 
-    モバイル ハードウェア クライアントの devicemodel 
-
-    *例*<br/> Other<br/>iPad<br/>Nokia 503s
 
 **deviceName**
 
     string context.device.name      Max: 100
 * 
     アプリが実行されているデバイスの名前 
-
-**deviceType**
-
-    string context.device.type      Max: 100
-* 
-    クライアント ハードウェアのデバイスの種類 
-
-    *例*<br/> PC<br/>Mobile<br/>Tablet
-
-**言語**
-
-    string context.device.language      Max: 100
-* 
-    クライアント側のアプリの言語。テレメトリ項目で明示的に指定しない場合、ユーザー エージェントのフィールドの処理により指定されます。 
 
 **locale**
 
@@ -422,17 +395,6 @@
 * 
     サーバーのマシン名。仮想化されたコンピューティングの場合、このデータ項目は、基盤となるホストに相当します。専用のコンピューティングの場合は、コンピューター名になります。 
 
-**networkType**
-
-    string context.device.network      Max: 100
-* 
-    クライアントのネットワークの種類 
-
-**oemName**
-
-    string context.device.oemname      Max: 100
-* 
-    モバイル ハードウェア クライアントの OEM の名前 
 
 **operatingSystem**
 
@@ -513,11 +475,13 @@
 
     ipv4 context.location.clientip      
 * 
-    xxx.xxx.xxx.xxx 形式のクライアントの IPv4 アドレス。   
+    xxx.xxx.xxx.xxx 形式のクライアントの IPv4 アドレス。
+
+     プライバシーの問題に対処するために、最後のオクテットは常に 0 に設定されます。
 
     *既定:* Null の場合、データ コレクションのエンドポイントでキャプチャされる HTTP IP に設定されます
 
-    *例*<br/> 0.123.63.143<br/>123.203.131.197
+    *例*<br/> 186.123.63.0<br/>123.203.131.0
 
 **continent**
 
@@ -590,7 +554,8 @@
 
 **accountAcquisitionDate**
 
-    datetime context.user.accountAcquisitionDate      
+    datetime context.user.accountAcquisitionDate  
+    
 **anonUserId**
 
     string context.user.anonId      Max: 100
@@ -602,9 +567,11 @@
 **anonymousUserAcquisitionDate**
 
     datetime context.user.anonAcquisitionDate      
+
 **authenticatedUserAcquisitionDate**
 
-    datetime context.user.authAcquisitionDate      
+    datetime context.user.authAcquisitionDate     
+ 
 **authUserId**
 
     string context.user.authId      Max: 100
@@ -664,7 +631,7 @@
 
     *派生:* &lt;telemetryType.name&gt; に標準化します。
 
-**remoteDependencyType**
+**type**
 
     string remotedependency.remotedependencytype      Max: 100
 * 
@@ -1006,7 +973,7 @@
 * 
     参照元の URL のクエリ パラメーター名の配列 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.queryParameters.value**
 
@@ -1024,4 +991,4 @@
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

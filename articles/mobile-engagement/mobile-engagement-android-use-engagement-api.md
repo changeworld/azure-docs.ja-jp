@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 #Engagement API を Android で使用する方法
@@ -40,7 +40,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 
 ##アクティビティを報告する
 
-> [AZURE.IMPORTANT]「Engagement を Android に統合する方法」のドキュメントで説明しているとおり、`EngagementActivity` クラスとそのバリアントを使用している場合は、このセクションで説明するような方法でアクティビティに関するレポートを作成する必要はありません。
+> [AZURE.IMPORTANT] 「Engagement を Android に統合する方法」のドキュメントで説明しているとおり、`EngagementActivity` クラスとそのバリアントを使用している場合は、このセクションで説明するような方法でアクティビティに関するレポートを作成する必要はありません。
 
 ### ユーザーが新しいアクティビティを開始する
 
@@ -233,9 +233,9 @@ Engagement を使用してアプリケーションのセッション、アクテ
 
 このデータは構造化可能で、Android の Bundle クラスを使用します (実際は Android Intent の追加パラメーターとして機能します)。Bundle にはアレイや他の Bundle インスタンスが含まれる場合があります。
 
-> [AZURE.IMPORTANT]Parcelable パラメーターや Serializable パラメーターを追加する際には、`toString()` メソッドが実装されていることを確認し、人が読める文字列を返すようにします。Serializable クラスにシリアライズできない永続的なフィールドが含まれている場合、`bundle.putSerializable("key",value);` を呼び出すと Android がクラッシュします。
+> [AZURE.IMPORTANT] Parcelable パラメーターや Serializable パラメーターを追加する際には、`toString()` メソッドが実装されていることを確認し、人が読める文字列を返すようにします。Serializable クラスにシリアライズできない永続的なフィールドが含まれている場合、`bundle.putSerializable("key",value);` を呼び出すと Android がクラッシュします。
 
-> [AZURE.WARNING]追加パラメーターのスパース アレイはサポートされないため、アレイとしてシリアライズされません。追加パラメーターで使用する前に標準アレイに変換してください。
+> [AZURE.WARNING] 追加パラメーターのスパース アレイはサポートされないため、アレイとしてシリアライズされません。追加パラメーターで使用する前に標準アレイに変換してください。
 
 ### 例
 
@@ -298,4 +298,4 @@ Engagement を使用してアプリケーションのセッション、アクテ
 			{"expiration":"2016-12-07","status":"premium"}
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="概要: Azure AD でのパスワード管理 | Microsoft Azure" 
-	description="自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
+<properties
+	pageTitle="概要: Azure AD でのパスワード管理 | Microsoft Azure"
+	description="自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。"
+	services="active-directory"
+	keywords="Active Directory パスワード管理, パスワード管理, Azure AD パスワードのリセット"
+	documentationCenter=""
+	authors="asteen"
+	manager="kbrint"
 	editor="billmath"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/08/2015" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="02/16/2016" 
 	ms.author="asteen"/>
 
 # パスワード管理の概要
@@ -47,20 +48,20 @@
 - AAD テナントを作成する。詳細については、[Azure AD の使用](https://azure.microsoft.com/trial/get-started-active-directory/)を参照してください。
 - Azure サブスクリプションを取得する。詳細については、[What is an Azure AD tenant? (Azure AD テナントとは)](active-directory-administer.md#what-is-an-azure-ad-tenant) を参照してください。
 - AAD テナントを Azure サブスクリプションに関連付ける。詳細については、[Azure サブスクリプションを Azure AD に関連付ける方法](https://msdn.microsoft.com/library/azure/dn629581.aspx)を参照してください。
-- Azure AD Premium または Basic にアップグレードする。詳細については、[Azure Active Directory のエディション](http://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+- Azure AD Premium、Azure AD Basic にアップグレードするか、または O365 有料ライセンスを使用します。詳細については、[Azure Active Directory のエディション](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-  >[AZURE.NOTE]セルフサービスのパスワード リセットを有効にするには、Azure AD Premium または Azure AD Basic にアップグレードする必要があります。詳細については、「Azure Active Directory のエディション」を参照してください。この情報には、Azure AD Premium または Basic にサインアップする方法、ライセンス プランをアクティブ化して Azure AD アクセスをアクティブ化する方法、および管理者とユーザーのアカウントにアクセス権を割り当てる方法の詳細が含まれます。
-  
+  >[AZURE.NOTE] クラウド ユーザーのセルフサービス パスワード リセットを有効にするには、Azure AD Premium、Azure AD Basic、または有料 O365 ライセンスにアップグレードする必要があります。オンプレミスのユーザーのセルフサービスのパスワード リセットを有効にするには、Azure AD Premium にアップグレードする必要があります。詳細については、「Azure Active Directory のエディション」を参照してください。この情報には、Azure AD Premium または Basic にサインアップする方法、ライセンス プランをアクティブ化して Azure AD アクセスをアクティブ化する方法、および管理者とユーザーのアカウントにアクセス権を割り当てる方法の詳細が含まれます。
+
 - AAD ディレクトリで、管理者アカウントとユーザー アカウントを少なくとも 1 つずつ作成する。
-- AAD Premium または Basic のライセンスを、作成済みの管理者およびユーザーのアカウントに割り当てる。
+- AAD Premium、Basic、または O365 有料ライセンスを、作成済みの管理者およびユーザーのアカウントに割り当てる。
 
 ### 手順 1: パスワードのリセット ポリシーを構成する
 ユーザー パスワードのリセット ポリシーを構成するには、以下の手順を実行します。
- 
+
 1.	任意のブラウザーを開いて、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
 2.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション バーで **[Active Directory] 拡張機能**を選択します。
 
-    ![][001]
+    ![Azure AD でのパスワード管理][001]
 
 3. [**ディレクトリ**] タブで、Wingtip Toys など、ユーザー パスワードのリセット ポリシーを構成するディレクトリをクリックします。
 
@@ -72,7 +73,7 @@
 
 5.	[**構成**] タブで、下にスクロールして [**ユーザー パスワードのリセット ポリシー**] セクションを表示します。ここでは、特定のディレクトリについて、ユーザー パスワードのリセット ポリシーのあらゆる側面を構成できます。
 
-    >[AZURE.NOTE]この**ポリシーが適用されるのは組織内のエンド ユーザーのみで、管理者には適用されません**。セキュリティ上の理由から、管理者のパスワード リセット ポリシーの管理はマイクロソフトが行います。このセクションが表示されない場合は、Azure Active Directory Premium または Basic にサインアップ済みであることと、この機能の構成を行う管理者アカウントに**ライセンスを割り当て済み**であることを確認してください。
+    >[AZURE.NOTE] この**ポリシーが適用されるのは組織内のエンド ユーザーのみで、管理者には適用されません**。セキュリティ上の理由から、管理者のパスワード リセット ポリシーの管理はマイクロソフトが行います。このセクションが表示されない場合は、Azure Active Directory Premium または Basic にサインアップ済みであることと、この機能の構成を行う管理者アカウントに**ライセンスを割り当て済み**であることを確認してください。
 
     ![][004]
 
@@ -82,7 +83,7 @@
 
 7.	テナントのユーザー パスワード リセット ポリシーの構成が完了したら、画面の一番下にある [**保存**] ボタンをクリックします。
 
-  >[AZURE.NOTE]最も複雑な状況でこの機能がどのように動作するかを確認できるよう、ユーザー パスワードのリセット ポリシーのチャレンジは 2 つにすることをお勧めします。
+  >[AZURE.NOTE] 最も複雑な状況でこの機能がどのように動作するかを確認できるよう、ユーザー パスワードのリセット ポリシーのチャレンジは 2 つにすることをお勧めします。
 
   ![][006]
 
@@ -172,26 +173,26 @@
 
 
 ### ライトバックの前提条件
-パスワード ライトバックを有効にして使用する前に、次の前提条件を満たす必要があります。
+ライトバックを有効にして使用する前に、次の前提条件を満たす必要があります。
 
 - Azure AD テナントで Azure AD Premium が有効になっている。詳細については、[Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 - テナントでパスワード リセットが構成され、有効になっている。詳細については、[ユーザーによる Azure AD パスワードのリセットを有効にする](#enable-users-to-reset-their-azure-ad-passwords)を参照してください。
 - 管理者アカウントと、この機能をテストするために使用できる Azure AD Premium ライセンスが付与されたテスト ユーザー アカウントが少なくとも 1 つずつある。詳細については、[Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 
-  >[AZURE.NOTE]パスワード ライトバックの有効化に使用する管理者アカウントは、クラウドの管理者アカウント (Azure AD で作成された) であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではありません。
-  
+  > [AZURE.NOTE] パスワード ライトバックの有効化に使用する管理者アカウントは、クラウドの管理者アカウント (Azure AD で作成された) であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではありません。
+
 - Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、または Windows Server 2012 R2 を最新のサービス パックをインストールして実行している、1 つまたは複数のマルチフォレスト AD オンプレミスのデプロイを使用している。
 
-  >[AZURE.NOTE]古いバージョンの Windows Server 2008 または 2008 R2 を実行している場合でもこの機能を使用できますが、クラウドでローカル AD パスワード ポリシーを適用するには、[KB 2386717 をダウンロードおよびインストール](https://support.microsoft.com/kb/2386717)する必要があります。
-  
+  > [AZURE.NOTE] 古いバージョンの Windows Server 2008 または 2008 R2 を実行している場合でもこの機能を使用できますが、クラウドでローカル AD パスワード ポリシーを適用するには、[KB 2386717 をダウンロードおよびインストール](https://support.microsoft.com/kb/2386717)する必要があります。
+
 - Azure AD Connect ツールをインストールし、クラウドに同期するための AD 環境が準備されている。詳細については、[クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)を参照してください。
 
-  >[AZURE.NOTE]パスワード ライトバックをテストする前に、AD と Azure AD の両方から、フル インポートと完全同期を完了していることを確認してください。
+  > [AZURE.NOTE] パスワード ライトバックをテストする前に、Azure AD Connect で AD と Azure AD の両方から、フル インポートと完全同期を完了していることを確認してください。
 
 - Azure AD Sync または Azure AD Connect を使用している場合は、**TCP 送信ポート 443** (**場合によっては TCP 9350-9354**) を開く必要があります。詳細については、「[手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)」を参照してください。このシナリオでの DirSync の使用はサポートされなくなりました。DirSync をまだ使用している場合は、パスワード ライトバックをデプロイする前に Azure AD Connect の最新バージョンにアップグレードしてください。
 
-  >[AZURE.NOTE]Azure AD Sync ツールまたは DirSync ツールを使用している場合、優れたエクスペリエンスと、リリースされる新しい機能を利用できるように、Azure AD Connect の最新バージョンにアップグレードすることを強くお勧めします。
-  
+  > [AZURE.NOTE] Azure AD Sync ツールまたは DirSync ツールを使用している場合、優れたエクスペリエンスと、リリースされる新しい機能を利用できるように、Azure AD Connect の最新バージョンにアップグレードすることを強くお勧めします。
+
 
 ### 手順 1: Azure AD Connect の最新バージョンをダウンロードする
 パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。[ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#download-azure-ad-connect)
@@ -207,7 +208,7 @@
 
 このバージョン番号が **1.0.0419.0911** 以上の場合、または Azure AD Connect をインストールしている場合は、[手順 2: UI または Powershell を使用して Azure AD Connect でパスワード ライトバックを有効にしてから確認する](#step-2-enable-password-writeback-in-azure-ad-connect)にスキップできます。
 
- >[AZURE.NOTE]Azure AD Connect ツールを初めてインストールする場合は、いくつかのベスト プラクティスに従って、ディレクトリ同期の環境を準備することをお勧めします。Azure AD Connect ツールをインストールする前に、[Office 365 管理ポータル](https://portal.microsoftonline.com) または [Azure 管理ポータル](https://manage.windowsazure.com) のいずれかでディレクトリ同期を有効にする必要があります。詳細については、[Managing Azure AD Connect (Azure AD Connect の管理)](active-directory-aadconnect-whats-next.md) を参照してください。
+ > [AZURE.NOTE] Azure AD Connect ツールを初めてインストールする場合は、いくつかのベスト プラクティスに従って、ディレクトリ同期の環境を準備することをお勧めします。Azure AD Connect ツールをインストールする前に、[Office 365 管理ポータル](https://portal.microsoftonline.com) または [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) のいずれかでディレクトリ同期を有効にする必要があります。詳細については、[Managing Azure AD Connect (Azure AD Connect の管理)](active-directory-aadconnect-whats-next.md) を参照してください。
 
 
 ### 手順 2: Azure AD Connect でパスワード ライトバックを有効にする
@@ -222,7 +223,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 
 4.	ウィザードを完了します。最後のページには、パスワード ライトバックの構成の変更を含む、変更の概要が表示されます。
 
-> [AZURE.NOTE]パスワード ライトバックはいつでも無効にできます。無効にするには、このウィザードを再実行してこの機能を選択解除するか、[Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。パスワード リセットのエクスペリエンスのカスタマイズに関する詳細については、[Customize: Azure AD Password Management (カスタマイズ: Azure AD でのパスワード管理)](active-directory-passwords-customize.md) を参照してください。
+> [AZURE.NOTE] パスワード ライトバックはいつでも無効にできます。無効にするには、このウィザードを再実行してこの機能を選択解除するか、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。パスワード リセットのエクスペリエンスのカスタマイズに関する詳細については、[Customize: Azure AD Password Management (カスタマイズ: Azure AD でのパスワード管理)](active-directory-passwords-customize.md) を参照してください。
 
 #### Windows PowerShell を使用して、パスワード ライトバックを有効にするには
 1.	**ディレクトリ同期コンピューター**上で、新しい [**管理者特権の Windows PowerShell**] ウィンドウを開きます。
@@ -231,7 +232,7 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 4.	次のコマンドレットを実行して、現在のコネクタについてライトバックの現在の状態を取得します。`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName`
 5.	次のコマンドレットを実行して、パスワード ライトバックを有効にします。 `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName –Enable $true`
 
-> [AZURE.NOTE]資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、**クラウドの管理者アカウント (Azure AD で作成された)** であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。[AZURE.NOTE]パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし `$false` を渡す）、[Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。
+> [AZURE.NOTE] 資格情報を求められた場合、AzureADCredential に指定した管理者アカウントが、**クラウドの管理者アカウント (Azure AD で作成された)** であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではないことを確認します。[AZURE.NOTE] パスワード ライトバックを無効にするには、PowerShell を使用して前述の手順を繰り返すか (ただし `$false` を渡す）、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、ディレクトリの [**構成**] タブの [**ユーザー パスワードのリセット ポリシー**] セクションにある [**オンプレミスのディレクトリにパスワードをライトバック**] を [**いいえ**] に設定します。
 
 #### 構成が正常に完了したことを確認する
 構成が正常に完了すると、[Windows PowerShell] ウィンドウに「パスワード リセット ライトバックが有効になりました。」というメッセージが表示されます。
@@ -245,7 +246,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 1.	インストールの完了後、ご使用の環境で不明な送信接続をブロックしている場合は、次の規則をファイアウォールに追加する必要があります。これらの変更を行った後に、AAD Connect のコンピューターを必ず再起動してください。
    - TCP ポート 443 経由の送信接続を許可する
-   - https://ssprsbprodncu-sb.accesscontrol.windows.net/への送信接続を許可する 
+   - https://ssprsbprodncu-sb.accesscontrol.windows.net/への送信接続を許可する
    - プロキシを使用している場合や、一般的な接続問題が発生した場合は、TCP ポート 9350-9354 の送信接続を許可する
 
 ### 手順 4: Active Directory の適切な権限を設定する
@@ -259,7 +260,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
   これらの権限を設定すると、パスワード管理が、フォレストに含まれるユーザー アカウントからではなく、各フォレストのMA サービス アカウントから可能になります。これらの権限を割り当てないと、ライトバックが正常に構成されているように思われる場合でも、クラウドからオンプレミスのパスワードを管理しようとするとエラーが発生します。ここでは、[**Active Directory ユーザーとコンピューター**] 管理スナップインを使用した権限の設定方法の手順を詳しく説明します。
 
->[AZURE.NOTE]ディレクトリ内のすべてのオブジェクトにこれらの権限をレプリケートするには、最大 1 時間かかることがあります。
+>[AZURE.NOTE] ディレクトリ内のすべてのオブジェクトにこれらの権限をレプリケートするには、最大 1 時間かかることがあります。
 
 #### ライトバックを行うために適切な権限を設定するには
 
@@ -285,7 +286,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 ### 手順 5: ユーザーとして AD パスワードをリセットする
 これでパスワード ライトバックが有効になったので、その動作をテストできます。テストするには、アカウントがクラウド テナントと同期されているユーザーのパスワードをリセットします。
- 
+
 #### パスワード ライトバックの正常な動作を確認するには
 1.	[http://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) に移動するか、組織の ID ログイン画面に移動し、[**アカウントにアクセスできない場合**] リンクをクリックします。
 
@@ -303,18 +304,17 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 <br/> <br/> <br/>
 
-**その他のリソース**
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-
-* [パスワード管理とは](active-directory-passwords.md)
-* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
-* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
-* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
-* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
-* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
-* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
-* [詳細情報](active-directory-passwords-learn-more.md)
-* [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 
@@ -351,4 +351,4 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

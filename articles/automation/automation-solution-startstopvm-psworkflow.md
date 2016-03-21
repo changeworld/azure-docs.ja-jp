@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="09/25/2015"
+	ms.date="01/27/2016"
 	ms.author="bwren" />
 
 # Azure Automation ソリューション - 仮想マシンの起動と停止
@@ -28,11 +28,11 @@
 - [Graphical](automation-solution-startstopvm-graphical.md)
 - [PowerShell Workflow](automation-solution-startstopvm-psworkflow.md)
 
-これは、このソリューションの Runbook の PowerShell ワークフロー バージョンです。[グラフィカル Runbook](automation-solutions-startstopvm-graphical.md) を使用して利用することもできます。
+これは、このソリューションの Runbook の PowerShell ワークフロー バージョンです。[グラフィカル Runbook](automation-solution-startstopvm-graphical.md) を使用して利用することもできます。
 
 ## ソリューションの取得
 
-このソリューションは、次のリンクからダウンロード可能な 2 つの PowerShell ワークフロー Runbook で構成されています。グラフィカル Runbook へのリンクについては、このソリューションの[グラフィカル バージョン](automation-solutions-startstopvm-graphical.md)を参照してください。
+このソリューションは、次のリンクからダウンロード可能な 2 つの PowerShell ワークフロー Runbook で構成されています。グラフィカル Runbook へのリンクについては、このソリューションの[グラフィカル バージョン](automation-solution-startstopvm-graphical.md)を参照してください。
 
 | Runbook | リンク | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -193,4 +193,4 @@ Runbook で使用する仮想マシンを取得する場合は、**Get-AzureVM**
 - [Azure Automation での子 Runbook](automation-child-runbooks.md) 
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

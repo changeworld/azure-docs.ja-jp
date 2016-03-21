@@ -50,7 +50,7 @@
 1. [こちら](virtual-machines-windows-tutorial-classic-portal.md)に記載されている手順に従って、Windows Server 2012 R2 Datacenter ディストリビューションの Azure 仮想マシンを作成します。
 
 1. Azure で、ポート 80 トラフィックを Web から仮想マシン上のポート 80 に転送します。
- - Azure ポータルで新しく作成した仮想マシンに移動し、**[エンドポイント]** タブをクリックします。
+ - Azure クラシック ポータルで新しく作成した仮想マシンに移動し、**[エンドポイント]** タブをクリックします。
  - 画面の下部にある **[追加]** ボタンをクリックします。![エンドポイントの追加](./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png)
 
  - **TCP** プロトコルの**パブリック ポート 80** を**プライベート ポート 80** として開きます。![][port80]
@@ -184,4 +184,4 @@
 [python.org]: https://www.python.org/downloads/
 [wfastcgi に関するページ]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

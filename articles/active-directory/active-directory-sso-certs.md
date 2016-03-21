@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="liviodlc"
-	manager="terrylan"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/29/2015"
+	ms.date="02/09/2016"
 	ms.author="liviodlc"/>
 
 #Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
@@ -72,10 +72,14 @@
 
 	- Azure AD で、ダイアログの下部にある確認のチェック ボックスをオンにして新しい証明書を有効にし、**[次へ]** をクリックして送信します。
 
-	> [AZURE.IMPORTANT]これら 2 つの手順のいずれかを完了すると、一時的にアプリへのシングル サインオンが無効になりますが、2 番目の手順を完了すると再度有効になります。そのため、ダウンタイムを最小限に抑えるために、2 つの手順を間をおかずに短時間で完了してください。
+	> [AZURE.IMPORTANT] これら 2 つの手順のいずれかを完了すると、一時的にアプリへのシングル サインオンが無効になりますが、2 番目の手順を完了すると再度有効になります。そのため、ダウンタイムを最小限に抑えるために、2 つの手順を間をおかずに短時間で完了してください。
 
 	![証明書をダウンロードした後アップロードする](./media/active-directory-sso-certs/renew-config-app.PNG)
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+## 関連記事
 
-<!---HONumber=Oct15_HO3-->
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
+
+<!---HONumber=AcomDC_0211_2016-->

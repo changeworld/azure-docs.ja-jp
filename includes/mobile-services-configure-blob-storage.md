@@ -1,10 +1,10 @@
 新しい Todo 項目が挿入された場合に SAS を生成する、新しい挿入スクリプトが登録されます。
 
-0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)](../storage/storage-create-storage-account.md)」を参照してください。
+0. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)を参照してください。
 
-1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-2. **ストレージ アカウント名**と**アクセス キー**をメモします。
+2. **Storage アカウント名**と**アクセス キー**をメモします。
 
    	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png)
 
@@ -91,4 +91,4 @@
 <!-- URLs. -->
 [アプリ設定]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -3,8 +3,8 @@
    description="Azure の課金内容の確認"
    services=""
    documentationCenter="Azure"
-   authors="kareni"
-   manager="jocho"
+   authors="erihur"
+   manager="kareni"
    editor=""
    tags="billing"/>
 
@@ -14,38 +14,39 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/22/2015"
-   ms.author="kareni"/>
+   ms.date="02/04/2016"
+   ms.author="erihur"/>
 
 
 # Microsoft Azure の課金内容の確認
 
-Microsoft Azure サブスクリプションの課金額は、料金プランによって異なります。Visual Studio Ultimate with MSDN などの一部の料金プランには、お客様のニーズに合わせて Azure サービスで利用できる月々のクレジットが含まれています。
+Microsoft Azure サブスクリプションの課金額は、料金プランによって異なります。Visual Studio Enterprise (MPN) サブスクライバーなどの一部の料金プランには、お客様のニーズに合わせて Azure サービスで利用できる月々のクレジットが含まれています。
 
 前の請求期間の潜在的使用時間のうち、最大 24 時間が現在の請求期間として報告される場合があることにご注意ください。
 
-消費量と料金プランの詳細については、「[Microsoft Azure の購入オプション」](http://azure.microsoft.com/pricing/purchase-options/)ページを参照してください。
+消費量と料金プランの詳細については、「[Microsoft Azure の購入オプション](https://azure.microsoft.com/pricing/purchase-options/)」ページを参照してください。
 
-次のリンクは、Microsoft Azure サービスの完全な一覧を示します。
+<!-- The below links cover a complete list of all Microsoft Azure services.
 
-- [サービス詳細リスト (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
-- [サービス詳細リスト (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
+<!-- - [Service Details list (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
+<!-- - [Service Details list (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
 
-*注: **csv1** リンクは csv バージョン 1 の列ヘッダー名を参照し、**csv2** リンクは csv バージョン 2 の新しい列ヘッダー名を参照します。これらのファイルは毎月更新されます。*
+<!-- *NOTE: The **csv1** link refers to the column header names for csv version 1 and **csv2** link refers to the new column header names for csv version 2.  These files are updated monthly.*-->
 
+<!-- Below section commented out as a new "right nav" floating bar is created for each article and is no longer necessary to have this section.
 
-## 内容:
+## Content:
 
-このトピックでは、課金内容を確認する際の次の項目について説明します。
+This topic helps you with the following tasks when reading your bill.
 
--  Azure の課金内容の表示またはダウンロード
--  顧客情報
--  請求書の概要について
--  現在の課金内容について
--  フッター情報
--  追加情報について
--  詳細な使用料金について
--  日ごとの使用量データの分析
+-  View or Download a Bill for Azure
+-  Customer Information
+-  Understand the Invoice Summary
+-  Understand the Current Charges
+-  Footer Information
+-  Understand the Additional Information
+-  Understand Detailed Usage Charges
+-  Analyze Daily Usage Data -->
 
 ### Microsoft Azure の課金内容の表示またはダウンロード:
 
@@ -77,8 +78,10 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
     ![概要 - 請求履歴 5](./media/billing-understand-your-bill/ContentViewaBillforMA5.png)
 
 
+***重要:*** *銀行ではさまざまな費用に通貨換算率を適用しているため、米国以外のお客様向けの課金明細書に記載されている料金は、見積もりとしての使用を目的として提供されています。*
 
-**Microsoft Azure で使用できる 2 つのプランのステートメント例を次に示します。**
+
+Microsoft Azure で使用できる 2 つのプランのステートメント例を次に示します。
 
  **プランの種類** | **説明** | **ダウンロード** |
  :--------- |:-------- | :-------|
@@ -107,7 +110,7 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 Microsoft Azure の支払いをする住所。
 
 ### サブスクリプション プラン
-購入したサブスクリプション プランの種類 (つまり、従量課金制、MSDN Visual Studio Ultimate など)。
+購入したサブスクリプション プランの種類 (つまり、従量課金制、MSDN - Visual Studio Enterprise など)。
 
 ### アカウント所有者メール アドレス
 Microsoft Azure アカウントが登録されたアカウントのメール アドレス。
@@ -141,7 +144,7 @@ Microsoft Azure アカウントが登録されたアカウントのメール ア
 使用量のサービス割引は、現在の請求書に適用されて、対象の明細項目に反映されます。
 
 ### 調整
-その他の調整とは、現在の請求書に適用されるその他のクレジット、または未処理料金です。たとえば、Visual Studio Ultimate with MSDN のプランを受けている場合、この明細項目には毎月のクレジット額が表示されます。サブスクリプションを取り消した場合、その月の使用料金については、その月の課金開始日から取り消し日までに含まれるクレジット額を超過した分の金額が表示されます。
+その他の調整とは、現在の請求書に適用されるその他のクレジット、または未処理料金です。たとえば、Visual Studio Enterprise with MSDN のプランをご利用の場合、この明細項目には毎月のクレジット額が表示されます。サブスクリプションを取り消した場合、その月の使用料金については、その月の課金開始日から取り消し日までに含まれるクレジット額を超過した分の金額が表示されます。
 
 ## フッター情報
 ![フッター](./media/billing-understand-your-bill/footerinformation.png)
@@ -220,9 +223,9 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 消費量 | 消費量 | その日に消費されたリソースの量が表示されます。
 サブ リージョン | リソースの場所 | リソースが実行されているデータ センターを特定します。
 サービス | 使用サービス | この列を使用して、[名前] 列だけでは詳しく識別できない、個々の Azure Platform サービスを追跡します。この列が表示されサービス固有のサービスの使用法に関するものです。
-該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。「http://azure.microsoft.com/documentation/articles/resource-group-overview/」を参照してください。
+該当なし | リソース グループ | _**新しい列の追加。**_ デプロイされたリソースが実行されるリソース グループ。http://azure.microsoft.com/documentation/articles/resource-group-overview/ を参照してください。
 コンポーネント | インスタンス ID | 実行中のリソースの識別子です。識別子には、リソースの作成時に指定した名前が含まれています。
-該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。「http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/」を参照してください。
+該当なし | タグ | _**新しい列の追加。**_ Azure の新しいリソースの種類では、リソースにタグを付けることができます。http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/ を参照してください。
 追加情報 | 追加情報 | サービスに関連する追加のメタデータ。
 サービス情報 1 | サービス情報 1 | この列は、サブスクリプションでサービスが属しているプロジェクトの名前を特定します。
 サービス情報 2 | サービス情報 2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。
@@ -238,7 +241,7 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。  
-    - Virtual Machines
+    - 仮想マシン
     - 記憶域
     - [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
 
@@ -256,10 +259,10 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 - [Azure の請求書の支払いに使用するクレジット カードを変更する](https://msdn.microsoft.com/library/azure/dn736050.aspx)
 
-- [Azure サブスクリプションが無効になった場合、どうすればよいですか](https://msdn.microsoft.com/library/azure/dn736049.aspx)
+<!-- - [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)-->
 
 
 
 <!--Image references-->
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

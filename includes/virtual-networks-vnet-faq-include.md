@@ -1,6 +1,6 @@
 ## Virtual Network の基礎
 
-### Azure Virtual Network (VNet) とは何ですか。
+### Azure Virtual ネットワーク (VNet) とは何ですか。
 
 VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。作成したそれぞれの VNet には独自の CIDR ブロックを持っており、他の VNet や、CIDR ブロックが競合しない限りオンプレミス ネットワークにリンクすることができます。VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
 
@@ -24,7 +24,7 @@ VNet を使用して次のことが行えます。
 
 ### 開始するには?
 
-[Virtual Network ドキュメント](http://azure.microsoft.com/documentation/services/virtual-network/)にアクセスし開始します。このページには、一般的な構成手順だけでなく、仮想ネットワークを設計する際に考慮する必要がある内容を理解するのに役立つ情報へのリンクがあります。
+[Virtual Network ドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)にアクセスし開始します。このページには、一般的な構成手順だけでなく、仮想ネットワークを設計する際に考慮する必要がある内容を理解するのに役立つ情報へのリンクがあります。
 
 ### VNet でどのようなサービスを使用できますか。
 
@@ -143,7 +143,7 @@ PowerShell コマンドレットまたは NETCFG ファイルを使用してそ�
 
 Azure で提供される DNS は、Microsoft によって提供されるマルチ テナント DNS サービスです。Azure はこのサービス内のすべての VM とロール インスタンスを登録します。このサービスは、同じクラウド サービス内に含まれる VM とロール インスタンスのホスト名によって、また、同じ VNet 内の VM とロール インスタンスの FQDN によって名前解決を提供します。
 
-> [AZURE.NOTE]Azure で提供される DNS を使用して、テナント間の名前解決のため、仮想ネットワーク内の最初の 100 個のクラウド サービスには、この時点で制限があります。独自の DNS サーバーを使用している場合は、この制限は適用されません。
+> [AZURE.NOTE] Azure で提供される DNS を使用して、テナント間の名前解決のため、仮想ネットワーク内の最初の 100 個のクラウド サービスには、この時点で制限があります。独自の DNS サーバーを使用している場合は、この制限は適用されません。
 
 ### VM ごとに、サービスごとに DNS 設定を上書きできますか。
 
@@ -175,7 +175,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 - **VIP -** VIP は VM に直接割り当てることはありませんが、ご使用の VM も VIP と関連付けられます。VIP は、クラウド サービスに割り当てられるパブリック IP アドレスです。必要に応じて、クラウド サービスの VIP を予約することができます。[予約済みパブリック IP](virtual-networks-reserved-public-ip.md) を参照してください。
 
-- **ILPIP -**インスタンスレベル パブリック IP アドレス (ILPIP) を構成することもできます。ILPIP はクラウド サービスではなく、VM に直接関連付けられます。ILPIPs に関する詳細についてを参照してください。[インスタンス レベル パブリック IP の概要](virtual-networks-instance-level-public-ip.md)です。
+- **ILPIP -**インスタンスレベル パブリック IP アドレス (ILPIP) を構成することもできます。ILPIP はクラウド サービスではなく、VM に直接関連付けられます。ILPIPs に関する詳細についてを参照してください。[インスタンスレベル パブリック IP の概要](virtual-networks-instance-level-public-ip.md)です。
 
 ### 後で作成する VM の内部 IP アドレスを予約できますか。
 
@@ -193,7 +193,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 何もありません。IP アドレス (パブリック VIP と内部 IP アドレスの両方) は、クラウド サービスまたは VM と共にとどまります。
 
-> [AZURE.NOTE]単に VM をシャットダウンしたい場合、管理ポータルを使用しないでください。現時点では、シャットダウン ボタンをクリックすると、仮想マシンの割り当てが解除されます。
+> [AZURE.NOTE] 単に VM をシャットダウンしたい場合、管理ポータルを使用しないでください。現時点では、シャットダウン ボタンをクリックすると、仮想マシンの割り当てが解除されます。
 
 ### VNet 内で 1 つのサブネットからもう 1 つのサブネットへと、再デプロイせずに移動できますか。
 
@@ -205,7 +205,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### MAC アドレスは、一度作成されると、VM で同じものとして残りますか。
 
-いいえ。 VM の MAC アドレスは、さまざまな理由で変更できます。VM が、ステータスが停止 (割り当て解除) の場合、VM サイズを変更する場合、またはホストサーバーで回復中のサービスや、計画されたメンテナンスがある場合は、MAC アドレスは保持されません。
+いいえ、ただし変化するのは停止済み (割り当て解除済み) 状態になった場合だけです。ユーザーが VM のサイズを変更したり再起動した場合、またはサービス復旧やホスト サーバーの計画的なメンテナンスの場合は、MAC アドレスは維持されます。
 
 ### VNet 内の VM からインターネットに接続できますか。
 
@@ -215,28 +215,28 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### VNet でどのようなサービスを使用できますか。
 
-VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールとワーカー ロール) および VM に制限されます。
+VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールと worker ロール) および VM に制限されます。
 
 ### Web Apps を Virtual Network と連動できますか。
 
 はい。ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。さらに、VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
 
-- [App Service 環境で Web Apps を作成する](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-how-to-create-a-web-app-in-an-ase/)
+- [App Service 環境で Web Apps を作成する](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 
-- [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
+- [Web Apps Virtual Network 統合](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
-- [Web Apps と VNet Integration and Hybrid Connections の併用](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
+- [Web Apps と VNet Integration and Hybrid Connections の併用](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
 - [Web アプリを Azure Virtual Network に統合する](web-sites-integrate-with-vnet.md)
 
-### クラウド サービスを VNet 内の Web ロールとワーカー ロール (PaaS) でデプロイできますか。
+### クラウド サービスを VNet 内の Web ロールと worker ロール (PaaS) でデプロイできますか。
 
 はい。VNet 内で PaaS サービスをデプロイすることができます。
 
 ### VNet に PaaS ロールをデプロイする方法
 
-これは、サービス構成のネットワーク構成セクションで、VNet の名前と、役割とサブネットのマッピングを指定することで実現できます。どのバイナリも更新する必要はありません。
+これは、サービス構成のネットワーク構成セクションで、VNet の名前と、ロールとサブネットのマッピングを指定することで実現できます。どのバイナリも更新する必要はありません。
 
 ### サービスを VNet 内外で移動できますか。
 
@@ -266,4 +266,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="jodebrui"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="MightyPen"/>
 
 
@@ -13,17 +13,18 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="11/10/2015"
+	ms.topic="article"
+	ms.date="02/11/2016"
 	ms.author="jodebrui"/>
 
 
-# インメモリ (プレビュー) を使用して SQL Database のアプリケーション パフォーマンスを向上させる
+# インメモリ OLTP (プレビュー) を使用して SQL Database のアプリケーション パフォーマンスを向上させる
 
-[インメモリ](sql-database-in-memory.md)機能を使用して既存の [Premium](sql-database-service-tiers.md) Azure SQL Database のトランザクション パフォーマンスを最適化するには、次の手順に従います。
+[インメモリ OLTP](sql-database-in-memory.md) を使用すると、パフォーマンス レベルを上げることなく、[Premium](sql-database-service-tiers.md) Azure SQL Databases で OLTP ワークロードのパフォーマンスを高めることができます。
 
+既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
-## 手順 1. Premium データベースでインメモリがサポートされていることを確認する
+## 手順 1. Premium データベースでインメモリ OLTP がサポートされていることを確認する
 
 2015 年 11 月以降に作成された Premium データベースは、インメモリ機能をサポートしています。Premium データベースがインメモリ機能をサポートしているかどうかを確認するには、次の Transact-SQL ステートメントを実行します。返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
 
@@ -52,7 +53,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 新しい Premium データベースに bacpac をインポートします。
 
-1. Azure [ポータル](http://portal.azure.com/)で次の操作を行います。
+1. Azure [ポータル](https://portal.azure.com/)で次の操作を行います。
  - サーバーに移動します。
  - [[データベースのインポート]](sql-database-import.md) オプションを選択します。
  - Premium 価格レベルを選択します。
@@ -108,8 +109,8 @@ ALTER DATABASE CURRENT
 
 3. ウィザードで、**[移行の検証]** (または **[次へ]** ボタン) をクリックし、メモリ最適化テーブルでサポートされていない機能がテーブルに含まれているかどうかを確認します。詳細については、次を参照してください。
  - 「[メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)」の*メモリ最適化のチェック リスト*
- - 「[インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)」
- - 「[インメモリ OLTP への移行](http://msdn.microsoft.com/library/dn247639.aspx)」
+ - [インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)
+ - [インメモリ OLTP への移行](http://msdn.microsoft.com/library/dn247639.aspx)
 
 4. サポートされていない機能がテーブルになければ、アドバイザーで実際のスキーマとデータの移行を実行できます。
 
@@ -154,12 +155,12 @@ INSERT INTO <new_memory_optimized_table>
 - SCHEMABINDING: これを指定されたテーブルでは、ストアド プロシージャにより、そのストアド プロシージャを削除しない限り、ストアド プロシージャに影響を与えるような変更を列の定義に加えることができません。
 
 
-ネイティブ モジュールでは、トランザクション管理用に大きな [ATOMIC ブロック](http://msdn.microsoft.com/library/dn452281.aspx)を 1 つ使用する必要があります。明示的な BEGIN TRANSACTION に対するロールはありません。
+ネイティブ モジュールでは、トランザクション管理用に大きな [ATOMIC ブロック](http://msdn.microsoft.com/library/dn452281.aspx)を 1 つ使用する必要があります。明示的 BEGIN TRANSACTION、または ROLLBACK TRANSACTION の役割はありません。コードでビジネス規則違反が検出されると、[THROW](http://msdn.microsoft.com/library/ee677615.aspx) ステートメントを含むアトミック ブロックが停止する可能性があります。
 
 
 ### ネイティブ コンパイル向けの一般的な CREATE PROCEDURE
 
-ネイティブ コンパイル ストアド プロシージャを作成する T-SQL ステートメントは、一般的に、次のテンプレートのようになります。
+ネイティブ コンパイル ストアド プロシージャを作成する T-SQL は、一般的に、次のテンプレートのようになります。
 
 ```
 CREATE PROCEDURE schemaname.procedurename
@@ -220,7 +221,7 @@ CREATE PROCEDURE schemaname.procedurename
 
 運用環境でインメモリ機能の実装によるパフォーマンスへの影響を監視することを検討してください。
 
-- [インメモリ ストレージを監視する](https://azure.microsoft.com/documentation/articles/sql-database-in-memory-oltp-monitoring/)
+- [インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
 - [動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)
 
@@ -233,4 +234,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
  	ms.tgt_pltfrm="na"
  	ms.devlang="na"
  	ms.topic="article"
- 	ms.date="10/16/2015"  
+ 	ms.date="02/09/2016"  
  	ms.author="stevenpo"/>
 
 # Azure AD とのアカウントの共有
@@ -44,18 +44,18 @@ Azure AD 管理者は、アクセス パネルを使用して、ユーザーが�
 
 共有アカウントは、管理作業の強化、使いやすさの向上だけでなく、セキュリティも強化します。資格情報の使用権限を持つユーザーには、共有パスワードが表示されるのではなく、パスワードを調整された認証フローの一部として使用する権限が与えられます。さらに、一部のパスワード SSO アプリケーションの場合、大規模で複雑なパスワードを使用して Azure AD に定期的にパスワードをロールオーバー (更新) させて、アカウントのセキュリティを強化するオプションもあります。管理者は、アプリケーションへのアクセス権の付与または取り消しを簡単に行うことができ、また、アカウントへのアクセス権を有するユーザーおよび過去にアプリケーションにアクセスしたユーザーを把握できます。
 
-Azure AD では、アプリケーションに対するあらゆる種類のパスワード シングル サインオンで、エンタープライズ モビリティ スイート (EMS)、Premium、または Basic ライセンス ユーザーを対象にした共有アカウントをサポートします。アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、[カスタム SSO アプリケーション](active-directory-single-sign-on-newly-acquired-saas-apps.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
+Azure AD では、アプリケーションに対するあらゆる種類のパスワード シングル サインオンで、エンタープライズ モビリティ スイート (EMS)、Premium、または Basic ライセンス ユーザーを対象にした共有アカウントをサポートします。アプリケーション ギャラリーに事前に統合された何千ものアプリケーションのいずれについてもアカウントを共有することができると共に、[カスタム SSO アプリケーション](active-directory-sso-integrate-saas-apps.md)を使用して独自のパスワード認証アプリケーションを追加することができます。
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
-- [パスワード シングル サインオン](active-directory-passwords-getting-started.md)
+- [パスワード シングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
 - パスワード シングル サインオン エージェント
 - [グループの割り当て](active-directory-accessmanagement-self-service-group-management.md)
 - カスタム パスワード アプリケーション
 - [アプリケーションの使用状況に関するダッシュ ボード/レポート](active-directory-passwords-get-insights.md)
 - エンド ユーザー アクセス ポータル
 - [アプリケーション プロキシ](active-directory-application-proxy-get-started.md)
-- [Active Directory マーケットプレース](http://azure.microsoft.com/marketplace/active-directory/all/)
+- [Active Directory マーケットプレース](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## アカウントの共有
 Azure AD を使用してアカウントを共有するには、次の操作が必要です。
@@ -67,9 +67,10 @@ Azure AD を使用してアカウントを共有するには、次の操作が�
 
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](multi-factor-authentication-get-started.md)」を参照) すると共に、[Azure AD のセルフ サービス](active-directory-accessmanagement-self-service-group-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
-## 関連記事
+## 関連記事:
 
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

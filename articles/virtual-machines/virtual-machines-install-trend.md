@@ -31,15 +31,15 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 ## 新しい仮想マシンに Deep Security Agent をインストールする
 
-[Azure ポータル](http://manage.windowsazure.com)を使用すると、**[ギャラリーから]** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
+[Azure クラシック ポータル](http://manage.windowsazure.com)を使用すると、**[ギャラリーから]** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
-この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows を実行する仮想マシンを Azure ポータルで作成する](virtual-machines-windows-tutorial-classic-portal.md)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
+この **[ギャラリーから]** をクリックすると、仮想マシンの設定を支援するウィザードが起動します。ウィザードの最後のページで、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールします。一般的な手順については、「[Windows を実行する仮想マシンを Azure クラシック ポータルで作成する](virtual-machines-windows-tutorial-classic-portal.md)」をご覧ください。ウィザードの最後のページで、次の手順を実行します。
 
 1.	**[VM エージェント]** で **[VM エージェントをインストールする]** チェック ボックスをオンにします。
 
 2.	**[セキュリティ拡張機能]** で **[Trend Micro Deep Security エージェント]** チェック ボックスをオンにします。
 
-	![Install the VM Agent and the Deep Security Agent](./media/virtual-machines-install-trend/InstallVMAgentandTrend.png)
+	![VM エージェントと Deep Security エージェントのインストール](./media/virtual-machines-install-trend/InstallVMAgentandTrend.png)
 
 3.	チェック マークをクリックして、仮想マシンを作成します。
 
@@ -47,7 +47,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 このインストールには、次の条件が必要です。
 
-- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドを使用して確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。
+- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドを使用して確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 - VM エージェントがターゲットの仮想マシンにインストールされていること。
 
@@ -87,4 +87,4 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-log-on-windows-server.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

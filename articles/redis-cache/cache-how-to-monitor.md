@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/09/2015" 
+	ms.date="12/03/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の監視方法
@@ -24,11 +24,11 @@ Azure Redis Cache には、キャッシュのインスタンスを監視する�
 
 キャッシュ メトリックは、Redis の [INFO](http://redis.io/commands/info) コマンドを使用して収集されます。各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「[使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
 
-キャッシュ メトリックを確認するには、[Azure プレビュー ポータル](https://portal.azure.com)で対象のキャッシュ インスタンスに[移動](cache-configure.md)します。Azure Redis Cache インスタンスのメトリックは、**[Redis Cache]** ブレードからアクセスします。
+キャッシュ メトリックを確認するには、[Azure ポータル](https://portal.azure.com)で対象のキャッシュ インスタンスに[移動](cache-configure.md)します。Azure Redis Cache インスタンスのメトリックは、**[Redis Cache]** ブレードからアクセスします。
 
 ![監視][redis-cache-monitor-overview]
 
->[AZURE.IMPORTANT]プレビュー ポータルに次のメッセージが表示された場合は、「[キャッシュ診断の有効化](#enable-cache-diagnostics)」セクションの手順に従ってキャッシュ診断を有効にします。
+>[AZURE.IMPORTANT]Azure ポータルに次のメッセージが表示された場合は、「[キャッシュ診断の有効化](#enable-cache-diagnostics)」セクションの手順に従ってキャッシュ診断を有効にします。
 >
 >`Monitoring may not be enabled. Click here to turn on Diagnostics.`
 
@@ -36,7 +36,7 @@ Azure Redis Cache には、キャッシュのインスタンスを監視する�
 
 ## キャッシュ診断の有効化
 
-Azure Redis Cache には診断データをストレージ アカウントに格納する機能が用意されており、任意のツールを使用してそのデータにアクセスしてデータを直接処理できます。キャッシュ診断を Azure プレビュー ポータルに収集、格納、および表示するには、ストレージ アカウントを構成する必要があります。同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成が変更されるとそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
+Azure Redis Cache には診断データをストレージ アカウントに格納する機能が用意されており、任意のツールを使用してそのデータにアクセスしてデータを直接処理できます。キャッシュ診断を Azure ポータルに収集、格納、および表示するには、ストレージ アカウントを構成する必要があります。同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成が変更されるとそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
 
 キャッシュ診断を有効化および構成するには、対象のキャッシュ インスタンスの **[Redis Cache]** ブレードに移動します。診断が有効になっていない場合は、診断のグラフではなくメッセージが表示されます。
 
@@ -56,9 +56,9 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 
 >[AZURE.IMPORTANT]同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成が変更されるとそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
 
-格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics` で始まる名前を確認します。プレビュー ポータル外に格納されたメトリックにアクセスする方法の詳細については、[Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)のサンプルを参照してください。
+格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics` で始まる名前を確認します。Azure ポータル外に格納されたメトリックにアクセスする方法の詳細については、[Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)のサンプルを参照してください。
 
->[AZURE.NOTE]選択したストレージ アカウントに格納されているメトリックのみがプレビュー ポータルに表示されます。ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータはダウンロードできますが、プレビュー ポータルには表示されません。
+>[AZURE.NOTE]選択したストレージ アカウントに格納されているメトリックのみが Azure ポータルに表示されます。ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータはダウンロードできますが、Azure ポータルには表示されません。
 
 ## 使用可能なメトリックとレポート期間
 
@@ -259,4 +259,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

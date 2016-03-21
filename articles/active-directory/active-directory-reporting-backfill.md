@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory でのバックフィル時間のレポート | Microsoft Azure"
-   description="Azure Active Directory で前のレポート イベントを表示するのにかかる時間"
+   pageTitle="Azure Active Directory レポートのバックフィル時間 | Microsoft Azure"
+   description="これまでのレポート イベントを Azure Active Directory に表示するのにかかる時間"
    services="active-directory"
    documentationCenter=""
    authors="kenhoff"
@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/09/2015"
+   ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
-# Azure Active Directory レポートの保持ポリシー
+# Azure Active Directory レポートのバックフィル時間
+
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 ディレクトリがレポートにオプトインされた後、レポートは、次に示す一定期間データをバックフィルします。
 
@@ -46,4 +48,4 @@ RMS の利用状況 | 0 日
 RMS デバイスの利用状況 | 0 日
 RMS 対応アプリケーションの利用状況 | 0 日
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

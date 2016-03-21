@@ -1,152 +1,99 @@
 <properties
-	pageTitle="REST API を使用した Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure Search と HTTP REST API を使用して、コードでインデックスを作成します。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""
+    pageTitle="REST API を使用した Azure Search インデックスの作成 | Microsoft Azure | ホスト型クラウド検索サービス"
+    description="Azure Search HTTP REST API を使用して、コードでインデックスを作成します。"
+    services="search"
+    documentationCenter=""
+    authors="ashmaka"
+    manager=""
+    editor=""
     tags="azure-portal"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="rest-api"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="11/09/2015"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="rest-api"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="03/09/2016"
+    ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search インデックスの作成
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-an-index.md)
-- [Portal](search-create-index-portal.md)
+- [概要](search-what-is-an-index.md)
+- [ポータル](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
+- [REST ()](search-create-index-rest-api.md)
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスを作成する方法について説明します。以下のコンテンツの一部は、[インデックスの作成 (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx) に関するページから抜粋したものです。詳しいコンテキストについては、元の記事を参照してください。
 
-インデックスを作成するうえでの前提条件として、(通常は httpClient を介して) 検索サービスへの接続が既に確立されていることが挙げられます。
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search の[インデックス](https://msdn.microsoft.com/library/azure/dn798941.aspx)を作成するプロセスについて説明します。REST API を使用して Azure Search インデックスを作成するには、Azure Search サービスの URL エンドポイントに単一の HTTP POST 要求を発行します。インデックス定義は、適切な形式の JSON コンテンツとして要求本文に含まれます。
 
-REST API を介してインデックスを作成する 3 つのパートから成るアプローチでは、接続をセットアップし、インデックス スキーマを指定してから、インデックスを構築するコマンドを実行します。次のコード スニペットは、[スコアリング プロファイルのサンプル](search-get-started-scoring-profiles.md)から取得したものです。
+このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)である必要があります。
 
-##インデックス スキーマの定義
+## I.Azure Search サービスの管理者 API キーの識別
+Azure Search サービスのプロビジョニングが完了すると、REST API を使用して、サービスの URL エンドポイントに対して HTTP 要求を発行できます。ただし、*すべて*の API 要求には、プロビジョニングした Search サービス用に生成された API キーを含める必要があります。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-REST API は、JSON で要求を受け入れます。スキーマの作成方法の 1 つに、スタンドアロン スキーマ ファイルを JSON ドキュメントとして含める方法があります。次の例でこれを具体的に示します。
+1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
+2. Azure Search サービスのブレードに移動します。
+3. "キー" アイコンをクリックします。
 
-このスニペットの派生元のサンプルでは、以下の JSON は schema.json という名前のファイルに保存されています。
+サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
 
-	{
-	    "name": "musicstoreindex",
-	    "fields": [
-	        { "name": "key", "type": "Edm.String", "key": true },
-	        { "name": "albumTitle", "type": "Edm.String"},
-	        { "name": "albumUrl", "type": "Edm.String", "filterable": false },
-	        { "name": "genre", "type": "Edm.String" },
-	        { "name": "genreDescription", "type": "Edm.String", "filterable": false },
-	        { "name": "artistName", "type": "Edm.String"},
-	        { "name": "orderableOnline", "type": "Edm.Boolean" },
-	        { "name": "rating", "type": "Edm.Int32" },
-	        { "name": "tags", "type": "Collection(Edm.String)" },
-	        { "name": "price", "type": "Edm.Double", "filterable": false },
-	        { "name": "margin", "type": "Edm.Int32", "retrievable": false },
-	        { "name": "inventory", "type": "Edm.Int32" },
-	        { "name": "lastUpdated", "type": "Edm.DateTimeOffset" }
-	    ],
-	    "scoringProfiles": [
-	        {
-	            "name": "boostGenre",
-	            "text": {
-	                "weights": {
-	                    "albumTitle": 5,
-	                    "genre": 50,
-	                    "artistName": 5
-	                }
-	            }
-	        },
-	        {
-	            "name": "newAndHighlyRated",
-	            "functions": [
-	                {
-	                    "type": "freshness",
-	                    "fieldName": "lastUpdated",
-	                    "boost": 10,
-	                    "interpolation": "quadratic",
-	                    "freshness": {
-	                        "boostingDuration": "P365D"
-	                    }
-	                },
-	                {
-	                    "type": "magnitude",
-	                    "fieldName": "rating",
-	                    "boost": 10,
-	                    "interpolation": "linear",
-	                    "magnitude": {
-	                        "boostingRangeStart": 1,
-	                        "boostingRangeEnd": 5,
-	                        "constantBoostBeyondRange": false
-	                    }
-	                }
-	            ]
-	        },
-	        {
-	            "name": "boostMargin",
-	            "functions": [
-	
-	                {
-	                    "type": "magnitude",
-	                    "fieldName": "margin",
-	                    "boost": 50,
-	                    "interpolation": "linear",
-	                    "magnitude": {
-	                        "boostingRangeStart": 50,
-	                        "boostingRangeEnd": 100,
-	                        "constantBoostBeyondRange": false
-	                    }
-	                }
-	            ]
-	        }
-	    ]
-	}
+ - プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+ - *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
-##HTTP 要求をセットアップしてインデックスを接続、作成する
+インデックスを作成する目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
 
-REST API は、すべての要求で HTTP 接続を作成します。各要求は、サービスの URL、使用している API のバージョン、サービスでの読み取り/書き込み操作を許可する管理者キー (以下では、プライマリ キーと呼んでいます。ポータルでそのように命名されているためです) を常に規定します。
+## II.適切な形式の JSON を使用した Azure Search インデックスの定義
+サービスに対する 1 つの HTTP POST 要求で、インデックスを作成します。HTTP POST 要求の本文には、Azure Search インデックスを定義する 1 つの JSON オブジェクトが含まれます。
 
-このコード スニペッドでは、app.config ファイルで指定されているとおりに (ここでは示されていません)、インデックスの名前などの静的な値を入力として使用します。サンプルは、コードの簡潔さを保つためにこのような方法で作成されています。
+1. この JSON オブジェクトの最初のプロパティは、インデックスの名前です。
+2. この JSON オブジェクトの 2 番目のプロパティは、`fields` という名前の JSON 配列で、インデックスのフィールドごとに個別の JSON オブジェクトを格納します。これらの各 JSON オブジェクトには、"name"、"type" などのフィールド属性ごとに複数の名前/値ペアが含まれます。
 
-        private const string ApiVersion = "api-version=2015-02-28";
-        private static string serviceUrl = ConfigurationManager.AppSettings["serviceUrl"];
-        private static string indexName = ConfigurationManager.AppSettings["indexName"];
-        private static string primaryKey = ConfigurationManager.AppSettings["primaryKey"];
+各フィールドには[適切な属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。これらの属性では、どのフィールドにどの検索機能 (フィルター、ファセット、フルテキスト検索の並べ替えなど) が適用されるかを制御します。指定しない属性については、明確に無効にしない限り、既定では、対応する検索機能が有効になります。
 
-次の例では、サービスの URL への HTTP PUT 要求のほか、`api-version` と作成するインデックスの名前が示されています。
+この例では、インデックスに "hotels" という名前を付け、次のようにフィールドを定義しました。
 
-        static bool CreateIndex()
-        {
-            // Create an index using an index name
-            Uri requestUri = new Uri(serviceUrl + indexName + "?" + ApiVersion);
+```JSON
+{
+    "name": "hotels",  
+    "fields": [
+        {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+        {"name": "baseRate", "type": "Edm.Double"},
+        {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
+        {"name": "hotelName", "type": "Edm.String", "facetable": false},
+        {"name": "category", "type": "Edm.String"},
+        {"name": "tags", "type": "Collection(Edm.String)"},
+        {"name": "parkingIncluded", "type": "Edm.Boolean", "sortable": false},
+        {"name": "smokingAllowed", "type": "Edm.Boolean", "sortable": false},
+        {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+        {"name": "rating", "type": "Edm.Int32"},
+        {"name": "location", "type": "Edm.GeographyPoint"}
+    ]
+}
+```
 
-            // Load the json containing the schema from an external file
-            string json = File.ReadAllText("schema.json");
+各フィールドのインデックスの属性は、アプリケーションでどのように使用されるかに応じて、慎重に選択しています。たとえば、`hotelId` は、ユーザーが知らないホテルについて検索する一意のキーです。そのため、`searchable` を `false` に設定してそのフィールドのフルテキスト検索を無効にします。これにより、インデックスの領域が節約されます。
 
-            using (HttpClient client = new HttpClient())
-            {
-                // Create the index
-                client.DefaultRequestHeaders.Add("api-key", primaryKey);
-                HttpResponseMessage response = client.PutAsync(requestUri,        // To create index use PUT
-                    new StringContent(json, Encoding.UTF8, "application/json")).Result;
+インデックスの `Edm.String` 型のフィールドを 1 つだけ、"key" フィールドとして指定する必要があることに注意してください。
 
-                if (response.StatusCode == HttpStatusCode.Created)   // For Posts we want to know response had no content
-                {
-                    Console.WriteLine("Index created. \r\n");
-                    return true;
-                }
+上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドにカスタム言語アナライザーを使用しています。言語アナライザーの詳細については、[MSDN の「言語サポート」](https://msdn.microsoft.com/library/azure/dn879793.aspx)と対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
 
-                Console.WriteLine("Index creation failed: {0} {1} \r\n", (int)response.StatusCode, response.Content.ReadAsStringAsync().Result.ToString());
-                return false;
+## III.HTTP 要求の発行
+1. インデックス定義を要求本文として使用して、Azure Search サービス エンドポイントの URL に HTTP POST 要求を発行します。URL では、ホスト名としてサービス名を使用し、クエリ文字列パラメーターとして適切な `api-version` を配置するようにしてください (このドキュメントが書かれた時点で最新の API バージョンは `2015-02-28` です)。
+2. 要求ヘッダーで、`Content-Type` を `application/json` として指定します。また、`api-key` ヘッダーでは、ステップ I で特定したサービスの管理者キーを指定する必要があります。
 
-            }
-        }
 
-<!---HONumber=Nov15_HO3-->
+    POST https://[service name].search.windows.net/indexes?api-version=2015-02-28 Content-Type: application/json api-key: [api-key]
+
+要求が成功した場合は、状態コード 201 (Created) が表示されます。REST API を使用したインデックスの作成の詳細については、[MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx) の API リファレンスを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP 状態コード (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+
+インデックスが不要になり、それを削除する場合は、HTTP DELETE 要求を発行するだけです。たとえば、"hotels" を削除する方法を次に示します。
+
+    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2015-02-28
+    api-key: [api-key]
+
+## 次へ
+Azure Search インデックスを作成すると、データの検索を開始できるようにインデックスにコンテンツをアップロードする準備が完了します。詳しくは、「[REST API を使用した Azure Search でのデータ インポート](search-import-data-rest-api.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0309_2016-->

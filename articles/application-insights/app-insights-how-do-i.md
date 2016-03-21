@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/11/2015" 
+	ms.date="02/05/2016" 
 	ms.author="awills"/>
 
 # Application Insights での作業
@@ -36,7 +36,7 @@
 ### 例外での電子メール
 
 1. [例外の監視を設定します](app-insights-asp-net-exceptions.md)
-2. 例外数メトリックに[アラートを設定](app-insights-alert.md)します
+2. 例外数メトリックに[アラートを設定](app-insights-alerts.md)します
 
 
 ### アプリのイベントでの電子メール
@@ -57,7 +57,7 @@
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-アラームを表示するには[メトリック エクスプローラー](app-insights-metric-explorer.md)でグラフを作成します。
+アラームを表示するには[メトリック エクスプローラー](app-insights-metrics-explorer.md)でグラフを作成します。
 
 ![](./media/app-insights-how-do-i/010-alarm.png)
 
@@ -143,9 +143,9 @@
 
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
-## バックエンド サーバーの監視
+## バックエンド サーバーとデスクトップ アプリを監視する
 
-[基本的な API の使用に関するページ](app-insights-windows-desktop.md)
+[Windows Server SDK モジュールを使用する](app-insights-windows-desktop.md)。
 
 
 ## データの視覚化
@@ -185,15 +185,15 @@
 
 ## プロパティ名または値を変更する
 
-フィルター (app-insights-api-filtering-sampling.md#filtering) を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
+[フィルター](app-insights-api-filtering-sampling.md#filtering)を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
 
 ## 特定のユーザーとその使用状況を一覧表示する
 
-[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics/#authenticated-users) を設定できます。
+[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。
 
 ユーザーが表示するページやログインの頻度についてユーザーを一覧表示するには、2 つのオプションがあります。
 
-* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics/#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
+* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics.md#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
 * ユーザー数が少ない場合は、メトリック値またはイベント名として関心のあるデータを使用し、ユーザー ID をプロパティとして設定して、カスタム イベントまたはメトリックを送信します。ページ ビューを分析するには、標準の JavaScript trackPageView 呼び出しを置き換えます。サーバー側のテレメトリを分析するには、テレメトリ初期化子を使用して、ユーザー ID をすべてのサーバー テレメトリに追加します。次に、ユーザー ID を基に、メトリックや検索結果をフィルター処理および細分化します。
 
 
@@ -201,6 +201,7 @@
 
 * [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンター コレクターなど) を無効にします。
 * SDK で、[サンプリングとフィルター処理](app-insights-api-filtering-sampling.md)を使用します。
+* Web ページで、各ページ ビューで報告される AJAX 呼び出しの数を制限します。`instrumentationKey:...` の後のスクリプト スニペットに、`,maxAjaxCallsPerView:3` (または適切な数値) を挿入します。
 * [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。これに対して提供される TrackMetric() のオーバーロードを考慮します。
 
 
@@ -219,25 +220,25 @@
 
 
 
-パフォーマンス カウンター、HTTP 要求、依存関係などの**選択されている標準のコレクターを無効にする**には、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、コメント アウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 
 
 ## システム パフォーマンス カウンターの表示
 
-メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された **[サーバー]** というブレードに、それらのいくつかが表示されます。
+メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された**サーバー**というブレードに、それらのいくつかが表示されます。
 
 ![Application Insights リソースを開いて、[サーバー] をクリック](./media/app-insights-how-do-i/121-servers.png)
 
 ### パフォーマンス カウンターのデータが表示されない場合
 
 * 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
-* **Azure Web サイト**の場合。まだパフォーマンス カウンターに対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
-* **UNIX サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
+* **Azure の Web サイト**の場合。パフォーマンス カウンターにまだ対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
+* **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
 
 ### 表示するパフォーマンス カウンターの数を増やすには
 
 * 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

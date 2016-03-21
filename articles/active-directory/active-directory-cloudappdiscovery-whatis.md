@@ -1,11 +1,12 @@
 <properties
-	pageTitle="承認されていないクラウド アプリケーションを Cloud App Discovery で検出する | Microsoft Azure"
-	description="このトピックでは、Cloud App Discvery とは何かと、これを使用する理由について説明します。"
+	pageTitle="管理されていないクラウド アプリケーションを Cloud App Discovery で検出する | Microsoft Azure"
+	description="Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。"
 	services="active-directory"
+	keywords="Cloud App Discovery, アプリケーションの管理"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
-	editor="lisatoft"/>
+	manager="stevenpo"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
-	ms.author="markusvi"/>
+	ms.date="02/09/2016"
+	ms.author="markvi"/>
 
-# 承認されていないクラウド アプリケーションを Cloud App Discovery で検出する
+# 管理されていないクラウド アプリケーションを Cloud App Discovery で検出する
 
 ## 概要
 現代の企業では、IT 部門が、組織のメンバーが作業のために使用しているクラウド アプリケーションを部分的にしか認識できていないことがよくあります。管理者が企業データへの不正アクセスを心配している理由は容易に理解できます。データの漏洩やその他のセキュリティ リスクが発生するおそれがあるからです。このような認識不足は、セキュリティ リスクに対処するための計画策定が困難であるように思わせる可能性があります。
@@ -46,5 +47,6 @@ Cloud App Discovery の使用を開始するには、[Cloud App Discovery の概
 - [Cloud App Discovery のカスタム ポートを使用するプロキシ サービス用レジストリ設定](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 - [Cloud App Discovery エージェントの変更ログ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 - [Cloud App Discovery に関してよく寄せられる質問](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

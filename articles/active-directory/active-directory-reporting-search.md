@@ -13,14 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="09/29/2015"
+	ms.date="12/07/2015"
 	ms.author="kenhoff"/>
 
 # Azure Active Directory のレポート検索
 
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
+
 Azure Active Directory には、ディレクトリ管理者向けに、複数のレポートにわたってユーザーのセキュリティ、アクティビティ、および監査イベントを検索する機能が用意されています。
 
-検索パネルを表示するには、**Azure 管理ポータル、Azure Active Directory、[レポート]** の順に移動します。 パネルは、レポートの一覧の上部にあります。
+検索パネルを表示するには、**Microsoft Azure 管理ポータル、Azure Active Directory、[レポート]** の順に移動します。 パネルは、レポートの一覧の上部にあります。
 
 特定のユーザーのアクティビティまたは監査イベントを検索するには、[開始] および [終了] フィールドで日付範囲を選択し、ユーザーの UPN または表示名を入力した後、チェックマーク ボタンをクリックします。
 
@@ -56,4 +58,4 @@ RMS デバイスの利用状況 | いいえ
  - [Azure Active Directory レポート](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

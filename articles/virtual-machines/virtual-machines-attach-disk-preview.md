@@ -1,6 +1,6 @@
 <properties
 	pageTitle="データ ディスクを接続する |Microsoft Azure"
-	description="Azure プレビュー ポータルでリソース マネージャーデプロイ モデルを使用して、新規または既存のデータ ディスクを VM に接続する方法。"
+	description="Azure ポータルでリソース マネージャーデプロイ モデルを使用して、新規または既存のデータ ディスクを VM に接続する方法。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,34 +14,30 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="01/21/2016"
 	ms.author="cynthn"/>
 
-# Azure プレビュー ポータルでデータ ディスクを接続する方法
+# Azure ポータルでデータ ディスクを接続する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](storage-windows-attach-disk.md)。
 
-この記事では、Azure プレビュー ポータルを使用して新しいディスクと既存のディスクを仮想マシンに接続する方法について説明します。接続する前に、次のヒントを確認してください。
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクを仮想マシンに接続する方法について説明します。接続する前に、次のヒントを確認してください。
 
 - 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」を参照してください。
-- Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
+- Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 - 仮想マシンに接続されているディスクは、実際には Azure ストレージ アカウントの .vhd ファイルです。詳細については、[仮想マシン用のディスクと VHD](virtual-machines-disks-vhds.md) に関するページを参照してください。
 - 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
-- 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合、既存のファイルを使用します。または、.vhd ファイルをストレージ アカウントにアップロードします。
+- 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
 ## 仮想マシンの検索
 
-1. Azure プレビュー ポータルにサインインします。
+1. Azure ポータルにサインインします。
 
-2. ハブ メニューの **[参照]** をクリックします。
+2. ハブ メニューで **[仮想マシン]** をクリックします。
 
-3. 検索ブレードを下へスクロールし、**[仮想マシン]** をクリックします。
+3.	一覧から仮想マシンを選択します。
 
-	![仮想マシンのサイズ](./media/virtual-machines-attach-disk-preview/search-blade-preview-portal.png)
-
-4.	一覧から仮想マシンを選択します。
-
-5. 右側にある **[要点]** で **[すべての設定]** をクリックし、**[ディスク]** をクリックします。
+4. 右側にある **[要点]** で **[すべての設定]** をクリックし、**[ディスク]** をクリックします。
 
 	![ディスク設定を開く](./media/virtual-machines-attach-disk-preview/find-disk-settings.png)
 
@@ -90,4 +86,4 @@
 
 [Azure ストレージ アカウントについて]: ../storage-whatis-account/
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

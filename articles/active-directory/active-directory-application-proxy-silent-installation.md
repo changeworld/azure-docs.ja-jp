@@ -3,8 +3,8 @@
 	description="Azure AD アプリケーション プロキシ コネクタのサイレント インストールを実行して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
-	manager="steven.powell"
+	authors="kgremban"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/19/2015"
-	ms.author="rkarlin"/>
+	ms.date="02/09/2016"
+	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
+
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
 
@@ -44,23 +46,23 @@
 ### Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
 
 
-1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"username" と "password" をディレクトリのユーザー名とパスワードに置き換えます。
+1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"<username>" と "<password>" をディレクトリのユーザー名とパスワードに置き換えます。
 
-        $User = "<username>" 
-        $PlainPassword = '<password>' 
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force 
-        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword 
-    
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+
 2. **C:\\Program Files\\Microsoft AAD App Proxy Connector** に移動し、作成済みの PowerShell 資格情報オブジェクトを使用してスクリプトを実行します。ここで、$cred は 作成済みの PowerShell 資格情報オブジェクトの名前です。
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred 
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
 
 ### オフラインで作成したトークンを使用してコネクタを登録する
 
 1. コード スニペットの値を使用する AuthenticationContext クラスを使用して、オフライン トークンを作成します。
 
-        
+
         using System;
         using System.Diagnostics;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -139,7 +141,8 @@
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
-* [Azure ID](fundamentals-identity.md)
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

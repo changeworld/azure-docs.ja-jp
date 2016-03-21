@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="02/26/2016" 
 	ms.author="cephalin"/>
 
 
@@ -21,13 +21,14 @@
 
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps は、.COM サイトにグローバル Web プレゼンスを確立するために必要な機能をすべて備えています。組織の規模に関係なく、ビジネス、ブランド認識、顧客とのコミュニケーションを促進するには、堅牢なセキュリティで保護された、スケーラブルなプラットフォームが必要です。App Service Web Apps は、Microsoft がサポートするビジネス継続性により、企業のブランドとアイデンティティを維持します。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 以下は、App Service Web Apps で実行されている .COM Web サイトの例です。技術的な投資を最小限に抑えて、Web Apps をその他のサービスを構成することにより実現可能なことを図解しています。**トポグラフィ内の要素をクリックして、詳細をご覧ください。**
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/corp-website-visio.svg" width="100%" height="100%"></object>
 
-> [AZURE.NOTE]このガイドでは、Azure App Service Web Apps で公開されている .COM サイトを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、Azure App Service Web Apps で実装できるその他の一般的なソリューションもあります。これらのソリューションについては、[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
+> [AZURE.NOTE]
+このガイドでは、Azure App Service Web Apps で公開されている .COM サイトを実行するために調整されている最も一般的な領域とタスクの一部を紹介します。ただし、Azure App Service Web Apps で実装できるその他の一般的なソリューションもあります。これらのソリューションについては、[デジタル マーケティング キャンペーン](web-sites-digital-marketing-application-solution-overview.md)と[基幹業務アプリケーション](web-sites-business-application-solution-overview.md)のガイドをご覧ください。
 
 ## 最初から作成するか、既存のアセットを使用する
 
@@ -35,7 +36,7 @@
 
 Azure Marketplace では、Orchard、Umbraco、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web Apps で実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
+既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web Apps で実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Team Services]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
 
 ## 確実に発行する
 
@@ -65,7 +66,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 自動スケールで自動的にスケールし、Azure Redis Cache でキャッシュして、Web ジョブでタスクをバックグラウンドで実行し、Azure Traffic Manager で高可用性を維持することで、.COM サイトを最適化します。
 
-ワークロードのサイズに関係なく、App Service Web Apps の[スケールアップやスケールアウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
+ワークロードのサイズに関係なく、App Service Web Apps の[スケールアップやスケールアウト]機能は .COM サイトのニーズを満たしています。Web サイトは [Azure ポータル](https://portal.azure.com)から手動で、[サービス管理 API] や [PowerShell スクリプト]を通じてプログラムで、そして自動スケール機能によって自動でスケールアウトできます。**標準**ホスティング プランでは、自動スケールにより CPU 使用率に基づいて Web サイトを自動的にスケールアウトします。ベスト プラクティスについては、[Troy Hunt] の「[10 things I learned about rapidly scaling web apps with Azure (Azure での Web アプリの迅速なスケーリングに関する 10 項目)]」をご覧ください。
 
 [Azure Redis Cache] を使用して Web サイトの応答性を向上します。バックエンド データベースのデータのキャッシュと [ASP.NET のセッション状態]や[出力キャッシュ]などのその他のことに使用します。
 
@@ -75,7 +76,7 @@ Azure Traffic Manager で諸地域のサイトにサービス提供し、Azure C
 
 Azure またはサードパーティ製のツールで Web サイトのパフォーマンスを最新の状態に維持します。Web サイトの重大なイベントでアラートを受信します。Application Insight や HDInsight からの Web ログ分析でユーザー情報を簡単に取得します。
 
-[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)の Web アプリのブレードで、Web サイトの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または [New Relic] など、Web サイトの詳細監視データを提供するサードパーティ製のツールを使用します。
+[Azure ポータル](https://portal.azure.com)の Web アプリのブレードで、Web サイトの現在のパフォーマンス メトリックとリソースのクォータの[概要]を取得します。可用性、パフォーマンス、使用状況など、アプリケーションの全体像を把握するために、迅速かつ強力なトラブルシューティング、診断、使用状況の分析を提供する [Azure Application Insights] を使用します。または [New Relic] など、Web サイトの詳細監視データを提供するサードパーティ製のツールを使用します。
 
 **標準**ホスティング プランでは、サイトが応答を停止するたびに、応答性監視サイトは電子メール通知を受信します。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
 
@@ -89,7 +90,7 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 ## その他のリソース
 
 - [App Service Web Apps のドキュメント](/services/app-service/web/)
-- [Azure App Service Web Apps の学習マップ](websites-learning-map.md)
+- [Azure App Service Web Apps の学習マップ](/documentation/learning-paths/appservice-webapps/)
 - [Azure Web ブログ](/blog/topics/web/)
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
@@ -102,7 +103,7 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 [Azure SQL Database]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md
 [FTP]: web-sites-deploy.md#ftp
 [Visual Studio]: web-sites-dotnet-get-started.md
-[Visual Studio Online]: ../cloud-services-continuous-delivery-use-vso.md
+[Visual Studio Team Services]: ../cloud-services-continuous-delivery-use-vso.md
 [Git]: web-sites-publish-source-control.md
 
 [ステージング スロットにデプロイ]: web-sites-staged-publishing.md
@@ -137,4 +138,4 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

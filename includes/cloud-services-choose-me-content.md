@@ -1,7 +1,7 @@
 <a name="tellmecs"></a>
 ## Cloud Services の概要
 
-Cloud Services は、サービスとしてのプラットフォーム (PaaS) の 1 つの例です。このテクノロジは、[App Services](app-service-web-overview.md) と同様に、スケーラブルで、信頼性が高く、低運用コストの方法でアプリケーションをサポートするように設計されています。[App Services](app-service-web-overview.md) と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
+Cloud Services は、サービスとしてのプラットフォーム (PaaS) の 1 つの例です。このテクノロジは、[App Service](../articles/app-service-web/app-service-web-overview.md) と同様に、スケーラブルで、信頼性が高く、低運用コストの方法でアプリケーションをサポートするように設計されています。App Service と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
 
 ![cs\_diagram](./media/cloud-services-choose-me-content/diagram.png)
 
@@ -14,7 +14,7 @@ Cloud Services は、サービスとしてのプラットフォーム (PaaS) の
 * **Web ロール** IIS に自動的にデプロイされた Web アプリを搭載した Windows Server を実行します。
 * **Worker ロール** IIS を搭載していない Windows Server を実行します。
 
-たとえば、単純なアプリケーションは Web ロールだけを使用するかもしれませんが、複雑なアプリケーションは Web ロールを使用してユーザーから受け取った要求を処理してから、それらの要求が作成する作業を Worker ロールに渡して処理することがあります (この通信は、[Service Bus](../articles/service-bus/fundamentals-service-bus-hybrid-solutions.md) または [Azure キュー](../articles/storage/storage-introduction.md)を使用する可能性があります)。
+たとえば、単純なアプリケーションは Web ロールだけを使用するかもしれませんが、複雑なアプリケーションは Web ロールを使用してユーザーから受け取った要求を処理してから、それらの要求が作成する作業を Worker ロールに渡して処理することがあります (この通信は、[Service Bus](../articles/service-bus/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../articles/storage/storage-introduction.md)を使用する可能性があります)。
 
 上の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。このため、ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。プラットフォームは、ハードウェアの単一障害点を回避する方法で、VM を Cloud Services アプリケーションで[スケールおよびデプロイ](../articles/cloud-services/cloud-services-how-to-scale.md)します。
 
@@ -30,4 +30,4 @@ Cloud Services は監視も提供します。Azure Virtual Machines と同様に
 
 PaaS という Cloud Services の本質には、他の含意もあります。最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web または Worker ロール インスタンスでエラーが発生したときに正しく実行するように記述することが必要です。これを実現するには、Cloud Services のアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。Azure Virtual Machines で作成された VM と異なり、Cloud Services VM への書き込みは永続的ではありません。その点で Virtual Machines のデータ ディスクとは大きく異なります。Cloud Services アプリケーションはすべての状態を SQL Database、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Cloud Services の重要なゴールです。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

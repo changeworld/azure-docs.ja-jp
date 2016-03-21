@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="SQL Database の災害復旧" 
-   description="Azure SQL Database のアクティブの geo レプリケーション、標準の geo レプリケーション、geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
+   pageTitle="SQL Database の障害復旧" 
+   description="Azure SQL Database のアクティブ geo レプリケーション、標準の geo レプリケーション、geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="10/20/2015"
+   ms.date="02/09/2016"
    ms.author="elfish"/>
 
 # Azure SQL Database を障害から回復する
@@ -23,6 +23,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 - アクティブ geo レプリケーション [(ブログ)](http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/)
 - 標準 geo レプリケーション [(ブログ)](http://azure.microsoft.com/blog/2014/09/03/azure-sql-database-standard-geo-replication/)
 - geo リストア [(ブログ)](http://azure.microsoft.com/blog/2014/09/13/azure-sql-database-geo-restore/)
+- 新しい geo レプリケーション機能 [(ブログ)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 
 災害とデータベースを復旧するための準備の詳細については、「[ビジネス継続性のための設計](sql-database-business-continuity-design.md)」をご覧ください。
 
@@ -31,12 +32,12 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 復旧操作はアプリケーションに影響します。SQL 接続文字列を変更する必要があり、永続的にデータが失われる可能性があります。そのため、障害がアプリケーションの RTO よりも長くかかる可能性が高い場合にのみ行ってください。アプリケーションが実稼働環境にデプロイされている場合は、アプリケーションの健全性の定期的な監視を実行し、次のデータ ポイントを使用して、復旧が保証されていることをアサートします。
 
 1. 接続の永続的な障害は、アプリケーション層からデータベースに渡ります。
-2. Azure ポータルは、幅広い影響のある地域でのインシデントに関するアラートを示します。
+2. Azure ポータルは、幅広い影響のあるリージョンでのインシデントに関するアラートを示します。
+
+> [AZURE.NOTE] データベースの復旧後に、「[復旧後のデータベースの構成](#postrecovery)」のガイドに従って、復旧したデータベースを構成することができます。
 
 ## Geo レプリケートのセカンダリ データベースへのフェールオーバー
-> [AZURE.NOTE][標準 geo レプリケーション](https://msdn.microsoft.com/library/azure/dn758204.aspx)か[アクティブ geo レプリケーション](https://msdn.microsoft.com/library/azure/dn741339.aspx)を構成し、フェールオーバーに使用するセカンダリ データベースを準備する必要があります。geo レプリケーションでは、標準データベースとプレミアム データベースにのみ使用できます。
-
-プライマリ データベースで障害が発生した場合は、セカンダリ データベースにフェールオーバーして可用性を復元することができます。これを行うには、連続コピー リレーションシップを強制的に終了させる必要があります。連続コピー リレーションシップの終了の詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn741323.aspx)をご確認ください。
+> [AZURE.NOTE] フェールオーバーにセカンダリ データベースを使用するように構成する必要があります。geo レプリケーションでは、Standard データベースと Premium データベースにのみ使用できます。[geo レプリケーションを構成する方法](sql-database-business-continuity-design.md)を説明します
 
 ###Azure ポータル
 Azure ポータルを利用し、geo レプリケーションされたセカンダリ データベースとの連続コピー リレーションシップを終了します。
@@ -45,34 +46,28 @@ Azure ポータルを利用し、geo レプリケーションされたセカン�
 2. 画面の左側にある、**[参照]** をクリックして、**[SQL Database]** を選択します。
 3. 目的のデータベースに移動し、それを選択します。 
 4. データベースのブレードの下部にある **[Geo Replication map]** を選択します。
-4. **[セカンダリ]** の下で、復旧するデータベースの名前の行を右クリックし、**[停止]** を選択します。
-
-連続コピー リレーションシップの終了後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
+4. **[セカンダリ]** の下で、復旧するデータベースの名前の行を右クリックし、**[フェールオーバー]** を選択します。
 
 ###PowerShell
-PowerShell を利用し、geo レプリケーションされたセカンダリ データベースとの連続コピー リレーションシップを終了します。その際、[Stop-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720223) コマンドレットを使用します。
+PowerShell を使用して、[Set-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx) コマンドレットを使って、複製されたセカンダリ データベースへのフェールオーバーを開始します。
 		
-		$myDbCopy = Get-AzureSqlDatabaseCopy -ServerName "SecondaryServerName" -DatabaseName "SecondaryDatabaseName"
-		$myDbCopy | Stop-AzureSqlDatabaseCopy -ServerName "SecondaryServerName" -ForcedTermination
-		 
-連続コピー リレーションシップの終了後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
+		$database = Get-AzureRMSqlDatabase –DatabaseName "mydb” –ResourceGroupName "rg2” –ServerName "srv2”
+		$database | Set-AzureRMSqlDatabaseSecondary –Failover -AllowDataLoss
 
 ###REST API 
-REST を利用し、geo レプリケーションされたセカンダリ データベースとの連続コピー リレーションシップをプログラミングで終了します。
+REST を使用して、プログラムによって、セカンダリ データベースへのフェールオーバーを開始します。
 
-1. 「[データベース コピーの取得](https://msdn.microsoft.com/library/azure/dn509570.aspx)」の操作を使用してデータベースの連続コピーを取得します。
-2. 「[データベース コピーの停止](https://msdn.microsoft.com/library/azure/dn509573.aspx)」の操作を使用してデータベースの連続コピーを停止します。データベース コピーの停止要求 URI のセカンダリ サーバー名とデータベース名を使用します。
-
- 連続コピー リレーションシップの終了後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
+1. [Get Replication Link](https://msdn.microsoft.com/library/mt600778.aspx) 操作を使用して、特定のセカンダリへのレプリケーション リンクを取得します。
+2. [Set Secondary Database As Primary](https://msdn.microsoft.com/library/mt582027.aspx) でデータ消失を許可して、セカンダリにフェールオーバーします。 
 
 ## geo リストアを使用した復旧
 
 データベースの障害が発生した場合は、地理リストアを使用して、最新の地理冗長バックアップからデータベースを復旧できます。
 
-> [AZURE.NOTE]データベースを復旧すると、新しいデータベースが作成されます。復旧先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの増加を要求する場合は、[サポートに連絡](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
+> [AZURE.NOTE] データベースを復旧すると、新しいデータベースが作成されます。復旧先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの増加を要求する場合は、[サポートに連絡](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
 
-###Azure ポータル
-SQL Database を geo リストアを使用して復元するには、以下の手順を使用するか、[この手順に関するビデオをご覧ください](https://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-geo-restore/)。
+###Azure ポータル (スタンド アロン データベースへの復元)
+Azure ポータルで SQL Database を geo リストアを使用して復元するには、以下の手順を使用します。
 
 1. [Azure ポータル](https://portal.Azure.com)にログインします。
 2. 画面の左側にある、**[新規]** を選択し、次に **[データ + ストレージ]** を選択し、次に **[SQL Database]** を選択します。
@@ -80,16 +75,25 @@ SQL Database を geo リストアを使用して復元するには、以下の�
 3. データベースのプロパティの残りの部分を指定して **[作成]** をクリックします。
 4. データベースの復元処理が開始され、画面の左側にある **[通知]** を使用してこれを監視することができます。
 
-データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
+###Azure ポータル (エラスティック データベース プールへの復元)
+ポータルを使用して、SQL Database を geo リストアによってエラスティック データベース プールに復元するには、次の手順に従います。
+
+1. [Azure ポータル](https://portal.Azure.com)にログインします。
+2. 画面の左側にある **[参照]** をクリックし、**[SQL 可変プール]** を選択します。
+3. データベースを geo リストアするプールを選択します。
+4. エラスティック プール ブレードの上部にある **[データベースの作成]** を選択します。
+5. ソースとして **[バックアップ]** を選択し、復旧する地理冗長バックアップを選択します。
+6. データベースのプロパティの残りの部分を指定して **[作成]** をクリックします。
+7. データベースの復元処理が開始され、画面の左側にある **[通知]** を使用してこれを監視することができます。
 
 ###PowerShell 
-SQL Database を geo リストアと PowerShell を利用して復旧するには、[start-AzureSqlDatabaseRecovery](https://msdn.microsoft.com/library/azure/dn720224.aspx) コマンドレットで geo リストア要求を開始します。詳細については、[この手順に関するビデオをご覧ください](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-geo-restore-with-microsoft-azure-powershell/)。
+> [AZURE.NOTE] 現在、PowerShell での geo リストアでサポートされているのは、スタンド アロン データベースへの復元だけです。エラスティック データベース プールに geo リストアする場合は、[Azure ポータル](https://portal.Azure.com)を使用してください。
+
+SQL Database を geo リストアと PowerShell を利用して復旧するには、[start-AzureSqlDatabaseRecovery](https://msdn.microsoft.com/library/azure/dn720224.aspx) コマンドレットで geo リストア要求を開始します。
 
 		$Database = Get-AzureSqlRecoverableDatabase -ServerName "ServerName" –DatabaseName “DatabaseToBeRecovered"
 		$RecoveryRequest = Start-AzureSqlDatabaseRecovery -SourceDatabase $Database –TargetDatabaseName “NewDatabaseName” –TargetServerName “TargetServerName”
 		Get-AzureSqlDatabaseOperation –ServerName "TargetServerName" –OperationGuid $RecoveryRequest.RequestID
-
-データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
 
 ###REST API 
 
@@ -102,8 +106,42 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 3.	[Create Database Recovery Request](http://msdn.microsoft.com/library/azure/dn800986.aspx) 操作を使用して回復要求を作成します。
 	
 4.	[Database Operation Status](http://msdn.microsoft.com/library/azure/dn720371.aspx) 操作で回復の状態を追跡します。
-
-データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
  
+## 復旧後のデータベースの構成<a name="postrecovery"></a>
 
-<!---HONumber=Oct15_HO4-->
+復旧されたデータベースを運用できる状態にするためのタスクのチェックリストを以下に示します。
+
+### 接続文字列を更新する
+
+アプリケーションの接続文字列が新しく復旧されたデータベースを指し示していることを確認します。次のどちらかの条件に該当する場合は、接続文字列を更新します。
+
+  + 復旧されたデータベースがソース データベース名と異なる名前を使用している。
+  + 復旧されたデータベースがソース データベースと異なるサーバー上にある。
+
+接続文字列を変更する方法の詳細については、「[Connections to Azure SQL Database: Central Recommendations (Azure SQL Database への接続の中心となる推奨事項)](sql-database-connect-central-recommendations.md)」を参照してください。
+ 
+### ファイアウォール ルールを変更する
+サーバー レベルとデータベース レベルでファイアウォール ルールを確認し、クライアント コンピューターまたは Azure からサーバーと新しく復旧されたデータベースへの接続が有効になっていることを確認します。詳細については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+
+### サーバー ログインとデータベース ユーザーを確認する
+
+アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認します。不足しているログインを再作成し、復旧されたデータベースに対する適切なアクセス許可を与えます。詳細については、[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
+
+復旧されたデータベースの各データベース ユーザーに有効なサーバー ログインが関連付けられているかどうかを確認します。ユーザーを有効なサーバー ログインにマップするには、ALTER USER ステートメントを使用します。詳細については、「[ALTER USER](http://go.microsoft.com/fwlink/?LinkId=397486)」を参照してください。
+
+
+### 製品利用統計情報アラートをセットアップする
+
+既存のアラート ルール設定が復旧されたデータベースにマップされているかどうかを確認します。次のどちらかの条件に該当する場合は、設定を更新します。
+
+  + 復旧されたデータベースがソース データベース名と異なる名前を使用している。
+  + 復旧されたデータベースがソース データベースと異なるサーバー上にある。
+
+データベースのアラート ルールの詳細については、「[アラート通知の受信](insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](insights-service-health.md)」を参照してください。
+
+
+### 監査を有効にする
+
+データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0211_2016-->

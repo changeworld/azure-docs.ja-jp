@@ -1,7 +1,8 @@
 <properties
-   pageTitle="Azure Active Directory B2B コラボレーションの現在のプレビュー制限 | Microsoft Azure"
+   pageTitle="Azure Active Directory B2B コラボレーションの現在のプレビューの制限事項 | Microsoft Azure"
    description="Azure Active Directory B2B は、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで、会社間のリレーションシップをサポートします"
    services="active-directory"
+   documentationCenter=""
    authors="viv-liu"
    manager="cliffdi"
    editor=""
@@ -13,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="10/27/2015"
+   ms.date="02/09/2016"
    ms.author="viviali"/>
 
-# Azure Active Directory (Azure AD) B2B コラボレーションの現在のプレビュー制限
+# Azure AD B2B コラボレーション プレビュー: 現在のプレビューの制限事項
 
 - Multi-Factor Authentication (MFA) が外部ユーザーに対してサポートされていません。たとえば、Contoso では MFA が有効であり、パートナー組織では無効である場合、B2B コラボレーションを通してパートナー組織のユーザーに MFA を許可することはできません。
 - 招待は CSV によってのみ可能です。個別の招待および API アクセスはサポートされていません。
@@ -36,5 +37,6 @@ Azure B2B コラボレーションに関する他の記事を参照してくだ�
 - [CSV ファイル形式リファレンス](active-directory-b2b-references-csv-file-format.md)
 - [外部ユーザー トークンの形式](active-directory-b2b-references-external-user-token-format.md)
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

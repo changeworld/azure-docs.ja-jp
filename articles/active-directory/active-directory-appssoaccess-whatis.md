@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="02/09/2016"
 	ms.author="asmalser-msft"/>
 
 #Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
@@ -80,7 +80,7 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 
 パスワードベースの SSO の場合、エンド ユーザーのブラウザーには次のいずれかを使用できます。
 
-- Internet Explorer 8、9、および 10 -- Windows 7 以降 (「[How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (グループ ポリシーを使用する Internet Explorer のアクセスパネル拡張機能のデプロイ方法)](active-directory-saas-ie-group-policy.md)」も参照)
+- Internet Explorer 8、9、10、11 -- Windows 7 以降 (「[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)」も参照)
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
@@ -106,13 +106,13 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 
 ###Azure AD アプリケーション ギャラリーの使用
 
-[Azure Active Directory アプリケーション ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)には、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。
+[Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)には、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。
 
 ![][1]
 
 サポートされている機能によってアプリを検索するためのヒントを次に示します。
 
-*	Azure AD は、[Azure Active Directory アプリケーション ギャラリー](http://azure.microsoft.com/marketplace/active-directory/all/)のすべての "おすすめ" アプリについて、自動プロビジョニングおよびプロビジョニング解除をサポートしています。
+*	Azure AD は、[Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)のすべての "おすすめ" アプリについて、自動プロビジョニングおよびプロビジョニング解除をサポートしています。
 
 *	SAML、WS-Federation、OpenID Connect などのプロトコルを使用してフェデレーション シングル サインオンをサポートするフェデレーション アプリケーションの一覧については、[このページ](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)を参照してください。
 
@@ -122,7 +122,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 
 アプリケーションが Azure AD アプリケーション ギャラリーに見つからない場合は、次の操作を試してください。
 
-*	**使用している、一覧にないアプリを追加する** - Azure 管理ポータル内のアプリケーション ギャラリーでカスタム カテゴリを使用して、組織が使用している、一覧にないアプリケーションを接続します。SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。詳細については、[独自のアプリケーションの追加](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)に関する記事を参照してください。
+*	**使用している、一覧にないアプリを追加する** - Azure 管理ポータル内のアプリケーション ギャラリーでカスタム カテゴリを使用して、組織が使用している、一覧にないアプリケーションを接続します。SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。詳細については、[独自のアプリケーションの追加](active-directory-saas-custom-apps.md)に関する記事を参照してください。
 
 
 *	**開発した独自のアプリケーションを追加する** - 自分でアプリケーションを開発した場合は、Azure AD 開発者向けドキュメントのガイドラインに従って、Azure AD Graph API を使用してフェデレーション シングル サインオンまたはプロビジョニングを実装します。詳細については、次のリソースを参照してください。
@@ -131,7 +131,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
 
-*	**アプリケーションの統合を要求する** - [Azure AD のフィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)で必要なアプリケーションのサポートを要請します。
+*	**アプリケーションの統合を要求する** - [Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)で必要なアプリケーションのサポートを要請します。
 
 ###Azure 管理ポータルの使用
 
@@ -168,7 +168,7 @@ Azure AD では、カスタマイズ可能ないくつかの方法で組織内�
 
 ###Azure AD アクセス パネル
 
-アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](http://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
+アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
 
 ![][3]
 
@@ -210,7 +210,14 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 
 これらのリンクにはアクセス パネルや Office 365 と同じアクセス制御メカニズムが使用され、Azure 管理ポータルでアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するアクセス パネルを呼び出すためのリンクが示されます。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+- [承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md)
+- [アプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
+- [Azure Active Directory を使用して外部 ID を管理するための機能の比較](active-directory-b2b-compare-external-identities.md)
+
 
 <!--Image references-->
 [1]: ./media/active-directory-appssoaccess-whatis/onlineappgallery.png
@@ -220,4 +227,4 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

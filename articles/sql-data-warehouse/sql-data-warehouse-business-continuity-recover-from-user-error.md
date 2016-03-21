@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/23/2015"
-   ms.author="sahajs"/>
+   ms.date="02/17/2016"
+   ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
 
@@ -25,16 +25,18 @@ SQL Data Warehouse には、意図しないデータの破損または削除の�
 
 これらの機能はいずれも、同じサーバー上の新しいデータベースに復元を実行します。
 
+SQL Data Warehouse データベースの復元をサポートする API には、Azure PowerShell と REST API の 2 種類があります。いずれかを使用して、SQL Data Warehouse の復元機能にアクセスすることができます。
+
 ## ライブ データベースの復元
-ユーザー エラーが意図しないデータ変更の原因になっている場合は、保有期間内の復元ポイントのいずれかにデータベースを復元できます。ライブ データベースのデータベース スナップショットは 8 時間ごとに作成され、7 日間保持されます。
+ユーザー エラーが意図しないデータ変更の原因になっている場合は、保有期間内の復元ポイントのいずれかにデータベースを復元できます。ライブ データベースのデータベース スナップショットは少なくとも 8 時間ごとに作成され、7 日間保持されます。
 
 ### PowerShell
 
-Azure PowerShell を使用して、プログラムでデータベースの復元を実行します。Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
+Azure PowerShell を使用して、プログラムでデータベースの復元を実行します。Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。Get-Module -ListAvailable -Name Azure を実行することで、バージョンを確認できます。この記事は、Microsoft Azure PowerShell バージョン 1.0.4 に基づいています。
 
 データベースを復元するには、[Start-AzureSqlDatabaseRestore][] コマンドレットを使用します。
 
-1. Microsoft Azure PowerShell を開きます。
+1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 3. 復元するデータベースを含むサブスクリプションを選択します。
 4. データベースの復元ポイントを一覧表示します (Azure リソース管理モードにする必要があります)。
@@ -44,23 +46,26 @@ Azure PowerShell を使用して、プログラムでデータベースの復元
 
 ```
 
-Add-AzureAccount
-Get-AzureSubscription
-Select-AzureSubscription -SubscriptionName "<Subscription_name>"
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 
-# List database restore points
-Switch-AzureMode AzureResourceManager
-Get-AzureSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>"
+# List the last 10 database restore points
+((Get-AzureRMSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>").RestorePointCreationDate)[-10 .. -1]
+
+	# Or for all restore points
+	Get-AzureRmSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>"
 
 # Pick desired restore point using RestorePointCreationDate
 $PointInTime = "<RestorePointCreationDate>"
 
-# Get the specific database to restore
-Switch-AzureMode AzureServiceManagement
-$Database = Get-AzureSqlDatabase -ServerName "<YourServerName>" –DatabaseName "<YourDatabaseName>"
+# Get the specific database name to restore
+(Get-AzureRmSqlDatabase -ServerName "<YourServerName>" -ResourceGroupName "<YourResourceGroupName>").DatabaseName | where {$_ -ne "master" }
+#or
+Get-AzureRmSqlDatabase -ServerName "<YourServerName>" –ResourceGroupName "<YourResourceGroupName>"
 
 # Restore database
-$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerName>" -SourceDatabase $Database -TargetDatabaseName "<NewDatabaseName>" -PointInTime $PointInTime
+$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerName>" -SourceDatabaseName "<YourDatabaseName>" -TargetDatabaseName "<NewDatabaseName>" -PointInTime $PointInTime
 
 # Monitor progress of restore operation
 Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $RestoreRequest.RequestID
@@ -132,8 +137,8 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [データベース操作の状態]: http://msdn.microsoft.com/library/azure/dn720371.aspx
 [削除された復元可能なデータベースの取得]: http://msdn.microsoft.com/library/azure/dn509574.aspx
 [削除された復元可能なデータベースの一覧表示]: http://msdn.microsoft.com/library/azure/dn509562.aspx
-[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/ja-jp/library/dn720218.aspx
+[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/library/dn720218.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -12,14 +12,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="09/11/2015"
+    ms.date="02/02/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp の仮想ネットワークを計画する方法
 
-このドキュメントでは、Azure RemoteApp 用に Azure の仮想ネットワーク (VNET) とサブネットを設定する方法について説明します。Azure の仮想ネットワークを熟知していない場合、この機能は、クラウドにネットワーク インフラストラクチャを仮想化し、Azure とオンプレミスのリソースを使用したハイブリッド ソリューションを作成するのに役立ちます。詳細については、[こちら](virtual-networks-overview.md)を参照してください。
+このドキュメントでは、Azure RemoteApp 用に Azure の仮想ネットワーク (VNET) とサブネットを設定する方法について説明します。Azure の仮想ネットワークを熟知していない場合、この機能は、クラウドにネットワーク インフラストラクチャを仮想化し、Azure とオンプレミスのリソースを使用したハイブリッド ソリューションを作成するのに役立ちます。詳細については、[こちら](../virtual-network/virtual-networks-overview.md)を参照してください。
 
-Azure RemoteApp をデプロイする仮想ネットワーク内の送受信トラフィックについてセキュリティ ポリシーを定義する場合は、Azure RemoteApp 用には、Azure の仮想ネットワーク内の他のデプロイとは別にサブネットを作成することを強くお勧めします。Azure の仮想ネットワークのサブネットにセキュリティ ポリシーを定義する方法の詳細については、「[ネットワーク セキュリティ グループ (NSG) について](virtual-networks-nsg.md)」を参照してください。
+Azure RemoteApp をデプロイする仮想ネットワーク内の送受信トラフィックについてセキュリティ ポリシーを定義する場合は、Azure RemoteApp 用には、Azure の仮想ネットワーク内の他のデプロイとは別にサブネットを作成することを強くお勧めします。Azure の仮想ネットワークのサブネットにセキュリティ ポリシーを定義する方法の詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
 ## Azure の仮想ネットワークを使用した Azure RemoteApp コレクションの種類
 
@@ -53,6 +53,6 @@ Azure RemoteApp をデプロイする仮想ネットワーク内の送受信ト�
 
 ## 強制トンネリングを使用した仮想ネットワーク
 
-[強制トンネリング](vpn-gateway-about-forced-tunneling.md)が、すべての新しい Azure RemoteApp コレクションでサポートされるようになりました。現在、既存のコレクションを移行して、強制トンネリングをサポートすることはできません。コレクションで強制トンネリングを有効にするには、Azure RemoteApp にリンクしている VNET を使用する既存のコレクションをすべて削除し、新しいコレクションを作成する必要があります。
+[強制トンネリング](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)が、すべての新しい Azure RemoteApp コレクションでサポートされるようになりました。現在、既存のコレクションを移行して、強制トンネリングをサポートすることはできません。コレクションで強制トンネリングを有効にするには、Azure RemoteApp にリンクしている VNET を使用する既存のコレクションをすべて削除し、新しいコレクションを作成する必要があります。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

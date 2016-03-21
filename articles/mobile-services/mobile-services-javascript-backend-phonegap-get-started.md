@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="multiple"
 	ms.topic="get-started-article" 
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	ms.author="ggailey777"/>
 
 # Mobile Services の使用
@@ -50,7 +50,7 @@
 
 ここでは、モバイル サービスに接続された新しい PhoneGap アプリケーションを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[PhoneGap]** を選択し、**[新しい PhoneGap アプリを作成する]** を展開します。
 
@@ -109,9 +109,9 @@
 
 	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは **TodoItem** テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	> [AZURE.IMPORTANT]メイン プロジェクトが PhoneGap ツールで再ビルドされる場合、このプラットフォーム プロジェクトへの重要な変更が上書きされます。以下のセクションで説明されているように、代わりの方法として、変更はプロジェクトのルートの www ディレクトリで行います。
+	> [AZURE.IMPORTANT] メイン プロジェクトが PhoneGap ツールで再ビルドされる場合、このプラットフォーム プロジェクトへの重要な変更が上書きされます。以下のセクションで説明されているように、代わりの方法として、変更はプロジェクトのルートの www ディレクトリで行います。
 
-4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+4. [Azure クラシック ポータル]に戻り、**[データ]** タブ、**TodoItem** テーブルの順にクリックします。
 
 	![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-tab.png)
 
@@ -171,9 +171,9 @@
 <!-- URLs. -->
 [アプリへの認証の追加]: mobile-services-html-get-started-users.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-[Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

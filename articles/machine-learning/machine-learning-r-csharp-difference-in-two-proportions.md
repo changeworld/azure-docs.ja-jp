@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/02/2015" 
+	ms.date="02/28/2016" 
 	ms.author="aniedea"/>
 
 
@@ -130,4 +130,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

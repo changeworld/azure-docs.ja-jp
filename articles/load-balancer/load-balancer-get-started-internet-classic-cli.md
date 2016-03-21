@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/06/2015"
+   ms.date="02/09/2016"
    ms.author="joaoma" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-cli.md)についても説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -45,21 +45,24 @@
 
 ## エンドポイントとロード バランサー セットの作成 
 
-このシナリオでは、仮想マシン "web1" と "web2" が作成済みであることを前提としています。このガイドでは、ポート 80 をパブリック ポートとして、80 をローカル ポートとして、ロード バランサー セットを作成します。ポート 80 には、ロード バランサー セット "lbset" というプローブ ポートも構成されます。
+このシナリオでは、仮想マシン "web1" と "web2" が作成済みであることを前提としています。このガイドでは、ポート 80 をパブリック ポートとして、ポート 80 をローカル ポートとして、ロード バランサー セットを作成します。ポート 80 には、ロード バランサー セット "lbset" というプローブ ポートも構成されます。
 
 
-### 手順 1. 
+### 手順 1 
 
 `azure network vm endpoint create` を使用して仮想マシン "web1" 用に最初のエンドポイントとロード バランサー セットを作成します。
 
-	azure network endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset 
+	azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset 
 
+使用されるパラメーター:
 
-## 手順 2. 
+**-k** - 仮想マシンのローカル ポート<br> **-o** - プロトコル<BR> **-t** - プローブ ポート<BR> **-b** - ロード バランサーの名前<BR>
+ 
+## 手順 2 
 
 ロード バランサー セットに 2 番目の仮想マシン "web2" を追加します。
 
-	azure network endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
+	azure vm endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
 
 ## 手順 3. 
 
@@ -113,7 +116,7 @@
 
 ## 仮想マシン用のリモート デスクトップ エンドポイントの作成
 
-`azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからのローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
+`azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
 	azure vm endpoint create web1 54580 -k 3389 
 
@@ -127,7 +130,7 @@
 	azure vm endpoint delete web1 tcp-80-80
 
 
->[AZURE.NOTE]`azure vm endpoint --help` コマンドを使用すると、エンドポイントを管理するオプションをさらに調べることができます。
+>[AZURE.NOTE] `azure vm endpoint --help` コマンドを使用すると、エンドポイントを管理するオプションをさらに調べることができます。
 
 
 ## 次のステップ
@@ -140,4 +143,4 @@
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -10,10 +10,10 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="11/10/2015"
+   ms.date="03/03/2016"
    ms.author="maroche"/>
 
 
@@ -48,7 +48,7 @@
 ## 複数のアセットに注釈を付ける
 **Azure Data Catalog** ポータルで複数のデータ資産を選択する場合、ユーザーは 1 回の操作で選択したすべての資産に注釈を付けることができます。注釈は選択されたすべての資産に適用されるので、関連するデータ資産に対して一貫性のある説明、タグ セット、エキスパートを選択し指定する作業が簡単になります。
 
-> [AZURE.NOTE]タグとエキスパートはまた、**Azure Data Catalog** データ ソース登録ツールを使用してデータ資産を登録する場合に指定できます。
+> [AZURE.NOTE] タグとエキスパートはまた、**Azure Data Catalog** データ ソース登録ツールを使用してデータ資産を登録する場合に指定できます。
 
 複数のテーブルとビューを選択すると、選択したすべてのデータ資産に共通して存在する列のみが **Azure Data Catalog** ポータルに表示されます。これにより、ユーザーは、選択したすべての資産の同じ名前を持つすべての列に説明とタグを指定することができます。
 
@@ -58,4 +58,7 @@
 ## 概要
 **Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。データ ソースが登録されたら、ユーザーは **Azure Data Catalog** ポータルでの探索および解釈が容易になるように注釈を指定することができます。
 
-<!---HONumber=Nov15_HO3-->
+## 関連項目
+- データ ソースに注釈を付ける詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
+
+<!---HONumber=AcomDC_0309_2016-->

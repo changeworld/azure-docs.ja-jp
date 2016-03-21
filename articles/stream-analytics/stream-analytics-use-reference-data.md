@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="参照データの使用 | Microsoft Azure" 
-	description="入力ストリームとして参照データを使用する" 
-	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
+	pageTitle="Stream Analytics で参照データとルックアップ テーブルを使用する | Microsoft Azure" 
+	description="Stream Analytics クリエで参照データを使用する" 
+	keywords="ルックアップ テーブル、参照データ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
@@ -14,12 +14,12 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/09/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
-# 入力としての参照データの使用
+# Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用
 
-参照データは、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。Stream Analytics は参照データのストレージ層として Azure BLOB ストレージを使用し、Azure Data Factory を使用して参照データを Azure BLOB ストレージに変換、コピー、またはその両方を実行して、[任意の数のクラウド ベースとオンプレミスのデータ ストア](./articles/data-factory-data-movement-activities.md)から、参照データとして使用することができます。参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
+参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。Stream Analytics は参照データのストレージ層として Azure BLOB ストレージを使用し、Azure Data Factory を使用して参照データを Azure BLOB ストレージに変換、コピー、またはその両方を実行して、[任意の数のクラウド ベースとオンプレミスのデータ ストア](./articles/data-factory-data-movement-activities.md)から、参照データとして使用することができます。参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
 
 ## 参照データの構成
 
@@ -74,9 +74,9 @@
 
 参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} トークンを使用する入力構成でパス パターンを指定します。Stream Analytics はこのパス パターンに基づいて、更新された参照データ定義を取得します。たとえば、日付形式が "YYYY-MM-DD" で、時刻形式が "HH:mm" の ````"/sample/{date}/{time}/products.csv"```` は、更新された BLOB ````"/sample/2015-04-16/17:30/products.csv"```` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5:30 に回収するように Stream Analytics に通知します。
 
-> [AZURE.NOTE]現在、Stream Analytics のジョブは、コンピューター時間が BLOB の名前でエンコードされた時刻と一致する場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、/sample/2015-04-16/17:30/products.csv を、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分と午後 5 時 30 分 59.9 秒の間に検索します。マシン クロックが 5:31PM になると、/sample/2015-04-16/17:30/products.csv の検索は停止され、/sample/2015-04-16/17:31/products.csv の検索が開始されます。これに対する例外は、ジョブが時間をさかのぼってデータを再処理する必要がある場合、またはジョブが最初に開始される場合です。開始時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これは、ジョブの開始時に空ではない参照データ セットが必ず存在するようにするために実行されます。それが見つからない場合、ジョブは失敗し、診断通知がユーザーに表示されます。
+> [AZURE.NOTE] 現在、Stream Analytics のジョブは、コンピューター時間が BLOB の名前でエンコードされた時刻と一致する場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、/sample/2015-04-16/17:30/products.csv を、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分と午後 5 時 30 分 59.9 秒の間に検索します。マシン クロックが 5:31PM になると、/sample/2015-04-16/17:30/products.csv の検索は停止され、/sample/2015-04-16/17:31/products.csv の検索が開始されます。これに対する例外は、ジョブが時間をさかのぼってデータを再処理する必要がある場合、またはジョブが最初に開始される場合です。開始時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これは、ジョブの開始時に空ではない参照データ セットが必ず存在するようにするために実行されます。それが見つからない場合、ジョブは失敗し、診断通知がユーザーに表示されます。
 
-[Azure Data Factory](http://azure.microsoft.com/documentation/services/data-factory/) を使用して Stream Analytics で必要な更新された BLOB を作成するタスクを調整し、参照データ定義を更新することができます。Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。Data Factory は、[クラウド ベースとオンプレミスの多数のデータ ストアへの接続](./articles/data-factory-data-movement-activities.md)、および指定された定期的なスケジュールに基づく簡単なデータの移動をサポートします。事前に定義されたスケジュールで更新される Stream Analytics の参照データを生成するために Data Factory パイプラインを設定する方法の詳細とステップ バイ ステップのガイダンスについては、この [GitHub のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)を確認してください。
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) を使用して Stream Analytics で必要な更新された BLOB を作成するタスクを調整し、参照データ定義を更新することができます。Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。Data Factory は、[クラウド ベースとオンプレミスの多数のデータ ストアへの接続](./articles/data-factory-data-movement-activities.md)、および指定された定期的なスケジュールに基づく簡単なデータの移動をサポートします。事前に定義されたスケジュールで更新される Stream Analytics の参照データを生成するために Data Factory パイプラインを設定する方法の詳細とステップ バイ ステップのガイダンスについては、この [GitHub のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)を確認してください。
 
 ## 参照データの更新に関するヒント ##
 
@@ -103,4 +103,4 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

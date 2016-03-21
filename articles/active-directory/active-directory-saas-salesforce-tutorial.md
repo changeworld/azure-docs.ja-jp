@@ -1,20 +1,20 @@
 <properties
-   pageTitle="チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Azure"
-   description="Azure Active Directory で Salesforce を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="liviodlc"
-   manager="TerryLanfear"
-   editor=""/>
+    pageTitle="チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Azure"
+    description="Azure Active Directory で Salesforce を使用してシングル サインオンや自動化されたプロビジョニングなどを有効にする方法について説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="liviodlc"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="10/20/2015"
-   ms.author="liviodlc"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="02/09/2016"
+    ms.author="liviodlc"/>
 
 #チュートリアル: Azure Active Directory と Salesforce を統合する方法
 
@@ -26,7 +26,7 @@
 
 2. [Salesforce.com](https://www.salesforce.com/) の有効なテナントが必要です。
 
-> [AZURE.IMPORTANT]Salesforce.com の**試用**アカウントを使用している場合は、自動化されたユーザー プロビジョニングを構成できません。試用アカウントの場合、アカウントを購入するまでは、必要な API にアクセスできません。
+> [AZURE.IMPORTANT] Salesforce.com の**試用**アカウントを使用している場合は、自動化されたユーザー プロビジョニングを構成できません。試用アカウントの場合、アカウントを購入するまでは、必要な API にアクセスできません。
 > 
 > [無料の開発者アカウント](https://developer.salesforce.com/signup)を使用してこのチュートリアルを完了することで、この制限を回避できます。
 
@@ -48,21 +48,21 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![左側のナビゲーション ウィンドウから [Active Directory] を選択][0]
+	![Select Active Directory from the left navigation pane.][0]
 
 2. **[ディレクトリ]** ボックスの一覧から、Salesforce を追加するディレクトリを選択します。
 
 3. 上部のメニューで **[アプリケーション]** をクリックします。
 
-	![[アプリケーション] をクリック][1]
+	![Click on Applications.][1]
 
 4. ページの下部にある **[追加]** をクリックします。
 
-	![[追加] をクリックして新しいアプリケーションを追加][2]
+	![Click Add to add a new application.][2]
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-	![[ギャラリーからアプリケーションを追加] をクリック][3]
+	![Click Add an application from the gallery.][3]
 
 6. **検索ボックス**に「**Salesforce**」と入力します。次に、結果の一覧から **[Salesforce]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
@@ -78,13 +78,13 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 2. Azure AD の Salesforce の [クイック スタート] ページで、**[シングル サインオンの構成]** ボタンをクリックします。
 
-	![[シングル サインオンの構成] ボタン][6]
+	![The configure single sign-on button][6]
 
 3. ダイアログが開き、ユーザーが Salesforce にサインオンする方法について質問する画面が表示されます。 **[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-	![Azure AD Single Sign-On 選択肢][7]
+	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 4. **[アプリケーション設定の構成]** ページで **[サインオン URL]** に入力します。その場合、次の形式を使用して Salesforce ドメインの URL を入力します。
  - エンタープライズ アカウント: `https://<domain>.my.salesforce.com`
@@ -106,7 +106,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 	![[編集] ボタンをクリック][11]
 
-	> [AZURE.NOTE]Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、この機能を有効にするために Salesforce のサポートにお問い合わせください。
+	> [AZURE.NOTE] Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、この機能を有効にするために Salesforce のサポートにお問い合わせください。
 
 9. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
@@ -152,15 +152,15 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 	![自分の SSO 構成を選択][17]
 
-	> [AZURE.NOTE]複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始しようとすると、サインインに使用する認証サービスを選択するよう要求されます。このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに**しておいてください。
+	> [AZURE.NOTE] 複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始しようとすると、サインインに使用する認証サービスを選択するよう要求されます。このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに**しておいてください。
 
 15. Salesforce にアップロードした証明書を有効にするには、Azure AD でシングル サインオンの構成確認のチェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![確認のチェックボックスにチェックを入れる][18]
+	![Check the confirmation checkbox][18]
 
 16. ダイアログの最後のページでは、このシングル サインオン構成のメンテナンスに関連するエラーと警告の電子メール通知を受信する場合、電子メール アドレスを入力します。
 
-	![自分のメール アドレスを入力][19]
+	![Type in your email address.][19]
 
 17. **[完了]** をクリックしてダイアログを閉じます。構成をテストするには、「[Salesforce にユーザーを割り当てる](#step-4-assign-users-to-salesforce)」というタイトルの以下のセクションを参照してください。
 
@@ -174,7 +174,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 	![管理者のユーザー名またはパスワードを入力][21]
 
-	> [AZURE.NOTE]運用環境を構成している場合は、特にこの手順で Salesforce の新しい管理者アカウントを作成することをお勧めします。このアカウントには、Salesforce の**システム管理者**プロファイルが割り当てられている必要があります。
+	> [AZURE.NOTE] 運用環境を構成している場合は、特にこの手順で Salesforce の新しい管理者アカウントを作成することをお勧めします。このアカウントには、Salesforce の**システム管理者**プロファイルが割り当てられている必要があります。
 
 3. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。ページの右上にある自分の名前をクリックし、**[個人の設定]** をクリックします。
 
@@ -204,7 +204,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 2. Salesforce の [クイック スタート] ページで **[ユーザーの割り当て]** ボタンをクリックします。
 
-	![[ユーザーの割り当て] をクリック][27]
+	![Click on Assign Users][27]
 
 3. テスト ユーザーを選択し、画面の下部にある **[割り当て]** ボタンをクリックします。
 
@@ -220,7 +220,10 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインして **[Salesforce]** をクリックします。
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
 [0]: ./media/active-directory-saas-salesforce-tutorial/azure-active-directory.png
 [1]: ./media/active-directory-saas-salesforce-tutorial/applications-tab.png
@@ -253,4 +256,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

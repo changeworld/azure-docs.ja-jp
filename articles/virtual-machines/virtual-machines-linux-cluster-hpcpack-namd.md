@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="09/02/2015"
+ ms.date="12/02/2015"
  ms.author="danlep"/>
 
 # Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
 
-この記事では、大規模な生体分子系の構造を計算し視覚化するために、Azure に Microsoft HPC Pack クラスターをデプロイし、仮想クラスター ネットワーク内の複数の Linux コンピューティング ノードで **charmrun** を使用して [NAMD](http://www.ks.uiuc.edu/Research/namd/) ジョブを実行する方法について説明します。
+この記事では、大規模な生体分子系の構造を計算し視覚化するために、Azure に Microsoft HPC Pack クラスターと複数の Linux コンピューティング ノードをデプロイし、**charmrun** を使用して [NAMD](http://www.ks.uiuc.edu/Research/namd/) ジョブを実行する方法について説明します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -26,7 +26,7 @@
 
 NAMD (ナノスケール分子力学プログラム) とは、ウイルス、セル構造体、および巨大タンパク質など、最大で数百万個の原子を含む大規模な生体分子系を高いパフォーマンスでシミュレーションするために設計された並列分子動力学パッケージです。NAMD は、通常のシミュレーションでは数百個のコアに対応し、大規模なシミュレーションでは 500,000 個を超えるコアに対応します。
 
-Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で各種の大規模な HPC および並列アプリケーション (MPI アプリケーションなど) を実行する機能を備えています。Microsoft HPC Pack 2012 R2 Update 2 以降、HPC Pack では、HPC Pack クラスターにデプロイされた Linux コンピューティング ノード VM で Linux HPC アプリケーションを実行する機能もサポートしています。HPC Pack での Linux コンピューティング ノードの使用の概要については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードを使用開始する](virtual-machines-linux-cluster-hpcpack.md)」を参照してください。
+Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で各種の大規模な HPC および並列アプリケーション (MPI アプリケーションなど) を実行する機能を備えています。Microsoft HPC Pack 2012 R2 Update 2 以降、HPC Pack では、HPC Pack クラスターにデプロイされた Linux 計算ノード VM で Linux HPC アプリケーションを実行する機能もサポートしています。概要については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster-hpcpack.md)」を参照してください。
 
 
 ## 前提条件
@@ -104,16 +104,16 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。この記事の例では、hpclab\\hpcuser という名前のドメイン ユーザーを作成することを前提とします。
 
-2.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。このファイルの例については、この記事の最後にある付録を参照してください。
+2.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。例については、この記事の最後にあるサンプル ファイルを参照してください。
 
     ```
     <ExtendedData>
-      <PrivateKey>Copy the contents of private key here</PrivateKey>
-      <PublicKey>Copy the contents of public key here</PublicKey>
+        <PrivateKey>Copy the contents of private key here</PrivateKey>
+        <PublicKey>Copy the contents of public key here</PublicKey>
     </ExtendedData>
     ```
 
-3.	コマンド ウィンドウを開き、次のコマンドを入力して、hpclab\\hpcuser アカウントの資格情報データを設定します。**extendeddata** パラメーターを使用して、キー データ用に作成した C:\\cred.xml ファイルの名前を渡します。
+3.	コマンド プロンプトを開き、次のコマンドを入力して、hpclab\\hpcuser アカウントの資格情報データを設定します。**extendeddata** パラメーターを使用して、キー データ用に作成した C:\\cred.xml ファイルの名前を渡します。
 
     ```
     hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
@@ -129,16 +129,16 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ヘッド ノード上のフォルダーに対して標準の SMB 共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster-hpcpack.md)」に説明されているファイル共有オプションと手順を参照してください(CentOS 6.6 Linux ノードでは現在時点で、同様の機能を提供する Azure File Service がサポートされていないので、この記事ではヘッド ノードに共有フォルダーをマウントすることをお勧めしています。Azure File 共有のマウントについては、「[Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。)
 
-1.	ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。この例では、\\CentOS66HN\\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
+1.	ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。この例では、\\\CentOS66HN\\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
 
-2. Windows バージョンの **tar** または .tar アーカイブで動作するその他の Windows ユーティリティを使用して、フォルダー内の NAMD ファイルを抽出します。NAMD tar アーカイブを \\CentOS66HN\\Namd\\namd2 に抽出し、チュートリアル ファイルを \\CentOS66HN\\Namd\\namd2\\namdsample の下に抽出します。
+2. Windows バージョンの **tar** または .tar アーカイブで動作するその他の Windows ユーティリティを使用して、フォルダー内の NAMD ファイルを抽出します。NAMD tar アーカイブを \\\CentOS66HN\\Namd\\namd2 に抽出し、チュートリアル ファイルを \\\CentOS66HN\\Namd\\namd2\\namdsample の下に抽出します。
 
 2.	Windows PowerShell ウィンドウを開き、次のコマンドを実行し、共有フォルダーをマウントします。
 
     ```
-    PS > clusrun /nodegroup:LinuxNodes mkdir -p /namd2
+    clusrun /nodegroup:LinuxNodes mkdir -p /namd2
 
-    PS > clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS66HN/Namd/namd2 /namd2 -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
+    clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS66HN/Namd/namd2 /namd2 -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
     ```
 
 最初のコマンドで、LinuxNodes グループに属するすべてのノードに /namd2 という名前のフォルダーが作成されます。2 番目のコマンドにより、そのフォルダーに共有フォルダー //CentOS66HN/Namd/namd2 がマウントされ、dir\_mode および file\_mode ビットが 777 に設定されます。コマンドの *username* と *password* は、ヘッド ノード上のユーザーの資格情報とする必要があります。
@@ -182,7 +182,7 @@ host CENTOS66LN-03 ++cpus 2
 ```
 ### nodelist ファイルを作成する Bash スクリプト
 
-任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されているフォルダーに次の Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。このファイルの完全なサンプルについては、この記事の「付録」を参照してください。この Bash スクリプトは次のことを行います。
+任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されているフォルダーに次の Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。完全な例がこの記事の最後にあるサンプル ファイルにあります。この Bash スクリプトは次のことを行います。
 
 >[AZURE.TIP]Linux 改行 (LF のみ、CR LF は対象外) を使用したテキスト ファイルとして、スクリプトを保存します。これにより、スクリプトは Linux ノード上で適切に動作します。
 
@@ -302,13 +302,13 @@ host CENTOS66LN-03 ++cpus 2
 
 6.	ジョブが終了するまで数分かかります。
 
-7.	<headnodeName>\\Namd\\namd2\\namd2\_hpccharmrun.log でジョブのログを確認し、<headnode>\\Namd\\namd2\\namdsample\\1-2-sphere で出力ファイルを確認します。
+7.	\<headnodeName>\\Namd\\namd2\\namd2\_hpccharmrun.log でジョブのログを確認し、\<headnode>\\Namd\\namd2\\namdsample\\1-2-sphere で出力ファイルを確認します。
 
 8.	必要に応じて、VMD を起動してジョブの結果を表示します。この記事では、NAMD を視覚化するための手順 (この場合は、水球体のユビキチン タンパク質分子) については説明しません。詳細については、「[NAMD チュートリアル](http://www.life.illinois.edu/emad/biop590c/namd-tutorial-unix-590C.pdf)」を参照してください。
 
     ![ジョブの結果][vmd_view]
 
-## 付録
+## サンプル ファイル
 
 ### サンプル hpccharmrun.sh スクリプト
 
@@ -408,4 +408,4 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
 [task_details]: ./media/virtual-machines-linux-cluster-hpcpack-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-cluster-hpcpack-namd/vmd_view.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

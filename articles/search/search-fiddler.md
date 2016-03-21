@@ -13,14 +13,14 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="11/10/2015"
+	ms.date="02/18/2016"
 	ms.author="heidist"/>
 
 # Fiddler を使用して Azure Search REST API を評価およびテストする
 > [AZURE.SELECTOR]
 - [Overview](search-query-overview.md)
+- [Search Explorer](search-explorer.md)
 - [Fiddler](search-fiddler.md)
-- [Postman](search-chrome-postman.md)
 - [.NET](search-query-dotnet.md)
 - [REST](search-query-rest-api.md)
 
@@ -43,7 +43,7 @@
 3. サービス URL、要求属性、および API バージョンを指定する URL を入力します。次の点に留意してください。
    + HTTPS をプレフィックスとして使用します。
    + 要求属性は "/indexes/hotels" です。この属性は Search に "hotels" という名前のインデックスを作成することを指定します。
-   + API バージョンは、小文字で「?api-version=2015-02-28」と指定します。Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。API バージョンを使用すると、既存のバージョンの使用を継続して、必要に応じて新しいバージョンにアップグレードすることができます。
+   + API バージョンは、小文字で「?api-version=2015-02-28」と指定します。Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。このため、Azure Search では、使用するバージョンを完全に制御するために、各要求に API バージョンが必要です。
 
     URL 全体は、次の例のようになります。
 
@@ -63,7 +63,7 @@
         "fields": [
           {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
           {"name": "baseRate", "type": "Edm.Double"},
-          {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false,},
+          {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
           {"name": "hotelName", "type": "Edm.String"},
           {"name": "category", "type": "Edm.String"},
           {"name": "tags", "type": "Collection(Edm.String)"},
@@ -229,10 +229,8 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ## 次のステップ
 
-コードを作成しないで Azure Search を管理および使用する方法の詳細については、次のリンクを参照してください。
+コードを作成せずに Azure Search を管理および使用する方法については、[Azure での検索サービスの管理](search-manage.md)に関するページを参照してください。
 
--  [Microsoft Azure で Search サービスを管理する](search-manage.md)
--  [Azure Search で Chrome Postman を使用する方法](search-chrome-postman.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png
@@ -241,4 +239,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

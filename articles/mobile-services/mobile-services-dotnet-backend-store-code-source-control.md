@@ -10,13 +10,18 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 # ソース管理へのモバイル サービス プロジェクト コードの保存
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
@@ -32,7 +37,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。
+1. ローカル コンピューターに Git をインストールします。 
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -97,7 +102,6 @@
 [Source control]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
-[Azure Management Portal]: https://manage.windowsazure.com/
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

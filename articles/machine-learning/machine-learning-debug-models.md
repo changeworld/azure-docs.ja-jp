@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="12/11/2015" 
 	ms.author="bradsev;garye" />
 
 # Azure Machine Learning でモデルをデバッグする
@@ -69,4 +69,4 @@
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

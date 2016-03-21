@@ -4,8 +4,8 @@
 	services="biztalk-services" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
-	manager="dwrede" 
-	editor="cgronlun"/>
+	manager="erikre" 
+	editor=""/>
 
 <tags 
 	ms.service="biztalk-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="02/29/2016" 
 	ms.author="mandia"/>
 
 
@@ -57,17 +57,17 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 ## Azure BizTalk Services に関するその他のトピック
 
 -  [Azure BizTalk Services SDK のインストール](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
--  [チュートリアル: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
--  [VAzure BizTalk サービス SDK の使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
--  [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+-  [チュートリアル: Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+-  [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+-  [Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## 関連項目
-- [BizTalk Services: Developer、Basic、Standard、および Premium エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk Services: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk Services: プロビジョニング状態のグラフ](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk Services: プロビジョニングの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 - [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 - [BizTalk Services: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 - [BizTalk Services: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

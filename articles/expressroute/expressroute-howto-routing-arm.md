@@ -4,16 +4,16 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 <tags
    ms.service="expressroute"
    ms.devlang="na"
-   ms.topic="article" 
+   ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/05/2015"
+   ms.date="02/04/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用した ExpressRoute 回線のルーティングの作成および変更
@@ -22,17 +22,17 @@
 [PowerShell - Classic](expressroute-howto-routing-classic.md)
 [PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
 
-この記事では、PowerShell コマンドレットと Azure リソース マネージャーのデプロイメント モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。
+この記事では、PowerShell コマンドレットと Azure リソース マネージャーのデプロイメント モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。**クラシック** デプロイ モデルを使用して、ExpressRoute 回線のルーティングを作成または変更する場合は、「[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-classic.md)」をご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要になります。 
+- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
-- アクティブな ExpressRoute 回線が必要です。手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。ExpressRoute 回線をプロビジョニングされ、有効になっている状態にする必要があります。そうすれば、以下で説明されているコマンドレットを実行できます。
+- アクティブな ExpressRoute 回線が必要です。手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。ExpressRoute 回線をプロビジョニングされ、有効になっている状態にする必要があります。そうすれば、以下で説明されているコマンドレットを実行できます。
 
->[AZURE.IMPORTANT]次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
+>[AZURE.IMPORTANT] 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
 
 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。ピアリングは任意の順序で構成することができます。ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。
 
@@ -44,7 +44,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -125,7 +125,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+	>[AZURE.IMPORTANT] 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
 ### Azure プライベート ピアリングの詳細を取得するには
 
@@ -133,7 +133,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-		Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt	
+		Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt	
 
 
 ### Azure プライベート ピアリングの構成を更新するには
@@ -149,7 +149,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
->[AZURE.WARNING]このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
+>[AZURE.WARNING] このコマンドレットを実行する前に、すべての仮想ネットワークが ExpressRoute 回線からリンク解除されていることを確認する必要があります。
 
 	Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -164,7 +164,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -245,7 +245,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
-	>[AZURE.IMPORTANT]顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
+	>[AZURE.IMPORTANT] 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
 ### Azure パブリック ピアリングの詳細を取得するには
 
@@ -281,7 +281,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. **ExpressRoute 用の PowerShell モジュールをインポートします。**
 	
- 	[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートしてから ExpressRoute コマンドレットの使用を開始する必要があります。管理者として PowerShell を実行する必要があります。
+ 	ExpressRoute コマンドレットを使用するには、[PowerShell ギャラリー](http://www.powershellgallery.com/)から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。管理者として PowerShell を実行する必要があります。
 
 	    Install-Module AzureRM
 
@@ -349,11 +349,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 	- アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。パブリック IP アドレス プレフィックスのみが受け入れられます。一連のプレフィックスを送信する予定の場合は、コンマ区切りのリストを送信できます。これらのプレフィックスは、RIR/IRR に登録する必要があります。
 	- 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。**これは省略可能です**。
 	- ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-	- いずれかを使用する場合は、MD5 ハッシュ。**これは省略可能です**。
+	- いずれかを使用する場合は、MD5 ハッシュ。**これは省略可能です。**
 	
 	次のコマンドレットを実行して、回線用に Microsoft ピアリングを構成することができます。
 
-		Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MircosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MircosoftConfigCustomerAsn 23 -MircosoftConfigRoutingRegistryName "ARIN"
+		Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
@@ -371,7 +371,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 次のコマンドレットを使用して、構成のどの部分でも更新することができます。
 
-		Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MircosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MircosoftConfigCustomerAsn 23 -MircosoftConfigRoutingRegistryName "ARIN"
+		Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 		
@@ -386,8 +386,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ## 次のステップ
 
-次の手順では、ExpressRoute 回線に VNet をリンクします。Azure リソース マネージャーのデプロイメント モードを使用している場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)を使用できます。PowerShell の手順は現在作成中です。
-
+次の手順では、[ExpressRoute 回線に VNet をリンク](expressroute-howto-linkvnet-arm.md)します。
 
 -  ExpressRoute ワークフローの詳細については、「[ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 
@@ -395,4 +394,4 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 -  仮想ネットワークの詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

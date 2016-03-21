@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015"  
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #パートナーを使用して Azure Media Services に Widevine ライセンスを配信する
@@ -22,7 +22,7 @@
 
 Microsoft Azure Media Services を使用すると、Widevine DRM で保護された MPEG-DASH を配信できます。Widevine DRM は、共通暗号化 (CENC) 仕様に従って暗号化されています。
 
->[AZURE.NOTE]現在、Media Services では、Widevine のライセンス サーバーは提供されません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると Widevine ライセンス テンプレートを構成し、Widevine ライセンスを取得できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。
 
 ##castLabs
 
@@ -45,6 +45,6 @@ Microsoft Azure Media Services を使用すると、Widevine DRM で保護され
 
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-[Mingfei のブログ](https://azure.microsoft.com/ja-JP/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
+[Mingfei のブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

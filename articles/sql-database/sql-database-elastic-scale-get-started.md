@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/04/2015" 
+	ms.date="02/02/2016" 
 	ms.author="ddove;sidneyh"/>
 
 # Elastic Database ツールの概要
 
-この文書を読み、サンプル アプリを実行することで、開発を体験できます。サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能が実演されます。
+このドキュメントでは、サンプル アプリを実行して開発作業について説明します。サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能が実演されます。
 
 ## 前提条件
 
-1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償試用版をダウンロードしてください。
+1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
 2. Nuget 2.7 以上。最新版を入手するには、「[Installing NuGet (NuGet のインストール)](http://docs.nuget.org/docs/start-here/installing-nuget)」を参照してください。
 
 ## サンプル アプリケーションのダウンロードと実行
@@ -61,7 +61,7 @@
 ### 他の Elastic Scale の操作
 
 1. **既存のシャードの分割**: シャードを分割する機能は、**分割/マージ ツール**を通じて提供されます。このツールの詳細については、「[分割/結合ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
-2. **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。詳細については、「[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge)」を参照してください。   
+2. **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。詳細については、「[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。   
 
 
 ## コスト
@@ -70,17 +70,17 @@ Elastic Database ツールは無料です。Elastic Database ツールでは、A
 
 たとえば、サンプル アプリケーションは新しいデータベースを作成します。その場合のコストは、選択した Azure SQL DB データベースのエディションと、アプリケーションによる Azure の使用状況に応じて異なります。
 
-料金情報については、「[SQL Database の料金詳細](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+料金情報については、「[SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 ## 次のステップ
 Elastic Database ツールの詳細については、以下のページを参照してください。
 
-* [エラスティック データベース ツールのドキュメント マップ](sql-database-elastic-scale-documentation-map.md) 
+* [Elastic Database ツールのドキュメント マップ](../learning-paths/sql-database-elastic-scale.md) 
 -    コード サンプル: 
     -    [Azure SQL で使用する Elastic DB - 概要](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
     -    [Azure DB で使用する Elastic DB - Entity Framework との統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
     -    [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
--    ブログ: [Elastic Scale の発表](http://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
+-    ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 -    チャンネル 9: [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 -    ディスカッション フォーラム: [Azure SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 
@@ -98,4 +98,4 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0204_2016-->

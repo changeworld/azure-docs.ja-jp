@@ -1,31 +1,36 @@
-<properties 
-	pageTitle="カスタム認証の使用 | Microsoft Azure" 
-	description="ユーザー名とパスワードを使用してユーザーを認証する方法について説明します。" 
-	documentationCenter="Mobile" 
-	authors="mattchenderson" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="カスタム認証の使用 | Microsoft Azure"
+	description="ユーザー名とパスワードを使用してユーザーを認証する方法について説明します。"
+	documentationCenter="Mobile"
+	authors="mattchenderson"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="09/28/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="02/07/2016"
 	ms.author="mahender"/>
 
 # カスタム認証の使用
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
 ## 概要
 このトピックでは、独自の Mobile Services 認証トークンを発行して、Azure Mobile Services .NET バックエンドでユーザーを認証する方法について説明します。このチュートリアルでは、アプリケーションのカスタム ユーザー名とパスワードを使用して、クイック スタート プロジェクトに認証を追加します。
 
->[AZURE.NOTE]このチュートリアルでは、カスタムの資格情報を使用して Mobile Services を認証する高度な方法を説明します。多くのアプリケーションでは、代わりに組み込みのソーシャル ID プロバイダーを使用する方法が最適であり、ユーザーは Facebook、Twitter、Google、Microsoft アカウント、および Azure Active Directory を介してログインすることができます。Mobile Services の認証を初めて使用する場合は、「[アプリへの認証の追加]」チュートリアルを参照してください。
+>[AZURE.NOTE] このチュートリアルでは、カスタムの資格情報を使用して Mobile Services を認証する高度な方法を説明します。多くのアプリケーションでは、代わりに組み込みのソーシャル ID プロバイダーを使用する方法が最適であり、ユーザーは Facebook、Twitter、Google、Microsoft アカウント、および Azure Active Directory を介してログインすることができます。Mobile Services の認証を初めて使用する場合は、「[アプリへの認証の追加]」チュートリアルを参照してください。
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[Mobile Services の使用]」を完了している必要があります。
 
->[AZURE.IMPORTANT]このチュートリアルの目的は、Mobile Services の認証トークンを発行する方法を説明することです。このチュートリアルは、セキュリティに関するガイダンスを示すものではありません。アプリケーションを開発する際には、パスワードの保存がセキュリティに及ぼす影響について認識し、ブルート フォース攻撃に対応する戦略を用意する必要があります。
+>[AZURE.IMPORTANT] このチュートリアルの目的は、Mobile Services の認証トークンを発行する方法を説明することです。このチュートリアルは、セキュリティに関するガイダンスを示すものではありません。アプリケーションを開発する際には、パスワードの保存がセキュリティに及ぼす影響について認識し、ブルート フォース攻撃に対応する戦略を用意する必要があります。
 
 ## アカウント テーブルを設定する
 
@@ -35,7 +40,7 @@
 
 2. 次の `using` ステートメントを追加します。
 
-		using Microsoft.WindowsAzure.Mobile.Service;  
+		using Microsoft.WindowsAzure.Mobile.Service;
 
 3. クラス定義を次のコードで置き換えます。
 
@@ -45,7 +50,7 @@
 	        public byte[] Salt { get; set; }
 	        public byte[] SaltedAndHashedPassword { get; set; }
 	    }
-    
+
     これは新しい Account テーブルの行を表し、ユーザー名、そのユーザーのソルト、および安全に格納されているパスワードを表します。
 
 2. **Models** フォルダーには、モバイル サービスの名前が付けられた **DbContext** 派生クラスがあります。コンテキストを開き、次のコードを含めて、データ モデルにアカウント テーブルを追加します。
@@ -53,7 +58,7 @@
         public DbSet<Account> Accounts { get; set; }
 
 	>[AZURE.NOTE]このチュートリアルのコード スニペットでは、コンテキスト名として `todoContext` を使用します。コード スニペットは、実際のプロジェクトのコンテキストに合わせて更新する必要があります。そのうえで、このデータの取り扱いに必要なセキュリティ機能を設定します。
- 
+
 5. `CustomLoginProviderUtils` という名前のクラスを作成し、次の `using` ステートメントを追加します。
 
 		using System.Security.Cryptography;
@@ -113,14 +118,14 @@
 		using <my_project_namespace>.Models;
 
 	上記のコードで、プレースホルダーを実際のプロジェクトの名前空間に置き換えます。
- 
+
 4. クラス定義を次のコードで置き換えます。
 
 	    [AuthorizeLevel(AuthorizationLevel.Anonymous)]
 	    public class CustomRegistrationController : ApiController
 	    {
 	        public ApiServices Services { get; set; }
-	
+
 	        // POST api/CustomRegistration
 	        public HttpResponseMessage Post(RegistrationRequest registrationRequest)
 	        {
@@ -132,7 +137,7 @@
 	            {
 	                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid password (at least 8 chars required)");
 	            }
-	
+
 	            todoContext context = new todoContext();
 	            Account account = context.Accounts.Where(a => a.Username == registrationRequest.username).SingleOrDefault();
 	            if (account != null)
@@ -154,7 +159,7 @@
 	                return this.Request.CreateResponse(HttpStatusCode.Created);
 	            }
 	        }
-	    }   
+	    }
 
     忘れずに、*todoContext* 変数をプロジェクトの **DbContext** の名前に置き換えます。このコントローラーは、次の属性を使用してこのエンドポイントへのすべてのトラフィックを許可することに注意してください。
 
@@ -173,7 +178,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 		using Newtonsoft.Json.Linq;
 		using Owin;
 		using System.Security.Claims;
- 
+
 3. **CustomLoginProvider** クラスの定義を、次のコードに置き換えます。
 
         public class CustomLoginProvider : LoginProvider
@@ -250,12 +255,12 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
         }
 
 	このメソッドは、[ClaimsIdentity] を認証トークン発行フェーズで使用される [ProviderCredentials] オブジェクトに変換します。このメソッドでは、追加のクレームがあれば、もう一度取得できます。
-	
+
 6. App\_Start フォルダーにある WebApiConfig.cs プロジェクト ファイルを開くと、**ConfigOptions** の後に次のコード行が作成されています。
-		
+
 		options.LoginProviders.Add(typeof(CustomLoginProvider));
 
-	
+
 
 ## サインイン エンドポイントを作成する
 
@@ -277,7 +282,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 	    {
 	        public string UserId { get; set; }
 	        public string MobileServiceAuthenticationToken { get; set; }
-	
+
 	    }
 
 	このクラスは、正常なログインとユーザー ID および認証トークンを表します。このクラスはクライアントの MobileServiceUser クラスと同じ形であり、それによって厳密に型指定されたクライアントでのログイン応答の処理が簡単になることに注意してください。
@@ -290,13 +295,13 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 		using <my_project_namespace>.Models;
 
 3. **CustomLoginController** クラスの定義を、次のコードに置き換えます。
- 
+
 	    [AuthorizeLevel(AuthorizationLevel.Anonymous)]
 	    public class CustomLoginController : ApiController
 	    {
 	        public ApiServices Services { get; set; }
 	        public IServiceTokenHandler handler { get; set; }
-	
+
 	        // POST api/CustomLogin
 	        public HttpResponseMessage Post(LoginRequest loginRequest)
 	        {
@@ -307,7 +312,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 	            {
 	                byte[] incoming = CustomLoginProviderUtils
 	                    .hash(loginRequest.password, account.Salt);
-	
+
 	                if (CustomLoginProviderUtils.slowEquals(incoming, account.SaltedAndHashedPassword))
 	                {
 	                    ClaimsIdentity claimsIdentity = new ClaimsIdentity();
@@ -331,7 +336,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
         [AuthorizeLevel(AuthorizationLevel.Anonymous)]
 
->[AZURE.IMPORTANT]運用で使用する `CustomLoginController` には、ブルート フォース攻撃を検出する戦略を盛り込む必要もあります。そうしない場合、作成したサインイン ソリューションが攻撃に対して脆弱になる可能性があります。
+>[AZURE.IMPORTANT] 運用で使用する `CustomLoginController` には、ブルート フォース攻撃を検出する戦略を盛り込む必要もあります。そうしない場合、作成したサインイン ソリューションが攻撃に対して脆弱になる可能性があります。
 
 ## 認証を要求するようにモバイル サービスを構成する
 
@@ -342,7 +347,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 クライアント アプリケーションで、カスタム サインイン画面を開発する必要があります。この画面では、ユーザー名とパスワードを取得して、登録エンドポイントとサインイン エンドポイントに JSON ペイロードとして送信します。このチュートリアルを完了するには、代わりに Mobile Services .NET バックエンド用の組み込みのテスト クライアントを使用します。
 
-1. Visual Studio で、モバイル サービス プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。  
+1. Visual Studio で、モバイル サービス プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。
 
 	これにより、モバイル サービス バックエンド プロジェクトの新しいデバッグ インスタンスが開始します。サービスが正常に開始した後、**このモバイル サービスは稼働している**という開始ページが表示されます。
 
@@ -376,26 +381,26 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
  	![](./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-custom-auth-access-success.png)
 
->[AZURE.IMPORTANT]テストのためにこのモバイル サービス プロジェクトも Azure に発行することを選択する場合は、サインインおよび認証プロバイダーが攻撃に対して脆弱であることに注意してください。プロバイダーが適切に強化されているか、または保護されているテスト データが重要ではないことを確認してください。カスタム認証方式を使用して運用環境のサービスを保護する前に、十分に注意してください。
+>[AZURE.IMPORTANT] テストのためにこのモバイル サービス プロジェクトも Azure に発行することを選択する場合は、サインインおよび認証プロバイダーが攻撃に対して脆弱であることに注意してください。プロバイダーが適切に強化されているか、または保護されているテスト データが重要ではないことを確認してください。カスタム認証方式を使用して運用環境のサービスを保護する前に、十分に注意してください。
 
 ## クライアントからカスタム認証を使用してサインインする
 
 このセクションでは、クライアントからカスタム認証エンドポイントにアクセスしてモバイル サービスへのアクセスに必要な認証トークンを取得するために必要な手順について説明します。必要な特定のクライアント コードはクライアントによって異なり、ここで提供するガイダンスはプラットフォームに依存しないものです。
 
->[AZURE.NOTE]Mobile Services クライアント ライブラリは、HTTPS でサービスと通信します。このソリューションではパスワードをプレーン テキストとして送信する必要があるため、直接 REST 要求を使用してこれらのエンドポイントを呼び出すときは、HTTPS を使用することを確認する必要があります。
+>[AZURE.NOTE] Mobile Services クライアント ライブラリは、HTTPS でサービスと通信します。このソリューションではパスワードをプレーン テキストとして送信する必要があるため、直接 REST 要求を使用してこれらのエンドポイントを呼び出すときは、HTTPS を使用することを確認する必要があります。
 
 1. ユーザーがユーザー名とパスワードを入力するのに必要な UI 要素をクライアント アプリで作成します。
 
 2. クライアント ライブラリの **MobileServiceClient** で適切な **invokeApi** メソッドを使用して **CustomRegistration** エンドポイントを呼び出し、実行時に提供されるユーザー名とパスワードをメッセージ本文で渡します。
 
 	Accounts テーブルにユーザー ログイン情報を保持するなら、特定のユーザーについて **CustomRegistration** エンドポイントを呼び出してアカウントを作成するのは 1 回だけで済みます。サポートされているさまざまなクライアント プラットフォームでカスタム API を呼び出す方法の例については、記事「[Custom API in Azure Mobile Services – client SDKs (Azure Mobile Services でのカスタム API - クライアント SDK)](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)」を参照してください。
-	 
-	> [AZURE.IMPORTANT]このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。SendGrid を使用して Mobile Services から電子メールを送信することもできます。SendGrid の詳細な使用方法については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
-	
+
+	> [AZURE.IMPORTANT] このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。SendGrid を使用して Mobile Services から電子メールを送信することもできます。SendGrid の詳細な使用方法については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
+
 3. 適切な **invokeApi** メソッドを再び使用して今度は **CustomLogin** エンドポイントを呼び出し、実行時に提供されるユーザー名とパスワードをメッセージ本文で渡します。
 
 	今度は、ログイン成功後に応答オブジェクトで返される *userId* と *authenticationToken* の値を取得する必要があります。
-	
+
 4. 返された *userId* と *authenticationToken* の値を使用して新しい **MobileServiceUser** オブジェクトを作成し、**MobileServiceClient** インスタンスの現在のユーザーとしてそれを設定します (トピック「[既存の Azure Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-ios-get-started-users.md)」を参照)。CustomLogin の結果は **MobileServiceUser** オブジェクトと同じ形なので、結果を直接キャストできます。
 
 このチュートリアルはこれで終わりです。
@@ -418,6 +423,5 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 [ClaimsIdentity]: https://msdn.microsoft.com/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

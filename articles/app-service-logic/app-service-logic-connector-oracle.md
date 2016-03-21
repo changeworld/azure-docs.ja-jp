@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/23/2015"
+   ms.date="02/10/2016"
    ms.author="sameerch"/>
 
 
 # Oracle Database コネクタの使用開始とロジック アプリへの追加
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 オンプレミスの Oracle Database サーバーに接続して、情報やデータの作成と変更を行います。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Oracle コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
 - Web またはモバイル アプリケーションを使用して、Oracle Database に存在するデータの一部を公開する。
@@ -51,7 +53,7 @@ Oracle Database コネクタでは、次のトリガーとアクションを使�
 データ ソース | はい | Oracle クライアントがインストールされているコンピューターの tnsnames.ora ファイルで指定されているデータ ソース (ネット サービス) の名前です。データ ソース名と tnsnames.ora の詳細については、「[Oracle クライアントの構成](http://msdn.microsoft.com/library/dd787872.aspx)」を参照してください。
 ユーザー名 | はい | Oracle サーバーに接続するユーザー名を入力します。
 パスワード | あり | ユーザー名のパスワードを入力します。
-Service Bus の接続文字列 | はい | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
+Service Bus の接続文字列 | はい | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 テーブル | いいえ | コネクタで変更できるデータベース内のテーブルを入力します。たとえば、「*OrdersTable,EmployeeTable*」と入力します。
 ストアド プロシージャ | いいえ | コネクタで呼び出すことができるデータベースのストアド プロシージャを入力します。たとえば、「*IsEmployeeEligible,CalculateOrderDiscount*」と入力します。
 関数 | いいえ | コネクタで呼び出すことができるデータベースの関数を入力します。たとえば、「*IsEmployeeEligible,CalculateOrderDiscount*」と入力します。
@@ -91,16 +93,16 @@ Oracle コネクタをアクションとして使用するには、Oracle コネ
 
 ## ハイブリッド構成
 
-> [AZURE.NOTE]この手順は、ファイアウォールの背後にあるオンプレミスの Oracle を使用している場合のみ必要です。
+> [AZURE.NOTE] この手順は、ファイアウォールの背後にあるオンプレミスの Oracle を使用している場合のみ必要です。
 
 App Service では、 ハイブリッド構成マネージャーを使用して、オンプレミス システムに安全に接続します。コネクタでオンプレミスの Oracle を使用する場合は、ハイブリッド接続マネージャーが必要です。
 
 「[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)」を参照してください。
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -118,4 +120,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

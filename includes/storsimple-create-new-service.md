@@ -1,11 +1,11 @@
-<!--author=alkohli last changed: 9/17/15-->
+<!--author=alkohli last changed:01/14/2016-->
 
 
 #### 新しいサービスを作成するには
 
-1. Microsoft アカウント資格情報を使用して、この URL ([http://azure.microsoft.com/](http://azure.microsoft.com/)) から管理ポータルにログオンします。
+1. Microsoft アカウント資格情報を使用して、この URL ([https://manage.windowsazure.com/](https://manage.windowsazure.com/)) から Azure クラシック ポータルにログオンします。
 
-2. 管理ポータルで、**[新規]**、**[データ サービス]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
+2. Azure クラシック ポータルで、**[新規]**、**[Data Services]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
 
 3. 表示されるフォームで、次の手順を実行します。
   1. サービスの一意の **[名前]** を指定します。これは、サービスの識別に使用できるフレンドリ名です。名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。名前の最初と最後は、文字か数字とする必要があります。
@@ -26,6 +26,6 @@
 
 ![ビデオ](./media/storsimple-create-new-service/Video_icon.png) **ビデオ**
 
-新しい StorSimple Manager サービスを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)を参照してください。
+新しい StorSimple Manager サービスを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0128_2016-->

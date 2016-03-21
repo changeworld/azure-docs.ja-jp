@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2015"
+   ms.date="01/20/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスを安全にインストールして操作する
@@ -179,4 +179,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0121_2016-->

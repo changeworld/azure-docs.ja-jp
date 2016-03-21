@@ -9,7 +9,7 @@
 <tags 
    ms.service="service-bus"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="09/15/2015"
@@ -25,11 +25,11 @@
 
 ### 名前空間を作成し、共有シークレット キーを取得する
 
-1. サービス名前空間を作成する方法について詳しくは、「[Service Bus Service 名前空間の管理](https://msdn.microsoft.com/library/azure/hh690928.aspx)」セクションの「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/azure/hh690931.aspx)」トピックをご覧ください。
+1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
-1. Azure ポータルのメイン ウィンドウで、前の手順で作成した名前空間の名前をクリックします。
+1. [Azure クラシック ポータル][]のメイン ウィンドウで、前の手順で作成した名前空間の名前をクリックします。
 
-1. **[構成]** タブをクリックします。
+1. [**構成**] タブをクリックします。
 
 1. **[共有アクセス キー生成コンポーネント]** セクションで、**RootManageSharedAccessKey** ポリシーに関連付けられている **[プライマリ キー]** をメモしておくか、クリップボードにコピーします。この値は、このチュートリアルの後半で使用します。
 
@@ -183,7 +183,8 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 1 つ前の手順で追加した `GetSASToken()` のコードの直後に、次のコードを貼り付けます。
 
 ```
-// Uses HTTP PUT to create the queueprivatestaticstring CreateQueue(string queueName, string token)
+// Uses HTTP PUT to create the queue
+private static string CreateQueue(string queueName, string token)
 {
     // Create the URI of the new queue, note that this uses the HTTPS schemestring queueAddress = baseAddress + queueName;
     WebClient webClient = new WebClient();
@@ -210,7 +211,8 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 	```
 	// Sends a message to the "queueName" queue, given the name and the value to enqueue
-	// Uses an HTTP POST request.privatestaticvoid SendMessage(string queueName, string body)
+	// Uses an HTTP POST request.
+	private static void SendMessage(string queueName, string body)
 	{
 	    string fullAddress = baseAddress + queueName + "/messages" + "?timeout=60&api-version=2013-08 ";
 	    Console.WriteLine("\nSending message {0} - to address {1}", body, fullAddress);
@@ -254,7 +256,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
     WebClient webClient = new WebClient();
     webClient.Headers[HttpRequestHeader.Authorization] = token;
 
-    byte[] response = webClient.UploadData(fullAddress, "DELETE", newbyte[0]);
+    byte[] response = webClient.UploadData(fullAddress, "DELETE", new byte[0]);
     string responseStr = Encoding.UTF8.GetString(response);
 
     Console.WriteLine(responseStr);
@@ -626,7 +628,9 @@ namespace Microsoft.ServiceBus.Samples
 詳細については、次の記事を参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Service Bus の基礎](fundamentals-service-bus-hybrid-solutions.md)
+- [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus リレー型メッセージングの REST チュートリアル](service-bus-relay-rest-tutorial.md)
 
-<!---HONumber=Oct15_HO3-->
+[Azure クラシック ポータル]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_0309_2016-->

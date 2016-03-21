@@ -4,7 +4,7 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
+   ms.date="12/02/2015"
    ms.author="joaoma" />
 
 # Traffic Manager の設定のテスト
@@ -61,22 +61,15 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 無料の Web ベースの DNS 検索と検出サービスを利用できます。これらのサービスの中には、さまざまな場所から DNS 名前解決を確認できるものもあります。たとえば、"DNS 検索" の検索などを実行できます。さらに、Gomez や Keynote のようなサード パーティ製ソリューションもあります。このようなソリューションを使用して、トラフィックがプロファイルに基づいて予期したとおりに振り分けられることを確認できます。
 
-## 関連項目
+## 次のステップ
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 
-[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
 
-[Traffic Manager について](traffic-manager-overview.md)
 
-[Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
-
-[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

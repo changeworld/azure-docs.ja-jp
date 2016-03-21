@@ -13,17 +13,32 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/14/2015"
+   ms.date="02/17/2016"
    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
+# Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ
 
-このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にアプリケーションをデプロイする方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Microsoft Azure プレビュー ポータルを使用して、アプリケーションをデプロイする方法も示します。
+このトピックでは、Azure リソース マネージャーのテンプレートを使用して Azure にリソースをデプロイする方法について説明します。また、Azure PowerShell、Azure CLI、REST API、または Azure ポータルを使用して、リソースをデプロイする方法も示します。
 
-リソース マネージャーの概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+リソース マネージャーの概要については、「[Azure リソース マネージャーの概要](./resource-group-overview.md)」を参照してください。テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-テンプレートを使用してアプリケーションをデプロイする場合は、パラメーター値を指定することで、リソースの作成方法をカスタマイズすることができます。これらのパラメーターの値は、インラインか、パラメーター ファイルのどちらかで指定します。
+テンプレートを使用してアプリケーションの定義をデプロイする場合は、パラメーター値を指定することで、リソースの作成方法をカスタマイズすることができます。これらのパラメーターの値は、インラインか、パラメーター ファイルのどちらかで指定します。
 
+## 増分デプロイと完全デプロイ
+
+既定では、リソース マネージャーはデプロイメントをリソース グループへの増分更新として処理します。増分デプロイメントでは、リソース マネージャーは次の処理を行います。
+
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します** 
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+
+Azure PowerShell または REST API を利用し、リソース グループへの完全更新を指定できます。現在のところ、Azure CLI は完全デプロイメントに対応していません。完全デプロイメントでは、リソース マネージャーは次の処理を行います。
+
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**削除します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します** 
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+ 
+デプロイの種類は **Mode** プロパティを使用して指定します。PowerShell と REST API では、次の例のように指定します。
 
 ## PowerShell でデプロイする
 
@@ -32,17 +47,7 @@
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
-    Azure PowerShell 1.0 Preview 未満:
-
-        PS C:\> Switch-AzureMode AzureResourceManager
-        ...
-        PS C:\> Add-AzureAccount
-
-        Id                             Type       ...
-        --                             ----    
-        someone@example.com            User       ...   
-
-    Azure PowerShell 1.0 Preview:
+    Azure PowerShell 1.0:
 
          PS C:\> Login-AzureRmAccount
 
@@ -69,7 +74,7 @@
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。**[モード]** パラメーターは指定されません。つまり、既定値の **[増分]** が使用されます。
    
      次のオプションを使用してパラメーターの値を提供できます。
    
@@ -95,10 +100,20 @@
           Mode              : Incremental
           ...
 
+     完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。リソースの削除が含まれる可能性があるため、完全モードを使用するときは確認を求められます。
+
+          PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -Mode Complete -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> 
+          Confirm
+          Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
+          included in the template will be deleted.
+          [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
+     テンプレートに含まれるパラメーターの名前が、そのテンプレートをデプロイするコマンドのパラメーターのいずれかと一致する場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+
 6. デプロイ エラーに関する情報を取得するには
 
         PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Name ExampleDeployment
-
+        
         
 ### ビデオ
 
@@ -190,7 +205,7 @@
              }
            }
    
-3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
+3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。**[モード]** が **[増分]** に設定されていることに注意してください。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -213,13 +228,19 @@
          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
 
-## プレビュー ポータルでデプロイする
+## Visual Studio でのデプロイ
 
-ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して Virtual Machine、Virtual Network、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
+Visual Studio では、リソース グループ プロジェクトを作成して、それをユーザー インターフェイスから Azure にデプロイできます。プロジェクトに含めるリソースの種類を選択すると、それらのリソースがリソース マネージャー テンプレートに自動的に追加されます。プロジェクトでは、テンプレートをデプロイするための PowerShell スクリプトも提供されます。
+
+リソース グループで Visual Studio を使用する概要については、「[Visual Studio を使用した Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+
+## ポータルでデプロイする
+
+ご存知でしょうか。 [ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、Virtual Network、Storage アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの利点を活用できます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
 
 ![新規](./media/resource-group-template-deploy/new.png)
 
-プレビュー ポータルと Azure リソース マネージャーの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
+Azure リソース マネージャーの使用方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
 
 
 ## パラメーター ファイル
@@ -238,19 +259,29 @@
             },
             "webSiteLocation": {
                 "value": "West US"
+            },
+            "adminPassword": {
+                "reference": {
+                   "keyVault": {
+                      "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+                   }, 
+                   "secretName": "sqlAdminPassword" 
+                }   
             }
        }
     }
 
 パラメーター ファイルのサイズは、64 KB 以下である必要があります。
 
+テンプレートのパラメーターを定義する方法については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/#parameters)」を参照してください。セキュリティで保護された値を渡す KeyVault 参照の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
+
 ## 次のステップ
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](arm-template-deployment.md)」を参照してください。
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/arm-template-deployment.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
-- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments-preview-portal.md)」を参照してください。
+- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 - Azure リソース マネージャーのテンプレートのセクションについては、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、「[Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

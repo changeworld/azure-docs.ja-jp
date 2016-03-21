@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015"    
+ 	ms.date="03/01/2016"  
 	ms.author="juliako"/>
 
 #ライブ ストリーミングのトラブルシューティング ガイド
@@ -49,7 +49,7 @@
 
 - **潜在的な問題**: 多くの RTP エンコーダーではホスト名は許可されていません。IP アドレスを取得する必要があります。  
 
-	**トラブルシューティングの手順**: IP アドレスを検索するには、任意のコンピューターでコマンド プロンプトを開きます。これを Windows で行う場合は、[ファイル名を指定して実行] (Win + R) を開き、「cmd」と入力して開きます。
+	**トラブルシューティングの手順**: IP アドレスを検索するには、任意のコンピューターでコマンド プロンプトを開きます。これを Windows で行う場合は、[ファイル名を指定して実行] \(Win + R) を開き、「cmd」と入力して開きます。
 
 	コマンド プロンプトが開いたら、「Ping [AMS のホスト名]」を入力します。
 
@@ -65,7 +65,13 @@
 
 	**トラブルシューティングの手順**: AMSE ツールで、[ストリーミング エンドポイント] タブに移動し、1 つのストリーミング ユニットで実行されているストリーミング エンドポイントがあることを確認します。
 	
->[AZURE.NOTE]このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure の管理ポータルを使用して、サポート チケットを送信してください。
+###問題: エンコーダーのログを確認したい 
+
+- **潜在的な問題**: 問題のデバッグに役立つログが見つかりません。
+
+	**トラブルシューティングの手順**: 通常、Wirecast のログは C:\\Users{username}\\AppData\\Roaming\\Wirecast\\ にあります。
+
+>[AZURE.NOTE] このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure クラシック ポータルを使用して、サポート チケットを送信してください。
 
 ##Media Services のラーニング パス
 
@@ -75,4 +81,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

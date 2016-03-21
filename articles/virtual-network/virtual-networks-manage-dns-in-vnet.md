@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/04/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # 仮想ネットワーク (VNet) で使用される DNS サーバーの管理
@@ -65,4 +65,4 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

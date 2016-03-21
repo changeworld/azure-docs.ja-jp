@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="09/22/2015"
+	ms.date="02/29/2016"
 	ms.author="piyushjo" />
 
 # Windows Phone Silverlight アプリの Azure Mobile Engagement の概要
 
 > [AZURE.SELECTOR]
-- [Windows Universal](mobile-engagement-windows-store-dotnet-get-started.md)
+- [Windows ユニバーサル](mobile-engagement-windows-store-dotnet-get-started.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-get-started.md)
 - [iOS | Obj C](mobile-engagement-ios-get-started.md)
 - [iOS | Swift](mobile-engagement-ios-swift-get-started.md)
@@ -28,20 +28,20 @@
 
 このトピックでは、Azure モバイル エンゲージメントを使用してアプリの使用状況を把握し、Windows Phone Silverlight アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。チュートリアル内で空白の Windows Phone Silverlight アプリを作成し、このアプリで基本的なデータを収集して、Microsoft Push Notification Service (MPNS) を使用してプッシュ通知を受信します。
 
-> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、[Windows Universal チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を参照してください。
+> [AZURE.NOTE] Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、[Windows Universal チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を参照してください。
 
 このチュートリアルには、次のものが必要です。
 
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget パッケージ
 
-> [AZURE.IMPORTANT]Windows Phone Silverlight アプリ向けの他のすべてのモバイル エンゲージメント チュートリアルは、このチュートリアルを完了していることが前提条件となっています。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.IMPORTANT] Windows Phone Silverlight アプリ向けの他のすべてのモバイル エンゲージメント チュートリアルは、このチュートリアルを完了していることが前提条件となっています。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 ##<a id="setup-azme"></a>Windows Phone アプリ用に Mobile Engagement を設定する
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
-##<a id="connecting-app"></a>アプリをモバイル エンゲージメントのバックエンドに接続します
+##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows Phone SDK 統合](../mobile-engagement-windows-phone-sdk-overview/)」をご覧ください。
 
@@ -172,4 +172,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

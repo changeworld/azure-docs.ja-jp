@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/24/2015"
+   ms.date="02/09/2016"
    ms.author="bwren" />
 
 # Azure Automation の Runbook の種類
@@ -35,7 +35,7 @@ Azure Automation がサポートする 3 種類の Runbook について次の表
 - [PowerShell ワークフロー](automation-powershell-workflow.md)について最低限の知識があれば Runbook を作成できます。
 - 管理プロセスが視覚的に表現されます。
 - エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開できます。
-- [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して複数のアクティビティを並列に実行できます。
+- [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して、複数のアクティビティを並列に実行できます。
 - 高度なワークフローを作成するために、他のグラフィカル Runbook や PowerShell ワークフロー Runbook を子 Runbook として組み込むことができます。
 
 
@@ -82,7 +82,6 @@ PowerShell Runbook は、Windows PowerShell に基づきます。Azure ポータ
 - 作成者は、PowerShell スクリプトに熟知している必要があります。
 - [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して複数のアクションを並列に実行することはできません。
 - エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開することはできません。
-- [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行することはできません。
 - PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
 
 ### 既知の問題
@@ -109,4 +108,4 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [Runbook の作成またはインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

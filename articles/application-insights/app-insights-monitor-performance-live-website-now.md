@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/23/2015"
+	ms.date="03/01/2016"
 	ms.author="awills"/>
 
 
@@ -24,7 +24,7 @@ Visual Studio Application Insights の Status Monitor により、ASP.NET アプ
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-> [AZURE.TIP][ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
+> [AZURE.TIP] [ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
 
 
 Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
@@ -99,7 +99,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## パフォーマンス テレメトリの表示
 
-[Azure ポータル](http://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
+[Azure ポータル](https://portal.azure.com)にサインインし、Application Insights を参照して、作成したリソースを開きます。
 
 ![[参照]、[Application Insights] の順に選択し、アプリを選択します。](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
 
@@ -120,7 +120,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 グラフをフィルターして、特定の依存関係、種類、またはパフォーマンスのバケットを確認することもできます。[フィルター] をクリックします。
 
-#### パフォーマンス カウンター
+## パフォーマンス カウンター
 
 (Azure Web Apps 用ではありません。) 概要ブレードで [サーバー] をクリックすると、CPU 占有率やメモリ使用量などのサーバー パフォーマンス カウンターのグラフが表示されます。
 
@@ -128,11 +128,15 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 [SDK によって報告されるパフォーマンス カウンターのセットを変更](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)することもできます。
 
-#### 例外
+## 例外
 
 ![サーバーの例外グラフをクリックする](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
 
 特定の例外 (過去 7 日間) をドリルダウンし、スタック トレースとコンテキスト データを取得できます。
+
+## サンプリング
+
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細についてはこちらを参照してください。](app-insights-sampling.md)
 
 
 ## トラブルシューティング
@@ -143,16 +147,14 @@ Status Monitor が動作するように、サーバーのファイアウォー�
 
 + テレメトリ - 次のものは常に必要です。
  +	`dc.services.visualstudio.com:80`
- +	`f5.services.visualstudio.com:80`
  +	`dc.services.visualstudio.com:443`
- +	`f5.services.visualstudio.com:443`
- +	`dc.services.vsallin.net:443`
+ +	`dc.applicationinsights.microsoft.com`
 + 構成 - 変更を加える場合にのみ必要です。
  -	`management.core.windows.net:443`
  -	`management.azure.com:443`
  -	`login.windows.net:443`
  -	`login.microsoftonline.com:443`
- -	`secure.aadcdn.microsoftonline-p.com:443`
+ -	`secure.addcdn.microsoftonline-p.com:443`
  -	`auth.gfx.ms:443`
  -	`login.live.com:443`
 + インストール
@@ -192,6 +194,7 @@ Status Monitor が動作するように、サーバーのファイアウォー�
 
 IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
+
 ## <a name="next"></a>次のステップ
 
 * サイトがライブの状態であることを確認するには、[Web テストを作成][availability]します。
@@ -211,9 +214,9 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [availability]: app-insights-monitor-web-app-availability.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Nov15_HO2-->
+<!----HONumber=AcomDC_0302_2016-->

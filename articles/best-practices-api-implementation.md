@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2015"
+   ms.date="12/17/2015"
    ms.author="masashin"/>
 
 # API 実装ガイダンス
@@ -76,7 +76,7 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 	}
 	```
 
-	> [AZURE.TIP]複雑なカスタム ルートを多数定義すると脆弱になり (コントローラーにメソッドを無造作に追加すると、ルートがあいまいになります)、パフォーマンスも低下する (ルーティング テーブルが大きくなるほど、Web API フレームワークが特定の URI と一致するルートを突き止めるために実行しなければならない処理が増えます) 可能性があるため、可能な限り、既定のルーティングを使用します。API とルートはシンプルにしておきます。詳細については、API 設計ガイダンスのリソースを中心とした Web API の編成に関するセクションをご覧ください。カスタム ルートを定義する必要がある場合は、このセクションで後述する属性ベースのルーティングを使用することをお勧めします。
+	> [AZURE.TIP] 複雑なカスタム ルートを多数定義すると脆弱になり (コントローラーにメソッドを無造作に追加すると、ルートがあいまいになります)、パフォーマンスも低下する (ルーティング テーブルが大きくなるほど、Web API フレームワークが特定の URI と一致するルートを突き止めるために実行しなければならない処理が増えます) 可能性があるため、可能な限り、既定のルーティングを使用します。API とルートはシンプルにしておきます。詳細については、API 設計ガイダンスのリソースを中心とした Web API の編成に関するセクションをご覧ください。カスタム ルートを定義する必要がある場合は、このセクションで後述する属性ベースのルーティングを使用することをお勧めします。
 
 	規約ベースのルーティングの詳細については、Microsoft Web サイトの「[Routing in ASP.NET Web API (ASP.NET Web API におけるルーティング)](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api)」をご覧ください。
 
@@ -157,7 +157,7 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	これらの要求を実装するコードが副次的な影響を及ぼさないようにしてください。同じリソースに対して繰り返される同じ要求は、同じ状態になる必要があります。たとえば、複数の DELETE 要求を同じ URI に送信した場合、応答メッセージの HTTP 状態コードは異なる可能性がありますが (最初の DELETE 要求では状態コード 204 (No Content) が返され、次の DELETE 要求では状態コード 404 (Not Found) が返されるなど)、結果は同じである必要があります。
 
-> [AZURE.NOTE]べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「[Idempotency Patterns (べき等のパターン)](http://blog.jonathanoliver.com/idempotency-patterns/)」をご覧ください。
+> [AZURE.NOTE] べき等の概要とデータ管理操作との関連性については、Jonathan Oliver のブログ記事「[Idempotency Patterns (べき等のパターン)](http://blog.jonathanoliver.com/idempotency-patterns/)」をご覧ください。
 
 - **新しいリソースを作成する POST アクションでは、関連のない副次的な影響を与えずに処理を実行する**
 
@@ -226,7 +226,7 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	クライアントが Accept ヘッダーを指定しない場合は、応答の本文に実用的な既定の形式を使用します。たとえば、ASP.NET Web API フレームワークでは、テキスト ベースのデータに既定で JSON を使用します。
 
-	> [AZURE.NOTE]ASP.NET Web API フレームワークは、Accept ヘッダーの自動検出を実行し、応答メッセージの本文のデータの種類に基づいてヘッダー自体を処理します。たとえば、応答メッセージの本文に CLR (共通言語ランタイム) オブジェクトが含まれている場合、ASP.NET Web API は応答の Content-Type ヘッダーを "application/json" に設定して、応答を JSON として自動的に書式設定します。ただし、クライアントが XML 形式の結果を必要としていることを示している場合を除きます。この場合、ASP.NET Web API フレームワークは応答を XML として書式設定し、応答の Content-Type ヘッダーを "text/xml" に設定します。ただし、操作の実装コードでさまざまなメディアの種類を明示的に指定した Accept ヘッダーを処理することが必要な場合があります。
+	> [AZURE.NOTE] ASP.NET Web API フレームワークは、Accept ヘッダーの自動検出を実行し、応答メッセージの本文のデータの種類に基づいてヘッダー自体を処理します。たとえば、応答メッセージの本文に CLR (共通言語ランタイム) オブジェクトが含まれている場合、ASP.NET Web API は応答の Content-Type ヘッダーを "application/json" に設定して、応答を JSON として自動的に書式設定します。ただし、クライアントが XML 形式の結果を必要としていることを示している場合を除きます。この場合、ASP.NET Web API フレームワークは応答を XML として書式設定し、応答の Content-Type ヘッダーを "text/xml" に設定します。ただし、操作の実装コードでさまざまなメディアの種類を明示的に指定した Accept ヘッダーを処理することが必要な場合があります。
 
 - **HATEOAS スタイルのナビゲーションとリソースの検出をサポートするリンクを提供する**
 
@@ -247,26 +247,26 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 	...
 	Content-Length: ...
 	{"CustomerID":2,"CustomerName":"Bert","Links":[
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"PUT",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"DELETE",
-	   "LinkedResourceMIMETypes":[]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"POST",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]}
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"PUT",
+	   "types":["application/x-www-form-urlencoded"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"DELETE",
+	   "types":[]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"POST",
+	   "types":["application/x-www-form-urlencoded"]}
 	]}
 	```
 
@@ -283,10 +283,10 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	public class Link
 	{
-    	public string Relationship { get; set; }
-    	public string HRef { get; set; }
+    	public string Rel { get; set; }
+    	public string Href { get; set; }
     	public string Action { get; set; }
-    	public string [] LinkedResourceMIMETypes { get; set; }
+    	public string [] Types { get; set; }
 	}
 	```
 
@@ -294,11 +294,11 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	- 返されるオブジェクトとリンクで示されているオブジェクトの関係。この例の "self" は、リンクがそのオブジェクト自体の参照であることを示しています (多くのオブジェクト指向言語での `this` ポインターと同様)。また、"orders" は関連する注文情報が含まれたコレクションの名前です。
 
-	- リンクで示されているオブジェクトの URI 形式のハイパーリンク (`HRef`)。
+	- リンクで示されているオブジェクトの URI 形式のハイパーリンク (`Href`)。
 
 	- この URI に送信できる HTTP 要求の種類 (`Action`)。
 
-	- 要求の種類に応じて、HTTP 要求で提供するか、または応答で返すことができるデータの形式 (`LinkedResourceMIMETypes`)。
+	- 要求の種類に応じて、HTTP 要求で提供するか、または応答で返すことができるデータの形式 (`Types`)。
 
 	HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリケーションが次の操作を実行できることを示しています。
 
@@ -362,9 +362,9 @@ ASP.NET Web API フレームワークでは、操作でキャッチされない�
 	}
 	```
 
-	> [AZURE.TIP]Web API に侵入しようとする攻撃者にとって役立つ可能性のある情報は含めないでください。詳細については、Microsoft Web サイトの「[Exception Handling in ASP.NET Web API (ASP.NET Web API での例外処理)](http://www.asp.net/web-api/overview/error-handling/exception-handling)」をご覧ください。
+	> [AZURE.TIP] Web API に侵入しようとする攻撃者にとって役立つ可能性のある情報は含めないでください。詳細については、Microsoft Web サイトの「[Exception Handling in ASP.NET Web API (ASP.NET Web API での例外処理)](http://www.asp.net/web-api/overview/error-handling/exception-handling)」をご覧ください。
 
-	> [AZURE.NOTE]多くの Web サーバーは、Web API に到達する前にエラー条件自体をトラップします。たとえば、Web サイトの認証を構成した場合、ユーザーが適切な認証情報を提供できないと、Web サーバーは状態コード 401 (Unauthorized) で応答します。クライアントが認証されたら、クライアントが要求されたリソースにアクセスできることを確認するために、コードで独自のチェックを実行できます。この認証に失敗した場合は、状態コード 403 (Forbidden) を返す必要があります。
+	> [AZURE.NOTE] 多くの Web サーバーは、Web API に到達する前にエラー条件自体をトラップします。たとえば、Web サイトの認証を構成した場合、ユーザーが適切な認証情報を提供できないと、Web サーバーは状態コード 401 (Unauthorized) で応答します。クライアントが認証されたら、クライアントが要求されたリソースにアクセスできることを確認するために、コードで独自のチェックを実行できます。この認証に失敗した場合は、状態コード 403 (Forbidden) を返す必要があります。
 
 - **一貫した方法で例外を処理し、エラーに関する情報をログに記録する**
 
@@ -406,7 +406,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	Cache-Control: max-age=600, private
 	Content-Type: text/json; charset=utf-8
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
 	この例では、Cache-Control ヘッダーは、返されるデータを 600 秒後に期限切れにすることと、返されるデータは 1 つのクライアント専用であり、他のクライアントが使用する共有キャッシュには保存できないこと (_private_) を指定しています。データを共有キャッシュに保存できる場合は、Cache-Control ヘッダーで _private_ ではなく _public_ を指定できます。また、データをクライアントでキャッシュできない場合は、_no-store_ を指定できます。次のコード例は、応答メッセージの Cache-Control ヘッダーを作成する方法を示しています。
@@ -465,13 +465,13 @@ Web サーバーとクライアント アプリケーションが関与する環
     }
 	```
 
-	> [AZURE.NOTE]HTTP プロトコルでは、Cache-Control ヘッダーの_no-cache_ ディレクティブも定義されています。少し紛らわしいのですが、このディレクティブは "キャッシュしない" ことを意味するのではなく、"キャッシュされた情報を返す前に、サーバーでその情報を再検証する" ことを意味します。データは、引き続きキャッシュに保存できますが、使用するたびにチェックされ、最新であることが確認されます。
+	> [AZURE.NOTE] HTTP プロトコルでは、Cache-Control ヘッダーの_no-cache_ ディレクティブも定義されています。少し紛らわしいのですが、このディレクティブは "キャッシュしない" ことを意味するのではなく、"キャッシュされた情報を返す前に、サーバーでその情報を再検証する" ことを意味します。データは、引き続きキャッシュに保存できますが、使用するたびにチェックされ、最新であることが確認されます。
 
 	キャッシュ管理は、クライアント アプリケーションまたは中間サーバーが行いますが、キャッシュ管理を適切に実装すると、最近既に取得したデータを取得する必要性が排除されるので、帯域幅を節約し、パフォーマンスを向上させることができます。
 
 	Cache-Control ヘッダーの _max-age_ 値は 1 つの目安にすぎず、指定した期間に対応するデータが変更されないことを保証するわけではありません。Web API では、データの予想される揮発性に応じて、max-age を適切な値に設定する必要があります。この期間が経過したら、クライアントはキャッシュからオブジェクトを破棄する必要があります。
 
-	> [AZURE.NOTE]最新の Web ブラウザーは、記述に従って適切な Cache-Control ヘッダーを要求に追加し、結果のヘッダーを調べることで、クライアント側のキャッシュをサポートします。ただし、一部の古いブラウザーは、クエリ文字列を含む URL から返された値をキャッシュしません。通常、これは、ここで説明したプロトコルに基づく独自のキャッシュ管理方法を実装しているカスタム クライアント アプリケーションの問題ではありません。
+	> [AZURE.NOTE] 最新の Web ブラウザーは、記述に従って適切な Cache-Control ヘッダーを要求に追加し、結果のヘッダーを調べることで、クライアント側のキャッシュをサポートします。ただし、一部の古いブラウザーは、クエリ文字列を含む URL から返された値をキャッシュしません。通常、これは、ここで説明したプロトコルに基づく独自のキャッシュ管理方法を実装しているカスタム クライアント アプリケーションの問題ではありません。
 	>
 	> 一部の古いプロキシも同じ動作を示し、クエリ文字列を含む URL に基づく要求をキャッシュしないことがあります。これは、このようなプロキシ経由で Web サーバーに接続するカスタム クライアント アプリケーションの問題である場合があります。
 
@@ -514,10 +514,10 @@ Web サーバーとクライアント アプリケーションが関与する環
 	Content-Type: text/json; charset=utf-8
 	ETag: "2147483648"
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
-	> [AZURE.TIP]セキュリティ上の理由から、機密データや認証された (HTTPS) 接続経由で返されるデータのキャッシュは許可しないでください。
+	> [AZURE.TIP] セキュリティ上の理由から、機密データや認証された (HTTPS) 接続経由で返されるデータのキャッシュは許可しないでください。
 
 	クライアント アプリケーションは、次の GET 要求を発行して同じリソースをいつでも取得できます。リソースが変更されている場合 (別の ETag が含まれている場合) は、キャッシュされたバージョンを破棄し、新しいバージョンをキャッシュに追加する必要があります。リソースのサイズが大きく、クライアントに送信する際に大量の帯域幅を必要とする場合、同じデータを取得する要求を繰り返すと、非効率的になる可能性があります。これを解決するために、HTTP プロトコルでは、Web API でサポートする必要がある、GET 要求を最適化するための次のプロセスが定義されています。
 
@@ -539,7 +539,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	- クライアントは、状態コードを使用してキャッシュを管理します。データが変更されていない場合 (状態コード 304)、オブジェクトはキャッシュされた状態を維持することができ、クライアント アプリケーションはオブジェクトのこのバージョンを引き続き使用します。データが変更されている場合 (状態コード 200) は、キャッシュされたオブジェクトを破棄し、新しいオブジェクトを挿入します。データが使用できなくなっている場合 (状態コード 404) は、オブジェクトをキャッシュから削除します。
 
-	> [AZURE.NOTE]応答ヘッダーに Cache-Control ヘッダーの no-store が含まれている場合は、HTTP 状態コードに関係なく、オブジェクトをキャッシュから常に削除する必要があります。
+	> [AZURE.NOTE] 応答ヘッダーに Cache-Control ヘッダーの no-store が含まれている場合は、HTTP 状態コードに関係なく、オブジェクトをキャッシュから常に削除する必要があります。
 
 	次のコードは、If-None-Match ヘッダーをサポートするように拡張された `FindOrderByID` メソッドを示しています。If-None-Match ヘッダーを省略すると、指定した注文が常に取得されることに注意してください。
 
@@ -631,7 +631,7 @@ Web サーバーとクライアント アプリケーションが関与する環
     }
 	```
 
-	> [AZURE.TIP]この例では、基になるデータ ソースから取得したデータをハッシュすることによって、データの ETag が生成されます。他の方法で ETag を計算できる場合は、このプロセスをさらに最適化できます。データが変更されている場合、データ ソースから取得する必要があるのはそのデータだけになります。この方法は、データのサイズが大きい場合や、データ ソースにアクセスするとかなりの待機時間が発生する可能性がある場合 (データ ソースがリモート データベースの場合など) に特に役立ちます。
+	> [AZURE.TIP] この例では、基になるデータ ソースから取得したデータをハッシュすることによって、データの ETag が生成されます。他の方法で ETag を計算できる場合は、このプロセスをさらに最適化できます。データが変更されている場合、データ ソースから取得する必要があるのはそのデータだけになります。この方法は、データのサイズが大きい場合や、データ ソースにアクセスするとかなりの待機時間が発生する可能性がある場合 (データ ソースがリモート データベースの場合など) に特に役立ちます。
 
 - **Etag を使用してオプティミスティック同時実行制御をサポートする**
 
@@ -646,7 +646,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	...
 	Date: Fri, 12 Sep 2014 09:18:37 GMT
 	Content-Length: ...
-	ProductID=3&Quantity=5&OrderValue=250
+	productID=3&quantity=5&orderValue=250
 	```
 
 	- Web API の PUT 操作で、要求されたデータ (前の例では order 1) の現在の ETag を取得し、If-Match ヘッダーの値と比較します。
@@ -732,7 +732,7 @@ Web サーバーとクライアント アプリケーションが関与する環
     }
 	```
 
-	> [AZURE.TIP]If-Match ヘッダーの使用は完全なオプションです。このヘッダーを省略すると、Web API は指定した注文を常に更新しようとするので、別のユーザーが行った更新が無条件に上書きされる可能性があります。更新データの損失に起因する問題を回避するには、常に If-Match ヘッダーを指定します。
+	> [AZURE.TIP] If-Match ヘッダーの使用は完全なオプションです。このヘッダーを省略すると、Web API は指定した注文を常に更新しようとするので、別のユーザーが行った更新が無条件に上書きされる可能性があります。更新データの損失に起因する問題を回避するには、常に If-Match ヘッダーを指定します。
 
 <a name="considerations-for-handling-large"></a>
 ## 大規模な要求と応答の処理に関する考慮事項
@@ -873,11 +873,11 @@ Web サーバーとクライアント アプリケーションが関与する環
     }
 	```
 
-	> [AZURE.TIP]Web サービスにアップロードできるデータの量は、ストリーミングの制約を受けないので、場合によっては、1 つの要求が大量のリソースを消費する巨大なオブジェクトなる可能性があります。Web API は、ストリーミング プロセスの途中で要求のデータ量が許容範囲を超えたことを確認すると、操作を中止し、状態コード 413 (Request Entity Too Large) を含む応答メッセージを返します。
+	> [AZURE.TIP] Web サービスにアップロードできるデータの量は、ストリーミングの制約を受けないので、場合によっては、1 つの要求が大量のリソースを消費する巨大なオブジェクトなる可能性があります。Web API は、ストリーミング プロセスの途中で要求のデータ量が許容範囲を超えたことを確認すると、操作を中止し、状態コード 413 (Request Entity Too Large) を含む応答メッセージを返します。
 
 	HTTP 圧縮を使用すると、ネットワーク経由で送信されるラージ オブジェクトのサイズを最小限に抑えることができます。この方法では、ネットワーク トラフィックの量と、関連するネットワーク待ち時間を削減できますが、クライアントと Web API をホストするサーバーで追加の処理が必要となります。たとえば、圧縮データを受信することを求めるクライアント アプリケーションは、Accept-Encoding: gzip 要求ヘッダーを含めることができます (他のデータ圧縮アルゴリズムを指定することもできます)。サーバーが圧縮をサポートしている場合、メッセージ本文に gzip 形式で保持されたコンテンツと、Content-Encoding: gzip 応答ヘッダーを使用して応答する必要があります。
 
-	> [AZURE.TIP]エンコードされた圧縮をストリーミングと組み合わせることができます。ストリーミングの前に、まずデータを圧縮し、メッセージのヘッダーに gzip コンテンツ エンコードとチャンク転送エンコードを指定します。また、一部の Web サーバー (Internet Information Server など) は、Web API でデータを圧縮するかどうかに関係なく、HTTP 応答を自動的に圧縮するように構成できます。
+	> [AZURE.TIP] エンコードされた圧縮をストリーミングと組み合わせることができます。ストリーミングの前に、まずデータを圧縮し、メッセージのヘッダーに gzip コンテンツ エンコードとチャンク転送エンコードを指定します。また、一部の Web サーバー (Internet Information Server など) は、Web API でデータを圧縮するかどうかに関係なく、HTTP 応答を自動的に圧縮するように構成できます。
 
 - **非同期操作をサポートしていないクライアントでは部分的な応答を実装する**
 
@@ -926,7 +926,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	クライアント アプリケーションは、URI \__http://www.adventure-works.com/api/orders?limit=30&offset=50_ を使用して、オフセット 50 で始まる 30 個の注文を取得する要求を発行できます。
 
-	> [AZURE.TIP]URI が 2000 文字を超える長さになるクエリ文字列をクライアント アプリケーションが指定できないようにします。多くの Web クライアントとサーバーは、この長さの URI を処理できません。
+	> [AZURE.TIP] URI が 2000 文字を超える長さになるクエリ文字列をクライアント アプリケーションが指定できないようにします。多くの Web クライアントとサーバーは、この長さの URI を処理できません。
 
 <a name="considerations-for-maintaining-responsiveness"></a>
 ## 応答性、スケーラビリティ、可用性の維持に関する考慮事項
@@ -937,7 +937,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	処理に時間がかかると考えられる要求は、その要求を送信したクライアントをブロックせずに実行する必要があります。Web API では、要求を検証する初期チェックを実行しし、処理を実行する別のタスクを開始した後、HTTP コード 202 (Accepted) を含む応答メッセージを返すことができます。タスクは、Web API の処理の一環として非同期に実行できます。また、Azure WebJobs (Web API が Azure Websites でホストされている場合) または worker ロール (Web API が Azure クラウド サービスとして実装されている場合) にオフロードすることもできます。
 
-	> [AZURE.NOTE]Azure Websites での WebJobs の使用方法の詳細については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](web-sites-create-web-jobs.md)に関するページをご覧ください。
+	> [AZURE.NOTE] Azure Websites での WebJobs の使用方法の詳細については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](web-sites-create-web-jobs.md)に関するページをご覧ください。
 
 	Web API では、処理の結果をクライアント アプリケーションに返すためのメカニズムも提供する必要があります。これを実現するには、クライアント アプリケーションが、処理が完了したかどうかを定期的に照会し、結果を取得するためのポーリング メカニズムを提供するか、Web API が操作の完了時に通知を送信できるようにします。
 
@@ -965,7 +965,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	- SignalR を使用して、永続的なネットワーク接続経由で Web サーバーからクライアントにリアルタイムでデータをプッシュする。SignalR は、NuGet パッケージとして ASP.NET Web アプリケーションで使用できます。詳細については、[ASP.NET SignalR](http://signalr.net/) の Web サイトをご覧ください。
 
-	> [AZURE.NOTE]Comet と SignalR は、どちらも Web サーバーとクライアント アプリケーション間の永続的なネットワーク接続を利用します。多数のクライアントが同じく多数の同時接続を必要とする場合があるため、これはスケーラビリティに影響を与える可能性があります。
+	> [AZURE.NOTE] Comet と SignalR は、どちらも Web サーバーとクライアント アプリケーション間の永続的なネットワーク接続を利用します。多数のクライアントが同じく多数の同時接続を必要とする場合があるため、これはスケーラビリティに影響を与える可能性があります。
 
 - **各要求がステートレスであることを確認する**
 
@@ -981,7 +981,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	接続を開いたままにしておくと、待機時間とネットワークの輻輳が低減されるので、応答性を向上させることができますが、不要な接続を必要以上に開いたままにしておくと、他の同時実行クライアントによる接続が制限され、スケーラビリティに悪影響を及ぼす可能性があります。また、クライアント アプリケーションがモバイル デバイスで実行されている場合は、バッテリの寿命にも影響する可能性があります。アプリケーションがサーバーに要求することがあまりない場合、開いている接続を維持すると、バッテリ消費が早くなる可能性があります。HTTP 1.1 で接続が永続化されないようにするには、クライアントが Connection:Close ヘッダーをメッセージに含め、既定の動作をオーバーライドします。同様に、サーバーが非常に多くのクライアントに対応している場合は、応答メッセージに Connection:Close ヘッダーを含めることで、接続を閉じ、サーバー リソースを節約します。
 
-	> [AZURE.NOTE]永続的な HTTP 接続は、通信チャネルを何度も確立することに関連して発生するネットワークのオーバーヘッドを削減するための完全なオプション機能です。Web API とクライアント アプリケーションは、どちらも永続的な HTTP 接続が使用可能であることに依存しないようにする必要があります。永続的な HTTP 接続を使用して、Comet スタイルの通知システムを実装しないでください。代わりに、TCP レイヤーで Socket (使用可能な場合は WebSocket) を利用します。最後に、クライアント アプリケーションがプロキシ経由でサーバーと通信する場合、Keep-Alive ヘッダーの使用が制限されます。クライアントおよびプロキシとの接続だけが永続化されます。
+	> [AZURE.NOTE] 永続的な HTTP 接続は、通信チャネルを何度も確立することに関連して発生するネットワークのオーバーヘッドを削減するための完全なオプション機能です。Web API とクライアント アプリケーションは、どちらも永続的な HTTP 接続が使用可能であることに依存しないようにする必要があります。永続的な HTTP 接続を使用して、Comet スタイルの通知システムを実装しないでください。代わりに、TCP レイヤーで Socket (使用可能な場合は WebSocket) を利用します。最後に、クライアント アプリケーションがプロキシ経由でサーバーと通信する場合、Keep-Alive ヘッダーの使用が制限されます。クライアントおよびプロキシとの接続だけが永続化されます。
 
 ## Web API の公開と管理に関する考慮事項
 
@@ -1003,7 +1003,7 @@ Web API をクライアント アプリケーションで使用できるよう�
 ## Web API のテストに関する考慮事項
 ソフトウェアの他の部分と同様に、Web API を徹底的にテストする必要があります。他の種類のアプリケーションの場合と同様に、各操作の機能を検証する単体テストを作成することを検討してください。詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 
-> [AZURE.NOTE]このガイダンスで提供されるサンプル Web API には、選択した操作で単体テストを実行する方法を示すテスト プロジェクトが含まれています。
+> [AZURE.NOTE] このガイダンスで提供されるサンプル Web API には、選択した操作で単体テストを実行する方法を示すテスト プロジェクトが含まれています。
 
 Web API の性質により、Web API が正しく動作することを確認するための独自の追加要件が発生します。次の側面には特に注意が必要です。
 
@@ -1013,13 +1013,13 @@ Web API の性質により、Web API が正しく動作することを確認す�
 
 - すべてのルートが適切に保護され、適切な認証および承認チェックの対象となっていることを確認します。
 
-	> [AZURE.NOTE]ユーザー認証など、セキュリティの一部の側面は、Web API ではなくホスト環境の責任範囲と考えられますが、デプロイメント プロセスの一環として、セキュリティ テストも含める必要があります。
+	> [AZURE.NOTE] ユーザー認証など、セキュリティの一部の側面は、Web API ではなくホスト環境の責任範囲と考えられますが、デプロイメント プロセスの一環として、セキュリティ テストも含める必要があります。
 
 - 各操作で実行される例外処理をテストし、意味のある適切な HTTP 応答がクライアント アプリケーションに返されていることを確認します。
 - 要求メッセージと応答メッセージが適切な形式であることを確認します。たとえば、HTTP POST 要求に x-www-form-urlencoded 形式で新しいリソースのデータが含まれている場合は、対応する操作でデータが正しく解析されていること、リソースが作成されていること、正しい Location ヘッダーなど、新しいリソースの詳細を含む応答が返されていることを確認します。
 - 応答メッセージのすべてのリンクと URI を確認します。たとえば、HTTP POST メッセージでは、新しく作成されたリソースの URI を返す必要があります。すべての HATEOAS リンクが有効である必要があります。
 
-	> [AZURE.IMPORTANT]API Management サービスを使用して Web API を公開する場合、これらの URI は、Web API をホストする Web サーバーの URL ではなく、管理サービスの URL を反映する必要があります。
+	> [AZURE.IMPORTANT] API Management サービスを使用して Web API を公開する場合、これらの URI は、Web API をホストする Web サーバーの URL ではなく、管理サービスの URL を反映する必要があります。
 
 - 各操作が入力のさまざまな組み合わせに対して正しい状態コードを返していることを確認します。次に例を示します。
 	- クエリが成功した場合は、状態コード 200 (OK) を返します。
@@ -1039,13 +1039,13 @@ Web API の性質により、Web API が正しく動作することを確認す�
 
 ## Microsoft Azure API Management サービスを使用した Web API の公開と管理
 
-Azure には、Web API の公開と管理に使用できる [API Management サービス](http://azure.microsoft.com/documentation/services/api-management/)が用意されています。この機能を使用して、1 つ以上の Web API のファサードとして機能するサービスを生成できます。このサービスは、Microsoft Azure 管理ポータルを使用して作成および構成できるスケーラブルな Web サービスです。次のように、このサービスを使用して Web API を公開および管理できます。
+Azure には、Web API の公開と管理に使用できる [API Management サービス](https://azure.microsoft.com/documentation/services/api-management/)が用意されています。この機能を使用して、1 つ以上の Web API のファサードとして機能するサービスを生成できます。このサービスは、Microsoft Azure 管理ポータルを使用して作成および構成できるスケーラブルな Web サービスです。次のように、このサービスを使用して Web API を公開および管理できます。
 
 1. Web サイト、Azure クラウド サービス、または Azure 仮想マシンに Web API をデプロイします。
 
 2. API Management サービスを Web API に接続します。管理 API の URL に送信された要求は、Web API の URI にマップされます。1 つの API Management サービスで、複数の Web API に要求をルーティングできます。これにより、複数の Web API を 1 つの管理サービスに集約できます。同様に、さまざまなアプリケーションが使用できる機能を制限したり、パーティションに分割したりする必要がある場合は、複数の API Management サービスから 1 つの Web API を参照できます。
 
-	> [AZURE.NOTE]HTTP GET 要求に対する応答の一部として生成される HATEOAS リンクの URI は、Web API をホストする Web サーバーではなく、API Management サービスの URL を参照する必要があります。
+	> [AZURE.NOTE] HTTP GET 要求に対する応答の一部として生成される HATEOAS リンクの URI は、Web API をホストする Web サーバーではなく、API Management サービスの URL を参照する必要があります。
 
 3. Web API ごとに、その Web API が公開する HTTP 操作と、操作が入力として受け取ることができる省略可能なパラメーターを指定します。同じデータに対して繰り返される要求を最適化するために、Web API から受信する応答を API Management サービスでキャッシュする必要があるかどうかを構成することもできます。各操作で生成できる HTTP 応答の詳細を記録します。この情報を使用して開発者向けのドキュメントが生成されるので、情報が正確かつ完全なものであることが重要です。
 
@@ -1055,13 +1055,13 @@ Azure には、Web API の公開と管理に使用できる [API Management サ�
 
 5. 成果物を作成します。成果物とはパブリケーションの単位です。前に管理サービスに接続した Web API を成果物に追加します。成果物を発行すると、それらの Web API を開発者が使用できるようになります。
 
-	> [AZURE.NOTE]成果物を発行する前に、その成果物にアクセスできるユーザー グループを定義し、それらのグループにユーザーを追加することもできます。これにより、Web API を使用できる開発者とアプリケーションを制御できます。Web API が承認を必要とする場合、Web API にアクセスするには、開発者が成果物管理者に要求を送信しておく必要があります。管理者は、開発者に対してアクセスを許可または拒否できます。状況が変わった場合は、既存の開発者をブロックすることもできます。
+	> [AZURE.NOTE] 成果物を発行する前に、その成果物にアクセスできるユーザー グループを定義し、それらのグループにユーザーを追加することもできます。これにより、Web API を使用できる開発者とアプリケーションを制御できます。Web API が承認を必要とする場合、Web API にアクセスするには、開発者が成果物管理者に要求を送信しておく必要があります。管理者は、開発者に対してアクセスを許可または拒否できます。状況が変わった場合は、既存の開発者をブロックすることもできます。
 
 6.	各 Web API のポリシーを構成します。ポリシーでは、ドメイン間呼び出しを許可するかどうか、クライアントの認証方法、XML データ形式と JSON データ形式間で透過的な変換を行うかどうか、特定の IP 範囲からの呼び出しを制限するかどうか、使用量のクォータ、呼び出しレートを制限するかどうかなどの側面を制御します。ポリシーは、成果物全体にグローバルに適用することも、成果物の 1 つの Web API に適用することもできます。また、Web API の個々の操作に適用することもできます。
 
-これらのタスクの実行方法の詳細については、Microsoft Web サイトの「[API Management](http://azure.microsoft.com/services/api-management/)」をご覧ください。Azure API Management サービスでは、独自の REST インターフェイスも提供しています。これにより、Web API の構成プロセスを簡素化するためのカスタム インターフェイスを構築できます。詳細については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
+これらのタスクの実行方法の詳細については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。Azure API Management サービスでは、独自の REST インターフェイスも提供しています。これにより、Web API の構成プロセスを簡素化するためのカスタム インターフェイスを構築できます。詳細については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 
-> [AZURE.TIP]Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
+> [AZURE.TIP] Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
 
 > この構造では、Web サイトにカスタム DNS 名を使用している場合に、各 Web サイトの適切な CNAME レコードを、Azure Traffic Manager の Web サイトの DNS 名を指すように構成する必要があります。
 
@@ -1127,7 +1127,7 @@ API Management サービスを使用して Web API を公開した場合、Micro
 
 この情報を使用して、特定の Web API または操作がボトルネックの原因となっているかどうかを確認し、必要に応じてホスト環境を拡張したり、サーバーをさらに追加したりできます。また、1 つ以上のアプリケーションがリソースを過度に使用していないかどうかを確認し、クォータを設定して呼び出しレートを制限する適切なポリシーを適用することもできます。
 
-> [AZURE.NOTE]発行された成果物の詳細を変更できます。変更はすぐに適用されます。たとえば、Web API を含む成果物を再発行しなくても、その Web API に対して操作を追加または削除できます。
+> [AZURE.NOTE] 発行された成果物の詳細を変更できます。変更はすぐに適用されます。たとえば、Web API を含む成果物を再発行しなくても、その Web API に対して操作を追加または削除できます。
 
 ## 関連するパターン
 - [ファサード](http://en.wikipedia.org/wiki/Facade_pattern) パターンは、Web API にインターフェイスを提供する方法を記述します。
@@ -1145,11 +1145,11 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Web API でグローバルなエラー処理とログを実装する方法については、Microsoft Web サイトの [Web API でのグローバルなエラー処理](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling)に関する記事をご覧ください。
 - Azure Websites で WebJobs を使用してバックグラウンド操作を実行する方法と例については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](web-sites-create-web-jobs.md)に関するページをご覧ください。
 - Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users/)」をご覧ください。
-- Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](http://azure.microsoft.com/services/api-management/)」をご覧ください。
+- Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。
 - API Management REST API を使用して、カスタム管理アプリケーションを構築する方法については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 - Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
 - ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

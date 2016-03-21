@@ -11,12 +11,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/18/2015" 
-	ms.author="sergkanz"/>
+	ms.date="02/12/2016" 
+	ms.author="joshweb"/>
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
 
-[Application Insights SDK](app-insights-windows-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](http://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
+[Application Insights SDK](app-insights-windows-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
 
 
 #### アプリケーションに SDK をインストールするには
@@ -32,15 +32,16 @@
 * 新旧のバージョンの ApplicationInsights.config を比較します。旧バージョンに対して行ったカスタマイズをもう一度マージします。
 * ソリューションをリビルドします。
 
-## バージョン 1.2
+## バージョン 1.1.1
 
-### Windows App SDK
+### Windows SDK
 
-- アプリが再度開かれた後に永続化したテレメトリが送信されるのを阻止していた FileNotFound 例外を修正します。
+- Windows Phone の Silverlight SDK を使用する場合は、クラッシュ時にハングを修正します。この変更を行うと、WindowsAppInitialier.InitializeAsync(...) の呼び出しの後で、約 2 秒後以降に発生するクラッシュがディスクに保存され、次回のアプリケーションの起動時に送信されます。呼び出し後約 2 秒より前に発生するクラッシュは、無視されます。  
+- NuGet の依存関係を特定のバージョンのコアと Microsoft.ApplicationInsights.PersistenceChannel (v1.2.3) に設定します。   
 
 ### コア SDK
 
-- [github](http://github.com/microsoft/ApplicationInsights-dotnet) から出荷された Application Insights SDK の最初のバージョン
+- コアは、github で管理されます。コア SDK の将来のリリース ノートは、[github](http://github.com/Microsoft/ApplicationInsights-dotnet/releases) で確認できます。
 
 ## バージョン 1.1
 
@@ -94,4 +95,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

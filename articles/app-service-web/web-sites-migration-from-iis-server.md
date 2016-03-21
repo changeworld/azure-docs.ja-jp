@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="02/26/2016" 
 	ms.author="cephalin"/>
 
 # エンタープライズ Web アプリの Azure App Service への移行
 
 インターネット インフォメーション サービス (IIS) 6 以降で実行されている既存の Web サイトを簡単に [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に移行できます。
 
->[AZURE.IMPORTANT]Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了します。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Web Apps により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Web Apps Migration Assistant により移行プロセスが自動化されます。
+>[AZURE.IMPORTANT] Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了します。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Web Apps により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Web Apps Migration Assistant により移行プロセスが自動化されます。
 
 [Web Apps Migration Assistant](https://www.movemetothecloud.net/) では、IIS サーバーのインストールを分析し、どのサイトを App Service に移行できるかを識別し、移行できない要素またはプラットフォームでサポートされていない要素を強調表示してから、Web サイトおよび関連するデータベースを Azure に移行できます。
 
@@ -66,7 +66,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
 
 	![](./media/web-sites-migration-from-iis-server/install-page.png)
 
-	>[AZURE.NOTE]また、[**オフライン インストール用のダウンロード**] をクリックして ZIP ファイルをダウンロードし、インターネットに接続していないサーバーにインストールすることもできます。または、[**既存の移行準備レポートのアップロード**] をクリックすることもできます。これは、以前に生成した既存の移行準備レポート (後述) を使用する場合の高度なオプションです。
+	>[AZURE.NOTE] また、[**オフライン インストール用のダウンロード**] をクリックして ZIP ファイルをダウンロードし、インターネットに接続していないサーバーにインストールすることもできます。または、[**既存の移行準備レポートのアップロード**] をクリックすることもできます。これは、以前に生成した既存の移行準備レポート (後述) を使用する場合の高度なオプションです。
 
 5.	[**アプリケーションのインストール**] 画面で [**インストール**] をクリックして、アプリケーションをコンピューターにインストールします。必要に応じて、Web Deploy、DacFX、IIS などの対応する依存関係もインストールされます。
 
@@ -94,7 +94,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
  
 	![](./media/web-sites-migration-from-iis-server/readiness-assessment.png)
 
-12.	[**移行の開始**] をクリックして移行を開始します。これで Azure にリダイレクトされ、自分のアカウントにログインできるようになります。アクティブな Azure サブスクリプションを持つアカウントでログインすることが重要です。Azure アカウントがない場合は、無料試用版でサインアップできます。
+12.	[**移行の開始**] をクリックして移行を開始します。これで Azure にリダイレクトされ、自分のアカウントにログインできるようになります。アクティブな Azure サブスクリプションを持つアカウントでログインすることが重要です。Azure アカウントがない場合は、[こちらで](https://azure.microsoft.com/pricing/free-trial/?WT.srch=1&WT.mc_ID=SEM_)無料試用版にサインアップできます。
 
 13.	移行後の Azure Web アプリとデータベースに対して使用するテナント アカウント、Azure サブスクリプション、およびリージョンを選択し、[**移行を開始する**] をクリックします。移行する Web サイトは後で選択することもできます。
 
@@ -111,7 +111,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
 
 	![](./media/web-sites-migration-from-iis-server/migration-settings.png)
 
-	>[AZURE.NOTE]カスタム設定で [**Azure Active Directory を有効にする**] チェック ボックスをオンにすると、Azure Web アプリが [Azure Active Directory](active-directory-whatis.md) (**既定のディレクトリ**) に統合されます。オンプレミス Active Directory と Azure Active Directory の同期の詳細については、「[ディレクトリ統合](http://msdn.microsoft.com/library/jj573653)」を参照してください。
+	>[AZURE.NOTE] カスタム設定で [**Azure Active Directory を有効にする**] チェック ボックスをオンにすると、Azure Web アプリが [Azure Active Directory](active-directory-whatis.md) (**既定のディレクトリ**) に統合されます。オンプレミス Active Directory と Azure Active Directory の同期の詳細については、「[ディレクトリ統合](http://msdn.microsoft.com/library/jj573653)」を参照してください。
 
 16.	 必要な変更をすべて行ったら、[**作成**] をクリックして移行プロセスを開始します。移行ツールにより、Azure SQL Database と Azure Web アプリが作成され、Web サイトのコンテンツとデータベースが発行されます。移行の進行状況が移行ツールで明確に表示され、最後に概要のページが表示されます。このページには、移行されたサイトの詳細情報、移行が正しく行われたかどうか、新しく作成された Azure Web アプリへのリンクなどが表示されます。
 
@@ -123,17 +123,16 @@ Migration Assistant により対応状況レポートが作成されます。こ
  
 20.	Azure Web アプリへのリンクをクリックし、移行が完了したことを確認します。
 
-21. これで、移行した Web アプリを Azure App Service で管理できるようになりました。管理を行うには、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)にログインします。
+21. これで、移行した Web アプリを Azure App Service で管理できるようになりました。管理を行うには、[Azure ポータル](https://portal.azure.com)にログインします。
 
 22. Azure ポータルで、[Web Apps] ブレードを開き、移行した Web サイト (Web アプリとして表示される) を確認します。いずれかをクリックして Web アプリの管理を開始します。継続的発行の構成、バックアップの作成、自動スケーリング、使用状況やパフォーマンスの監視などを行うことができます。
 
 	![](./media/web-sites-migration-from-iis-server/TimeTrackerMigrated.png)
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

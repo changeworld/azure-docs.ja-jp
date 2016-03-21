@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -390,13 +390,34 @@
 | usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
+## Windows 10
+Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD に同期します。シナリオの詳細については、「[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)」を参照してください。これらの属性は常に同期し、Windows 10 は選択を解除できるアプリとして表示されません。Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
+
+| 属性名| デバイス| コメント |
+| --- | :-: | --- |
+| accountEnabled| ○| |
+| deviceTrustType| ○| ドメイン参加コンピューターのハードコーディングされた値です。 |
+| displayName | ○| |
+| ms-DS-CreatorSID | ○| registeredOwnerReference とも呼ばれます。|
+| objectGUID | ○| deviceID とも呼ばれます。|
+| objectSID | ○| onPremisesSecurityIdentifier とも呼ばれます。|
+| operatingSystem | ○| deviceOSType とも呼ばれます。|
+| operatingSystemVersion | ○| deviceOSVersion とも呼ばれます。|
+| userCertificate | ○| |
+
+選択したアプリに加えてユーザーには以下の属性があります。
+
+| 属性名| ユーザー| コメント |
+| --- | :-: | --- |
+| domainFQDN| ○| dnsDomainName とも呼ばれます。例: contoso.com|
+| domainNetBios| ○| netBiosName とも呼ばれます。例: CONTOSO|
 
 ## Exchange ハイブリッドの書き戻し
 次の属性は、Exchange ハイブリッドを有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| msDS-ExternalDirectoryObject| ○| | | Azure AD の cloudAnchor から派生します。|
+| msDS ExternalDirectoryObjectID| ○| | | Azure AD の cloudAnchor から派生します。これは Exchange 2016 で新たに追加されました。|
 | msExchArchiveStatus| ○| | | オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。|
 | msExchBlockedSendersHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
 | msExchSafeRecipientsHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
@@ -404,6 +425,27 @@
 | msExchUCVoiceMailSettings| ○| | | ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。|
 | msExchUserHoldPolicies| ○| | | 訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。|
 | proxyAddresses| ○| ○| ○| Exchange Online の x500 アドレスのみが挿入されます。|
+
+## デバイスの書き戻し
+デバイス オブジェクトは、Active Directory に作成されます。これらは、Azure AD に参加しているデバイスか、ドメインに参加している Windows 10 コンピューターです。
+
+| 属性名| デバイス| コメント |
+| --- | :-: | --- |
+| altSecurityIdentities | ○| |
+| displayName | ○| |
+| dn | ○| |
+| msDS-CloudAnchor | ○| |
+| msDS-DeviceID | ○| |
+| msDS-DeviceObjectVersion | ○| |
+| msDS-DeviceOSType | ○| |
+| msDS-DeviceOSVersion | ○| |
+| msDS-DevicePhysicalIDs | ○| |
+| msDS-KeyCredentialLink | ○| Windows Server 2016 AD スキーマでのみ |
+| msDS-IsCompliant | ○| |
+| msDS-IsEnabled | ○| |
+| msDS-IsManaged | ○| |
+| msDS-RegisteredOwner | ○| |
+
 
 ## 属性に関する注意事項
 - 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
@@ -414,4 +456,4 @@
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

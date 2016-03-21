@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
-   ms.author="twounder;barbkess"/>
+   ms.date="03/03/2016"
+   ms.author="mausher;barbkess;sonyama"/>
 
 # SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする
 
@@ -29,10 +29,10 @@ Visual Studio をインストールする場合、Visual Studio 2013 または V
 
 Visual Studio 2015 をインストールするには:
 
-1. Visual Studio Online から [Visual Studio 2015 をダウンロード](https://www.visualstudio.com/downloads)します。 
+1. Visual Studio Team Services から [Visual Studio 2015 をダウンロード](https://www.visualstudio.com/downloads)します。
 2. MSDN の [Visual Studio のインストール](https://msdn.microsoft.com/library/e2h7fzkw.aspx)に関するガイドに従ってインストールし、既定の構成を選択します。
 
-## 手順 2. SQL Server Data Tools (SSDT) をダウンロードしてインストールする 
+## 手順 2. SQL Server Data Tools (SSDT) をダウンロードしてインストールする
 
 Visual Studio がインストールされているかどうかに関係なく、SQL Data Warehouse をサポートする最新バージョンの SQL Server Data Tools (SSDT) が必要になります。
 
@@ -49,4 +49,4 @@ Visual Studio がインストールされているかどうかに関係なく、
 
 <!--Image references-->
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

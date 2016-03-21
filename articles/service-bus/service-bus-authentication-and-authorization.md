@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/04/2015"
+   ms.date="12/09/2015"
    ms.author="sethm" />
 
 # Service Bus の認証と承認
@@ -27,7 +27,7 @@ SAS は、簡単で柔軟性が高く、使いやすい認証スキームを Ser
 
 SAS のキーは Service Bus 名前空間で構成できます。このキーは、その名前空間内のすべてのメッセージング エンティティに適用されます。Service Bus のキューとトピックでキーを構成することもできます。SAS は、Service Bus Relay でもサポートされています。
 
-SAS を使用するには、名前空間、キュー、トピックで、次の要素で構成される [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) オブジェクトを構成します。
+SAS を使用するには、名前空間、キュー、トピックで、次の要素で構成される [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) オブジェクトを構成します。
 
 - 規則を識別する *KeyName*。
 
@@ -37,15 +37,15 @@ SAS を使用するには、名前空間、キュー、トピックで、次の�
 
 - 付与されたリッスン、送信、管理権限のコレクションを表す *Rights*。
 
-名前空間レベルで構成された承認規則では、対応するキーを使用して署名されたトークンによって、クライアントの名前空間内のすべてのエンティティへのアクセス権を付与できます。Service Bus の名前空間、キュー、トピックでは、このような承認規則を最大 12 個構成できます。既定では、すべての権限を持つ [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) は、最初にプロビジョニングするときに、各名前空間用に構成されます。
+名前空間レベルで構成された承認規則では、対応するキーを使用して署名されたトークンによって、クライアントの名前空間内のすべてのエンティティへのアクセス権を付与できます。Service Bus の名前空間、キュー、トピックでは、このような承認規則を最大 12 個構成できます。既定では、すべての権限を持つ [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) は、最初にプロビジョニングするときに、各名前空間用に構成されます。
 
-エンティティにアクセスするには、クライアントには、特定の [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) を使用して生成された SAS トークンが必要です。SAS トークンの生成には、承認規則に関連付けられた暗号化キーによって、アクセスが要求されるリソース URI と、有効期限で構成されるリソース文字列の HMAC-SHA256 を使用します。
+エンティティにアクセスするには、クライアントには、特定の [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) を使用して生成された SAS トークンが必要です。SAS トークンの生成には、承認規則に関連付けられた暗号化キーによって、アクセスが要求されるリソース URI と、有効期限で構成されるリソース文字列の HMAC-SHA256 を使用します。
 
-Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。SAS には、[SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) のサポートが含まれています。接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
+Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。SAS には、[SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) のサポートが含まれています。接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
 ## ACS 認証
 
-ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](https://msdn.microsoft.com/library/azure/dn495165.aspx) を使用して作成する必要があります。次に例を示します。
+ACS を使用した Service Bus の認証は、付属の "-sb" ACS 名前空間を通じて管理されます。付属の ACS 名前空間を Service Bus 名前空間用に作成すると、Azure クラシック ポータルを使用して Service Bus 名前空間を作成することはできません。この場合、この名前空間は、PowerShell コマンドレット [New-AzureSBNamespace](https://msdn.microsoft.com/library/azure/dn495165.aspx) を使用して作成する必要があります。次に例を示します。
 
 ```
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
@@ -73,4 +73,4 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 ACS トークンの詳細については、「[方法: OAuth WRAP プロトコルを使用して ACS からのトークンを要求する](https://msdn.microsoft.com/library/hh674475.aspx)」を参照してください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

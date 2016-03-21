@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="02/01/2016"
 	ms.author="mingzhan"/>
 
 
@@ -28,7 +28,7 @@
 
 ##仮想マシンに MySQL をインストールする
 
-> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て、VM 名を`mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE] このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て、VM 名を`mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
 
 この例では、MySQL ポートとしてポート 3306 を使用します。
 
@@ -56,7 +56,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
     確認のため、もう一度パスワードを入力します。
 
-    ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p2.png)
+    ![イメージ](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p2.png)
 
 - 手順 2. MySQL サーバー にログインする
 
@@ -185,4 +185,4 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 ###次の手順
 MySQL の使用法などの情報は[こちら](https://www.mysql.com/)です。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

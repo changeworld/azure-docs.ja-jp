@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="02/08/2016" 
 	ms.author="fashah;garye" />
 
 #<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
 
-このドキュメントでは、Azure の SQL Server VM に格納されたデータに対するデータの探索と特徴の生成について説明します。これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
+このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
 
 
-> [AZURE.NOTE]このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
+> [AZURE.NOTE] このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
 
 ##<a name="SQL"></a>SQL の使用
 
@@ -34,7 +34,7 @@
 SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
 
 
-> [AZURE.NOTE]実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
+> [AZURE.NOTE] 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
 
 1. 1 日ごとの所見の数を取得する
 
@@ -62,7 +62,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 3. [1 つの列からの特徴の展開](#sql-featurerollout)
 
 
-> [AZURE.NOTE]追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
+> [AZURE.NOTE] 追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
 
 ###<a name="sql-countfeature"></a>カウント ベースの特徴の生成
 
@@ -113,10 +113,10 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 上記の位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。
 
 
-> [AZURE.TIP]お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)
+> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)
  
 
-> [AZURE.TIP]もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> [AZURE.TIP] もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
@@ -152,4 +152,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

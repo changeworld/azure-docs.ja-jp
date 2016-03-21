@@ -4,8 +4,8 @@
 	services="active-directory-ds"
 	documentationCenter=""
 	authors="mahesh-unnikrishnan"
-	manager="udayh"
-	editor="inhenk"/>
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory-ds"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="01/26/2016"
 	ms.author="maheshu"/>
 
 # Azure Active Directory ドメイン サービス プレビュー: FAQ
@@ -38,11 +38,14 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 #### Azure AD Domain Services は新しい Azure ポータルで利用できますか。
 いいえ。Azure AD Domain Services は、古い Microsoft Azure 管理ポータル (https://manage.windowsazure.com)) でのみ構成できます。今後、新しい Microsoft Azure 管理ポータル (https://portal.azure.com) までサポートを拡大する予定です。
 
+#### Azure AD ドメイン サービスの管理対象ドメインにドメイン コント ローラーを追加することはできますか。
+いいえ。管理対象ドメインは Azure AD ドメイン サービスによって提供されるドメインです。このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。そのため、管理対象ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。
+
 
 ### 管理と操作
 
 #### Azure AD Domain Services を有効にしています。このドメインに参加しているドメイン コンピューターでは、どのユーザー アカウントを使用できますか。
-管理グループに追加したユーザー アカウント (つまり、AAD DC 管理者) を、ドメインに参加しているコンピューターで使用できます。さらに、このグループのユーザーには、ドメインに参加しているコンピューターへのリモート デスクトップ アクセス権が付与されます。
+管理グループに追加した任意のユーザー アカウント (つまり、AAD DC 管理者) を、ドメインに参加しているコンピューターで使用できます。さらに、このグループのユーザーには、ドメインに参加しているコンピューターへのリモート デスクトップ アクセス権が付与されます。
 
 #### Azure AD Domain Services によって提供されるドメインでドメイン管理者特権を使用できますか。
 いいえ。これは管理されたサービスであるため、ドメインに関する管理者特権は提供されません。つまり、‘ドメイン管理者’ 特権と ‘エンタープライズ管理者’ 特権は、どちらもドメインでは利用できません。Azure AD directory 内の既存のドメイン管理者グループまたはエンタープライズ管理者グループにも、ドメインに関するドメイン/エンタープライズ管理者特権は付与されません。
@@ -50,6 +53,11 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 #### LDAP または他の AD 管理ツールを使用して、Azure AD Domain Services によって用意されるドメインのグループ メンバーシップを変更できますか。
 いいえ。Azure AD Domain Services によってサービスされるドメインのグループ メンバーシップは変更できません。ユーザー属性に対しても同様です。ただし、Azure AD またはオンプレミスのドメインのいずれかで、グループ メンバーシップまたはユーザー属性を変更できます。このような変更は、Azure AD Domain Services に自動的に同期されます。
 
+#### Azure AD ドメイン サービスによって提供されるドメインのスキーマは拡張できますか。
+いいえ。スキーマは、Microsoft が管理対象ドメインを管理することで管理されます。Azure AD ドメイン サービスでは、スキーマの拡張機能はサポートされていません。
+
+### Azure AD ドメイン サービスで提供される DNS レコードは変更できますか。
+はい。管理グループ (AAD DC Administrators) に属するユーザーは、DNS レコードを変更する DNS 管理者アクセス許可を持ちます。
 
 ### 課金と可用性
 
@@ -68,4 +76,4 @@ Azure AD Domain Services を利用できる Azure のリージョンの一覧に
 #### Azure AD Domain Services はいつ一般公開される予定ですか。
 現時点では、このサービスの一般公開予定は決まっていません。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

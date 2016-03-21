@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,10 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="10/12/2015"
+   ms.date="12/14/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する
+
+[AZURE.INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
 ## 概要
 
@@ -44,6 +46,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
   1. ターゲット デバイスを指定します。これは、複製が作成される場所です。同じデバイスを選択することも、別のデバイスを指定することもできます。別のクラウド サービス プロバイダー (Azure 以外) に関連付けられたボリュームを選択する場合、ターゲット デバイスのドロップダウン リストには物理デバイスのみが表示されます。別のクラウド サービスのプロバイダーに関連付けられたボリュームを仮想デバイス上に複製することはできません。
 
         >  [AZURE.NOTE] 複製に必要な容量がターゲット デバイスで使用可能な容量を下回っていることを確認してください。
+
   2. 複製の一意の [ボリューム名] を指定します。名前は 3 文字以上 127 文字以下にする必要があります。
   3. 矢印アイコン ![矢印アイコン](./media/storsimple-clone-volume/HCS_ArrowIcon.png) をクリックして、次のページに進みます。
 
@@ -59,7 +62,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
   1. **[デバイス]** ページに移動し、**[ボリューム コンテナー]** タブを選択します。
   2. 複製元のボリュームに関連付けられているボリューム コンテナーを選択します。ボリュームの一覧に、先ほど作成した複製が表示されます。
 
->[AZURE.NOTE]複製されたボリュームの監視と既定のバックアップは自動的に無効になっています。
+>[AZURE.NOTE] 複製されたボリュームの監視と既定のバックアップは自動的に無効になっています。
 
 このように作成された複製は一時的な複製です。複製の種類の詳細については、「[一時的な複製と永続的な複製](#transient-vs.-permanent-clones)」を参照してください。
 
@@ -81,7 +84,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
  
 ![ビデオ](./media/storsimple-clone-volume/Video_icon.png) **ビデオ**
 
-StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
 
 ### 永続的な複製による運用環境でのテスト
 
@@ -94,4 +97,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

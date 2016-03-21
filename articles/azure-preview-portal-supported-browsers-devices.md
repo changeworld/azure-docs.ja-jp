@@ -27,11 +27,9 @@ Microsoft Azure ポータルは、最新の主要なデスクトップ デバイ
 次のブラウザーの最新バージョンがサポートされています。
 
 - Edge (最新バージョン)
-- Internet Explorer (11 以降)
-- Safari (7 以降)
+- Internet Explorer 11
+- Safari (最新バージョン、Mac のみ)
 - Chrome (最新バージョン)
 - Firefox (最新バージョン)
 
-*Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

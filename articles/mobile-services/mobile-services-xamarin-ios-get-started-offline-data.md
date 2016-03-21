@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure" 
-	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	editor="wesmc" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure"
+	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	editor="wesmc"
+	manager="dwrede"
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/02/2015"
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="01/21/2016"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
@@ -29,7 +34,7 @@
 * エンド ユーザーがネットワークにアクセスできなくてもデータを作成および変更できるようにすることで、接続がほとんどまたはまったく得られないような状況をサポートする。
 * 複数のデバイス間でデータを同期させ、同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
 >
 > Mobile Services を初めて使用する場合には、「[Mobile Services の使用]」を完了しておく必要があります。
 
@@ -42,7 +47,7 @@
 このチュートリアルには、次のものが必要です。
 
 * [Xamarin 拡張機能]付きの Visual Studio **または** OS X 用 [Xamarin Studio]
-* XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン) 
+* XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン)
 * チュートリアル「[Mobile Services の使用]」を完了していること
 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
@@ -94,7 +99,7 @@
 
     この例では、リモートの `TodoItem` テーブルにあるすべてのレコードを取得していますが、クエリを渡すことでレコードをフィルター処理することもできます。`PullAsync()` の最初のパラメーターは、増分同期に使用されるクエリ ID です。増分同期では `UpdatedAt` タイムスタンプを使用して、前回の同期以降に変更されたレコードのみを取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`null` をクエリ ID として渡します。これによってプル操作ごとにすべてのレコードを取得することになり、効率が悪くなる可能性があります。
 
-    >[AZURE.NOTE]モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除]を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
+    >[AZURE.NOTE] モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除]を有効にする必要があります。有効にしない場合は、アプリで定期的に `IMobileServiceSyncTable.PurgeAsync()` を呼び出して、ローカル ストアを削除する必要があります。
 
     `MobileServicePushFailedException` はプッシュ操作とプル操作の両方で発生する場合があることに注意してください。次のチュートリアル「[Mobile Services のオフライン サポートでの競合を処理する]」では、これらの同期関連の例外の処理方法について説明します。
 
@@ -110,7 +115,7 @@
 
     - `InsertTodoItemAsync`
     - `CompleteItemAsync`
-    - `RefreshAsync`
+    - `RefreshDataAsync`
 
     これで、`RefreshAsync()` はローカル ストアからデータを読み込むだけで、アプリケーションのバックエンドには接続しません。
 
@@ -145,9 +150,9 @@
 
 2. アプリケーションを再構築して実行します。アプリケーションは現在モバイル サービスに接続されていますが、オフラインの状況と同じ表示になっていることに注意してください。これは、このアプリケーションが、ローカル ストアを示す `IMobileServiceSyncTable` を常に使用するためです。
 
-3. Microsoft Azure の管理ポータルにログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが JavaScript バックエンドを使用している場合は、モバイル サービスの [**データ**] タブからデータを参照できます。
+3. [Azure クラシック ポータル]にログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが JavaScript バックエンドを使用している場合は、モバイル サービスの [**データ**] タブからデータを参照できます。
 
-    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL Databases**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
+    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL データベース**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
 
     データベースとローカル ストアの間でデータがまだ同期されて*いない*ことを確認します。
 
@@ -161,8 +166,6 @@
 
 ## 次のステップ
 
-* [Mobile Services のオフライン サポートでの競合を処理する]
-
 * [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]
 
 <!-- Anchors. -->
@@ -173,14 +176,14 @@
 <!-- Images -->
 
 <!-- URLs. -->
-[Mobile Services のオフライン サポートでの競合の処理]: ../mobile-services-xamarin-ios-handling-conflicts-offline-data.md
-[Mobile Services のオフライン サポートでの競合を処理する]: ../mobile-services-xamarin-ios-handling-conflicts-offline-data.md
+[Mobile Services のオフライン サポートでの競合の処理]: mobile-services-xamarin-ios-handling-conflicts-offline-data.md
+[Mobile Services のオフライン サポートでの競合を処理する]: mobile-services-xamarin-ios-handling-conflicts-offline-data.md
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [論理的な削除]: mobile-services-using-soft-delete.md
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
- 
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

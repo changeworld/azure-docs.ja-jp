@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="10/23/2015"
+	ms.date="01/26/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services 向け HTML/JavaScript クライアントを使用する方法
@@ -22,7 +22,7 @@
 
 ##概要
 
-このガイドでは、Azure Mobile Services 向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[モバイル サービスの使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
+このガイドでは、Azure Mobile Services 向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まず「[モバイル サービスの使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -43,7 +43,7 @@ Mobile Services クライアントに参照を追加する方法は、アプリ 
 	var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
 
-プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キー ([Azure ポータル](http://manage.windowsazure.com/)から取得します) でそれぞれ置き換える必要があります。
+プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キー ([Azure クラシック ポータル](http://manage.windowsazure.com/)から取得します) でそれぞれ置き換える必要があります。
 
 >[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#authentication)」を参照してください。
 
@@ -66,7 +66,7 @@ SQL Database テーブルのデータにアクセスまたは変更するすべ�
 	    alert("Error: " + err);
 	});
 
-Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すように Mobile Services に指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
+Query オブジェクトで `where` を呼び出して、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すように Mobile Services に指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -164,7 +164,7 @@ Query オブジェクトに呼び出し元の `where` を追加し、オブジ�
 
 次のコードは、クエリに `orderBy` または `orderByDescending` 関数を含めることによってデータを並べ替える方法を示しています。次のコードは、`todoItemTable` から、`text` フィールドの値に基づいて昇順に並べ替えられた項目を返します。既定では、サーバーは最初の 50 個の要素のみを返します。
 
-> [AZURE.NOTE]すべての要素が返されるのを防ぐために、サーバー側で設定されたページ サイズが既定で使用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。次のセクションで説明する `take` を呼び出すことにより、返される項目の数を増やすことができます。`todoItemTable` は、以前に作成したモバイル サービス テーブルへの参照です。
+> [AZURE.NOTE] すべての要素が返されるのを防ぐために、サーバー側で設定されたページ サイズが既定で使用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。次のセクションで説明する `take` を呼び出すことにより、返される項目の数を増やすことができます。`todoItemTable` は、以前に作成したモバイル サービス テーブルへの参照です。
 
 	var ascendingSortedTable = todoItemTable.orderBy("text").read().done(function (results) {
 	   alert(JSON.stringify(results));
@@ -388,7 +388,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
 
->[AZURE.NOTE]PhoneGap または Cordova アプリで認証を使用するときは、次のプラグインもプロジェクトに追加する必要があります。
+>[AZURE.NOTE] PhoneGap または Cordova アプリで認証を使用するときは、次のプラグインもプロジェクトに追加する必要があります。
 >
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
@@ -504,7 +504,8 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	// Start the sign-in process.
 	authenticate();
 
-これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
+これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。
+<!--- //this guidance may be bad from an XSS vulnerability standpoint. We need to find better guidance for this
 ###Caching the authentication token
 In some cases, the call to the login method can be avoided after the first time the user authenticates. We can use [sessionStorage] or [localStorage] to cache the current user identity the first time they log in and every subsequent time we check whether we already have the user identity in our cache. If the cache is empty or calls fail (meaning the current login session has expired), we still need to go through the login process.
 
@@ -620,11 +621,11 @@ promise はいくつかの異なる方法で使用することができます。
 	   next(request, callback);
 	});
 
-フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーキング呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
+フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーク呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
 
 ##<a name="hostnames"></a>方法: クロス オリジン リソース共有を使用する
 
-モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しい Mobile Services は `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードが Mobile Services と対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
+モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure クラシック ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しいモバイル サービスは `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -665,4 +666,4 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

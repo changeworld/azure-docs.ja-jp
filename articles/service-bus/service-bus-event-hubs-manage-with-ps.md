@@ -12,8 +12,8 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="08/14/2015"
+   ms.workload="na"
+   ms.date="12/09/2015"
    ms.author="sethm"/>
 
 # PowerShell で Service Bus と Event Hubs リソースを管理する
@@ -24,9 +24,9 @@ Microsoft Azure PowerShell は、Azure サービスのデプロイメントと�
 
 開始する前に、次の条件が必要です。
 
-- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション]、[メンバー プラン]、または[無料評価版]に関するページを参照してください。
+- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][]、[メンバー プラン][]、または[無料評価版][]に関するページを参照してください。
 
-- Azure PowerShell を搭載するコンピューター手順については、「[Azure PowerShell のインストールおよび構成]」を参照してください。
+- Azure PowerShell を搭載するコンピューター手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
 
 - PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
@@ -253,14 +253,16 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 
 ## 次のステップ
 
-この記事では、PowerShell を使用した Service Bus エンティティのプロビジョニングにおける基本的なアウトラインを提供します。Service Bus のメッセージング エンティティを管理するために使用できる PowerShell コマンドレットの数に制限がありますが、Microsoft.ServiceBus.dll アセンブリを参照することで .NET クライアント ライブラリを使用して実行できるほぼすべての操作が、PowerShell スクリプトでも実行できます。
+この記事では、PowerShell を使用した Service Bus エンティティのプロビジョニングにおける基本的なアウトラインを説明しました。Service Bus のメッセージング エンティティを管理するために使用できる PowerShell コマンドレットの数に制限がありますが、Microsoft.ServiceBus.dll アセンブリを参照することで .NET クライアント ライブラリを使用して実行できるほぼすべての操作が、PowerShell スクリプトでも実行できます。
 
 次のブログの投稿に詳しい例が掲載されています。
 
 - [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 - [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-既製のスクリプトもダウンロードできます。[Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+既製のスクリプトも次のページからダウンロードできます。
+
+- [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 
@@ -271,7 +273,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
-[.NET API for Service Bus]: https://msdn.microsoft.com/library/microsoft.servicebus.aspx
-[Azure PowerShell のインストールおよび構成]: ../install-configure-powershell.md
+[.NET API for Service Bus]: https://msdn.microsoft.com/ja-JP/library/azure/mt419900.aspx
+[Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

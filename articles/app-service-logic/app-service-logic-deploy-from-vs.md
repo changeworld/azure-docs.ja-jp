@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Visual Studio からのデプロイ" 
+	pageTitle="Visual Studio からのデプロイ | Microsoft Azure" 
 	description="Visual Studio でプロジェクトを作成してロジック アプリを管理します。" 
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/29/2015"
+	ms.date="01/19/2016"
 	ms.author="stepsic"/>
 	
 # Visual Studio からのデプロイ
 
-[Azure ポータル](https://portal.azure.com)にはロジック アプリを設計および管理するための優れた方法が用意されていますが、代わりに Visual Studio からロジック アプリをデプロイすることもできます。これには主に 2 つの機能があります。
+[Azure ポータル](https://portal.azure.com/)にはロジック アプリを設計および管理するための優れた方法が用意されていますが、代わりに Visual Studio からロジック アプリをデプロイすることもできます。これには主に 2 つの機能があります。
 
 - アプリケーションのすべての側面を含めることができるように、ソリューションに他のアセットと共にロジック アプリを保存する
 - TFS や Git を使用して変更履歴を追跡できるように、ロジック アプリ定義をソース管理にチェックインしたままにする 
 
-次の手順を実行するには、Azure SDK 2.7 以上をインストールしておく必要があります。最新の SDK for VS は、[こちら](http://azure.microsoft.com/downloads/)で探してください。
+次の手順を実行するには、Azure SDK 2.7 以上をインストールしておく必要があります。最新の SDK for VS は、[こちら](https://azure.microsoft.com/downloads/)で探してください。
 
 ## プロジェクトの作成
 
@@ -39,11 +39,11 @@
 
 ## ロジック アプリの構成
 
-プロジェクトを作成したら、Visual Studio 内でロジック アプリの定義を編集することができます。ソリューション エクスプローラーで JSON ファイルをクリックします。アプリケーションのロジックを使用して入力できるプレース ホルダーの定義が表示されます。
+プロジェクトを作成したら、Visual Studio 内でロジック アプリの定義を編集することができます。ソリューション エクスプローラーで JSON ファイルをクリックします。アプリケーションのロジックを使用して入力できるプレースホルダーの定義が表示されます。
 
 定義全体で**パラメーター**を使用することをお勧めします。これは、開発環境と運用環境の両方にデプロイする場合に役立ちます。その場合、`.param` ファイルに環境固有のすべての構成と、実際の文字列ではなくパラメーターを配置する必要があります。
 
-現在、Visual Studio には組み込みの JSON デザイナーがありません。そのため、(JSON を記述するのではなく) グラフィカル インターフェイスを使用する場合は、Azure ポータルを使用する必要があります。
+現在、Visual Studio には組み込みの JSON デザイナーがありません。そのため、(JSON を記述するのではなく) グラフィカル インターフェイスを使用する場合は、Azure ポータルを使用してください。
 
 以前に Azure ポータル内でロジック アプリを作成していて、それをソース管理にチェックインする場合は、次の 3 つの方法を利用できます。- ポータルで **[コード ビュー]** に移動し、定義をコピーします。- Logic Apps [REST API](https://msdn.microsoft.com/library/azure/dn948510.aspx) を使用して定義を取得します。- [Azure リソース マネージャーの PowerShell](../powershell-azure-resource-manager.md)、具体的には [`Get-AzureResource` コマンド](https://msdn.microsoft.com/library/dn654579.aspx)を使用して定義をダウンロードします。
 
@@ -61,8 +61,8 @@
     
 4. デプロイの状態が **[出力]** ウィンドウに表示されます (**[Azure プロビジョニング]** を選択することが必要になる場合があります)。![出力](./media/app-service-logic-deploy-from-vs/output.png)
 
-今後は、ソース管理でロジック アプリを修正し、Visual Studio を使用して新しいバージョンをデプロイできます。Azure ポータルで定義を直接変更した場合、次回 Visual Studio からデプロイすると、変更内容がオーバーライドされることに注意してください。
+今後は、ソース管理でロジック アプリを修正し、Visual Studio を使用して新しいバージョンをデプロイできます。Azure ポータルで定義を直接変更した場合は、次に Visual Studio からデプロイしたときに変更内容が上書きされることに注意してください。
 
 Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、[API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

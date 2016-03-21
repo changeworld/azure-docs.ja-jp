@@ -1,29 +1,29 @@
-<properties 
-    pageTitle="Queue ストレージを使用する方法 (C++) | Microsoft Azure" 
-    description="Azure で Queue ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。" 
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="adinah" 
-    editor=""/>
+<properties
+    pageTitle="Queue ストレージを使用する方法 (C++) | Microsoft Azure"
+    description="Azure で Queue ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。"
+    services="storage"
+    documentationCenter=".net"
+    authors="robinsh"
+    manager="carmonm"
+    editor="tysonn"/>
 
-<tags 
-    ms.service="storage" 
-    ms.workload="storage" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-	ms.date="09/23/2015" 
-    ms.author="tamram"/>
+<tags
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/17/2016"
+    ms.author="dineshm"/>
 
 # C++ から Queue ストレージを使用する方法  
 
 [AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
 ## 概要
-このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。
+このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。
 
->[AZURE.NOTE]このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 1.0.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/) 経由で入手できます。
+>[AZURE.NOTE] このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](http://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
@@ -38,8 +38,8 @@ C++ 用 Azure ストレージ クライアント ライブラリをインスト�
 -	**Linux:** [C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。  
 -	**Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。[NuGet パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)に次のコマンドを入力し、**Enter** キーを押します。  
 
-		Install-Package wastorage 
- 
+		Install-Package wastorage
+
 ## Queue ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API を使用してキューにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。
 
@@ -48,12 +48,12 @@ Azure Storage API を使用してキューにアクセスする C++ ファイル
 
 ## Azure のストレージ接続文字列の設定
 
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時に、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、[Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とストレージ アクセス キーを使用します。ストレージ アカウントとストレージ アクセス キーの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection-string with your values.
 	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 
-ローカルの Windows コンピューターでアプリケーションをテストするには、[Azure SDK](http://azure.microsoft.com/downloads/) と共にインストールされた、Microsoft Azure [ストレージ エミュレーター](https://msdn.microsoft.com/library/azure/hh403989.aspx)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure で使用できる BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
+ローカルの Windows コンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Microsoft Azure [ストレージ エミュレーター](storage-use-emulator.md)を使用できます。ストレージ エミュレーターは、ローカルの開発マシンで、Azure で使用できる BLOB、Queue、および Table サービスをシミュレートするユーティリティです。次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
 	// Define the connection-string with Azure Storage Emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -133,10 +133,10 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
 	// Retrieve a reference to a queue.
 	azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
-		
+
 	// Get the message from the queue and update the message contents.
 	// The visibility timeout "0" means make it visible immediately.
-	// The visibility timeout "60" means the client can get another minute to continue 
+	// The visibility timeout "60" means the client can get another minute to continue
 	// working on the message.
 	azure::storage::cloud_queue_message changed_message = queue.get_message();
 
@@ -163,7 +163,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() << std::endl;
 
 	// Delete the message.
-	queue.delete_message(dequeued_message); 
+	queue.delete_message(dequeued_message);
 
 ## 方法: 追加オプションを利用してメッセージをデキューする
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**get\_messages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**get\_messages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
@@ -177,14 +177,14 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	// Retrieve a reference to a queue.
 	azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-	// Dequeue some queue messages (maximum 32 at a time) and set their visibility timeout to 
+	// Dequeue some queue messages (maximum 32 at a time) and set their visibility timeout to
 	// 5 minutes (300 seconds).
 	azure::storage::queue_request_options options;
 	azure::storage::operation_context context;
 
 	// Retrieve 20 messages from the queue with a visibility timeout of 300 seconds.
 	std::vector<azure::storage::cloud_queue_message> messages = queue.get_messages(20, std::chrono::seconds(300), options, context);
-		
+
 	for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 	{
 		// Display the contents of the message.
@@ -234,8 +234,6 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
--	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
- 
-
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0224_2016-->

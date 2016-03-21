@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="01/28/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -28,8 +28,8 @@
 
 1. リソースの場所を変更することはできません。リソースを移動しても、新しいリソース グループに移動されるだけです。新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 2. 移動先のリソース グループには、移動するリソースと同じアプリケーション ライフサイクルを共有するリソースのみが含まれている必要があります。
-3. Azure PowerShell を使用している場合は、最新のバージョンを使用していることを確認します。**Move-AzureResource** コマンドは、頻繁に更新されます。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」を参照してください。
-4. 移動操作は完了までに時間がかかることがあり、その間、PowerShell のプロンプトは、操作が完了するまで待機状態となります。
+3. Azure PowerShell または Azure CLI を使用している場合は、最新のバージョンを使用していることを確認します。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」と「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+4. 移動操作は完了までに時間がかかることがあります。その間、プロンプトは操作が完了するまで待機状態となります。
 5. リソースを移動する場合は、その操作の間、ソース グループとターゲット グループの両方がロックされます。これらのグループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。
 
 ## サポートされているサービス
@@ -39,30 +39,41 @@
 現在、新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方をサポートするサービスは、次のとおりです。
 
 - API Management
-- Azure DocumentDB
-- Azure Search
-- Azure Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
+- Automation
+- Batch  
+
 - Data Factory
+- DocumentDB
+- HDInsight クラスター
 - Key Vault
+- Logic Apps
 - Mobile Engagement
+- Notification Hubs
 - Operational Insights
 - Redis Cache
-- SQL Database
+- Search
+- SQL Database サーバー (サーバーを移動すると、そのデータベースもすべて移動されます。データベースをサーバーから個別に移動することはできません)。
+- Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
 
 新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
 
 - Virtual Machines (クラシック)
 - Storage (クラシック)
+- Virtual Networks
+- Cloud Services
 
 現在リソースの移動をサポートしていないサービスは、次のとおりです。
 
 - Virtual Machines
-- Virtual Networks
+- Storage
+- ExpressRoute
 
 Web アプリを使用している場合、App Service プランのみを移動することはできません。Web アプリを移動するには、次のオプションがあります。
 
 - 移動先のリソース グループにまだ Microsoft.Web リソースがない場合は、すべてのリソースをあるリソース グループから別のリソース グループに移動します。
 - Web アプリは別のリソース グループに移動しますが、App Service プランは元のリソース グループで保持します。
+
+SQL データベースをそのサーバーから個別に移動することはできません。データベースとサーバーは、同じリソース グループ内に存在する必要があります。SQL Server を移動すると、そのデータベースもすべて移動されます。
 
 ## PowerShell を使用したリソースの移動
 
@@ -72,15 +83,26 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 最初の例では、1 つのリソースを新しいリソース グループに移動する方法を示します。
 
-    PS C:\> Move-AzureRmResource -DestinationResourceGroupName TestRG -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OtherExample/providers/Microsoft.ClassicStorage/storageAccounts/examplestorage
+    PS C:\> $resource = Get-AzureRmResource -ResourceName ExampleApp -ResourceGroupName OldRG
+    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $resource.ResourceId
 
 2 番目の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
 
-    PS C:\> $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite -ResourceType Microsoft.Web/sites
-    PS C:\> $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan -ResourceType Microsoft.Web/serverFarms
-    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId ($webapp.ResourceId, $plan.ResourceId)
+    PS C:\> $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
+    PS C:\> $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 
 新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
+
+## Azure CLI を使用したリソースの移動
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**azure resource move** コマンドを使用します。次の例は、Redis Cache を新しいリソース グループに移動する方法を示しています。 **-I** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
+
+    azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
+    info:    Executing command resource move
+    Move selected resources in OldRG to NewRG? [y/n] y
+    + Moving selected resources to NewRG
+    info:    resource move command OK
 
 ## REST API を使用したリソースの移動
 
@@ -92,8 +114,8 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
-- [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
+- [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./xplat-cli-azure-resource-manager.md)
 - [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

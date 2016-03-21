@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="11/17/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
@@ -151,7 +151,7 @@
 
 ## Microsoft Dynamics CRM ソリューションのサンプル
 
-[ で実装されたサンプル ソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
+[Microsoft Dynamics CRM で実装されたサンプル ソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
 
 ## 詳細情報
 
@@ -161,4 +161,4 @@
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1125_2015-->

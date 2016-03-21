@@ -1,4 +1,4 @@
-1. **Azure の管理ポータル**でディレクトリ ページの [[アプリケーション]](https://manage.windowsazure.com/) タブをクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)でディレクトリ ページの **[アプリケーション]** タブをクリックします。
   
 2. 統合アプリケーションの登録をクリックします。
 
@@ -13,7 +13,7 @@
     ![](./media/mobile-services-generate-aad-app-registration-access-key/app-perms.png)
 
 
-7. [Azure の管理ポータル](https://manage.windowsazure.com/)で、モバイル サービスに戻り、**[構成]** タブをクリックします。**[アプリケーション設定]** セクションまで下にスクロールし、次のアプリケーション設定を追加して、**[保存]** をクリックします。
+7. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、モバイル サービスに戻り、**[構成]** タブをクリックします。**[アプリケーション設定]** セクションまで下にスクロールし、次のアプリケーション設定を追加して、**[保存]** をクリックします。
 
     <table border="1">
     <tr> <th>アプリケーション設定名</th><th>説明</th>
@@ -30,4 +30,4 @@
     ![](./media/mobile-services-generate-aad-app-registration-access-key/aad-app-settings.png)
   
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

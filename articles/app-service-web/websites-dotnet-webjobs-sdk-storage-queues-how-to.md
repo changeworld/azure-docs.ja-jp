@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="02/29/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法
@@ -22,7 +22,7 @@
 
 このガイドでは、Azure キュー ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。
 
-このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
+このガイドは、Visual Studio で[ストレージ アカウント](websites-dotnet-webjobs-sdk-get-started.md#configure-storage)または[複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法を理解していることを前提としています。
 
 ほとんどのコード スニペットは、この例のように `JobHost` オブジェクトを作成するコードではなく、関数のみを示しています。
 
@@ -62,7 +62,8 @@
 	- QueueTrigger 設定の構成
 	- コードの Web ジョブ SDK コンストラクター パラメーター値の設定
 -   [関数を手動でトリガーする方法](#manual)
--   [ログを書き込む方法](#logs)
+-   [ログを書き込む方法](#logs) 
+-   [エラーを処理する方法とタイムアウトを構成する方法](#errors)
 -   [次のステップ](#nextsteps)
 
 ## <a id="trigger"></a>キュー メッセージを受信したときに関数をトリガーする方法
@@ -131,13 +132,15 @@ SDK はランダムな指数バックオフ アルゴリズムを実装するこ
 
 ### <a id="instances"></a> 複数のインスタンス
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。一部のシナリオでは、これによっていくつかの関数が同じデータを 2 回処理する場合があるため、関数をべき等にする (同じ入力データで関数を繰り返し呼び出しても重複した結果を生成しないように記述する) 必要があります。
+Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。Web ジョブ SDK キュー トリガーにより、関数がキュー メッセージを複数回処理するのを自動的に回避できます。関数はべき等として記述する必要はありません。ただし、ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみを実行するには `Singleton` 属性を使用できます。
 
 ### <a id="parallel"></a> 並列実行
 
 異なるキューをリッスンする複数の関数を使用している場合、複数のメッセージを同時に受信したとき、SDK では並行してそれらを呼び出します。
 
-1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。[バッチ サイズの設定は変更可能です](#config)。処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。この制限は、`QueueTrigger` 属性を持つ各関数に個別に適用されます。1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。
+1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。[バッチ サイズの設定は変更可能です](#config)。処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。この制限は、`QueueTrigger` 属性を持つ各関数に個別に適用されます。
+
+1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。「[Azure WebJobs SDK 1.1.0 RTM](/blog/azure-webjobs-sdk-1-1-0-rtm/)」の**キュー処理のさらに詳細な制御**に関するページを参照してください。
 
 ### <a id="queuemetadata"></a>キューまたはキュー メッセージ メタデータの取得
 
@@ -221,7 +224,7 @@ Azure Storage API を直接操作する場合は、`CloudStorageAccount` パラ�
 
 ## <a id="createqueue"></a> キュー メッセージの処理中にキュー メッセージを作成する方法
 
-新しいキュー メッセージを作成する関数を記述するには、`Queue` 属性を使用します。`QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することも可能です
+新しいキュー メッセージを作成する関数を記述するには、`Queue` 属性を使用します。`QueueTrigger` のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定](#config)することもできます。
 
 ### 文字列のキュー メッセージ
 
@@ -575,15 +578,37 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 
 次に示したのは、Azure BLOB におけるアプリケーション ログの例です。2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-また Azure テーブルでは、`Console.Out` と `Console.Error` ログは次のようになります。
+また、Azure テーブルでは、`Console.Out` と `Console.Error` のログは次のようになります。
 
 ![テーブル内の INFO ログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableinfo.png)
 
 ![テーブル内の ERROR ログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableerror.png)
 
-## <a id="nextsteps"></a> 次のステップ
+独自のロガーにプラグインする必要がある場合は、[この例](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs)を参照してください。
+
+## <a id="errors"></a>エラーを処理する方法とタイムアウトを構成する方法
+
+Web ジョブ SDK に含まれる [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) 属性を使用して、指定した時間内に完了しない場合に、関数が取り消されるようにすることもできます。指定した時間内に発生するエラーの数が多すぎる場合にアラートを生成するには、`ErrorTrigger` 属性を使用します。[ErrorTrigger の例](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring)を次に示します。
+
+```
+public static void ErrorMonitor(
+[ErrorTrigger("00:01:00", 1)] TraceFilter filter, TextWriter log,
+[SendGrid(
+    To = "admin@emailaddress.com",
+    Subject = "Error!")]
+ SendGridMessage message)
+{
+    // log last 5 detailed errors to the Dashboard
+   log.WriteLine(filter.GetDetailedMessage(5));
+   message.Text = filter.GetDetailedMessage(1);
+}
+```
+
+また、アプリ設定または環境変数名である構成スイッチを使用して、トリガーできるかどうかを制御する関数を動的に無効または有効にすることもできます。サンプル コードについては、[Web ジョブ SDK サンプル リポジトリ](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs)の `Disable` 属性を参照してください。
+
+## <a id="nextsteps"></a>次のステップ
 
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/28/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # CentOS を実行している StorSimple ホスト上の MPIO の構成
@@ -21,7 +21,7 @@
 
 この手順は StorSimple 8000 シリーズのデバイスのすべてのモデルに適用できます。
 
->[AZURE.NOTE]この手順は、StorSimple 仮想デバイスでは使用できません。詳細については、仮想デバイスのホスト サーバーを構成する方法を参照してください。
+>[AZURE.NOTE] この手順は、StorSimple 仮想デバイスでは使用できません。詳細については、仮想デバイスのホスト サーバーを構成する方法を参照してください。
 
 ## マルチパスについて 
 
@@ -163,15 +163,15 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
 
 StorSimple デバイスに必要なものは次のとおりです。
 
-- iSCSI 用に有効になっている 2 つ以上のインターフェイス。StorSimple デバイス上の 2 つのインターフェイスが iSCSI に対応していることを確認するには、StorSimple デバイスの管理ポータルで次の手順を実行します。
+- iSCSI 用に有効になっている 2 つ以上のインターフェイス。StorSimple デバイス上の 2 つのインターフェイスが iSCSI に対応していることを確認するには、StorSimple デバイスの Azure クラシック ポータルで次の手順を実行します。
 
-	1. StorSimple デバイスの管理ポータルにログインします。
+	1. StorSimple デバイスのクラシック ポータルにログインします。
 
 	1. StorSimple Manager サービスを選択し、**[デバイス]** をクリックして特定の StorSimple デバイスを選択します。**[構成]** をクリックし、ネットワーク インターフェイスの設定を確認します。2 つの iSCSI 対応ネットワーク インターフェイスを示したスクリーン ショットは次のとおりです。DATA 2 と DATA 3 の両方で、iSCSI の 10 GbE インターフェイスが有効になっています。
 	
-		![MPIO StorsSimple DATA 2 config](./media/storsimple-configure-mpio-on-linux/IC761347.png)
+		![MPIO StorSimple DATA 2 の構成](./media/storsimple-configure-mpio-on-linux/IC761347.png)
 	
-		![MPIO StorSimple DATA 3 Config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+		![MPIO StorSimple DATA 3 の構成](./media/storsimple-configure-mpio-on-linux/IC761348.png)
 
 		**[構成]** ページで次の手順に従います。
 
@@ -193,7 +193,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 冗長性実現のために別のパスで 2 つの iSCSI ネットワーク インターフェイスを接続することをお勧めします。次の図は、CentOS サーバーと StorSimple デバイスにおける高可用性と負荷分散のマルチパスのための推奨ハードウェア構成を示しています。
 
-![MPIO hardware config for StorSimple to Linux host](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![Linux ホストに対する StorSimple 用の MPIO ハードウェア構成](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
 前の図から次のことがわかります。
 
@@ -207,7 +207,7 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 ホストとデータのインターフェイスがルーティング可能な場合は、前の図の構成によって、デバイスとホスト間に 4 つの独立したパスが生成されます。
 
->[AZURE.IMPORTANT]
+>[AZURE.IMPORTANT] 
 >
 >- マルチパスでは、1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 つのネットワーク インターフェイスを使用しているときは、どちらも同じ種類である必要があります。
 >- StorSimple デバイス上で、DATA0、DATA1、DATA4、および DATA5 が 1 GbE インターフェイスで、DATA2 および DATA3 が 10 GbE ネットワーク インターフェイスです。
@@ -285,7 +285,8 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 
 
-> [AZURE.NOTE]`path_grouping_policy` の最も一般的な値は次のとおりです。
+> [AZURE.NOTE] 
+`path_grouping_policy` の最も一般的な値は次のとおりです。
 	
 > - failover = 優先順位グループごとに 1 つのパス
 > - multibus = 1 つの優先順位グループにすべての有効なパス
@@ -339,10 +340,10 @@ StorSimple デバイスに必要なものは次のとおりです。
 	    		Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
 
 
-		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/ja-jp/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
+		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
 
 	
-	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、[手順 6. ボリュームを作成する](https://sandboxmsdnstage.redmond.corp.microsoft.com/ja-jp/library/azure/dn772357.aspx)方法 (StorSimple デバイス上で管理ポータルを経由する) を参照してください。
+	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、「[手順 6. ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume)」 (StorSimple デバイス上で Azure クラシック ポータルを使用して) を参照してください。
 
 	1. 使用可能なパスを確認します。次のコマンドを入力します。
 
@@ -466,7 +467,23 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 |型|コマンド|説明|
 |---|---|---|
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
-||`service iscsid stop`|iSCSI サービスを停止する| ||`service iscsid restart`|iSCSI サービスを再起動する| ||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定したアドレスで使用可能なターゲットを検出する| ||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする| ||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする| ||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーター名を出力する| ||`iscsiadm –m session –s <sessionid> -P 3`|ホスト上で検出された iSCSI セッションとボリュームの状態を確認する| ||`iscsi –m session`|ホストと StorSimple デバイス間で確立されたすべての iSCSI セッションを表示する| | | | | |**マルチパス**|`service multipathd start`|マルチパス デーモンを起動する| ||`service multipathd stop`|マルチパス デーモンを停止する| ||`service multipathd restart`|マルチパス デーモンを再起動する| ||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを起動できるようにする| ||`multipathd –k`|トラブルシューティング用に対話型コンソールを起動する| ||`multipath –l`|マルチパス接続とデバイスを一覧表示する| ||`mpathconf --enable`|`/etc/mulitpath.conf` でサンプル mulitpath.conf ファイルを作成する| ||||
+||`service iscsid stop`|iSCSI サービスを停止する|
+||`service iscsid restart`|iSCSI サービスを再開する|
+||`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>`|指定されたアドレスで使用できるターゲットを検出する|
+||`iscsiadm -m node --login -T <TARGET_IQN>`|iSCSI ターゲットにログインする|
+||`iscsiadm -m node --logout -p <Target_IP>`|iSCSI ターゲットからログアウトする|
+||`cat /etc/iscsi/initiatorname.iscsi`|iSCSI イニシエーターの名前を出力する|
+||`iscsiadm –m session –s <sessionid> -P 3`|ホストで検出された iSCSI セッションとボリュームの状態を確認する|
+||`iscsi –m session`|ホストと StorSimple デバイス間で確立したすべての iSCSI セッションを表示する|
+| | | |
+||**マルチパス**|`service multipathd start`|マルチパス デーモンを開始する|
+||`service multipathd stop`|マルチパス デーモンを停止する|
+||`service multipathd restart`|マルチパス デーモンを再開する|
+||`chkconfig multipathd on` </br> または </br> `mpathconf –with_chkconfig y`|ブート時にマルチパス デーモンを開始するようにする|
+||`multipathd –k`|トラブルシューティングのために対話型コンソールを起動する|
+||`multipath –l`|マルチパス接続とデバイスを一覧表示する|
+||`mpathconf --enable`|`/etc/mulitpath.conf` にサンプルの mulitpath.conf ファイルを作成する|
+||||
 
 ## 次のステップ
 
@@ -475,4 +492,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

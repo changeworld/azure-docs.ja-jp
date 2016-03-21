@@ -13,8 +13,8 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.topic="get-started-article"
+	ms.date="02/03/2016"
 	ms.author="haining;garye" />
 
 
@@ -26,7 +26,7 @@
 
 この図は、これらすべての項目が互いにどのように関連するかを示しています。
 
-> [AZURE.NOTE]Machine Learning Studio で使用可能な機械学習アルゴリズムを調べて選択する際の詳しいサポートについては、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」をご覧ください。
+> [AZURE.NOTE] Machine Learning Studio で使用可能な機械学習アルゴリズムを調べて選択する際の詳しいサポートについては、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」をご覧ください。
 
 ## Machine Learning Studio 概要図のダウンロード
 
@@ -47,4 +47,4 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

@@ -1,6 +1,6 @@
 
 
-1. Microsoft Azure 管理ポータルにログインし、**[Mobile Services]** をクリックして、目的の Mobile Services を選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[Mobile Services]** をクリックして、モバイル サービスを選択します。
 
 2. **[API]** タブをクリックし、**[作成]** をクリックします。**[新しいカスタム API の作成]** ダイアログ ボックスが表示されます。
 
@@ -35,4 +35,4 @@
 <!-- URLs. -->
 [mssql]: http://msdn.microsoft.com/library/windowsazure/jj554212.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

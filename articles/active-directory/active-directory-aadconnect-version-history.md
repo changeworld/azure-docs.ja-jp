@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/03/2015"
+   ms.date="02/29/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -24,8 +24,57 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 関連リンク:
 
+- Azure AD Connect の[以前のバージョンから最新リリースにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.110.0
+リリース日: 2016 年 2 月
+
+**修正された問題:**
+
+- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードは機能しません。
+- インストール時に、インストール ウィザードの最後で **[..同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラは有効になりません。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
+- サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
+
+## 1\.1.105.0
+リリース日: 2016 年 2 月
+
+**新機能:**
+
+- 簡単設定ユーザー向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
+- インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
+    - MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するようにプロキシを設定する必要があります。
+    - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
+- 初期インストール後のユーザーのサインイン方法の変更を許可。
+- インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
+- 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
+
+**プレビューから GA に昇格した機能:**
+
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
+
+**新しいプレビュー機能:**
+
+- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の動作の変更がサポートされるようになりました。
+
+**修正された問題:**
+
+- DNS ドメインの検証ページが、ドメインを認識できない場合がありました。
+- ADFS を構成するときに、ドメイン管理者の資格情報を求めるメッセージが表示されます。
+- オンプレミス AD アカウントが、ルート ドメインとは異なる DNS ツリーを持つドメイン内にある場合、インストール ウィザードがそのアカウントを認識できません。
+
+## 1\.0.9131.0
+リリース日: 2015 年 12 月
+
+**修正された問題:**
+
+- AD DS でパスワードを変更するときにはパスワードの同期が機能しない場合があるが、パスワードの設定時には機能する。
+- プロキシ サーバーがある場合、Azure AD に対する認証が、構成ページ上でのインストールまたはアップグレード中に失敗する場合がある。
+- SQL の SA でない場合、完全な SQL Server で以前のリリースの Azure AD Connect から更新すると失敗する。
+- リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、「ADSync SQL データベースにアクセスできません」というエラーが表示される。
 
 ## 1\.0.9125.0
 リリース: 2015 年 11 月
@@ -40,11 +89,11 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 **新しいプレビュー機能:**
 
 - [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)。
-- [Azure AD Domain Services](active-directory-ds-getting-started.md) のパスワード同期がサポートされました。
+- [Azure AD Domain Services](active-directory-get-started.md) のパスワード同期がサポートされました。
 
 **新しくサポートされたシナリオ:**
 
-- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。
+- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド デプロイメント](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
 
 **修正された問題:**
 
@@ -104,7 +153,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)
 - [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)
-- [デバイスの書き戻し](active-directory-aadconnect-get-started-custom-device-writeback.md)
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
 - [ディレクトリ拡張機能](active-directory-aadconnect-feature-preview.md#directory-extensions)
 
 
@@ -197,6 +246,6 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 **Azure AD Sync の最初のリリースです。**
 
 ## 次のステップ
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

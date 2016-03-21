@@ -13,19 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/23/2015" 
+	ms.date="02/18/2016" 
 	ms.author="mandia"/>
 
 # Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
+
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 オンプレミス システムを使用するため、Azure App Service は Hybrid Connection Manager を使用します。一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。
 
 Hybrid Connection Manager (HCM) は、ワンクリック インストーラーであり、ネットワーク内のファイアウオールの背後にある IIS サーバーにインストールされます。HCM は、Azure Service Bus リレーを使用して、Azure 内にコネクタを持つオンプレミス システムを認証します。
 
-> [AZURE.NOTE]Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミス システムに接続しない場合、Hybrid Connection Manager は必要ありません。
+> [AZURE.NOTE] Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミス システムに接続しない場合、Hybrid Connection Manager は必要ありません。
 
 開始するには、以下が必要です。
 
-- Azure Service Bus リレー名前空間の SAS 接続文字列。どのレベルにリレーが含まれるかを特定するには、「[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+- Azure Service Bus リレー名前空間の SAS 接続文字列。どのレベルにリレーが含まれるかを特定するには、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 - オンプレミス システムのサインイン情報 (ユーザー名とパスワード)。たとえば、オンプレミスの SQL Server に接続する場合は、SQL Server のログイン アカウントとパスワードが必要です。
 - オンプレミス サーバー情報 (ポート番号とサーバー名)たとえば、オンプレミスの SQL Server に接続する場合は SQL Server の名前と TCP ポート番号が必要です。
 
@@ -33,7 +36,7 @@ Hybrid Connection Manager (HCM) は、ワンクリック インストーラー�
 
 Azure ポータルで、Service Bus のルート SAS 接続文字列をコピーします。この接続文字列は、Azure コネクタをオンプレミス システムに接続します。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)で、Service Bus 名前空間を選択し、**[接続情報]** をクリックします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)で、Service Bus 名前空間を選択し、**[接続情報]** をクリックします。
 
 	![][SB_ConnectInfo]
 
@@ -43,7 +46,7 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 
 ## Hybrid Connection Manager をインストールする
 
-1. プレビュー [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API App を選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2] 
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API App を選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2] 
 
 2. **[ハイブリッド接続]** を選択します。前に入力した Service Bus 接続文字列が表示されます。
 3. **プライマリ構成文字列**をコピーします。<br/>![][PrimaryConfigString]
@@ -56,7 +59,7 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 
 ここでもう一度コネクタを参照すると、ハイブリッド接続ステータスが **[接続済み]** になっています。場合によっては、コネクタを閉じて再度開く必要があります。<br/> 。![][4]
 
-> [AZURE.NOTE]セカンダリ接続文字列に切り替えるには、ハイブリッド接続のセットアップをもう一度実行し、**セカンダリ構成文字列** を入力します。
+> [AZURE.NOTE] セカンダリ接続文字列に切り替えるには、ハイブリッド接続のセットアップをもう一度実行し、**セカンダリ構成文字列** を入力します。
 
 
 ## TCP ポートとセキュリティ
@@ -66,7 +69,7 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 TCP ポート | 理由
 --- | ---
  | 着信 TCP 受信ポートは必要ありません。
-9350 ～ 9354 | これらのポートはデータ転送に使用されます。Service Bus リレー マネージャーはポート 9350 を調べて、TCP 接続を利用できるかどうかを決定します。利用できる場合は、ポート 9352 も利用可能であるとみなされます。データ トラフィックはポート 9352 を経由します。<br/><br/>これらのポートへの発信接続を許可します。
+9350 ～ 9354 | これらのポートはデータ転送に使用されます。Service Bus Relay マネージャーはポート 9350 を調べて、TCP 接続を利用できるかどうかを決定します。利用できる場合は、ポート 9352 も利用可能であるとみなされます。データ トラフィックはポート 9352 を経由します。<br/><br/>これらのポートへの発信接続を許可します。
 5671 | ポート 9352 がデータ トラフィックに使用される場合、ポート 5671 は制御チャンネルとして使用されます。<br/><br/>これらのポートへの発信接続を許可します。 
 80、443 | ポート 9352 とポート 5671 を使用できない場合、ポート 80 とポート 443 がデータ転送と制御チャネルに使用される代替ポートになります。<br/><br/>。これらのポートへの発信接続を許可します。
 オンプレミス システムのポート | オンプレミス システムでは、システムによって使用されているポートが開きます。たとえば、SQL Server では、通常はポート 1433 を使用します。この TCP ポートを開きます。
@@ -98,7 +101,7 @@ TCP ポート | 理由
 
 
 
-### Azure ポータルで次の操作を行います。
+### Azure クラシック ポータルで
 
 1. Service Bus 名前空間が **[アクティブ]** 状態であることを確認します。
 2. コネクタを作成するときに、Service Bus の SAS 接続文字列を入力します。ACS 接続文字列を入力しないでください。
@@ -106,7 +109,7 @@ TCP ポート | 理由
 
 ## FAQ
 
-**質問**: Hybrid Connection Manager が 2 つあります。違いは何でしょうか。<br/> **回答**: オンプレミスに接続するために主に Web Apps (以前の Web サイト) と Mobile Apps (以前のモバイル サービス) によって使用される[ハイブリッド接続](../integration-hybrid-connection-overview.md)テクノロジがあります。この Hybrid Connections Manager には独自の[セットアップ](../integration-hybrid-connection-create-manage.md)があり、Azure BizTalk Service を (バック グラウンドで) 使用します。それは、TCP プロトコルと HTTP プロトコルのみをサポートします。
+**質問**: Hybrid Connection Manager が 2 つあります。違いは何でしょうか。<br/> **回答**: オンプレミスに接続するために主に Web Apps (以前の Web サイト) と Mobile Apps (以前のモバイル サービス) によって使用される[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)テクノロジがあります。この Hybrid Connections Manager には独自の[セットアップ](../biztalk-services/integration-hybrid-connection-create-manage.md)があり、Azure BizTalk Service を (バック グラウンドで) 使用します。それは、TCP プロトコルと HTTP プロトコルのみをサポートします。
 
 Azure App Service コネクタにも、Hybrid Connection Manager があります。この Hybrid Connection Manager は Azure BizTalk Service を (バック グラウンドで) 使用せず、TCP プロトコルと HTTP プロトコル以外のプロトコルもサポートします。「[Connectors and API Apps (コネクタと API Apps の一覧)](app-service-logic-connectors-list.md)」を参照してください。
 
@@ -114,12 +117,12 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
 **質問**: カスタム API App を作成した場合、App Service Hybrid Connection Manager を使用してオンプレミスに接続できますか。 <br/> **回答**: 従来の意味ではできません。組み込みコネクタを使用し、App Service Hybrid Connection Manager を構成することで、オンプレミス システムに接続できます。その後、カスタム API App の中で、Logic App を利用してこのコネクタを使用します。現時点では、独自のハイブリッド API App (SQL コネクタやファイル コネクタなど) は開発することも作成することもできません。
 
-カスタム API で TCP または HTTP ポートを使用する場合は、[ハイブリッド接続](../integration-hybrid-connection-overview.md) とその Hybrid Connection Manager を使用することができます。このシナリオでは、Azure BizTalk Service が使用されます。[オンプレミスの SQL Server に Web アプリから接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)と便利な場合があります。
+カスタム API で TCP または HTTP ポートを使用する場合は、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) とその Hybrid Connection Manager を使用することができます。このシナリオでは、Azure BizTalk Service が使用されます。[オンプレミスの SQL Server に Web アプリから接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)と便利な場合があります。
 
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 
 
 
@@ -133,4 +136,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

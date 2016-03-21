@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのテーブル デザイン #
 SQL Data Warehouse は、超並列処理 (MPP) 分散データベース システムです。データは、**ディストリビューション**と呼ばれるさまざまな場所に保存されます。各**ディストリビューション**はバケットに似ており、データ ウェアハウスでデータの一意のサブセットを格納します。SQL Data Warehouse は、データと処理機能を複数のノードに分散させることで、単一のシステムをはるかに超えた大規模なスケーラビリティを実現します。
@@ -306,4 +306,4 @@ SQL Data Warehouse では、次の機能は使用またはサポートされま�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

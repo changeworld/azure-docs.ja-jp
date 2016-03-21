@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/18/2015"
+	ms.date="02/08/2016"
 	ms.author="hangzh;bradsev" />
 
 
 # Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する
 
-このチュートリアルでは、[Azure HDInsight Hadoop クラスター](http://azure.microsoft.com/services/hdinsight/)を使用したエンド ツー エンドのシナリオで Cortana Analytics Process を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用したエンド ツー エンドのシナリオで Cortana Analytics Process を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
 
 HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)」をご覧ください。
 
@@ -75,7 +75,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 ## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
@@ -91,7 +91,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure BLOB ストレージとの間でデータを移動する](machine-learning-data-science-move-azure-blob.md)」で説明されているいずれかの方法を使用して、データをコンピューターにコピーします。
 
@@ -107,7 +107,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="upload"></a>データを Azure HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
@@ -130,7 +130,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」で説明されている手順に従います。
 
@@ -146,13 +146,13 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 これで、NYC タクシー データセットの Hive テーブルを作成する準備ができました。Hadoop クラスターのヘッド ノード内で、ヘッド ノードのデスクトップで ***Hadoop コマンド ライン***を開き、次のコマンドを入力して Hive ディレクトリに入ります。
 
     cd %hive_home%\bin
 
->[AZURE.NOTE]**このチュートリアルでは、上記の Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。これは自動的にすべてのパスの問題に対処します。このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。**
+>[AZURE.NOTE] **このチュートリアルでは、上記の Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。これは自動的にすべてのパスの問題に対処します。このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。**
 
 Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを入力し、Hive クエリを送信して Hive データベースとテーブルを作成します。
 
@@ -208,7 +208,7 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 
 ## <a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
 
->[AZURE.NOTE]これは、通常 **Admin** タスクです。
+>[AZURE.NOTE] これは、通常 **Admin** タスクです。
 
 NYC タクシー データセットは、月ごとに自然にパーティション分割されているので、これを使用することで処理を高速化し、クエリ時間を短縮できます。次の PowerShell コマンド (**Hadoop コマンド ライン** を使用して、Hive ディレクトリから発行) は、月ごとにパーティション分割された "trip" および "fare" Hive テーブルにデータを読み込みます。
 
@@ -275,7 +275,7 @@ nyctaxidb データベースのテーブルを表示するには、Hadoop コマ
 
 ## <a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 Hive テーブルに読み込まれるデータのデータの探索タスクおよび特徴エンジニアリング タスクは、Hive クエリを使用して実現します。このセクションのチュートリアルで行うこのようなタスクの例を次に示します。
 
@@ -287,7 +287,7 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 
 ### 探索: trip テーブルの上位 10 個のレコードを表示する
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 データがどのように表示されるかを確認するために、各テーブルから 10 個のレコードを確認します。レコードを検査するには、Hadoop コマンド ライン コンソールの Hive ディレクトリ プロンプトから次の 2 つのクエリを実行します。
 
@@ -305,7 +305,7 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 
 ### 探索: 12 個のそれぞれのパーティションのレコードの数を表示する
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 関心事は、年間で乗車数がどのように変化するかです。月ごとにグループ化することで、乗車のこの分布がどのように表示されるかを見ることができます。
 
@@ -373,7 +373,7 @@ Hive ディレクトリ プロンプトから次のコマンドを使用して�
 
 ### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。このクエリは、パーティション変数 **month** によって条件設定されているので、パーティション テーブルへのアクセスによるメリットが得られます。クエリ結果は、ヘッド ノード上の `C:\temp` にあるローカル ファイル queryoutput.tsv に書き込まれます。
 
@@ -405,7 +405,7 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
 ### 探索: medallion および hack\_license ごとの乗車回数の分布
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 データセットの探索時に、値のグループの出現回数を確認する必要があることがよくあります。このセクションでは、タクシーと運転手に対してこれを行う方法の一例を紹介します。
 
@@ -428,7 +428,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 ### 探索: 無効な経度と緯度のレコードをチェックしてデータの品質を評価する
 
->[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
 
 探索的データ分析の共通の目標は、無効または正しくないレコードを除外することです。このセクションの例では、緯度または経度のいずれかのフィールドに NYC 領域から大きく外れる値が含まれていないかどうかを判断します。そのようなレコードには緯度と経度の値にエラーがある可能性が高いため、モデリングに使用するすべてのデータからそれらを排除します。
 
@@ -810,4 +810,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

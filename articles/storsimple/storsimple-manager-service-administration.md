@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple Manager サービス管理 | Microsoft Azure"
-   description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
+   description="Azure クラシック ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/11/2015"
+   ms.date="01/27/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -30,13 +30,13 @@
 
 ## StorSimple Manager サービスへの接続
 
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。これらのデバイスを管理するには、中央の Microsoft Azure 管理ポータルをブラウザーで実行して使用します。StorSimple Manager サービスに接続するには、次の手順を実行します。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。これらのデバイスを管理するには、中央の Microsoft Azure クラシック ポータルをブラウザーで実行して使用します。StorSimple Manager サービスに接続するには、次の手順を実行します。
 
 #### サービスに接続するには
 
-1. [http://azure.microsoft.com/](http://azure.microsoft.com/) にアクセスします。
+1. [https://manage.windowsazure.com/](https://manage.windowsazure.com/) に移動します。
 
-1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure 管理ポータルにログオンします。
+1. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure クラシック ポータルにログオンします。
 
 1. 左側のナビゲーション ウィンドウで下へスクロールして、StorSimple Manager サービスにアクセスします。
 
@@ -57,15 +57,15 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-||デバイス →|監視|| 
-||バックアップ カタログ|ボリューム コンテナー →|ボリューム| 
-||構成 (サービス)|バックアップ ポリシー|| 
-||ジョブ|構成 (デバイス)|| 
-||アラート|メンテナンス||
+|デバイス →|監視|
+|バックアップ カタログ|ボリューム コンテナー →|ボリューム|
+|構成 (サービス)|バックアップ ポリシー||
+|ジョブ|構成 (デバイス)|
+|アラート|メンテナンス|
 
 ![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
 
-StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
+StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ## StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
@@ -103,7 +103,7 @@ StorSimple Manager サービスのユーザー インターフェイスのチュ
 |デバイス コントローラーを停止する</br>デバイス コントローラーを再起動する</br>デバイス コントローラーをシャットダウンする</br>デバイスを工場出荷時の設定にリセットする</br>(これらはオンプレミスのデバイスのみに適用されます)|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[StorSimple デバイス コントローラーを管理する](storsimple-manage-device-controller.md)|
 |StorSimple のハードウェア コンポーネントについて学習する</br>ハードウェアの状態を監視する</br>(これらはオンプレミスのデバイスのみに適用されます)|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[ハードウェア コンポーネントを監視する](storsimple-monitor-hardware-status.md)|
 |サポート パッケージを作成する|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md)|
-|Install software updates|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
+|ソフトウェアの更新プログラムをインストールする|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
 
 
 ##次のステップ
@@ -112,8 +112,6 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 - [運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)
 - [StorSimple 監視インジケーター LED の使用](storsimple-monitoring-indicators.md)
 
-問題を解決できず、サービス要求の作成が必要な場合は、次のトピックを参照してください。
+問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
--  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
-
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0204_2016-->

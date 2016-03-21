@@ -14,23 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="02/04/2016"
 	ms.author="jgao"/>
 
 # HDInsight 用の Script Action スクリプトの開発
 
-HDInsight 用の Script Action スクリプトを記述する方法について説明します。Script Action スクリプトの使用方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。Linux オペレーティング システムでの HDInsight クラスターに関する同様の記事については、「[HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
+HDInsight 用の Script Action スクリプトを記述する方法について説明します。Script Action スクリプトの使用方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。Linux ベースの HDInsight クラスターに関する同様の記事については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
 
-> [AZURE.NOTE]次のようなエラー メッセージが表示されることがあります。
+> [AZURE.NOTE] 次のようなエラー メッセージが表示されることがあります。
 > 
 >     System.Management.Automation.CommandNotFoundException; ExceptionMessage : The term 'Save-HDIFile' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 > これは、ヘルパー メソッドを含めていなかったためです。「[カスタム スクリプトのためのヘルパー メソッド](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts)」を参照してください。
 
 ## サンプルのスクリプト
 
-Windows オペレーティング システムで HDInsight クラスターをプロビジョニングする場合、Script Action は、Azure PowerShell スクリプトです。サイトの構成ファイルを構成するためのサンプル スクリプトを次に示します。
+Windows オペレーティング システムで HDInsight クラスターを作成する場合、Script Action は、Azure PowerShell スクリプトです。サイト構成ファイルを構成するためのサンプル スクリプトを次に示します。
 
 	param (
 	    [parameter(Mandatory)][string] $ConfigFileName,
@@ -90,11 +90,11 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 **Spark のインストール** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。
 **R のインストール** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1[HDInsight クラスターでの R のインストールと使用][hdinsight-r-scripts]に関するページを参照してください。
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。
-- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
+- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」を参照してください。
 
-Script Action は、Azure プレビュー ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
+Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
-> [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
 
 
@@ -172,7 +172,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 	HDInsight は、高可用性を確保するために、アクティブ / パッシブ アーキテクチャを備えています。1 つのヘッドノードはアクティブ モード (HDInsight サービスが実行されている) であり、その他のヘッドノードはスタンバイ モード (HDInsight サービスが実行されていない) です。HDInsight サービスが中断されると、ノードはアクティブ モードおよびパッシブ モードを切り替えます。高可用性を確保する目的で Script Action を使用して両方のヘッド ノードにサービスをインストールする場合、HDInsight のフェールオーバー メカニズムが、このようなユーザーがインストールしたサービスを自動的にフェールオーバーできなくなるため、注意してください。そのため、高可用性が期待される HDInsight ヘッド ノードにユーザーがインストールしたサービスは、アクティブ/パッシブ モードの場合に独自のフェールオーバーのメカニズムを持つか、アクティブ　 / アクティブ モードになる必要があります。
 
-	HDInsight Script Action コマンドは、*ClusterRoleCollection* パラメーターでヘッドノードの役割が値として指定される場合、両方のヘッドノードで実行します (以下の [Script Action の実行方法](#runScriptAction)に記載)。そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。また、再イメージ化の際にデータが失われるので、Script Action を通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることをに注意してください。
+	HDInsight Script Action コマンドは、*ClusterRoleCollection* パラメーターでヘッドノードのロールが値として指定される場合、両方のヘッドノードで実行します (以下の [Script Action の実行方法](#runScriptAction)に記載)。そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。また、再イメージ化の際にデータが失われるので、Script Action を通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることをに注意してください。
 
 
 - Azure BLOB ストレージを使用するカスタム コンポーネントの構成
@@ -213,7 +213,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 ### 障害が発生したクラスターのデプロイメントにおける例外の実行
 
-クラスターのカスタマイズが予想通りに成功しなかった場合に正確な通知を受け取るには、例外を実行してクラスターのプロビジョニングを失敗させることが重要になります。たとえば、ファイルが存在する場合はファイルを処理し、ファイルが存在しない場合はエラー状況を処理する必要があります。これにより、スクリプトは正常に終了し、クラスターの状態が正確に把握できるようになります。次のスニペットでは、これを実行する方法の例を示します。
+クラスターのカスタマイズが予想どおりに成功しなかった場合に正確な通知を受け取るには、例外をスローし、クラスターの作成を失敗させることが重要になります。たとえば、ファイルが存在する場合はファイルを処理し、ファイルが存在しない場合はエラー状況を処理する必要があります。これにより、スクリプトは正常に終了し、クラスターの状態が正確に把握できるようになります。次のスニペットでは、これを実行する方法の例を示します。
 
 	If(Test-Path($SomePath)) {
 		#Process file in some way
@@ -351,4 +351,4 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

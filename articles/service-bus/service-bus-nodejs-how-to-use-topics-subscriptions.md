@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="02/08/2016" 
 	ms.author="sethm"/>
 
 
@@ -69,7 +69,7 @@ Azure モジュールは、Service Bus に接続するために必要な情報�
 
 Azure Cloud Service の構成ファイルで環境変数を設定する例については、[Storage を使用する Node.js Cloud Service に関するトピック][]を参照してください。
 
-Azure Web サイトの Azure ポータルで環境変数を設定する例については、[Storage を使用する Node.js Web アプリケーション][]に関するトピックを参照してください。
+Azure Web サイトの [Azure クラシック ポータル][]で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][]」を参照してください。
 
 ## トピックを作成する
 
@@ -130,7 +130,7 @@ function (returnObject, finalCallback, next)
 
 トピック サブスクリプションも **ServiceBusService** オブジェクトで作成します。サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定することができます。
 
-> [AZURE.NOTE]サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
+> [AZURE.NOTE] サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に **getSubscription** メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 
 ### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
@@ -152,7 +152,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 フィルターをサブスクリプションに追加するには、**ServiceBusService** オブジェクトの **createRule** メソッドを使用します。このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
-> [AZURE.NOTE]既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
+> [AZURE.NOTE] 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **deleteRule** メソッドを使用します。
 
 次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -292,7 +292,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、Azure ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][]またはプログラムによって明示的に削除する必要があります。次の例では、`MyTopic` という名前のトピックを削除する方法を示します。
 
     serviceBusService.deleteTopic('MyTopic', function (error) {
         if (error) {
@@ -316,15 +316,15 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [SqlFilter][] の API のリファレンス
 -   GitHub の [Azure SDK for Node][] リポジトリ
 
-  [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Azure portal]: http://manage.windowsazure.com
+  [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Storage を使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
+  [ストレージを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

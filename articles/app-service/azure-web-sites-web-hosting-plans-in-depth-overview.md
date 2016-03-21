@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="Azure App Service プランの詳細な概要" 
 	description="Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。" 
+	keywords="App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
 	services="app-service" 
 	documentationCenter="" 
 	authors="btardif" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="12/08/2015" 
 	ms.author="byvinyal"/>
 
 #Azure App Service プランの詳細な概要#
@@ -55,10 +56,12 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 その後、新しいアプリのための App Service プランを選択または作成できます。
   
  ![][createASP]
+
+新しい App Service プランを作成するには、**[+ 新規作成]** をクリックし、**App Service プラン**名を入力し、適切な**場所**を選択します。**[価格レベル]** をクリックし、サービスに適切な価格レベルを選択します。**[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。価格レベルを選択したら、**[選択]** をクリックします。
  
 ## アプリを別の App Service プランに移動する
 
-別の App Service プランへのアプリの移動は、[Azure ポータル](http://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
+別の App Service プランへのアプリの移動は、[Azure ポータル](https://portal.azure.com)で行うことができます。アプリは、同じ地理的リージョンのプラン間で移動できます。
 
 アプリを別のプランに移動するには、移動するアプリを表示し、**[App Service プランの変更]** をクリックします。
  
@@ -86,16 +89,12 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 
 ## 変更内容
 
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
- 
- 
- 
- <!-- Images. -->
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+   
 [pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
 [assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

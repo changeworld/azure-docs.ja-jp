@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure テーブルとの間でのデータの移動 | Azure Data Factory" 
-	description="Azure Data Factory を使用して Azure テーブル ストレージに、または Azure テーブル ストレージからデータを移動する方法を説明します。" 
+	description="Azure Data Factory を使用して Azure Table Storage に、または Azure Table Storage からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="02/24/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 
 この記事では、Azure Data Factory のコピー アクティビティを使用し、Azure テーブルと別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+
+次のサンプルは、Azure テーブル ストレージと Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+
 
 ## サンプル: Azure テーブルから Azure BLOB にデータをコピーする
 
@@ -42,6 +45,8 @@
 	    }
 	  }
 	}
+
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
 
 **Azure テーブルの入力データセット:**
 
@@ -203,6 +208,8 @@
 	  }
 	}
 
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+
 **Azure BLOB の入力データセット:**
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
@@ -317,8 +324,7 @@
 	        ],
 	        "typeProperties": {
 	          "source": {
-	            "type": "BlobSource",
-	            "blobColumnSeparators": ","
+	            "type": "BlobSource"
 	          },
 	          "sink": {
 	            "type": "AzureTableSink",
@@ -341,14 +347,10 @@
 	   }
 	}
 
-## Azure Storage のリンクされたサービスのプロパティ
+## リンクされたサービス
+Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。これら 2 つのリンクされたサービスには、これ以外の相違点はありません。ニーズに適したリンクされたサービスを選択します。以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
 
-Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
-| type | type プロパティを AzureStorage に設定する必要があります。 | あり |
-| connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure ポータルから Azure ストレージの connectionString を取得できます。 | あり |
+[AZURE.INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## Azure テーブル データセットの type プロパティ
 
@@ -360,6 +362,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | -------- | ----------- | -------- |
 | tableName | リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 | あり
 
+### Data Factory によるスキーマ
+Azure Table などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。
+
+1.	データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory サービスはスキーマとしてこの構造を優先します。この場合、行に列の値が含まれていないと、null 値が指定されます。
+2.	データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
+
+したがって、スキーマのないデータ ソースでは、**structure** プロパティを使用してデータの構造を指定するのがベスト プラクティスです。
+
 ## Azure テーブルのコピー アクティビティの type プロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
@@ -370,7 +380,19 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブル クエリ文字列。</p>**例:****<br/> "azureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'" <br/><br/>"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00\_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00\_9999}\\')', SliceStart)" | No azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。| TRUE<br/>FALSE | No |
+azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブルのクエリ文字列。下記の例をご覧ください。 | いいえ
+azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | いいえ |
+
+### azureTableSourceQuery の例
+
+Azure テーブルの列が文字列型の場合:
+
+	azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
+
+Azure テーブルの列が datetime 型の場合:
+
+	"azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
+
 
 **AzureTableSink** の typeProperties セクションでは次のプロパティがサポートされます。
 
@@ -504,4 +526,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

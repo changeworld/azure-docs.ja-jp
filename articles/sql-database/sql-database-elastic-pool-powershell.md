@@ -1,7 +1,8 @@
 <properties 
-    pageTitle="PowerShell を使用した Azure SQL Database のエラスティック データベース プールの作成 | Microsoft Azure" 
-    description="複数の Azure SQL Database でリソースを共有するためのエラスティック データベース プールを作成します。" 
-    services="sql-database" 
+    pageTitle="エラスティック データベース プールを使用したリソースのスケールアウト | Microsoft Azure" 
+    description="PowerShell を使用し、複数のデータベースを管理するエラスティック データベース プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。" 
+	keywords="複数のデータベース、スケールアウト"    
+	services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
     manager="jeffreyg" 
@@ -13,20 +14,21 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="11/06/2015"
+    ms.date="02/23/2016"
     ms.author="adamkr; sstein"/>
 
-# PowerShell を使用してエラスティック データベース プールを作成する
+# PowerShell を使用してエラスティック データベース プールを作成し、複数の SQL Database のリソースをスケールアウトする 
 
 > [AZURE.SELECTOR]
 - [Azure portal](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-elastic-pool-csharp.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
+PowerShell コマンドレットを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成し、複数のデータベースを管理する方法について説明します。
 
-この記事では、PowerShell コマンドレットを使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。
+> [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
-> [AZURE.NOTE]エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server.md)を 1 回の手順で実行できます。
+エラスティック データベース プールを使用すると、複数の SQL Database のデータベース リソースと管理をスケールアウトすることができます。
 
 この記事では、Azure サブスクリプションを除き、エラスティック データベース プールを作成して構成するために必要なものすべて (V12 サーバーを含む) を作成する方法を説明します。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 
@@ -35,9 +37,8 @@
 
 Azure PowerShell のエラスティック データベース プールを作成するための手順は、わかりやすさを重視し、細かく分けて説明しています。コマンドの正確な一覧のみが必要な方は、この記事下部の**まとめ**セクションをご覧ください。
 
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
 
@@ -46,7 +47,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 これで、Azure リソース マネージャー モジュールが実行され、エラスティック データベース プールを作成して構成するために必要なすべてのコマンドレットにアクセスできるようになりました。はじめに Azure アカウントへのアクセスを確立する必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
-	Add-AzureRmAccount
+	Login-AzureRmAccount
 
 正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
 
@@ -60,7 +61,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ## リソース グループ、サーバー、ファイアウォール規則の作成
 
-これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にエラスティック データベース プールを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRMLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得してください。
+これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にエラスティック データベース プールを作成するサーバーを含むリソース グループを作成し、そこに複数のデータベースを含めます。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRmLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得します。
 
 すでにリソース グループがある場合は次の手順に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
@@ -68,7 +69,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ### サーバーの作成 
 
-エラスティック データベース プールは Azure SQL Database サーバーの内部で作成されます。既にサーバーがある場合は次の手順に進みます。または、[New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを実行して新しい V12 サーバーを作ることもできます。ServerName をご利用のサーバー名に置き換えます。サーバー名が既に使われている場合はエラーが発生する可能性があるため、Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集して選択した任意の有効な場所で使用できます。
+エラスティック データベース プールは Azure SQL Database サーバーの内部で作成されます。既にサーバーがある場合は次の手順に進みます。また、[New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを実行して新しい V12 サーバーを作ることもできます。ServerName をご利用のサーバー名に置き換えます。サーバー名が既に使われている場合はエラーが発生する可能性があるため、Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集して選択した任意の有効な場所で使用できます。
 
 	New-AzureRmSqlServer -ResourceGroupName "resourcegroup1" -ServerName "server1" -Location "West US" -ServerVersion "12.0"
 
@@ -88,7 +89,7 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 ## エラスティック データベース プールとエラスティック データベースの作成
 
-これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) コマンドレットでエラスティック データベース プールを作成できます。このコマンドで合計 400 eDTU を共有するプールが作成されます。プールの各データベースは常に 10 eDTU 使用できることが保証されます (DatabaseDtuMin)。プールの各データベースは最大 100 eDTU を使用できます (DatabaseDtuMax)。パラメーターの詳細については「[SQL Database のエラスティック プール (プレビュー)](sql-database-elastic-pool.md)」をご覧ください。
+これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) コマンドレットにより、エラスティック データベース プールが作成されます。このコマンドで合計 400 eDTU を共有するプールが作成されます。プールの各データベースは常に 10 eDTU 使用できることが保証されます (DatabaseDtuMin)。プールの各データベースは最大 100 eDTU を使用できます (DatabaseDtuMax)。パラメーターの詳細については「[SQL Database のエラスティック プール (プレビュー)](sql-database-elastic-pool.md)」をご覧ください。
 
 
 	New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
@@ -129,6 +130,8 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 
 
 ## エラスティック データベースとエラスティック データベース プールの監視
+エラスティック データベース プールにはメトリック レポートが用意されており、複数のデータベースを管理する作業をスケールアウトできます。
+
 
 ### エラスティック データベース プールの操作の状態の取得
 
@@ -186,7 +189,9 @@ CSV ファイルにエクスポートします。
 
 * 取得されたこの API メトリックは、エラスティック データベース プールの databaseDtuMax (または CPU、IO など基盤となるメトリックと同等の上限) セットのパーセンテージとして表されます。たとえば、これらのメトリックいずれかの使用率が 50% であることは、特定のリソース消費量が、DB の上限の 50% (親のエラスティック データベース プールで該当するリソースの制限) であることを示しています。 
 
-メトリックは次のようにして取得します。$metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")
+メトリックを取得します。
+
+    $metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
 
 呼び出しを繰り返し、次のようなデータを追加することで、必要に応じて日数を追加できます。
 
@@ -225,11 +230,11 @@ CSV ファイルにエクスポートします。
 
 ## 次のステップ
 
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[Elastic Database ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 
 ## エラスティック データベースのリファレンス
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

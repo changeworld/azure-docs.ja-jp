@@ -1,11 +1,12 @@
-<properties 
-	pageTitle="ユニバーサル Windows アプリからの Azure BLOB ストレージへのイメージのアップロード | Microsoft Azure" 
-	description=".NET バックエンド モバイル サービスを使用してイメージを Azure BLOB ストレージにアップロードし、そのイメージにユニバーサル Windows アプリからアクセスする方法を説明します。" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	services="mobile-services,storage" 
-	manager="dwrede" 
+<properties
+	pageTitle="ユニバーサル Windows アプリからの Azure BLOB ストレージへのイメージのアップロード | Microsoft Azure"
+	description=".NET バックエンド モバイル サービスを使用してイメージを Azure BLOB ストレージにアップロードし、そのイメージにユニバーサル Windows アプリからアクセスする方法を説明します。"
+	documentationCenter="windows"
+	authors="ggailey777"
+	services="mobile-services,storage"
+	manager="dwrede"
 	editor=""/>
+
 
 <tags 
 	ms.service="mobile-services" 
@@ -13,10 +14,15 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="12/01/2015" 
 	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
@@ -52,7 +58,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 + [Mobile Services .NET の使用方法の概念リファレンス](../mobile-services-windows-dotnet-how-to-use-client-library.md)
 
      .NET で Mobile Services を使用する方法について説明します
- 
+
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
 [Update the client app to capture images]: #add-select-images
@@ -66,9 +72,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 <!-- URLs. -->
 [モバイル サービスの使用]: ../mobile-services-windows-store-dotnet-get-started.md
-[Azure Management Portal]: https://manage.windowsazure.com/
 [How To Create a Storage Account]: ../storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

@@ -14,25 +14,27 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/05/2015"
-	ms.author="szarkos"/>
+	ms.date="01/22/2016"
+	ms.author="szark"/>
 
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-**重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-../linux-endorsed-distributions.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
+**重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distributions.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
-- [Azure での動作保証済み Linux ディストリビューション](virtual-machines-../linux-endorsed-distributions.md)
+- [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distributions.md)
 - [Microsoft Azure での Linux イメージのサポート](http://support2.microsoft.com/kb/2941892)
 
 Azure 上で動作するすべてのディストリビューションは、プラットフォーム上で適切に実行できるように、いくつかの前提条件を満たす必要があります。この記事は決して包括的なものではありません。前提条件はディストリビューションによって異なるためです。次に示している条件をすべて満たす場合でも、プラットフォーム上で適切に動作するように Linux システムを微調整する必要があります。
 
-この理由から、できるだけ [Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions.md)のいずれかで開始することをお勧めします。次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
+この理由から、できるだけ [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distributions.md)のいずれかで開始することをお勧めします。次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
 
 - **[CentOS ベースのディストリビューション](virtual-machines-linux-create-upload-vhd-centos.md)**
+- **[Debian Linux](virtual-machines-linux-create-upload-vhd-debian.md)**
 - **[Oracle Linux](virtual-machines-linux-create-upload-vhd-oracle.md)**
+- **[Red Hat Enterprise Linux](virtual-machines-linux-create-upload-vhd-redhat.md)**
 - **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
 - **[Ubuntu](virtual-machines-linux-create-upload-vhd-ubuntu.md)**
 
@@ -76,7 +78,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 これを修正するには、HYPER-V マネージャー コンソールまたは [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) Powershell コマンドレットを使用して、VM のサイズを変更できます。Windows 環境で実行していない場合は、qemu-img を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
-> [AZURE.NOTE]qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。参照先: https://bugs.launchpad.net/qemu/+bug/1490611
+> [AZURE.NOTE] qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。参照先: https://bugs.launchpad.net/qemu/+bug/1490611
 
 
  1. `qemu-img` や `vbox-manage` などのツールを使用して直接 VHD のサイズを変更すると、VHD が起動できなくなる可能性があります。そのため、最初に VHD を RAW ディスク イメージに変換することをお勧めします。既に VM イメージを RAW ディスク イメージとして作成している場合は (KVM などの一部のハイパーバイザーでは既定)、この手順を省略できます。
@@ -107,7 +109,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 ## Linux カーネルの要件 ##
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](../linux-endorsed-distributions.md)を実行することをお勧めします。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。最新の Linux カーネル バージョン (つまり 3.x) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distributions.md)を実行することをお勧めします。
 
 Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場合は、Hyper-V 用の最新の LIS ドライバーをインストールする必要があります。必要なドライバーは[この場所](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)で見つかります。RHEL **6.4 以上** (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、Azure 上でこれらのシステムを実行するために追加のインストール パッケージは必要ありません。
 
@@ -193,4 +195,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

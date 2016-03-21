@@ -31,7 +31,7 @@
 Docker 対応 VM の作成をすぐに開始するには、以下を参照してください。
 
 + [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]
-+ [Azure ポータルで Docker VM 拡張機能を使用する方法]
++ [Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]
 + [Azure Marketplace で Docker をすばやく開始する方法]
 
 拡張機能の詳細と、その機能方法については、「[Docker 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)」を参照してください。
@@ -69,19 +69,19 @@ Docker VM 拡張機能は、作成した VM インスタンスにインストー
 Docker 対応 VM の作成をすぐに開始するには、以下を参照してください。
 
 + [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]
-+ [Azure ポータルで Docker VM 拡張機能を使用する方法]
++ [Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]
 
 ## Linux および Windows 向けの仮想マシン拡張機能
 [Azure 向けの Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)は、特殊な動作を提供する数ある VM 拡張機能のうちの 1 つにすぎません。現在、他にも多くの機能が開発中です。たとえば、[Linux VM エージェント拡張機能](virtual-machines-linux-agent-user-guide.md)の中には、セキュリティ機能やカーネルとネットワークの機能など、仮想マシンの変更と管理を実行できるものがあります。また VMAccess 拡張機能では、管理者のパスワードまたは SSH キーをリセットできます。
 
-詳しい一覧は、「[拡張機能の管理](http://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+詳しい一覧は、「[拡張機能の管理](virtual-machines-extensions-features.md)」を参照してください。
 
 <!--Anchors-->
 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
-[Azure ポータルで Docker VM 拡張機能を使用する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 [Azure Marketplace で Docker をすばやく開始する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-ubuntu-quickstart/
 [Docker と Linux コンテナー]: #Docker-and-Linux-Containers
 [Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_1217_2015-->

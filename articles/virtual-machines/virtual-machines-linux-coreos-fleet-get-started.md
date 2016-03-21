@@ -1,6 +1,6 @@
 <properties
 	pageTitle="CoreOS で Fleet を使ってみる | Microsoft Azure"
-	description="Azure 上のクラシック デプロイ モデルで作成された CoreOS Linux 仮想マシン上での Fleet と Docker の使用方法を紹介します。"
+	description="Azure 上のクラシック デプロイメント モデルで作成された CoreOS Linux VM クラスター上での Fleet と Docker の使用方法を紹介します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dlepow"
@@ -14,19 +14,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="08/03/2015"
+	ms.date="11/16/2015"
 	ms.author="danlep"/>
 
-# Azure 上の CoreOS で fleet を使ってみる
+# Azure の CoreOS VM クラスターで fleet を使ってみる
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
 
 この記事では、[fleet](https://github.com/coreos/fleet) と [Docker](https://www.docker.com/) を使用して、[CoreOS] 仮想マシンのクラスターでアプリケーションを実行する簡単な例を 2 つ紹介します。
 
-これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleetctl** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。
-
-
+これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleetctl** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。**fleetctl** クライアントの詳細については、「[Using the client](https://coreos.com/fleet/docs/latest/using-the-client.html)」を参照してください。
 
 
 ## <a id='simple'>例 1: Docker を使用した Hello World</a>
@@ -90,30 +88,28 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 ```
 
 
-## <a id='highavail'>例 2: 高可用性の Apache サーバー</a>
+## <a id='highavail'>例 2: 高可用性の nginx サーバー</a>
 
-CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、Apache Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、 [CoreOS Apache Docker Hub イメージ]が使用されています。
+CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、nginx Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、[nginx Docker Hub イメージ]が使用されています。
 
->[AZURE.IMPORTANT]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure ポータルか **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
+>[AZURE.IMPORTANT]高可用性の Web サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure クラシック ポータルか **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
 
-クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、apache@.service という名前を付けます。このテンプレートを使用して、apache@1.service 、apache@2.service、および apache@3.service という名前の 3 つの独立したインスタンスを起動します。
+クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、nginx@.service という名前を付けます。この単純なテンプレートを使用して、nginx@1.service、nginx@2.service、および nginx@3.service という名前の 3 つの独立したインスタンスを起動します。
 
 ```
 [Unit]
-Description=High Availability Apache
+Description=High Availability Nginx
 After=docker.service
 Requires=docker.service
 
 [Service]
 TimeoutStartSec=0
-ExecStartPre=-/usr/bin/docker kill apache1
-ExecStartPre=-/usr/bin/docker rm apache1
-ExecStartPre=/usr/bin/docker pull coreos/apache
-ExecStart=/usr/bin/docker run -rm --name apache1 -p 80:80 coreos/apache /usr/sbin/apache2ctl -D FOREGROUND
-ExecStop=/usr/bin/docker stop apache1
+ExecStartPre=/usr/bin/docker pull nginx
+ExecStart=/usr/bin/docker run --rm --name nginx1 -p 80:80 nginx
+ExecStop=/usr/bin/docker stop nginx1
 
 [X-Fleet]
-X-Conflicts=apache@*.service
+X-Conflicts=nginx@*.service
 ```
 
 >[AZURE.NOTE]特定の CoreOS ホストで実行できるのは、このコンテナーに含まれる 1 つのインスタンスのみであることが、 `X-Conflicts` 属性によって通知されます。詳細については、[ユニット ファイル]を参照してください。
@@ -121,33 +117,53 @@ X-Conflicts=apache@*.service
 次に、CoreOS クラスター上で、これらのユニット インスタンスを開始します。3 つの異なるマシン上でユニット インスタンスが実行されていることを確認してください。
 
 ```
-fleetctl --tunnel coreos-cluster.cloudapp.net:22 start apache@{1,2,3}.service
+fleetctl --tunnel coreos-cluster.cloudapp.net:22 start nginx@{1,2,3}.service
 
-unit apache@3.service launched on 00c927e4.../100.79.62.16
-unit apache@1.\service launched on 62f0f66e.../100.79.86.62
-unit apache@2.service launched on df85f2d1.../100.78.126.15
+unit nginx@3.service launched on 00c927e4.../100.79.62.16
+unit nginx@1.service launched on 62f0f66e.../100.79.86.62
+unit nginx@2.service launched on df85f2d1.../100.78.126.15
 
 ```
-これらのユニットのいずれか 1 つで実行されている Apache サーバーに接続するには、その CoreOS クラスターをホストしているクラウド サービスに簡単な要求を送信します。
+これらのユニットのいずれか 1 つで実行されている Web サーバーに接続するには、その CoreOS クラスターをホストしているクラウド サービスに簡単な要求を送信します。
 
 `curl http://coreos-cluster.cloudapp.net`
 
-次のような既定テキストが、Apache サーバーから返されます。
+次のような既定テキストが、nginx サーバーから返されます。
 
 ```
-<html><body><h1>It works!</h1>
-<p>This is the default web page for this server.</p>
-<p>The web server software is running but no content has been added, yet.</p>
-</body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
 ```
 
-Apache サービスが続行することを確認するために、クラスター内の 1 つまたは複数の仮想マシンをシャット ダウンすることもできます。
+Web サービスが続行することを確認するために、クラスター内の 1 つまたは複数の仮想マシンをシャット ダウンすることもできます。
 
 完了したら、ユニットを停止してアンロードします。
 
 ```
-fleetctl --tunnel coreos-cluster.cloudapp.net:22 stop apache@{1,2,3}.service
-fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
+fleetctl --tunnel coreos-cluster.cloudapp.net:22 stop nginx@{1,2,3}.service
+fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload nginx@{1,2,3}.service
 
 ```
 
@@ -173,7 +189,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
 [fleet を使用してコンテナーを起動する]: https://coreos.com/docs/launching-containers/launching/launching-containers-fleet/
 [ユニット ファイル]: https://coreos.com/docs/launching-containers/launching/fleet-unit-files/
 [BusyBox Docker Hub イメージ]: https://registry.hub.docker.com/_/busybox/
-[CoreOS Apache Docker Hub イメージ]: https://registry.hub.docker.com/u/coreos/apache/
+[nginx Docker Hub イメージ]: https://hub.docker.com/_/nginx/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

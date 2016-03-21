@@ -5,7 +5,7 @@
 	services=""
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"
+	editor=""
 	tags="mysql"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.date="01/09/2016"
 	ms.author="robmcm"/>
 
 #Azure で MySQL データベースを作成する方法
@@ -27,4 +27,4 @@ Azure での PHP による MySQL の使用方法を示すサンプルは、<http
 
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

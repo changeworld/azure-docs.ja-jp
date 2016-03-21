@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect の管理 | Microsoft Azure"
+	pageTitle="Azure AD Connect: 次のステップと Azure AD Connect の管理方法 | Microsoft Azure"
 	description="Azure AD Connect の既定の構成と運用タスクを拡張する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,11 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="02/16/2016"
 	ms.author="billmath"/>
 
-# Azure AD Connect の管理
+# 次のステップと Azure AD Connect の管理方法
 組織のニーズや要件を満たすように Azure Active Directory Connect をカスタマイズするための高度な運用に関するトピックを次に示します。
+
+## AD FS サービスでのオプションの構成
+AD FS ログイン ページのイラストとロゴのイメージをカスタマイズできます。それには、AD FS にログインし、PSH を使用して構成します。
+
+	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
+
+構成の可能性に関する詳細な説明については、「[AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
 
 ## Azure AD Premium および Enterprise Mobility のユーザーにライセンスを割り当てる
 
@@ -51,6 +58,8 @@
 
 <center>![Cloud](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
+Azure AD Connect 同期: スケジューラの詳細については、「[Azure AD Connect Scheduler](active-directory-aadconnectsync-feature-scheduler.md)」 (Azure AD Connect 同期スケジューラ) を参照してください。
+
 
 ## Azure AD Connect で利用可能なその他のタスク
 Azure AD Connect の初回インストール後は、Azure AD Connect のスタート ページまたはデスクトップのショートカットから、いつでもウィザードを再び起動できます。再度ウィザードを実行すると、追加のタスクの形式で新しいオプションがいくつか表示されます。
@@ -69,4 +78,4 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

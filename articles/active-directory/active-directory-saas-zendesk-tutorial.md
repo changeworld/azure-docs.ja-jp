@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Zendesk の統合
@@ -66,11 +66,11 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Zendesk に対する認証を行うことができるようにする方法を説明します。Zendesk にシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Zendesk に対する認証を行うことができるようにする方法を説明します。Zendesk にシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Zendesk** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[Zendesk]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773086.png "シングル サインオン")
 
@@ -78,7 +78,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-zendesk-tutorial/IC773087.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[Zendesk サインイン URL]** ボックスに、"*https://\<テナント名>.zendesk.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Zendesk サインイン URL]** ボックスに、"*https://\<テナント名>.zendesk.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-zendesk-tutorial/IC773088.png "アプリケーション URL の構成")
 
@@ -88,29 +88,29 @@
 
 5.  別の Web ブラウザー ウィンドウで、Zendesk 企業サイトに管理者としてログインします。
 
-6.  **[Admin]** をクリックします。
+6.  **[管理者]** をクリックします。
 
-7.  左側のナビゲーション ウィンドウで、**[Settings]**、**[Security]** の順にクリックします。
+7.  左側のナビゲーション ウィンドウで、**[設定]**、**[セキュリティ]** の順にクリックします。
 
     ![セキュリティ](./media/active-directory-saas-zendesk-tutorial/IC773089.png "セキュリティ")
 
-8.  **[Security**] ページで、**[Admin & Agents]** タブを選択します。
+8.  **[セキュリティ**] ページで、**[管理者とエージェント]** タブを選択します。
 
-9.  **[Single sign-on (SSO)]** を選択し、**[SAML]** を選択します。
+9.  **[シングルサインオン (SSO) と SAML]** を選択し、**[SAML]** を選択します。
 
-10. Azure AD ポータルの **[Zendesk でのシングル サインオンの構成]** ダイアログ ページで **[SAML SSO URL]** の値をコピーし、**[SAML SSO URL]** ボックスに貼り付けます。
+10. Azure ポータルで、**[Zendesk でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML SSO URL]** テキストボックスに貼り付けます。
 
-11. Azure AD ポータルの **[Zendesk でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーし、**[Remote Logout URL]** ボックスに貼り付けます。
+11. Azure ポータルで、**[Zendesk でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** テキストボックスに貼り付けます。
 
     ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773090.png "シングル サインオン")
 
-12. エクスポートした証明書から **[拇印]** の値をコピーし、**[証明書フィンガープリント]** ボックスに貼り付けます。
+12. エクスポートした証明書から **[サムプリント]** の値をコピーし、**[証明書フィンガープリント]** テキストボックスに貼り付けます。
 
-	>[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
+	>[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
 
-13. **[Save]** をクリックします。
+13. **[保存]** をクリックします。
 
-14. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+14. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-zendesk-tutorial/IC773093.png "シングル サインオンの構成")
 
@@ -122,13 +122,13 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
 
 1.  **Zendesk** テナントにログインします。
 
-2.  **[Customer List]** タブを選択します。
+2.  **[顧客リスト]** タブを選択します。
 
-3.  **[User]** タブを選択し、**[Add]** をクリックします。
+3.  **[ユーザー]** タブを選択し、**[追加]** をクリックします。
 
     ![ユーザーの追加](./media/active-directory-saas-zendesk-tutorial/IC773632.png "ユーザーの追加")
 
-4.  プロビジョニングする既存の Azure AD アカウントの電子メール アドレスを入力し、**[Save]** をクリックします。
+4.  プロビジョニングする既存の Azure AD アカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
 
     ![新しいユーザー](./media/active-directory-saas-zendesk-tutorial/IC773633.png "新しいユーザー")
 
@@ -146,10 +146,10 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-zendesk-tutorial/IC773094.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-zendesk-tutorial/IC767830.png "あり")
+    ![あり](./media/active-directory-saas-zendesk-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

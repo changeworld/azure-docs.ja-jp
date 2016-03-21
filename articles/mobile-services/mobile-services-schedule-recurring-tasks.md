@@ -13,16 +13,21 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="02/11/2016"
 	ms.author="glenga"/>
 
 # Mobile Services での繰り返し発生するジョブのスケジュール
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 - [Javascript backend](mobile-services-schedule-recurring-tasks.md)
 
-このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
+このトピックでは、Azure クラシック ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
 + 古いデータ レコードまたは重複しているデータ レコードの取得。
 + 外部データ (ツイート、RSS エントリ、場所情報など) の要求と格納。
@@ -38,15 +43,15 @@
 
 次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
-2. 管理ポータルで、モバイル サービスの **[データ]** タブをクリックし、**[作成]** をクリックします。
+2. [Azure クラシック ポータル]で、モバイル サービスの **[データ]** タブをクリックし、**[作成]** をクリックします。
 
 3. **[テーブル名]** に「_Updates_」と入力し、チェック ボタンをクリックします。
 
-##<a name="add-job"></a>新しいスケジュール済みジョブを作成する  
+##<a name="add-job"></a>新しいスケジュール済みジョブを作成する
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納するための、スケジュールされたジョブを作成します。
 
-2. **[Scheduler]** タブをクリックし、**[作成]** をクリックします。
+2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
 
     >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
@@ -132,7 +137,7 @@
 
    	このスクリプトでは、保存された資格情報を使用して Twitter クエリ API を呼び出し、`#mobileservices` というハッシュタグが含まれる最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
-    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「[方法: 一括挿入を実行する](mobile-services-how-to-use-server-scripts.md#bulk-inserts)」を参照してください。
+    >[AZURE.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、Free レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「[方法: 一括挿入を実行する](mobile-services-how-to-use-server-scripts.md#bulk-inserts)」を参照してください。
 
 6. スクリプトをテストするには、**[一度だけ実行する]** をクリックします。
 
@@ -140,7 +145,7 @@
 
 7. [戻る] ボタンをクリックし、**[データ]**、**Updates** テーブル、**[参照]** の順にクリックして、Twitter データがテーブルに挿入されたことを確認します。
 
-8. [戻る] ボタン、**[Scheduler]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
+8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
 
    	これにより、指定されたスケジュール (ここでは 1 時間ごと) でジョブが実行されるようになります。
 
@@ -161,9 +166,9 @@
 <!-- URLs. -->
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Register your apps for Twitter login with Mobile Services]: /develop/mobile/how-to-guides/register-for-twitter-authentication
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

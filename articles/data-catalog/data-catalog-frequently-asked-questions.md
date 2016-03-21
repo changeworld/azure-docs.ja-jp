@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="10/30/2015"
+   ms.date="02/04/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -44,7 +44,9 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - 米国西部
 - 米国東部
 - 西ヨーロッパ
+- 北ヨーロッパ
 - オーストラリア東部
+- 東南アジア
 
 ## Q: Azure Data Catalog のデータ資産の数の制限はどのくらいですか。
 
@@ -54,32 +56,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: サポートされているデータ ソースと資産の種類は何ですか。
 
-プレビュー期間中、**Azure Data Catalog** では現在、SQL Server リレーショナル (Azure SQL DB を含む) および SQL Server Analysis Services (多次元および表形式) データベースのほか、SQL Server Reporting Services (ネイティブ モードのみ) および Oracle Database をサポートしています。
-
-プレビュー期間中、**Azure Data Catalog** は、次の資産の種類の登録および検出をサポートしています。
-
-- SQL Server テーブル
-- SQL Server ビュー
-- SQL Server Analysis Services ディメンション
-- SQL Server Analysis Services メジャー
-- SQL Server Analysis Services KPI
-- SQL Server Analysis Services テーブル
-- SQL Server Reporting Services レポート  
-- Oracle Database テーブル
-- Oracle Database ビュー
-- Azure Storage BLOB
-- Azure Storage ディレクトリ
-- HDFS ファイル
-- HDFS ディレクトリ
-- Teradata テーブル
-- Teradata ビュー
-
-**Azure Data Catalog** では、上に一覧した資産に加えて、次のデータ資産コンテナーも検出することができます。
-
-- SQL Server Database
-- Oracle Database
-- HDFS クラスター
-- Teradata データベース
+現在サポートされているデータ ソースの一覧については、「[Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」をご覧ください。
 
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
@@ -92,7 +69,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: データの登録方法を教えてください。
 
-データを **Azure Data Catalog** に登録するには、**Azure Data Catalog** ポータルの [発行] 領域から **Azure Data Catalog** 登録ツールを起動します。**Azure Data Catalog** 発行アプリケーションで、**Azure Data Catalog** ポータルへのアクセスに使用した同じ資格情報を使用してログインし、登録するデータ ソースと特定の資産を選択します。
+データを **Azure Data Catalog** に登録するには、**Azure Data Catalog** ポータルの [発行] 領域から **Azure Data Catalog** 登録ツールを起動します。**Azure Data Catalog** 発行アプリケーションで、**Azure Data Catalog** ポータルへのアクセスに使用した同じ資格情報を使用して、ログインし、登録するデータ ソースと特定の資産を選択します。
 
 ## Q: 登録されているデータ資産に対し、どのようなプロパティが抽出されますか。
 
@@ -105,11 +82,11 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 - 属性/列データ型
 - 属性/列の説明
 
-> [AZURE.IMPORTANT]データ資産を **Azure Data Catalog** に登録しても、クラウドへのデータの移動もコピーも行われません。データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。このルールの唯一の例外は、ユーザーが資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。プレビューを含む場合、最大 20 のレコードが各資産からコピーされ、**Azure Data Catalog** にスナップショットとして格納されます。データ プロファイルを含む場合、集計情報 (テーブルのサイズ、列あたりの null 値の割合、および列の最小、最大、および平均値など) が計算され、カタログ内に格納されたメタデータに含められます。
+> [AZURE.IMPORTANT] データ資産を **Azure Data Catalog** に登録しても、クラウドへのデータの移動もコピーも行われません。データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。このルールの唯一の例外は、ユーザーが資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。プレビューを含む場合、最大 20 のレコードが各資産からコピーされ、**Azure Data Catalog** にスナップショットとして格納されます。データ プロファイルを含む場合、集計情報 (テーブルのサイズ、列あたりの null 値の割合、および列の最小、最大、および平均値など) が計算され、カタログ内に格納されたメタデータに含められます。
 
 <br/>
 
-> [AZURE.NOTE]ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms\_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
+> [AZURE.NOTE] ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、**Azure Data Catalog** 発行アプリケーションはそのプロパティ値を抽出します。ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、**Azure Data Catalog** 発行アプリケーションはオブジェクトと列の ms\_description 拡張プロパティから値を抽出します。詳細については、TechNet 「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
 
 ## Q: 新しく登録された資産が Azure Data Catalog に表示されるまでにどのくらいの時間がかかりますか。
 
@@ -158,7 +135,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: 特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか。
 
-A: **Azure Data Catalog** で、データ資産を選択し、[所有権の取得] ボタンをクリックします。**Azure Data Catalog** のデータ資産の所有者は、可視性設定を変更して、すべてのカタログ ユーザーが所有している資産を検出できるようにするか、特定のユーザーに可視性を制限することができます。
+A: **Azure Data Catalog** で、データ資産を選択し、[所有権の取得] ボタンをクリックします。**Azure Data Catalog** のデータ資産の所有者は、可視性設定を変更して、すべてのカタログ ユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。
 
 ## Q: データ ソースの変更がカタログに反映されるように、データ資産の登録を更新するにはどうすればいいですか。
 
@@ -172,4 +149,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -33,21 +33,21 @@ New Relic は、Web トランザクションの読み込み時間とスループ
 
 New Relic Standard は、Azure ユーザーであれば無料でご利用いただけます。New Relic Pro は、Azure Cloud Services のインスタンス サイズに基づいて提供されます。
 
-料金情報については、[Windows Azure ストアの New Relic のページ](http://azure.microsoft.com/marketplace/partners/newrelic/newrelic)を参照してください。
+料金情報については、[Microsoft Azure ストアの New Relic のページ](https://azure.microsoft.com/marketplace/partners/newrelic/newrelic/)を参照してください。
 
-> [AZURE.NOTE]コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 個を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
+> [AZURE.NOTE] コンピューティング インスタンス 10 個までについてのみ、料金を表示しています。10 個を超える場合は、ボリューム ディスカウント料金について New Relic (sales@newrelic.com) までお問い合わせください。
 
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 ## Azure ストアを使用して New Relic にサインアップする
 
-New Relic は、Azure の Web ロールおよび worker ロールとシームレスに統合されます。
+New Relic は、Azure の Web ロールおよびワーカー ロールとシームレスに統合されます。
 
 Azure ストアから New Relic に直接サインアップするには、次の簡単な 3 つの手順を実行します。
 
 ### 手順 1.Azure ストアからサインアップする
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 3. **[ストア]** をクリックします。
 4. **[アドインの選択]** ダイアログで、**[New Relic]** をクリックし、**[次へ]** をクリックします。
@@ -93,7 +93,7 @@ Azure ストアから New Relic に直接サインアップするには、次の
 	![クラウド プロジェクトの発行](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png)
 
 
-**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションの Azure Web サイトへのデプロイ)](app-service-web\web-sites-dotnet-get-started.md)」を参照してください。
+**メモ:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「[ASP.NET Web アプリケーションを Azure Web サイトにデプロイする](app-service-web\web-sites-dotnet-get-started.md)」を参照してください。
 
 ![発行の設定](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png)
 
@@ -119,11 +119,11 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 | 目的操作 | これを行うには、次の手順を実行します。 |
 | ----------------- | ---------- |
-| 選択したアプリのサーバーまたはブラウザーのダッシュボード情報を表示する | **[アプリ サーバー]** または **[ブラウザー]** をクリックします。 |
-| アプリケーションの [Apdex](https://newrelic.com/docs/site/apdex) スコアのしきい値レベルを表示する | [Apdex スコア] の **[?]** アイコンをポイントします。 |
-| 世界規模の Apdex の詳細を表示します。 | [概要] の**ブラウザー** ビューで、グローバル Apdex マップの任意の場所をポイントします。**ヒント:** 選択したアプリケーションの [[地理]](https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard") ダッシュボードに直接移動するには、**グローバル Apdex** のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。 |
-| [Web トランザクション](https://newrelic.com/docs/applications-dashboards/web-transactions) ダッシュボードを表示します。 | アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 ([主要トランザクション](https://newrelic.com/docs/site/key-transactions")など) を表示するには、その名前をクリックします。 |
-| [エラー](https://newrelic.com/docs/site/errors) ダッシュボードを表示します。 | アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。**ヒント:** [エラー] ダッシュボードは、**[アプリケーション]**、(アプリ)、[イベント]、[エラー] の順にクリックして表示することもできます。 |
+| 選択したアプリのサーバーまたはブラウザーのダッシュボード情報を表示する。 | **[アプリ サーバー]** または **[ブラウザー]** をクリックします。 |
+| アプリの [Apdex](https://newrelic.com/docs/site/apdex) スコアのしきい値レベルを表示する。 | [Apdex スコア] の **[?]** アイコンをポイントします。 |
+| 世界規模の Apdex の詳細を表示する。 | [概要] の**ブラウザー** ビューで、グローバル Apdex マップの任意の場所をポイントします。**ヒント:** 選択したアプリの [[地理]](https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard") ダッシュボードに直接移動するには、**グローバル Apdex** のタイトルをクリックするか、グローバル Apdex マップの任意の場所をクリックします。 |
+| [[Web トランザクション]](https://newrelic.com/docs/applications-dashboards/web-transactions) ダッシュボードを表示する。 | アプリケーションの [概要] ダッシュボードの [Web トランザクション] テーブルをクリックします。または、特定の Web トランザクションに関する詳細 ([主要トランザクション](https://newrelic.com/docs/site/key-transactions")など) を表示するには、その名前をクリックします。 |
+| [[エラー]](https://newrelic.com/docs/site/errors) ダッシュボードを表示する。 | アプリケーションの [概要] ダッシュボードの [エラー率] グラフのタイトルをクリックします。**ヒント:** [エラー] ダッシュボードは、**[アプリケーション]**、(アプリ)、[イベント]、[エラー] の順にクリックして表示することもできます。 |
 
 
 さらに、アプリのサーバーの詳細を表示する場合は、次のいずれかを実行します。
@@ -143,9 +143,9 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
  * [Azuree での .NET エージェントのインストール](https://newrelic.com/docs/dotnet/installing-the-net-agent-on-azure): New Relic の .NET エージェントのインストール手順 
  * [The New Relic User Interface (New Relic ユーザー インターフェイス)](https://newrelic.com/docs/site/the-new-relic-ui): New Relic UI の概要、ユーザー権限とプロファイルの設定、標準機能の使用、およびダッシュボードのドリルダウンの詳細
- * [Applications Overview dashboard (アプリケーションの [概要] ダッシュボード)](https://newrelic.com/docs/site/applications-overview): New Relic のアプリケーションの [概要] ダッシュボードを使用する際の機能
+ * [Applications Overview dashboard (アプリケーションの [概要] ダッシュボード)](https://newrelic.com/docs/site/applications-overview): New Relic のアプリケーションの [概要] ダッシュボードを使用するときの機能
  * [Apdex: Measuring user satisfaction (Apdex: ユーザー満足度の測定)](https://newrelic.com/docs/site/apdex): Apdex によってエンド ユーザーのアプリケーションに対する満足度がどのように測定されるかに関する概要
  * [Real User Monitoring](https://newrelic.com/docs/features/real-user-monitoring): Real User Monitoring (RUM) を使用して、ユーザーのブラウザーで Web ページの読み込みにかかった時間、アクセス元の地域、および使用しているブラウザーに関する詳細を確認する方法の概要
  * [Finding Help (ヘルプの利用)](https://newrelic.com/docs/site/finding-help): New Relic のオンライン ヘルプ センターで利用できるリソース
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0128_2016-->

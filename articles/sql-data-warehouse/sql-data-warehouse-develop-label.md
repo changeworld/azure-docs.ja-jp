@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
 SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポートします。難解な領域に入る前に、1 つの例を説明しましょう。
@@ -54,4 +54,4 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,8 +13,8 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
-	ms.topic="article"
-	ms.date="08/03/2015"
+	ms.topic="hero-article"
+	ms.date="02/09/2016"
 	ms.author="tomfitz"/>
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
@@ -27,11 +27,11 @@
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 
-このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
 学習内容:
 
-* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure ポータル](https://portal.azure.com)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
 
 このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
@@ -40,9 +40,8 @@
 
 ##開発環境を設定する
 
-このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。
+このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] がインストールされていることを前提としています。
 
-> [AZURE.NOTE]このチュートリアルを Windows で実行する場合は、<a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成することができます。
 
 ##<a id="create-web-site-and-set-up-git"></a>Web アプリの作成と Git 発行の設定
 
@@ -51,9 +50,9 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 1. [Azure ポータル][management-portal]にログインします。
 2. **[次へ]** アイコンをクリックします。
 
-3. **[Web + モバイル]**、**[Azure Marketplace]** の順にクリックします。
+3. **[Marketplace]** の横の **[すべて表示]** をクリック します。
 
-4. **[Web Apps]** をクリックし、**[Web アプリと MySQL]** をクリックします。**[作成]** をクリックします。
+4. **[Web + モバイル]** をクリックし、**[Web アプリ + MySQL]** をクリックします。**[作成]** をクリックします。
 
 4. リソース グループの有効な名前を入力します。
 
@@ -67,9 +66,9 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 
 	![新しい MySQL データベースの作成][new-mysql-db]
 
-7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
+7. Web アプリが作成されると、新しい Web アプリのブレードが表示されます。
 
-7. **[継続的配置の設定]** をクリックします。
+7. **[設定]** で **[継続的なデプロイメント]** をクリックして、_[必要な設定の構成]_ をクリックします。
 
 	![Git 発行の設定][setup-publishing]
 
@@ -91,7 +90,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 	![データベースの選択][select-database]
 
-2. データベースのサマリで、**[プロパティ]** を選択します。
+2. データベースの **[設定]** で、**[プロパティ]** を選択します。
 
     ![プロパティの選択][select-properties]
 
@@ -107,7 +106,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 
-アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部)、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
+アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部) がセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
 1. 先ほどメモしておいた `Data Source`、`User Id`、`Password`、`Database` の各値を使用して、リモートの MySQL サーバーに接続します。
 
@@ -119,9 +118,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 3. 次の `CREATE TABLE` コマンドを貼り付けます。これにより、データベース内に `registration_tbl` テーブルが作成されます。
 
-		mysql> CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
+		CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
 
-4. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に `index.php` というファイルを作成します。
+4. ローカル アプリケーション フォルダーのルートに **index.php** ファイルを作成します。
 
 5. テキスト エディターまたは IDE で **index.php** ファイルを開き、次のコードを追加します。`//TODO:` コメントの箇所を必要に応じて変更します。
 
@@ -154,7 +153,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		<?php
 			// DB connection info
 			//TODO: Update the values for $host, $user, $pwd, and $db
-			//using the values you retrieved earlier from the portal.
+			//using the values you retrieved earlier from the Azure Portal.
 			$host = "value of Data Source";
 			$user = "value of User Id";
 			$pwd = "value of Password";
@@ -210,16 +209,21 @@ Registration アプリケーションは、名前と電子メール アドレス
 		</body>
 		</html>
 
-これで、****http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
+4.  ターミナルで、アプリケーション フォルダーに移動し、次のコマンドを入力します。
+
+		php -S localhost:8000
+
+これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
 
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-> [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
+> [AZURE.NOTE]
+これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
 
-1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの Web アプリ プロパティに移動します。
+1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
 
 1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
@@ -258,7 +262,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 	![Azure の PHP Web サイト][running-app]
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
@@ -266,7 +270,6 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-SQLExpress]: http://www.microsoft.com/download/details.aspx?id=29062
@@ -300,4 +303,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

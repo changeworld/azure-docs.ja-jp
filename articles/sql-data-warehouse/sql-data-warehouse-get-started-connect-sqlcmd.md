@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager=""
+   manager="barbkess"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/20/2015"
-   ms.author="twounder"/>
+   ms.date="03/03/2016"
+   ms.author="mausher;barbkess;sonyama"/>
 
 # SQLCMD を使用した接続とクエリ
 
@@ -36,7 +36,7 @@
 
 データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 接続先のデータベースを探します。
 3. サーバーの完全名を見つけます (これを次の手順で使用します)。
 
@@ -78,9 +78,9 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 これで接続してクエリを実行することができます。[PowerBI で接続][]してみてください。
 
 [PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
- 
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

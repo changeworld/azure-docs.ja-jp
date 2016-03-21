@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/28/2015"
+   ms.date="12/11/2015"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store に格納されているデータのセキュリティ保護
@@ -32,8 +32,8 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- **Azure Data Lake Store アカウント**このアカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- **Azure Data Lake Store アカウント**。このアカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
 
 ## Azure Active Directory でセキュリティ グループを作成する
 
@@ -90,7 +90,7 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
 
 	![Data Lake Store アカウントにディレクトリを作成する](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Data Lake アカウントにディレクトリを作成する")
 
-2. **[データ エクスプ ローラー]** ブレードで、アカウントのルートをクリックし、アカウント ブレードの **[アクセス]** アイコンをクリックします。
+2. **[データ エクスプローラー]** ブレードで、アカウントのルートをクリックし、アカウント ブレードの **[アクセス]** アイコンをクリックします。
 
 	![Data Lake ファイル システムに ACL を設定する](./media/data-lake-store-secure-data/adl.acl.1.png "Data Lake ファイル システムに ACL を設定する")
 
@@ -112,20 +112,20 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
 
 
-	>[AZURE.NOTE]Execute アクセス許可はディレクトリの列挙体で必要です。また、データへの読み取り専用アクセスをユーザーまたはグループに許可する場合にもしばしば必要となります。
+	>[AZURE.NOTE] Execute アクセス許可はディレクトリの列挙体で必要です。また、データへの読み取り専用アクセスをユーザーまたはグループに許可する場合にもしばしば必要となります。
 
 
 6. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されます。
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.5.png "グループにアクセス許可を割り当てる")
 
-	> [AZURE.IMPORTANT]現在のリリースでは、**[カスタム アクセス]** に設定できるエントリは 12 個のみです。12 を超えるユーザーを追加する場合は、セキュリティ グループを作成し、セキュリティ グループにユーザーを追加し、それらのセキュリティ グループに Data Lake Store アカウントに対するアクセス権を付与します。　
+	> [AZURE.IMPORTANT] 現在のリリースでは、**[カスタム アクセス]** に設定できるエントリは 9 個のみです。9 を超えるユーザーを追加する場合は、セキュリティ グループを作成し、セキュリティ グループにユーザーを追加して、それらのセキュリティ グループに Data Lake Store アカウントに対するアクセス権を付与します。　
 
 7. 必要に応じて、グループを追加した後で、アクセス許可を変更することもできます。各種類のアクセス許可 (Read、Write、Execute) のチェック ボックスをオフにするかオンにするかは、セキュリティ グループにアクセス許可を割り当てるか、セキュリティ グループからアクセス許可を削除するかに応じて決定します。**[保存]** をクリックして変更を保存するか、または **[破棄]** をクリックして変更を元に戻します。
 
 ## Azure Data Lake Store アカウントのセキュリティ グループを削除する
 
-Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure プレビュー ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
+Azure Data Lake Store アカウントからセキュリティ グループを削除する場合は、Azure ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを変更するだけです。
 
 1. Data Lake Store アカウントのブレードで、ユーザー アイコンをクリックします。
 
@@ -147,7 +147,7 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 
 	![Data Lake アカウントにディレクトリを作成する](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Data Lake アカウントにディレクトリを作成する")
 
-2. **[データ エクスプ ローラー]** ブレードで、アカウントのルートをクリックし、アカウント ブレードの **[アクセス]** アイコンをクリックします。
+2. **[データ エクスプローラー]** ブレードで、アカウントのルートをクリックし、アカウント ブレードの **[アクセス]** アイコンをクリックします。
 
 	![Data Lake ファイル システムに ACL を設定する](./media/data-lake-store-secure-data/adl.acl.1.png "Data Lake ファイル システムに ACL を設定する")
 
@@ -159,9 +159,10 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 ## 関連項目
 
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
+- [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
 - [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [PowerShell を使用し、Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
-- [.NET SDK を使用し、Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
+- [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
+- [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

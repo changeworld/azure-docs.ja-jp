@@ -12,15 +12,15 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/18/2016" 
 	ms.author="billmath"/>
 
 # Azure MFA Server と Active Directory 間のディレクトリ統合
 
 [ディレクトリ統合] セクションを使用して、Active Directory または別の LDAP ディレクトリと統合するようにサーバーを構成できます。属性をディレクトリ スキーマと一致するように構成し、ユーザーの自動同期を設定できます。
 
-## 設定
+## [設定]
 既定では、Azure Multi-Factor Authentication Server は、Active Directory からユーザーをインポートするか同期するように構成されます。このタブでは、この既定の動作をオーバーライドして、別の LDAP ディレクトリ、ADAM ディレクトリ、または特定の Active Directory ドメイン コントローラーにバインドできます。LDAP を委任するため、RADIUS ターゲットとしての LDAP バインドのため、IIS 認証のための事前認証、またはユーザー ポータルのためのプライマリ認証としての LDAP 認証の使用も提供します。次の表で、個々の設定について説明します。
 
 ![設定](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
@@ -137,4 +137,4 @@ LDAP を使用するように構成したときに、LDAP ディレクトリが 
 
 ![Multi-Factor-Auth Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

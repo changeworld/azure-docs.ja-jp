@@ -16,11 +16,11 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
 
 サービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル][]へのログオン
+1.  [Azure クラシック ポータル][] にログオンします。
 
-2.  管理ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。![][0]
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。![][0]
 
 4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![][2]
 
@@ -35,7 +35,7 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してトピックやサブスクリプションの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure 管理ポータルから取得できます。
+新規作成した名前空間に対してトピックやサブスクリプションの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure ポータルから取得できます。
 
 ### ポータルから管理資格情報を取得するには
 
@@ -48,7 +48,7 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
 4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
 
-  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Azure portal]: http://manage.windowsazure.com
   [0]: ./media/service-bus-java-how-to-create-topic/sb-queues-13.png
   [2]: ./media/service-bus-java-how-to-create-topic/sb-queues-04.png
   [3]: ./media/service-bus-java-how-to-create-topic/sb-queues-09.png
@@ -57,4 +57,4 @@ Azure Service Bus トピックとサブスクリプションを使用するに�
   [6]: ./media/service-bus-java-how-to-create-topic/getting-started-multi-tier-27.png
   [34]: ./media/service-bus-java-how-to-create-topic/VSProperties.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

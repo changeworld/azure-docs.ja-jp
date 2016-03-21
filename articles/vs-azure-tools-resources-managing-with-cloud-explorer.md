@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="クラウド エクスプローラーを使用した Azure リソースの管理"
+   pageTitle="クラウド エクスプローラーを使用した Azure リソースの管理 | Microsoft Azure"
    description="クラウド エクスプローラーを使用し、Visual Studio 内で Azure リソースを参照および管理する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags 
    ms.service="multiple"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="08/13/2015"
-   ms.author="kempb" />
+   ms.date="12/17/2015"
+   ms.author="tarcher" />
 
 # クラウド エクスプローラーを使用した Azure リソースの管理
 
@@ -30,7 +30,7 @@
 - Visual Studio 2015 RTM。
 
 - Visual Studio Tools for Azure SDK。
-- クラウド エクスプローラーに Azure リソースを表示するには、Azure アカウントを所有していて、そのアカウントにログインしている必要もあります。お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](http://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
+- クラウド エクスプローラーに Azure リソースを表示するには、Azure アカウントを所有していて、そのアカウントにログインしている必要もあります。お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
 - クラウド エクスプローラーが表示されていない場合は、メニュー バーの **[表示]**、**[その他のウィンドウ]**、**[クラウド エクスプローラー]** の順にクリックすると表示できます。
 
@@ -95,4 +95,4 @@ Azure アカウントのサブスクリプションで特定の名前のリソ�
 
 検索ボックスに文字を入力すると、その文字に一致するリソースのみがリソース ツリーに表示されます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,23 +1,23 @@
 <properties 
-	pageTitle="SQL Data Warehouse データベース監査の使用 | Microsoft Azure" 
-	description="SQL Data Warehouse データベース監査の使用" 
-	services="sql-data-warehouse" 
-	documentationCenter="" 
-	authors="twounder" 
-	manager="" 
-	editor=""/>
+   pageTitle="SQL Data Warehouse データベース監査の使用 | Microsoft Azure" 
+   description="SQL Data Warehouse データベース監査の使用" 
+   services="sql-data-warehouse" 
+   documentationCenter="" 
+   authors="twounder" 
+   manager="barbkess" 
+   editor=""/>
 
 <tags 
-	ms.service="sql-data-warehouse" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/06/2015" 
-	ms.author="twounder"/>
+   ms.service="sql-data-warehouse" 
+   ms.workload="data-management" 
+   ms.tgt_pltfrm="na" 
+   ms.devlang="na" 
+   ms.topic="article" 
+   ms.date="01/07/2016" 
+   ms.author="mausher;barbkess;sonyama"/>
  
 # SQL Data Warehouse データベース監査の使用 
-<p>Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
+Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
@@ -59,7 +59,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 ##<a id="subheading-2"></a>データベースに対する監査を設定する
 
-1. <a href="https://portal.azure.com" target="_blank">Azure プレビュー ポータル</a>を起動します。
+1. <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>を開きます。
 
 2. 監査する SQL Data Warehouse データベース/SQL Server の構成ブレードに移動します。上部の [**設定**] ボタンをクリックし、[設定] ブレードで [**監査**] を選択します。
 
@@ -102,7 +102,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 
 ##<a id="subheading-4">運用環境での使用手法</a>
-このセクションでは、上のスクリーン キャプチャーについて説明します。<a href="https://portal.azure.com" target="_blank">Azure プレビュー ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure ポータル</a>を使用できます。
+このセクションでは、上のスクリーン キャプチャーについて説明します。<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure クラシック ポータル</a>を使用できます。
  
 
 ##<a id="subheading-5"></a>ストレージ キーの再生成
@@ -120,7 +120,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 ##<a id="subheading-6"></a>Automation
 Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。auditing コマンドレットにアクセスにするには、Azure リソース マネージャー モードで PowerShell を実行する必要があります。
 
-> [AZURE.NOTE][Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。Azure モジュールと同じ管理機能を提供しないことがあります。
+> [AZURE.NOTE] [Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。Azure モジュールと同じ管理機能を提供しないことがあります。
 
 Azure リソース マネージャー モードを実行中に、`Get-Command *AzureSql*` を実行して、使用できるコマンドレットの一覧を表示します。
 
@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016--->

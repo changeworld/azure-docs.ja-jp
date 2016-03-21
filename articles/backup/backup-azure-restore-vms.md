@@ -1,19 +1,30 @@
 
 <properties
 	pageTitle="バックアップから Azure 仮想マシンを復元する | Microsoft Azure"
-	description="Azure 仮想マシンを復元する方法について説明します。"
+	description="回復ポイントから Azure 仮想マシンを復元する方法について説明します"
 	services="backup"
 	documentationCenter=""
 	authors="trinadhk"
 	manager="shreeshd"
-	editor=""/>
+	editor=""
+	keywords="バックアップの復元, 復元する方法, 回復ポイント"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2015" ms.author="trinadhk"; "jimpark"/>
+<tags
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/22/2016"
+	ms.author="trinadhk; jimpark;"/>
+
 
 # Azure での仮想マシンの復元
-復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
+
+Azure Backup コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元するには、以下の手順を実行します。
 
 ## ワークフローの復元
+
 ### 1\.復元する項目を選択する
 
 1. **[保護された項目]** タブに移動し、新しい VM に復元する仮想マシンを選択します。
@@ -46,7 +57,7 @@
 
 1. **[Select restore instance]** 画面で、仮想マシンを復元する場所の詳細を指定します。
 
-  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure Backup からデータを復元します。
+  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure バックアップからデータを復元します。
   - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
         クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
@@ -97,12 +108,40 @@ VM は、(他の VM と同様に) Azure ポータルから復元するか、ま�
 
 ここで、Azure に DSRM モードがないことが問題となります。したがって、このような VM を復元する場合に Azure ポータルは使用できません。サポートされている復元メカニズムは、PowerShell を使用したディスクベースの復元のみです。
 
->[AZURE.WARNING]マルチ DC 環境のドメイン コントローラーの VM を復元する場合、Azure ポータルは使用しないでください。 PowerShell ベースの復元のみがサポートされています。
+>[AZURE.WARNING] マルチ DC 環境のドメイン コントローラーの VM を復元する場合、Azure ポータルは使用しないでください。 PowerShell ベースの復元のみがサポートされています。
 
 詳細については、[USN ロールバックの問題に関するトピック](https://technet.microsoft.com/library/dd363553)を参照し、問題の解決案をご覧ください。
+
+## 特別なネットワーク構成を持つ VM の復元
+Azure Backup は、次のように特殊なネットワーク構成の仮想マシンのバックアップをサポートしています。
+
+- ロード バランサー (内部および外部) の対象になっている VM
+- 予約済み IP が複数ある VM
+- NIC が複数ある VM
+
+このような構成の場合、復元時に次の点を考慮する必要があります。
+
+>[AZURE.TIP] 復元後に特殊なネットワーク構成の VM を再作成するには、PowerShell ベースの復元フローを使用してください。
+
+### UI からの復元:
+UI から復元する場合は、**常に新しいクラウド サービスを選択してください**。ポータルの復元フローでは、必須のパラメーターのみが使用されるので、UI を使用して VM を復元した場合、元の特殊なネットワーク構成は失われます。つまり、復元される VM は、ロード バランサー、複数の NIC、複数の予約済み IP などの構成がない、通常の VM になります。
+
+### PowerShell からの復元:
+PowerShell には仮想マシンを作成する機能はなく、バックアップから VM ディスクを復元する機能しかありません。そのため、前述したような特殊なネットワーク構成が必要な仮想マシンを復元するときに役立ちます。
+
+ディスクの復元後に仮想マシンを完全に再作成するには、次の手順を実行します。
+
+1. [Azure Backup PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用してバックアップ資格情報コンテナーからディスクを復元します。
+
+2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
+	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
+	- [インターネットに接続するロード バランサー](https://azure.microsoft.com/ja-JP/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成する
+	- [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)ある VM を作成する
+	- [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)ある VM を作成する
+
 
 ## 次のステップ
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

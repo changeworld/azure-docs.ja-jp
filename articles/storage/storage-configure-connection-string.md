@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Storage への接続文字列の構成 |Microsoft Azure" 
-	description="Azure ストレージ アカウントへの接続文字列を構成する方法を説明します。接続文字列には、ストレージ アカウント内のリソースへのプログラム アクセスを認証するために必要な情報が含まれています。接続文字列は、ユーザーが所有するアカウントのアカウント アクセス キーをカプセル化できます。または、アクセス キーなしでアカウント内のリソースにアクセスするための共有アクセス署名を含むことができます。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
-	editor="cgronlun"/>
+	pageTitle="Azure Storage への接続文字列の構成 |Microsoft Azure"
+	description="Azure ストレージ アカウントへの接続文字列を構成する方法を説明します。接続文字列には、ストレージ アカウント内のリソースへのプログラム アクセスを認証するために必要な情報が含まれています。接続文字列は、ユーザーが所有するアカウントのアカウント アクセス キーをカプセル化できます。または、アクセス キーなしでアカウント内のリソースにアクセスするための共有アクセス署名を含むことができます。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/23/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/17/2016"
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -37,7 +37,7 @@
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新してストレージ エミュレーターとクラウドの Azure ストレージ アカウントを切り替えることができます。接続文字列を編集するだけでストレージ アカウントを参照できます。
 
-Azure [CloudConfigurationManager](https://msdn.microsoft.com/library/microsoft.windowsazure.cloudconfigurationmanager.aspx) クラスを使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
+[Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) クラスを使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
 
 ## ストレージ エミュレーターへの接続文字列を作成する
 
@@ -52,13 +52,13 @@ Azure ストレージ アカウントへの接続文字列を作成するには�
     DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey
 
 たとえば、接続文字列は次のサンプルの接続文字列のようになります。
- 
+
 	DefaultEndpointsProtocol=https;
 	AccountName=storagesample;
 	AccountKey=<account-key>
 
-> [AZURE.NOTE]Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、HTTPS の使用を強くお勧めします。
-    
+> [AZURE.NOTE] Azure Storage では、HTTP と HTTPS の両方の接続文字列をサポートします。ただし、HTTPS の使用を強くお勧めします。
+
 ## 明示的なストレージ エンドポイントへの接続文字列を作成する
 
 次の場合は、接続文字列でサービス エンドポイントを明示的に指定することができます。
@@ -79,10 +79,10 @@ Azure ストレージ アカウントへの接続文字列を作成するには�
 
 接続文字列でサービス エンドポイントを明示的に指定する場合、上記の文字列に `credentials` を指定するには、次の 2 つのオプションがあります。
 
-- アカウント名とキーを指定する: `AccountName=myAccountName;AccountKey=myAccountKey` 
+- アカウント名とキーを指定する: `AccountName=myAccountName;AccountKey=myAccountKey`
 - 共有アクセス署名を指定する: `SharedAccessSignature=base64Signature`
 
-### カスタム ドメイン名を使用して BLOB エンドポイントを指定する 
+### カスタム ドメイン名を使用して BLOB エンドポイントを指定する
 
 BLOB サービスで使用するためにカスタム ドメイン名が登録されている場合は、接続文字列で BLOB エンドポイントを明示的に構成する必要があります。接続文字列に示されているエンドポイント値を使用することで、BLOB サービスへの要求 URI が作成され、コードに返される URI の形式も決定されます。
 
@@ -91,10 +91,10 @@ BLOB サービスで使用するためにカスタム ドメイン名が登録�
 	DefaultEndpointsProtocol=https;
 	BlobEndpoint=www.mydomain.com;
 	AccountName=storagesample;
-	AccountKey=<account-key> 
+	AccountKey=<account-key>
 
 
-### 共有アクセス署名で BLOB エンドポイントを指定する 
+### 共有アクセス署名で BLOB エンドポイントを指定する
 
 明示的なエンドポイントを持つ接続文字列を作成し、共有アクセス署名を介してストレージ リソースにアクセスできます。この場合、アカウント名とアカウント キーの資格情報ではなく、共有アクセス署名を接続文字列に含めて指定できます。共有アクセス署名トークンは、アクセス先のリソース、アクセス可能な期間、付与される権限に関する情報をカプセル化します。共有アクセス署名の詳細については、「[共有アクセス署名を使用したアクセスの委任](https://msdn.microsoft.com/library/ee395415.aspx)」を参照してください。
 
@@ -119,7 +119,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 	AccountKey=<account-key>;
 	EndpointSuffix=core.chinacloudapi.cn;
 
-
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

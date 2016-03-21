@@ -5,7 +5,7 @@
 	documentationCenter="ruby"
 	authors="tfitzmac"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="02/17/2016"
 	ms.author="tomfitz"/>
 
 
@@ -31,7 +31,7 @@
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションの作成方法については、「[Azure で Ruby アプリケーションを作成する](/develop/ruby/tutorials/web-app-with-linux-vm/)」を参照してください。
+Ruby アプリケーションの作成方法については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-ruby-rails-web-app-linux.md)」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -56,15 +56,21 @@ azure モジュールは、Azure Storage アカウントに接続するために
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
-これらの値を取得するには、次の手順を実行します。
+Azure ポータルでクラシックまたは ARM ストレージ アカウントからこれらの値を取得するには:
 
-1. [Azure ポータル](https://manage.windowsazure.com/)にログインします。
-
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
+3. 右側の [設定] ブレードで、**[アクセス キー]** をクリックします。
+4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。このいずれかを使用できます。 
+5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
 
-3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
+クラシック ポータルでクラシック ストレージ アカウントからこれらの値を取得するには:
 
-4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーは、プライマリとセカンダリのどちらでも選択できます。
+1. [クラシック ポータル](https://manage.windowsazure.com)にログインします。
+2. 使用するストレージ アカウントを表示します。
+3. ナビゲーション ウィンドウの下部にある **[アクセス キーの管理]** をクリックします。
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。 
+5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 ## テーブルの作成
 
@@ -128,7 +134,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-> [AZURE.NOTE]結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用して、後続のページを取得できます。
+> [AZURE.NOTE] 結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用して、後続のページを取得できます。
 
 ## エンティティ プロパティのサブセットを照会する
 
@@ -154,8 +160,7 @@ azure モジュールは、Azure Storage アカウントに接続するために
 
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0224_2016-->

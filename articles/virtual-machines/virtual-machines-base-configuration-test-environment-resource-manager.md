@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="01/21/2016"
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーでの基本構成テスト環境
@@ -50,15 +50,28 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure 仮想マシンを実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
+> [AZURE.NOTE] Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
-> [AZURE.NOTE]この記事には、Azure PowerShell プレビュー 1.0 のコマンドが使用されています。Azure PowerShell 0.9.8 以前のバージョンでこれらのコマンドを実行するには、"-AzureRM" のすべてのインスタンスを "-Azure" に置き換え、すべてのコマンド実行の前に **Switch-AzureMode AzureResourceManager** コマンドを追加します。詳細については、「[Azure PowerShell 1.0 プレビュー](https://azure.microsoft.com/blog/azps-1-0-pre/)」を参照してください。
+まず Azure PowerShell プロンプトを開始します。
 
-最初に、Azure PowerShell プロンプトを開きます。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+
+ご使用のアカウントにログインします。
+
+	Login-AzureRMAccount
+
+次のコマンドを使用して、サブスクリプション名を取得します。
+
+	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+
+Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+
+	$subscr="<subscription name>"
+	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
 次に、基本構成テスト ラボ用の新しいリソース グループを作成します。一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
 
@@ -72,7 +85,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースのストレージ アカウントが必要です。小文字のアルファベットと数字のみが含まれているストレージ アカウントのグローバルに一意の名前を選択する必要があります。既存のストレージ アカウントの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureRMStorageAccount | Sort Name | Select Name
+	Get-AzureRMStorageAccount | Sort StorageAccountName | Select StorageAccountName
 
 次のコマンドを実行して、新しいテスト環境の新しいストレージ アカウントを作成します。
 
@@ -108,7 +121,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
 	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/DC1-TestLab-ADDSDisk.vhd"
 	Add-AzureRMVMDataDisk -VM $vm -Name ADDS-Data -DiskSizeInGB 20 -VhdUri $vhdURI  -CreateOption empty
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC1." 
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC1."
 	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName DC1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
 	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
 	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
@@ -118,7 +131,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Azure プレビュー ポータルで、左側のウィンドウの **[すべて参照]** をクリックし、**[参照]** リストの **[仮想マシン]** をクリックして、**DC1** 仮想マシンをクリックします。  
+1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。  
 2.	**[DC1]** ウィンドウで、**[接続]** をクリックします。
 3.	メッセージが表示されたら、DC1.rdp ダウンロード ファイルを開きます。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -145,10 +158,12 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSForest -DomainName corp.contoso.com -DatabasePath "F:\NTDS" -SysvolPath "F:\SYSVOL" -LogPath "F:\Logs"
 
+これらのコマンドが完了するまで数分かかる場合があります。
+
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
-1.	Azure プレビュー ポータルで、左側のウィンドウの [すべて参照] をクリックし、[参照] リストの [仮想マシン] をクリックして、DC1 仮想マシンをクリックします。
-2.	[DC1] ウィンドウで、[接続] をクリックします。
+1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。
+2.	**[DC1]** ウィンドウで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
@@ -156,12 +171,15 @@ DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 - パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
-次に、CORP ドメインのメンバー コンピューターにログインする際に使用するユーザー アカウントを Active Directory に作成します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを 1 つずつ実行します。
+次に、CORP ドメインのメンバー コンピューターにログインする際に使用するユーザー アカウントを Active Directory に作成します。管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
 	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
-	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
-1 つ目のコマンドを実行すると、User1 アカウントのパスワードを入力するよう求められます。このアカウントは、CORP ドメインに属しているすべてのコンピューターのリモート デスクトップ接続に使用されるため、強力なパスワードを選んでください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
+このコマンドでは、User1 アカウントのパスワードの入力を求められます。このアカウントは、CORP ドメインに属しているすべてのメンバー コンピューターのリモート デスクトップ接続に使用されるため、*強力なパスワードを選択*してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
+
+次に、新しい User1 アカウントをエンタープライズ管理者として構成します。管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
+
+	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
 DC1 とのリモート デスクトップ セッションを閉じ、CORP\\User1 アカウントを使用して再接続します。
 
@@ -187,7 +205,7 @@ APP1 は、Web サービスとファイル共有サービスを提供します�
 	$nic = New-AzureRMNetworkInterface -Name APP1-NIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 	$vm=New-AzureRMVMConfig -VMName APP1 -VMSize Standard_A1
 	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for APP1." 
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for APP1."
 	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName APP1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
 	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
 	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
@@ -226,6 +244,8 @@ APP1 が再起動した後、CORP\\User1 のアカウント名とパスワード
 
 CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タブレット、またはデスクトップ コンピューターとなります。
 
+> [AZURE.NOTE] 次のコマンド セットは、Windows Server 2012 R2 Datacenter を実行する CLIENT1 を作成します。この操作は、どの種類の Azure サブスクリプションでも実行できます。MSDN ベースの Azure サブスクリプションを持っている場合は、[Azure ポータル](virtual-machines-windows-tutorial.md)を使用して、Windows 10、Windows 8、または Windows 7 を実行する CLIENT1 を作成できます。
+
 まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、CLIENT1 の Azure 仮想マシンを作成します。
 
 	$rgName="<resource group name>"
@@ -236,10 +256,10 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 	$nic = New-AzureRMNetworkInterface -Name CLIENT1-NIC -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 	$vm=New-AzureRMVMConfig -VMName CLIENT1 -VMSize Standard_A1
 	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
-	$cred=Get-Credential -Message "Type the name and password of the local administrator account for CLIENT1." 
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for CLIENT1."
 	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName CLIENT1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
 	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id	
+	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
 	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/CLIENT1-TestLab-OSDisk.vhd"
 	$vm=Set-AzureRMVMOSDisk -VM $vm -Name CLIENT1-TestLab-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
@@ -276,11 +296,9 @@ CLIENT1 が再起動した後、CORP\\User1 のアカウント名とパスワー
 
 Azure の基本構成の準備が整いました。アプリケーションの開発やテスト、および追加のテスト環境に使用できます。
 
-## その他のリソース
+## 次のステップ
 
-[ハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
-
-[基本構成テスト環境](virtual-machines-base-configuration-test-environment.md)
+- Corpnet サブネットに[新しい仮想マシンを追加](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
@@ -310,4 +328,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

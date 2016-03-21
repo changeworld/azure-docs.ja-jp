@@ -19,7 +19,7 @@ Oracle イメージに基づく Virtual Machines を作成するには、[Azure 
 ![](media/virtual-machines-oracle-list-oracle-virtual-machine-images/image1.png)
 
 ##Windows ベースの仮想マシン イメージ
-Azure の Windows Server 上で実行される、利用可能な Oracle 仮想マシン イメージの一覧を次に示します。これらのイメージは従量課金であり、Oracle のライセンス料にはこれらのイメージの使用が含まれています。独自のライセンスを持ち込んで、Windows または Linux 上で Oracle ソフトウェアを実行することもできます。Azure 仮想マシンの料金体系、ライセンス、仮想マシンのギャラリー イメージの詳細は[ここ](http://azure.microsoft.com/pricing/details/virtual-machines/#oracle-software)にあります。特定の Oracle の詳細価格を参照するには、**[Oracle]** タブをクリックします。
+Azure の Windows Server 上で実行される、利用可能な Oracle 仮想マシン イメージの一覧を次に示します。これらのイメージは従量課金であり、Oracle のライセンス料にはこれらのイメージの使用が含まれています。独自のライセンスを持ち込んで、Windows または Linux 上で Oracle ソフトウェアを実行することもできます。Azure Virtual Machines の料金体系、ライセンス、仮想マシンのギャラリー イメージの詳細は[ここ](https://azure.microsoft.com/pricing/details/virtual-machines/#oracle-software)にあります。特定の Oracle の詳細価格を参照するには、**[Oracle]** タブをクリックします。
 
 ###Oracle データベース仮想マシン イメージ
 - Oracle Database 12c Enterprise Edition on Windows Server 2012
@@ -63,4 +63,4 @@ Azure の Oracle Linux 上で実行される、事前に構成された利用可
 
 [Oracle 仮想マシン イメージ - 他の考慮事項](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

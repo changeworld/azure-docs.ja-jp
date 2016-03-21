@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="02/12/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -22,17 +22,17 @@
 
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。現時点では、すべての Azure サービスを網羅していませんのでご了承ください。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
 
-> [AZURE.NOTE]「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> [AZURE.NOTE] 「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
 ## 制限と Azure リソース マネージャー
 
-複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。Azure リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-portal.md)に関するページを参照してください。
+複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。Azure リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](azure-portal/resource-group-portal.md)に関するページを参照してください。
 
 次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure リソース マネージャー**の表などがあります。制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。特に記載のない限り、制限はすべてのリージョンに適用されます。
 
 > [AZURE.NOTE] Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。コア クォータを例に説明します。コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
-<!-- --> 
-結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイメントを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
+<!-- -->
+結果として、1 つのリージョンのワークロードに対して Azure リソース グループのクォータがどれくらい必要かを判断し、デプロイメントを検討している各リージョンでその量を要求するのが便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイメントの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
 
 
 ## サービス固有の制限
@@ -50,6 +50,7 @@
 - [CDN](#cdn-limits)
 - [Cloud Services](#cloud-services-limits)
 - [Data Factory](#data-factory-limits)
+- [Data Lake Analytics](#data-lake-analytics-limits)
 - [DNS](#dns-limits)
 - [DocumentDB](#documentdb-limits)
 - [IoT Hub](#iot-hub-limits)
@@ -118,21 +119,29 @@
 
 [AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-### Storage の制限
-
-#### Standard Storage の制限
-
-[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+### ストレージの制限
 
 ストレージ アカウントの上限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」を参照してください。
 
+#### ストレージ サービスの制限
 
-#### Premium Storage の制限
+[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-[AZURE.INCLUDE [azure-storage-limits-premium-storage](../includes/azure-storage-limits-premium-storage.md)]
+#### 仮想マシン ディスクの制限
 
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-#### ストレージの制限 - Azure リソース マネージャー
+その他の詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+
+**Standard Storage アカウント**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
+
+**Premium Storage アカウント**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+
+#### ストレージ リソース プロバイダーの制限
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -155,7 +164,7 @@
 
 [AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
-###BizTalk Services サービスの制限
+###BizTalk Services の制限
 次の表に Azure Biztalk Services の制限内容を示します。
 
 [AZURE.INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
@@ -173,9 +182,15 @@
 
 ### Search の制限
 
-[AZURE.INCLUDE [azure-search-limits](../includes/azure-search-limits.md)]
+価格レベルによって、容量と検索サービスの制限が決定されます。レベルは次のとおりです。
 
-Azure Search の制限に関する詳細については、「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+- **Free**: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
+- **Basic (プレビュー)**: 小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。このレベルは現在プレビュー段階であり、割引料金で提供されます。
+- **Standard (S1 および S2)**: 運用環境のワークロード向けです。大容量バージョン (**S2**) は、要求すれば利用できます (azuresearch_contact@microsoft.com) に電子メールで要求します)。
+
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
+
+ドキュメントのサイズ、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」をご覧ください。
 
 ### Media Services の制限
 
@@ -206,6 +221,8 @@ Azure Search の制限に関する詳細については、「[制限および制
 
 [AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
+### Data Lake Analytics の制限
+[AZURE.INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
 ### Stream Analytics の制限
 
@@ -262,8 +279,10 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 ## 関連項目
 
-[Understanding Azure Limits and Increases (Azure の制限と増設について)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+[Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
+[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-size-specs.md)
 
-<!---HONumber=Nov15_HO3-->
+[クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
+
+<!-------HONumber=AcomDC_0302_2016-->

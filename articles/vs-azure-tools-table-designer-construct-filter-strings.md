@@ -1,19 +1,19 @@
 <properties
-   pageTitle="テーブル デザイナー用のフィルター文字列の作成"
+   pageTitle="テーブル デザイナーのフィルター文字列の作成 |Microsoft Azure"
    description="テーブル デザイナー用のフィルター文字列の作成"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags
    ms.service="storage"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/24/2015"
-   ms.author="kempb" />
+   ms.date="12/18/2015"
+   ms.author="tarcher" />
 
 # テーブル デザイナー用のフィルター文字列の作成
 
@@ -99,4 +99,4 @@ DateTime 値を条件としてフィルター処理を行うには、**datetime*
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

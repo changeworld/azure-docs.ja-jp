@@ -13,15 +13,12 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/10/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio 2015 を使用した Azure App Service での ASP.NET API アプリの作成
 
-> [AZURE.SELECTOR]
-- [Visual Studio 2013](app-service-dotnet-create-api-app.md)
-- [Visual Studio 2015 RC](app-service-dotnet-create-api-app-vs2015.md)
-- [Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
+[AZURE.INCLUDE [app-service-api-v2-note](../../includes/app-service-api-v2-note.md)]
 
 ## 概要
 
@@ -177,7 +174,7 @@ API のテスト ページを表示するには、次の手順に従います。
 
 ## Azure での API アプリの作成
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で API アプリを作成します。 
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で API アプリを作成します。 
 
 	* **[新規]、[Web + モバイル]、[API アプリ]** の順にクリックします。
 
@@ -259,7 +256,7 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 
 このセクションでは、ポータルに移動し、先ほど作成した API アプリの API の定義を表示します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で、自分の API アプリの **[API アプリ]** ブレードに移動し、**[参照]、[リソース グループ]、[作成したリソース グループ]、[作成した API アプリ]** の順にクリックします。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、自分の API アプリの **[API アプリ]** ブレードに移動し、**[参照]、[リソース グループ]、[作成したリソース グループ]、[作成した API アプリ]** の順にクリックします。
 
 4. **[API の定義]** をクリックします。
 
@@ -297,4 +294,4 @@ API アプリとは本質的に、Azure が Web サービス機能用の追加�
 Visual Studio 2015 RC を使用し、API アプリを作成してデプロイしました。API アプリの詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示される、ナビゲーション ウィンドウのエントリを参照してください。API アプリ ドキュメントのほとんどでは Visual Studio 2013 が示されていますが、UI は似ていて、記述するコードおよびポータルの UI は同じなので、ほとんどは VS 2015 でも使用できます。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="samueld"
 	editor="curtand"/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/15/2015"
-	ms.author="billmath"/>
+	ms.date="02/17/2016"
+	ms.author="billmath;vakarand"/>
 
 
 # Azure AD Connect Health についてよく寄せられる質問 (FAQ)
@@ -60,7 +60,7 @@ AD FS Audit Channel for AD Health エージェントがすべてのデータを�
 
 **Q: Azure AD Connect Health サービスはパススルー http プロキシで動作しますか。**
 
-はい。実行中の操作については、HTTP プロキシを使用して送信 http 要求を転送するように Health エージェントを構成できます。詳細については、「[HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy)」をご覧ください。
+はい。実行中の操作については、HTTP プロキシを使用して送信 http 要求を転送するように Health エージェントを構成できます。詳細については、「[HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)」をご覧ください。
 
 エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を変更する必要があります。<br>Internet Explorer で、[設定]、[インターネット オプション]、[接続]、[LAN の設定] の順に開きます。<br> [LAN にプロキシ サーバーを使用する] をオンにします。<br> HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細設定] を選択します。<br>
 
@@ -99,5 +99,6 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0224_2016-->

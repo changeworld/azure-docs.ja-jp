@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 	
 #Windows Phone Silverlight SDK コンテンツ
@@ -22,7 +22,7 @@
 
 ##`/Resources` フォルダー 
 
-このフォルダーには、モバイル エンゲージメントが必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
+このフォルダーには、Mobile Engagement が必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
 
 - `EngagementIconNotification.png`: 通知の左側に表示されるブランド アイコン。これは自分のブランド アイコンに換えます。
 
@@ -37,4 +37,4 @@
 - `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

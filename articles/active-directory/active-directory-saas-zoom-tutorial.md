@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Zoom の統合 | Microsoft Azure" 
     description="Azure Active Directory で Zoom を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="02/29/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Zoom の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Zoom のテナント
   
-このチュートリアルを完了すると、Zoom に割り当てた Azure AD ユーザーは、Zoom 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Zoom に割り当てた Azure AD ユーザーは、Zoom 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -38,7 +38,7 @@
 
 ###Zoom のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-zoom-tutorial/IC700993.png "Active Directory")
 
@@ -70,45 +70,45 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Zoom** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Zoom** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zoom-tutorial/IC784696.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-zoom-tutorial/IC784696.png "Configure single sign-on")
 
 2.  **[ユーザーの Zoom へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zoom-tutorial/IC784697.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784697.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[Zoom サインイン URL]** ボックスに、"**http://company.zoom.us*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Zoom サインイン URL]** テキスト ボックスに、"**http://company.zoom.us*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-zoom-tutorial/IC784698.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-zoom-tutorial/IC784698.png "アプリケーション URL の構成")
 
-4.  **[Zoom でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
+4.  **[Zoom でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zoom-tutorial/IC784699.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-zoom-tutorial/IC784699.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてログインします。
 
-6.  **[Single Sign-On]** タブをクリックします。
+6.  **[シングル サインオン]** タブをクリックします。
 
     ![シングル サインオン](./media/active-directory-saas-zoom-tutorial/IC784700.png "シングル サインオン")
 
-7.  **[Security Control]** タブをクリックし、**[Single Sign-On]** に移動します。
+7.  **[セキュリティ制御]** タブをクリックし、**[シングル サインオン]** に移動します。
 
-8.  [Single Sign-On] セクションで、次の手順に従います。
+8.  [シングル サインオン] セクションで、次の手順に従います。
 
     ![シングル サインオン](./media/active-directory-saas-zoom-tutorial/IC784701.png "シングル サインオン")
 
-    1.  Azure ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービス URL]** の値をコピーし、**[Sign-in page URL]** ボックスに貼り付けます。
-    2.  Azure ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインアウト サービス URL]** の値をコピーし、**[Sign-out page URL]** ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン ページ URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインアウト サービス URL]** の値をコピーし、**[サインアウト ページ URL]** ボックスに貼り付けます。
     3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[ID プロバイダー証明書]** ボックスに貼り付けます。
-    5.  Azure ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、**[Issuer]** ボックスに貼り付けます。
-    6.  **[Save]** をクリックします。
+    4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
+    5.  Azure クラシック ポータルの **[Zoom でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
+    6.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-zoom-tutorial/IC784702.png "シングル サインオンの構成")
 
@@ -120,21 +120,21 @@ Azure AD ユーザーが Zoom にログインできるようにするには、�
 
 1.  **Zoom** 企業サイトに管理者としてログインします。
 
-2.  **[Account Management]** タブをクリックし、**[User Management]** をクリックします。
+2.  **[アカウント管理]** タブをクリックし、**[ユーザー管理]** をクリックします。
 
-3.  [User Management] セクションで、**[Add users]** をクリックします。
+3.  [ユーザー管理] セクションで、**[ユーザーの追加]** をクリックします。
 
     ![ユーザー管理](./media/active-directory-saas-zoom-tutorial/IC784703.png "ユーザー管理")
 
-4.  **[Add users]** ページで、次の手順を実行します。
+4.  **[ユーザーの追加]** ページで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/active-directory-saas-zoom-tutorial/IC784704.png "ユーザーの追加")
+    ![Add users (ユーザーを追加する)](./media/active-directory-saas-zoom-tutorial/IC784704.png "Add users (ユーザーを追加する)")
 
-    1.  **[User Type]** で **[Basic]** を選択します。
-    2.  **[Emails]** ボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
-    3.  **[Add]** をクリックします。
+    1.  **[ユーザー タイプ]** として、**[基本]** を選択します。
+    2.  **[電子メール]** テキストボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
+    3.  **[追加]** をクリックします。
 
->[AZURE.NOTE]Zoom から提供されている他の Zoom ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Zoom から提供されている他の Zoom ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -142,16 +142,16 @@ Azure AD ユーザーが Zoom にログインできるようにするには、�
 
 ###ユーザーを Zoomｖに割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、次の手順を作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Zoom** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-zoom-tutorial/IC784705.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-zoom-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-zoom-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

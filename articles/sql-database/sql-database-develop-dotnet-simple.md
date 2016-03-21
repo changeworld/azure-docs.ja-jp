@@ -1,30 +1,30 @@
-<properties 
-	pageTitle=".NET (C#) からの SQL Database の使用" 
+<properties
+	pageTitle=".NET (C#) を使用して SQL Database に接続する"
 	description="このクイック スタートのコード サンプルを使用して、C# で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。"
-	services="sql-database" 
-	documentationCenter="" 
-	authors="tobbox" 
-	manager="jeffreyg" 
+	services="sql-database"
+	documentationCenter=""
+	authors="tobbox"
+	manager="jeffreyg"
 	editor=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="07/16/2015" 
+<tags
+	ms.service="sql-database"
+	ms.workload="sql-database"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/17/2015"
 	ms.author="tobiast"/>
 
 
-# .NET (c#) からの SQL Database 使用 
+# .NET (c#) からの SQL Database 使用
 
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-## 必要条件
+## 前提条件
 
 ### .NET Framework
 
@@ -32,12 +32,17 @@
 
 ### SQL Database
 
-「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成し、接続文字列を取得する方法についてご確認ください。
+「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
-## SQL Database に接続する
+## 手順 1. 接続文字列を取得する
+
+[AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
+
+## 手順 2. 接続する
 
 [System.Data.SqlClient.SqlConnection クラス](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) は SQL Databaseへの接続に使用します。
-	
+
+
 ```
 using System.Data.SqlClient;
 
@@ -45,18 +50,18 @@ class Sample
 {
   static void Main()
   {
-	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 	  {
-		  conn.Open();	
+		  conn.Open();
 	  }
   }
-}	
+}
 ```
 
-## クエリを実行し、結果セットを取得します 
+## 手順 3. クエリを実行する
 
 [System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx) と [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx) クラスは、SQL Database へのクエリの結果セットを取得するために使用できます。System.Data.SqlClient はオフラインの [System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx) のデータの取得もサポートしています。
-	
+
 ```
 using System;
 using System.Data.SqlClient;
@@ -65,11 +70,11 @@ class Sample
 {
 	static void Main()
 	{
-	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+	  using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 		{
 			var cmd = conn.CreateCommand();
 			cmd.CommandText = @"
-					SELECT 
+					SELECT
 						c.CustomerID
 						,c.CompanyName
 						,COUNT(soh.SalesOrderID) AS OrderCount
@@ -78,8 +83,8 @@ class Sample
 					GROUP BY c.CustomerID, c.CompanyName
 					ORDER BY OrderCount DESC;";
 
-			conn.Open();	
-		
+			conn.Open();
+
 			using(var reader = cmd.ExecuteReader())
 			{
 				while(reader.Read())
@@ -91,24 +96,25 @@ class Sample
 	}
 }
 
+```  
+
+## 手順 4. 行を挿入する
+
+この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
+
 ```
+using System;
+using System.Data.SqlClient;
 
-## 行を挿入する、パラメーターを渡す、生成されたプライマリ キー値を取得する 
-
-SQL Database の [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) プロパティと [SEQUENECE](https://msdn.microsoft.com/library/ff878058.aspx) オブジェクトは、[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値の自動生成に使用できます。この例では、[INSERT ステートメント](https://msdn.microsoft.com/library/ms174335.aspx)を実行し、[SQL インジェクション](https://msdn.microsoft.com/magazine/cc163917.aspx)から保護されているパラメーターを安全に渡し、自動生成されたプライマリ キー値を取得する方法について説明しています。
-
-[System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx) クラスの[ExecuteScalar](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executescalar.aspx) メソッドは、ステートメントを実行し、このステートメントによって返される最初の列と行を取得するために使用できます。INSERT ステートメントの[OUTPUT](https://msdn.microsoft.com/library/ms177564.aspx)句は、呼び出し元のアプリケーションに設定された結果セットとして挿入された値を返すために使用できます。OUTPUT は、[UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)、[DELETE](https://msdn.microsoft.com/library/ms189835.aspx)、[MERGE](https://msdn.microsoft.com/library/bb510625.aspx) ステートメントにもサポートされています。1 行より多く挿入されている場合は、[ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) メソッドを使用して挿入されたすべての行の値を取得します。
-	
-```
 class Sample
 {
     static void Main()
     {
-		using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+		using(var conn = new SqlConnection("Server=tcp:yourserver.database.windows.net,1433;Database=yourdatabase;User ID=yourlogin@yourserver;Password={yourpassword};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
         {
             var cmd = conn.CreateCommand();
             cmd.CommandText = @"
-                INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) 
+                INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate)
                 OUTPUT INSERTED.ProductID
                 VALUES (@Name, @Number, @Cost, @Price, CURRENT_TIMESTAMP)";
 
@@ -127,6 +133,4 @@ class Sample
 }
 ```
 
- 
-
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0107_2016-->

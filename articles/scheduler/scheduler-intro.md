@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="08/04/2015"
+ ms.date="12/04/2015"
  ms.author="krisragh"/>
 
 # Azure Scheduler とは
@@ -34,13 +34,13 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
- [Azure ポータル内で Azure Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
  [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/dn528946)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
  [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
@@ -50,4 +50,4 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

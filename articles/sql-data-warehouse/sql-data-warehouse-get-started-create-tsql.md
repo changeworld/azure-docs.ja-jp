@@ -1,12 +1,12 @@
 <properties
-	pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
-	description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="lodipalm"
-	manager="barbkess"
-	editor=""
-	tags="azure-sql-data-warehouse"/>
+   pageTitle="TSQL で SQL Data Warehouse を作成する |Microsoft Azure"
+   description="TSQL で Azure SQL Data Warehouse を作成する方法を説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="lodipalm"
+   manager="barbkess"
+   editor=""
+   tags="azure-sql-data-warehouse"/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -14,13 +14,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/21/2015"
-   ms.author="lodipalm"/>
+   ms.date="03/03/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
-#TSQL で SQL Data Warehouse を作成する 
+#TSQL で SQL Data Warehouse を作成する
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](sql-data-warehouse-get-started-provision.md)
+- [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-TSQL.md)
 - [PowerShell](sql-data-warehouse-get-started-create-powershell.md)
 
@@ -28,7 +28,7 @@
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - 見ることができます。Visual Studio の無償版については、[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)に関するページを参照してください。
-- V12 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 SQL サーバーがない場合は、新しいサーバーで SQL Data Warehouse を作成できるように、プレビュー ポータルで作成しておくことをお勧めします。
+- V12 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 SQL サーバーがない場合は、新しいサーバーで SQL Data Warehouse を作成できるように、ポータルで作成しておくことをお勧めします。
 
 この記事では、Visual Studio を正しく設定して接続する方法については説明していません。その方法の詳細については、[接続とクエリ][]に関するドキュメントを参照してください。開始するには、Visual Studio で SQL Server オブジェクト エクスプローラーを開き、SQL Data Warehouse の作成に使用するサーバーに接続する必要があります。それが完了したら、Master データベースに対して次のコマンドを実行することで、SQL Data Warehouse を作成できます。
 
@@ -67,7 +67,7 @@ SERVICE\_OBJECTIVE は、インスタンスに最初に割り当てられる DWU
 これらのパラメーターと課金の関係については、[価格のページ][]を参照してください。
 
 ## 次のステップ
-SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
+SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
 
 [接続とクエリ]: ./sql-data-warehouse-get-started-connect.md
 [移行]: ./sql-data-warehouse-overview-migrate.md
@@ -76,4 +76,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [価格のページ]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0309_2016-->

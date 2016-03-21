@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="CDN - 国コード" 
-	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="juliako" 
-	manager="dwrede" 
+<properties
+	pageTitle="CDN - 国コード"
+	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="juliako"/>
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/25/2016" 
+	ms.author="casoper"/>
 
 #国コード
 
@@ -23,11 +23,11 @@
 | コード | 国 | 追加情報                                                                                                                                                                                                                               
 |--------------|----------------------------------------------|------------------------------------------------------|
 | A1 | 匿名プロキシ | この国コードは、アノニマイザーまたは VPN サービスが使用する一連の IP アドレスを識別します。この種のサービスは、IP の地理位置情報の制限を回避するために使用されます。 |                                                                        
-| A2 | 衛星プロバイダー | この国コードは、サテライト ISP がインターネット サービスを複数の国 (ナイジェリア、ガーナなど) に提供するために使用する一連の IP アドレスを識別します。 | 
+| A2 | 衛星プロバイダー | この国コードは、サテライト ISP がインターネット サービスを複数の国 (ナイジェリア、ガーナなど) に提供するために使用する一連の IP アドレスを識別します。 |
 | AF | アフガニスタン | |
 | AL | アルバニア | |
-| DZ | アルジェリア | | 
-| AS | アメリカ領サモア | | 
+| DZ | アルジェリア | |
+| AS | アメリカ領サモア | |
 | AD | アンドラ | |
 | AO | アンゴラ | |
 | AI | アンギラ | |
@@ -39,10 +39,10 @@
 | AP | アジア/太平洋地域 | この国コードでは、アジア/太平洋地域に分布する一連の IP アドレスを識別します。この一連の IP アドレスの発信元の国は特定されません。さらに重要なことには、この国コードは、アジア/太平洋地域の一部の IP アドレスに対応していません。[詳細情報](https://my.edgecast.com/uploads/ubers/1/docs/webhelp/w/CDNHelpCenter/Content/Knowledge_Base/Geolocation_EU_AP.htm)。|     
 | AU | オーストラリア | |
 | AT | オーストリア | |
-| AZ | アゼルバイジャン | | 
+| AZ | アゼルバイジャン | |
 | BS | バハマ | |
-| BH | バーレーン | | 
-| BD | バングラデシュ | | 
+| BH | バーレーン | |
+| BD | バングラデシュ | |
 | BB | バルバドス | |
 | BY | ベラルーシ | |
 | BE | ベルギー | |
@@ -268,4 +268,4 @@
 | ZM | ザンビア | |
 | ZW | ジンバブエ | |
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

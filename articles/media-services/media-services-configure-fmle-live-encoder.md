@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/03/2016"   
 	ms.author="juliako"/>
 
-#FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
+#FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 
 > [AZURE.SELECTOR]
 - [FMLE](media-services-configure-fmle-live-encoder.md)
@@ -26,42 +26,42 @@
 
 このトピックでは、[Flash Media Live Encoder (FMLE) エンコーダー](http://www.adobe.com/products/flash-media-encoder.html)を構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure の管理ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
+このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
 
 このチュートリアルでは、AAC の使用方法について説明することに注意してください。ただし、FMLE は、既定では AAC をサポートしません。MainConcept [ の AAC プラグイン](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)などの AAC エンコード用のプラグインを購入する必要があります 。
 
 ##前提条件
 
 - [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。 
-- 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。 
+- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。
+- 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 - ツールを起動し、AMS アカウントに接続します。
 
 ##ヒント
 
-- 可能な限り、有線のインターネット接続を使用します。 
-- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。  
+- 可能な限り、有線のインターネット接続を使用します。
+- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 - ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
- 
+
 ## チャネルの作成
 
-1.  AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。メニューから **[チャネルの作成]** を選択します。  
+1.  AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。メニューから **[チャネルの作成]** を選択します。
 
-	![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
+![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
 2. チャネルの名前を指定します。説明フィールドは省略可能です。[チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。それ以外の設定はすべてそのままにしておくことができます。
 
 
-	 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
- 
+**[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+
 3. **[チャネルの作成]** をクリックします。![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle2.png)
 
->[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
 
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp)ことができます。
 
->[AZURE.IMPORTANT]チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 
 ##<a id=configure_fmle_rtmp></a>FMLE エンコーダーを構成する
 
@@ -127,7 +127,7 @@
 	冗長性をさらに高めるには、セカンダリ入力 URL に対して次の手順を繰り返します。
 8. **[接続]** を選択します。
 
->[AZURE.IMPORTANT]**[接続]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] **[接続]** をクリックする前に、チャネルの準備が整っていることを確認する**必要**があります。また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 
 ##再生をテストする
   
@@ -170,4 +170,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="SQL Data Warehouse - データ監査のためのダウンレベル クライアントのサポート | Microsoft Azure" 
-	description="データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します" 
-	services="sql-data-warehouse" 
-	documentationCenter="" 
-	authors="twounder" 
-	manager="" 
-	editor=""/>
+   pageTitle="SQL Data Warehouse - データ監査のためのダウンレベル クライアントのサポート | Microsoft Azure" 
+   description="データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します" 
+   services="sql-data-warehouse" 
+   documentationCenter="" 
+   authors="twounder" 
+   manager="barbkess" 
+   editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="10/06/2015" 
-	ms.author="twounder"/>
+   ms.service="sql-database" 
+   ms.workload="data-management" 
+   ms.tgt_pltfrm="na" 
+   ms.devlang="na" 
+   ms.topic="article" 
+   ms.date="01/07/2016" 
+   ms.author="mausher;barbkess;sonyama"/>
  
 # SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート 
 
@@ -40,4 +40,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

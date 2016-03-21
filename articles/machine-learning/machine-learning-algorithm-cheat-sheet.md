@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/10/2016"
 	ms.author="brohrer;garye" />
 
 
@@ -24,7 +24,7 @@
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析ソリューションの構築に使用できる多くの機械学習アルゴリズムが用意されています。これらのアルゴリズムは、一般的な機械学習のカテゴリ (***回帰***、***分類***、***クラスタリング***、***異常検出***) に分類され、それぞれが別の種類の機械学習の問題に対応するように設計されています。
 
-> [AZURE.NOTE]このチート シートを使用する詳細なガイドについては、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
+> [AZURE.NOTE] このチート シートを使用する詳細なガイドについては、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
 
 ## 機械学習アルゴリズム チート シートのダウンロード
 
@@ -79,7 +79,7 @@
 <a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
 <img src="C:\Users\garye\azure-content-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
 </a>
--->
+--> \\
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
@@ -87,4 +87,4 @@
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!----HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

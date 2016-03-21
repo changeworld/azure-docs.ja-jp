@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="01/15/2016"
 	ms.author="adegeo"/>
 
 
@@ -22,14 +22,14 @@
 # クラウド サービスを作成してデプロイする方法
 
 > [AZURE.SELECTOR]
-- [Azure Portal](cloud-services-how-to-create-deploy.md)
-- [Azure Preview Portal](cloud-services-how-to-create-deploy-portal.md)
+- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
+- [Azure classic portal](cloud-services-how-to-create-deploy.md)
 
-Azure ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
+Azure クラシック ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
 
-このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
+このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure クラシック ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
 
-> [AZURE.NOTE]Visual Studio Online (VSO) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSO 発行を設定する必要があります。詳細については、[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信に関するページ)][TFSTutorialForCloudService]を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
+> [AZURE.NOTE] Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSTS 発行を設定する必要があります。詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 
 ## 概念
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、3 つのコンポーネントが必要です。
@@ -43,30 +43,30 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 [ここ](cloud-services-model-and-package.md)では、これらのコンポーネントとパッケージを作成する方法の詳細について説明します。
 
 ## アプリケーションの準備
-クラウド サービスをデプロイする前に、アプリケーション コードとクラウド サービス構成ファイル (.cscfg) からクラウド サービス パッケージ (.cspkg) を作成する必要があります。Azure SDK には、こういった必須のデプロイ ファイルを準備するためのツールが用意されています。SDK は、[Azure のダウンロード](http://azure.microsoft.com/downloads/) ページからアプリケーション コードの開発に使用する言語でインストールできます。
+クラウド サービスをデプロイする前に、アプリケーション コードとクラウド サービス構成ファイル (.cscfg) からクラウド サービス パッケージ (.cspkg) を作成する必要があります。Azure SDK には、こういった必須のデプロイ ファイルを準備するためのツールが用意されています。SDK は、[Azure のダウンロード](https://azure.microsoft.com/downloads/) ページからアプリケーション コードの開発に使用する言語でインストールできます。
 
 サービス パッケージをエクスポートする前に、以下の 3 つのクラウド サービス機能について特別な構成が必要です。
 
-- データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスをデプロイする場合は、アプリケーションを SSL 用に構成します。詳細については、「[HTTPS エンドポイントでの SSL 証明書の構成](http://msdn.microsoft.com/library/azure/ff795779.aspx)」を参照してください。
+- データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスをデプロイする場合は、[アプリケーションを SSL 用に構成](cloud-services-configure-ssl-certificate.md#step-2-modify-the-service-definition-and-configuration-files)します。
 
-- ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、ロールをリモート デスクトップ用に構成します。リモート アクセス用のサービス定義ファイルを準備する方法の詳細については、「[Azure ロールのリモート デスクトップ接続をセットアップする](http://msdn.microsoft.com/library/hh124107.aspx)」を参照してください。
+- ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、リモート デスクトップ用に[ロールを構成](cloud-services-role-enable-remote-desktop.md)します。
 
 - クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Azure 診断を有効にします。*最小監視* (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。詳細監視は、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集して、アプリケーション処理時に発生する問題を詳しく分析できます。Azure 診断を有効にする方法については、「[Enabling Diagnostics in Azure (Azure における診断の有効化)](cloud-services-dotnet-diagnostics.md)」を参照してください。
 
-- Web ロールまたは worker ロールのデプロイを伴うクラウド サービスを作成するには、サービス パッケージを作成する必要があります。パッケージに関連したファイルの詳細については、「[Azure のクラウド サービスのセットアップ](http://msdn.microsoft.com/library/hh124108.aspx)」を参照してください。パッケージ ファイルの作成については、「[Azure アプリケーションのパッケージ化](http://msdn.microsoft.com/library/hh403979.aspx)」を参照してください。Visual Studio を使用してアプリケーションを開発する場合は、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
+Web ロールまたは worker ロールのデプロイを伴うクラウド サービスを作成するには、[サービス パッケージを作成する](cloud-services-model-and-package.md#servicepackagecspkg)必要があります。
 
 ## 開始する前に
 
-- Azure SDK をまだインストールしていない場合は、**[Azure SDK のインストール]** をクリックして [Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)を開き、アプリケーション コードの開発に使用する言語用の SDK をダウンロードします。(これは後でも実行する機会があります)。
+- Azure SDK をまだインストールしていない場合は、**[Azure SDK のインストール]** をクリックして [Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)を開き、アプリケーション コードの開発に使用する言語用の SDK をダウンロードします。(これは後でも実行する機会があります)。
 
-- 証明書を必要とするロール インスタンスがある場合は、証明書を作成します。クラウド サービスには、秘密キーのある .pfx ファイルが必要です。証明書は、クラウド サービスを作成してデプロイするときに、Azure にアップロードできます。証明書の詳細については、「[証明書の管理](http://msdn.microsoft.com/library/gg981929.aspx)」を参照してください。
+- 証明書を必要とするロール インスタンスがある場合は、証明書を作成します。クラウド サービスには、秘密キーのある .pfx ファイルが必要です。クラウド サービスを作成してデプロイするときに、[証明書を Azure にアップロード](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)できます。
 
-- クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、管理ポータルの **[Networks]** 領域の **[アフィニティ グループ]** ページで作成できます。詳細については、「[管理ポータルでのアフィニティ グループの作成](http://msdn.microsoft.com/library/jj156209.aspx)」を参照してください。
+- クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、Azure クラシック ポータルの **[Networks]** 領域にある **[アフィニティ グループ]** ページで作成できます。
 
 
 ## 方法: 簡易作成によるクラウド サービスの作成
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[Compute]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
 
 	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
@@ -87,7 +87,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 ## 方法: クラウド サービスの証明書のアップロード
 
-1. [管理ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[証明書]** をクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[証明書]** をクリックします。
 
 	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 
@@ -108,10 +108,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 ## 方法: クラウド サービスのデプロイ
 
-1. [管理ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[ダッシュボード]** をクリックします。
-
-	運用環境でダッシュボードが開きます。この時点で、[ステージング] を選択すれば、アプリケーションをステージング環境にデプロイすることもできます。詳細については、「[Azure でのデプロイの管理](http://msdn.microsoft.com/library/gg433027.aspx)」を参照してください。
-
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[ダッシュボード]** をクリックします。
 
 2. **[新しい運用環境のデプロイをアップロードします]** または **[アップロード]** をクリックします。
 
@@ -123,7 +120,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 5. クラウド サービスにインスタンスが 1 つしかないロールがある場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** チェック ボックスをオンにして、デプロイを有効にして続行します。
 
-    Azure でクラウド サービスの保守中およびサービス更新中に 99.95% のアクセスを保証できるのは、あらゆるロールに少なくとも 2 つのインスタンスがある場合だけです。必要な場合、クラウド サービスをデプロイした後に、**[スケール]** ページで、ロール インスタンスを追加できます。詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
+    Azure でクラウド サービスの保守中およびサービス更新中に 99.95% のアクセスを保証できるのは、あらゆるロールに少なくとも 2 つのインスタンスがある場合だけです。必要な場合、クラウド サービスをデプロイした後に、**[スケール]** ページで、ロール インスタンスを追加できます。詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 6. **[OK]** (チェックマーク) をクリックして、クラウド サービスのデプロイを開始します。
 
@@ -144,7 +141,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
     ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
 
-[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
+[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
  
 ## 次のステップ
 
@@ -153,4 +150,4 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

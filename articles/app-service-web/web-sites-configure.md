@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
-	ms.author="erikre"/>
+	ms.date="02/26/2016" 
+	ms.author="tdykstra"/>
 
 
 # Azure App Service での Web アプリの構成 #
@@ -25,7 +25,7 @@
 
 ## アプリケーションの設定
 
-1. [Azure ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
+1. [Azure ポータル](https://portal.azure.com/)で、Web アプリのブレードを開きます。
 2. **[すべての設定]** をクリックします。
 3. **[アプリケーションの設定]** をクリックします。
 
@@ -38,7 +38,7 @@
 **[Framework バージョン]**。アプリでこれらのフレームワークを使用する場合は、以下のオプションを設定します。
 
 - **.NET Framework**: .NET Framework のバージョンを設定します。 
-- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は **[オフ]** を設定します。
+- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は [オフ] を設定します。
 - **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。**[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
 - **Python**: Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
 
@@ -50,7 +50,7 @@
 
 <a name="alwayson"></a>**常時接続**。既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。これにより、システムではリソースを節約できます。基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**管理されたパイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、統合 (既定) のままにしておきます。
+**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
 
 **自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
@@ -174,8 +174,7 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 - [Azure App Service での Web Apps の監視の基本](web-sites-monitor.md)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

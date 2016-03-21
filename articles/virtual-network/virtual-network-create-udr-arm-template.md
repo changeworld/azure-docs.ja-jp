@@ -1,10 +1,10 @@
 <properties 
    pageTitle="リソース マネージャーでテンプレートを使用してルーティングを制御し、仮想アプライアンスを使用する | Microsoft Azure"
-   description="テンプレートを使用して Azure でルーティングを制御し仮想アプライアンスを使用する方法を説明する"
+   description="Azure リソース マネージャーでテンプレートを使用してルーティングを制御し、仮想アプライアンスを使用する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"
 />
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/08/2015"
+   ms.date="02/23/2016"
    ms.author="telmos" />
 
-#テンプレートを使用してユーザー定義のルート (UDR) を作成する
+#テンプレートを使用してリソース マネージャーでユーザー定義のルート (UDR) を作成する
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
@@ -31,7 +31,7 @@
 
 [サンプル テンプレート](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)を表示してダウンロードすることができます。
 
-以下のセクションは、上記のシナリオに基づいた、azuredeploy-vnet-nsg-udr.json ファイル内のフロントエンド UDR の定義を示します。
+以下のセクションは、上記のシナリオに基づいた、**azuredeploy-vnet-nsg-udr.json** ファイル内のフロントエンド UDR の定義を示します。
 
 	"apiVersion": "2015-06-15",
 	"type": "Microsoft.Network/routeTables",
@@ -114,13 +114,19 @@
 
 PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+[AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
-3. テンプレートを使用してリソース グループを作成するには、**New-AzureRMResourceGroup** コマンドレットを実行します。
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-		New-AzureRMResourceGroup -Name TestRG -Location westus `
-		    -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' `
-		    -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json'	
+2. リソース グループを作成するには、`New-AzureRmResourceGroup` コマンドレットを実行します。
+
+		New-AzureRmResourceGroup -Name TestRG -Location westus
+
+3. テンプレートをデプロイするには、`New-AzureRmResourceGroupDeployment` コマンドレットを実行します。
+
+		New-AzureRmResourceGroupDeployment -Name DeployUDR -ResourceGroupName TestRG `
+		    -TemplateUri https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json `
+		    -TemplateParameterUri https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json	    	
 
 	予想される出力:
 
@@ -162,14 +168,14 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                    testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
 		                    testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
 		                    
-		ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
+		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
 ## Azure CLI を使用して ARM テンプレートをデプロイする
 
 Azure CLI を使用して ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](xplat-cli.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+2. 次に示すように、`azure config mode` コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
@@ -388,6 +394,6 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 		data:    
 		info:    group show command OK
 
->[AZURE.TIP]すべてのリソースが表示されない場合は、**azure group deployment show** コマンドを実行して、デプロイのプロビジョニング状態が *Succeeded* になっていることを確認します。
+>[AZURE.TIP] すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイメントのプロビジョニング状態が *Succeeded* になっていることを確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

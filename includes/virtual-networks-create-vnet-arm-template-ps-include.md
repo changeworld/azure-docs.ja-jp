@@ -4,9 +4,9 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-3. 必要に応じて **New-AzureRMResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+3. 必要に応じて、**`New-AzureRmResourceGroup`** コマンドレットを実行して新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
-		New-AzureRMResourceGroup -Name TestRG -Location centralus
+		New-AzureRmResourceGroup -Name TestRG -Location centralus
 		
 	上記のコマンドで想定される出力を次に示します。
 
@@ -20,9 +20,9 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                    *
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
-4. **New-AzureRMResourceGroupDeployment** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。
+4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**`New-AzureRmResourceGroupDeployment`** コマンドレットを実行して新しい VNet をデプロイします。
 
-		New-AzureRMResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
+		New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
 			-TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
 			
 	上記のコマンドで想定される出力を次に示します。
@@ -46,10 +46,10 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		
 		Outputs           :
 
-5. 次に示すように、**Get-AzureRMVirtualNetwork** コマンドレットを実行して新しい VNet のプロパティを表示します。
+5. 次に示すように、**`Get-AzureRmVirtualNetwork`** コマンドレットを実行して新しい VNet のプロパティを表示します。
 
 
-		Get-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+		Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 		
 	上記のコマンドで想定される出力を次に示します。
 		
@@ -92,4 +92,4 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                      }
 		                    ]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -1,6 +1,6 @@
-<properties pageTitle="Node.js モジュールの操作" description="Azure Websites や Cloud Services を使用する際の Node.js モジュールの使用方法について説明します。" services="" documentationCenter="nodejs" authors="MikeWasson" manager="wpickett" editor="mollybos"/>
+<properties pageTitle="Node.js モジュールの操作" description="Azure Websites や Cloud Services を使用する際の Node.js モジュールの使用方法について説明します。" services="" documentationCenter="nodejs" authors="rmcmurray" manager="wpickett" editor=""/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="08/31/2015" ms.author="mwasson"/>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/09/2016" ms.author="robmcm"/>
 
 
 
@@ -17,7 +17,7 @@ Node.js モジュールである **package.json** および **npm-shrinkwrap.jso
 
 > [AZURE.NOTE]VM でのデプロイは Virtual Machines でホストされているオペレーティング システムに依存するので、この記事では Azure Virtual Machines については説明しません。
 
-> [AZURE.NOTE]**package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、このサポートを有効にするには、クラウド サービスのプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。これを行う方法の例については、「[npm インストールを実行してノード モジュールのデプロイを回避するための Windows Azure スタートアップ タスク](http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure)」をご覧ください。
+> [AZURE.NOTE]**package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、このサポートを有効にするには、クラウド サービスのプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。これを行う方法の例については、「[npm インストールを実行してノード モジュールのデプロイを回避するための Microsoft Azure スタートアップ タスク](http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure)」をご覧ください。
 
 ##Node.js モジュール
 
@@ -78,4 +78,4 @@ Azure Websites では、すべてのネイティブ モジュールはサポー�
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -12,8 +12,8 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/18/2016" 
 	ms.author="billmath"/>
 # Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護
 
@@ -93,4 +93,4 @@ AD FS プロキシが使用されないときに AD FS 2.0 を保護するには
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

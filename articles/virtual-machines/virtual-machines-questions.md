@@ -14,57 +14,54 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="11/16/2015"
 	ms.author="cynthn"/>
 
+	
 # クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-この記事は、Azure VM のサポート チームや、フォーラム、ニュースグループ、およびその他の記事内のコメントに基づいて、クラシック デプロイ モデルで作成された Azure 仮想マシンに関するユーザーからの一般的な質問に回答するものです。基本的な情報については、まず「[仮想マシンについて](virtual-machines-about.md)」を参照してください。
+この記事では、クラシック デプロイ モデルで作成された Azure Virtual Machines についてユーザーからよく寄せられる質問に回答します。
 
 ## Azure VM では何を実行できますか。
 
-すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。また、MSDN サブスクリプション会員は Azure によって提供される特定の Windows クライアント イメージにアクセスできします。
-
-サーバー ソフトウェアについては、Windows Server (最近のバージョン) や各種の Linux ディストリビューションを実行し、さまざまなサーバー ワークロードやサービスをホストできます。サポートの詳細については、次の項目を参照してください。
+すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。最近のバージョンの Windows Server だけでなく、さまざまな Linux ディストリビューションを実行できます。サポートの詳細については、次の項目を参照してください。
 
 • Windows VM の場合 -- [Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)
 
 • Linux VM の場合 -- [Azure での動作保証済み Linux ディストリビューション](http://go.microsoft.com/fwlink/p/?LinkId=393551)
 
-Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
+Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
 
 ## 仮想マシンではどれくらいのストレージ容量を使用できますか。
 
-各データ ディスクで最大 1 TB を利用できます。使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」を参照してください。
+各データ ディスクで最大 1 TB (テラバイト) を利用できます。使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。詳細については、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。価格の詳細については、「[Azure Storage の価格](http://go.microsoft.com/fwlink/p/?LinkId=396819)」を参照してください。
 
 ## どのようなタイプの仮想ハード ディスクを使用できますか。
 
-Azure では、VHD 形式の仮想ハード ディスク (固定型) をサポートしています。Azure で VHDX 形式のディスクを使用したい場合は、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレット を使用して形式を変換してください。その後、[Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。コマンドレットでは、動的 VHD を固定 VHD に変換することはできますが、VHDX を VHD に変換することはできません。
+Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。Azure で VHDX を使用したい場合は、最初に、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレット を使用して形式を変換する必要があります。その後、[Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
 
 - Linux での手順ついては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-create-upload-vhd.md)」を参照してください。
 
 - Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)」を参照してください。
 
-データ ディスクのアップロード方法については、Linux または Windows の記事を参照し、Azure への接続手順から確認してください。
-
 ## これらの仮想マシンは、HYPER-V 仮想マシンと同じですか。
 
 多くの点で "第 1 世代" の Hyper-V VM と似ていますが、まったく同じというわけではありません。いずれのタイプも仮想化されたハードウェアを提供し、VHD 形式の仮想ハードディスクと互換性があります。つまり、Hyper-V と Azure の間で移動させることができます。HYPER-V ユーザーに驚かれることの多い主な違いは次の 3 点です。
 
-- Azure では、仮想マシンにアクセスするためのコンソールが提供されません。
+- Azure では、仮想マシンにアクセスするためのコンソールが提供されません。起動が完了するまで、VM にアクセスする方法はありません。
 - ほとんどの[サイズ](virtual-machines-size-specs.md)の Azure VM では、仮想ネットワーク アダプターが 1 つしかないため、外部 IP アドレスも 1 つしか使用できません。(A8 サイズと A9 サイズでは、インスタンス間でのアプリケーション通信に 2 つ目のネットワーク アダプターが使用される場合があります。)
-- Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。これらの機能の詳細については、「[Virtual Machine Specifications for Hyper-V (Hyper-V の仮想マシンの仕様)](http://technet.microsoft.com/library/dn592184.aspx)」を参照してください。
+- Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。これらの機能の詳細については、「[Virtual Machine Specifications for Hyper-V (Hyper-V の仮想マシンの仕様)](http://technet.microsoft.com/library/dn592184.aspx)」および「[第 2 世代仮想マシンの概要](https://technet.microsoft.com/library/dn282285.aspx)」を参照してください。
 
 ## これらの仮想マシンで、既存のオンプレミス ネットワーク インフラストラクチャを使用することはできますですか。
 
-サービス管理内で作成された VM の場合は、Azure Virtual Network を使用して既存のインフラストラクチャを拡張できます。このアプローチは、ブランチ オフィスのセットアップに似ています。Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理できるだけでなく、それらの VPN をオンプレミスの IT インフラストラクチャにセキュアに接続することもできます。詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+クラシック デプロイ モデルで作成された仮想マシンの場合は、Azure Virtual Network を使用して既存のインフラストラクチャを拡張できます。このアプローチは、ブランチ オフィスのセットアップに似ています。Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理できるだけでなく、それらの VPN をオンプレミスの IT インフラストラクチャにセキュアに接続することもできます。詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-仮想マシンを作成する際には、仮想マシンの参加先となるネットワークを指定する必要があります。つまり、既存の仮想マシンを仮想ネットワークに参加させることなどはできません。ただし、仮想ハードディスク (VHD) を既存の仮想マシンからデタッチし、それを使用して、目的のネットワーク構成で新しい仮想マシンを作成することにより、この問題を回避することは可能です。
+仮想マシンを作成する際には、仮想マシンの参加先となるネットワークを指定する必要があります。既存の仮想マシンを仮想ネットワークに参加させることはできません。ただし、仮想ハードディスク (VHD) を既存の仮想マシンからデタッチし、それを使用して、目的のネットワーク構成で新しい仮想マシンを作成することにより、この問題を回避することは可能です。
 
 ## 仮想マシンへのアクセス方法を教えてください。
 
@@ -73,17 +70,19 @@ Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対する
 - [Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 - [Linux が実行されている仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
-リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能をインストールして使用し、問題を修正してください。Windows VM の場合は、次のオプションもあります。
+リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](virtual-machines-extensions-features.md) 拡張機能をインストールして使用し、問題を修正してください。
 
-- Microsoft Azure プレビュー ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
+Windows VM の場合は、次のオプションもあります。
+
+- Azure クラシック ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
 - [「Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング」](virtual-machines-troubleshoot-remote-desktop-connections.md)を参照する。
 - Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
 
-Hyper-V に慣れている場合は、仮想マシン接続と同様のツールを検討されるかもしれませんが、Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
+Hyper-V に慣れている場合は、VMConnect と同様のツールを検討されるかもしれませんが、Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
 
-## D: ドライブ (Windows) または /dev/sdb1 (Linux) は使用できますか。
+## 一時ディスク (Windows の場合は D: ドライブ、Linux の場合は /dev/sdb1) を使用してデータを保存できますか。
 
-D: ドライブ (Windows) や /dev/sdb1 (Linux) は使用しないでください。これらのデバイスでは一時ストレージしか提供されないため、データ損失の発生時にデータを復旧できない恐れがあります。この問題は、仮想マシンを別のホストに移動する際に多く発生します。仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
+一時ディスク (Windows のデフォルトは D: ドライブ、Linux は /dev/sdb1) にデータを保存することはできません。一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。このようなことは、仮想マシンを別のホストに移動するときに発生する可能性があります。仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
 
 ## 一時ディスクのドライブ文字を変更する方法について教えてください。
 
@@ -94,17 +93,24 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 アップグレードという言葉は一般に、オペレーティング システムを現在のハードウェアのままで新しいリリースに移行することを指します。Azure VM の場合、新しいリリースに移行するプロセスは Windows や Linux の場合と異なります。
 
 - Linux VM の場合、配布には適切なパッケージ管理ツールと手順を使用してください。
-- Windows 仮想マシンの場合は、Windows Server 移行ツールを使用します。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。ツールとプロセスの詳細については、「[Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。 Windows Server 2012 R2 へのアップグレードに関する詳細は、「[Windows Server 2012 R2 のアップグレード オプション](https://technet.microsoft.com/library/dn303416.aspx)」を参照してください。
+- Windows 仮想マシンの場合、Windows Server 移行ツールのようなものを使用してサーバーを移行する必要があります。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。 
+
+Windows Server の移行に関するツールとプロセスの詳細については、「[Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。
+
+
 
 ## 仮想マシンでの既定のユーザー名とパスワードを教えてください。
 
 Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのログオンに使用するユーザー名とパスワードを指定する必要があります。
 
-ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、VMAccess 拡張機能をインストールして使用し、問題を解決することができます。
+ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](virtual-machines-extensions-features.md) 拡張機能をインストールして使用し、問題を解決することができます。
 
 追加情報:
 
-- Linux イメージの場合、Azure ポータルを使用すると既定のユーザー名として「azureuser」が指定されますが、仮想マシンの作成に [簡易作成] ではなく [ギャラリーから] を使用すれば、ユーザー名をを変更できます。また [ギャラリーから] では、ログインにパスワードを使用するか、SSH キーを使用するか、それとも両方を使用するかを指定することもできます。既定のユーザー アカウントは、特権のあるコマンドを実行するための "sudo" アクセス権を付与された、特権のないユーザーです。"root" アカウントは無効化されます。
+
+- Linux イメージの場合、Azure クラシック ポータルを使用すると既定のユーザー名として「azureuser」が指定されますが、仮想マシンの作成に [簡易作成] ではなく [ギャラリーから] を使用すれば、ユーザー名をを変更できます。また [ギャラリーから] では、ログインにパスワードを使用するか、SSH キーを使用するか、それとも両方を使用するかを指定することもできます。既定のユーザー アカウントは、特権のあるコマンドを実行するための "sudo" アクセス権を付与された、特権のないユーザーです。"root" アカウントは無効化されます。
+
+
 - Windows イメージの場合は、VM の作成時にユーザー名とパスワードを指定する必要があります。アカウントは Administrators グループに追加されます。
 
 ## Azure では、仮想マシン上でウイルス対策を実行できますか。
@@ -113,7 +119,7 @@ Azure ではウイルス対策ソリューションとしていくつかのオ�
 
 - [Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404207)
 - [Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404206)
-- [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](http://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
+- [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## バックアップと回復についてはどのようなオプションがありますか。
 
@@ -127,28 +133,30 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 
 VM が実行中または停止状態のときには料金が発生しますが、VM が停止 (割り当て解除) 状態のときには料金は課金されません。VM を停止 (割り当て解除) 状態にするには、次のいずれかを行います。
 
-- Azure ポータルから VM をシャット ダウンまたは削除する。
+- Azure クラシック ポータルから VM をシャット ダウンまたは削除する。
 - Stop-AzureVM コマンドレットを使用する (Azure PowerShell モジュールで利用可能)。
 - サービス管理 REST API でロールのシャット ダウン操作を使用し、PostShutdownAction 要素に StoppedDeallocated を指定する。
 
-詳細については、「[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
 ## Azure では、メンテナンスのために VM が再起動されることはありますか。
 
-通常、VM の起動、停止、および再起動はユーザーが必要に応じて行います。Azure では、Azure データ センターでの定期的な計画メンテナンス更新の一環として、VM が再起動されることがあります。また、VM に影響する重大なハードウェア問題が Azure で検出された場合には、計画外のメンテナンス イベントが発生する場合もあります。計画外イベントの場合、Azure は VM を正常な状態のホストへと自動的に移行し、VM を再起動します。
+Azure では、Azure データ センターでの定期的な計画メンテナンス更新の一環として、VM が再起動されることがあります。
+
+また、VM に影響する重大なハードウェア問題が Azure で検出された場合には、計画外のメンテナンス イベントが発生する場合もあります。計画外イベントの場合、Azure は VM を正常な状態のホストへと自動的に移行し、VM を再起動します。
 
 スタンドアロン VM (可用性セットに含まれない VM) については、計画メンテナンスの 1 週間前までに Azure からサブスクリプションのサービス管理者に電子メールが送られ、更新中に VM が再起動される可能性がある旨が通知されます。その場合、VM 上で実行されているアプリケーションにダウンタイムが発生する可能性があります。
 
-計画メンテナンスのために再起動が発生した場合、利用者は Azure ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](http://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
+計画メンテナンスのために再起動が発生した場合、利用者は Azure クラシック ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
 
 冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
 
 ## その他のリソース
 
-[Azure の仮想マシンについて](virtual-machines-about.md)
+[Azure の Virtual Machines について](virtual-machines-about.md)
 
 [Linux 仮想マシンを作成するさまざまな方法](virtual-machines-linux-choices-create-vm.md)
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

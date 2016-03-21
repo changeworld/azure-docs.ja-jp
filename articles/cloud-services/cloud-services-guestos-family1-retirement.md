@@ -3,7 +3,7 @@
    description="Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します" 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="Thraka" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="08/18/2015"
-   ms.author="adegeo"/>
+   ms.date="12/07/2015"
+   ms.author="yuemlu"/>
 
 
 
@@ -26,7 +26,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 **2014 年 11 月 3 日**: ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。これらのサービスは、突然停止される可能性があります。自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
 
-質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](http://azure.microsoft.com/support/options/)ください。
+質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。
 
 
 
@@ -37,7 +37,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。 
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
-3. Azure 管理ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。この値を調べる方法については、[このページ](https://msdn.microsoft.com/library/azure/gg456325.aspx)を参照してください。
+3. Azure クラシック ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
 
 クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../install-configure-powershell.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
 
@@ -81,4 +81,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

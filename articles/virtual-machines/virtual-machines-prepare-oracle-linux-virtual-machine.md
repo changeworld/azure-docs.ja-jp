@@ -1,22 +1,22 @@
-<properties 
-pageTitle="Azure 用の Oracle Linux 仮想マシンの準備 | Microsoft Azure" 
-description="Microsoft Azure で Linux を実行する Oracle 仮想マシンの構成手順を説明します。" 
-services="virtual-machines" 
-authors="bbenz" 
+<properties
+pageTitle="Azure 用の Oracle Linux 仮想マシンの準備 | Microsoft Azure"
+description="Microsoft Azure で Linux を実行する Oracle 仮想マシンの構成手順を説明します。"
+services="virtual-machines"
+authors="bbenz"
 documentationCenter="virtual-machines"
 tags="azure-service-management,azure-resource-manager"
 />
 
-<tags 
-ms.service="virtual-machines" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.tgt_pltfrm="vm-linux" 
-ms.workload="infrastructure-services" 
-ms.date="06/22/2015" 
+<tags
+ms.service="virtual-machines"
+ms.devlang="na"
+ms.topic="article"
+ms.tgt_pltfrm="vm-linux"
+ms.workload="infrastructure-services"
+ms.date="06/22/2015"
 ms.author="bbenz" />
 
-#Azure 用の Oracle Linux 仮想マシンの準備
+# Azure 用の Oracle Linux 仮想マシンの準備
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -25,7 +25,7 @@ ms.author="bbenz" />
 
 -   [Azure 用の Oracle Linux 7.0 以上の仮想マシンの準備](virtual-machines-linux-create-upload-vhd-oracle.md)
 
-##前提条件
+## 前提条件
 この記事では、既に Oracle Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V をインストールして仮想マシンを作成する](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 **Oracle Linux のインストールに関する注記**
@@ -44,7 +44,10 @@ ms.author="bbenz" />
 
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
-##Oracle Linux 6.4+
+- `Addons` リポジトリが有効になっていることを確認します。`/etc/yum.repo.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repo.d/public-yum-ol7.repo` ファイル (Oracle Linux ) を選択して編集し、このファイルの **[ol6\_addons]** または **[ol7\_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
+
+
+## Oracle Linux 6.4+
 Azure 上で実行する仮想マシンのオペレーティング システムで固有の構成手順を完了する必要があります。
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
@@ -55,7 +58,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 		# sudo rpm -e --nodeps NetworkManager
 
-	>[AZURE.NOTE]パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
+	>[AZURE.NOTE] パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
 
 4. /etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
@@ -129,7 +132,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 14.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-##Oracle Linux 7.0 以上
+## Oracle Linux 7.0 以上
 **Oracle Linux 7 での変更**
 
 Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Linux 6 の場合とほとんど同じです。ただし、次のように、重要な違いがいくつかあります。
@@ -222,4 +225,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 15.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

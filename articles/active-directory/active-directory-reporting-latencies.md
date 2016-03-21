@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory での待機時間のレポート | Microsoft Azure"
+   pageTitle="Azure Active Directory レポートの待機時間 | Microsoft Azure"
    description="Azure Active Directory でレポート イベントを表示するのにかかる時間"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="11/09/2015"
+   ms.date="12/07/2015"
    ms.author="kenhoff"/>
 
-# Azure Active Directory のレポートの待機時間
+# Azure Active Directory レポートの待機時間
+
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
 レポート | 最小値 | 平均 | 最大値
 ------------------------------------------------------- | -------- | ---------- | ----------
@@ -50,4 +52,4 @@ RMS 対応アプリケーションの利用状況 | 2 時間 | 4 時間 | 8 時�
 **プライベート プレビュー レポート** | | |
 すべてのユーザーのサインイン アクティビティ | 2 時間 | 4 時間 | 8 時間
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

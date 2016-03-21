@@ -13,24 +13,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/17/2015"
+   ms.date="02/04/2016"
    ms.author="subramar"/>
 
 # Service Fabric アプリケーションのアップグレード: 高度なトピック
 
 ## 手動アップグレード モード
 
-> [AZURE.NOTE]エラーが発生したまたは中断されたアップグレードに対してのみ、Unmonitored Manual モードも検討します。Monitored モードは、Service Fabric アプリケーションで推奨されるアップグレード モードです。
+> [AZURE.NOTE]  アップグレード時にエラーが発生するか中断された場合にのみ、管理対象外手動モードを検討してください。管理対象モードは、Service Fabric アプリケーションの推奨されるアップグレード モードです。
 
-Service Fabric では開発と運用環境のクラスターをサポートする複数のアップグレード モードが提供されます。各デプロイメント オプションは、さまざまな環境に適しています。Monitored Rolling Application Upgrade は、実稼働環境で使用される最も一般的なアップグレードです。アップグレードのポリシーを指定すると、Service Fabric は、アップグレードを実行する前に、アプリケーションの正常性を確認します。より多くのカスタマイズや複雑な正常性評価ポリシーが必要とされる、または一般的ではないアップグレードがある (アプリケーションが既にデータの損失の状態にあるなど) 特定の状況では、アプリケーション管理者は、Manual Rolling Application Upgrade モードを使用して、さまざまなアップグレード ドメインからアップグレードの進行状況を全面的に制御できます。最後に、Automated Rolling Application Upgrade は、開発やテスト環境にサービス開発中の迅速な繰り返しサイクルを提供するのに役立ちます。
+Azure Service Fabric には、開発と運用環境のクラスターをサポートする複数のアップグレード モードが用意されます。各デプロイメント オプションは、さまざまな環境に適しています。
 
-**手動** - 現在の UD でアプリケーションのアップグレードを停止し、アップグレード モードを Unmonitored Manual に変更します。管理者は、**MoveNextApplicationUpgradeDomainAsync** を手動で呼び出して、アップグレードを続行したり、新しいアップグレードを開始することでロールバックをトリガーしたりします。アップグレードが、手動モードに入ると、新しいアップグレードが開始されるまでは手動モードのままになります。**GetApplicationUpgradeProgressAsync**コマンドは、FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING を返します。
+管理対象ローリング アプリケーション アップグレードは、運用環境で使用される最も一般的なアップグレードです。アップグレードのポリシーを指定すると、Service Fabric は、アップグレードを実行する前に、アプリケーションの正常性を確認します。
+
+ アプリケーション管理者は手動ローリング アプリケーション アップグレード モードを使用して、多様なアップグレード ドメインのアップグレード状況全体を制御できます。このモードは、カスタマイズ度が高いか、複雑な正常性評価ポリシーが必要な場合、または一般的ではないアップグレードがある場合 (たとえば、アプリケーションが既にデータ損失の状態にある場合) に便利です。
+
+最後に、自動ローリング アプリケーション アップグレードは、開発環境やテスト環境で、サービス開発中に短時間で反復サイクルを提供する場合に便利です。
+
+## 手動アップグレード モードに変更する
+**手動** -- 現在の UD でアプリケーションのアップグレードを停止し、アップグレード モードを管理対象外手動に変更します。管理者は、**MoveNextApplicationUpgradeDomainAsync** を手動で呼び出して、アップグレードを続行したり、新しいアップグレードを開始することでロールバックをトリガーしたりします。アップグレードが、手動モードに入ると、新しいアップグレードが開始されるまでは手動モードのままになります。**GetApplicationUpgradeProgressAsync** コマンドは、FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING を返します。
 
 ## 差分のパッケージを使用したアップグレード
 
 Service Fabric アプリケーションは、完全な自己完結型のアプリケーション パッケージで、プロビジョニングすることでアップグレードできます。更新済みのアプリケーション ファイル、更新済みのアプリケーション マニフェスト、サービス マニフェスト ファイルのみを含む差分のパッケージを使用してアプリケーションをアップグレードすることもできます。
 
-完全なアプリケーション パッケージには、Service Fabric の起動と実行に必要なすべてのファイルが含まれます。差分のパッケージには、最後のプロビジョニングと現在のアップグレード間で変更されたファイル、完全なアプリケーション マニフェスト、サービス マニフェスト ファイルのみが含まれます。ビルドのレイアウトで Service Fabric が検出できないアプリケーション マニフェストやサービス マニフェストでの参照について、Service Fabric は ImageStore (リンク TBA) 内の参照を検索します。
+完全なアプリケーション パッケージには、Service Fabric の起動と実行に必要なすべてのファイルが含まれます。差分のパッケージには、最後のプロビジョニングと現在のアップグレード間で変更されたファイル、完全なアプリケーション マニフェスト、サービス マニフェスト ファイルのみが含まれます。ビルドのレイアウトで Service Fabric が検出できないアプリケーション マニフェストやサービス マニフェストでの参照について、Service Fabric はイメージ ストア内を検索します。
 
 完全なアプリケーション パッケージは、クラスターへのアプリケーションの最初のインストールに必要です。以降の更新は、完全なアプリケーションのパッケージまたは差分のパッケージのいずれかになります。
 
@@ -42,13 +49,15 @@ Service Fabric アプリケーションは、完全な自己完結型のアプ�
 
 ## 次のステップ
 
-[アップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)
+「[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)」では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
-[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)
+「[Powershell によるアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)」では、PowerShell を使用してアプリケーションをアップグレードする方法について説明します。
 
-[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
+[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。
 
-[アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
+[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
+
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

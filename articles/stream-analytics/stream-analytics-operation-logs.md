@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="操作ログ |Microsoft Azure" 
-	description="Stream Analytics の操作ログ" 
-	keywords="ビッグ データ分析,クラウド サービス,モノのインターネット,管理サービス,ストリーム処理,ストリーミング分析,ストリーミング データ"
+	pageTitle="Stream Analytics の操作ログとサービス ログを使用したデバッグ | Microsoft Azure" 
+	description="Stream Analytics 操作ログの使用方法" 
+	keywords="サービス ログ"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -14,10 +14,10 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="11/10/2015" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
-# 操作ログ
+# サービスと操作ログを使用した Stream Analytics ジョブのデバッグ
 
 すべての Azure サービスでは、管理操作に関連する詳細を記録するために操作ログ メッセージがユーザーに提供されます。Azure Stream Analytics では、ジョブの状態、ジョブの進行状況、エラー メッセージを表示して入力から、処理、出力までのジョブの進行を追跡するなど、この情報をデバッグ目的に使用できます。
 
@@ -32,7 +32,7 @@
 
 Stream Analytics ジョブの対応するログへのリンクが、ジョブの [ダッシュボード] タブに表示されます。そのリンクをクリックすると、その特定のジョブの最新のログが表示されるようにフィルターが設定されます。
 
-  ![管理サービスの選択](./media/stream-analytics-operation-logs/01-stream-analytics-operation-logs.png)
+  ![管理サービス ログの選択](./media/stream-analytics-operation-logs/01-stream-analytics-operation-logs.png)
 
 ## 管理サービス
 
@@ -83,7 +83,7 @@ Azure プレビュー ポータルで、メッセージのレベルでフィル�
 
   ![操作の詳細](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)
 
-[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)で[サポート](http://azure.microsoft.com/support/options/)に問い合わせたり、チームに情報を提供したりする必要がある場合は、操作の詳細、特に**相関 ID** をメモしておいてください。
+[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)で[サポート](https://azure.microsoft.com/support/options/)に問い合わせたり、チームに情報を提供したりする必要がある場合は、操作の詳細、特に**相関 ID** をメモしておいてください。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -94,6 +94,6 @@ Azure プレビュー ポータルで、メッセージのレベルでフィル�
 - [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

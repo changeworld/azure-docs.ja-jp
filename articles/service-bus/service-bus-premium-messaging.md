@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="10/15/2015"
 	ms.author="darosa"/>
 
@@ -33,7 +33,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 
 **Azure Service Bus Premium メッセージング**では、各顧客のワークロードの分離で実行されるように、CPU およびメモリ層でのリソースの分離を提供します。このリソースのコンテナーを、*メッセージング ユニット*と呼びます。各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを購入できます。1 つのワークロードまたはエンティティは、複数のメッセージング ユニットにまたがることができます。課金は 24 時間単位、すなわち日単位ですが、メッセージング ユニットの数は自由に変更できます。その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
-このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。Azure Service Bus Premium メッセージングは、[Azure Event Hubs](http://azure.microsoft.com/services/event-hubs/) に導入されたストレージ エンジンが基盤になっています。Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
+このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。Azure Service Bus Premium メッセージングは、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に導入されたストレージ エンジンが基盤になっています。Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
 
 ## Premium メッセージングの技術的な相違点
 
@@ -57,4 +57,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -20,7 +20,7 @@
 # Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する 
 
 > [AZURE.SELECTOR]
-- [Azure Portal - Windows](virtual-machines-windows-tutorial-classic-portal.md)
+- [Azure classic portal - Windows](virtual-machines-windows-tutorial-classic-portal.md)
 - [Powershell - Windows](virtual-machines-ps-create-preconfigure-windows-vms.md)
 - [PowerShell - Linux](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
@@ -39,7 +39,7 @@
 
 ## 手順 1. Azure PowerShell をインストールする
 
-まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
 
 ## 手順 2. サブスクリプションとストレージ アカウントを設定する
 
@@ -157,7 +157,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure ポータルの [クラウド サービス] ボックスの一覧か、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure クラシック ポータルの [Cloud Services] ボックスの一覧か、Azure ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -174,11 +174,11 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Microsoft Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
+- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
-次に、Windows ベースの Azure 仮想マシンを作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を 2 つ示します。
+次に、Windows ベースの Azure Virtual Machines を作成するために、前の手順を使用して Azure PowerShell コマンド セットを構築する例を 2 つ示します。
 
 ### 例 1
 
@@ -257,12 +257,12 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## その他のリソース
 
-[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
+[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure 仮想マシンに関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
+[Azure Virtual Machines に関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
 
 [Azure の仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
-[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
+[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

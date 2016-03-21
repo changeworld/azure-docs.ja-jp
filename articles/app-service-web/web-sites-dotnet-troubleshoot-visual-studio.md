@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="01/08/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure App Service のトラブルシューティング
 
 ## 概要
 
-Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -71,7 +71,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
    
 	このウィンドウの [アプリケーション設定] ボックスと [接続文字列] ボックスについては、[Azure Web Apps: アプリケーション文字列と接続文字列の動作](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)に関するページを参照してください。
 
-	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて管理ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
+	このウィンドウでは実行できない Web アプリ管理タスクを実行する場合は、**[管理ポータルで開く]** をクリックすると、ブラウザー ウィンドウを開いて Azure クラシック ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
 
 ## <a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
 
@@ -156,7 +156,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 6. Visual Studio 2012 Update 4 以降の場合:<a id="vs2012"></a>
 
-	* Microsoft Azure 管理ポータルで、Web アプリケの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
+	* Azure クラシック ポータルで、Web アプリの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
 
 	* **[リモート デバッグ]** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]** を **[2012]** に設定します。
 
@@ -166,7 +166,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 	* **[すべてのユーザーからのプロセスを表示する]** を選択します。
 
-	* 資格情報を求められたら、Web アプリケーションにコンテンツをデプロイする権限のあるユーザー名とパスワードを入力します。資格情報を入手するには、管理ポータルで Web アプリの [ダッシュボード] タブに移動し、**[発行プロファイルのダウンロード]** をクリックします。そのファイルをテキスト エディターで開くと、1 つ目の **userName=** と **userPWD=** の後に、ユーザー名とパスワードが表示されます。
+	* 資格情報を求められたら、Web アプリケーションにコンテンツをデプロイする権限のあるユーザー名とパスワードを入力します。これらの資格情報を入手するには、クラシック ポータルで Web アプリの [ダッシュボード] タブに移動し、**[発行プロファイルのダウンロード]** をクリックします。そのファイルをテキスト エディターで開くと、1 つ目の **userName=** と **userPWD=** の後に、ユーザー名とパスワードが表示されます。
 
 	* **[選択可能なプロセス]** テーブルにプロセスが表示されたら、**[w3wp.exe]** を選択し、**[アタッチ]** をクリックします。
 
@@ -475,9 +475,9 @@ Web サーバーのログには、Web アプリケーション上の HTTP アク
 	![出力ウィンドウの Web サーバーのログ](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
 
-Visual Studio で Web サーバーのログを初めて有効にしたとき、既定では、Azure によってファイル システムにログが書き込まれます。代わりに管理ポータルを使用して、Web サーバーのログの書き込み先として、ストレージ アカウントの BLOB コンテナーを指定することもできます。詳細については、「**How to Configure Web Sites (Web サイトの構成方法)**」の[サイトの診断](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)に関するセクションを参照してください。
+Visual Studio で Web サーバーのログを初めて有効にしたとき、既定では、Azure によってファイル システムにログが書き込まれます。代わりに、クラシック ポータルを使用して、Web サーバーのログの書き込み先として、ストレージ アカウントの BLOB コンテナーを指定することもできます。詳細については、「**How to Configure Web Sites (Web サイトの構成方法)**」の[サイトの診断](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)に関するセクションを参照してください。
 
-Web サーバーのログを Azure のストレージ アカウントに記録するように管理ポータルで指定した後、Visual Studio でログ記録を無効にした場合、Visual Studio で再度ログ記録を有効にすると、ストレージ アカウントの設定が復元されます。
+クラシック ポータルを使用して、Azure ストレージ アカウントへの Web サーバーのログ記録を有効にした後、Visual Studio でログ記録を無効にした場合、Visual Studio でログ記録を再度有効にすると、ストレージ アカウントの設定が復元されます。
 
 ## <a name="detailederrorlogs"></a>詳細なエラー メッセージ ログの表示
 
@@ -527,7 +527,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 ## <a name="storagelogs"></a>ストレージ ログの表示
 
-アプリケーション トレース ログを Azure のストレージ アカウントに送って、Visual Studio で表示することもできます。ストレージ アカウントを作成して管理ポータルでストレージ ログを有効にし、**[Azure Web アプリ]** ウィンドウの **[ログ]** タブでそれらを表示します。
+アプリケーション トレース ログを Azure のストレージ アカウントに送って、Visual Studio で表示することもできます。そのためには、ストレージ アカウントを作成してクラシック ポータルでストレージ ログを有効にし、**[Azure Web アプリ]** ウィンドウの **[ログ]** タブにストレージ ログを表示します。
 
 次の 3 個の送信先のいずれかまたはすべてにログを送信することができます。
 
@@ -569,9 +569,9 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
     <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
-	Web アプリの Azure ポータルの **[構成]** タブが開きます。
+	これにより、クラシック ポータルで Web アプリの **[構成]** タブが開きます。
 
-2. ポータルの **[構成]** タブで、下へスクロールしてアプリケーション診断セクションを表示し、**[アプリケーション ログ記録 (テーブル ストレージ)]** を **[オン]** に変更します。
+2. クラシック ポータルの **[構成]** タブで、下へスクロールしてアプリケーション診断セクションを表示し、**[アプリケーション ログ記録 (テーブル ストレージ)]** を **[オン]** に変更します。
 
 3. **[ログ レベル]** を **[情報]** に変更します。
 
@@ -585,7 +585,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 6. **[アプリケーション診断用のテーブル ストレージの管理]** ボックスのチェック マークをクリックしてこのボックスを閉じます。
 
-6. ポータルの **[構成]** タブで、**[保存]** をクリックします。
+6. クラシック ポータルの **[構成]** タブで、**[保存]** をクリックします。
 
 7. アプリケーションの Web アプリを表示するブラウザー ウィンドウで、**[ホーム]**、**[バージョン情報]**、**[連絡先]** の順にクリックします。
 
@@ -637,13 +637,13 @@ Azure の Web アプリでは、同じ失敗した要求トレース機能が使
 
 2. Visual Studio で、**[Azure Web アプリ]** ウィンドウの **[構成]** タブにある **[管理ポータルで開く]** をクリックします。
 
-3. Web アプリの Azure プレビュー ポータル ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックし、新しいユーザー名とパスワードを入力します。
+3. Web アプリの Azure ポータル (https://portal.azure.com) ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックし、新しいユーザー名とパスワードを入力します。
 
 	![新しい FTP ユーザー名とパスワード](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
 	****ログインする際は、完全なユーザー名とその Web アプリ名プレフィックスを使用する必要があります。たとえば、ユーザー名として「myid」と入力し、サイトが "myexample" の場合、"myexample\\myid" としてログインします。
 
-5. 新しいブラウザー ウィンドウで、Web アプリの **[Web アプリ]** ポータル ブレードの **[FTP ホスト名]** または **[FTPS ホスト名]** に表示されている URL に移動します。
+5. 新しいブラウザー ウィンドウで、Web アプリの **[Web アプリ]** ブレードの **[FTP ホスト名]** または **[FTPS ホスト名]** に表示されている URL に移動します。
 
 6. 先ほど作成した FTP 資格情報を使用してログインします (ユーザー名の Web アプリケーション名プレフィックスを含めること)。
 
@@ -678,7 +678,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 * ASP.NET アプリケーションでのトレース
 * Web サーバーのログの分析
 * 失敗した要求トレース ログの分析
-* Cloud Services のデバッグ
+* クラウド サービスのデバッグ
 
 ### Azure の Web アプリケーションのトラブルシューティング
 
@@ -749,9 +749,9 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
-### Cloud Services のデバッグ
+### クラウド サービスのデバッグ
 
-Web アプリではなく Azure Cloud Services をデバッグする場合は、「[Cloud Services のデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
+Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -761,4 +761,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

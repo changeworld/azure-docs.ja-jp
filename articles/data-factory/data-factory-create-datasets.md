@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="データセットの作成" 
+	pageTitle="Azure Data Factory のデータセット | Microsoft Azure" 
 	description="Azure Data Factory のデータセットを理解し、その作成方法について学習します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/12/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
-# データセット
+# Azure Data Factory のデータセット
 
 ## 説明
 データセットはデータを論理的に説明するものです。記述されるデータは、単純なバイト、CSV ファイルのような半構造化データから、リレーショナル テーブルやモデルまでさまざまです。データにアクセスするためのメカニズム (アドレス、プロトコル、認証方式) はリンクされたサービスで定義され、データセット定義で参照されます。
@@ -131,14 +131,14 @@ type | 列のデータ型です。 | いいえ | 該当なし
 
 	"availability":
 	{
-		"frequency": "Daily",
+		"frequency": "Day",
 		"interval": "1",
 		"offset": "06:00:00"
 	}
 
 この場合、SliceStart は 6 時間シフトし、午前 6 になります。
 
-12 か月スケジュールの場合 (頻度 = 月、間隔 = 12)、「オフセット: 60.00:00:00」は毎年の 3 月 2 日または 3 日 (スタイルが StartOfInterval の場合、年の初めから 60 日後であり、うるう年かどうかにより 2 日または 3 日になる) を意味します。
+12 か月スケジュールの場合 (頻度 = 月、間隔 = 12)、「オフセット: 60.00:00:00」は毎年の 3 月 1 日または 2 日 (スタイルが StartOfInterval の場合、年の初めから 60 日後であり、うるう年かどうかにより 1 日または 2 日になる) を意味します。
 
 
 
@@ -208,4 +208,4 @@ type | 列のデータ型です。 | いいえ | 該当なし
 	  }
 	}
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

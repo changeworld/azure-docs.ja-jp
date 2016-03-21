@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/20/2015"
+	ms.date="02/09/2016"
 	ms.author="markusvi"/>
 
 
@@ -40,10 +40,20 @@
 アカウント プロビジョニング通知を有効にした場合は、ユーザー プロビジョニングに関連する重要な問題についての電子メールを受信するようになります。ただし、電子メールのオーバーロードを避けるため、通知電子メールは、通知電子メールを有効にしている SaaS アプリケーションごとに、1 日に 1 通のみ受信します。
 
 
-[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+##関連記事
+
+- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+- [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+- [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+
+
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

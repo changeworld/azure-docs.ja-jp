@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/16/2015" 
+	ms.date="01/26/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB のデータへのアクセスのセキュリティ保護 #
 
-この記事では、[Microsoft Azure DocumentDB](../../services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
 この概要を読み終えると、次の質問に答えられるようになります。
 
@@ -68,7 +68,7 @@ DocumentDB では、この 2 つのカテゴリにおいて、アカウント管
 前に説明したように、DocumentDB マスター キーは、DocumentDB アカウント内のすべてのリソースへの完全な管理アクセス権を提供し、読み取り専用キーは、アカウント内のすべてのリソースへの読み取りアクセスを可能にします。次のコード スニペットは、DocumentDB アカウントのエンドポイントとマスター キーを使用して、DocumentClient をインスタンス化し、新しいデータベースを作成する方法を示します。
 
     //Read the DocumentDB endpointUrl and authorization keys from config.
-    //These values are available from the Azure Management Portal on the DocumentDB Account Blade under "Keys".
+    //These values are available from the Azure Classic Portal on the DocumentDB Account Blade under "Keys".
     //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
     
 	private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -115,7 +115,7 @@ DocumentDB ユーザー リソースは DocumentDB データベースに関連�
 
     docUser = await client.CreateUserAsync(database.SelfLink, docUser);
 
-> [AZURE.NOTE]DocumentDB の各ユーザーは PermissionsLink プロパティを持ち、このプロパティを使用して、そのユーザーに関連付けられた権限の一覧を取得することができます。
+> [AZURE.NOTE] DocumentDB の各ユーザーは PermissionsLink プロパティを持ち、このプロパティを使用して、そのユーザーに関連付けられた権限の一覧を取得することができます。
 
 DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付けられています。各ユーザーは、0 個以上の DocumentDB アクセス許可を持つ可能性があります。アクセス許可リソースは、特定のアプリケーション リソースにアクセスするときに必要なセキュリティ トークンへのアクセスを提供します。アクセス許可リソースによって提供されることがある次の 2 つのアクセス レベルが使用できます。
 
@@ -123,7 +123,7 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 
-> [AZURE.NOTE]DocumentDB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
+> [AZURE.NOTE] DocumentDB ストアド プロシージャを実行するには、ストアド プロシージャを実行するコレクションの All 権限を持つ必要があります。
 
 
 次のコード スニペットは、アクセス許可リソースを作成し、アクセス許可リソースのリソース トークン (トークン) を読み取って、先ほど作成したユーザーにアクセス許可を関連付ける方法を示します。
@@ -154,7 +154,7 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
             
     DocumentClient userClient = new DocumentClient(new Uri(endpointUrl),permList);
 
-> [AZURE.TIP]リソース トークンの既定の有効期間は 1 時間です。ただし、トークンの有効期間が明示的に指定される可能性があります (最大 5 時間)。
+> [AZURE.TIP] リソース トークンの既定の有効期間は 1 時間です。ただし、トークンの有効期間が明示的に指定される可能性があります (最大 5 時間)。
 
 ##<a name="NextSteps"></a>次のステップ
 
@@ -163,4 +163,4 @@ DocumentDB アクセス許可リソースは DocumentDB ユーザーに関連付
 - DocumentDB 認証トークンを作成する方法については、[ここ](https://msdn.microsoft.com/library/azure/dn783368.aspx)をクリックしてください。
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

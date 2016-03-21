@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.date="02/20/2016"
 	ms.author="jolevy"/>
 
 
@@ -25,7 +25,7 @@
 
 ## Azure Automation とは
 
-[Azure Automation](http://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して実行時間の長いタスク、手動タスク、エラーが発生しやすいタスク、頻繁に繰り返されるタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮することができます。
+[Azure Automation](https://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して実行時間の長いタスク、手動タスク、エラーが発生しやすいタスク、頻繁に繰り返されるタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮することができます。
 
 Azure Automation は、組織の拡大に伴って変化するニーズに対応可能な、信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
 
@@ -34,20 +34,20 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ## Azure Automation を Azure Storage の管理に役立てる方法
 
-[Azure PowerShell ツール](https://msdn.microsoft.com/library/azure/jj156055.aspx)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure Storage を管理できます。Azure Automation には、このような Storage PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての BLOB、テーブル、およびキュー管理タスクを実行することができます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx) で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure Storage を管理できます。Azure Automation には、このような Storage PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての BLOB、テーブル、およびキュー管理タスクを実行することができます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
-[Azure Automation Runbook ギャラリー](http://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/)には、Azure Storage、その他の Azure サービス、サード パーティ製システムの管理を自動化するためのさまざまな製品チームおよびコミュニティの Runbook が含まれています。ギャラリーに含まれている Runbook の例を示します。
+[Azure Automation Runbook ギャラリー](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/)には、Azure Storage、その他の Azure サービス、サード パーティ製システムの管理を自動化するためのさまざまな製品チームおよびコミュニティの Runbook が含まれています。ギャラリーに含まれている Runbook の例を示します。
 
- * [X 日以上経過している Azure Storage BLOB を削除する](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
- * [Azure Storage から Azure Automation に BLOB をダウンロードする](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
- * [Azure VM データ ディスクのコピーを Azure クラウド サービスに作成する](https://gallery.technet.microsoft.com/scriptcenter/Make-copies-of-Azure-VM-065a6394)
+ * [Remove Azure Storage Blobs that are Certain Days Old Using Automation Service (Automation サービスを使用して、特定の日数が経った Azure Storage BLOB を削除する)](https://gallery.technet.microsoft.com/scriptcenter/Remove-Storage-Blobs-that-aae4b761)
+ * [Download a Blob from Azure Storage (Azure Storage から BLOB をダウンロードする)](https://gallery.technet.microsoft.com/scriptcenter/a-Blob-from-Azure-Storage-6bc13745)
+ * [Backup all disks for a single Azure VM or for all VMs in a Cloud Service (単一の Azure VM またはクラウド サービス内のすべての VM のすべてのディスクをバックアップする)](https://gallery.technet.microsoft.com/scriptcenter/Backup-all-disks-for-a-ede940d5)
 
 
 ## 次のステップ
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Storage BLOB、テーブル、およびキューを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
-[Azure オートメーションの使用](../automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+Azure Automation チュートリアル「[Azure Automation での Runbook の作成またはインポート](../automation/automation-creating-importing-runbook.md)」を参照してください。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

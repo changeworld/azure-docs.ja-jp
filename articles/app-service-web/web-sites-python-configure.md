@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
-	ms.author="huguesv"/>
+	ms.date="02/26/2016" 
+	ms.author="huvalo"/>
 
 
 
@@ -36,11 +36,11 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 - [Flask を使用した Web アプリの作成](web-sites-python-create-deploy-flask-app.md)
 
 
-## Azure プレビュー ポータルでの Web アプリの作成
+## Azure ポータルでの Web アプリの作成
 
-このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure プレビュー ポータルにアクセスできることを前提としています。
+このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure ポータルにアクセスできることを前提としています。
 
-既存の Web アプリがない場合、[Azure プレビュー ポータル](https://portal.azure.com)から自分で作成できます。画面左下にある [新規] ボタンをクリックし、次に **[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
+既存の Web アプリがない場合、[Azure ポータル](https://portal.azure.com)から自分で作成できます。左上隅の [新規] ボタンをクリックし、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
 ## Git 発行
 
@@ -374,11 +374,10 @@ Python 3.4 用の`web.config` の例:
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 
 
@@ -386,4 +385,4 @@ Python 3.4 用の`web.config` の例:
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

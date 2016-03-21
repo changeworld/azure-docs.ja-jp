@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/28/2015" 
+	ms.date="03/01/2016" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -67,6 +67,8 @@
 ## メトリックス エクスプローラー
 
 概要ブレード上の任意のグラフをクリックすると、関連するグラフとグリッドのより詳細なセットが表示されます。これらのグラフとグリッドを編集して、興味の対象となる細部にフォーカスを当てることができます。
+
+または、概要ブレードの先頭にあるメトリックス エクスプローラー ボタンを単にクリックします。
 
 たとえば、Web アプリの失敗した要求のグラフをクリックします。
 
@@ -192,11 +194,11 @@
 
 ### 連続エクスポート
 
-データを外部で処理できるよう、連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
+データを外部で処理できるように連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
 
 ### Power BI
 
-機能がより豊富なビューでデータを表示する場合は、[Power BI にエクスポート](app-insights-export-power-bi.md)することができます。
+機能がより豊富なビューでデータを表示する場合は、[Power BI にエクスポート](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
 
 ## 次のステップ
 
@@ -212,4 +214,4 @@
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

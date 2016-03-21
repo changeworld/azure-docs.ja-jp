@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Power BI における Application Insights データに関するページをご覧ください。" 
-	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。" 
+	pageTitle="Stream Analytics を利用し、Application Insights のデータを Power BI にエクスポートする" 
+	description="Stream Analytics を利用し、エクスポートしたデータを処理する方法について説明します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="noamben" 
@@ -12,27 +12,36 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
-# Application Insights データの Power BI ビュー
+# Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
 
-[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。Web やデバイスのアプリのパフォーマンスと使用状況に関するテレメトリ データを、Application Insights から Power BI にストリーミングすることができます。
+この記事では、[Visual Studio Application Insights](app-insights-overview.md) から[エクスポート](app-insights-export-telemetry.md)されたデータを、[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して処理する方法を説明します。ターゲットの例として、[Microsoft Power BI](https://powerbi.microsoft.com/) にデータを送信します。
+
+
+> [AZURE.NOTE] Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
+
+[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。
+
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/010.png)
 
-この記事では、Application Insights からデータをエクスポートして、Stream Analytics を使用して Power BI にデータを移動する方法について説明します。[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) はアダプターとして使用する Azure サービスです。
+[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) はアダプターとして機能する Azure サービスであり、Application Insights からエクスポートされたデータを継続的に処理します。
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/020.png)
 
 
-> [AZURE.NOTE]Stream Analytics から Power BI にデータを送信するには、職場または学校のアカウント (MSDN 組織アカウント) が必要です。
+
 
 ## ビデオ
 
 Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 > [AZURE.VIDEO export-to-power-bi-from-application-insights]
+
+
+**サンプリング** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## Application Insights によるアプリの監視
 
@@ -56,7 +65,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
-## Azure ストレージへの連続エクスポートの開始
+## Azure Storage への連続エクスポートの開始
 
 [連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
 
@@ -130,10 +139,10 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します。**
 * `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは省略します。** 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
-> [AZURE.NOTE]ストレージを検査して、正しいパスを取得されることを確認してください。
+> [AZURE.NOTE] ストレージを検査して、正しいパスを取得されることを確認してください。
 
 #### 初期セットアップの完了
 
@@ -143,7 +152,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ウィザードを閉じ、セットアップが完了するまで待機します。
 
-> [AZURE.TIP]サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
+> [AZURE.TIP] サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
 
 ## 出力の設定
 
@@ -205,7 +214,28 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * このクエリはメトリックス テレメトリをドリルダウンし、イベント時刻とメトリック値を取得します。メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。「myMetric」がこのケースのメトリックの名前になります。 
 
+#### ディメンション プロパティの値を追加するクエリ
 
+```SQL
+
+    WITH flat AS (
+    SELECT
+      MySource.context.data.eventTime as eventTime,
+      InstanceId = MyDimension.ArrayValue.InstanceId.value,
+      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+    FROM MySource
+    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+    )
+    SELECT
+     eventTime,
+     InstanceId,
+     BusinessUnitId
+    INTO AIOutput
+    FROM flat
+
+```
+
+* このクエリは、次元配列の固定インデックスにある特定のディメンションに依存せず、ディメンション プロパティの値を追加します。
 
 ## ジョブを実行する
 
@@ -239,4 +269,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

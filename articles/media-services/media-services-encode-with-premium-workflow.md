@@ -3,8 +3,8 @@
 	description="メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+	ms.date="02/25/2016" 
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 
-**注** このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
+>[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
+>
+>このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。
 
 ##概要
 
@@ -28,11 +30,13 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 - [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
 
-- [エンコーダーの比較](media-services-encode-asset.md#compare_encoders)セクションでは、**メディア エンコーダー プレミアム ワークフロー**と **Azure メディア エンコーダー**のエンコード機能を比較します。
+- 「[エンコーダーの比較](media-services-encode-asset.md#compare_encoders)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
 
 このトピックでは、.NET を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示します。
 
 **メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルは .workflow 拡張子を持ち、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
+
+>[AZURE.NOTE]プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 
 ##エンコード
 
@@ -50,7 +54,9 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 1. アセットを作成し、ワークフロー ファイルをアップロードします。 
 2. アセットを作成し、ソース メディア ファイルをアップロードします。
 3. "メディア エンコーダー プレミアム ワークフロー" メディア プロセッサを取得します。
-4. ジョブとタスクを作成します。
+4. ジョブとタスクを作成します。 
+
+	ほとんどの場合、次の例と同様にタスクの構成文字列は空です。(ランタイム プロパティを動的に設定する必要がある) 高度なシナリオでは、エンコード タスクに XML 文字列を提供します。このようなシナリオの例として、オーバーレイの作成、メディアの並列または順次合成、字幕の作成があります。
 5. 2 つの入力アセットをタスクに追加します。
 	
 	a.1 – ワークフロー アセット。
@@ -264,10 +270,6 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 	}
 
 
-##既知の問題
-
-入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
-
 
 ##Media Services のラーニング パス
 
@@ -277,4 +279,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

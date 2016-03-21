@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="02/29/2016"
 	ms.author="MehrdadMzfr" />
 
 #iOS でエンゲージメント リーチを統合する方法
 
-> [AZURE.IMPORTANT]このガイドを実行する前に、「iOS でエンゲージメントを統合する方法」のドキュメントに記載されている統合手順に従う必要があります。
+> [AZURE.IMPORTANT] このガイドを実行する前に、「iOS でエンゲージメントを統合する方法」のドキュメントに記載されている統合手順に従う必要があります。
 
 
 ### アプリがサイレント プッシュ通知を受信できるようにする
@@ -116,7 +116,7 @@
 		[[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
 	}
 
-> [AZURE.NOTE]上記のメソッドは、iOS 7 で導入されました。iOS 7 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
+> [AZURE.NOTE] 上記のメソッドは、iOS 7 で導入されました。iOS 7 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
 
 	- (void)application:(UIApplication*)application
 	didReceiveRemoteNotification:(NSDictionary*)userInfo
@@ -124,7 +124,7 @@
 		[[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
 	}
 
-> [AZURE.IMPORTANT]既定では、エンゲージメント リーチが completionHandler を制御します。コード内の `handler` ブロックに手動で応答する場合は、`handler` 引数の代わりに nil を渡し、完了ブロックを自分で制御できます。使用可能な値の一覧については、`UIBackgroundFetchResult` 型に関するページを参照してください、。
+> [AZURE.IMPORTANT] 既定では、エンゲージメント リーチが completionHandler を制御します。コード内の `handler` ブロックに手動で応答する場合は、`handler` 引数の代わりに nil を渡し、完了ブロックを自分で制御できます。使用可能な値の一覧については、`UIBackgroundFetchResult` 型に関するページを参照してください、。
 
 
 ### 完全な例
@@ -216,7 +216,7 @@
 -   サブビューは、指定された `AENotificationView.xib` という名前の nib ファイル内のものと同じ種類である。
 -   サブビューは、指定された `AENotificationView.xib` という名前の nib ファイル内のものと同じタグを持つ。
 
-> [AZURE.TIP]指定された `AENotificationView.xib` という名前の nib ファイルをコピーし、そこから作業を開始します。この nib ファイル内のビューは、クラス `AENotificationView` に関連付けられていることに注意してください。このクラスは、コンテキストに応じてサブビューを移動し、サイズ変更するようにメソッド `layoutSubViews` を再定義しました。これを `UIView` や自分のカスタム ビュー クラスに置き換えることができます。
+> [AZURE.TIP] 指定された `AENotificationView.xib` という名前の nib ファイルをコピーし、そこから作業を開始します。この nib ファイル内のビューは、クラス `AENotificationView` に関連付けられていることに注意してください。このクラスは、コンテキストに応じてサブビューを移動し、サイズ変更するようにメソッド `layoutSubViews` を再定義しました。これを `UIView` や自分のカスタム ビュー クラスに置き換えることができます。
 
 通知をさらに細かくカスタマイズする必要がある場合 (コードから直接ビューを読み込む場合など) は、`Protocol ReferencesDefaultNotifier` と `AENotifier` の指定されたソース コードやクラスのドキュメントをご確認ください。
 
@@ -240,7 +240,7 @@
 -   `AEDefaultNotifier` を拡張しない場合 (最初からカテゴリの処理を実装した場合など)。
 -   `prepareNotificationView:forContent:` をオーバーライドした場合 (少なくとも `onNotificationActioned` または `onNotificationExited` がいずれかの U.I コントロールにマップされていることをご確認ください)。
 
-> [AZURE.WARNING]`handleNotification:` が例外をスローし、コンテンツが削除され、`drop` が呼び出された場合、これは統計情報で報告され、次のキャンペーンを処理できるようになります。
+> [AZURE.WARNING] `handleNotification:` が例外をスローし、コンテンツが削除され、`drop` が呼び出された場合、これは統計情報で報告され、次のキャンペーンを処理できるようになります。
 
 #### 既存のビューの一部に通知を含める
 
@@ -264,7 +264,7 @@
 
 `NOTIFICATION_AREA_VIEW_TAG` マクロは `AEDefaultNotifier.h` にあります。
 
-> [AZURE.NOTE]既定の通知は、通知のレイアウトがこのビューに含まれていて、オーバーレイが追加されていないことを自動的に検出します。
+> [AZURE.NOTE] 既定の通知は、通知のレイアウトがこのビューに含まれていて、オーバーレイが追加されていないことを自動的に検出します。
 
 ### お知らせとポーリング
 
@@ -283,7 +283,7 @@
 	AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
 	[reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:@"my_category"];
 
-> [AZURE.NOTE]ユーザーがカテゴリ「my\_category」のお知らせの通知をクリックするたびに、登録されているビュー コントローラー (この場合は `MyCustomAnnouncementViewController`) が、メソッド `initWithAnnouncement:` を呼び出すことで初期化され、現在のアプリケーション ウィンドウにビューが追加されます。
+> [AZURE.NOTE] ユーザーがカテゴリ「my\_category」のお知らせの通知をクリックするたびに、登録されているビュー コントローラー (この場合は `MyCustomAnnouncementViewController`) が、メソッド `initWithAnnouncement:` を呼び出すことで初期化され、現在のアプリケーション ウィンドウにビューが追加されます。
 
 `AEAnnouncementViewController` クラスの実装では、`announcement` プロパティを読み取り、サブビューを初期化する必要があります。次の例について検討してみましょう。ここでは、2 つのラベルが `AEReachAnnouncement` クラスの `title` プロパティと `body` プロパティを使用して初期化されています。
 
@@ -316,7 +316,7 @@
 
 今回は指定された `MyCustomPollViewController` が `AEPollViewController` を拡張する必要があります。あるいは、既定のコント ローラー `AEDefaultPollViewController` から拡張できます。
 
-> [AZURE.IMPORTANT]ビュー コントローラーが閉じる前に、`action` (カスタム ポーリング ビュー コントローラーの場合は `submitAnswers:`) メソッドまたは `exit` メソッドのいずれかを必ず呼び出してください。これを行わないと、統計情報は送信されず (キャンペーンは分析されません)、さらに重要な次のキャンペーンが、アプリケーション プロセスが再起動するまで通知されないことになります。
+> [AZURE.IMPORTANT] ビュー コントローラーが閉じる前に、`action` (カスタム ポーリング ビュー コントローラーの場合は `submitAnswers:`) メソッドまたは `exit` メソッドのいずれかを必ず呼び出してください。これを行わないと、統計情報は送信されず (キャンペーンは分析されません)、さらに重要な次のキャンペーンが、アプリケーション プロセスが再起動するまで通知されないことになります。
 
 ##### 実装例
 
@@ -416,4 +416,4 @@
 
 	@end
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

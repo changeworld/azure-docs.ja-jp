@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/20/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # 使用事例 - 顧客プロファイル
@@ -36,7 +36,7 @@ Contoso の目標は、ユーザーのゲーム履歴プロファイルに基づ
 
 この単純な使用事例は、Azure Data Factory を使用してデータを取得、準備、変換、分析、および発行する方法の例として使用できます。
 
-![エンド ツー エンド ワークフロー](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)上の図は、デプロイ後にデータ パイプラインが Azure ポータル UI にどのように表示されるかを示しています。
+上の ![エンド ツー エンド ワークフロー](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png) 図は、デプロイ後にデータ パイプラインが Azure クラシック ポータル UI にどのように表示されるかを示しています。
 
 1.	**PartitionGameLogsPipeline** は、未処理のゲーム イベントを BLOB ストレージから読み取り、年、月、日に基づくパーティションを作成します。
 2.	**EnrichGameLogsPipeline** は、パーティション分割されたゲーム イベントを geo コードの参照データと結合し、IP アドレスを対応する地理的場所にマップすることによってデータを強化します。
@@ -48,4 +48,4 @@ Contoso の目標は、ユーザーのゲーム履歴プロファイルに基づ
 
 ゲーム会社は、ユーザー プロファイルの分析を最適化してビジネス目標と一致させることで、迅速に使用状況パターンを収集し、さまざまなゲーム製品のマーケティング キャンペーンの効果を分析できます。
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,16 +13,21 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	ms.author="krisragh"/>
 
 # 既存の Azure Mobile Services アプリに認証を追加する
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、[Mobile Services クイックスタート チュートリアル]に認証を追加します。
 
-[Mobile Services クイック スタート チュートリアル]を完了しておくことをお勧めします。代わりに、Quick Start iOS プロジェクトをダウンロードすることもできます。Azure ポータルで、**[Mobile Services]**、目的のモバイル サービスの順にクリックし、左上のクラウド マークをクリックします。次に、**[iOS]**、**[新しい iOS アプリを作成する]**、**[アプリケーションをダウンロードして実行する]**、**[Objective-C]**、**[ダウンロード]** の順にクリックします。テーブルをまだ作成していない場合は、**[TodoItem テーブルを作成する]** をクリックしてから、**[ダウンロード]** をクリックしてください。
+[Mobile Services クイック スタート チュートリアル]を完了しておくことをお勧めします。代わりに、Quick Start iOS プロジェクトをダウンロードすることもできます。[Azure クラシック ポータル]で、**[Mobile Services]**、目的のモバイル サービスの順にクリックし、左上のクラウド マークをクリックします。次に、**[iOS]**、**[新しい iOS アプリを作成する]**、**[アプリケーションをダウンロードして実行する]**、**[Objective-C]**、**[ダウンロード]** の順にクリックします。テーブルをまだ作成していない場合は、**[TodoItem テーブルを作成する]** をクリックしてから、**[ダウンロード]** をクリックしてください。
 
 ##<a name="register"></a>認証用のアプリを登録する
 
@@ -83,6 +88,6 @@
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Active Directory と CS Stars の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="jeevansd"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/06/2015"
-	ms.author="markusvi"/>
+	ms.date="02/29/2016"
+	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と CS Stars の統合
@@ -23,7 +23,7 @@
 
 - CS Stars にアクセスする Azure AD ユーザーを制御できます。 
 - ユーザーが自分の Azure AD アカウントで自動的に CS Stars にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -35,7 +35,7 @@ CS Stars と Azure AD の統合を構成するには、次のものが必要で�
 - CS Stars でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -56,7 +56,7 @@ Azure AD への CS Stars の統合を構成するには、ギャラリーから�
 
 **ギャラリーから CS Stars を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -87,19 +87,19 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 ### Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、CS Stars アプリケーションでシングル サインオンを構成するにです。<br>
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、CS Stars アプリケーションでシングル サインオンを構成することです。<br>
 
 ** で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **CS Stars** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![シングル サインオンの構成][6]<br>
+1. Azure クラシック ポータルの **CS Stars** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br>![Configure Single Sign-On][6]<br>
 
 2. **[ユーザーの CS Stars へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Azure AD Single Sign-On][7]<br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![アプリケーションの設定の構成][8]<br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure App Settings][8]<br>
  
      3\.1. **[サインオン URL]** テキスト ボックスに、ユーザーが CS Stars アプリケーションへのサインオンに使用する URL を入力します (例: "**https://uat.csstars.com/enterprise/default.cmdx?ssoclient=C234UAT2*)。
 
-     >[AZURE.NOTE]適切な値がわからない場合は、Marsh ClearSight 担当者にお問い合わせください。
+     > [AZURE.NOTE] 適切な値がわからない場合は、Marsh ClearSight 担当者にお問い合わせください。
 
      3\.2.**[次へ]** をクリックします。
  
@@ -108,7 +108,7 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 5. CS Stars に対してシングル サインオンを有効にするには、Marsh ClearSight 担当者に問い合わせて、メタデータ ファイルを渡してください。
 
 
-6. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。<br><br>![What is Azure AD Connect][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![What is Azure AD Connect][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![What is Azure AD Connect][11]<br>
 
@@ -116,11 +116,11 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Create Azure AD User][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-amazon-web-service/create_aaduser_02.png)<br> 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-amazon-web-service/create_aaduser_02.png)<br> 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -134,9 +134,9 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
   3. [次へ] をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-amazon-web-service/create_aaduser_06.png)<br>
-  1. **[名]** テキスト ボックスに「**Britta**」と入力します。  
+  1. **[名]** ボックスに「**Britta**」と入力します。  
   2. **[姓]** ボックスに「**Simon**」と入力します。
-  3. **[表示名]** テキスト ボックスに「**Britta Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
   5. **[次へ]** をクリックします。
 
@@ -163,12 +163,12 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 **CS Stars に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201]<br>
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![ユーザーの割り当て][201]<br>
 2. アプリケーションの一覧で **[CS Stars]** を選択します。<br><br>![ユーザーの割り当て][202]<br>
 1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![ユーザーの割り当て][203]<br>
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]<br>
+2. 下部にあるツールバーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]<br>
 
 
 
@@ -205,4 +205,4 @@ CS Stars で Azure AD のシングル サインオンを構成してテストす
 
 [400]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_403.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

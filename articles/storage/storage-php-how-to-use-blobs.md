@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="02/17/2016"
 	ms.author="tomfitz"/>
 
 # PHP から BLOB ストレージを使用する方法
@@ -30,7 +30,7 @@
 
 ## PHP アプリケーションの作成
 
-Windows Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Windows Azure SDK for PHP のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
+Microsoft Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Microsoft Azure SDK for PHP のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
 このガイドで使用するサービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
@@ -42,12 +42,12 @@ Windows Azure BLOB サービスにアクセスする PHP アプリケーショ�
 
 Azure BLOB サービス API を使用するには、次の要件があります。
 
-1. [require\_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+1. [require\_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE]この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE] この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -290,21 +290,20 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 
 これで、Azure BLOB サービスの基本を学習できました。さらに複雑なストレージ タスクについて学習するには、次のリンク先をご覧ください。
 
-- MSDN リファレンス: [Azure Storage](http://msdn.microsoft.com/library/azure/gg433040.aspx)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-- PHP ブロック BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>
-- PHP ページ BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
-
+- [PHP ブロック BLOB の例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php)
+- [PHP ページ BLOB の例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
+ 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
-[Storing and accessing data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/library/azure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents
-[require_once]: http://php.net/require_once
+[require\_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

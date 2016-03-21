@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	ms.author="dastrock"/>
 
 
@@ -42,7 +42,7 @@ Windows ストア用アプリを開発する場合、Azure AD を使用すると
 ## *1.ディレクトリ検索アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -50,7 +50,7 @@ Windows ストア用アプリを開発する場合、Azure AD を使用すると
     -	アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
     -	**[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。ここでは、プレースホルダーの値を入力します (例: `http://DirectorySearcher`)。後でこの値を置き換えます。
 -	登録が完了すると、AAD により、アプリに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、**[構成]** タブからコピーします。
-- また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[委任されたアクセス許可]** の下の **[組織のディレクトリにアクセス]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+- また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[デリゲートされたアクセス許可]** で **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
 ## *2.ADAL をインストールおよび構成する*
 アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするためには、アプリの登録に関するいくつかの情報を提供する必要があります。まず、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
@@ -62,18 +62,19 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 -	DirectorySearcher プロジェクトで、`MainPage.xaml.cs` を開きます。Azure ポータルで入力した値が反映されるように、`Config Values` 領域の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
     -	`tenant` は、Azure AD テナントのドメイン (たとえば、contoso.onmicrosoft.com) です。
     -	`clientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
--	ここで、Windows Phone アプリのコールバック URI を調べる必要があります。`MainPage` メソッドの次の行にブレークポイントを設定します。
+-	ここで、Windows ストア アプリのコールバック URI を調べる必要があります。`MainPage` メソッドの次の行にブレークポイントを設定します。
 
 ```
 redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
 ```
+- ソリューションをビルドし、すべてのパッケージ参照が復元されていることを確認します。パッケージが不足している場合は、Nuget パッケージ マネージャーを開いてパッケージを復元します。
 - アプリを実行し、ブレークポイントにヒットしたら `redirectUri` の値をコピーしておきます。次のような内容が表示されます。
 
 ```
 ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/
 ```
 
-- Microsoft Azure の管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
+- Azure 管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
 
 ## *3.ADAL を使用して AAD からトークンを取得する*
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
@@ -85,8 +86,7 @@ public MainPage()
 {
     ...
 
-    // ADAL for Windows Phone 8.1 builds AuthenticationContext instances through a factory
-    authContext = AuthenticationContext.CreateAsync(authority).GetResults();
+    authContext = new AuthenticationContext(authority);
 }
 ```
 
@@ -145,6 +145,5 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [Protect a Web API using Bearer tokens from Azure AD (Azure AD からのベアラー トークンを使用することによる Web API の保護)](active-directory-devquickstarts-webapi-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

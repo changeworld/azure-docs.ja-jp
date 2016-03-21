@@ -18,13 +18,13 @@
 
 # 監視と診断の有効化
 
-[Azure ポータル](http://portal.azure.com)では、リソースに関する監視と診断の頻度の高い豊富なデータを構成することができます。また、[REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して、プログラムで診断を構成することもできます。
+[Azure ポータル](https://portal.azure.com)では、リソースに関する監視と診断の頻度の高い豊富なデータを構成することができます。また、[REST API](https://msdn.microsoft.com/library/azure/dn931932.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用して、プログラムで診断を構成することもできます。
 
 Azure の診断、監視、およびメトリック データは、選択したストレージ アカウントに保存されます。これにより、ストレージ エクスプローラーから、Power BI、サード パーティ製ツールまで、どれでも好きなツールを使用してデータを読み取ることができます。
 
 ## リソースを作成する場合
 
-ほとんどのサービスでは、[Azure ポータル](http://portal.azure.com)でサービスを最初に作成するときに診断を有効にすることができます。
+ほとんどのサービスでは、[Azure ポータル](https://portal.azure.com)でサービスを最初に作成するときに診断を有効にすることができます。
 
 1. **[新規]** に移動し、興味のあるリソースを選択します。 
 
@@ -71,4 +71,4 @@ Azure の診断、監視、およびメトリック データは、選択した�
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

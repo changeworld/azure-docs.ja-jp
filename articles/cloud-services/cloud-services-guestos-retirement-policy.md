@@ -3,7 +3,7 @@
    description="Cloud Services で使用される Azure ゲスト OS について Microsoft がサポートする内容について説明します。" 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="Thraka" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="08/18/2015"
-   ms.author="adegeo"/>
+   ms.date="12/07/2015"
+   ms.author="yuemlu"/>
 
 # Azure ゲスト OS のサポートと提供終了のポリシー
-このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](https://msdn.microsoft.com/library/azure/ff729422.aspx)) に関連しています。このページの情報は、Virtual Machines (IaaS) には適用されません。
+このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。このページの情報は、Virtual Machines (IaaS) には適用されません。
 
 Microsoft では、[ゲスト OS のサポート ポリシー](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq)を公開しています。現在表示されているページでは、ポリシーの実装方法について説明します。
 
@@ -57,7 +57,7 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 ゲスト OS バージョンは毎月リリースされます。定期的なリリースの頻度により、各バージョンには固定された有効期間があります。
 
-バージョンは、有効期間の 60 日目に "*無効*" になります。"無効" になるとは、そのバージョンが Azure 管理ポータルから削除されることを意味します。また、CSCFG 構成ファイルから設定することもできなくなります。既存のデプロイは実行されたままになりますが、新しいデプロイや、既存のデプロイに対するコードや構成の更新は許可されなくなります。
+バージョンは、有効期間の 60 日目に "*無効*" になります。"無効" になるとは、そのバージョンが Azure クラシック ポータルから削除されることを意味します。また、CSCFG 構成ファイルから設定することもできなくなります。既存のデプロイは実行されたままになりますが、新しいデプロイや、既存のデプロイに対するコードや構成の更新は許可されなくなります。
 
 後日、ゲスト OS バージョンは "*有効期限切れ*" となり、まだそのバージョンを実行しているインストールは強制的にアップグレードされ、今後ゲスト OS を自動的に更新するように設定されます。有効期限切れにする操作は一括して行われるため、無効になったときから有効期限切れまでの期間は変動する場合があります。
 
@@ -67,7 +67,7 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 ### 提供終了処理中の通知 
 
-* **ファミリの提供終了** <br>ブログ投稿と管理ポータルを使用して通知されます。提供終了になったゲスト OS ファミリをまだ使用しているお客様に対しては、割り当てられたサービス管理者への直接の連絡 (メール、ポータル メッセージ、電話) による通知が行われます。すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。 
+* **ファミリの提供終了** <br>ブログ投稿と Azure クラシック ポータルを使用して通知されます。提供終了になったゲスト OS ファミリをまだ使用しているお客様に対しては、割り当てられたサービス管理者への直接の連絡 (メール、ポータル メッセージ、電話) による通知が行われます。すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。 
 
 
 * **バージョンの提供終了** <br>すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。リリース日、無効になる日、有効期限も含まれます。無効になったゲスト OS バージョンまたはファミリで実行中のデプロイがある場合、サービス管理者はメールを受け取ります。これらのメールのタイミングは変わる場合があります。通常は、無効になる日の少なくとも 1 か月前ですが、このタイミングは正式な SLA ではありません。
@@ -81,13 +81,13 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 
 1. 新しいファミリへの移行の計画を早めに開始します。 
 2. 一時的なテスト デプロイをセットアップして、クラウド サービスを新しいファミリでテストします。 
-3. 新しいゲスト OS バージョンへの移行が自動的に行われるように、"自動" ([.CSCFG](https://msdn.microsoft.com/library/azure/gg456324.aspx) ファイル内では osVersion=*) に[ゲスト OS バージョンを設定](https://msdn.microsoft.com/library/azure/gg433101.aspx)します。
+3. ゲスト OS バージョン ([.cscfg](cloud-services-model-and-package.md#cscfg) ファイルの osVersion=*) を **Automatic** に設定して、新しいゲスト OS バージョンへの移行が自動的に行われるようにします。
 
 **Web アプリケーションで OS との緊密な統合が必要な場合はどうすればよいでしょうか。**
 
-Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、"[スタートアップ タスク](https://msdn.microsoft.com/library/windowsazure/gg456327.aspx)" のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](http://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
+Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、[スタートアップ タスク](cloud-services-startup-tasks.md) のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
  
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

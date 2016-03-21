@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Microsoft Azure DocumentDB の概要 - 無料試用版 | Microsoft Azure" 
-	description="Azure DocumentDB (NoSQL ドキュメント データベース) とは何か、また、それがクラウド アプリケーションやモバイル アプリケーションにどのような価値をもたらすかについて説明します。Azure DocumentDB におけるデータの管理や、アプリケーション開発における Azure DocumentDB の活用方法について説明します。" 
+	pageTitle="JSON データベースである DocumentDB の概要 | Microsoft Azure" 
+	description="NoSQL JSON データベースである Azure DocumentDB について説明します。このドキュメント データベースは、ビッグ データ、エラスティックな拡張性、および高可用性用に構築されています。" 
+	keywords="json データベース, ドキュメント データベース"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -12,18 +13,18 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/25/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/16/2016" 
 	ms.author="mimig"/>
 
-# Microsoft Azure DocumentDB の概要
+# DocumentDB の概要: NoSQL JSON Database
 
-この記事では、開発者、IT プロフェッショナル、およびビジネスの意思決定者向けの完全に管理された NoSQL ドキュメント データベース サービス、Microsoft Azure DocumentDB の概要を示します。
+DocumentDB とは、簡単に拡大縮小でき、高い可用性を必要とする、JSON データを扱う、ビッグ データ ソリューション用の NoSQL ドキュメント データベースです。
 
-DocumentDB を簡単に理解して動作を確認するには、次の 3 つの手順に従います。
+この JSON データベースを簡単に理解して動作を確認するには、次の 3 つの手順に従います。
 
-1. [DocumentDB について説明する 2 分間のビデオ](http://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)を視聴します。このビデオでは、DocumentDB を使用する利点が紹介されています。
-2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](http://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure プレビュー ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
+1. [DocumentDB について説明する 2 分間のビデオ](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/)を視聴します。このビデオでは、DocumentDB を使用する利点が紹介されています。
+2. [Azure での DocumentDB の作成に関する 3 分間のビデオ](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)を視聴します。このビデオでは、Azure ポータルを使用して DocumentDB の使用を開始する方法が紹介されています。
 3. [クエリのプレイ グラウンド](http://www.documentdb.com/sql/demo)にアクセスします。このページでは、DocumentDB で利用できる豊富なクエリ機能について理解するためのさまざまな手順を確認できます。次に [サンドボックス] タブに移動して、独自のカスタム SQL クエリを実行し、DocumentDB を試してみます。
 
 その後でこの記事に戻ると、より詳しく調べることができ、次の質問の答えを見つけることができます。
@@ -39,19 +40,19 @@ DocumentDB を簡単に理解して動作を確認するには、次の 3 つの
 
 DocumentDB は、最近のモバイル アプリケーションと Web アプリケーション向けに設計された完全にスキーマフリーの NoSQL ドキュメント データベース サービスで、終始高速な読み取りと書き込み、スキーマの柔軟性、そして需要に応じてデータベースを容易にスケールアップ/ダウンできる能力を備えています。インデックスを作成する JSON ドキュメントには、前提となるスキーマはなく、どのようなスキーマも不要です。既定では、データベース内のすべてのドキュメントについてインデックスが自動的に作成されるため、スキーマや、セカンダリ インデックスの作成は不要です。DocumentDB は、SQL 言語を使用した複雑なアドホック クエリに対応し、明確に定義された一貫性レベルをサポートしています。また、JavaScript 言語を使ったプログラミングが可能となっており、ストアド プロシージャ、トリガー、UDF に馴染みのあるプログラミング モデルを使って複数ドキュメントにわたるトランザクション処理を実現することができます。
 
-DocumentDB は、JSON ドキュメントをネイティブ サポートしているため、アプリケーション スキーマを容易に反復処理することができます。JSON と JavaScript という広く普及した技術を積極的に採用することで、アプリケーション定義オブジェクトとデータベース スキーマ間のミスマッチをなくしています。JavaScript のネイティブ サポートには、開発者がデータベース トランザクションの中でデータベース エンジン内から直接アプリケーション ロジックを効率的に実行できるメリットもあります。
+DocumentDB は、JSON データベースとして JSON ドキュメントをネイティブ サポートしているため、アプリケーション スキーマを容易に反復処理することができます。JSON と JavaScript という広く普及した技術を積極的に採用することで、アプリケーション定義オブジェクトとデータベース スキーマ間のミスマッチをなくしています。JavaScript のネイティブ サポートには、開発者がデータベース トランザクションの中でデータベース エンジン内から直接アプリケーション ロジックを効率的に実行できるメリットもあります。
 
 Azure DocumentDB が備えている主要な機能と利点は次のとおりです。
 
 -	**馴染みのある SQL 構文を使用したアドホック クエリ:** 多種多様な JSON ドキュメントを DocumentDB に格納し、馴染みのある SQL 構文を使用して照会できます。DocumentDB は、同時実行性の高い、ロックを用いないログ構造のインデックス作成技術を利用して、すべてのドキュメント コンテンツのインデックスを自動的に作成します。そのため、スキーマのヒント、セカンダリ インデックス、ビューを指定せずに、豊富なリアルタイム クエリが可能となっています。詳細については、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。 
 
--	**データベース内で JavaScript を実行:** 標準の JavaScript を使用し、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) としてアプリケーション ロジックを表現することができるため、アプリケーション スキーマとデータベース スキーマ間のミスマッチに悩まされることなく JSON データを扱うことができます。DocumentDB は、JavaScript アプリケーション ロジックを完全なトランザクションとしてデータベース エンジン内から直接実行できるようになっています。JavaScript が深いレベルで統合されているため、INSERT、REPLACE、DELETE、SELECT の操作を分離されたトランザクションとして JavaScript プログラム内から実行することができます。詳細については、「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
+-	**データベース内で JavaScript を実行:** 標準の JavaScript を使用し、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) としてアプリケーション ロジックを表現することができるため、アプリケーション スキーマとデータベース スキーマ間のミスマッチに悩まされることなく、アプリケーション ロジックでデータを扱うことができます。DocumentDB は、JavaScript アプリケーション ロジックを完全なトランザクションとしてデータベース エンジン内から直接実行できるようになっています。JavaScript が深いレベルで統合されているため、INSERT、REPLACE、DELETE、SELECT の操作を分離されたトランザクションとして JavaScript プログラム内から実行することができます。詳細については、「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
 
 -	**一貫性レベルをチューニング可能:** 明確に定義された 4 つの一貫性レベルの中からいずれかのレベルを選択し、一貫性とパフォーマンス間のトレードオフを最適な形で行うことができます。DocumentDB では、クエリと読み取り操作に関して、Strong、Bounded-Staleness、Session、Eventual の 4 種類の一貫性レベルが利用できます。きめ細かな一貫性レベルが明確に定義されていることによって、一貫性、可用性、待機時間の最適なトレードオフを検討することができます。詳細については、「[一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化](documentdb-consistency-levels.md)」を参照してください。
 
 -	**完全管理:** データベースやコンピューター リソースを管理する手間がかかりません。Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、複雑なデータ層のアップグレードを手作業で行う必要はありません。すべてのデータベースは自動的にバックアップされ、局地的障害から保護されます。DocumentDB アカウントは簡単に追加し、必要に応じて容量をプロビジョニングすることができます。データベースの運用と管理に煩わされることなく、アプリケーションに専念することが可能です。
 
--	**スループットとストレージのスケールを柔軟に調整:** アプリケーションのニーズに合わせて DocumentDB を簡単にスケールアップおよびスケールダウンできます。SSD を使用したストレージとスループットの単位 (コレクション) が細かく規定されており、スケール調整は、それらを予約することによって行います。アプリケーションの成長に合わせて単位を追加作成すれば、確実なパフォーマンスと共に、DocumentDB のスケールを臨機応変に拡張することができます。
+-	**スループットとストレージのスケールを柔軟に調整:** アプリケーションのニーズに合わせて DocumentDB JSON データベースを簡単にスケールアップおよびスケールダウンできます。SSD を使用したストレージとスループットの単位 (コレクション) が細かく規定されており、スケール調整は、それらを予約することによって行います。アプリケーションの成長に合わせて単位を追加作成すれば、確実なパフォーマンスと共に、DocumentDB のスケールを臨機応変に拡張することができます。
 
 -	**設計に込められたオープンな環境:** 既存のスキルやツールをそのまま活かすことができます。DocumentDB に対するプログラミングは、シンプルで親しみやすく、新しいツールを導入する必要がないうえ、JSON や JavaScript のカスタム拡張機能への縛りもありません。CRUD、クエリ、JavaScript 処理を含め、データベースのすべての機能には、単純な RESTful HTTP インターフェイスでアクセスすることができます。DocumentDB は、既にあるフォーマット、言語、標準を積極的に採用すると共に、それを基盤として価値の高いデータベース機能を提供しています。
 
@@ -66,7 +67,7 @@ DocumentDB 内のリソースはいずれも、JSON ドキュメントとして�
 
 以下の図は、DocumentDB のリソース間の関係を示したものです。
 
-![][1]
+![NoSQL JSON データベースである DocumentDB のリソース間の階層関係です][1]
 
 データベース アカウントは、一連のデータベースから成ります。それぞれのデータベースには、複数のコレクションが含まれており、それぞれのコレクションに、ストアド プロシージャ、トリガー、UDF のほか、ドキュメントおよび関連する添付ファイルが含まれています。また、データベースにはユーザーが関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連のアクセス許可が関連付けられます。データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメント、ストアド プロシージャ、トリガー、UDF、添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。
 
@@ -76,11 +77,11 @@ Azure DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を�
 ダウンロード | ドキュメント
 --- | ---
 [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) | [.NET ライブラリ](https://msdn.microsoft.com/library/azure/dn948556.aspx)
-[Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) | [Node.js ライブラリ](http://dl.windowsazure.com/documentDB/nodedocs/)
-[Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) | [Java ライブラリ](http://dl.windowsazure.com/documentdb/javadoc/)
-[JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) | [JavaScript ライブラリ](http://dl.windowsazure.com/documentDB/jsclientdocs/)
-該当なし | [サーバー側の JavaScript SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/)
-[Python SDK](https://pypi.python.org/pypi/pydocumentdb) | [Python ライブラリ](http://dl.windowsazure.com/documentDB/pythondocs/)
+[Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) | [Node.js ライブラリ](http://azure.github.io/azure-documentdb-node/)
+[Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) | [Java ライブラリ](http://azure.github.io/azure-documentdb-java/)
+[JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) | [JavaScript ライブラリ](http://azure.github.io/azure-documentdb-js/)
+該当なし | [サーバー側の JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/)
+[Python SDK](https://pypi.python.org/pypi/pydocumentdb) | [Python ライブラリ](http://azure.github.io/azure-documentdb-python/)
 
 DocumentDB には、作成、読み取り、更新、削除という基本的な操作以外にも、JSON ドキュメントを検索するための多彩な SQL クエリ インターフェイスが備わっているほか、JavaScript のアプリケーション ロジックをサーバー側でトランザクション実行する機能がサポートされています。クエリとスクリプトの実行インターフェイスは、REST API に加え、あらゆるプラットフォーム ライブラリから利用できます。
 
@@ -97,17 +98,17 @@ DocumentDB では、アプリケーション ロジックを JavaScript だけ�
 DocumentDB における JavaScript は、Transact-SQL の後継として、リレーショナル データベース システムによって裏付けられた概念に沿って実行がモデル化されています。すべての JavaScript ロジックは、スナップショット分離機能を使用し、現在参加している ACID トランザクション内で実行されます。その実行中に JavaScript で例外がスローされた場合、トランザクション全体が中止されます。
 
 ## 次のステップ
-既に Azure アカウントをお持ちの場合は、[DocumentDB データベース アカウントを作成する](documentdb-create-account.md)ことにより、[Azure プレビュー ポータル](https://portal.azure.com/#gallery/Microsoft.DocumentDB)で DocumentDB の使用を開始できます。
+既に Azure アカウントをお持ちの場合は、[DocumentDB データベース アカウントを作成する](documentdb-create-account.md)ことにより、[Azure ポータル](https://portal.azure.com/#gallery/Microsoft.DocumentDB)で DocumentDB の使用を開始できます。
 
 Azure アカウントをお持ちでない場合は、
 
 - [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。 
-- MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
+- MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
 
-詳細を確認する準備ができたら、[ラーニング パス](http://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
+詳細を確認する準備ができたら、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
 
 
-[1]: ./media/documentdb-introduction/resources1.png
+[1]: ./media/documentdb-introduction/json-database-resources1.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

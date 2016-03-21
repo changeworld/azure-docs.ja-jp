@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB データベース質問 - よく寄せられる質問 | Microsoft Azure" 
-	description="Azure DocumentDB Nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。" 
+	description="JSON 用の NoSQL ドキュメント データベース サービスである Azure DocumentDB に関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。" 
 	keywords="データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	authors="mimig1" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="12/03/2015" 
 	ms.author="mimig"/>
 
 
@@ -25,7 +25,7 @@
 ### Microsoft Azure DocumentDB とは 
 Microsoft Azure DocumentDB は、スケーラブルな NoSQL ドキュメントのサービスとしてのデータベースです。Microsoft Azure の機能と能力に支えられた管理プラットフォームによって、スキーマフリーのデータに高度なクエリを実行することができ、構成可能な信頼性の高いパフォーマンスの提供、および迅速な開発が可能となります。DocumentDB は、予測可能なスループット、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web アプリケーションやモバイル アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
   
-データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](http://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
+データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
 ### DocumentDB はどのような種類のデータベースですか?
 DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB [SQL クエリ文法](documentdb-sql-query.md)で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、[ストアド プロシージャ、トリガー、およびユーザー定義関数](documentdb-programming.md)を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられた[パフォーマンス レベル](documentdb-performance-levels.md)と共にサポートします。
@@ -42,6 +42,9 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 ### DocumentDB の一般的な使用事例にはどのようなものがありますか?  
 DocumentDB は、拡張性、パフォーマンス、およびスキーマフリー データでのクエリを実行できることが重要である新しい Web アプリケーションやモバイル アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。
 
+### DocumentDB HIPAA は準拠していますか?
+DocumentDB は現在 HIPAA に準拠していませんが、Azure サービスは HIPAA 準拠になる予定です。Microsoft および HIPAA の詳細については[HIPAA および HITECH Act](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/HIPAA) に関するページを参照してください。
+
 ### DocumentDB のスケール制限とは何ですか?
 ストレージおよびスループットの観点では、DocumentDB アカウントはコレクションを追加してスケールすることができます。コレクションの数に対するサービスのクォータについては、「[DocumentDB の制限](documentdb-limits.md)」を参照してください。追加のコレクションが必要な場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
@@ -49,7 +52,7 @@ DocumentDB は、拡張性、パフォーマンス、およびスキーマフリ
 詳細については、「[DocumentDB 料金](http://go.microsoft.com/fwlink/p/?LinkID=402317)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。
 
 ### 無料試用版は使用できますか?
-Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。
+Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。
 
 ### DocumentDB に関するその他のヘルプはどのようにして得られますか?
 ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
@@ -57,13 +60,13 @@ Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.
 ## Microsoft Azure DocumentDB のセットアップ
 
 ### どのようにして Microsoft Azure DocumentDB にサインアップしますか?
-Microsoft Azure DocumentDB は、[Azure プレビュー ポータル][azure-portal]で利用できます。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後、DocumentDB アカウントを Azure サブスクリプションに追加できます。DocumentDB アカウントの追加方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
+Microsoft Azure DocumentDB は、[Azure ポータル][azure-portal]で利用可能です。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後、DocumentDB アカウントを Azure サブスクリプションに追加できます。DocumentDB アカウントの追加方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
 ### マスター キーとは何ですか?
-マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。マスター キーを配布するときには十分な注意が必要となります。プライマリ マスター キーとセカンダリ マスター キーは、[Azure プレビュー ポータル][azure-portal]の **[キー] **ブレードで入手できます。リソース キーの詳細については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
+マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。マスター キーを配布するときには十分な注意が必要となります。プライマリ マスター キーとセカンダリ マスター キーは、[Azure ポータル][azure-portal]の **[キー] **ブレードで入手できます。リソース キーの詳細については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
 
 ### どのようにしてデータベースを作成しますか?
-「[DocumentDB データベースの作成](documentdb-create-database.md)」で説明されているように [Azure プレビュー ポータル]()を使用して、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) の 1 つを使用して、または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、データベースを作成できます。
+「[DocumentDB データベースの作成](documentdb-create-database.md)」で説明されているように [Azure ポータル]()を使用するか、あるいは [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) のいずれかまたは [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してデータベースを作成できます。
 
 ### コレクションとは何ですか?
 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。クエリおよびトランザクションの範囲としてコレクションが指定されます。多種多様な JSON ドキュメントのセットを 1 つのコレクション内に格納し、自動的にインデックスを作成することができます。
@@ -99,7 +102,7 @@ DocumentDB では、JavaScript ストアド プロシージャおよびトリガ
 DocumentDB にドキュメントを一括挿入するには 3 つの方法があります。
 
 - データ移行ツール。「[DocumentDB にデータをインポートする](documentdb-import-data.md)」を参照してください。
-- Azure プレビュー ポータルの Document Explorer。「[Document Explorer を使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#BulkAdd)」を参照してください。
+- Azure ポータルの Document Explorer。「[Document Explorer を使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#BulkAdd)」を参照してください。
 - ストアド プロシージャ。「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
 
 ### DocumentDB はリソース リンク キャッシュをサポートしますか?
@@ -112,4 +115,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

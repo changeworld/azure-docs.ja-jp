@@ -3,7 +3,7 @@
 	description="簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。"
 	services="cloud-services"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="08/31/2015"
-	ms.author="mwasson"/>
+	ms.date="02/04/2016" 
+	ms.author="robmcm"/>
 
 
 # Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
@@ -25,9 +25,9 @@
 
 このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。Cloud Services は、Azure のスケーラブルなクラウド アプリケーションの構成要素です。クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。Cloud Services は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
-Cloud Services の詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[Azure Websites、Cloud Services、および Virtual Machines の比較](../choose-web-site-cloud-service-vm.md)に関するページを参照してください。
+Cloud Services の詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service-web/choose-web-site-cloud-service-vm.md)に関するページを参照してください。
 
->[AZURE.TIP]単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Web アプリを使用することを検討してください。</a> Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
+>[AZURE.TIP] 単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="../app-service-web/web-sites-nodejs-develop-deploy-mac.md">軽量の Web アプリを使用することを検討してください。</a> Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
 
 
 このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング エミュレーターを使用してアプリケーションをローケルでテストし、PowerShell コマンド ライン ツールを使用してアプリケーションをデプロイします。
@@ -38,10 +38,10 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
 ## 前提条件
 
-> [AZURE.NOTE]このチュートリアルは、Windows 上の Azure PowerShell を使用します。
+> [AZURE.NOTE] このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
-- [Azure Powershell](../install-configure-powershell.md) のインストールおよび構成。
-- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-jp/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
+- [Azure Powershell](../powershell-install-configure.md) のインストールおよび構成。
+- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-JP/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -51,7 +51,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
 
 
-1. **Azure PowerShell** を管理者として実行します。(**[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。)
+1. **Windows PowerShell** を管理者として実行します (**[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します)。
 
 2.  サブスクリプションに [PowerShell を接続します](powershell-install-configure.md#how-to-connect-to-your-subscription)。
 3.  次の PowerShell コマンドレットを入力してプロジェクトを作成します。
@@ -76,7 +76,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
 	**Add-azurenodewebrole** コマンドレットは、基本的な Node.js アプリケーションを作成します。**.csfg** ファイルおよび **.csdef** ファイルも変更され、新しいロールの構成エントリが追加されます。
 
-	> [AZURE.NOTE]ロール名を指定しない場合は、既定の名前が使用されます。名前は、`Add-AzureNodeWebRole MyRole` のように、最初のコマンドレットのパラメーターとして指定できます。
+	> [AZURE.NOTE] ロール名を指定しない場合は、既定の名前が使用されます。名前は、`Add-AzureNodeWebRole MyRole` のように、最初のコマンドレットのパラメーターとして指定できます。
 
 
 Node.js アプリは **server.js** ファイルで定義されます。このファイルは Web ロール用のディレクトリ (既定では **WebRole1**) に配置されます。次にコードを示します。
@@ -112,7 +112,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
         Import-AzurePublishSettingsFile [path to file]
 
 
-	> [AZURE.NOTE]発行設定をインポートしたら、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスできる情報が含まれているので、削除することを検討してください。
+	> [AZURE.NOTE] 発行設定をインポートしたら、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスできる情報が含まれているので、削除することを検討してください。
 
 
 ### アプリケーションの発行
@@ -132,7 +132,8 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 ![Publish-AzureService コマンドの出力](./media/cloud-services-nodejs-develop-deploy-app/node19.png)
 
-> [AZURE.NOTE]初めてアプリケーションを発行する場合、アプリケーションがデプロイされ、利用可能になるまでに数分かかることがあります。
+> [AZURE.NOTE]
+初めてアプリケーションを発行する場合、アプリケーションがデプロイされ、利用可能になるまでに数分かかることがあります。
 
 デプロイが完了すると、ブラウザー ウィンドウが開き、クラウド サービスに移動します。
 
@@ -175,7 +176,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 	![Remove-AzureService コマンドの状態](./media/cloud-services-nodejs-develop-deploy-app/node49.png)
 
-	> [AZURE.NOTE]サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[Azure サブスクリプションからストレージ アカウントを削除する方法](http://msdn.microsoft.com/library/windowsazure/hh531562.aspx)」を参照してください。
+	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[Azure サブスクリプションからストレージ アカウントを削除する方法](http://msdn.microsoft.com/library/windowsazure/hh531562.aspx)」を参照してください。
 
 ## 次のステップ
 
@@ -197,4 +198,4 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=AcomDC_0218_2016-->

@@ -1,26 +1,24 @@
-<properties 
-	pageTitle="Cordova モバイル サービス プロジェクトの概要 (Visual Studio 接続済みサービス)" 
-	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
+<properties
+	pageTitle="Cordova モバイル サービス プロジェクトの概要 (Visual Studio 接続済みサービス) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="mlhoop"
+	manager="douge"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="09/17/2015" 
-	ms.author="tarcher"/>
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="01/05/2016"
+	ms.author="mlearned"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
 
-> [AZURE.SELECTOR]
-> - [Getting Started](vs-mobile-services-cordova-getting-started.md)
-> - [What Happened](vs-mobile-services-cordova-what-happened.md)
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
 ##最初の手順
 これらの例で使用されているコードを実行するために行う必要がある最初のステップは、接続しているモバイル サービスの種類によります。
@@ -28,8 +26,6 @@
 - JavaScript バックエンド モバイル サービスの場合は、TodoItem と呼ばれるテーブルを作成します。テーブルを作成するには、サーバー エクスプローラーの Azure ノード下でモバイル サービスを特定し、そのモバイル サービスのノードを右クリックしてコンテキスト メニューを開き、[**Create Table (テーブルの作成)**] を選択します。テーブル名として「TodoItem」と入力します。
 
 - .NET バックエンド モバイル サービスの場合は、TodoItem テーブルは Visual Studio によって既にデフォルトのプロジェクト テンプレート内に作成されていますが、これを Azure に発行する必要があります。発行するには、ソリューション エクスプローラーでモバイル サービス プロジェクトのコンテキスト メニューを開き、[**Publish Web (Web の発行)**] を選択します。既定値を受け入れ、**[Publish (発行)]** を選択します。
-
-
 
 ##テーブルへの参照を作成する
 
@@ -47,7 +43,7 @@
         this.text = text;
         this.complete = false;
     }
-    
+
     var items = new Array();
     var insertTodoItem = function (todoItem) {
         todoTable.insert(todoItem).done(function (item) {
@@ -92,6 +88,6 @@ where メソッドを使用してクエリを変更できます。次の例で�
         items.splice(items.indexOf(todoItem), 1);
     });
 
-[モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
+[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights とは何か?" 
-	description="ライブ Web またはデバイス アプリケーションの使用状況とパフォーマンスを追跡します。問題を検出し、優先順位を付け、診断します。継続的に監視し、ユーザーが満足するように改善します。" 
+	pageTitle="Application Insights による分析" 
+	description="デバイスと Web アプリの分析。ライブ Web アプリケーションの使用状況とパフォーマンスを追跡します。問題を検出し、優先順位を付け、診断します。継続的に監視し、ユーザーが満足するように改善します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -21,7 +21,7 @@ Application Insights は、実行中のアプリケーションを監視する�
 
 ![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
 
-さまざまなプラットフォーム上の Web アプリやスタンドアロン アプリ (オンプレミスまたはクラウドでホストされた .NET または J2EE、Windows、iOS、Android、OSX、およびその他のプラットフォーム上のデバイス アプリなど) と連携します。
+さまざまなプラットフォーム上の Web アプリやスタンドアロン アプリ (オンプレミスまたはクラウドでホストされた .NET または J2EE など) と連携します。
 
 Application Insights は、開発チームを支援することを目的としています。Application Insights では、次のことを行えます。
 
@@ -32,7 +32,7 @@ Application Insights は、開発チームを支援することを目的とし�
  *  パフォーマンスの変化またはクラッシュに関するアラート。
  *  応答時間、CPU 使用率、依存関係追跡など、パフォーマンス問題の診断に役立つメトリック。
  *  Web アプリの可用性テスト。
- *  クラッシュと例外のレポートとアラート。
+ *  例外のレポートとアラート。
  *  診断ログの高性能検索 (お気に入りのログ記録フレームワークのログ トレースを含む)。
 
 各プラットフォーム用の SDK には、そのまま使用できるアプリを監視するさまざまなモジュールが用意されています。さらに、調整されたより詳しい分析のために、独自のテレメトリをコーディングすることもできます。
@@ -53,13 +53,10 @@ SDK は増え続けるプラットフォームに対応します。最新の一�
  * [Azure Cloud Services](app-insights-cloudservices.md)
  * [J2EE サーバー][java]
  * [Web ページ][client]\: HTML+JavaScript
- * [Windows Phone、Windows ストア、Windows 10 ユニバーサル アプリのほか、Windows 10 開発者向けポータルに直接統合できます][windows]
- * [Windows デスクトップ][desktop]
- * [iOS][ios]
- * [Android][android]
+ * [Windows デスクトップおよびサーバー アプリ][desktop]
  * [他のプラットフォーム][platforms] - Node.js、PHP、Python、Ruby、Joomla、SharePoint、WordPress
 
-Application Insights では、再構築せずに、IIS 上の既存の ASP.NET Web アプリからテレメトリを取得することもできます。
+Application Insights では、再構築せずに、既存の ASP.NET Web アプリからテレメトリを取得することもできます。
 
 アプリにクライアント、サーバー、およびその他のコンポーネントがある場合、それらすべてをインストルメント化できます。たとえば、データを Application Insights ポータルに組み込んで、クライアントのイベントをサーバーのイベントと関連付けることができます。
 
@@ -89,7 +86,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 1. 使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションが必要です。サインアップは無料で、Application Insights の無料の[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。
 
-2. [Azure ポータル](http://portal.azure.com)にサインインします。
+2. [Azure ポータル](https://portal.azure.com)にサインインします。
 3. Application Insights リソースを作成します。アプリのデータはここに表示されます。
 
     ![[追加]、[開発者向けサービス]、[Application Insights]](./media/app-insights-overview/11-new.png)
@@ -142,7 +139,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [ios]: https://github.com/Microsoft/ApplicationInsights-iOS
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-overview-usage.md
@@ -154,4 +151,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0302_2016-->

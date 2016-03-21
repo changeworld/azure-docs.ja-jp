@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="02/29/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
 
 > [AZURE.SELECTOR]
-- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
+- [Windows ユニバーサル](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
 - [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
 - [Android](notification-hubs-aspnet-backend-android-secure-push.md)
 
@@ -43,7 +43,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「[ユーザーへの通知](notification-hubs-aspnet-backend-ios-notify-users.md)」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE]このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
+> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -158,4 +158,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

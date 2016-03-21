@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
+    ms.date="01/12/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と PolicyStat の統合
@@ -59,12 +59,12 @@
 
     ![アプリケーション ギャラリー](./media/active-directory-saas-policystat-tutorial/IC808627.png "アプリケーション ギャラリー")
 
-7.  結果ウィンドウで **[PolicyStat]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  結果ウィンドウで **[PolicyStat]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![PolicyStat](./media/active-directory-saas-policystat-tutorial/IC810430.png "PolicyStat")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで PolicyStat に対する認証を行えるようにする方法を説明します。PolicyStat アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで PolicyStat に対する認証を行えるようにする方法を説明します。PolicyStat アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを **SAML トークンの属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
 
 ![属性](./media/active-directory-saas-policystat-tutorial/IC808628.png "属性")
 
@@ -72,52 +72,52 @@
 
 1.  Azure AD ポータルの **PolicyStat** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808629.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-policystat-tutorial/IC808629.png "Configure Single Sign-On")
 
-2.  **[ユーザーの PolicyStat へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  **[ユーザーの PolicyStat へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808630.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-policystat-tutorial/IC808630.png "Configure Single Sign-On")
 
-3.  **[アプリケーション設定の構成]** ページの **[サインオン URL]** ボックスに、ユーザーが PolicyStat アプリケーションのサインオンに使用する URL (例: *"https://demo-azure.policystat.com"*) を入力し、**[次へ]** をクリックします。
+3.  **[アプリ設定の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが PolicyStat アプリケーションのサインオンに使用する URL (例: *“https://demo-azure.policystat.com”*) を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション設定の構成](./media/active-directory-saas-policystat-tutorial/IC808631.png "アプリケーション設定の構成")
+    ![Configure App Settings](./media/active-directory-saas-policystat-tutorial/IC808631.png "Configure App Settings")
 
-4.  **[PolicyStat でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
+4.  **[PolicyStat でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808632.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-policystat-tutorial/IC808632.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、PolicyStat 企業サイトに管理者としてログインします。
 
-6.  **[Admin]** タブをクリックし、左側のナビゲーション ウィンドウの **[Single Sign-On Configuration]** をクリックします。
+6.  **[Admin]** タブをクリックしてから、左側のナビゲーション ウィンドウの **[Single Sign-On Configuration]** をクリックします。
 
     ![管理者メニュー](./media/active-directory-saas-policystat-tutorial/IC808633.png "管理者メニュー")
 
-7.  **[Setup]** セクションで、**[Enable Single Sign-on Integration]** を選択します。
+7.  **[Setup]** セクションで、**[Enable Single Sign-on Integration]** を選びます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808634.png "シングル サインオンの構成")
 
-8.  **[Configure Attributes]** をクリックし、**[Configure Attributes]** セクションで次の手順を実行します。
+8.  **[Configure Attributes]** をクリックして 、**[Configure Attributes]** セクションで次の手順に従います。
 
     ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808635.png "シングル サインオンの構成")
 
-    1.  **[Username Attribute]** ボックスに、「**uid**」と入力します。
-    2.  **[First Name Attribute]** ボックスに、「**firstname**」と入力します。
-    3.  **[Last Name Attribute]** ボックスに、「**lastname**」と入力します。
-    4.  **[Email Attribute]** ボックスに、「**emailaddress**」と入力します。
+    1.  **[Username Attribute]** テキストボックスに、「**uid**」と入力します。
+    2.  **[First Name Attribute]** テキストボックスに、「**firstname**」と入力します。
+    3.  **[Last Name Attribute]** テキストボックスに、「**lastname**」と入力します。
+    4.  **[Email Attribute]** テキストボックスに、「**emailaddress**」と入力します。
     5.  **[変更を保存]** をクリックします。
 
-9.  **[Your IDP Metadata]** をクリックし、**[Your IDP Metadata]** セクションで次の手順を実行します。
+9.  **[Your IDP Metadata]** をクリックして、**[Your IDP Metadata]** セクションで次の手順に従います。
 
     ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC808635.png "シングル サインオンの構成")
 
-    1.  ダウンロードしたメタデータ ファイルを開いて内容をコピーし、**[Your Identity Provider Metadata]** ボックスに貼り付けます。
+    1.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[Your Identity Provider Metadata]** テキストボックスに貼り付けます。
     2.  **[変更を保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-policystat-tutorial/IC771723.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-policystat-tutorial/IC771723.png "Configure Single Sign-On")
 
-11. 12. 上部のメニューで **[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+11. 12. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-policystat-tutorial/IC795920.png "属性")
 
@@ -126,9 +126,9 @@
     ![属性](./media/active-directory-saas-policystat-tutorial/IC804823.png "属性")
 
     1.  **[ユーザー属性の追加]** をクリックします。
-    2.  **[属性名]** ボックスに、「**uid**」と入力します。
-    3.  **[属性値]** ボックスで、**[ExtractMailPrefix()]** を選択します。
-    4.  **[メール]** 一覧で、**[User.mail]** を選択します。
+    2.  **[属性名]** テキストボックスに、「**uid**」と入力します。
+    3.  **[属性値]** テキストボックスで、「**ExtractMailPrefix()**」を選びます。
+    4.  **[メール]** 一覧で、「**User.mail**」を選びます。
     5.  **[完了]** をクリックします。
 ##ユーザー プロビジョニングの構成
   
@@ -148,10 +148,10 @@ Azure AD ユーザーが PolicyStat にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-policystat-tutorial/IC808636.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-policystat-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-policystat-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0114_2016-->

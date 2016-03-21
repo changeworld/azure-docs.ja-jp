@@ -14,12 +14,17 @@
 	ms.tgt_pltfrm="NA"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="09/14/2015"
+	ms.date="02/07/2016"
 	ms.author="glenga"/>
 
 # データ モデルの変更を .NET バックエンド モバイル サービスに加える方法
 
-このトピックでは Entity Framework の Code First Migrations を使用して、既存のデータを失うことなく、既存の Azure SQL データベースにデータ モデルの変更を加える方法を説明します。この手順では、.NET バックエンド プロジェクトを既に Azure に発行したこと、データベース内に既存のデータがあること、およびリモートとローカルのデータ モデルが同期状態にあることを想定します。また、Azure モバイル サービスによって実装され、開発時に使用するデフォルトの Code First 初期化子についても説明します。こうした初期化子により、既存データを維持する必要がない場合に Code First Migrations を使用せずに簡単にスキーマを変更できます。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
+このトピックでは Entity Framework の Code First Migrations を使用して、既存のデータを失うことなく、既存の Azure SQL Database にデータ モデルの変更を加える方法を説明します。この手順では、.NET バックエンド プロジェクトを既に Azure に発行したこと、データベース内に既存のデータがあること、およびリモートとローカルのデータ モデルが同期状態にあることを想定します。また、Azure Mobile Services によって実装され、開発時に使用するデフォルトの Code First 初期化子についても説明します。こうした初期化子により、既存データを維持する必要がない場合に Code First Migrations を使用せずに簡単にスキーマを変更できます。
 
 >[AZURE.NOTE]SQL Database でテーブルのプレフィックスとして使用されるスキーマ名は、web.config ファイルの MS\_MobileServiceName アプリ設定で定義されています。ポータルからスターター プロジェクトをダウンロードするとき、この値はモバイル サービス名に既に設定されています。スキーマ名がモバイル サービスと一致すると、複数のモバイル サービスで同じデータベース インスタンスを安全に共有できます。
 
@@ -41,7 +46,7 @@ Mobile Services では、.NET バックエンド モバイル サービス プ�
 
 初期化子は両方とも、モバイル サービスで使用されるスキーマのすべてのテーブル、ビュー、関数、手順をデータベースから削除します。
 
-+ **ClearDatabaseSchemaIfModelChanges** <br/> Code First がデータ モデルで変更を検出した場合のみスキーマのオブジェクトは削除されます。[Microsoft Azure 管理ポータル]からダウンロードした .NET バックエンド プロジェクトデフォルトの初期化子は、このベース クラスから継承します。
++ **ClearDatabaseSchemaIfModelChanges** <br/> Code First がデータ モデルで変更を検出した場合のみスキーマのオブジェクトは削除されます。[Azure クラシック ポータル]からダウンロードした .NET バックエンド プロジェクトデフォルトの初期化子は、このベース クラスから継承します。
 
 + **ClearDatabaseSchemaAlways**: <br/>スキーマ オブジェクトはデータ モデルがアクセスされるたびに削除されます。このベース クラスはデータ モデルを変更せずにデータベースをリセットするために使用します。
 
@@ -57,7 +62,7 @@ Mobile Services では、.NET バックエンド モバイル サービス プ�
 
 Code First Migrations は、実行されたときにスナップショットの手法を使用して、データベースに対してスキーマの変更を加えるコードを生成します。Migrations を使用する場合は、データ モデルに対して増分の変更を加え、データベース内で既存のデータを保持することができます。
 
->[AZURE.NOTE].NET バックエンド モバイル サービス プロジェクトを既に Azure に発行し、SQL データベースのテーブル スキーマが、プロジェクトの現在のデータ モデルと一致していない場合は、初期化子を使用してテーブルを削除するか、Code First Migrations を使用して発行を試みる前にスキーマとデータ モデルを手動で同期させる必要があります。
+>[AZURE.NOTE].NET バックエンド モバイル サービス プロジェクトを既に Azure に発行し、SQL Database のテーブル スキーマが、プロジェクトの現在のデータ モデルと一致していない場合は、初期化子を使用してテーブルを削除するか、Code First Migrations を使用して発行を試みる前にスキーマとデータ モデルを手動で同期させる必要があります。
 
 次の手順では Migrations を有効にし、プロジェクト、ローカル データベース、Azure のそれぞれに対してデータ モデルの変更を適用します。
 
@@ -109,9 +114,9 @@ Code First Migrations は、実行されたときにスナップショットの�
 
 10. Azure に対してモバイル サービスを再発行してから、クライアント アプリケーションを実行してデータにアクセスし、データが読み込まれて何もエラーが発生していないことを確認します。
 
-13. (省略可能) [Microsoft Azure 管理ポータル]にログインし、モバイル サービスを選択して、**[構成]**、**[SQL データベース]** の順にクリックします。この結果、モバイル サービスのデータベースに対応する SQL データベース ページに移動します。
+13. (省略可能) [Azure クラシック ポータル]にログインし、モバイル サービスを選択して、**[構成]**、**[SQL データベース]** の順にクリックします。この結果、モバイル サービスのデータベースに対応する SQL Database ページに移動します。
 
-14. (省略可能) **[管理]** をクリックし、SQL データベース サーバーにログインしてから、**[設計]** をクリックして、Azure にスキーマの変更が加えられたことを確認します。
+14. (省略可能) **[管理]** をクリックし、SQL Database サーバーにログインしてから、**[設計]** をクリックして、Azure にスキーマの変更が加えられたことを確認します。
 
 
 ## 初期化子のない Code First Migrations の使用
@@ -122,7 +127,7 @@ Code First Migrations を .NET バックエンド プロジェクトで使用す
         AutomaticMigrationsEnabled = false;
         SetSqlGenerator("System.Data.SqlClient", new EntityTableSqlGenerator());
     }
-    
+
 ##<a name="seeding"></a>移行時のデータの登録
 
 移行を実行するときに、Migrations が登録データをデータベースに追加するように設定することもできます。**Configuration** クラスには、登録を行うための **Seed** メソッドがあり、このメソッドを使用してデータの挿入または更新をオーバーライドすることができます。Migrations を有効にするときに、Configuration.cs コード ファイルが Migrations フォルダーに追加されます。以下の例では、[Seed] メソッドをオーバーライドして、データを **TodoItems** テーブルに登録する方法を示します。最新のバージョンに移行した後で、[Seed] メソッドが呼び出されます。
@@ -169,11 +174,11 @@ Code First Migrations を .NET バックエンド プロジェクトで使用す
 <!-- URLs -->
 [DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/library/gg679604(v=vs.113).aspx
 [Seed]: http://msdn.microsoft.com/library/hh829453(v=vs.113).aspx
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [DbContext]: http://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx
 [AddOrUpdate]: http://msdn.microsoft.com/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
 [TableController<TEntity>]: https://msdn.microsoft.com/library/azure/dn643359.aspx
 [EntityData]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.entitydata.aspx
 [DbSet<T>]: https://msdn.microsoft.com/library/azure/gg696460.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

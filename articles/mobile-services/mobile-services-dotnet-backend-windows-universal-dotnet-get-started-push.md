@@ -1,22 +1,27 @@
-<properties 
-	pageTitle="ユニバーサル Windows 8.1 アプリへのプッシュ通知の追加 | Microsoft Azure" 
-	description="Azure Notification Hubs を使用して .NET バックエンド モバイル サービスからユニバーサル Windows 8.1 アプリにプッシュ通知を送信する方法について説明します。" 
-	services="mobile-services,notification-hubs" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="ユニバーサル Windows 8.1 アプリへのプッシュ通知の追加 | Microsoft Azure"
+	description="Azure Notification Hubs を使用して .NET バックエンド モバイル サービスからユニバーサル Windows 8.1 アプリにプッシュ通知を送信する方法について説明します。"
+	services="mobile-services,notification-hubs"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/02/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/11/2015"
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
@@ -26,14 +31,14 @@
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな [Microsoft ストア アカウント](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>。 
+* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>。
 
 ##<a id="register"></a>アプリをプッシュ通知に登録する
 
 [AZURE.INCLUDE [mobile-services-create-new-push-vs2013](../../includes/mobile-services-create-new-push-vs2013.md)]
 
 &nbsp;&nbsp;6.`\Services\MobileServices\your_service_name` プロジェクト フォルダーに移動し、生成された push.register.cs コード ファイルを開いて、デバイスのチャネル URL を通知ハブに登録する **UploadChannel** メソッドを見つけます。
- 
+
 &nbsp;&nbsp;7.共有 App.xaml.cs コード ファイルを開き、新しい **UploadChannel** メソッドの呼び出しが **OnLaunched** イベント ハンドラーに追加されていることを確認します。これにより、アプリケーションが起動されるたびにデバイスの登録が試行されます。
 
 &nbsp;&nbsp;8.前の手順を繰り返して、Windows Phone ストア アプリ プロジェクトへのプッシュ通知を追加し、共有 App.xaml.cs ファイルで、**UploadChannel** の余分な呼び出しと残りの `#if...#endif` 条件付きラッパーを削除します。これで、両方のプロジェクトで **UploadChannel** の 1 回の呼び出しを共有できるようになりました。
@@ -107,4 +112,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services 用の .NET クライアントを使用する方法]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_1203_2015-->

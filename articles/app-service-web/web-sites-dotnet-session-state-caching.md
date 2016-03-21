@@ -12,8 +12,8 @@
 	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/27/2016" 
 	ms.author="riande"/>
 
 
@@ -86,13 +86,12 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
     if (objValue != null)
        strValue = (string)objValue;	
 
-Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。詳細については、「[MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)](http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)」を参照してください。ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][]」を参照してください。
+Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。詳細については、「[MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/)」を参照してください。ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][]」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
   *著者 [Rick Anderson](https://twitter.com/RickAndMSFT)*
   
@@ -109,4 +108,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

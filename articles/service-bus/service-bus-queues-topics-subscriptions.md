@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/04/2015"
+   ms.date="12/09/2015"
    ms.author="sethm" />
 
 # Service Bus のキュー、トピック、サブスクリプション
@@ -146,7 +146,7 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 
 多くのシナリオでは、特性のあるメッセージは、異なる方法で処理する必要があります。これを実現するために、目的のプロパティを持つメッセージを検索し、該当するプロパティに特定の変更を行うようにサブスクリプションを構成できます。Service Bus のサブスクリプションには、トピックに送信されたすべてのメッセージが表示されますが、仮想サブスクリプション キューにコピーできるのは、これらのメッセージの一部のみです。これを行うには、サブスクリプション フィルターを使用します。このような変更は、*フィルター アクション*と呼ばれます。サブスクリプションを作成する場合、メッセージのシステム プロパティ (**Label** など) とカスタム アプリケーション プロパティ (**StoreName** など) の両方で機能するフィルター式を指定できます。 この場合、SQL フィルター式は省略可能です。SQL フィルター式を指定しない場合は、サブスクリプションで定義されている任意のフィルター アクションが、そのサブスクリプションのすべてのメッセージに対して実行されます。
 
-前の例を使用して、Store1 からの受信メッセージだけを取り出すようにフィルターするには、Dashboard サブスクリプションを次のように作成します。
+前の例を使用して、**Store1** からの受信メッセージだけを取り出すようにフィルターするには、Dashboard サブスクリプションを次のように作成します。
 
 ```
 namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
@@ -158,7 +158,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 ## Event Hubs
 
-[Event Hubs](http://azure.microsoft.com/services/event-hubs/) は、Azure への大規模なイベントとテレメトリ受信をわずかな遅延と高い信頼性で提供するために使用される、イベント処理サービスです。このサービスは、他のダウンストリーム サービスと共に使用した場合、特に、アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット(IoT) などのシナリオで役立ちます。
+[Event Hubs](https://azure.microsoft.com/services/event-hubs/) は、Azure への大規模なイベントとテレメトリ受信をわずかな遅延と高い信頼性で提供するために使用される、イベント処理サービスです。このサービスは、他のダウンストリーム サービスと共に使用した場合、特に、アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット(IoT) などのシナリオで役立ちます。
 
 イベント ハブは、メッセージ ストリーミングの構造体であり、キューやトピックに似ているように見られる場合もありますが、実際には非常に異なる特性を持っています。たとえば、イベント ハブには、メッセージの TTL、配信不能、トランザクション、受信確認の機能がありません。これらは、従来の仲介型メッセージング機能であり、ストリーミング機能ではないためです。イベント ハブには、パーティション分割、順序の保持、ストリーム再生など、ストリーム関連のその他の機能が用意されています。
 
@@ -167,8 +167,9 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 Service Bus の仲介型メッセージング エンティティの使用の詳細と例については、次の高度なトピックを参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-- [Service Bus 仲介型メッセージング .NET チュートリアル](https://msdn.microsoft.com/library/azure/hh367512.aspx)
-- [Event Hubs 開発者ガイド](../event-hubs-programming-guide.md)
+- [Service Bus 仲介型メッセージング .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
+- [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
+- [Event Hubs 開発者ガイド](../event-hubs/event-hubs-programming-guide.md)
 - [仲介型メッセージング: 高度なフィルター](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

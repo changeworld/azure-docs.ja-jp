@@ -13,54 +13,46 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
-#Windows ユニバーサル アプリ Reach SDK 統合
+# Windows ユニバーサル アプリ Reach SDK 統合
 
 このガイドの手順を実行する前に、「[Windows Phone ユニバーサル エンゲージメント SDK 統合](mobile-engagement-windows-store-integrate-engagement.md)」の統合手順を実行する必要があります。
 
-##エンゲージメント Reach SDK を Windows ユニバーサル プロジェクトに組み込む
+## エンゲージメント Reach SDK を Windows ユニバーサル プロジェクトに組み込む
 
 追加するものは何もありません。`EngagementReach` のリファレンスとリソースは、既にプロジェクト内に存在します。
 
-> [AZURE.TIP]プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。ユニバーサル アプリでは、共有プロジェクトの `Resources` フォルダーを移動させ、そのコンテンツをアプリ間で共有できますが、`Resources\EngagementConfiguration.xml` ファイルはプラットフォーム依存のため、その既定の場所に維持する必要があります。
+> [AZURE.TIP] プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。ユニバーサル アプリでは、共有プロジェクトの `Resources` フォルダーを移動させ、そのコンテンツをアプリ間で共有できますが、`Resources\EngagementConfiguration.xml` ファイルはプラットフォーム依存のため、その既定の場所に維持する必要があります。
 
-##Windows 通知サービスを有効にする
+## Windows 通知サービスを有効にする
+
+### Windows 8.x および Windows Phone 8.1 のみ
 
 `Package.appxmanifest` ファイルで **Windows 通知サービス** (WNS) を使用するために、`Application UI` で左下のボックスから [`All Image Assets`] をクリックします。`Notifications` のボックスの右で、`toast capable` を `(not set)` から `(Yes)` に変更します。
 
-さらに、アプリを、Microsoft アカウントとエンゲージメント プラットフォームと同期させる必要があります。これには、アカウントを作成するか、[Windows デベロッパー センター](https://dev.windows.com)にログインする必要があります。その後に、新しいアプリケーションを作成して SID と秘密キーを検索します。エンゲージメントのフロントエンドで、[`native push`] のアプリ設定に移動し、資格情報を貼り付けます。その後、プロジェクトを右クリックし、[`store`] と [`Associate App with the Store...`] を選択します。同期するには、前に作成したアプリケーションを選択する必要があります。
+### すべてのプラットフォーム
 
-##Engagement Reach SDK を初期化する
+アプリを Microsoft アカウントとエンゲージメント プラットフォームと同期させる必要があります。これには、アカウントを作成するか、[Windows デベロッパー センター](https://dev.windows.com)にログインする必要があります。その後に、新しいアプリケーションを作成して SID と秘密キーを検索します。エンゲージメントのフロントエンドで、[`native push`] のアプリ設定に移動し、資格情報を貼り付けます。その後、プロジェクトを右クリックし、[`store`] と [`Associate App with the Store...`] を選択します。同期するには、前に作成したアプリケーションを選択する必要があります。
+
+## Engagement Reach SDK を初期化する
 
 `App.xaml.cs` を変更します。
 
--   次の内容を `using` ステートメントに追加します。
+-   `InitEngagement` メソッドの `EngagementAgent.Instance.Init` の直後に `EngagementReach.Instance.Init` を挿入します。
 
-		using Microsoft.Azure.Engagement;
-
--   `OnLaunched` の `EngagementAgent.Instance.Init` の直後に `EngagementReach.Instance.Init` を挿入します。
-
-		protected override void OnLaunched(LaunchActivatedEventArgs args)
+		private void InitEngagement(IActivatedEventArgs e)
 		{
-		  EngagementAgent.Instance.Init(args);
-		  EngagementReach.Instance.Init(args);
-		}
-
--   コマンド、別のアプリケーション、またはカスタム スキームによってアプリがアクティブ化されたときに、Engagement Reach を有効にするには、`OnActivated` メソッドを次のようにオーバーライドします。
-
-		protected override void OnActivated(IActivatedEventArgs args)
-		{
-		  EngagementAgent.Instance.Init(args);
-		  EngagementReach.Instance.Init(args);
+		  EngagementAgent.Instance.Init(e);
+		  EngagementReach.Instance.Init(e);
 		}
 
 	`EngagementReach.Instance.Init` は専用のスレッドで稼働します。自分で実行する必要はありません。
 
-> [AZURE.TIP]プロジェクトの `Resources\EngagementConfiguration.xml` ファイルの `<channelName></channelName>` で、アプリの WNS プッシュ チャネルの名前を指定できます。既定では、Engagement はアプリ ID に基づいて、名前を作成します。Engagement の外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
+> [AZURE.NOTE] アプリケーションの他の場所でプッシュ通知を使用している場合は、Engagement Reach と[プッシュ チャネルを共有](#push-channel-sharing)する必要があります。
 
-##統合
+## 統合
 
 Engagement では、2 通りの方法で Reach の通知とアナウンスを実装できます。オーバーレイ統合と Web ビュー統合です。
 
@@ -68,7 +60,7 @@ Engagement では、2 通りの方法で Reach の通知とアナウンスを実
 
 Web ビュー統合の場合、実装方法がより複雑です。ただし、アプリ ページが「Page」以外のオブジェクトから継承する必要がある場合は、Web ビューとその動作を統合する必要があります。
 
-> [AZURE.TIP]ルート レベルの `<Grid></Grid>` 要素を追加し、ページの全内容を囲むことを検討してください。Web ビュー統合では、Web ビューをこのグリッドの子として追加します。Engagement コンポーネントを他の場所に設定する必要がある場合は、表示サイズを自分で管理する必要があることに注意してください。
+> [AZURE.TIP] ルート レベルの `<Grid></Grid>` 要素を追加し、ページの全内容を囲むことを検討してください。Web ビュー統合では、Web ビューをこのグリッドの子として追加します。Engagement コンポーネントを他の場所に設定する必要がある場合は、表示サイズを自分で管理する必要があることに注意してください。
 
 ### オーバーレイ統合
 
@@ -80,7 +72,7 @@ Engagement は、通知とアナウンスを表示するためのオーバーレ
 
 -   次の内容を名前空間宣言に追加します。
 
-			xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
+		xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 
 -   `engagement:EngagementPage` を `engagement:EngagementPageOverlay` に置き換えます。
 
@@ -100,7 +92,7 @@ Engagement は、通知とアナウンスを表示するためのオーバーレ
 		    <!-- layout -->
 		</engagement:EngagementPageOverlay>
 
-> **EngagementPageOverlay for 8.1 を使用する場合:**
+> **EngagementPageOverlay for 8.1+ を使用する場合:**
 
 		<engagement:EngagementPageOverlay 
 		    xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay">
@@ -161,22 +153,31 @@ Web ビュー統合を使用する場合は、オーバーレイ統合を使用�
 
 エンゲージメントの内容を表示するには、各ページで 2 つの xaml Web ビューを統合し、通知とアナウンスを表示する必要があります。そのため、次のコードを xaml ファイルに追加します。
 
-			<WebView x:Name="engagement_notification_content" Visibility="Collapsed" ScriptNotify="scriptEvent" Height="64" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-			<WebView x:Name="engagement_announcement_content" Visibility="Collapsed" ScriptNotify="scriptEvent" HorizontalAlignment="Right" VerticalAlignment="Top"/> 
+			<WebView x:Name="engagement_notification_content" Visibility="Collapsed" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+			<WebView x:Name="engagement_announcement_content" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top"/> 
 
-> **8.1 統合の場合:**
+> **8.1+ 統合の場合:**
 
 			<engagement:EngagementPage
 			    xmlns:engagement="using:Microsoft.Azure.Engagement">
 			    <Grid>
-			      <WebView x:Name="engagement_notification_content" Visibility="Collapsed" ScriptNotify="scriptEvent" Height="64" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-			      <WebView x:Name="engagement_announcement_content" Visibility="Collapsed" ScriptNotify="scriptEvent" HorizontalAlignment="Right" VerticalAlignment="Top"/> 
-			      <!-- layout -->
+			      <!-- Your layout -->
+			      <WebView x:Name="engagement_notification_content" Visibility="Collapsed" Height="80" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+			      <WebView x:Name="engagement_announcement_content" Visibility="Collapsed"  HorizontalAlignment="Right" VerticalAlignment="Top"/> 
 			    </Grid>
 			</engagement:EngagementPage>
 
 関連する .cs ファイルは、次の内容である必要があります。
 
+    using Microsoft.Azure.Engagement;
+    using System;
+    using Windows.ApplicationModel.Core;
+    using Windows.UI.ViewManagement;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Navigation;
+
+    namespace My.Namespace.Example
+    {
 			/// <summary>
 			/// An empty page that can be used on its own or navigated to within a Frame.
 			/// </summary>
@@ -186,36 +187,48 @@ Web ビュー統合を使用する場合は、オーバーレイ統合を使用�
 			  {
 			    this.InitializeComponent();
 			
-			   /* Set your webview elements to the correct size */
+			    /* Set your webview elements to the correct size. */
 			    SetWebView(width, height);
-			
-			    Window.Current.SizeChanged += DisplayProperties_OrientationChanged;
 			  }
 			
 			  #region to implement
-			  /* Allow webview script to notify system */
-			  private void scriptEvent(object sender, NotifyEventArgs e)
-			  {
-			  }
-			
-			  /* When page is left ensure to detach SizeChanged handler */
+              /* Attach events when page is navigated. */
+              protected override void OnNavigatedTo(NavigationEventArgs e)
+              {
+                /* Update the webview when the app window is resized. */
+                Window.Current.SizeChanged += DisplayProperties_OrientationChanged;
+
+                /* Update the webview when the app/status bar is resized. */
+    #if WINDOWS_PHONE_APP || WINDOWS_UWP
+                ApplicationView.GetForCurrentView().VisibleBoundsChanged += DisplayProperties_VisibleBoundsChanged; 
+    #endif
+                base.OnNavigatedTo(e);
+              }
+
+			  /* When page is left ensure to detach SizeChanged handler. */
 			  protected override void OnNavigatedFrom(NavigationEventArgs e)
 			  {
 			    Window.Current.SizeChanged -= DisplayProperties_OrientationChanged;
+    #if WINDOWS_PHONE_APP || WINDOWS_UWP
+                ApplicationView.GetForCurrentView().VisibleBoundsChanged -= DisplayProperties_VisibleBoundsChanged;
+    #endif
 			    base.OnNavigatedFrom(e);
 			  }
-			
-			  /* "width" is the current width of your application display */
-			  double width = Window.Current.Bounds.Width;
-			
-			  /* "height" is the current height of your application display */
-			  double height = Window.Current.Bounds.Height;
+			  
+			  /* "width" and "height" are the current size of your application display. */
+    #if WINDOWS_PHONE_APP || WINDOWS_UWP
+			  double width = ApplicationView.GetForCurrentView().VisibleBounds.Width;
+			  double height = ApplicationView.GetForCurrentView().VisibleBounds.Height;
+    #else
+			  double width =  Window.Current.Bounds.Width;
+			  double height =  Window.Current.Bounds.Height;
+    #endif
 			
 			  /// <summary>
-			  /// Set your webview elements to the correct size
+			  /// Set your webview elements to the correct size.
 			  /// </summary>
-			  /// <param name="width">The width of your current display</param>
-			  /// <param name="height">The height of your current display</param>
+			  /// <param name="width">The width of your current display.</param>
+			  /// <param name="height">The height of your current display.</param>
 			  private void SetWebView(double width, double height)
 			  {
 			    #pragma warning disable 4014
@@ -229,24 +242,41 @@ Web ビュー統合を使用する場合は、オーバーレイ統合を使用�
 			  }
 			
 			  /// <summary>
-			  /// Handler that take the Windows.Current.SizeChanged and indicate that webview have to be resized
+			  /// Handler that takes the Windows.Current.SizeChanged and indicates that webviews have to be resized.
 			  /// </summary>
-			  /// <param name="sender">Original event trigger</param>
-			  /// <param name="e">Window Size Changed Event argument</param>
+			  /// <param name="sender">Original event trigger.</param>
+			  /// <param name="e">Window Size Changed Event arguments.</param>
 			  private void DisplayProperties_OrientationChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
 			  {
 			    double width = e.Size.Width;
 			    double height = e.Size.Height;
 			
-			    /* Set your webview elements to the correct size */
+			    /* Set your webview elements to the correct size. */
 			    SetWebView(width, height);
 			  }
+
+    #if WINDOWS_PHONE_APP || WINDOWS_UWP			  
+			  /// <summary>
+			  /// Handler that takes the ApplicationView.VisibleBoundsChanged and indicates that webviews have to be resized
+			  /// </summary>
+			  /// <param name="sender">The related application view.</param>
+			  /// <param name="e">Related event arguments.</param>
+			  private void DisplayProperties_VisibleBoundsChanged(ApplicationView sender, Object e)
+			  {
+			    double width = sender.VisibleBounds.Width;
+			    double height = sender.VisibleBounds.Height;
+			
+			    /* Set your webview elements to the correct size. */
+			    SetWebView(width, height);
+			  }
+    #endif
 			  #endregion
 			}
+    }
 
 > Web ビューが組み込まれている実装では、デバイス画面の向きが変わると、サイズが変わります。
 
-##データのプッシュを操作する (オプション)
+## データのプッシュを操作する (オプション)
 
 アプリケーションが Reach データのプッシュを受信できるようにするには、EngagementReach クラスの 2 つのイベントを実装する必要があります。
 
@@ -267,9 +297,9 @@ Web ビュー統合を使用する場合は、オーバーレイ統合を使用�
 
 各メソッドのコールバックがブール値を返すことを確認できます。データのプッシュをディスパッチした後、Engagement はバックエンドにフィードバックを送信します。コールバックが false を返した場合、`exit` フィードバックが送信されます。それ以外の場合は、`action` になります。イベントにコールバックが設定されていない場合は、`drop` フィードバックがエンゲージメントに返されます。
 
-> [AZURE.WARNING]Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
+> [AZURE.WARNING] Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
 
-##UI をカスタマイズする (オプション)
+## UI をカスタマイズする (オプション)
 
 ### 最初の手順
 
@@ -300,7 +330,7 @@ Reach UI をカスタマイズできるようにします。
 			  // Engagement Agent and Reach initialization
 			}
 
-> [AZURE.NOTE]既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、Engagement の基本オブジェクトを選択します。
+> [AZURE.NOTE] 既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、Engagement の基本オブジェクトを選択します。
 
 ### Web ビュー
 
@@ -375,11 +405,40 @@ Engagement オブジェクトを保持する場合、希望する通知とアナ
 
 できれば、`EngagementReach.Instance.Init()` を呼び出す前に、`App.xaml.cs` ファイルの "Public App(){}" メソッドにコールバックを設定します。
 
-> [AZURE.TIP]各ハンドラーは、UI スレッドにより呼び出されます。メッセージボックスや UI 関連のものは、安心して使用できます。
+> [AZURE.TIP] 各ハンドラーは、UI スレッドにより呼び出されます。メッセージボックスや UI 関連のものは、安心して使用できます。
 
-##カスタム スキーマのヒント
+##<a id="push-channel-sharing"></a> プッシュ チャネルの共有
 
-カスタム スキーマを使用すると、エンゲージメントのフロントエンドから、エンゲージメント アプリケーションで使用する別の種類の URI を送信できます。`http, ftp, ...` などの既定のスキーマは Windows により管理されます。デバイスに既定のアプリケーションがインストールされていない場合は、プロンプト ウィンドウが表示されます。アプリケーションのスキーマなど、他のスキーマも使用できます。さらに、アプリケーションに対してカスタム スキーマを使用することもできます。
+アプリケーションで、他の目的でプッシュ通知を使用している場合は、Engagement SDK のプッシュ チャネル共有機能を使用する必要があります。これはプッシュが実行されないことを防ぐためです。
+
+- Engagement Reach の初期化に独自のプッシュ チャネルを提供できます。SDK は新しいものを要求する代わりにこれを使用します。
+
+`App.xaml.cs` ファイルの `InitEngagement` メソッドで、Engagement Reach の初期化を自分のプッシュ チャネルで更新します。
+    
+    /* Your own push channel logic... */
+    var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+    
+    /*...Engagement initialization */
+    EngagementAgent.Instance.Init(e);
+	EngagementReach.Instance.Init(e,pushChannel);
+
+- または、単に Reach の初期化後にプッシュ チャネルを使用する場合は、プッシュ チャネルが SDK によって作成された後に取得されるように、Engagement Reach にコールバックを設定することができます。
+
+コールバックは Reach の初期化の**後に**、任意の場所に設定します。
+
+    /* Set action on the SDK push channel. */
+    EngagementReach.Instance.SetActionOnPushChannel((PushNotificationChannel channel) => 
+    {
+      /* The forwarded channel can be null if its creation fails for any reason. */
+      if (channel != null)
+      {
+		/* Your own push channel logic... */
+      });
+	}
+
+## カスタム スキーマのヒント
+
+カスタム スキーマを使用すると、エンゲージメントのフロントエンドから、エンゲージメント アプリケーションで使用する別の種類の URI を送信できます。`http, ftp, ...` などの既定のスキーマは Windows により管理されます。デバイスに既定のアプリケーションがインストールされていない場合は、プロンプト ウィンドウが表示されます。アプリケーションに対してカスタム スキーマを作成することもできます。
 
 カスタム スキーマをアプリケーションで設定する簡単な方法は、`Package.appxmanifest` を開いて、[`Declarations`] パネルに移動することです。[使用可能な宣言] スクロール ボックスで、[`Protocol`] を選択して追加します。新しいプロトコルの希望する名前を使用して、[`Name`] フィールドを編集します。
 
@@ -410,4 +469,4 @@ Engagement オブジェクトを保持する場合、希望する通知とアナ
 			  #endregion
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

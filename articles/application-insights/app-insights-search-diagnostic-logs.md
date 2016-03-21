@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Application Insights での ASP.NET のログ、例外、カスタム診断
 
 [Application Insights][start] の強力な[診断検索][diagnostic]ツールを使用すれば、Application Insights SDK によってアプリケーションから送信されたテレメトリを調査してドリルダウンすることができます。ユーザー ページ ビューなどの多数のイベントは、SDK によって自動的に送信されます。
 
-You can also write code to send custom events, exception reports, and traces.And if you already use a logging framework such as log4J, log4net, NLog, or System.Diagnostics.Trace, you can capture those logs and include them in the search.このようにすると、ユーザーの操作、例外、その他のイベントをログ トレースと簡単に関連付けられるようになります。
+カスタム イベント、例外レポート、およびトレースを送信するコードを記述することもできます。log4J、log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合は、これらのログをキャプチャして検索に含めることができます。このようにすると、ユーザーの操作、例外、その他のイベントをログ トレースと簡単に関連付けられるようになります。
 
 ## <a name="send"></a>カスタム テレメトリを作成する前に
 
@@ -34,6 +34,11 @@ You can also write code to send custom events, exception reports, and traces.And
 ![](./media/app-insights-search-diagnostic-logs/appinsights-31search.png)
 
 詳細は、アプリケーションの種類によって異なります。個々のイベントをクリックして詳細情報を表示できます。
+
+## サンプリング 
+
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
 
 ##<a name="events"></a>カスタム イベント
 
@@ -50,7 +55,7 @@ JavaScript at client
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-C# at server
+サーバー側の C#
 
     // Set up some properties:
     var properties = new Dictionary <string, string> 
@@ -97,7 +102,7 @@ C# at server
 
 ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
 
-Usually it is called once in each HTML page, but you can insert more calls - for example, if you have a single-page app and you want to log a new page whenever the user gets more data.
+通常は各 HTML ページで 1 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
 
     appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm"); 
 
@@ -128,7 +133,7 @@ log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレー�
     ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-search-diagnostic-logs/appinsights-36nuget.png)
 
 4. 次のいずれかの適切なパッケージを選択します。
-  + Microsoft.ApplicationInsights.TraceListener (to capture System.Diagnostics.Trace calls)
+  + Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace コールをキャプチャするため)
   + Microsoft.ApplicationInsights.NLogTarget
   + Microsoft.ApplicationInsights.Log4NetAppender
 
@@ -140,11 +145,11 @@ System.Diagnostics.Trace を使用する場合、通常の呼び出しは次の�
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
-If you prefer log4net or NLog:
+log4net または NLog を使用する場合:
 
     logger.Warn("Slow response - database01");
 
-Run your app in debug mode, or deploy it.
+アプリをデバッグ モードで実行するかデプロイします。
 
 トレース フィルターを選択すると、診断検索にメッセージが表示されます。
 
@@ -206,7 +211,7 @@ VB
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-The properties and measurements parameters are optional, but are useful for filtering and adding extra information.For example, if you have an app that can run several games, you could find all the exception reports related to a particular game.必要な数だけ項目を各辞書に追加できます。
+プロパティと測定値のパラメーターは省略可能ですが、フィルター処理と、特別な情報を追加するのに便利です。たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。必要な数だけ項目を各辞書に追加できます。
 
 #### 例外の表示
 
@@ -225,15 +230,15 @@ The properties and measurements parameters are optional, but are useful for filt
 
 Application Insights は可能な場合、[Status Monitor][usage] と [Application Insights SDK][redfield] のどちらでインストルメントされたかにかかわらず、デバイス、[Web ブラウザー][greenbrown]、Web サーバーから送信された、ハンドルされていない例外をレポートします。
 
-ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。To make sure you see all exceptions, you therefore have to write a small exception handler.最良の対処方法は、テクノロジによって異なります。詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページをご覧ください。
+ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。すべての例外を確実に表示するために、小さな例外ハンドラーを記述する必要があります。最良の対処方法は、テクノロジによって異なります。詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページをご覧ください。
 
 ### ビルドとの関連付け
 
 診断ログを参照するとき、ソース コードは、現在のコードがデプロイされた後に変更されている可能性があります。
 
-It's therefore useful to put build information, such as the URL of the current version, into a property along with each exception or trace.
+したがって、現在のバージョンの URL などのビルド情報を例外やトレースと共にプロパティに配置しておくと役に立ちます。
 
-Instead of adding the property separately to every exception call, you can set the information in the default context.
+すべての例外呼び出しにプロパティを個別に追加する代わりに、既定のコンテキストに情報を設定できます。
 
     // Telemetry initializer class
     public class MyTelemetryInitializer : IContextInitializer
@@ -271,6 +276,11 @@ Application Insights をインストールしないでログ アダプターの 
 
 各アプリケーションで、1 秒あたり 500 イベントまでです。イベントは 7 日間保持されます。
 
+### マイ イベントまたはトレースの一部が表示されません
+
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+
+
 ## <a name="add"></a>次のステップ
 
 * [可用性と応答性のテストを設定する][availability]
@@ -284,8 +294,8 @@ Application Insights をインストールしないでログ アダプターの 
 
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[exceptions]: app-insights-web-failures-exceptions.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[exceptions]: app-insights-asp-net-exceptions.md
+[greenbrown]: app-insights-asp-net.md
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
@@ -295,4 +305,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

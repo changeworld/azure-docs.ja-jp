@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/06/2015"
+  ms.date="02/03/2016"
 	ms.author="juliako"/>
 
 
 
 #動的暗号化: コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
-
 
 ##概要
 
@@ -32,7 +31,7 @@ Media Services で資産を暗号化する場合は、[こちら](media-services
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つ以上の承認制限 (**オープン**、**トークン**制限、**IP** 制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token** (JWT) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token** (JWT) 形式のトークンがサポートされます。
 
 Media Services では、Secure Token Services は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -154,7 +153,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 	  <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
 	</xs:schema>
 
-**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行する Secure Token Service です。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。次の例では、トークン制限を含む承認ポリシーを作成します。この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
 	
@@ -409,9 +408,10 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
     public enum ContentKeyDeliveryType
     {
-        None = 0,
-        PlayReadyLicense = 1,
-        BaselineHttp = 2,
+      None = 0,
+      PlayReadyLicense = 1,
+      BaselineHttp = 2,
+      Widevine = 3
     }
 
 ###<a id="TokenType"></a>TokenType
@@ -439,4 +439,4 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

@@ -3,7 +3,7 @@
 	description="Windows または Linux ベースの Azure 仮想マシン上で Oracle ソフトウェアを設定する方法について説明している記事を参照してください。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="bbenz"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="index-page"
-	ms.date="10/05/2015"
-	ms.author="josephd"/>
+	ms.date="01/12/2016"
+	ms.author="bbenz"/>
 
 # Azure 仮想マシンでホストされている Oracle ソフトウェア
 
@@ -56,4 +56,4 @@ Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェ�
 
 「[Azure 用の Oracle GoldenGate の構成](virtual-machines-configuring-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="10/15/2015"  
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #オンプレミス エンコーダーでライブ エンコードを実行する方法
@@ -29,7 +29,7 @@
 
 次の記事の確認をお勧めします。
 
-- [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
+- [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 - [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)
  
 
@@ -49,7 +49,7 @@
 - ストリーミング エンドポイントのロケーターの取得
 - リソースのシャット ダウン
 	
-ライブ エンコーダーの設定方法については、「[Azure Media Services の RTMP サポートとライブ エンコーダー](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」をご覧ください。
+ライブ エンコーダーの設定方法については、「[Azure Media Services の RTMP サポートとライブ エンコーダー](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)」をご覧ください。
 	
 		using System;
 		using System.Collections.Generic;
@@ -214,6 +214,8 @@
 		
 		        public static ILocator CreateLocatorForAsset(IAsset asset, TimeSpan ArchiveWindowLength)
 		        {
+                	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
+
 		            var locator = _context.Locators.CreateLocator
 		                (
 		                    LocatorType.OnDemandOrigin,
@@ -383,4 +385,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

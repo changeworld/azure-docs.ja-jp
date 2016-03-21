@@ -1,19 +1,19 @@
 <properties
-   pageTitle="サービス構成とプロファイルを管理する方法"
+   pageTitle="サービス構成とプロファイルを管理する方法 | Microsoft Azure"
    description="サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tglee" />
+   editor="" />
 <tags
    ms.service="multiple"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="08/13/2015"
-   ms.author="kempb" />
+   ms.date="12/17/2015"
+   ms.author="tarcher" />
 
 # サービス構成とプロファイルを管理する方法
 
@@ -41,7 +41,7 @@
 
 1. (省略可能) サービス構成の名前を変更するには、[名前] ボックスの一覧から新しいサービス構成を選択し、**[名前の変更]** をクリックします。**[名前]** ボックスに、このサービス構成に使用する名前を入力し、**[OK]** をクリックします。
 
-    ServiceConfiguration.<New Name>.cscfg という新しいサービス構成ファイルがソリューション エクスプローラーの Azure プロジェクトに追加されます。
+    ServiceConfiguration.[New Name].cscfg という新しいサービス構成ファイルがソリューション エクスプローラーの Azure プロジェクトに追加されます。
 
 
 ### サービス構成を削除するには
@@ -131,4 +131,4 @@
 
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、[Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

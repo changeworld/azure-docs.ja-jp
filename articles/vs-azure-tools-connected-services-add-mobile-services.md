@@ -3,17 +3,17 @@
    description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して Mobile Services を追加する"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="mlhoop"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="08/12/2015"
-   ms.author="tarcher" />
+   ms.date="12/16/2015"
+   ms.author="mlearned" />
 
 # Visual Studio 接続済みサービスを使用した Mobile Services の追加
 
@@ -21,7 +21,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
 ## サポートされているプロジェクトの種類
 
->[AZURE.NOTE]Visual Studio 2015 では、[接続済みサービスの追加] ダイアログで Azure Mobile Services を Windows Universal (Windows 10) プロジェクトに追加することはできません。プロジェクトの NuGet パッケージ マネージャーを利用して適切なパッケージをインストールし、Azure Mobile Services を追加できます。
+>[AZURE.NOTE] Visual Studio 2015 では、[接続済みサービスの追加] ダイアログで Azure Mobile Services を Windows Universal (Windows 10) プロジェクトに追加することはできません。プロジェクトの NuGet パッケージ マネージャーを利用して適切なパッケージをインストールし、Azure Mobile Services を追加できます。
 
 [接続済みサービス] ダイアログを使用して、次の種類のプロジェクトで Azure Mobile Services に接続することができます。
 
@@ -49,7 +49,9 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
 1. **[Azure Mobile Services]** ダイアログ ボックスで、既存のモバイル サービスがある場合はそのモバイル サービスを選択します。新しい Azure モバイル サービスを作成する必要がある場合は、次の手順に従って作成します。そうでない場合は、次の手順に進みます。
 
-    新しいモバイル サービス アカウントを作成するには: 1. ダイアログ ボックスの一番下にある **サービスの作成** リンクを選択します。![新しいモバイル接続サービスを追加する](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
+    新しいモバイル サービス アカウントを作成するには: 
+    1. ダイアログ ボックスの一番下にある **サービスの作成** リンクを選択します。
+    	![新しいモバイル接続サービスを追加する](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
 
 
 
@@ -83,10 +85,10 @@ Visual Studio でプロジェクトを変更する方法はプロジェクトの
 
  - [MSDN フォーラム: Azure Mobile Services](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
 
- - [Microsoft Azure チーム ブログの Azure Mobile Services](http://azure.microsoft.com/blog/topics/mobile/)
+ - [Microsoft Azure チーム ブログの Azure Mobile Services](https://azure.microsoft.com/blog/topics/mobile/)
 
- - [azure.microsoft.com の Azure Mobile Services](http://azure.microsoft.com/services/mobile-services/)
+ - [azure.microsoft.com の Azure Mobile Services](https://azure.microsoft.com/services/mobile-services/)
 
- - [azure.microsoft.com の Azure Mobile Services](http://azure.microsoft.com/documentation/services/mobile-services/)
+ - [azure.microsoft.com の Azure Mobile Services](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

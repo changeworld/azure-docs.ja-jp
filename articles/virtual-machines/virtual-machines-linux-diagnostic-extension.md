@@ -15,7 +15,7 @@
 		ms.tgt_pltfrm="vm-linux"
 		ms.devlang="na"
 		ms.topic="article"
-		ms.date="07/20/2015"
+		ms.date="12/15/2015"
 		ms.author="Ning"/>
 
 
@@ -35,13 +35,13 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 - この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders")で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+この拡張機能は、クラシック モデルとリソース マネージャーのデプロイ モデルの両方で機能します。
 
 
 ## 拡張機能を有効にする方法
 拡張機能は、[Azure ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-Azure ポータルから直接、システムおよびパフォーマンス データを表示および構成するには、[こちらの手順](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログへの URL")に従ってください。
+Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、こちらの[手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログの URL"/)に従ってください。
 
 
 この記事では、Azure CLI コマンドを使用して拡張機能を有効化および構成する方法を説明します。直接ストレージ テーブルからデータを読み取って表示できます。
@@ -142,6 +142,5 @@ Rsyslog データは既定で常に収集されます。
 
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
-- バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、 Azure ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

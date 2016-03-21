@@ -1,8 +1,8 @@
 <properties 
     pageTitle="チュートリアル: Azure Active Directory と Jitbit Helpdesk の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Jitbit Helpdesk を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    description="Azure Active Directory で Jitbit Helpdesk を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="MarkusVi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Jitbit Helpdesk の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Jitbit Helpdesk テナント
   
-このチュートリアルを完了すると、Jitbit Helpdesk に割り当てた Azure AD ユーザーは、Jitbit Helpdesk の企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Jitbit Helpdesk に割り当てた Azure AD ユーザーは、Jitbit Helpdesk 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -64,33 +64,33 @@
     ![JitBit](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC781008.png "JitBit")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jitbit Helpdesk に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jitbit Helpdesk に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 >[AZURE.IMPORTANT]Jitbit Helpdesk テナントでシングル サインオンを構成できるようにするには、まず Jitbit Helpdesk テクニカル サポートに連絡してこの機能を有効にする必要があります。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure AD ポータルの **Jitbit Helpdesk** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングルサインオンの構成]** ダイアログを開きます。
+1.  Azure AD ポータルの **[Jitbit Helpdesk]** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングルサインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777678.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777678.png "Configure single sign-on")
 
 2.  **[ユーザーの Jitbit Helpdesk へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777679.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777679.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[Jitbit Helpdesk サインイン URL]** ボックスに、"*https://\<tenant-name>.Jitbit.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Jitbit Helpdesk サインイン URL]** ボックスに、"https://\<tenant-name>.Jitbit.com" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777528.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777528.png "Configure app URL")
 
 4.  **[Jitbit Helpdesk でのシングル サインオンの構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\Jitbit Helpdesk.cer** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777680.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777680.png "Configure single sign-on")
 
 5.  別の Web ブラウザーのウィンドウで、Jitbit Helpdesk の企業サイトに管理者としてログインします。
 
 6.  上部のツールバーで **[管理]** をクリックします。
 
-    ![管理](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777681.png "管理")
+    ![Administration](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777681.png "Administration")
 
 7.  **[全般設定]** をクリックします。
 
@@ -104,14 +104,14 @@
     2.  Azure ポータルの **[Jitbit Helpdesk でのシングル サインオンの構成]** ダイアログ ページで **[サービス プロバイダー (SP) によって開始されたエンドポイント]** の値をコピーし、**[エンドポイントの URL]** テキストボックスに貼り付けます。
     3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
         
-		>[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     4.  base-64 でエンコードされた証明書を開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキスト ボックスに貼り付けます。
     5.  **[変更を保存]** をクリックします。
 
 9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777684.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777684.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Jitbit Helpdesk にログインできるようにするには、そのユーザーを Jitbit Helpdesk にプロビジョニングする必要があります。Jitbit Helpdesk の場合、プロビジョニングは手動で行います。
@@ -122,7 +122,7 @@ Azure AD ユーザーが Jitbit Helpdesk にログインできるようにする
 
 2.  上部のメニューで **[管理]** をクリックします。
 
-    ![管理](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777681.png "管理")
+    ![Administration](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777681.png "Administration")
 
 3.  **[ユーザー、会社、およびアクセス許可]** をクリックします。
 
@@ -152,10 +152,10 @@ Azure AD ユーザーが Jitbit Helpdesk にログインできるようにする
 
     ![ユーザーの割り当て](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777687.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]**の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

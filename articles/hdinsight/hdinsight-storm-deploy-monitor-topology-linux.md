@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/26/2015"
+   ms.date="01/28/2016"
    ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
 
 このドキュメントでは、HDInsight クラスターで Linux ベースの Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
 
-> [AZURE.IMPORTANT]この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」を参照してください。
+> [AZURE.IMPORTANT] この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」を参照してください。
 
 ## 前提条件
 
-- **HDInsight クラスター上の Linux ベースの Storm**: クラスターの作成手順については、「[HDInsight での Apache Storm の使用](hdinsight-storm-get-started-linux.md)」を参照してください。
+- **HDInsight クラスター上の Linux ベースの Storm**: クラスターの作成手順については、「[HDInsight での Apache Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)」を参照してください。
 
 - **SSH と SCP を熟知していること**: HDInsight で SSH と SCP を使用する方法については、以下を参照してください。
     - **Linux、Unix、または OS X クライアント**: 「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
@@ -50,7 +50,7 @@
 
     クラスターで WordCount トポロジの例が開始されます。文はランダムに生成され、文中の各単語の出現回数がカウントされます。
 
-    > [AZURE.NOTE]トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。この場合、ファイルが保存されているクライアントから `scp` コマンドを実行します。たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
+    > [AZURE.NOTE] トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。この場合、ファイルが保存されているクライアントから `scp` コマンドを実行します。たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
     >
     > WordCount の例と他の Storm スターターの例は、`/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
@@ -88,29 +88,16 @@ Storm トポロジが開始されると、停止されるまで実行が継続�
 
 トポロジを再調整すると、トポロジの並列処理が変更されます。たとえば、クラスターのサイズを変更してノートを追加すると、再調整によって実行中のトポロジが新しいノードを利用できるようになります。
 
-> [AZURE.WARNING]トポロジを再調整すると、まずトポロジのアクティブ化が解除され、worker がクラスター全体に平均的に再分配され、最終的に、トポロジは再調整の発生前の状態に戻ります。そのため、トポロジがアクティブだった場合は、アクティブに戻ります。非アクティブだった場合は、非アクティブのままになります。
+> [AZURE.WARNING] トポロジを再調整すると、まずトポロジのアクティブ化が解除され、worker がクラスター全体に平均的に再分配され、最終的に、トポロジは再調整の発生前の状態に戻ります。そのため、トポロジがアクティブだった場合は、アクティブに戻ります。非アクティブだった場合は、非アクティブのままになります。
 
     storm rebalance TOPOLOGYNAME
 
 ##Storm UI を使用して監視および管理する
 
-Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。
+Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。Storm UI を表示するには、Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。__CLUSTERNAME__ は、実際のクラスターの名前に置き換えます。
 
-> [AZURE.IMPORTANT]Storm UI は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
+> [AZURE.NOTE] ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
-次の手順で Storm UI を表示します。
-
-1. ブラウザーで HDInsight クラスターの Ambari Web を開きます。Ambari Web の URL は https://CLUSTERNAME.azurehdinsight.netです。この __CLUSTERNAME__ にはクラスター名を指定します。
-
-2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
-
-    ![クイックリンクの Storm UI エントリ](./media/hdinsight-storm-deploy-monitor-topology-linux/ambari-storm.png)
-
-    これにより、Storm UI が表示されます。
-
-    ![Storm UI](./media/hdinsight-storm-deploy-monitor-topology-linux/storm-ui.png)
-
-> [AZURE.NOTE]Storm UI を使用する場合、一部のバージョンの Internet Explorer で最初にアクセスした後に UI が正しく更新されないことがあります。たとえば、送信した新しいトポロジが表示されない場合や、以前に非アクティブ化したトポロジがアクティブと表示される場合があります。Microsoft はこの問題を確認しており、解決に取り組んでいます。
 
 ### メイン ページ
 
@@ -137,9 +124,9 @@ Storm UI のメイン ページには、次の情報が表示されます。**�
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「<a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">Storm UI REST API</a>」をご覧ください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「[Storm UI REST API](https://github.com/apache/storm/blob/master/docs/documentation/ui-rest-api.md)」を参照してください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
-> [AZURE.IMPORTANT]Storm REST API は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
+> [AZURE.IMPORTANT] Storm REST API は、インターネットでパブリックに使用できません。SSH トンネルを使用して HDInsight クラスター ヘッド ノードにアクセスする必要があります。SSH トンネルの作成と使用については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
 ### ベース URI
 
@@ -150,13 +137,13 @@ Linux ベースの HDInsight クラスターの REST API のベース URI はヘ
 * __SSH セッションから__: SSH セッションからクラスターに `headnode -f` コマンドを使用します。
 * __Ambari Web から__: ページの一番上から __[サービス]__ を選択し、__[Storm]__ を選択します。__[概要__ ] タブで __[Storm UI Server]__ を選択します。Storm UI と REST API が実行されているノードの FQDN はページの一番上で確認できます。
 * __Ambari REST API から__: `curl -u admin:PASSWORD -G "https://CLUSTERNAME
-.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。__PASSWORD__ をクラスターの管理者パスワードに替えます。__CLUSTERNAME__ をクラスター名に替えます。応答の「host\_name」エントリにノードの FQDN が含まれます。
+.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。__PASSWORD__ をクラスターの管理者パスワードに替えます。__CLUSTERNAME__ をクラスター名に置き換えます。応答の「host\_name」エントリにノードの FQDN が含まれます。
 
 ### 認証
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、**基本認証**を使用する必要があります。
 
-> [AZURE.NOTE]基本認証はクリア テキストを使用して送信されるため、**常に** HTTPS を使用してクラスターとの通信を保護する必要があります。
+> [AZURE.NOTE] 基本認証はクリア テキストを使用して送信されるため、**常に** HTTPS を使用してクラスターとの通信を保護する必要があります。
 
 ### 戻り値
 
@@ -168,4 +155,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0204_2016-->

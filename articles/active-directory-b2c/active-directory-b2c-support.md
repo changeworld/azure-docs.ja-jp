@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,43 +13,62 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="02/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure Active Directory B2C のサポート要求を提出する方法
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポート要求を提出するには、次のようにします。
+Azure ポータルで Azure Active Directory (AD) B2C のサポート要求を提出するには、次の手順に従います。
 
-1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
-2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。Azure サブスクリプションと Azure AD ディレクトリの関係について詳しくは、[こちらの記事](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)をご覧ください。
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
+2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。Azure サブスクリプションと Azure AD テナントの関係について詳しくは、[こちらの記事](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)をご覧ください。
 
-    > [AZURE.IMPORTANT]
-    この手順は必須です。この手順を行わないと、処理は失敗します。
+    ![Support - Switch tenants](./media/active-directory-b2c-support/support-switch-dir.png)
 
-    ![サポート - ディレクトリの切り替え](./media/active-directory-b2c-support/support-switch-dir.png)
+    
+3. テナントを切り替えた後、**[ヘルプとサポート]** をクリックします。
 
-3. ディレクトリを切り替えた後、**[ヘルプとサポート]** をクリックします。
+    ![Support - Help + Support](./media/active-directory-b2c-support/support-support.png)
 
-    ![サポート - サポート](./media/active-directory-b2c-support/support-support.png)
+4. **[新しいサポート要求]** をクリックします。
 
-4. [こちらの記事](http://blogs.msdn.com/b/mast/archive/2013/10/24/windows-azure-technical-support-for-msdn-technet-or-mpn-users-and-partners.aspx)で説明されている手順に従って、Azure AD B2C に対するサポート要求を提出します。以下の説明に従って手順を完了します。
+    ![Support - New](./media/active-directory-b2c-support/support-new.png)
 
-    - **[要求の種類]** は **[技術]** です。
-	- **[リソース]** は **[Active Directory]** です。
-	- **[問題カテゴリ]** ブレードで、**[問題の種類]** として **[B2C プレビュー]** を選択し、適切な **[カテゴリ]** を選択します。
-	- **[説明]** ブレードで、問題の詳細を説明します。**[リソース]** テキスト ボックスに、B2C テナントの名前 (例: contosob2c.onmicrosoft.com) を入力します。
+5. **[基本]** ブレードで、以下の説明に従ってから、**[次へ]** をクリックします。
 
-5. サポート要求を送信した後は、スタート画面の **[ヘルプとサポート]** をクリックした後 **[サポート要求の管理]** をクリックして、監視できます。
+    - **[問題の種類]** は **[技術]** です。
+	- 適切な**サブスクリプション**を選択します。
+    - **[サービス]** で **[Active Directory]** を選択します。
+    - 適切な**サポート プラン**を選択します。サポート プランがない場合は、[ここ](https://azure.microsoft.com/ja-JP/support/plans/)からサインアップできます。
+
+    ![Support - Basics](./media/active-directory-b2c-support/support-basics.png)
+
+6. **[問題]** ブレードで、以下の説明に従ってから、**[次へ]** をクリックします。
+
+    - 適切な**重要度**レベルを選択します。
+    - **[問題の種類]** は **[B2C プレビュー]** です。
+    - 適切な**カテゴリ**を選択します。
+	- **[詳細]** フィールドに問題の説明を入力します。B2C テナントの名前、問題の説明、エラー メッセージ、関連付け ID (ある場合) などの詳細情報を入力します。
+    - **[期間]** フィールドに問題が発生した日時 (タイム ゾーンを含む) を入力します。
+    - **[ファイルのアップロード]** で、問題の解決に役立つと思われるスクリーンショットやファイルをすべてアップロードします。
+
+    ![Support - Problem](./media/active-directory-b2c-support/support-problem.png)
+
+7. **[連絡先]** ブレードで、自分の連絡先情報を追加します。**[作成]** をクリックします。*注: プレビュー期間中は、Azure AD B2C のサポートは英語でのみ提供されます。*
+
+    ![Support - Contact](./media/active-directory-b2c-support/support-contact.png)
+
+8. サポート要求を送信した後は、スタート画面の **[ヘルプとサポート]** をクリックした後 **[サポート要求の管理]** をクリックして、監視できます。
 
 ## 既知の問題点: B2C テナントのコンテキストでのサポート要求の提出
 
 上で説明した手順 2 を実行せず、自分の B2C テナントのコンテキストでサポート要求を作成しようとすると、次のエラーが表示されます。
 
 > [AZURE.IMPORTANT]
-> B2C テナントで新しい Azure サブスクリプションにサインアップしないでください。
+B2C テナントで新しい Azure サブスクリプションにサインアップしないでください。
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
-   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
+   pageTitle="Azure AD Connect: Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
+   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="andkjell"
@@ -13,10 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="10/26/2015"
+   ms.date="02/16/2016"
    ms.author="shoatman;billmath"/>
 
-# Azure Active Directory Connect (Azure AD Connect) に Windows Azure Active Directory 同期 (DirSync) をアップグレードする
+# Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード
 
 次のドキュメントは、既存の DirSync インストールの Azure AD Connect へのアップグレードに役立ちます。
 
@@ -37,7 +37,7 @@
 | [インプレース アップグレード](#in-place-upgrade) | アップグレード時間が 3 時間未満と予想される場合に推奨されるオプションです。 |
 | [並列デプロイ](#parallel-deployment) | アップグレード時間が 3 時間を超えると予想される場合に推奨されるオプションです。 |
 
->[AZURE.NOTE]DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
+>[AZURE.NOTE] DirSync から Azure AD Connect へのアップグレードを計画している場合は、アップグレードより前に DirSync を自分でアンインストールしないでください。Azure AD Connect が DirSync から構成を読み取って移行し、サーバーを検査した後に、アンインストールします。
 
 **インプレース アップグレード**
 
@@ -56,16 +56,15 @@ DirSync では次の構成の変更が サポートされており、アップ�
 - 別の ID (UPN)
 - パスワード同期と Exchange ハイブリッドの設定
 - フォレスト/ドメインと Azure AD の設定
+- ユーザー属性に基づくフィルター処理
 
-次のような変更をアップグレードすることはできません。これらの変更を加えた場合は、アップグレードがブロックされます。
+次の変更をアップグレードすることはできません。この変更を加えた場合は、アップグレードがブロックされます。
+
+- サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
 
 ![アップグレードのブロック](./media/active-directory-aadconnect-dirsync-upgrade-get-started/analysisblocked.png)
 
-そのような場合、[モードのステージング](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
-
-
-- サポートされていない DirSync の変更 (削除された属性やカスタム拡張 DLL の使用など)
-- ユーザー属性に基づくフィルター処理
+そのような場合、[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)で新しい Azure AD Connect サーバーをインストールし、古い DirSync と新しい Azure AD Connect の構成を確認することが推奨されます。カスタム構成を使用して変更を再適用する場合は、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
 
 DirSync がサービス アカウントで使用したパスワードは取得できず、移行されません。これらのパスワードはアップグレード中にリセットされます。
 
@@ -94,7 +93,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
     - SQL Server Express を使用しており、オブジェクトの数が 50,000 未満である場合は、次の画面が表示されます。 ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
     - DirSync に完全バージョンの SQL Server を使用する場合、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)<BR/>DirSync で使用されている既存の SQL Server データベースのサーバーに関する情報が表示されます。必要に応じて、適切に調整を行います。**[次へ]** をクリックしてインストールを続行します。
     - オブジェクトの数が 50,000 を超える場合は、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)<BR/> インプレース アップグレードを続行するには、**[このコンピューター上の DirSync のアップグレードを続行する]** の横のチェックボックスをオンにします。 代わりに[並列デプロイメント](#parallel-deployment)を行うには、DirSync の構成設定をエクスポートして、新しいサーバーに移します。
-5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。これは、DirSync によって現在使用されているアカウントでなければなりません。![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)
+5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。これは、DirSync によって現在使用されているアカウントでなければなりません。![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png) 接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 6. Active Directory のエンタープライズ管理者アカウントを指定します。![ADDS の資格情報を入力する](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
 7. 構成する準備が整いました。**[アップグレード]** をクリックすると、DirSync がアンインストールされ、Azure AD Connect が構成されて、同期が開始されます。![構成の準備完了](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
 
@@ -147,7 +146,7 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 8. **[構成の準備完了]** ページで **[構成が完了したら、同期処理を開始してください。]** チェック ボックスをオンのままにします。サーバーが[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に移行するため、この時点では Azure AD に変更がエクスポートされません。
 9. **[インストール]** をクリックします。
 
->[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
+>[AZURE.NOTE] Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
 
 ### Azure AD Connect の同期を開始する準備が完了していることを確認する
 
@@ -170,7 +169,7 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を検索します。
+- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
 - **[Windows Azure Active Directory 同期ツール]** をアンインストールします。
 - アンインストールが完了するまで 15 分ほどかかる場合があります。
 
@@ -184,7 +183,7 @@ DirSync がアンインストールされていると、アクティブなサー
 ![追加のタスク](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
 
 - **[ステージング モードの構成]** を選択します。
-- **[有効なステージング モード]** チェックボックスをオフにして、ステージングを停止します。
+- **[ステージング モードを有効にする]** チェックボックスをオフにして、ステージングを停止します。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/configurestaging.png)
 
@@ -196,6 +195,6 @@ DirSync がアンインストールされていると、アクティブなサー
 ## 次のステップ
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](active-directory-aadconnect-whats-next.md)ことができます。
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0218_2016-->

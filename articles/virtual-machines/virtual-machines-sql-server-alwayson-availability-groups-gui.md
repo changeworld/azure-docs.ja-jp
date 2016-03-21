@@ -13,14 +13,15 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/12/2015"
+	ms.date="12/04/2015"
 	ms.author="jroth" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (GUI)
 
 > [AZURE.SELECTOR]
-- [Portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
-- [PowerShell](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)
+- [Portal - Resource Manager](virtual-machines-sql-server-alwayson-availability-groups-gui-arm.md)
+- [Portal - Classic](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
+- [PowerShell - Classic](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)
 
 <br/>
 
@@ -29,7 +30,7 @@
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
->[AZURE.NOTE]Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)」で同じシナリオのチュートリアルを参照してください。
+>[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)」で同じシナリオのチュートリアルを参照してください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -45,7 +46,7 @@
 
 このソリューションをグラフィカルに表すと、次の図のようになります。
 
-![Test Lab Architecture for AG in Azure](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC791912.png)
+![Azure での AG 向けテスト ラボ アーキテクチャ](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC791912.png)
 
 これは、考えられる 1 つの構成であることに注意してください。たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。この方法では、上記の構成よりも VM 数が 1 つ減少します。
 
@@ -57,19 +58,19 @@
 
 - AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
->[AZURE.NOTE]SharePoint での SQL Server AlwaysOn 可用性グループの使用に興味がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
+>[AZURE.NOTE] SharePoint での SQL Server AlwaysOn 可用性グループの使用に興味がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
 
 ## Virtual Network とドメイン コントローラー サーバーの作成
 
-最初に新しい Azure 試用版アカウントを作成します。アカウントのセットアップが完了したら、Azure ポータルのホーム画面が表示されます。
+最初に新しい Azure 試用版アカウントを作成します。アカウントのセットアップが完了したら、Azure クラシック ポータルのホーム画面が表示されます。
 
 1. 次に示すように、ページの左下隅にある **[新規]** をクリックします。
 
-	![Click New in the Portal](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665511.gif)
+	![ポータルで [新規] をクリックします](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665511.gif)
 
 1. 次に示すように、**[Network Services]**、**[Virtual Network]**、**[カスタム作成]** の順にクリックします。
 
-	![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665512.gif)
+	![Virtual Network の作成](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665512.gif)
 
 1. **[仮想ネットワークの作成]** ダイアログ ボックスの各ページで次の設定を使用して、新しい仮想ネットワークを作成します。
 
@@ -77,22 +78,22 @@
 |---|---|
 |Virtual Network の詳細|**名前 = ContosoNET**<br/>**リージョン = 米国西部**|
 |DNS サーバーと VPN 接続|なし|
-|Virtual Network アドレス空間|設定は、次のスクリーンショットを参照してください。![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784620.png)|
+|Virtual Network アドレス空間|設定は、次のスクリーンショットを参照してください。![Virtual Network の作成](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784620.png)|
 
 1. 次に、ドメイン コントローラー (DC) として使用する VM を作成します。次に示すように、もう一度 **[新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-	![Create a VM](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784621.png)
+	![VM を作成します](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784621.png)
 
 1. **[仮想マシンの作成]** ダイアログ ボックスの各ページで次の設定を使用して、新しい VM を構成します。
 
 	|ページ|設定|
 |---|---|
 |仮想マシンのオペレーティング システムの選択|Windows Server 2012 R2 Datacenter|
-|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoDC<br/>**レベル** = BASIC<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
+|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoDC<br/>**レベル** = STANDARD<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
 |仮想マシンの構成|**クラウド サービス** = 新しいクラウド サービスの作成<br/>**クラウド サービス DNS 名** = 一意のクラウド サービス名<br/>** DNS 名** = 一意の名前 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** = (なし)|
 |仮想マシンのオプション|既定値を使用|
 
-新しい VM の構成が完了したら、VM がプロビジョニングされるまで待ちます。このプロセスは完了するまで時間がかかります。Azure ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
+新しい VM の構成が完了したら、VM がプロビジョニングされるまで待ちます。このプロセスは完了するまで時間がかかります。Azure クラシック ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
 
 これで、DC サーバーは正常にプロビジョニングされました。次に、この DC サーバー上の Active Directory ドメインを構成します。
 
@@ -102,7 +103,7 @@
 
 1. ポータルで、**ContosoDC** コンピューターを選択します。**[ダッシュボード]** タブで、**[接続]** をクリックし、リモート デスクトップ アクセス用の RDP ファイルを開きます。
 
-	![Connect to Vritual Machine](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784622.png)
+	![仮想マシンに接続](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784622.png)
 
 1. 構成した管理者アカウント (**\\AzureAdmin**) とパスワード (**Contoso!000**) でログインします。
 
@@ -110,15 +111,15 @@
 
 1. ダッシュボードの **[役割と機能の追加]** リンクをクリックします。
 
-	![Server Explorer Add Roles](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784623.png)
+	![サーバー エクスプローラー、ロールの追加](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784623.png)
 
 1. **[サーバーの役割]** セクションが表示されるまで **[次へ]** を選択します。
 
 1. **[Active Directory ドメイン サービス]** と **[DNS サーバー]** という役割を選択します。メッセージが表示されたら、これらの役割に必要なその他の機能を追加します。
 
-	>[AZURE.NOTE]静的 IP アドレスがないことを示す検証の警告が表示されます。構成をテストしている場合は、[続行] をクリックします。運用シナリオの場合は、[PowerShell を使用して、ドメイン コントローラー コンピューターの静的 IP アドレスを設定してください](./virtual-network/virtual-networks-reserved-private-ip.md)。
+	>[AZURE.NOTE] 静的 IP アドレスがないことを示す検証の警告が表示されます。構成をテストしている場合は、[続行] をクリックします。運用シナリオの場合は、[PowerShell を使用して、ドメイン コントローラー コンピューターの静的 IP アドレスを設定してください](./virtual-network/virtual-networks-reserved-private-ip.md)。
 
-	![Add Roles Dialog](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784624.png)
+	![ロールの追加の図表](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784624.png)
 
 1. **[確認]** セクションが表示されるまで **[次へ]** をクリックします。**[必要に応じて対象サーバーを自動的に再起動する]** チェック ボックスをオンにします。
 
@@ -130,7 +131,7 @@
 
 1. 黄色の警告バーにある **[その他]** リンクをクリックします。
 
-	![AD DS dialog on DNS Server VM](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784625.png)
+	![DNS サーバー VM の AD DS の図表](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784625.png)
 
 1. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、**[このサーバーをドメイン コントローラーに昇格する]** をクリックします。
 
@@ -153,7 +154,7 @@
 
 1. **[サーバー マネージャー]** で、**[ツール]** を選択し、**[Active Directory 管理センター]** をクリックします。
 
-	![Active Directory Administrative Center](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784626.png)
+	![Active Directory 管理センター](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784626.png)
 
 1. **[Active Directory 管理センター]** で、左側のウィンドウから **[corp (ローカル)]** を選択します。
 
@@ -174,7 +175,7 @@
 
 1. **[Active Directory 管理センター]** で、左側のウィンドウの **[corp (ローカル)]** を選択します。その後、右側の **[タスク]** ウィンドウで、**[プロパティ]** をクリックします。
 
-	![CORP User Properties](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784627.png)
+	![CORP ユーザー プロパティ](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784627.png)
 
 1. **[拡張機能]** を選択し、**[セキュリティ]** タブの **[詳細設定]** をクリックします。
 
@@ -184,7 +185,7 @@
 
 1. **[すべてのプロパティの読み取り]** アクセス許可と **[コンピューター オブジェクト作成]** アクセス許可を選択します。
 
-	![Corp User Permissions](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784628.png)
+	![CORP ユーザー権限](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784628.png)
 
 1. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。corp のプロパティ ウィンドウを閉じます。
 
@@ -192,20 +193,24 @@
 
 ## SQL Server VM の作成
 
-次に、3 つの VM (WSFC クラスター ノードと 2 つの SQL Server VM) を作成します。各 VM を作成するには、Azure ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
+次に、3 つの VM (WSFC クラスター ノードと 2 つの SQL Server VM) を作成します。各 VM を作成するには、Azure クラシック ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
 
 |ページ|VM1|VM2|VM3|
 |---|---|---|---|
 |仮想マシンのオペレーティング システムの選択|**Windows Server 2012 R2 Datacenter**|**SQL Server 2014 RTM Enterprise**|**SQL Server 2014 RTM Enterprise**|
-|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoWSFCNode<br/>**レベル** = BASIC<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL1<br/>**レベル** = BASIC<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL2<br/>**レベル** = BASIC<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
+|仮想マシンの構成|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoWSFCNode<br/>**レベル** = STANDARD<br/>**サイズ** = A2 (2 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL1<br/>**レベル** = STANDARD<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|**バージョンのリリース日** = (最新)<br/>**仮想マシン名** = ContosoSQL2<br/>**レベル** = STANDARD<br/>**サイズ** = A3 (4 コア)<br/>**新しいユーザー名** = AzureAdmin<br/>**新しいパスワード** = Contoso!000<br/>**確認** = Contoso!000|
 |仮想マシンの構成|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** = 可用性セットの作成<br/>**可用性セット名** = SQLHADR|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** SQLHADR (可用性セットは、マシンの作成後に構成することもできます。3 つの仮想マシンはすべて SQLHADR 可用性セットに割り当てる必要があります。)|**クラウド サービス** = 以前作成された一意のクラウド サービス DNS 名 (例: ContosoDC123)<br/>**リージョン/アフィニティ グループ/仮想ネットワーク** = ContosoNET<br/>**仮想ネットワーク サブネット** = バック (10.10.2.0/24)<br/>**ストレージ アカウント** = 自動的に生成されたストレージ アカウントを使用<br/>**可用性セット** SQLHADR (可用性セットは、マシンの作成後に構成することもできます。3 つの仮想マシンはすべて SQLHADR 可用性セットに割り当てる必要があります。)|
 |仮想マシンのオプション|既定値を使用|既定値を使用|既定値を使用|
+
+<br/>
+
+>[AZURE.NOTE] 前の構成は、Standard レベルの仮想マシンを示唆しています。これは、Basic レベルのマシンでは、後で可用性グループ リスナーを作成するために必要な負荷分散されるエンドポイントがサポートされないためです。また、ここで示されるマシンのサイズは、Azure VM での可用性グループのテストに対応しています。運用時のワークロードに対して最適なパフォーマンスを得る方法については、「[Azure Virtual Machines における SQL Server のパフォーマンスのベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」の SQL Server マシンのサイズと構成に関する推奨事項を参照してください。
 
 3 つの VM が完全にプロビジョニングされたら、その 3 つの VM を **corp.contoso.com** ドメインに参加させて、それらに対する管理者権限を CORP\\Install に付与する必要があります。この操作を行うには、3 つの VM それぞれで、次の手順を実行します。
 
 1. まず、優先 DNS サーバー アドレスを変更します。最初に、一覧で VM を選択して **[接続]** クリックすることで、各 VM のリモート デスクトップ (RDP) ファイルをローカル ディレクトリにダウンロードします。VM を選択するには、次に示すように、選択する行で最初のセル以外の任意の場所をクリックします。
 
-	![Download the RDP File](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC664953.jpg)
+	![RDP ファイルのダウンロード](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC664953.jpg)
 
 1. ダウンロードした RDP ファイルを起動し、構成した管理者アカウント (**BUILTIN\\AzureAdmin**) とパスワード (**Contoso!000**) を使用して VM にログインします。
 
@@ -215,7 +220,7 @@
 
 1. **[ネットワーク接続]** ウィンドウで、ネットワーク アイコンを選択します。
 
-	![Change the VM Preferred DNS Server](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784629.png)
+	![VM 優先 DNS サーバーの変更](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784629.png)
 
 1. コマンド バーの **[この接続の設定を変更する]** をクリックします (ウィンドウのサイズによっては、右向き二重矢印をクリックしないと、このコマンドが表示されない場合があります)。
 
@@ -225,7 +230,7 @@
 
 1. アドレス **10.10.2.4** は、Azure Virtual Network の 10.10.2.0/24 サブネット内の VM に割り当てられているアドレスです。このアドレスが割り当てられている VM が **ContosoDC** です。**ContosoDC** の IP アドレスを確認するには、次のように、コマンド プロンプトで **nslookup contosodc** を使用します。
 
-	![Use NSLOOKUP to find IP address for DC](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC664954.jpg)
+	![NSLOOKUP を使用して DC の IP アドレスを検索](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC664954.jpg)
 
 1. **[OK]**、**[閉じる]** の順にクリックして、変更をコミットします。これで、VM を **corp.contoso.com** に参加させることができるようになりました。
 
@@ -247,7 +252,7 @@
 
 1. **[サーバー マネージャー]** で、**[ツール]** を選択し、**[コンピューターの管理]** をクリックします。
 
-	![Computer Management](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784630.png)
+	![コンピューター管理](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784630.png)
 
 1. **[コンピューターの管理]** ウィンドウで、**[ローカル ユーザーとグループ]** を展開し、**[グループ]** を選択します。
 
@@ -267,7 +272,7 @@
 
 1. **[フェールオーバー クラスタリング]** を選択します。メッセージが表示されたら、その他の依存する機能を追加します。
 
-	![Add Failover Clustering Feature to VM](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784631.png)
+	![フェールオーバー クラスタリング機能を VM に追加](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784631.png)
 
 1. **[次へ]** をクリックして、**[確認]** ページの **[インストール]** をクリックします。
 
@@ -311,7 +316,7 @@
 
 1. 次に示すように、左側のウィンドウで、**[フェールオーバー クラスター マネージャー]** を右クリックし、**[クラスターの作成]** をクリックします。
 
-	![Create Cluster](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784632.png)
+	![クラスターの作成](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784632.png)
 
 1. クラスターの作成ウィザードの各ページで、次の設定を使用して、単一ノード クラスターを作成します。
 
@@ -323,7 +328,7 @@
 |クラスター管理用のアクセス ポイント|**[クラスター名]** に「**Cluster1**」と入力します。|
 |確認|記憶域スペースを使用している場合を除き、既定値を使用します。この表の次の注を参照してください。|
 
-	>[AZURE.WARNING]複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[確認]** ページの **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーにも表示されなくなります。
+	>[AZURE.WARNING] 複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[確認]** ページの **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーにも表示されなくなります。
 
 1. 左側のウィンドウで、**[フェールオーバー クラスター マネージャー]** を展開し、**[Cluster1.corp.contoso.com]** をクリックします。
 
@@ -331,7 +336,7 @@
 
 1. 失敗した **IP アドレス** リソースを右クリックし、**[プロパティ]** をクリックします。
 
-	![Cluster Properties](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784633.png)
+	![クラスターのプロパティ](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784633.png)
 
 1. **[静的 IP アドレス]** を選択して、[アドレス] ボックスに「**10.10.2.101**」を指定します。次に、**[OK]** をクリックします
 
@@ -339,7 +344,7 @@
 
 1. 最後に、残りのノードをクラスターに追加します。次に示すように、ブラウザー ツリーで **[Cluster1.corp.contoso.com]** を右クリックして、**[ノードの追加]** をクリックします。
 
-	![Add Node to the Cluster](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784634.png)
+	![クラスターにノードを追加](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784634.png)
 
 1. **ノードの追加ウィザード**で、**[次へ]** をクリックします。**[サーバーの選択]** ページで、**ContosoSQL2** と **ContosoWSFCNode** を一覧に追加します。これには、**[サーバー名の入力]** にサーバー名を入力し、**[追加]** をクリックします。完了したら、**[次へ]** をクリックします。
 
@@ -347,7 +352,7 @@
 
 1. **[確認]** ページで **[次へ]** をクリックしてノードを追加します。
 
-	>[AZURE.WARNING]複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーにも表示されなくなります。
+	>[AZURE.WARNING] 複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーにも表示されなくなります。
 
 1. ノードがクラスターに追加されたら、**[完了]** をクリックします。フェールオーバー クラスター マネージャーでは、クラスターに 3 つのノードがあることが示され、その 3 つのノードが **[ノード]** コンテナーの一覧に表示されます。
 
@@ -415,7 +420,7 @@
 
 1. 次に示すように、**[AlwaysOn 高可用性]** タブをクリックし、**[AlwaysOn 可用性グループを有効にする]** をオンにして、**[適用]** をクリックします。ポップアップ ダイアログで **[OK]** をクリックします。プロパティ ウィンドウはまだ閉じないでください。サービス アカウントを変更した後に SQL Server サービスを再起動します。
 
-	![Enable AlwaysOn Availability Groups](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665520.gif)
+	![AlwaysOn 可用性グループを有効にする](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665520.gif)
 
 1. 次に、SQL Server サービス アカウントを変更します。**[ログオン]** タブをクリックし、**[アカウント名]** に「**CORP\\SQLSvc1**」(**ContosoSQL1** の場合) または「**CORP\\SQLSvc2**」(**ContosoSQL2** の場合) を入力します。その後、パスワードを入力および確認入力し、**[OK]** をクリックします。
 
@@ -445,11 +450,11 @@
 
 1. 次に示すように、新しいディレクトリを右クリックして **[共有]** をポイントし、**[特定のユーザー]** をクリックします。
 
-	![Create a Backup Folder](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665521.gif)
+	![バックアップ フォルダーの作成](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665521.gif)
 
 1. 次のように、**CORP\\SQLSvc1** を追加して **[読み取り/書き込み]** アクセス許可を指定し、**CORP\\SQLSvc2** を追加して **[読み取り]** アクセス許可を指定した後、**[共有]** をクリックします。ファイル共有プロセスが完了したら、**[完了]** をクリックします。
 
-	![Grant Permissions For Backup Folder](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665522.gif)
+	![バックアップ フォルダーの権限を付与](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665522.gif)
 
 1. 次に、データベースを作成します。**[スタート]** メニューから **SQL Server Management Studio** を起動し、**[接続]** をクリックして既定の SQL Server インスタンスに接続します。
 
@@ -489,59 +494,59 @@
 
 1. **ContosoSQL1** のリモート デスクトップ セッションに戻ります。次に示すように、SSMS の**オブジェクト エクスプローラー**で、**[AlwaysOn 高可用性]** を右クリックして **[新しい可用性グループ ウィザード]** をクリックします。
 
-	![Launch New Availability Group Wizard](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665523.gif)
+	![[新しい可用性グループ ウィザード] の起動](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665523.gif)
 
 1. **[説明]** ページで **[次へ]** をクリックします。**[可用性グループ名の指定]** ページで、**[可用性グループ名]** に「**AG1**」と入力し、もう一度 **[次へ]** をクリックします。
 
-	![New AG Wizard, Specify AG Name](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665524.gif)
+	![新しい AG ウィザード、AG 名の指定](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665524.gif)
 
 1. **[データベースの選択]** ページで、**[MyDB1]** を選択し、**[次へ]** をクリックします。対象とするプライマリ レプリカで完全バックアップを少なくとも 1 つは作成しているため、このデータベースは可用性グループの前提条件を満たしています。
 
-	![New AG Wizard, Select Databases](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665525.gif)
+	![新しい AG ウィザード、データベースの選択](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665525.gif)
 
 1. **[レプリカの指定]** ページで **[レプリカの追加]** をクリックします。
 
-	![New AG Wizard, Specify Replicas](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665526.gif)
+	![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665526.gif)
 
 1. **[サーバーに接続]** ダイアログが表示されます。**[サーバー名]** に「**ContosoSQL2**」と入力し、**[接続]** をクリックします。
 
-	![New AG Wizard, Connect to Server](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665527.gif)
+	![新しい AG ウィザード、サーバーに接続](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665527.gif)
 
 1. **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に **ContosoSQL2** が表示されていることがわかります。次に示すようにレプリカを構成します。構成し終わったら、**[次へ]** をクリックします。
 
-	![New AG Wizard, Specify Replicas (Complete)](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665528.gif)
+	![新しい可用性グループ ウィザード、レプリカの指定 (完了)](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665528.gif)
 
 1. **[最初のデータの同期を選択]** ページで、**[結合のみ]** を選択し、**[次へ]** をクリックします。データの同期は、**ContosoSQL1** で完全バックアップとトランザクション バックアップを作成し、**ContosoSQL2** で復元したときに既に手動で実行しています。データベースのバックアップの作成操作と復元操作を実行しない代わりに、新しい可用性グループ ウィザードで **[完全]** を選択すると、データの同期を実行させることができます。ただし、一部の企業で使用されている大規模なデータベースではこの方法はお勧めしません。
 
-	![New AG Wizard, Select Initial Data Synchronization](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665529.gif)
+	![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665529.gif)
 
 1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。チュートリアルの完了後にリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)に関するページを参照してください。
 
-	![New AG Wizard, Validation](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665530.gif)
+	![新しい AG ウィザード、検証](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665530.gif)
 
 1. **[概要]** ページで、**[完了]** をクリックし、新しい可用性グループが構成されるまで待ちます。**[進行状況]** ページで **[詳細]** をクリックすると、進行状況が詳しく表示されます。ウィザードが完了したら、**[結果]** ページを調べて、次のように、可用性グループが正常に作成されたことを確認します。その後、**[閉じる]** をクリックしてウィザードを終了します。
 
-	![New AG Wizard, Results](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665531.gif)
+	![新しい AG ウィザード、結果](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665531.gif)
 
 1. **オブジェクト エクスプローラー**で、**[AlwaysOn 高可用性]**、**[可用性グループ]** の順に展開します。このコンテナー内に新しい可用性グループが表示されます。**[AG1 (プライマリ)]** を右クリックして **[ダッシュボードの表示]** をクリックします。
 
-	![Show AG Dashboard](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665532.gif)
+	![AG ダッシュボードの表示](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665532.gif)
 
 1. **AlwaysOn ダッシュボード**は次のように表示されます。レプリカ、各レプリカのフェールオーバー モード、および同期の状態を確認できます。
 
-	![AG Dashboard](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665533.gif)
+	![AG ダッシュボード](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665533.gif)
 
 1. **[サーバー マネージャー]** に戻り、**[ツール]** を選択し、**[フェールオーバー クラスター マネージャー]** を起動します。
 
 1. **[Cluster1.corp.contoso.com]**、**[サービスとアプリケーション]** の順に展開します。**[役割]** を選択し、**AG1** 可用性グループの役割が作成されていることに注目します。リスナーを構成していないため、AG1 には、データベース クライアントが可用性グループに接続する際に使用する IP アドレスがありません。読み取り/書き込み操作の場合はプライマリ ノードに、読み取り専用クエリの場合はセカンダリ ノードに直接接続できます。
 
-	![AG in Failover Cluster Manager](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665534.gif)
+	![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665534.gif)
 
->[AZURE.WARNING]フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード**から実行する必要があります。詳細については、[WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
+>[AZURE.WARNING] フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード**から実行する必要があります。詳細については、[WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
 
 ## 次のステップ
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を実装できました。この可用性グループのリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)に関するページを参照してください。
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

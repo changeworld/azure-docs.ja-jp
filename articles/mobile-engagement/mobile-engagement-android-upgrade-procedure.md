@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="08/10/2015" 
+	ms.date="02/29/2016" 
 	ms.author="piyushjo" />
 
 
@@ -115,7 +115,7 @@ SDK で Android M の新しいアクセス許可モデルを処理できるよ�
 
 Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4.0 に移行し、次の手順を適用してください。
 
->[AZURE.IMPORTANT]Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
+>[AZURE.IMPORTANT] Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
 
 ### JAR ファイル
 
@@ -386,4 +386,4 @@ Proguard の構成はブランド変更の影響を受けるため、ルール�
 			}
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

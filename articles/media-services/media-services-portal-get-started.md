@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Media Services と Azure ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
+	pageTitle="Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
+	description="このチュートリアルでは、Azure Media Services と Azure クラシック ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,19 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="10/05/2015"
+	ms.date="02/25/2016"
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用したオンデマンド コンテンツ配信の概要
+# Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要
 
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
-このチュートリアルでは、Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
+このチュートリアルでは、Azure クラシック ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について、手順を追って説明します。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
+
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -39,7 +40,7 @@
 
 ## Azure Media Services アカウントの作成
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
 	![Media Services の簡易作成](./media/media-services-portal-get-started/wams-QuickCreate.png)
 
@@ -47,7 +48,7 @@
 
 3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの Blob Storage となるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
@@ -79,7 +80,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
@@ -91,14 +92,14 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 	新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
-	>[AZURE.NOTE]現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
+	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、ストリーミングが最大 1 時間無効になります。
 	>
-	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、[Media Services の料金詳細](http://go.microsoft.com/fwlink/?LinkId=275107)に関するページをご覧ください。
+	> コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。価格の詳細については、「[Azure の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」をご覧ください。
 
 ## コンテンツをアップロードする
 
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
 2. [コンテンツ] ページを選択します。
 3. ページまたはポータルの下部にある **[アップロード]** をクリックします。
 4. **[コンテンツのアップロード]** ダイアログ ボックスで、目的の資産ファイルを見つけます。ファイルをクリックして、**[開く]** をクリックするか、Enter キーを押します。
@@ -120,6 +121,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ## コンテンツのエンコード
 
 ### 概要
+
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。Media Services には、コンテンツのエンコード方法 (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定できる Media Encoder が用意されています。
 
 クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
@@ -137,24 +139,15 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ### エンコード
 
-ここでは、Azure ポータルから Azure Media Encoder でコンテンツをエンコードするための手順について説明します。
+ここでは、Azure クラシック ポータルを使用して、Azure Media Encoder でコンテンツをエンコードする手順について説明します。
 
 1.  エンコードの対象となるファイルを選択します。そのファイル タイプのエンコードがサポートされている場合、[コンテンツ] ページの一番下にある **[プロセス]** ボタンが有効になります。
-4. **[プロセス]** ダイアログ ボックスで **[Azure Media Encoder]** プロセッサを選択します。
+4. **[プロセス]** ダイアログ ボックスで **[Media Encoder Standard]** プロセッサを選択します。
 5. いずれかの**エンコーディング構成**を選択します。
 
 	![Process2][process2]
 
-	**[アダプティブ ストリーミング用のプリセット (動的パッケージング)]**、**[プログレッシブ ダウンロード用のプリセット]**、**[アダプティブ ストリーミング用のレガシー プリセット]** の各プリセットの意味については、「[Azure Media Encoder 用のタスク プリセット文字列](https://msdn.microsoft.com/library/azure/dn619392.aspx)」をご覧ください。
-
-	以下、**[その他]** の構成について説明します。
-
-	+ **PlayReady コンテンツ保護を使用したエンコード**。このプリセットは、PlayReady Content Protection を使用してエンコードされた資産を生成します。  
-
-		既定では、Media Services PlayReady ライセンス サービスが使用されます。クライアントが PlayReady 暗号化コンテンツを再生するためにライセンスを取得可能な他のサービスを指定するには、REST または Media Services .NET SDK API を使用します。詳細については、「[静的暗号化を使用したコンテンツの保護]()」を参照し、Media Encryptor プリセットの **licenseAcquisitionUrl** プロパティを設定してください。代わりに、「**Using PlayReady Dynamic Encryption and License Delivery Service (PlayReady 動的暗号化とライセンス配信サービスの使用)**」に説明されているように、動的暗号化を使用して [PlayReadyLicenseAcquisitionUrl](http://go.microsoft.com/fwlink/?LinkId=507720) プロパティを設定することもできます。
-	+ **[PC/Mac での再生 (Flash/Silverlight を使用)]**。このプリセットは、次のような特徴を持つスムーズ ストリーミング資産を作成します。AAC を使用して 96 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 3400 ～ 400 kbps の範囲で 6 ビットレートで CBR エンコードされた 720p ビデオ、および 2 秒の GOP。
-	+ **[HTML5 (IE/Chrome/Safari) を使用した再生]**。このプリセットは、次のような特徴を持つ単一の MP4 ファイルを作成します。AAC を使用して 128 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 4500 kbps で CBR エンコードされた 720p ビデオ。
-	+ **[iOS デバイスおよび PC/Mac での再生]**。このプリセットは、スムーズ ストリーミング資産 (上述) と同じ特徴を持つ資産を作成しますが、Apple HLS ストリームを iOS デバイスに配信するときに使用できる形式で作成します。
+	[Media Encoder Standard 用のタスク プリセット文字列](https://msdn.microsoft.com/ja-JP/library/mt269960)に関するトピックでは、各プリセットの意味を説明しています。
 
 5. 次に、わかりやすい出力コンテンツ名を入力するか、既定値をそのまま使用します。チェック ボタンをクリックすると、エンコード処理が開始され、進捗状況はポータルの下部で確認できます。
 6. **[OK]** を選択します。
@@ -172,7 +165,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
 
-資産の発行に Azure ポータルを使用するとロケーターが作成され、OnDemand ベースの URL (資産に .ism ファイルが含まれている場合) または SAS URL が提供されます。
+資産の発行に Azure クラシック ポータルを使用すると、ロケーターが作成され、OnDemand ベースの URL (資産に .ism ファイルが含まれている場合) または SAS URL が提供されます。
 
 SAS URL には次の形式があります。
 
@@ -193,7 +186,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ロケーターには、有効期限があります。ポータルを使用して資産を発行すると、有効期限が 100 年のロケーターが作成されます。
 
->[AZURE.NOTE]2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
+>[AZURE.NOTE] 2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
 
 ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
@@ -209,7 +202,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 ## ポータルでコンテンツを再生する
 
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+Azure クラシック ポータルには、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
 
 目的のビデオをクリックし、ポータルの下部にある **[再生]** をクリックします。
 
@@ -244,7 +237,7 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 <!-- URLs. -->
-[Azure portal]: http://manage.windowsazure.com/
+[Azure Classic Portal]: http://manage.windowsazure.com/
 
 
 <!-- Images -->
@@ -260,4 +253,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

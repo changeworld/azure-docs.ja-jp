@@ -173,7 +173,7 @@
 
 	8.	規則の名前とオプションで説明を指定し、続いて **[完了]** をクリックします。
 
-12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<*unique\_domain\_name*>> の値を確定するには、**[Virtual Machines]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している仮想マシンを選択します)
+12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<*unique\_domain\_name*>> の値を確定するには、**[Virtual Machines]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している仮想マシンを選択します。)
 
 
 ##その他のリソース
@@ -187,4 +187,4 @@
 
 -	[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
+	ms.date="02/16/2016"
 	ms.author="larryfr"/>
 
-# Script Action を使って HDInsight クラスターをカスタマイズする
+# Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
 HDInsight は、カスタム スクリプトを呼び出す **Script Action** という構成オプションを提供します。Script Action は作成処理中にクラスター上で実行されるカスタマイズを定義します。これらのスクリプトを使用して、クラスター上に追加のソフトウェアをインストールしたり、クラスター上のアプリケーションの構成を変更したりできます。
 
-> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターに固有のものです。この記事の Windows ベースのクラスターに固有のバージョンについては、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする (Windows)](hdinsight-hadoop-customize-cluster.md)」を参照してください。
+> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight クラスターに固有のものです。この記事の Windows ベースのクラスターに固有のバージョンについては、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする (Windows)](hdinsight-hadoop-customize-cluster.md)」を参照してください。
 
 ## クラスターの作成処理での Script Action
 
@@ -31,18 +31,18 @@ Script Action は、クラスターが作成中にのみ使用されます。次
 
 スクリプトは HDInsight の構成中に実行されます。この段階で、スクリプトは、クラスター内の指定されたすべてのノードで並列して実行され、それらのノードに対するルート権限で実行されます。
 
-> [AZURE.NOTE]スクリプトの実行時にクラスター ノードに対するルート権限を持っているため、Hadoop 関連のサービスを含め、サービスの停止や開始などの操作を行うことができます。サービスを停止する場合は、スクリプトの実行が完了する前に Ambari サービスや他の Hadoop 関連のサービスが稼働していることを確認する必要があります。これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているか確認する必要があります。
+> [AZURE.NOTE] スクリプトの実行時にクラスター ノードに対するルート権限を持っているため、Hadoop 関連のサービスを含め、サービスの停止や開始などの操作を行うことができます。サービスを停止する場合は、スクリプトの実行が完了する前に Ambari サービスや他の Hadoop 関連のサービスが稼働していることを確認する必要があります。これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているか確認する必要があります。
 
 各クラスターは、指定された順序で呼び出される複数の Script Action を受け取ることができます。スクリプトはヘッド ノード、ワーカー ノード、またはその両方で実行できます。
 
-> [AZURE.IMPORTANT]スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる場合があります。
+> [AZURE.IMPORTANT] スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる場合があります。
 > 
 > スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure BLOB ストレージに格納して、クラスターにすばやくダウンロードできるようにします。
 
 
 ## スクリプト アクションのサンプル スクリプト
 
-Script Action のスクリプトは、Azure プレビュー ポータル、Azure PowerShell、または HDInsight .NET SDK から使用できます。この記事では、ポータルから Script Action を使用する方法を示します。PowerShell と .NET SDK で Script Action を使用する方法については、次の表に示されている例を参照してください。
+Script Action のスクリプトは、Azure ポータル、Azure PowerShell、または HDInsight .NET SDK から使用できます。この記事では、ポータルから Script Action を使用する方法を示します。PowerShell と .NET SDK で Script Action を使用する方法については、次の表に示されている例を参照してください。
 
 HDInsight は、HDInsight クラスターで、次のコンポーネントをインストールするためのいくつかのスクリプトを提供します。
 
@@ -50,17 +50,18 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 ----- | -----
 **Hue のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh「[HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」を参照してください。
 **Spark のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh「[HDInsight クラスターで Spark をインストールして使用する](hdinsight-hadoop-spark-install-linux.md)」を参照してください。
-**R のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh「[HDInsight クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
+**R のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh[HDInsight クラスターでの R のインストールと使用](hdinsight-hadoop-r-scripts-linux.md)に関するページを参照してください。
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)」を参照してください。
 **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
+| **Hive ライブラリの事前読み込み** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
 
-## Azure プレビュー ポータルからスクリプト アクションを使用する
+## Azure ポータルからスクリプト アクションを使用する
 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、クラスターの作成を開始します。
 
 2. __[オプションの構成]__ の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png "Script Action を使ってクラスターをカスタマイズする")
+	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png)
 
 	| プロパティ | 値 |
 	| -------- | ----- |
@@ -80,8 +81,8 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 ### 開始する前に
 
 * コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
-* ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-* リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager)」を参照してください。
+* ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+* リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 ### スクリプト アクションを使用したクラスターの作成
 
@@ -108,7 +109,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		        },
 		        "sshUserName": {
 		            "type": "string",
-		            "defaultValue": "hdiuser"
+		            "defaultValue": "username"
 		        },
 		        "sshPassword": {
 		            "type": "securestring"
@@ -253,7 +254,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 		Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
 
-    > [AZURE.NOTE]`Get-AzureRmSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これに、各サブスクリプション ID が含まれています。
+    > [AZURE.NOTE] `Get-AzureRmSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これに、各サブスクリプション ID が含まれています。
 
 5. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
 
@@ -270,7 +271,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
 
-6. リソース グループの新しいデプロイメントを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスまたは URL が含まれます。テンプレートでパラメーターが必要な場合は、それらのパラメーターも渡す必要があります。この場合は、クラスターに R をインストールするスクリプト アクションでパラメーターは必要ありません。
+6. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスまたは URL が含まれます。テンプレートでパラメーターが必要な場合は、それらのパラメーターも渡す必要があります。この場合は、クラスターに R をインストールするスクリプト アクションでパラメーターは必要ありません。
 
 
 		New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
@@ -333,139 +334,31 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	| パラメーター | スクリプトで必要なパラメーター。 |
 	| Uri | 実行されるスクリプトへの URI を指定します。 |
 
+4. クラスターの admin/HTTPS ユーザーを設定します。
+
+        $httpCreds = get-credential
+        
+    プロンプトが表示されたら、名前に「admin」と入力し、パスワードを入力します。
+
+5. SSH 資格情報を設定します。
+
+        $sshCreds = get-credential
+    
+    プロンプトが表示されたら、SSH ユーザー名とパスワードを入力します。パスワードではなく証明書を使用して SSH アカウントをセキュリティで保護する場合は、パスワードを空にして、使用する証明書の公開キーの内容を `$sshPublicKey` に設定します。次に例を示します。
+    
+        $sshPublicKey = Get-Content .\path\to\public.key -Raw
+    
 4. 最後に、クラスターを作成します。
         
-        New-AzureRmHDInsightCluster -config $config -clustername $clusterName -DefaultStorageContainer $containerName -Location $location -ResourceGroupName $resourceGroupName -ClusterSizeInNodes $clusterNodes
+        New-AzureRmHDInsightCluster -config $config -clustername $clusterName -DefaultStorageContainer $containerName -Location $location -ResourceGroupName $resourceGroupName -ClusterSizeInNodes $clusterNodes -HttpCredential $httpCreds -SshCredential $sshCreds -OSType Linux
+    
+    SSH アカウントをセキュリティで保護するために公開キーを使用する場合、パラメーターとして `-SshPublicKey $sshPublicKey` も指定する必要があります。
 
-入力を求められたら、クラスターの資格情報を入力します。クラスターが作成されるまでに数分かかる場合があります。
+クラスターが作成されるまでに数分かかる場合があります。
 
 ## HDInsight .NET SDK からスクリプト アクションを使用する
 
-HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリを提供します。次の手順では、スクリプトを使用して HDInsight .NET SDK からクラスターをカスタマイズする方法を示します。
-
-> [AZURE.IMPORTANT]最初に自己署名証明書を作成し、それをワークステーションにインストールして、Azure サブスクリプションにアップロードする必要があります。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
-
-
-### Visual Studio プロジェクトを作成する
-
-
-1. Visual Studio で、C# コンソール アプリケーションを作成します。
-2. NuGet **パッケージ マネージャー コンソール**から、次のコマンドを実行します。
-
-		Install-Package Microsoft.Azure.Common.Authentication -pre
-		Install-Package Microsoft.Azure.Management.HDInsight -Pre
-
-	これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
-
-3. **Program.cs** を開き、次の using ステートメントを追加します。
-
-		using System;
-		using System.Security;
-		using Microsoft.Azure;
-		using Microsoft.Azure.Common.Authentication;
-		using Microsoft.Azure.Common.Authentication.Factories;
-		using Microsoft.Azure.Common.Authentication.Models;
-		using Microsoft.Azure.Management.HDInsight;
-		using Microsoft.Azure.Management.HDInsight.Models;
-
-4. クラスのコードを次のコードに置き換えます。
-
-        private static HDInsightManagementClient _hdiManagementClient;
-
-        private static Guid SubscriptionId = new Guid("<AZURE SUBSCRIPTION ID>");
-        private const string ResourceGroupName = "<AZURE RESOURCEGROUP NAME>";
-
-        private const string NewClusterName = "<HDINSIGHT CLUSTER NAME>";
-        private const int NewClusterNumNodes = <NUMBER OF NODES>;
-        private const string NewClusterLocation = "<LOCATION>";  // Must match the Azure Storage account location
-        private const string NewClusterVersion = "3.2";
-        private const HDInsightClusterType NewClusterType = HDInsightClusterType.Hadoop;
-        private const OSType NewClusterOSType = OSType.Windows;
-
-        private const string ExistingStorageName = "<STORAGE ACCOUNT NAME>.blob.core.windows.net";
-        private const string ExistingStorageKey = "<STORAGE ACCOUNT KEY>";
-        private const string ExistingContainer = "<DEFAULT CONTAINER NAME>"; 
-
-        private const string NewClusterUsername = "admin";
-        private const string NewClusterPassword = "<HTTP USER PASSWORD>";
-
-        private const string NewClusterSshUserName = "sshuser";
-        private const string NewClusterSshPublicKey = @"---- BEGIN SSH2 PUBLIC KEY ----
-			Comment: ""rsa-key-20150731""
-			AAAAB3NzaC1yc2EAAAABJQAAAQEA4QiCRLqT7fnmUA5OhYWZNlZo6lLaY1c+IRsp
-			gmPCsJVGQLu6O1wqcxRqiKk7keYq8bP5s30v6bIljsLZYTnyReNUa5LtFw7eauGr
-			yVt3Pve6ejfWELhbVpi0iq8uJNFA9VvRkz8IP1JmjC5jsdnJhzQZtgkIrdn3w0e6
-			WVfu15kKyY8YAiynVbdV51EB0SZaSLdMZkZQ81xi4DDtCZD7qvdtWEFwLa+EHdkd
-			pzO36Mtev5XvseLQqzXzZ6aVBdlXoppGHXkoGHAMNOtEWRXpAUtEccjpATsaZhQR
-			zZdZlzHduhM10ofS4YOYBADt9JohporbQVHM5w6qUhIgyiPo7w==
-			---- END SSH2 PUBLIC KEY ----"; //replace the public key with your own
-
-        private static void Main(string[] args)
-        {
-            var tokenCreds = GetTokenCloudCredentials();
-            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-
-            _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
-
-            CreateCluster();
-        }
-
-        public static SubscriptionCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
-        {
-            var authFactory = new AuthenticationFactory();
-
-            var account = new AzureAccount { Type = AzureAccount.AccountType.User };
-
-            if (username != null && password != null)
-                account.Id = username;
-
-            var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-            var accessToken =
-                authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
-                    .AccessToken;
-
-            return new TokenCloudCredentials(accessToken);
-        }
-
-        public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(SubscriptionCloudCredentials creds, Guid subId)
-        {
-            return new TokenCloudCredentials(subId.ToString(), ((TokenCloudCredentials)creds).Token);
-        }
-
-
-        private static void CreateCluster()
-        {
-            var parameters = new ClusterCreateParameters
-            {
-                ClusterSizeInNodes = NewClusterNumNodes,
-                Location = NewClusterLocation,
-                ClusterType = NewClusterType,
-                OSType = NewClusterOSType,
-                Version = NewClusterVersion,
-
-                DefaultStorageAccountName = ExistingStorageName,
-                DefaultStorageAccountKey = ExistingStorageKey,
-                DefaultStorageContainer = ExistingContainer,
-
-                UserName = NewClusterUsername,
-                Password = NewClusterPassword,
-                SshUserName = NewClusterSshUserName,
-        		SshPublicKey = NewClusterSshPublicKey
-            };
-
-            ScriptAction rScriptAction = new ScriptAction("Install R",
-                new Uri("https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh"), "");
-
-            parameters.ScriptActions.Add(ClusterNodeType.HeadNode,new System.Collections.Generic.List<ScriptAction> { rScriptAction});
-            parameters.ScriptActions.Add(ClusterNodeType.WorkerNode, new System.Collections.Generic.List<ScriptAction> { rScriptAction });
-
-            _hdiManagementClient.Clusters.Create(ResourceGroupName, NewClusterName, parameters);
-        }
-		
-6. クラス メンバーの値を置き換えます。
-
-7. **F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。Azure アカウントの資格情報の入力も求められます。HDInsight クラスターの作成は数分かかる場合があります。
+HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリを提供します。コード サンプルについては、「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action)」を参照してください。
 
 
 ## トラブルシューティング
@@ -496,9 +389,12 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
-	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。いくつかの例: * **ヘッド ノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net` * **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net` * **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+	この下で、ヘッド ノード、ワーカー ノード、および zookeeper ノードごとにログが整理されています。例:
+	* **ヘッドノード** - `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+	* **ワーカー ノード** - `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+	* **zookeeper ノード** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
+* 対応するホストのすべての stdout と stderr が、ストレージ アカウントにアップロードされます。各スクリプト アクションに対して、**output-*.txt** と **errors-\*.txt** が 1 つずつあります。output-*.txt ファイルには、ホストで実行されたスクリプトの URI に関する情報が含まれます。たとえば、次のように入力します。
 
 		'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -515,7 +411,7 @@ Ambari の Web UI を使用すると、クラスターの作成中に、スク�
 
 ## HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
 
-Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。[Azure サポート FAQ Web サイト](http://azure.microsoft.com/support/faq/)の**サポート範囲**のセクションでも説明しているように、Microsoft Azure では、オープン ソース テクノロジについて一般的なレベルのサポートを提供しています。HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
+Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。[Azure サポート FAQ Web サイト](https://azure.microsoft.com/support/faq/)の**サポート範囲**のセクションでも説明しているように、Microsoft Azure では、オープン ソース テクノロジについて一般的なレベルのサポートを提供しています。HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
@@ -523,9 +419,9 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
 - **カスタム コンポーネント** - クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
-> [AZURE.WARNING]HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
+> [AZURE.WARNING] HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 
@@ -549,4 +445,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

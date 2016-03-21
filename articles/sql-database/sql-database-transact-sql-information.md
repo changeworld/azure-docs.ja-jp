@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Transact-SQL 情報 | Microsoft Azure"
-   description="Azure SQL Database の Transact-SQL ステートメント"
+   pageTitle="Azure SQL Database でサポートされない T-SQL | Microsoft Azure"
+   description="Azure SQL Database では完全にサポートされない Transact-SQL ステートメント"
    services="sql-database"
    documentationCenter=""
    authors="BYHAM"
@@ -14,18 +14,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="11/09/2015"
+   ms.date="02/18/2016"
    ms.author="rick.byham@microsoft.com"/>
 
-# Azure SQL Database Transact-SQL 情報
+# Azure SQL Database の Transact-SQL の相違点
 
-Most SQL Server 2016 Transact-SQL ステートメントは Microsoft Azure SQL Database で完全サポートされています。これには SQL Server のデータ型、演算子、文字列関数、算術関数、論理関数、カーソル関数、ほとんどのアプリケーションが依存するその他の Transact-SQL 要素が含まれます。部分的にサポートされる関数やサポートされない関数は SQL Database によるデータベースの管理方法の違い (ファイル、高い可用性、セキュリティ機能など) に関連するか、Service Broker など、特別目的の機能のためのものです。SQL Database はマスター データベースに対する依存から多くの機能を分離するため、サーバーレベルの多くのアクティビティが不適切となり、サポートされません。通常、SQL Server で廃止になった機能は SQL Database でサポートされません。
+
+アプリケーションが依存する Transact-SQL 機能の大半は、Microsoft SQL Server と Azure SQL Database の両方でサポートされます。アプリケーションに対してサポートされる機能の一部を次に示します。
+
+- データ型。
+- 演算子。
+- 文字列、算術、論理、およびカーソルに関連する機能。
+
+ただし、Azure SQL Database は、**マスター** データベースへの依存から機能を分離するように設計されています。その結果、サーバー レベルの多くのアクティビティは SQL Database には不適切であり、サポートされません。このトピックでは、SQL Database では完全にサポートされない機能について説明します。
+
+さらに、通常、SQL Server で廃止になった機能は SQL Database でもサポートされません。
 
 ## SQL Database V12 にアップグレードする
 
 このトピックでは、無料の SQL Database V12 にアップグレードする際、SQL Database で利用できる機能について説明します。V12 に関する詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。SQL Database V12 ではパフォーマンスが改善され、管理しやすくなり、機能が追加されました。追加された機能の一覧を以下に示します。完全にサポートされている機能と部分的にサポートされている機能に分割されています。
 
-## SQL Database V12 で部分的にサポートされている機能
+## SQL Database V12 で部分的にサポートされる機能
 
 SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE の WITH ENCRYPTION オプションは利用できません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
@@ -40,16 +49,16 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - ユーザー: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
 - ビュー: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
-## SQL Database でサポートされていない機能
+## SQL Database で部分的にサポートされる機能
 
 - システム オブジェクトの照合順序
 - 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMEWindows 認証はログインまたは包含データベース ユーザーには利用できません。
-- データベース間のクエリ、データベース間の所有者変更、TRUSTWORTHY 設定
+- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
+- データベース間での所有権の継承、TRUSTWORTHY 設定
 - データ コレクター
 - データベース ダイアグラム
 - データベース メール
 - DATABASEPROPERTY (代わりに DATABASEPROPERTYEX を使用)
-- 分散トランザクション
 - EXECUTE AS ログイン
 - 暗号化: 拡張可能キー管理
 - イベント: イベント、イベント通知、クエリ通知
@@ -65,6 +74,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - KILL STATS JOB
 - リンク サーバー、OPENQUERY、OPENROWSET、OPENDATASOURCE、BULK INSERT、3 つまたは 4 つの部品名
 - マスター/対象サーバー
+- .NET framework の [ CLR と SQL Server の統合](http://msdn.microsoft.com/library/ms254963.aspx)
 - リソース ガバナー
 - セマンティック検索
 - サーバー資格情報
@@ -85,14 +95,17 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - トリガー: サーバー スコープ トリガーまたはログオン トリガー
 - USE ステートメント
 
+
 ## 完全 Transact-SQL リファレンス
 
 Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
 ### 「適用先」タグについて
 
-Transact-SQL リファレンスには SQL Server 2008、SQL Server 2008 R2、SQL Server 2012、SQL Server 2014、Microsoft Azure SQL Database に関連するトピックが含まれています。各トピックの先頭近くにトピックの主題をサポートする製品を示すセクションがあります。製品が省略されている場合、トピックで説明されている機能はその製品で利用できません。たとえば、可用性グループは SQL Server 2012 で導入されました。**CREATE AVAILABILTY GROUP** トピックはそれが **SQL Server (現在のバージョンを介して SQL Server 2012)** に適用されることを示します。SQL Server 2008、SQL Server 2008 R2、Microsoft Azure SQL Database には適用されないためです。
+TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。通常は、トピック タイトルの下に、SQL Server のバージョンを示す「適用先」行が表示されます。その他の製品名なども示される可能性があります。多くの場合、同じ「適用先」タグに、Azure SQL Database も表示されます。「適用先」に Azure SQL Database が表示されない場合、そのトピックのコンテンツは Azure SQL Database には適用されません。「適用先」行に複数の製品が表示され、トピックが各製品に適用されるかどうかを示す小さなアイコンも表示されることがあります。
 
-トピックの全体的主題がある製品で使用されるが、一部の引数がサポートされないことがあります。たとえば、含有データベース ユーザーは SQL Server 2012 で導入されました。**CREATE USER** ステートメントは SQL Server 製品で利用できますが、**WITH PASSWORD** は以前のバージョンでは利用できません。この場合、追加の「**適用先**」セクションがトピックの本文の引数説明に挿入されます。
+ たとえば、可用性グループは SQL Server 2012 で導入されました。可用性グループは SQL Server 2008、SQL Server 2008 R2、または Azure SQL Database には適用されないため、「**可用性グループの作成**」トピックでは、そのトピックが **SQL Server (SQL Server 2012 から現在のバージョンまで)** に適用されることが示されます。
 
-<!---HONumber=Nov15_HO3-->
+場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
+
+<!---HONumber=AcomDC_0224_2016-->

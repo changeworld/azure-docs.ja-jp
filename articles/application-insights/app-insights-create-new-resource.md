@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="02/16/2016" 
 	ms.author="awills"/>
 
 # 新しい Application Insights リソースを作成します。
@@ -31,9 +31,9 @@ Visual Studio Application Insights には、Microsoft Azure *リソース*のア
 
 使用を開始するには、[Microsoft Azure](http://azure.com) のサブスクリプションも必要です。チームまたは組織で Azure サブスクリプションを取得している場合、所有者は Windows Live ID を使用してあなたを追加できます。
 
-または、新しいサブスクリプションを作成することもできます。無料試用版では、Azure 内のすべてを試すことができます。評価期間が過ぎた後、無料サービスでは課金されないため、従量制サブスクリプションが適切であると感じるかもしれません。
+または、新しいサブスクリプションを作成することもできます。無料アカウントでは、Azure 内のすべてを試すことができます。評価期間が過ぎた後、無料サービスでは課金されないため、従量制サブスクリプションが適切であると感じるかもしれません。
 
-サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](http://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
+サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
 
 ## Application Insights リソースの作成
@@ -94,4 +94,4 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

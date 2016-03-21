@@ -13,13 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="02/27/2016" 
 	ms.author="naziml"/>
 
 # Web アプリの TLS 相互認証を構成する方法
 
 ## 概要 ##
 さまざまな種類の認証を有効にすることで、Azure Web アプリへのアクセスを制限できます。これを行う 1 つの方法は、要求が TLS と SSL を経由するときに、クライアント証明書を使用して認証することです。このメカニズムは、TLS 相互認証またはクライアント証明書認証と呼ばれます。この記事では、Web アプリをクライアント証明書認証を使用するように設定する方法について詳しく説明します。
+
+> **注:** HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。
+
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -39,7 +42,7 @@ Web アプリを、クライアント証明書を要求するように設定す�
 
 
 ## Web アプリからクライアント証明書にアクセスする ##
-Web アプリをクライアント証明書認証を使用するように構成すると、"X-ARR-ClientCert" 要求ヘッダー内の base64 エンコード値を通して、アプリでクライアント証明書を使用できます。アプリケーションは、この値から証明書を作成した後、アプリケーションの認証と承認の目的でそれを使用できます。
+ASP.NET を使用し、クライアント証明書認証を使用するようにアプリを構成する場合、証明書は **HttpRequest.ClientCertificate** プロパティを通じて利用可能になります。他のアプリケーション スタックの場合は、"X-ARR-ClientCert" 要求ヘッダー内の base64 エンコード値を通して、アプリでクライアント証明書を使用できます。アプリケーションは、この値から証明書を作成した後、アプリケーションの認証と承認の目的でそれを使用できます。
 
 ## 証明書の検証に関する特別な考慮事項 ##
 アプリケーションに送信されるクライアント証明書は、Azure Web Apps プラットフォームによる検証を受けません。この証明書の検証は、Web アプリが実行する必要があります。認証するために証明書のプロパティを検証するサンプル ASP.NET コードを次に示します。
@@ -121,7 +124,7 @@ Web アプリをクライアント証明書認証を使用するように構成�
                 if (certificate == null || !String.IsNullOrEmpty(errorString)) return false;
                 
                 // 1. Check time validity of certificate
-                if (DateTime.Compare(DateTime.Now, certificate.NotBefore) < 0 && DateTime.Compare(DateTime.Now, certificate.NotAfter) > 0) return false;
+                if (DateTime.Compare(DateTime.Now, certificate.NotBefore) < 0 || DateTime.Compare(DateTime.Now, certificate.NotAfter) > 0) return false;
                 
                 // 2. Check subject name of certificate
                 bool foundSubject = false;
@@ -179,4 +182,4 @@ Web アプリをクライアント証明書認証を使用するように構成�
         }
     }
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

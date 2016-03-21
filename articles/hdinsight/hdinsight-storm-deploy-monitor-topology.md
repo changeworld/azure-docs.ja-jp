@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/23/2015"
+   ms.date="02/22/2016"
    ms.author="larryfr"/>
 
 #Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -23,7 +23,7 @@ Storm ダッシュボードでは、Web ブラウザーを使用して Apache St
 
 Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Storm REST API に依存し、これを使用して独自の監視と管理ソリューションを作成できます。
 
-> [AZURE.IMPORTANT]このドキュメントの手順では、HDInsight クラスター上に Windows ベースの Storm が必要です。Linux ベースのクラスターの使用の詳細については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)」を参照してください。
+> [AZURE.IMPORTANT] このドキュメントの手順では、HDInsight クラスター上に Windows ベースの Storm が必要です。Linux ベースのクラスターの使用の詳細については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)」を参照してください。
 
 ##前提条件
 
@@ -41,7 +41,7 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
 	* <a href="http://visualstudio.com/downloads/visual-studio-2015-ctp-vs" target="_blank">Visual Studio 2015 CTP6</a>
 
-	> [AZURE.NOTE]現在、HDInsight Tools for Visual Studio では HDInsight cluster バージョン 3.2 の Storm のみサポートしています。
+	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight cluster バージョン 3.2 の Storm のみサポートしています。
 
 ##Storm ダッシュボード
 
@@ -57,7 +57,7 @@ Storm ダッシュボードで、**[Storm UI]** リンクを選択します。�
 
 ![Storm UI][storm-dashboard-ui]
 
-> [AZURE.NOTE]いくつかのバージョンの Internet Explorer では、Storm UI に初めてアクセスした後、Storm UI が更新されない場合があります。たとえば、送信した新しいトポロジが表示されない場合や、以前に非アクティブ化したトポロジがアクティブと表示される場合があります。Microsoft はこの問題を確認しており、解決に取り組んでいます。
+> [AZURE.NOTE] いくつかのバージョンの Internet Explorer では、Storm UI に初めてアクセスした後、Storm UI が更新されない場合があります。たとえば、送信した新しいトポロジが表示されない場合や、以前に非アクティブ化したトポロジがアクティブと表示される場合があります。Microsoft はこの問題を確認しており、解決に取り組んでいます。
 
 ####メイン ページ
 
@@ -129,7 +129,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 1. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[Submit to Storm on HDInsight]** を選択します。
 
-	> [AZURE.NOTE]メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
+	> [AZURE.NOTE] メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
 2. **[Storm クラスター]** ドロップダウン リストから HDInsight クラスターの Storm を選択して、**[送信]** を選択します。送信が成功したかどうかは、**[出力]** ウィンドウを使用して確認できます。
 
@@ -137,19 +137,21 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 	![Visual Studio モニター](./media/hdinsight-storm-deploy-monitor-topology/vsmonitor.png)
 
-	> [AZURE.NOTE]また、**Storm トポロジ**は、**[サーバー エクスプローラー]** で **[Azure]**、**[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
+	> [AZURE.NOTE] また、**Storm トポロジ**は、**[サーバー エクスプローラー]** で **[Azure]**、**[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
 
-	スパウトやボルトのリンクを使用してこれらのコンポーネントに関する情報を表示します。各アイテムを選択すると新しいウィンドウが開きます。
+	情報を表示するスパウトまたはボルト コンポーネントの形状を選択します。各アイテムを選択すると新しいウィンドウが開きます。
+    
+    > [AZURE.NOTE] トポロジの名前は、トポロジのクラス名 (この場合は `HelloWord`) にタイムスタンプを追加したものです。
 
 4. **[トポロジの概要]** ビューで、**[強制終了]** を選択してトポロジを停止します。
 
-	> [AZURE.NOTE]Storm トポロジは停止されるまで、またはクラスターが削除されるまで実行し続けます。
+	> [AZURE.NOTE] Storm トポロジは停止されるまで、またはクラスターが削除されるまで実行し続けます。
 
 ##REST API
 
 Storm UI は、REST API を基に構築されているため、REST API を使用して同様の管理や監視機能を実行できます。REST API を使用して、Storm トポロジの管理や監視用のカスタム ツールを作成できます。
 
-詳細については、「<a href="https://github.com/apache/storm/blob/master/STORM-UI-REST-API.md" target="_base">Storm UI REST API</a>」をご覧ください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
+詳細については、「[Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)」を参照してください。以下は、HDInsight での Apache Storm で REST API を使用する場合の情報です。
 
 ###ベース URI
 
@@ -159,7 +161,7 @@ HDInsight クラスターの REST API のベース URI は、**https://&lt;clust
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、**基本認証**を使用する必要があります。
 
-> [AZURE.NOTE]基本認証はクリア テキストを使用して送信されるため、**常に** HTTPS を使用してクラスターとの通信を保護する必要があります。
+> [AZURE.NOTE] 基本認証はクリア テキストを使用して送信されるため、**常に** HTTPS を使用してクラスターとの通信を保護する必要があります。
 
 ###戻り値
 
@@ -179,4 +181,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="11/10/2015"
+    ms.date="02/23/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -21,14 +21,14 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-database-geo-replication-portal.md)
+- [Azure portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 この記事では、PowerShell を使用して SQL Database の geo レプリケーションを構成する方法を示します。
 
-geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合またはプライマリ データベースに接続できない場合に使用できます。
+geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
 geo レプリケーションは、Standard データベースと Premium データベースにのみ使用できます。
 
@@ -36,12 +36,9 @@ Standard データベースでは、読み取り不可のセカンダリ デー�
 
 geo レプリケーションを構成するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料アカウント**をクリックしてからこの記事に戻り、最後まで完了してください。
 - Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
-- Azure PowerShell 1.0 プレビュー。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」を参照してください。
-
-> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
-
+- Azure PowerShell 1.0 以降。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 
 
@@ -87,16 +84,16 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" のデータベース "mydb" に対して読み取り不可のセカンダリ データベースが作成されます。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "None"
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "No"
 
 
 
-### 読み取り可能なセカンダリ データベース (単一のデータベース) の追加
+### 読み取り可能なセカンダリ (単一データベース) の追加
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" のデータベース "mydb" に対して読み取り可能なセカンダリ データベースが作成されます。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
     $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "All"
 
 
@@ -106,24 +103,24 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" のエラスティック データベース プール "ElasticPool1" 内のデータベース "mydb" に対して読み取り不可のセカンダリ データベースが作成されます。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "None"
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "No"
 
 
 ### 読み取り可能なセカンダリ データベース (エラスティック データベース) の追加
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" のエラスティック データベース プール "ElasticPool1" 内のデータベース "mydb" に対して読み取り可能なセカンダリ データベースが作成されます。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
     $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "All"
 
 
 
 
 
-## セカンダリ データベースの削除
+## セカンダリ データベースを削除する
 
-セカンダリ データベースとそのプライマリ データベースとの間のレプリケーション パートナーシップを完全に終了させるには、**Remove-AzureRmSqlDatabaseSecondary** コマンドレットを使用します。リレーションシップの終了後、セカンダリ データベースは読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功しますが、接続が復元するまでセカンダリ データベースは読み取り/書き込み状態になりません。詳細については、「[Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx)」 と 「[サービス レベル](https://azure.microsoft.com/documentation/articles/sql-database-service-tiers/)」を参照してください。
+セカンダリ データベースとそのプライマリ データベースとの間のレプリケーション パートナーシップを完全に終了させるには、**Remove-AzureRmSqlDatabaseSecondary** コマンドレットを使用します。リレーションシップの終了後、セカンダリ データベースは読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、「[Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx)」 と 「[サービス レベル](sql-database-service-tiers.md)」を参照してください。
 
 このコマンドレットは、レプリケーション用の Stop-AzureSqlDatabaseCopy に取って代わります。
 
@@ -134,7 +131,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 次のコードを実行すると、"mydb" という名前のデータベースと、リソース グループ "rg2" に属するサーバー "srv2" とのレプリケーション リンクが削除されます。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –SecondaryResourceGroup "rg2" –PartnerServerName "srv2"
     $secondaryLink | Remove-AzureRmSqlDatabaseSecondary 
 
@@ -154,7 +151,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、「[Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx)」を参照してください。
 
 
-> [AZURE.NOTE]コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが返されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンド (計画されていないフェールオーバー) を呼び出すことができますが、データは失われることを容認する必要があります。
+> [AZURE.NOTE] コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが返されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンド (計画されていないフェールオーバー) を呼び出すことができますが、データは失われることを容認する必要があります。
 
 
 
@@ -162,7 +159,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" 上の "mydb" という名前のデータベースのロールをプライマリに切り替えます。"db2" の接続先である元のプライマリは、2 つのデータベースが完全に同期すると、セカンダリに切り替わります。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb” –ResourceGroupName "rg2” –ServerName "srv2”
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
@@ -176,7 +173,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 ただし、セカンダリ データベース上でポイントインタイム リストアはサポートされていないので、古いプライマリ データベースにコミットされているデータのうち、新しいプライマリ データベースにレプリケートされていないものを復旧する場合は、CSS を有効にして既知のログ バックアップにデータベースを復元する必要があります。
 
-> [AZURE.NOTE]プライマリ データベースとセカンダリ データベースの両方がオンラインになっている場合にコマンドを発行すると、古いプライマリ データベースが新しいセカンダリ データベースになりますが、データの同期化は行われないので、一部のデータが失われることがあります。
+> [AZURE.NOTE] プライマリ データベースとセカンダリ データベースの両方がオンラインになっている場合にコマンドを発行すると、古いプライマリ データベースが新しいセカンダリ データベースになりますが、データの同期化は行われないので、一部のデータが失われることがあります。
 
 
 プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは部分的に成功します。コマンドが実行されたセカンダリ データベースがプライマリ データベースになります。ただし、古いプライマリ データベースはプライマリ データベースのままです。すなわち、2 つのプライマリ データベースは不整合の状態になり、中断されたレプリケーション リンクによって接続されます。ユーザーは、この 2 つのプライマリ データベースのいずれかで “remove secondary” API を使用して、この構成を手動で修復する必要があります。
@@ -184,12 +181,12 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 次のコマンドでは、プライマリが利用できない場合に、"mydb" という名前のデータベースのロールをプライマリに切り替えます。"mydb" の接続先であった元のプライマリ データベースは、それがオンラインに戻ると、セカンダリ データベースに切り替わります。その時点で、同期化によってデータが失われる可能性があります。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb” –ResourceGroupName "rg2” –ServerName "srv2”
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
 
 
 
-## geo レプリケーションの構成と正常性の監視
+## geo レプリケーションの構成と正常性を監視する
 
 監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。
 
@@ -197,7 +194,7 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2” 上のプライマリ データベース "mydb" とセカンダリ データベースの間のレプリケーション リンクのステータスを取得します。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb”
+    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
 
 
@@ -206,16 +203,16 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 
 ## 次のステップ
 
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 
 
 
 
 ## その他のリソース
 
-- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
-- [geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

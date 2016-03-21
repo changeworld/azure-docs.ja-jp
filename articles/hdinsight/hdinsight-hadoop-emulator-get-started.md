@@ -14,8 +14,8 @@
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="08/07/2015"
+	ms.topic="get-started-article" 
+	ms.date="11/29/2015"
 	ms.author="nitinme"/>
 
 # HDInsight Emulator (Hadoop サンドボックス) を使用した Hadoop エコシステム入門
@@ -24,12 +24,12 @@
 
 エミュレーターがインストールされたら、ワード カウントの MapReduce のチュートリアルに従い、サンプルを実行します。
 
-> [AZURE.NOTE]HDInsight Emulator には Hadoop クラスターのみが含まれます。HBase や Storm は含まれません。
+> [AZURE.NOTE] HDInsight Emulator には Hadoop クラスターのみが含まれます。HBase や Storm は含まれません。
 
 
 HDInsight Emulator は、Hadoop サンドボックスによく似たローカル開発環境を提供します。Hadoop に慣れている場合は、Hadoop 分散ファイル システム (HDFS) を使用して HDInsight Emulator を使い始めることができます。HDInsight では、既定のファイル システムが Azure BLOB ストレージです。そのため、最終的には Azure BLOB ストレージを使用してジョブを開発することになります。Azure BLOB ストレージを HDInsight Emulator で使用するには、エミュレーターの構成を変更する必要があります。
 
-> [AZURE.NOTE]HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
+> [AZURE.NOTE] HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
 
 
 ## 前提条件
@@ -37,19 +37,22 @@ HDInsight Emulator は、Hadoop サンドボックスによく似たローカル
 
 - HDInsight Emulator には 64 ビット版 Windows が必要です。次の要件のうち 1 つを満たしている必要があります。
 
-	- Windows 7 Service Pack 1
-	- Windows Server 2008 R2 Service Pack 1
+	- Windows 10
 	- Windows 8
 	- Windows Server 2012
 
-- **Azure PowerShell**[Azure PowerShell のインストールおよび使用](http://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell**[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 
 ##<a name="install"></a>HDInsight Emulator のインストール
 
 Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用してインストールします。
 
-> [AZURE.NOTE]現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。<ul> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li> <li>Hortonworks Data Platform</li> </ul>
+> [AZURE.NOTE] 現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。エミュレーターの以前のバージョンがインストールされている場合は、エミュレーターの最新バージョンをインストールする前に、次の 2 つのコンポーネントをコントロール パネルの [プログラムと機能] からアンインストールする必要があります。
+><ul>
+> <li>Microsoft HDInsight Emulator for Azure または HDInsight 開発者プレビュー (インストールされているどちらかのコンポーネント)</li>
+> <li>Hortonworks Data Platform</li>
+> </ul>
 
 
 **HDInsight Emulator をインストールするには**
@@ -111,7 +114,7 @@ HDInsight Visual Studio ツールのインストール方法については、[�
 
 1. HDInsight Emulator への接続中に、ダイアログ ボックスに HiveServer2 の接続の成功が示された場合でも、C:\\hdp\\hive-*version*\\conf\\hive-site.xml にある Hive 構成ファイルの **hive.security.authorization.enabled プロパティ**を手動で **false** に設定し、ローカル エミュレーターを再起動する必要があります。HDInsight Tools for Visual Studio は、テーブルの上位 100 行をプレビューしている場合のみ、HiveServer2 に接続します。このようなクエリを使用しない場合は、Hive 構成をそのままにすることができます。
 
-2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要になる可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
+2. HDInsight Emulator を実行するコンピューターで動的 IP の割り当て (DHCP) を使用している場合は、C:\\hdp\\hadoop-*version*\\etc\\hadoop\\core-site.xml を更新し、**hadoop.proxyuser.hadoop.hosts** プロパティの値を (*) に変更することが必要である可能性があります。これにより、Hadoop ユーザーは、すべてのホストから接続して Visual Studio で入力されたユーザーに偽装することができます。
 
 		<property>
 			<name>hadoop.proxyuser.hadoop.hosts</name>
@@ -184,7 +187,7 @@ Hadoop コマンドの詳細については、[Hadoop コマンド マニュア�
 
 HDInsight Emulator をインストールすると、Windows 上の Apache Hadoop ベースのサービスについてユーザーが学習できるサンプルもインストールされます。これらのサンプルは、通常、ビッグ データ セットを処理する際に必要なタスクを対象としています。上記 MapReduce のチュートリアルでビルドされたサンプルを試すと、MapReduce プログラミング モデルとそのエコシステムに慣れることができます。
 
-サンプル データは、処理する IIS World Wide Web Consortium (W3C) ログ データを軸として整理されています。データ生成ツールが用意されていて、さまざまなサイズのデータ セットを作成して HDFS や Azure BLOB ストレージにインポートできます(詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」に関するページをご覧ください)。その後、Azure PowerShell スクリプトによって生成されたデータのページ上で MapReduce、Pig、Hive ジョブを実行できます。Pig スクリプトと Hive スクリプトは MapReduce 上の抽象化レイヤーであり、最終的に MapReduce プログラムにコンパイルされます。一連のジョブを実行して、これらの異なる技術を使用する効果と、処理タスクの実行にデータ サイズが及ぼす影響を自分の目で確認することができます。
+サンプル データは、処理する IIS World Wide Web Consortium (W3C) ログ データを軸として整理されています。データ生成ツールが用意されていて、さまざまなサイズのデータ セットを作成して HDFS や Azure BLOB ストレージにインポートできます(詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」に関するページをご覧ください)。その後、Azure PowerShell スクリプトによって生成されたデータのページ上で MapReduce、Pig、Hive ジョブを実行できます。Pig スクリプトと Hive スクリプトは MapReduce 上の抽象化レイヤーであり、最終的に MapReduce プログラムにコンパイルされます。一連のジョブを実行して、これらの異なる技術を使用する効果と、処理タスクの実行にデータ サイズが及ぼす影響を自分の目で確認することができます。
 
 ### このセクションの内容
 
@@ -260,7 +263,22 @@ jar ファイルとソース ファイルは C:\\Hadoop\\GettingStarted\\Java �
 
 		hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>パラメーター</td><td>注</td></tr> <tr><td>w3c\_scenarios.jar</td><td>この jar ファイルは C:\\hdp\\GettingStarted\\Java フォルダーにあります。</td></tr> <tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>この型は、次のどちらかに置き換えることができます。<ul> <li>microsoft.hadoop.w3c.AverageTimeTaken</li> <li>microsoft.hadoop.w3c.ErrorsByPage</li> </ul></td></tr> <tr><td>/w3c/input/small/data\_w3c\_small.txt</td><td>この入力ファイルは、次のどちらかに置き換えることができます。<ul> <li>/w3c/input/medium/data\_w3c\_medium.txt</li> <li>/w3c/input/large/data\_w3c\_large.txt</li> </ul></td></tr> <tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr> </table>
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>パラメーター</td><td>注</td></tr>
+	<tr><td>w3c_scenarios.jar</td><td>この jar ファイルは C:\hdp\GettingStarted\Java フォルダーにあります。</td></tr>
+	<tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>型は、次のどちらかに置き換えることができます。
+	<ul>
+	<li>microsoft.hadoop.w3c.AverageTimeTaken</li>
+	<li>microsoft.hadoop.w3c.ErrorsByPage</li>
+	</ul></td></tr>
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>入力ファイルは、次のどちらかに置き換えることができます。
+	<ul>
+	<li>/w3c/input/medium/data_w3c_medium.txt</li>
+	<li>/w3c/input/large/data_w3c_large.txt</li>
+	</ul></td></tr>
+	<tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr>
+	</table>
 
 4. 次のコマンドを実行して、出力ファイルの内容を表示します。
 
@@ -295,7 +313,7 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
 5. 次のコマンドを実行して、**w3ccreate.hql** スクリプト ファイルを実行します。このスクリプトは Hive テーブルを作成し、データを Hive テーブルに読み込みます。
 
-	> [AZURE.NOTE]この段階で、HDInsight Visual Studio ツールを使用して Hive クエリを実行することもできます。Visual Studio を開いて新しいプロジェクトを作成し、HDInsight テンプレートから **[Hive アプリケーション]** を選択します。プロジェクトが開いたら、クエリを新しいアイテムとして追加します。クエリは **C:/hdp/GettingStarted/Hive/w3c** にあります。クエリがプロジェクトに追加されたら、**${hiveconf:input}** を **/w3c/hive/input** に置き換え、**[送信]** を押します。
+	> [AZURE.NOTE] この段階で、HDInsight Visual Studio ツールを使用して Hive クエリを実行することもできます。Visual Studio を開いて新しいプロジェクトを作成し、HDInsight テンプレートから **[Hive アプリケーション]** を選択します。プロジェクトが開いたら、クエリを新しいアイテムとして追加します。クエリは **C:/hdp/GettingStarted/Hive/w3c** にあります。クエリがプロジェクトに追加されたら、**${hiveconf:input}** を **/w3c/hive/input** に置き換え、**[送信]** を押します。
 
 		C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ccreate.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
 
@@ -314,12 +332,21 @@ Hive クエリ エンジンは、構造化照会言語 (SQL) の達人であれ�
 
 6. 次のコマンドを実行して、**w3ctotalhitsbypage.hql** HiveQL スクリプト ファイルを実行します。
 
-	> [AZURE.NOTE]前に説明したように、HDInsight Visual Studio ツールを使用してこのクエリを実行することもできます。
+	> [AZURE.NOTE] 前に説明したように、HDInsight Visual Studio ツールを使用してこのクエリを実行することもできます。
 
         C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\hive-0.13.0.2.1.3.0-1981\\bin\\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3ctotalhitsbypage.hql</td><td> この Hive スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3caveragetimetaken.hql</li> <li>C:\\hdp\\GettingStarted\\Hive\\w3c\\w3cerrorsbypage.hql</li> </ul> </td></tr>
-
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\hdp\hive-0.13.0.2.1.3.0-1981\bin\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr>
+	<tr><td>C:\hdp\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> Hive スクリプト ファイルは、次のいずれかに置き換えることができます。
+	<ul>
+	<li>C:\hdp\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li>
+	<li>C:\hdp\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li>
+	</ul>
+	</td></tr>
+	
 	</table>
 
 	w3ctotalhitsbypage.hql HiveQL スクリプトの内容は次のとおりです。
@@ -360,12 +387,25 @@ Pig 処理では、*Pig Latin* と呼ばれるデータ フロー言語が使用
 
 		C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
 
-	コマンドの要素を次の表に示します。<table border="1"> <tr><td>ファイル</td><td>説明</td></tr> <tr><td>C:\\hdp\\pig-0.12.1.2.1.3.0-1981\\bin\\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr> <tr><td>C:\\hdp\\GettingStarted\\Pig\\w3c\\TotalHitsForPage.pig</td><td>この Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。<ul> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\AverageTimeTaken.pig</li> <li>C:\\hdp\\GettingStarted\\Pig\\w3c\\ErrorsByPage.pig</li> </ul> </td></tr> <tr><td>/w3c/input/small/data\_w3c\_small.txt</td><td> このパラメーターは次のようなもっと大きなファイルに置き換えることができます。
-
+	コマンドの要素を次の表に示します。
+	<table border="1">
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\hdp\pig-0.12.1.2.1.3.0-1981\bin\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr>
+	<tr><td>C:\hdp\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td> Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。
 	<ul>
-<li>/w3c/input/medium/data_w3c_medium.txt</li>
-<li>/w3c/input/large/data_w3c_large.txt</li>
-</ul></td></tr> </table>
+	<li>C:\hdp\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li>
+	<li>C:\hdp\GettingStarted\Pig\w3c\ErrorsByPage.pig</li>
+	</ul>
+	</td></tr>
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td> このパラメーターはもっと大きなファイルに置き換えることができます。
+	
+	<ul>
+	<li>/w3c/input/medium/data_w3c_medium.txt</li>
+	<li>/w3c/input/large/data_w3c_large.txt</li>
+	</ul>
+	
+	</td></tr>
+	</table>
 
 	出力は次のようになります。
 
@@ -391,13 +431,13 @@ The samples currently contain all the required binaries, so building is not requ
 ##<a name="blobstorage"></a>Azure BLOB ストレージへの接続
 HDInsight Emulator は、既定のファイル システムとして HDFS を使用します。ただし、Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。ローカル ストレージの代わりに Azure BLOB ストレージを使用するように HDInsight Emulator を構成できます。次の手順に従って Azure にストレージ コンテナーを作成し、それを HDInsight Emulator に接続します。
 
->[AZURE.NOTE]HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[「HDInsight での Azure BLOB ストレージの使用」](../hdinsight-use-blob-storage.md)に関するページをご覧ください。
+>[AZURE.NOTE] HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[「HDInsight での Azure BLOB ストレージの使用」](hdinsight-hadoop-use-blob-storage.md)に関するページをご覧ください。
 
-次の手順を開始する前に、ストレージ アカウントを作成している必要があります。詳しい手順については、「[ストレージ アカウントの作成方法](../storage-create-storage-account.md)」を参照してください。
+次の手順を開始する前に、ストレージ アカウントを作成している必要があります。詳しい手順については、「[ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md)」を参照してください。
 
 **コンテナーを作成するには**
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://ms.portal.azure.com/)にサインインします。
 2. 左側の **[新規]** をクリックし、**[データ + ストレージ]**、**[Storage]** の順にクリックします。
 3. [ストレージ アカウント] ブレードで、以下の画面キャプチャに示すように、プロパティを構成します。
 	
@@ -466,7 +506,7 @@ Emulator をインストールしたコンピューターでコントロール �
 ##<a name="nextsteps"></a>次のステップ
 この MapReduce チュートリアルでは、HDInsight Emulator (Hadoop サンド ボックス) をインストールして、Hadoop ジョブをいくつか実行しました。詳細については、次の記事を参照してください。
 
-- [Azure HDInsight の概要](../hdinsight-get-started.md)
+- [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
 - [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [HDInsight Emulator リリース ノート](hdinsight-emulator-release-notes.md)
@@ -484,18 +524,18 @@ Emulator をインストールしたコンピューターでコントロール �
 [hdinsight-emulator-install]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
 [hdinsight-emulator-release-notes]: hdinsight-emulator-release-notes.md
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-develop-deploy-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-versions]: hdinsight-component-versioning.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[Powershell-install-configure]: powershell-install-configure.md
 
 [hadoop-commands-manual]: http://hadoop.apache.org/docs/r1.1.1/commands_manual.html
 
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0302_2016-->

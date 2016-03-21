@@ -1,19 +1,19 @@
-<properties 
+<properties
 	pageTitle="Azure Automation での Runbook の作成またはインポート"
 	description="この記事では、Azure Automation で新しい Runbook を作成する方法、またはファイルから Runbook をインポートする方法について説明します。"
 	services="automation"
 	documentationCenter=""
-	authors="bwren"
+	authors="mgoedtel"
 	manager="stevenka"
 	editor="tysonn" />
-<tags 
+<tags
 	ms.service="automation"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="09/22/2015"
-	ms.author="bwren" />
+	ms.date="02/29/2016"
+	ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の作成またはインポート
 
@@ -23,19 +23,19 @@
 
 Azure ポータルまたは Windows PowerShell のいずれかを使用して、Azure Automation で新しい Runbook を作成できます。Runbook を作成した後は、「[Windows PowerShell ワークフローについて](automation-powershell-workflow.md)」および「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」の情報を使用して Runbook を編集できます。
 
-### Azure ポータルで新しい Azure Automation Runbook を作成するには
+### Azure クラシック ポータルで新しい Azure Automation Runbook を作成するには
 
 Azure ポータルで使用できるのは [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) だけです。
 
-1. Azure ポータルで、**[新規]**、**[App Services]**、**[Automation]**、**[Runbook]**、**[簡易作成]** の順にクリックします。
+1. Azure クラシック ポータルで、**[新規]**、**[App Services]**、**[Automation]**、**[Runbook]**、**[簡易作成]** の順にクリックします。
 2. 必要な情報を入力し、**[作成]** をクリックします。Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
 3. ここで Runbook を編集する場合は、**[Runbook の編集]** をクリックします。それ以外の場合は、**[OK]** をクリックします。
 4. 新しい Runbook が **[Runbook]** タブに表示されます。
 
 
-### Azure プレビュー ポータルで新しい Azure Automation Runbook を作成するには
+### Azure ポータルで新しい Azure Automation Runbook を作成するには
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。 
+1. Azure ポータルで、Automation アカウントを開きます。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックします。
 2. Runbook の **[名前]** を入力し、[[種類]](automation-runbook-types.md) を選択します。Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
@@ -50,7 +50,7 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
-    New-AzureAutomationRunbook –AutomationAccountName $automationAccountName –Name $runbookName 
+    New-AzureAutomationRunbook –AutomationAccountName $automationAccountName –Name $runbookName
 
 ## ファイルから Azure Automation への Runbook のインポート
 
@@ -60,8 +60,8 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 - PowerShell ワークフローを含む .ps1 ファイルは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) にのみインポートできます。ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。
 - ワークフローが含まれていない .ps1 ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートできます。PowerShell ワークフロー Runbook にインポートされた場合は、ワークフローに変換されて、行われた変更を示すコメントが Runbook に追加されます。
 
-### Azure ポータルでファイルから Runbook をインポートするには
-次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。他の種類の場合は、Azure プレビュー ポータルを使用する必要があります。
+### Azure クラシック ポータルでファイルから Runbook をインポートするには
+次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。他の種類の場合は、Azure ポータルを使用する必要があります。
 
 1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、Automation アカウントを選択します。
 2. **[インポート]** をクリックします。
@@ -71,10 +71,10 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 6. Runbook を実行するには、先に [Runbook を発行する](#publishing-a-runbook)必要があります。
 
 
-### Azure プレビュー ポータルでファイルから Runbook をインポートするには
+### Azure ポータルでファイルから Runbook をインポートするには
 次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。 
+1. Azure ポータルで、Automation アカウントを開きます。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[インポート]** をクリックします。
 4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
@@ -101,15 +101,15 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 新しい Runbook を作成またはインポートしたときは、実行する前に発行する必要があります。Azure Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。ドラフト バージョンを変更しても発行バージョンに影響はありません。ドラフト バージョンを使用できるようにする必要がある場合は、それを発行します。これにより、発行バージョンがドラフト バージョンで上書きされます。
 
-## Azure ポータルを使用して Runbook を発行するには
+## Azure クラシック ポータルを使用して Runbook を発行するには
 
-1. Azure ポータルで Runbook を開きます。
+1. Azure クラシック ポータルで Runbook を開きます。
 1. 画面上部の **[作成者]** をクリックします。
 1. 画面下部の **[発行]** をクリックし、確認メッセージに **[はい]** をクリックします。
 
-## Azure プレビュー ポータルを使用して Runbook を発行するには
+## Azure ポータルを使用して Runbook を発行するには
 
-1. Azure プレビュー ポータルで Runbook を開きます。
+1. Azure ポータルで Runbook を開きます。
 1. **[編集]** をクリックします。
 1. **[発行]** ボタンをクリックし、確認メッセージに **[はい]** をクリックします。
 
@@ -120,7 +120,7 @@ Windows PowerShell の [Publish-AzureAutomationRunbook](https://msdn.microsoft.c
 
 	$automationAccountName = "MyAutomationAccount"
 	$runbookName = "Sample-TestRunbook"
-	
+
 	Publish-AzureAutomationRunbook –AutomationAccountName $automationAccountName –Name $runbookName
 
 
@@ -131,4 +131,4 @@ Windows PowerShell の [Publish-AzureAutomationRunbook](https://msdn.microsoft.c
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

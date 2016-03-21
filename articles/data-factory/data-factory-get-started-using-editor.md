@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する" 
-	description="このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
+	description="このチュートリアルでは、Azure クラシック ポータルの Data Factory エディターを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/02/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-get-started.md)
-- [Using Data Factory Editor](data-factory-get-started-using-editor.md)
-- [Using PowerShell](data-factory-monitor-manage-using-powershell.md)
-- [Using Visual Studio](data-factory-get-started-using-vs.md)
+- [チュートリアルの概要](data-factory-get-started.md)
+- [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
+- [Visual Studio の使用](data-factory-get-started-using-vs.md)
+- [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 
 
 
@@ -31,16 +31,18 @@
 手順 | 説明
 -----| -----------
 [手順 1. Azure Data Factory を作成する](#CreateDataFactory) | この手順では、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。  
-[手順 2. リンクされたサービスを作成する](#CreateLinkedServices) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。      
+[手順 2. リンクされたサービスを作成する](#CreateLinkedServices) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。パイプラインの入力データは、Azure Blob Storage の BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。      
 [手順 3. 入力テーブルと出力テーブルを作成する](#CreateInputAndOutputDataSets) | 前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つの Data Factory テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。 
-[手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。
-[手順 5. スライスとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure プレビュー ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
- 
+[手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。 
+[手順 5. スライスとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
 
-## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
-この手順では、Azure プレビュー ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
+> [AZURE.IMPORTANT] 
+「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
 
-1.	[Azure プレビュー ポータル][azure-preview-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
+## <a name="CreateDataFactory"></a> 手順 1. Azure データ ファクトリを作成する
+この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
+
+1.	[Azure ポータル][azure-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
 
 	![New->DataFactory][image-data-factory-new-datafactory-menu]
 
@@ -54,15 +56,15 @@
 
 			![リソース グループの作成][image-data-factory-create-resource-group]
 
-		このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-overview.md)に関するページを参照してください。  
+		このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../resource-group-overview.md)に関するページを参照してください。  
 7. **[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加する]** が選択されていることを確認してください。
 8. **[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
 
-	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+	Azure Data Factory の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 	 
-	![使用できないデータ ファクトリ名][image-data-factory-name-not-available]
+	![使用できない Data Factory 名][image-data-factory-name-not-available]
 	
-	> [AZURE.NOTE]データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+	> [AZURE.NOTE] データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
@@ -79,7 +81,6 @@
 
 	![[作成とデプロイ] タイル][image-author-deploy-tile]
 
-	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
@@ -87,13 +88,13 @@
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![BLOB ストレージ JSON の編集][image-editor-blob-storage-json]
+	![エディターの Blob Storage JSON][image-editor-blob-storage-json]
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
 6. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![エディターの BLOB ストレージのデプロイ][image-editor-blob-storage-deploy]
+	![エディターの Blob Storage デプロイ][image-editor-blob-storage-deploy]
 
 ### Azure SQL Database 用にリンクされたサービスを作成する
 1. **Data Factory エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL Database]** を選択します。Azure SQL のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
@@ -222,7 +223,7 @@
 ## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -299,7 +300,7 @@
 
 2. 以下のような図が表示されるはずです。
 
-	![[ダイアグラム] ビュー][image-data-factory-get-started-diagram-blade]
+	![ダイアグラムビュー][image-data-factory-get-started-diagram-blade]
 
 	パイプラインとテーブルは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。オブジェクト (入力/出力テーブルまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。 
 3. ダイアグラム ビューで **[ADFTutorialPipeline]** を右クリックして **[パイプラインを開く]** をクリックします。パイプライン内のアクティビティに加えて、アクティビティの入力データセットと出力データセットが表示されます。このチュートリアルでは、パイプラインのアクティビティ (コピー アクティビティ) は、入力データセットとして EmpTableBlob、出力データセットとして EmpSQLTable の 1 つだけです。   
@@ -310,9 +311,9 @@
  
 
 ## <a name="MonitorDataSetsAndPipeline"></a>手順 5. データセットとパイプラインを監視する
-このステップでは、Azure ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視用のコマンドレットの使用方法については、「[PowerShell コマンドレットを使用した Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
+このステップでは、Azure クラシック ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視用のコマンドレットの使用方法については、「[PowerShell コマンドレットを使用した Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
-1. まだ開いていない場合は、[Azure ポータル (プレビュー)][azure-preview-portal] に移動します。 
+1. まだ開いていない場合は、[Azure クラシック ポータル (プレビュー)][azure-portal] に移動します。 
 2. **ADFTutorialDataFactory** のブレードが開いていない場合は、**スタート画面**で **[ADFTutorialDataFactory]** をクリックして開きます。 
 3. 作成したテーブルの数と名前、およびパイプラインの名前がブレードに表示されます。
 
@@ -327,7 +328,7 @@
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
     
 
-	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
+	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
 	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
@@ -371,18 +372,16 @@
 
 
 ## 概要 
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure プレビュー ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
 
 1.	**Azure Data Factory を作成します**。
 2.	データ ストアとコンピューティングをデータ ファクトリに**リンクするサービス** (**リンクされたサービス**と呼びます) を作成します。
 3.	パイプラインの入力データと出力データを記述した**テーブル**を作成します。
-4.	**パイプライン**を作成します。パイプラインは、入力を処理し、出力を生成する 1 つ以上のアクティビティで構成されます。パイプラインの **開始**時間と**終了**時間を指定して、パイプラインの有効期間を設定します。有効期間は、データ スライスが生成される期間を定義します。 
+4.	**パイプライン**を作成します。パイプラインは、入力を処理し、出力を生成する 1 つ以上のアクティビティで構成されます。パイプラインの **開始**時間と**終了**時間を指定して、パイプラインの有効期間を設定します。有効期間は、データ スライスが生成される期間を定義します。
 
 
-サポートされているアクティビティの一覧については、トピック「[パイプラインとアクティビティ][msdn-activities]」を参照してください。サポートされているリンクされたサービスの一覧については、MSDN ライブラリのトピック「[リンクされたサービス][msdn-linkedservices]」を参照してください。
- 
-Azure PowerShell を使用してこのチュートリアルの内容を実行する方法については、「[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
-
+## 関連項目
+Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 <!--Link references-->
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -393,19 +392,18 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [msdn-linkedservices]: https://msdn.microsoft.com/library/dn834986.aspx
 [data-factory-naming-rules]: https://msdn.microsoft.com/library/azure/dn835027.aspx
 
-[azure-preview-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 [download-azure-powershell]: http://azure.microsoft.com/documentation/articles/install-configure-powershell
 [sql-management-studio]: http://azure.microsoft.com/documentation/articles/sql-database-manage-azure-ssms/#Step2
 [sql-cmd-exe]: https://msdn.microsoft.com/library/azure/ee336280.aspx
 
-[data-factory-editor]: data-factory-editor.md
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
 [adf-tutorial]: data-factory-tutorial.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
 [data-factory-introduction]: data-factory-introduction.md
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
-[data-factory-create-sql-database]: ../sql-database-create-configure.md
+
 
 
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
@@ -414,16 +412,6 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 <!--Image references-->
 
 [DataSlicesBySliceTime]: ./media/data-factory-get-started-using-editor/DataSlicesBySliceTime.png
-
-[image-data-factory-getstarted-new-everything]: ./media/data-factory-get-started-using-editor/GetStarted-New-Everything.png
-
-[image-data-factory-gallery-storagecachebackup]: ./media/data-factory-get-started-using-editor/getstarted-gallery-datastoragecachebackup.png
-
-[image-data-factory-gallery-storagecachebackup-seeall]: ./media/data-factory-get-started-using-editor/getstarted-gallery-datastoragecachebackup-seeall.png
-
-[image-data-factory-getstarted-data-services-data-factory-selected]: ./media/data-factory-get-started-using-editor/getstarted-data-services-data-factory-selected.png
-
-[image-data-factory-getstarted-data-factory-create-button]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-create-button.png
 
 [image-data-factory-getstarted-new-data-factory-blade]: ./media/data-factory-get-started-using-editor/getstarted-new-data-factory.png
 
@@ -443,30 +431,6 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 
 [image-datafactoryblade-diagramtile]: ./media/data-factory-get-started-using-editor/getstarted-datafactoryblade-diagramtile.png
 
-
-[image-data-factory-get-started-startboard]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-startboard.png
-
-[image-data-factory-get-started-linked-services-link]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-linked-services-link.png
-
-[image-data-factory-get-started-linked-services-add-store-button]: ./media/data-factory-get-started-using-editor/getstarted-linked-services-add-store-button.png
-
-[image-data-factory-linked-services-get-started-new-data-store]: ./media/data-factory-get-started-using-editor/getstarted-linked-services-new-data-store.png
-
-[image-data-factory-get-started-new-data-store-with-storage]: ./media/data-factory-get-started-using-editor/getstarted-linked-services-new-data-store-with-storage.png
-
-[image-data-factory-get-started-storage-account-name-key]: ./media/data-factory-get-started-using-editor/getstarted-storage-account-name-key.png
-
-[image-data-factory-get-started-linked-services-list-with-myblobstore]: ./media/data-factory-get-started-using-editor/getstarted-linked-services-list-with-myblobstore.png
-
-[image-data-factory-get-started-linked-azure-sql-properties]: ./media/data-factory-get-started-using-editor/getstarted-linked-azure-sql-properties.png
-
-[image-data-factory-get-started-azure-sql-connection-string]: ./media/data-factory-get-started-using-editor/getstarted-azure-sql-connection-string.png
-
-[image-data-factory-get-started-linked-services-list-two-stores]: ./media/data-factory-get-started-using-editor/getstarted-linked-services-list-two-stores.png
-
-[image-data-factory-get-started-storage-explorer]: ./media/data-factory-get-started-using-editor/getstarted-storage-explorer.png
-
-[image-data-factory-get-started-diagram-link]: ./media/data-factory-get-started-using-editor/getstarted-diagram-link.png
 
 [image-data-factory-get-started-diagram-blade]: ./media/data-factory-get-started-using-editor/getstarted-diagram-blade.png
 
@@ -488,17 +452,11 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 
 [image-data-factory-create-resource-group]: ./media/data-factory-get-started-using-editor/CreateNewResourceGroup.png
 
-[image-data-factory-preview-storage-key]: ./media/data-factory-get-started-using-editor/PreviewPortalStorageKey.png
-
-[image-data-factory-database-connection-string]: ./media/data-factory-get-started-using-editor/DatabaseConnectionString.png
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-get-started-using-editor/NewDataFactoryMenu.png
 
-[image-data-factory-sql-management-console]: ./media/data-factory-get-started-using-editor/getstarted-azure-sql-management-console.png
-
-[image-data-factory-sql-management-console-2]: ./media/data-factory-get-started-using-editor/getstarted-azure-sql-management-console-2.png
 
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

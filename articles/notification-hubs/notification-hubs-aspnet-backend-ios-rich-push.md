@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="09/24/2015"
+	ms.date="12/16/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs のリッチなプッシュ
@@ -71,7 +71,7 @@
             public NotificationHubClient Hub { get; set; }
 
             private Notifications() {
-                // Placeholders: replace with the connection string (with full access) for your notification hub and the hub name from the Azure Management Portal
+                // Placeholders: replace with the connection string (with full access) for your notification hub and the hub name from the Azure Classics Portal
                 Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}",  "{hub name}");
             }
 
@@ -96,7 +96,7 @@
             }
         }
 
-> [AZURE.NOTE](optional): プロジェクト リソースの追加と取得方法の詳細については、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](http://support.microsoft.com/kb/319292)」を参照してください。
+	>[AZURE.NOTE](optional): プロジェクト リソースの追加と取得方法の詳細については、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](http://support.microsoft.com/kb/319292)」を参照してください。
 
 7. **NotificationsController.cs** で次のスニペットを使用して **NotificationsController** を再定義します。これによりデバイスに最初のリッチなサイレント通知の ID が送信され、クライアント側で画像の取得が可能になります。
 
@@ -381,4 +381,4 @@
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

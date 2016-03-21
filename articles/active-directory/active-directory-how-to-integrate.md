@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/24/2015"
+   ms.date="02/02/2016"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory との統合
@@ -28,9 +28,9 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 ### アプリケーションにサインインする手段としての Azure AD のサポート
 
-**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。開発者としては、保存して保護するパスワードが 1 つ減ります。忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。500 万近くの組織の 4 億 3000 万を超えるユーザーが、既に Azure AD にサインインしています。[Azure AD サインインのサポートの追加](active-directory-authentication-scenarios.md)に関する詳細を参照してください。
+**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。開発者としては、保存して保護するパスワードが 1 つ減ります。忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。[Azure AD サインインのサポートの追加](active-directory-authentication-scenarios.md)に関する詳細を参照してください。
 
-**アプリケーションへのサインアップが簡単になります。** アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。[Azure AD アカウント ログイン用のアプリケーションへのサインアップ](../mobile-services-how-to-register-active-directory-authentication.md)に関する詳細を参照してください。
+**アプリケーションへのサインアップが簡単になります。** アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。Azure AD アカウント ログイン用のアプリケーションへのサインアップの詳細については、[こちら](../mobile-services/mobile-services-how-to-register-active-directory-authentication.md)をご覧ください。
 
 ### ユーザーの参照、ユーザーのプロビジョニングの管理、およびアプリケーションへのアクセスの制御
 
@@ -48,7 +48,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 ### Azure および Office 365 マーケットプレースのアプリケーションの宣伝
 
-**既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。** マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。[Azure Marketplace](http://azure.microsoft.com/marketplace/partner-program/) のアプリケーションの宣伝に関する詳細を参照してください。
+**既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。** マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。[Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/) のアプリケーションの宣伝に関する詳細を参照してください。
 
 **ユーザーがアプリケーションにサインアップすると、アプリケーションは Azure AD アクセス パネルと Office 365 アプリケーション ランチャーに表示されるようになります。** ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。[Azure AD アクセス パネル](active-directory-saas-access-panel-introduction.md)に関する詳細を参照してください。
 
@@ -68,7 +68,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 ### 高度なセキュリティ機能
 
-**多要素認証。** Azure AD は、ネイティブな多要素認証機能を提供します。IT 管理者はアプリケーションへのアクセスに多要素認証を要求でき、このサポートを自分でコーディングする必要はありません。[Multi-Factor Authentication](http://azure.microsoft.com/documentation/services/multi-factor-authentication/) に関する詳細を参照してください。
+**多要素認証。** Azure AD は、ネイティブな多要素認証機能を提供します。IT 管理者はアプリケーションへのアクセスに多要素認証を要求でき、このサポートを自分でコーディングする必要はありません。[Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/) に関する詳細を参照してください。
 
 **異常なサインインの検出。** Azure AD は 1 日に 10 億以上のサインインを処理しながら、機械学習アルゴリズムを使用して疑わしいアクティビティを検出し、可能性のある問題を IT 管理者に通知します。Azure AD のサインインをサポートすることにより、アプリケーションでこの保護を利用できます。[Azure Active Directory アクセス レポート](active-directory-view-access-usage-reports.md)の表示に関する詳細を参照してください。
 
@@ -90,4 +90,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

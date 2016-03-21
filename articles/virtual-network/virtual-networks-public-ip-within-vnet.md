@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/04/2015"
+   ms.date="12/11/2015"
    ms.author="telmos" />
 
 # Virtual Network (VNet) でのパブリック IP アドレス空間
@@ -51,4 +51,4 @@
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1217_2015-->

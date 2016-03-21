@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/26/2015"
+	ms.date="02/05/2016"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
 
-**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight にデプロイされる Hadoop クラスター上で大量のデータを処理できます。
+**Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight に展開される Hadoop クラスター上で大量のデータを処理できます。
 
-> [AZURE.NOTE]このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Windows)](hdinsight-hadoop-r-scripts.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Windows)](hdinsight-hadoop-r-scripts.md)」を参照してください。
 
 ## R とは
 
@@ -48,7 +48,7 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 | [Rcpp](https://cran.r-project.org/web/packages/Rcpp/index.html) | R と C++ の統合 |
 | [RJSONIO](https://cran.r-project.org/web/packages/RJSONIO/index.html) | R オブジェクトと JSON の間のシリアル化/逆シリアル化 |
 | [bitops](https://cran.r-project.org/web/packages/bitops/index.html) | 整数ベクトルのビット演算機能。 |
-| [digest] (R オブジェクトの暗号化ハッシュ ダイジェストの作成) | R オブジェクトの暗号化ハッシュ ダイジェストの作成 |
+| [digest](https://cran.r-project.org/web/packages/digest/index.html) | R オブジェクトの暗号化ハッシュ ダイジェストの作成 |
 | [functional](https://cran.r-project.org/web/packages/functional/index.html) | Curry、Compose などの高階関数 |
 | [reshape2](https://cran.r-project.org/web/packages/reshape2/index.html) | データの柔軟な再構築と集計 |
 | [stringr](https://cran.r-project.org/web/packages/stringr/index.html) | 一般的な文字列操作用の単純かつ整合性のあるラッパー |
@@ -60,7 +60,7 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 
 HDInsight クラスターへの R のインストールには、[https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh) スクリプト アクションを使用します。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+> [AZURE.NOTE] Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -137,15 +137,13 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 
 - 「[HDInsight クラスターでの Spark のインストールと使用][hdinsight-install-spark]」では、HDInsight Hadoop クラスターでの Spark のインストールと使用を行うためのクラスター カスタマイズの使用法に関する手順が説明されています。Spark はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。
 
-- [HDInsight クラスターでの Giraph のインストール](../hdinsight-hadoop-giraph-install): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
+- [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 
-- [HDInsight クラスターでの Solr のインストール](../hdinsight-hadoop-solr-install):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
+- [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
 - [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
-[powershell-install-configure]: install-configure-powershell-linux.md
-[hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0211_2016-->

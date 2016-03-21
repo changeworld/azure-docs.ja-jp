@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/15/2015"
-   ms.author="sahajs"/>
+   ms.date="01/07/2016"
+   ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
 
@@ -24,7 +24,7 @@
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Microsoft Azure 管理ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Microsoft Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
 
 
 ## 認証
@@ -72,7 +72,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 - 詳細な[アクセス許可][]により、個々の列、テーブル、ビュー、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。
 - [ストアド プロシージャ][]を使用すると、データベースで実行できるアクションを制限できます。
 
-Microsoft Azure 管理ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure プレビュー ポータルでのロール ベースのアクセス制御][]」を参照してください。
+Azure クラシック ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure ポータルでのロール ベースのアクセス制御][]」を参照してください。
 
 
 
@@ -87,7 +87,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ```
 
-透過的なデータ暗号化は、[Azure ポータル][]のデータベース設定から有効にすることもできます。
+透過的なデータ暗号化は、[Azure クラシック ポータル][]のデータベース設定から有効にすることもできます。
 
 
 
@@ -114,9 +114,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
 [透過的なデータ暗号化]: http://go.microsoft.com/fwlink/?LinkId=526242
 [SQL Database 監査の使用]: sql-database-auditing-get-started.md
-[Azure ポータル]: https://portal.azure.com/
+[Azure クラシック ポータル]: https://portal.azure.com/
 
 <!--Other Web references-->
-[Azure プレビュー ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
+[Azure ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0114_2016-->

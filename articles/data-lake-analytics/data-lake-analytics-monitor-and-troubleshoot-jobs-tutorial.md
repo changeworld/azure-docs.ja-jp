@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング | Azure" 
-   description="Azure プレビュー ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。" 
+   pageTitle="Azure ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング | Azure" 
+   description="Azure ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,22 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/27/2015"
+   ms.date="02/11/2016"
    ms.author="jgao"/>
 
-# Azure プレビュー ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング
+# Azure ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング
 
-Azure プレビュー ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。
+Azure ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。
 
-このチュートリアルでは、不足しているソース ファイルの問題をセットアップし、Azure プレビュー ポータルを使用してその問題のトラブルシューティングを行います。
+このチュートリアルでは、不足しているソース ファイルの問題をセットアップし、Azure ポータルを使用してその問題のトラブルシューティングを行います。
 
 **前提条件**
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Data Lake Analytics ジョブ プロセスの基本的な知識**。「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-use-portal.md)」を参照してください。
-- **Data Lake Analytics アカウント**。「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-use-portal.md#create-adl-analytics-account)」を参照してください。
-- **既定の Data Lake Store アカウントへのサンプル データのコピー**。[ソース データの準備](data-lake-analytics-get-started-use-portal.md.md#prepare-source-data)に関する記述を参照してください。
+- **Data Lake Analytics ジョブ プロセスの基本的な知識**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+- **Data Lake Analytics アカウント**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md#create-adl-analytics-account)」を参照してください。
+- **既定の Data Lake Store アカウントへのサンプル データのコピー**。「[ソース データの準備](data-lake-analytics-get-started-portal.md#prepare-source-data)」を参照してください。
 
 ##Data Lake Analytics ジョブの送信
 
@@ -36,7 +36,7 @@ Azure プレビュー ポータルを使用して、Data Lake Analytics ジョ�
 
 **ジョブを送信するには**
 
-1. Azure プレビュー ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
+1. Azure ポータルで、左上隅にある **[Microsoft Azure]** をクリックします。
 2. Data Lake Analytics アカウント名のタイルをクリックします。ここにはアカウントの作成時にピン留めされます。アカウントがそこにピン留めされていない場合は、[ポータルから Analytics アカウントを開く](data-lake-analytics-manage-use-portal.md#access-adla-account)手順を参照してください。
 3. 上部のメニューから **[新しいジョブ]** をクリックします。
 4. ジョブ名および以下の U-SQL スクリプトを入力します。
@@ -107,7 +107,7 @@ Azure プレビュー ポータルを使用して、Data Lake Analytics ジョ�
 
 - [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 - [Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
-- [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-get-started-u-sql-studio.md)
-- [Azure プレビュー ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
+- [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-u-sql-get-started.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

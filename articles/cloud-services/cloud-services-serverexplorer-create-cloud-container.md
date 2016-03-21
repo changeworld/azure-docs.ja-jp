@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="10/14/2015"
+   ms.date="01/13/2016"
    ms.author="cawa"/>
 
 # Visual Studio を使用してクラウド サービス コンテナーを作成する方法
@@ -33,4 +33,4 @@ Visual Studio で**サーバー エクスプローラー**を表示するには�
 クラウド サービス コンテナーを作成した後は、クラウド サービスを[作成してデプロイ](cloud-services-how-to-create-deploy.md)できます。
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0121_2016-->

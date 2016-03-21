@@ -1,38 +1,38 @@
-<properties 
-	pageTitle="Stream Analytics 管理用 .NET SDK の使用方法について | Microsoft Azure" 
-	description="Stream Analytics 管理用 .NET SDK の使用分析ジョブの設定と実行方法について: プロジェクト、入力、出力、および変換を作成します。" 
-	keywords=".net skd,analytics ジョブ、イベント ハブ"
-	services="stream-analytics" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="paulettm" 
+<properties
+	pageTitle="Stream Analytics の管理用 .NET SDK | Microsoft Azure"
+	description="Stream Analytics 管理用 .NET SDK の使用分析ジョブの設定と実行方法について: プロジェクト、入力、出力、および変換を作成します。"
+	keywords=".net SDK、analytics API"
+	services="stream-analytics"
+	documentationCenter=""
+	authors="jeffstokes72"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="11/06/2015" 
+<tags
+	ms.service="stream-analytics"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="02/16/2016"
 	ms.author="jeffstok"/>
 
 
-# Azure Stream Analytics 管理用 .NET SDK を使用する分析ジョブの設定および実行
+# 管理用 .NET SDK: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 
-Azure Stream Analytics 管理用 .NET SDK を使用して分析ジョブを設定し、実行する方法について説明します。プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
+管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
+
+[管理用 Stream Analytics API の管理リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn889315.aspx)を参照してください。
 
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。Stream Analytics により、ユーザーはデータ ストリームを分析するためにストリーミングのジョブを設定でき、ほぼリアルタイムで分析を実行できます。
-
-.NET API リファレンスについては、「[Stream Analytics 管理用 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)」を参照してください。
 
 
 ## 前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - Visual Studio 2012 または 2013 のインストール。
-- [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。 
-- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
+- [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール。
+- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
 
 
 		# Log in to your Azure account
@@ -46,14 +46,14 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 		# Create an Azure resource group
 		New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
-		
+
 
 -	使用する入力ソースと出力ターゲットを設定します。詳しい手順については、サンプル入力を設定する場合は「[入力を追加する](stream-analytics-add-inputs.md)」、サンプル出力を設定する場合は「[出力を追加する](stream-analytics-add-outputs.md)」を参照してください。
 
 
 ## プロジェクトの設定
 
-分析ジョブを作成するには、まず、プロジェクトを設定します。
+.NET 用 Stream Analytics API を使用して分析ジョブを作成するには、まずプロジェクトを設定します。
 
 1. Visual Studio C# .NET コンソール アプリケーションを作成します。
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。2 つ目は、認証で使用する Azure Active Directory クライアントです。
@@ -101,7 +101,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 		            var context = new AuthenticationContext(
 						ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
 						ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-		
+
 		            result = context.AcquireToken(
 		                resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
 		                clientId: ConfigurationManager.AppSettings["AsaClientId"],
@@ -113,17 +113,17 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 		            Console.WriteLine(threadEx.Message);
 		        }
 		    });
-		
+
 		    thread.SetApartmentState(ApartmentState.STA);
 		    thread.Name = "AcquireTokenThread";
 		    thread.Start();
 		    thread.Join();
-		
+
 		    if (result != null)
 		    {
 		        return result.AccessToken;
 		    }
-		
+
 		    throw new InvalidOperationException("Failed to acquire token");
 		}  
 
@@ -139,17 +139,19 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
 	string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
 	string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
-	
+
 	// Get authentication token
 	TokenCloudCredentials aadTokenCredentials =
 	    new TokenCloudCredentials(
 	        ConfigurationManager.AppSettings["SubscriptionId"],
 	        GetAuthorizationHeader());
-	
+
 	// Create Stream Analytics management client
 	StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
 **resourceGroupName** 変数の値は、前の手順で作成または選択したリソース グループの名前と同じである必要があります。
+
+ジョブの作成で資格情報の提示部分を自動化する場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」をご覧ください。
 
 この記事の以降のセクションでは、このコードが **Main** メソッドの先頭にあることを前提としています。
 
@@ -174,7 +176,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	        }
 	    }
 	};
-	
+
 	JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
 
 
@@ -217,8 +219,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	        }
 	    }
 	};
-	
-	InputCreateOrUpdateResponse inputCreateResponse = 
+
+	InputCreateOrUpdateResponse inputCreateResponse =
 		client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
 
 入力ソースは、BLOB ストレージのものであるか、イベント ハブのものであるかに関係なく、特定のジョブに関連付けられます。1 つの入力ソースを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
@@ -229,7 +231,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 **TestConnection** メソッドは、Stream Analytics ジョブが入力ソースに接続できるかどうかと、入力ソースの種類別の他の側面についてテストします。たとえば、前の手順で作成した BLOB 入力ソースの場合、このメソッドでは、ストレージのアカウント名とキーのペアを使用してストレージ アカウントに接続できるかどうか、および、指定されたコンテナーが存在しているかどうかが確認されます。
 
 	// Test input source connection
-	DataSourceTestConnectionResponse inputTestResponse = 
+	DataSourceTestConnectionResponse inputTestResponse =
 		client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
 
 ## Stream Analytics の出力ターゲットの作成
@@ -260,8 +262,8 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 	        }
 	    }
 	};
-	
-	OutputCreateOrUpdateResponse outputCreateResponse = 
+
+	OutputCreateOrUpdateResponse outputCreateResponse =
 		client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
 
 ## Stream Analytics の出力ターゲットのテスト
@@ -269,7 +271,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 Stream Analytics の出力ターゲットにも、接続をテストするための **TestConnection** メソッドがあります。
 
 	// Test output target connection
-	DataSourceTestConnectionResponse outputTestResponse = 
+	DataSourceTestConnectionResponse outputTestResponse =
 		client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
 
 ## Stream Analytics の変換の作成
@@ -290,8 +292,8 @@ Stream Analytics の出力ターゲットにも、接続をテストするため
 	        }
 	    }
 	};
-	
-	var transformationCreateResp = 
+
+	var transformationCreateResp =
 		client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
 
 入力や出力と同様に変換も、その下に作成された特定の Stream Analytics ジョブに関連付けられます。
@@ -307,7 +309,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 	    OutputStartMode = OutputStartMode.CustomTime,
 	    OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
 	};
-	
+
 	LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
 
 
@@ -359,10 +361,9 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
+[stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
- 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

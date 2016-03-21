@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/02/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
-# チュートリアル: Visual Studio を使用したデータ ファクトリの作成と監視
+# チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-get-started.md)
-- [Using Data Factory Editor](data-factory-get-started-using-editor.md)
-- [Using PowerShell](data-factory-monitor-manage-using-powershell.md)
-- [Using Visual Studio](data-factory-get-started-using-vs.md)
+- [チュートリアルの概要](data-factory-get-started.md)
+- [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
+- [Visual Studio の使用](data-factory-get-started-using-vs.md)
+- [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 
 
 ##このチュートリアルの内容
@@ -29,27 +29,31 @@
 
 1. リンクされた次の 2 つのサービス、**AzureStorageLinkedService1** と **AzureSqlinkedService1** を作成します。AzureStorageLinkedService1 は、Azure ストレージにリンクし、AzureSqlLinkedService1 は、Azure SQL database を **ADFTutorialDataFactoryVS** データ ファクトリにリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。
 2. **EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。
-3. ADFTutorialDataFactoryVS に **ADFTutorialPipeline** という名前のパイプラインを作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。
+3. ADFTutorialDataFactoryVS に **ADFTutorialPipeline** という名前のパイプラインを作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。 
 4. Data Factory を作成し、リンクされたサービス、テーブル、パイプラインをデプロイする。    
 
 ## Visual Studio を使用して、Data Factory のエンティティを作成し、デプロイする 
 
 ### 前提条件
-コンピューターに以下がインストールされている必要があります: 
+「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
+
+コンピューターに以下がインストールされている必要があります。
 - Visual Studio 2013
-- Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+- Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 ### チュートリアル
 
 #### Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
-2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[Empty Data Factory Project]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
+2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
 
-	![New Project dialog box](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
-3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力して、**[OK]** をクリックします。
+	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
-	![Solution Explorer](./media/data-factory-get-started-using-vs/solution-explorer.png)
+3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
+
+
+	![ソリューション エクスプローラー](./media/data-factory-get-started-using-vs/solution-explorer.png)
 
 #### リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
@@ -58,8 +62,8 @@
 
 ##### Azure Storage のリンクされたサービスを作成します。
 
-4. ソリューション エクスプローラーの **[Linked Services]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
-5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service]** を選択し、**[追加]** をクリックします。 
+4. ソリューション エクスプローラーの **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
+5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage のリンクされたサービス]** を選択し、**[追加]** をクリックします。 
 
 	![新規のリンクされたサービス](./media/data-factory-get-started-using-vs/new-linked-service-dialog.png)
  
@@ -212,15 +216,15 @@
 	2. **[名前]** に「**VSTutorialFactory**」と入力します。  
 	
 		> [AZURE.NOTE]  
-		> Azure Data Factor の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		Azure Data Factory の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 		> 
 		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
-	4. 作成するデータ ファクトリの**ソース グループ**を選択します。 
+	4. 作成するデータ ファクトリの**リソース グループ**を選択します。 
 	5. データ ファクトリの**リージョン**を選択します。 
 	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。 
 23. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
-24. 概要を確認し、**[次へ]** をクリックし、デプロイメント プロセスを開始し、**[デプロイ ステータス]** を表示します。
+24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
 25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
 
 
@@ -239,6 +243,9 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 4. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、「[データセットとパイプラインを監視する](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)」を参照してください。
+Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)に関するセクションを参照してください。
 
-<!----HONumber=Nov15_HO3-->
+## 関連項目
+Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
+
+<!---HONumber=AcomDC_0302_2016-->

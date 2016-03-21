@@ -3,7 +3,7 @@
 	description="Azure ML Recommendation サンプル アプリケーション" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="jaymathe" 
+	authors="luisca" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
+	ms.date="12/07/2015" 
 	ms.author="luisca"/>
 
 
@@ -58,6 +58,7 @@ Machine Learning Recommendation サービスを使用した推奨機能は、次
 
 * Visual Studio 2013
 * インターネットへのアクセス 
+* Recommendations API のサブスクリプション (https://datamarket.azure.com/dataset/amla/recommendations))。
 
 ##Azure Machine Learning サンプル アプリケーション ソリューション
 
@@ -89,4 +90,4 @@ API の詳細については、Microsoft Azure Marketplace のドキュメント
 サンプル アプリケーションは、運用環境での実行を意図していません。カタログに提供されたデータはごく小さく、意味のある推奨モデルとはなりませんが、デモの目的でのみ提供されています。
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1210_2015-->

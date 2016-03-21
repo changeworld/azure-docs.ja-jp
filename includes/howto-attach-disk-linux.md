@@ -1,5 +1,5 @@
 
-ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](../articles/virtual-machines-disks-vhds.md) を参照してください。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-disks-vhds.md) を参照してください。
 
 <a id="attachempty"></a>
 ## 方法: 空のディスクの接続
@@ -62,7 +62,7 @@
 		uploaded successfully
 		info:    vm disk create command OK
 
-	`azure vm disk upload` コマンドを使用して特定のストレージ アカウントに VHD をアップロードすることもできます。Azure Virtual Machine データ ディスクの管理用コマンドの詳細については、[こちら](../virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks)を参照してください。
+	`azure vm disk upload` コマンドを使用して特定のストレージ アカウントに VHD をアップロードすることもできます。Azure Virtual Machine データ ディスクの管理用コマンドの詳細については、[こちら](virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks)を参照してください。
 
 5.  次のコマンドを入力して、アップロードした VHD を仮想マシンに接続します。
 
@@ -90,6 +90,7 @@
 		info:    vm disk list command OK
 
 
-> [AZURE.NOTE]データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
+> [AZURE.NOTE]
+データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -1,7 +1,7 @@
 <properties 
-   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを構成する | Azure" 
-   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを構成および使用します。" 
-   services="data-lake" 
+   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成する | Azure" 
+   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを作成および使用します。" 
+   services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
    manager="paulettm" 
@@ -13,19 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="11/06/2015"
+   ms.date="01/21/2016"
    ms.author="nitinme"/>
 
-# Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする
+# Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 
 > [AZURE.SELECTOR]
 - [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure PowerShell を使用して、Azure Data Lake Store を使用するように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Azure PowerShell を使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
-* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure ストレージ BLOB (WASB) のままです。
+* **Hadoop クラスターと Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。
 
 * **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
 
@@ -43,17 +43,48 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/ja-JP/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
-- **Azure PowerShell 1.0 以降**。手順については、[Azure PowerShell のインストールと構成](../install-configure-powershell.md)に関するページをご覧ください。
+
+
+##Azure PowerShell 1.0 以上をインストールする
+
+最初に、バージョン 0.9x の Azure PowerShell をアンインストールする必要があります。インストールされている PowerShell のバージョンを確認するには、PowerShell ウィンドウから次のコマンドを実行します。
+
+	Get-Module *azure*
+	
+以前のバージョンをアンインストールするには、コントロール パネルで **[プログラムと機能]** を実行し、バージョンが PowerShell 1.0 より前の場合はインストールされているバージョンを削除します。
+
+Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
+
+- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
+
+		# Install the Azure Resource Manager modules from PowerShell Gallery
+		Install-Module AzureRM
+		Install-AzureRM
+		
+		# Install the Azure Service Management module from PowerShell Gallery
+		Install-Module Azure
+		
+		# Import AzureRM modules for the given version manifest in the AzureRM module
+		Import-AzureRM
+		
+		# Import Azure Service Management module
+		Import-Module Azure
+
+	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
+
+- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
+
+WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
  
 
 ## Azure Data Lake Store を作成する
 
 Data Lake Store を作成するには、次の手順に従います。
 
-1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。ログインを求められたら、必ずサブスクリプションの管理者または所有者としてログインします。
+1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力します。ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
         # Log in to your Azure account
 		Login-AzureRmAccount
@@ -67,19 +98,21 @@ Data Lake Store を作成するには、次の手順に従います。
 		# Register for Data Lake Store
 		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
-3. Azure Data Lake Store アカウントは Azure リソース グループに関連付けられます。まず、Azure リソース グループを作成します。
+	>[AZURE.NOTE] Data Lake Store リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Azure Data Lake Store のホワイトリストに登録されていない可能性があります。こちらの[指示](data-lake-store-get-started-portal.md#signup)に従って Data Lake Store パブリック プレビューで Azure サブスクリプションを有効にしていることを確認してください。
+
+3. Azure Data Lake Store アカウントは、Azure リソース グループに関連付けられます。まず、Azure リソース グループを作成します。
 
 		$resourceGroupName = "<your new resource group name>"
     	New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-	![Create an Azure Resource Group](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Create an Azure Resource Group")
+	![Azure リソース グループを作成する](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Azure リソース グループを作成する")
 
 2. Azure Data Lake Store アカウントを作成します。指定するアカウント名には、小文字と数字のみを含める必要があります。
 
 		$dataLakeStoreName = "<your new Data Lake Store name>"
     	New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-	![Create an Azure Data Lake account](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Create an Azure Data Lake account")
+	![Azure Data Lake アカウントの作成](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Azure Data Lake アカウントの作成")
 
 3. アカウントが正常に作成されたことを確認します。
 
@@ -87,7 +120,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 	この出力は **True** になります。
 
-4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/ProjectKona/tree/master/SQLIPSamples/SampleData/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 		
 		$myrootdir = "/"
@@ -96,7 +129,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 ## Data Lake Store へのロールベースのアクセスの認証を設定する
 
-各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure ポータルか Azure リソース マネージャー API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
+各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure クラシック ポータルか Azure リソース マネージャー API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
 
 Azure Data Lake の Active Directory 認証を設定するには、次のタスクを行う必要があります。
 
@@ -218,6 +251,38 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Store にアクセス可能であるかどうかをテストできます。これを行うには、前に Data Lake Store にアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
+### Linux クラスターの場合
+
+このセクションでは、クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+
+1. 接続したら、次のコマンドを使用して Hive CLI を起動します。
+
+    	hive
+
+2. CLI を使用して次のステートメントを入力し、サンプル データを使用して Data Lake Store 内に **vehicles** という名前の新しいテーブルを作成します。
+
+		DROP TABLE vehicles;
+		CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestore>.azuredatalakestore.net:443/';
+		SELECT * FROM vehicles LIMIT 10;
+
+	次のような出力が表示されます。
+
+		1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
+		1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
+		1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
+		1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
+		1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
+		1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
+		1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
+		1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
+		1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
+		1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
+
+
+### Windows クラスターの場合
+
 Hive クエリを実行するには、次のコマンドレットを使用します。このクエリでは、Data Lake Store 内のデータからテーブルを作成し、作成されたテーブルに対して SELECT クエリを実行します。
 
 	$queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
@@ -259,23 +324,42 @@ Hive クエリを実行するには、次のコマンドレットを使用しま
 	1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
 
 
-	
-
 ## HDFS コマンドを使用して Data Lake Store にアクセスする
 
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
-1. 新しい [Azure プレビュー ポータル](https://portal.azure.com)にサインオンします。
+### Linux クラスターの場合
+
+このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+
+接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
+
+	hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+
+これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
+
+	15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
+	Found 1 items
+	-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+
+`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
+
+
+### Windows クラスターの場合
+
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
 
 3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
 
-	![Remote into HDI cluster](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
+	![HDInsight へのリモート接続](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
 
 	メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
 
-4. リモート セッションで、Windows PowerShell を起動し、HDFS ファイル システムのコマンドを使用して、Azure Data Lake のファイルを一覧表示します。
+4. リモート セッションで、Windows PowerShell を起動し、HDFS ファイル システムのコマンドを使用して、Azure Data Lake Store のファイルを一覧表示します。
 
 	 	hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
 
@@ -285,13 +369,13 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 		Found 1 items
 		-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
 
-	また、`hdfs dfs -put` コマンドを使用して Azure Data Lake にいくつかのファイルをアップロードしてから、`hdfs dfs -ls` を使用してそのファイルが正常にアップロードされたことを確認することもできます。
+	`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 ## 関連項目
 
 * [ポータル: Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff548309(v=vs.85).aspx
-[pvk2pfx]: https://msdn.microsoft.com/ja-JP/library/windows/desktop/ff550672(v=vs.85).aspx
+[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

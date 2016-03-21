@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/16/2015"
+	ms.date="01/06/2016"
 	ms.author="cephalin"/>
 
 
@@ -58,7 +58,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 ### Azure リソース エクスプローラー ###
 
-この[プレビュー ツール](https://resources.azure.com)を使用すると、サブスクリプションのすべてのリソース グループの JSON 定義と個々のリソースを表示できます。このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure プレビュー ポータル](https://portal.azure.com)でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
+この[プレビュー ツール](https://resources.azure.com)を使用すると、サブスクリプションのすべてのリソース グループの JSON 定義と個々のリソースを表示できます。このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure ポータル](https://portal.azure.com/)でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
 
 ### [Azure にデプロイ] ボタン ###
 
@@ -82,7 +82,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 	UI は、初めて参照するときに少し時間がかかります。これは、アプリがちょうど起動中であるためですが、十分な機能を備えたアプリケーションと考えてください。
 
-5.	[デプロイ] ページに戻り、**[管理]** リンクをクリックすると、Azure プレビュー ポータルに新しいアプリケーションが表示されます。
+5.	[デプロイ] ページに戻り、**[管理]** リンクをクリックすると、Azure ポータルに新しいアプリケーションが表示されます。
 
 6.	**[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。**[外部プロジェクト]** で、Web アプリが既に GitHub リポジトリに接続されていることにも注意してください。
 
@@ -129,7 +129,7 @@ JSON 形式について詳しく説明する予定はありませんが、「[�
 
 `type` 要素で App Service プラン (かなり前にはサーバー ファームと呼ばれていました) の文字列を指定し、その他の要素とプロパティは、JSON ファイルで定義されているパラメーターを使用して設定されます。このリソースには、入れ子になったリソースは存在しません。
 
->[AZURE.NOTE]`apiVersion` の値によって JSON リソース定義を使用する REST API のバージョンが Azure に指示され、`{}` 内でのリソースの形式に影響する可能性があることにも注意してください。
+>[AZURE.NOTE] `apiVersion` の値によって JSON リソース定義を使用する REST API のバージョンが Azure に指示され、`{}` 内でのリソースの形式に影響する可能性があることにも注意してください。
 
 #### SQL Server ####
 
@@ -143,7 +143,7 @@ JSON 形式について詳しく説明する予定はありませんが、「[�
 -	SQL Server リソースには、入れ子になったリソースが 2 つあり、それぞれで `type` に異なる値が設定されています。
 -	データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。これは、Azure リソース マネージャーに対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
 
-	>[AZURE.NOTE]`resourceId()` 関数の使用方法の詳細については、[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
+	>[AZURE.NOTE] `resourceId()` 関数の使用方法の詳細については、[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
 
 -	`dependsOn` 要素のおかげで、Azure リソース マネージャーでは、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。
 
@@ -176,7 +176,7 @@ Web アプリは、2 つの異なるリソースに依存します。つまり�
 
 `config/connectionstrings` の `properties` 要素では、各接続文字列が `“<name>” : {“value”: “…”, “type”: “…”}` という特定の形式で、名前と値のペアとしても定義されています。`type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
 
->[AZURE.TIP]接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します: [Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+>[AZURE.TIP] 接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します: [Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
     
 ##### ソース管理 #####
 
@@ -186,13 +186,13 @@ Web アプリは、2 つの異なるリソースに依存します。つまり�
 
 `RepoUrl` と `branch` は、非常に直感的で、Git リポジトリと、発行元となる分岐の名前を指しています。繰り返しになりますが、これらの情報は入力パラメーターで定義されています。
 
-`dependsOn` 要素では、`sourcecontrols/web` が Web アプリのリソース自体に加え、`config/appsettings` と `config/connectionstrings` にも依存していることに注意してください。これは、`sourcecontrols/web` が構成されると、Azure のデプロイメント プロセスが、アプリケーション コードのデプロイ、ビルド、開始を自動的に試みるためです。したがって、この依存関係を挿入すると、アプリケーション コードが実行される前に、アプリケーションから必要なアプリ設定と接続文字列にアクセスできることを確認できます。[TODO: これが当てはまるかどうかを確認する必要があります。]
+`dependsOn` 要素では、`sourcecontrols/web` が Web アプリのリソース自体に加え、`config/appsettings` と `config/connectionstrings` にも依存していることに注意してください。これは、`sourcecontrols/web` が構成されると、Azure のデプロイメント プロセスが、アプリケーション コードのデプロイ、ビルド、開始を自動的に試みるためです。したがって、この依存関係を挿入すると、アプリケーション コードが実行される前に、アプリケーションから必要なアプリ設定と接続文字列にアクセスできることを確認できます。
 
->[AZURE.NOTE]`IsManualIntegration` が `true` に設定されていることにも注意してください。このチュートリアルでこのプロパティが必要なのは、実際には GitHub リポジトリを所有していないためです。したがって、実際には、[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) からの継続的な発行 (Azure へのリポジトリの自動更新のプッシュ) を構成するためのアクセス許可を Azure に付与することはできません。[Azure プレビュー ポータル](https://portal.azure.com)で事前に所有者の GitHub の資格情報を構成している場合のみ、指定されたリポジトリの既定値 `false` を使用できます。つまり、以前に、ユーザーの資格情報を使用して、[Azure プレビュー ポータル](https://portal.azure.com)で任意のアプリのソース管理に GitHub または BitBucket を設定した場合、Azure では資格情報が記憶されるため、今後は GitHub または BitBucket からアプリをデプロイするたびにその資格情報が使用されます。ただし、まだ設定していない場合は、Azure リソース マネージャーが Web アプリのソース管理の設定を構成しようとしたときに、JSON テンプレートのデプロイメントに失敗します。その原因は、リポジトリの所有者の資格情報で GitHub や BitBucket にログインできないからです。
+>[AZURE.NOTE] `IsManualIntegration` が `true` に設定されていることにも注意してください。このチュートリアルでこのプロパティが必要なのは、実際には GitHub リポジトリを所有していないためです。したがって、実際には、[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) からの継続的な発行 (Azure へのリポジトリの自動更新のプッシュ) を構成するためのアクセス許可を Azure に付与することはできません。[Azure ポータル](https://portal.azure.com/)で事前に所有者の GitHub の資格情報を構成している場合のみ、指定されたリポジトリの既定値 `false` を使用できます。つまり、以前に、ユーザーの資格情報を使用して、[Azure ポータル](https://portal.azure.com/)で任意のアプリのソース管理に GitHub または BitBucket を設定した場合、Azure では資格情報が記憶されるため、今後は GitHub または BitBucket からアプリをデプロイするたびにその資格情報が使用されます。ただし、まだ設定していない場合は、Azure リソース マネージャーが Web アプリのソース管理の設定を構成しようとしたときに、JSON テンプレートのデプロイメントに失敗します。その原因は、リポジトリの所有者の資格情報で GitHub や BitBucket にログインできないからです。
 
 ## JSON テンプレートとデプロイ済みのリソース グループを比較する ##
 
-ここでは、[プレビュー ポータル](https://portal.azure.com)内の Web アプリのすべてのブレードを確認できます。別のツールでも詳細をある程度まで確認できます。[Azure リソース エクスプローラー](https://resources.azure.com) プレビュー ツールに移動します。ここでは、実際に Azure のバックエンドに存在するように、サブスクリプションに含まれるすべてのリソース グループの JSON 表現が示されます。また、Azure のリソース グループの JSON 階層が、リソース グループの作成に使用されたテンプレート ファイル内の階層にどのように対応しているかも確認できます。
+ここでは、[Azure ポータル](https://portal.azure.com/)内の Web アプリのすべてのブレードを確認できます。別のツールでも詳細をある程度まで確認できます。[Azure リソース エクスプローラー](https://resources.azure.com) プレビュー ツールに移動します。ここでは、実際に Azure のバックエンドに存在するように、サブスクリプションに含まれるすべてのリソース グループの JSON 表現が示されます。また、Azure のリソース グループの JSON 階層が、リソース グループの作成に使用されたテンプレート ファイル内の階層にどのように対応しているかも確認できます。
 
 たとえば、[Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動し、エクスプローラーでノードを展開すると、リソース グループと、それぞれのリソースの種類で収集されるルート レベルのリソースが表示されます。
 
@@ -264,11 +264,11 @@ Web アプリにドリルダウンすると、下のスクリーンショット�
  
 	![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
 
-	>[AZURE.NOTE]自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
+	>[AZURE.NOTE] 自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
 	
 16.	**[デプロイ]** をクリックします。**[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに**プレーンテキスト**で保存されます。それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
 
-これで終了です。 後は、[プレビュー ポータル](https://portal.azure.com)と[Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動して、JSON でデプロイされたアプリケーションに追加された新しいアラートと自動スケールの設定を表示するだけです。
+これで終了です。 後は、[Azure ポータル](https://portal.azure.com/)と[Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動して、JSON でデプロイされたアプリケーションに追加された新しいアラートと自動スケールの設定を表示するだけです。
 
 このセクションの手順では、主に次の操作を実行しました。
 
@@ -298,11 +298,11 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 -	[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)
 -	[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
 -	[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
--	[Azure でのリソース グループのデプロイのトラブルシューティング](../resource-group-deploy-debug.md)
+-	[Azure でのリソース グループのデプロイのトラブルシューティング](../virtual-machines/resource-group-deploy-debug.md)
 
 
 
 
  
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0211_2016-->

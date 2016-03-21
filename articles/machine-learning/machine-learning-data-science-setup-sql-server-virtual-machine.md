@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/13/2015"
+	ms.date="02/08/2016"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
@@ -25,14 +25,14 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 - SQL Server 2012 SP2 Enterprise (小規模および中規模のデータ サイズ向け)
 - SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads (大規模、または非常に大規模なデータ サイズ向け)
 
- >[AZURE.NOTE]SQL Server 2012 SP2 Enterprise イメージには**データ ディスクが含まれていません**。データを格納するために 1 つ以上の仮想ハード ディスクを追加またはアタッチする必要があります。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
+ > [AZURE.NOTE] SQL Server 2012 SP2 Enterprise イメージには**データ ディスクが含まれていません**。データを格納するために 1 つ以上の仮想ハード ディスクを追加またはアタッチする必要があります。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
 
-##<a name="Provision"></a>Azure 管理ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
+##<a name="Provision"></a>Azure クラシック ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
 
-1.  アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://www.windowsazure.com/pricing/free-trial/)にアクセスしてください。
+1.  アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2.  Azure 管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2.  Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 
@@ -46,7 +46,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
     -   **[パスワードの確認]** ボックスに、パスワードを再度入力します。
     -   **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
 
-     >[AZURE.NOTE]仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。価格については、「[VIrtual Macines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+     > [AZURE.NOTE] 仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。価格については、「[VIrtual Macines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
     右下にある次へ進む矢印をクリックして続行します。
 
@@ -119,7 +119,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 データ ディスク、つまり C ドライブ (OS ディスク) と D ドライブ (一時的なディスク) 以外のディスクが VM イメージに含まれない場合、データを格納するために 1 つ以上のデータ ディスクを追加する必要があります。SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads 用の VM イメージは、SQL Server データおよびログ ファイル用の追加のディスク付きで事前構成されています。
 
- >[AZURE.NOTE]データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
+ > [AZURE.NOTE] データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
 追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](storage-windows-attach-disk.md)」で説明されている次のような手順に従います。
 
@@ -129,7 +129,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 ##<a name="SSMS"></a>SQL Server Management Studio に接続し、混合モード認証を有効にする
 
-ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されますリーダー モジュールを使用して [Azure Machine Learning Studio](https://studio.azureml.net) で SQL Server VM データベースからデータを直接取り込むには、SQL 認証モードが必要です。
+ドメイン環境がない場合、SQL Server Database エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されますリーダー モジュールを使用して [Azure Machine Learning Studio](https://studio.azureml.net) で SQL Server VM データベースからデータを直接取り込むには、SQL 認証モードが必要です。
 
 1.  リモート デスクトップを使用して仮想マシンに接続している間に、Windows **[検索]** ウィンドウを使用して「**SQL Server Management Studio** (SMSS)」と入力します。クリックして SQL Server Management Studio (SSMS) を開始します。SSMS のショートカットをデスクトップ上に作成して、将来使用することができます。
 
@@ -143,7 +143,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 	<br>
 
-	 >[AZURE.TIP]Windows レジストリ キーの変更を使用するか、SQL Server Management Studio を使用して、SQL Server 認証モードを変更することができます。レジストリ キーの変更を使用して認証モードを変更するには、**[新しいクエリ]** を開始して、次のスクリプトを実行します。
+	 > [AZURE.TIP] Windows レジストリ キーの変更を使用するか、SQL Server Management Studio を使用して、SQL Server 認証モードを変更することができます。レジストリ キーの変更を使用して認証モードを変更するには、**[新しいクエリ]** を開始して、次のスクリプトを実行します。
 
 		USE master
     	go
@@ -174,7 +174,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
 
-> [AZURE.TIP]新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の sysadmin ユーザーをプログラムで新規作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> をお好みのユーザー名とパスワードに置き換えてください。必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
+> [AZURE.TIP] 新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の sysadmin ユーザーをプログラムで新規作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> をお好みのユーザー名とパスワードに置き換えてください。必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
 
     USE master
     go
@@ -221,9 +221,9 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 ##<a name="DNS"></a>仮想マシンの DNS 名を特定する
 
-別のコンピューターから SQL Server データベース エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
+別のコンピューターから SQL Server Database エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
 
-1.  Azure 管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
+1.  Azure クラシック ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
 2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
@@ -259,11 +259,11 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、**[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] \(Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE] (Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
-1. アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。  
+1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。  
 
 2. 左側のナビゲーション バーから **[仮想マシン]** を選択します。
 
@@ -273,7 +273,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 ![VM シャットダウン][15]
 
-仮想マシンの割り当てが解除されますが、削除はされません。Azure 管理ポータルから、いつでも仮想マシンを再起動することができます。
+仮想マシンの割り当てが解除されますが、削除はされません。Azure クラシック ポータルから、いつでも仮想マシンを再起動することができます。
 
 ## Azure SQL Server VM を使用する準備ができました。次のステップは ...
 
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

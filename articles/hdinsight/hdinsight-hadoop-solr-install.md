@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/02/2015"
+	ms.date="02/05/2016"
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
@@ -67,7 +67,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 最初に、いくつかのデータ ファイルに対し Solr のインデックスを作成する必要があります。これにより、インデックス付きデータに対して、Solr を使用して検索クエリを実行できます。HDInsight クラスターで Solr を使用するには、次の手順を実行します。
 
-1. **リモート デスクトップ プロトコル (RDP) を使用してインストールされている Solr で HDInsight クラスターにリモート接続します**。Solr のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
+1. **リモート デスクトップ プロトコル (RDP) を使用してインストールされている Solr で HDInsight クラスターにリモート接続します**。Solr のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」をご覧ください。
 
 2. **データ ファイルをアップロードして Solr のインデックスを作成します**。Solr のインデックスを作成する場合、検索が必要なドキュメントをその中に配置します。Solr のインデックスを作成するには、クラスターに RDP をリモート接続してデスクトップに移動します。次に、Hadoop コマンド ラインを開いて **C:\\apps\\dist\\solr-4.7.2\\example\\exampledocs** に移動します。次のコマンドを実行します。
 
@@ -192,10 +192,10 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 - [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
 
 
-[powershell-install-configure]: ../install-configure-powershell.md
+[powershell-install-configure]: powershell-install-configure.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="10/05/2015"
+	ms.date="02/16/2016"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -62,7 +62,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 前の例では、ログ レベルは ERROR です。
 
-> [AZURE.NOTE]また、[Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB コンテナーにアップロードすることもできます。手順については、「[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)」を参照してください。HDInsight と共に Azure BLOB ストレージを使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」を参照してください。
+> [AZURE.NOTE] また、[Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB コンテナーにアップロードすることもできます。手順については、「[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)」を参照してください。HDInsight と共に Azure BLOB ストレージを使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
 サンプル データは、HDInsight が既定のファイル システムとして使用する Azure BLOB ストレージに格納されています。HDInsight では、**wasb** プレフィックスを使用して、BLOB に格納されたファイルにアクセスすることができます。たとえば、sample.log ファイルにアクセスするには、次の構文を使用します。
 
@@ -70,7 +70,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、HiveQL から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE]上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE] 上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 ##<a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
 
@@ -91,7 +91,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
-> [AZURE.NOTE]基盤となるデータを外部ソースで更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作で更新する場合に、常に Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+> [AZURE.NOTE] 基盤となるデータを外部ソースで更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作で更新する場合に、常に Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
 >
 > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
@@ -108,13 +108,13 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
 * **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにデータを挿入します。
 
-> [AZURE.NOTE]外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
+> [AZURE.NOTE] 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。
 
 ##<a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
 
 [Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
-> [AZURE.NOTE]Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
+> [AZURE.NOTE] Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
 >
 > ```set hive.execution.engine=tez;```
 >
@@ -122,6 +122,11 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 [「Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細がいくつか記載されています。
 
+Tez を使用して実行したジョブのデバッグを支援するために、HDInsight には、Tez ジョブの詳細を表示できる次の Web UI が用意されています。
+
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
+
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
 ##<a id="run"></a>HiveQL ジョブの実行方法の選択
 
@@ -129,10 +134,11 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | 使用する**方法** | **対話型**シェルの有無 | **バッチ**処理の有無 | 使用する**クラスターのオペレーティング システム** | 使用元の**クライアントのオペレーティング システム** |
 |:--------------------------------------------------------------------------------|:---------------------------:|:-----------------------:|:------------------------------------------|:-----------------------------------------|
+| [Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md) | ✔ | ✔ | Linux | 任意 (ブラウザー ベース) |
 | [(SSH セッションからの) Beeline コマンド](hdinsight-hadoop-use-hive-beeline.md) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X、または Windows |
 | [(SSH セッションからの) Hive コマンド](hdinsight-hadoop-use-hive-ssh.md) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X、または Windows |
 | [Curl](hdinsight-hadoop-use-hive-curl.md) | &nbsp; | ✔ | Linux または Windows | Linux、Unix、Mac OS X、または Windows |
-| [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) | &nbsp; | ✔ | Windows | ブラウザー ベース |
+| [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) | &nbsp; | ✔ | Windows | 任意 (ブラウザー ベース) |
 | [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) | ✔ | ✔ | Windows | Windows |
@@ -160,8 +166,6 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
-[1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
-
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -173,9 +177,9 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
 [import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/ja-JP/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
+[hivetask]: http://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -183,12 +187,12 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 
 
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+[hdinsight-get-started]: hdinsight-get-started.md
 
 [Powershell-install-configure]: ../install-configure-powershell.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
@@ -200,4 +204,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

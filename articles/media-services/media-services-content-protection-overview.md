@@ -13,22 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/03/2015" 
+	ms.date="02/18/2016" 
 	ms.author="juliako"/>
 
 #コンテンツ保護の概要
 
 
-Microsoft Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady や Widevine DRM を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+Microsoft Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady や Widevine DRM を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントに AES キーと PlayReady ライセンスを配信するためのサービスも提供しています。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。
 
 - 次に、"PlayReady と Widevine DRM の動的共通暗号化" ワークフローの説明図を示します。詳細については、「[PlayReady DRM の動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
-	![PlayReady による保護](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
+![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
 
 - 次に、"AES-128 動的暗号化" ワークフローの説明図を示します。詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
 
-	![AES-128 での保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![AES-128 での保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 >[AZURE.NOTE]動的暗号化を使用するには、暗号化されたコンテンツのストリーミング元となるストリーミング エンドポイントに、少なくとも 1 つのストリーミング予約ユニットが必要です。
 
@@ -66,33 +66,34 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 >[AZURE.NOTE]動的暗号化を活用するには、暗号化されたコンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
-###PlayReady DRM ライセンスと AES クリア キー配信サービス
+###ライセンスとキーの配信サービス
 
-Media Services は、承認されたクライアントに PlayReady ライセンスと AES クリア キーを配信するためのサービスを提供しています。Microsoft Azure 管理ポータル、REST API、または Media Services SDK for .NET を使用して、ライセンスとキーの承認および認証ポリシーを構成できます。
+Media Services は、承認されたクライアントに DRM (PlayReady と Widevine) ライセンスと AES クリア キーを配信するためのサービスを提供しています。Azure クラシック ポータル、REST API、または Media Services SDK for .NET を使用して、ライセンスとキーの承認および認証ポリシーを構成できます。
 
 ポータルを使用している場合、構成できるのは 1 つの AES ポリシー (AES で暗号化されたすべてのコンテンツに適用されます) および 1 つの PlayReady ポリシー (PlayReady で暗号化されたすべてのコンテンツに適用されます) であることに注意してください。さらに詳細に構成を制御したい場合は、Media Services SDK for .NET を使用してください。
 
-###PlayReady ライセンス テンプレート
+###PlayReady ライセンス 
 
 Media Services には PlayReady ライセンスを提供するサービスが用意されています。エンド ユーザーのプレーヤー (Silverlight など) は、PlayReady で保護されたコンテンツを再生しようとする際に、ライセンス配信サービスにライセンス取得要求を送信します。ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
-ライセンスには、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限や制限が含まれます。Media Services は、PlayReady ライセンスの構成用 API を備えています。詳細については、「[Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview)」を参照してください。
+ライセンスには、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限や制限が含まれます。Media Services は、PlayReady ライセンスの構成用 API を備えています。詳細については、「[Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)」を参照してください。
 
-###トークン制限
-
-コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、Simple Web Tokens (SWT) 形式と JSON Web Token (JWT) 形式のトークンがサポートされます。Media Services では、Secure Token Services は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。トークンが有効であり、なおかつトークンに含まれる要求とキー (またはライセンス) に対して構成されている要求とが一致した場合、Media Services キー配信サービスは、キー (またはライセンス) をクライアントに返します。
-
-トークン制限ポリシーを構成する際は、プライマリ検証キー、発行者、対象ユーザーの各パラメーターを指定する必要があります。プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
-
-###Widevine
+###Widevine ライセンス
 
 AMS では、Widevine DRM で暗号化された MPEG DASH を配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (CENC) 仕様に従って暗号化されます。[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
-現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用すると [Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)を構成し、Widevine ライセンスを取得できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) の各 AMS パートナーを使用して、Widevine ライセンスを提供することもできます。
+
+###トークン制限
+
+コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、Simple Web Tokens (SWT) 形式と JSON Web Token (JWT) 形式のトークンがサポートされます。Media Services では、Secure Token Services は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。トークンが有効であり、なおかつトークンに含まれる要求とキー (またはライセンス) に対して構成されている要求とが一致した場合、Media Services キー配信サービスは、キー (またはライセンス) をクライアントに返します。
+
+トークン制限ポリシーを構成する際は、プライマリ検証キー、発行者、対象ユーザーの各パラメーターを指定する必要があります。プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+
 
 ##一般的なシナリオ
 
-###ストレージ内のコンテンツ保護、動的に暗号化されたストリーミング メディアの配信、AMS キー/ライセンス配信サービスの使用  
+###ストレージ内のコンテンツ保護、動的に暗号化されたストリーミング メディアの配信、AMS キー/ライセンス配信サービスの使用
 
 1. 高品質な中間ファイルを資産に取り出します。ストレージ暗号化オプションを資産に適用します。
 2. ストリーミング エンドポイントを構成します。
@@ -137,6 +138,5 @@ AMS では、Widevine DRM で暗号化された MPEG DASH を配信すること�
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
- 
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

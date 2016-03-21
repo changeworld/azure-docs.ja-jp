@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="10/22/2015"
+   ms.date="02/26/2016"
    ms.author="piyushjo"/>
 
 # Azure Mobile Engagement - トラブルシューティング ガイド
@@ -28,8 +28,8 @@
 1. 「[チュートリアルの概要](mobile-engagement-windows-store-dotnet-get-started.md)」に記載されている、統合を行うために必要な手順がすべて完了しています。
 2. 最新バージョンのプラットフォーム SDK を使用しています。 
 3. エミュレーターのみに特有の問題もあるため、実際のデバイスとエミュレーターの両方でテストを行います。 
-4. [ここ](azure-subscription-service-limits.md)に説明する、Mobile Engagement のどの制限/スロットルにも到達していません。
-5. Mobile Engagement サービス バックエンドに接続できない場合またはデータが継続的に読み込まれないという状況が発生している場合は、[ここ](https://azure.microsoft.com/ja-JP/status/)の説明を確認して進行中のサービス インシデントが存在しないことを確認します。
+4. [ここ](../azure-subscription-service-limits.md)に説明する、Mobile Engagement のどの制限/スロットルにも到達していません。
+5. Mobile Engagement サービス バックエンドに接続できない場合またはデータが継続的に読み込まれないという状況が発生している場合は、[ここ](https://azure.microsoft.com/status/)の説明を確認して進行中のサービス インシデントが存在しないことを確認します。
 
 ## 「監視」に関する問題
 
@@ -64,7 +64,7 @@
 ### プッシュ メッセージが配信されません。 
 
 1. すべてのコンポーネント (モバイル アプリ、SDK、およびサービス) が正しく接続されていて、プッシュ通知を配信できる状態にあることを確認するために、まず、テスト デバイスに通知を送信してみてください。 
-2. 常に、スケジュールも対象ユーザーの条件も指定されていないキャンペーンを経由して最も単純な 'アプリ外通知' を最初に送信します。これは、もう一度、通知接続が正常に機能していることを証明するための作業です。 
+2. 常に、スケジュールも対象ユーザー設定基準も指定されていないキャンペーンを経由して最も単純な 'アプリ外通知' を最初に送信します。これは、もう一度、通知接続が正常に機能していることを証明するための作業です。 
 3. アプリ内通知の配信に問題が生じている場合は、最初の手順としてまずアプリ外通知を送信してみるのも有効な手順です。 
 4. モバイル アプリに対して 'ネイティブ プッシュ' が正しく構成されていることを確認します。プラットフォームによって異なりますが、ネイティブ プッシュではキー (Android、Windows) または証明書 (iOS) のいずれかが必要となります。「[ユーザー インターフェイス - 設定](mobile-engagement-user-interface-settings.md)」を参照してください。
 5. ユーザーがモバイル OS を介してアプリ外通知をブロックしている場合もあります。この状況が発生していないことを確認します。 
@@ -78,7 +78,9 @@
 
 	- iOS Push Notifications の証明書が有効であり、かつ期限切れになっていないことを確認します。 
 	- Mobile Engagement アプリの *運用*証明書が正しく構成されていることを確認します。 
+	- *実在する物理デバイス*をテストしていることを確認します。 IOS シミュレーターはプッシュ メッセージを処理できません。
 	- モバイル アプリでバンドル識別子が正しく構成されていることを確認します。手順については、[こちら](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)を参照してください。
+	- テストするときは、モバイル プロビジョニング プロファイルの "アドホック" ディストリビューションを使用します。アプリが "デバッグ" を使用してコンパイルされている場合、通知は受信できません。
 
 2. **Android**
 
@@ -86,7 +88,8 @@
 	
 	    	<meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 	    
-	- Android マニフェスト ファイル内でアクセス許可が不足していないこと、または不適切な構成がないことを確認します。
+	- Android マニフェスト ファイルでアクセス許可の不足や不適切な構成がないことを確認します。
+	- クライアント アプリに追加するプロジェクト番号が、GCM サーバー キーを取得したアカウントと同じアカウントのものであることを確認します。このアカウントが一致していないと、プッシュを送信できなくなります。 
 	- システム通知は受信しているがアプリ内通知は受信していないという場合は、Android マニフェスト ファイル内に適切なアイコンが指定されていない可能性があるので、「[通知セクションのアイコンを指定する](mobile-engagement-android-get-started.md)」を確認してください。 
 	- BigPicture 通知を送信する場合に、外部イメージ サーバーを使用する場合は、それらのサーバーが HTTP の "GET" と "HEAD" をサポートする必要があります。
 
@@ -108,7 +111,7 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 問題を自分で解決できない場合は、次のことを行うことができます。
 
 1. StackOverflow フォーラムと [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/windows/ja-JP/home?forum=azuremobileengagement)の既存のスレッドで実際の問題を検索し、ヒットしない場合はフォーラムで質問してください。 
-2. 不足している機能が見つかった場合は、[UserVoice フォーラム](http://feedback.azure.com/forums/285737-mobile-engagement)で要求を追加するか、要求について投票してください。
+2. 不足している機能が見つかった場合は、[UserVoice フォーラム](https://feedback.azure.com/forums/285737-mobile-engagement/)で要求を追加するか、要求について投票してください。
 3. Microsoft サポートを使用する場合は、次の詳細情報を指定してサポート インシデントを開いてください。 
 	- Azure サブスクリプション ID
 	- プラットフォーム (例: iOS、Android など)
@@ -118,4 +121,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 	- Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
 	- 表示されるエラー メッセージとシナリオを含むエラーの詳細
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0302_2016-->

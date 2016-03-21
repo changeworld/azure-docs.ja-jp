@@ -4,8 +4,8 @@
 	services="active-directory-ds"
 	documentationCenter=""
 	authors="mahesh-unnikrishnan"
-	manager="udayh"
-	editor="inhenk"/>
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory-ds"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/12/2015"
+	ms.date="01/26/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)*
@@ -39,10 +39,10 @@ Azure AD ドメイン サービス プレビュー リリースでは、次の�
 
 - **グループ ポリシー:** ユーザーおよびコンピューターのコンテナーごとに組み込みの GPO を 1 つずつ使用して、ユーザー アカウントとドメイン参加しているコンピューター向けの必須セキュリティ ポリシーに強制的に準拠させることができます。
 
-- **複数の Azure リージョンで使用が可能:** Azure AD ドメイン サービスが使用できる Azure リージョンの一覧については、「[サポートされている Azure リージョン](active-directory-ds-regions.md)」を参照してください。
+- **複数の Azure リージョンで使用が可能:** Azure AD ドメイン サービスを使用できる Azure リージョンを確認するには、「[リージョン別のサービス](https://azure.microsoft.com/regions/#services/)」のページを参照してください。
 
 - **高可用性:** Azure AD ドメイン サービスを使用して、ドメインの高可用性を実現できます。これにより、サービスの稼働時間とエラーに対する復元性が確実に向上します。また、組み込みの正常性監視では、インスタンスに障害が発生したときに新しいインスタンスを作成することで障害を自動的に修正し、ドメインに継続的なサービスを提供します。
 
 - **使い慣れた管理ツールの使用:** Active Directory 管理センターや Active Directory PowerShell などの使い慣れた Windows Server Active Directory 管理ツールを使用して、Azure AD ドメイン サービスが提供するドメインを管理できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

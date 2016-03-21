@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure RemoteApp テンプレート イメージの内容"
+    pageTitle="Azure RemoteApp テンプレート イメージの内容 | Microsoft Azure"
     description="Azure RemoteApp に含まれるテンプレート イメージについて説明します。"
     services="remoteapp"
     documentationCenter=""
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="09/02/2015" 
+    ms.date="01/07/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp テンプレート イメージの内容
@@ -25,7 +25,7 @@ Azure RemoteApp サブスクリプションには、次の 3 つのテンプレ�
 - Microsoft Office 2013 Professional Plus (評価版のみ)
 
 > [AZURE.IMPORTANT]Azure RemoteApp サブスクリプションを取得すると、イメージ内のソフトウェアへのアクセス権が付与されます。ただし、別途サブスクリプションが必要な Office 365 ProPlus と、運用環境では使用できない Office 2013 を除きます。つまり、テンプレート イメージ上のプログラムまたはアプリをユーザーと共有できます。たとえば、Windows Server 2012 R2 のイメージを使用するコレクションを作成する場合、ユーザーが RemoteApp でアクセスできる System Center Endpoint Protection を発行できます。
-> 
+>
 > 詳細については、「[How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)」を参照してください。また、Office のライセンス情報については、「[Azure RemoteApp で Office を使用する](remoteapp-o365.md)」を参照してください。
 
 各イメージが含んでいるものについては、詳細を参照してください。
@@ -34,7 +34,7 @@ Azure RemoteApp サブスクリプションには、次の 3 つのテンプレ�
 このイメージは Microsoft Windows Server 2012 R2 Datacenter オペレーティング システムに基づいており、Azure RemoteApp テンプレート イメージの要件を満たすために、次のようなロールと機能がインストールされています。
 
 
-- .NET Framework 4.5, 3.5.1, 3.5
+- .NET Framework 4.5、3.5.1、3.5
 - デスクトップ エクスペリエンス
 - インクと手書きサービス
 - メディア ファンデーション
@@ -103,6 +103,5 @@ Office 365 ProPlus、Visio Pro、Project Pro のライセンスは個別に取�
 - Microsoft Office Proofing Tools
 
 > [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、*運用環境では使用できません*。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。Office のライセンスの詳細については、[Azure RemoteApp での Office 365 の使用](remoteapp-o365.md)に関すページを参照してください。
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

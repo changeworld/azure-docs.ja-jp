@@ -1,19 +1,18 @@
 <properties
-	pageTitle="Azure AD Connect Sync - パスワード同期の実装 | Microsoft Azure"
+	pageTitle="Azure AD Connect Sync: パスワード同期の実装 | Microsoft Azure"
 	description="パスワード同期機能のしくみを理解するために必要な情報と環境でパスワード同期を有効にする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
 	manager="stevenpo"
 	editor=""/>
-
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="11/03/2015"
+	ms.topic="get-started-article"
+	ms.date="03/07/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -27,7 +26,7 @@
 
 パスワード同期は Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) の機能であり、オンプレミス Active Directory と Azure Active Directory (Azure AD) のユーザー パスワードを同期します。この機能を使用すると、ユーザーは、オンプレミス ネットワークにログインするときと同じパスワードを使用して、Azure Active Directory のサービス (Office 365、Microsoft Intune、CRM Online など) にログインできます。
 
-> [AZURE.NOTE]FIPS とパスワード同期に対して構成されている Active Directory ドメイン サービスの詳細については、「[Azure AD Connect Sync: パスワード同期の実装](#password-synchronization-and-fips)」を参照してください。
+> [AZURE.NOTE] FIPS とパスワード同期に対して構成されている Active Directory ドメイン サービスの詳細については、「[Azure AD Connect Sync: パスワード同期の実装](#password-synchronization-and-fips)」を参照してください。
 
 ### パスワード同期の可用性
 
@@ -44,6 +43,8 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 パスワード同期機能を初めて有効にすると、パスワードの初期同期を実行し、スコープ内のすべてのユーザーのパスワードをオンプレミス Active Directory から Azure Active Directory に同期します。パスワードをクラウドに同期するユーザーのセットを明示的に定義することはできません。その後は、オンプレミス ユーザーがパスワードを変更すると、パスワード同期機能は、ほとんどの場合は数分以内に、それを検出して変更されたパスワードを同期します。パスワードの同期が失敗すると、パスワード同期機能は自動的に再試行します。パスワード同期の試行中にエラーが発生した場合、イベント ビューアーにエラーが表示されます。
 
 パスワードの同期によって、現在ログイン中のユーザーが影響を受けることはありません。クラウド サービスにログインしているユーザーがオンプレミスのパスワードを変更した場合でも、クラウド サービスのセッションは中断せずに続けられます。ただし、クラウド サービスでユーザーの再認証が必要になったときは、すぐに新しいパスワードを提供する必要があります。この時点で、ユーザーは新しいパスワード、つまりその前にオンプレミス Active Directory からクラウドに同期されたパスワードを提供する必要があります。
+
+> [AZURE.NOTE] パスワード同期は、Active Directory でオブジェクトの種類がユーザーであるオブジェクトのみがサポートされます。オブジェクトの種類が INetOrgPerson であるオブジェクトはサポートされません。
 
 ### Azure AD Domain Services のパスワード同期のしくみ
 
@@ -66,11 +67,11 @@ Azure AD でこのサービスを有効にする場合、シングル サイン�
 
 パスワード同期を有効にすると、オンプレミス Active Directory で構成されているパスワードの複雑性のポリシーにより、同期されるユーザーに対してクラウドで定義されている複雑性のポリシーが上書きされます。つまり、ユーザーのオンプレミス Active Directory 環境において有効なパスワードは、Azure AD サービスのアクセスに使用できます。
 
-> [AZURE.NOTE]クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
+> [AZURE.NOTE] クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
 
 **パスワードの有効期限のポリシー**
 
-ユーザーがパスワード同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。つまり、オンプレミス環境でユーザーのパスワードの期限が切れても、クラウド サービスにはその期限切れパスワードを使用して引き続きログインできる可能性があります。
+ユーザーがパスワード同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。つまり、オンプレミス環境でユーザーのパスワードの期限が切れても、クラウド サービスには次のパスワード同期サイクル後に新しいパスワードを使用して引き続きログインできます。
 
 クラウドのパスワードは、次にユーザーがオンプレミス環境でパスワードを変更したときに更新されます。
 
@@ -128,9 +129,11 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 | 状態 | 説明 |
 | ---- | ----- |
 | 成功 | パスワードが正常に同期されました。 |
-| SourceConnectorNotPresent | オンプレミス Active Directory コネクタ スペースにオブジェクトがありません |
-| NoTargetConnection | メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません |
-| TargetNotExportedToDirectory | Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません |
+| FilteredByTarget | パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]** に設定されています。パスワードは同期されていません。 |
+| NoTargetConnection | メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません。 |
+| SourceConnectorNotPresent | オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
+| TargetNotExportedToDirectory | Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
+| MigratedCheckDetailsForMoreInfo | ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
 
 
 ### すべてのパスワードの完全同期の開始
@@ -156,4 +159,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="10/22/2015"
+   ms.date="02/10/2016"
    ms.author="jgao"/>
 
 
-# Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発
+# Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発
 
 Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。国名を変換するカスタム演算子を開発します。
 
@@ -25,10 +25,10 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 
 - Visual Studio 2015、Visual Studio 2013 update 4、または Visual Studio 2012 (Visual C++ インストール済み)。 
 - Microsoft Azure SDK for .NET バージョン 2.5 以上。Web Platform Installer を使用してインストールします。
-- Data Lake Analytics アカウント。「[Azure プレビュー ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
-- 「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md)」チュートリアルを読み進める。
-- Azure への接続。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md#connect-to-azure)」を参照してください。 
-- ソース データのアップロード。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-studio-get-started.md#upload-source-data-files)」を参照してください。 
+- Data Lake Analytics アカウント。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してください。
+- 「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md)」チュートリアルを読み進める。
+- Azure への接続。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md#connect-to-azure)」を参照してください。 
+- ソース データのアップロード。「[Azure Data Lake Analytics U-SQL Studio の使用](data-lake-analytics-u-sql-get-started.md#upload-source-data-files)」を参照してください。 
 
 ## U-SQL でのユーザー定義演算子の定義と使用
 
@@ -132,7 +132,7 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 6. **ソリューション エクスプローラー**で、**Script.usql** を右クリックしてから **[スクリプトのビルド]** をクリックします。
 6. **ソリューション エクスプローラー**で、**Script.usql** を右クリックしてから **[スクリプトの送信]** をクリックします。
 7. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
-7. **[送信]** をクリックします。送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
+7. **[Submit]** をクリックします。送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 8. 最新のジョブの状態を表示して、画面を更新するには、[更新] をクリックする必要があります。
 
 **ジョブの出力を表示するには**
@@ -147,4 +147,4 @@ Data Lake Analytics ジョブで使用および再使用されるユーザー定
 - [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0218_2016-->

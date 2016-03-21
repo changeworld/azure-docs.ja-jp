@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/28/2015" 
+	ms.date="02/08/2016" 
 	ms.author="bradsev" />
 
 # SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動する
+
+[SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
 
 以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
 
@@ -24,30 +26,28 @@
 
 ## はじめに
 
-[SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
-
 ユーザーは、オンプレミスのデータをクラウドに移動すると、そのデータにすべての Azure サービスからアクセスできるようになり、一連の Azure テクノロジを最大限に活用できます。たとえば、Azure Machine Learning または HDInsight クラスター上で使用できます。
 
-通常は、これが [SQL](https://azure.microsoft.com/documentation/articles/machine-learning-data-science-process-sql-walkthrough/) および [HDInsight](https://azure.microsoft.com/documentation/articles/machine-learning-data-science-process-hive-walkthrough/) のチュートリアルで最初の手順になります。
+通常は、これが [SQL](machine-learning-data-science-process-sql-walkthrough.md) および [HDInsight](machine-learning-data-science-process-hive-walkthrough.md) のチュートリアルで最初の手順になります。
 
 ハイブリッド データ統合のシナリオに共通するビジネス ニーズを満たすために SSIS を使用する標準的なシナリオの詳細については、[SQL Server Integration Services Feature Pack for Azure をさらに活用する方法](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx)に関するブログを参照してください。
 
-> [AZURE.NOTE]Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ## 前提条件
 
 この記事で説明するタスクを実行するには、Azure サブスクリプションと Azure ストレージ アカウントの設定が必要です。データをアップロードまたはダウンロードするために、Azure ストレージ アカウント名とアカウント キーを確認しておく必要があります。
 
-- **Azure サブスクリプション**を設定するには、「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-- **ストレージ アカウント**の作成手順と、アカウントおよびキー情報の取得手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
+- **Azure サブスクリプション**を設定するには、「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
+- **ストレージ アカウント**の作成手順と、アカウントおよびキー情報の取得手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」をご覧ください。
 
 
 **SSIS コネクタ**を使用するには、次のものをダウンロードする必要があります。
 
 - **SQL Server 2014 または 2016 Standard 以降**: インストールには SQL Server Integration Services が含まれます。
-- **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**: これらは [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
+- **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**: これらは、[SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
 
-> [AZURE.NOTE]SSIS は SQL Server と共にインストールされますが、Express バージョンには含まれていません。SQL Server の各種エディションに含まれるアプリケーションについては、[SQL Server のエディション](http://www.microsoft.com/ja-JP/server-cloud/products/sql-server-editions/)に関するページを参照してください。
+> [AZURE.NOTE] SSIS は SQL Server と共にインストールされますが、Express バージョンには含まれていません。SQL Server の各種エディションに含まれるアプリケーションについては、[SQL Server のエディション](http://www.microsoft.com/ja-JP/server-cloud/products/sql-server-editions/)に関するページを参照してください。
 
 SSIS のトレーニング資料については、[SSIS の実践的トレーニング](http://www.microsoft.com/download/details.aspx?id=20766)に関するドキュメントを参照してください。
 
@@ -76,7 +76,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 **TimeRangeFrom/TimeRangeTo**|時間範囲フィルターを指定します。*TimeRangeFrom* から *TimeRangeTo* までに変更されたファイルが含まれます。|
 
 
-> [AZURE.NOTE]転送を試す前に、**AzureStorageConnection** の資格情報が正しく、**BlobContainer** が存在することを確認する必要があります。
+> [AZURE.NOTE] 転送を試す前に、**AzureStorageConnection** の資格情報が正しく、**BlobContainer** が存在することを確認する必要があります。
  
 ## Azure BLOB ストレージからデータをダウンロードする
 
@@ -88,4 +88,4 @@ SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化す
 - SSIS を使用して Azure HDInsight クラスター上で Hive スクリプトを実行するには、[Azure HDInsight Hive タスク](https://msdn.microsoft.com/library/mt146771.aspx)を使用します。
 - SSIS を使用して Azure HDInsight クラスター上で Pig スクリプトを実行するには、[Azure HDInsight Pig タスク](https://msdn.microsoft.com/library/mt146781.aspx)を使用します。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0211_2016-->

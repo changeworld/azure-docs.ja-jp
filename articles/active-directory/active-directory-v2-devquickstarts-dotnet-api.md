@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 &gt;Net Web API| Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web API | Microsoft Azure"
 	description="個人の Microsoft アカウントと職場/学校アカウントの両方からトークンを受け付ける .NET MVC Web API を構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -13,46 +13,47 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/11/2015"
+	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
-# アプリ モデル v2.0 プレビュー: MVC Web API をセキュリティで保護する
+# MVC Web API をセキュリティで保護する
 
-v2.0 アプリ モデルでは、[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) アクセス トークンを使用して Web API を保護でき、ユーザーが個人または職場/学校の Microsoft アカウントの両方を使って Web API に安全にアクセスできるようにすることができます。
+Azure Active Directory v2.0 エンドポイントでは、[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) アクセス トークンを使用して Web API を保護でき、ユーザーが個人または職場/学校の Microsoft アカウントの両方を使って Web API に安全にアクセスできるようにすることができます。
 
-> [AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-ASP.NET Web API では、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。ここでは、OWIN を使用して、次の機能を持つ "To Do List" MVC Web API を構築します: クライアントがユーザーの To-Do list からタスクを作成、読み取りできるようにする機能、保護対象の API を指定する機能、および Web API 呼び出しが有効なアクセス トークンを含んでいることを検証する機能。
+ASP.NET Web API では、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。ここでは、OWIN を使用して、クライアントがユーザーの To-Do list からタスクを作成、読み取りできるようにする機能を持つ "To Do List" MVC Web API を構築します。この Web API は、保護されているルートで、受信要求が有効なアクセス トークンを含んでいるかどうかを検証し、検証にパスしなかった要求をすべて拒否します。
 
-これを行うには、次の手順を実行する必要があります。
-
-1. アプリを Azure AD に登録する
-2. OWIN 認証パイプラインを使用するようにアプリをセットアップする
-3. To Do List Web API を呼び出すようにクライアント アプリを構成する
-
+## ダウンロード
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
+```
+git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
+```
 
-完成したアプリは、このチュートリアルの終わりにも示しています。
+スケルトン アプリには、簡単な API 用の定型コードがすべて含まれますが、ID 関連の部分はまったく含まれません。代わりに、完全なサンプルを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)することもできます。
 
+```
+git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
+```
 
-## 1\.アプリを登録します
+## アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 この Visual Studio ソリューションには、単純な WPF アプリである "TodoListClient" も含まれています。TodoListClient は、ユーザーがどのようにサインインし、クライアントが Web API にどのように要求を発行するかを示すために使用されます。ここでは、TodoListClient と TodoListService の両方に同じアプリが使用されています。TodoListClient を構成するために、以下のことも行う必要があります。
 
-- アプリ用の**モバイル** プラットフォームを追加します。
+- アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
-## 2. アプリで OWIN 認証パイプラインを使用するよう設定します。
+## OWIN をインストールする
 
 アプリの登録が完了したら、受け取った要求やトークンを検証するために、v2.0 エンドポイントと通信するようアプリを設定する必要があります。
 
--	まず、ソリューションを開き、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージを TodoListService プロジェクトに追加する必要があります。
+- まず、ソリューションを開き、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージを TodoListService プロジェクトに追加する必要があります。
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
@@ -60,8 +61,10 @@ PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
 ```
 
--	OWIN Startup クラスを TodoListService プロジェクト (`Startup.cs`) に追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
--	クラス宣言を `public partial class Startup` に変更します。このクラスの一部を別のファイルで既に実装しています。`Configuration(…)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。
+## OAuth 認証を構成する
+
+- OWIN Startup クラスを TodoListService プロジェクト (`Startup.cs`) に追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
+- クラス宣言を `public partial class Startup` に変更します。このクラスの一部を別のファイルで既に実装しています。`Configuration(…)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。
 
 ```C#
 public partial class Startup
@@ -73,7 +76,7 @@ public partial class Startup
 }
 ```
 
--	ファイル `App_Start\Startup.Auth.cs` を開き、`ConfigureAuth(…)` メソッドを実装します。これにより Web API を v2.0 エンドポイントからのトークンを受け入れるように設定できます。
+- ファイル `App_Start\Startup.Auth.cs` を開き、`ConfigureAuth(…)` メソッドを実装します。これにより Web API を v2.0 エンドポイントからのトークンを受け入れるように設定できます。
 
 ```C#
 public void ConfigureAuth(IAppBuilder app)
@@ -110,7 +113,7 @@ public void ConfigureAuth(IAppBuilder app)
 }
 ```
 
--	次に、`[Authorize]` 属性と OAuth 2.0 ベアラー認証を使用して、コントローラーとアクションを保護します。認証タグを使用して、`Controllers\TodoListController.cs` クラスを修飾します。これにより、ユーザーはそのページにアクセスする前に、サインインが必要になります。
+- 次に、`[Authorize]` 属性と OAuth 2.0 ベアラー認証を使用して、コントローラーとアクションを保護します。認証タグを使用して、`Controllers\TodoListController.cs` クラスを修飾します。これにより、ユーザーはそのページにアクセスする前に、サインインが必要になります。
 
 ```C#
 [Authorize]
@@ -138,7 +141,7 @@ public IEnumerable<TodoItem> Get()
 -	最後に、TodoListService プロジェクトのルートにある `web.config` ファイルを開いて、構成値を `<appSettings>` セクションで入力します。
   -	`ida:Audience` は、ポータルで入力したアプリの**アプリケーション ID** です。
 
-## 3\.クライアント アプリを構成し、サービスを実行する
+## クライアント アプリを構成する
 Todo List Service の動作を確認できるようにするには、Todo List Client を構成して、Todo List Client が v2.0 エンドポイントからトークンを取得し、サービスを呼び出せるようにする必要があります。
 
 - TodoListClient プロジェクトで `App.config` を開いて、`<appSettings>` セクションに構成値を入力します。
@@ -154,8 +157,8 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 ## 次のステップ
 ここからは、さらなるトピックに進むことができます。次のチュートリアルを試してみてください。
 
-[v2.0 アプリ モデルで Web アプリから Web API を呼び出す >>](active-directory-devquickstarts-webapp-webapi-dotnet.md)
+[Web アプリから Web API を呼び出す >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
-その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。 - [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="01/26/2016"
 	ms.author="mmercuri"/>
 
 # Azure リソース マネージャーのテンプレートでの状態の共有
@@ -389,4 +389,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="11/25/2015" 
 	ms.author="awills"/>
  
 # Web アプリケーションのパフォーマンスを監視する
@@ -134,11 +134,17 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 必要に応じて、同じ効果を持つ次のようなコードを記述できます。
 
-    var perfCollector = new PerformanceCollectorModule();
-    perfCollector.Counters.Add(new CustomPerformanceCounterCollectionRquest(
+    var perfCollectorModule = new PerformanceCollectorModule();
+    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(electronics)# Items Sold", "Items sold"));
-    perfCollector.Initialize(TelemetryConfiguration.Active);
-    TelemetryConfiguration.Active.TelemetryModules.Add(perfCollector);
+    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+
+さらに、システム パフォーマンス カウンターを収集し、それらを Application Insights にプッシュする場合は、次のスニペットを使用できます。
+
+    var perfCollectorModule = new PerformanceCollectorModule();
+    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
+      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
+    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 
 ### 例外の数
 
@@ -185,7 +191,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-start-monitoring-app-health-usage.md
+[greenbrown]: app-insights-asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
@@ -193,4 +199,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_1203_2015-->

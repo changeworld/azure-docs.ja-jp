@@ -3,7 +3,7 @@
    description="ソリューション開発のための Azure SQL Data Warehouse へのデータの移行に関するヒント"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="barbkess;sonyama"/>
 
 # データの移行
 データを移行する主な目的は、SQLDW データベースにデータを取り込むことです。このプロセスは、さまざまな方法で実行できます。ADF コピー、SSIS、bcp はすべて、この目的を果たすために使用できます。ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -179,7 +179,7 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 [SQL Data Warehouse へのソリューションの移行]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [bcp を使用した SQL Data Warehouse へのデータのロード]: sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: sql-data-warehouse-load-with-polybase.md
+[PolyBase を使用したデータのロード]: sql-data-warehouse-get-started-load-with-polybase.md
 
 
 <!--MSDN references-->
@@ -191,7 +191,7 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 
 [製品バージョン]: http://aka.ms/downloadazcopy/
 [プレビュー バージョン]: http://aka.ms/downloadazcopypr/
-[ADO NET 変換先エディター]: https://msdn.microsoft.com/ja-jp/library/bb934041.aspx
-[SSIS のドキュメント]: https://msdn.microsoft.com/ja-jp/library/ms141026.aspx
+[ADO NET 変換先エディター]: https://msdn.microsoft.com/library/bb934041.aspx
+[SSIS のドキュメント]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

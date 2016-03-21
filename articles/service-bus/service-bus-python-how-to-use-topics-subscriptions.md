@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="10/08/2015" 
+	ms.date="01/26/2016" 
 	ms.author="sethm"/>
 
 # Service Bus のトピックとサブスクリプションの使用方法
@@ -43,7 +43,7 @@ bus_service = ServiceBusService(
 	shared_access_key_value='sharedaccesskey')
 ```
 
-SAS キー名とキー値のそれぞれの値は、[Azure ポータル][]の「**接続情報**」ウィンドウから取得できます。
+SAS キー名とキー値のそれぞれの値は、[Azure クラシック ポータル][]の **[接続情報]** ウィンドウから取得できます。
 
 ```
 bus_service.create_topic('mytopic')
@@ -63,7 +63,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 トピックのサブスクリプションも **ServiceBusService** オブジェクトで作成します。サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定することができます。
 
-> [AZURE.NOTE]サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションがサブスクライブされているトピックが削除されるまで存在し続けます。
+> [AZURE.NOTE] サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションがサブスクライブされているトピックが削除されるまで存在し続けます。
 
 ### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
@@ -81,7 +81,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 **ServiceBusService** オブジェクトの **create\_rule** メソッドを使用して、サブスクリプションにフィルターを追加できます。このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
-> [AZURE.NOTE]既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **delete\_rule** メソッドを使用します。
+> [AZURE.NOTE] 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるため、最初に既定のフィルターを削除する必要があります。削除しなければ、指定された他のすべてのフィルターは **MatchAll** によってオーバーライドされます。既定のルールを削除するには、**ServiceBusService** オブジェクトの **delete\_rule** メソッドを使用します。
 
 次の例では、`HighMessages` という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、カスタム **messagenumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -157,7 +157,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## トピックとサブスクリプションを削除する
 
-トピックおよびサブスクリプションは永続的であり、Azure ポータルまたはプログラムによって明示的に削除する必要があります。次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
+トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル][]またはプログラムによって明示的に削除する必要があります。次の例では、`mytopic` という名前のトピックを削除する方法を示しています。
 
 ```
 bus_service.delete_topic('mytopic')
@@ -176,10 +176,10 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 -   [キュー、トピック、およびサブスクリプション][]に関するページをご覧ください。
 -   [SqlFilter.SqlExpression][] のリファレンス
 
-[Azure ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: http://manage.windowsazure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
 
-<!---HONumber=Oct15_HO4-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/10/2015"
+	ms.date="02/03/2016"
 	ms.author="garye"/>
 
 
@@ -25,7 +25,7 @@
 
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
->[AZURE.NOTE]機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。R を使用して予測 Web サービスを作成する方法の詳細については、[RStudio と Azure ML を使用した予測 Web アプリの開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
+>[AZURE.NOTE] 機械学習モデルを開発し、デプロイする方法はほかにもありますが、この記事では Machine Learning Studio を使用する方法に焦点を当てています。R を使用して予測 Web サービスを作成する方法の詳細については、[RStudio と Azure ML を使用した予測 Web アプリの開発とデプロイ](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)に関するブログ記事を参照してください。
 
 Azure Machine Learning Studio は主に*予測分析モデル*の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に使用することもできます。たとえば、データを入力して操作し、結果を出力するだけの実験などです。この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。これは Studio の一般的な使用方法ではありません。一般的な使用方法については以下で説明し、Studio の機能を網羅することにします。
 
@@ -39,7 +39,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 ### トレーニング実験
 
-***トレーニング実験***は、Machine Learning Studio の最初の実験キャンバスです。トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。予測分析実験の開発の例については、「[信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)」を参照してください。
+***トレーニング実験***は、Machine Learning Studio の最初の実験キャンバスです。トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。予測分析実験の開発の例については、「[信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)」を参照してください。
 
 ### 予測実験
 
@@ -57,11 +57,11 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 この変換プロセスでは、トレーニング実験は破棄されません。このプロセスが完了すると、2 つのタブが Studio に表示されます。1 つがトレーニング実験用で、もう 1 つが予測実験用です。このように、Web サービスをデプロイする前に、トレーニング実験に変更を加えて予測実験を再構築できます。また、トレーニング実験のコピーを保存しておいて、新たに別の実験を始めることもできます。
 
->[AZURE.NOTE]**[Web サービスの設定]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。この変換処理の機能の詳細については、「[Machine Learning のトレーニング実験から予測実験に変換する](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-convert-training-experiment-to-scoring-experiment/)」を参照してください。
+>[AZURE.NOTE] **[Web サービスの設定]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。この変換処理の機能の詳細については、「[Machine Learning のトレーニング実験から予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)」を参照してください。
 
 ### Web サービス
 
-予測実験の準備ができたら、**[Web サービスのデプロイ]** をクリックし、***Azure Web サービス***としてデプロイすることでモデルを運用可能にします。ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。この方法の詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-consume-web-services/)」を参照してください。
+予測実験の準備ができたら、**[Web サービスのデプロイ]** をクリックし、***Azure Web サービス***としてデプロイすることでモデルを運用可能にします。ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。この方法の詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 Web サービスをデプロイした後も予測実験と Web サービスは接続されたままなので、これらの間を行き来できます。
 
@@ -69,8 +69,8 @@ Web サービスをデプロイした後も予測実験と Web サービスは�
 | ------------------- | --------------- | ---------------------- |
 |Studio の実験キャンバス|**[Web サービスに移動]**|Studio の Web サービス構成|
 |Studio の Web サービス構成|**最新の表示**|Studio の実験キャンバス|
-|Studio の Web サービス構成|**エンドポイントの管理...**|Azure ポータルのエンドポイント管理|
-|Azure ポータルのエンドポイント管理|**Studio で編集**|Studio の実験キャンバス|
+|Studio の Web サービス構成|**エンドポイントの管理...**|Azure クラシック ポータルのエンドポイント管理|
+|Azure クラシック ポータルのエンドポイント管理|**Studio で編集**|Studio の実験キャンバス|
 
 ![](media\machine-learning-model-progression-experiment-to-web-service\connections-between-experiment-and-web-service.png)
 
@@ -134,7 +134,7 @@ Machine Learning Studio では、Web サービスのボタン (**[Web サービ�
 
 機械学習モデルを維持したまま新しいデータで再トレーニングする必要がある場合、選択肢は 2 つあります。
 
-1.  **Web サービスの実行中にモデルを再トレーニングする**: 予測 Web サービスの実行中にモデルを再トレーニングするには、トレーニング実験にいくつか変更を加えて***再トレーニング実験***にすることで実行できます。さらにそれを***再トレーニング Web* サービス**としてデプロイできます。この方法の手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-retrain-models-programmatically/)」を参照してください。
+1.  **Web サービスの実行中にモデルを再トレーニングする**: 予測 Web サービスの実行中にモデルを再トレーニングするには、トレーニング実験にいくつか変更を加えて***再トレーニング実験***にすることで実行できます。さらにそれを***再トレーニング Web* サービス**としてデプロイできます。この方法の手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」を参照してください。
 
 2.  **元のトレーニング実験に戻り、さまざまなトレーニング データを使用してモデルを開発する**: 予測実験は Web サービスにリンクされますが、この方法では、トレーニング実験は直接リンクされません。元のトレーニング実験を変更し、**[Web サービスの設定]** をクリックすると、*新しい*予測実験が作成されます。これをデプロイすると、*新しい* Web サービスが作成されます。単に元の Web サービスを更新するのではありません。
 
@@ -148,16 +148,16 @@ Machine Learning Studio では、Web サービスのボタン (**[Web サービ�
 
 このプロセスの詳細については、以下の記事を参照してください。
 
--   実験の変換: [Machine Learning のトレーニング実験から予測実験に変換する](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-convert-training-experiment-to-scoring-experiment/)
+-   実験の変換: [Machine Learning のトレーニング実験から予測実験に変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 
--   Web サービスのデプロイ: [Azure Machine Learning Web サービスをデプロイする](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-publish-a-machine-learning-web-service/)
+-   Web サービスのデプロイ: [Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 
--   モデルの再トレーニング: [プログラムによる Machine Learning のモデルの再トレーニング](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-retrain-models-programmatically/)
+-   モデルの再トレーニング: [プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)
 
 プロセス全体の例については、以下を参照してください。
 
--   [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-create-experiment/)
+-   [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](machine-learning-create-experiment.md)
 
--   [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/)
+-   [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0204_2016-->

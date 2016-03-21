@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/13/2015" 
+	ms.date="01/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - サンプル
 
-## Azure ポータルのサンプル
-Azure ポータルの **[パイプラインのサンプル]** ブレードを使用して、Azure Data Factory サンプルを迅速にデプロイ、レビュー、テストできます。
+## Azure クラシック ポータルのサンプル
+Azure クラシック ポータルの **[パイプラインのサンプル]** ブレードを使用して、Azure Data Factory サンプルを迅速にデプロイ、レビュー、テストできます。
 
 1. 新しいデータ ファクトリを作成するか、既存のデータ ファクトリを開きます。データ ファクトリを作成する手順については、「[Azure Data Factory を使ってみる][data-factory-get-started]」を参照してください
 2. データ ファクトリの **[Data Factory]** ブレードで、**[パイプラインのサンプル]** タイルをクリックします。
@@ -57,4 +57,4 @@ Azure ポータルの **[パイプラインのサンプル]** ブレードを使
 
 [data-factory-get-started]: data-factory-get-started.md#CreateDataFactory
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

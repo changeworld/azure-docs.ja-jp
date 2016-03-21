@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure ポータルのキーボード ショートカット | Microsoft Azure"
-   description="この記事では、Azure ポータル全体で使用できる最新のキーボード ショートカットの一覧を紹介します。個々のサービスで専用のキーボード ショートカットが特別に用意されている場合もあります。"
+   pageTitle="Azure クラシック ポータルのキーボード ショートカット | Microsoft Azure"
+   description="この記事では、Azure クラシック ポータル全体で使用できる最新のキーボード ショートカットの一覧を紹介します。個々のサービスで専用のキーボード ショートカットが特別に用意されている場合もあります。"
    services="cloud-services"
    documentationCenter=""
    authors="curtand"
-   manager="msStevenPo"
+   manager="stevenpo"
    editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="09/10/2015"
+   ms.date="02/07/2016"
    ms.author="curtand"/>
 
-# Azure ポータルのキーボード ショートカット
+# Azure クラシック ポータルのキーボード ショートカット
 
 ## ハブを開く
 
@@ -48,6 +48,6 @@
 
 ## 次のステップ
 
-次のサイトで Azure ポータルの詳細を確認しましょう: http://azure.microsoft.com
+次のサイトで Azure クラシック ポータルの詳細を確認する: http://azure.microsoft.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

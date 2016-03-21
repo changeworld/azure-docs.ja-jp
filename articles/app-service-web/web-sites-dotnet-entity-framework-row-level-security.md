@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/30/2015"
+	ms.date="01/25/2016"
 	ms.author="thmullan"/>
 
 # チュートリアル: Entity Framework と行レベル セキュリティによるマルチテナント データベースを持つ Web アプリの構築
@@ -28,9 +28,9 @@
 
 ## 手順 1: アプリケーションにインターセプター クラスを追加し、SESSION\_CONTEXT を設定する
 
-アプリケーションに 1 つの変更を行う必要があります。アプリケーションのすべてのユーザーが同じ接続文字列 (つまり、同じ SQL ログイン) を使用してデータベースに接続するため、現在、RLS ポリシーには、どのユーザーをフィルター処理する必要があるかを判断する方法がありません。この方法は、効率的な接続プーリングができるため、Web アプリケーションでは非常に一般的です。しかし、データベース内の現在のアプリケーション ユーザーを識別するための別の方法が必要になります。解決方法は、アプリケーションで、クエリの実行前に現在の UserId のキーと値のペアを [SESSION\_CONTEXT](https://msdn.microsoft.com/library/mt590806) に設定することです。SESSION\_CONTEXT はセッション スコープのキー/値ストアであり、これに格納されている UserId を RLS ポリシーが使用して、現在のユーザーを識別します。*注: SESSION\_CONTEXT は、現在、Azure SQL Database のプレビュー機能です。*
+アプリケーションに 1 つの変更を行う必要があります。アプリケーションのすべてのユーザーが同じ接続文字列 (つまり、同じ SQL ログイン) を使用してデータベースに接続するため、現在、RLS ポリシーには、どのユーザーをフィルター処理する必要があるかを判断する方法がありません。この方法は、効率的な接続プーリングができるため、Web アプリケーションでは非常に一般的です。しかし、データベース内の現在のアプリケーション ユーザーを識別するための別の方法が必要になります。解決方法は、アプリケーションでクエリの実行前に、接続を開いた後すぐに現在の UserId のキーと値のペアを [SESSION\_CONTEXT](https://msdn.microsoft.com/library/mt590806) に設定することです。SESSION\_CONTEXT はセッション スコープのキー/値ストアであり、これに格納されている UserId を RLS ポリシーが使用して、現在のユーザーを識別します。
 
-Entity Framework (EF) 6 の新機能である[インターセプター](https://msdn.microsoft.com/data/dn469464.aspx)を追加し、EF が各クエリを実行する前に、SESSION\_CONTEXT の現在の UserId を、T-SQL ステートメントを前に付加して自動的に設定するようにします。
+Entity Framework (EF) 6 の新機能である[インターセプター](https://msdn.microsoft.com/data/dn469464.aspx) (特に [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)) を追加し、EF が接続を開いたときに T-SQL ステートメントを実行して、SESSION\_CONTEXT の現在の UserId を自動的に設定するようにします。
 
 1.	Visual Studio で ContactManager プロジェクトを開きます。
 2.	ソリューション エクスプローラーで Models フォルダーを右クリックし、[追加]、[クラス] の順に選択します。
@@ -43,27 +43,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using Microsoft.AspNet.Identity;
 
 namespace ContactManager.Models
 {
-    public class SessionContextInterceptor : IDbCommandInterceptor
+    public class SessionContextInterceptor : IDbConnectionInterceptor
     {
-        private void SetSessionContext(DbCommand command)
+        public void Opened(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
+        	// Set SESSION_CONTEXT to current UserId whenever EF opens a connection
             try
             {
                 var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
                 if (userId != null)
                 {
-                    // Set SESSION_CONTEXT to current UserId before executing queries
-                    var sql = "EXEC sp_set_session_context @key=N'UserId', @value=@UserId;";
-
-                    command.CommandText = sql + command.CommandText;
-                    command.Parameters.Insert(0, new SqlParameter("@UserId", userId));
+                    DbCommand cmd = connection.CreateCommand();
+                    cmd.CommandText = "EXEC sp_set_session_context @key=N'UserId', @value=@UserId";
+                    DbParameter param = cmd.CreateParameter();
+                    param.ParameterName = "@UserId";
+                    param.Value = userId;
+                    cmd.Parameters.Add(param);
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (System.NullReferenceException)
@@ -71,29 +73,97 @@ namespace ContactManager.Models
                 // If no user is logged in, leave SESSION_CONTEXT null (all rows will be filtered)
             }
         }
-        public void NonQueryExecuting(DbCommand command, DbCommandInterceptionContext<int> interceptionContext)
+        
+        public void Opening(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
-            this.SetSessionContext(command);
         }
-        public void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext<int> interceptionContext)
-        {
 
-        }
-        public void ReaderExecuting(DbCommand command, DbCommandInterceptionContext<DbDataReader> interceptionContext)
+        public void BeganTransaction(DbConnection connection, BeginTransactionInterceptionContext interceptionContext)
         {
-            this.SetSessionContext(command);
         }
-        public void ReaderExecuted(DbCommand command, DbCommandInterceptionContext<DbDataReader> interceptionContext)
-        {
 
-        }
-        public void ScalarExecuting(DbCommand command, DbCommandInterceptionContext<object> interceptionContext)
+        public void BeginningTransaction(DbConnection connection, BeginTransactionInterceptionContext interceptionContext)
         {
-            this.SetSessionContext(command);
         }
-        public void ScalarExecuted(DbCommand command, DbCommandInterceptionContext<object> interceptionContext)
-        {
 
+        public void Closed(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void Closing(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void ConnectionStringGetting(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void ConnectionStringGot(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void ConnectionStringSet(DbConnection connection, DbConnectionPropertyInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void ConnectionStringSetting(DbConnection connection, DbConnectionPropertyInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void ConnectionTimeoutGetting(DbConnection connection, DbConnectionInterceptionContext<int> interceptionContext)
+        {
+        }
+
+        public void ConnectionTimeoutGot(DbConnection connection, DbConnectionInterceptionContext<int> interceptionContext)
+        {
+        }
+
+        public void DataSourceGetting(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void DataSourceGot(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void DatabaseGetting(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void DatabaseGot(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void Disposed(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void Disposing(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void EnlistedTransaction(DbConnection connection, EnlistTransactionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void EnlistingTransaction(DbConnection connection, EnlistTransactionInterceptionContext interceptionContext)
+        {
+        }
+
+        public void ServerVersionGetting(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void ServerVersionGot(DbConnection connection, DbConnectionInterceptionContext<string> interceptionContext)
+        {
+        }
+
+        public void StateGetting(DbConnection connection, DbConnectionInterceptionContext<System.Data.ConnectionState> interceptionContext)
+        {
+        }
+
+        public void StateGot(DbConnection connection, DbConnectionInterceptionContext<System.Data.ConnectionState> interceptionContext)
+        {
         }
     }
 
@@ -164,7 +234,7 @@ go
 
 ```
 
-このコードでは、3 つの処理が行われます。まず、RLS オブジェクトへのアクセスを一元化して制限するためのベスト プラクティスとして、新しいスキーマを作成します。次に、行の UserId が SESSION\_CONTEXT の UserId と一致した場合に '1' を返す述語関数を作成します。最後に、Contacts テーブルに対するフィルター述語とブロック述語の両方としてこの関数を追加するセキュリティ ポリシーを作成します。フィルター述語は、現在のユーザーに属する行だけがクエリから返されるようにします。ブロック述語は、アプリケーションが誤って正しくないユーザーのために行を挿入しないようにするための安全装置として機能します。*注: ブロック述語は、現在、Azure SQL Database のプレビュー機能です。*
+このコードでは、3 つの処理が行われます。まず、RLS オブジェクトへのアクセスを一元化して制限するためのベスト プラクティスとして、新しいスキーマを作成します。次に、行の UserId が SESSION\_CONTEXT の UserId と一致した場合に '1' を返す述語関数を作成します。最後に、Contacts テーブルに対するフィルター述語とブロック述語の両方としてこの関数を追加するセキュリティ ポリシーを作成します。フィルター述語は、現在のユーザーに属する行だけがクエリから返されるようにします。ブロック述語は、アプリケーションが誤って正しくないユーザーのために行を挿入しないようにするための安全装置として機能します。
 
 ここで、アプリケーションを実行し、user1@contoso.com としてサインインします。このユーザーには、前にこの UserId に割り当てた連絡先だけが表示されるようになりました。
 
@@ -180,4 +250,4 @@ go
 
 これらの可能性の他にも、RLS をさらに良いものにするための努力が続けられています。ご質問、ご意見、ご要望などありましたら、お知らせください。フィードバックをお待ちしています。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

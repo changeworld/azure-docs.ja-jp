@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Azure" 
     description="Azure Active Directory で Jive を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Jive の統合
 
@@ -70,9 +70,9 @@
 
     1.  **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
 
-    2.  **[JIVE 管理パスワード]** テキスト ボックスに、このアカウントのパスワードを入力します。
+    2.  **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
-    3.  **[JIVE テナント URL]** テキスト ボックスに、Jive テナント URL を入力します。
+    3.  **[JIVE テナント URL]** テキストボックスに、Jive テナント URL を入力します。
 
         >[AZURE.NOTE]Jive テナント URL は、組織が Jive にログインするために使用する URL です。通常、URL の形式は **www.<組織名>.jive.com** のようになります。
 
@@ -84,4 +84,4 @@
   
 ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Jive.com と同期されていることを確認します。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

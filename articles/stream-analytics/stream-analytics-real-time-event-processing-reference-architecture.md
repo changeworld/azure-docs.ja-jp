@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Stream Analytics によるリアルタイム イベント処理 | Microsoft Azure" 
+	pageTitle="Stream Analytics イベント処理によるリアルタイム イベント処理 | Microsoft Azure" 
 	description="リアルタイム イベント処理と分析を可能にする Azure サービスの相互運用性について説明します。" 
+    keywords="リアルタイム処理、イベント処理、参照アーキテクチャ"
 	services="stream-analytics,event-hubs,storage,sql-database" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -12,8 +13,8 @@
 	ms.workload="big-data" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.topic="get-started-article" 
+	ms.date="02/04/2016" 
 	ms.author="jeffstok"/>
 
 # 参照アーキテクチャ: Microsoft Azure Stream Analytics によるリアルタイム イベント処理
@@ -62,4 +63,4 @@ Microsoft Azure は、さまざまなソリューションのシナリオと要�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

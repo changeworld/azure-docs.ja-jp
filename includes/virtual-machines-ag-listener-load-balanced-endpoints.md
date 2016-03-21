@@ -6,7 +6,7 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 1. 使用しようとしているリスナー エンドポイントの **[名前]** と **[パブリック ポート]** が未使用であることを確認します。次の例では、名前が "MyEndpoint" で、ポートが “1433” とします。
 
-1. ローカル クライアントに、[最新の PowerShell モジュール](http://azure.microsoft.com/downloads/)をダウンロードしてインストールします。
+1. ローカル クライアントに、[最新の PowerShell モジュール](https://azure.microsoft.com/downloads/)をダウンロードしてインストールします。
 
 1. **Azure PowerShell** を起動します。Azure 管理モジュールが読み込まれた状態で新しい PowerShell セッションが開きます。
 
@@ -18,4 +18,4 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 	発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,6 +1,6 @@
 <properties 
    pageTitle="HDInsight での Hadoop クラスターのカスタム プロビジョニング | Microsoft Azure" 
-   description="Azure ポータル、Azure PowerShell、コマンド ライン、.NET SDK を使用して Azure HDInsight のクラスターのカスタム プロビジョニングを行う方法について説明します。" 
+   description="Azure クラシック ポータル、Azure PowerShell、コマンド ライン、.NET SDK を使用して Azure HDInsight のクラスターのカスタム プロビジョニングを行う方法について説明します。" 
    services="hdinsight" 
    documentationCenter="" 
    authors="mumian" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="09/21/2015"
+   ms.date="01/28/2016"
    ms.author="jgao"/>
 
 #Provision Hadoop clusters in HDInsight (HDInsight での Hadoop クラスターのプロビジョニング)
@@ -28,7 +28,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 
 ## 基本的な構成オプション
@@ -47,7 +47,9 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
  
 - **オペレーティング システム**
 
-	HDInsight クラスターは、次の 2 つのオペレーティング システムのいずれかでプロビジョニングできます。- **HDInsight on Windows (Windows Server 2012 R2 Datacenter)**: - **HDInsight on Linux (Ubuntu 12.04 LTS for Linux) (プレビュー)**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-get-started.md)」をご覧ください。
+	次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターをプロビジョニングすることができます。
+	- **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**:
+	- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。 
 
 
 - **HDInsight のバージョン**
@@ -61,48 +63,57 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 	- Hadoop クラスター: クエリおよび分析ワークロード用
 	- HBase クラスター: NoSQL ワークロード用
 	- Storm クラスター: リアルタイム イベント処理ワークロード用
-	- Spark クラスター (プレビュー): メモリ内処理、対話型クエリ、ストリーミング、機械学習の各ワークロード用
+	- Spark クラスター: メモリ内処理、対話型クエリ、ストリーム、機械学習の各ワークロード用
 
-	![HDInsight クラスター](./media/hdinsight-provision-clusters-v1/hdinsight.clusters.png)
+	![HDInsight clusters](./media/hdinsight-provision-clusters-v1/hdinsight.clusters.png)
  
-	> [AZURE.NOTE]"Azure HDInsight クラスター" は、"HDInsight の Hadoop クラスター"、または "HDInsight クラスター" とも呼ばれます。また、"Hadoop クラスター" と同じ意味で使用される場合もあります。これらはすべて、Microsoft Azure 環境でホストされている Hadoop クラスターを指します。
+	> [AZURE.NOTE] "Azure HDInsight クラスター" は、"HDInsight の Hadoop クラスター"、または "HDInsight クラスター" とも呼ばれます。また、"Hadoop クラスター" と同じ意味で使用される場合もあります。これらはすべて、Microsoft Azure 環境でホストされている Hadoop クラスターを指します。
 
 	特定のクラスターの種類には、各種ノードのさまざまなロールがあります。これにより、ワークロードの詳細に適した特定のロールでノードのサイズを設定できます。たとえば、Hadoop クラスターで実行する分析がメモリ消費型である場合、大量のメモリを備えた worker ノードをプロビジョニングできます。
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Hadoop.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Hadoop.roles.png)
 
 	HDInsight の Hadoop クラスターは 2 つのロールでデプロイされます。
 
 	- ヘッド ノード (2 ノード)
 	- データ ノード (1 つ以上のノード)
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.HBase.roles.png)
 
-	HDInsight 用 HBase クラスターは 3 つのロールでデプロイされます。- ヘッド サーバー (2 ノード) - リージョン サーバー (1 ノード以上) - Master/Zookeeper ノード (3 ノード)
+	HDInsight の HBase クラスターは 3 つのロールでデプロイされます。
+	- ヘッド サーバー (2 つのノード)
+	- リージョン サーバー (1 つ以上のノード)
+	- マスター/Zookeeper ノード (3 つのノード)
 	
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Storm.roles.png)
 
-	HDInsight 用 Storm クラスターは 3 つのロールでデプロイされます。Nimbus ノード (2 ノード) - Supervisor サーバー (1 ノード以上) - Zookeeper ノード (3 ノード)
+	HDInsight の Storm クラスターは 3 つのロールでデプロイされます。
+	- Nimbus ノード (2 つのノード)
+	- Supervisor サーバー (1 つ以上のノード)
+	- Zookeeper ノード (3 つのノード)
 	
 
-	![HDInsight Hadoop cluster roles](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
+	![HDInsight Hadoop クラスター ロール](./media/hdinsight-provision-clusters-v1/HDInsight.Spark.roles.png)
 
-	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
+	HDInsight 用 Spark クラスターは、次の 3 つのロールでデプロイされます。
+	- ヘッド ノード (2 ノード)
+	- ワーカー ノード (少なくとも 1 ノード)
+	- Zookeeper ノード (3 ノード) (A1 Zookeeper では無料)
 
 	クラスターの有効期間中、これらのノードの使用量に対して課金されます。課金は、クラスターが作成された時点で開始され、クラスターが削除されると終了します (クラスターを割り当て解除したり、保留にしたりすることはできません)。クラスター サイズはクラスターの価格に影響します。学習目的の場合、データ ノードを 1 つ使用することをお勧めします。HDInsight の価格の詳細については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
 
-	>[AZURE.NOTE]クラスター サイズの制限は、Azure サブスクリプションによって異なります。制限値を上げるには、課金サポートにお問い合わせください。
+	>[AZURE.NOTE] クラスター サイズの制限は、Azure サブスクリプションによって異なります。制限値を上げるには、課金サポートにお問い合わせください。
 	
 - **リージョン/仮想ネットワーク (場所)**
 
-	![Azure regions](./media/hdinsight-provision-clusters-v1/Azure.regions.png)
+	![Azure Azure リージョン](./media/hdinsight-provision-clusters-v1/Azure.regions.png)
 
 	サポートされているリージョンの一覧については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ボックスの一覧をクリックしてください。
 
 - **ノード サイズ**
 
-	![hdinsight vm node sizes](./media/hdinsight-provision-clusters-v1/hdinsight.node.sizes.png)
+	![HDInsight VM ノードのサイズ](./media/hdinsight-provision-clusters-v1/hdinsight.node.sizes.png)
 
 	ノードの VM サイズを選択します。詳細については、「[クラウド サービスのサイズ](cloud-services-sizes-specs.md)」をご覧ください。
 
@@ -113,7 +124,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	HDInsight クラスターでは、プロビジョニング時に次の 2 つのユーザー アカウントを構成できます。
 
-	- HTTP ユーザー。既定のユーザー名は、Azure ポータルで基本構成を使用する admin です。
+	- HTTP ユーザー。既定のユーザー名は、Azure クラシック ポータルで基本構成を使用する admin です。
 	- RDP ユーザー (Windows クラスター): RDP を使用してクラスターに接続する際に使用します。アカウントの作成時に、当日から 90 日以内の有効期限を設定する必要があります。 
 	- SSH ユーザー (Linux クラスター): SSH を使用してクラスターに接続する際に使用します。「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従ってクラスターを作成した後に、追加の SSH ユーザー アカウントを作成できます。
   
@@ -126,16 +137,16 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 	
 	構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部のプロビジョニング プロセスには、事前に作成された Azure ストレージ アカウントと BLOB ストレージ コンテナーが必要です。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセス可能なその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。アクセスの制限の詳細については、「[Microsoft Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)」をご覧ください。
 
-	![HDInsight storage](./media/hdinsight-provision-clusters-v1/HDInsight.storage.png)
+	![HDInsight ストレージ](./media/hdinsight-provision-clusters-v1/HDInsight.storage.png)
 	
-	>[AZURE.NOTE]次の図に示すように、BLOB ストレージ コンテナーには、一連の BLOB がまとめられています。
+	>[AZURE.NOTE] 次の図に示すように、BLOB ストレージ コンテナーには、一連の BLOB がまとめられています。
 	
-	![Azure blob storage](./media/hdinsight-provision-clusters-v1/Azure.blob.storage.jpg)
+	![Azure BLOB ストレージ](./media/hdinsight-provision-clusters-v1/Azure.blob.storage.jpg)
 	  
 	
-	>[AZURE.WARNING]1 つの Blob ストレージ コンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
+	>[AZURE.WARNING] 1 つの Blob ストレージ コンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
 	
-	従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」をご覧ください。
+	従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。
 
 - **Hive/Oozie メタストア**
 
@@ -143,7 +154,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 ## 高度な構成オプション
 
->[AZURE.NOTE]現在、このセクションは、Windows ベースの HDInsight クラスターにのみ適用されます。
+>[AZURE.NOTE] 現在、このセクションは、Windows ベースの HDInsight クラスターにのみ適用されます。
 
 ### HDInsight クラスターのカスタマイズを使用したクラスターのカスタマイズ
 
@@ -199,12 +210,12 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 ### スクリプト アクションを使用したクラスターのカスタマイズ
 
-追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
+追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure クラシック ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 
 
 ### Azure Virtual Network の使用
 
-[Azure Virtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -220,32 +231,23 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 	![ポイント対サイト構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-point-to-site.png)
 
-Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
-
-> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
->
-> Azure HDInsight は場所ベースの Virtual Network のみをサポートし、アフィニティ グループ ベースの Virtual Network は現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
->
-> - 既存の Virtual Network 構成をエクスポートし、新しい Virtual Network を作成します。新しい Virtual Network はすべて、既定で場所ベースになります。
-> - 場所ベースの Virtual Network に移行します。「[Migrating Existing Services to Regional Scope](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)」 (リージョン スコープへの既存のサービスの移行) をご覧ください。
->
-> 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
+Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 ## プロビジョニング ツール
 
-- Azure ポータル
+- Azure クラシック ポータル
 - Azure PowerShell
 - .NET SDK
 - CLI
 
-### Azure ポータルの使用
+### Azure クラシック ポータルの使用
 
 各フィールドについては、「基本的な構成オプション」および「高度な構成オプション」をご覧ください。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
-2. ページ下部の **[+ 新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
+1. [Azure クラシック ポータル][azure-management-portal]にサインインします。
+2. ページ下部の **[+ 新規]** をクリックし、**[DATA SERVICES]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
 3. **[クラスターの詳細]** ページで、次の値を入力または選択します。
 
 	- クラスター名
@@ -294,9 +296,9 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
 	複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトを追加した後、チェック マークをオンにして、クラスターのプロビジョニングを開始します。
 
 ### Azure PowerShell の使用
-Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
 
-> [AZURE.NOTE]このセクションのスクリプトは、Azure 仮想ネットワークの HDInsight クラスターの構成に使用できますが、Azure 仮想ネットワークは作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」をご覧ください。
+> [AZURE.NOTE] このセクションのスクリプトは、Azure 仮想ネットワークの HDInsight クラスターの構成に使用できますが、Azure 仮想ネットワークは作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」をご覧ください。
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -347,7 +349,7 @@ Azure アカウント資格情報の入力を求められます。
 
 **HDInsight クラスターをプロビジョニングするには**
 
-> [AZURE.NOTE]Azure PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。Azure PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
+> [AZURE.NOTE] Azure PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。Azure PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
 
 - 次のコマンドを Azure PowerShell コンソール ウィンドウから実行します。
 
@@ -374,7 +376,7 @@ Azure アカウント資格情報の入力を求められます。
 		# Create a new HDInsight cluster
 		New-AzureHDInsightCluster -Name $clusterName -Credential $credential -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop
 
-	>[AZURE.NOTE]$hadoopUserName コマンドと $hadoopUserPassword コマンドは、クラスター用 Hadoop ユーザー アカウントの作成に使用されます。このアカウントを使用してクラスターに接続し、ジョブを実行します。Azure ポータルから [簡易作成] オプションを使用してクラスターをプロビジョニングする場合は、既定の Hadoop ユーザー名は "admin" になります。このアカウントと、リモート デスクトップ プロトコル (RDP) のユーザー アカウントとを混同しないでください。RDP ユーザー アカウントは Hadoop ユーザー アカウントとは異なっている必要があります。詳細については、「Azure ポータルを使用した HDInsight での Hadoop クラスターの管理」[hdinsight-admin-portal] をご覧ください。
+	>[AZURE.NOTE] $hadoopUserName コマンドと $hadoopUserPassword コマンドは、クラスター用 Hadoop ユーザー アカウントの作成に使用されます。このアカウントを使用してクラスターに接続し、ジョブを実行します。Azure クラシック ポータルから [簡易作成] オプションを使用してクラスターをプロビジョニングする場合は、既定の Hadoop ユーザー名は "admin" になります。このアカウントと、リモート デスクトップ プロトコル (RDP) のユーザー アカウントとを混同しないでください。RDP ユーザー アカウントは Hadoop ユーザー アカウントとは異なっている必要があります。詳細については、「Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理」[hdinsight-admin-portal] をご覧ください。
 
 	クラスターのプロビジョニングが完了するまでに数分かかる場合があります。
 
@@ -384,7 +386,7 @@ Azure アカウント資格情報の入力を求められます。
 
 クラスターをプロビジョニングするときに、複数の Azure BLOB ストレージ コンテナーへの接続、仮想ネットワークの使用、Hive メタストアおよび Oozie メタストア用の Azure SQL データベースの使用など、その他の構成オプションを使用できます。これにより、データとメタデータの寿命を、クラスターの寿命と切り離すことができます。
 
-> [AZURE.NOTE]Windows PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。Azure PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
+> [AZURE.NOTE] Windows PowerShell コマンドレットは、HDInsight クラスターの構成変数を変更する方法として唯一お勧めする方法です。リモート デスクトップ経由でクラスターに接続している間に Hadoop 構成ファイルに加えられた変更は、クラスター パッチの際に上書きされる可能性があります。Azure PowerShell 経由で設定された構成値は、クラスターにパッチが適用された場合でも保持されます。
 
 - 次のコマンドを Windows PowerShell ウィンドウから実行します。
 
@@ -427,7 +429,7 @@ Azure アカウント資格情報の入力を求められます。
 		    Add-AzureHDInsightMetastore -SqlAzureServerName "$oozieSQLDatabaseServerName.database.windows.net" -DatabaseName $oozieSQLDatabaseName -Credential $oozieCreds -MetastoreType OozieMetastore |
 		        New-AzureHDInsightCluster -Name $clusterName -Location $location -VirtualNetworkId $vnetID -SubnetName $subNetName
 
-	>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 **HDInsight クラスターの一覧を表示するには**
 
@@ -438,7 +440,7 @@ Azure アカウント資格情報の入力を求められます。
 
 ### Azure CLI の使用
 
-> [AZURE.NOTE]2014 年 8 月 29 日の時点では、クラスターと Azure 仮想ネットワーク間の関連付けに Azure CLI を使用することはできません。
+> [AZURE.NOTE] 2014 年 8 月 29 日の時点では、クラスターと Azure 仮想ネットワーク間の関連付けに Azure CLI を使用することはできません。
 
 HDInsight クラスターをプロビジョニングするもう 1 つの方法は、Azure CLI を使用する方法です。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。CLI は、次の場所からインストールできます。
 
@@ -481,7 +483,7 @@ Azure CLI の一般的な使用方法については、[Mac、Linux、Windows �
 
 Azure CLI を使用する前に、ワークステーションと Azure の間の接続を構成する必要があります。Azure CLI は、Azure のサブスクリプション情報を使用してアカウントに接続します。この情報は、Azure から発行設定ファイルとして入手できます。発行設定ファイルは、永続的なローカル構成設定としてインポートできます。インポートすると、Azure CLI のそれ以降の操作に使用されるようになります。発行設定のインポートは 1 回だけ行う必要があります。
 
-> [AZURE.NOTE]発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、BitLocker Drive Encryption を使用します。
+> [AZURE.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、BitLocker Drive Encryption を使用します。
 
 
 1.	ターミナル ウィンドウを開きます。
@@ -518,7 +520,7 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 		npm install -g https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz
 
-	> [AZURE.NOTE]NPM コマンドが見つからないというエラーが表示される場合、次のパスが PATH 環境変数の中にあることを確認します。<i>C:\\Program Files (x86)\\nodejs;C:\\Users[ユーザー名]\\AppData\\Roaming\\npm</i> または <i>C:\\Program Files\\nodejs;C:\\Users[ユーザー名]\\AppData\\Roaming\\npm</i>
+	> [AZURE.NOTE] NPM コマンドが見つからないというエラーが表示される場合、次のパスが PATH 環境変数の中にあることを確認します。<i>C:\\Program Files (x86)\\nodejs;C:\\Users[ユーザー名]\\AppData\\Roaming\\npm</i> または <i>C:\\Program Files\\nodejs;C:\\Users[ユーザー名]\\AppData\\Roaming\\npm</i>
 
 5.	次のコマンドを実行してインストールを確認します。
 
@@ -540,7 +542,7 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 Azure CLI を使用する前に、ワークステーションと Azure の間の接続を構成する必要があります。Azure CLI は、Azure のサブスクリプション情報を使用してアカウントに接続します。この情報は、Azure から発行設定ファイルとして入手できます。発行設定ファイルは、永続的なローカル構成設定としてインポートできます。インポートすると、Azure CLI のそれ以降の操作に使用されるようになります。発行設定のインポートは 1 回だけ行う必要があります。
 
-> [AZURE.NOTE]発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
+> [AZURE.NOTE] 発行設定ファイルには、機密情報が含まれます。Microsoft では、このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
 
 
 1.	**コマンド プロンプト**を開きます。
@@ -574,7 +576,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 
 	場所を指定するよう求められたら、HDInsight クラスターをプロビジョニングできる場所を選択します。このストレージは、HDInsight クラスターと同じ場所にある必要があります。現在、HDInsight クラスターをホストできるリージョンは、**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、および**米国中南部**のみです。
 
-Azure ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account.md)」をご覧ください
+Azure クラシック ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」をご覧ください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -587,7 +589,7 @@ Azure ポータルを使った Azure ストレージ アカウントの作成に
 	-- Lists the keys for a Storage account
 	azure storage account keys list <StorageAccountName>
 
-ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account.md)」の「*方法: ストレージ アクセス キーを表示、コピー、再生成する*」をご覧ください。
+Azure クラシック ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md)」の「*方法: ストレージ アクセス キーを表示、コピー、再生成する*」をご覧ください。
 
 HDInsight クラスターでは、ストレージ アカウント内にコンテナーも必要です。指定するストレージ アカウントにまだコンテナーがない場合は、*azure hdinsight cluster create* コマンドにより、コンテナー名を指定するよう求められ、コンテナーも作成されます。ただし、コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -632,7 +634,7 @@ HDInsight クラスターでは、ストレージ アカウント内にコンテ
 		#Run this command to create a cluster by using the config file
 		azure hdinsight cluster create --config <file>
 
-	>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+	>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
 
 	![HDI.CLIClusterCreationConfig][image-cli-clustercreation-config]
@@ -695,8 +697,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
-		Install-Package Microsoft.Azure.Common.Authentication -pre
+		Install-Package Microsoft.Azure.Common.Authentication -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight -Pre
+		Install-Package Microsoft.Azure.Management.Resources -Pre
 
 	これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
@@ -709,6 +712,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		using Microsoft.Azure.Common.Authentication.Models;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Models;
+		using Microsoft.Azure.Management.Resources;
 
 		namespace CreateHDICluster
 		{
@@ -737,6 +741,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		        {
 		            var tokenCreds = GetTokenCloudCredentials();
 		            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+		            
+		            var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+		            resourceManagementClient.Providers.Register("Microsoft.HDInsight");
 		
 		            _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 		
@@ -800,7 +807,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 ##<a id="nextsteps"></a>次のステップ
 この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の概要](hdinsight-get-started.md) - HDInsight クラスターの使用方法について説明しています。
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 * [HDInsight の Hadoop での Sqoop の使用](hdinsight-use-sqoop.md) - HDInsight と SQL Database または SQL Server 間でデータをコピーする方法について説明しています。
 * [Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-powershell.md) - HDInsight で Azure PowerShell を使用する方法について説明しています。
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
@@ -810,4 +817,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0302_2016-->

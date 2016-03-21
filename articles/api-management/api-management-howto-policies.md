@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/16/2015" 
+	ms.date="12/02/2015" 
 	ms.author="sdanie"/>
 
 
@@ -36,7 +36,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![Policies editor][policies-editor]
 
-ポリシーの構成を開始するには、ポリシーを適用するスコープを最初に選択する必要があります。次のスクリーンショットでは、スターター成果物が選択されています。ポリシー名の横の四角形は、既にポリシーがこのレベルで適用されていることを示します。
+ポリシーの構成を開始するには、ポリシーを適用するスコープを最初に選択する必要があります。次のスクリーンショットでは、**[スターター]** 成果物が選択されています。ポリシー名の横の四角形は、既にポリシーがこのレベルで適用されていることを示します。
 
 ![Scope][policies-scope]
 
@@ -48,17 +48,17 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![編集][policies-edit]
 
-ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。XML は、定義ウィンドウで直接編集できます。ウィンドウの右側には、ステートメントの一覧が表示されます。上のスクリーンショットの "呼び出しレート制限" ステートメントを見るとわかるように、現在のスコープに適用できるステートメントが有効になり、強調表示されます。
+ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。XML は、定義ウィンドウで直接編集できます。ウィンドウの右側には、ステートメントの一覧が表示されます。上のスクリーンショットの**[呼び出しレート制限]** ステートメントを見るとわかるように、現在のスコープに適用できるステートメントが有効になり、強調表示されます。
 
 有効なステートメントをクリックすると、定義ビュー内のカーソル位置に適切な XML が追加されます。
 
 使用できるポリシー ステートメントと設定の一覧については、「[Azure API Management ポリシー リファレンス][]」を参照してください。
 
-たとえば、着信要求を指定された IP アドレスに制限する新しいステートメントを追加するには、"inbound" XML 要素内にカーソルを置き、[呼び出し元 IP の制限] ステートメントをクリックします。
+たとえば、着信要求を指定された IP アドレスに制限する新しいステートメントを追加するには、`inbound` XML 要素内にカーソルを置き、**[呼び出し元 IP の制限]** ステートメントをクリックします。
 
 ![Restriction policies][policies-restrict]
 
-すると、ステートメントを構成する方法を示す XML スニペットが "inbound" 要素に追加されます。
+これで、ステートメントを構成する方法を示す XML スニペットが `inbound` 要素に追加されます。
 
 	<ip-filter action="allow | forbid">
 		<address>address</address>
@@ -73,24 +73,42 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![保存][policies-save]
 
-ポリシーのステートメントを構成したら、[保存] をクリックします。変更は、API Management プロキシに即座に反映されます。
+ポリシーのステートメントを構成したら、**[保存]** をクリックします。変更は、API Management ゲートウェイに即座に反映されます。
 
 ##<a name="sections"> </a>ポリシー構成について
 
-ポリシーは、要求および応答に関して順に実行される一連のステートメントから構成されます。構成は、次のコードからわかるように、受信 (要求) と送信 (ポリシー) に適切に分けられています。
+ポリシーは、要求および応答に関して順に実行される一連のステートメントから構成されます。構成は、次のコードからわかるように、`inbound`、`backend`、`outbound`、および `on-error` の各セクションに適切に分けられています。
 
 	<policies>
-		<inbound>
-			<!-- statements to be applied to the request go here -->
-		</inbound>
-		<outbound>
-			<!-- statements to be applied to the response go here -->
-		</outbound>
-	</policies>
+	  <inbound>
+	    <!-- statements to be applied to the request go here -->
+	  </inbound>
+	  <backend>
+	    <!-- statements to be applied before the request is forwarded to 
+	         the backend service go here -->
+	  </backend>
+	  <outbound>
+	    <!-- statements to be applied to the response go here -->
+	  </outbound>
+	  <on-error>
+	    <!-- statements to be applied if there is an error condition go here -->
+	  </on-error>
+	</policies> 
 
-ポリシーは異なるレベル (グローバル、成果物、操作) で指定できるため、親ポリシーに関してこの定義のステートメントを実行する順序を指定できるようになっています。
+要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。`on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。詳細については、[API Management のポリシーにおけるエラー処理](https://msdn.microsoft.com/library/azure/mt629506.aspx)に関するページを参照してください。
 
-たとえば、グローバル レベルのポリシーと API 向けに構成されたポリシーがある場合、特定の API を使用するたびに両方のポリシーが適用されます。API Management では、基本要素を介してポリシー ステートメントの組み合わせの順序を指定できます。
+ポリシーは異なるレベル (グローバル、成果物、API、および操作) で指定できるため、構成では、親ポリシーに対するポリシー定義のステートメントを実行する順序を指定できるようになっています。
+
+ポリシー スコープは、次の順序で評価されます。
+
+1. グローバル スコープ
+2. 成果物スコープ
+3. API スコープ
+4. 操作スコープ
+
+スコープに含まれるステートメントは、`base` 要素が存在する場合は、その配置に従って評価されます。
+
+たとえば、グローバル レベルのポリシーと API 向けに構成されたポリシーがある場合、API が使用されるたびに両方のポリシーが適用されます。API Management では、基本要素を介してポリシー ステートメントの組み合わせの順序を指定できます。
 
 	<policies>
     	<inbound>
@@ -100,9 +118,11 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
     	</inbound>
 	</policies>
 
-上のポリシー定義の例では、cross-domain ステートメントが上位のポリシーよりも前に実行され、その後に find-and-replace ポリシーが続いています。
+上のポリシー定義の例では、`cross-domain` ステートメントが上位のポリシーよりも前に実行され、その後に `find-and-replace` ポリシーが続いています。
 
-注: グローバル ポリシーには親ポリシーがないため、`<base>` 要素を使用しても影響はありません。
+ポリシー ステートメントの中で同じポリシーが 2 回出現した場合は、最近評価されたポリシーが適用されます。これを使用して、上位のスコープに定義されているポリシーを上書きできます。現在のスコープに含まれるポリシーをポリシー エディターに表示するには、**[選択したスコープの有効なポリシーを再計算する]** をクリックします。
+
+グローバル ポリシーには親ポリシーがないため、`<base>` 要素を使用しても効果はありません。
 
 ## 次のステップ
 
@@ -128,4 +148,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

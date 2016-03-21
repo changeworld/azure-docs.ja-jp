@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure 管理ポータルを使用して ジョブの進行状況をチェック方法" 
-	description="Azure 管理ポータルを使用してジョブの進行状況を追跡する方法について説明します。" 
+	pageTitle="方法: Azure クラシック ポータルを使用してジョブの進行状況をチェックする方法" 
+	description="方法: Azure クラシック ポータルを使用してジョブの進行状況を追跡する方法" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+ 	ms.date="02/03/2016"  
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -25,7 +25,7 @@
 
 ##ジョブの状態を確認するには、ポータルを使用します。
 
-1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
 2. **[ジョブ]** ページを選択します。 
 
 	ページでは、すべてのジョブの状態が確認できます。状態、時刻、またはジョブ ID でもフィルターできます。
@@ -50,4 +50,4 @@
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0211_2016-->

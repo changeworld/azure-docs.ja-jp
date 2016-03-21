@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/12/2015"
+   ms.date="12/02/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの EBOD コントローラーを交換する
@@ -38,7 +38,7 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 #### EBOD モジュールを取り外すには
 
-1. 管理ポータルを開きます。
+1. Azure クラシック ポータルを開きます。
 
 2. **[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に選択し、アクティブな EBOD コントローラー モジュールの LED の状態が緑色であり、障害が発生している EBOD コントローラー モジュールの LED が赤色になっていることを確認します。
 
@@ -107,4 +107,4 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1203_2015-->

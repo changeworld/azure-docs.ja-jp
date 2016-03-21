@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と Freshdesk の統合 | Microsoft Azure" 
     description="Azure Active Directory で Freshdesk を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="10/22/2015" 
-    ms.author="markvi" />
+    ms.date="01/14/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Freshdesk の統合
   
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Freshdesk テナント
   
-このチュートリアルを完了すると、Freshdesk に割り当てた Azure AD ユーザーは、Freshdesk 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、Freshdesk に割り当てた Azure AD ユーザーは、Freshdesk 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-freshdesk-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-freshdesk-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -64,21 +64,21 @@
     ![Freshdesk](./media/active-directory-saas-freshdesk-tutorial/IC776763.png "Freshdesk")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Freshdesk に対する認証を行うことができるようにする方法を説明します。Freshdesk にシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI) を参照してください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Freshdesk に対する認証を行うことができるようにする方法を説明します。Freshdesk にシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
 1.  Azure AD ポータルの **Freshdesk** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-freshdesk-tutorial/IC776764.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-freshdesk-tutorial/IC776764.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Freshdesk へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-freshdesk-tutorial/IC776765.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-freshdesk-tutorial/IC776765.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Freshdesk サインイン URL]** ボックスに、"*https://\<テナント名>.Freshdesk.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Freshdesk サインイン URL]** ボックスに、"https://\<テナント名>.Freshdesk.com" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-freshdesk-tutorial/IC776766.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-freshdesk-tutorial/IC776766.png "Configure App URL")
 
 4.  **[Freshdesk でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルを **c:\\Freshdesk.cer** としてローカルに保存します。
 
@@ -92,7 +92,7 @@
 
 7.  **[全般設定]** タブで [**セキュリティ]** をクリックします。
 
-    ![セキュリティ](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "セキュリティ")
+    ![Security](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Security")
 
 8.  **[セキュリティ]** セクションで、次の手順を実行します。
 
@@ -104,11 +104,11 @@
     4.  Azure ポータルの **[Freshdesk でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[SAML ログアウト URL]** ボックスに貼り付けます。
     5.  エクスポートした証明書から **[拇印]** の値をコピーして、**[セキュリティ証明書フィンガープリント]** ボックスに貼り付けます。  
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
     6.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-freshdesk-tutorial/IC776771.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -159,8 +159,8 @@ Azure AD ユーザーが Freshdesk にログインできるようにするには
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-freshdesk-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-freshdesk-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0121_2016-->

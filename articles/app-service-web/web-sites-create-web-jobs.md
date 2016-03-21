@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="01/12/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブでバックグラウンド タスクを実行する
@@ -22,7 +22,7 @@
 
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の 3 とおりの方法があります。Web ジョブの使用に追加コストはかかりません。
 
-この記事では、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、[Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
+この記事では、[Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、[Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 
 Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング タスクを簡略化しています。詳細については、「[Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)」をご覧ください。
 
@@ -42,7 +42,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 ## <a name="CreateOnDemand"></a>ポータルでのオンデマンドの Web ジョブの作成
 
-1. [Azure ポータル](http://portal.azure.com)の **[Web アプリ]** ブレードで、**[すべての設定] > [Web ジョブ]** をクリックし、**[Web ジョブ]** ブレードを表示します。
+1. [Azure ポータル](https://portal.azure.com)の **[Web アプリ]** ブレードで、**[すべての設定] > [Web ジョブ]** をクリックし、**[Web ジョブ]** ブレードを表示します。
 	
 	![[Web ジョブ] ブレード](./media/web-sites-create-web-jobs/wjblade.png)
 	
@@ -70,7 +70,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 2. 連続的な Web ジョブを開始または停止するには、一覧で Web ジョブを右クリックし、**[開始]** または **[停止]** をクリックします。
 	
-> [AZURE.NOTE]Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
+> [AZURE.NOTE] Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
 	
 > 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
 
@@ -104,15 +104,15 @@ CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {da
 
 次の代替の方法では、Azure Scheduler を使用します。この場合、WebJob によってスケジュールは直接認識されません。代わりに、スケジュールに基づいて WebJob をトリガーするように Azure Scheduler を構成します。
 
-Microsoft Azure 管理ポータルには、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[以前のポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
+Azure ポータルには、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[クラシック ポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
 
-1. [以前のポータル](http://manage.windowsazure.com)で、[Web ジョブ] ページに移動し、**[追加]** をクリックします。
+1. [クラシック ポータル](http://manage.windowsazure.com)で、[Web ジョブ] ページに移動し、**[追加]** をクリックします。
 
 1. **[実行方法]** ボックスの一覧の **[スケジュールに従って実行]** をクリックします。
 	
 	![スケジュールに従って実行する新しいジョブ][NewScheduledJob]
 	
-2. **[スケジューラのリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
+2. **[Scheduler のリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
 
 3. **[ジョブの作成]** ダイアログ ボックスの **[繰り返し]** ボックスで、繰り返しの種類として **[一度だけのジョブ]** または **[定期的なジョブ]** を選択します。
 	
@@ -152,9 +152,9 @@ Microsoft Azure 管理ポータルには、スケジュールされた Web ジ�
 	
 ### <a name="Scheduler"></a>スケジュールされたジョブと Azure Scheduler
 
-スケジュールされたジョブは、[以前のポータル](http://manage.windowsazure.com)の Azure Scheduler ページでさらに構成できます。
+スケジュールされたジョブは、[クラシック ポータル](http://manage.windowsazure.com)の Azure Scheduler ページでさらに構成できます。
 
-1.	[Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure Scheduler ポータル ページに移動します。 
+1.	[Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure スケジューラ ポータル ページに移動します。 
 	
 	![Azure Scheduler へのリンク][LinkToScheduler]
 	
@@ -201,7 +201,7 @@ Microsoft Azure 管理ポータルには、スケジュールされた Web ジ�
 - [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web アプリがアイドル状態にならなくなります。
 - デバッグできるのは、連続的に実行する Web ジョブだけです。スケジュールされた Web ジョブとオンデマンドの Web ジョブのデバッグはサポートされていません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## <a name="NextSteps"></a>次のステップ
  
@@ -239,4 +239,4 @@ Microsoft Azure 管理ポータルには、スケジュールされた Web ジ�
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0128_2016-->

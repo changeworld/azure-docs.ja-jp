@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Azure ロールでのリモート デスクトップの使用"
+   pageTitle="Azure ロールでのリモート デスクトップの使用 | Microsoft Azure"
    description="Azure ロールでのリモート デスクトップの使用"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="kempb"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="multiple"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/24/2015"
-   ms.author="kempb" />
+   ms.date="12/18/2015"
+   ms.author="tarcher" />
 
 # Azure ロールでのリモート デスクトップの使用
 
@@ -37,7 +37,7 @@ Azure SDK およびリモート デスクトップ サービスを使用する�
  
     証明書を作成または選択できるドロップダウン ボックスが表示されます。証明書により、リモート デスクトップを使用して接続するときに資格情報を暗号化できます。
 
-1. ドロップダウン ボックスで、**[<Create>]** を選択するか、一覧から既存の証明書を選択します。
+1. ドロップダウン リストで、**[作成]** を選択するか、一覧から既存の証明書を選択します。
 
     既存の証明書を選択した場合、次の手順は省略します。
 
@@ -75,4 +75,4 @@ Azure にクラウド サービスを発行したら、サーバー エクスプ
 
 1. 以前作成したユーザー名とパスワードを入力します。これでリモート セッションにログインした状態になります。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_1223_2015-->

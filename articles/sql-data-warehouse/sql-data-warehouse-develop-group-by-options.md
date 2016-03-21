@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
-   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.date="01/07/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の Group By オプション
 
@@ -180,9 +180,9 @@ ORDER BY 1,2,3
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/ja-jp/library/ms177673.aspx
+[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
 
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0114_2016-->

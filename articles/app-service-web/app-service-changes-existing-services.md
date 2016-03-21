@@ -1,34 +1,34 @@
-<properties 
-	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響" 
-	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。" 
-	authors="yochayk" 
-	writer="yochayk" 
-	editor="yochayk" 
-	manager="nirma" 
-	services="app-service" 
+<properties
+	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響"
+	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。"
+	authors="yochayk"
+	writer="yochayk"
+	editor="yochayk"
+	manager="nirma"
+	services="app-service"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/15/2015" 
+<tags
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/12/2016"
 	ms.author="yochayk"/>
 
 
 # Azure App Service と既存の Azure サービス
 
-この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](http://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
+この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](https://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## 概要 
+## 概要
 
-[Azure App Service](http://azure.microsoft.com/services/app-service/) は新しくユニークなクラウド サービスであり、開発者がこのサービスを利用することで、すべてのプラットフォームおよびデバイス向けに、Web アプリやモバイル アプリを作成できるようになります。App Service は、繰り返しのコーディング機能の効率化、エンタープライズ システムと SaaS システムの統合、ビジネス プロセスの自動化などを実現しながら、安全性、信頼性、拡張性のニーズに応えられるよう設計された、統合型ソリューションです。
+[Azure App Service](https://azure.microsoft.com/services/app-service/) は新しくユニークなクラウド サービスであり、開発者がこのサービスを利用することで、すべてのプラットフォームおよびデバイス向けに、Web アプリやモバイル アプリを作成できるようになります。App Service は、繰り返しのコーディング機能の効率化、エンタープライズ システムと SaaS システムの統合、ビジネス プロセスの自動化などを実現しながら、安全性、信頼性、拡張性のニーズに応えられるよう設計された、統合型ソリューションです。
 
-App Service では、[Websites](http://azure.microsoft.com/services/websites/)、[Mobile Services](http://azure.microsoft.com/services/mobile-services/)、[Biztalk Services](http://azure.microsoft.com/services/biztalk-services/) などの既存の Azure サービスを 1 つの複合サービスに統合すると同時に、パワフルな新機能も追加しています。App Service では、次の種類のアプリをホストすることができます。
+App Service では、[Websites](https://azure.microsoft.com/services/websites/)、[Mobile Services](https://azure.microsoft.com/services/mobile-services/)、[Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) などの既存の Azure サービスを 1 つの複合サービスに統合すると同時に、パワフルな新機能も追加しています。App Service では、次の種類のアプリをホストすることができます。
 
 -   Web Apps
 -   Mobile Apps
@@ -60,8 +60,8 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 <td align="left">Azure Mobile Services</td>
 <td align="left">Mobile Apps</td>
 <td align="left"><p><li>Mobile Services はスタンドアロン サービスとして引き続き利用でき、現在も完全なサポートが受けられます。</p>
-<p><li>Mobile Apps は App Service での新しいアプリの種類で、Mobile Services のすべての機能を含む、多数の機能を統合しています。Mobile Apps は現在パブリック プレビューの状態です。</p>
-<p><li><a href="http://azure.microsoft.com/documentation/articles/app-service-mobile-dotnet-backend-migrating-from-mobile-services-preview/">Mobile Services から Mobile Apps</a> への移行は簡単です。Mobile Apps はプレビュー状態のため、運用環境のアプリの実行にはまだお勧めできません。</p>
+<p><li>Mobile Apps は App Service のアプリの種類の 1 つで、Mobile Services のすべての機能を含む、多数の機能を統合しています。</p>
+<p><li><a href="http://go.microsoft.com/fwlink/?LinkID=724279&clcid=0x409">Mobile Services から Mobile Apps</a> への移行は簡単です。</p>
 <p><li>App Service の一部として、Mobile Apps には、オンプレミス システムと SaaS システムとの統合、ステージング スロット、Web ジョブ、充実したスケール オプションなど、Mobile Services を超える新しい機能が追加されました。</p>
 <p><li><a href="http://azure.microsoft.com/services/app-service/mobile/">Mobile Apps の詳細についてはこちら</a>をご覧ください。</p>
 </tr>
@@ -90,7 +90,6 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 </tbody>
 </table>
 
-詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
- 
+詳細については、「[App Service のドキュメント](https://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

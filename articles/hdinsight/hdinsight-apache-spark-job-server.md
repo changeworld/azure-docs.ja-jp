@@ -14,15 +14,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="12/08/2015" 
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight クラスター上の Spark ジョブ サーバー
+# Azure HDInsight クラスター上の Spark ジョブ サーバー (Windows)
+
+> [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。ここでは、Livy を使用して Spark クラスターにジョブをリモートで送信します。Linux 上の HDInsight Spark で Livy を使用する方法の詳細については、「[HDInsight の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する (Linux)](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
 Azure HDInight 上の Apache Spark クラスターでは、クラスター デプロイメントの一部として Spark ジョブ サーバーがパッケージ化されます。Spark ジョブ サーバーが提供する REST API を使用すると、Spark コンテキストの作成、コンテキストへの Spark アプリケーションの送信、ジョブのステータスのチェック、コンテキストの削除などを行うことができます。この記事では、ジョブ サーバーを使用する Spark クラスター上で Curl を使用して一般的なタスクを実行する方法の例を示します。
 
->[AZURE.NOTE]Spark ジョブ サーバーの詳細なドキュメントについては、[https://github.com/spark-jobserver/spark-jobserver](https://github.com/spark-jobserver/spark-jobserver) をご覧ください。
+>[AZURE.NOTE] Spark ジョブ サーバーの詳細なドキュメントについては、[https://github.com/spark-jobserver/spark-jobserver](https://github.com/spark-jobserver/spark-jobserver) をご覧ください。
 
 ## <a name="uploadjar"></a>jar を Spark クラスターにアップロードする
 
@@ -64,22 +66,22 @@ mypostdata.txt ではアプリケーションが定義されています。
 
 ##<a name="seealso"></a>関連項目
 
-* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
-* [HDInsight クラスターでの Spark のプロビジョニング](hdinsight-apache-spark-provision-clusters.md)
-* [HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview-v1.md)
+* [HDInsight クラスターでの Spark の作成](hdinsight-apache-spark-provision-clusters.md)
+* [HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools-v1.md)
+* [Machine Learning アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-ipython-notebook-machine-learning-v1.md)
 * [リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
 
-[hdinsight-versions]: ../hdinsight-component-versioning/
-[hdinsight-upload-data]: ../hdinsight-upload-data/
-[hdinsight-storage]: ../hdinsight-use-blob-storage/
+[hdinsight-versions]: hdinsight-component-versioning.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: ../storage-create-storage-account/
+[azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

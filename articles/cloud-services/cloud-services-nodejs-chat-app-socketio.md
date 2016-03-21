@@ -3,7 +3,7 @@
 	description="Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
-	authors="TomArcher" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="09/01/2015" 
-	ms.author="tarcher"/>
-
-
-
-
+	ms.date="01/09/2016" 
+	ms.author="robmcm"/>
 
 # Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
-Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。Socket.IO の詳細については、<a href="http://socket.io/">http://socket.io/</a> を参照してください。
+Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。Socket.IO の詳細については、<http://socket.io/> をご覧ください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -32,7 +28,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 この記事の例を正常に完了するには、次の製品とバージョンがインストールされている必要があります。
 
-* [Visual Studio 2013](https://www.visualstudio.com/ja-jp/downloads/download-visual-studio-vs.aspx) のインストール
+* [Visual Studio 2013](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx) のインストール
 * [Node.js](https://nodejs.org/download/) のインストール
 * [Python version 2.7.10](https://www.python.org/) のインストール
 
@@ -40,7 +36,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート] メニュー**または**スタート画面**で、**Windows PowerShell** を検索します。最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
 	![Azure PowerShell アイコン][powershell-menu]
 
@@ -133,17 +129,17 @@ Azure エミュレーターでアプリケーションをテストする前に�
 
         PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
 
-	> [AZURE.IMPORTANT]必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
+	> [AZURE.IMPORTANT] 必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
 	> 
-	> 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+	> 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
 
     ![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][completed-app]
 
-	> [AZURE.NOTE]指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
+	> [AZURE.NOTE] 指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「**Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ**」の「[Azure へのアプリケーションのデプロイ](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)」を参照してください。
 
 これで、アプリケーションは Azure で実行されるようになり、Socket.IO を使用する複数のクライアント間でチャット メッセージを中継できます。
 
-> [AZURE.NOTE]わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
+> [AZURE.NOTE] わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、Service Bus などのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
 
 ##次のステップ
 
@@ -174,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0218_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/09/2015" 
+	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
@@ -22,7 +22,10 @@
 
 データ ファクトリは、Data Management Gateway を使用してオンプレミスのファイル システムとの間の接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
-**注:** Data Management Gateway 以外に、オンプレミスのファイル システムとの間で通信するために他のバイナリをインストールする必要はありません。
+> [AZURE.NOTE] 
+Data Management Gateway 以外に、オンプレミスのファイル システムとの間で通信するために他のバイナリをインストールする必要はありません。
+> 
+> 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
 
 ## Linux ファイル共有 
 
@@ -33,7 +36,9 @@
  
 ## サンプル: オンプレミスのファイル システムから Azure BLOB へのデータのコピー
 
-下のサンプルで確認できる要素:
+このサンプルは、オンプレミスのファイル システムから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesFileServer](data-factory-onprem-file-system-connector.md#onpremisesfileserver-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス
@@ -52,13 +57,15 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia.<region>.corp.<company>.com",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
 	    }
 	  }
 	}
+
+ホストの場合、ファイル共有がゲートウェイ コンピューター自体にあれば **Local** または **localhost** を指定できます。また、**userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。このリンクされたサービスの詳細については、[ファイル システムのリンクされたサービス](#onpremisesfileserver-linked-service-properties)に関するページを参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
@@ -84,7 +91,7 @@
 	    "type": " FileShare",
 	    "linkedServiceName": " OnPremisesFileServerLinkedService ",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+	      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
 	      "fileName": "{Hour}.csv",
 	      "partitionedBy": [
 	        {
@@ -146,7 +153,7 @@
 	    "type": "AzureBlob",
 	    "linkedServiceName": "StorageLinkedService",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+	      "folderPath": "mycontainer/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
 	      "partitionedBy": [
 	        {
 	          "name": "Year",
@@ -273,13 +280,15 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia.<region>.corp.<company>.com",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
 	    }
 	  }
 	}
+
+ホストの場合、ファイル共有がゲートウェイ コンピューター自体にあれば **Local** または **localhost** を指定できます。また、**userid** や **password** プロパティを使用するのではなく、**encryptedCredential** プロパティを使用することをお勧めします。このリンクされたサービスの詳細については、[ファイル システムのリンクされたサービス](#onpremisesfileserver-linked-service-properties)に関するページを参照してください。
 
 **Azure SQL の入力データセット:**
 
@@ -320,7 +329,7 @@
 	    "type": "FileShare",
 	    "linkedServiceName": " OnPremisesFileServerLinkedService ",
 	    "typeProperties": {
-	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+	      "folderPath": "mysharedfolder/yearno={Year}/monthno={Month}/dayno={Day}",
 	      "fileName": "{Hour}.csv",
 	      "partitionedBy": [
 	        {
@@ -426,12 +435,12 @@
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティは、**OnPremisesFileServer** に設定されます。 | あり 
-host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\servername を使用します。</p> | あり
+type | type プロパティは、**OnPremisesFileServer** に設定されます。 | はい 
+host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。</p> | はい
 userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
-パスワード | ユーザー (userid) のパスワードを指定します | No (encryptedCredential を選択する場合) 
-encryptedCredential | New-AzureDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
-gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | あり
+パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
+encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
+gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | はい
 
 オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
@@ -442,7 +451,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -464,7 +473,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	  }
 	}
 
-## オンプレミスのファイル システムのデータセット型のプロパティ
+## オンプレミス ファイル システムのデータセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブル、オンプレミスのファイル システムなど) で同じです。
 
@@ -472,14 +481,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-folderPath | フォルダーへのパス。例: myfolder<p>文字列内の特殊文字にはエスケープ文字 '\\' を使用します。例: folder\\subfolder の場合は folder\\subfolder を指定し、d:\\samplefolder の場合は d:\\samplefolder を指定します。</p><p>これを **partitionBy** と組み合わせて、スライス開始/終了の日時に基づいたフォルダーのパスを設定することができます。</p> | あり
+folderPath | フォルダーへのパス。例: myfolder<p>文字列内の特殊文字にはエスケープ文字 '\\' を使用します。例: folder\\subfolder の場合は folder\\\subfolder を指定し、d:\\samplefolder の場合は d:\\\samplefolder を指定します。</p><p>これを **partitionBy** と組み合わせて、スライス開始/終了の日時に基づいたフォルダーのパスを設定することができます。</p> | はい
 fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを指定します。<p>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります:</p><p>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) | いいえ
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
-形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。 | いいえ
+形式 | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。AvroFormat が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある形式のセクションを参照してください。**Format プロパティは現在、オンプレミスのファイル システムには対応していません。ここで説明しているように、この対応は間もなく開始される予定です。** | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<p>使用可能な値: * (複数の文字) および ? (単一の文字)。</p><p>例 1: "fileFilter": "*.log"</p>例 2: "fileFilter": 2014-1-?.txt"</p><p>**注**: fileFilter は入力の FileShare データセットに適用できます</p> | いいえ
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: GZip、Deflate、および BZip2。サポートされるレベル: Optimal および Fastest。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
-> [AZURE.NOTE]fileName と fileFilter は、同時に使用することができません。
+> [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
 
 ### partitionedBy プロパティの活用
 
@@ -571,7 +580,7 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 | <p>CopyBehavior プロパティには 3 つの値があります。</p><ul><li>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</li><li>。**FlattenHierarchy:** 、ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</li><li>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージされたファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</li></ul> | いいえ |
+| copyBehavior | ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 | <p>CopyBehavior プロパティには 3 つの値があります。</p><ul><li>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</li><li>。**FlattenHierarchy:** 、ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルは、自動生成された名前になります。</li></ul> | いいえ |
 
 ### recursive と copyBehavior の例
 このセクションでは、recursive 値と copyBhavior 値の組み合わせごとに、Copy 操作で行われる動作について説明します。
@@ -599,4 +608,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0224_2016-->

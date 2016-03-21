@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="DocumentDB データベースの SQL クエリ – SQL クエリの実行 | Microsoft Azure" 
-	description="DocumentDB が階層 JSON ドキュメントの SQL クエリをサポートし、自動でインデックスを作成する方法について説明します。スキーマから完全に解放された SQL クエリ データベース環境について学習します。" 
-	keywords="クエリ データベース, sql クエリ, sql クエリ, 構造化照会言語, documentdb, azure, Microsoft azure"
+	pageTitle="DocumentDB の SQL 構文と SQL クエリ | Microsoft Azure" 
+	description="DocumentDB (NoSQL データベース) の SQL 構文、データベースの概念、および SQL クエリについて説明します。DocumentDB では、JSON クエリ言語として SQL を使用できます。" 
+	keywords="sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
@@ -14,16 +14,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/13/2015" 
+	ms.date="12/14/2015" 
 	ms.author="arramac"/>
 
-# DocumentDB 内の SQL クエリ
-Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対する、SQL (Structured Query Language) を使ったドキュメント クエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
+# DocumentDB における SQL クエリと SQL 構文
+Microsoft Azure DocumentDB は、JSON クエリ言語として SQL (Structured Query Language) を使用するドキュメントのクエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
 
 マイクロソフトは、以下の 2 点を目標に DocumentDB 向けのクエリ言語を設計しました。
 
--	**SQL を活用する** – 新しいクエリ言語を開発するのではなく、SQL を活用しました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
--	**SQL を拡張する** – マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてマイクロソフトのクエリ言語を開発することにしました。DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
+-	新しい JSON クエリ言語を開発するのではなく、SQL をサポートすることにしました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
+-	マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてクエリ言語を開発することにしました。DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、空間クエリ、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
 
 マイクロソフトでは、アプリケーションとデータベース間の不整合を削減し、開発者の生産性を高めるには、こうした方針が鍵になると考えています。
 
@@ -31,9 +31,9 @@ Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対す�
 
 > [AZURE.VIDEO dataexposedqueryingdocumentdb]
 
-次に、この記事に戻り、いくつかの簡単な JSON ドキュメントと SQL コマンドについて理解していきます。
+その後、この記事に戻って、いくつかのシンプルな JSON ドキュメントと SQL コマンドを使用する SQL クエリのチュートリアルを開始します。
 
-## DocumentDB での構造化照会言語 (SQL) コマンドの概要
+## DocumentDB での SQL コマンドの概要
 DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。
 
 **ドキュメント**
@@ -164,7 +164,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 
 ## DocumentDB のインデックス作成
 
-DocumentDB SQL の文法について詳しく説明する前に、DocumentDB のインデックス作成に関する設計について説明します。
+DocumentDB SQL の構文について詳しく説明する前に、DocumentDB のインデックス作成に関する設計について説明します。
 
 データベース インデックスの目的は、さまざまな形式のクエリを処理しながら、リソース (CPU、入力/出力など) の消費量を最小化し、スループットを高め、遅延時間を少なくすることです。多くの場合、データベース クエリにおける適切なインデックスの選択には、入念な計画と長期間の試行錯誤が必要とされます。データが厳密なスキーマに準拠せず、データ量も急速に増大するスキーマのないデータベースの場合、このアプローチは現実的ではありません。
 
@@ -180,15 +180,16 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 
 -	ストレージの効率性: コスト効率性を実現するため、インデックスのディスク上のストレージ オーバーヘッドは、有限かつ予測可能なものにします。これは、開発者がインデックスのオーバーヘッドとクエリのパフォーマンスを比較して、コストに基づくトレードオフを DocumentDB で実施できるようになるためには必須です。
 
-コレクションのインデックス作成ポリシーの構成方法については、MSDN の [DocumentDB のサンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。以降は、DocumentDB SQL の文法の詳細を説明していきます。
+コレクションのインデックス作成ポリシーの構成方法については、MSDN の [DocumentDB のサンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。以降は、DocumentDB SQL の構文の詳細を説明していきます。
 
 
 ## DocumentDB SQL クエリの基礎
 すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。通常は、各クエリで FROM 句のソースが列挙されます。次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。
     
-    SELECT <select_list> 
+    SELECT [TOP <top_expression>] <select_list> 
     [FROM <from_specification>] 
-    [WHERE <filter_condition>]    
+    [WHERE <filter_condition>]
+    [ORDER BY <sort_specification]    
 
 
 ## FROM 句
@@ -322,7 +323,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 フィルター内のスカラー式が Undefined という結果になった場合、Undefined は論理上 "true" と等しくならないため、対応するドキュメントは結果に含まれません。
 
 ### BETWEEN キーワード
-また、ANSI SQL などの場合と同様に、値の範囲に対してクエリを表現するときに、BETWEEN キーワードを使用することができます。BETWEEN はすべての JSON プリミティブ型 (数値、文字列、ブール値、および null) に対して使用できます。
+また、ANSI SQL などの場合と同様に、値の範囲に対してクエリを表現するときに、BETWEEN キーワードを使用することができます。BETWEEN は、文字列または数値に対して使用できます。
 
 たとえば、次のクエリは、最初の子のレベルが 1 ～ 5 (両方の値を含む) の間であるすべての家族のドキュメントを返します。
 
@@ -461,7 +462,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 	}]
 
 
-この `$1` の役割について説明します。`SELECT` 句は、JSON オブジェクトを作成する必要がありますが、キーが提供されていないため、`$1` で始まる暗黙的な引数の変数を使用しています。たとえば、このクエリは `$1` と `$2` でラベル付けされた暗黙的な引数の変数を返します。
+この `$1` のロールについて説明します。`SELECT` 句は、JSON オブジェクトを作成する必要がありますが、キーが提供されていないため、`$1` で始まる暗黙的な引数の変数を使用しています。たとえば、このクエリは `$1` と `$2` でラベル付けされた暗黙的な引数の変数を返します。
 
 **クエリ**
 
@@ -660,6 +661,37 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	    "isRegistered": true
 	}]
 
+###TOP 演算子
+TOP キーワードを使用すると、クエリの値数を制限できます。TOP と ORDER BY 句を併用すると、結果セットは、指定された順序で並べ替えられた値の先頭 N 個に制限されます。ORDER BY 句を使用しない場合、未定義の順序の結果の先頭 N 個が返されます。SELECT ステートメントでは、ベスト プラクティスとして常に ORDER BY 句と TOP 句を併用することをお勧めします。TOP の影響を受ける行を予想どおりに指定するには、併用する必要があります。
+
+
+**クエリ**
+
+	SELECT TOP 1 * 
+	FROM Families f 
+
+**結果**
+
+	[{
+	    "id": "AndersenFamily",
+	    "lastName": "Andersen",
+	    "parents": [
+	       { "firstName": "Thomas" },
+	       { "firstName": "Mary Kay"}
+	    ],
+	    "children": [
+	       {
+	           "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+	           "pets": [{ "givenName": "Fluffy" }]
+	       }
+	    ],
+	    "address": { "state": "WA", "county": "King", "city": "seattle" },
+	    "creationDate": 1431620472,
+	    "isRegistered": true
+	}]
+
+(前述のように)、TOP には、定数、またはパラメーター化されたクエリを使用した変数を指定できます。詳細については、後述のパラメーター化されたクエリを参照してください。
+
 ## ORDER BY 句
 ANSI SQL 同様、クエリ実行にオプションで Order By 句を含めることができます。句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。Order By の詳細については「[DocumentDB Order By チュートリアル](documentdb-orderby.md)」を参照してください。
 
@@ -705,7 +737,7 @@ ANSI SQL 同様、クエリ実行にオプションで Order By 句を含める�
 	  }
 	]
 	
-## 高度な SQL クエリ データベースの概念
+## 高度なデータベースの概念と SQL クエリ
 ### 反復
 DocumentDB SQL の **IN** キーワードによる新しいコンストラクトを追加することで、JSON 配列に対する反復がサポートされています。反復のサポートは FROM ソースが提供します。まず、以下の例から始めます。
 
@@ -943,7 +975,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 ###ユーザー定義関数 (UDF)
 この記事で定義した型に加えて、DocumentDB SQL ではユーザー定義関数 (UDF) のサポートを提供しています。具体的にはスカラー UDF がサポートされています。開発者は、0 個またはいくつかの引数を渡し、1 つの引数を結果として返すことができます。また、これらの引数のそれぞれが、有効な JSON 値であることがチェックされます。
 
-これらのユーザー定義関数を使用することで、DocumentDB SQL の文法を拡張し、カスタムのアプリケーション ロジックをサポートすることができます。UDF は DocumentDB に登録し、SQL クエリの一部として参照することができます。実際、その高度な設計に基づいて UDF はクエリから呼び出すことができます。この選択に基づく当然の帰結として、UDF には、その他の JavaScript の型 (ストアド プロシージャおよびトリガー) とは異なり、コンテキスト オブジェクトへのアクセスはありません。クエリは読み取り専用で実行されるため、プライマリ レプリカでもセカンダリ レプリカでも実行することができます。このため、UDF は、その他の JavaScript の型とは異なり、セカンダリ レプリカで実行されるように設計されています。
+これらのユーザー定義関数を使用することで、DocumentDB SQL の構文を拡張し、カスタムのアプリケーション ロジックをサポートすることができます。UDF は DocumentDB に登録し、SQL クエリの一部として参照することができます。実際、その高度な設計に基づいて UDF はクエリから呼び出すことができます。この選択に基づく当然の帰結として、UDF には、その他の JavaScript の型 (ストアド プロシージャおよびトリガー) とは異なり、コンテキスト オブジェクトへのアクセスはありません。クエリは読み取り専用で実行されるため、プライマリ レプリカでもセカンダリ レプリカでも実行することができます。このため、UDF は、その他の JavaScript の型とは異なり、セカンダリ レプリカで実行されるように設計されています。
 
 以下は、DocumentDB データベースに、具体的にはドキュメント コレクションに、UDF を登録する方法の例です。
 
@@ -965,7 +997,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で修飾する必要があります。
 
->[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しが DocumentDB でサポートされていました。この呼び出しパターンは廃止されました。
+>[AZURE.NOTE] 2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しが DocumentDB でサポートされていました。この呼び出しパターンは廃止されました。
 
 **クエリ**
 
@@ -1072,6 +1104,15 @@ DocumentDB では、使い慣れた @ 表記で表されたパラメーターを
         "parameters": [          
             {"name": "@lastName", "value": "Wakefield"},         
             {"name": "@addressState", "value": "NY"},           
+        ] 
+    }
+
+以下のように、パラメーター化されたクエリを使用して TOP の引数を設定できます。
+
+    {      
+        "query": "SELECT TOP @n * FROM Families",     
+        "parameters": [          
+            {"name": "@n", "value": 10},         
         ] 
     }
 
@@ -1386,8 +1427,6 @@ ARRAY\_LENGTH を使用して家族あたりの子供の数を取得する、も
       "numberOfChildren": 1
     }]
 
-これは、DocumentDB の組み込み関数と SQL の文法をラップしています。では、LINQ クエリの動作とこれまでに説明した文法との関係を見ていきましょう。
-
 ### 空間関数
 
 DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。DocumentDB での地理空間のサポートの詳細については、[Azure DocumentDB での地理空間データの操作](documentdb-geospatial.md)に関するページを参照してください。
@@ -1450,7 +1489,7 @@ ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだ
       "id": "WakefieldFamily",
     }]
     
->[AZURE.NOTE]DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
+>[AZURE.NOTE] DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
 
 空間オブジェクトが有効であるかどうかは、ST\_ISVALID と ST\_ISVALIDDETAILED を使用してチェックできます。たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。ST\_ISVALID で返されるのはブール値だけであるのに対し、ST\_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
 
@@ -1481,14 +1520,14 @@ ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだ
       	}
     }]
     
-これは、DocumentDB の組み込み関数と SQL の文法をラップしています。では、LINQ クエリの動作とこれまでに説明した文法との関係を見ていきましょう。
+これで空間関数の説明が終わり、DocumentDB 用の SQL 構文の説明も終わります。次に、LINQ クエリの動作とこれまでに説明した構文の関係を見ていきましょう。
 
 ## LINQ と DocumentDB SQL
 LINQ は、計算処理をオブジェクトのストリームに対するクエリとして表現する .NET プログラミング モデルです。DocumentDB は LINQ と連携するためのクライアント側ライブラリを提供しています。ここでは、JSON オブジェクトと .NET オブジェクト間の変換と、LINQ クエリのサブセットから DocumentDB クエリへのマッピングを実施します。
 
 DocumentDB を使用した LINQ クエリ サポートのアーキテクチャは以下の図のようになります。開発者は DocumentDB クライアントを使用して **IQueryable** オブジェクトを作成できます。このオブジェクトが DocumentDB クエリ プロバイダーを直接照会することで、LINQ クエリが DocumentDB クエリに変換されます。次にクエリが DocumentDB サーバーに渡されることで、結果セットが JSON 形式で取得されます。返された結果は、クライアント側で .NET オブジェクトのストリームに逆シリアル化されます。
 
-![DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ][1]
+![DocumentDB を使用する LINQ クエリをサポートするアーキテクチャ - SQL 構文、JSON クエリ言語、データベースの概念と SQL クエリ][1]
  
 
 
@@ -1603,6 +1642,22 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 		new Parent { familyName = "Smith", givenName = "Joe" };
 		new { first = 1, second = 2 }; //an anonymous type with 2 fields              
 		new int[] { 3, child.grade, 5 };
+
+### サポートされている LINQ 演算子の一覧
+DocumentDB .NET SDK に含まれる LINQ プロバイダーでサポートされる LINQ 演算子の一覧です。
+
+-	**Select**: オブジェクトの構築など、プロジェクションによって SQL SELECT に変換します。
+-	**Where**: フィルターによって SQL WHERE に変換します。また、&&、||、および ! から SQL 演算子への変換をサポートします。
+-	**SelectMany**: SQL JOIN 句に対して配列をアンワインドできます。配列要素に関してフィルターする式を連結または入れ子にするために使用できます。
+-	**OrderBy と OrderByDescending**: ORDER BY 昇順/降順に変換します。
+-	**CompareTo**: 範囲比較に変換します。.NET では文字列を比較できないので、一般的に文字列に使用されます。
+-	**Take**: クエリからの結果を制限するために SQL TOP に変換します。
+-	**数学関数**: .NET の Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate から、同等の SQL 組み込み関数への変換をサポートします。
+-	**文字列関数**: .NET の Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper から、同等の SQL 組み込み関数への変換をサポートします。
+-	**配列関数**: .NET のからの変換をサポートしています。NET の Concat、Contains、Count から、同等の SQL 組み込み関数への変換をサポートします。
+-	**地理空間の拡張関数**: スタブ メソッドの Distance、Within、IsValid、IsValidDetailed から、同等の SQL 組み込み関数への変換をサポートします。
+-	**ユーザー定義関数の拡張関数**: スタブ メソッドの UserDefinedFunctionProvider.Invoke から、対応するユーザー定義関数への変換をサポートします。
+-	**その他**: 合体演算子と条件演算子の変換をサポートします。コンテキストに応じて、Contains から、CONTAINS、ARRAY\_CONTAINS、または SQL IN に変換できます。
 
 ### SQL クエリ演算子
 標準 LINQ クエリ演算子が DocumentDB クエリに変換される方法を以下のいくつかの例で示します。
@@ -2089,4 +2144,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0128_2016-->
