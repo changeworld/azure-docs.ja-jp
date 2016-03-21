@@ -86,7 +86,7 @@ Notebook から、任意のライブラリを使って、データの探索、�
 
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。
 
->[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] (使ってみる) をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
+>[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] \(使ってみる) をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
 
 ### Python のモデルを構築して運用可能な状態にする
 

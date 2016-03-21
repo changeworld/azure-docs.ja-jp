@@ -25,7 +25,7 @@
 
 このガイドでは、**Azure のキャッシュの In-Role Cache** の基本的な使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュ クラスターの構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。In-Role Cache の使い方の詳細については、「[次の手順][]」を参照してください。
 
->[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。日付と移行のガイドラインの詳細については、「[どの Azure Cache を利用すればよいですか](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)」を参照してください。
+>[AZURE.IMPORTANT] Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。日付と移行のガイドラインの詳細については、「[どの Azure Cache を利用すればよいですか](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)」を参照してください。
 
 <a name="what-is"></a>
 ## In-Role Cache とは

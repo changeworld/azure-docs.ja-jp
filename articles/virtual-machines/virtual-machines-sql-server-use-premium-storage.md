@@ -89,7 +89,7 @@ DS* VM の場合、VM をホストする Virtual Network (VNET) を地域 VNET �
 
 Premium Storage 用に構成された新しいストレージ アカウントを作成する必要があります。Premium Storage の使用は、個別の VHD ではなくストレージ アカウントで設定されることに注意してください。ただし、DS* シリーズ VM を使用するときは、Premium および Standard Storage アカウントから VHD をアタッチできます。Premium Storage アカウントに OS の VHD を配置したくない場合、これを検討できます。
 
-次の **Type** が "Premium\_LRS" の **New-AzureStorageAccountPowerShell** コマンドは、Premium Storage アカウントを作成します。
+次の **Type** が "Premium_LRS" の **New-AzureStorageAccountPowerShell** コマンドは、Premium Storage アカウントを作成します。
 
     $newstorageaccountname = "danpremstor"
     New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "West Europe" -Type "Premium_LRS"   

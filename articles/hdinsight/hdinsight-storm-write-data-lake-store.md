@@ -207,7 +207,7 @@ __Linux ベースの HDInsight の場合__:
 
 __Windows ベースの HDInsight の場合__:
 
-1. Storm ダッシュボード (https://CLUSTERNAME.azurehdinsight.net,) で、ページの上部にある __[Storm UI]__ リンクを選択します。
+1. Storm ダッシュボード (https://clustername.azurehdinsight.net) で、ページの上部にある __[Storm UI]__ リンクを選択します。
 
 2. Storm UI が読み込まれたら、__[datalakewriter]__ リンクを選択します。
 
