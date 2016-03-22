@@ -31,7 +31,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -50,11 +50,12 @@
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AD FS Diagnostics Service
-- Azure AD Connect Health AD FS Insights Service
-- Azure AD Connect Health AD FS Monitoring Service
+- Azure AD Connect Health AD FS 診断サービス  
+- Azure AD Connect Health AD FS 分析サービス  
 
-![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
+- Azure AD Connect Health AD FS 監視サービス  
+
+![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install5.png)
 
 
 ### Windows Server 2008 R2 サーバーへのエージェントのインストール
@@ -110,7 +111,7 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。
 
-![AD FS audit logs](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
+![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
