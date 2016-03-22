@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/01/2016" 
+	ms.date="03/07/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
@@ -22,7 +22,7 @@
 - [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
 - [Visual Studio の使用](data-factory-get-started-using-vs.md)
 - [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
-
+- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 ##このチュートリアルの内容
 このチュートリアルでは、Visual Studio 2013 で次の作業を行います。
@@ -47,13 +47,13 @@
 1. **Visual Studio 2013** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
 
-
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス  
+](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-
-	![ソリューション エクスプローラー](./media/data-factory-get-started-using-vs/solution-explorer.png)
+	![ソリューション エクスプローラー  
+](./media/data-factory-get-started-using-vs/solution-explorer.png)
 
 #### リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
@@ -77,7 +77,7 @@
 
 5. **[ソリューション エクスプローラー]** で **[Linked Services]** ノードをもう一度右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。 
 6. このとき、**[Azure SQL Linked Service]** をクリックし、**[追加]** をクリックします。 
-7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、**username@servername**、**password** を Azure SQL のサーバー名、データベース、ユーザー アカウント、パスワードで置き換えます。
+7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、****username@servername**、**password** を Azure SQL のサーバー名、データベース、ユーザー アカウント、パスワードで置き換えます。
 8.  **AzureSqlLinkedService1.json** ファイルを保存します。 
 
 
@@ -248,4 +248,4 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 ## 関連項目
 Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

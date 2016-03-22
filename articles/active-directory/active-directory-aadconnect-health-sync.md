@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/17/2016"
+	ms.date="03/08/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect Health for Sync の使用
@@ -28,6 +28,17 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 アラートを選択すると、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。
 
 ![Azure AD Connect sync error](./media/active-directory-aadconnect-health-sync/alert.png)
+
+### アラートの評価が限定される状況
+Azure AD Connect で既定の構成が使用されていない場合 (たとえば、属性フィルターが既定の構成からカスタム構成に変更されている場合)、Azure AD Connect Health エージェントは Azure AD Connect に関連するエラー イベントをアップロードしません。
+
+その結果、サービスによるアラートの評価は限定的なものになります。このような状況にある場合は、それを示すバナーが該当するサービスの Azure ポータルに表示されます。
+
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner.png)
+
+この状況を変更するには、[設定] をクリックし、Azure AD Connect Health エージェントがすべてのエラー ログをアップロードできるようにします。
+
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner2.png)
 
 ## 同期に関する洞察
 最新バージョンの Azure AD Connect Health for Sync には、次の新機能が追加されています。
@@ -56,4 +67,4 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

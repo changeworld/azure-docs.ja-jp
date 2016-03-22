@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="02/17/2016"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
 
 # Azure ポータルの Azure Scheduler の概要
@@ -182,4 +182,4 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/15/2016"
+   ms.date="03/08/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -29,7 +29,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|
-|**北米**|米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部|アトランタ、シカゴ、ダラス、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、トロント+|
+|**北米**|米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部|アトランタ、シカゴ、ダラス、ラスベガス+、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、トロント|
 |**南アメリカ**|ブラジル南部|サンパウロ|
 |**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ダブリン、ロンドン|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
@@ -44,7 +44,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|---|
 |**米国政府のクラウド**|米国政府アイオワ、米国政府バージニア|シカゴ、ニューヨーク+、ワシントン DC|
-|**中国のクラウド**|中国北部、中国東部|北京、上海|
+|**中国**|中国北部、中国東部|北京、上海|
+|**ドイツ**|ドイツ中部、ドイツ東部|ベルリン+、フランクフルト|
 
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。国内のクラウド環境には接続できません。国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
@@ -56,30 +57,31 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365 と CRM Online** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
-| **[Aryaka Networks](http://www.aryaka.com/)** | サポートされています | サポートされています | アムステルダム、シリコン バレー、シンガポール、ワシントン DC |
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、ダラス、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
+| **[Aryaka Networks](http://www.aryaka.com/)** | サポートされています | サポートされています | アムステルダム、シリコン バレー、シンガポール、東京、ワシントン DC |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、東京、ワシントン DC |
 |**China Telecom Global** | サポートされています | サポートされていません | 香港 |
-|**Cologix** | 近日対応予定 | 近日対応予定 | モントリオール+、トロント+ |
+|**Cologix** | サポートされています | 近日対応予定 | モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン |
 | **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
 | **CoreSite** | サポートされています | サポートされています | ロサンゼルス | 
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント+、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | サポートされています | サポートされています | 大阪、東京 |
 | **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされています | アムステルダム、ロンドン、シンガポール、ワシントン DC |
 | **Internet Solutions - Cloud Connect** | サポートされています | サポートされています | アムステルダム、ロンドン |
 | **Interxion** | サポートされています | サポートされています | アムステルダム、ロンドン |
-| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
-| **Megaport** | サポートされています | サポートされています | ダラス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シドニー、ワシントン DC |
+| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ラスベガス+、ロンドン、シアトル、シリコン バレー、ワシントン DC |
+| **Megaport** | サポートされています | サポートされています | ダラス、ラスベガス+、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シドニー、ワシントン DC |
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
-| **NTT Communications** | サポートされています | サポートされています | ロンドン、東京 |
+| **NTT Communications** | サポートされています | サポートされています | ロンドン、大阪、東京 |
 | **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされています | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
 | **ソフトバンク** | 近日対応予定 | 近日対応予定 | 大阪、東京 | 
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | サポートされています | アムステルダム、チェンナイ、香港、ロンドン、ムンバイ、シンガポール、ワシントン DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | サポートされています | サポートされています | アムステルダム、ロンドン |
+| **Telenor** | サポートされています | サポートされています | アムステルダム、ロンドン |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン、シドニー |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シドニー、東京、ワシントン DC |
 | **Vodafone** | サポートされています | サポートされていません | ロンドン | 
@@ -93,17 +95,26 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
-| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
-| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | シカゴ、ワシントン DC |
+| **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | 近日対応予定 | シカゴ、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
+| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
 
-#### 中国のクラウド
+#### 中国
 
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
 | **China Telecom** | サポートされています | サポートされていません | 北京、上海|
 詳細については、[中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/) に関するページを参照してください。
+
+#### ドイツ
+
+| **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
+|-----------------------|--------------------|----------------|---------------|
+| **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | 近日対応予定 | サポートされていません | ベルリン+、フランクフルト+|
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | 近日対応予定 | サポートされていません | フランクフルト+|
+| **e-shelter** | 近日対応予定 | サポートされていません | ベルリン+|
+| **Interxion** | サポートされています | サポートされていません | フランクフルト|
 
 ## 一覧にないサービス プロバイダー経由の接続
 
@@ -141,4 +152,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

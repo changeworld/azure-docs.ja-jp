@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="12/04/2015"
+ ms.date="03/09/2016" 
  ms.author="krisragh"/>
 
 # Scheduler の概念、用語集、エンティティ階層構造
@@ -190,7 +190,7 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 ## 関連項目
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
@@ -207,4 +207,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/08/2016"
+   ms.date="03/09/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute 接続とサイト間接続の共存の構成
@@ -188,7 +188,7 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
 
-2. 既存のサイト間 VPN ゲートウェイを削除します。次のコマンドレットを使用して、自身の値に置き換えます。
+2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。次のコマンドレットを使用して、自身の値に置き換えます。
 
 	`Remove-AzureVNetGateway –VnetName MyAzureVNET`
 
@@ -218,4 +218,4 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

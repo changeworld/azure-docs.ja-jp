@@ -12,7 +12,7 @@
 	ms.workload="media"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="02/25/2016" 
 	ms.author="casoper"/>
 
@@ -78,4 +78,4 @@
 - メルボルン
 - シドニー
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

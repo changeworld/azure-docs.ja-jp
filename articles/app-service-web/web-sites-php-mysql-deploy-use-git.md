@@ -20,8 +20,8 @@
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
 > [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [.NET](web-sites-dotnet-get-started.md)
+- [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
 - [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
@@ -33,6 +33,7 @@
 
 * [Azure ポータル](https://portal.azure.com)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
+* Composer 拡張機能を有効にして `git push` ごとに Composer のタスクを自動化する方法。
 
 このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -264,6 +265,27 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
+<a name="composer">
+## Composer 拡張機能を使用した Composer 自動化の有効化
+
+既定では、PHP プロジェクトに composer.json があっても、App Service の git デプロイ プロセスで処理されません。`git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
+
+1. [Azure ポータル](https://portal.azure.com)の PHP Web アプリのブレードで、**[ツール]**、**[拡張機能]** の順にクリックします。
+
+    ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-settings.png)
+
+2. **[追加]**、**[Composer]** の順にクリックします。
+
+    ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-add.png)
+    
+3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
+
+    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。 ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png)
+    
+4. 前のセクションと同様に `git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
+
+    ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png)
+
 ## 次のステップ
 
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
@@ -303,4 +325,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->
