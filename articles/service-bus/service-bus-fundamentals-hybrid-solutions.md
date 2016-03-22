@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="11/06/2015" 
+	ms.date="03/09/2016" 
 	ms.author="sethm"/>
 
 # Azure Service Bus
 
-クラウドで実行されるか、オンプレミスであるかを問わずアプリケーションまたはサービスは、一般的には他のアプリケーションまたはサービスと対話する必要があります。この必要性に広範に対応するために、Azure には Service Bus が用意されています。この記事ではこのテクノロジを中心に、その内容とそれを使用する理由について説明します。
+クラウドで実行されるか、オンプレミスであるかを問わずアプリケーションまたはサービスは、一般的には他のアプリケーションまたはサービスと対話する必要があります。この必要性に広範に対応するために、Microsoft Azure には サービス バスが用意されています。この記事ではこのテクノロジを中心に、その内容とそれを使用する理由について説明します。
 
 ## Service Bus の基礎
 
@@ -125,4 +125,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

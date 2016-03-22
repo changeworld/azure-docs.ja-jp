@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="03/10/2016"
     ms.author="brjohnst"/>
 
 # .NET SDK を使用した Azure Search インデックスの作成
@@ -77,8 +77,8 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 var definition = new Index()
 {
     Name = "hotels",
-    Fields = new[] 
-    { 
+    Fields = new[]
+    {
         new Field("hotelId", DataType.String)                       { IsKey = true, IsFilterable = true },
         new Field("baseRate", DataType.Double)                      { IsFilterable = true, IsSortable = true, IsFacetable = true },
         new Field("description", DataType.String)                   { IsSearchable = true },
@@ -121,6 +121,6 @@ serviceClient.Indexes.Delete("hotels");
 > [AZURE.NOTE] この記事のコード例では、わかりやすくするため、Azure Search .NET SDK の同期メソッドを使用します。実際のアプリケーションでは、高い拡張性と応答性を維持するため、非同期メソッドを使用することをお勧めします。たとえば、上記の例では、`Create` と `Delete` の代わりに、`CreateAsync` と `DeleteAsync` を使用できます。
 
 ## 次へ
-Azure Search インデックスを作成すると、データの検索を開始できるようにインデックスにコンテンツをアップロードする準備が完了します。「[.NET SDK を使用した Azure Search でのデータ インポート](search-import-data-dotnet.md)」をご覧ください。
+Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/10/2016"
+   ms.date="03/15/2016"
    ms.author="jgao"/>
 
 # チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
@@ -106,7 +106,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 		    SELECT *
 		    FROM @searchlog;        
 
-        OUTPUT @searchlog   
+        OUTPUT @res   
             TO "/Output/SearchLog-from-Data-Lake.csv"
         USING Outputters.Csv();
 
@@ -152,7 +152,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	- **定義に移動してすべての参照を検索**
 	
-		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] \(F12) をクリックすると、その定義に移動できます。[すべての参照の検索] \(Shift + F12) をクリックすると、すべての参照が表示されます。
+		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。[すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
 
 	- **Azure パスの挿入**
 		
@@ -189,7 +189,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 **ジョブの出力を表示するには**
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake ストレージ アカウントを右クリックして **[エクスプローラー]** をクリックします。 
+1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、ご使用の Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定の Data Lake Storage アカウントを右クリックして **[エクスプローラー]** をクリックします。 
 2.  **[出力]** をダブルクリックしてフォルダーを開きます。
 3.  **SearchLog-From-adltools.csv** をダブルクリックします。
 
@@ -262,11 +262,15 @@ U-SQL スクリプトの開発方法については、「[U-SQL スクリプト�
 
 Azure Data Lake Analytics サービスに提出し、登録しなくても C# アセンブリをデバッグできます。分離コード ファイルと参照 C# プロジェクトの両方にブレークポイントを設定できます。
 
-**分離コード ファイルのローカル コードをデバッグするには** 1.分離コード ファイルにブレークポイントを設定します。2.**F5** キーを押して、スクリプトをローカルでデバッグします。
+**分離コード ファイルのローカル コードをデバッグするには**
+1.	分離コード ファイルにブレークポイントを設定します。 
+2.	**F5** キーを押して、スクリプトをローカルでデバッグします。
 
 次の手順は、Visual Studio 2015 でのみ機能します。以前の Visual Studio では、pdb ファイルを手動で追加する必要があります。
 
-**参照先の C# プロジェクトのローカル コードをデバッグするには** 1.C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。2.U-SQL ステートメントを使用して dll を登録します。
+**参照先の C# プロジェクトのローカル コードをデバッグするには**
+1.	C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
+2.	U-SQL ステートメントを使用して dll を登録します。
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
 3.	C# コードにブレークポイントを設定します。
@@ -359,4 +363,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

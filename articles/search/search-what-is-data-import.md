@@ -1,63 +1,48 @@
 <properties
-	pageTitle="Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-	description="Azure Search のインデックスにデータをアップロードする方法"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""
+    pageTitle="Azure Search でのデータのアップロード | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="Azure Search のインデックスにデータをアップロードする方法について説明します。"
+    services="search"
+    documentationCenter=""
+    authors="ashmaka"
+    manager=""
+    editor=""
     tags=""/>
 
 <tags
-	ms.service="search"
-	ms.devlang="na"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="02/09/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="03/10/2016"
+    ms.author="ashmaka"/>
 
-# Azure Search へのデータのインポート
+# Azure Search へのデータのアップロード
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
+- [概要](search-what-is-data-import.md)
 - [.NET](search-import-data-dotnet.md)
-- [REST](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [REST ()](search-import-data-rest-api.md)
 
-Azure Search の動作には永続化されたデータ (インデックス) が使用され、このデータを基に、インデックスの処理、クエリの実行、検索結果の生成に使用されるドキュメントと情報が提供されます。インデックスを設定するには、データの読み込みのプッシュまたはプル モデルを使用できます。
 
-インポートする前に、インデックスが既に存在する必要があります。詳細については、「[Azure Search のインデックス](search-what-is-an-index.md)」を参照してください。
+## Azure Search のデータ アップロード モデル
+Azure Search インデックスにデータを設定する方法は 2 とおりあります。1 つ目は、Azure Search [REST API](search-import-data-rest-api.md) または [.NET SDK](search-import-data-dotnet.md) を使用して、手動でデータをインデックスにプッシュする方法です。2 つ目は、Azure Search に[サポートされているデータ ソースを指定](search-indexer-overview.md)し、Azure Search によってデータが検索サービスに自動的にプルされるようにする方法です。
 
-##インデックスにデータをプッシュする
+このガイドでは、データ アップロードのプッシュ モデル ([REST API](search-import-data-rest-api.md) と [.NET SDK](search-import-data-dotnet.md) でのみサポート) の使用手順のみを取り上げますが、以下でプル モデルの詳細も確認できます。
 
-この方法では、インデックスのスキーマに準拠している既存のデータセットを取得し、検索サービスにポストします。非常に低い待機時間要件を持つアプリケーションの場合 (たとえば、検索操作が在庫データベースと同期する必要がある場合)、プッシュ モデルが唯一のオプションです。
+### インデックスにデータをプッシュする
 
-インデックスにデータをプッシュするには REST API または .NET SDK を使用することができます。現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
+このアプローチでは、データを Azure Search にプログラムで送信し、検索に利用できるようにします。待機時間の要件が非常に厳しいアプリケーションの場合 (たとえば、検索操作を動的な在庫データベースと同期する必要がある場合) は、プッシュ モデルしか利用できません。
 
-この方法は、個別にまたはバッチでドキュメントをアップロードするために、プル モデルよりも柔軟です (バッチごとに最大 1000 または 16 MB のどちらか先に達した方の制限)。
+インデックスにデータをプッシュするには、[REST API](https://msdn.microsoft.com/library/azure/dn798930.aspx) または [.NET SDK](search-import-data-dotnet.md) を使用することができます。現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 
-##データのプル (クロール) 
+このアプローチでは、ドキュメントを個別に、またはバッチでアップロードできるため、プル モデルよりも柔軟です ("バッチごとに最大 1,000 個" と "16 MB" のうち、どちらか先に達した制限が適用されます)。プッシュ モデルでは、データのある場所にかかわらず、ドキュメントを Azure Search にアップロードすることもできます。
 
-プル モデルでは、サポートされているデータ ソースをクロールしてインデックスを読み込みます。Azure Search では、この機能は *インデクサー* によって実装され、現在は Azure SQL Database、DocumentDB、および Azure VM の SQL Server で利用可能です。Azure SQL データのアップロードについては、「[インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)」を参照してください。
+### インデックスへのデータのプル
 
-インデックスにデータをプルするにはポータル、REST API、または .NET SDK を使用することができます。
+プル モデルでは、サポートされているデータ ソースをクロールし、データを Azure Search に自動的にアップロードします。インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。
 
-##データセットの要件
+Azure Search では、この機能は*インデクサー*によって実装され、現時点では [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)、[DocumentDB](http://aka.ms/documentdb-search-indexer)、[Azure SQL Database、Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) で利用可能です。
 
-スキーマとデータセットが JSON 構造として生成されていれば、アップロードするデータの型に制限はありません。
+インデクサーの機能は、[REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) に加えて [Azure ポータル](search-import-data-portal.md)でも公開されています。
 
-データは、カスタム アプリケーションによって作成または使用されるデータベースかデータ ソースから取得する必要があります。たとえば、アプリケーションがオンライン小売カタログである場合、Azure Search に作成するインデックスは、使用しているアプリケーションをサポートする製品インベントリまたは販売データベースからデータを取得する必要があります。
-
-データセットは、1 つのテーブル、ビュー、BLOB コンテナー、またはそれらに相当する要素から派生する必要があります。Azure Search にデータを提供するデータベースまたは NoSQL アプリケーションでデータ構造の作成が必要になる場合があります。また、Azure SQL Database や DocumentDB など特定のデータ ソースでは、外部のテーブル、ビュー、BLOB コンテナーをクロールして Azure Search にデータをアップロードするインデクサーを作成できます。
-
-##データ インポート方法の選択
-
-|条件|推奨される方法|
-|------------|---------------|
-|ほぼリアルタイムのデータ同期|インデックスに更新をプッシュするためのコード (.NET または REST API)。データ取り込みのプル アプローチは、スケジュールされた動作で、プライマリ データ ソースの激しい変化に対処できるほど速いスピードでは実行できません。|
-|Azure SQL Database、DocumentDB、または Azure VM 上の SQL Server|インデクサーは、特定のデータ ソースの種類に関連付けられます。プライマリ データ ソースがサポートされているデータ ソースの種類である場合は、インデクサーがインデックスの読み込みの最も簡単な方法です。最短 1 時間ごとの頻度でデータ更新をスケジュールすることができます。インデクサーの構成はポータルまたはコードで行います。|
-|スケジュールされたデータ更新|インデクサーを使用します (上記参照)。|
-|コードを使用しないプロトタイプ作成または編集|ポータルには、インデクサーを構成するためのデータ インポート ウィザードが用意されており、プライマリ データベースに十分な情報がある場合は暫定的なスキーマを生成することもできます。ウィザードでは、スケジュールされたデータ更新を設定するためのオプションを使用できます。必要に応じて、言語アナライザーまたは CORS オプションを追加できます。少数ながらマイナス面もあります。スコアリング プロファイルは追加できません。コードでの使用向けに、ポータルで作成したスキーマを JSON ファイルにエクスポートすることもできません。| 
-
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/17/2016"
+	ms.date="03/08/2016"
 	ms.author="billmath"/>
 
 
@@ -31,7 +31,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -50,14 +50,11 @@
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AD FS 診断サービス  
+- Azure AD Connect Health AD FS Diagnostics Service
+- Azure AD Connect Health AD FS Insights Service
+- Azure AD Connect Health AD FS Monitoring Service
 
-- Azure AD Connect Health AD FS 分析サービス  
-
-- Azure AD Connect Health AD FS 監視サービス  
-
-
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install5.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
 
 
 ### Windows Server 2008 R2 サーバーへのエージェントのインストール
@@ -113,7 +110,7 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。
 
-![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
+![AD FS audit logs](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
@@ -124,13 +121,31 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AadSync Insights Service
-- Azure AD Connect Health AadSync Monitoring Service
+- Azure AD Connect Health Sync 分析サービス
+- Azure AD Connect Health Sync 監視サービス
 
 ![Azure AD Connect Health for Sync の確認](./media/active-directory-aadconnect-health-sync/services.png)
 
 >[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health.md#requirements)で要件を参照してください。
 
+
+## 主導による Azure AD Connect Health for Sync の登録
+Azure AD Connect が正常にインストールされた後で、Azure AD Connect Health for Sync エージェントの登録に失敗した場合は、次の PowerShell コマンドを使用してエージェントを手動で登録できます。
+
+>[AZURE.IMPORTANT] この PowerShell コマンドは、Azure AD Connect をインストールした後でエージェントの登録が失敗した場合にのみ使用してください。
+
+下記の PowerShell コマンドは、Azure AD Connect のインストールと構成が正常に完了した後に Health エージェントの登録が失敗した場合にのみ実行する必要があります。このような場合、エージェントが正常に登録されるまで Azure AD Connect Health サービスは開始されません。
+ 	
+次の PowerShell コマンドを使用して、Azure AD Connect Health for Sync エージェントを手動で登録することができます。
+
+`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
+
+このコマンドは次のパラメーターを受け取ります。
+
+- AttributeFiltering: $true (既定) - Azure AD Connect が既定の属性セットを同期しておらず、フィルター処理された属性セットを使用するようにてカスタマイズされている場合。それ以外の場合は $false です。
+- StagingMode: $false (既定) - Azure AD Connect サーバーがステージング モードになっていない場合。サーバーがステージング モードになるよう構成されている場合は $true です。
+ 
+認証情報の入力を求められたら、Azure AD Connect を構成するときに使用したのと同じグローバル管理者アカウントを使用する必要があります (admin@domain.onmicrosoft.com など)。
 
 
 
@@ -209,4 +224,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -12,7 +12,7 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="02/26/2016"
 	ms.author="douglasl"/>
 
@@ -96,27 +96,29 @@ Stretch Database がリモート データベースの接続に使用する資�
 ## <a name="Network"></a>IP アドレスを選択する
 SQL Server のパブリック IP アドレスを使用するか、IP アドレスの範囲を入力し、SQL Server とリモート Azure サーバーの通信を可能にするファイアウォール ルールを Azure で作成します。
 
+このページで指定した IP アドレスにより、SQL Server からの受信データ、クエリ、および管理操作が Azure ファイアウォールを通過することを許可するよう Azure サーバーに指示します。このウィザードによって、SQL Server のファイアウォール設定が変更されることはありません。
+
 ![Stretch Database ウィザードの IP アドレスの選択ページ][StretchWizardImage7]
 
 ## <a name="Summary"></a>概要
-入力した値とウィザードで選択したオプションを確認します。**[完了]** を選択し、Stretch を有効にします。
+入力した値とウィザードで選択したオプションを確認します。**[完了]** を選択して、Stretch を有効にします。
 
 ![Stretch Database ウィザードのまとめのページ][StretchWizardImage8]
 
 ## <a name="Results"></a>結果
 結果を確認します。
 
-必要に応じて **[モニター]** を選択して、Stretch Database Monitor のデータ移行の状態の監視を開始します。詳細については、「[データ移行の監視とトラブルシューティング (Stretch Database)](sql-server-stretch-database-monitor.md)」を参照してください。
+必要に応じて **[監視]** を選択して、Stretch Database Monitor のデータ移行の状態の監視を開始します。詳細については、「[データ移行の監視とトラブルシューティング (Stretch Database)](sql-server-stretch-database-monitor.md)」を参照してください。
 
 ## <a name="KnownIssues"></a>ウィザードのトラブルシューティング
-**Stretch Database ウィザードが失敗しました。** Stretch Database がサーバー レベルで有効になっていないとき、システム管理者の許可なしでウィザードを実行し、有効にしようとすると、ウィザードは失敗します。ローカル サーバー インスタンスで Stretch Database を有効にするようにシステム管理者に依頼し、その後、ウィザードをもう一度実行します。詳細については、「[Prerequisite: Permission to enable Stretch Database on the server (前提条件: サーバーで Stretch Database を有効にするアクセス許可)](sql-server-stretch-database-enable-database.md#EnableTSQLServer)」を参照してください。
+**Stretch Database ウィザードが失敗しました。** Stretch Database がサーバー レベルで有効になっていないとき、システム管理者の許可なしでウィザードを実行し、有効にしようとすると、ウィザードは失敗します。ローカル サーバー インスタンスで Stretch Database を有効にするようにシステム管理者に依頼し、その後、ウィザードをもう一度実行します。詳細については、「[前提条件: サーバーで Stretch Database を有効にするためのアクセス許可](sql-server-stretch-database-enable-database.md#EnableTSQLServer)」を参照してください。
 
 ## 次のステップ
 Stretch Database の追加テーブルを有効にします。データ移行を監視し、Stretch 対応のデータベースとテーブルを管理します。
 
--   追加のテーブルを有効にするには、[の Stretch Database を有効にします](sql-server-stretch-database-enable-table.md)。
+-   [テーブルの Stretch Database を有効にして](sql-server-stretch-database-enable-table.md)追加テーブルを有効にします。
 
--   [Stretch Database を監視して](sql-server-stretch-database-monitor.md)データベース移行の状態を確認します。
+-   [Stretch Database を監視して](sql-server-stretch-database-monitor.md)データ移行の状態を確認します。
 
 -   [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
@@ -125,7 +127,10 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 -   [Stretch 対応データベースをバックアップし、復元します。](sql-server-stretch-database-backup.md)
 
 ## 関連項目
-[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md) [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
+
+[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
+
+[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
 [StretchWizardImage1]: ./media/sql-server-stretch-database-wizard/stretchwiz1.png
 [StretchWizardImage2]: ./media/sql-server-stretch-database-wizard/stretchwiz2.png
@@ -136,4 +141,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

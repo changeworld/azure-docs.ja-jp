@@ -53,8 +53,8 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
-	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription <Name of the subscription>** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
+	- **Get-AzureRmSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+	- **Select-AzureRmSubscription <Name of the subscription>** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 3. 次のコマンドを実行して、**ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
 		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -356,4 +356,4 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

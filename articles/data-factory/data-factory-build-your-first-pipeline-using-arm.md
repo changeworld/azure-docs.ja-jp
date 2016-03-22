@@ -36,12 +36,12 @@
 - この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。 
 - 「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照して、Azure リソース マネージャー (ARM) テンプレートについて確認してください。 
 
+> [AZURE.IMPORTANT]
+この記事のチュートリアルを実行する前に、こちらの「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に記載された前提条件の手順を完了する必要があります。
 
 ## 手順 1: ARM テンプレートを作成する
 
 以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
-
-> [AZURE.IMPORTANT] **storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
 
 このテンプレートでは、次の Data Factory エンティティを作成できます。
 
@@ -51,6 +51,9 @@
 
 **[Data Factory エディターを使用する]** タブをクリックすると、このテンプレートで使用する JSON プロパティの詳細に関する記事に切り替わります。
 
+> [AZURE.IMPORTANT] **storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
+
+
 	{
 	    "contentVersion": "1.0.0.0",
 	    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -58,10 +61,10 @@
 	    },
 	    "variables": {
 	        "dataFactoryName":  "TutorialDataFactoryARM",
-	        "storageAccountName":  "<stroage account name>" ,
-	        "storageAccountKey":  "<storage account key>",
+	        "storageAccountName":  "<AZURE STORAGE ACCOUNT NAME>" ,
+	        "storageAccountKey":  "<AZURE STORAGE ACCOUNT KEY>",
 	        "apiVersion": "2015-10-01",
-	        "storageLinkedServiceName": "StorageLinkedService",
+	        "storageLinkedServiceName": "AzureStorageLinkedService",
 	        "hdInsightOnDemandLinkedServiceName": "HDInsightOnDemandLinkedService",
 	        "blobInputDataset": "AzureBlobInput",
 	        "blobOutputDataset": "AzureBlobOutput",
@@ -96,12 +99,13 @@
 	                    "apiVersion": "[variables('apiVersion')]",
 	                    "properties": {
 	                        "type": "HDInsightOnDemand",
-	                        "typeProperties": {
-	                            "version": "3.2",
-	                            "clusterSize": 1,
-	                            "timeToLive": "00:30:00",
-	                            "linkedServiceName": "StorageLinkedService"
-	                        }
+        					"typeProperties": {
+                                "clusterSize": 4,
+                                "version":  "3.2",
+            					"timeToLive": "00:05:00",
+                                "osType": "linux",
+            					"linkedServiceName": "[variables('storageLinkedServiceName')]",
+    						}
 	                    }
 	                },
 	                {
@@ -114,7 +118,7 @@
 	                    "apiVersion": "[variables('apiVersion')]",
 						    "properties": {
 						        "type": "AzureBlob",
-						        "linkedServiceName": "StoraegLinkedService",
+						        "linkedServiceName": "[variables('storageLinkedServiceName')]",
 						        "typeProperties": {
 						            "fileName": "input.log",
 						            "folderPath": "adfgetstarted/inputdata",
@@ -142,7 +146,7 @@
 						    "properties": {
 						        "published": false,
 						        "type": "AzureBlob",
-						        "linkedServiceName": "StorageLinkedService",
+						        "linkedServiceName": "[variables('storageLinkedServiceName')]",
 						        "typeProperties": {
 						            "folderPath": "adfgetstarted/partitioneddata",
 						            "format": {
@@ -174,7 +178,7 @@
 						                "type": "HDInsightHive",
 						                "typeProperties": {
 						                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-						                    "scriptLinkedService": "StorageLinkedService",
+						                    "scriptLinkedService": "[variables('storageLinkedServiceName')]",
 						                    "defines": {
 		                        				"inputtable": "[concat('wasb://adfgetstarted@', variables('storageAccountName'), '.blob.core.windows.net/inputdata')]",
 		                        				"partitionedtable": "[concat('wasb://adfgetstarted@', variables('storageAccountName'), '.blob.core.windows.net/partitioneddata')]"
@@ -212,25 +216,25 @@
 	    ]
 	}
 
+**[Data Factory エディターを使用する]** タブをクリックすると、このテンプレートで使用する JSON プロパティの詳細が記載された記事に切り替わります。
 
 以下の点に注意してください。
 
-- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
-- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、「[HDInsight Linked Service (HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)」を参照してください。
+- Data Factory は、上記の JSON で **Linux ベース**の HDInsight クラスターを自動的に作成します。**Windows ベース**の HDInsight クラスターを作成させることもできます。詳細については、「[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
+- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、「[Azure HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)」を参照してください。
 - HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
-	処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。コンテナーの名前は、"adf**Data Factory 名**-**リンクされたサービス名**-日時スタンプ" というパターンになります。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
+	処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。コンテナーの名前は、"adf**<データ ファクトリ名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンになります。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
 
-詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。
+詳細については、「[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。
 
 > [AZURE.NOTE] Azure Data Factory を作成するための ARM テンプレートの例は、[Github](https://github.com/Azure/azure-quickstart-templates/blob/master/101-data-factory-blob-to-sql/azuredeploy.json) にもあります。
 
 ## 手順 2: ARM テンプレートを使用して Data Factory エンティティをデプロイする
 
-1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+1. **Azure PowerShell** を起動し、次のコマンドを実行します。 
 	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
-	- **Get-AzureSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	- **Select-AzureSubscription SubscriptionName** を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
+	- 次のコマンドを実行して、Data Factory を作成するサブスクリプションを選択します。Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
 1. 次のコマンドを実行し、手順 1. で作成した ARM テンプレートを使用して Data Factory エンティティをデプロイします。 
 
 		New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json
@@ -252,4 +256,4 @@
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

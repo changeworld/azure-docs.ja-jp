@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="11/05/2015"
+	ms.date="03/08/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -38,27 +38,27 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
-   	![][1]
+	![][1]
 
 3. Event Hub の名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
 
-   	![][2]
+	![][2]
 
 4. 先ほど作成した名前空間 (通常は ***event hub name*-ns**) をクリックします。
 
-   	![][3]
+	![][3]
 
 5. ページ上部にある、**[Event Hubs]]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
 
-   	![][4]
+	![][4]
 
 6. 上部の **[構成]** タブをクリックし、**SendRule** という名前のルールに *Send* 権限を追加します。もう 1 つの R**eceiveRule** というルールには *Manage、Send、Listen* 権限を追加し、**[保存]** をクリックします。
 
-   	![][5]
+	![][5]
 
 7. ページ上部の **[ダッシュボード]** タブをクリックし、**[接続情報]** をクリックします。2 つの接続文字列をメモするか、このチュートリアルで後で使用する場所にコピーします。
 
-   	![][6]
+	![][6]
 
 イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
 
@@ -73,11 +73,11 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 1.	Visual Studio 内で **Receiver** プロジェクトを実行し、すべてのパーティションに対してレシーバーが起動するまで待機します。
 
-   	![][21]
+	![][21]
 
 2.	**Sender** プロジェクトを実行し、コンソール ウィンドウで **Enter** キーを押します。すると、レシーバーのウィンドウにイベントが表示されます。
 
-   	![][22]
+	![][22]
 
 ## 次のステップ
 
@@ -105,7 +105,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

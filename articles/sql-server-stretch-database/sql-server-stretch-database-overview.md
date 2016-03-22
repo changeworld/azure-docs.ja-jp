@@ -12,7 +12,7 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="02/26/2016"
 	ms.author="douglasl"/>
 
@@ -123,4 +123,4 @@ Stretch Database は、既存のデータベースのアクセス許可モデル
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -14,18 +14,16 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/03/2016"
+   	ms.date="03/16/2016"
    	ms.author="jgao"/>
 
 # Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する
 
 > [AZURE.SELECTOR]
-- [Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
-- [Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
+- [Windows ベース](hdinsight-hadoop-tutorial-get-started-windows.md)
+- [Linux ベース](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-Linux ベースの Hadoop クラスターを HDInsight で作成し、Ambari Hive ビューを利用して Hive ジョブを実行する方法について説明します。
-
-Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084)、[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086)、[Hadoop Distributed File System (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087)、[Hive](http://go.microsoft.com/fwlink/?LinkId=510085) に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
+この記事では、Linux ベースの [Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。[Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。HDInsight には、現時点で 4 種類のクラスター、[Hadoop](hdinsight-hadoop-introduction)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md) が付属しています。クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、Hive は 4 つのクラスターの種類のすべてでサポートされています。HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,68 +31,80 @@ Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http:
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**: 無料試用版のアカウントを作成するには、[azure.microsoft.com/free](https://azure.microsoft.com/free) を参照してください。
+- **Azure サブスクリプション**: 1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free) で作成できます。
 
 ## クラスターの作成
 
-Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。このセクションでは、[Azure ARM テンプレート](../resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。ARM テンプレートは完全にカスタマイズ可能です。そのため、HDInsight のような Azure リソースの作成が簡単になります。このチュートリアルを利用するにあたり、Azure ARM テンプレートの使用経験は必要ありません。その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。ARM テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、「[ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)」をご覧ください。このチュートリアルで使う ARM テンプレートはパブリック BLOB コンテナー内にあります (**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json*)。
+Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。このセクションでは、[Azure ARM テンプレート](../resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。ARM テンプレートは完全にカスタマイズ可能です。そのため、HDInsight のような Azure リソースの作成が簡単になります。このチュートリアルを利用するにあたり、Azure ARM テンプレートの使用経験は必要ありません。その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。このチュートリアルで使う ARM テンプレートは次のパブリック BLOB コンテナー内にあります。 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。 
+1. 次の画像をクリックして Azure にサインインし、Azure ポータルで ARM テンプレートを開きます。 
 
-	<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-2. [**パラメーター**] ブレードで、次の各項目を入力します。
+2. **[パラメーター]** ブレードで、次の各項目を入力します。
+
+    ![HDInsight Linux get started arm template on portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png)
 
     - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
     - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
     - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。 
     
-    その他のパラメーターは省略可能です。そのまま残すことができます。
+    その他のパラメーターは、このチュートリアルを進めるうえでは省略可能です。そのまま残すことができます。
     
-    各クラスターには Azure Blob Storage アカウントとの依存関係があります。クラスターを削除すると、データはストレージ アカウントに保持されます。クラスターの既定のストレージ アカウント名は、クラスター名に "store" が追加されたものです。これは、テンプレートの variables セクションでハードコードされます。
+    各クラスターには Azure Blob Storage アカウントとの依存関係があります。このアカウントを通常、既定のストレージ アカウントと呼びます。HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。クラスターを削除しても、ストレージ アカウントは削除されません。テンプレートでは、既定のストレージ アカウント名は、クラスター名に "store" が追加されたものとして定義されます。
     
-3. [**OK**] をクリックしてパラメーターを保存します。
-4. [**カスタム デプロイ**] ブレードで [**リソース グループ**] ボックスをクリックし、[**新規**] をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。リソース グループの場所は、クラスターの場所とは異なる場合があります。
-5. [**法律条項**] をクリックし、[**作成**] をクリックします。
-6. [**ダッシュボードにピン留めする**] チェック ボックスがオンになっていることを確認して、[**作成**] をクリックします。"**Submitting deployment for Template deployment**" という新しいタイルが表示されます。クラスターの作成には約 20 分かかります。クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
+3. **[OK]** をクリックしてパラメーターを保存します。
+4. **[カスタム デプロイ]** ブレードで、**新しいリソース グループ名**を入力してリソース グループを新規作成します。リソース グループとは、クラスター、依存するストレージ アカウントなどをグループ化しているコンテナーです。リソース グループの場所は、クラスターの場所とは異なる場合があります。
+5. **[法律条項]** をクリックし、**[作成]** をクリックします。
+6. **[ダッシュボードにピン留めする]** チェック ボックスがオンになっていることを確認して、**[作成]** をクリックします。"**テンプレートのデプロイのデプロイ中**" という新しいタイルが表示されます。クラスターの作成には約 20 分かかります。 
+7.  クラスターが作成されると、タイルのキャプションが、指定したリソース グループ名に変更されます。ポータルに、2 つのブレードが自動的に開き、クラスターとクラスター設定が表示されます。 
 
-チュートリアルを完了したら、必要に応じてクラスターを削除できます。HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。また、HDInsight クラスターは、使用していない場合でも課金されます。クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。クラスターの削除手順については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#delete-clusters)」をご覧ください。
+    ![HDInsight Linux get started cluster settings](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)
 
-**クラスターについて調べるには**
-
-1. **ポータル**で、左上隅にある [[Microsoft Azure](http://portal.azure.com)] をクリックして、ダッシュボードを開きます。 
-2. クラスター名のタイルをダブルクリックして、ブレードでクラスターを開きます。このタイルは、[**ダッシュボードにピン留めする**] がオンになっているので作成されました。
-3. [**要点**] ウィンドウには、一部の基本的な情報が一覧表示されます。[**設定**] をクリックすると、クラスターの詳細なプロパティを確認できます。
+    クラスターと既定のストレージ アカウントの 2 つのリソースが表示されます。
 
 ##Hive クエリの実行
 
-[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なツールです。HDInsight で Hive ジョブを実行する方法は多数存在します。このチュートリアルでは、ポータルから Ambari Hive ビューを使用して Hive ジョブをいくつか実行します。Hive クエリを送信する他の方法については、「[HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」をご覧ください。
+[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なコンポーネントです。HDInsight で Hive ジョブを実行する方法は多数存在します。このチュートリアルでは、ポータルから Ambari Hive ビューを使用して Hive ジョブをいくつか実行します。Hive ジョブを送信する他の方法については、「[HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」を参照してください。
 
 1. **https://&lt;ClusterName>.azurehdinsight.net** に移動します。&lt;ClusterName> は、Ambari を開くために前のセクションで作成したクラスターです。
 2. Hadoop ユーザー名と前のセクションで指定したパスワードを入力します。既定のユーザー名は **admin** です。
-3. 次のスクリーンショットのように \[**Hive View**] (Hive ビュー) を開きます。
+3. 次のスクリーンショットのように **[ハイブ ビュー]**を開きます。
 
     ![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 4. ページの __[Query Editor]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
 		SHOW TABLES;
-5. __[実行]__ をクリックします。クエリ エディターの下に __[Query Process Results]__ セクションが表示され、ジョブに関する情報が表示されます。 
+
+    >[AZURE.NOTE] Hive では、セミコロンが必要です。
+        
+5. __[実行]__ をクリックします。クエリ エディターの下に __[Query Process Results]__ セクションが表示され、ジョブに関する情報が表示されます。
 
     クエリが完了すると、__[Query Process Results]__ セクションに操作の結果が表示されます。**hivesampletable** という名前のテーブルが 1 つ表示されます。このサンプルの Hive テーブルにはすべての HDInsight クラスターが付属します。
 
     ![HDInsight Hive ビュー](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png)
 
-    
-    > [AZURE.TIP] __[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
 6. 手順 4. と手順 5 を繰り返し、次のクエリを実行します。
 
         SELECT * FROM hivesampletable;
 
+    > [AZURE.TIP] __[Query Process Results]__ セクションの左上にある __[Save results]__ ボックスに注意してください。これを使用すると、結果をダウンロードすることも、CSV ファイルとして HDInsight のストレージに保存することもできます。
+
+7. **[履歴]** をクリックして、ジョブの一覧を取得します。
+
 Hive ジョブが完了したら、[結果を Azure SQL データベースまたは SQL Server データベースにエクスポート](hdinsight-use-sqoop-mac-linux.md)できます。[Excel を利用して結果を視覚化](hdinsight-connect-excel-power-query.md)することもできます。HDInsight で Hive を使用する方法の詳細については、「[HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」をご覧ください。
 
-##クラスターを削除する
+##このチュートリアルの仕上げ
 
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+チュートリアルを完了したら、必要に応じてクラスターを削除できます。HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。また、HDInsight クラスターは、使用していない場合でも課金されます。クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
+
+>[AZURE.NOTE] [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) を使用すると、HDInsight クラスターをオンデマンドで作成し、クラスターが自動的に削除されるように TimeToLive 設定を構成できます。
+
+**クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ポータルのダッシュボードで、クラスターの作成時に使用したリソース グループ名が表示されているタイルをクリックします。
+3. クラスターと既定のストレージ アカウントが含まれたリソース グループを削除する場合は、クラスター ブレードで **[削除]** をクリックします。クラスターを削除する場合は、**[リソース]** タイルでクラスター名をクリックしてから、クラスター ブレードで **[削除]** をクリックします。リソース グループを削除すると、ストレージ アカウントも削除されるので、注意してください。ストレージ アカウントを残しておく場合は、クラスターのみを削除してください。
 
 ## 次のステップ
 
@@ -120,7 +130,7 @@ HDInsight クラスターの作成または管理の詳細については、以�
 
 - Linux ベースの HDInsight クラスターを管理する方法については、「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-- HDInsight クラスターの作成時に選択できるオプションの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
+- HDInsight クラスターの作成時に選択できるオプションの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 - Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、「[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)」を参照してください。次のような情報が掲載されています。
 
@@ -151,4 +161,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!------------HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

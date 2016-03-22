@@ -1,65 +1,50 @@
 <properties
-	pageTitle="Azure ポータルで Search エクスプローラーを使用して Azure Search インデックスに対してクエリを実行する | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Search エクスプローラーは、Azure ポータルでコードを使用せずに Azure Search インデックスに対してクエリを実行する方法です。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""/>
+    pageTitle="Azure ポータルを使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="Azure ポータルの Search エクスプローラーで検索クエリを発行します。"
+    services="search"
+    documentationCenter=""
+	authors="ashmaka"
+/>
 
 <tags
-	ms.service="search"
-	ms.devlang="rest-api"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="01/23/2016"
-	ms.author="heidist"/>
-
-# Azure ポータルで Search エクスプローラーを使用して Azure Search インデックスに対してクエリを実行する
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="03/10/2016"
+    ms.author="ashmaka"
+/>
+# Azure ポータルを使用した Azure Search インデックスの照会
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
-- [Search Explorer](search-explorer.md)
-- [Fiddler](search-fiddler.md)
+- [概要](search-query-overview.md)
+- [ポータル](search-explorer.md)
 - [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+- [REST ()](search-query-rest-api.md)
 
-**Search エクスプローラー**は Azure ポータルに組み込まれているクエリ ツールで、コードを使用せずに Azure Search インデックスに対してクエリを実行します。サービス内の任意のインデックスに接続し、検索文字列と式を入力するための検索ボックスを提供します。有効なクエリ構文が、入力に基づいて生成されます。結果がポータル ページに表示されます。
+このガイドでは、Azure ポータルで Azure Search インデックスを照会する方法を説明します。
 
-Search エクスプローラーは、クエリの構文の習得や、不定期のアドホック クエリの実行、コードに記述する前に、クエリ式の再設定に最適です。これを使用するには、Azure Search サービスとインデックスが必要です。これらのタスクのヘルプについては、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」と「[ポータルを使用した Azure Search へのデータのインポート](search-import-data-portal.md)」を参照してください。
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んでいます](search-what-is-data-import.md)。
 
-## Search エクスプローラーを開く
+## I.Azure Search ブレードに移動する
+1. [Azure ポータル](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)の左側のメニューで [すべてのリソース] をクリックします。
+2. Azure Search サービスを選択します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+## II.検索するインデックスを選択する
+1. [インデックス] タイルから、検索するインデックスを選択します。
 
-2. Azure Search サービスのサービス ダッシュボードを開きます。ダッシュボードを見つけるには、次のいくつかの方法があります。
-	- ジャンプバーで、[**ホーム**] をクリックします。ホーム ページには、サブスクリプションのすべてのサービスのタイルが表示されます。タイルをクリックして、サービス ダッシュボードを開きます。
-	- ジャンプバーで **[すべて参照]**、**[フィルター]**、**[Search サービス]** の順にクリックして、一覧で Search サービスを見つけます。
+![](./media/search-explorer/pick-index.png)
 
-3. サービス ダッシュボードの最上部には、**[Search エクスプローラー]** を含むコマンド バーが表示されます。
+## III.[Search エクスプローラー] タイルをクリックする
+![](./media/search-explorer/search-explorer-tile.png)
 
-  	![][1]
+## III.検索を開始する
+1. Azure Search インデックスを検索するには、*[クエリ文字列]* フィールドで文字の入力を開始し、**[検索]** をクリックします。
+ * Search エクスプローラーを使用している場合は、いずれかの[クエリ パラメーター](https://msdn.microsoft.com/library/dn798927.aspx)を指定できます。
 
-4. **[Search エクスプローラー]** をクリックして、Search エクスプローラー ブレードを開きます。
-5. インデックスと API のバージョンを設定します。Search エクスプローラーはインデックス リストの最初のインデックスに自動的に接続しますが、**[インデックスの変更]** をクリックして別のインデックスに切り替えることもできます。**[API バージョンを設定]** では、一般公開されているバージョンまたはプレビュー バージョンを指定できます。クエリ構文の中にはプレビュー バージョンしかないものもあります。
-6. 「[Azure Search の使用](search-get-started-portal.md)」に従ってロードアイランド州の米国地質調査所 (USG) のデータに基づいてインデックスを作成した場合は、この検索用語 (`roger williams +school -building`) を使用して、Search エクスプローラーで返された同じ 3 つの結果を検証できます。
+2. *[結果]* セクションに、クエリの結果が未加工の JSON として表示されます。これは、Azure Search REST API に対する検索要求を発行したときに、HTTP 応答の本文で返されます。
+3. クエリ文字列は適切な要求 URL として自動的に解析され、Azure Search REST API に対して HTTP 要求が送信されます。
 
-検索用語の入力への応答で自動的に生成されるクエリ構文に注目してください。
+![](./media/search-explorer/search-bar.png)
 
-![][2]
-
-## 次のステップ
-
-クエリ構文と例の詳細については、MSDN の[ドキュメントの検索](https://msdn.microsoft.com/library/azure/dn798927.aspx)にあります。
-
-検索サービスまたはインデックスを、コードを追加せずに作成または管理する方法については、次のリンクを参照してください。
-
-- [ポータルでの Azure Search サービスの作成](search-create-service-portal.md)
-- [ポータルを使用した Azure Search へのデータのインポート](search-import-data-portal.md)
-- [Microsoft Azure で Search サービスを管理する](search-manage.md)
-
-<!--Image References-->
-[1]: ./media/search-explorer/AzSearch-SearchExplorer-Btn.png
-[2]: ./media/search-explorer/AzSearch-SearchExplorer-Example.png
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

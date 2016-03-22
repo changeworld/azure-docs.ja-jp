@@ -1,6 +1,6 @@
 <properties
-    pageTitle="REST API を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-    description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法"
+    pageTitle="REST API を使用した Azure Search でのデータのアップロード | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
     services="search"
     documentationCenter=""
     authors="ashmaka"
@@ -14,19 +14,18 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="03/10/2016"
     ms.author="ashmaka"/>
 
-# REST API を使用した Azure Search へのデータのインポート
+# REST API を使用した Azure Search へのデータのアップロード
 > [AZURE.SELECTOR]
 - [概要](search-what-is-data-import.md)
-- [ポータル](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST ()](search-import-data-rest-api.md)
-- [インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-rest-api.md)してあります。
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。
 
 REST API を使用してインデックスにドキュメントをプッシュするには、HTTP POST 要求をインデックスの URL エンドポイントに発行します。HTTP 要求の本文は、追加、変更、または削除するドキュメントを含む JSON オブジェクトです。
 
@@ -53,8 +52,7 @@ REST API を使用する場合は、JSON 要求本文を利用して HTTP POST �
 --- | --- | --- | ---
 `upload` | `upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 | キーのほか、定義するその他すべてのフィールド | 既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null` に設定されます。この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。
 `merge` | 指定されたフィールドで既存のドキュメントを更新します。ドキュメントがインデックスに存在しない場合、マージは失敗します。 | キーのほか、定義するその他すべてのフィールド | マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`Collection(Edm.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` にはなりません。
-`mergeOrUpload` | このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同様の処理になります。ドキュメントが存在しない場合は、`upload` と同様の処理になり、新しいドキュメントが挿入されます。| キーのほか、定義するその他すべてのフィールド | - 
-`delete` | 指定されたドキュメントをインデックスから削除します。| キーのみ | キー フィールド以外の指定したすべてのフィールドが無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に null に設定します。
+`mergeOrUpload` | このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同様の処理になります。ドキュメントが存在しない場合は、`upload` と同様の処理になり、新しいドキュメントが挿入されます。| キーのほか、定義するその他すべてのフィールド | - `delete` | 指定されたドキュメントをインデックスから削除します。| キーのみ | キー フィールド以外の指定したすべてのフィールドが無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に null に設定します。
 
 ## III.HTTP 要求と要求本文の構築
 インデックス アクションに必要なフィールド値を収集したので、実際の HTTP 要求と JSON 要求本文を構築してデータをインポートする準備が整いました。
@@ -164,9 +162,9 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 
 > [AZURE.NOTE] この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。要求をすぐに再試行しても、状況が長引くだけです。
 
-ドキュメント アクションおよび成功/エラー応答の詳細については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP 状態コード (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+ドキュメント アクションおよび成功/エラー応答の詳細については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
 ## 次へ
-Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)」を参照してください。
+Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[Azure Search インデックスの照会](search-query-overview.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->
