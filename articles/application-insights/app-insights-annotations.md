@@ -96,4 +96,4 @@ Application Insights リソースから `applicationId` と `apiKey` を取得�
 
 ![任意のリリース注釈マーカーをクリックします。](./media/app-insights-annotations/60.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0309_2016-->
