@@ -137,7 +137,7 @@ Azure で必要なものを次に示します。
 		- *.backup.windowsazure.com
 		- *.blob.core.windows.net
 		- *.store.core.windows.net
-- 「[Azure Datacenter IP Ranges (Azure Datacenter の IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用予定の Azure リージョンの IP 範囲と米国西部の IP 範囲をホワイトリストに登録する必要があります。
+	- 「[Azure Datacenter IP Ranges (Azure Datacenter の IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用予定の Azure リージョンの IP 範囲と米国西部の IP 範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
