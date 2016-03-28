@@ -37,12 +37,14 @@
 最初に、Java プロジェクトを作成します。
 
 1. Eclipse を起動し、メニューから **[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします(**[File]** と **[New]** のクリック後、使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]** の順にクリックし、**[Web]** を展開して、**[Dynamic Web Project]**、**[Next]** の順にクリックします)。
-1. このチュートリアルでは、プロジェクトに **MyHelloWorld** という名前を付けます画面は次のようになります。![][02]
+1. このチュートリアルでは、プロジェクトに **MyHelloWorld** という名前を付けます画面は次のようになります。
+   ![][02]
 1. **[完了]** をクリックします。
 1. Eclipse の Project Explorer ビューで、**MyHelloWorld** を展開します。**WebContent** を右クリックし、**[New]**、**[JSP File]** の順にクリックします。
 1. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。親フォルダーは **MyHelloWorld/WebContent** のまま維持します。
 1. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
-1. index.jsp ファイルが Eclipse で開いたら、"**Hello World!**" を動的に表示するためのテキストを既存の `<body>` 要素に追加します。更新された `<body>` コンテンツは、`<body><b><% out.println("Hello World!"); %></b></body>` のようになります。 
+1. index.jsp ファイルが Eclipse で開いたら、"**Hello World!**" を動的に表示するためのテキストを既存の `<body>` 要素に追加します。更新された `<body>` コンテンツは、
+   `<body><b><% out.println("Hello World!"); %></b></body>` のようになります。 
 1. index.jsp を保存します。
 
 ## アプリケーションを Azure Web アプリコンテナーにデプロイするには
@@ -51,10 +53,15 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
 1. Eclipse の Project Explorer で **[MyHelloWorld]** を右クリックします。
 
-1. コンテキスト メニューの **[Azure]**、**[Publish as Azure Web App...]** の順に選択します。![][03]
-1. まだ Eclipse から Azure にサインインしていない場合、Azure アカウントにサインインするように求められます。![][04]注: 複数の Azure アカウントがある場合、サインイン プロセス中に同じようなプロンプトが複数回表示されることがあります。このような状況の場合、次のサインイン手順を続行します。
-1. Azure アカウントに正常にサインインすると、**[Manage Subscriptions]** ダイアログ ボックスに、資格情報に関連付けられたサブスクリプションの一覧が表示されます。複数のサブスクリプションが表示され、その一部のみを使用する場合、使用するサブスクリプションをオフにすることができます。サブスクリプションを選択したら、**[Close]** をクリックします。![][05]
-1. **[Deploy to Azure Web アプリContainer]** ダイアログ ボックスを開くと、以前に作成した Web アプリコンテナーがすべて表示されます。コンテナーを作成していない場合、一覧は空です。![][06]
+1. コンテキスト メニューの **[Azure]**、**[Publish as Azure Web App...]** の順に選択します。
+   ![][03]
+1. まだ Eclipse から Azure にサインインしていない場合、Azure アカウントにサインインするように求められます。
+   ![][04]
+   注: 複数の Azure アカウントがある場合、サインイン プロセス中に同じようなプロンプトが複数回表示されることがあります。このような状況の場合、次のサインイン手順を続行します。
+1. Azure アカウントに正常にサインインすると、**[Manage Subscriptions]** ダイアログ ボックスに、資格情報に関連付けられたサブスクリプションの一覧が表示されます。複数のサブスクリプションが表示され、その一部のみを使用する場合、使用するサブスクリプションをオフにすることができます。サブスクリプションを選択したら、**[Close]** をクリックします。
+   ![][05]
+1. **[Deploy to Azure Web アプリContainer]** ダイアログ ボックスを開くと、以前に作成した Web アプリコンテナーがすべて表示されます。コンテナーを作成していない場合、一覧は空です。   
+   ![][06]
 1. 以前に Azure Web アプリコンテナーを作成していない場合、またはアプリケーションを新しいコンテナーに発行する場合は、次の手順を実行します。作成済みの場合は、既存の Web アプリコンテナーを選択し、以下の手順 7 に進みます。
 
   1. **[New...]** をクリックします。
@@ -73,7 +80,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[Resource Group]** ドロップダウン メニューで、Web アプリに関連付けるリソース グループを選択します。
 
-        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
+        注: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
 
         You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
 
@@ -91,7 +98,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[App Service Plan]** ドロップダウン メニューには、選択したリソース グループに関連付けられた App Service プランが表示されます。
 
-        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
+        注: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
 
         You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
 
@@ -159,7 +166,8 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 1. **[Azure]** ノードを展開します。
 2. **[Web Apps]** ノードを展開します。 
 3. 目的の Web App を右クリックします。
-5. コンテキスト メニューが表示されたら、**[Stop]** をクリックします。![][13]
+5. コンテキスト メニューが表示されたら、**[Stop]** をクリックします。
+    ![][13]
 
 ## 次のステップ
 
@@ -195,3 +203,4 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 [13]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/13-Azure-Explorer-Web-App.png
 
 <!---HONumber=AcomDC_0309_2016-->
+
