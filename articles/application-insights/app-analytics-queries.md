@@ -545,6 +545,11 @@ range timestamp from ago(4h) to now() step 1m
 | パリ | 27163 |
 
 
+## render ディレクティブ
+
+    T | render [ table | timechart  | barchart | piechart ]
+
+render では、テーブルの表示方法をプレゼンテーション層に指示します。パイプの最後の要素である必要があります。特定のプレゼンテーション メソッドでクエリを保存でき、ディスプレイのコントロールの代わりに使用できる便利な方法です。
 
 
 ## sort 演算子 
@@ -587,7 +592,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、\[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 [その他の例についてはこちらを参照してください](app-analytics-aggregations.md)。
 
@@ -644,12 +649,12 @@ Traces
 
 * *NumberOfRows:* 返す *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
-* `asc` または `desc` (既定値) により、レコードが範囲の "下限" からのものであるか、"上限" からのものであるかが制御されるようです。
+* 選択が範囲の "下限" からのものか "上限" からのものかを制御するため、`asc` または `desc` (既定値) が表示される場合があります。
 
 
 **ヒント**
 
-`top 5 by name` は表面的には `sort by name | take 5` に相当します。しかし、こちらの方が高速で、常に並べ替えられた結果を返します。`take` にはこのような保証はありません。
+`top 5 by name` は表面的には `sort by name | take 5` と同等です。しかし、こちらの方が高速で、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
 
 
 ## union 演算子
@@ -735,11 +740,11 @@ exceptions
 
 パフォーマンスを最大限高めるためのヒントを示します。
 
-* 列名と定数の**シンプルな比較を使う** ("定数" とは、テーブルに対する定数です。`now()` と `ago()` は適切で、[`let` ステートメント](app-analytics-syntax.md#let-statements)を使ってアサインされるスカラー値です)。
+* 列名と定数の**シンプルな比較を使う** ("定数" とは、テーブルに対する定数です。`now()` と `ago()` は適切で、[`let` ステートメント](app-analytics-syntax.md#let-statements)を使って割り当てられるスカラー値です)。
 
     たとえば、`where floor(Timestamp, 1d) == ago(1d)` よりも `where Timestamp >= ago(1d)` の方が適切です。
 
-* **最もシンプルなタームを先頭に配置する**: `and` で連結された複数の句がある場合は、関係する列が 1 つしかない句を先頭に配置します。そのため、`Timestamp > ago(1d) and OpId == EventId` の方が、逆の順序にするよりも適切です。
+* **最もシンプルな語句を先頭に配置する**: `and` で連結された複数の句がある場合は、関係する列が 1 つしかない句を先頭に配置します。そのため、`Timestamp > ago(1d) and OpId == EventId` の方が、逆の順序にするよりも適切です。
 
 
 **例**
@@ -761,4 +766,4 @@ Traces
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

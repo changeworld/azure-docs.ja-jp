@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="03/09/2016"
 	ms.author="garye"/>
 
 
@@ -94,4 +94,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

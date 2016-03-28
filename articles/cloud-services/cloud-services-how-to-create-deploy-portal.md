@@ -1,6 +1,6 @@
 <properties
 	pageTitle="クラウド サービスを作成してデプロイする方法 | Microsoft Azure"
-	description="Azure の簡易作成の方法によりクラウド サービスを作成してデプロイする方法について説明します。これらの例では、Azure ポータルを使用します。"
+	description="Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。"
 	services="cloud-services"
 	documentationCenter=""
 	authors="Thraka"
@@ -22,8 +22,8 @@
 # クラウド サービスを作成してデプロイする方法
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
-- [Azure classic portal](cloud-services-how-to-create-deploy.md)
+- [Azure ポータル](cloud-services-how-to-create-deploy-portal.md)
+- [Azure クラシック ポータル](cloud-services-how-to-create-deploy.md)
 
 Azure ポータルには、クラウド サービスを作成してデプロイする方法として、*[簡易作成]* と *[カスタム作成]* の 2 つの方法が用意されています。
 
@@ -34,14 +34,11 @@ Azure ポータルには、クラウド サービスを作成してデプロイ�
 ## 概念
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、3 つのコンポーネントが必要です。
 
-- **サービス定義**  
-  クラウド サービス定義ファイル (.csdef) では、ロールの数などのサービス モデルを定義します。
+- **サービス定義** クラウド サービス定義ファイル (.csdef) では、ロールの数などのサービス モデルを定義します。
 
-- **サービス構成**  
-  クラウド サービス構成ファイル (.cscfg) では、ロール インスタンスの数など、クラウド サービスと個々のロールの構成設定を指定します。
+- **サービス構成** クラウド サービス構成ファイル (.cscfg) では、ロール インスタンスの数など、クラウド サービスと個々のロールの構成設定を指定します。
 
-- **サービス パッケージ**  
-  サービス パッケージ (.cspkg) には、アプリケーション コード、構成、サービス定義ファイルが含まれます。
+- **サービス パッケージ** サービス パッケージ (.cspkg) には、アプリケーション コード、構成、サービス定義ファイルが含まれます。
 
 [ここ](cloud-services-model-and-package.md)では、これらのコンポーネントとパッケージを作成する方法の詳細について説明します。
 
@@ -67,9 +64,9 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 - クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、Azure クラシック ポータルの **[Networks]** 領域にある **[アフィニティ グループ]** ページで作成できます。
 
 
-## 手順 3: クラウド サービスを作成し、デプロイ パッケージをアップロードします。
+## Create and deploy
 
-1. [Azure ポータル][] にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. **[新規] > [コンピューティング]** をクリックし、下にスクロールして [**クラウド サービス**] をクリックします。
 
     ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
@@ -118,4 +115,4 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

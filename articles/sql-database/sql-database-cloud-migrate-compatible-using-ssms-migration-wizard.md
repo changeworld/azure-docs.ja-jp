@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
 # [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用して SQL Server データベースを SQL Database に移行する
@@ -22,7 +22,7 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 
 ## [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用する
 
-> [AZURE.NOTE] 以下の手順は、[SQL Database サーバーのプロビジョニング](sql-database-get-started.md)が完了していることを想定しています。
+> [AZURE.NOTE] 以下の手順は、[SQL Database サーバーのプロビジョニング](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database/)が完了していることを想定しています。
 
 1. 最新バージョンの SQL Server Management Studio があることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
@@ -54,4 +54,4 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 
 必要に応じて、[データベースの互換性の問題](sql-database-cloud-migrate-fix-compatibility-issues.md)を修正します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

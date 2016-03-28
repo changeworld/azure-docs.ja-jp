@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="03/14/2016" 
 	ms.author="juliako"/>
 
 #既存の Blob を Media Services 資産にコピーする
@@ -39,7 +39,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
-1. Visual Studio 2012 または Visual Studio 2010 SP1 を使用して、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成します。 
+1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 
 2. 名前に「CopyExistingBlobsIntoAsset」と入力し、[OK] をクリックします。
 1. Nuget を使用して Media Services 関連の Dll への参照を追加します。Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。コンソール ウィンドウで「Install-Package windowsazure.mediaservices」と入力し、Enter キーを押します。
 1. このプロジェクト (System.Configuration) に必要なその他の参照を追加します。
@@ -82,230 +82,236 @@ blob は、Media Services アカウントに関連付けられた (または関�
 1. 新しい資産を作成します。この資産用に作成される blob コンテナーは \_destinationStorageAccountに配置されます。
 1. Azure Storage SDK を使用して、指定した blob を資産に関連付けられたコンテナーにコピーします。
 
->[AZURE.NOTE]ロケーターの有効期限が切れている場合、コピー操作では例外はスローされません。
+	>[AZURE.NOTE]ロケーターの有効期限が切れている場合、コピー操作では例外はスローされません。
 
-1. .ism ファイルをプライマリ ファイルとして設定します。
+1. この例では Smooth Streaming ファイルをコピーしているので、.ism ファイルをプライマリ ファイルとして設定する方法を示します。たとえば、.mp4 ファイルをコピーした場合は、mp4 ファイルがプライマリ ファイルに設定されます。
 1. 資産に関連付けられている OnDemandOrigin ロケーターの Smooth Streaming URL を作成します。 
-		
+			
 		class Program
-		{
-		    // Read values from the App.config file. 
-		    static string _accountName = ConfigurationManager.AppSettings["MediaServicesAccountName"];
-		    static string _accountKey = ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-		    static string _storageAccountName = ConfigurationManager.AppSettings["MediaServicesStorageAccountName"];
-		    static string _storageAccountKey = ConfigurationManager.AppSettings["MediaServicesStorageAccountKey"];
-		    static string _externalStorageAccountName = ConfigurationManager.AppSettings["ExternalStorageAccountName"];
-		    static string _externalStorageAccountKey = ConfigurationManager.AppSettings["ExternalStorageAccountKey"];
-		
-		    private static MediaServicesCredentials _cachedCredentials = null;
-		    private static CloudMediaContext _context = null;
-		
-		    private static CloudStorageAccount _sourceStorageAccount = null;
-		    private static CloudStorageAccount _destinationStorageAccount = null;
-		
-		    static void Main(string[] args)
-		    {
-		        _cachedCredentials = new MediaServicesCredentials(
-		                        _accountName,
-		                        _accountKey);
-		        // Use the cached credentials to create CloudMediaContext.
-		        _context = new CloudMediaContext(_cachedCredentials);
-		
-		        // In this example the storage account from which we copy blobs is not 
-		        // associated with the Media Services account into which we copy blobs.
-		        // But the same code will work for coping blobs from a storage account that is 
-		        // associated with the Media Services account.
-		        //
-		        // Get a reference to a storage account that is not associated with a Media Services account
-		        // (an external account).  
-		        StorageCredentials externalStorageCredentials =
-		            new StorageCredentials(_externalStorageAccountName, _externalStorageAccountKey);
-		        _sourceStorageAccount = new CloudStorageAccount(externalStorageCredentials, true);
-		
-		        //Get a reference to the storage account that is associated with a Media Services account. 
-		        StorageCredentials mediaServicesStorageCredentials =
-		            new StorageCredentials(_storageAccountName, _storageAccountKey);
-		        _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
-		
-		        // Upload Smooth Streaming files into a storage account.
-		        string localMediaDir = @"C:\supportFiles\streamingfiles";
-		        CloudBlobContainer blobContainer =
-		            UploadContentToStorageAccount(localMediaDir);
-		
-		        // Create a new asset and copy the smooth streaming files into 
-		        // the container that is associated with the asset.
-		        IAsset asset = CreateAssetFromExistingBlobs(blobContainer);
-		
-		        // Get the streaming URL for the smooth streaming files 
-		        // that were copied into the asset.   
-		        string urlForClientStreaming = CreateStreamingLocator(asset);
-		        Console.WriteLine("Smooth Streaming URL: " + urlForClientStreaming);
-		
-		        Console.ReadLine();
-		    }
-		
-		    /// <summary>
-		    /// Uploads content from a local directory into the specified storage account.
-		    /// In this example the storage account is not associated with the Media Services account.
-		    /// </summary>
-		    /// <param name="localPath">The path from which to upload the files.</param>
-		    /// <returns>The container that contains the uploaded files.</returns>
-		    static public CloudBlobContainer UploadContentToStorageAccount(string localPath)
-		    {
-		        CloudBlobClient externalCloudBlobClient = _sourceStorageAccount.CreateCloudBlobClient();
-		        CloudBlobContainer externalMediaBlobContainer = externalCloudBlobClient.GetContainerReference("streamingfiles");
-		
-		        externalMediaBlobContainer.CreateIfNotExists();
-		
-		        // Upload files to the blob container.  
-		        DirectoryInfo uploadDirectory = new DirectoryInfo(localPath);
-		        foreach (var file in uploadDirectory.EnumerateFiles())
-		        {
-		            CloudBlockBlob blob = externalMediaBlobContainer.GetBlockBlobReference(file.Name);
-		
-		            blob.UploadFromFile(file.FullName, FileMode.Open);
-		        }
-		
-		        return externalMediaBlobContainer;
-		    }
-		
-		    /// <summary>
-		    /// Creates a new asset and copies blobs from the specifed storage account.
-		    /// </summary>
-		    /// <param name="mediaBlobContainer">The specified blob container.</param>
-		    /// <returns>The new asset.</returns>
-		    static public IAsset CreateAssetFromExistingBlobs(CloudBlobContainer mediaBlobContainer)
-		    {
-		        // Create a new asset. 
-		        IAsset asset = _context.Assets.Create("CopyBlob_" + Guid.NewGuid(), AssetCreationOptions.None);
-		
-		        IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy", TimeSpan.FromHours(24), AccessPermissions.Write);
-		        ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
-		
-		        CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
-		
-		        // Get the asset container URI and Blob copy from mediaContainer to assetContainer. 
-		        string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
-		
-		        CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
-		
-		        if (assetContainer.CreateIfNotExists())
-		        {
-		            assetContainer.SetPermissions(new BlobContainerPermissions
-		            {
-		                PublicAccess = BlobContainerPublicAccessType.Blob
-		            });
-		        }
-		
-		        var blobList = mediaBlobContainer.ListBlobs();
-		        foreach (var sourceBlob in blobList)
-		        {
-		            var assetFile = asset.AssetFiles.Create((sourceBlob as ICloudBlob).Name);
-		            CopyBlob(sourceBlob as ICloudBlob, assetContainer);
-		            assetFile.ContentFileSize = (sourceBlob as ICloudBlob).Properties.Length;
-		            assetFile.Update();
-		        }
-		
-		        destinationLocator.Delete();
-		        writePolicy.Delete();
-		
-		        // Since we copied a set of Smooth Streaming files, 
-		        // set the .ism file to be the primary file. 
-		        SetISMFileAsPrimary(asset);
-		
-		        return asset;
-		    }
-		
-		    /// <summary>
-		    /// Creates the OnDemandOrigin locator in order to get the streaming URL.
-		    /// </summary>
-		    /// <param name="asset">The asset that contains the smooth streaming files.</param>
-		    /// <returns>The streaming URL.</returns>
-		    static public string CreateStreamingLocator(IAsset asset)
-		    {
-		        var ismAssetFile = asset.AssetFiles.ToList().
-		            Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).First();
-		
-		        // Create a 30-day readonly access policy. 
-            // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
-		        IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
-		            TimeSpan.FromDays(30),
-		            AccessPermissions.Read);
-		
-		        // Create a locator to the streaming content on an origin. 
-		        ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
-		            policy,
-		            DateTime.UtcNow.AddMinutes(-5));
-		
-		        return originLocator.Path + ismAssetFile.Name + "/manifest";
-		    }
-		
-		    /// <summary>
-		    /// Copies the specified blob into the specified container.
-		    /// </summary>
-		    /// <param name="sourceBlob">The source container.</param>
-		    /// <param name="destinationContainer">The destination container.</param>
-		    static private void CopyBlob(ICloudBlob sourceBlob, CloudBlobContainer destinationContainer)
-            {
-                var signature = sourceBlob.GetSharedAccessSignature(new SharedAccessBlobPolicy
-                {
-                    Permissions = SharedAccessBlobPermissions.Read,
-                    SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
-                });
+	        {
+	            // Read values from the App.config file. 
+	            static string _accountName = ConfigurationManager.AppSettings["MediaServicesAccountName"];
+	            static string _accountKey = ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+	            static string _storageAccountName = ConfigurationManager.AppSettings["MediaServicesStorageAccountName"];
+	            static string _storageAccountKey = ConfigurationManager.AppSettings["MediaServicesStorageAccountKey"];
+	            static string _externalStorageAccountName = ConfigurationManager.AppSettings["ExternalStorageAccountName"];
+	            static string _externalStorageAccountKey = ConfigurationManager.AppSettings["ExternalStorageAccountKey"];
+	
+	            private static MediaServicesCredentials _cachedCredentials = null;
+	            private static CloudMediaContext _context = null;
+	
+	            private static CloudStorageAccount _sourceStorageAccount = null;
+	            private static CloudStorageAccount _destinationStorageAccount = null;
+	
+	            static void Main(string[] args)
+	            {
+	                _cachedCredentials = new MediaServicesCredentials(
+	                                _accountName,
+	                                _accountKey);
+	                // Use the cached credentials to create CloudMediaContext.
+	                _context = new CloudMediaContext(_cachedCredentials);
+	
+	                // In this example the storage account from which we copy blobs is not 
+	                // associated with the Media Services account into which we copy blobs.
+	                // But the same code will work for coping blobs from a storage account that is 
+	                // associated with the Media Services account.
+	                //
+	                // Get a reference to a storage account that is not associated with a Media Services account
+	                // (an external account).  
+	                StorageCredentials externalStorageCredentials =
+	                    new StorageCredentials(_externalStorageAccountName, _externalStorageAccountKey);
+	                _sourceStorageAccount = new CloudStorageAccount(externalStorageCredentials, true);
+	
+	                //Get a reference to the storage account that is associated with a Media Services account. 
+	                StorageCredentials mediaServicesStorageCredentials =
+	                    new StorageCredentials(_storageAccountName, _storageAccountKey);
+	                _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
+	
+	                // Upload Smooth Streaming files into a storage account.
+	                string localMediaDir = @"C:\supportFiles\streamingfiles";
+	                CloudBlobContainer blobContainer =
+	                    UploadContentToStorageAccount(localMediaDir);
+	
+	                // Create a new asset and copy the smooth streaming files into 
+	                // the container that is associated with the asset.
+	                IAsset asset = CreateAssetFromExistingBlobs(blobContainer);
+	
+	                // Get the streaming URL for the smooth streaming files 
+	                // that were copied into the asset.   
+	                string urlForClientStreaming = CreateStreamingLocator(asset);
+	                Console.WriteLine("Smooth Streaming URL: " + urlForClientStreaming);
+	
+	                Console.ReadLine();
+	            }
+	
+	            /// <summary>
+	            /// Uploads content from a local directory into the specified storage account.
+	            /// In this example the storage account is not associated with the Media Services account.
+	            /// </summary>
+	            /// <param name="localPath">The path from which to upload the files.</param>
+	            /// <returns>The container that contains the uploaded files.</returns>
+	            static public CloudBlobContainer UploadContentToStorageAccount(string localPath)
+	            {
+	                CloudBlobClient externalCloudBlobClient = _sourceStorageAccount.CreateCloudBlobClient();
+	
+	                CloudBlobContainer externalMediaBlobContainer = externalCloudBlobClient.GetContainerReference("streamingfiles");
+	
+	                externalMediaBlobContainer.CreateIfNotExists();
+	
+	                // Upload files to the blob container.  
+	                DirectoryInfo uploadDirectory = new DirectoryInfo(localPath);
+	                foreach (var file in uploadDirectory.EnumerateFiles())
+	                {
+	                    CloudBlockBlob blob = externalMediaBlobContainer.GetBlockBlobReference(file.Name);
+	
+	                    blob.UploadFromFile(file.FullName, FileMode.Open);
+	                }
+	
+	                return externalMediaBlobContainer;
+	            }
+	
+	            /// <summary>
+	            /// Creates a new asset and copies blobs from the specifed storage account.
+	            /// </summary>
+	            /// <param name="mediaBlobContainer">The specified blob container.</param>
+	            /// <returns>The new asset.</returns>
+	            static public IAsset CreateAssetFromExistingBlobs(CloudBlobContainer mediaBlobContainer)
+	            {
+	                // Create a new asset. 
+	                IAsset asset = _context.Assets.Create("NewAsset_" + Guid.NewGuid(), AssetCreationOptions.None);
+	
+	                IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy",
+	                    TimeSpan.FromHours(24), AccessPermissions.Write);
+	                ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
+	
+	                CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
+	
+	                // Get the asset container URI and Blob copy from mediaContainer to assetContainer. 
+	                string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
+	
+	                CloudBlobContainer assetContainer =
+	                    destBlobStorage.GetContainerReference(destinationContainerName);
+	
+	                if (assetContainer.CreateIfNotExists())
+	                {
+	                    assetContainer.SetPermissions(new BlobContainerPermissions
+	                    {
+	                        PublicAccess = BlobContainerPublicAccessType.Blob
+	                    });
+	                }
+	
+	                var blobList = mediaBlobContainer.ListBlobs();
+	                foreach (var sourceBlob in blobList)
+	                {
+	                    var assetFile = asset.AssetFiles.Create((sourceBlob as ICloudBlob).Name);
+	                    CopyBlob(sourceBlob as ICloudBlob, assetContainer);
+	                    assetFile.ContentFileSize = (sourceBlob as ICloudBlob).Properties.Length;
+	                    assetFile.Update();
+	                }
+	
+	                asset.Update();
+	
+	                destinationLocator.Delete();
+	                writePolicy.Delete();
+	
+	                // Since we copied a set of Smooth Streaming files, 
+	                // set the .ism file to be the primary file. 
+	                // If we, for example, copied an .mp4, then the mp4 would be the primary file. 
+	                SetISMFileAsPrimary(asset);
+	
+	                return asset;
+	            }
+	
+	            /// <summary>
+	            /// Creates the OnDemandOrigin locator in order to get the streaming URL.
+	            /// </summary>
+	            /// <param name="asset">The asset that contains the smooth streaming files.</param>
+	            /// <returns>The streaming URL.</returns>
+	            static public string CreateStreamingLocator(IAsset asset)
+	            {
+	                var ismAssetFile = asset.AssetFiles.ToList().
+	                    Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).First();
+	
+	                // Create a 30-day readonly access policy. 
+	                IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
+	                    TimeSpan.FromDays(30),
+	                    AccessPermissions.Read);
+	
+	                // Create a locator to the streaming content on an origin. 
+	                ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+	                    policy,
+	                    DateTime.UtcNow.AddMinutes(-5));
+	
+	                return originLocator.Path + ismAssetFile.Name + "/manifest";
+	            }
+	
+	            /// <summary>
+	            /// Copies the specified blob into the specified container.
+	            /// </summary>
+	            /// <param name="sourceBlob">The source container.</param>
+	            /// <param name="destinationContainer">The destination container.</param>
+	            static private void CopyBlob(ICloudBlob sourceBlob, CloudBlobContainer destinationContainer)
+	            {
+	                var signature = sourceBlob.GetSharedAccessSignature(new SharedAccessBlobPolicy
+	                {
+	                    Permissions = SharedAccessBlobPermissions.Read,
+	                    SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
+	                });
+	
+	                ICloudBlob destinationBlob = destinationContainer.GetBlockBlobReference(sourceBlob.Name);
+	
+	                if (destinationBlob.Exists())
+	                {
+	                    Console.WriteLine(string.Format("Destination blob '{0}' already exists. Skipping.", destinationBlob.Uri));
+	                }
+	                else
+	                {
+	
+	                    // Display the size of the source blob.
+	                    Console.WriteLine(sourceBlob.Properties.Length);
+	
+	                    Console.WriteLine(string.Format("Copy blob '{0}' to '{1}'", sourceBlob.Uri, destinationBlob.Uri));
+	                    destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + signature));
+	
+	                    while (true)
+	                    {
+	                        // The StartCopyFromBlob is an async operation, 
+	                        // so we want to check if the copy operation is completed before proceeding. 
+	                        // To do that, we call FetchAttributes on the blob and check the CopyStatus. 
+	                        destinationBlob.FetchAttributes();
+	                        if (destinationBlob.CopyState.Status != CopyStatus.Pending)
+	                        {
+	                            break;
+	                        }
+	                        //It's still not completed. So wait for some time.
+	                        System.Threading.Thread.Sleep(1000);
+	                    }
+	
+	
+	                    // Display the size of the destination blob.
+	                    Console.WriteLine(destinationBlob.Properties.Length);
+	
+	                }
+	            }
+	
+	            /// <summary>
+	            /// Sets a file with the .ism extension as a primary file.
+	            /// </summary>
+	            /// <param name="asset">The asset that contains the smooth streaming files.</param>
+	            static private void SetISMFileAsPrimary(IAsset asset)
+	            {
+	
+	                //If you expect the asset to contain the .ism asset file, set the .ism file as the primary file.
+	                var ismAssetFiles = asset.AssetFiles.ToList().
+	                    Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray();
+	
+	                // The following code assigns the first .ism file as the primary file in the asset.
+	                // An asset should have one .ism file.  
+	                ismAssetFiles.First().IsPrimary = true;
+	                ismAssetFiles.First().Update();
+	            }
+	        }
 
-                ICloudBlob destinationBlob = destinationContainer.GetBlockBlobReference(sourceBlob.Name);
-
-                if (destinationBlob.Exists())
-                {
-                    Console.WriteLine(string.Format("Destination blob '{0}' already exists. Skipping.", destinationBlob.Uri));
-                }
-                else
-                {
-                    try
-                    {
-                        Console.WriteLine(string.Format("Copy blob '{0}' to '{1}'", sourceBlob.Uri, destinationBlob.Uri));
-                        destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + signature));
-
-
-                        while (true)
-                        {
-                            // The StartCopyFromBlob is an async operation, 
-                            // so we want to check if the copy operation is completed before proceeding. 
-                            // To do that, we call FetchAttributes on the blob and check the CopyStatus. 
-                            destinationBlob.FetchAttributes();
-                            if (destinationBlob.CopyState.Status != CopyStatus.Pending)
-                            {
-                                break;
-                            }
-                            //It's still not completed. So wait for some time.
-                            System.Threading.Thread.Sleep(1000);
-                        }
-
-                        Console.WriteLine("Final blob copy status = " + destinationBlob.CopyState.Status);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(string.Format("Error copying blob '{0}': {1}", sourceBlob.Name, ex.Message));
-                    }
-                }
-            }
-		
-		    /// <summary>
-		    /// Sets a file with the .ism extension as a primary file.
-		    /// </summary>
-		    /// <param name="asset">The asset that contains the smooth streaming files.</param>
-		    static private void SetISMFileAsPrimary(IAsset asset)
-		    {
-		        var ismAssetFiles = asset.AssetFiles.ToList().
-		            Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray();
-		
-		        if (ismAssetFiles.Count() != 1)
-		            throw new ArgumentException("The asset should have only one, .ism file");
-		
-		        ismAssetFiles.First().IsPrimary = true;
-		        ismAssetFiles.First().Update();
-		    }
-		}
  
 
 ##Media Services のラーニング パス
@@ -316,4 +322,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

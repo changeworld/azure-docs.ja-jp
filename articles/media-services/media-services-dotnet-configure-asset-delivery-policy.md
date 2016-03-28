@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-  ms.date="02/03/2016"
+  	ms.date="03/15/2016"
 	ms.author="juliako"/>
 
 #.NET SDK を使用して資産の配信ポリシーを構成する
@@ -31,7 +31,7 @@ Media Services で暗号化した資産を配信する場合、コンテンツ�
 
 1 つの資産にはさまざまなポリシーを適用できます。たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 
-ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があることにご注意ください。資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの種類を構成する例を次に示します。
+ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの種類を構成する例を次に示します。
 
 資産の配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、次のストリーミング プロトコル (スムーズ ストリーミング、HLS、MPEG DASH、HDS ストリーム) を使用してストリームを行うことができます。
 
@@ -116,14 +116,20 @@ Azure Media Services では、Widevine による暗号化を追加すること�
 
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
+    	// Get the PlayReady license service URL.
         Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-        Uri widevineURl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+        
+        // Build the Widevine license service URL.
+        Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+        UriBuilder uriBuilder = new UriBuilder(widevineUrl);
+        uriBuilder.Query = String.Empty;
+        widevineUrl = uriBuilder.Uri;
 
         Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
             new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
         {
             {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-            {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineURl.ToString()},
+            {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineUrl.ToString()}
 
         };
 
@@ -348,4 +354,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

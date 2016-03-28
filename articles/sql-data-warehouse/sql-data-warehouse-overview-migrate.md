@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのソリューションの移行
@@ -45,11 +45,11 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse へのデータのロード]: sql-data-warehouse-overview-load.md
-[Transact-SQL リファレンス]: sql-data-warehouse-overview-migrate.md
+[Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

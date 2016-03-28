@@ -1,6 +1,6 @@
 #### 新しいサービスを作成するには
 
-1.  Microsoft アカウント資格情報を使用して、この URL ([https://manage.windowsazure.com/](https://manage.windowsazure.com/)) から Azure クラシック ポータルにログオンします。
+1.  Microsoft アカウント資格情報を使用して、この URL ([https://manage.windowsazure.com/](https://manage.windowsazure.com/)) から Azure クラシック ポータルにログオンします。Government ポータルにデバイスをデプロイする場合、[https://manage.windowsazure.us/](https://manage.windowsazure.us/) にログインします。
 
 2.  ポータルで、**[新規]、[Data Services]、[StorSimple Manager]、[簡易作成]** の順にクリックします。
 
@@ -15,6 +15,8 @@
 	 -   Azure 内の既存のワークロードを StorSimple デバイスにもデプロイする場合、そのデータセンターを使用する必要があります。
 
    	 -   StorSimple Manager と Azure Storage は別々の場所に置くことができます。その場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。Azure Storage のアカウントを作成するには、ポータルで Azure Storage サービスに移動し、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」に記載されている手順に従います。このアカウントが作成されたら、それを StorSimple Manager サービスに追加します。それには、「[サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service)」に記載されている手順を実行してください。
+   	 
+   	 -   Government ポータルに仮想デバイスをデプロイする場合、米国アイオワ州と米国バージニア州で StorSimple Manager サービスを使用できます。
    	 
    	 	
 	1.  **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。サブスクリプションは、課金アカウントにリンクされます。このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
@@ -31,4 +33,4 @@
 
 	サービスの状態が **"アクティブ"** に変わります。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

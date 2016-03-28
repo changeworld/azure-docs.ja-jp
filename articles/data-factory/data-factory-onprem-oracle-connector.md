@@ -227,7 +227,7 @@ type | type プロパティを **OnPremisesOracle** に設定する必要があ�
 connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | はい 
 gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です | はい
 
-オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 ## Oracle データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Oracle、Azure BLOB、Azure テーブルなど) で同じです。
@@ -312,4 +312,4 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

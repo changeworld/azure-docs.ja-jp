@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/27/2015"
+   ms.date="01/27/2016"
    ms.author="cawa" />
 
 # Visual Studio Team Services (VSTS) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
@@ -411,4 +411,4 @@ Service Fabric アプリケーションの継続的インテグレーション�
 - [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
 - [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

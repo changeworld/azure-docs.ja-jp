@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/08/2016"
    ms.author="barbkess;sonyama"/>
 
 # 言語要素
@@ -278,13 +278,13 @@
 
 
 ## 次のステップ
-詳細な参照情報については、SQL Data Warehouse リファレンスの概要に関するページを参照してください。
+詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

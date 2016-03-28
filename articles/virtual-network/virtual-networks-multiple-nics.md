@@ -33,6 +33,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 - 単一のクラウド サービス (従来のデプロイ) またはリソース グループ (リソース マネージャー デプロイ) 内では、次の設定のみが許可されています。 
 	- そのクラウド サービス内のすべての VM で複数 NIC を有効にする。 
 	- そのクラウド サービス内のすべての VM それぞれに NIC を 1 つ用意する。 
+	- また、セカンダリ ネットワーク インターフェイスがない仮想マシンは、セカンダリ ネットワーク インターフェイスを持つように更新することはできません。また、その逆の更新もできません。
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
  
@@ -265,4 +266,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 - [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md) をデプロイします。
 - [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md) をデプロイします。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

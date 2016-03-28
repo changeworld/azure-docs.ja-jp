@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
+	ms.date="03/08/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -79,7 +79,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
    	![][22]
 
-> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm の開発とパターンの詳細については、「[HDInsight Storm の概要][]」と、[Apache Storm][] の公式ドキュメントを参照してください。
+> [AZURE.NOTE] このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm の開発とパターンの詳細については、「[HDInsight Storm の概要][]」と、[Apache Storm][] の公式ドキュメントを参照してください。
 
 ## 次のステップ
 
@@ -110,4 +110,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0316_2016-->

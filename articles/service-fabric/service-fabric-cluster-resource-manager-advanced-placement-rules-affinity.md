@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャー - アフィニティ"
+   pageTitle="Service Fabric クラスター リソース マネージャー - アフィニティ | Microsoft Azure"
    description="Service Fabric サービスの追加の配置ポリシーとルールの概要"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/03/2016"
+   ms.date="03/10/2016"
    ms.author="masnider"/>
 
-# アフィニティ
+# Service Fabric でアフィニティを構成し、使用する
 
 アフィニティは、少なくとも一見すると、マイクロサービスの環境ではあまり意味がありません。あまり意味がないのは、それがマイクロサービスの環境であるためです。アフィニティは主に、以前の大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。
 
@@ -48,25 +48,24 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 ![アフィニティのモードとその影響][Image1]
 
-#### ベスト エフォートの望まれる状態
+### ベスト エフォートの望まれる状態
 アフィニティとモノリシックなアーキテクチャにはいくつかの違いがあります。そのほとんどは、アフィニティの関係がベスト エフォートであるという事実に集約されます。それらは根本的に異なるサービスであるため、たとえば個別にエラーが発生する場合があります。容量制限などで、サービスの異なるレプリカが分離することもあります。
 
 
-#### チェーンと星
+### チェーンと星
 現在、アフィニティの関係のチェーンをモデル化することはできません。これは、あるアフィニティの関係で子になっているサービスは、別のアフィニティの関係では親になれないことを意味します。つまり、このような関係をモデル化する場合、最下位の子の親になるのではなく、子の "中央" にいる親になることで、実質的にはチェーンではなく星としてモデル化する必要があることを意味します。
 
 ![アフィニティの関係のコンテキストにおけるチェーンと星][Image2]
 
 アフィニティの関係について注目すべきもう 1 つの点は、方向があるということです。これは些細なことですが、実質的に意味することは、子は親と同じ場所にあるということを強制するのは “アフィニティ” のルールのみであり、親が別のノードにフェール オーバーした (または親の動作のみを強制するその他の限定的アクションの) 場合、リソース マネージャーは子が親と同じ場所にないことが通知されるまで、異常に気付きません。つまり、関係はすぐには適用されません。
 
-#### パーティション分割のサポート
+### パーティション分割のサポート
 アフィニティについて注目すべき最後の点は、親がパーティション分割されている場合、アフィニティの関係がサポートされないということです。これは、最終的にはサポートされる可能性がありますが、今のところ許可されていません。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-- [Learn about configuring Services (サービスの構成について)](service-fabric-cluster-resource-manager-configure-services.md)
+- サービスの公正で利用できるその他のオプションに関する詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

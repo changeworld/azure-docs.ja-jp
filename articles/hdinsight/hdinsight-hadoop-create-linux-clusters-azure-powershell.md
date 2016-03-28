@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/08/2016"
+   	ms.date="03/09/2016"
    	ms.author="nitinme"/>
 
 #Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
@@ -25,16 +25,15 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 > [AZURE.NOTE] Azure PowerShell は、Windows クライアントだけで利用できます。Linux、Unix、または Mac OS X クライアントを使用している場合は、Azure CLI によるクラスターの作成について、「[Azure CLI を使用した Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」を参照してください。
 
-##前提条件
-
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
+## 前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __Azure PowerShell__。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
 
 ##クラスターの作成
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -114,6 +113,10 @@ Linux クラスターをプロビジョニングするために設定する必�
 - 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
 - 「[Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##次のステップ
 
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
@@ -143,4 +146,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

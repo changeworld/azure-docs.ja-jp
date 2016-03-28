@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/10/2016" 
 	ms.author="riande"/>
 
 # 認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ
@@ -445,7 +445,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー *user1@contoso.com* を作成して、*user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
+	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する  ##
 
@@ -501,7 +501,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 		Update-Database
 
-**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー *user1@contoso.com* を作成し、*canEdit* ロールに追加します。
+**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー **user1@contoso.com* を作成し、*canEdit* ロールに追加します。
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する ##
 
@@ -509,8 +509,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. *App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次の内容に置き換えます (2 つのフィルターを追加します)。
 
-		public static void
-		RegisterGlobalFilters(GlobalFilterCollection filters)
+		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 		    filters.Add(new HandleErrorAttribute());
 		    filters.Add(new System.Web.Mvc.AuthorizeAttribute());
@@ -589,9 +588,9 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. このページ上の編集リンクをクリックすると、ログイン ページにリダイレクトされます (新しいローカル ユーザーが *canEdit* ロールに追加されていないため)。
 
-1. ユーザー名 *user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
+1. ユーザー名 **user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
 
-	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、*user1@contoso.com* が追加されていることを確認します。
+	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、**user1@contoso.com* が追加されていることを確認します。
 
 1. データを変更できることを確認します。
 
@@ -615,7 +614,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **[発行]** をクリックします。
 
-1. *user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
+1. **user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
 
 1. ログアウトします。
 
@@ -699,7 +698,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr8.png)
  
-1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、*user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
+1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、**user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s2.png)
  
@@ -707,7 +706,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rs1.png)
  
-3. **UserId** が、*user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
+3. **UserId** が、**user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
 
 ## トラブルシューティング
 
@@ -798,4 +797,4 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -461,8 +461,8 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
 | fileName | Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
-| BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ |
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| BlobSink の format | **TextFormat**、**AvroFormat**、および **JsonFormat** の 3 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。JsonFormat を使用する場合は、「[JsonFormat の指定](#specifying-jsonformat)」セクションを参照してください。 | いいえ
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
 前述のように、時系列データの動的な folderPath と fileName を指定するとき、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用できます。
@@ -506,7 +506,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | nullValue | BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は “\\N” です。<br/><br/>たとえば、上記のサンプルに基づくと、BLOB の “NaN” は SQL Server などにコピーされるときに null 値として変換されます。 | いいえ |
 | encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
 
-#### サンプル
+#### TextFormat の例
 次の例は、TextFormat の format プロパティの一部を示します。
 
 	"typeProperties":
@@ -537,6 +537,7 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
+[AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
 
 ### 圧縮のサポート  
 大量のデータセットを処理すると、I/O およびネットワークにボトルネックが生じる可能性があります。そのため、データを圧縮して保存すると、ネットワークでのデータ転送速度が上昇してディスク領域を節約できるだけでなく、ビッグ データの処理性能を大幅に高めることができます。現時点では、圧縮は Azure BLOB やオンプレミスのファイル システムなど、ファイルベースのデータ ストアでサポートされています。
@@ -607,4 +608,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

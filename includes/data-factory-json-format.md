@@ -1,19 +1,19 @@
-### Specifying JsonFormat
+### JsonFormat の指定
 
-If the format is set to **JsonFormat**, you can specify the following **optional** properties in the **Format** section.
+書式が **JsonFormat** に設定されている場合、次の**任意の**プロパティを **Format** セクションで指定できます。
 
-| Property | Description | Required |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| filePattern | Indicate the pattern of data stored in each JSON file. Allowed values are: **setOfObjects** and **arrayOfObjects**. The **default** value is: **setOfObjects**. See sections below for details about these patterns.| No |
-| encodingName | Specify the encoding name. For the list of valid encoding names, see: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) Property. For example: windows-1250 or shift_jis. The **default** value is: **UTF-8**. | No | 
-| nestingSeparator | Character that is used to separate nesting levels. The **default** value is **. (dot)**. | No | 
+| filePattern | 各 JSON ファイルに格納されたデータのパターンを示します。使用できる値は、**setOfObjects** と **arrayOfObjects** です。**既定**値は **setOfObjects** です。これらのパターンの詳細については、以下のセクションを参照してください。| いいえ |
+| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティを参照してください。例: windows-1250 または shift\_jis。**既定**値は **UTF-8** です。 | いいえ | 
+| nestingSeparator | 入れ子レベルの分割に使用される文字。**既定**値は **. (ドット)** です。 | いいえ | 
 
 
-#### setOfObjects file pattern
+#### setOfObjects ファイル パターン
 
-Each file contains single object, or line-delimited/concatenated multiple objects. When this option is chosen in an output dataset, copy will produce a single JSON file with each object per line (line-delimited).
+各ファイルには、単一のオブジェクト、または改行区切り/連結された複数のオブジェクトが含まれます。出力データセットで、このオプションを選択すると、コピーによって、各オブジェクトが行ごとに配置された (改行区切り) 1 つの JSON ファイルが生成されます。
 
-**single object** 
+**単一オブジェクト**
 
 	{
 		"time": "2015-04-29T07:12:20.9100000Z",
@@ -24,7 +24,7 @@ Each file contains single object, or line-delimited/concatenated multiple object
 		"switch2": "Germany"
 	}
 
-**line-delimited JSON** 
+**改行区切りの JSON**
 
 	{"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
 	{"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
@@ -32,7 +32,7 @@ Each file contains single object, or line-delimited/concatenated multiple object
 	{"time":"2015-04-29T07:13:22.0960000Z","callingimsi":"466922202613463","callingnum1":"789037573","callingnum2":"789044691","switch1":"UK","switch2":"Australia"}
 	{"time":"2015-04-29T07:13:22.0960000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789044691","switch1":"US","switch2":"Australia"}
 
-**concatenated JSON**
+**連結 JSON**
 
 	{
 		"time": "2015-04-29T07:12:20.9100000Z",
@@ -60,9 +60,9 @@ Each file contains single object, or line-delimited/concatenated multiple object
 	}
 
 
-#### arrayOfObjects file pattern. 
+#### arrayOfObjects ファイル パターン 
 
-Each file contains an array of objects. 
+各ファイルにはオブジェクトの配列が含まれます。
 
 	[
 	    {
@@ -123,9 +123,9 @@ Each file contains an array of objects.
 	    }
 	]
 
-### JsonFormat example
+### JsonFormat の例
 
-If you have a JSON file with the following content:  
+次の内容が含まれる JSON ファイルをお持ちで、
 
 	{
 		"Id": 1,
@@ -136,13 +136,13 @@ If you have a JSON file with the following content:
 		"Tags": ["Data Factory”, "Azure"]
 	}
 
-and you want to copy it into a an Azure SQL table in the following format: 
+上記の内容を Azure SQL テーブルに次の形式でコピーする場合:
 
-Id	| Name.First | Name.Middle | Name.Last | Tags
+ID | Name.First | Name.Middle | Name.Last | タグ
 --- | ---------- | ----------- | --------- | ----
 1 | John | null | Doe | ["Data Factory”, "Azure"]
 
-The input dataset with JsonFormat type is defined as follows: (partial definition with only the relevant parts)
+JsonFormat 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。
 
 	"properties": {
 		"structure": [
@@ -165,14 +165,15 @@ The input dataset with JsonFormat type is defined as follows: (partial definitio
 		}
 	}
 
-If the structure is not defined, the Copy Activity flattens the structure by default and copy every thing. 
+構造が定義されていない場合、コピー アクティビティでは既定で構造をフラット化し、すべてのものをコピーします。
 
-#### Supported JSON structure
-Note the following: 
+#### サポートされている JSON 構造
+以下の点に注意してください。
 
-- Each object with a collection of name/value pairs will be mapped to one row of data in a tabular format. Objects can be nested and you can define how to flatten the structure in a dataset with the  nesting separator (.) by default. See the [JsonFormat example](#jsonformat-example) section above for an example.  
-- If the structure is not defined in the Data Factory dataset, the Copy Activity detects the schema from the first object and flatten the whole object. 
-- If the JSON input has an array, the Copy Activity converts the entire array value into a string. You can choose to skip it by using [column mapping or filtering](#column-mapping-with-translator-rules).
-- If there are duplicate name at the same level, the Copy Activity will pick the last one.
-- Property names are case sensitive. Two properties with same name but different casing will be treated as two separate properties. 
+- 名前/値ペアのコレクションを持つ各オブジェクトは、表形式のデータの 1 つの行にマップされます。オブジェクトは入れ子にすることができ、既定では入れ子の区切り記号 (.) を使用してデータセット内の構造をフラット化する方法を定義できます。例については、前の「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。  
+- Data Factory データセット内で構造が定義されていない場合、コピー アクティビティでは最初のオブジェクトからスキーマを検出し、オブジェクト全体をフラット化します。 
+- JSON 入力に配列がある場合、コピー アクティビティでは配列値全体を文字列に変換します。この変換は、[列マッピングまたはフィルター処理](#column-mapping-with-translator-rules)を使用することでスキップすることができます。
+- 同じレベルに重複する名前がある場合、コピー アクティビティでは最後の 1 つを選択します。
+- プロパティ名は大文字と小文字が区別されます。名前は同じでも大文字小文字が異なる 2 つのプロパティは、2 つの個別のプロパティとして扱われます。 
 
+<!---HONumber=AcomDC_0316_2016-->

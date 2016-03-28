@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="03/09/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更
@@ -32,7 +32,7 @@
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
 - アクティブな ExpressRoute 回線が必要です。手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。ExpressRoute 回線をプロビジョニングされ、有効になっている状態にする必要があります。そうすれば、以下で説明されているコマンドレットを実行できます。
 
->[AZURE.IMPORTANT] 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。そのような場合は、ユーザーがピアリングを作成したり、管理したりすることはできません。
+>[AZURE.IMPORTANT] 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IPVPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。ピアリングは任意の順序で構成することができます。ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。
 
@@ -318,4 +318,4 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 -  ワークフローの詳細については、「[ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
 -  回路ピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

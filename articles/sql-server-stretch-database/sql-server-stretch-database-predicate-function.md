@@ -407,6 +407,7 @@ GO
 テーブルに適用されたフィルター述語を確認するには、カタログ ビュー **sys.remote\_data\_archive\_tables** を開き、**filter\_predicate** 列の値を確認します。値が null の場合、テーブル全体がアーカイブの対象になります。詳細については、「[sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」を参照してください。
 
 ## 関連項目
+
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

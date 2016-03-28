@@ -54,10 +54,10 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 	# You can get a list of potential locations with
 	# (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Search'}).Locations
 	$resourceGroupName = "YourResourceGroup" 
-	# If you don't already have this resource group, you can create it with with 
+	# If you don't already have this resource group, you can create it with 
 	# New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-	# Register the arm provider idempotently. This must be done once per subscription
+	# Register the ARM provider idempotently. This must be done once per subscription
 	Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Search" -Force
 
 	# Create a new search service
@@ -81,13 +81,13 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 	# View your resource
 	$resource
 	
-	# Get the primary admin api key
+	# Get the primary admin API key
 	$primaryKey = (Invoke-AzureRmResourceAction `
 		-Action listAdminKeys `
-		-ResourceId ($resource.ResourceId) `
+		-ResourceId $resource.ResourceId `
 		-ApiVersion 2015-08-19).PrimaryKey
 
-	# Regenerate the secondary admin api Key
+	# Regenerate the secondary admin API Key
 	$secondaryKey = (Invoke-AzureRmResourceAction `
 		-ResourceType "Microsoft.Search/searchServices/regenerateAdminKey" `
 		-ResourceGroupName $resourceGroupName `
@@ -136,4 +136,4 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 
 - [Azure Search トラフィックを分析する](search-traffic-analytics.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="02/01/2016"
+	ms.date="03/07/2016"
 	ms.author="spelluru"/>
 
 # チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする
@@ -22,10 +22,11 @@
 - [Data Factory エディターの使用](data-factory-get-started-using-editor.md)
 - [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 - [Visual Studio の使用](data-factory-get-started-using-vs.md)
+- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、Azure Data Factory を作成し、コピー アクティビティを含むパイプラインを作成して、Azure BLOB ストレージから Azure SQL Database にデータをコピーする方法について説明します。
 
-コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 > [AZURE.NOTE] Data Factory サービスの詳細については、記事「[Azure Data Factory サービスの概要][data-factory-introduction]」を参照してください。
 
@@ -102,7 +103,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-get-started-using-vs.md)」というリンクをクリックします。
 
 ## アクティビティ
-Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 
 <!--Link references-->
@@ -115,4 +116,4 @@ Azure Data Factory のコピー アクティビティの詳細については、
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

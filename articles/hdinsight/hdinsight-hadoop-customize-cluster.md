@@ -19,11 +19,9 @@
 
 # Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
-
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に[カスタム スクリプト](hdinsight-hadoop-script-actions.md)を起動できます。
 
-この記事の情報は、Windows ベースの HDInsight クラスターに固有のものです。上でのタブ選択を使用して、Linux ベースのクラスターに固有のこの記事のバージョンに切り替えます。
+この記事の情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、Azure ポータルから実行できます。詳細については、「[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]」を参照してください。
 
@@ -323,4 +321,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

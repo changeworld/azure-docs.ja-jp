@@ -3,8 +3,8 @@
 	description="複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
 	services="azure-resource-manager"
 	documentationCenter=""
-	authors="mmercuri"
-	manager="georgem"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="01/26/2016"
-	ms.author="mmercuri"/>
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートでの状態の共有
 
@@ -389,4 +389,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

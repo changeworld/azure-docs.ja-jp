@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/09/2015"
+   ms.date="03/09/2016"
    ms.author="sethm" />
 
 # Service Bus のキュー、トピック、サブスクリプション
@@ -169,7 +169,8 @@ Service Bus の仲介型メッセージング エンティティの使用の詳�
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 - [Service Bus 仲介型メッセージング .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
 - [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
+- [Event Hubs のドキュメント](https://azure.microsoft.com/documentation/services/event-hubs/)
 - [Event Hubs 開発者ガイド](../event-hubs/event-hubs-programming-guide.md)
 - [仲介型メッセージング: 高度なフィルター](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

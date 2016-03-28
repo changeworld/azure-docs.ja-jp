@@ -17,7 +17,7 @@
 	ms.author="douglasl"/>
 
 
-# Stretch 対応データベースをバックアップし、復元する 
+# Stretch 対応データベースをバックアップし、復元する
 
 Stretch 対応データベースをバックアップし、復元するには、現在使用している方法を引き続き使用できます。SQL Server のバックアップと復元の詳細については、「[SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)」を参照してください。
 
@@ -59,7 +59,12 @@ Stretch Database が有効になっているデータベースのバックアッ
 ![バックアップ後の Stretch Database][StretchBackupImage4]
 
 ## 関連項目
-[Stretch Database の管理とトラブルシューティング](sql-server-stretch-database-manage.md) [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
+
+[Stretch Database を管理し、問題を解決します。](sql-server-stretch-database-manage.md)
+
+[sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx)
+
+[SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
 <!--Image references-->
 [StretchBackupImage1]: ./media/sql-server-stretch-database-backup/StretchDBBackup1.png
@@ -67,4 +72,4 @@ Stretch Database が有効になっているデータベースのバックアッ
 [StretchBackupImage3]: ./media/sql-server-stretch-database-backup/StretchDBBackup3.png
 [StretchBackupImage4]: ./media/sql-server-stretch-database-backup/StretchDBBackup4.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

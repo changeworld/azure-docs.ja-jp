@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/04/2015"
+   ms.date="03/14/2016"
    ms.author="heeldin;motanv"/>
 
 # Testability アクション
@@ -211,10 +211,11 @@ ReplicaSelector は、Testability 内に公開されるヘルパーであり、T
 
 このヘルパーを使用するには、ReplicaSelector オブジェクトを作成し、レプリカとパーティションを選択する方法を設定します。その後、必要とする API に渡すことができます。オプションが選択されていない場合は、ランダム レプリカとランダム パーティションが既定によって選択されます。
 
-Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829"); PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid); long replicaId = 130559876481875498;
-
-
 ```csharp
+Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
+PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid);
+long replicaId = 130559876481875498;
+
 // Select a random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
 
@@ -235,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

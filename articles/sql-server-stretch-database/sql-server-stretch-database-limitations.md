@@ -81,7 +81,9 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 
 -   Stretch が有効なテーブルで更新操作または削除操作を実行することはできません。
 
--   リモートの Azure SQL Database テーブルに挿入することはできません。
+-   リンクされているサーバー上の Stretch が有効なテーブルにリモートで挿入することはできません。
+
+-   Stretch が有効なテーブルを使用してレプリケーションを使用することはできません。
 
 -   Stretch が有効なテーブルを含むビューのインデックスを作成することはできません。
 
@@ -90,6 +92,11 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 -   インデックスのフィルターは、リモート テーブルには反映されません。
 
 ## 関連項目
-[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md) [Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md) [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
+
+[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
+
+[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
+
+<!---HONumber=AcomDC_0316_2016-->

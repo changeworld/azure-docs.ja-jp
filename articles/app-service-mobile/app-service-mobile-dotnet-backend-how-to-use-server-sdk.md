@@ -5,7 +5,7 @@
 	services="app-service\mobile"
 	documentationCenter=""
 	authors="ggailey777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="03/06/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
@@ -160,7 +160,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## 方法: テーブル コントローラーを定義する
+##<a name="define-table-controller"></a> 方法: テーブル コントローラーを定義する
 
 テーブル コントローラーは、テーブル ベースのデータ ストア (SQL Database や Azure Table Storage など) にあるエンティティ データへのアクセスを提供します。テーブル コントローラーは、次のように **TableController** ジェネリック クラスから継承します。このクラスでは、ジェネリック型はテーブル スキーマを表すモデルのエンティティです。
 
@@ -217,6 +217,7 @@ Mobile Apps は、アプリの認証を有効化する処理を簡単にする�
 + [方法: サーバー プロジェクトに認証を追加する](#add-auth)
 + [方法: アプリケーションにカスタム認証を使用する](#custom-auth)
 + [方法: 認証されたユーザー情報を取得する](#user-info)
++ [方法: 承認されたユーザーに対するデータ アクセスを制限する](#authorize)
 
 ### <a name="add-auth"></a>方法: サーバー プロジェクトに認証を追加する
 
@@ -324,6 +325,9 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 **GetAppServiceIdentityAsync** 拡張メソッドを動作させるには、`System.Security.Principal` の using ステートメントを追加する必要があります。
 
+###<a name="authorize"></a>方法: 承認されたユーザーに対するデータ アクセスを制限する
+
+多くの場合、特定の認証されたユーザーに返されるデータを制限する必要があります。このようなデータ パーティション分割は、テーブルに userId 列を追加し、データの挿入時にユーザーの SID を格納して行います。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -385,7 +389,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 
 ##<a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
 
-認証されたユーザーがプッシュ通知を登録すると、ユーザー ID タグが登録に自動的に追加されます。このタグを使用すると、特定のユーザーが登録したすべてのデバイスにプッシュ通知を送信できます。次のコードでは、要求を行ったユーザーの SID を取得し、そのユーザーのすべてのデバイス登録にテンプレートのプッシュ通知を送信します。
+認証されたユーザーがプッシュ通知を登録すると、ユーザー ID タグが登録に自動的に追加されます。このタグを使用すると、特定のユーザーが登録したすべてのデバイスにプッシュ通知を送信できます。次のコードでは、要求を行ったユーザーの SID を取得し、そのユーザーのすべてのデバイス登録にテンプレート プッシュ通知を送信します。
 
     // Get the current user SID and create a tag for the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
@@ -397,7 +401,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
-    
+
 認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Push to users (ユーザーへのプッシュ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users)」を参照してください。
 
 ## 方法: .NET サーバー SDK のデバッグとトラブルシューティングを実行する
@@ -457,4 +461,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

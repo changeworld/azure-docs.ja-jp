@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="03/09/2016" 
 	ms.author="sethm"/>
 
 
@@ -101,4 +101,4 @@ Service Bus での AMQP のサポートの詳細については、次のリン�
 
  
 
-<!---HONumber=Nov15_HO3-->
+<!---HONumber=AcomDC_0316_2016-->

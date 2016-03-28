@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス"
+	pageTitle="Azure Resource Manager テンプレートのベスト プラクティス | Microsoft Azure"
 	description="Azure リソース マネージャー テンプレートの設計パターンについて説明します。"
 	services="azure-resource-manager"
 	documentationCenter=""
-	authors="mmercuri"
-	manager="georgem"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="12/17/2015"
-	ms.author="mmercuri"/>
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス
 
@@ -383,4 +383,4 @@ T シャツ サイズ テンプレートは、指定されたサイズ (*large*)
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

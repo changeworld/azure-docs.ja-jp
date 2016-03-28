@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="02/26/2016"
+   ms.date="03/15/2016"
    ms.author="coreyp"/>
 
 # Azure Automation DSC による管理のためのマシンのオンボード
@@ -103,7 +103,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
      -VM $vm `
      -Publisher Microsoft.Powershell `
      -ExtensionName DSC `
-     -Version 2.14 `
+     -Version 2.15 `
      -PublicConfiguration $PublicConfiguration `
      -PrivateConfiguration $PrivateConfiguration `
      -ForceUpdate
@@ -374,4 +374,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

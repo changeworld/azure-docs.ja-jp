@@ -128,8 +128,9 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 -   [Stretch 対応データベースをバックアップし、復元します](sql-server-stretch-database-backup.md)。
 
 ## 関連項目
+
 [Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,19 +13,18 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="dotnet"
-	ms.date="02/07/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
-
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> [AZURE.SELECTOR]
+- [.NET バックエンド](mobile-services-dotnet-backend-service-side-authorization.md)
+- [JavaScript バックエンド](mobile-services-javascript-backend-service-side-authorization.md)
 
 &nbsp;
 
-
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
-- [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックと同等の Mobile Apps バージョンについては、「Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作」の「[方法: 承認されたユーザーに対するデータ アクセスを制限する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#authorize)」を参照してください。
 
 このトピックでは、サーバー側ロジックを使用してユーザーを承認する方法を説明します。このチュートリアルでは、テーブル コントローラーを変更して、ユーザー ID に基づいてクエリをフィルター処理し、ユーザーが自分のデータのみにアクセスできるようにします。ユーザー ID によるユーザーのクエリ結果のフィルター処理は、承認の最も基本的な形式です。またシナリオによっては、特定のユーザーのアクセスを許可するエンドポイントなど、より詳細なユーザーの承認情報を確認するために、ユーザーまたはロールのテーブルを作成することもできます。
 
@@ -84,4 +83,4 @@
 <!-- URLs. -->
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

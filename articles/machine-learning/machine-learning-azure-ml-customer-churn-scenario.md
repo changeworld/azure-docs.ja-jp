@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016" 
+	ms.date="03/11/2016" 
 	ms.author="jeannt"/>
 
 # Azure Machine Learning を使用した顧客離れの分析
@@ -174,9 +174,9 @@ Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクト
 
 表 1.各アルゴリズムの一般的なパフォーマンス (正確度)
 
-**LR**|	**BT**|	**AP**|	**SVM**|
---|--|--|--|
-平均的なモデル|	最高のモデル|	平均未満|	平均的なモデル
+| LR|BT|AP|SVM|
+|---|---|---|---|
+|平均的なモデル|最高のモデル|平均未満|平均的なモデル|
 
 Machine Learning Studio でホストされたモデルは、実行速度の点で SAS を 15 ～ 25% 上回っていたものの、正確度にほとんど違いはありませんでした。
 
@@ -190,7 +190,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 	-	**競合に関するデータとビジネス データ**。顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。
 -	重要度を特徴選択に利用します。これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。  
 
-この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "決定論的" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
+この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ*決定論的*なアプローチにより、離反のリスクがあるお客様を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
 
 この重要な考えは実務では見逃されがちで、一般には BI 指向の分析アプローチが好まれています。その方が販売しやすく、単純な自動化が可能であるというのが、その主な理由です。
 
@@ -217,11 +217,11 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 [2] Wikipedia の記事: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-\[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
+[3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
 
-\[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] 「Big Data Marketing : Engage Your Customers More Effectively and Drive Value (ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する) (英語、書籍)」 (http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-\[5] Cortana Analytics ギャラリーの [Telco 顧客離反モデル テンプレート](http://gallery.cortanaanalytics.com/Experiment/Telco-Customer-Churn-5)
+[5] Cortana Analytics ギャラリーの Telco 顧客離反モデル テンプレート(http://gallery.cortanaanalytics.com/Experiment/Telco-Customer-Churn-5)
 ##付録
 
 ![][10]
@@ -240,4 +240,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!-------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

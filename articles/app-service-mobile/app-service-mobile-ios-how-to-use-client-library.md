@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
@@ -640,4 +640,4 @@ POD:
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -24,9 +24,9 @@
 
 
 
-## `summarize` 演算子
+## summarize 演算子
 
-入力テーブルの内容を集計するテーブルを生成します。
+入力テーブルの内容を集計したテーブルを生成します。
 
     purchases
     | summarize avg(Price) 
@@ -42,15 +42,15 @@
 ### 構文
 
     T | summarize
-         [  [Column =] Aggregation [`,` ...]]
+         [  [ Column = ] Aggregation [ , ... ]]
          [ by
-            [Column =] GroupExpression [`,` ...]]
+            [ Column = ] GroupExpression [ , ... ]]
 
 **引数**
 
 * *Column:* 結果列の省略可能な名前。既定値は式から派生した名前です。
 * *Aggregation:* 引数として列名を持つ、`count()` や `avg()` などの集計関数を呼び出します。以下の集計関数のリストを参照してください。
-* *GroupExpression:* 列に対する式です。一意の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列を持つ `bin()` のいずれかになります。 
+* *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列を持つ `bin()` になります。 
 
 `bin()` を使用せずに数値式または時間式を指定した場合、AI Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
 
@@ -82,10 +82,11 @@
 
     requests
     | summarize count() 
-      by duration_range=bin(duration, 1)
+      by bin(duration, 1000)/1000
 
 ![result](./media/app-analytics-aggregations/04.png)
 
+(要求期間フィールドにはミリ秒単位の数が示されます。)
  
 ## ヒント
 
@@ -171,7 +172,7 @@ requests
 | sort by max_pop_tod asc
 ```
 
-## 集計関数
+## 集計
 
 ## 任意 
 
@@ -191,6 +192,7 @@ traces
 | top 10 by count_level desc 
 ```
 
+<a name="argmin"></a> <a name="argmax"></a>
 ## argmin、argmax
 
     argmin(ExprToMinimize, * | ExprToReturn  [ , ... ] )
@@ -320,7 +322,7 @@ traces
 
     count([ Predicate ])
 
-*述語*が `true` と評価された行の数を返します。*述語*が指定されていない場合は、グループ内のレコードの合計数を返します。
+*Predicate* が `true` と評価された行の数を返します。*Predicate* が指定されていない場合は、グループ内のレコードの合計数を返します。
 
 **パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用します。
    
@@ -329,12 +331,12 @@ traces
 
     dcount( Expression [ ,  Accuracy ])
 
-グループ内にある*式*の一意の値の概数を返します。(一意の値のリストを表示するには、[`makeset`](#makeset) を使用します。)
+グループ内にある*式*の個別の値の概数を返します。(個別の値のリストを表示するには、[`makeset`](#makeset) を使用します。)
 
 *精度*を指定した場合は、速度と精度のバランスが制御されます。
 
  * `0` = 精度は最も低くなりますが、計算速度は最高になります。
- * `1` = 既定値です。精度と計算時間のバランスを取ります。エラー率は約 0.8% です。
+ * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
  * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
 
 **例**
@@ -357,7 +359,7 @@ traces
 
     makeset(Expression [ , MaxSetSize ] )
 
-グループ内にある*式*で使用される一意の値セットの `dynamic` (JSON) 配列を返します。(ヒント: 単に一意の値をカウントする場合は、[`dcount`](#dcount) を使用します。)
+グループ内にある*式*で使用される個別の値セットの `dynamic` (JSON) 配列を返します。(ヒント: 単に個別の値をカウントする場合は、[`dcount`](#dcount) を使用します。)
   
 *  *MaxSetSize* は、返される要素の最大数に対する省略可能な整数制限です (既定値は *128*)。
 
@@ -382,8 +384,10 @@ traces
 
 *式*の最小値を計算します。
 
-**ヒント**: これで最小値のみまたは最大値のみ (最高価格や最低価格など) がわかります。ただし、行に他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
+**ヒント**: これで最大値または最小値 (最高価格または最低価格など) をそれぞれ単独で計算できます。ただし、行に他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
 
+
+<a name="percentile"></a> <a name="percentiles"></a>
 ## percentile、percentiles
 
     percentile(Expression, Percentile)
@@ -392,7 +396,7 @@ traces
     
     percentiles(Expression, Percentile1 [ , Percentile2 ] )
 
-`percentile()` に似ていますが、パーセンタイル値の数を計算します (各パーセンタイルを個別に計算するより高速)。
+`percentile()` に似ていますが、複数のパーセンタイル値を計算します (各パーセンタイルを個別に計算するより高速)。
 
 **例**
 
@@ -429,7 +433,7 @@ traces
 
 #### パーセンタイル単位の推定エラー
 
-パーセンタイル集計では、[T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf) を使用して概算値を算出できます。
+パーセンタイル集計では、[t-digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf) を使用して近似値を取得します。
 
 重要なポイントをいくつか以下に示します。
 
@@ -440,23 +444,23 @@ traces
 
      stdev(Expr)
 
-グループ全体の*式*の標準偏差を返します。
+グループに対する*式*の標準偏差を返します。
 
 ## variance
 
     variance(Expr)
 
-グループ全体の*式*の分散を返します。
+グループに対する*式*の分散を返します。
 
 ## sum
 
     sum(Expr)
 
-グループ全体の*式*の合計を返します。
+グループに対する*式*の合計を返します。
 
 
 
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

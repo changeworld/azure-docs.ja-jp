@@ -1,18 +1,18 @@
-<properties 
- pageTitle="Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法" 
- description="" 
- services="scheduler" 
- documentationCenter=".NET" 
- authors="krisragh" 
- manager="dwrede" 
+<properties
+ pageTitle="Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法"
+ description=""
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
-<tags 
- ms.service="scheduler" 
- ms.workload="infrastructure-services" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="12/04/2015" 
+<tags
+ ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
 
 # Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法  
@@ -39,7 +39,7 @@ Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジ�
 
 -	特定の日時に 1 回実行する
 -	明示した回数だけ実行を繰り返す
--	すぐに実行し繰り返す 
+-	すぐに実行し繰り返す
 -	特定の時刻に開始し、*n* 分、時間、日、週、または月ごとに実行を繰り返す。
 -	毎週または毎月の頻度で、特定の日、特定の曜日、または月の特定の日にのみ実行を繰り返す
 -	ある期間内で複数回実行を繰り返す。たとえば、毎月の最終金曜日と月曜日、毎日の午前 5 時 15 分と午後 5 時 15 分など
@@ -71,7 +71,7 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、[ISO 8601 仕�
 	    },
 	    …
 	}
-	
+
 ## 概要: ジョブのスキーマの基礎
 
 次の表に、ジョブの繰り返しとスケジュール設定に関連する主要な要素の概要を示します。
@@ -177,10 +177,10 @@ _schedule_ の要素を次の表に示します。
 |<code>{"minutes":[15,45],"hours":[5,17],"monthlyOccurrences":[{"day":"wednesday","occurrence":3}]}</code>|毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
 
 ## 関連項目
- 
+
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -196,7 +196,5 @@ _schedule_ の要素を次の表に示します。
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
- 
-  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

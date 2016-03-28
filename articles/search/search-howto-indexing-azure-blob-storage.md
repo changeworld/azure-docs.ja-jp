@@ -208,19 +208,19 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 <a name="IndexerParametersConfigurationControl"></a>
 ## インデクサーのパラメーターを使用してドキュメントの抽出を制御する
 
-すべての BLOB のコンテンツ抽出をスキップするには、インデクサー構成オブジェクトを使用します。各 BLOB に個別にカスタム メタデータを追加する必要はありません。この処理を行うには、`parameters` オブジェクトで `SkipContent` 構成プロパティを `true` に設定します。
+メタデータを抽出する必要があるが、すべての BLOB に対してコンテンツ抽出を省略する場合、`AzureSearch_SkipContent` メタデータを各 BLOB に個々に追加する代わりに、インデクサー構成を利用してこの動作を要求できます。この処理を行うには、`parameters` オブジェクトで `skipContent` 構成プロパティを `true` に設定します。
 
- 	PUT https://[service name].search.windows.net/indexers/<your indexer name>?api-version=2015-02-28-Preview
+ 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
 	api-key: [admin key]
 
 	{
 	  ... other parts of indexer definition
-	  "parameters" : { "configuration" : { "SkipContent" : true } }
+	  "parameters" : { "configuration" : { "skipContent" : true } }
 	}
 
 ## Azure Search の品質向上にご協力ください
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

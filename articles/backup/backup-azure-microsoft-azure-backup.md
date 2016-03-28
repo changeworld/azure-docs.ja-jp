@@ -3,8 +3,8 @@
   description="Azure Backup Server を使用して、ワークロードをバックアップする環境を適切に準備します"
   services="backup"
   documentationCenter=""
-  authors="Jim-Parker"
-  manager="jwhit"
+  authors="pvrk"
+  manager="shivamg"
   editor=""
   keywords="Azure Backup Server, バックアップ コンテナー"/>
 
@@ -15,7 +15,7 @@
   ms.devlang="na"
   ms.topic="article"
   ms.date="02/04/2016"
-  ms.author="jimpark; trinadhk;"/>
+  ms.author="jimpark;trinadhk;pullabhk"/>
 
 # Azure Backup Server を使用してワークロードをバックアップするための準備
 
@@ -212,4 +212,4 @@ Microsoft TechNet サイトの「[System Center 2012 R2 Data Protection Manager 
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

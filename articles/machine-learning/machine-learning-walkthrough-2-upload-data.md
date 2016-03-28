@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016" 
+	ms.date="03/09/2016" 
 	ms.author="garye"/>
 
 
@@ -31,7 +31,7 @@
 
 ----------
 
-信用リスクの予測モデルを作成するには、トレーニングとその後のモデルのテストに使用できるデータが必要です。このチュートリアルでは、UCI Machine Learning Repository の "UCI Statlog データ セット (ドイツの信用貸付データセット)" を使用します。詳細についてはこちらをご覧ください。<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+信用リスクの予測モデルを作成するには、トレーニングとその後のモデルのテストに使用できるデータが必要です。このチュートリアルでは、UCI Machine Learning Repository の "UCI Statlog (German Credit Data) Data Set" (UCI Statlog (ドイツの信用貸付データ) データ セット) を使用します。詳細についてはこちらをご覧ください。<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 **german.data** という名前のファイルを使用します。このファイルをローカル ハード ドライブにダウンロードします。
 
@@ -84,4 +84,4 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

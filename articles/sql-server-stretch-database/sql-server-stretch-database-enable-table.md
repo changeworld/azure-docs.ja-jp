@@ -72,6 +72,7 @@ ALTER TABLE <table name>
 ```
 
 ## 関連項目
+
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

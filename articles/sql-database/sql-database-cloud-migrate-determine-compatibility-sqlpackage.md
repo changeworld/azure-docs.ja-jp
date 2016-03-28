@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
 # SqlPackage.exe を使用して SQL Database の互換性を判定する
@@ -51,4 +51,4 @@
 
 必要に応じて、[データベースの互換性の問題](sql-database-cloud-migrate-fix-compatibility-issues.md)を修正します。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -212,7 +212,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | authenticationType | Windows、または匿名。 | あり |
 | gatewayName | Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 | あり |   
 
-オンプレミスの HDFS の資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの HDFS の資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 ### 匿名認証を使用する
 
@@ -265,7 +265,7 @@ fileName | テーブルでフォルダー内の特定のファイルを参照す
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: * (複数の文字) および ? (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2014-1-?.txt"<br/><br/>**注**: fileFilter は入力の FileShare データセットに適用できます | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
-| BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ
+| BlobSink の format | **TextFormat**、**AvroFormat**、および **JsonFormat** の 3 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。JsonFormat を使用する場合は、「[JsonFormat の指定](#specifying-jsonformat)」セクションを参照してください。 | いいえ 
 
 
 > [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
@@ -314,7 +314,7 @@ fileFilter | すべてのファイルではなく、folderPath 内のファイ�
 | nullValue | BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は “\\N” です。<br/><br/>たとえば、上記のサンプルに基づくと、BLOB の “NaN” は SQL Server などにコピーされるときに null 値として変換されます。 | いいえ |
 | encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
 
-#### サンプル
+#### TextFormat の例
 次の例は、TextFormat の format プロパティの一部を示します。
 
 	"typeProperties":
@@ -345,11 +345,13 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
+[AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
+
 [AZURE.INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
 
 ## HDFS のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
@@ -365,4 +367,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

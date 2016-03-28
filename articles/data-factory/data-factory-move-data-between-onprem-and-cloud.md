@@ -42,7 +42,7 @@ Data Gateway には次の機能が備わっています。
 ## Data Management Gateway のインストール
 
 ### ゲートウェイのインストール - 前提条件
-1.	サポートされている**オペレーティング システム**のバージョンは、Windows 7、Windows 8/8.1、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 です。
+1.	サポートされている**オペレーティング システム**のバージョンは、Windows 7、Windows 8/8.1、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 です。ドメイン コントローラーへの Data Management Gateway のインストールは現在サポートされていません。
 2.	ゲートウェイ コンピューターの推奨される最小限の**構成**は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
 3.	ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答できません。そのため、ゲートウェイをインストールする前に、コンピューターの適切な**電源プラン**を構成します。コンピューターが休止状態に構成されている場合、ゲートウェイのインストール時にメッセージが表示されます。
 
@@ -104,12 +104,7 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay|
-| *.core.windows.net | 443 | HTTPS |
-| *.clouddatahub.net | 443 | HTTPS |
-| graph.windows.net | 443 | HTTPS |
-| login.windows.net | 443 | HTTPS |
+| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
@@ -120,7 +115,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 
 	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-ゲートウェイ コンピューター上でポート 8050 を開かず、オンプレミスでリンクされたサービスをセットアップする場合は、**[資格情報の設定]** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、「[資格情報とセキュリティの設定](#setting-credentials-and-security)」セクションを参照してください。
+ゲートウェイ コンピューター上でポート 8050 を開かず、オンプレミスでリンクされたサービスをセットアップする場合は、**[資格情報の設定]** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、「[資格情報とセキュリティの設定](#set-credentials-and-securityy)」セクションを参照してください。
 
 **ソース データ ストアからシンク データ ストアにデータをコピーするには:**
 
@@ -221,7 +216,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	>  
 	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツールバーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
-	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
@@ -255,7 +250,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	
 
 ### 手順 3: リンクされたサービスを作成する 
-この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**StorageLinkedService** リンク サービスは Azure BLOB ストアをデータ ファクトリにリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、**AzureStorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアをデータ ファクトリにリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
 #### オンプレミスの SQL Server Database にリンクされたサービスを追加する
 1.	**Data Factory エディター**のツール バーにある **[新しいデータ ストア]** クリックし、**[SQL Server]** を選択します。 
@@ -286,7 +281,9 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
 	           		"gatewayName": "<Name of the gateway that the Data Factory service should use to connect to the on-premises SQL Server database>"
     		    }
-	   
+	
+		資格情報は、Data Factory サービスで所有する証明書によって**暗号化**されます。Data Management Gateway に関連付けられている証明書を使用する場合は、「[Set credentials securely (資格情報を安全に設定する)](#set-credentials-and-security)」を参照してください。
+    
 2.	コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。
 
 #### Azure ストレージ アカウント用のリンクされたサービスを追加する
@@ -294,7 +291,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure ストレージ]** をクリックします。
 2. Azure ストレージ アカウントの名前を **[アカウント名]** に入力します。
 3. Azure ストレージ アカウントのキーを **[アカウント キー]** に入力します。
-4. **[デプロイ]** をクリックして **StorageLinkedService** をデプロイします。
+4. **[デプロイ]** をクリックして **AzureStorageLinkedService** をデプロイします。
    
  
 ### 手順 4: 入力データセットと出力データセットを作成する
@@ -375,7 +372,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 		  "name": "OutputBlobTable",
 		  "properties": {
 		    "type": "AzureBlob",
-		    "linkedServiceName": "StorageLinkedService",
+		    "linkedServiceName": "AzureStorageLinkedService",
 		    "typeProperties": {
 		      "folderPath": "adftutorial/outfromonpremdf",
 		      "format": {
@@ -393,7 +390,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	以下の点に注意してください。
 	
 	- **type** は **AzureBlob** に設定されています。
-	- **linkedServiceName** を **StorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
+	- **linkedServiceName** を **AzureStorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
 
@@ -478,7 +475,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -586,45 +583,39 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 10. ゲートウェイの登録が成功したら、Gateway Configuration Manager のホーム ページで、**[登録]** が **[登録済み]** に、**[状態]** が **[開始]** に設定されていることを確認する必要があります。 
 
 ## 資格情報とセキュリティの設定
+Data Factory エディターで資格情報を暗号化するには、次の操作を行います。
 
-SQL Server リンク サービスを作成するには、Data Factory エディターではなくリンクされたサービス ブレードを使用することができます。
- 
-3.	Data Factory ホーム ページの **[リンクされたサービス]** タイルをクリックします。 
-4.	**[リンクされたサービス]** ブレードで、コマンド バーの **[新しいデータ ストア]** をクリックします。 
-4.	**名前**として「**SqlServerLinkedService**」と入力します。 
-2.	**[種類]** の横の矢印をクリックして、**[SQL Server]** を選択します。
-
-	![新しいデータ ストアの作成](./media/data-factory-move-data-between-onprem-and-cloud/new-data-store.png)
-3.	**[種類]** 設定の下でさらに設定する必要があります。
-4.	**[Data Gateway]** の設定で、作成したゲートウェイを選択します。 
-
-	![SQL Server の設定](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-settings.png)
-4.	**[サーバー]** 設定にデータベース サーバーの名前を入力します。
-5.	**[データベース]** 設定にデータベースの名前を入力します。
-6.	**[資格情報]** の隣の矢印をクリックします。
-
-	![[資格情報] ブレード](./media/data-factory-move-data-between-onprem-and-cloud/credentials-dialog.png)
-7.	**[資格情報]** ブレードで、**[ここをクリックして資格情報を設定する]** をクリックします。
-8.	**[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
-
-	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
-	 1.Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
-	 2.**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
-	 3.**[パスワード]** の設定に、ユーザーのパスワードを入力します。
-	 4.**[OK]** をクリックしてダイアログ ボックスを閉じます。 
-4. **[OK]** をクリックして **[資格情報]** ブレードを閉じます。 
-5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
-6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
+1. ツリー ビューの既存の**リンクされたサービス**をクリックしてその JSON 定義を参照するか、または Data Management Gateway を必要とするリンクされたサービスを新規に作成します (例: SQL Server または Oracle)。 
+2. JSON エディターで、**gatewayName** プロパティに、ゲートウェイの名前を入力します。 
+3. **connectionString** の **Data Source** プロパティにサーバー名を入力します。
+4. **connectionString** の **Initial Catalog** プロパティにデータベース名を入力します。    
+5. コマンド バーの **[暗号化]** をクリックします。**[資格情報の設定]** ダイアログ ボックスが表示されます。![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
+6. **[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。  
+	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。 
+	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。 
+	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。  
+	4.	**[OK]** をクリックして、資格情報を暗号化し、ダイアログ ボックスを閉じます。 
+5.	これで、**connectionString** 内に **encryptedCredential** プロパティが表示されます。		
+		
+			{
+	    		"name": "SqlServerLinkedService",
+		    	"properties": {
+		        	"type": "OnPremisesSqlServer",
+			        "description": "",
+		    	    "typeProperties": {
+		    	        "connectionString": "data source=myserver;initial catalog=mydatabase;Integrated Security=False;EncryptedCredential=eyJDb25uZWN0aW9uU3R",
+		            	"gatewayName": "adftutorialgateway"
+		        	}
+		    	}
+			}
 
 ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
 
-Microsoft Azure ポータルから起動した [資格情報の設定] アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの Data Management Gateway Configuration Manager の [証明書] タブで指定した証明書で資格情報を暗号化します。
+Microsoft Azure ポータルから起動した **[資格情報の設定]** アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの **Data Management Gateway Configuration Manager** の **[証明書]** タブで指定した証明書で資格情報を暗号化します。
 
-API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットで使用する JSON ファイルの connectionString の EncryptedCredential 要素や、ポータルの Data Factory エディターで JSON スニペットに追加できます。
+API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットで使用する JSON ファイルの **connectionString** の **EncryptedCredential** 要素や、ポータルの Data Factory エディターで JSON スニペットに追加できます。
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
-
-**注:** 「資格情報の設定」アプリケーションを使用すると、上記のようにリンクされたサービスに暗号化された資格情報が自動的に設定されます。
 
 Data Factory エディターを使用して資格情報を設定するもう 1 つの方法があります。エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、ゲートウェイが使用するように構成されている証明書ではなく、Data Factory が所有する証明書で暗号化されます。この方法は、場合によっては少し高速ですが、セキュリティは低下します。したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
 
@@ -695,4 +686,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

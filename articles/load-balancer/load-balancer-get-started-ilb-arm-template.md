@@ -14,33 +14,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/09/2016"
+   ms.date="03/04/2016"
    ms.author="joaoma" />
 
 # テンプレートを使用した内部ロード バランサーの作成の概要
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
-<BR>
-[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイ モデル](load-balancer-get-started-ilb-classic-ps.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## [クリックしてデプロイ] を使用してテンプレートをデプロイする
 
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。[クリックしてデプロイ] を使用してこのテンプレートをデプロイするには、[このリンク](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer) に従って、**[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。"クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、[このリンク](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)に従って、**[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
 
 ## PowerShell を使用してテンプレートをデプロイする
 
 PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
 
 2. [パラメーター](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.parameters.json) ファイルをローカル ディスクにダウンロードします。<BR>
 3. ファイルを編集し、保存します。<BR>
-4. テンプレートを使用してリソース グループを作成するには、**New-AzurermResourceGroupDeployment** コマンドレットを実行します。 
+4. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroupDeployment** コマンドレットを実行します。 
 
 
 		New-AzureRmResourceGroupdeployment -Name TestRG -Location westus `
@@ -53,7 +51,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -75,4 +73,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

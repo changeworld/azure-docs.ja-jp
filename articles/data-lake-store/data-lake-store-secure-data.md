@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store に格納されているデータのセキュリティ保護
 
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。
 
-1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。Azure ポータルで、これらのセキュリティ グループを使用してロールベースのアクセス制御 (RBAC) を実装します。詳細については、「[Microsoft Azure でのロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。Azure ポータルで、これらのセキュリティ グループを使用してロールベースのアクセス制御 (RBAC) を実装します。詳細については、「[Microsoft Azure でのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 2. AAD セキュリティ グループを Azure Data Lake Store アカウントに割り当てます。これにより、ポータルから Data Lake Store アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
 
@@ -37,7 +37,7 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 
 ## Azure Active Directory でセキュリティ グループを作成する
 
-AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)」を参照してください。
+AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-accessmanagement-manage-groups.md)」を参照してください。
 
 ## ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる
 
@@ -160,9 +160,9 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
 - [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
-- [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
+- [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
 - [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

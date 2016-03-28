@@ -627,8 +627,8 @@ SKU の詳細を完了したら、「[Azure Marketplace のマーケティング
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-github-waagent]: https://github.com/Azure/WALinuxAgent
 [link-azure-codeplex]: https://azurestorageexplorer.codeplex.com/
-[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2/
-[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1/
+[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2.md
+[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [link-msft-download]: http://www.microsoft.com/download/details.aspx?id=44299
 [link-technet-3]: https://technet.microsoft.com/library/hh846766.aspx
 [link-technet-2]: https://msdn.microsoft.com/library/dn495261.aspx
@@ -651,4 +651,4 @@ SKU の詳細を完了したら、「[Azure Marketplace のマーケティング
 [link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]: https://www.python.org/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/10/2016"
+   ms.date="03/10/2016"
    ms.author="mwinkle"/>
 
 # Azure Data Lake Analytics ドキュメントのバックログ
@@ -24,12 +24,13 @@
 
 領域 |トピック | 優先順位 | 状態 | 割当先 | 要求者 
 ------------- | ------------- | -------------- | -------------- | --------------- | --------------
+サービス | コンテンツの再設計 | 1 | 進行中 | [@edmacauley](https://github.com/edmacauley) |
 U-SQL | 分散クエリ | 1 | 保留中 | [@edmacauley](https://github.com/edmacauley) |
 U-SQL | WASB と ADLS 間のデータの移動 | 1 | Pending | 未定 | Ye Xing (ml)
 U-SQL | UDO モデルの単体テストのガイダンス | 1 | Pending | 未定 | [@ddobric](https://github.com/ddobric) 
 U-SQL | JSON の処理 | 2 | Pending | [@mumian](https://github.com/mumian) | [@mwinkle](https://github.com/mwinkle)
 サービス | Curl の操作 | 3 |Pending |[@mumian](https://github.com/mumian)
-U-SQL | パーティション テーブル |1 | 進行中 | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | パーティション テーブル |1 | Pending | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | パフォーマンスのチューニング | 2 | Pending | [@MikeRys](https://github.com/mikerys) | 
 U-SQL | プログラマー ガイド | 2 | Pending | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | T-SQL バックグラウンドからの U-SQL の使用 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) | [@MikeRys](https://github.com/mikerys)
@@ -58,4 +59,4 @@ U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

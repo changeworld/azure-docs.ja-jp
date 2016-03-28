@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/07/2016"
+   ms.date="03/10/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする
@@ -22,7 +22,7 @@
 
 ## 概要
 
-このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングする方法について説明します。
+このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングする方法について説明します。この記事は、Azure クラシック ポータルだけでなく、Microsoft Azure Government Cloud での StorSimple Virtual Arrays のデプロイに適用されます。
 
 仮想デバイスをプロビジョニングして構成するには、管理者特権が必要です。プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
@@ -251,15 +251,26 @@
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image31m.png)
 
-	デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。その後、再起動し、デバイスに接続します。「[手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
 
-	![](./media/storsimple-ova-deploy2-provision-hyperv/image32.png)
 
-ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、[ローカル Web UI を使った StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)に関するページにある次のワークフローを参照してください。
+1. (省略可能) デバイスを Government Cloud にデプロイする場合にのみ、この手順を実行します。デバイスで米国連邦情報処理標準 (FIPS) モードを有効にできるようになります。FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。
+	1. FIPS モードを有効にするには、次のコマンドレットを実行します。
+		
+		`Enter-HcsFIPSMode`
+
+	2. FIPS モードを有効にした後はデバイスを再起動して、暗号化の検証が有効になるようにします。
+
+		> [AZURE.NOTE] デバイスで FIPS モードを有効または無効にすることができます。デバイスの FIPS モードと非 FIPS モードを切り替えることはサポートされていません。
+
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。その後、再起動し、デバイスに接続します。「[手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
+
+![](./media/storsimple-ova-deploy2-provision-hyperv/image32.png)
+
+ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、「[Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」の次のワークフローを参照してください。
 
 -   診断テストを実行して [Web UI 設定のトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 
--   [ログ パッケージの生成とログ ファイルの表示](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
+-   [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ![動画アイコン](./media/storsimple-ova-deploy2-provision-hyperv/video_icon.png) **ビデオ**
 
@@ -273,4 +284,4 @@ Hyper-V で StorSimple Virtual Array をプロビジョニングする方法を�
 
 -   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

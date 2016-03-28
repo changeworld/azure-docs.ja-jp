@@ -431,7 +431,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	     } 
 	}
 
-SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 ## SQL Server データセットの type プロパティ
 
@@ -637,4 +637,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

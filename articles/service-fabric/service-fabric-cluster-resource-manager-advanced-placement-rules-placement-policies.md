@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャー - 配置ポリシー"
+   pageTitle="Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Azure"
    description="Service Fabric サービスの追加の配置ポリシーとルールの概要"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,13 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/03/2016"
+   ms.date="03/10/2016"
    ms.author="masnider"/>
 
-# 配置ポリシー
+# Service Fabric サービスの配置ポリシー
 Service Fabric のクラスターが複数のデータセンターや Azure のリージョンなど、地理的に離れた場所に広がっていたり、環境が地政学的な管理の異なる領域に広がっていたり (もしくは法的、政策的な境界について考慮しなければならない) する場合、最終的に考慮する可能性があるルールが多数あります。これらの多くはノード プロパティおよび (先に述べた) 配置の制約によって構成できますが、なかには非常に複雑なものもあります。どの場合でも、配置の制約と同様に次のようなショートカットが提供されており、配置ポリシーをサービスごとに構成できます。
 
--	InvalidDomain – 特定の障害ドメインがこのワークロードに対して無効になるように指定できます。地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにする場合に適しています。
+## 無効なドメインを指定する
+invalidDomain 配置ポリシーでは、特定の障害ドメインがこのワークロードに対して無効になるように指定できます。地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。複数の無効なドメインを指定できます。
 
 ![無効なドメインの例][Image1]
 
@@ -31,13 +32,13 @@ requiredDomain.DomainName = "fd:/DCEast/"; //regulations prohibit this workload 
 serviceDescription.PlacementPolicies.Add(invalidDomain);
 ```
 
-PowerShell:
+PowerShell
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/dc9/”)
 ```
-
--	RequiredDomain – 読んで字のごとくで、指定したドメインにすべてのレプリカが存在している必要があります。
+## 必要なドメインを指定する
+required domain 配置ポリシーでは、指定したドメインにすべてのレプリカが存在している必要があります。複数の必要なドメインを指定できます。
 
 ![必要なドメインの例][Image2]
 
@@ -49,13 +50,14 @@ requiredDomain.DomainName = "fd:/DC01/RK03/BL2";
 serviceDescription.PlacementPolicies.Add(requiredDomain);
 ```
 
-PowerShell:
+PowerShell
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
--	PreferPrimaryDomain – 優先プライマリ ドメインは興味深いコントロールで、プライマリが存在する必要がある障害ドメインの選択が許可されます (選択が可能な場合)。すべてが正常な場合、プライマリは最終的にこのドメインに配置されます。何らかの理由によりドメインまたはプライマリ レプリカで障害が発生した場合、またはシャットダウンした場合、プライマリは別の場所に移行します。戻れるようになったら、優先ドメインに戻ります。元来、この設定は、ステートフル サービスでのみ有効です。
+## プライマリ レプリカの優先ドメインを指定する
+優先 Primary domain は変わったコントロールであり、プライマリが存在する必要がある障害ドメインの選択が許可されます (選択が可能な場合)。すべてが正常な場合、プライマリは最終的にこのドメインに配置されます。何らかの理由によりドメインまたはプライマリ レプリカで障害が発生した場合、またはシャットダウンした場合、プライマリは別の場所に移行します。戻れるようになったら、優先ドメインに戻ります。元来、この設定は、ステートフル サービスでのみ有効です。このポリシーは、冗長性のために他の場所を使用するが、プライマリになる操作の待機時間を減らす目的で (プライマリは書き込みと、既定ではすべての読み込みにサービスを提供します) プライマリ レプリカを特定の場所に配置する場合に特に役立ちます。
 
 ![優先プライマリ ドメインとフェールオーバー][Image3]
 
@@ -71,7 +73,8 @@ PowerShell
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUs")
 ```
 
--	RequireDomainDistribution – ドメイン要求配信は、いくつかの状況を回避するために使用できるもう 1 つのオプションです。上の例では、一時的に複数になっているレプリカ (つまり、クォーラム) を同じデータセンターにまとめることができます。この場合、プライマリがほとんどのレプリカとは異なるデータセンターにあるため、実際にはおそらく問題ありません。ただし、(本題からは逸れますが) 一時的に望ましくない構成になってしまう可能性があります。これはその時のクラスターの状態によっても変わりますが、レプリカを常に別のドメインに置くようにすることで、完全にこの状況を回避することもできます。RequireDomainDistribution フラグによって、これが可能になります。ただし、パッキングが発生する場合に、レプリカがまったく配置されない場合もあります。つまり、実行可能なドメインが復帰するまで、実行されるレプリカの数が一時的に目標よりも少なくなります。我々は常に目標とする数のレプリカ (状態のコピー) を希望する顧客も見てきましたが、その一方で可用性をリスクにさらしたくないと考える顧客もいました。レプリカを障害ドメインにパッキングし、そのドメインで障害が発生したら、そのすべてのレプリカが同時に使えなくなってしまいます。レプリカの数が少ない場合は、これによってクォーラムの損失が生じる場合があります。多くの人は、4 つ以上のレプリカを使って実行するため、既定ではドメイン配信が不要です。これにより一時的にドメインに複数のレプリカがパッキングされていても、負荷分散とフェールオーバーによってケースが対応されます。
+## すべてのドメイン間で配信することとパッキングを許可しないことをレプリカに要求する
+指定できるもう 1 つのポリシーでは、利用可能なドメイン間で常に配信されるようにレプリカに要求します。上の例では、一時的に複数になっているレプリカ (つまり、クォーラム) を同じデータセンターにまとめることができます。この場合、プライマリがほとんどのレプリカとは異なるデータセンターにあるため、実際にはおそらく問題ありません。ただし、一時的に望ましくない構成になってしまう可能性があります。これはその時のクラスターの状態によっても変わりますが、レプリカを常に別のドメインに置くようにすることで、完全にこの状況を回避することもできます。これを選択した場合、残りのノードで引き続き実行されることをサービスに許可するより、ダウンタイム/障害を選択することになります。RequireDomainDistribution ポリシーによってこの動作が可能になりますが、パッキングが発生する場合に、レプリカがまったく配置されない場合もあります。つまり、実行可能なドメインが復帰するまで、実行されるレプリカの数が一時的に目標よりも少なくなります。我々は常に目標とする数のレプリカ (状態のコピー) を希望する顧客も見てきましたが、その一方で可用性をリスクにさらしたくないと考える顧客もいました。レプリカを障害ドメインにパッキングし、そのドメインで障害が発生したら、そのすべてのレプリカが同時に使えなくなってしまいます。レプリカの数が少ない場合は、これによってクォーラムの損失が生じる場合があります。ドメインが戻ってこない事態が発生した場合、データが失われる可能性があります。多くの人は、3 つ以上のレプリカを使って実行するため、既定ではドメイン配信が不要です。これにより一時的にドメインに複数のレプリカがパッキングされていても、負荷分散とフェールオーバーによってケースが対応されます。
 
 コード:
 
@@ -80,24 +83,19 @@ ServicePlacementRequireDomainDistributionPolicyDescription distributeDomain = ne
 serviceDescription.PlacementPolicies.Add(distributeDomain);
 ```
 
-PowerShell:
+PowerShell
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-無効な、または必要なドメインは 1 つのサービスに複数構成できますが、それ以外の 2 つ (優先ドメインとドメイン配信) は、サービスごとに 1 回しか構成できません。
-
 では、これらの構成を地理的に分散していないクラスターのサービスに構成することはできるでしょうか。 もちろん、できます。 しかし、あまり利点はありません。特に、必要な、無効な、および優先ドメインの構成は、実際に地理的に分散しているクラスターを実行していない場合は、避ける必要があります。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
-- [Learn about configuring Services (サービスの構成について)](service-fabric-cluster-resource-manager-configure-services.md)
-
-
+- サービスの公正で利用できるその他のオプションに関する詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

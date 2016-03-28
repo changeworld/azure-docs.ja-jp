@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/08/2016"
+   	ms.date="03/09/2016"
    	ms.author="nitinme"/>
 
 
@@ -24,16 +24,15 @@
 
 Azure プレビュー ポータルは、Microsoft Azure クラウドでホストされるサービスやリソースの Web ベースの管理ツールです。このドキュメントでは、プレビュー ポータルと Web ブラウザーを使用して、Linux ベースの HDInsight クラスターを新たに作成する際に役立つ情報を紹介しています。
 
-##前提条件
-
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
+## 前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 - __最新の Web ブラウザー__。Azure プレビュー ポータルには、HTML5 と Javascript が使用されています。Web ブラウザーのバージョンが低いと正しく機能しない場合があります。
 
 ##クラスターの作成
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
 
@@ -156,6 +155,10 @@ Azure プレビュー ポータルは、Microsoft Azure クラウドでホスト
 - 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
 - 「[Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##次のステップ
 
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
@@ -185,4 +188,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

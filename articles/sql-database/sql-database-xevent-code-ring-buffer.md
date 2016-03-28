@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="" 
 	tags=""/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/30/2015" 
+	ms.date="03/15/2016" 
 	ms.author="genemi"/>
 
 
@@ -385,4 +385,4 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

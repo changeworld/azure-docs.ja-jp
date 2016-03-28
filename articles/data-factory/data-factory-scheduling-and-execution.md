@@ -261,6 +261,27 @@ Data Factory の監視および管理ツールを使用すると、失敗した�
 
 ![同じパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
+### 順序指定されたコピー
+複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。パイプラインには、CopyActivity1 と CopyActivity 2 という 2 つのコピー アクティビティがあり、それぞれ入力データと出力データセットは次のようになります。
+
+CopyActivity1: 入力: Dataset1 出力: Dataset2
+
+CopyActivity2: 入力: Dataset2 出力: Dataset4
+
+CopyActivity2 は、CopyActivity1 が正常に実行され、Dataset2 が使用できる場合にのみ実行されます。
+
+上の例で、CopyActivity2 には異なる入力 (たとえば Dataset3) を使用できますが、Dataset2 も CopyActivity2 への入力として指定する必要があるため、このアクティビティは CopyActivity1 が完了するまで実行されません。次に例を示します。
+
+CopyActivity1: 入力: Dataset1 出力: Dataset2
+
+CopyActivity2: 入力: Dataset3、Dataset2 出力: Dataset4
+
+複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。CopyActivity2 は、次の条件が満たされた場合にのみ実行を開始します。
+
+- CopyActivity1 が正常に完了し、Dataset2 を使用できる。このデータセットは、データを Dataset4 にコピーする際に使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
+- Dataset3 を使用できる。このデータセットは、コピー先にコピーされるデータを表します。  
+
+
 
 ## 頻度が異なるデータセットのモデル化
 
@@ -532,7 +553,7 @@ Hive アクティビティは 2 つの入力を使用して、出力スライス
 
 ## Data Factory の関数およびシステム変数   
 
-Azure Data Factory でサポートされている関数とシステム変数の一覧については、「[Azure Data Factory - Functions and System Variables](data-factory-functions-variables.md)」をご覧ください。
+Azure Data Factory でサポートされている関数およびシステム変数の一覧については、[Data Factory の関数およびシステム変数](data-factory-functions-variables.md)に関する記事を参照してください。
 
 ## データ依存関係の詳細情報
 
@@ -632,4 +653,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

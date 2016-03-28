@@ -27,7 +27,7 @@ Azure は、わずかな投資でソリューションの実装に対する具�
 
 この記事は、[Azure 実装ガイドライン](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)に関するブログ投稿の内容を基にしています。基の資料を作成した Santiago Cánepa (Microsoft のアプリケーション開発マネージャー) と Hugo Salcedo (Microsoft のアプリケーション開発マネージャー) に感謝します。
 
-> [AZURE.NOTE]アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
+> [AZURE.NOTE] アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
 
 ## 1\.名前付け規則
 
@@ -212,7 +212,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 
 IaaS の場合もクラウド サービスは同様の機能を提供しますが、ほとんどの場合、ロード バランサーの機能は、インターネットからそのクラウド サービス内の多くの仮想マシンの特定の TCP または UDP ポートにトラフィックを転送するために使われます。
 
-> [AZURE.NOTE]Azure リソース マネージャーには、クラウド サービスはありません。リソース マネージャーを使用する利点の紹介については、「[Azure リソース マネージャーにおける Azure Compute、Network、Storage のプロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+> [AZURE.NOTE] Azure リソース マネージャーには、クラウド サービスはありません。リソース マネージャーを使用する利点の紹介については、「[Azure リソース マネージャーにおける Azure Compute、Network、Storage のプロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
 Azure はディスクに対する既定の名前付け規則の一部としてクラウド サービスの名前を使用するため、IaaS ではクラウド サービス名が特に重要です。クラウド サービスの名前には、文字、数字、ハイフンのみを含めることができます。フィールドの先頭と末尾の文字は、文字または数字としてください。
 
@@ -274,7 +274,7 @@ Azure サブスクリプションは、最大 200 個のクラウド サービ�
 28 ～ 59 | 6 | /26
 60 ～ 123 | 7 | /25
 
-> [AZURE.NOTE]通常のオンプレミス サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 2 です。Azure サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 5 (2 に加えて、Azure が各サブネットに使用するアドレス数の 3)。
+> [AZURE.NOTE] 通常のオンプレミス サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 2 です。Azure サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 5 (2 に加えて、Azure が各サブネットに使用するアドレス数の 3)。
 
 選択したサブネットのサイズが小さすぎる場合、サブネット内の仮想マシンの番号を付け直して再デプロイする必要があります。
 
@@ -436,10 +436,8 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)
 
-[Cloud Platform Integration Framework (Azure アーキテクチャ パターン)](../azure-architectures-cpif-overview.md)
-
 [データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0316_2016-->

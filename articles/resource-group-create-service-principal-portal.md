@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/27/2016"
+   ms.date="03/10/2016"
    ms.author="tomfitz"/>
 
 # ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する
@@ -77,9 +77,17 @@
   
    ![クライアント ID][5]
 
-場合によっては、認証要求とともにテナント ID を渡す必要があります。テナント ID を取得するには、画面の下部にある **[エンドポイントの表示]** を選択して、次のように ID を取得します。
+場合によっては、認証要求とともにテナント ID を渡す必要があります。Web Apps および Web API Apps の場合、テナント ID を取得するには、画面の下部にある **[エンドポイントの表示]** を選択して、次のように ID を取得します。
 
    ![テナント ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
+
+ネイティブ クライアント アプリケーションではエンドポイントを使用できません。代わりに、次の PowerShell を使ってテナント ID を取得できます。
+
+    PS C:\> Get-AzureRmSubscription
+
+または、次の Azure CLI を使います。
+
+    azure account show --json
 
 ## 認証キーを作成する
 
@@ -110,7 +118,7 @@
 
 アプリケーションから、サインイン済みユーザーの代理でリソースにアクセスする場合、そのアプリケーションに対して、他のアプリケーションにアクセスできる委任されたアクセス許可を付与する必要があります。この設定は、**[構成]** タブの **[他のアプリケーションに対するアクセス許可]** で行います。Azure Active Directory の既定では、委任されたアクセス許可は有効です。この委任されたアクセス許可は変更しないでください。
 
-1. **[アプリケーションの追加]** を選択します。
+1. **[アプリケーションの追加]** をクリックします。
 
 2. リストから **[Azure Service Management API]** を選択します。
 
@@ -229,4 +237,4 @@ ID とシークレットを使用してサインインするには、次の方�
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

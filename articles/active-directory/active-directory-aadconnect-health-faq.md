@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="03/08/2016"
 	ms.author="billmath;vakarand"/>
 
 
@@ -92,6 +92,11 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80、443、および 5671 を開く必要があります。
 
+
+**Q: Azure AD Connect Health ポータルに同じ名前のサーバーが 2 つ表示されるのはなぜですか?**
+
+サーバーからエージェントを削除しても、サーバーは Azure AD Connect ポータルから自動的に削除されません。そのため、サーバーから手動でエージェントを削除したか、サーバー自体を削除した場合は、Azure AD Connect Health ポータルから手動でサーバー エントリを削除する必要があります。詳細については、「[サーバーまたはサービス インスタンスを削除する](active-directory-aadconnect-health-operations.md#delete-a-server-or-service-instance)」を参照してください。 また、同じ詳細情報でサーバーを再イメージ化したか、新しいサーバーを作成したが、Azure AD Connect Health ポータルからサーバーを削除せずに新しいサーバーにエージェントをインストールした場合には、サーバーの 2 つのエントリが表示される可能性があります。この場合は、古いサーバーに属しているエントリを手動で削除する必要があります。通常、このエントリのデータは古いものと見なされます。
+
 ## 関連リンク
 
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
@@ -101,4 +106,4 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -21,7 +21,7 @@
 
 > [AZURE.IMPORTANT] このガイドの手順を実行する前に、「Engagement を Android に統合する方法」のドキュメントの統合手順を実行する必要があります。
 >
-> このドキュメントは、いつでも実施できるキャンペーンをサポートする Reach モジュールを統合した場合にのみ役立ちます。アプリケーションに Reach キャンペーンを統合するには、Engagement Reach を Android に統合する方法に関するドキュメントを先にお読みください。
+> このドキュメントは、既に Reach モジュールを統合してあり、Amazon デバイスのプッシュを計画する場合にのみ役立ちます。アプリケーションに Reach キャンペーンを統合するには、Engagement Reach を Android に統合する方法に関するドキュメントを先にお読みください。
 
 ##はじめに
 
@@ -102,14 +102,11 @@ ADM をまだ統合してしない場合は、Engagement では簡単な方法�
 
 ##Engagement OAuth 資格情報を与える
 
-OAuth Credentials (クライアント ID とクライアントシークレット) を $/#application/YOUR\_APPID/native-push で送信します。
-
-これで、Reach 通知とポーリングを作成するときに [いつでも] を選択することができます。
-
+Engagement ポータルで OAuth Credentials (クライアント ID とクライアントシークレット) を送信します。
 
 [<https://developer.amazon.com/sdk/adm/credentials.html>]: https://developer.amazon.com/sdk/adm/credentials.html
 [ADM クライアント ライブラリ]: https://developer.amazon.com/sdk/adm/setup.html
 [統合 ADM]: https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->
