@@ -26,7 +26,7 @@
 
 ## Azure ポータル
 
-[Azure ポータル](https://portal.azure.com)でリモート デスクトップ サービスをリセットするには、**[すべて参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[リモート アクセスのリセット]** の順にクリックします。次のページが表示されます。
+[Azure ポータル](https://portal.azure.com)でリモート デスクトップ サービスをリセットするには、**[すべて参照]**、**[仮想マシン (クラシック)]**、 *ご使用の Windows 仮想マシン* 、**[リモート アクセスのリセット]** の順にクリックします。次のページが表示されます。
 
 
 ![](./media/virtual-machines-windows-reset-password/Portal-RDP-Reset-Windows.png)
@@ -114,4 +114,4 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!----HONumber=AcomDC_1217_2015-->
