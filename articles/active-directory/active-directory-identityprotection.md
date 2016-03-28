@@ -410,4 +410,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
 
-<!----HONumber=AcomDC_0316_2016-->
+<!-----HONumber=AcomDC_0316_2016-->
