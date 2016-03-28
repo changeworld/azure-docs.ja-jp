@@ -20,13 +20,10 @@
 
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
 
-[Transact-SQL 言語要素][]
-
-[Transact-SQL ステートメント][]
-
-[Transact-SQL システム ビュー][]
-
-[PowerShell コマンドレット][]
+- [Transact-SQL 言語要素][]
+- [Transact-SQL ステートメント][]
+- [Transact-SQL システム ビュー][]
+- [PowerShell コマンドレット][]
 
 
 
@@ -45,4 +42,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

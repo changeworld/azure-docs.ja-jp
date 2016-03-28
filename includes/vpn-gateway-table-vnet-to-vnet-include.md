@@ -2,10 +2,10 @@
 
 | | **クラシック デプロイメント** | **リソース マネージャーのデプロイメント** | **クラシック/リソース マネージャーのデプロイメント** |
 |----------------------------------------|-------------|----------------------|---------------------------------|
-| **クラシック ポータル** | サポートされていません | サポートされていません | サポートされていません |
+| **クラシック ポータル** | [記事](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) | サポートされていません | サポートされていません |
 | **Azure ポータル** | サポートされていません | はい+ | サポートされていません |
 | **PowerShell** | [記事](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) | [記事](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) | [記事](../articles/virtual-network/virtual-networks-arm-asm-s2s.md)
 
 「+」は、このデプロイ方法が同じサブスクリプションの VNet でのみ利用できることを示します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

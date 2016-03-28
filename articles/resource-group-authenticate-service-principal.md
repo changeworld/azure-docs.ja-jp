@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="02/29/2016"
+   ms.date="03/10/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
@@ -337,13 +337,13 @@ Active Directory アプリケーションとそのアプリケーション用の
 
 手動でサービス プリンシパルとしてサインインする場合は、**azure login** コマンドを使用します。テナント ID、アプリケーション ID とパスワードを指定する必要があります。パスワードはファイルに格納されるため、スクリプトにパスワードを直接含めるのは危険です。自動化されたスクリプトを実行する際のより適切なオプションについては、次のセクションを参照してください。
 
-1. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。json からの出力をパラメーターとして渡す前に、最初と最後の二重引用符は削除する必要があります。
+1. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。現在認証されているサブスクリプションのテナント ID を取得する場合は、サブスクリプション ID をパラメーターとして渡す必要はありません。**-r** スイッチは、二重引用符なしで値を取得します。
 
-        tenantId=$(azure account show -s <subscriptionId> --json | jq '.[0].tenantId' | sed -e 's/^"//' -e 's/"$//')
+        tenantId=$(azure account show -s <subscriptionId> --json | jq -r '.[0].tenantId')
 
 2. ユーザー名には、サービス プリンシパルの作成時に使用した **AppId** を使用します。アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。**search** パラメーターに、Active Directory アプリケーションの名前を指定します。
 
-        appId=$(azure ad app show --search exampleapp --json | jq '.[0].appId' | sed -e 's/^"//' -e 's/"$//')
+        appId=$(azure ad app show --search exampleapp --json | jq -r '.[0].appId')
 
 3. サービス プリンシパルとしてログインします。
 
@@ -365,17 +365,17 @@ Active Directory アプリケーションとそのアプリケーション用の
 
 これらの手順では、パスワードを格納する Key Vault とシークレットが設定済みであると仮定しています。テンプレートを使用して Key Vault とシークレットをデプロイする方法については、「[Key Vault テンプレートの形式]()」を参照してください。Key Vault の詳細については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
 
-1. Key Vault からパスワードを取得します (以下の例では、シークレットは **appPassword** という名前で格納されています) です。json からの出力をパスワードのパラメーターとして渡す前に、最初と最後の二重引用符は削除する必要があります。
+1. Key Vault からパスワードを取得します (以下の例では、シークレットは **appPassword** という名前で格納されています) です。JSON の出力から先頭と末尾の二重引用符を除去するには、**-r** スイッチを指定します。
 
-        secret=$(azure keyvault secret show --vault-name examplevault --secret-name appPassword --json | jq '.value' | sed -e 's/^"//' -e 's/"$//')
+        secret=$(azure keyvault secret show --vault-name examplevault --secret-name appPassword --json | jq -r '.value')
     
-2. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。
+2. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。現在認証されているサブスクリプションのテナント ID を取得する場合は、サブスクリプション ID をパラメーターとして渡す必要はありません。
 
-        tenantId=$(azure account show -s <subscriptionId> --json | jq '.[0].tenantId' | sed -e 's/^"//' -e 's/"$//')
+        tenantId=$(azure account show -s <subscriptionId> --json | jq -r '.[0].tenantId')
 
 3. ユーザー名には、サービス プリンシパルの作成時に使用した **AppId** を使用します。アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。**search** パラメーターに、Active Directory アプリケーションの名前を指定します。
 
-        appId=$(azure ad app show --search exampleapp --json | jq '.[0].appId' | sed -e 's/^"//' -e 's/"$//')
+        appId=$(azure ad app show --search exampleapp --json | jq -r '.[0].appId')
 
 4. アプリケーション ID、Key Vault からのパスワード、テナント ID を指定し、サービス プリンシパルとしてにログインします。
 
@@ -411,7 +411,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 
         openssl pkcs12 -in C:\certificates\examplecert.pfx -out C:\certificates\examplecert.pem -nodes
 
-2. **.pem** ファイルを開き、証明書データをコピーします。**------BEGIN---** と **-----END CERTIFICATE-----** 間の長い文字のシーケンスを探します。
+2. **.pem** ファイルを開き、証明書データをコピーします。**-----BEGIN CERTIFICATE-----** と **-----END CERTIFICATE-----** 間の長い文字のシーケンスを探します。
 
 3. **azure ad app create** コマンドを実行して新しい Active Directory アプリケーションを作成し、前の手順でコピーした証明書データをキーの値として提供します。
 
@@ -460,13 +460,13 @@ Active Directory アプリケーションとそのアプリケーション用の
 
         30996D9CE48A0B6E0CD49DBB9A48059BF9355851
 
-2. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。
+2. サービス プリンシパルを含むサブスクリプションの **TenantId** を確定します。現在認証されているサブスクリプションのテナント ID を取得する場合は、サブスクリプション ID をパラメーターとして渡す必要はありません。**-r** スイッチは、二重引用符なしで値を取得します。
 
-        tenantId=$(azure account show -s <subscriptionId> --json | jq '.[0].tenantId' | sed -e 's/^"//' -e 's/"$//')
+        tenantId=$(azure account show -s <subscriptionId> --json | jq -r '.[0].tenantId')
 
 3. ユーザー名には、サービス プリンシパルの作成時に使用した **AppId** を使用します。アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。**search** パラメーターに、Active Directory アプリケーションの名前を指定します。
 
-        appId=$(azure ad app show --search exampleapp --json | jq '.[0].appId' | sed -e 's/^"//' -e 's/"$//')
+        appId=$(azure ad app show --search exampleapp --json | jq -r '.[0].appId')
 
 4. Azure CLI で認証するには、証明書の拇印、証明書のファイル、アプリケーション ID、およびテナント ID を渡します。
 
@@ -517,4 +517,4 @@ Active Directory アプリケーションとそのアプリケーション用の
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

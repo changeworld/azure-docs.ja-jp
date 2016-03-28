@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="03/11/2016"
 	ms.author="danlep"/>
 
 # Azure Batch サービスのクォータと制限
@@ -35,7 +35,12 @@
 ## その他の制限
 リソース|上限
 ---|---
-コンピューティング ノードごとのタスク|ノードのコア数 x 4
+コンピューティング ノードごとのタスク | ノードのコア数 x 4
+Batch アカウントあたりのアプリケーション数 | 20
+アプリケーションあたりのアプリケーション パッケージ数 | 40
+各アプリケーション パッケージのサイズ | 約 195 GB<sup>1</sup>
+
+<sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限
 
 ## Batch クォータの確認
 
@@ -93,4 +98,4 @@ Azure サポートから連絡があります。要求を完了するには最�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

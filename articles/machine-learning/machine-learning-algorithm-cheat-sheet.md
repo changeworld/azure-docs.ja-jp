@@ -28,11 +28,11 @@
 
 ## 機械学習アルゴリズム チート シートのダウンロード
 
-機械学習アルゴリズム チート シートをダウンロードし、ソリューションに適した機械学習アルゴリズムの選択方法を確認するのに役立てます。チート シートをタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
+Machine Learning アルゴリズム チート シートをダウンロードし、ソリューションに適した機械学習アルゴリズムの選択方法を確認するのに役立てます。チート シートをタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
 **チート シートをダウンロードする: [Microsoft Azure Machine Learning Algorithm Cheat Sheet](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning Algorithm Cheat Sheet : 機械学習アルゴリズムの選択方法][cheat-sheet]
+![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
 
 [cheat-sheet]: ./media/machine-learning-algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
@@ -79,7 +79,7 @@
 <a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
 <img src="C:\Users\garye\azure-content-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
 </a>
---> \\
+--> 
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
@@ -87,4 +87,4 @@
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

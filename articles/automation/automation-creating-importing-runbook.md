@@ -72,7 +72,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 
 ### Azure ポータルでファイルから Runbook をインポートするには
-次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。
+次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。このポータルを使用して PowerShell Runbook または PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。
 
 1. Azure ポータルで、Automation アカウントを開きます。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
@@ -131,4 +131,4 @@ Windows PowerShell の [Publish-AzureAutomationRunbook](https://msdn.microsoft.c
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

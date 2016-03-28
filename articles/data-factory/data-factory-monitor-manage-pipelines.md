@@ -378,6 +378,8 @@ OnDemandClusterDeleted | Succeeded
 	Parameters        :
 	Outputs           :
 
+> [AZURE.NOTE] [アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx) REST API を使用してアラート ルールを作成できます。JSON ペイロードは前述の JSON の例に似ています。
+
 #### Azure リソース グループのデプロイメント一覧の取得
 デプロイした Azure リソース グループの一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
 
@@ -583,4 +585,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

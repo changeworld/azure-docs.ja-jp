@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="03/09/2016"
 	ms.author="sethm"/>
 
 # Service Bus トピック/サブスクリプションの使用方法
@@ -42,11 +42,13 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 1. Azure PowerShell コンソールを開きます。
 
-2. コマンドを下に示すように入力して、名前空間を作成します。独自の名前空間値と、アプリケーションと同じリージョンを指定します。
+2. 次のコマンドを入力して名前空間を作成します。独自の名前空間値と、アプリケーションと同じリージョンを指定します。
 
-      New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
+	```
+	New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
+	```
 
-      ![名前空間の作成](./media/service-bus-ruby-how-to-use-topics-subscriptions/showcmdcreate.png)
+	![名前空間の作成](./media/service-bus-ruby-how-to-use-topics-subscriptions/showcmdcreate.png)
 
 ## 名前空間の既定の管理資格情報の取得
 
@@ -54,17 +56,18 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 Service Bus 名前空間を作成するために実行した PowerShell コマンドレットでは、名前空間の管理に使用できるキーが表示されます。**DefaultKey** 値をコピーします。このチュートリアルでは、後でコードにこの値を使用します。
 
-      ![Copy key](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
+![キーのコピー](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
-> [AZURE.NOTE]このキーは、[Azure クラシック ポータル][]にログオンして、名前空間の接続情報に移動する場合にも見つかります。
+> [AZURE.NOTE]
+このキーは、[Azure クラシック ポータル][]にログオンして、名前空間の接続情報に移動する場合にも見つかります。
 
 ## Ruby アプリケーションの作成
 
-手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ](/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
+手順については、[Microsoft Azure での Ruby アプリケーションの作成に関するページ](../virtual-machines/virtual-machines-ruby-rails-web-app-linux.md)を参照してください。
 
 ## Service Bus を使用するようにアプリケーションを構成する
 
-Azure Service Bus を使用するには、Ruby Azure パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
+Service Bus を使用するには、Ruby Azure パッケージをダウンロードして使用します。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### RubyGems を使用してパッケージを取得する
 
@@ -76,14 +79,18 @@ Azure Service Bus を使用するには、Ruby Azure パッケージをダウン
 
 任意のテキスト エディターを使用して、ストレージを使用するアプリケーションの Ruby ファイルの先頭に次のコードを追加します。
 
-    require "azure"
+```
+require "azure"
+```
 
 ## Service Bus 接続の設定
 
 Azure モジュールは、名前空間に接続するために必要な情報として、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** と **AZURE\_SERVICEBUS\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::ServiceBusService** を使用する前に、次のコードを使用して名前空間情報を指定する必要があります。
 
-    Azure.config.sb_namespace = "<your azure service bus namespace>"
-    Azure.config.sb_access_key = "<your azure service bus access key>"
+```
+Azure.config.sb_namespace = "<your azure service bus namespace>"
+Azure.config.sb_access_key = "<your azure service bus access key>"
+```
 
 作成した値には、URL 全体ではなく、名前空間値を設定してください。たとえば、"yourexamplenamespace.servicebus.windows.net" ではなく、**"yourexamplenamespace"** を使用します。
 
@@ -91,20 +98,24 @@ Azure モジュールは、名前空間に接続するために必要な情報�
 
 **Azure::ServiceBusService** オブジェクトを使用すると、トピックを操作できます。次のコードでは、**Azure::ServiceBusService** オブジェクトを作成します。トピックを作成するには、**create\_topic()** メソッドを使用します。次の例では、トピックを作成し、既に存在する場合はエラーを出力します。
 
-	azure_service_bus_service = Azure::ServiceBusService.new
-	begin
-      topic = azure_service_bus_service.create_queue("test-topic")
-    rescue
-      puts $!
-    end
+```
+azure_service_bus_service = Azure::ServiceBusService.new
+begin
+  topic = azure_service_bus_service.create_queue("test-topic")
+rescue
+  puts $!
+end
+```
 
 **Azure::ServiceBus::Topic** オブジェクトに追加のオプションを渡すこともできます。これにより、メッセージの有効期間やキューの最大サイズなどの既定のトピックの設定をオーバーライドできます。次の例は、キューの最大サイズを 5 GB に、有効期間を 1 分に設定する方法を示しています。
 
-	topic = Azure::ServiceBus::Topic.new("test-topic")
-    topic.max_size_in_megabytes = 5120
-    topic.default_message_time_to_live = "PT1M"
+```
+topic = Azure::ServiceBus::Topic.new("test-topic")
+topic.max_size_in_megabytes = 5120
+topic.default_message_time_to_live = "PT1M"
 
-    topic = azure_service_bus_service.create_topic(topic)
+topic = azure_service_bus_service.create_topic(topic)
+```
 
 ## サブスクリプションを作成する
 
@@ -116,8 +127,9 @@ Azure モジュールは、名前空間に接続するために必要な情報�
 
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。**MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。次の例では、"all-messages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
-	subscription = azure_service_bus_service.create_subscription("test-topic",
-	  "all-messages")
+```
+subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
+```
 
 ### フィルターを適用したサブスクリプションの作成
 
@@ -131,31 +143,31 @@ Azure モジュールは、名前空間に接続するために必要な情報�
 
 次の例では、"high-messages" という名前のサブスクリプションを作成し、**Azure::ServiceBus::SqlFilter** を適用します。このフィルターでは、カスタム プロパティ **message\_number** が 3 を超えるメッセージのみが選択されます。
 
-	subscription = azure_service_bus_service.create_subscription("test-topic",
-	  "high-messages")
-	azure_service_bus_service.delete_rule("test-topic", "high-messages",
-	  "$Default")
+```
+subscription = azure_service_bus_service.create_subscription("test-topic", "high-messages")
+azure_service_bus_service.delete_rule("test-topic", "high-messages", "$Default")
 
-	rule = Azure::ServiceBus::Rule.new("high-messages-rule")
-	rule.topic = "test-topic"
-	rule.subscription = "high-messages"
-	rule.filter = Azure::ServiceBus::SqlFilter.new({
-	  :sql_expression => "message_number > 3" })
-	rule = azure_service_bus_service.create_rule(rule)
+rule = Azure::ServiceBus::Rule.new("high-messages-rule")
+rule.topic = "test-topic"
+rule.subscription = "high-messages"
+rule.filter = Azure::ServiceBus::SqlFilter.new({
+  :sql_expression => "message_number > 3" })
+rule = azure_service_bus_service.create_rule(rule)
+```
 
 同様に、次の例では "low-messages" という名前のサブスクリプションを作成し、**Azure::ServiceBus::SqlFilter** を適用します。このフィルターでは、**message\_number** プロパティが 3 以下のメッセージのみが選択されます。
 
-	subscription = azure_service_bus_service.create_subscription("test-topic",
-	  "low-messages")
-	azure_service_bus_service.delete_rule("test-topic", "low-messages",
-	  "$Default")
+```
+subscription = azure_service_bus_service.create_subscription("test-topic", "low-messages")
+azure_service_bus_service.delete_rule("test-topic", "low-messages", "$Default")
 
-	rule = Azure::ServiceBus::Rule.new("low-messages-rule")
-	rule.topic = "test-topic"
-	rule.subscription = "low-messages"
-	rule.filter = Azure::ServiceBus::SqlFilter.new({
-	  :sql_expression => "message_number <= 3" })
-	rule = azure_service_bus_service.create_rule(rule)
+rule = Azure::ServiceBus::Rule.new("low-messages-rule")
+rule.topic = "test-topic"
+rule.subscription = "low-messages"
+rule.filter = Azure::ServiceBus::SqlFilter.new({
+  :sql_expression => "message_number <= 3" })
+rule = azure_service_bus_service.create_rule(rule)
+```
 
 メッセージが "test-topic" に送信されると、そのメッセージは "all-messages" トピック サブスクリプションにサブスクライブしている受信者に必ず配信され、さらにメッセージのコンテンツに応じて、"high-messages" および "low-messages" トピック サブスクリプションにサブスクライブしている受信者に対して選択的に配信されます。
 
@@ -165,11 +177,13 @@ Azure モジュールは、名前空間に接続するために必要な情報�
 
 次の例では、"test-topic" に 5 件のテスト メッセージを送信する方法を示します。各メッセージの **message\_number** カスタム プロパティの値が、ループの反復回数に応じて変化することに注意してください (これによってメッセージを受信するサブスクリプションが決定されます)。
 
-	5.times do |i|
-	  message = Azure::ServiceBus::BrokeredMessage.new("test message " + i,
-	    { :message_number => i })
-	  azure_service_bus_service.send_topic_message("test-topic", message)
-	end
+```
+5.times do |i|
+  message = Azure::ServiceBus::BrokeredMessage.new("test message " + i,
+    { :message_number => i })
+  azure_service_bus_service.send_topic_message("test-topic", message)
+end
+```
 
 Service Bus トピックでは、最大 256 MB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 MB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
@@ -183,11 +197,13 @@ Service Bus トピックでは、最大 256 MB までのメッセージをサポ
 
 次の例では、**receive\_subscription\_message()** を使用したメッセージの受信および処理の方法を示しています。この例では、まず **:peek\_lock** を **false** に設定して使用することで、"low-messages" サブスクリプションからメッセージを受信して削除します。次に、"high-messages" から別のメッセージを受信し、**delete\_subscription\_message()** を使用してそのメッセージを削除します。
 
-    message = azure_service_bus_service.receive_subscription_message(
-	  "test-topic", "low-messages", { :peek_lock => false })
-    message = azure_service_bus_service.receive_subscription_message(
-	  "test-topic", "high-messages")
-    azure_service_bus_service.delete_subscription_message(message)
+```
+message = azure_service_bus_service.receive_subscription_message(
+  "test-topic", "low-messages", { :peek_lock => false })
+message = azure_service_bus_service.receive_subscription_message(
+  "test-topic", "high-messages")
+azure_service_bus_service.delete_subscription_message(message)
+```
 
 ## アプリケーションのクラッシュと読み取り不能のメッセージを処理する
 
@@ -201,20 +217,24 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 トピックおよびサブスクリプションは永続的であり、[Azure クラシック ポータル](https://manage.windowsazure.com)またはプログラムによって明示的に削除する必要があります。次の例では、"test-topic" という名前のトピックを削除する方法を示します。
 
-	azure_service_bus_service.delete_topic("test-topic")
+```
+azure_service_bus_service.delete_topic("test-topic")
+```
 
 トピックを削除すると、そのトピックに登録されたサブスクリプションもすべて削除されます。サブスクリプションは、個別に削除することもできます。次のコードでは、"high-messages" という名前のサブスクリプションを "test-topic" トピックから削除する方法を示しています。
 
-	azure_service_bus_service.delete_subscription("test-topic", "high-messages")
+```
+azure_service_bus_service.delete_subscription("test-topic", "high-messages")
+```
 
 ## 次のステップ
 
 これで、Service Bus トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   [キュー、トピック、およびサブスクリプション](service-bus-queues-topics-subscriptions.md)に関するページを参照してください。
--   [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) の API のリファレンス
--	GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ
+- [キュー、トピック、およびサブスクリプション](service-bus-queues-topics-subscriptions.md)に関するページをご覧ください。
+- [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) の API のリファレンス
+- GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ
  
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0316_2016-->

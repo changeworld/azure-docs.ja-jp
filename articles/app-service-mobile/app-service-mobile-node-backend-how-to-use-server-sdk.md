@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter=""
 	authors="adrianhall"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -642,23 +642,23 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 	    // Send a push notification using APNS.
         context.push.apns.send(null, payload, function (error) {
             if (error) {
-                // Do something or log the error. 
-	        }           
+                // Do something or log the error.
+	        }
         });
     }
 
 クライアントからテンプレート プッシュ登録を作成することで、代わりに、サポートされるすべてのプラットフォーム上のデバイスにテンプレート プッシュ メッセージを送信できます。次のコードに、テンプレート通知を送信する方法を示します。
 
 	// Define the template payload.
-	var payload = '{"messageParam": "This is a template payload."}'; 
+	var payload = '{"messageParam": "This is a template payload."}';
 
     // Only do the push if configured
     if (context.push) {
 		// Send a template notification.
         context.push.send(null, payload, function (error) {
             if (error) {
-                // Do something or log the error.   
-            } 
+                // Do something or log the error.
+            }
         });
     }
 
@@ -671,8 +671,8 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 		// Send a notification to the current user.
         context.push.send(context.user.id, payload, function (error) {
             if (error) {
-                // Do something or log the error.   
-            } 
+                // Do something or log the error.
+            }
         });
     }
 
@@ -815,12 +815,10 @@ Azure Mobile Apps SDK では、要求オブジェクトを通じてコンテキ�
     api.get.access = 'authenticated';
     module.exports = api;
 
-
-
 ## <a name="Debugging"></a><a name="howto-diagnostic-logs"></a>方法: Azure Mobile Apps をデバッグ、診断、およびトラブルシューティングする
 
+Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。Node.js モバイル バックエンドのトラブルシューティングを開始する場合は、次の記事を参照してください。
 
-Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。これらの手法をすべて使用できます。
 - [Azure App Service の監視]
 - [Azure App Service での診断ログの有効化]
 - [Visual Studio での Azure App Service のトラブルシューティング]
@@ -872,7 +870,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [3]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/sqlexpress-config.png
 [4]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/sqlexpress-authconfig.png
 [5]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/sqlexpress-newuser-1.png
-[6]: ../../includes/media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png
+[6]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/dotnet-backend-create-db.png
 
 <!-- URLs -->
 [Android クライアントのクイック スタート]: app-service-mobile-android-get-started.md
@@ -914,4 +912,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

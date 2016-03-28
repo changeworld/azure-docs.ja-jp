@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="01/05/2016"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
 # SQL Server データベースのクラウド内の SQL Database への移行
@@ -47,10 +47,10 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 互換性のある SQL Server データベースを移行するために、マイクロソフトでは、さまざまなシナリオに合わせていくつかの移行方法を用意しています。許容できるダウンタイム、お使いの SQL Server データベースの規模と複雑さ、Microsoft Azure クラウドへの接続の状態に応じて、方法を選択できます。
 
 > [AZURE.SELECTOR]
-- [SSMS Migration Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
-- [Export to BACPAC File](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-- [Import from BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-- [Transactional Replication](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+- [SSMS の移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
+- [BACPAC ファイルへのエクスポート](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
+- [BACPAC ファイルからのインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [トランザクション レプリケーション](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
 
 移行方法を選択するときに最初に考える必要があるのは、移行中に運用環境からデータベースを取り出すことができるか、という点です。アクティブなトランザクションが発生しているときにデータベースを移行すると、データベースの整合性が損なわれ、データベースが破損する可能性があります。クライアント接続を無効にしたり、[データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 
@@ -65,4 +65,4 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 
 	 ![SQL Server database migration - migrate SQL database to the cloud.](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

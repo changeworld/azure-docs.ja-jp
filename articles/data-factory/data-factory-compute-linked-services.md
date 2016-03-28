@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="03/11/2016"
 	ms.author="spelluru"/>
 
 # コンピューティングのリンクされたサービス
@@ -38,41 +38,23 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 > [AZURE.IMPORTANT] オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
 
 ### 例
-次の JSON は、オンデマンド HDInsight のリンクされたサービスを定義します。Data Factory は、データ スライスを処理するときに、**Windows ベースの** HDInsight クラスターを自動的に作成します。このサンプル JSON では **osType** が指定されていないことに注意してください。このプロパティの既定値は **Windows** です。
-
-	{
-	  "name": "HDInsightOnDemandLinkedService",
-	  "properties": {
-	    "type": "HDInsightOnDemand",
-	    "typeProperties": {
-	      "version": "3.2",
-	      "clusterSize": 1,
-	      "timeToLive": "00:30:00",
-	      "linkedServiceName": "StorageLinkedService"
-	    }
-	  }
-	}
-
-
-次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。Data Factory サービスは、データ スライスを処理するときに、**Linux ベースの** HDInsight クラスターを自動的に作成します。**sshUserName** と **sshPassword** の値を指定する必要があります。
+次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。Data Factory サービスは、データ スライスを処理するときに、**Linux ベースの** HDInsight クラスターを自動的に作成します。
 
 
 	{
 	    "name": "HDInsightOnDemandLinkedService",
 	    "properties": {
-	        "hubName": "getstarteddf0121_hub",
 	        "type": "HDInsightOnDemand",
 	        "typeProperties": {
-	            "version": "3.2",
 	            "clusterSize": 4,
 	            "timeToLive": "00:05:00",
 	            "osType": "linux",
-	            "sshPassword": "MyPassword!",
-	            "sshUserName": "myuser",
-	            "linkedServiceName": "StorageLinkedService",
+	            "linkedServiceName": "StorageLinkedService"
 	        }
 	    }
 	}
+
+Windows ベースの HDInsight クラスターを使用するには、**osType** を **windows** に設定します。既定値が windows の場合、プロパティは使用しないでください。
 
 > [AZURE.IMPORTANT] 
 HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
@@ -91,8 +73,6 @@ linkedServiceName | データの保存し、処理するためのオンデマン
 additionalLinkedServiceNames | Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 | いいえ
 osType | オペレーティング システムの種類。使用可能な値: Windows (既定値) および Linux | いいえ
 hcatalogLinkedServiceName | HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。オンデマンド HDInsight クラスターは、Azure SQL データベースをメタストアとして使用して作成されます。 | いいえ
-sshUser | Linux ベースの HDInsight クラスターの SSH ユーザー。 | はい (Linux のみ)
-sshPassword | Linux ベースの HDInsight クラスターの SSH パスワード。 | はい (Linux のみ)
 
 
 #### additionalLinkedServiceNames JSON の例
@@ -126,7 +106,6 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 	    "typeProperties": {
 	      "clusterSize": 16,
 	      "timeToLive": "01:30:00",
-	      "version": "3.2",
 	      "linkedServiceName": "adfods1",
 	      "coreConfiguration": {
 	        "templeton.mapper.memory.mb": "5000"
@@ -362,4 +341,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

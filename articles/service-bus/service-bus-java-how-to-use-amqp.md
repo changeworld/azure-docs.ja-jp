@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="11/06/2015" 
+	ms.date="03/09/2016" 
 	ms.author="sethm"/>
 
 # サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
@@ -22,7 +22,7 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 AMQP 1.0 の追加により、サービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できるようになります。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-このハウツー ガイドでは、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションからサービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。
+このハウツー ガイドでは、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。
 
 ## Service Bus の概要
 
@@ -30,7 +30,7 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 ### AMQP 1.0 JMS クライアント ライブラリのダウンロード
 
-Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、「[http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)」を参照してください。
+Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、[https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) を参照してください。
 
 Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
@@ -83,7 +83,7 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 - **[username]**: Service Bus 発行者名。
 - **[password]**: Service Bus 発行者キーの URL エンコード形式。
 
-> [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
+> [AZURE.NOTE] パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
 #### 送信先の構成
 
@@ -103,7 +103,7 @@ topic.[jndi_name] = [physical_name]
 - **[jndi\_name]**: 送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
 - **[physical\_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
 
-> [AZURE.NOTE]Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
+> [AZURE.NOTE] Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
 
 ### JMS アプリケーションの記述
 
@@ -332,4 +332,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0316_2016-->

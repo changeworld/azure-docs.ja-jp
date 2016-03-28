@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Data Catalog の新機能"
+   pageTitle="Azure Data Catalog の新機能 | Microsoft Azure"
    description="Azure Data Catalog プレビューの新機能の概要です。"
    services="data-catalog"
    documentationCenter=""
@@ -13,12 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="02/19/2016"
+   ms.date="03/14/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
+
+## 2016 年 3 月 11 日の週のリリースの新機能
+
+2016 年 3 月 11 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- **Azure Data Catalog** サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。既存の検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止されるため、推奨していません。API のセマンティクスに変更はありません。エンドポイント URI のみが変更されます。詳細については、「[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)」を参照してください。API サンプルについては、「[Azure Data Catalog 開発者向けサンプル](data-catalog-samples.md)」を参照してください。
 
 ## 2016 年 2 月 19 日の週のリリースの新機能
 
@@ -26,7 +32,7 @@
 
 - **Azure Data Catalog** データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。データ ソース登録ツールが更新され、**Azure Data Catalog** がサポートするデータ ソースからのユーザーの特定、選択が簡単になりました。
 - **Azure Data Catalog** ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。英語に加え、**Azure Data Catalog** 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。**Azure Data Catalog** ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-- ビジネス継続性と障害復旧のための **Azure Data Catalog** データの geo レプリケーションがサポートされるようになりました。データ ソースのメタデータとクラウドソースの注釈を含むすべての **Azure Data Catalog** コンテンツが、追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。Azure リージョンは 500 マイル以上離れて事前にペアに指定されます。「[ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載されたマッピングをご確認ください。 
+- ビジネス継続性と障害復旧のための **Azure Data Catalog** データの geo レプリケーションがサポートされるようになりました。データ ソースのメタデータとクラウドソースの注釈を含むすべての **Azure Data Catalog** コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。Azure リージョンは 500 マイル以上離れて事前にペアに指定されます。「[ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載されたマッピングをご確認ください。
 
 
 ## 2016 年 2 月 5 日の週のリリースの新機能
@@ -54,7 +60,7 @@
 
 ## 2016 年 1 月 22 日の週のリリースの新機能
 
-2016 年 1 月 22日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+2016 年 1 月 22 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - SAP HANA のビューおよびパッケージを登録して検出するためのサポート。ユーザーは **Azure Data Catalog** データ ソース登録ツールを使用して SAP HANA データ ソースを登録し、**Azure Data Catalog** ポータルを使用して登録済み SAP HANA データ ソースの注釈付けや検出を行うことができます。
 
@@ -65,7 +71,7 @@
 - **Azure Data Catalog** ポータルでデータ資産をピン留め/ピン留め解除する機能。ユーザーはデータ資産のピン留めを選択することで、再検出/再利用しやすくなります。
 - **Azure Data Catalog** ポータルの新たに再設計されたホーム ページ。新しいホーム ページには、最近公開またはピン留めされた資産、保存された検索など、現在のユーザーのアクティビティに関する詳細な情報のほか、カタログ全体でのアクティビティに関する詳細な情報も含まれています。
 - **Azure Data Catalog** ポータルでの固定のユーザー設定のサポート。ユーザー エクスペリエンスの設定 (グリッドまたはタイル ビュー、ページあたりの結果の数、検索結果の強調表示のオンまたはオフなど) はユーザー セッション間で永続化されます。
-- **Azure Data Catalog** が、2 つの新しい Azure リージョンで利用できるようになりました。顧客は **Azure Data Catalog** を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
+- **Azure Data Catalog** が、2 つの新しい Azure リージョンで利用できるようになりました。お客様は **Azure Data Catalog** を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
 
 ## 2015 年 12 月 18 日の週のリリースの新機能
 
@@ -210,4 +216,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

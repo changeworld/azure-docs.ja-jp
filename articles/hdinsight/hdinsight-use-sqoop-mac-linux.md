@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="03/09/2016"
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (SSH)
@@ -42,12 +42,6 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 - **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページを参照してください。
 
-- **Linux ベースの HDInsight クラスター**: クラスターのプロビジョニングの手順については、「[HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
-
-- **Azure SQL データベース**: このドキュメントでは、SQL データベースの例を作成するための手順を説明します。SQL Database の詳細については、[Azure SQL データベースの使用開始][sqldatabase-get-started]に関するページを参照してください。
-
-* **SQL Server**: このドキュメントの手順は、多少変更するだけで SQL Server でも使用できます。ただし、HDInsight クラスターと SQL Server の両方が同じ Azure Virtual Network 上に存在する必要があります。この記事の使用に固有の SQL Server の要件の詳細については、「[SQL Server の使用](#using-sql-server)」セクションを参照してください。
-
 ##シナリオの理解
 
 HDInsight クラスターにはサンプル データがいくつか付属しています。****wasb:///hive/warehouse/hivesampletable** にあるデータ ファイルを参照する **hivesampletable** という名前の Hive テーブルを使用します。テーブルはモバイル デバイスのデータを含んでいます。Hive テーブルのスキーマは次のとおりです。
@@ -68,92 +62,66 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 まず、**hivesampletable** を Azure SQL Database、または SQL Server の **mobiledata** という名前のテーブルにエクスポートしてから、そのテーブルを ****wasb:///tutorials/usesqoop/importeddata** の HDInsight にインポートします。
 
-##データベースの作成
 
-1. ターミナルまたはコマンド プロンプトを開き、次のコマンドを使用して、新しい Azure SQL Database サーバーを作成します。
+## クラスターと SQL Database を作成します。
 
-        azure sql server create <adminLogin> <adminPassword> <region>
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
-    たとえば、`azure sql server create admin password "West US"` です。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    
+    ARM テンプレートはパブリック BLOB コンテナー内にあります (**https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*)。
+    
+    ARM テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。bacpac パッケージは、パブリック BLOB コンテナー内にもあります (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac)。bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+    
+        "storageKeyType": "Primary",
+        "storageKey": "<TheAzureStorageAccountKey>",
+    
+2. [パラメーター] ブレードで、次の各項目を入力します。
 
-    コマンドが完了したら、次のような応答が返されます。
+    - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
+    - **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
+    - **SSH のユーザー名とパスワード**。
+    - **SQL Database サーバーのログイン名およびパスワード**。
 
-        info:    Executing command sql server create
-        + Creating SQL Server
-        data:    Server Name i1qwc540ts
-        info:    sql server create command OK
+    次の値は、変数セクションにハードコードされています。
+    
+    |既定のストレージ アカウント名|<CluterName>ストア|
+    |----------------------------|-----------------|
+    |Azure SQL データベース サーバー名|<ClusterName>dbserver|
+    |Azure SQL データベース名|<ClusterName>db|
+    
+    これらの値を書き留めておいてください。この情報は後で必要になります。
+    
+3\. **[OK]** をクリックしてパラメーターを保存します。
 
-    > [AZURE.IMPORTANT] このコマンドによって返されるサーバーの名前に注意してください。これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。
+4\. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 
-2. 次のコマンドを使用して **sqooptest** という名前のデータベースを SQL Database サーバーに作成します。
+5\. **[法律条項]** をクリックし、**[作成]** をクリックします。
 
-        azure sql db create [options] <serverName> sqooptest <adminLogin> <adminPassword>
+6\. **[作成]** をクリックします。"Submitting deployment for Template deployment" という新しいタイルが表示されます。クラスターと SQL Database の作成には約 20 分かかります。
 
-    コマンドが完了すると、"OK" というメッセージが返されます。
+既存の Azure SQL Database または Microsoft SQL Server を使用する場合
 
-	> [AZURE.NOTE] アクセスできないことを示すエラーが返される場合は、次のコマンドを使用して、SQL Database ファイアウォールに、クライアント ワークステーションの IP アドレスの追加が必要になる場合があります。
-	>
-	> `azure sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
+- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
 
-##テーブルの作成
+    > [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configue]」を参照してください。
 
-> [AZURE.NOTE] SQL Database に接続してテーブルを作成するには、多くの方法があります。次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
+- **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
 
-1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
+    > [AZURE.NOTE] HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
 
-	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
+    * 仮想ネットワークを作成および構成する場合は、「[Virtual Network の構成タスク](../services/virtual-machines/)」を参照してください。
 
-    * **Linux、Unix または OS X クライアント**: 「[Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
+        * SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
 
-    * **Windows クライアント**: 「[Windows からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
+            > [AZURE.NOTE] **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
 
-3. 次のコマンドを使用して FreeTDS をインストールします。
+        * SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
 
-        sudo apt-get --assume-yes install freetds-dev freetds-bin
+    * 仮想ネットワークに HDInsight クラスターを作成する場合は、「[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
 
-4. FreeTDS がインストールされると、次のコマンドを使用して、以前に作成した SQL Database サーバーに接続できます。
-
-        TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
-
-    次のような出力が返されます。
-
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to sqooptest
-        1>
-
-5. `1>` プロンプトで、以下の行を入力します。
-
-        CREATE TABLE [dbo].[mobiledata](
-        [clientid] [nvarchar](50),
-        [querytime] [nvarchar](50),
-        [market] [nvarchar](50),
-        [deviceplatform] [nvarchar](50),
-        [devicemake] [nvarchar](50),
-        [devicemodel] [nvarchar](50),
-        [state] [nvarchar](50),
-        [country] [nvarchar](50),
-        [querydwelltime] [float],
-        [sessionid] [bigint],
-        [sessionpagevieworder] [bigint])
-        GO
-        CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
-        GO
-
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。最初に、**mobiledata** テーブルが作成され、次にクラスター化インデックスがそのテーブルに追加されます (SQL Database が必要)。
-
-    次を使用して、テーブルが作成されたことを確認します。
-
-        SELECT * FROM information_schema.tables
-        GO
-
-    次のような出力が表示されます。
-
-        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        sqooptest       dbo     mobiledata      BASE TABLE
-
-8. `1>` プロンプトで「`exit`」と入力して、tsql ユーティリティを終了します。
+    > [AZURE.NOTE] SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
+	
 
 ##Sqoop のエクスポート
 
@@ -263,4 +231,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

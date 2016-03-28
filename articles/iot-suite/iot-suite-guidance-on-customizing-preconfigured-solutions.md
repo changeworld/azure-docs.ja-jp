@@ -28,10 +28,7 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 - リモート監視: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 - 予測的なメンテナンス: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
 
-構成済みソリューションのソース コードは、Azure IoT Suite を使用して IoT ソリューションのエンド ツー エンド機能を実装する際に使用されるパターンとプラクティスを示すために提供されています。コマンドラインからの構築とデプロイに関するガイダンスについては、各構成済みソリューションに関する GitHub の Wiki に記載されています。
-
-- [リモート監視に関する Wiki](https://github.com/Azure/azure-iot-remote-monitoring/wiki)
-- [予測的なメンテナンスに関する Wiki](https://github.com/Azure/azure-iot-predictive-maintenance/wiki)
+構成済みソリューションのソース コードは、Azure IoT Suite を使用して IoT ソリューションのエンド ツー エンド機能を実装する際に使用されるパターンとプラクティスを示すために提供されています。ソリューションをビルドしてデプロイする方法の詳細については、GitHub リポジトリを参照してください。
 
 ## 構成済みソリューションのアクセス許可の管理
 各構成済みソリューションのソリューション ポータルは、新しい Azure Active Directory アプリケーションとして作成されています。ソリューション ポータル (AAD アプリケーション) のアクセス許可は次の方法で管理できます。
@@ -92,4 +89,4 @@ IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

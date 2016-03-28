@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # iOS アプリに認証を追加する
@@ -44,4 +44,4 @@ Xcode で、**[Run]** をクリックしてアプリケーションを開始し�
 
 [Azure portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

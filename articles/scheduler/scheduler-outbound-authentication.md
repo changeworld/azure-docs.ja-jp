@@ -1,20 +1,20 @@
-<properties 
- pageTitle="Scheduler 送信認証" 
- description="" 
- services="scheduler" 
- documentationCenter=".NET" 
- authors="krisragh" 
- manager="dwrede" 
+<properties
+ pageTitle="Scheduler 送信認証"
+ description=""
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
-<tags 
- ms.service="scheduler" 
- ms.workload="infrastructure-services" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="12/04/2015" 
+<tags
+ ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
- 
+
 # Scheduler 送信認証
 
 Scheduler ジョブでは、認証を必要とするサービスを呼び出すことが必要になる場合があります。このようにして、呼び出されたサービスは、Scheduler ジョブがそのリソースにアクセスできるかどうかを確認できます。このようなサービスには、他の Azure サービス、Salesforce.com、Facebook、およびセキュリティで保護されたカスタム Web サイトが含まれます。
@@ -56,7 +56,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 次のサンプル要求では、`ClientCertificate` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
 
 
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
+	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler
 	x-ms-version: 2013-03-01
 	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
 	Content-Type: application/json; charset=utf-8
@@ -98,7 +98,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 	x-ms-servedbyregion: ussouth2
 	X-AspNet-Version: 4.0.30319
 	X-Powered-By: ASP.NET
-	 
+
 
 	{
 	  "id": "testScheduler",
@@ -155,7 +155,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 
 次のサンプル要求では、`Basic` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
 
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
+	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler
 	x-ms-version: 2013-03-01
 	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
 	Content-Type: application/json; charset=utf-8
@@ -259,7 +259,7 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 
 次のサンプル要求では、`ActiveDirectoryOAuth` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
 
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
+	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler
 	x-ms-version: 2013-03-01
 	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
 	Content-Type: application/json; charset=utf-8
@@ -336,10 +336,10 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 	}
 
 ## 関連項目
- 
+
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -354,10 +354,4 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
-
-  
-
- 
-  
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

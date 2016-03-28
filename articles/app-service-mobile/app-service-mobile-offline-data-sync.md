@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="03/14/2016"
 	ms.author="wesmc"/>
 
 # Azure モバイル アプリでのオフライン データ同期
@@ -58,26 +58,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 
 *同期コンテキスト*はモバイル クライアント オブジェクト (`IMobileServiceClient` や `MSClient` など) に関連付けられており、同期テーブルに対して行われた変更を追跡します。同期コンテキストにより、後でサーバーに送信される CUD 操作 (作成、更新、削除) の順序付きリストを保持する*操作のキュー*が維持されます。
 
-同期コンテキストへのローカル ストアの関連付けは、初期化メソッド (.NET クライアント SDK の `IMobileServicesSyncContext.InitializeAsync(localstore)` など) を使用して行います。
-
-<!-- TODO: link to client references -->
-
-
-<!--
-Client code will interact with the table using the `IMobileServiceSyncTable` interface to support offline buffering. This interface supports all the methods of `IMobileServiceTable` along with additional support for pulling data from a Mobile App backend table and merging it into a local store table. How the local table is synchronized with the backend database is mainly controlled by your logic in the client app.
-
-The sync table uses the [System Properties](https://msdn.microsoft.com/library/azure/dn518225.aspx) on the table to implement change tracking for offline synchronization.
-
-
-
-* The data objects on the client should have some system properties, most are not required.
-	* Managed
-		* Write out the attributes
-	* iOS
-		*table for the entity
-* Note: because the iOS local store is based on Core Data, the developer must define the following tables:
-	* System tables  -->
-
+同期コンテキストへのローカル ストアの関連付けは、initialize メソッド ([.NET クライアント SDK] の `IMobileServicesSyncContext.InitializeAsync(localstore)` など) を使用して行います。
 
 ## オフライン同期のしくみ
 
@@ -89,9 +70,9 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 
 * **暗黙的なプッシュ**: 保留中のローカルの更新があるテーブルに対してプルが実行された場合、プルはまず同期コンテキストに対してプッシュを実行します。これにより、キュー済みの変更とサーバーの新規データとの競合が最小限に抑えられます。
 
-* **増分同期**: プル操作の最初のパラメーターは*クエリ名*であり、これはクライアントでのみ使用されます。null 以外のクエリ名を使用する場合、Azure Mobile SDK は*増分同期*を実行します。プル操作で結果のセットが返されるたびに、その結果セットから最新の `__updatedAt` タイムスタンプが SDK ローカル システム テーブルに格納されます。それ以降のプル操作では、そのタイムスタンプより後のレコードだけが取得されます。
+* **増分同期**: プル操作の最初のパラメーターは*クエリ名*であり、これはクライアントでのみ使用されます。null 以外のクエリ名を使用する場合、Azure Mobile SDK は*増分同期*を実行します。プル操作で結果のセットが返されるたびに、その結果セットから最新の `updatedAt` タイムスタンプが SDK ローカル システム テーブルに格納されます。それ以降のプル操作では、そのタイムスタンプより後のレコードだけが取得されます。
 
-  増分同期を使用するには、サーバーが意味のある `__updatedAt` 値を返すとともに、このフィールドでの並べ替えをサポートしている必要があります。ただし、SDK はupdatedAt フィールドに独自の並べ替えを追加するため、固有の `$orderBy$` 句を含むプル クエリは使用できません。
+  増分同期を使用するには、サーバーが意味のある `updatedAt` 値を返すとともに、このフィールドでの並べ替えをサポートしている必要があります。ただし、SDK はupdatedAt フィールドに独自の並べ替えを追加するため、固有の `$orderBy$` 句を含むプル クエリは使用できません。
 
   クエリ名は任意の文字列にすることができますが、アプリ内の論理クエリごとに一意である必要があります。一意でない場合、異なるプル操作によって同じ増分同期のタイムスタンプが上書きされて、クエリが誤った結果を返す可能性があります。
 
@@ -100,11 +81,6 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 		await todoTable.PullAsync("todoItems" + userid, syncTable.Where(u => u.UserId = userid));
 
   増分同期を無効にする場合は、`null` をクエリ ID として渡します。この場合、`PullAsync` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
-
-
-
-<!--   mymobileservice-code.azurewebsites.net/tables/TodoItem?$filter=(__updatedAt ge datetimeoffset'1970-01-01T00:00:00.0000000%2B00:00')&$orderby=__updatedAt&$skip=0&$top=50&__includeDeleted=true&__systemproperties=__updatedAt%2C__deleted
- -->
 
 * **消去**: ローカル ストアのコンテンツは `IMobileServiceSyncTable.PurgeAsync` を使用して削除できます。消去は、クライアント データベースに古くなったデータがある場合、または保留中の変更をすべて破棄する場合に行う必要があります。
 
@@ -120,11 +96,11 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 * [Windows 8.1: オフライン同期を有効にする]
 
 <!-- Links -->
+[.NET クライアント SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Android: オフライン同期を有効にする]: app-service-mobile-android-get-started-offline-data.md
+[iOS: オフライン同期を有効にする]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Windows 8.1: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-[Android: オフライン同期を有効にする]: ../app-service-mobile-android-get-started-offline-data.md
-[iOS: オフライン同期を有効にする]: ../app-service-mobile-ios-get-started-offline-data.md
-[Xamarin iOS: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Windows 8.1: オフライン同期を有効にする]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

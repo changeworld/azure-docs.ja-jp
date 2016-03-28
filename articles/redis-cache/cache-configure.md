@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="03/04/2016"
+	ms.date="03/10/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -25,57 +25,72 @@
 
 キャッシュには、[Azure ポータル](https://portal.azure.com)で **[参照]** ブレードを使用してアクセスできます。
 
-![Azure Redis Cache の参照ブレード](./media/cache-configure/IC796920.png)
+![Azure Redis Cache の参照ブレード](./media/cache-configure/redis-cache-browse.png)
 
-**[Redis Caches]** をクリックしてキャッシュを表示します。
+**[Redis Caches]** をクリックしてキャッシュを表示します。最近 Redis Cache を参照した場合は、**[参照]** をクリックしなくても一覧から **[Redis Cache]** を直接クリックできます。
 
-![Azure Redis Cache の参照キャッシュ リスト](./media/cache-configure/IC796921.png)
+![Azure Redis Cache の参照キャッシュ リスト](./media/cache-configure/redis-caches.png)
 
 キャッシュのプロパティを表示するには、目的のキャッシュを選択します。
 
-![Redis Cache のすべての設定](./media/cache-configure/IC808312.png)
+![Redis Cache のすべての設定](./media/cache-configure/redis-cache-blade.png)
 
 **[設定]** または **[すべての設定]** をクリックしてキャッシュを表示し、構成します。
 
-![Redis Cache の設定](./media/cache-configure/IC808313.png)
+![Redis Cache の設定](./media/cache-configure/redis-cache-settings.png)
 
-## プロパティ
+Azure Redis Cache の **[設定]** ブレードには次の設定が用意されています。
+
+-	[サポートおよびトラブルシューティング設定](#support-amp-troubleshooting-settings)
+-	[全般設定](#general-settings)
+	-	[プロパティ](#properties)
+	-	[アクセス キー](#access-keys)
+	-	[アクセス ポート](#access-ports)
+	-	[Maxmemory ポリシー](#maxmemory-policy-and-maxmemory-reserved)
+	-	[詳細設定 (キースペース通知)](#keyspace-notifications-advanced-settings)
+	-	[推奨事項](#recommendations)
+-	[データ管理設定](#data-management-settings)
+	-	[Redis データの保持](#redis-data-persistence)
+-	[ネットワーク設定](#network-settings)
+-	[診断設定](#diagnostics-settings)
+-	[スケールの設定](#scale-settings)
+	-	[[価格レベル]](#pricing-tier)
+	-	[Redis クラスター サイズ](#cluster-size)
+-	[リソース管理設定](#resource-management-settings)
+
+## サポートおよびトラブルシューティング設定
+
+キャッシュに対して実行された操作を表示するには、**[監査ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」のセクションを参照してください。
+
+## 全般設定
+
+**[全般]** セクションの設定では、キャッシュに関する次の設定にアクセスして構成することができます。
+
+![全般設定](./media/cache-configure/redis-cache-general-settings.png)
+
+### プロパティ
 
 **[プロパティ]** をクリックすると、キャッシュ エンドポイントやポートなど、キャッシュに関する情報を表示できます。
 
-![Redis Cache のプロパティ](./media/cache-configure/IC808314.png)
+![Redis Cache のプロパティ](./media/cache-configure/redis-cache-properties.png)
 
-## アクセス キー
+### アクセス キー
 
 **[アクセス キー]** をクリックすると、キャッシュのアクセス キーを表示したり、再生成したりできます。これらのキーは、キャッシュに接続するクライアントによって、**[プロパティ]** ブレードのホスト名とポートと共に使用されます。
 
-![Redis Cache のアクセス キー](./media/cache-configure/IC808315.png)
+![Redis Cache のアクセス キー](./media/cache-configure/redis-cache-manage-keys.png)
 
-## アクセス ポート
+### アクセス ポート
 
 新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。非 SSL ポートを有効にするには、**[アクセス ポート]** ブレードをクリックし、**[いいえ]** をクリックします。
 
-![Redis Cache のアクセス ポート](./media/cache-configure/IC808316.png)
+![Redis Cache のアクセス ポート](./media/cache-configure/redis-cache-access-ports.png)
 
-## [価格レベル]
-
-キャッシュの価格レベルを表示または変更するには、**[価格レベル]** をクリックします。スケーリングの詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
-
-![Redis Cache 価格レベル](./media/cache-configure/pricing-tier.png)
-
-## 診断
-
-**[診断]** をクリックすると、キャッシュ診断の格納に使用するストレージ アカウントを構成できます。
-
-![Redis Cache の診断](./media/cache-configure/IC808317.png)
-
-詳細については、[Azure Redis Cache の監視方法](cache-how-to-monitor.md)に関するページを参照してください。
-
-## maxmemory-policy と maxmemory-reserved
+### maxmemory-policy と maxmemory-reserved
 
 **[Maxmemory ポリシー]** をクリックしてキャッシュのメモリ ポリシーを構成します。**maxmemory-policy** 設定は、キャッシュの削除ポリシーを構成し、**maxmemory-reserved** は、キャッシュ以外のプロセスのために予約されたメモリを構成します。
 
-![Redis Cache の Maxmemory ポリシー](./media/cache-configure/IC808318.png)
+![Redis Cache の Maxmemory ポリシー](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
 **[Maxmemory ポリシー]** では、次の削除ポリシーから選択できます。
 
@@ -92,17 +107,50 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 >[AZURE.IMPORTANT] **maxmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
 
-## キースペース通知 (詳細設定)
+### キースペース通知 (詳細設定)
 
 **[詳細設定]** をクリックして Redis キースペース通知を構成します。キースペース通知により、特定のイベントが発生したときに、クライアントが通知を受信できます。
 
-![Redis Cache の高度な設定](./media/cache-configure/IC808319.png)
+![Redis Cache の高度な設定](./media/cache-configure/redis-cache-advanced-settings.png)
 
 >[AZURE.IMPORTANT] キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュと Premium キャッシュに対してのみ使用可能です。
 
 詳細については、[Redis キースペース通知](http://redis.io/topics/notifications)に関するトピックを参照してください。サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
 
-## Redis データの保持
+### 推奨事項
+
+**[推奨事項]** ブレードにキャッシュに関する推奨事項が表示されます。通常の操作中に推奨事項は表示されません。
+
+![推奨事項](./media/cache-configure/redis-cache-no-recommendations.png)
+
+キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、**[Redis Cache]** ブレードにアラートが表示されます。
+
+![推奨事項](./media/cache-configure/redis-cache-recommendations-alert.png)
+
+詳細情報については、**[推奨事項]** ブレードで確認できます。
+
+![推奨事項](./media/cache-configure/redis-cache-recommendations.png)
+
+**[Redis Cache]** ブレードの [[監視グラフ]](cache-how-to-monitor.md#monitoring-charts) および [[使用状況グラフ]](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
+
+各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。長時間にわたり、キャッシュがこれらのメトリックの最大容量に近づいている場合は、推奨項目が作成されます。**[推奨事項]** ツールで検証されるメトリックと制限の詳細については、次の表を参照してください。
+
+| Redis Cache メトリック | 詳細情報の参照先 |
+|-------------------------|---------------------------------------------------------------------------|
+| ネットワーク帯域幅の使用量 | [キャッシュ パフォーマンス - 使用できる帯域幅](cache-faq.md#cache-performance) |
+| 接続されているクライアント数 | [既定の Redis サーバー構成 - maxclients](#maxclients) |
+| サーバーの負荷 | [使用状況グラフ - Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
+| メモリ使用量 | [キャッシュのパフォーマンス - サイズ](cache-faq.md#cache-performance) |
+
+キャッシュをアップグレードするには、**[今すぐアップグレード]** をクリックして、[価格レベル](#pricing-tier)を変更し、キャッシュのスケーリングを行います。価格レベルの選択の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+
+## データ管理設定
+
+**[データ管理]** セクションの設定では、キャッシュに関する次の設定にアクセスして構成することができます。
+
+![データ管理](./media/cache-configure/redis-cache-data-management.png)
+
+### Redis データの保持
 
 **[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。
 
@@ -118,8 +166,40 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 >[AZURE.IMPORTANT] Redis のデータ永続化は、Premium Cache でのみ使用できます。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 
+## ネットワーク設定
+
+**[ネットワーク]** セクションの設定では、キャッシュに関する次の設定にアクセスして構成することができます。
+
+![ネットワーク](./media/cache-configure/redis-cache-network.png)
+
+>[AZURE.IMPORTANT] 仮想ネットワークの設定は、キャッシュ作成時に VNET サポートで構成されたプレミアム キャッシュでのみ使用できます。VNET サポートでのプレミアム キャッシュの作成およびその設定の更新の詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
+
+## 診断設定
+
+**[診断]** セクションでは、Redis Cache に対する診断を構成することができます。
+
+![診断](./media/cache-configure/redis-cache-diagnostics.png)
+
+**[診断]** をクリックすると、キャッシュ診断の格納に使用するストレージ アカウントを構成できます。
+
+![Redis Cache の診断](./media/cache-configure/redis-cache-diagnostics-settings.png)
+
+詳細については、[Azure Redis Cache の監視方法](cache-how-to-monitor.md)に関するページを参照してください。
+
+## スケールの設定
+
+**[スケール]** セクションの設定では、キャッシュに関する次の設定にアクセスして構成することができます。
+
+![ネットワーク](./media/cache-configure/redis-cache-scale.png)
+
+### [価格レベル]
+
+キャッシュの価格レベルを表示または変更するには、**[価格レベル]** をクリックします。スケーリングの詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
+
+![Redis Cache 価格レベル](./media/cache-configure/pricing-tier.png)
+
 <a name="cluster-size"></a>
-## Redis クラスター サイズ
+### Redis クラスター サイズ
 
 クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
@@ -132,9 +212,9 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 >[AZURE.IMPORTANT] Redis クラスタリングは、Premium キャッシュでのみ使用できます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
 
-## ユーザーとタグ
+## リソース管理設定
 
-![Redis Cache のユーザーとタグ](./media/cache-configure/IC808320.png)
+![Redis Cache のユーザーとタグ](./media/cache-configure/redis-cache-resource-management.png)
 
 **[ユーザー]** セクションでは、Azure ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、「[Azure ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkId=512803)」をご覧ください。
 
@@ -160,7 +240,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 |lua-event-limit|500|これは、スクリプト イベント キューの最大サイズです。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。詳細については、[http://redis.io/topics/clients](http://redis.io/topics/clients) を参照してください。|
 
-<sup>1</sup>`maxclients` は Azure Redis Cache の価格レベルによって異なります。
+<a name="maxclients"></a> <sup>1</sup>`maxclients` は Azure Redis Cache の価格レベルによって異なります。
 
 -	Basic キャッシュおよび Standard キャッシュ
 	-	C0 (250 MB) キャッシュ - 最大 256 接続
@@ -210,7 +290,15 @@ Redis コンソールにアクセスするには、**[Redis Cache]** ブレー�
 
 Azure Redis Cache で無効な Redis コマンドの一覧については、前の「[Azure Redis Cache でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-redis-cache)」セクションを参照してください。Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
 
+## 新しいサブスクリプションへのキャッシュの移動
+
+新しいサブスクリプションにキャッシュを移動するには、**[移動]** をクリックします。
+
+![Redis Cache の移動](./media/cache-configure/redis-cache-move.png)
+
+リソース グループ間、およびサブスクリプション間でのリソースの移動については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../resource-group-move-resources.md)」を参照してください。
+
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0316_2016-->

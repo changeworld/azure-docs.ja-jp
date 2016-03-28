@@ -33,7 +33,7 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 
 ![portal.azure.com を開いてから Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-analytics/001.png)
 
-## 行数のカウント
+## 行数の[カウント](app-analytics-aggregations.md#count)
 
 パフォーマンス カウンターなどのメトリックは、メトリックというテーブルに格納されます。各行は、アプリの Application Insights SDK から受信したテレメトリ データ ポイントです。テーブルの大きさを説明するために、ここでは単に行数をカウントする演算子にその内容をパイプします。
 
@@ -50,9 +50,9 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 ![](./media/app-analytics-tour/010.png)
 
 	
-`Count` は多くの[クエリ演算子](app-analytics-queries.md)の 1 つです。複数のステージで、データのパイプ処理、フィルター処理、リシェイプおよび結合を行うために配置できます。
+[`Count`](app-analytics-aggregations.md#count) は多くの[クエリ演算子](app-analytics-queries.md)の 1 つです。複数のステージで、データのパイプ処理、フィルター処理、リシェイプおよび結合を行うために配置できます。
 	
-## take: n 個の行を表示する
+## [take](app-analytics-aggregations.md#take): n 個の行を表示する
 
 
 たとえば、以下のように 5 個の行を表示するとします。
@@ -75,9 +75,9 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 ![テーブルを選択し、列の構成を使用する](./media/app-analytics-tour/040.png)
 
 
-## top および sort
+## [top](app-analytics-aggregations.md#top) および [sort](app-analytics-aggregations.md#sort)
 
-`take` は結果のサンプルをすばやく取得するのに便利ですが、特定の順序でテーブルの行を表示することはできません。任意の順序で表示するには、`top` (サンプルの場合) または `sort` (テーブル全体の場合) を使用します。
+`take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
 
 特定の列で並べ替えた最初の n 個の行を表示する場合は、以下のように指定します。
 
@@ -100,12 +100,12 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 
 結果は同じですが、実行時間が少し長くなります。(`sort` のエイリアスである `order` を記述することもできます。)
 
-テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合は、取得したレコードしか並べ替えることはできません。
+テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、並べ替えるのは取得したレコードのみとなります。
 
 
-## project: 列を選択、名前変更および計算する
+## [project](app-analytics-aggregations.md#project): 列を選択、名前変更および計算する
 
-必要な列だけを選択する場合は、次のように `project` を使用します。
+必要な列だけを選択する場合は、次のように [`project`](app-analytics-aggregations.md#project) を使用します。
 
 ```AIQL
 
@@ -138,9 +138,9 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 
 [式](app-analytics-scalars.md)には、よくある演算子 (`+` や `-` など) をすべて含めることができ、さまざまな便利な関数があります。
 
-## extend: 列を計算する
+## [extend](app-analytics-aggregations.md#extend): 列を計算する
 
-単に列を既存の列に追加する場合は、以下のように `extend` を使用します。
+単に列を既存のものに追加する場合は、以下のように [`extend`](app-analytics-aggregations.md#extend) を使用します。
 
 ```AIQL
 
@@ -149,9 +149,9 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-既存の列をすべて保持する場合、`extend` を使用すると `project` よりも詳細度が低くなります。
+既存の列をすべて保持する場合に、[`extend`](app-analytics-aggregations.md#extend) を使用すると [`project`](app-analytics-aggregations.md#project) よりも詳細度が低くなります。
 
-## summarize: 行のグループをまとめる
+## [summarize](app-analytics-aggregations.md#summarize): 行のグループをまとめる
 
 テーブルのサンプルを見ると、フィールドでさまざまなテレメトリ データがレポートされていることがわかります。たとえば、`exception | take 20` の場合、`outerExceptionType` というフィールドで例外メッセージがレポートされていることがすぐにわかります。
 
@@ -194,7 +194,7 @@ summarize の結果には以下のものが含まれます。
 ## スカラー値による集計
 
 
-by 句ではスカラー (数、時間、または間隔) 値を使用することができます。ただし、数値の場合、通常は連続する範囲を入力します。データ ポイントをグループ化するには、不連続値のビンに割り当てる必要があります。`bin` 関数はこの場合に便利です。
+by 句ではスカラー (数、時間、または間隔) 値を使用することができます。ただし、数値の場合、通常は連続する範囲を入力します。データ ポイントをグループ化するには、不連続値のビンに割り当てる必要があります。`bin` 関数は以下のような場合に便利です。
 
 ```AIQL
 
@@ -214,7 +214,7 @@ by 句ではスカラー (数、時間、または間隔) 値を使用するこ�
 結果を時間で並べ替えていませんが (テーブル表示でわかるように)、グラフには常に正しい順序で日時が表示されることに注目してください。
 
 
-## where: 条件に基づいてフィルター処理する
+## [where](app-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
 
 Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーからのものです。
 
@@ -357,7 +357,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 
 
-## パーセンタイル
+## [パーセンタイル](app-analytics-aggregations.md#percentiles)
 
 ここでは、セッションのパーセンタイルごとの期間範囲を見てみます。
 
@@ -403,11 +403,11 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 ![](./media/app-analytics-tour/190.png)
 
 
-## Join
+## [Join](app-analytics-aggregations.md#join)
 
-メトリック、例外、およびイベントという 3 つのテーブルにアクセスすることができます。`event` には、要求レポート、ページ ビュー、カスタム イベントなどが含まれます。
+要求や例外も含む、いくつかのテーブルにアクセスできます。
 
-失敗応答が返された要求に関連する例外を検索する場合は、以下のように `session_Id` にテーブルを結合できます。
+失敗応答が返された要求に関連する例外を検索する場合は、以下のように `session_Id` でテーブルを結合できます。
 
 ```AIQL
 
@@ -422,7 +422,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 
 
-## let: 結果を変数に代入する
+## [let](app-analytics-aggregations.md#let): 結果を変数に代入する
 
 上記の式の部分を分割する場合は、[let](./app-analytics-syntax.md#let-statements) を使用します。結果は変わりません。
 
@@ -441,4 +441,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

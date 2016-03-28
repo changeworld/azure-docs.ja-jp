@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure ポータルを使用して DocumentDB アカウントを監視する | Microsoft Azure" 
-	description="パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、DocumentDB アカウントを監視する方法について説明します。" 
-	services="documentdb" 
-	documentationCenter="" 
-	authors="mimig1" 
-	manager="jhubbard" 
+<properties
+	pageTitle="Azure ポータルを使用して DocumentDB アカウントを監視する | Microsoft Azure"
+	description="パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、DocumentDB アカウントを監視する方法について説明します。"
+	services="documentdb"
+	documentationCenter=""
+	authors="mimig1"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/18/2016" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/10/2016"
 	ms.author="mimig"/>
 
 # Azure ポータルで DocumentDB アカウントの使用状況を監視する
@@ -24,10 +24,10 @@ DocumentDB アカウントは、[Microsoft Azure ポータル](https://portal.az
 1.	[Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックし、パフォーマンス メトリックを表示する DocumentDB アカウントの名前をクリックします。
 2.	**[監視]** レンズ内で、既定により以下を表示できます。
 	*	当日の要求数合計
-	*	アカウントのストレージの使用状況 
+	*	アカウントのストレージの使用状況
 
 	テーブルに **[使用可能なデータがありません]** と表示される場合は、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
-	
+
 	![今日の要求総数とストレージ使用状況を示す [監視] レンズのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
 
 
@@ -52,7 +52,7 @@ DocumentDB アカウントは、[Microsoft Azure ポータル](https://portal.az
 ## サイド バイ サイドのパフォーマンス メトリック チャートを作成する
 Azure ポータルでは、サイド バイ サイドのメトリック チャートを作成できます。
 
-1.	まず、複製と変更を行うグラフを右クリックし、**[カスタマイズ]** をクリックします。 
+1.	まず、複製と変更を行うグラフを右クリックし、**[カスタマイズ]** をクリックします。
 
 	![[カスタマイズ] オプションをハイライトした要求数合計チャートのスクリーンショット](./media/documentdb-monitor-accounts/madocdb6.png)
 
@@ -63,24 +63,16 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 
 これで、このパーツを他のメトリック パーツとして扱って、パーツに表示されるメトリックと期間をカスタマイズすることができます。これにより、2 種類のメトリック チャートを画面に並べて同時に見ることができます。![要求数合計チャートと、新たに作成した過去の要求数合計チャートのスクリーンショット](./media/documentdb-monitor-accounts/madocdb8.png)
 
-## DocumentDB アカウントの使用状況メトリックを表示する
-1.	[Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックし、使用状況メトリックを表示する DocumentDB アカウントの名前をクリックします。
-2.	**[使用状況]** レンズ内では、既定により以下を表示できます。
-	*	現在の請求期間での DocumentDB アカウントの今日までの推定コスト。
-	*	アカウント内で消費されているストレージ。
-	*	アカウントの利用可能なストレージの最大値 (しきい値)。
-	*	ユーザーとアクセス許可の使用状況。
-	*	添付ファイルの使用状況。
-
-	![[使用状況] レンズ](./media/documentdb-monitor-accounts/madocdb9.png)
- 
 ## DocumentDB アカウントのパフォーマンス メトリック アラートを設定する
 1.	[Azure ポータル](https://portal.azure.com/)で、**[すべて参照]**、**[DocumentDB アカウント]** の順にクリックし、パフォーマンス メトリック アラートを設定する DocumentDB アカウントの名前をクリックします。
-2.	**[操作]** レンズ内で、**[アラート ルール]** パーツをクリックします。![[操作] レンズ内で [アラート ルール] パーツを選択した状態のスクリーンショット](./media/documentdb-monitor-accounts/madocdb10.png)
 
-3.	[アラート ルール] ブレードで、**[アラートの追加]** をクリックします。![[アラート ルール] ブレードで [アラートの追加] ボタンをハイライトした状態のスクリーンショット](./media/documentdb-monitor-accounts/madocdb11.png)
+2.	**[すべての設定]** ブレードが開いていない場合は、左上にある **[設定]** コマンドをクリックしてブレードを開きます。![[データベース アカウント] ブレードの [設定] コマンドのスクリーンショット](./media/documentdb-monitor-accounts/madocdb10.png)
 
-4.	**[アラート ルールの追加]** ブレードで、以下を指定します。
+3.	**[すべての設定]** ブレードで、**[アラート ルール]** をクリックして [アラート ルール] ブレードを開きます。 ![[アラート ルール] パーツが選択された状態のスクリーンショット](./media/documentdb-monitor-accounts/madocdb10.5.png)
+
+4.	[アラート ルール] ブレードで、**[アラートの追加]** をクリックします。![[アラート ルール] ブレードで [アラートの追加] ボタンをハイライトした状態のスクリーンショット](./media/documentdb-monitor-accounts/madocdb11.png)
+
+5.	**[アラート ルールの追加]** ブレードで、以下を指定します。
 	*	設定するアラート ルールの名前。
 	*	新しいアラート ルールの説明。
 	*	アラート ルールのメトリック。
@@ -95,7 +87,7 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 - .NET SDK を使用するには、[DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) メソッドを使用します。これは、**CollectionSizeUsage**、**DatabaseUsage**、**DocumentUsage** などの多数の使用状況プロパティを含む [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) を返します。
 
 ## トラブルシューティング
-タイルの監視で**使用可能なデータがない**旨のメッセージが表示され、最近要求を作成したり、データベースにデータを追加している場合は、タイルを編集して、最新の使用状況を反映できます。
+タイルの監視で**使用可能なデータがない**という旨のメッセージが表示されても、最近要求を作成したり、データベースにデータを追加したりした場合は、タイルを編集して、最新の使用状況を反映できます。
 
 ### タイルに最新のデータを反映させる
 1.	特定のパーツに表示されるメトリックをカスタマイズするには、メトリック チャートを右クリックし、**[グラフの​​編集]** をクリックします。![使用可能なデータがないことを示す [要求総数] タイルのスクリーン ショット](./media/documentdb-monitor-accounts/documentdb-no-available-data.png)
@@ -107,6 +99,5 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 
 ## 次のステップ
 DocumentDB の容量の詳細については、[DocumentDB の容量の管理](documentdb-manage.md)に関するページを参照してください。
- 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

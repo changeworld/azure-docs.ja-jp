@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/14/2016"
 	ms.author="billmath"/>
 
 
@@ -55,7 +55,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 この `(your_FS_name) ` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。
 
-例: https://fs.contospocom/federationmetadata/2007-06/federationmetadata.xml
+例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
 ## 証明書を手動で更新する場合
 AD FS 証明書を手動で更新する場合は常に、[このセクション](#if-your-metadata-is-not-publicly-accessible)の Office 365 フェデレーションの信頼プロパティを手動で更新する手順に示すように、PowerShell コマンド Update-MsolFederatedDomain を使用して、Office 365 ドメインを更新する必要があります。
@@ -101,4 +101,4 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 
 >[AZURE.NOTE] contoso.com や fabrikam.com などの複数の最上位のドメインをサポートする必要がある場合は、すべてのコマンドレットで SupportMultipleDomain スイッチを使用する必要があります。詳細については、複数の最上位のドメインのサポートに関するページを参照してください。最後に、すべての Web アプリケーション プロキシ サーバーが[Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164)のロールアップで更新されていることを確認します。更新されていない場合は、プロキシが新しい証明書の更新に失敗し、機能が停止する可能性があります。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

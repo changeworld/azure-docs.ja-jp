@@ -6,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="03/15/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧)
@@ -197,7 +197,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | --- 
 **Azure アカウント** | [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium ストレージ アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
+**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
@@ -698,6 +698,8 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)	
 4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、[Premium Storage アカウント](../storage/storage-premium-storage.md)を選択します。ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
 
+	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+
 	![vCenter サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
 
 5. **[アカウントの指定]** で、保護されたマシンへのモビリティ サービスのインストールに使用するアカウントを選択します。モビリティ サービスの自動インストールには、アカウントの資格情報が必要です。アカウントを選択できない場合は、ステップ 2 で説明されているようにアカウントを設定したことを確認してください。このアカウントには Azure ではアクセスできないことに注意してください。Windows サーバーでは、アカウントはソース サーバーに対する管理者権限を持っている必要があります。Linux の場合、アカウントは root である必要があります。
@@ -805,4 +807,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!----HONumber=AcomDC_0316_2016-->

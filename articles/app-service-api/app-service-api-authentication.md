@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="03/04/2016"
 	ms.author="tdykstra"/>
 
@@ -112,4 +112,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

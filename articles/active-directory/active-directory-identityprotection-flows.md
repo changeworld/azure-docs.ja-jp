@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/10/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection のフロー
@@ -89,7 +89,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
  
 ## ブロックされたリスクの高いサインイン
-管理者は、サインイン リスク ポリシーを設定し、リスク レベルに応じてサインイン時にユーザーをブロックすることもできます。ブロックを解除するには、エンドユーザーは管理者またはヘルプ デスクに連絡する必要があります。または、既知の場所またはデバイスからサインインを試みることもできます。この場合、多要素認証を解決することによる自己復旧は利用できません。 <br><br> ![Remediation](./media/active-directory-identityprotection-flows/130.png "Remediation") <br>
+管理者は、サインイン リスク ポリシーを設定し、リスク レベルに応じてサインイン時にユーザーをブロックすることもできます。ブロックを解除するには、エンドユーザーは管理者またはヘルプ デスクに連絡する必要があります。または、既知の場所またはデバイスからサインインを試みることもできます。この場合、多要素認証を解決することによる自己復旧は利用できません。<br><br>![Remediation](./media/active-directory-identityprotection-flows/200.png "Remediation")<br>
 
 
 
@@ -158,4 +158,4 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

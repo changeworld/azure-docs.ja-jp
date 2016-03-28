@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="03/11/2016" 
 	ms.author="arramac"/>
 
 # DocumentDB における SQL クエリと SQL 構文
@@ -281,7 +281,29 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 
 上記の例では単純な等値クエリを紹介しました。DocumentDB SQL はさまざまなスカラー式もサポートしています。最も多く使用されるのはバイナリ式と単項式です。ソース JSON オブジェクトからのプロパティ参照も有効な式です。
 
-現在サポートされている 2 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。<table> <tr> <td>算術</td> <td>+、-、*、/、%</td> </tr> <tr> <td>ビット</td> <td>|、&、^、<<、>>、>>> (0 埋め右シフト) </td> </tr> <tr> <td>論理</td> <td>AND、OR、NOT</td> </tr> <tr> <td>比較</td> <td>=、!=、&lt;、&gt;、&lt;=、&gt;=、<></td> </tr> <tr> <td>文字列</td> <td>|| (連結)</td> </tr> </table>
+現在サポートされている 2 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。
+<table>
+<tr>
+<td>算術</td>	
+<td>+、-、*、/、%</td>
+</tr>
+<tr>
+<td>ビット</td>	
+<td>|、&amp;、^、&lt;&lt;、>>、>>> (0 埋め右シフト) </td>
+</tr>
+<tr>
+<td>論理</td>
+<td>AND、OR、NOT</td>
+</tr>
+<tr>
+<td>比較</td>	
+<td>=、!=、&lt;、>、&lt;=、>=、&lt;></td>
+</tr>
+<tr>
+<td>String</td>	
+<td>|| (連結)</td>
+</tr>
+</table>  
 
 2 項演算子を使用したクエリを見てみます。
 
@@ -313,7 +335,219 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 2 項演算子と単項演算子に加えてプロパティ参照も許可されます。たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は `isRegistered` プロパティを含む JSON ドキュメントを返し、このプロパティの値は JSON の `true` 値と等しくなります。その他すべての値 (false、null、Undefined、`<number>`、`<string>`、`<object>`、`<array>` など) の場合、ソース ドキュメントが結果から除外されます。
 
 ### 等値演算子と比較演算子
-以下の表は、DocumentDB SQL の 2 つの JSON 型で等値比較を実行した結果を示しています。<table style = "width:300px"> <tbody> <tr> <td valign="top"> <strong>演算子</strong> </td> <td valign="top"> <strong>Undefined</strong> </td> <td valign="top"> <strong>Null</strong> </td> <td valign="top"> <strong>Boolean</strong> </td> <td valign="top"> <strong>Number</strong> </td> <td valign="top"> <strong>String</strong> </td> <td valign="top"> <strong>Object</strong> </td> <td valign="top"> <strong>Array</strong> </td> </tr> <tr> <td valign="top"> <strong>Undefined<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Null<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Boolean<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Number<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>String<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Object<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Array<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> </tr> </tbody> </table>
+以下の表は、DocumentDB SQL の 2 つの JSON 型で等値比較を実行した結果を示しています。
+<table style = "width:300px">
+   <tbody>
+      <tr>
+         <td valign="top">
+            <strong>演算子</strong>
+         </td>
+         <td valign="top">
+            <strong>Undefined</strong>
+         </td>
+         <td valign="top">
+            <strong>Null</strong>
+         </td>
+         <td valign="top">
+            <strong>Boolean</strong>
+         </td>
+         <td valign="top">
+            <strong>Number</strong>
+         </td>
+         <td valign="top">
+            <strong>String</strong>
+         </td>
+         <td valign="top">
+            <strong>オブジェクト</strong>
+         </td>
+         <td valign="top">
+            <strong>Array</strong>
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Undefined<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Null<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Boolean<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Number<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>String<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Object<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+      </tr>
+      <tr>
+         <td valign="top">
+            <strong>Array<strong>
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            Undefined
+         </td>
+         <td valign="top">
+            <strong>OK</strong>
+         </td>
+      </tr>
+   </tbody>
+</table>
 
 その他の比較演算子 (>、>=、! =、<、および <=) については、以下のようになります。
 
@@ -1142,7 +1376,7 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 <td>空間関数</td>	
 <td>ST_DISTANCE、ST_WITHIN、ST_ISVALID、ST_ISVALIDDETAILED</td>
 </tr>
-</table>
+</table>  
 
 現在ユーザー定義関数 (UDF) を使用している処理に対して組み込み関数を利用できる場合は、より高速かつ効率的な対応する組み込み関数を使用する必要があります。
 
@@ -1248,7 +1482,7 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 <td>指定された式で入力された式のタンジェントを返します。</td>
 </tr>
 
-</table>
+</table> 
 
 たとえば、次のようなクエリを実行できます。
 
@@ -2144,4 +2378,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

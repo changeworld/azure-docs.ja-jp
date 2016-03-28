@@ -47,6 +47,39 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 [AZURE.INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
+###<a name="configure-external-redirect-urls"></a>方法: 外部リダイレクト URL 用に Mobile App Service を構成する
+
+いくつかの種類の Apache Cordova アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。これにより問題が生じます。既定では認証サービスで認識されるのがサービスの利用方法のみであるためです。この例として、Ripple エミュレーターを使用し、サービスをローカルまたは別の Azure App Service で実行しているが、認証のために Azure App Service、または Live Reload (Ionic を使用) にリダイレクトする場合などがあります。ローカル設定を構成に追加するには、以下の手順に従います。
+
+1. [Azure ポータル]にログインします。
+2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
+3. **[ツール]** をクリックします。
+4. [監視] メニューの **[リソース エクスプローラー]** をクリックしてから、**[実行]** をクリックします。新しいウィンドウまたはタブが開きます。
+5. 左側のナビゲーションで、サイトの **config**、**authsettings** ノードの順に展開します。
+6. **[編集]** をクリックします。
+7. "allowedExternalRedirectUrls" 要素を探します。これは null に設定されます。これを次のように変更します。
+
+         "allowedExternalRedirectUrls": [
+             "http://localhost:3000",
+             "https://localhost:3000"
+         ],
+
+    URL をご使用のサービスの URL に置き換えます。例には、"http://localhost:3000" (Node.js サンプル サービス用)、または "http://localhost:4400" (Ripple サービス用) が含まれています。ただし、これらは例にすぎません。例に示されているサービスを含め、状況に応じて異なる場合があります。
+8. 画面の右上隅にある **[読み取り/書き込み]** ボタンをクリックします。
+9. 緑の **[PUT]** ボタンをクリックします。
+
+この時点で設定は保存されます。設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。以下のように、CORS 設定にこれらのループバック URL を追加する必要もあります。
+
+1. [Azure ポータル]にログインします。
+2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
+3. [設定] ブレードが自動的に開きます。開かない場合は、**[すべての設定]** をクリックします。
+4. API メニューの **[CORS]** をクリックします。
+5. 表示されたボックスに追加する URL を入力して、Enter キーを押します。
+6. 必要に応じて、さらに URL を入力します。
+7. **[保存]** をクリックして設定を保存します。
+
+新しい設定が有効になるまで約 10 ～ 15 秒かかります。
+
 ##<a name="register-for-push"></a>方法: プッシュ通知に登録する
 
 プッシュ通知を処理するには、[phonegap-plugin-push] をインストールします。これは、コマンド ラインで `cordova plugin add` コマンドを使用するか、または Visual Studio の Git プラグイン インストーラーを使用することで、簡単に追加できます。Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
@@ -91,6 +124,7 @@ pushHandler.on('error', function (error) {
 プッシュ通知は、Notification Hubs SDK を使用してサーバーから送信します。プッシュ通知をクライアントから直接送信しないでください。この場合、Notification Hubs または PNS に対してサービス拒否攻撃をトリガーすることに利用されるおそれがあるからです。
 
 <!-- URLs. -->
+[Azure ポータル]: https://portal.azure.com
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
 [アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
@@ -103,4 +137,4 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!----HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0316_2016-->

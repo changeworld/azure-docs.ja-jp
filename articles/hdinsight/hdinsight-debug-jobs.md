@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="03/15/2016"
 	ms.author="jgao"/>
 
 # HDInsight ログの分析
@@ -99,14 +99,14 @@ Power Query は、[www.microsoft.com/ja-JP/download/details.aspx?id=39379](http:
 2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。または、単に **Ctrl + \\、Ctrl + X** キーを押します。
 3. **Cloud Explorer** で **[リソースの種類]** を選択します。そのほかに、**[リソース グループ]** というオプションも選択できます。
 4. **[ストレージ アカウント]**、クラスターの既定のストレージ アカウント、**[テーブル]** の順に展開します。
-5. hadoopservicelog をダブルクリックします。
+5. **hadoopservicelog** をダブルクリックします。
 6. フィルターを追加します。次に例を示します。
 	
 		TraceLevel eq 'ERROR'
 
 	![HDInsight Hadoop logs choose columns](./media/hdinsight-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
 
-	フィルターの作成の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](https://msdn.microsoft.com/library/azure/ff683669.aspx)」を参照してください。
+	フィルターの作成の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
  
 ##Azure Blob Storage に書き込まれたログ
 
@@ -341,4 +341,4 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 - [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 - [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

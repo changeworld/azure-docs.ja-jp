@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
+	ms.date="03/14/2016" 
 	ms.author="sdanie"/>
 
 
 # Git を使用して API Management サービス構成を保存および構成する方法
+
+>[AZURE.IMPORTANT] API Management の Git の構成は現在プレビューの段階です。機能的には完了していますが、この機能に関するフィードバックを積極的に求めているため、プレビュー段階です。お客様からのフィードバックに応じて重大な変更を加える可能性があるため、機能によっては実稼動環境での使用はお勧めしません。フィードバックや質問がある場合は、`apimgmt@microsoft.com` にご連絡ください。
 
 各 API Management サービス インスタンスは、サービス インスタンスの構成とメタデータに関する情報が格納されている構成データベースを保持します。サービス インスタンスへの変更は、発行者ポータルの設定変更、PowerShell コマンドレットの使用、または REST API 呼び出しによって行うことができます。これらの方法のほか、Git を使用してサービス インスタンスの構成を管理することもできます。Git を使用すると、次のようなサービス管理のシナリオが可能になります。
 
@@ -43,19 +45,23 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 ## Git アクセスを有効にするには
 
-Git アクセスを構成するには、**[セキュリティ]** メニューをクリックし、**[構成リポジトリ]** タブに移動します。
+発行者ポータルの右上隅にある Git アイコンを表示して、Git 構成の状態をすばやく表示することができます。この例では、Git アクセスがまだ有効になっていません。
+
+![Git の状態][api-management-git-icon-enable]
+
+Git 構成設定を表示して構成する場合は、Git アイコンをクリックするか、**[セキュリティ]** メニューをクリックして **[構成リポジトリ]** タブに移動することができます。
 
 ![Enable GIT][api-management-enable-git]
 
-Git アクセスを有効するには、**[Git アクセスを有効にする]** チェック ボックスをオンにします。
+Git アクセスを有効にするには、**[Git アクセスを有効にする]** チェック ボックスをオンにします。
 
-しばらくすると変更が保存され、確認メッセージが表示されます。
+しばらくすると変更が保存され、確認メッセージが表示されます。Git アイコンの色が変わり、Git アクセスが有効になったことが示され、ステータス メッセージはリポジトリに保存されていない変更があることを示していることに注意してください。これは、API Management サービス構成データベースがまだリポジトリに保存されていないためです。
 
 ![Git enabled][api-management-git-enabled]
 
->[AZURE.IMPORTANT] プロパティとして定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。プロパティは、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要はありません。詳細については、「[How to use properties in Azure API Management policies (Azure API Management ポリシーのプロパティの利用方法)](api-management-howto-properties.md)」を参照してください。
+>[AZURE.IMPORTANT] プロパティとして定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。プロパティは、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要はありません。詳細については、「[Azure API Management ポリシーのプロパティの利用方法](api-management-howto-properties.md)」を参照してください。
 
-REST API を使用して Git アクセスを有効または無効にする方法については、「[Enable or disable Git (Git アクセスの有効化または無効化)](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)」を参照してください。
+REST API を使用して Git アクセスを有効または無効にする方法については、「[Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)」を参照してください。
 
 ## サービス構成を Git リポジトリに保存するには
 
@@ -73,7 +79,7 @@ REST API を使用して Git アクセスを有効または無効にする方法
 
 構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
-REST API を使用してこの操作を実行する方法については、「[Commit configuration snapshot (構成スナップショットのコミット)](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「[Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)」を参照してください。
 
 ## ローカル コンピューターにリポジトリを複製するには
 
@@ -140,7 +146,7 @@ Git ツールを目的のフォルダーで開き、次のコマンドを実行�
 
 ![デプロイ][api-management-configuration-deploy]
 
-REST API を使用してこの操作を実行する方法については、「[Deploy Git changes to configuration database (構成データベースへの Git の変更のデプロイ)](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「[Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges)」を参照してください。
 
 ## ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 
@@ -286,5 +292,6 @@ REST API を使用してこの操作を実行する方法については、「[D
 [api-management-configuration-deploy]: ./media/api-management-configuration-repository-git/api-management-configuration-deploy.png
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
+[api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

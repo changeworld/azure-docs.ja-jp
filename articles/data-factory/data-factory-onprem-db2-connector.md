@@ -229,7 +229,7 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 | gatewayName | Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 | はい |
 
-オンプレミスの DB2 データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの DB2 データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 
 ## DB2 データセットの type プロパティ
@@ -314,4 +314,4 @@ Char | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

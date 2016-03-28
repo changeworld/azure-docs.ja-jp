@@ -33,9 +33,17 @@ SQL Server Management Studio でデータベースに **[タスク]、[Stretch]�
 動的管理ビューの **sys.dm\_db\_rda\_migration\_status** を開き、移行されたデータのバッチ数と行数を確認します。詳細については、「[sys.dm\_db\_rda\_migration\_status (Transact-SQL)](https://msdn.microsoft.com/library/dn935017.aspx)」を参照してください。
 
 ## <a name="Firewall"></a>データ移行のトラブルシューティング
+**Azure ファイアウォールがローカル サーバーからの接続をブロックします。**
+
+Azure サーバーの Azure ファイアウォール設定にルールを追加して、SQL Server がリモートの Azure サーバーと通信できるようにする必要があります。
+
+**Stretch を有効にしたテーブルの行が Azure に移行されません。何が問題なのでしょうか。**
+
 移行に影響する可能性があるいくつかの問題があります。次のことを確認してください。
 
 -   SQL Server コンピューターのネットワーク接続を確認します。
+
+-   Azure ファイアウォールが、SQL Server からリモート エンドポイントへの接続をブロックしていないことを確認します。
 
 -   最新バッチの状態については、動的管理ビューの「**sys.dm\_db\_rda\_migration\_status**」を確認します。エラーが発生した場合は、バッチの error\_number、error\_state、および error\_severity の値を確認します。
 
@@ -44,9 +52,10 @@ SQL Server Management Studio でデータベースに **[タスク]、[Stretch]�
     -   SQL Server エラー メッセージの内容に関する詳細については、「[sys.messages (Transact-SQL)](https://msdn.microsoft.com/library/ms187382.aspx)」を参照してください。
 
 ## 関連項目
+
 [Stretch Database の管理とトラブルシューティング](sql-server-stretch-database-manage.md)
 
 <!--Image references-->
 [StretchMonitorImage1]: ./media/sql-server-stretch-database-monitor/StretchDBMonitor.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

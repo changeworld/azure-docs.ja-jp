@@ -3,7 +3,7 @@
    description="Service Fabric 高信頼アクターのライフサイクルとガベージ コレクションについて説明します"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="myamanbh"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/20/2016"
+   ms.date="03/15/2016"
    ms.author="amanbha"/>
 
 
@@ -32,7 +32,7 @@
 - アクターは、一定期間使用されていない場合、アクティブ アクター テーブルから削除されます。
 - `OnDeactivateAsync` メソッド (アクターの実装でオーバーライドできる) が呼び出されます。呼び出されると、アクターのタイマーをすべてクリアします。
 
-> [AZURE.TIP]Fabric アクター ランタイムはいくつかの [アクターのアクティブ化と非アクティブ化に関するイベント](service-fabric-reliable-actors-diagnostics.md#actor-activation-and-deactivation-events)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
+> [AZURE.TIP] Fabric アクター ランタイムはいくつかの [アクターのアクティブ化と非アクティブ化に関するイベント](service-fabric-reliable-actors-diagnostics.md#actor-activation-and-deactivation-events)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
 ## アクターのガベージ コレクション
 アクター ランタイムは、一定期間使用されていないアクターを定期的にスキャンし、そのアクターを非アクティブ化します。アクターは非アクティブ化されると、共通言語ランタイム (CLR) でガベージ コレクトすることができます。
@@ -46,8 +46,8 @@
 
 ガベージ コレクションの詳細に入る前に、次の用語を定義することが重要です。
 
-- スキャン間隔。これは、アクター ランタイムがアクティブ アクター テーブルで、ガベージ コレクトできるアクターをスキャンする間隔です。この既定値は 1 分です。
-- アイドル タイムアウト。これは、ガベージ コレクションの前に、アクターを未使用 (アイドル) のままにしておく必要がある時間です。この既定値は 60 分です。
+- *スキャン間隔*。これは、アクター ランタイムがアクティブ アクター テーブルで、ガベージ コレクトできるアクターをスキャンする間隔です。この既定値は 1 分です。
+- *アイドル タイムアウト*。これは、ガベージ コレクションの前に、アクターを未使用 (アイドル) のままにしておく必要がある時間です。この既定値は 60 分です。
 
 通常は、これらの既定値を変更する必要はありません。ただし、必要に応じて、`ActorGarbageCollection` 属性を使用して、これらの間隔をそのアセンブリ内のすべてのアクター型のアセンブリ レベルまたはアクター型レベルで変更することはできます。次の例は、HelloActor のガベージ コレクション間隔の変更を示しています。
 
@@ -90,4 +90,4 @@ class HelloActor : Actor, IHello
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0316_2016-->

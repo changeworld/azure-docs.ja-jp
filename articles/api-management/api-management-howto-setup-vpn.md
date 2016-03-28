@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="03/14/2016"
 	ms.author="antonba"/>
 
 # Azure API Management で VPN 接続を設定する方法
@@ -48,11 +48,25 @@ API Management サービスが VPN に接続された後で仮想ネットワー
 
 ![VPN からの API の追加][api-management-setup-vpn-add-api]
 
+## API Management VPN のサポートに必要なポート
+
+API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。これらのポートがブロックされている場合は、サービスが正しく機能しない可能性があります。VNET で API Management を使用する場合に、不正な構成に関する最も一般的な問題は、これらの 1 つまたは複数のポートがブロックされていることです。
+
+| ポート | 方向 | トランスポート プロトコル | 目的 | ソース / ターゲット |
+|------------------------------|------------------|--------------------|------------------------------------------------------------------|-----------------------------------|
+| 80、443 | 受信 | TCP | API Management へのクライアント通信 | INTERNET / VIRTUAL\_NETWORK |
+| 80,443 | 送信 | TCP | Azure Storage および Azure Service Bus への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+| 1433 | 送信 | TCP | SQL への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+| 9350、9351、9352、9353、9354 | 送信 | TCP | Service Bus への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+| 5671 | 送信 | AMQP | Event Hub へのログ記録ポリシーのための API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+| 6381、6382、6383 | 受信/送信 | UDP | Redis Cache への API Management の依存 | VIRTUAL\_NETWORK / VIRTUAL\_NETWORK |
+| 445 | 送信 | TCP | GIT のための Azure ファイル共有への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+
 
 ## <a name="related-content"></a>関連コンテンツ
 
 
-* [チュートリアル: サイト間クロスプレミス接続用の仮想ネットワークの作成][]
+* [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する][]
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法][]
 
 [api-management-setup-vpn-configure]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-configure.png
@@ -65,7 +79,7 @@ API Management サービスが VPN に接続された後で仮想ネットワー
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-[チュートリアル: サイト間クロスプレミス接続用の仮想ネットワークの作成]: ../virtual-networks-create-site-to-site-cross-premises-connectivity
+[Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

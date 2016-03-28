@@ -230,7 +230,7 @@ username | Basic または Windows 認証を使用している場合は、ユー
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
 gatewayName | Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 | はい
 
-オンプレミスの Teradata データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの Teradata データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 ## Teradata データセットの type プロパティ
 
@@ -308,4 +308,4 @@ Xml | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!--------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

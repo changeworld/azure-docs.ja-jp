@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="03/04/2016"
+   ms.date="03/15/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -73,11 +73,29 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 > [AZURE.IMPORTANT] StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
 
+### ファイアウォール ルールの URL パターン 
+
+多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。StorSimple デバイスと StorSimple Manager サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
+
+多くの場合、ファイアウォール ルールを自由に設定することをお勧めします。ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
+
+> [AZURE.NOTE] デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+
+
+| URL パターン | コンポーネント/機能 | デバイスの IP |
+|------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
+|`http://crl.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
+| `https://*.core.windows.net/*` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
+| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
+
 ### ルーティング メトリック
 
 ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。ルーティング メトリックが低いと、優先順位が高くなります。
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」をご覧ください。
+StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
 
 ルーティング メトリックのアルゴリズムは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
 
@@ -108,11 +126,11 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 		
 	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
+	| Data 0 | 1 | - | 
+	| Data 1 | 2 | 20 | 
+	| Data 2 | 3 | 30 | 
+	| Data 3 | 4 | 40 | 
+	| Data 4 | 5 | 50 | 
 	| Data 5 | 6 | 60 |
 
 
@@ -140,8 +158,7 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 	
 - 再試行に関しては、クラウドよりも iSCSI が優先されます。
 
-	次の例で考えてみましょう。
-	StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上のその他のネットワーク インターフェイスは、クラウドにも iSCSI に対応していません。
+	次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
 		
 	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
@@ -263,4 +280,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0316_2016-->

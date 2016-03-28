@@ -44,7 +44,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        계산, 저장, 네트워킹 리소스에 리소스 관리자를 사용할지 클래식 배포를 사용할지 선택할 수 있습니다. **리소스 관리자** 를 선택합니다.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -52,7 +52,7 @@
 
             PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-  - Azure PowerShell 1.0 では、リソース マネージャー版のコマンドを使用してください。これらのコマンドは、次に示すように *verb-AzureRm* 形式となります。
+  - Azure PowerShell 1.0 では、リソース マネージャー版のコマンドを使用してください。これらのコマンドは、次に示すように *Verb-AzureRmNoun* 形式となります。
 
             PS C:\> Get-AzureRmResourceGroupDeployment
 
@@ -93,7 +93,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -101,7 +101,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
             PS C:\> Switch-AzureMode -Name AzureServiceManagement
 
-  - Azure PowerShell 1.0 では、サービス管理版のコマンドを使用してください。これらのコマンドの名前は、*verb-AzureRm* 形式とは**異なります**。
+  - Azure PowerShell 1.0 では、サービス管理版のコマンドを使用してください。これらのコマンド名は、次に示すように *Verb-AzureNoun* 形式となります。
 
             PS C:\> Get-AzureDeployment
 
@@ -111,7 +111,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
     ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
 
-ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
+Azure ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
 
 コンポーネントと Azure サービス管理のための関係を示します。
 
@@ -125,7 +125,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 - アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできます。常にリソースが一貫した状態でデプロイされます。
 - 宣言型のテンプレートを利用し、デプロイを定義できます。
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
-- ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
+- ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのリソースにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 
 
@@ -155,9 +155,9 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
      ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
     ...
 
-しかしながら、Get-AzureVM コマンドを実行すると、リソース マネージャーで作成した Virtual Machines のみが表示されます。
+しかしながら、Get-AzureRmVM コマンドを実行すると、リソース マネージャーで作成した Virtual Machines のみが表示されます。
 
-    PS C:\> Get-AzureVM -ResourceGroupName ExampleGroup
+    PS C:\> Get-AzureRmVM -ResourceGroupName ExampleGroup
     ...
     Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
     Name     : ExampleResourceVM
@@ -188,4 +188,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0316_2016-->

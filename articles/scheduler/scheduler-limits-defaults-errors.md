@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="12/04/2015"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
 
 # Scheduler の制限、既定値、エラー コード
@@ -55,7 +55,7 @@ API 操作は、管理サービスで定義されている追加のエラー情�
 
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -69,7 +69,5 @@ API 操作は、管理サービスで定義されている追加のエラー情�
  [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
- 
-  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

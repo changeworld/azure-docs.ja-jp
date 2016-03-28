@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/09/2015"
+   ms.date="03/09/2016"
    ms.author="sethm" />
 
 # Service Bus の認証と承認
@@ -73,4 +73,4 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 ACS トークンの詳細については、「[方法: OAuth WRAP プロトコルを使用して ACS からのトークンを要求する](https://msdn.microsoft.com/library/hh674475.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -288,29 +288,7 @@ Azure IoT Hub では、共有アクセス ポリシーとデバイス ID レジ�
 
 > [AZURE.NOTE] Azure IoT Hub のリソース プロバイダーは、[Azure リソース マネージャー][lnk-azure-resource-manager]のすべてのプロバイダーと同様、Azure のサブスクリプションによりセキュリティで保護されています。
 
-#### セキュリティ トークンの形式<a id="tokenformat"></a>
-
-セキュリティ トークンには、次の形式があります。
-
-	SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}
-
-考えられる値を次に示します。
-
-| 値 | 説明 |
-| ----- | ----------- |
-| {signature} | HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。**重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
-| {resourceURI} | このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。たとえば、`/events` のように指定します。 |
-| {expiry} | 1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
-| {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード |
-| {policyName} | このトークンの参照先となる共有アクセス ポリシーの名前。デバイスとレジストリの資格情報を参照するトークンの場合は存在しません。 |
-
-**プレフィックスに関する注意事項**: URI プレフィックスは、文字単位ではなくセグメント単位で計算されます。たとえば、`/a/b` は `/a/b/c` のプレフィックスであり、`/a/bc` のプレフィックスではありません。
-
-署名アルゴリズムの実装は、IoT デバイス SDK およびサービス SDK にあります。
-
-* [Java 用 IoT サービス SDK](https://github.com/Azure/azure-iot-sdks/tree/master/java/service/iothub-service-sdk/src/main/java/com/microsoft/azure/iot/service/auth)
-* [Java 用 IoT デバイス SDK](https://github.com/Azure/azure-iot-sdks/tree/master/java/device/iothub-java-client/src/main/java/com/microsoft/azure/iothub/auth)
-* [Node.js 用 IoT デバイス SDK およびサービス SDK](https://github.com/Azure/azure-iot-sdks/blob/master/node/common/core/lib/shared_access_signature.js)
+セキュリティ トークンを作成して使用する方法の詳細については、「[IoT Hub セキュリティ トークンの使用][lnk-sas-tokens]」をご覧ください。
 
 #### プロトコルの詳細
 
@@ -327,7 +305,7 @@ SASL PLAIN では、**ユーザー名**を以下のように指定できます�
 * ハブレベルのトークンの場合、`{policyName}@sas.root.{iothubName}`
 * デバイスを対象とするトークンの場合、`{deviceId}`
 
-どちらの場合も、[トークン形式](#tokenformat)に関するセクションで説明するように、パスワード フィールドにトークンが含まれています。
+どちらの場合も、「[IoT Hub セキュリティ トークンの使用][lnk-sas-tokens]」で説明されているように、パスワード フィールドにトークンが含まれています。
 
 MQTT を使用する場合、CONNECT パケットでは、ClientId、ユーザー名フィールドの {iothubhostname}/{deviceId}、およびパスワード フィールドの SAS トークンとして、deviceId が使用されます。{iothubhostname} は IoT の完全な CName とする必要があります (たとえば、contoso.azure-devices.net とします)。
 
@@ -348,7 +326,7 @@ SASL PLAIN を使用する場合、IoT Hub に接続するクライアントは�
 
 ### ハブレベルの資格情報のスコープ
 
-制限付きのリソース URI を持つトークンを作成することにより、ハブレベルのセキュリティ ポリシーのスコープを指定できます。たとえば、デバイスからの D2C メッセージを送信するエンドポイントは **/devices/{deviceId}/events** になります。また、**DeviceConnect** アクセス許可を持つハブレベルの共有アクセス ポリシーを使用して、resourceURI が **/devices/{deviceId}** であるトークンに署名し、デバイスの **deviceId** の代わりにデバイスを送信する場合にのみ使用可能なトークンを作成できます。
+制限付きのリソース URI を持つトークンを作成することにより、ハブレベルのセキュリティ ポリシーのスコープを指定できます。たとえば、デバイスからの D2C メッセージを送信するエンドポイントは **/devices/{deviceId}/messages/events** になります。また、**DeviceConnect** アクセス許可を持つハブレベルの共有アクセス ポリシーを使用して、resourceURI が **/devices/{deviceId}** であるトークンに署名し、デバイスの **deviceId** の代わりにデバイスを送信する場合にのみ使用可能なトークンを作成できます。
 
 これは、[Event Hubs の発行元ポリシー][lnk-event-hubs-publisher-policy]に似たメカニズムで、「[ソリューションの設計][lnk-guidance-security]」のセキュリティに関するセクションの説明に従って、カスタムの認証方法を実装できます。
 
@@ -393,7 +371,7 @@ IoT Hub のメッセージは、次の要素で構成されています。
 IoT Hub では、デバイス側の通信に [AMQP][lnk-amqp]、AMQP over WebSockets、MQTT、および HTTP/1 のプロトコルをサポートしています。その使用方法に関する考慮事項の一覧を次に示します。
 
 * **C2D のパターン**。HTTP/1 には、サーバー プッシュを実装する効率的な方法がありません。そのため、HTTP/1 を使用する場合、デバイスは、C2D メッセージの IoT Hub をポーリングします。これは、デバイスと IoT Hub の両方できわめて非効率的です。現在のガイドラインでは、HTTP/1 を使用する場合、各デバイスのポーリング間隔は 25 分以上となっています。一方、AMQP と MQTT では、C2D メッセージを受信する場合のサーバー プッシュがサポートされていて、IoT Hub からデバイスへのメッセージも即座にプッシュできます。配信の待機時間が問題となる場合は、AMQP または MQTT が使用に最適なプロトコルです。一方、頻繁に接続されないデバイスの場合は、HTTP/1 でも機能します。
-* **フィールド ゲートウェイ**。HTTP/1 と MQTT を使用する場合は、同じ TLS 接続で複数のデバイス (それぞれが、デバイス独自の資格情報を有する) を接続することはできません。結果として、これらのプロトコルの場合は、フィールド ゲートウェイに接続するデバイスごとに、フィールド ゲートウェイと IoT Hub との間に TLS 接続が 1 つ必要となるため、[フィールド ゲートウェイ シナリオ][lnk-azure-gateway-guidance] を実装する際に最適なプロトコルであるとは言えません。
+* **フィールド ゲートウェイ**。HTTP/1 と MQTT を使用する場合は、同じ TLS 接続で複数のデバイス (それぞれが、デバイス独自の資格情報を有する) を接続することはできません。結果として、これらのプロトコルの場合は、フィールド ゲートウェイに接続するデバイスごとに、フィールド ゲートウェイと IoT Hub との間に TLS 接続が 1 つ必要となるため、[フィールド ゲートウェイ シナリオ][lnk-azure-gateway-guidance]を実装する際に最適なプロトコルであるとは言えません。
 * **リソースの少ないデバイス**。MQTT および HTTP/1 ライブラリのフットプリントは、AMQP ライブラリの場合より小さくなります。そのため、リソースが少ないデバイス (RAM が 1 MB 未満など) の場合、MQTT と HTTP/1 が実装可能な唯一のプロトコルとなります。
 * **ネットワーク トラバーサル**。MQTT Standard は、ポート 8883 でリッスンします。これにより、HTTP 以外のプロトコルに限定されているネットワークの場合は、問題が発生する可能性があります。HTTP と AMQP (over WebSockets) の両方がこのシナリオで使用できます。
 * **ペイロードのサイズ**。AMQP と MQTT は、バイナリ プロトコルであり、HTTP/1 よりはるかにコンパクトです。
@@ -506,6 +484,8 @@ C2D メッセージのチュートリアルについては、[Azure IoT Hub C2D 
 #### 有効期限<a id="ttl"></a>
 
 すべての C2D メッセージに有効期限があります。これはサービス (**ExpiryTimeUtc** プロパティ) で明示的に設定するか、IoT Hub のプロパティとして指定した既定の*有効期限*を使用して IoT Hub で設定できます。「[C2D の構成オプション](#c2dconfiguration)」を参照してください。
+
+> [AZURE.NOTE] メッセージの期限切れを利用する一般的な方法は、有効期限に短い値を設定して、接続されていないデバイスにメッセージが送信されないようにするというものです。これはデバイスの接続状態を維持するのと同じ結果が得られますが、大幅に効率化されます。また、メッセージの受信確認を要求することにより、メッセージを受信できるデバイスおよびオンラインではないデバイスや障害が発生しているデバイスについて IoT Hub から通知を受け取ることもできます。
 
 #### メッセージのフィードバック<a id="feedback"></a>
 
@@ -621,6 +601,7 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [lnk-resource-provider-apis]: https://msdn.microsoft.com/library/mt548492.aspx
 
+[lnk-sas-tokens]: iot-hub-sas-tokens
 [lnk-azure-gateway-guidance]: iot-hub-guidance.md#field-gateways
 [lnk-guidance-provisioning]: iot-hub-guidance.md#provisioning
 [lnk-guidance-scale]: iot-hub-scaling.md
@@ -653,4 +634,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

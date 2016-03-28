@@ -1,26 +1,26 @@
-<properties 
-   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成する | Azure" 
-   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを作成および使用します。" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成する | Azure"
+   description="Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight Hadoop クラスターを作成および使用します。"
+   services="data-lake-store,hdinsight" 
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="01/21/2016"
    ms.author="nitinme"/>
 
 # Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+- [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [PowerShell の使用](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
 Azure PowerShell を使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、Storm) を構成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
@@ -53,7 +53,7 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 最初に、バージョン 0.9x の Azure PowerShell をアンインストールする必要があります。インストールされている PowerShell のバージョンを確認するには、PowerShell ウィンドウから次のコマンドを実行します。
 
 	Get-Module *azure*
-	
+
 以前のバージョンをアンインストールするには、コントロール パネルで **[プログラムと機能]** を実行し、バージョンが PowerShell 1.0 より前の場合はインストールされているバージョンを削除します。
 
 Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
@@ -63,13 +63,13 @@ Azure PowerShell をインストールするための主な 2 つのオプショ
 		# Install the Azure Resource Manager modules from PowerShell Gallery
 		Install-Module AzureRM
 		Install-AzureRM
-		
+
 		# Install the Azure Service Management module from PowerShell Gallery
 		Install-Module Azure
-		
+
 		# Import AzureRM modules for the given version manifest in the AzureRM module
 		Import-AzureRM
-		
+
 		# Import Azure Service Management module
 		Import-Module Azure
 
@@ -78,7 +78,7 @@ Azure PowerShell をインストールするための主な 2 つのオプショ
 - [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
 
 WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
- 
+
 
 ## Azure Data Lake Store を作成する
 
@@ -88,11 +88,11 @@ Data Lake Store を作成するには、次の手順に従います。
 
         # Log in to your Azure account
 		Login-AzureRmAccount
-        
+
 		# List all the subscriptions associated to your account
 		Get-AzureRmSubscription
-		
-		# Select a subscription 
+
+		# Select a subscription
 		Set-AzureRmContext -SubscriptionId <subscription ID>
 
 		# Register for Data Lake Store
@@ -122,7 +122,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 4. いくつかのサンプル データを Azure Data Lake にアップロードします。このサンプル データは、HDInsight クラスターからデータにアクセスできることを確認するために、この記事の後半で使用します。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
-		
+
 		$myrootdir = "/"
 		Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
@@ -161,20 +161,20 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
 このセクションでは、Azure Active Directory アプリケーションのサービス プリンシパルを作成し、そのサービス プリンシパルにロールを割り当てて、証明書を指定することでサービス プリンシパルとして認証する手順を実行します。Azure Active Directory でアプリケーションを作成するには、次のコマンドを実行します。
 
-1. PowerShell コンソール ウィンドウで、次のコマンドレットを貼り付けます。**-DisplayName** プロパティに指定する値は一意になるようにしてください。また、**-HomePage** と **-IdentiferUris** の値はプレースホルダー値であるため、確認されません。 
+1. PowerShell コンソール ウィンドウで、次のコマンドレットを貼り付けます。**-DisplayName** プロパティに指定する値は一意になるようにしてください。また、**-HomePage** と **-IdentiferUris** の値はプレースホルダー値であるため、確認されません。
 
 		$certificateFilePath = "$certificateFileDir\CertFile.pfx"
-		
+
 		$password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
-		
+
 		$certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
-		
+
 		$rawCertificateData = $certificatePFX.GetRawCertData()
-		
+
 		$credential = [System.Convert]::ToBase64String($rawCertificateData)
 
 		$application = New-AzureRmADApplication `
-					-DisplayName "HDIADL" ` 
+					-DisplayName "HDIADL" `
 					-HomePage "https://contoso.com" `
 					-IdentifierUris "https://mycontoso.com" `
 					-KeyValue $credential  `
@@ -188,11 +188,11 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 2. アプリケーション ID を使用してサービス プリンシパルを作成します。
 
 		$servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
-		
+
 		$objectId = $servicePrincipal.Id
 
 3. 先ほど作成した Data Lake Store へのアクセス権をサービス プリンシパルに付与します。
-		
+
 		Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
 
 	プロンプトで、**Y** を入力して確定します。
@@ -210,9 +210,9 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 		# Create an Azure storage account
 		$location = "East US 2"
 		$storageAccountName = "<StorageAcccountName>"   # Provide a Storage account name
-		
+
 		New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
- 
+
 		# Create an Azure Blob Storage container
 		$containerName = "<ContainerName>"              # Provide a container name
 		$storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
@@ -226,7 +226,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 		$clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
 		$httpCredentials = Get-Credential
 		$rdpCredentials = Get-Credential
-		
+
 		New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.2" -RdpCredential $rdpCredentials -RdpAccessExpiry (Get-Date).AddDays(14) -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
 	コマンドレットが正常に完了すると、次のような出力が表示されます。
@@ -245,7 +245,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 		DefaultStorageAccount     :
 		DefaultStorageContainer   :
 		ResourceGroup             : hdiadlgroup
-		AdditionalStorageAccounts : 
+		AdditionalStorageAccounts :
 
 ## Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する
 
@@ -286,7 +286,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 Hive クエリを実行するには、次のコマンドレットを使用します。このクエリでは、Data Lake Store 内のデータからテーブルを作成し、作成されたテーブルに対して SELECT クエリを実行します。
 
 	$queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
-	
+
 	$hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
 
 	$hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
@@ -378,4 +378,4 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0316_2016-->

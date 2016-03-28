@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/16/2016"
+	ms.date="03/15/2016"
 	ms.author="raynew"/>
 
 
@@ -38,7 +38,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 ### Azure の前提条件
 
 - [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure Storage についてはこちらを参照してください。](../storage/storage-introduction.md)
+- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。Azure Storage については、[こちら](../storage/storage-introduction.md)を参照してください。
 - プライマリ サイトからフェールオーバーするとき、Azure 仮想マシンがネットワークに接続されるように、Azure 仮想ネットワークが必要になります。
 
 ### Hyper-V の前提条件
@@ -61,7 +61,7 @@ Azure Site Recovery のデプロイの一部として、各 Hyper-V サーバー
 - サーバーで実行されているプロバイダーは、インターネットで Site Recovery に接続します。このことは、プロキシを使用せずに、現在 Hyper-V サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。使用するプロキシ サーバーがこれらの URL にアクセスし、Azure に接続できることを確認する必要があります。
 	- *.hypervrecoverymanager.windowsazure.com
 	- *.accesscontrol.windows.net
-	- *.backup.windowsazure.com		
+	- *.backup.windowsazure.com
 	- *.blob.core.windows.net
 	- *.store.core.windows.net
 	
@@ -187,6 +187,9 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 
 	![ストレージ アカウントの作成](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_CreateResources1.png)
 
+>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+
+
 ## ステップ 5: 保護グループの作成と構成
 
 保護グループは、同じ保護設定を使用して保護する仮想マシンの論理グループです。保護設定を保護グループに適用すると、これらの設定はグループに追加するすべての仮想マシンに適用されます。
@@ -295,4 +298,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!----HONumber=AcomDC_0316_2016-->

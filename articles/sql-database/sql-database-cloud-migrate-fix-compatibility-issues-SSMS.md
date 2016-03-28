@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="02/22/2016"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
-# SQL Database へ移行する前に SSMS との SQL Server データベースの互換性に関する問題を修正する
+# SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する
 
 移行元の SQL Server データベースに互換性がないことがわかった場合は、いくつかのオプションを使用して、データベース互換性の問題を修正します。
 
 > [AZURE.SELECTOR]
-- Use [SQL Azure Migration Wizard](sql-database-cloud-migrate-fix-compatibility-issues.md)
-- Use [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
-- Use [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
+- [SQL Azure 移行ウィザード](sql-database-cloud-migrate-fix-compatibility-issues.md)を使用する
+- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) の使用
+- [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) の使用
 
 ## SQL Server Management Studio を使用する
 
@@ -33,4 +33,4 @@ SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transac
 
 [移行方法を選択](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

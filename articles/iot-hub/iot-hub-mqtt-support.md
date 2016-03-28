@@ -43,9 +43,25 @@ MQTT プロトコルをサポートする[デバイス クライアント SDK][l
 
 デバイスでデバイス クライアント SDK を使用できない場合でも、MQTT プロトコルを使用してデバイスをパブリックのデバイス エンドポイントに接続できます。**接続**パケットで、デバイスは次の値を使用する必要があります。
 
-- **ClientId** として **deviceId** を使用
-- **ユーザー名**フィールドには `{iothubhostname}/{device_id}` を使用。ここで、{iothubhostname} は IoT Hub の完全な CName (たとえば、contoso.azure-devices.net)。
-- **パスワード** フィールドには SAS トークンを使用。[SAS トークンの形式][lnk-iothub-security]は、HTTP および AMQP プロトコルの場合と同じで、次のようになります。<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
+- **ClientId** フィールドには、**deviceId** を使用します。 
+- **Username** フィールドには、`{iothubhostname}/{device_id}` を使用します。{iothubhostname} は IoT Hub の完全な CName です。
+
+    たとえば、IoT Hub の名前が **contoso.azure-devices.net** であり、デバイスの名前が **MyDevice01** であるとすると、**Username** フィールドの内容は `contoso.azure-devices.net/MyDevice01` になります。
+
+- **Password** フィールドには、SAS トークンを使用します。[SAS トークンの形式][lnk-iothub-security]は、HTTP および AMQP プロトコルの場合と同じで、次のようになります。<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
+
+    SAS トークンの生成方法の詳細については、「[IoT Hub セキュリティ トークンの使用][lnk-sas-tokens]」を参照してください。
+    
+    テストをするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンを簡単に生成し、それをコピーして独自のコードに貼り付けることもできます。
+    
+    1. デバイス エクスプローラーで **[管理]** タブに移動します。
+    2. **[SAS トークン]** (右上) をクリックします。
+    3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。**[TTL]** を設定します。
+    4. **[生成]** をクリックしてトークンを作成します。
+    
+    次のような SAS トークンが生成されます。`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
+
+    MQTT を使用して接続するために、この SAS トークンの一部を **Password** フィールドとして使用できます。`SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は**操作の監視**チャネルでイベントを発行します。
 
@@ -56,7 +72,7 @@ MQTT の接続パケットおよび切断パケットの場合、IoT Hub は**�
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
- 
+
 > [AZURE.NOTE] これは、HTTP プロトコルでクエリ文字列に使用したのと同じエンコーディングです。
 
 デバイス クライアント アプリケーションはまた、`devices/{did}/messages/events/{property_bag}` を **Will トピック名**として使用することにより、*Will メッセージ*をテレメトリ メッセージとして転送されるように定義することができます。
@@ -80,5 +96,7 @@ MQTT プロトコルの詳細については、「[MQTT documentation (MQTT ド�
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdks/blob/develop/java/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
+[lnk-sas-tokens]: iot-hub-sas-tokens.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

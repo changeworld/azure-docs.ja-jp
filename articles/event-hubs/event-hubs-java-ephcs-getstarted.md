@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/05/2015"
+	ms.date="03/08/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -34,11 +34,11 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + Microsoft Visual Studio Express for Windows
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 ## Event Hub を作成する
 
-1. [Azure クラシック ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[アプリケーション サービス]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。
 
@@ -62,7 +62,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 7. 同じページで、**SendRule** に対して生成されたキーをメモしておきます。
 
-	![][6b]
+	![][7]
 
 8. ページ上部の **[ダッシュボード]** タブをクリックし、**[接続情報]** をクリックします。2 つの接続文字列をメモします。
 
@@ -104,7 +104,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [4]: ./media/event-hubs-java-ephcs-getstarted/create-event-hub4.png
 [5]: ./media/event-hubs-java-ephcs-getstarted/create-event-hub5.png
 [6]: ./media/event-hubs-java-ephcs-getstarted/create-event-hub6.png
-[6b]: ./media/event-hubs-java-ephcs-getstarted/create-event-hub6b.png
+[7]: ./media/event-hubs-java-ephcs-getstarted/create-event-hub6b.png
 
 
 [21]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs1.png
@@ -119,4 +119,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0316_2016-->
