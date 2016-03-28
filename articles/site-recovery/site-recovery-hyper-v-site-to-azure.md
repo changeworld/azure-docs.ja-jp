@@ -59,11 +59,11 @@ Azure Site Recovery のデプロイの一部として、各 Hyper-V サーバー
 - 常に最新バージョンのプロバイダーとエージェントを実行することが推奨されます。これらは Site Recovery ポータルで入手できます。
 - コンテナー内のすべての Hyper-V サーバーで、プロバイダーとエージェントが同じバージョンである必要があります。
 - サーバーで実行されているプロバイダーは、インターネットで Site Recovery に接続します。このことは、プロキシを使用せずに、現在 Hyper-V サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。使用するプロキシ サーバーがこれらの URL にアクセスし、Azure に接続できることを確認する必要があります。
-	- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+	- *.hypervrecoverymanager.windowsazure.com
+	- *.accesscontrol.windows.net
+	- *.backup.windowsazure.com
+	- *.blob.core.windows.net
+	- *.store.core.windows.net
 	
 - また、「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
@@ -298,4 +298,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->

@@ -44,7 +44,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
+        계산, 저장, 네트워킹 리소스에 리소스 관리자를 사용할지 클래식 배포를 사용할지 선택할 수 있습니다. **리소스 관리자** 를 선택합니다.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -188,4 +188,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->

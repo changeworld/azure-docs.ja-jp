@@ -301,4 +301,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->

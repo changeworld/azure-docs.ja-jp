@@ -104,7 +104,12 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
+| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
+| *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay| 
+| *.core.windows.net | 443 | HTTPS | 
+| *.clouddatahub.net | 443 | HTTPS | 
+| graph.windows.net | 443 | HTTPS | 
+| login.windows.net | 443 | HTTPS | 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
@@ -475,7 +480,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -686,4 +691,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->

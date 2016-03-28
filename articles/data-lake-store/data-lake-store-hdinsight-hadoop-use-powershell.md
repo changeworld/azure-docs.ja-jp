@@ -378,4 +378,4 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->

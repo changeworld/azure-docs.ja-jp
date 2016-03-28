@@ -57,7 +57,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 次のコードは、Mobile App バックエンドへのアクセスに使用する [MobileServiceClient] オブジェクトを作成します。
 
-	MobileServiceClient client = new MobileServiceClient("MOBILE_APP_URL");
+	MobileServiceClient client = new MobileServiceClient(
+		"MOBILE_APP_URL");
 
 上記のコードで、`MOBILE_APP_URL` を、[Azure ポータル]のモバイル アプリ バックエンド用のブレードで確認できるモバイル アプリ バックエンドの URL に置き換えます。クライアント インスタンスはシングルトンであることが通常であり、推奨されます。
 
@@ -83,7 +84,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 バックエンド テーブルのデータにアクセスする、またはデータを変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+    IMobileServiceTable<TodoItem> todoTable =
+		client.GetTable<TodoItem>();
 
 これは、型指定されたシリアル化モデルです。型指定されていないシリアル化モデルもサポートされます。次のコードは、[型指定されていないテーブルへの参照を作成します]。
 
@@ -108,7 +110,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。[Where] 関数は、行のフィルタリング述語をテーブルに対するクエリに適用します。
 
-	// This query filters out completed TodoItems and items without a timestamp.
+	// This query filters out completed TodoItems and
+	// items without a timestamp.
 	List<TodoItem> items = await todoTable
 	   .Where(todoItem => todoItem.Complete == false)
 	   .ToListAsync();
@@ -127,7 +130,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
+	   .Where(todoItem => todoItem.Complete == false
+		   && todoItem.Text != null)
 	   .ToListAsync();
 
 Server SDK によって次のように SQL クエリに変換されます。
@@ -406,7 +410,8 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 マネージ ランタイムの一部のコントロールでは、[ISupportIncrementalLoading] というインターフェイスがサポートされます。このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。このインターフェイスには、[MobileServiceIncrementalLoadingCollection] によるユニバーサル Windows アプリ用の組み込みサポートがあり、コントロールからの呼び出しが自動で処理されます。Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用するには、次を実行します。
 
     MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
-    items = todoTable.Where(todoItem => todoItem.Complete == false).ToIncrementalLoadingCollection();
+    items = todoTable.Where(todoItem => todoItem.Complete == false)
+					.ToIncrementalLoadingCollection();
 
     ListBox lb = new ListBox();
     lb.ItemsSource = items;

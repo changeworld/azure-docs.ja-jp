@@ -91,4 +91,4 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 これで、**[今すぐ実行]** ボタンまたは独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再びアップロードできます。HTML および CSS のカスタマイズの詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->
