@@ -312,7 +312,7 @@ SQL Server ベースの多層アプリケーションを Azure に実装およ�
 
 次の表では、Azure Virtual Machines 内の SQL Server について、従来の Web 開発、Azure Cloud Services、および Azure Web Apps を比較しています。この表に Azure Web Apps が含まれているのは、Azure Web Apps では、パブリック仮想 IP アドレスまたは DNS 名を使用して Azure VM 内の SQL Server を Azure Web Apps のデータ ソースとして利用できるためです。
 
-|Azure Virtual Machines での従来の Web 開発|Azure の Cloud Services|Azure Web Apps での Web ホスティング|
+||Azure Virtual Machines での従来の Web 開発|Azure の Cloud Services|Azure Web Apps での Web ホスティング|
 |---|---|---|---|
 |**オンプレミスからのアプリケーションの移行**|既存のアプリケーションはそのまま。|アプリケーションには Web ロールと worker ロールが必要です。|既存のアプリケーションはそのままですが、迅速な拡張性を必要とする自己完結型の Web アプリケーションと Web サービスが適しています。|
 |**開発とデプロイ**|Visual Studio、WebMatrix、Visual Web Developer、WebDeploy、FTP、TFS、IIS マネージャー、PowerShell。|Visual Studio、Azure SDK、TFS、PowerShell。各クラウド サービスには、ステージング環境と運用環境という、サービス パッケージと構成をデプロイできる環境が 2 つ用意されています。クラウド サービスは、まずステージング環境にデプロイしてテストした後、運用環境に昇格させることができます。|Visual Studio、WebMatrix、Visual Web Developer、FTP、GIT、BitBucket、CodePlex、DropBox、GitHub、Mercurial、TFS、Web Deploy、PowerShell。|

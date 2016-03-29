@@ -17,5 +17,4 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 		Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
 	発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
-
 <!---HONumber=AcomDC_0128_2016-->
