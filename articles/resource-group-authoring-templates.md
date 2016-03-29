@@ -115,8 +115,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        }
     }
 
-| 要素名  
- | 必須 | 説明
+| 要素名  | 必須 | 説明
 | :------------: | :------: | :----------
 | parameterName | はい | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。  
 
@@ -496,4 +495,4 @@ resources セクションには、デプロイの対象となる一連のリソ�
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
-<!----HONumber=AcomDC_0309_2016-->
+<!-----HONumber=AcomDC_0309_2016-->
