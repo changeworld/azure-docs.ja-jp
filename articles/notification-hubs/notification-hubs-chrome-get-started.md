@@ -356,7 +356,8 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 	- **client** は、HTTP POST 要求に使用する **XMLHttpRequest** のインスタンスです。`sasToken` を使用して `Authorization` ヘッダーを更新している点に注意してください。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
 
-このプロジェクトの全体的なフォルダー構造は、次のようになっている必要があります。![Google Chrome App - Folder Structure][21]
+このプロジェクトの全体的なフォルダー構造は、次のようになっている必要があります。
+	![Google Chrome App - Folder Structure][21]
 
 ###Chrome アプリケーションのセットアップとテスト
 

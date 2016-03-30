@@ -51,7 +51,7 @@
 
 ## 前提条件
 
-このチュートリアルは、[Web ロール](fundamentals-application-models.md#CloudServices)、*worker ロール*などの用語を含む *Azure Cloud Services の基本概念*を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
+このチュートリアルは、[Web ロール](fundamentals-application-models.md#CloudServices)、 *worker ロール* などの用語を含む *Azure Cloud Services の基本概念* を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
 
 Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター*と Azure *ストレージ エミュレーター*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
+	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター* と Azure *ストレージ エミュレーター* が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
 
 	クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -158,7 +158,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 1. [Azure クラシック ポータル](http://manage.windowsazure.com)で、**[新規]、[Data Services]、[SQL Database]、[簡易作成]** の順にクリックします。
 
-1. **[データベース名]** ボックスに「*contosoads*」と入力します。
+1. **[データベース名]** ボックスに「 *contosoads* 」と入力します。
 
 1. **[サーバー]** ボックスの一覧の **[新しい SQL データベース サーバー]** を選択します。
 
@@ -332,8 +332,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 2. **Azure アプリケーションの発行**ウィザードの [**サインイン**] 手順で、[**次へ**] をクリックします。
 
-	![[サインイン] 手順  
-](./media/cloud-services-dotnet-get-started/pubsignin.png)
+	![[サインイン] 手順  ](./media/cloud-services-dotnet-get-started/pubsignin.png)
 
 3. ウィザードの **[設定]** 手順で、**[次へ]** をクリックします。
 
@@ -486,8 +485,8 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
 	- *Global.asax.cs*。  
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml*。
-	- *Views\\Home* フォルダー: *Index.cshtml*。
-	- *Controllers* フォルダー: *AdController.cs*。
+	- *Views\\Home* フォルダー: *Index.cshtml* 。
+	- *Controllers* フォルダー: *AdController.cs* 。
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
 
 3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから *WorkerRole.cs* を追加します。
@@ -790,7 +789,7 @@ public override void Run()
 
 ループの各イテレーションの後でキュー メッセージが見つからなかった場合、プログラムは 1 秒間スリープ状態になります。これにより、worker ロールによって過剰な CPU 時間およびストレージ トランザクション コストが発生しないようにしています。Microsoft Customer Advisory Team では、ある開発者に関する話を紹介しています。この開発者は、この処理を組み込むのを忘れて運用環境にデプロイし、休暇に出かけてしまったのです。開発者が休暇から戻ると、その不注意によって休暇分を超える損失が生じていました。
 
-ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは*有害メッセージ*と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
+ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは *有害メッセージ* と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
 `ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
 

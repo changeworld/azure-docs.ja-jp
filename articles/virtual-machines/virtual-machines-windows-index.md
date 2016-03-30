@@ -53,7 +53,7 @@
 
 
 ### 作業開始
-[Windows VM のラーニング パス](https://azure.microsoft.com/ja-JP/documentation/learning-paths/virtual-machines/)
+[Windows VM のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
 
 [Azure ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-classic-tutorial.md)
 
@@ -228,7 +228,7 @@
 
 
 ### 作業開始
-[Windows VM のラーニング パス](https://azure.microsoft.com/ja-JP/documentation/learning-paths/virtual-machines/)
+[Windows VM のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
 
 [Azure クラシック ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-classic-tutorial.md)
 
@@ -375,4 +375,4 @@
 
 [Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング](virtual-machines-windows-allocation-failure.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!-----HONumber=AcomDC_0323_2016-->
