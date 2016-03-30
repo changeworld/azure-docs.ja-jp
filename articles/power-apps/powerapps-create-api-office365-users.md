@@ -47,7 +47,6 @@
 ![Office 365 Users API の選択][3]
 
 8. **[設定] - [必要な設定の構成]** を選択します。  
-
 ![Office 365 Users API 設定の構成][4]
 
 9. Office 365 Azure Active Directory (AAD) アプリケーションの*クライアント ID* と*クライアント シークレット*を入力します。これらがない場合は、このトピックの「PowerApps Office 365 Users API で使用する AAD アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。  
@@ -129,4 +128,4 @@
 [10]: ./media/powerapps-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/powerapps-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!----HONumber=AcomDC_0309_2016-->
+<!-----HONumber=AcomDC_0309_2016-->
