@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/04/2016"
+   ms.date="03/15/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成
@@ -23,13 +23,18 @@
 - [Azure クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
 - [PowerShell - Azure リソース マネージャー](vpn-gateway-vnet-vnet-rm-ps.md)
 
-この記事では、**リソース マネージャー** デプロイ モデルと PowerShell を使用し、仮想ネットワーク間の接続を作成する手順について説明します。仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。
+この記事では、Resource Manager デプロイ モデルと PowerShell を使用して仮想ネットワーク間の接続を作成する手順について説明します。仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。
 
-[AZURE.INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**VNet 対 VNet 用のデプロイ モデルとツール**
+
+両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
+
+[AZURE.INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
 
 ## VNet 間接続の概要
@@ -73,7 +78,7 @@
 
 - VNet 間のトラフィックは、インターネットではなく、Microsoft ネットワークで送信されます。
 
-- 同じリージョン内の VNet 間トラフィックは双方向で無料です。リージョンを超えて送信される VNet 間トラフィックには、ソース リージョンに基づき、送信 VNet 内データ転送料金が課せられます。詳細については、[料金のページ](https://azure.microsoft.com/pricing/details/vpn-gateway/)を参照してください。
+- 同じリージョン内の VNet 間トラフィックは双方向で無料です。リージョンを超えて送信される VNet 間トラフィックには、ソース リージョンに基づき、送信 VNet 内データ転送料金が課せられます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/vpn-gateway/)を参照してください。
 
 
 ## どの手順を利用するべきでしょうか。
@@ -98,9 +103,9 @@
 
 ### 開始する前に
 
-- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションがまだない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
+- Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ### <a name ="Step1"/>手順 1 - IP アドレス範囲を決める
 
@@ -313,7 +318,7 @@ TestVNet1 を構成したら、この手順を繰り返し、TestVNet4 を作成
 
 ### Azure ポータルを使用して接続を確認するには
 
-Azure ポータルで VPN 接続を確認するには、**[仮想ネットワーク ゲートウェイ]** に移動し、**ゲートウェイ名をクリックし**、**[設定]**、**[接続]** の順にクリックします。接続の名前を選択すると、**[接続]** ブレードに詳細な情報が表示されます。
+Azure ポータルで VPN 接続を確認するには、**[仮想ネットワーク ゲートウェイ]** に移動し、**ゲートウェイ名**、**[設定]**、**[接続]** の順にクリックします。接続の名前を選択すると、**[接続]** ブレードに詳細な情報が表示されます。
 
 
 ### PowerShell を使用して接続を確認するには
@@ -322,7 +327,7 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 -Debug
 
-コマンドレットが完了したら、スクロールして値を表示します。以下の PowerShell 出力例では、接続状態は *Connected* と表示され、受信バイトと送信バイトを確認できます。
+コマンドレットが完了したら、スクロールして値を表示します。以下の PowerShell の出力例では、接続状態は *Connected* と表示されており、受信バイトと送信バイトを確認できます。
 
 
 
@@ -356,7 +361,7 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 ![異なるサブスクリプションの VNet2VNet](./media/vpn-gateway-vnet-vnet-rm-ps/differentsubscription.png)
 
-以下の指示は、前の手順からの続きになります。TestVNet1 と TestVNet1 の VPN ゲートウェイを作成し、構成するには、[手順 1](#Step1) と[手順 2](#Step2) を完了する必要があります。サブスクリプションの異なる VNet のみを接続する予定の場合、前の演習の手順 3 と 4 は省略し、以下の手順 5 に進むことができます。
+以下の指示は、前の手順からの続きになります。TestVNet1 と TestVNet1 の VPN Gateway を作成し、構成するには、[手順 1](#Step1) と [手順 2](#Step2) を完了する必要があります。サブスクリプションの異なる VNet のみを接続する予定の場合、前の演習の手順 3 と 4 は省略し、以下の手順 5 に進むことができます。
 
 ### 手順 5 - 追加の IP アドレス範囲を確認する
 
@@ -519,10 +524,10 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 5. 接続を検証する
 
-	以上の手順を完了したら、「[VNet 間の接続を検証する方法](#Verify)」で接続を確認できます。
+	以上の手順を完了したら、「[VNet 間の接続を検証する方法](#Verify)」で紹介されている方法で接続を確認できます。
 
 ## 次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

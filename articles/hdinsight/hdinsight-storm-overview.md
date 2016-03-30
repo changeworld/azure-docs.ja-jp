@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/08/2016"
+   ms.date="03/18/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
@@ -81,7 +81,7 @@ HDInsight クラスター上の各 Storm には、クラスターで実行され
 
 Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
 
-HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、次のドキュメントをご覧ください。
+HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。このコンポーネントの最新バージョンは、[https://github.com/hdinsight/hdinsight-storm-examples/tree/master/lib/eventhubs](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/lib/eventhubs) から入手できます。このコンポーネントの使用について詳しくは、次のドキュメントを参照してください。
 
 * [Azure Event Hubs を使用する C# トポロジの開発](hdinsight-storm-develop-csharp-event-hub-topology.md)
 
@@ -220,4 +220,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # エンドポイントの追加と削除、有効化と無効化
@@ -75,4 +75,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

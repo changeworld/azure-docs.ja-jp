@@ -3,7 +3,7 @@
 	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイを使用する方法を説明するチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="php" 
-	authors="tfitzmac" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -14,14 +14,14 @@
 	ms.devlang="PHP" 
 	ms.topic="hero-article" 
 	ms.date="01/12/2016" 
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 
 #Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする
 
 > [AZURE.SELECTOR]
-- [.Net](web-sites-dotnet-get-started.md)
-- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [.NET](web-sites-dotnet-get-started.md)
+- [Node.JS](web-sites-nodejs-develop-deploy-mac.md)
 - [Java](web-sites-java-get-started.md)
 - [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
 - [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
@@ -303,4 +303,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -210,8 +210,9 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
-1. 最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-tutorial.md)」の説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「[Log on to a Windows virtual machine using the Azure Portal (Azure ポータルで Windows 仮想マシンにログオンする)](../virtual-machines/virtual-machines-arm-log-on-windows-vm.md)」の説明に従って仮想マシンにリモート接続します。
+
+1. 最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」の説明に従って、Azure の仮想マシンを新規作成します。
+2. 次に、「[Log on to a Windows virtual machine using the Azure Portal (Azure ポータルで Windows 仮想マシンにログオンする)](../virtual-machines/virtual-machines-windows-log-on.md)」の説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
 ### ストレージ アカウントの資格情報を仮想マシンに適用
@@ -646,4 +647,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

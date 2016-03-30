@@ -47,7 +47,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 詳細については、「[Deprecation of Switch AzureMode in Azure PowerShell (Azure PowerShell での Switch AzureMode の廃止)](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)」を参照してください。
 
 
-## 手順 1: Data Factory を作成する
+## データ ファクトリの作成
 
 この手順では、Azure PowerShell を使用して、**FirstDataFactoryPSH** という名前の Azure データ ファクトリを作成します。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。それでは、この手順でデータ ファクトリの作成から始めましょう。
 
@@ -70,7 +70,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。最初に、データ ストアやコンピューティングをデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義した後、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
 
-## 手順 2. リンク サービスを作成する 
+## リンクされたサービスの作成 
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクする必要があります。
 
 ### Azure Storage のリンクされたサービスを作成する
@@ -147,10 +147,10 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		New-AzureRmDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
 
 
-## 手順 3: データセットを作成する
+## データセットを作成する
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
 
-### 入力データセットを作成する
+### 入力データセットの作成
 1. 以下の内容を記述した **InputTable.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダー内に作成します。
 
 		{
@@ -193,7 +193,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 		New-AzureRmDataFactoryDataset $df -File .\InputTable.json
 
-### 出力データセットを作成します。
+### 出力データセットの作成
 次に、Azure Blob Storage に格納される出力データを表す出力データセットを作成します。
 
 1. 以下の内容を記述した **OutputTable.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダー内に作成します。
@@ -223,7 +223,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 		New-AzureRmDataFactoryDataset $df -File .\OutputTable.json
 
-## 手順 3: 最初のパイプラインを作成する
+## パイプラインの作成
 この手順では、**HDInsightHive** アクティビティを含む最初のパイプラインを作成します。入力スライスは 1 か月ごと (frequency: Month、interval: 1) であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します (下記参照)。出力データセットとアクティビティの scheduler の設定は一致している必要があります。出力データセットによってスケジュールが開始されるため、アクティビティが出力を生成しない場合でも、この時点で、出力データセットを作成する必要があります。アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
 
 
@@ -290,7 +290,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
 5. これで、Azure PowerShell を使用して最初のパイプラインを作成できました。
 
-### <a name="MonitorDataSetsAndPipeline"></a> データセットとパイプラインを監視する
+## パイプラインの監視
 このステップでは、Azure PowerShell を使用して、Azure Data Factory の状況を監視します。
 
 1. **Get-AzureRmDataFactory** を実行して **$df** 変数に出力を割り当てます。
@@ -356,4 +356,4 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

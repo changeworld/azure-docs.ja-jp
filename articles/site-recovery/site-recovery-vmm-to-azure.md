@@ -13,10 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/15/2016"
+	ms.date="02/16/2016"
 	ms.author="raynew"/>
 
 #  VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
+
+> [AZURE.SELECTOR]
+- [Azure クラシック ポータル](site-recovery-vmm-to-azure.md)
+- [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
+- [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md) 
+
 
 Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
@@ -43,7 +49,7 @@ Azure で必要なものを次に示します。
 **前提条件** | **詳細**
 --- | ---
 **Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)を参照してください。 
-**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[標準の geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。<br/><br/>Azure Storage については、[こちら](../storage/storage-introduction.md)を参照してください。
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[標準の geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium Storage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については[こちら](../storage/storage-introduction.md)を参照してください。
 **Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure の仮想ネットワークは、Site Recovery コンテナーと同じリージョンに置かれている必要があります。 
 
 ## オンプレミスの前提条件
@@ -132,12 +138,12 @@ Azure で必要なものを次に示します。
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
 	- VMM サーバーと Hyper-V ホストから次の URL にアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- 「[Azure Datacenter IP Ranges (Azure Datacenter の IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用予定の Azure リージョンの IP 範囲と米国西部の IP 範囲をホワイトリストに登録する必要があります。
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- 「[Azure Datacenter IP Ranges (Azure Datacenter の IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用予定の Azure リージョンの IP 範囲と米国西部の IP 範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
@@ -191,12 +197,10 @@ Azure Site Recovery プロバイダーは、次のコマンド ラインを使�
 
 ## ステップ 4: Azure のストレージ アカウントを作成する
 
-1. Azure ストレージ アカウントがない場合は、**[Azure ストレージ アカウントの追加]** をクリックしてアカウントを作成します。
+1. Azure Storage アカウントがない場合は、**[Azure ストレージ アカウントの追加]** をクリックしてアカウントを作成します。
 2. geo レプリケーションを有効にしてアカウントを作成します。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。
 
 	![ストレージ アカウント](./media/site-recovery-vmm-to-azure/storage.png)
-
->[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
 
 ## ステップ 5: Azure Recovery Services エージェントをインストールする
 
@@ -231,10 +235,7 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 1. [クイック スタート] ページで、**[VMM クラウドの保護の設定]** をクリックします。
 2. **[保護された項目]** タブで、構成するクラウドをクリックし、**[構成]** タブに移動します。
 3. **[ターゲット]** で、**[Azure]** を選択します。
-4. **[ストレージ アカウント]** で、レプリケーションに使用する Azure ストレージ アカウントを選択します。 
-
-	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
-
+4. **[ストレージ アカウント]** で、レプリケーションに使用する Azure Storage アカウントを選択します。
 5. **[格納データの暗号化]** を **[オフ]** に設定します。この設定は、内部設置型サイトと Azure 間のレプリケートでデータを暗号化する必要があることを指定します。
 6. **[コピーの頻度]** では、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。
 7. **[保持する復旧ポイント]** で、既定の設定をそのまま使用します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
@@ -280,7 +281,7 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
 	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-azure/select-vm.png)
 
-	**[ジョブ]** タブで、**[保護を有効にする]** アクション (初期レプリケーションなど) の進捗状況を確認します。**保護の最終処理**ジョブの実行後に、仮想マシンはフェールオーバーできる状態になります。保護が有効され仮想マシンが複製されると、Azure でそれらの状態を表示できます。
+	**[ジョブ]** タブで、**[保護を有効にする]** アクション (初期レプリケーションなど) の進捗状況を確認します。**保護の最終処理**のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。保護が有効され仮想マシンが複製されると、Azure でそれらの状態を表示できます。
 
 
 	![仮想マシン保護ジョブ](./media/site-recovery-vmm-to-azure/vm-jobs.png)
@@ -289,11 +290,14 @@ VMM サーバーが登録されると、クラウドの保護設定を構成す�
 
 	![仮想マシンの確認](./media/site-recovery-vmm-to-azure/vm-properties.png)
 
+
 4. 仮想マシンのプロパティの **[構成]** タブでは、次のネットワークのプロパティを変更できます。
 
 
 
-- **ターゲット仮想マシンのネットワーク アダプターの数** - ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズ別のサポートされているアダプターの数については、「[仮想マシン サイズ](../virtual-machines/virtual-machines-size-specs.md#size-tables)」を参照してください。仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。
+
+
+- **ターゲット仮想マシンのネットワーク アダプターの数** - ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズ別のサポートされているアダプターの数については、「[仮想マシン サイズ](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)」を参照してください。仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。
 
 	- ソース マシン上のネットワーク アダプターの数が、ターゲット マシンのサイズに許可されているアダプターの数以下の場合、ターゲットのアダプターの数は、ソースと同じになります。
 	- ソース仮想マシン用のアダプターの数が、ターゲットのサイズに許可されている数を超える場合は、ターゲットの最大サイズが使用されます。
@@ -368,4 +372,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 [復旧計画の作成](site-recovery-create-recovery-plans.md)と[フェールオーバー](site-recovery-failover.md)について学習します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

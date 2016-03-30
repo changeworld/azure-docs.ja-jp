@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/07/2016"
+	ms.date="03/14/2016"
 	ms.author="markgal; jimpark"/>
 
 
@@ -127,9 +127,9 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 ## 手順 3. 仮想マシンへの VM エージェントのインストール
 
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。しかし、オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。このような場合は、VM エージェントを明示的にインストールする必要があります。Azure VM のバックアップを実行する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (以下の表を参照)。カスタム VM を作成している場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-extensions-agent-about.md)してください。
+バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。しかし、オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。このような場合は、VM エージェントを明示的にインストールする必要があります。Azure VM のバックアップを実行する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (以下の表を参照)。カスタム VM を作成している場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)してください。
 
-詳細については、「[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)」と「[インストール方法](../virtual-machines/virtual-machines-extensions-install.md)」に関するページをご覧ください。
+詳細については、「[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)」と「[インストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)」に関するページをご覧ください。
 
 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 
@@ -230,4 +230,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

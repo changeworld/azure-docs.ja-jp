@@ -25,21 +25,20 @@
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 
-##このチュートリアルの内容
 このチュートリアルで実行する手順は次のとおりです。
 
 手順 | 説明
 -----| -----------
-[手順 1. Azure Data Factory を作成する](#CreateDataFactory) | この手順では、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。  
-[手順 2. リンクされたサービスを作成する](#CreateLinkedServices) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。パイプラインの入力データは、Azure Blob Storage の BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。      
-[手順 3. 入力テーブルと出力テーブルを作成する](#CreateInputAndOutputDataSets) | 前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つの Data Factory テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。 
-[手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。 
-[手順 5. スライスとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
+[Azure Data Factory を作成する](#create-data-factory) | この手順では、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。  
+[リンクされたサービスの作成](#create-linked-services) | この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。AzureStorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。      
+[入力データセットと出力データセットを作成する](#create-datasets) | 前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つの Data Factory テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。 
+[パイプラインを作成する。](#create-pipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。 
+[パイプラインの監視](#monitor-pipeline) | この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
 
 > [AZURE.IMPORTANT] 
 「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
 
-## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
+## データ ファクトリの作成
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
 
 1.	[Azure ポータル][azure-portal]にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
@@ -71,10 +70,10 @@
 
     ![データ ファクトリのホーム ページ][image-data-factory-get-stated-factory-home-page]
 
-## <a name="CreateLinkedServices"></a>手順 2. リンクされたサービスを作成する
+## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
 
-この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス AzureStorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、AzureStorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
 
 ### Azure ストレージ アカウント用にリンクされたサービスを作成する
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
@@ -88,11 +87,11 @@
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
-	![エディターの Blob Storage JSON][image-editor-blob-storage-json]
+	![エディターの Blob Storage JSON](./media/data-factory-get-started-using-editor/getstarted-editor-blob-storage-json.png)
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 
-6. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
+6. ツール バーの **[デプロイ]** をクリックして、AzureStorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
 	![エディターの Blob Storage デプロイ][image-editor-blob-storage-deploy]
 
@@ -101,15 +100,15 @@
 
 	![エディターの Azure SQL 設定][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
-## <a name="CreateInputAndOutputDataSets"></a>手順 3. 入力テーブルと出力テーブルを作成する
-前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは StorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
+## データセットを作成する
+前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
-### 入力テーブルの作成 
-テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。
+### 入力データセットの作成 
+テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。
 
 1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[BLOB テーブル]** をクリックします。 
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。 
@@ -128,7 +127,7 @@
 		      }
 		    ],
 		    "type": "AzureBlob",
-		    "linkedServiceName": "StorageLinkedService",
+		    "linkedServiceName": "AzureStorageLinkedService",
 		    "typeProperties": {
 		      "folderPath": "adftutorial/",
 			  "fileName": "emp.txt",
@@ -149,7 +148,7 @@
      以下の点に注意してください。
 	
 	- dataset の **type** は **AzureBlob** に設定されています。
-	- **linkedServiceName** は **StorageLinkedService** に設定されています。このリンクされたサービスは手順 2. で作成しました。
+	- **linkedServiceName** は **AzureStorageLinkedService** に設定されています。このリンクされたサービスは手順 2. で作成しました。
 	- **folderPath** が **adftutorial** コンテナーに設定されています。フォルダー内の BLOB の名前を指定することもできます。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
 	- format の **type** が **TextFormat** に設定されています。
 	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。	
@@ -176,7 +175,7 @@
 
 2. ツール バーの **[デプロイ]** をクリックし、**EmpTableFromBlob** テーブルを作成してデプロイします。エディターのタイトル バーに **"テーブルが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-### 出力テーブルの作成
+### 出力データセットの作成
 手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブルをポイントする **EmpSQLTable** という名前の出力テーブルを作成します。
 
 1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL テーブル]** をクリックします。 
@@ -220,10 +219,10 @@
 3. ツール バーの **[デプロイ]** をクリックし、**EmpSQLTable** テーブルを作成してデプロイします。
 
 
-## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
+## パイプラインの作成
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -310,7 +309,7 @@
 4. 左上にある階層リンクで **[Data Factory]** をクリックして、ダイアグラム ビューに戻ります。ダイアグラム ビューには、すべてのパイプラインが表示されます。この例では 1 つのパイプラインのみ作成しました。
  
 
-## <a name="MonitorDataSetsAndPipeline"></a>手順 5. データセットとパイプラインを監視する
+## パイプラインの監視
 このステップでは、Azure クラシック ポータルを使用して、Azure Data Factory の状況を監視します。PowerShell コマンドレットを使用して、データセットとパイプラインを監視することもできます。監視用のコマンドレットの使用方法については、「[PowerShell コマンドレットを使用した Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
 1. まだ開いていない場合は、[Azure クラシック ポータル (プレビュー)][azure-portal] に移動します。 
@@ -331,7 +330,7 @@
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**... (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -349,7 +348,7 @@
 	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-8. **... (省略記号)** をクリックし、すべてのスライスを表示します。
+8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
 
@@ -421,8 +420,6 @@ Azure Data Factory の**コピー アクティビティ**の詳細について�
 
 [image-editor-newdatastore-button]: ./media/data-factory-get-started-using-editor/getstarted-editor-newdatastore-button.png
 
-[image-editor-blob-storage-json]: ./media/data-factory-get-started-using-editor/getstarted-editor-blob-storage-json.png
-
 [image-editor-blob-storage-deploy]: ./media/data-factory-get-started-using-editor/getstarted-editor-blob-storage-deploy.png
 
 [image-editor-azure-sql-settings]: ./media/data-factory-get-started-using-editor/getstarted-editor-azure-sql-settings.png
@@ -459,4 +456,4 @@ Azure Data Factory の**コピー アクティビティ**の詳細について�
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

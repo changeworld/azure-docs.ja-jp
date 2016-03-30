@@ -44,7 +44,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 - **認証**。次のコマンドを使用します。
 
 		azure login
-	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
+	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](../xplat-cli-connect.md)」をご覧ください。
 - **Azure リソース マネージャー モードへの切り替え**。次のコマンドを使用します。
 
 		azure config mode arm
@@ -169,4 +169,4 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -3,9 +3,9 @@
 	description="このページでは、Azure AD Connect Health for AD FS と for Sync のエージェントのインストールについて説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="billmath"
+	authors="karavar"
 	manager="stevenpo"
-	editor="curtand"/>
+	editor="karavar"/>
 
 <tags
 	ms.service="active-directory"
@@ -13,25 +13,33 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/08/2016"
-	ms.author="billmath"/>
-
-
-
-
+	ms.date="03/21/2016"
+	ms.author="vakarand"/>
 
 
 # Azure AD Connect Health エージェントのインストール
 
-このドキュメントでは、AD FS と同期用に Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。
+このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。エージェントは[こちら](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
 
->[AZURE.NOTE]Azure AD Connect Health のインスタンスで AD FS データを表示するためには、あらかじめ対象サーバーに Azure AD Connect Health エージェントをインストールしておく必要があります。[こちら](active-directory-aadconnect-health.md#requirements)に記した要件が満たされていることを必ず確認したうえでエージェントをインストールしてください。エージェントは[ここ](http://go.microsoft.com/fwlink/?LinkID=518973)からダウンロードできます。
+## 	必要条件
+次の表に、Azure AD Connect Health を使用するための要件の一覧を示します。
+
+| 要件 | 説明|
+| ----------- | ---------- |
+|Azure AD Premium| Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。</br></br>詳細については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。</br>30 日間の無料試用版を開始するには、「[Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/)」を参照してください。|
+|Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること|既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。<br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。詳細については、「[ロールベースのアクセス制御を使用してアクセスを管理する](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)」を参照してください。</br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。
+|Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること| ポータルに表示されるデータを Azure AD Connect Health から得るためには、対象となるサーバーにエージェントがインストールされている必要があります。</br></br>たとえば、AD FS オンプレミス インフラストラクチャに関するデータを取得するには、AD FS サーバー、AD FS プロキシ サーバー、Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。</br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。|
+|Azure サービスのエンドポイントに対する送信接続|エージェントをインストールしたり実行したりするためには、以下に示した、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。送信接続をブロックしている場合は、以下の項目を許可リストに追加してください。</br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.queue.core.windows.net</li><li>adhsprodwus.servicebus.windows.net - ポート: 5671 </li><li>https://management.azure.com </li><li>https://s1.adhybridhealth.azure.com/</li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
+|エージェントを実行するサーバー上のファイアウォール ポート| エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。</br></br><li>TCP/UDP ポート 443</li><li>TCP/UDP ポート 5671</li>
+|IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること|エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー (例: https://sts.contoso.com</li>)
+
+
 
 
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -44,18 +52,17 @@
 
 サインイン後も、PowerShell は続行されます。完了したら PowerShell を閉じます。これで構成は完了です。
 
-この時点でサービスが自動的に開始され、エージェントによる監視とデータの収集が実行されます。前のセクションで挙げた前提条件が満たされていない場合、PowerShell ウィンドウに警告が表示されます。[こちら](active-directory-aadconnect-health.md#requirements)に記した要件が満たされていることを必ず確認したうえでエージェントをインストールしてください。以下のスクリーンショットは、これらのエラーの例です。
+この時点でサービスが自動的に開始され、エージェントによる監視とデータの収集が実行されます。前のセクションで挙げた前提条件が満たされていない場合、PowerShell ウィンドウに警告が表示されます。[こちら](active-directory-aadconnect-health-agent-install.md#requirements)に記した要件が満たされていることを必ず確認したうえでエージェントをインストールしてください。次のスクリーンショットはこれらのエラーの例です。
 
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install4.png)
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
-- Azure AD Connect Health AD FS 診断サービス  
-- Azure AD Connect Health AD FS 分析サービス  
+- Azure AD Connect Health AD FS Diagnostics Service
+- Azure AD Connect Health AD FS Insights Service
+- Azure AD Connect Health AD FS Monitoring Service
 
-- Azure AD Connect Health AD FS 監視サービス  
-
-![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install5.png)
+![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
 
 
 ### Windows Server 2008 R2 サーバーへのエージェントのインストール
@@ -111,14 +118,14 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。
 
-![AD FS 監査ログ](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
+![AD FS audit logs](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
 > [AZURE.WARNING] グループ ポリシーで AD FS の監査が無効にされている場合、Azure AD Connect Health エージェントが情報を収集できません。監査を無効にするグループ ポリシーが設定されていないことを確認してください。
 
 [//]: # "エージェントのプロキシ構成セクションの開始"
 
 ## Azure AD Connect Health エージェント for Sync のインストール
-Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。最新バージョンは[ここ](http://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
+Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。最新バージョンは[こちら](http://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。エージェントの構成が完了していれば、これらのサービスが実行されています。構成が完了するまでは開始されません。
 
@@ -127,7 +134,7 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 
 ![Azure AD Connect Health for Sync の確認](./media/active-directory-aadconnect-health-sync/services.png)
 
->[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health.md#requirements)で要件を参照してください。
+>[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health-agent-install.md#requirements)で要件を参照してください。
 
 
 ## 主導による Azure AD Connect Health for Sync の登録
@@ -136,7 +143,7 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 >[AZURE.IMPORTANT] この PowerShell コマンドは、Azure AD Connect をインストールした後でエージェントの登録が失敗した場合にのみ使用してください。
 
 下記の PowerShell コマンドは、Azure AD Connect のインストールと構成が正常に完了した後に Health エージェントの登録が失敗した場合にのみ実行する必要があります。このような場合、エージェントが正常に登録されるまで Azure AD Connect Health サービスは開始されません。
- 	
+
 次の PowerShell コマンドを使用して、Azure AD Connect Health for Sync エージェントを手動で登録することができます。
 
 `Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
@@ -145,8 +152,8 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 
 - AttributeFiltering: $true (既定) - Azure AD Connect が既定の属性セットを同期しておらず、フィルター処理された属性セットを使用するようにてカスタマイズされている場合。それ以外の場合は $false です。
 - StagingMode: $false (既定) - Azure AD Connect サーバーがステージング モードになっていない場合。サーバーがステージング モードになるよう構成されている場合は $true です。
- 
-認証情報の入力を求められたら、Azure AD Connect を構成するときに使用したのと同じグローバル管理者アカウントを使用する必要があります (admin@domain.onmicrosoft.com など)。
+
+認証情報の入力を求められたら、Azure AD Connect の構成に使用したのと同じグローバル管理者アカウントを使用する必要があります (admin@domain.onmicrosoft.com など)。
 
 
 
@@ -205,7 +212,7 @@ Azure AD Connect Health エージェントが Azure AD Connect Health サービ�
     Test-AzureADConnectHealthConnectivity -Role Adfs
 
 role パラメーターは、現在、以下の値を受け取ります。
-	
+
 - Adfs
 - 同期
 
@@ -213,7 +220,8 @@ role パラメーターは、現在、以下の値を受け取ります。
 
     Test-AzureADConnectHealthConnectivity -Role Sync -ShowResult
 
->[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
+>[AZURE.NOTE]接続ツールを使用するには、まず、エージェントの登録を完了する必要があります。エージェントの登録を完了できない場合は、Azure AD Connect Health のすべての[要件](active-directory-aadconnect-health-agent-install.md#requirements)が満たされていることを確認してください。この接続テストは、既定ではエージェントの登録中に実行されます。
+
 
 
 ## 関連リンク
@@ -225,4 +233,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -28,7 +28,7 @@
 
 > [AZURE.IMPORTANT] このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してください。
 
-## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
+## データ ファクトリの作成
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure Data Factory を作成します。
 
 1.	[Azure ポータル](https://portal.azure.com)にログインしたら、左上隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。 
@@ -60,7 +60,7 @@
 
     ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
-## コピー ウィザードを使用してパイプラインを作成する
+## パイプラインの作成
 
 1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
 2. **[プロパティ]** ページで次の操作を実行します。
@@ -74,7 +74,7 @@
 
 	![Copy Tool - Source data store page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 5. **[Azure Blob ストレージ アカウントの指定]** ページで次の操作を実行します。
-	1. **[リンクされたサービス名**] に「**AzureStorageLinkedService**」と入力します。
+	1. **[リンクされたサービス名]** に「**AzureStorageLinkedService**」と入力します。
 	2. **[アカウントの選択方法]** が **[Azure サブスクリプションから]** になっていることを確認します。 
 	3. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。ストレージ アカウント設定を手動で入力することもできます。その場合は、**[アカウントの選択方法]** で **[手動で入力]** オプションを選択し、**[次へ]** をクリックします。 
 
@@ -108,4 +108,4 @@
 	![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
   
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -124,7 +124,6 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 	- Azure Batch は失敗したタスクを検出して、再試行することができます。**タスク再試行の最大回数**を制約として指定できます。タスクを常に再試行するように指定したり、再試行を禁止したりすることもできます。タスクの再試行とは、タスクをもう一度実行するためにキューに置くことです。
 - タスクは、クライアント アプリケーションでジョブに追加できます。または、[ジョブ マネージャー タスク](#jobmanagertask)を指定できます。ジョブ マネージャー タスクは、Batch API を使用します。このタスクには、ジョブに必要なタスクを作成するための情報と、プール内のいずれかのコンピューティング ノードで実行されているタスクが含まれます。ジョブ マネージャー タスクは Batch によってのみ処理されます。ジョブが作成されるとすぐにキューに配置され、失敗すると再開されます。ジョブ スケジュールによって作成されたジョブには、ジョブ マネージャー タスクが必要です。ジョブ マネージャー タスク以外では、ジョブがインスタンス化される前にタスクを定義できないためです。ジョブ マネージャー タスクの詳細については、以下で説明します。
 
-
 ### <a name="task"></a>タスク
 
 タスクは、ジョブに関連付けられ、ノード上で実行される、計算の単位です。タスクはノードに割り当てられて実行されるか、ノードが解放されるまでキューに格納されます。タスクは、次のリソースを使用します。
@@ -192,7 +191,15 @@ Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する
 
 #### <a name="taskdep"></a>タスクの依存関係
 
-タスクの依存関係は、名前が示すとおり、あるタスクを実行するには、事前に 1 つ以上の他のタスクが完了している必要があることを指定できる機能です。"下位" のタスクが、"上位" のタスクの出力を使用したり、上位のタスクによって実行される初期化に依存したりする状況が考えられます。このようなシナリオでは、ジョブでタスクの依存関係を使用するよう指定し、別のタスク (または他の複数のタスク) に依存する各タスクに、どのタスクに依存するかを指定できます。
+タスクの依存関係は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。この機能は、"下流" のタスクが "上流" のタスクの出力を使用する状況や、下流のタスクで必要になる初期化を上流のタスクで実行する状況をサポートできます。この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
+
+タスクの依存関係がある場合、シナリオを次のように構成できます。
+
+* *taskB* が *taskA* に依存する (*taskB* の実行は *taskA* が完了するまで開始されない)
+* *taskC* が *taskA* と *taskB* の両方に依存する
+* *taskD* が、実行されるまで特定の範囲のタスク (タスク *1* ～ *10* など) に依存する
+
+[azure-batch-samples][github_samples] GitHub リポジトリの [TaskDependencies][github_sample_taskdeps] サンプル コードを確認してください。このコードを見ると、[Batch .NET][batch_net_api] ライブラリを使用して他のタスクに依存するタスクを構成する方法がわかります。
 
 ### <a name="jobschedule"></a>スケジュールされたジョブ
 
@@ -366,6 +373,8 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [cloud_service_sizes]: https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
+[github_samples]: https://github.com/Azure/azure-batch-samples
+[github_sample_taskdeps]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
@@ -392,7 +401,7 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [rest_add_task]: https://msdn.microsoft.com/library/azure/dn820105.aspx
 [rest_create_user]: https://msdn.microsoft.com/library/azure/dn820137.aspx
 [rest_get_task_info]: https://msdn.microsoft.com/library/azure/dn820133.aspx
-[rest_multiinstance]: https://msdn.microsoft.com/ja-JP/library/azure/mt637905.aspx
+[rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 [rest_multiinstancesettings]: https://msdn.microsoft.com/library/azure/dn820105.aspx#multiInstanceSettings
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
@@ -402,4 +411,4 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [rest_offline]: https://msdn.microsoft.com/library/azure/mt637904.aspx
 [rest_online]: https://msdn.microsoft.com/library/azure/mt637907.aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

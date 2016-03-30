@@ -39,7 +39,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Mobile Services iOS SDK バージョン 2.x]
++ [Mobile Services iOS SDK バージョン 1.2.4]
 + [Xcode] の最新バージョン
 + iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 + [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
@@ -86,7 +86,7 @@
 
    	![Xcode - provisioning profile][9]
 
-4. [Mobile Services iOS SDK バージョン 2.x] をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+4. [Mobile Services iOS SDK バージョン 1.2.4] をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
 
 	>[AZURE.NOTE] Notification Hubs SDK は現在、Xcode 7 におけるビットコードをサポートしていません。プロジェクトの **[Build Options]** で **[Enable Bitcode]** を **[No]** に設定する必要があります。
 
@@ -486,8 +486,7 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 
 
 <!-- URLs. -->
-[Mobile Services iOS SDK version 1.2.4]: http://aka.ms/kymw2g
-[Mobile Services iOS SDK バージョン 2.x]: https://github.com/Azure/azure-mobile-services/blob/master/CHANGELOG.ios.md#sdk-downloads
+[Mobile Services iOS SDK バージョン 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -506,4 +505,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

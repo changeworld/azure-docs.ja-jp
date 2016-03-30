@@ -46,9 +46,9 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## Docker コンテナーをデプロイする
+## Docker 形式のコンテナーのデプロイ
 
-Docker コンテナーは、意図するデプロイを表す JSON ファイルを利用し、Marathon 経由でデプロイされます。次のサンプルでは nginx コンテナーがデプロイされます。Mesos エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
+Docker 形式のコンテナーは、意図するデプロイを表す JSON ファイルを利用し、Marathon 経由でデプロイされます。次のサンプルでは nginx コンテナーがデプロイされます。Mesos エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
 
 ```json
 {
@@ -69,7 +69,7 @@ Docker コンテナーは、意図するデプロイを表す JSON ファイル�
 }
 ```
 
-Docker コンテナーをデプロイするために、独自の JSON ファイルを作成するか、用意されているサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用して、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
+Docker 形式のコンテナーをデプロイするために、独自の JSON ファイルを作成するか、用意されているサンプル ([Azure ACS デモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)) を使用して、アクセス可能な場所に保存します。次に、JSON ファイルの名前を指定して次のコマンドを実行し、コンテナーをデプロイします。
 
 ```
 curl -X POST http://localhost/marathon/v2/groups -d @marathon.json -H "Content-type: application/json"
@@ -87,7 +87,7 @@ curl -X POST http://localhost/marathon/v2/groups -d @marathon.json -H "Content-t
 curl localhost/marathon/v2/apps
 ```
 
-## Docker コンテナーを拡大縮小する
+## コンテナーの拡張
 
 Marathon API を利用し、アプリケーションのデプロイを拡大縮小することもできます。前の例では、アプリケーションの 1 つのインスタンスがデプロイされました。これを 3 つのインスタンスに拡大してみましょう。これを行うには、次の JSON テキストで JSON ファイルを作成し、それをアクセス可能な場所に保存します。
 
@@ -119,7 +119,7 @@ curl localhost/marathon/v2/apps
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Docker コンテナーは、意図するデプロイを表す JSON ファイルを利用し、Marathon 経由でデプロイされます。次のサンプルでは nginx コンテナーがデプロイされます。Mesos エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
+Docker 形式のコンテナーは、意図するデプロイを表す JSON ファイルを利用し、Marathon 経由でデプロイされます。次のサンプルでは nginx コンテナーがデプロイされます。Mesos エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
 
 ```json
 {
@@ -160,4 +160,4 @@ Marathon API を利用し、アプリケーションのデプロイを拡大縮�
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

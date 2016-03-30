@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article" 
-	ms.date="02/10/2016"
+	ms.date="03/16/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
-[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Windows アプリの作成](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started.md)」を参照してください。
 
 このチュートリアルでは、Azure Mobile Services を使用してユニバーサル Windows アプリにクラウドベースのバックエンド サービスを追加する方法を示します。ユニバーサル Windows アプリ ソリューションには、Windows ストア 8.1 と Windows Phone ストア 8.1 の両方のアプリのプロジェクトと、共通の共有プロジェクトが含まれます。詳細については、「[Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築](http://msdn.microsoft.com/library/windows/apps/xaml/dn609832.aspx)」を参照してください。
 
@@ -98,4 +99,4 @@
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,19 +13,15 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="02/10/2016"
+	ms.date="03/16/2016"
 	ms.author="donnam"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
-
-
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
->[AZURE.TIP] Microsoft Azure を使用したモバイル開発を初めて行う場合は、Azure Mobile Services の代わりに [Azure Mobile Apps を使用](app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md)してください。Mobile Apps を通じて[さらに多くのメリット](app-service-mobile-value-prop-migration-from-mobile-services-preview.md)が得られます。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Xamarin.iOS アプリを作成する](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md)」を参照してください。
 
 このチュートリアルでは、Azure Mobile Services を使用して Xamarin iOS アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
 
@@ -143,4 +139,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

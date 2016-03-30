@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # Virtual Network の概要
@@ -91,11 +91,8 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 ## 次のステップ
 
 - サブネットと [VNet を作成する](virtual-networks-create-vnet-arm-pportal.md)。
-- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-tutorial.md)。
+- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)。
 - [NSG](virtual-networks-nsg.md) について。
-- [ロード バランサー](../load-balancer/load-balancer-overview.md)の概要。
-- [静的内部プライベート IP アドレスの設定方法](virtual-networks-reserved-private-ip.md)
-- [予約済み IP の概要](virtual-networks-reserved-public-ip.md)
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

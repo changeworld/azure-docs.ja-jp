@@ -3,9 +3,9 @@
 	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への Git デプロイを使用する方法を説明するチュートリアル。"
 	services="app-service\web"
 	documentationCenter="php"
-	authors="tfitzmac"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"
+	editor=""
 	tags="mysql"/>
 
 <tags
@@ -15,7 +15,7 @@
 	ms.devlang="PHP"
 	ms.topic="hero-article"
 	ms.date="02/09/2016"
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
@@ -214,7 +214,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		php -S localhost:8000
 
-これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
+これで、****http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
@@ -325,4 +325,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -53,13 +53,13 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 手順 | 説明
 -----| -----------
-[手順 1. Azure Data Factory を作成する](#CreateDataFactory) | この手順では、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。 
-[手順 2. リンクされたサービスを作成する](#CreateLinkedServices) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactoryPSH にリンクします。
-[手順 3. 入力データセットと出力データセットを作成する](#CreateInputAndOutputDataSets) | この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。これらは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルおよび出力テーブルとして使用されます。
-[手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** という Data Factory に作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
-[手順 5. データセットとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
+[Azure Data Factory を作成する](#create-data-factory) | この手順では、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。 
+[リンクされたサービスの作成](#create-linked-services) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactoryPSH にリンクします。
+[入力データセットと出力データセットを作成する](#create-datasets) | この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。これらは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルおよび出力テーブルとして使用されます。
+[パイプラインを作成して実行する](#create-pipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** という Data Factory に作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
+[データ セットとパイプラインを監視する](#monitor-pipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
 
-## <a name="CreateDataFactory"></a>手順 1. Azure Data Factory を作成する
+## データ ファクトリの作成
 この手順では、Azure PowerShell を使用して、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。
 
 1. Azure PowerShell を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
@@ -79,7 +79,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 	> [AZURE.NOTE] データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
-## <a name="CreateLinkedServices"></a>手順 2. リンクされたサービスを作成する
+## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
 
 この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
@@ -141,7 +141,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 	5. 左側の **[アクティブ]** ハブをクリックして、元の **[Data Factory]** ブレードに切り替えます。
 	
 
-## <a name="CreateInputAndOutputDataSets"></a>手順 3. 入力テーブルと出力テーブルを作成する
+## データセットを作成する
 
 前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure Storage アカウントと Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクしました。このステップでは、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すデータセットを作成します。
 
@@ -182,7 +182,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 	Visual Studio 2013 がコンピューターにインストールされている場合: Azure ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL Server のファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
 		
-### 入力テーブルの作成 
+### 入力データセットの作成 
 テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。  
 この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
 
@@ -251,7 +251,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 		New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
 
-### 出力テーブルの作成
+### 出力データセットの作成
 手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (**emp**) をポイントする **EmpSQLTable** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
 
 1.	以下の内容を記述した **EmpSQLTable.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。
@@ -294,7 +294,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
 
 
-## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
+## パイプラインの作成
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
 1.	以下の内容を記述した **ADFTutorialPipeline.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。 
@@ -360,7 +360,7 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 **お疲れさまでした。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
 
-## <a name="MonitorDataSetsAndPipeline"></a>手順 5. データセットとパイプラインを監視する
+## パイプラインの監視
 このステップでは、Azure PowerShell を使用して、Azure Data Factory の状況を監視します。
 
 1.	**Get-AzureRmDataFactory** を実行して変数 $df に出力を割り当てます。
@@ -448,4 +448,4 @@ Azure Data Factory の**コピー アクティビティ**の詳細について�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

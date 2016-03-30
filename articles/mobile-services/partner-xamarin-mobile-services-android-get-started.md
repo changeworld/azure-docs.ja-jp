@@ -19,14 +19,10 @@
 
 # <a name="getting-started"></a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
-
-
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
-[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Xamarin.Android アプリの作成](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md)」を参照してください。
 
 このチュートリアルでは、Azure Mobile Services を使用して Xamarin.Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
 
@@ -56,9 +52,9 @@
 
 ここでは、モバイル サービスに接続された新しい Xamarin.Android アプリを作成します。
 
-1.  [Azure クラシック ポータル]で、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
 	![][6]
 
@@ -146,4 +142,4 @@
 [Azure]: http://azure.microsoft.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

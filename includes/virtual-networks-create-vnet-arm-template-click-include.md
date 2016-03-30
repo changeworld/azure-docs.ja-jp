@@ -12,7 +12,7 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
 	![ARM テンプレートのパラメーター](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
 
-4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新規作成**] をクリックして VNet を新しいリソース グループに追加します。リソース グループについて詳しくは、[]() を参照してください。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。
+4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新規作成**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。
 
 	![リソース グループ](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
 
@@ -27,4 +27,4 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
 	![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -31,7 +31,7 @@
 1. 先に進む前に、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、前提条件の手順を完了する**必要があります**。
 2. この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照することをお勧めします。  
 
-## 手順 1: Data Factory を作成する
+## データ ファクトリの作成
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。それでは、この手順でデータ ファクトリの作成から始めましょう。
 
 1.	[Azure ポータル](https://portal.azure.com/)にログインした後、次の操作を行います。
@@ -57,11 +57,11 @@
 	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
 
-	![Data Factory ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
+	![[Data Factory] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。最初に、データ ストアやコンピューティングをデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義した後、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
 
-## 手順 2. リンク サービスを作成する
+## リンクされたサービスの作成
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクする必要があります。
 
 ### Azure Storage のリンクされたサービスを作成する
@@ -70,7 +70,7 @@
 1.	**GetStartedDF** の **[DATA FACTORY]** ブレードの **[作成およびデプロイ]** をクリックします。Data Factory エディタが起動します。 
 	 
 	![[作成とデプロイ] タイル](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
-2.	**[新しいデータ ストア]** をクリックし、**[Azure ストレージ]** を選択します。
+2.	**[新しいデータ ストア]** をクリックし、**[Azure Storage]** を選択します。
 	
 	![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
@@ -80,8 +80,7 @@
 
 	![デプロイ ボタン](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   リンクされたサービスが正常にデプロイされると、**[Draft-1]** ウィンドウが消え、**StorageLinkedService** が左側のツリー ビューに表示されます。 
-   ![メニューでのストレージのリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)
+   リンクされたサービスが正常にデプロイされると、**[Draft-1]** ウィンドウが消え、**AzureStorageLinkedService** が左側のツリー ビューに表示されます。 ![メニューでのストレージのリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)
 
  
 ### Azure HDInsight のリンクされたサービスを作成する
@@ -100,7 +99,7 @@
 		      "version": "3.2",
 		      "clusterSize": 1,
 		      "timeToLive": "00:30:00",
-		      "linkedServiceName": "StorageLinkedService"
+		      "linkedServiceName": "AzureStorageLinkedService"
 		    }
 		  }
 		}
@@ -124,14 +123,14 @@
 
 	詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。
 3. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。 
-4. **StorageLinkedService** と **HDInsightOnDemandLinkedService** が両方とも左側のツリー ビューに表示されていることを確認します。
+4. **AzureStorageLinkedService** と **HDInsightOnDemandLinkedService** が両方とも左側のツリー ビューに表示されていることを確認します。
 
 	![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
-## 手順 3: データセットを作成する
-この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
+## データセットを作成する
+この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
 
-### 入力データセットを作成する
+### 入力データセットの作成
 
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** を選択します。
 
@@ -142,7 +141,7 @@
 			"name": "AzureBlobInput",
 		    "properties": {
 		        "type": "AzureBlob",
-		        "linkedServiceName": "StorageLinkedService",
+		        "linkedServiceName": "AzureStorageLinkedService",
 		        "typeProperties": {
 		            "fileName": "input.log",
 		            "folderPath": "adfgetstarted/inputdata",
@@ -165,7 +164,7 @@
 	| プロパティ | 説明 |
 	| :------- | :---------- |
 	| type | データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |  
-	| linkedServiceName | 前に作成した StorageLinkedService を参照します。 |
+	| linkedServiceName | 前に作成した AzureStorageLinkedService を参照します。 |
 	| fileName | このプロパティは省略可能です。このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。このチュートリアルでは、input.log のみが処理されます。 |
 	| type | ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 | 
 	| columnDelimiter | ログ ファイル内の列はコンマ (,) で区切られています。 |
@@ -176,7 +175,7 @@
 3. コマンド バーの **[デプロイ]** をクリックして、新しく作成したデータセットをデプロイします。データセットが左側のツリー ビューに表示されます。
 
 
-### 出力データセットを作成します。
+### 出力データセットの作成
 次に、Azure Blob Storage に格納される出力データを表す出力データセットを作成します。
 
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** を選択します。  
@@ -186,7 +185,7 @@
 		  "name": "AzureBlobOutput",
 		  "properties": {
 		    "type": "AzureBlob",
-		    "linkedServiceName": "StorageLinkedService",
+		    "linkedServiceName": "AzureStorageLinkedService",
 		    "typeProperties": {
 		      "folderPath": "adfgetstarted/partitioneddata",
 		      "format": {
@@ -207,10 +206,10 @@
 
 	![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
 
-## 手順 4: 最初のパイプラインを作成する
+## パイプラインの作成
 この手順では、**HDInsightHive** アクティビティを含む最初のパイプラインを作成します。入力スライスは 1 か月ごと (frequency: Month、interval: 1) であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します (下記参照)。出力データセットとアクティビティの scheduler の設定は一致している必要があります。出力データセットによってスケジュールが開始されるため、アクティビティが出力を生成しない場合でも、この時点で、出力データセットを作成する必要があります。アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
 
-1. **Data Factory エディター**で、省略記号 **[…]** をクリックし、**[新しいパイプライン]** をクリックします。
+1. **Data Factory エディター**で、省略記号 **[…]** (その他のコマンド) をクリックし、**[新しいパイプライン]** をクリックします。
 	
 	![[新しいパイプライン] ボタン](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。
@@ -226,7 +225,7 @@
 		                "type": "HDInsightHive",
 		                "typeProperties": {
 		                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-		                    "scriptLinkedService": "StorageLinkedService",
+		                    "scriptLinkedService": "AzureStorageLinkedService",
 		                    "defines": {
 		                        "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
 		                        "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
@@ -254,15 +253,15 @@
 		                "linkedServiceName": "HDInsightOnDemandLinkedService"
 		            }
 		        ],
-		        "start": "2014-02-01T00:00:00Z",
-		        "end": "2014-02-02T00:00:00Z",
+		        "start": "2016-02-01T00:00:00Z",
+		        "end": "2016-02-02T00:00:00Z",
 		        "isPaused": false
 		    }
 		}
  
 	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 	
-	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**StorageLinkedService** という名前) と **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
+	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService** という名前) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 
 	**defines** セクションは、Hive 構成値 (例: ${hiveconf:inputtable}、${hiveconf:partitionedtable}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
@@ -270,15 +269,19 @@
 
 	アクティビティ JSON では、**linkedServiceName** に指定されたコンピューティング **HDInsightOnDemandLinkedService** で Hive スクリプトが実行されるように指定します。
 
-	> [ACOM.NOTE] 上の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
+	> [AZURE.NOTE] 上の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
 
-3. Azure Blob Storage の adfgetstarted/inputdata フォルダーに input.log ファイルがあることを確認し、コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。**start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
+3. 次のことを確認します。
+	1. Azure Blob Storage の **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルが存在すること。
+	2. Azure Blob Storage の **adfgetstarted** コンテナーの **script** フォルダーに **partitionweblogs.hql** ファイルが存在すること。これらのファイルがない場合は、[チュートリアルの概要](data-factory-build-your-first-pipeline.md)ページで前提条件の手順を実行してください。 
+	3. パイプライン JSON の実際のストレージ アカウントの名前を **storageaccountname** に指定済みであること。 
+2. コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。**start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。 
 4. ツリー ビューにパイプラインが表示されることを確認します。
 
 	![パイプラインを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
 5. これで、最初のパイプラインが正常に作成されました。
 
-## 手順 4: パイプラインを監視する
+## パイプラインの監視
 
 6. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
   
@@ -301,8 +304,7 @@
 12. **ダイアグラム ビュー**で、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
-9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます  
-
+9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます
 	>[AZURE.IMPORTANT] オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。  
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)
@@ -325,4 +327,4 @@
 
   
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

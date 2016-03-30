@@ -26,6 +26,8 @@
 
 PowerShell コマンドレットを使った[エラスティック データベース プール](sql-database-elastic-pool.md)の作成方法について説明します。
 
+一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
+
 > [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
 
@@ -91,4 +93,4 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 
 エラスティック データベースとエラスティック データベース プールの詳細については、「[SQL Database エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

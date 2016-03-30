@@ -4,9 +4,9 @@
 	description="オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。"
 	services="active-directory"
 	documentationCenter=""
-	authors="billmath"
+	authors="karavar"
 	manager="stevenpo"
-	editor="curtand"/>
+	editor="karavar"/>
 
 <tags
 	ms.service="active-directory"
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/17/2016"
-	ms.author="billmath"/>
+	ms.date="03/21/2016"
+	ms.author="vakarand"/>
 
 # AD FS での Azure AD Connect Health の使用
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。
@@ -32,7 +32,7 @@ Azure AD Connect Health アラート セクションには、アクティブな�
 ## AD FS の利用状況分析
 Azure AD Connect Health 利用状況分析では、フェデレーション サーバーの認証トラフィックを分析できます。[利用状況分析] ボックスを選択すると、[利用状況分析] ブレードが開き、メトリックとグループ分けが表示されます。
 
->[AZURE.NOTE] AD FS で利用状況分析を使用するためには、AD FS 監査が有効になっている必要があります。詳細については、「[AD FS の監査の有効化](active-directory-aadconnect-health-operations.md#enable-auditing-for-ad-fs)」を参照してください。
+>[AZURE.NOTE] AD FS で利用状況分析を使用するためには、AD FS 監査が有効になっている必要があります。詳細については、「[AD FS の監査の有効化](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/report1.png)
 
@@ -79,13 +79,13 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 このレポートから、次の情報を簡単に確認することができます。
 
 - 過去 30 日間に間違ったユーザー名/パスワードが原因で失敗した要求の合計数
-- 無効なユーザー名/パスワードでログインに失敗したユーザーの日単位の平均数 
- 
+- 無効なユーザー名/パスワードでログインに失敗したユーザーの日単位の平均数
+
 この部分をクリックすると、詳細な情報が記載されたメイン レポート ブレードが表示されます。このブレードに表示されるグラフは、間違ったユーザー名またはパスワードが使用された要求について基準を定めるための傾向情報を示しています。また、失敗した試行回数の上位 50 名のユーザーもブレードに一覧表示されます。
- 
+
 このグラフには、次の情報が表示されます。
 
-- 無効なユーザー名/パスワードが原因で失敗したログインの日単位の合計数 
+- 無効なユーザー名/パスワードが原因で失敗したログインの日単位の合計数
 - ログインが失敗した一意のユーザーの日単位の合計数
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health-adfs/report2a.png)
@@ -93,10 +93,10 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 レポートには、次の情報が記載されます。
 
 | レポート アイテム | 説明
-| ------ | -------- | 
+| ------ | -------- |
 |ユーザー ID| 使用されたユーザー ID を示しています。この値はユーザーが入力したもので、間違ったユーザー ID が使用されたことを示している場合もあります。|
 |失敗した試行の回数|そのユーザー ID で試行が失敗した回数の合計を示しています。この表は、失敗した試行の回数が多いものから降順に並べ替えられています。|
-|最後の失敗|最後に失敗したときのタイム スタンプを示しています。 
+|最後の失敗|最後に失敗したときのタイム スタンプを示しています。
 
 
 
@@ -113,4 +113,4 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

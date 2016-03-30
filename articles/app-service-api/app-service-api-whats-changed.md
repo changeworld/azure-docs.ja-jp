@@ -111,6 +111,10 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 3. 独自の探索用 API アプリをビルドし、起動時に探索用アプリにその他の API アプリが登録されるようにします。
 4. デプロイ時に、すべての API アプリ (およびクライアント) のアプリ設定を他の API アプリのエンドポイントに設定します。これはテンプレートのデプロイで実行可能であり、API Apps で URL を制御できるようになります。
 
+## API Apps と Logic Apps の併用
+
+新しい API Apps モデルは、[Logic Apps スキーマ バージョン 2015-08-01](../app-service-logic/app-service-logic-schema-2015-08-01.md) とうまく連動します。
+
 ## 次のステップ
 
 詳細については、[API Apps のドキュメント セクション](https://azure.microsoft.com/documentation/services/app-service/api/)の記事を参照してください。これらの記事は更新され、API Apps の新しいモデルを反映しています。さらに、移行に関する詳細またはガイダンスについては、次のフォーラムを参照してください。
@@ -118,4 +122,4 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 - [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)
 - [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->
