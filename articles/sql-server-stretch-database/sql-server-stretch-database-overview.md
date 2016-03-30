@@ -25,7 +25,7 @@ Stretch Database は、透過的かつ安全に履歴データを Microsoft Azur
 ## Stretch Database の利点
 Stretch Database には次の利点があります。
 
-**コールド データにもコスト効率がよい可用性を提供**: SQL Server Stretch Database を使用して、ウォーム トランザクション データとコールド トランザクション データを SQL Server から Microsoft Azure に動的に拡張します。通常のコールド データ ストレージとは異なり、データは常にオンラインであり、クエリに使用できます。顧客の注文履歴のように大きなテーブルでも、高いコストをかけずに、データ リテンション期間のタイムラインを長くすることができます。スケーリングのコストが高いオンプレミス ストレージよりも、低コストの Azure をお勧めします。価格レベルを選択し、Azure ポータルで設定を構成することで、価格とデータ アクセス速度を管理します。必要に応じてスケールアップまたはスケールダウンします。詳細については、[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)のページを参照してください。
+**コールド データにもコスト効率がよい可用性を提供**: SQL Server Stretch Database を使用して、ウォーム トランザクション データとコールド トランザクション データを SQL Server から Microsoft Azure に動的に拡張します。通常のコールド データ ストレージとは異なり、データは常にオンラインであり、クエリに使用できます。顧客の注文履歴のように大きなテーブルでも、高いコストをかけずに、データ リテンション期間のタイムラインを長くすることができます。スケーリングのコストが高いオンプレミス ストレージよりも、低コストの Azure をお勧めします。価格レベルを選択し、Azure ポータルで設定を構成することで、コストを管理します。必要に応じてスケールアップまたはスケールダウンします。詳細については、[SQL Server Stretch Database 価格ページ](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)をご覧ください。
 
 **クエリやアプリケーションを変更する必要がない**: オンプレミスか、クラウドに拡張されているかにかかわらず、SQL Server データにシームレスにアクセスできます。管理者がデータを格納する場所を決定するポリシーを設定すると、SQL Server はバックグラウンドでデータ移行を処理します。テーブル全体が常にオンラインであり、クエリ可能です。また、Stretch Database は既存のクエリやアプリケーションを変更する必要がありません。データの場所は、アプリケーションに対して完全に透過的です。
 
@@ -123,4 +123,4 @@ Stretch Database は、既存のデータベースのアクセス許可モデル
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

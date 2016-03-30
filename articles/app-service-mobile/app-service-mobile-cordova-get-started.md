@@ -64,6 +64,7 @@ Azure App Service の主要な概念を確認してください。
 
 SDK の使用方法を確認してください。
 
+* [Apache Cordova SDK]
 * [ASP.NET サーバー SDK]
 * [Node.js サーバー SDK]
 
@@ -77,7 +78,8 @@ SDK の使用方法を確認してください。
 [プッシュ通知を追加する]: app-service-mobile-cordova-get-started-push.md
 [認証]: app-service-mobile-auth.md
 [プッシュ通知]: ../notification-hubs/notification-hubs-overview.md
+[Apache Cordova SDK]: app-service-mobile-codova-how-to-use-client-library.md
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

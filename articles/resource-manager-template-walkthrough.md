@@ -308,7 +308,7 @@ Azure CLI で API バージョンを確認するには、前に示した同じ *
 ```
 
 ## 仮想マシン
-[ネットワーク インターフェイス](#network-interface)の作成時と同じように、copyIndex() 関数を使って 2 つの仮想マシンを作成します。VM を作成するには、ストレージ アカウント、ネットワーク インターフェイス、可用性セットが必要です。この VM は、`storageProfile` プロパティで定義されているとおりに、マーケットプレース イメージから作成されます。また、イメージの発行者、プラン、SKU、バージョンを定義するために、`imageReferece` が使用されます。最後に、VM の診断を有効にするために、診断プロファイルを構成します。
+[ネットワーク インターフェイス](#network-interface)の作成時と同じように、copyIndex() 関数を使って 2 つの仮想マシンを作成します。VM を作成するには、ストレージ アカウント、ネットワーク インターフェイス、可用性セットが必要です。この VM は、`storageProfile` プロパティで定義されているとおりに、マーケットプレース イメージから作成されます。また、イメージの発行者、プラン、SKU、バージョンを定義するために、`imageReference` が使用されます。最後に、VM の診断を有効にするために、診断プロファイルを構成します。
 
 マーケットプレース イメージの該当するプロパティを探すには、[VM の検索](./virtual-machines/resource-groups-vm-searching.md)に関する記事を参考にしてください。サード パーティ ベンダーによって発行されたイメージの場合は、`plan` という別のプロパティを指定する必要があります。クイックスタート ギャラリーの[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)で例を確認できます。
 
@@ -503,4 +503,4 @@ variables セクションでは、テンプレート内の複数の場所で使�
 - テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 - テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

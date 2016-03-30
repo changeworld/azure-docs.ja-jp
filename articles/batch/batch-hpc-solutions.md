@@ -98,9 +98,9 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 
 ### Compute Services
 
-Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。これらのインスタンスは、さまざまな標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。Azure では、CPU コア、メモリ、ディスク容量、その他の特性の構成が異なる[さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-size-specs.md)を選択できます。ニーズに応じて何千ものコアまでインスタンスを拡大し、必要なリソースが減ったらスケールダウンできます。
+Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。これらのインスタンスは、さまざまな標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。Azure では、CPU コア、メモリ、ディスク容量などの特性の構成が異なる[さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-linux-sizes.md)から選択できます。ニーズに応じて何千ものコアまでインスタンスを拡大し、必要なリソースが減ったらスケールダウンできます。
 
->[AZURE.NOTE] 低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどの HPC ワークロードのパフォーマンスを向上させるには、A8 ～ A11 インスタンスを利用してください。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
+>[AZURE.NOTE] 低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどの HPC ワークロードのパフォーマンスを向上させるには、A8 ～ A11 インスタンスを利用してください。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。
 
 サービス | 説明
 ------------- | -----------
@@ -155,4 +155,4 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

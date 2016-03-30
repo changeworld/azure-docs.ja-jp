@@ -158,4 +158,4 @@ Azure ポータルのドキュメント エクスプローラーは、DocumentDB
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解できるようにする際に便利なリソースです。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -17,11 +17,11 @@
 
 # Azure Scheduler とは
 
-Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。その後スケジュールを設定し、アクションを自動的に実行します。Scheduler では、[Azure ポータル](scheduler-get-started-portal.md)、コード、[REST API](https://msdn.microsoft.com/library/dn528946)、または Azure PowerShell を使用してこれを実行します。
+Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。その後スケジュールを設定し、アクションを自動的に実行します。Scheduler では、[Azure ポータル](scheduler-get-started-portal.md)、コード、[REST API](https://msdn.microsoft.com/library/mt629143.aspx)、または Azure PowerShell を使用してこれを実行します。
 
-Scheduler には、スケジュールされた作業の作成、保守、呼び出しの機能があります。Scheduler が、ワークロードをホストしたり、コードを実行したりすることはありません。Scheduler は他の場所 (Azure、オンプレミス、または別のプロバイダー) でホストされるコードを_呼び出す_だけです。HTTP、HTTPS、ストレージ キューを使用して呼び出します。
+Scheduler には、スケジュールされた作業の作成、保守、呼び出しの機能があります。Scheduler が、ワークロードをホストしたり、コードを実行したりすることはありません。Scheduler は他の場所 (Azure、オンプレミス、または別のプロバイダー) でホストされるコードを_呼び出す_だけです。呼び出しは、HTTP、HTTPS、ストレージ キュー、Service Bus キュー、Service Bus トピックを介して行われます。
 
-Scheduler では[ジョブ](scheduler-concepts-terms.md)をスケジュールし、レビュー可能なジョブ実行結果の履歴を保持し、ワークロードを確実かつ高い信頼度で実行するようにスケジュールします。Azure WebJobs (Azure App Service の Web Apps 機能の一部) およびその他の Azure スケジュール機能では、Scheduler をバック グラウンドで使用します。[Scheduler REST API](https://msdn.microsoft.com/library/dn528946) では、こうしたアクションにおける通信を管理します。このため、Scheduler は[複雑なスケジュールおよび高度な定期実行](scheduler-advanced-complexity.md)に容易に対応できます。
+Scheduler では[ジョブ](scheduler-concepts-terms.md)をスケジュールし、レビュー可能なジョブ実行結果の履歴を保持し、ワークロードを確実かつ高い信頼度で実行するようにスケジュールします。Azure WebJobs (Azure App Service の Web Apps 機能の一部) およびその他の Azure スケジュール機能では、Scheduler をバック グラウンドで使用します。[Scheduler REST API](https://msdn.microsoft.com/library/mt629143.aspx) では、こうしたアクションにおける通信を管理します。このため、Scheduler は[複雑なスケジュールおよび高度な定期実行](scheduler-advanced-complexity.md)に容易に対応できます。
 
 Scheduler の使用に適しているシナリオがいくつかあります。次に例を示します。
 
@@ -50,4 +50,4 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

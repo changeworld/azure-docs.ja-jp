@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="03/15/2016"
+    ms.date="03/22/2016"
     ms.author="sstein"/>
 
 # エラスティック データベース プールの作成 (C&#x23;)
@@ -25,6 +25,8 @@
 
 
 C&#x23; を使った[エラスティック データベース プール](sql-database-elastic-pool.md)の作成方法について説明します。
+
+一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
 
 > [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
@@ -45,7 +47,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
         Properties = new ElasticPoolCreateOrUpdateProperties()
         {
             Edition = "Standard",
-            Dtu = 400
+            Dtu = 400,
             DatabaseDtuMin = 0,
             DatabaseDtuMax = 100
          }
@@ -106,13 +108,13 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 ## エラスティック データベース プールの作成例 (C&#x23;)
 
 
-この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
+この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、「[Get the client id and key for connecting to SQL Database from code (コードから SQL Database に接続するためのクライアント ID とキーを取得する)](sql-database-client-id-keys.md)」を参照してください。
+コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、「[Register your app and get the required client values for connecting your app to SQL Database (アプリを登録し、アプリを SQL Database に接続するために必要なクライアント値を取得する)](sql-database-client-id-keys.md)」を参照してください。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -278,4 +280,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -46,7 +46,7 @@ Stretch を有効にするテーブルを選択します。
 |**ストレッチ済み**|テーブルが既に有効になっているかどうかを示します。|
 |**行**|テーブルの行数を指定します。|
 |**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
-|**移行**|CTP 3.1 ～ RC0 では、ウィザードで利用し、テーブル全体を移行することだけが可能です。行を選択する述語を指定し、履歴データと現行データの両方を含むテーブルから移行する場合、ALTER TABLE ステートメントを実行し、ウィザードの終了後に述語を指定します。詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
+|**移行**|CTP 3.1 ～ RC1 では、ウィザードで利用し、テーブル全体を移行することだけが可能です。行を選択する述語を指定し、履歴データと現行データの両方を含むテーブルから移行する場合、ALTER TABLE ステートメントを実行し、ウィザードの終了後に述語を指定します。詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
 
 ## <a name="Configure"></a>Azure デプロイを構成する
 
@@ -141,4 +141,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

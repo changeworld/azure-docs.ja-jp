@@ -14,35 +14,44 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/04/2016"
+   ms.date="03/16/2016"
    ms.author="cherylmc"/>
 
 # Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する
 
 > [AZURE.SELECTOR]
-- [Azure Classic Portal](vpn-gateway-site-to-site-create.md)
+- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。この記事は、**クラシック** デプロイ モデルに適用されます。**リソース マネージャー** デプロイ モデルのサイト間接続を作成する場合は、「[PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」を参照してください。VNet を接続するときにオンプレミスの場所への接続を作成しない場合は、「[Azure クラシック ポータルでの VNet 間接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)」または「[Azure リソース マネージャーおよび PowerShell を使用して同じサブスクリプション内の仮想ネットワークの VNet 間接続を構成する](vpn-gateway-vnet-vnet-rm-ps.md)」を参照してください。
+この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。この記事は、クラシック デプロイ モデルを対象としており、Azure クラシック ポータルを使用します。
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
  
+![Site-to-Site diagram](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
+
+**サイト間接続のデプロイ モデルとデプロイ ツール**
+
+[AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
+ 
+複数の VNet を接続するときにオンプレミスの場所への接続を作成しない場合は、「[クラシック デプロイ モデルで VNet 間接続を構成する](virtual-networks-configure-vnet-to-vnet-connection.md)」または「[Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)」を参照してください。
+
+ 
 ## 開始する前に
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。VPN デバイスの構成に習熟していないか、またはオンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
+- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 
 -  VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
 
-- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 
 ## Virtual Network の作成
 
-1. **Azure クラシック ポータル**にログインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインします。
 
 2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
@@ -92,12 +101,10 @@
 
 ## 仮想ネットワーク ゲートウェイの構成
 
-次に、セキュリティで保護されたサイト間接続を作成するために、仮想ネットワーク ゲートウェイを構成します。[Azure クラシック ポータルでの仮想ネットワーク ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)に関するページを参照してください。
+次に、セキュリティで保護されたサイト間接続を作成するために、仮想ネットワーク ゲートウェイを構成します。「[クラシック デプロイ モデル用の VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンを作成する方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
-従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、[従来の VNet と Azure リソース マネージャーの VNet の接続](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)に関するページを参照してください。
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

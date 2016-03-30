@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
+   ms.date="03/21/2016"
    ms.author="cherylmc"/>
 
 
@@ -78,7 +78,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 
 ## 自律システム番号
 
-Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。AS 65515 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。プライベート AS 番号は、Azure プライベート ピアリングに使用できます。ユーザーは、自分に登録されているパブリック AS 番号を Azure パブリックと Microsoft ピアリングのために使用する必要があります。
+Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。AS 65515 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。
 
 データ転送の対称性に関する要件はありません。転送パスとリターン パスは、異なるルーター ペアを通過することができます。同じルートについては、自分に属している複数の回線ペアのどちらかの側からアドバタイズする必要があります。ルートのメトリックは同一である必要はありません。
 
@@ -178,4 +178,4 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

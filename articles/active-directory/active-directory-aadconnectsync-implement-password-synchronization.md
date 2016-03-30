@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/07/2016"
+	ms.date="03/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -90,7 +90,7 @@ Azure AD でこのサービスを有効にする場合、シングル サイン�
 
 Azure AD Connect のインストール時に簡単設定を使用すると、既定でパスワード同期が有効になります。
 
-Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード同期が有効になります。![usersignin](./media/active-directory-aadsync-implement-password-synchronization/usersignin.png)
+Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード同期が有効になります。![usersignin](./media/active-directory-aadconnectsync-implement-password-synchronization/usersignin.png)
 
 **AD FS とのフェデレーション**の使用を選択する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、パスワード同期を有効にすることができます。Azure AD Domain Services を使用する予定がある場合にも、有効にすることができます。
 
@@ -116,13 +116,17 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 
 **Synchronization Service Manager** を起動し、**[コネクタ]** を開き、ユーザーが属する Active Directory Connector を選択し、**[コネクタ スペースの検索]** を選択し、対象のユーザーを検索します。
 
-![csuser](./media/active-directory-aadsync-implement-password-synchronization/cspasswordsync.png)
+![csuser](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)
 
 ユーザーについて、**[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、**[In from AD - User AccountEnabled]** という同期規則です。
 
+また、メタバースを経由し、Azure AD コネクタ スペースまで[ユーザーをフォロー](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)する必要もあります。**[パスワード同期]** が **[True]** に設定されている送信規則もあることを確認します。既定の構成では、**[Out to AAD - User Join]** という同期規則です。
+
+![csuser2](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)
+
 オブジェクトのパスワード同期の詳細を確認するには、このページの下部にある **[ログ...]** をクリックします。過去 1 週間分、ユーザーのパスワード同期状態の履歴が表示されます。
 
-![オブジェクト ログ](./media/active-directory-aadsync-implement-password-synchronization/csobjectlog.png)
+![オブジェクト ログ](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)
 
 状態列には次のような値が表示されます。ここには、問題と、パスワードが同期されない理由も表示されます。
 
@@ -159,4 +163,4 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

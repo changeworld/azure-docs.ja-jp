@@ -39,7 +39,7 @@
 > [AZURE.IMPORTANT]
 この記事のチュートリアルを実行する前に、こちらの「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に記載された前提条件の手順を完了する必要があります。
 
-## 手順 1: ARM テンプレートを作成する
+## ARM テンプレートの作成
 
 以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
 
@@ -103,7 +103,7 @@
                                 "clusterSize": 4,
                                 "version":  "3.2",
             					"timeToLive": "00:05:00",
-                                "osType": "linux",
+                                "osType": "windows",
             					"linkedServiceName": "[variables('storageLinkedServiceName')]",
     						}
 	                    }
@@ -220,7 +220,7 @@
 
 以下の点に注意してください。
 
-- Data Factory は、上記の JSON で **Linux ベース**の HDInsight クラスターを自動的に作成します。**Windows ベース**の HDInsight クラスターを作成させることもできます。詳細については、「[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
+- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、「[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
 - オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、「[Azure HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)」を参照してください。
 - HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
@@ -230,7 +230,7 @@
 
 > [AZURE.NOTE] Azure Data Factory を作成するための ARM テンプレートの例は、[Github](https://github.com/Azure/azure-quickstart-templates/blob/master/101-data-factory-blob-to-sql/azuredeploy.json) にもあります。
 
-## 手順 2: ARM テンプレートを使用して Data Factory エンティティをデプロイする
+## データ ファクトリの作成
 
 1. **Azure PowerShell** を起動し、次のコマンドを実行します。 
 	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。  
@@ -256,4 +256,4 @@
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

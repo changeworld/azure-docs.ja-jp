@@ -24,43 +24,36 @@
 - [PowerShell の使用](data-factory-monitor-manage-using-powershell.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
-##このチュートリアルの内容
 このチュートリアルでは、Visual Studio 2013 で次の作業を行います。
 
 1. リンクされた次の 2 つのサービス、**AzureStorageLinkedService1** と **AzureSqlinkedService1** を作成します。AzureStorageLinkedService1 は、Azure ストレージにリンクし、AzureSqlLinkedService1 は、Azure SQL database を **ADFTutorialDataFactoryVS** データ ファクトリにリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。
 2. **EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。
-3. ADFTutorialDataFactoryVS に **ADFTutorialPipeline** という名前のパイプラインを作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。 
+3. ADFTutorialDataFactoryVS に **ADFTutorialPipeline** という名前のパイプラインを作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。 
 4. Data Factory を作成し、リンクされたサービス、テーブル、パイプラインをデプロイする。    
 
-## Visual Studio を使用して、Data Factory のエンティティを作成し、デプロイする 
-
-### 前提条件
+## 前提条件
 「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
 
 コンピューターに以下がインストールされている必要があります。
 - Visual Studio 2013
 - Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
-### チュートリアル
-
-#### Visual Studio プロジェクトの作成 
+## Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/data-factory-get-started-using-vs/new-project-dialog.png)
+	![新しいプロジェクト ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー  
-](./media/data-factory-get-started-using-vs/solution-explorer.png)
+	![ソリューション エクスプローラー](./media/data-factory-get-started-using-vs/solution-explorer.png)
 
-#### リンクされたサービスの作成
+## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
 
 この手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** の 2 つのリンクされたサービスを作成します。リンクされたサービス AzureStorageLinkedService1 は Azure ストレージ アカウントをリンクし、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクします。
 
-##### Azure Storage のリンクされたサービスを作成します。
+### Azure Storage のリンクされたサービスを作成します。
 
 4. ソリューション エクスプローラーの **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
 5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage のリンクされたサービス]** を選択し、**[追加]** をクリックします。 
@@ -73,18 +66,18 @@
 
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
-#### Azure SQL のリンクされたサービスを作成します。
+### Azure SQL のリンクされたサービスを作成します。
 
 5. **[ソリューション エクスプローラー]** で **[Linked Services]** ノードをもう一度右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。 
 6. このとき、**[Azure SQL Linked Service]** をクリックし、**[追加]** をクリックします。 
-7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、****username@servername**、**password** を Azure SQL のサーバー名、データベース、ユーザー アカウント、パスワードで置き換えます。
+7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、**username@servername**、**password** を Azure SQL のサーバー名、データベース、ユーザー アカウント、パスワードで置き換えます。
 8.  **AzureSqlLinkedService1.json** ファイルを保存します。 
 
 
-### 入力テーブルと出力テーブルを作成する
+## データセットを作成する
 前の手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** というデータ ファクトリにリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService1 と AzureSqlLinkedService1 がそれぞれ参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
-#### 入力テーブルの作成
+### 入力データセットの作成
 
 9. **[ソリューション エクスプローラー]** の **[テーブル]** を右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。
 10. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure BLOB]** をクリックし、**[追加]** をクリックします。   
@@ -120,7 +113,7 @@
 		  }
 		}
 
-#### 出力テーブルの作成
+### 出力データセットの作成
 
 11. **[ソリューション エクスプローラー]** の **[テーブル]** をもう一度右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。
 12. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure SQL]** を選択し、**[追加]** をクリックします。 
@@ -151,7 +144,7 @@
 		  }
 		}
 
-#### パイプラインの作成 
+## パイプラインの作成 
 入力/出力のリンクされたサービスとテーブルの作成は完了しました。次に、**コピー アクティビティ**を使用してパイプラインを作成し、Azure BLOB から Azure SQL Database にデータをコピーします。
 
 
@@ -203,7 +196,7 @@
 		  }
 		}
 
-#### Data Factory エンティティの発行/デプロイ
+## Data Factory エンティティの発行/デプロイ
   
 18. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** をクリックします。 
 19. **[Microsoft アカウントの新規登録]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
@@ -228,12 +221,11 @@
 25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
 
 
-## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
+## サーバー エクスプローラーを使用して Data Factory を表示する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。  
-	![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
-3. データ ファクトリを右クリックし、[Data Factory を新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。  
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認します。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
+3. データ ファクトリを右クリックし、[Data Factory を新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 	![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
 
 ## Visual Studio の Data Factory ツールを更新する
@@ -243,9 +235,9 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 4. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)に関するセクションを参照してください。
+Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md#monitor-pipeline)に関するセクションを参照してください。
 
 ## 関連項目
 Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

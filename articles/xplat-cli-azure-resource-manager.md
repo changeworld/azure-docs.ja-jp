@@ -11,7 +11,7 @@
 <tags
 	ms.service="azure-resource-manager"
 	ms.workload="multiple"
-	ms.tgt_pltfrm="command-line-interface"
+	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="01/19/2016"
@@ -33,11 +33,11 @@
 
 Azure リソース マネージャーを使用すると、複数の_リソース_ (仮想マシン、データベース サーバー、データベース、Web サイトなどのユーザー管理のエンティティ) を_リソース グループ_と呼ばれる 1 つの論理単位にまとめて作成し、管理できます。
 
-Azure リソース マネージャーの長所を 1 つは、JSON *テンプレート*にリソースのデプロイ可能なグループの構造とリレーションシップを記述するという_宣言型_の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JSON azuredeploy-parameters.json ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
+Azure Resource Manager の長所の 1 つは、JSON *テンプレート*にリソースのデプロイ可能なグループの構造とリレーションシップを記述するという_宣言型_の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JSON azuredeploy-parameters.json ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
 
 テンプレートを使用してグループを変更または作成すると、_デプロイ_が作成されてグループに適用されます。Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
 
-デプロイを作成すると、従来の (サービス管理) デプロイ モデルと同様に、個々のリソースをコマンド ラインで強制的に管理できます。たとえば、Azure リソース マネージャー CLI コマンドを使用し、[Azure リソース マネージャー仮想マシン](virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)などのリソースを開始、停止、削除します。
+デプロイを作成すると、従来の (サービス管理) デプロイ モデルと同様に、個々のリソースをコマンド ラインで強制的に管理できます。たとえば、Azure リソース マネージャー CLI コマンドを使用し、[Azure リソース マネージャー仮想マシン](virtual-machines/virtual-machines-linux-cli-deploy-templates.md)などのリソースを開始、停止、削除します。
 
 ## 認証
 
@@ -84,7 +84,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 * パスワード = `adminPassword`
 * VM のドメイン名 = `dnsLabelPrefix`
 
->[AZURE.TIP] 以下の手順では、Azure CLI で VM テンプレートを使用する方法を 1 つだけ紹介します。他の例については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)」を参照してください。
+>[AZURE.TIP] 以下の手順では、Azure CLI で VM テンプレートを使用する方法を 1 つだけ紹介します。他の例については、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines/virtual-machines-linux-cli-deploy-templates.md)」を参照してください。
 
 1. "GitHub でさらに詳しく" リンクをたどり、GitHub からローカル コンピューターの作業フォルダーに azuredeploy.json ファイルと azuredeploy.parameters.json ファイルをダウンロードします(いずれのファイルも、GitHub 内にある_未加工_の形式を選択してください)。
 
@@ -215,4 +215,4 @@ Azure リソース マネージャー モードは既定で無効になってい
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

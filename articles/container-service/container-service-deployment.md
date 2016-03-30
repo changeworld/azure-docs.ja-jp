@@ -45,7 +45,7 @@ AGENTVMSIZE | エージェントの仮想マシンのサイズを指定します
 ADMINUSERNAME | これは、ACS クラスターのそれぞれの仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
 ORCHESTRATORTYPE| ACS クラスターで使用するオーケストレーターを選択します。
 MASTERCOUNT | これはクラスターのマスターとして構成する仮想マシンの数です。1 を選択できますが、クラスターに回復力が与えられません。テストのみで推奨されます。運用環境のクラスターに推奨される数は 3 または 5 です。 
-SSHRSAPUBLICKEY | 仮想マシンの認証には SSH を使用する必要があります。これは公開キーを追加する場所です。このボックスにキーの値を貼り付けるときは注意する必要があります。エディターによってはコンテンツに改行が挿入され、キーが壊れることがあります。キーに改行がないことと接頭辞の「ssh-rsa」と接尾辞の「username@domain」が含まれていることを確認します。「ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm'」のようになります。SSH キーを作成する必要がある場合、Azure ドキュメント サイトに [Windows](../virtual-machines/virtual-machines-windows-use-ssh-key.md) と [Linux](../virtual-machines/virtual-machines-linux-use-ssh-key.md) のガイダンスがあります。
+SSHRSAPUBLICKEY | 仮想マシンの認証には SSH を使用する必要があります。これは公開キーを追加する場所です。このボックスにキーの値を貼り付けるときは注意する必要があります。エディターによってはコンテンツに改行が挿入され、キーが壊れることがあります。キーに改行がないことと接頭辞の「ssh-rsa」と接尾辞の「username@domain」が含まれていることを確認します。「ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm'」のようになります。SSH キーを作成する必要がある場合、Azure ドキュメント サイトに [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) と [Linux](../virtual-machines/virtual-machines-linux-ssh-from-linux.md) のガイダンスがあります。
   
 パラメーターに適切な値を設定したら、[OK] をクリックします。次に、リソース グループ名を指定し、リージョンを選択し、法的規約を確認し、同意します。
 
@@ -156,12 +156,12 @@ New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESO
  
 ### テンプレート パラメーターを指定する
  
-PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。この機能は、テンプレートで定義するパラメーターでも同様に使用できます。 テンプレート名を入力するとすぐに、コマンドレットがそのテンプレートをフェッチし、パラメーターを解析して、テンプレート パラメーターをコマンドに動的に追加します。 Tこれにより、テンプレート パラメーターの値の指定が非常に簡単になります。 また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
+PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。この機能は、テンプレートで定義するパラメーターでも同様に使用できます。テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、パラメーターを解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
  
-パラメーターが含まれている完全なコマンドを以下に示します。 リソースの名前には独自の値を指定できます。
+パラメーターが含まれている完全なコマンドを以下に示します。リソースの名前には独自の値を指定できます。
 
 ```
-New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE\_GROUP\_NAME-TemplateURI TEMPLATE\_URI -adminuser value1 -adminpassword value2 ....
+New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
  
 ## 次のステップ
@@ -173,4 +173,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE\_GROUP\_NAME-Temp
 
  
 
-<!-----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->
