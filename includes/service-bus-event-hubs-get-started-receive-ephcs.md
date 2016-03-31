@@ -1,6 +1,6 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケールアウトのサンプル]は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
+[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost] を使用する方法を示します。[イベント処理のスケールアウトのサンプル](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)は、受信側が複数の場合に [EventProcessorHost] を使用する方法を示します。
 
 [EventProcessorHost][] を使用するには [Azure ストレージ アカウント][]が必要です。
 
@@ -136,4 +136,4 @@
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0309_2016-->

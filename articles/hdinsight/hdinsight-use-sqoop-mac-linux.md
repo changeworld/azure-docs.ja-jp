@@ -60,14 +60,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 | sessionid | bigint |
 | sessionpagevieworder | bigint |
 
-まず、**hivesampletable** を Azure SQL Database、または SQL Server の **mobiledata** という名前のテーブルにエクスポートしてから、そのテーブルを ****wasb:///tutorials/usesqoop/importeddata** の HDInsight にインポートします。
+まず、**hivesampletable** を Azure SQL Database、または SQL Server の **mobiledata** という名前のテーブルにエクスポートしてから、そのテーブルを **wasb:///tutorials/usesqoop/importeddata** の HDInsight にインポートします。
 
 
 ## クラスターと SQL Database を作成します。
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
     ARM テンプレートはパブリック BLOB コンテナー内にあります (**https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*)。
     
@@ -231,4 +231,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0316_2016-->
+<!----HONumber=AcomDC_0316_2016-->
