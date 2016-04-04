@@ -1,65 +1,67 @@
 
 
-[Docker](https://www.docker.com/) is one of the most popular virtualization approaches that uses [Linux containers](http://en.wikipedia.org/wiki/LXC) rather than virtual machines as a way of isolating application data and computing on shared resources. You can use the [Azure Docker VM extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) to the [Azure Linux Agent](virtual-machines-linux-agent-user-guide.md) to create a Docker VM that hosts any number of containers for your applications on Azure.
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
-This topic describes:
+このトピックの内容:
 
-+ [Docker and Linux Containers]
-+ [How to use the Docker VM Extension with Azure]
-+ [Virtual Machine Extensions for Linux and Windows]
++ [Docker と Linux コンテナー]
++ [Azure で Docker VM 拡張機能を使用する方法]
++ [Linux および Windows 向けの仮想マシン拡張機能]
 
-To create Docker-enabled VMs right now, see:
+Docker 対応 VM の作成をすぐに開始するには、以下を参照してください。
 
-+ [How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]
-+ [How to use the Docker VM Extension with the Azure classic portal]
-+ [How to Get Started Quickly with Docker in the Azure Marketplace]
++ [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]
++ [Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]
++ [Azure Marketplace で Docker をすばやく開始する方法]
 
-To learn more about the extension and how it works, see the [Docker Extension User Guide](https://github.com/Azure/azure-docker-extension/blob/master/README.md).
+拡張機能の詳細と、その機能方法については、「[Docker 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)」を参照してください。
 
-## Docker and Linux Containers
-[Docker](https://www.docker.com/) is one of the most popular virtualization approaches that uses [Linux containers](http://en.wikipedia.org/wiki/LXC) rather than virtual machines as a way of isolating data and computing on shared resources and provides other services that enable you to build or assemble applications quickly and distribute them between other Docker containers.
+## Docker と Linux コンテナー
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つであり、データの分離と共有リソースでのコンピューティングの手段として、仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を用います。また、Docker が提供しているサービスを利用して、アプリケーションを短時間で構築、アセンブルし、他の Docker コンテナーに配布することもできます。
 
-Docker and Linux containers are not [Hypervisors](http://en.wikipedia.org/wiki/Hypervisor) such as Windows Hyper-V and [KVM](http://www.linux-kvm.org/page/Main_Page) on Linux (there are many other examples). Hypervisors virtualize the underlying operating system to enable complete operating systems (called *virtual machines*) to run inside the hypervisor as if they were an application.
+Docker と Linux コンテナーは、Windows Hyper-V や Linux の [KVM](http://en.wikipedia.org/wiki/Hypervisor) のような (他にも例は多数あります) [ハイパーバイザー](http://www.linux-kvm.org/page/Main_Page)ではありません。ハイパーバイザーでは基になるオペレーティング システムが仮想化されるため、オペレーティング システム (*仮想マシン*と呼ばれる) 全体がハイパーバイザー内でアプリケーションのように実行されます。
 
-Docker and other *container* approaches have radically decreased both the start-up time consumed and processing and storage overhead required by using the process and file system isolation features of the Linux kernel to expose only kernel features to an otherwise isolated container.
+Docker をはじめとする*コンテナー* アプローチでは、Linux カーネルが備えるプロセスとファイル システムの分離機能を使用し、カーネル機能の利用以外の部分では互いに分離されたコンテナーを構築することで、起動時間と処理やストレージのオーバーヘッドを大幅に軽減しています。
 
-The following table describes at a very high level the kind of feature differences that exist between hypervisors and Linux containers. Note that some features maybe more or less desirable depending upon your own application needs.
+ハイパーバイザーと Linux コンテナーが備える機能の種類の違いに関する概要を次の表に示します。機能の中には自社のアプリケーション ニーズによってどちらが望ましいかが異なるものがあります。
 
-|   Feature      | Hypervisors | Containers  |
+| 機能 | ハイパーバイザー | コンテナー |
 | :------------- |-------------| ----------- |
-| Process Isolation | More or less complete | If root is obtained, container host could be compromised |
-| Memory on disk required | Complete OS plus apps | App requirements only |
-| Time taken to start up | Substantially Longer: Boot of OS plus app loading | Substantially shorter: Only apps need to start because kernel is already running  |
-| Container Automation | Varies widely depending on OS and apps | [Docker image gallery](https://registry.hub.docker.com/); others
+| プロセスの分離 | ほぼ全部 | root が取得されると、コンテナー ホストが危害を受けるおそれがある。 |
+| 必要なディスク上のメモリ | OS 全体とアプリ | アプリ要件のみ |
+| 起動にかかる時間 | 非常に長い: OS のブートとアプリの読み込み | 非常に短い: カーネルが既に実行されているため必要なのはアプリの起動のみ |
+| コンテナーの自動化 | OS やアプリによって大きく異なる | [Docker イメージ ギャラリー](https://registry.hub.docker.com/)、その他
 
-To see a high-level discussion of containers and their advantages, see the [Docker High Level Whiteboard](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
+コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
-For more information about what Docker is and how it really works, see [What is Docker?](https://www.docker.com/whatisdocker/)
+Docker の機能やしくみの詳細については、「[What is Docker? (Docker とは)](https://www.docker.com/whatisdocker/)」を参照してください。
 
-#### Docker and Linux Container Security Best Practices
+#### Docker と Linux コンテナーのセキュリティに関するベスト プラクティス
 
-Because containers do share access to the host computer's kernel, if malicious code is able to gain root it may also be able to gain access not only to the host computer but also the other containers. To secure your container system more strongly than the default configuration, [Docker recommends](https://docs.docker.com/articles/security/) using addition group-policy or [role-based security](http://en.wikipedia.org/wiki/Role-based_access_control) as well, such as [SELinux](http://selinuxproject.org/page/Main_Page) or [AppArmor](http://wiki.apparmor.net/index.php/Main_Page), for example, as well as reducing as much as possible the kernel capabilities that the containers are granted. In addition, there are many other documents on the Internet that describe approaches to security using containers like Docker.
+コンテナーはホスト コンピューターのカーネルへのアクセスを共有するため、悪意のあるコードが root を取得できた場合、ホスト コンピューターだけでなく他のコンテナーにもアクセスできる可能性があります。既定の構成からさらにコンテナー システムのセキュリティを強化するために、[SELinux](https://docs.docker.com/articles/security/) や [AppArmor](http://en.wikipedia.org/wiki/Role-based_access_control) など、グループ ポリシーや[ロール ベースのセキュリティ](http://selinuxproject.org/page/Main_Page)を追加したり、コンテナーに使用を許可するカーネル機能をできる限り減らしたりすることが [Docker で推奨されています](http://wiki.apparmor.net/index.php/Main_Page)。また、インターネット上には、Docker のようなコンテナーを使用する際のセキュリティ対策について記載されたドキュメントが多数あります。
 
-## How to use the Docker VM Extension with Azure
+## Azure で Docker VM 拡張機能を使用する方法
 
-The Docker VM Extension is a component that is installed in the VM instance that you create which itself installs the Docker engine and manages remote communication with the VM. There are two ways to install the VM Extension: You can create your VM using the management portal or you can create it from the Azure Command-line Interface (Azure CLI).
+Docker VM 拡張機能は、作成した VM インスタンスにインストールされるコンポーネントで、拡張機能自身が Docker エンジンをインストールし、VM とのリモート通信を管理します。VM 拡張機能をインストールする方法は、2 つあります。1 つは管理ポータルを使用して VM を作成する方法、もう 1 つは Azure コマンド ライン インターフェイス (Azure CLI) から作成する方法です。
 
-You can use the portal to add the Docker VM Extension to any compatible Linux VM (currently, the only image that supports it is the Ubuntu 14.04 LTS image more recent than July). Using the Azure CLI command line, however, you can install the Docker VM Extension and create and upload your Docker communication certificates all at the same time when you create the VM instance.
+ポータルでは、互換性のある任意の Linux VM に Docker VM 拡張機能を追加できます (現時点では、7 月以降の Ubuntu 14.04 LTS イメージのみが Docker VM 拡張機能をサポートしています)。一方、Azure CLI コマンド ラインを使用すれば、VM インスタンスを作成するときに、同時に Docker VM 拡張機能をインストールし、Docker 通信証明書を作成してアップロードできます。
 
-To create Docker-enabled VMs right now, see:
+Docker 対応 VM の作成をすぐに開始するには、以下を参照してください。
 
-+ [How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]
-+ [How to use the Docker VM Extension with the Azure classic portal]
++ [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]
++ [Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]
 
-## Virtual Machine Extensions for Linux and Windows
-The [Docker VM extension for Azure](https://github.com/Azure/azure-docker-extension/blob/master/README.md) is just one of several VM extensions that provide special behaviour, and more are in development. For example, several of the [Linux VM Agent extension](virtual-machines-linux-agent-user-guide.md) features allow you to modify and manage the Virtual Machine, including security features, kernel and networking features, and so on. The VMAccess extension for example lets you reset the administrator password or SSH key.
+## Linux および Windows 向けの仮想マシン拡張機能
+[Azure 向けの Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)は、特殊な動作を提供する数ある VM 拡張機能のうちの 1 つにすぎません。現在、他にも多くの機能が開発中です。たとえば、[Linux VM エージェント拡張機能](virtual-machines-linux-agent-user-guide.md)の中には、セキュリティ機能やカーネルとネットワークの機能など、仮想マシンの変更と管理を実行できるものがあります。また VMAccess 拡張機能では、管理者のパスワードまたは SSH キーをリセットできます。
 
-For a complete list, see [Azure VM Extensions](virtual-machines-windows-extensions-features.md).
+詳しい一覧は、「[拡張機能の管理](virtual-machines-windows-extensions-features.md)」を参照してください。
 
 <!--Anchors-->
-[How to use the Docker VM Extension from the Azure Command-line Interface (Azure CLI)]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
-[How to use the Docker VM Extension with the Azure classic portal]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
-[How to Get Started Quickly with Docker in the Azure Marketplace]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-ubuntu-quickstart/
-[Docker and Linux Containers]: #Docker-and-Linux-Containers
-[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
-[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+[Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
+[Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[Azure Marketplace で Docker をすばやく開始する方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-ubuntu-quickstart/
+[Docker と Linux コンテナー]: #Docker-and-Linux-Containers
+[Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+
+<!---HONumber=AcomDC_0323_2016-->

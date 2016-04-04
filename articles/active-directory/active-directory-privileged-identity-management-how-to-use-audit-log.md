@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: 監査ログを使用する方法"
+   pageTitle="監査ログを使用する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能で監査ログを使用する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: 監査ログを使用する方法
+# Azure AD Privileged Identity Management: 監査ログを使用する方法
 
 Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。
 
@@ -56,4 +56,4 @@ PIM ダッシュボードで**監査履歴**をクリックして、監査ログ
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

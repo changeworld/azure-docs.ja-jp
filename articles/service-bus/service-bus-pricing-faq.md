@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="Service Bus の価格に関する FAQ |Microsoft Azure"
-   description="Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus の価格に関する FAQ |Microsoft Azure"
+    description="Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="03/16/2016"
+    ms.author="sethm" />
 
 # Service Bus の価格に関する FAQ
 
-このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。Microsoft Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。Service Bus の価格の詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+この記事では、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。Microsoft Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。Service Bus の価格の詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
 
->[AZURE.NOTE] Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](../event-hubs/event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
+>[AZURE.NOTE] Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](../event-hubs/event-hubs-availability-and-support-faq.md)」の記事で説明しています。詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」の記事を参照してください。
 
 - [Service Bus の課金方法を教えてください](#how-do-you-charge-for-service-bus)
 - [Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)
@@ -32,7 +32,7 @@
 
 ## Service Bus の課金方法を教えてください
 
-Service Bus の価格の詳細については、「[Service Bus の料金と課金](https://msdn.microsoft.com/library/dn831889.aspx)」および [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)」を参照してください。
+Service Bus の価格の詳細については、「[Service Bus の料金と課金](service-bus-pricing-billing.md)」および [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)」を参照してください。
 
 ## Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください
 
@@ -40,11 +40,11 @@ Service Bus の価格の詳細については、「[Service Bus の料金と課�
 
 ## Service Bus の "リレー" について具体的に教えてください
 
-リレーは、クライアントと Web サービスの間でメッセージを中継する Service Bus エンティティです。リレーにより、Web サービスでは、永続性のある検出可能な Service Bus アドレス、ファイアウォール/NAT トラバーサル機能を使用した信頼性の高い接続に加え、自動負荷分散などの追加機能も利用できます。リレー対応の WCF サービス (リレー リスナー) が特定の Service Bus アドレス (名前空間の URL) に初めて接続すると、その都度そのアドレスでリレーが暗黙的にインスタンス化されて開かれます。リレー リスナーは、標準的な WCF バインドの、リレーに対応した特殊な形態である Service Bus .NET マネージ API を使用して、アプリケーションによって作成されます。
+リレーは、クライアントと Web サービスの間でメッセージを中継する Service Bus エンティティです。リレーにより、Web サービスでは、永続性のある検出可能な Service Bus アドレス、ファイアウォール/NAT トラバーサル機能を使用した信頼性の高い接続に加え、自動負荷分散などの追加機能も利用できます。リレー対応の WCF サービス (リレー リスナー) が特定の Service Bus アドレス (名前空間の URL) に初めて接続すると、その都度そのアドレスでリレーが暗黙的にインスタンス化されて開かれます。リレー リスナーは、標準的な WCF バインドの、リレーに対応した特殊な形態である Service Bus .NET API を使用して、アプリケーションによって作成されます。
 
 ## リレー時間のメーターはどのようにして計算されますか
 
-特定の請求期間中、各 Service Bus Relay が "開いている" 時間の累積がリレー時間として課金されます。リレー対応の WCF サービス (リレー リスナー) が特定の Service Bus アドレス (サービスの名前空間の URL) に初めて接続すると、そのアドレスでリレーが暗黙的にインスタンス化されて開かれます。リレーが閉じられるのは、最後のリスナーがそのアドレスから切断されたときだけです。したがって、課金の目的上、最初のリレー リスナーが接続した時刻から最後のリレー リスナーがそのリレーの Service Bus アドレスから切断された時刻まで、リレーは "開いている" と見なされます。言い換えると、Service Bus アドレスに接続されているリレー リスナーが 1 つでもあれば、リレーは "開いている" と見なされます。
+特定の請求期間中、各 Service Bus Relay が "開いている" 時間の累積がリレー時間として課金されます。リレー対応の WCF サービス (リレー リスナー) が特定の Service Bus アドレス (サービスの名前空間の URL) に初めて接続すると、そのアドレスでリレーが暗黙的にインスタンス化されて開かれます。リレーが閉じられるのは、最後のリスナーがそのアドレスから切断されたときだけです。したがって、課金の目的上、最初のリレー リスナーが接続した時刻から最後のリレー リスナーがそのリレーの Service Bus アドレスから切断された時刻まで、リレーは "開いている" と見なされます。言い換えると、Service Bus アドレスに接続されているリレー リスナーが 1 つでもあれば、リレーは開いていると見なされます。
 
 ## 特定のリレーに複数のリスナーを接続した場合はどうなりますか
 
@@ -72,7 +72,7 @@ Service Bus の価格の詳細については、「[Service Bus の料金と課�
 
 マイクロソフトは、ある月に使用量クォータを超えた場合に、お客様のアカウントを無効にする権利を保有しています。ただし、その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。このようなクォータを超えたお客様についても、その超過分が課金の対象となります。
 
-Azure の他のサービスと同様、Service Bus では、リソースが公平に使用されるように一連のクォータを適用します。このサービスで適用される使用量クォータは次のとおりです。
+Azure の他のサービスと同様、Service Bus では、リソースが公平に使用されるように一連の[クォータ](service-bus-quotas.md)を適用します。このサービスで適用される使用量クォータは次のとおりです。
 
 - **キュー/トピック サイズ** - キューまたはトピックの最大サイズは、その作成時にお客様が指定します。このクォータには、1 GB、2 GB、3 GB、4 GB、5 GB のいずれかの値を指定できます。最大サイズに達すると、それ以上の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。
 
@@ -116,4 +116,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

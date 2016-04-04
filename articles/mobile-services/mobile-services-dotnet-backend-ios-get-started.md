@@ -23,7 +23,7 @@
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> このトピックの Mobile Apps バージョンについては、「[Create an iOS app in Azure Mobile Apps (Mobile Apps での iOS アプリの作成)](../app-service-mobile/app-service-mobile-android-get-started.md)」を参照してください。
+> このトピックの Mobile Apps バージョンについては、「[Android アプリの作成](../app-service-mobile/app-service-mobile-ios-get-started.md)」を参照してください。
 
 このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。Mobile Services はサーバー側ビジネス ロジックの .NET と Visual Studio を使用します。JavaScript のサーバー側ビジネス ロジックを使用してモバイル サービスを作成する方法については、このトピックの[ JavaScript バックエンド バージョン]をご覧ください。
 
@@ -101,4 +101,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [ JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

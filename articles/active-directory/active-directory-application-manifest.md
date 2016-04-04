@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/18/2015"
+   ms.date="03/16/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Azure Active Directory のアプリケーション マニフェストについて
@@ -104,7 +104,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
 1. まず、新しい API へのアクセスを追加するクライアント アプリケーションの [構成] ページに移動し、[アプリケーションの追加] ボタンをクリックします。
 2. テナントの登録済みのリソース アプリケーション (API) の一覧が表示されます。リソース アプリケーションの名前の横にあるプラス (+) 記号をクリックして選択します。  
-3. 次に、右下にあるチェック マークをクリックします。 
+3. 次に、右下にあるチェック マークをクリックします。
 4. クライアントの構成ページの [アプリケーションの追加] セクションに戻ると、一覧に新しいリソース アプリケーションが表示されます。その行の右側の [委任されたアクセス許可] セクションにポインターを置くと、ドロップダウン リストが表示されます。一覧をクリックし、クライアントの要求されているアクセス許可の一覧に追加するために、新しいアクセス許可を選択します。注: この新しいアクセス許可は、クライアント アプリケーションの ID 構成の "requiredResourceAccess" コレクション プロパティに格納されます。
 
 ![他のアプリケーションに対するアクセス許可][PERMS-TO-OTHER-APPS]
@@ -145,4 +145,4 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!-----HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0323_2016-->

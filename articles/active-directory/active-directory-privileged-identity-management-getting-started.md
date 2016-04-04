@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Privileged Identity Management の各種操作の目次"
+   pageTitle="Azure AD Privileged Identity Management の使用"
    description="Azure Active Directory Privileged Identity Management 拡張機能で特権 ID を管理する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -10,10 +10,10 @@
 <tags
    ms.service="active-directory"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/09/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management の使用
@@ -37,4 +37,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

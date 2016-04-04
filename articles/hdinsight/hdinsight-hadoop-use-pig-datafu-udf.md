@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="01/08/2016"
+ms.date="03/18/2016"
 ms.author="larryfr"/>
 
 #HDInsight の Pig で DataFu を使用する
@@ -30,7 +30,7 @@ DataFu は、Hadoop で使用するオープン ソース ライブラリのコ�
 
 ##Linux ベースの HDInsight に DataFu をインストールする
 
-> [AZURE.NOTE]DataFu は、Windows ベースの HDInsight クラスターにプレインストールされます。Windows ベースのクラスターを使用している場合は、このセクションをスキップしてください。
+> [AZURE.NOTE] DataFu は、Windows ベースの HDInsight クラスターにプレインストールされます。Windows ベースのクラスターを使用している場合は、このセクションをスキップしてください。
 
 DataFu は、Maven リポジトリからダウンロードしてインストールできます。HDInsight クラスターに DataFu を追加するには、次の手順を使用します。
 
@@ -47,13 +47,13 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 
         hdfs dfs -put datafu-1.2.0.jar /example/jars
     
-    > [AZURE.NOTE]上の例では jar を `wasb:///example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。HDInsight クラスター ストレージのどこでも使用できます。
+    > [AZURE.NOTE] 上の例では jar を `wasb:///example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。HDInsight クラスター ストレージのどこでも使用できます。
 
 ##Pig で DataFu を使用する
 
 読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。HDInsight で Pig を使用する方法の詳細については、「[HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
 
-> [AZURE.IMPORTANT]Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
+> [AZURE.IMPORTANT] Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
 >
 > ```register wasb:///example/jars/datafu-1.2.0.jar```
 >
@@ -107,4 +107,4 @@ DataFu または Pig の詳細については、次のドキュメントを参�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

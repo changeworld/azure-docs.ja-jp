@@ -41,7 +41,7 @@ Azure Automation は、Runbook、ノード、資格情報、スケジュール�
 
 DSC リソースは、ネットワーク、Active Directory、または SQL Server の管理などの特定の機能を備えたコードのモジュールです。Chocolatey DSC リソースは、(特に) NuGet サーバーへのアクセス、パッケージのダウンロード、パッケージのインストールなどの方法を認識しています。[PowerShell ギャラリー](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)には、その他の多くの DSC リソースがあります。これらのモジュールは、(ユーザーによって) Azure Automation DSC プル サーバーにインストールされるため、ユーザーの構成で使用できます。
 
-ARM テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。この[記事](../resource-manager-deployment-model.md)では、ARM デプロイ モデル (宣言型) と、Azure サービス管理 (ASM、つまり、クラシック) デプロイ モデル (命令型) が比較されています。また、別の[記事](../virtual-machines\virtual-machines-azurerm-versus-azuresm.md)では、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
+ARM テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。この[記事](../resource-manager-deployment-model.md)では、ARM デプロイ モデル (宣言型) と、Azure サービス管理 (ASM、つまり、クラシック) デプロイ モデル (命令型) が比較されています。また、別の[記事](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)では、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
 
 ARM テンプレートの 1 つの主要機能は、プロビジョニングされている VM に VM 拡張機能をインストールする機能です。VM 拡張機能には、カスタム スクリプトの実行、ウイルス対策ソフトウェアのインストール、DSC 構成スクリプトの実行などの特定の機能があります。VM 拡張機能には他にも多くの種類があります。
 
@@ -185,4 +185,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

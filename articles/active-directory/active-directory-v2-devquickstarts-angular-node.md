@@ -51,7 +51,8 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 ## adal.js をインストールする
-まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。 ```
+まず、ダウンロードしたプロジェクトに移動し、adal.js をインストールします。[bower](http://bower.io/) をインストールしてある場合は、次のコマンドを実行するだけで済みます。依存関係のバージョンの不一致がある場合は、高い方のバージョンを選択します。
+```
 bower install adal-angular#experimental
 ```
 
@@ -240,4 +241,4 @@ v2.0 エンドポイントについての学習を続けるには、[v2.0 開発
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

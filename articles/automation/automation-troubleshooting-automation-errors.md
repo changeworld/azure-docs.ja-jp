@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/02/2016"
+   ms.date="03/21/2016"
    ms.author="sngun; v-reagie"/>
 
 # Azure Automation の共通エラーのトラブルシューティングのヒント
@@ -105,7 +105,7 @@
 
 **トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
 
-- コマンドレット名とコマンドレットのパスが正しいことを確認します。  
+- コマンドレット名を正しく入力していることを確認します。  
 
 - Automation アカウントにコマンドレットが存在し、競合がないことを確認します。コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。
 
@@ -206,4 +206,4 @@
 
 - Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

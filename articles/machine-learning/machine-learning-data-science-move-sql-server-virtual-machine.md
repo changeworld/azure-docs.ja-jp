@@ -130,7 +130,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 	Set-ExecutionPolicy Restricted #reset the execution policy
 
 
-### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
+### <a name="insert-tables-bulkquery">一括挿入 SQL クエリ</a>
 
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 
@@ -173,7 +173,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 ### Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
 
-**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード**は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-migrate-onpremises-database.md)」を参照してください。
+**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード**は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-classic-migrate-sql.md)」を参照してください。
 
 ### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
@@ -217,11 +217,11 @@ SQL Server は以下のものをサポートします。
 
 ## リソース
 
-[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-migrate-onpremises-database.md)
+[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-classic-migrate-sql.md)
 
-[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-sql-server-infrastructure-services.md)
+[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-windows-classic-sql-overview.md)
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

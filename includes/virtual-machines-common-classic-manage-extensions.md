@@ -1,125 +1,124 @@
 
 
 
-##Using VM Extensions
+##VM 拡張機能の使用
 
-Azure VM Extensions implement behaviors or features that either help other programs work on Azure VMs (for example, the **WebDeployForVSDevTest** extension allows Visual Studio to Web Deploy solutions on your Azure VM) or provide the ability for you to interact with the VM to support some other behavior (for example, you can use the VM Access extensions from Powershell, the Azure CLI, and REST clients to reset or modify remote access values on your Azure VM).
+Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の支援 (たとえば、**WebDeployForVSDevTest** 拡張機能により Visual Studio は Azure VM に Web デプロイできるようになります)、または他のいくつかの動作をサポートするための VM の操作機能の提供 (たとえば、Azure CLI という PowerShell の VM アクセス拡張機能と REST クライアントを使用すると、Azure VM のリモート アクセス値をリセットまたは変更できます) を行う、動作や機能を実装します。
 
->[AZURE.IMPORTANT] For a complete list of extensions by the features they support, see [Azure VM Extensions and Features](virtual-machines-windows-extensions-features.md). Because each VM extension supports a specific feature, exactly what you can and cannot do with an extension depends on the extension. Therefore, before modifying your VM, make sure you have read the documentation for the VM Extension you want to use. Removing some VM Extensions is not supported; others have properties that can be set that change VM behavior radically.
+>[AZURE.IMPORTANT] サポートする機能別の拡張機能の完全な一覧については、「[Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)」を参照してください。各 VM 拡張機能は特定の機能をサポートするため、拡張機能を使用して実行可能なことと不可能なことはその拡張機能によって異なります。したがって、VM を変更する前に、使用する VM 拡張機能についてのドキュメントを必ず読んでください。VM 拡張機能の中には削除がサポートされていないものがあり、また別の拡張機能には VM の動作を根本から変更するように設定できるプロパティがあります。
 
-The most common tasks are:
+最も一般的なタスクは次のとおりです。
 
-1.  Finding Available Extensions
+1.  使用可能な拡張機能の検索
 
-2.  Updating Loaded Extensions
+2.  読み込み済みの拡張機能の更新
 
-3.  Adding Extensions
+3.  拡張機能の追加
 
-4.  Removing Extensions
+4.  拡張機能の削除
 
-##Find Available Extensions
+##使用可能な拡張機能の検索
 
-Azure VM Extensions are (For a complete list of extensions by the features they support, see [Azure VM Extensions and Features](virtual-machines-windows-extensions-features.md).) You can locate the extension and extended information using:
+Azure VM 拡張機能には次のものがあります (サポートする機能別の拡張機能の完全な一覧については、「[Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)」を参照してください)。 以下を使用して、拡張機能とその詳細情報を見つけることができます。
 
 -   PowerShell
--   Azure Cross-Platform Interface (Azure CLI)
--   Service Management REST API
+-   Azure クロスプラットフォーム インターフェイス (Azure CLI)
+-   サービス管理 REST API
 
-either [Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) cmdlets or the [Service Management REST APIs](https://msdn.microsoft.com/library/ee460799.aspx) to find information about available extensions.
+利用可能な拡張機能の情報を検索するには、[Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) コマンドレットまたは[サービス管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用します。
 
 ###Azure PowerShell
 
-Some extensions have Powershell cmdlets that are specific to them, which may make their configuration from PowerShell easier; but the following cmdlets work for all VM extensions.
+一部の拡張機能には、PowerShell からの構成を行いやすくする固有の PowerShell コマンドレットがあります。また、以下のコマンドレットはすべての VM 拡張機能で動作します。
 
-You can use the following cmdlets to obtain information about available extensions:
+次のコマンドレットを使用すると、使用可能な拡張機能に関する情報を取得できます。
 
--   For instances of web roles or worker roles, you can use the [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx)
-    cmdlet.
--   For instances of Virtual Machines, you can use the [Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) cmdlet.
+-   Web ロール または worker ロールのインスタンスの場合、[Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) コマンドレットを使用できます。
+-   仮想マシンのインスタンスの場合、[Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) コマンドレットを使用できます。
 
-     For example, the following code example shows how to list the
-    information for the **IaaSDiagnostics** extension using PowerShell.
+     例として、次のコード例に PowerShell を使用して **IaaSDiagnostics** 拡張機能の情報を一覧表示する方法を示します。
 
         PS C:\PowerShell> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
         VERBOSE: 5:09:01 PM - Begin Operation: Get-AzureVMAvailableExtension
         VERBOSE: 5:09:06 PM - Completed Operation: Get-AzureVMAvailableExtension
 
-        Publisher                   : Microsoft.Azure.Diagnostics
-        ExtensionName               : IaaSDiagnostics
-        Version                     : 1.2
-        Label                       : Microsoft Monitoring Agent Diagnostics
-        Description                 : Microsoft Monitoring Agent Extension
-        PublicConfigurationSchema   :
-        PrivateConfigurationSchema  :
-        IsInternalExtension         : False
-        SampleConfig                :
-        ReplicationCompleted        : True
-        Eula                        :
-        PrivacyUri                  :
-        HomepageUri                 :
-        IsJsonExtension             : True
+        Publisher                   : Microsoft.Azure.Diagnostics
+        ExtensionName               : IaaSDiagnostics
+        Version                     : 1.2
+        Label                       : Microsoft Monitoring Agent Diagnostics
+        Description                 : Microsoft Monitoring Agent Extension
+        PublicConfigurationSchema   :
+        PrivateConfigurationSchema  :
+        IsInternalExtension         : False
+        SampleConfig                :
+        ReplicationCompleted        : True
+        Eula                        :
+        PrivacyUri                  :
+        HomepageUri                 :
+        IsJsonExtension             : True
         DisallowMajorVersionUpgrade : False
-        SupportedOS                 :
-        PublishedDate               :
-        CompanyName                 :
+        SupportedOS                 :
+        PublishedDate               :
+        CompanyName                 :
 
 
-###Azure Command Line Interface (Azure CLI)
+###Azure コマンド ライン インターフェイス (Azure CLI)
 
-Some extensions have Azure CLI commands that are specific to them (the Docker VM Extension is one example), which may make their configuration easier; but the following commands work for all VM extensions.
+一部の拡張機能 (Docker VM 拡張機能など) には、構成を行いやすくする固有の Azure CLI コマンドがあります。また、以下のコマンドレットはすべての VM 拡張機能で動作します。
 
-You can use the **azure vm extension list** command to obtain information about available extensions, and use the **–-json** option to display all available information about one or more extensions. If you do not use an extension name, the command returns a json description of all available extensions.
+**azure vm extension list** コマンドを使用すると利用可能な拡張機能についての情報を取得することができ、**-json** オプションを付けると 1 つ以上の拡張機能について得られた情報をすべて表示することができます。拡張機能名を指定しない場合、このコマンドはすべての利用可能な拡張機能についての説明を JSON で返します。
 
-For example, the following code example shows how to list the information for the **IaaSDiagnostics** extension using the Azure CLI **azure vm extension list** command and uses the **–-json** option to return complete information.
+たとえば、次のコード例では Azure CLI の **azure vm extension list** コマンドを使用して **IaaSDiagnostics** 拡張機能に関する情報を一覧表示する方法を示しており、**-json** オプションを付けて完全な情報を返すようにしています。
 
 
     $ azure vm extension list -n IaaSDiagnostics --json
     [
-      {
-        "publisher": "Microsoft.Azure.Diagnostics",
-        "name": "IaaSDiagnostics",
-        "version": "1.2",
-        "label": "Microsoft Monitoring Agent Diagnostics",
-        "description": "Microsoft Monitoring Agent Extension",
-        "replicationCompleted": true,
-        "isJsonExtension": true
-      }
+      {
+        "publisher": "Microsoft.Azure.Diagnostics",
+        "name": "IaaSDiagnostics",
+        "version": "1.2",
+        "label": "Microsoft Monitoring Agent Diagnostics",
+        "description": "Microsoft Monitoring Agent Extension",
+        "replicationCompleted": true,
+        "isJsonExtension": true
+      }
     ]
 
 
 
-###Service Management REST APIs
+###サービス管理 REST API
 
-You can use the following REST APIs to obtain information about available extensions:
+以下の REST API を使用すると、利用可能な拡張機能についての情報を取得できます。
 
--   For instances of web roles or worker roles, you can use the [List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) operation. To list the versions of available extensions, you can use [List Extension Versions](https://msdn.microsoft.com/library/dn495437.aspx).
+-   Web ロール または worker ロールのインスタンスの場合、[List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) 操作を使用できます。[List Extension Versions](https://msdn.microsoft.com/library/dn495437.aspx) を使用すると、利用可能な拡張機能のバージョンを一覧表示することができます。
 
--   For instances of Virtual Machines, you can use the [List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) operation. To list the versions of available extensions, you can use [List Resource Extension Versions](https://msdn.microsoft.com/library/dn495440.aspx).
+-   仮想マシンのインスタンスの場合、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作を使用できます。[List Resource Extension Versions](https://msdn.microsoft.com/library/dn495440.aspx) を使用すると、利用可能な拡張機能のバージョンを一覧表示することができます。
 
-##Add, Update, or Disable Extensions
+##拡張機能の追加、更新、無効化
 
-Extensions can be added when an instance is created or they can be added to a running instance. Extensions can be updated, disabled, or removed. You can perform these actions by using Azure PowerShell cmdlets or by using the Service Management REST API operations. Parameters are required to install and set up some extensions. Public and private parameters are supported for extensions.
+拡張機能は、インスタンスの作成時に追加するか、実行中のインスタンスに追加することができます。拡張機能は更新、無効化、または削除できます。これらのアクションは、Azure PowerShell またはサービス管理 REST API 操作を使用して行うことができます。一部の拡張機能のインストールと設定にはパラメーターが必須です。拡張機能ではパブリック パラメーターとプライベート パラメーターがサポートされます。
 
 
 ###Azure PowerShell
 
-Using Azure PowerShell cmdlets is the easiest way to add and update extensions. When you use the extension cmdlets, most of the configuration of the extension is done for you. At times, you may need to programmatically add an extension. When you need to do this, you must provide the configuration of the extension.
+Azure PowerShell コマンドレットを使用するのが、最も簡単に拡張機能を追加および更新する方法です。拡張機能コマンドレットを使用する場合、拡張機能の構成のほとんどが自動で実行されます。場合によっては、プログラムを使用して拡張機能を追加する必要があります。これを行う場合、拡張機能の構成を指定する必要があります。
 
-You can use the following cmdlets to know whether an extension requires a configuration of public and private parameters:
+次のコマンドレットを使用すると、拡張機能でパブリック パラメーターとプライベート パラメーターを構成する必要があるかどうかを知ることができます。
 
--   For instances of web roles or worker roles, you can use the **Get-AzureServiceAvailableExtension** cmdlet.
+-   Web ロール または worker ロールのインスタンスの場合、**Get-AzureServiceAvailableExtension** コマンドレットを使用できます。
 
--   For instances of Virtual Machines, you can use the **Get-AzureVMAvailableExtension** cmdlet.
+-   仮想マシンのインスタンスの場合、**Get-AzureVMAvailableExtension** コマンドレットを使用できます。
 
-###Service Management REST APIs
+###サービス管理 REST API
 
-When you retrieve a listing of available extensions by using the REST
-APIs, you receive information about how the extension is to be configured. The information that is returned might show parameter information represented by a public schema and private schema. Public parameter values are returned in queries about the instances. Private parameter values are not returned.
+利用可能な拡張機能の一覧を REST API を使用して取得すると、拡張機能の構成に関する情報が表示されます。返される情報では、パラメーター情報がパブリック スキーマとプライベート スキーマによって表される場合があります。パブリック パラメーターの値は、インスタンスに関するクエリで返されます。プライベート パラメーターの値は返されません。
 
-You can use the following REST APIs to know whether an extension requires a configuration of public and private parameters:
+次の REST API を使用すると、拡張機能でパブリック パラメーターとプライベート パラメーターを構成する必要があるかどうかを知ることができます。
 
--   For instances of web roles or worker roles, the **PublicConfigurationSchema** and **PrivateConfigurationSchema** elements contain the information in the response from the [List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) operation.
+-   Web ロール または worker ロール のインスタンスの場合、**PublicConfigurationSchema** 要素と **PrivateConfigurationSchema** 要素には、[List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) 操作からの応答の情報が含まれます。
 
--   For instances of Virtual Machines, the **PublicConfigurationSchema** and **PrivateConfigurationSchema** elements contain the information in the response from the [List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) operation.
+-   仮想マシンのインスタンスの場合、**PublicConfigurationSchema** 要素と **PrivateConfigurationSchema** 要素には、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作からの応答の情報が含まれます。
 
->[AZURE.NOTE]Extensions can also use configurations that are defined with JSON. When these types of extensions are used, only the **SampleConfig** element is used.
+>[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
+
+<!---HONumber=AcomDC_0323_2016-->

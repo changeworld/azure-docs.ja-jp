@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="03/22/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のサンプル 
@@ -41,9 +41,7 @@
 
 「[Python で Azure Redis Cache を使用する方法](cache-python-get-started.md)」では、Python と [redis-py](https://github.com/andymccurdy/redis-py) クライアントを使用して Azure Redis Cache を使用する方法を説明しています。
 
-「[PHP の例](https://msdn.microsoft.com/library/azure/dn690470.aspx#PHPExample)」では、PHP と [predis](https://github.com/nrk/predis) クライアントを使用して Azure Redis Cache を使用する方法を説明しています。
-
-「[キャッシュ内で .NET オブジェクトを使用する](https://msdn.microsoft.com/library/azure/dn690521.aspx#Objects)」では、Azure Redis Cache インスタンスとの間でオブジェクトを読み書きできる、.NET オブジェクトをシリアル化する方法の 1 つを説明しています。
+「[キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」では、Azure Redis Cache インスタンスとの間でオブジェクトを読み書きできる、.NET オブジェクトをシリアル化する方法の 1 つを説明しています。
 
 ## ASP.NET SignalR のスケールアウト バックプレーンとしての Redis Cache の使用
 
@@ -76,4 +74,4 @@
 
 「[帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)」サンプルでは、クライアントで使用されている帯域幅を監視できます。帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/11/2016"
+   ms.date="03/17/2016"
    ms.author="jonatul"/>
 
 # DNS ゾーン ファイルのインポートとエクスポート
@@ -176,4 +176,4 @@ DNS ゾーンをインポートする Azure CLI コマンドの形式は次の�
 
 このコマンドは、Azure DNS サービスを呼び出すことで、ゾーン内のレコード セットを列挙し、その結果を BIND と互換性のあるゾーン ファイルにエクスポートします。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

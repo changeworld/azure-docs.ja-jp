@@ -11,7 +11,7 @@
 <tags
 	ms.service="multiple"
 	ms.workload="multiple"
-	ms.tgt_pltfrm="command-line-interface"
+	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="12/29/2015"
@@ -65,7 +65,7 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 ## 職場または学校のアカウントでの非対話型ログインの使用
 
 
-非対話型のログイン方法は、職場または学校のアカウント (*組織アカウント*とも呼ばれます) でのみ機能します。このアカウントは組織によって管理され、組織の Azure Active Directory で定義されます。[組織アカウントを作成](#create-an-organizational-account)することも (組織アカウントがない場合)、[Microsoft アカウント ID から職場または学校の ID を作成](./virtual-machines/resource-group-create-work-id-from-personal.md)することもできます。そのためには、次のように `azure login` コマンドにユーザー名、またはユーザー名とパスワードを指定する必要があります。
+非対話型のログイン方法は、職場または学校のアカウント (*組織アカウント*とも呼ばれます) でのみ機能します。このアカウントは組織によって管理され、組織の Azure Active Directory で定義されます。[組織アカウントを作成](#create-an-organizational-account)することも (組織アカウントがない場合)、[Microsoft アカウント ID から職場または学校の ID を作成](./virtual-machines/virtual-machines-windows-create-aad-work-id.md)することもできます。そのためには、次のように `azure login` コマンドにユーザー名、またはユーザー名とパスワードを指定する必要があります。
 
 	azure login -u ahmet@contoso.onmicrosoft.com
 	info:    Executing command login
@@ -156,4 +156,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

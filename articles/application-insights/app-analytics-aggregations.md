@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights Analytics の summarize ステートメントと集計関数" 
-	description="Application Insights Analytics の集計関数と summarize ステートメントのリファレンス、Application Insights の強力な検索ツール。" 
+	pageTitle="Application Insights の Analytics での summarize と集計" 
+	description="Analytics の集計関数と summarize ステートメントのリファレンス、Application Insights の強力な検索ツール。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,13 +12,13 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/06/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
-# Application Insights Analytics での集計
+# Analytics での集計
 
-[Application Insights Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な検索エンジンです。ここでは、Application Insights Analytics クエリ言語である AIQL について説明します。
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -52,7 +52,7 @@
 * *Aggregation:* 引数として列名を持つ、`count()` や `avg()` などの集計関数を呼び出します。以下の集計関数のリストを参照してください。
 * *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列を持つ `bin()` になります。 
 
-`bin()` を使用せずに数値式または時間式を指定した場合、AI Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
+`bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
 
 *GroupExpression* を指定しないと、テーブル全体が単一の出力行にまとめられます。
 
@@ -307,7 +307,7 @@ traces
     Union-type ::= '[' Type* ']';
     Primitive-type ::= "int" | "string" | ...;
 
-これらは TypeScript 型の注釈のサブセットと同等であり、AIQL 動的値としてエンコードされます。TypeScript のスキーマ例を以下に示します。
+これらは TypeScript 型の注釈のサブセットと同等であり、動的値としてエンコードされます。TypeScript のスキーマ例を以下に示します。
 
     var someobject: 
     { 
@@ -463,4 +463,4 @@ traces
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights Analytics のスカラー式" 
-	description="Application Insights の強力な検索ツールである Application Insights Analytics で使用される数値、文字列、動的な式、および型。" 
+	pageTitle="Application Insights の Analytics のスカラー式" 
+	description="Application Insights の強力な検索ツールである Analytics で使用される数値、文字列、動的な式、および型。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,15 +12,15 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/05/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
  
-# Application Insights Analytics のスカラー式
+# Analytics のスカラー式
 
 
-[Application Insights Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な検索エンジンです。ここでは、Application Insights Analytics のクエリ言語である AIQL について説明します。
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -35,7 +35,7 @@
 
 
 
-"スカラー" とは、AIQL テーブル内の 1 つのセルを占有できる数値や文字列のような値を意味します。スカラー式は、スカラー関数と演算子で構成され、スカラー値に評価されます。`sqrt(score)/100 > target+2` はスカラー式です。
+"スカラー" とは、テーブル内の 1 つのセルを占有できる数値や文字列のような値を意味します。スカラー式は、スカラー関数と演算子で構成され、スカラー値に評価されます。`sqrt(score)/100 > target+2` はスカラー式です。
 
 また、"スカラー" には、配列や複合オブジェクトも含まれます。これらも、1 つのデータベース セルに格納できます。
 
@@ -43,8 +43,8 @@
 
 ## スカラー
 
-[キャスト](#casts) | [比較](#scalar-comparisons)
-<br/>
+[キャスト](#casts) | [比較](#scalar-comparisons) 
+<br/> 
 [gettype](#gettype) | [hash](#hash) | [iff](#iff)| [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
 
 サポートされている型は次のとおりです。
@@ -163,8 +163,8 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```
 
-<a name="isnull"/></a>
-<a name="isnotnull"/></a>
+<a name="isnull"/></a> 
+<a name="isnotnull"/></a> 
 <a name="notnull"/></a>
 ### isnull、isnotnull、notnull
 
@@ -240,11 +240,11 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
+| - | 減算 | 
+| * | 乗算 | 
+| / | 除算 | 
+| % | 剰余 | 
+|| 
 |`<` |小さい 
 |`<=`|小さいか等しい 
 |`>` |大きい 
@@ -557,7 +557,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### 難読化された文字列リテラル
 
-難読化された文字列リテラルとは、文字列の出力時 (たとえば、トレース時) に AI Analytics によってわかりにくくされる文字列のことです。難読化プロセスでは、難読化されるすべての文字が開始 (`*`) 文字に置き換えられます。
+難読化された文字列リテラルとは、文字列の出力時 (たとえば、トレース時) に Analytics によってわかりにくくされる文字列のことです。難読化プロセスでは、難読化されるすべての文字が開始 (`*`) 文字に置き換えられます。
 
 難読化された文字列リテラルを形成するには、前に `h` または 'H' を付加します。次に例を示します。
 
@@ -668,8 +668,8 @@ h"hello"
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
 
-<a name="notempty"></a>
-<a name="isnotempty"></a>
+<a name="notempty"></a> 
+<a name="isnotempty"></a> 
 <a name="isempty"></a>
 ### isempty、isnotempty、notempty
 
@@ -845,8 +845,8 @@ substring("ABCD", 0, 2)       // AB
 
 ## 配列とオブジェクト: 動的な型
 
-[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses)
-<br/>
+[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) 
+<br/> 
 [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
 
 
@@ -861,7 +861,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
-* ただし、`arraylength` やその他の AIQL 関数 (".length" 以外) を使用してください。
+* ただし、`arraylength` やその他の Analytics 関数 (".length" 以外) を使用してください。
 
 **キャスト:** 場合によっては、オブジェクトから抽出する要素をキャストする必要があります。これは、オブジェクトの型が一様ではないためです。たとえば、`summarize...to` には次のように特定の型が必要です。
 
@@ -1081,7 +1081,7 @@ arraylength(parsejson('21')) == null
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-その後、次の AIQL フラグメントがオブジェクトの `duration` スロットの値を取得し、そこから 2 つのスロット `duration.value` および `duration.min` (それぞれ `118.0` と `110.0`) を取得します。
+その後、次のフラグメントがオブジェクトの `duration` スロットの値を取得し、そこから 2 つのスロット `duration.value` および `duration.min` (それぞれ `118.0` と `110.0`) を取得します。
 
 ```AIQL
 T
@@ -1152,4 +1152,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0323_2016-->

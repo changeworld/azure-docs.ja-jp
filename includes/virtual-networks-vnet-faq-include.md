@@ -20,7 +20,7 @@ VNet を使用して次のことが行えます。
 
 ### 仮想ネットワークが必要かどうかを知る方法
 
-[Virtual Network の概要](virtual-networks-overview.md)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
+[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
 
 ### 開始するには?
 
@@ -40,9 +40,13 @@ VNet は、Cloud Services (PaaS)、Virtual Machines、Web Apps など、さま�
 
 作成または仮想ネットワークを構成するのには、次のツールを使用できます。
 
-- 管理ポータルを使用することができます。[Virtual Network (VNet) のプロパティの管理方法](virtual-networks-settings.md)を参照してください。
+- Azure ポータル (クラシックおよびリソース マネージャー VNet)。
 
-- ネットワーク構成ファイル (netcfg) を使用することができます。[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)を参照してください。
+- ネットワーク構成ファイル (クラシック VNet では netcfg のみ)。[ネットワーク構成ファイルを使用した仮想ネットワークの構成](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)を参照してください。
+
+- PowerShell (クラシックおよびリソース マネージャー VNet)。
+
+- Azure CLI (クラシックおよびリソース マネージャー VNet)。
 
 ### VNet でどのアドレス範囲が使用できるでしょうか。
 
@@ -50,7 +54,7 @@ VNet は、Cloud Services (PaaS)、Virtual Machines、Web Apps など、さま�
 
 ### VNet 内でパブリック IP アドレスを持つことができますか。
 
-はい。パブリック IP アドレス範囲の詳細については、[Virtual Network (VNet) でのパブリック IP アドレス空間](virtual-networks-public-ip-within-vnet.md)を参照してください。パブリック IP が、インターネットから直接アクセスできないことに留意してください。
+はい。パブリック IP アドレス範囲の詳細については、[Virtual Network (VNet) でのパブリック IP アドレス空間](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md)を参照してください。パブリック IP が、インターネットから直接アクセスできないことに留意してください。
 
 ### 仮想ネットワーク内のサブネットの数に制限はありますか。
 
@@ -70,7 +74,7 @@ Azure は、各サブネット内で一部の IP アドレスを予約します�
 
 ### 私の Vnet とサブネットをカスタム ルーティング ポリシーを指定できますか。
 
-はい。ユーザー定義のルーティング (UDR) を使用することができます。UDR の詳細については、[ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)を参照してください。
+はい。ユーザー定義のルーティング (UDR) を使用することができます。UDR の詳細については、[ユーザー定義のルートと IP 転送](../articles/virtual-network/virtual-networks-udr-overview.md)を参照してください。
 
 ### VNet はマルチキャストやブロードキャストをサポートしますか。
 
@@ -118,13 +122,13 @@ PowerShell コマンドレットまたは NETCFG ファイルを使用してそ�
 
 ### VNet を Azure での別の VNet に接続できますか。
 
-はい。REST API または Windows PowerShell を使用して VNet 間の通信を作成できます。[VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)を参照してください。
+はい。REST API または Windows PowerShell を使用して VNet 間の通信を作成できます。
 
 ## 名前解決 (DNS)
 
 ### VNet の DNS オプションとは何でしょうか。
 
-[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)ページでディシジョン テーブルを使用して、使用できるすべての DNS オプションを行うことができます。
+[VM とロール インスタンスの名前解決](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)ページでディシジョン テーブルを使用して、使用できるすべての DNS オプションを行うことができます。
 
 ### VNet の DNS サーバーを指定できますか。
 
@@ -171,11 +175,11 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### VM が受信するのはどの IP アドレスでしょうか。
 
-- **内部 IP アドレス -** VM を VNet にデプロイする場合は、VM は、指定した内部 IP アドレスのプールから内部 IP アドレスを受信します。VM は、内部 IP アドレスを使用して VNet 内で通信します。Azure では動的内部 IP アドレスが割り当てられますが、ご使用の VM の静的アドレスを要求できます。静的内部 IP アドレスに関する詳細については、[静的内部 IP アドレスを設定する方法](virtual-networks-reserved-private-ip.md)参照してください。
+- **内部 IP アドレス -** VM を VNet にデプロイする場合は、VM は、指定した内部 IP アドレスのプールから内部 IP アドレスを受信します。VM は、内部 IP アドレスを使用して VNet 内で通信します。Azure では動的内部 IP アドレスが割り当てられますが、ご使用の VM の静的アドレスを要求できます。静的内部 IP アドレスに関する詳細については、[静的内部 IP アドレスを設定する方法](../articles/virtual-network/virtual-networks-reserved-private-ip.md)参照してください。
 
-- **VIP -** VIP は VM に直接割り当てることはありませんが、ご使用の VM も VIP と関連付けられます。VIP は、クラウド サービスに割り当てられるパブリック IP アドレスです。必要に応じて、クラウド サービスの VIP を予約することができます。[予約済みパブリック IP](virtual-networks-reserved-public-ip.md) を参照してください。
+- **VIP -** VIP は VM に直接割り当てることはありませんが、ご使用の VM も VIP と関連付けられます。VIP は、クラウド サービスに割り当てられるパブリック IP アドレスです。必要に応じて、クラウド サービスの VIP を予約することができます。
 
-- **ILPIP -**インスタンスレベル パブリック IP アドレス (ILPIP) を構成することもできます。ILPIP はクラウド サービスではなく、VM に直接関連付けられます。ILPIPs に関する詳細についてを参照してください。[インスタンスレベル パブリック IP の概要](virtual-networks-instance-level-public-ip.md)です。
+- **ILPIP -**インスタンスレベル パブリック IP アドレス (ILPIP) を構成することもできます。ILPIP はクラウド サービスではなく、VM に直接関連付けられます。ILPIPs に関する詳細についてを参照してください。[インスタンス レベル パブリック IP の概要](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)です。
 
 ### 後で作成する VM の内部 IP アドレスを予約できますか。
 
@@ -197,7 +201,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### VNet 内で 1 つのサブネットからもう 1 つのサブネットへと、再デプロイせずに移動できますか。
 
-はい。詳細については、[こちらで](virtual-networks-move-vm-role-to-subnet.md)確認できます。
+はい。詳細については、[こちらで](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md)確認できます。
 
 ### VM に静的な MAC アドレスを構成できますか。
 
@@ -222,13 +226,13 @@ VNet 内のコンピューティング サービスのみ使用できます。Co
 はい。ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。さらに、VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
 
-- [App Service 環境で Web Apps を作成する](app-service-web-how-to-create-a-web-app-in-an-ase.md)
+- [App Service 環境で Web Apps を作成する](../articles/app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
 
 - [Web Apps Virtual Network 統合](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
 - [Web Apps と VNet Integration and Hybrid Connections の併用](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
-- [Web アプリを Azure Virtual Network に統合する](web-sites-integrate-with-vnet.md)
+- [Web アプリを Azure Virtual Network に統合する](../articles/app-service-web/web-sites-integrate-with-vnet.md)
 
 ### クラウド サービスを VNet 内の Web ロールと worker ロール (PaaS) でデプロイできますか。
 
@@ -266,4 +270,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

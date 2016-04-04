@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="Service Bus の料金と課金 |Microsoft Azure"
-   description="Service Bus の料金体系の概要です。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus の料金と課金 |Microsoft Azure"
+    description="Service Bus の料金体系の概要です。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="03/16/2016"
+    ms.author="sethm" />
 
 # Service Bus の料金と課金
 
 Service Bus は、Basic、Standard、[Premium](service-bus-premium-messaging.md) の各階層で提供されます。作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのキュー、トピック/サブスクリプション、リレー、Event Hubs にこの階層選択が適用されます。
 
->[AZURE.NOTE]Service Bus の現在の料金については、「[Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)」をご覧ください。
+>[AZURE.NOTE] Service Bus の現在の料金については、「[Azure Service Bus の料金のページ](https://azure.microsoft.com/pricing/details/service-bus/)」および「[Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)」をご覧ください。
 
 Service Bus では、キューとトピック/サブスクリプションに次の 2 つのメーターが使用されます。
 
@@ -77,7 +77,7 @@ Service Bus では、キューとトピック/サブスクリプションに次�
 |1 ～ 25 億操作/月|0\.50 ドル/100 万操作|
 |25 億超操作/月|0\.20 ドル/100 万操作|
 
->[AZURE.NOTE]Premium 階層は現在プレビュー期間中であり、次の料金には 50% のプレビュー割引が反映されています。
+>[AZURE.NOTE] Premium 階層は現在プレビュー期間中であり、次の料金には 50% のプレビュー割引が反映されています。
 
 |プレミアム|コスト|
 |---|---|
@@ -98,9 +98,9 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 |100,000 ～ 500,000/月|接続あたり 0.025 ドル/月|
 |500,000 超/月|接続あたり 0.015 ドル/月|
 
->[AZURE.NOTE]Standard メッセージング階層 (の基本料金には) 1,000 の仲介型接続が含まれ、関連付けられている Azure サブスクリプションのすべてのキュー、トピック/サブスクリプション、Event Hubs で共有できます。
+>[AZURE.NOTE] Standard メッセージング階層 (の基本料金には) 1,000 の仲介型接続が含まれ、関連付けられている Azure サブスクリプションのすべてのキュー、トピック/サブスクリプション、Event Hubs で共有できます。
 
->[AZURE.NOTE]課金はピーク時の同時接続数に基づき、744 時間/月として時間あたりに配分されます。
+>[AZURE.NOTE] 課金はピーク時の同時接続数に基づき、744 時間/月として時間あたりに配分されます。
 
 |Premium 階層
 |---|
@@ -145,8 +145,10 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 
 ## 次のステップ
 
-Service Bus の料金の詳細については、「[Service Bus 料金 FAQ](service-bus-pricing-faq.md)」を参照してください。
+- Service Bus の価格の詳細については、「[Azure Service Bus の料金のページ](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+
+- Service Bus の価格および課金に関してよく寄せられる質問については、「[Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)」を参照してください。
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/26/2016"
+   ms.date="03/23/2016"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性モニタリングの概要
@@ -66,7 +66,7 @@ Service Fabric のコンポーネントは、この正常性モデルを使用�
 ## 正常性状態
 Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用してエンティティが正常な状態であるかどうかどうかを記述します。正常性ストアに送信されるすべてのレポートには、これらの状態のいずれかを指定する必要があります。正常性の評価結果は、これらの状態のいずれかです。
 
-正常性状態の種類は、次のとおりです。
+考えられる[正常性状態](https://msdn.microsoft.com/library/azure/system.fabric.health.healthstate)は次のとおりです。
 
 - **OK**。エンティティは正常です。そのエンティティ、およびその子 (該当する場合) に関して報告されている既知の問題はありません。
 
@@ -84,45 +84,48 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 既定では、Service Fabric は親子階層関係に厳密なルール (すべて正常でなければならない) を適用します。子の 1 つに 1 つの異常なイベントがある限り、親は異常と見なされます。
 
 ### クラスターの正常性ポリシー
-クラスターの正常性ポリシーは、クラスターの正常性状態とノードの正常性状態を評価するために使用されます。このポリシーは、クラスター マニフェストで定義できます。存在しない場合は、既定のポリシー (許容エラー数: 0) が使用されます。クラスターの正常性ポリシーには以下のものが含まれます。
+[クラスターの正常性ポリシー](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.aspx)は、クラスターの正常性状態とノードの正常性状態を評価するために使用されます。このポリシーは、クラスター マニフェストで定義できます。存在しない場合は、既定のポリシー (許容エラー数: 0) が使用されます。クラスターの正常性ポリシーには以下のものが含まれます。
 
-- **ConsiderWarningAsError**。警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。既定値は false です。
+- [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.considerwarningaserror.aspx)。警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。既定値は false です。
 
-- **MaxPercentUnhealthyApplications**。異常な可能性のあるアプリケーションの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。
+- [MaxPercentUnhealthyApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications.aspx)。異常な可能性のあるアプリケーションの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。
 
-- **MaxPercentUnhealthyNodes**。異常な可能性のあるノードの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。
+- [MaxPercentUnhealthyNodes](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes.aspx)。異常な可能性のあるノードの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。
 
-クラスター マニフェストからの抜粋を次に示します。
+- [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx)。アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。既定では、すべてのアプリケーションはプールに入れられ、MaxPercentUnhealthyApplications を使用して評価されます。1 つ以上のアプリケーションの種類が特別で、異なる方法で処理する必要がある場合は、グローバル プールから除外し、マップのアプリケーションの種類の名前に関連付けられているパーセンテージに対して評価できます。たとえば、クラスターには、異なる種類の数千ものアプリケーションがあり、特別なアプリケーションの種類の制御アプリケーション インスタンスの数はわずかです。制御アプリケーションがエラー状態になることはありません。したがって、ユーザーはグローバルな MaxPercentUnhealthyApplications を 20% に指定していくつかのエラーを許容できますが、アプリケーションの種類が "ControlApplicationType" の場合は、MaxPercentUnhealthyApplications を 0 に設定します。このようにすると、多くのアプリケーションのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。警告の正常性状態はクラスターのアップグレードや、エラーの正常性状態によりトリガーされる他の監視には影響しません。ただし、制御アプリケーションが 1 つでもエラー状態であれば、クラスターの正常性状態はエラーになり、クラスターがロールバックされるか、アップグレードできなくなる可能性があります。マップで定義されているアプリケーションの種類の場合は、すべてのアプリケーション インスタンスがアプリケーションのグローバル プールから除外されます。これらは、マップの特定の MaxPercentUnhealthyApplications を使用して、該当するアプリケーションの種類のアプリケーションの総数に基づいて評価されます。残りのアプリケーションはすべてグローバル プールで保持され、MaxPercentUnhealthyApplications を使用して評価されます。
+
+クラスター マニフェストからの抜粋を次に示します。アプリケーションの種類マップでエントリを定義するには、パラメーター名の先頭に "ApplicationTypeMaxPercentUnhealthyApplications-" というプレフィックスを付け、パラメーター名の後にアプリケーションの種類名を続けます。
 
 ```xml
 <FabricSettings>
   <Section Name="HealthManager/ClusterHealthPolicy">
     <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="0" />
+    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
     <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
   </Section>
 </FabricSettings>
 ```
 
 ### アプリケーションの正常性ポリシー
-アプリケーションの正常性ポリシーは、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml** ファイルで定義できます。ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。構成可能なポリシーは、次のとおりです。
+[アプリケーションの正常性ポリシー](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.aspx)は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml** ファイルで定義できます。ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。構成可能なポリシーは、次のとおりです。
 
-- **ConsiderWarningAsError**。警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。既定値は false です。
+- [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。既定値は false です。
 
-- **MaxPercentUnhealthyDeployedApplications**。異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。これは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。既定のパーセンテージは 0 です。
+- [MaxPercentUnhealthyDeployedApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications.aspx)。異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。これは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。既定のパーセンテージは 0 です。
 
-- **DefaultServiceTypeHealthPolicy**。アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
+- [DefaultServiceTypeHealthPolicy](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy.aspx)。アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
 
-- **ServiceTypeHealthPolicyMap**。サービスの種類ごとのサービス正常性ポリシーのマップを指定します。指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーに置き換えます。たとえば、ステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類の両方を含むアプリケーションでは、ステートレス サービスとステートフル サービスの正常性ポリシーを別個に構成できます。サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。
+- [ServiceTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap.aspx)。サービスの種類ごとのサービス正常性ポリシーのマップを指定します。指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーに置き換えます。たとえば、ステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類の両方を含むアプリケーションでは、ステートレス サービスとステートフル サービスの正常性ポリシーを別個に構成できます。サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。
 
 ### サービスの種類の正常性ポリシー
-サービスの種類の正常性ポリシーは、サービスの子を評価および集計する方法を指定します。このポリシーには以下のものが含まれます。
+[サービスの種類の正常性ポリシー](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.aspx)は、サービスとサービスの子を評価および集計する方法を指定します。このポリシーには以下のものが含まれます。
 
-- **MaxPercentUnhealthyPartitionsPerService**。異常なパーティションの最大許容パーセンテージを指定します。この値を超えるとサービスは異常と見なされます。既定のパーセンテージは 0 です。
+- [MaxPercentUnhealthyPartitionsPerService](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice.aspx)。異常なパーティションの最大許容パーセンテージを指定します。この値を超えるとサービスは異常と見なされます。既定のパーセンテージは 0 です。
 
-- **MaxPercentUnhealthyReplicasPerPartition**。異常なレプリカの最大許容パーセンテージを指定します。この値を超えるとパーティションは異常と見なされます。既定のパーセンテージは 0 です。
+- [MaxPercentUnhealthyReplicasPerPartition](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition.aspx)。異常なレプリカの最大許容パーセンテージを指定します。この値を超えるとパーティションは異常と見なされます。既定のパーセンテージは 0 です。
 
-- **MaxPercentUnhealthyServices**。異常なサービスの最大許容パーセンテージを指定します。この値を超えるとアプリケーションは異常と見なされます。既定のパーセンテージは 0 です。
+- [MaxPercentUnhealthyServices](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices.aspx)。異常なサービスの最大許容パーセンテージを指定します。この値を超えるとアプリケーションは異常と見なされます。既定のパーセンテージは 0 です。
 
 アプリケーション マニフェストからの抜粋を次に示します。
 
@@ -156,7 +159,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 
 ![エラーのレポートがある正常性レポートの集計。][2]
 
-エラーの正常性レポートは、正常性のエンティティをエラー状態にするトリガーとなります。
+エラーの正常性レポートや期限切れの正常性レポートは (その正常性状態に関係なく)、正常性エンティティをエラー状態にします。
 
 [2]: ./media/service-fabric-health-introduction/servicefabric-health-report-eval-error.png
 
@@ -188,12 +191,12 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 - エラーの状態の子が、異常な子の最大許容パーセンテージ内である場合は、集計正常性状態は警告です。
 
 ## 正常性の報告
-システム コンポーネントおよび内部/外部のウォッチドッグは、Service Fabric エンティティに対してレポートすることができます。レポーターは、監視対象エンティティの正常性を、監視条件に基づいて*ローカルに*判定します。これらは、グローバル状態や集計データを確認する必要がありません。これは望ましいことではありません。レポーターが複雑な構造体になり、送信すべき情報を推定するために多くのことを確認しなければならなくなるためです。
+システム コンポーネント、Service Fabric アプリケーションおよび内部/外部のウォッチドッグは、Service Fabric エンティティに対してレポートすることができます。レポーターは、監視対象エンティティの正常性を、監視条件に基づいて*ローカルに*判定します。これらは、グローバル状態や集計データを確認する必要がありません。これは望ましいことではありません。レポーターが複雑な構造体になり、送信すべき情報を推定するために多くのことを確認しなければならなくなるためです。
 
-正常性データを正常性ストアに送信するには、レポーターは影響を受けるエンティティを特定し、正常性レポートを作成する必要があります。その後、レポートは Powershell または REST を介して **FabricClient.HealthManager.ReportHealth** を使用して、API で送信することができます。
+正常性データを正常性ストアに送信するには、レポーターは影響を受けるエンティティを特定し、正常性レポートを作成する必要があります。その後、レポートは PowerShell または REST を介して [FabricClient.HealthClient.ReportHealth](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient_members.aspx) を使用して、API で送信することができます。
 
 ### 正常性レポート
-クラスターの各エンティティに関する正常性レポートには、次の情報が含まれています。
+クラスターの各エンティティに関する[正常性レポート](https://msdn.microsoft.com/library/azure/system.fabric.health.healthreport.aspx)には、次の情報が含まれています。
 
 - **SourceId**。正常性イベントのレポーターを一意に識別する文字列。
 
@@ -230,7 +233,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 すべての正常性レポートに、SourceId、エンティティ識別子、プロパティおよび 　HealthState という 4 つの情報が必要です。SourceId 文字列では、先頭に "**System.**" というプレフィックスを使用することはできません。これはシステム レポート用に予約されています。同じエンティティの場合、同じソースとプロパティに対するレポートは 1 つだけ存在します。複数のレポートが同じソースとプロパティに対して生成された場合、正常性クライアント側 (バッチ処理される場合) か正常性ストア側で互いにオーバーライドします。置換はシーケンス番号に基づいて行われます。新しいレポート (シーケンス番号が大きい方) が古いレポートを置換します。
 
 ### 正常性イベント
-内部的には、正常性ストアは正常性イベントを保持しており、これにはレポートからのすべての情報に加え、追加のメタデータも含まれます。これには、レポートが正常性クライアントに送信された時刻やレポートがサーバー側で変更された時刻が含まれます。正常性イベントは、[正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)によって返されます。
+内部的には、正常性ストアは[正常性イベント](https://msdn.microsoft.com/library/azure/system.fabric.health.healthevent.aspx)を保持しており、これにはレポートからのすべての情報に加え、追加のメタデータも含まれます。これには、レポートが正常性クライアントに送信された時刻やレポートがサーバー側で変更された時刻が含まれます。正常性イベントは、[正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)によって返されます。
 
 追加のメタデータは、次のとおりです。
 
@@ -251,71 +254,71 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 - プロパティが警告とエラーの状態を行き来している場合、異常とする (つまり、OK ではない) 時間を決定します。たとえば、プロパティが正常ではない状態で 5 分経過するとアラートを出す場合は、(HealthState != Ok and Now - LastOkTransitionTime > 5 minutes) のように記述できます。
 
 ## 例: アプリケーションの正常性をレポートおよび評価する
-次の例では、Powershell を使用して、**fabric:/WordCount** というアプリケーションの正常性レポートを **MyWatchdog** というソースから送信します。正常性レポートには、エラーの正常性状態の正常性プロパティ Availability に関する情報が、無限に設定された TimeToLive と共に含まれています。次に、アプリケーションの正常性がクエリされ、集計された正常性状態のエラーおよびレポートされた正常性イベントが正常性イベントの一覧で返されます。
+次の例では、PowerShell を使用して、**fabric:/WordCount** というアプリケーションの正常性レポートを **MyWatchdog** というソースから送信します。正常性レポートには、エラーの正常性状態の正常性プロパティ "availability" に関する情報が、無限に設定された TimeToLive と共に含まれています。次に、アプリケーションの正常性がクエリされ、集計された正常性状態のエラーおよびレポートされた正常性イベントが正常性イベントの一覧で返されます。
 
 ```powershell
 PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
 
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
+
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Error
-UnhealthyEvaluations            :
+UnhealthyEvaluations            : 
                                   Error event: SourceId='MyWatchdog', Property='Availability'.
-
-ServiceHealthStates             :
-                                  ServiceName           : fabric:/WordCount/WordCount.Service
-                                  AggregatedHealthState : Warning
-
-                                  ServiceName           : fabric:/WordCount/WordCount.WebService
+                                  
+ServiceHealthStates             : 
+                                  ServiceName           : fabric:/WordCount/WordCountService
+                                  AggregatedHealthState : Error
+                                  
+                                  ServiceName           : fabric:/WordCount/WordCountWebService
                                   AggregatedHealthState : Ok
-
-DeployedApplicationHealthStates :
+                                  
+DeployedApplicationHealthStates : 
                                   ApplicationName       : fabric:/WordCount
-                                  NodeName              : Node.4
+                                  NodeName              : _Node_0
                                   AggregatedHealthState : Ok
-
+                                  
                                   ApplicationName       : fabric:/WordCount
-                                  NodeName              : Node.1
+                                  NodeName              : _Node_2
                                   AggregatedHealthState : Ok
-
+                                  
                                   ApplicationName       : fabric:/WordCount
-                                  NodeName              : Node.5
+                                  NodeName              : _Node_3
                                   AggregatedHealthState : Ok
-
+                                  
                                   ApplicationName       : fabric:/WordCount
-                                  NodeName              : Node.2
+                                  NodeName              : _Node_4
                                   AggregatedHealthState : Ok
-
+                                  
                                   ApplicationName       : fabric:/WordCount
-                                  NodeName              : Node.3
+                                  NodeName              : _Node_1
                                   AggregatedHealthState : Ok
-
-HealthEvents                    :
+                                  
+HealthEvents                    : 
                                   SourceId              : System.CM
                                   Property              : State
                                   HealthState           : Ok
-                                  SequenceNumber        : 5102
-                                  SentAt                : 4/15/2015 5:29:15 PM
-                                  ReceivedAt            : 4/15/2015 5:29:15 PM
+                                  SequenceNumber        : 360
+                                  SentAt                : 3/22/2016 7:56:53 PM
+                                  ReceivedAt            : 3/22/2016 7:56:53 PM
                                   TTL                   : Infinite
                                   Description           : Application has been created.
                                   RemoveWhenExpired     : False
                                   IsExpired             : False
-                                  Transitions           : ->Ok = 4/15/2015 5:29:15 PM
-
+                                  Transitions           : Error->Ok = 3/22/2016 7:56:53 PM, LastWarning = 1/1/0001 12:00:00 AM
+                                  
                                   SourceId              : MyWatchdog
                                   Property              : Availability
                                   HealthState           : Error
-                                  SequenceNumber        : 130736794527105907
-                                  SentAt                : 4/16/2015 5:37:32 PM
-                                  ReceivedAt            : 4/16/2015 5:37:32 PM
+                                  SequenceNumber        : 131032204762818013
+                                  SentAt                : 3/23/2016 3:27:56 PM
+                                  ReceivedAt            : 3/23/2016 3:27:56 PM
                                   TTL                   : Infinite
-                                  Description           :
+                                  Description           : 
                                   RemoveWhenExpired     : False
                                   IsExpired             : False
-                                  Transitions           : ->Error = 4/16/2015 5:37:32 PM
-
+                                  Transitions           : Ok->Error = 3/23/2016 3:27:56 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ## 正常性モデルの使用法
@@ -334,4 +337,4 @@ HealthEvents                    :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

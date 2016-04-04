@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="03/21/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -54,15 +54,13 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 
     ![Facebook - OAuth リダイレクト URI](./media/active-directory-b2c-setup-fb-app/fb-oauth-redirect-uri.png)
 
-10. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、アプリケーションをパブリックに利用できるようにする必要があります。そのためには、左側のナビゲーションで **[Status & Review]** をクリックし、レビューのためにアプリケーションを申請します(**[Start a Submission]** をクリックします)。 アプリケーションが Facebook によって承認されたら、ページの上部にあるスイッチを **[YES]** に切り替え、**[Confirm]** をクリックすることでアプリケーションを公開できます。
-
-    ![Facebook - アプリの申請](./media/active-directory-b2c-setup-fb-app/fb-app-submission.png)
+10. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、アプリケーションをパブリックに利用できるようにする必要があります。そのためには、左側のナビゲーションで **[App Review]** をクリックし、ページの先頭にあるスイッチを **[YES]** にして、**[Confirm]** をクリックします。
 
     ![Facebook - アプリの公開](./media/active-directory-b2c-setup-fb-app/fb-app-public.png)
 
 ## テナントで ID プロバイダーとして Facebook を構成する
 
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
+1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
 2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「FB」などと入力します。
@@ -70,4 +68,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Faceboo
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Facebook アプリケーションのアプリ ID とアプリ シークレットを **[クライアント ID]** および **[クライアント シークレット]** フィールドに入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Facebook の構成を保存します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

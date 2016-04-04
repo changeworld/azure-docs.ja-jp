@@ -81,12 +81,14 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) では、IoT ソリューションにさまざまな種類のデバイス (言語およびオペレーティング システム) を接続するためのライブラリが提供されます。
 
-## 次のステップ
+## フィードバック
 
-このドキュメントでの説明をご希望のカスタマイズがある場合は、 [User Voice](https://feedback.azure.com/forums/321918-azure-iot) に機能の提案を投稿するか、この記事の下部でコメントしてください。iotsolhelp@microsoft.com までメールをお送りいただくこともできます。
+このドキュメントでの説明をご希望のカスタマイズがある場合は、 [User Voice](https://feedback.azure.com/forums/321918-azure-iot) に機能の提案を投稿するか、この記事の下部でコメントしてください。
+
+## 次のステップ
 
 IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](https://azure.microsoft.com/develop/iot/)でリンクとドキュメントを検索してください。
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

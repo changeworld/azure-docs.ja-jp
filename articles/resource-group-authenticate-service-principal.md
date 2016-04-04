@@ -120,7 +120,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 
         PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName examplevault -Name appPassword
         
-2. Active Directory アプリケーションを取得します。アプリケーション ID はログイン時に入力します。
+2. Active Directory アプリケーションを取得します。ログイン時にアプリケーション ID が必要です。
 
         PS C:\> $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://www.contoso.org/example"
 
@@ -231,7 +231,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 <a id="provide-certificate-through-automated-powershell-script" />
 ### 自動化された PowerShell スクリプトから証明書を渡す
 
-1. Active Directory アプリケーションを取得します。アプリケーション ID はログイン時に入力します。
+1. Active Directory アプリケーションを取得します。ログイン時にアプリケーション ID が必要です。
 
         PS C:\> $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://www.contoso.org/example"
         
@@ -517,4 +517,4 @@ Active Directory アプリケーションとそのアプリケーション用の
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

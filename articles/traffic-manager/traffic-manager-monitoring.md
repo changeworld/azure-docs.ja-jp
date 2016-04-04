@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # Traffic Manager の監視について
@@ -75,7 +75,7 @@ Azure Traffic Manager は、Azure クラシック ポータルで、プロファ
 1. **GET** – 監視設定で指定したパスとファイルで、Traffic Manager の監視システムにより GET が実行されます。
 2. **200 OK** – 監視システムは、10 秒以内に、HTTP 200 OK メッセージの応答を予期します。この応答を受信すると、クラウド サービスが使用可能であると想定されます。 
 
->[AZURE.NOTE]応答メッセージが 200 OK の場合にのみ、Traffic Manager は、エンドポイントがオンラインであると見なします。200 以外の応答を受信すると、Traffic Manager は、エンドポイントが使用できないと想定し、このチェックを失敗としてカウントします。失敗したチェックのトラブルシューティングについての詳細は [ Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を参照してください。
+>[AZURE.NOTE] 応答メッセージが 200 OK の場合にのみ、Traffic Manager は、エンドポイントがオンラインであると見なします。200 以外の応答を受信すると、Traffic Manager は、エンドポイントが使用できないと想定し、このチェックを失敗としてカウントします。失敗したチェックのトラブルシューティングについての詳細は [ Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を参照してください。
 
 3. **30 秒間隔のチェック** – このチェックは 30 秒ごとに実行されます。
 4. **クラウド サービスが使用不可** – クラウド サービスが、使用できなくなりました。Traffic Manager は、次のモニター チェックまで可用性を認識しません。
@@ -115,4 +115,4 @@ Azure Traffic Manager は、Azure クラシック ポータルで、プロファ
 [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="02/24/2016"
+  ms.date="03/18/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -89,6 +89,12 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 **コミュニティへの投稿:**
 
+* [**Going Social with DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) - *作成者: Matias Quarantaas*
+
+* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) - *作成者: Eric Langland*
+
+* [**Notifications for new or changed DocumentDB resources using Logic Apps**](documentdb-change-notification.md) - *作成者: Howard Edidin*
+
 * [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *作成者: Yoichi Kawasaki*
 
 * [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *作成者: Peter Mannerhult*
@@ -140,9 +146,10 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 ### 直近および今後のイベント
 
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
-| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | ------- |
-| [Meetup: CloudTalk](http://www.meetup.com/CloudTalk/events/227963695/) | Andrew Liu | ワシントン州ベルビュー | 2016 年 3 月 3 日 | 該当なし
-| SQLBits XV | 未定 | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
+| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
+| [Build 2016](https://build.microsoft.com/) | John Macintyre、Dharma Shukla | カリフォルニア州サンフランシスコ | 2016 年 3 月 30 日～ 4 月 1 日 | [#MicrosoftBuild](https://twitter.com/hashtag/MicrosoftBuild)
+| [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
+| [Meetup: UK Azure User Group](http://www.meetup.com/UKAzureUserGroup/events/229673468/) | Andrew Liu | ロンドン (英国) | 2016 年 5 月 12 日 | 該当なし |
 
 *イベントで講演を行ったり、イベントを主催していますか。 お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
 
@@ -150,6 +157,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | 記録 |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [Meetup: CloudTalk](http://www.meetup.com/CloudTalk/events/227963695/) | Kirat Pandya | ワシントン州ベルビュー | 2016 年 3 月 3 日 | 該当なし |
 | [Meetup: Azure Austin](http://www.meetup.com/azureaustin/events/228209275/) | Merwan Chinta | テキサス州オースティン | 2016 年 1 月 28 日 | 該当なし |
 | [Meetup: msdevmtl](http://www.meetup.com/msdevmtl/events/223839818/) | Vincent-Philippe Lauzon | モントリオール、QC (カナダ) | 2015 年 12 月 1 日 | 該当なし |
 | [会合: SeattleJS](http://www.meetup.com/seattlejs/events/220102664/) | David Makogon | ワシントン州シアトル | 2015 年 11 月 12 日 | 該当なし |
@@ -181,8 +189,10 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 ### ビデオとポッドキャスト
 
 | 表示 | 講演者 | 日付 | エピソード |
-| ------------------------------------------- | ----------------------- | ------------------ | ------- |
+| ------------------------------------------- | --------------------------- | ------------------ | ------- |
+| Wired2WinWebinar | Sai Sankar Kunnathukuzhiyil | 2016 年 3 月 9 日 | [Azure DocumentDB を使用したソリューションの開発](https://www.youtube.com/watch?v=xKttEwXv_bs)
 | Integration User Group | Han Wong | 2016 年 2 月 17 日 | [Analyze and visualize non-relational data with DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/) |
+| The Azure Podcast | Cale Teeter | 2016 年 1 月 14 日 | [110 のエピソード: DocumentDB と Search の使用](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search) |
 | Channel 9: Modern Applications | Tara Shankar Jana | 2016 年 12 月 13 日 | [Take a modern approach to data in your apps](https://channel9.msdn.com/Series/Modern-Applications/Take-a-modern-approach-to-data-in-your-apps) |
 | NinjaTips | Miguel Quintero | 2015 年 12 月 10 日 | [DocumentDB - Un vistazo general](https://channel9.msdn.com/Series/Ninja-Tips/31-NinjaTips-Desarrollo-DocumentDB-1-Vistazo-general) |
 | Integration User Group | Howard Edidin | 2015 年 11 月 9 日 | [医療の統合のための Azure DocumentDB - パート 2](http://www.integrationusergroup.com/azure-documentdb-for-healthcare-integration-part-2/) |
@@ -284,4 +294,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

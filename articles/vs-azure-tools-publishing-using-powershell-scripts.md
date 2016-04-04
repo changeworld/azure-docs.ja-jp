@@ -37,7 +37,7 @@ Azure 開発のために、Visual Studio で PowerShell を使用するための
 
 ## 発行スクリプトの生成
 
-[こちらの手順](/virtual-machines/virtual-machines-dotnet-create-visual-studio-powershell.md)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。[Azure App Service の Web アプリの発行スクリプトを生成](/app-service-web/web-sites-dotnet-get-started.md)することもできます。
+[こちらの手順](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。[Azure App Service の Web アプリの発行スクリプトを生成](/app-service-web/web-sites-dotnet-get-started.md)することもできます。
 
 ## Visual Studio によって生成されるスクリプト
 
@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

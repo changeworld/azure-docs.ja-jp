@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 #Azure CLI でユーザー定義のルート (UDR) を作成する
@@ -52,7 +52,10 @@
 		data:    Provisioning state              : Succeeded
 		info:    network route-table create command OK
 
-	パラメーター: -**-g (または --resource-group)**。NSG の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
+	パラメーター:
+	- **-g (または --resource-group)**。NSG の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。
+	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
+	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
 
 4. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`azure network route-table route create`** コマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 
@@ -73,7 +76,11 @@
 		data:    Address prefix                  : 192.168.2.0/24
 		info:    network route-table route create command OK
 
-	パラメーター:- **-r (または --route-table-name)**。ルートが追加されるルート テーブルの名前です。ここでは、*UDR FrontEnd* です。- **-a (または --address-prefix)**。パケットの送信先であるサブネットのアドレス プレフィックスです。ここでは、*192.168.2.0/24* です。- **-y (または --next-hop-type)**。トラフィックの送信先となるオブジェクトの種類です。指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。- **-p (または --next-hop-ip-address**)。次のホップ先の IP アドレスです。ここでは、*192.168.0.4* です。
+	パラメーター:
+	- **-r (または --route-table-name)**。ルートが追加されるルート テーブルの名前です。ここでは、*UDR-FrontEnd* です。
+	- **-a (または --address-prefix)**。パケットの送信先であるサブネットのアドレス プレフィックスです。ここでは、*192.168.2.0/24* です。
+	- **-y (または --next-hop-type)**。トラフィックの送信先となるオブジェクトの種類です。指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
+	- **-p (または --next-hop-ip-address**)。次のホップ先の IP アドレスです。ここでは、*192.168.0.4* です。
 
 5. **`azure network vnet subnet set`** コマンドを実行して、上記で作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
 
@@ -103,7 +110,8 @@
 		data:    
 		info:    network vnet subnet set command OK
 
-	パラメーター: - **-e (または --vnet-name)**。サブネットが置かれている VNet の名前です。ここでは、*TestVNet* です。
+	パラメーター:
+	- **-e (または --vnet-name)**。サブネットが置かれている VNet の名前です。ここでは、*TestVNet* です。
  
 ## バックエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
@@ -191,4 +199,4 @@
 
 	- **-f (または --enable-ip-forwarding)**。*true* または *false*。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -447,7 +447,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 	![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
     
-Web アプリケーションの作成中はストリーミング コンソール アプリケーションを実行したままにし、さらに多くのデータを使用できるようにしてください。テーブルに挿入されたデータを確認するために、HBase シェルを使用することができます。「[HDInsight でのHBase の使用](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data)」をご覧ください。
+Web アプリケーションの作成中はストリーミング コンソール アプリケーションを実行したままにし、さらに多くのデータを使用できるようにしてください。テーブルに挿入されたデータを確認するために、HBase シェルを使用することができます。[HDInsight でのHBase の使用](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data)に関するページをご覧ください。
 
 
 ## リアルタイムのセンチメントを視覚化する
@@ -600,9 +600,9 @@ Web アプリケーションの作成中はストリーミング コンソール
 	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
-    - **HBASETABLENAME** = "tweets\_by\_words";
+    - **HBASETABLENAME** = "tweets_by_words";
 
-	HBase テーブル名は「**tweets\_by\_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「**tweets_by_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
@@ -1205,7 +1205,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 		using System.Web.Http;
 
-2. 以下の行を **Application\_Start()** 関数内に追加します。
+2. 以下の行を **Application_Start()** 関数内に追加します。
 
 		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -1233,7 +1233,6 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 - [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md) 
 - [HDInsight での Hadoop を使用した Twitter データの分析][hdinsight-analyze-twitter-data]
 - [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]
-- [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
@@ -1249,7 +1248,6 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 
 
 
-[hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 [hdinsight-analyze-twitter-data]: hdinsight-analyze-twitter-data.md
 [hdinsight-hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
@@ -1279,4 +1277,4 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

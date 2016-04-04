@@ -1,41 +1,41 @@
 
 
-Just like any other computer, virtual machines in Azure use disks as a place to store an operating system, applications, and data. All Azure virtual machines have at least two disks – an operating system disk and a temporary disk. The operating system disk is created from an image, and both the operating system disk and the image are actually virtual hard disks (VHDs) stored in an Azure storage account. Virtual machines also can have one or more data disks, that are also stored as VHDs.
+Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。Azure のすべての仮想マシンには、オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
 
-## Operating system disk
+## オペレーティング システム ディスク
 
-Every virtual machine has one attached operating system disk. It’s registered as a SATA drive and labeled as the C: drive. This disk has a maximum capacity of 1023 gigabytes (GB). When Azure creates an operating system disk, three copies of the disk are created for high durability. Additionally, if you configure the virtual machine for geo-replication, your VHD is also replicated to different sites more than 400 miles apart.
+どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。このディスクの最大容量は 1023 ギガバイトです。Azure がオペレーティング システム ディスクを作成する際に、高い耐久性を保つためにディスクのコピーを 3 つ作成します。さらに、geo レプリケーション用に仮想マシンを構成する場合、400 マイル以上離れた別のサイトにも VHD を複製します。
 
-##Temporary disk
+##一時ディスク
 
-The temporary disk is automatically created for you. On Windows virtual machines, this disk is labeled as the D: drive and it used for storing pagefile.sys. On Linux virtual machines, the disk is typically /dev/sdb and is formatted and mounted to /mnt/resource by the Azure Linux Agent.
+一時ディスクが自動的に作成されます。Windows 仮想マシンでは、このディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。Linux 仮想マシンでは、ディスクは通常 /dev/sdb であり、Azure Linux エージェントにより書式設定され /mnt/resource にマウントされます。
 
->[AZURE.WARNING] Don’t store data on the temporary disk. It provides temporary storage for applications and processes and is intended to only store data such as page or swap files. To remap this disk for a Windows virtual machine, see [Change the drive letter of the Windows temporary disk](virtual-machines-windows-classic-change-drive-letter.md).
+>[AZURE.WARNING] 一時的なディスクにデータを格納しないでください。これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。Windows 仮想マシンにこのディスクを再マッピングするには、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」をご覧ください。
 
-For more information on how Azure uses the temporary disk, see [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Azure による一時ディスクの使用方法については、[Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)に関するブログを参照してください。
 
-## Data disk
+## データ ディスク
 
-A data disk is a VHD that’s attached to a virtual machine to store application data, or other data you need to keep. Data disks are registered as SCSI drives and are labeled with a letter that you choose.  Each data disk has a maximum capacity of 1023 GB. The size of the virtual machine determines how many data disks you can attach to it and the type of storage you can use to host the disks.
+データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。各ディスクの最大容量は 1023 ギガバイトです。仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
->[AZURE.NOTE] For more details about virtual machines capacities, see [Sizes for virtual machines](virtual-machines-linux-sizes.md).
+>[AZURE.NOTE] 仮想マシンの容量の詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」をご覧ください。
 
-Azure creates an operating system disk when you create a virtual machine from an image. If you use an image that includes data disks, Azure also creates the data disks when it creates the virtual machine. (You can use an image from Azure or a partner, or one you provide.) Otherwise, you add data disks after you create the virtual machine.
+ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。(Azure、パートナー、またはユーザーが提供するイメージを使用することができます。) それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
 
-You can add data disks to a virtual machine at any time, by ‘attaching’ the disk to the virtual machine. You can use a VHD that you’ve uploaded or copied to your storage account, or one that Azure creates for you. Attaching a data disk associates the VHD file from your storage account with the virtual machine, by placing a ‘lease’ on the VHD so it can’t be deleted from storage while it’s attached to a virtual machine.
+仮想マシンにディスクを「取り付ける」ことで、ユーザーは仮想マシンにデータ ディスクをいつでも追加できます。ユーザーがアップロードした VHD やストレージ アカウントにコピーした VHD を使用できます。または Azure が作成する VHD も使用できます。データ ディスクを取り付けると、ストレージ アカウントからの VHD ファイルが仮想マシンに関連付けられます。VHD で「リース」を設定しておけば、仮想マシンに取り付けている間にストレージから削除することはできなくなります。
 
-## About VHDs
+## VHD について
 
-The VHDs used in Azure are .vhd files stored as page blobs in a standard or premium storage account in Azure. (Premium storage is available in certain regions.) For details about page blobs, see [Understanding block blobs and page blobs](https://msdn.microsoft.com/library/ee691964.aspx). For details about premium storage, see [Premium storage: High-performance storage for Azure virtual machine workloads](../storage/storage-premium-storage.md).
+Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。(Premium Storage は特定の地域で使用できます。) ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/ee691964.aspx)」をご覧ください。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」をご覧ください。
 
-Azure supports VHD format, fixed disks. The fixed format lays the logical disk out linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. Often, the fixed format wastes space because most disks have large unused ranges in them. However, Azure stores .vhd files in a sparse format, so you receive the benefits of both the fixed and dynamic disks at the same time. For more details, see [Getting started with virtual hard disks](https://technet.microsoft.com/library/dd979539.aspx).
+Azure は VHD フォーマットの固定ディスクをサポートしています。固定フォーマットの場合、ファイル内で論理ディスクがリニアにレイアウトされるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。固定フォーマットの場合、ほとんどのディスクに大きな未使用の範囲が含まれるため、容量が無駄になることがよくあります。しかし、Azure では .vhd ファイルをスパース フォーマットで格納するため、固定ディスクのメリットと動的ディスクのメリットを同時に享受できます。詳細については、「[仮想ハード ディスクの概要](https://technet.microsoft.com/library/dd979539.aspx)」をご覧ください。
 
-All .vhd files in Azure that you want to use as a source to create disks or images are read-only. When you create a disk or image, Azure makes copies of the .vhd files. These copies can be read-only or read-and-write, depending on how you use the VHD.
+ディスクやイメージを作成する際にソースとして使用する場合、Azure でのすべての .vhd ファイルは読み出し専用です。ユーザーがディスクやイメージを作成するときに Azure は .vhd ファイルのコピーを作成します。これらのコピーは、ユーザーが VHD をどのように使用するかに応じて、読み出し専用または読み書き可能にすることができます。
 
-When you create a virtual machine from an image, Azure creates a disk for the virtual machine that is a copy of the source .vhd file. To protect against accidental deletion, Azure places a lease on any source .vhd file that’s used to create an image, an operating system disk, or a data disk.
+ユーザーがイメージから仮想マシンを作成するときに、Azure はソースの .vhd ファイルのコピーである仮想マシンのディスクを作成します。Azure では、誤って削除されるのを防ぐために、イメージ、オペレーティング システム ディスク、またはデータ ディスクを作成する際に使用されるソースの .vhd ファイルにリースを設定します。
 
-Before you can delete a source .vhd file, you’ll need to remove the lease by deleting the disk or image. To delete a .vhd file that is being used by a virtual machine as an operating system disk, you can delete the virtual machine, the operating system disk, and the source .vhd file all at once by deleting the virtual machine and deleting all associated disks. However, deleting a .vhd file that’s a source for a data disk requires several steps in a set order -- detach the disk from the virtual machine, delete the disk, and then delete the .vhd file.
+ディスクやイメージを削除してリースを解除しなければ、ソースの .vhd ファイルを削除できません。仮想マシンがオペレーティング システム ディスクとして使用中の .vhd ファイルを削除する場合、仮想マシンを削除し、関連付けられたすべてのディスクを削除することで、ユーザーは仮想マシン、オペレーティング システム ディスク、およびソースの .vhd ファイルをすべて一度に削除することができます。ただし、データ ディスクのソースである .vhd ファイルを削除するには、いくつかの手順を決められた順序で行う必要があります。つまり、仮想マシンからディスクを取り外し、ディスクを削除し、続いて .vhd ファイルを削除します。
 
->[AZURE.WARNING] If you delete a source .vhd file from storage, or delete your storage account, Microsoft can't recover that data for you.
+>[AZURE.WARNING] ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 
-
+<!---HONumber=AcomDC_0323_2016-->

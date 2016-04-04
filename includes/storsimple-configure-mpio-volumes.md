@@ -1,14 +1,16 @@
-#### To configure MPIO for StorSimple volumes
+#### StorSimple ボリュームの MPIO を構成する
 
-1. Open the **MPIO configuration**. Click **Server Manager > Dashboard > Tools > MPIO**.
+1. **[MPIO の構成]** を開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[MPIO]** の順にクリックします。
 
-2. In the **MPIO Properties** dialog box, select the **Discover Multi-Paths** tab.
+2. **[MPIO のプロパティ]** ダイアログ ボックスで、**[マルチパスの検出]** タブを選択します。
 
-3. Select **Add support for iSCSI devices**, and then click **Add**.  
+3. **[iSCSI デバイスのサポートを追加する]** を選択し、**[追加]** をクリックします。
 
-	![MPIO Properties Discover Multi Paths](./media/storsimple-configure-mpio-volumes/IC741003.png)
+	![MPIO プロパティ、マルチパスの検出](./media/storsimple-configure-mpio-volumes/IC741003.png)
 
-4. Reboot the server when prompted.
-5. In the **MPIO Properties** dialog box, click the **MPIO Devices** tab. Click **Add**.
+4. メッセージが表示されたら、サーバーを再起動します。
+5. **[MPIO のプロパティ]** ダイアログ ボックスで、**[MPIO デバイス]** タブをクリックします。**[追加]** をクリックします。
 
-	![MPIO Properties MPIO Devices](./media/storsimple-configure-mpio-volumes/IC741004.png)
+	![MPIO プロパティ、MPIO デバイス](./media/storsimple-configure-mpio-volumes/IC741004.png)
+
+<!---HONumber=AcomDC_0323_2016-->

@@ -36,7 +36,7 @@
 
 ## 仮想マシン用にリモート デバッグを有効にする
 
-1. Azure 仮想マシンを作成します。「[Windows Server を実行する仮想マシンの作成](/virtual-machines/virtual-machines-windows-tutorial.md)」または「[Visual Studio での Azure Virtual Machines の作成と管理](/vs-azure-tools-virtual-machines-create-manage.md)」を参照してください。
+1. Azure 仮想マシンを作成します。「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」または「[Visual Studio での Azure Virtual Machines の作成と管理](../virtual-machines/virtual-machines-windows-classic-manage-visual-studio.md)」を参照してください。
 2. [Azure クラシック ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシンのダッシュボードを表示し、仮想マシンの **RDP 証明書の拇印**を確認します。この値は、拡張機能構成の `ServerThumbprint` の値に使用されます。
 3. 「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書の拇印を保持)。
 4. 「[Azure PowerShell のインストールおよび構成方法](/powershell-install-configure.md)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
@@ -91,4 +91,4 @@
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!----HONumber=AcomDC_0204_2016--->
+<!---HONumber=AcomDC_0323_2016-->

@@ -17,7 +17,7 @@
    ms.date="02/04/2016"
    ms.author="telmos" />
 
-# プレビュー ポータルを使用して NSG を管理する方法
+# Azure ポータルを使用して NSG を管理する方法
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
@@ -27,33 +27,80 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-## [デプロイ] をクリックして ARM テンプレートをデプロイする
+以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行するには、まず[このテンプレート](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)をデプロイしてテスト環境を構築してから **[Azure にデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えてから、ポータルの指示に従います。次の手順では、テンプレートのデプロイ先のリソース グループの名前として **RG NSG** を使用します。
 
-この時点では、プレビューから、NSG を作成できません。ただし、既存の NSG は管理します。NSG を管理するためには、パブリック リポジトリで使用可能なサンプル テンプレートを使用して、上記のシナリオで説明したリソースを作成します。[このテンプレート](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)をデプロイして、**[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+## NSG-FrontEnd NSG を作成する
 
-## 既存の NSG に規則を作成する
-
-プレビュー ポータルから既存の NSG に規則を作成するには、次の手順に従います。
+上記のシナリオのように **NSG-FrontEnd** という名前の NSG を作成するには、次の手順を実行します。
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. **[参照]** > **[ネットワーク セキュリティ グループ]** をクリックします。
 
-![プレビュー ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure1.png)
+	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
+
+3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
+
+	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
+
+4. **[ネットワーク セキュリティ グループの作成]** ブレードで、*RG NSG* リソース グループに *NSG FrontEnd* という名前の NSG を作成し、**[作成]** をクリックします。
+
+	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
+
+## 既存の NSG に規則を作成する
+
+Azure ポータルから既存の NSG に規則を作成するには、次の手順を実行します。
+
+2. **[参照]** > **[ネットワーク セキュリティ グループ]** をクリックします。
 
 3. NSG の一覧で、**[NSG-FrontEnd]** > **[受信セキュリティ規則]** をクリックします。
 
-![プレビュー ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
+	![Azure ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
 
 4. **[受信セキュリティ規則]** の一覧で、**[追加]** をクリックします。
 
-![プレビュー ポータル - 規則の追加](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
+	![Azure ポータル - 規則の追加](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
 
 5. **[受信セキュリティ規則の追加]** ブレードで、ポート *80* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *web-rule* という名前の規則を *200* の優先度で作成して、**[OK]** をクリックします。これらの設定のほとんどは、既定値が設定されています。
 
-![プレビュー ポータル - 規則の設定](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
+	![Azure ポータル - 規則の設定](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
 
 6. 数秒後に、NSG の新しい規則が表示されます。
 
-![プレビュー ポータル - 新しい規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
+	![Azure ポータル - 新しい規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
 
-<!---HONumber=AcomDC_0211_2016-->
+7. 手順 6 までを繰り返し、ポート *3389* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *rdp-rule* という名前の受信規則を *250* の優先度で作成します。
+
+## NSG を FrontEnd サブネットに関連付ける
+
+1. **[参照]** > **[リソース グループ]** > **[RG NSG]** をクリックします。
+2. **[RG NSG]** ブレードで、**[...]** > **[TestVNet]** をクリックします。
+
+	![Azure ポータル - TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
+
+3. **[設定]** ブレードで、**[サブネット]** > **[FrontEnd]** > **[ネットワーク セキュリティ グループ]** > **[NSG-FrontEnd]** をクリックします。
+
+	![Azure ポータル - サブネット設定](./media/virtual-networks-create-nsg-arm-pportal/figure15.png)
+
+4. **[FrontEnd]** ブレードで、**[保存]** をクリックします。
+
+	![Azure ポータル - サブネット設定](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
+
+## NSG-BackEnd NSG を作成する
+
+**NSG-BackEnd** NSG を作成し、**BackEnd** サブネットに関連付けるには、次の手順を実行します。
+
+1. 「[NSG-FrontEnd NSG を作成する](#Create-the-NSG-FrontEnd-NSG)」の手順を繰り返し、*NSG-BackEnd* という名前の NSG を作成します。
+2. 「[既存の NSG に規則を作成する](#Create-rules-in-an-existing-NSG)」の手順を繰り返し、次の表に**受信**規則を作成します。
+
+	|受信規則|送信規則|
+	|---|---|
+	|![Azure ポータル - 受信規則](./media/virtual-networks-create-nsg-arm-pportal/figure17.png)|![Azure ポータル - 送信規則](./media/virtual-networks-create-nsg-arm-pportal/figure18.png)|
+
+3. 「[NSG を FrontEnd サブネットに関連付ける](#Associate-the-NSG-to-the-FrontEnd-subnet)」の手順を繰り返し、**NSG-Backend** NSG を **BackEnd** サブネットに関連付けます。
+
+## 次のステップ
+
+- [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)方法を学習する
+- NSG の[ログを有効する](virtual-network-nsg-manage-log.md)
+
+<!---HONumber=AcomDC_0323_2016-->

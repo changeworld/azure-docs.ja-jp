@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # 従来の VNet を新しい VNet に接続する
@@ -23,7 +23,7 @@ Azure には現在、Azure サービス マネージャー (従来型と呼ば�
 
 ![](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure01.png)
 
->[AZURE.NOTE]このドキュメントでは、テストを目的として、エンド ツー エンドのソリューションを説明します。ご自身の VNets を既に設定済みで、VPN Gateway および Azure のサイト間接続について理解されている場合は、[Configure a S2S VPN between an ARM VNet and a classic VNet (ARM VNet と従来の VNet の間の S2S VPN 接続を構成する)](../virtual-networks-arm-asm-s2s-howto.md) を参照Gateway
+>[AZURE.NOTE] このドキュメントでは、テストを目的として、エンド ツー エンドのソリューションを説明します。ご自身の VNets を既に設定済みで、VPN Gateway および Azure のサイト間接続について理解されている場合は、[Configure a S2S VPN between an ARM VNet and a classic VNet (ARM VNet と従来の VNet の間の S2S VPN 接続を構成する)](virtual-networks-arm-asm-s2s-howto.md) を参照Gateway
 
 このシナリオをテストするには、次を実行します。
 
@@ -33,7 +33,7 @@ Azure には現在、Azure サービス マネージャー (従来型と呼ば�
 
 上記の手順を実行するにはまず、従来のポータル、ネットワーク構成ファイル、および Azure サービス マネージャーの PowerShell コマンドレットを含む従来の Azure 管理ツールを使用します。その後に、新しい Azure ポータル、ARM テンプレート、および ARM PowerShell コマンドレットを含む、新しい管理ツールを使用します。
 
->[AZURE.IMPORTANT]2 つの VNet を相互接続するには、CIDR ブロック競合を回避する必要があります。VNet にはそれぞれ、必ず一意の CIDR ブロックを使用してください。
+>[AZURE.IMPORTANT] 2 つの VNet を相互接続するには、CIDR ブロック競合を回避する必要があります。VNet にはそれぞれ、必ず一意の CIDR ブロックを使用してください。
 
 ## 従来の VNet 環境を作成する
 
@@ -43,15 +43,9 @@ Azure には現在、Azure サービス マネージャー (従来型と呼ば�
 
 上の図 1 に対応する新しい VNet を作成するには、以下の手順に従います。
 
-1. PowerShell コンソールで、次のコマンドを実行してご自身の Azure アカウントを追加します。
+1. PowerShell コンソールで、次のコマンドを実行して自分の Azure アカウントにログインします。
 
-		Add-AzureAccount
-
-2. サインイン ダイアログ ボックスに表示される指示に従い、Azure アカウントでログオンします。
-
-3. Azure サービス管理 PowerShell コマンドレットが確実に使用されるように、次のコマンドを実行します。
-
-		Switch-AzureMode AzureServiceManagement
+		Login-AzureRmAccount
 
 4. 次のコマンドを実行して、Azure ネットワークの構成ファイルをダウンロードします。
 
@@ -153,7 +147,7 @@ Azure サービス マネージャーの PowerShell コマンドレットを使�
 
 	![VNet のダッシュ ボード](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure04.png)
 
-	>[AZURE.NOTE]この操作には数分かかる場合があります。
+	>[AZURE.NOTE] この操作には数分かかる場合があります。
 
 9. ゲートウェイが作成されたら、以下に示されるそのゲートウェイのパブリック IP アドレスを書き留めます。このアドレスは、後で ARM VNet のローカル ネットワークを作成するときに必要になります。
 
@@ -195,12 +189,13 @@ ARM テンプレートを使用して、2 つのサブネットおよび従来�
 
 5. **RG1** という名前の新しいリソース グループに、ARM VNet とそれに関連するオブジェクトを作成するには、次の PowerShell コマンドを実行します。テンプレート ファイルと、パラメーター ファイルのパスを必ず変更してください。
 
-		Switch-AzureMode AzureResourceManager
-		New-AzureResourceGroup -Name RG1 -Location "Central US" `
+		New-AzureRmResourceGroup -Name RG1 -Location centralus
+
+		New-AzureRmResourceGroupDeployment -Name deployment01 `
 		    -TemplateFile C:\Azure\azuredeploy.json `
 		    -TemplateParameterFile C:\Azure\azuredeploy-parameters.json		
 
-	>[AZURE.NOTE]この操作には数分かかる場合があります。
+	>[AZURE.NOTE] この操作には数分かかる場合があります。
 
 7. ブラウザーで https://portal.azure.com/ に移動し、必要に応じて資格情報を入力します。
 8. 以下に示すように、Azure ポータルで **[RG1]** リソース グループのタイルをクリックします。
@@ -232,7 +227,7 @@ Azure ポータルから、新しい VNet 内に VM を作成するには、以�
 
 	![VNet のダッシュ ボード](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure10.png)
 
-	>[AZURE.NOTE]この操作には数分かかる場合があります。このドキュメントの次の説明に進んでください。
+	>[AZURE.NOTE] この操作には数分かかる場合があります。このドキュメントの次の説明に進んでください。
 
 ## これら 2 つの VNet を接続する
 
@@ -261,10 +256,6 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 		                           etGatewayConfig"
 		                           }
 		DnsSettings              : null
-
-2. 次のコマンドを実行すると、PowerShell コマンドに Azure サービス管理 API が確実に使用されます。
-
-		Switch-AzureMode AzureServiceManagement
 
 3. 次のコマンドを実行して、Azure のネットワーク構成ファイルをダウンロードします。
 
@@ -298,16 +289,12 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 
 従来の VNet ゲートウェイを構成できたので、接続を確立しましょう。これを実行するには、次の手順に従ってください。
 
-1. PowerShell コンソールで、次のコマンドを実行して ARM モードに切り替えます。 
-
-		Switch-AzureMode AzureResourceManager
-
 2. 次のコマンドを実行して、ゲートウェイ間の接続を作成します。
 
-		$vnet01gateway = Get-AzureLocalNetworkGateway -Name vnet01 -ResourceGroupName RG1
-		$vnet02gateway = Get-AzureVirtualNetworkGateway -Name ArmAsmGateway -ResourceGroupName RG1
+		$vnet01gateway = Get-AzureRmLocalNetworkGateway -Name vnet01 -ResourceGroupName RG1
+		$vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name ArmAsmGateway -ResourceGroupName RG1
 		
-		New-AzureVirtualNetworkGatewayConnection -Name arm-asm-s2s-connection `
+		New-AzureRmVirtualNetworkGatewayConnection -Name arm-asm-s2s-connection `
 			-ResourceGroupName RG1 -Location "Central US" -VirtualNetworkGateway1 $vnet02gateway `
 			-LocalNetworkGateway2 $vnet01gateway -ConnectionType IPsec `
 			-RoutingWeight 10 -SharedKey 'abc123'
@@ -360,7 +347,7 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 
 ## 次のステップ
 
-- [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
-- [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](../virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
+- [ネットワーク リソース プロバイダー](resource-groups-networking.md)についてさらに学習できます。
+- [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

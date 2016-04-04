@@ -40,7 +40,8 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
-その他の詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+
+その他の詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 ### Standard Storage アカウント
 
@@ -85,4 +86,4 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

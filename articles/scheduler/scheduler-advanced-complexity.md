@@ -31,7 +31,7 @@ Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジ�
 -	画像処理: たとえば、すべての平日のピーク時以外に、クラウド コンピューティングを利用して、その日にアップロードされた画像を圧縮する
 
 
-この記事では、Azure Scheduler で作成できるジョブの例を、手順に沿って説明します。説明には、各スケジュールを表す JSON データを使用します。[Scheduler REST API](https://msdn.microsoft.com/library/azure/dn528946.aspx) を使用する場合は、この同じ JSON を使用して [Azure Scheduler ジョブを作成](https://msdn.microsoft.com/library/azure/dn528937.aspx)できます。
+この記事では、Azure Scheduler で作成できるジョブの例を、手順に沿って説明します。説明には、各スケジュールを表す JSON データを使用します。[Scheduler REST API](https://msdn.microsoft.com/library/mt629143.aspx) を使用する場合は、この同じ JSON を使用して [Azure Scheduler ジョブを作成](https://msdn.microsoft.com/library/mt629145.aspx)できます。
 
 ## サポートされるシナリオ
 
@@ -52,7 +52,7 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、[ISO 8601 仕�
 
 ## 方法: JSON や REST API を使用した、スケジュールの作成
 
-この記事の JSON の例と Azure Scheduler REST API を使用して、簡単なスケジュールを作成するには、[最初にクラウド サービスを作成](https://msdn.microsoft.com/library/azure/dn528943.aspx)してから、[ジョブ コレクションを作成](https://msdn.microsoft.com/library/azure/dn528940.aspx)し、[最後にジョブを作成](https://msdn.microsoft.com/library/azure/dn528937.aspx)します。ジョブを作成するときに、JSON を使用して、以下に抜粋したようなスケジュール設定と繰り返しを指定できます。
+[Azure Scheduler REST API](https://msdn.microsoft.com/library/mt629143) を使用して単純なスケジュールを作成するには、まず[サブスクリプションをリソース プロバイダーに登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)します (Scheduler のプロバイダー名は _Microsoft.Scheduler_ です)。次に、[ジョブ コレクションを作成](https://msdn.microsoft.com/library/mt629159.aspx)し、最後に[ジョブを作成](https://msdn.microsoft.com/library/mt629145.aspx)します。ジョブを作成するときに、JSON を使用して、以下に抜粋したようなスケジュール設定と繰り返しを指定できます。
 
 	{
 	    "startTime": "2012-08-04T00:00Z", // optional
@@ -197,4 +197,4 @@ _schedule_ の要素を次の表に示します。
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

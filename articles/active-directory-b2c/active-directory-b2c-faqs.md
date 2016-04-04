@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="03/21/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: FAQ
@@ -46,6 +46,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 
 - Facebook: 電子メール
 - Google +: 電子メール
+- Microsoft アカウント: openid 電子メール プロファイル
 - Amazon: プロファイル
 - LinkedIn: r\_emailaddress、r\_basicprofile
 
@@ -113,4 +114,4 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

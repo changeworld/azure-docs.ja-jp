@@ -66,7 +66,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type
 
 **PowerShell を使ったアクセス トークンの生成:**
 
-```powersell
+```powershell
 Invoke-RestMethod -Uri https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token?api-version=1.0 -Method Post
  -Body @{"grant_type" = "client_credentials"; "resource" = "https://management.core.windows.net/"; "client_id" = "<application id>"; "client_secret" = "<password you selected for authentication>" }
 ```
@@ -240,4 +240,4 @@ Content-Type: application/json
 
 このドキュメントを読みやすくするために、この要求に対する非常に長い JSON の応答は省略されています。応答には、先ほど作成したテンプレート化されたデプロイに関する情報が含まれます。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

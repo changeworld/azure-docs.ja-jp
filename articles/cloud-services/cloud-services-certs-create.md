@@ -70,14 +70,14 @@ Windows で証明書を作成する簡単な方法として、`makecert.exe` ユ
 Java を使用して[証明書を作成](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate)できます。
 
 ### Linux
-[この](../virtual-machines/virtual-machines-linux-use-ssh-key.md)記事では、SSH で証明書を作成する方法について説明します。
+[この](../virtual-machines/virtual-machines-linux-ssh-from-linux.md)記事では、SSH で証明書を作成する方法について説明します。
 
 ## 次のステップ
 
-[Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
+[Azure クラシック ポータル (または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md)) にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)。
 
 [管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 
 >[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

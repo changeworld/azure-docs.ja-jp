@@ -1,33 +1,33 @@
-## Load Balancer differences
+## Load Balancer の相違点
 
-There are different options to distribute network traffic using Microsoft Azure.  These options work differently from each other, having a different feature set and supports different scenarios.  They can each be used in isolation, or combining them.
+Microsoft Azure を使用してネットワーク トラフィックを分散するには、さまざまなオプションがあります。これらのオプションはそれぞれ動作が異なり、さまざまな機能セットが含まれ、さまざまなシナリオをサポートします。オプションは単独または組み合わせて使用することができます。
 
-- Azure Load Balancer works at the network layer (level 4 in the OSI network reference stack).  It provides network-level distribution of traffic across instances of an application running in the same Azure data center.
+- Azure Load Balancer は、ネットワーク層で動作します (OSI ネットワーク参照モデルの第 4 層)。これは、同じ Azure データ センターで実行するアプリケーションのインスタンス間で、トラフィックのネットワーク レベルの分散を提供します。
 
-- Application Gateway works at the application layer (level 7 in the OSI network reference stack).  It acts as a reverse-proxy service, terminating the client connection and forwarding requests to back-end endpoints.
+- Application Gateway は、アプリケーション層で動作します (OSI ネットワーク参照モデルの第 7 層)。これは、クライアント接続を終了して、バックエンドのエンドポイントへの要求を転送し、リバース プロキシ サービスとして機能します。
 
-- 	Traffic Manager works at the DNS level.  It uses DNS responses to direct end-user traffic to globally-distributed endpoints.  Clients then connect to those endpoints directly.
-The following table summarizes the features offered by each service:
+- 	Traffic Manager は、DNS レベルで動作します。これは、DNS 応答を使用して、エンドユーザーのトラフィックをグローバルに分散されたエンドポイントに送信します。その後、クライアントは、それらのエンドポイントに直接接続します。次の表では、各サービスで提供される機能についてまとめています。
 
 |Azure Load Balancer |	Application Gateway | Traffic Manager |
 |---|---|---|
-|Technology| Network level (level 4) | Application level (level 7) |	DNS level |
-| Application protocols supported |	Any | HTTP and HTTPS | 	Any (An HTTP/S endpoint is required for endpoint monitoring) |
-| Endpoints | Azure VMs and Cloud Services role instances | Any Azure Internal IP address or public internet IP address | Azure VMs, Cloud Services, Azure Web Apps and external endpoints |
-| Vnet support | Can be used for both Internet facing and internal (Vnet) applications | Can be used for both Internet facing and internal (Vnet) applications |	Only supports Internet-facing applications |
-Endpoint Monitoring | supported via probes | supported via probes | supported via HTTP/HTTPS GET | 
-<BR>
-Azure Load Balancer and Application Gateway route network traffic to endpoints but they have different usage scenarios to which traffic to handle. The table below helps understanding the difference between the two load balancers:
+|テクノロジ| ネットワーク レベル (レベル 4) | アプリケーション レベル (レベル 7) |	DNS レベル |
+| サポート対象アプリケーション プロトコル |	任意 | HTTP および HTTPS | 	任意 (HTTP/S エンドポイントはエンドポイントの監視に必要です) |
+| エンドポイント | Azure VM と Cloud Services のロール インスタンス | 任意の Azure の内部 IP アドレスまたはパブリック インターネット IP アドレス | Azure VM、Cloud Services、Azure Web Apps および外部エンドポイント |
+| VNet のサポート | インターネット接続と内部 (VNet) のアプリケーションの両方に使用できます | インターネット接続と内部 (VNet) のアプリケーションの両方に使用できます |	インターネットに接続するアプリケーションのみをサポートします |
+エンドポイントの監視 | プローブ経由でサポート | プローブ経由でサポート | HTTP/HTTPS GET 経由でサポート | 
+<BR> Azure Load Balancer と Application Gateway では、ネットワーク トラフィックをエンドポイントに転送しますが、処理するトラフィックによってさまざまな使用シナリオがあります。次の表は、2 つのロード バランサーの相違点を理解するために役立ちます。
 
 
-| Type | Azure Load Balancer | Application Gateway |
+| 型 | Azure Load Balancer | Application Gateway |
 |---|---|---|
-| Protocols | UDP/TCP | HTTP/ HTTPS |
-| IP reservation | Supported | Not supported | 
-| Load balancing mode | 5 tuple(source IP, source port, destination IP,destination port, protocol type) | CookieBasedAffinity = false,rules = basic (Round-Robin) | 
-| Load balancing mode (source IP /sticky sessions) |  2 tuple (source IP and destination IP), 3 tuple (source IP, destination IP and port). Can scale up or down based on the number of virtual machines | CookieBasedAffinity = true,rules = basic (Roud-Robin) for new connections. |
-| health probes | Default: probe interval - 15 secs. Taken out of rotation: 2 Continuous failures. Supports user defined probes | Idle probe interval 30 secs. Taken out after 5 consecutive live traffic failures or a single probe failure in idle mode. Supports user defined probes | 
-| SSL offloading | not supported | supported | 
+| プロトコル | UDP/TCP | HTTP/HTTPS |
+| IP Reservation | サポートされています | サポートされていません | 
+| 負荷分散モード | 5 組 (発信元 IP、発信元ポート、接続先 IP、接続先ポート、プロトコルの種類) | CookieBasedAffinity = false、rules = basic (ラウンド ロビン) | 
+| 負荷分散モード (発信元 IP/スティッキー セッション) | 2 組 (発信元 IP と接続先 IP)、3 組 (発信元 IP、接続先 IP、および接続先ポート)。仮想マシンの数に基づいて、スケールアップまたはスケールダウンできます | CookieBasedAffinity = true、新しい接続の場合は rules = basic (ラウンド ロビン)。 |
+| 正常性プローブ | 既定値: プローブ間隔 -15 秒。循環から除外: 2 回連続のエラー。ユーザー定義のプローブをサポートします | アイドル状態のプローブ間隔 30 秒。5 回連続するライブ トラフィック障害またはアイドル モードでの単一のプローブ障害の後に除外。ユーザー定義のプローブをサポートします | 
+| SSL オフロード | サポートされていません | サポートされています | 
 
 
   
+
+<!---HONumber=AcomDC_0323_2016-->

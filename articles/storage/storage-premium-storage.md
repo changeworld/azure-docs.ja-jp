@@ -49,13 +49,14 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 - まず、Premium Storage アカウントを作成します。次に、新しい DS または GS VM を作成するとき、Storage の構成設定でプレミアム ストレージ アカウントを選択します。または
 - DS または GS VM を作成するときに、Storage の構成設定に新しいプレミアム ストレージ アカウントを作成するか、Azure ポータルにより既定のプレミアム ストレージ アカウントを自動作成します。
 
+
 詳細な手順については、この記事の以降の[クイック スタート](#quick-start)を参照してください。
 
 >[AZURE.NOTE] Premium Storage のアカウントをカスタム ドメイン名にマッピングすることはできません。
 
 ## DS および GS シリーズ VM
 
-Premium Storage は、DS シリーズ、GS シリーズの Azure Virtual Machines (VM) をサポートしています。DS シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。使用可能な Azure VM の種類とサイズについては、「[Virtual Machines のサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。次に、DS および GS シリーズ VM の機能をいくつか紹介します。
+Premium Storage は、DS シリーズ、GS シリーズの Azure Virtual Machines (VM) をサポートしています。DS シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。使用可能な Azure VM の種類とサイズについては、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。次に、DS および GS シリーズ VM の機能をいくつか紹介します。
 
 **Cloud Service**: DS シリーズ VM は DS シリーズ VM のみを含むクラウド サービスに追加できます。DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加しないでください。既存の VHD を DS シリーズ VM のみを実行する新しいクラウド サービスに移行できます。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 
@@ -73,7 +74,7 @@ Premium Storage は、DS シリーズ、GS シリーズの Azure Virtual Machine
 
 現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
 
-DS シリーズと GS シリーズの VM の最大 IOPS、およびスループット (帯域幅) の最新の情報は、「[Virtual Machines のサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」のセクションにある表を参照してください。
+DS シリーズと GS シリーズの VM の最大 IOPS、およびスループット (帯域幅) の最新の情報は、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
 
 ## Premium Storage の拡張性とパフォーマンスの目標
 
@@ -145,7 +146,7 @@ Premium Storage アカウントにディスクをプロビジョニングする�
 
 Premium Storage の拡張性とパフォーマンスの目標についか知っておく必要のある重要事項をいくつか説明します。
 
-- **プロビジョニングされた容量とパフォーマンス**: Premium Storage ディスクをプロビジョニングした場合、Standard Storage とは異なり、対象ディスクの容量、IOPS、スループットが保証されます。たとえば、P30 ディスクを作成した場合、Azure により、対象のディスクに 1024 TB のストレージ容量、5000 IOPS、200 MB/秒のスループットがプロビジョニングされます。アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。
+- **プロビジョニングされた容量とパフォーマンス**: Premium Storage ディスクをプロビジョニングした場合、Standard Storage とは異なり、対象ディスクの容量、IOPS、スループットが保証されます。たとえば、P30 ディスクを作成した場合、Azure により、対象のディスクに 1024 GB のストレージ容量、5000 IOPS、200 MB/秒のスループットがプロビジョニングされます。アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。
 
 - **ディスク サイズ**: Azure はディスク サイズ (切り上げたもの) を、表にある最も近い Premium Storage ディスク オプションにマッピングします。たとえば、ディスクのサイズが 100 GiB ならば P10 に分類され、1 秒間に処理できる I/O ユニットは最大 500、スループットは最大 100 MB/秒となります。同様に、ディスクのサイズが 400 GiB ならば P20 に分類され、1 秒間に処理できる I/O ユニットは最大 2300、スループットは最大 150 MB/秒となります。
 
@@ -241,7 +242,7 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 	- **XFS**: バリアを無効にするには、マウント オプション "nobarrier" を使用します (バリアを有効にするには "barrier" を使用します)。
 
 - Premium Storage ディスクのキャッシュ設定が ReadWrite の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
-- VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。「[データ ディスクを Linux 仮想マシンに接続する方法](../virtual-machines/virtual-machines-linux-how-to-attach-disk.md)」も参照してください。
+- VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。「[データ ディスクを Linux 仮想マシンに接続する方法](../virtual-machines/virtual-machines-linux-classic-attach-disk.md)」も参照してください。
 
 次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
@@ -385,7 +386,7 @@ Premium Storage を使用するには、DS または GS シリーズ VM を作�
 
 	![Premium ディスク][Image2]
 
-詳細な手順については、「[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-attach-disk-preview/)」を参照してください。
+詳細な手順については、「[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)」を参照してください。
 
 #### IV.Azure ポータルでディスク キャッシュ ポリシーを変更する
 
@@ -526,12 +527,14 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 - [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
 
+
 ### ブログ記事
 
 - [Azure Premium Storage を一般に提供](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 - [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
 
+
 [Image1]: ./media/storage-premium-storage/Azure_pricing_tier.png
 [Image2]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

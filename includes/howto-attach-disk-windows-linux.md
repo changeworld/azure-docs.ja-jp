@@ -1,5 +1,5 @@
 
-ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-disks-vhds.md) を参照してください。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-linux-about-disks-vhds.md) を参照してください。
 
 ##<a id="attachempty"></a>方法: 空のディスクの接続
 
@@ -10,12 +10,12 @@
 2. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 
 
-	![Attach an empty disk](./media/howto-attach-disk-window-linux/AttachEmptyDisk.png)
+	![Attach an empty disk](./media/howto-attach-disk-windows-linux/AttachEmptyDisk.png)
 
 3.	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
 
 
-	![Attach a new empty disk](./media/howto-attach-disk-window-linux/AttachEmptyDetail.png)
+	![Attach a new empty disk](./media/howto-attach-disk-windows-linux/AttachEmptyDetail.png)
 
 
 	以下の手順を実行します。
@@ -28,7 +28,7 @@
 
 4.	データ ディスクが作成されて接続されると、VM のダッシュボードに表示されます。
 
-	![Empty data disk successfully attached](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
+	![Empty data disk successfully attached](./media/howto-attach-disk-windows-linux/AttachEmptySuccess.png)
 
 > [AZURE.NOTE] 新しいデータ ディスクを追加した後、VM にログオンし、ディスクを初期化して使用できるようにする必要があります。
 
@@ -42,16 +42,16 @@
 2. コマンド バーで **[接続]** をクリックし、**[ディスクの接続]** を選択します。
 
 
-	![Attach data disk](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
+	![Attach data disk](./media/howto-attach-disk-windows-linux/AttachExistingDisk.png)
 
 
 3. データ ディスクを選択し、チェック マークをクリックしてデータ ディスクを接続します。
 
-	![Enter data disk details](./media/howto-attach-disk-window-linux/AttachExistingDetail.png)
+	![Enter data disk details](./media/howto-attach-disk-windows-linux/AttachExistingDetail.png)
 
 4.	データ ディスクが接続されると、VM のダッシュボードに表示されます。
 
 
-	![Data disk successfully attached](./media/howto-attach-disk-window-linux/AttachExistingSuccess.png)
+	![Data disk successfully attached](./media/howto-attach-disk-windows-linux/AttachExistingSuccess.png)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

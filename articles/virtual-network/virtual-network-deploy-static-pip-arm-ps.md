@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/15/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # PowerShell を使用した静的パブリック IP を持つ VM のデプロイ
@@ -216,4 +216,4 @@ VM を作成するには、VM で使用するリソース グループ、VNet、
 
    
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

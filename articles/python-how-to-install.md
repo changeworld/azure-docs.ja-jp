@@ -162,40 +162,40 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 
 ## その他のソフトウェアとリソース:
 
-* [Continuum Analytics Python Distribution][] (Continuum Analytics Python Distribution ディストリビューション)
-* [Enthought Python Distribution][] (Enthought の Python ディストリビューション)
-* [ActiveState Python Distribution][] (ActiveState の Python ディストリビューション)
-* [SciPy - A suite of Scientific Python libraries][] (SciPy - Python の科学技術計算ライブラリのパッケージ)
-* [NumPy - A numerics library for Python][] (NumPy - Python の数値計算ライブラリ)
-* [Django Project - A mature web framework/CMS][] (Django Project - 進化した Web フレームワーク/CMS)
-* [IPython - an advanced REPL/Notebook for Python][] (IPython - 高度な Python 用 REPL/Notebook)
+* [Continuum Analytics Python Distribution (Continuum Analytics Python Distribution ディストリビューション)][]
+* [Enthought Python Distribution (Enthought の Python ディストリビューション)][]
+* [ActiveState Python Distribution (ActiveState の Python ディストリビューション)][]
+* [SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)][]
+* [NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)][]
+* [Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)][]
+* [IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)][]
 * [Azure での IPython Notebook][]
-* [Python Tools for Visual Studio on GitHub][] に関するページ
+* [Python Tools for Visual Studio on GitHub に関するページ][]
 * [Python デベロッパー センター](/develop/python/)
 
-[Continuum Analytics Python Distribution]: http://continuum.io
-[Enthought Python Distribution]: http://www.enthought.com
-[ActiveState Python Distribution]: http://www.activestate.com
+[Continuum Analytics Python Distribution (Continuum Analytics Python Distribution ディストリビューション)]: http://continuum.io
+[Enthought Python Distribution (Enthought の Python ディストリビューション)]: http://www.enthought.com
+[ActiveState Python Distribution (ActiveState の Python ディストリビューション)]: http://www.activestate.com
 [www.python.org]: http://www.python.org
 [www.continuum.io]: http://continuum.io
 [www.enthought.com]: http://www.enthought.com
 [www.activestate.com]: http://www.activestate.com
-[SciPy - A suite of Scientific Python libraries]: http://www.scipy.org
-[NumPy - A numerics library for Python]: http://www.numpy.org
-[Django Project - A mature web framework/CMS]: http://www.djangoproject.com
-[IPython - an advanced REPL/Notebook for Python]: http://ipython.org
+[SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)]: http://www.scipy.org
+[NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)]: http://www.numpy.org
+[Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)]: http://www.djangoproject.com
+[IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)]: http://ipython.org
 [IPython]: http://ipython.org
-[Azure での IPython Notebook]: virtual-machines-python-ipython-notebook.md
+[Azure での IPython Notebook]: virtual-machines-linux-jupyter-notebook.md
 [Cloud Services]: cloud-services-python-ptvs.md
 [Websites]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
+[Python Tools for Visual Studio on GitHub に関するページ]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
 [Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
 [How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
-[Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
+[Linux を実行する仮想マシンの作成]: virtual-machines-linux-cli-create.md
 [Creating Websites with Django (Django を使った Websites の作成)]: web-sites-python-create-deploy-django-app.md
 [Creating Websites with Bottle (Bottle を使った Websites の作成)]: web-sites-python-create-deploy-bottle-app.md
 [Flask を使った Websites の作成]: web-sites-python-create-deploy-flask-app.md
@@ -204,4 +204,4 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

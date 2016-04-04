@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights Analytics のツアー" 
-	description="Application Insights Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。" 
+	pageTitle="Application Insights の Analytics のツアー" 
+	description="Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,15 +12,15 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
  
-# Application Insights Analytics のツアー
+# Application Insights の Analytics について
 
 
-Application Insights Analytics は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な診断検索エンジンです。
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -31,7 +31,7 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 
 以下のように、Application Insights でアプリの[概要ブレード](app-insights-dashboards.md)から Analytics を開きます。
 
-![portal.azure.com を開いてから Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-analytics/001.png)
+![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-analytics/001.png)
 
 ## 行数の[カウント](app-analytics-aggregations.md#count)
 
@@ -50,7 +50,7 @@ Application Insights Analytics は、[Application Insights](app-insights-overvie
 ![](./media/app-analytics-tour/010.png)
 
 	
-[`Count`](app-analytics-aggregations.md#count) は多くの[クエリ演算子](app-analytics-queries.md)の 1 つです。複数のステージで、データのパイプ処理、フィルター処理、リシェイプおよび結合を行うために配置できます。
+[`Count`](app-analytics-aggregations.md#count) は数ある[クエリ演算子](app-analytics-queries.md)の 1 つです。複数のステージで、データのパイプ処理、フィルター処理、リシェイプおよび結合を行うために配置できます。
 	
 ## [take](app-analytics-aggregations.md#take): n 個の行を表示する
 
@@ -214,7 +214,7 @@ by 句ではスカラー (数、時間、または間隔) 値を使用するこ�
 結果を時間で並べ替えていませんが (テーブル表示でわかるように)、グラフには常に正しい順序で日時が表示されることに注目してください。
 
 
-## [where](app-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
+## [Where](app-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
 
 Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーからのものです。
 
@@ -230,7 +230,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 ![](./media/app-analytics-tour/250.png)
 
-`where` 演算子ではブール式を使用します。以下に重要なポイントをいくつか示します。
+`where` 演算子はブール式を使用します。以下に重要なポイントをいくつか示します。
 
  * `and`、`or`: ブール演算子
  * `==`、`<>`: 等しい、等しくない
@@ -436,9 +436,9 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
     | take 30
 ```
 
-> ヒント: AI Analytics クライアントでは、このように空白行を入れないでください。必ず、すべて間を空けずに実行してください。
+> ヒント: Analytics クライアントでは、このように空白行を入れないでください。必ず、すべて間を空けずに実行してください。
 
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

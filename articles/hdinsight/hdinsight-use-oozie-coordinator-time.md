@@ -645,7 +645,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Azure プレビュー ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Azure ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -693,8 +693,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
 - [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 - [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight 用 C# Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
+- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-java-mapreduce]
 
 
@@ -716,7 +715,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
-[hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-java-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 
@@ -744,4 +742,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

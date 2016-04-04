@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/04/2016"
+   ms.date="03/22/2016"
    ms.author="erihur"/>
 
 
@@ -251,6 +251,8 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 ## その他のリソース
 「[サービスの管理](https://msdn.microsoft.com/library/azure/dn578292.aspx)」の「**アカウント、サブスクリプション、管理者ロールの管理**」セクションには、役に立つリンクが掲載されています。
 
+- [Azure の課金とサブスクリプションに関する FAQ](billing-subscription-faq.md)
+
 - [支払い方法の管理](https://msdn.microsoft.com/library/azure/dn736054.aspx)
 
 - [既存のクレジット カードの支払い情報を編集する](https://msdn.microsoft.com/library/azure/dn736053.aspx)
@@ -265,4 +267,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

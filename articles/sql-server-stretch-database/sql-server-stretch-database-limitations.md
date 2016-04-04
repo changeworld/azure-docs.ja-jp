@@ -65,6 +65,8 @@ SQL Server 2016 の現在のプレビュー リリースでは、次の項目が
 
 -   テーブルを参照する外部キー制約
 
+    Stretch Database を有効にできないテーブルは、外部キー制約によって参照されるテーブルです。親子関係 (たとえば、注文と注文明細) の場合、これは親テーブル (注文) になります。
+
 **インデックス**
 -   フル テキスト インデックス
 
@@ -99,4 +101,4 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

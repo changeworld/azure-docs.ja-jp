@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/16/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -22,9 +22,13 @@
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。属性は、関連する Azure AD アプリによってグループ化されます。
 
 ## 同期する属性
-よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように、既定の属性を維持することです。場合によっては、組織で一部の属性をクラウドに同期させたくないことがあります。この場合は、以下の属性のリストから開始し、PII (個人を特定できる情報) を含み、同期できないものを特定します。次に、インストール時に、[Azure AD アプリと属性フィルター](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの選択を解除します。
+よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように、既定の属性を維持することでき、さらに Office 365 ワークロードですべての機能を利用です。場合によっては、次の例のように、属性に機密性の高いデータまたは PII (個人を特定できる情報) データが含まれるため、組織が属性をクラウドと同期するのを望まないことがあります。
 
-属性の選択を解除する場合は、注意を払う必要があり、絶対に同期できないもののみを選択解除する必要があります。
+![使用しない方がよい属性](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
+
+この場合は、以下の属性のリストから開始し、機密性の高いデータまたは PII データを含み、同期できないものを特定します。次に、インストール時に、[Azure AD アプリと属性フィルター](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの選択を解除します。
+
+>[AZURE.WARNING] 属性の選択を解除する場合は、注意を払う必要があり、絶対に同期できないもののみを選択解除する必要があります。その他の属性の選択を解除すると、機能に悪影響を及ぼす可能性があります。
 
 ## Office 365 ProPlus
 
@@ -374,6 +378,11 @@
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
 ## サード パーティ製アプリケーション
+これは、一般的なワークロードまたはアプリケーションで最低限必要な属性として使用される属性セットです。上記以外のワークロードまたは Microsoft 以外のアプリで使用できます。これは、次の場合に明示的に使用されます。
+
+- Yammer (ユーザーのみが実際に使用されます)
+- [SharePoint のようなリソースによって提供されるハイブリッド企業間取引 (B2B) の組織間コラボレーションのシナリオ](http://go.microsoft.com/fwlink/?LinkId=747036)
+
 これは、Office 365、Dynamics、Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる一連の属性です。この中には、少数のコア属性が含まれます。
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
@@ -451,13 +460,13 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msDS-RegisteredOwner | ○| |
 
 
-## 属性に関する注意事項
+## メモ
 - 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
-
+- 前の一覧で、オブジェクトの種類 **User** はまた、オブジェクトの種類 **iNetOrgPerson** に適用されます。
 
 ## 次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

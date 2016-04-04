@@ -1,422 +1,423 @@
 
 
-Azure is an excellent platform to implement dev/test or proof-of-concept configurations, because it requires very little investment to test a particular approach to an implementation of your solutions. However, you must be able to distinguish the easy practices for a dev/test environment from the more difficult, detailed practices for a fully functional, production-ready implementation of an IT workload.
+Azure は、わずかな投資でソリューションの実装に対する具体的なアプローチをテストできる、開発/テストまたは概念実証の構成を実装するのに最適なプラットフォームです。ただし、開発/テスト環境の簡単な作業と、それよりはるかに困難で詳細な、IT ワークロードの全機能を備えた実稼動可能な実装の作業を、区別する必要があります。
 
-This guidance identifies many areas for which planning is vital to the success of an IT workload in Azure. In addition, planning provides an order to the creation of the necessary resources. Although there is some flexibility, we recommend that you apply the order in this article to your planning and decision-making.
+このガイダンスでは、Azure で IT ワークロードを成功させるために計画の作成が重要となる、多くの領域を明らかにします。さらに、計画の作成では必要なリソースの作成の順序についても説明します。ある程度の柔軟性はありますが、この記事の順序に従って計画の作成と意思決定を行うことをお勧めします。
 
-This article was adapted from the content in the [Azure implementation guidelines](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx) blog post. Thanks to Santiago Cánepa (Application Development Manager for Microsoft) and Hugo Salcedo (Application Development Manager for Microsoft) for their original material.
+この記事は、[Azure 実装ガイドライン](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)に関するブログ投稿の内容を基にしています。基の資料を作成した Santiago Cánepa (Microsoft のアプリケーション開発マネージャー) と Hugo Salcedo (Microsoft のアプリケーション開発マネージャー) に感謝します。
 
-> [AZURE.NOTE] Affinity groups have been deprecated. Their use is not described here. For more information, see [About regional VNets and affinity groups](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+> [AZURE.NOTE] アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
 
-## 1. Naming conventions
+## 1\.名前付け規則
 
-You should have a good naming convention in place before creating anything in Azure. A naming convention ensures that all the resources have a predictable name, which helps lower the administrative burden associated with managing those resources.
+Azure で作成作業を始める前に、適切な名前付け規則を用意する必要があります。名前付け規則を設けるとすべてのリソースの名前が予測可能になり、これらのリソースの管理する際の負担が軽減されます。
 
-You might choose to follow a specific set of naming conventions defined for your entire organization or for a specific Azure subscription or account. Although it is easy for individuals within organizations to establish implicit rules when working with Azure resources, when a team needs to work on a project on Azure, that model does not scale well.
+組織全体に対する名前付け規則、または特定の Azure サブスクリプションまたはアカウントに対して定義されている名前付け規則のどちらに従うかを選択できます。組織内の個人が Azure リソースの作業をするときに暗黙のルールを設けるのは簡単ですが、チームで Azure のプロジェクトを作業する必要があるときに、そのようなモデルではうまく対応できません。
 
-You should agree on a set of naming conventions up front. There are some considerations regarding naming conventions that cut across the sets of rules that make up those conventions.
+事前に名前付け規則をまとめておく必要があります。名前付け規則を構成する一連のルールに関していくつかの考慮事項があります。
 
-### Affixes
+### 接辞
 
-When creating certain resources, Azure uses some defaults to simplify management of the resources that are associated with these resources. For example, when creating the first virtual machine for a new cloud service, the Azure classic portal attempts to use the virtual machine’s name for the name of a new cloud service for the virtual machine.
+Azure では、リソースを簡単に管理できるように、作成時の既定値が決められています。たとえば、新しいクラウド サービスの最初の仮想マシンを作成する場合、Azure クラシック ポータルは、仮想マシンの新しいクラウド サービスの名前にその仮想マシンの名前を使おうとします。
 
-Therefore, it is beneficial to identify types of resources that need an affix to identify that type. In addition, clearly specify whether the affix will be at:
+したがって、リソースの種類を識別するために接辞が必要な種類を明らかにするのが得策です。さらに、接辞の位置を明確に指定します。
 
-- The beginning of the name (prefix)
-- The end of the name (suffix)
+- 名前の先頭 (プレフィックス)
+- 名前の末尾 (サフィックス)
 
-For instance, here are two possible names for a resource group that hosts a calculation engine:
+たとえば、計算エンジンをホストするリソース グループに対して可能な 2 つの名前は次のとおりです。
 
-- Rg-CalculationEngine (prefix)
-- CalculationEngine-Rg (suffix)
+- Rg-CalculationEngine (プレフィックス)
+- CalculationEngine-Rg (サフィックス)
 
-Affixes can refer to different aspects that describe the particular resources. The following table shows some examples typically used.
+接辞では、特定のリソースを説明するさまざまな特徴を示すことができます。一般的に使用される例を次に示します。
 
-Aspect | Examples | Notes
+特徴 | 例 | メモ
 --- | --- | ---
-Environment | dev, stg, prod | Depending on the purpose and name of each environment.
-Location | usw (West US), use (East US 2) | Depending on the region of the datacenter or the region of the organization.
-Azure component, service, or product | Rg for resource group, Svc for cloud service, VNet for virtual network | Depending on the product for which the resource provides support.
-Role | sql, ora, sp, iis | Depending on the role of the virtual machine.
-Instance | 01, 02, 03, etc. | For resources that have more than one instance. For example, load balanced web servers in a cloud service.
+環境 | dev、stg、prod | 各環境の目的と名前によって決まります。
+場所 | usw (米国西部)、use (米国東部 2) | データセンターのリージョンまたは組織のリージョンによって決まります。
+Azure のコンポーネント、サービス、または製品 | Rg (リソース グループ)、Svc (クラウド サービス)、VNet (仮想ネットワーク) | リソースがサポートを提供する製品によって決まります。
+役割 | sql、ora、sp、iis | 仮想マシンのロールによって決まります。
+インスタンス | 01、02、03 など | 複数のインスタンスが存在するリソースの場合。たとえば、クラウド サービス内の負荷分散された Web サーバーなど。
 
-When establishing your naming conventions, make sure that they clearly state which affixes to use for each type of resource, and in which position (prefix vs suffix).
+名前付け規則を設けるときは、各リソースの種類に対してどの接辞を使用するか、およびその位置 (プレフィックスかサフィックスか) を、明確に規定する必要があります。
 
-### Dates
+### 日付
 
-It is often important to determine the date of creation from the name of a resource. We recommend the YYYYMMDD date format. This format ensures that not only the full date is recorded, but also that two resources whose names differ only on the date will be sorted alphabetically and chronologically at the same time.
+多くの場合、リソースの名前から作成日がわかることが重要です。YYYYMMDD という日付形式をお勧めします。この形式を使用すると、完全な日付が記録されるだけでなく、名前の日付部分だけが異なる複数のリソースが、同時にアルファベット順と時系列順に並べ替えられます。
 
-### Naming resources
+### リソースの名前付け
 
-You should define each type of resource in the naming convention, which should have rules that define how to assign names to each resource that is created. These rules should apply to all types of resources, for example:
+名前付け規則では、作成される各リソースへの名前割り当て方法を定義するルールを用意するリソースの種類を定義する必要があります。これらのルールはすべての種類のリソースに適用する必要があります。次に例を示します。
 
-- Subscriptions
-- Accounts
-- Storage accounts
-- Virtual networks
-- Subnets
-- Availability sets
-- Resource groups
-- Cloud services
-- Virtual machines
+- 契約
+- アカウント
+- ストレージ アカウント
+- 仮想ネットワーク
+- サブネット
+- 可用性セット
+- リソース グループ
+- サブスクリプションあたりの
+- 仮想マシン
 - Endpoints
-- Network security groups
-- Roles
+- ネットワーク セキュリティ グループ
+- ロール
 
-To ensure that the name provides enough information to determine to which resource it refers, you should use descriptive names.
+参照しているリソースを特定するのに十分な情報が提供されるように、わかりやすい名前にする必要があります。
 
-### Computer names
+### コンピューター名
 
-When administrators create a virtual machine, Microsoft Azure requires them to provide a virtual machine name of up to 15 characters. Azure uses the virtual machine name as the Azure virtual machine resource name. Azure uses the same name as the computer name for the operating system installed in the virtual machine. However, these names might not always be the same.
+管理者が仮想マシンを作成するときは、仮想マシンの名前を 15 字以内で指定する必要があります。Azure では、仮想マシンの名前を Azure Virtual Machine のリソース名として使用します。Azure は、仮想マシンにインストールされるオペレーティング システムに対してコンピューター名と同じ名前を使用します。ただし、これらの名前は同じではない場合があります。
 
-In case a virtual machine is created from a .vhd image file that already contains an operating system, the virtual machine name in Azure can differ from the virtual machine’s operating system computer name. This situation can add a degree of difficulty to virtual machine management, which we therefore do not recommend. Assign the Azure virtual machine resource the same name as the computer name that you assign to the operating system of that virtual machine.
+既にオペレーティング システムを含んでいる .vhd イメージ ファイルから仮想マシンが作成される場合、Azure での仮想マシン名と仮想マシンのオペレーティング システム名が異なる場合があります。このような状況は、仮想マシンの管理が困難になるのでお勧めしません。Azure 仮想マシンのリソースには、その仮想マシンのオペレーティング システムに割り当てたコンピューター名と同じ名前を割り当てます。
 
-We recommend that the Azure virtual machine name be the same as the underlying operating system computer name. Because of this, follow the NetBIOS naming rules as described in [Microsoft NetBIOS computer naming conventions](https://support.microsoft.com/kb/188997/).
+Azure Virtual Machine の名前と基になるオペレーティング システムのコンピューター名を同じにすることをお勧めします。このため、「[Microsoft NetBIOS コンピューターの名前付け規則](https://support.microsoft.com/kb/188997/)」で説明されている NetBIOS 名前付け規則に従います。
 
-### Storage account names
+### ストレージ アカウント名
 
-Storage accounts have special rules governing their names. You can only use lowercase letters and numbers. See [Create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account) for more information. Additionally, the storage account name, in combination with core.windows.net, should be a globally valid, unique DNS name. For instance, if the storage account is called mystorageaccount, the following resulting DNS names should be unique:
+ストレージ アカウン名の管理には特別な規則があります。小文字と数字のみを使用できます。詳細については、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
 
 - mystorageaccount.blob.core.windows.net
 - mystorageaccount.table.core.windows.net
 - mystorageaccount.queue.core.windows.net
 
 
-### Azure building block names
+### Azure の構成要素の名前
 
-Azure building blocks are application-level services that Azure offers, typically to those applications taking advantage of PaaS features, although IaaS resources might leverage some, like SQL Database, Traffic Manager, and others.
+Azure の構成要素は通常は PaaS の機能を利用するアプリケーションである Azure が提供するアプリケーション レベル サービスですが、IaaS リソースは SQL Database、Traffic Manager などを利用できます。
 
-These services rely on an array of artifacts that are created and registered in Azure. These also need to be considered in your naming conventions.
+これらのサービスは、Azure で作成されて登録されるアーティファクトに依存します。これらについても名前付け規則で考慮する必要があります。
 
-### Implementation guidelines recap for naming conventions
+### 名前付け規則に関する実装ガイドラインのまとめ
 
-Decision:
+決めること:
 
-- What are your naming conventions for Azure resources?
+- Azure リソースの名前付け規則
 
-Task:
+タスク:
 
-- Define the naming conventions in terms of affixes, hierarchy, string values, and other policies for Azure resources.
+- Azure リソースの接辞、階層、文字列値、およびその他のポリシーに関する名前付け規則を定義します。
 
-## 2. Subscriptions and accounts
+## 2\.サブスクリプションとアカウント
 
-In order to work with Azure, you need one or more Azure subscriptions. Resources, like cloud services or virtual machines, exist in the context of those subscriptions.
+Azure を使用するには、1 つまたは複数の Azure サブスクリプションが必要です。クラウド サービスや仮想マシンなどのリソースは、サブスクリプションのコンテキストに存在します。
 
-- Enterprise customers typically have an Enterprise Enrollment, which is the top-most resource in the hierarchy, and is associated to one or more accounts.
-- For consumers and customers without an Enterprise Enrollment, the top-most resource is the account.
-- Subscriptions are associated to accounts, and there can be one or more subscriptions per account. Azure records billing information at the subscription level.
+- 企業のお客様は、通常、エンタープライズ加入契約を使用します。これは、階層内の最上位のリソースであり、1 つまたは複数のアカウントに関連付けられています。
+- エンタープライズ加入契約を持たないコンシューマーおよび顧客の最上位のリソースはアカウントです。
+- サブスクリプションはアカウントに関連付けられており、アカウントごとに 1 つまたは複数のサブスクリプションを使用できます。Azure はサブスクリプション レベルで課金情報を記録します。
 
-Due to the limit of two hierarchy levels on the Account/Subscription relationship, it is important to align the naming convention of accounts and subscriptions to the billing needs. For instance, if a global company uses Azure, they might choose to have one account per region, and have subscriptions managed at the region level.
+アカウント/サブスクリプションの関係での 2 つの階層レベルの制限のため、アカウントとサブスクリプションの名前付け規則を課金のニーズに合わせることが重要です。たとえば、世界規模の企業が Azure を使用する場合、リージョンごとに 1 つのアカウントを使用し、リージョン レベルでサブスクリプションを管理できます。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-For instance, you might use this structure.
+たとえば、次のような構造を使用できます。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-Following the same example, if a region decides to have more than one subscription associated to a particular group, then the naming convention should incorporate a way to encode the extra on either the account or the subscription name. This organization allows massaging billing data to generate the new levels of hierarchy during billing reports.
+同じ例について、リージョンで特定のグループに複数のサブスクリプションを関連付ける場合は、名前付け規則に追加のアカウントまたはサブスクリプション名をエンコードする方法が組み込まれている必要があります。次の組織では、請求レポートの間にメッセージ請求データで新しいレベルの階層を生成できます。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-The organization could look like this.
+組織は次のようになります。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
-Microsoft provides detailed billing via a downloadable file for a single account or for all accounts in an enterprise agreement. You can process this file, for example, by using Microsoft Excel. This process would ingest the data, partition the resources that encode more than one level of the hierarchy into separate columns, and use a pivot table or PowerPivot to provide dynamic reporting capabilities.
+マイクロソフトは、単一アカウントまたはエンタープライズ アグリーメントのすべてのアカウントについて、ダウンロード可能なファイルで詳細な課金を提供します。たとえば、Excel を使用するなどしてこのファイルを処理できます。このプロセスは、データを取り込み、階層の複数のレベルをエンコードするリソースを異なる列に分割し、ピボット テーブルまたは PowerPivot を使用して動的なレポート機能を提供します。
 
-### Implementation guidelines recap for subscriptions and accounts
+### サブスクリプションとアカウントに関する実装ガイドラインのまとめ
 
-Decision:
+決めること:
 
-- What set of subscriptions and accounts do you need to host your IT workload or infrastructure?
+- IT ワークロードやインフラストラクチャをホストするために必要なサブスクリプションとアカウントのセット
 
-Task:
+タスク:
 
-- Create the set of subscriptions and accounts using your naming convention.
+- 名前付け規則を使用してサブスクリプションとアカウントのセットを作成します。
 
-## 3. Storage
+## 3\.Storage
 
-Azure Storage is an integral part of many Azure solutions. Azure Storage provides services for storing file data, unstructured data, and messages, and it is also part of the infrastructure supporting virtual machines.
+Azure Storage は多くの Azure ソリューションにおいて不可欠な構成要素です。Azure Storage にはファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。仮想マシンをサポートするインフラストラクチャの一部でもあります。
 
-There are two types of storage accounts available from Azure. A standard storage account gives you access to blob storage (used for storing Azure virtual machine disks), table storage, queue storage, and file storage. Premium storage is designed for high-performance applications, such as SQL Servers in an AlwaysOn cluster, and currently supports Azure virtual machine disks only.
+Azure では 2 種類のストレージ アカウントを使用できます。標準ストレージ アカウントでは、BLOB ストレージ (Azure 仮想マシン ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。Premium Storage は、AlwaysOn クラスター内の SQL Server などの高パフォーマンス アプリケーション用に設計されており、現在は Azure 仮想マシン ディスクのみをサポートします。
 
-Storage accounts are bound to scalability targets. See [Microsoft Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md#storage-limits) to become familiar with current Azure storage limits. Also see [Azure storage scalability and performance targets](../storage-scalability-targets.md).
+ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。Azure ストレージの現在の制限については、「[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)」をご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)」もご覧ください。
 
-Azure creates virtual machines with an operating system disk, a temporary disk, and zero or more optional data disks. The operating system disk and data disks are Azure page blobs, whereas the temporary disk is stored locally on the node where the machine lives. This makes the temporary disk unfit for data that must persist during a system recycle, because the machine might silently be migrated from one node to another, losing any data in that disk. Do not store anything on the temporary drive.
+Azure で作成される仮想マシンには、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。このため、コンピューターのノードが変更されたことが認識されないとそのディスクのデータが失われる可能性があるため、一時ディスクはシステム リサイクルの間に保持する必要があるデータには適していません。一時ドライブには何も格納しないでください。
 
-Operating system disks and data disks have a maximum size of 1023 gigabytes (GB) because the maximum size of a blob is 1024 GB and that must contain the metadata (footer) of the VHD file (a GB is 1024<sup>3</sup> bytes). You can implement disk striping in Windows to surpass this limit.
+BLOB の最大サイズは 1024 ギガバイト (GB) で、それには VHD ファイルのメタデータ (フッター) が含まれるため、オペレーティング システム ディスクとデータ ディスクの最大サイズは 1023 GB です (1 GB は 1024<sup>3</sup> バイト)。Windows にディスク ストライピングを実装して、この制限を超えることができます。
 
-### Striped disks
-Besides providing the ability to create disks larger than 1023 GB, in many instances, using striping for data disks enhances performance by allowing multiple blobs to back the storage for a single volume. With striping, the I/O required to write and read data from a single logical disk proceeds in parallel.
+### ストライピングされたディスク
+データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合に複数の BLOB で単一ボリュームのストレージをバックアップできるので、パフォーマンスが向上します。ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure imposes limits on the amount of data disks and bandwidth available, depending on the virtual machine size. For details, see [Sizes for virtual machines](virtual-machines-linux-sizes.md).
+Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
 
-If you are using disk striping for Azure data disks, consider the following guidelines:
+Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
-- Data disks should always be the maximum size (1023 GB)
-- Attach the maximum data disks allowed for the virtual machine size
-- Use storage spaces configuration
-- Use storage striping configuration
-- Avoid using Azure data disk caching options (caching policy = None)
+- データ ディスクは常に最大サイズ (1023 GB) にする必要があります
+- 仮想マシンのサイズで許可されている最大数のデータ ディスクをアタッチします
+- 記憶域スペースの構成を使用します
+- ストレージ ストライピングの構成を使用します
+- Azure データ ディスクのキャッシュ オプションを使わないようにします (キャッシュ ポリシー = なし)
 
-For more information, see [Storage spaces - designing for performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx).
+詳細については、「[Storage Spaces - Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」(記憶域スペース - パフォーマンスのための設計) を参照してください。
 
-### Multiple storage accounts
+### 複数のストレージ アカウント
 
-Using multiple storage accounts to back the disks associated with many virtual machines ensures that the aggregated I/O of those disks is well below the scalability targets for each one of those storage accounts.
+複数のストレージ アカウントを使用して多数の仮想マシンに関連付けられているディスクをバックアップすると、これらのディスクの集約された I/O は個々のストレージ アカウントに対するスケーラビリティ ターゲットより確実に小さくなります。
 
-We recommend that you start with the deployment of one virtual machine per storage account.
+最初は、ストレージ アカウントごとに 1 つの仮想マシンをデプロイすることをお勧めします。
 
-### Storage layout design
+### ストレージ レイアウトの設計
 
-To implement these strategies to implement the disk subsystem of the virtual machines with good performance, an IT workload or infrastructure typically takes advantage of many storage accounts. These host many VHD blobs. In some instances, more than one blob is associated to one single volume in a virtual machine.
+これらの戦略を実装して優れたパフォーマンスの仮想マシン ディスク サブシステムを実現するため、IT ワークロードまたはインフラストラクチャでは、通常、多くのストレージ アカウントを活用します。これらは多くの VHD BLOB をホストします。場合によっては、複数の BLOB が、仮想マシンの 1 つのボリュームと関連付けられます。
 
-This situation can add complexity to the management tasks. Designing a sound strategy for storage, including appropriate naming for the underlying disks and associated VHD blobs is key.
+このような状況では管理タスクの複雑さが増します。基になるディスクや関連する VHD BLOB への適切な名前付けなど、ストレージに適切な戦略を設計することが重要です。
 
-### Implementation guidelines recap for storage
+### ストレージに関する実装ガイドラインのまとめ
 
-Decisions:
+決めること:
 
-- Do you need disk striping to create disks larger than 500 terabytes (TB)?
-- Do you need disk striping to achieve optimal performance for your workload?
-- What set of storage accounts do you need to host your IT workload or infrastructure?
+- 500 テラバイト (TB) を超えるディスクを作成するためにディスクのストライピングが必要か
+- ワークロードに最適なパフォーマンスを実現するためにディスクのストライピングが必要か
+- IT ワークロードやインフラストラクチャをホストするために必要なストレージ アカウントのセット
 
-Task:
+タスク:
 
-- Create the set of storage accounts using your naming convention. You can use the Azure portal, the Azure classic portal, or the **New-AzureStorageAccount** PowerShell cmdlet.
+- 名前付け規則を使用してストレージ アカウントのセットを作成します。Azure ポータル、Azure クラシック ポータル、または **New-AzureStorageAccount** PowerShell コマンドレットを使用できます。
 
-## 4. Cloud services
+## 4\.サブスクリプションあたりの
 
-Cloud services are a fundamental building block in Azure service management, both for PaaS and IaaS services. For PaaS, cloud services represent an association of roles whose instances can communicate among each other. Cloud services are associated to a public virtual IP (VIP) address and a load balancer, which takes incoming traffic from the Internet and load balances it to the roles configured to receive that traffic.
+クラウド サービスは、PaaS と IaaS の両方のサービスに関して、Azure サービス管理の基本的な構成要素です。PaaS では、クラウド サービスはインスタンスが相互に通信できるロールの関連付けを表します。クラウド サービスは、パブリック仮想 IP (VIP) アドレスおよびロード バランサーに関連付けられており、インターネットからの着信トラフィックを受け取って、そのトラフィックを受信するように構成されているロールに負荷分散します。
 
-In the case of IaaS, cloud services offer similar functionality, although in most cases, the load balancer functionality is used to forward traffic to specific TCP or UDP ports from the Internet to the many virtual machines within that cloud service.
+IaaS の場合もクラウド サービスは同様の機能を提供しますが、ほとんどの場合、ロード バランサーの機能は、インターネットからそのクラウド サービス内の多くの仮想マシンの特定の TCP または UDP ポートにトラフィックを転送するために使われます。
 
-> [AZURE.NOTE] Cloud services do not exist in Azure Resource Manager. For an introduction to the advantages of Resource Manager, see [Azure compute, network and storage providers under Azure Resource Manager](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md).
+> [AZURE.NOTE] Azure リソース マネージャーには、クラウド サービスはありません。リソース マネージャーを使用する利点の紹介については、「[Azure リソース マネージャーにおける Azure Compute、Network、Storage のプロバイダー](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
-Cloud service names are especially important in IaaS because Azure uses them as part of the default naming convention for disks. The cloud service name can contain only letters, numbers, and hyphens. The first and last character in the field must be a letter or number.
+Azure はディスクに対する既定の名前付け規則の一部としてクラウド サービスの名前を使用するため、IaaS ではクラウド サービス名が特に重要です。クラウド サービスの名前には、文字、数字、ハイフンのみを含めることができます。フィールドの先頭と末尾の文字は、文字または数字としてください。
 
-Azure exposes the cloud service names, because they are associated to the VIP, in the domain “cloudapp.net”. For a better user experience of the application, a vanity name should be configured as needed to replace the fully qualified cloud service name. This is typically done with a CNAME record in your public DNS that maps the public DNS name of your resource (for example, www.contoso.com) to the DNS name of the cloud service hosting the resource (for example, the cloud service hosting the web servers for www.contoso.com).
+クラウド サービス名はドメイン "cloudapp.net" 内の VIP に関連付けられているため、Azure ではクラウド サービスの名前が公開されます。アプリケーションのユーザー エクスペリエンスを良くするには、必要に応じて完全修飾クラウド サービス名の代わりにわかりやすい名前を使用する必要があります。これは通常、リソースのパブリック DNS 名 (例: www.contoso.com) を、リソースをホストするクラウド サービスの DNS 名 (例: www.contoso.com の Web サーバーをホストするクラウド サービス) にマップする、パブリック DNS の CNAME レコードを使用して行います。
 
-In addition, the naming convention used for cloud services might need to tolerate exceptions because the cloud service names must be unique among all other Microsoft Azure cloud services, regardless of the Microsoft Azure tenant.
+さらに、クラウド サービスの名前は、Microsoft Azure テナントに関係なく、他のすべての Microsoft Azure Cloud Services の間で一意である必要があるため、クラウド サービスに使用する名前付け規則では例外を許容することが必要になる場合があります。
 
-One important limitation of cloud services to consider is that only one virtual machine management operation can be performed at a time for all the virtual machines in the cloud service. When you perform a virtual machine management operation on one virtual machine in the cloud service, you must wait until it is finished before you can perform a new management operation on another virtual machine. Therefore, you should keep the number of virtual machines in a cloud service low.
+考慮すべきクラウド サービスの重要な制限事項の 1 つとして、クラウド サービス内のすべての仮想マシンに対し、一度に 1 つの仮想マシンの管理操作しか実行できないことが挙げられます。クラウド サービスの 1 つの仮想マシンで仮想マシンの管理操作を実行する場合は、これが終了するまで待ってから、別の仮想マシンで新しい管理操作を実行する必要があります。そのため、クラウド サービスの仮想マシンの数は少なくしておく必要があります。
 
-Azure subscriptions can support a maximum of 200 cloud services.
+Azure サブスクリプションは、最大 200 個のクラウド サービスをサポートできます。
 
-### Implementation guidelines recap for cloud services
+### クラウド サービスに関する実装ガイドラインのまとめ
 
-Decision:
+決めること:
 
-- What set of cloud services do you need to host your IT workload or infrastructure?
+- IT ワークロードまたはインフラストラクチャをホストするために必要なクラウド サービスのセット
 
-Task:
+タスク:
 
-- Create the set of cloud services using your naming convention. You can use the Azure classic portal or the **New-AzureService** PowerShell cmdlet.
+- 名前付け規則を使用してクラウド サービスのセットを作成します。Azure クラシック ポータルまたは **New-AzureService** PowerShell コマンドレットを使用できます。
 
-## 5. Virtual networks
+## 5\.仮想ネットワーク
 
-The next logical step is to create the virtual networks necessary to support the communications across the virtual machines in the solution. Although it is possible to host multiple virtual machines of an IT workload within just one cloud service, virtual networks are recommended.
+次の論理ステップは、ソリューション内の仮想マシン間の通信をサポートするために必要な仮想ネットワークを作成することです。1 つのクラウド サービスだけで IT ワークロードの複数の仮想マシンをホストできますが、仮想ネットワークを使用することをお勧めします。
 
-Virtual networks are a container for virtual machines for which you can also specify subnets, custom addressing, and DNS configuration options. Virtual machines within the same virtual network can communicate directly with other computers within the same virtual network, regardless of which cloud service they are a member of. Within the virtual network, this communication remains private, without the need for the communication to go through the public endpoints. This communication can occur via IP address, or by name, using a DNS server installed in the virtual network, or on-premises, if the virtual machine is connected to the corporate network.
+仮想ネットワークは、サブネット、カスタム アドレス指定、および DNS 構成オプションも指定できる、仮想マシンのコンテナーです。同じ仮想ネットワーク内の仮想マシンとコンピューターは、メンバーになっているクラウド サービスに関係なく、相互に直接通信できます。仮想ネットワーク内では、この通信はプライベートであり、パブリック エンドポイント経由で通信する必要はありません。この通信は、仮想マシンが企業ネットワークに接続されている場合、仮想ネットワークまたはオンプレミスにインストールされている DNS サーバーを使用して IP アドレスまたは名前により実行できます。
 
-### Site connectivity
-If on-premises users and computers do not require ongoing connectivity to virtual machines in an Azure virtual network, create a cloud-only virtual network.
+### サイトの接続
+オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の仮想マシンへの常時接続を必要としない場合は、クラウド専用の仮想ネットワークを作成します。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
-This is typically for Internet-facing workloads, such as an Internet-based web server. You can manage these virtual machines using Remote Desktop connections, remote PowerShell sessions, Secure Shell (SSH) connections, and point-to-site VPN connections.
+これは通常、インターネット ベースの Web サーバーなど、インターネットに接続されたワークロード用です。これらの仮想マシンは、リモート デスクトップ接続、リモート PowerShell セッション、Secure Shell (SSH) 接続、およびポイント対サイト VPN 接続を使用して管理できます。
 
-Because they do not connect to your on-premises network, cloud-only virtual networks can use any portion of the private IP address space.
+オンプレミス ネットワークに接続しないので、クラウド専用仮想ネットワークではプライベート IP アドレス空間の任意の部分を使用できます。
 
-If on-premises users and computers require ongoing connectivity to virtual machines in an Azure virtual network, create a cross-premises virtual network and connect it to your on-premises network with an ExpressRoute or site-to-site VPN connection.
+オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の仮想マシンへの常時接続を必要とする場合は、クロスプレミスの仮想ネットワークを作成し、ExpressRoute またはサイト間 VPN 接続を使用してオンプレミス ネットワークに接続します。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
 
-In this configuration, the Azure virtual network is essentially a cloud-based extension of your on-premises network.
+この構成では、Azure Virtual Network は基本的に、オンプレミス ネットワークのクラウド ベースの拡張機能です。
 
-Because they connect to your on-premises network, cross-premises virtual networks must use a portion of the address space used by your organization that is unique, and the routing infrastructure must support routing traffic to that portion by forwarding it to your on-premises VPN device.
+オンプレミス ネットワークに接続するため、クロスプレミス仮想ネットワークは、組織によって使用されるアドレス空間の一意な一部分を使用する必要があり、ルーティング インフラストラクチャは、オンプレミス VPN デバイスに転送することによってその部分へのトラフィックのルーティングをサポートする必要があります。
 
-To allow packets to travel from your cross-premises virtual network to your on-premises network, you must configure the set of relevant on-premises address prefixes as part of the local network definition for the virtual network. Depending on the address space of the virtual network and the set of relevant on-premises locations, there can be many address prefixes in the local network.
+クロスプレミス仮想ネットワークからオンプレミス ネットワークにパケットが移動できるようにするには、仮想ネットワークのローカル ネットワークの定義の一部として、一連の関連するオンプレミス アドレスのプレフィックスを構成する必要があります。仮想ネットワークのアドレス空間および関連するオンプレミスの場所によっては、ローカル ネットワークに多数のアドレス プレフィックスがあってもかまいません。
 
-You can convert a cloud-only virtual network to a cross-premises virtual network, but it will most likely require you to renumber your virtual network address space, your subnets, and the virtual machines that use static Azure-assigned IP addresses, known as Dynamic IPs (DIPs). Therefore, carefully consider the type of virtual networks you need (cloud-only versus cross-premises) before you create them.
+クラウド専用仮想ネットワーク間をクロスプレミス仮想ネットワークに変換できますが、通常は、仮想ネットワーク アドレス空間、サブネット、および Azure によって割り当てられた静的 IP アドレスの番号を再設定する必要があります。これは、動的 IP (DIP) と呼ばれます。したがって、作成する前に、必要な仮想ネットワークの種類 (クラウドのみか、クロスプレミスか) を慎重に検討する必要があります。
 
-### Subnets
-Subnets allow you to organize resources that are related, either logically (for example, one subnet for virtual machines associated to the same application), or physically (for example, one subnet per cloud service), or to employ subnet isolation techniques for added security.
+### サブネット
+サブネットを使用すると、関連するリソースを論理的に (たとえば、同じアプリケーションに関連する仮想マシン用に 1 つのサブネット)、または物理的に (たとえば、クラウド サービスごとに 1 つのサブネット) まとめたり、サブネット分離手法を使用してセキュリティを強化したりできます。
 
-For cross-premises virtual networks, you should design subnets with the same conventions that you use for on-premises resources, keeping in mind that **Azure always uses the first three IP addresses of the address space for each subnet**. To determine the number of addresses needed for the subnet, count the number of virtual machines that you need now, estimate for future growth, and then use the following table to determine the size of the subnet.
+クロスプレミス仮想ネットワークでは、オンプレミス リソースに対して使用するのと同じ規則でサブネットを設計する必要があります。**Azure は常にアドレス空間の最初の 3 つの IP アドレスを各サブネットに使用する**ことに注意してください。サブネットに必要なアドレスの数を決定するには、現在必要な仮想マシンの数を数え、将来の増加を予測した後、次の表を使用してサブネットのサイズを決定します。
 
-Number of virtual machines needed | Number of host bits needed | Size of the subnet
+必要な仮想マシンの数 | 必要なホスト ビットの数 | サブネットのサイズ
 --- | --- | ---
-1–3 | 3 | /29
-4–11	 | 4 | /28
-12–27 | 5 | /27
-28–59 | 6 | /26
-60–123 | 7 | /25
+1 ～ 3 | 3 | /29
+4 ～ 11 | 4 | /28
+12 ～ 27 | 5 | /27
+28 ～ 59 | 6 | /26
+60 ～ 123 | 7 | /25
 
-> [AZURE.NOTE] For normal on-premises subnets, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 2. For an Azure subnet, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 5 (2 plus 3 for the addresses that Azure uses on each subnet).
+> [AZURE.NOTE] 通常のオンプレミス サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 2 です。Azure サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 5 (2 に加えて、Azure が各サブネットに使用するアドレス数の 3)。
 
-If you choose a subnet size that is too small, you will have to renumber and redeploy the virtual machines in the subnet.
+選択したサブネットのサイズが小さすぎる場合、サブネット内の仮想マシンの番号を付け直して再デプロイする必要があります。
 
-### Implementation guidelines recap for virtual networks
+### 仮想ネットワークに関する実装ガイドラインのまとめ
 
-Decisions:
+決めること:
 
-- What type of virtual network do you need to host your IT workload or infrastructure (cloud-only or cross-premises)?
-- For cross-premises virtual networks, how much address space do you need to host the subnets and virtual machines now and for reasonable expansion in the future?
+- IT ワークロードまたはインフラストラクチャをホストするために必要な仮想ネットワークの種類は (クラウドのみまたはクロスプレミス)。
+- クロスプレミス仮想ネットワークの場合、現在のサブネットと仮想マシンをホストし、将来の妥当な拡張のために必要ななアドレス空間の大きさ。
 
-Tasks:
+タスク:
 
-- Define the address space for the virtual network.
-- Define the set of subnets and the address space for each.
-- For cross-premises virtual networks, define the set of local network address spaces for the on-premises locations that the virtual machines in the virtual network need to reach.
-- Create the virtual network using your naming convention. You can use the Azure portal or the Azure classic portal.
+- 仮想ネットワークのアドレス空間を定義します。
+- サブネットのセットおよびそれぞれに対するアドレス空間を定義します。
+- クロスプレミス仮想ネットワークの場合、仮想ネットワーク内の仮想マシンが到達する必要のあるオンプレミスの場所に対するローカル ネットワーク アドレス空間のセットを定義します。
+- 名前付け規則を使用して仮想ネットワークを作成します。Azure ポータルまたは Azure クラシック ポータルを使用できます。
 
-## 6. Availability sets
+## 6\.可用性セット
 
-In Azure PaaS, cloud services contain one or more roles that execute application code. Roles can have one or more virtual machine instances that the fabric automatically provisions. At any given time, Azure might update the instances in these roles, but because they are part of the same role, Azure knows not to update all at the same time to prevent a service outage for the role.
+Azure PaaS の場合、クラウド サービスにはアプリケーションのコードを実行する 1 つ以上のロールが含まれます。ロールは、ファブリックが自動的にプロビジョニングする 1 つまたは複数の仮想マシン インスタンスを持つことができます。Azure はいつでもこれらのロールのインスタンスを更新できますが、同じロールの一部であるため、ロールのサービスが停止するのを防ぐため、同時にすべてを更新してはならないことを Azure は認識しています。
 
-In Azure IaaS, the concept of role is not significant, because each IaaS virtual machine represents a role with a single instance. In order to hint to Azure not to bring down two or more associated machines at the same time (for example, for operating system updates of the node where they reside), the concept of availability sets was introduced. An availability set tells Azure not to bring down all the machines in the same availability set at the same time to prevent a service outage. The virtual machine members of an availability set have a 99.95% uptime service level agreement.
+Azure IaaS では、各 IaaS 仮想マシンが単一インスタンスのロールを表すため、ロールの概念は重要ではありません。関連する複数のマシンを同時に停止させないように Azure に示唆するため (たとえば、マシンが存在するノードのオペレーティング システムを更新するため)、可用性セットの概念が導入されました。可用性セットは、サービスの停止を防ぐため、同じ可用性セット内のすべてのマシンを同時に停止しないように Azure に指示します。可用性セットの仮想マシンのメンバーには、99.95% の稼働時間サービス レベル契約があります。
 
-Availability sets must be part of the high-availability planning of the solution. An availability set is defined as the set of virtual machines within a single cloud service that have the same availability set name. You can create availability sets after you create cloud services.
+可用性セットは、ソリューションの高可用性計画の一部である必要があります。可用性セットは、1 つのクラウド サービス内で同じ可用性セット名を持つ仮想マシンのセットとして定義されます。クラウド サービスを作成した後で、可用性セットを作成できます。
 
-### Implementation guidelines recap for availability sets
+### 可用性セットに関する実装ガイドラインのまとめ
 
-Decision:
+決めること:
 
-- How many availability sets do you need for the various roles and tiers in your IT workload or infrastructure?
+- IT ワークロードまたはインフラストラクチャ内のさまざまなロールおよび階層に必要な可用性セットの数
 
-Task:
+タスク:
 
-- Define the set of availability sets using your naming convention. You can associate a virtual machine to an availability set when you create the virtual machines, or you can associate a virtual machine to an availability set after the virtual machine has been created.
+- 名前付け規則を使用して一連の可用性セットを定義します。仮想マシンを作成するときに、または仮想マシンを作成した後で、仮想マシンを可用性セットに関連付けることができます。
 
-## 7. Virtual machines
+## 7\.仮想マシン
 
-In Azure PaaS, Azure manages virtual machines and their associated disks. You must create and name cloud services and roles, and then Azure creates instances associated to those roles. In the case of Azure IaaS, it is up to you to provide names for the cloud services, virtual machines, and associated disks.
+Azure PaaS では、Azure が仮想マシンとそれに関連付けられているディスクを管理します。ユーザーはクラウド サービスとロールを作成して名前を付ける必要があり、Azure はそれらのロールに関連付けられるインスタンスを作成します。Azure IaaS の場合は、クラウド サービス、仮想マシン、および関連付するディスクの名前はユーザーが指定する必要があります。
 
-To reduce administrative burden, the Azure classic portal uses the computer name as a suggestion for the default name for the associated cloud service (in the case the customer chooses to create a new cloud service as part of the virtual machine creation wizard).
+管理上の負担を軽減するため、Azure クラシック ポータルでは、関連するクラウド サービスの既定の名前として、コンピューター名が提案されます (ユーザーが、仮想マシン作成ウィザードの一部として新しいクラウド サービスを作成することを選択した場合)。
 
-In addition, Azure names disks and their supporting VHD blobs using a combination of the cloud service name, the computer name, and the creation date.
+さらに、Azure は、クラウド サービス名、コンピューター名、および作成日の組み合わせを使用して、ディスクおよびそれがサポートする VHD BLOB の名前を指定します。
 
-In general, the number of disks is much greater than the number of virtual machines. You should be careful when manipulating virtual machines to prevent orphaning disks. Also, disks can be deleted without deleting the supporting blob. If this is the case, the blob remains in the storage account until manually deleted.
+一般に、ディスクの数は仮想マシンの数よりはるかに多くなります。ディスクの孤立化を防ぐため、仮想マシンを操作するときは注意する必要があります。また、サポートしている BLOB を削除することなくディスクを削除できます。この場合、BLOB は手動で削除するまでストレージ アカウントに残っています。
 
-### Implementation guidelines recap for virtual machines
+### 仮想マシンに関する実装ガイドラインのまとめ
 
-Decision:
+決めること:
 
-- How many virtual machines do you need to provide for the IT workload or infrastructure?
+- IT ワークロードまたはインフラストラクチャを提供するために必要な仮想マシンの数
 
-Tasks:
+タスク:
 
-- Define each virtual machine name using your naming convention.
-- Create your virtual machines with the Azure portal, the Azure classic portal, the **New-AzureVM** PowerShell cmdlet, the Azure CLI, or with Resource Manager templates.
+- 名前付け規則を使用して各仮想マシンの名前を定義します。
+- Azure ポータル、Azure クラシック ポータル、**New-AzureVM** PowerShell コマンドレット、Azure CLI、またはリソース マネージャー テンプレートを使用して、仮想マシンを作成します。
 
-## Example of an IT workload: The Contoso financial analysis engine
+## IT ワークロードの例: Contoso 金融分析エンジン
 
-The Contoso Corporation has developed a next-generation financial analysis engine with leading-edge proprietary algorithms to aid in futures market trading. They want to make this engine available to its customers as a set of servers in Azure, which consist of:
+Contoso Corporation は、将来の市場取引を支援するために最先端の独自アルゴリズムで次世代の金融分析エンジンを開発しました。このエンジンを Azure 内のサーバーのセットとして顧客が利用できるようにしたいと考えています。次のもので構成されます。
 
-- Two (and eventually more) IIS-based web servers running custom web services in a web tier
-- Two (and eventually more) IIS-based application servers that perform the calculations in an application tier
-- A SQL Server 2014 cluster with AlwaysOn availability groups (two SQL Servers and a majority node witness) that stores historical and ongoing calculation data in a database tier
-- Two Active Directory domain controllers for a self-contained forest and domain in the authentication tier, which is required by SQL Server clustering
-- All of the servers are located on two subnets; a front end subnet for the web servers and a back end subnet for the application servers, a SQL Server 2014 cluster, and domain controllers
+- Web 層でカスタム web サービスを実行する 2 つの (最終的にはそれより多くの) IIS ベースの Web サーバー
+- アプリケーション層で計算を実行する 2 つの (最終的にはそれより多くの) IIS ベースのアプリケーション サーバー
+- データベース層に履歴データと現在の計算データを格納する、AlwaysOn 可用性グループ (2 つの SQL Server とマジョリティ ノード監視) を含む SQL Server 2014
+- SQL Server のクラスター化に必要な、認証階層内の自己完結型フォレストとドメインのための 2 つの Active Directory ドメイン コントローラー
+- すべてのサーバーは、Web サーバー用のフロントエンド サブネットと、アプリケーション サーバー、SQL Server 2014 クラスター、ドメイン コントローラー用のバックエンド サブネットという 2 つのサブネット上に存在します。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
-Incoming secure web traffic from the Contoso clients on the Internet needs to be load-balanced among the web servers. Calculation request traffic in the form of HTTP requests from the web servers needs to be balanced among the application servers. Additionally, the engine must be designed for high availability.
+インターネット上の Contoso クライアントから着信するセキュリティで保護された Web トラフィックは、Web サーバー間に負荷分散する必要があります。Web サーバーからの HTTP 要求の形式での計算要求トラフィックは、アプリケーション サーバー間に負荷分散されます。さらに、エンジンは高可用性対応に設計する必要があります。
 
-The resulting design must incorporate:
+結果として得られる設計には、次のものが組み込まれる必要があります。
 
-- A Contoso Azure subscription and account
-- Storage accounts
-- A virtual network with two subnets
-- Availability sets for the sets of servers with a similar role
-- Virtual machines
-- A single resource group
+- Contoso の Azure サブスクリプションとアカウント
+- ストレージ アカウント
+- 2 つのサブネットを含む仮想ネットワーク
+- 似たロールを持つ一連のサーバーのための可用性セット
+- 仮想マシン
+- 単一リソース グループ
 
-All of the above will follow these Contoso naming conventions:
+これらすべてが、次のような Contoso の名前付け規則に従います。
 
-- Contoso uses [IT workload]-[location]-[Azure resource] as a prefix. For this example, "azfae" (Azure Financial Analysis Engine) is the IT workload name and "use" (East US 2) is the location, because most of Contoso's initial customers are on the East Coast of the United States.
-- Storage accounts use contosoazfaeusesa[description] Note that contoso was added to the prefix to provide uniqueness, and storage account names do not support the use of hyphens.
-- Virtual networks use AZFAE-USE-VN[number].
-- Availability sets use azfae-use-as-[role].
-- Virtual machine names use azfae-use-vm-[vmname].
+- Contoso は、プレフィックスとして [IT ワークロード]-[場所]-[Azure リソース] を使用します。この例では、"azfae" (Azure Financial Analysis Engine) が IT ワークロード名であり、Contoso の最初の顧客のほとんどは米国東海岸にいるので "use" (East US 2) が場所です。
+- ストレージ アカウントは、contosoazfaeusesa[説明] を使用します。contoso は一意性のためにプレフィックスに追加されており、ストレージ アカウント名はハイフンの使用をサポートしないことに注意してください。
+- 仮想ネットワークは、AZFAE-USE-VN[番号] を使用します。
+- 可用性セットは、azfae-use-as-[ロール] を使用します。
+- 仮想マシン名は、azfae-use-vm-[仮想マシン名] を使用します。
 
-### Azure subscriptions and accounts
+### Azure サブスクリプションとアカウント
 
-Contoso is using their Enterprise subscription, named Contoso Enterprise Subscription, to provide billing for this IT workload.
+Contoso は、Contoso Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する請求を提供します。
 
-### Storage accounts
+### ストレージ アカウント
 
-Contoso determined that they needed two storage accounts:
+Contoso は、2 つのストレージ アカウントが必要であると判断しました。
 
-- **contosoazfaeusesawebapp** for the standard storage of the web servers, application servers, and domain controlles and their extra data disks
-- **contosoazfaeusesasqlclust** for the premium storage of the SQL Server cluster servers and their extra data disks
+- **contosoazfaeusesawebapp** は、Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらの追加データ ディスクの Standard Storage 用です
+- **contosoazfaeusesasqlclust** は、SQL Server クラスターおよびそれらの追加データ ディスクの Premium Storage 用です
 
-### A virtual network with subnets
+### サブネットを含む仮想ネットワーク
 
-Because the virtual network does not need ongoing connectivity to the Contoso on-premises network, Contoso decided on a cloud-only virtual network.
+仮想ネットワークは Contoso のオンプレミス ネットワークに常時接続している必要はないので、Contoso はクラウド専用の仮想ネットワークに決定しました。
 
-They created a cloud-only virtual network with the following settings using the Azure portal:
+Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-- Name: AZFAE-USE-VN01
-- Location: East US 2
-- Virtual network address space: 10.0.0.0/8
-- First subnet:
-	- Name: FrontEnd
-	- Address space: 10.0.1.0/24
-- Second subnet:
-	- Name: BackEnd
-	- Address space: 10.0.2.0/24
+- 名前: AZFAE-USE-VN01
+- 場所: East US 2
+- 仮想ネットワークのアドレス空間: 10.0.0.0/8
+- 1 番目のサブネット:
+	- 名前: FrontEnd
+	- アドレス空間: 10.0.1.0/24
+- 2 番目のサブネット:
+	- 名前: BackEnd
+	- アドレス空間: 10.0.2.0/24
 
-### Availability sets
+### 可用性セット
 
-To maintain high availability of all four tiers of their financial analysis engine, Contoso decided on four availability sets:
+金融分析エンジンの 4 つの階層すべての高可用性を維持するため、Contoso は 4 つの可用性セットを決定しました。
 
-- **azfae-use-as-dc** for the domain controllers
-- **azfae-use-as-web** for the web servers
-- **azfae-use-as-app** for the application servers
-- **azfae-use-as-sql** for the servers in the SQL Server cluster
+- **azfae-use-as-dc**: ドメイン コントローラー用
+- **azfae-use-as-web**: Web サーバー用
+- **azfae-use-as-app**: アプリケーション サーバー用
+- **azfae-use-as-sql**: SQL Server クラスター内のサーバー用
 
-These availability sets will be created along with the virtual machines.
+これらの可用性セットは、仮想マシンと共に作成されます。
 
-### Virtual machines
+### 仮想マシン
 
-Contoso decided on the following names for their Azure virtual machines:
+Contoso は、Azure Virtual Machines に対して次の名前を決定しました。
 
-- **azfae-use-vm-dc01** for the first domain controller
-- **azfae-use-vm-dc02** for the second domain controller
-- **azfae-use-vm-web01** for the first web server
-- **azfae-use-vm-web02** for the second web server
-- **azfae-use-vm-app01** for the first application server
-- **azfae-use-vm-app02** for the second application server
-- **azfae-use-vm-sql01** for the first SQL Server in the SQL Server cluster
-- **azfae-use-vm-sql02** for the second SQL Server in the SQL Server cluster
-- **azfae-use-vm-sqlmn01** for the majority node witness in the SQL Server cluster
+- **azfae-use-vm-dc01**: 1 番目のドメイン コントローラー用
+- **azfae-use-vm-dc02**: 2 番目のドメイン コントローラー用
+- **azfae-use-vm-web01**: 1 番目の Web サーバー用
+- **azfae-use-vm-web02**: 2 番目の Web サーバー用
+- **azfae-use-vm-app01**: 1 番目のアプリケーション サーバー用
+- **azfae-use-vm-app02**: 2 番目のアプリケーション サーバー用
+- **azfae-use-vm-sql01**: SQL Server クラスター内の 1 番目の SQL Server 用
+- **azfae-use-vm-sql02**: SQL Server クラスター内の 2 番目の SQL Server 用
+- **azfae-use-vm-sqlmn01**: SQL Server クラスター内のマジョリティ ノード監視用
 
-Here is the resulting configuration.
+完成すると次のような構成になります。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
 
-This configuration incorporates:
+この構成には次のものが含まれます。
 
-- A cloud-only virtual network with two subnets (FrontEnd and BackEnd)
-- Two storage accounts
-- Four availability sets, one for each tier of the financial analysis engine
-- The virtual machines for the four tiers
-- An external load balanced set for HTTPS-based web traffic from the Internet to the web servers
-- An internal load balanced set for unencrypted web traffic from the web servers to the application servers
-- A single resource group
+- クラウド専用仮想ネットワークと 2 つのサブネット (FrontEnd と BackEnd)
+- 2 つのストレージ アカウント
+- 金融分析エンジンの各階層に 1 つずつ、4 つの可用性セット
+- 4 つの階層用の仮想マシン
+- インターネットから Web サーバーへの HTTPS ベースの Web トラフィック用の外部負荷分散セット
+- Web サーバーからアプリケーション サーバーへの暗号化されていない Web トラフィック用の内部負荷分散セット
+- 単一リソース グループ
 
-## Additional resources
+## その他のリソース
 
-[Microsoft Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md#storage-limits)
+[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)
 
-[Sizes for virtual machines](virtual-machines-linux-sizes.md)
+[仮想マシンのサイズ](virtual-machines-linux-sizes.md)
 
-[Azure storage scalability and performance targets](../storage-scalability-targets.md)
+[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)
 
-[Datacenter extension reference architecture diagram](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
+[データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 
-[Azure compute, network, and storage providers under Azure Resource Manager](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
+[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
+<!---HONumber=AcomDC_0323_2016-->

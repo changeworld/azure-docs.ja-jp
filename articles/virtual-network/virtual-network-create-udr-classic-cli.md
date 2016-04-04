@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 #Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
@@ -55,7 +55,9 @@
 		data:    Location                        : West US
 		info:    network route-table create command OK
 
-	パラメーター: - **-l (または --location)**.NSG が作成される Azure リージョンです。ここでは、*westus* です。- -**n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
+	パラメーター:
+	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
+	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
 
 4. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`azure network route-table route set`** コマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 
@@ -68,7 +70,11 @@
 		info:    Setting route "RouteToBackEnd" in a route table "UDR-FrontEnd"
 		info:    network route-table route set command OK
 
-	パラメーター:- **-r (または --route-table-name)**。ルートが追加されるルート テーブルの名前です。ここでは、*UDR FrontEnd* です。- **-a (または --address-prefix)**。パケットの送信先であるサブネットのアドレス プレフィックスです。ここでは、*192.168.2.0/24* です。- **-t (または --next-hop-type)**。トラフィックの送信先となるオブジェクトの種類です。指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。- **-p (または --next-hop-ip-address**)。次のホップ先の IP アドレスです。ここでは、*192.168.0.4* です。
+	パラメーター:
+	- **-r (または --route-table-name)**。ルートが追加されるルート テーブルの名前です。ここでは、*UDR-FrontEnd* です。
+	- **-a (または --address-prefix)**。パケットの送信先であるサブネットのアドレス プレフィックスです。ここでは、*192.168.2.0/24* です。
+	- **-t (または --next-hop-type)**。トラフィックの送信先となるオブジェクトの種類です。指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
+	- **-p (または --next-hop-ip-address**)。次のホップ先の IP アドレスです。ここでは、*192.168.0.4* です。
 
 5. **`azure network vnet subnet route-table add`** コマンドを実行して、上記で作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
 
@@ -87,7 +93,9 @@
 		data:      Routes:
 		info:    network vnet subnet route-table add command OK	
 
-	パラメーター: - **-t (または --vnet-name)**。サブネットが置かれている VNet の名前です。ここでは、*TestVNet* です。- **-n (または --subnet-name)** です。ルート テーブルが追加されるサブネットの名前です。ここでは、*FrontEnd* です。
+	パラメーター:
+	- **-t (または --vnet-name)**。サブネットが置かれている VNet の名前です。ここでは、*TestVNet* です。
+	- **-n (または --subnet-name**)。ルート テーブルが追加されるサブネットの名前です。ここでは、*FrontEnd* です。
  
 ## バックエンドのサブネットの UDR を作成する
 上記のシナリオに基づいて、バックエンドのサブネットに必要なルート テーブルとルートを作成するには、次の手順に従います。
@@ -104,4 +112,4 @@
 
 		azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

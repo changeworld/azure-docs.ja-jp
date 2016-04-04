@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Analytics の参考資料" 
-	description="Application Insights の強力な検索ツールである Application Analytics の正規表現。" 
+	pageTitle="Application Insights の Analytics 用の参考資料" 
+	description="Application Insights の強力な検索ツールである Analytics の正規表現。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,13 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-# 参考資料
+# Application Insights: Analytics 参考資料
 
-[Application Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な検索エンジンです。ここでは、Application Analytics のクエリ言語である CSL について説明します。
-
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -415,4 +414,4 @@
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,95 +1,96 @@
 
 
 
-An availability set helps keep your virtual machines available during downtime, such as during maintenance. Placing two or more similarly configured virtual machines in an availability set creates the redundancy needed to maintain availability of the applications or services that your virtual machine runs. For details about how this works, see [Manage the availability of virtual machines] [].
+可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。この機能の詳細については、「[仮想マシンの可用性管理][]」を参照してください。
 
-It's a best practice to use both availability sets and load-balancing endpoints to help ensure that your application is always available and running efficiently. For details about load-balanced endpoints, see [Load balancing for Azure infrastructure services] [].
+アプリケーションをいつでも利用できるようにするだけでなく、効率的に実行できるようにするためには、可用性セットと負荷分散エンドポイントの両方を使用することをお勧めします。負荷分散されたエンドポイントの詳細については、「[Azure インフラストラクチャ サービスの負荷分散][]」を参照してください。
 
-In the classic deployment model, you can put virtual machines into an availability set by using one of two options:
+クラシック デプロイ モデルでは、次の 2 つの方法のいずれかを使用して、仮想マシンを可用性セットに割り当てることができます。
 
-- [Option 1: Create a virtual machine and an availability set at the same time] []. Then, add new virtual machines to the set when you create those virtual machines.
-- [Option 2: Add an existing virtual machine to an availability set] [].
+- [オプション 1: 仮想マシンと可用性セットを同時に作成する][]。この後で、新しい仮想マシンを作成する場合には、ここで作成した可用性セットに追加します。
+- [オプション 2: 既存の仮想マシンを可用性セットに追加する][]。
 
->[AZURE.NOTE] In the classic model, virtual machines that you want to put in the same availability set must belong to the same cloud service.
+>[AZURE.NOTE] クラシック モデルで複数の仮想マシンを同じ可用性セットに割り当てる場合は、それらの仮想マシンが同じクラウド サービスに属している必要があります。
 
-## <a id="createset"> </a>Option 1: Create a virtual machine and an availability set at the same time##
+## <a id="createset"> </a>オプション 1: 仮想マシンと可用性セットを同時に作成する##
 
-You can use either the Azure classic portal or Azure PowerShell commands to do this.
+Azure クラシック ポータルを使用する方法と、Azure PowerShell コマンドを使用する方法があります。
 
-To use the Azure classic portal:
+Azure クラシック ポータルを使用するには:
 
-1. If you haven't already done so, sign in to the Azure classic portal.
+1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-4. Use the first two screens to select an image, a user name and password, and so on. For more details, see [Create a virtual machine running Windows][].
+4. 最初の 2 つの画面で、イメージ、ユーザー名、パスワードなどを選択します。詳細については、「[Windows を実行する仮想マシンの作成][]」を参照してください。
 
-5. In the third screen, you can configure resources for networking, storage, and availability. Do the following:
+5. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。以下の手順を実行します。
 
-	1. Choose the appropriate cloud service. Leave it set to **Create a new cloud service** (unless you are adding this new virtual machine to an existing virtual machine cloud service). Then, under **Cloud Service DNS Name**, type a name. The DNS name becomes part of the URI that's used to contact the virtual machine. The cloud service acts as a communications and isolation group. All virtual machines in the same cloud service can communicate with each other, can be set up for load balancing, and can be placed in the same availability set.
+	1. 適切なクラウド サービス名を選択します。ここでは、**[新しいクラウド サービスの作成]** に設定します (ただし、新しい仮想マシンを既存の仮想マシン クラウド サービスに追加する場合を除く)。**[クラウド サービス DNS 名]** で、名前を入力します。DNS 名は、仮想マシンに接続するために使用される URI の一部になります。クラウド サービスは、通信および分離グループとしての機能があります。すべての仮想マシンが同じクラウド サービス内に属していれば、相互の通信、負荷分散設定、同一可用性セットへの割り当てができます。
 
-	2. Under **Region/Affinity Group/Virtual Network**, specify a virtual network if you plan to use one. **Important**: If you want a virtual machine to use a virtual network, you must join the virtual machine to the virtual network when you create the virtual machine. You can't join the virtual machine to a virtual network after you create the virtual machine. For more information, see [Virtual Network Overview][].
+	2. 仮想ネットワークを使用する場合には、**[リージョン/アフィニティ グループ/仮想ネットワーク]** で、使用する仮想ネットワークを指定します。**重要**: 仮想マシンで仮想ネットワークを使用する場合は、仮想マシンを作成時に仮想ネットワークに参加させる必要があります。作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要][]」を参照してください。
 
-	3. Create the availability set. Under **Availability Set**, leave it set to **Create an availability set**. Then, type a name for the set.
+	3. 可用性セットを作成します。**[可用性セット]** で、**[可用性セットの作成]** が選択されたままにします。次に、可用性セットの名前を入力します。
 
-	4. Create the default endpoints and add more endpoints if needed. You also can add endpoints later.
+	4. 既定のエンドポイントを作成し、必要に応じてエンドポイントを追加します。エンドポイントは後で追加することもできます。
 
-	![Create an availability set for a new virtual machine](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
+	![新しい仮想マシンの可用性セットを作成する](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
 
-6. On the fourth screen, click the extensions that you want to install. Extensions provide features that make it easier to manage the virtual machine, such as running antimalware or resetting passwords. For details, see [Azure VM Agent and VM Extensions](virtual-machines-windows-classic-agents-and-extensions.md).
+6. 4 番目の画面で、インストールする拡張機能をクリックします。拡張機能には、マルウェア対策の実行やパスワードのリセットなどの機能が用意されており、仮想マシンの管理に役立ちます。詳細については、「[Azure VM Agent and VM Extensions (Azure VM エージェントおよび VM 拡張機能)](virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
 
-7.	Click the arrow to create the virtual machine and the availability set.
+7.	矢印をクリックして、仮想マシンと可用性セットを作成します。
 
-	From the dashboard of the new virtual machine, you can click **Configure** to see that the virtual machine belongs to the new availability set.
+	新しい仮想マシンのダッシュボードで **[構成]** をクリックし、仮想マシンが新しい可用性セットに属していることを確認します。
 
-To use Azure PowerShell commands to create an Azure virtual machine and add it to a new or existing availability set, see the following:
+Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、次を参照してください。
 
 
-- [Use Azure PowerShell to create and preconfigure Linux-based virtual machines](virtual-machines-linux-classic-createpowershell.md)
-- [Use Azure PowerShell to create and preconfigure Windows-based virtual machines](virtual-machines-windows-classic-create-powershell.md)
+- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-linux-classic-createpowershell.md)
+- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-windows-classic-create-powershell.md)
 
-## <a id="addmachine"> </a>Option 2: Add an existing virtual machine to an availability set##
+## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
-In the Azure classic portal, you can add existing virtual machines to an existing availability set
- or create a new one for them. (Keep in mind that the virtual machines in the same availability set must belong to the same cloud service.) The steps are almost the same. With Azure PowerShell, you can add the virtual machine to an existing availability set.
+Azure クラシック ポータルでは、既存の仮想マシンを既存の可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます(同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
 
-1. If you have not already done so, sign in to the Azure classic portal.
+1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
 
-2. On the command bar, click **Virtual Machines**.
+2. コマンド バーで **[Virtual Machines]** をクリックします。
 
-3. From the list of virtual machines, select the name of the virtual machines that you want to add to the set.
+3. 仮想マシンの一覧から、既存の可用性セットに追加する仮想マシンの名前を選択します。
 
-4. From the tabs below the virtual machine name, click **Configure**.
+4. 仮想マシン名の下のタブの中から、**[構成]** をクリックします。
 
-5. In the Settings section, find **Availability Set**. Do one of the following:
+5. [設定] セクションで、**[可用性セット]** を探します。次のいずれかを実行します。
 
-	A. Select **Create an availability set**, and then type a name for the set.
+	A.**[可用性セットの作成]** を選択し、セットの名前を入力します。
 
-	B. Select **Select an availability set**, and then select a set from the list.
+	B.**[可用性セットの選択]** を選択し、一覧から目的の可用性セットを選択します。
 
-	![Create an availability set for an existing virtual machine](./media/virtual-machines-common-classic-configure-availability/VMavailabilityExistingVM.png)
+	![既存の仮想マシンの可用性セットを作成する](./media/virtual-machines-common-classic-configure-availability/VMavailabilityExistingVM.png)
 
-6. Click **Save**.
+6. **[保存]** をクリックします。
 
-To use Azure PowerShell commands, open an administrator-level Azure PowerShell session and run the following command. For the placeholders (such as &lt;VmCloudServiceName&gt;), replace everything within the quotes, including the < and > characters, with the correct names.
+Azure PowerShell コマンドを使用するには、管理者レベルの Azure PowerShell セッションを開き、次のコマンドを実行します。プレース ホルダー (&lt;VmCloudServiceName&gt; など) では、< and > 文字を含む引用符内のすべてを正しい名前に置き換えます。
 
 	Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
->[AZURE.NOTE] The virtual machine might have to be restarted to finish adding it to the availability set.
+>[AZURE.NOTE] 可用性セットに仮想マシンを追加する手順を完了するには、仮想マシンの再起動が必要になる場合があります。
 
-## Additional resources
+## その他のリソース
 
-[Articles for virtual machines in Service Management]
+[サービス管理での仮想マシンの操作に関する記事]
 
 <!-- LINKS -->
-[Option 1: Create a virtual machine and an availability set at the same time]: #createset
-[Option 2: Add an existing virtual machine to an availability set]: #addmachine
+[オプション 1: 仮想マシンと可用性セットを同時に作成する]: #createset
+[オプション 2: 既存の仮想マシンを可用性セットに追加する]: #addmachine
 
-[Load balancing for Azure infrastructure services]: virtual-machines-linux-load-balance.md
-[Manage the availability of virtual machines]: virtual-machines-linux-manage-availability.md
+[Azure インフラストラクチャ サービスの負荷分散]: virtual-machines-linux-load-balance.md
+[仮想マシンの可用性管理]: virtual-machines-linux-manage-availability.md
 
-[Create a virtual machine running Windows]: virtual-machines-windows-hero-tutorial.md
-[Virtual Network overview]: virtual-networks-overview.md
-[Articles for virtual machines in Service Management]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines 
+[Windows を実行する仮想マシンの作成]: virtual-machines-windows-hero-tutorial.md
+[Virtual Network の概要]: virtual-networks-overview.md
+[サービス管理での仮想マシンの操作に関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
+
+<!---HONumber=AcomDC_0323_2016-->

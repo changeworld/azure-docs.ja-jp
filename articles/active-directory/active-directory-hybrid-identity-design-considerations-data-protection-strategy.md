@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="11/11/2015"
+	ms.date="03/18/2016"
 	ms.author="yuridio"/>
 
 
@@ -112,7 +112,7 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
  - リソースへのきめ細かなアクセス: 特定のサブスクリプションのユーザーとグループ、リソース グループ、Web サイトやデータベースなどの個々の Azure リソースにロールを割り当てることができます。このように、ユーザーが必要なすべてのリソースにアクセスし、管理する必要のないリソースには一切アクセスできないようにすることができます。
 
  >[AZURE.NOTE]
-  この機能の詳細については、[Azure プレビュー ポータルのロールベースのアクセス制御](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)に関するページを参照してください。アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)を参照してください。
+  この機能の詳細については、[Azure でのロールベースのアクセス制御](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)に関するページを参照してください。アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)を参照してください。
 
 3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
@@ -121,7 +121,7 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 
 ## インシデント対応オプションの定義
-Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。IT 部門は、Azure AD のアクセスおよび使用状況レポート機能を活用することで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。[Azure AD Premium サブスクリプション](articles/active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。[Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
+Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。IT 部門は、Azure AD のアクセスおよび使用状況レポート機能を活用することで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。[Azure AD Premium サブスクリプション](active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。[Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
 
 - **異常レポート**: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。 
 - **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。 
@@ -156,4 +156,4 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

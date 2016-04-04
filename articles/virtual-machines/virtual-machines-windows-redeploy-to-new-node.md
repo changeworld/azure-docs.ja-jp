@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="仮想マシンの再デプロイ | Microsoft Azure" 
 	description="RDP 接続の問題を軽減するために仮想マシンを再デプロイする方法について説明します。" 
-	services="virtual-machines" 
+	services="virtual-machines-windows" 
 	documentationCenter="virtual-machines" 
 	authors="dsk-2015" 
 	manager="timlt"
@@ -10,7 +10,7 @@
 	
 
 <tags 
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="vm-windows"
@@ -26,4 +26,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

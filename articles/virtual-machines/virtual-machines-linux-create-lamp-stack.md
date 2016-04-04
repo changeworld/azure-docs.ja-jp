@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure を使用した LAMP スタックの作成 | Microsoft Azure"
 	description="Linux を実行する Azure の仮想マシン (VM) を使用して、Microsoft Azure で LAMP スタックを設定する方法について説明します。"
-	services="virtual-machines"
+	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="NingKuang"
 	manager="timlt"
@@ -9,7 +9,7 @@
 	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -49,7 +49,8 @@ SSH 認証キーを生成するには、次の手順に従います。
 -	[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から puttygen をダウンロードしてインストールします。
 -	puttygen.exe を実行します。
 -	**[生成]** をクリックしてキーを生成します。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。![][1]
--	生成処理が終わると、puttygen.exe に生成されたキーが表示されます。次に例を示します。![][2]
+-	生成処理が終わると、puttygen.exe に生成されたキーが表示されます。次に例を示します。
+![][2]
 -	**[キー]** の公開キーを選択してコピーし、**publicKey.pem** という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
 -	**[秘密キーの保存]** をクリックし、**privateKey.ppk** という名前のファイルに保存します。
 
@@ -456,4 +457,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="ロジック アプリの定義の作成 | Microsoft Azure" 
 	description="ロジック アプリの JSON 定義を記述する方法について説明します。" 
 	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,18 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="03/16/2016"
 	ms.author="stepsic"/>
 	
 # ロジック アプリの定義の作成
-このトピックでは、単純な宣言型の JSON 言語である、[App Service Logic Apps](app-service-logic-what-are-logic-apps.md) 定義の使用方法を示します。まだ使用したことがない場合は、まず[新しいロジック アプリの作成方法](app-service-logic-create-a-logic-app.md)に関するページを参照してください。また、[MSDN の定義言語の完全リファレンス マテリアル](https://msdn.microsoft.com/library/azure/dn948512.aspx)を参照することもできます。
+このトピックでは、単純な宣言型の JSON 言語である、[App Service Logic Apps](app-service-logic-what-are-logic-apps.md) 定義の使用方法を示します。まだ使用したことがない場合は、まず[新しいロジック アプリの作成方法](app-service-logic-create-a-logic-app.md)に関するページを参照してください。また、[MSDN の定義言語の完全リファレンス マテリアル](https://msdn.microsoft.com/library/azure/mt643789.aspx)を参照することもできます。
 
 ## リストに対して繰り返す複数のステップ
 
 一般的なパターンとしては、最初のステップでアイテムのリストを取得した後、そのリストの各アイテムに対して必要な 2 つ以上の一連のアクションを実行します。
 
-![リストに対して繰り返す](./media/app-service-logic-author-definitions/repeatoverlists.png)
+![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists.png)
 
+![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists2.png)
+
+![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists3.png)
+
+![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists4.png)
+
+ 
 この例には、次の 3 つのアクションがあります。
 
 1. 記事のリストを取得する。これにより、配列を含むオブジェクトが返されます。
@@ -77,7 +84,7 @@
 
 [ロジック アプリの機能の使用](app-service-logic-use-logic-app-features.md)に関するページで説明されているように、2 番目のアクションの `forEach:` プロパティを使用して、最初に取得したリストを反復処理します。ただし、2 番目のアクションは各記事に対して実行されるため、3 番目のアクションでは、`@actions('readLinks').outputs` プロパティを選択する必要があります。
 
-アクション内では、[`item()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#item) 関数を使用できます。この例では、`location` ヘッダーを取得する必要があったため、`@item().outputs.headers` で続行して 2 番目のアクションの実行結果の出力を取得する必要がありました。ここでは、それを反復処理しています。
+アクション内では、[`item()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#item) 関数を使用できます。この例では、`location` ヘッダーを取得する必要があったため、`@item().outputs.headers` で続行して 2 番目のアクションの実行結果の出力を取得する必要がありました。ここでは、それを反復処理しています。
 
 ## リスト内のアイテムをいくつかの異なる構成にマップする
 
@@ -134,7 +141,7 @@
 
 この場合、最初に記事のリストを取得した後、2 番目のステップでは、マップ内で、パラメーターとして定義されたカテゴリに基づいて、コンテンツの取得元である URL を検索します。
 
-ここで注意する点が 2 つあります。1 つは、カテゴリが定義済みの既知のカテゴリの 1 つと一致するかどうかを確認するために [`intersection()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#intersection) 関数が使用されている点です。もう 1 つは、カテゴリを取得した後は、`parameters[...]` のように、角かっこを使用してマップのアイテムを取り出すことができる点です。
+ここで注意する点が 2 つあります。1 つは、カテゴリが定義済みの既知のカテゴリの 1 つと一致するかどうかを確認するために [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数が使用されている点です。もう 1 つは、カテゴリを取得した後は、`parameters[...]` のように、角かっこを使用してマップのアイテムを取り出すことができる点です。
 
 ## リストの繰り返し処理で Logic Apps を連結する/入れ子にする
 
@@ -199,7 +206,7 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-次に、子ロジック アプリでは、子ワークフローに渡された値を取得するために [`triggerBody()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#triggerBody) 関数を使用します。その後、親フローに返すデータを出力に設定します。
+次に、子ロジック アプリでは、子ワークフローに渡された値を取得するために [`triggerBody()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#triggerBody) 関数を使用します。その後、親フローに返すデータを出力に設定します。
 
 ```
 {
@@ -236,7 +243,7 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/library/azure/dn948511.aspx)に関するページを参照してください。
+MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/library/azure/mt643939.aspx)に関するページを参照してください。
 
 >[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
 
@@ -354,7 +361,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 ロジックの 2 つの条件付きフローを (実行されているかどうかは関係なく) 結合するには、両方の分岐からデータを受け取る単一のアクションを用意します。
 
-このための方法は、処理しているのが 1 つのアイテムかアイテムのコレクションかによって異なります。1 つのアイテムの場合は、[`coalesce()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#coalesce) 関数を使用します。
+このための方法は、処理しているのが 1 つのアイテムかアイテムのコレクションかによって異なります。1 つのアイテムの場合は、[`coalesce()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#coalesce) 関数を使用します。
 
 ```
 {
@@ -410,7 +417,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 }
 ```
  
-また、たとえば、最初の 2 つの分岐両方で注文のリストが処理される場合は、[`union()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#union) 関数を使用して両方の分岐のデータを結合します。
+また、たとえば、最初の 2 つの分岐両方で注文のリストが処理される場合は、[`union()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#union) 関数を使用して両方の分岐のデータを結合します。
 
 ```
 {
@@ -514,17 +521,17 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 次に、操作を詳しく説明します。
 
-1. 注文の名前の [`length()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#length) を取得します。これにより、文字数の合計が返されます。
+1. 注文の名前の [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) を取得します。これにより、文字数の合計が返されます。
 
 2. 5 を引きます (文字列を短くする必要があるため)
 
-3. 実際に [`substring()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#substring) を使用します。ここでは、インデックス `5` から開始し、文字列の残りの部分を取得します。
+3. 実際に [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring) を使用します。ここでは、インデックス `5` から開始し、文字列の残りの部分を取得します。
 
-4. この部分文字列を、[`base64()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#base64) 文字列に変換します。
+4. この部分文字列を、[`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 文字列に変換します。
 
-5. [`replace()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#replace) で、すべての `+` 文字を `-` に置き換えます。
+5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `+` 文字を `-` に置き換えます。
 
-6. [`replace()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#replace) で、すべての `/` 文字を `_` に置き換えます。
+6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `/` 文字を `_` に置き換えます。
 
 ## 日付と時刻の操作
 
@@ -571,13 +578,13 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 }
 ```
 
-この例では、前のステップの `startTime` を抽出しています。次に、現在の時刻を取得して、[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/dn948512.aspx#addseconds) で 1 秒引いています (`minutes` や `hours` のように他の時間単位も使用できます)。最後に、この 2 つの値を比較できます。最初の値が 2 番目の値より小さい場合は、最初に注文が実行されてから 2 秒以上経過していることを意味します。
+この例では、前のステップの `startTime` を抽出しています。次に、現在の時刻を取得して、[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) で 1 秒引いています (`minutes` や `hours` のように他の時間単位も使用できます)。最後に、この 2 つの値を比較できます。最初の値が 2 番目の値より小さい場合は、最初に注文が実行されてから 2 秒以上経過していることを意味します。
 
-また、文字列フォーマッタを使用して日付の書式を設定できることにも注意してください。ここでは、RFC1123 を取得するためにクエリ文字列で [`utcnow('r')`](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow) を使用しています。すべての日付の書式設定については、[MSDN のドキュメント](https://msdn.microsoft.com/library/azure/dn948512.aspx#utcnow)に記載されています。
+また、文字列フォーマッタを使用して日付の書式を設定できることにも注意してください。ここでは、RFC1123 を取得するためにクエリ文字列で [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) を使用しています。すべての日付の書式設定については、[MSDN のドキュメント](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)に記載されています。
 
 ## 実行時に値を渡して動作を変更する
 
-たとえば、ロジック アプリの開始に使用するいくつかの値に基づいて、さまざまな動作を実行するとします。[`triggerOutputs()`](https://msdn.microsoft.com/library/azure/dn948512.aspx#triggerOutputs) 関数を使用すると、渡した内容からこれらの値を取得できます。
+たとえば、ロジック アプリの開始に使用するいくつかの値に基づいて、さまざまな動作を実行するとします。[`triggerOutputs()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#triggerOutputs) 関数を使用すると、渡した内容からこれらの値を取得できます。
 
 ```
 {
@@ -611,13 +618,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 }
 ```
 
-実際にこれを動作させるには、実行を開始するときに、必要なプロパティを渡す必要があります (上の例では `uriToGet` と `doMoreLogic`)。次に示す呼び出しでは、[基本認証を使用](https://msdn.microsoft.com/library/azure/dn948513.aspx#basicAuth)できます。
-
-```
-POST https://<<Logic app endpoint from the Essentials>>/run?api-version=2015-02-01-preview
-Authorization: Basic <<Based 64 encoded username (default) : password (from the Settings blade)>>
-Content-type: application/json
-```
+実際にこれを動作させるには、実行を開始するときに、必要なプロパティを渡す必要があります (上の例では `uriToGet` と `doMoreLogic`)。
 
 次のペイロードを使用します。ここで使用する値をロジック アプリに指定しています。
 
@@ -728,6 +729,6 @@ API を呼び出しているときに、特定の応答を待ってから処理�
 }
 ```
 
-ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
+ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="12/07/2015" 
+ms.date="03/21/2016" 
 ms.author="adegeo"/>
 
 # クラウド サービス共通のスタートアップ タスク
@@ -23,7 +23,7 @@ ms.author="adegeo"/>
 
 ここで紹介するタスクの多くで使用するもの
 
->[AZURE.NOTE]スタートアップ タスクを使用できるのはクラウド サービス Web ロールと worker ロールのみであり、Virtual Machines には使用できません。
+>[AZURE.NOTE] スタートアップ タスクを使用できるのはクラウド サービス Web ロールと worker ロールのみであり、Virtual Machines には使用できません。
 
 
 ## ロールを開始する前に環境変数を定義する
@@ -60,7 +60,7 @@ ms.author="adegeo"/>
 </ServiceDefinition>
 ```
 
-デプロイメントに関する情報を参照するには、変数に[有効な Azure XPath 値](https://msdn.microsoft.com/library/azure/hh404006.aspx)を指定することもできます。`value` 属性を使用する代わりに、[RoleInstanceValue] 子要素を定義します。
+デプロイメントに関する情報を参照するには、変数に[有効な Azure XPath 値](cloud-services-role-config-xpath.md)を指定することもできます。`value` 属性を使用する代わりに、[RoleInstanceValue] 子要素を定義します。
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -503,4 +503,4 @@ Startup2.cmd:
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

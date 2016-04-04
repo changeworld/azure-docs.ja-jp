@@ -32,10 +32,10 @@ Azure Mobile Apps JavaScript SDK のインストールは、次の `npm` コマ�
 npm install azure-mobile-apps-client --save
 ```
 
-インストール後、ライブラリが `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.js` に配置されます。このファイルを Web エリアにコピーします。
+インストール後、ライブラリが `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.min.js` に配置されます。このファイルを Web エリアにコピーします。
 
 ```
-<script src="path/to/MobileServices.Web.js"></script>
+<script src="path/to/MobileServices.Web.min.js"></script>
 ```
 
 ライブラリは、Browserify や Webpack などの CommonJS 環境では ES2015 モジュールとして使用できるほか、AMD ライブラリとしても使用できます。次に例を示します。
@@ -113,4 +113,4 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

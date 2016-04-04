@@ -13,21 +13,23 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="02/22/2016"
+	ms.date="03/16/2016"
 	ms.author="raynew"/>
 
 #  Azure Site Recovery を使用した Amazon Web Services (AWS) の Windows 仮想マシンの Azure への移行
 
-Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
-
-
 ## 概要
 
-この記事では、Site Recovery を使用して、AWS で実行中の Windows インスタンスを Azure に移行またはフェールオーバーする方法について説明します。「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」で詳細に説明されている手順の概要について説明します。リンクされている記事は、VMware VM または Windows/Linux 物理サーバーを Azure にレプリケートする最新の強化されたバージョンのシナリオです。デプロイの各手順の詳細については、リンクされている記事を参照することをお勧めします。
+この記事では、Site Recovery を使用して、AWS で実行中の Windows インスタンスを Azure に移行する方法について説明します。開始する前に、次のことに注意してください。
 
->[AZURE.NOTE] AWS での Windows VM の移行については、この[古い記事](site-recovery-vmware-to-azure-classic-legacy.md)の手順を**参照する必要はありません**。
+- 現時点でのみ移行できます。つまり、AWS から Azure にフェールオーバーすることはできますが、もう一度フェールバックすることはできません。
+- この記事では、レプリケーションの設定に関する最新の拡張手順を提供する 「[VMware 仮想マシンまたは物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md)」で詳しく説明される数多くの手順を使用し、概要について説明します。移行の際の詳細な手順については、この記事を参照することをお勧めします。
+- この[古い記事](site-recovery-vmware-to-azure-classic-legacy.md)の手順を**参照する必要はありません**。
 
-## 作業開始
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) で投稿してください。
+
+
+## 前提条件
 
 ここでは、開始する前に必要な項目を示します。
 
@@ -58,6 +60,6 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 		
 ## 次のステップ
 
-ご意見やご質問がありましたら、[Site Recovery フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+その他のレプリケーション シナリオの詳細については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -3,9 +3,9 @@
 	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Ruby で記述されています。" 
 	services="storage" 
 	documentationCenter="ruby" 
-	authors="tfitzmac" 
+	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="tysonn"/>
+	editor=""/>
 
 <tags 
 	ms.service="storage" 
@@ -14,7 +14,7 @@
 	ms.devlang="ruby" 
 	ms.topic="article" 
 	ms.date="02/23/2016" 
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 
 # Ruby から Queue ストレージを使用する方法
@@ -31,7 +31,7 @@
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-ruby-rails-web-app-linux.md)」を参照してください。
+Ruby アプリケーションを作成します。手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md)」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -162,4 +162,4 @@ Azure ポータルでクラシックまたは ARM ストレージ アカウン�
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

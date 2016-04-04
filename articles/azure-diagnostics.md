@@ -58,7 +58,7 @@ Web Apps では Azure 診断が使用されないので注意してください�
 詳細なトピックについては、次を参照してください。
 - [Using Azure Diagnostics with Application Insights for Cloud Services (Cloud Services 向けの Application Insights での Azure 診断の使用)](./application-insights/app-insights-cloudservices.md)
 - [Azure 診断で Cloud Services アプリケーションのフローをトレースする](./cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-- [Use PowerShell to set up diagnostics on Cloud Services (PowerShell を使用して Cloud Services で診断を設定する)](./virtual-machines/virtual-machines-extensions-diagnostics-windows-powershell.md)
+- [Use PowerShell to set up diagnostics on Cloud Services (PowerShell を使用して Cloud Services で診断を設定する)](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
 
 
 ## Virtual Machines で Azure 診断を使用する
@@ -66,8 +66,8 @@ Web Apps では Azure 診断が使用されないので注意してください�
 - [Set up Azure Diagnostics on an Azure Virtual Machine (Azure 仮想マシンで Azure 診断を設定する)](./virtual-machines-dotnet-diagnostics.md)
 
 詳細なトピックについては、次を参照してください。
-- [Use PowerShell to set up diagnostics on Azure Virtual Machines (PowerShell を使用して Azure Virtual Machines で診断を設定する)](./virtual-machines/virtual-machines-extensions-diagnostics-windows-powershell.md)
-- [Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](./virtual-machines/virtual-machines-extensions-diagnostics-windows-template.md)
+- [Use PowerShell to set up diagnostics on Azure Virtual Machines (PowerShell を使用して Azure Virtual Machines で診断を設定する)](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
+- [Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](./virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
 ## Service Fabric で Azure 診断を使用する
 [Monitor a Service Fabric application (Service Fabric アプリケーションを監視する)](./service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) を参照して使用を開始します。この記事にアクセスすると、左側のナビゲーション ツリーに Service Fabric 診断に関するその他の記事が多数あります。
@@ -79,4 +79,4 @@ Web Apps では Azure 診断が使用されないので注意してください�
 - [Application Insights への Azure 診断情報の送信](./azure-diagnostics-configure-applicationinsights.md)について説明します。　
 - Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、「[TroubleShooting Azure Diagnostics (Azure 診断のトラブルシューティング)](./azure-diagnostics-troubleshooting.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

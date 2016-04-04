@@ -57,7 +57,7 @@
 
 - [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 - [Creating a VM Image on-premise (オンプレミスでの VM イメージの作成)](marketplace-publishing-vm-image-creation-on-premise.md)
-- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-tutorial/)
+- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-hero-tutorial/)
 
 **Data Services**
 
@@ -82,4 +82,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

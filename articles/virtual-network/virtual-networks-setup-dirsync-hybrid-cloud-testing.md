@@ -181,8 +181,8 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 [テスト用のシミュレートされたハイブリッド クラウド環境の設定](virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)
 
-[Azure ハイブリッド クラウド テスト環境](../virtual-machines/virtual-machines-hybrid-cloud-test-environments.md)
+[Azure ハイブリッド クラウド テスト環境](../virtual-machines/virtual-machines-windows-classic-hybrid-test-env.md)
 
-[Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
+[Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-linux-infrastructure-service-guidelines.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

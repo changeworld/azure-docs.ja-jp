@@ -1,62 +1,62 @@
 
 
 
-This article describes different ways to tag a virtual machine in Azure through the Azure Resource Manager. Tags are user-defined Key/Value pairs which can be placed directly on a resource or a resource group. Azure currently supports up to 15 tags per resource and resource group. Tags may be placed on a resource at the time of creation or added to an existing resource. Please note, tags are supported for resources created via the Azure Resource Manager only.
+この記事では、Azure リソース マネージャーでAzure で仮想マシンにタグを付けるさまざまな方法について説明します。タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。タグは、Azure リソース マネージャー経由で作成されたリソースでのみサポートされます。
 
-## Tagging a Virtual Machine through Templates
+## テンプレートを使用して仮想マシンにタグを付ける
 
-First, let’s look at tagging through templates. [This template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm) places tags on the following resources: Compute (Virtual Machine), Storage (Storage Account), and Network (Public IP Address, Virtual Network, and Network Interface).
+まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)では、Compute (仮想マシン)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。
 
-Click the **Deploy to Azure** button from the [template link](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm). This will navigate to the [Azure portal](https://portal.azure.com/) where you can deploy this template.
+[テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure ポータル](https://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
 
-![Simple deployment with Tags](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
+![タグを使用した単純なデプロイ](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-This template includes the following tags: *Department*, *Application*, and *Created By*. You can add/edit these tags directly in the template if you would like different tag names.
+このテンプレートには、*Department*、*Application*、および *Created By* というタグが含まれています。別のタグ名を使いたい場合は、テンプレートにタグを追加したり、タグを編集したりすることができます。
 
-![Azure tags in a template](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
+![テンプレートの Azure タグ](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-As you can see, the tags are defined as Key/Value pairs, separated by a colon (:). The tags must be defined in this format:
+上の例のように、タグはキーと値のペアとして定義され、コロン (:) で区切られています。タグは次の形式で定義する必要があります。
 
         “tags”: {
             “Key1” : ”Value1”,
             “Key2” : “Value2”
         }
 
-Save the template file after you finish editing it with the tags of your choice.
+選択したタグの編集を完了したら、テンプレート ファイルを保存します。
 
-Next, in the **Edit Parameters** section, you can fill out the values for your tags.
+次に、**[パラメーターの編集]** セクションで、タグの値を入力します。
 
-![Edit Tags in Azure portal](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
+![Azure ポータルでタグを編集する](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-Click **Create** to deploy this template with your tag values.
-
-
-## Tagging through the Portal
-
-After creating your resources with tags, you can view, add, and delete tags in the portal.
-
-Select the tags icon to view your tags:
-
-![Tags icon in Azure portal](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
-
-Add a new tag through the portal by defining your own Key/Value pair, and save it.
-
-![Add new Tag in Azure portal](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
-
-Your new tag should now appear in the list of tags for your resource.
-
-![New Tag saved in Azure portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
+**[作成]** をクリックして、タグの値が指定されたこのテンプレートをデプロイします。
 
 
-## Tagging with PowerShell
+## ポータルからタグを付ける
 
-To create, add, and delete tags through PowerShell, you first need to set up your [PowerShell environment with Azure Resource Manager][]. Once you have completed the setup, you can place tags on Compute, Network, and Storage resources at creation or after the resource is created via PowerShell. This article will concentrate on viewing/editing tags placed on Virtual Machines.
+タグを使用してリソースを作成したら、ポータルでタグの表示、追加、および削除を行うことができます。
 
-First, navigate to a Virtual Machine through the `Get-AzureVM` cmdlet.
+タグを表示するには、タグ アイコンを選択します。
+
+![Azure ポータルのタグ アイコン](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
+
+ポータルで新しいタグを追加するには、キーと値のペアを定義して保存します。
+
+![Azure ポータルで新しいタグを追加する](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
+
+リソースのタグ一覧に新しいタグが表示されます。
+
+![Azure ポータルで保存された新しいタグ](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
+
+
+## PowerShell を使用したタグ付け
+
+PowerShell でタグの作成、追加、および削除を行うには、まず [Azure リソース マネージャーで PowerShell 環境][]を設定する必要があります。設定を完了したら、PowerShell で Compute、Network、および Storage リソースを作成するとき、またはリソースを作成した後にタグを追加できます。この記事では、Virtual Machines で設定したタグを表示または編集する方法を中心に説明します。
+
+まず `Get-AzureVM` コマンドレットで仮想マシンを表示します。
 
         PS C:\> Get-AzureVM -ResourceGroupName "MyResourceGroup" -Name "MyWindowsVM"
 
-If your Virtual Machine already contains tags, you will then see all the tags on your resource:
+仮想マシンにタグが既に含まれている場合、リソースのすべてのタグが表示されます。
 
         Tags : {
                 "Application": "MyApp1",
@@ -65,13 +65,13 @@ If your Virtual Machine already contains tags, you will then see all the tags on
                 "Environment": "Production"
                }
 
-If you would like to add tags through PowerShell, you can use the `Set-AzureResource` command. Note when updating tags through PowerShell, tags are updated as a whole. So if you are adding one tag to a resource that already has tags, you will need to include all the tags that you want to be placed on the resource. Below is an example of how to add additional tags to a resource through PowerShell Cmdlets.
+PowerShell でタグを追加する場合、`Set-AzureResource` コマンドを使用できます。PowerShell でタグを更新すると、タグ全体が更新されます。そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
 
-This first cmdlet sets all of the tags placed on *MyWindowsVM* to the *tags* variable, using the `Get-AzureResource` and `Tags` function. Note that the parameter `ApiVersion` is optional; if not specified, the latest API version of the resource provider is used. 
+この最初のコマンドレットでは、`Get-AzureResource` および `Tags` 関数を使用して、*MyWindowsVM* に追加されているすべてのタグを *tags* 変数に設定します。パラメーター `ApiVersion` は省略可能ですが、指定されていない場合、リソース プロバイダーの最新の API バージョンが使用されることに注意してください。
 
         PS C:\> $tags = (Get-AzureResource -Name MyWindowsVM -ResourceGroupName MyResourceGroup -ResourceType "Microsoft.Compute/virtualmachines" -ApiVersion 2015-05-01-preview).Tags
 
-The second command displays the tags for the given variable.
+2 番目のコマンドで、指定した変数のタグが表示されます。
 
         PS C:\> $tags
 
@@ -86,15 +86,15 @@ The second command displays the tags for the given variable.
         Value		Production
         Name		Environment
 
-The third command adds an additional tag to the *tags* variable. Note the use of the **+=** to append the new Key/Value pair to the *tags* list.
+3 番目のコマンドで、*tags* 変数にタグが追加されます。新しいキーと値のペアを *tags* リストに付加するために **+=** を使用している点に注目してください。
 
         PS C:\> $tags +=@{Name="Location";Value="MyLocation"}
 
-The fourth command sets all of the tags defined in the *tags* variable to the given resource. In this case, it is MyWindowsVM.
+4 番目のコマンドでは、*tags* 変数に定義されているすべてのタグが、指定したリソースに設定されます。この例では MyWindowsVM です。
 
         PS C:\> Set-AzureResource -Name MyWindowsVM -ResourceGroupName MyResourceGroup -ResourceType "Microsoft.Compute/VirtualMachines" -ApiVersion 2015-05-01-preview -Tag $tags
 
-The fifth command displays all of the tags on the resource. As you can see, *Location* is now defined as a tag with *MyLocation* as the value.
+5 番目のコマンドでは、リソースのすべてのタグが表示されます。次のように、値が *MyLocation* のタグとして *Location* の定義が追加されます。
 
         PS C:\> (Get-AzureResource -ResourceName "MyWindowsVM" -ResourceGroupName "MyResourceGroup" -ResourceType "Microsoft.Compute/VirtualMachines" -ApiVersion 2015-05-01-preview).Tags
 
@@ -111,60 +111,62 @@ The fifth command displays all of the tags on the resource. As you can see, *Loc
         Value		MyLocation
         Name		Location
 
-To learn more about tagging through PowerShell, check out the [Azure Resource Cmdlets][].
+PowerShell でタグを付ける方法については、「[Azure リソース コマンドレット][]」を参照してください。
 
 
-## Tagging with Azure CLI
+## Azure CLI を使用してタグを付ける
 
-Tagging is also supported for resources that are already created through the Azure CLI. To begin, set up your [Azure CLI environment][]. Log in to your subscription through the Azure CLI and switch to ARM mode. You can view all properties for a given Virtual Machine, including the tags, using this command:
+Azure CLI で既に作成されているリソースにも、タグを付けることができます。この場合は、[Azure CLI 環境][]を設定します。Azure CLI でサブスクリプションにログインし、ARM リソースに切り替えます。このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 
         azure vm show -g MyResourceGroup -n MyVM
 
-Unlike PowerShell, if you are adding tags to a resource that already contains tags, you do not need to specify all tags (old and new) before using the `azure vm set` command. Instead, this command allows you to append a tag to your resource. To add a new VM tag through the Azure CLI, you can use the `azure vm set` command along with the tag parameter **-t**:
+PowerShell とは異なり、既にタグが含まれているリソースにタグを追加する場合、`azure vm set` コマンドを使用する前にすべてのタグ (既存のタグと新しいタグ) を指定する必要はありません。代わりに、このコマンドを使用すると、リソースにタグが付加されます。Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
 
         azure vm set -g MyResourceGroup -n MyVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
 
-To remove all tags, you can use the **–T** parameter in the `azure vm set` command.
+すべてのタグを削除するには、`azure vm set` コマンドで **-T** パラメーターを使用できます。
 
         azure vm set – g MyResourceGroup –n MyVM -T
 
 
-Now that we have applied tags to our resources via PowerShell, Azure CLI, and the Portal, let’s take a look at the usage details to see the tags in the billing portal.
+ここでは、PowerShell、Azure CLI、およびポータルを使用してリソースにタグを適用しました。次に、課金ポータルの使用量の詳細でタグを確認してみましょう。
 
 
-## Viewing your tags in the usage details
+## 使用量の詳細でタグを確認する
 
-Tags placed on Compute, Network, and Storage resources through the Azure Resource Manager will be populated in your usage details in the [billing portal](https://account.windowsazure.com/).
+Azure リソース マネージャーで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
 
-Click on **Download usage details** to view the usage details in your subscription.
+**[使用量の詳細のダウンロード]** をクリックして、サブスクリプションの使用量の詳細を表示します。
 
-![Usage details in Azure portal](./media/virtual-machines-common-tag/azure-portal-tags-usage-details.png)
+![Azure ポータルの使用量の詳細](./media/virtual-machines-common-tag/azure-portal-tags-usage-details.png)
 
-Select your billing statement and the **Version 2** usage details:
+課金明細と **[Version 2]** の使用量の詳細を選択します。
 
-![Version 2 Preview Usage Details in Azure portal](./media/virtual-machines-common-tag/azure-portal-version2-usage-details.png)
+![Azure ポータルに表示される Version 2 プレビューの使用量の詳細](./media/virtual-machines-common-tag/azure-portal-version2-usage-details.png)
 
-From the usage details, you can see all of the tags in the **Tags** column:
+使用量の詳細の **[タグ]** 列には、すべてのタグが表示されます。
 
-![Tags column in Azure portal](./media/virtual-machines-common-tag/azure-portal-tags-column.png)
+![Azure ポータルのタグ列](./media/virtual-machines-common-tag/azure-portal-tags-column.png)
 
-By analyzing these tags along with usage, organizations will be able to gain new insights into their consumption data.
-
-
-## Additional resources
-
-* [Azure Resource Manager Overview][]
-* [Using Tags to organize your Azure Resources][]
-* [Understanding your Azure Bill][]
-* [Gain insights into your Microsoft Azure resource consumption][]
+これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
 
 
+## その他のリソース
+
+* [Azure リソース マネージャーの概要][]
+* [タグを使用した Azure リソースの整理][]
+* [Microsoft Azure の課金内容の確認][]
+* [Microsoft Azure リソースの消費を把握する][]
 
 
-[PowerShell environment with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Azure Resource Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx
-[Azure CLI environment]: ./xplat-cli-azure-resource-manager.md
-[Azure Resource Manager Overview]: ../resource-group-overview.md
-[Using Tags to organize your Azure Resources]: ../resource-group-using-tags.md
-[Understanding your Azure Bill]: ../billing-understand-your-bill.md
-[Gain insights into your Microsoft Azure resource consumption]: ../billing-usage-rate-card-overview.md
+
+
+[Azure リソース マネージャーで PowerShell 環境]: ../powershell-azure-resource-manager.md
+[Azure リソース コマンドレット]: https://msdn.microsoft.com/library/azure/dn757692.aspx
+[Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
+[Azure リソース マネージャーの概要]: ../resource-group-overview.md
+[タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
+[Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
+[Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
+
+<!---HONumber=AcomDC_0323_2016-->

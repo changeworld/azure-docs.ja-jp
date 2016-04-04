@@ -1,27 +1,29 @@
 
 
 
-When you create a virtual machine in the [Azure portal](https://portal.azure.com) using the **Resource Manager** deployment model, the portal creates a public IP resource for the virtual machine. You can use this IP address to remotely access the virtual machine. Although the portal does not create a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) or FQDN, by default, it is extremely easy to create one once the virtual machine is created. This article demonstrates the steps to create a DNS name or FQDN.
+**リソース マネージャー** デプロイ モデルを使用して [Azure ポータル](https://portal.azure.com) で仮想マシンを作成すると、ポータルによって仮想マシン用のパブリック IP リソースが作成されます。この IP アドレスを使用して、仮想マシンにリモートでアクセスできます。ポータルでは、既定では[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) が作成されませんが、仮想マシンの作成後に非常に簡単に作成できます。この記事では、DNS 名または FQDN を作成する手順を示します。
 
-The article assumes that you have logged in to your subscription in the portal, and created a virtual machine with the available images, using the **Resource Manager**. Follow these steps once your virtual machine starts running.
+この記事では、ポータルでサブスクリプションにログインし、**リソース マネージャー** を使用して、使用可能なイメージで仮想マシンを作成していることを前提としています。仮想マシンの起動後、次の手順に従います。
 
-1.  View the virtual machine settings on the portal and click on the Public IP address.
+1.  ポータルで仮想マシンの設定を表示し、パブリック IP アドレスをクリックします。
 
-    ![locate ip resource](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
+    ![IP リソースの検索](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2.  Note that the DNS name for the Public IP is blank. Click **All settings** for the Public IP blade.
+2.  パブリック IP の DNS 名が空白であることに注意してください。パブリック IP ブレードの **[すべての設定]** をクリックします。
 
     ![settings ip](./media/virtual-machines-common-portal-create-fqdn/settingsIP.PNG)
 
-3.  Open the **Configuration** tab in the Public IP Settings. Enter the desired DNS name label and **Save** this configuration.
+3.  パブリック IP の設定の **[構成]** タブを開きます。目的の DNS 名ラベルを入力し、この構成を**保存**します。
 
-    ![enter dns name label](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
+    ![DNS 名のラベルの入力](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
 
-    The Public IP resource will now show this new DNS label on its blade.
+    これで、パブリック IP リソースがブレードでこの新しい DNS ラベルを表示するようになります。
 
-4.  Close the Public IP blades and go back to the virtual machine blade in the portal. Verify that the DNS name/FQDN appears next to the IP address for the Public IP resource.
+4.  パブリック IP ブレードを閉じ、ポータルの仮想マシン ブレードに戻ります。パブリック IP リソースの IP アドレスの横に DNS 名/FQDN が表示されることを確認します。
 
-    ![FQDN is created](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
+    ![FQDN が作成される](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
 
-    You can now connect remotely to the virtual machine using this DNS name. For example, use `SSH adminuser@testdnslabel.centralus.cloudapp.azure.com`, when connecting to a Linux virtual machine which has the fully qualified domain name of `testdnslabel.centralus.cloudapp.azure.com` and user name of `adminuser`.
+    この DNS 名を使用して、仮想マシンにリモートで接続できるようになります。たとえば、`SSH adminuser@testdnslabel.centralus.cloudapp.azure.com` を使用して、完全修飾ドメイン名が `testdnslabel.centralus.cloudapp.azure.com` でユーザー名が `adminuser` の Linux 仮想マシンに接続できます。
+
+<!---HONumber=AcomDC_0323_2016-->

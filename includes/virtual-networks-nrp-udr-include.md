@@ -54,8 +54,8 @@ JSON 形式のサンプル ルート テーブル
 
 ### その他のリソース
 
-- [UDR](virtual-networks-udr-overview.md) の詳細を確認します。
+- [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) の詳細を確認します。
 - ルート テーブルに関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502549.aspx)を確認してください。
 - ユーザー定義ルート (UDR) に関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502539.aspx)を確認してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

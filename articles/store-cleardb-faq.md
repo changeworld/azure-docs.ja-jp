@@ -31,7 +31,7 @@
 
 * [Azure VM で実行する MySQL クラスター](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 
-* [Azure VM で実行する MySQL の 1 つのインスタンス](virtual-machines/virtual-machines-mysql-windows-server-2008r2.md)
+* [Azure VM で実行する MySQL の 1 つのインスタンス](virtual-machines/virtual-machines-windows-classic-mysql-2008r2.md)
 
 ClearDB は、ユーザーに代わって MySQL インフラストラクチャを管理する、MySQL のホスティング サービスです。独自の MySQL クラスターやデータベースを Azure 仮想マシン上で実行する場合は、MySQL サーバーを設定し、修正プログラムを適用して常に最新の状態に保つ必要があります。
 
@@ -55,7 +55,7 @@ ClearDB は、ユーザーに代わって MySQL インフラストラクチャ�
 
 ## 自分が所有する Azure 仮想マシンで MySQL を実行しています。自分の Azure Web アプリケーションを自分のデータベースに接続することはできますか。
 
-はい。Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。詳細については、「[Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](../virtual-machines/virtual-machines-mysql-windows-server-2008r2.md)」を参照してください。
+はい。Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。詳細については、「[Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](virtual-machines/virtual-machines-windows-classic-mysql-2008r2.md)」を参照してください。
 
 ## ClearDB Premium MySQL クラスターがサポートされている国を教えてください。
 
@@ -124,4 +124,4 @@ EA 登録での料金に関するご質問は、[エンタープライズ カス
 
 [Azure Marketplace FAQ](/marketplace/faq/)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

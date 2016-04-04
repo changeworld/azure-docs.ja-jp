@@ -3,9 +3,9 @@
 	description="エネルギー公益事業会社の需要予測に役立つ Microsoft Cortana Analytics Solution Template。"
 	services="cortana-analytics"
 	documentationCenter=""
-	authors="ireiter"
-	manager="ireiter"
-	editor="cgronlun"/>
+	authors="ilanr9"
+	manager="ilanr9"
+	editor="yijichen"/>
 
 <tags
 	ms.service="cortana-analytics"
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="01/24/2016"
-	ms.author="ireiter;yijichen;garye"/>
+	ms.author="ilanr9;yijichen;garye"/>
 
 # エネルギー需要予測のための Cortana Analytics Solution Template Playbook  
 
@@ -384,4 +384,4 @@ Azure ML でデプロイできる主な構成要素は、Web サービスです�
 
 各コンポーネントとアーキテクチャ全体の詳細については、エネルギー ソリューション テンプレートを参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

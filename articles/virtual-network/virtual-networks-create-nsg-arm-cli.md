@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # Azure CLI で NSG を作成する方法
@@ -32,7 +32,7 @@
 ## フロントエンドのサブネットの NSG を作成する方法
 上記のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
@@ -105,7 +105,7 @@
 	- **-n (または --name)**。新しい規則の名前です。ここでは、*rdp-rule* です。
 	- **-c (または --access)**。規則のアクセス レベルです (拒否または許可)。
 	- **-p (または --protocol)**。規則のプロトコル (TCP、UDP、または *) です。
-	- **-r (または --direction)**。接続の方向です (受信または送信)。
+- **-r (または --direction)**。接続の方向です (受信または送信)。
 	- **-y (または --priority)**。規則の優先度です。
 	- **-f (または --source-address-prefix)**。CIDR または既定のタグを使用する発信元アドレスのプレフィックス。
 	- **-o (または --source-port-range)**。発信元ポート、またはポート範囲です。
@@ -269,4 +269,4 @@
 		data:    
 		info:    network vnet subnet set command OK
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

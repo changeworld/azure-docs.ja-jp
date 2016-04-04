@@ -607,8 +607,8 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - Microsoft Web サイトのページ「[Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」。
 - Microsoft Web サイトの [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)、および [HDInsight](https://azure.microsoft.com/services/hdinsight/) に関するページ。
 - Microsoft Web サイトのページ「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」。
-- Microsoft Web サイトの記事「[Azure の仮想マシンでの SQL Server Business Intelligence](./virtual-machines/virtual-machines-sql-server-business-intelligence.md)」。
+- Microsoft Web サイトの記事「[Azure の仮想マシンでの SQL Server Business Intelligence](./virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md)」。
 - Microsoft Web サイトのページ「[アラート通知の受信](insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](insights-service-health.md)」。
 - Microsoft web サイトの [Application Insights](app-insights-get-started.md) に関するページ。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

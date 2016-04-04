@@ -3,7 +3,7 @@
    description="ソリューションを開発するための Azure SQL Data Warehouse でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
+   authors="jrowlandjones"
    manager="barbkess"
    editor=""/>
 
@@ -81,4 +81,4 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

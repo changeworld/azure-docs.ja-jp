@@ -1,27 +1,29 @@
-#### To install MPIO on the host
+#### ホストに MPIO をインストールするには
 
-1. Open Server Manager on your Windows Server host. By default, Server Manager starts when a member of the Administrators group logs on to a computer that is running Windows Server 2012 R2 or Windows Server 2012. If the Server Manager is not already open, click **Start > Server Manager**.
+1. Windows Server ホストでサーバー マネージャーを開きます。既定では、Windows Server 2012 R2 または Windows Server 2012 を実行しているコンピューターに Administrators グループのメンバーがログオンすると、サーバー マネージャーが起動します。サーバー マネージャーがまだ開いていない場合は、**[スタート]** をクリックし、[サーバー マネージャー] をクリックします。
 
-	![Server Manager](./media/storsimple-install-mpio-windows-server/IC740997.png)
+	![サーバー マネージャー](./media/storsimple-install-mpio-windows-server/IC740997.png)
 
-2. Click **Server Manager > Dashboard > Add roles and features**. This starts the **Add Roles and Features** wizard.
+2. **[サーバー マネージャー]、[ダッシュボード]、[役割と機能の追加]** の順にクリックします。**役割と機能の追加**ウィザードが起動します。
 
-	![Add Roles And Features Wizard 1](./media/storsimple-install-mpio-windows-server/IC740998.png)
+	![役割と機能の追加ウィザード 1](./media/storsimple-install-mpio-windows-server/IC740998.png)
 
-3. In the **Add Roles and Features** wizard, do the following:
+3. **役割と機能の追加**ウィザードで、次の手順を実行します。
 
-	- On the **Before you begin** page, click **Next**.
-	- On the **Select installation type** page, accept the default setting of **Role-based or feature-based** installation. Click **Next**.
+	- **[開始する前に]** ページで **[次へ]** をクリックします。
+	- **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。**[次へ]** をクリックします。
 	
-		![Add Roles And Features Wizard 2](./media/storsimple-install-mpio-windows-server/IC740999.png)
-	- On the **Select destination server** page, choose **Select a server from the server pool**. Your host server should be discovered automatically. Click **Next**.
-	- On the **Select server roles** page, click **Next**.
-	- On the **Select features** page, select **Multipath I/O**, and click **Next**.
+		![役割と機能の追加ウィザード 2](./media/storsimple-install-mpio-windows-server/IC740999.png)
+	- **[対象サーバーの選択]** ページで、**[サーバー プールからサーバーを選択]** を選択します。使用中のホスト サーバーが自動的に検出されます。**[次へ]** をクリックします。
+	- **[サーバーの役割の選択]** ページで、**[次へ]** をクリックします。
+	- **[機能の選択]** ページで、**[マルチパス I/O]** を選択し、**[次へ]** をクリックします。
 	
-		![Add Roles And Features Wizard 5](./media/storsimple-install-mpio-windows-server/IC741000.png)
-	- On the **Confirm installation selections** page, confirm the selection and then select **Restart the destination server automatically if required**, as shown below. Click **Install**.
+		![役割と機能の追加ウィザード 5](./media/storsimple-install-mpio-windows-server/IC741000.png)
+	- **[インストール オプションの確認]** ページで、オプションの設定内容を確認し、次のように **[必要に応じて対象サーバーを自動的に再起動する]** を選択します。**[インストール]** をクリックします。
 	
-		![Add Roles And Features Wizard 8](./media/storsimple-install-mpio-windows-server/IC741001.png)
-	- You will be notified when the installation is complete. Click **Close** to close the wizard.
+		![役割と機能の追加ウィザード 8](./media/storsimple-install-mpio-windows-server/IC741001.png)
+	- インストールが完了すると、通知が表示されます。**[閉じる]** をクリックしてウィザードを閉じます。
 	
-		![Add Roles And Features Wizard 9](./media/storsimple-install-mpio-windows-server/IC741002.png)
+		![役割と機能の追加ウィザード 9](./media/storsimple-install-mpio-windows-server/IC741002.png)
+
+<!---HONumber=AcomDC_0323_2016-->

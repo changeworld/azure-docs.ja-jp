@@ -20,11 +20,11 @@
 
 別個のテーブルに履歴データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。その一方で、テーブルに過去と現在の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。フィルター述語では、インライン テーブル値関数を呼び出す必要があります。このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
 
-CTP 3.1 ～ RC0 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
+CTP 3.1 ～ RC1 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-> [!重要] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
+    > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
 
 ## インライン テーブル値関数の基本要件
 Stretch Database フィルター機能に必要なインライン テーブル値関数は次の例のようになります。
@@ -70,7 +70,7 @@ RETURN	SELECT 1 AS is_eligible
 
 -   関数パラメーターと定数式を比較します。たとえば、「`@column1 < 1000`」のように入力します。
 
-    次の例では、*date* 列の値が &lt; 1\\/1\\/2016 であるかどうかが確認されます。
+    次の例では、*date* 列の値が &lt; 1/1/2016 であるかどうかが確認されます。
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
@@ -410,4 +410,4 @@ GO
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->
