@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # エンドポイント アクセス制御リスト (ACL) とは
 
 エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。エンドポイント用のネットワーク ACL のみを指定できます。仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。
 
-> [AZURE.IMPORTANT] 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。NSG の詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-networks-nsg)」を参照してください。
+> [AZURE.IMPORTANT] 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。NSG の詳細については、「[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)」を参照してください。
 
-ACL は、PowerShell または管理ポータルを使用して構成できます。PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。管理ポータルを使用してネットワーク ACL を構成するには、「[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines-set-up-endpoints/)」を参照してください。
+ACL は、PowerShell または管理ポータルを使用して構成できます。PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。管理ポータルを使用してネットワーク ACL を構成するには、「[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines/virtual-machines-set-up-endpoints.md)」を参照してください。
 
 ネットワーク ACL を使用すると、次の操作を実行できます。
 
@@ -97,6 +97,6 @@ ACL は、ルールの一覧が格納されたオブジェクトです。ACL を
 
 ## 次のステップ
 
-[PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](../virtual-networks-acl-powershell)
+[PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](virtual-networks-acl-powershell.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

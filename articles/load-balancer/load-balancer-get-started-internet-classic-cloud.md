@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/30/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
@@ -77,10 +77,10 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 ## 次のステップ
 
-[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

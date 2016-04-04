@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: セキュリティ通知の構成方法"
+   pageTitle="セキュリティ アラートを構成する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能のセキュリティ通知の構成方法を説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: セキュリティ通知の構成方法
+# Azure AD Privileged Identity Management: セキュリティ通知の構成方法
 
 ## セキュリティ通知の概要
 Azure Privileged Identity Management (PIM) では以下の通知が提供されており、これらは構成できます。セキュリティ通知は、PIM ダッシュボードの [アラート] セクションで見ることができます。
@@ -59,4 +59,4 @@ Azure Privileged Identity Management (PIM) では以下の通知が提供され�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

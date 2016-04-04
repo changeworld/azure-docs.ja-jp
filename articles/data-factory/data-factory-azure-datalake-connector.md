@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016"
+	ms.date="03/21/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
@@ -58,7 +58,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+	            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -69,7 +69,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 次の手順では、Data Factory エディターを使用して Azure Data Lake Store のリンクされたサービスを作成する手順について説明します。
 
 1. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Data Lake Store]** を選択します。
-2. JSON エディターで、**datalakeUri** プロパティに Data Lake の URI を入力します。
+2. JSON エディターで、**dataLakeStoreUri** プロパティに Data Lake の URI を入力します。
 3. コマンド バーの **[承認する]** をクリックします。ポップアップ ウィンドウが表示されます。
 
 	![Authorize button](./media/data-factory-azure-data-lake-connector/authorize-button.png)
@@ -235,7 +235,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+	            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -405,7 +405,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | type | type プロパティを **AzureDataLakeStore** に設定する必要があります。 | あり |
-| dataLakeUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
+| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
 | sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | はい |  
 | accountName | Data Lake アカウント名 | いいえ |
@@ -608,4 +608,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

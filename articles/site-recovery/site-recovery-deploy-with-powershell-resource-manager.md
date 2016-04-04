@@ -16,7 +16,12 @@
 	ms.date="03/16/2016"
 	ms.author="bsiva"/>
 
-# PowerShell と Azure リソース マネージャーを使った Azure Site Recovery
+# PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする
+
+> [AZURE.SELECTOR]
+- [Azure クラシック ポータル](site-recovery-hyper-v-site-to-azure.md)
+- [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
+
 
 
 ## 概要
@@ -32,7 +37,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 > [AZURE.NOTE] Azure Site Recovery PowerShell コマンドレットを使用すると、現在、VMM サイト対 VMM サイト、VMM サイト対 Azure、Hyper-V サイト対 Azure のシナリオを構成できます。その他の ASR シナリオについても近々サポートされる予定です。
 
 この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/library/hh857337.aspx)」を参照してください。
-- 「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」
+- 「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 
 ## 主要な機能
@@ -262,4 +267,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell for AR
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

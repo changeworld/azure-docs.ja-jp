@@ -1,6 +1,6 @@
-<properties
-	pageTitle="VHD ファイルから DevTest ラボ カスタム イメージを作成する | Microsoft Azure"
-	description="DevTest ラボで VM を作成するために使用できるカスタム イメージを VHD ファイルから作成する方法を説明する"
+    <properties
+	pageTitle="Create a DevTest Lab custom image from a VHD file | Microsoft Azure"
+	description="Learn how to create a custom image from a VHD file, which can then be used to create VMs in a DevTest Lab"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -62,7 +62,7 @@
 
 1. **[OK]** をタップして、カスタム イメージを作成します。
 
-1. 「[次のステップ](#next-steps)」セクションを参照してください。
+1. 「[次のステップ](#next-steps)」セクションに移動します。
 
 ##VHD ファイルのアップロード
 
@@ -78,4 +78,4 @@
 
 VM を作成するときに使用するカスタム イメージを追加したら、次に [VM を DevTest ラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="03/16/2016"
    ms.author="sameerch"/>
 
 
 # ロジック アプリで Yammer コネクタを使用する #
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Yammer API](../connectors/create-api-yammer.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Yammer API](../connectors/connectors-create-api-yammer.md) をクリックしてください。
 
 Yammer、メッセージの投稿アクション、新しいメッセージを取得するトリガーに接続します。
 
@@ -94,4 +94,4 @@ Yammer コネクタは、ロジック アプリ内でアクションとして使
 [10]: ./media/app-service-logic-connector-yammer/img10.PNG
 [11]: ./media/app-service-logic-connector-yammer/img11.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="03/16/2016"
    ms.author="sameerch"/>
 
 
 # Twitter コネクタの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Twitter API](../connectors/create-api-twitter.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Twitter API](../connectors/connectors-create-api-twitter.md) をクリックしてください。
 
 Twitter フィードに接続して、ツイートを投稿し、自分のタイムライン、友人のタイムライン、Twitter アカウントのフォロワーからツイートを取得します。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Twitter コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
@@ -61,22 +61,15 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 ## ロジック アプリで Twitter Connector を使用する
 API アプリを作成した後は、Logic Apps のトリガーまたはアクションとして Twitter コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。  
-![][2]
-2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。  
-![][3]
-3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。  
-![][4]
-4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。  
-![][5]
+1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。![][2]
+2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。![][3]
+3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。![][4]
+4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。![][5]
 
 
-これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。  
-![][6]
+これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。![][6]
 
-ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。  
-![][7]  
-![][8]  
+ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。![][7] ![][8]
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
@@ -99,4 +92,4 @@ API アプリを作成した後は、Logic Apps のトリガーまたはアク�
 [9]: ./media/app-service-logic-connector-twitter/settings.PNG
 [10]: ./media/app-service-logic-connector-twitter/TwitterAPISettings.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

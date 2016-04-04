@@ -4,7 +4,7 @@
 	services="cortana-analytics"
 	documentationCenter=""
 	authors="yijichen"
-	manager="ireiter"
+	manager="ilanr9"
 	editor="yijichen"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="01/24/2016"
-	ms.author="inqiu;yijichen"/>
+	ms.author="inqiu;yijichen;ilanr9"/>
 
 # エネルギーの需要予測のための Cortana Analytics ソリューション テンプレートに関する技術ガイド
 
@@ -288,4 +288,4 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

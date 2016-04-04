@@ -49,7 +49,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. [Azure ポータル][preview-portal] にアクセスします。
+1. [Azure ポータル][preview-portal]にアクセスします。
 
 2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
 
@@ -64,23 +64,23 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 3. 新しいプロジェクトの場合は、次の値を入力または選択します。
 
 	<table>
-<tr>
-<th>プロパティ</th>
-<th>値</th>
-</tr>
-<tr>
-<th>カテゴリ</th>
-<th>テンプレート/Visual C#/Windows</th>
-</tr>
-<tr>
-<th>テンプレート</th>
-<th>コンソール アプリケーション</th>
-</tr>
-<tr>
-<th>名前</th>
-<th>SubmitPigJob</th>
-</tr>
-</table>
+	<tr>
+	<th>プロパティ</th>
+	<th>値</th>
+	</tr>
+	<tr>
+	<th>カテゴリ</th>
+	<th>テンプレート/Visual C#/Windows</th>
+	</tr>
+	<tr>
+	<th>テンプレート</th>
+	<th>コンソール アプリケーション</th>
+	</tr>
+	<tr>
+	<th>名前</th>
+	<th>SubmitPigJob</th>
+	</tr>
+	</table>
 4. **[OK]** をクリックしてプロジェクトを作成します。
 5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
 6. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
@@ -122,7 +122,6 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
                     // Define the Pig job
                     var parameters = new PigJobSubmissionParameters()
                     {
-                        UserName = ExistingClusterUsername,
                         Query = queryString,
                     };
         
@@ -155,7 +154,7 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md) 
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

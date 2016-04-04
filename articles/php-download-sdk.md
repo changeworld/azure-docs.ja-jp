@@ -3,7 +3,7 @@
 	description="Azure SDK for PHP をダウンロードしてインストールする方法について説明します。"
 	documentationCenter="php"
 	services="app-service\web"
-	authors="tfitzmac"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="PHP"
 	ms.topic="article"
 	ms.date="12/16/2015"
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 #Azure SDK for PHP をダウンロードする
 
@@ -31,7 +31,7 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 このトピックの手順では、[PHP][install-php] がインストールされていることを前提としています。
 
-> [AZURE.NOTE]Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.3 以上が必要です。
+> [AZURE.NOTE] Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.3 以上が必要です。
 
 ##Microsoft Azure 用 PHP クライアント ライブラリ
 
@@ -44,7 +44,7 @@ Azure 用 PHP クライアント ライブラリを使用する方法につい�
 1. [Git をインストールします][install-git]。
 
 
-	> [AZURE.NOTE]Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
+	> [AZURE.NOTE] Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
@@ -89,7 +89,7 @@ Azure 向け PHP クライアント ライブラリを手動でダウンロー�
 
 1. ライブラリが含まれている .zip アーカイブを [GitHub][php-sdk-github] からダウンロードします。または、リポジトリをフォークして、ローカル コンピューターにその複製を作成します(この 2 つ目の方法では、GitHub アカウントが必要であるほか、Git がローカルにインストールされている必要があります)。
 
-	> [AZURE.NOTE]Azure 向け PHP クライアント ライブラリは、[HTTP\_Request2](http://pear.php.net/package/HTTP_Request2)、[Mail\_mime](http://pear.php.net/package/Mail_mime)、および [Mail\_mimeDecode](http://pear.php.net/package/Mail_mimeDecode) の PEAR パッケージに依存しています。これらの依存関係を解決するには、[PEAR パッケージ マネージャー](http://pear.php.net/manual/en/installation.php)を使用してこれらのパッケージをインストールすることをお勧めします。
+	> [AZURE.NOTE] Azure 向け PHP クライアント ライブラリは、[HTTP\_Request2](http://pear.php.net/package/HTTP_Request2)、[Mail\_mime](http://pear.php.net/package/Mail_mime)、および [Mail\_mimeDecode](http://pear.php.net/package/Mail_mimeDecode) の PEAR パッケージに依存しています。これらの依存関係を解決するには、[PEAR パッケージ マネージャー](http://pear.php.net/manual/en/installation.php)を使用してこれらのパッケージをインストールすることをお勧めします。
 
 2. ダウンロードしたアーカイブの `WindowsAzure` ディレクトリをアプリケーションのディレクトリ構造にコピーし、アプリケーションからクラスを参照します。
 
@@ -130,4 +130,4 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=AcomDC_1223_2015--->
+<!---HONumber=AcomDC_0323_2016-->

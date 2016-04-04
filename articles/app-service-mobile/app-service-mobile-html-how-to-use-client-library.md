@@ -32,10 +32,10 @@ Azure Mobile Apps JavaScript SDK のインストールは、次の `npm` コマ�
 npm install azure-mobile-apps-client --save
 ```
 
-インストール後、ライブラリが `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.js` に配置されます。このファイルを Web エリアにコピーします。
+インストール後、ライブラリが `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.min.js` に配置されます。このファイルを Web エリアにコピーします。
 
 ```
-<script src="path/to/MobileServices.Web.js"></script>
+<script src="path/to/MobileServices.Web.min.js"></script>
 ```
 
 ライブラリは、Browserify や Webpack などの CommonJS 環境では ES2015 モジュールとして使用できるほか、AMD ライブラリとしても使用できます。次に例を示します。
@@ -103,7 +103,7 @@ pushHandler.on('error', function (error) {
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Apache Cordova Plugin for Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [your first Apache Cordova app]: http://cordova.apache.org/#getstarted
@@ -111,6 +111,6 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

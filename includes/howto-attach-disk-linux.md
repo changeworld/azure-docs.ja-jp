@@ -1,11 +1,11 @@
 
-ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-disks-vhds.md) を参照してください。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-linux-about-disks-vhds.md) を参照してください。
 
 <a id="attachempty"></a>
 ## 方法: 空のディスクの接続
 空のディスクを接続すると、Azure が .vhd ファイルを作成してそれをストレージ アカウントに保存するため、データ ディスクを比較的簡単に追加できます。
 
-1.  Mac、Linux、および Windows の Azure CLI を開き、Azure サブスクリプションに接続します。詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)」をご覧ください。
+1.  Mac、Linux、および Windows の Azure CLI を開き、Azure サブスクリプションに接続します。詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」をご覧ください。
 
 2.  「`azure config
  	mode asm`」と入力して既定の Azure サービス管理モードであることを確認します。
@@ -33,7 +33,7 @@
 
 既存のディスクを接続する場合は、ストレージ アカウントで利用できる .vhd を持っている必要があります。
 
-1. 	Mac、Linux、および Windows の Azure CLI を開き、Azure サブスクリプションに接続します。詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)」をご覧ください。
+1. 	Mac、Linux、および Windows の Azure CLI を開き、Azure サブスクリプションに接続します。詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」をご覧ください。
 
 2.  既定の Azure サービス管理モードであることを確認します。リソース管理モードに変更している場合は、「`azure config mode asm`」と入力して戻します。
 
@@ -93,4 +93,4 @@
 > [AZURE.NOTE]
 データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

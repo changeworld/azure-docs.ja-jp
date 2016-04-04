@@ -61,7 +61,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 >[AZURE.NOTE] 従来の VM を作成するとき、コンテナー *クラウド サービス*が Azure により作成され、仮想 IP アドレス (VIP) が与えられます。ポータル経由で作成すると、クラウド サービス VIP から VM に接続できるように、既定の RDP または SSH *エンドポイント*がポータルにより構成されます。このクラウド サービス VIP は予約できます。VM に接続するために予約された IP アドレスが効率的に与えられます。追加のエンドポイントを構成、追加のポートを開くことができます。
 
 ### IaaS VM と PaaS ロール インスタンス
-パブリック IP アドレスは、クラウド サービス内の IaaS [VM](../virtual-machines/virtual-machines-about.md) または PaaS ロール インスタンスに直接割り当てることができます。これはインスタンス レベル パブリック IP アドレス ([ILPIP](virtual-networks-instance-level-public-ip.md)) と呼ばれます。このパブリック IP アドレスは動的にのみ割り当てることができます。
+パブリック IP アドレスは、クラウド サービス内の IaaS [VM](../virtual-machines/virtual-machines-linux-about.md) または PaaS ロール インスタンスに直接割り当てることができます。これはインスタンス レベル パブリック IP アドレス ([ILPIP](virtual-networks-instance-level-public-ip.md)) と呼ばれます。このパブリック IP アドレスは動的にのみ割り当てることができます。
 
 >[AZURE.NOTE] これは、IaaS VM または PaaS ロール インスタンスのコンテナーである、クラウド サービスの VIP とは異なります。すべて同じクラウド サービス VIP から公開される、複数の IaaS VM または PaaS ロール インスタンスをクラウド サービスに含めることができるためです。
 
@@ -136,7 +136,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-|既定の制限|上限|
+||既定の制限|上限|
 |---|---|---|
 |パブリック IP アドレス (動的)|5|サポートにお問い合わせください|
 |予約済みパブリック IP アドレス|20|サポートにお問い合わせください|
@@ -166,4 +166,4 @@ Azure における[ネットワークの制限](azure-subscription-service-limit
 ## 次のステップ
 - クラシック ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

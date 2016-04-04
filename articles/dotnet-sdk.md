@@ -63,7 +63,7 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 * [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services/cloud-services-dotnet-get-started.md)
 * [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-dotnet-create-visual-studio-powershell.md)
+* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)
 * [PowerShell デプロイメント スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
 * [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)
 * サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する 
@@ -186,4 +186,4 @@ Azure SDK for .NET (クライアント ライブラリを含む) のソース �
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/documentation/api/)を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

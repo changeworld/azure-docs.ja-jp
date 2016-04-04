@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="03/16/2016" 
 	ms.author="guayan"/>
 
 # Azure App Service API アプリ トリガー
+
+>[AZURE.NOTE] 本記事は、API アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 
 ## 概要
 
@@ -339,4 +342,4 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
     }
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,72 +1,72 @@
 
 
-There are two levels of load balancing available for Azure infrastructure services:
+Azure インフラストラクチャ サービスで利用できる負荷分散には 2 つのレベルがあります。
 
-- **DNS Level**:  Load balancing for traffic to different cloud services located in different data centers, to different Azure websites located in different data centers, or to external endpoints. This is done with Azure Traffic Manager and the Round Robin load balancing method.
-- **Network Level**:  Load balancing of incoming Internet traffic to different virtual machines of a cloud service, or load balancing of traffic between virtual machines in a cloud service or virtual network. This is done with the Azure load balancer.
+- **DNS レベル**: 異なるデータ センターにある異なるクラウド サービス、異なるデータ センターにある異なる Azure Web サイト、外部エンドポイントへのトラフィックの負荷分散です。Azure Traffic Manager またはラウンド ロビンの負荷分散方式で実行されます。
+- **ネットワーク レベル**: 同じクラウド サービスにある異なる仮想マシンへの着信インターネット トラフィックの負荷分散、または同じクラウド サービスや仮想ネットワーク内にある複数の仮想マシン間のトラフィックの負荷分散です。Azure ロード バランサーによって実行されます。
 
-## Traffic Manager load balancing for cloud services and websites##
+## Traffic Manager によるクラウド サービスおよび Web サイトの負荷分散##
 
-Traffic Manager allows you to control the distribution of user traffic to endpoints, which can include cloud services, websites, external sites, and other Traffic Manager profiles. Traffic Manager works by applying an intelligent policy engine to Domain Name System (DNS) queries for the domain names of your Internet resources. Your cloud services or websites can be running in different datacenters across the world.
+Traffic Manager を使用すると、ユーザーのトラフィックをエンドポイントまで制御できます。エンドポイントには、クラウド サービス、Web サイト、外部サイト、および他の Traffic Manager プロファイルが含まれます。Traffic Manager は、インターネット リソースのドメイン名に関するドメイン ネーム システム (DNS) クエリに、インテリジェントなポリシー エンジンを適用することで機能します。クラウド サービスや Web サイトは、世界中のさまざまなデータセンターで実行できます。
 
-You must use either REST or Windows PowerShell to configure external endpoints or Traffic Manager profiles as endpoints.
+外部エンドポイントの構成または Traffic Manager プロファイルのエンドポイントとしての構成には、REST または Windows PowerShell のいずれかを使用する必要があります。
 
-Traffic Manager uses three load-balancing methods to distribute traffic:
+Traffic Manager は、トラフィックの分散に次の 3 つの異なる負荷分散方法を使用します。
 
-- **Failover**:  Use this method when you want to use a primary endpoint for all traffic, but provide backups in case the primary becomes unavailable.
-- **Performance**:  Use this method when you have endpoints in different geographic locations and you want requesting clients to use the "closest" endpoint in terms of the lowest latency.
-- **Round Robin:**  Use this method when you want to distribute load across a set of cloud services in the same datacenter or across cloud services or websites in different datacenters.
+- **フェールオーバー**: すべてのトラフィックにプライマリのエンドポイントを使用するが、プライマリが使用不可になった場合に備えてバックアップのエンドポイントを提供する場合に使用します。
+- **パフォーマンス**: 地理的に異なる複数の場所にエンドポイントがあり、遅延が最小という意味で "最も近い" エンドポイントを使用するようにクライアントに要求する場合に使用します。
+- **ラウンド ロビン**: 同じデータセンター内にある一連のクラウド サービス、または異なるデータセンター内にあるクラウド サービスや Web サイトの間で負荷を分散する場合に使用します。
 
-For more information, see [About Traffic Manager Load Balancing Methods](../traffic-manager/traffic-manager-load-balancing-methods.md).
+詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
-The following diagram shows an example of the Round Robin load balancing method for distributing traffic between different cloud services.
+次の図は、異なるクラウド サービス間でトラフィックを分散するラウンド ロビンの負荷分散方法の例を示します。
 
-![loadbalancing](./media/virtual-machines-common-load-balance/TMSummary.png)
+![負荷分散](./media/virtual-machines-common-load-balance/TMSummary.png)
 
-The basic process is the following:
+基本的なプロセスは次のとおりです。
 
-1.	An Internet client queries a domain name corresponding to a web service.
-2.	DNS forwards the name query request to Traffic Manager.
-3.	Traffic Manager chooses the next cloud service in the Round Robin list and sends back the DNS name. The Internet client's DNS server resolves the name to an IP address and sends it to the Internet client.
-4.	The Internet client connects with the cloud service chosen by Traffic Manager.
+1.	インターネット クライアントが、Web サービスに関してドメイン名を照会します。
+2.	DNS は、この名前照会要求を Traffic Manager に転送します。
+3.	Traffic Manager はラウンド ロビン リストにある次のクラウド サービスを選択し、DNS 名を返します。インターネット クライアントの DNS サーバーは、その名前を IP アドレスに解決してインターネット クライアントに送信します。
+4.	インターネット クライアントは、Traffic Manager が選択したクラウド サービスに接続します。
 
-For more information, see [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+詳細については、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
-## Azure load balancing for virtual machines ##
+## Azure の仮想マシンの負荷分散 ##
 
-Virtual machines in the same cloud service or virtual network can communicate with each other directly using their private IP addresses. Computers and services outside the cloud service or virtual network can only communicate with virtual machines in a cloud service or virtual network with a configured endpoint. An endpoint is a mapping of a public IP address and port to that private IP address and port of a virtual machine or web role within an Azure cloud service.
+同じクラウド サービスまたは仮想ネットワーク内の複数の仮想マシンは、プライベート IP アドレスを使用して直接やり取りすることができます。クラウド サービスまたは仮想ネットワークの外側にあるコンピューターやサービスは、構成されたエンドポイント経由でのみ、クラウド サービスや仮想ネットワーク内の仮想マシンとやり取りすることができます。エンドポイントとは、Azure クラウド サービス内の仮想マシンまたは Web ロールのパブリック IP アドレスとポートからプライベート IP アドレスとポートへのマッピングです。
 
-The Azure Load Balancer randomly distributes a specific type of incoming traffic across multiple virtual machines or services in a configuration known as a load-balanced set. For example, you can spread the load of web request traffic across multiple web servers or web roles.
+Azure ロード バランサーは、特定の種類の着信トラフィックを、負荷分散セットと呼ばれる構成内の複数の仮想マシンまたはサービスにランダムに配分します。たとえば、複数の Web サーバーまたは Web ロール間で Web 要求のトラフィックの負荷を分散できます。
 
-The following diagram shows a load-balanced endpoint for standard (unencrypted) web traffic that is shared among three virtual machines for the public and private TCP port of 80. These three virtual machines are in a load-balanced set.
+次の図は、標準の (暗号化されていない) Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントは、パブリックとプライベートの TCP ポートが 80 である 3 台の仮想マシン間で共有されています。この 3 台の仮想マシンは、1 つの負荷分散セット内にあります。
 
-![loadbalancing](./media/virtual-machines-common-load-balance/LoadBalancing.png)
+![負荷分散](./media/virtual-machines-common-load-balance/LoadBalancing.png)
 
-For more information, see [Azure Load Balancer](../load-balancer/load-balancer-overview.md). For the steps to create a load-balanced set, see [Configure a load-balanced set](../load-balancer/load-balancer-internet-getstarted.md).
+詳細については、「[Azure ロード バランサー](../load-balancer/load-balancer-overview.md)」を参照してください。負荷分散セットの作成手順については、「[負荷分散セットの構成](../load-balancer/load-balancer-internet-getstarted.md)」を参照してください。
 
-Azure can also load balance within a cloud service or virtual network. This is known as internal load balancing and can be used in the following ways:
+Azure はまた、クラウド サービスや仮想ネットワーク内で負荷を分散することもできます。これは内部負荷分散と呼ばれ、次の方法で使用できます。
 
-- To load balance between servers in different tiers of a multi-tier application (for example, between web and database tiers).
-- To load balance line-of-business (LOB) applications hosted in Azure without requiring additional load balancer hardware or software.
-- To include on-premises servers in the set of computers whose traffic is load balanced.
+- 多層アプリケーションの異なる層にあるサーバー間で負荷分散する (たとえば、Web 層とデータベース層の間)。
+- 負荷分散用のハードウェアやソフトウェアの追加を必要とせずに、Azure でホストされている基幹業務 (LOB) アプリケーションの負荷を分散する。
+- オンプレミスのサーバーを含む一連のコンピューターの負荷を分散する。
 
-Similar to Azure load balancing, internal load balancing is facilitated by configuring an internal load-balanced set.
+Azure の負荷分散と同様、内部負荷分散セットを構成すると、内部負荷分散が容易になります。
 
-The following diagram shows an example of an internal load-balanced endpoint for a line of business (LOB) application that is shared among three virtual machines in a cross-premises virtual network.
+次の図では、基幹業務アプリケーションの負荷をクロスプレミス仮想ネットワーク内の 3 つの仮想マシン間で分配する内部負荷分散エンドポイントの例を示します。
 
-![loadbalancing](./media/virtual-machines-common-load-balance/LOBServers.png)
+![負荷分散](./media/virtual-machines-common-load-balance/LOBServers.png)
 
-## Load balancer considerations
+## Load Balancer に関する考慮事項
 
-A load balancer is configured by default to timeout an idle session in 4 minutes. If your application behind a load balancer leaves a connection idle for more than 4 minutes and it doesn't have a Keep-Alive configuration, the connection will be dropped. You can change the load balancer behavior to allow a [longer timeout setting for Azure load balancer](../load-balancer/load-balancer-tcp-idle-timeout.md).
+Load Balancer は、既定で 4 分間のアイドル状態のセッションをタイムアウトするように構成されています。Load Balancer の背後にあるアプリケーションが 4 分以上接続をアイドル状態のままにし、キープアライブ構成がない場合、接続が切断されます。[Azure Load Balancer のタイムアウト設定を長くする](../load-balancer/load-balancer-tcp-idle-timeout.md)ようにLoad Balancer の動作を変更できます。
 
-Other consideration is the type of distribution mode supported by Azure Load Balancer. You can configure source IP affinity (source IP, destination IP) or source IP protocol (source IP , destination IP and protocol). Check out [Azure Load Balancer distribution mode (source IP affinity)](../load-balancer/load-balancer-distribution-mode.md) for more information.
+その他の考慮事項は、Azure Load Balancer でサポートされている分散モードの種類です。ソース IP アフィニティ (ソース IP、接続先 IP) またはソース IP プロトコル (ソース IP、接続先 IP、およびプロトコル) を構成することができます。詳細については、「[Load Balancer 分散モード (ソース IP アフィニティ)](../load-balancer/load-balancer-distribution-mode.md)」を参照してください。
 
 
-## Next steps
+## 次のステップ
 
-For the steps to create a load-balanced set, see [Configure an internal load-balanced set](../load-balancer/load-balancer-internal-getstarted.md).
+負荷分散セットの作成手順については、「[内部負荷分散セットの構成](../load-balancer/load-balancer-internal-getstarted.md)」を参照してください。
 
-For more information about load balancer, see [Internal load balancing](../load-balancer/load-balancer-internal-overview.md).
+ロード バランサーの詳細については、「[内部負荷分散](../load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
-
+<!---HONumber=AcomDC_0323_2016-->

@@ -192,7 +192,7 @@ Azure 仮想マシンにバックグラウンド タスクをデプロイする�
 ### 詳細情報
 
 - Azure の [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-- [Azure Virtual Machines に関する FAQ](virtual-machines-questions.md)
+- [Azure Virtual Machines に関する FAQ](virtual-machines/virtual-machines-linux-classic-faq.md)
 
 ## 設計上の考慮事項
 
@@ -317,4 +317,4 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [クラウド サービスの診断を有効にする方法](cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="03/04/2016"
+    ms.date="03/17/2016"
     ms.author="sdanie" />
 
 # Managed Cache Service から Azure Redis Cache への移行
@@ -49,6 +49,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 |有効期限ポリシー|既定の有効期限ポリシーは絶対であり、既定の有効期限は 10 分です。スライド式ポリシーおよび期限なしポリシーも使用できます。|既定ではキャッシュ内のアイテムは期限切れしませんが、キャッシュ設定のオーバーロードを使用して書き込みごとに有効期限を構成できます。詳細については、「[オブジェクトをキャッシュに追加する、キャッシュから削除する](cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache)」を参照してください。|
 |リージョンとタグ付け|リージョンは、キャッシュされるアイテムのサブグループです。また、リージョンでは、タグと呼ばれる追加の説明文を使用してキャッシュされるアイテムに注釈を付けることもできます。リージョンでは、そのリージョン内のタグ付きアイテムに対する検索操作を実行できます。リージョン内のすべてのアイテムは、キャッシュ クラスターの 1 つのノードに格納されます。|Redis キャッシュは 1 つのノードで構成され (Redis クラスターが有効になっていない場合)、Managed Cache Service のリージョンの概念は適用されません。Redis はキーを取得するときの検索とワイルドカード操作をサポートするので、説明的なタグをキー名に埋め込み、それを使用して後でアイテムを取得できます。Redis を使用したタグ付けソリューションの実装の例については、[Redis でのキャッシュタグの実装](http://stackify.com/implementing-cache-tagging-redis/)に関するページをご覧ください。|
 |シリアル化|Managed Cache は、NetDataContractSerializer、BinaryFormatter、およびカスタム シリアライザーの使用をサポートします。既定値は NetDataContractSerializer です。|キャッシュに格納する前の .NET オブジェクトのシリアル化は、クライアント アプリケーションで行う必要があります。使用するシリアライザーはクライアント アプリケーションの開発者が選択します。詳細とサンプル コードについては、「[キャッシュ内で .NET オブジェクトを使用する](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)」を参照してください。|
+| キャッシュ エミュレーター | Managed Cache には、ローカル キャッシュ エミュレーターが用意されています。 | Azure Redis Cache にはエミュレーターはありませんが、[redis-server.exe の MSOpenTech ビルドをローカルに実行する](cache-faq.md#cache-emulator)ことで、エミュレーターを体験できます。 |
 
 ## キャッシュ プランを選択する
 
@@ -195,4 +196,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

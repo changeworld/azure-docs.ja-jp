@@ -1,7 +1,8 @@
-The audit log contains all actions performed on your resources. You can use the audit logs to find an error when troubleshooting or 
-to monitor how a user in your organization modified a resource.
+監査ログには、リソースで実行されたすべての操作が含まれています。監査ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織がどのようにリソースを変更したかを監視したりできます。
 
-There are two important limitations to keep in mind when working with audit logs:
+監査ログを使用する際に留意するべき 2 つの重要な制限があります。
 
-1. Audit logs are only retained for 90 days.
-2. You can only query for a range of 15 days or less.
+1. 監査ログは、90 日間のみ保持されます。
+2. 15 日以内の範囲のみ照会することができます。
+
+<!---HONumber=AcomDC_0323_2016-->

@@ -38,7 +38,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 - データ収集を有効にする。
 - セキュリティ ポリシーの一部として表示する推奨事項を選択する。
 
-現在のポリシーの推奨事項は、システムの更新プログラム、基準ルール、マルウェア対策プログラム、[エンドポイントの ACL](../virtual-machines/virtual-machines-set-up-endpoints.md)、サブネットとネットワーク インターフェイス上の[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)、SQL データベースの監査、SQL データベースの透過的なデータ暗号化、Web アプリケーション ファイアウォールを軸として展開しています。[セキュリティ ポリシーの設定](security-center-policies.md)では、推奨事項の各オプションについて説明します。
+現在のポリシーの推奨事項は、システムの更新プログラム、基準ルール、マルウェア対策プログラム、[エンドポイントの ACL](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)、サブネットとネットワーク インターフェイス上の[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)、SQL データベースの監査、SQL データベースの透過的なデータ暗号化、Web アプリケーション ファイアウォールを軸として展開しています。[セキュリティ ポリシーの設定](security-center-policies.md)では、推奨事項の各オプションについて説明します。
 
 ### 推奨事項の監視
 セキュリティ ポリシーを設定すると、セキュリティ センターではリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。**[セキュリティ センター]** ブレードの **[推奨事項]** タイルでは、セキュリティ センターで識別された推奨事項の総数を把握することができます。
@@ -122,4 +122,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

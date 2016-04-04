@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/02/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # Azure Traffic Manager での機能低下状態のトラブルシューティング
@@ -67,9 +67,9 @@ wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 3
 ## 次のステップ
 
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
-[Traffic Manager について](../traffic-manmager-overview.md)
+[Traffic Manager について](traffic-manager-overview.md)
 
 [Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -80,4 +80,4 @@ wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 3
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

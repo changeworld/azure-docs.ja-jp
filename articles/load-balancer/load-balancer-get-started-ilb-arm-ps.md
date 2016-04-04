@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイ モデル](load-balancer-get-started-ilb-classic-ps.md)
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -241,7 +241,7 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 
 コマンド Add-AzureRmVMNetworkInterface を使用して、NIC を仮想マシンに割り当てます。
 
-ドキュメント「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example)」のオプション 4 または 5 に従って手順を確認しながら仮想マシンを作成し、NIC に割り当てることができます。
+手順に従って仮想マシンを作成し、ドキュメント、NIC に割り当てるを検索する [の作成とリソース マネージャーと Azure PowerShell で Windows 仮想マシンを事前構成する](../virtual-machines/virtual-machines-windows-create-powershell.md#Example) オプション 4 または 5 です。
 
 既に仮想マシンを作成済みの場合は、次の手順でネットワーク インターフェイスを追加することができます。
 
@@ -316,4 +316,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

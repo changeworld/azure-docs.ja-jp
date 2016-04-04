@@ -1,4 +1,5 @@
 
+
 <properties
 	pageTitle="Azure AD v2.0 OAuth 承認コード フロー | Microsoft Azure"
 	description="Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。"
@@ -13,7 +14,7 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="02/20/2016"
 	ms.author="dastrock"/>
 
@@ -275,4 +276,4 @@ curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-fo
 | trace\_id | 診断に役立つ、要求の一意の識別子。 |
 | correlation\_id | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

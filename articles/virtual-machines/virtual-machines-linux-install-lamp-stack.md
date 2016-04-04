@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Linux 仮想マシンへの LAMP スタックのインストール | Microsoft Azure"
 	description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。"
-	services="virtual-machines"
+	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="szarkos"
 	manager="timlt"
@@ -9,7 +9,7 @@
 	tags=“azure-service-management,azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -105,7 +105,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 		- CentOS と Oracle: `sudo service httpd restart`
 
-	- Apache は既定でポート 80 をリッスンします。Apache サーバーにリモートでアクセスするには、エンドポイントを開く必要がある場合があります。詳細な手順については、[エンドポイントの構成](virtual-machines-set-up-endpoints.md)に関するドキュメントを参照してください。
+	- Apache は既定でポート 80 をリッスンします。Apache サーバーにリモートでアクセスするには、エンドポイントを開く必要がある場合があります。詳細な手順については、[エンドポイントの構成](virtual-machines-windows-classic-setup-endpoints.md)に関するドキュメントを参照してください。
 
 	- これで、Apache が実行されていること、およびコンテンツを返していることを確認できます。ブラウザーで `http://[MYSERVICE].cloudapp.net` にアクセスします。**[MYSERVICE]** は仮想マシンが配置されているクラウド サービスの名前です。一部のディストリビューションでは、"It works!" とだけ表示された既定の Web ページが表示される場合があります。または、追加のドキュメントへのリンクや Apache サーバーの構成に関するコンテンツを掲載した、より詳細な Web ページが表示される場合もあります。
 
@@ -122,11 +122,11 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 ##参考資料
 
-アプリケーションをリモートの Linux 仮想マシンにデプロイする手順を自動化できるとしたらいかがでしょう。 Linux CustomScript 拡張機能を使用して、これを実現できます。「[Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする](virtual-machines-linux-script-lamp.md)」を参照してください。
+アプリケーションをリモートの Linux 仮想マシンにデプロイする手順を自動化できるとしたらいかがでしょう。 Linux CustomScript 拡張機能を使用して、これを実現できます。「[Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする](virtual-machines-linux-classic-lamp-script.md)」を参照してください。
 
 Ubuntu 上での LAMP スタックの設定については、他にも多くのリソースがあります。
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/15/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # Azure CLI を使用した静的パブリック IP を持つ VM のデプロイ
@@ -106,7 +106,7 @@ VM を作成するには、VM で使用するリソース グループ、VNet、
 		    --subnet-id $subnetId \
 		    --public-ip-name $pipName
 
->[AZURE.TIP]上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
+>[AZURE.TIP] 上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
 
 5. VM の OS ドライブをホストするストレージ アカウントを作成します。
 
@@ -227,4 +227,4 @@ VM を作成するには、VM で使用するリソース グループ、VNet、
 		info:    Creating VM "WEB1"
 		info:    vm create command OK
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

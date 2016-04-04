@@ -205,7 +205,7 @@
 	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##<a name="test"></a>エミュレーターでプログラムをテストする
+##</a><a name="test">エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 
@@ -222,7 +222,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 フォルダー|注
 ---|---
-/WordCount|ワード カウント プロジェクトのルート フォルダー。
+/WordCount|ワード カウント プロジェクトのルート フォルダー。 
 /WordCount/Apps|mapper と reducer の実行可能ファイルのフォルダー。
 /WordCount/Input|MapReduce のソース ファイル フォルダー。
 /WordCount/Output|MapReduce の出力ファイル フォルダー。
@@ -571,7 +571,6 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 ##<a id="nextsteps"></a>次のステップ
 このチュートリアルでは、Java MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce ジョブを実行する Azure PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
-- [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][hdinsight-develop-streaming]
 - [Azure HDInsight の概要][hdinsight-get-started]
 - [HDInsight Emulator の概要][hdinsight-emulator]
 - [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
@@ -590,7 +589,6 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 
-[hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-emulator]: ../hdinsight-get-started-emulator.md
@@ -610,4 +608,4 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

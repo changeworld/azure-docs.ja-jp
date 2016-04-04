@@ -1,47 +1,47 @@
 
 
-When you create a web application project for Azure, you can provision a virtual machine in Azure. You can then configure the virtual machine with additional software, or use the virtual machine for diagnostic or debugging purposes.
+Azure 用の Web アプリケーション プロジェクトを作成するとき、Azure 内で仮想マシンをプロビジョニングできます。さらに、他のソフトウェアで仮想マシンを構成したり、診断やデバッグのために仮想マシンを使用したりすることができます。
 
-To create a virtual machine when you create a web application, follow these steps:
+Web アプリケーションを作成するときに仮想マシンを作成するには、次の手順に従います。
 
-1. In Visual Studio, click **File** > **New** > **Project** > **Web**, and then choose **ASP.NET Web Application** (under the **Visual C#** or **Visual Basic** nodes).
-2. In the **New ASP.NET Project** dialog box, select the type of web application you want, and in the Azure section of the dialog box (in the lower-right corner), make sure that the **Host in the cloud** check box is selected (this check box is labeled **Create remote resources** in some installations).
+1. Visual Studio で、**[ファイル]** > **[新規作成]** > **[プロジェクト]** > **[Web]** の順にクリックし、(**[Visual C#]** ノードまたは **[Visual Basic]** ノードの) **[ASP.NET Web アプリケーション]** を選択します。
+2. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、必要な Web アプリケーションの種類を選択します。このダイアログ ボックスの Azure セクション (右下隅) にある **[クラウドでのホスト]** チェック ボックスがオンになっていることを確認してください (インストールによっては、このチェック ボックスに **"リモート リソースの作成"** というラベルが付いている場合もあります)。
 
 	![][0]
 
-3. For this example, in the drop-down list under Microsoft Azure, choose **Virtual Machine (v1)**, and then click the **OK** button.
-4. Sign in to Azure if you're prompted. The **Create Virtual Machine** dialog box appears.
+3. この例では、[Microsoft Azure] の下のドロップダウン リストから **[仮想マシン (v1)]** を選択し、**[OK]** をクリックします。
+4. サインインを要求されたら Azure にサインインします。**[仮想マシンを作成する]** ダイアログ ボックスが表示されます。
 
 	![][2]
 
-5. In the **DNS name** box, enter a name for the virtual machine. The DNS name must be unique in Azure. If the name you entered isn't available, a red exclamation point appears.
-6. In the **Image** list, choose the image you want to base the virtual machine on. You can choose any of the standard Azure virtual machine images or your image that you've uploaded to Azure.
-7. Leave the **Enable IIS and Web Deploy** check box selected unless you plan to install a different web server. You won't be able to publish from Visual Studio if you disable Web Deploy. You can add IIS and Web Deploy to any of the packaged Windows Server images, including your own custom images.
-8. In the **Size** list, choose the size of the virtual machine.
-9. Specify the sign-in credentials for this virtual machine. Make a note of them, because you'll need them to access the machine through Remote Desktop.
-10. In the **Location** list, choose the region to host the virtual machine.
-11. Click  the **OK** button to start creating the virtual machine. You can follow the progress of the operation in the **Output** window.
+5. **[DNS 名]** ボックスに仮想マシンの名前を入力します。DNS 名は、Azure 上で一意の名前にする必要があります。入力した名前が利用できない場合には、赤色の感嘆符が表示されます。
+6. **[イメージ]** ボックスの一覧から、仮想マシンで使用するイメージを選択します。標準の Azure 仮想マシン イメージだけでなく、Azure にアップロードしたイメージを選択することもできます。
+7. IIS 以外の Web サーバーをインストールする場合を除き、**[IIS と Web デプロイを有効にする]** チェック ボックスはオンのままにしておきます。Web デプロイを無効にすると、Visual Studio からの発行ができません。IIS と Web デプロイは、パッケージ化された Windows Server のイメージ (カスタム イメージも含む) に追加できます。
+8. **[サイズ]** ボックスの一覧から、仮想マシンのサイズを選択します。
+9. この仮想マシンのサインイン資格情報を指定します。この情報は、リモート デスクトップからこの仮想マシンにアクセスする際に必要なため、メモしておきます。
+10. **[場所]** ボックスの一覧で、仮想マシンをホストするリージョンを選択します。
+11. **[OK]** をクリックして、仮想マシンの作成を開始します。操作の進捗状況は、**[出力]** ウィンドウに表示されます。
 
 	![][3]
 
-12. When the virtual machine is provisioned, published scripts are created in a **PublishScripts** node in your solution. The published script runs and provisions a virtual machine in Azure. The **Output** window shows the status. The script performs the following actions to set up the virtual machine:
+12. 仮想マシンがプロビジョニングされている間に、ソリューションの **[PublishScripts]** ノード内で発行スクリプトが作成されます。発行スクリプトにより、Azure 内で仮想マシンが実行およびプロビジョニングされます。**[出力]** ウィンドウに状態が表示されます。このスクリプトは、仮想マシンを作成するために以下の操作を行います。
 
-	* Creates the virtual machine if it doesn't already exist.
-	* Creates a storage account with a name that begins with `devtest`, but only if there isn't already such a storage account in the specified region.
-	* Creates a cloud service as a container for the virtual machine, and creates a web role for the web application.
-	* Configures Web Deploy on the virtual machine.
-	* Configures IIS and ASP.NET on the virtual machine.
+	* 既存の仮想マシンがない場合は、作成します。
+	* `devtest` で始まる名前のストレージ アカウントを作成します。ただし、指定リージョンにこのストレージ アカウントがない場合に限ります。
+	* 仮想マシン用のコンテナーとしてクラウド サービスを作成し、Web アプリケーション用の Web ロールを作成します。
+	* 仮想マシンで Web デプロイを構成します。
+	* 仮想マシンで IIS および ASP.NET を構成します。
 
 	![][4]
 
-13. (Optional) You can connect to the new virtual machine. In **Server Explorer**, expand the **Virtual Machines** node, choose the node for the virtual machine you created, and on its shortcut menu, choose **Connect with Remote Desktop**. Alternatively, in **Cloud Explorer** you can choose **Open in Portal** on the shortcut menu and connect to the virtual machine there.
+13. (必要に応じて) 新しい仮想マシンに接続できます。**サーバー エクスプローラー**で、**[Virtual Machines]** ノードを展開し、作成した仮想マシンのノードをクリックします。そのショートカット メニューで、**[リモート デスクトップを使用して接続する]** をクリックします。または、**クラウド エクスプローラー**でショートカット メニューの **[ポータルで開く]** を選択し、仮想マシンに接続することもできます。
 
  ![][5]
 
 
-## Next steps
+## 次のステップ
 
-If you want to customize the published scripts you created, read more in-depth information at [Using Windows PowerShell Scripts to Publish to Dev and Test Environments](http://msdn.microsoft.com/library/dn642480.aspx).
+作成した発行スクリプトをカスタマイズするには、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/library/dn642480.aspx)」の詳細情報を参照してください。
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG
@@ -49,3 +49,5 @@ If you want to customize the published scripts you created, read more in-depth i
 [3]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_Provisioning.png
 [4]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-common-classic-web-app-visual-studio/VS_Create_VM_Connect.png
+
+<!---HONumber=AcomDC_0323_2016-->

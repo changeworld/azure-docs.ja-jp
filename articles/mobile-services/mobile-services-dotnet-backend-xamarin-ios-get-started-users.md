@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/25/2015" 
+	ms.date="03/18/2016" 
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -22,7 +22,8 @@
 
 &nbsp;
 
->[AZURE.NOTE]これは Azure Mobile Services のトピックです。Microsoft Azure では、すべての新しいモバイル バックエンドのデプロイに、Azure App Service Mobile Apps が推奨されています。詳細については、[Mobile Apps のドキュメントにある関連するチュートリアル](../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md)を参照してください。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Add authentication to your Xamarin.iOS App (Xamarin.iOS アプリに認証を追加する)](../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md)」を参照してください。
 
 このトピックでは、アプリケーションから Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile Services によって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
@@ -97,7 +98,7 @@
 
 ## <a name="next-steps"> </a>次のステップ
 
-次の [Mobile Services ユーザーのサービス側の認証][Authorize users with scripts]チュートリアルでは、認証されたユーザーに基づいて Mobile Services によって提供されるユーザー ID 値を受け取り、それを使用して、Mobile Services から返されたデータをフィルター処理します。
+次の[モバイル サービス ユーザーのサービス側の認証][Authorize users with scripts]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
 
 
 <!-- Anchors. -->
@@ -117,4 +118,4 @@
 [Authorize users with scripts]: ../mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts.md
 [JavaScript and HTML]: ../mobile-services-dotnet-backend-windows-store-javascript-get-started-users.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

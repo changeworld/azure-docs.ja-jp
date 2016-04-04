@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights Analytics のクエリのサンプル" 
-	description="Application Insights Analytics のクエリのサンプル、Application Insights の強力な検索ツール。" 
+	pageTitle="Application Insights のクエリのサンプル - Analytics" 
+	description="Application Insights のクエリのサンプル - Analytics、Application Insights の強力な検索ツール。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,13 +12,13 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
-# Application Insights Analytics のサンプル
+# Application Insights の Analytics サンプル
 
-[Application Insights Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な検索エンジンです。ここでは、Application Insights Analytics クエリ言語である AIQL について説明します。作業を開始する場合は、[言語のツアー](app-analytics-tour.md)を参照することをお勧めします。
+[Analytics](app-analytics.md) は、[Application Insights Telemetry](app-insights-overview.md) 用の強力な検索エンジンです。ここでは、Analytics のクエリ言語について説明します。作業を開始する場合は、[言語のツアー](app-analytics-tour.md)を参照することをお勧めします。
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -104,7 +104,7 @@ Events
 
 結合では、同じクライアントの IP アドレスから各開始時刻とすべての停止時刻のマッチングを行います。したがって、まず、前の停止時刻と一致した時刻を削除します。
 
-次に、開始時刻と IP でグループ化してから、セッションごとのグループを取得します。StartTime パラメーターには `bin` 関数を指定する必要があります。そうしないと、AI Analytics は自動的に 1 時間単位のビンを使用して、一部の開始時刻と間違った停止時刻のマッチングを行います。
+次に、開始時刻と IP でグループ化してから、セッションごとのグループを取得します。StartTime パラメーターには `bin` 関数を指定する必要があります。そうしないと、Analytics は自動的に 1 時間単位のビンを使用して、一部の開始時刻と間違った停止時刻のマッチングを行います。
 
 `argmin` は各グループの最短期間の行を選択し、`*` パラメーターは他のすべての列をパススルーしますが、各列名に "min\_" というプレフィックスを付けます。
 
@@ -264,7 +264,7 @@ X
 
 ## 結合の種類
 
-join 演算子の正確な種類は、kind キーワードを使用して指定されます。現時点では、AI Analytics は 6 種類の join 演算子をサポートします。つまり、左側が重複除去される内部結合 (既定)、標準内部結合、左外部結合、右外部結合、全外部結合、および左反結合の 6 つです。
+join 演算子の正確な種類は、kind キーワードを使用して指定されます。現時点では、Analytics は 6 種類の join 演算子をサポートします。つまり、左側が重複除去される内部結合 (既定)、標準内部結合、左外部結合、右外部結合、全外部結合、および左反結合の 6 つです。
  
 ここでは (種類を指定せずに) 既定の結合で、以下の 2 つのサンプル テーブルを使用して結合操作について説明します。
  
@@ -310,7 +310,7 @@ join 演算子の正確な種類は、kind キーワードを使用して指定�
 
 (出力にキーの 'a' と 'd' が表示されていないことに注意してください。これは、左側と右側の両方に一致するキーがないためです)。
  
-(歴史的に言えば、これが AI Analytics の初期バージョンでサポートされていた結合の最初の実装になります。これは、同じ関連付け ID で (それぞれがいくつかのフィルター条件に一致した) 2 つのイベントを関連付け、関係のあるトレース レコードの複数の発生数を無視して検索対象となる現象のすべての発生数を戻す一般的なログ/トレース分析シナリオで便利です。)
+(歴史的に言えば、これが Analytics の初期バージョンでサポートされていた結合の最初の実装になります。これは、同じ関連付け ID で (それぞれがいくつかのフィルター条件に一致した) 2 つのイベントを関連付け、関係のあるトレース レコードの複数の発生数を無視して検索対象となる現象のすべての発生数を戻す一般的なログ/トレース分析シナリオで便利です。)
  
 ### 内部結合 (kind=inner) 
 
@@ -437,4 +437,4 @@ JobHistory
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

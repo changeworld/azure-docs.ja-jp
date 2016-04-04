@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する | Microsoft Azure"
-   description="Service Bus のトピックとサブスクリプションによって提供されるパブリッシュ/サブスクライブ機能について説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する | Microsoft Azure"
+    description="Service Bus のトピックとサブスクリプションによって提供されるパブリッシュ/サブスクライブ機能について説明します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="03/16/2016"
+    ms.author="sethm" />
 
 # Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する
 
@@ -33,7 +33,7 @@ Azure Service Bus は、信頼性の高いメッセージ キュー機能や永�
 
 メッセージは、キューに送信される場合と同じ方法でトピックに送信されます。ただし、メッセージをトピックから直接受信することはなく、サブスクリプションから受信します。トピックにとってのサブスクリプションは、そのトピックに送信されたメッセージのコピーを受け取る仮想キューと考えることができます。メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
 
-小売業のシナリオに戻り、キューをトピックに置き換えて、在庫管理システム コンポーネントによって使用されるサブスクリプションを追加します。システムは次のようになります。
+小売業のシナリオに戻り、キューをトピックに置き換えて、在庫管理システム コンポーネントが使用できるサブスクリプションを追加します。システムは次のようになります。
 
 ![Service-Bus2](./media/service-bus-create-topics-subscriptions/IC657165.gif)
 
@@ -119,7 +119,7 @@ catch (Exception e)
 
 ## サブスクリプション フィルター
 
-ここまで、トピックに送信されるすべてのメッセージは、登録されているすべてのサブスクリプションで使用できます。ここでの重要なフレーズは "使用可能にする" です。 Service Bus のサブスクリプションにはトピックに送信されたすべてのメッセージが含まれますが、これらのメッセージの一部のみを仮想サブスクリプション キューにコピーできます。これを行うには、サブスクリプション *フィルター*を使用します。サブスクリプションを作成するときは、メッセージのシステム プロパティ (例: [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) とアプリケーション プロパティの両方によって動作する SQL92 スタイルの述語の形式でフィルター式を提供できます。前のコードの **StoreName** はその例です。
+今のところ、このシナリオでは、トピックに送信されるすべてのメッセージを、登録されているすべてのサブスクリプションで使用できます。ここでの重要なフレーズは "使用可能にする" です。 Service Bus のサブスクリプションにはトピックに送信されたすべてのメッセージが含まれますが、これらのメッセージの一部のみを仮想サブスクリプション キューにコピーできます。これを行うには、サブスクリプション *フィルター*を使用します。サブスクリプションを作成するときは、メッセージのシステム プロパティ (例: [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) とアプリケーション プロパティの両方によって動作する SQL92 スタイルの述語の形式でフィルター式を提供できます。前のコードの **StoreName** はその例です。
 
 これを示すためにシナリオを発展させ、2 番目の店を小売りシナリオに追加します。両店舗のすべての POS 端末からの売上データを一元的な在庫管理システムにルーティングする必要があるのは同じですが、ダッシュボード ツールを使用する店のマネージャーはその店の実績だけに関心があります。サブスクリプション フィルターを使用してこれを実現できます。POS 端末はメッセージを発行するときにメッセージの **StoreName** アプリケーション プロパティを設定することを思い出してください。たとえば **Redmond** と **Seattle** という 2 つの店があると、Redmond 店の POS 端末は売上データ メッセージの **StoreName** を **Redmond** に設定し、Seattle 店の POS 端末は **StoreName** を **Seattle** に設定します。Redmond 店のマネージャーは、Redmond 店の POS 端末のデータにだけ関心があります。システムは次のようになります。
 
@@ -150,4 +150,4 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

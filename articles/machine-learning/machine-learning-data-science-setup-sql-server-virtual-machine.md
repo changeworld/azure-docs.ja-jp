@@ -32,7 +32,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 1.  アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2.  Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2.  Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 
@@ -121,7 +121,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
  > [AZURE.NOTE] データの格納に D ドライブを使用しないでください。名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
-追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](storage-windows-attach-disk.md)」で説明されている次のような手順に従います。
+追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](virtual-machines-windows-classic-attach-disk.md)」で説明されている次のような手順に従います。
 
 1. 前の手順でプロビジョニングされた仮想マシンに 1 つ以上の空のディスクをアタッチする
 2. 仮想マシンでの新しいディスクの初期化
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

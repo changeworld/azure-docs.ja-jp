@@ -120,4 +120,4 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 
 更新トークンの取得方法と使用方法の詳細については、「[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

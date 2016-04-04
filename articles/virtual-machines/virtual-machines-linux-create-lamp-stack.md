@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure を使用した LAMP スタックの作成 | Microsoft Azure"
 	description="Linux を実行する Azure の仮想マシン (VM) を使用して、Microsoft Azure で LAMP スタックを設定する方法について説明します。"
-	services="virtual-machines"
+	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="NingKuang"
 	manager="timlt"
@@ -9,7 +9,7 @@
 	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -456,4 +456,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

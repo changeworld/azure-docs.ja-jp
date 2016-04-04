@@ -23,12 +23,12 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 プライベート IP アドレスは、VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミス ネットワーク内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md)。
 
 クラシック デプロイ モデルの知識がある場合は、「[differences in IP addressing between classic and Resource Manager (クラシック デプロイとリソース マネージャーでの IP アドレス指定の相違点)](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)」を確認してください。
 
 ## パブリック IP アドレス
-パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL データベース](sql-database-technical-overview.md)、[Azure ストレージ](storage-introduction.md)など、Azure の公開されたサービスと通信できます。
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL データベース](sql-database-technical-overview.md)、[Azure Storage](storage-introduction.md) など、Azure の公開されたサービスと通信できます。
 
 Azure リソース マネージャーで、[パブリック IP](resource-groups-networking.md#public-ip-address) アドレスは、独自のプロパティを持つリソースです。パブリック IP アドレスのリソースは、次のリソースのいずれかと関連付けることができます。
 
@@ -59,7 +59,7 @@ IP アドレスを*パブリック IP リソース*に割り当てる方法に�
 >[AZURE.IMPORTANT] 作成された各ドメイン名ラベルは、Azure の location 内で一意である必要があります。
 
 ### VM
-パブリック IP アドレスは、その**ネットワーク インターフェイス カード** (NIC) に割り当てることで、[仮想マシン](virtual-machines-about.md) (VM) に関連付けることができます。複数の NIC を備える VM の場合、*プライマリ* NIC にのみ割り当てることができます。VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
+パブリック IP アドレスは、その**ネットワーク インターフェイス カード** (NIC) に割り当てることで、[仮想マシン](../virtual-machines/virtual-machines-linux-about.md) (VM) に関連付けることができます。複数の NIC を備える VM の場合、*プライマリ* NIC にのみ割り当てることができます。VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
 
 ### インターネットに接続するロード バランサー
 パブリック IP アドレスをロード バランサーの**フロント エンド**構成に割り当てることで、[Azure Load Balancer](load-balancer-overview.md) に関連付けることができます。このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような[マルチ VIP](load-balancer-multivip.md) シナリオを有効にすることもできます。
@@ -103,7 +103,7 @@ IP アドレスが変わらないようにするため、割り当て方法を*�
 - IP アドレスを使用して他のアプリ/リソースからアクセスされるリソース。
 
 ### VM
-プライベート IP アドレスは、[仮想マシン](virtual-machines-about.md)の**ネットワーク インターフェイス カード** (NIC) に割り当てます。複数の NIC を備える VM の場合、各 NIC にプライベート IP アドレスが割り当てられます。NIC に対して動的または静的のどちらかの割り当て方法を指定することができます。
+プライベート IP アドレスは、[仮想マシン](../virtual-machines/virtual-machines-linux-about.md)の**ネットワーク インターフェイス カード** (NIC) に割り当てます。複数の NIC を備える VM の場合、各 NIC にプライベート IP アドレスが割り当てられます。NIC に対して動的または静的のどちらかの割り当て方法を指定することができます。
 
 #### 内部 DNS ホスト名の解決 (VM の場合)
 カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure VM が [Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)で構成されます。これらの DNS サーバーは、同じ VNet 内に存在する VM の内部名前解決を可能にします。
@@ -137,4 +137,4 @@ IP アドレス指定に対する制限は、Azure の[ネットワークの制�
 - [テンプレートを使用して、静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-template.md)方法を学びます。
 - Azure ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-arm-pportal.md)します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

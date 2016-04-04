@@ -4,7 +4,7 @@
 	services="app-service"
 	documentationCenter=""
 	authors="dariac"
-	manager="yochayk"
+	manager="wpickett"
 	editor="mollybos"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/18/2016"
 	ms.author="dariac"/>
     
 # クラウド フォルダーから Azure App Service へのコンテンツの同期
@@ -25,24 +25,20 @@
 オンデマンド コンテンツ同期デプロイでは、App Service と統合された [Kudu デプロイ エンジン](https://github.com/projectkudu/kudu/wiki)を使用しています。[Azure ポータル](https://portal.azure.com)では、クラウド ストレージのフォルダーを指定して、そのフォルダー内でアプリのコードとコンテンツの作業を行い、ボタンをクリックするだけで App Service に同期できます。コンテンツ同期では、ビルドとデプロイに Kudu プロセスを使用します。
     
 ## <a name="contentsync"></a>コンテンツ同期デプロイを有効化する方法
-Azure ポータルからのコンテンツ同期を有効化するには、次の手順を実行します。
+[Azure ポータル](https://portal.azure.com)からのコンテンツ同期を有効化するには、次の手順を実行します。
 
-1. アプリのコンテキストで **[設定]** ブレードに移動し、**[継続的なデプロイ]** オプションを選択します。
+1. **Azure ポータル**の対象アプリのブレードで、**[設定]、[デプロイ ソース]** の順にクリックします。**[ソースの選択]** をクリックし、デプロイのソースとして **[OneDrive]** または **[Dropbox]** を選択します。 
 
-    ![コンテンツ同期](./media/app-service-deploy-content-sync/continous_deployment.png)
+    ![コンテンツ同期](./media/app-service-deploy-content-sync/deployment_source.png)
 
-2. デプロイのソースとして、**[OneDrive]** または **[Dropbox]** を選択します。
-
-    ![デプロイ ソース](./media/app-service-deploy-content-sync/onedrive.png)
-
-3. OneDrive または Dropbox の専用の事前定義された指定パスに App Service がアクセスできるようにする、認証ワークフローを完了します。このパスが、App Service のコンテンツの保存先となります。認証が完了すると、App Service プラットフォームで、指定のコンテンツ パスの下にコンテンツ フォルダーを作成するか、または指定のコンテンツ パスにある既存のコンテンツ フォルダーを選択できるようになります。App Service 同期に使用するクラウド ストレージ アカウントの指定コンテンツ パスは次のとおりです。
+2. OneDrive または Dropbox の専用の事前定義された指定パスに App Service がアクセスできるようにする、認証ワークフローを完了します。このパスが、App Service のコンテンツの保存先となります。認証が完了すると、App Service プラットフォームで、指定のコンテンツ パスの下にコンテンツ フォルダーを作成するか、または指定のコンテンツ パスにある既存のコンテンツ フォルダーを選択できるようになります。App Service 同期に使用するクラウド ストレージ アカウントの指定コンテンツ パスは次のとおりです。
     * **OneDrive**: `Apps\Azure Web Apps` 
     * **Dropbox**: `Dropbox\Apps\Azure`
 
-4. コンテンツ同期は、初回以降は Azure ポータルからオンデマンドで開始できます。デプロイ履歴は **[デプロイ]** ブレードで確認できます。
+3. コンテンツ同期は、初回以降は Azure ポータルからオンデマンドで開始できます。デプロイ履歴は **[デプロイ]** ブレードで確認できます。
 
     ![デプロイ履歴](./media/app-service-deploy-content-sync/onedrive_sync.png)
  
 Dropbox デプロイの詳細については、「[New! Deploy to Windows Azure Web Sites from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)」 (新規: Dropbox から Windows Azure Web Sites へのデプロイ) を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

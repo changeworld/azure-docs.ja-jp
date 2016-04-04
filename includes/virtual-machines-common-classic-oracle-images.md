@@ -1,43 +1,43 @@
 
 
 
-To create virtual machines based on Oracle images, sign in to the [Azure portal](https://ms.portal.azure.com/), click **Marketplace**, click **Compute**, and then type **Oracle** into the Search box. Select an image and follow the instructions to set up the image on Microsoft Azure. Note that Oracle images by Microsoft on the [Azure portal](https://ms.portal.azure.com/) run on Windows, and Oracle images by Oracle run on Oracle Linux.
+Oracle イメージに基づく Virtual Machines を作成するには、[Azure ポータル](https://ms.portal.azure.com/)にサインインして **[Marketplace]** をクリック後、**[Compute]** をクリックし、検索ボックスに「**Oracle**」と入力します。イメージを選択し、手順に従って Microsoft Azure でイメージを設定します。[Azure ポータル](https://ms.portal.azure.com/)では、Microsoft による Oracle イメージは Windows で、Oracle による Oracle イメージは Oracle Linux で実行されることに注意してください。
 
 ![](./media/virtual-machines-common-classic-oracle-images/image1.png)
 
-##Windows-based virtual machine images
-The following is a list of the available Oracle virtual machine images that run on Windows Server on Azure. These images are pay-as-you-go, meaning that Oracle license fees are included in the usage of these images. You can also bring your own license to run Oracle software on Windows or Linux. Here are complete details on [pricing and licensing for Azure Virtual Machines and virtual machine gallery images](https://azure.microsoft.com/pricing/details/virtual-machines/#oracle-software). Click the **Oracle** tab for details on specific Oracle pricing.
+##Windows ベースの仮想マシン イメージ
+Azure の Windows Server 上で実行される、利用可能な Oracle 仮想マシン イメージの一覧を次に示します。これらのイメージは従量課金であり、Oracle のライセンス料にはこれらのイメージの使用が含まれています。独自のライセンスを持ち込んで、Windows または Linux 上で Oracle ソフトウェアを実行することもできます。Azure Virtual Machines の料金体系、ライセンス、仮想マシンのギャラリー イメージの詳細は[ここ](https://azure.microsoft.com/pricing/details/virtual-machines/#oracle-software)にあります。特定の Oracle の詳細価格を参照するには、**[Oracle]** タブをクリックします。
 
-###Oracle Database virtual machine images
+###Oracle データベース仮想マシン イメージ
 - Oracle Database 12c Enterprise Edition on Windows Server 2012
 - Oracle Database 12c Standard Edition on Windows Server 2012
-- Oracle Database 12c with Popular Options
-- Oracle Database 12c with Advanced Options
+- 基本的なオプションの Oracle Database 12c
+- 詳細オプションの Oracle Database 12c
 - Oracle Database 11g R2 Enterprise Edition on Windows Server 2008 R2
 - Oracle Database 11g R2 Standard Edition on Windows Server 2008 R2
-- Oracle Database 11g R2 EE with Popular Options
-- Oracle Database 11g R2 EE with Advanced Options  
+- 基本的なオプションのOracle Database 11g R2 EE
+- 詳細オプションのOracle Database 11g R2 EE  
 
-###Oracle WebLogic Server virtual machine images
+###Oracle WebLogic Server 仮想マシン イメージ
 - Oracle WebLogic Server 12c Enterprise Edition on Windows Server 2012
 - Oracle WebLogic Server 12c Standard Edition on Windows Server 2012
 - Oracle WebLogic Server 11g Enterprise Edition on Windows Server 2008 R2
 - Oracle WebLogic Server 11g Standard Edition on Windows Server 2008 R2  
 
-###Oracle Database and WebLogic Server virtual machine images  
+###Oracle データベースおよび Oracle WebLogic Server の仮想マシン イメージ  
 - Oracle Database 12c and WebLogic Server 12c Enterprise Edition on Windows Server 2012
 - Oracle Database 12c and WebLogic Server 12c Standard Edition on Windows Server 2012
 - Oracle Database 11g and WebLogic Server 11g Enterprise Edition on Windows Server 2008 R2
 - Oracle Database 11g and WebLogic Server 11g Standard Edition on Windows Server 2008 R2
 
-### Java virtual machine images
--	JDK 8 on Windows Server 2012 R2
--	JDK 7 on Windows Server 2012
--	JDK 6 on Windows Server 2012
+### Java 仮想マシン イメージ
+-	Windows Server 2012 R2 の JDK 8
+-	Windows Server 2012 R2 の JDK 7
+-	Windows Server 2012 の JDK 6
 
 
-##Oracle Linux virtual machine images
-The following is a list of the available preconfigured Oracle virtual machine images that run on Oracle Linux on Azure. You are expected to bring your own license for these images, as Oracle license fees are not included in the usage of these preconfigured virtual machine images. You can also bring your own license to install and run Oracle software on custom virtual machines on Windows or Linux. Here are complete details on [Oracle licensing on Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support). And here are details on creating virtual machines using [your own images](virtual-machines-windows-classic-createupload-vhd.md). To learn about this and other methods of migrating Oracle and other workloads to Azure, see [Different ways to create a Windows-based virtual machine](virtual-machines-windows-creation-choices.md).
+##Oracle Linux 仮想マシン イメージ
+Azure の Oracle Linux 上で実行される、事前に構成された利用可能な Oracle 仮想マシン イメージの一覧を次に示します。Oracle のライセンス料には、これらの事前構成された仮想マシン イメージの使用は含まれていません。これらのイメージについて、独自に所有するライセンスを使用しなければなりません。独自のライセンスを持ち込んで、Windows または Linux のカスタム Virtual Machines に Oracle ソフトウェアをインストールして実行することもできます。[Azure での Oracle ライセンス](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)の詳細を以下に説明します。また、[独自のイメージ](virtual-machines-windows-classic-createupload-vhd.md)を使用した仮想マシン作成の詳細についても説明します。これについて、また Oracle や他のワークロードを Azure へ移行する別の方法については、「[Windows ベースの仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)」を参照してください。
 
 - Oracle Database 12c Enterprise Edition on Oracle Linux
 - Oracle Database 12c Standard Edition on Oracle Linux
@@ -45,7 +45,9 @@ The following is a list of the available preconfigured Oracle virtual machine im
 - Oracle Linux 6.4.0.0.0
 - Oracle Linux 7.0.0.0.0
 
-##Additional resources
-[New all-in-one Oracle images in the Azure Marketplace](https://msopentech.com/blog/2015/02/19/new-one-oracle-images-azure-marketplace/)
+##その他のリソース
+[Azure Marketplace の新しい一体型の Oracle イメージ](https://msopentech.com/blog/2015/02/19/new-one-oracle-images-azure-marketplace/)
 
-[Oracle virtual machine images - miscellaneous considerations](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
+[Oracle 仮想マシン イメージ - 他の考慮事項](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
+
+<!---HONumber=AcomDC_0323_2016-->

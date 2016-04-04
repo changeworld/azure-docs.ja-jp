@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Machine Learning コンペティションについてよく寄せられる質問 | Microsoft Azure"
-	description="Microsoft Azure Machine Learning コンペティションについてよく寄せられる質問。"
+	description="Microsoft Cortana Analytics Suite コンペティションについてよく寄せられる質問。"
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
@@ -16,7 +16,7 @@
 	ms.date="03/11/2016"
 	ms.author="haining;chlovel;garye"/>
 
-# Microsoft Azure Machine Learning コンペティションについてよく寄せられる質問
+# Microsoft Cortana Analytics Suite コンペティションの FAQ
 
 **データ サイエンスに関する一般的な質問はどこで聞くことができますか?**
 
@@ -70,4 +70,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 コンペティションで受賞した場合、資格、ライセンス、リリースの宣言に署名する必要があります。このフォームには、コンペティション規則が繰り返し記載されています。受賞者は、米国の納税申告フォーム W-9 (米国の納税者ではない場合はフォーム W-8BEN) に記入する必要があります。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

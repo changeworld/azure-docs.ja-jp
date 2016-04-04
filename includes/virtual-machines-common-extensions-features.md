@@ -2,82 +2,83 @@
 
 
 
-For details about the VM Agents and how they work to support VM Extensions, see [VM Agent and VM Extensions Overview](virtual-machines-windows-classic-manage-extensions.md).
+VM エージェントの詳細とエージェントによる VM 拡張機能のサポート動作については、「[VM エージェントと VM 拡張機能の概要](virtual-machines-windows-classic-manage-extensions.md)」を参照してください。
 
-##Azure VM Extensions
+##Azure VM 拡張機能
 
-VM Extensions implement most of the critical functionality that you want to use with your VMs, including basic functionality like resetting passwords, configuring RDP, and many, many others. Because new extensions are added all the time, the number of possible features your VMs support in Azure continues to increase. By default, several basic VM extensions are installed when you create your VM from the Image Gallery, including **IaaSDiagnostics** (currently Windows VMs only), **VMAccess**, and **BGInfo** (also currently Windows only). However, not all extensions are implemented on both Windows and Linux at any specific time, due to the constant flow of feature updates and new extensions.
+VM 拡張機能では、パスワードのリセットや RDP の構成などの基本的な機能をはじめとして、VM で使用する重要な機能のほとんどを実装します。新しい拡張機能は永続的に追加されるため、Azure 内で VM がサポートする機能の数は増加し続けます。既定では、**IaaSDiagnostics** (現時点では Windows VM のみ)、**VMAccess**、**BGInfo** (現時点では Windows のみ) などのいくつかの基本的な VM 拡張機能は、イメージ ギャラリーから VM を作成したときにインストールされます。ただし、機能の更新と新しい拡張機能の流れは一定であるため、どの期間でも Windows と Linux の両方にすべての拡張機能が実装されるわけではありません。
 
-##Connectivity and Basic Management
+##接続と基本的な管理
 
-The following extensions are critical to enabling, re-enabling, or disabling basic connectivity with your VMs once they are created and running.
+次の拡張機能は、VM を作成および実行した後にその基本的な接続を有効化、再有効化、または無効化するのに欠かせません。
 
-|VM Extension Name|Feature Description|More Information
+|VM 拡張機能の名前|機能の説明|詳細情報
 |---|---|---|
-|VMAccessAgent (Windows)|Create, update, and reset user information and RDP and SSH connection configurations.|[Windows](virtual-machines-windows-classic-extensions-customscript.md)
-|VMAccessForLinux (Linux)|Create, update, and reset user information and RDP and SSH connection configurations.|[Linux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
+|VMAccessAgent (Windows)|ユーザー情報と RDP および SSH の接続構成を作成、更新、リセットします。|[Windows](virtual-machines-windows-classic-extensions-customscript.md)
+|VMAccessForLinux (Linux)|ユーザー情報と RDP および SSH の接続構成を作成、更新、リセットします。|[Linux](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
-##Deployment and Configuration Management
+##デプロイと構成の管理
 
-The following extensions support different kinds of deployment and configuration management scenarios and features. See also the section on VM Operations and Management, below.
+次の拡張機能は、デプロイと構成の管理に関するさまざまな種類のシナリオと機能をサポートします。以下の VM の操作と管理に関するセクションも参照してください。
 
-|VM Extension Name|Feature Description|More Information|
+|VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
-|**MSEnterpriseApplication**|Implements features for support by Windows System Center.|[System Center 2012 R2 Virtual Machine Roles](http://social.technet.microsoft.com/wiki/contents/articles/18274.system-center-2012-r2-virtual-machine-role-authoring-guide-resource-extension-package.aspx)|
-|**Octopus Deploy** (DSC Extension-based)|Supports automated deployment of ASP.NET web applications and Windows Services into development, test, and production environments.|[Getting Started with Octopus Deploy](http://docs.octopusdeploy.com/display/OD/Getting%20started)|
-|**Visual Studio Release Manager** (DSC Extension-based)|Supports continuous deployment with Visual Studio.|[Automate deployments with Release Management](https://msdn.microsoft.com/Library/vs/alm/Release/overview)|
+|**MSEnterpriseApplication**|Windows System Center によるサポート向けの機能を実装します。|[System Center 2012 R2 Virtual Machine Roles (System Center 2012 R2 の仮想マシン ロール)](http://social.technet.microsoft.com/wiki/contents/articles/18274.system-center-2012-r2-virtual-machine-role-authoring-guide-resource-extension-package.aspx)|
+|**Octopus Deploy** (DSC 拡張機能ベース)|開発環境、テスト環境、運用環境への ASP.NET Web アプリケーションおよび Windows サービスの自動デプロイをサポートします。|[Getting Started with Octopus Deploy (Octopus Deploy の概要)](http://docs.octopusdeploy.com/display/OD/Getting%20started)|
+|**Visual Studio Release Manager** (DSC 拡張機能ベース)|Visual Studio での継続的なデプロイをサポートします。|[リリース管理による配置の自動化](https://msdn.microsoft.com/Library/vs/alm/Release/overview)|
 |**CentosChefClient**|||
-|**ChefClient**|Creates a Chef client on Windows. (Can also use the DSC extension, below.)|[Chef and Microsoft Azure](https://www.getchef.com/solutions/azure/)|
+|**ChefClient**|Windows 上で Chef クライアントを作成します(以下の DSC 拡張機能も使用できます)。|[Chef と Microsoft Azure に関するページ](https://www.getchef.com/solutions/azure/)|
 |**LinuxChefClient**|||
-|**DockerExtension**|Installs the Docker daemon to support remote Docker commands.|[How to Use the Docker Virtual Machine Extension](virtual-machines-linux-dockerextension.md)For more extensive information, see the [Docker VM Extension User Guide](https://github.com/Azure/azure-docker-extension/blob/master/README.md)|
-|**DSC**|PowerShell DSC (Desired State Configuration) extension.|[Azure PowerShell DSC (Desired State Configuration) extension](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx)|
-|**PuppetEnterpriseAgent**|Implements the features of Puppet Enterprise. |[Puppet on Azure](http://puppetlabs.com/solutions/microsoft)|
-|**CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux)|Invokes custom scripts on the VM at any time: startup or during lifetime.|[Custom Script Extension](virtual-machines-windows-classic-extensions-customscript.md) | [Linux](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)|
-|**AzureCATExtensionHandler**|Consumes the diagnostic data collected by **IaaSDiagnostics** and few other data sources such as [Azure Storage Analytics Metrics](https://msdn.microsoft.com/library/azure/hh343270.aspx) and transforms it into an aggregated data set appropriate for SAP Host control process to consume|[Azure Enhanced Monitoring for SAP](https://azure.microsoft.com/blog/2014/06/04/azure-enhanced-monitoring-for-sap/)|
+|**DockerExtension**|リモートの Docker コマンドをサポートする Docker デーモンをインストールします。|[Docker 仮想マシン拡張機能の使用方法](virtual-machines-linux-dockerextension.md)詳細については、「[Docker VM Extension User Guide](https://github.com/Azure/azure-docker-extension/blob/master/README.md)」(Docker VM 拡張機能ユーザー ガイド) を参照してください。|
+|**DSC**|PowerShell DSC (必要な状態の構成) 拡張機能。|[Azure PowerShell DSC (Desired State Configuration) extension (Azure PowerShell DSC (必要な状態の構成) 拡張機能)](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx)|
+|**PuppetEnterpriseAgent**|Puppet Enterprise の機能を実装します。 |[Puppet on Azure (Azure で Puppet を使用する)](http://puppetlabs.com/solutions/microsoft)|
+|**CustomScriptExtension** (Windows)**CustomScriptForLinux** (Linux)|任意のタイミング (スタートアップ時または有効期間中) に VM でカスタム スクリプトを呼び出します。|[カスタム スクリプト拡張機能](virtual-machines-windows-classic-extensions-customscript.md) | [Linux](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)|
+|**AzureCATExtensionHandler**|**IaaSDiagnostics** および他のいくつかのデータ ソース ([Azure Storage Analytics Metrics など](https://msdn.microsoft.com/library/azure/hh343270.aspx)) で収集された診断データを使用し、それらのデータを SAP ホスト コントロール プロセスでの使用に適した集計データ セットに変換します。|[Azure Enhanced Monitoring for SAP (Azure での SAP の監視の強化)](https://azure.microsoft.com/blog/2014/06/04/azure-enhanced-monitoring-for-sap/)|
 
-##Security and Protection
+##セキュリティと保護
 
-The extensions in this section provide critical security features for your Azure VMs.
+このセクションの拡張機能は、Azure VM に欠かせないセキュリティ機能を提供します。
 
-|VM Extension Name|Feature Description|More Information|
+|VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
-|**CloudLinkSecureVMWindowsAgent**|Provides Microsoft Azure customers with the capability to encrypt their virtual machine data on a multi-tenant shared infrastructure and fully control of the encryption keys for their encrypted data on Azure storage infrastructure.|[Securing Microsoft Azure Virtual Machines leveraging BitLocker and Native OS encryption](http://www.cloudlinktech.com/azure)|
-|**McAfeeEndpointSecurity**|Protects your VM against malicious software.|[McAfee](https://www.mcafeeasap.com/MarketingContent/default.aspx)|
-|**TrendMicroDSA**|Enables TrendMicro’s Deep Security platform support to provide intrusion detection and prevention, firewall, anti-malware, web reputation, log inspection, and integrity monitoring.|[How to install and configure Trend Micro Deep Security as a Service on an Azure VM](virtual-machines-windows-classic-install-trend.md)|
-|**PortalProtectExtension**|Guards against threats to your Microsoft SharePoint environment.|[Securing Your SharePoint Deployment on Azure](http://blog.trendmicro.com/securing-sharepoint-deployment-azure/)|
-|**IaaSAntimalware**|Microsoft Antimalware for Azure Cloud Services and Virtual Machines is a real-time protection capability that helps identify and remove viruses, spyware, and other malicious software, with configurable alerts when known malicious or unwanted software attempts to install itself or run on your system.|[Download antimalware documentation](http://go.microsoft.com/fwlink/?linkid=398023&clcid=0x409)|
-|**SymantecEndpointProtection**|Symantec Endpoint Protection 12.1.4 enables security and performance across physical and virtual systems.|[How to install and configure Symantec Endpoint Protection on an Azure VM](virtual-machines-windows-classic-install-symantec.md)
+|**CloudLinkSecureVMWindowsAgent**|Microsoft Azure のお客様に、マルチテナント共有インフラストラクチャで仮想マシンのデータを暗号化する機能と、Azure ストレージ インフラストラクチャ上の暗号化されたデータの暗号化キーを完全に制御する機能を提供します。|[Securing Microsoft Azure Virtual Machines leveraging BitLocker and Native OS encryption (BitLocker とネイティブ OS 暗号化を使用した Microsoft Azure Virtual Machines の保護)](http://www.cloudlinktech.com/azure)|
+|**McAfeeEndpointSecurity**|悪意のあるソフトウェアから VM を保護します。|[McAfee](https://www.mcafeeasap.com/MarketingContent/default.aspx)|
+|**TrendMicroDSA**|侵入の検知と防止、ファイアウォール、マルウェア対策、Web レピュテーション、ログの検査、および整合性監視を提供する Trend Micro Deep Security プラットフォームを有効にします。|[Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](virtual-machines-windows-classic-install-trend.md)|
+|**PortalProtectExtension**|Microsoft SharePoint 環境を脅威から保護します。|[Securing Your SharePoint Deployment on Azure (Azure 上への SharePoint のデプロイの保護)](http://blog.trendmicro.com/securing-sharepoint-deployment-azure/)|
+|**IaaSAntimalware**|Azure Cloud Services および Virtual Machines 向けの Microsoft マルウェア対策は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能であり、既知のマルウェアや不要なソフトウェアがシステムへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。|[マルウェア対策についてのドキュメントをダウンロードする](http://go.microsoft.com/fwlink/?linkid=398023&clcid=0x409)|
+|**SymantecEndpointProtection**|Symantec Endpoint Protection 12.1.4 により、物理システムと仮想システム間でのセキュリティとパフォーマンスを有効にします。|[Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](virtual-machines-windows-classic-install-symantec.md)
 
-##VM Operations and Management
+##VM の操作と管理
 
-Supports common operations management features and behavior. See also the section on Deployment and Configuration Management, above.
+一般的な操作管理機能と動作をサポートします。上記のデプロイと構成の管理に関するセクションも参照してください。
 
-|**VM Extension Name**|Feature Description|More Information|
+|**VM 拡張機能の名前**|機能の説明|詳細情報|
 |---|---|---|
-|**AzureVmLogCollector**|You can use the **AzureVMLogCollector** extension on-demand to perfom one-time collection of logs from one or more Cloud Service VMs (from both web roles and worker roles) and transfer the collected files to an Azure storage account – all without remotely logging on to any of the VMs. |[AzureLogCollector Extension](virtual-machines-windows-log-collector-extension.md)|
-|**IaaSDiagnostics**|Enables, disables, and configures Azure Diagnostics, and is also used by the **AzureCATExtensionHandler** to support SAP monitoring.|[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)|
-|**OSPatchingForLinux**|Enables the Azure VM administrators to automate the VM OS updates with the customized configurations. You can use the OSPatching extension to configure OS updates for your virtual machines, including: Specify how often and when to install OS patches, Specify what patches to install, and Configure the reboot behavior after updates|[OS Patching Extension Blog Post](https://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/). See also the readme and source on Github at [OS Patching Extension](https://github.com/Azure/azure-linux-extensions).|
+|**AzureVmLogCollector**|VM にリモートでログオンすることなく、オンデマンドで **AzureVMLogCollector** 拡張機能を使用し、1 つ以上のクラウド サービス VM (Web ロールと worker ロールの両方) のログを一度に収集して、収集したファイルを Azure ストレージ アカウントに転送することができます。 |[AzureLogCollector 拡張機能](virtual-machines-windows-log-collector-extension.md)|
+|**IaaSDiagnostics**|Azure 診断を有効化、無効化、および構成します。また、SAP 監視のサポートのために **AzureCATExtensionHandler** によっても使用されます。|[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)|
+|**OSPatchingForLinux**|Azure VM 管理者を有効にして、カスタマイズされた構成での VM OS の更新を自動化します。OSPatching 拡張機能を使用すると、OS パッチをインストールする頻度と時期の指定、インストールするパッチの指定、および更新後の再起動動作の構成など、仮想マシンの OS の更新を構成できます。|[OS Patching 拡張機能に関するブログ投稿](https://azure.microsoft.com/blog/2014/10/23/automate-linux-vm-os-updates-using-ospatching-extension/)。Github の「[OS Patching Extension](https://github.com/Azure/azure-linux-extensions)」(OS Patching 拡張機能) にある readme およびソースも参照してください。|
 
-##Developing and Debugging
+##開発およびデバッグ
 
-These VM extensions are listed here for completeness, as they provide support for Visual Studio-related features and are not intended to be used directly.
+これらの VM 拡張機能は Visual Studio 関連の機能に対するサポートを提供するものです。ここでは機能一覧を網羅するために掲載されており、直接使用することは意図されていません。
 
-|VM Extension Name|Feature Description|More Information|
+|VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
-|**VS14CTPDebugger**|Supports remote debugging from VS using the Azure SDK 2.4|[Remote Debugging in Visual Studio](https://msdn.microsoft.com/library/y7f5zaaa.aspx)|
-|**VS2013Debugger**|Supports remote debugging from VS using the Azure SDK 2.4||
-|**VS2012Debugger**|Supports remote debugging from VS using the Azure SDK 2.4||
-|**RemoteDebugVS14CTP**|Supports remote debugging from VS using the Azure SDK 2.3||
-|**RemoteDebugVS2013**|Supports remote debugging from VS using the Azure SDK 2.3||
-|**RemoteDebugVS2012**|Supports remote debugging from VS using the Azure SDK 2.3||
-|**WebDeployForVSDevTest**|Installs and configures IIS and Web Deploy on Windows Server. Removing or disabling it is not supported.|
+|**VS14CTPDebugger**|Azure SDK 2.4 を使用した VS からのリモート デバッグをサポートします。|[リモート デバッグと診断](https://msdn.microsoft.com/library/y7f5zaaa.aspx)|
+|**VS2013Debugger**|Azure SDK 2.4 を使用した VS からのリモート デバッグをサポートします。||
+|**VS2012Debugger**|Azure SDK 2.4 を使用した VS からのリモート デバッグをサポートします。||
+|**RemoteDebugVS14CTP**|Azure SDK 2.3 を使用した VS からのリモート デバッグをサポートします。||
+|**RemoteDebugVS2013**|Azure SDK 2.3 を使用した VS からのリモート デバッグをサポートします。||
+|**RemoteDebugVS2012**|Azure SDK 2.3 を使用した VS からのリモート デバッグをサポートします。||
+|**WebDeployForVSDevTest**|Windows Server に IIS と Web Deploy をインストールおよび構成します。この拡張機能の削除または無効化はサポートされていません。|
 
-##Miscellaneous Features
+##その他の機能
 
-These extensions provide support for other VM features that might be useful.
+これらの拡張機能では、役立つ可能性があるその他の VM 機能に対するサポートを提供します。
 
-|VM Extension Name|Feature Description|More Information|
+|VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
-|**BGInfo**|Presents a consolidated picture of useful server information on the desktop when using RDP.|[BGInfo Extension](https://msdn.microsoft.com/library/dn606289.aspx)|
-|**HpcVmDrivers**|Installs, configures, and maintains the remote direct memory access (RDMA) network device drivers on a size A8 or A9 VM running Windows Server 2012 R2 or Windows Server 2012. Enables clustered A8 or A9 VMs to use the RDMA network when running parallel MPI applications.|[About the A8, A9, A10, and A11 compute-intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md)
+|**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/dn606289.aspx)|
+|**HpcVmDrivers**|Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。|[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
+<!---HONumber=AcomDC_0323_2016-->

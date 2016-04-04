@@ -1,175 +1,171 @@
 
 
-## Overview
+## 概要
 
-This article describes the available sizes and options for the virtual machine-based compute resources you can use to run your apps and workloads.  It also provides deployment considerations to be aware of when you're planning to use these resources. For information about pricing of the various sizes, see [Virtual Machines Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/).
+この記事では、アプリとワークロードの実行に使用できる仮想マシン ベースのコンピューティング リソースの利用可能なサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。さまざまなサイズの価格について詳しくは、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
-To see general limits on Azure VMs, see [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md).
+Azure VM の一般的な制限事項については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 
-The standard sizes consist of several series: A, D, DS, G, and GS. Considerations for some of these sizes include:
+標準のサイズは、複数のシリーズ (A、D、DS、G、および GS) で構成されます。これらのサイズに関する考慮事項は次のとおりです。
 
-*   D-series VMs are designed to run applications that demand higher compute power and temporary disk performance. D-series VMs provide faster processors, a higher memory-to-core ratio, and a solid-state drive (SSD) for the temporary disk. For details, see the announcement on the Azure blog, [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
+*   D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
 
-*   Dv2-series, a follow-on to the original D-series, features a more powerful CPU. The Dv2-series CPU is about 35% faster than the D-series CPU. It is based on the latest generation 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) processor, and with the Intel Turbo Boost Technology 2.0, can go up to 3.2 GHz. The Dv2-series has the same memory and disk configurations as the D-series.
+*   オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.2 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
-*   G-series VMs offer the most memory and run on hosts that have Intel Xeon E5 V3 family processors.
+*   G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 
-*   DS-series and GS-series VMs can use Premium Storage, which provides high-performance, low-latency storage for I/O intensive workloads. These VMs use solid-state drives (SSDs) to host a virtual machine’s disks and also provide a local SSD disk cache. Premium Storage is available in certain regions. For details, see [Premium Storage: High-performance storage for Azure virtual machine workloads](../storage/storage-premium-storage.md).
-
-
-*   The A-series VMs can be deployed on a variety of hardware types and processors. The size is throttled, based upon the hardware, to offer consistent processor performance for the running instance, regardless of the hardware it is deployed on. To determine the physical hardware on which this size is deployed, query the virtual hardware from within the Virtual Machine.
-
-*   The A0 size is over-subscribed on the physical hardware. For this specific size only, other customer deployments may impact the performance of your running workload. The relative performance is outlined below as the expected baseline, subject to an approximate variability of 15 percent.
+*   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
 
-The size of the virtual machine affects the pricing. The size also affects the processing, memory, and storage capacity of the virtual machine. Storage costs are calculated separately based on used pages in the storage account. For details, see [Virtual Machines Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/) and [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/). For more details about storage for VMss, see [About disks and VHDs for virtual machines ](virtual-machines-linux-about-disks-vhds.md).
+*   A シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
+
+*   A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。
 
 
-The following considerations might help you decide on a size:
+仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
 
 
-* The A8-A11 sizes are also known as *compute-intensive instances*. The hardware that runs these sizes is designed and optimized for compute-intensive and network-intensive applications, including high-performance computing (HPC) cluster applications, modeling, and simulations. For detailed information and considerations about using these sizes, see [About the A8, A9, A10, and A11 compute intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md).
+サイズを決定する際に役立つ考慮事項は次のとおりです。
 
 
-*	Dv2-series, D-series, G-series, and the DS/GS counterparts  are ideal for applications that demand faster CPUs, better local disk performance, or have higher memory demands.  They offer a powerful combination for many enterprise-grade applications.
-
-*   Some of the physical hosts in Azure data centers may not support larger virtual machine sizes, such as A5 – A11. As a result, you may see the error message **Failed to configure virtual machine <machine name>** or **Failed to create virtual machine <machine name>** when resizing an existing virtual machine to a new size; creating a new virtual machine in a virtual network created before April 16, 2013; or adding a new virtual machine to an existing cloud service. See  [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) on the support forum for workarounds for each deployment scenario.  
+* A8 ～ A11 のサイズは、*コンピューティング集中型インスタンス*とも呼ばれます。これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
 
 
-## Performance considerations
+*	Dv2 シリーズ、D シリーズ、G シリーズ、および対応する DS/GS は、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 
-We have created the concept of the Azure Compute Unit (ACU) to provide a way of comparing compute (CPU) performance across Azure SKUs. This will help you easily identify which SKU is most likely to satisfy your performance needs.  ACU is currently standardized on a Small (Standard_A1) VM being 100 and all other SKUs then represent approximately how much faster that SKU can run a standard benchmark. 
+*   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 
->[AZURE.IMPORTANT] The ACU is only a guideline.  The results for your workload may vary. 
+
+## パフォーマンスに関する考慮事項
+
+Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供するため、Azure Compute Unit (ACU) の概念が作成されています。これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。現在、ACU は小さい (Standard\_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。
+
+>[AZURE.IMPORTANT] ACU はガイドラインに過ぎません。ワークロードの結果は異なる場合があります。
 
 <br>
 
-|SKU Family	|ACU/Core |
+|SKU ファミリ |ACU/コア |
 |---|---|
-|[Standard_A0](#standard-tier-a-series)	|50 |
-|[Standard_A1-4](#standard-tier-a-series)	|100 |
-|[Standard_A5-7](#standard-tier-a-series)	|100 |
-|[A8-A11](#standard-tier-a-series)	|225 *|
-|[D1-14](#standard-tier-d-series)	|160 |
-|[D1-14v2](#standard-tier-dv2-series)	|210 - 250 *|
-|[DS1-14](#standard-tier-ds-series)	|160 |
-|[G1-5](#standard-tier-g-series)	|180 - 240 *|
-|[GS1-5](#standard-tier-gs-series)	|180 - 240 *|
+|[Standard\_A0](#standard-tier-a-series) |50 |
+|[Standard\_A1 ～ 4](#standard-tier-a-series) |100 |
+|[Standard\_A5 ～ 7](#standard-tier-a-series) |100 |
+|[A8 ～ A11](#standard-tier-a-series) |225 *| |[D1 ～ 14](#standard-tier-d-series) |160 | |[D1 ～ 14v2](#standard-tier-dv2-series) |210 ～ 250 *| |[DS1 ～ 14](#standard-tier-ds-series) |160 | |[G1 ～ 5](#standard-tier-g-series) |180 ～ 240 *| |[GS1 ～ 5](#standard-tier-gs-series) |180 ～ 240 *|
 
 
-ACUs marked with a * use Intel® Turbo technology to increase CPU frequency and provide a performance boost.  The amount of the boost can vary based on the VM size, workload, and other workloads running on the same host.
+* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
 
 
 
-## Size tables
+## サイズ一覧表
 
-The following tables show the sizes and the capacities they provide.
+次の表に、サイズとそのサイズで提供される容量を示します。
 
-* Storage capacity is represented by using 1024^3 bytes as the unit of measurement for GB. This is sometimes referred to as gibibyte, or base 2 definition. When comparing sizes that use different base systems, remember that base 2 sizes may appear smaller than base 10 but for any specific size (such as 1 GB) a base 2 system provides more capacity than a base 10 system, because 1024^3 is greater than 1000^3.
+* Storage の容量は、GB の測定単位として 1024^3 バイトを使用して表されます。これはギガバイト、または 2 進数定義とも呼ばれます。使用する進法が異なるサイズを比較する場合、2 進数のサイズが 10 進数よりも小さく見える場合でも、1024^3 は 1000^3 より大きいため、特定のサイズ (1 GB など) では、2 進法の方が 10 進法よりも提供される容量が大きいことに注意してください。
 
-* Maximum network bandwidth is the maximum aggregated bandwidth allocated and assigned per VM type. The maximum bandwidth provides guidance for selecting the right VM type to ensure adequate network capacity is available. When moving between Low, Moderate, High and Very High, the throughput will increase accordingly. Actual network performance will depend on many factors including network and application loads, and application network settings.
+* 最大ネットワーク帯域幅は、VM の種類ごとに割り当てられた最大集約帯域です。最大帯域幅は、適切なネットワーク容量を確保するための適切な VM の種類を選択するためのガイダンスを提供します。低、中、高、非常に高の順でスループットが増加します。実際のネットワークのパフォーマンスは、ネットワークおよびアプリケーションの負荷、アプリケーションのネットワーク設定など、多くの要因に左右されます。
 
 
-## Standard tier: A-series
+## Standard レベル: A シリーズ
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
-|Standard_A0 |1|768 MB|1| Temporary = 20 GB |1|1x500| low |
-|Standard_A1 |1|1.75 GB|1|Temporary = 70 GB |2|2x500| moderate |
-|Standard_A2 |2|3.5 GB|1|Temporary = 135 GB |4|4x500| moderate |
-|Standard_A3 |4|7 GB|2|Temporary = 285 GB |8|8x500| high |
-|Standard_A4 |8|14 GB|4|Temporary = 605 GB |16|16x500| high |
-|Standard_A5 |2|14 GB|1|Temporary = 135 GB |4|4X500| moderate |
-|Standard_A6 |4|28 GB|2|Temporary = 285 GB |8|8x500| high |
-|Standard_A7 |8|56 GB|4|Temporary = 605 GB |16|16x500| high |
+|Standard\_A0 |1|768 MB|1| 一時ディスク = 20 GB |1|1 x 500| 低 |
+|Standard\_A1 |1|1\.75 GB|1|一時ディスク = 70 GB |2|2 x 500| 中 |
+|Standard\_A2 |2|3\.5 GB|1|一時ディスク = 135 GB |4|4 x 500| 中 |
+|Standard\_A3 |4|7 GB|2|一時ディスク = 285 GB |8|8 x 500| 高 |
+|Standard\_A4 |8|14 GB|4|一時ディスク = 605 GB |16|16 x 500| 高 |
+|Standard\_A5 |2|14 GB|1|一時ディスク = 135 GB |4|4 x 500| 中 |
+|Standard\_A6 |4|28 GB|2|一時ディスク = 285 GB |8|8 x 500| 高 |
+|Standard\_A7 |8|56 GB|4|一時ディスク = 605 GB |16|16 x 500| 高 |
 
 
-## Standard tier: A-series - compute-intensive instances
+## Standard レベル: A シリーズ - コンピューティング集中型インスタンス
 
-Note: For information and considerations about using these sizes, see [About the A8, A9, A10, and A11 compute intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md).
+注: これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
-|Standard_A8|8|56 GB|2| Temporary = 382 GB  |16|16x500| high |
-|Standard_A9|16|112 GB|4| Temporary = 382 GB  |16|16x500| very high |
-|Standard_A10|8|56 GB|2| Temporary = 382 GB  |16|16x500| high |
-|Standard_A11|16|112 GB|4| Temporary = 382 GB  |16|16x500| very high |
+|Standard\_A8|8|56 GB|2| 一時ディスク = 382 GB |16|16 x 500| 高 |
+|Standard\_A9|16|112 GB|4| 一時ディスク = 382 GB |16|16 x 500| 非常に高 |
+|Standard\_A10|8|56 GB|2| 一時ディスク = 382 GB |16|16 x 500| 高 |
+|Standard\_A11|16|112 GB|4| 一時ディスク = 382 GB |16|16 x 500| 非常に高 |
 
-## Standard tier: D-series
+## Standard レベル: D シリーズ
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
-|Standard_D1 |1|3.5 GB|1|Temporary (SSD) =50 GB |2|2x500| moderate |
-|Standard_D2 |2|7 GB|2|Temporary (SSD) =100 GB |4|4x500| high |
-|Standard_D3 |4|14 GB|4|Temporary (SSD) =200 GB |8|8x500| high |
-|Standard_D4 |8|28 GB|8|Temporary (SSD) =400 GB |16|16x500| high |
-|Standard_D11 |2|14 GB|2|Temporary (SSD) =100 GB |4|4x500| high |
-|Standard_D12 |4|28 GB|4|Temporary (SSD) =200 GB |8|8x500| high |
-|Standard_D13 |8|56 GB|8|Temporary (SSD) =400 GB |16|16x500| high |
-|Standard_D14 |16|112 GB|8|Temporary (SSD) =800 GB |32|32x500| very high |
+|Standard\_D1 |1|3\.5 GB|1|一時的 (SSD) = 50 GB |2|2 x 500| 中 |
+|Standard\_D2 |2|7 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
+|Standard\_D3 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
+|Standard\_D4 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
+|Standard\_D11 |2|14 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
+|Standard\_D12 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
+|Standard\_D13 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
+|Standard\_D14 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
 
-## Standard tier: Dv2-series
+## Standard レベル: Dv2 シリーズ
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
-|Standard_D1_v2 |1|3.5 GB|1|Temporary (SSD) =50 GB |2|2x500| moderate |
-|Standard_D2_v2 |2|7 GB|2|Temporary (SSD) =100 GB |4|4x500| high |
-|Standard_D3_v2 |4|14 GB|4|Temporary (SSD) =200 GB |8|8x500| high |
-|Standard_D4_v2 |8|28 GB|8|Temporary (SSD) =400 GB |16|16x500| high |
-|Standard_D5_v2 |16|56 GB|8|Temporary (SSD) =800 GB |32|32x500| very high |
-|Standard_D11_v2 |2|14 GB|2|Temporary (SSD) =100 GB |4|4x500| high |
-|Standard_D12_v2 |4|28 GB|4|Temporary (SSD) =200 GB |8|8x500| high |
-|Standard_D13_v2 |8|56 GB|8|Temporary (SSD) =400 GB |16|16x500| high |
-|Standard_D14_v2 |16|112 GB|8|Temporary (SSD) =800 GB |32|32x500| very high |
+|Standard\_D1\_v2 |1|3\.5 GB|1|一時的 (SSD) = 50 GB |2|2 x 500| 中 |
+|Standard\_D2\_v2 |2|7 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
+|Standard\_D3\_v2 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
+|Standard\_D4\_v2 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
+|Standard\_D5\_v2 |16|56 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
+|Standard\_D11\_v2 |2|14 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
+|Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
+|Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
+|Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
 
-## Standard tier: DS-series*
+## Standard レベル: DS シリーズ*
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Cache size (GB)|Max. disk IOPS &amp; bandwidth| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|---|
-|Standard_DS1 |1|3.5|1|Local SSD disk = 7 GB |2|43| 3,200  32 MB per second | moderate |
-|Standard_DS2 |2|7|2|Local SSD disk = 14 GB |4|86| 6,400  64 MB per second | high |
-|Standard_DS3 |4|14|4|Local SSD disk = 28 GB |8|172| 12,800  128 MB per second | high |
-|Standard_DS4 |8|28|8|Local SSD disk = 56 GB |16|344| 25,600  256 MB per second | high |
-|Standard_DS11 |2|14|2|Local SSD disk = 28 GB |4|72| 6,400  64 MB per second | high |
-|Standard_DS12 |4|28|4|Local SSD disk = 56 GB |8|144| 12,800  128 MB per second | high |
-|Standard_DS13 |8|56|8|Local SSD disk = 112 GB |16|288| 25,600  256 MB per second | high |
-|Standard_DS14 |16|112|8|Local SSD disk = 224 GB |32|576| 50,000  512 MB per second | very high |
+|Standard\_DS1 |1|3\.5|1|ローカル SSD ディスク = 7 GB |2|43| 3,200 32 MB/秒 | 中 |
+|Standard\_DS2 |2|7|2|ローカル SSD ディスク = 14 GB |4|86| 6,400 64 MB/秒 | 高 |
+|Standard\_DS3 |4|14|4|ローカル SSD ディスク = 28 GB |8|172| 12,800 128 MB/秒 | 高 |
+|Standard\_DS4 |8|28|8|ローカル SSD ディスク = 56 GB |16|344| 25,600 256 MB/秒 | 高 |
+|Standard\_DS11 |2|14|2|ローカル SSD ディスク = 28 GB |4|72| 6,400 64 MB/秒 | 高 |
+|Standard\_DS12 |4|28|4|ローカル SSD ディスク = 56 GB |8|144| 12,800 128 MB/秒 | 高 |
+|Standard\_DS13 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 25,600 256 MB/秒 | 高 |
+|Standard\_DS14 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 50,000 512 MB/秒 | 非常に高 |
 
-*The maximum input/output operations per second (IOPS) and throughput (bandwidth) possible with a DS series VM is affected by the size of the disk. For details, see [Premium Storage: High-performance storage for Azure virtual machine workloads](../storage/storage-premium-storage.md).
+**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
-## Standard tier: G-series
+## Standard レベル: G シリーズ
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
-|Standard_G1 |2|28 GB|1|Local SSD disk = 384 GB |4|4 x 500| high |
-|Standard_G2 |4|56 GB|2|Local SSD disk = 768 GB |8|8 x 500| high |
-|Standard_G3 |8|112 GB|4|Local SSD disk = 1,536 GB |16|16 x 500| very high | 
-|Standard_G4 |16|224 GB|8|Local SSD disk = 3,072 GB |32|32 x 500| extremely high |
-|Standard_G5 |32|448 GB|8|Local SSD disk = 6,144 GB |64| 64 x 500 | extremely high |
+|Standard\_G1 |2|28 GB|1|ローカル SSD ディスク = 384 GB |4|4 x 500| 高 |
+|Standard\_G2 |4|56 GB|2|ローカル SSD ディスク = 768 GB |8|8 x 500| 高 |
+|Standard\_G3 |8|112 GB|4|ローカル SSD ディスク = 1,536 GB |16|16 x 500| 非常に高 | 
+|Standard\_G4 |16|224 GB|8|ローカル SSD ディスク = 3,072 GB |32|32 x 500| 極めて高 |
+|Standard\_G5 |32|448 GB|8|ローカル SSD ディスク = 6,144 GB |64| 64 x 500 | 極めて高 |
 
-## Standard tier: GS-series
+## Standard シリーズ: GS シリーズ
 
-|Size |CPU cores|Memory|NICs (Max)|Max. disk size|Max. data disks (1023 GB each)|Cache size (GB)|Max. disk IOPS &amp; bandwidth| Max network bandwidth |
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|---|
-|Standard_GS1|2|28|1|Local SSD disk = 56 GB |4|264| 5,000  125 MB per second | high |
-|Standard_GS2|4|56|2|Local SSD disk = 112 GB |8|528| 10,000  250 MB per second | high | 
-|Standard_GS3|8|112|4|Local SSD disk = 224 GB |16|1056| 20,000  500 MB per second | very high |
-|Standard_GS4|16|224|8|Local SSD disk = 448 GB |32|2112| 40,000  1,000 MB per second | extremely high |
-|Standard_GS5|32|448|8|Local SSD disk = 896 GB |64|4224| 80,000  2,000 MB per second | extremely high |
+|Standard\_GS1|2|28|1|ローカル SSD ディスク = 56 GB |4|264| 5,000 125 MB/秒 | 高 |
+|Standard\_GS2|4|56|2|ローカル SSD ディスク = 112 GB |8|528| 10,000 250 MB/秒 | 高 | 
+|Standard\_GS3|8|112|4|ローカル SSD ディスク = 224 GB |16|1056| 20,000 500 MB/秒 | 非常に高 |
+|Standard\_GS4|16|224|8|ローカル SSD ディスク = 448 GB |32|2112| 40,000 1,000 MB/秒 | 極めて高 |
+|Standard\_GS5|32|448|8|ローカル SSD ディスク = 896 GB |64|4224| 80,000 2,000 MB/秒 | 極めて高 |
 
 
-## Notes: Standard A0 - A4 using CLI and Powershell 
+## 注意: 標準 A0 ～ A4 は CLI および Powershell を使用します 
 
-In the classic deployment model, some VM size names are slightly different in CLI and Powershell:
+クラシック デプロイ モデルでは、一部の VM サイズが CLI と Powershell で若干異なります。
 
-* Standard_A0 is ExtraSmall 
-* Standard_A1 is Small
-* Standard_A2 is Medium
-* Standard_A3 is Large
-* Standard_A4 is ExtraLarge
+* Standard\_A0: ExtraSmall 
+* Standard\_A1: Small
+* Standard\_A2: Medium
+* Standard\_A3: Large
+* Standard\_A4: ExtraLarge
 
-## Next steps
+## 次のステップ
 
-- Learn about [azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md).
-- Learn more [about the A8, A9, A10, and A11 compute intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md) for workloads like High-performance Computing (HPC).
+- [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
+- 高パフォーマンス コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
+<!---HONumber=AcomDC_0323_2016-->

@@ -3,9 +3,9 @@
 	description="Azure クラウド サービスで PHP Web ロールおよび worker ロールを作成し、PHP ランタイムを構成するためのガイド。"
 	services=""
 	documentationCenter="php"
-	authors="tfitzmac"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"/>
+	editor=""/>
 
 <tags
 	ms.service="cloud-services"
@@ -14,7 +14,7 @@
 	ms.devlang="PHP"
 	ms.topic="article"
 	ms.date="01/08/2016"
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 #PHP Web ロールと worker ロールを作成する方法
 
@@ -52,7 +52,7 @@ worker ロールについては、次のコマンドを使用します。
 
 	PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
-> [AZURE.NOTE]`roleName` パラメーターは省略可能です。省略した場合、ロール名は自動的に生成されます。最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` などとなります。最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` などとなります。
+> [AZURE.NOTE] `roleName` パラメーターは省略可能です。省略した場合、ロール名は自動的に生成されます。最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` などとなります。最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` などとなります。
 
 ## ビルトイン PHP バージョンを指定する
 
@@ -76,7 +76,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 	PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
-> [AZURE.NOTE]使用可能な PHP バージョンは今後、変更される可能性があります。
+> [AZURE.NOTE] 使用可能な PHP バージョンは今後、変更される可能性があります。
 
 ## ビルトインの PHP ランタイムをカスタマイズする
 
@@ -91,7 +91,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 		display_errors=On
 		extension=php_mongo.dll
 
-> [AZURE.NOTE]指定した `php.ini` ファイル内で明示的に設定されていない設定値は、自動的に既定値に設定されます。ただし、すべてを指定した `php.ini` ファイルを追加できることも覚えておいてください。
+> [AZURE.NOTE] 指定した `php.ini` ファイル内で明示的に設定されていない設定値は、自動的に既定値に設定されます。ただし、すべてを指定した `php.ini` ファイルを追加できることも覚えておいてください。
 
 ## 独自の PHP ランタイムを使用する
 必要に応じて、ビルトインの PHP ランタイムを選択して前の手順のように構成する代わりに、独自の PHP ランタイムを使用することができます。たとえば、開発環境で使用するものと同じ PHP ランタイムを Web ロールまたは worker ロールで使用することができます。これにより、運用環境でもアプリケーションの動作が変わらないことが容易に確認できます。
@@ -128,7 +128,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 6. 後述の「[アプリケーションの発行](#how-to-publish-your-application)」の説明に従って、アプリケーションを発行します。
 
-> [AZURE.NOTE]独自の PHP ランタイムを使用するための前述の手順を実行した後で、`download.ps1` スクリプト (Web ロールのルート ディレクトリの `bin` フォルダーにある) は削除することができます。
+> [AZURE.NOTE] 独自の PHP ランタイムを使用するための前述の手順を実行した後で、`download.ps1` スクリプト (Web ロールのルート ディレクトリの `bin` フォルダーにある) は削除することができます。
 
 ### 独自の PHP ランタイムが使用されるように worker ロールを構成する
 
@@ -211,4 +211,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

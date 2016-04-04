@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="03/18/2016"
 	ms.author="dastrock"/>
 
-# v2.0 エンドポイントの使用が適しているかどうかを判断するには 
+# v2.0 エンドポイントの使用が適しているかどうかを判断するには
 
 Azure Active Directory と統合されるアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすかどうかを判断する必要があります。元の Azure AD アプリ モデルは引き続き完全にサポートされ、いくつかの点では v2.0 よりも機能が豊富です。ただし、v2.0 エンドポイントには、ユーザーに新しいプログラミング モデルを使用してもらおうと考える開発者にとって[大きな利点](active-directory-v2-compare.md)があります。v2.0 は今後、Azure AD のすべての機能を網羅するように拡張され、v2.0 エンドポイントのみを使用すればよくなる予定です。
 
@@ -74,13 +74,15 @@ v2.0 エンドポイントは現在、[サポートされる認証フロー](act
 
 - Web アプリケーションを構築する場合は、マイクロソフトが一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。このようなミドルウェアには、OWIN の ASP.NET 用 OpenID Connect ミドルウェアやマイクロソフトの NodeJS 用 Passport プラグインなどがあります。これらのミドルウェアを使用したコード サンプルについては、[こちら](active-directory-appmodel-v2-overview.md#getting-started)のセクションを参照してください。
 - 他のプラットフォームやネイティブ アプリケーションとモバイル アプリケーションでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合することもできます。v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明示的に文書化](active-directory-v2-protocols.md)されています。
-- オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープン ソース プロトコル ライブラリと互換性があります。このようなライブラリを使用できるかどうかは、言語やプラットフォームごとに異なります。[Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトに、一般的な実装のリストが掲載されています。以下に、v2.0 エンドポイントでテスト済みのオープン ソース クライアント ライブラリとサンプルを示します。[OpenID Connect Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html) やトークン検証エンドポイントなどの機能は、まだサポートされていないため、v2.0 エンドポイントを使用するライブラリではこれらの機能の無効化が必要になる場合があるので注意してください。 
+- オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープン ソース プロトコル ライブラリと互換性があります。このようなライブラリを使用できるかどうかは、言語やプラットフォームごとに異なります。[Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトに、一般的な実装のリストが掲載されています。以下に、v2.0 エンドポイントでテスト済みのオープン ソース クライアント ライブラリとサンプルを示します。
 
   - [Java WSO2 ID サーバー](https://docs.wso2.com/display/IS500/Introducing+the+Identity+Server)
   - [Java Gluu フェデレーション](https://github.com/GluuFederation/oxAuth)
   - [Node.Js Passport OpenID Connect](https://www.npmjs.com/package/passport-openidconnect)
   - [PHP OpenID Connect の基本的なクライアント](https://github.com/jumbojett/OpenID-Connect-PHP)
-  - [Android OpenID Connect のサンプル](https://github.com/learning-layers/android-openid-connect)
+  - [iOS OAuth2 クライアント](https://github.com/nxtbgthng/OAuth2Client)
+  - [Android OAuth2 クライアント](https://github.com/wuman/android-oauth-client)
+  - [Android OpenID Connect クライアント](https://github.com/kalemontes/OIDCAndroidLib)
 
 ## プロトコルに関する制限事項
 v2.0 エンドポイントは、Open ID Connect と OAuth 2.0 のみをサポートしています。ただし、各プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。次に例をいくつか示します。
@@ -96,4 +98,4 @@ Azure Active Directory サービスで利用できる開発者向け機能の中
 - Azure AD ユーザーのグループ要求
 - アプリケーション ロールとロール要求
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

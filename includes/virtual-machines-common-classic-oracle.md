@@ -1,36 +1,38 @@
 
  
 
-Set up your first or next dev/test or production Oracle database running on a virtual machine in Azure infrastructure services. Take advantage of ease of configuration and the ability to quickly expand the Oracle database workload to include new capacity.
+Azure インフラストラクチャ サービス内で、仮想マシン上で実行される 1 番目または 2 番目の開発およびテスト、または運用 Oracle データベースを設定します。構成のしやすさ、また Oracle データベースのワークロードをすばやく拡張して新しい容量を含める機能をご活用ください。
 
-## Oracle virtual machine images
+## Oracle 仮想マシン イメージ
 
-See [List of Oracle virtual machine images](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md) for the latest set of Windows-based and Linux-based virtual machine images.
+Windows および Linux ベースの仮想マシン イメージの最新セットについては、「[Oracle 仮想マシン イメージの一覧](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md)」を参照してください。
 
-## Considerations for Windows-based virtual machines
+## Windows ベースの仮想マシンに関する考慮事項
 
-See [Miscellaneous considerations for Oracle virtual machine images](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md) to understand limitations for Oracle software on Windows Server-based Azure virtual machines.
+Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェアの制限事項については、「[Oracle 仮想マシン イメージに関する他の考慮事項](../articles/virtual-machines/virtual-machines-windows-classic-oracle-considerations.md)」を参照してください。
 
-## Oracle database virtual machine
+## Oracle データベース仮想マシン
 
-[Creating an Oracle database virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-classic-create-oracle-database.md) steps you through virtual machine creation, database creation, and configuration of popular options.
+「[Azure における Oracle データベース仮想マシンの作成](../articles/virtual-machines/virtual-machines-windows-classic-create-oracle-database.md)」では、仮想マシンの作成、データベースの作成、および基本的なオプションの構成について手順を説明します。
 
 ## Oracle WebLogic Server 12c
 
-[Creating an Oracle WebLogic Server 12c virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c.md) steps you through the creation of an Azure virtual machine based on the Oracle WebLogic Server 12c image running on Windows Server 2012.
+「[Azure における Oracle WebLogic Server 12c 仮想マシンの作成](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c.md)」では、Windows Server 2012 で実行されている Oracle WebLogic Server 12c イメージをベースとした Azure 仮想マシンの作成について手順を説明します。
 
-## Oracle WebLogic Server 12c and Oracle Database 12c
+## Oracle WebLogic Server 12c および Oracle データベース 12c
 
-[Creating an Oracle WebLogic Server 12c and Oracle Database 12c virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c-database.md) steps you through virtual machine and database creation and configuration.
+「[Azure における Oracle WebLogic Server 12c および Oracle データベース 12c 仮想マシンの作成](../articles/virtual-machines/virtual-machines-windows-create-oracle-weblogic-server-12c-database.md)」では、仮想マシンとデータベースの作成および構成の手順を説明します。
 
-## Prepare an Oracle Linux virtual machine
+## Oracle Linux 仮想マシンの準備
 
-[Prepare an Oracle Linux virtual machine for Azure](../articles/virtual-machines/virtual-machines-linux-prepare-oracle.md) steps you through the prerequisites and virtual machine creation for Oracle Linux 6.4+ and Oracle Linux 7.0+.
+「[Azure 用の Oracle Linux 仮想マシンの準備](../articles/virtual-machines/virtual-machines-linux-prepare-oracle.md)」では、Oracle Linux 6.4+ と Oracle Linux 7.0+ の前提条件および仮想マシンの作成手順を説明します。
 
-## Oracle Data Guard
+## Oracle データの保護
 
-[Configuring Oracle Data Guard for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md) steps you through configuration of the standby environment and the listener.
+「[Azure 用の Oracle データ保護の構成](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-data-guard.md)」では、スタンバイ環境とリスナーの構成の手順を説明します。
 
 ## Oracle GoldenGate
 
-[Configuring Oracle GoldenGate for Azure](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md) steps you through database and replication setup.
+「[Azure 用の Oracle GoldenGate の構成](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
+
+<!---HONumber=AcomDC_0323_2016-->

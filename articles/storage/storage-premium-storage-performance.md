@@ -177,7 +177,8 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | Standard\_DS14 | 16 | 112 GB | OS = 1023 GB <br> ローカル SSD = 224 GB | 32 | 576 GB | 50,000 IOPS <br> 512 MB/秒 | 4,000 IOPS、33 MB/秒 |
 | Standard\_GS5 | 32 | 448 GB | OS = 1023 GB <br> ローカル SSD = 896 GB | 64 | 4224 GB | 80,000 IOPS <br> 2,000 MB/秒 | 5,000 IOPS、50 MB/秒 |
 
-利用可能なすべての Azure VM サイズのリストについては、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md)」をご覧ください。アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+利用可能なすべての Azure VM サイズのリストについては、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」をご覧ください。アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+
 
 *スケールの上限* IOPS の上限は、VM あたりとディスクあたりで異なり、互いに独立しています。アプリケーションが、VM と VM に接続された Premium ディスクの制限の範囲内で IOPS を引き上げていることを確認します。制限を超えると、アプリケーションのパフォーマンスが調整されます。
 
@@ -197,7 +198,10 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | **ディスクの月額料金** | 1,638.40 ドル (32 x 1 TB ディスク) | 544\.34 ドル (4 x P30 ディスク) |
 | **合計月額料金** | 3,208.98 ドル | 1,544.34 ドル |
 
-*Linux ディストリビューション* Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。さまざまな Linux ディストリビューションがサポートされています。完全なリストについては、「[Azure での動作保証済み Linux ディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distributions.md)」をご覧ください。ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+*Linux ディストリビューション*
+
+Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をご覧ください。ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+
 
 Premium Storage で Linux を実行するときは、高パフォーマンスを確保するために、必要なドライバーについて最新の更新プログラムを確認してください。
 
@@ -263,13 +267,17 @@ Windows では、記憶域スペースを使用してディスクをストライ
 
 重要: サーバー マネージャーの UI を使用して、ストライプ ボリュームの列の総数を最大 8 列に設定できます。8 個を超えるディスクを接続するときは、PowerShell を使用してボリュームを作成します。PowerShell を使用すると、列数をディスクと同じ数に設定できます。たとえば、1 つのストライプ セットに 16 個のディスクがある場合、*New-VirtualDisk* PowerShell コマンドレットの *NumberOfColumns* パラメーターで 16 列を指定します。
 
+
 Linux では、MDADM ユーティリティを使用してディスクをストライピングします。Linux でのディスク ストライピングの詳しい手順については、「[Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md)」をご覧ください。
+
 
 *ストライプ サイズ* ディスク ストライピングの重要な構成の 1 つに、ストライプ サイズがあります。ストライプ サイズ (ブロック サイズ) は、アプリケーションがストライプ ボリュームで対応できるデータの最小チャンクです。構成するストライプ サイズは、アプリケーションの種類と要求パターンによって異なります。間違ったストライプ サイズを選択すると、IO の不均衡が生じ、アプリケーションのパフォーマンスが低下する可能性があります。
 
 たとえば、アプリケーションによって生成された IO 要求がディスクのストライプ サイズよりも大きい場合、ストレージ システムは、複数のディスクのストライプ ユニット境界にまたがって要求を書き込みます。該当のデータにアクセスするときが来ると、要求を完了するために複数のストライプ ユニットにわたってシークしなければなりません。このような動作の累積的影響により、パフォーマンスが大幅に低下する可能性があります。一方、IO 要求サイズがストライプ サイズよりも小さい場合や、要求の特性がランダムの場合、IO 要求が同じディスクに追加されていく可能性があり、これがボトルネックとなって、最終的に IO パフォーマンスが低下することがあります。
 
-アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。小さなランダム IO 要求には、小さいストライプ サイズを使用します。これに対して、大きな順次 IO 要求には、大きいストライプ サイズを使用します。Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。SQL Server の場合、OLTP ワークロードには 64KB、データ ウェアハウス ワークロードには 256KB のストライプ サイズを構成します。詳細については、「[Performance best practices for SQL Server in Azure Virtual Machines: Disk and Performance Considerations (Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス: ディスクおよびパフォーマンスに関する考慮事項)](virtual-machines-sql-server-performance-best-practices.md#disks-and-performance-considerations)」を参照してください。
+
+アプリケーションが実行するワークロードの種類に応じて、適切なストライプ サイズを選択します。小さなランダム IO 要求には、小さいストライプ サイズを使用します。これに対して、大きな順次 IO 要求には、大きいストライプ サイズを使用します。Premium Storage で実行するアプリケーションについて、ストライプ サイズの推奨事項を確認します。SQL Server の場合、OLTP ワークロードには 64KB、データ ウェアハウス ワークロードには 256KB のストライプ サイズを構成します。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-classic-sql-perf.md#disks-and-performance-considerations)」をご覧ください。
+
 
 >**注:** ストライピングできる Premium Storage ディスクの最大数は、DS シリーズ VM では 32 個、GS シリーズ VM では 64 個です。
 
@@ -419,7 +427,10 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。IOPS を最大限に高めるために、これらの仕様が不可欠となります。- 256 の大きなキューの深さ。- 8KB の小さなブロック サイズ。- ランダム書き込みを実行する複数のスレッド。
+これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。IOPS を最大限に高めるために、これらの仕様が不可欠となります。
+-   256 の大きなキューの深さ。  
+-   8KB の小さなブロック サイズ。  
+-   ランダム書き込みを実行する複数のスレッド。
 
 次のコマンドを実行して、FIO テストを 30 秒間実行します。
 
@@ -526,7 +537,7 @@ Azure Premium Storage の詳細については、次の記事をご覧くださ�
 
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 
-- [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-sql-server-performance-best-practices.md)
+- [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-classic-sql-perf.md)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx) 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Logic Apps の機能を使用する |Microsoft Azure" 
 	description="ロジック アプリの高度な機能の使用方法について説明します。" 
 	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="03/11/2016"
 	ms.author="stepsic"/>
 	
 # Logic Apps の機能を使用する
@@ -30,9 +30,9 @@
 
 次の資料が役立つ場合があります。
 
-- [Management and runtime REST APIs (管理 REST API およびランタイム REST API)](https://msdn.microsoft.com/library/azure/dn948513.aspx) - Logic Apps を直接起動する方法が記載されています。
-- [Language reference (言語リファレンス)](https://msdn.microsoft.com/library/azure/dn948512.aspx) - サポートされるすべての関数/式の包括的な一覧
-- [Trigger and action types (トリガーおよびアクションのタイプ)](https://msdn.microsoft.com/library/azure/dn948511.aspx) - 各種アクションとそれらで使用される入力値
+- [Management and runtime REST APIs (管理 REST API およびランタイム REST API)](https://msdn.microsoft.com/library/azure/mt643787.aspx) - Logic Apps を直接起動する方法が記載されています。
+- [Language reference (言語リファレンス)](https://msdn.microsoft.com/library/azure/mt643789.aspx) - サポートされるすべての関数/式の包括的な一覧
+- [Trigger and action types (トリガーおよびアクションのタイプ)](https://msdn.microsoft.com/library/azure/mt643939.aspx) - 各種アクションとそれらで使用される入力値
 - [Overview of App Service (App Service の概要)](../app-service/app-service-value-prop-what-is.md) - ソリューションを作成するときに選択するコンポーネントの説明
 
 ## 条件付きロジックの追加
@@ -89,7 +89,7 @@ Logic Apps の一部の機能はコード ビューのみで使用できます�
     
 2. `twitterconnector` アクションまでスクロールし、クエリの値を探して `#@{parameters('topic')}` に置き換えます。**concat** 関数を使用して 2 つ以上の文字列を結合することもできます。たとえば `@concat('#',parameters('topic'))` は上記と同じです。
  
-パラメーターは、よく変更する可能性がある値を抜き出すための優れた手段です。さまざまな環境でパラメーターを上書きする必要がある場合に特に便利です。環境に基づいてパラメーターを上書きする方法の詳細については、[REST API のドキュメント](http://msdn.microsoft.com/library/mt643788(Azure.100).aspx) を参照してください。
+パラメーターは、よく変更する可能性がある値を抜き出すための優れた手段です。さまざまな環境でパラメーターを上書きする必要がある場合に特に便利です。環境に基づいてパラメーターを上書きする方法の詳細については、[REST API のドキュメント](https://msdn.microsoft.com/library/mt643787.aspx)を参照してください。
 
 次に、**[保存]** をクリックすると、新しいツイートが 6 回以上リツイートされるたびに Dropbox の **tweets** というフォルダーに配信されます。
 
@@ -102,9 +102,9 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 定期実行のトリガーは、指定した間隔で実行されます。トリガーに条件付きロジックが設定されている場合は、トリガーによって、ワークフローを実行する必要があるかどうかが判断されます。`200` の状態コードが返された場合は、トリガーを実行する必要があることを示しています。実行する必要がないときは、`202` の状態コードが返されます。
 
 ### REST API を使用したコールバック
-サービスは、ロジック アプリのエンドポイントを呼び出して、ワークフローを開始することができます。詳細については、「[呼び出し可能なエンドポイントとしてのロジック アプリ](app-service-logic-connector-http.md)」を参照してください。この種のロジック アプリをオンデマンドで開始するには、コマンド バーの **[今すぐ実行]** をクリックします。
+サービスは、ロジック アプリのエンドポイントを呼び出して、ワークフローを開始することができます。詳細については、「[呼び出し可能なエンドポイントとしての Logic Apps](app-service-logic-connector-http.md)」を参照してください。この種のロジック アプリをオンデマンドで開始するには、コマンド バーの **[今すぐ実行]** をクリックします。
 
 <!-- Shared links -->
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

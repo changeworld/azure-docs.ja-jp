@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="03/18/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -28,7 +28,7 @@
 
 ルールは、ポータルでメトリックに対して設定することも、操作ログのデータに対して[プログラムによって](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)構成することもできます。
 
-## Azure ポータルを使用してアラートを設定する
+## Azure クラシック ポータルを使用してアラートを設定する
 
 Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つあります。
 
@@ -51,7 +51,7 @@ Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つ�
 
 ## 操作ログを使用してアラートを設定する
 
-1.	[Azure ポータル](https://manage.windowsazure.com)で、Management Services の **[アラート]** タブに移動します。  
+1.	[Azure クラシック ポータル](https://manage.windowsazure.com)で、Management Services の **[アラート]** タブに移動します。  
 2.	**[ルールの追加]** をクリックします。  
 
     ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)
@@ -60,19 +60,19 @@ Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つ�
 
     ![アラートの定義](./media/stream-analytics-set-up-alerts/05-stream-analytics-set-up-alerts.png)
 
-## Azure プレビュー ポータルでアラートを設定する ##
+## Azure ポータルでアラートを設定する ##
 
-Azure プレビュー ポータルで、アラートを有効にする Stream Analytics ジョブを参照し、**[監視]** セクションをクリックします。表示された **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
+Azure ポータルで、アラートを有効にする Stream Analytics ジョブを参照し、**[監視]** セクションをクリックします。表示された **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
 
-  ![Azure プレビュー ポータルでの設定](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)
+  ![Azure ポータルのセットアップ](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)
 
 アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
 
 [メトリック] を選択する場合は、メトリックの条件としきい値を選択します。
 
-  ![Azure プレビュー ポータルでのメトリックの選択](./media/stream-analytics-set-up-alerts/07-stream-analytics-set-up-alerts.png)
+  ![Azure ポータルでのメトリックの選択](./media/stream-analytics-set-up-alerts/07-stream-analytics-set-up-alerts.png)
 
-Azure プレビュー ポータルでのアラートの構成の詳細については、「[アラート通知の受信](./azure-portal/insights-receive-alert-notifications.md)」を参照してください。
+Azure ポータルでのアラートの構成の詳細については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」を参照してください。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -85,4 +85,4 @@ Azure プレビュー ポータルでのアラートの構成の詳細につい�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

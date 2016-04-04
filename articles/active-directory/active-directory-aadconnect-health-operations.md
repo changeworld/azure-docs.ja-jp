@@ -3,7 +3,7 @@
 	description="この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。"
 	services="active-directory"
 	documentationCenter=""
-	authors="billmath"
+	authors="karavar"
 	manager="stevenpo"
 	editor="curtand"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
-	ms.author="billmath"/>
+	ms.date="02/21/2016"
+	ms.author="vakarand"/>
 
 # Azure AD Connect Health の操作
 
@@ -22,6 +22,9 @@
 
 ## 電子メール通知の有効化
 ID インフラストラクチャの状態に問題があることを示すアラートが生成されたときに電子メール通知を送信するように Azure AD Connect Health サービスを構成することができます。アラートが生成されたときのほか、解決済みとしてマークされたときにも通知が送信されます。電子メール通知を構成するには以下の手順に従います。
+
+![Azure AD Connect Health の電子メール通知の検出](./media/active-directory-aadconnect-health/email_noti_discover.png)
+
 >[AZURE.NOTE] 既定では、電子メール通知は無効です。
 
 
@@ -106,19 +109,18 @@ Azure AD Connect では、2 つのレベルのアクセス管理をサポート�
 #### 手順 1: 適切なアクセス スコープを選択する
 Azure AD Connect Health 内で*すべてのサービス インスタンス* レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 #### 手順 2: ユーザー/グループを追加し、ロールを割り当てる
-1. [構成] セクションから [ユーザー] 部分をクリックします。<br>
-![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+1. [構成] セクションから [ユーザー] 部分をクリックします。<br>![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. [追加] を選択します。
 3. [所有者] などの [ロール] を選択します。<br> ![Azure AD Connect Health RBAC のユーザーの追加](./media/active-directory-aadconnect-health/RBAC_add.png)
-4. 対象となるユーザー/グループの名前または識別子を入力します。1 つまたは複数のユーザー/グループを同時に選択できます。[選択] をクリックします。
-![Azure AD Connect Health RBAC のユーザーの選択](./media/active-directory-aadconnect-health/RBAC_select_users.png)
+4. 対象となるユーザー/グループの名前または識別子を入力します。1 つまたは複数のユーザー/グループを同時に選択できます。[選択] をクリックします。![Azure AD Connect Health RBAC のユーザーの選択](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. [OK] を選択します。<br>
 
 6. ロールの割り当てが完了すると、ユーザー/グループが一覧に表示されます。<br>![Azure AD Connect Health RBAC のユーザー一覧](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
 これらの手順によって、一覧に表示されているユーザーとグループは、割り当てられたロールに従ってアクセスを許可されます。
 >[AZURE.NOTE]
-- グローバル管理者は常にすべての操作にフル アクセスできますが、グローバル管理者のアカウントは上記のリストには表示されません。- "ユーザーの招待" 機能は、Azure AD Connect Health ではサポートされません。
+- グローバル管理者は常にすべての操作にフル アクセスできますが、グローバル管理者のアカウントは上記のリストには表示されません。
+- "ユーザーの招待" 機能は、Azure AD Connect Health ではサポートされません。
 
 #### 手順 3: ブレードの場所をユーザーまたはグループと共有する
 1. アクセス許可を割り当てた後、ユーザーは [http://aka.ms/aadconnecthealth](http://aka.ms/aadconnecthealth) に移動することで Azure AD Connect Health にアクセスできます。
@@ -141,4 +143,4 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

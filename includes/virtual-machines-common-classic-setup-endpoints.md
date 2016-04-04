@@ -1,74 +1,76 @@
 
 
 
-All virtual machines that you create in Azure using the classic deployment model can automatically communicate over a private network channel with other virtual machines in the same cloud service or virtual network. However, computers on the Internet or other virtual networks require endpoints to direct the inbound network traffic to a virtual machine.
+クラシック デプロイメント モデルを使用して Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。
 
-When you create a virtual machine in the Azure classic portal, common endpoints like those for Remote Desktop, Windows PowerShell Remoting, and Secure Shell (SSH) are typically created for you automatically, depending on the operating system you choose. You can configure additional endpoints while creating the virtual machine or afterwards as needed.
+Azure クラシック ポータルで仮想マシンを作成すると、選択したオペレーティング システムに応じて、一般的なエンドポイント (リモート デスクトップ、Windows PowerShell リモート処理、Secure Shell (SSH) 用のエンドポイントなど) が通常は自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
 
-Each endpoint has a *public port* and a *private port*:
+各エンドポイントには、*パブリック ポート*と*プライベート ポート*があります。
 
-- The public port is used by the Azure load balancer to listen for incoming traffic to the virtual machine from the Internet.
-- The private port is used by the virtual machine to listen for incoming traffic, typically destined to an application or service running on the virtual machine.
+- パブリック ポートは、インターネットから仮想マシンに発信される着信トラフィックをリッスンするときに、Azure Load Balancer によって使用されます。
+- プライベート ポートは、一般的に仮想マシンで実行されているアプリケーションまたはサービスを宛先とする着信トラフィックをリッスンする仮想マシンによって使用されます。
 
-Default values for the IP protocol and TCP or UDP ports for well-known network protocols are provided when you create endpoints with the Azure classic portal. For custom endpoints, you'll need to specify the correct IP protocol (TCP or UDP) and the public and private ports. To distribute incoming traffic randomly across multiple virtual machines, you'll need to create a load-balanced set consisting of multiple endpoints.
+周知のネットワーク プロトコルの IP プロトコルと TCP ポートまたは UDP ポートの既定値は、Azure クラシック ポータルでエンドポイントを作成するときに提示されます。カスタム エンドポイントの場合、正しい IP プロトコル (TCP または UDP) と、パブリック ポートとプライベート ポートを指定することが必要になります。着信トラフィックを複数の仮想マシンにランダムに分散するには、複数のエンドポイントで構成される負荷分散セットを作成する必要があります。
 
-After you create an endpoint, you can use an access control list (ACL) to define rules that permit or deny the incoming traffic to the public port of the endpoint based on its source IP address. However, if the virtual machine is in an Azure virtual network, you should use network security groups instead. For details, see [About network security groups](virtual-networks-nsg.md).
+エンドポイントを作成した後、アクセス制御リスト (ACL) を使用して、発信元 IP アドレスに基づいて、エンドポイントのパブリック ポートを宛先とする着信トラフィックの許可または拒否に役立つルールを定義できます。ただし、仮想マシンが Azure Virtual Network 内にある場合、ネットワーク セキュリティ グループを代わりに使用する必要があります。詳細については、「[ネットワーク セキュリティ グループについて](virtual-networks-nsg.md)」を参照してください。
 
-> [AZURE.NOTE]: Firewall configuration for Azure virtual machines is done automatically for ports associated with Remote Desktop and Secure Shell (SSH), and in most cases for Windows PowerShell Remoting. For ports specified for all other endpoints, no configuration is done automatically to the firewall of the virtual machine. When you create an endpoint for the virtual machine, you'll need to ensure that the firewall of the virtual machine also allows the traffic for the protocol and private port corresponding to the endpoint configuration.
+> [AZURE.NOTE]Azure 仮想マシンのファイアウォールの構成は、リモート デスクトップと Secure Shell (SSH) に関連付けられているポートで自動的に行われます。Windows PowerShell リモート処理についても、ほとんどの場合は自動的に行われます。他のすべてのエンドポイントに対して指定されているポートについては、仮想マシンのファイアウォールは自動的には構成されません。仮想マシンにエンドポイントを作成するとき、仮想マシンのファイアウォールで、エンドポイントの構成に対応するプロトコルとプライベート ポートでトラフィックが許可されていることを確認する必要があります。
 
-## Create an endpoint
+## エンドポイントの作成
 
-1.	If you haven't already done so, sign in to the Azure classic portal.
-2.	Click **Virtual Machines**, and then click the name of the virtual machine that you want to configure.
-3.	Click **Endpoints**. The **Endpoints** page lists all the current endpoints for the virtual machine.
+1.	まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
+2.	**[Virtual Machines]** をクリックし、構成する仮想マシンの名前をクリックします。
+3.	**[エンドポイント]** をクリックします。**[エンドポイント]** ページには、仮想マシンの現在のすべてのエンドポイントが表示されます。
 
-	![Endpoints](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png)
+	![エンドポイント](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png)
 
-4.	In the taskbar, click **Add**.
-5.	On the **Add an endpoint to a virtual machine** page, choose the type of endpoint.
+4.	タスク バーで **[追加]** をクリックします。
+5.	**[仮想マシンにエンドポイントを追加します]** ページで、エンドポイントの種類を選択します。
 
-	- If you're creating a new endpoint that isn't part of a load-balanced set, or is the first endpoint in a new load-balanced set, choose **Add a stand-alone endpoint**, then click the left arrow.
-	- Otherwise, choose **Add an endpoint to an existing load-balanced set**, select the name of the load-balanced set, then click the left arrow. On the **Specify the details of the endpoint** page, type a name for the endpoint, then click the check mark to create the endpoint.
+	- 負荷分散セットの一部ではないエンドポイントまたは新しい負荷分散セットの最初のエンドポイントである新しいエンドポイントを作成する場合は、**[スタンドアロン エンドポイントの追加]** を選択し、左矢印をクリックします。
+	- それ以外の場合は、**[既存の負荷分散セットにエンドポイントを追加する]** をクリックし、負荷分散セットの名前を選択して、左矢印をクリックします。**[エンドポイントの詳細を指定します]** ページで、エンドポイントの名前を入力し、チェック マークをクリックしてエンドポイントを作成します。
 
-6.	On the **Specify the details of the endpoint** page, type a name for the endpoint in **Name**. You can also choose a network protocol name from the list, which will fill in initial values for the **Protocol**, **Public Port**, and **Private Port**.
-7.	For a customized endpoint, in **Protocol**, choose either **TCP** or **UDP**.
-8.	For customized ports, in **Public Port**, type the port number for the incoming traffic from the Internet. In **Private Port**, type the port number on which the virtual machine is listening. These port numbers can be different. Ensure that the firewall on the virtual machine has been configured to allow the traffic corresponding to the protocol (in step 7) and private port.
-9.	If this endpoint will be the first one in a load-balanced set, click **Create a load-balanced set**, and then click the right arrow. On the **Configure the load-balanced set** page, specify a load-balanced set name, a probe protocol and port, and the probe interval and number of probes sent. The Azure load balancer sends probes to the virtual machines in a load-balanced set to monitor their availability. The Azure load balancer does not forward traffic to virtual machines that do not respond to the probe. Click the right arrow.
-10.	Click the check mark to create the endpoint.
+6.	**[エンドポイントの詳細を指定します]** ページで、**[名前]** にエンドポイントの名前を入力します。ネットワーク プロトコルの名前をリストから選択することもできます。これは、初期値として、**[プロトコル]**、**[パブリック ポート]**、**[プライベート ポート]** に入力されます。
+7.	カスタマイズしたエンドポイントの場合、**[プロトコル]** で、**[TCP]** または **[UDP]** を選択します。
+8.	カスタマイズしたポートの場合、**[パブリック ポート]** に、インターネットから発信される着信トラフィックを着信するポートの番号を入力します。**[プライベート ポート]** に、仮想マシンがリッスンするポート番号を入力します。このポート番号は別の番号でもかまいません。プロトコル (手順 7.) とプライベート ポートに対応するトラフィックを許可するように、仮想マシン上のファイアウォールが構成されていることを確認します。
+9.	このエンドポイントが負荷分散セットの最初のエンドポイントになる場合、**[負荷分散セットの作成]** をクリックし、右矢印をクリックします。**[負荷分散セットの構成]** ページで、負荷分散セットの名前、プローブ プロトコル、ポート、プローブ間隔と送信されるプローブの数を指定します。Azure Load Balancer は負荷分散セット内の仮想マシンにプローブを送信して、可用性を監視します。Azure Load Balancer は、プローブに応答しない仮想マシンには、トラフィックを転送しません。右矢印をクリックします。
+10.	チェック マークをクリックしてエンドポイントを作成します。
 
-The new endpoint will be listed on the **Endpoints** page.
+新しいエンドポイントが **[エンドポイント]** ページの一覧に表示されます。
 
-![Endpoint creation successful](./media/virtual-machines-common-classic-setup-endpoints/endpointwindowsnew.png)
+![エンドポイントの作成に成功](./media/virtual-machines-common-classic-setup-endpoints/endpointwindowsnew.png)
 
-To use an Azure PowerShell cmdlet to set this up, see [Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx). If you are using the Azure CLI in Service Management mode, use the **azure vm endpoint create** command.
+Azure PowerShell コマンドレットを使用してこれを設定するには、[Add-AzureEndpoint](https://msdn.microsoft.com/library/azure/dn495300.aspx) を参照してください。サービス管理モードで Azure CLI を使用している場合は、**azure vm endpoint create** コマンドを使用します。
 
-## Manage the ACL on an endpoint
+## エンドポイントの ACL の管理
 
-To define the set of computers that can send traffic, the ACL on an endpoint can restrict traffic based upon source IP address. Follow these steps to add, modify, or remove an ACL on an endpoint.
+トラフィックを送信できるコンピューターを定義するために、エンドポイント上の ACL によって、発信元 IP アドレスに基づいてトラフィックを制限できます。エンドポイントの ACL を追加、変更、削除するには、次のステップに従います。
 
-> [AZURE.NOTE] If the endpoint is part of a load-balanced set, any changes you make to the ACL on an endpoint are applied to all endpoints in the set.
+> [AZURE.NOTE] エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
 
-If the virtual machine is in an Azure virtual network, we recommend network security groups instead of ACLs. For details, see [About network security groups](virtual-networks-nsg.md).
+仮想マシンが Azure 仮想ネットワーク内にある場合は、ACL の代わりにネットワーク セキュリティ グループを使用することをお勧めします。詳細については、「[ネットワーク セキュリティ グループについて](virtual-networks-nsg.md)」を参照してください。
 
-1.	If you haven't already done so, sign in to the Azure classic portal.
-2.	Click **Virtual Machines**, and then click the name of the virtual machine that you want to configure.
-3.	Click **Endpoints**. From the list, select the appropriate endpoint.
+1.	まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
+2.	**[Virtual Machines]** をクリックし、構成する仮想マシンの名前をクリックします。
+3.	**[エンドポイント]** をクリックします。一覧から適切なエンドポイントを選択します。
 
-    ![ACL list](./media/virtual-machines-common-classic-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
+    ![ACL リスト](./media/virtual-machines-common-classic-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
 
-5.	In the taskbar, click **Manage ACL** to open the **Specify ACL details** dialog box.
+5.	タスク バーの **[ACL の管理]** をクリックし、**[HTTPS エンドポイントの ACL の詳細の指定]** ダイアログ ボックスを開きます。
 
-    ![Specify ACL details](./media/virtual-machines-common-classic-setup-endpoints/EndpointACLdetails.png)
+    ![ACL の詳細に指定](./media/virtual-machines-common-classic-setup-endpoints/EndpointACLdetails.png)
 
-6.	Use rows in the list to add, delete, or edit rules for an ACL and change their order. The **Remote Subnet** value is an IP address range for incoming traffic from the Internet that the Azure load balancer uses to permit or deny the traffic based on its source IP address. Be sure to specify the IP address range in CIDR format, also known as address prefix format. An example is 131.107.0.0/16.
+6.	一覧内の行を使用して、ACL のルールの追加、削除、編集を行い、順序を変更します。**[リモート サブネット]** の値は、インターネットからのトラフィックを着信する IP アドレスの範囲です。Azure ロード バランサーでは、この値を使用して、発信元 IP アドレスに基づいてトラフィックを許可または拒否します。IP アドレスの範囲は、CIDR 形式 (アドレス プレフィックス形式とも呼ばれる) で指定してください。たとえば、「131.107.0.0/16」と入力します。
 
-You can use rules to allow only traffic from specific computers corresponding to your computers on the Internet or to deny traffic from specific, known address ranges.
+ルールを使用して、インターネット上のご使用のコンピューターに該当する特定のコンピューターから発信されるトラフィックのみを許可することや、特定の範囲の既知のアドレスから発信されるトラフィックを拒否できます。
 
-The rules are evaluated in order starting with the first rule and ending with the last rule. This means that rules should be ordered from least restrictive to most restrictive. For examples and more information, see [What is a Network Access Control List?](../virtual-network/virtual-networks-acl/).
+ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に整列されている必要があります。例と詳細については、[ネットワーク アクセス制御リストの概要](../virtual-network/virtual-networks-acl/)に関するページを参照してください。
 
-To use an Azure PowerShell cmdlet to set this up, see [Managing access control lists (ACLs) for endpoints by using PowerShell](../virtual-network/virtual-networks-acl-powershell.md).
+Azure PowerShell コマンドレットを使用してこれを設定するには、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)に関するページを参照してください。
 
 
-## Additional resources
+## その他のリソース
 
-[Get started creating an Internet facing load balancer in Resource Manager using PowerShell](load-balancer-get-started-internet-arm-ps.md)
+[リソース マネージャーで PowerShell を使用して、インターネットに接続するロード バランサーを作成を開始する](load-balancer-get-started-internet-arm-ps.md)
+
+<!---HONumber=AcomDC_0323_2016-->

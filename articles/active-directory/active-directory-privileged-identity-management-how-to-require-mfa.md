@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Privileged Identity Management: 多要素認証を要求する方法"
+   pageTitle="多要素認証を要求する方法 | Microsoft Azure"
    description="Azure Active Directory Privileged Identity Management 拡張機能で特権 ID の多要素認証 (MFA) を要求する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/08/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: MFA を要求する方法
+# Azure AD Privileged Identity Management: MFA を要求する方法
 
 すべての管理者に多要素認証を要求することをお勧めします。
 
@@ -41,4 +41,4 @@ PIM 管理者としてサインインすると、特権アカウントで多要�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="03/18/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -26,7 +26,7 @@ Azure Active Directory Identity Protection は、リスク イベントや組織
 
 ### 国またはリージョンの制限
 
-現在、Azure Active Directory Identity Protection のプレビューは、**[国/リージョン]** の値が **[米国]** のディレクトリでのみ使用できます。 <br><br> ![Remediation](./media/active-directory-identityprotection/222.png "Remediation")
+現在、Azure Active Directory Identity Protection のプレビューは、**[国/リージョン]** の値が **[米国]** のディレクトリでのみ使用できます。 <br><br> ![修復](./media/active-directory-identityprotection/222.png "修復")
 
 
 ### Identity Protection とフェデレーション ドメイン
@@ -35,7 +35,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 
 - セキュリティ ポリシーはフェデレーション ドメインに対しては動作しません
 
-- リスク イベントはフェデレーション ドメインについては検出されません
+- リスク イベントは、Azure Active Directory とフェデレーションしているアプリに対してのみ検出されます。
 
 ##Getting Started (概要)
 
@@ -97,8 +97,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 | 感染しているデバイスからのサインイン | 感染している可能性があるデバイスからのサインイン |
 | 匿名の IP アドレスからのサインイン | 不明なソースからのサインイン |
 | 不審なアクティビティのある IP アドレスからのサインイン |	不審なアクティビティのある IP アドレスからのサインイン |
-| 未知の場所からのサインイン | - | 
-| ロックアウト イベント (パブリック プレビューには含まれません) | - |
+| 未知の場所からのサインイン | - | | ロックアウト イベント (パブリック プレビューには含まれません) | - |
 
 以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。これらのレポートは Microsoft Azure 管理ポータルではまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
@@ -128,7 +127,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 ## 調査
 Identity Protection を使用するときは、通常、Identity Protection ダッシュボードから開始します。
 
-<br><br> ![Remediation](./media/active-directory-identityprotection/29.png "Remediation") <br>
+<br><br> ![修復](./media/active-directory-identityprotection/29.png "修復") <br>
 
 ダッシュボードからは次のものにアクセスできます。
  
@@ -410,4 +409,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
 
-<!-----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

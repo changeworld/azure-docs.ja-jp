@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="03/21/2016" 
 	ms.author="sdanie"/>
 
 
@@ -117,7 +117,7 @@ Git ツールを目的のフォルダーで開き、次のコマンドを実行�
 
 	git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 
-リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。詳細については、「[ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-overview-of-local-git-repository)」を参照してください。
+リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。詳細については、「[ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
 
 ## 最新のサービス インスタンス構成を使用してローカル リポジトリを更新するには
 
@@ -279,6 +279,9 @@ REST API を使用してこの操作を実行する方法については、「[D
 -	REST API を使用したサービス インスタンスの管理
 	-	[API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
+## ビデオの概要を見る
+
+> [AZURE.VIDEO configuration-over-git]
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
 [api-management-git-enabled]: ./media/api-management-configuration-repository-git/api-management-git-enabled.png
@@ -294,4 +297,4 @@ REST API を使用してこの操作を実行する方法については、「[D
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

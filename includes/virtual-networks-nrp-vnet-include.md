@@ -1,7 +1,7 @@
 ## 仮想ネットワーク
 仮想ネットワーク (VNET) とサブネット リソースは、Azure で実行するワークロードのセキュリティ境界を定義する際に役立ちます。VNET は、(CIDR ブロックとして定義される) アドレス空間のコレクションを特徴としています。
 
->[AZURE.NOTE]ネットワーク管理者は、CIDR 表記に慣れています。CIDR に慣れていない場合は、[詳細を確認してください](http://whatismyipaddress.com/cidr)。
+>[AZURE.NOTE] ネットワーク管理者は、CIDR 表記に慣れています。CIDR に慣れていない場合は、[詳細を確認してください](http://whatismyipaddress.com/cidr)。
 
 ![VNet with multiple subnets](./media/resource-groups-networking/Figure4.png)
 
@@ -18,7 +18,7 @@ VNet には、次のプロパティが含まれています。
 
 サブネットには、次のプロパティが含まれています。
 
-|プロパティ|説明|値の例|
+|プロパティ|説明|サンプルの値|
 |---|---|---|
 |**addressPrefix**|サブネットを構成する単一のアドレス プレフィックス (CIDR 表記)|192\.168.1.0/24|
 |**networkSecurityGroup**|サブネットに適用される NSG|[NSG](#Network-Security-Group) に関するセクションを参照してください|
@@ -72,8 +72,8 @@ JSON 形式の VNet のサンプルは次のとおりです。
 
 ### その他のリソース
 
-- [VNet](virtual-networks-overview.md) の詳細を確認してください。
+- [VNet](../articles/virtual-network/virtual-networks-overview.md) の詳細を確認してください。
 - VNet に関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163650.aspx)も参照してください。
 - サブネットに関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163618.aspx)も参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

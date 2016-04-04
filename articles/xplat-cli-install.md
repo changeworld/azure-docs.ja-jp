@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="03/09/2016"
 	ms.author="danlep"/>
 
 # Azure CLI のインストール
 
-Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。提供されているいずれかのインストーラー パッケージを使用してオペレーティング システムに Azure CLI をインストールするか、Node.js と **npm** を使って CLI をインストールするか、Docker ホストのコンテナーとして Azure CLI をインストールします。その他のオプションとバックグラウンドについては、[GitHub](https://github.com/azure/azure-xplat-cli) のプロジェクト リポジトリを参照してください。
+Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。いくつかの方法があります。提供されているいずれかのインストーラー パッケージを使用してオペレーティング システムに Azure CLI をインストールするか、Node.js と **npm** を使って CLI をインストールするか、Docker ホストのコンテナーとして Azure CLI をインストールします。その他のオプションとバックグラウンドについては、[GitHub](https://github.com/azure/azure-xplat-cli) のプロジェクト リポジトリを参照してください。
 
 
 Azure CLI をインストールした後、[Azure サブスクリプションに接続](xplat-cli-connect.md)し、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行すると、Azure のリソースを操作できるようになります。
@@ -142,9 +142,9 @@ npm update -g azure-cli
 
 ## その他のリソース
 
-* [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用][cliarm]
+* [Azure Resource Manager (arm) モードでの Azure CLI コマンド][cliarm]
 
-* [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用][cliasm]
+* [Azure サービス管理 (asm) モードでの Azure CLI コマンド][cliasm]
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
@@ -155,7 +155,7 @@ npm update -g azure-cli
 [mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
 [windows-installer]: http://go.microsoft.com/?linkid=9828653&clcid=0x409
 [linux-installer]: http://go.microsoft.com/fwlink/?linkid=253472
-[cliasm]: virtual-machines/virtual-machines-command-line-tools.md
-[cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
+[cliasm]: virtual-machines-command-line-tools.md
+[cliarm]: virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -30,7 +30,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを完了するには、以下が必要です。
 
-+ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-tutorial.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
++ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-cli-create.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
 
 + Microsoft Visual Studio Express 2013 for Windows
 
@@ -117,4 +117,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Event Hubs でイベント処理の拡張]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

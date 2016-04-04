@@ -1,0 +1,26 @@
+<properties
+ pageTitle="Azure VM エージェントおよび拡張機能 | Microsoft Azure"
+ description="エージェントおよび拡張機能の概要と、クラシック デプロイ モデルを使用してエージェントをインストールする方法について説明します。"
+ services="virtual-machines-windows"
+ documentationCenter=""
+ authors="squillace"
+ manager="timlt"
+ editor=""
+ tags="azure-service-management"/>
+
+<tags
+ ms.service="virtual-machines-windows"
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-windows"
+ ms.workload="infrastructure-services"
+ ms.date="01/04/2016"
+ ms.author="rasquill"/>
+
+#仮想マシンのエージェントおよび拡張機能について
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
+[AZURE.INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../includes/virtual-machines-common-classic-agents-and-extensions.md)]
+
+<!---HONumber=AcomDC_0323_2016-->

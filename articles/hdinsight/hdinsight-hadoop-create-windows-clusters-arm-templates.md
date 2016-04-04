@@ -133,11 +133,13 @@ Visual Studio とリソース グループの使用の概要については、�
 ##次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用したリソースの展開](../virtual-machines/arm-template-deployment.md)」を参照してください。
+
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](../virtual-machines/virtual-machines-windows-csharp-template.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
 - Azure Resource Manager のテンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 - Azure Resource Manager のテンプレートで使用できる関数の一覧については、「[Azure Resource Manager のテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
+
 
 
 ##付録 A: ARM テンプレート
@@ -290,4 +292,4 @@ Visual Studio とリソース グループの使用の概要については、�
         }
     }
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

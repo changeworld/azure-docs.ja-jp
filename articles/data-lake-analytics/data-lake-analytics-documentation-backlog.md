@@ -43,6 +43,8 @@ U-SQL | 範囲基準の結合を行うための手法を説明します。 | 1 |
 U-SQL | ADLS 認証オプション | 1 | Pending | [@ArindamC](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 U-SQL | クロス プラットフォームの CLI ジョブの送信 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle) 
 U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle)
+ツール | U-SQL UDFs Azure Data Lake Tools for Visual Studio の単体テスト | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
+ツール | Azure Data Lake Tools for Visual Studio のジョブ グラフと頂点実行ビュー | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
 
 
 
@@ -59,4 +61,4 @@ U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

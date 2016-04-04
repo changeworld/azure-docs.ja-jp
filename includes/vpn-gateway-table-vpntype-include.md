@@ -1,23 +1,25 @@
-### VPN type for the Resource Manager deployment model
+### リソース マネージャー デプロイ モデルでの VPN の種類
 
-|      | **Route-based**    | **Policy-based** |
+| | **ルート ベース** | **ポリシー ベース** |
 |-----------------------------------|--------------------|------------------|
-| **Site-to-Site**                  | yes                | yes              |
-| **VNet-to-VNet**                  | yes                | no               |
-| **Multi-Site**                    | yes                | no               |
-| **S2S and ExpressRoute coexist**  | not yet available  | no               |
-| **Point-to-Site**                 | yes                | no               |
-| **Classic to Resource Manager**   | yes                | no               |
+| **サイト間** | ○ | ○ |
+| **VNet 間** | ○ | × |
+| **マルチサイト** | ○ | × |
+| **S2S と ExpressRoute の共存** | まだ使用できません | × |
+| **ポイント対サイト** | ○ | × |
+| **クラシックからリソース マネージャーに** | ○ | × |
 
 
-### VPN type for the classic deployment model
+### クラシック デプロイ モデルでの VPN の種類
 
 
-|       | **Dynamic**        | **Static**   |
+| | **動的** | **静的** |
 |---------------------------------------------|--------------------|--------------|
-| **Site-to-Site**                            | yes                | yes          |
-| **VNet-to-VNet**                            | yes                | no           |
-| **Multi-Site**                              | yes                | no           |
-| **S2S and ExpressRoute coexist**            | yes                | no           |
-| **Point-to-Site**                           | yes                | no           |
-| **Classic to Resource Manager**             | yes                | no           |
+| **サイト間** | ○ | ○ |
+| **VNet 間** | ○ | × |
+| **マルチサイト** | ○ | × |
+| **S2S と ExpressRoute の共存** | ○ | × |
+| **ポイント対サイト** | ○ | × |
+| **クラシックからリソース マネージャーに** | ○ | × |
+
+<!---HONumber=AcomDC_0323_2016-->

@@ -365,7 +365,7 @@ TodoListDataAPI プロジェクトを次のように変更します。
 
 	c.TodoListAPI アプリケーションのサービス プリンシパルの objectid を検索し、後でコピーできる場所に保存します。
 
-7. Azure ポータルで、ToDoListAngular プロジェクトをデプロイした Web アプリの Web アプリ ブレードに移動します。
+7. Azure ポータルで ToDoListDataAPI プロジェクトをデプロイした API アプリ用の API アプリ ブレードに移動します。
 
 9. **[設定]、[アプリケーションの設定]** の順にクリックします。
 
@@ -417,4 +417,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

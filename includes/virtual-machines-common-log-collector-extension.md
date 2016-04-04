@@ -1,28 +1,29 @@
 
-Diagnosing issues with an Microsoft Azure cloud service requires collecting the service’s log files on virtual machines as the issues occur. You can use the AzureLogCollector extension on-demand to perfom one-time collection of logs from one or more Cloud Service VMs (from both web roles and worker roles) and transfer the collected files to an Azure storage account – all without remotely logging on to any of the VMs.
-> [AZURE.NOTE]Descriptions for most of the logged information can be found at http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを都度収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
+> [AZURE.NOTE]ログに記録されるほとんどの情報の説明は、http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp で参照できます。
 
-There are two modes of collection dependent on the types of files to be collected.
-- Azure Guest Agent Logs only (GA). This collection mode includes all the logs related to Azure guest agents and other Azure components.
-- All Logs (Full). This collection mode will collect all files in GA mode plus:
+収集モードは 2 つあり、どちらが使用されるかは、収集するファイルの種類によって異なります。
+- Azure ゲスト エージェント ログのみ (GA)。Azure のゲスト エージェントとその他の Azure コンポーネントに関連したすべてのログが対象となります。
+- すべてのログ (Full)。GA モードで収集されるすべてのファイルに加え、次のファイルが収集されます。
 
-  - system and application event logs
+  - システムとアプリケーションのイベント ログ
   
-  - HTTP error logs
+  - HTTP エラー ログ
   
-  - IIS Logs
+  - IIS ログ
   
-  - Setup logs
+  - セットアップ ログ
   
-  - other system logs
+  - その他のシステム ログ
 
-In both collection modes, additional data collection folders can be specified by using a collection of the following structure:
+いずれの収集モードも、次の構造体を使用してデータ収集フォルダーを追加指定できます。
 
-- **Name**: The name of the collection, which will be used as the name of subfolder inside the zip file to be collected.
+- **Name**: 収集の名前。収集対象となる zip ファイル内のサブフォルダーの名前として使用されます。
 
-- **Location**: The path to the folder on the virtual machine where file will be collected.
+- **Location**: 収集されたファイルが格納される、仮想マシン上のフォルダーのパス。
 
-- **SearchPattern**: The pattern of the names of files to be collected. Default is “*”
+- **SearchPattern**: 収集対象ファイル名のパターン。既定値は “*” です。
 
-- **Recursive**: if the files will be collected recursively under the folder.
-
+- **Recursive**: 指定されたフォルダー内のファイルを再帰的に収集するかどうか。
+
+<!---HONumber=AcomDC_0323_2016-->

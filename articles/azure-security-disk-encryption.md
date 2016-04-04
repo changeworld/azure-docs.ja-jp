@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
+   ms.date="03/22/2016"
    ms.author="devtiw"/>
 
 
@@ -145,21 +145,21 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 	- 有効なシークレット URL の例:
 
-		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 有効な KRK KEK の例:
 
-		*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Azure Disk Encryption では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については以下の例を参照してください。
 
  	- 受け入れられない Key Vault URL:
 
-		*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 受け入れられる Key Vault URL:
 
-		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
 
@@ -196,7 +196,7 @@ Azure Disk Encryption では、Azure Key Vault のディスク暗号化キーと
 新しい Key Vault を作成するには、以下にリストされている 2 つのオプションのいずれかを使用します。
 
 - [ここ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)にある "101-Create-KeyVault" ARM テンプレートを使用する
-- [ここ](key-vault-get-started.md)で説明されている Azure PowerShell Key Vault コマンドレットを使用する
+- Azure PowerShell Key Vault コマンドレットを使用する
 
 **注:** サブスクリプションについて既に Key Vault をセットアップしている場合は、次のセクションに進んでください。
 
@@ -473,7 +473,7 @@ CLI コマンドを使用するこのシナリオでは、次の手順に従っ�
 
 #### PowerShell コマンドレットの使用
 
-PS コマンドレットによる Azure Disk Encryption を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure Disk Encryption の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
+PS コマンドレットによる Azure ディスク暗号化を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure ディスク暗号化の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
 
 #### CLI コマンドの使用
 
@@ -527,7 +527,7 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 
 ### 暗号化された IaaS VM の暗号化状態の取得
 
-暗号化状態は、Azure 管理ポータル、[PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt622700.aspx)、または CLI コマンドを使用して取得できます。以下のセクションでは、Azure 管理 (プレビュー) ポータルと CLI コマンドを使用して、暗号化状態を取得する方法を説明します。
+暗号化状態は、Azure 管理ポータル、[PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt622700.aspx)、または CLI コマンドを使用して取得できます。以下のセクションでは、Azure ポータルと CLI コマンドを使用して、暗号化状態を取得する方法を説明します。
 
 #### 暗号化された IaaS VM の暗号化状態を Azure 管理ポータルを使用して取得する
 
@@ -552,7 +552,7 @@ Azure 管理ポータルから IaaS VM の暗号化状態を取得できます�
                              }
     DataVolumesEncrypted: True
 
-OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定されています。これは、両方のボリュームが Azure Disk Encryption を使用して暗号化されることを示します。PS コマンドレットによる Azure Disk Encryption を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure Disk Encryption の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
+OSVolumeEncrypted と DataVolumesEncrypted の設定値は "True" に設定されています。これは、両方のボリュームが Azure Disk Encryption を使用して暗号化されることを示します。PS コマンドレットによる Azure ディスク暗号化を使用して暗号化を有効にする方法の詳細については、**Azure PowerShell を使用する Azure ディスク暗号化の探索**に関するブログ投稿の[パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) と[パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) を参照してください。
 
 #### ディスク暗号化 CLI コマンドから IaaS VM の暗号化状態を取得する
 
@@ -800,8 +800,8 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 
 ## BLOB の詳細
-[Azure PowerShell を使用する Azure Disk Encryption の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
+[Azure PowerShell を使用する Azure ディスク暗号化の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
 
-[Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
+[Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -627,7 +627,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 - [HDInsight の Hadoop での Sqoop の使用][hdinsight-use-sqoop]
 - [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
 - [HDInsight での Pig と Hadoop の使用][hdinsight-use-pig]
-- [HDInsight 用 C# Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
@@ -653,7 +652,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
 
-[hdinsight-develop-streaming-jobs]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
@@ -680,4 +678,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

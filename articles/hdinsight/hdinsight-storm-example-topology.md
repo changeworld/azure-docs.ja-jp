@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="01/15/2016"
+ ms.date="03/18/2016"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
@@ -61,4 +61,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

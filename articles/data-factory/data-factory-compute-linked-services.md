@@ -142,7 +142,7 @@ dataNodeSize | データ ノードのサイズを指定します。既定値は 
 zookeeperNodeSize | Zookeeper ノードのサイズを指定します。既定値は "Small" です。 | いいえ
  
 #### ノードのサイズの指定
-上記のプロパティで指定する必要がある文字列値については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md#size-tables)」をご覧ください。値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。
+上記のプロパティで指定する必要がある文字列値については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)」をご覧ください。値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。
 
 D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard\_D4** を指定する必要があります。
 
@@ -177,7 +177,6 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 	      "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
 	      "userName": "admin",
 	      "password": "<password>",
-	      "location": "WestUS",
 	      "linkedServiceName": "MyHDInsightStoragelinkedService"
 	    }
 	  }
@@ -191,7 +190,6 @@ type | type プロパティは **HDInsight** に設定されます。 | はい
 clusterUri | HDInsight クラスターの URI です。 | はい
 username | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい
 パスワード | ユーザー アカウントのパスワードを指定します。 | あり
-location | HDInsight クラスターの場所を指定します (例: WestUS)。 | はい
 linkedServiceName | HDInsight クラスターで使用される BLOB ストレージの「リンクされたサービス」の名前です。 | はい
 
 ## Azure Batch の「リンクされたサービス」
@@ -341,4 +339,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

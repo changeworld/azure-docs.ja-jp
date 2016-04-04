@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/26/2016"
+   ms.date="03/23/2016"
    ms.author="oanapl"/>
 
 # Service Fabric のカスタム正常性レポートの追加
@@ -47,9 +47,9 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 
 > [AZURE.NOTE] 既定では、クラスターには、システム コンポーネントによって送信される正常性レポートが事前設定されます。「[トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)」を参照してください。ユーザー レポートは、システムによって作成済みの[正常性エンティティ](service-fabric-health-introduction.md#health-entities-and-hierarchy)に関して送信する必要があります。
 
-正常性レポートの設計を決定したら、正常性レポートを簡単に送信できます。レポートの送信には、PowerShell または REST で API を介して **FabricClient.HealthManager.ReportHealth** を使用します。内部で、すべてのメソッドは、ファブリック クライアント内に含まれる正常性クライアントを使用します。バッチ レポートで、パフォーマンスを向上することもできます。
+正常性レポートの設計を決定したら、正常性レポートを簡単に送信できます。クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合や、ファブリック クライアントに管理者特権がある場合は、`FabricClient` を使用して正常性をレポートできます。レポートの送信には、PowerShell または REST で API を介して [FabricClient.HealthManager.ReportHealth](https://msdn.microsoft.com/library/system.fabric.fabricclient.healthclient.reporthealth.aspx) を使用します。バッチ レポートで、パフォーマンスを向上することもできます。
 
-> [AZURE.NOTE] 正常性レポートは同期的であり、クライアント側の検証作業のみを表します。レポートが正常性クライアントによって受け入れられても、そのレポートがストアに適用されるとは限りません。正常性レポートは非同期に送信されます。また、場合によっては他のレポートと一括して送信される可能性があります。サーバー上の処理が失敗する場合もあります (シーケンス番号が古い、レポートが適用されるエンティティが削除されているなど)。
+> [AZURE.NOTE] 正常性レポートは同期的であり、クライアント側の検証作業のみを表します。レポートが正常性クライアントあるいは `Partition` または `CodePackageActivationContext` オブジェクトによって受け入れられても、そのレポートがストアに適用されるとは限りません。正常性レポートは非同期に送信されます。また、場合によっては他のレポートと一括して送信される可能性があります。サーバー上の処理が失敗する場合もあります (シーケンス番号が古い、レポートが適用されるエンティティが削除されているなど)。
 
 ## 正常性クライアント
 正常性レポートは、ファブリック クライアント内で動作している正常性クライアントを使用して、正常性ストアに送信されます。正常性クライアントは、次の項目で構成できます。
@@ -62,7 +62,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 
 > [AZURE.NOTE] レポートがバッチ処理される場合、ファブリック クライアントは、レポートが確実に送信されるように、少なくとも HealthReportSendInterval の間、動作している必要があります。メッセージが失われた場合、または正常性ストアが一時的なエラーのためにメッセージを適用できない場合、ファブリック クライアントは、再試行の機会を与えるために、さらに長い時間動作させる必要があります。
 
-クライアントでのバッファリングでは、レポートの一意性を考慮に入れます。たとえば、特定の不良なレポーターが、同じエンティティの同じプロパティに関して、1 秒あたり 100 のレポートを発行している場合、レポートは直前のバージョンに置き換えられます。クライアント キューには、このようなレポートが 1 つのみ存在します。バッチ処理を構成すると、複数のレポートは 1 つにまとめられ、送信間隔ごとに 1 回、正常性ストアに送信されます。エンティティの最新の状態が反映された、最後に追加されたレポートが送信されます。構成パラメーターを指定するには、**FabricClient** を作成するときに、正常性に関連するエントリの望ましい値を指定した **FabricClientSettings** を渡します。
+クライアントでのバッファリングでは、レポートの一意性を考慮に入れます。たとえば、特定の不良なレポーターが、同じエンティティの同じプロパティに関して、1 秒あたり 100 のレポートを発行している場合、レポートは直前のバージョンに置き換えられます。クライアント キューには、このようなレポートが 1 つのみ存在します。バッチ処理を構成すると、複数のレポートは 1 つにまとめられ、送信間隔ごとに 1 回、正常性ストアに送信されます。エンティティの最新の状態が反映された、最後に追加されたレポートが送信されます。すべての構成パラメーターを指定するには、`FabricClient` を作成するときに、正常性に関連するエントリの望ましい値を指定した [FabricClientSettings](https://msdn.microsoft.com/library/azure/system.fabric.fabricclientsettings.aspx) を渡します。
 
 次に、ファブリック クライアントを作成し、追加された直後にレポートを送信することを指定します。タイムアウトや、再試行可能なエラーが発生した場合、40 秒間隔で再試行されます。
 
@@ -104,7 +104,24 @@ GatewayInformation   : {
                        }
 ```
 
-> [AZURE.NOTE] 承認されていないサービスが、クラスター内のエンティティに対して正常性をレポートできないように、セキュリティで保護されたクライアントからの要求のみを受け入れるように、サーバーを構成できます。レポートは FabricClient を通じて実行されるため、FabricClient では、クラスターなどと通信するために、Kerberos または証明書の認証によってセキュリティが有効になっている必要があります。
+> [AZURE.NOTE] 承認されていないサービスが、クラスター内のエンティティに対して正常性をレポートできないように、セキュリティで保護されたクライアントからの要求のみを受け入れるように、サーバーを構成できます。レポートは `FabricClient` を通じて実行されるため、`FabricClient` では、クラスターと通信するために (Kerberos や証明書の認証などによって) セキュリティが有効になっている必要があります。詳細については、[クラスター セキュリティ](service-fabric-cluster-security.md)に関する記述を参照してください。
+
+## 低特権サービス内からのレポート
+クラスターに対する管理アクセス権がない Service Fabric サービス内から、`Partition` または `CodePackageActivationContext` を使用して現在のコンテキストのエンティティに関する正常性をレポートすることができます。
+
+- ステートレス サービスの場合は、[IStatelessServicePartition.ReportInstanceHealth](https://msdn.microsoft.com/library/system.fabric.istatelessservicepartition.reportinstancehealth.aspx) を使用して現在のサービス インスタンスについてレポートします。
+
+- ステートフル サービス場合は、[IStatefulServicePartition.ReportReplicaHealth](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.reportreplicahealth.aspx) を使用して現在のレプリカについてレポートします。
+
+- 現在のパーティション エンティティについてレポートするには、[IServicePartition.ReportPartitionHealth](https://msdn.microsoft.com//library/system.fabric.iservicepartition.reportpartitionhealth.aspx) を使用します。
+
+- 現在のアプリケーションについてレポートするには、[CodePackageActivationContext.ReportApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportapplicationhealth.aspx) を使用します。
+
+- 現在のノード上にデプロイされている現在のアプリケーションについてレポートするには、[CodePackageActivationContext.ReportDeployedApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth.aspx) を使用します。
+
+- 現在のノード上にデプロイされている現在のアプリケーションのサービス パッケージについてレポートするには、[CodePackageActivationContext.ReportDeployedServicePackageHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth.aspx) を使用します。
+
+> [AZURE.NOTE] 内部的には、`Partition` と `CodePackageActivationContext` は、既定の設定で構成される正常性クライアントを保持します。[正常性クライアント](service-fabric-report-health.md#health-client)と同じ考慮事項が適用されます。つまり、レポートはバッチ処理されてからタイマーに従って送信されるため、レポートを送信できるようにオブジェクトを保持する必要があります。
 
 ## 正常性レポートの設計
 高品質のレポートを生成するための最初の手順では、サービスの正常性に影響する可能性がある条件を特定します。開始時、またはできれば問題の発生前に、サービスまたはクラスターで問題にフラグを付けるために役立つことがある条件によって、数十億ドルのコストが削減される可能性があります。メリットとして、ダウン タイムの短縮、問題の調査と修復にかかる夜間の時間の短縮、顧客満足度の向上などがあります。
@@ -138,17 +155,19 @@ GatewayInformation   : {
 ただし、上記のケースではレポートが作成され、この状況は、正常性を評価する場合にアプリケーションの正常性に関してキャプチャされます。
 
 ## 定期的なレポートと遷移時のレポート
-正常性レポート モデルを使用して、ウォッチドッグは、定期的に、または遷移時にレポートを送信できます。コードがはるかに単純で、エラーが生じにくいため、定期的に行うことを推奨します。ウォッチドッグは、正しくないレポートを生成させるバグを回避するために、できるだけ簡単にする必要があります。正しくない異常レポートは、正常性評価と、アップグレードなどの正常性に基づくシナリオに影響します。正しくない正常性レポートにより、望ましくないクラスター内の問題が隠されます。
+正常性レポート モデルを使用して、ウォッチドッグは、定期的に、または遷移時にレポートを送信できます。コードがはるかに単純で、エラーが生じにくいため、ウォッチドッグ レポートは定期的に行うことをお勧めします。ウォッチドッグは、正しくないレポートを生成させるバグを回避するために、できるだけ簡単にする必要があります。正しくない異常レポートは、正常性評価と、アップグレードなどの正常性に基づくシナリオに影響します。正しくない正常性レポートにより、望ましくないクラスター内の問題が隠されます。
 
 定期的なレポートの場合、ウォッチドッグは、タイマーと共に実装できます。タイマーのコールバック時に、ウォッチドッグは状態を確認し、現在の状態に基づいて、レポートを送信できます。以前にどのようなレポートが送信されたかを確認したり、メッセージングに関する最適化を行う必要はありません。正常性クライアントには、これを支援するバッチ処理ロジックがあります。正常性クライアントは、動作している限り、レポートが正常性ストアによって確認応答されるか、ウォッチドッグが同じエンティティ、プロパティ、およびソースで新しいレポートを生成するまで、内部で再試行します。
 
 遷移に関するレポートの場合、気を付けて状態を処理する必要があります。ウォッチドッグは、いくつかの条件を監視し、条件が変化した場合にのみレポートします。このアプローチの利点は、必要なレポート数が少ない点です。欠点は、ウォッチドッグのロジックが複雑なことです。状態の変化を判断するために調べることができるように、条件またはレポートも維持する必要があります。フェールオーバー時に、まだ送信されていない可能性があるレポートを送信することに注意する必要があります (キューに登録されたが、正常性ストアに送信されていないレポート)。シーケンス番号は増え続けるように指定する必要があります。そうしないと、古いレポートと判断され、拒否されます。データの損失が発生するまれなケースで、レポーターの状態と正常性ストアの状態間で、同期が必要になることがあります。
 
+遷移に関するレポートは、`Partition` または `CodePackageActivationContext` を使用して、サービスでそれ自体についてレポートする場合に適しています。ローカル オブジェクト (レプリカまたはデプロイされたサービス パッケージ/デプロイされたアプリケーション) が削除されると、そのレポートもすべて削除されます。これにより、レポーターと正常性ストア間の同期の必要性が緩和されます。親パーティションまたは親アプリケーションに関するレポートの場合、正常性ストアの古いレポートを回避するフェールオーバーに注意する必要があります。正しい状態を維持し、必要なくなった場合にストアからレポートを消去するには、ロジックを追加する必要があります。
+
 ## 正常性レポートの実装
 エンティティとレポートの詳細を明確にしたら、API、PowerShell または REST を使用して、正常性レポートを送信できます。
 
 ### API
-API を使用してレポートするには、レポートする必要があるエンティティの種類に固有な正常性レポートを作成する必要があります。次に、正常性クライアントにレポートを送信します。
+API を使用してレポートするには、レポートする必要があるエンティティの種類に固有な正常性レポートを作成する必要があります。次に、正常性クライアントにレポートを送信します。あるいは、正常性の情報を作成し、それを `Partition` または `CodePackageActivationContext` を使用して適切なレポート メソッドに渡して現在のエンティティについてレポートする必要があります。
 
 次の例は、クラスター内のウォッチドッグからの定期的なレポートを示していますウォッチドッグは、外部のリソースにノード内からアクセスできるかどうかを確認します。リソースは、アプリケーション内のサービス マニフェストで必要です。リソースを使用できない場合でも、アプリケーション内の他のサービスが正しく機能することがあります。したがって、レポートは、デプロイ済みのサービス パッケージのエンティティに、30 秒ごとに送信されます。
 
@@ -173,6 +192,9 @@ public static void SendReport(object obj)
         new HealthInformation("ExternalSourceWatcher", "Connectivity", healthState));
 
     // TODO: handle exception. Code omitted for snippet brevity.
+    // Possible exceptions: FabricException with error codes
+    // FabricHealthStaleReport (non-retryable, the report is already queued on the health client),
+    // FabricHealthMaxReportsReached (retryable; user should retry with exponential delay until the report is accepted).
     Client.HealthManager.ReportHealth(deployedServicePackageHealthReport);
 }
 ```
@@ -275,4 +297,4 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

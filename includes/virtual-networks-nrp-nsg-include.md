@@ -15,10 +15,7 @@ NSG リソースを使用すると、許可または拒否の規則を実装す�
 |プロパティ|説明|サンプルの値|
 |---|---|---|
 |**description**|規則の説明|サブネット X 内のすべての VM に対して受信トラフィックを許可します|
-|**protocol**|規則に関して一致するプロトコル|TCP、UDP、または *|
-|**sourcePortRange**|規則に関して一致するソース ポート範囲|80、100 ～ 200、*|
-|**destinationPortRange**|規則に関して一致する宛先ポート範囲|80、100 ～ 200、*|
-|**sourceAddressPrefix**|規則に関して一致するソース アドレスのプレフィックス|10\.10.10.1, 10.10.10.0/24、VirtualNetwork|
+|**protocol**|規則に関して一致するプロトコル|TCP、UDP、または *| |**sourcePortRange**|規則に関して一致するソース ポート範囲|80、100 ～ 200、*| |**destinationPortRange**|規則に関して一致する宛先ポート範囲|80、100 ～ 200、*| |**sourceAddressPrefix**|規則に関して一致するソース アドレスのプレフィックス|10\.10.10.1, 10.10.10.0/24、VirtualNetwork|
 |**destinationAddressPrefix**|規則に関して一致する宛先アドレスのプレフィックス|10\.10.10.1, 10.10.10.0/24、VirtualNetwork|
 |**direction**|規則に関して一致するトラフィックの方向|受信または送信|
 |**priority**|規則の優先度です。規則は優先度の順序でチェックされ、規則が適用されると、規則の一致テストは行われなくなります。|10, 100, 65000|
@@ -68,12 +65,12 @@ JSON 形式の NSG のサンプル
 	}
 
 ### 既定のセキュリティ サポート
-既定のセキュリティ規則には、セキュリティ規則で使用できるものと同じプロパティがあります。これらは、NSG を適用するリソース間の基本的な接続を提供するために存在します。どの[既定セキュリティ規則](./virtual-networks-nsg.md#Default-Rules)が存在するのかを把握してください。
+既定のセキュリティ規則には、セキュリティ規則で使用できるものと同じプロパティがあります。これらは、NSG を適用するリソース間の基本的な接続を提供するために存在します。どの[既定セキュリティ規則](../articles/virtual-network/virtual-networks-nsg.md#Default-Rules)が存在するのかを把握してください。
 
 ### その他のリソース
 
-- [NSG](virtual-networks-nsg.md) の詳細を確認します。
+- [NSG](../articles/virtual-network/virtual-networks-nsg.md) の詳細を確認します。
 - NSG については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163615.aspx)を確認してください。
 - セキュリティ規則については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163580.aspx)を確認してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

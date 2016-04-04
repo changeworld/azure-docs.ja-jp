@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Linux 仮想マシンでの root 権限の使用 | Microsoft Azure" 
 	description="Azure 上の Linux 仮想マシンで root 権限を使用する方法について説明します。" 
-	services="virtual-machines" 
+	services="virtual-machines-linux" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
@@ -9,7 +9,7 @@
 	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines-linux" 
 	ms.workload="infrastructure-services" 
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
@@ -55,4 +55,4 @@ SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo`
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0323_2016-->

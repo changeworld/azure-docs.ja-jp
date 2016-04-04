@@ -5,7 +5,7 @@
 	documentationCenter=".net"
 	authors="dstrockis"
 	manager="msmbaldwin"
-	editor=""/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="03/22/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: Graph API の使用
@@ -171,7 +171,7 @@ ADAL の `AuthenticationContext.AcquireToken(...)` メソッドを呼び出す�
 Graph API からユーザーの一覧または特定のユーザーを取得するには、HTTP `GET` 要求を `/users` エンドポイントに送信します。テナントのすべてのユーザーを要求した場合、次のようになります。
 
 ```
-GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=beta
+GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 ```
 
@@ -184,11 +184,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 注意すべき重要な点が 2 つあります。
 
 - ADAL 経由で取得されたアクセス トークンは、`Bearer` スキームを使用して `Authorization` ヘッダーに追加されます。
-- B2C テナントに対しては、クエリ パラメーター `api-version=beta` を使用する必要があります。
-
-
-> [AZURE.NOTE]
-	Azure AD Graph API のベータ版の機能はプレビュー段階です。ベータ版の詳細については、[Graph API チームのこのブログ投稿](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx)をご覧ください。
+- B2C テナントに対しては、クエリ パラメーター `api-version=1.6` を使用する必要があります。
 
 これらの詳細は、どちらも `B2CGraphClient.SendGraphGetRequest(...)` メソッド内で処理されます。
 
@@ -197,9 +193,9 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 {
 	...
 
-	// For B2C user management, be sure to use the beta Graph API version.
+	// For B2C user management, be sure to use the 1.6 Graph API version.
 	HttpClient http = new HttpClient();
-	string url = "https://graph.windows.net/" + tenant + api + "?" + "api-version=beta";
+	string url = "https://graph.windows.net/" + tenant + api + "?" + "api-version=1.6";
 	if (!string.IsNullOrEmpty(query))
 	{
 		url += "&" + query;
@@ -218,7 +214,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 B2C テナントにユーザー アカウントを作成するときは、HTTP `POST` 要求を `/users` エンドポイントに送信できます。
 
 ```
-POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=beta
+POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 Content-Type: application/json
 Content-Length: 338
@@ -227,13 +223,13 @@ Content-Length: 338
 	// All of these properties are required to create consumer users.
 
 	"accountEnabled": true,
-	"alternativeSignInNamesInfo": [             // controls which identifier the user uses to sign in to the account
+	"signInNames": [                            // controls which identifier the user uses to sign in to the account
 		{
 			"type": "emailAddress",             // can be 'emailAddress' or 'userName'
 			"value": "joeconsumer@gmail.com"
 		}
 	],
-	"creationType": "NameCoexistence",          // always set to 'NameCoexistence'
+	"creationType": "LocalAccount",            // always set to 'LocalAccount'
 	"displayName": "Joe Consumer",				// a value that can be used for displaying to the end user
 	"mailNickname": "joec",						// an email alias for the user
 	"passwordProfile": {
@@ -244,7 +240,7 @@ Content-Length: 338
 }
 ```
 
-この要求のプロパティはすべて、コンシューマー ユーザーの作成に必要です。説明のために、`//` コメントが追加されています。実際の要求には追加しないでください。
+この要求に含まれるプロパティのほとんどは、コンシューマー ユーザーの作成に必要です。詳細については、[ここ](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)をクリックしてください。`//`説明用のコメントが追加されているのでご確認ください実際の要求には追加しないでください。
 
 要求を確認するには、次のコマンドのいずれかを実行します。
 
@@ -258,15 +254,18 @@ Content-Length: 338
 POST 要求が `B2CGraphClient.SendGraphPostRequest(...)` にどのように構成されているかを確認できます。
 
 - アクセス トークンを要求の `Authorization` ヘッダーに添付します。
-- `api-version=beta` を設定します。
+- `api-version=1.6` を設定します。
 - 要求の本文に JSON ユーザー オブジェクトを追加します。
+
+> [AZURE.NOTE]
+既存のユーザー ストアから移行するアカウントのパスワード強度が [Azure AD B2C によって適用された強力なパスワード強度](https://msdn.microsoft.com/library/azure/jj943764.aspx)より低い場合は、`passwordPolicies` プロパティの `DisableStrongPassword` 値を使用して強力なパスワード要件を無効にすることができます。たとえば、上記で次にように指定された "ユーザー作成要求" を変更することができます: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`します。
 
 ### コンシューマー ユーザー アカウントを更新する
 
 ユーザー オブジェクトの更新プロセスはユーザー オブジェクトの作成プロセスと同じです。ただし、HTTP `PATCH` メソッドが使用されます。
 
 ```
-PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=beta
+PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 Content-Type: application/json
 Content-Length: 37
@@ -285,12 +284,30 @@ JSON ファイルを新しいデータで更新することでユーザーを更
 
 `B2CGraphClient.SendGraphPatchRequest(...)` メソッドを調べて、この要求がどのように送信されるかの詳細を確認してください。
 
+### ユーザーの検索
+
+B2C テナントではいくつかの方法でユーザーを検索することができます。ユーザーのオブジェクト ID を使用する方法や、ユーザーのサインイン識別子 (すなわち、`signInNames` プロパティ) を使用する方法があります。
+
+特定のユーザーを検索するには、次のコマンドのいずれかを実行します。
+
+```
+> B2C Get-User <user-object-id>
+> B2C Get-User <filter-query-expression>
+```
+
+いくつかの例を次に示します。
+
+```
+> B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
+> B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27joeconsumer@gmail.com%27)
+```
+
 ### ユーザーを削除する
 
 ユーザーの削除プロセスは簡単です。HTTP `DELETE` メソッドを使用し、正しいオブジェクト ID で URL を構築します。
 
 ```
-DELETE https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=beta
+DELETE https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 ```
 
@@ -345,11 +362,9 @@ B2C テナント内に定義されたカスタム属性は、`B2CGraphClient` �
 
 - テナントの適切なアクセス許可をアプリケーションに付与する必要があります。
 - 現時点では、ADAL v2 を使用してアクセス トークンを取得する必要があります。(ライブラリを使用せず、プロトコル メッセージを直接送信することもできます。)
-- Graph API を呼び出すとき、[`api-version=beta`](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx) を使用します。
+- Graph API を呼び出すとき、`api-version=1.6` を使用します。
 - コンシューマー ユーザーを作成し、更新するとき、上述のようにいくつかのプロパティが必要になります。
-
-> [AZURE.IMPORTANT] B2C アプリで Azure AD Graph API を使用するとき、Azure AD B2C の基礎にあるディレクトリ サービスのレプリケーション特性を考慮する必要があります。(詳細については、[この記事](http://blogs.technet.com/b/ad/archive/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-geo-distributed-cloud-directory.aspx)をご覧ください。) コンシューマーが**サインアップ** ポリシーを使用して B2C にサインアップした直後にアプリ内で Azure AD Graph API を使用してユーザー オブジェクトを読み取ろうとしてもできない場合があります。その際は、レプリケーション プロセスが完了するまで数秒待つ必要があります。一般公開時には、Azure AD Graph API とディレクトリ サービスによって提供される "書き込みと読み取りの整合性保証" について、より具体的なガイダンスを公開する予定です。
 
 B2C テナントで Graph API を利用して実行するアクションに関するご質問やご要望がございましたら、この記事にコメントを投稿するか、GitHub コード サンプル リポジトリで問題を提出してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

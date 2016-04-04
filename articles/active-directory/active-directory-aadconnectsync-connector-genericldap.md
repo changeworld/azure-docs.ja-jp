@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/16/2016"
+   ms.date="03/16/2016"
    ms.author="andkjell"/>
 
 # Generic LDAP コネクタに関するテクニカル リファレンス
@@ -22,7 +22,7 @@
 
 - Microsoft Identity Manager 2016 (MIM2016)
 - Forefront Identity Manager 2010 R2 (FIM2010R2)
-    -   4\.1.3461.0 以降の修正プログラム [KB2870703](https://support.microsoft.com/kb/2870703) を使用する必要があります。
+    -   4\.1.3671.0 以降の修正プログラム [KB3092178](https://support.microsoft.com/kb/3092178) を使用する必要があります。
 
 MIM2016 および FIM2010R2 の場合、コネクタは [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=717495)からダウンロードして入手できます。
 
@@ -279,4 +279,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

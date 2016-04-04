@@ -26,24 +26,24 @@
 
 ## 前提条件
 
-この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル][datafactorytutorial]を実行する**必要があります**。
+この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル](data-factory-tutorial.md)を実行する**必要があります**。
 
 **(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
 
 
 このチュートリアルでは、次の手順に従います。
 
-1. [手順 1: Data Management Gateway を作成する](#OnPremStep1)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
+1. [Data Management Gateway を作成します](#create-data-management-gateway)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
 
 	オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
-2. [手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する](#OnPremStep2)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
-3. [手順 3: テーブルとパイプラインを作成する](#OnPremStep3)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
+2. [オンプレミスの SQL Server 用にリンクされたサービスを作成します](#create-sql-server-linked-service)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
+3. [データセットとパイプラインを作成します](#create-dataset-and-pipeline)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
 
-4. [手順 4: パイプラインを監視して結果を確認する](#OnPremStep4)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
+4. [パイプラインを監視し、結果を確認します](#monitor-pipeline)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
 
 
-## <a name="OnPremStep1"></a>手順 1: Data Management Gateway を作成する
+## Data Management Gateway の作成
 
 Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。
   
@@ -64,7 +64,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 9. **[OK]** をクリックして **[構成]** ブレードを閉じ、**[OK]** をクリックして **[作成]** ブレードを閉じます。**[関連付けられているサービス]** ブレードの **MyGateway** の状態が **[良好]** に変わるまで待ちます。また、**Data Management Gateway Configuration Manager (プレビュー)** ツールを起動し、ゲートウェイの名前がポータル上の名前と一致すること、および**状態**が **[登録済み]** であることを確認することもできます。最新の状態を確認するため、場合によっては [リンクされたサービス] ブレードをいったん閉じて再度開く必要があります。画面が最新の状態に更新されるまで、数分かかる場合があります。
 
-## <a name="OnPremStep2"></a>手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する。
+## SQL Server のリンクされているサービスの作成
 
 この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスを作成します。
 
@@ -107,11 +107,14 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 		2.	最後の 2 行を削除します (JSON の **username** プロパティと **password** プロパティが必要なのは、Windows 認証を使用している場合のみです)。 
 		3.	**gatewayName** 行の最後の **, (コンマ)** を削除します。
 
-		**Windows 認証を使用している場合、次の手順に従います。**1.**connectionString** の**統合セキュリティ**の値を **True** に設定します。"**User ID=<username>;Password=<password>;**" を接続文字列から削除します。2.**username** プロパティに、データベースへのアクセス権を持つユーザーの名前を指定します。3.ユーザー アカウントの **password** を指定します。   
+		**Windows 認証を使用している場合:**
+		1. **connectionString** の**統合セキュリティ**の値を **True** に設定します。"**User ID=<username>;Password=<password>;**" を接続文字列から削除します。 
+		2. **username** プロパティに、データベースへのアクセス権を持つユーザーの名前を指定します。 
+		3. ユーザー アカウントの **password** を指定します。   
 	4. gatewayName プロパティに、ゲートウェイの名前 (**MyGateway**) を指定します。 		  	 
 3.	ツール バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。 
 
-## <a name="OnPremStep3"></a>手順 3: テーブルとパイプラインを作成する
+## データセットとパイプラインの作成
 
 ### オンプレミスの論理テーブルを作成する
 
@@ -122,7 +125,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
-1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\OnPremises** フォルダーにある **EgressDataToOnPremPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
@@ -134,9 +137,9 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
  
 3. ツール バーの **[デプロイ]** クリックして、パイプラインを作成してデプロイします。エディターのタイトル バーに "**パイプラインが正常に作成されました**" というメッセージが表示されていることを確認します。
 	
-## <a name="OnPremStep4"></a>手順 4: パイプラインを監視して結果を確認する
+## パイプラインの監視
 
-[メインのチュートリアル][datafactorytutorial]の**パイプラインとデータ スライスの監視**に関するセクションで説明したものと同じ手順に従い、新しいオンプレミスの ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
+[メインのチュートリアル](data-factory-tutorial.md#monitor-pipelines)の**パイプラインの監視**に関するセクションで説明したものと同じ手順に従い、新しいオンプレミスの ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
  
 **MarketingCampaignEffectivenessOnPremSQLTable** テーブルのスライスの状態が [準備完了] に変われば、パイプラインがスライスの実行を完了したことを意味します。結果を表示するには、SQL Server 内の **MarketingCampaigns** データベースの **MarketingCampaignEffectiveness** テーブルにクエリを実行します。
  
@@ -148,7 +151,6 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 [troubleshoot]: data-factory-troubleshoot.md
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
-[datafactorytutorial]: data-factory-tutorial.md
 [adfgetstarted]: data-factory-get-started.md
 [adfintroduction]: data-factory-introduction.md
 [useonpremisesdatasources]: data-factory-move-data-between-onprem-and-cloud.md
@@ -169,4 +171,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

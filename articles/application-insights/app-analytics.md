@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Analytics - Application Insights の強力な検索ツール" 
-	description="Application Insights の強力な検索ツールである Application Analytics の概要" 
+	pageTitle="Analytics - Application Insights の強力な検索ツール" 
+	description="Application Insights の強力な診断検索ツールである Analytics の概要。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,21 +12,21 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/11/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
 
 
-# Application Insights Analytics: 言語の概要
+# Application Insights の Analytics
 
 
-[Application Insights Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力なクエリ エンジンです。ここでは、Application Insights のクエリ言語である AIQL について説明します。
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
  
-一般的な AIQL クエリでは、*ソース* テーブルの後に、一連の*演算子*を `|` で区切って記載します。
+一般的なクエリでは、*ソース* テーブルの後に、一連の*演算子*を `|` で区切って記載します。
 
 例として、ハイデラバードの市民が何時に Web アプリを使用しているか調べてみましょう。この調査の際に、HTTP 要求に対してどのような結果コードが返されるか確認しましょう。
 
@@ -79,4 +79,4 @@
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

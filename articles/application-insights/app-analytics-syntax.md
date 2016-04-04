@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Analytics のステートメント" 
-	description="Application Analytics のクエリ、式、let ステートメント、Application Insights の強力な検索ツール。" 
+	pageTitle="Application Insights の Analytcis のステートメント" 
+	description="Application Insights の強力な検索ツールである Analytics のクエリ、式、let ステートメント。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,21 +12,20 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
 
  
-# Application Analytics のステートメント
+# Application Insights の Analytcis ステートメント
 
-[Application Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) テレメトリ用の強力な検索エンジンです。ここでは、Application Analytics のクエリ言語である CSL について説明します。
-
+[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
 ## データ モデル
 
-CSL の場合:
+AIQL:
 
 * *データベース*には、0 個以上の名前の付いた*テーブル*が含まれます。
 * *テーブル*には次のものが含まれます。
@@ -67,7 +66,7 @@ CSL のステートメントには次の 4 つの種類があります。
 
 ### データ クエリ
   
-Application Analytics に格納されるデータに関する読み取り専用の要求です。次に例を示します。
+Analytics に格納されるデータに関する読み取り専用の要求です。次に例を示します。
 
 * `event` - "event" という名前のテーブル内のすべてのレコードを返します。
 * `event | count` - "event" 内のレコードの数を返します。
@@ -269,4 +268,4 @@ TopEvents(5, ago(7d))
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

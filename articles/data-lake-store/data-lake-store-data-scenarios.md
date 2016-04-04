@@ -50,6 +50,7 @@
 
 使用できるツールは次のとおりです。
  
+* [Azure Stream Analytics](../stream-analytics-data-lake-output)。Event Hubs に取り込まれたイベントは、 Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
 * [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)。Event Hubs からイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
 
@@ -88,7 +89,7 @@ Web サーバー ログ データをアップロードする場合、または�
 
 	>[AZURE.NOTE] Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 200 GB 以下である必要があります。
 
-* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、「[Azure ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ## Data Lake Store に格納されているデータの処理
 
@@ -133,4 +134,4 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 * まず、[Azure Data Factory を使って、Data Lake Store から Azure SQL Data Warehouse にデータを移動](../data-factory/data-factory-data-movement-activities.md#supported-data-stores)します。
 * その後、[Power BI を Azure SQL Data Warehouse と統合](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi)して、データを視覚的に表現することができます。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

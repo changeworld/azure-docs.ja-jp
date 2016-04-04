@@ -213,7 +213,9 @@ Entity Framework でインデックスを定義するには、インデックス
 ### 前提条件
 このセクションの一部の診断タスクを実行するには、**SQL Server Management Studio** などの SQL データベース管理ツールや **Azure クラシック ポータル**に組み込まれている管理機能にアクセスできる必要があります。
 
-SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)」に示すとおりに Azure の仮想マシンをプロビジョニングし、リモートからその仮想マシンに接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。
+
+SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」に示すとおりに Azure の仮想マシンをプロビジョニングし、リモートからその仮想マシンに接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。
+
 
 Azure クラシック ポータルには管理機能が組み込まれています。機能は限定的ですが、ローカルにインストールすることなく利用できます。
 
@@ -491,4 +493,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 <!-- BLOG LINKS -->
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

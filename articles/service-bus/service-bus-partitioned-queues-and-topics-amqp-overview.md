@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="11/05/2015" 
-	ms.author="hillaryc"/>
+	ms.date="03/16/2016" 
+	ms.author="hillaryc;sethm"/>
 
 # パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート 
 
@@ -66,7 +66,7 @@ receivedMessage.Complete();
 
 ## パーティション分割されたトピックでの AMQP の使用
 
-トピックは、キューと同様に、一時的な結合の解除、負荷平準化、負荷分散、疎結合を必要とするシナリオで便利です。キューとは異なり、トピックは同じメッセージのコピーを複数のサブスクライバーにルーティングできます。トピックでは、パブリッシャーはトピックにメッセージを送信し、コンシューマーはサブスクリプションからメッセージを受信します。在庫システムの POS の例では、端末がトピックにデータを発行します。その後、在庫管理システムがサブスクリプションからメッセージを受信します。さらに、監視システムが別のサブスクリプションから、同じメッセージを受信します。Service Bus のトピックの詳細については、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」を参照してください。
+トピックは概念的にはキューと類似しますが、同じメッセージのコピーを複数のサブスクライバーにルーティングできます。トピックでは、パブリッシャーはトピックにメッセージを送信し、コンシューマーは*サブスクリプション*からメッセージを受信します。在庫システムの POS のシナリオでは、端末がトピックにデータを発行します。その後、在庫管理システムがサブスクリプションからメッセージを受信します。さらに、監視システムが別のサブスクリプションから、同じメッセージを受信します。Service Bus のトピックとサブスクリプションの詳細については、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」を参照してください。
 
 アプリケーションの可用性、信頼性、スループットは、複数のメッセージ ブローカーとメッセージング ストアにパーティション分割されたトピックとそのサブスクリプションにより、さらに向上します。
 
@@ -87,7 +87,7 @@ nm.CreateSubscription(subscriptionDescription);
 
 ### AMQP を使用したメッセージの送受信
 
-AMQP をプロトコルとして使用して、パーティション分割されたトピックのサブスクリプションとの間でメッセージを送受信するには、次のコード スニペットのように [TransportType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.transporttype.aspx) プロパティを [TransportType.Amqp](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transporttype.aspx) に設定します。
+AMQP をプロトコルとして使用して、パーティション分割されたトピックのサブスクリプションとの間でメッセージを送受信するには、次のコードのように [TransportType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.transporttype.aspx) プロパティを [TransportType.Amqp](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transporttype.aspx) に設定します。
 
 ```
 // Sending and receiving messages to a topic and from a subscription
@@ -118,4 +118,4 @@ receivedMessage.Complete();
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 
 # Azure リソース マネージャーによる Load Balancer のサポート 
 
-Azure リソース マネージャー (ARM) は、Azure 上のサービス向けの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して Azure Load Balancer を管理できるようになりました。Azure リソース マネージャーの詳細については、[リソース グループを使用した Azure リソースの管理](../azure-preview-portal-using-resource-groups.md)に関するページを参照してください。
+Azure リソース マネージャー (ARM) は、Azure 上のサービス向けの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して Azure Load Balancer を管理できるようになりました。
 
 ## 概念
 
@@ -46,26 +46,26 @@ Azure リソース マネージャーでは、宣言型のテンプレートを�
 
 [テンプレートの詳細](http://go.microsoft.com/fwlink/?LinkId=544798)
 
-[ネットワーク リソースの詳細](../resource-groups-networking)
+[ネットワーク リソースの詳細](../virtual-network/resource-groups-networking)
 
-Azure Load Balancer を使用したテンプレートは、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にあります。ここでは、コミュニティで作成された一連のテンプレートがホストされています。
+Azure ロード バランサーを使用したテンプレートは、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にあります。ここでは、コミュニティで作成された一連のテンプレートがホストされています。
 
 テンプレートの例を次に示します。
 
-- [Load Balancer 内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544799)
+- [ロード バランサー内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544799)
 
-- [内部 Load Balancer を使用した VNET 内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544800)
+- [内部ロード バランサーを使用した VNET 内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544800)
 
-- [Load Balancer 内の 2 台の VM と LB の NAT 規則の構成](http://go.microsoft.com/fwlink/?LinkId=544801)
+- [ロード バランサー内の 2 台の VM と LB の NAT 規則の構成](http://go.microsoft.com/fwlink/?LinkId=544801)
 
 
 ## CLI または PowerShell を使用した Azure Load Balancer の設定
 
-[Azure ネットワークのコマンドレット](https://msdn.microsoft.com/library/azure/mt163510.aspx)を使用して、Load Balancer を作成できます。ARM コマンドレットと REST API を使って作業を開始します。
+[Azure ネットワークのコマンドレット](https://msdn.microsoft.com/library/azure/mt163510.aspx)を使用して、ロード バランサーを作成できます。ARM コマンドレットと REST API を使って作業を開始します。
 
 - [Azure リソース マネージャーを使用したロード バランサーの作成方法](load-balancer-get-started-internet-arm-ps.md)
 
-- [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager)
+- [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 
 - [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
@@ -76,4 +76,4 @@ Azure Load Balancer を使用したテンプレートは、[GitHub リポジト�
 
 アプリケーションでロード バランサーの背後にあるサーバーの接続を維持する必要がある場合は、[ロード バランサーの TCP アイドル タイムアウトの設定](load-balancer-tcp-idle-timeout.md)に関する詳細を確認してください。Azure Load Balancer 使用時にアイドル接続動作について理解するのに役立ちます。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

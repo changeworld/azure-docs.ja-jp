@@ -1,7 +1,7 @@
 <properties 
    pageTitle="クラシック デプロイ モデルでのクラウド サービスの内部ロード バランサーの作成 | Microsoft Azure"
    description="クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
-   services="load-balancer-ilb"
+   services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
    manager="carolz"
@@ -91,4 +91,4 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

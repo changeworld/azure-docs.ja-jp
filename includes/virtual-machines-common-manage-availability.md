@@ -1,50 +1,52 @@
-## Understand planned vs. unplanned maintenance
-There are two types of Microsoft Azure platform events that can affect the availability of your virtual machines: planned maintenance and unplanned maintenance.
+## 計画済み、または計画外メンテナンスについて理解する
+仮想マシンの可用性に影響を与える可能性のある Microsoft Azure プラットフォーム イベントには、計画的なメンテナンスと計画外のメンテナンスの 2 種類があります。
 
-- **Planned maintenance events** are periodic updates made by Microsoft to the underlying Azure platform to improve overall reliability, performance, and security of the platform infrastructure that your virtual machines run on. The majority of these updates are performed without any impact upon your virtual machines or cloud services. However, there are instances where these updates require a reboot of your virtual machine to apply the required updates to the platform infrastructure.
+- **計画済みメンテナンス イベント** とは、仮想マシンを実行しているプラットフォーム インフラストラクチャの全体的な信頼性、パフォーマンス、セキュリティを向上させることを目的として、基板となる Azure プラットフォームに対して Microsoft が提供する定期的な更新を意味します。これらの更新のほとんどは、仮想マシンやクラウド サービスに影響を及ぼすことなく実行されます。ただし、プラットフォーム インフラストラクチャに必要な更新を適用するため、仮想マシンの再起動が求められる場合もあります。
 
-- **Unplanned maintenance events** occur when the hardware or physical infrastructure underlying your virtual machine has faulted in some way. This may include local network failures, local disk failures, or other rack level failures. When such a failure is detected, the Azure platform will automatically migrate your virtual machine from the unhealthy physical machine hosting your virtual machine to a healthy physical machine. Such events are rare, but may also cause your virtual machine to reboot.
+- **計画外メンテナンス イベント**は、仮想マシンの基盤となっているハードウェや物理インフラストラクチャに何らかの不具合が発生した場合に行われます。こうした不具合には、ネットワーク障害、ローカル ディスク障害、またはその他のラック レベルでの障害が挙げられます。そのような障害が検知されると、Azure プラットフォームは、仮想マシンをホストしている異常な物理マシンから正常な物理マシンへと、仮想マシンを自動的に移行します。このような例が発生することはまれですが、この場合も仮想マシンの再起動が求められる場合があります。
 
-## Follow best practices when you design your application for high availability
-To reduce the impact of downtime due to one or more of these events, we recommend the following high availability best practices for your virtual machines:
+## ベスト プラクティスに基づいて高可用性のアプリケーションを設計する
+前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
-* [Configure multiple virtual machines in an Availability Set for redundancy]
-* [Configure each application tier into separate Availability Sets]
-* [Combine the Load Balancer with Availability Sets]
-* [Avoid single instance virtual machines in Availability Sets]
+* [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
+* [各アプリケーション層に対して別々の可用性セットを構成する]
+* [ロード バランサーと可用性セットを結合する]
+* [可用性セット内の仮想マシンが 1 つのみにならないようにする]
 
-### Configure multiple virtual machines in an Availability Set for redundancy
-To provide redundancy to your application, we recommend that you group two or more virtual machines in an Availability Set. This configuration ensures that during either a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure SLA. For more information about service level agreements, see the “Cloud Services, virtual machines, and Virtual Network” section in [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+### 冗長性実現のために複数の仮想マシンを可用性セット内に構成する
+アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。このような構成により、計画済み、または計画外メンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。サービス レベル アグリーメントの詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」の「Cloud Services、Virtual Machines、Virtual Network」のセクションを参照してください。
 
-Each virtual machine in your Availability Set is assigned an Update Domain (UD) and a Fault Domain (FD) by the underlying Azure platform. For a given Availability Set, five non-user-configurable UDs are assigned to indicate groups of virtual machines and underlying physical hardware that can be rebooted at the same time. When more than five virtual machines are configured within a single Availability Set, the sixth virtual machine will be placed into the same UD as the first virtual machine, the seventh in the same UD as the second virtual machine, and so on. The order of UDs being rebooted may not proceed sequentially during planned maintenance, but only one UD will be rebooted at a time.
+基盤を成す Azure プラットフォームにより、可用性セット内の各仮想マシンに更新ドメイン (UD) と障害ドメイン (FD) が割り当てられます。所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す UD (ユーザーによる構成不可) が 5 つ割り当てられます。1 つの可用性セット内に 5 つ以上の仮想マシンが構成されているとき、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ UD 内に配置され、7 つ目は 2 つ目の仮想マシンと同じ UD 内に配置されるという方法で処理されます。計画済みメンテナンス中、UD の再起動は順番に処理されない場合がありますが、一度に再起動される UD は 1 つのみです。
 
-FDs define the group of virtual machines that share a common power source and network switch. By default, the virtual machines configured within your Availability Set are separated across two FDs. While placing your virtual machines into an Availability Set does not protect your application from operating system or application-specific failures, it does limit the impact of potential physical hardware failures, network outages, or power interruptions.
-
-<!--Image reference-->
-   ![UD FD configuration](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
-
->[AZURE.NOTE] For instructions, see [How to Configure an Availability Set for virtual machines] [].
-
-### Configure each application tier into separate Availability Sets
-If the virtual machines in your Availability Set are all nearly identical and serve the same purpose for your application, we recommend that you configure an Availability Set for each tier of your application.  If you place two different tiers in the same Availability Set, all virtual machines in the same application tier can be rebooted at once. By configuring at least two virtual machines in an Availability Set for each tier, you guarantee that at least one virtual machine in each tier will be available.
-
-For example, you could put all the virtual machines in the front-end of your application running IIS, Apache, Nginx, etc., in a single Availability Set. Make sure that only front-end virtual machines are placed in the same Availability Set. Similarly, make sure that only data-tier virtual machines are placed in their own Availability Set, like your replicated SQL Server virtual machines or your MySQL virtual machines.
+FD は電源とネットワーク スイッチを共有する仮想マシンのグループを定義します。既定では、可用性セット内に構成された仮想マシンは、2 つの FD に分けられます。仮想マシンを可用性セットに配置しても、アプリケーションがオペレーティング システムやアプリケーションの障害から保護されるわけではありませんが、潜在的な物理ハードウェア障害、ネットワーク障害、または電力の中断の影響を低下させることができます。
 
 <!--Image reference-->
-   ![Application tiers](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   ![UD FD 構成](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+
+>[AZURE.NOTE] 手順については、「[仮想マシンの可用性セットを構成する方法][]」を参照してください。
+
+### 各アプリケーション層に対して別々の可用性セットを構成する
+可用性セット内の仮想マシンがすべてほぼ同一で、アプリケーションに対する役割が同じである場合は、アプリケーションの各層に対して別々の可用性セットを構成することをお勧めします。同じ可用性セットの中に 2 つの異なる層を配置した場合、同じアプリケーション層内にあるすべての仮想マシンを一度に再起動できます。各層に対する別々の可用性セット内に少なくとも 2 つの仮想マシンを構成することで、各層あたり 1 つ以上の仮想マシンの可用性が確保されます。
+
+たとえば、ISS、Apache、Nginx などを実行しているアプリケーションのフロントエンド内のすべての仮想マシンを、1 つの可用性セットに配置します。このとき、フロントエンド仮想マシンのみが同じ可用性セット内に配置されるようにします。同様に、別の可用性セットには、複製された SQL Server 仮想マシンまたは MySQL 仮想マシンのように、データ層の仮想マシンのみが配置されるようにします。
+
+<!--Image reference-->
+   ![アプリケーション層](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 
-### Combine the Load Balancer with Availability Sets
-Combine the Azure Load Balancer with an Availability Set to get the most application resiliency. The Azure Load Balancer distributes traffic between multiple virtual machines. For our Standard tier virtual machines, the Azure Load Balancer is included. Note that not all virtual machine tiers include the Azure Load Balancer. For more information about load balancing your virtual machines, read [Load Balancing virtual machines](virtual-machines-linux-load-balance.md).
+### ロード バランサーと可用性セットを結合する
+Azure ロード バランサーと可用性セットを結合することで、アプリケーションの復元性を最大化できます。Azure ロード バランサーは、複数の仮想マシンにトラフィックを振り分けます。当社の標準層の仮想マシンには Azure ロード バランサーが含まれています。すべての仮想マシン層に Azure Load Balancer が含まれているわけではないことに注意してください。仮想マシンの負荷分散の詳細については、「[Azure の仮想マシンの負荷分散](virtual-machines-linux-load-balance.md)」を参照してください。
 
-If the load balancer is not configured to balance traffic across multiple virtual machines, then any planned maintenance event will affect the only traffic-serving virtual machine, causing an outage to your application tier. Placing multiple virtual machines of the same tier under the same load balancer and Availability Set enables traffic to be continuously served by at least one instance.
+複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画済みメンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
-### Avoid single instance virtual machines in Availability Sets
-Avoid leaving a single instance virtual machine in an Availability Set by itself. Virtual machines in this configuration do not qualify for a SLA guarantee and will face downtime during Azure planned maintenance events. Please note, single virtual machine instance within an Availability Set, will also receive advanced email notification in multi-instance virtual machines planned maintenance notification. 
+### 可用性セット内の仮想マシンが 1 つのみにならないようにする
+可用性セット内の仮想マシンが 1 つのみにならないようにしてくだい。この構成の仮想マシンは、SLA 保証の対象とはならず、Azure の計画されたメンテナンス イベント時にダウンタイムが発生します。可用性セット内の仮想マシンのインスタンスが 1 つのみの場合、複数インスタンスの仮想マシン用に計画されたメンテナンスを通知する詳細な電子メールも受信することに注意してください。
 
 <!-- Link references -->
-[Configure multiple virtual machines in an Availability Set for redundancy]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Configure each application tier into separate Availability Sets]: #configure-each-application-tier-into-separate-availability-sets
-[Combine the Load Balancer with Availability Sets]: #combine-the-load-balancer-with-availability-sets
-[Avoid single instance virtual machines in Availability Sets]: #avoid-single-instance-virtual-machines-in-availability-sets
-[How to Configure An Availability Set for virtual machines]: virtual-machines-windows-classic-configure-availability.md
+[冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
+[各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
+[ロード バランサーと可用性セットを結合する]: #combine-the-load-balancer-with-availability-sets
+[可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
+[仮想マシンの可用性セットを構成する方法]: virtual-machines-windows-classic-configure-availability.md
+
+<!---HONumber=AcomDC_0323_2016-->

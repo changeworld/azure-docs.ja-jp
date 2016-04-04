@@ -18,13 +18,11 @@
 
 # Mobile Services アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-content-not-ready](../../includes/mobile-services-content-not-ready.md)]
 
 &nbsp;
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Xamarin iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-xamarin-ios-get-started-push.md)」を参照してください。
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-push-xamarin](../../includes/mobile-services-selector-get-started-push-xamarin.md)]
-
-[AZURE.INCLUDE [mobile-services-content-not-ready](../../includes/mobile-services-content-not-ready.md)]
-
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0323_2016-->

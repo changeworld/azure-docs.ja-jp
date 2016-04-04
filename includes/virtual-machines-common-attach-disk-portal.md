@@ -1,55 +1,53 @@
 
 
-This article shows you how to attach both new and existing disks to a virtual machine through the Azure portal. Before you do this, review these tips:
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクを仮想マシンに接続する方法について説明します。接続する前に、次のヒントを確認してください。
 
-- The size of the virtual machine controls how many data disks you can attach. For details, see [Sizes for virtual machines](virtual-machines-linux-sizes.md).
-- To use Premium storage, you'll need a DS-series or GS-series virtual machine. You can use disks from both Premium and Standard storage accounts with these virtual machines. Premium storage is available in certain regions. For details, see [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../storage/storage-premium-storage-preview-portal.md).
-- Disks attached to virtual machines are actually .vhd files in an Azure storage account. For details, see [About disks and VHDs for virtual machines](virtual-machines-linux-about-disks-vhds.md).
-- For a new disk, you don't need to create it first because Azure creates it when you attach it.
-- For an existing disk, the .vhd file must be available in an Azure storage account. You can use a .vhd that's already there, if it's not attached to another virtual machine, or upload your own .vhd file to the storage account.
+- 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+- Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)」を参照してください。
+- 仮想マシンに接続されているディスクは、実際には Azure ストレージ アカウントの .vhd ファイルです。詳細については、[仮想マシン用のディスクと VHD](virtual-machines-linux-about-disks-vhds.md) に関するページを参照してください。
+- 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
+- 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
-## Find the virtual machine
+## 仮想マシンの検索
 
-1. Sign in to the Azure portal.
+1. Azure ポータルにサインインします。
 
-2. On the Hub menu, click **Virtual Machines**.
+2. ハブ メニューで **[仮想マシン]** をクリックします。
 
-3.	Select the virtual machine from the list.
+3.	一覧から仮想マシンを選択します。
 
-4. To the right, under **Essentials**, click **All settings**, and then click **Disks**.
+4. 右側にある **[要点]** で **[すべての設定]** をクリックし、**[ディスク]** をクリックします。
 
-	![Open disk settings](./media/virtual-machines-common-attach-disk-portal/find-disk-settings.png)
+	![ディスク設定を開く](./media/virtual-machines-common-attach-disk-portal/find-disk-settings.png)
 
-Continue by following instructions for attaching either a new disk or an existing disk.
+次の手順に従って、新しいディスクまたは既存のディスクを接続します。
 
-## Option 1: Attach a new disk
+## オプション 1: 新しいディスクを接続する
 
-1.	On the **Disks** blade, click **Attach new**.
+1.	**[ディスク]** ブレードの **[新しいディスクの接続]** をクリックします。
 
-2.	Review the default settings, update as necessary, and then click **OK**.
+2.	既定の設定を確認し、必要に応じて更新して、**[OK]** をクリックします。
 
- 	![Review disk settings](./media/virtual-machines-common-attach-disk-portal/attach-new.png)
+ 	![ディスク設定を確認する](./media/virtual-machines-common-attach-disk-portal/attach-new.png)
 
-3.	After Azure creates the disk and attaches it to the virtual machine, the new disk is listed in the virtual machine's disk settings under **Data Disks**.
+3.	Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。
 
-## Option 2: Attach an existing disk
+## オプション 2: 既存のディスクを接続する
 
-1.	On the **Disks** blade, click **Attach existing**.
+1.	**[ディスク]** ブレードの **[既存のディスクの接続]** をクリックします。
 
-2.	Under **Attach existing disk**, click **VHD File**.
+2.	**[既存のディスクの接続]** の **[VHD ファイル]** をクリックします。
 
-	![Attach existing disk](./media/virtual-machines-common-attach-disk-portal/attach-existing.png)
+	![既存のディスクを接続する](./media/virtual-machines-common-attach-disk-portal/attach-existing.png)
 
-3.	Under **Storage accounts**, select the account and container that holds the .vhd file.
+3.	**[ストレージ アカウント]** で、アカウントと、.vhd ファイルが格納されているコンテナーを選択します。
 
-	![Find VHD location](./media/virtual-machines-common-attach-disk-portal/find-storage-container.png)
+	![VHD の場所を検索する](./media/virtual-machines-common-attach-disk-portal/find-storage-container.png)
 
-4.	Select the .vhd file.
+4.	.vhd ファイルを選択します。
 
-5.	Under **Attach existing disk**, the file you just selected is listed under **VHD File**. Click **OK**.
+5.	**[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。**[OK]** をクリックします。
 
-6.	After Azure attaches the disk to the virtual machine, it's listed in the virtual machine's disk settings under **Data Disks**.
+6.	Azure で仮想マシンにディスクが接続されると、仮想マシンのディスク設定の **[データ ディスク]** にそのディスクが表示されます。
 
-
-
-
+<!---HONumber=AcomDC_0323_2016-->

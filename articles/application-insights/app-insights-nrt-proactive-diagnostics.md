@@ -21,7 +21,7 @@
 
 この機能は、クラウドまたは独自のサーバーでホストされている Java と ASP.NET の Web アプリで利用できます。また、要求の製品利用統計情報を生成するあらゆるアプリで利用できます。たとえば、[TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) を呼び出す worker ロールです。
 
-[プロジェクト用に Application Insights](app-insights-get-started.md) を設定し、アプリケーションで特定の最少限の製品利用統計情報を生成する場合、プロアクティブ診断は、オンに切り替わり、アプリケーションの通常の動作を学習するため、アラートを送信できるようになるまでに 24 時間かかります。
+[プロジェクト用に Application Insights](app-insights-get-started.md) を設定し、アプリケーションで特定の最少限の製品利用統計情報を生成する場合、NRT プロアクティブ診断は、オンに切り替わり、アプリケーションの通常の動作を学習するため、アラートを送信できるようになるまでに 24 時間かかります。
 
 アラートの例を次に示します。
 
@@ -41,7 +41,7 @@
 
 ほぼリアルタイムのプロアクティブ診断では、アプリから受け取ったテレメトリ (特に要求失敗率) を監視します。このメトリックは、`Successful request` プロパティが false である要求の数をカウントします。既定で、`Successful request== (resultCode < 400)` ([フィルター](app-insights-api-filtering-sampling.md#filtering)にカスタム コードを記述した場合または独自の [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) 呼び出しを生成する場合を除く)。
 
-アプリのパフォーマンスには、一般的な動作パターンがあります。他よりもエラーが発生しやすい要求があります。負荷が増えると、全体的なエラー率が上がります。ほぼリアルタイムのプロアクティブ診断は Machine Learning を使用し、これらの異常を検出します。
+アプリのパフォーマンスには、一般的な動作パターンがあります。他よりもエラーが発生しやすい要求があります。負荷が増えると、全体的なエラー率が上がります。NRT プロアクティブ診断は Machine Learning を使用し、これらの異常を検出します。
 
 製品利用統計情報が Web アプリから Application Insights に送られます。NRT プロアクティブ診断は現在の動作と過去数日間に見られたパターンを比較します。以前のパフォーマンスと比べて失敗率の異常な上昇が検出された場合に、分析がトリガーされます。
 
@@ -138,4 +138,4 @@ NRT のプロアクティブ診断は、Application Insights の類似してい�
 
 *この情報に関してご意見がございましたら是非お寄せください。宛先は * [ainrtpd@microsoft.com](mailto:ainrtpd@microsoft.com) です。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

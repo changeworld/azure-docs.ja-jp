@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="03/10/2016"
+	ms.date="03/18/2016"
 	ms.author="jeffstok"
 />
 
@@ -27,7 +27,7 @@ Stream Analytics ジョブは、[Azure Data Lake Store](https://azure.microsoft.
 
 ## Data Lake Store アカウントを承認する
 
-1.  Azure 管理ポータルで出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、Azure プレビュー ポータルで Data Lake Store Preview へのアクセス権を要求するように求められます。
+1.  Microsoft Azure 管理ポータルで出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、Azure クラシック ポータルで Data Lake Store Preview へのアクセス権を要求するように求められます。
 
     ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.jpg)
 
@@ -92,4 +92,4 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.jpg)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

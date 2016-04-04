@@ -31,17 +31,17 @@
 
 このチュートリアルでは、次の手順に従います。
 
-1. [手順 1: Data Management Gateway を作成する](#OnPremStep1)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
+1. [Data Management Gateway を作成する](#create-data-management-gateway)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
 
 	オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
-2. [手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する](#OnPremStep2)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
-3. [手順 3: テーブルとパイプラインを作成する](#OnPremStep3)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
+2. [SQL Server のリンクされているサービスを作成する](#create-sql-server-linked-service)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
+3. [データセットとパイプラインを作成する](#create-dataset-and-pipeline)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
 
-4. [手順 4: パイプラインを監視して結果を確認する](#OnPremStep4)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
+4. [パイプラインを監視する](#monitor-pipeline)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
 
 
-## <a name="OnPremStep1"></a>手順 1: Data Management Gateway を作成する
+## Data Management Gateway を作成する
 
 Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。
   
@@ -62,7 +62,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 9. **[OK]** をクリックして **[構成]** ブレードを閉じ、**[OK]** をクリックして **[作成]** ブレードを閉じます。**[関連付けられているサービス]** ブレードの **MyGateway** の状態が **[良好]** に変わるまで待ちます。また、**Data Management Gateway Configuration Manager (プレビュー)** ツールを起動し、ゲートウェイの名前がポータル上の名前と一致すること、および**状態**が **[登録済み]** であることを確認することもできます。最新の状態を確認するため、場合によっては [リンクされたサービス] ブレードをいったん閉じて再度開く必要があります。画面が最新の状態に更新されるまで、数分かかる場合があります。
 
-## <a name="OnPremStep2"></a>手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する。
+## SQL Server のリンクされているサービスを作成する
 
 この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスを作成します。
 
@@ -109,7 +109,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 12.	**[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 
 13.	**[リンクされたサービス]** ブレードで、**OnPremSqlLinkedService** が一覧に表示され、リンク サービスの **[状態]** が **[良好]** であることを確認します。
 
-## <a name="OnPremStep3"></a>手順 3: テーブルとパイプラインを作成する
+## データセットとパイプラインを作成する
 
 ### オンプレミスの論理テーブルを作成する
 
@@ -133,9 +133,9 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 	**Y** キーを押して続行します。
 	
-## <a name="OnPremStep4"></a>手順 4: パイプラインを監視して結果を確認する
+## パイプラインを監視する
 
-「[手順 6. テーブルとパイプラインを監視する](#MainStep6)」で説明したものと同じ手順に従い、新しいオンプレミスの ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
+「[パイプラインを監視する](data-factory-tutorial-using-powershell.md#monitor-pipelines)」で説明したものと同じ手順に従って、新しいオンプレミスの ADF テーブル用の新しいパイプラインとデータ スライスを監視します。
  
 **MarketingCampaignEffectivenessOnPremSQLTable** テーブルのスライスの状態が [準備完了] に変われば、パイプラインがスライスの実行を完了したことを意味します。結果を表示するには、SQL Server 内の **MarketingCampaigns** データベースの **MarketingCampaignEffectiveness** テーブルにクエリを実行します。
  
@@ -170,4 +170,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

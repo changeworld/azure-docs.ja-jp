@@ -32,7 +32,7 @@
 - **Storage** - 必要とされるオペレーティング システム ディスクと追加のデータ ディスク、仮想マシンの VHD を保存するストレージ アカウントをサポートします。
 - **Network** - 必要とされる NIC、仮想マシンの IP アドレス、および仮想ネットワークとオプションのロード バランサー内のサブネット、Load Balancer の IP アドレスとネットワークのセキュリティ グループをサポートします。
 
-これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
 ## リソース マネージャーの特性
 
@@ -44,7 +44,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        계산, 저장, 네트워킹 리소스에 리소스 관리자를 사용할지 클래식 배포를 사용할지 선택할 수 있습니다. **리소스 관리자** 를 선택합니다.
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -177,9 +177,9 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 
 Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
 
-従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)」を参照してください。
+従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/virtual-machines-linux-cli-manage.md)」を参照してください。
 
-Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
 さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
 
@@ -188,4 +188,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0323_2016-->

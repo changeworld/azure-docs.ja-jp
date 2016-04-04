@@ -1,19 +1,19 @@
 
 
 
-This topic describes how to:
+このトピックでは、次の操作について説明します。
 
-- Inject data into an Azure virtual machine when it is being provisioned.
+- Azure の仮想マシンをプロビジョニングしているときに、スクリプトやデータを挿入する。
 
-- Retrieve it for both Windows and Linux.
+- Windows や Linux 用にデータを取得する。
 
-- Use special tools available on some systems to detect and handle custom data automatically.
+- いくつかのシステムで利用できる特殊なツールを使用して、自動的にカスタム データを検出し、操作する。
 
-> [AZURE.NOTE] This article describes how custom data can be injected by using a VM created with the Azure Service Management API. To see how to use the Azure Resource Management API, see [the example template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> [AZURE.NOTE] この記事では、Azure サービス管理 API で作成されたカスタム データを、VM を使用して挿入する方法について説明します。Azure リソース管理 API を使用する方法については、「[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)」をご覧ください。
 
-## Injecting custom data into your Azure virtual machine
+## Azure 仮想マシンにカスタム データを挿入する
 
-This feature is currently supported only in the [Azure Command-Line Interface](https://github.com/Azure/azure-xplat-cli). Although you may use any of the options for the `azure vm create` command, the following demonstrates one very basic approach.
+この機能は、現在、[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)でのみサポートされています。`azure vm create` コマンドのオプションはすべて使用できますが、以下はきわめて基本的な方法の 1 つです。
 
 ```
     PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
@@ -24,37 +24,39 @@ This feature is currently supported only in the [Azure Command-Line Interface](h
 ```
 
 
-## Using custom data in the virtual machine
+## 仮想マシンでカスタム データを使用する
 
-+ If your Azure virtual machine is a Windows-based virtual machine, then the custom data file is saved to `%SYSTEMDRIVE%\AzureData\CustomData.bin`. Although it was base64-encoded to transfer from the local computer to the new virtual machine, it is automatically decoded and can be opened or used immediately.
++ Azure 仮想マシンが Windows ベース仮想マシンの場合、カスタム データのファイルは `%SYSTEMDRIVE%\AzureData\CustomData.bin` に保存されます。このファイルは、ローカル コンピューターから新しい仮想マシンに転送するために Base64 でエンコードされますが、自動的にデコードされるため、直ちに開いて使用できます。
 
-   > [AZURE.NOTE] If the file exists, it is overwritten. The security on the directory is set to **System:Full Control** and **Administrators:Full Control**.
+   > [AZURE.NOTE] このファイルが既に存在している場合には、上書きされます。ディレクトリのセキュリティは、**"システム: フル コントロール"** と **"管理者: フル コントロール"** に設定されます。
 
-+ If your Azure virtual machine is a Linux-based virtual machine, then the custom data file will be located in the following two places. The data will be base64-encoded, so you will need to decode the data first.
++ Azure 仮想マシンが Linux ベースの仮想マシンの場合、カスタム データのファイルは次の 2 箇所にあります。データは base64 でエンコードされているので、最初にデータをデコードする必要があります。
 
-    + At `/var/lib/waagent/ovf-env.xml`
-    + At `/var/lib/waagent/CustomData`
+    + `/var/lib/waagent/ovf-env.xml`
+    + `/var/lib/waagent/CustomData`
 
 
 
-## Cloud-init on Azure
+## Azure での cloud-Init
 
-If your Azure virtual machine is from an Ubuntu or CoreOS image, then you can use CustomData to send a cloud-config to cloud-init. Or if your custom data file is a script, then cloud-init can simply execute it.
+Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。また、カスタム データ ファイルがスクリプトの場合は、cloud-init でスクリプトを実行できます。
 
-### Ubuntu Cloud Images
+### Ubuntu Cloud Image
 
-In most Azure Linux images, you would edit "/etc/waagent.conf" to configure the temporary resource disk and swap file. See [Azure Linux Agent user guide](virtual-machines-linux-agent-user-guide.md) for more information.
+ほとんどの Azure Linux イメージでは、"/etc/waagent.conf" を編集して、一時的なリソース ディスクとスワップ ファイルを構成します。詳細については、「[Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)」をご覧ください。
 
-However, on the Ubuntu Cloud Images, you must use cloud-init to configure the resource disk (that is, the "ephemeral" disk) and swap partition. See the following page on the Ubuntu wiki for more details: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+ただし、Ubuntu Cloud Image では、cloud-init を使用して、リソース ディスク ("一時" ディスク) とスワップ パーティションを構成する必要があります。詳細については、Ubuntu Wiki の [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions) をご覧ください。
 
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Next steps: Using cloud-init
+## 次のステップ: cloud-init を使用する
 
-For further information, see the [cloud-init documentation for Ubuntu](https://help.ubuntu.com/community/CloudInit).
+詳細については、[「cloud-init documentation for Ubuntu (Ubuntu 用 cloud-init のドキュメント)」](https://help.ubuntu.com/community/CloudInit)を参照してください。
 
 <!--Link references-->
-[Add Role Service Management REST API Reference](http://msdn.microsoft.com/library/azure/jj157186.aspx)
+[ロールの追加](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
-[Azure Command-line Interface](https://github.com/Azure/azure-xplat-cli)
+[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)
+
+<!---HONumber=AcomDC_0323_2016-->

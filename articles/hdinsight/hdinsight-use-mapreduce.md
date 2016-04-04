@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/08/2016"
+   ms.date="03/18/2016"
    ms.author="larryfr"/>
 
 # HDInsight での MapReduce と Hadoop の使用
@@ -53,8 +53,6 @@ Hadoop ストリーミングは STDIN と STDOUT を介して mapper および r
 詳細については、「[Hadoop ストリーミング](http://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
 
 HDInsight での Hadoop ストリーミングの使用例については、以下を参照してください。
-
-* [C# Hadoop ストリーミング プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 
 * [Python MapReduce ジョブの開発](hdinsight-hadoop-streaming-python.md)
 
@@ -169,8 +167,6 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-streaming-python.md)
 
-* [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][hdinsight-develop-streaming]
-
 * [HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発](hdinsight-hadoop-mapreduce-scalding.md)
 
 * [HDInsight での Hive の使用][hdinsight-use-hive]
@@ -193,4 +189,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

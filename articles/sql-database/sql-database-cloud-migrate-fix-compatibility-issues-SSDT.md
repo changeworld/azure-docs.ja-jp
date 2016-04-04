@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,19 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="03/22/2016"
    ms.author="carlrab"/>
 
-# SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する
-
-移行元の SQL Server データベースに互換性がないことがわかった場合は、いくつかのオプションを使用して、データベース互換性の問題を修正します。
-
-> [AZURE.SELECTOR]
-- [SQL Azure 移行ウィザード](sql-database-cloud-migrate-fix-compatibility-issues.md)を使用する
-- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) の使用
-- [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-SSMS.md) の使用
-
-## Visual Studio 用の SQL Server Data Tools を使用する
+# Visual Studio 用の SQL Server Data Tools を使用して Azure SQL データベースに SQL Server データベースを移行する
 
 Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、データベース スキーマを Visual Studio データベース プロジェクトにインポートして分析できます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合、SSDT (またはこのトピックで説明したその他のツールのいずれか) を使用してエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。その後、更新されたこのデータベースを移行できます。このオプションを使用するには、[最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードします。
 
@@ -33,8 +24,55 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
 
   > [AZURE.NOTE] スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。
 
-## 次のステップ: 移行方法を選択して移行を実行する
+## Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を検出する
+   
+1.	Visual Studio で **SQL Server オブジェクト エクスプローラー**を開きます。**[SQL Server の追加]** を使用して、移行されるデータベースを含む SQL Server インスタンスに接続します。エクスプローラーでデータベースを選択して右クリックし、**[新しいプロジェクトの作成]** を選択します。     
+    
+	![新しいプロジェクト](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
+   
+2.	インポート設定を構成し、**[アプリケーション スコープのオブジェクトのみをインポートする]** チェック ボックスをオンにします。参照先のログイン、アクセス許可、データベースの設定をインポートするためのオプションの選択を解除します。
 
-[移行方法を選択](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)します。
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+3.	**[開始]** をクリックしてデータベースをインポートし、プロジェクトを作成します。これには、データベース内の各オブジェクトの T-SQL スクリプト ファイルが含まれます。スクリプト ファイルは、プロジェクト内のフォルダーに入れ子になっています。
+
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)
+
+4.	Visual Studio のソリューション エクスプローラーで、データベース プロジェクトを右クリックして [プロパティ] を選択します。これにより、**[プロジェクトの設定]** ページが開きます。このページでは、ターゲット プラットフォームを Microsoft Azure SQL Database V12 に構成します。
+    
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)
+    
+5.	プロジェクトを右クリックして **[ビルド]** を選択し、プロジェクトをビルドします。
+    
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/06MigrateSSDT.png)
+    
+6.	**[エラー一覧]** には、各非互換性が表示されます。この場合、ユーザー名 NT AUTHORITY\\NETWORK SERVICE は互換性がありません。互換性がないため、これをコメント アウトまたは削除できます (このログインとロールをデータベース ソリューションから削除することによる影響に対応できます)。
+    
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)
+    
+## Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を修正する        
+  
+1.	最初のスクリプトをダブルクリックしてクエリ ウィンドウでスクリプトを開き、スクリプトをコメント アウトし、スクリプトを実行します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)    
+
+2.	このプロセスを互換性のない各スクリプトに対して、エラーがなくなるまで繰り返します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+3.	データベースにエラーがなくなったら、プロジェクトを右クリックして **[発行]** を選択し、データベースをビルドしてソース データベースのコピーに発行します (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。     
+ - 発行前に、ソースの SQL Server のバージョン (SQL Server 2014 より前) に応じて、プロジェクトのターゲット プラットフォームをリセットしてデプロイメントを有効にすることが必要になる場合があります。     
+ - 古い SQL Server データベースを移行する場合は、最初にデータベースを新しいバージョンの SQL Server に移行しない限り、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。     
+
+    	![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)    
+    
+    	![alt text](./media/sql-database-migrate-visualstudio-ssdt/11MigrateSSDT.png)    
+    
+4.	SQL Server オブジェクト エクスプ ローラーで、ソース データベースを右クリックして **[データ比較]** をクリックし、プロジェクトを元のデータベースと比較して、ウィザードによってどのような変更が加えられたかを把握します。Azure SQL V12 バージョンのデータベースを選択し、**[完了]** をクリックします。    
+    
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/12MigrateSSDT.png)
+    
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
+    
+5.	検出された相違点を確認し、**[Update Target]** をクリックしてデータをソース データベースから Azure SQL V12 データベースに移行します。
+    
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)
+    
+6.	デプロイ方法を選択します。「[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)」を参照してください。
+
+<!---HONumber=AcomDC_0323_2016-->

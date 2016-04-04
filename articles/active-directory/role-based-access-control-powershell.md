@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows PowerShell を使用した役割ベースのアクセス制御の管理"
+	pageTitle="PowerShell のロール ベースの Access Control のガイド"
 	description="Windows PowerShell を使用した役割ベースのアクセス制御の管理"
 	services="active-directory"
 	documentationCenter="na"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="03/17/2016"
 	ms.author="kgremban"/>
 
-# Windows PowerShell を使用した役割ベースのアクセス制御の管理
+# PowerShell のロール ベースの Access Control のガイド
 
 > [AZURE.SELECTOR]
-- [Windows PowerShell](role-based-access-control-powershell.md)
+- [PowerShell](role-based-access-control-powershell.md)
 - [Azure CLI](role-based-access-control-xplat-cli.md)
 
 
@@ -61,8 +61,6 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 
     PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
-
 ご使用の Azure サブスクリプションに接続するには、以下のように入力します。
 
     PS C:\> Add-AzureAccount
@@ -75,8 +73,6 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
     PS C:\> Get-AzureSubscription
     # Use the subscription name to select the one you want to work on.
     PS C:\> Select-AzureSubscription -SubscriptionName <subscription name>
-
-詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## 既存の役割の割り当ての確認
 
@@ -96,7 +92,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
 AD テナント内の特定のユーザー (リソース グループ「group1」に関する「所有者」役割の割り当てを持つユーザー) に関する役割の割り当てがすべて返されます。役割は、次の 2 つの場所から割り当てられます。
 
 1. ユーザーに対する、リソース グループに関する「所有者」の役割の割り当て。
-2. ユーザーに対する、このリソース グループの親 (この例ではサブスクリプション) に関する「所有者」役割の割り当て。親レベルのアクセス許可がある場合、そのすべての子に対する同じアクセス許可も付与されているからです。
+2. ユーザーに対する、リソース グループの親に関する「所有者」の役割の割り当て (この場合はサブスクリプション)。親レベルでアクセス許可を割り当てる場合、すべての子のアクセス許可は同じになります。
 
 このコマンドレットのパラメーターはすべて省略可能です。パラメーターを組み合わせて、さまざまなフィルターで役割の割り当てを確認することができます。
 
@@ -104,34 +100,36 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 役割の割り当てを作成するには、以下の点について考慮する必要があります。
 
-役割を割り当てるユーザー: 次の Azure Active Directory コマンドレットを使用して、AD テナントにいるユーザー、グループおよびサービス プリンシパルを確認できます。
+- 役割を割り当てるユーザー: 次の Azure Active Directory コマンドレットを使用して、AD テナントにいるユーザー、グループおよびサービス プリンシパルを確認できます。  
 
+	```
     PS C:\> Get-AzureADUser
 	PS C:\> Get-AzureADGroup
 	PS C:\> Get-AzureADGroupMember
 	PS C:\> Get-AzureADServicePrincipal
+	```
 
-割り当てる役割: 次のコマンドレットを使用して、サポートされているロールの定義を表示できます。
+- 割り当てる役割: 次のコマンドレットを使用して、サポートされているロールの定義を表示できます。
 
-    PS C:\> Get-AzureRoleDefinition
+    `PS C:\> Get-AzureRoleDefinition`
 
-割り当てるスコープ: スコープには 3 つのレベルがあります。
-  - 現在のサブスクリプション
-  - リソース グループ。リソース グループのリストを取得するには、「`PS C:\> Get-AzureResourceGroup`」と入力します。
-  - リソース 。リソースのリストを取得するには、「`PS C:\> Get-AzureResource`」と入力します。
+- 割り当てるスコープ: スコープには 3 つのレベルがあります。
+	- 現在のサブスクリプション
+	- リソース グループ。リソース グループの一覧を入手するには、`PS C:\> Get-AzureResourceGroup` と入力します。
+	- リソース。リソースの一覧を入手するには、`PS C:\> Get-AzureResource` と入力します。
 
 次に、`New-AzureRoleAssignment` を使ってロールの割り当てを作成します。次に例を示します。
 
-	#This will create a role assignment at the current subscription level for a user as a reader.
+	#Create a role assignment at the current subscription level for a user as a reader.
 	PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Reader
 
-	#This will create a role assignment at a resource group level.
+	#Create a role assignment at a resource group level.
 	PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Contributor -ResourceGroupName group1
 
-	#This will create a role assignment for a group at a resource group level.
+	#Create a role assignment for a group at a resource group level.
 	PS C:\> New-AzureRoleAssignment -ObjectID <group object ID> -RoleDefinitionName Reader -ResourceGroupName group1
 
-	#This will create a role assignment at a resource level.
+	#Create a role assignment at a resource level.
 	PS C:\> $resources = Get-AzureResource
     PS C:\> New-AzureRoleAssignment -Mail <user email> -RoleDefinitionName Owner -Scope $resources[0].ResourceId
 
@@ -145,7 +143,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 これらの 2 つのコマンドレットでは、読み取りのアクセス許可があるリソース グループまたはリソースのみが返されます。また、持っているアクセス許可も表示します。
 
-`New-AzureResourceGroup` などの他のコマンドレットを実行しようとしたときに、アクセス許可がない場合は、アクセス拒否エラーが発生します。
+続いて、`New-AzureResourceGroup` などの他のコマンドレットを実行しようとすると、アクセス許可がない場合にはアクセス拒否エラーを受け取ります。
 
 ## 次のステップ
 
@@ -160,4 +158,4 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 - [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

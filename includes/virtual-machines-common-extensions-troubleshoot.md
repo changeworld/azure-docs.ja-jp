@@ -1,11 +1,12 @@
 
 
-## Overview of Azure Resource Manager templates
+## Azure リソース マネージャー テンプレートの概要
 
-Azure Resource Manager templates allows you to declaratively specify the Azure IaaS infrastructure in Json language by defining the dependencies between resources.
+Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。
 
 
-See  [Authoring extension templates](virtual-machines-windows-extensions-authoring-templates.md) to learn more about authoring templates for using Extensions.
+拡張機能を使用するためのテンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)」を参照してください。
 
-In this article we'll learn about troubleshooting some of the common VM extension failures.
+この記事では、VM 拡張機能で発生するいくつかの一般的なエラーのトラブルシューティングについて説明します。
 
+<!---HONumber=AcomDC_0323_2016-->

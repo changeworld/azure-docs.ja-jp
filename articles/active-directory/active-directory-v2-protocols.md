@@ -18,7 +18,8 @@
 
 # v2.0 プロトコル - OAuth 2.0 と OpenID Connect
 
-v2.0 エンドポイントは、業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用し、Azure AD を Identity-as-a-Service (サービスとしての ID) として使用することできます。このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。ここでは、Microsoft のオープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティのオープン ソース ライブラリを使用する場合に役立つ情報を紹介します。<!-- TODO: Need link to libraries above -->
+v2.0 エンドポイントは、業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用し、Azure AD を Identity-as-a-Service (サービスとしての ID) として使用することできます。このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。ここでは、Microsoft のオープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティのオープン ソース ライブラリを使用する場合に役立つ情報を紹介します。
+<!-- TODO: Need link to libraries above -->
 
 > [AZURE.NOTE]
 	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
@@ -77,7 +78,7 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 - OAuth 2.0 Client Credentials Flow でデーモンまたはサーバー側プロセスを作成する (近日公開予定)
 - OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する (近日公開予定)
 
-<!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) -->
+<!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 <!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->
