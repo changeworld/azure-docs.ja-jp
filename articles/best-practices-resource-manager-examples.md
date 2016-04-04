@@ -3,8 +3,8 @@
 	description="ベスト プラクティスを示す Azure リソース マネージャーのテンプレートの例を紹介します。"
 	services="azure-resource-manager"
 	documentationCenter=""
-	authors="mmercuri"
-	manager="georgem"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="12/17/2015"
-	ms.author="mmercuri"/>
+	ms.author="tomfitz"/>
 
 # テンプレート実装のベスト プラクティスの具体的な例
 
@@ -254,4 +254,4 @@ Key Vault に格納されたシークレットは、厳密な RBAC により信�
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

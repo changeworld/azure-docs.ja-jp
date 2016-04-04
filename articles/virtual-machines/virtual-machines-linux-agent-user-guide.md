@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Linux エージェント ユーザー ガイド | Microsoft Azure" 
 	description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" 
-	services="virtual-machines" 
+	services="virtual-machines-linux" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
@@ -9,7 +9,7 @@
 	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines-linux" 
 	ms.workload="infrastructure-services" 
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
@@ -317,8 +317,8 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 - プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成する際は、次のリソースを参照してください。
 
  - [Ubuntu Wiki: スワップ パーティションの構成に関するページ](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
- - [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-how-to-inject-custom-data.md)
+ - [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-windows-classic-inject-custom-data.md)
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0323_2016-->

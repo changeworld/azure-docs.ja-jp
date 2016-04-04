@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="03/07/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
@@ -29,7 +29,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 > [AZURE.NOTE] Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。詳細については、「[Azure Active Directory のロールベースの Access Control](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-## サブスクリプションの共同管理者を追加する方法
+## サブスクリプションの管理者を追加する方法
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
@@ -46,7 +46,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 * **Microsoft アカウント** (旧 Windows Live ID) </br> Microsoft アカウントを使用して、Outlook (Hotmail)、Skype (MSN)、OneDrive、Windows Phone、Xbox LIVE などのすべてのコンシューマー向け Microsoft 製品とクラウド サービスにサインインすることができます。
 * **組織アカウント**</br> 組織アカウントとは、Azure Active Directory で作成したアカウントです。組織アカウントのアドレスは、user@&lt;your domain&gt;.onmicrosoft.com のような形式です。
 
-## 規則や制限
+### 規則や制限
 
  * 各サブスクリプションは Azure AD ディレクトリ (既定のディレクトリとも呼ばれます) と関連付けられます。サブスクリプションが関連付けられている既定のディレクトリを探すには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にアクセスし、**[設定]**、**[サブスクリプション]** の順に選択します。サブスクリプション ID をチェックして既定のディレクトリを見つけてください。
 
@@ -56,13 +56,14 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
  * 組織アカウントで Azure にログインできるようになると、サービス管理者と共同管理者アカウントの要件は次のように変わります。
 
-	| ログイン方法| Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる |同じ組織内の組織アカウントを CA または SA として追加できる |異なる組織内の組織アカウントを CA または SA として追加できる
-	| ------------- | ------------- |---------------|---------------|
-	|Microsoft アカウント |はい|なし|いいえ|
-	|組織アカウント|はい|はい|いいえ|
+	ログイン方法| Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる |同じ組織内の組織アカウントを CA または SA として追加できる |異なる組織内の組織アカウントを CA または SA として追加できる
+	------------- | ------------- |---------------|---------------
+	Microsoft アカウント |はい|なし|いいえ
+	組織アカウント|はい|はい|いいえ
 
 ## サブスクリプションのサービス管理者を変更する方法
-サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
+
+Azure クラシック ポータルでは、サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
 
 1. アカウント管理者を使用して [Azure 管理ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
 
@@ -88,4 +89,4 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory の管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

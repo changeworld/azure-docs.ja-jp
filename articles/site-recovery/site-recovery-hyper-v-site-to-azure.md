@@ -13,11 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/16/2016"
+	ms.date="03/15/2016"
 	ms.author="raynew"/>
 
 
 # Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する
+
+> [AZURE.SELECTOR]
+- [Azure クラシック ポータル](site-recovery-hyper-v-site-to-azure.md)
+- [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
+
 
 Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
@@ -38,7 +43,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 ### Azure の前提条件
 
 - [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure Storage についてはこちらを参照してください。](../storage/storage-introduction.md)
+- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。Azure Storage については、[こちら](../storage/storage-introduction.md)を参照してください。
 - プライマリ サイトからフェールオーバーするとき、Azure 仮想マシンがネットワークに接続されるように、Azure 仮想ネットワークが必要になります。
 
 ### Hyper-V の前提条件
@@ -65,7 +70,7 @@ Azure Site Recovery のデプロイの一部として、各 Hyper-V サーバー
 	- *.blob.core.windows.net
 	- *.store.core.windows.net
 	
-- また、「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+- また、「[Azure Datacenter の IP 範囲](https://www.microsoft.com/ja-JP/download/details.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 
 次の図は、Site Recovery でオーケストレーションやレプリケーションに使用される、さまざまな通信チャネルと通信ポートを示しています。
@@ -187,6 +192,9 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 
 	![ストレージ アカウントの作成](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_CreateResources1.png)
 
+>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+
+
 ## ステップ 5: 保護グループの作成と構成
 
 保護グループは、同じ保護設定を使用して保護する仮想マシンの論理グループです。保護設定を保護グループに適用すると、これらの設定はグループに追加するすべての仮想マシンに適用されます。
@@ -229,7 +237,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
 	- *[保護された項目]* > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
 
-		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズでサポートされている NIC の数については、「[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-size-specs.md#size-tables)」を参照してください。
+		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズでサポートされている NIC の数については、「[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)」を参照してください。
 
 
 			仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。次に説明します。
@@ -295,4 +303,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,14 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/02/2015"
+   ms.date="03/04/2016"
    ms.author="jgao"/>
 
-# HDInsight での Phoenix、SQuirreL、HBase クラスターの使用  
+# HDinsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用  
 
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 >[AZURE.NOTE] HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
+>
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースの HDInsight での Phoenix の使用については、「[HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 
 ##SQLLine の使用
 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
@@ -54,7 +56,7 @@ SQLLine を使用するには、以下のものが必要です。
 
 		CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
 		
-		!tables;
+		!tables
 		
 		UPSERT INTO Company VALUES(1, 'Microsoft');
 		
@@ -306,4 +308,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

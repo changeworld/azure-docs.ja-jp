@@ -4,7 +4,7 @@
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags
    ms.service="load-balancer"
@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/09/2015"
+   ms.date="03/22/2016"
    ms.author="joaoma" />
 
 
-# Azure Load Balancer とは
+# Azure Load Balancer の概要
 
 Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。これは、ロード バランサー セットで定義されているクラウド サービスや仮想マシンの正常なサービス インスタンス間で着信トラフィックを分散する、第 4 層 (TCP、UDP) のロード バランサーです。
 
@@ -121,6 +121,7 @@ Azure Load Balancer の構成では、UDP の Full cone NAT がサポートさ�
 
 Azure リソース マネージャーは、Azure のサービスの新しい管理フレームワークです。リソース マネージャー ベースの API とツールを使用して、Azure Load Balancer を管理できるようになりました。リソース マネージャーの詳細については、[Azure リソース マネージャーでさらに簡単になった IaaS](https://azure.microsoft.com/blog/2015/04/29/iaas-just-got-easier-again/) に関するページを参照してください。
 
+[AZURE.INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
 ## 次のステップ
 
@@ -128,6 +129,6 @@ Azure リソース マネージャーは、Azure のサービスの新しい管�
 
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 
-[インターネットに接続するロード バランサーの作成の開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-arm-ps.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

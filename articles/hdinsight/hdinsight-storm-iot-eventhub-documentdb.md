@@ -13,7 +13,7 @@ ms.devlang="java"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="01/08/2016"
+ms.date="03/18/2016"
 ms.author="larryfr"/>
 
 #HDInsight 上の Apache Storm を使用した Azure Event Hubs からの車両センサー データの処理
@@ -48,14 +48,14 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 ![Storm トポロジ](./media/hdinsight-storm-iot-eventhub-documentdb/iottopology.png)
 
-> [AZURE.NOTE]これは簡略化したダイアグラムで、ソリューション内の各コンポーネントには複数のインスタンスを含めることができます。たとえば、トポロジ内にある各コンポーネントの複数のインスタンスを、HDInsight クラスター上の Storm にある複数のノードに分散できます。
+> [AZURE.NOTE] これは簡略化したダイアグラムで、ソリューション内の各コンポーネントには複数のインスタンスを含めることができます。たとえば、トポロジ内にある各コンポーネントの複数のインスタンスを、HDInsight クラスター上の Storm にある複数のノードに分散できます。
 
 ##実装
 
-このシナリオの完全に自動化されたソリューションは、GitHub の <a href="https://github.com/hdinsight/hdinsight-storm-examples" target="_blank">HDInsight-Storm-Examples</a> リポジトリの一部として利用できます。この例を使用するには、[IoTExample README.MD](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md) に記されている手順に従ってください。
+このシナリオの完全に自動化されたソリューションは、GitHub の [HDInsight-Storm-Examples](https://github.com/hdinsight/hdinsight-storm-examples) リポジトリの一部として利用できます。この例を使用するには、[IoTExample README.MD](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md) に記されている手順に従ってください。
 
 ## 次のステップ
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

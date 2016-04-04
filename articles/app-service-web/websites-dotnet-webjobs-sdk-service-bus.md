@@ -65,7 +65,7 @@ App.config ファイルに Service Bus の接続文字列を含むサンプル �
 
 この SDK では、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は、`Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
 
-有害キュー処理は Service Bus 自体が行うため、Web ジョブ SDK で制御することや、構成することはできません。
+Service Bus には、WebJobs SDK で制御または構成できない有害キュー メッセージ処理があります。
 
 ### 文字列のキュー メッセージ
 
@@ -186,4 +186,4 @@ Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK 
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

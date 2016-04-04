@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
 # SqlPackage を使用して SQL Server データベースを BACPAC ファイルにエクスポートする
@@ -44,4 +44,4 @@
 - [Azure ポータル](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

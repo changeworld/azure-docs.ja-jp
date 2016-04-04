@@ -4,7 +4,7 @@
 	services="mobile-services" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,17 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/22/2015" 
+	ms.date="03/05/2016" 
 	ms.author="glenga"/>
 
 # ユニバーサル Windows 8.1 アプリへの認証の追加
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
+
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Add authentication to your Windows App (Windows アプリに認証を追加する)](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md)」を参照してください。
 
 このトピックでは、ユニバーサル Windows 8.1 アプリから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
@@ -34,7 +39,7 @@
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-windows](../../includes/mobile-services-restrict-permissions-windows.md)]
  
->[AZURE.NOTE]Visual Studio ツールを使用してアプリをモバイル サービスに接続する場合、ツールはクライアント プラットフォームごとに 1 つずつ、**MobileServiceClient** 定義を合計 2 セット生成します。この機会に、`#if...#endif` でラップされた **MobileServiceClient** 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することができます。[Azure クラシック ポータル]からクイック スタート アプリをダウンロードした場合、この操作は必要ありません。
+>[AZURE.NOTE] Visual Studio ツールを使用してアプリをモバイル サービスに接続する場合、ツールはクライアント プラットフォームごとに 1 つずつ、**MobileServiceClient** 定義を合計 2 セット生成します。この機会に、`#if...#endif` でラップされた **MobileServiceClient** 定義を、両方のバージョンのアプリで使用される、ラップされていない 1 つの定義に統合することによって、生成されたコードを単純化することができます。[Azure クラシック ポータル]からクイック スタート アプリをダウンロードした場合、この操作は必要ありません。
 
 ##<a name="add-authentication"></a> アプリケーションに認証を追加する
 
@@ -84,4 +89,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

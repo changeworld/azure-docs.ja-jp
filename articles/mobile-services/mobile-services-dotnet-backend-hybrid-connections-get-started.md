@@ -13,18 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="03/05/2016"
 	ms.author="glenga"/>
 
 
 # ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Access on-premises resources using hybrid connections in Azure App Service (Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする)](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。
 
-&nbsp;
-
-
-企業がクラウドに移行するときに、すべての資産を Azure にすぐに移行できない場合があります。ハイブリッド接続を使用すると、Azure Mobile Services からオンプレミスの資産に安全に接続できます。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。ハイブリッド接続では、Shared Access Signature (SAS) 認証を使用して、モバイル サービスとオンプレミスの Hybrid Connection Manager からハイブリッド接続への接続を保護します。詳細については、[ハイブリッド接続の概要](../integration-hybrid-connection-overview.md)を参照してください。
+企業がクラウドに移行するときに、すべての資産を Azure にすぐに移行できない場合があります。ハイブリッド接続を使用すると、Azure Mobile Services からオンプレミスの資産に安全に接続できます。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。ハイブリッド接続では、Shared Access Signature (SAS) 認証を使用して、モバイル サービスとオンプレミスの Hybrid Connection Manager からハイブリッド接続への接続を保護します。詳細については、[ハイブリッド接続の概要](../biztalk-services/integration-hybrid-connection-overview.md)を参照してください。
 
 このチュートリアルでは、サービスでプロビジョニングされた既定の Azure SQL Database の代わりに、ローカルのオンプレミスの SQL Server データベースを使用するように .NET バックエンド モバイル サービスを変更する方法について説明します。ハイブリッド接続は JavaScript バックエンド モバイル サービスでもサポートされており、[この記事](http://blogs.msdn.com/b/azuremobile/archive/2014/05/12/connecting-to-an-external-database-with-node-js-backend-in-azure-mobile-services.aspx)でも説明されています。
 
@@ -128,8 +126,8 @@
 ##関連項目##
 
 + [ハイブリッド接続の Web サイト](../../services/biztalk-services/)
-+ [ハイブリッド接続の概要](../integration-hybrid-connection-overview.md)
-+ [BizTalk Services: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs.md)
++ [ハイブリッド接続の概要](../biztalk-services/integration-hybrid-connection-overview.md)
++ [BizTalk Services: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-services/biztalk-dashboard-monitor-scale-tabs.md)
 + [データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)
 
 <!-- IMAGES -->
@@ -139,4 +137,4 @@
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

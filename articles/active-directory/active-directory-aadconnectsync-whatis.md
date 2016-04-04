@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="03/04/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -36,11 +36,14 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 構成モデルのしくみおよび式言語の構文について詳しく説明します。 |
 | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 上記のトピックを理解した上で、実際のシナリオや要件に合わせて既定の構成を変更する必要方法を説明します。 |
 | [フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) | Azure AD と同期するオブジェクトを制限する方法についてのさまざまなオプション、および構成手順について説明します。 |
-| **機能** ||
-| [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) | パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
-| [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | *誤って削除されないように保護する*機能および構成方法について説明します。 |
+| **機能とシナリオ** ||
+| [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | *誤って削除されないように保護する*機能およびその構成方法について説明します。 |
 | [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) | データをインポート、同期、およびエクスポートする組み込みのスケジューラについて説明します。 |
-| **操作** ||
+| [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) | パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
+| [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) | Azure AD Connect のデバイスの書き戻しのしくみについて説明します。 |
+| [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) | 独自のカスタム属性で Azure AD スキーマを拡張する方法について説明します。 |
+| **操作と UI** ||
+| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | [[操作]](active-directory-aadconnectsync-service-manager-ui-operations.md)、[[コネクタ]](active-directory-aadconnectsync-service-manager-ui-connectors.md)、[[メタバース デザイナー]](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)、および [[メタバース検索]](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) タブなどの Synchronization Service Manager の UI について説明します。|
 | [操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md) | 障害回復などの操作上の考慮事項について説明します。 |
 | **詳細情報とリファレンス** ||
 | [ポート](active-directory-aadconnect-ports.md) | 同期エンジンとオンプレミスのディレクトリおよび Azure AD の間で開く必要があるポートの一覧を示します。 |
@@ -51,4 +54,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

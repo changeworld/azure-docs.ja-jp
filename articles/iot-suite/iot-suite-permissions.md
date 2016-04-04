@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="11/17/2015"
+  ms.date="03/02/2016"
   ms.author="araguila"/>
   
 # azureiotsuite.com サイトでのアクセス許可
@@ -112,7 +112,7 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 1. [Microsoft Azure 管理ポータル][lnk-classic-portal]で新しい AAD ディレクトリを作成します。
 
-2. <https://github.com/Azure/azure-iot-remote-monitoring> にアクセスします。クラウドのデプロイの詳細は、[クラウドのデプロイ][lnk-wiki-clouddeployment]に関するページを参照してください。
+2. <https://github.com/Azure/azure-iot-remote-monitoring> にアクセスします。
 
 3. `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` を実行します (例: `build.cmd cloud debug myRMSolution`)
 
@@ -140,10 +140,9 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 [lnk-aad-admin]: https://azure.microsoft.com/documentation/articles/active-directory-assign-admin-roles/
 [lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-create-edit-users]: https://azure.microsoft.com/documentation/articles/active-directory-create-users/
-[lnk-assign-app-roles]: https://github.com/Azure/azure-iot-remote-monitoring/wiki/Manually-setting-up-roles-and-assigning-permissions-in-Azure-Active-Directory-(AAD)#assigning-users-to-the-roles
+[lnk-assign-app-roles]: https://azure.microsoft.com/documentation/articles/active-directory-application-manifest/
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
-[lnk-wiki-clouddeployment]: https://github.com/Azure/azure-iot-remote-monitoring/wiki/Cloud-deployment
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

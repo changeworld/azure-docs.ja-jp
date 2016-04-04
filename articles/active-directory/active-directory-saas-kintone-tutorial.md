@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/05/2016" 
+    ms.date="03/16/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Kintone の統合
@@ -37,7 +37,7 @@
 
 ###Kintone のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-kintone-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Kintone に対する認証を行えるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Kintone]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Kintone** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785872.png "Configure Single Sign-On")
 
@@ -78,7 +78,7 @@
 
 3.  **[アプリ URL の構成]** ページの **[Kintone サインオン URL]** テキストボックスに、"**https://company.kintone.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-kintone-tutorial/IC785875.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-kintone-tutorial/IC785875.png "アプリケーション URL の構成")
 
 4.  **[Kintone でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
@@ -88,7 +88,7 @@
 
 6.  **[設定]** をクリックします
 
-    ![設定](./media/active-directory-saas-kintone-tutorial/IC785879.png "設定")
+    ![Settings](./media/active-directory-saas-kintone-tutorial/IC785879.png "設定")
 
 7.  **[ユーザーとシステム管理]** をクリックします。
 
@@ -106,12 +106,12 @@
 
     ![SAML 認証](./media/active-directory-saas-kintone-tutorial/IC785883.png "SAML 認証")
 
-    1.  Azure ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
-    2.  Azure ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
+    1.  Azure クラシック ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
     3.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     4.  **[保存]** をクリックします。
 
-11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785884.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -124,7 +124,7 @@ Azure AD ユーザーが Kintone にログインできるようにするには�
 
 2.  **[設定]** をクリックします。
 
-    ![設定](./media/active-directory-saas-kintone-tutorial/IC785879.png "設定")
+    ![Settings](./media/active-directory-saas-kintone-tutorial/IC785879.png "設定")
 
 3.  **[ユーザーとシステム管理]** をクリックします。
 
@@ -145,7 +145,7 @@ Azure AD ユーザーが Kintone にログインできるようにするには�
     1.  プロビジョニングする有効な AAD アカウントの **[表示名]**、**[ログイン名]**、**[新しいパスワード]**、**[確認パスワード]**、**[メール アドレス]**、その他の詳細を該当するボックスに入力します。
     2.  **[保存]** をクリックします。
 
->[AZURE.NOTE]他の Kintone ユーザー アカウント作成ツールや Kintone から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の Kintone ユーザー アカウント作成ツールや Kintone から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -153,7 +153,7 @@ Azure AD ユーザーが Kintone にログインできるようにするには�
 
 ###ユーザーを Kintone に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Kintone** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -165,4 +165,4 @@ Azure AD ユーザーが Kintone にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0316_2016-->

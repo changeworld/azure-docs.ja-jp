@@ -19,7 +19,7 @@
 ### Azure ストレージ アカウントと Service Bus キューのプロビジョニング
 [EventProcessorHost] クラスを使用するには、Azure Storage アカウントを用意し、**EventProcessorHost** でチェックポイント情報を記録できるようにする必要があります。既存のストレージ アカウントを使用することも、「[Azure Storage について]」の手順に従って新しいものを作成することもできます。ストレージ アカウント接続文字列はメモしておいてください。
 
-Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。「[Service Bus キューの使用方法][Service Bus Queue]」で説明されているように、キューは、1 時間の重複除去期間でプログラムを使用して作成できます。また、[Azure ポータル]を使用し、以下の手順に従って作成することもできます。
+Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。「[Service Bus キューの使用方法][Service Bus Queue]」で説明されているように、キューは、1 時間の重複除去期間でプログラムを使用して作成できます。また、[Azure クラシック ポータル]を使用し、以下の手順に従って作成することもできます。
 
 1. 左下隅で **[新規]** をクリックし、それから **[App Services]**、**[Service Bus]**、**[キュー]**、**[カスタム作成]** の順にクリックし、「**d2ctutorial**」という名前を入力し、地域を選択し、既存の名前空間を使用するか、新しい名前空間を作成します。それから、次のページで **[重複データ検出の有効化]** を選択し、**[重複データ検出の履歴時間枠]** を 1 時間に設定します。その後、チェック マークをクリックしてキュー構成を保存します。
 
@@ -294,7 +294,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Event Hubs プログラミング ガイド]: ../event-hubs/event-hubs-programming-guide.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure ポータル]: https://manage.windowsazure.com/
+[Azure Portal]: https://manage.windowsazure.com/
 [Service Bus Queue]: ../service-bus/service-bus-dotnet-how-to-use-queues.md
 [Service Bus を使用する多層アプリケーションのビルド]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
@@ -312,4 +312,4 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -39,28 +39,43 @@
     function printResultFor(op) {
       return function printResult(err, res) {
         if (err) console.log(op + ' error: ' + err.toString());
-        if (res) console.log(op + ': message sent');
+        if (res) console.log(op + ' status: ' + res.constructor.name);
       };
     }
     ```
 
-7. **setInterval** 関数を使用して、1 秒ごとに新しいメッセージを IoT Hub に送信します。
+7. コールバックを作成し、**setInterval** 関数を使用して、1 秒ごとに新しいメッセージを IoT Hub に送信します。
 
     ```
-    setInterval(function(){
-      var windSpeed = 10 + (Math.random() * 4);
-      var data = JSON.stringify({ deviceId: 'myFirstDevice', windSpeed: windSpeed });
-      var message = new Message(data);
-      console.log("Sending message: " + message.getData());
-      client.sendEvent(message, printResultFor('send'));
-    }, 1000);
+    var connectCallback = function (err) {
+      if (err) {
+        console.log('Could not connect: ' + err);
+      } else {
+        console.log('Client connected');
+
+        // Create a message and send it to the IoT Hub every second
+        setInterval(function(){
+            var windSpeed = 10 + (Math.random() * 4);
+            var data = JSON.stringify({ deviceId: 'mydevice', windSpeed: windSpeed });
+            var message = new Message(data);
+            console.log("Sending message: " + message.getData());
+            client.sendEvent(message, printResultFor('send'));
+        }, 2000);
+      }
+    };
     ```
 
-8. **SimulatedDevice.js** ファイルを保存して閉じます。
+8. IoT Hub への接続を開き、メッセージの送信を開始します。
+
+    ```
+    client.open(connectCallback);
+    ```
+
+9. **SimulatedDevice.js** ファイルを保存して閉じます。
 
 > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
-[lnk-transient-faults]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

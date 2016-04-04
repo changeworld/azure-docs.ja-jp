@@ -19,8 +19,8 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure Classic steps](load-balancer-internet-getstarted.md)
-- [Resource Manager Powershell steps](load-balancer-arm-powershell.md)
+- [Azure クラシックの手順](load-balancer-internet-getstarted.md)
+- [Resource Manager の PowerShell の手順](load-balancer-arm-powershell.md)
 
 
 以下の手順では、PowerShell で Azure リソース マネージャーを使用して、インターネットに接続するロード バランサーを作成する方法を示します。Azure リソース マネージャーでは、インターネットに接続するロード バランサーを作成するための項目は、個別に構成されてから、リソースを作成するためにまとめられます。
@@ -242,7 +242,7 @@ PS C:\> $backendnic1
 
 コマンド Add-AzureVMNetworkInterface を使用して、NIC を仮想マシンに割り当てます。
 
-手順に従って仮想マシンを作成し、ドキュメント、NIC に割り当てるを検索する [の作成とリソース マネージャーと Azure PowerShell で Windows 仮想マシンを事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md#Example) オプション 4 または 5 です。
+手順に従って仮想マシンを作成し、ドキュメント、NIC に割り当てるを検索する [の作成とリソース マネージャーと Azure PowerShell で Windows 仮想マシンを事前構成する](../virtual-machines/virtual-machines-windows-create-powershell.md#Example) オプション 4 または 5 です。
 
 ## 既存のロード バランサーの更新
 
@@ -282,4 +282,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

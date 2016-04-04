@@ -13,14 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の Group By オプション
 
 [GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
 
-これらのオプションは、GROUP BY with ROLLUP と GROUPING SETS と GROUP BY with CUBE です。
+オプションは次のとおりです。
+- GROUP BY with ROLLUP
+- GROUPING SETS
+- GROUP BY with CUBE
 
 ## Rollup および Grouping Sets オプション
 ここで最も簡単なオプションは、`UNION ALL` を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。結果はまったく同じです。
@@ -40,7 +43,10 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ロールアップを使用して、次の Country and Region、Country、Grand Total の集計を要求しました。
+ROLLUP を使用して、次の集計を要求しました。
+- 国とリージョン
+- 国
+- 総計
 
 これを置き換えるには、`UNION ALL` を使用して、同じ結果を返すために明示的に必要な集計を指定します。
 
@@ -50,7 +56,7 @@ SELECT [SalesTerritoryCountry]
 ,      SUM(SalesAmount) AS TotalSalesAmount
 FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey
-GROUP BY 
+GROUP BY
        [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
 UNION ALL
@@ -59,7 +65,7 @@ SELECT [SalesTerritoryCountry]
 ,      SUM(SalesAmount) AS TotalSalesAmount
 FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey
-GROUP BY 
+GROUP BY
        [SalesTerritoryCountry]
 UNION ALL
 SELECT NULL
@@ -80,7 +86,7 @@ UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成するこ
 
 ```
 CREATE TABLE #Cube
-WITH 
+WITH
 (   DISTRIBUTION = ROUND_ROBIN
 ,   LOCATION = USER_DB
 )
@@ -99,9 +105,9 @@ CROSS JOIN ( SELECT 'SalesTerritoryRegion' as Region
            ) r
 )
 SELECT Cols
-,      CASE WHEN SUBSTRING(GroupBy,LEN(GroupBy),1) = ',' 
-            THEN SUBSTRING(GroupBy,1,LEN(GroupBy)-1) 
-            ELSE GroupBy 
+,      CASE WHEN SUBSTRING(GroupBy,LEN(GroupBy),1) = ','
+            THEN SUBSTRING(GroupBy,1,LEN(GroupBy)-1)
+            ELSE GroupBy
        END AS GroupBy  --Remove Trailing Comma
 ,Seq
 FROM GrpCube;
@@ -114,7 +120,7 @@ CTAS の結果が、以下のように表示されます。
 2 番目に、中間結果を格納するターゲット テーブルを指定します。
 
 ```
-DECLARE 
+DECLARE
  @SQL NVARCHAR(4000)
 ,@Columns NVARCHAR(4000)
 ,@GroupBy NVARCHAR(4000)
@@ -150,7 +156,7 @@ BEGIN
               FROM  dbo.factInternetSales s
               JOIN  dbo.DimSalesTerritory t  
               ON s.SalesTerritoryKey = t.SalesTerritoryKey
-              '+CASE WHEN @GroupBy <>'' 
+              '+CASE WHEN @GroupBy <>''
                      THEN 'GROUP BY '+@GroupBy ELSE '' END
 
     EXEC sp_executesql @SQL;
@@ -161,7 +167,7 @@ END
 最後に、#Results 一時テーブルから簡単に読み取ることによって結果を戻すことができます。
 
 ```
-SELECT * 
+SELECT *
 FROM #Results
 ORDER BY 1,2,3
 ;
@@ -185,4 +191,4 @@ ORDER BY 1,2,3
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

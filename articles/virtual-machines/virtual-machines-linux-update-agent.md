@@ -1,7 +1,7 @@
 <properties
 	pageTitle="GitHub から Azure Linux エージェントを更新する | Microsoft Azure"
 	description="Azure の Linux VM で使用する Azure Linux エージェントを Github の最新バージョンに更新する方法について説明します。"
-	services="virtual-machines"
+	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="SuperScottz"
 	manager="timlt"
@@ -9,7 +9,7 @@
 	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -28,7 +28,7 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-> [AZURE.NOTE] Windows コンピューターでこのタスクを実行する場合は、PuTTY を使用して Linux マシンに SSH 接続できます。詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」を参照してください。
+> [AZURE.NOTE] Windows コンピューターでこのタスクを実行する場合は、PuTTY を使用して Linux マシンに SSH 接続できます。詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)」を参照してください。
 
 Azure での動作保証済み Linux ディストリビューションは、そのリポジトリに Azure Linux エージェント パッケージを格納しているため、可能な場合は、そのディストリビューションのリポジトリを確認して最新のバージョンをインストールしてください。
 
@@ -45,6 +45,20 @@ Oracle Linux の場合、`Addons` リポジトリが有効になっているこ�
 次に、最新バージョンの Azure Linux エージェントをインストールし、次のように入力します。
 
     #sudo yum install WALinuxAgent
+
+アドオンのリポジトリが見つからない場合、Oracle Linux リリースに応じて、.repo ファイルの末尾に次の行を追加してください。
+
+Oracle Linux 6 仮想マシンの場合:
+
+  [ol6\_addons] name=Add-Ons for Oracle Linux $releasever ($basearch) baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL6/addons/x86\_64 gpgkey=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6 gpgcheck=1 enabled=1
+
+Oracle Linux 7 仮想マシンの場合:
+
+  [ol7\_addons] name=Oracle Linux $releasever Add ons ($basearch) baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL7/addons/$basearch/ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle gpgcheck=1 enabled=0
+
+次を入力します。
+
+    #sudo yum update WALinuxAgent
 
 通常、必要な手順はこれですべてですが、何らかの理由がある場合は、これを https://github.com から直接インストールする必要があります。その場合は、次の手順を実行してください。
 
@@ -99,7 +113,7 @@ SSH を使用して VM にログインします。
     #sudo cp waagent /usr/share/oem/bin/
 
   Azure Linux エージェントを新規にインストールの場合は、次を実行します。
-
+ 
     #sudo /usr/sbin/waagent -install -verbose
 
 ### バージョン 2.1.x の場合は次を使用します。
@@ -132,4 +146,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

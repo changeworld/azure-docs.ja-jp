@@ -13,11 +13,16 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="03/10/2016"
 	ms.author="piyushjo" />
 
 
 #リリース ノート
+
+##4\.2.0 (03/11/2016)
+
+- SDK が MIT でライセンスされるようになりました。
+- SDK の初期化時にカスタム デバイス識別子を指定できます。
 
 ##4\.1.5 (02/01/2016)
 
@@ -65,4 +70,4 @@
 -   セキュリティの強化。
 -   Google Play と SmartAd の追跡機能が削除されました。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

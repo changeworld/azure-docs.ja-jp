@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="01/21/2016"
+   ms.date="03/02/2016"
    ms.author="guayan"/>
 
 # Microsoft 管理の API または IT 管理の API を登録する
@@ -22,13 +22,12 @@ API には **Microsoft で管理されるもの**と **IT で管理されるも�
 
 IT 管理の API を使用して、メモリ、接続性、信頼などを含めたすべてを制御し、監視します。IT 管理の API には SQL Server や SharePoint Server などのオンプレミスのシステムに接続できる API も含まれています。
 
-**Microsoft 管理**または **IT 管理**の API を使用するには、Azure ポータルで API を "登録" する必要があります。登録されると、アプリでこれらの API を使用することができます。以下のオプションを使用できます。
+> [AZURE.SELECTOR]
+- [マネージ API](../articles/power-apps/powerapps-register-from-available-apis.md)
+- [ASE の API](../articles/power-apps/powerapps-register-api-hosted-in-app-service.md)
+- [Swagger API](../articles/power-apps/powerapps-register-existing-api-from-api-definition.md)
 
-- 事前に構築された Microsoft 管理の API または IT 管理の API を登録します (本トピック)。
-- [App Service Environment](powerapps-register-api-hosted-in-app-service.md) 内にホストされた Web アプリ、API アプリ、およびモバイル アプリを登録します。
-- [Swagger 2.0 API 定義](powerapps-register-existing-api-from-api-definition.md)を使用して、いずれかの独自の Swagger API を登録します。
-
-この記事では **Microsoft 管理の API および IT 管理の API の登録**について取り上げます。
+このトピックでは、**Microsoft 管理の API と IT 管理の API を登録する**、という 1 つ目の選択肢について説明します。
 
 #### 開始のための前提条件
 
@@ -107,7 +106,7 @@ API | 説明 | 手順のリンク
 
 ## Microsoft 管理の API または IT 管理の API を登録する
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウント (*ユーザー名*@*YourCompany*.com) を使用してサインインします。会社のサブスクリプションに自動的にサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウント (*ユーザー名*@*ユーザーの会社*.com) を使用してサインインします。会社のサブスクリプションに自動的にサインインされます。
 2. **[参照]** を選択し、**[PowerApps]** を選択して、**[API の管理]** を選択します。  
 ![][17]
 3. [API の管理] で、**[追加]** を選択します。  
@@ -115,8 +114,8 @@ API | 説明 | 手順のリンク
 4. **[API の追加]** で、API のプロパティを入力します。  
 
 	- **[名前]** に、API の名前を入力します。入力した名前が、API のランタイム URL に含まれていることを確認してください。名前は意味があり、組織内で一意のものにしてください。
-	- **[ソース]** で、**[利用可能な API から]**: を選択します。  
-	![][19]
+	- **[ソース]** で、**[利用可能な API から]**:  
+	![][19] を選択します。
 5. **[API]** を選択して、登録する API を選択します。  
 ![][20]
 6. 特定の API を選択し、構成可能なプロパティをすべて追加します。
@@ -156,4 +155,4 @@ API | 説明 | 手順のリンク
 [42]: ./media/powerapps-register-from-available-apis/sqlserver.png
 [43]: ./media/powerapps-register-from-available-apis/twitter.png
 
-<!----HONumber=AcomDC_0224_2016-->
+<!-----HONumber=AcomDC_0309_2016-->

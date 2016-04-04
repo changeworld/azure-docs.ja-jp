@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/17/2015"
+   ms.date="03/22/2016"
    ms.author="joaoma" />
 
 # PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
@@ -30,9 +30,9 @@
 
 ## 新しいアプリケーション ゲートウェイの作成
 
-アプリケーション ゲートウェイを作成するには:
+Application Gateway を作成するには:
 
-1. アプリケーション ゲートウェイのリソースを作成します。
+1. Application Gateway のリソースを作成します。
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
 
@@ -40,7 +40,7 @@
 
 ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しいアプリケーション ゲートウェイを作成します。
+次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
 
 
 	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -69,7 +69,7 @@
 	VirtualIPs    : {}
 	DnsName       :
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
+>[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
 
  ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
@@ -153,7 +153,7 @@
 
 次の例では、パブリック ポート 80 で HTTP トラフィックを負荷分散するアプリケーション ゲートウェイを設定し、カスタム プローブを使用して 2 つの IP アドレスのバックエンド ポート 80 にネットワーク トラフィックを送信する構成ファイルを使用する方法を示します。
 
->[AZURE.IMPORTANT]プロトコル項目 HTTP または HTTPS は、大文字小文字を区別します。
+>[AZURE.IMPORTANT] プロトコル項目 HTTP または HTTPS は、大文字小文字を区別します。
 
 
 カスタム プローブの構成のために、新しい構成項目 <Probe> が追加されています。
@@ -222,4 +222,4 @@ Secure Sockets Layer (SSL) オフロードを構成する場合は、「[SSL オ
 
 内部ロード バランサーとともに使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

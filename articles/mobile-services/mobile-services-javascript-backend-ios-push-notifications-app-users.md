@@ -14,12 +14,17 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
+
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[How to: Send push notifications to an authenticated user using tags (タグを利用し、認証されたユーザーにプッシュ通知を送信する方法)](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#push-user)」を参照してください。
 
 このトピックでは、iOS 上の認証されたユーザーにプッシュ通知を送信する方法を説明します。このチュートリアルを開始する前に、まず、「[認証の使用]」 と 「[プッシュ通知の使用]」を実行してください。
 
@@ -69,8 +74,6 @@ function insert(item, user, request) {
 <!-- URLs. -->
 [認証の使用]: mobile-services-ios-get-started-users.md
 [プッシュ通知の使用]: mobile-services-javascript-backend-ios-get-started-push.md
-
-[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0316_2016-->

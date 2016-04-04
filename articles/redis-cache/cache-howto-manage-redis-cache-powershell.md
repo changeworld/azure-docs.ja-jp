@@ -4,7 +4,7 @@
 	services="redis-cache"
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
@@ -81,7 +81,7 @@ Azure Government Cloud でキャッシュを作成するには、次のいずれ
 -	米国政府バージニア州
 -	米国政府アイオワ州
 
-Azure Government Cloud の詳細については、[Microsoft Azure Government](https://azure.microsoft.com/features/gov/) と [Microsoft Azure Government 開発者ガイド](azure-government-developer-guide.md)を参照してください。
+Azure Government Cloud の詳細については、[Microsoft Azure Government](https://azure.microsoft.com/features/gov/) と [Microsoft Azure Government 開発者ガイド](../azure-government-developer-guide.md)を参照してください。
 
 ### Azure China Cloud に接続するには
 
@@ -609,4 +609,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

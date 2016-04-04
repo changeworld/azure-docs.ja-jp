@@ -78,7 +78,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 7. MainPage.cs 内の `Offline sync` とマークされている部分で、`InitLocalStoreAsync` および `SyncAsync` メソッドをコメント解除します。メソッド `InitLocalStoreAsync` は、SQLite ストアを使用してクライアントの同期コンテキストを初期化します。Visual Studio では、すべてのコメント行を選択して、**Ctrl** + **K** + **U** のショートカット キーでコメント解除できます。
 
-	`SyncAsync` では、プッシュ操作は `IMobileServicesSyncTable` の代わりに `MobileServiceClient.SyncContext` を実行することに注意してください。これは、コンテキストはクライアントがすべてのテーブルに対して行った変更を追跡するためです。これは、テーブル間にリレーションシップがある状況に対応することを目的としています。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
+	`SyncAsync` では、プッシュ操作は `IMobileServicesSyncTable` の代わりに `MobileServiceClient.SyncContext` を実行することに注意してください。これは、コンテキストはクライアントがすべてのテーブルに対して行った変更を追跡するためです。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
         private async Task InitLocalStoreAsync()
         {
@@ -271,4 +271,4 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

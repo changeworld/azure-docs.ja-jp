@@ -12,18 +12,19 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="03/10/2016"
     ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search インデックスの照会
 > [AZURE.SELECTOR]
 - [概要](search-query-overview.md)
-- [Search エクスプローラー](search-explorer.md)
-- [Fiddler](search-fiddler.md)
+- [ポータル](search-explorer.md)
 - [.NET](search-query-dotnet.md)
 - [REST ()](search-query-rest-api.md)
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスを照会する方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-rest-api.md)し、[インデックスにデータを読み込んでいます](search-import-data-rest-api.md)。
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用してインデックスを照会する方法について説明します。
+
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んでいます](search-what-is-data-import.md)。
 
 ## I.Azure Search サービスのクエリ API キーの識別
 Azure Search REST API に対するすべての検索操作で鍵となるコンポーネントは、プロビジョニングしたサービスに対して生成された *API キー*です。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
@@ -48,15 +49,7 @@ POST でも GET でも、*サービス名*、*インデックス名*、適切な
 
 POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
 
-#### クエリの種類
 
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。主に使用するクエリの種類は、`search` と `filter` の 2 種類です。`search` クエリは、インデックスのすべての_検索可能_フィールドで 1 つ以上の語句を検索し、Google や Bing などの検索エンジンに期待されるように機能します。`filter` クエリは、インデックスのすべての_フィルター処理可能_フィールドでブール式を評価します。`search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
-
-検索とフィルターは、一緒に使用することも、別々に使用することもできます。一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
-
-フィルター式の構文は、[OData フィルター言語](https://msdn.microsoft.com/library/azure/dn798921.aspx)のサブセットです。各検索クエリで、[簡略構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を使用できます。
-
-クエリの各種パラメーターの詳細については、「[ドキュメントの検索](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。以下にも、クエリの例をいくつか紹介します。
 
 #### クエリの例
 
@@ -74,7 +67,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-次のクエリは、フィルターをインデックスに追加して 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
+次のクエリは、フィルターをインデックスに適用して 1 泊 150 ドル未満のホテルを探し、`hotelId` と `description` を返します。
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2015-02-28
@@ -164,6 +157,6 @@ api-key: [query key]
 }
 ```
 
-詳細については、「[ドキュメントの検索](https://msdn.microsoft.com/library/azure/dn798927.aspx)」の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP 状態コード (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+詳細については、「[Search Documents (Azure Search Service REST API) (ドキュメントの検索 (Azure Search Service REST API))](https://msdn.microsoft.com/library/azure/dn798927.aspx)」の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

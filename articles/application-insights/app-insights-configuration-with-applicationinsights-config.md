@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/05/2015" 
+	ms.date="03/12/2016" 
 	ms.author="awills"/>
 
 # ApplicationInsights.config または .xml を使った Application Insights SDK の構成
@@ -54,7 +54,7 @@ CPU、メモリ、IIS インストールのネットワーク負荷など、[シ
 
 ### Application Insights 診断テレメトリ
 
-`DiagnosticsTelemetryModule` は Application Insights インストルメンテーション コード自体のエラーを報告します。たとえば、コードのパフォーマンス カウンターにアクセスできない場合、または `ITelemetryInitializer` が例外をスローする場合です。このモジュールが追跡するトレース テレメトリが[診断検索][diagnostic]に表示されます。
+`DiagnosticsTelemetryModule` は Application Insights インストルメンテーション コード自体のエラーを報告します。たとえば、コードのパフォーマンス カウンターにアクセスできない場合、または `ITelemetryInitializer` が例外をスローする場合です。このモジュールが追跡するトレース テレメトリが[診断検索][diagnostic]に表示されます。dc.services.vsallin.net に診断データが送信されます。
  
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージこのパッケージのみをインストールする場合、ApplicationInsights.config ファイルは自動作成されません。 
@@ -85,9 +85,9 @@ HTTP 要求の[応答時間と結果コード](app-insights-asp-net.md)を報告
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - worker ロール、Windows サービス、コンソール アプリケーションの未処理例外を追跡します。
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet パッケージ
 
-### コア API
+### Microsoft.ApplicationInsights
 
-コア パッケージには、SDK の [コア API](https://msdn.microsoft.com/library/mt420197.aspx) があります。他のテレメトリ モジュールでこれが利用されます。[これを利用して独自のテレメトリを定義する](app-insights-api-custom-events-metrics.md)こともできます。
+Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https://msdn.microsoft.com/library/mt420197.aspx) が含まれています。他のテレメトリ モジュールでこれが利用されます。[これを利用して独自のテレメトリを定義する](app-insights-api-custom-events-metrics.md)こともできます。
 
 * ApplicationInsights.config にエントリがありません。
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージこの NuGet だけをインストールする場合、.config ファイルは生成されません。
@@ -123,12 +123,14 @@ HTTP 要求の[応答時間と結果コード](app-insights-asp-net.md)を報告
  - `Language` は `CurrentCulture` の名前に設定します。
 * `DomainNameRoleInstanceTelemetryInitializer` は、Web アプリケーションを実行中のコンピューターのドメイン名を使用して、すべてのテレメトリ項目の `Device` コンテキストの `RoleInstance` プロパティを更新します。
 * `OperationNameTelemetryInitializer` は、HTTP メソッドのほか、ASP.NET MVC コントローラーの名前、要求の処理のために呼び出されるアクションに基づいて、すべてのテレメトリ項目の`RequestTelemetry` の `Name` プロパティと `Operation` コンテキストの `Name` プロパティを更新します。
-* `OperationIdTelemetryInitializer` は、追跡されたすべてのテレメトリ アイテムの `Operation.Id` コンテキスト プロパティを更新し、自動生成された `RequestTelemetry.Id` が付いた要求を処理します。
+* `OperationIdTelemetryInitializer` または `OperationCorrelationTelemetryInitializer` は、追跡されたすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新し、自動生成された `RequestTelemetry.Id` が付いた要求を処理します。
 * `SessionTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_session` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `Session` コンテキストの `Id` プロパティを更新します。 
-* `SyntheticTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、および `Operation` コンテキスト プロパティを更新します。既定では、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)には合成テレメトリは表示されません。
+* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、および `Operation` コンテキスト プロパティを更新します。既定では、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)には合成テレメトリは表示されません。 
+
+    `<Filters>` は、要求の識別プロパティを設定します。
 * `UserAgentTelemetryInitializer` は、要求の `User-Agent` HTTP ヘッダーに基づいて、すべてのテレメトリ項目の `User` コンテキストの `UserAgent` プロパティを更新します。
 * `UserTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_user` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `User` コンテキストの `Id` および `AcquisitionDate` プロパティを更新します。
-
+* `WebTestTelemetryInitializer` は、[可用性テスト](app-insights-monitor-web-app-availability.md)からの HTTP 要求のユーザー ID、セッション ID および合成ソース プロパティを設定します。`<Filters>` は、要求の識別プロパティを設定します。
 
 ## テレメトリ プロセッサ (ASP.NET)
 
@@ -285,4 +287,4 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0316_2016-->

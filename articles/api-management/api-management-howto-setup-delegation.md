@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="antonba" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/03/2015" 
+	ms.date="03/04/2016" 
 	ms.author="antonba"/>
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
@@ -46,7 +46,11 @@
 
 	> *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL 元のページ}&salt={文字列}&sig={文字列}*
 
-	サインイン/サインアップ処理のためのクエリ パラメーター: - **operation**: 委任要求の種類を識別します - この場合は **SignIn** のみを指定できます - **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL - **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列 - **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ
+	サインイン/サインアップ処理のためのクエリ パラメーター:
+	- **operation**: 委任要求の種類を識別します。この場合は **[SignIn]** のみを指定できます。
+	- **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL。
+	- **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+	- **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
@@ -101,7 +105,15 @@
 
 	> *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}*
 
-	成果物のサブスクリプション処理のためのクエリ パラメーター: - **operation**: 委任要求の種類を識別します。成果物のサブスクリプション要求の有効なオプションを次に示します: -"Subscribe": 提供された ID (以下を参照) を持つ特定の成果物をユーザーがサブスクライブするための要求 - "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求 - "Renew": サブスクリプションを更新するための要求 (例: 有効期限が近づいている場合) - **productId**: ユーザーから要求されたサブスクライブ対象の成果物の ID **userId**: 要求の対象のユーザーの ID **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列 - **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ
+	成果物のサブスクリプション処理のためのクエリ パラメーター:
+	- **operation**: 委任要求の種類を識別します。成果物のサブスクリプション要求の有効なオプションを次に示します。
+		- "Subscribe": 提供された ID (以下を参照) を持つ特定の成果物をユーザーがサブスクライブするための要求。
+		- "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求。
+		- "Renew": (たとえば、有効期限が近づいている) サブスクリプションを更新するための要求。
+	- **productId**: ユーザーから要求されたサブスクライブ対象の成果物の ID。
+	- **userId**: 要求の対象のユーザーの ID。
+	- **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+	- **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
@@ -166,4 +178,4 @@
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

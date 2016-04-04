@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/14/2016"
 	ms.author="meetb"/>
 
 
@@ -103,11 +103,11 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 このコード例は、以下のトランザクションの使用について示します。
 
 
-- トランザクションの開始
+-トランザクションの開始
 
-- データの挿入
+-データの挿入
 
-- トランザクションをロールバックして、挿入を元に戻す
+-トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -121,4 +121,4 @@ pip の使用を有効にする手順については、[ここ](http://stackover
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

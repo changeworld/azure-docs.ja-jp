@@ -3,9 +3,9 @@
 	description="Stretch Database の管理とトラブルシューティングの方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -51,6 +51,9 @@ Stretch Database に構成された SQL Server テーブルに関連付けられ
 -   ネットワークの状態が低下している可能性があります。ネットワーク管理者に問い合わせ、最近、問題や機能停止が発生していないか確認してください。
 
 ## 関連項目
-[Stretch Database を監視する](sql-server-stretch-database-monitor.md) [Stretch 対応データベースをバックアップし、復元する](sql-server-stretch-database-backup.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+[Stretch Database の監視](sql-server-stretch-database-monitor.md)
+
+[Stretch 対応データベースをバックアップし、復元します。](sql-server-stretch-database-backup.md)
+
+<!---HONumber=AcomDC_0316_2016-->

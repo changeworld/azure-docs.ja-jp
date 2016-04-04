@@ -33,7 +33,6 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラミングやストリーミング、Windows PowerShell スクリプトで使用するコマンドレットのドキュメントなど、Web 上に多数存在しています。これらのリソースの詳細については、以下を参照してください。
 
 - [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
-- [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
 - [Azure HDInsight 入門][hdinsight-introduction]
 
@@ -998,4 +997,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

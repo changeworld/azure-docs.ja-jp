@@ -18,12 +18,12 @@
 
 # Mobile Services アプリへの認証の追加
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-users](../../includes/mobile-services-selector-get-started-users.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Xamarin.Android アプリに認証を追加する](../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md)」を参照してください。
 
 <p>このトピックでは、Xamarin.Android アプリから Azure Mobile Services のユーザーを認証する方法について説明します。このチュートリアルでは、Mobile Services でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile Services によって正常に認証および承認されると、ユーザー ID 値が表示されます。</p>
 
@@ -143,4 +143,4 @@
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="02/02/2016"
+   ms.date="03/07/2016"
    ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向け仮想マシン イメージ作成ガイド
@@ -76,7 +76,7 @@ SKU は、VM イメージの取引名です。VM イメージには、1 個の�
 ### 2\.3 必要なライブラリが含まれていることを確認
 Azure Linux エージェントのほか、次のライブラリが含まれている必要があります。
 
-1. [Linux Integration Services][link-intsvc] 3.0 以降がカーネルで有効になっている必要があります。「[Linux カーネルの要件](../virtual-machines/virtual-machines-linux-create-upload-vhd-generic/#linux-kernel-requirements)」を参照してください。
+1. [Linux Integration Services][link-intsvc] 3.0 以降がカーネルで有効になっている必要があります。「[Linux カーネルの要件](./virtual-machines-linux-create-upload-vhd-generic/#linux-kernel-requirements)」を参照してください。
 2. Azure I/O 安定性向上のための[カーネル パッチ](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c) (最新のカーネルには必要ないと思いますが、確認してください)
 3. [Python][link-python] 2.6 以降
 4. Python pyasn1 パッケージ (まだインストールされていない場合)
@@ -100,7 +100,7 @@ Azure と互換性のある Linux VM イメージのネットワーク要件は�
 
 - 通常は、NetworkManager を無効にするのが最善です。例外の 1 つは CentOS 7.x に基づくシステム (および派生物) で、NetworkManager を有効にしておく必要があります。
 - ネットワーク構成は **ifup** および **ifdown** スクリプトから制御できる必要があります。Linux エージェントは、これらのコマンドを使ってプロビジョニング中にネットワークを再起動することがあります。
-- カスタム ネットワーク構成は使用しないでください。最後の手順として、Resolv.conf ファイルを削除する必要があります。通常、これはプロビジョニング解除の一部として行います (「[Azure Linux エージェント ユーザー ガイド](../virtual-machines/virtual-machines-linux-agent-user-guide/)」を参照)。このステップは、次のコマンドを使って手動で実行することもできます。
+- カスタム ネットワーク構成は使用しないでください。最後の手順として、Resolv.conf ファイルを削除する必要があります。通常、これはプロビジョニング解除の一部として行います (「[Azure Linux エージェント ユーザー ガイド](./virtual-machines-linux-agent-user-guide/)」を参照)。このステップは、次のコマンドを使って手動で実行することもできます。
 
         rm /etc/resolv.conf
 
@@ -250,9 +250,9 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 - Windows では、イメージが "sysprep 済み" で、**sysprep** コマンドをサポートしない構成を設定しないことが必要です。
 - ディレクトリ %windir%\\System32\\Sysprep から次のコマンドを実行できます。
 
-        sysprep.exe /generalize /oobe /sshutdown
+        sysprep.exe /generalize /oobe /shutdown
 
-  OS を sysprep する方法のガイダンスについては、MSDN 記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-create-upload-vhd-windows-server/)」の手順を参照してください。
+  OS を sysprep する方法のガイダンスについては、MSDN 記事「[Windows Server VHD の作成と Azure へのアップロード](./virtual-machines-create-upload-vhd-windows-server/)」の手順を参照してください。
 
 ## 4\.VHD からの VM のデプロイ
 VHD (汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。その後、そのイメージをテストできます。オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
@@ -582,10 +582,7 @@ Shared Access Signature URI を作成するには、「[共有アクセス署名
 4. **[SKU]** セクションでプロパティを入力します。
 5. **[オペレーティング システム ファミリ]** でオペレーティング システム VHD に関連付けられたオペレーティング システムの種類をクリックします。
 6. **[オペレーティング システム]** ボックスにオペレーティング システムの詳細を入力します。オペレーティング システム ファミリ、種類、バージョン、更新の形式で記載してください。たとえば、「Windows Server Datacenter 2014 R2」などと入力します。
-7. 最大 6 個の推奨される仮想マシン サイズを選択します。これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。
-
-  > [AZURE.NOTE] これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。
-
+7. 最大 6 個の推奨される仮想マシン サイズを選択します。これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。**これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
 8. バージョンを入力します。バージョン フィールドには、製品とその更新プログラムを識別するためのセマンティック バージョンがカプセル化されています。
   -	バージョンの形式は X.Y.Z で、X、Y、Z は整数です。
   -	異なる SKU のイメージは、メジャー バージョンおよびマイナー バージョンが異なっていてもかまいません。
@@ -594,7 +591,7 @@ Shared Access Signature URI を作成するには、「[共有アクセス署名
 10. この SKU に関連付けられたデータ ディスクがある場合は、デプロイメント時のこのデータ ディスクのマウント先である論理ユニット番号 (LUN) を選択します。
 11. **[LUN X VHD URL]** ボックスに、最初のデータ VHD に対して作成した Shared Access Signature URI を入力します。
 
-    ![図][img-pubportal-vm-skus-2]
+    ![図](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
 ## 次のステップ
 SKU の詳細を完了したら、「[Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging]」に進むことができます。発行プロセスのそのステップでは、**ステップ 3: ステージングでの VM プランのテスト**の前に必要なマーケティング コンテンツ、価格、その他の情報を提供します。ステップ 3 では、プランを Azure Marketplace にデプロイして一般に公開して購入できるようにする前にさまざまなユース ケース シナリオをテストします。
@@ -629,9 +626,9 @@ SKU の詳細を完了したら、「[Azure Marketplace のマーケティング
 
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-github-waagent]: https://github.com/Azure/WALinuxAgent
-[link-azure-codeplex]: http://storageexplorer.com/
-[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2/
-[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1/
+[link-azure-codeplex]: https://azurestorageexplorer.codeplex.com/
+[link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2.md
+[link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [link-msft-download]: http://www.microsoft.com/download/details.aspx?id=44299
 [link-technet-3]: https://technet.microsoft.com/library/hh846766.aspx
 [link-technet-2]: https://msdn.microsoft.com/library/dn495261.aspx
@@ -647,11 +644,11 @@ SKU の詳細を完了したら、「[Azure Marketplace のマーケティング
 [link-datactr-2012]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
 [link-datactr-2008-r2]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
-[link-azure-vm-1]: ../virtual-machines/virtual-machines-linux-create-upload-vhd/
+[link-azure-vm-1]: ./virtual-machines-linux-create-upload-vhd/
 [link-technet-1]: https://technet.microsoft.com/library/hh848454.aspx
-[link-azure-vm-2]: ../virtual-machines/virtual-machines-linux-agent-user-guide/
+[link-azure-vm-2]: ./virtual-machines-linux-agent-user-guide/
 [link-openssl]: https://www.openssl.org/
 [link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]: https://www.python.org/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="03/10/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -31,7 +31,7 @@
 "クラシック" ストレージ アカウントがない場合は、ここで作成します。
 
 
-1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
+1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションのストレージ アカウントを作成します。
 
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-export-telemetry/030.png)
 
@@ -91,6 +91,17 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 ![適切なツールで Blob ストアを調べます](./media/app-insights-export-telemetry/04-data.png)
 
 日付と時刻は UTC 形式で表され、テレメトリが生成された時間ではなく、ストアに格納された日時を示します。そのため、データをダウンロードするコードを記述する場合は、直線的にデータ内を移動できます。
+
+パスの形式を以下に示します。
+
+
+    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+  
+Where
+
+-	`blobCreationTimeUtc` は、BLOB が内部ステージング ストレージで作成された日時です。
+-	`blobDeliveryTimeUtc` は、BLOB がエクスポート先のストレージにコピーされた日時です。
+
 
 
 ## <a name="format"></a> データ形式
@@ -212,4 +223,4 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

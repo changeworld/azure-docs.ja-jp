@@ -3,9 +3,9 @@
 	description="Stretch Database を有効にする前に解決する必要のあるブロック問題について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -65,6 +65,8 @@ SQL Server 2016 の現在のプレビュー リリースでは、次の項目が
 
 -   テーブルを参照する外部キー制約
 
+    Stretch Database を有効にできないテーブルは、外部キー制約によって参照されるテーブルです。親子関係 (たとえば、注文と注文明細) の場合、これは親テーブル (注文) になります。
+
 **インデックス**
 -   フル テキスト インデックス
 
@@ -81,7 +83,9 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 
 -   Stretch が有効なテーブルで更新操作または削除操作を実行することはできません。
 
--   リモートの Azure SQL Database テーブルに挿入することはできません。
+-   リンクされているサーバー上の Stretch が有効なテーブルにリモートで挿入することはできません。
+
+-   Stretch が有効なテーブルを使用してレプリケーションを使用することはできません。
 
 -   Stretch が有効なテーブルを含むビューのインデックスを作成することはできません。
 
@@ -90,6 +94,11 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 -   インデックスのフィルターは、リモート テーブルには反映されません。
 
 ## 関連項目
-[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md) [Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md) [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
+
+[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
+
+[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
+
+<!---HONumber=AcomDC_0323_2016-->

@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="12/04/2015"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
 
 # Scheduler の制限、既定値、エラー コード
@@ -25,7 +25,7 @@
 
 Scheduler サービスに対するすべての要求は、**x-ms-request-id** という名前の応答ヘッダーを返します。このヘッダーには、要求を一意に識別する非透過の値が含まれています。
 
-要求の形式が正しいにもかかわらず要求が常に失敗する場合は、この値を使用して Microsoft にエラーを報告することができます。このとき、x-ms-request-id の値、要求が行われたおおよその時間、サブスクリプション、クラウド サービス、ジョブ コレクション、ジョブの識別子のほかに、要求で試みた操作の種類もレポートに含めてください。
+要求の形式が正しいにもかかわらず要求が常に失敗する場合は、この値を使用して Microsoft にエラーを報告することができます。このとき、x-ms-request-id の値、要求が行われたおおよその時間、サブスクリプション、ジョブ コレクション、ジョブの識別子のほかに、要求で試みた操作の種類もレポートに含めてください。
 
 ## Scheduler の状態コードとエラー コード
 
@@ -55,7 +55,7 @@ API 操作は、管理サービスで定義されている追加のエラー情�
 
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -69,7 +69,5 @@ API 操作は、管理サービスで定義されている追加のエラー情�
  [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
- 
-  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

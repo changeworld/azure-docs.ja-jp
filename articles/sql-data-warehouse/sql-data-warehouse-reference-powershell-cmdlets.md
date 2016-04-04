@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/22/2016"
+   ms.date="03/03/2016"
    ms.author="barbkess;mausher;sonyama"/>
 
 # SQL Data Warehouse での PowerShell コマンドレットと REST API の使用
@@ -26,7 +26,7 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 
 ## Azure PowerShell コマンドレットの取得と実行
 
-1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。 
+1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
 2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
 3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールおよび構成方法]()」を参照してください)。
 
@@ -42,14 +42,14 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 
 ## Suspend-AzureRmSqlDatabase
 
-コマンド リファレンスについては、「[Suspend-AzureRmSQLDatabase](https://msdn.microsoft.com/library/mt619337.aspx)」を参照してください。
+コマンド リファレンスについては、「[Suspend-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619337.aspx)」を参照してください。
 
 ### 例 1: サーバー上で名前によってデータベースを一時停止する
 
 この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが一時停止されます。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```
-Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
 ### 例 2: データベース オブジェクトを一時停止する
@@ -57,7 +57,7 @@ Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName 
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 取得したオブジェクトは **Suspend-AzureRmSqlDatabase** にパイプ処理されます。その結果、データベースが一時停止されます。最後のコマンドは結果を表示します。
 
 ```
-$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Suspend-AzureRmSqlDatabase
 $resultDatabase
 ```
@@ -71,7 +71,7 @@ $resultDatabase
 この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが再開されます。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
 
 ```
-Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" -DatabaseName "Database02"
+Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
 ### 例 2: データベース オブジェクトの再開
@@ -79,7 +79,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 オブジェクトは **Resume-AzureRmSqlDatabase** にパイプ処理されます。
 
 ```
-$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
 
@@ -96,8 +96,8 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 ### 例 1: サーバー上で名前によってデータベースの復元ポイントを取得する
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースの復元ポイントが取得されます。
 
-```	
-$restorePoints = Get-AzureRmSqlDatabaseRestorePoints –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+$restorePoints = Get-AzureRmSqlDatabaseRestorePoints –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $restorePoints
 ```
 
@@ -107,7 +107,7 @@ $restorePoints
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 データベース オブジェクトは **Get-AzureRmSqlDatabase** にパイプ処理され、データベースの復元ポイントが結果として得られます。最後のコマンドは結果を出力します。
 
 ```
-$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $restorePoints = $database | Get-AzureRmSqlDatabaseRestorePoints
 $retorePoints
 ```
@@ -133,4 +133,4 @@ $retorePoints
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

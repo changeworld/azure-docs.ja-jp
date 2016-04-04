@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/29/2016"
+   ms.date="03/22/2016"
    ms.author="larryfr"/>
 
 
@@ -80,29 +80,92 @@ Windows ベースのクラスターでは、v1 (クラシック) Virtual Network
 
 ###セキュリティで保護された Virtual Networks
 
-インターネットへのアクセスやインターネットからのアクセスを明示的に制限する Azure Virtual Networks では HDInsight はサポートされません。たとえば、ネットワーク セキュリティ グループまたは ExpressRoute を使用して、Virtual Network 内のリソースへのインターネット トラフィックをブロックします。HDInsight サービスは管理されたサービスです。また、クラスターの正常性を監視したり、クラスター リソースのフェールオーバーなど、自動化された管理タスクを開始したりするために、プロビジョニング中や実行中にインターネット アクセスが必要です。
+インターネットへのアクセスやインターネットからのアクセスを明示的に制限する Azure Virtual Networks では HDInsight はサポートされません。たとえば、ネットワーク セキュリティ グループまたは ExpressRoute を使用して、Virtual Network 内のリソースへのインターネット トラフィックをブロックします。
 
-インターネット トラフィックをブロックする Virtual Network で HDInsight を使用するには、以下の手順を使用することができます。
+HDInsight サービスは管理されたサービスです。また、クラスターの正常性を監視したり、クラスター リソースのフェールオーバーなど、自動化された管理タスクを開始したりするために、プロビジョニング中や実行中にインターネット アクセスが必要です。次の IP アドレスに、HDInsight をインストールするサブネットへの着信アクセスを許可する必要があります。
 
-1. Virtual Network 内に新しいサブネットを作成します。既定では、新しいサブネットは、インターネットと通信することができます。これにより、このサブネットに HDInsight をインストールできます。この新しいサブネットはセキュリティで保護されたサブネットと同じ仮想ネットワーク内にあるため、そこにインストールされたリソースとも通信することができます。
+* 168\.61.49.99
+* 23\.99.5.239
+* 168\.61.48.131
+* 138\.91.141.162
 
-2. HDInsight クラスターを作成します。クラスターの Virtual Network 設定を構成する場合、手順 1 で作成したサブネットを選択します。
+これらのアドレスからの着信アクセスを許可すると、セキュリティ保護された仮想ネットワークに HDInsight を正常にインストールできます。
 
-> [AZURE.NOTE] 上記の手順は、_Virtual Network の IP アドレス範囲内_の IP アドレスへの通信を制限していないことを前提としています。制限している場合は、新しいサブネットと通信できるように制限を変更する必要がある可能性があります。
+必要なアドレスを許可し、Virtual Network 内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成するスクリプトの例を次に示します。これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
 
-HDInsight のインストールまたは制限の除去を必要とするサブネットに対して制限を適用しているかどうかはっきりしない場合は、次の手順に従います。
+> [AZURE.NOTE] このスクリプトを実行する前に Azure PowerShell をインストールし、構成している必要があります。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-1. [Azure ポータル](https://portal.azure.com) を開きます。
+    $vnetName = "Replace with your virtual network name"
+    $resourceGroupName = "Replace with the resource group the virtual network is in"
+    $subnetName = "Replace with the name of the subnet that HDInsight will be installed into"
+    # Get the Virtual Network object
+    $vnet = Get-AzureRmVirtualNetwork `
+        -Name $vnetName `
+        -ResourceGroupName $resourceGroupName
+    # Get the region the Virtual network is in.
+    $location = $vnet.Location
+    # Get the subnet object
+    $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
+    # Create a new Network Security Group.
+    # And add exemptions for the HDInsight health and management services.
+    $nsg = New-AzureRmNetworkSecurityGroup `
+        -Name "hdisecure" `
+        -ResourceGroupName $resourceGroupName `
+        -Location $location `
+        | Add-AzureRmNetworkSecurityRuleConfig `
+            -name "hdirule1" `
+            -Description "HDI health and management address 16.61.49.99" `
+            -Protocol "*" `
+            -SourcePortRange "*" `
+            -DestinationPortRange "*" `
+            -SourceAddressPrefix "168.61.49.99" `
+            -DestinationAddressPrefix "VirtualNetwork" `
+            -Access Allow `
+            -Priority 300 `
+            -Direction Inbound `
+        | Add-AzureRmNetworkSecurityRuleConfig `
+            -Name "hdirule2" `
+            -Description "HDI health and management 23.99.5.239" `
+            -Protocol "*" `
+            -SourcePortRange "*" `
+            -DestinationPortRange "*" `
+            -SourceAddressPrefix "23.99.5.239" `
+            -DestinationAddressPrefix "VirtualNetwork" `
+            -Access Allow `
+            -Priority 301 `
+            -Direction Inbound `
+        | Add-AzureRmNetworkSecurityRuleConfig `
+            -Name "hdirule3" `
+            -Description "HDI health and management 168.61.48.131" `
+            -Protocol "*" `
+            -SourcePortRange "*" `
+            -DestinationPortRange "*" `
+            -SourceAddressPrefix "168.61.48.131" `
+            -DestinationAddressPrefix "VirtualNetwork" `
+            -Access Allow `
+            -Priority 302 `
+            -Direction Inbound `
+        | Add-AzureRmNetworkSecurityRuleConfig `
+            -Name "hdirule4" `
+            -Description "HDI health and management 138.91.141.162" `
+            -Protocol "*" `
+            -SourcePortRange "*" `
+            -DestinationPortRange "*" `
+            -SourceAddressPrefix "138.91.141.162" `
+            -DestinationAddressPrefix "VirtualNetwork" `
+            -Access Allow `
+            -Priority 303 `
+            -Direction Inbound
+    # Set the changes to the security group
+    Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
+    # Apply the NSG to the subnet
+    Set-AzureRmVirtualNetworkSubnetConfig `
+        -VirtualNetwork $vnet `
+        -Name $subnetName `
+        -AddressPrefix $subnet.AddressPrefix `
+        -NetworkSecurityGroupId $nsg
 
-2. Virtual Network を作成します。
-
-3. __[プロパティ]__ を選択します。
-
-4. __[サブネット]__ を選択し、特定のサブネットを選択します。制限が適用されていない場合は、このサブネットのブレードで、__[ネットワーク セキュリティ グループ]__ エントリと __[ルート テーブル]__ エントリの値が __[なし]__ に設定されています。
-
-    制限が適用されている場合は、__[ネットワーク セキュリティ グループ]__ エントリまたは __[ルート テーブル]__ エントリを選択し、__[なし]__ を選択することで、制限を削除できます。最後に、サブネット ブレードの __[保存]__ を選択して変更内容を保存します。
-    
-    ![サブネット ブレードとネットワーク セキュリティ グループの選択内容の画像](./media/hdinsight-extend-hadoop-virtual-network/subnetnsg.png)
+> [AZURE.IMPORTANT] 上記のスクリプトを使用すると、Azure クラウドの HDInsight 正常性および管理サービスへのアクセスのみが開きます。これにより、HDInsight クラスターをサブネットに正常にインストールできますが、既定で Virtual Network 外からの HDInsight クラスターへのアクセスがブロックされます。Virtual Network 外からのアクセスを可能にする場合は、追加のネットワーク セキュリティ グループ規則を追加する必要があります。
 
 ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure Virtual Network でルーティングを制御する方法については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
@@ -212,4 +275,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

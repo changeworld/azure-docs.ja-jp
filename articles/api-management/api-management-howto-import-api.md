@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API の定義を操作と共にインポートする方法
@@ -54,7 +54,7 @@ API 仕様を指定した後は、右側のラジオ ボタンを使用して仕
 
 すべての値を入力したら、**[保存]** をクリックして API および関連付けられた操作を作成します。
 
->[AZURE.NOTE]Swagger 形式で Basic Calculator API をインポートする方法のチュートリアルについては、「[Azure API Management での最初の API の管理](api-management-get-started.md)」をご覧ください。
+>[AZURE.NOTE] Swagger 形式で Basic Calculator API をインポートする方法のチュートリアルについては、「[Azure API Management での最初の API の管理](api-management-get-started.md)」をご覧ください。
 
 ## <a name="export-api"> </a> API のエクスポート
 
@@ -95,4 +95,4 @@ API を作成して操作をインポートした後は、追加の設定を確�
 [Azure API Management で API を作成する方法]: api-management-howto-create-apis.md
 [API 設定を構成する方法]: api-management-howto-create-apis.md#configure-api-settings
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

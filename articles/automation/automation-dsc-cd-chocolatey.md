@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="02/04/2016"
+   ms.date="03/04/2016"
    ms.author="golive"/>
 
 # 使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
@@ -41,7 +41,7 @@ Azure Automation は、Runbook、ノード、資格情報、スケジュール�
 
 DSC リソースは、ネットワーク、Active Directory、または SQL Server の管理などの特定の機能を備えたコードのモジュールです。Chocolatey DSC リソースは、(特に) NuGet サーバーへのアクセス、パッケージのダウンロード、パッケージのインストールなどの方法を認識しています。[PowerShell ギャラリー](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)には、その他の多くの DSC リソースがあります。これらのモジュールは、(ユーザーによって) Azure Automation DSC プル サーバーにインストールされるため、ユーザーの構成で使用できます。
 
-ARM テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。この[記事](../resource-manager-deployment-model.md)では、ARM デプロイ モデル (宣言型) と、Azure サービス管理 (ASM、つまり、クラシック) デプロイ モデル (命令型) が比較されています。また、別の[記事](../virtual-machines\virtual-machines-azurerm-versus-azuresm.md)では、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
+ARM テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。この[記事](../resource-manager-deployment-model.md)では、ARM デプロイ モデル (宣言型) と、Azure サービス管理 (ASM、つまり、クラシック) デプロイ モデル (命令型) が比較されています。また、別の[記事](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)では、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
 
 ARM テンプレートの 1 つの主要機能は、プロビジョニングされている VM に VM 拡張機能をインストールする機能です。VM 拡張機能には、カスタム スクリプトの実行、ウイルス対策ソフトウェアのインストール、DSC 構成スクリプトの実行などの特定の機能があります。VM 拡張機能には他にも多くの種類があります。
 
@@ -78,7 +78,7 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 手動による方法もあります。Windows コンピューター用の PowerShell 統合モジュールのフォルダー構造は、Azure Automation で必要なフォルダー構造とは少し異なります。ユーザーが少し調整する必要があります。しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。 PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
 -   次のように、ワークステーションに必要なモジュールをインストールします。
-    -   [Windows Management Framework v5](http://www.microsoft.com/download/details.aspx?id=48729) をインストールします (Win10 では不要)。
+    -   [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします (Win10 では不要)。
     -   `Install-Module  –ModuleName MODULENAME` (PowerShell ギャラリーからモジュールを取得します)。 
 -   `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。 
 -   メイン フォルダーからサンプルとドキュメントを削除します。 
@@ -185,4 +185,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

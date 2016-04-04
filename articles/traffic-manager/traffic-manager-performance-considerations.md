@@ -75,7 +75,7 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 ## 次のステップ
 
 
-[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 
 [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)
 
@@ -84,4 +84,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

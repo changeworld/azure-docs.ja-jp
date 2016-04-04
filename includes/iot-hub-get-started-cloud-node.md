@@ -95,7 +95,7 @@
     var Promise = require('bluebird');
     ```
 
-5. プレース ホルダーを前にメモした値に置き換えて、次の変数宣言を追加します。**{your event hub-compatible namespace}** プレース ホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xxxxnamespace.servicebus.windows.net** の形式になります。
+5. プレース ホルダーを前にメモした値に置き換えて、次の変数宣言を追加します。**{your event hub-compatible namespace}** プレースホルダーの値は、ポータルの**イベント ハブと互換性のあるエンドポイント** フィールドから取得され、**namespace.servicebus.windows.net** (**sb://* プレフィックスなし) の形式になります。
 
     ```
     var protocol = 'amqps';
@@ -108,7 +108,7 @@
 
     > [AZURE.NOTE] このコードでは、F1 (free) レベルで IoT hub を作成したと想定しています。無料の IoT Hub は、2 つのパーティションがあります。名前は「0」と「1」です。他の価格レベルを利用して IoT Hub を作成した場合、コードを調整し、パーティションごとに **MessageReceiver** を作成してください。
 
-6. 次のフィルター定義を追加します。受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このアプリケーション メソッドは受信側の構築時にフィルターを使用します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、本稼働環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルを参照してください。
+6. 次のフィルター定義を追加します。受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このアプリケーション メソッドは受信側の構築時にフィルターを使用します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルを参照してください。
 
     ```
     var filterOffset = new Date().getTime();
@@ -177,9 +177,9 @@
 
 <!-- Links -->
 
-[lnk-eventhubs-tutorial]: event-hubs-csharp-ephcs-getstarted.md
+[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
-[lnk-event-hubs-overview]: event-hubs-overview.md
+[lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 [lnk-processd2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="ポータルを使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-	description="ポータルを使用して Azure Search のインデックスにデータをアップロードする方法"
+	pageTitle="Azure ポータルでインデクサーを使用して Azure Search にデータをインポートする | Microsoft Azure | ホステッド クラウド検索サービス"
+	description="Azure ポータルでインデクサーを使用する方法について説明します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
@@ -14,16 +14,10 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/09/2016"
+	ms.date="03/10/2016"
 	ms.author="heidist"/>
 
 # ポータルを使用した Azure Search へのデータのインポート
-> [AZURE.SELECTOR]
-- [Overview](search-what-is-data-import.md)
-- [Portal](search-import-data-portal.md)
-- [.NET](search-import-data-dotnet.md)
-- [REST API](search-import-data-rest-api.md)
-- [Indexers](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
 Azure ポータルでは、Azure Search ダッシュボードに**データのインポート** コマンドが用意されており、その指示に従って Azure Search にデータを取り込むことができます。このコマンドを実行すると、組み込みのインデクサー機能によって既存のデータ ソースがクロールされ、データ ソース内の行セットに基づいてドキュメントが作成されて、アップロードされます。
 
@@ -37,7 +31,7 @@ Azure ポータルでは、Azure Search ダッシュボードに**データの�
 
 データは 1 つのテーブル、ビュー、または同等のデータ構造からのみインポートできます。検索インデックスに対して適切なメタデータとデータを入力するために、最初に、アプリケーションのデータ ソースでこのデータ構造の作成が必要になる場合があります。
 
-サンプル データを使用して、このワークフローを試してみることができます。この作業を開始するには、「[Azure ポータルから Azure Search を使用する](search-get-started-portal.md)」を参照してください。
+サンプル データを使用して、このワークフローを試してみることができます。この作業を開始するには、「[ポータルから Azure Search を使用する](search-get-started-portal.md)」を参照してください。
 
 ##データのインポートを構成する
 
@@ -51,8 +45,8 @@ Azure ポータルでは、Azure Search ダッシュボードに**データの�
 
 4. **[データに接続します]** をクリックし、インデクサーで使用されるデータ ソースの定義を指定します。次のオプションがあります。
 	- 	[既存のデータ ソース] は、インデクサー用に以前に作成されたデータ ソースの定義を指します。検索サービス用に定義されたインデクサーが既にある場合は、別のインポート用のデータ ソース定義に転用できます。
-	- 	[Azure SQL] は、Azure 上の SQL Database または Azure VM 上の SQL Server データベースへのデータ ソース接続を指定します。 
-	- 	[DocumentDB] は、データ ソースの種類が DocumentDB である場合にデータ ソース接続を指定します。 
+	- 	[Azure SQL] は、Azure 上の SQL Database または Azure VM 上の SQL Server データベースへのデータ ソース接続を指定します。
+	- 	[DocumentDB] は、データ ソースの種類が DocumentDB である場合にデータ ソース接続を指定します。
 
    Azure SQL と DocumentDB はどちらも、データベースがサブスクリプションに含まれている必要があります。接続文字列がわかっている場合はその接続文字列を貼り付けたり、サブスクリプションで書き込み権限を持つユーザーによって以前に作成されたデータ ソースを選択したりできます。
 
@@ -71,9 +65,9 @@ Azure ポータルでは、Azure Search ダッシュボードに**データの�
 6. **[データのインポート]** をクリックし、[今すぐ実行] オプションを使用するか、定期的なスケジュールを設定して、インポート操作を実行します。
 
 データのインポート操作を実行すると、バック グラウンドでインデクサーが作成されます。インデクサーを直接編集して、任意の構成要素を変更できます。
-	
+
 ##既存のインデクサーを編集する
 
 サービス ダッシュボードで [インデクサー] タイルをダブルクリックすると、サブスクリプションに作成されたすべてのインデクサーの一覧が表示されます。インデクサーのいずれかをダブルクリックして、実行、編集、削除できます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

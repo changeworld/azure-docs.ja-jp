@@ -3,7 +3,7 @@
 	description="よく寄せられる質問" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="LuisCabrer" 
+	authors="bharaths" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
-	ms.author="luisca"/>
+	ms.date="03/07/2016" 
+	ms.author="bharaths"/>
 
 #Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
 
@@ -77,4 +77,4 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

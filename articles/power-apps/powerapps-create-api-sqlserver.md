@@ -15,15 +15,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
 
-# 組織の App Service 環境での新しい SQL Server API の作成
+# PowerApps Enterprise で新しい SQL Server API を作成する
+
+組織の (テナント) App Service 環境に SQL Server API を追加します。
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。 
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。 
 2. タスク バーの **[参照]** をクリックします。![][14]  
 3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][15]  
 4. **[PowerApps]** で、**[API の管理]** を選択します。
@@ -38,14 +40,14 @@
 
 オンプレミスの SQL Server に接続できます。このハイブリッド接続を確立するには、Azure に既に存在する次のようなハイブリッド ネットワーキング ソリューションを利用します。
 
-- [ExpressRoute](../expressroute-introduction.md)
-- [サイト間 VPN](../vpn-gateway-create-site-to-site-rm-powershell.md)
-- [ポイント対サイト接続](../vpn-gateway-point-to-site-create.md)  
+- [ExpressRoute](../expressroute/expressroute-introduction.md)
+- [サイト間 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+- [ポイント対サイト接続](../vpn-gateway/vpn-gateway-point-to-site-create.md)  
 
-	> [AZURE.NOTE]すべての App Service 環境には仮想ネットワークが関連付けられています。この仮想ネットワークに対してこのネットワーク接続を確立できます。  
-- [ハイブリッド接続](../web-sites-hybrid-connection-get-started.md)  
+	> [AZURE.NOTE]  すべての App Service 環境には仮想ネットワークが関連付けられています。この仮想ネットワークに対してこのネットワーク接続を確立できます。  
+- [ハイブリッド接続](../app-service-web/web-sites-hybrid-connection-get-started.md)  
 
-	> [AZURE.NOTE]App Service 環境内のすべての登録済み API には、対応する Web アプリがあります。他の Web アプリの場合と同様に、この Web アプリからのハイブリッド接続を確立できます。
+	> [AZURE.NOTE]  App Service 環境内のすべての登録済み API には、対応する Web アプリがあります。他の Web アプリの場合と同様に、この Web アプリからのハイブリッド接続を確立できます。
 	
 次の例では、ハイブリッド接続を作成する方法を示します。
 
@@ -53,7 +55,7 @@
 
 2.  **[リソース]** タイルを選択し、SQL Server API と同じ名前の Web アプリを選択します。この例では、*sqlconnectordemo* を選択します。 ![SQL Web アプリ](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
 
-3.  **[設定]** で、**[ネットワーク]** を選択します。**[ハイブリッド接続エンドポイントを構成する]** を選択し、[こちらの説明](../web-sites-hybrid-connection-get-started.md)に従ってハイブリッド接続を作成します。 ![ネットワーク](./media/powerapps-create-api-sqlserver/network.png)
+3.  **[設定]** で、**[ネットワーク]** を選択します。**[ハイブリッド接続エンドポイントを構成する]** を選択し、[こちらの説明](../app-service-web/web-sites-hybrid-connection-get-started.md)に従ってハイブリッド接続を作成します。 ![ネットワーク](./media/powerapps-create-api-sqlserver/network.png)
 
 ハイブリッド接続を作成して接続すると、オンプレミスのサーバーに接続できるようになります。次に、データへの接続を作成し、ユーザーがアクセスできるようにします。 ![ハイブリッド接続](./media/powerapps-create-api-sqlserver/hybridconn.png)
 
@@ -78,4 +80,4 @@
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

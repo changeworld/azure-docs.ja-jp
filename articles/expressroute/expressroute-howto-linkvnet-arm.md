@@ -19,9 +19,9 @@
 # ExpressRoute 回線への仮想ネットワークのリンク
 
 > [AZURE.SELECTOR]
-- [PowerShell - Classic](expressroute-howto-linkvnet-classic.md)
-- [PowerShell - Resource Manager] (expressroute-howto-linkvnet-arm.md)
-- [Template - Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
+- [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
+- [PowerShell - Resource Manager](expressroute-howto-linkvnet-arm.md)
+- [テンプレート - リソース マネージャー](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
 この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、リソース マネージャー デプロイ モデルを使用してデプロイされた VNet に適用されます。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをリンクする場合は、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)」をご覧ください。
 
@@ -32,7 +32,7 @@
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 
+- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。 
 - 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
 - アクティブな ExpressRoute 回線が必要です。 
 	- 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてください。 
@@ -129,7 +129,7 @@
 回線ユーザーは以下のコマンドレットを実行して、リンク承認を適用することができます。
 
 	$id = "/subscriptions/********************************/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/MyCircuit"	
-	$connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+	$connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 
 #### 接続承認の解除
 
@@ -139,4 +139,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

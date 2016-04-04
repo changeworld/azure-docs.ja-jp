@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.date="03/07/2016"
 	ms.author="femila"/>
 
 # Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
@@ -33,7 +33,7 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 3. AD FS 管理コンソールを開き、**[AD FS]** > **[信頼関係] > [証明書利用者信頼]** に移動します。[Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、**[要求規則の編集…]** を選択します。
 4. **[発行変換規則]** タブで、**[規則の追加]** を選択します。
 5. **[要求規則テンプレート]** ボックスから、**[カスタムの規則を使用して要求を送信する]** を選択します。**[次へ]** を選択します。
-6. **[要求規則名]** ボックスに「 *Auth Method Claim Rule* 」と入力します。
+6. **[要求規則名]** ボックスに「*Auth Method Claim Rule*」と入力します。
 7. **[要求規則]** ボックスに次の要求規則を入力します。
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
@@ -87,6 +87,8 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 * [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
+* [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
+
 その他のメモ
 --------------------------------------------------------------------
 
@@ -101,5 +103,6 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

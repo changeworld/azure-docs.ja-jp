@@ -13,30 +13,33 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="02/10/2016" 
 	ms.author="bradsev" />
 
 # Azure Storage Explorer を使用して Azure BLOB ストレージ間でデータを移動する
 
 ## はじめに 
 
-Azure ストレージ エクスプローラーは、Azure Storage アカウント内のデータを検査および変更するための無料の Windows ベースのツールです。このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。このツールは、「[Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/)」からダウンロードできます。
+Azure ストレージ エクスプローラーは、Azure Storage アカウント内のデータを検査および変更するための無料の Windows ベースのツールです。このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。このツールは、[Azure ストレージ エクスプローラー](http://storageexplorer.com/)からダウンロードできます。
 
 以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
-
+ 
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
-
-
+ 
+&nbsp;
+ 
 > [AZURE.NOTE] [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、Azure Storage Explorer は既に VM にインストールされています。
-
-> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+ 
+&nbsp;
+ 
+> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ## 前提条件
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 - Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-- ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
+- ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 
 <a id="explorer"></a>
@@ -56,4 +59,4 @@ Azure ストレージ エクスプローラーは、Azure Storage アカウン�
 [2]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img2.png
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

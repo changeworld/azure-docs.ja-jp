@@ -23,7 +23,7 @@
 スクリプト アクションを使用して Windows ベースの HDInsight に Spark をインストールし、HDInsight クラスターで Spark クエリを実行する方法について説明します。
 
 
-**関連記事** - [Linux ベースの HDInsight クラスターでの Spark のインストール](hdinsight-hadoop-spark-install-linux.md)
+**関連記事:**
 
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 
@@ -63,16 +63,18 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
 
 	<table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>名前</td>
-		<td>スクリプト アクションの名前を指定します。たとえば、<b>Install Spark</b> です。</td></tr>
-	<tr><td>スクリプト URI</td>
-		<td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。例: <i>https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1</i></td></tr>
-	<tr><td>ノードの種類</td>
-		<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
-	<tr><td>パラメーター</td>
-		<td>スクリプトで必要な場合は、パラメーターを指定します。Spark をインストールするスクリプトではパラメーターは必要ないため、ここは空白のままにできます。</td></tr>
-</table>複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトの追加後、チェックマークをクリックしてクラスターの作成を開始します。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>名前</td>
+			<td>スクリプト アクションの名前を指定します。たとえば、<b>Install Spark</b> です。</td></tr>
+		<tr><td>スクリプト URI</td>
+			<td>クラスターをカスタマイズするために呼び出すスクリプトの Uniform Resource Identifier (URI) を指定します。例: <i>https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1</i></td></tr>
+		<tr><td>ノードの種類</td>
+			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
+		<tr><td>パラメーター</td>
+			<td>スクリプトで必要な場合は、パラメーターを指定します。Spark をインストールするスクリプトではパラメーターは必要ないため、ここは空白のままにできます。</td></tr>
+	</table>
+
+	複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトの追加後、チェックマークをクリックしてクラスターの作成を開始します。
 
 Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Spark をインストールするためにスクリプトを使用することもできます。これらの手順については、このトピックの後半で説明します。
 
@@ -264,26 +266,26 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 	**Add-AzureHDInsightScriptAction** コマンドレットには次のパラメーターが必要です。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
-<tr>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">パラメーター</th>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:550px; padding-left:5px; padding-right:5px;">定義</th></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Config</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Script Action 情報が追加される構成オブジェクト</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプト アクションの名前。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">ClusterRoleCollection</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カスタマイズ スクリプトが実行されるノードを指定します。有効な値は HeadNode (ヘッド ノードにインストールする場合) または DataNode (すべてのデータ ノードにインストールする場合) です。いずれかまたは両方の値を使用することができます。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Uri</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">実行されるスクリプトへの URI を指定します。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">パラメーター</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプトで必要なパラメーター。このトピックで使用するサンプル スクリプトでは、パラメーターは必要ありません。そのため、このパラメーターは上記のスニペットに含まれません。
-</td></tr>
-</table>
+	<tr>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">パラメーター</th>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:550px; padding-left:5px; padding-right:5px;">定義</th></tr>
+	<tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Config</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Script Action 情報が追加される構成オブジェクト</td></tr>
+	<tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプト アクションの名前。</td></tr>
+	<tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">ClusterRoleCollection</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カスタマイズ スクリプトが実行されるノードを指定します。有効な値は HeadNode (ヘッド ノードにインストールする場合) または DataNode (すべてのデータ ノードにインストールする場合) です。いずれかまたは両方の値を使用することができます。</td></tr>
+	<tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Uri</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">実行されるスクリプトへの URI を指定します。</td></tr>
+	<tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">パラメーター</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプトで必要なパラメーター。このトピックで使用するサンプル スクリプトでは、パラメーターは必要ありません。そのため、このパラメーターは上記のスニペットに含まれません。
+	</td></tr>
+	</table>
 
 4. 最後に、Spark がインストールされているカスタマイズされたクラスターの作成を開始します。
 
@@ -303,7 +305,6 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 ## 関連項目
 
-- [Linux ベースの HDInsight クラスターに Spark をインストールする](hdinsight-hadoop-spark-install-linux.md): Linux ベースの HDInsight クラスターに Spark をインストールします。
 - [HDInsight で Hadoop を作成する](hdinsight-provision-clusters.md): HDInsight クラスターを作成します。
 - [HDInsight で Apache Spark を使用する](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): HDInsight で Spark を使用します。
 - [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用して HDInsight クラスターをカスタマイズします。
@@ -317,4 +318,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: powershell-install-configure.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

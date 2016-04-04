@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="02/04/2016"
+   ms.date="03/15/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -36,7 +36,7 @@ Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デ
 | サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --------------------------- | ---------------- | ------------- |
 | Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple iSCSI ボリュームは、次の Windows ディスク タイプで使用する場合にのみサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のミラー化されたシンプル ボリューム</li></ul>Windows Server 2012 の仮想プロビジョニング機能および ODX 機能は、StorSimple iSCSI ボリュームを使用する場合にサポートされます。<br><br>StorSimple で作成できるのは、仮想プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームです。部分的にプロビジョニングされたボリュームについては作成できません。<br><br>仮想プロビジョニングされたボリュームを再フォーマットと時間がかかる場合があります。再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。ただし、ボリュームの再フォーマットを行いたい場合は、次の操作を行ってください。<ul><li>領域の回復の遅延を避けるために、再フォーマットする前に次のコマンドを実行します。<br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の回復を再度有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) で説明されている Windows Server 2012 修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。|
-| VMWare ESX | 5.1 および 5.5 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 
+| VMWare ESX | 5\.1、5.5、6.0 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 
 | Linux RHEL/CentOS | 5 および 6 | Open-iSCSI イニシエーター バージョン 5 および 6 での Linux iSCSI クライアントのサポート。 |
 | Linux | SUSE Linux 11 | |
  > [AZURE.NOTE] 現在、IBM AIX は StorSimple ではサポートされていません。
@@ -73,11 +73,29 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 > [AZURE.IMPORTANT] StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
 
+### ファイアウォール ルールの URL パターン 
+
+多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。StorSimple デバイスと StorSimple Manager サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
+
+多くの場合、ファイアウォール ルールを自由に設定することをお勧めします。ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
+
+> [AZURE.NOTE] デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+
+
+| URL パターン | コンポーネント/機能 | デバイスの IP |
+|------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
+|`http://crl.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
+| `https://*.core.windows.net/*` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
+| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
+
 ### ルーティング メトリック
 
 ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。ルーティング メトリックが低いと、優先順位が高くなります。
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」をご覧ください。
+StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
 
 ルーティング メトリックのアルゴリズムは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
 
@@ -108,11 +126,11 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 		
 	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
+	| Data 0 | 1 | - | 
+	| Data 1 | 2 | 20 | 
+	| Data 2 | 3 | 30 | 
+	| Data 3 | 4 | 40 | 
+	| Data 4 | 5 | 50 | 
 	| Data 5 | 6 | 60 |
 
 
@@ -155,7 +173,7 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 
 - iSCSI とクラウドのアクセスに対してデバイスに専用のネットワーク インターフェイスを置くことで、iSCSI とクラウド トラフィックを分離します。詳細については、StorSimple デバイスで[ネットワーク インターフェイスを変更する](storsimple-modify-device-config.md#modify-network-interfaces)方法を参照してください。
 
-- ネットワーク インターフェイスには、Link Aggregation Protocol (LACP) 構成を使用しないでください。このような構成はサポートされていません。
+- ネットワーク インターフェイスには、Link Aggregation Control Protocol (LACP) 構成を使用しないでください。このような構成はサポートされていません。
 
 
 ## StorSimple の高可用性の要件
@@ -223,7 +241,8 @@ StorSimple デバイスには、ミラー化されたスペースを使用して
 
 - SSD または HDD の障害または交換が必要な場合、交換が必要な SSD または HDD のみを取り外すようにします。
 
-- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。
+特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 
 - 交換中は、SSD と HDD のドライブの **[メンテナンス]** ページで **[ハードウェア状態]** を監視します。緑のチェック状態は、ディスクが正常または OK であると示しています。一方、赤の感嘆符は障害中の SSD または HDD を示しています。
 
@@ -261,4 +280,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0316_2016-->

@@ -79,7 +79,7 @@ Azure RemoteApp イメージの作成方法の詳細については、「[How to
 
 VM の実行が停止したら、現在のポータルで探してキャプチャします。
 
-イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines-capture-image-windows-server.md)」をご覧ください。
+イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines/virtual-machines-windows-classic-capture-image.md)」をご覧ください。
 
 
 ### 5\.Azure RemoteApp テンプレート イメージに追加する
@@ -158,4 +158,4 @@ SQL Database に接続する方法の詳細については、「[SQL Server Mana
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

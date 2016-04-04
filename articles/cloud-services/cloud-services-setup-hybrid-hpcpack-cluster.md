@@ -25,9 +25,11 @@
 
 このチュートリアルでは、「クラウド バースト」とも呼ばれる方法を紹介します。Azure 上で多くのコンピューティング処理を要するアプリケーションを実行するためにコンピューティング リソースをオンデマンドで使用する、拡張性に優れた方法です。
 
-このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。Azure Virtual Machines での自動クラスター デプロイメントなど、HPC Pack に関するその他のシナリオについては、「[Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)」を参照してください。
+このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。これは、ハイブリッド コンピューティング クラスターを迅速にデプロイする方法のデモンストレーションを目的としています。大規模なハイブリッド HPC Pack クラスターを運用環境にデプロイするための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。Azure Virtual Machines での自動クラスター デプロイメントなど、HPC Pack に関するその他のシナリオについては、「[Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md)」を参照してください。
 
->[AZURE.NOTE] Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md)」を参照してください。
+
+>[AZURE.NOTE] Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](../virtual-machines/virtual-machines-windows-sizes.md)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。
+
 
 ## 前提条件
 
@@ -307,7 +309,7 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 * [HPC Pack 2012 R2 と HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697
 
 * [Microsoft HPC Pack を使用した Azure Worker ロール インスタンスへのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)
-* [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
+* [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md)
 * [Azure における大規模なコンピューティング: Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](../batch/big-compute-resources.md)
 
 
@@ -348,4 +350,4 @@ Azure のクラスター リソースを使用する場合、HPC クラスター
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

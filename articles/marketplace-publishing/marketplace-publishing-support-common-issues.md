@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="12/06/2015"
+      ms.date="03/21/2015"
       ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
@@ -25,7 +25,7 @@
 
 顧客に代わりクレジットまたは返金を要求する方法を次に示します。
 
-> [AZURE.NOTE]顧客または Azure リセラーから、返金またはクレジットの要求が Microsoft 宛になされた場合、Azure サービスの提供で使用するのと同じポリシーが適用されます。それらのポリシーで返金またはクレジットが指示される場合、弊社は事前に振り出して、発行元は Microsoft が発行元に代わって行う顧客または Azure リセラー宛ての返金またはクレジットを承認することになります。ポリシーで返金もクレジットも指示されない場合、顧客または Azure リセラーに対して、直接発行元に連絡を取るように通知する場合があります。
+> [AZURE.NOTE] 顧客または Azure リセラーから、返金またはクレジットの要求が Microsoft 宛になされた場合、Azure サービスの提供で使用するのと同じポリシーが適用されます。それらのポリシーで返金またはクレジットが指示される場合、弊社は事前に振り出して、発行元は Microsoft が発行元に代わって行う顧客または Azure リセラー宛ての返金またはクレジットを承認することになります。ポリシーで返金もクレジットも指示されない場合、顧客または Azure リセラーに対して、直接発行元に連絡を取るように通知する場合があります。
 
   ![1\_RequestRefund][1]
 
@@ -78,7 +78,7 @@
 
 **3.[アカウントの保護にご協力ください] 検証画面を完了します**。
 
-> [AZURE.NOTE]電話番号または電子メール アドレスで検証できます。
+> [AZURE.NOTE] 電話番号または電子メール アドレスで検証できます。
 
 ![protectacct][6]
 
@@ -120,4 +120,4 @@
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0323_2016-->

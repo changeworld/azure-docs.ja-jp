@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/04/2016"
+	ms.date="03/22/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -68,7 +68,7 @@ AD FS とのフェデレーション|ユーザーは、オンプレミスのネ�
 ## [同期] セクションのページ
 
 ### ディレクトリの接続
-Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントの資格情報が必要です。このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。ただし、シナリオによっては、追加のアクセス許可が必要なことがあります。詳細については [Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)に関するページを参照してください。
+Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントの資格情報が必要です。ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\\syncuser または fabrikam.com\\syncuser)。このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。ただし、シナリオによっては、追加のアクセス許可が必要なことがあります。詳細については [Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)に関するページを参照してください。
 
 ![ディレクトリの接続](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
 
@@ -131,8 +131,10 @@ Azure AD に同期する属性を限定する場合は、まず、使用する�
 
 ![オプション機能](./media/active-directory-aadconnect-get-started-custom/azureadattributes2.png)
 
+>[AZURE.WARNING] 属性の選択を解除すると、機能に影響が生じる場合があります。ベスト プラクティスと推奨事項については、「[同期する属性](active-directory-aadconnectsync-attributes-synchronized.md#attributes-to-synchronize)」を参照してください。
+
 ### ディレクトリ拡張機能の属性の同期
-ディレクトリ拡張機能では、Active Directory で組織やその他の属性によって追加されたカスタム属性を使用して Azure AD のスキーマを拡張することができます。この機能を使用するには、[**オプション機能**] ページの [**ディレクトリ拡張機能の属性の同期**] を選択します。選択すると、追加の属性を選択できる次のページが表示されます。
+ディレクトリ拡張機能では、Active Directory で組織やその他の属性によって追加されたカスタム属性を使用して Azure AD のスキーマを拡張することができます。この機能を使用するには、**[オプション機能]** ページの **[ディレクトリ拡張機能の属性の同期]** を選択します。選択すると、追加の属性を選択できる次のページが表示されます。
 
 ![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/extension2.png)
 
@@ -150,7 +152,7 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 
 ![AD FS ファーム](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
-**注:** 既存の AD FS ファームを使用する場合は、いくつかのページをスキップし、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動されます。
+**注:** 既存の AD FS ファームを使用する場合は、いくつかのページをスキップし、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
 
 ### AD FS サーバーの指定
 ここでは、AD FS をインストールする特定のサーバーを入力します。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。追加するすべてのサーバーは、この構成を実行する前に、Active Directory ドメインに参加させる必要があります。テストおよびパイロット デプロイ用に単一の AD FS サーバーをインストールし、スケーリングのニーズに合わせて追加のサーバーをデプロイすることをお勧めします。追加のサーバーをデプロイするには、初期インストール後に、再度 Azure AD Connect を開き、AD FS を追加のサーバーにデプロイします。
@@ -205,7 +207,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 実際の構成はこのページで行われます。
 
 > [AZURE.NOTE]
-インストールを続行する前に、フェデレーションを構成している場合は、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成していることを確認してください。
+インストールを続行する前に、フェデレーションを構成している場合は、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成済みであることを確認してください。
 
 ![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -227,8 +229,8 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 さらに、次の検証手順を実行します。
 
-- イントラネットのドメイン参加しているマシンの Internet Explorer からブラウザー サインインを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。**注:** 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
-- エクストラネットの任意のデバイスからブラウザー サインインを検証する: 自宅のマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、サインイン ID とパスワード資格情報を入力します。
+- イントラネットのドメイン参加済みマシンの Internet Explorer からブラウザー サインインを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。**注:** 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
+- エクストラネットの任意のデバイスからブラウザー サインインを検証する: 自宅のコンピューターまたはモバイル デバイスで https://myapps.microsoft.com に接続し、サインイン ID とパスワード資格情報を入力します。
 - リッチ クライアントのサインインを検証する: https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
 
 ## 次のステップ
@@ -238,4 +240,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0323_2016-->

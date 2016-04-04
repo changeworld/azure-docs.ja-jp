@@ -23,6 +23,11 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Add push notifications to your Android app (Android アプリにプッシュ通知を追加する)](../app-service-mobile/app-service-mobile-android-get-started-push.md)」を参照してください。
+
 ## 概要
 
 このトピックでは、Azure Mobile Services を使用して、Google Cloud Messaging (GCM) を使用する Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルの前提条件である、クイック スタート プロジェクトに、プッシュ通知を追加します。プッシュ通知はモバイル サービスに含まれている Azure Notification Hub で有効になっています。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
@@ -86,7 +91,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 1. **[実行]** メニュー アイテムの **[Run app (アプリを実行)]** をクリックして、アプリケーションを開始します。
 
-2. アプリケーションで、意味のあるテキスト (たとえば、「新しいモバイル サービス タスク」) を入力し、**[Add]** をクリックします。
+2. アプリケーションで、意味のあるテキスト (たとえば、「_新しいモバイル サービス タスク_」) を入力し、**[Add]** をクリックします。
 
   	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-quickstart-push1-android.png)
 
@@ -156,4 +161,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0309_2016-->

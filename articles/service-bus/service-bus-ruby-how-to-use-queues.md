@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="12/09/2015"
+	ms.date="03/09/2016"
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -60,7 +60,7 @@ Azure Service Bus 名前空間を作成するために実行した PowerShell �
 
 ![キーのコピー](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
 
-> [AZURE.NOTE]このキーは、[Azure クラシック ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
+> [AZURE.NOTE] このキーは、[Azure クラシック ポータル](http://manage.windowsazure.com/)にログオンして Service Bus の名前空間の接続情報に移動する場合にも見つかります。
 
 ## Ruby アプリケーションの作成
 
@@ -164,7 +164,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [キュー、トピック、およびサブスクリプション](service-bus-queues-topics-subscriptions.md)の概要
 -   GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure Service Bus キューと、「[Azure Queue Service の使用方法](/develop/ruby/how-to-guides/queue-service/)」の記事で説明されている Azure Queues の比較については、「[Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
+この記事で説明されている Azure Service Bus キューと、「[Ruby から Queue ストレージを使用する方法](../storage/storage-ruby-how-to-use-queue-storage.md)」の記事で説明されている Azure Queues の比較については、「[Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0316_2016-->

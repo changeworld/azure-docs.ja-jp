@@ -32,7 +32,7 @@ Azure を使用して、Azure Data Lake Analytics のアカウント、データ
 - **認証**。次のコマンドを使用します。
 
 		azure login
-	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
+	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](../xplat-cli-connect.md)」をご覧ください。
 - **Azure リソース マネージャー モードへの切り替え**。次のコマンドを使用します。
 
 		azure config mode arm
@@ -214,4 +214,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

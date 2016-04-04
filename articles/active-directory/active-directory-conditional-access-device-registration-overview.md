@@ -2,6 +2,7 @@
 	pageTitle="Azure Active Directory Device Registration の概要 | Microsoft Azure"
 	description="は、デバイスに基づいて条件付きでアクセスを許可するというシナリオの基礎となる機能です。デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。"
 	services="active-directory"
+	keywords="Device Registration, Device Registration の有効化"
 	documentationCenter=""
 	authors="femila"
 	manager="stevenpo"
@@ -12,8 +13,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="11/24/2015"
+	ms.topic="get-started-article"
+	ms.date="03/18/2016"
 	ms.author="femila"/>
 
 # Azure Active Directory Device Registration の概要
@@ -36,17 +37,19 @@ Azure Active Directory の管理者ポータルを使用して、登録されて
 
 ## Azure Active Directory Device Registration を有効にする
 次のセクションでは、ディレクトリの Azure Active Directory Device Registration サービスを有効にする方法について説明します。
-Azure Active Directory Device Registration サービスを有効にするには
--------------------------------------------------------------
-1. Azure ポータルに管理者としてサインインします。
-1. 左ウィンドウで、**[Active Directory]** を選択します。
-1. **[ディレクトリ]** タブで、ディレクトリを選択します。
-1. **[構成]** タブをクリックします。
-1. **[デバイス]** セクションまでスクロールします。
-1. **[デバイスの社内参加が許可されるユーザー]** で **[すべて]** を選択します。
-1. ユーザーごとに承認するデバイスの最大数を選択します。
 
->[AZURE.NOTE]Office 365 用に Microsoft Intune またはモバイル デバイス管理を使用して登録するには、社内参加が必要です。これらのサービスのいずれかを構成している場合、[すべて] が選択され、[なし] は無効になります。
+###Azure Active Directory Device Registration サービスを有効にするには
+
+1. Azure ポータルに管理者としてサインインします。
+2. 左ウィンドウで、**[Active Directory]** を選択します。
+3. **[ディレクトリ]** タブで、ディレクトリを選択します。
+4. **[構成]** タブをクリックします。
+5. **[デバイス]** セクションまでスクロールします。
+6. **[デバイスの社内参加が許可されるユーザー]** で **[すべて]** を選択します。
+7. ユーザーごとに承認するデバイスの最大数を選択します。
+
+>[AZURE.NOTE]
+Office 365 用に Microsoft Intune またはモバイル デバイス管理を使用して登録するには、社内参加が必要です。これらのサービスのいずれかを構成している場合、[すべて] が選択され、[なし] は無効になります。
 
 
 既定では、サービスに対する 2 要素認証は有効になっていません。ただし、デバイスを登録するときに 2 要素認証を使用することをお勧めします。
@@ -82,5 +85,6 @@ Azure AD Device Registration を使用して、ドメイン参加済みの Windo
 - [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md) 
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

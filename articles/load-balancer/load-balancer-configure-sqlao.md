@@ -4,7 +4,7 @@
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="load-balancer"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/21/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # SQL AlwaysOn のロード バランサーの構成
@@ -42,9 +42,9 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 	Add-AzureInternalLoadBalancer -InternalLoadBalancerName ILB_SQL_AO -SubnetName Subnet-1 -ServiceName SqlSvc
 
-手順 2.
+### 手順 2.
 
-## 各 VM で ILB の負荷分散エンドポイントを追加する
+各 VM で ILB の負荷分散エンドポイントを追加する
 
 	Get-AzureVM -ServiceName SqlSvc -Name sqlsvc1 | Add-AzureEndpoint -Name "LisEUep" -LBSetName "ILBSet1" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 –
 	DirectServerReturn $true -InternalLoadBalancerName ILB_SQL_AO | Update-AzureVM
@@ -53,18 +53,19 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 上の例では、sqlsvc1 および sqlsvc2 という 2 つの VM がクラウド サービス "Sqlsvc" で実行されます。DirectServerReturn スイッチで ILB を作成したら、負荷分散されたエンドポイントを ILB に追加して、SQL が可用性グループのリスナーを構成できるようにします。
 
-SQL AlwaysOn の作成について詳しくは、[Azure リソース マネージャー テンプレートを使用した SQL AlwaysOn のデプロイ](virtual-machines-workload-template-sql-alwayson.md)、または[ポータル ギャラリーの使用](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関するページを参照してください。
+SQL AlwaysOn の作成の詳細については、「[Using the Portal Gallery (ポータル ギャラリーの使用)](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)」を参照してください。
+
 
 
 ## 関連項目
 
-[インターネットに接続するロード バランサーの構成の開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
 
-[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0323_2016-->

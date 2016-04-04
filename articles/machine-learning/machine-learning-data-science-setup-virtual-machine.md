@@ -66,7 +66,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 ## <a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
 
-仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」を参照してください。**管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
+仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)」を参照してください。**管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
@@ -146,4 +146,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

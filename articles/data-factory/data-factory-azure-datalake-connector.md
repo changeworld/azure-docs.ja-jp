@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016"
+	ms.date="03/21/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
@@ -58,7 +58,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+	            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -69,7 +69,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 次の手順では、Data Factory エディターを使用して Azure Data Lake Store のリンクされたサービスを作成する手順について説明します。
 
 1. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Data Lake Store]** を選択します。
-2. JSON エディターで、**datalakeUri** プロパティに Data Lake の URI を入力します。
+2. JSON エディターで、**dataLakeStoreUri** プロパティに Data Lake の URI を入力します。
 3. コマンド バーの **[承認する]** をクリックします。ポップアップ ウィンドウが表示されます。
 
 	![Authorize button](./media/data-factory-azure-data-lake-connector/authorize-button.png)
@@ -235,7 +235,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 	    "properties": {
 	        "type": "AzureDataLakeStore",
 	        "typeProperties": {
-	            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+	            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
 				"sessionId": "<session ID>",
 	            "authorization": "<authorization URL>"
 	        }
@@ -405,7 +405,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | type | type プロパティを **AzureDataLakeStore** に設定する必要があります。 | あり |
-| dataLakeUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
+| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
 | sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | はい |  
 | accountName | Data Lake アカウント名 | いいえ |
@@ -418,7 +418,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など) | 12 時間 |
-| Azure Active Directory (AAD) で管理されているユーザー アカウント | | スライスの最後の実行から 14 日後。<p>OAuth ベースのリンクされたサービスに基づくスライスを、少なくとも 14 日に 1 回実行する場合は 90 日後。</p> |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント | スライスの最後の実行から 14 日後。<br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。
 
@@ -447,7 +447,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
         }
     }
 
-コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
+コードで使用する Data Factory クラスに関する詳細は、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」のトピックを参照してください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
  
 
 ## Azure Data Lake データセットの type プロパティ
@@ -459,9 +459,9 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
-| fileName | <p>Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。</p><p>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。</p><p>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。</p><p>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt</p>) の形式になります。 | いいえ |
+| fileName | Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
-| BlobSink の format | **TextFormat** と **AvroFormat** の 2 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。 | いいえ |
+| BlobSink の format | **TextFormat**、**AvroFormat**、および **JsonFormat** の 3 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。JsonFormat を使用する場合は、「[JsonFormat の指定](#specifying-jsonformat)」セクションを参照してください。 | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
@@ -501,12 +501,12 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | -------- | ----------- | -------- |
 | columnDelimiter | ファイルの列の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値はコンマです (,)。 | いいえ |
 | rowDelimiter | ファイルの行の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
-| escapeChar | <p>コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として「$」を定義し、ソースで文字列「Hello$, world」を使用できます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ | 
-| quoteChar | <p>この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方は指定できないことに注意してください。</p> | いいえ |
-| nullValue | <p>BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は「\\N」です。</p><p>たとえば、上記のサンプルに基づくと、BLOB の「NaN」は SQL Server などにコピーされるときに null 値として変換されます。</p> | いいえ |
+| escapeChar | コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているとき、テキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として “$” を定義し、ソースで文字列 “Hello$, world” を使用できます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。 | いいえ | 
+| quoteChar | この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。 | いいえ |
+| nullValue | BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は “\\N” です。<br/><br/>たとえば、上記のサンプルに基づくと、BLOB の “NaN” は SQL Server などにコピーされるときに null 値として変換されます。 | いいえ |
 | encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
 
-#### サンプル
+#### TextFormat の例
 次の例は、TextFormat の format プロパティの一部を示します。
 
 	"typeProperties":
@@ -537,6 +537,7 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
+[AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
 
 ### 圧縮のサポート  
 大量のデータセットを処理すると、I/O およびネットワークにボトルネックが生じる可能性があります。そのため、データを圧縮して保存すると、ネットワークでのデータ転送速度が上昇してディスク領域を節約できるだけでなく、ビッグ データの処理性能を大幅に高めることができます。現時点では、圧縮は Azure BLOB やオンプレミスのファイル システムなど、ファイルベースのデータ ストアでサポートされています。
@@ -598,7 +599,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| copyBehavior | コピー動作を指定します。 | <p>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</p><p>**FlattenHierarchy:** ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</p><p>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外の場合は、自動生成されたファイル名になります。</p> | いいえ |
+| copyBehavior | コピー動作を指定します。 | **PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><br/>**FlattenHierarchy:** ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。<br/><br/>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ |
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -607,4 +608,4 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

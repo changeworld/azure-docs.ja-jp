@@ -19,34 +19,11 @@
 #Microsoft Azure のアプリケーションのアーキテクチャ
 Microsoft Azure を使用するアプリケーションを構築するためのリソースです。これには、ソフトウェア システムを視覚的に説明する図を描画するためのツールが含まれます。
 
-
-
-##Azure のアーキテクチャ設計パターン
-Microsoft は、お客様独自の設計を作成するのに便利な一連のアーキテクチャ設計パターンを公開しています。これらのパターンは、簡潔なアーキテクチャのガイドとして組み合わせて利用することで、組織のビジネス ニーズを解決するための Microsoft Azure Platform の最適な活用方法に関するガイダンスとなります。
-
-
-[概要](../azure-architectures-cpif-overview/) - [ハイブリッド ネットワーク](../azure-architectures-cpif-infrastructure-hybrid-networking/) - [オフサイトのバッチ処理](../azure-architectures-cpif-foundation-offsite-batch-processing-tier/) - [複数サイト データ層](../azure-architectures-cpif-foundation-multi-site-data-tier/) - [グローバル負荷分散 Web 層](../azure-architectures-cpif-foundation-global-load-balanced-web-tier/) - [Azure Search 層](../azure-architectures-cpif-foundation-azure-search-tier/)
- 
-各パターンには、以下が含まれています。
- 
-- サービスの説明
-- パターンを活用するために必要な Azure サービスの一覧
-- アーキテクチャ図
-- アーキテクチャの依存関係
-- パターンに影響を与える可能性がある設計上の制限または考慮事項
-- インターフェイスとエンドポイント
-- アンチ パターン
-- 可用性と回復性、使用されるサービスの複合 SLA、規模とパフォーマンス、コスト、運用についての考慮事項など、アーキテクチャに関する重要な考慮事項の概要。
-
-![Azure のアーキテクチャ設計パターン](./media/architecture-overview/AzureArchPatterns.jpg)
-
-
 ##設計パターンのポスター
-Microsoft Patterns and Practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍「[クラウド設計パターン](http://msdn.microsoft.com/library/dn568099.aspx)」を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。
 
-![パターンとプラクティス クラウド パターンのポスター](./media/architecture-overview/PnPPatternPosterThumb.jpg)
+Microsoft patterns & practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍「[クラウド設計パターン](http://msdn.microsoft.com/library/dn568099.aspx)」を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。
 
-
+![patterns & practices のクラウド パターンのポスター](./media/architecture-overview/PnPPatternPosterThumb.jpg)
 
 ##Microsoft のアーキテクチャの認定コース
 
@@ -108,4 +85,4 @@ Microsoft は、ポスター/インフォグラフィックに関連するいく
 
 ![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -182,6 +182,6 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 ## 次のステップ
 
-- [運用環境](../virtual-machines/virtual-machines-workload-high-availability-LOB-application-overview.md)をセットアップします。
+- [運用環境](../virtual-machines/virtual-machines-windows-lob-overview.md)をセットアップします。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

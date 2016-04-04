@@ -231,7 +231,7 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ | 
 | gatewayName | Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 | はい |
 
-オンプレミスの MySQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの MySQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 ## MySQL データセットの type プロパティ
 
@@ -313,4 +313,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

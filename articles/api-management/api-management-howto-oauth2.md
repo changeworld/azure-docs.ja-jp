@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
@@ -24,7 +24,7 @@
 
 このガイドでは、開発者アカウントに OAuth 2.0 認証を使用するように API Management サービス インスタンスを構成する方法を説明していますが、OAuth 2.0 プロバイダーを構成する方法は説明していません。手順は似ていて、API Management サービス インスタンスでの OAuth 2.0 の構成に使用される情報は同じですが、各 OAuth 2.0 プロバイダーの構成は異なっています。このトピックは、Azure Active Directory を OAuth 2.0 プロバイダーとして使用する例を示しています。
 
->[AZURE.NOTE]Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][] のサンプルを参照してください。
+>[AZURE.NOTE] Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][] のサンプルを参照してください。
 
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
 
@@ -32,7 +32,7 @@
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->[AZURE.NOTE]まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+>[AZURE.NOTE] まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[認証サーバーの追加 (Add authorization server)]** をクリックします。
 
@@ -44,7 +44,7 @@
 
 **[名前]** フィールドと **[説明]** フィールドに、名前とオプションの説明を入力します。
 
->[AZURE.NOTE]これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
+>[AZURE.NOTE] これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
 
 **[クライアント登録ページ URL (Client registration page URL)]** を入力します。このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。**[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します。この機能を OAuth 2.0 プロバイダーがサポートしている場合でも、組織によってはこの機能を構成または使用していない場合があります。OAuth 2.0 プロバイダーでユーザーによるアカウント管理が構成されていない場合は、会社の URL、`https://placeholder.contoso.com` のような URL などのプレースホルダー URL を入力してください。
 
@@ -100,7 +100,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 ![Echo API][api-management-apis-echo-api]
 
->[AZURE.NOTE]アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
+>[AZURE.NOTE] アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
 
 **[GET Resource]** 操作を選択し、**[コンソールを開く]** をクリックして、ドロップダウンで **[認証コード]** を選択します。
 
@@ -108,7 +108,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 **[認証コード]** が選択されると、OAuth 2.0 プロバイダーのサインイン フォームがあるポップアップ ウィンドウが表示されます。この例では、サインイン フォームは Azure Active Directory によって提供されています。
 
->[AZURE.NOTE]ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
+>[AZURE.NOTE] ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
 
 ![サインイン][api-management-oauth2-signin]
 
@@ -160,4 +160,4 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

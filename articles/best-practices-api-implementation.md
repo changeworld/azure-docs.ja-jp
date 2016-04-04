@@ -955,7 +955,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	6. タスクの実行中、クライアントは独自の処理を引き続き実行できます。クライアントは、要求を URI _/polling/{guid}_ に定期的に送信できます。_{guid}_ は、Web API から 202 応答メッセージで返される GUID です。
 
-	7. Web API は、_/polling{guid}_ URI でテーブル内の対応するタスクの状態を照会し、HTTP 状態コード 200 (OK) と、この状態 (_Running_、_Complete_、または _Failed_) を含む応答メッセージを返します。タスクが完了または失敗した場合、処理の結果や失敗の原因に関する入手可能な情報を応答メッセージに含めることもできます。
+	7. Web API は、_/polling/{guid}_ URI でテーブル内の対応するタスクの状態を照会し、HTTP 状態コード 200 (OK) と、この状態 (_Running_、_Complete_、または _Failed_) を含む応答メッセージを返します。タスクが完了または失敗した場合、処理の結果や失敗の原因に関する入手可能な情報を応答メッセージに含めることもできます。
 
 	通知を実装する場合は、次のオプションがあります。
 
@@ -1152,4 +1152,4 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

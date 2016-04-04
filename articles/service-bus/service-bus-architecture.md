@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="11/06/2015"
+   ms.date="03/09/2016"
    ms.author="sethm" />
 
 # Service Bus のアーキテクチャ
@@ -69,4 +69,4 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

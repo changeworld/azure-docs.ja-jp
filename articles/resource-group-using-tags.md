@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="03/07/2016"
 	ms.author="tomfitz"/>
 
 
@@ -31,7 +31,7 @@
 
 ## テンプレート内のタグ
 
-デプロイ時にタグをリソースに追加するのは非常に簡単です。デプロイしているリソースに**タグ**要素を追加し、タグの名前と値を指定するだけです。タグの名前と値は、サブスクリプションに事前に存在する必要はありません。各リソースに対して、最大で 15 個のタグを指定できます。
+デプロイ中にリソースにタグを付けるには、デプロイしているリソースに**タグ**要素を追加し、タグの名前と値を指定するだけで済みます。タグの名前と値は、サブスクリプションに事前に存在する必要はありません。各リソースに対して、最大で 15 個のタグを指定できます。
 
 次の例では、タグを使用したストレージ アカウントを示します。
 
@@ -84,7 +84,7 @@
 
 ## ポータルでのタグ
 
-ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
+ポータルで既存のリソースやリソース グループにタグを付けることができます。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
 
 ![リソース ブレードとリソース グループのブレードの [タグ] 部分](./media/resource-group-using-tags/tag-icon.png)
 
@@ -100,85 +100,82 @@
 
 ![スタート画面にタグをピン留めする](./media/resource-group-using-tags/pin-tags.png)
 
-## PowerShell を使用したタグ付け
-
-[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
+## タグと PowerShell
 
 タグはリソースおよびリソース グループに直接適用されます。そのため、既に適用されているタグを調べるには、**Get-AzureRmResource** または **Get-AzureRmResourceGroup**.を使用してリソースまたはリソース グループを取得します。それでは、リソース グループから始めましょう。
 
-    PS C:\> Get-AzureRmResourceGroup tag-demo
+    PS C:\> Get-AzureRmResourceGroup -Name tag-demo-group
 
-    ResourceGroupName : tag-demo
+    ResourceGroupName : tag-demo-group
+    Location          : westus
+    ProvisioningState : Succeeded
+    Tags              :
+                    Name         Value
+                    ===========  ==========
+                    Dept         Finance
+                    Environment  Production
+
+
+このコマンドレットは、リソース グループに関して、適用されているタグを含むいくつかのメタデータを返します。
+
+リソースのメタデータを取得する際、タグは直接的には表示されません。タグは、下記のように、Hashtable オブジェクトとしてのみ表示されます。
+
+    PS C:\> Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group
+
+    Name              : tfsqlserver
+    ResourceId        : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
+    ResourceName      : tfsqlserver
+    ResourceType      : Microsoft.Sql/servers
+    Kind              : v12.0
+    ResourceGroupName : tag-demo-group
+    Location          : westus
+    SubscriptionId    : {guid}
+    Tags              : {System.Collections.Hashtable}
+
+実際のタグを表示するには、**Tags** プロパティを取得します。
+
+    PS C:\> (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group).Tags | %{ $_.Name + ": " + $_.Value }
+    Dept: Finance
+    Environment: Production
+
+通常は、特定のリソース グループまたはリソースのタグを表示する代わりに、特定のタグと値を持つリソースまたはリソース グループをすべて取得します。特定のタグが付けられたリソース グループを取得するには、**Find-AzureRmResourceGroup** コマンドレットに **-Tag** パラメーターを指定して使用します。
+
+    PS C:\> Find-AzureRmResourceGroup -Tag @{ Name="Dept"; Value="Finance" } | %{ $_.Name }
+    tag-demo-group
+    web-demo-group
+
+特定のタグと値を持つすべてのリソースを取得するには、**Find-AzureRmResource** コマンドレットを使用します。
+
+    PS C:\> Find-AzureRmResource -TagName Dept -TagValue Finance | %{ $_.ResourceName }
+    tfsqlserver
+    tfsqldatabase
+
+既存のタグがないリソース グループにタグを追加するには、**Set-AzureRmResourceGroup** コマンドを使用し、タグ オブジェクトを指定します。
+
+    PS C:\> Set-AzureRmResourceGroup -Name test-group -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} )
+
+    ResourceGroupName : test-group
     Location          : southcentralus
     ProvisioningState : Succeeded
     Tags              :
-    Permissions       :
-                    Actions  NotActions
-                    =======  ==========
-                    *
+                    Name          Value
+                    =======       =====
+                    Dept          IT
+                    Environment   Test
+                    
+既存のタグがないリソースにタグを追加するには、**SetAzureRmResource** コマンドを使用します。
 
-    Resources         :
-                    Name                             Type                                  Location
-                    ===============================  ====================================  ==============
-                    CPUHigh ExamplePlan              microsoft.insights/alertrules         eastus
-                    ForbiddenRequests tag-demo-site  microsoft.insights/alertrules         eastus
-                    LongHttpQueue ExamplePlan        microsoft.insights/alertrules         eastus
-                    ServerErrors tag-demo-site       microsoft.insights/alertrules         eastus
-                    ExamplePlan-tag-demo             microsoft.insights/autoscalesettings  eastus
-                    tag-demo-site                    microsoft.insights/components         centralus
-                    ExamplePlan                      Microsoft.Web/serverFarms             southcentralus
-                    tag-demo-site                    Microsoft.Web/sites                   southcentralus
+    PS C:\> Set-AzureRmResource -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} ) -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
 
-
-このコマンドレットは、リソース グループに関して、適用されているタグを含むいくつかのメタデータを返します。リソース グループにタグを付けるには、**Set-AzureRmResourceGroup** コマンドを使用して、タグ名と値を指定するだけです。
-
-    PS C:\> Set-AzureRmResourceGroup tag-demo -Tag @( @{ Name="project"; Value="tags" }, @{ Name="env"; Value="demo"} )
-
-    ResourceGroupName : tag-demo
-    Location          : southcentralus
-    ProvisioningState : Succeeded
-    Tags              :
-                    Name     Value
-                    =======  =====
-                    project  tags
-                    env      demo
-
-タグは全体として更新されるため、既にタグが付けられているリソースにタグをもう 1 つ追加する場合は、保持しておきたいすべてのタグを含む配列を使用する必要があります。これを行うために、まず既存のタグを選択して、新しいタグを 1 つ追加することができます。
+タグは全体として更新されるため、既にタグが付けられているリソースにタグをもう 1 つ追加する場合は、保持しておきたいすべてのタグを含む配列を使用する必要があります。これを行うには、まず既存のタグを選択し、そのセットに新しいタグを追加して、すべてのタグを再適用します。
 
     PS C:\> $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
     PS C:\> $tags += @{Name="status";Value="approved"}
-    PS C:\> Set-AzureRmResourceGroup tag-demo -Tag $tags
-
-    ResourceGroupName : tag-demo
-    Location          : southcentralus
-    ProvisioningState : Succeeded
-    Tags              :
-                    Name     Value
-                    =======  ========
-                    project  tags
-                    env      demo
-                    status   approved
-
+    PS C:\> Set-AzureRmResourceGroup -Name test-group -Tag $tags
 
 特定のタグを 1 つ以上削除するには、削除するタグが含まれない配列を保存します。
 
 プロセスはリソースの場合も同じですが、**Get-AzureRmResource** および **Set-AzureRmResource** コマンドレットを使用する点のみ異なります。
-
-特定のタグが付けられたリソース グループを取得するには、**Find-AzureRmResourceGroup** コマンドレットに **-Tag** パラメーターを指定して使用します。
-
-    PS C:\> Find-AzureRmResourceGroup -Tag @{ Name="env"; Value="demo" } | %{ $_.ResourceGroupName }
-    rbacdemo-group
-    tag-demo
-
-Azure PowerShell 1.0 よりも前のバージョンで特定のタグが付けられたリソースを取得するには、次のコマンドを使用します。
-
-    PS C:\> Get-AzureResourceGroup -Tag @{ Name="env"; Value="demo" } | %{ $_.ResourceGroupName }
-    rbacdemo-group
-    tag-demo
-    PS C:\> Get-AzureResource -Tag @{ Name="env"; Value="demo" } | %{ $_.Name }
-    rbacdemo-web
-    rbacdemo-docdb
-    ...    
 
 PowerShell を使用してサブスクリプション内のすべてのタグの一覧を取得するには、**Get-AzureRmTag** コマンドレットを使用します。
 
@@ -192,14 +189,71 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 分類に新しいタグを追加するには、**New-AzureRmTag** コマンドレットを使用します。これらのタグは、リソースまたはリソース グループにまだ適用されていない場合でもオートコンプリートに含められます。タグ名/値を削除するには、タグが使用されている任意のリソースからタグを削除した後、**Remove-AzureRmTag** コマンドレットを使用して分類から削除します。
 
-## REST API を使用したタグ付け
+## タグと Azure CLI
+
+タグはリソースおよびリソース グループに直接適用されます。そのため、既に適用されているタグを調べるには **azure group show** を使用してリソース グループとそのリソースを取得します。
+
+    azure group show -n tag-demo-group
+    info:    Executing command group show
+    + Listing resource groups
+    + Listing resources for the group
+    data:    Id:                  /subscriptions/{guid}/resourceGroups/tag-demo-group
+    data:    Name:                tag-demo-group
+    data:    Location:            westus
+    data:    Provisioning State:  Succeeded
+    data:    Tags: Dept=Finance;Environment=Production
+    data:    Resources:
+    data:
+    data:      Id      : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
+    data:      Name    : tfsqlserver
+    data:      Type    : servers
+    data:      Location: eastus2
+    data:      Tags    : Dept=Finance;Environment=Production
+    ...
+
+リソース グループのみのタグを取得するには、[jq](http://stedolan.github.io/jq/download/) などの JSON ユーティリティを使用します。
+
+    azure group show -n tag-demo-group --json | jq ".tags"
+    {
+      "Dept": "Finance",
+      "Environment": "Production" 
+    }
+
+特定のリソースのタグを表示するには、**azure resource show** を使用します。
+
+    azure resource show -g tag-demo-group -n tfsqlserver -r Microsoft.Sql/servers -o 2014-04-01-preview --json | jq ".tags"
+    {
+      "Dept": "Finance",
+      "Environment": "Production"
+    }
+    
+特定のタグと値を持つすべてのリソースを取得するには、次のコマンドレットを使用します。
+
+    azure resource list --json | jq ".[] | select(.tags.Dept == "Finance") | .name"
+    "tfsqlserver"
+    "tfsqlserver/tfsqldata"
+
+タグは全体として更新されるため、既にタグが付けられているリソースにタグをもう 1 つ追加する場合は、保持しておきたい既存のタグをすべて取得する必要があります。リソース グループのタグの値を設定するには、**azure group set** を使用して、リソース グループのすべてのタグを指定します。
+
+    azure group set -n tag-demo-group -t Dept=Finance;Environment=Production;Project=Upgrade
+    info:    Executing command group set
+    ...
+    data:    Name:                tag-demo-group
+    data:    Location:            westus
+    data:    Provisioning State:  Succeeded
+    data:    Tags: Dept=Finance;Environment=Production;Project=Upgrade
+    ...
+    
+サブスクリプションの既存のタグを一覧表示するには **azure tag list** を使用し、新しいタグを追加するには **azure tag create** を使用します。サブスクリプションの分類からタグを削除する場合は、対象のタグが使用されているリソースがあれば、そのリソースからタグを削除してから、**azure tag delete** を使用してタグを削除します。
+
+## タグと REST API
 
 ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST AP](https://msdn.microsoft.com/library/azure/dn848368.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
 
 
-## タグ付けと課金
+## タグと課金
 
-サービスがサポートされていれば、タグを使用して課金データをグループ化できます。たとえば、 [Azure リソース マネージャーに統合された Virtual Machines](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md) を使用すると、仮想マシンの課金データを整理するためのタグを定義および適用できます。異なる組織向けに複数の VM を実行している場合は、タグを使用すると、コスト センターごとに課金データをグループ化できます。また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
+サービスがサポートされていれば、タグを使用して課金データをグループ化できます。たとえば、 [Azure リソース マネージャーに統合された Virtual Machines](./virtual-machines/virtual-machines-windows-compare-deployment-models.md) を使用すると、仮想マシンの課金データを整理するためのタグを定義および適用できます。異なる組織向けに複数の VM を実行している場合は、タグを使用すると、コスト センターごとに課金データをグループ化できます。また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
 タグに関する情報は、[Azure Resource Usage API と RateCard API](billing-usage-rate-card-overview.md) から、あるいは [Azure アカウント ポータル](https://account.windowsazure.com/)または [EA ポータル](https://ea.azure.com)からダウンロードできる使用状況のコンマ区切り値 (CSV) ファイルから取得できます。課金情報へのプログラムによるアクセスの詳細については、「[Microsoft Azure リソースの消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。REST API の操作については、「[Azure Billing REST API Reference (Azure Billing REST API リファレンス)](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください。
 
@@ -214,4 +268,4 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
 - ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」をご覧ください。  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

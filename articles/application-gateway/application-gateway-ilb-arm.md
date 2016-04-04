@@ -19,8 +19,8 @@
 # Azure リソース マネージャーを使用した内部ロード バランサー (ILB) での Application Gateway の作成
 
 > [AZURE.SELECTOR]
-- [Azure classic steps](application-gateway-ilb.md)
-- [Resource Manager PowerShell steps](application-gateway-ilb-arm.md)
+- [Azure クラシックの手順](application-gateway-ilb.md)
+- [Resource Manager の PowerShell の手順](application-gateway-ilb-arm.md)
 
 Azure Application Gateway は、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または Secure Sockets Layer (SSL) 終了が必要です。
 
@@ -35,7 +35,7 @@ Azure Application Gateway は、インターネットに接続する VIP のほ�
 ## Application Gateway の作成に必要な構成
 
 
-- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
+- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのアプリケーション ゲートウェイ用の別のサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
@@ -58,7 +58,7 @@ Application Gateway を作成するために必要な手順を次に示します
 
 ## リソース マネージャーのリソース グループの作成
 
-Azure リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+Azure リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
 ### 手順 1.
 
@@ -70,7 +70,7 @@ Azure リソース マネージャー コマンドレットを使用するよう
 
 		PS C:\> get-AzureRmSubscription
 
-資格情報を使用して認証を行うよう求められます。<BR>
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
 ### 手順 3.
 
@@ -121,11 +121,11 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 "gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
 
 
-### 手順 2.
+### 手順 2
 
-	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.0.0.10,10.0.0.11,10.0.0.12
+	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-IP アドレス "10.0.0.10,10.0.0.11, 10.0.0.12" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
+IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
 
 ### 手順 3.
 
@@ -179,9 +179,9 @@ Application Gateway のインスタンスのサイズを構成します。
 
 Application Gateway を削除するには、次の手順を順番に実行する必要があります。
 
-1. ゲートウェイを停止するには、**Stop-AzureRmApplicationGateway** コマンドレットを使用します。
-2. ゲートウェイを削除するには、**Remove-AzureRmApplicationGateway** コマンドレットを使用します。
-3. ゲートウェイが削除されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
+1. **Stop-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイを停止します。
+2. **Remove-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイを削除します。
+3. **Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
 
 ### 手順 1.
@@ -192,7 +192,7 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 
 ### 手順 2.
 
-Application Gateway を停止するには、**Stop-AzureRmApplicationGateway** を使用します。次の例では、最初の行で **Stop-AzureRmApplicationGateway** コマンドレットを示し、続いてその出力を示します。
+**Stop-AzureRmApplicationGateway** を使用して、アプリケーション ゲートウェイを停止します。次の例では、最初の行に **Stop-AzureRmApplicationGateway** コマンドレットを示し、続いてその出力を示します。
 
 	PS C:\> Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
 
@@ -202,7 +202,7 @@ Application Gateway を停止するには、**Stop-AzureRmApplicationGateway** �
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Application Gateway が停止状態になったら、**Remove-AzureRmApplicationGateway** コマンドレットを使用してサービスを削除します。
+アプリケーション ゲートウェイが停止状態になったら、**Remove-AzureRmApplicationGateway** コマンドレットを使用してサービスを削除します。
 
 
 	PS C:\> Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
@@ -228,13 +228,13 @@ Application Gateway が停止状態になったら、**Remove-AzureRmApplication
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 
-ILB とともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
+ILB と共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

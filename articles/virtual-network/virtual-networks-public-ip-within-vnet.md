@@ -41,7 +41,7 @@
 
 - 169\.254.0.0/16 (リンク ローカル)
 
-- 68\.63.129.16/32 (内部 DNS)
+- 168\.63.129.16/32 (内部 DNS)
 
 ## 次のステップ
 
@@ -51,4 +51,4 @@
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

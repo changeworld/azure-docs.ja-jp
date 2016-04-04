@@ -204,7 +204,7 @@ public ActionResult About()
 [v2.0 エンドポイントでの Web API の保護 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 その他のリソースについては、以下を参照してください。
-- [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) 
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

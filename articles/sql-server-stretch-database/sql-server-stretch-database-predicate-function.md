@@ -1,11 +1,11 @@
 <properties
-	pageTitle="移行する行を選択するインライン テーブル値関数を記述する (Stretch Database) | Microsoft Azure"
-	description="移行する行を選択するフィルター述語の作成方法について説明します。"
+	pageTitle="移行する行の選択にフィルター述語を使用する (Stretch Database) | Microsoft Azure"
+	description="移行する行の選択にフィルター述語を使用する方法について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
@@ -16,15 +16,15 @@
 	ms.date="02/26/2016"
 	ms.author="douglasl"/>
 
-# 移行する行を選択するインライン テーブル値関数を記述する (Stretch Database)
+# 移行する行の選択にフィルター述語を使用する (Stretch Database)
 
 別個のテーブルに履歴データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。その一方で、テーブルに過去と現在の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。フィルター述語では、インライン テーブル値関数を呼び出す必要があります。このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
 
-CTP 3.1 ～ RC0 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
+CTP 3.1 ～ RC1 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-> [!重要] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
+    > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
 
 ## インライン テーブル値関数の基本要件
 Stretch Database フィルター機能に必要なインライン テーブル値関数は次の例のようになります。
@@ -70,7 +70,7 @@ RETURN	SELECT 1 AS is_eligible
 
 -   関数パラメーターと定数式を比較します。たとえば、「`@column1 < 1000`」のように入力します。
 
-    次の例では、*date* 列の値が &lt; 1\\/1\\/2016 であるかどうかが確認されます。
+    次の例では、*date* 列の値が &lt; 1/1/2016 であるかどうかが確認されます。
 
     ```tsql
     CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
@@ -407,6 +407,7 @@ GO
 テーブルに適用されたフィルター述語を確認するには、カタログ ビュー **sys.remote\_data\_archive\_tables** を開き、**filter\_predicate** 列の値を確認します。値が null の場合、テーブル全体がアーカイブの対象になります。詳細については、「[sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」を参照してください。
 
 ## 関連項目
+
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

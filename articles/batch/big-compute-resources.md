@@ -38,7 +38,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
-* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+* [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
 
 * [Batch のビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
@@ -55,7 +55,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
 
-* [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
+* [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md)
 
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 
@@ -83,15 +83,16 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [MS-MPI リファレンス](https://msdn.microsoft.com/library/dn473458.aspx)
 
-* [MPI フォーラム](https://social.microsoft.com/Forums/home?forum=windowshpcmpi)
+* [MPI フォーラム](https://social.microsoft.com/Forums/ja-JP/home?forum=windowshpcmpi)
 
 ## コンピューティング集中型インスタンス
 
-Azure では、Linux と Windows の HPC ワークロードを実行するために[さまざまなサイズ](../virtual-machines/virtual-machines-size-specs.md)が用意されています。たとえば、コンピューティング集中型の [A8 や A9](../virtual-machines/virtual-machines-a8-a9-a10-a11-specs.md) インスタンスはバックエンド RDMA ネットワークに接続できます。
+Azure では、Linux と Windows の HPC ワークロードを実行するために[さまざまなサイズ](../virtual-machines/virtual-machines-windows-sizes.md)が用意されています。たとえば、コンピューティング集中型の [A8 や A9](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) インスタンスはバックエンド RDMA ネットワークに接続できます。
 
-* [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-cluster-rdma.md)
 
-* [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md)
+
+* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
 ## アーキテクチャの設計図
 
@@ -145,4 +146,4 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

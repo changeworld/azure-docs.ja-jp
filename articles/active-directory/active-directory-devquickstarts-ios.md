@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="03/18/2016"
 	ms.author="brandwe"/>
 
 # Azure AD の iOS アプリへの統合
@@ -64,7 +64,8 @@ iOS のリダイレクト URI の形式は次のとおりです。
 - また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[委任されたアクセス許可]** の下の **[組織のディレクトリにアクセス]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
 ## *3.ADAL をインストールおよび構成する*
-アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするには、アプリの登録に関するいくつかの情報を指定する必要があります。まず、Cocapods を使用して、ADAL を DirectorySearcher プロジェクトに追加します。
+アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
+-	Cocapods を使用して DirectorySearcher プロジェクトに ADAL を追加することから始めます。
 
 ```
 $ vi Podfile
@@ -219,10 +220,14 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`getToken` のみです。
 
-完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)をクリックしてください。ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
+完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)をクリックしてください。
 
-[Azure AD による Node.JS Web API のセキュリティ保護 >>](../active-directory-devquickstarts-webapi-nodejst.md)
+## その他のシナリオ
+ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
+
+- [Azure AD による Node.JS Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)
+- [iOS で ADAL を使用してクロス アプリ SSO を有効にする方法](active-directory-sso-ios.md)  
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -29,15 +29,15 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。
 
-	詳細については、[Windows を実行する VM の作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
+	詳細については、[Windows を実行する VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
 2. VM に接続し、RemoteApp を使用して共有するアプリをインストールして構成します。アプリに必要な追加の Windows の構成も実行してください。
 
-	詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-log-on-windows-server.md)」を参照してください。
+	詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)」を参照してください。
 
 3. いずれかの Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。スクリプトを実行するには、デスクトップ上にある **ValidateRemoteAppImage** をダブルクリックします。次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
 
-4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines/virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
+4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md)に関するページを参照してください。
 
 
 
@@ -58,4 +58,4 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

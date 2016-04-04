@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/01/2016"
+   ms.date="03/10/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array のデプロイ - ポータルの準備
@@ -26,8 +26,8 @@
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、デプロイ構成チェックリストを確認することをお勧めします。ポータルの準備は 10 分ほどで完了します。
 
-この記事に記載されている StorSimple のデプロイ情報は、StorSimple Virtual Arrays にのみ適用されます。
-
+この記事に記載されている情報は、Azure クラシック ポータルだけでなく、Microsoft Azure Government Cloud での StorSimple Virtual Arrays のデプロイに適用されます。
+ 
 ### 作業開始
 
 デプロイのワークフローは、ポータルの準備、仮想化環境内への仮想アレイのプロビジョニング、セットアップ ウィザードの完了という構成になっています。ファイル サーバーまたは iSCSI サーバーとして StorSimple Virtual Array をデプロイする作業を開始するには、次の表のリソース (記事とビデオ) を参照してください。
@@ -38,7 +38,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 | **#** | **手順** | **作業内容** | **参照ドキュメント**|
 |------|-------------------------------------------|--------------------------------------------------------------------------------|------------------------|
-|1\. | **Azure クラシック ポータルのセットアップ** | StorSimple 仮想デバイスをプロビジョニングする前に、StorSimple Manager サービスを作成して構成します。 |[ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)| 
+|1\. | **Azure クラシック ポータルのセットアップ** | StorSimple 仮想デバイスをプロビジョニングする前に、StorSimple Manager サービスを作成して構成します。 |[ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)|
 |2\. | **Virtual Array のプロビジョニング** | Hyper-V の場合: Hyper-V 2008 R2、Hyper-V 2012、または Hyper-V 2012 R2 を実行するホスト システムに StorSimple 仮想デバイスをプロビジョニングして接続します。<br></br> <br></br> VMware の場合: VMware ESXi 5.5 以降を実行するホスト システムに StorSimple オンプレミス仮想デバイスをプロビジョニングして接続します。<br></br>| [HYPER-V で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)|
 |3\. | **Virtual Array のセットアップ** | ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。これで、SMB 共有をプロビジョニングできます。<br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。これで、iSCSI ボリュームをプロビジョニングできます。| [ファイル サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-iscsi-setup.md)|
 
@@ -211,4 +211,4 @@ StorSimple Virtual Array の使用を開始するための詳細な手順を説�
 
 -   [VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

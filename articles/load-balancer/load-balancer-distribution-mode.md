@@ -145,8 +145,8 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
 
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 
-[インターネットに接続するロード バランサーの構成の開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

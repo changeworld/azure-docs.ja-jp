@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="03/04/2016" 
 	ms.author="bradsev" />
 
 # Python を使用して Azure BLOB ストレージ間でデータを移動する
@@ -51,7 +51,7 @@ Python API を使用する方法の詳細については、「[Python から Azu
 
 プログラム的に Azure ストレージにアクセスするためのすべての Python コードの先頭付近に、次のスニペットを追加します。
 
-	from azure.storage import BlobService
+	from azure.storage.blob import BlobService
 
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、BlobService オブジェクトを作成します。アカウント名とアカウント キーは実際のアカウントとキーに置き換えてください。
 	
@@ -70,7 +70,7 @@ Python API を使用する方法の詳細については、「[Python から Azu
 
 次のサンプル コードでは、ローカル ディレクトリのすべてのファイル (ディレクトリを除く) を BLOB ストレージにアップロードします。
 
-	from azure.storage import BlobService
+	from azure.storage.blob import BlobService
 	from os import listdir
 	from os.path import isfile, join
 	
@@ -95,7 +95,11 @@ Python API を使用する方法の詳細については、「[Python から Azu
 
 ## BLOB からのデータのダウンロード
 
-BLOB からデータをダウンロードするには、次のメソッドを使用します。 1. get\_blob\_to\_path 2. get\_blob\_to\_file 3. get\_blob\_to\_bytes 4. get\_blob\_to\_text
+BLOB からデータをダウンロードするには、次のメソッドを使用します。
+1. get\_blob\_to\_path
+2. get\_blob\_to\_file
+3. get\_blob\_to\_bytes
+4. get\_blob\_to\_text 
 
 これらのメソッドは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行します。
 
@@ -105,7 +109,7 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 
 次のサンプル コードでは、コンテナーからすべての BLOB をダウンロードします。list\_blobs を使用して、コンテナーで使用可能な BLOB の一覧を取得し、それらをローカル ディレクトリにダウンロードします。
 
-	from azure.storage import BlobService
+	from azure.storage.blob import BlobService
 	from os.path import join
 	
 	# Set parameters here
@@ -125,4 +129,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

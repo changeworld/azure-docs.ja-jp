@@ -54,7 +54,7 @@
 
     サンプルの Content-Security-Policy (Azure Active Directory に実装されている) は次のようになっています。
 
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'
 			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
     `https://login.windows.net` を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
@@ -96,10 +96,19 @@
 * Azure App Service を使用した[認証の詳細]を確認します。
 * このチュートリアルの続きとして、Apache Cordova アプリに[プッシュ通知]を追加します。
 
+SDK の使用方法を確認してください。
+
+* [Apache Cordova SDK]
+* [ASP.NET サーバー SDK]
+* [Node.js サーバー SDK]
+
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-cordova-get-started.md
 [Content-Security-Policy に関するドキュメント]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [プッシュ通知]: app-service-mobile-cordova-get-started-push.md
 [認証の詳細]: app-service-mobile-auth.md
+[Apache Cordova SDK]: app-service-mobile-codova-how-to-use-client-library.md
+[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

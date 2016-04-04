@@ -24,7 +24,7 @@
 Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次をインストールする必要があります。
 
 - データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
-- [Oracle Data Access Components (ODAC) for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html)。これは、ゲートウェイがインストールされているホスト コンピューターにインストールする必要があります。
+- Oracle Data Provider for .NET。これは、[Oracle Data Access Components (ODAC) for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。 
 
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
 
@@ -227,7 +227,7 @@ type | type プロパティを **OnPremisesOracle** に設定する必要があ�
 connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | はい 
 gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です | はい
 
-オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 ## Oracle データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Oracle、Azure BLOB、Azure テーブルなど) で同じです。
@@ -251,7 +251,7 @@ tableName | リンクされたサービスが参照する Oracle データベー
 プロパティ | 説明 |使用できる値 | 必須
 -------- | ----------- | ------------- | --------
 oracleReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。 
-例: select * from MyTable <p>指定されていない場合に実行される SQL ステートメント: select * from MyTable</p> | いいえ (**dataset**の **tableName** が指定されている場合)
+例: select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable | いいえ (**dataset**の **tableName** が指定されている場合)
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -301,7 +301,7 @@ XML | String
 
 **解決/回避策**
 
-1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/utilsoft-086879.html)した後、シナリオをやり直します。 
+1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html)した後、シナリオをやり直します。 
 2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。 
 	1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config
 	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます。“<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
@@ -312,4 +312,4 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

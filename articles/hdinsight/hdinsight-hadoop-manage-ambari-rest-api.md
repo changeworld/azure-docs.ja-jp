@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/08/2016"
+   ms.date="03/18/2016"
    ms.author="larryfr"/>
 
 #Ambari REST API を使用した HDInsight クラスターの管理
@@ -23,7 +23,7 @@
 
 Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。Linux ベースの HDInsight クラスターに含まれている Ambari は、クラスターの監視と構成の変更を行うために使用します。このドキュメントでは、クラスター ノードの完全修飾ドメイン名の検索、クラスターによって使用されている既定のストレージ アカウントの検索などの一般的なタスクを実行することによって、Ambari REST API の操作の基本を学習します。
 
-> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API で利用できる監視機能の一部のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
+> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API で利用できる監視機能の一部のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
 
 ##前提条件
 
@@ -32,7 +32,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 ##<a id="whatis"></a>Ambari とは
 
-<a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](http://ambari.apache.org) は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、[Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
@@ -40,7 +40,7 @@ Ambari は既定で Linux ベースの HDInsight クラスターに付属して�
 
 HDInsight の Ambari REST API のベース URI は https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、__CLUSTERNAME__ はクラスターの名前です。
 
-> [AZURE.IMPORTANT]HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
+> [AZURE.IMPORTANT] HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
 
 cURL を使用して REST API に対する GET 要求を実行する例を次に示します。
 
@@ -71,7 +71,7 @@ cURL を使用して REST API に対する GET 要求を実行する例を次に
     
 このコードを実行すると、JSON ドキュメントが取得され、その出力がパイプを介して jq に渡されます。`'.Clusters.health_report."Host/host_status/ALERT"'` は、取得する JSON ドキュメント内の要素を示します。
 
-> [AZURE.NOTE]__Host/host\_status/ALERT__ 要素が引用符で囲まれているのは、"/" が要素名の一部であることを示すためです。jq の使い方の詳細については、[jq の Web サイト](https://stedolan.github.io/jq/)を参照してください。
+> [AZURE.NOTE] __Host/host\_status/ALERT__ 要素が引用符で囲まれているのは、"/" が要素名の一部であることを示すためです。jq の使い方の詳細については、[jq の Web サイト](https://stedolan.github.io/jq/)を参照してください。
 
 ##例: クラスター ノードの FQDN を取得する
 
@@ -97,7 +97,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
     
-> [AZURE.NOTE]このコードは、この情報が含まれるサーバーに適用される最初の構成を返します (`service_config_version=1`)。クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
+> [AZURE.NOTE] このコードは、この情報が含まれるサーバーに適用される最初の構成を返します (`service_config_version=1`)。クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
 
 このコードは、次のような値を返します。ここで、__CONTAINER__ は既定のコンテナー、__ACCOUNTNAME__ は Azure ストレージ アカウント名です。
 
@@ -111,7 +111,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
     
     アカウントのリソース グループ名が返されます。
     
-    > [AZURE.NOTE]このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
+    > [AZURE.NOTE] このコマンドから何も返されない場合は、Azure CLI を Azure リソース マネージャー モードに変更し、コマンドを再度実行することが必要になる場合があります。Azure リソース マネージャー モードに切り替えて、次のコマンドを実行します。
     >
     > `azure config mode arm`
     
@@ -133,6 +133,6 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-> [AZURE.NOTE]HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
+> [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

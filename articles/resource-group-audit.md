@@ -1,165 +1,126 @@
-<properties 
-	pageTitle="リソース マネージャーの監査操作 | Microsoft Azure" 
-	description="リソース マネージャーの監査ログを使用し、ユーザーの操作やエラーを確認します。PowerShell、Azure、REST を表示します。" 
-	services="azure-resource-manager" 
-	documentationCenter="" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+<properties
+	pageTitle="リソース マネージャーの監査操作 | Microsoft Azure"
+	description="リソース マネージャーの監査ログを使用し、ユーザーの操作やエラーを確認します。Azure ポータル、PowerShell、Azure CLI、および REST を表示します。"
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="timlt"
 	editor=""/>
 
-<tags 
-	ms.service="azure-resource-manager" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/02/2015" 
+<tags
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/21/2016"
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
 
-ソリューションのデプロイ中または使用中に問題を見つけたら、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。デプロイ コマンドを利用し、特定のデプロイと操作に関する情報を取得できます。あるいは、監査ログを利用し、デプロイとソリューションの使用期間中に行われたその他のアクションに関する情報を取得できます。このトピックでは、監査ログに重点を置いて説明します。
+監査ログを使用すると、次の内容を判断することができます。
 
-監査ログには、リソースで実行されたすべての操作が含まれています。そのため、組織のユーザーがリソースを変更した場合、そのアクション、時刻、ユーザーを特定できます。
+- サブスクリプション内のリソースで行われた操作
+- 操作を開始したユーザー (バックエンド サービスによって開始された操作は、呼び出し側としてユーザーを返しません)
+- 操作が発生した時間
+- 操作の状態
+- 操作を調査するために役立つ可能性のあるその他のプロパティの値
 
-監査ログを使用する際に留意するべき 2 つの重要な制限があります。
+[AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
 
-1. 監査ログは、90 日間のみ保持されます。
-2. 15 日以内の範囲のみ照会することができます。
+このトピックでは、監査の操作に重点を置いて説明します。デプロイのトラブルシューティングを行うために監査ログを使用する方法については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 
-Azure PowerShell、Azure CLI、REST API、Azure ポータルを利用し、監査ログから情報を取得できます。
+Azure ポータル、Azure PowerShell、Azure CLI、Insights REST API、または [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を利用し、監査ログから情報を取得できます。
 
-## PowerShell
+## 監査ログを表示するポータル
 
-[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
+1. ポータルで監査ログを表示するには、**[参照]**、**[監査ログ]** の順に選択します。
 
-ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します (1.0 プレビューよりも前のバージョンの PowerShell では **Get-AzureResourceGroupLog** を実行します)。パラメーターを追加し、エントリの一覧を絞り込むことができます。
+    ![監査ログの選択](./media/resource-group-audit/select-audit-logs.png)
 
-次の例は、監査ログを利用し、ソリューションの使用期間中に行われたアクションを調査する方法を示すものです。アクションが発生したタイミングとそれを要請したユーザーを確認できます。開始日と終了日は、日付の形式で指定されます。
+2. **[監査ログ]** ブレードで、サブスクリプション内のすべてのリソース グループに対する最近の操作の概要が表示されます。これには、時間のグラフィック表示、操作の状態、および操作の一覧が含まれます。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+    ![アクションの表示](./media/resource-group-audit/audit-summary.png)
 
-または、日付関数を使用して、最後の 15 日など、日付の範囲を指定します。
+3. アクションの特定の種類を検索するには、[監査ログ] ブレードに表示される操作をフィルター処理できます。ブレードの上部にある **[フィルター]** をクリックします。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15)
+    ![ログのフィルター](./media/resource-group-audit/filter-logs.png)
 
-指定した開始時刻によっては、前のコマンドを実行したとき、そのリソース グループのアクションが長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合、次のコマンドを実行すると、someone@example.com が停止アクションを実行したことが判明します。
+4. **[フィルター]** ブレードで、表示する操作の数を制限するために、多くのさまざまな条件を選択することができます。たとえば、前の週に特定のユーザーによって実行されたすべてのアクションを表示できます。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+    ![フィルター オプションの設定](./media/resource-group-audit/set-filter.png)
 
-    Authorization     :
-                        Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-                        Action    : Microsoft.Web/sites/stop/action
-                        Role      : Subscription Admin
-                        Condition :
-    Caller            : someone@example.com
-    CorrelationId     : 84beae59-92aa-4662-a6fc-b6fecc0ff8da
-    EventSource       : Administrative
-    EventTimestamp    : 8/28/2015 4:08:18 PM
-    OperationName     : Microsoft.Web/sites/stop/action
-    ResourceGroupName : ExampleGroup
-    ResourceId        : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-    Status            : Succeeded
-    SubscriptionId    : xxxxx
-    SubStatus         : OK
+監査ログのビューを更新すると、指定した条件に一致する操作のみが表示されます。これらの設定は、次に監査ログを表示するまで保持されるため、操作のビューの範囲を広げるために、これらの値を変更する必要がある場合があります。
 
-次の例では、指定した開始時刻後に失敗したアクションがわかります。エラー メッセージを表示するには、**DetailedOutput** パラメーターも追加します。
+また、リソース ブレードから監査ログを選択して、特定のリソースに対して自動的にフィルター処理することもできます。ポータルで監査するリソースを選択し、**[監査ログ]** を選択します。
 
-    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-15) -Status Failed –DetailedOutput
-    
-このコマンドで返されるエントリとプロパティの数が多すぎる場合、**properties** プロパティを取得することで監査に集中できます。
+![リソースの監査](./media/resource-group-audit/audit-by-resource.png)
 
-    PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+監査ログは前の週に選択したリソースによって、自動的にフィルター処理されることに注意してください。
 
-    Content
-    -------
-    {}
-    {[statusCode, Conflict], [statusMessage, {"Code":"Conflict","Message":"Website with given name mysite already exists...
-    {[statusCode, Conflict], [serviceRequestId, ], [statusMessage, {"Code":"Conflict","Message":"Website with given name...
+![リソースによるフィルター](./media/resource-group-audit/filtered-by-resource.png)
 
-また、ステータス メッセージを見て、結果をさらに絞り込むことができます。
+## 監査ログを表示する PowerShell
 
-    PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+1. ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します。パラメーターを追加し、エントリの一覧を絞り込むことができます。開始時間と終了時間を指定しない場合は、過去 1 時間のエントリが返されます。たとえば、過去 1 時間のリソース グループの操作を取得するには、次を実行します。
 
-    Code       : Conflict
-    Message    : Website with given name mysite already exists.
-    Target     :
-    Details    : {@{Message=Website with given name mysite already exists.}, @{Code=Conflict}, @{ErrorEntity=}}
-    Innererror :
+        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup
 
+    次の例は、監査ログを利用し、指定した時間に行われた操作を調査する方法を示しています。開始日と終了日は、日付の形式で指定されます。
 
-## Azure CLI
+        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
 
-ログ エントリを取得するには、**azure group log show** コマンドを実行します。
+    または、日付関数を使用して、最後の 14 日など、日付の範囲を指定することができます。
 
-    azure group log show ExampleGroup
+        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 
-[jq](http://stedolan.github.io/jq/download/) など、JSON ユーティリティで結果を絞り込むことができます。次の例では、Web 構成ファイルの更新を含む操作を探す方法を示しています。
+2. 指定した開始時刻によっては、前のコマンドを実行したときに、そのリソース グループの操作が長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合、次のコマンドを実行して、someone@contoso.com が停止アクションを実行したことを確認できます。
 
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.localizedValue == "Update web sites config")"
+        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+        
+        Authorization     :
+        Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
+        Action    : Microsoft.Web/sites/stop/action
+        Role      : Subscription Admin
+        Condition :
+        Caller            : someone@contoso.com
+        CorrelationId     : 84beae59-92aa-4662-a6fc-b6fecc0ff8da
+        EventSource       : Administrative
+        EventTimestamp    : 8/28/2015 4:08:18 PM
+        OperationName     : Microsoft.Web/sites/stop/action
+        ResourceGroupName : ExampleGroup
+        ResourceId        : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
+        Status            : Succeeded
+        SubscriptionId    : xxxxx
+        SubStatus         : OK
 
-**–-last-deployment** パラメーターを追加すれば、返されるエントリを最後のデプロイからの操作のみに制限できます。
+3. 存在しなくなったリソース グループであっても、特定のユーザーが行ったアクションを検索できます。
 
-    azure group log show ExampleGroup --last-deployment
+        PS C:\> Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 
-最後のデプロイからの操作の一覧が長すぎる場合は、失敗した操作の結果だけに絞り込むことができます。
+## 監査ログを表示する Azure CLI
 
-    azure group log show tfCopyGroup --last-deployment --json | jq ".[] | select(.status.value == "Failed")"
+1. ログ エントリを取得するには、**azure group log show** コマンドを実行します。
 
-                                   /Microsoft.Web/Sites/ExampleSite
-    data:    SubscriptionId:       <guid>
-    data:    EventTimestamp (UTC): Thu Aug 27 2015 13:03:27 GMT-0700 (Pacific Daylight Time)
-    data:    OperationName:        Update website
-    data:    OperationId:          cb772193-b52c-4134-9013-673afe6a5604
-    data:    Status:               Failed
-    data:    SubStatus:            Conflict (HTTP Status Code: 409)
-    data:    Caller:               someone@example.com
-    data:    CorrelationId:        a8c7a2b4-5678-4b1b-a50a-c17230427b1e
-    data:    Description:
-    data:    HttpRequest:          clientRequestId: <guid>
-                                   clientIpAddress: 000.000.000.000
-                                   method:          PUT
+        azure group log show ExampleGroup
 
-    data:    Level:                Error
-    data:    ResourceGroup:        ExampleGroup
-    data:    ResourceProvider:     Azure Web Sites
-    data:    EventSource:          Administrative
-    data:    Properties:           statusCode:       Conflict
-                                   serviceRequestId:
-                                   statusMessage:    {"Code":"Conflict","Message":"Website with given name
-                                   ExampleSite already exists.","Target":null,"
-                                   Details
-                                   ":[{"Message":"Website with given name ExampleSite already exists."},
-                                   {"Code":"Conflict"},
-                                   {"ErrorEntity":{"Code":"Conflict","Message":"Website with given
-                                   name ExampleSite already exists.","ExtendedCode
-                                   ":"
-                                   54001","MessageTemplate":"Website with given name {0} already exists.",
-                                   "Parameters":["ExampleSite"],"
-                                   InnerErrors":null}}],"Innererror":null}
+2. [jq](http://stedolan.github.io/jq/download/) など、JSON ユーティリティで結果を絞り込むことができます。次の例では、Web 構成ファイルを更新した操作を探す方法を示しています。
 
+        azure group log show ExampleGroup --json | jq ".[] | select(.operationName.localizedValue == "Update web sites config")"
 
+3. 特定のユーザーのアクションを検索することができます。
 
-## REST API
+        azure group log show ExampleGroup --json | jq ".[] | select(.caller=="someone@contoso.com")"
+
+## 監査ログを表示する REST API
 
 監査ログを利用するための REST 操作は [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) に含まれています。監査ログのイベントを取得するには、「[サブスクリプションで管理イベントを一覧表示する](https://msdn.microsoft.com/library/azure/dn931934.aspx)」を参照してください。
 
-## ポータル
-
-ポータルでログに記録された操作を表示することもできます。監査ログのブレードを選択するだけです。
-
-![監査ログの選択](./media/resource-group-audit/select-audit.png)
-
-また、最新の操作の一覧を表示します。
-
-![アクションの表示](./media/resource-group-audit/show-actions.png)
-
-任意の操作を選択し、その詳細を表示できます。
-
 ## 次のステップ
 
+- Azure 監査ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。「[Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)」を参照してください。
 - セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
-- サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
-- すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
+- デプロイのトラブルシューティングに使用するコマンドについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
+- すべてのユーザーのリソースに対する削除を回避する方法については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

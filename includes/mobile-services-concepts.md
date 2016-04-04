@@ -22,6 +22,6 @@ Mobile Services の主要な機能と概念は次のとおりです:
 + **スケール:** アプリケーションが広く普及した場合に、処理能力、パフォーマンス、ストレージを有償で補強追加する機能です。
 + **スケジュールされたジョブ:** 事前に設定されたスケジュールに基づいて、またはオンデマンドで実行される、カスタム コードです。
 
-詳細については、「[Mobile Services の概念](mobile-services-concepts-links.md)」を参照してください。
+詳細については、「[Mobile Services の概念](../articles/mobile-services/mobile-services-concepts-links.md)」を参照してください。
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0309_2016-->

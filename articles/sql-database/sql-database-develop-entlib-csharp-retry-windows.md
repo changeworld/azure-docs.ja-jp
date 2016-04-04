@@ -3,8 +3,8 @@
 	description="Enterprise Library はクラウド サービスのクライアント プログラムのための多くのタスクを容易にするよう設計されています。これには、一時的な障害用の再試行ロジックの統合も含まれています。"
 	services="sql-database"
 	documentationCenter=""
-	authors="MightyPen"
-	manager="jeffreyg"
+	authors="annemill"
+	manager="jhubbard"
 	editor="" />
 
 
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/17/2015"
-	ms.author="genemi"/>
+	ms.date="03/15/2016"
+	ms.author="annemill"/>
 
 
 # コード サンプル: Enterprise Library 6 で提供される SQL Database に接続するための C&#x23; の再試行ロジック
@@ -326,4 +326,4 @@ SELECT TOP 3
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0316_2016-->

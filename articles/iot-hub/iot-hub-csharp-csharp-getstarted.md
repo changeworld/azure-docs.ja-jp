@@ -13,7 +13,7 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="12/14/2015"
+     ms.date="03/22/2016"
      ms.author="dobett"/>
 
 # Azure IoT Hub for .NET の使用
@@ -125,4 +125,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

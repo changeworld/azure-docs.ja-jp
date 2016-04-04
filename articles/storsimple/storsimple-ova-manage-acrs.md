@@ -3,7 +3,7 @@
    description="ACR (アクセス制御レコード) を管理して、StorSimple Virtual Array 上のボリュームに接続できるホストを判別する方法について説明します。"
    services="storsimple"
    documentationCenter=""
-   authors="SharS"
+   authors="alkohli"
    manager="carmonm"
    editor="" />
 <tags 
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/18/2016"
-   ms.author="v-sharos" />
+   ms.date="03/02/2016"
+   ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用して、StorSimple Virtual Array のアクセス制御レコードを管理する (プレビュー)
+# StorSimple Manager サービスを使用して、StorSimple Virtual Array のアクセス制御レコードを管理する 
 
 ## 概要
 
@@ -114,4 +114,4 @@ ACR を削除するには、Azure クラシック ポータルの **[構成]** �
 
 - [ボリュームの追加と ACR の構成](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

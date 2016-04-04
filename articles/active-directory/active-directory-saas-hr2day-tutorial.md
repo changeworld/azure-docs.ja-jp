@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/15/2016"
+	ms.date="03/10/2016"
 	ms.author="jeedes"/>
 
 
@@ -126,6 +126,7 @@ SAML アサーションを構成する前に、HR2day サポート チーム ([s
 
     a.ユーザーが HR2day by Merces アプリケーションへのサインオンに使用する URL を [サインオン URL] ボックスに **"https://<tenant name>.force.com/<instance name>"** の形式で入力します。
 
+    b.**[次へ]** をクリックします。
 
 4. **[HR2day by Merces でのシングル サインオンの構成]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2day_05.png) <br>
 
@@ -206,7 +207,7 @@ SAML アサーションを構成する前に、HR2day サポート チーム ([s
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[HR2day by Merces]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2day_50.png) <br>
+2. アプリケーションの一覧で **[HR2day by Merces]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2day_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -245,4 +246,4 @@ SAML アサーションを構成する前に、HR2day サポート チーム ([s
 [204]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

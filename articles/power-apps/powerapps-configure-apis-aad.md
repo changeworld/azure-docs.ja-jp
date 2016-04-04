@@ -5,7 +5,7 @@
     suite="powerapps"
 	documentationCenter="" 
 	authors="MandiOhlinger"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/02/2016"
    ms.author="guayan"/>
 
 # Azure Active Directory ドメイン上のバックエンド リソースに接続するために API を構成する
@@ -41,20 +41,20 @@ AAD ドメイン上のバックエンド システムにアクセスするには
 5. **[シングル サインオン]** で、``https://<your App Service Environment name>.azure-apim.net:456/redirect`` を **応答 URL** として追加します。
 6. **[他のアプリケーションに対するアクセス許可]** で次の操作を行います。  
 
-	a) **[アプリケーションの追加]** を選択します。ポップアップ ウィンドウで、既存のバックエンドをセキュリティで保護する AAD アプリケーションを選択します。![][17]
+	1. **[アプリケーションの追加]** をクリックします。ポップアップ ウィンドウで、既存のバックエンドをセキュリティで保護する AAD アプリケーションを選択します。![][17]  
 
-	b) ドロップダウン リストを使用して、アクセス許可を追加します。![][18]
+	2. ドロップダウン リストを使用して、アクセス許可を追加します。![][18]
 
 7. 下部にある **[保存]** を選択します。
 8. **[クライアント ID]** と **[キー]** をコピーし、保存します。Azure ポータルを閉じると、キーは二度と表示されません。 
 
-AAD アプリケーションの詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory-integrating-applications.md)」を参照してください。
+AAD アプリケーションの詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md)」を参照してください。
 
 ## 手順 2: Azure PowerShell を使用して API を構成する
 
 この時点で、API に必要な構成を初期化することは Azure ポータルでサポートされていません。Azure ポータルで API を構成するには、次の Auzre PowerShell スクリプトを使用します。
 
-> [AZURE.TIP]Azure PowerShell をインストール、構成、および実行する方法については、「[Azure PowerShell のインストールおよび構成の方法][11]」を参照してください。次のスクリプトは、Azure PowerShell 1.0 プレビュー以上で機能します。
+> [AZURE.TIP] Azure PowerShell をインストール、構成、および実行する方法については、「[Azure PowerShell のインストールおよび構成の方法][11]」を参照してください。次のスクリプトは、Azure PowerShell 1.0 プレビュー以上で機能します。
 
 ```powershell
 # get the API resource
@@ -134,7 +134,7 @@ PowerApps でアプリを開きます。**[利用できる接続]** に、新し
 </policies>
 ```
 
-このポリシーを見ると、基本的に、このポリシーでは **x-ms-apim-tokens** ヘッダーの値を、**tokens** 変数を使用するデコードされた JObject として参照することができます。さらに、**set-header** ポリシーを使用して、実際の AAD トークンを取得し、それを **Authorization** ヘッダーに設定することができます。このポリシーは、[Azure API Management](https://azure.microsoft.com/services/api-management/) で使用するポリシーと同じです。詳細については、「[Azure API Management のポリシー](../api-management-howto-policies.md)」を参照してください。
+このポリシーを見ると、基本的に、このポリシーでは **x-ms-apim-tokens** ヘッダーの値を、**tokens** 変数を使用するデコードされた JObject として参照することができます。さらに、**set-header** ポリシーを使用して、実際の AAD トークンを取得し、それを **Authorization** ヘッダーに設定することができます。このポリシーは、[Azure API Management](https://azure.microsoft.com/services/api-management/) で使用するポリシーと同じです。詳細については、「[Azure API Management のポリシー](../api-management/api-management-howto-policies.md)」を参照してください。
 
 プロパティ名 **token** が、設定を構成するときに使用した接続パラメーター名と一致することに**注目**してください。
 
@@ -157,4 +157,4 @@ PowerApps でアプリを開きます。**[利用できる接続]** に、新し
 [20]: https://tools.ietf.org/html/rfc4648
 [21]: ./media/powerapps-configure-apis-aad/api-settings-aad.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

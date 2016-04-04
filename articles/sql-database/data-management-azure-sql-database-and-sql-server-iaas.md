@@ -82,7 +82,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
       <li type=round>セキュリティで保護されたトンネル経由で Azure からオンプレミス リソース (Active Directory など) にアクセスする必要がある SQL Server アプリケーション。
       <li type=round>完全な管理者アクセス権があるカスタマイズされた IT 環境を必要とする場合。
       <li type=round>運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。
-      <li type=round>[Azure Storage へのバックアップ](http://msdn.microsoft.com/library/jj919148.aspx) や [Azure VM の AlwaysOn レプリカ](../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md) を使用したオンプレミス SQL Server アプリケーションの障害復旧。
+      <li type=round>[Azure Storage へのバックアップ](http://msdn.microsoft.com/library/jj919148.aspx) や [Azure VM の AlwaysOn レプリカ](../virtual-machines/virtual-machines-windows-classic-sql-dr.md) を使用したオンプレミス SQL Server アプリケーションの障害復旧。
       <li type=round>サイズが 1 TB を超える大きなデータベース。
       </ul></td>
 </tr>
@@ -105,7 +105,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 <tr>
    <td valign="middle"><p><b>ビジネス継続性</b></p></td>
    <td valign="middle"><ul><li type=round>Azure SQL Database は、組み込みのフォールト トレランスのインフラストラクチャ機能以外にも、ビジネス継続性を向上させるために、ポイントインタイム リストア、geo リストア、geo レプリケーションなどの機能を提供します。詳細については、[SQL Database のビジネス継続性の概要](sql-database-business-continuity.md) に関するページを参照してください。</ul></td>
-   <td valign="middle"><ul><li type=round>Azure VM 上の SQL Server では、データベース固有のニーズに合わせて、高可用性と障害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、[Azure Virtual Machines 上の SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md) に関するページを参照してください。</ul></td>
+   <td valign="middle"><ul><li type=round>Azure VM 上の SQL Server では、データベース固有のニーズに合わせて、高可用性と障害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「[High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines (Azure Virtual Machines 上の SQL Server の高可用性と障害復旧)](../virtual-machines/virtual-machines-windows-classic-sql-dr.md)」を参照してください。</ul></td>
 
 </tr>
 <tr>
@@ -113,7 +113,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
    <td valign="middle"><ul><li type=round>オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。</ul></td>
    <td valign="middle"><ul>
       <li type=round>Azure VM 上の SQL Server を使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。たとえば、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。さらに、[Azure の SQL Server データ ファイル](http://msdn.microsoft.com/library/dn385720.aspx) を使用して、Azure Storage にオンプレミスのデータ ファイルを格納することができます。詳細については、「[SQL Server 2014 ハイブリッド クラウドの概要](http://msdn.microsoft.com/library/dn606154.aspx)」を参照してください。
-      <li type=round>[Azure Blob Storage を使用した SQL Server のバックアップと復元](http://msdn.microsoft.com/library/jj919148.aspx) や [Azure VM の AlwaysOn レプリカ](../virtual-machines/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md) を使用して、オンプレミス SQL Server アプリケーションの障害復旧をサポートします。
+      <li type=round>[Azure Blob Storage を使用した SQL Server のバックアップと復元](http://msdn.microsoft.com/library/jj919148.aspx) や [Azure VM の AlwaysOn レプリカ](../virtual-machines/virtual-machines-windows-classic-sql-dr.md) を使用して、オンプレミス SQL Server アプリケーションの障害復旧をサポートします。
       </ul></td>
 
 </tr>
@@ -161,7 +161,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 多くの企業にとって、クラウド サービスに切り替えるかどうかの決定には、コストだけでなく、管理の複雑さの軽減も重要な要素です。**SQL Database** では、基盤となるハードウェアの管理、すべてのデータの自動的なレプリケートによる高可用性の実現、データベース ソフトウェアの構成とアップグレード、負荷分散の管理、サーバーに障害が発生した場合の透過的なフェールオーバーをマイクロソフトが実行します。ユーザーは引き続きデータベースを管理できますが、データベース エンジン、サーバー オペレーティング システム、ハードウェアを管理する必要はありません。引き続き管理できるアイテムの例として、データベースとログイン、インデックスとクエリのチューニング、監査とセキュリティなどがあります。
 
-一方で、社内に専門知識を蓄積し、ディスクに配置するデータベースの場所まで制御したいとユーザーが希望することもあります。**Azure VM 上で実行される SQL Server** では、オペレーティング システムと SQL Server インスタンスの構成を全面的に制御できます。VM を使用する場合、オペレーティング システムとデータベース ソフトウェアの更新やアップグレードのタイミングに加えて、ウイルス対策やバックアップ ツールなど追加ソフトウェアのインストールのタイミングは、ユーザーが決定します。また、VM のサイズ、ディスクの数、ストレージの構成を制御できます。たとえば、Azure では、必要に応じて、VM のサイズを変更できます。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+一方で、社内に専門知識を蓄積し、ディスクに配置するデータベースの場所まで制御したいとユーザーが希望することもあります。**Azure VM 上で実行される SQL Server** では、オペレーティング システムと SQL Server インスタンスの構成を全面的に制御できます。VM を使用する場合、オペレーティング システムとデータベース ソフトウェアの更新やアップグレードのタイミングに加えて、ウイルス対策やバックアップ ツールなど追加ソフトウェアのインストールのタイミングは、ユーザーが決定します。また、VM のサイズ、ディスクの数、ストレージの構成を制御できます。たとえば、Azure では、必要に応じて、VM のサイズを変更できます。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 ### サービス レベル アグリーメント (SLA)
 
@@ -175,7 +175,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 **SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell コマンドレット](http://msdn.microsoft.com/library/azure/dn546726.aspx)を使用して、数千のデータベースの管理の操作を自動化して管理できます。[エラスティック データベース プール](sql-database-elastic-pool.md)などの機能を使用すると、アプリケーション層に専念し、ソリューションをより早く市場に提供することができます。
 
-**Azure VM 上で実行される SQL Server** は、既存のアプリケーションや新しいアプリケーションから SQL Server インスタンスのすべての機能にアクセスして制御する必要がある場合に最適です。また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合にも適しています。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-sql-server-performance-best-practices.md)に関するページを参照してください。
+**Azure VM 上で実行される SQL Server** は、既存のアプリケーションや新しいアプリケーションから SQL Server インスタンスのすべての機能にアクセスして制御する必要がある場合に最適です。また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合にも適しています。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-classic-sql-perf.md)に関するページを参照してください。
 
 ## 概要
 
@@ -195,8 +195,8 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 - 既存の IT リソースがあり、SQL Server に対する完全な管理者権限が必要で、オンプレミス SQL Server との完全な互換性が必要である。この方法では、ほとんどのアプリケーションを柔軟に実行できることで、既存のアプリケーションの開発や変更のコストを最小限に抑えることができます。また、VM、オペレーティング システム、データベースの構成を全面的に制御できます。
 
-作業を開始するには、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+作業を開始するには、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
 
 > [AZURE.NOTE] SQL Server 2016 CTP2 の試用を希望される場合は、 Microsoft Azure にサインアップし、[ここ](http://aka.ms/sql2016vm "ここ")に移動して、SQL Server 2016 CTP2 が既にインストールされている仮想マシンを作成します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

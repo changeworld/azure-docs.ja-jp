@@ -1,7 +1,7 @@
 <properties
-	pageTitle="リソース マネージャーで Azure CLI を使用する | Microsoft Azure"
-	description="Azure リソース マネージャー モードで Mac、Linux、および Windows 用の Azure CLI を使用して Azure のリソースを管理する方法について説明します。"
-	services="virtual-machines,virtual-network,mobile-services,cloud-services"
+	pageTitle="リソース マネージャー モードでの Azure CLI コマンド |Microsoft Azure"
+	description="リソース マネージャー のデプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド"
+	services="virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services"
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
@@ -14,43 +14,36 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/18/2015"
+	ms.date="03/07/2016"
 	ms.author="danlep"/>
 
-# Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
+# Azure Resource Manager (arm) モードでの Azure CLI コマンド
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines/virtual-machines-command-line-tools.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](../virtual-machines-command-line-tools.md).
 
-この記事では、Azure リソース マネージャー モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、Azure PowerShell、Azure ポータルを使用しても同じタスクの多くを実行できます。
+この記事では、Azure Resource Manager のデプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
 
-Azure リソース マネージャーを使用することにより、リソースのグループ (仮想マシン、Web サイト、データベースなど) を 1 つのデプロイ可能なユニットとして作成できます。そうすることで、アプリケーションのすべてのリソースのデプロイ、更新、または削除が、1 回の連携した操作で実行できます。デプロイメント用 JSON テンプレートでグループ リソースについて説明して、このテンプレートをテスト、ステージング、運用環境などのさまざまな環境に使用することができます。
+開始するには、まず職場/学校のアカウント、または Microsoft アカウントID を使用して、[Azure CLI をインストール](xplat-cli-install.md)し、[Azure サブスクリプションに接続](xplat-cli-connect.md)します。
 
-## 記事の適用範囲
+リソース マネージャー モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
-この記事では、リソース マネージャー デプロイメント モデルで一般的に使用されている Azure CLI コマンドの構文とオプションについて説明しています。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。リソース マネージャー モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
+オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。その他のパラメーターはすべて指定する必要があります。
 
-オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が raw json 形式で出力されます。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。--json スイッチは非常によく使用されるもので、リソースの情報、状態、およびログを返す Azure CLI 操作の結果を取得したり理解したりする上で重要です。このスイッチでもテンプレートを使用します。**jq** や **jsawk** などの JSON パーサー ツールをインストールするか、好みの言語ライブラリを使用できます。
+## リソース マネージャー モードの設定
+
+次のコマンドを使用して Azure CLI リソース マネージャー コマンドを有効にします。
+
+	azure config mode arm
+
+>[AZURE.NOTE] Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
 ## 命令型のアプローチと宣言型のアプローチ
 
 [Azure サービス管理モード](../virtual-machines-command-line-tools.md)の場合と同様に、リソース マネージャー モードの Azure CLI では、コマンド ラインで強制的にリソースを作成するコマンドを使用できます。たとえば、「`azure group create <groupname> <location>`」と入力すると、Azure はリソース グループを作成する要求を受け、「`azure group deployment create <resourcegroup> <deploymentname>`」と入力すると、Azure は任意の数のアイテムのデプロイメントを作成しグループに配置する指示を受けます。リソースの種類ごとに命令型のコマンドがあるため、これらを連携させることで非常に複雑なデプロイメントを作成できます。
 
 ただし、リソース グループを説明するリソース グループ _テンプレート_を使用する宣言型のアプローチは、これよりはるかに強力で、(ほとんど) どんな目的であれ、また (ほとんど) 任意の数のリソースの複雑なデプロイメントを自動化することができます。テンプレートを使用する場合、命令型のコマンドはデプロイの指示のみです。テンプレート、リソース、およびリソース グループの一般的な概要については、「[Azure リソース グループの概要](../resource-group-overview.md)」を参照してください。
-
-##使用要件
-
-Azure CLI でリソース マネージャー モードを使用するためのセットアップ要件は次のとおりです。
-
-- Azure アカウント ([無料試用版はここから](https://azure.microsoft.com/pricing/free-trial/))
-- [Azure CLI のインストール](../xplat-cli-install.md)
-
-
-アカウントを用意して Azure CLI をインストールしたら、
-
-- 職場または学校のアカウント、あるいは Microsoft アカウント ID を使用するように [Azure CLI を構成します](../xplat-cli-connect.md)。
-- `azure config mode arm` を入力して、リソース マネージャー モードに切り替えます。
 
 
 ## Azure アカウント: アカウント情報の管理
@@ -185,7 +178,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 	group log show [options] [name]
 
-**リソース グループのデプロイメントを管理するコマンド**
+**リソース グループのデプロイを管理するコマンド**
 
 	group deployment create [options] [resource-group] [name]
 	group deployment list [options] <resource-group> [state]
@@ -1879,4 +1872,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

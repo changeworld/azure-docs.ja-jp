@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Privileged Identity Management セキュリティ ウィザード"
-   description="Azure Privileged Identity Management 拡張機能を初めて使用するときは、セキュリティ ウィザードが表示されます。この記事では、ウィザードを使用する手順について説明します。"
+   pageTitle="Azure AD Privileged Identity Management セキュリティ ウィザード"
+   description="Azure Active Directory Privileged Identity Management 拡張機能を初めて使用するときは、セキュリティ ウィザードが表示されます。この記事では、ウィザードを使用する手順について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management セキュリティ ウィザード
+# Azure AD Privileged Identity Management セキュリティ ウィザード
 
 Azure Privileged Identity Management (PIM) を初めて実行すると、ウィザードが表示されます。このウィザードでは、特権 ID のセキュリティ リスクと、Privileged Identity Management を使用してリスクを軽減する方法がわかります。
 
@@ -32,7 +32,7 @@ Azure Privileged Identity Management (PIM) を初めて実行すると、ウィ�
 
 グローバル管理者の期間の変更に関しては 3 つのオプションがあります。
 
-1.  すべてのグローバル管理者を一時的にするには、**[すべてを一時的にする]** ボタンをクリックします。
+1.  すべてのグローバル管理者を一時的にするには、**[すべてを一時的にする]** ボタンをクリックします。このオプションを選択するのは、すべての管理者が組織アカウントを持っており、Azure MFA に登録済みである場合のみです。
 
 2.  すべてのグローバル管理者を永続的にするには、**[すべてを永続的にする]** ボタンをクリックします。
 
@@ -52,13 +52,13 @@ Azure Privileged Identity Management (PIM) を初めて実行すると、ウィ�
 
 ## 多要素認証を要求する
 
-管理者がアカウントにサインインしてロールの延長を要求するときに MFA を使用する必要があるようにする場合は、**[有効]** ボタンをクリックして MFA を有効にします。この機能を後で無効にすることもできます。
+管理者がアカウントにサインインしてロールの延長を要求するときに MFA を使用する必要があるようにする場合は、**[有効]** ボタンをクリックして MFA を有効にします。
 
 <!--For more information about MFA and PIM, click here. PLACEHOLDER: NEED LINK TO MFA DOC.-->
 
 これらの設定を適用するロールを選択します。**[OK]** をクリックします。
 
-> [AZURE.WARNING] この時点で、セキュリティ管理者を複数にしておくことが重要です。一時的なセキュリティ管理者のロール割り当ての有効期限が切れ、そのユーザーに MFA が設定されていない場合、ユーザーは PIM をまったく管理できなくなるためです。
+> [AZURE.WARNING] ここで重要なのは、組織アカウント (Microsoft アカウントではない) を持つセキュリティ管理者が複数存在することです。一時的なセキュリティ管理者が 1 人しかおらず、MFA が設定されていない場合、アカウントが削除されると、ユーザーは PIM をまったく管理できなくなります。
 
 完了したら、**[OK]** ボタンをクリックします。
 
@@ -67,4 +67,4 @@ Azure Privileged Identity Management (PIM) を初めて実行すると、ウィ�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

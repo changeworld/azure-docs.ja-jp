@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/09/2016"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # 会社のインターネット ドメイン名で Azure Traffic Manager ドメイン名が参照されるようにする
@@ -35,4 +35,4 @@
 
 [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -3,7 +3,7 @@
    description="ソリューションを開発するための Azure SQL Data Warehouse でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
+   authors="jrowlandjones"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SDL Data Warehouse でのループ
@@ -25,10 +25,10 @@ SQL Data Warehouse は、ステートメント ブロックを繰り返し実行
 高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。単純な例を次に示します。このコード例は、データベース内のすべてのテーブルの統計を更新します。ループ内のテーブルを反復処理することで、シーケンス内の各コマンドを実行できます。
 
 最初に、個々のステートメントを識別するための一意の行番号が含まれている、一時テーブルを作成します。
-  
+
 ```
-CREATE TABLE #tbl 
-WITH 
+CREATE TABLE #tbl
+WITH
 ( DISTRIBUTION = ROUND_ROBIN
 )
 AS
@@ -81,4 +81,4 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

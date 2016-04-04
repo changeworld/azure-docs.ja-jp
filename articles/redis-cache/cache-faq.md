@@ -4,7 +4,7 @@
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="03/17/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -220,10 +220,31 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 -	Standard または Premium キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
 -	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
-	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)をダウンロードします。
+	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)をダウンロードします。
 	-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
 		-	`redis-cli -h <your cache name>.redis.cache.windows.net -a <key>`
 	-	Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+
+<a name="cache-emulator"></a>
+## Azure Redis Cache のローカル エミュレーターがない場合
+
+Azure Redis Cache のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
+
+	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+	{
+		// Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+	    return ConnectionMultiplexer.Connect("127.0.0.1");
+	});
+	
+	public static ConnectionMultiplexer Connection
+	{
+	    get
+	    {
+	        return lazyConnection.Value;
+	    }
+	}
+
+必要に応じて [redis.conf](http://redis.io/topics/config) を構成し、オンラインの Azure Redis Cache の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより厳密に一致させます。
 
 <a name="cache-common-patterns"></a>
 ## いくつかの一般的なキャッシュ パターンと考慮事項
@@ -282,4 +303,4 @@ In-Role Cache は 2016 年 11 月 30 日に終了となります。
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

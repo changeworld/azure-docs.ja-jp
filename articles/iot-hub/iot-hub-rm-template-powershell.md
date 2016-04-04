@@ -22,7 +22,7 @@
 
 ## はじめに
 
-Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプログラムから作成、管理できます。このチュートリアルでは、リソース マネージャー テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
+Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプログラムから作成、管理できます。このチュートリアルでは、リソース マネージャー テンプレートを使用して PowerShell で IoT Hub を作成する方法を説明します。
 
 > [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 
@@ -62,7 +62,7 @@ JSON テンプレートを使用して、リソース グループに新しい I
 
     ```
     {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
         "hubName": {
@@ -123,4 +123,4 @@ JSON テンプレートを使用して、リソース グループに新しい I
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-powershell-arm]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -14,14 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/03/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい SharePoint Online API の作成
+# PowerApps Enterprise で新しい SharePoint Online API を作成する
+
+組織の (テナント) App Service 環境に SharePoint Online API を追加します。
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。![][14]
 
@@ -39,7 +41,7 @@
 
 9. SharePoint Online Azure Active Directory (AAD) アプリケーションの *[クライアント ID]* と *[アプリケーション シークレット]* を入力します。これらがない場合は、このトピックの「PowerApps Office 365 Users API で使用する AAD アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。
 
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -52,7 +54,7 @@
 
 2. **[参照]** をクリックし、**[Active Directory]** を選択します。
 
-	> [AZURE.NOTE]これにより、Azure クラシック ポータルで Active Directory が開きます。
+	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
 
 3. 組織のテナント名を選択します。![Azure Active Directory の起動][6]
 
@@ -60,14 +62,14 @@
 
 5. **[アプリケーションの追加]** で次の操作を行います。
 
-	a) アプリケーションの **[名前]** を入力します。b) アプリケーションの種類は **Web** のままにしておきます。c) **[次へ]** をクリックします。
+	a) アプリケーションの**名前**を入力します。b) アプリケーションの種類は **Web** のままにしておきます。c) **[次へ]** をクリックします。
 
 
 	![AAD アプリケーションの追加 - アプリケーション情報][8]
 
 6. **[アプリケーションのプロパティ]** で次の操作を行います。
 
-	a) アプリケーションの **[サインオン URL]** を入力します。AAD を使用して PowerApps に対する認証を行うので、サインオン URL を _https://login.windows.net_ に設定します。b) アプリケーションの有効な **[アプリケーション ID/URI]** を入力します。c) **[OK]** をクリックします。
+	a) アプリケーションの**サインオン URL** を入力します。AAD を使用して PowerApps に対する認証を行うので、サインオン URL を _https://login.windows.net_ に設定します。b) アプリケーションの有効な**アプリケーション ID URI** を入力します。c) **[OK]** をクリックします。
 
 	![AAD アプリケーションの追加 - アプリケーションのプロパティ][9]
 
@@ -110,4 +112,4 @@
 [14]: ./media/powerapps-create-api-sharepointonline/browseall.png
 [15]: ./media/powerapps-create-api-sharepointonline/allresources.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

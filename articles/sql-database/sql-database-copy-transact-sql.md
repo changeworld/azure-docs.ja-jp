@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Transact-SQL を使用した Azure SQL Database のコピーの作成" 
+    pageTitle="Transact-SQL を使用した Azure SQL Database のコピー | Microsoft Azure" 
     description="Transact-SQL を使用した Azure SQL Database のコピーの作成" 
 	services="sql-database"
 	documentationCenter=""
@@ -10,21 +10,21 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/23/2016"
+	ms.date="03/21/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# Transact-SQL を使用した Azure SQL Database のコピーの作成
+# Transact-SQL を使用した Azure SQL Database のコピー
 
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-copy.md)
+- [Azure ポータル](sql-database-copy.md)
 - [PowerShell](sql-database-copy-powershell.md)
-- [SQL](sql-database-copy-transact-sql.md)
+- [T-SQL](sql-database-copy-transact-sql.md)
 
 
 
@@ -103,4 +103,4 @@ sys.databases ビューと sys.dm\_database\_copies ビューを照会して、�
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

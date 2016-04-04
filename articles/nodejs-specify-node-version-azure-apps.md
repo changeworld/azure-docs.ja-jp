@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="01/09/2016"
+	ms.date="03/04/2016"
 	ms.author="robmcm"/>
 
 # Azure アプリケーションでの Node.js のバージョンの指定
@@ -24,7 +24,7 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 
 Azure が提供する Node.js のバージョンは常に更新されます。別に指定しない場合、最新のバージョンを使用します。
 
-> [AZURE.NOTE]Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションをデプロイした場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。
+> [AZURE.NOTE] Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションをデプロイした場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。
 
 ##package.json でバージョンを指定する
 
@@ -102,4 +102,4 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
 [Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

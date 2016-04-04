@@ -13,24 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2016" 
+	ms.date="03/14/2016" 
 	ms.author="spelluru"/>
 
 # 新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+- [Azure Portal と Azure PowerShell の使用](data-factory-monitor-manage-pipelines.md)
+- [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 
 この記事では、**監視と管理アプリ**を使用してパイプラインを監視、管理、デバッグする方法について説明します。また、そのアプリを使用し、アラートを作成して障害時に通知を受け取る方法についても説明します。
       
 ## 監視と管理アプリの起動 
-監視と管理アプリを起動するには、該当するデータ ファクトリの **[Data Factory]** ブレードで **[監視アプリ]** タイルをクリックします。
+監視と管理アプリを起動するには、該当するデータ ファクトリの **[DATA FACTORY]** ブレードで **[監視と管理]** タイルをクリックします。
 
 ![Monitoring tile on Data Factory home page](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
 監視と管理アプリが別のタブまたはウィンドウで起動したことがわかります。
 
 ![Monitoring and Management App](./media/data-factory-monitor-manage-app/AppLaunched.png)
+
+> [AZURE.NOTE] 下部にある一覧でアクティビティ ウィンドウを確認できない場合は、ツールバーの **[更新]** ボタンをクリックして、一覧を更新します。さらに、**[開始時刻]** および **[終了時刻]** フィルターに適切な値を設定します。
 
 ## 監視と管理アプリについて
 左側には 3 つのタブ (**[リソース エクスプローラー]**、**[監視ビュー]**、**[アラート]**) があり、既定では、1 つ目のタブ ([リソース エクスプローラー]) が選択されています。
@@ -43,6 +45,7 @@
 - 関連付けられている Data Factory エンティティはダイアグラム ビューで強調表示されます。
 - 関連付けられているアクティビティ ウィンドウ (アクティビティ ウィンドウの詳細については[こちら](data-factory-scheduling-and-execution.md)を参照してください) は、下部にある [アクティビティ ウィンドウ] の一覧で強調表示されます。  
 - 選択したオブジェクトのプロパティは、右側のウィンドウにある [プロパティ] ウィンドウに表示されます。 
+- 該当する場合は、選択したオブジェクトの JSON 定義が表示されます。例: リンクされたサービス、データセット、パイプライン 
 
 ![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
@@ -86,6 +89,14 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 右側のウィンドウで、**[アクティビティ ウィンドウ エクスプローラー]** に切り替えてさらに詳細を表示します。
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+
+アクティビティの実行が試みられるたびに **[試行]** セクションに **解決された変数**も表示されます。
+
+![解決された変数](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
+
+**[スクリプト]** タブに切り替えて、選択したオブジェクトの JSON スクリプト定義を確認します。
+
+![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 アクティビティ ウィンドウは、次の 3 か所で確認できます。
 
@@ -170,7 +181,7 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 </table>
 
 
-一覧でアクティビティ ウィンドウをクリックすると、右側にある [アクティビティ ウィンドウ エクスプローラー] または[プロパティ] ウィンドウに、クリックしたアクティビティ ウィンドウの詳細が表示されます。
+一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または**[プロパティ]** ウィンドウに、クリックしたアクティビティ ウィンドウの詳細が表示されます。
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
@@ -185,16 +196,20 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 
 ここには、リソース エクスプローラー (ツリー ビュー)、ダイアグラム ビュー、または [アクティビティ ウィンドウ] の一覧で選択した項目のプロパティが表示されます。
 
-### アクティビティ ウィンドウ エクスプローラー
+### Activity Window Explorer
 
-[アクティビティ ウィンドウ エクスプローラー] ウィンドウは、監視と管理アプリの右端のウィンドウにあります。ここには、[アクティビティ ウィンドウ] ポップアップまたは [アクティビティ ウィンドウ] の一覧で選択したアクティビティ ウィンドウの詳細が表示されます。
+**[アクティビティ ウィンドウ エクスプローラー]** ウィンドウは、監視と管理アプリの右端のウィンドウにあります。ここには、[アクティビティ ウィンドウ] ポップアップまたは [アクティビティ ウィンドウ] の一覧で選択したアクティビティ ウィンドウの詳細が表示されます。
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
 別のアクティビティ ウィンドウに切り替えるには、上部にあるカレンダー ビューでそのアクティビティ ウィンドウをクリックします。上部にある**左矢印**/**右矢印**ボタンを使用すると、前/次の週のアクティビティ ウィンドウを表示することもできます。
 
-下部のウィンドウにあるツール バー ボタンを使用して、アクティビティ ウィンドウを**再実行**したり、そのウィンドウの詳細を**更新**したりできます。
+下部のウィンドウにあるツール バー ボタンを使用して、アクティビティ ウィンドウを**再実行**したり、そのウィンドウの詳細を**更新**したりすることができます。
 
+### スクリプト 
+**[スクリプト]** タブを使用して、選択した Data Factory エンティティ (リンクされたサービス、データセット、およびパイプライン) の JSON 定義を表示することができます。
+
+![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## システム ビューの使用
 監視と管理アプリには、既成のシステム ビュー (**最近のアクティビティ ウィンドウ**、**失敗したアクティビティ ウィンドウ**、**進行中のアクティビティ ウィンドウ**) が用意されています。これらを使用すると、該当するデータ ファクトリの最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、進行中のアクティビティ ウィンドウを確認できます。
@@ -281,7 +296,7 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 -------------- | ------ | ----------
 アクティビティの実行が開始されました | 開始済み | 開始中
 アクティビティの実行が完了しました | Succeeded | Succeeded 
-アクティビティの実行が完了しました | Failed| リソースの割り当ての失敗<p>実行の失敗</p><p>タイムアウト</p><p>検証の失敗</p><p>中止</p>
+アクティビティの実行が完了しました | Failed| リソースの割り当ての失敗<br/><br/>実行の失敗<br/><br/>タイムアウト<br/><br/>検証の失敗<br/><br/>中止
 オンデマンド HDI クラスターの作成が開始されました | 開始済み | &nbsp; |
 オンデマンド HDI クラスターが正常に作成されました | Succeeded | &nbsp; |
 オンデマンド HDI クラスターが削除されました | Succeeded | &nbsp; |
@@ -295,4 +310,4 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
     
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="03/08/2016"
 	ms.author="jeedes"/>
 
 
@@ -63,8 +63,8 @@ Azure AD への Trakopolis の統合を構成するには、ギャラリーか�
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
-6. 検索ボックスに、「**Trakopolis**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_01.png)<br>
-7. 結果ウィンドウで **[Trakopolis]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+6. 検索ボックスに、「**Trakopolis**」と入力します。 <br><br> ![アプリケーション](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_01.png)<br>
+7. 結果ウィンドウで **[Trakopolis]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>![アプリケーション](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Trakopolis で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -87,9 +87,9 @@ Trakopolis で Azure AD のシングル サインオンを構成してテスト�
 
 **Trakopolis で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Trakopolis** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
+1. Azure クラシック ポータルの **Trakopolis** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。 <br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの Trakopolis へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_03.png) <br>
+2. **[ユーザーの Trakopolis へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。 <br><br> ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_03.png) <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_04.png) <br>
 
@@ -105,7 +105,7 @@ Trakopolis で Azure AD のシングル サインオンを構成してテスト�
     b.**[次へ]** をクリックします。
 
 
-5. アプリケーションに合わせて SSO を構成する方法については、Trakopolis サポート チーム [support@cantelematics.com](mailto:support@cantelematics.com) にお問い合わせください。その際、ダウンロードした証明書を添付し、**[発行元 URL]**、**[SAML SSO URL]**、**[Sign Out URL]** を含めて提示してください。
+5. アプリケーションに合わせて SSO を構成する方法については、Trakopolis サポート チーム [support@cantelematics.com](mailto:support@cantelematics.com) にお問い合わせください。その際、ダウンロードした証明書を添付し、**[発行元 URL]**、**[SAML SSO URL]**、**[サインアウト URL]** を含めて提示してください。
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
@@ -172,7 +172,7 @@ Trakopolis で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[Trakopolis]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_50.png) <br>
+2. アプリケーションの一覧で **[Trakopolis]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -212,4 +212,4 @@ Trakopolis で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

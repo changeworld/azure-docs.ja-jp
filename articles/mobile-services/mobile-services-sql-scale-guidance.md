@@ -213,7 +213,9 @@ Entity Framework でインデックスを定義するには、インデックス
 ### 前提条件
 このセクションの一部の診断タスクを実行するには、**SQL Server Management Studio** などの SQL データベース管理ツールや **Azure クラシック ポータル**に組み込まれている管理機能にアクセスできる必要があります。
 
-SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)」に示すとおりに Azure の仮想マシンをプロビジョニングし、リモートからその仮想マシンに接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。
+
+SQL Server Management Studio は無料の Windows アプリケーションで、非常に高度な機能を備えています。(Mac を使用している場合など) Windows コンピューターにアクセスできない場合は、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」に示すとおりに Azure の仮想マシンをプロビジョニングし、リモートからその仮想マシンに接続することを検討してください。VM の使用目的が主に SQL Server Management Studio を実行することである場合は、**Basic A0** (以前の "XS") インスタンスで十分です。
+
 
 Azure クラシック ポータルには管理機能が組み込まれています。機能は限定的ですが、ローカルにインストールすることなく利用できます。
 
@@ -280,7 +282,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     ORDER BY start_time DESC
 
 > [AZURE.NOTE]
-このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
+> このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
 
 結果には、CPU (階層の制限の割合 (%))、ストレージ (MB)、物理データの読み取り (階層の制限の割合 (%))、ログの書き込み (階層の制限の割合 (%))、メモリ (階層の制限の割合 (%))、worker 数、セッション数などの有用なメトリックが含まれます。
 
@@ -294,7 +296,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     order by start_time desc
 
 > [AZURE.NOTE]
-このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
+> このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
 
 <a name="AdvancedIndexing" ></a>
 ### 高度なインデックス作成
@@ -308,7 +310,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
 現実の世界にたとえるには、本や技術マニュアルを考えてみてください。各ページの内容がレコード、ページ番号がクラスター化インデックス、本の末尾の索引が非クラスター化インデックスです。索引の各エントリはページ番号 (クラスター化インデックス) を指しています。
 
 > [AZURE.NOTE]
-既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
+> 既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
 
 <a name="ClusteredIndexes"></a>
 #### クラスター化インデックスの設計ガイドライン
@@ -491,4 +493,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 <!-- BLOG LINKS -->
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/04/2015"
+   ms.date="03/14/2016"
    ms.author="heeldin;motanv"/>
 
 # Testability アクション
-Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。これらは、Testability アクションとして公開されます。これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。サービス開発者は、これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
+Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。これらは、Testability アクションとして公開されます。これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
 
 Service Fabric には、これらのアクションで構成された、一般的なテスト シナリオが用意されています。一般的な状態遷移と障害事例をテストするために慎重に選択されているため、これらの組み込みシナリオを利用することを強くお勧めします。ただし、組み込みシナリオでは対応できないシナリオや、アプリケーション用に調整したカスタム シナリオを追加するときに、アクションを使用してカスタム テスト シナリオを作成することができます。
 
-C# でのアクションの実装は、System.Fabric.Testability.dll アセンブリ内に見つかります。Testability PowerShell モジュールは Microsoft.ServiceFabric.Testability.Powershell.dll アセンブリ内にあります。簡単に使用できるようにするため、ServiceFabricTestability PowerShell モジュールはランタイム インストールの一部としてインストールされます。
+C# でのアクションの実装は System.Fabric.dll アセンブリ内にあります。System Fabric PowerShell モジュールは Microsoft.ServiceFabric.Powershell.dll アセンブリ内にあります。簡単に使用できるようにするため、ServiceFabric PowerShell モジュールはランタイム インストールの一部としてインストールされます。
 
 ## グレースフル障害アクションとアングレースフル障害アクション
 Testability アクションは、次の 2 つに大きく分類されます。
@@ -53,7 +53,7 @@ Testability アクションは、次の 2 つに大きく分類されます。
 
 ## PowerShell を使用した Testability アクションの実行
 
-このチュートリアルでは、PowerShell を使用して Testability アクションを実行する方法を示します。ローカル (ワンボックス) クラスターまたは Azure クラスターに対して Testability アクションを実行する方法を学習します。Microsoft.Fabric.Testability.Powershell.dll (Testability PowerShell モジュール) は Microsoft Service Fabric MSI のインストール時に自動的にインストールされます。このモジュールは、PowerShell プロンプトを開いたときに自動的に読み込まれます。
+このチュートリアルでは、PowerShell を使用して Testability アクションを実行する方法を示します。ローカル (ワンボックス) クラスターまたは Azure クラスターに対して Testability アクションを実行する方法を学習します。Microsoft.Fabric.Powershell.dll (Service Fabric PowerShell モジュール) は Microsoft Service Fabric MSI のインストール時に自動的にインストールされます。このモジュールは、PowerShell プロンプトを開いたときに自動的に読み込まれます。
 
 チュートリアル セグメント:
 
@@ -68,7 +68,7 @@ Testability アクションは、次の 2 つに大きく分類されます。
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-ここでは、"Node1" という名前のノードで **Restart-ServiceFabricNode** アクションが実行されます。完了モードには、再起動アクションが実際に成功したかどうかを検証する必要がないことを指定します。完了モードを "Verify" と指定すると、再起動アクションが実際に成功したかどうかの検証が行われます。ノードは、名前で直接指定する代わりに、パーティション キーとレプリカの種類を使用して次のように指定することができます。
+ここでは、"Node1" という名前のノードで **Restart-ServiceFabricNode** アクションが実行されます。完了モードには、再起動ノード アクションが実際に成功したかどうかを検証する必要がないことを指定します。完了モードを "Verify" と指定すると、再起動アクションが実際に成功したかどうかの検証が行われます。ノードは、名前で直接指定する代わりに、パーティション キーとレプリカの種類を使用して次のように指定することができます。
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -168,14 +168,14 @@ class Test
 
         // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
-        await fabricclient.ClusterManager.RestartNodeAsync(primaryofReplicaSelector, CompletionMode.Verify);
+        await fabricclient.FaultManager.RestartNodeAsync(primaryofReplicaSelector, CompletionMode.Verify);
     }
 
     static async Task RestartNodeAsync(string clusterConnection, string nodeName, BigInteger nodeInstanceId)
     {
         // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
-        await fabricclient.ClusterManager.RestartNodeAsync(nodeName, nodeInstanceId, CompletionMode.Verify);
+        await fabricclient.FaultManager.RestartNodeAsync(nodeName, nodeInstanceId, CompletionMode.Verify);
     }
 }
 ```
@@ -211,10 +211,11 @@ ReplicaSelector は、Testability 内に公開されるヘルパーであり、T
 
 このヘルパーを使用するには、ReplicaSelector オブジェクトを作成し、レプリカとパーティションを選択する方法を設定します。その後、必要とする API に渡すことができます。オプションが選択されていない場合は、ランダム レプリカとランダム パーティションが既定によって選択されます。
 
-Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829"); PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid); long replicaId = 130559876481875498;
-
-
 ```csharp
+Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
+PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid);
+long replicaId = 130559876481875498;
+
 // Select a random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
 
@@ -235,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

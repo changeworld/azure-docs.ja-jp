@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="03/10/2016"
 	ms.author="piyushjo" />
 
 
@@ -35,9 +35,10 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 
 ##リリース ノート
 
-##4\.1.5 (02/01/2016)
+##4\.2.0 (03/11/2016)
 
-- 安定性が向上しました。
+- SDK が MIT でライセンスされるようになりました。
+- SDK の初期化時にカスタム デバイス識別子を指定できます。
 
 ##4\.1.0 (2015 年 8 月 25 日)
 
@@ -46,10 +47,10 @@ Azure Mobile Engagement を Android アプリに統合する方法の詳細に�
 - アクセス許可のバグ修正: `ACCESS_FINE_LOCATION` を使用する場合、`ACCESS_COARSE_LOCATION` は必要なくなります。
 - 安定性が向上しました。
 
-以前のバージョンについては、「[完全リリース ノート](mobile-engagement-android-release-notes.md)」をご覧ください。
+すべてのバージョンについては、「[完全リリース ノート](mobile-engagement-android-release-notes.md)」をご覧ください。
 
 ##アップグレードの手順
 
 SDK の旧バージョンをアプリケーションに既に統合している場合、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

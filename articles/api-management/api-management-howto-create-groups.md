@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
@@ -30,7 +30,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 このガイドでは、API Management インスタンスの管理者が新しいグループを追加して成果物および開発者に関連付ける方法について説明します。
 
->[AZURE.NOTE]発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://msdn.microsoft.com/library/azure/dn776329.aspx) エンティティを使用してグループを作成および管理することができます。
+>[AZURE.NOTE] 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://msdn.microsoft.com/library/azure/dn776329.aspx) エンティティを使用してグループを作成および管理することができます。
 
 ## <a name="create-group"> </a>グループの作成
 
@@ -64,7 +64,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ![可視性の設定][api-management-add-group-to-product-visibility]
 
->[AZURE.NOTE]Azure Active Directory グループを追加するには、「[Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
+>[AZURE.NOTE] Azure Active Directory グループを追加するには、「[Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
 >
 >**[可視性]** タブで成果物のグループを構成するには、**[グループの管理]** をクリックします。
 
@@ -111,4 +111,4 @@ API Management には、次に示すシステム グループが用意されて�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [関連付けられている Azure Active Directory テナントの外部グループを活用する]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

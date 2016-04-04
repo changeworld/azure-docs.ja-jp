@@ -3,8 +3,8 @@
    description="デプロイ時にあるリソースを別のリソースに依存するように設定する方法について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
-   authors="mmercuri"
-   manager="wpickett"
+   authors="tfitzmac"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="12/07/2015"
-   ms.author="mmercuri"/>
+   ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートでの依存関係の定義
 
@@ -68,4 +68,4 @@ reference 関数を使用すると、式では、他の JSON の名前と値の�
 - Azure リソース マネージャーのテンプレートの作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 - テンプレートで使用可能な関数の一覧については、[テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0316_2016-->

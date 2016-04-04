@@ -1,20 +1,20 @@
-<properties 
- pageTitle="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)" 
- description="" 
- services="scheduler" 
- documentationCenter=".NET" 
- authors="krisragh" 
- manager="dwrede" 
+<properties
+ pageTitle="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
+ description=""
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
-<tags 
- ms.service="scheduler" 
- ms.workload="infrastructure-services" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="12/04/2015" 
+<tags
+ ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
- 
+
 # Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 
 次のテーブルでは、Azure Scheduler の主なコマンドレットを説明し、各コマンドレットのリファレンス ページへのリンクを示します。
@@ -36,10 +36,10 @@
 
 
 ## 関連項目
- 
+
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -53,10 +53,5 @@
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
- 
-  
 
-
-  
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

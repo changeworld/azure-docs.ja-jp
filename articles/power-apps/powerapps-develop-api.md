@@ -5,7 +5,7 @@
     suite="powerapps"
 	documentationCenter="" 
 	authors="rajram"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/02/2016"
    ms.author="rajram"/>
 
 # PowerApps 用 API の開発
@@ -28,26 +28,26 @@ PowerApps 内で使用できる独自の API を作成または開発できま�
 
 ## 手順 1: API の構築とデプロイ
 
-PowerApps 用 API の構築とデプロイは API の作成と似ています。好きなプログラム言語とフレームワークを選択できます。API のホスト先を選択することもできます。[API アプリ](https://azure.microsoft.com/services/app-service/api/)と同じ PowerApps の App Service 環境にホストすることをおすすめします。
+PowerApps 用 API の構築とデプロイは通常の API の作成と似ています。好きなプログラミング言語とフレームワークを選択できます。API のホスト先を選択することもできます。[API アプリ](https://azure.microsoft.com/services/app-service/api/)と同じ PowerApps の App Service 環境にホストすることをおすすめします。
 
 次の記事は、App Service 環境での、.Net、Java、または Node.js API の構築とデプロイについて書かれています。
 
-- [Azure App Service での .NET の構築とデプロイ](../app-service-api-dotnet-get-started.md)
-- [Azure App Service での Java API アプリの構築とデプロイ](../app-service-api-java-api-app.md)
-- [Azure App Service での Node.js API アプリの構築とデプロイ](../app-service-api-nodejs-api-app.md)
+- [Azure App Service での .NET の構築とデプロイ](../app-service-api/app-service-api-dotnet-get-started.md)
+- [Azure App Service での Java API アプリの構築とデプロイ](../app-service-api/app-service-api-java-api-app.md)
+- [Azure App Service での Node.js API アプリの構築とデプロイ](../app-service-api/app-service-api-nodejs-api-app.md)
 
 
 ## 手順 2: API のための Swagger 2.0 API 定義の記述
 
 *手順 1* で挙げた参照先の記事のいずれかに従えば、標準的な Swagger 2.0 API 定義が API のために自動的に生成されます。PowerApps のための最適化として、次のスキーマ拡張を使用して生成された Swagger 2.0 API 定義を必要に応じてカスタマイズできます。
 
-Swagger 2.0 API 定義の一般的なカスタマイズ方法については、「[Swashbuckle 生成の API 定義のカスタマイズ](../app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。
+Swagger 2.0 API 定義の一般的なカスタマイズ方法については、「[Swashbuckle 生成の API 定義のカスタマイズ](../app-service-api/app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。
 
 ### スキーマの拡張機能
 Swashbuckle によって自動生成された Swagger だけでなく、PowerApps 用の API 作成時には追加で Swagger 拡張機能がいくつか使用可能です。このセクションではこれらの拡張機能について記述します。
 
 ##### x-ms-summary
-Swagger spec ファイルで定義されている集計フィールドがないエンティティの表示名を表す文字列。**パラメーター名**が例です。
+Swagger spec ファイルで定義されている集計フィールドがないエンティティの表示名を表す文字列。**パラメーター名**がその例です。
 
 ##### x-ms-visibility
 この値は、エンティティがロジック フロー デザイナーに表示されているかどうかについて説明します。次の値を使用できます。
@@ -130,4 +130,4 @@ Salesforce にはたくさんの組み込みオブジェクトがあります。
 
 操作に対する入力が動的なシナリオにおいてこれは役立ちます。たとえば、SQL の場合を考えてみましょう。各テーブルのスキーマは異なります。そのため、ユーザーが特定のテーブルを選択する場合、ロジック フロー デザイナーはテーブルの構造を理解して列名を表示できるようにする必要があります。このコンテキストでは、Swagger 定義に _x-ms-dynamic-schema_ がある場合、スキーマの取得に対応する操作を呼び出します。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

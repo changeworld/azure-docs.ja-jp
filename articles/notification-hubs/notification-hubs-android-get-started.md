@@ -1,8 +1,9 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 (Android アプリ) | Microsoft Azure"
+	pageTitle="Azure Notification Hubs から Android へのプッシュ通知の送信 | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Android デバイスにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter="android"
+	keywords="プッシュ通知,プッシュ通知,Android プッシュ通知"
 	authors="wesmc7777"
 	manager="dwrede"
 	editor=""/>
@@ -12,19 +13,20 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="12/15/2015"
+	ms.date="03/15/2016"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用 (Android アプリ)
+# Azure Notification Hubs から Android へのプッシュ通知の送信
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概要
 
-このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。
-Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)を参照してください。
 
-このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。
+このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。
+
+Notification Hubs を使用して対象設定済みのプッシュ通知を送信する方法を理解するために、[タグ付けに関するチュートリアル](./notification-hubs-routing-tag-expressions.md)も併せて参照してください。
 
 
 ## 開始する前に
@@ -36,14 +38,9 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ##前提条件
 
-このチュートリアルには、次のものが必要です。
-
-+ Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>からダウンロードできます。
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
-
+上記のアクティブな Azure アカウント以外に、このチュートリアルで必要となるのは、最新版の [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797) のみです。
 
 このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
-
 
 ##Google Cloud Messaging をサポートするプロジェクトを作成する
 
@@ -56,11 +53,11 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 
-&emsp;&emsp;7.上部にある **[構成]** タブをクリックし、前のセクションで取得した **API キー**値を入力して、**[保存]** をクリックします。
+&emsp;&emsp;7.**[設定]** ブレードで、**[Notification Services]**、[**Google (GCM)]** の順に選択します。API キーを入力して保存します。
 
-&emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
+&emsp;&emsp;![Azure Notification Hubs - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-これで、通知ハブが GCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
+これで、通知ハブが GCM と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
 ##<a id="connecting-app"></a>通知ハブにアプリを接続する
 
@@ -68,11 +65,11 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 1. Android Studio で新しい Android Studio プロジェクトを開始する
 
-   	![][13]
+   	![Android Studio - new project][13]
 
 2. **[電話とタブレット]** フォーム ファクターを選択し、サポートする **[最低限の SDK]** を選択します。その後、**[次へ]** をクリックします。
 
-   	![][14]
+   	![Android Studio - project creation workflow][14]
 
 3. 主なアクティビティに **[空のアクティビティ]** を選択し、**[次へ]** をクリックして、**[完了]** をクリックします。
 
@@ -82,9 +79,9 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ###コードの追加
 
-1. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから notification-hubs-0.4.jar ファイルをダウンロードします。Android Studio の [Project View] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグしてください。そのうえでファイルを右クリックし、**[Add as Library]** をクリックします。
-  
-2. **[app]** の Build.Gradle ファイルの **[dependencies]** セクションに次の行を追加します。
+1. [NBintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから `notification-hubs-0.4.jar` ファイルをダウンロードします。Android Studio の [Project View] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグしてください。そのうえでファイルを右クリックし、**[Add as Library]** をクリックします。
+
+2. **[app]** の `Build.Gradle` ファイルの **[dependencies]** セクションに次の行を追加します。
 
 	    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
 
@@ -98,7 +95,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 3. GCM から登録 ID を取得し、それを使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
 
-	AndroidManifest.xml ファイルで、`</application>` タグのすぐ下に次の許可を追加します。`<your package>` は、AndroidManifest.xml ファイルの上部に表示されるパッケージ名に必ず置き換えてください (この例では `com.example.testnotificationhubs`)。
+	`AndroidManifest.xml` ファイルで、`</application>` タグのすぐ下に次の許可を追加します。`<your package>` は、`AndroidManifest.xml` ファイルの上部に表示されるパッケージ名に必ず置き換えてください (この例では `com.example.testnotificationhubs`)。
 
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
@@ -120,7 +117,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 
 
-4. クラスの最上位に、次のプライベート メンバーを追加します。
+4. クラスの最上位に、次のプライベート メンバーを追加します。これを使用して、アプリとクラウド サービスとの間にプッシュ通知チャネルを構成します。
 
 		private String SENDER_ID = "<your project number>";
 		private GoogleCloudMessaging gcm;
@@ -130,14 +127,13 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 	    private static Boolean isVisible = false;
 
 
-	次の 3 つのプレースホルダーを必ず更新します。
-	* **SENDER\_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。
-	* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure クラシック ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。
-	* **HubName**: Azure のハブのページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` を使用します。
+	次の 3 つのプレースホルダーを以下のとおりに置き換えてください。
+	* **SENDER\_ID**: `SENDER_ID` を、[Google Cloud Console](http://cloud.google.com/console) で取得しておいたプロジェクト番号に設定します。
+	* **HubListenConnectionString**: `HubListenConnectionString` を、ハブの **DefaultListenAccessSignature** 接続文字列に設定します。接続文字列をコピーするには、[Azure ポータル]でハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
+	* **HubName**: [Azure ポータル]のハブ ブレードに表示される通知ハブの名前を使用します。
 
 
-
-5. **MainActivity** クラスの **OnCreate** メソッドで、アクティビティの作成時に通知ハブに登録するために次のコードを追加します。
+5. `MainActivity` クラスの `OnCreate` メソッドで、アクティビティの作成時に通知ハブに登録するために次のコードを追加します。
 
         MyHandler.mainActivity = this;
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
@@ -145,7 +141,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         hub = new NotificationHub(HubName, HubListenConnectionString, this);
         registerWithNotificationHubs();
 
-6. **registerWithNotificationHubs()** メソッドには **MainActivity.java** で次のコードを追加します。このメソッドでは、Google Cloud Messaging と Notification Hub に登録した後に登録成功をレポートします。
+6. `MainActivity.java` で、`registerWithNotificationHubs()` メソッドに以下のコードを追加します。このメソッドでは、Google Cloud Messaging と Notification Hub に登録した後に登録成功をレポートします。
 
     	@SuppressWarnings("unchecked")
     	private void registerWithNotificationHubs() {
@@ -173,19 +169,19 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 	        super.onStart();
 	        isVisible = true;
 	    }
-	
+
 	    @Override
 	    protected void onPause() {
 	        super.onPause();
 	        isVisible = false;
 	    }
-	
+
 	    @Override
 	    protected void onResume() {
 	        super.onResume();
 	        isVisible = true;
 	    }
-	
+
 	    @Override
 	    protected void onStop() {
 	        super.onStop();
@@ -203,7 +199,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 	            });
 	    }
 
-8. Android には通知が表示されないため、独自の受信者を記述する必要があります。**AndroidManifest.xml** で、`<application>` 要素内に次の要素を追加します。
+8. Android では既定で通知表示が処理されないため、自分で受信者を記述する必要があります。`AndroidManifest.xml` で、`<application>` 要素内に次の要素を追加します。
 
 	> [AZURE.NOTE] プレースホルダーは、パッケージ名に置き換えてください。
 
@@ -218,12 +214,12 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 9. [プロジェクト] ビューで、**[アプリ]**、**[src]**、** [main]**、**[java]** と展開します。**[java]** のパッケージ フォルダーを右クリックして、**[新規]**、**[Java Class (Java クラス)]** と順にクリックします。
 
-	![][6]
+	![Android Studio - new Java class][6]
 
 10. 新しいクラスの **[名前]** フィールドに「**MyHandler**」と入力して **[OK]** をクリックします。
 
 
-11. **MyHandler.java** の先頭に、次の import ステートメントを追加します。
+11. 次の import ステートメントを `MyHandler.java` の先頭に追加します。
 
 		import android.app.NotificationManager;
 		import android.app.PendingIntent;
@@ -241,7 +237,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 13. 次のコードを `MyHandler` クラスに追加します。
 
-	このコードは `OnReceive` メソッドを上書きするため、ハンドラーがトーストをポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
+	このコードは `OnReceive` メソッドを上書きするため、ハンドラーがトーストをポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにもプッシュ通知を送信します。
 
     	public static final int NOTIFICATION_ID = 1;
     	private NotificationManager mNotificationManager;
@@ -278,23 +274,21 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		}
 
-14. Android Studio のメニュー バーで、**[ビルド]**、**[プロジェクトのリビルド]** の順にクリックし、エラーが検出されないことを確認します。
+14. Android Studio のメニュー バーで、**[ビルド]**、**[プロジェクトのリビルド]** の順にクリックし、コードにエラーがないことを確認します。
 
-##通知を送信する
+##プッシュ通知を送信する
 
+[Azure ポータル]から通知を送信して、アプリでプッシュ通知の受信テストを行うことができます。以下に示す、ハブ ブレードの **[トラブルシューティング]** セクションを参照してください。
 
-
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、[Azure クラシック ポータル]で通知を送信することで、アプリケーションで通知の受信テストを行うことができます。
-
-![][30]
+![Azure Notification Hubs - Test Send](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
 
 [AZURE.INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
+## (省略可能) アプリから直接プッシュ通知を送信する
 
-## (省略可能) アプリから通知を送信する
+テストでは、通常、開発中のアプリケーションから直接プッシュ通知を送信できることが必要になります。このセクションでは、このシナリオに適切に対応する方法について説明します。
 
-
-1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。`activity_main.xml` レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -314,17 +308,17 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. この行を **build.gradle** ファイルの `android` に追加します。
+2. この行を `build.gradle` ファイルの `android` に追加します。
 
 		useLibrary 'org.apache.http.legacy'
 
-3. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
+3. Android Studio の [Project] ビューで **[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。`strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
 
 
-4. **MainActivity** ファイルで、`MainActivity` クラスの上に次のステートメント `import` を追加します。
+4. `MainActivity.java` ファイルで、`MainActivity` クラスの上に次のステートメント `import` を追加します。
 
 		import java.net.URLEncoder;
 		import javax.crypto.Mac;
@@ -341,9 +335,9 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 		import org.apache.http.impl.client.DefaultHttpClient;
 
 
-5. **MainActivity** ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
+5. `MainActivity.java` ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
 
-	`HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。この接続文字列は [Azure クラシック ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
+	`HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。この接続文字列は [Azure ポータル]からコピーできます。通知ハブの **[設定]** ブレードで **[アクセス ポリシー]** をクリックします。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
@@ -352,7 +346,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 6. アクティビティではハブの名前と、ハブの完全な共有アクセス接続文字列を保持します。通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成する必要があります。これを実行するには、接続文字列からキーのデータを解析し、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスで説明したように SaS トークンを作成します。
 
-	**MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して接続文字列を解析します。
+	`MainActivity.java` で、次のメソッドを `MainActivity` クラスに追加して接続文字列を解析します。
 
 	    /**
     	 * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
@@ -380,7 +374,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 	        }
 	    }
 
-7. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して SaS 認証トークンを作成します。
+7. `MainActivity.java` で、次のメソッドを `MainActivity` クラスに追加して SaS 認証トークンを作成します。
 
         /**
          * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
@@ -433,7 +427,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         }
 
 
-8. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して、**[通知の送信]** ボタン クリックを処理し、REST API を使用してハブに通知メッセージを送信します。
+8. `MainActivity.java` で、次のメソッドを `MainActivity` クラスに追加して、**[通知の送信]** ボタン クリックを処理し、組み込みの REST API を使用してハブにプッシュ通知メッセージを送信します。
 
         /**
          * Send Notification button click handler. This method parses the
@@ -484,38 +478,35 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 
 
-##アプリケーションをテストする
+##アプリケーションのテスト
 
-####エミュレーターのテスト
+####エミュレーターでのプッシュ通知
 
-エミュレーターをテストする場合は、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認します。イメージが Google API をサポートしていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
+エミュレーターの内部でプッシュ通知をテストする場合は、エミュレーター イメージがアプリケーション用に選択した Google API レベルをサポートしていることを確認してください。イメージがネイティブの Google API をサポートしていない場合は、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
 
-また、**[設定]**、**[アカウント]** で実行しているエミュレーターに Google アカウントを追加していることを確認します。それ以外の場合、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外になる可能性があります。
+上記に加えて、**[設定]**、**[アカウント]** で実行しているエミュレーターに Google アカウントを追加していることを確認してください。それ以外の場合、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外になる可能性があります。
 
-####アプリケーションをテストする
+####アプリケーションの実行
 
 1. アプリケーションを実行し、登録 ID の登録完了が報告されていることを確認します。
 
-   	![][18]
+   	![Testing on Android - Channel registration][18]
 
 2. ハブに登録されているすべての Android デバイスに送信される通知メッセージを入力します。
 
-   	![][19]
+   	![Testing on Android - sending a message][19]
 
-3. **[Send Notification (通知の送信)]** を押します。実行しているアプリケーションがあるすべてのデバイスで、通知メッセージと `AlertDialog` が表示されます。実行中のアプリケーションがなくても事前に登録されているデバイスでは、通知マネージャーに追加された通知を受信します。左上隅から下へスワイプすると、通知を表示できます。
+3. **[Send Notification (通知の送信)]** を押します。アプリケーションが実行されているすべてのデバイスで、`AlertDialog` インスタンスがプッシュ通知メッセージと共に表示されます。実行中のアプリケーションがなくても事前にプッシュ通知に登録されているデバイスでは、Android 通知マネージャーで通知が受信されます。左上隅から下へスワイプすると、通知を表示できます。
 
-   	![][21]
+   	![Testing on Android - notifications][21]
 
 ##次のステップ
 
-この簡単な例では、すべての Windows デバイスにブロードキャスト通知を送信します。次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知]」チュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
+次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知]」チュートリアルをお勧めします。このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
-対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
+対象グループごとにユーザーを区分する場合は、チュートリアル「[通知ハブを使用したニュース速報の送信]」を参照してください。
 
 Notification Hubs の全般的な情報については、「[Notification Hubs の概要]」を参照してください。
-
-
-
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
@@ -546,9 +537,10 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[Azure ポータル]: https://portal.azure.com
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

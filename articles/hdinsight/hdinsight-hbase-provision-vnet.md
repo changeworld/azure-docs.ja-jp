@@ -69,7 +69,7 @@
 
 ##HBase Java RPC API を使用して HBase クラスターに接続する
 
-1.	サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。それにより、仮想マシンと HBase クラスターはどちらも同じ内部 DNS サーバーを使用してホスト名を解決します。そのためには、**[ギャラリーから]** を選択し、データ センターの代わりに仮想ネットワークを選択する必要があります。手順については、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)」を参照してください。標準の Windows Server 2012 イメージとサイズの小さい VM で十分です。
+1.	サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。それにより、仮想マシンと HBase クラスターはどちらも同じ内部 DNS サーバーを使用してホスト名を解決します。そのためには、**[ギャラリーから]** を選択し、データ センターの代わりに仮想ネットワークを選択する必要があります。手順については、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」を参照してください。標準の Windows Server 2012 イメージとサイズの小さい VM で十分です。
 
 2.	Java アプリケーションを使用して HBase にリモートで接続する場合は、完全修飾ドメイン名 (FQDN) を使用する必要があります。これを確認するには、HBase クラスターの接続固有の DNS サフィックスを取得する必要があります。それには、Curl を使用して Ambari を照会するか、リモート デスクトップを使用してクラスターに接続します。
 
@@ -233,7 +233,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [vnet-overview]: ../virtual-network/virtual-networks-overview.md
-[vm-create]: ../virtual-machines/virtual-machines-windows-tutorial.md
+[vm-create]: ../virtual-machines/virtual-machines-windows-hero-tutorial.md
 
 [azure-portal]: https://portal.azure.com
 [azure-create-storageaccount]: ../storage-create-storage-account.md
@@ -272,4 +272,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

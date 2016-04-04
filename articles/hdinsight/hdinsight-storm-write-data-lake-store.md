@@ -27,7 +27,9 @@ Azure Data Lake Store は、データの高スループット、可用性、耐�
 * [Java JDK 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 * Azure サブスクリプション
-* HDInsight クラスターの Storm。Azure Data Lake Store を使用できるクラスターの作成方法は、このドキュメントに含まれています。
+* HDInsight クラスターの Storm。HDInsight クラスターに新しい Storm を作成するには、[Azure での HDInsight と Data Lake Store の使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するドキュメントの手順に従います。このドキュメントの手順では、新しい HDInsight クラスターと Azure Data Lake Store の作成手順を説明します。  
+
+    > [AZURE.IMPORTANT] HDInsight クラスターを作成するときに、クラスターの種類として __Storm__ を選択する必要があります。OS には、Windows または Linux を指定できます。
 
 ###環境変数を構成する
 
@@ -94,12 +96,6 @@ HdfsBolt を使い慣れていればわかるように、URL 以外のすべて�
 
 Data Lake Store への書き込みは、HdfsBolt を使用し、URL を変更するだけで済むため、HDFS または WASB への書き込みに HdfsBolt を使用する既存の任意のトポロジを利用することができ、Azure Data Lake Store を使用するための変更も簡単です。
 
-##HDInsight クラスターと Data Lake Store を作成する
-
-[Azure での HDInsight と Data Lake Store の使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するドキュメントでの手順に従って、HDInsight クラスターに新しい Storm を作成します。このドキュメントの手順では、新しい HDInsight クラスターと Azure Data Lake Store の作成手順を説明します。
-
-> [AZURE.IMPORTANT] HDInsight クラスターを作成するときに、クラスターの種類として __Storm__ を選択する必要があります。OS には、Windows または Linux を指定できます。
-
 ##トポロジをビルドおよびパッケージ化する
 
 1. サンプル プロジェクトを [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) から開発環境にダウンロードします。
@@ -162,7 +158,7 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
 
 データを表示するには、いくつかの方法があります。このセクションでは、Azure ポータルと `hdfs` コマンドを使用して、データを表示します。
 
-> [AZURE.NOTE] Azure Data Lake Store のいくつかのファイルにデータが同期されるように、トポロジを数分間実行してから出力データを確認します。
+> [AZURE.NOTE] Azure Data Lake Store のいくつかのファイルにデータが同期されるように、出力データを確認する前にトポロジを数分間実行します。
 
 * __[Azure ポータル](https://portal.azure.com)から__: ポータルで、HDInsight で使用した Azure Data Lake Store を選択します。
 
@@ -217,8 +213,12 @@ __Windows ベースの HDInsight の場合__:
 
     ![topology actions](./media/hdinsight-storm-write-data-lake-store/topologyactions.png)
 
+## クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##次のステップ
 
-これで、Storm を使用して Azure Data Lake Store に書き込む方法を学習できました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
+これで、Storm を使用して Azure Data Lake Store に書き込む方法を学習しました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # Azure Mobile Services 向け iOS クライアント ライブラリの使用方法
@@ -27,7 +27,7 @@
 
 このガイドでは、Azure Mobile Services の [iOS SDK] を使用して一般的なシナリオを実行する方法について説明します。Mobile Services を初めて使用する場合は、まず、「[Mobile Services のクイック スタート]」を実行してアカウントを構成し、テーブルを作成し、モバイル サービスを作成してください。
 
-> [AZURE.NOTE]このガイドは、最新では [iOS Mobile Services SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409) を使用します。プロジェクトで古いバージョンの SDK が使用されている場合は、まず Xcode のフレームワークをアップグレードします。
+> [AZURE.NOTE] このガイドは、最新では [iOS Mobile Services SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409) を使用します。プロジェクトで古いバージョンの SDK が使用されている場合は、まず Xcode のフレームワークをアップグレードします。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -97,7 +97,13 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
     MSQuery *query = [table queryWithPredicate: [NSPredicate predicateWithFormat:@"complete == NO"]];
 ```
 
-`MSQuery` を使用すれば、次のような複数のクエリ動作を制御できます。`MSQuery` クエリを実行するには、以下の例に示すように `readWithCompletion` を呼び出します。* 結果の順序を指定する * 返すフィールドを制限する * 返すレコード数を制限する * 応答の合計数を指定する * 要求内にカスタム クエリ文字列パラメーターを指定する * 追加の関数を適用する
+`MSQuery` を使用すれば、次のような複数のクエリ動作を制御できます。`MSQuery` クエリを実行するには、次の例に示すように `readWithCompletion` を呼び出します。
+* 結果の順序を指定する
+* 返すフィールドを制限する
+* 返すレコード数を制限する
+* 応答の合計数を指定する
+* 要求内にカスタム クエリ文字列パラメーターを指定する
+* 追加の関数を適用する
 
 
 ## <a name="sorting"></a>方法: MSQuery でデータを並べ替える
@@ -253,7 +259,7 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 
 - **サーバーによって管理されるログイン**: Azure Mobile Services がアプリケーションに代わってログオン プロセスを管理します。Azure Mobile Services は、プロバイダー固有のログイン ページを表示し、選択したプロバイダーで認証されます。
 
-- **クライアントによって管理されるログイン**: アプリケーションは ID プロバイダーにトークンを要求し、認証のためにこのトークンを Azure Mobile Services に示します。
+- **クライアントによって管理されるログイン**: _アプリケーション_は ID プロバイダーにトークンを要求し、認証のためにこのトークンを Azure Mobile Services に示します。
 
 認証が成功すると、ユーザー ID の値と認証トークンを含むユーザー オブジェクトが返されます。このユーザー ID を使用してユーザーを承認するには、「[サービス側の承認]」を参照してください。認証されたユーザーのみにテーブルへのアクセスを制限するには、「[権限]」を参照してください。
 
@@ -334,4 +340,4 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0316_2016-->

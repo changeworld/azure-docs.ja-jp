@@ -33,7 +33,9 @@ Azure ベース のVM は、Windows または Linux 上で開発することが�
 - Linux を使用している場合は、『[Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Linux ベース)」セクションを参照してください。
 - Windows を使用している場合は、『[Azure Marketplace 向け仮想マシン イメージ作成ガイド](marketplace-publishing-vm-image-creation.md)』の「Azure と互換性のある VHD の作成 (Windows ベース)」セクションを参照してください。
 
-> [AZURE.NOTE] 認定検証ツールを実行し、VHD 認定の提出に使用する VHD SAS URL を作成するには、Windows ベースのコンピューターにアクセスする必要があります。
+> [AZURE.NOTE] Windows ベースのコンピューターにアクセスして、次の操作を行う必要があります。
+- 証明書検証ツールを実行します。
+- VHD 証明書送信用の VHD 共有アクセス署名 URL を作成します。
 
 ## VHD の開発
 Azure VHD は、クラウドまたはオンプレミスでも開発できます。
@@ -46,9 +48,9 @@ Azure VHD は、クラウドまたはオンプレミスでも開発できます�
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
-- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-tutorial/)
+- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial/)
 
 
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

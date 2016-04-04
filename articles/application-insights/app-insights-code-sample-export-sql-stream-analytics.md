@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="03/06/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
@@ -29,28 +29,15 @@
 この例では、ページ ビュー データを使用しますが、同じパターンを簡単に他のデータ型 (カスタム イベントや例外など) に拡張できます。
 
 
-## Application Insights SDK の追加
+## Application Insights をアプリケーションに追加する
 
-アプリケーションを監視するには、アプリケーションに [Application Insights SDK][start] を追加します。プラットフォーム、IDE、および言語ごとにそれぞれ異なる SDK やヘルパー ツールがあります。Web ページ、Java または ASP.NET Web サーバー、および各種モバイル デバイスを監視できます。SDK はすべてテレメトリを [Application Insights ポータル][portal]に送信します。そのポータルでは、強力な分析ツールおよび診断ツールを使用でき、データをストレージにエクスポートできます。
 
 作業を開始するには:
 
-1. [Microsoft Azure のアカウント](https://azure.microsoft.com/pricing/)を取得します。
-2. [Azure ポータル][portal]で、アプリに新しい Application Insights リソースを追加します。
+1. [Web ページに Application Insights を設定する](app-insights-javascript.md) 
 
-    ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択し、アプリケーションの種類を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/010-new-asp.png)
+    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](app-insights-java-get-started.md) または [ASP.NET](app-insights-asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー製品利用統計情報を処理することもできます。)
 
-
-    (対象とするアプリの種類やお使いのサブスクリプションは異なる可能性があります。)
-3. クイック スタートを開き、アプリの種類に応じて SDK をセットアップする方法を調べます。
-
-    ![クイック スタートを選択し、指示に従います](./media/app-insights-code-sample-export-sql-stream-analytics/020-quick.png)
-
-    アプリの種類が一覧表示されていない場合、[[作業の開始]][start] ページを確認します。
-
-4. この例では、Web アプリを監視しますので、Visual Studio の Azure ツールを使用して SDK をインストールします。Application Insights リソースの名前を指定します。
-
-    ![Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。[Send telemetry to] で、新しいリソースを選択するか、既存のリソースを使用します。](./media/app-insights-code-sample-export-sql-stream-analytics/appinsights-d012-addbrown.png)
 
 5. アプリを発行して Application Insights のリソースに表示されるテレメトリ データを確認します。
 
@@ -59,7 +46,7 @@
 
 連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
-1. [Azure ポータル][portal]で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
+1. [Azure ポータル][portal]で、サブスクリプションのストレージ アカウントを作成します。
 
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します[クラシック] を選択し、[作成] をクリックします。Storage の名前を指定します。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 
@@ -315,4 +302,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

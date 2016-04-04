@@ -2,7 +2,7 @@
 
 インターネットから SQL Server データベース エンジンに接続するには、最初にパブリック IP アドレスの DNS ラベルを構成します。同じ Virtual Network 内の SQL Server インスタンスのみに接続する場合、またはローカルでのみ接続する予定の場合は、この手順は必要ないことに注意してください。
 
-DNS ラベルを作成するには、最初にポータルで**[Virtual Machines]**を選びます。SQL Server VM を選択し、そのプロパティを表示します。
+DNS ラベルを作成するには、最初にポータルで**[Virtual Machines]** を選びます。SQL Server VM を選択し、そのプロパティを表示します。
 
 1. 仮想マシン ブレードで、**[パブリック IP アドレス]** を選びます。
 
@@ -30,4 +30,4 @@ DNS ラベルを作成するには、最初にポータルで**[Virtual Machines
 
 	![SSMS 接続](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0309_2016-->

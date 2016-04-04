@@ -213,11 +213,11 @@ linkedServiceName | 前に作成した HDInsight のリンクされたサービ�
 
 
 [adfgetstarted]: data-factory-get-started.md
-[adfgetstartedmonitoring]: data-factory-get-started.md#MonitorDataSetsAndPipeline
+[adfgetstartedmonitoring]: data-factory-get-started.md#monitor-pipelines
 [adftutorial]: data-factory-tutorial.md
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Classic Portal]: http://portal.azure.com
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

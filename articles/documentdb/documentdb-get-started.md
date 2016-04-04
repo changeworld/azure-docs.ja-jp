@@ -13,15 +13,15 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
-	ms.date="02/19/2016"
+	ms.topic="hero-article"
+	ms.date="03/09/2016"
 	ms.author="anhoh"/>
 
-# NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成 
+# NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-get-started.md)
-- [Node.js](documentdb-nodejs-get-started.md)
+- [Node.JS](documentdb-nodejs-get-started.md)
 
 DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
@@ -141,6 +141,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 [コレクション](documentdb-resources.md#collections)は、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドを使用して作成できます。コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。新しく作成されたコレクションは、[S1 パフォーマンス レベル](documentdb-performance-levels.md)にマップされます。**GetStartedDemo** メソッドでデータベースを作成してから、**FamilyCollection** という名前の新しいコレクションを作成します。
 
     // Check to verify a document collection with the id=FamilyCollection does not exist
+    // dbs is prepended to the id to identify the parent resource: databases
     DocumentCollection documentCollection = client.CreateDocumentCollectionQuery("dbs/" + database.Id).Where(c => c.Id == "FamilyCollection").AsEnumerable().FirstOrDefault();
 
 	// If the document collection does not exist, create a new collection
@@ -205,6 +206,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 次に、**GetStartedDemo** 非同期メソッド内でドキュメントを作成します。
 
     // Check to verify a document with the id=AndersenFamily does not exist
+    // colls is prepended to the id to identify the parent resource: collections, along with the rest of the resource path: dbs/FamilyRegistry
     Document document = client.CreateDocumentQuery("dbs/" + database.Id + "/colls/" + documentCollection.Id).Where(d => d.Id == "AndersenFamily").AsEnumerable().FirstOrDefault();
 
 	// If the document does not exist, create a new document
@@ -221,24 +223,25 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 	        },
 	        Children = new Child[] {
 	            new Child
-	            { 
-	                FirstName = "Henriette Thaulow", 
-	                Gender = "female", 
-	                Grade = 5, 
+	            {
+	                FirstName = "Henriette Thaulow",
+	                Gender = "female",
+	                Grade = 5,
 	                Pets = new Pet[] {
-	                    new Pet { GivenName = "Fluffy" } 
+	                    new Pet { GivenName = "Fluffy" }
 	                }
-	            } 
+	            }
 	        },
 	        Address = new Address { State = "WA", County = "King", City = "Seattle" },
 	        IsRegistered = true
 	    };
-	
+
 	    // id based routing for the first argument, "dbs/FamilyRegistry/colls/FamilyCollection"
 	    await client.CreateDocumentAsync("dbs/" + database.Id + "/colls/" + documentCollection.Id, andersonFamily);
 	}
 
     // Check to verify a document with the id=AndersenFamily does not exist
+    // colls is prepended to the id to identify the parent resource: collections, along with the rest of the resource path: dbs/FamilyRegistry
     document = client.CreateDocumentQuery("dbs/" + database.Id + "/colls/" + documentCollection.Id).Where(d => d.Id == "WakefieldFamily").AsEnumerable().FirstOrDefault();
 
     if (document == null)
@@ -253,9 +256,9 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
             },
             Children = new Child[] {
                 new Child {
-                    FamilyName= "Merriam", 
-                    FirstName= "Jesse", 
-                    Gender= "female", 
+                    FamilyName= "Merriam",
+                    FirstName= "Jesse",
+                    Gender= "female",
                     Grade= 8,
                     Pets= new Pet[] {
                         new Pet { GivenName= "Goofy" },
@@ -263,9 +266,9 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
                     }
                 },
                 new Child {
-                    FamilyName= "Miller", 
-                    FirstName= "Lisa", 
-                    Gender= "female", 
+                    FamilyName= "Miller",
+                    FirstName= "Lisa",
+                    Gender= "female",
                     Grade= 1
                 }
             },
@@ -476,6 +479,5 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
- 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

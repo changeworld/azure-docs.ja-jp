@@ -88,9 +88,9 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 1.  ソリューション エクスプローラーから `config.xml` ファイルを開きます。
 2.  **[プラグイン]**、**[カスタム]** の順にクリックし、 **[Git]** をインストール元として選択し、`https://github.com/phonegap/phonegap-plugin-push` をソースとして入力します。
-	
+
 	![](./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png)
-	
+
 4.  インストール元の横にある矢印をクリックし、**[追加]** をクリックします。
 
 これでプッシュ プラグインがインストールされました。
@@ -115,23 +115,23 @@ PhoneGap プッシュ プラグインでは、プッシュ通知に Google Play 
 
 1. ログイン プロセスのコールバック時、つまり **onDeviceReady** メソッドの一番下に **registerForPushNotifications** の呼び出しを追加します。
 
- 
+
 		// Login to the service.
 		client.login('google')
 		    .then(function () {
 		        // Create a table reference
 		        todoItemTable = client.getTable('todoitem');
-		
+
 		        // Refresh the todoItems
 		        refreshDisplay();
-		
+
 		        // Wire up the UI Event Handler for the Add Item
 		        $('#add-item').submit(addItemHandler);
 		        $('#refresh').on('click', refreshDisplay);
-		
+
 				// Added to register for push notifications.
 		        registerForPushNotifications();
-		
+
 		    }, handleError);
 
 	この例では、認証が成功した後の **registerForPushNotifications** の呼び出しを表しています。これはアプリでプッシュ通知と認証の両方を使用する場合にお勧めします。
@@ -152,18 +152,18 @@ PhoneGap プッシュ プラグインでは、プッシュ通知に Google Play 
 	                sound: 'true'
 	            },
 	            wns: {
-	
+
 	            }
 	        });
-	
+
 	        pushRegistration.on('registration', function (data) {
 	            client.push.register('gcm', data.registrationId);
 	        });
-	
+
 	        pushRegistration.on('notification', function (data, d2) {
 	            alert('Push Received: ' + data.message);
 	        });
-	
+
 	        pushRegistration.on('error', handleError);
 	    }
 
@@ -182,6 +182,12 @@ Android エミュレーターで Android アプリをテストすることもで
 * プッシュ通知の詳細については、「[Azure Notification Hubs]」を参照してください。
 * まだ認証を追加していない場合は、チュートリアルの続きとして、Apache Cordova アプリに[認証を追加]してください。
 
+SDK の使用方法を確認してください。
+
+* [Apache Cordova SDK]
+* [ASP.NET サーバー SDK]
+* [Node.js サーバー SDK]
+
 <!-- URLs -->
 [認証を追加]: app-service-mobile-cordova-get-started-users.md
 [Apache Cordova クイック スタート]: app-service-mobile-cordova-get-started.md
@@ -194,5 +200,8 @@ Android エミュレーターで Android アプリをテストすることもで
 [Visual Studio Community 2015]: http://www.visualstudio.com/
 [Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/ja-JP/features/cordova-vs.aspx
 [Azure Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
+[Apache Cordova SDK]: app-service-mobile-codova-how-to-use-client-library.md
+[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

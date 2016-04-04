@@ -13,28 +13,35 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/18/2015"
+   ms.date="03/15/2016"
    ms.author="cherylmc"/>
 
 
-# Azure クラシック ポータルでの VNet 間接続の構成
+# クラシック デプロイ モデルで VNet 対 VNet 接続を構成する
 
 > [AZURE.SELECTOR]
-- [Azure Classic Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Azure クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
+- [PowerShell - Azure リソース マネージャー](vpn-gateway-vnet-vnet-rm-ps.md)
 
 
-この記事では、クラシック デプロイ モデル (サービス管理とも呼ばれる) を使用して、仮想ネットワークを作成し、仮想ネットワークを相互に接続する手順を説明します。リソース マネージャー デプロイ モデルを使用して作成された仮想ネットワークに接続する場合は、「[Azure リソース マネージャーおよび PowerShell を使用して同じサブスクリプション内の仮想ネットワークの VNet 間接続を構成する](vpn-gateway-vnet-vnet-rm-ps.md)」をご覧ください。
+この記事では、クラシック デプロイ モデル (サービス管理とも呼ばれる) を使用して、仮想ネットワークを作成し、仮想ネットワークを相互に接続する手順を説明します。次の手順では、Azure クラシック ポータルと PowerShell の組み合わせを使用します。
 
 **Azure のデプロイ モデルについて**
 
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]クラシック デプロイ モデルで作成した VNet をリソース マネージャー モデルで作成した VNet に接続するには、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**VNet 対 VNet 用のデプロイ モデルとツール**
+
+両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
+
+[AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
+
 
 ## VNet 間接続の概要
 
 仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することとよく似ています。どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。マルチサイト構成に VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
-![VNet 間接続の図](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727360.png)
+![VNet 間接続の図](./media/virtual-networks-configure-vnet-to-vnet-connection/vnet2vnet.png)
 
 ### 仮想ネットワークを接続する理由
 
@@ -81,7 +88,6 @@
 
 この手順では主に Azure クラシック ポータルを使用しています。ただし、VPN ゲートウェイに接続するには、Microsoft Azure PowerShell コマンドレットを使用する必要があります。
 
-![VNet 間の接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727361.png)
 
 
 ## 手順 1 - IP アドレス範囲を決める
@@ -105,7 +111,7 @@ VNet1: アドレス空間 = 10.1.0.0/16、リージョン = 米国西部
 
 VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
 
-1. **Azure クラシック ポータル**にログインします (Azure ポータルではありません)。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。次の手順では、新しい Azure ポータルを使用していません。
 
 2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[ネットワーク サービス]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
@@ -216,11 +222,12 @@ VNet2 の場合
 
 ## 次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、「[仮想マシンの作成方法](../virtual-machines/virtual-machines-windows-tutorial-classic-portal.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
+
 
 
 [1]: ../hdinsight-hbase-geo-replication-configure-vnets.md
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

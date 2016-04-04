@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/17/2015"
+   ms.date="03/22/2016"
    ms.author="joaoma" />
 
 # Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
@@ -238,4 +238,4 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 	Set-AzureRmApplicationGateway -ApplicationGateway $getgw -verbose
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

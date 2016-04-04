@@ -23,7 +23,7 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-get-started.md)
+- [Azure ポータル](sql-database-get-started.md)
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
@@ -34,7 +34,7 @@
 
 開始する前に、Azure アカウントとサブスクリプションが必要です。お持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-> [AZURE.NOTE] この SQL Database チュートリアルでは、マイクロソフトのリレーショナル データベース管理システム (RDBMS) である Azure SQL Database を使用して、クラウドでデータベースを設定する方法について説明します。別のオプションとして、Azure Virtual Machine で SQL Server を実行することもできます。これらの簡単な比較については、「[Azure SQL Database と Azure VM 内の SQL Server について](data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。また、仮想マシンについては、「[SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+> [AZURE.NOTE] この SQL Database チュートリアルでは、マイクロソフトのリレーショナル データベース管理システム (RDBMS) である Azure SQL Database を使用して、クラウドでデータベースを設定する方法について説明します。別のオプションとして、Azure Virtual Machine で SQL Server を実行することもできます。これらの簡単な比較については、「[Azure SQL Database と Azure VM 内の SQL Server について](data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。また、仮想マシンについては、「[SQL Server 仮想マシンのプロビジョニング](../virtual-machines/virtual-machines-windows-classic-portal-sql.md)」を参照してください。
 
 ## 手順 1. サインインして SQL データベースの設定を開始する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
@@ -117,4 +117,4 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

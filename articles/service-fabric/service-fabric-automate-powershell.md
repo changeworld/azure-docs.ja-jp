@@ -13,50 +13,48 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/14/2015"
+	ms.date="03/02/2016"
 	ms.author="ryanwi"/>
 
-# PowerShell を使用した Service Fabric アプリケーションのデプロイ、アップグレード、テスト、および削除
+# PowerShell を使用したアプリケーション ライフサイクルの自動化
 
-この記事では、PowerShell を使用して、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、およびテストの一般的なタスクを自動化する方法を説明します。
+[Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)のさまざまな要素を自動化することができます。この記事では、PowerShell を使用して、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、およびテストの一般的なタスクを自動化する方法を説明します。
 
 ## 前提条件
+この記事に記載されているタスクを進めていく前に、次の作業を行ってください。
 
-記事内のタスクに移行する前に必ず、**ServiceFabric** および **ServiceFabricTestability** PowerShell モジュールをインストールする[ランタイム、SDK、およびツールをインストール](service-fabric-get-started.md)してください。[PowerShell スクリプトの実行を有効化](service-fabric-get-started.md#enable-powershell-script-execution)し、[ローカル クラスターをインストールして開始](service-fabric-get-started.md#install-and-start-a-local-cluster)すると、記事の例を実行できるようになります。
-
-この記事の例では、[**WordCount** サンプル アプリケーション](http://aka.ms/servicefabricsamples) (開始サンプルにあります) を使用します。サンプル アプリケーションのダウンロードとビルド
-
-この記事では、PowerShell コマンドを実行する前に、まず [**Connect-ServiceFabricCluster**](https://msdn.microsoft.com/library/azure/mt125938.aspx) を使用して、ローカル Service Fabric クラスターに接続することから始めます。
-
-```powershell
-Connect-ServiceFabricCluster localhost:19000
-```
++ 「[Service Fabric の技術概要](service-fabric-technical-overview.md)」に記載されている Service Fabric の概念を理解する。
++ [ランタイム、SDK、およびツールをインストールする。](service-fabric-get-started.md)これによって、**ServiceFabric** PowerShell モジュールもインストールされます。
++ [PowerShell スクリプトの実行を有効化する](service-fabric-get-started.md#enable-powershell-script-execution)。
++ ローカル クラスターを開始する。管理者として新しい PowerShell ウィンドウを起動し、SDK フォルダー `& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"` からクラスターのセットアップ スクリプトを実行します。
++ この記事の PowerShell コマンドを実行する前に、[**Connect-ServiceFabricCluster**](https://msdn.microsoft.com/library/azure/mt125938.aspx): `Connect-ServiceFabricCluster localhost:19000` を使用して、ローカル Service Fabric クラスターに接続する。
++ 下記のタスクを実行するうえで必要となる、デプロイ用の v1 アプリケーション パッケージと、アップグレード用の v2 アプリケーション パッケージを用意する。[**WordCount** サンプル アプリケーション](http://aka.ms/servicefabricsamples) をダウンロードします (「Getting Started Samples」にあります)。Visual Studio でアプリケーションをビルドしてパッケージ化します (ソリューション エクスプローラーで **WordCount** を右クリックし、**[パッケージ]** を選択します)。`C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug` 内の v1 パッケージを `C:\Temp\WordCount` にコピーします。`C:\Temp\WordCount` を `C:\Temp\WordCountV2` にコピーし、アップグレード用の v2 アプリケーション パッケージを作成します。テキスト エディターで `C:\Temp\WordCountV2\ApplicationManifest.xml` を開きます。**ApplicationManifest** 要素で、**ApplicationTypeVersion** 属性を "1.0.0" から "2.0.0" に変更します。これにより、アプリケーションのバージョン番号が更新されます。変更された ApplicationManifest.xml ファイルを保存します。
 
 ## タスク: Service Fabric アプリケーションのデプロイ
 
-アプリケーションをビルドし、アプリケーションの種類をパッケージ化したら、ローカル Service Fabric クラスターにアプリケーションをデプロイできます。最初に、Visual Studio で WordCount アプリケーションをパッケージ化します。ソリューション エクスプローラーで **WordCount** を右クリックし、**[パッケージ]** を選択します。サービス、アプリケーション マニフェスト、およびパッケージ レイアウトの情報については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」を参照してください。デプロイには、アプリケーション パッケージのアップロード、アプリケーションの種類の登録、アプリケーション インスタンスの作成が含まれます。クラスターに新しいアプリケーションをデプロイするには、このセクションの手順を使用します。
+アプリケーションをビルドしてパッケージ化 (またはアプリケーション パッケージをダウンロード) したら、ローカル Service Fabric クラスターにアプリケーションをデプロイできます。デプロイには、アプリケーション パッケージのアップロード、アプリケーションの種類の登録、アプリケーション インスタンスの作成が含まれます。クラスターに新しいアプリケーションをデプロイするには、このセクションの手順を使用します。
 
 ### 手順 1: アプリケーション パッケージのアップロード
 アプリケーション パッケージをイメージ ストアにアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に置かれます。アプリケーション パッケージには、必要なアプリケーション マニフェスト、サービス マニフェスト、およびアプリケーションとサービス インスタンスを作成するコード、構成、データのパッケージが含まれています。[**Copy-ServiceFabricApplicationPackage**](https://msdn.microsoft.com/library/azure/mt125905.aspx) コマンドは、パッケージをアップロードします。次に例を示します。
 
 ```powershell
-Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCount
+Copy-ServiceFabricApplicationPackage C:\Temp\WordCount\ -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCount
 ```
 
 ### 手順 2: アプリケーションの種類の登録
-アプリケーション パッケージを登録すると、アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンを利用できるようになります。システムは、前の手順でアップロードされたパッケージの読み取り、パッケージの検証 ([**Test-ServiceFabricApplicationPackage**](https://msdn.microsoft.com/library/azure/mt125950.aspx) をローカルで実行することに相当)、パッケージのコンテンツの処理、および内部システムの場所への処理済みのパッケージのコピーを実行します。[**Register-ServiceFabricApplicationType**](https://msdn.microsoft.com/library/azure/mt125958.aspx) コマンドレットを実行します。
+アプリケーション パッケージを登録すると、アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンを利用できるようになります。システムは、手順 1. でアップロードされたパッケージの読み取り、パッケージの検証 ([**Test-ServiceFabricApplicationPackage**](https://msdn.microsoft.com/library/azure/mt125950.aspx) をローカルで実行することに相当)、パッケージのコンテンツの処理、および内部システムの場所への処理済みのパッケージのコピーを実行します。[**Register-ServiceFabricApplicationType**](https://msdn.microsoft.com/library/azure/mt125958.aspx) コマンドレットを実行します。
 
 ```powershell
 Register-ServiceFabricApplicationType WordCount
 ```
-クラスターに登録されているアプリケーションの種類を表示するには、次のコマンドレットを実行します。
+クラスターに登録されているアプリケーションの種類をすべて表示するには、[Get-ServiceFabricApplicationType](https://msdn.microsoft.com/library/azure/mt125871.aspx) コマンドレットを実行します。
 
 ```powershell
 Get-ServiceFabricApplicationType
 ```
 
 ### 手順 3: アプリケーション インスタンスの作成
-[**New-ServiceFabricApplication**](https://msdn.microsoft.com/library/azure/mt125913.aspx) コマンドを使用して正常に登録したアプリケーションの種類のバージョンを使用し、アプリケーションをインスタンス化できます。各アプリケーションの名前は、**fabric:** スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。アプリケーションの種類の名前とアプリケーションの種類のバージョンは、**ApplicationManifest.xml** ファイルで宣言されます。ターゲット アプリケーションの種類のアプリケーション マニフェストで既定のサービスが定義されている場合、それらのサービスも同時に作成されます。
+[**New-ServiceFabricApplication**](https://msdn.microsoft.com/library/azure/mt125913.aspx) コマンドを使用して正常に登録したアプリケーションの種類のバージョンを使用し、アプリケーションをインスタンス化できます。各アプリケーションの名前は、デプロイ時に宣言します。**fabric:** スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。アプリケーションの種類の名前とバージョンは、アプリケーション パッケージの **ApplicationManifest.xml** ファイルで宣言されます。ターゲット アプリケーションの種類のアプリケーション マニフェストで既定のサービスが定義されている場合、それらのサービスも同時に作成されます。
 
 ```powershell
 New-ServiceFabricApplication fabric:/WordCount WordCount 1.0.0
@@ -71,54 +69,28 @@ Get-ServiceFabricApplication | Get-ServiceFabricService
 ```
 
 ## タスク: Service Fabric アプリケーションのアップグレード
+以前にデプロイした Service Fabric アプリケーションは、更新したアプリケーション パッケージを使用してアップグレードすることができます。このタスクは、「タスク: Service Fabric アプリケーションのデプロイ」でデプロイされた WordCount アプリケーションをアップグレードします。 詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
-以前にデプロイされた Service Fabric アプリケーションをアップグレードすることができます。このタスクは、「タスク: Service Fabric アプリケーションのデプロイ」でデプロイされた WordCount アプリケーションをアップグレードします。 詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
+この例では、わかりやすくするために、前提条件で作成した WordCountV2 アプリケーション パッケージにおいて、アプリケーションのバージョン番号のみが更新されています。より現実に即したシナリオでは、サービスのコード、構成、またはデータ ファイルを更新した後、更新されたバージョン番号を使用してアプリケーションをリビルドし、パッケージ化する必要があります。
 
-### 手順 1: アプリケーションの更新
-
-WordCount サービス内のコードに変更を加えます。
-
-サービスのコードを更新した後、**ServiceManifest.xml** ファイル (WordCount プロジェクトの **PackageRoot** ディレクトリにあります) で、サービスのバージョン番号をインクリメントする必要があります。マニフェストの **CodePackage** 要素を検索し、サービスのバージョンを 2.0.0 に変更します。ServiceManifest.xml ファイル内の対応する行は、次のようになります。
-
-```xml
-<ServiceManifest Name="WordCountServicePkg" Version="2.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ServiceTypes>
-    <StatefulServiceType ServiceTypeName="WordCountServiceType" HasPersistedState="true" />
-  </ServiceTypes>
-  <CodePackage Name="Code" Version="2.0.0">
-	  ...
-```
-
-次に、ApplicationManifest.xml ファイル (WordCount ソリューション下の WordCount アプリケーション プロジェクトにあります) を更新する必要があります。**ServiceManifestRef** 要素を更新して、バージョン 2.0.0.0 の **WordCountServicePkg** プロジェクトを使用します。**ApplicationTypeVersion** も 2.0.0.0 から 1.0.0.0 に更新します。ApplicationManifest.xml の対応する行は次のようになります。
-
-```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="WordCount" ApplicationTypeVersion="2.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-...
-<ServiceManifestRef ServiceManifestName="WordCountServicePkg" ServiceManifestVersion="2.0.0" />
-```
-
-これらの変更を加えた後は、ファイルを保存し、WordCount プロジェクトをリビルドします。WordCount プロジェクトを右クリックして、**[パッケージ]** を選択し、更新されたアプリケーションをパッケージ化します。デプロイ可能なアプリケーション パッケージが作成されます。これで、更新されたアプリケーションをデプロイする準備は完了です。
-
-### 手順 2: 更新されたアプリケーション パッケージのコピーと登録
-
-アプリケーションはビルドおよびパッケージ化され、アップグレードの準備は完了しています。PowerShell ウィンドウを管理者として開き、「[**Get-ServiceFabricApplication**](https://msdn.microsoft.com/library/azure/mt163515.aspx)」と入力すると、バージョン 1.0.0 の WordCount アプリケーションの種類がデプロイされていることが表示されます。WordCount サンプルの場合、アプリケーション パッケージは次の場所にあります: *C:\\ServiceFabricSamples\\Services\\WordCount\\WordCount\\pkg\\Debug*
+### 手順 1: 更新したアプリケーション パッケージのアップロード
+WordCount v1 アプリケーションをアップグレードする準備は完了しているものとします。PowerShell ウィンドウを管理者として開き、「[**Get-ServiceFabricApplication**](https://msdn.microsoft.com/library/azure/mt163515.aspx)」と入力すると、バージョン 1.0.0 の WordCount アプリケーションの種類がデプロイされていることが表示されます。
 
 次に、更新されたアプリケーション パッケージを Service Fabric イメージ ストア (アプリケーション パッケージが Service Fabric により格納される場所) にコピーします。**ApplicationPackagePathInImageStore** パラメーターから、Service Fabric にアプリケーション パッケージが見つかる場所が通知されます。次のコマンドは、アプリケーション パッケージを、イメージ ストアの **WordCountV2** にコピーします。
 
 ```powershell
-Copy-ServiceFabricApplicationPackage C:\ServiceFabricSamples\Services\WordCount\WordCount\pkg\Debug -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCountV2
-```
+Copy-ServiceFabricApplicationPackage C:\Temp\WordCountV2\ -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCountV2
 
+```
+### 手順 2: 更新したアプリケーションの種類の登録
 次の手順では、Service Fabric を使用して、アプリケーションの新しいバージョンを登録します。これは、[**Register-ServiceFabricApplicationType**](https://msdn.microsoft.com/library/azure/mt125958.aspx) コマンドレットを使用して実行できます。
 
 ```powershell
 Register-ServiceFabricApplicationType WordCountV2
 ```
 
-このコマンドが成功しなかった場合は、手順 1 で説明したように、サービスをリビルドする必要があります。
-
 ### 手順 3: アップグレードの開始
-アプリケーションのアップグレードには、さまざまなアップグレード パラメーター、タイムアウト、および正常性条件を適用できます。詳細については、「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」と「[アップグレード プロセス](service-fabric-application-upgrade.md)」を参照してください。このチュートリアルでは、サービスの正常性評価の条件は、既定値 (と推奨値) のままにします。すべてのサービスとインスタンスは、アップグレード後に_正常_である必要があります。ただし、**HealthCheckStableDuration** を 60 秒間に増やす必要があります (そうすると、次のアップグレード ドメインにアップグレードが進む前に、少なくとも 20 秒間、サービスが正常な状態ができます)。また、**UpgradeDomainTimeout** を 1200 秒に、**UpgradeTimeout** を 3000 秒に設定します。最後に、**UpgradeFailureAction** を **[ロールバック]** に設定します。この設定を行うと、アップグレード中に問題が発生した場合、Service Fabric はアプリケーションを以前のバージョンにロールバックするよう要求します。
+アプリケーションのアップグレードには、さまざまなアップグレード パラメーター、タイムアウト、および正常性条件を適用できます。詳細については、「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」と「[アップグレード プロセス](service-fabric-application-upgrade.md)」を参照してください。すべてのサービスとインスタンスは、アップグレード後に_正常_である必要があります。**HealthCheckStableDuration** は 60 秒に設定します (これにより、次のアップグレード ドメインへアップグレードが進む前に、少なくとも 20 秒間、サービスが正常な状態になります)。また、**UpgradeDomainTimeout** を 1200 秒に、**UpgradeTimeout** を 3000 秒に設定します。最後に、**UpgradeFailureAction** を **[ロールバック]** に設定します。この設定を行うと、アップグレード中に問題が発生した場合、Service Fabric はアプリケーションを以前のバージョンにロールバックするよう要求します。
 
 これで、[**Start-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/library/azure/mt125975.aspx) コマンドレットを使用して、アプリケーションのアップグレードを開始することができます。
 
@@ -128,7 +100,8 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -Applic
 
 アプリケーション名は、以前にデプロイされた v1.0.0 のアプリケーション名 (fabric:/WordCount) と同じであることに注意してください。Service Fabric はこの名前を使用して、アップグレードが実行されるアプリケーションを識別します。タイムアウトを短く設定しすぎている場合、問題を示すタイムアウトのエラー メッセージが表示されることがあります。「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」を参照するか、タイムアウトの値を増加してください。
 
-[Service Fabric エクスプ ローラー](service-fabric-visualizing-your-cluster.md) 、または [**Get-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) コマンドレットを使用して、アプリケーションのアップグレードの進行状況をモニターできます。
+### 手順 4: アップグレードの進行状況の確認
+[Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)、または [**Get-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) コマンドレットを使用して、アプリケーションのアップグレードの進行状況を監視できます。
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/WordCount
@@ -149,8 +122,6 @@ $maxStabilizationTimeSecs = 180
 $concurrentFaults = 3
 $waitTimeBetweenIterationsSec = 60
 
-Connect-ServiceFabricCluster
-
 Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterStabilizationTimeoutSec $maxStabilizationTimeSecs -MaxConcurrentFaults $concurrentFaults -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec
 ```
 
@@ -162,8 +133,6 @@ $timeToRun = 60
 $maxStabilizationTimeSecs = 180
 $waitTimeBetweenFaultsSec = 10
 $serviceName = "fabric:/WordCount/WordCountService"
-
-Connect-ServiceFabricCluster
 
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindUniformInt64 -PartitionKey 1
 ```
@@ -203,4 +172,4 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 
 [Azure Service Fabric Testability コマンドレット](https://msdn.microsoft.com/library/azure/mt125844.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

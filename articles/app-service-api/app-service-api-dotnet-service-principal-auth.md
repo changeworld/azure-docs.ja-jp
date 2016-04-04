@@ -12,8 +12,8 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="01/26/2016" 
+	ms.topic="article"
+	ms.date="03/04/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps のサービス プリンシパル認証
@@ -41,19 +41,17 @@
 
 ここでは、すべての API アプリに当てはまる一般的な手順を説明します。To Do List .NET サンプル アプリケーション固有の手順については、「[.NET 入門チュートリアルの続行](#tutorialstart)」を参照してください。
 
-1. [Azure ポータル](https://portal.azure.com/)で、保護する API アプリの **[API アプリ]** ブレードに移動し、**[設定]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com/)で、保護する API アプリの **[設定]** ブレードに移動して、**[機能]** セクションを探し、**[認証/承認]** をクリックします。
 
-2. **[設定]** ブレードで、**[機能]** セクションを探し、**[認証/承認]** をクリックします。
-
-	![](./media/app-service-api-dotnet-user-principal-auth/features.png)
+	![Azure ポータルでの認証と承認](./media/app-service-api-dotnet-user-principal-auth/features.png)
 
 3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
-4. **[要求が認証されていない場合のアクション]** ボックスの一覧の **[Azure Active Directory でログイン]** を選択します。
+4. **[要求が認証されていない場合のアクション]** ドロップダウン リストで、**[Azure Active Directory でログイン]** を選択します。
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
-	![](./media/app-service-api-dotnet-user-principal-auth/authblade.png)
+	![Azure ポータルでの [認証/承認] ブレード](./media/app-service-api-dotnet-user-principal-auth/authblade.png)
 
 6. **[Azure Active Directory の設定]** ブレードを構成して新しい Azure AD アプリケーションを作成するか、使用する機能が既に含まれている Azure AD アプリケーションがある場合はそれを使用します。
 
@@ -64,6 +62,8 @@
 7. 認証プロバイダーの構成ブレードを完了したら、**[OK]** をクリックします。
 
 7. **認証/承認**ブレードで、**[保存]** をクリックします。
+
+	![[保存] をクリックします。](./media/app-service-api-dotnet-service-principal-auth/authsave.png)
 
 この作業が完了すると、App Service は、構成されている Azure AD テナント内の呼び出し元から送信された要求のみを許可するようになります。保護対象の API アプリでは、認証または承認コードは必要ありません。API アプリには、使用頻度の高い要求と共にベアラー トークンが HTTP ヘッダーに格納されて渡されます。その情報をコード内で読み取ることによって、特定の呼び出し元 (サービス プリンシパルなど) から送信された要求であることを確認できます。
 
@@ -98,7 +98,7 @@ App Service から提供される `objectidentifier` 要求は、X-MS-CLIENT-PRI
 
 API アプリの Node.js または Java の入門シリーズを読んでいる場合は、「[次のステップ](#next-steps)」セクションに進みます。
 
-この記事では、引き続き API アプリの .NET 入門シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
+この記事では、引き続き API アプリの .NET 入門シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-dotnet-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
 
 ## Azure で認証を設定する
 
@@ -106,11 +106,15 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 次のセクションでは、アプリケーションの資格情報を Azure AD に送信し、ベアラー トークンを取得し、ベアラー トークンをデータ層 API アプリに送信する中間層 API アプリを構成します。このプロセスを次の図に示します。
 
-![](./media/app-service-api-dotnet-service-principal-auth/appdiagram.png)
+![サービス認証のダイアグラム](./media/app-service-api-dotnet-service-principal-auth/appdiagram.png)
 
-1. [Azure ポータル](https://portal.azure.com/)で、ToDoListDataAPI (データ層) API アプリ用に作成した API アプリの [API アプリ] ブレードに移動し、**[設定]** をクリックします。
+チュートリアルの手順に従う際に問題が発生した場合は、チュートリアルの末尾の「[トラブルシューティング](#troubleshooting)」を参照してください。
+
+1. [Azure ポータル](https://portal.azure.com/)で、ToDoListDataAPI (データ層) API アプリ用に作成した API アプリの **[設定]** ブレードに移動し、**[設定]** をクリックします。
 
 2. **[設定]** ブレードで、**[機能]** セクションを探し、**[認証/承認]** をクリックします。
+
+	![Azure ポータルでの認証と承認](./media/app-service-api-dotnet-user-principal-auth/features.png)
 
 3. **[認証/承認]** ブレードで、**[オン]** をクリックします。
 
@@ -120,21 +124,21 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 5. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
+	![Azure ポータルでの [認証/承認] ブレード](./media/app-service-api-dotnet-user-principal-auth/authblade.png)
+
 6. **[Azure Active Directory 設定]** ブレードで **[Express]** をクリックします。
 
 	**[Express]** オプションを選択すると、Azure は Azure AD [テナント](https://msdn.microsoft.com/ja-JP/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)に AAD アプリケーションを自動的に作成できます。
 
 	すべての Azure アカウントにテナントが自動的に作成されるので、ユーザーがテナントを作成する必要はありません。
 
-7. **[管理モード]** で **[新しい AD アプリを作成する]** をクリックします。
+7. まだ選択されていない場合は、**[管理モード]** で **[新しい AD アプリを作成する]** をクリックします。
 
-	ポータルは **[アプリの作成]** 入力ボックスを既定値と結びつけます。
+	ポータルは **[アプリの作成]** 入力ボックスを既定値と結びつけます。既定では、Azure AD アプリケーションの名前は API アプリと同じです。必要に応じて、別の名前を入力できます。
 	
-	![](./media/app-service-api-dotnet-service-principal-auth/aadsettings.png)
+	![Azure AD の設定](./media/app-service-api-dotnet-service-principal-auth/aadsettings.png)
 
-	既定では、Azure AD アプリケーションの名前は API アプリと同じです。必要に応じて、別の名前を入力できます。
-
-	また、もう 1 つの方法として、呼び出し元の API アプリと保護対象の API アプリの両方に 1 つの Azure AD アプリケーションを使用することもできます。この方法を選択する場合、既に前のユーザー認証チュートリアルで Azure AD アプリケーションを作成しているので、ここでは **[新しい AD アプリを作成する]** オプションを選択する必要はありません。このチュートリアルでは、呼び出し元の API アプリと保護対象の API アプリには別の Azure AD アプリケーションを使用します。
+	**注**: また、もう 1 つの方法として、呼び出し元の API アプリと保護対象の API アプリの両方に 1 つの Azure AD アプリケーションを使用することもできます。この方法を選択する場合、既に前のユーザー認証チュートリアルで Azure AD アプリケーションを作成しているので、ここでは **[新しい AD アプリを作成する]** オプションを選択する必要はありません。このチュートリアルでは、呼び出し元の API アプリと保護対象の API アプリには別の Azure AD アプリケーションを使用します。
 
 8. **[アプリの作成]** 入力ボックスの値を書き留めておきます。後で、この AAD アプリケーションを Azure クラシック ポータルで検索します。
 
@@ -142,7 +146,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 10. **認証/承認**ブレードで、**[保存]** をクリックします。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/saveauth.png)
+	![[保存] をクリックします。](./media/app-service-api-dotnet-service-principal-auth/saveauth.png)
 
 	**[サインオン URL]** と **[応答 URL]** に API アプリの URL が自動的に設定された Azure Active Directory アプリケーションが App Service により作成されます。[応答 URL] を使用すると、AAD テナントのユーザーは API アプリにログインしてアクセスできるようになります。
 
@@ -206,7 +210,9 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 3. ToDoListAPI プロジェクトをデプロイします(プロジェクトを右クリックし、**[発行]、[発行]** の順にクリックします)。
 
-4. プロジェクトが正常にデプロイされた後に開くブラウザー ウィンドウを閉じます。
+	Visual Studio によってプロジェクトがデプロイされ、Web アプリのベース URL がブラウザーで開きます。これにより 403 エラー ページが表示されます。これは、ブラウザーから Web API ベース URL への移動を試行した場合の通常の動作です。
+
+4. ブラウザーを閉じます。
 
 ### Azure AD の構成値を取得する
 
@@ -222,7 +228,7 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 5. **[クライアント ID]** の値をコピーし、後で取得できる場所に保存します。
 
-8. Azure クラシック ポータルで、**[自分の会社が所有するアプリケーション]** の一覧に戻り、ToDoListAPI (中間層) API アプリ用に作成した AAD アプリケーションをクリックします。
+8. Azure クラシック ポータルで、**[自分の会社が所有するアプリケーション]** の一覧に戻り、中間層 ToDoListAPI API アプリ用に作成した AAD アプリケーション (このチュートリアルではなく、前のチュートリアルで作成したもの) をクリックします。
 
 16. [**構成**] タブをクリックします。
 
@@ -232,11 +238,11 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 6. **[保存]** をクリックします。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/genkey.png)
+	![アプリ キーの生成](./media/app-service-api-dotnet-service-principal-auth/genkey.png)
 
 7. キー値をコピーし、後で取得できる場所に保存します。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/genkeycopy.png)
+	![新しいアプリ キーのコピー](./media/app-service-api-dotnet-service-principal-auth/genkeycopy.png)
 
 ### 中間層 API アプリのランタイム環境で Azure AD 設定を構成する
 
@@ -246,20 +252,35 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 3. **[アプリ設定]** セクションで、次のキーと値を追加します。
 
-	|キー|値|例
-	|---|---|---|
-	|ida:Authority|https://login.microsoftonline.com/{your Azure AD テナント名}|https://login.microsoftonline.com/contoso.onmicrosoft.com|
-	|ida:ClientId|呼び出し元のアプリケーションのクライアント ID (ToDoListAPI)|960adec2-b74a-484a-960adec2-b74a-484a|
-	|ida:ClientSecret|呼び出し元のアプリケーションのアプリ キー (ToDoListAPI)|oCgdj3EYLfnR0p6iR3UvHFAfkn+zQB+0VqZT/6=
-	|ida:Resource|呼び出し先のアプリケーション (ToDoListDataAPI) のクライアント ID|e65e8fc9-5f6b-48e8-e65e8fc9-5f6b-48e8|
+	| **キー** | ida:Authority |
+	|---|---|
+	| **値** | https://login.microsoftonline.com/{your Azure AD テナント名} |
+	| **例** | https://login.microsoftonline.com/contoso.onmicrosoft.com |
 
-	呼び出し元 API アプリと保護対象の API アプリの両方に 1 つの Azure AD アプリケーションを使用した場合、`ida:ClientId` と `ida:Resource` の両方に同じ値を使用します。
+	| **キー** | ida:ClientId |
+	|---|---|
+	| **値** | 呼び出し元のアプリケーションのクライアント ID (中間層 - ToDoListAPI) |
+	| **例** | 960adec2-b74a-484a-960adec2-b74a-484a |
+
+	| **キー** | ida:ClientSecret |
+	|---|---|
+	| **値** | 呼び出し元のアプリケーションのアプリ キー (中間層 - ToDoListAPI) |
+	| **例** | e65e8fc9-5f6b-48e8-e65e8fc9-5f6b-48e8 |
+
+	| **キー** | ida:Resource |
+	|---|---|
+	| **値** | 呼び出し先のアプリケーションのクライアント ID (データ層 - ToDoListDataAPI) |
+	| **例** | e65e8fc9-5f6b-48e8-e65e8fc9-5f6b-48e8 |
+
+	**注**: `ida:Resource` に、呼び出し先のアプリケーションの**クライアント ID** (その**アプリケーション ID URI** ではなく) を使用していることを確認してください。
+
+	`ida:ClientId` と `ida:Resource` はこのチュートリアルでは異なる値になります。これは、中間層とデータ層に別々の Azure AD アプリケーションを使用しているためです。呼び出し元 API アプリと保護対象の API アプリに 1 つの Azure AD アプリケーションを使用した場合、`ida:ClientId` と `ida:Resource` の両方に同じ値を使用します。
 
 	このコードでは、ConfigurationManager を使用してこれらの値を取得するので、プロジェクトの Web.config ファイルまたは Azure ランタイム環境に保存できます。ASP.NET アプリケーションは Azure App Service で実行されますが、環境設定は、Web.config の設定よりも自動的に優先されます。一般的に、[機密情報を保存する場合、環境設定の方が Web.config ファイルよりも安全](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)です。
 
 6. **[保存]** をクリックします。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/appsettings.png)
+	![[保存] をクリックします。](./media/app-service-api-dotnet-service-principal-auth/appsettings.png)
 
 ### アプリケーションをテストする
 
@@ -269,7 +290,7 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
 
 4. to-do 項目を追加し、アプリケーションが動作していることを確認します。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/mvchome.png)
+	![To Do List ページ](./media/app-service-api-dotnet-service-principal-auth/mvchome.png)
 
 	期待どおりにアプリケーションが動作しない場合は、Azure ポータルで入力したすべての設定を確認します。すべての設定が正しいと考えられる場合は、このチュートリアルの後半にある「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 
@@ -328,59 +349,59 @@ TodoListDataAPI プロジェクトを次のように変更します。
 
 5. Azure App Service に ToDoListDataAPI プロジェクトを再デプロイします。
 
-6. ブラウザーで AngularJS フロントエンド Web アプリの HTTPS URL にアクセスし、ホーム ページの **[To Do List]** タブをクリックします。
+6. ブラウザーで AngularJS フロントエンド Web アプリケーションの HTTPS URL にアクセスし、ホーム ページの **[To Do List]** タブをクリックします。
 
 	バック エンドの呼び出しは失敗しているので、アプリケーションは動作していません。新しいコードは、実際の appid と objectidentifier を確認していますが、確認に使用する正しい値はまだ取得していません。ブラウザーの開発者ツール コンソールには、サーバーから HTTP 401 エラーが返されているというレポートが表示されます。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/webapperror.png)
+	![開発者用ツール コンソールのエラー](./media/app-service-api-dotnet-service-principal-auth/webapperror.png)
 
 	次の手順では、目的の値を構成します。
 
 8. Azure AD PowerShell を使用して、TodoListWebApp プロジェクト用に作成した Azure AD アプリケーションのサービス プリンシパル値を取得します。
 
-	a.Azure PowerShell をインストールし、サブスクリプションに接続する手順については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+	a.Azure PowerShell をインストールし、サブスクリプションに接続する手順については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 	b.サービス プリンシパルの一覧を取得するために、`Login-AzureRmAccount` コマンド、`Get-AzureRmADServicePrincipal` コマンドの順に実行します。
 
 	c.TodoListAPI アプリケーションのサービス プリンシパルの objectid を検索し、後でコピーできる場所に保存します。
 
-7. Azure ポータルで、ToDoListAngular プロジェクトをデプロイした Web アプリの Web アプリ ブレードに移動します。
+7. Azure ポータルで ToDoListDataAPI プロジェクトをデプロイした API アプリ用の API アプリ ブレードに移動します。
 
 9. **[設定]、[アプリケーションの設定]** の順にクリックします。
 
 3. **[アプリ設定]** セクションで、次のキーと値を追加します。
 
-	|キー|値|例
-	|---|---|---|
-	|todo:TrustedCallerServicePrincipalId|呼び出し元アプリケーションのサービス プリンシパル ID|4f4a94a4-6f0d-4072-4f4a94a4-6f0d-4072|
-	|todo:TrustedCallerClientId|呼び出し元アプリケーションのクライアント ID (TodoListAPI AAD アプリケーションからコピー)|960adec2-b74a-484a-960adec2-b74a-484a|
+	| **キー** | todo:TrustedCallerServicePrincipalId |
+	|---|---|
+	| **値** | 呼び出し元アプリケーションのサービス プリンシパル ID |
+	| **例** | 4f4a94a4-6f0d-4072-4f4a94a4-6f0d-4072 |
+
+	| **キー** | todo:TrustedCallerClientId |
+	|---|---|
+	| **値** | 呼び出し元アプリケーションのクライアント ID (TodoListAPI Azure AD アプリケーションからコピー) |
+	| **例** | 960adec2-b74a-484a-960adec2-b74a-484a |
 
 6. **[保存]** をクリックします。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/trustedcaller.png)
+	![[保存] をクリックします。](./media/app-service-api-dotnet-service-principal-auth/trustedcaller.png)
 
-6. ブラウザーで Web アプリの URL に戻り、ホーム ページの **[To Do List]** タブをクリックします。
+6. ブラウザーで Web アプリケーションの URL に戻り、ホーム ページの **[To Do List]** タブをクリックします。
 
 	今回は、信頼済みの呼び出し元アプリ ID とサービス プリンシパル ID が期待される値なので、アプリケーションは期待どおりに動作します。
 
-	![](./media/app-service-api-dotnet-service-principal-auth/mvchome.png)
+	![To Do List ページ](./media/app-service-api-dotnet-service-principal-auth/mvchome.png)
 
 ## 一からのプロジェクトのビルド
 
-**Azure API アプリ** プロジェクト テンプレートを使用し、既定の Values コントローラーを ToDoList コントローラーに置き換えることによって、2 つの Web API プロジェクトを作成しました。ToDoListAPI プロジェクトで Azure AD サービス プリンシパル トークンを取得するために、[Active Directory Authentication Library (ADAL) for .NET](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) NuGet パッケージをインストールしました。
+**Azure API アプリケーション** プロジェクト テンプレートを使用し、既定の Values コントローラーを ToDoList コントローラーに置き換えることによって、2 つの Web API プロジェクトを作成しました。ToDoListAPI プロジェクトで Azure AD サービス プリンシパル トークンを取得するために、[Active Directory Authentication Library (ADAL) for .NET](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) NuGet パッケージをインストールしました。
  
 ToDoListAngular のような Web API バックエンドで AngularJS 単一ページ アプリケーションを作成する方法については、「[Hands On Lab: Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js (ハンズオン ラボ: ASP.NET Web API と Angular.js で単一ページ アプリケーション (SPA) を構築する)](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs)」を参照してください。Azure AD 認証コードを追加する方法については、「[Azure AD で AngularJS シングル ページ アプリをセキュリティで保護する](../active-directory/active-directory-devquickstarts-angular.md)」を参照してください。
 
 ## トラブルシューティング
 
-認証なしでは正常に動作するアプリケーションが、認証を実装すると動作しなくなる場合、通常は、構成の設定が正しくないか、一貫していないことが問題です。まず、Azure App Service および Azure Active Directory ですべての設定を再確認します。具体的なヒントを次に示します。
+[AZURE.INCLUDE [トラブルシューティング](../../includes/app-service-api-auth-troubleshooting.md)]
 
-* プロジェクトでコードを構成した後、他のプロジェクトではなくそのプロジェクトを再デプロイしたことを確認します。
-* Azure ポータルの **[アプリケーション設定]** ブレードで構成した設定について、設定を入力したときに正しい API アプリまたは Web アプリを選択したことを確認します。
-* ブラウザーで HTTP URL ではなく HTTPS URL にアクセスしていることを確認します。
-* 中間層 API アプリで CORS がまだ有効になっていて、フロントエンド HTTPS URL から中間層への呼び出しが許可されることを確認します。問題が CORS 関連である可能性がある場合は、許可される配信元 URL として "*" を試してみます。**重要:** 本当の問題がデータ層の認証にある場合、一部のブラウザーの開発者ツール コンソールでは、CORS エラー メッセージがレポートされることがあります。この問題を確認するには、ToDoListDataAPI API アプリの認証を一時的に無効にしてみます。
-* [customErrors モードを Off](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview) に設定して、可能な限り多くの情報がエラー メッセージで得られるようにします。
-* 他の方法が失敗する場合は、[リモート デバッグ セッション](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を試して、ToDoListAPI でベアラー トークンを取得するコードと、ToDoListDataAPI で受け取る Azure AD 値を検証するコードに渡される変数値を確認します。コードはさまざまなソースの構成値を選択することができるので、意外な結果になることがあります。たとえば、App Service 設定を構成するときに `ida:ClientId` を `ida:ClientID` と名前を間違えると、App Service 設定が無視され、Web.config ファイルが検索されて、`ida:ClientId` 値が取得される可能性があります。 
+* ToDoListAPI (中間層) と ToDoListDataAPI (データ層) を混同しないよう注意してください。たとえば、このチュートリアルでは認証をデータ層 API アプリに追加しますが、**アプリ キーは、中間層 API アプリに作成した Azure AD アプリケーションからのものである必要があります。**
 
 ## 次のステップ
 
@@ -390,8 +411,10 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 * [Azure AD 開発者ガイド](http://aka.ms/aaddev)
 * [Azure AD のシナリオ](http://aka.ms/aadscenarios)
-* [Azure AD のサンプル](http://aka.ms/aadsamples)。[WebApp-WebAPI-OAuth2-AppIdentity-DotNet](http://github.com/AzureADSamples/WebApp-WebAPI-OAuth2-AppIdentity-DotNet) サンプルは、このチュートリアルで紹介した内容と似ていますが、App Service 認証は使用しません。
+* [Azure AD のサンプル](http://aka.ms/aadsamples)
 
-Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](web-sites-deploy.md)」を参照してください。
+	[WebApp-WebAPI-OAuth2-AppIdentity-DotNet](http://github.com/AzureADSamples/WebApp-WebAPI-OAuth2-AppIdentity-DotNet) サンプルは、このチュートリアルで紹介した内容と似ていますが、App Service 認証は使用しません。
 
-<!---HONumber=AcomDC_0211_2016-->
+Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
+
+<!---HONumber=AcomDC_0323_2016-->

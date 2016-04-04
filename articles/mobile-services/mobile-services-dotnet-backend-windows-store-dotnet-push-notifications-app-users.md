@@ -13,17 +13,16 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="03/05/2016"
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
-
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[How to: Send push notifications to an authenticated user (認証されたユーザーにプッシュ通知を送信する方法)](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#push-user)」を参照してください。
 
 ##概要
 
@@ -67,4 +66,4 @@
 [Get started with push notifications]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

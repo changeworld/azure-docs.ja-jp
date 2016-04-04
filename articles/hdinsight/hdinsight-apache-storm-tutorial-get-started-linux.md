@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/07/2016"
+   ms.date="03/10/2016"
    ms.author="larryfr"/>
 
 
@@ -40,83 +40,40 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
 
 ## Storm クラスターを作成する
 
-HDInsight の Storm では、ログ ファイルとクラスターに送信されるトポロジを格納する Azure Blob Storage を使用します。次の手順を使用して、クラスターに使用する Azure ストレージ アカウントを作成します。
+このセクションでは、Azure ARM テンプレートを使用して HDInsight バージョン 3.2 クラスター (Storm バージョン 0.9.3) を作成します。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。その他のクラスター作成方法については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-1. [Azure ポータル][preview-portal]にサインインします。
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
-2. **[新規]**、__[データ分析]__、__[HDInsight]__ の順にクリックします。
-
-	![Creating a new cluster in the Azure Portal](./media/hdinsight-apache-storm-tutorial-get-started-linux/new-cluster.png)
-
-3. __[クラスター名]__ を入力し、__[クラスターの種類]__ として __[Storm]__ を選択します。クラスターを使用できる場合は、__[クラスター名]__ の横に緑色のチェック マークが表示されます。
-
-	![クラスター名、クラスターの種類、および OS の種類](./media/hdinsight-apache-storm-tutorial-get-started-linux/clustername.png)
-
-	__[Ubuntu]__ を選択して Linux ベースの HDInsight クラスターを作成します。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    > [AZURE.NOTE] このドキュメントの手順では、__[バージョン]__ フィールドを既定値のままにしておいてください。
-	
-4. 複数のサブスクリプションがある場合は、__[サブスクリプション]__ エントリを選択し、クラスターで使用する Azure サブスクリプションを選択します。
+    ARM テンプレートは、次のパブリック BLOB コンテナー内にあります。*https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*
+   
+2. [パラメーター] ブレードで、次の各項目を入力します。
 
-5. __[リソース グループ]__ では、エントリを選択して既存のリソース グループの一覧を表示し、クラスターを作成するグループを選択できます。または、__[新規作成]__ をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
-
-	> [AZURE.NOTE] このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
-
-6. __[資格情報]__ を選択し、__[クラスターのログイン ユーザー名]__ に対応する __[クラスターのログイン パスワード]__ を入力します。さらに、SSH ユーザーを認証するために使用される __[SSH ユーザー名]__ と、__[パスワード]__ または __[公開キー]__ のどちらかを入力する必要があります。最後に、__[選択]__ ボタンをクリックして資格情報を設定します。
-
-	![[クラスターの資格情報] ブレード](./media/hdinsight-administer-use-portal-linux/clustercredentials.png)
-
-	HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
-
-	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-6. __[データ ソース]__ では、エントリを選択することで既存のデータ ソースを選択するか、新しいデータ ソースを作成できます。
-
-	![[データ ソース] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/datasource.png)
-	
-	現在、HDInsight クラスターのデータ ソースとして Azure Storage アカウントを選択できます。次の説明を参照して、__[データ ソース]__ ブレードのエントリを理解してください。
-	
-	- __[選択方法]__: サブスクリプションのストレージ アカウントを参照可能にする場合は、__[すべてのサブスクリプションから]__ を設定します。既存のストレージ アカウントの __[ストレージ名]__ と __[アクセス キー]__ を入力する場合は、__[アクセス キー]__ を設定します。
+    - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
+    - **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
+    - **SSH のユーザー名とパスワード**。
     
-    - __[ストレージ アカウントの選択]__: お使いのサブスクリプションのストレージ アカウントが既に存在する場合は、これを使って、クラスターに使用するアカウントを選択します。
-	
-	- __新規作成__: これを使用して、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
-	
-	- __[既定のコンテナーの選択]__: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
-	
-	- __[場所]__: ストレージ アカウントが存在するリージョン、またはストレージ アカウントの作成先のリージョンです。
-	
-		> [AZURE.IMPORTANT] 既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+    これらの値を書き留めておいてください。この情報は後で必要になります。
+
+    > [AZURE.NOTE] SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
+    >
+    > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
+
+	> HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+
+	> * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+	> * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+
     
-    - __[クラスター AAD ID]__: これを使用して、クラスターが Azure Data Lake Store へのアクセスに使用する Azure Active Directory ID を選択します。
-    
-        > [AZURE.NOTE] これはこのドキュメントでは使用しないため、既定の設定のままでかまいません。HDInsight でのこのエントリと Azure Data Lake Store の使用については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
-		
-	- __[選択]__: これを使用してデータ ソースの構成を保存します。
-	
-7. __[ノード価格レベル]__ を選択して、このクラスターに対して作成されるノードに関する情報を表示します。既定では、worker ノードの数は __4__ に設定されます。クラスターの推定コストがブレードの下部に表示されます。
+3\. **[OK]** をクリックしてパラメーターを保存します。
 
-	![[ノード価格レベル] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/nodepricingtiers.png)
-	
-    ノードの種類をそれぞれ選択し、クラスターでこれらのノードに使用される VM の種類を変更できます。このドキュメントの手順では、これらは既定の設定のままにします。
-    
-	__[選択]__ ボタンを使用して、__[ノード価格レベル]__ 情報がを保存します。
+4\. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 
-8. __[オプションの構成]__ を選択します。このブレードでは、クラスターを __Virtual Network__ に参加させたり、__[スクリプト操作]__ を使用してクラスターをカスタマイズしたりできるほか、__カスタム メタストア__を使用して Hive と Oozie 用のデータを保持したりできます。
+5\. **[法律条項]** をクリックし、**[作成]** をクリックします。
 
-	![[オプションの構成] ブレード](./media/hdinsight-apache-storm-tutorial-get-started-linux/optionalconfiguration.png)
-    
-    このドキュメントの手順では、これらの設定は __[構成されていません]__ のままにします。
+6\. **[作成]** をクリックします。"Submitting deployment for Template deployment" という新しいタイルが表示されます。クラスターと SQL Database の作成には約 20 分かかります。
 
-9. __[スタート画面にピン留めする]__ が選択されていることを確認し、__[作成]__ をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
-
-	| プロビジョニング中 | プロビジョニング完了 |
-	| ------------------ | --------------------- |
-	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-apache-storm-tutorial-get-started-linux/provisioned.png) |
-
-	> [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
 
 ##HDInsight での Storm Starter サンプルの実行
 
@@ -239,4 +196,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!-----HONumber=AcomDC_0316_2016-->

@@ -1,35 +1,35 @@
-<properties 
-   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターを作成する | Azure" 
-   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを作成し、使用します。" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターを作成する | Azure"
+   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを作成し、使用します。"
+   services="data-lake-store,hdinsight" 
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="02/03/2016"
+   ms.workload="big-data"
+   ms.date="03/11/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+- [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [PowerShell の使用](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
 Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
 * **Hadoop クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。
 
-* **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。
+* **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。詳細については、「[Storm トポロジで Data Lake Store を使用する](#use-data-lake-store-in-a-storm-topology)」を参照してください。
 
-* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。Data Lake Store にアクセスできる HBase クラスターを作成するオプションは、HDI バージョン 3.1、または 3.2 (Windows用) または HDI バージョン 3.2 (Linux 用) を使用している場合のみあります。
+* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。Data Lake Store にアクセスできる HBase クラスターを作成するオプションは、HDI バージョン 3.1、または 3.2 (Windows用) または HDI バージョン 3.2 (Linux 用) を使用している場合のみあります。詳細については、「[HBase クラスターで Data Lake Store を使用する](#use-data-lake-store-with-hbase-clusters)」を参照してください。
 
 
 ## 前提条件
@@ -38,7 +38,7 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。アカウントを作成したら、次のタスクを実行しいくつかサンプル データをアップロードします。このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。 
+- **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。アカウントを作成したら、次のタスクを実行しいくつかサンプル データをアップロードします。このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。
 
 	* [Data Lake Store にフォルダーを作成する](data-lake-store-get-started-portal.md#createfolder)。
 	* [Data Lake Store にファイルをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
@@ -51,15 +51,15 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
 2. 「[HDInsight で Hadoop クラスターを作成する](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal)」の手順に従って、HDInsight クラスターのプロビジョニングを開始します。
- 
+
 3. **[オプションの構成]** ブレードで、**[データ ソース]** をクリックします。**[データ ソース]** ブレードでストレージ アカウントおよびストレージ コンテナーの詳細を指定し、**[場所]** を **[East US 2]** として指定して、**[クラスター AAD ID]** をクリックします。
 
 	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
 4. **[クラスター AAD ID]** ブレードで、既存のサービス プリンシパルを選択するか、または新しいサービス プリンシパルを作成することができます。
-	
+
 	* **新しいサービス プリンシパルを作成する**
-	
+
 		* **[クラスター AAD ID]** ブレードで **[新規作成]**、**[サービス プリンシパル]** の順にクリックし、**[サービス プリンシパルの作成]** ブレードで、新しいサービス プリンシパルを作成するための値を指定します。その一環として、証明書と Azure Active Directory アプリケーションも作成されます。**[作成]** をクリックします。
 
 			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "HDInsight クラスターにサービス プリンシパルを追加する")
@@ -80,7 +80,7 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
 		* **[クラスター AAD ID]** ブレードで、選択したサービス プリンシパルに関連付けられている証明書 (.pfx) をアップロードし、証明書のパスワードを指定します。
-		
+
 		* **[ADLS アクセスを管理する]** をクリックします。ウィンドウに、サブスクリプションに関連付けられている Data Lake Store アカウントが表示されます。ただし、権限を設定できるのは作成したアカウントのみです。HDInsight クラスターに関連付けるアカウントに、読み取り、書き込み、実行権限を選択し、**[アクセス許可の保存]** をクリックします。
 
 			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.existing.save.png "HDInsight クラスターにサービス プリンシパルを追加する")
@@ -105,7 +105,7 @@ HDInsight クラスターを構成したら、クラスターでテスト ジョ
 
 	Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます (ここで **CLUSTERNAME** は HDInsight クラスターの名前です)。
 
-2. Hive ビューを開きます。ページ メニュー (ページの右側の **Admin** リンク ボタンの横) から四角形のセットを選択して使用可能なビューを一覧表示します。**[Hive view]** を選択します。
+2. Hive ビューを開きます。ページ メニュー (ページの右側の **Admin** リンク ボタンの横) から四角形のセットを選択して使用可能なビューを一覧表示します。**[Hive]** ビューを選択します。
 
 	![Selecting ambari views](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
 
@@ -226,6 +226,23 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。このシナリオを実現する方法については、「[HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」を参照してください。
 
+## HBase クラスターで Data Lake Store を使用する
+
+HBase クラスターでは、Data Lake Store を既定のストレージとして、また追加のストレージとして使用できます。そのためには、次の操作を実行します。
+
+1.  **[データ ソース]** ブレードの **[HBase データの場所]** で **[Data Lake Store]** を選択します。
+2.  使用する Data Lake Store の名前を選択するか、または新しい Data Lake Store を作成します。
+3.  最後に、Data Lake Store 内の **[HBase ルート フォルダー]** を指定します。Data Lake Store アカウントにルート フォルダーが含まれていない場合は、新規に作成してください。
+
+	![Data Lake Store を使用した HBase](./media/data-lake-store-hdinsight-hadoop-use-portal/hbase-data-lake-store.png "Azure リソース グループを作成する")
+
+### Data Lake Store を HBase クラスターの既定のストレージとして使用する場合の考慮事項
+
+* 複数の HBase クラスターに対して同じ Data Lake Store アカウントを使用することができます。ただし、クラスターに指定する **[HBase ルート フォルダー]** は一意である必要があります (上の画面キャプチャの手順 4)。2 つの異なる HBase クラスターに同じルート フォルダーを使用**しないでください**。
+* 既定のストレージとして Data Lake Store アカウントを使用したとしても、HBase クラスターのログ ファイルが保存されるのは、そのクラスターに関連付けられた Azure Storage BLOB (WASB) となります。上の画面キャプチャでは、青のボックスで強調表示されています。
+
+
+
 ## 関連項目
 
 * [Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
@@ -233,4 +250,4 @@ Data Lake Store を使用して、Storm トポロジからデータを書き込�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

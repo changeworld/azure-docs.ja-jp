@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/16/2016"
+   ms.date="03/04/2016"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -66,7 +66,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-プロキシ サーバーで認証が必要な場合、セクションは次のようになります。
+- プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)をドメインに配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。異なる machine.config も必要になります。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。**[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。インストール ウィザードの最後の **[構成]** ページで、コンテキストが作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替えられます。machine.config のセクションは、次のようになるはずです。
 
 ```
     <system.net>
@@ -80,7 +80,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。**[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。インストール ウィザードの最後の **[構成]** ページで、コンテキストは作成された[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替えられます。[既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)の詳細については、MSDN を参照してください。
+[既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)の詳細については、MSDN を参照してください。
 
 接続に問題がある場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 
@@ -168,4 +168,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

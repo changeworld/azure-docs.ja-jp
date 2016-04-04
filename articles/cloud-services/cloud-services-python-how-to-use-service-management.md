@@ -401,9 +401,9 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
 		role_size='Small',
 		vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-capture-image.md)に関するページを参照してください。
+Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-classic-capture-image.md)に関するページを参照してください。
 
-Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
+Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md)に関するページを参照してください。
 
 ## <a name="What's Next"> </a>次のステップ
 
@@ -435,4 +435,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 [クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

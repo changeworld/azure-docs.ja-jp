@@ -3,8 +3,8 @@
 	description="System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="AnuragMehrotra"
+	manager="shivamg"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="12/08/2015"
-	ms.author="jimpark;delhan"/>
+	ms.author="anuragm;jimpark;delhan"/>
 
 
 # System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
@@ -23,7 +23,7 @@
 ## 更新プログラム
 Azure Backup に DPM サーバーを正常に登録するには、System Center 2012 R2 DPM 用の最新の更新プログラムのロールアップと、Azure Backup エージェントの最新バージョンをインストールする必要があります。[Microsoft カタログ](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)から最新の更新プログラムのロールアップを取得します。
 
->[AZURE.NOTE]この記事の例では、Azure Backup エージェントのバージョン 2.0.8719.0 と、System Center 2012 R2 DPM に対する更新プログラムのロールアップ 6 がインストールされています。
+>[AZURE.NOTE] この記事の例では、Azure Backup エージェントのバージョン 2.0.8719.0 と、System Center 2012 R2 DPM に対する更新プログラムのロールアップ 6 がインストールされています。
 
 ## 前提条件
 先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての[前提条件](backup-azure-dpm-introduction.md#prerequisites)が満たされていることを確認します。該当する前提条件を以下に示します。
@@ -50,7 +50,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
 4. 保護する Exchange サーバー データベースを選択し、**[次へ]** をクリックします。
 
-    >[AZURE.NOTE]Exchange 2013 を保護する場合は、「[Exchange 2013 の前提条件](https://technet.microsoft.com/library/dn751029.aspx)」を確認してください。
+    >[AZURE.NOTE] Exchange 2013 を保護する場合は、「[Exchange 2013 の前提条件](https://technet.microsoft.com/library/dn751029.aspx)」を確認してください。
 
     次の例では、Exchange 2010 データベースが選択されています。
 
@@ -69,13 +69,13 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
     このオプションを選択すると、Exchange サーバー上で **eseutil** コマンドを実行したときに I/O トラフィックが生成されるのを防ぐために、DPM サーバー上でバックアップの整合性チェックが実行されます。
 
-    >[AZURE.NOTE]このオプションを使用するには、DPM サーバー上の C:\\Program Files\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin ディレクトリに Ese.dll ファイルと Eseutil.exe ファイルをコピーする必要があります。これを行わないと、次のエラーがトリガーされます。![eseutil エラー](./media/backup-azure-backup-exchange-server/eseutil-error.png)
+    >[AZURE.NOTE] このオプションを使用するには、DPM サーバー上の C:\\Program Files\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin ディレクトリに Ese.dll ファイルと Eseutil.exe ファイルをコピーする必要があります。これを行わないと、次のエラーがトリガーされます。![eseutil エラー](./media/backup-azure-backup-exchange-server/eseutil-error.png)
 
 8. **[次へ]** をクリックします。
 
 9. **[コピー バックアップ]** 用のデータベースを選択し、**[次へ]** をクリックします。
 
-    >[AZURE.NOTE]データベースの少なくとも 1 つの DAG コピーに対して “完全バックアップ” が選択されていない場合、ログは切り捨てられません。
+    >[AZURE.NOTE] データベースの少なくとも 1 つの DAG コピーに対して “完全バックアップ” が選択されていない場合、ログは切り捨てられません。
 
 10. **[短期的なバックアップ]** の目標を構成し、**[次へ]** をクリックします。
 
@@ -93,7 +93,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
-    >[AZURE.NOTE]オンライン回復ポイントは高速完全回復ポイントに基づいています。そのため、オンライン回復ポイントは、高速完全回復ポイントに指定した時刻より後にスケジュールする必要があります。
+    >[AZURE.NOTE] オンライン回復ポイントは高速完全回復ポイントに基づいています。そのため、オンライン回復ポイントは、高速完全回復ポイントに指定した時刻より後にスケジュールする必要があります。
 
 16. **Azure Backup** の保持ポリシーを構成し、**[次へ]** をクリックします。
 
@@ -131,4 +131,4 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -20,7 +20,7 @@
 > [AZURE.SELECTOR]
 - [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
 - [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
-- [GA Release](../articles/storsimple/storsimple-virtual-device.md)
+- [GA リリース](../articles/storsimple/storsimple-virtual-device.md)
 
 ## 概要
 
@@ -77,7 +77,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 >[AZURE.IMPORTANT] **仮想デバイスで使用する予定のクラウド ストレージ アカウントと同じリージョンに仮想ネットワークが存在することを確認してください。**
 
-- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
+- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
 	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
 	- 仮想デバイスと同じ仮想ネットワークで実行されていること。
 	- 仮想デバイスの内部 IP アドレスで仮想デバイスの iSCSI ターゲットに接続できること。
@@ -368,7 +368,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 以前構成して使っていた StorSimple 仮想デバイスのコンピューティング料金の発生を止めるには、仮想デバイスをシャットダウンします。仮想デバイスをシャットダウンしても、ストレージ内のオペレーティング システムやデータ ディスクは削除されません。この操作によって、サブスクリプションの料金は発生しなくなりますが、OS とデータ ディスクのストレージの料金は継続して発生します。
 
-仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの **[デバイス]** ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」を参照してください。
+仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの **[デバイス]** ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」をご覧ください。
 
 ### StorSimple 仮想デバイスをシャットダウンするには
 
@@ -391,4 +391,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

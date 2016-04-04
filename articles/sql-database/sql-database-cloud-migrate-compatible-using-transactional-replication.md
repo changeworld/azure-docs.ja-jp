@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="12/17/2015"
+   ms.date="03/14/2016"
    ms.author="carlrab"/>
 
 # トランザクション レプリケーションを使用して SQL Server データベースを SQL Database に移行する
@@ -29,8 +29,8 @@
  - SQL Server 2014 SP1 CU3 以降
  - SQL Server 2014 RTM CU10 以降
  - SQL Server 2012 SP2 CU8 以降
- - SQL Server 2012 SP3 
+ - SQL Server 2013 SP3 のリリース時
 
 また、トランザクション レプリケーションを使用し、オンプレミス データベースの一部を移行できます。Azure SQL Database に複製するパブリケーションは、複製されるデータベースのテーブルの一部に制限できます。また、複製されるテーブルごとに、行の一部または列の一部にデータを制限できます。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

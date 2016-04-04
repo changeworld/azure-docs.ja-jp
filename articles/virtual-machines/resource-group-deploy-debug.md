@@ -1,7 +1,7 @@
 <properties
    pageTitle="リソース グループのデプロイメントのトラブルシューティング | Microsoft Azure"
    description="リソース マネージャーのデプロイメント モデルを使用して作成したリソースのデプロイメント時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
-   services="azure-resource-manager,virtual-machines"
+   services="azure-resource-manager,virtual-machines-linux"
    documentationCenter=""
    tags="top-support-issue"
    authors="tfitzmac"
@@ -295,9 +295,9 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 > [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。
 <!-- -->
-コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。 
+コアについて具体的にするには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。
 <!-- -->
- 	azure provider show Microsoft.Compute --json | jq '.resourceTypes | select(.name == "virtualMachines") | { name,apiVersions, locations}' 
+        azure provider show Microsoft.Compute --json | jq '.resourceTypes[] | select(.name == "virtualMachines") | { name,apiVersions, locations}'
         {
           "name": "virtualMachines",
           "apiVersions": [
@@ -312,6 +312,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
             "Southeast Asia"
           ]
         }
+
 
 ## リソース プロバイダーの登録の確認
 
@@ -408,7 +409,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 ただし、これは必ずしもリソース グループが「アクティブで、ユーザーが使用できる状態」であるとは限りません。たとえば、ほとんどのデプロイメントでは、アップグレードのダウンロード、他の非テンプレート リソースの待機、または複雑なスクリプトや、Azure が認識していない他の実行可能なアクティビティのインストールをデプロイメントに要求します。これは、アクティビティが、プロバイダーが追跡しているアクティビティではないためです。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイメントが使用できるまでのある時にデプロイメントが成功の状態になることを予期する必要があります。
 
-ただし、(たとえば [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイメントの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイメント全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。サンプルは、[テンプレート デプロイメントを作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)するときに確認できます。
+ただし、(たとえば [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。サンプルは、[テンプレート デプロイを作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)するときに確認できます。
 
 ## Azure とやり取りする便利なツール
 コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
@@ -434,4 +435,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

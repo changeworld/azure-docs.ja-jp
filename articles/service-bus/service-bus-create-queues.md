@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="Service Bus キューを使用するアプリケーションを作成する | Microsoft Azure"
-   description="Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus キューを使用するアプリケーションを作成する | Microsoft Azure"
+    description="Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="03/16/2016"
+    ms.author="sethm" />
 
 # Service Bus キューを使用するアプリケーションを作成する
 
 このトピックでは、Service Bus キューについて説明し、Service Bus を使用する簡単なキュー ベースのアプリケーションを作成する方法を示します。
 
-個々 の Point of Sale (POS) 端末から売上データを在庫管理システムにルーティングし、在庫管理システムではそのデータを使用して在庫を補充する時期を決定する、小売業界のシナリオについて検討します。このソリューションでは、次の図に示すように、端末と在庫管理システムの間の通信に Service Bus メッセージングを使用します。
+個々 の販売時点管理 (POS) 端末から売上データを在庫管理システムにルーティングし、在庫管理システムではそのデータを使用して在庫を補充する時期を決定する、小売業界のシナリオについて検討します。このソリューションでは、次の図に示すように、端末と在庫管理システムの間の通信に Service Bus メッセージングを使用します。
 
 ![Service-Bus-Queues-Img1](./media/service-bus-create-queues/IC657161.gif)
 
@@ -31,7 +31,7 @@
 
 ### 一時的な結合の解除
 
-非同期メッセージング パターンでは、プロデューサーとコンシューマーが同時にオンラインになっている必要はありません。このメッセージング インフラストラクチャは、コンシューマーがメッセージを受信する準備ができるまで、メッセージを確実に格納します。これにより、分散型アプリケーションのコンポーネントをメンテナンスやコンポーネント クラッシュの場合でもシステム全体に影響を与えずに自動的に切断できます。さらに、コンシューマー アプリケーションがオンラインになっている必要がある時間は、1 日のうち一定の時間だけで済みます。たとえば、この小売業のシナリオでは、在庫管理システムは営業時間の終了後にオンラインになるだけで済むかもしれません。
+非同期メッセージング パターンでは、プロデューサーとコンシューマーが同時にオンラインになっている必要はありません。このメッセージング インフラストラクチャは、コンシューマーがメッセージを受信する準備ができるまで、メッセージを確実に格納します。つまり、分散型アプリケーションのコンポーネントをメンテナンスやコンポーネント クラッシュの場合でもシステム全体に影響を与えずに自動的に切断できます。さらに、コンシューマー アプリケーションがオンラインになっている必要がある時間は、1 日のうち一定の時間だけで済みます。たとえば、この小売業のシナリオでは、在庫管理システムは営業時間の終了後にオンラインになるだけで済むかもしれません。
 
 ### 負荷平準化
 
@@ -55,17 +55,17 @@
 
 ### Service Bus のアカウントとサブスクリプションにサインアップします。
 
-Service Bus の使用を開始するには、Azure アカウントが必要です。アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料試用版にサインアップできます。
+Service Bus の使用を開始するには、Azure アカウントが必要です。アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料アカウントにサインアップできます。
 
 ### サービス名前空間の作成
 
-サブスクリプションを作成した後は、新しい名前空間を作成できます。新しい名前空間には、すべての Service Bus アカウントについて一意の名前を指定する必要があります。各名前空間は、一連の Service Bus エンティティに対するコンテナーの役割を果たします。詳細については、「[方法: Service Bus Service 名前空間を作成または変更する](https://msdn.microsoft.com/library/azure/hh690931.aspx)」をご覧ください。
+サブスクリプションを作成した後は、新しい名前空間を作成できます。新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。
 
 ### NuGet パッケージのインストール
 
-Service Bus サービス名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、Service Bus NuGet パッケージです。NuGet や Service Bus パッケージの使用方法の詳細については、「[NuGet Service Bus パッケージの使用](https://msdn.microsoft.com/library/dn741354.aspx)」を参照してください。
+Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、[Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus) パッケージです。
 
-### キューの作成
+### キューを作成する
 
 Service Bus メッセージング エンティティ (キューおよびトピックのパブリッシュ/サブスクライブ) の管理は、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して行われます。Service Bus は、[Shared Access Signature (SAS)](service-bus-sas-overview.md) ベースのセキュリティ モデルを使用します。[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。SAS の資格情報を保持するには、[CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用します。その後、Service Bus 名前空間のベース アドレスとトークン プロバイダーを使用して、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) インスタンスが作成されます。
 
@@ -158,6 +158,6 @@ catch (Exception e)
 
 ## 次のステップ
 
-このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus の仲介型メッセージングのパブリッシュ/サブスクライブ機能の使用を学習してください。
+このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus のトピックとサブスクリプションのパブリッシュ/サブスクライブ機能の使用を学習してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

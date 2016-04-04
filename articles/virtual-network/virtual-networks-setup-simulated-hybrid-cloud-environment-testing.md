@@ -51,7 +51,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 ## フェーズ 1: TestLab 仮想ネットワークを構成する
 
-「[基本構成テスト環境](../virtual-machines/virtual-machines-base-configuration-test-environment.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
+「[基本構成テスト環境](../virtual-machines/virtual-machines-windows-classic-test-config-env.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
 
 ローカル コンピューターで Microsoft Azure 管理ポータルから CORP\\User1 の資格情報を使用して DC1 に接続します。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
@@ -261,4 +261,4 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

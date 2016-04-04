@@ -4,7 +4,7 @@
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="load-balancer"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/19/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma" />
 
 # ロード バランサーの TCP アイドル タイムアウト設定を変更する方法
@@ -44,7 +44,7 @@ TCP Keep-alive は、バッテリーの制約がないシナリオでは有効�
 - サービス モデルを使用して Web ロール / worker ロールの TCP タイムアウトを構成します。
  
 
->[AZURE.NOTE]一部のコマンドは、最新の Azure PowerShell パッケージにのみ含まれています。Powershell コマンドが存在しない場合は、最新の PowerShell パッケージをダウンロードしてください。
+>[AZURE.NOTE] 一部のコマンドは、最新の Azure PowerShell パッケージにのみ含まれています。Powershell コマンドが存在しない場合は、最新の PowerShell パッケージをダウンロードしてください。
 
  
 ### インスタンス レベル パブリック IP の TCP タイムアウトを 15 分で構成します。
@@ -53,7 +53,7 @@ TCP Keep-alive は、バッテリーの制約がないシナリオでは有効�
 
 IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定のタイムアウト時間は 4 分です。
 
->[AZURE.NOTE]設定できるタイムアウトの範囲は 4 ～ 30 分です。
+>[AZURE.NOTE] 設定できるタイムアウトの範囲は 4 ～ 30 分です。
  
 ### 仮想マシンでの Azure エンドポイントの作成時にアイドル タイムアウトを設定します。
 
@@ -160,10 +160,10 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 
-[インターネットに接続するロード バランサーの構成の開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
  
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/16/2016"
+   ms.date="03/16/2016"
    ms.author="shoatman;billmath"/>
 
 # Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード
@@ -96,7 +96,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
 5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。これは、DirSync によって現在使用されているアカウントでなければなりません。![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png) 接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 6. Active Directory のエンタープライズ管理者アカウントを指定します。![ADDS の資格情報を入力する](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
 7. 構成する準備が整いました。**[アップグレード]** をクリックすると、DirSync がアンインストールされ、Azure AD Connect が構成されて、同期が開始されます。![構成の準備完了](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
-
+8. インストールが完了した後、Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度 Windows にサインインするか、他の構成の変更を試します。
 
 ## 並列デプロイ
 
@@ -145,6 +145,8 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 7. **[次へ]** をクリックします。
 8. **[構成の準備完了]** ページで **[構成が完了したら、同期処理を開始してください。]** チェック ボックスをオンのままにします。サーバーが[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に移行するため、この時点では Azure AD に変更がエクスポートされません。
 9. **[インストール]** をクリックします。
+10. インストールが完了した後、Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度 Windows にサインインするか、他の構成の変更を試します。
+
 
 >[AZURE.NOTE] Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。これは[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)と呼ばれます。
 
@@ -197,4 +199,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,82 +13,144 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="03/14/2016"
 	ms.author="billmath"/>
 
-#複数ドメインのサポート
+# Azure AD とのフェデレーションに使用する複数ドメインのサポート
+ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
 
-最上位レベルの複数の Office 365 または Azure AD ドメインとサブドメインを、フェデレーションを使用して構成する方法に関して、多くの質問を受けました。このほとんどは、単純明快な方法で行えますが、舞台裏でいくつかのことを行っているため、いくつかのヒントやテクニックを知っていると以下の問題を回避できます。
+## 複数のトップレベル ドメインのサポート
+複数のトップレベル ドメインと Azure AD のフェデレーションを行うには、単一のトップレベル ドメインを使用するフェデレーションでは行う必要のない構成を、いくつか実施する必要があります。
 
-- ドメインを追加してフェデレーションを構成する際に表示されるエラー メッセージ
-- 複数の最上位レベルのドメインをフェデレーション構成すると、サブドメインのユーザーがログインできなくなります
+単一のドメインと Azure AD のフェデレーションを行う場合は、Azure でそのドメインに関する複数のプロパティが設定されます。重要なプロパティの 1 つは IssuerUri です。これは、トークンが関連付けられているドメインを識別するために Azure AD で使われる URI です。この URI は解決される必要はありませんが、有効な URI である必要があります。既定では、Azure AD により、このプロパティにオンプレミス AD FS 構成内のフェデレーション サービス識別子の値が設定されます。
 
-## 複数の最上位レベルのドメイン
-fabrikam.com をという名前のドメインを追加する contoso.com という組織の設定例を取り上げます。
+>[AZURE.NOTE]フェデレーション サービス識別子は、フェデレーション サービスを一意に識別する URI です。フェデレーション サービスは、セキュリティ トークン サービスとして機能する AD FS のインスタンスです。
 
-オンプレミスのシステムで、fs.contoso100.com というフェデレーション サービス名で AD FS を構成しているとします。
+PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your domain>` を使用して、IssuerUri を表示することができます。
 
-Office 365 または Azure AD に最初にサインアップした際、最初にサインオンするドメインとして contoso.com を構成しました。これは、New-MsolFederatedDomain を使用して Azure AD Connect または Azure AD Powershell で実行できます。
+![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-これが完了したら、2 つの新しい Azure AD ドメインの新しい構成プロパティの既定値を見てみましょう (これらは Get-MsolDomainFederationSettings を使用して問い合わせることができます)。
+複数のトップレベル ドメインを追加しようとすると、問題が生じます。たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。このドキュメントでは、bmcontoso.com がその環境です。この状況で、2 番目のトップレベル ドメインとして bmfabrikam.com を追加しました。
 
-| プロパティ名 | 値 | 説明|
-| ----- | ----- | -----|
-|IssuerURI | http://fs.contoso100.com/adfs/services/trust| これは URL のようですが、このプロパティは単にオンプレミスの認証システムの名前であり、パスは解決される必要はありません。Azure AD は既定で、これを自分のオンプレミスの AD FS 構成のフェデレーション サービスの ID の値に設定します。
-|PassiveClientSignInUrl|https://fs.contoso100.com/adfs/ls/|This は、パッシブ サインイン要求が送信される場所で、実際の AD FS システムに解決されます。実際にはいくつか "* Url" プロパティがありますが、このプロパティと、IssuerURI などの URI の違いについては、1 つ例を見ればご理解いただけます。
+![ドメイン](./media/active-directory-multiple-domains/domains.png)
 
-ここで、2 番目のドメイン fabrikam.com を追加したと想像してください。ここでも再度 Azure AD Connect ウィザードを実行するか、または PowerShell を使用してこれを実行します。
+bmfabrikam.com ドメインを変換してフェデレーションしようとすると、エラーが発生します。その原因は、IssuerUri プロパティで複数のドメインに同じ値を設定できないという Azure AD の制約にあります。
+  
 
-Azure AD PowerShell を使用してフェデレーションを構成する 2 番目のドメインを追加すると、エラーが表示されます。
+![Federation error](./media/active-directory-multiple-domains/error.png)
 
-これは、複数のドメインで IssuerURI 値を同じにできないという制約が Azure AD にあるためです。この制限をなくすには、新しいドメインには別の IssuerURI を使用する必要があります。これが SupportMultipleDomain パラメーターが実質的に行うことです。フェデレーションを構成するコマンドレット (New-、Convert-、および Update-msolfederateddomain) と使用すると、このパラメーターにより、Azure AD のテナント全体で一意である必要があるドメイン名に基づく IssuerURI が Azure AD によって構成されます。要求規則の変更もありますが、これについては、すぐ後で説明します。
+### SupportMultipleDomain パラメーター
 
-つまり、Powershell で、SupportMultipleDomain パラメーターを使用して fabrikam を追加すると、
+この問題に対処するには、`-SupportMultipleDomain` パラメーターを使用して、別の IssuerUri を追加する必要があります。このパラメーターは以下のコマンドレットで使用します。
+	
+- `New-MsolFederatedDomain`
+- `Convert-MsolDomaintoFederated`
+- `Update-MsolFederatedDomain`
 
-    PS C:\>New-MsolFederatedDomain -DomainName fabrikam.com –SupportMultipleDomain
+このパラメーターを使用すると、Azure AD で IssuerUri がドメイン名に基づくように構成されます。ドメイン名は Azure AD 内のディレクトリ間で一意になります。このパラメーターを指定することで、PowerShell コマンドが正常に実行されます。
 
-Azure AD の構成は次のようになります。
+![Federation error](./media/active-directory-multiple-domains/convert.png)
 
-- DomainName: fabrikam.com
-- IssuerURI: http://fabrikam.com/adfs/services/trust
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
+新しく導入した bmfabrikam.com ドメインの設定は、以下のようになっています。
 
-IssuerURI は自分のドメインに基づく値に設定されているため一意ですが、エンドポイント URL の値は、元の contoso.com ドメインのときと同様に、まだ、fs.contoso100.com 上のフェデレーション サービスをポイントするように構成されていることに注意してください。つまり、すべてのドメインはまだ同じ AD FS システムをポイントし続けています。
+![Federation error](./media/active-directory-multiple-domains/settings.png)
 
-SupportMultipleDomain では、AD FS システムの Azure AD 用に発行されたトークンに適切な Issuer 値が含まれることも保証します。これは、ユーザーの upn のドメイン部分を取得し、これを issuerURI 内でドメインとして設定して行います (つまり、https://{upn suffix}/adfs/services/trust)。したがって、Azure AD または Office 365に対する認証の際、ユーザー トークンの Issuer 要素は Azure AD のドメインを検出するために使用されます。一致が見つからない場合、認証は失敗します。
+留意点として、`-SupportMultipleDomain` は、adfs.bmcontoso.com 上のフェデレーション サービスをポイントするように構成されている他のエンドポイントを変更しません。
 
-たとえば、ユーザーの UPN が johndoe@fabrikam.com の場合、AD FS のトークンの Issue の Issuer 要素は http://fabrikam.com/adfs/services/trust に設定されます。これは Azure AD の構成と一致し、認証は成功します。
+また、`-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。これは、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで達成されます (つまり、https://{upn サフィックス}/adfs/services/trust)。
 
-以下にこのロジックを実装する、カスタム要求規則を示します。
+そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。一致するものが見つからなければ、認証は失敗します。
+
+たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は http://bmcontoso.com/adfs/services/trust に設定されます。これは Azure AD の構成と一致し、認証は成功します。
+
+次の規則は、このロジックを満たすカスタマイズ済みの要求規則です。
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type =   "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
 
-これで最初の contoso.com の設定に、supportMultipleDomains スイッチなしの既定値 IssuerURI が登録されました。fabrikam.com を追加する際、要求規則の更新で、既定の IssuerURI は送信されなくなり、IssuerURI の不一致で認証は失敗するため、contoso.com で SupportMultiple Domains スイッチの使用が構成されていることを確認する必要があります。別のドメインで supportMultipleDomain スイッチを使用することを許可する前に、これについては警告するので、心配はしないでください。
 
-これを修復するには、ドメイン contoso.com の構成も同様に更新する必要があります。Azure AD Connect ウィザードは、上記を行うタイミング、および 2 番目のドメインを追加するときの適切な処理の検出が非常に上手です。最初の段階で SupportMultipleDomain の構成を既に行っている場合は、上書きはされません。
+>[AZURE.IMPORTANT]新しいドメインを追加する際や既存のドメインを変換する際に -SupportMultipleDomain スイッチを使用するには、あらかじめそれらのドメインをサポートするフェデレーションによる信頼を設定しておく必要があります。
 
-PowerShell では、手動で SupportMultipleDomain スイッチを指定する必要があります。
 
-単一ドメインから複数ドメインに移行する際の詳細なすべての手順については、以下を参照してください。
+## AD FS と Azure AD の間の信頼を更新するには
+AD FS と Azure AD インスタンスとの間でフェデレーションによる信頼を設定していない場合は、改めてこの信頼の作成が必要になることがあります。というのも、`-SupportMultipleDomain` パラメーターを使用せずに設定すると、IssuerUri が既定値で設定されるからです。下のスクリーンショットでは、IssuerUri に https://adfs.bmcontoso.com/adfs/services/trust が設定されています。
 
-これの実行が完了すると、Azure AD には 2 つのドメインが構成されます。
+ここで、Azure AD ポータルから新しいドメインを正常に追加した後、`Convert-MsolDomaintoFederated -DomainName <your domain>` でドメインを変換しようとすると、次のエラーが発生します。
 
-- DomainName: contoso.com
-- IssuerURI: http://contoso.com/adfs/services/trust
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
-- DomainName: fabrikam.com
-- IssuerURI: http://fabrikam.com/adfs/services/trust
-- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/
+![Federation error](./media/active-directory-multiple-domains/trust1.png)
 
-これで、contoso.com と fabrikam.com ドメインのユーザーのフェデレーション サインオンが機能するようになりました。ここで、サブドメインのユーザーのサインインの問題が 1 つ残ります。
+そこで、`-SupportMultipleDomain` スイッチを追加して試してみると、次のエラーが発生します。
 
-##サブドメイン
-サブドメイン sub.contoso.com を Azure AD に追加したとします。Azure AD がドメインを管理する方法により、サブドメインには、この場合は contoso.com の親ドメインの設定が継承されます。これは、user@sub.contoso.com の IssuerURI は http://contoso.com/adfs/services/trust である必要があることを意味します。しかしながら、上で Azure AD に実装した標準的なルール
+![Federation error](./media/active-directory-multiple-domains/trust2.png)
 
-Azure AD では、発行者を http://sub.contoso.com/adfs/services/trust とする、ドメインで必要な値とは一致しないトークンが生成され、認証は失敗してしまいます。さいわいに、これにも解決策がありますが、同様にツールには組み込まれていません。手動で Microsoft Online の AD FS の証明書利用者の信頼を更新する必要があります。
+単純に元のドメインで `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` を実行してみても、エラーが生じます。
 
-カスタム Issuer 値を構築する際、ユーザーの UPN サフィックスからサブドメインをすべて削除する、カスタム要求規則を構築する必要があります。これを実行する正確な手順については、以下を参照してください。
+![Federation error](./media/active-directory-multiple-domains/trust3.png)
 
-要約すると、完全に異なる名前の複数のドメインとサブドメインを、すべて同じ AD FS サーバーにフェデレーション構成できました。すべてのユーザーの Issuer 値を正しく設定するには、いくつかの手順を追加で行います。
+下記の手順で、もう 1 つのトップレベル ドメインを追加します。既にドメインを 1 つ、`-SupportMultipleDomain` パラメーターを使用せずに追加してある場合は、最初に元のドメインを削除して更新します。トップレベル ドメインをまだ追加していない場合は、Azure AD Connect の PowerShell を使用してドメインを追加することから始めます。
 
-<!---HONumber=AcomDC_0128_2016-->
+以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
+
+2.  AD FS フェデレーション サーバーで、**AD FS 管理**を開きます。 
+2.  左側で、**[信頼関係]**、**[証明書利用者信頼]** の順に展開します。
+3.  右側で、**[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。![Remove Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
+1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+2.  フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
+2.  PowerShell で、`Connect-MsolService -Credential $cred` を実行します。
+4.  PowerShell で、`Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` を実行します。これは元のドメインに対するコマンドです。上記のドメインを使用するので、次のようになります: `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`。
+
+
+次の手順で、PowerShell を使用して新しいトップレベル ドメインを追加します。
+
+1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+2.  フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
+2.  PowerShell で、`Connect-MsolService -Credential $cred` を実行します。
+3.  PowerShell で、`New-MsolFederatedDomain –SupportMultipleDomain –DomainName` を実行します。
+
+次の手順で、Azure AD Connect を使用して新しいトップレベル ドメインを追加します。
+
+1.	デスクトップまたは [スタート] メニューから、Azure AD Connect を起動します。
+2.	[Azure AD ドメインを追加します] を選択します。![Add an additional Azure AD domain](./media/active-directory-multiple-domains/add1.png)
+3.	Azure AD と Active Directory の資格情報を入力します。
+4.	フェデレーションを構成する 2 つ目のドメインを選択します。![Add an additional Azure AD domain](./media/active-directory-multiple-domains/add2.png)
+5.	[インストール] をクリックします。
+
+
+### 新しいトップレベル ドメインの確認
+PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your domain>` を使用して、更新された IssuerUri を確認できます。下のスクリーンショットは、元のドメイン http://bmcontoso.com/adfs/services/trust でフェデレーション設定が更新されたことを示しています。
+
+![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
+
+また、新しいドメインの IssuerUri として、https://bmfabrikam.com/adfs/services/trust が設定されています。
+
+![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/settings2.png)
+
+
+##サブドメインのサポート
+サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。つまり、IssuerUri は親に一致させる必要があります。
+
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、****http://bmcontoso.com/adfs/services/trust.** とする必要があります。しかし、上で Azure AD に適用した標準ルールでは、発行者を ****http://corp.bmcontoso.com/adfs/services/trust.** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+
+### サブドメインのサポートを有効にする方法
+この問題を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
+
+次の要求で実行します。
+
+    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));
+
+以下の手順に従い、サブドメインをサポートするためのカスタム要求を追加します。
+
+1.	AD FS 管理を開きます。
+2.	[Microsoft Online RP 信頼] を右クリックして、[要求規則の編集] を選択します。
+3.	3 番目の要求規則を選択し、置き換えます。![Edit claim](./media/active-directory-multiple-domains/sub1.png)
+4.	現在の要求:
+    
+	    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+    	
+	を以下に置き換えることができます。
+    
+	    `c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));`
+	
+![Replace claim](./media/active-directory-multiple-domains/sub2.png)
+5.	[OK] をクリックします。[適用] をクリックします。[OK] をクリックします。AD FS 管理を閉じます。
+
+<!---HONumber=AcomDC_0316_2016-->

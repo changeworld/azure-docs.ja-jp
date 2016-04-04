@@ -1,33 +1,33 @@
-## Configuration overview
+## 構成の概要
 
-The steps for this task use a VNet based on the values below. Additional settings and names are also outlined in this list. We don't use this list directly in any of the steps, although we do add variables based on the values in this list. You can copy the list to use as a reference, replacing the values with your own.
+このタスクの手順では、以下の値に基づいて VNet を使用します。その他の設定と名前についても、一覧で概要を説明します。ここでは、この一覧内の値に基づいて変数を追加しますが、どの手順でもこの一覧を直接使用しません。参照として使用する一覧をコピーし、値を独自の値で置き換えることができます。
 
-Configuration reference list:
+構成参照一覧:
 	
-- Virtual Network Name = "TestVNet"
-- Virtual Network address space = 192.168.0.0/16
-- Resource Group = "TestRG"
-- Subnet1 Name = "FrontEnd" 
-- Subnet1 address space = "192.168.0.0/16"
-- Gateway Subnet name: "GatewaySubnet" You must always name a gateway subnet *GatewaySubnet*.
-- Gateway Subnet address space = "192.168.200.0/26"
-- Region = "East US"
-- Gateway Name = "GW"
-- Gateway IP Name = "GWIP"
-- Gateway IP configuration Name = "gwipconf"
-- VPN Type = "ExpressRoute" This VPN type is required for an ExpressRoute configuration.
-- Gateway Public IP Name = "gwpip"
+- Virtual Network 名 = "TestVNet"
+- Virtual Network のアドレス空間 = 192.168.0.0/16
+- リソース グループ = "TestRG"
+- Subnet1 名 = "FrontEnd" 
+- Subnet1 アドレス空間 = "192.168.0.0/16"
+- ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* と名前を付ける必要があります。
+- ゲートウェイ サブネットのアドレス空間 = "192.168.200.0/26"
+- リージョン = "米国東部"
+- ゲートウェイ名 = "GW"
+- ゲートウェイの IP 名 = "GWIP"
+- ゲートウェイの IP 構成名 = "gwipconf"
+- VPN の種類 = "ExpressRoute"。ExpressRoute 構成の場合、この VPN の種類が必要です。
+- ゲートウェイのパブリック IP 名 = "gwpip"
 
 
-## Add a gateway
+## ゲートウェイを追加する
 
-1. Connect to your Azure Subscription. 
+1. Azure サブスクリプションに接続します。 
 
 		Login-AzureRmAccount
 		Get-AzureRmSubscription 
 		Select-AzureRmSubscription -SubscriptionName "Name of subscription"
 
-2. Declare your variables for this exercise. This example will use the use the variables in the sample below. Be sure to edit this to reflect the settings that you want to use. 
+2. この演習用に変数を宣言します。この例では、以下のサンプルの編集を使用します。サンプルを編集して、使用する設定が反映されることを確認します。
 		
 		$RG = "TestRG"
 		$Location = "East US"
@@ -36,31 +36,33 @@ Configuration reference list:
 		$GWIPconfName = "gwipconf"
 		$VNetName = "TestVNet"
 
-3. Store the virtual network object as a variable.
+3. 仮想ネットワーク オブジェクトを変数として格納します。
 
 		$vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 
-4. Add a gateway subnet to your Virtual Network. The gateway subnet must be named "GatewaySubnet". You'll want to create a gateway that is /27 or larger (/26, /25, etc.).
+4. ゲートウェイ サブネットを Virtual Network に追加します。ゲートウェイ サブネット名は、"GatewaySubnet " にする必要があります。/27 以上 (/26、/25 など) のゲートウェイを作成するとします。
 			
 		Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
 
-5. Set the configuration.
+5. 構成を設定します。
 
 			Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-6. Store the gateway subnet as a variable.
+6. 変数としてゲートウェイ サブネットを格納します。
 
 		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 
-7. Request a public IP address. The IP address is requested before creating the gateway. You cannot specify the IP address that you want to use; it’s dynamically allocated. You'll use this IP address in the next configuration section. The AllocationMethod must be Dynamic.
+7. パブリック IP アドレスを要求します。IP アドレスは、ゲートウェイを作成する前に要求されます。使用する IP アドレスは指定できません。IP アドレスは動的に割り当てられます。この IP アドレスは、次の構成セクションで使用します。AllocationMethod は動的である必要があります。
 
 		$pip = New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
-8. Create the configuration for your gateway. The gateway configuration defines the subnet and the public IP address to use. In this step, you are specifying the configuration that will be used when you create the gateway. This step does not actually create the gateway object. Use the sample below to create your gateway configuration. 
+8. ゲートウェイの構成を作成します。ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。この手順では、ケーブルの作成時に使用される構成を指定します。この手順では、ゲートウェイ オブジェクトを実際に作成しません。次のサンプルを使用して、ゲートウェイの構成を作成します。
 
 		$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -SubnetId $subnet.Id -PublicIpAddressId $pip.Id 
 
-9. Create the gateway. In this step, the **-GatewayType** is especially important. You must use the value **ExpressRoute**. Note that after running these cmdlets, the gateway can take 20 minutes or more to create.
+9. ゲートウェイを作成します。この手順では、**-GatewayType** が特に重要です。値 **ExpressRoute** を使用する必要があります。これらのコマンドレットを実行してからゲートウェイが作成されるまでに 20 分以上かかる可能性があります。
 
 		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute
+
+<!---HONumber=AcomDC_0309_2016-->

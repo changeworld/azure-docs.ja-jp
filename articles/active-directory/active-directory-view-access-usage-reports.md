@@ -3,7 +3,7 @@
 	description="アクセスおよび使用状況レポートを使用して組織のディレクトリの整合性とセキュリティを把握する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
+	authors="dhanyahk"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/07/2015"
-	ms.author="kenhoff;Justinha;curtand"/>
+	ms.date="03/07/2016"
+	ms.author="dhanyahk"/>
 
 
-# アクセスおよび使用状況レポートを表示します。
+# アクセスおよび使用状況レポートの表示
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
@@ -99,7 +99,15 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 ## 異常アクティビティ レポート
 <p>異常サインイン アクティビティ レポートは、Office365、Microsoft Azure 管理ポータル、Azure AD アクセスパネル、Sharepoint Online、Dynamics CRM Online、その他の Microsoft オンライン サービスに対する不審なサインイン アクティビティにフラグを設定します。</p>
 <p>"複数のエラー後のサインイン" レポートを除くすべてのレポートでは、前述のサービスに対する不審な<i>フェデレーション</i> サインインにもフラグが設定されます。これはフェデレーション プロバイダーを問いません。</p>
-<p>次のレポートを利用できます。</p><ul> <li>[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md)</li> <li>[複数のエラー後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)</li> <li>[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)</li> <li>[不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)</li> <li>[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)</li> <li>[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)</li> <li>[異常なサインイン アクティビティがあるユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)</li> <li></li>資格情報が漏洩したユーザー</ul>
+<p>次のレポートを使用できます。 </p><ul>
+<li>[不明なソースからサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md)。</li>
+<li>[複数のエラー発生後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)。</li>
+<li>[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)。</li>
+<li>[疑わしいアクティビティを示す IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)。</li>
+<li>[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)。</li>
+<li>[感染の疑いのあるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)。</li>
+<li>[異常なサインイン アクティビティのユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)。</li>
+<li></li>資格情報が漏洩したユーザー</ul>
 
 
 
@@ -246,11 +254,11 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 - ユーザーに連絡を取って、アクティビティについて確認する
 - ユーザーのパスワードをリセットする
-- セキュリティ強化のために[多要素認証](multi-factor-authentication-get-started.md)を有効にする
+- セキュリティ強化のために[多要素認証](../multi-factor-authentication/multi-factor-authentication-get-started.md)を有効にする
 
 ## レポートの閲覧またはダウンロード:
 
-1. Microsoft Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
+1. Azure クラシック ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
 2. [レポート] ページで、閲覧またはダウンロードするレポート をクリックします。
 
     > [AZURE.NOTE] Azure Active Directory のレポート機能を初めて使用した場合は、内容を選択するためのメッセージが表示されます。同意する場合は、チェック マーク アイコンをクリックして続行します。
@@ -260,7 +268,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
     - 過去 7 日間
     - 過去 30 日間
 4. レポートを実行するには、チェック マーク アイコンをクリックします。
-	- Microsoft Azure 管理ポータルに最大 1,000 件のイベントが表示されます。
+	- Azure クラシック ポータルに最大 1,000 件のイベントが表示されます。
 5. 必要に応じて **[ダウンロード]** をクリックして、オフラインでの閲覧またはアーカイブ目的のために、コンマ区切り値 (CSV) 形式で圧縮されたファイルのレポートをダウンロードします。
 	- ダウンロードしたファイルには、最大 75,000 件のイベントが含まれます。
 	- 詳細については、「[Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
@@ -278,4 +286,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

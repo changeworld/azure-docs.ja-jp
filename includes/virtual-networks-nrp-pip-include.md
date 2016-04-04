@@ -36,8 +36,8 @@ JSON 形式でのパブリック IP アドレスのサンプル:
 
 ### その他のリソース
 
-- [パブリック IP アドレス](virtual-networks-reserved-public-ip.md)の詳細情報。
-- [インスタンス レベル パブリック IP アドレス](virtual-networks-instance-level-public-ip.md)の詳細情報。
+- [パブリック IP アドレス](../articles/virtual-network/virtual-networks-reserved-public-ip.md)の詳細情報。
+- [インスタンス レベル パブリック IP アドレス](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)の詳細情報。
 - パブリック IP アドレスに関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163638.aspx)もご覧ください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

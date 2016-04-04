@@ -1,6 +1,6 @@
 <properties
-    pageTitle=".NET SDK を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-    description=".NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法"
+    pageTitle=".NET SDK を使用した Azure Search でのデータのアップロード | Microsoft Azure | ホステッド クラウド検索サービス"
+    description=".NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
     services="search"
     documentationCenter=""
     authors="brjohnstmsft"
@@ -17,23 +17,23 @@
     ms.date="03/09/2016"
     ms.author="brjohnst"/>
 
-# .NET SDK を使用した Azure Search へのデータのインポート
+# .NET SDK を使用した Azure Search へのデータのアップロード
 > [AZURE.SELECTOR]
 - [概要](search-what-is-data-import.md)
-- [ポータル](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST ()](search-import-data-rest-api.md)
-- [インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
-この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-dotnet.md)してあります。また、この記事では、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#CreateSearchServiceClient)」で説明されているとおりに、`SearchServiceClient` オブジェクト作成済みであることを前提としています。
+この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
+
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。また、この記事では、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#CreateSearchServiceClient)」で説明されているとおりに、`SearchServiceClient` オブジェクトを作成済みであることを前提としています。
 
 この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。[GitHub](http://aka.ms/search-dotnet-howto) に完全なソース コードがあります。
 
 .NET SDK を使用してインデックスにドキュメントをプッシュするには、次の手順を実行する必要があります。
 
-  1. 検索インデックスに接続するための `SearchIndexClient` オブジェクトを作成する。
-  2. 追加、変更、または削除するドキュメントを含む `IndexBatch` オブジェクトを作成する。
-  3. `SearchIndexClient` の `Documents.Index` メソッドを呼び出して、`IndexBatch` を検索インデックスに送信する。
+  1. 検索インデックスに接続するための `SearchIndexClient` オブジェクトを作成します。
+  2. 追加、変更、または削除するドキュメントを含む `IndexBatch` オブジェクトを作成します。
+  3. `SearchIndexClient` の `Documents.Index` メソッドを呼び出して、`IndexBatch` を検索インデックスに送信します。
 
 ## I.SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してインデックスにデータをインポートするには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。このインスタンスは自分で作成することもできますが、既に `SearchServiceClient` インスタンスがある場合は、`Indexes.GetClient` メソッドを呼び出すほうが簡単に済みます。たとえば、`serviceClient` という名前の `SearchServiceClient` から "hotels" という名前のインデックスの `SearchIndexClient` を取得する方法は次のようになります。
@@ -42,9 +42,9 @@ Azure Search .NET SDK を使用してインデックスにデータをインポ�
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-> [AZURE.NOTE] 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理されます。`Indexes.GetClient` は、別の `SearchCredentials` を提供する手間がかからず、簡単にインデックスを設定できます。そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。ただし、アプリケーションのクエリを実行する部分では、管理者キーの代わりにクエリ キーを渡すことができるように、`SearchIndexClient` を直接作成する方が適しています。これは、[最小権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)にも適合しており、アプリケーションのセキュリティ強化に役立ちます。管理者キーとクエリ キーの詳細については、[MSDN の Azure Search REST API リファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
+> [AZURE.NOTE] 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理されます。`Indexes.GetClient` は、別の `SearchCredentials` を提供する手間がかからず、簡単にインデックスを設定できます。そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。ただし、アプリケーションのクエリを実行する部分では、管理者キーの代わりにクエリ キーを渡すことができるように、`SearchIndexClient` を直接作成する方が適しています。これは、[最小権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)にも適合しており、アプリケーションのセキュリティ強化に役立ちます。管理者キーとクエリ キーの詳細については、[MSDN で Azure Search REST API のリファレンス](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
 
-`SearchIndexClient` には `Documents` というプロパティがあります。このプロパティは、インデックスの追加、変更、削除、クエリに必要なすべてのメソッドを提供します。
+`SearchIndexClient` には `Documents` プロパティがあります。このプロパティは、インデックスの追加、変更、削除、クエリに必要なすべてのメソッドを提供します。
 
 ## II.利用するインデックス作成アクションの決定
 .NET SDK を使用してデータをインポートするには、データを `IndexBatch` オブジェクトにパッケージ化する必要があります。`IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、Azure Search にそのドキュメントへのアクション (アップロード、マージ、削除など) を指示するプロパティが 1 つ含まれています。以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
@@ -52,14 +52,14 @@ SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 アクション | 説明 | 各ドキュメントに必要なフィールド | メモ
 --- | --- | --- | ---
 `Upload` | `Upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 | キーのほか、定義するその他すべてのフィールド | 既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null` に設定されます。この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。
-`Merge` | 指定されたフィールドで既存のドキュメントを更新します。ドキュメントがインデックスに存在しない場合、マージは失敗します。 | キーのほか、定義するその他すべてのフィールド | マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`DataType.Collection(DataType.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` ではありません。
-`MergeOrUpload` | このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`Merge` と同様の処理になります。ドキュメントが存在しない場合は、`Upload` と同様の処理になり、新しいドキュメントが挿入されます。| キーのほか、定義するその他すべてのフィールド | - 
-`Delete` | 指定されたドキュメントをインデックスから削除します。| キーのみ | キー フィールド以外の指定したすべてのフィールドが無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに `Merge` を使用して、フィールドを明示的に null に設定します。
+`Merge` | 指定されたフィールドで既存のドキュメントを更新します。ドキュメントがインデックスに存在しない場合、マージは失敗します。 | キーのほか、定義するその他すべてのフィールド | マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`DataType.Collection(DataType.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` にはなりません。
+`MergeOrUpload` | このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`Merge` と同様の処理になります。ドキュメントが存在しない場合は、`Upload` と同様の処理になり、新しいドキュメントが挿入されます。| キーのほか、定義するその他すべてのフィールド |
+- `Delete` | 指定されたドキュメントをインデックスから削除します。| キーのみ | キー フィールド以外の指定したすべてのフィールドが無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに `Merge` を使用して、フィールドを明示的に null に設定します。
 
-`IndexBatch` クラスおよび `IndexAction` クラスの各種静的メソッドで使用するアクションを指定できます。詳しくは、次のセクションで説明します。
+`IndexBatch` クラスと `IndexAction` クラスの各種静的メソッドで使用するアクションを指定できます。詳しくは、次のセクションで説明します。
 
 ## III.IndexBatch の作成
-ドキュメントに対して実行するアクションを特定したら、`IndexBatch` を作成できます。次の例は、いくつかのアクションでバッチを作成する方法を示しています。ここでは、"hotels" インデックス内でドキュメントにマップされている `Hotel` という名前のカスタム クラスを使用している点に注目してください。
+ドキュメントに対して実行するアクションを特定したら、`IndexBatch` を作成できます。次の例は、いくつかのアクションでバッチを作成する方法を示しています。この例では、"hotels" インデックス内でドキュメントにマップされている `Hotel` という名前のカスタム クラスを使用している点に注目してください。
 
 ```csharp
 var actions =
@@ -67,24 +67,24 @@ var actions =
     {
         IndexAction.Upload(
             new Hotel()
-            { 
-                HotelId = "1", 
-                BaseRate = 199.0, 
+            {
+                HotelId = "1",
+                BaseRate = 199.0,
                 Description = "Best hotel in town",
                 DescriptionFr = "Meilleur hôtel en ville",
                 HotelName = "Fancy Stay",
-                Category = "Luxury", 
+                Category = "Luxury",
                 Tags = new[] { "pool", "view", "wifi", "concierge" },
-                ParkingIncluded = false, 
+                ParkingIncluded = false,
                 SmokingAllowed = false,
-                LastRenovationDate = new DateTimeOffset(2010, 6, 27, 0, 0, 0, TimeSpan.Zero), 
-                Rating = 5, 
+                LastRenovationDate = new DateTimeOffset(2010, 6, 27, 0, 0, 0, TimeSpan.Zero),
+                Rating = 5,
                 Location = GeographyPoint.Create(47.678581, -122.131577)
             }),
         IndexAction.Upload(
             new Hotel()
-            { 
-                HotelId = "2", 
+            {
+                HotelId = "2",
                 BaseRate = 79.99,
                 Description = "Cheapest hotel in town",
                 DescriptionFr = "Hôtel le moins cher en ville",
@@ -98,9 +98,9 @@ var actions =
                 Location = GeographyPoint.Create(49.678581, -122.131577)
             }),
         IndexAction.MergeOrUpload(
-            new Hotel() 
-            { 
-                HotelId = "3", 
+            new Hotel()
+            {
+                HotelId = "3",
                 BaseRate = 129.99,
                 Description = "Close to town hall and the river"
             }),
@@ -110,7 +110,7 @@ var actions =
 var batch = IndexBatch.New(actions);
 ```
 
-この例では、`IndexAction` クラスで呼び出されたメソッドで指定されているとおり、検索アクションとして、`Upload`、`MergeOrUpload`、および `Delete` を使用しています。
+この場合は、`IndexAction` クラスで呼び出されたメソッドで指定されているとおり、検索アクションとして、`Upload`、`MergeOrUpload`、`Delete` を使用しています。
 
 この例の "hotels" インデックスには、既にさまざまなドキュメントが設定されているものとします。`MergeOrUpload` を使用する場合はすべてのドキュメント フィールドを指定する必要はなく、`Delete` を使用する場合はドキュメント キー (`HotelId`) のみを指定しています。
 
@@ -194,15 +194,15 @@ public partial class Hotel
 
 **データ型に関する重要な注意事項**
 
-Azure Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` など値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。SDK または Azure Search サービスで、これを強制することはできません。
+Azure Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` などの値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。SDK または Azure Search サービスで、これを強制することはできません。
 
-これは単なる仮定上の問題ではありません。`DataType.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると次のような `JsonSerializationException` が発生します。
+これは単なる仮定上の問題ではありません。`DataType.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
 このため、ベスト プラクティスとして、モデル クラスでは null 許容型を使用することをお勧めします。
 
 ## 次へ
-Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)」を参照してください。
+Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[Azure Search インデックスの照会](search-query-overview.md)」を参照してください。
 
-<!-------HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0316_2016-->

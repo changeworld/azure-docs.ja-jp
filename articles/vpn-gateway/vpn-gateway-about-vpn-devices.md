@@ -4,15 +4,16 @@
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
-   editor="" />
+   manager="carmonm"
+   editor=""
+  tags="azure-resource-manager, azure-service-management"/>
 <tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/02/2016"
+   ms.date="03/15/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
@@ -40,8 +41,8 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | **ベンダー名** | **デバイス ファミリ** | **OS の最小バージョン** | **ポリシー ベース** | **ルート ベース** |
 |---------------------------------|----------------------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Allied Telesis | AR シリーズ VPN ルーター | 2\.9.2 | 近日対応予定 | 互換性なし |
-| Barracuda Networks, Inc. | Barracuda NG Firewall | Barracuda NG Firewall 5.4.3 | [Barracuda NG Firewall](https://techlib.barracuda.com/display/BNGV54/How%20to%20Configure%20an%20IPsec%20Site-to-Site%20VPN%20to%20a%20Windows%20Azure%20VPN%20Gateway)| 互換性なし |
-| Barracuda Networks, Inc. | Barracuda Firewall | Barracuda Firewall 6.5 | [Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) | 互換性なし |
+| Barracuda Networks, Inc. | Barracuda NextGen Firewall F シリーズ | ポリシー ベース: 5.4.3、ルート ベース: 6.2.0 | [構成の手順](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) | [構成の手順](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
+| Barracuda Networks, Inc. | Barracuda NextGen Firewall X シリーズ | Barracuda Firewall 6.5 | [Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) | 互換性なし |
 | Brocade | Vyatta 5400 vRouter | 仮想ルーター 6.6R3 GA | [構成の手順](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) | 互換性なし |
 | Check Point | セキュリティ ゲートウェイ | R75.40、R75.40VS | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco | ASA | 8\.3 | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 互換性なし |
@@ -64,7 +65,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 ## 未検証の VPN デバイス
 
-検証済みの VPN デバイスの表 (上記) にデバイスが見つからない場合は、引き続きサイト間接続で動作する可能性があります。使用している VPN デバイスが、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#gateway-requirements)」の記事の「ゲートウェイの要件」セクションに記載されている最小要件を満たしていることを確認してください。最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。詳細なサポートおよび構成手順については、デバイスの製造元にお問い合わせください。
+検証済みの VPN デバイスの表 (上記) にデバイスが見つからない場合は、引き続きサイト間接続で動作する可能性があります。お使いの VPN デバイスが、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#gateway-requirements)」の記事の「ゲートウェイの要件」セクションに記載されている最小要件を満たしていることを確認してください。最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。詳細なサポートおよび構成手順については、デバイスの製造元にお問い合わせください。
 
 
 ## デバイス構成のサンプルの編集
@@ -74,7 +75,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 **サンプルを編集するには:**
 
 1. メモ帳を使用してサンプルを開きます。 
-1. 使用している環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。< and > を必ず含めてください。名前を指定する場合、選択する名前は一意である必要があります。コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
+1. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。< and > を必ず含めてください。名前を指定する場合、選択する名前は一意である必要があります。コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
 
 | **サンプル テキスト** | **次に変更** |
 |----------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -94,6 +95,8 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 ## IPsec パラメーター
 
+>[AZURE.NOTE] 以下の値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。
+
 ### IKE フェーズ 1 セットアップ
 
 | **プロパティ** | **ポリシー ベース** | **ルート ベース、および Standard または 高性能 VPN ゲートウェイ** |
@@ -102,8 +105,8 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Diffie-hellman グループ | グループ 2 (1024 ビット) | グループ 2 (1024 ビット) |
 | 認証方法 | 事前共有キー | 事前共有キー |
 | 暗号化アルゴリズム | AES256 AES128 3DES | AES256 3DES |
-| ハッシュ アルゴリズム | SHA1(SHA128) | SHA1(SHA128) |
-| フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 28,800 秒 | 28,800 秒 |
+| ハッシュ アルゴリズム | SHA1(SHA128) | SHA1(SHA128)、SHA2(SHA256) |
+| フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 28,800 秒 | 10,800 秒 |
 
 
 ### IKE フェーズ 2 セットアップ
@@ -112,10 +115,10 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 |--------------------------------------------------------------------------|------------------------------------------------|--------------------------------------------------------------------|
 | IKE のバージョン | IKEv1 | IKEv2 |
 | ハッシュ アルゴリズム | SHA1(SHA128) | SHA1(SHA128) |
-| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 3,600 秒 | - |
+| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 3,600 秒 | 3,600 秒 |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) | 102,400,000 KB | - |
-| IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.N/A | *ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン*を参照 (下記) |
-| Perfect Forward Secrecy (PFS) | なし | あり (DH Group1) |
+| IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.該当なし | *ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン* (下記) を参照 |
+| Perfect Forward Secrecy (PFS) | なし | あり (DH Group1、2、5、14、24) |
 | Dead Peer Detection | サポートなし | サポートあり |
 
 ### ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン
@@ -148,4 +151,4 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: セキュリティ レビューを開始する方法"
+   pageTitle="セキュリティ レビューを開始する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能で特権 ID のセキュリティ プレビューを作成する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: セキュリティ レビューを開始する方法
+# Azure AD Privileged Identity Management: セキュリティ レビューを開始する方法
 
 ## セキュリティ レビューの開始
 最終的には、Azure ポータルの他の場所でセキュリティ レビューを実行できるようになります。このドキュメントでは、**Privileged Identity Management (PIM)** インターフェイスでセキュリティ レビューを開始する手順を説明します。
@@ -62,4 +62,4 @@ Azure PIM ダッシュボードからは次のいずれかの方法でレビュ�
 ## PIM の内容一覧
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

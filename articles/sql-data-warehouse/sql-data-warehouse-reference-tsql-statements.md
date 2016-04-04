@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/01/2016"
+   ms.date="03/08/2016"
    ms.author="barbkess;sonyama"/>
 
 #Transact-SQL トピック
@@ -115,16 +115,16 @@
 
 
 ## 次のステップ
-TSQL の例については、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。
+TSQL の例については、「[SQL Data Warehouse の参照トピック][]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse の参照トピック]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0316_2016-->

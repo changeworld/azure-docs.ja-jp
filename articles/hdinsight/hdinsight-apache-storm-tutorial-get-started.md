@@ -12,10 +12,10 @@
 <tags
    ms.service="hdinsight"
    ms.devlang="java"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="03/07/2016"
    ms.author="larryfr"/>
 
 
@@ -25,7 +25,9 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 > [AZURE.NOTE] この記事の手順では、Windows ベースの HDInsight クラスターを作成します。HDInsight クラスターで Linux ベースの Storm を作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started-linux.md)」をご覧ください。
 
-## 前提条件
+## 開始する前に
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 Apache Storm チュートリアルを正常に完了するには、次の条件を満たす必要があります。
 
@@ -203,6 +205,10 @@ Storm UI を使用してトポロジを監視できます。
 
 ワードカウント トポロジの **[トポロジの概要]** ページに戻り、**[トポロジのアクション]** セクションで **[強制終了]** を選択します。メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ## 概要
 
 この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジをデプロイ、監視、管理する方法について説明しました。
@@ -239,4 +245,4 @@ Storm UI を使用してトポロジを監視できます。
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

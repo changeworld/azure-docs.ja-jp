@@ -3,7 +3,7 @@
 	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="jaymathe" 
+	authors="luisca" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
+	ms.date="03/01/2016" 
 	ms.author="luisca"/>
 
 #Machine Learning Recommendations API の設定と使用に関する FAQ
@@ -31,7 +31,12 @@ Recommendations は、1 つの項目または一連の項目を入力として�
 
 **使用制限はありますか。**
 
-Recommendations には、次の使用制限があります。* サブスクリプションごとのモデルの最大数: 10 * カタログが保持できる項目の最大数: 100,000 * 保持される使用状況ポイントの最大数は 5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。* メールで送信できるデータ (例: カタログ データのインポート、使用状況データのインポート) の最大サイズは 200 MB です * アクティブでない推奨モデル ビルドに対する 1 秒あたりのトランザクション数 (TPS) は約 2 TPS です。アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
+Recommendations には次の使用制限があります。
+* サブスクリプションごとのモデルの最大数: 10
+* カタログが保持できる項目の最大数: 100,000
+* 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+* 電子メールで送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
+* アクティブではない Recommendations モデルのビルドの 1 秒あたりのトランザクション数 (TPS) は ~2 TPS です。アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
 
 ##購入と請求 
 
@@ -130,4 +135,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

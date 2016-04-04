@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.topic="article"
 	ms.devlang="javascript"
-	ms.date="11/30/2015"
+	ms.date="03/09/2016"
 	ms.author="krisragh"/>
 
 # モバイル サービスでのユーザーのサービス側承認
+> [AZURE.SELECTOR]
+- [.NET バックエンド](mobile-services-dotnet-backend-service-side-authorization.md)
+- [JavaScript バックエンド](mobile-services-javascript-backend-service-side-authorization.md)
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-service-side-authorization.md)
-- [(Any | Javascript)](mobile-services-javascript-backend-service-side-authorization.md)
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックと同等の Mobile Apps バージョンについては、[このサンプル コード](https://github.com/Azure/azure-mobile-apps-node/blob/master/samples/personal-table/tables/TodoItem.js#L38)を参照してください。
 
 このトピックでは、サーバー側スクリプトを使用してユーザーを承認する方法を示します。このチュートリアルでは、Azure モバイル サービスでスクリプトを登録し、ユーザー ID に基づいてクエリをフィルターし、ユーザーに自分のデータのみへのアクセスを提供します。ユーザー ID によるユーザーのクエリ結果のフィルター処理は、承認の最も基本的な形式です。またシナリオによっては、特定のユーザーのアクセスを許可するエンドポイントなど、より詳細なユーザーの承認情報を確認するために、ユーザーまたはロールのテーブルを作成することもできます。
 
@@ -39,7 +43,7 @@
 
 	このスクリプトは、挿入前に項目に認証済みユーザーのユーザー ID を追加します。
 
-    >[AZURE.NOTE] [動的スキーマ](https://msdn.microsoft.com/library/azure/jj193175.aspx) が有効であることを確認します。それ以外の場合、*userId* 列は自動的には追加されません。新しいモバイル サービスの既定ではこの設定は有効になります。
+    >[AZURE.NOTE] [動的スキーマ](https://msdn.microsoft.com/library/azure/jj193175.aspx) が有効であることを確認します。それ以外の場合、*userId* 列は自動的には追加されません。新しいモバイル サービスの既定ではこの設定は有効になります。
 
 3. 同様に、既存の**読み取り**操作を次の関数で置き換えます。このスクリプトは、ユーザーが自身に挿入した項目だけを受信できるように、返された TodoItem オブジェクトをフィルターします。
 
@@ -68,6 +72,5 @@
 [既存の Mobile Services アプリケーションに認証を追加]: /develop/mobile/tutorials/get-started-with-users-ios
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -128,8 +128,6 @@ Android SDK を[こちら](https://aka.ms/vq9mfn)からダウンロードしま�
 
 > [AZURE.IMPORTANT] `EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
 
-サブクラスの `FragmentActivity` と `MapActivity` が用意されていますが、**ProGuard** を使うアプリケーションで発生する問題を避けるために、`engagement.jar` には含まれていません。
-
 これらのクラスは `src` フォルダーで見つけることができ、プロジェクトにコピーできます。クラスは **JavaDoc** にも用意されています。
 
 ### 別の方法: `startActivity()` と `endActivity()` を手動で呼び出す
@@ -382,4 +380,4 @@ Engagement では、この設定を管理するために設定ファイル内で
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

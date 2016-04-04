@@ -144,7 +144,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ..\\..\\LogFiles\\Application
+- 既定値: ..\\..\\LogFiles\\Application
 
 **DIAGNOSTICS\_TEXTTRACEMAXBUFFERSIZEBYTES**
 
@@ -201,7 +201,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 これは、コマンドが実行されたコマンド プロンプト、PowerShell、bash、またはターミナル セッションにログ情報を表示します。
 
-> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[How to use the Azure CLI (Azure CLI の使用方法)](../virtual-machines-command-line-tools.md)」をご覧になって、インストールと構成を実行してください。
+> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[How to use the Azure CLI (Azure CLI の使用方法)](../virtual-machines/virtual-machines-command-line-tools.md)」をご覧になって、インストールと構成を実行してください。
 
 ### ログ ファイルの読み込み ###
 
@@ -283,10 +283,9 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

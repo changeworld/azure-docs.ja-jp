@@ -37,7 +37,7 @@ Marathon UI を表示するには、http://localhost/Marathon に移動します
 
 ![Create deployment](media/ui2.png)
 
-## Docker コンテナーのデプロイ
+## Docker 形式のコンテナーのデプロイ
 
 Marathon を使用し、Mesos クラスターで新しいコンテナーを開始するには、`Create Application` ボタンをクリックします。新しいアプリケーションのフォームを使用し、アプリケーションまたはコンテナーのパラメーターを定義します。この例では、単純な Nginx コンテナーがデプロイされます。次の情報を入力します。完了したら、[作成] をクリックします。
  
@@ -56,11 +56,11 @@ Marathon メイン ページに戻ると、コンテナーのデプロイ ステ
 
 ![Create deployment](media/ui4.png)
 
-Mesos アプリ (http://localhost/Mesos)) に戻すと、タスクが、この場合は Docker コンテナーが Mesos クラスターで実行されていることがわかります。タスクが実行されているクラスター ノードを確認することもできます。
+Mesos アプリ (http://localhost/Mesos)) に戻すと、タスクが、この場合は Docker 形式のコンテナーが Mesos クラスターで実行されていることがわかります。タスクが実行されているクラスター ノードを確認することもできます。
 
 ![Create deployment](media/ui5.png)
 
-## Docker コンテナーを拡大縮小する
+## コンテナーの拡張
 
 Marathon Web UI では、コンテナーのインスタンス数を増減することもできます。これを実行するには、Marathon ページに移動し、拡大縮小するコンテナーを選択し、`scale` ボタンをクリックします。[Scale Application] ウィンドウで、任意のコンテナー インスタンス数を入力し、`Scale Application` を選択します。
 
@@ -70,4 +70,4 @@ Marathon Web UI では、コンテナーのインスタンス数を増減する�
 
 ![Create deployment](media/ui8.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

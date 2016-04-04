@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Web アプリの複製"
-	description="Web アプリを新しい Web アプリに複製する方法について説明します。"
+	pageTitle="PowerShell を使用した Web アプリの複製"
+	description="PowerShell を使用して既存の Web Apps を新しい Web Apps に複製する方法を説明します。"
 	services="app-service\web"
 	documentationCenter=""
 	authors="ahmedelnably"
@@ -16,7 +16,7 @@
 	ms.date="01/13/2016"
 	ms.author="ahmedelnably"/>
 
-# Azure App Service アプリの複製 #
+# PowerShell を使用した Azure App Service アプリの複製#
 
 Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが New-AzureRMWebApp に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の Web アプリを複製できるようになりました。これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
 
@@ -109,9 +109,10 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 
 
 ### 参照 ###
+- [Azure ポータルを使用した Web アプリの複製](app-service-web-app-cloning-portal.md)
 - [Azure App Service での Web アプリのバックアップ](web-sites-backup.md)
 - [Azure リソース マネージャーによる Azure Traffic Manager プレビューのサポート](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

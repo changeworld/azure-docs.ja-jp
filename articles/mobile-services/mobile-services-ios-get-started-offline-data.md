@@ -3,7 +3,7 @@
 	description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 	documentationCenter="ios"
 	authors="krisragh"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="mobile-services"/>
 
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="03/09/2016"
 	ms.author="krisragh;donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Enable offline sync for your iOS mobile app (iOS モバイル アプリのオフライン同期の有効化)](../app-service-mobile/app-service-mobile-ios-get-started-offline-data.md)」を参照してください。
 
 オフラインの同期を使用すれば、ネットワーク接続が得られない状況でも、モバイル アプリケーションでデータを表示、追加、または変更することができます。このチュートリアルでは、アプリケーションで変更内容を自動的にオフライン データベースに格納し、オンラインに戻るたびにそれらの変更内容を同期させる方法について説明します。
 
@@ -35,7 +35,7 @@
 * 複数のデバイス間でデータを同期させる。
 * 同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](https://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target=”\_blank”) を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](https://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target=”\_blank”)」 を参照してください。
 
 最初に、このチュートリアルの基になっている [Mobile Services のクイック スタート チュートリアル]を完了しておく必要があります。まず、クイック スタートで説明したオフラインの同期に関連するコードを確認してみましょう。
 
@@ -165,9 +165,9 @@ Core Data オフライン ストアを使用するときは、データ モデ�
     | id (必須) | String | リモート ストア内のプライマリ キー (必須) |
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
-    | ms_createdAt | 日付 | (省略可能) __createdAt システム プロパティにマップ |
-    | ms_updatedAt | Date | (省略可能) __updatedAt システム プロパティにマップ |
-    | ms_version | String | (省略可能) 競合の検出に使用され、__version にマップ |
+        | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | 
+	| ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | 
+	| ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
 
 
 
@@ -278,4 +278,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!----HONumber=AcomDC_0316_2016-->

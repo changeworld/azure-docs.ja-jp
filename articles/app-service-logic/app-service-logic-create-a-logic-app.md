@@ -12,8 +12,8 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="03/01/2016"
+	ms.topic="get-started-article"
+	ms.date="03/16/2016"
 	ms.author="stepsic"/>
 
 # SaaS サービスを接続する新しいロジック アプリを作成します。
@@ -67,4 +67,4 @@
 [Azure portal]: https://portal.azure.com
 [ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

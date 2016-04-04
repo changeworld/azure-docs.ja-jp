@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/11/2016"
+   ms.date="03/16/2016"
    ms.author="rajram"/>
    
 # Azure Storage Blob コネクタの使用開始とロジック アプリへの追加 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Azure Storage BLOB API](../connectors/create-api-azureblobstorage.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Azure Storage BLOB API](../connectors/connectors-create-api-azureblobstorage.md) をクリックしてください。
 
 BLOB をアップロード、ダウンロード、BLOB コンテナーから削除するには、Azure Storage BLOB に接続します。コネクタは、"ワークフロー" の一部として Logic Apps で使用されます。
 
@@ -107,4 +107,4 @@ BLOB の書き込みコンテンツ | アップロードする BLOB のコンテ
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

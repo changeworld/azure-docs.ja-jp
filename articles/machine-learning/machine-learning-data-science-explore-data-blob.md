@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="03/04/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #Pandas を使用して Azure BLOB ストレージのデータを探索する
@@ -38,7 +38,7 @@
 
 1. BLOB サービスを使用する次の Python コード サンプルで Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
 
-	    from azure.storage import BlobService
+	    from azure.storage.blob import BlobService
     	import tables
     	
 		STORAGEACCOUNTNAME= <storage_account_name>
@@ -117,4 +117,4 @@
 		#correlation between column_a and column_b
 		dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

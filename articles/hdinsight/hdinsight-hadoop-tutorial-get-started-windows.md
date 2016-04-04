@@ -12,20 +12,22 @@
 <tags
    ms.service="hdinsight"
    ms.devlang="na"
-   ms.topic="hero-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/25/2016"
+   ms.date="03/07/2016"
    ms.author="nitinme"/>
 
 
 # Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する
 
 > [AZURE.SELECTOR]
-- [Windows](../hdinsight-hadoop-tutorial-get-started-windows.md)
-- [Linux](../hdinsight-hadoop-linux-tutorial-get-started.md)
+- [Windows ベース](../hdinsight-hadoop-tutorial-get-started-windows.md)
+- [Linux ベース](../hdinsight-hadoop-linux-tutorial-get-started.md)
 
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
+
+>[AZURE.NOTE] このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターについては、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
 
 大規模な非構造化データ セットがあり、このデータ セットに対して Hive クエリを実行して、意味のある情報を抽出する場合を仮定します。これが、このチュートリアルで目的としていることです。これを実現するには、次の手順を実行します。
 
@@ -38,6 +40,8 @@ HDInsight での Hadoop の説明については、このチュートリアル�
 **[YouTube で HDInsight の Hadoop チュートリアルを見る](https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS)**
 
 Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 *Microsoft HDInsight 開発者プレビュー*) もリリースしました。このエミュレーターは開発者シナリオを対象としており、単一ノード デプロイのみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][hdinsight-emulator]」に関するページをご覧ください。
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ### 前提条件
 
@@ -177,7 +181,9 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [Web サイト ログの分析][hdinsight-weblogs-sample] | HDInsight を使用して、Web サイトのログ ファイルを分析する方法について説明します。このサンプルでは、1 日の間に発生した外部 Web サイトからの Web サイトへのアクセス数を調べ、ユーザーが経験した Web サイト エラーの概要を取得します。
 [Twitter の傾向分析](hdinsight-analyze-twitter-data.md) | HDInsight を使用して、Twitter の傾向を分析する方法について説明します。
 
+##クラスターを削除する
 
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ##次のステップ
 この Hadoop のチュートリアルでは、HDInsight で Windows ベースの Hadoop クラスターを作成した後、そのデータ上で Hive クエリを実行し、結果を Excel にインポートする方法を説明しました。このデータは、ビジネス インテリジェンス ツールを使用してさらに処理し、グラフィカルに表示することができます。詳細については、次のチュートリアルをご覧ください。
@@ -191,7 +197,6 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
 - [HDInsight での Oozie の使用][hdinsight-use-oozie]
-- [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
@@ -209,7 +214,6 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-emulator]: hdinsight-hadoop-emulator-get-started.md
-[hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 [hadoop-hdinsight-intro]: hdinsight-hadoop-introduction.md
 [hdinsight-weblogs-sample]: hdinsight-hive-analyze-website-log.md
@@ -251,4 +255,4 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

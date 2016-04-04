@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/09/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 
@@ -82,9 +82,9 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 
 ## 次のステップ
 
-[インターネットに接続するロード バランサーの構成の開始](load-balancer-internet-getstarted.md)
+[インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
 
-[内部ロード バランサーの構成の開始](load-balancer-internal-getstarted.md)
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
@@ -92,4 +92,4 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

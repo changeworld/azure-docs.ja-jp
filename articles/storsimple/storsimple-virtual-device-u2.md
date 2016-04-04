@@ -103,7 +103,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 - 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 8020 でサポートされているリージョンの詳細については、[こちら](#supported-regions-for-8020)をご覧ください。
 - 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 - ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。 
-- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
+- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
 	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
 	- 仮想デバイスと同じ仮想ネットワークで実行されていること。
 	- 仮想デバイスの内部 IP アドレスで仮想デバイスの iSCSI ターゲットに接続できること。
@@ -282,4 +282,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法を理解します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->
