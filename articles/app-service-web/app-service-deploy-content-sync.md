@@ -39,6 +39,6 @@
 
     ![デプロイ履歴](./media/app-service-deploy-content-sync/onedrive_sync.png)
  
-Dropbox デプロイの詳細については、「[New! Deploy to Windows Azure Web Sites from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)」 (新規: Dropbox から Windows Azure Web Sites へのデプロイ) を参照してください。
+Dropbox デプロイの詳細については、「[New! Deploy to Microsoft Azure Web Sites from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)」 (新規: Dropbox から Microsoft Azure Web Sites へのデプロイ) を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

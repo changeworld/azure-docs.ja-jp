@@ -105,7 +105,7 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 ####有用な情報
 以下のリンクから、スケーラビリティ ターゲットに関する詳細を確認できます。
 -	スケーラビリティ ターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
--	ストレージ冗長オプションについては、「[Azure Storage のレプリケーション](storage-redundancy.md)」およびブログ投稿「[Windows Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Windows Azure ストレージ冗長オプションと読み取りアクセス地理冗長ストレージ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」を参照してください。
+-	ストレージ冗長オプションについては、「[Azure Storage のレプリケーション](storage-redundancy.md)」およびブログ投稿「[Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (Microsoft Azure ストレージ冗長オプションと読み取りアクセス地理冗長ストレージ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)」を参照してください。
 -	各種 Azure サービスの料金の最新情報については、「[Azure の料金設定](https://azure.microsoft.com/pricing/overview/)」を参照してください。  
 
 ###ネットワーク
@@ -394,4 +394,4 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 ##まとめ
 この記事では、Azure Storage 使用時のパフォーマンスを最適化する実証済みプラクティスのうち、よく用いられるものをいくつか取り上げました。すべてのアプリケーション開発者に対して、この記事で示した個々のプラクティスに照らしてアプリケーションを評価し、推奨事項に基づく動作によって、Azure Storage を使用するアプリケーションが優れたパフォーマンスを発揮できるように検討することをお勧めします。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->
