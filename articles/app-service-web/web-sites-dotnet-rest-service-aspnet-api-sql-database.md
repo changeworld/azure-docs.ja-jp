@@ -46,7 +46,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
-	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.png)
+	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[Web API]** をオンにし、**[認証の変更]** をクリックします。
 
@@ -120,7 +120,7 @@ Azure にまだサインしていない場合は、サインインするよう�
 
 ### ローカルでアプリケーションを実行する
 
-1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
 
 これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
@@ -202,7 +202,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、**[Entity Framework を使用した、ビューのある MVC コントローラー]** を選択し、**[追加]** をクリックします。
 
- ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.png)
+ ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
 
 6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキストの種類]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
 
@@ -504,7 +504,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
-	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.png)
+	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
 
 4. **[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「ContactsController」と入力します。**[モデル クラス]** で [Contact (ContactManager.Models)] を選択します。**[データ コンテキスト クラス]** で既定値をそのまま使用します。
 
@@ -545,7 +545,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))XSRF (CSRF)」を参照してください。
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「(https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))XSRF (CSRF)」を参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
@@ -810,4 +810,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!-----HONumber=AcomDC_0323_2016-->

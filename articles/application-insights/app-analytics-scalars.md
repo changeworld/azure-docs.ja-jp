@@ -26,7 +26,10 @@
 
 ---
 
-[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) <br/>[getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull) <br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) | [split](#split) | [sqrt](#sqrt) <br/>[startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
+[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) 
+<br/> [getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull) 
+<br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) | [split](#split) | [sqrt](#sqrt) 
+<br/> [startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
 
 ---
 
@@ -40,7 +43,9 @@
 
 ## スカラー
 
-[キャスト](#casts) | [比較](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff)| [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
+[キャスト](#casts) | [比較](#scalar-comparisons) 
+<br/> 
+[gettype](#gettype) | [hash](#hash) | [iff](#iff)| [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
 
 サポートされている型は次のとおりです。
 
@@ -158,7 +163,9 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```
 
-<a name="isnull"/></a> <a name="isnotnull"/></a> <a name="notnull"/></a>
+<a name="isnull"/></a> 
+<a name="isnotnull"/></a> 
+<a name="notnull"/></a>
 ### isnull、isnotnull、notnull
 
     isnull(parsejson("")) == true
@@ -186,7 +193,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 **例**
@@ -218,7 +225,8 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 ## 数値
 
-[bin](#bin) | [floor](#floor) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[bin](#bin) | [floor](#floor) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) 
+| [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 ### 数値リテラル
 
@@ -232,7 +240,17 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
+| - | 減算 | 
+| * | 乗算 | 
+| / | 除算 | 
+| % | 剰余 | 
+|| 
+|`<` |小さい 
+|`<=`|小さいか等しい 
+|`>` |大きい 
+|`>=`|大きいか等しい 
+|`<>`|等しくない 
+|`!=`|等しくない
 
 
 
@@ -531,7 +549,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 文字列は、単一引用符または二重引用符で囲むことがあります。
 
-バックスラッシュ (``) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
+バックスラッシュ (`\`) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -650,12 +668,15 @@ h"hello"
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
 
-<a name="notempty"></a> <a name="isnotempty"></a> <a name="isempty"></a>
+<a name="notempty"></a> 
+<a name="isnotempty"></a> 
+<a name="isempty"></a>
 ### isempty、isnotempty、notempty
 
     isempty("") == true
 
-引数が空の文字列または null である場合は True です。[isnull](#isnull) も参照してください。
+引数が空の文字列または null である場合は True です。
+[isnull](#isnull) も参照してください。
 
 
 **構文**
@@ -677,7 +698,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 
@@ -824,7 +845,9 @@ substring("ABCD", 0, 2)       // AB
 
 ## 配列とオブジェクト: 動的な型
 
-[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
+[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) 
+<br/> 
+[arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
 
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
@@ -1129,4 +1152,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

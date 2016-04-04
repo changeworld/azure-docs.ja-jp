@@ -205,7 +205,7 @@
 	> [AZURE.NOTE] __wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
 
-##</a><a name="test">エミュレーターでプログラムをテストする
+##<a name="test"></a>エミュレーターでプログラムをテストする
 
 HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 

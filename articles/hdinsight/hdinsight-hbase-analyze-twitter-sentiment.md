@@ -600,9 +600,9 @@ Web アプリケーションの作成中はストリーミング コンソール
 	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
-    - **HBASETABLENAME** = "tweets\_by\_words";
+    - **HBASETABLENAME** = "tweets_by_words";
 
-	HBase テーブル名は「**tweets\_by\_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「**tweets_by_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
@@ -1205,7 +1205,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 		using System.Web.Http;
 
-2. 以下の行を **Application\_Start()** 関数内に追加します。
+2. 以下の行を **Application_Start()** 関数内に追加します。
 
 		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);

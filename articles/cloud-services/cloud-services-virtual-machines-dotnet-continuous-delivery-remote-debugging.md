@@ -46,34 +46,34 @@
 
 	<pre>
 	Add-AzureAccount
-	
+
 	Select-AzureSubscription "My Microsoft Subscription"
-	
+
 	$vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
-	
+
 	$endpoints = @(
 	,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
 	,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
 	)
-	
+
 	foreach($endpoint in $endpoints)
 	{
 	Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
 	}
-	
+
 	$referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"
 	$publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
 	$extensionName = "RemoteDebugVS2015"
 	$version = "1.*"
 	$publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
-	
+
 	$vm | Set-AzureVMExtension `
 	-ReferenceName $referenceName `
 	-Publisher $publisher `
 	-ExtensionName $extensionName `
 	-Version $version `
 	-PublicConfiguration $publicConfiguration
-	
+
 	foreach($extension in $vm.VM.ResourceExtensionReferences)
 	{
 	if(($extension.ReferenceName -eq $referenceName) `
@@ -85,7 +85,7 @@
 	break
 	{
 	{
-	
+
 	$vm | Update-AzureVM
 	</pre>
 

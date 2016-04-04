@@ -103,7 +103,7 @@ pushHandler.on('error', function (error) {
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
+[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
 
 [Apache Cordova Plugin for Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [your first Apache Cordova app]: http://cordova.apache.org/#getstarted
@@ -111,6 +111,6 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
+[query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
 <!---HONumber=AcomDC_0323_2016-->

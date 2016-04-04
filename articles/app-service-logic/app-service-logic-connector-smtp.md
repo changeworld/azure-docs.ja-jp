@@ -61,25 +61,32 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 ## ロジック アプリで SMTP コネクタを使用する
 コネクタが作成されたら、ロジック アプリのアクションとして SMTP コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成します。![][2]
-2.	**[トリガーとアクション]** を開き、Logic Apps デザイナーを開いてワークフローを構成します。![][3]
-3.	SMTP コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。それを選択します。![][4]
+1.	新しいロジック アプリを作成します。
+
+![][2]
+2.	**[トリガーとアクション]** を開き、Logic Apps デザイナーを開いてワークフローを構成します。
+
+![][3]
+3.	SMTP コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。それを選択します。
+
+![][4]
 4.	SMTP コネクタを選択すると、ワークフロー デザイナーに自動的に追加されます。
 
 これで、SMTP コネクタを構成して、ワークフローで使用できます。**Send Email** アクションを選択し、入力プロパティを次のように構成します。
 
 	Property | Description
 	--- | ---
-	To | Enter the email address of recipient(s). Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Cc | Enter the email address of the carbon copy recipient(s). Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Subject | Enter the subject of the email.
-	Body | Enter body of the email.
-	Is HTML | When this property is set to true, the contents of the body are sent as HTML.
-	Bcc | Enter the email address of recipient(s) for blind carbon copy. Separate multiple email addresses using a semicolon (;). For example, enter: *recipient1@domain.com;recipient2@domain.com*.
-	Importance | Enter the Importance of the email. The options are Normal, Low, and High.
-	Attachments | Attachments to be sent along with the email. It contains the following fields: <ul><li>Content (String)</li><li>Content transfer Encoding (Enum) (“none”|”base64”)</li><li>Content Type (String)</li><li>Content ID (String)</li><li>File Name (String)</li></ul>
+	宛 | 受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	Cc | カーボン コピーの受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	件名 | メールの件名を入力します。
+	本文 | メールの本文を入力します。
+	HTML にする |このプロパティが true に設定されている場合は、本文の内容は HTML として送信されます。
+	Bcc | ブラインド カーボン コピーの受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
+	重要度 | メールの重要度を入力します。[標準]、[低]、[高] のいずれかです。
+	添付ファイル | メールと共に送信される添付ファイルです。これには、次のフィールドが含まれます。 <ul><li>コンテンツ (文字列)</li><li> コンテンツ転送エンコード (列挙型) (“none”|”base64”)</li><li>コンテンツ タイプ (文字列)</li><li>コンテンツ ID (文字列)</li><li>ファイル名 (文字列)</li></ul>
 
-![][5] ![][6]
+![][5] 
+![][6]
 
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。

@@ -145,23 +145,23 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 	- 有効なシークレット URL の例:
 
-		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 有効な KRK KEK の例:
 
-		**https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-- Azure Disk Encryption では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については以下の例を参照してください。
+- Azure ディスク暗号化では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については以下の例を参照してください。
 
  	- 受け入れられない Key Vault URL:
 
-		**https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 受け入れられる Key Vault URL:
 
-		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-- Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
+- Azure ディスク暗号化機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
 
 	- IaaS VM は、Azure Key Vault に接続するためのトークンを取得するときに、Azure Active Directory エンドポイント [Login.windows.net] に接続できる必要があります。
 
@@ -171,7 +171,7 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 **注:** セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、接続する必要がある上記 URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
 
-- Azure Disk Encryption PowerShell コマンドレットのいずれかを実行するには、次のように、最初に [Azure PowerShell バージョン 1.0.2](https://github.com/Azure/azure-powershell/releases/tag/v1.0.2-December2015) をインストールする必要があります。
+- Azure ディスク暗号化 PowerShell コマンドレットのいずれかを実行するには、次のように、最初に Azure PowerShell バージョン 1.0.1 をインストールする必要があります。
 
 	- Azure PowerShell をインストールして、Azure サブスクリプションに関連付ける場合は、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 

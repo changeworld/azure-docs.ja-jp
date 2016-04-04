@@ -392,7 +392,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>oozie.base.url</name>
 		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	**http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
