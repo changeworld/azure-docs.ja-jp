@@ -108,7 +108,7 @@ Azure 診断を使用すると、Azure で実行しているクラウド サー�
 
 ![][1]
 
-Azure 診断は、ユーザーの Cloud Services アプリケーションおよび [Azure Virtual Machines](virtual-machines-about.md) から Azure Storage にログを移動します。ログの形式に基づき、データは Azure テーブルまたは BLOB に格納されます。[Azure Storage](storage-introduction.md) に収集されたデータは、Azure Storage Client Library を使用してオンプレミスの SIEM システムにダウンロードし、監視および分析できます。
+Azure 診断は、ユーザーの Cloud Services アプリケーションおよび [Azure Virtual Machines](virtual-machines/virtual-machines-linux-about.md) から Azure Storage にログを移動します。ログの形式に基づき、データは Azure テーブルまたは BLOB に格納されます。[Azure Storage](storage-introduction.md) に収集されたデータは、Azure Storage Client Library を使用してオンプレミスの SIEM システムにダウンロードし、監視および分析できます。
 
 また、HDInsight を使用するとクラウド内のデータをさらに分析できます。Azure 診断を使用するセキュリティ データ収集の例を次に示します。
 
@@ -614,4 +614,4 @@ Azure サブスクリプション リソースに関連する操作のログは�
 [19]: ./media/azure-security-audit-log-management/sec-view-blob-container.png
 [20]: ./media/azure-security-audit-log-management/sec-hdinsight-analysis.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

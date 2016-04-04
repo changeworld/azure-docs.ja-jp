@@ -12,12 +12,12 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="02/22/2016"
+	ms.date="03/03/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
 
-[メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフのリリース注釈により、新しいビルドのデプロイ先が示されます。これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/ja-JP/get-started/build/build-your-app-vs)により自動で作成されます。
+[メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフのリリース注釈により、新しいビルドのデプロイ先が示されます。これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/ja-JP/get-started/build/build-your-app-vs)により自動で作成されます。[PowerShell から作成](#create-annotations-from-powershell)することもできます。
 
 ![サーバー応答時間と明確な相関関係のある注釈の例](./media/app-insights-annotations/00.png)
 
@@ -46,7 +46,7 @@
 
 2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから [Application Insights Release Annotation] \(Application Insights リリース注釈) タスクを選択します。
 
     [API アクセス] ブレードからコピーした **Application ID** を貼り付けます。
 
@@ -69,6 +69,24 @@
 
 5. 最後に、リリースの定義を**保存**します。
 
+## PowerShell から注釈を作成する
+
+(VS Team System を利用せずに) あらゆるプロセスから注釈を作成することもできます。
+
+[GitHub から Powershell スクリプト](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)を入手します。
+
+それを次のように利用します。
+
+    .\CreateReleaseAnnotation.ps1 `
+      -applicationId "<applicationId>" `
+      -apiKey "<apiKey>" `
+      -releaseName "<myReleaseName>" `
+      -releaseProperties @{
+          "ReleaseDescription"="a description";
+          "TriggerBy"="My Name" }
+
+Application Insights リソースから `applicationId` と `apiKey` を取得します。[設定]、[API アクセス] の順に開き、Application ID をコピーします。[API キーの作成] をクリックし、キーをコピーします。
+
 ## リリース注釈
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。注釈は、メトリックス エクスプローラーのグラフに表示されます。
@@ -78,4 +96,4 @@
 
 ![任意のリリース注釈マーカーをクリックします。](./media/app-insights-annotations/60.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!----HONumber=AcomDC_0309_2016-->

@@ -21,7 +21,7 @@ Azure Tools for Visual Studio をインストール済みである場合、Azure
 
 Visual Studio でサーバー エクスプローラーを表示するには、メニュー バーで **[表示]**、**[サーバー エクスプローラー]** の順にクリックします。ストレージ ノードは、接続されている各 Azure サブスクリプション/証明書に存在するすべてのストレージ アカウントを示します。ストレージ アカウントが表示されない場合は、[このトピックの最後](#add-storage-accounts-by-using-server-explorer)に記載した手順で追加できます。
 
-Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを使用して Azure のリソースを表示したり管理したりすることもできます。詳細については、「[クラウド エクスプローラーを使用した Azure リソースの管理](https://msdn.microsoft.com/library/azure/mt185741.aspx)」を参照してください。
+Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを使用して Azure のリソースを表示したり管理したりすることもできます。詳細については、「[クラウド エクスプローラーを使用した Azure リソースの管理](vs-azure-tools-resources-managing-with-cloud-explorer)」を参照してください。
 
 
 ## Visual Studio でのストレージ リソースの表示と管理
@@ -193,9 +193,10 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 
     ![Add or Edit a Table Entity](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC656238.png)
 
-    単一テーブルのエンティティが、同じ一連のプロパティ (列) を持っている必要はありません。テーブル データの表示と編集には、次の制限があることに留意してください。- バイナリ データ (byte 型) は、表示することも編集することもできませんが、テーブルに格納することはできます。
+    単一テーブルのエンティティが、同じ一連のプロパティ (列) を持っている必要はありません。テーブル データの表示と編集には、次の制限があることに留意してください。
+    - バイナリ データ (byte 型) は、表示することも編集することもできませんが、テーブルに格納することはできます。
 
-    - **PartitionKey** と **RowKey** の値は編集できません。この操作は、Azure の Table Storage ではサポートされません。
+    - **PartitionKey** と **RowKey** の値は編集できません。この操作は、Azure のテーブル ストレージではサポートされません。
 
     - Timestamp という名前のプロパティは作成できません。Azure ストレージ サービスで、同名のプロパティが使用されています。
 
@@ -313,4 +314,4 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 
 Azure ストレージ サービスの使用方法の詳細については、「[Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

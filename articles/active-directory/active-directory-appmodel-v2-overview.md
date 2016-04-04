@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="03/18/2016"
 	ms.author="dastrock"/>
 
 # Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
@@ -22,16 +22,13 @@
 
 v2.0 エンドポイントを使うアプリは、どちらの種類のアカウントを使用していても、[Microsoft Graph](https://graph.microsoft.io) や [Office 365](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) の REST API を使用できます。
 
-> [AZURE.NOTE]
-	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
-
-
-## 始めに
-次の中からプラットフォームを選択し、Microsoft のオープン ソース ライブラリとフレームワークを利用してアプリを構築します。または、OAuth 2.0 と OpenID Connect のプロトコル ドキュメントを使用し、認証ライブラリを使用せずに直接プロトコル メッセージを送受信することもできます。<!-- TODO: Finalize this table  -->
+## Getting Started (概要)
+次の中からプラットフォームを選択し、Microsoft のオープン ソース ライブラリとフレームワークを利用してアプリを構築します。または、OAuth 2.0 と OpenID Connect のプロトコル ドキュメントを使用し、認証ライブラリを使用せずに直接プロトコル メッセージを送受信することもできます。
+<!-- TODO: Finalize this table  -->
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-## 新機能	
+## 新機能
 ここで説明する概念は、v2.0 エンドポイントでできることとできないことを理解するうえで役立ちます。
 
 - v2.0 エンドポイント 2015 のプレビュー期間中にアプリを構築した場合は、最近行われた[プロトコル変更に関する情報をお読みください](active-directory-v2-preview-oidc-changes.md)。
@@ -49,13 +46,15 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
 - [Microsoft アプリ登録ポータル](https://apps.dev.microsoft.com)
 - [Office 365 の REST API リファレンス](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
 - [Microsoft Graph](https://graph.microsoft.io)
-- 以下に、v2.0 エンドポイントでテスト済みのオープン ソース クライアント ライブラリとサンプルを示します。[OpenID Connect Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html) やトークン検証エンドポイントなどの機能はまだサポートされていないため、v2.0 エンドポイントを使用するライブラリではこれらの機能の無効化が必要になる場合があるので注意してください。  
+- 以下に、v2.0 エンドポイントでテスト済みのオープン ソース クライアント ライブラリとサンプルを示します。
 
   - [Java WSO2 ID サーバー](https://docs.wso2.com/display/IS500/Introducing+the+Identity+Server)
   - [Java Gluu フェデレーション](https://github.com/GluuFederation/oxAuth)
   - [Node.Js Passport OpenID Connect](https://www.npmjs.com/package/passport-openidconnect)
   - [PHP OpenID Connect の基本的なクライアント](https://github.com/jumbojett/OpenID-Connect-PHP)
-  - [Android OpenID Connect のサンプル](https://github.com/learning-layers/android-openid-connect)
+  - [iOS OAuth2 クライアント](https://github.com/nxtbgthng/OAuth2Client)
+  - [Android OAuth2 クライアント](https://github.com/wuman/android-oauth-client)
+  - [Android OpenID Connect クライアント](https://github.com/kalemontes/OIDCAndroidLib)
 
 <!-- TODO: These articles
 - [ADAL Library Reference]()
@@ -63,4 +62,4 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
 - Give us your thoughts on the preview using [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) - we want to hear them!  Use the phrase "AppModelv2:" in the title of your post so we can find it.
 -->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

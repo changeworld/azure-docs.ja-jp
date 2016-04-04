@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/21/2016"
+    ms.date="03/11/2016"
     ms.author="adegeo"/>
 
 # クラウド サービス モデルとそのパッケージ化について
@@ -86,21 +86,21 @@ Azure でクラウド サービスが実行されている場合は、**ServiceC
 
 ここで使用する XML スキーマの詳細については、[サービスの定義スキーマ][] をご覧ください。ここでは、いくつかの要素を簡単に説明します。
 
->**サイト**には、IIS7 でホストされている Web サイトか Web アプリケーションの定義が含まれています。
->
->**InputEndpoints** には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
->
->**InternalEndpoints** には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
->
->**ConfigurationSettings** には、特定のロールの機能に対する設定の定義が含まれています。
->
->**証明書**には、ロールに必要な証明書の定義が含まれています。上記のコード例は、Azure Connect の構成に使用される証明書を示します。
->
->**LocalResources** には、ローカル ストレージ リソースの定義が含まれています。ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
->
->**Imports** には、インポートされたモジュールの定義が含まれています。上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
->
->**スタートアップ**には、ロールの開始時に実行されるタスクが含まれています。タスクは、.cmd ファイルか実行可能ファイルで定義されます。
+**サイト**には、IIS7 でホストされている Web サイトか Web アプリケーションの定義が含まれています。
+
+**InputEndpoints** には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
+
+**InternalEndpoints** には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
+
+**ConfigurationSettings** には、特定のロールの機能に対する設定の定義が含まれています。
+
+**証明書**には、ロールに必要な証明書の定義が含まれています。上記のコード例は、Azure Connect の構成に使用される証明書を示します。
+
+**LocalResources** には、ローカル ストレージ リソースの定義が含まれています。ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
+
+**Imports** には、インポートされたモジュールの定義が含まれています。上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
+
+**スタートアップ**には、ロールの開始時に実行されるタスクが含まれています。タスクは、.cmd ファイルか実行可能ファイルで定義されます。
 
 
 
@@ -130,11 +130,11 @@ Azure でクラウド サービスが実行されている場合は、**ServiceC
 
 ここで使用する XML スキーマの詳細については、[サービスの構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710.aspx)をご覧ください。ここでは、要素について簡単に説明します。
 
->**インスタンス**は、ロールの実行するインスタンスの数を設定します。アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールの 2 つ以上のインスタンスをデプロイすることを推奨します。これにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
+**インスタンス**は、ロールの実行するインスタンスの数を設定します。アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールの 2 つ以上のインスタンスをデプロイすることを推奨します。これにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
->**ConfigurationSettings** は、ロールの実行中のインスタンスの設定を構成します。`<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
+**ConfigurationSettings** は、ロールの実行中のインスタンスの設定を構成します。`<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
 
->**証明書**は、サービスによって使用される証明書を構成します。上記のコード例は、RemoteAccess モジュールの証明書を定義する方法を示します。*サムプリント* 属性の値は、使用する証明書のサムプリントに設定する必要があります。
+**証明書**は、サービスによって使用される証明書を構成します。上記のコード例は、RemoteAccess モジュールの証明書を定義する方法を示します。*サムプリント* 属性の値は、使用する証明書のサムプリントに設定する必要があります。
 
 <p/>
 
@@ -153,7 +153,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
     <Setting name="DiagnosticsConnectionString" />
   </ConfigurationSettings>
   <Endpoints>
-    <InputEndpoint name="HttpIn" protocol="http" port="80" />
+    <InputEndpoint name="HttpIn" protocol="http" <mark>port="80"</mark> />
     <InputEndpoint name="Https" protocol="https" port="443" certificate="SSL"/>
     <InputEndpoint name="NetTcp" protocol="tcp" port="808" certificate="SSL"/>
   </Endpoints>
@@ -169,7 +169,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.net" />
+      <Binding name="mail" endpointName="HttpIn" <mark>hostheader="mail.mysite.cloudapp.net"</mark> />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">
@@ -201,13 +201,9 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 ## ServicePackage.cspkg
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、まず適切な形式でアプリケーションをパッケージ化する必要があります。**CSPack** コマンドライン ツール ([Azure SDK](https://azure.microsoft.com/downloads/) にインストール済み) を使用して、Visual Studio に代わる方法として、パッケージ ファイルを作成できます。
 
-**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。**CSPack** は、[Azure クラシック ポータル](cloud-services-how-to-create-deploy/#how-to-deploy-a-cloud-service)を使用してAzure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
+**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。**CSPack** は、[Azure ポータル](cloud-services-how-to-create-deploy-portal.md/#create-and-deploy)を使用してAzure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
 
-###### CSPack ツール(Windows 上) の場所
-| SDK のバージョン | パス |
-| ----------- | ---- |
-| 1\.7+ | C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\[sdk-version]\\bin\\ |
-| &lt;1.6 | C:\\Program Files\\Azure SDK\\[sdk-version]\\bin\\ |
+**CSPack** は一般に `C:\Program Files\Microsoft SDKs\Azure\.NET SDK[sdk-version]\bin` に置かれます。
 
 >[AZURE.NOTE]
 CSPack.exe (windows 上) は、SDK にインストール済みの **Microsoft Azure コマンド プロンプト** ショートカットを実行して使用可能です。
@@ -271,4 +267,4 @@ Visual Studio を使用しているのですが...
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

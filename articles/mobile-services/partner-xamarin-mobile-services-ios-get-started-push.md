@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="03/18/2016"
 	ms.author="yuaxu"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> このトピックの Mobile Apps バージョンについては、「[Xamarin iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-xamarin-ios-get-started-push.md)」を参照してください。
 
 ##概要
 
@@ -403,4 +403,4 @@ APNS と連携するようにモバイル サービスが構成されました�
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -4,7 +4,7 @@
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/07/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -24,7 +24,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ## <a name="prerequisites"> </a>前提条件
 
-このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。このトピックの手順を実行する前に、バックエンド サービスがクライアント証明書認証用に構成されていること、および API Management パブリッシャー ポータルでのアップロードのために証明書へのアクセス権限と証明書のパスワードとを持っていることが必要です。
+このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。このトピックの手順を実行する前に、バックエンド サービスがクライアント証明書認証用に構成されていること ([Azure WebSites での証明書認証の構成についてはこの記事を参照してください][])、および API Management パブリッシャー ポータルでのアップロードのために証明書へのアクセス権限と証明書のパスワードとを持っていることが必要です。
 
 ## <a name="step1"> </a>クライアント証明書のアップロード
 
@@ -129,6 +129,7 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
 [Azure API Management REST API 証明書エンティティ]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
+[Azure WebSites での証明書認証の構成についてはこの記事を参照してください]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -138,7 +139,6 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 [Next steps]: #next-steps
 
 
-
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

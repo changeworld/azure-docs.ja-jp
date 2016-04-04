@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
 SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポートします。難解な領域に入る前に、1 つの例を説明しましょう。
 
-	```
-	SELECT *
-	FROM sys.tables
-	OPTION (LABEL = 'My Query Label')
-	;
-	```
+```
+SELECT *
+FROM sys.tables
+OPTION (LABEL = 'My Query Label')
+;
+```
 
 この最後の行は、クエリに、 'My Query Label' という文字列をタグ付けします。これは、ラベルが DMV を介してクエリできるので特に便利です。これにより、問題のあるクエリを追跡して、ETL 実行によって進行状況を識別するためのメカニズムが提供されます。
 
@@ -32,14 +32,14 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 ラベルで検索するために、動的管理ビューを使用する以下のクエリを使用することができます。
 
-	```
-	SELECT  *
-	FROM    sys.dm_pdw_exec_requests r
-	WHERE   r.[label] = 'My Query Label'
-	;
-	``` 
+```
+SELECT  *
+FROM    sys.dm_pdw_exec_requests r
+WHERE   r.[label] = 'My Query Label'
+;
+```
 
-> [AZURE.NOTE]クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
+> [AZURE.NOTE] クエリをする際に、語句のラベルに角かっこまたは二重引用符で囲むことが必要です。ラベルは予約語ですが、区切られていない場合、エラーが発生します。
 
 
 ## 次のステップ
@@ -54,4 +54,4 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="02/25/2016"
+	ms.date="03/11/2016"
 	ms.author="yidingz;marsma"/>
 
 # Azure Batch 機能の概要
@@ -44,7 +44,7 @@
 
 ## <a name="resource"></a> Batch サービスのリソース
 
-Azure Batch サービスを使用する際は、以下のリソースを利用します。
+Batch を使用する際は、以下のリソースの多くを利用します。Batch リソースには、アカウント、コンピューティング ノード、プール、ジョブ、タスクなど、どの Batch ソリューションでも常に使用されるものもあれば、ジョブ スケジュールやアプリケーション パッケージなど、有用ながらオプションの機能もあります。
 
 - [アカウント](#account)
 - [コンピューティング ノード](#computenode)
@@ -55,7 +55,9 @@ Azure Batch サービスを使用する際は、以下のリソースを利用�
 	- [ジョブ マネージャー タスク](#jobmanagertask)
 	- [ジョブ準備タスクおよびジョブ解放タスク](#jobpreprelease)
 	- [マルチインスタンス タスク](#multiinstance)
+    - [Task dependencies](#taskdep)
 - [ジョブ スケジュール](#jobschedule)
+- [アプリケーション パッケージ](#appkg)
 
 ### <a name="account"></a>アカウント
 
@@ -122,7 +124,6 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 	- Azure Batch は失敗したタスクを検出して、再試行することができます。**タスク再試行の最大回数**を制約として指定できます。タスクを常に再試行するように指定したり、再試行を禁止したりすることもできます。タスクの再試行とは、タスクをもう一度実行するためにキューに置くことです。
 - タスクは、クライアント アプリケーションでジョブに追加できます。または、[ジョブ マネージャー タスク](#jobmanagertask)を指定できます。ジョブ マネージャー タスクは、Batch API を使用します。このタスクには、ジョブに必要なタスクを作成するための情報と、プール内のいずれかのコンピューティング ノードで実行されているタスクが含まれます。ジョブ マネージャー タスクは Batch によってのみ処理されます。ジョブが作成されるとすぐにキューに配置され、失敗すると再開されます。ジョブ スケジュールによって作成されたジョブには、ジョブ マネージャー タスクが必要です。ジョブ マネージャー タスク以外では、ジョブがインスタンス化される前にタスクを定義できないためです。ジョブ マネージャー タスクの詳細については、以下で説明します。
 
-
 ### <a name="task"></a>タスク
 
 タスクは、ジョブに関連付けられ、ノード上で実行される、計算の単位です。タスクはノードに割り当てられて実行されるか、ノードが解放されるまでキューに格納されます。タスクは、次のリソースを使用します。
@@ -141,6 +142,7 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 - [ジョブ マネージャー タスク](#jobmanagertask)
 - [ジョブ準備タスクおよびジョブ解放タスク](#jobmanagertask)
 - [マルチインスタンス タスク](#multiinstance)
+- [Task dependencies](#taskdep)
 
 #### <a name="starttask"></a>開始タスク
 
@@ -185,11 +187,31 @@ Batch には、ジョブ前にセットアップを実行するためのジョ�
 
 [マルチインスタンス タスク](batch-mpi.md)は、複数のコンピューティング ノードで同時に実行するように構成されたタスクです。複数のコンピューティング ノードをまとめて 1 つのワークロードの処理に割り当てる Message Passing Interface (MPI) など、ハイ パフォーマンス コンピューティングが要求されるシナリオには、マルチインスタンス タスクを使って対応することができます。
 
-Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「[Use multi-instance tasks to run Message Passing Interface (MPI) applications in Azure Batch (Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行)](batch-mpi.md)」を参照してください。
+Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](batch-mpi.md)」を参照してください。
+
+#### <a name="taskdep"></a>タスクの依存関係
+
+タスクの依存関係は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。この機能は、"下流" のタスクが "上流" のタスクの出力を使用する状況や、下流のタスクで必要になる初期化を上流のタスクで実行する状況をサポートできます。この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
+
+タスクの依存関係がある場合、シナリオを次のように構成できます。
+
+* *taskB* が *taskA* に依存する (*taskB* の実行は *taskA* が完了するまで開始されない)
+* *taskC* が *taskA* と *taskB* の両方に依存する
+* *taskD* が、実行されるまで特定の範囲のタスク (タスク *1* ～ *10* など) に依存する
+
+[azure-batch-samples][github_samples] GitHub リポジトリの [TaskDependencies][github_sample_taskdeps] サンプル コードを確認してください。このコードを見ると、[Batch .NET][batch_net_api] ライブラリを使用して他のタスクに依存するタスクを構成する方法がわかります。
 
 ### <a name="jobschedule"></a>スケジュールされたジョブ
 
 ジョブ スケジュールを使用すると、Batch サービス内に、繰り返し発生するジョブを作成することができます。ジョブ スケジュールは、ジョブをいつ実行するかを指定し、実行されるジョブの仕様を持っています。ジョブ スケジュールではスケジュールの期間の詳細を指定できます。スケジュールがいつ有効になって、どのくらいの期間有効であるかや、その期間中にどのくらいの頻度でジョブを作成するかなどです。
+
+### <a name="appkg"></a>アプリケーション パッケージ
+
+[アプリケーション パッケージ](batch-application-packages.md)機能は、プール内のコンピューティング ノードにアプリケーションを簡単にデプロイして管理できる機能です。アプリケーション パッケージを使用すると、バイナリやサポート ファイルも含め、タスクによって実行される複数のバージョンのアプリケーションを簡単にアップロードして管理できます。また、アップロードしたアプリケーションのうち 1 つ以上をプール内のコンピューティング ノードに自動的にデプロイできます。
+
+アプリケーション パッケージを安全に保存してコンピューティング ノードにデプロイするための Azure Storage 操作の細かい部分は Batch によってバックグラウンドで処理されるため、コードと管理オーバーヘッドの両方を簡素化できます。
+
+アプリケーション パッケージ機能の詳細については、「[Application deployment with Azure Batch application packages (Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ)](batch-application-packages.md)」を参照してください。
 
 ## <a name="files"></a>ファイルとディレクトリ
 
@@ -332,9 +354,9 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 
 - **ノードでタスク スケジュールを無効にする** ([REST][rest_offline] | [.NET][net_offline])
 
-	この操作では、ノードが実質的に "オフライン" になります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。たとえば、ノードでタスク スケジュールを無効にした後、リモートでログインして、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。調査が完了したら、タスク スケジュールを有効にして、ノードをオンラインに戻すことができます ([REST][rest_online]、[.NET][net_online])。また、前に説明した他のいずれかの操作を実行することもできます。
+	この操作では、ノードが実質的に "オフライン" になります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。たとえば、ノードでタスク スケジュールを無効にした後、リモートでログインして、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。調査が完了したら、タスク スケジュールを有効にして、ノードをオンラインに戻すことができます ([REST][rest_online]、[.NET][net_online])。また、前に説明した他の操作のいずれかを実行することもできます。
 
-> [AZURE.IMPORTANT] 上記の各操作 (再起動、再イメージ化、削除、タスク スケジュールの無効化) では、操作を実行するときに、ノードで現在実行中のタスクの処理方法を指定できます。たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にする際に、[DisableComputeNodeSchedulingOption][net_offline_option] 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再配置するか (**Requeue**)、実行中のタスクが完了してから操作を実行するか (**TaskCompletion**) を指定できます。
+> [AZURE.IMPORTANT] 上記の各操作 (再起動、再イメージ化、削除、タスク スケジュールの無効化) では、操作を実行するときに、ノードで現在実行中のタスクの処理方法を指定できます。たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にする際に、[DisableComputeNodeSchedulingOption][net_offline_option] 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再登録するか (**Requeue**)、実行中のタスクが完了してから操作を実行するか (**TaskCompletion**) を指定できます。
 
 ## 次のステップ
 
@@ -351,6 +373,8 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [cloud_service_sizes]: https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
+[github_samples]: https://github.com/Azure/azure-batch-samples
+[github_sample_taskdeps]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
@@ -377,7 +401,7 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [rest_add_task]: https://msdn.microsoft.com/library/azure/dn820105.aspx
 [rest_create_user]: https://msdn.microsoft.com/library/azure/dn820137.aspx
 [rest_get_task_info]: https://msdn.microsoft.com/library/azure/dn820133.aspx
-[rest_multiinstance]: https://msdn.microsoft.com/ja-JP/library/azure/mt637905.aspx
+[rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 [rest_multiinstancesettings]: https://msdn.microsoft.com/library/azure/dn820105.aspx#multiInstanceSettings
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
@@ -387,4 +411,4 @@ Batch ソリューション内のタスクとアプリケーションの障害�
 [rest_offline]: https://msdn.microsoft.com/library/azure/mt637904.aspx
 [rest_online]: https://msdn.microsoft.com/library/azure/mt637907.aspx
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

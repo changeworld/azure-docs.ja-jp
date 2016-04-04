@@ -3,8 +3,8 @@
    description="Azure Active Directory Reporting API の概要について説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="kenhoff"
-   manager="mbaldwin"
+   authors="dhanyahk"
+   manager="stevenpo"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/07/2015"
-   ms.author="kenhoff"/>
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
 
 # Azure AD Reporting API の概要
@@ -35,7 +35,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 
 
 ### アプリケーションの作成
-- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)に移動します。
+- [Azure クラシック ポータル](https://manage.windowsazure.com/)に移動します。
 - ディレクトリに移動します。
 - アプリケーションに移動します。
 - 下のバーで [追加] をクリックします。
@@ -52,7 +52,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 新しく作成したアプリケーションに移動します。
 - **[構成]** タブをクリックします。
 - [その他のアプリケーションに対するアクセス許可] セクションで、次の手順に従って設定します。
-	- [Microsoft Azure Active Directory] の [アプリケーションのアクセス許可] で、**[ディレクトリ データの読み取り]** をオンにします。
+	- [Azure Active Directory] の [アプリケーションのアクセス許可] で、**[ディレクトリ データの読み取り]** をオンにします。
 - 下部のバーにある **[保存]** をクリックします。
 
 
@@ -67,9 +67,9 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - アプリケーションのクライアント ID が、**[クライアント ID]** フィールドに一覧表示されます。
 
 #### アプリケーション クライアント シークレット
-- [アプリケーション] タブに移動します。
+- **[アプリケーション]** タブに移動します。
 - 新しく作成したアプリケーションに移動します。
-- [構成] タブに移動します。
+- **[構成]** タブに移動します。
 - [キー] セクションで期間を選択して、アプリケーションの新しいシークレット キーを生成します。
 - このキーは保存時に表示されます。後で取得する方法がないため、忘れずにそれをコピーして安全な場所に貼り付けておいてください。
 
@@ -141,38 +141,38 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 	# Author: Michael McLaughlin (michmcla@microsoft.com)
 	# Date: January 20, 2016
 	# This requires the Python Requests module: http://docs.python-requests.org
-	
+
 	import requests
 	import datetime
 	import sys
-	
+
 	client_id = 'your-application-client-id-here'
 	client_secret = 'your-application-client-secret-here'
 	login_url = 'https://login.windows.net/'
-	tenant_domain = 'your-directory-name-here.onmicrosoft.com' 
-	
+	tenant_domain = 'your-directory-name-here.onmicrosoft.com'
+
 	# Get an OAuth access token
 	bodyvals = {'client_id': client_id,
 	            'client_secret': client_secret,
 	            'grant_type': 'client_credentials'}
-	
+
 	request_url = login_url + tenant_domain + '/oauth2/token?api-version=1.0'
 	token_response = requests.post(request_url, data=bodyvals)
-	
+
 	access_token = token_response.json().get('access_token')
 	token_type = token_response.json().get('token_type')
-	
+
 	if access_token is None or token_type is None:
 	    print "ERROR: Couldn't get access token"
 	    sys.exit(1)
-	
+
 	# Use the access token to make the API request
 	yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
-	
+
 	header_params = {'Authorization': token_type + ' ' + access_token}
 	request_string = 'https://graph.windows.net/' + tenant_domain + '/reports/auditEvents?api-version=beta&filter=eventTime%20gt%20' + yesterday   
 	response = requests.get(request_string, headers = header_params)
-	
+
 	if response.status_code is 200:
 	    print response.content
 	else:
@@ -195,4 +195,4 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

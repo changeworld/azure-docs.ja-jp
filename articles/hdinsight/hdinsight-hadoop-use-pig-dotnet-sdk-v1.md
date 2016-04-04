@@ -65,23 +65,23 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 3. 新しいプロジェクトの場合は、次の値を入力または選択します。
 
 	<table>
-<tr>
-<th>プロパティ</th>
-<th>値</th>
-</tr>
-<tr>
-<th>カテゴリ</th>
-<th>テンプレート/Visual C#/Windows</th>
-</tr>
-<tr>
-<th>テンプレート</th>
-<th>コンソール アプリケーション</th>
-</tr>
-<tr>
-<th>名前</th>
-<th>SubmitPigJob</th>
-</tr>
-</table>
+	<tr>
+	<th>プロパティ</th>
+	<th>値</th>
+	</tr>
+	<tr>
+	<th>カテゴリ</th>
+	<th>テンプレート/Visual C#/Windows</th>
+	</tr>
+	<tr>
+	<th>テンプレート</th>
+	<th>コンソール アプリケーション</th>
+	</tr>
+	<tr>
+	<th>名前</th>
+	<th>SubmitPigJob</th>
+	</tr>
+	</table>
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -126,7 +126,6 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 		            // Define the Pig job
 		            var parameters = new PigJobSubmissionParameters()
 		            {
-		                UserName = ExistingClusterUsername,
 		                Query = queryString,
 		            };
 		
@@ -161,4 +160,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

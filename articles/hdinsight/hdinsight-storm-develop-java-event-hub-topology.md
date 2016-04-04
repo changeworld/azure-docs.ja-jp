@@ -464,6 +464,10 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 > [AZURE.NOTE] データは既定のストレージ コンテナーに保存されるため、新しいクラスターで以前のクラスターと同じストレージ アカウントとコンテナーを使用する**必要があります**。
 
+## クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##トラブルシューティング
 
 (`hadoop fs -ls /devicedata` コマンドまたはクエリ コンソールの Hive コマンドを使用して) /devicedata ディレクトリに格納されているファイルが表示されない場合は、Storm UI を使用して、トポロジから返されるエラーを確認します。
@@ -478,4 +482,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

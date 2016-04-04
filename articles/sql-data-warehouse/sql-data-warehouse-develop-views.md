@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
- 
+
 # SQL Data Warehouse のビュー
 
 SQL Data Warehouse では、ビューが特に役立ちます。ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。
@@ -33,7 +33,7 @@ CREATE TABLE dbo.DimDate_New
 WITH (DISTRIBUTION = ROUND_ROBIN
 , CLUSTERED INDEX (DateKey ASC)
 )
-AS 
+AS
 SELECT *
 FROM   dbo.DimDate  AS prod
 UNION ALL
@@ -54,7 +54,12 @@ RENAME OBJECT DimDate_New TO DimDate;
 ## 制限事項
 SQL Data Warehouse のビューはメタデータ専用です。
 
-したがって、次のオプションは使用できません。- スキーマ バインド オプションはありません。- ビューからベース テーブルを更新することはできません。- 一時テーブルに対してビューを作成することはできません。- EXPAND/NOEXPAND ヒントはサポートされていません。 - SQL Data Warehouse にはインデックス付きビューはありません。
+そのため、次のオプションは使用できません。
+- 	スキーマ バインド オプションはありません
+- 	ビューでベース テーブルを更新することはできません
+- 	一時テーブルでビューを作成することはできません
+- 	EXPAND / NOEXPAND Hints はサポートされていません
+- 	SQL Data Warehouse のインデックス付きビューはありません
 
 
 ## 次のステップ
@@ -69,4 +74,4 @@ SQL Data Warehouse のビューはメタデータ専用です。
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

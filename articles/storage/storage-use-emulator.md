@@ -47,7 +47,7 @@ LocalDB のインストールを管理するには、SQL Server Management Studi
 
 Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。この SAS トークンを、共有キー認証をサポートしているツールまたはアプリケーションを使用して作成する必要があります。SAS トークンは、Azure PowerShell を通じて、簡単に生成することができます。
 
-1. Azure PowerShell がまだインストールされていない場合は、インストールします。Azure PowerShell コマンドレットの最新バージョンを使用することをお勧めします。インストールの手順については、「[Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md#Install)」を参照してください。
+1. Azure PowerShell がまだインストールされていない場合は、インストールします。Azure PowerShell コマンドレットの最新バージョンを使用することをお勧めします。インストールの手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md#Install)」を参照してください。
 
 2. Azure PowerShell を開き、次のコマンドを実行します。*ACCOUNT\_NAME* と *ACCOUNT\_KEY==* を自分の資格情報に置き換えてください。*CONTAINER\_NAME* を自分で選択した名前に置き換えます。
 
@@ -232,4 +232,4 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。(以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

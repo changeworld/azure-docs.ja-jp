@@ -3,8 +3,8 @@
    description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
    services="search"
    documentationCenter="na"
-   authors="HeidiSteen"
-   manager="mblythe"
+   authors="brjohnstmsft"
+   manager="pablocas"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="02/16/2016"
-   ms.author="heidist"/>
+   ms.date="03/08/2016"
+   ms.author="brjohnst"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
@@ -22,7 +22,7 @@
 
 - [Search Documents](#SearchDocs) API の `moreLikeThis` クエリ パラメーター。特定のドキュメントに関連する別のドキュメントを検索します。
 
-`2015-02-28-Preview` REST API の一部にに関する情報が個別に文書化されています。学習した内容は次のとおりです。
+`2015-02-28-Preview` REST API の一部に関する情報が個別に文書化されています。学習した内容は次のとおりです。
 
 - [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
 - [インデクサー](search-api-indexers-2015-02-28-preview.md)
@@ -1054,7 +1054,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 - `upload`: 更新アクションは、ドキュメントが新しい場合は挿入されて存在する場合は更新/置換される "upsert" に似ています。更新の場合はすべてのフィールドが置換されることに注意してください。
 - `merge`: マージは、指定したフィールドで既存のドキュメントを更新します。ドキュメントが存在しない場合、マージは失敗します。マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。これには、`Collection(Edm.String)` 型のフィールドも含まれます。たとえば、ドキュメントにフィールド "tags" があって値が `["budget"]` である場合、"tags" に値 `["economy", "pool"]` を指定してマージを実行すると、"tags" フィールドの最終的な値は `["economy", "pool"]` になります。`["budget", "economy", "pool"]` では**ありません**。
 - `mergeOrUpload`: 指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同じように動作します。ドキュメントが存在しない場合は、新しいドキュメントの `upload` と同じように動作します。
-- `delete`: インデックスから指定したドキュメントを削除します。`delete` 操作ではキー フィールドの値のみを指定できることに注意してください。他のフィールドを指定すると、HTTP 400 エラーになります。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に `null` に設定します。
+- `delete`: インデックスから指定したドキュメントを削除します。`delete` 操作でキー フィールド以外のフィールドに指定した内容は無視されます。ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に `null` に設定します。
 
 **応答**
 
@@ -1774,4 +1774,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

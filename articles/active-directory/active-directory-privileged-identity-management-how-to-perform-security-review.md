@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: セキュリティ レビューの実行方法"
+   pageTitle="セキュリティ レビューを実行する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能で特権 ID にロールを追加する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: セキュリティ レビューの実行方法
+# Azure AD Privileged Identity Management: セキュリティ レビューの実行方法
 
 
 [セキュリティ レビューが開始](active-directory-privileged-identity-management-how-to-start-security-review.md)されていると、非常に簡単に特権付きアクセスを確認できます。
@@ -60,4 +60,4 @@ Excel または CSV ファイルを使用できる他のプログラムで使用
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

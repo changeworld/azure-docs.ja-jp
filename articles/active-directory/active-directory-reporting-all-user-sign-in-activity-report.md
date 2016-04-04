@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="mbaldwin"
+   manager="stevenpo"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/17/2016"
+   ms.date="03/07/2016"
    ms.author="dhanyahk"/>
 
 # Azure Active Directory のすべてのユーザーのサインイン アクティビティ レポート
@@ -32,4 +32,4 @@
  >
  - すべてのユーザーのサインイン アクティビティ レポートは、現在、Reporting API を介してのみ利用できます。詳細については、「[Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

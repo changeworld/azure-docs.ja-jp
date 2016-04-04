@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: ロールをアクティブ化する方法"
+   pageTitle="ロールをアクティブ化または非アクティブ化する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能で特権 ID のロールをアクティブ化する方法について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/11/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: ロールをアクティブ化または非アクティブ化する方法
+# Azure AD Privileged Identity Management: ロールをアクティブ化または非アクティブ化する方法
 
 ## ロールのアクティブ化または非アクティブ化
 
@@ -37,4 +37,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

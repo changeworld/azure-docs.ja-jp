@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/14/2015" 
+	ms.date="03/14/2016" 
 	ms.author="tdykstra"/>
 
 # Azure Web ジョブ SDK とは
@@ -180,4 +180,4 @@ Web ジョブ SDK の詳細については、「[Azure WebJobs Recommended Resou
 Web ジョブ SDK の最新の機能強化については、「[リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)」を参照してください。
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -40,7 +40,7 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、「[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ)](TODO)」をご覧ください)
+- オンプレミス AD FS デプロイメント (使用したテスト ラボのチュートリアルについては、「[Azure VM での AD FS を使用したスタンドアロン STS に関するテスト ラボのページ (テストのみ)](https://blogs.msdn.microsoft.com/cephalin/2014/12/21/test-lab-standalone-sts-with-ad-fs-in-azure-vm-for-test-only/)」をご覧ください)
 - 証明書利用者信頼を AD FS 管理で作成するためのアクセス許可
 - Visual Studio 2013
 - [Azure SDK 2.5.1](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) 以降
@@ -356,4 +356,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../biztalk-servic
  
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

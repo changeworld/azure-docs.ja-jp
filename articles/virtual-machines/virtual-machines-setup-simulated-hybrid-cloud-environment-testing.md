@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="シミュレートされたハイブリッド クラウドのテスト環境 | Microsoft Azure" 
 	description="2 つの Azure 仮想ネットワークと 1 つの VNet 間接続を使用して、IT プロや開発テスト用のシミュレートされたハイブリッド クラウド環境を作成します。" 
-	services="virtual-network" 
+	services="virtual-machines-windows" 
 	documentationCenter="" 
 	authors="JoeDavies-MSFT" 
 	manager="timlt" 
@@ -9,7 +9,7 @@
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
@@ -46,11 +46,11 @@
 
 Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
->[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されます。費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行います。
+>[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されます。費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行います。
 
 ## フェーズ 1: TestLab 仮想ネットワークを構成する
 
-「[基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
+「[基本構成テスト環境](virtual-machines-windows-test-config-env.md)」の手順を使用して、TestLab という Azure Virtual Network で DC1、APP1、および CLIENT1 の各コンピューターを構成します。
 
 次に、Azure PowerShell プロンプトを開始します。
 
@@ -77,7 +77,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 	Add-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.255.255.248/29 -VirtualNetwork $vnet
 	Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-その次に、TestLab 仮想ネットワーク用のゲートウェイに割り当てるのパブリック IP アドレスを要求します。
+その次に、TestLab 仮想ネットワーク用のゲートウェイに割り当てるパブリック IP アドレスを要求します。
 
 	$gwpip=New-AzureRmPublicIpAddress -Name TestLab_pip -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 
@@ -131,7 +131,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
  
 ##フェーズ 3: VNet 間接続を作成する
 
-最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、[Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) に記載された情報を使用して事前共有キーを取得します。
+最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、[「Create a random string for an IPsec preshared key」](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (IPsec 事前共有キー用にランダムな文字列を作成する) に記載された情報を使用して事前共有キーを取得します。
 
 次に、以下のコマンドを使用して、サイト間 VPN 接続を作成します (完了するまでに時間がかかることがあります)。
 
@@ -202,7 +202,7 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 1.	Azure ポータルの左側のウィンドウで、仮想ネットワーク アイコンをクリックし、**[TestVNET]** をクリックします。
 2.	**[設定]** タブで、**[DNS サーバー]** をクリックします。
-3.	**[プライマリ DNS サーバー]** で、 **192.168.0.4** と入力して 10.0.0.4 を置き換えます。
+3.	**[プライマリ DNS サーバー]** で、 「**192.168.0.4**」と入力して 10.0.0.4 を置き換えます。
 4.	**[保存]** をクリックします。
 
 現在の構成は次のようになります。
@@ -213,6 +213,6 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 ## 次のステップ
 
-- TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
+- TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

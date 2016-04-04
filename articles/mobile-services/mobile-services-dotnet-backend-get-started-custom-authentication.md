@@ -19,8 +19,7 @@
 # カスタム認証の使用
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
+> このトピックの Mobile Apps バージョンについては、「[How to: Use custom authentication for your application (アプリケーションでカスタム認証を使用する方法)](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth)」を参照してください。
 
 
 ## 概要
@@ -424,4 +423,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ClaimsIdentity]: https://msdn.microsoft.com/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

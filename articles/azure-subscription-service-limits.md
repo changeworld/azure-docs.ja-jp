@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/12/2016"
+	ms.date="03/07/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -131,7 +131,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-その他の詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-size-specs.md)」を参照してください。
+その他の詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 **Standard Storage アカウント**
 
@@ -281,8 +281,8 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-size-specs.md)
+[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-linux-sizes.md)
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!-------HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

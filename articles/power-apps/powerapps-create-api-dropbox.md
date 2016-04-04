@@ -5,7 +5,7 @@
     suite="powerapps"
 	documentationCenter="" 
 	authors="linhtranms"
-	manager="dwerde"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,14 +14,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/02/2016"
    ms.author="litran"/>
 
-# 組織の App Service 環境での新しい Dropbox API の作成
+# PowerApps Enterprise で新しい Dropbox API を作成する
+
+> [AZURE.SELECTOR]
+- [Logic Apps](../articles/connectors/create-api-dropbox.md)
+- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-dropbox.md)
+
+組織の (テナント) App Service 環境に新しい Dropbox API を追加する
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*ユーザー名*@*会社名*.com でサインインします。これにより、自動的に会社のサブスクリプションにサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。  
 ![][12]
@@ -45,7 +51,7 @@
 
 9. Dropbox アプリケーションの**アプリケーション キー**と**アプリケーション シークレット**の値を入力します。これらがまだない場合は、このトピックの「PowerApps で使用する Dropbox アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
 
-	> [AZURE.IMPORTANT]**リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
 10. **[OK]** をクリックして、手順を完了します。
 
@@ -67,17 +73,24 @@
 
 4. **[Create a new app on the Dropbox platform]** で次の操作を行います。
 
-	a) **[Choose API]** で **[Dropbox API]** を選択します。b) **[Choose the type of access you need]** で **[Full Dropbox...]** を選択します。c) アプリケーションの名前を入力します。
+	1. **[Choose API]** で、**[Dropbox API]** を選択します。  
+	2. **[Choose the type of access you need]** で **[Full Dropbox...]** を選択します。  
+	3. アプリの名前を入力します。  
 
 	![Dropbox のアプリケーション作成ページ 1][10]
 
 5. アプリケーション設定ページで次の操作を行います。
 
-	**[OAuth 2]** セクションで、**[Redirect URL]** を、(このトピックで) Azure ポータルで新しい Dropbox API を追加したときに受け取ったリダイレクト URL に設定します。**[Add]** をクリックします。b) **[Show]** リンクをクリックして、**アプリケーション シークレット**を表示します。
+	1. **[OAuth 2]** セクションで、**[Redirect URL]** を、(このトピックで) Azure ポータルで新しい Dropbox API を追加したときに受け取ったリダイレクト URL に設定します。**[追加]** を選択します。  
+	2. **[Show]** リンクをクリックして、**アプリ シークレット**を表示します。  
 
 	![Dropbox のアプリケーション作成ページ 2][11]
 
 新しい Dropbox アプリケーションが作成されます。Azure ポータルの Dropbox API 構成でこのアプリケーションを使用できます。
+
+## REST API に関するページを参照してください。
+
+[Dropbox REST API](../connectors/create-api-dropbox.md) リファレンス。
 
 
 ## まとめと次のステップ
@@ -102,4 +115,4 @@
 [12]: ./media/powerapps-create-api-dropbox/browseall.png
 [13]: ./media/powerapps-create-api-dropbox/allresources.png
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

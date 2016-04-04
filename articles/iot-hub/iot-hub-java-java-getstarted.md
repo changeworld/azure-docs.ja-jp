@@ -13,7 +13,7 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="12/21/2015"
+     ms.date="03/22/2016"
      ms.author="dobett"/>
 
 # Azure IoT Hub for Java の使用
@@ -141,4 +141,4 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

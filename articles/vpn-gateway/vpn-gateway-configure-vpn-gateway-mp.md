@@ -164,10 +164,10 @@ VPN デバイスの構成完了後は、更新された接続情報を VNet の�
 
 Virtual Network のクロスプレミス接続の詳細については、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
 
-仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
+仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-windows-classic-createportal.md)」を参照してください。
 
 ポイント対サイト VPN 接続を構成する場合は、[ポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)に関するページを参照してください。
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

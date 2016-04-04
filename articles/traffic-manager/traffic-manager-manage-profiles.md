@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # Azure Traffic Manager プロファイルの管理
@@ -30,7 +30,7 @@ Azure クラシック ポータルで簡易作成を使用して、Traffic Manag
 2. **Azure クラシック ポータルにログインします。** 新しい Traffic Manager プロファイルを作成するには、ポータルの左下で **[新規]** をクリックし、**[Network Services] > [Traffic Manager]**、**[簡易作成]** の順にクリックして、プロファイルの構成を開始します。
 3. **DNS プレフィックスを構成します。** Traffic manager プロファイルに一意の DNS プレフィックス名を指定します。Traffic Manager のドメイン名のプレフィックスだけを指定することができます。
 4. **サブスクリプションを選択します。** 適切な Azure サブスクリプションを選択します。各プロファイルは、単一のサブスクリプションに関連付けられています。サブスクリプションが 1 つのみの場合、このオプションは表示されません。
-5. **トラフィック ルーティング方法を選びます。** **[traffic routing Policy]** でトラフィック ルーティング方法を選びます。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)」をご覧ください。
+5. **トラフィック ルーティング方法を選びます。** **[traffic routing Policy]** でトラフィック ルーティング方法を選びます。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
 6. **新しいプロファイルを作成するには、[作成] をクリックします。**プロファイルの構成が完了したら、Azure クラシック ポータルの [Traffic Manager] ウィンドウでプロファイルを検索できます。
 7. **Azure クラシック ポータルで、エンドポイント、監視、およびその他の設定を構成します。** 簡易作成で構成できるのは基本的な設定のみであるため、必要な構成を完了するには、エンドポイントの一覧や、エンドポイントのフェールオーバー順序などの他の設定を構成する必要があります。 
 
@@ -85,4 +85,4 @@ Azure クラシック ポータルの [管理サービス] では、Traffic Mana
 
 [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

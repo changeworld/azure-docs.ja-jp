@@ -1,5 +1,5 @@
 <properties
-    pageTitle=".NET SDK を使用した Azure Search インデックスの照会 | Microsoft Azure | ホストされるクラウド検索サービス"
+    pageTitle=".NET SDK を使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
     description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。"
     services="search"
     documentationCenter=""
@@ -18,12 +18,13 @@
 # .NET SDK を使用した Azure Search インデックスの照会
 > [AZURE.SELECTOR]
 - [概要](search-query-overview.md)
-- [Search エクスプローラー](search-explorer.md)
-- [Fiddler](search-fiddler.md)
+- [ポータル](search-explorer.md)
 - [.NET](search-query-dotnet.md)
 - [REST ()](search-query-rest-api.md)
 
-この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用してインデックスを照会する方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-dotnet.md)し、[インデックスにデータを読み込んでいます](search-import-data-dotnet.md)。
+この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用してインデックスを照会する方法について説明します。
+
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んでいます](search-what-is-data-import.md)。
 
 この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。[GitHub](http://aka.ms/search-dotnet-howto) に完全なソース コードがあります。
 
@@ -44,7 +45,7 @@ Azure Search インデックスの作成は済んでいるので、.NET SDK を�
 ## II.SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。このクラスにはいくつかのコンストラクターがあります。目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。`SearchCredentials` は API キーをラップします。
 
-次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を作成します。
+次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
 
 ```csharp
 string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
@@ -53,26 +54,19 @@ string queryApiKey = ConfigurationManager.AppSettings["SearchServiceQueryApiKey"
 SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
 ```
 
-`SearchIndexClient` には `Documents` というプロパティがあります。このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
+`SearchIndexClient` には `Documents` プロパティがあります。このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
 
 ## III.インデックスの照会
 .NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。
 
 #### クエリの種類
+主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の 2 つです。`search` クエリは、インデックスのすべての_検索可能_フィールドで 1 つ以上の語句を検索します。`filter` クエリは、インデックスのすべての_フィルター処理可能_フィールドでブール式を評価します。
 
-Azure Search では、非常に強力なクエリを作成できる多くのオプションが用意されています。主に使用するクエリの種類は、`search` と `filter` の 2 種類です。`search` クエリは、インデックスのすべての_検索可能_フィールドで 1 つ以上の語句を検索し、Google や Bing などの検索エンジンに期待されるように機能します。`filter` クエリは、インデックスのすべての_フィルター処理可能_フィールドでブール式を評価します。`search` クエリとは異なり、`filter` クエリはフィールドの内容を厳密に照合します。つまり、文字列フィールドでは大文字と小文字が区別されます。
-
-検索とフィルターは、一緒に使用することも、別々に使用することもできます。一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
-
-検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。検索しないでフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。フィルター処理を行わないで検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを 1 つも渡さないようにします。
-
-フィルター式の構文は、[OData フィルター言語](https://msdn.microsoft.com/library/azure/dn798921.aspx)のサブセットです。各検索クエリで、[簡略構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または [Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を使用できます。
-
-クエリのパラメーターの詳細については、[MSDN の .NET SDK リファレンス](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.searchparameters.aspx)を参照してください。以下にも、クエリの例をいくつか紹介します。
+検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。検索せずにフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを 1 つも渡さないようにします。
 
 #### クエリの例
 
-次のサンプル コードは、「[.NET SDK を使用した Azure Search の作成](search-create-index-dotnet.md#DefineIndex)」で定義した "hotels" というインデックスを照会するための、異なるいくつかの方法を示しています。検索結果で返されるドキュメントは `Hotel` クラスのインスタンスであることにご注意ください。このクラスは、「[Data Import in Azure Search using the .NET SDK (.NET SDK を使用した Azure Search へのデータのインポート)](search-import-data-dotnet.md#HotelClass)」で定義したクラスです。サンプル コードでは、`WriteDocuments` メソッドを使用して検索結果をコンソールに出力しています。このメソッドについては次のセクションで説明します。
+次のサンプル コードは、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#DefineIndex)」で定義した "hotels" というインデックスを照会するための、異なるいくつかの方法を示しています。検索結果で返されるドキュメントは `Hotel` クラスのインスタンスであることにご注意ください。このクラスは、「[.NET SDK を使用した Azure Search へのデータのアップロード](search-import-data-dotnet.md#HotelClass)」で定義したクラスです。サンプル コードでは、`WriteDocuments` メソッドを使用して検索結果をコンソールに出力しています。このメソッドについては次のセクションで説明します。
 
 ```csharp
 SearchParameters parameters;
@@ -80,9 +74,9 @@ DocumentSearchResult<Hotel> results;
 
 Console.WriteLine("Search the entire index for the term 'budget' and return only the hotelName field:\n");
 
-parameters = 
-    new SearchParameters() 
-    { 
+parameters =
+    new SearchParameters()
+    {
         Select = new[] { "hotelName" }
     };
 
@@ -143,7 +137,7 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-前のセクションに示したクエリの結果は、次のようになります。インデックス "hotels" には「[Data Import in Azure Search using the .NET SDK (.NET SDK を使用した Azure Search へのデータのインポート)](search-import-data-dotnet.md)」に示したサンプル データが読み込まれていると想定しています。
+前のセクションに示したクエリの結果は、次のようになります。インデックス "hotels" には「[.NET SDK を使用した Azure Search へのデータのアップロード](search-import-data-dotnet.md)」で示したサンプル データが読み込まれていると想定しています。
 
 ```
 Search the entire index for the term 'budget' and return only the hotelName field:
@@ -166,6 +160,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 ```
 
-上記のサンプル コードでは、コンソールを使って検索結果を出力します。同様に、独自のアプリケーションに検索結果を表示する場合もあります。ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示す例については、[GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample)を参照してください。
+上記のサンプル コードでは、コンソールを使って検索結果を出力します。同様に、独自のアプリケーションに検索結果を表示する場合もあります。ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、[GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample)を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

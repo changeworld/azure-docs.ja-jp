@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Data Factory を使ってみる"
-	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するサンプル データ パイプラインを作成する方法を示します。"
+	pageTitle="初めての Data Factory の作成 | Microsoft Azure"
+	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するデータ パイプラインで Data Factory を作成する方法を示します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="12/18/2015"
+	ms.date="03/03/2016"
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使ってみる
+# チュートリアル: 初めての Data Factory の作成 (概要)
 > [AZURE.SELECTOR]
-- [Tutorial Overview](data-factory-build-your-first-pipeline.md)
-- [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
-- [Using PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Using Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
+- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
+- [Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)
+- [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
+- [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
 この記事では、Azure Data Factory を初めて構築する方法について説明します。
 
@@ -50,7 +50,7 @@
 
 最初のパイプライン (**MyFirstPipeline**) は、Hive アクティビティを使用して、Azure Blob Storage 内の **adfgetstarted** コンテナーの **inputdata** フォルダー (adfgetstarted/inputdata) にアップロードする Web ログを変換して分析します。
  
-![Diagram View](./media/data-factory-build-your-first-pipeline/diagram-view.png)
+![ダイアグラム ビュー](./media/data-factory-build-your-first-pipeline/diagram-view.png)
 
 
 このチュートリアルでは、adfgetstarted (コンテナー) の inputdata (フォルダー) には、input.log という名前のファイルが含まれています。このログ ファイルには、2014 年の 1 月、2 月、および 3 月の 3 か月間のエントリが含まれています。入力ファイル内の各月のサンプル行を次に示します。
@@ -77,7 +77,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 ### HQL スクリプト ファイルを作成する 
 
-1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[Encoding]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
+1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[エンコード]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
 	
 		set hive.exec.dynamic.partition.mode=nonstrict;
 		
@@ -222,4 +222,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - Visual Studio
 - Azure リソース マネージャーのテンプレート 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure SQL Data Warehouse との間でのデータの移動 | Azure Data Factory" 
+	pageTitle="SQL Data Warehouse との間でのデータの移動 | Microsoft Azure" 
 	description="Azure Data Factory を使用して Azure SQL Data Warehouse に、または Azure SQL Data Warehouse からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -531,4 +531,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

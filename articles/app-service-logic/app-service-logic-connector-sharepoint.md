@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="03/16/2016"
    ms.author="sameerch"/>
 
 # SharePoint コネクタの使用を開始して、SharePoint コネクタをロジック アプリに追加する
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。SharePoint Online API での 2015-08-01-preview スキーマ バージョンについては、こちらの [SharePoint API](../connectors/connectors-create-api-sharepointonline.md) をクリックしてください。
 
 SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理します。さらに、ドキュメントやリスト項目の作成、更新、取得、削除などの操作を実行できます。オンプレミスの SharePoint サーバーを使用する場合は、コネクタの構成の一部として Service Bus 接続文字列を入力し、サーバーに接続するオンプレミスのリスナー エージェントをインストールすることができます。
 
@@ -39,7 +39,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 サイトの URL | はい | SharePoint Web サイトの完全な URL を入力します。たとえば、「 *https://microsoft.sharepoint.com/teams/wabstest* 」のように入力します。
 ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 
-5. 完了すると、パッケージの設定は次のようになります。  
+5. 完了すると、パッケージの設定は次のようになります。
 ![][1]
 
 上記の手順を完了すると、同じリソース グループ内に SharePoint Online コネクタを使用するロジック アプリを作成できます。
@@ -62,7 +62,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「 *Lists/Task, Shared Documents* 」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
 
-5. 完了すると、パッケージの設定は次のようになります。  
+5. 完了すると、パッケージの設定は次のようになります。
 ![][2]
 
 作業が完了すると、同じリソース グループ内に SharePoint Server コネクタを使用するロジック アプリを作成できます。
@@ -78,19 +78,19 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 
 3. ロジック アプリの先頭で SharePoint コネクタを選択した場合、SharePoint コネクタはトリガーとして動作します。それ以外の場合は、コネクタを使用する SharePoint アカウントに対するアクションとして動作します。
 
-4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。  
+4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。
 ![][3]
 
-5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。  
+5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。
 ![][4]
 
-6. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。  
+6. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。
 ![][5]
 
-7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。その他の場合はアクションの一覧が表示され、実行する適切な操作を選択できます。  
+7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。その他の場合はアクションの一覧が表示され、実行する適切な操作を選択できます。
 ![][6]
   
-**ドキュメント ライブラリ用に構成された相対 URL**  
+**ドキュメント ライブラリ用に構成された相対 URL** 
 ![][7]
 
 **ドキュメント リスト用に構成された相対 URL**
@@ -223,7 +223,7 @@ ItemId | ドキュメント ライブラリに追加されたドキュメント�
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 
 #### 出力
 
@@ -247,7 +247,7 @@ Param2* | ドキュメント ライブラリ内のドキュメントの必須パ
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 
 #### 出力
 
@@ -387,7 +387,7 @@ ContentTransferEncoding | はい | メッセージのコンテンツ転送エン
 
 名前 | 必須 | 説明
 --- | --- | ---
-ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「*myspec1,myfolder/orders*」のように入力します。
+ドキュメントの相対 URI | いいえ | ドキュメントの URL を "Shared Documents" の相対位置で入力します。たとえば、「 *myspec1,myfolder/orders* 」のように入力します。
 ファイルの種類 | はい | ファイルがバイナリ ファイルであるかテキスト ファイルであるかを入力します。
 
 #### 出力
@@ -467,7 +467,7 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 ## コネクタでできること
 コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -483,4 +483,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [6]: ./media/app-service-logic-connector-sharepoint/image_5.png
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

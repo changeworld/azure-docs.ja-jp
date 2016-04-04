@@ -1,23 +1,23 @@
-<properties 
+<properties
    pageTitle="Azure Automation のスケジュール | Microsoft Azure"
    description="Automation のスケジュールは、Azure Automation の Runbook を自動的に開始するためのスケジュール設定に使用します。この記事では、スケジュールの作成方法について説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/27/2016"
+   ms.date="03/18/2016"
    ms.author="bwren" />
 
 # Azure Automation のスケジュール
 
-Automation のスケジュールは、Runbook を自動的に実行するためのスケジュール設定に使用します。Runbook を 1 回実行する単一の日付時刻が可能です。または、Runbook を複数回実行する反復スケジュールが可能です。スケジュールは、Runbook からは通常はアクセスできません。
+Automation のスケジュールは、Runbook を自動的に実行するためのスケジュール設定に使用します。Runbook を 1 回実行する単一の日付時刻が可能です。または、Runbook を複数回実行するための日単位または時間単位の反復スケジュールが可能です。スケジュールは、Runbook からは通常はアクセスできません。
 
 >[AZURE.NOTE]  スケジュールは、現時点では Azure Automation DSC 構成をサポートしていません。
 
@@ -60,12 +60,11 @@ Azure Automation から Windows PowerShell を使用してスケジュールを�
 	$scheduleName = "My Daily Schedule"
 	$startTime = (Get-Date).Date.AddDays(1).AddHours(12)
 	$expiryTime = $startTime.AddYears(1)
-	
+
 	New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name $scheduleName –StartTime $startTime –ExpiryTime $expiryTime –DayInterval 1
 
 
 ## 関連項目
 - [Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Linux に対応するユーザー名の選択 | Microsoft Azure" 
 	description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" 
-	services="virtual-machines" 
+	services="virtual-machines-linux" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
@@ -9,7 +9,7 @@
 	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
-	ms.service="virtual-machines" 
+	ms.service="virtual-machines-linux" 
 	ms.workload="infrastructure-services" 
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
@@ -251,4 +251,4 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 
  
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0323_2016-->

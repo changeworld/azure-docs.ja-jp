@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="03/16/2016"
    ms.author="sameerch"/>
 
 
 # Salesforce コネクタの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [Salesforce API](../connectors/create-api-salesforce.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、「[Salesforce コネクタの使用開始とロジック アプリへの追加](../connectors/connectors-create-api-salesforce.md)」をご覧ください。
 
 Salesforce に接続して、取引先企業、潜在顧客などのエンティティを作成、変更します。Salesforce に関連する一般的な統合シナリオを次に示します。
 
@@ -108,4 +108,4 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 [14]: ./media/app-service-logic-connector-salesforce/14_Update_Account_Address.png
 [15]: ./media/app-service-logic-connector-salesforce/15_Create_new_salesforce_connector.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

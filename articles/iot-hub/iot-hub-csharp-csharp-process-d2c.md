@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="01/05/2016"
+     ms.date="02/03/2016"
      ms.author="dobett"/>
 
 # チュートリアル: IoT Hub のデバイスからクラウドへのメッセージを処理する方法
@@ -24,7 +24,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 このチュートリアルは、「[IoT Hub の概要]」チュートリアルに示されているコードを基に作成しており、デバイスとクラウド間のメッセージを処理するために使用できる 2 つの拡張性の高いパターンについて説明しています。
 
-- [Azure BLOB Storage] のデバイスからクラウドへのメッセージの信頼性の高いストレージ。これは*コールド パス*を実装する場合の非常に一般的なシナリオであり、[Azure Data Factory] または [HDInsight (Hadoop)] スタックなどのツールで活用される分析処理への入力として使用する BLOB のデータを保存します。
+- [Azure BLOB Storage] のデバイスからクラウドへのメッセージの信頼性の高いストレージ。非常に一般的なシナリオは*コールド パス*を実装する場合であり、[Azure Data Factory] または [HDInsight (Hadoop)] スタックなどのツールで活用される分析処理への入力として使用する BLOB のデータを保存します。
 
 - *対話型*のデバイスからクラウドへのメッセージの信頼性の高い処理。デバイスからクラウドへのメッセージは、アプリケーション バックエンドでの一連のアクションの即時トリガーである場合、対話型と呼ばれ、分析エンジンにフィードされる*データ ポイント* メッセージと比較されます。たとえば、CRM システムへのチケットの挿入をトリガーする必要のあるデバイスから送信されるアラームは対話型のデバイスからクラウドへのメッセージで、データ ポイント デバイスからクラウドへのメッセージである温度サンプルなどのテレメトリと比較されます。
 
@@ -49,7 +49,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank")」 を参照してください。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基本的な知識が必要です。
 
@@ -91,18 +91,18 @@ IoT Hub に関するその他の情報:
 
 <!-- Links -->
 
-[Azure Blob storage]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-how-to-use-blobs/
-[Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/services/data-factory/
-[HDInsight (Hadoop)]: https://azure.microsoft.com/ja-JP/documentation/services/hdinsight/
-[Service Bus キュー]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
+[Azure Blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
+[Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
+[HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
+[Service Bus キュー]: ../service-bus/service-bus-dotnet-how-to-use-queues/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 
 
 
-[Azure IoT Hub 開発者ガイド - デバイスからクラウド]: https://azure.microsoft.com/ja-JP/documentation/articles/iot-hub-devguide/#d2c
+[Azure IoT Hub 開発者ガイド - デバイスからクラウド]: iot-hub-devguide.md#d2c
 
-[Azure Storage]: https://azure.microsoft.com/ja-JP/documentation/services/storage/
-[Azure Service Bus]: https://azure.microsoft.com/ja-JP/documentation/services/service-bus/
+[Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
+[Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
 
 
@@ -116,4 +116,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 
-<!---HONumber=AcomDC_0224_2016-->
+<!----HONumber=AcomDC_0309_2016-->

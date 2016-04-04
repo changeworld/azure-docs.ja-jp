@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # ネットワーク リソース プロバイダー
@@ -254,26 +254,14 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 ![サンプル テンプレートのデプロイ](./media/resource-groups-networking/Figure6.png)
 
 
-## 関連項目
-
-[Azure ネットワーク API のリファレンス](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-
-[ネットワーク用 Azure PowerShell のリファレンス](https://msdn.microsoft.com/library/azure/mt163510.aspx)
+## 次のステップ
 
 [Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)
 
 [Azure のネットワーク – 一般的に使用されているテンプレート](https://github.com/Azure/azure-quickstart-templates)
 
-[コンピューティング リソース プロバイダー](../virtual-machines-azurerm-versus-azuresm)
+[コンピューティング リソース プロバイダー](../virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 
-[Azure リソース マネージャーの概要](../resource-group-overview)
+[Azure リソース マネージャーの概要](../resource-group-overview.md)
 
-[Azure リソース マネージャーでのロール ベースのアクセス制御](https://msdn.microsoft.com/library/azure/dn906885.aspx)
-
-[Azure リソース マネージャーでのタグの使用](https://msdn.microsoft.com/library/azure/dn848368.aspx)
-
-[テンプレートのデプロイ](https://msdn.microsoft.com/library/azure/dn790549.aspx)
-
-現在
-
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

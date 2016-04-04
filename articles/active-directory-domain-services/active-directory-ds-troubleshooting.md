@@ -49,6 +49,9 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
     - [Azure AD Connect の最新の推奨リリース](active-directory-ds-getting-started-password-sync.md#install-or-update-azure-ad-connect)をデプロイまたは更新している。
     - [完全同期を実行](active-directory-ds-getting-started-password-sync.md)するように Azure AD Connect を構成している。
     - ディレクトリのサイズによっては、ユーザー アカウントと資格情報のハッシュを Azure AD ドメイン サービスで使用できるまで時間がかかる可能性があります。十分な時間 (ディレクトリのサイズに応じて数時間から 1 ～ 2 日間) を待機してから認証を再試行してください。
+    - 上記の手順を確認しても問題が解決しない場合は、Microsoft Azure AD 同期サービスを再起動してみてください。同期コンピューターから、コマンド プロンプトを起動し、次のコマンドを実行します。
+      1. net stop 'Microsoft Azure AD Sync'
+      2. net start 'Microsoft Azure AD Sync'
 
 - **クラウド専用のアカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD ドメイン サービスを有効にした後でユーザーが自分のパスワードを変更していることを確認します。この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
 
@@ -59,4 +62,4 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 - **電子メール:** [Azure AD ドメイン サービスのフィードバック](mailto:aaddsfb@microsoft.com)から電子メールを送ることができます。問題を調査するための Azure AD ディレクトリのテナント ID と、AAD ドメイン サービスに構成したドメイン名が含まれていることを確認します。
 - **[Azure Active Directory User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/):** 弊社が確認できるように、質問の先頭に **"AADDS"** という単語を付けてください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

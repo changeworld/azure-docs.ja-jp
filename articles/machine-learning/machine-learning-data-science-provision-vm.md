@@ -108,7 +108,7 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 ## Microsoft データ サイエンス仮想マシンにインストールされているツール
 
 ### Microsoft R Server Developer エディション
-分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。また、Microsoft R Server でデータの並列処理やチャンク処理を追加することにより、オープン ソース R のメモリ内の制限に対処します。これにより、ユーザーはメイン メモリーに収まる容量よりはるかに大きいデータに対し分析を実行できます。さらに、IDE for R が VM にパッケージングされており、[スタート] メニューまたはデスクトップ上のアイコン "Revolution R Enterprise 8.0" をクリックしてアクセスできます。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
+分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。また、Microsoft R Server でデータの並列処理やチャンク処理を追加することにより、オープン ソース R のインメモリの制限に対処します。これにより、ユーザーはメイン メモリーに収まる容量よりはるかに大きいデータに対し分析を実行できます。さらに、IDE for R が VM にパッケージングされており、[スタート] メニューまたはデスクトップ上のアイコン "Revolution R Enterprise 8.0" をクリックしてアクセスできます。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
 
 ### Python
 Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。**注**: Anaconda Python 2.7 および 3.5 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。それには、Visual Studio 2015 Community 版で [ツール] -> [Python Tools] -> [Python Environments] に移動し、[+ Custom] をクリックして環境パスを設定します。Anaconda Python 2.7 のインストール先は C:\\Anaconda、Anaconda Python 3.5 は c:\\Anaconda\\envs\\py35 です。詳細な手順については、[PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)を参照してください。
@@ -125,7 +125,11 @@ Visual Studio Community エディションが VM にインストールされて�
 SQL Server の制限付きバージョンも、Visual Studio Community エディションにパッケージ化されています。SQL サーバーにアクセスするには、**SQL Server Management Studio** を起動します。VM の名前は、サーバー名として設定されます。Windows の管理者としてログインする場合は、Windows 認証を使用します。SQL Server Management Studio にアクセスできたら、他のユーザーの作成、データベースの作成、データのインポート、SQL クエリの実行などを行うことができます。
 
 ### Azure 
-いくつかの Azure ツールが、VM にインストールされています。Azure SDK ドキュメントにアクセスするためのデスクトップ ショートカットがあります。**AzCopy** は、Microsoft Azure Storage アカウントとの間でデータを移動するために使用されます。**Azure Storage エクスプローラー**は、Azure Storage アカウントに格納されているオブジェクトを参照するために使用されます。Powershell スクリプト言語で Azure リソースを管理するための **Microsoft Azure Powershell** も VM にインストールされています。
+VM には複数の Azure ツールがインストールされます。
+- Azure SDK のドキュメントにアクセスするためのデスクトップ ショートカットがあります。 
+- **AzCopy** は、Microsoft Azure ストレージ アカウントとの間でのデータ移動に使用します。 
+- **Azure ストレージ エクスプ ローラー**は、Azure ストレージ アカウントに保存されているオブジェクトを参照するために使用します。 
+- **Microsoft Azure PowerShell** は、PowerShell スクリプト言語で Azure リソースを管理するためのツールです。やはり VM にインストールされます。 
 
 ###Power BI
 
@@ -140,8 +144,9 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 引き続き学習や調査に役立つ手順をいくつか紹介します。
 
 * [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
-* **C:\\Program Files\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts** に移動し、エンタープライス規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用して、サンプルを入手します。  
+* **C:\\Program Files\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts** に移動し、エンタープライズ規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用して、サンプルを入手します。  
+* 「[データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)」を参照してください。
 * [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を体系的に使用して、エンド ツー エンドの分析ソリューションを構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

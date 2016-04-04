@@ -5,14 +5,14 @@
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+   editor="" /> 
 <tags 
    ms.service="service-bus"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/28/2015"
+   ms.date="03/16/2016"
    ms.author="sethm" />
 
 # 非同期メッセージング パターンと高可用性
@@ -45,7 +45,7 @@
 
 -   Azure データセンター内での Service Bus の障害。これは、数分または数時間にわたってシステムにアクセスできなくなる、以前からある "致命的な障害" です。
 
-> [AZURE.NOTE]**ストレージ**という用語は、Azure Storage と SQL Azure の両方を意味する場合があります。
+> [AZURE.NOTE] **ストレージ**という用語は、Azure Storage と SQL Azure の両方を意味する場合があります。
 
 Service Bus には、これらの問題に対する数多くの緩和策が用意されています。以降のセクションでは、個々の問題とそれぞれの緩和策について説明します。
 
@@ -63,7 +63,7 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 
 どのアプリケーションでも、状況によっては Service Bus の内部コンポーネントに不整合が生じる場合があります。Service Bus がこれを検出すると、アプリケーションからデータを収集し、何が起こったかを診断する手助けとします。データが収集されると、アプリケーションは一貫性のある状態に戻すために再起動されます。このプロセスは比較的迅速に発生し、エンティティが使用できない状態は最大で数分続きます。ただし、通常のダウンタイムはこれよりもはるかに短くなります。
 
-このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus .NET SDK には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、[ペアの名前空間][]などの他の機能を試すことができます。ペアの名前空間には他にも問題がありますが、それについてはこのドキュメントの後半で説明します。
+このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus .NET SDK には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、[ペアの名前空間][]などの他の機能を試すことができます。ペアの名前空間には、「[ペアの名前空間の実装の詳細とコスト](service-bus-paired-namespaces.md)」の記事で説明されるその他の注意点があります。
 
 ### Azure データセンター内での Service Bus の障害。
 
@@ -149,7 +149,7 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 
 ## 次のステップ
 
-Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間と課金の影響][]に関するページを参照してください。
+Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間][]に関するページを参照してください。
 
   [ServerBusyException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx
   [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
@@ -169,7 +169,6 @@ Service Bus での非同期メッセージングの基本についての説明�
   [IsTransient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.istransient.aspx
   [UnauthorizedAccessException]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx
   [BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
-  [ペアの名前空間と課金の影響]: service-bus-paired-namespaces.md
   [ペアの名前空間]: service-bus-paired-namespaces.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0323_2016-->

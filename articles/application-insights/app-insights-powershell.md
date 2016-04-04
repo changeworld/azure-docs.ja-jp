@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/22/2016" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # PowerShell を使用した Application Insights リソースの作成
@@ -317,7 +317,8 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](app-insights-powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法
 * [PowerShell を使用して Application Insights のアラートを設定する](app-insights-powershell-alerts.md)
+* [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure 診断を Application Insights に送信する](app-insights-powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/15/2016"
+	ms.date="03/08/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery のデプロイの準備
@@ -43,7 +43,7 @@ Azure Site Recovery は、VMware VM、Hyper-V VM、および物理サーバー�
 
 **Azure にレプリケート (拡張)** | **Azure にレプリケート (レガシ)** | **セカンダリ サイトへのレプリケート**
 ---|---|---
-**オンプレミス管理サーバー**: オンプレミス サイトに、管理サーバーとして動作する専用サーバーが必要です。すべての Site Recovery コンポーネントはこのサーバーにインストールされます。<br/><br/> **追加のプロセス サーバー**: プロセス サーバーは既定で管理サーバーにインストールされますが、必要に応じて追加のオンプレミス プロセス サーバーをインストールして、デプロイメントをスケールすることができます。<br/><br/> **VMware vCenter/ESXi**: VMware VM をレプリケートする場合 (または物理サーバーをフェールバックする場合)、VM がデプロイされている vSphere ESX/ESXi が必要です。ESXi ホストの管理には、vCenter サーバーが推奨されます。</br><br/> **フェールバック**: 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。さらに、Azure VM としてプロセス サーバーも設定する必要があります。また、大量のトラフィック ボリュームフェールバックする場合、必要に応じて追加のオンプレミス マスター ターゲット サーバーを設定します。[詳細](site-recovery-failback-azure-to-vmware-classic.md)<br/><br/> **Azure アカウント**: [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。<br/><br/> **Azure Storage**: レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/> **Azure 仮想ネットワーク**: フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。フェールバック後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) を設定する必要があります。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時に、レプリケートする各マシンにモビリティ サービスをインストールします。<br/><br/> **接続**: 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できる必要があります。<br/><br/> [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)。 | **プライマリ サイト**: プロセス サーバーを設定する必要があります。<br/><br/> **フェールバック**: 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。オンプレミス サイトの場合、vContinuum サーバーとマスター ターゲット サーバーを設定する必要があります。Azure で、プロセス サーバーを設定する必要があります。[詳細](site-recovery-failback-azure-to-vmware-classic-legacy.md)<br/><br/>**Azure アカウント**: [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。<br/><br/> **Azure Storage**: レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/> **Azure インフラストラクチャ VM**: Azure VM として構成サーバーとマスター ターゲット サーバーを設定する必要があります。<br/><br/> **Azure 仮想ネットワーク**: 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure VM は、フェールオーバー後にこのネットワークに接続されます。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時に、レプリケートする各マシンにモビリティ サービスをインストールします。<br/><br/> **接続**: 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できる必要があります。<br/><br/> [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic-legacy.md#before-you-start)。 | **プライマリ サイト**: 専用の Windows サーバー (物理または VMware 仮想マシン)。<br/><br/> **セカンダリ サイト**: 専用の構成サーバーとマスター ターゲット サーバー。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時には、各マシンに統合エージェントがインストールされます。
+**オンプレミス管理サーバー**: オンプレミス サイトに、管理サーバーとして動作する専用サーバーが必要です。すべての Site Recovery コンポーネントはこのサーバーにインストールされます。<br/><br/> **追加のプロセス サーバー**: プロセス サーバーは既定で管理サーバーにインストールされますが、必要に応じて追加のオンプレミス プロセス サーバーをインストールして、デプロイメントをスケールすることができます。<br/><br/> **VMware vCenter/ESXi**: VMware VM をレプリケートする場合 (または物理サーバーをフェールバックする場合)、VM がデプロイされている vSphere ESX/ESXi が必要です。ESXi ホストの管理には、vCenter サーバーが推奨されます。</br><br/> **フェールバック**: 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。さらに、Azure VM としてプロセス サーバーも設定する必要があります。また、大量のトラフィック ボリュームフェールバックする場合、必要に応じて追加のオンプレミス マスター ターゲット サーバーを設定します。[詳細](site-recovery-failback-azure-to-vmware-classic.md)<br/><br/>**Azure アカウント**: [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。<br/><br/> **Azure Storage**: レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/> **Azure 仮想ネットワーク**: フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。フェールバック後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) を設定する必要があります。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時に、レプリケートする各マシンにモビリティ サービスをインストールします。<br/><br/> **接続**: 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できる必要があります。<br/><br/> [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)。 | **プライマリ サイト**: プロセス サーバーを設定する必要があります。<br/><br/> **フェールバック**: 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。オンプレミス サイトの場合、vContinuum サーバーとマスター ターゲット サーバーを設定する必要があります。Azure で、プロセス サーバーを設定する必要があります。[詳細](site-recovery-failback-azure-to-vmware-classic-legacy.md)<br/><br/>**Azure アカウント**: [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。<br/><br/> **Azure Storage**: レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/> **Azure インフラストラクチャ VM**: Azure VM として構成サーバーとマスター ターゲット サーバーを設定する必要があります。<br/><br/> **Azure 仮想ネットワーク**: 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure VM は、フェールオーバー後にこのネットワークに接続されます。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時に、レプリケートする各マシンにモビリティ サービスをインストールします。<br/><br/> **接続**: 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できる必要があります。<br/><br/> [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic-legacy.md#before-you-start)。 | **プライマリ サイト**: 専用の Windows サーバー (物理または VMware 仮想マシン)。<br/><br/> **セカンダリ サイト**: 専用の構成サーバーとマスター ターゲット サーバー。<br/><br/> **保護されたマシン**: 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイメント時には、各マシンに統合エージェントがインストールされます。
 
 
 
@@ -57,15 +57,15 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 **機能** | **サポート** | **詳細**
 ---|---|---
 Hyper-V ホスト オペレーティング システム | Windows Server 2012 R2 | サポートされていない場合、前提条件の確認は失敗します。
-VMware ハイパーバイザー オペレーティング システム | サポートされたオペレーティング システムの実行 | [詳細](site-recovery-vmware-to-azure.md#before-you-start)
-ゲスト オペレーティング システム | Hyper-V から Azure へのレプリケーションの場合、Site Recovery では、[Azure でサポートされた](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。<br/><br/> VMware と物理サーバーのレプリケーションの場合、Windows と Linux の[前提条件](site-recovery-vmware-to-azure.md#before-you-start)を確認します。 | サポートされていない場合、前提条件の確認は失敗します。
+VMware ハイパーバイザー オペレーティング システム | サポートされたオペレーティング システムの実行 | [詳細](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)
+ゲスト オペレーティング システム | Hyper-V から Azure へのレプリケーションの場合、Site Recovery では、[Azure でサポートされた](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。<br/><br/> VMware と物理サーバーのレプリケーションの場合、Windows と Linux の[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。 | サポートされていない場合、前提条件の確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 64 ビット | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク サイズ | 最大 1023 GB | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、前提条件の確認は失敗します。
 データ ディスク数 | 16 以下 (最大値は、作成される仮想マシンのサイズの関数であり、16 = XL で求められます。) | サポートされていない場合、前提条件の確認は失敗します。
 データ ディスク VHD のサイズ | 最大 1023 GB | サポートされていない場合、前提条件の確認は失敗します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
-静的 IP アドレス | サポートされています | プライマリ仮想マシンが静的 IP アドレスを使用している場合、Azure で作成される仮想マシンに静的 IP アドレスを指定できます。
+静的 IP アドレス | サポートされています | プライマリ仮想マシンが静的 IP アドレスを使用している場合、Azure で作成される仮想マシンに静的 IP アドレスを指定できます。Hyper-V で実行されている Linux 仮想マシンの場合、静的 IP アドレスはサポートされません。 
 iSCSI ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 共有 VHD | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 FC ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
@@ -107,4 +107,4 @@ FC ディスク | サポートされていません | サポートされてい�
 - [Hyper-V VM をセカンダリ サイトにレプリケート (SAN を使用)](site-recovery-vmm-san.md)
 - [Hyper-V VM をレプリケート (単一の VMM サーバーを使用)](site-recovery-single-vmm.md)
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="01/09/2016"
+	ms.date="03/04/2016"
 	ms.author="robmcm" />
 
 # Azure App Service Web Apps で io.js を使用する方法
@@ -31,7 +31,7 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 
 1 つ目のファイルの **.deployment** は、デプロイ時に **deploy.cmd** を実行するよう Web Apps に指示します。このスクリプトは Node.js アプリケーションの通常の手順をすべて実行しますが、io.js の最新バージョンもダウンロードします。最後に、**IISNode.yml** が、プレインストールされている Node.js バイナリの代わりに、ダウンロードしたばかりの io.js バイナリを使用するよう Web Apps を構成します。
 
-> [AZURE.NOTE]使用中の io.js バイナリを更新するには、アプリケーションを再デプロイするだけです。アプリケーションをデプロイするたびに、スクリプトによって io.js の新しいバージョンがダウンロードされます。
+> [AZURE.NOTE] 使用中の io.js バイナリを更新するには、アプリケーションを再デプロイするだけです。アプリケーションをデプロイするたびに、スクリプトによって io.js の新しいバージョンがダウンロードされます。
 
 <a id="manualinstallation"></a>
 ## 手動インストールの使用
@@ -47,12 +47,12 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 
 この記事では、App Service Web Apps で io.js を使用する方法として、提供されているデプロイメント スクリプトと手動インストールの 2 つについて説明しました。
 
-> [AZURE.NOTE]io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。
+> [AZURE.NOTE] io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [io.js]: https://iojs.org
 [io.js の配布]: https://iojs.org/dist/
@@ -60,4 +60,4 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

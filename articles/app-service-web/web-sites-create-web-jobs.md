@@ -76,7 +76,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 ## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
 
-この方法は、Standard または Premium モードで実行されている Web Apps に使用でき、アプリで **Always On** 設定が有効になっている必要があります。
+この方法は、Basic、Standard または Premium モードで実行されている Web Apps に使用でき、アプリで **Always On** 設定が有効になっている必要があります。
 
 オンデマンドの WebJob をスケジュール済みの WebJob に変換するには、単に WebJob zip ファイルの root に `settings.job` ファイルを追加します。この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
 
@@ -209,7 +209,6 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 [PSonWebJobs]: http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]: http://go.microsoft.com/fwlink/?LinkId=390226
@@ -239,4 +238,4 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

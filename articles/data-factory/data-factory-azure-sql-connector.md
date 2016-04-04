@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure SQL との間でのデータの移動 | Azure Data Factory" 
+	pageTitle="Azure SQL Database との間でのデータの移動 | Microsoft Azure" 
 	description="Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -630,4 +630,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 	 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

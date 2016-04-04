@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
 	ms.topic="article" 
-	ms.date="12/09/2015"
+	ms.date="03/08/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -30,11 +30,11 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを完了するには、以下が必要です。
 
-+ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-tutorial.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
++ C の開発環境。このチュートリアルでは、Ubuntu 14.04 での [Azure Linux VM](../virtual-machines/virtual-machines-linux-cli-create.md) 上の GCC スタックを想定しています。他の環境用の手順は、外部リンクで提供されます。
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
++ アクティブな Azure アカウントアカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ## Event Hub を作成する
 
@@ -80,7 +80,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 	![][23]
 
-> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm のデプロイとパターンの詳細については、「[HDInsight Storm の概要]」と、[Apache Storm] の公式ドキュメントを参照してください。
+> [AZURE.NOTE] このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm のデプロイとパターンの詳細については、「[HDInsight Storm の概要]」と、[Apache Storm] の公式ドキュメントを参照してください。
 
 ## 次のステップ
 
@@ -111,4 +111,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/07/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 誤って削除されないように保護する
@@ -27,7 +27,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 - OU 内のすべてのオブジェクトを削除した場合。
 - OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
 
-500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラは 3 時間おきに実行されるので、この値は 3 時間以内に確認される削除数になります。
+500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラは 30 分おきに実行されるので、この値は 30 分以内に確認される削除数になります。
 
 この機能が有効なときに、Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
 
@@ -56,4 +56,4 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -251,4 +251,4 @@ Azure Storage についてさらに学習するには、次のリソースを参
 - [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 - [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0309_2016-->

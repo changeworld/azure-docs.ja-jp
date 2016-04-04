@@ -2,9 +2,9 @@
 
 PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-3. 必要に応じて、**`New-AzureRmResourceGroup`** コマンドレットを実行して新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+3. 必要に応じて、**`New-AzureRmResourceGroup`** コマンドレットを実行して新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
 
 		New-AzureRmResourceGroup -Name TestRG -Location centralus
 		
@@ -92,4 +92,4 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                      }
 		                    ]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

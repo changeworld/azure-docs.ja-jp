@@ -1,20 +1,20 @@
-<properties 
- pageTitle="Scheduler 送信認証" 
- description="" 
- services="scheduler" 
- documentationCenter=".NET" 
- authors="krisragh" 
- manager="dwrede" 
+<properties
+ pageTitle="Scheduler 送信認証"
+ description=""
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
-<tags 
- ms.service="scheduler" 
- ms.workload="infrastructure-services" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="12/04/2015" 
+<tags
+ ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
- 
+
 # Scheduler 送信認証
 
 Scheduler ジョブでは、認証を必要とするサービスを呼び出すことが必要になる場合があります。このようにして、呼び出されたサービスは、Scheduler ジョブがそのリソースにアクセスできるかどうかを確認できます。このようなサービスには、他の Azure サービス、Salesforce.com、Facebook、およびセキュリティで保護されたカスタム Web サイトが含まれます。
@@ -51,85 +51,6 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 |_certificateSubjectName_ |証明書のサブジェクト識別名。|
 |_certificateExpiration_ |証明書の有効期限日。|
 
-## ClientCertificate 認証の要求と応答の例
-
-次のサンプル要求では、`ClientCertificate` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
-
-
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
-	x-ms-version: 2013-03-01
-	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
-	Content-Type: application/json; charset=utf-8
-	Host: management.core.windows.net
-	Content-Length: 4013
-	Expect: 100-continue
-
-	{
-	  "action": {
-		"type": "http",
-		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		  "authentication": {
-			"type": "clientcertificate",
-			"password": "test",
-			"pfx": "long-pfx-key”
-		  }
-		}
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  }
-	}
-
-この要求を送信すると、次のような応答が返されます。
-
-	HTTP/1.1 201 Created
-	Cache-Control: no-cache
-	Pragma: no-cache
-	Content-Length: 721
-	Content-Type: application/json; charset=utf-8
-	Expires: -1
-	Server: 1.0.6198.153 (rd_rdfe_stable.141027-2149) Microsoft-HTTPAPI/2.0
-	x-ms-servedbyregion: ussouth2
-	X-AspNet-Version: 4.0.30319
-	X-Powered-By: ASP.NET
-	 
-
-	{
-	  "id": "testScheduler",
-	  "action": {
-		"request": {
-		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		  "authentication": {
-			"type": "ClientCertificate",
-			"certificateThumbprint": "C1645E2AF6317D9FCF9C78FE23F9DE0DAFAD2AB5",
-			"certificateExpiration": "2021-01-01T08:00:00Z",
-			"certificateSubjectName": "CN=Scheduler Management"
-		  }
-		},
-		"type": "http"
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  },
-	  "state": "enabled",
-	  "status": {
-		"nextExecutionTime": "2014-10-29T21:52:35.2108904Z",
-		"executionCount": 0,
-		"failureCount": 0,
-		"faultedCount": 0
-	  }
-	}
 ## 基本認証の要求本文
 
 `Basic` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
@@ -150,81 +71,6 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 |_authentication (親要素)_ |基本認証を使用するための認証オブジェクト。|
 |_type_ |認証の種類。基本認証の場合、値 `Basic` を使用します。|
 |_username_ |認証されたユーザー名。|
-
-## 基本認証の要求と応答の例
-
-次のサンプル要求では、`Basic` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
-
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
-	x-ms-version: 2013-03-01
-	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
-	Content-Type: application/json; charset=utf-8
-	Host: management.core.windows.net
-	Expect: 100-continue
-
-	{
-	  "action": {
-		"type": "http",
-		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		"authentication":{  
-		  "username":"user1",
-		  "password":"password",
-		  "type":"basic"
-		  }           
-		}
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  }
-	}
-
-この要求を送信すると、次のような応答が返されます。
-
-	HTTP/1.1 201 Created
-	Cache-Control: no-cache
-	Pragma: no-cache
-	Content-Length: 721
-	Content-Type: application/json; charset=utf-8
-	Expires: -1
-	Server: 1.0.6198.153 (rd_rdfe_stable.141027-2149) Microsoft-HTTPAPI/2.0
-	x-ms-servedbyregion: ussouth2
-	X-AspNet-Version: 4.0.30319
-	X-Powered-By: ASP.NET
-
-	{
-	  "id": "testScheduler",
-	  "action": {
-		"request": {
-		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		  "authentication":{  
-			"username":"user1",
-			"type":"Basic"
-		  }
-		},
-		"type": "http"
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  },
-	  "state": "enabled",
-	  "status": {
-		"nextExecutionTime": "2014-10-29T21:52:35.2108904Z",
-		"executionCount": 0,
-		"failureCount": 0,
-		"faultedCount": 0
-	  }
-	}
 
 ## ActiveDirectoryOAuth 認証の要求本文
 
@@ -255,91 +101,11 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 |_audience_ |https://management.core.windows.net/.| に設定します。
 |_clientId_ |Azure AD アプリケーションのクライアント識別子。|
 
-## ActiveDirectoryOAuth 認証の要求と応答の例
-
-次のサンプル要求では、`ActiveDirectoryOAuth` 認証が組み込まれた PUT 要求を実行します。要求は、次のとおりです。
-
-	PUT https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/cs-brazilsouth-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/testScheduler 
-	x-ms-version: 2013-03-01
-	User-Agent: Microsoft.WindowsAzure.Scheduler.SchedulerClient/3.0.0.0 AzurePowershell/v0.8.10
-	Content-Type: application/json; charset=utf-8
-	Host: management.core.windows.net
-	Expect: 100-continue
-
-	{
-	  "action": {
-		"type": "http",
-		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		  "authentication":{  
-			"tenant":"01234567-89ab-cdef-0123-456789abcdef",
-			"audience":"https://management.core.windows.net/",
-			"clientId":"8a14db88-4d1a-46c7-8429-20323727dfab",
-			"secret": "&lt;secret-key&gt;",
-			"type":"ActiveDirectoryOAuth"
-		  }                      
-		}
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  }
-	}
-
-この要求を送信すると、次のような応答が返されます。
-
-	HTTP/1.1 201 Created
-	Cache-Control: no-cache
-	Pragma: no-cache
-	Content-Length: 721
-	Content-Type: application/json; charset=utf-8
-	Expires: -1
-	Server: 1.0.6198.153 (rd_rdfe_stable.141027-2149) Microsoft-HTTPAPI/2.0
-	x-ms-servedbyregion: ussouth2
-	X-AspNet-Version: 4.0.30319
-	X-Powered-By: ASP.NET
-
-
-	{
-	  "id": "testScheduler",
-	  "action": {
-		"request": {
-		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
-		  "method": "GET",
-		  "headers": {
-			"x-ms-version": "2013-03-01"
-		  },
-		  "authentication":{  
-			"tenant":"01234567-89ab-cdef-0123-456789abcdef",
-			"audience":"https://management.core.windows.net/",
-			"clientId":"8a14db88-4d1a-46c7-8429-20323727dfab",
-			"type":"ActiveDirectoryOAuth"
-		  }
-		},
-		"type": "http"
-	  },
-	  "recurrence": {
-		"frequency": "minute",
-		"interval": 1
-	  },
-	  "state": "enabled",
-	  "status": {
-		"nextExecutionTime": "2014-10-29T21:52:35.2108904Z",
-		"executionCount": 0,
-		"failureCount": 0,
-		"faultedCount": 0
-	  }
-	}
-
 ## 関連項目
- 
+
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -354,10 +120,4 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
-
-  
-
- 
-  
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

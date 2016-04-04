@@ -81,7 +81,10 @@ Azure アカウントにサインインします。この PowerShell コマン�
 Login-AzureRmAccount
 ```
 
-次のスクリプトを実行すると、新しいリソース グループ、Key Vault、またはその両方が作成されます (これらが存在しない場合)。
+次のスクリプトを実行すると、新しいリソース グループ、Key Vault、またはその両方が作成されます (これらが存在しない場合)。**注意: 既存の Key Vault を使用している場合、このスクリプトを使用して、デプロイをサポートするように構成する必要があります。**
+```
+Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForTemplateDeployment -EnabledForDeployment
+```
 
 ```
 Invoke-AddCertToKeyVault -SubscriptionId <your subscription id> -ResourceGroupName <string> -Location <region> -VaultName <Name of the Vault> -CertificateName <Name of the Certificate> -Password <Certificate password> -UseExistingCertificate -ExistingPfxFilePath <Full path to the .pfx file>
@@ -148,7 +151,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 
 ### 手順 3: セキュリティで保護されたクラスターを設定する
 
-「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」に記載されている手順を、セキュリティ構成に関するセクションの前まで実行します。それからここにある指示までスキップし、セキュリティ構成を設定します。
+[Service Fabric クラスターの作成プロセス](service-fabric-cluster-creation-via-portal.md)に関するドキュメントに記載されている手順を、セキュリティ構成に関するセクションの前まで実行します。それからここにある指示までスキップし、セキュリティ構成を設定します。
 
 >[AZURE.NOTE]
 必要な証明書は、[セキュリティ構成] のノード タイプ レベルで指定します。クラスター内のすべてのノード タイプについて、証明書を指定する必要があります。このドキュメントではポータルを使用した手順について説明していますが、Azure リソース マネージャー テンプレートを使用して実行することもできます。
@@ -222,7 +225,9 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証、暗号化、メッセージのデジタル署名に使用されています。これらの証明書の詳細については、MSDN ライブラリにある[証明書の使用](http://msdn.microsoft.com/library/ms731899.aspx)に関するセクションを参照してください。
 
 >[AZURE.NOTE]
-- 運用ワークロードを実行しているクラスターに使用する証明書の場合、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。- 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。- テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。
+- 運用ワークロードを実行しているクラスターに使用する証明書の場合、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。
+- 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。
+- テスト目的でのみ使用するクラスターの場合は、自己署名証明書を選択することができます。
 
 ### サーバー証明書とクライアント証明書
 
@@ -257,4 +262,4 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

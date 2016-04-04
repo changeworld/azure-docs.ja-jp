@@ -76,7 +76,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
  
 	![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 
-4.	次に、**[デプロイ]** をクリックしてデプロイメント プロセスを開始します。プロセスの実行が完了したら、http://todoapp*XXXX*.azure.websites.net リンクをクリックし、デプロイされたアプリケーションを参照します。
+4.	次に、**[デプロイ]** をクリックしてデプロイメント プロセスを開始します。プロセスの実行が完了したら、http://todoapp*XXXX*.azurewebsites.net リンクをクリックし、デプロイされたアプリケーションを参照します。
 
 	![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
 
@@ -305,4 +305,4 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

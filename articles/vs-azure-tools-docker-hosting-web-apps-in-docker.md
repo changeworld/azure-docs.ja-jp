@@ -168,7 +168,7 @@ Docker ホストへのアプリケーションの発行後、Docker コマンド
 
 これで Docker ホストが用意できたので、Docker コマンドをそれに対して発行できます。Docker の詳細については、[Docker のドキュメント](https://docs.docker.com/)と [Docker のオンライン チュートリアル](https://www.docker.com/tryit/)を参照してください。
 
-Azure での Linux 用 Docker VM 拡張機能の使用の詳細については、「[Azure での Linux 用 Docker 仮想マシン拡張機能](/virtual-machines/virtual-machines-docker-vm-extension.md)」を参照してください。
+Azure での Linux 用 Docker VM 拡張機能の使用の詳細については、「[Azure での Linux 用 Docker 仮想マシン拡張機能](virtual-machines/virtual-machines-linux-dockerextension.md)」を参照してください。
 
 Visual Studio での Docker の使用に関する問題については、「[Visual Studio を使用した Windows での Docker クライアント エラーのトラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)」を参照してください。
 
@@ -182,4 +182,4 @@ Visual Studio での Docker の使用に関する問題については、「[Vis
 [7]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796685.png
 [8]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796686.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->

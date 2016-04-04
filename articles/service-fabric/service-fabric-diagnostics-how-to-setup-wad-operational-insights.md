@@ -31,7 +31,9 @@ Operational Insights は、格納されているストレージ テーブルの�
 * [Azure リソース マネージャー](https://azure.microsoft.com/resource-group-overview/)
 
 ## 前提条件
-このドキュメントの操作の一部を実行するために使用されるツール: * [Azure PowerShell](https://azure.microsoft.com/powershell-install-configure/) * [Azure Resource Manager client](https://github.com/projectkudu/ARMClient)
+これらのツールは、このドキュメントの操作の一部を実行するために使用されます。
+* [Azure PowerShell](https://azure.microsoft.com/powershell-install-configure/)
+* [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
 
 ## 収集することができるさまざまなログ ソース
 1. **Service Fabric ログ:** プラットフォームから標準の ETW と EventSource チャネルに対して生成されます。次のような種類のログがあります。
@@ -123,7 +125,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
                 }
             }
     },
-                    "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountNamee')]"
+                    "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountName')]"
                 },
                 "protectedSettings": {
                     "storageAccountName": "[parameters('applicationDiagnosticsStorageAccountName')]",
@@ -167,7 +169,7 @@ vmNamePrefix を、クラスターの作成時に VM 名として選択したプ
 
 上記のように JSON ファイルを作成したら、実際の環境に合わせて変更します。次のコマンドを呼び出し、Service Fabric クラスターのリソース グループ名を渡します。このコマンドの実行に成功すると、診断はすべての VM にデプロイされ、指定した Azure ストレージ アカウントのテーブルに、クラスターのログがアップロードされるようになります。
 
-また、このデプロイメント コマンドを呼び出す前に、必要に応じて、Azure アカウントの追加 (`Add-AzureAccount`)、適切なサブスクリプションの選択 (`Select-AzureSubscription`)、リソース マネージャー モードへの切り替え (`Switch-AzureMode AzureResourceManager`) などの設定を実行します。
+また、このデプロイ コマンドを呼び出す前に、必要に応じて、Azure アカウントの追加 (`Add-AzureAccount`)、適切なサブスクリプションの選択 (`Select-AzureSubscription`)、リソース マネージャー モードへの切り替え (`Switch-AzureMode AzureResourceManager`) などの設定を実行します。
 
 ```ps
 
@@ -325,4 +327,4 @@ WadConfigUpdate.json の EtwEventSourceProviderConfiguration セクションを�
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

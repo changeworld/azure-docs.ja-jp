@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/23/2016"
+   ms.date="03/10/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Disk Encryption を適用する
@@ -33,25 +33,38 @@ Disk Encryption では、業界標準である Windows の [BitLocker](https://t
 
 ![][1]
 
+Security Center で暗号化が必要と識別された Azure Virtual Machines を暗号化するには、次の手順をお勧めします。
+
+- Azure PowerShell のインストールおよび構成。これにより、Azure 仮想マシンの暗号化に必要な必須コンポーネントを設定するための PowerShell コマンドを実行できるようになります。
+- Azure Disk Encryption の前提条件となる Azure PowerShell スクリプトの取得と実行。
+- 仮想マシンの暗号化。
+
+[Azure Virtual Machines の暗号化](security-center-disk-encryption.md)では、次の手順を段階的に説明します。このトピックでは、ディスク暗号化を構成するクライアント コンピューターとして Windows 10 を使用していることを想定しています。
+
+必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。他の手法の詳細については、「[Azure ディスク暗号化](../azure-security-disk-encryption.md)」を参照してください。
+
+
+
 ## 次のステップ
 
 このドキュメントでは、"ディスク暗号化の適用" というセキュリティ センターの推奨事項を実装する方法について説明しました。 ディスク暗号化の詳細については、以下を参照してください。
 
-- 「[Encryption and key management with Azure Key Vault (Azure Key Vault を使用した暗号化とキー管理)](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/)」(ビデオ、36 分 39 秒) -- IaaS VM と Azure Key Vault のディスク暗号化管理を使用し、データを保護する方法について説明しています。
+- 「[Encryption and key management with Azure Key Vault (Azure Key Vault を使用した暗号化とキー管理)](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/)」(動画、36 分 39 秒) -- IaaS VM と Azure Key Vault のディスク暗号化管理を使用し、データを保護する方法について説明しています。
+- [Azure Virtual Machines の暗号化](security-center-disk-encryption.md) (ドキュメント) -- Azure Virtual Machines を暗号化する方法について説明します。
 - 「[Windows および Linux IaaS VM プレビューの Azure Disk Encryption](../azure-security-disk-encryption.md)」(ドキュメント) -- Windows と Linux VM のディスク暗号化を有効にする方法について説明しています。
 
 セキュリティ センターの詳細については、次を参照してください。
 
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- セキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明します。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理および応答の方法について説明します。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明します。
+- 「[Azure Security Center に関する FAQ](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問を見つけます。
+- 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 -- Azure のセキュリティとコンプライアンスについてまとめたブログ記事を見つけます。
 
 
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0316_2016-->

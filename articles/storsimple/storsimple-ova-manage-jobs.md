@@ -3,7 +3,7 @@
    description="StorSimple Manager サービスの [ジョブ] ページと、それを使用して、StorSimple Virtual Array の最近のジョブと現在のジョブを追跡する方法を説明します。"
    services="storsimple"
    documentationCenter="NA"
-   authors="SharS"
+   authors="alkohli"
    manager="carmonm"
    editor=""/>
 <tags 
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="02/22/2016"
-   ms.author="v-sharos" />
+   ms.date="03/02/2016"
+   ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用した StorSimple Virtual Array のジョブの表示 (プレビュー)
+# StorSimple Manager サービスを使用した StorSimple Virtual Array のジョブの表示
 
 ## 概要
 
@@ -72,4 +72,4 @@ StorSimple Virtual Array でジョブが進行しているときや、デバイ�
 
 [ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

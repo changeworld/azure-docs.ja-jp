@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/29/2016"
+   ms.date="03/15/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -28,13 +28,22 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
 
+## 1\.1.119.0
+リリース日: 2016 年 3
+
+**修正された問題:**
+
+- このオペレーティング システムではパスワード同期がサポートされないため、Windows Server 2008 (R2 より前のバージョン) で高速インストールは使用できなくなりました。
+- カスタム フィルター構成での DirSync からのアップグレードが予期したとおりに動作しません。
+- 新しいリリースへのアップグレード時に構成に変更がない場合は、フル インポート/同期をスケジュールすることはできません。
+
 ## 1\.1.110.0
 リリース日: 2016 年 2 月
 
 **修正された問題:**
 
 - インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードは機能しません。
-- インストール時に、インストール ウィザードの最後で **[..同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラは有効になりません。
+- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラは有効になりません。
 - 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
 - サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
@@ -43,18 +52,18 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新機能:**
 
-- 簡単設定ユーザー向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
+- 簡単設定のお客様向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
 - インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
     - MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するようにプロキシを設定する必要があります。
     - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
 - 初期インストール後のユーザーのサインイン方法の変更を許可。
 - インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
-- 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
+- 同期エンジンに組み込まれた [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)。
 
 **プレビューから GA に昇格した機能:**
 
-- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
 
 **新しいプレビュー機能:**
 
@@ -248,4 +257,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -786,8 +786,9 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 サブスクリプションの詳細を次の形式で返します。
 
     {
-        "id": "/subscriptions/#####"
-        "subscriptionId": "#####"
+        "id": "/subscriptions/#####",
+        "subscriptionId": "#####",
+        "tenantId": "#####"
     }
 
 次の例は、出力セクションで呼び出される subscription 関数を示しています。
@@ -806,4 +807,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

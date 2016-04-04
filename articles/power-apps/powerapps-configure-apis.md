@@ -72,7 +72,7 @@ URL スキーム | API がサポートする 1 つまたは複数のスキーム
 
 このポリシーは [Azure API Management](https://azure.microsoft.com/services/api-management/) でサポートされるポリシーと同じです。現在のポリシーは、組み込みの XML エディターで書かれています。インラインでの編集、または新しい XML ファイルのアップロードが可能です。変更を**保存**したら、API ポリシーで発生した問題を含むいかなるエラーもこのブレード上に表示されます。
 
-「[Azure API Management のポリシー](../api-management-howto-policies.md)」は、ポリシーの構成や理解のための学習には適切なリソースとなっています。
+「[Azure API Management のポリシー](../api-management/api-management-howto-policies.md)」は、ポリシーの構成や理解のための学習には適切なリソースとなっています。
 
 
 ## まとめと次のステップ
@@ -88,4 +88,4 @@ PowerApps の詳細については、次の関連するトピックやリソー�
 [13]: ./media/powerapps-configure-apis/api-settings-api-definition.png
 [14]: ./media/powerapps-configure-apis/api-settings-policy.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

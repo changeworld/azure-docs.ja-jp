@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="php"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/18/2016"
 	ms.author="meetb"/>
 
 
@@ -42,7 +42,10 @@
 
 デモ プログラムは、接続の試行中に一時的なエラーが生じると再試行が行われるように設計されています。しかし、クエリ コマンドの実行中に一時的なエラーが生じると、プログラムによって接続が破棄され、新しい接続が作成された後、クエリ コマンドが再試行されます。この設計の選択については、推奨も、非推奨もしません。デモ プログラムは、使用可能な設計上の柔軟性をいくつか示しています。
 
-<br>このコード サンプルの内容の大部分は、例外キャッチのロジックの記述です。この Program.cs ファイルの短いバージョンは[ここ](sql-database-develop-php-simple-windows.md)から取得できます。<br>Main メソッドは Program.cs にあります。コールスタックは次のように実行されます。* Main が ConnectAndQuery を呼び出します。* ConnectAndQuery が EstablishConnection を呼び出します。* EstablishConnection が IssueQueryCommand を呼び出します。
+<br>このコード サンプルの内容の大部分は、例外キャッチのロジックの記述です。この Program.cs ファイルの短いバージョンは[ここ](sql-database-develop-php-simple-windows.md)から取得できます。<br>Main メソッドは Program.cs にあります。コール スタックは、次のように実行されます。
+* Main が ConnectAndQuery を呼び出します。
+* ConnectAndQuery が EstablishConnection を呼び出します。
+* EstablishConnection が IssueQueryCommand を呼び出します。
 
 [sqlsrv\_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv\_fetch\_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
 
@@ -136,4 +139,4 @@
 
 PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://technet.microsoft.com/library/cc793139.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -4,7 +4,7 @@
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="03/04/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
@@ -58,7 +58,9 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 StackExchange.Redis クライアントを使用したクラスタリングの操作でのサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
->[AZURE.IMPORTANT]StackExchange.Redis を使用して、クラスタリングが有効になっている Azure Redis Cache に接続すると、問題が発生し、`MOVE` 例外がスローされる場合があります。これは、StackExchange.Redis キャッシュ クライアントがキャッシュ クラスターのノードに関する情報を収集するのに若干時間がかかるためです。これらの例外は、キャッシュに初めて接続し、クライアントがこの情報の収集を終了する前に、すぐにキャッシュを呼び出した場合に発生する可能性があります。アプリケーションでこの問題を解決する最も簡単な方法として、キャッシュに接続した後、1 秒間待機してからキャッシュを呼び出します。これを行うには、次のサンプル コードに示すように、`Thread.Sleep(1000)` を追加します。`Thread.Sleep(1000)` が発生するのは、キャッシュへの最初の接続時だけであることに注意してください。詳細については、「[StackExchange.Redis.RedisServerException - MOVED #248](https://github.com/StackExchange/StackExchange.Redis/issues/248)」をご覧ください。この問題の修正プログラムの開発が進められており、更新プログラムをここに投稿する予定です。
+<a name="move-exceptions"></a>
+>[AZURE.IMPORTANT] StackExchange.Redis を使用して、クラスタリングが有効になっている Azure Redis Cache に接続すると、問題が発生し、`MOVE` 例外がスローされる場合があります。これは、StackExchange.Redis キャッシュ クライアントがキャッシュ クラスターのノードに関する情報を収集するのに若干時間がかかるためです。これらの例外は、キャッシュに初めて接続し、クライアントがこの情報の収集を終了する前に、すぐにキャッシュを呼び出した場合に発生する可能性があります。アプリケーションでこの問題を解決する最も簡単な方法として、キャッシュに接続した後、1 秒間待機してからキャッシュを呼び出します。これを行うには、次のサンプル コードに示すように、`Thread.Sleep(1000)` を追加します。`Thread.Sleep(1000)` が発生するのは、キャッシュへの最初の接続時だけであることに注意してください。詳細については、「[StackExchange.Redis.RedisServerException - MOVED #248](https://github.com/StackExchange/StackExchange.Redis/issues/248)」をご覧ください。この問題の修正プログラムの開発が進められており、更新プログラムをここに投稿する予定です。**更新**: この問題は、StackExchange.Redis の最新の[プレリリース版 1.1.572-alpha](https://www.nuget.org/packages/StackExchange.Redis/1.1.572-alpha) ビルドで解消されています。最新のビルドについては、[StackExchange.Redis NuGet のページ](https://www.nuget.org/packages/StackExchange.Redis/)をご確認ください。
+
 
 	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 	{
@@ -85,7 +87,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 
 クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[設定]** ブレードから **[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
->[AZURE.NOTE]Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
+>[AZURE.NOTE] Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
 
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
@@ -124,7 +126,7 @@ Premium の最大キャッシュ サイズは、53 GB です。最大 10 個の�
 
 現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。StackExchange.Redis はサポートしているものの 1 つです。他のクライアントの詳細については、[Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)の「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
 
->[AZURE.NOTE]StackExchange.Redis をクライアントとして使用する場合は、クラスタリングが正常に動作するように、[StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 以降の最新バージョンを使用してください。
+>[AZURE.NOTE] StackExchange.Redis をクライアントとして使用する場合は、クラスタリングが正常に動作するように、[StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 以降の最新バージョンを使用してください。move 例外の問題がある場合は、[move 例外](#move-exceptions)の詳細をご覧ください。
 
 ## クラスタリングが有効になっているとき、キャッシュに接続するにはどうすればよいですか
 
@@ -183,4 +185,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0309_2016-->

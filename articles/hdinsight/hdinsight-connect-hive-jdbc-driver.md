@@ -14,20 +14,26 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="02/01/2016"
+ ms.date="03/04/2016"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
 
 [AZURE.INCLUDE [ODBC JDBC セレクター](../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-このドキュメントでは、Java アプリケーションから JDBC を使用して、HDInsight クラスターに Hive クエリをリモートで送信する方法を学習します。Hive JDBC インターフェイスの詳細については、[HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface) を参照してください。
+このドキュメントでは、Java アプリケーションから JDBC を使用して、HDInsight クラスターに Hive クエリをリモートで送信する方法を学習します。SQuirreL SQL クライアントから接続する方法と、プログラムを使用して Java から接続する方法を学習します。
+
+Hive JDBC インターフェイスの詳細については、[HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface) を参照してください。
 
 ##前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Hadoop。Linux または Windows ベースのクラスターが動作します。
+
+* [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。SQuirreL は、JDBC クライアント アプリケーションです。
+
+この記事からリンクされている Java アプリケーションの例をビルドおよび実行するには、以下が必要です。
 
 * [Java Developer Kit (JDK) バージョン 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) またはそれ以降。
 
@@ -39,27 +45,109 @@ Azure の HDInsight クラスターに対する JDBC 接続は 443 を使用し�
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
 
+__CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
+
 ##認証
 
-接続を確立するときに、HDInsight クラスターの管理者名とパスワードを指定する必要があります。これらは、ゲートウェイに対する要求を認証します。たとえば、次の Java コードは、接続文字列、管理者名、およびパスワードを使用して新しい接続を開きます。
+接続を確立するときに、HDInsight クラスターの管理者名とパスワードを使用して、クラスター ゲートウェイを認証する必要があります。SQuirreL SQL などの JDBC クライアントから接続する場合、クライアント設定で管理者名とパスワードを入力する必要があります。
+
+Java アプリケーションから接続を確立する場合、名前とパスワードを使用する必要があります。たとえば、次の Java コードは、接続文字列、管理者名、およびパスワードを使用して新しい接続を開きます。
 
     DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
-##クエリ
+##SQuirreL SQL クライアントとの接続
 
-接続が確立されると、Hive に対してクエリを実行することができます。たとえば、次の Java コードはテーブルから __SELECT__ を実行し、その結果を 3 行のみに限定して、次のように表示します。
+SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリモートから実行するために使用できる JDBC クライアントです。次の手順は、SQuirreL SQL を既にインストールしていると想定し、Hive 用のドライバーをダウンロードおよび構成する手順について説明します。
 
-    sql = "SELECT querytime, market, deviceplatform, devicemodel, state, country from " + tableName + " LIMIT 3";
-    stmt2 = conn.createStatement();
-    System.out.println("\nRetrieving inserted data:");
+1. HDInsight クラスターから Hive の JDBC ドライバーをコピーします。
 
-    res2 = stmt2.executeQuery(sql);
+    * __Linux ベースの HDInsight__ の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
 
-    while (res2.next()) {
-      System.out.println( res2.getString(1) + "\t" + res2.getString(2) + "\t" + res2.getString(3) + "\t" + res2.getString(4) + "\t" + res2.getString(5) + "\t" + res2.getString(6));
-    }
+        1. ファイルを含める新しいディレクトリを作成します。たとえば、「`mkdir hivedriver`」のように入力します。
 
-##Java プロジェクトの例
+        2. コマンド プロンプト、Bash、PowerShell やその他のコマンド ライン プロンプトからディレクトリを新しいディレクトリに変更し、次のコマンドを使用して HDInsight クラスターからファイルをコピーします。
+
+                scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-jdbc*standalone.jar .
+                scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
+                scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+
+            __USERNAME__ をクラスターの SSH ユーザー アカウント名に置き換えます。__CLUSTERNAME__ を HDInsight クラスター名に置き換えます。
+
+            > [AZURE.NOTE] Windows 環境では、scp ではなく、PSCP ユーティリティを使用する必要があります。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードすることができます。
+
+    * __Windows ベースの HDInsight__ の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
+
+        1. Azure ポータルから HDInsight クラスターを選択し、__[リモート デスクトップ]__ アイコンを選択します。
+
+            ![[リモート デスクトップ] アイコン](./media/hdinsight-connect-hive-jdbc-driver/remotedesktopicon.png)
+
+        2. [リモート デスクトップ] ブレードで、__[接続]__ を使用してクラスターに接続します。[リモート デスクトップ] が有効でない場合、フォームを使用してユーザー名とパスワードを入力し、__[有効にする]__ を選択して、クラスターの [リモート デスクトップ] を有効にします。
+
+            ![[リモート デスクトップ] ブレード](./media/hdinsight-connect-hive-jdbc-driver/remotedesktopblade.png)
+
+            __[接続]__ を選択した後に、.rdp ファイルがダウンロードされます。このファイルを使用して、リモート デスクトップ クライアントを起動します。メッセージが表示されたら、リモート デスクトップのアクセス用に入力したユーザー名とパスワードを使用します。
+
+        3. 接続されたら、次のファイルをリモート デスクトップ セッションからローカル コンピューターにコピーします。`hivedriver` という名前のローカル ディレクトリに置きます。
+
+            * C:\\apps\\dist\\hive-0.14.0.2.2.9.1-7\\lib\\hive-jdbc-0.14.0.2.2.9.1-7-standalone.jar
+            * C:\\apps\\dist\\hadoop-2.6.0.2.2.9.1-7\\share\\hadoop\\common\\hadoop-common-2.6.0.2.2.9.1-7.jar
+            * C:\\apps\\dist\\hadoop-2.6.0.2.2.9.1-7\\share\\hadoop\\common\\lib\\hadoop-auth-2.6.0.2.2.9.1-7.jar
+
+            > [AZURE.NOTE] パスとファイル名に含まれるバージョン番号は、使用しているクラスターと異なる場合があります。
+
+        4. ファイルのコピーが完了したら、リモート デスクトップ セッションを切断します。
+
+3. SQuirreL SQL アプリケーションを起動します。ウィンドウの左側から __[Drivers]__ を選択します。
+
+    ![ウィンドウの左側の [Drivers] タブ](./media/hdinsight-connect-hive-jdbc-driver/squirreldrivers.png)
+
+4. __[Drivers]__ ダイアログの上部にあるアイコンから、__[+]__ アイコンを選択して新しいドライバーを作成します。
+
+    ![[Drivers] アイコン](./media/hdinsight-connect-hive-jdbc-driver/driversicons.png)
+
+5. [Add Driver] ダイアログで、次の情報を追加します。
+
+    * __Name__: Hive
+    * __Example URL__: jdbc:hive2://localhost:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
+    * __Extra Class Path__: [Add] ボタンを使用して、以前にダウンロードした jar ファイルを追加します
+    * __Class Name__: org.apache.hive.jdbc.HiveDriver
+
+    ![[Add Driver] ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/adddriver.png)
+
+    __[OK]__ をクリックして設定を保存します。
+
+6. SQuirreL SQL ウィンドウの左側で、__[Aliases]__ を選択します。次に __[+]__ アイコンをクリックし、新しい接続のエイリアスを作成します。
+
+    ![新しいエイリアスの追加](./media/hdinsight-connect-hive-jdbc-driver/aliases.png)
+
+7. __[Add Alias]__ ダイアログに次の値を使用します。
+
+    * __Name__: Hive on HDInsight
+    * __Driver__: ドロップダウンを使用して、__[Hive]__ ドライバーを選択します
+    * __URL__: jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2
+
+        __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
+
+    * __User Name__: HDInsight クラスターのクラスター ログイン アカウント名。既定では、`admin` です。
+    * __Password__: クラスター ログイン アカウントのパスワード。これは、HDInsight クラスターを作成するときに指定したパスワードです。
+
+    ![[Add Alias] ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/addalias.png)
+
+    __[Test]__ ボタンを使用して、接続が機能することを確認します。__[Connect to: Hive on HDInsight]__ ダイアログが表示されたら、__[Connect]__ を選択してテストを実行します。テストが成功した場合、__[Connection successful]__ ダイアログが表示されます。
+
+    __[Add Alias]__ ダイアログの下部にある __[OK]__ ボタンを使用して、接続エイリアスを保存します。
+
+8. SQuirreL SQL の上部にある __[Connect to]__ ドロップダウンから、__[Hive on HDInsight]__ を選択します。メッセージが表示されたら、__[Connect]__ を選択します。
+
+    ![接続ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/connect.png)
+
+9. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、__[Run]__ アイコンを選択します。結果領域にクエリの結果が表示されます。
+
+        select * from hivesampletable limit 10;
+
+    ![結果を含む SQL クエリ ダイアログ](./media/hdinsight-connect-hive-jdbc-driver/sqlquery.png)
+
+##Java アプリケーションの例からの接続
 
 Java クライアントを使用して HDInsight の Hive をクエリする例は、[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) にあります。リポジトリの指示に従い、サンプルを作成して実行します。
 
@@ -72,4 +160,4 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

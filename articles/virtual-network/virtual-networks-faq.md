@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 # Virtual Network FAQ
@@ -21,6 +21,6 @@
 
 ## Virtual Network Cross-premises Connectivity (VPN)
 
-仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](vpn-gateway-vpn-faq.md) を参照してください。
+仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md) を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

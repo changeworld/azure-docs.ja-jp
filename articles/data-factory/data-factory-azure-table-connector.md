@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure テーブルとの間でのデータの移動 | Azure Data Factory" 
+	pageTitle="Azure テーブルとの間でのデータの移動 | Microsoft Azure" 
 	description="Azure Data Factory を使用して Azure Table Storage に、または Azure Table Storage からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -380,7 +380,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブルのクエリ文字列。下記の例をご覧ください。 | いいえ
+azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | Azure テーブルのクエリ文字列。下記の例をご覧ください。 | いいえ
 azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | いいえ |
 
 ### azureTableSourceQuery の例
@@ -526,4 +526,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

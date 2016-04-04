@@ -25,7 +25,7 @@ Azure CLI は、Azure Platform で使用できるオープン ソース、クロ
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
-> [AZURE.NOTE] このガイドで紹介する Azure CLI のコマンドとスクリプトの例は、Azure サービス管理 (ASM) モードで実行されています。Azure リソース管理 (ARM) モードのストレージの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
+> [AZURE.NOTE] このガイドで紹介する Azure CLI のコマンドとスクリプトの例は、Azure サービス管理 (ASM) モードで実行されています。Azure リソース管理 (ARM) モードのストレージの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
 
 ## 5 分で始める Azure Storage と Azure CLI の使用
 
@@ -221,4 +221,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

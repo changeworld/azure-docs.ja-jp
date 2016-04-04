@@ -1,6 +1,6 @@
 <properties
-    pageTitle="REST API を使用した Azure Search へのデータのインポート | Microsoft Azure | ホステッド クラウド検索サービス"
-    description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法"
+    pageTitle="REST API を使用した Azure Search でのデータのアップロード | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
     services="search"
     documentationCenter=""
     authors="ashmaka"
@@ -14,19 +14,18 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/09/2016"
+    ms.date="03/10/2016"
     ms.author="ashmaka"/>
 
-# REST API を使用した Azure Search へのデータのインポート
+# REST API を使用した Azure Search へのデータのアップロード
 > [AZURE.SELECTOR]
 - [概要](search-what-is-data-import.md)
-- [ポータル](search-import-data-portal.md)
 - [.NET](search-import-data-dotnet.md)
 - [REST ()](search-import-data-rest-api.md)
-- [インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 
+この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
 
-この記事では、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用して Azure Search インデックスにデータをインポートする方法について説明します。このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-create-index-rest-api.md)してあります。
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。
 
 REST API を使用してインデックスにドキュメントをプッシュするには、HTTP POST 要求をインデックスの URL エンドポイントに発行します。HTTP 要求の本文は、追加、変更、または削除するドキュメントを含む JSON オブジェクトです。
 
@@ -164,9 +163,9 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 
 > [AZURE.NOTE] この場合は、クライアント コードをバックオフし、再試行するまで待機することを強くお勧めします。こうすることで、システムが回復する時間が生まれ、その後の要求に成功する可能性が高くなります。要求をすぐに再試行しても、状況が長引くだけです。
 
-ドキュメント アクションおよび成功/エラー応答の詳細については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP 状態コード (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
+ドキュメント アクションおよび成功/エラー応答の詳細については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」を参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
 ## 次へ
-Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)」を参照してください。
+Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[Azure Search インデックスの照会](search-query-overview.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0316_2016-->

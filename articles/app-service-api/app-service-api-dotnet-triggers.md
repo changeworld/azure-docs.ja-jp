@@ -13,18 +13,19 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="03/16/2016" 
 	ms.author="guayan"/>
 
 # Azure App Service API アプリ トリガー
+
+>[AZURE.NOTE] 本記事は、API アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
 
 ## 概要
 
 この記事では、API アプリ トリガーを実装して、ロジック アプリからそれらを使用する方法について説明します。
 
-[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)を初めて使用する場合は、[API アプリの作成](app-service-dotnet-create-api-app.md)に関する一連のページを読むことをお勧めします。
-
-さらに、このトピック内のすべてのコード スニペットは、[FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。
+このトピック内のすべてのコード スニペットは、[FileWatcher API アプリのサンプル コード](http://go.microsoft.com/fwlink/?LinkId=534802)からコピーしたものです。
 
 この記事のコードをビルドして実行するには、次の nuget パッケージをダウンロードする必要がある点に注意してください: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
 
@@ -341,4 +342,4 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
     }
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0323_2016-->

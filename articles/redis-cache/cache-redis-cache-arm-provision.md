@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="03/04/2016" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用して Redis Cache を作成する
@@ -26,7 +26,7 @@
 
 完全なテンプレートについては、「[Redis Cache のテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)」を参照してください。
 
->[AZURE.NOTE]新しい [Premium レベル](cache-premium-tier-intro.md)の APM テンプレートを利用できます。
+>[AZURE.NOTE] 新しい [Premium レベル](cache-premium-tier-intro.md)の APM テンプレートを利用できます。
 >
 >-    [クラスタリングを使用する Premium Redis Cache の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
 >-    [データ の永続化を使用する Premium Redis Cache の作成](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
@@ -137,4 +137,4 @@ Azure Redis Cache を作成します。
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0309_2016-->

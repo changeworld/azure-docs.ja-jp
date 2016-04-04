@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="03/02/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array デバイス管理者のパスワードを変更する (プレビュー)
+# StorSimple Virtual Array デバイス管理者パスワードを変更する
 
 ## 概要
 
-Windows PowerShell インターフェイスを使用して StorSimple 仮想デバイスにアクセスする際、デバイス管理者のパスワードの入力が求められます。StorSimple デバイスを初めてプロビジョニングして起動したときの既定のパスワードは Password1 です。データのセキュリティ上、既定のパスワードは初回サインイン時にリセットされ、パスワードを変更するよう求められます。
+Windows PowerShell インターフェイスを使用して StorSimple 仮想デバイスにアクセスする際、デバイス管理者のパスワードの入力が求められます。StorSimple デバイスを初めてプロビジョニングして起動したときの既定のパスワードは *Password1* です。データのセキュリティ上、既定のパスワードは初回サインイン時にリセットされ、パスワードを変更するよう求められます。
 
 デバイスを運用環境にデプロイした後は、ローカル Web UI または Azure クラシック ポータルを使用して、いつでもデバイス管理者のパスワードを変更できます。それぞれの手順については、この記事で説明します。
 
@@ -69,4 +69,4 @@ Azure クラシック ポータルを使用してデバイス管理者のパス�
 
 [StorSimple Virtual Array 管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0309_2016-->

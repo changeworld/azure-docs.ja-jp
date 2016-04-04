@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="03/02/2016"
+	ms.date="03/16/2016"
 	ms.author="jeffstok"/>
 
 # 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
@@ -23,10 +23,60 @@ Stream Analytics ジョブを作成するときは、データ変換出力の使
 
 さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
+## Azure Data Lake Store
 
-## SQL Database ##
+Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) をサポートしています。この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。現時点では、Data Lake Store 出力の作成と構成は Azure クラシック ポータルでのみサポートされています。また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。承認と (必要に応じて) Data Lake Store Preview にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
 
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
+次の表に、Data Lake Store 出力を作成するためのプロパティ名とその説明を示します。
+
+<table>
+<tbody>
+<tr>
+<td><B>プロパティ名</B></td>
+<td><B>説明</B></td>
+</tr>
+<tr>
+<td>出力のエイリアス</td>
+<td>クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。</td>
+</tr>
+<tr>
+<td>Data Lake Store アカウント</td>
+<td>出力を送信するストレージ アカウントの名前。ポータルにログインしたユーザーがアクセス権を持っている Data Lake Store アカウントのドロップダウン リストが表示されます。</td>
+</tr>
+<tr>
+<td>パス プレフィックスのパターン [<I>省略可能</I>]</td>
+<td>指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。<BR>{date}、{time}<BR>例 1: folder1/logs/{date}/{time}<BR>例 2: folder1/logs/{date}</td>
+</tr>
+<tr>
+<td>日付形式 [<I>省略可能</I>]</td>
+<td>日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。例: YYYY/MM/DD</td>
+</tr>
+<tr>
+<td>時刻形式 [<I>省略可能</I>]</td>
+<td>時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。現在唯一サポートされている値は HH です。</td>
+</tr>
+<tr>
+<td>イベントのシリアル化の形式</td>
+<td>出力データのシリアル化形式。JSON、CSV、Avro がサポートされています。</td>
+</tr>
+<tr>
+<td>エンコード</td>
+<td>CSV または JSON 形式の場合、エンコードを指定する必要があります。現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。</td>
+</tr>
+<tr>
+<td>区切り記号</td>
+<td>CSV のシリアル化のみに適用されます。Stream Analytics は、CSV データをシリアル化するために、一般的な区切り記号をサポートしています。サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。</td>
+</tr>
+<tr>
+<td>形式</td>
+<td>JSON のシリアル化のみに適用されます。行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。</td>
+</tr>
+</tbody>
+</table>
+
+## SQL Database
+
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます (これはプレビュー機能です)。次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
 | プロパティ名 | 説明 |
 |---------------|-------------|
@@ -37,7 +87,7 @@ Stream Analytics ジョブを作成するときは、データ変換出力の使
 | パスワード | データベースに接続するためのパスワード |
 | テーブル | 出力の書き込み先のテーブル名です。テーブル名は大文字小文字が区別されます。このテーブルのスキーマは、ジョブの出力によって生成されるフィールドの数とその型に正確に一致する必要があります。 |
 
-## BLOB ストレージ ##
+## BLOB ストレージ
 
 BLOB ストレージを使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効率の高いスケーラブルなソリューションを実現できます。Azure BLOB ストレージとその使用法の説明については、「[How to use Blobs (BLOB の使用方法)](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。
 
@@ -114,6 +164,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | エンコード | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 | CSV のシリアル化のみに適用されます。Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | 形式 | JSON 型のみに適用されます。行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 |
+
 ## Power BI
 
 Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
@@ -267,4 +318,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

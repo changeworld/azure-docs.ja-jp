@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="01/22/2016"
+   ms.date="03/02/2016"
    ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
@@ -116,6 +116,9 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、$env:windir\\system32\\configuration\\DSCEngineCache.mof を削除します。
 
+- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。 `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+ 
+
 ##関連記事##
 
 - [Azure Automation DSC による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
@@ -124,4 +127,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 - [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

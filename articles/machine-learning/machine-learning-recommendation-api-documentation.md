@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/10/2015" 
+	ms.date="03/02/2016" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning Recommendations API のドキュメント
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##1\.概要
+##1.概要
 このドキュメントは、API リファレンスです。最初に、ドキュメント『Azure Machine Learning Recommendations – クイック スタート』をお読みください。
 
 Azure Machine Learning の Recommendations API は、次の論理グループに分割できます。
@@ -81,8 +81,7 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 ###4\.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。
-理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
 
 ##5.基本モデル
@@ -894,7 +893,7 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> 
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)
 <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
 <ins>FeatureBlockList ルールを追加するには:</ins><br>
 <br>
@@ -991,7 +990,7 @@ HTTP 状態コード: 200
 
 注: ファイルの最大サイズは、200 MB です。
 
-** 形式の詳細 **
+* * 形式の詳細 * *
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -1837,7 +1836,7 @@ OData
 	- `useFeatureInModel` - True に設定します。
 	- `ModelingFeatureList` - スコアが 2.0 以上 (前の手順で取得した順位に応じて変更します) の特徴のコンマ区切りのリストに設定します。
 	- `AllowColdItemPlacement` - True に設定します。
-	- オプションで`EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。
+	- オプションで `EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。
 - 構成したパラメーターを使用して推奨事項のビルドをトリガーします。
 
 注: パラメーターを構成しない場合 (パラメーターなしで推奨事項のビルドを呼び出す場合など) や、特徴の使用状況を明示的に無効にしない場合 (`UseFeatureInModel` を False に設定する場合など)、順位付けのビルドが存在しているなら、システムは特徴に関連するパラメーターを前述の値に設定します。
@@ -2647,7 +2646,7 @@ OData XML
  	 </entry>
 	</feed>
 
-###12.2.推奨事項の取得 (特定のビルド)
+###12\.2.推奨事項の取得 (特定のビルド)
 
 「推奨事項」または「Fbt」の種類の特定のビルドの推奨事項を取得します。
 
@@ -2873,7 +2872,7 @@ HTTP 状態コード: 200
 
 12\.1 の応答の例を参照してください。
 
-###12\.7.ユーザーの推奨事項の取得 (特定のビルド)
+###12.7.ユーザーの推奨事項の取得 (特定のビルド)
 
 「推奨事項」の種類の特定のビルドでユーザーの推奨事項を取得します。
 
@@ -2909,7 +2908,7 @@ HTTP 状態コード: 200
 12\.1 の応答の例を参照してください。
 
 
-###12\.8.ユーザーの推奨事項と項目リストの取得（特定のビルド）
+###12.8.ユーザーの推奨事項と項目リストの取得（特定のビルド）
 
 「推奨事項」とその他の項目リストの種類の特定のビルドでユーザーの推奨事項を取得します。
 
@@ -2947,8 +2946,8 @@ HTTP 状態コード: 200
 12\.1 の応答の例を参照してください。
 
 ##13.ユーザーの使用状況の履歴
-推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります
-。この API により、ユーザーの履歴が取得できます。
+推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。
+この API により、ユーザーの履歴が取得できます。
 
 注: ユーザーの履歴は現在推奨設定のビルドに対してのみ利用できます。
 
@@ -3111,4 +3110,4 @@ HTTP 状態コード: 200
 © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -117,4 +117,4 @@ DocumentDB のサーバー側プログラミングの詳細については、「
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細について学習する際に便利なリソースです。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -32,7 +32,7 @@
 - **Storage** - 必要とされるオペレーティング システム ディスクと追加のデータ ディスク、仮想マシンの VHD を保存するストレージ アカウントをサポートします。
 - **Network** - 必要とされる NIC、仮想マシンの IP アドレス、および仮想ネットワークとオプションのロード バランサー内のサブネット、Load Balancer の IP アドレスとネットワークのセキュリティ グループをサポートします。
 
-これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
 ## リソース マネージャーの特性
 
@@ -52,7 +52,7 @@
 
             PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-  - Azure PowerShell 1.0 では、リソース マネージャー版のコマンドを使用してください。これらのコマンドは、次に示すように *verb-AzureRm* 形式となります。
+  - Azure PowerShell 1.0 では、リソース マネージャー版のコマンドを使用してください。これらのコマンドは、次に示すように *Verb-AzureRmNoun* 形式となります。
 
             PS C:\> Get-AzureRmResourceGroupDeployment
 
@@ -101,7 +101,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
             PS C:\> Switch-AzureMode -Name AzureServiceManagement
 
-  - Azure PowerShell 1.0 では、サービス管理版のコマンドを使用してください。これらのコマンドの名前は、*verb-AzureRm* 形式とは**異なります**。
+  - Azure PowerShell 1.0 では、サービス管理版のコマンドを使用してください。これらのコマンド名は、次に示すように *Verb-AzureNoun* 形式となります。
 
             PS C:\> Get-AzureDeployment
 
@@ -111,7 +111,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
     ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
 
-ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
+Azure ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
 
 コンポーネントと Azure サービス管理のための関係を示します。
 
@@ -125,7 +125,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 - アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできます。常にリソースが一貫した状態でデプロイされます。
 - 宣言型のテンプレートを利用し、デプロイを定義できます。
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
-- ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
+- ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのリソースにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 
 
@@ -155,9 +155,9 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
      ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
     ...
 
-しかしながら、Get-AzureVM コマンドを実行すると、リソース マネージャーで作成した Virtual Machines のみが表示されます。
+しかしながら、Get-AzureRmVM コマンドを実行すると、リソース マネージャーで作成した Virtual Machines のみが表示されます。
 
-    PS C:\> Get-AzureVM -ResourceGroupName ExampleGroup
+    PS C:\> Get-AzureRmVM -ResourceGroupName ExampleGroup
     ...
     Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
     Name     : ExampleResourceVM
@@ -177,9 +177,9 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 
 Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
 
-従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)」を参照してください。
+従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/virtual-machines-linux-cli-manage.md)」を参照してください。
 
-Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
 さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
 
@@ -188,4 +188,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

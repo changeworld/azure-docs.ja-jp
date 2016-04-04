@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/10/2015"
+   ms.date="03/23/2016"
    ms.author="yuridio"/>
 
 #Microsoft Azure セキュリティの概要
@@ -33,7 +33,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 IT インフラストラクチャ、データ、およびアプリケーションへのアクセスの制御は、非常に重要です。Microsoft Azure では、そのための機能が、Azure Active Directory、Azure Storage などのサービスと、さまざまな標準および API のサポートによって提供されています。
 
-[Azure Active Directory](active-directory-whatis.md) (Azure AD) は、組織のユーザー、グループ、およびオブジェクトの認証、承認、およびアクセス制御を行う ID リポジトリとエンジンです。Azure AD を使用すると、開発者はアプリケーションで ID 管理を効果的に統合できます。[SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx)、[OpenID Connect](http://openid.net/connect/) など、業界標準のプロトコルがサポートされているため、.NET、Java、Node.js、PHP など幅広いプラットフォームでのサインインを実現できます。
+[Azure Active Directory](./active-directory/active-directory-whatis.md) (Azure AD) は、組織のユーザー、グループ、およびオブジェクトの認証、承認、およびアクセス制御を行う ID リポジトリとエンジンです。Azure AD を使用すると、開発者はアプリケーションで ID 管理を効果的に統合できます。[SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx)、[OpenID Connect](http://openid.net/connect/) など、業界標準のプロトコルがサポートされているため、.NET、Java、Node.js、PHP など幅広いプラットフォームでのサインインを実現できます。
 
 REST ベースの Graph API により、開発者は任意のプラットフォームからディレクトリに対して読み取りと書き込みを行うことができます。[OAuth 2.0](http://oauth.net/2/) がサポートされることで、開発者は、マイクロソフトやサード パーティの Web API と連携するモバイル アプリケーションや Web アプリケーションを作成できるほか、セキュリティに優れた独自の Web API を作成することができます。.NET、Windows ストア、iOS、Android 向けにオープン ソースのクライアント ライブラリが用意されており、その他のライブラリも開発が進められています。
 
@@ -45,11 +45,11 @@ ID およびアクセス管理に関しては、他にも次のような機能�
 
 -   Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) が可能です。一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。フェデレーション アプリケーションでは、ユーザー プロビジョニングとパスワード保管もサポートできます。
 
--   [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx): SAK) とセカンダリ秘密キー ([Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md): SAS) があります。
+-   [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
 
--   Azure AD は、フェデレーションを通じて、ID をサービスとして提供します (オンプレミス ディレクトリとの [Active Directory フェデレーション サービス](fundamentals-identity.md)、同期、およびレプリケーションを使用)。
+-   Azure AD は、フェデレーションを通じて、ID をサービスとして提供します (オンプレミス ディレクトリとの [Active Directory フェデレーション サービス](./active-directory/fundamentals-identity.md)、同期、およびレプリケーションを使用)。
 
--   [Azure Multi-Factor Authentication (MFA)](multi-factor-authentication.md) は、ユーザーにモバイル アプリ、電話、またはテキスト メッセージを使用したサインインの確認も要求する多要素認証サービスです。Azure MFA サーバーによってオンプレミス リソースをセキュリティで保護するために Azure AD と共に使用したり、SDK を利用してカスタム アプリケーションやディレクトリと共に使用したりすることができます。
+-   [Azure Multi-Factor Authentication (MFA)](./multi-factor-authentication/multi-factor-authentication.md) は、ユーザーにモバイル アプリ、電話、またはテキスト メッセージを使用したサインインの確認も要求する多要素認証サービスです。Azure MFA サーバーによってオンプレミス リソースをセキュリティで保護するために Azure AD と共に使用したり、SDK を利用してカスタム アプリケーションやディレクトリと共に使用したりすることができます。
 
 -   [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure 仮想マシンをドメインに参加させることができます。ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
@@ -65,7 +65,7 @@ Azure には、さらに、転送中および保存中のデータを保護す�
 
 ### Azure の暗号化テクノロジ
 
-[Azure AD レポート](active-directory-reporting-audit-events.md)を使用すると、サブスクリプション環境への管理アクセスについての詳細情報を収集することができます。Azure 内の機密情報が含まれている VHD に対して [BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)を構成するオプションがあります。
+[Azure AD レポート](./active-directory/active-directory-reporting-audit-events.md)を使用すると、サブスクリプション環境への管理アクセスについての詳細情報を収集することができます。Azure 内の機密情報が含まれている VHD に対して [BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)を構成するオプションがあります。
 
 Azure には、その他に、データのセキュリティを保持するための次のような機能もあります。
 
@@ -151,15 +151,15 @@ IP フィルターは、ゲスト VM による以下の動作を防ぐために�
 
 Azure Virtual Network で安全な通信を行うために、以下の Azure Virtual Network テクノロジを使用できます。
 
--   [**ネットワーク セキュリティ グループ (NSG)**](virtual-networks-nsg.md)。NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮想マシン (VM) のインスタンスに対するトラフィックを制御できます。NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。
+-   [**ネットワーク セキュリティ グループ (NSG)**](./virtual-network/virtual-networks-nsg.md)。NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮想マシン (VM) のインスタンスに対するトラフィックを制御できます。NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。
 
--   [**ユーザー定義ルーティング**](virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスに到達するように特定のサブネットに送信されるパケットの次のホップを指定するユーザー定義のルートを作成することによって、仮想アプライアンスを通じてパケットのルーティングを制御できます。
+-   [**ユーザー定義ルーティング**](./virtual-network/virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスに到達するように特定のサブネットに送信されるパケットの次のホップを指定するユーザー定義のルートを作成することによって、仮想アプライアンスを通じてパケットのルーティングを制御できます。
 
--   [**IP 転送**](virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先へのトラフィックを受信できるようにするには、VM の IP 転送を有効にします。
+-   [**IP 転送**](./virtual-network/virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先へのトラフィックを受信できるようにするには、VM の IP 転送を有効にします。
 
--   [**強制トンネリング**](vpn-gateway-about-forced-tunneling.md)。強制トンネリングでは、検査と監査のために、Azure Virtual Network 内の仮想マシンによって生成されたインターネットへのすべてのトラフィックを、サイト間 VPN トンネルを介してオンプレミスの場所にリダイレクトまたは "強制的に" 戻すことができます。
+-   [**強制トンネリング**](./vpn-gateway/vpn-gateway-about-forced-tunneling.md)。強制トンネリングでは、検査と監査のために、Azure Virtual Network 内の仮想マシンによって生成されたインターネットへのすべてのトラフィックを、サイト間 VPN トンネルを介してオンプレミスの場所にリダイレクトまたは "強制的に" 戻すことができます。
 
--   [**エンドポイント** ACL](virtual-machines-set-up-endpoints.md)。エンドポイント ACL を定義することで、どのコンピューターがインターネットから Azure Virtual Network 上の仮想マシンへの着信接続を許可されるかを制御できます。
+-   [**エンドポイント** ACL](./virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)。エンドポイント ACL を定義することで、どのコンピューターがインターネットから Azure Virtual Network 上の仮想マシンへの着信接続を許可されるかを制御できます。
 
 -   [**パートナー ネットワーク セキュリティ ソリューション**](https://azure.microsoft.com/marketplace/)。Azure Marketplace から、多くのパートナー ネットワーク セキュリティ ソリューションにアクセスできます。
 
@@ -177,21 +177,21 @@ Azure で通常業務の一環として、または障害発生時に、顧客�
 
 -   **ストレージ ファイアウォール (FW)**: ストレージ フロントエンドのファイアウォールは、ポート 80/443 とその他の必要なユーティリティ ポート上のトラフィックだけになるようにフィルタリングします。ストレージ バックエンドのファイアウォールは、通信がストレージ フロントエンド サーバーだけから来るように制限します。
 
--   **仮想ネットワーク ゲートウェイ**: [Azure Virtual Network ゲートウェイ](virtual-networks-configure-vnet-to-vnet-connection.md) は、Azure Virtual Network のワークロードをオンプレミス サイトに接続するクロス プレミス ゲートウェイとして機能します。[IPsec サイト間 VPN トンネル](vpn-gateway-create-site-to-site-rm-powershell.md)または [ExpressRoute](expressroute-introduction.md) 回路を介して、オンプレミス サイトに接続する必要があります。IPsec/IKE VPN トンネルの場合、ゲートウェイは IKE ハンドシェイクを実行し、仮想ネットワークとオンプレミス サイト間の IPsec S2S VPN トンネルを確立します。仮想ネットワーク ゲートウェイは、[ポイント対サイト VPN](vpn-gateway-point-to-site-create.md) も終了させます。
+-   **仮想ネットワーク ゲートウェイ**: [Azure Virtual Network ゲートウェイ](./vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) は、Azure Virtual Network のワークロードをオンプレミス サイトに接続するクロス プレミス ゲートウェイとして機能します。[IPsec サイト間 VPN トンネル](./vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)または [ExpressRoute](./expressroute/expressroute-introduction.md) 回路を介して、オンプレミス サイトに接続する必要があります。IPsec/IKE VPN トンネルの場合、ゲートウェイは IKE ハンドシェイクを実行し、仮想ネットワークとオンプレミス サイト間の IPsec S2S VPN トンネルを確立します。仮想ネットワーク ゲートウェイは、[ポイント対サイト VPN](./vpn-gateway/vpn-gateway-point-to-site-create.md) も終了させます。
 
 ##セキュリティで保護されたリモート アクセス
 
 クラウドに格納されたデータは、悪用されず、転送中の機密性と整合性が維持されるように、十分に保護されている必要があります。たとえば、組織のポリシー ベースの監査可能な ID およびアクセス管理メカニズムと結び付いたネットワーク制御などです。
 
-組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。[リモート デスクトップ セッション](virtual-machines-log-on-windows-server.md)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および [Microsoft Azure 管理ポータル](https://azure.microsoft.com/overview/preview-portal/)を介した仮想マシンへの管理者アクセスは、常に暗号化されます。
+組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。[リモート デスクトップ セッション](./virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および Microsoft Azure 管理ポータルを介した仮想マシンへの管理者アクセスは、常に暗号化されます。
 
-オンプレミス データセンターをクラウドに安全に拡張するために、Azure には [サイト間 VPN](vpn-gateway-create-site-to-site-rm-powershell.md) と [ポイント対サイト VPN](vpn-gateway-point-to-site-create.md) や、[ExpressRoute](expressroute-introduction.md) との専用リンクが用意されています (VPN 経由での Azure 仮想ネットワークへの接続は暗号化されます)。
+オンプレミス データセンターをクラウドに安全に拡張するために、Azure には [サイト間 VPN](./vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) と [ポイント対サイト VPN](./vpn-gateway/vpn-gateway-point-to-site-create.md) や、[ExpressRoute](./expressroute/expressroute-introduction.md) との専用リンクが用意されています (VPN 経由での Azure 仮想ネットワークへの接続は暗号化されます)。
 
 ### Azure での安全なリモート アクセスの実装方法
 
 Azure ポータルへの接続は、常に認証される必要があり、SSL や TLS を必要とします。セキュリティで保護された管理ができるように、管理証明書を構成することができます。[SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx)、[IPsec](https://en.wikipedia.org/wiki/IPsec) など、セキュリティで保護された業界標準プロトコルが完全にサポートされています。
 
-[Azure ExpressRoute](expressroute-introduction.md) を使用すると、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャ間にプライベート接続を作成できます。ExpressRoute 接続では、公共のインターネットを利用できません。一般的なインターネット ベースのリンクよりも信頼性が高く、高速で、待機時間が少なく、セキュリティの高い接続が提供されます。オンプレミスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。
+[Azure ExpressRoute](./expressroute/expressroute-introduction.md) を使用すると、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャ間にプライベート接続を作成できます。ExpressRoute 接続では、公共のインターネットを利用できません。一般的なインターネット ベースのリンクよりも信頼性が高く、高速で、待機時間が少なく、セキュリティの高い接続が提供されます。オンプレミスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。
 
 ##ログ記録と監視
 
@@ -241,4 +241,4 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0323_2016-->

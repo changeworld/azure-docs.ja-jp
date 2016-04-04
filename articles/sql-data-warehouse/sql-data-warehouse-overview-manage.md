@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="mausher;nicw;barbkess;jrj;sonyama;"/>
 
 # SQL Data Warehouse の管理ツール
@@ -24,7 +24,7 @@
 
 ポータルには、現在と過去のパフォーマンス DWU 設定、使用中のストレージ量、成功および失敗した SQL 接続、およびインスタンスで実行されているクエリやそれらの詳細を把握できる視覚化情報とデータのセットが網羅されたメトリックが含まれています。
 
-## Visual Studio での SQL Server Data Tools	
+## Visual Studio での SQL Server Data Tools
 Visual Studio の [SQL Server Data Tools][] (SSDT) は、コンピューター上で実行し、クラウドでデータベースに対する接続、管理、および開発を行うことができるクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
 SSDT には SQL Server Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプトを実行できます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
@@ -48,4 +48,4 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 <!--Other web references-->
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

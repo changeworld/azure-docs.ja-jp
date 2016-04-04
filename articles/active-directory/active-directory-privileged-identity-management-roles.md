@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Privileged Identity Management: ロール"
+   pageTitle="PIM におけるロール |Microsoft Azure"
    description="Azure Privileged Identity Management 拡張機能で特権 ID に使用されるロールについて説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="03/17/2016"
    ms.author="kgremban"/>
 
-# Azure Privileged Identity Management: ロール
+# Azure AD Privileged Identity Management: ロール
 
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
@@ -57,4 +57,4 @@ Office 365、Exchange Online、SharePoint Online、Skype for Business のロー�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0323_2016-->

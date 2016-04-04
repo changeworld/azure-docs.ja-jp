@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/16/2015"
+   ms.date="03/08/2016"
    ms.author="spyros;sethm" />
 
 # センサーまたはその他のシステムから受信したデータをユーザーに通知する
@@ -25,7 +25,7 @@
 
 ![][2]
 
-問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。[Azure Event Hub][] または [IoT Hub][] を使用して、[Dynamics AX][] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。それには、[Azure Websites][]、[SQL Azure][]、[HDInsight][]、[Cortana Analytics Suite][]、[IoT Suite][]、[Logic Apps][]、[Azure Notification Hubs][] など強力なツールを使用することができます。ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。ほんの少しのコードでそれを行う方法を示すために、[AppToNotifyUsers][] という新しいサンプルを用意しました。オプションには、電子メール (SMTP)、SMS、電話などがあります。
+問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。[Azure Event Hub][] または [Azure IoT Hub][] を使用して、[Dynamics AX][] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。それには、[Azure Websites][]、[SQL Azure][]、[HDInsight][]、[Cortana Analytics Suite][]、[IoT Suite][]、[Logic Apps][]、[Azure Notification Hubs][] など強力なツールを使用することができます。ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。ほんの少しのコードでそれを行う方法を示すために、[AppToNotifyUsers][] という新しいサンプルを用意しました。オプションには、電子メール (SMTP)、SMS、電話などがあります。
 
 ## アプリケーション構造
 
@@ -60,17 +60,17 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 
 これらのハブで受信したデータに基づいてユーザーに通知するソリューションをデプロイするには、
 
-- [AppToNotifyUsers][] にアクセスしてください。
+- [AppToNotifyUsers にアクセスしてください。][]
 
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [Azure IoT Hub]: https://azure.microsoft.com/services/iot-hub/
-[IoT Hub]: https://azure.microsoft.com/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/services/event-hubs/
 [Azure Event Hub]: https://azure.microsoft.com/services/event-hubs/
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 [AppToNotifyUsers]: https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications
-[Dynamics AX]: http://www.microsoft.com/en-us/dynamics/erp-ax-overview.aspx
+[AppToNotifyUsers にアクセスしてください。]: https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications
+[Dynamics AX]: http://www.microsoft.com/dynamics/erp-ax-overview.aspx
 [Azure Websites]: https://azure.microsoft.com/services/app-service/web/
 [SQL Azure]: https://azure.microsoft.com/services/sql-database/
 [HDInsight]: https://azure.microsoft.com/services/hdinsight/
@@ -83,4 +83,4 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

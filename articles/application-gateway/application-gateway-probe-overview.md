@@ -16,7 +16,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/17/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma" />
 
 # Application Gateway による正常性監視の概要
@@ -67,4 +67,4 @@
 
 Application Gateway による正常性監視について学習した後は、Azure リソース マネージャーの[カスタム正常性プローブ](application-gateway-create-probe-ps.md)や Azure クラシック デプロイ モデルの[カスタム正常性プローブ](application-gateway-create-probe-classic-ps.md)を構成できます。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

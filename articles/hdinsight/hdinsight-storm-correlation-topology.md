@@ -195,9 +195,13 @@ START イベントと同じ方法で END イベントを検索できます。た
 
 トポロジを停止する準備ができたら、Visual Studio で **[CorrelationTopology]** プロジェクトに戻ります。**[Storm トポロジ ビュー]** で、トポロジを選択して、トポロジ ビューの上部にある **[終了]** ボタンを使用します。
 
+##クラスターを削除する
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ##次のステップ
 
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

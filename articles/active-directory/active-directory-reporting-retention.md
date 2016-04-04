@@ -3,8 +3,8 @@
 	description="Azure Active Directory でのレポート データの保持ポリシー"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="mbaldwin"
+	authors="dhanyahk"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="12/07/2015"
-	ms.author="kenhoff"/>
+	ms.date="03/07/2016"
+	ms.author="dhanyahk"/>
 
 # Azure Active Directory レポートの保持ポリシー
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
-Azure AD レポートは、次に示す一定期間データを保存します。
+Azure Active Directory (Azure AD) レポートは、データを次に示す一定期間保存します。
 
 レポート | 説明
 ------------------------------------------------------- | -----------
@@ -48,4 +48,4 @@ RMS の利用状況 | 30 日
 RMS デバイスの利用状況 | 30 日
 RMS 対応アプリケーションの利用状況 | 30 日
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

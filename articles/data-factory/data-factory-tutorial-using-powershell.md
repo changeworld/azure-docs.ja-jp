@@ -16,7 +16,7 @@
 	ms.date="02/01/2016" 
 	ms.author="spelluru"/>
 
-# チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]
+# チュートリアル: Data Factory を使用したログ ファイルの移動と処理 (PowerShell)
 この記事では、Azure Data Factory を使用してデータをログ ファイルから洞察へと変化させながら、ログ処理の標準的なシナリオを包括的なチュートリアルとして提供します。
 
 ## シナリオ
@@ -24,7 +24,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 このチュートリアルでは、サンプル ログを収集、処理して参照データで強化し、このデータを変換して Contoso 社が最近開始したマーケティング キャンペーンの有効性を評価します。
 
-## チュートリアルの準備をする
+## 前提条件
 1.	「[Azure Data Factory の概要][adfintroduction]」を読んで Azure Data Factory の概要を理解し、全体的な概念を把握します。
 2.	このチュートリアルを実施するには Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料試用版][azure-free-trial]に関するページを参照してください。
 3.	[Azure PowerShell][download-azure-powershell] をダウンロードしてコンピューターにインストールする必要があります。
@@ -69,17 +69,18 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 2. **EnrichGameLogsPipeline** がパーティション分割されたゲーム イベント (PartitionGameLogsPipeline の出力結果である PartitionedGameEventsTable) と geo コード (RefGetoCodeDictionaryTable) を結合し、IP アドレスを対応する地理的位置 (EnrichedGameEventsTable) にマッピングすることでデータを強化します。
 3. **AnalyzeMarketingCampaignPipeline** パイプラインが強化されたデータ (EnrichGameLogsPipeline によって生成された EnrichedGameEventTable) を活用し、これを広告データ (RefMarketingCampaignnTable) と共に処理してマーケティング キャンペーンの有効性という最終的な出力を作成します。これは解析のために Azure SQL Database (MarketingCampainEffectivensessSQLTable) と Azure BLOB ストレージ (MarketingCampaignEffectivenessBlobTable) にコピーされます。
     
-## チュートリアル: ワークフローの作成、デプロイ、監視
-1. [手順 1. サンプル データとスクリプトをアップロードする](#MainStep1)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
-2. [手順 2. Azure Data Factory を作成する](#MainStep2)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
-3. [手順 3. リンクされたサービスを作成する](#MainStep3)。この手順では、以下のリンクされたサービスを作成します: 
+このチュートリアルでは、以下の手順を実施します。
+
+1. [サンプル データとスクリプトをアップロードします](#upload-sample-data-and-scripts)。この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって実行される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、Azure SQL Database (MarketingCampaigns)、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
+2. [Azure Data Factory を作成します](#create-data-factory)。この手順では、"LogProcessingFactory" という名前の Azure データ ファクトリを作成します。
+3. [リンクされたサービスを作成します](#create-linked-services)。この手順では、以下のリンクされたサービスを作成します: 
 	
 	- 	**StorageLinkedService**。未処理のゲーム イベント、パーティションに分割されたゲーム イベント、強化されたゲーム イベント、マーケティング キャンペーンの有効な情報、geo コードの参照データを含む Azure ストレージの場所をリンクし、LogProcessingFactory へのマーケティング データの参照を行います。   
 	- 	**AzureSqlLinkedService**。マーケティング キャンペーンの有効性の情報を含む Azure SQL データベースをリンクします。 
 	- 	**HDInsightStorageLinkedService**。HDInsightLinkedService が参照する HDInsight クラスターに関連付けられている Azure BLOB ストレージをリンクします。 
 	- 	**HDInsightLinkedService**。Azure HDInsight クラスターを LogProcessingFactory にリンクします。このクラスターはデータの pig/hive 処理に使用されます。 
  		
-4. [手順 4: テーブルを作成する](#MainStep4)。この手順では、以下のテーブルを作成します。
+4. [データセットを作成します](#create-datasets)。この手順では、以下のテーブルを作成します。
 	
 	- **RawGameEventsTable**。このテーブルは、未処理のゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/rawgameevents/)。 
 	- **PartitionedGameEventsTable**。このテーブルは、パーティションに分割されたゲーム イベントのデータの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/logs/partitionedgameevents/)。 
@@ -90,7 +91,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **MarketingCampaignEffectivenessBlobTable**。このテーブルは、マーケティング キャンペーンの有効性データの場所を、StorageLinkedService によって定義された Azure BLOB ストレージ内に指定します (adfwalkthrough/marketingcampaigneffectiveness/)。 
 
 	
-5. [手順 5. パイプラインを作成してスケジュールを設定する](#MainStep5)。この手順では、以下のパイプラインを作成します。
+5. [パイプラインを作成してスケジュールを設定します](#create-pipelines)。この手順では、以下のパイプラインを作成します。
 	- **PartitionGameLogsPipeline**。このパイプラインは、BLOB ストレージ (RawGameEventsTable) から未処理のゲーム イベントを読み取り、年、月、日に基づくパーティション (PartitionedGameEventsTable) を作成します。 
 
 
@@ -107,9 +108,9 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![MarketingCampaignPipeline][image-data-factory-tutorial-analyze-marketing-campaign-pipeline]
 
 
-6. [手順 6. パイプラインとデータ スライスを監視する](#MainStep6)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
+6. [パイプラインとデータ スライスを監視します](#monitor-pipelines)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
 
-## <a name="MainStep1"></a> 手順 1. サンプル データとスクリプトをアップロードする
+## サンプル データとスクリプトのアップロード
 この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、"**MarketingCampaigns**" という名前の Azure SQL Database、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
 
 テーブル、ユーザー定義型、およびストアド プロシージャは、マーケティング キャンペーン有効性の結果を Azure BLOB ストレージから Azure SQL データベースに移動する際に使用されます。
@@ -163,7 +164,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		6/6/2014 11:54:36 AM You are ready to deploy Linked Services, Tables and Pipelines. 
 
 
-## <a name="MainStep2"></a> 手順 2. Azure Data Factory を作成する
+## データ ファクトリの作成
 この手順では、"**LogProcessingFactory**" という名前の Azure Data Factory を作成します。
 
 1. 既に開いている場合は **Azure PowerShell** に切り替え、そうでない場合は **Azure PowerShell** を起動します。Azure PowerShell を一度閉じてから再度開いた場合は、次のコマンドを実行する必要があります。 
@@ -185,7 +186,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
  
-## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
+## リンクされたサービスの作成
 
 > [AZURE.NOTE] この記事では、Azure PowerShell を使用して、リンク サービス、テーブル、パイプラインを作成します。Azure ポータル、具体的には Data Factory エディターを使用してこのチュートリアルを実行する場合は、[Data Factory エディターの使用方法に関するチュートリアル][adftutorial-using-editor]をご覧ください。
 
@@ -234,7 +235,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
  
 
-## <a name="MainStep4"></a>手順 4. テーブルを作成する 
+## データセットを作成する
 この手順では、以下のテーブルを作成します。
 
 - RawGameEventsTable
@@ -288,7 +289,7 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 	
 
 
-## <a name="MainStep5"></a>手順 5. パイプラインを作成してスケジュールを設定する
+## パイプラインを作成する
 この手順では、PartitionGameLogsPipeline、EnrichGameLogsPipeline、AnalyzeMarketingCampaignPipeline の各パイプラインを作成します。
 
 1. **エクスプローラー**で、**C:\\ADFWalkthrough** フォルダー (またはサンプルを展開した場所) から **Pipelines** サブフォルダーに移動します。
@@ -358,7 +359,7 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 	**ご利用ありがとうございます。** Azure Data Factory、リンクされたサービス、パイプライン、テーブルを作成し、ワークフローを開始することに成功しました。
 
 
-## <a name="MainStep6"></a>手順 6. パイプラインとデータ スライスを監視する 
+## パイプラインを監視する 
 
 1.	[LogProcessingFactory] の [データ ファクトリ] ブレードを開いていない場合、以下のいずれかを実施できます。
 	1.	**スタート画面**で **[LogProcessingFactory]** をクリックします。データ ファクトリの作成中に、**[スタート画面に追加]** オプションが自動でオンになっています。
@@ -503,4 +504,4 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-tutorial-using-powershell/NewDataFactoryMenu.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

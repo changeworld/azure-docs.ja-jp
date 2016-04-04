@@ -5,7 +5,7 @@
     suite="powerapps"
 	documentationCenter="" 
 	authors="MandiOhlinger"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="03/02/2016"
    ms.author="litran"/>
 
 
@@ -38,7 +38,7 @@ PowerApps Enterprise が有効になり、使用する準備が完了したら�
 4. **[ユーザー]** で、**[追加]** を選択します。
 5. **[所有者]** ロール: ![][2] を選択します。  
 
-	> [AZURE.IMPORTANT]PowerApps 管理者として割り当てているユーザーがある場合には、**[所有者]** ロールを必ず選択してください。表示されているその他のロールは、PowerApps を管理するためのフル アクセスをユーザーに付与しません。
+	> [AZURE.IMPORTANT] PowerApps 管理者として割り当てているユーザーがある場合には、**[所有者]** ロールを必ず選択してください。表示されているその他のロールは、PowerApps を管理するためのフル アクセスをユーザーに付与しません。
 
 6. ユーザーまたはグループを選択します。
 7. **[OK]** を選択して手順を完了します。
@@ -49,7 +49,7 @@ PowerApps Enterprise に管理者を追加すると、管理者として追加�
 - すべてのアプリと、そのユーザー アクセスを管理する。
 - 請求を変更することはできません。
 
-> [AZURE.IMPORTANT]PowerApps 管理者は、App Service Environment のリソース グループに対する所有者のロールが与えられるまで、App Service の環境を変更することができません。これを行うには、「[こちらの記事](powerapps-get-started-azure-portal.md)」を参照してください。
+> [AZURE.IMPORTANT] PowerApps 管理者は、App Service Environment のリソース グループに対する所有者のロールが与えられるまで、App Service の環境を変更することができません。変更方法については、「[Microsoft PowerApps Enterprise とは?](powerapps-get-started-azure-portal.md)」を参照してください。
 
 App Service Environment のリソース グループに所有者ロールが付与されると、PowerApps 管理者は次のことも行えるようになります。
 
@@ -98,7 +98,7 @@ PowerApps 管理者は、PowerApps との間でユーザーおよびグループ
 2. **[すべてのアプリ]** タイルで、**[Logic Apps]**: ![][8] を選択します。  
 3. Logic Apps を選択して、アプリの詳細を表示します。適切な Logic Apps を一覧表示するには、PowerApps の修正サブスクリプションを選択します。 ![][7]  
 
-	> [AZURE.IMPORTANT]パブリック プレビューでは、[参照] ブレードの Logic Apps の数と、メインの [PowerApps] ブレードに表示される数とで不整合がある場合があります。これは予期されることです。ポータルでは、すべてのホスティング プランのすべての Logic Apps が表示され、PowerApps でデプロイした App Service Environment の Logic Apps はフィルター処理されていません。この動作は、今後の更新で修正される予定です。
+	> [AZURE.IMPORTANT] パブリック プレビューでは、[参照] ブレードの Logic Apps の数と、メインの [PowerApps] ブレードに表示される数とで不整合がある場合があります。これは予期されることです。ポータルでは、すべてのホスティング プランのすべての Logic Apps が表示され、PowerApps でデプロイした App Service Environment の Logic Apps はフィルター処理されていません。この動作は、今後の更新で修正される予定です。
 
 	**Logic Apps の詳細と、その管理方法の詳細については、「[こちらの手順](https://azure.microsoft.com/documentation/services/app-service/logic/)」を参照してください。**
 
@@ -166,4 +166,4 @@ PowerApps 管理者は、PowerApps との間でユーザーおよびグループ
 [9]: ./media/powerapps-manage-monitor-usage/webapps.png
 [10]: ./media/powerapps-manage-monitor-usage/mobileapps.png
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

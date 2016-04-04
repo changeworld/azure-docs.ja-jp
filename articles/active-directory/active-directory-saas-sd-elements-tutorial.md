@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/21/2015"
+	ms.date="03/08/2016"
 	ms.author="jeedes"/>
 
 
@@ -36,7 +36,7 @@ SD Elements と Azure AD の統合を構成するには、次のものが必要�
 - SD Elements でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -87,29 +87,29 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
 SD Elements アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
 
-![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_14.png) <br>
+![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_14.png) <br>
 
 
 
 ** SD Elements で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **SD Elements** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **SD Elements** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの SD Elements へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_03.png) <br>
+2. **[ユーザーの SD Elements へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_04.png) <br>
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_04.png) <br>
 
 
     a.**[発行元]** テキストボックスにテナントの発行元 URL を入力します。次のパターンを利用します。 *https://\<テナント名>.sdelements.com/sso/saml2/metadata*
    
     b.**[応答 URL]** テキストボックスにテナントの応答 URL を入力します。次のパターンを利用します。 *https://\<テナント名>.sdelements.com/sso/saml2/acs/*
 
-    > [AZURE.NOTE]テナントの実際の発行元 URL と応答 URL が必要な場合、[SD Elements サポート チーム](mailto:support@sdelements.com)にお問い合わせください。
+    > [AZURE.NOTE] テナントの実際の発行元 URL と応答 URL が必要な場合、[SD Elements サポート チーム](mailto:support@sdelements.com)にお問い合わせください。
       
     c.**[次へ]** をクリックします。
 
 
-4. **[SD Elements でのシングル サインオンの構成]** ページで、次の手順に従います。<br><br>![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_05.png) <br>
+4. **[SD Elements でのシングル サインオンの構成]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -121,10 +121,10 @@ SD Elements アプリケーションでは、特定の形式の SAML アサー�
 
 5. 別のブラウザー ウィンドウで、管理者として SD Elements テナントにサインオンします。
 
-6. 上部のメニューで [システム設定] をクリックし、[シングル サインオン] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_09.png) <br>
+6. 上部のメニューで [システム設定] をクリックし、[シングル サインオン] をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_09.png) <br>
 
 
-7. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_10.png) <br>
+7. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_10.png) <br>
 
     a.**SSO 型** として **SAML** を選びます。
 
@@ -134,7 +134,7 @@ SD Elements アプリケーションでは、特定の形式の SAML アサー�
 
     d.**[保存]** をクリックします。
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][11]
 
@@ -150,11 +150,11 @@ SD Elements アプリケーションでは、特定の形式の SAML アサー�
     | lastname | User.surname |
 
 
-    a.**[ユーザー属性の追加]** をクリックします。<br><br>![シングル サインオンの構成][23]<br>
+    a.**[ユーザー属性の追加]** をクリックします。<br><br>![Configure Single Sign-On][23]<br>
 
-    b.**[属性名]** テキストボックスに**属性名**を入力し、**[属性値]** としてその行に表示されている属性値を選択します。 <br><br>![シングル サインオンの構成][22]<br>
+    b.**[属性名]** テキストボックスに**属性名**を入力し、**[属性値]** としてその行に表示されている属性値を選択します。 <br><br>![Configure Single Sign-On][22]<br>
 
-    c.**[ユーザー属性の追加]** をクリックします。<br><br>![シングル サインオンの構成][23]<br>
+    c.**[ユーザー属性の追加]** をクリックします。<br><br>![Configure Single Sign-On][23]<br>
 
 1. **[変更の適用]** をクリックします。<br><br>![シングル サインオンの構成][24]<br>
 
@@ -242,7 +242,7 @@ SD Elements アプリケーションでは、特定の形式の SAML アサー�
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[SD Elements]** を選択します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_50.png) <br>
+2. アプリケーションの一覧で **[SD Elements]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -287,4 +287,4 @@ SD Elements アプリケーションでは、特定の形式の SAML アサー�
 [204]: ./media/active-directory-saas-sd-elements-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sd-elements-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0309_2016-->

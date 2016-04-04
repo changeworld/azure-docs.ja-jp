@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="01/09/2016"
+	ms.date="02/22/2016"
     ms.author="robmcm"/>
 
 # Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法
@@ -41,7 +41,7 @@ Jenkins 用の Azure スレーブ プラグインを使用して、分散され�
 * サブスクリプション ID
 * サブスクリプション用の管理証明書
 
-これらは、サブスクリプション プロファイルで確認できます。サブスクリプション プロファイルのコピーがない場合は、[サブスクリプション サイト](https://manage.windowsazure.com/publishsettings/Index?SchemaVersion=2.0)からダウンロードできます。サブスクリプション プロファイルの例を以下に示します。
+これらは、[サブスクリプション プロファイル](https://manage.windowsazure.com/publishsettings/Index?SchemaVersion=2.0)で確認できます。サブスクリプション プロファイルの例を以下に示します。
 
 	<?xml version="1.0" encoding="utf-8"?>
 
@@ -204,4 +204,4 @@ Jenkins 用の Azure スレーブ プラグインを使用して、分散され�
 
 Jenkins は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順で指定されたスクリプトを実行します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -68,12 +68,12 @@ JSON 形式の NSG のサンプル
 	}
 
 ### 既定のセキュリティ サポート
-既定のセキュリティ規則には、セキュリティ規則で使用できるものと同じプロパティがあります。これらは、NSG を適用するリソース間の基本的な接続を提供するために存在します。どの[既定セキュリティ規則](./virtual-networks-nsg.md#Default-Rules)が存在するのかを把握してください。
+既定のセキュリティ規則には、セキュリティ規則で使用できるものと同じプロパティがあります。これらは、NSG を適用するリソース間の基本的な接続を提供するために存在します。どの[既定セキュリティ規則](../articles/virtual-network/virtual-networks-nsg.md#Default-Rules)が存在するのかを把握してください。
 
 ### その他のリソース
 
-- [NSG](virtual-networks-nsg.md) の詳細を確認します。
+- [NSG](../articles/virtual-network/virtual-networks-nsg.md) の詳細を確認します。
 - NSG については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163615.aspx)を確認してください。
 - セキュリティ規則については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163580.aspx)を確認してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

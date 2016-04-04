@@ -34,13 +34,22 @@ API Apps には、次の機能が用意されています。
 
 - **Visual Studio の統合** - Visual Studio の専用ツールを使えば、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。詳細については、[Azure SDK 2.8.1 for .NET の発表に関するページ](/blog/announcing-azure-sdk-2-8-1-for-net/)を参照してください。
 
-- **Logic Apps との統合** - 作成した API アプリは、[App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) で使用できます。方法については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」を参照してください。API Apps を Logic Apps と統合する方法の継続的な変更については、「[App Service API Apps - 変更内容](app-service-api-whats-changed.md)」を参照してください。
+- **Logic Apps との統合** - 作成した API アプリは、[App Service Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) で使用できます。詳細については、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」と「[新しいスキーマ バージョン 2015-08-01-preview](../app-service-logic/app-service-logic-schema-2015-08-01.md)」を参照してください。
 
 - **既存の API をそのまま使用できる** - API Apps 機能を利用するために既存の API のコードを変更する必要はありません。お持ちのコードを API アプリにデプロイするだけです。API では、App Service でサポートされている任意の言語またはフレームワークを使用できます。たとえば、ASP.NET、C#、Java、PHP、Node.js、Python などを使用できます。
 
-さらに、API Apps、Web Apps、および Mobile Apps の機能は互換性があります。つまり、API Apps のインスタンスで、Web 開発とモバイル開発用の機能と Web Apps と Mobile Apps が提供するホスティングを活用できます。この逆もあてはまります。たとえば、Web アプリを使用して API をホストでき、同時に Swagger メタデータを活用してクライアント コードを生成し、CORS を活用してブラウザーのクロス ドメイン アクセスを実行できます。詳細については、「[Web Apps の概要](../app-service-web/app-service-web-overview.md)」と「[Mobile Apps の概要](../app-service-mobile/app-service-mobile-value-prop.md)」を参照してください。
+さらに、API アプリでは、[Web Apps](../app-service-web/app-service-web-overview.md) および [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) によって提供される機能を活用することができます。この逆も当てはまります。Web アプリまたはモバイル アプリを使用して API をホストする場合は、Swagger メタデータなどの API Apps の機能を活用してクライアント コードを生成し、CORS を活用してブラウザーのクロス ドメイン アクセスを実行できます。3 つの種類 (API、Web、モバイル) の異なる点は、Azure ポータルでこれらに対して使用する名前とアイコンのみです。すべてに同じ機能があるため、必要な機能を得るためにアプリの種類を変える必要はありません。ただし、既存のアプリの種類を変更する必要がある場合には、簡単に行うことができます。詳細については、「[Azure App Service で API Apps と ASP.NET を使用する](app-service-api-dotnet-get-started.md#optional-changing-an-app-type)」の「**アプリの種類を変更する**」を参照してください。
 
->[AZURE.NOTE] [Azure API Management](../api-management/api-management-key-concepts.md) を使用することで、App Service API Apps でホストされる API へのクライアント アクセスを制御できます。API Apps では認証サービスを提供します。その他に、API Apps ではなく API Management が提供するアクセス管理機能もあります。たとえば、エンドポイント統合やスロットルなどです。
+## Azure API Management を使用して API Apps を強化する 
+
+API Apps と [Azure API Management](../api-management/api-management-key-concepts.md) は補完的なサービスです。
+
+* API Management は API 管理関連のサービスです。API Management フロントエンドを API に配置し、使用率を監視し、調整したり、入力と出力を操作したり、複数の API を 1 つに統合したりします。管理対象の API は任意の場所でホストできます。
+* API Apps は API のホスト関連のサービスです。このサービスには API の開発と使用を支援する機能がありますが、API Management で行うような監視、調整、操作、統合は行いません。 
+
+API Management を利用し、API Apps がホストする API を管理するか、API Management なしで API Apps を使用できます。
+
+API Management と API Apps の一部の機能には同じような働きがあります。たとえば、両方とも CORS サポートを自動化できます。2 つのサービスを共に使用する場合、CORS には API Management を使用します。これが API アプリのフロントエンドとして機能するためです。
 
 ## <a id="concepts"></a> API Apps の概念
 
@@ -51,10 +60,8 @@ API Apps には、次の機能が用意されています。
 
 ## 使用の開始
 
-API アプリの使用を開始するには、[API Apps の使用に関するチュートリアル](app-service-api-dotnet-get-started.md)に従ってください。
+API Apps の使用を開始する場合は、[API Apps の使用に関するチュートリアル](app-service-api-dotnet-get-started.md)のいずれかに従ってください。
 
-API Apps に関する既知の問題の一覧については、[API Apps の既知の問題に関するフォーラムの投稿](https://social.msdn.microsoft.com/Forums/ja-JP/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
+API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)でスレッドを開始します。
 
-Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
-
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0323_2016-->

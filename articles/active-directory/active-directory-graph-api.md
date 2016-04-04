@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/25/2016"
+   ms.date="03/18/2016"
    ms.author="mbaldwin" />
 
 # Azure Active Directory Graph API
@@ -50,6 +50,13 @@ Graph API には、次の機能が用意されています。
 
 - **ディレクトリ拡張機能**: ディレクトリ オブジェクトの一意のプロパティの読み取りまたは書き込みを行う必要があるアプリケーションを開発している場合は、Graph API を使用して、拡張機能の値を登録して使用できます。たとえば、アプリケーションがユーザーごとに Skype ID プロパティを必要とする場合は、ディレクトリに新しいプロパティを登録することができ、そのプロパティはすべてのユーザー オブジェクトで使用できるようになります。詳細については、「[Azure AD Graph API ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 
+- **アクセス許可スコープによる保護**: AAD Graph API は、AAD データへの保護/承認されたアクセスを有効にし、以下のようなさまざまな種類のクライアント アプリをサポートするアクセス許可スコープを公開しています。
+ - サインインしたユーザー (代理) から認証を使用してデータへの委任アクセスを付与された、ユーザー インターフェイスを持つアプリ
+  - サービス/デーモン クライアント (アプリ ロール) などのアプリケーション定義のロール ベースのアクセス制御を使用するアプリ
+
+    委任およびアプリ ロールのアクセス許可スコープは、Graph API によって公開されている権限を表し、[Azure クラシック ポータル](https://manage.windowsazure.com)のアプリケーション登録のアクセス許可を通じてクライアント アプリケーションによって要求できます。クライアントは、委任されたアクセス許可のアクセス トークンで受信したスコープ ("scp") 要求と、アプリ ロールのアクセス許可のロール ("role") 要求を調べることで、自身に付与されているアクセス許可スコープを確認できます。[Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)の詳細については、こちらを参照してください。
+
+
 ## シナリオ
 
 Graph API により、多くのアプリケーション シナリオを実現できます。最も一般的なシナリオを次に示します。
@@ -66,4 +73,4 @@ Graph API により、多くのアプリケーション シナリオを実現で
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

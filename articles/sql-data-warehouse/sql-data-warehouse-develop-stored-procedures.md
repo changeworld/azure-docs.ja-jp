@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
-# SQL Data Warehouse のストアド プロシージャ 
+# SQL Data Warehouse のストアド プロシージャ
 
 SQL Data Warehouse では、SQL Server の Transact-SQL 機能の多くをサポートしています。さらに重要なのは、ソリューションのパフォーマンスを最大限にするために活用できる、スケールアウト専用の機能が用意されていることです。
 
@@ -28,7 +28,7 @@ SQL Data Warehouse では、SQL Server の Transact-SQL 機能の多くをサポ
 ストアド プロシージャは、SQL コードをカプセル化し、データ ウェアハウスのデータの近くに格納するための優れた方法です。コードを管理しやすい単位にカプセル化することで、開発者はソリューションをモジュール化することができ、コードの再利用性が大幅に促進されます。ストアド プロシージャの柔軟性をさらに高めるために、各ストアド プロシージャはパラメーターを受け入れることもできます。
 
 SQL Data Warehouse は、簡素化され、合理化されたストアド プロシージャの実装を提供します。SQL Server との最大の違いは、ストアド プロシージャがプリコンパイル済みコードではないことです。データ ウェアハウスでは、一般に開発者はコンパイル時間をあまり気にしません。大量のデータに対して操作を実行するときに、ストアド プロシージャ コードが適切に最適化されていることの方が重要です。目標は、数時間、数分、(数ミリ秒ではなく) 数秒節約することです。したがって、ストアド プロシージャは、SQL ロジックのコンテナーと考えるとよいでしょう。
- 
+
 SQL Data Warehouse がストアド プロシージャを実行すると、実行時に SQL ステートメントが解析、変換され、最適化されます。このプロセスの中で、各ステートメントが分散クエリに変換されます。データに対して実際に実行される SQL コードは、送信されるクエリとは異なります。
 
 ## ストアド プロシージャの入れ子
@@ -40,20 +40,23 @@ SQL Data Warehouse では、最大 8 レベルの入れ子をサポートしま�
 
 ```
 EXEC prc_nesting
-``` 
-このストアド プロシージャが別の EXEC も呼び出すと、入れ子レベルが 2 に増加します (```
+```
+ストアド プロシージャから別の EXEC の呼び出しも行う場合、入れ子レベルは 2 に増えます。
+```
 CREATE PROCEDURE prc_nesting
 AS
 EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
-```)。2 番目のストアド プロシージャが動的 SQL を実行すると、入れ子レベルが 3 に増加します (```
+```
+次に 2 つ目の手順で何らかの動的 SQL を実行すると、入れ子レベルは 3 に増えます。
+```
 CREATE PROCEDURE prc_nesting_2
 AS
 EXEC sp_executesql 'SELECT 'another nest level'  -- This call is nest level 2
 GO
 EXEC prc_nesting
-```)。
+```
 
 SQL Data Warehouse では、@@NESTLEVEL を現在サポートしていません。入れ子レベルは、開発者が自分で追跡する必要があります。入れ子レベルが上限の 8 に達することはほとんどありませんが、上限に達した場合は、コードを再作成し、この制限の範囲内に収まるようにフラット化する必要があります。
 
@@ -94,4 +97,4 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/13/2016"
+   ms.date="03/08/2016"
    ms.author="jgao"/>
 
 # .NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
@@ -25,7 +25,9 @@
 .NET SDK を使用して HDInsight クラスターを作成する方法について説明します。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
 
-###前提条件:
+##前提条件:
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
@@ -35,7 +37,7 @@
 ## クラスターの作成
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。Visual Studio コンソール アプリケーションを作成し、クラスターを作成するためのコードを貼り付けるには、次の手順に従います。
 
-アプリケーションには、Azure リソース グループと既定のストレージ アカウントが必要です。 「[付録 A](#appx-a-create-dependent-components)」では、依存コンポーネントを作成する PowerShell スクリプトについて説明します。
+アプリケーションには、Azure リソース グループと既定のストレージ アカウントが必要です。「[付録 A](#appx-a-create-dependent-components)」では、依存コンポーネントを作成する PowerShell スクリプトについて説明します。
 
 **Visual Studio コンソール アプリケーションを作成するには**
 
@@ -225,4 +227,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0309_2016-->

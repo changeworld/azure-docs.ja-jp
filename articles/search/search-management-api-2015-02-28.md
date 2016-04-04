@@ -481,6 +481,8 @@ HTTP 200 の場合、応答本文は空になります。HTTP 200 (OK) は、リ
 
     PUT https://management.azure.com/subscriptions/[subscriptionId]/resourcegroups/[resourceGroupName]/providers/Microsoft.Search/searchServices/[serviceName]?api-version=2015-02-28
 
+> [AZURE.NOTE] PUT を使用してサービスを更新するには、[サービスの作成](#CreateService)要求で使用したものと同じ要求本文を使用する必要があります。
+
 ###要求 URI のパラメーター###
 
 `subscriptionId`: 必須。Azure ユーザーの `subscriptionID`。この値は、Azure リソース マネージャー API またはポータルから取得できます。
@@ -826,4 +828,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
 ありません。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

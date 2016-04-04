@@ -12,14 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
 
 # 新しい Application Insights リソースを作成します。
-
-
-
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 Visual Studio Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定の一部です][start]。多くの場合、これは IDE によって自動的に行うことができ、可能な場合には常にそうするよう勧められています。しかし、リソースを手動で作成する場合もあります。
 
@@ -94,4 +90,4 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

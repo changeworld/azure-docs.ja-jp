@@ -3,7 +3,7 @@
 	description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。"
 	documentationCenter="ios"
 	authors="krisragh"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="mobile-services"/>
 
@@ -13,29 +13,31 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/09/2016"
 	ms.author="krisragh;donnam"/>
 
 
 # Mobile Services でのオフライン データの同期との競合の処理
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
 &nbsp;
 
-
-[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
 このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルは、チュートリアル「[オフライン データの使用]」に基づいています。
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 
 ## IOS プロジェクトのダウンロード
 
 このチュートリアル用に [更新済みの Xcode プロジェクトを Github から](https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS)ダウンロードしてください。まず、「[オフライン データの使用]」チュートリアルの終わりの Xcode プロジェクトを使用し、項目の編集を可能にするよう更新しました。サポートするクラスとメソッドも追加し、次のセクションに競合ハンドラーを追加できるようにしました。
 
-このチュートリアルの末尾で、2 台の電話でアプリを実行する場合、両方の電話でローカルで同じ項目を変更し、変更内容をサーバーに戻します。各電話のユーザーに、((サーバー上のバージョンを上書きし) クライアント バージョンを保持するか、(クライアントのローカル テーブルを更新して) サーバー バージョンを保持するか、(プッシュをキャンセルし、操作を保留にして) いずれのバージョンも保持しないの) 保持するバージョンを選択させます。
+このチュートリアルの最後に、2 台の電話でこのアプリを実行し、両方の電話で同じ項目をローカル変更し、変更をサーバーにプッシュする場合、いずれのバージョンを維持するかの選択を各電話の利用者に許可します。
+  * クライアント バージョンを保持する (サーバー上のバージョンを上書きする)
+  * サーバー バージョンを保持する (クライアントのローカル テーブルを更新する)
+  * いずれのバージョンも保持しない (プッシュを取り消し、操作を保留したままにする)
 
 次に、この機能を有効にする競合ハンドラーを追加しましょう。
 
@@ -144,4 +146,4 @@
 [オフライン データの使用]: mobile-services-ios-get-started-offline-data.md
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0316_2016-->

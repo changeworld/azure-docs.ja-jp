@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # フェールオーバーのルーティング方法の構成
@@ -38,7 +38,7 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 
 [会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)
 
-[Traffic Manager のルーティング方法](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
 
 [ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
 
@@ -52,4 +52,4 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0323_2016-->

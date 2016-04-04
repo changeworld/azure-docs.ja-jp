@@ -81,7 +81,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 	- **name**。リソースの名前です。**[parameters('applicationGatewayName')]** が使用されているため、名前はデプロイメント中にユーザーまたはパラメーター ファイルによって入力されます。
 	- **properties**。リソースのプロパティの一覧です。このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
 
-7. https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/azuredeploy.json に戻ります。
+7. https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/ に戻ります。
 8. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
 9. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 10. 保存したファイルを開き、パラメーターの値を編集します。次の値を使用して、このシナリオで説明した Application Gateway をデプロイします。
@@ -206,7 +206,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 **-n (または --name)**。新しいリソース グループの名前です。このシナリオでは、*appgatewayRG* です。
 
-**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*Eastus* です。
+**-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。このシナリオでは、*eastus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
@@ -284,4 +284,4 @@ SSL オフロードを構成する場合は、「[SSL オフロードの Applica
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0316_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/29/2016" 
+	ms.date="03/08/2016" 
 	ms.author="johnmac"/>
 
 #DocumentDB のパフォーマンス レベル
@@ -122,4 +122,4 @@ DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメ
 
 [1]: ./media/documentdb-performance-levels/img1.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

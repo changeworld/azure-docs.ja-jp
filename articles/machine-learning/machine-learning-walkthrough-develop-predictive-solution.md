@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/03/2016"
+	ms.date="03/09/2016"
 	ms.author="garye"/>
 
 
@@ -39,6 +39,6 @@
 5.	[Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
-このチュートリアルは、[Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](../machine-learning-sample-credit-risk-prediction.md)」のサンプル実験の簡略版に基づきます。
+このチュートリアルは、[Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

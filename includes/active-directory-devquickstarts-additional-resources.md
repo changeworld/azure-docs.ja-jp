@@ -2,6 +2,6 @@
 
 - [Azure AD 開発者ガイド](active-directory-developers-guide.md)
 - [GitHub の Azure AD サンプル](https://github.com/AzureAdSamples)
-- [CloudIdentity.com](https://cloudidentity.com)
+- [CloudIdentity.com](http://cloudidentity.com)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0323_2016-->

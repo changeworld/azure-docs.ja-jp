@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/25/2016"
+	ms.date="03/18/2016"
 	ms.author="casoper"/>
 
 
 # Azure 用 CDN の使用
 
-Azure Content Delivery Network (CDN) は、Azure で任意の HTTP アプリケーションを拡張するための基本的要素です。CDN は、Azure のお客様にグローバル ソリューションを提供するもので、エンド ユーザーに近い場所にコンテンツをキャッシュして配信します。そのため、ユーザーからの要求は、毎回オリジンを参照する代わりに、最適なパフォーマンスが得られる CDN エッジ POP にインテリジェントにルーティングされます。これにより、パフォーマンスとユーザー エクスペリエンスが大幅に向上します。現在の CDN ノードの場所の一覧については、「[Azure Content Delivery Network (CDN) POP 場所](cdn-pop-locations.md)」を参照してください。
+Azure Content Delivery Network (CDN) は、Azure で任意の HTTP/HTTPS アプリケーションを拡張するための基本的要素です。CDN は、Azure のお客様にグローバル ソリューションを提供するもので、エンド ユーザーに近い場所にコンテンツをキャッシュして配信します。そのため、ユーザーからの要求は、毎回オリジンを参照する代わりに、最適な応答時間が得られる CDN エッジ ノード (POP、つまりポイント オブ プレゼンス) にインテリジェントにルーティングされます。これにより、パフォーマンスとユーザー エクスペリエンスが大幅に向上します。現在の CDN ノードの場所の一覧については、「[Azure Content Delivery Network (CDN) POP 場所](cdn-pop-locations.md)」を参照してください。
 
 CDN を使用して Azure データをキャッシュすることには、次のような利点があります。
 
@@ -149,4 +149,4 @@ Microsoft Azure CDN は、[CDN リソース プロバイダーの REST API](http
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0323_2016-->

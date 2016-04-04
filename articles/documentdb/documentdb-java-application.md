@@ -1,27 +1,27 @@
-<properties 
+<properties
 	pageTitle="DocumentDB を使用した Java アプリケーション開発のチュートリアル | Microsoft Azure"
 	description="この Java Web アプリケーション チュートリアルでは、Azure DocumentDB サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
 	keywords="アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, documentdb, azure, Microsoft azure"
-	services="documentdb" 
-	documentationCenter="java" 
-	authors="aliuy" 
-	manager="jhubbard" 
+	services="documentdb"
+	documentationCenter="java"
+	authors="aliuy"
+	manager="jhubbard"
 	editor="mimig"/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.devlang="java" 
-	ms.topic="hero-article" 
-	ms.tgt_pltfrm="NA" 
-	ms.workload="data-services" 
-	ms.date="01/29/2016" 
+<tags
+	ms.service="documentdb"
+	ms.devlang="java"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="03/10/2016"
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
-- [Node.js](documentdb-nodejs-application.md)
+- [Node.JS](documentdb-nodejs-application.md)
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
@@ -47,19 +47,18 @@
 これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)のクイック スタート セクションで、インストール プロセスの手順を参照してください。
 
 ##<a id="CreateDB"></a>手順 1: DocumentDB データベース アカウントを作成する
-DocumentDB データベース アカウントを Azure でプロビジョニングするには:
 
-1. データベース アカウントをまだ持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってデータベース アカウントを作成します。既にアカウントがある場合は、手順 2. に進みます。
-2. 次の図に示す **[キー]** ブレードからエンドポイントの **[URI]** 値と **[プライマリ キー]** 値をクリップボードにコピーして、次に作成する Web アプリケーションでこれらの値を使用できるようにしておきます。
+最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順2: Java JSP アプリケーションを作成する](#CreateJSP)」に進んでください。
 
-![DocumentDB アカウントの作成 - データベース チュートリアルScreen shot of the Azure Portal, showing a DocumentDB account, with the ACTIVE hub highlighted, the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade][1]
+[AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
+[AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
 ##<a id="CreateJSP"></a>手順 2: Java JSP アプリケーションを作成する
 
 JSP アプリケーションを作成するには:
 
-1. 最初に、Java プロジェクトを作成します。Eclipse を起動し、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします。使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]**、の順にクリックし、**[Web]** を展開します。さらに、**[Dynamic Web Project]** をクリックし、**[Next]** をクリックします。 
+1. 最初に、Java プロジェクトを作成します。Eclipse を起動し、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします。使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]**、の順にクリックし、**[Web]** を展開します。さらに、**[Dynamic Web Project]** をクリックし、**[Next]** をクリックします。
 
 	![JSP Java アプリケーション開発](./media/documentdb-java-application/image10.png)
 
@@ -72,7 +71,7 @@ JSP アプリケーションを作成するには:
 5. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
 
 6. index.jsp ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを既存の <body> 要素に追加します。更新した <body> の内容は次のようになります。
-    
+
 	    <body>
 	        <% out.println("Hello World!"); %>
 	    </body>
@@ -90,7 +89,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 1. Project Explorer でプロジェクトを右クリックして、**[Configure]**、**[Convert to Maven Project]** の順にクリックします。
 2. **[Create new POM]** ウィンドウで、既定値を受け入れ、**[Finish]** をクリックします。
-3. **Project Explorer** で、pom.xml ファイルを開きます。 
+3. **Project Explorer** で、pom.xml ファイルを開きます。
 4. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、**[Add]** をクリックします。
 4. **[Select Dependency]** ウィンドウで、次の操作を行います。
  - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
@@ -110,7 +109,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
 6. pom.xml ファイルを保存します。
 
-##<a id="UseService"></a>手順 4: Java アプリケーションで DocumentDB サービスを使用する 
+##<a id="UseService"></a>手順 4: Java アプリケーションで DocumentDB サービスを使用する
 
 1. まず TodoItem オブジェクトを定義します。
 
@@ -129,15 +128,15 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 	    private static final String HOST = "[YOUR_ENDPOINT_HERE]";
 	    private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
-	
+
 	    private static DocumentClient documentClient;
-	
+
 	    public static DocumentClient getDocumentClient() {
 	        if (documentClient == null) {
 	            documentClient = new DocumentClient(HOST, MASTER_KEY,
 	                    ConnectionPolicy.GetDefault(), ConsistencyLevel.Session);
 	        }
-	
+
 	        return documentClient;
 	    }
 
@@ -150,22 +149,22 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		public class DocDbDao implements TodoDao {
 		    // The name of our database.
 		    private static final String DATABASE_ID = "TodoDB";
-		
+
 		    // The name of our collection.
 		    private static final String COLLECTION_ID = "TodoCollection";
-		
+
 		    // The DocumentDB Client
 		    private static DocumentClient documentClient = DocumentClientFactory
 		            .getDocumentClient();
-		
+
 		    // Cache for the database object, so we don't have to query for it to
 		    // retrieve self links.
 		    private static Database databaseCache;
-		
+
 		    // Cache for the collection object, so we don't have to query for it to
 		    // retrieve self links.
 		    private static DocumentCollection collectionCache;
-		
+
 		    private Database getTodoDatabase() {
 		        if (databaseCache == null) {
 		            // Get the database if it exists
@@ -173,7 +172,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                    .queryDatabases(
 		                            "SELECT * FROM root r WHERE r.id='" + DATABASE_ID
 		                                    + "'", null).getQueryIterable().toList();
-		
+
 		            if (databaseList.size() > 0) {
 		                // Cache the database object so we won't have to query for it
 		                // later to retrieve the selfLink.
@@ -183,7 +182,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                try {
 		                    Database databaseDefinition = new Database();
 		                    databaseDefinition.setId(DATABASE_ID);
-		
+
 		                    databaseCache = documentClient.createDatabase(
 		                            databaseDefinition, null).getResource();
 		                } catch (DocumentClientException e) {
@@ -194,10 +193,10 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                }
 		            }
 		        }
-		
+
 		        return databaseCache;
 		    }
-		
+
 		    private DocumentCollection getTodoCollection() {
 		        if (collectionCache == null) {
 		            // Get the collection if it exists.
@@ -206,7 +205,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                            getTodoDatabase().getSelfLink(),
 		                            "SELECT * FROM root r WHERE r.id='" + COLLECTION_ID
 		                                    + "'", null).getQueryIterable().toList();
-		
+
 		            if (collectionList.size() > 0) {
 		                // Cache the collection object so we won't have to query for it
 		                // later to retrieve the selfLink.
@@ -220,7 +219,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                    // Configure the new collection performance tier to S1.
 		                    RequestOptions requestOptions = new RequestOptions();
 		                    requestOptions.setOfferType("S1");
-		
+
 		                    collectionCache = documentClient.createCollection(
 		                            getTodoDatabase().getSelfLink(),
 		                            collectionDefinition, requestOptions).getResource();
@@ -232,7 +231,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                }
 		            }
 		        }
-		
+
 		        return collectionCache;
 		    }
 		}
@@ -246,11 +245,11 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    public TodoItem createTodoItem(TodoItem todoItem) {
 	        // Serialize the TodoItem as a JSON Document.
 	        Document todoItemDocument = new Document(gson.toJson(todoItem));
-	
+
 	        // Annotate the document as a TodoItem for retrieval (so that we can
 	        // store multiple entity types in the collection).
 	        todoItemDocument.set("entityType", "todoItem");
-	
+
 	        try {
 	            // Persist the document using the DocumentClient.
 	            todoItemDocument = documentClient.createDocument(
@@ -260,7 +259,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	            e.printStackTrace();
 	            return null;
 	        }
-	
+
 	        return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
 	    }
 
@@ -274,7 +273,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	                .queryDocuments(getTodoCollection().getSelfLink(),
 	                        "SELECT * FROM root r WHERE r.id='" + id + "'", null)
 	                .getQueryIterable().toList();
-	
+
 	        if (documentList.size() > 0) {
 	            return documentList.get(0);
 	        } else {
@@ -288,7 +287,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    public TodoItem readTodoItem(String id) {
 	        // Retrieve the document by id using our helper method.
 	        Document todoItemDocument = getDocumentById(id);
-	
+
 	        if (todoItemDocument != null) {
 	            // De-serialize the document in to a TodoItem.
 	            return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
@@ -298,39 +297,39 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    }
 
 7. DocumentClient を使用して、DocumentDB SQL により、TodoItems のコレクションまたはリストを取得することも可能です。
-	
+
 	    @Override
 	    public List<TodoItem> readTodoItems() {
 	        List<TodoItem> todoItems = new ArrayList<TodoItem>();
-	
+
 	        // Retrieve the TodoItem documents
 	        List<Document> documentList = documentClient
 	                .queryDocuments(getTodoCollection().getSelfLink(),
 	                        "SELECT * FROM root r WHERE r.entityType = 'todoItem'",
 	                        null).getQueryIterable().toList();
-	
+
 	        // De-serialize the documents in to TodoItems.
 	        for (Document todoItemDocument : documentList) {
 	            todoItems.add(gson.fromJson(todoItemDocument.toString(),
 	                    TodoItem.class));
 	        }
-	
+
 	        return todoItems;
 	    }
 
 8. DocumentClient を使用してドキュメントを更新する方法は多数あります。Todo リスト アプリケーションでは、TodoItem が完了しているかどうかを切り替える機能が求められることがあります。これは、ドキュメント内の "complete" 属性を更新することで実現できます。
-	
+
 	    @Override
 	    public TodoItem updateTodoItem(String id, boolean isComplete) {
 	        // Retrieve the document from the database
 	        Document todoItemDocument = getDocumentById(id);
-	
+
 	        // You can update the document as a JSON document directly.
 	        // For more complex operations - you could de-serialize the document in
 	        // to a POJO, update the POJO, and then re-serialize the POJO back in to
 	        // a document.
 	        todoItemDocument.set("complete", isComplete);
-	
+
 	        try {
 	            // Persist/replace the updated document.
 	            todoItemDocument = documentClient.replaceDocument(todoItemDocument,
@@ -339,19 +338,19 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	            e.printStackTrace();
 	            return null;
 	        }
-	
+
 	        return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
 	    }
 
 9. 最後に、リストから TodoItem を削除する機能が求められる場合があります。そのためには、前に作成したヘルパー メソッドを使用して、自己リンクを取得し、次にクライアントに削除を指示できます。
-	
+
 	    @Override
 	    public boolean deleteTodoItem(String id) {
 	        // DocumentDB refers to documents by self link rather than id.
-	
+
 	        // Query for the document to retrieve the self link.
 	        Document todoItemDocument = getDocumentById(id);
-	
+
 	        try {
 	            // Delete the document by self link.
 	            documentClient.deleteDocument(todoItemDocument.getSelfLink(), null);
@@ -359,7 +358,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	            e.printStackTrace();
 	            return false;
 	        }
-	
+
 	        return true;
 	    }
 
@@ -377,34 +376,34 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		        }
 		        return todoItemController;
 		    }
-		
+
 		    private static TodoItemController todoItemController;
-		
+
 		    private final TodoDao todoDao;
-		
+
 		    TodoItemController(TodoDao todoDao) {
 		        this.todoDao = todoDao;
 		    }
-		
+
 		    public TodoItem createTodoItem(@NonNull String name,
 		            @NonNull String category, boolean isComplete) {
 		        TodoItem todoItem = TodoItem.builder().name(name).category(category)
 		                .complete(isComplete).build();
 		        return todoDao.createTodoItem(todoItem);
 		    }
-		
+
 		    public boolean deleteTodoItem(@NonNull String id) {
 		        return todoDao.deleteTodoItem(id);
 		    }
-		
+
 		    public TodoItem getTodoItemById(@NonNull String id) {
 		        return todoDao.readTodoItem(id);
 		    }
-		
+
 		    public List<TodoItem> getTodoItems() {
 		        return todoDao.readTodoItems();
 		    }
-		
+
 		    public TodoItem updateTodoItem(@NonNull String id, boolean isComplete) {
 		        return todoDao.updateTodoItem(id, isComplete);
 		    }
@@ -417,38 +416,38 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		public class TodoServlet extends HttpServlet {
 			// API Keys
 			public static final String API_METHOD = "method";
-		
+
 			// API Methods
 			public static final String CREATE_TODO_ITEM = "createTodoItem";
 			public static final String GET_TODO_ITEMS = "getTodoItems";
 			public static final String UPDATE_TODO_ITEM = "updateTodoItem";
-		
+
 			// API Parameters
 			public static final String TODO_ITEM_ID = "todoItemId";
 			public static final String TODO_ITEM_NAME = "todoItemName";
 			public static final String TODO_ITEM_CATEGORY = "todoItemCategory";
 			public static final String TODO_ITEM_COMPLETE = "todoItemComplete";
-		
+
 			public static final String MESSAGE_ERROR_INVALID_METHOD = "{'error': 'Invalid method'}";
-		
+
 			private static final long serialVersionUID = 1L;
 			private static final Gson gson = new Gson();
-		
+
 			@Override
 			protected void doGet(HttpServletRequest request,
 					HttpServletResponse response) throws ServletException, IOException {
-		
+
 				String apiResponse = MESSAGE_ERROR_INVALID_METHOD;
-		
+
 				TodoItemController todoItemController = TodoItemController
 						.getInstance();
-		
+
 				String id = request.getParameter(TODO_ITEM_ID);
 				String name = request.getParameter(TODO_ITEM_NAME);
 				String category = request.getParameter(TODO_ITEM_CATEGORY);
 				boolean isComplete = StringUtils.equalsIgnoreCase("true",
 						request.getParameter(TODO_ITEM_COMPLETE)) ? true : false;
-		
+
 				switch (request.getParameter(API_METHOD)) {
 				case CREATE_TODO_ITEM:
 					apiResponse = gson.toJson(todoItemController.createTodoItem(name,
@@ -464,10 +463,10 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 				default:
 					break;
 				}
-		
+
 				response.getWriter().println(apiResponse);
 			}
-	
+
 			@Override
 			protected void doPost(HttpServletRequest request,
 					HttpServletResponse response) throws ServletException, IOException {
@@ -482,10 +481,10 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
           <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
 		  <title>Azure DocumentDB Java Sample</title>
-		
+
 		  <!-- Bootstrap -->
 		  <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		
+
 		  <style>
 		    /* Add padding to body for fixed nav bar */
 		    body {
@@ -502,13 +501,13 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      </div>
 		    </div>
 		  </div>
-		
+
 		  <!-- Body -->
 		  <div class="container">
 		    <h1>My ToDo List</h1>
-		
+
 		    <hr/>
-		
+
 		    <!-- The ToDo List -->
 		    <div class = "todoList">
 		      <table class="table table-bordered table-striped" id="todoItems">
@@ -522,18 +521,18 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		        <tbody>
 		        </tbody>
 		      </table>
-		
+
 		      <!-- Update Button -->
 		      <div class="todoUpdatePanel">
 		        <form class="form-horizontal" role="form">
 		          <button type="button" class="btn btn-primary">Update Tasks</button>
 		        </form>
 		      </div>
-		
+
 		    </div>
-		
+
 		    <hr/>
-		
+
 		    <!-- Item Input Form -->
 		    <div class="todoForm">
 		      <form class="form-horizontal" role="form">
@@ -543,20 +542,20 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		            <input type="text" class="form-control" id="inputItemName" placeholder="Enter name">
 		          </div>
 		        </div>
-		
+
 		        <div class="form-group">
 		          <label for="inputItemCategory" class="col-sm-2">Task Category</label>
 		          <div class="col-sm-10">
 		            <input type="text" class="form-control" id="inputItemCategory" placeholder="Enter category">
 		          </div>
 		        </div>
-		
+
 		        <button type="button" class="btn btn-primary">Add Task</button>
 		      </form>
 		    </div>
-		
+
 		  </div>
-		
+
 		  <!-- Placed at the end of the document so the pages load faster -->
 		  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
 		  <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
@@ -565,13 +564,13 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		</html>
 
 4. 最後に、Web ユーザー インターフェイスとサーブレットを結びつけるためにクライアント側の Javascript を記述します。
-	
+
 		var todoApp = {
 		  /*
 		   * API methods to call Java backend.
 		   */
 		  apiEndpoint: "api",
-		
+
 		  createTodoItem: function(name, category, isComplete) {
 		    $.post(todoApp.apiEndpoint, {
 		        "method": "createTodoItem",
@@ -585,7 +584,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      },
 		      "json");
 		  },
-		
+
 		  getTodoItems: function() {
 		    $.post(todoApp.apiEndpoint, {
 		        "method": "getTodoItems"
@@ -598,7 +597,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      },
 		      "json");
 		  },
-		
+
 		  updateTodoItem: function(id, isComplete) {
 		    $.post(todoApp.apiEndpoint, {
 		        "method": "updateTodoItem",
@@ -608,13 +607,13 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      function(data) {},
 		      "json");
 		  },
-		
+
 		  /*
 		   * UI Methods
 		   */
 		  addTodoItemToTable: function(id, name, category, isComplete) {
 		    var rowColor = isComplete ? "active" : "warning";
-		
+
 		    todoApp.ui_table().append($("<tr>")
 		      .append($("<td>").text(name))
 		      .append($("<td>").text(category))
@@ -628,7 +627,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      .addClass(rowColor)
 		    );
 		  },
-		
+
 		  /*
 		   * UI Bindings
 		   */
@@ -639,7 +638,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      todoApp.ui_createCategoryInput().val("");
 		    });
 		  },
-		
+
 		  bindUpdateButton: function() {
 		    todoApp.ui_updateButton().click(function() {
 		      // Disable button temporarily.
@@ -647,13 +646,13 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      var originalText = myButton.text();
 		      $(this).text("Updating...");
 		      $(this).prop("disabled", true);
-		
+
 		      // Call api to update todo items.
 		      $.each(todoApp.ui_updateId(), function(index, value) {
 		        todoApp.updateTodoItem(value.name, value.value);
 		        $(value).remove();
 		      });
-		
+
 		      // Re-enable button.
 		      setTimeout(function() {
 		        myButton.prop("disabled", false);
@@ -661,14 +660,14 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		      }, 500);
 		    });
 		  },
-		
+
 		  bindUpdateCheckboxes: function() {
 		    todoApp.ui_table().on("click", ".isComplete", function(event) {
 		      var checkboxElement = $(event.currentTarget);
 		      var rowElement = $(event.currentTarget).parents('tr');
 		      var id = checkboxElement.attr('id');
 		      var isComplete = checkboxElement.is(':checked');
-		
+
 		      // Toggle table row color
 		      if (isComplete) {
 		        rowElement.addClass("active");
@@ -677,50 +676,50 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		        rowElement.removeClass("active");
 		        rowElement.addClass("warning");
 		      }
-		
+
 		      // Update hidden inputs for update panel.
 		      todoApp.ui_updateForm().children("input[name='" + id + "']").remove();
-		
+
 		      todoApp.ui_updateForm().append($("<input>")
 		        .attr("type", "hidden")
 		        .attr("class", "updateComplete")
 		        .attr("name", id)
 		        .attr("value", isComplete));
-		
+
 		    });
 		  },
-		
+
 		  /*
 		   * UI Elements
 		   */
 		  ui_createNameInput: function() {
 		    return $(".todoForm #inputItemName");
 		  },
-		
+
 		  ui_createCategoryInput: function() {
 		    return $(".todoForm #inputItemCategory");
 		  },
-		
+
 		  ui_createButton: function() {
 		    return $(".todoForm button");
 		  },
-		
+
 		  ui_table: function() {
 		    return $(".todoList table tbody");
 		  },
-		
+
 		  ui_updateButton: function() {
 		    return $(".todoUpdatePanel button");
 		  },
-		
+
 		  ui_updateForm: function() {
 		    return $(".todoUpdatePanel form");
 		  },
-		
+
 		  ui_updateId: function() {
 		    return $(".todoUpdatePanel .updateComplete");
 		  },
-		
+
 		  /*
 		   * Install the TodoApp
 		   */
@@ -728,11 +727,11 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		    todoApp.bindCreateButton();
 		    todoApp.bindUpdateButton();
 		    todoApp.bindUpdateCheckboxes();
-		
+
 		    todoApp.getTodoItems();
 		  }
 		};
-		
+
 		$(document).ready(function() {
 		  todoApp.install();
 		});
@@ -745,7 +744,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 Azure Websites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
 
-1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]**、**[WAR File]** の順にクリックします。 
+1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]**、**[WAR File]** の順にクリックします。
 2. **[WAR Export]** ウィンドウで、次の操作を行います。
  - [Web project] ボックスに、「azure-documentdb-java-sample」と入力します。
  - [Destination] ボックスでエクスポート先を選択し、WAR ファイルを保存します。
@@ -760,10 +759,10 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。todo プロジェクトを Eclipse にインポートするには、「[前提条件](#Prerequisites)」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
-1. [Project Lombok](http://projectlombok.org/) をインストールします。Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。 
+1. [Project Lombok](http://projectlombok.org/) をインストールします。Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
-4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。 
+4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
 6. **[Source Git Repository]** 画面の **[URI]** ボックスに「https://github.com/Azure-Samples/documentdb-java-todo-app.git」と入力し、**[Next]** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
@@ -778,12 +777,11 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 16. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Project Facets]** をクリックします。
 17. **[Project Facets]** 画面で、**[Dynamic Web Module]** と **[Java]** を選択し、**[OK]** をクリックします。
 18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
-19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。 
+19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。
 20. **[Server]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Restart]** をクリックします。
 21. ブラウザーで、http://localhost:8080/azure-documentdb-java-sample/ に移動してタスク一覧への追加を開始します。既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
-22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Websites にアプリケーションをデプロイする](#Deploy)」を参照してください。 
+22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Websites にアプリケーションをデプロイする](#Deploy)」を参照してください。
 
 [1]: media/documentdb-java-application/keys.png
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0316_2016-->

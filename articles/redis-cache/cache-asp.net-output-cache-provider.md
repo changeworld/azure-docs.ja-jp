@@ -4,7 +4,7 @@
    services="redis-cache"
    documentationCenter="na"
    authors="steved0x"
-   manager="dwrede"
+   manager="erikre"
    editor="tysonn" />
 <tags 
    ms.service="cache"
@@ -81,4 +81,4 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-asp.net-session-state-provider.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0309_2016-->

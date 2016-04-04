@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="02/01/2016"
+   ms.date="03/08/2016"
    ms.author="rickbyh"/>
 
 # SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理  
@@ -28,7 +28,7 @@ Microsoft Azure SQL Database では、サービスをサインアップすると
 
 Azure SQL Database サーバーレベル プリンシパル アカウントには、サーバーレベルとデータベースレベルのセキュリティをすべて管理する権限が常にあります。このトピックでは、SQL Database でサーバーレベル プリンシパルなどのアカウントを使用してログインとデータベースを管理する方法について説明します。
 
-Azure のロールベースのアクセス制御と Azure リソース マネージャー REST API を使用して SQL Database にアクセスする Azure ユーザーは、Azure ロールからアクセス許可を受け取ります。Azure ロールのメンバーのアクションは、データベース エンジンによって実行されます。データベース エンジンのアクセス許可モデルによって影響を受けることはなく、このトピックでは説明しません。詳細については、「[RBAC: 組み込みのロール](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#sql-db-contributor)」を参照してください。
+Azure のロールベースのアクセス制御と Azure リソース マネージャー REST API を使用して SQL Database にアクセスする Azure ユーザーは、Azure ロールからアクセス許可を受け取ります。Azure ロールのメンバーのアクションは、データベース エンジンによって実行されます。データベース エンジンのアクセス許可モデルによって影響を受けることはなく、このトピックでは説明しません。詳細については、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles/#sql-db-contributor)」を参照してください。
 
 > [AZURE.IMPORTANT] SQL Database V12 では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。包含データベース ユーザーはログインする必要がありません。そのため、データベースは軽量になりますが、データベースへのアクセスを制御するサーバーレベルのプリンシパルの機能が減ります。包含データベース ユーザーを有効にすると、セキュリティに重大な影響があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
 
@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0316_2016-->

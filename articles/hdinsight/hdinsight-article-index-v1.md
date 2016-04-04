@@ -21,12 +21,12 @@
 この索引ページを使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)の HDInsight に関する記事を探すことができます。Azure HDInsight は、 オープン ソースである Hadoop と Hortonworks Data Platform のクラウド ディストリビューションです。
 
 
-> [AZURE.IMPORTANT]このドキュメントのインデックス ページは、現在の Azure クラシック ポータルにソリューションをデプロイしているユーザーを対象としています。
+> [AZURE.IMPORTANT]  このドキュメントのインデックス ページは、現在の Azure クラシック ポータルにソリューションをデプロイしているユーザーを対象としています。
 >
 > 新しい HDInsight クラスターでは、**Azure ポータル**を使用することをお勧めします。
 >
-> * [HDInsight ポータルのドキュメント](/documentation/services/hdinsight/)にアクセス
-> * [Azure ポータル](https://portal.azure.com/)にアクセスします。
+> * [HDInsight ポータルのドキュメントにアクセス](/documentation/services/hdinsight/)
+> * [Azure ポータルにアクセスします。](https://portal.azure.com/)
 >
 > ポータルの利点については、「[DevOps は最高](/overview/preview-portal/)」を参照してください。
 >
@@ -58,10 +58,9 @@ Linux と Linux クラスターの使用に関するすべての記事につい�
 * [Microsoft Avro ライブラリを使用した Hadoop のデータのシリアル化](hdinsight-dotnet-avro-serialization.md)
 * [Hive を使用した JSON ドキュメントの処理と分析](hdinsight-using-json-in-hive.md)
 * [Hive および Pig での Python の使用](hdinsight-python.md)
-* [Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query–v1.md)
+* [Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)
 * [.NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk-v1.md)
 * [Hive と Pig ストリーミングでの C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [C# Hadoop ストリーミング プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 
 ## HBase: NoSQL データベース
 
@@ -71,7 +70,7 @@ Linux と Linux クラスターの使用に関するすべての記事につい�
 
 ## Apache Storm: ストリーム クエリ
 
-* [Get started with the Storm Starter samples (Storm Starter のサンプルを使用する)](hdinsight-apache-storm-tutorial-get-started-v1.md)
+* [Get started with the Storm Starter samples (Storm Starter のサンプルを使用する)](hdinsight-apache-storm-tutorial-get-started.md)
 * [Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)
 * [Hadoop Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [Apache Storm と Maven を使用する基本的なワード カウント アプリケーションの Java ベースのトポロジの開発](hdinsight-storm-develop-java-topology.md)
@@ -100,9 +99,8 @@ Azure ポータルでの Apache Spark ネイティブ クラスターの使用�
 ## HDInsight の Machine Learning
 
 * [Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)
-* [Learning path: Build advanced analytics solutions (ラーニング パス: 高度な分析ソリューションを構築する)](machine-learning-data-science-how-to-create-machine-learning-service.md)
-* [Learning path: Advanced data processing (ラーニング パス: 高度なデータ処理)](machine-learning-data-science-advanced-data-processing.md)
-* [HDInsight と Machine Learning を使用したタクシー データの予測に関するヒント](machine-learning-data-science-process-hive-walkthrough.md)
+* [Learning path: Build advanced analytics solutions (ラーニング パス: 高度な分析ソリューションを構築する)](../machine-learning/machine-learning-walkthrough-develop-predictive-solution.md)
+* [HDInsight と Machine Learning を使用したタクシー データの予測に関するヒント](../machine-learning/machine-learning-data-science-process-hive-walkthrough.md)
 
 ## 機能拡張
 
@@ -133,4 +131,4 @@ Azure ポータルでの Apache Spark ネイティブ クラスターの使用�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

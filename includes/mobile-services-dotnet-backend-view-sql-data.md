@@ -13,4 +13,4 @@
 
 	テーブルに Id、\_\_createdAt、\_\_updatedAt、\_\_version の各列があることに注意してください。これらの列はオフライン データ同期をサポートし、基本クラス [EntityData](http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.entitydata.aspx) に実装されます。詳細については[「オフライン データ同期の使用」]を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!----HONumber=AcomDC_1203_2015-->

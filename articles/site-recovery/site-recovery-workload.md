@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/01/2015" 
+	ms.date="03/18/2016" 
 	ms.author="raynew"/>
 
 # Azure Site Recovery で保護できるワークロード
@@ -39,22 +39,22 @@ Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Direc
 
 Site Recovery レプリケーションのテクノロジは、仮想マシンで実行されているすべてのアプリケーションと互換性があります。さらに、各アプリケーションのサポートを強化するために、アプリケーション製品チームと協力して、追加のテストを実施しました。
 
-**ワークロード** | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(Azure へ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p><p>**(Azure へ)****</p>
+**ワークロード** | <p>**Hyper-V VM を**</p> <p>**セカンダリ サイトにレプリケート**</p> | <p>**Hyper-V VM を Azure に**</p> <p>**レプリケート**</p> | <p>**VMware VM をセカンダリ サイトに**</p> <p>**レプリケート**</p> | <p>**VMware VM を**</p><p>**Azure にレプリケート****</p>
 ---|---|---|---|---
-Active Directory、DNS | Y | Y | Y | Y
-Web アプリ (IIS、SQL) | Y | Y | Y | Y
+Active Directory、DNS | Y | Y | Y | Y 
+Web アプリケーション (IIS、SQL) | Y | Y | Y | Y
 SCOM | Y | Y | Y | Y
-Sharepoint | Y | Y | Y | Y
-<p>SAP</p><p>クラスター以外の Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
-Exchange (非 DAG) | Y | 近日対応予定 | Y | Y
-Remote Desktop/VDI | Y | Y | Y | N/A
-<p>Linux</p> <p>(オペレーティング システムとアプリ)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
+SharePoint | Y | Y | Y | Y
+<p>SAP</p><p>クラスター以外の場合に、Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
+Exchange (DAG 以外) | Y | 近日対応予定 | Y | Y
+リモート デスクトップ/VDI | Y | Y | Y | 該当なし 
+<p>Linux</p> <p>(オペレーティング システムおよびアプリケーション)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) 
 Dynamics AX | Y | Y | Y | Y
 Dynamics CRM | Y | 近日対応予定 | Y | 近日対応予定
 Oracle | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
-Windows File Server | Y | Y | Y | Y
+Windows ファイル サーバー | Y | Y | Y | Y
 
-##Active Directory と DNS の保護
+##Active Directory と DNS
 
 SharePoint、Dynamics AX、SAP など、すべてのエンタープライズ アプリケーションは、Active Directory と DNS のインフラストラクチャに依存しています。BCDR ソリューションの一部として、これらのインフラストラクチャ コンポーネントを保護および復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
 
@@ -62,7 +62,7 @@ Site Recovery を使用すると、Active Directory と DNS に合わせて完�
 
 [詳細情報](http://aka.ms/asr-ad)
 
-##SQL Server の保護
+##SQL Server
 
 SQL Server は、オンプレミスのデータセンターの多くのビジネス アプリケーションにデータ サービスの基盤を提供します。Site Recovery と SQL Server の HA/DR テクノロジは補完的で、多層エンタープライズ アプリケーションにエンド ツー エンド保護を提供するためにまとめて使用できます。SQL Server 環境では、Azure Site Recovery による次の利点があります。
 
@@ -74,7 +74,7 @@ SQL Server は、オンプレミスのデータセンターの多くのビジネ
 
 [詳細情報](http://aka.ms/asr-sql)
 
-##SharePoint の保護
+##SharePoint
 
 Azure Site Recovery を使用すると、SharePoint のデプロイを保護することができます。Site Recovery を使用した場合、次のことを実現できます。
 
@@ -86,7 +86,7 @@ Azure Site Recovery を使用すると、SharePoint のデプロイを保護す�
 [詳細情報](http://aka.ms/asr-sharepoint)
 
 
-## Dynamics AX の保護
+##Dynamics AX
 
 Azure Site Recovery は、Dynamics AX ERP ソリューションを保護する際に役立ちます。
 
@@ -96,13 +96,13 @@ Azure Site Recovery は、Dynamics AX ERP ソリューションを保護する�
 
 [詳細については、こちらを参照してください。](http://aka.ms/asr-dynamics)
 
-## RDS の保護 
+##RDS 
 リモート デスクトップ サービスでは、仮想デスクトップ インフラストラクチャ (VDI)、セッションベースのデスクトップ、アプリケーションを利用できるので、ユーザーはどこでも作業できるようになります。Site Recovery を使用すると、管理対象または管理対象外のプールされた仮想デスクトップをセカンダリ サイトで保護し、リモート アプリケーションとセッションをセカンダリ サイトまたは Azure で保護することができます。
 
 [詳細情報](http://aka.ms/asr-rds)
 
 
-## Exchange の保護
+##Exchange
 
 Microsoft Exchange には、高可用性と障害復旧のサポートが組み込まれています。Exchange DAG と Azure Site Recovery は連携させることができます。
 
@@ -111,7 +111,7 @@ Microsoft Exchange には、高可用性と障害復旧のサポートが組み�
 
 [詳細情報](http://aka.ms/asr-exchange)
 
-## SAP の保護
+##SAP
 
 SAP デプロイを保護するには、Site Recovery を使用します。
 
@@ -121,4 +121,4 @@ SAP デプロイを保護するには、Site Recovery を使用します。
 
 [詳細情報](http://aka.ms/asr-sap)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

@@ -53,6 +53,6 @@ Service Fabric に関するさらに高度なトピックについては、次�
 
 - [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-- [配置の制約の概要](service-fabric-placement-constraint.md)
+- [Service Fabric クラスター リソース マネージャーでサービスを構成する](service-fabric-cluster-resource-manager-configure-services.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0309_2016-->

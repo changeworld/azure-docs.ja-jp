@@ -3,7 +3,7 @@
    description="Service Fabric プラットフォームの機能を高信頼アクターが使用するしくみについて説明します。アクター開発者の視点から見た概念も取り上げます。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="myamanbh"
    manager="timlt"
    editor="vturecek"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/13/2015"
-   ms.author="abhisram"/>
+   ms.date="03/15/2016"
+   ms.author="amanbha"/>
 
 # 高信頼アクターの Service Fabric プラットフォームの使用方法
 
@@ -102,7 +102,7 @@ Visual Studio でアプリケーション パッケージが作成されると�
 ## アクターのサービスの拡張性
 クラスターの管理者は、クラスター内の各サービスの種類の 1 つ以上のアクターにサービスを作成できます。各アクターのサービスはそれぞれ、1 つまたは複数のパーティション (その他の Service Fabric サービスに似ています) を持つことができます。1 つのサービスの種類に複数のサービスを作成する (アクターの型にマップする) 機能や、サービスに複数のパーティションを作成する機能により、アクターのアプリケーションを拡張できるようになります。詳細については、「[拡張性](service-fabric-concepts-scalability.md)」の記事を参照してください。
 
-> [AZURE.NOTE]ステートレス アクター サービスは、[インスタンス](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)数が 1 である必要があります。1 つのパーティション内に、複数インスタンスのステートレス アクター サービスを持つことはできません。そのため、ステートレス アクター サービスのスケーラビリティのためにインスタンス数を増やすことはできません。スケーラビリティ オプションを使用する必要があります ([スケーラビリティに関する記事](service-fabric-concepts-scalability.md)を参照してください)。
+> [AZURE.NOTE] ステートレス アクター サービスは、[インスタンス](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)数が 1 である必要があります。1 つのパーティション内に、複数インスタンスのステートレス アクター サービスを持つことはできません。そのため、ステートレス アクター サービスのスケーラビリティのためにインスタンス数を増やすことはできません。スケーラビリティ オプションを使用する必要があります ([スケーラビリティに関する記事](service-fabric-concepts-scalability.md)を参照してください)。
 
 ## アクターの Service Fabric のパーティションの概念
 アクターの ID は、アクターのサービスのパーティションにマップされます。そのアクター ID がマップされるパーティション内で、アクターが作成されます。アクターが作成されると、アクターのランタイムが、アクターが作成されるパーティションを示す [EventSource イベント](service-fabric-reliable-actors-diagnostics.md#eventsource-events)を記述します。下記はこのイベントの例で、ID `-5349766044453424161` のアクターが、サービス `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`、アプリケーション `fabric:/VoicemailBoxAdvancedApplication` のパーティション `b6afef61-be9a-4492-8358-8f473e5d2487` 内で作成されたことを示します。
@@ -143,7 +143,7 @@ Visual Studio でアプリケーション パッケージが作成されると�
       }
     }
 
-> [AZURE.NOTE]簡潔にするため、上記のイベントの一部のフィールドを省略しています。
+> [AZURE.NOTE] 簡潔にするため、上記のイベントの一部のフィールドを省略しています。
 
 パーティション ID はパーティションに関するその他の情報を取得するために使用できます。たとえば、[Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md) ツールを使用して、パーティションおよびパーティションが属するサービスとアプリケーションに関する情報を表示することができます。次のスクリーン ショットはパーティション `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` に関する情報を表示しています。ここには上記の例の ID `-4952641569324299627` のアクターが含まれています。
 
@@ -175,7 +175,7 @@ public void ActorMessage(StatefulActorBase actor, string message, params object[
 ### ステートレスなアクターの Service Fabric のパーティションの概念
 ステートレスなアクターは、Service Fabric のステートレス サービスのパーティション内に作成されます。アクター ID によって、アクターが作成されるパーティションが決定されます。ステートレス アクター サービスの[インスタンス](service-fabric-availability-services.md#availability-of-service-fabric-stateless-services)数は 1 にする必要があります。インスタンス数は 1 以外の値に変更できません。そのため、アクターはパーティション内の 1 つのサービス インスタンス内に作成されます。
 
-> [AZURE.TIP]Fabric アクターのランタイムは、[ステートレス アクターのインスタンスに関連するイベント](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateless-actor-instances)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
+> [AZURE.TIP] Fabric アクターのランタイムは、[ステートレス アクターのインスタンスに関連するイベント](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateless-actor-instances)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
 ステートレスなアクターが作成されると、アクターのランタイムが、アクターが作成されるパーティションとインスタンスを示す [EventSource イベント](service-fabric-reliable-actors-diagnostics.md#eventsource-events)を記述します。この例を次に示します。ID `abc` のアクターが、パーティション `8c828833-ccf1-4e21-b99d-03b14d4face3`、サービス `fabric:/HelloWorldApplication/HelloWorldActorService`、アプリケーション `fabric:/HelloWorldApplication` のインスタンス `130745709600495974` で作成されたことを示します。
 
@@ -196,12 +196,12 @@ public void ActorMessage(StatefulActorBase actor, string message, params object[
       }
     }
 
-> [AZURE.NOTE]簡潔にするため、上記のイベントの一部のフィールドを省略しています。
+> [AZURE.NOTE] 簡潔にするため、上記のイベントの一部のフィールドを省略しています。
 
 ### ステートフル アクターの Service Fabric パーティションの概念
 ステートフル アクターは、Service Fabric ステートフル サービスのパーティション内に作成されます。アクター ID によって、アクターが作成されるパーティションが決定されます。サービスの各パーティションは、クラスターの異なるノードに配置される 1 つまたは複数の[レプリカ](service-fabric-availability-services.md#availability-of-service-fabric-stateful-services)を持つことができます。複数のレプリカを持つことで、アクターの状態に信頼性が得られます。Azure リソース マネージャーは、クラスター内にある障害とアップグレード ドメインに基づいて配置を最適化します。同じノードに、同じパーティションの 2 つのレプリカが配置されることはありません。アクターは、そのアクター ID がマップされるパーティションのプライマリ レプリカに常に作成されます。
 
-> [AZURE.TIP]Fabric アクターのランタイムは、[ステートフル アクターのレプリカに関連するイベント](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateful-actor-replicas)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
+> [AZURE.TIP] Fabric アクターのランタイムは、[ステートフル アクターのレプリカに関連するイベント](service-fabric-reliable-actors-diagnostics.md#events-related-to-stateful-actor-replicas)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
 [先に説明したVoiceMailBoxActor の例](#service-fabric-partition-concepts-for-actors)で、ID `-4952641569324299627` のアクターがパーティション `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` に作成されたことを思い出してください。その例の EventSource イベントも、アクターがそのパーティションのレプリカ `130745418574851853` に作成されたことを示していました。アクターが作成された時点で、これはそのパーティションのプライマリ レプリカでした。次の Service Fabric エクスプ ローラーのスクリーン ショットはこれを表しています。
 
@@ -242,4 +242,4 @@ public class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0316_2016-->

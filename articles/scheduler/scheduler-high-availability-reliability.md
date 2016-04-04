@@ -1,21 +1,21 @@
-<properties 
- pageTitle="Scheduler の高可用性と信頼性" 
- description="" 
- services="scheduler" 
- documentationCenter=".NET" 
- authors="krisragh" 
- manager="dwrede" 
+<properties
+ pageTitle="Scheduler の高可用性と信頼性"
+ description=""
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
-<tags 
- ms.service="scheduler" 
- ms.workload="infrastructure-services" 
- ms.tgt_pltfrm="na" 
- ms.devlang="dotnet" 
- ms.topic="article" 
- ms.date="12/04/2015" 
+<tags
+ ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
- 
- 
+
+
 # Scheduler の高可用性と信頼性
 
 ## Azure Scheduler の高可用性
@@ -30,7 +30,7 @@ Azure Scheduler は、現在 Azure が対応しているほとんどすべての
 
 Azure Scheduler のフロント エンドを管理要求のために利用できるほか、ジョブが geo レプリケートされます。1 つのリージョンに障害が発生すると、Azure Scheduler によってフェールオーバーが行われ、ペアの地理的リージョン内の別のデータ センターでジョブが確実に実行されます。
 
-たとえば、米国中南部でジョブを作成した場合は、Azure Scheduler は、このジョブを自動的に米国中北部にレプリケートします。Azure Scheduler では、米国中南部で障害が発生した場合、米国中北部でジョブが確実に実行されます。[Azure リージョンのペアの一覧については、このページを参照してください](https://msdn.microsoft.com/library/azure/dn758204.aspx)。
+たとえば、米国中南部でジョブを作成した場合は、Azure Scheduler は、このジョブを自動的に米国中北部にレプリケートします。Azure Scheduler では、米国中南部で障害が発生した場合、米国中北部でジョブが確実に実行されます。[Azure の geo レプリケーション機能の詳細については、このトピックを参照してください。](../sql-database/sql-database-business-continuity-design.md)
 
 ![][1]
 
@@ -56,14 +56,14 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
 
 ![][2]
 
-ここで、元のアクションと代替エラー アクションの両方に同じ再試行ポリシーが適用されることに注意してください。代替エラー アクションをメイン アクションとは異なる種類に設定することもできます。たとえば、メイン アクションで HTTP エンドポイントを呼び出す一方、エラー アクションでエラーのログ記録を行うストレージ キュー アクションを実行できます。
+ここで、元のアクションと代替エラー アクションの両方に同じ再試行ポリシーが適用されることに注意してください。代替エラー アクションをメイン アクションとは異なる種類に設定することもできます。たとえば、メイン アクションで HTTP エンドポイントを呼び出す一方、エラー アクションでエラーのログ記録を行うストレージ キュー、サービス バス キュー、またはサービス バス トピック アクションを実行できます。
 
 代替エンドポイントを構成する方法については、「[errorAction](scheduler-concepts-terms.md#action-and-erroraction)」を参照してください。
 
 ## 関連項目
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
@@ -79,12 +79,10 @@ Azure Scheduler ジョブの対象のエンドポイントにアクセスでき�
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
- 
- 
+
+
 [1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
 
 [2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
 
- 
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

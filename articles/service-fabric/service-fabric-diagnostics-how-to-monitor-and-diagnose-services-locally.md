@@ -3,7 +3,7 @@
    description="ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="kunaldsingh"
+   authors="toddabel"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="03/04/2016"
    ms.author="toddabel"/>
 
 
@@ -58,6 +58,8 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 カスタムの ETW トレースをサービスのコードに追加した後で、もう一度アプリケーションをビルド、デプロイ、および実行して、診断イベント ビューアーでイベントを表示することができます。**F5** キーを使用してアプリケーションをデバッグすると、診断イベント ビューアーが自動的に開きます。
 
 ## 次のステップ
-ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。ツールのさまざまなオプションとそのツールのセットアップ方法を説明した次の記事を参照してください。* [Azure 診断と Operational Insights で Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md) * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。ツールの各オプションや、その設定方法について説明した記事を参照してください。
+* [Azure 診断と Operational Insights を使用して Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md)
+* [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

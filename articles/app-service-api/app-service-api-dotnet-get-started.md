@@ -255,7 +255,9 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	![](./media/app-service-api-dotnet-get-started/apptype.png)
 
-	新しく作成した API アプリ、Web アプリ、モバイル アプリで利用できる機能が、アプリの種類によって変わるわけではありません。チュートリアルで紹介する API アプリの全機能を 3 種類のアプリすべてで利用できます。違うのは、Azure ポータルに表示されるアプリの種類を示すアイコンとテキスト、ポータル内の一部のページにおける機能の表示順だけです。Azure ポータルは、Azure のリソースを管理するための Web インターフェイスです。このチュートリアルの後半で使用します。
+	<a id="apptype"></a> 新しく作成した API アプリ、Web アプリ、モバイル アプリで利用できる機能は、アプリの種類によって変わるわけではありません。チュートリアルで紹介する API アプリの全機能を 3 種類のアプリすべてで利用できます。違うのは、Azure ポータルに表示されるアプリの種類を示すアイコンとテキスト、ポータル内の一部のページにおける機能の表示順だけです。Azure ポータルは、Azure のリソースを管理するための Web インターフェイスです。このチュートリアルの後半で使用します。
+
+	このチュートリアルでは、SPA フロントエンドは Web アプリで実行され、各 Web API バックエンドは API アプリで実行されていますが、3 つすべてが Web アプリである場合、または 3 つすべてが API アプリである場合は、すべての要素が同じように機能します。また、1 つの API アプリまたは Web アプリが SPA フロントエンドと中間層バックエンドの両方をホストすることもできます。
 
 4. *azurewebsites.net* ドメイン内で一意の **[API アプリ名]** を入力します (ToDoListDataAPI に番号を付加するなどして一意にします)。
 
@@ -265,11 +267,11 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	Azure では、この名前がアプリケーションの URL のプレフィックスとして使用されます。URL 全体は、この名前に *.azurewebsites.net* を追加して構成されます。たとえば、名前が `ToDoListDataAPI` である場合、URL は `todolistdataapi.azurewebsites.net` です。
 
-6. **[リソース グループ]** ドロップダウンで **[新規作成]** をクリックし、「ToDoListGroup」と入力するか、別の名前を入力します。
+6. **[リソース グループ]** ドロップダウンで **[新規作成]** をクリックし、「ToDoListGroup」(またはお好きな名前) を入力します。
 
 	リソース グループは、API アプリ、データベース、VM など、一連の Azure リソースをひとまとめにしたものです。このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
 
-	このボックスでは既存の[リソース グループ](../azure-preview-portal-using-resource-groups.md)を選択するか、サブスクリプションの既存のリソース グループとは異なる名前を入力し、新しいリソース グループを作成できます。
+	このボックスでは既存の[リソース グループ](../azure-portal/resource-group-portal.md)を選択するか、サブスクリプションの既存のリソース グループとは異なる名前を入力し、新しいリソース グループを作成できます。
 
 4. **[App Service プラン]** ドロップダウンの隣にある **[新規]** ボタンをクリックします。
 
@@ -279,7 +281,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	以降の手順では、新しいリソース グループの App Service プランを作成します。App Service プランには、API アプリの実行環境となるコンピューティング リソースを指定します。たとえば、Free レベルを選択した場合、API アプリは共有 VM 上で実行され、一部の有料レベルを選択した場合は専用 VM で実行されます。App Service プランの詳細については、[App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
-5. **[App Service プランの構成]** ダイアログに「ToDoListPlan」と入力するか、別の名前を入力します。
+5. **[App Service プランの構成]** ダイアログに「ToDoListPlan」(またはお好きな名前) を入力します。
 
 5. **[場所]** ドロップダウン リストで、現在の所在地に最も近い場所を選択します。
 
@@ -299,29 +301,29 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	Visual Studio によって API アプリが作成されます。
 
-	**注:** Azure App Service で API アプリを作成する方法は他にもあります。たとえば先ほど、既存のプロジェクトに対して Azure リソースを作成する方法を見てきましたが、それと同じように、Visual Studio で新しいプロジェクトを作成するときに、Azure リソースを作成することができます。[Azure ポータル](https://portal.azure.com/)、[Windows PowerShell 用の Azure コマンドレット](../powershell-install-configure.md)、[クロスプラットフォーム コマンドライン インターフェイス](../xplat-cli.md)を利用し、API アプリを作成することもできます。
+	**注:** Azure App Service で API アプリを作成する方法は他にもあります。たとえば先ほど、既存のプロジェクトに対して Azure リソースを作成する方法を見てきましたが、それと同じように、Visual Studio で新しいプロジェクトを作成するときに、Azure リソースを作成することができます。[Azure ポータル](https://portal.azure.com/)、[Windows PowerShell 用の Azure コマンドレット](../powershell-install-configure.md)、[クロスプラットフォーム コマンドライン インターフェイス](../xplat-cli.md)を使用して、API アプリを作成することもできます。
 
 	Visual Studio で API アプリの作成が完了すると、新しい API アプリに必要なすべての設定が含まれる発行プロファイルが作成されます。次の手順では、新しい発行プロファイルを使用し、プロジェクトをデプロイします。
 
 8. **Web の発行**ウィザードの **[接続]** タブで、**[次へ]** をクリックします。
 
-	ここで **[発行]** をクリックすれば、直ちにプロジェクトを新しい API アプリにデプロイできますが、このチュートリアルでは、このダイアログにある他のタブで何ができるかを見ていくことにします。
+	ここで **[発行]** をクリックすると、すぐにプロジェクトを新しい API アプリにデプロイできますが、このチュートリアルでは、このダイアログにある他のタブで何ができるかを見ていくことにします。
 
 	![](./media/app-service-api-dotnet-get-started/connnext.png)
 
-	次のタブは **[設定]** タブです。ここでデプロイの対象をビルド構成でデバッグ ビルドに変更し、[リモート デバッグ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を行うことができます。このタブには、いくつかの**ファイル発行オプション**も用意されています。
+	次のタブは **[設定]** タブです。ここで、ビルド構成のタブでデプロイの対象をデバッグ ビルドに変更すると、[リモート デバッグ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を行うことができます。このタブには他にも、次のようにさまざまな**ファイル発行オプション**があります。
 
 	* 発行先の追加ファイルを削除する
 	* 発行中にプリコンパイルする
 	* App\_Data フォルダーのファイルを除外する
 
-	このチュートリアルでは、いずれも必要ありません。それぞれのオプションの詳細については、「[方法: Visual Studio でワンクリック発行を使用して Web アプリケーション プロジェクトを配置する](https://msdn.microsoft.com/library/dd465337.aspx)」を参照してください。
+	このチュートリアルでは、いずれも必要ありません。これらの詳しい説明については、「[How to: Deploy a Web Project Using One-Click Publish in Visual Studio (方法: Visual Studio でワンクリック発行を使用して Web プロジェクトをデプロイする)](https://msdn.microsoft.com/library/dd465337.aspx)」を参照してください。
 
 14. **[次へ]** をクリックします。
 
 	![](./media/app-service-api-dotnet-get-started/settingsnext.png)
 
-	**[プレビュー]** タブでは、プロジェクトから API アプリにコピーされるファイルを確認できます。既にデプロイ済みの API アプリにプロジェクトをデプロイした場合は、変更されたファイルだけがコピーされます。コピーされるファイルの一覧を確認するには、**[プレビューの開始]** ボタンをクリックしてください。
+	**[プレビュー]** タブでは、プロジェクトから API アプリにコピーされるファイルを確認できます。既にデプロイ済みの API アプリにプロジェクトをデプロイした場合は、変更されたファイルだけがコピーされます。どのファイルがコピーされるかを確認するには、**[プレビューの開始]** ボタンをクリックしてください。
 
 15. **[発行]** をクリックします。
 
@@ -345,17 +347,17 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	![](./media/app-service-api-dotnet-get-started/browseas.png)
 
-15. **[App Services]** ブレードで、新しい API アプリを探してクリックします(Azure ポータルでは、右側に表示されるウィンドウを*ブレード*といいます。)
+15. **[App Services]** ブレードで、新しい API アプリを探してクリックします (Azure ポータルでは、右側に表示されるウィンドウを*ブレード*といいます。)
 
 	![](./media/app-service-api-dotnet-get-started/choosenewapiappinportal.png)
 
 	2 つのブレードが表示されます。1 つは、API アプリの概要を表示するブレードで、もう 1 つは、閲覧と変更が許可されている一連の設定を表示するブレードです。
 
-16. **[設定]** ブレードの **API** セクションにある **[API 定義]** をクリックします。
+16. **[設定]** ブレードの **[API]** セクションにある **[API 定義]** をクリックします。
 
 	![](./media/app-service-api-dotnet-get-started/apidefinsettings.png)
 
-	**[API 定義]** ブレードでは、JSON 形式で Swagger 2.0 メタデータを返す URL を指定できます。Visual Studio により API アプリが作成されるとき、先に見た Swashbuckle によって生成されるメタデータの既定値 (API アプリの基礎 URL + `/swagger/docs/v1`) に API 定義 URL が設定されます。
+	**[API 定義]** ブレードでは、JSON 形式で Swagger 2.0 メタデータを返す URL を指定できます。Visual Studio によって API アプリが作成されるとき、前述の Swashbuckle によって生成されるメタデータの既定値 (API アプリの基礎 URL + `/swagger/docs/v1`) に API 定義 URL が設定されます。
 
 	![](./media/app-service-api-dotnet-get-started/apidefurl.png)
 
@@ -379,7 +381,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 	![](./media/app-service-api-dotnet-get-started/deletecodegen.png)
 
-2. ToDoListAPI プロジェクトを右クリックし、**[追加]、[REST API クライアント]** を順にクリックします。
+2. ToDoListAPI プロジェクトを右クリックし、**[追加]、[REST API クライアント]** の順にクリックします。
 
 	![](./media/app-service-api-dotnet-get-started/codegenmenu.png)
 
@@ -397,7 +399,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 	![](./media/app-service-api-dotnet-get-started/codegenurlplugged.png)
 
-	コード生成のためにメタデータを取得する代替方法は、参照ダイアログを利用する代わりに URL を直接入力します。また、**[既存の Swagger メタデータ ファイルを選択]** オプションを使用する方法もあります。たとえば、クライアント コードを生成してから Azure にデプロイする場合、Web API プロジェクトをローカルで実行し、Swagger JSON ファイルの配信元となる URL に移動して JSON ファイルを保存し、それをここで選択してもかまいません。
+	コード生成のためにメタデータを取得する代替方法は、参照ダイアログを利用する代わりに URL を直接入力します。また、**[既存の Swagger メタデータ ファイルを選択する]** オプションを使用する方法もあります。たとえば、クライアント コードを生成してから Azure にデプロイする場合、Web API プロジェクトをローカルで実行し、Swagger JSON ファイルの配信元となる URL に移動して JSON ファイルを保存し、それをここで選択してもかまいません。
 
 9. **[REST API クライアントの追加]** ダイアログ ボックスで **[OK]** をクリックします。
 
@@ -416,7 +418,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 		    return View(db.Contacts.Get());
 		}
 
-	コンストラクターのパラメーターでは、`toDoListDataAPIURL` アプリ設定からエンドポイントの URL を取得しています。アプリケーションをローカルで実行できるようにするため、Web.config ファイルで、その値を API プロジェクトのローカル IIS Express URL に設定します。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
+	コンストラクターのパラメーターでは、`toDoListDataAPIURL` アプリ設定からエンドポイント URL を取得しています。アプリケーションをローカルで実行できるようにするため、Web.config ファイルで、その値を API プロジェクトのローカル IIS Express URL に設定します。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
 
 6. クライアント クラスは、API アプリ名に基づいて別の名前で生成されます。プロジェクトで生成された型名と同じになるように、*Controllers\\ToDoListController.cs* のコードに変更を加えます。たとえば、API アプリに ToDoListDataAPI0121 という名前を付けた場合、コードは次のようになります。
 
@@ -459,7 +461,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 2. API アプリの **[設定]** ブレードで **[アプリの設定]** をクリックします。
  
-4. API アプリの **[アプリケーションの設定]** ブレードで下へスクロールして **[アプリの設定]** セクションに移動し、次のキーと値を追加します。
+4. API アプリの **[アプリケーションの設定]** ブレードで **[アプリの設定]** セクションが表示されるまで下へスクロールし、次のキーと値を追加します。
 
 	| **キー** | toDoListDataAPIURL |
 	|---|---|
@@ -478,11 +480,13 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 13. ブラウザーのアドレス バーの URL に「swagger」を追加し、Enter キーを押します。(URL は `http://{apiappname}.azurewebsites.net/swagger` です。)
 
-	ブラウザーには、ToDoListDataAPI と同様の Swagger UI が表示されますが、今回の `owner` は、Get 操作の必須フィールドではありません。これは、中間層 API アプリからデータ層 API アプリに値が送信されているためです (認証のチュートリアルでは、`owner` パラメーターの実際のユーザー ID を中間層から送信しますが、ここではアスタリスクをハードコーディングしています)。
+	ブラウザーには、ToDoListDataAPI の場合と同じ Swagger UI が表示されますが、今回 `owner` は、Get 操作の必須フィールドではありません。これは、中間層 API アプリからデータ層 API アプリに値が送信されているためです (認証のチュートリアルでは、`owner` パラメーターの実際のユーザー ID を中間層から送信しますが、ここではアスタリスクをハードコーディングしています。)
 
 12. Get メソッドや他のメソッドを試して、中間層 API アプリからデータ層 API アプリが正常に呼び出されていることを確認します。
 
 	![](./media/app-service-api-dotnet-get-started/midtierget.png)
+
+生成されるクライアントの詳細については、[AutoRest GitHub リポジトリ](https://github.com/azure/autorest)を参照してください。生成されたクライアントの使用に伴う問題に関してヘルプが必要な場合は、[AutoRest リポジトリで](https://github.com/azure/autorest/issues) issue を投稿してください。
 
 ## <a id="creating"></a> 省略可能: API アプリ プロジェクトをゼロから作成する
 
@@ -494,7 +498,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 ## 省略可能: アプリの種類を変更する
 
-既に述べたように API アプリと Web アプリとモバイル アプリとの違いは、ポータルにおける表示だけです。すべて同じ機能を備えているため、アプリの種類を変更する必要性はまったくありません。
+[既に述べた](#apptype)ように API アプリ、Web アプリ、モバイル アプリの違いは、ポータルにおける表示だけです。すべて同じ機能を備えているため、アプリの種類を変更する必要性はまったくありません。
 
 ただしポータルでの表示を変更する必要があれば、簡単な手順で実行できます。たとえば先ほど作成した API アプリを Web アプリに変更するには、次の手順に従います。
 
@@ -518,7 +522,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 ## 省略可能: Azure Resource Manager テンプレートにおける API 定義の URL
 
-このチュートリアルでは、Visual Studio と Azure ポータルにおける API 定義の URL を見てきました。API アプリに使用する API 定義の URL は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) で [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。
+このチュートリアルでは、Visual Studio と Azure ポータルにおける API 定義の URL を見てきました。API アプリに使用する API 定義の URL は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。
 
 API 定義プロパティを設定する Azure Resource Manager テンプレートの例については、[このチュートリアルのサンプル アプリケーションのリポジトリにある azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を参照してください。テンプレートに次のようなセクションがあります。
 
@@ -528,6 +532,6 @@ API 定義プロパティを設定する Azure Resource Manager テンプレー�
 
 ## 次のステップ
 
-このチュートリアルでは、API アプリを作成し、それにコードをデプロイし、クライアント コードを生成し、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
+このチュートリアルでは、API アプリを作成し、それにコードをデプロイし、クライアント コードを生成し、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0323_2016-->

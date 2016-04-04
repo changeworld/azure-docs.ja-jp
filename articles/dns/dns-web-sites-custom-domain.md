@@ -4,7 +4,7 @@
    services="dns" 
    documentationCenter="na" 
    authors="joaoma" 
-   manager="carolz" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="11/24/2015"
+   ms.date="03/03/2016"
    ms.author="joaoma"/>
 
 # カスタム ドメインにおける Web アプリの DNS レコードの作成
 
 Azure DNS を使用すると、Web アプリ用にカスタム ドメインをホストすることができます。たとえば、Azure Web アプリを作成し、ユーザーが FQDN として contoso.com または www.contoso.com を使用してそのアプリにアクセスできるようにするとします。このシナリオでは、contoso.com を指すルートの A レコードと、この A レコードを指す www 名の CNAME レコードの 2 つのレコードを作成する必要があります。
 
-> [AZURE.NOTE]Azure の Web アプリ用に A レコードを作成する場合、Web アプリの基になる IP アドレスが変更されると、A レコードを手動で更新する必要があることに注意してください。
+> [AZURE.NOTE] Azure の Web アプリ用に A レコードを作成する場合、Web アプリの基になる IP アドレスが変更されると、A レコードを手動で更新する必要があることに注意してください。
 
 カスタム ドメインのレコードを作成するには、事前に Azure DNS に DNS ゾーンを作成して、レジストラーのゾーンを Azure DNS に委任する必要があります。DNS ゾーンを作成するには、「[Azure DNS の概要](../dns-getstarted-create-dnszone/#Create-a-DNS-zone)」の手順に従います。DNS を Azure DNS に委任するには、「[Azure DNS へのドメインの委任](../dns-domain-delegation)」の手順に従います。
  
@@ -38,7 +38,7 @@ A レコードを作成して $rs 変数に割り当てます。
 
 割り当てられた $rs 変数を使用して、前に作成したレコード セット "@" に IPv4 の値を追加します。割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
 
-> [AZURE.NOTE]Web アプリの IP アドレスを確認するには、「[Azure App Service のカスタム ドメイン名の構成](../web-sites-custom-domain-name/#Find-the-virtual-IP-address)」の手順に従います。
+> [AZURE.NOTE] Web アプリの IP アドレスを確認するには、「[Azure App Service のカスタム ドメイン名の構成](../web-sites-custom-domain-name/#Find-the-virtual-IP-address)」の手順に従います。
 
 	PS C:\> Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address <your web app IP address>
 
@@ -165,4 +165,4 @@ awverify レコード セットが作成されると、次のコマンドに示�
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0309_2016-->

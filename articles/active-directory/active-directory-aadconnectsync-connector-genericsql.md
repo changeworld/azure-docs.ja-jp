@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="01/21/2016"
+   ms.date="03/16/2016"
    ms.author="andkjell"/>
 
 # Generic SQL コネクタに関するテクニカル リファレンス
@@ -22,9 +22,11 @@
 
 - Microsoft Identity Manager 2016 (MIM2016)
 - Forefront Identity Manager 2010 R2 (FIM2010R2)
-    -   4\.1.3461.0 以降の修正プログラム [KB2870703](https://support.microsoft.com/kb/2870703) を使用する必要があります。
+    -   4\.1.3671.0 以降の修正プログラム [KB3092178](https://support.microsoft.com/kb/3092178) を使用する必要があります。
 
 MIM2016 および FIM2010R2 の場合、コネクタは [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=717495)からダウンロードして入手できます。
+
+このコネクタの動作を確認するには、「[Generic SQL Connector step-by-step (Generic SQL コネクタのステップ バイ ステップ)](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)」の記事を参照してください。
 
 ## Generic SQL コネクタの概要
 
@@ -78,9 +80,9 @@ Generic SQL を作成するには、**[同期サービス]** で **[管理エー
 
 データベースは、以下に説明する認証方法のいずれかをサポートする必要があります。
 
-- **Windows 認証**: 認証データベースは、Windows 資格情報を使用してユーザーを検証します。この場合、同期サービスで使用するサービス アカウントが使用されます。このアカウントには、データベースへのアクセス許可が必要です。
+- **Windows 認証**: 認証データベースは、Windows 資格情報を使用してユーザーを検証します。指定されたユーザー名/パスワードは、データベースとの認証に使用されます。このアカウントには、データベースへのアクセス許可が必要です。
 - **SQL 認証**: 認証データベースでは、[接続] 画面で定義されたユーザー名/パスワードを使用してデータベースに接続します。DSN ファイルにユーザー名/パスワードを格納する場合、[接続] 画面で指定する資格情報には優先順位があります。
-- **Azure SQL Database 認証**: 詳細については、「[Azure Active Directory 認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
+- **Azure SQL Database 認証**: 詳細については、「[Azure Active Directory 認証を使用して SQL Database に接続する](..\sql-database\sql-database-aad-authentication.md)」を参照してください。
 
 **DN はアンカー**: このオプションを選択した場合、DN はまた、アンカー属性として使用されます。これは、単純な実装に使用できますが次の制限事項があります。
 
@@ -295,4 +297,4 @@ Generic SQL コネクタでは、次に示す 4 つのサポートされた方�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

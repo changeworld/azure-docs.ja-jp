@@ -20,26 +20,26 @@
 
 
 
-<center>![Cloud](./media/multi-factor-authentication-get-started-cloud/cloud2.png)</center>
+<center>![MFA in the Cloud](./media/multi-factor-authentication-get-started-cloud/cloud2.png)</center>
 
-クラウドで多要素認証を使用することを決めたので、早速開始してみましょう。 Multi-Factor Authentication for Office 365 または Multi-Factor Authentication for Azure Administrators を使用している場合、手順 3 にスキップできます。
+クラウドで多要素認証を使用することを決めたので、早速開始してみましょう。 Azure Multi-Factor Authentication は、わずか数回のクリックで始めることができます。Multi-Factor Authentication for Office 365 または Multi-Factor Authentication for Azure Administrators を使用している場合、手順 3 にスキップできます。
 
 
 1. [Azure サブスクリプションへのサインアップ](https://azure.microsoft.com/pricing/free-trial/)
 	- Azure サブスクリプションをまだ取得していない場合、サインアップする必要があります。Azure MFA を開始して使ってみるだけの場合、評価版のサブスクリプションを使用できます。
-2. [Multi-Factor Auth プロバイダーの作成](#creating-an-azure-multi-factor-auth-provider)または[ユーザーへのライセンスの割り当て](multi-factor-authentication-get-started-cloud.md#assigning-an-azure-ad-premium-or-enterprise-mobility-license-to-users)
-	- Azure Multi-Factor Auth プロバイダーを作成し、それをディレクトリに割り当てるか、または Azure MFA、Azure AD Premium、および/または EMS のライセンスをユーザーに割り当てます。Azure Multi Factor Authentication は Azure Active Directory Premium に含まれるため、Enterprise Mobility Suite にも含まれることになります。Azure MFA、Azure AD Premium、および EMS の適切なライセンスを所有している場合は、Multi-Factor Auth プロバイダーを作成しなくても、多要素認証を使用するすべての用途に対応することができます。ライセンスをユーザーに割り当てる方法については、以下のセクションを参照してください。
+2. [Multi-Factor Auth プロバイダーの作成](#creating-an-azure-multi-factor-auth-provider)または[ユーザーへのライセンスの割り当て](#assigning-an-azure-ad-premium-or-enterprise-mobility-license-to-users)
+	- 次のいずれかを実行する必要があります。Azure Multi-Factor Auth プロバイダーを作成して自分のディレクトリに割り当てるか、ライセンスをユーザーに割り当てます。ライセンスの使用は、Azure MFA、Azure AD Premium、EMS を所有するユーザーが対象となります。Azure Multi-Factor Authentication は、Azure Active Directory Premium に含まれています。また、Enterprise Mobility Suite にも含まれています。すべてのユーザーが多要素認証を使用するために必要なライセンスがある場合、認証プロバイダーを作成する必要はありません。 
 3. [ユーザーの Multi-Factor Authentication を有効にする](#turn-on-multi-factor-authentication-for-users)
-	- Office 365 または Azure ポータルを通じてユーザーの Azure MFA を有効にします。これを行う方法については、以下のセクションを参照してください。
+	- Office 365 または Azure ポータルを通じてユーザーの Azure MFA を有効にします。 
 4. [電子メールをエンド ユーザーに送信して MFA に関して通知する](#send-email-to-end-users)
-	- ユーザーがアカウントの多要素認証を有効にした場合、電子メールでそのことを通知するようお勧めします。ユーザーは、次回のサインインの際に処理を完了するよう求められます。これにより、何が期待されているかがわかります。電子メールのテンプレートの例については、以下のセクションを参照してください。
+	- ユーザーのアカウントに対して多要素認証を有効にしたら、電子メールで通知することをお勧めします。次回サインインするときに、ユーザーはプロセスを完了するよう求められます。電子メールを送信しておけば、その心構えができます。 
 
 
 
 ## Azure Multi-Factor Auth プロバイダーの作成
-Azure Active Directory を持つグローバル管理者は、既定で多要素認証を使用できます。ただし、すべてのユーザーに多要素認証を拡張する場合や、グローバル管理者や Office 365 ユーザーが信頼できる IP、カスタムの案内応答、レポートなどの高度な機能を利用できるようにする場合は、Azure MFA の完全なバージョンを構成する必要があります。そのための 1 つの方法として、Multi-Factor Authentication プロバイダーを作成します。
+Azure Active Directory を持つグローバル管理者と Office 365 ユーザーは、既定で多要素認証を使用できます。ただし高度な機能が必要である場合は、通常版の Azure MFA をご購入ください。
 
-
+Azure Multi-Factor Auth プロバイダーは、通常版の Azure MFA に備わっている機能を活用するために使用されます。その対象となるのは、Azure MFA、Azure AD Premium、EMS のいずれのライセンスも持たないユーザーです。Azure MFA、Azure AD Premium、EMS には、通常版の Azure MFA が既定で含まれています。ライセンスを所有している場合、Azure Multi-Factor Auth プロバイダーは必要ありません。以下の手順で、Azure Multi-Factor Authentication プロバイダーの作成方法を説明します。
 
 ### Multi-Factor Auth プロバイダーを作成するには
 --------------------------------------------------------------------------------
@@ -55,15 +55,16 @@ Azure Active Directory を持つグローバル管理者は、既定で多要素
 		- 有効ユーザーごと – 有効ユーザーごとに課金される購入モデル。通常、Office 365 などのアプリケーションにアクセスに従業員向けに使用されます。
 	2. ディレクトリ – Multi-Factor Authentication プロバイダーに関連付けられている Azure Active Directory テナント。次の点に注意してください。
 		- Multi-Factor Auth プロバイダーの作成に、Azure AD ディレクトリは必要はありません。Azure Multi-Factor Authentication Server または SDK のみを使用する計画の場合、これをブランクにすることができます。
-		- 多要素認証をすべてのユーザーに展開する場合や、グローバル管理者が信頼できる IP、カスタムの案内応答、レポートなどの高度な機能を利用できるようにする場合は、Multi-Factor Auth プロバイダーを Azure AD ディレクトリに関連付ける必要があります。
-		- Azure AD Connect、AAD Sync、または DirSync は、オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期している場合にのみ必要です。オンプレミスの Active Directory インスタンスと同期されない Azure AD ディレクトリのみを使用する場合、それらは必要ありません。
+		- 高度な機能を利用するためには、Azure AD ディレクトリに Multi-Factor Auth プロバイダーを関連付ける必要があります。
+		- Azure AD Connect、AAD Sync、または DirSync は、オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期している場合にのみ必要です。非同期の Azure AD ディレクトリしか使用していない場合、同期は不要です。
 		
 
 
 
-5. 作成をクリックした後、Multi-Factor Authentication プロバイダーが作成され、「Multi-Factor Authentication プロバイダーは正常に作成されました」というメッセージが表示されます。[OK] をクリックします。
+5. 作成をクリックした後、Multi-Factor Authentication プロバイダーが作成され、"Multi-Factor Authentication プロバイダーが正常に作成されました" というメッセージが表示されます。[OK] をクリックします。
 
-<center>![Cloud](./media/multi-factor-authentication-get-started-cloud/provider.png)</center>
+![Creating an MFA Provider](./media/multi-factor-authentication-get-started-cloud/provider.png)
+	 
 ## Azure MFA、Azure AD Premium、または Enterprise Mobility のライセンスをユーザーに割り当てる
 
 Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを購入済みである場合、Multi-Factor Auth プロバイダーを作成する必要はありません。ユーザーにライセンスを割り当てるだけで、MFA に対するライセンスの有効化を開始することができます。
@@ -75,7 +76,7 @@ Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセ�
 2. 左側で、**[Active Directory]** を選択します。
 3. [Active Directory] ページで、有効にするユーザーが存在するディレクトリをダブルクリックします。
 4. ディレクトリ ページの上部にある **[ライセンス]** を選択します。
-5. [ライセンス] ページで、[Azure Multi-Factor Authentication]、[Active Directory Premium]、または [Enterprise Mobility Suite] を選択し、[割り当て] をクリックします。![クラウド](./media/multi-factor-authentication-get-started-cloud/license2.png)
+5. [ライセンス] ページで、[Azure Multi-Factor Authentication]、[Active Directory Premium]、または [Enterprise Mobility Suite] を選択し、[割り当て] をクリックします。![Assign Licenses](./media/multi-factor-authentication-get-started-cloud/license2.png)
 6. ダイアログ ボックスで、ライセンスを割り当てるユーザーまたはグループを選択し、チェック マーク アイコンをクリックして変更を保存します。
 
 
@@ -89,10 +90,11 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 状態 | 説明 |非ブラウザー アプリに影響があるか| メモ 
 :-------------: | :-------------: |:-------------: |:-------------: |
-無効 | 新しいユーザーの既定の状態は、多要素認証に登録されていません。|いいえ|ユーザーは現在、多要素認証を使用していません。
+無効 | 新しいユーザーの既定の状態は、多要素認証に登録されていません。|いいえ|ユーザーは多要素認証を使用していません。
 有効 |ユーザーは多要素認証に登録されています。|いいえ。これらは登録プロセスが完了するまで機能し続けます。|ユーザーは有効ですが、登録プロセスが完了していません。次回サインインするときにプロセスを完了するよう求められます。
 適用|ユーザーが登録されており、多要素認証を使用するための登録プロセスが完了しています。|はい。アプリ パスワードが作成され、使用されるまでは機能しません。 | ユーザーは登録を完了していない可能性があります。登録プロセスが完了している場合、多要素認証を使用しています。登録プロセスが完了していない場合、次回サインインするときにプロセスを完了するよう求められます。
-Auth Provider を用意したかユーザーにライセンスを割り当てたので、次に、ディレクトリのユーザーの MFA を有効にします。ユーザーの MFA を有効にするには、次の手順を使用します。
+
+ユーザーの MFA を有効にするには、次の手順を使用します。
 
 ### 多要素認証を有効にするには
 --------------------------------------------------------------------------------
@@ -101,13 +103,13 @@ Auth Provider を用意したかユーザーにライセンスを割り当てた
 3.  [ディレクトリ] の下で、有効にするユーザーのディレクトリをクリックします。
 4.  上部の [ユーザー] をクリックします。
 5.  ページ下部の [多要素認証の管理] をクリックします。
-6.  多要素認証を有効にするユーザーを検索します。上部でビューを変更することが必要になる場合があります。ユーザーの状態が無効であることを確認し、名前の横のボックスにチェック マークを入れます。
-7.  これにより、右側に 2 つのオプション ([有効] と [ユーザー設定の管理]) が表示されます。[有効] をクリックします。これにより、ユーザーに対して行う必要がある次の手順を示すポップアップが表示されます。[多要素認証を有効にする] をクリックします。
-8.  ユーザーを有効にした場合、非ブラウザー アプリを使用する方法およびロックアウトしないようにする方法を知らせる電子メールをユーザーに送信することをお勧めします。
+6.  多要素認証を有効にするユーザーを検索します。上部でビューを変更することが必要になる場合があります。状態が無効であることを確認し、名前の横のボックスをオンにします。
+7.  右側の [有効化] をクリックします。[多要素認証を有効にする] をクリックします。
+8.  有効にした後、ユーザーに通知することをお勧めします。通知は電子メールで行います。ロックアウトされないよう、ブラウザー以外のアプリケーションの使い方も伝えるようにしてください。
 
-<center>![Cloud](./media/multi-factor-authentication-get-started-cloud/user.png)</center>
+<center>![Enable Users](./media/multi-factor-authentication-get-started-cloud/user.png)</center>
 
-Windows PowerShell を使用してユーザーの状態を変更するには、次の操作を使用できます。`$st.State` を変更して、上記の状態のいずれかと同等になるようにすることができます。
+Windows PowerShell を使用して状態を変更するには、次の操作を使用できます。`$st.State` を変更して、上記の状態のいずれかと同等になるようにすることができます。
 
 		$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
 		$st.RelyingParty = "*"
@@ -118,7 +120,7 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 
 ## エンド ユーザーへの電子メールの送信
 
-ユーザーを有効にした後、連絡先情報を提供する必要があることを知らせる電子メールをユーザーに送信することをお勧めします。以下は、ユーザーが視聴できるビデオへのリンクが含まれる使用可能な電子メール テンプレートです。
+ユーザーを有効にした後、連絡先情報を提供する必要があることを知らせる電子メールをユーザーに送信することをお勧めします。電子メール テンプレートの例を参考として以下に示します。ユーザーに視聴を促すビデオへのリンクも含まれています。
 
 		Subject: ACTION REQUIRED: Your password for Outlook and other apps needs updated
 
@@ -153,6 +155,6 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 		Your Administrator
 
 ## 次のステップ
-クラウドでの多要素認証のセットアップが完了したので、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」に移動して次の手順に移動できます。 そこでは、レポート、不正行為のアラート、音声メッセージのカスタマイズ、および Azure Multi-Factor Authentication が提供するすべての機能について学びます。
+クラウド側の多要素認証を設定したら、デプロイ側の構成とセットアップを行います。「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

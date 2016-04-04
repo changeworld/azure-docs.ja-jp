@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/02/2016"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # Azure リソース マネージャーによる Azure Traffic Manager プレビューのサポート
-Azure リソース マネージャー (ARM) は、Azure のサービスの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できるようになりました。Azure リソース マネージャーの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-preview-portal-using-resource-groups.md)に関するページをご覧ください。
+Azure リソース マネージャー (ARM) は、Azure のサービスの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できるようになりました。
 
 ## リソース モデル
 
@@ -150,9 +150,16 @@ Traffic Manager エンドポイントには、次の 3 種類があります。
 
 ### Azure エンドポイントの追加
 
-Azure エンドポイントは、Azure でホストされる他のサービスを参照します。現時点では、3 種類の Azure エンドポイントがサポートされています。<BR>1.Azure Web Apps<BR>2."クラシック" クラウド サービス (PaaS サービスまたは IaaS 仮想マシンを含めることができます)<BR>3.ARM Microsoft.Network/publicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。publicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
+Azure エンドポイントは、Azure でホストされる他のサービスを参照します。現時点では、3 種類の Azure エンドポイントがサポートされています。<BR>
+1. Azure Web Apps <BR>
+2. "クラシック" クラウド サービス (PaaS サービスまたは IaaS 仮想マシンを含めることができます)<BR>
+3. ARM Microsoft.Network/publicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。publicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
 
-いずれの場合にも、次のことが当てはまります。- サービスは、Add-AzureRmTrafficManagerEndpointConfig または New-AzureRmTrafficManagerEndpoint の "targetResourceId" パラメーターを使用して指定されます。<BR>- "Target" と "EndpointLocation" は指定しないでください。これらは、上記で指定した TargetResourceId により暗黙的に指定されています。<BR>- "Weight" の指定は省略可能です。Weight が使用されるのは、プロファイルがトラフィック ルーティング方法として "Weighted" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。指定する場合は、1 ～ 1,000 の値にする必要があります。既定値は "1" です。<BR>- "Priority" の指定は省略可能です。Priority が使用されるのは、プロファイルがトラフィック ルーティング方法として "Priority" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。有効な値は 1 ～ 1,000 です (値が小さくなるほど、優先度が高くなります)。1 つのエンドポイントに指定した場合は、すべてのエンドポイントに指定する必要があります。省略した場合は、1、2、3 などから始まる既定値が、エンドポイントが指定される順に適用されます。
+いずれの場合も、次のことが当てはまります。
+ - サービスは、Add-AzureRmTrafficManagerEndpointConfig または New-AzureRmTrafficManagerEndpoint の "targetResourceId" パラメーターを使用して指定します。<BR>
+ - "Target" と "EndpointLocation" は指定しないでください。これらは、上で指定した TargetResourceId により暗黙的に指定されます。<BR>
+ - "Weight" の指定は省略できます。Weight が使用されるのは、プロファイルがトラフィック ルーティング方法として "Weighted" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。指定する場合は、1 ～ 1,000 の値にする必要があります。既定値は "1" です。<BR>
+ - "Priority" の指定は省略できます。Priority が使用されるのは、プロファイルがトラフィック ルーティング方法として "Priority" を使用するように構成されている場合のみです。それ以外の場合は、無視されます。有効な値は 1 ～ 1,000 です (値が小さくなるほど、優先度が高くなります)。1 つのエンドポイントに指定した場合は、すべてのエンドポイントに指定する必要があります。省略した場合は、1、2、3 などから始まる既定値が、エンドポイントが指定される順に適用されます。
 
 #### 例 1: Add-AzureRmTrafficManagerEndpointConfig を使用して Web アプリ エンドポイントを追加する
 この例では、新しい Traffic Manager プロファイルを作成し、Add-AzureRmTrafficManagerEndpointConfig コマンドレットを使用して 2 つの Web アプリ エンドポイントを追加した後、Set-AzureRmTrafficManagerProfile を使用して、更新したプロファイルを Azure Traffic Manager にコミットします。
@@ -179,7 +186,10 @@ Azure エンドポイントは、Azure でホストされる他のサービス�
 ### 外部エンドポイントの追加
 Traffic Manager は、外部エンドポイントを使用して、Azure の外部でホストされているサービスにトラフィックを送信します。Azure エンドポイントと同様に、外部エンドポイントを追加するには、Add-AzureRmTrafficManagerEndpointConfig の後に Set-AzureRmTrafficManagerProfile を使用するか、New-AzureRMTrafficManagerEndpoint を使用することができます。
 
-外部エンドポイントを指定する場合は、次のことが当てはまります。- エンドポイントのドメイン名は、"Target" パラメーターを使用して指定する必要があります。<BR>- トラフィック ルーティング方法として "Performance" を使用する場合は、"EndpointLocation" が必須です。それ以外の場合は省略可能です。値には、[有効な Azure リージョン名を指定する必要があります。](https://azure.microsoft.com/regions/)<BR>- Azure エンドポイントについては、"Weight" と "Priority" は省略可能です。<BR>
+外部エンドポイントを指定する場合は、次のことが当てはまります。
+ - "Target" パラメーターを使用してエンドポイントのドメイン名を指定する必要があります。<BR>
+ - トラフィック ルーティング方法として "Performance" を使用する場合は、"EndpointLocation" が必須です。それ以外の場合は省略可能です。値には、[有効な Azure リージョン名](https://azure.microsoft.com/regions/)を指定する必要があります。<BR>
+ - Azure エンドポイントについては、"Weight" と "Priority" は省略可能です。<BR>
  
 
 #### 例 1: Add-AzureRmTrafficManagerEndpointConfig と Set-AzureRmTrafficManagerProfile を使用して外部エンドポイントを追加する
@@ -201,7 +211,11 @@ Traffic Manager では、Traffic Manager プロファイル ("子" プロファ�
 
 Traffic Manager を入れ子にすることによって、柔軟で強力なトラフィック ルーティングとフェールオーバー スキームを作成し、より大規模で複雑なデプロイのニーズに対応することができます。[このブログ記事](https://azure.microsoft.com/blog/new-azure-traffic-manager-nested-profiles/)ではいくつかの例を挙げます。
 
-入れ子になったエンドポイントは、親プロファイルで特定のエンドポイントの種類 "NestedEndpoints" を使って構成します。入れ子になったエンドポイントを指定する場合は、次のことが当てはまります。- エンドポイント (子プロファイル) は、"targetResourceId" パラメーターを使用して指定する必要があります。<BR>- トラフィック ルーティング方法として "Performance" を使用する場合は、"EndpointLocation" が必須です。それ以外の場合は省略可能です。値には、[有効な Azure リージョン名](http://azure.microsoft.com/regions/)を指定する必要があります。<BR>- Azure エンドポイントについては、"Weight" と "Priority" は省略可能です。<BR>- "MinChildEndpoints" パラメーターは省略可能です (既定値は "1")。子プロファイル内の利用可能なエンドポイントの数がこのしきい値を下回った場合、親プロファイルは子プロファイルを "機能低下" と見なし、他の親プロファイル エンドポイントにトラフィックを振り向けます。<BR>
+入れ子になったエンドポイントは、親プロファイルで特定のエンドポイントの種類 "NestedEndpoints" を使って構成します。入れ子になったエンドポイントを指定する場合は、次のことが当てはまります。
+ - エンドポイント (子プロファイル) は、"targetResourceId" パラメーターを使用して指定する必要があります。<BR>
+ - トラフィック ルーティング方法として "Performance" を使用する場合は、"EndpointLocation" が必須です。それ以外の場合は省略可能です。値には、[有効な Azure リージョン名](http://azure.microsoft.com/regions/)を指定する必要があります。<BR>
+ - Azure エンドポイントについては、"Weight" と "Priority" は省略可能です。<BR>
+ - "MinChildEndpoints" パラメーターは省略可能で、既定値は "1" です。子プロファイル内の利用可能なエンドポイントの数がこのしきい値を下回った場合、親プロファイルは子プロファイルを "機能低下" と見なし、他の親プロファイル エンドポイントにトラフィックを振り向けます。<BR>
 
 
 #### 例 1: Add-AzureRmTrafficManagerEndpointConfig と Set-AzureRmTrafficManagerProfile を使用して入れ子になったエンドポイントを追加する
@@ -297,4 +311,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

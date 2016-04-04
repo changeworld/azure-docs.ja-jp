@@ -93,15 +93,15 @@ SUSE|SUSE Linux Enterprise Server 12|Microsoft Azure 上の SUSE Linux Enterpris
 
 ###その他のリソース: 
 
-- [Windows を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)
+- [Windows を実行する仮想マシンの作成](virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
-- [Linux を実行する仮想マシンの作成](../virtual-machines/virtual-machines-linux-tutorial.md)
+- [Linux を実行する仮想マシンの作成](virtual-machines/virtual-machines-linux-cli-create.md)
 
 - [仮想マシンに関する FAQ](http://msdn.microsoft.com/library/azure/dn683781.aspx)
 
-- [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines-create-upload-vhd-windows-server/)
+- [Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server/)
 
-- [Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-capture-image.md)
+- [Linux 仮想マシンをキャプチャする方法](virtual-machines/virtual-machines-linux-classic-capture-image.md)
 
 <!--- **<A href="/azure-government-service-description">Azure Government Service Descriptions</a>**-->
 
@@ -114,8 +114,8 @@ SUSE|SUSE Linux Enterprise Server 12|Microsoft Azure 上の SUSE Linux Enterpris
 [2]: ./media/azure-government-overview/azure-gov-overview.jpg
 
 <!--Link references-->
-[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-tutorial.md
+[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

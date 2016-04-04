@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="02/08/2016"
+ms.date="03/08/2016"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
@@ -205,8 +205,22 @@ BLOB のインデックス作成とドキュメント抽出プロセスは、メ
 AzureSearch\_Skip | "true" | BLOB を完全にスキップするようそのインデクサーに指示するプロパティです。メタデータもコンテンツも、一切抽出されません。特定のコンテンツ タイプをスキップする必要があるときに利用できます。また、特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときにも利用できます。
 AzureSearch\_SkipContent | "true" | メタデータのインデックス作成のみを行い、BLOB のコンテンツの抽出はスキップするように、BLOB インデクサーに指示します。これは、BLOB のコンテンツは重要ではないが、BLOB に関連付けられているメタデータのインデックス作成は必要である場合に便利です。
 
+<a name="IndexerParametersConfigurationControl"></a>
+## インデクサーのパラメーターを使用してドキュメントの抽出を制御する
+
+メタデータを抽出する必要があるが、すべての BLOB に対してコンテンツ抽出を省略する場合、`AzureSearch_SkipContent` メタデータを各 BLOB に個々に追加する代わりに、インデクサー構成を利用してこの動作を要求できます。この処理を行うには、`parameters` オブジェクトで `skipContent` 構成プロパティを `true` に設定します。
+
+ 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "skipContent" : true } }
+	}
+
 ## Azure Search の品質向上にご協力ください
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0316_2016-->

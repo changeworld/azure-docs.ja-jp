@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
+	ms.date="03/02/2016" 
 	ms.author="awills"/>
  
 # Application Insights での依存関係に関する問題の診断
@@ -50,14 +50,15 @@
 
 プラットフォーム | インストール
 ---|---
-IIS サーバー | [Status Monitor](app-insights-monitor-performance-live-website-now.md)
+IIS サーバー | [サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリケーションを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)する 
 Azure Web アプリ | [Application Insights Extension](../azure-portal/insights-perf-analytics.md)
 Java Web サーバー | [Java Web アプリ](app-insights-java-agent.md)
 Web ページ | [JavaScript モニター](app-insights-javascript.md) (Web ページの監視以外の追加設定なし)
+クラウド サービス | [スタートアップ タスクを使用](app-insights-cloudservices.md#dependencies)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)する  
 
 IIS サーバー用の Status Monitor では、Application Insights SDK を使用してソース プロジェクトをリビルドする必要はありません。
 
-## <a name="diagnosis"></a>Web サーバーでの依存関係のパフォーマンスの問題の診断
+## <a name="diagnosis"></a> Web サーバーでの依存関係のパフォーマンスの問題の診断
 
 サーバーでの要求のパフォーマンスを評価するには、次のようにします。
 
@@ -134,9 +135,9 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 ## Ajax
 
-「[JavaScript Web アプリのための Application Insights](app-insights-javascript.md)」をご覧ください。
+「[Web ページ向けの Application Insights](app-insights-javascript.md)」をご覧ください。
 
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0309_2016-->

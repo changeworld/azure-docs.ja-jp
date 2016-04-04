@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/01/2015"
+   ms.date="03/17/2016"
    ms.author="joaoma" />
 
 # Traffic Manager の設定のテスト
@@ -33,7 +33,9 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 2- 「`ipconfig /flushdns`」と入力して、DNS リゾルバー キャッシュをフラッシュします。
 
-3- 「`nslookup <your Traffic Manager domain name>`」と入力します。たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメイン名を確認します。nslookup myapp.contoso.trafficmanager.net 通常、結果として次の情報が表示されます。 - この Traffic Manager ドメイン名を解決するためにアクセスしている DNS サーバーの DNS 名と IP アドレス。- "nslookup" の後にコマンド ラインに入力した Traffic Manager ドメイン名と Traffic Manager ドメインが解決した IP アドレス。この 2 番目の IP アドレスを確認することが重要です。この IP アドレスは、テスト対象の Traffic Manager プロファイルに含まれるいずれかのクラウド サービスまたは Web サイトのパブリック仮想 IP (VIP) アドレスと一致している必要があります。
+3- 「`nslookup <your Traffic Manager domain name>`」と入力します。たとえば、nslookup myapp.contoso.trafficmanager.net というコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。通常、結果として次の情報が表示されます。
+- この Traffic Manager ドメイン名を解決するためにアクセスされる DNS サーバーの DNS 名と IP アドレス。
+- コマンド ラインで "nslookup" の後に入力した Traffic Manager ドメイン名と、その Traffic Manager ドメインから解決された IP アドレス。この 2 番目の IP アドレスを確認することが重要です。この IP アドレスは、テスト対象の Traffic Manager プロファイルに含まれるいずれかのクラウド サービスまたは Web サイトのパブリック仮想 IP (VIP) アドレスと一致している必要があります。
 
 ## 負荷分散方法のテスト
 
@@ -54,7 +56,7 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 ## 次のステップ
 
-[Traffic Manager のトラフィック ルーティング方法について](../about-traffic-manager-balancing-methods.md) [Traffic Manager](../traffic-manager.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md) [Traffic Manager](traffic-manager-overview.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

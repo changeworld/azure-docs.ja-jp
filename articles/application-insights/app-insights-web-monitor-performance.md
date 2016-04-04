@@ -53,7 +53,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 
 ![グラフをクリックし、メトリックを選択する](./media/app-insights-web-monitor-performance/appinsights-61perfchoices.png)
 
-> [AZURE.NOTE]選択可能な項目をすべて表示するには、**すべてのメトリックのチェック ボックスをオフにしてください**。メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
+> [AZURE.NOTE] 選択可能な項目をすべて表示するには、**すべてのメトリックのチェック ボックスをオフにしてください**。メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
 
 
 ## <a name="metrics"></a>どのような意味がありますか? パフォーマンス タイルとレポート
@@ -111,6 +111,8 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 ## システム パフォーマンス カウンター
 
 [パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)から、いくつかのメトリックを選択できます。Windows にはさまざまなパフォーマンス カウンターが用意されていますが、ユーザーが独自に定義することもできます。
+
+(Azure でホストされるアプリケーションの場合は、[Azure Diagnostics を Application Insights に送信](app-insights-azure-diagnostics.md)します。)
 
 この例では、既定で使用できるパフォーマンス カウンターを表示します。各カウンターに[個別のグラフを追加](app-insights-metrics-explorer.md#editing-charts-and-grids)して、[好みの名前を付けて保存](app-insights-metrics-explorer.md#editing-charts-and-grids)することでグラフに名前を付けました。
 
@@ -199,4 +201,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0323_2016-->

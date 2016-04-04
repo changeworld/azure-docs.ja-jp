@@ -20,11 +20,11 @@
 
 > [AZURE.SELECTOR]
 - [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Portal - Classic](vpn-gateway-point-to-site-create.md)
+- [ポータル - クラシック](vpn-gateway-point-to-site-create.md)
 
-ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイトは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と[クロスプレミス接続](vpn-gateway-cross-premises-options.md)に関するページを参照してください。
+ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイトは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
 
-この記事は、**Azure リソース マネージャー** デプロイメント モデルを使用して作成された VNet と VPN ゲートウェイを対象としています。サービス管理 (クラシック デプロイ モデルとも呼ばれます) を使用して作成された VNet のポイント対サイト接続を構成する場合は、「[VNet へのポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」をご覧ください。
+この記事は、**Azure Resource Manager** デプロイメント モデルを使用して作成された VNet と VPN ゲートウェイを対象としています。サービス管理 (クラシック デプロイ モデルとも呼ばれます) を使用して作成された VNet のポイント対サイト接続を構成する場合は、「[VNet へのポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」をご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
@@ -45,7 +45,7 @@
 - DNS サーバー: 名前解決に利用する DNS サーバーの **IP アドレス**。
 - GW 名: **GW**。
 - パブリック IP 名: **GWIP**。
-- VpnType: **RouteBased**。
+- VPN の種類: **RouteBased**。
 
 
 ## 作業を開始する前に
@@ -227,6 +227,6 @@
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)に関するページを参照してください。
+仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

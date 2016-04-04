@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="12/04/2015"
+ ms.date="03/09/2016"
  ms.author="krisragh"/>
 
 # Scheduler の概念、用語集、エンティティ階層構造
@@ -23,9 +23,8 @@
 
 |リソース | 説明 |
 |---|---|
-|**クラウド サービス**|概念的には、クラウド サービスは、アプリケーションを表します。サブスクリプションには、いくつかのクラウド サービスが含まれていることがあります。|
 |**ジョブ コレクション**|ジョブ コレクションはジョブのグループを含み、コレクション内のジョブで共有される設定、クォータ、調整を保持します。ジョブ コレクションは、サブスクリプションの所有者によって作成され、使用状況やアプリケーションの境界に基づいてジョブをグループ化します。ジョブ コレクションは、1 つのリージョンに制限されます。ジョブ コレクションでは、クォータを適用して、そのコレクション内のすべてのジョブの使用量を制限することもできます。クォータには、MaxJobs と MaxRecurrence が含まれます。|
-|**ジョブ**|ジョブは、単純または複雑な実行方法による単一の反復的な操作を定義します。操作には、HTTP 要求やストレージ キュー要求を含めることができます。|
+|**ジョブ**|ジョブは、単純または複雑な実行方法による単一の反復的な操作を定義します。操作には、HTTP、ストレージ キュー、Service Bus キュー、Service Bus トピックの要求が含まれます。|
 |**ジョブ履歴**|ジョブ履歴は、ジョブの実行の詳細を表します。応答の詳細と、ジョブの実行結果 (成功または失敗) が含まれます。|
 
 ## Scheduler エンティティの管理
@@ -34,14 +33,13 @@
 
 |機能|説明と URI アドレス|
 |---|---|
-|**クラウド サービスの管理**|クラウド サービスを作成と変更するための GET、PUT、および DELETE のサポート<p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}`</p>|
-|**ジョブ コレクションの管理**|ジョブ コレクションとジョブ コレクション内のジョブを作成と変更するための GET、PUT、および DELETE のサポート。ジョブ コレクションはジョブのコンテナーであり、クォータと共有設定にマップされます。後で説明するクォータの例としては、ジョブの最大数や最小の繰り返し間隔があります。<p>PUT および DELETE: `https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/jobcollections/{jobCollectionName}`</p><p>GET: `https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}`</p>
-|**ジョブの管理**|ジョブを作成と変更するための GET、PUT、POST、PATCH、および DELETE のサポート。すべてのジョブは既に存在するジョブ コレクションに属する必要があるため、暗黙的な作成はありません。<p>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}`</p>|
-|**ジョブ履歴の管理**|ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴を取得するための GET のサポート。状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを追加します。<P>`https://management.core.windows.net/{subscriptionId}/cloudservices/{cloudServiceName}/resources/scheduler/~/jobcollections/{jobCollectionName}/jobs/{jobId}/history`</p>|
+|**ジョブ コレクションの管理**|ジョブ コレクションとジョブ コレクション内のジョブを作成と変更するための GET、PUT、および DELETE のサポート。ジョブ コレクションはジョブのコンテナーであり、クォータと共有設定にマップされます。後で説明するクォータの例としては、ジョブの最大数や最小の繰り返し間隔があります。<p>PUT および DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p>
+|**ジョブの管理**|ジョブを作成と変更するための GET、PUT、POST、PATCH、および DELETE のサポート。すべてのジョブは既に存在するジョブ コレクションに属する必要があるため、暗黙的な作成はありません。<p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p>|
+|**ジョブ履歴の管理**|ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴を取得するための GET のサポート。状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを追加します。<P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p>|
 
 ## ジョブの種類
 
-ジョブの種類には、HTTP ジョブ (SSL をサポートする HTTPS ジョブを含みます) とストレージ キュー ジョブの 2 つがあります。HTTP ジョブは、既存のワークロードやサービスのエンドポイントがある場合に最適です。ストレージ キュー ジョブを使用すればストレージ キューにメッセージを送信できるため、このジョブはストレージ キューを使用するワークロードに最適です。
+ジョブには、HTTP ジョブ (SSL をサポートする HTTPS ジョブを含む)、ストレージ キュー ジョブ、Service Bus キュー ジョブ、Service Bus トピック ジョブなど、さまざまな種類が存在します。HTTP ジョブは、既存のワークロードやサービスのエンドポイントがある場合に最適です。ストレージ キュー ジョブを使用すればストレージ キューにメッセージを送信できるため、このジョブはストレージ キューを使用するワークロードに最適です。同様に、Service Bus キューと Service Bus トピックを使用するワークロードには、サービス バス ジョブが最適です。
 
 ## "ジョブ" エンティティの詳細
 
@@ -131,7 +129,7 @@
 
 ## action と errorAction
 
-"action" は、それぞれの実行時に呼び出されるアクションであり、サービスの呼び出しの種類を示します。アクションは、指定されたスケジュールに従って実行されます。Scheduler では、HTTP アクションとストレージ キュー アクションをサポートしています。
+"action" は、それぞれの実行時に呼び出されるアクションであり、サービスの呼び出しの種類を示します。アクションは、指定されたスケジュールに従って実行されます。Scheduler は、HTTP、ストレージ キュー、Service Bus トピック、Service Bus キューの操作をサポートしています。
 
 上の例のアクションは HTTP アクションです。ストレージ キュー アクションの例を次に示します。
 
@@ -146,6 +144,15 @@
 					"My message body",
 			},
 	}
+
+Service Bus トピックの操作の例を次に示します。
+
+  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+
+Service Bus キューの操作の例を次に示します。
+
+
+  "action": { "serviceBusQueueMessage": { "queueName": "q1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
 
 "errorAction" はエラー ハンドラーであり、プライマリ アクションが失敗したときに呼び出されるアクションを示します。この変数を使用すると、エラー処理エンドポイントを呼び出したり、ユーザー通知を送信したりできます。これは、(たとえば、エンドポイントのサイトの障害が原因で) プライマリが使用できない場合にセカンダリ エンドポイントにアクセスしたり、エラー処理エンドポイントに通知したりするために使用できます。エラー アクションは、プライマリ アクションと同じように、単純なロジックにすることも、他のアクションに基づいた複合型のロジックにすることもできます。SAS トークンを作成する方法については、「[Shared Access Signature の作成と使用](https://msdn.microsoft.com/library/azure/jj721951.aspx)」を参照してください。
 
@@ -190,7 +197,7 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 ## 関連項目
 
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
- 
+
  [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
  [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
@@ -207,4 +214,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

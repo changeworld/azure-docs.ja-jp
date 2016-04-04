@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/17/2016"   
-	ms.author="juliako;adsolank;johndeu"/>
+	ms.date="03/18/2016"   
+	ms.author="adsolank;juliako;johndeu"/>
 
 
 # Azure Media Indexer によるメディア ファイルのインデックス作成
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-manage-content.md#index)
+- [ポータル](media-services-manage-content.md#index)
 - [.NET](media-services-index-content.md)
 
 
@@ -40,7 +40,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 	詳細については、「[AIB ファイルを Azure Media Indexer および SQL Server で使用する](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)」をご覧ください。
 
 
-このトピックでは、ジョブのインデックスを作成して、**資産のインデックスを作成**、**複数のファイルのインデックスを作成**する方法について説明します。
+このトピックでは、ジョブのインデックスを作成して、**アセットのインデックスを作成**、**複数のファイルのインデックスを作成**する方法について説明します。
 
 最近の Azure Media Indexer の更新プログラムについては、[Media Services のブログ](#preset)をご覧ください。
 
@@ -254,7 +254,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 
 名前 | 必須 | 説明
 ----|----|---
-__input__ | false | インデックスの対象となる資産ファイル。</p><p>Azure Media Indexer は、MP4、WMV、MP3、M4A、WMA、AAC、WAV の各メディア ファイル形式をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となる資産ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルがインデックスされます。</p><p>資産ファイル名を明示的に指定するには、次のようにします。<br />`<input name="TestFile.wmv">`<br /><br /> 複数の資産ファイルを一度にインデックスすることもできます (最大 10 ファイル)。その手順を次に示します。<br /><br /><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。</p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。</p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。</p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br />`<input list="input.lst">`</li></ol><br /><br />注:10 個を超えるファイルを追加した場合、インデックス作成ジョブが 2006 エラー コードで失敗します。
+__input__ | false | インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、MP4、WMV、MP3、M4A、WMA、AAC、WAV の各メディア ファイル形式をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。プライマリ アセット ファイルが設定されていない場合は、入力アセットの 1 つ目のファイルがインデックスされます。</p><p>アセット ファイル名を明示的に指定するには、次のようにします。<br />`<input name="TestFile.wmv">`<br /><br /> 複数のアセット ファイルを一度にインデックスすることもできます (最大 10 ファイル)。その手順を次に示します。<br /><br /><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。</p></li><li><p>入力アセットに含まれるすべてのアセット ファイルの名前をこのマニフェスト ファイルに追加します。</p></li><li><p>マニフェスト ファイルをアセットに追加 (アップロード) します。</p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br />`<input list="input.lst">`</li></ol><br /><br />注:10 個を超えるファイルを追加した場合、インデックス作成ジョブが 2006 エラー コードで失敗します。
 __metadata__ | false | 語彙アダプテーション用に指定する資産ファイルのメタデータ。標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br />`<metadata key="..." value="..."/>` <br /><br />事前定義済みの__キー__に対して__値__を指定できます。現在サポートされているキーは “title” と “description” です。<br /><br />語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br />`<metadata key="title" value="[Title of the media file]" />`<br />`<metadata key="description" value="[Description of the media file] />"`
 __features__ <br /><br /> バージョン 1.2 で追加現時点でサポートされている機能は、音声認識 ("ASR") のみです。| false | 音声認識機能には、次の設定キーがあります。<table><tr><th><p>キー</p></th> <th><p>説明</p></th><th><p>値の例</p></th></tr><tr><td><p>Language</p></td><td><p>マルチメディア ファイル内の認識対象となる自然言語。</p></td><td><p>English、Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>出力キャプション形式をセミコロンで区切ったリスト (存在する場合)</p></td><td><p>ttml;sami;webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>(SQL Server とお客様の Indexer IFilter で使用するために) AIB ファイルが必要かどうかを指定するブール値のフラグ。詳細については、<a href="http://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Azure Media Indexer と SQL Server での AIB ファイルの使用</a>に関するページを参照してください。</p></td><td><p>True、False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。</p></td><td><p>True、False</p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>(信頼レベルに関係なく) フル キャプションを強制するかどうかを指定するブール型のフラグ。</p><p>既定値は false です。この場合、信頼レベルが 50% 未満の語句は最終的なキャプションの出力から除外され、省略記号 ("...") で置き換えられます。省略記号は、キャプションの品質管理や監査に用いられます。</p></td><td><p>True、False</p></td></tr></table>
 
@@ -301,4 +301,4 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0323_2016-->

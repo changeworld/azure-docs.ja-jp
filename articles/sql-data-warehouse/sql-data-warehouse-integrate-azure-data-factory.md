@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Data Factory の使用
 
 Azure Data Factory では、SQL Data Warehouse におけるデータ転送とストアド プロシージャの実行を、完全に管理された方法で調整できます。これにより、複雑な抽出、変換、および読み込み (ETL) プロシージャを、SQL Data Warehouse を使用して簡単に設定およびスケジュールできます。Azure Data Factory の概要については、[Azure Data Factory のドキュメント][]を参照してください。
 
-## データの移動 
+## データの移動
 
 Azure Data Factory により、オンプレミス ソースとさまざまな Azure サービスの両方の間でデータを移動できます。Azure Data Factory との現在の包括的統合では、次の場所との間でのデータ移動がサポートされています。
 
@@ -51,4 +51,4 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
 [Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0309_2016-->

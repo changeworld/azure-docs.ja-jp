@@ -13,22 +13,29 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/05/2016"
+    ms.date="03/14/2016"
     ms.author="larryfr"/>
 
 # HDInsight での Script Action 開発
 
-Script Action は、インストール中にクラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。
+Script Action は、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。クラスターの作成時または実行中のクラスターで、Script Action を使用できます。
 
 > [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターでの Script Action の使用方法の詳細については、「[HDInsight での Script Action の開発 (Windows)](hdinsight-hadoop-script-actions.md)」を参照してください。
 
 ## Script Action とは
 
-Script Action とは、プロビジョニング中にクラスター ノード上で実行される Bash スクリプトです。Script Action はルートとして実行され、完全なアクセス権をクラスター ノードに提供します。
+Script Action は、Azure がクラスター ノードで実行して、構成の変更やソフトウェアのインストールを行う Bash スクリプトです。Script Action はルートとして実行され、完全なアクセス権をクラスター ノードに提供します。
 
-Script Action は、__Azure ポータル__、__Azure PowerShell__、または __HDInsight .NET SDK__ を使用してクラスターをプロビジョニングするときに使用できます。
+Script Action は次の方法によって適用できます。
 
-Script Action を使用したクラスターのカスタマイズのチュートリアルについては、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+| これを使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
+| ----- |:-----:|:-----:|
+| Azure ポータル | ✓ | ✓ |
+| Azure PowerShell | ✓ | ✓ |
+| HDInsight .NET SDK | ✓ | ✓ |
+| Azure Resource Manager テンプレート | ✓ | &nbsp; |
+
+これらの方法を使用して、Script Action を適用する詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 ## <a name="bestPracticeScripting"></a>スクリプトの開発におけるベスト プラクティス
 
@@ -51,7 +58,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
 
-ユーザーは、スクリプトとスクリプトで使用されるリソースがすべてクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。クラスター内のノードの再イメージ化が必要な場合、これらのリソースが必要になります。
+ユーザーは、スクリプトとスクリプトで使用されるリソースがすべてクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
 
 ベスト プラクティスとして、すべてをダウンロードして、Azure ストレージ アカウントのサブスクリプションにアーカイブする方法があります。
 
@@ -65,7 +72,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
-HDInsight クラスターのノードがクラスターの有効期間中に再イメージ化され、このような場合に、クラスターのカスタマイズのスクリプトが使用されることが必ず期待されます。再イメージ化の際に、クラスターが実行されるたびに同じ状態に戻ることをスクリプトが確認するという意味で、このスクリプトはべき等であるように設計する必要があります。
+スクリプトが複数回実行された場合に、クラスターが実行されるたびに同じ状態に戻ることをスクリプトが確認するという意味で、スクリプトはべき等であるように設計する必要があります。
 
 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを /usr/local/bin にインストールする場合、その後スクリプトを実行するたびに、スクリプトはアプリケーションが /usr/local/bin に既に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
 
@@ -77,7 +84,7 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
-クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。クラスターの再イメージ化の際に、HDFS ファイル システムはフォーマットされ、保管されているすべてのデータが失われます。この構成を、代わりに Azure BLOB ストレージ (WASB) を使用するように変更する必要があります。これがクラスターの既定のストレージであり、クラスターが削除されても保持されるためです。
+クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。HDInsight は、既定のストレージとして Azure BLOB ストレージ (WASB) を使用します。これは、クラスターが削除された場合でも、データを保持する HDFS 互換ファイル システムを提供します。HDFS の代わりに WASB を使用するように、インストールするコンポーネントを構成する必要があります。
 
 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムから WASB にコピーされます。
 
@@ -85,7 +92,9 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
-STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用してクラスターがプロビジョニングされた後に表示することができます。
+スクリプトの実行時に STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用して表示することができます。
+
+> [AZURE.NOTE] Ambari は、クラスターが正常に作成された場合にのみ使用できます。クラスターの作成時に Script Action を使用し、作成が失敗した場合は、ログに記録された情報にアクセスする他の方法について、トラブルシューティング セクション「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
 
 ほとんどのユーティリティとインストール パッケージは情報を STDOUT および STDERR に書き込みますが、ログ記録を追加することもできます。STDOUT にテキストを送信するには、`echo` を使用します。次に例を示します。
 
@@ -93,7 +102,7 @@ STDOUT および STDERR に書き込まれる情報はログに記録され、Am
 
 既定では、`echo` は、文字列を STDOUT に送信します。STDERR に転送するには、`echo` の前に `>&2` を追加します。次に例を示します。
 
-        >&2 echo "An error occured installing Foo"
+        >&2 echo "An error occurred installing Foo"
 
 これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。IO リダイレクトの詳細については、[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html) を参照してください。
 
@@ -171,14 +180,13 @@ VARIABLENAME は、変数の名前です。この後に変数にアクセスす�
 
 ## <a name="runScriptAction"></a>Script Action の実行方法
 
-Script Action を使用して、Azure ポータル、Azure PowerShell、HDInsight .NET SDK で HDInsight クラスターをカスタマイズすることができます。手順については、「[Script Action の使用方法](hdinsight-hadoop-customize-cluster-linux.md#howto)」に関するページをご覧ください。
+Script Action を使用して、Azure ポータル、Azure PowerShell、Azure Resource Manager (ARM) テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。手順については、「[Script Action の使用方法](hdinsight-hadoop-customize-cluster-linux.md)」に関するページをご覧ください。
 
 ## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
 Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。サンプル スクリプトとその使用方法については、以下のリンクから入手できます。
 
 - [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-- [HDInsight クラスターで Spark をインストールして使用する](hdinsight-hadoop-spark-install-linux.md)
 - [HDInsight Hadoop クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts-linux.md)
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)  
@@ -216,8 +224,12 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 上記のコマンドで、__INFILE__ を BOM を含むファイルに置き換えます。__OUTFILE__ は、BOM なしのスクリプトを含む新しいファイルの名前にする必要があります。
 
-## <a name="seeAlso"></a>関連項目
+## <a name="seeAlso"></a>次のステップ
 
-[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
+* [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)方法を理解します
 
-<!---HONumber=AcomDC_0211_2016-->
+* [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します
+
+* [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使用して HDInsight クラスターで管理操作を実行する方法の詳細について理解します。
+
+<!---HONumber=AcomDC_0323_2016-->

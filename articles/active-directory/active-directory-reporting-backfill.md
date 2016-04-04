@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure Active Directory レポートのバックフィル時間 | Microsoft Azure"
-   description="これまでのレポート イベントを Azure Active Directory に表示するのにかかる時間"
+   description="これまでのレポート イベントを Azure AD ディレクトリに表示するのにかかる時間"
    services="active-directory"
    documentationCenter=""
-   authors="kenhoff"
-   manager="mbaldwin"
+   authors="dhanyahk"
+   manager="stevepo"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/07/2015"
-   ms.author="kenhoff"/>
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
 # Azure Active Directory レポートのバックフィル時間
 
@@ -48,4 +48,4 @@ RMS の利用状況 | 0 日
 RMS デバイスの利用状況 | 0 日
 RMS 対応アプリケーションの利用状況 | 0 日
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0309_2016-->

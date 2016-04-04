@@ -91,6 +91,8 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 
 永続的なクライアント側キューではメッセージの順序が保持され、Service Bus エンティティが使用できない場合の例外からクライアント アプリケーションを保護します。永続的なクライアント側キューは、単純なトランザクションや分散トランザクションと共に使用できます。
 
+> [AZURE.NOTE] このサンプルは、IaaS (サービスとしてのインフラストラクチャ) シナリオにも適しています。IaaS シナリオでは、ローカル ディスクまたは MSMQ 用ディスクはストレージ アカウントにマッピングされ、メッセージは MSMQ によって安全に保存されます。ただし、Cloud Services や Web アプリケーションなどの PaaS (サービスとしてのプラットフォーム) シナリオには適していません。
+
 ## 次のステップ
 
 障害復旧の詳細については、次の記事を参照してください。
@@ -109,4 +111,4 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
   [Azure SQL Database の継続性]: ../sql-database/sql-database-business-continuity.md
   [Azure のビジネス継続性テクニカル ガイダンス]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

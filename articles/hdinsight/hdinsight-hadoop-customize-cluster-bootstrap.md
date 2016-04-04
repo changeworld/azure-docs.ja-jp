@@ -14,12 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="03/08/2016"
 	ms.author="jgao"/>
 
 # ブートストラップを使って HDInsight クラスターをカスタマイズする
-
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-create-windows-cluster-selector.md)]
 
 次を含む構成ファイルを構成することが必要な場合があります。
 
@@ -251,4 +249,4 @@ ARM テンプレートでは、ブートストラップを使用できます。
 
     #endregion
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0309_2016-->

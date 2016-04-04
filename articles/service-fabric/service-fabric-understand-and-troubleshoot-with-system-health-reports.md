@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/26/2016"
+   ms.date="03/23/2016"
    ms.author="oanapl"/>
 
 # システム正常性レポートを使用したトラブルシューティング
@@ -43,14 +43,14 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 - **次のステップ**: ネットワーク コンピューターが消失した原因を調査します (たとえば、クラスター ノード間の通信をチェックします)。
 
 ## ノード システム正常性レポート
-**System.FM** は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。ノードが無効になるとノード エンティティは削除されます。
+**System.FM** は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。ノードの状態が削除されると、ノード エンティティは削除されます ([RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx) を参照)。
 
 ### ノードを上/下に移動
 System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。ノードが停止しているか、報告されない場合、または、エンティティに関連付けられたインスタンスとは別のインスタンスがノードに存在する場合、そのノードのデプロイ済みのエンティティはクエリを介して公開されません。System.FM によってノードの停止または再起動 (新規インスタンス) が報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
 
 - **SourceId**: System.FM
 - **プロパティ**: State
-- **次のステップ**: ノードがアップグレードのために停止している場合、アップグレードされたら、復帰する必要があります。この例では、正常性状態が OK に切り替わる必要があります。ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
+- **次のステップ**: ノードがアップグレードのために停止している場合、アップグレード後に復帰する必要があります。この例では、正常性状態が OK に切り替わる必要があります。ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
 
 ノードの稼動を表す正常性状態 OK の System.FM イベントを次に示します。
 
@@ -102,7 +102,7 @@ System.CM は、アプリケーションが作成または更新されたとき�
 **fabric:/WordCount** アプリケーションの State イベントを次に示します。
 
 ```powershell
-PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesHealthStateFilter ([System.Fabric.Health.HealthStateFilter]::None) -DeployedApplicationsHealthStateFilter ([System.Fabric.Health.HealthStateFilter]::None)
+PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Ok
@@ -163,6 +163,75 @@ HealthEvents          :
 - **プロパティ**: State
 - **次のステップ**: サービスの制約と配置の現在の状態を確認します。
 
+以下に違反の例を示します。この例では、5 つのノードを持つクラスターに 7 つのターゲット レプリカでサービスが構成されています。
+
+```xml
+PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountService
+
+
+ServiceName           : fabric:/WordCount/WordCountService
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.PLB', 
+                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning', 
+                        ConsiderWarningAsError=false.
+                        
+PartitionHealthStates : 
+                        PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
+                        AggregatedHealthState : Warning
+                        
+HealthEvents          : 
+                        SourceId              : System.FM
+                        Property              : State
+                        HealthState           : Ok
+                        SequenceNumber        : 10
+                        SentAt                : 3/22/2016 7:56:53 PM
+                        ReceivedAt            : 3/22/2016 7:57:18 PM
+                        TTL                   : Infinite
+                        Description           : Service has been created.
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Ok = 3/22/2016 7:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        
+                        SourceId              : System.PLB
+                        Property              : ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b
+                        HealthState           : Warning
+                        SequenceNumber        : 131032232425505477
+                        SentAt                : 3/23/2016 4:14:02 PM
+                        ReceivedAt            : 3/23/2016 4:14:03 PM
+                        TTL                   : 00:01:05
+                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
+                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly, 
+                        due to the following constraints and properties:  
+                        Placement Constraint: N/A
+                        Depended Service: N/A
+                        
+                        Constraint Elimination Sequence:
+                        ReplicaExclusionStatic eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
+                        ReplicaExclusionDynamic eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
+                        
+                        Nodes Eliminated By Constraints:
+                        
+                        ReplicaExclusionStatic:
+                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: 
+                        None/None
+                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: 
+                        None/None
+                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: 
+                        None/None
+                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: 
+                        None/None
+                        
+                        ReplicaExclusionDynamic:
+                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: 
+                        None/None
+                        
+                        
+                        RemoveWhenExpired     : True
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
+```
+
 ## パーティション システム正常性レポート
 **System.FM** は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
 
@@ -201,7 +270,7 @@ HealthEvents          :
 ターゲット レプリカ数を下回るパーティションの状態を次に示します。次のステップは、パーティションの説明を取得することです。その説明は、パーティションが構成された方法を示し、**MinReplicaSetSize** が 2 で **TargetReplicaSetSize** が 7 です。次に、クラスター内のノード数 5 を取得します。したがって、この例では 2 つのレプリカを配置できません。
 
 ```powershell
-PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasHealthStateFilter ([System.Fabric.Health.HealthStateFilter]::None)
+PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
 
 PartitionId           : 875a1caa-d79f-43bd-ac9d-43ee89a9891c
 AggregatedHealthState : Warning
@@ -391,7 +460,7 @@ HealthEvents          :
 
 ![Visual Studio 2015 診断イベント: fabric:/HelloWorldStatefulApplication の RunAsync エラー][1]
 
-Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication** の RunAsync エラー
+Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication** の RunAsync エラー。
 
 [1]: ./media/service-fabric-understand-and-troubleshoot-with-system-health-reports/servicefabric-health-vs-runasync-exception.png
 
@@ -460,13 +529,13 @@ System.Hosting は、ノードでのサービス パッケージのアクティ�
 **System.Hosting** は、各コード パッケージのアクティブ化が成功すると、OK を報告します。アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。**CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
 
 - **SourceId**: System.Hosting
-- **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** として、コード パッケージの名前とエントリ ポイントを含みます (**CodePackageActivation:Code:SetupEntryPoint** など)
+- **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** として、コード パッケージの名前とエントリ ポイントを含みます (**CodePackageActivation:Code:SetupEntryPoint** など)。
 
 ### サービスの種類の登録
 **System.Hosting** は、サービスの種類が正常に登録されていると、OK を報告します。(**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。ランタイムが閉じられたために、サービスの種類がノードから登録解除された場合には、Hosting は警告を報告します。
 
 - **SourceId**: System.Hosting
-- **プロパティ**: プレフィックス **ServiceTypeRegistration** を使用し、サービス タイプ名を含みます (**ServiceTypeRegistration:FileStoreServiceType** など)
+- **プロパティ**: プレフィックス **ServiceTypeRegistration** を使用し、サービスの種類の名前を含みます (**ServiceTypeRegistration:FileStoreServiceType** など)。
 
 正常なデプロイ済みサービス パッケージを次に示します。
 
@@ -537,4 +606,4 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0323_2016-->

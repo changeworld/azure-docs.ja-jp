@@ -119,7 +119,8 @@ error=access_denied
 ## id\_token を検証する
 単に id\_token を受け取るだけでは、ユーザーを認証するには不十分です。id\_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。[トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)を含む詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。<!--TODO: Improve the information on this-->
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。[トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)を含む詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
+<!--TODO: Improve the information on this-->
 
 シナリオに応じてその他の要求も検証することができます。以下に一般的な検証の例をいくつか挙げます。
 
@@ -235,4 +236,4 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0323_2016-->

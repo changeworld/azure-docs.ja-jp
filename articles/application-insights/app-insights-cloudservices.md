@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="ibiza"
    ms.topic="article"
    ms.workload="tbd"
-   ms.date="11/15/2015"
+   ms.date="03/02/2016"
    ms.author="sdash"/>
 
 # Azure Cloud Services 向けの Application Insights
@@ -171,13 +171,17 @@ Azure 診断には、アプリが System.Diagnostics.Trace を使用して生成
 
 Application Insights SDK では、REST API や SQL サーバーなどの外部依存関係に対してアプリが実行した呼び出しをレポートできます。このレポートを使用して、特定の依存関係が応答速度の低下や障害の原因となっているかどうかを確認できます。
 
-依存関係を追跡するには、[Application Insights エージェント](app-insights-monitor-performance-live-website-now.md) ("Status Monitor" とも呼ばれます) を使用して、Web/worker ロールを設定する必要があります。
+アプリケーションで .NET framework 4.6 以降を使用する場合、他に必要なものはありません。
+
+使用しない場合、[Application Insights エージェント](app-insights-monitor-performance-live-website-now.md) ("Status Monitor" とも呼ばれます) を使用し、Web/worker ロールを設定します。
 
 Web/worker ロールで Application Insights エージェントを使用するには:
 
 * Web/worker ロール プロジェクトに [AppInsightsAgent](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent) フォルダーを追加し、その中に 2 つのファイルを追加します。常に出力ディレクトリにコピーされるように、ビルド プロパティを設定してください。これらのファイルによってエージェントがインストールされます。
 * [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L18)に示すように、CSDEF ファイルに開始タスクを追加します。
 * 注: [こちら](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/AzureEmailService/ServiceDefinition.csdef#L44)に示すように、*worker ロール*には 3 つの環境変数が必要です。これは web ロールでは必要ありません。
+
+### 依存関係レポート
 
 Application Insights ポータルに表示される内容の例を次に示します。
 
@@ -277,10 +281,9 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[perf]: app-insights-web-monitor-performance.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0309_2016-->

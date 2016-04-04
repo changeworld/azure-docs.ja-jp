@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="11/17/2015"
+   ms.date="03/15/2016"
    ms.author="bscholl"/>
 
 # Service Fabric Reliable Services のパーティション分割
@@ -65,7 +65,7 @@ Service Fabric ステートフル サービスのコンテキストでのパー�
 この問題を回避するために、パーティション分割の点で次の 2 つの手順を実行する必要があります。
 
 - すべてのパーティションに均等に分散されるように状態をパーティション分割します。
-- [サービスの各レプリカからメトリックをレポートします](service-fabric-resource-balancer-dynamic-load-reporting.md)。Service Fabric には、サービスに関するメモリ量やレコード数などのメトリックをレポートする機能があります。Service Fabric では、レポートされたメトリックに基づいて一部のパーティションが他のパーティションよりも負荷が高いことが検出され、レプリカをより適切なノードに移動してクラスターのバランスが再調整されます。
+- サービスの各レプリカの負荷をレポートします。(詳細については、「[Metrics and Load (メトリックと負荷)](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。)。Service Fabric には、メモリ量やレコード数など、サービスに使用される負荷をレポートする機能があります。Service Fabric では、レポートされたメトリックに基づいて一部のパーティションが他のパーティションよりも負荷が高いことが検出され、レプリカをより適切なノードに移動してクラスターのバランスが再調整されます。そのため、全体としては過負荷になるノードはありません。
 
 場合によっては、特定のパーティションのデータ量がどのくらいになるかわからないことがあります。そのため、一般的な推奨として、まずパーティション全体に均等に分散するパーティション分割戦略を採用してから、負荷をレポートするという、両方の方法を実行してみてください。1 つ目の方法で投票の例で説明されている状況を防ぎ、2 つ目の方法で長期間にわたるアクセスまたは負荷の一時的な差異を均等にすることができます。
 
@@ -131,9 +131,9 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
-    
+
     また、次のように StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。
-    
+
     ```xml
     <Service Name="Processing">
       <StatefulService ServiceTypeName="ProcessingType" TargetReplicaSetSize="[Processing_TargetReplicaSetSize]" MinReplicaSetSize="[Processing_MinReplicaSetSize]">
@@ -184,7 +184,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```
 
     また、公開される URL が、リッスンする URL プレフィックスと一部が異なる点に注目してください。リッスンする URL は HttpListener に渡されます。公開される URL は、Service Fabric Naming Service に公開される URL です。サービスの検出に使用されます。クライアントは検出サービスを介してこのアドレスを要求します。接続するには、クライアントが取得するアドレスにノードの実際の IP または FQDN が含まれる必要があります。そのため、上のように '+' をノードの IP または FQDN に置き換える必要があります。
-    
+
 9. 最後の手順は、次のように処理ロジックをサービスに追加する処理です。
 
     ```CSharp
@@ -228,17 +228,17 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
         }
     }
     ```
-        
+
     `ProcessInternalRequest`は、パーティションの呼び出しに使用するクエリ文字列パラメーターの値を読み取り、`AddUserAsync` を呼び出して、信頼性の高い辞書 `dictionary` に姓を追加します。
-    
+
 10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。
 
     このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
-    
+
 11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.WebApi" と名前を付けます。
-    
+
     ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)
-    
+
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
 
     ```xml
@@ -261,7 +261,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
         return new HttpCommunicationListener(uriPrefix, uriPublished, ProcessInputRequest);
     }
     ```
-     
+
 14. 次に、処理ロジックを実装する必要があります。HttpCommunicationListener は要求を受信すると `ProcessInputRequest` を呼び出します。次のコードを追加してみましょう。
 
     ```CSharp
@@ -294,7 +294,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
                     primaryReplicaAddress);
         }
         catch (Exception ex) { output = ex.Message; }
-        
+
         using (var response = context.Response)
         {
             if (output != null)
@@ -351,11 +351,11 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```
 
 16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。
-    
+
     ![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
-    
+
 17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
-    
+
     ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
 
 サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
@@ -372,4 +372,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0316_2016-->

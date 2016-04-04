@@ -3,7 +3,7 @@
 	description="Azure ポータルを使用して WordPress ブログ用の新しい Azure Web アプリを作成する方法について説明します。"
 	services="app-service\web"
 	documentationCenter="php"
-	authors="tfitzmac"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="PHP"
 	ms.topic="hero-article"
 	ms.date="02/08/2016"
-	ms.author="tomfitz"/>
+	ms.author="robmcm"/>
 
 # Azure App Service での WordPress Web アプリの作成
 
@@ -126,4 +126,4 @@ App Service Web Apps の使用方法の詳細については、ページの左�
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0323_2016-->
