@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure Data Factory を使用してデータを読み込む
@@ -75,18 +75,18 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 2. SQL Data Warehouse を登録するには、[作成とデプロイ] セクションに移動して [新しいデータ ストア] を選択し、[Azure SQL Data Warehouse] を選択します。コピーおよび貼り付けを行って、このテンプレートに特定の情報を入力します。
 
-    ````
-    {
-        "name": "<Linked Service Name>",
-	    "properties": {
-	        "description": "",
-		    "type": "AzureSqlDW",
-		    "typeProperties": {
-		         "connectionString": "Data Source=tcp:<server name>.database.windows.net,1433;Initial Catalog=<server name>;Integrated Security=False;User ID=<user>@<servername>;Password=<password>;Connect Timeout=30;Encrypt=True"
-	         }
-        }
+```JSON
+{
+    "name": "<Linked Service Name>",
+    "properties": {
+        "description": "",
+	    "type": "AzureSqlDW",
+	    "typeProperties": {
+	         "connectionString": "Data Source=tcp:<server name>.database.windows.net,1433;Initial Catalog=<server name>;Integrated Security=False;User ID=<user>@<servername>;Password=<password>;Connect Timeout=30;Encrypt=True"
+         }
     }
-    ````
+}
+```
 
 ### 手順 2.2: データ ソースを定義する
 
@@ -96,56 +96,56 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 2. [新しいデータセット]、[Azure BLOB ストレージ] の順にクリックし、ストレージをデータ ファクトリにリンクします。次のスクリプトを使用して、Azure BLOB ストレージのデータを定義することができます。
 
-    ````
-	{
-	    "name": "<Dataset Name>",
-		"properties": {
-		    "type": "AzureBlob",
-			"linkedServiceName": "<linked storage name>",
-			"typeProperties": {
-			    "folderPath": "<containter name>",
-				"fileName": "FactInternetSales.csv",
-				"format": {
-				"type": "TextFormat",
-				"columnDelimiter": ",",
-				"rowDelimiter": "\n"
-                }
-            },
-		    "external": true,
-		    "availability": {
-			    "frequency": "Hour",
-			    "interval": 1
-		    },
-		    "policy": {
-		        "externalData": {
-			        "retryInterval": "00:01:00",
-			        "retryTimeout": "00:10:00",
-			        "maximumRetry": 3
-		        }
+```JSON
+{
+    "name": "<Dataset Name>",
+	"properties": {
+	    "type": "AzureBlob",
+		"linkedServiceName": "<linked storage name>",
+		"typeProperties": {
+		    "folderPath": "<containter name>",
+			"fileName": "FactInternetSales.csv",
+			"format": {
+			"type": "TextFormat",
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n"
             }
-		}
+        },
+	    "external": true,
+	    "availability": {
+		    "frequency": "Hour",
+		    "interval": 1
+	    },
+	    "policy": {
+	        "externalData": {
+		        "retryInterval": "00:01:00",
+		        "retryTimeout": "00:10:00",
+		        "maximumRetry": 3
+	        }
+        }
 	}
-    ````
+}
+```
 
 
 3. 次に、SQL Data Warehouse のデータセットも定義します。前の手順と同様に、[新しいデータセット]、[Azure SQL Data Warehouse] の順にクリックします。
 
-    ````
-    {
-	    "name": "DWDataset",
-		"properties": {
-		    "type": "AzureSqlDWTable",
-		    "linkedServiceName": "AzureSqlDWLinkedService",
-		    "typeProperties": {
-			    "tableName": "FactInternetSales"
-			},
-		    "availability": {
-		        "frequency": "Hour",
-			    "interval": 1
-	        }
+```JSON
+{
+    "name": "DWDataset",
+	"properties": {
+	    "type": "AzureSqlDWTable",
+	    "linkedServiceName": "AzureSqlDWLinkedService",
+	    "typeProperties": {
+		    "tableName": "FactInternetSales"
+		},
+	    "availability": {
+	        "frequency": "Hour",
+		    "interval": 1
         }
     }
-    ````
+}
+```
 
 ## 手順 3: パイプラインを作成して実行する
 
@@ -153,7 +153,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 [作成とデプロイ] セクションで、[その他のコマンド]、[新しいパイプライン] の順にクリックします。パイプラインを作成した後、次のコードを使用して、データ ウェアハウスにデータを転送できます。
 
-````
+```JSON
 {
     "name": "<Pipeline Name>",
     "properties": {
@@ -199,7 +199,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 	    "isPaused": false
     }
 }
-````
+```
 
 ## 次のステップ
 
@@ -211,8 +211,8 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 以下のトピックでは、Azure Data Factory に関する詳細情報を提供します。Azure SQL Database または HDinsight について説明しますが、この情報は Azure SQL Data Warehouse にも該当します。
 
-- [チュートリアル: Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
-- [チュートリアル: Azure Storage BLOB から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
+- [チュートリアル: 初めての Data Factory の作成 (概要)](../data-factory/data-factory-build-your-first-pipeline.md)。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
+- [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
 - [実際のシナリオのチュートリアル](../data-factory/data-factory-tutorial.md)。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -36,6 +36,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 |------------------------|-----|-----|-----|-----|-----|
 | [リモート監視][lnk-remote-monitoring] | あり | あり | あり | あり | - | 
 | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+
 - *データの取り込み*: クラウドへの大規模なデータの取り込み。
 - *デバイス ID*: すべての接続されたデバイスの一意の ID を管理します。
 - *コマンドと制御*: クラウドからデバイスにメッセージを送信して、デバイスで何らかのアクションを実行します。
@@ -114,6 +115,8 @@ IoT Hub は、受信したテレメトリをサービス側のテレメトリ読
 
 ## 次のステップ
 
+IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT 参照アーキテクチャ)][lnk-refarch]」を参照してください。
+
 IoT の構成済みソリューションの詳細については、次のリソースをご覧ください。
 
 - [IoT 事前構成済みソリューションの使用][lnk-preconf-get-started]
@@ -132,5 +135,6 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

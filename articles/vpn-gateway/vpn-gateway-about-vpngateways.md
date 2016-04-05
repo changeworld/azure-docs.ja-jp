@@ -42,10 +42,13 @@ VPN ゲートウェイを構成するには、まず VNet のゲートウェイ 
 
 ## <a name="gwtype"></a>ゲートウェイの種類
 
-ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager のデプロイ モデルに必要な構成設定です。VPN 用のルーティングの種類を指定する VPN の種類とゲートウェイの種類を混同しないでください。指定できる GatewayType の値は *Vpn* と *ExpressRoute* です。
+ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager のデプロイ モデルに必要な構成設定です。VPN 用のルーティングの種類を指定する VPN の種類とゲートウェイの種類を混同しないでください。`-GatewayType` に使用できる値は次のとおりです。
+
+- Vpn
+- ExpressRoute
 
 
-この Resource Manager のデプロイ モデルの例では、-GatewayType を *Vpn* に指定しています。ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。
+この Resource Manager デプロイ モデルの例では、-GatewayType に *Vpn* を指定しています。ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
@@ -57,7 +60,7 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 - Standard
 - HighPerformance
 
-次の例では、GatewaySku を *Standard* に指定しています。
+次の例では、`-GatewaySku` を *Standard* に指定しています。
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard -GatewayType Vpn -VpnType RouteBased
 
@@ -78,9 +81,22 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 [AZURE.INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-この Resource Manager のデプロイ モデルの例では、-VpnType を *RouteBased* に指定しています。ゲートウェイを作成するときは、-VpnType が構成に対して適切であることを確認する必要があります。
+この Resource Manager デプロイ モデルの例では、`-VpnType` に *RouteBased* を指定しています。ゲートウェイを作成するときは、-VpnType が構成に対して適切であることを確認する必要があります。
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
+
+## <a name="connectiontype"></a>接続の種類
+
+各構成には、特定の接続の種類が必要です。`-ConnectionType` に使用可能な Resource Manager PowerShell 値は次のとおりです。
+
+- IPsec
+- Vnet2Vnet
+- ExpressRoute
+- VPNClient
+
+次の例では、サイト間接続を作成しています。必要な接続の種類は "IPsec" です。
+
+	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
 
 ## <a name="lng"></a>ローカル ネットワーク ゲートウェイ
@@ -122,4 +138,4 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/02/2016"
+	ms.date="03/25/2016"
 	ms.author="jeffreyg"/>
 
 # クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
@@ -82,7 +82,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
       <li type=round>セキュリティで保護されたトンネル経由で Azure からオンプレミス リソース (Active Directory など) にアクセスする必要がある SQL Server アプリケーション。
       <li type=round>完全な管理者アクセス権があるカスタマイズされた IT 環境を必要とする場合。
       <li type=round>運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。
-      <li type=round>[Azure Storage へのバックアップ](http://msdn.microsoft.com/library/jj919148.aspx) や [Azure VM の AlwaysOn レプリカ](../virtual-machines/virtual-machines-windows-classic-sql-dr.md) を使用したオンプレミス SQL Server アプリケーションの障害復旧。
+      <li type=round>[Azure Storage へのバックアップ](http://msdn.microsoft.com/library/jj919148.aspx) や Azure VM の AlwaysOn レプリカを使用したオンプレミス SQL Server アプリケーションの障害復旧。
       <li type=round>サイズが 1 TB を超える大きなデータベース。
       </ul></td>
 </tr>
@@ -187,7 +187,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 - マイクロソフトのサービスを利用して、データベースで一般的な管理操作を実行し、データベースの可用性の SLA を強化する場合。
 
-作業を開始するには、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。
+
 
 次の状況に該当する場合は、**Azure VM 上の SQL Server** を選択します。
 
@@ -195,8 +195,13 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 - 既存の IT リソースがあり、SQL Server に対する完全な管理者権限が必要で、オンプレミス SQL Server との完全な互換性が必要である。この方法では、ほとんどのアプリケーションを柔軟に実行できることで、既存のアプリケーションの開発や変更のコストを最小限に抑えることができます。また、VM、オペレーティング システム、データベースの構成を全面的に制御できます。
 
-作業を開始するには、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+
 
 > [AZURE.NOTE] SQL Server 2016 CTP2 の試用を希望される場合は、 Microsoft Azure にサインアップし、[ここ](http://aka.ms/sql2016vm "ここ")に移動して、SQL Server 2016 CTP2 が既にインストールされている仮想マシンを作成します。
 
-<!---HONumber=AcomDC_0323_2016-->
+## 次のステップ
+- SQL Database の基本的な使い方については、「[SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](sql-database-get-started.md)」を参照してください。
+- 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+- Azure VM での SQL Server の基本的な使い方については、「[Provision a SQL Server virtual machine in Azure (Azure での SQL Server 仮想マシンのプロビジョニング)](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+
+<!---HONumber=AcomDC_0330_2016-->

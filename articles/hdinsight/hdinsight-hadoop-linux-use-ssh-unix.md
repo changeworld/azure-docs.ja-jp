@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="03/25/2016"
    ms.author="larryfr"/>
 
 #Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する
@@ -116,11 +116,15 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ターミナル セッションから、SSH コマンドを使用して、アドレスとユーザー名を入力し、クラスター ヘッド ノードに接続します。
 
-* **SSH アドレス** - クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
+* **SSH アドレス** - SSH でクラスターに接続するために使用するアドレスは 2 つあります。
+
+    * **ヘッド ノードに接続する**: クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
+    
+    * **エッジ ノードに接続する**: クラスターが HDInsight 上の R Server である場合、クラスターにはエッジ ノードも含まれます。このエッジ ノードへのアクセスには **RServer.CLUSTERNAME.ssh.azurehdinsight.net** を使用します (__CLUSTERNAME__ は実際のクラスターの名前です)。
 
 * **ユーザー名** - クラスターの作成時に指定した SSH ユーザー名。
 
-次の例では、ユーザー **me** として、**mycluster** というクラスターに接続します。
+次の例では、ユーザー **me** として、**mycluster** のヘッド ノード 0 に接続します。
 
 	ssh me@mycluster-ssh.azurehdinsight.net
 
@@ -132,7 +136,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
 
-ポートが指定されない場合、SSH のポートは既定でポート 22 に設定され、HDInsight クラスターのヘッド ノード 0 に接続されます。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+ヘッド ノードのアドレスを使用して接続する際に、ポートが指定されていない場合は、SSH のポートは既定でポート 22 に設定され、HDInsight クラスターのヘッド ノード 0 に接続されます。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 ###ワーカー ノードへの接続
 
@@ -239,4 +243,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

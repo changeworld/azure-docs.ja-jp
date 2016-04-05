@@ -195,7 +195,7 @@
 
 [Azure VM 拡張機能のエラーのトラブルシューティング](virtual-machines-windows-extensions-troubleshoot.md)
 
-[リソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)
+[リソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-windows-troubleshoot-app-connection.md)
 
@@ -375,4 +375,4 @@
 
 [Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング](virtual-machines-windows-allocation-failure.md)
 
-<!-----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

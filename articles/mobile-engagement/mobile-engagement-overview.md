@@ -4,7 +4,7 @@
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article" 
 	ms.date="01/04/2016"
 	ms.author="piyushjo;matt-gibbs" />
 
@@ -45,7 +45,7 @@ Mobile Engagement はアプリ内メッセージング機能を提供し、Googl
 
 ###次のステップ:
 
-[Azure Mobile Engagement アプリケーションの作成](mobile-engagement-create-account.md)
+[Azure Mobile Engagement アプリケーションの作成](mobile-engagement-create.md)
 
 [Mobile Engagement を作成するためのベスト プラクティスとプロセス](mobile-engagement-getting-started-best-practices.md)
 
@@ -53,4 +53,4 @@ Mobile Engagement はアプリ内メッセージング機能を提供し、Googl
 
 [概要チュートリアル (開発者)](/documentation/services/mobile-engagement/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

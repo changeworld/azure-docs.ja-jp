@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/26/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
@@ -42,8 +42,9 @@
     ![Full server name][1]
 
 ## 手順 2. SQL Database に接続する
+最善の結果を得るには、Visual Studio 2015 と[最新の SQL Server Data Tools (SSDT) 更新プログラム](https://msdn.microsoft.com/library/mt204009.aspx)を使用します。
 
-1. Visual Studio を開きます。
+1. Visual Studio 2013 または 2015 を開きます。
 2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順に選択します。
 
     ![SQL Server Object Explorer][2]
@@ -58,7 +59,8 @@
 
     - **[サーバー名]**: 前の手順で特定した*サーバー名*を入力します。
     - **[認証]**: [SQL Server 認証] を選択します。
-    - **[ログイン]** と **[パスワード]**: Azure SQL Server のログインとパスワードを入力します。
+    - **[ユーザー名]** と **[パスワード]**: Azure SQL Server のユーザー名とパスワードを入力します。
+    - **[データベース名]**: SQL DW データベースのデータベース名を入力します。
     - **[接続]** をクリックします。
 
 1. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
@@ -78,9 +80,9 @@
 
 3. 次の TSQL クエリをクエリ ウィンドウにコピーします。
 
-	```
-	SELECT COUNT(*) FROM dbo.FactInternetSales;
-	```
+    ```sql
+    SELECT COUNT(*) FROM dbo.FactInternetSales;
+    ```
 
 4. クエリを実行します。そのためには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
 
@@ -108,4 +110,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->
