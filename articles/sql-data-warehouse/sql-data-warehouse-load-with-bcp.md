@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 
@@ -59,12 +59,12 @@ bcp では次のことができます。
 
 コマンド プロンプトから次のコマンドを使用してインスタンスに接続します。値は適宜置き換えて使用してください。
 
-```
+```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I
 ```
 接続したら、sqlcmd プロンプトで次のテーブル スクリプトをコピーし、Enter キーを押します。
 
-```
+```sql
 CREATE TABLE DimDate2
 (
     DateId INT NOT NULL,
@@ -106,13 +106,13 @@ GO
 ### 手順 3: データに接続し、インポートする
 bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
 
-```
+```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
 前述のように sqlcmd を使用して接続し、次の TSQL コマンドを実行して、データが読み込まれたことを確認できます。
 
-```
+```sql
 SELECT * FROM DimDate2 ORDER BY 1;
 GO
 ```
@@ -140,7 +140,7 @@ Azure SQL Data Warehouse は、統計の自動作成または自動更新をま�
 
 sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
 
-```
+```sql
 create statistics [DateId] on [DimDate2] ([DateId]);
 create statistics [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
@@ -154,7 +154,7 @@ GO
 
 bcp ユーティリティを使用して、次のコマンドでデータに接続し、エクスポートできます。値は適宜置き換えて使用してください。
 
-```
+```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
 新しいファイルを開き、データが正しくエクスポートされたことを確認できます。ファイル内のデータは、次のテキストと一致する必要があります。
@@ -196,4 +196,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

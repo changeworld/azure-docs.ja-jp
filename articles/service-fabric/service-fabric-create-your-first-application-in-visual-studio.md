@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/11/2016"
+   ms.date="03/27/2016"
    ms.author="seanmck"/>
 
 # Visual Studio で最初の Azure Service Fabric アプリケーションを作成する
@@ -58,9 +58,9 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	- **スクリプト**: アプリケーションをデプロイ/アップグレードするための PowerShell スクリプトが含まれます。このスクリプトは、Visual Studio ではバックグラウンドで使用されます。コマンド ラインで直接呼び出すことができます。
 
-	- **アプリケーション定義**: アプリケーション マニフェストおよび関連するアプリケーション パラメーターのファイルが含まれます。これにより、アプリケーションが定義され、特定の環境専用にアプリケーションを構成することができます。
+	- **アプリケーション定義**: *ApplicationPackageRoot* フォルダーにあるアプリケーション マニフェストと、*ApplicationParameters* フォルダーにある関連するアプリケーション パラメーターのファイルが含まれます。これにより、アプリケーションが定義され、特定の環境専用にアプリケーションを構成することができます。
 
-    サービス プロジェクトのコンテンツの概要については、「[Reliable Services の概要](service-fabric-reliable-services-quick-start.md)」を参照してください。
+    サービス プロジェクトのコンテンツの概要については、「[Service Fabric の Reliable Services の概要](service-fabric-reliable-services-quick-start.md)」を参照してください。
 
 ## アプリケーションをデプロイしデバッグする
 
@@ -80,13 +80,13 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	ステートフル サービス テンプレートの場合、表示されるメッセージに含まれるのは、MyStatefulService.cs の `RunAsync` メソッド内でインクリメントされているカウンター値のみです。
 
-3. コードが実行されているノードなど、詳細を確認するには、イベントのいずれかを展開します。次の場合、ノード 2 になっていますが、使用するコンピューターによって異なる可能性があります。
+3. コードが実行されているノードなど、詳細を確認するには、イベントのいずれかを展開します。次の場合、\_Node\_2 になっていますが、使用するコンピューターによって異なる可能性があります。
 
 	![診断イベント ビューアーの詳細][6]
 
 	ローカル クラスターには、1 台のコンピューターでホストされている 5 つのノードが含まれています。ノードがそれぞれ異なるコンピューター上にある 5 ノード クラスターを模倣します。ローカル クラスター上のノードのいずれかをダウンさせて、コンピューターの損失をシミュレートし、これと同時に Visual Studio デバッガーを実行します。
 
-    >[AZURE.NOTE] プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。詳細については、「[ローカルでのサービスの監視方法と診断方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
+    >[AZURE.NOTE] プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。詳細については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 
 4. StatefulService から派生したサービス プロジェクト内のクラス (たとえば、MyStatefulService) を見つけ、`RunAsync` メソッドの最初の行にブレークポイントを設定します。
 
@@ -100,7 +100,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 6. 左側のウィンドウで、**[クラスター]、[ノード]** の順に展開し、コードが実行されているノードを見つけます。
 
-7. **[アクション]、[非アクティブ化 (再起動)]** の順にクリックし、コンピューターの再起動をシミュレートします。
+7. **[アクション]、[非アクティブ化 (再起動)]** の順にクリックし、コンピューターの再起動をシミュレートします。(この手順は、左側のウィンドウにあるノード リスト ビューのコンテキスト メニューで 3 つの点をクリックして実行することもできます)。
 
 	![Service Fabric Explorer でノードを停止する][sfx-stop-node]
 
@@ -114,11 +114,14 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
   まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止し、Visual Studio を閉じた後でも、アプリケーションはバック グラウンドで実行し続けます。アプリケーションの性質によっては、このバックグラウンド アクティビティはコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
 
-  1. 個々のアプリケーションとそのデータのすべてを削除するには、Service Fabric Explorer で **[アプリケーションの削除]** を使用します。
+  1. 個々のアプリケーションとそのデータすべてを削除するには、Service Fabric Explorer で **[アプリケーションの削除]** アクションを実行します。これは、**[アクション]** メニューから実行するか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューから実行します。
+  
+    ![Delete an application is Service Fabric Explorer][sfe-delete-application]
+    
+  2. クラスターからアプリケーションを削除すると、そのアプリケーションについて **[種類のプロビジョニング解除]** を選択できます。これにより、クラスターのイメージ ストアからアプリケーションのパッケージ (コードと構成を含む) が削除されます。
+  3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[ローカル クラスターの停止]** をクリックします。
 
-  2. クラスターをシャット ダウンするが、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[クラスターの停止]** をクリックします。
-
-  3. クラスターを完全に削除するには、システム トレイ アプリで **[クラスターの削除]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
+  4. クラスターを完全に削除するには、システム トレイ アプリで **[ローカル クラスターの削除]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
 
 
 
@@ -141,5 +144,6 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [sfx-stop-node]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-deactivate-node.png
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
+[sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

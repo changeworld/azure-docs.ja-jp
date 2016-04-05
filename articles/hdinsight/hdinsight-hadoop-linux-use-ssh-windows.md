@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/22/2016"
+   ms.date="03/25/2016"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
@@ -121,7 +121,11 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 	![putty インターフェイス、秘密キーの選択](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
-3. **[カテゴリ]** で **[セッション]** を選択します。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
+3. **[カテゴリ]** で **[セッション]** を選択します。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。クラスターに接続する際に使う可能性がある SSH アドレスは 2 つあります。
+
+    * __ヘッド ノード アドレス__: クラスターのヘッド ノードに接続する場合は、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
+    
+    * __エッジ ノード アドレス__: HDInsight クラスター上の R Server に接続する場合は、アドレス __RServer.CLUSTERNAME.ssh.azurehdinsight.net__ を使用して R Server のエッジ ノードに接続できます (CLUSTERNAME は実際のクラスターの名前です)。たとえば、__RServer.mycluster.ssh.azurehdinsight.net__ になります。
 
 	![ssh アドレスを入力した putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
@@ -229,4 +233,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

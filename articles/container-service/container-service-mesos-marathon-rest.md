@@ -32,10 +32,10 @@ ACS クラスターに接続すると、Mesos と関連 REST API には http://l
 
 ## Mesos と Marathon から情報を収集する
 
-Mesos クラスターにコンテナーをデプロイする前に、Mesos エージェントの名前や現在の状態など、Mesos クラスターに関する情報を収集します。これを行うには、Mesos マスターの `master/slaves` エンドポイントにクエリを実行します。問題がなければ、Mesos エージェントの一覧と各エージェントのプロパティが表示されます。
+Mesos クラスターにコンテナーをデプロイする前に、Mesos エージェントの名前や現在の状態など、Mesos クラスターに関する情報を収集します。Mesos REST API の `master/slaves` エンドポイントに情報を照会してください。問題がなければ、Mesos エージェントの一覧と各エージェントのプロパティが表示されます。
 
 ```bash
-curl http://localhost/master/slaves
+curl http://localhost/mesos/master/slaves
 ```
 
 次に、Marathon `/apps` エンドポイントを利用し、Mesos クラスターに対する現在のアプリケーション デプロイを確認します。これが新しいクラスターであれば、アプリ用の空の配列が表示されます。
@@ -160,4 +160,4 @@ Marathon API を利用し、アプリケーションのデプロイを拡大縮�
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

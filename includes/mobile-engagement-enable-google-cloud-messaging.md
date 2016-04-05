@@ -1,4 +1,7 @@
->[AZURE.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
+
+###API キーを使用して Google Cloud Messaging プロジェクトを作成する
+
+>[AZURE.NOTE] この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
 
 1. [Google Cloud Console](https://console.developers.google.com/project) に移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
 
@@ -18,7 +21,7 @@
 
 	![](./media/mobile-engagement-enable-google-cloud-messaging/enable-gcm-2.png)
 
-5. **[資格情報]**、**[資格情報の追加]**、**[API キー]** の順にクリックします。
+5. **[Credentials]**、**[Add Credential]**、**[API Key]** の順にクリックします。
 
    	![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key.png)
 
@@ -31,4 +34,4 @@
 
 7. **[API KEY]** の値をメモしておきます。この API キーの値は、後で [ネイティブ プッシュ通知] セクションで構成する際に使用するされます。
 
-<!---HONumber=Nov15_HO1-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -63,6 +63,8 @@
 ## パイプラインの作成
 
 1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
+
+	> [AZURE.NOTE] 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
 2. **[プロパティ]** ページで次の操作を実行します。
 	1. **[タスク名]** に「**CopyFromBlobToAzureSql**」と入力します。
 	2. **説明**を入力します (省略可能)。
@@ -103,9 +105,9 @@
 12. **[デプロイメントに成功しました]** ページで、**[コピー パイプラインを監視するには、ここをクリックしてください]** をクリックします。
 
 	![Copy Tool - Deployment succeeded](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
-13. 「[Monitor and manage pipeline using Monitoring App (監視アプリを使用したパイプラインの監視と管理)](data-factory-monitor-manage-app.md)」の指示に従って、先ほど作成したパイプラインを監視する方法を確認します。
+13. 「[新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)」の指示に従って、先ほど作成したパイプラインを監視する方法を確認します。
 
 	![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
   
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

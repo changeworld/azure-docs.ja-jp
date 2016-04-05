@@ -117,6 +117,10 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 いいえ。サポートされていません。ただし、カスタムの R と Python コードを使用してモジュールを定義できます。
 
+**実験でいくつのモジュールを並列実行できますか。**
+
+実験では最大 4 つのモジュールを並列実行できます。
+
 
 ### データ処理
 
@@ -164,7 +168,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
-Machine Learning Studio は、現在、400 を超える CRAN R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
+Machine Learning Studio では現在、400 を超える CRAN R パッケージがサポートされています。対象となるすべてのパッケージが記載された最新の一覧は[こちら](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)です。また、この一覧を自身で取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
 
 **カスタム R モジュールを構築することはできますか。**
 
@@ -219,10 +223,9 @@ Retraining API を使用することもできます。サンプル コードは[
 
 RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
- **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
-いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
 
- ****エラー コードの詳細はどこで入手できますか。 エラー コードの詳細は[こちら](https://msdn.microsoft.com/library/azure/dn905910.aspx)をご覧ください。
+ **エラー コードの詳細はどこで入手できますか。 エラー コードの詳細は[こちら](https://msdn.microsoft.com/library/azure/dn905910.aspx)をご覧ください。
 
 ## 拡張性
 
@@ -314,4 +317,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

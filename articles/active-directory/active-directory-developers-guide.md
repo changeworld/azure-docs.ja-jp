@@ -89,16 +89,13 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Azure Active Directory のサンプル](https://github.com/azure-samples?query=active-directory): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
 
+- [ADAL for .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): .NET 認証ライブラリのドキュメントです。
 
 ### Graph API
 
 - [Graph API リファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx): Azure Active Directory Graph API の REST リファレンスです。[対話型の Graph API リファレンスを表示します](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
-
-### 認証ライブラリ
-
-- [.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): .NET 認証ライブラリに関するドキュメント。
 
 ### 認証プロトコル
 
@@ -142,4 +139,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

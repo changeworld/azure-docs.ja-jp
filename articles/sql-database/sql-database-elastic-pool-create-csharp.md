@@ -1,6 +1,6 @@
 <properties
-    pageTitle="エラスティック データベース プールの作成 (C#) | Microsoft Azure"
-    description="多数のデータベース全体でリソースを共有できるように、C# データベース開発手法を使用して Azure SQL Database エラスティック データベース プールを作成します。"
+    pageTitle="C# を使用したエラスティック データベース プールの作成 | Microsoft Azure"
+    description="多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。"
     services="sql-database"
     documentationCenter=""
     authors="stevestein"
@@ -13,10 +13,10 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="03/22/2016"
+    ms.date="03/24/2016"
     ms.author="sstein"/>
 
-# エラスティック データベース プールの作成 (C&#x23;)
+# C&#x23; を使用したエラスティック データベース プールの作成
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-create-portal.md)
@@ -37,7 +37,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールの作成
+## プールを作成する
 
 
     // Create elastic pool: configure create or update parameters and properties explicitly
@@ -56,7 +56,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
     // Create the pool
     var newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
 
-## 既存のデータベースをエラスティック データベース プールに移動
+## 既存のデータベースをプールに移動する
 
 
     // Retrieve current database properties
@@ -82,7 +82,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールでの新しいデータベースの作成
+## プールに新しいデータベースを作成する
 
 
     // Create a database: configure create or update parameters and properties explicitly
@@ -105,7 +105,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールの作成例 (C&#x23;)
+## プールを作成する (C&#x23; の例)
 
 
 この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
@@ -145,7 +145,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
         static string adminPassword = "<server password (store it securely!)>";
         static string serverVersion = "12.0";
 
-        // elastic database pool variables
+        // pool variables
         static string elasticPoolName = "<pool name>";
         static string poolEdition = "Standard";
         static int poolDtus = 400;
@@ -168,7 +168,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
             ServerGetResponse srvr = CreateServer();
             Console.WriteLine("Creation of server " + srvr.Server.Name + ": " + srvr.StatusCode.ToString());
 
-            // Create an elastic database pool
+            // Create a pool
             Console.WriteLine("Creating elastic database pool... ");
             ElasticPoolCreateOrUpdateResponse epool = CreateElasticDatabasePool();
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
@@ -270,7 +270,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 ## 次のステップ
 
 - [プールを管理する](sql-database-elastic-pool-manage-csharp.md)
-- [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブは、プール内にある任意の数のデータベースに対して T-SQL スクリプトの実行を容易にします。
+- [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 
 
 ## その他のリソース
@@ -280,4 +280,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

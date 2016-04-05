@@ -37,8 +37,7 @@ Azure Active Directory B2C サービス対応のアプリケーションを作�
 今後の Azure Active Directory B2C プレビューに変更については、このページを頻繁に確認してください。また @AzureAD で最新情報をツイートしていきます。
 
 - [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md)と、アプリケーションで作成および使用できるポリシーの種類について理解してください。
-- サービスに関する軽微な問題、状態、対応策についての通知を確認できるように、[サービス正常性ページ](active-directory-b2c-service-health.md)をブックマークしてください。[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)も継続的にチェックしてください。
-- 最新の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認してください。
+- 現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を参照してください。
 
 ## ハウツー記事
 
@@ -49,19 +48,19 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [コンシューマー向けアプリケーションで Azure Multi-Factor Authentication を有効にする](active-directory-b2c-reference-mfa.md)。
 - [コンシューマー向けにセルフ サービス パスワードのリセットをセットアップする](active-directory-b2c-reference-sspr.md)。
 - Azure Active Directory B2C によって提供される[サインアップ、サインイン、その他のコンシューマー向けページをカスタマイズする](active-directory-b2c-reference-ui-customization.md)。
-- Azure Active Directory B2C テナントで [Azure Active Directory Graph API を使用してプログラムでコンシューマーを作成、読み取り、更新、削除する](active-directory-b2c-devquickstarts-graph-dotnet.md)。
+- Azure Active Directory B2C テナントで [Azure Active Directory Graph API を使用してプログラムによりコンシューマーを作成、読み取り、更新、削除する](active-directory-b2c-devquickstarts-graph-dotnet.md)。
 
 ## 次のステップ
 
 以下のリンクは、サービスの詳細を調べるのに役立ちます。
 
-- [Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)をご確認ください。
-- Stack Overflow で、[azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) タグまたは [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用してヒントを得ることができます。
+- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
+- [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
 - [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) を使用して、プレビュー版に関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
 - Azure Active Directory B2C は、"App Model v2.0" と呼ばれるアプリケーション登録モデルを使用して、業界標準のプロトコル (OpenID Connect、OAuth 2.0) をサポートします。
   - [アプリ モデル v2.0 プロトコルのリファレンス](active-directory-b2c-reference-protocols.md)
   - [アプリ モデル v2.0 トークンの参照](active-directory-b2c-reference-tokens.md)
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md) をご覧ください。
-- [Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)をご確認ください。
+- [Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->
