@@ -3,7 +3,7 @@
    description="SQL Data Warehouse に接続して、クエリを実行する"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/28/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # SQLCMD を使用した接続とクエリ
@@ -45,17 +45,17 @@
 
 ## sqlcmd で SQL Data Warehouse に接続する
 
-sqlcmd を使用するときに SQL Data Warehouse の特定のインスタンスに接続するには、コマンド プロンプトを開いて、**sqlcmd** の後に、SQL Data Warehouse データベースの接続文字列を入力する必要があります。接続文字列では、次のパラメーターを指定します。
+sqlcmd を使用するときに SQL Data Warehouse の特定のインスタンスに接続するには、コマンド プロンプトを開いて、**sqlcmd** の後に、SQL Data Warehouse データベースの接続文字列を入力する必要があります。接続文字列では、次の必須パラメーターが必要になります。
 
++ **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
++ **データベース (-d):** データベース名。
 + **ユーザー (-U):** サーバーのユーザー。`<`User`>` の形式で指定します
 + **パスワード (-P):** ユーザーに関連付けられているパスワード。
-+ **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
-+ **データベース (-D):** データベース名。
 + **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 したがって、SQL Data Warehouse インスタンスに接続するには、次のように入力します。
 
-```
+```sql
 C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
 ```
 
@@ -63,9 +63,9 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 
 接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。
 
-```
+```sql
 C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
-1> SELECT COUNT(*) FROM dbo.FactInternetSales;
+1> SELECT name FROM sys.tables;
 2> GO
 3> QUIT
 ```
@@ -83,4 +83,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

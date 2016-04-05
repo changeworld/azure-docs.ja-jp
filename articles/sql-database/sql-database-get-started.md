@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SQL Database チュートリアル: SQL データベースの作成 | Microsoft Azure"
-	description="SQL Database チュートリアル: Azure ポータルでサンプル データを使用して分単位で SQL Database を作成します。ホスティング サーバーとファイアウォール ルールを設定する方法について説明します。"
+	description="SQL Database チュートリアル: Azure ポータルで数分で初めての SQL データベースを作成するホスティング サーバーとファイアウォール ルールを設定する方法について説明します。"
 	keywords="SQL Database チュートリアル、SQL Database の作成"
 	services="sql-database"
 	documentationCenter=""
@@ -15,10 +15,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="12/01/2015"
+	ms.date="03/27/2015"
 	ms.author="jeffreyg"/>
 
-# SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する
+# SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する
 
 **1 つのデータベース**
 
@@ -27,14 +27,16 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-この SQL Database チュートリアルでは、Azure ポータルでサンプル データを使用して、わずか数分で最初の SQL Database を作成する方法について説明します。学習内容は次のとおりです。
+この SQL Database チュートリアルでは、Azure ポータルでわずか数分で最初の SQL データベースを作成する方法について説明します。空のデータベースまたはサンプル データを含むデータベースをセットアップすることができます。
+
+学習内容は次のとおりです。
 
 - 作成したデータベースをホストするサーバーを作成し、そのファイアウォール規則を設定します。
-- 操作可能なデータが格納された AdventureWorks サンプルから SQL Database を作成します。
+- 空の SQL データベースか、操作可能なデータが格納された AdventureWorks サンプルのデータベースを作成します。
 
-開始する前に、Azure アカウントとサブスクリプションが必要です。お持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+開始する前に、Azure アカウントとサブスクリプションが必要です。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-> [AZURE.NOTE] この SQL Database チュートリアルでは、マイクロソフトのリレーショナル データベース管理システム (RDBMS) である Azure SQL Database を使用して、クラウドでデータベースを設定する方法について説明します。別のオプションとして、Azure Virtual Machine で SQL Server を実行することもできます。これらの簡単な比較については、「[Azure SQL Database と Azure VM 内の SQL Server について](data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。また、仮想マシンについては、「[SQL Server 仮想マシンのプロビジョニング](../virtual-machines/virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+> [AZURE.NOTE] この SQL Database チュートリアルでは、マイクロソフトのリレーショナル データベース管理システム (RDBMS) である Azure SQL Database を使用して、クラウドでデータベースを設定する方法について説明します。別のオプションとして、Azure Virtual Machine で SQL Server を実行することもできます。これらの簡単な比較については、「[Azure SQL Database と Azure VM 内の SQL Server について](data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。また、仮想マシンについては、「[SQL Server 仮想マシンのプロビジョニング](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
 ## 手順 1. サインインして SQL データベースの設定を開始する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
@@ -65,9 +67,15 @@ Azure の SQL データベースは、データベース サーバーに存在�
 
 5. **[OK]** をクリックして、**[SQL Database]** ブレードに戻ります。
 
-データベースとサーバーはまだ作成されていません。これらは次の手順で作成されます。次の手順では、AdventureWorks サンプルからデータベースを作成して設定を確認します。
+データベースとサーバーはまだ作成されていません。これらは次の手順で作成されます。次の手順では、データベースを作成して設定を確認します。
 
 ## 手順 3. SQL Database を設定して作成する
+
+**データまたはテーブルを含まない新しいデータベースを設定するには:**
+- **[Create]** ボタンをクリックします。
+
+**サンプル データを含む新しいデータベースを設定するには:**
+
 1. **[SQL Database]** ブレードで **[ソースの選択]**、**[サンプル]** の順にクリックします。
 
 	![サンプルから SQL Database を作成する](./media/sql-database-get-started/new-sample-db.png)
@@ -86,21 +94,19 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 データベースを操作できるように、クライアント コンピューターの IP アドレスからの接続を許可するファイアウォール規則をサーバーで設定する必要があります。この規則は、接続を確立するのに役立つだけでなく、Azure の SQL サーバーに関するその他の詳細情報を入手できる領域を表示する優れた方法でもあります。
 
-1. **[すべて参照]** をクリックし、下へスクロールして **[SQL Server]** をクリックし、**[SQL Server]** の一覧で、先ほど作成したサーバーの名前をクリックします。
+1. **[参照]** をクリックし、スクロールダウンして **[SQL Server]** をクリックします。誤って **[SQL データベース]** をクリックしないでください。これは、よくある間違いです。
 
 	![データベース サーバーの選択](./media/sql-database-get-started/browse_dbservers.png)
 
-
-3. 右側に表示されるデータベース プロパティのブレードで、**[設定]** をクリックし、一覧から **[ファイアウォール]** をクリックします。
+2. SQL サーバーの一覧で、手順 2. で選択した**サーバー名**の付いたサーバーをクリックします。右側に表示されるデータベース プロパティのブレードで、**[設定]** をクリックし、一覧から **[ファイアウォール]** をクリックします。
 
 	![ファイアウォール設定を開く](./media/sql-database-get-started/db_settings.png)
 
+  **[ファイアウォールの設定]** に、現在の**クライアント IP アドレス**が表示されます。
 
-	**[ファイアウォールの設定]** に、現在の**クライアント IP アドレス**が表示されます。
+	![Current IP address](./media/sql-database-get-started/firewall_config_client_ip.png)
 
-	![現在の IP アドレス](./media/sql-database-get-started/firewall_config_client_ip.png)
-
-4. **[クライアント IP の追加]** をクリックすると、Azure でその IP アドレスの規則が作成されます。次に **[保存]** をクリックします。
+3. **[クライアント IP の追加]** をクリックすると、Azure でその IP アドレスの規則が作成されます。次に **[保存]** をクリックします。
 
 	![IP アドレスの追加](./media/sql-database-get-started/firewall_config_new_rule.png)
 
@@ -117,4 +123,9 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+
+## その他のリソース
+
+- [Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)、索引
+
+<!---HONumber=AcomDC_0330_2016-->

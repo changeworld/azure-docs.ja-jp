@@ -115,9 +115,9 @@ public class TasksController : Controller
 まず、OWIN OAuth 認証パイプラインをインストールします。
 
 ```
-PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
-PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService
-PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
+PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TaskService
+PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TaskService
+PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskService
 ```
 
 ### B2C の詳細情報を入力する
@@ -226,9 +226,9 @@ to the policies, allowing you users to sign into the Task Client using social ac
 
 <!--
 
-## Next steps
+## 次のステップ
 
-さらに高度な B2C のトピックに進むことができます。 You may try:
+さらに高度な B2C のトピックに進むことができます。 次のチュートリアルを試してみてください。
 
 [Call a web API from a web app]()
 
@@ -236,4 +236,4 @@ to the policies, allowing you users to sign into the Task Client using social ac
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

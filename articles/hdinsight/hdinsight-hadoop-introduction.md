@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/27/2016"
+   ms.date="03/29/2016"
    ms.author="cgronlun"/>
 
 
@@ -81,11 +81,15 @@ HDInsight チームによって提供されるスクリプトの例は次のと�
 
 独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
+## HDInsight Standard と HDInsight Premium
+
+HDInsight は、ビッグ データのクラウド サービスを Standard と Premium の 2 つのカテゴリで提供します。HDInsight Standard では、組織がビッグ データのワークロードの実行に使用できる、エンタープライズ規模のクラスターが用意されています。HDInsight Premium では、これに加えて HDInsight クラスター用の高度な分析機能やセキュリティ機能が用意されています。詳細については、「[HDInsight のバージョンと Hadoop コンポーネント](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)」を参照してください。
+
 ## Hadoop コンポーネントおよびユーティリティとは
 
 HDInsight クラスターには、次のコンポーネントとユーティリティが含まれています。
 
-* **[Ambari](#ambari)**: クラスターのプロビジョニング、管理、監視、およびユーティリティ。
+* **[Ambari](#ambari)**: クラスターのプロビジョニング、管理、監視、ユーティリティ。
 
 * **[Avro](#avro)** (Microsoft .NET Library for Avro) - Microsoft.NET 環境向けのデータ シリアル化。
 
@@ -139,7 +143,7 @@ Hadoop 分散ファイル システム (HDFS) は、MapReduce と YARN と共に
 ### <a name="mapreduce"></a>MapReduce
 Hadoop MapReduce は、大規模なデータセットを並列でバッチ処理するアプリケーションを記述するための Hadoop 用のレガシー ソフトウェア フレームワークです。MapReduce ジョブは、大規模なデータセットを分割し、データを処理のためにキーと値のペアに整理します。
 
-[YARN](#yarn) は、Hadoop の次世代リソース マネージャーおよびアプリケーション フレームワークであり、MapReduce 2.0 と呼ばれます。MapReduce ジョブは YARN で実行されます。
+[YARN](#yarn) は、Hadoop の次世代リソース マネージャーとアプリケーション フレームワークであり、MapReduce 2.0 と呼ばれます。MapReduce ジョブは YARN で実行されます。
 
 MapReduce の詳細については、Hadoop Wiki で「<a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a>」をご覧ください。
 
@@ -170,7 +174,7 @@ YARN の詳細については、「<a target="_blank" href="http://hadoop.apache
 
 ## HDInsight のプログラミング言語
 
-HDInsight クラスター (Hadoop、HBase、Storm、および Spark クラスター) は多数のプログラミング言語をサポートしますが、既定でインストールされないものがあります。既定でインストールされないライブラリ、モジュール、またはパッケージ コンポーネントは、スクリプト操作を使用してインストールします。[HDInsight でのスクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)
+HDInsight クラスター (Hadoop、HBase、Storm、および Spark クラスター) は多数のプログラミング言語をサポートしますが、既定でインストールされないものがあります。既定でインストールされないライブラリ、モジュール、またはパッケージ コンポーネントは、スクリプト操作を使用してインストールします。「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
 ### 既定のプログラミング言語のサポート
 
@@ -180,7 +184,7 @@ HDInsight クラスター (Hadoop、HBase、Storm、および Spark クラスタ
 
 * Python
 
-スクリプト アクションを使用して他の言語をインストールできます。[ HDInsight でスクリプト アクションを開発します](hdinsight-hadoop-script-actions-linux.md)。
+スクリプト アクションを使用して他の言語をインストールできます。「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
 ### Java 仮想マシン (JVM) 言語
 
@@ -211,11 +215,19 @@ HDInsight の Hadoop は、Azure クラウド エコシステムの一部とし�
 
 * 最新の Hadoop コンポーネント。詳細については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][component-versioning]」を参照してください。
 
-* クラスターの高い可用性と信頼性。「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+* クラスターの高い可用性と信頼性。サービスの可用性を高めるために、HDInsight によってデプロイされた Hadoop クラスターに 2 つ目のヘッド ノードが追加されました。通常 Hadoop クラスターの標準的な実装には、ヘッド ノードは 1 つしかありません。HDInsight はセカンダリ ヘッドノードを追加することで、この単一障害点をなくします。顧客が既定の L サイズ ノードを使わず、XL サイズのヘッドノードでクラスターを作成しない限り、新しい HA クラスター構成に切り替えてもクラスターの価格は変わりません。
+
+	「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 * Hadoop 互換オプションの Azure BLOB ストレージによって実現される効率的で経済的なデータ ストレージ。詳細については、「[HDInsight の Hadoop での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
 * [Web アプリ](../documentation/services/app-service/web/) や [SQL Database](../documentation/services/sql-database/) などの他の Azure サービスとの統合。
+
+* 追加の VM サイズ。HDInsight クラスターは、さまざまな種類とサイズの VM で利用できます。HDInsight クラスターは、汎用目的でビルドされた A2 ～ A7 サイズ、ソリッド ステート ドライブ (SSD) と 60% 高速のプロセッサを特徴とする D シリーズ ノード、高速ネットワーク用 InfiniBand をサポートする A8 と A9 サイズを利用できます。Azure HDInsight で Apache HBase を使用するお客様は、D シリーズの大容量メモリ構成を利用してパフォーマンスを向上させることができます。また、Azure HDInsight で Apache Storm を使用するお客様は、追加メモリを活用して大規模な参照データ セットを読み込んだり、高速な CPU によってスループットを向上させたりできます。
+
+* クラスター スケーリング。クラスター スケーリングを使用すると、削除したり、再作成したりしなくても、実行する HDInsight クラスターのノード数を変更できます。
+
+* Virtual Network のサポート。HDInsight クラスターと Azure Virtual Network を組み合わせることにより、クラウド リソースの分離、つまり、クラウドのリソースとご利用のデータセンター内のリソースとをリンクさせたハイブリッド ソリューションを実現できます。
 
 * 低い導入コスト。[無料評価版](/pricing/free-trial/)から始めることができます。「[HDInsight の料金詳細](/pricing/details/hdinsight/)」も参照してください。
 
@@ -256,7 +268,7 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 
 * [Azure SQL Database](/documentation/services/sql-database/): SQL Database に関するドキュメント、チュートリアル、ビデオです。
 
-* [Azure ポータル上の SQL Database](sql-database-manage-portal.md) - クラウドの SQL Database を管理するための軽量で操作しやすいデータベース管理ツール。
+* [Azure ポータル上の SQL Database](../sql-database/sql-database-manage-portal.md) - クラウドの SQL Database を管理するための軽量で操作しやすいデータベース管理ツール。
 
 * [Adventure Works for SQL Database](http://msftdbprodsamples.codeplex.com/releases/view/37304) - SQL Database のサンプル データベースのダウンロード ページです。
 
@@ -292,4 +304,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->
