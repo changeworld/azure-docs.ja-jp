@@ -69,7 +69,8 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 
 ## ARM と Linux のサポート
 
