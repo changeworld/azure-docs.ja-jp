@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # Azure Machine Learning を使用したデータの分析
@@ -39,25 +39,25 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ**を指定します。
 
-   ```
-   SELECT [CustomerKey]
-      ,[GeographyKey]
-      ,[CustomerAlternateKey]
-      ,[MaritalStatus]
-      ,[Gender]
-      ,cast ([YearlyIncome] as int) as SalaryYear
-      ,[TotalChildren]
-      ,[NumberChildrenAtHome]
-      ,[EnglishEducation]
-      ,[EnglishOccupation]
-      ,[HouseOwnerFlag]
-      ,[NumberCarsOwned]
-      ,[CommuteDistance]
-      ,[Region]
-      ,[Age]
-      ,[BikeBuyer]
-  FROM [dbo].[vTargetMail]
-   ```
+```sql
+SELECT [CustomerKey]
+  ,[GeographyKey]
+  ,[CustomerAlternateKey]
+  ,[MaritalStatus]
+  ,[Gender]
+  ,cast ([YearlyIncome] as int) as SalaryYear
+  ,[TotalChildren]
+  ,[NumberChildrenAtHome]
+  ,[EnglishEducation]
+  ,[EnglishOccupation]
+  ,[HouseOwnerFlag]
+  ,[NumberCarsOwned]
+  ,[CommuteDistance]
+  ,[Region]
+  ,[Age]
+  ,[BikeBuyer]
+FROM [dbo].[vTargetMail]
+```
 
 実験キャンバスの下にある **[実行]** をクリックして、実験を実行します。![実験を実行する][1]
 
@@ -115,6 +115,8 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
+## 次のステップ
+
 予測機械学習モデルの作成の詳細については、「[Microsoft Azure での機械学習の概要][]」を参照してください。
 
 
@@ -140,4 +142,4 @@ AdventureWorksDW データベースの dbo.vTargetMail ビューからデータ�
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

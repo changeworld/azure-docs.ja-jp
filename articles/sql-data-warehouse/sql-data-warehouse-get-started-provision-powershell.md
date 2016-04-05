@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/26/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -25,21 +25,21 @@
 
 ## Azure PowerShell コマンドレットの取得と実行
 
-> [AZURE.NOTE]  Microsoft Azure PowerShell を SQL Data Warehouse と共に使用するには、ARM コマンドレットを使用して Azure PowerShell の最新バージョンをダウンロードしてインストールする必要があります。`Get-Module -ListAvailable -Name Azure` を実行することで、ご使用のバージョンを確認できます。この記事は、Microsoft Azure PowerShell バージョン 1.0.3 に基づいています。
+> [AZURE.NOTE]  Microsoft Azure PowerShell を SQL Data Warehouse と共に使用するには、ARM コマンドレットを使用して Azure PowerShell の最新バージョンをダウンロードしてインストールする必要があります。`Get-Module -ListAvailable -Name Azure` を実行することで、ご使用のバージョンを確認できます。この記事は、Microsoft Azure PowerShell バージョン 1.0.3 以降に基づいています。
 
 PowerShell をまだセットアップしていない場合は、ダウンロードして構成する必要があります。
 
-1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
+1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://aka.ms/webpi-azps) を実行します。このインストーラーの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
-3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。詳細については、「[Azure PowerShell のインストールと構成の方法][]」を参照してください。
+3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
 
-	```
+	```Powershell
 	Login-AzureRmAccount
 	```
 
 4. 現在のセッションに使用するサブスクリプションを選択します。
 
-	```
+	```Powershell
 	Get-AzureRmSubscription	-SubscriptionName "MySubscription" | Select-AzureRmSubscription
 	```
 
@@ -55,13 +55,13 @@ SQL Data Warehouse をデプロイするには、New-AzureRmSQLDatabase コマ�
 
 このコマンドは、SQL Data Warehouse に新しいデータベースをデプロイします。
 
-```
+```Powershell
 New-AzureRmSqlDatabase -RequestedServiceObjectiveName "<Service Objective>" -DatabaseName "<Data Warehouse Name>" -ServerName "<Server Name>" -ResourceGroupName "<ResourceGroupName>" -Edition "DataWarehouse"
 ```
 
 この例では、サービス目標レベル "DW400" で "mynewsqldw1" という名前の新しいデータベースを、"mywesteuroperesgp1" という名前のリソース グループ内の "sqldwserver1" という名前のサーバーにデプロイします。
 
-```
+```Powershell
 New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw1" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse"
 ```
 
@@ -94,6 +94,6 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [REST API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
-[Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
+[Azure PowerShell のインストールおよび構成方法]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

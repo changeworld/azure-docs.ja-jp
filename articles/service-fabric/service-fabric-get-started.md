@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/09/2016"
+   ms.date="03/26/2016"
    ms.author="seanmck"/>
 
 # 開発環境を準備する
@@ -21,29 +21,27 @@
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
-次のオペレーティング システムのバージョンがサポートされます。
+開発では、次のオペレーティング システムのバージョンがサポートされます。
 
+- Windows 7
 - Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
 
 ### Visual Studio 2015
 
-Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
+Service Fabric のツールには少なくとも Visual Studio 2015 が必要です。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
 
-> [AZURE.NOTE] サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio 2015 をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
+> [AZURE.NOTE] サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
-Service Fabric のコンポーネントは、Web Platform Installer によってインストールされます。次の手順に従ってインストールします。
+Service Fabric のコンポーネントは、Web Platform Installer によってインストールされます。インストールには 3 つのオプションがあります。
 
-1. Web Platform Installer を使用して [SDK をダウンロード][3]します。
+- [Visual Studio 2015 用の Service Fabric ランタイム、SDK、ツールをインストールする](full-bundle-vs2015)
+- [Visual Studio "15" プレビュー用の Service Fabric ランタイム、SDK、ツールをインストールする](full-bundle-dev15)
+- [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)](core-sdk)
 
-2. **[インストール]** をクリックして、インストール プロセスを開始します。
-
-3. 使用許諾契約書を確認し、同意します。
-
-自動的にインストールが続行します。
 
 ## PowerShell スクリプトの実行の有効化
 
@@ -65,6 +63,8 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI link"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

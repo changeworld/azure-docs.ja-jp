@@ -4,16 +4,16 @@
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="12/11/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Azure Mobile Engagement - 概要とベスト プラクティス
@@ -228,7 +228,7 @@ KPI を正しく定義することは簡単ではありません。異なる業�
 4. **タイル (Windows Phone のみ)**: Microsoft プッシュ通知サービス (MPNS) を使用して、XML データを含んだネイティブ プッシュ通知を送信することができます (SDK Version 0.9.0 以降でサポートされます。タイルの最終的なペイロードは 32 キロバイト以下である必要があります)。メッセージは、ボードのタイルに直接表示されます。
 5. **Web ビュー**: Web ビューは、Web コンテンツを含んだポップアップです。このポップアップは、エンドユーザーがプッシュ通知をクリックしたときに表示されます。Web ビューでは、エンドユーザーとの対話を増やすことができます。
  
->[AZURE.NOTE]アプリの開発とプッシュ通知の送信に関するプラットフォーム (iOS、Android、Windows) ごとのガイドラインに、プッシュ通知として送信する内容が準拠していることを確認してください。
+>[AZURE.NOTE] アプリの開発とプッシュ通知の送信に関するプラットフォーム (iOS、Android、Windows) ごとのガイドラインに、プッシュ通知として送信する内容が準拠していることを確認してください。
 
  
 
@@ -356,7 +356,7 @@ Azure Mobile Engagement を基盤とするアプリのプロジェクトは 2 �
 
 #### セットアップ
 
-Azure Mobile Engagement のセットアップはきわめて単純です。ユーザー インターフェイスに関連したドキュメントはすべて、Azure Mobile Engagement の Web サイト ([ユーザー インターフェイスを操作する方法](mobile-engagement-user-interface-navigation.md)に関するページ) でご覧いただけます。
+Azure Mobile Engagement のセットアップはきわめて単純です。ユーザー インターフェイスに関連したドキュメントはすべて、Azure Mobile Engagement の Web サイト ([ユーザー インターフェイスを操作する方法](mobile-engagement-user-interface.md)に関するページ) でご覧いただけます。
 
 まず、プロジェクトのユーザーに必要な適切なロールとそのメンバーシップを設定することをお勧めします。そうすることで、全ユーザーのプラットフォームへのアクセスを適切に管理することができます。次のロールがあります。
 
@@ -364,7 +364,10 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 - 開発者
 - 閲覧者 
 
-ロールの設定後、デバイス ID を登録して自分のデバイス上でテストを行います。- アカウントの設定に移動してタイム ゾーンを設定し、グラフや通知の配信時刻を設定します。- アプリケーションの設定に移動し、対象エンド ユーザーを絞り込むために必要な "App-info" を登録します。
+ロールの設定後は、次の操作を行います。
+- デバイス ID を登録して自分のデバイス上でテストを行います。
+- アカウントの設定に移動してタイム ゾーンを設定し、グラフや通知の配信時刻を設定します。
+- アプリケーションの設定に移動し、対象エンド ユーザーを絞り込むために必要な "App-info" を登録します。
 
 初めてのプッシュ通知キャンペーンの実行方法については、[エンドユーザーに通知するためのプッシュの利用と管理を始める方法](mobile-engagement-how-tos.md)に関するページを参照してください。
 
@@ -391,7 +394,7 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 
 ## 次のステップ
 
-- [Azure Mobile Engagement アカウントを作成します](mobile-engagement-create-account.md)。
+- [Azure Mobile Engagement アカウントを作成します](mobile-engagement-create.md)。
 - Mobile Engagement 戦略を定義する方法について詳しくは、[Mobile Engagement 戦略の定義](mobile-engagement-define-your-mobile-engagement-strategy.md)に関するページを参照してください。
 
 
@@ -404,4 +407,4 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,12 +13,12 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/14/2016"
+   ms.date="03/29/2016"
    ms.author="navale;tomfitz"/>
    
 # Resource Manager テンプレートのチュートリアル
 
-このトピックでは、Resource Manager テンプレートを作成する手順について説明します。デプロイする Azure サービスについては精通しているものの、そのインフラストラクチャをテンプレートで表現する方法については精通していない読者を想定しています。[クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates)の[ロード バランサーとロード バランサー規則テンプレートが構成された 2 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) に基づいてテンプレートを作成しますが、このテクニックは、作成する必要のあるあらゆるテンプレートに利用できます。
+このトピックでは、Resource Manager テンプレートを作成する手順について説明します。[クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates)の[ロード バランサーとロード バランサー規則テンプレートが構成された 2 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) に基づいてテンプレートを作成します。このテクニックは、作成する必要のあるあらゆるテンプレートに利用できます。
 
 一般的なアーキテクチャを見てみましょう。
 
@@ -310,7 +310,7 @@ Azure CLI で API バージョンを確認するには、前に示した同じ *
 ## 仮想マシン
 [ネットワーク インターフェイス](#network-interface)の作成時と同じように、copyIndex() 関数を使って 2 つの仮想マシンを作成します。VM を作成するには、ストレージ アカウント、ネットワーク インターフェイス、可用性セットが必要です。この VM は、`storageProfile` プロパティで定義されているとおりに、マーケットプレース イメージから作成されます。また、イメージの発行者、プラン、SKU、バージョンを定義するために、`imageReference` が使用されます。最後に、VM の診断を有効にするために、診断プロファイルを構成します。
 
-マーケットプレース イメージの該当するプロパティを探すには、[VM の検索](./virtual-machines/resource-groups-vm-searching.md)に関する記事を参考にしてください。サード パーティ ベンダーによって発行されたイメージの場合は、`plan` という別のプロパティを指定する必要があります。クイックスタート ギャラリーの[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)で例を確認できます。
+Marketplace イメージの該当するプロパティを見つけるには、[Linux 仮想マシン イメージの選択](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md)または [Windows 仮想マシン イメージの選択](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md)に関する記事に従ってください。サード パーティ ベンダーによって発行されたイメージの場合は、`plan` という別のプロパティを指定する必要があります。クイックスタート ギャラリーの[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)で例を確認できます。
 
 
 ```json
@@ -376,7 +376,7 @@ Azure CLI で API バージョンを確認するには、前に示した同じ *
 
 ## パラメーター
 
-parameters セクションでは、テンプレートのデプロイ時に指定できる値を定義します。デプロイ中に変更する必要があると思われる値のパラメーターのみを定義してください。デプロイ中に指定されない場合に使用されるパラメーターの既定値を指定できます。**imageSKU** パラメーターには、ご覧の許可されている値を定義できます。
+parameters セクションでは、テンプレートのデプロイ時に指定できる値を定義します。デプロイ中に変更する必要があると思われる値のパラメーターのみを定義してください。デプロイ中に指定されない場合に使用されるパラメーターの既定値を指定できます。**imageSKU** パラメーターで示されているように、許可される値を定義することもできます。
 
 ```
 "parameters": {
@@ -500,7 +500,7 @@ variables セクションでは、テンプレート内の複数の場所で使�
 
 これでテンプレートの作成が終わり、デプロイできる状態になりました。
 
-- テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
-- テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」をご覧ください。
+- テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

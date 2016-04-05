@@ -1,10 +1,10 @@
 <properties 
 	pageTitle="Azure ポータルを使用した Azure リソースの管理 | Microsoft Azure" 
-	description="含まれるリソースのライフサイクルの境界となる論理グループとして、複数のリソースをグループ化します。" 
+	description="Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイおよび管理します。リソースにタグ付けする方法や監査ログを表示する方法について説明します。" 
 	services="azure-resource-manager,azure-portal" 
 	documentationCenter="" 
 	authors="tfitzmac" 
-	manager="wpickett" 
+	manager="timlt" 
 	editor=""/>
 
 <tags 
@@ -13,24 +13,23 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/11/2016" 
+	ms.date="03/29/2016" 
 	ms.author="tomfitz"/>
 
 
-# Azure ポータルを使用した Azure リソースの管理
+# Azure ポータルを使用した Azure リソースのデプロイと管理
 
 ## はじめに
 
-Azure リソース マネージャーでは、リソース グループを使ってソリューションのデプロイと管理を行うことができます。このトピックでは、Azure ポータル内でリソース グループを使用する方法を概説します。通常、1 つのリソース グループには、特定の 1 つのアプリケーションに関連するリソースが含まれています。たとえば、公開する Web サイトをホストする Web アプリ、そのサイトが使用するリレーショナル データを格納する SQL Database、および非リレーショナル アセットを格納するストレージ アカウントを、1 つのグループに含めることができます。リソース グループ内のすべてのリソースで同じライフ サイクルを共有する必要があります。リソース マネージャーの詳細については、「[リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
+このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](../resource-group-overview.md) を使用して Azure リソースをデプロイおよび管理する方法について説明します。
 
-現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルで利用できるサービスの表](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、[Azure ポータルで利用できるサービスの表](https://azure.microsoft.com/features/azure-portal/availability/)を参照してください。
 
-また、Azure PowerShell と Azure CLI でリソースを管理することもできます。これらのインターフェイスの使用方法については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」と「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。
+また、Azure PowerShell と Azure CLI でリソースを管理することもできます。これらのインターフェイスの使用方法の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」と「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。Visual Studio によるソリューションのデプロイの詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
+## リソース グループの作成と管理
 
-## リソース グループとリソースの作成
-
-空のリソース グループを作成する必要がある場合、**[新規]**、**[管理]**、**[リソース グループ]** の順に選択して作成できます。
+空のリソース グループを作成するには、**[新規]**、**[管理]**、**[リソース グループ]** の順に選択します。
 
 ![空のリソース グループの作成](./media/resource-group-portal/create-empty-group.png)
 
@@ -38,7 +37,15 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 ![グループの値の設定](./media/resource-group-portal/set-group-properties.png)
 
-リソースをデプロイするときに、作成したリソース グループに対してデプロイすることもできます。次の図は、既存のリソース グループで新しい Web アプリを作成する方法を示しています。
+リソース グループが作成されたら、それにリソースをデプロイできます。デプロイを開始するには、**[新規]** を選択し、デプロイするリソースの種類を選択するだけです。
+
+![deploy resource](./media/resource-group-portal/deploy-resource.png)
+
+デプロイするリソースの種類が表示されない場合は、Marketplace で検索できます。
+
+![search marketplace](./media/resource-group-portal/search-resource.png)
+
+選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。それらのオプションは、リソースの種類によって異なるため、ここでは説明しません。すべての種類で、対象リソース グループを選択する必要があります。次の図は、新しい Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
 
 ![リソースグループの作成](./media/resource-group-portal/select-existing-group.png)
 
@@ -46,7 +53,19 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 ![新しいリソース グループの作成](./media/resource-group-portal/select-new-group.png)
 
-## リソース グループの参照
+デプロイが開始されます。この処理には数分かかります。デプロイが完了すると、通知が表示されます。
+
+![view notification](./media/resource-group-portal/view-notification.png)
+
+### 既存のリソース グループへのリソースの追加
+
+リソース グループのブレードにある **[追加]** コマンドを使用して、リソース グループにリソースを追加することができます。
+
+![リソースの追加](./media/resource-group-portal/add-resource.png)
+
+使用可能な一覧から、目的のリソースを選択できます。
+
+### リソース グループの参照
 
 **[リソース グループ]** をクリックして、すべてのリソース グループを参照できます。
 
@@ -56,39 +75,42 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 ![リソース グループのサマリ](./media/resource-group-portal/group-summary.png)
 
-リソース グループのブレードには、そのリソース グループ内にあるすべてのリソースに関する課金情報と監視情報を示す統合ビューも表示されます。
+概要の下の **[セクションを追加]** を選択すると、さらにグラフや表をリソース グループ ブレードに追加できます。
 
-![監視および課金](./media/resource-group-portal/monitoring-billing.png)
+![add section](./media/resource-group-portal/add-section.png)
 
-## サブスクリプションとコストを表示する
+ブレードに含める情報を選択するためのタイル ギャラリーが表示されます。表示されるタイルの種類は、リソースの種類でフィルター処理されます。別のリソースを選択すると、利用可能なタイルが変化します。
 
-サブスクリプションと、すべてのリソースの合計コストに関する情報を表示できます。**[サブスクリプション]** と、表示するサブスクリプションを選択します。選択できるサブスクリプションが 1 つのみの場合もあります。
+![add section](./media/resource-group-portal/tile-gallery.png)
 
-![subscription](./media/resource-group-portal/select-subscription.png)
+必要なタイルを使用可能なスペースにドラッグします。
 
-サブスクリプション ブレードには、バーン レートが表示されます。
+![drag tile](./media/resource-group-portal/drag-tile.png)
 
-![バーン レート](./media/resource-group-portal/burn-rate.png)
+ポータルの上部にある **[完了]** を選択すると、新しいビューがブレードの一部になります。
 
-また、リソースの種類別のコストの明細が表示されます。
+![show tile](./media/resource-group-portal/show-lens.png)
 
-![リソース コスト](./media/resource-group-portal/cost-by-resource.png)
-
-## インターフェイスのカスタマイズ
-
-リソース グループの概要にすばやくアクセスするために、スタート画面にブレードを固定することができます。
+リソース グループにすばやくアクセスするために、ブレードをダッシュボードにピン留めできます。
 
 ![リソース グループの固定](./media/resource-group-portal/pin-group.png)
 
-また、ブレードのセクションの上にある省略記号 (...) を選択して、スタート画面にブレードのセクションを固定することができます。さらに、ブレードのセクションのサイズをカスタマイズしたり、完全に削除したりできます。次の図は、[イベント] セクションを固定、カスタマイズ、または削除する方法を示しています。
+また、ブレードのセクションは、そのセクションの上にある省略記号 (...) を選択すると、ダッシュボードにピン留めできます。さらに、ブレードのセクションのサイズをカスタマイズしたり、完全に削除したりできます。次の図は、[CPU とメモリ] セクションをピン留め、カスタマイズ、または削除する方法を示しています。
 
-![セクションの固定](./media/resource-group-portal/pin-section.png)
+![セクションの固定](./media/resource-group-portal/pin-cpu-section.png)
 
-スタート画面に [イベント] セクションを固定すると、イベントの概要がスタート画面に表示されます。
+セクションをダッシュボードにピン留めすると、ダッシュボード上に概要が表示されます。
 
-![イベントのスタート画面](./media/resource-group-portal/events-startboard.png)
+![view dashboard](./media/resource-group-portal/view-startboard.png)
 
-それを選択すると、イベントに関する詳細情報が即時に表示されます。
+さらに、それを選択すると、データの詳細情報が即時に表示されます。
+
+### Delete resource group
+
+リソース グループでは、その中に含まれているすべてのリソースのライフサイクルを管理することができるため、リソース グループを削除すると、その中に含まれているすべてのリソースが削除されます。また、リソース グループ内にある個々のリソースを削除することもできます。リソース グループに対して他のリソースがリンクされている可能性があるため、リソース グループを削除する場合は注意を払う必要があります。リンクされているリソースは、リソース マップ内で確認できます。リソース グループを削除した結果、意図していない結果が生じることを防止するために、必要な手順を実行できます。リンクされたリソースは削除されませんが、期待どおりに機能しない可能性があります。
+
+![グループの削除](./media/resource-group-portal/delete-group.png)
+
 
 ## 過去のデプロイの表示
 
@@ -104,9 +126,17 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 ![操作の詳細](./media/resource-group-portal/operation-details.png)
 
-いずれかの操作を選択すると、その操作の詳細情報が表示されます。以下に示されているように、これは操作が失敗した場合に特に役立ちます。デプロイが失敗した原因をトラブルシューティングするのに役立てることができます。次の画像では、Web サイトの名前が一意ではなかったため、そのサイトがデプロイされなかったことがわかります。
+デプロイのトラブルシューティングの詳細については、「[Troubleshooting resource group deployments with Azure Portal (Azure ポータルでのリソース グループのデプロイのトラブルシューティング)](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 
-![操作メッセージ](./media/resource-group-portal/operation-message.png)
+デプロイに使用されたテンプレートを取得するには、**[テンプレートのエクスポート]** を選択します。
+
+![export template](./media/resource-group-portal/export-template.png)
+
+このデプロイに使用されたテンプレートが表示されます。
+
+![show template](./media/resource-group-portal/show-template.png)
+
+これは、リソース グループを完全に表したものではありません。このデプロイの以外でリソースを追加または削除した場合、それらの操作はこのテンプレートに反映されません。ブレードには、テンプレート、テンプレートで使用するパラメーター ファイル、およびテンプレートをデプロイする PowerShell スクリプトが含まれています。これらの 3 つのファイルをダウンロードするには、**[ファイルに保存]** を選択します。
 
 ## 監査ログの表示
 
@@ -120,29 +150,9 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 いずれかの操作を選択すると、その操作を行ったユーザーなど、より詳細な情報を確認できます。
 
-**[フィルター]** を選択して、監査ログに表示される項目をフィルタリングできます。
+監査ログの表示の詳細については、「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。
 
-![ログのフィルター](./media/resource-group-portal/filter-logs.png)
-
-表示する操作のタイプ (属するリソース グループまたはリソース、特定の期間、捜査を開始した特定の呼び出し元、操作レベル) を選択できます。
-
-![フィルター オプション](./media/resource-group-portal/filter-options.png)
-
-## リソース グループへのリソースの追加
-
-リソース グループのブレードにある **[追加]** コマンドを使用して、リソース グループにリソースを追加することができます。
-
-![リソースの追加](./media/resource-group-portal/add-resource.png)
-
-使用可能な一覧から、目的のリソースを選択できます。
-
-## リソース グループの削除
-
-リソース グループでは、その中に含まれているすべてのリソースのライフサイクルを管理することができるため、リソース グループを削除すると、その中に含まれているすべてのリソースが削除されます。また、リソース グループ内にある個々のリソースを削除することもできます。リソース グループに対して他のリソースがリンクされている可能性があるため、リソース グループを削除する場合は注意を払う必要があります。リンクされているリソースは、リソース マップ内で確認できます。リソース グループを削除した結果、意図していない結果が生じることを防止するために、必要な手順を実行できます。リンクされたリソースは削除されませんが、期待どおりに機能しない可能性があります。
-
-![グループの削除](./media/resource-group-portal/delete-group.png)
-
-## リソースのタグ付け
+## リソースへのタグ付け
 
 リソース グループやリソースにタグを適用して、アセットを論理的に整理できます。ポータルを使用してタグを処理する方法の詳細については、「[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)」をご覧ください。
 
@@ -150,11 +160,11 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
 
-ポータルでカスタマイズしたテンプレートをデプロイするには、**[新規]** を選択し、**[テンプレートのデプロイ]** を検索してオプションに表示します。
+ポータルからカスタマイズしたテンプレートをデプロイするには、**[新規]** を選択し、**[テンプレートのデプロイ]** を検索してオプションに表示します。
 
 ![テンプレートのデプロイの検索](./media/resource-group-portal/search-template.png)
 
-使用できるリソースから **[テンプレートのデプロイ]** を選択します。
+使用可能なリソースから **[テンプレートのデプロイ]** を選択します。
 
 ![テンプレートのデプロイの選択](./media/resource-group-portal/select-template.png)
 
@@ -162,11 +172,32 @@ Azure リソース マネージャーでは、リソース グループを使っ
 
 ![テンプレートの作成](./media/resource-group-portal/show-custom-template.png)
 
+## サブスクリプションとコストを表示する
+
+サブスクリプションと、すべてのリソースの合計コストに関する情報を表示できます。**[サブスクリプション]** を選択し、表示するサブスクリプションを選択します。選択できるサブスクリプションが 1 つのみの場合もあります。
+
+![subscription](./media/resource-group-portal/select-subscription.png)
+
+サブスクリプション ブレードには、バーン レートが表示されます。
+
+![バーン レート](./media/resource-group-portal/burn-rate.png)
+
+また、リソースの種類別のコストの明細が表示されます。
+
+![リソース コスト](./media/resource-group-portal/cost-by-resource.png)
+
+## Azure ダッシュボードのアクセス制御
+
+ポータルのほとんどのタイルに表示される情報へのアクセスは、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)によって管理されています。ダッシュボードをエコシステムにシームレスに統合するために、発行されるダッシュボードはすべて、Azure リソースとして実装されます。アクセス制御の見地からは、ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。
+
+たとえば次のようになります。Azure サブスクリプションがあり、チームのさまざまなメンバーにサブスクリプションの**所有者**、**共同作成者**、または**閲覧者**ロールが割り当てられているとします。所有者または共同作成者であるユーザーは、サブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、および削除できます。閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。閲覧者アクセス許可を持つユーザーは、発行されたダッシュボードにローカルで編集を加えることはできますが (たとえば、問題のトラブルシューティングを行う場合)、その変更をサーバーに戻すことはできません。このようなユーザーは、個人用にダッシュボードのプライベート コピーを作成することが可能です。
+
+ダッシュボードの個々のタイルは、表示しているデータの基となるリソースに基づいて、独自のアクセス制御の要件を適用することに注意してください。つまり、個々のタイルのデータを保護しつつ、より広く共有できるようにダッシュボードを設計することができます。
+
 ## 次のステップ
-Getting Started (概要)
 
 - リソース マネージャーでの概念の概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
 - リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

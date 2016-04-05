@@ -162,7 +162,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 ## 8\.VPN 接続を作成する
 
-次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。
+次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。サイト間接続の `-ConnectionType` は **IPsec** です。
 
 	$gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 	$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
@@ -188,4 +188,4 @@ VPN 接続を検証する方法はいくつかあります。以下で、Azure �
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

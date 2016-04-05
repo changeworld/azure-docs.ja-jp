@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用して Azure Table Storage を使用する | Microsoft Azure"
-	description="Microsoft の NoSQL データ ストアの Azure Table Storage を使用して非構造化データをクラウドに格納します。テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなど、単純な Table Storage 操作を開始します。"
+	description="Microsoft の NoSQL データ ストアの Azure Table Storage を使用して構造化データをクラウドに格納します。テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなど、単純な Table Storage 操作を開始します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/14/2016"
+	ms.date="03/27/2016"
 	ms.author="tamram"/>
 
 
@@ -23,7 +23,7 @@
 
 ## 概要
 
-Azure Table Storage は、NoSQL の非構造化データをクラウド内に格納するサービスです。Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。テーブル ストレージは、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
+Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。テーブル ストレージは、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
 テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
@@ -257,7 +257,7 @@ Azure Table Storage は、NoSQL の非構造化データをクラウド内に格
 	   // Change the phone number.
 	   updateEntity.PhoneNumber = "425-555-0105";
 
-	   // Create the InsertOrReplace TableOperation.
+	   // Create the Replace TableOperation.
 	   TableOperation updateOperation = TableOperation.Replace(updateEntity);
 
 	   // Execute the operation.
@@ -444,4 +444,4 @@ Azure Table Storage は、NoSQL の非構造化データをクラウド内に格
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

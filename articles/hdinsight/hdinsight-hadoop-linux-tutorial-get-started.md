@@ -20,8 +20,8 @@
 # Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する
 
 > [AZURE.SELECTOR]
-- [Windows ベース](hdinsight-hadoop-tutorial-get-started-windows.md)
 - [Linux ベース](hdinsight-hadoop-linux-tutorial-get-started.md)
+- [Windows ベース](hdinsight-hadoop-tutorial-get-started-windows.md)
 
 この記事では、Linux ベースの [Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。[Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。HDInsight には、現時点で 4 種類のクラスター、[Hadoop](hdinsight-hadoop-introduction)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md) が付属しています。クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、Hive は 4 つのクラスターの種類のすべてでサポートされています。HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
@@ -39,7 +39,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを
 
 1. 次の画像をクリックして Azure にサインインし、Azure ポータルで ARM テンプレートを開きます。 
 
-	<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
@@ -161,4 +161,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

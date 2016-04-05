@@ -64,8 +64,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**Cologix** | サポートされています | 近日対応予定 | モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン |
 | **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
-| **CoreSite** | サポートされています | サポートされています | ロサンゼルス | 
+| **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | サポートされています | サポートされています | ロサンゼルス | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
+| **euNetworks** | サポートされています | サポートされています | アムステルダム |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | サポートされています | サポートされています | 大阪、東京 |
 | **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされています | アムステルダム、ロンドン、シンガポール、ワシントン DC |
 | **Internet Solutions - Cloud Connect** | サポートされています | サポートされています | アムステルダム、ロンドン |
@@ -134,6 +135,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**接続プロバイダー**|**Exchange**|**ピアリングの場所**|
 |---|---|---|
+|**Alaska Communications**|Equinix|シアトル|
 |**[XO Communications](http://www.xo.com/)**|Equinix|シリコン バレー|
 
 ## ExpressRoute システム インテグレーター
@@ -152,4 +154,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

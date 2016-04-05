@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;jrj;sonyama"/>
 
 
@@ -53,20 +53,20 @@
 
 1. メモ帳を開き、データの次の行を新しいファイルにコピーします。これをローカル一時ディレクトリに %temp%\\DimDate2.txt として保存します。
 
-    ```
-    20150301,1,3
-    20150501,2,4
-    20151001,4,2
-    20150201,1,3
-    20151201,4,2
-    20150801,3,1
-    20150601,2,4
-    20151101,4,2
-    20150401,2,4
-    20150701,3,1
-    20150901,3,1
-    20150101,1,3
-    ```
+```
+20150301,1,3
+20150501,2,4
+20151001,4,2
+20150201,1,3
+20151201,4,2
+20150801,3,1
+20150601,2,4
+20151101,4,2
+20150401,2,4
+20150701,3,1
+20150901,3,1
+20150101,1,3
+```
 
 ### B.BLOB サービス エンドポイントを検索する
 
@@ -141,7 +141,7 @@ PolyBase では、外部テーブルを使用して、Azure Blob Storage また�
 SQL Data Warehouse データベースに対して、このクエリを実行します。Azure Blob Storage 内の DimDate2.txt サンプル データを指す dbo スキーマに、DimDate2External という名前の外部テーブルが作成されます。
 
 
-```
+```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
 -- Required to encrypt the credential secret in the next step.
@@ -208,14 +208,19 @@ SELECT count(*) FROM dbo.DimDate2External;
 
 ```
 
-## 手順 4: SQL Data Warehouse にデータを読み込む
+
+Visual Studio の SQL Server オブジェクト エクスプローラーで、外部ファイル形式、外部データ ソース、および DimDate2External テーブルを表示できます。
+
+![View external table](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
+
+## 手順 3: SQL Data Warehouse にデータを読み込む
 
 外部テーブルが作成されたので、新しいテーブルにデータを読み込むか、既存のテーブルに挿入することができます。
 
 - 新しいテーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][] ステートメントを実行します。新しいテーブルには、クエリで指定された列があります。列のデータ型は、外部テーブル定義内のデータ型と一致します。
 - 既存のテーブルにデータを読み込むには、[INSERT...SELECT (Transact-SQL)][] ステートメントを使用します。
 
-```
+```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
 
 CREATE TABLE dbo.DimDate2
@@ -228,21 +233,16 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-
-Visual Studio の SQL Server オブジェクト エクスプローラーで、外部ファイル形式、外部データ ソース、および DimDate2External テーブルを表示できます。
-
-![View external table](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
-
-## 手順 5: 新たに読み込んだデータの統計を作成する
+## 手順 4: 新しく読み込んだデータの統計を作成する
 
 SQL Data Warehouse は、統計の自動作成または自動更新を行いません。そのため、高いクエリ パフォーマンスを実現するには、最初の読み込み後に各テーブルの各列についての統計を作成することが重要です。また、データが大幅に変更された後で統計を更新することも重要です。
 
-この例では、新しい DimDate2External テーブルについての単一列統計を作成します。
+この例では、新しい DimDate2 テーブルに単一列統計を作成します。
 
-```
+```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
 CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
-create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
+CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
 詳細については、[統計][]に関するページを参照してください。
@@ -286,4 +286,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

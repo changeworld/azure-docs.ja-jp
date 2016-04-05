@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD Connect Sync: パスワード同期の実装 | Microsoft Azure"
-	description="パスワード同期機能のしくみを理解するために必要な情報と環境でパスワード同期を有効にする方法について説明します。"
+	pageTitle="Azure AD Connect Sync によるパスワード同期の導入 | Microsoft Azure"
+	description="パスワード同期の働きとパスワード同期を有効にする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -12,15 +12,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/16/2016"
+	ms.date="03/22/2016"
 	ms.author="markusvi;andkjell"/>
 
 
-# Azure AD Connect Sync: パスワード同期の実装
+# Azure AD Connect Sync によるパスワード同期の導入
 
 パスワード同期により、ユーザーはオンプレミス Active Directory にサインインするときと同じパスワードを使用して Azure Active Directory にサインインできるようになります。
 
-このトピックでは、パスワード同期機能のしくみを理解するために必要な情報と環境でパスワード同期を有効にする方法について説明します。
+このトピックでは、パスワード同期の働きを理解するうえで必要な情報を紹介すると共に、実際の環境でパスワード同期を有効にする方法とそのトラブルシューティングの方法について説明します。
 
 ## パスワード同期とは
 
@@ -32,7 +32,7 @@
 
 Azure Active Directory のユーザーはすべてパスワード同期を実行できます。パスワード同期とフェデレーション認証などの他の機能との互換性については、以下をご覧ください。
 
-### パスワード同期のしくみ
+## パスワード同期のしくみ
 
 パスワード同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。そのため、この機能が動作するためには、オンプレミスと Azure Active Directory の間にディレクトリ同期が構成されている必要があります。
 
@@ -83,14 +83,16 @@ Azure AD でこのサービスを有効にする場合、シングル サイン�
 
 ユーザーがオンプレミスのパスワードを再び変更した場合、新しいパスワードはクラウドに同期され、手動で更新したパスワードを上書きします。
 
-## パスワード同期の準備
 
+## パスワード同期の有効化
 
-### パスワード同期の有効化
+パスワード同期は、次の 2 とおりの方法で有効にできます。
 
-Azure AD Connect のインストール時に簡単設定を使用すると、既定でパスワード同期が有効になります。
+- Azure AD Connect のインストール時に簡単設定を使用すると、既定でパスワード同期が有効になります。
 
-Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード同期が有効になります。![usersignin](./media/active-directory-aadconnectsync-implement-password-synchronization/usersignin.png)
+- Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード同期が有効になります。
+
+<br> ![パスワード同期の有効化](./media/active-directory-aadconnectsync-implement-password-synchronization/usersignin.png) <br>
 
 **AD FS とのフェデレーション**の使用を選択する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、パスワード同期を有効にすることができます。Azure AD Domain Services を使用する予定がある場合にも、有効にすることができます。
 
@@ -110,23 +112,32 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 
 セキュリティと FIPS の詳細については、[AAD パスワード同期、暗号化、FIPS コンプライアンス](http://blogs.technet.com/b/ad/archive/2014/06/28/aad-password-sync-encryption-and-and-fips-compliance.aspx)に関するページを参照してください。
 
-## パスワード同期の管理
 
-### パスワード同期のトラブルシューティング
+## パスワード同期のトラブルシューティング
 
-**Synchronization Service Manager** を起動し、**[コネクタ]** を開き、ユーザーが属する Active Directory Connector を選択し、**[コネクタ スペースの検索]** を選択し、対象のユーザーを検索します。
+**パスワード同期のトラブルシューティングを行うには、次の手順を実行します。**
 
-![csuser](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)
+1. **Synchronization Service Manager** を開きます。
 
-ユーザーについて、**[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、**[In from AD - User AccountEnabled]** という同期規則です。
+2. **[コネクタ]** をクリックします。
 
-また、メタバースを経由し、Azure AD コネクタ スペースまで[ユーザーをフォロー](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)する必要もあります。**[パスワード同期]** が **[True]** に設定されている送信規則もあることを確認します。既定の構成では、**[Out to AAD - User Join]** という同期規則です。
+3. ユーザーが存在する Active Directory コネクタを選択します。
 
-![csuser2](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)
+4. **[コネクタ スペースの検索]** を選択します。
 
-オブジェクトのパスワード同期の詳細を確認するには、このページの下部にある **[ログ...]** をクリックします。過去 1 週間分、ユーザーのパスワード同期状態の履歴が表示されます。
+5. 探しているユーザーを特定します。
 
-![オブジェクト ログ](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)
+6. **[系列]** タブを選択し、少なくとも 1 つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。既定の構成では、**[In from AD - User AccountEnabled]** という名前の同期規則です。
+
+    ![Lineage information about a user](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)
+
+7. また、メタバースを経由し、Azure AD コネクタ スペースまで[ユーザーをフォロー](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)する必要もあります。**[パスワード同期]** が **[True]** に設定されている送信規則もあることを確認します。既定の構成では、**[Out to AAD - User Join]** という名前の同期規則です。
+
+    ![Connector space properties of a user](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)
+
+8. オブジェクトのパスワード同期の詳細を確認するには、**[ログ]** をクリックします。<br> 過去 1 週間分、ユーザーのパスワード同期状態の履歴を表示するページが生成されます。
+
+    ![Object log details](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)
 
 状態列には次のような値が表示されます。ここには、問題と、パスワードが同期されない理由も表示されます。
 
@@ -140,8 +151,9 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 | MigratedCheckDetailsForMoreInfo | ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
 
 
-### すべてのパスワードの完全同期の開始
-すべてのパスワードを強制的に完全同期する必要はありませんが、何らかの理由で必要な場合は、PowerShell を利用できます。
+## すべてのパスワードの完全同期の開始
+
+ほとんどの場合、すべてのパスワードの完全同期を強制的に実行する必要はありません。<br> ただしその必要がある場合は、次のスクリプトを使用して実行できます。
 
     $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
     $aadConnector = "<CASE SENSITIVE AAD CONNECTOR NAME>"
@@ -158,9 +170,9 @@ config ファイルの末尾に configuration/runtime ノードがあります�
 
 
 
-## その他のリソース
+## 次のステップ
 
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

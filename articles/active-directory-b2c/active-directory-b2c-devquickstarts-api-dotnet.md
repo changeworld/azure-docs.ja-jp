@@ -115,9 +115,9 @@ public class TasksController : Controller
 まず、OWIN OAuth 認証パイプラインをインストールします。
 
 ```
-PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
-PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService
-PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
+PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TaskService
+PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TaskService
+PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskService
 ```
 
 ### B2C の詳細情報を入力する
@@ -219,16 +219,13 @@ public IEnumerable<Models.Task> Get()
 
 ## ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。
-<!--add **identity providers** 
-to the policies, allowing you users to sign into the Task Client using social accounts.  You can also 
---> ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
+Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers** to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
 
 <!--
 
 ## Next steps
 
-さらに高度な B2C のトピックに進むことができます。 You may try:
+You can now move onto more advanced B2C topics. You may try:
 
 [Call a web API from a web app]()
 
@@ -236,4 +233,4 @@ to the policies, allowing you users to sign into the Task Client using social ac
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

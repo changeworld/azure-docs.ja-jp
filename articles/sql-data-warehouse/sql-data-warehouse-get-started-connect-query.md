@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio を使用した接続とクエリ
@@ -34,7 +34,7 @@
 
 ## 完全修飾 Azure SQL サーバー名を取得します。
 
-データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です ( ***servername**.database.windows.net* )。
+データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 接続先のデータベースを探します。
@@ -53,7 +53,7 @@
 
 ![][3]
 
-4. 前の手順で取得した *サーバー名* を入力します。
+4. 前の手順で取得した*サーバー名*を入力します。
 5. **[認証]** リストで、**[SQL Server 認証]** を選択します。
 6. SQL Database サーバーを作成したときに指定した**ログイン情報**と**パスワード**を入力し、**[接続]** をクリックします。
 
@@ -69,13 +69,13 @@
 
 3. クエリ ウィンドウに次のコードを入力します。
 
-	```
-	SELECT COUNT(*) FROM dbo.FactInternetSales;
-	```
+    ```sql
+    SELECT COUNT(*) FROM dbo.FactInternetSales;
+    ```
 
 4. クエリを実行します。
 
-	クエリを実行するには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
+   クエリを実行するには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`E` のショートカット キーを使用します。
 
 ## 次のステップ
 
@@ -91,4 +91,4 @@
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

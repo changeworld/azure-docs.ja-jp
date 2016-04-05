@@ -1,23 +1,23 @@
-<properties 
-	pageTitle="SQL Database を試す: C# を使用して SQL Database を作成する | Microsoft Azure" 
-	description="SQL Database で SQL および C# アプリケーションを開発し、C# と SQL Database Library for .NET を使用して、Azure SQL Database を作成します。" 
+<properties
+	pageTitle="SQL Database を試す: C# を使用して SQL Database を作成する | Microsoft Azure"
+	description="SQL Database で SQL および C# アプリケーションを開発し、C# と SQL Database Library for .NET を使用して、Azure SQL Database を作成します。"
 	keywords="sql を試す、sql c#"   
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
 	editor="cgronlun"/>
 
 <tags
    ms.service="sql-database"
    ms.devlang="NA"
    ms.topic="hero-article"
-   ms.tgt_pltfrm="powershell"
-   ms.workload="data-management" 
-   ms.date="01/22/2016"
+   ms.tgt_pltfrm="csharp"
+   ms.workload="data-management"
+   ms.date="03/24/2016"
    ms.author="sstein"/>
 
-# SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する 
+# SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する
 
 **1 つのデータベース**
 
@@ -26,13 +26,7 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-
-
-C# コマンドを使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL Database を作成する方法について説明します。
-
-SQL と C# で 1 つのデータベースを作成して、SQL Database を試してみます。エラスティック データベースを作成するには、「[エラスティック データベース プールの作成](sql-database-elastic-pool-portal.md)」を参照してください。
-
-各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
+C# コマンドを使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL Database を作成する方法について説明します。SQL と C# で 1 つのデータベースを作成して、SQL Database を試してみます。エラスティック データベース プールを作成するには、「[Azure ポータルで SQL Database のスケーラブルなエラスティック データベース プールを作成する](sql-database-elastic-pool-create-portal.md)」を参照してください。各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
 
 Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](../resource-group-overview.md) ベースの API を提供します。このクライアント ライブラリは、リソース マネージャー ベースのクライアント ライブラリの一般的なパターンに従います。リソース マネージャーでは、リソース グループ、および [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) を使用した認証が必要です。
 
@@ -86,7 +80,7 @@ C# を使用して SQL データベースを設定するには、Visual Studio �
 
     ![SQL C# アプリケーションのリダイレクト URL を追加します。][8]
 
-7. アプリの作成を完了し、**[構成]** をクリックして、**[クライアント ID]** をコピーします (クライアント ID は、後でコードに必要になります)。
+7. アプリの作成を完了し、**[構成]** をクリックして、**[クライアント ID]** をコピーします (クライアント ID は、後でコードで必要になります)。
 
     ![SQL C# アプリケーションのクライアント ID を取得します。][9]
 
@@ -120,7 +114,7 @@ C# を使用して SQL データベースを設定するには、Visual Studio �
 認証向けの Azure Active Directory の使用に関する追加情報は、[この便利なブログの投稿](http://www.cloudidentity.com/blog/2013/09/12/active-directory-authentication-library-adal-v1-for-net-general-availability/)で検索できます。
 
 
-### 現在のユーザーのアクセス トークンの取得 
+### 現在のユーザーのアクセス トークンの取得
 
 クライアント アプリケーションでは、現在のユーザーのアプリケーション アクセス トークンを取得する必要があります。ユーザーが最初にこのコードを実行すると、ユーザーの資格情報を入力するよう求められ、作成されたトークンがローカルにキャッシュされます。以降の実行では、キャッシュからトークンが取得されます。トークンの有効期限が切れている場合のみログインが必要になります。
 
@@ -154,7 +148,7 @@ C# を使用して SQL データベースを設定するには、Visual Studio �
         {
             creds = new Microsoft.Rest.TokenCredentials(token.AccessToken);
 
-            // Create a resource management client 
+            // Create a resource management client
             ResourceManagementClient resourceClient = new ResourceManagementClient(creds);
 
             // Resource group parameters
@@ -169,7 +163,7 @@ C# を使用して SQL データベースを設定するには、Visual Studio �
         }
 
 
-## サーバーの作成 
+## サーバーの作成
 
 SQL Database はサーバーに格納されます。サーバー名がすでに使われている場合はエラーが発生する可能性があるため、すべての Azure SQL Server でグローバルに一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。
 
@@ -223,7 +217,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
         static void CreateFirewallRule()
         {
-            // Create a firewall rule on the server 
+            // Create a firewall rule on the server
             FirewallRuleCreateOrUpdateParameters firewallParameters = new FirewallRuleCreateOrUpdateParameters()
             {
                 Properties = new FirewallRuleCreateOrUpdateProperties()
@@ -238,7 +232,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
 
-他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、 *任意* の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
+他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、*任意*の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
 
 
 ## C&#x23; を使用した SQL データベースの作成
@@ -270,7 +264,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 ## サンプル C&#x23; コンソール アプリケーション
 
-次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、SQL データベースを作成します。この記事の上部にある「*Azure Active Directory による認証の構成*」セクションに、clientId、redirectUri、domainName の各変数の値を入手できる場所が示されています。
+次のサンプルでは、リソース グループ、サーバー、ファイアウォール規則、SQL データベースを作成します。この記事の最初にある「*Azure Active Directory による認証の構成*」セクションに、clientId、redirectUri、domainName の各変数の値を入手できる場所が示されています。
 
 
     using Microsoft.Azure;
@@ -284,7 +278,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    
+
     namespace SqlDbConsoleApp
     {
     class Program
@@ -295,13 +289,13 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
         static string redirectUri = "<Azure App redirectURI>";
         static string domainName = "<domain>";
 
-        // You create these values 
+        // You create these values
         static string resourceGroupName = "<your resource group name>";
         static string location = "<Azure data center location>";
 
         static string serverName = "<your server name>";
         static string administratorLogin = "<your server admin>";
-        
+
         // store your password securely!
         static string administratorPassword = "<your server admin password>";
         static string serverVersion = "12.0";
@@ -340,7 +334,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
             Console.WriteLine("Creating database...");
 
             DatabaseCreateOrUpdateResponse dbResponse = CreateDatabase();
-            Console.WriteLine("Status: " + dbResponse.Status.ToString() 
+            Console.WriteLine("Status: " + dbResponse.Status.ToString()
                 + " Code: " + dbResponse.StatusCode.ToString());
 
             Console.WriteLine("Press enter to exit...");
@@ -351,7 +345,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
         {
             creds = new Microsoft.Rest.TokenCredentials(token.AccessToken);
 
-            // Create a resource management client 
+            // Create a resource management client
             ResourceManagementClient resourceClient = new ResourceManagementClient(creds);
 
             // Resource group parameters
@@ -386,7 +380,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
         static void CreateFirewallRule()
         {
-            // Create a firewall rule on the server 
+            // Create a firewall rule on the server
             FirewallRuleCreateOrUpdateParameters firewallParameters = new FirewallRuleCreateOrUpdateParameters()
             {
                 Properties = new FirewallRuleCreateOrUpdateProperties()
@@ -463,4 +457,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

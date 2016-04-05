@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/21/2016"
+	ms.date="03/29/2016"
 	ms.author="vakarand"/>
 
 
@@ -31,7 +31,7 @@
 |Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること| ポータルに表示されるデータを Azure AD Connect Health から得るためには、対象となるサーバーにエージェントがインストールされている必要があります。</br></br>たとえば、AD FS オンプレミス インフラストラクチャに関するデータを取得するには、AD FS サーバー、AD FS プロキシ サーバー、Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。</br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。|
 |Azure サービスのエンドポイントに対する送信接続|エージェントをインストールしたり実行したりするためには、以下に示した、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。送信接続をブロックしている場合は、以下の項目を許可リストに追加してください。</br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.queue.core.windows.net</li><li>adhsprodwus.servicebus.windows.net - ポート: 5671 </li><li>https://management.azure.com </li><li>https://s1.adhybridhealth.azure.com/</li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
 |エージェントを実行するサーバー上のファイアウォール ポート| エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。</br></br><li>TCP/UDP ポート 443</li><li>TCP/UDP ポート 5671</li>
-|IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること|エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー (例: https://sts.contoso.com</li>)
+|IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること|エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー(例: https://sts.contoso.com</li>)。
 
 
 
@@ -134,7 +134,7 @@ Azure AD Connect Health エージェント for Sync は、最新ビルドの Azu
 
 ![Azure AD Connect Health for Sync の確認](./media/active-directory-aadconnect-health-sync/services.png)
 
->[Azure.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health-agent-install.md#requirements)で要件を参照してください。
+> [AZURE.NOTE] Azure AD Connect Health を使用するには、Azure AD Premium が必要です。Azure AD Premium を持っていない場合、Azure ポータルで構成を完了できません。詳細については、[ここ](active-directory-aadconnect-health-agent-install.md#requirements)で要件を参照してください。
 
 
 ## 主導による Azure AD Connect Health for Sync の登録
@@ -233,4 +233,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->
