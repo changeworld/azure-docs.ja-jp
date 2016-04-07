@@ -105,7 +105,7 @@
 	- **-n (または --name)**。新しい規則の名前です。ここでは、*rdp-rule* です。
 	- **-c (または --access)**。規則のアクセス レベルです (拒否または許可)。
 	- **-p (または --protocol)**。規則のプロトコル (TCP、UDP、または *) です。
-- **-r (または --direction)**。接続の方向です (受信または送信)。
+	- **-r (または --direction)**。接続の方向です (受信または送信)。
 	- **-y (または --priority)**。規則の優先度です。
 	- **-f (または --source-address-prefix)**。CIDR または既定のタグを使用する発信元アドレスのプレフィックス。
 	- **-o (または --source-port-range)**。発信元ポート、またはポート範囲です。
@@ -269,4 +269,4 @@
 		data:    
 		info:    network vnet subnet set command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!-----HONumber=AcomDC_0323_2016-->
