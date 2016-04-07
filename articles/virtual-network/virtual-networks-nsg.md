@@ -125,10 +125,10 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 |デプロイ ツール|クラシック|リソース マネージャー|
 |---|---|---|
 |クラシック ポータル|![いいえ][red]|![いいえ][red]|
-|Azure ポータル|![はい][green]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal">![はい][green]</a>|
-|PowerShell|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps">![はい][green]</a>|
-|Azure CLI|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli">![はい][green]</a>|
-|ARM テンプレート|![なし][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template">![はい][green]</a>|
+|Azure ポータル|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal)
+|PowerShell|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps)|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps)|
+|Azure CLI|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli)|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli)|
+|ARM テンプレート|![なし][red]|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template)|
 
 |**キー**|![はい][green] サポートされています。クリックして記事を確認してください。|![いいえ][red] サポートされていません。|
 |---|---|---|
