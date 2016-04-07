@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-log-collector-extension](../../includes/virtual-machines-common-log-collector-extension.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

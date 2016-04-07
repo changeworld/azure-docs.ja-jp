@@ -3,7 +3,8 @@
    description="Service Fabric Reliable Actors のタイマーとアラームの概要"
    services="service-fabric"
    documentationCenter=".net"
-   authors="myamanbh"
+   authors="tionCenter=".net"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 

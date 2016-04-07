@@ -3,7 +3,7 @@
    description="Service Fabric 高信頼アクターのライフサイクルとガベージ コレクションについて説明します"
    services="service-fabric"
    documentationCenter=".net"
-   authors="myamanbh"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
