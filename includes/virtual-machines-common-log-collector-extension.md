@@ -1,5 +1,6 @@
 
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを都度収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
+
 > [AZURE.NOTE]ログに記録されるほとんどの情報の説明は、http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp で参照できます。
 
 収集モードは 2 つあり、どちらが使用されるかは、収集するファイルの種類によって異なります。
@@ -26,4 +27,4 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 - **Recursive**: 指定されたフォルダー内のファイルを再帰的に収集するかどうか。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!-----HONumber=AcomDC_0323_2016-->

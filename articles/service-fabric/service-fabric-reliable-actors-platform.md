@@ -3,7 +3,7 @@
    description="Service Fabric プラットフォームの機能を高信頼アクターが使用するしくみについて説明します。アクター開発者の視点から見た概念も取り上げます。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="myamanbh"
+   authors="vturecek"
    manager="timlt"
    editor="vturecek"/>
 
