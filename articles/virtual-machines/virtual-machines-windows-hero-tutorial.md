@@ -117,4 +117,4 @@
 * [Azure Resource Manager テンプレート](https://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
 * Azure CLI を使用してすばやく [Linux 仮想マシンを作成](virtual-machines-linux-quick-create-cli.md)することもできます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->
