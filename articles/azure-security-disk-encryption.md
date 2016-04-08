@@ -171,7 +171,7 @@ Windows および Linux VM に対してディスク暗号化を有効にする�
 
 **注:** セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、接続する必要がある上記 URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
 
-- Azure ディスク暗号化 PowerShell コマンドレットのいずれかを実行するには、次のように、最初に Azure PowerShell バージョン 1.0.1 をインストールする必要があります。
+- Azure ディスク暗号化 PowerShell コマンドレットのいずれかを実行するには、次のように、最初に [Azure PowerShell バージョン 1.0.1](https://github.com/Azure/azure-powershell/releases/tag/v1.0.2-December2015) をインストールする必要があります。
 
 	- Azure PowerShell をインストールして、Azure サブスクリプションに関連付ける場合は、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
@@ -804,4 +804,4 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 [Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->
