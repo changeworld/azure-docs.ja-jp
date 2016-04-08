@@ -33,7 +33,7 @@ FTP サーバーに接続して、データまたはファイルを移動しま�
 ## 新しい FTP コネクタの作成
 新しい FTP コネクタを作成するには、次の手順に従います。
 - Azure ポータルを起動します。
-- [+ 新規] (ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。![Azure Marketplace の起動][1]
+- [+ 新規] \(ポータル下部)、[Web + モバイル]、[Azure Marketplace] の順にクリックして、Azure Marketplace を開きます。![Azure Marketplace の起動][1]
 
 - [API Apps] をクリックします。
 - "FTP" を検索し、[FTP コネクタ] を選択します。![FTP コネクタの選択][2]
@@ -170,4 +170,4 @@ FTP コネクタでは、次の操作がサポートされています。
 [13]: ./media/app-service-logic-connector-ftp/ConfiguredUploadFile.PNG
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->
