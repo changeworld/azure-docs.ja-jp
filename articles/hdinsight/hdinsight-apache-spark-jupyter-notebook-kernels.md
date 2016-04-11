@@ -145,4 +145,4 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

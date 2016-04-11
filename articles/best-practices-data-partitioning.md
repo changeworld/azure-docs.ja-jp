@@ -568,4 +568,4 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 [SQL Database とは]: sql-database/sql-database-technical-overview.md
 [SQL Database とは SQL Database の概要、技術の詳細、DTU の説明]: sql-database/sql-database-technical-overview.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

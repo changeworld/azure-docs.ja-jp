@@ -35,4 +35,4 @@ Azure サブスクリプションのアカウント管理者で、期限まで�
 
 **シナリオ 3**: アカウント管理者が会社を辞めたり、役職が変わったりしたために、支払いに関する通知が届かなかった場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせて問題を解決してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

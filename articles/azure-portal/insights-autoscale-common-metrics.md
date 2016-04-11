@@ -161,4 +161,4 @@ VM スケール セットの場合、ARM テンプレートの [自動スケー�
 
 >[AZURE.NOTE] Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

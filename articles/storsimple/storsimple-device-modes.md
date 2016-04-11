@@ -98,4 +98,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 
 StorSimple デバイスに[通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md)する方法について説明します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

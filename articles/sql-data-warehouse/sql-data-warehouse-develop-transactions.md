@@ -140,4 +140,4 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

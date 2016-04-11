@@ -44,4 +44,4 @@ VM リソースの使用量の取得 | 使用できません。 | `azure vm list
 
 * CLI コマンドのその他の例については、[Azure サービス管理での Azure コマンド ライン インターフェイスの使用](../articles/virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](../articles/azure-cli-arm-commands.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

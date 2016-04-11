@@ -109,4 +109,4 @@ HDInsight クラスターで R Server を使用する方法の詳細について
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

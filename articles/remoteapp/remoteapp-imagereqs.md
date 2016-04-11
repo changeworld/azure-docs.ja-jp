@@ -44,4 +44,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 Azure RemoteApp のイメージ作成の詳細については、「[Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

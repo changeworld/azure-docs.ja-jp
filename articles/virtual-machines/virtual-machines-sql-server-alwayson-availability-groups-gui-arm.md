@@ -260,4 +260,4 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、AlwaysOn 可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

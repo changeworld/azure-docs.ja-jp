@@ -396,4 +396,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 >[AZURE.TIP] すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイのプロビジョニング状態が *Succeded* になっていることを確認します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

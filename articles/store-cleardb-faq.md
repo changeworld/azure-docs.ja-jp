@@ -136,4 +136,4 @@ EA 登録での料金に関するご質問は、[エンタープライズ カス
 
 [Azure Marketplace FAQ](/marketplace/faq/)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

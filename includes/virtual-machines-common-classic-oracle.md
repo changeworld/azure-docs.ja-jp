@@ -32,4 +32,4 @@ Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェ�
 
 「[Azure 用の Oracle GoldenGate の構成](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

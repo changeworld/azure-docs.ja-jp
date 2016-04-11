@@ -33,4 +33,4 @@ Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシ�
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

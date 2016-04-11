@@ -33,4 +33,4 @@ VM 拡張機能を Azure Resource Manager のテンプレートの一部とし�
 
 Azure VM 拡張機能は、マイクロソフトと信頼されたサード パーティの発行元によって発行されています。それぞれの拡張機能は、その発行元、種類、typeHandlerVersion によって一意に識別されます。これらは、次の方法で確認できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

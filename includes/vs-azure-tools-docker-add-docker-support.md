@@ -6,4 +6,4 @@ ASP.NET 5 Web プロジェクトに Docker サポートを追加すると、プ�
 
 ![プロジェクトに追加された Docker ファイル](./media/vs-azure-tools-docker-add-docker-support/docker-files-added.png)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

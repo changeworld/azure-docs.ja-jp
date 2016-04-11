@@ -351,4 +351,4 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -252,4 +252,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

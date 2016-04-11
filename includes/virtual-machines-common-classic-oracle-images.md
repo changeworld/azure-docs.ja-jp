@@ -50,4 +50,4 @@ Azure の Oracle Linux 上で実行される、事前に構成された利用可
 
 [Oracle 仮想マシン イメージ - 他の考慮事項](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

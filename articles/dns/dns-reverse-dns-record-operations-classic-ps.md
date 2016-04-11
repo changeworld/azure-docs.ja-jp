@@ -51,4 +51,4 @@ Azure では、サード パーティがお客様の DNS ドメインにマッ�
 
 [AZURE.INCLUDE [FAQ](../../includes/dns-reverse-dns-record-operations-faq-asm-include.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

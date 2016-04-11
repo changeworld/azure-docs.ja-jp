@@ -74,4 +74,4 @@ string message = await helloWorldClient.GetHelloWorld();
 
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

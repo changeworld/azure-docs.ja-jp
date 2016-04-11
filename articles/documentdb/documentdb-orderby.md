@@ -136,4 +136,4 @@ Order By を使用してクエリ結果を並べ替えるには、並べ替え�
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

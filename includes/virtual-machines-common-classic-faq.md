@@ -138,4 +138,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

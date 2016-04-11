@@ -112,4 +112,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。詳細については、[契約条件](http://aka.ms/comptermsandconditions)を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -92,4 +92,4 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 <!--Other Web references-->
 [SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -266,4 +266,4 @@ VNet ごとにアドレス空間を指定する必要もあります。オンプ
 - [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md)について詳しく学習します。
 - [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-cross-premises-options.md)について詳しく学習します。  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -69,4 +69,4 @@ Load Balancer は、既定で 4 分間のアイドル状態のセッションを
 
 ロード バランサーの詳細については、「[内部負荷分散](../articles/load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -37,4 +37,4 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
 - [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、「[Azure SQL Database におけるデータベースとログインを管理する](sql-database-manage-logins.md)」の「ログイン管理」のセクションで詳細を確認してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -121,4 +121,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

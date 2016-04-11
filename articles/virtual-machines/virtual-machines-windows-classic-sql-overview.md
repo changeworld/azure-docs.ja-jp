@@ -149,4 +149,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 - [Azure Virtual Machines](virtual-machines-linux-about.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

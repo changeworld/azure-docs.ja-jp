@@ -166,4 +166,4 @@ Recommendations API は、適切に製品を推奨するために、カタログ
 ### 次の手順
 これで演習は終了です。 詳細を確認する場合は、完全な [Recommendations API リファレンス](http://go.microsoft.com/fwlink/?LinkId=759348)をご覧ください。不明な点があれば、mlapi@microsoft.com までお気軽にお問い合わせください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

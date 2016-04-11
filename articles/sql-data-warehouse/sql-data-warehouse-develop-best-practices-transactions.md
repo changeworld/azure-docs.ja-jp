@@ -436,4 +436,4 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 <!--MSDN references-->
 [alter index]: https://msdn.microsoft.com/ja-JP/library/ms188388.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -28,4 +28,4 @@
 * [IIS 出力キャッシュを使用してキャッシュを提供する方法](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
 * [静的コンテンツのブラウザー キャッシュを有効にする方法](http://www.iis.net/configreference/system.webserver/staticcontent)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

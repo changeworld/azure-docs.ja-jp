@@ -35,4 +35,4 @@ Microsoft Azure Virtual Machines を通じて、マイクロソフトは包括�
 
 [記事はこちら](virtual-machines-linux-sap-on-suse-quickstart.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

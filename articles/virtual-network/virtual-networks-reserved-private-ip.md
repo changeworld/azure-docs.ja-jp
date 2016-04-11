@@ -99,4 +99,4 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

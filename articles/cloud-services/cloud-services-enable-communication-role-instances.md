@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

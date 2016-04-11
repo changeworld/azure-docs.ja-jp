@@ -29,4 +29,4 @@
 ## Azure の外部で使用するためにデータベースのコピーを作成するには
 - [BACPAC ファイルをエクスポートします。](sql-database-export.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

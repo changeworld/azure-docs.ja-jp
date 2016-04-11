@@ -98,4 +98,4 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [カスタム Linux VM を作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

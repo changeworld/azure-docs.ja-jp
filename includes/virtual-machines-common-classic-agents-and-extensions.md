@@ -43,4 +43,4 @@ VM エージェントは、次のような状況で有効化されます。
 
 これらのタスクの詳細については、「[仮想マシン拡張機能の管理](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

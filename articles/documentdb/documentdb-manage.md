@@ -132,4 +132,4 @@ Azure ポータルでパフォーマンス レベルを監視する手順につ�
 コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -46,4 +46,4 @@ SQL Server をオンプレミス コンピューターで実行している場�
 
 [AZURE.INCLUDE [AKV 統合の次のステップ](../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

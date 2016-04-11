@@ -35,4 +35,4 @@ Microsoft Azure Virtual Machines を通じて、マイクロソフトは包括�
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=613056)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

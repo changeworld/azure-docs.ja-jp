@@ -32,4 +32,4 @@ Azure クラシック ポータルで Linux 仮想マシンを作成するとき
 
 * [サービス管理モード](../virtual-machines-command-line-tools.md)で Azure コマンドライン インターフェイスを使用して、VM エンドポイントを作成することもできます。**azure vm endpoint create** コマンドを実行します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

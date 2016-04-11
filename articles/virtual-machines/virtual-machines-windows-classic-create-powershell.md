@@ -263,4 +263,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

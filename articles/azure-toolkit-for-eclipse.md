@@ -95,4 +95,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [JSP で Azure サービス ランタイム ライブラリを使用する方法]: http://go.microsoft.com/fwlink/?LinkID=699551
 [Azure Toolkit for Eclipse の新機能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -58,4 +58,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--MSDN references-->
 [KILL]: https://msdn.microsoft.com/library/ms173730.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

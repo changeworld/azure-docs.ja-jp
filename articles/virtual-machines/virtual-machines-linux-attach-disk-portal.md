@@ -34,4 +34,4 @@
 
 ディスクを追加した後、使用できるように準備する必要があります。この[記事](virtual-machines-linux-classic-attach-disk.md#how-to-initialize-a-new-data-disk-in-linux)の仮想マシンのオペレーティング システムの「方法: Linux での新しいデータ ディスクの初期化」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

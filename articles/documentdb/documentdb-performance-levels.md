@@ -162,4 +162,4 @@ DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメ
 
 [1]: ./media/documentdb-performance-levels/img1.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

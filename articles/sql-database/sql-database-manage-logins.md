@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

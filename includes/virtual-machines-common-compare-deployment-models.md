@@ -93,4 +93,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

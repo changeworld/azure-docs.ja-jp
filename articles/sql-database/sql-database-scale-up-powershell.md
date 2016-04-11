@@ -128,4 +128,4 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 - [SQL Database のドキュメント](http://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL Database コマンドレット](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

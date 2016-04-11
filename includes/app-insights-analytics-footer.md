@@ -15,4 +15,4 @@
 - [リファレンス](../articles/application-insights/app-insights-analytics-reference.md)
  - クエリ、集計、スカラーのページをまとめた 1 ページのリファレンス。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>
