@@ -19,22 +19,13 @@
 # Analytics のスカラー式
 
 
-[Analytics](app-insights-analytics.md) は、
-
-[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、
-Analytics のクエリ言語について説明します。
-
+[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
 ---
 
-[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) 
-<br/>[getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull)
-<br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) 
-| [itemCount](#itemCount) | [split](#split) | [sqrt](#sqrt) 
-<br/>[startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) 
-| [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
+[ago](#ago) | [arraylength](#arraylength) | [bin](#bin) [countof](#countof) | [dayofweek](#dayofweek) | [extract](#extract) | [extractjson](#extractjson) | [floor](#floor) <br/>[getmonth](#getmonth) | [gettype](#gettype) [getyear](#getyear) | [hash](#hash) | [iff](#iff) | [isempty](#isempty) | [isnotempty](#isnotempty) | [isnull](#isnull) | [isnotnull](#isnotnull) <br/> [now](#now) | [notempty](#notempty) | [notnull](#notnull) | [parsejson](#parsejson)| [rand](#rand) | [range](#range) | [replace](#replace) | [itemCount](#itemCount) | [split](#split) | [sqrt](#sqrt) <br/>[startofmonth](#startofmonth) | [startofyear](#startofyear) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper) | [treepath](#treepath)
 
 ---
 
@@ -48,23 +39,21 @@ Analytics のクエリ言語について説明します。
 
 ## スカラー
 
-[キャスト](#casts) | [比較](#scalar-comparisons)
-<br/>
-[gettype](#gettype) | [hash](#hash) | [iff](#iff)|  [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
+[キャスト](#casts) | [比較](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff)| [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
 
 サポートされている型は次のとおりです。
 
 | 型 | その他の名前 | 同等の .NET 型 |
 | --------- | -------------------- | -------------------- |
-| `bool`    | `boolean`            | `System.Boolean`     |
-| `datetime`| `date`               | `System.DateTime`    |
-| `dynamic` |                      | `System.Object`      |
-| `guid`    | `uuid`, `uniqueid`   | `System.Guid`        |
-| `int`     |                      | `System.Int32`       |
-| `long`    |                      | `System.Int64`       |
-| `double`  | `real`               | `System.Double`      |
-| `string`  |                      | `System.String`      |
-| `timespan`| `time`               | `System.TimeSpan`    |
+| `bool` | `boolean` | `System.Boolean` |
+| `datetime`| `date` | `System.DateTime` |
+| `dynamic` | | `System.Object` |
+| `guid` | `uuid`、`uniqueid` | `System.Guid` |
+| `int` | | `System.Int32` |
+| `long` | | `System.Int64` |
+| `double` | `real` | `System.Double` |
+| `string` | | `System.String` |
+| `timespan`| `time` | `System.TimeSpan` |
 
 ### キャスト
 
@@ -145,9 +134,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 ### iff
 
-`iff()` 関数は、最初の引数 (述語) を評価し、述語が `true` であるか `false` であるかに応じて、
-2 番目または 3 番目の引数の値を返します。2 番目と 
-3 番目の引数は、同じ型である必要があります。
+`iff()` 関数は、最初の引数 (述語) を評価し、述語が `true` であるか `false` であるかに応じて、2 番目または 3 番目の引数の値を返します。2 番目と 3 番目の引数は、同じ型である必要があります。
 
 **構文**
 
@@ -162,8 +149,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 
 **戻り値**
 
-この関数は、*predicate* が `true` に評価された場合に *ifTrue* 
-の値を返し、それ以外の場合に *ifFalse* の値を返します。
+この関数は、*predicate* が `true` に評価された場合に *ifTrue* の値を返し、それ以外の場合に *ifFalse* の値を返します。
 
 **例**
 
@@ -171,9 +157,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ```
 
-<a name="isnull"/></a>
-<a name="isnotnull"/></a>
-<a name="notnull"/></a>
+<a name="isnull"/></a> <a name="isnotnull"/></a> <a name="notnull"/></a>
 ### isnull、isnotnull、notnull
 
     isnull(parsejson("")) == true
@@ -201,7 +185,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("[\]")|false
+|parsejson("")|false
 |parsejson("{}")|false
 
 **例**
@@ -233,8 +217,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 ## 数値
 
-[bin](#bin) | [floor](#floor) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) 
-| [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[bin](#bin) | [floor](#floor) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 ### 数値リテラル
 
@@ -247,18 +230,8 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 || |
 |---|-------------|
-| + | 追加 のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
-|`<` |小さい 
-|`<=`|小さいか等しい 
-|`>` |大きい 
-|`>=`|大きいか等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| + | [追加] のいずれかを |
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
 
@@ -290,11 +263,10 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ---|---
 `bin(4.5, 1)` | `4.0`
 `bin(time(16d), 7d)` | `14d`
-`bin(datetime(1953-04-15 22:25:07), 1d)`|  `datetime(1953-04-15)`
+`bin(datetime(1953-04-15 22:25:07), 1d)`| `datetime(1953-04-15)`
 
 
-次の式は、バケットのサイズを 1 
-秒として、各期間のヒストグラムを計算します。
+次の式は、バケットのサイズを 1 秒として、各期間のヒストグラムを計算します。
 
 ```AIQL
 
@@ -366,7 +338,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ## 日付と時刻
 
 
-[ago](#ago) | [dayofweek](#dayofweek) | [getmonth](#getmonth)|  [getyear](#getyear) | [now](#now) | [startofmonth](#startofmonth) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan)
+[ago](#ago) | [dayofweek](#dayofweek) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofmonth](#startofmonth) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan)
 
 ### 日付と時刻のリテラル
 
@@ -414,10 +386,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 ### ago
 
-現在の UTC 時刻から指定された期間を減算します。
-`now()` 
-と同様、この関数はステートメント内で複数回使用することができます。
-また、参照される UTC 時刻はすべてのインスタンスで同じになります。
+現在の UTC 時刻から指定された期間を減算します。`now()` と同様、この関数はステートメント内で複数回使用することができます。また、参照される UTC 時刻はすべてのインスタンスで同じになります。
 
 **構文**
 
@@ -425,8 +394,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **引数**
 
-* *a\_timespan*: 現在の UTC 時刻 
-(`now()`) から減算する期間。
+* *a\_timespan*: 現在の UTC 時刻 (`now()`) から減算する期間。
 
 **戻り値**
 
@@ -553,7 +521,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ## String
 
-[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
+[countof](#countof) | [extract](#extract) | [extractjson](#extractjson) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
 
 
 ### 文字列リテラル
@@ -562,10 +530,10 @@ T | where ... | extend Elapsed=now() - timestamp
 
 文字列は、単一引用符または二重引用符で囲むことがあります。
 
-バックスラッシュ (`\`) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
+バックスラッシュ (``) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
 
 * `'this is a "string" literal in single \' quotes'`
-* `"this is a 'string' literal in double \" quotes"`
+* `"this is a 'string' literal in double " quotes"`
 * `@"C:\backslash\not\escaped\with @ prefix"`
 
 ### 難読化された文字列リテラル
@@ -681,15 +649,12 @@ h"hello"
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
 
-<a name="notempty"></a>
-<a name="isnotempty"></a>
-<a name="isempty"></a>
+<a name="notempty"></a> <a name="isnotempty"></a> <a name="isempty"></a>
 ### isempty、isnotempty、notempty
 
     isempty("") == true
 
-引数が空の文字列または null である場合は True です。
-[isnull](#isnull) も参照してください。
+引数が空の文字列または null である場合は True です。[isnull](#isnull) も参照してください。
 
 
 **構文**
@@ -711,7 +676,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("[\]")|false
+|parsejson("")|false
 |parsejson("{}")|false
 
 
@@ -753,13 +718,13 @@ range x from 1 to 5 step 1
 
 結果は次のとおりです。
 
-| ○    | str | replaced|
+| ○ | str | replaced|
 |---|---|---|
-| 1    | Number is 1.000000  | Number was: 1.000000|
-| 2    | Number is 2.000000  | Number was: 2.000000|
-| 3    | Number is 3.000000  | Number was: 3.000000|
-| 4    | Number is 4.000000  | Number was: 4.000000|
-| 5    | Number is 5.000000  | Number was: 5.000000|
+| 1 | Number is 1.000000 | Number was: 1.000000|
+| 2 | Number is 2.000000 | Number was: 2.000000|
+| 3 | Number is 3.000000 | Number was: 3.000000|
+| 4 | Number is 4.000000 | Number was: 4.000000|
+| 5 | Number is 5.000000 | Number was: 5.000000|
  
 
 
@@ -858,9 +823,7 @@ substring("ABCD", 0, 2)       // AB
 
 ## 配列とオブジェクト: 動的な型
 
-[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses)
-<br/>
-[arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
+[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
 
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
@@ -1012,7 +975,7 @@ T
 arraylength(parsejson('[1, 2, 3, "four"]')) == 4
 arraylength(parsejson('[8]')) == 1
 arraylength(parsejson('[{}]')) == 1
-arraylength(parsejson('[\]')) == 0
+arraylength(parsejson('[]')) == 0
 arraylength(parsejson('{}')) == null
 arraylength(parsejson('21')) == null
 ```
@@ -1043,7 +1006,7 @@ arraylength(parsejson('21')) == null
 
 **例**
 
-次のように、角かっこ ([\]) 表記とドット表記は同等です。
+次のように、角かっこ ([]) 表記とドット表記は同等です。
 
     ... | extend AvailableMB = extractjson("$.hosts[1].AvailableMB", EventText, typeof(int)) | ...
 
@@ -1055,8 +1018,8 @@ arraylength(parsejson('21')) == null
 |---|---|
 |`$`|ルート オブジェクト|
 |`@`|現在のオブジェクト|
-|`.` または `[\]` | 子|
-|`[\]`|配列インデックス|
+|`.` または `[ ]` | 子|
+|`[ ]`|配列インデックス|
 
 *(現在、ワイルドカード、再帰、共用体、およびスライスは実装していません。)*
 
@@ -1116,9 +1079,7 @@ T
 **引数**
 
 * *start:* 結果として生成される配列内の最初の要素の値。 
-* *stop:* 結果として生成される配列内の最後の要素の値。
-または、生成される配列内の最後の要素より大きく、
-*start* からの *step* の倍数である整数に含まれる最小値。
+* *stop:* 結果として生成される配列内の最後の要素の値。または、生成される配列内の最後の要素より大きく、*start* からの *step* の倍数である整数に含まれる最小値。
 * *step:* 配列の連続する 2 つの要素の差異。
 
 **例**
@@ -1129,8 +1090,7 @@ T
 range(1, 8, 3)
 ```
 
-次の例は、2015 
-年のすべての日を保持する配列を返します。
+次の例は、2015 年のすべての日を保持する配列を返します。
 
 ```AIQL
 
@@ -1184,4 +1144,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016-->
