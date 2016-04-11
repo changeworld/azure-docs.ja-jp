@@ -201,7 +201,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("[ ]")|false
+|parsejson("[\]")|false
 |parsejson("{}")|false
 
 **例**
@@ -711,7 +711,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("[ ]")|false
+|parsejson("[\]")|false
 |parsejson("{}")|false
 
 
@@ -1043,7 +1043,7 @@ arraylength(parsejson('21')) == null
 
 **例**
 
-次のように、角かっこ ([ ]) 表記とドット表記は同等です。
+次のように、角かっこ ([\]) 表記とドット表記は同等です。
 
     ... | extend AvailableMB = extractjson("$.hosts[1].AvailableMB", EventText, typeof(int)) | ...
 
@@ -1055,8 +1055,8 @@ arraylength(parsejson('21')) == null
 |---|---|
 |`$`|ルート オブジェクト|
 |`@`|現在のオブジェクト|
-|`.` または `[ ]` | 子|
-|`[ ]`|配列インデックス|
+|`.` または `[\]` | 子|
+|`[\]`|配列インデックス|
 
 *(現在、ワイルドカード、再帰、共用体、およびスライスは実装していません。)*
 
