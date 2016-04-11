@@ -185,7 +185,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 **例**
@@ -530,7 +530,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 文字列は、単一引用符または二重引用符で囲むことがあります。
 
-バックスラッシュ (``) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
+バックスラッシュ (`\`) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -676,7 +676,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("")|false
+|parsejson("[]")|false
 |parsejson("{}")|false
 
 

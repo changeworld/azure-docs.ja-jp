@@ -90,9 +90,9 @@
   - LINQ プロバイダーによる OrderBy() または OrderByDescending() のサポート
   - Order By をサポートするための IndexingPolicy 
   
-		**NB: Possible breaking change** 
+		**NB: 考えられる重大な変更** 
   
-    	If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
+    	カスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングする既存のコードがある場合、新しい IndexingPolicy クラスをサポートするために既存のコードを更新する必要があります。カスタム インデックス作成ポリシーがない場合は、この変更による影響はありません。
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - 新しい HashPartitionResolver クラス、RangePartitionResolver クラス、IPartitionResolver を使用し、データをパーティショニング
@@ -124,7 +124,19 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
  
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.6.1](#1.6.1) | 2016 年 3 月 29 日 |--- | [1\.5.3](#1.5.3) | 2016 年 2 月 19 日 |--- | [1\.5.2](#1.5.2) | 2015 年 12 月 14 日 |--- | [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- | [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- | [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- | [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- | [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- | [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |--- | [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- | [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- | [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日 | [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日 | [.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日 | [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日|
+|[ 1\.5.2](#1.5.2) | 2015 年 12 月 14 日|--- 
+| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- 
+| [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- 
+| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- 
+| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- 
+| [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- 
+| [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |--- 
+| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- 
+| [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- 
+| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日 
+| [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日 
+| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日 
+| [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日
 
 ## FAQ
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
