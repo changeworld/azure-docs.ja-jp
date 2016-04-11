@@ -26,19 +26,18 @@
 
 このトピックでは、Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。Java サンプルは、Java Development Kit (JDK) バージョン 1.8 に依存します。サンプルは、JDBC ドライバーを使用して、Azure SQL Database に接続されます。
 
+## 手順 1: 開発環境を設定する
 
-## 前提条件
-
-### ドライバーとライブラリ
+ドライバーとライブラリのインストール:
 
 - [Microsoft JDBC Driver for SQL Server - SQL JDBC 4](http://www.microsoft.com/download/details.aspx?displaylang=en&id=11774).
 - [Java Development Kit 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) を実行する任意のオペレーティング システム プラットフォーム
 
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、データベースを作成する方法についてご確認ください。
 
-### SQL テーブル
+## 手順 3: SQL テーブルを作成する
 
 このトピックの Java コード例は、次のようなテスト テーブルが Azure SQL Database のデータベース内に既に存在していることを前提としています。
 
@@ -56,14 +55,14 @@ Could this instead be a #tempPerson table, so that the Java code sample could be
 	);
 
 
-## 手順 1. 接続文字列を取得する
+## 手順 4: 接続文字列を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-jdbc-20-portalshots](../../includes/sql-database-include-connection-string-jdbc-20-portalshots.md)]
 
-> [AZURE.NOTE]JTDS JDBC ドライバーを使用している場合は、接続文字列の URL に "ssl=require" を追加し、JVM の次のオプションを設定する必要があります。"-Djsse.enableCBCProtection=false"。この JVM オプションはセキュリティの脆弱性を修正するプログラムを無効にするため、このオプションを設定する前に、どのようなリスクがあるかを必ず理解しておいてください。
+> [AZURE.NOTE] JTDS JDBC ドライバーを使用している場合は、接続文字列の URL に "ssl=require" を追加し、JVM の次のオプションを設定する必要があります。"-Djsse.enableCBCProtection=false"。この JVM オプションはセキュリティの脆弱性を修正するプログラムを無効にするため、このオプションを設定する前に、どのようなリスクがあるかを必ず理解しておいてください。
 
 
-## 手順 2. Java コード サンプルをコンパイルする
+## 手順 5: Java コード サンプルをコンパイルする
 
 
 Java サンプル コードの全体について説明します。後続のセクションには小さい Java セグメントをコピー アンド ペーストする場所を示すコメントが含まれています。このセクションのサンプルはコメントの近くでコピー アンド ペーストしなくてもコンパイルされ、実行されますが、接続して、終了するのみになります。コメントを次に示します。
@@ -136,7 +135,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 - your\_password
 
 
-## 手順 3. 行を挿入する
+## 手順 6: 行を挿入する
 
 
 この Java セグメントは、TRANSACT-SQL の INSERT ステートメントを発行して、Person テーブルに 2 つの行を挿入します。一般的な順序は次のとおりです。
@@ -169,7 +168,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 	}
 
 
-## 手順 4. トランザクションをコミットする
+## 手順 7: トランザクションをコミットする
 
 次の Java コードのセグメントは、TRANSACT-SQL の UPDATE ステートメントを発行して、person テーブルのすべての行の `age` 値を増やします。一般的な順序は次のとおりです。
 
@@ -199,7 +198,7 @@ Java サンプル コードの全体について説明します。後続のセ�
 	connection.setAutoCommit(true);
 
 
-## 手順 5. クエリを実行する
+## 手順 8: クエリを実行する
 
 
 この Java セグメントは、TRANSACT-SQL SELECT ステートメントを実行して、Person テーブルから更新されたすべての行を表示します。一般的な順序は次のとおりです。
@@ -228,4 +227,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0330_2016-->

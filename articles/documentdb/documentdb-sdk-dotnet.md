@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/19/2016" 
+	ms.date="03/30/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -26,9 +26,18 @@
 
 ##DocumentDB .NET SDK
 
-<table> <tr><td>**ダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr> <tr><td>**ドキュメント**</td><td>[.NET SDK リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr> <tr><td>**サンプル**</td><td>[.NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)</td></tr> <tr><td>**使用**</td><td>[DocumentDB .NET SDK の使用](documentdb-get-started.md)</td></tr> <tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr> </table></br>
+<table>
+<tr><td>**ダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
+<tr><td>**ドキュメント**</td><td>[.NET SDK のリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**サンプル**</td><td>[.NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)</td></tr>
+<tr><td>**概要**</td><td>[DocumentDB .NET SDK の使用](documentdb-get-started.md)</td></tr>
+<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
+</table></br>
 
 ## リリース ノート
+
+### <a name="1.6.1"/>[1\.6.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.1)
+  - 実装されている[パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)。 
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
   - **[修正済み]** DocumentDB エンドポイントのクエリを実行すると、"System.Net.Http.HttpRequestException: コンテンツをストリームにコピーしている間にエラーが発生しました" がスローされます。
@@ -81,9 +90,9 @@
   - LINQ プロバイダーによる OrderBy() または OrderByDescending() のサポート
   - Order By をサポートするための IndexingPolicy 
   
-		**NB: 考えられる重大な変更** 
+		**NB: Possible breaking change** 
   
-    	カスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングする既存のコードがある場合、新しい IndexingPolicy クラスをサポートするために既存のコードを更新する必要があります。カスタム インデックス作成ポリシーがない場合は、この変更による影響はありません。
+    	If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - 新しい HashPartitionResolver クラス、RangePartitionResolver クラス、IPartitionResolver を使用し、データをパーティショニング
@@ -115,20 +124,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
  
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.5.3](#1.5.3) | 2016 年 2 月 19 日 |--- 
-| [1\.5.2](#1.5.2) | 2015 年 12 月 14 日 |--- 
-| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- 
-| [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- 
-| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- 
-| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- 
-| [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- 
-| [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |---
-| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- 
-| [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- 
-| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 
-| 2016 年 2 月 29 日 | [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 
-| 2016 年 2 月 29 日 | [.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 
-| 2016 年 2 月 29 日 | [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日|
+| [1\.6.1](#1.6.1) | 2016 年 3 月 29 日 |--- | [1\.5.3](#1.5.3) | 2016 年 2 月 19 日 |--- | [1\.5.2](#1.5.2) | 2015 年 12 月 14 日 |--- | [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- | [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- | [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- | [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- | [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- | [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |--- | [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- | [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- | [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日 | [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日 | [.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日 | [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日|
 
 ## FAQ
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -137,4 +133,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

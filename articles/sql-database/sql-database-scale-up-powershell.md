@@ -4,13 +4,13 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="02/23/2016"
+	ms.date="03/29/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -21,28 +21,28 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-scale-up.md)
+- [Azure ポータル](sql-database-scale-up.md)
 - [PowerShell](sql-database-scale-up-powershell.md)
 
 
-この記事では、PowerShell で SQL Database のサービス階層とパフォーマンス レベルを変更する方法について説明します。
+サービス レベルとパフォーマンス レベルは、SQL Database で利用できる機能とリソースを表しており、アプリケーションのニーズの変化に応じて更新できます。詳細については、「[サービス レベル](sql-database-service-tiers.md)」をご覧ください。
 
-[SQL Database の Web/Business データベースの新しいサービス階層へのアップグレード](sql-database-upgrade-server-portal.md)に関するトピックと「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」の情報を使用して、Azure SQL Database に適したサービス階層とパフォーマンス レベルを決定します。
+データベースのサービス レベルやパフォーマンス レベルを変更すると、新しいパフォーマンス レベルで元のデータベースのレプリカが作成され、接続先がそのレプリカに切り替えられます。このプロセスでデータが失われることはありませんが、レプリカに切り替えるほんの少しの間、データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。この時間はさまざまですが、平均 4 秒以内であり、99% 以上が 30 秒未満です。ごくまれですが、特に、接続できなくなった時点で多数のトランザクションが実行中の場合、この時間が長引くことがあります。
 
-> [AZURE.IMPORTANT] SQL Database のサービス階層とパフォーマンス レベルの変更はオンライン操作です。そのため、操作中はダウンタイムがなく、データベースを使用できます。
+スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。Premium サービス レベル内で同じサイズのデータベースのパフォーマンス レベルを変更する場合は、3 時間以内で完了します。
+
 
 - データベースをダウングレードするには、データベースがダウングレード後のサービス階層で許可されている最大サイズより小さい必要があります。 
-- [geo レプリケーション](sql-database-geo-replication-portal)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス階層にアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
-- Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。「[障害からの回復](sql-database-disaster-recovery.md)」に説明されている手順に従って、プライマリ データベースとアクティブ セカンダリ データベース間のレプリケーション プロセスを停止してください。
+- [geo レプリケーション](sql-database-geo-replication-portal)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
+- Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。「[Azue SQL Database を障害から回復する](sql-database-disaster-recovery.md)」に記載されている手順に従って、プライマリ データベースとアクティブなセカンダリ データベース間のレプリケーション プロセスを停止できます。
 - サービス階層によって、提供されている復元サービスは異なります。ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。詳細については、「[Azure SQL Database のバックアップと復元](sql-database-business-continuity.md)」を参照してください。
-- 24 時間の期間内に 4 つまでの個別のデータベースの変更 (サービス階層またはパフォーマンス レベル) を行うことができます。
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
 
 
 **この記事を完了するには、以下が必要です。**
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料アカウント**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションがない場合は、このページの上部にある "**無料アカウント**" をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
 - Azure SQL Database。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 - Azure PowerShell。
 
@@ -128,4 +128,4 @@ PowerShell コマンドレットを実行するには、Azure PowerShell をイ�
 - [SQL Database のドキュメント](http://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL Database コマンドレット](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -43,7 +43,7 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 
 ### Ubuntu Cloud Image
 
-ほとんどの Azure Linux イメージでは、"/etc/waagent.conf" を編集して、一時的なリソース ディスクとスワップ ファイルを構成します。詳細については、「[Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)」をご覧ください。
+ほとんどの Azure Linux イメージでは、"/etc/waagent.conf" を編集して、一時的なリソース ディスクとスワップ ファイルを構成します。詳細については、「[Azure Linux エージェント ユーザー ガイド](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md)」をご覧ください。
 
 ただし、Ubuntu Cloud Image では、cloud-init を使用して、リソース ディスク ("一時" ディスク) とスワップ パーティションを構成する必要があります。詳細については、Ubuntu Wiki の [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions) をご覧ください。
 
@@ -59,4 +59,4 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

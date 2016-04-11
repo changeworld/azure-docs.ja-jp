@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="API Apps の概要" 
+	pageTitle="API Apps の概要 | Microsoft Azure" 
 	description="Azure App Service が RESTful API を開発、発行、ホストするために最適なプラットフォームである理由について説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net" 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="03/23/2016" 
 	ms.author="tdykstra"/>
 
 # API Apps の概要
 
 API Apps は、[Azure App Service](../app-service/app-service-value-prop-what-is.md) によって提供される 4 種類のアプリの中の 1 つです。
 
-![](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
+![Azure App Service でのアプリの種類](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
 
-[App Service](../app-service/app-service-value-prop-what-is.md) は、Web、モバイル、および統合シナリオで利用できる豊富な機能セットを備えた、完全に管理されたプラットフォームです。App Service の API Apps は、クラウドとオンプレミスでの API のビルド、ホスト、および使用を容易にする機能を提供します。API を App Service の API アプリとしてデプロイすると、エンタープライズ レベルのセキュリティ、シンプルなアクセス制御、ハイブリッド接続、SDK の自動生成、および [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合を利用できます。
+[App Service](../app-service/app-service-value-prop-what-is.md) は、Web、モバイル、および統合シナリオのための完全に管理されたプラットフォームです。App Service の API Apps は、クラウドとオンプレミスでの API のビルド、ホスト、および使用を容易にする機能を提供します。API を App Service の API アプリとしてデプロイすると、エンタープライズ レベルのセキュリティ、シンプルなアクセス制御、ハイブリッド接続、SDK の自動生成、および [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合を利用できます。
 
 ## API Apps を使う理由
 
@@ -64,4 +64,4 @@ API Apps の使用を開始する場合は、[API Apps の使用に関するチ�
 
 API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)でスレッドを開始します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

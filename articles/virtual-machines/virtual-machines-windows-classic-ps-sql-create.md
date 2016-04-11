@@ -18,12 +18,6 @@
 
 # Azure での SQL Server 仮想マシンの作成 (PowerShell)
 
-> [AZURE.SELECTOR]
-- [クラシック ポータル](virtual-machines-windows-classic-portal-sql.md)
-- [PowerShell](virtual-machines-windows-classic-ps-sql-create.md)
-- [Azure Resource Manager ポータル](virtual-machines-windows-portal-sql-server-provision.md)
-
-
 ## 概要
 
 この記事では、PowerShell コマンドレットを使用して、Azure で SQL Server 仮想マシンを作成する手順を説明します。
@@ -171,8 +165,8 @@ PowerShell を使用した仮想マシンのプロビジョニングの詳細に
 
 多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-classic-migrate-sql.md)」を参照してください。
 
-これらの手順をAzure クラシック ポータルから実行する方法についても興味がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+Azure ポータルを使用して SQL Virtual Machines を作成する方法についても興味がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
 
-これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-classic-sql-overview.md)もご覧になることをお勧めします。
+これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-classic-sql-overview.md)も参照することをお勧めします。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

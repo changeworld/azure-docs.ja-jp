@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/08/2016"
+   ms.date="03/28/2016"
    ms.author="barbkess;sonyama"/>
 
 # システム ビュー
@@ -24,6 +24,8 @@
 - [sys.pdw\_database\_mappings](http://msdn.microsoft.com/library/mt203891.aspx)
 - [sys.pdw\_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
 - [sys.pdw\_index\_mappings](http://msdn.microsoft.com/library/mt203912.aspx)
+- [sys.pdw\_loader\_backup\_run\_details](https://msdn.microsoft.com/library/mt203877.aspx)
+- [sys.pdw\_loader\_backup\_runs](https://msdn.microsoft.com/library/mt203884.aspx)
 - [sys.pdw\_nodes\_column\_store\_dictionaries](http://msdn.microsoft.com/library/mt203902.aspx)
 - [sys.pdw\_nodes\_column\_store\_row\_groups](http://msdn.microsoft.com/library/mt203880.aspx)
 - [sys.pdw\_nodes\_column\_store\_segments](http://msdn.microsoft.com/library/mt203916.aspx)
@@ -214,7 +216,11 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 - [CHECK\_CONSTRAINTS](http://msdn.microsoft.com/library/ms189772.aspx)
 - [COLUMNS](http://msdn.microsoft.com/library/ms188348.aspx)
 - [PARAMETERS](http://msdn.microsoft.com/library/ms173796.aspx)
+- [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
+- [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 - [TABLES](http://msdn.microsoft.com/library/ms186224.aspx)
+- [VIEW\_COLUMN\_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
+- [VIEW\_TABLE\_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
 - [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## 次のステップ
@@ -230,4 +236,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

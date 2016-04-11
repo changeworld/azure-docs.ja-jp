@@ -37,7 +37,6 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 - `response_type` パラメーターには、`id_token` が設定されている必要があります。
 - 要求には `nonce` パラメーターが含まれる必要があります。
 
-
 ```
 // Line breaks for legibility only
 
@@ -51,22 +50,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-> [AZURE.TIP] 以下を Web ブラウザーに貼り付けてみてください!
-
-```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=form_post&state=12345&nonce=678910
-```
+> [AZURE.TIP] この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `id_token` が含まれた状態になります。この要求では `response_mode=query` を使用していることに注意してください (チュートリアルでのみ使用)。`response_mode=form_post` を使用することをお勧めします。<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=query&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------- |
-| テナント | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。詳細については、[プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
+| テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値は、`common`、`organizations`、`consumers`、およびテナント識別子です。詳細については、「[v2.0 プロトコル - OAuth 2.0 と OpenID Connect](active-directory-v2-protocols.md#endpoints)」をご覧ください。 |
 | client\_id | 必須 | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
 | response\_type | 必須 | OpenID Connect サインインでは、`id_token` を指定する必要があります。`code` などの他の response\_types が含まれていてもかまいません。 |
 | redirect\_uri | 推奨 | アプリ の redirect\_uri。アプリは、この URI で認証応答を送受信することができます。ポータルで登録したいずれかの redirect\_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
-| scope | 必須 | スコープのスペース区切りリスト。OpenID Connect では、スコープ `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
+| scope | 必須 | スコープのスペース区切りリスト。OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | nonce | 必須 | 要求に追加する (アプリによって生成された) 値。この値が、最終的な id\_token に要求として追加されます。アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
-| response\_mode | 推奨 | 結果として得られた authorization\_code をアプリに返す際に使用するメソッドを指定します。'query'、'form\_post'、'fragment' のいずれかを指定できます。Web アプリケーションの場合は、最も安全にトークンをアプリケーションに転送できるよう、`response_mode=form_post` を使用することをお勧めします。  
-| state | 推奨 | 要求に含まれ、かつトークンの応答として返される値。任意の文字列を指定することができます。[クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| response\_mode | 推奨 | 結果として得られた authorization\_code をアプリに返す際に使用するメソッドを指定します。'query'、'form\_post'、'fragment' のいずれかを指定できます。Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。  
+| state | 推奨 | 要求に含まれ、かつトークンの応答として返される値。任意の文字列を指定することができます。[クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために、通常はランダムに生成された一意の値が使用されます。この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | prompt | 省略可能 | ユーザーとの必要な対話の種類を指定します。現時点で有効な値は 'login'、'none'、'consent' だけです。`prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。`prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントはエラーを返します。`prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
 | login\_hint | 省略可能 | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。 |
 | domain\_hint | 省略可能 | `consumers` か `organizations` のいずれかを指定できます。これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。アプリはしばしば id\_token から `tid` 要求を抽出して再認証時にこのパラメーターを使用します。`tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。それ以外の場合は、`domain_hint=organizations` を指定します。 |
@@ -109,7 +104,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 ## id\_token を検証する
 単に id\_token を受け取るだけでは、ユーザーを認証するには不十分です。id\_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。[トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)を含む詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。[トークンの検証](active-directory-v2-tokens.md#validating-tokens)や[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)など、詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」をご覧ください。トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 <!--TODO: Improve the information on this-->
 
 シナリオに応じてその他の要求も検証することができます。以下に一般的な検証の例をいくつか挙げます。
@@ -118,13 +113,13 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 - 適切な承認/特権がユーザーにあることを確認する。
 - 多要素認証など特定の強度の認証が行われたことを確認する。
 
-id\_token に含まれる要求の詳細については、[v2.0 エンドポイント トークン リファレンス](active-directory-v2-tokens.md)を参照してください。
+id\_token に含まれる要求の詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」をご覧ください。
 
 id\_token を十分検証したら、ユーザーとのセッションを開始し、id\_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。取得した情報は、表示、記録、承認などに利用することができます。
 
 ## サインアウト要求を送信する
 
-OpenIdConnect `end_session_endpoint` は現在、v2.0 エンドポイントではサポートされていません。したがって、v2.0 エンドポイントに対しアプリから、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を送信することはできません。ユーザーをサインアウトさせるには、単にアプリ側でユーザーとのセッションを終了し、ユーザー側の v2.0 エンドポイントとのセッションは放置してください。次回ユーザーがサインインしようとすると "アカウントの選択" ページが表示され、実際にサインインしているアカウントが一覧表示されます。そのページでユーザーは任意のアカウントを選んでサインアウトし、v2.0 エンドポイントとのセッションを終了することができます。
+OpenIdConnect の `end_session_endpoint` は、v2.0 エンドポイントでは現在サポートされていません。したがって、v2.0 エンドポイントに対しアプリから、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を送信することはできません。ユーザーをサインアウトさせるには、単にアプリ側でユーザーとのセッションを終了し、ユーザー側の v2.0 エンドポイントとのセッションは放置してください。次回ユーザーがサインインしようとすると "アカウントの選択" ページが表示され、実際にサインインしているアカウントが一覧表示されます。そのページでユーザーは任意のアカウントを選んでサインアウトし、v2.0 エンドポイントとのセッションを終了することができます。
 
 <!--
 
@@ -153,7 +148,6 @@ OpenID Connect によるサインインとトークン取得の完全なフロ�
 ## アクセス トークンを取得する
 アクセス トークンを取得するには、前に示したサインイン要求を少し変更する必要があります。
 
-
 ```
 // Line breaks for legibility only
 
@@ -169,11 +163,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &nonce=678910										 // Any value, provided by your app
 ```
 
-> [AZURE.TIP] 以下の要求をブラウザーに貼り付けてみてください!
-
-```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=form_post&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910
-```
+> [AZURE.TIP] この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `id_token` と `code` が含まれた状態になります。この要求では `response_mode=query` を使用していることに注意してください (チュートリアルでのみ使用)。`response_mode=form_post` を使用することをお勧めします。<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 アクセス許可スコープを要求に組み込み、`response_type=code+id_token` を使うことによって、v2.0 エンドポイントはユーザーが `scope` クエリ パラメーターで示されているアクセス許可に同意したことを確認し、アクセス トークンと引き替えに承認コードをアプリに返します。
 
@@ -212,4 +202,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。ユーザーをサインインさせるには、[前](#validating-the-id-token)に説明したように `id_token` を厳密に検証する必要があります。アクセス トークンは、[OAuth プロトコルのドキュメント](active-directory-v2-protocols-oauth-code.md#request-an-access-token)に記載されている手順に従って取得できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

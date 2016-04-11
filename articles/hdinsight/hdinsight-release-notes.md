@@ -14,11 +14,55 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="03/29/2016"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2016 年 3 月 29 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.875.2159884 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.875.2159884 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.875.2159884 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.875.2159884 (HDP 2.2.9.1-7 - 変更なし)
+* HDInsight (Windows) 3.3.0.875.2159884 (HDP 2.3.3.1-16)
+* HDInsight (Linux) 3.2.1000.0.7193255 (HDP 2.2.9.1-8 - 変更なし)
+* HDInsight (Linux) 3.3.1000.0.7193255 (HDP 2.3.3.1-7 - 変更なし)
+* HDInsight (Linux) 3.4.1000.0.7195842 (HDP 2.4.1.0-327)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。| サービス | すべての Linux クラスター| 該当なし
+| HDInsight Premium | HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。詳しくは、[こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
+| Microsoft R Server | HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。詳しくは、「[Overview of R Server on HDInsight (HDInsight での R Server の概要)](hdinsight-hadoop-r-server-overview.md)」を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
+| Spark 1.6.0 | HDInsight 3.4 クラスターに Spark 1.6.0 が導入されました| サービス | Linux 上の Spark クラスター| 該当なし
+| Jupyter Notebook の拡張機能 | Spark クラスターで使用できる Jupyter Notebook に、追加の Spark カーネルが備わりました。また、%%magic の使用、自動視覚化、Python 視覚ライブラリ (matplotlib など) との統合などの拡張機能も含まれています。詳しくは、「[Kernels available for Jupyter notebooks (Jupyter Notebook で使用可能なカーネル)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。 | サービス | Linux 上の Spark クラスター | 該当なし
+
+## HDInsight の 2016 年 3 月 22 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.875.2159884 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.875.2159884 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.875.2159884 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.875.2159884 (HDP 2.2.9.1-7 - 変更なし)
+* HDInsight (Windows) 3.3.0.875.2159884 (HDP 2.3.3.1-16)
+* HDInsight (Linux) 3.2.1000.0.7193255 (HDP 2.2.9.1-8 - 変更なし)
+* HDInsight (Linux) 3.3.1000.0.7193255 (HDP 2.3.3.1-7 - 変更なし)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースで、すべての HDInsight クラスターの HDInsight のバージョンを更新しました| サービス | すべて| 該当なし
+
 
 ## HDInsight の 2016 年 3 月 10 日リリース ノート
 
@@ -75,7 +119,7 @@
 
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| すべての HDInsight クラスターに HDInsight 3.3 バージョンが追加され、HDInsight バージョンが更新されました | このリリースでは、HDInsight v3.3 (HDP 2.3 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.3 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-component-versioning/)を参照してください。| サービス | すべて| 該当なし
+| すべての HDInsight クラスターに HDInsight 3.3 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.3 (HDP 2.3 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.3 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。| サービス | すべて| 該当なし
 
 ## HDInsight の 2015 年 11 月 30 日リリース ノート
 
@@ -1497,4 +1541,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

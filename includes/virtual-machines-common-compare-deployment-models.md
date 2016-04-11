@@ -35,7 +35,7 @@ Azure リソース マネージャーでは、既製のアプリケーション 
 | Virtual Machines 用クラウド サービス |	クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 | 新しいモデルを使用して仮想マシンを作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
 | 可用性セット | プラットフォームに対する可用性は、Virtual Machines に同じ "AvailabilitySetName" を構成することによって示されます。障害ドメインの最大数は 2 です。 | 可用性セットは、Microsoft.Compute プロバイダーによって公開されるリソースです。可用性セットには、高可用性を必要とする Virtual Machines を含める必要があります。障害ドメインの最大数は 3 です。 |
 | [アフィニティ グループ] をクリックし、 |	Virtual Network を作成するにはアフィニティ グループが必要です。ただし、Regional Virtual Network の導入により、それは不要となりました。 |単純化するために、Azure リソース マネージャーによって公開される API には、アフィニティ グループの概念が存在しません。 |
-| 負荷分散 | デプロイされている Virtual Machines には、クラウド サービスの作成によって暗黙的な Load Balancer が提供されます。 | Load Balancer は、Microsoft.Network プロバイダーによって公開されるリソースです。負荷分散を必要とする Virtual Machines のプライマリ ネットワーク インターフェイスは、Load Balancer を参照している必要があります。Load Balancer には、内部 Load Balancer と外部 Load Balancer とがあります。[詳細については、こちらを参照してください。](resource-groups-networking.md) |
+| 負荷分散 | デプロイされている Virtual Machines には、クラウド サービスの作成によって暗黙的な Load Balancer が提供されます。 | Load Balancer は、Microsoft.Network プロバイダーによって公開されるリソースです。負荷分散を必要とする Virtual Machines のプライマリ ネットワーク インターフェイスは、Load Balancer を参照している必要があります。Load Balancer には、内部 Load Balancer と外部 Load Balancer とがあります。[詳細については、こちらを参照してください。](../articles/resource-groups-networking.md) |
 |仮想 IP アドレス | Cloud Services に VM を追加すると、既定の VIP (仮想 IP アドレス) がクラウド サービスに与えられます。仮想 IP アドレスは、暗黙的なロード バランサーに関連付けられるアドレスです。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。Load Balancer には、動的パブリック IP を割り当てることができます。パブリック IP のセキュリティは、セキュリティ グループを使用して保護できます。 |
 |予約済み IP アドレス|	IP アドレスを Azure で予約し、クラウド サービスに関連付けることで、その IP アドレスを固定アドレスとすることができます。 | パブリック IP アドレスは "静的" モードで作成でき、"予約済み IP アドレス" と同じ機能を持ちます。現在、Load Balancer に割り当てることができるのは静的パブリック IP だけです。 |
 |VM ごとのパブリック IP アドレス (PIP) | Public IP Addresses は、直接 VM に関連付けることもできます。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。ただし、VM ごとのパブリック IP を取得するためにネットワーク インターフェイスに割り当てることができるのは現在、動的パブリック IP だけです。 |
@@ -53,11 +53,11 @@ Azure ポータルには、Virtual Machines のクラシック デプロイ モ�
 
 ### Azure PowerShell
 
-Azure PowerShell には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドレットが含まれます。詳細については、[こちら](../powershell-azure-resource-manager.md)を参照してください。
+Azure PowerShell には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドレットが含まれます。詳細については、[こちら](../articles/powershell-azure-resource-manager.md)を参照してください。
 
 ### Azure CLI
 
-Azure コマンドライン インターフェイス (Azure CLI) には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドが含まれます。詳細については、[こちら](xplat-cli-azure-resource-manager.md)を参照してください。
+Azure コマンドライン インターフェイス (Azure CLI) には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドが含まれます。詳細については、[こちら](../articles/xplat-cli-azure-resource-manager.md)を参照してください。
 
 ### Visual Studio
 
@@ -79,11 +79,11 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 **サブスクリプションのクォータにはどのような影響が生じますか。**
 
-新しい Azure リソース マネージャー API を介して作成された Virtual Machines、Virtual Network、ストレージ アカウントのクォータは、お客様が現在保有しているクォータとは区別されます。新しい API を使用してリソースを作成するためのクォータが別途、各サブスクリプションに与えられます。追加クォータの詳細については、[こちら](../azure-subscription-service-limits.md)を参照してください。
+新しい Azure リソース マネージャー API を介して作成された Virtual Machines、Virtual Network、ストレージ アカウントのクォータは、お客様が現在保有しているクォータとは区別されます。新しい API を使用してリソースを作成するためのクォータが別途、各サブスクリプションに与えられます。追加クォータの詳細については、[こちら](../articles/azure-subscription-service-limits.md)を参照してください。
 
 **Virtual Machines、Virtual Network、ストレージ アカウントなどをプロビジョニングするための独自の自動スクリプトは、新しい Azure リソース マネージャー API で引き続き使用できますか。**
 
-これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。Azure CLI スクリプトを変更する方法の詳細については、[こちら](virtual-machines-linux-cli-manage.md)を参照してください。
+これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。Azure CLI スクリプトを変更する方法の詳細については、[こちら](../articles/virtual-machines/virtual-machines-linux-cli-manage.md)を参照してください。
 
 **新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線に接続することはできますか。**
 
@@ -93,4 +93,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

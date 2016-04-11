@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのサンプル データのロード
@@ -41,7 +41,7 @@ SQL Data Warehouse インスタンスを作成するときに、何らかのサ�
 
 2. 売上の棒グラフを作成するには、[SalesAmount] 列をクリックすると、自動的に作成されます。[CustomerIncome] グラフを [AggregateSales] の左にある [Axis] フィールドにドラッグすると、次元が追加され、顧客の収入ブラケット別の売上が表示されます。
 
-3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および \[折れ線グラフ] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
+3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および [折れ線グラフ] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
 
 左上にある [保存] をクリックし、視覚エフェクトをレポートとして保存することで、進行状況をいつでも保存できます。
 
@@ -51,26 +51,32 @@ SQL Data Warehouse インスタンスを作成するときに、何らかのサ�
 
 簡単な SELECT ステートメントを実行して、従業員のすべての情報を取得できます。
 
-	SELECT * FROM DimEmployee;
+```sql
+SELECT * FROM DimEmployee;
+```
 
 また、GROUP BY などのコンストラクトを使用する、より複雑なクエリを実行して、日ごとの総売上金額の合計を参照することもできます。
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey
+;
+```
 
 WHERE 句を使用して、ある日付以前の注文をフィルター処理できます。
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	WHERE OrderDateKey > '20020801'
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+WHERE OrderDateKey > '20020801'
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey
+;
+```
 
 実際、SQL Data Warehouse では、SQL Server がサポートしているほとんどすべての T-SQL コンストラクトをサポートしており、「[コードの移行][]」ドキュメントで相違点を確認できます。
-
-
 
 ## 次のステップ
 いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。
@@ -95,4 +101,4 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

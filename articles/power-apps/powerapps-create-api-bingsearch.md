@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Bing Search API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-bingsearch.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-bingsearch.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-bingsearch.md)
 
 組織の (テナント) App Service 環境に新しい Bing Search API を追加する
@@ -51,7 +51,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Bing Search REST API](../connectors/create-api-bingsearch.md) リファレンス。
+[Bing Search REST API](../connectors/connectors-create-api-bingsearch.md) リファレンス。
 
 
 ## まとめと次のステップ
@@ -66,4 +66,4 @@
 [4]: ./media/powerapps-create-api-dropbox/browseall.png
 [5]: ./media/powerapps-create-api-dropbox/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

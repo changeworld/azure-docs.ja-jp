@@ -12,15 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/21/2016" 
+	ms.date="03/24/2016" 
 	ms.author="awills"/>
 
 
  
 # Application Insights の Analytics について
 
-
-[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-analytics.md) を使用すると、[Application Insights](app-insights-overview.md) によってアプリから収集されたテレメトリに対して強力なクエリを実行できます。ここでは、Analytics のクエリ言語について説明します。
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -70,12 +69,14 @@
 
 ![結果の右上にある列の選択をクリックする](./media/app-analytics-tour/030.png)
 
+
 詳細を表示する場合は、以下のように該当する項目を展開します。
  
 ![テーブルを選択し、列の構成を使用する](./media/app-analytics-tour/040.png)
 
+> [AZURE.NOTE] 列の先頭をクリックし、Web ブラウザーで使用できる結果の順序を変更します。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行数が制限されることに注意してください。このように並べ替えると、実際の最高または最低の項目が表示されないことがあります。その場合は、`top` または `sort` 演算子を使用してください。
 
-## [top](app-analytics-aggregations.md#top) および [sort](app-analytics-aggregations.md#sort)
+## [top](app-analytics-aggregations.md#top) と [sort](app-analytics-aggregations.md#sort)
 
 `take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
 
@@ -214,7 +215,7 @@ by 句ではスカラー (数、時間、または間隔) 値を使用するこ�
 結果を時間で並べ替えていませんが (テーブル表示でわかるように)、グラフには常に正しい順序で日時が表示されることに注目してください。
 
 
-## [Where](app-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
+## [where](app-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
 
 Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーからのものです。
 
@@ -441,4 +442,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

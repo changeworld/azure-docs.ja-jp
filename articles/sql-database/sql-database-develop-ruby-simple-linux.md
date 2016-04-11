@@ -20,53 +20,23 @@
 
 # Ubuntu Linux 上の Ruby を使用した SQL Database への接続
 
-
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
-
 
 このトピックでは、Ubuntu Linux クライアント コンピューター上で実行される Ruby のコード サンプルを示し、Azure SQL Database のデータベースに接続する方法について説明します。
 
-## 前提条件
+## 手順 1: 開発環境を設定する
 
-### 必要なモジュールのインストール
+[TinyTDS Ruby Driver for SQL Server 使用の前提条件](https://msdn.microsoft.com/library/mt711041.aspx#Ubuntu-Linux)
 
-端末を開き、FreeTDS をコンピューターにインストールします (まだインストールしていない場合)。
-
-    sudo apt-get --assume-yes update
-    sudo apt-get --assume-yes install freetds-dev freetds-bin
-
-コンピューターで FreeTDS を構成してから、Ruby をコンピューターにインストールします (まだインストールしていない場合)。
-
-    sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-    curl -L https://get.rvm.io | bash -s stable
-
-署名に関する問題がある場合は、次のコマンドを実行してください。
-
-    command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-
-署名に関する問題がない場合は、次のコマンドを実行してください。
-
-    source ~/.rvm/scripts/rvm
-    rvm install 2.1.2
-    rvm use 2.1.2 --default
-    ruby -v
-
-バージョン 2.1.2 または Ruby の VM が実行されていることを確認します。
-
-次に、TinyTDS をインストールします。
-
-    gem install tiny_tds
-
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
-
-## 手順 1. 接続の詳細を取得する
+## 手順 3: 接続の詳細を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数を使用して、SQL Database に接続します。
 
@@ -75,7 +45,7 @@
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 [TinyTds::Result](https://github.com/rails-sqlserver/tiny_tds) 関数を使用して、SQL Database からクエリの結果セットを取得します。この関数は、クエリを受け入れ、結果セットを返します。[result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) を使用することにより、結果セットが反復処理されます。
 
@@ -89,7 +59,7 @@
     puts row
     end
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -118,4 +88,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

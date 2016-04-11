@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="03/28/2016"
 	ms.author="stepsic"/>
 	
 # Logic Apps の機能を使用する
@@ -61,6 +61,11 @@
 
 7.  最後に、電子メール ボックスを **[If Yes]** ボックスにドラッグ アンド ドロップします。これにより、このフォロワー数を満たした場合にのみ電子メールが届くようになります。
 
+## ForEach によるリストの繰り返し処理
+
+ForEach ループでは、アクションを繰り返す配列を指定します。配列ではない場合、フローは失敗します。たとえば、メッセージの配列を出力する action1 があり、各メッセージを送信する場合は、アクションのプロパティに forEach : "@action('action1').outputs.messages" のような forEach ステートメントを組み込むことができます。
+ 
+
 ## コード ビューを使用したロジック アプリの編集
 
 デザイナー以外でも、次のようにロジック アプリを定義するコードを直接編集することができます。
@@ -107,4 +112,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 <!-- Shared links -->
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

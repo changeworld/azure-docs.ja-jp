@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/07/2015"
+   ms.date="03/22/2016"
    ms.author="telmos" />
 
 # 静的内部プライベート IP アドレスの設定方法
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。
 
->[AZURE.NOTE]静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。
+>[AZURE.NOTE] 静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。
 
 ## 特定の IP アドレスが使用可能であるかを確認する方法
 IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かどうかを確認するには、次の PowerShell コマンドを実行して、*IsAvailable* の値を確認します。
@@ -31,7 +31,7 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
 	OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
 	OperationStatus      : Succeeded
 
->[AZURE.NOTE]上記のコマンドを安全な環境でテストする場合は、[Virtual Network の作成](../virtual-network/virtual-networks-create-vnet.md)のガイドラインに従い、*TestVnet* という VNet を作成して *10.0.0.0/8* アドレス空間が使用されるようにします。
+>[AZURE.NOTE] 上記のコマンドを安全な環境でテストする場合は、[Virtual Network の作成](virtual-networks-create-vnet-classic-portal.md)のガイドラインに従い、*TestVnet* という VNet を作成して *10.0.0.0/8* アドレス空間が使用されるようにします。
 
 ## VM 作成時に静的内部 IP アドレスを指定する方法
 以下の PowerShell スクリプトによって *TestService* という新しいクラウド サービスが作成され、Azure からイメージが取得されます。次に、その取得されたイメージを使用して *TestVM* という VM が新しいクラウド サービス内に作成され、その VM はサブネット *Subnet-1*に含まれるように設定され、VM の静的内部 IP として *10.0.0.7* が指定されます。
@@ -92,11 +92,11 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
 
 ## 次のステップ
 
-[予約済み IP](../virtual-networks-reserved-public-ip)
+[予約済み IP](virtual-networks-reserved-public-ip)
 
-[インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip)
+[インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip)
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/14/2016"
+   ms.date="03/25/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のテーブル パーティション
@@ -38,9 +38,9 @@ SQL DW は、DBA にテーブル型の複数の選択肢 (ヒープ、クラス�
 SQL DW でクラスター化列ストア インデックスを作成する場合、DBA は 1 つの追加要因 (行数) を考慮する必要があります。CCI テーブルは高度な圧縮を実現し、SQL DW によるクエリのパフォーマンスを向上させます。圧縮が SQL DW 内部で動作する仕組み上、CCI テーブル内の各パーティションは、データが圧縮される前に膨大な数の行を含んでいる必要があります。また、SQL DW は多数のディストリビューションにデータを分散し、各ディストリビューションはパーティションによってさらに分割されます。圧縮とパフォーマンスを最適化するには、ディストリビューションとパーティションあたり 10 万行以上が必要です。上記の例を使用して、セールスのファクト テーブルに 36 か月のパーティションが含まれる場合、SQL DW に 60 のディストリビューションがあるとすると、セールスのファクト テーブルは 1 か月あたり 600 万行、すべての月を指定する場合は 2 億 1600 万行を含む必要があります。テーブルに推奨される最小値よりも大幅に少ない行が含まれている場合、DBA はディストリビューションあたりの行数を大きくするために、パーティション数の少ないテーブルを作成することを検討する必要があります。
 
 
-パーティション レベルで現在のデータベースのサイズを設定するには、次のようなクエリを使用します。
+パーティション レベルで現在の SQL Server データベースのサイズを設定するには、次のようなクエリを使用します。
 
-```
+```sql
 SELECT      s.[name]                        AS      [schema_name]
 ,           t.[name]                        AS      [table_name]
 ,           i.[name]                        AS      [index_name]
@@ -54,7 +54,7 @@ SELECT      s.[name]                        AS      [schema_name]
 FROM        sys.schemas s
 JOIN        sys.tables t                    ON      t.[schema_id]         = s.[schema_id]
 JOIN        sys.partitions p                ON      p.[object_id]         = t.[object_id]
-JOIN        sys.allocation_units a          ON      a.[container_id]        = p.[partition_id]
+JOIN        sys.allocation_units a          ON      a.[container_id]      = p.[partition_id]
 JOIN        sys.indexes i                   ON      i.[object_id]         = p.[object_id]
                                             AND     i.[index_id]          = p.[index_id]
 JOIN        sys.data_spaces ds              ON      ds.[data_space_id]    = i.[data_space_id]
@@ -83,7 +83,7 @@ MPP パーティション サイズ = SMP パーティション サイズ/ディ
 
 SQL Data Warehouse データベースのディストリビューション数は、次のクエリを使用して調べることができます。
 
-```
+```sql
 SELECT  COUNT(*)
 FROM    sys.pdw_distributions
 ;
@@ -96,7 +96,7 @@ FROM    sys.pdw_distributions
 
 ディストリビューションごとのメモリの割り当てに関する情報は、リソース ガバナーの動的管理ビューを照会することで入手できます。実際には、メモリ許可は次の数値よりも少なくなります。ただし、データ管理操作のためにパーティションのサイズを設定するときに、これがある程度の目安になります。
 
-```
+```sql
 SELECT  rp.[name]								AS [pool_name]
 ,       rp.[max_memory_kb]						AS [max_memory_kb]
 ,       rp.[max_memory_kb]/1024					AS [max_memory_mb]
@@ -122,7 +122,7 @@ AND     rp.[name]    = 'SloDWPool'
 
 各パーティションに行が 1 つ含まれた、パーティション分割された列ストア テーブルのサンプルを次に示します。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
         [ProductKey]            int          NOT NULL
@@ -157,7 +157,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 
 次に、`sys.partitions` カタログ ビューを利用して行数を照会できます。
 
-```
+```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
 ,       i.[name] as Index_name
 ,       p.partition_number as Partition_nmbr
@@ -174,7 +174,7 @@ WHERE t.[name] = 'FactInternetSales'
 
 このテーブルを分割しようとすると、次のエラーが発生します。
 
-```
+```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
@@ -182,7 +182,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 ただし、`CTAS` を使用して、データを保持する新しいテーブルを作成できます。
 
-```
+```sql
 CREATE TABLE dbo.FactInternetSales_20000101
     WITH    (   DISTRIBUTION = HASH(ProductKey)
             ,   CLUSTERED COLUMNSTORE INDEX
@@ -200,7 +200,7 @@ WHERE   1=2
 
 パーティション境界が配置されているので、切り替えが許可されます。これにより、後で分割できる空のパーティションを含むソース テーブルをそのままにしておくことができます。
 
-```
+```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 後は、`CTAS` を使用して新しいパーティション境界に合わせてデータを配置し、データをメイン テーブルに切り替えるだけです。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
     WITH    (   DISTRIBUTION = HASH([ProductKey])
             ,   CLUSTERED COLUMNSTORE INDEX
@@ -229,7 +229,7 @@ ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.Fa
 
 データの移動が完了したら、ターゲット テーブルの統計に、それぞれのパーティションのデータの新しいディストリビューションが正確に反映されるように、統計を更新することをお勧めします。
 
-```
+```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
@@ -238,7 +238,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 1. パーティション値を含まないパーティション テーブルとしてテーブルを作成します。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
     [ProductKey]            int          NOT NULL
@@ -262,7 +262,7 @@ WITH
 
 2. デプロイメント プロセスの一環として、テーブルを `SPLIT` (分割) します。
 
-```
+```sql
 -- Create a table containing the partition boundaries
 
 CREATE TABLE #partitions
@@ -336,4 +336,4 @@ SQL Data Warehouse にデータベース スキーマを正常に移行したら
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

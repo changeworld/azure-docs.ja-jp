@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="03/23/2016"
 	ms.author="jeedes"/>
 
 
@@ -65,7 +65,7 @@ Azure AD への Pluralsight の統合を構成するには、ギャラリーか�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに「**Pluralsight**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_01.png)<br>
-7. 結果ウィンドウで **[Pluralsight]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[Pluralsight]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_06.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Pluralsight で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -97,7 +97,7 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_04.png) <br>
 
 
-    a.ユーザーが Pluralsight アプリケーションへのサインオンに使用する URL を [サインオン URL] ボックスに **“https://<instance name>.pluralsight.com/sso/<comapny name>”** の形式で入力します。
+    a.ユーザーが Pluralsight アプリケーションへのサインオンに使用する URL を [サインオン URL] ボックスに **"https://<インスタンス名>.pluralsight.com/sso/<会社名>"** の形式で入力します。
 
     b.**[次へ]** をクリックします。
 
@@ -216,4 +216,4 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 [204]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

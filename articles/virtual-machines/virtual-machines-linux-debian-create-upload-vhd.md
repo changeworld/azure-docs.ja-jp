@@ -3,7 +3,7 @@
 	description="Azure へのデプロイ用に Debian 7 および 8 の VHD ファイルを作成する方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="SuperScottz"
+	authors="szarkos"
 	manager="timlt"
 	editor=""
     tags="azure-resource-manager,azure-service-management"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/01/2015"
-	ms.author="mingzhan"/>
+	ms.date="03/25/2016"
+	ms.author="szark"/>
 
 
 
@@ -34,7 +34,23 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## Debian 7.x および 8.x
+## Azure-Manage を使用した Debian VHD の作成
+
+[credativ](http://www.credativ.com/) の [azure-manage](https://gitlab.credativ.com/de/azure-manage) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。これは、最初からイメージを作成するよりもお勧めの方法です。たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して azure-manage (と依存関係) をダウンロードし、azure\_build\_image スクリプトを実行します。
+
+	# sudo apt-get update
+	# sudo apt-get install git qemu-utils mbr kpartx debootstrap
+
+	# sudo apt-get install python3-pip
+	# sudo pip3 install azure-storage azure-servicemanagement-legacy pytest pyyaml
+	# git clone https://gitlab.credativ.com/de/azure-manage.git
+	# cd azure-manage
+	# sudo pip3 install .
+
+	# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+
+
+## 手動での Debian VHD の準備
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -44,22 +60,42 @@
 
 4. `/etc/default/grub` ファイルを編集し、**GRUB\_CMDLINE\_LINUX** パラメーターを次のように変更して、Azure の追加のカーネル パラメーターを含めます。
 
-        GRUB_CMDLINE_LINUX="console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200 earlyprintk=ttyS0,115200 rootdelay=30"
 
 5. GRUB をリビルドして、次のスクリプトを実行します。
 
         # sudo update-grub
 
-6. Azure Linux エージェントの依存関係パッケージをインストールします。
+6. Debian 6 または 7 については、/Etc/apt/sources.list に Debian の Azure リポジトリを追加します。
 
-        # apt-get install -y git parted
+	**Debian 6.x "Wheezy"**
 
-7.	[ガイダンス](virtual-machines-linux-update-agent.md)に従って、GitHub から Azure Linux エージェントをインストールし、バージョン 2.0.14 を選択します。
+		deb http://debian-archive.trafficmanager.net/debian wheezy-backports main
+		deb-src http://debian-archive.trafficmanager.net/debian wheezy-backports main
+		deb http://debian-archive.trafficmanager.net/debian-azure wheezy main
+		deb-src http://debian-archive.trafficmanager.net/debian-azure wheezy main
 
-			# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent
-			# chmod +x waagent
-			# cp waagent /usr/sbin
-			# /usr/sbin/waagent -install -verbose
+
+	**Debian 7.x "Jessie"**
+
+		deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+		deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+		deb http://debian-archive.trafficmanager.net/debian-azure jessie main
+		deb-src http://debian-archive.trafficmanager.net/debian-azure jessie main
+
+
+7. Azure Linux エージェントをインストールします。
+
+		# sudo apt-get update
+		# sudo apt-get install waagent
+
+8. Debian 7 場合、wheezy backports リポジトリから 3.16 ベース カーネルを実行する必要があります。まず、次の内容を含む /etc/apt/preferences.d/linux.pref という名前のファイルを作成します。
+
+		Package: linux-image-amd64 initramfs-tools
+		Pin: release n=wheezy-backports
+		Pin-Priority: 500
+
+	次に、"sudo apt-get install linux-image-amd64" を実行して、新しいカーネルをインストールします。
 
 8. 仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備して、次のスクリプトを実行します。
 
@@ -69,16 +105,9 @@
 
 9. Hyper-V マネージャーで **[アクション]**、[シャットダウン] の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-## Credativ スクリプトを使用して Debian VHD を作成する
-
-Credativ の Web サイトには、Debian VHD を自動的にビルドするのに役立つスクリプトが用意されています。このスクリプトを[ここ](https://gitlab.credativ.com/de/azure-manage)からダウンロードして、Linux VM にインストールすることができます。Debian VHD (たとえば、Debian 7) を作成するには、次のスクリプトを実行します。
-
-        # azure_build_image --option release=wheezy --option image_prefix=lilidebian7 --option image_size_gb=30 SECTION
-
-このスクリプトを使用したときに問題が発生した場合は、[ここ](https://gitlab.credativ.com/groups/de/issues)から Credativ に問題を報告してください。
 
 ## 次のステップ
 
-これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
+これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Creating and uploading a virtual hard disk that contains the Linux operating system (Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

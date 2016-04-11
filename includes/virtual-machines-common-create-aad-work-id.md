@@ -1,8 +1,5 @@
 
-
-MSDN Azure クレジットを活用するために、個人の Azure アカウントを作成した場合や、個人の MSDN サブスクリプションがあり、Azure アカウントを作成した場合、*Microsoft アカウント* ID を使用して作成しています。Azure の優れた機能の中でも[リソース グループ テンプレート](../resource-group-overview.md)はその一例ですが、作業にあたって職場または学校のアカウント (Azure Active Directory で管理される ID) が必要です。下の指示に従って、新しい職場または学校のアカウントを作成できます。個人の Azure アカウントを持つことで得られるメリットの 1 つは、既定の Azure Active Directory ドメインが付属することです。それを使用して職場または学校のアカウントを新規に作成し、アカウントが必要な Azure 機能で利用できます。
-
-ただし、最近の変更によって、[ここ](../xplat-cli-connect.md)で説明されている `azure login` 対話型ログイン方法を使用するすべての種類の Azure アカウントでサブスクリプションを管理できるようになっています。そのメカニズムを使用することも、次の指示に従うこともできます。
+<br>
 
 > [AZURE.NOTE] 管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
 
@@ -91,7 +88,7 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
 
 ## 次のステップ
 
-新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](../xplat-cli-azure-resource-manager.md)を使用できます。
+新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](../articles/xplat-cli-azure-resource-manager.md)を使用できます。
 
     azure login
     info:    Executing command login
@@ -122,4 +119,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

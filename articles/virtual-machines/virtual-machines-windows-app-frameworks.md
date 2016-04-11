@@ -1,6 +1,6 @@
 <properties
-   pageTitle="テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ | Microsoft Azure"
-   description="Azure リソース マネージャー テンプレートを使用して Active Directory、Docker、その他をインストールすることにより、一般的なアプリケーション フレームワークを作成します。"
+   pageTitle="一般的なアプリケーション フレームワークのデプロイ | Microsoft Azure"
+   description="Azure Resource Manager テンプレートを使用して、Active Directory や Docker などをインストールし、Windows VM および Linux VM 上に一般的なアプリケーション フレームワークを作成します。"
    services="virtual-machines-windows"
    documentationCenter="virtual-machines"
    authors="squillace"
@@ -17,10 +17,10 @@
    ms.date="02/03/2016"
    ms.author="rasquill"/>
 
-# Azure リソース マネージャー テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ
+# Azure Resource Manager テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+通常、ワークロードが設計に従って動作するには多くのリソースが必要です。Azure リソース マネージャー テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure CLI、または PowerShell を使用したそれらのデプロイについて説明します。[このトピックの Linux バージョンを参照](virtual-machines-linux-app-frameworks.md)することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-app-frameworks](../../includes/virtual-machines-common-app-frameworks.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

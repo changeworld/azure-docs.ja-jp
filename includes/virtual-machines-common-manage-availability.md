@@ -35,7 +35,7 @@ FD は電源とネットワーク スイッチを共有する仮想マシンの�
 
 
 ### ロード バランサーと可用性セットを結合する
-Azure ロード バランサーと可用性セットを結合することで、アプリケーションの復元性を最大化できます。Azure ロード バランサーは、複数の仮想マシンにトラフィックを振り分けます。当社の標準層の仮想マシンには Azure ロード バランサーが含まれています。すべての仮想マシン層に Azure Load Balancer が含まれているわけではないことに注意してください。仮想マシンの負荷分散の詳細については、「[Azure の仮想マシンの負荷分散](virtual-machines-linux-load-balance.md)」を参照してください。
+Azure ロード バランサーと可用性セットを結合することで、アプリケーションの復元性を最大化できます。Azure ロード バランサーは、複数の仮想マシンにトラフィックを振り分けます。当社の標準層の仮想マシンには Azure ロード バランサーが含まれています。すべての仮想マシン層に Azure Load Balancer が含まれているわけではないことに注意してください。仮想マシンの負荷分散の詳細については、「[Azure の仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画済みメンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
@@ -47,6 +47,6 @@ Azure ロード バランサーと可用性セットを結合することで、�
 [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
 [ロード バランサーと可用性セットを結合する]: #combine-the-load-balancer-with-availability-sets
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
-[仮想マシンの可用性セットを構成する方法]: virtual-machines-windows-classic-configure-availability.md
+[仮想マシンの可用性セットを構成する方法]: ../articles/virtual-machines/virtual-machines-windows-classic-configure-availability.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

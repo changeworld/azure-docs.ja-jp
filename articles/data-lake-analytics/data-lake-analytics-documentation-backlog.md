@@ -32,7 +32,8 @@ U-SQL | JSON の処理 | 2 | Pending | [@mumian](https://github.com/mumian) | [@
 サービス | Curl の操作 | 3 |Pending |[@mumian](https://github.com/mumian)
 U-SQL | パーティション テーブル |1 | Pending | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | パフォーマンスのチューニング | 2 | Pending | [@MikeRys](https://github.com/mikerys) | 
-U-SQL | プログラマー ガイド | 2 | Pending | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | U-SQL UDO プログラマー ガイド | 1 | Pending | [@edmacauley](https://github.com/edmacauley) | 
+U-SQL | U-SQL プログラマー ガイド | 2 | Pending | [@edmacauley](https://github.com/edmacauley) | 
 U-SQL | T-SQL バックグラウンドからの U-SQL の使用 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) | [@MikeRys](https://github.com/mikerys)
 U-SQL | Hive バックグラウンドからの U-SQL の使用 | 1 | Pending | [@mumian](https://github.com/mumian)| [@MikeRys](https://github.com/mikerys)
 U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ](http://bottlecaps.de/rr/ui)を使用) | [@mwinkle](https://github.com/mwinkle) | [@mwinkle](https://github.com/mwinkle)
@@ -42,7 +43,7 @@ U-SQL | 文法のレールロード ダイアグラム | 1 | 進行中 ([これ]
 U-SQL | 範囲基準の結合を行うための手法を説明します。 | 1 | Pending | [@MikeRys](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 U-SQL | ADLS 認証オプション | 1 | Pending | [@ArindamC](https://github.com/mikerys) |[@saveenr](https://github.com/saveenr) 
 U-SQL | クロス プラットフォームの CLI ジョブの送信 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle) 
-U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@mwinkle](https://github.com/mwinkle)
+U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@MikeRys](https://github.com/mikerys)
 ツール | U-SQL UDFs Azure Data Lake Tools for Visual Studio の単体テスト | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
 ツール | Azure Data Lake Tools for Visual Studio のジョブ グラフと頂点実行ビュー | 1 | Pending | [@edmacauley](https://github.com/edmacauley) |[@xiaoyong](https://github.com/zxzxy1988)
 
@@ -61,4 +62,4 @@ U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

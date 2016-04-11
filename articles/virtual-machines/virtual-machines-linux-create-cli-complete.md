@@ -42,7 +42,7 @@
 
 この記事では、VNetwork サブネット内に 1 つの Linux VM を持つクラウド サービス デプロイに似たデプロイを構築します。ここでは、インターネット上のどこからでも接続できる、セキュリティで保護された実用的な VM を構築するまで、各コマンドの説明を交えながら基本的なデプロイ全体を説明します。
 
-その過程で、Resource Manager デプロイ モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、より直接的な Azure CLI コマンドを使用して、より短時間でシステムを再構築することも (`azure vm quick-create` コマンドを使用したほぼ同じデプロイについては、[こちら](insertlinktonewdoc)を参照してください)、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使用して、ネットワークとアプリケーションのデプロイ全体を設計して自動化し、それらを更新する方法の習得に移ることもできます。デプロイの各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
+その過程で、Resource Manager デプロイ モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、より直接的な Azure CLI コマンドを使用して、より短時間でシステムを再構築することも (`azure vm quick-create` コマンドを使用したほぼ同じデプロイについては、[こちら](virtual-machines-linux-quick-create-cli.md)を参照してください)、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使用して、ネットワークとアプリケーションのデプロイ全体を設計して自動化し、それらを更新する方法の習得に移ることもできます。デプロイの各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
 ここでは、開発と単純なコンピューティングに役立つ VM を含む単純なネットワークを構築し、それについて説明します。この記事を理解すると、より複雑なネットワークやデプロイに進むことができます。
 
@@ -95,7 +95,7 @@ azure network public-ip create -d testsubdomain testrg testpip westeurope
 azure network public-ip show testrg testpip --json | jq '.'
 
 # Associate the Public IP to the NIC
-azure network nic set --public-ip-name test pip
+azure network nic set --public-ip-name testpip testrg testnic
 
 # Bind the NSG to the NIC
 azure network nic set --network-security-group-name testnsg testrg testnic
@@ -528,7 +528,7 @@ nsg の受信規則を追加して、(SSH をサポートするために) ポー
 
 ### パブリック IP とネットワーク セキュリティ グループの NIC への関連付け
 
-        azure network nic set --public-ip-name test pip
+        azure network nic set --public-ip-name testpip testrg testnic
 
 NSG を NIC にバインドします。
 
@@ -667,4 +667,4 @@ NSG を NIC にバインドします。
 
 これで、複数のネットワーク コンポーネントと VM を操作する準備が整いました。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

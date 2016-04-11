@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse へのサンプル データのロード
@@ -28,10 +28,12 @@
 
 3. 抽出したファイル aw\_create.bat を編集し、ファイルの先頭にある以下の変数を設定します。"=" とパラメーターの間にスペースを入れないようにします。編集内容の例を次に示します。
 
-    	server=mylogicalserver.database.windows.net
-    	user=mydwuser
-    	password=Mydwpassw0rd
-    	database=mydwdatabase
+    ```
+    server=mylogicalserver.database.windows.net
+    user=mydwuser
+    password=Mydwpassw0rd
+    database=mydwdatabase
+    ```
 
 4. Windows コマンド プロンプトから編集した aw\_create.bat を実行します。編集バージョンの aw\_create.bat を保存したディレクトリにいることを確認します。このスクリプトでは、次のことが行われます。
 	* データベースに既に存在する Adventure Works のテーブルまたはビューを削除します
@@ -47,22 +49,28 @@ SQL Data Warehouse にサンプル データをロードしたら、いくつか
 
 従業員のすべての情報を取得する簡単な SELECT ステートメントの例:
 
-	SELECT * FROM DimEmployee;
+```sql
+SELECT * FROM DimEmployee;
+```
 
 GROUP BY などのコンストラクトを使用する、より複雑なクエリを実行して、日ごとの総売上金額の合計を参照する例:
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey;
+```
 
 SELECT と WHERE 句を使用して、ある日付以前の注文をフィルター処理する例:
 
-	SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
-	FROM FactInternetSales
-	WHERE OrderDateKey > '20020801'
-	GROUP BY OrderDateKey
-	ORDER BY OrderDateKey;
+```
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+WHERE OrderDateKey > '20020801'
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey;
+```
 
 SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQL 構造をサポートします。相違点については、[コードの移行][]ドキュメントを参照してください。
 
@@ -84,4 +92,4 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 <!--Other Web references-->
 [SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -38,7 +38,7 @@ Azure クラシック ポータルを使用するには:
 
 	![新しい仮想マシンの可用性セットを作成する](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
 
-6. 4 番目の画面で、インストールする拡張機能をクリックします。拡張機能には、マルウェア対策の実行やパスワードのリセットなどの機能が用意されており、仮想マシンの管理に役立ちます。詳細については、「[Azure VM Agent and VM Extensions (Azure VM エージェントおよび VM 拡張機能)](virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
+6. 4 番目の画面で、インストールする拡張機能をクリックします。拡張機能には、マルウェア対策の実行やパスワードのリセットなどの機能が用意されており、仮想マシンの管理に役立ちます。詳細については、「[Azure VM Agent and VM Extensions (Azure VM エージェントおよび VM 拡張機能)](../articles/virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
 
 7.	矢印をクリックして、仮想マシンと可用性セットを作成します。
 
@@ -47,8 +47,8 @@ Azure クラシック ポータルを使用するには:
 Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、次を参照してください。
 
 
-- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-linux-classic-createpowershell.md)
-- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-windows-classic-create-powershell.md)
+- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](../articles/virtual-machines/virtual-machines-linux-classic-createpowershell.md)
+- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)
 
 ## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
@@ -86,11 +86,11 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [オプション 1: 仮想マシンと可用性セットを同時に作成する]: #createset
 [オプション 2: 既存の仮想マシンを可用性セットに追加する]: #addmachine
 
-[Azure インフラストラクチャ サービスの負荷分散]: virtual-machines-linux-load-balance.md
-[仮想マシンの可用性管理]: virtual-machines-linux-manage-availability.md
+[Azure インフラストラクチャ サービスの負荷分散]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
+[仮想マシンの可用性管理]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
-[Windows を実行する仮想マシンの作成]: virtual-machines-windows-hero-tutorial.md
-[Virtual Network の概要]: virtual-networks-overview.md
+[Windows を実行する仮想マシンの作成]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtual Network の概要]: ../articles/virtual-network/virtual-networks-overview.md
 [サービス管理での仮想マシンの操作に関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

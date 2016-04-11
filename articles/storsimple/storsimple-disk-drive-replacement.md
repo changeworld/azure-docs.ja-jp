@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple デバイスのディスク ドライブを交換する | Microsoft Azure"
-   description="StorSimple プライマリ デバイスまたは EBOD エンクロージャのディスク ドライブを交換する方法について説明します。"
+   description="StorSimple プライマリ エンクロージャまたは EBOD エンクロージャのディスク ドライブを交換する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="03/28/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのディスク ドライブを交換する
@@ -78,7 +78,7 @@ StorSimple デバイスは、RAID 10 に似たストレージ スペース構成
 
 1. 障害が発生しているディスクを識別するには、Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に選択します。主エンクロージャまたは EBOD エンクロージャ (8600 モデルを使用している場合) 内のディスクに障害が発生する可能性があるため、**[共有コンポーネント]** と**[EBOD エンクロージャの共有コンポーネント]** でディスクの状態を調べます。どちらのエンクロージャでも、障害が発生しているディスクは、状態が赤色で表示されます。
 
-2. 主エンクロージャまたは EBOD エンクロージャの前部にあるドライブを調べます。障害が発生しているディスクには、黄色の LED が点灯しています。
+2. 主エンクロージャまたは EBOD エンクロージャの前部にあるドライブを調べます。
 
 3. ディスクのロックが解除されている場合は、次の手順に進みます。ディスクがロックされている場合は、「[改ざん防止ロックを解除する](#disengage-the-antitamper-lock)」の手順に従ってロックを解除します。
 
@@ -96,7 +96,7 @@ StorSimple デバイスは、RAID 10 に似たストレージ スペース構成
 
 ## 交換用のディスク ドライブを取り付ける
 
-Microsoft Azure StorSimple デバイスから障害が発生したドライブを取り外した後、次の手順に従って新しいドライブに交換します。
+StorSimple デバイスから障害が発生したドライブを取り外した後、次の手順に従って新しいドライブに交換します。
 
 #### ドライブを挿入するには
 
@@ -124,4 +124,4 @@ Microsoft Azure StorSimple デバイスから障害が発生したドライブ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

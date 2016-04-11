@@ -1,6 +1,6 @@
 <properties
- pageTitle="仮想マシンのサイズ | Microsoft Azure"
- description="仮想マシンのさまざまなサイズとその容量を一覧を示します。"
+ pageTitle="Windows VM のサイズ |Microsoft Azure"
+ description="Azure の Windows 仮想マシンで使用できるさまざまなサイズを一覧表示します。"
  services="virtual-machines-windows"
  documentationCenter=""
  authors="cynthn"
@@ -14,13 +14,13 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="infrastructure-services"
- ms.date="03/09/2016"
+ ms.date="03/22/2016"
  ms.author="cynthn"/>
 
-# 仮想マシンのサイズ
+# Azure の Windows 仮想マシンのサイズ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+この記事では、アプリとワークロードの実行に使用できる Windows 仮想マシンに利用可能なサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。さまざまなサイズの価格について詳しくは、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。Linux VM に関する情報が必要な場合は、「[Azure の Linux 仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
 
 [AZURE.INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

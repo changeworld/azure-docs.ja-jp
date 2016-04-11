@@ -6,73 +6,33 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management,hpc-pack"/>
+ tags="azure-service-management,azure-resource-manager,hpc-pack"/>
 <tags
  ms.service="virtual-machines-linux"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="12/02/2015"
+ ms.date="03/22/2016"
  ms.author="danlep"/>
 
 # Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
 
 この記事では、大規模な生体分子系の構造を計算し視覚化するために、Azure に Microsoft HPC Pack クラスターと複数の Linux コンピューティング ノードをデプロイし、**charmrun** を使用して [NAMD](http://www.ks.uiuc.edu/Research/namd/) ジョブを実行する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)].
 
 NAMD (ナノスケール分子力学プログラム) とは、ウイルス、セル構造体、および巨大タンパク質など、最大で数百万個の原子を含む大規模な生体分子系を高いパフォーマンスでシミュレーションするために設計された並列分子動力学パッケージです。NAMD は、通常のシミュレーションでは数百個のコアに対応し、大規模なシミュレーションでは 500,000 個を超えるコアに対応します。
 
-Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で各種の大規模な HPC および並列アプリケーション (MPI アプリケーションなど) を実行する機能を備えています。Microsoft HPC Pack 2012 R2 Update 2 以降、HPC Pack では、HPC Pack クラスターにデプロイされた Linux 計算ノード VM で Linux HPC アプリケーションを実行する機能もサポートしています。概要については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
+Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で各種の大規模な HPC および並列アプリケーション (MPI アプリケーションなど) を実行する機能を備えています。本来 Windows HPC ワークロード用のソリューションとして開発された HPC Pack では、現在、HPC Pack クラスターにデプロイされた Linux コンピューティング ノード VM で Linux HPC アプリケーションを実行する機能をサポートしています。概要については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
 
 
 ## 前提条件
 
-* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure Marketplace にある Azure PowerShell スクリプトと HPC Pack イメージを使用して、Azure に HPC Pack クラスターと Linux コンピューティング ノードをデプロイするための前提条件と手順については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードを使用開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
-
-    Windows Server 2012 R2 ヘッド ノードおよび 4 つの Large サイズ (A3) CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイする際に、スクリプトと一緒に使用することができる XML 構成ファイルのサンプルを次に示します。該当する値は、実際のサブスクリプションとサービス名に置き換えてください。
-
-    ```
-    <?xml version="1.0" encoding="utf-8" ?>
-    <IaaSClusterConfig>
-      <Subscription>
-        <SubscriptionName>Subscription-1</SubscriptionName>
-        <StorageAccount>mystorageaccount</StorageAccount>
-      </Subscription>
-      <Location>West US</Location>  
-      <VNet>
-        <VNetName>MyVNet</VNetName>
-        <SubnetName>Subnet-1</SubnetName>
-      </VNet>
-      <Domain>
-        <DCOption>HeadNodeAsDC</DCOption>
-        <DomainFQDN>hpclab.local</DomainFQDN>
-      </Domain>
-      <Database>
-        <DBOption>LocalDB</DBOption>
-      </Database>
-      <HeadNode>
-        <VMName>CentOS66HN</VMName>
-        <ServiceName>MyHPCService</ServiceName>
-        <VMSize>Large</VMSize>
-        <EnableRESTAPI />
-        <EnableWebPortal />
-      </HeadNode>
-      <LinuxComputeNodes>
-        <VMNamePattern>CentOS66LN-%00%</VMNamePattern>
-        <ServiceName>MyLnxCNService</ServiceName>
-        <VMSize>Large</VMSize>
-        <NodeCount>4</NodeCount>
-        <ImageName>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-66-20150325</ImageName>
-      </LinuxComputeNodes>
-    </IaaSClusterConfig>    
-```
+* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成ファイルを確認して、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L (A3) サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。必要に応じて、環境に合わせて変更してください。
 
 
-* **NAMD ソフトウェアおよびチュートリアル ファイル** - [NAMD](http://www.ks.uiuc.edu/Research/namd/) サイトから Linux 用 NAMD ソフトウェアをダウンロードします。この記事は、NAMD バージョン 2.10 に基づいており、[Linux x86\_64 (イーサネット搭載の 64 ビット Intel/AMD)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) アーカイブを使用しています。このアーカイブを使用することで、クラスター ネットワークの複数の Linux コンピューティング ノードで NAMD を実行することができます。また、[NAMD チュートリアル ファイル](http://www.ks.uiuc.edu/Training/Tutorials/#namd)をダウンロードしてください。クラスター ヘッド ノードにアーカイブとチュートリアル サンプルを抽出する手順は、この記事の後の方に説明しています。
+* **NAMD ソフトウェアおよびチュートリアル ファイル** - [NAMD](http://www.ks.uiuc.edu/Research/namd/) サイトから Linux 用 NAMD ソフトウェアをダウンロードします (要登録)。この記事は、NAMD バージョン 2.10 に基づいており、[Linux x86\_64 (イーサネット搭載の 64 ビット Intel/AMD)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) アーカイブを使用しています。このアーカイブを使用することで、クラスター ネットワークの複数の Linux コンピューティング ノードで NAMD を実行することができます。また、[NAMD チュートリアル ファイル](http://www.ks.uiuc.edu/Training/Tutorials/#namd)をダウンロードしてください。ダウンロードするのは .tar ファイルであるため、クラスター ヘッド ノード上でファイルを抽出するための Windows ツールが必要になります。この記事の後半の指示に従って、この作業を行ってください。
 
 * **VMD (省略可能)** - NAMD ジョブの結果を確認するには、使用するコンピューターに分子視覚化プログラム [VMD](http://www.ks.uiuc.edu/Research/vmd/) をダウンロードしインストールします。現行バージョンは 1.9.2 です。作業を開始するには、VMD ダウンロード サイトを参照してください。
 
@@ -104,6 +64,8 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。この記事の例では、hpclab\\hpcuser という名前のドメイン ユーザーを作成することを前提とします。
 
+3. クラスター ユーザーとして、HPC Pack クラスターにドメイン ユーザーを追加します。「[ユーザーと管理者の追加または削除](https://technet.microsoft.com/library/ff919330.aspx)」を参照してください。
+
 2.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。例については、この記事の最後にあるサンプル ファイルを参照してください。
 
     ```
@@ -127,7 +89,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ## Linux ノード用にファイル共有をセットアップする
 
-ヘッド ノード上のフォルダーに対して標準の SMB 共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」に説明されているファイル共有オプションと手順を参照してください(CentOS 6.6 Linux ノードでは現在時点で、同様の機能を提供する Azure File Service がサポートされていないので、この記事ではヘッド ノードに共有フォルダーをマウントすることをお勧めしています。Azure File 共有のマウントについては、「[Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。)
+SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」に説明されているファイル共有オプションと手順を参照してくださいヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。現在、Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../storage/storage-how-to-use-files-linux.md)」を参照してください。
 
 1.	ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。この例では、\\\CentOS66HN\\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
 
@@ -146,45 +108,15 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 >[AZURE.NOTE]2 番目のコマンドの "`" 記号は、PowerShell のエスケープ記号です。"`," は "," (コンマ) がコマンドの一部であることを意味します。
 
 
-## NAMD ジョブを実行する準備
+## NAMD ジョブを実行する Bash スクリプトを作成する
 
- NAMD ジョブは、NAMD プロセスの開始時に、使用するノード数を把握するために、**charmrun** 用の *nodelist* ファイルを必要とします。nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する Bash スクリプトを作成します。NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
+NAMD ジョブは、NAMD プロセスの開始時に使用するノード数を決定するために、**charmrun** 用の *nodelist* ファイルを必要とします。nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する Bash スクリプトを作成します。NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
 
-### 環境変数と nodelist ファイル
-ノードとコアに関する情報は $CCP\_NODES\_CORES 環境変数内にあります。この環境変数は、ジョブのアクティブ化の際に、HPC Pack ヘッド ノードにより自動的に設定されます。$CCP\_NODES\_CORES 変数の形式は次のとおりです。
-
-```
-<Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>…
-```
-
-これには、ノードの総数、ノード名、およびジョブに割り当てられた各ノード上のコア数が一覧表示されます。たとえば、ジョブを実行する上で 10 個のコアが必要である場合、$CCP\_NODES\_CORES の値は次のようになります。
-
-```
-3 CENTOS66LN-00 4 CENTOS66LN-01 4 CENTOS66LN-03 2
-```
-
-スクリプトによって生成される nodelist ファイル内の情報を次に示します。
-
-```
-group main
-host <Name of node1> ++cpus <Cores of node1>
-host <Name of node2> ++cpus <Cores of node2>
-…
-```
-
-次に例を示します。
-
-```
-group main
-host CENTOS66LN-00 ++cpus 4
-host CENTOS66LN-01 ++cpus 4
-host CENTOS66LN-03 ++cpus 2
-```
-### nodelist ファイルを作成する Bash スクリプト
-
-任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されているフォルダーに次の Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。完全な例がこの記事の最後にあるサンプル ファイルにあります。この Bash スクリプトは次のことを行います。
+任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されているフォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。この記事の最後にあるサンプル ファイルのサンプルを単にコピーしてもかまいません。
 
 >[AZURE.TIP] Linux 改行 (LF のみ、CR LF は対象外) を使用したテキスト ファイルとして、スクリプトを保存します。これにより、スクリプトは Linux ノード上で適切に動作します。
+
+この bash スクリプトの動作の詳細については、以下に示します。概念実証を行い、NAMD ジョブを実行するだけであれば、ファイル共有に hpccharmrun.sh スクリプトを保存して、「[NAMD ジョブの送信](#submit-a-namd-job)」の項目に移動してください。
 
 1.	いくつかの変数を定義します。
 
@@ -202,14 +134,24 @@ host CENTOS66LN-03 ++cpus 2
     ```
 
 2.	環境変数からノードに関する情報を取得します。$NODESCORES は $CCP\_NODES\_CORES からの分割ワードの一覧を格納します。$COUNT は $NODESCORES のサイズです。
-
     ```
     # Get node information from the environment variables
-    # CCP_NODES_CORES=3 CENTOS66LN-00 4 CENTOS66LN-01 4 CENTOS66LN-03 4
     NODESCORES=(${CCP_NODES_CORES})
     COUNT=${#NODESCORES[@]}
+    ```    
+    
+    $CCP\_NODES\_CORES 変数の形式は次のとおりです。
+
+    ```
+    <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>…
     ```
 
+    これには、ノードの総数、ノード名、およびジョブに割り当てられた各ノード上のコア数が一覧表示されます。たとえば、ジョブを実行する上で 10 個のコアが必要である場合、$CCP\_NODES\_CORES の値は次のようになります。
+
+    ```
+    3 CENTOS66LN-00 4 CENTOS66LN-01 4 CENTOS66LN-03 2
+    ```
+        
 3.	$CCP\_NODES\_CORES 変数が設定されていない場合は、**charmrun** を直接開始します(Linux ノードでこのスクリプトを直接実行する場合に限ります)。
 
     ```
@@ -258,13 +200,33 @@ host CENTOS66LN-03 ++cpus 2
     exit ${RTNSTS}
     ```
 
+
+
+スクリプトによって生成される nodelist ファイル内の情報を次に示します。
+
+```
+group main
+host <Name of node1> ++cpus <Cores of node1>
+host <Name of node2> ++cpus <Cores of node2>
+…
+```
+
+次に例を示します。
+
+```
+group main
+host CENTOS66LN-00 ++cpus 4
+host CENTOS66LN-01 ++cpus 4
+host CENTOS66LN-03 ++cpus 2
+```
+
 ## NAMD ジョブの送信
 
 これで、HPC クラスター マネージャーで NAMD ジョブを送信する準備が整いました。
 
 1.	クラスター ヘッド ノードに接続し、HPC クラスター マネージャーを開始します。
 
-2.  **[ノード管理]** で、Linux コンピューティング ノードが **オンライン**状態にあることを確認します。オンライン状態にない場合は、その計算ノードを選択し、**[オンラインにする]** をクリックします。
+2.  **[リソース管理]** で、Linux コンピューティング ノードが**オンライン**状態にあることを確認します。オンライン状態にない場合は、その計算ノードを選択し、**[オンラインにする]** をクリックします。
 
 2.  **[ジョブ管理]** で、**[新しいジョブ]** をクリックします。
 
@@ -276,9 +238,14 @@ host CENTOS66LN-03 ++cpus 2
 
     ![ジョブ リソース][job_resources]
 
-5.	**[タスクの詳細と I/O リダイレクト]** ページで、ジョブに新しいタスクを追加し、次の値を設定します。
+5. 左側のナビゲーションで **[タスクの編集]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。
+
+
+6. **[タスクの詳細と I/O リダイレクト]** ページで、次の値を設定します。
 
     * **コマンドライン** - `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
+
+    >[AZURE.TIP] 上記のコマンドラインは改行なしの単一のコマンドです。**[コマンドライン]** の下には、折り返され複数行で表示されます。
 
     * **作業ディレクトリ** - /namd2
 
@@ -309,6 +276,79 @@ host CENTOS66LN-03 ++cpus 2
     ![ジョブの結果][vmd_view]
 
 ## サンプル ファイル
+
+### PowerShell スクリプトによるクラスター デプロイ用の XML 構成ファイルのサンプル
+
+```
+<?xml version="1.0" encoding="utf-8" ?>
+<IaaSClusterConfig>
+  <Subscription>
+    <SubscriptionName>Subscription-1</SubscriptionName>
+    <StorageAccount>mystorageaccount</StorageAccount>
+  </Subscription>
+      <Location>West US</Location>  
+  <VNet>
+    <VNetName>MyVNet</VNetName>
+    <SubnetName>Subnet-1</SubnetName>
+  </VNet>
+  <Domain>
+    <DCOption>HeadNodeAsDC</DCOption>
+    <DomainFQDN>hpclab.local</DomainFQDN>
+  </Domain>
+  <Database>
+    <DBOption>LocalDB</DBOption>
+  </Database>
+  <HeadNode>
+    <VMName>CentOS66HN</VMName>
+    <ServiceName>MyHPCService</ServiceName>
+    <VMSize>Large</VMSize>
+    <EnableRESTAPI />
+    <EnableWebPortal />
+  </HeadNode>
+  <LinuxComputeNodes>
+    <VMNamePattern>CentOS66LN-%00%</VMNamePattern>
+    <ServiceName>MyLnxCNService</ServiceName>
+     <VMSize>Large</VMSize>
+     <NodeCount>4</NodeCount>
+    <ImageName>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-66-20150325</ImageName>
+  </LinuxComputeNodes>
+</IaaSClusterConfig>    
+```
+
+### サンプル cred.xml ファイル
+
+```
+<ExtendedData>
+  <PrivateKey>-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAxJKBABhnOsE9eneGHvsjdoXKooHUxpTHI1JVunAJkVmFy8JC
+qFt1pV98QCtKEHTC6kQ7tj1UT2N6nx1EY9BBHpZacnXmknpKdX4Nu0cNlSphLpru
+lscKPR3XVzkTwEF00OMiNJVknq8qXJF1T3lYx3rW5EnItn6C3nQm3gQPXP0ckYCF
+Jdtu/6SSgzV9kaapctLGPNp1Vjf9KeDQMrJXsQNHxnQcfiICp21NiUCiXosDqJrR
+AfzePdl0XwsNngouy8t0fPlNSngZvsx+kPGh/AKakKIYS0cO9W3FmdYNW8Xehzkc
+VzrtJhU8x21hXGfSC7V0ZeD7dMeTL3tQCVxCmwIDAQABAoIBAQCve8Jh3Wc6koxZ
+qh43xicwhdwSGyliZisoozYZDC/ebDb/Ydq0BYIPMiDwADVMX5AqJuPPmwyLGtm6
+9hu5p46aycrQ5+QA299g6DlF+PZtNbowKuvX+rRvPxagrTmupkCswjglDUEYUHPW
+05wQaNoSqtzwS9Y85M/b24FfLeyxK0n8zjKFErJaHdhVxI6cxw7RdVlSmM9UHmah
+wTkW8HkblbOArilAHi6SlRTNZG4gTGeDzPb7fYZo3hzJyLbcaNfJscUuqnAJ+6pT
+iY6NNp1E8PQgjvHe21yv3DRoVRM4egqQvNZgUbYAMUgr30T1UoxnUXwk2vqJMfg2
+Nzw0ESGRAoGBAPkfXjjGfc4HryqPkdx0kjXs0bXC3js2g4IXItK9YUFeZzf+476y
+OTMQg/8DUbqd5rLv7PITIAqpGs39pkfnyohPjOe2zZzeoyaXurYIPV98hhH880uH
+ZUhOxJYnlqHGxGT7p2PmmnAlmY4TSJrp12VnuiQVVVsXWOGPqHx4S4f9AoGBAMn/
+vuea7hsCgwIE25MJJ55FYCJodLkioQy6aGP4NgB89Azzg527WsQ6H5xhgVMKHWyu
+Q1snp+q8LyzD0i1veEvWb8EYifsMyTIPXOUTwZgzaTTCeJNHdc4gw1U22vd7OBYy
+nZCU7Tn8Pe6eIMNztnVduiv+2QHuiNPgN7M73/x3AoGBAOL0IcmFgy0EsR8MBq0Z
+ge4gnniBXCYDptEINNBaeVStJUnNKzwab6PGwwm6w2VI3thbXbi3lbRAlMve7fKK
+B2ghWNPsJOtppKbPCek2Hnt0HUwb7qX7Zlj2cX/99uvRAjChVsDbYA0VJAxcIwQG
+TxXx5pFi4g0HexCa6LrkeKMdAoGAcvRIACX7OwPC6nM5QgQDt95jRzGKu5EpdcTf
+g4TNtplliblLPYhRrzokoyoaHteyxxak3ktDFCLj9eW6xoCZRQ9Tqd/9JhGwrfxw
+MS19DtCzHoNNewM/135tqyD8m7pTwM4tPQqDtmwGErWKj7BaNZARUlhFxwOoemsv
+R6DbZyECgYEAhjL2N3Pc+WW+8x2bbIBN3rJcMjBBIivB62AwgYZnA2D5wk5o0DKD
+eesGSKS5l22ZMXJNShgzPKmv3HpH22CSVpO0sNZ6R+iG8a3oq4QkU61MT1CfGoMI
+a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
+-----END RSA PRIVATE KEY-----</PrivateKey>
+  <PublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkoEAGGc6wT16d4Ye+yN2hcqigdTGlMcjUlW6cAmRWYXLwkKoW3WlX3xAK0oQdMLqRDu2PVRPY3qfHURj0EEellpydeaSekp1fg27Rw2VKmEumu6Wxwo9HddXORPAQXTQ4yI0lWSerypckXVPeVjHetbkSci2foLedCbeBA9c/RyRgIUl227/pJKDNX2Rpqly0sY82nVWN/0p4NAyslexA0fGdBx+IgKnbU2JQKJeiwOomtEB/N492XRfCw2eCi7Ly3R8+U1KeBm+zH6Q8aH8ApqQohhLRw71bcWZ1g1bxd6HORxXOu0mFTzHbWFcZ9ILtXRl4Pt0x5Mve1AJXEKb username@servername;</PublicKey>
+</ExtendedData>
+```
 
 ### サンプル hpccharmrun.sh スクリプト
 
@@ -361,40 +401,7 @@ exit ${RTNSTS}
 ```
 
  
-### サンプル cred.xml ファイル
 
-```
-<ExtendedData>
-  <PrivateKey>-----BEGIN RSA PRIVATE KEY-----
-MIIEpQIBAAKCAQEAxJKBABhnOsE9eneGHvsjdoXKooHUxpTHI1JVunAJkVmFy8JC
-qFt1pV98QCtKEHTC6kQ7tj1UT2N6nx1EY9BBHpZacnXmknpKdX4Nu0cNlSphLpru
-lscKPR3XVzkTwEF00OMiNJVknq8qXJF1T3lYx3rW5EnItn6C3nQm3gQPXP0ckYCF
-Jdtu/6SSgzV9kaapctLGPNp1Vjf9KeDQMrJXsQNHxnQcfiICp21NiUCiXosDqJrR
-AfzePdl0XwsNngouy8t0fPlNSngZvsx+kPGh/AKakKIYS0cO9W3FmdYNW8Xehzkc
-VzrtJhU8x21hXGfSC7V0ZeD7dMeTL3tQCVxCmwIDAQABAoIBAQCve8Jh3Wc6koxZ
-qh43xicwhdwSGyliZisoozYZDC/ebDb/Ydq0BYIPMiDwADVMX5AqJuPPmwyLGtm6
-9hu5p46aycrQ5+QA299g6DlF+PZtNbowKuvX+rRvPxagrTmupkCswjglDUEYUHPW
-05wQaNoSqtzwS9Y85M/b24FfLeyxK0n8zjKFErJaHdhVxI6cxw7RdVlSmM9UHmah
-wTkW8HkblbOArilAHi6SlRTNZG4gTGeDzPb7fYZo3hzJyLbcaNfJscUuqnAJ+6pT
-iY6NNp1E8PQgjvHe21yv3DRoVRM4egqQvNZgUbYAMUgr30T1UoxnUXwk2vqJMfg2
-Nzw0ESGRAoGBAPkfXjjGfc4HryqPkdx0kjXs0bXC3js2g4IXItK9YUFeZzf+476y
-OTMQg/8DUbqd5rLv7PITIAqpGs39pkfnyohPjOe2zZzeoyaXurYIPV98hhH880uH
-ZUhOxJYnlqHGxGT7p2PmmnAlmY4TSJrp12VnuiQVVVsXWOGPqHx4S4f9AoGBAMn/
-vuea7hsCgwIE25MJJ55FYCJodLkioQy6aGP4NgB89Azzg527WsQ6H5xhgVMKHWyu
-Q1snp+q8LyzD0i1veEvWb8EYifsMyTIPXOUTwZgzaTTCeJNHdc4gw1U22vd7OBYy
-nZCU7Tn8Pe6eIMNztnVduiv+2QHuiNPgN7M73/x3AoGBAOL0IcmFgy0EsR8MBq0Z
-ge4gnniBXCYDptEINNBaeVStJUnNKzwab6PGwwm6w2VI3thbXbi3lbRAlMve7fKK
-B2ghWNPsJOtppKbPCek2Hnt0HUwb7qX7Zlj2cX/99uvRAjChVsDbYA0VJAxcIwQG
-TxXx5pFi4g0HexCa6LrkeKMdAoGAcvRIACX7OwPC6nM5QgQDt95jRzGKu5EpdcTf
-g4TNtplliblLPYhRrzokoyoaHteyxxak3ktDFCLj9eW6xoCZRQ9Tqd/9JhGwrfxw
-MS19DtCzHoNNewM/135tqyD8m7pTwM4tPQqDtmwGErWKj7BaNZARUlhFxwOoemsv
-R6DbZyECgYEAhjL2N3Pc+WW+8x2bbIBN3rJcMjBBIivB62AwgYZnA2D5wk5o0DKD
-eesGSKS5l22ZMXJNShgzPKmv3HpH22CSVpO0sNZ6R+iG8a3oq4QkU61MT1CfGoMI
-a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
------END RSA PRIVATE KEY-----</PrivateKey>
-  <PublicKey>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkoEAGGc6wT16d4Ye+yN2hcqigdTGlMcjUlW6cAmRWYXLwkKoW3WlX3xAK0oQdMLqRDu2PVRPY3qfHURj0EEellpydeaSekp1fg27Rw2VKmEumu6Wxwo9HddXORPAQXTQ4yI0lWSerypckXVPeVjHetbkSci2foLedCbeBA9c/RyRgIUl227/pJKDNX2Rpqly0sY82nVWN/0p4NAyslexA0fGdBx+IgKnbU2JQKJeiwOomtEB/N492XRfCw2eCi7Ly3R8+U1KeBm+zH6Q8aH8ApqQohhLRw71bcWZ1g1bxd6HORxXOu0mFTzHbWFcZ9ILtXRl4Pt0x5Mve1AJXEKb username@servername;</PublicKey>
-</ExtendedData>
-```
 
 
 
@@ -408,4 +415,4 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
 [task_details]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/vmd_view.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

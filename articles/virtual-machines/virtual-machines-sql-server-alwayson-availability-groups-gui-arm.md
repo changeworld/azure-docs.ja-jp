@@ -54,7 +54,7 @@
 
 - Azure アカウントを既に所有している。お持ちでない場合は、[試用版アカウントにサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 
-- GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+- GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
 - AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
@@ -70,7 +70,7 @@
 
 - ドメイン コント ローラーのいずれかと接続し、次いで SQL Server のいずれかと接続する
 
-## リソース マネージャーのデプロイメント モデルでギャラリーから AlwaysOn 可用性グループをプロビジョニングする
+## リソース マネージャーのデプロイ モデルでギャラリーから AlwaysOn 可用性グループをプロビジョニングする
 
 Azure では、ソリューション全体のギャラリー イメージを提供します。テンプレートを見つけるには、次を実行します。
 
@@ -78,7 +78,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 1.	Azure ポータルで **[+新規]** をクリックします。 ポータルで [新規] ブレードが開きます。 
 1.	[新規] ブレードで **[AlwaysOn]** を検索します。![AlwaysOn テンプレートを見つける](./media/virtual-machines-sql-server-alwayson-availability-groups-gui-arm/16-findalwayson.png)
 1.	検索結果から **[SQL Server AlwaysOn クラスター]** を見つけます。![AlwaysOn テンプレート](./media/virtual-machines-sql-server-alwayson-availability-groups-gui-arm/17-alwaysontemplate.png)
-1.	**[デプロイメント モデルの選択]** で **[リソース マネージャー]** を選択します。
+1.	**[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択します。
 
 ### 基本
 
@@ -225,9 +225,9 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
  
 Azure ポータルによって、リソース グループとすべてのリソースが作成されます。
 
-##デプロイメントの監視
+##デプロイの監視
 
-Azure ポータルでデプロイメントの進捗状況を監視できます。デプロイメントを表すアイコンが、Azure ポータルのダッシュボードに自動的に固定されます。
+Azure ポータルでデプロイの進捗状況を監視できます。デプロイを表すアイコンが、Azure ポータルのダッシュボードに自動的に固定されます。
 
 ![Azure ダッシュ ボード](./media/virtual-machines-sql-server-alwayson-availability-groups-gui-arm/11-deploydashboard.png)
 
@@ -237,7 +237,7 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 プライマリ ドメイン コントローラーに RDP 接続するには、次の手順に従います。
 
-1.	Azure ポータルのダッシュ ボードで、デプロイメントが成功したことを確認します。 
+1.	Azure ポータルのダッシュ ボードで、デプロイが成功したことを確認します。 
 
 1.	**[リソース]** をクリックします。
 
@@ -260,4 +260,4 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、AlwaysOn 可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

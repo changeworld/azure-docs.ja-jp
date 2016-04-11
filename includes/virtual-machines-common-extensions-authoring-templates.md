@@ -2,7 +2,7 @@
 
 Azure Resource Manager テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure Resource Manager テンプレートの概要については、次の記事をご覧ください。
 
-[リソース グループの概要](../resource-group-overview.md)
+[リソース グループの概要](../articles/resource-group-overview.md)
 
 ## VM 拡張機能のサンプル テンプレート スニペット
 VM 拡張機能を Azure Resource Manager のテンプレートの一部としてデプロイするには、テンプレートで拡張機能の構成を宣言で指定する必要があります。拡張機能の構成の指定形式を次に示します。
@@ -33,4 +33,4 @@ VM 拡張機能を Azure Resource Manager のテンプレートの一部とし�
 
 Azure VM 拡張機能は、マイクロソフトと信頼されたサード パーティの発行元によって発行されています。それぞれの拡張機能は、その発行元、種類、typeHandlerVersion によって一意に識別されます。これらは、次の方法で確認できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

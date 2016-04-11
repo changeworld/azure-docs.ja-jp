@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/18/2015" 
+	ms.date="03/28/2016"
 	ms.author="tarcher"/>
 
 # Azure Active Directory と Visual Studio 接続済みサービスの概要 (Web API プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-webapi-getting-started.md)
-> - [What Happened](vs-active-directory-webapi-what-happened.md)
+> - [作業の開始](vs-active-directory-webapi-getting-started.md)
+> - [変更内容](vs-active-directory-webapi-what-happened.md)
 
 ##コントローラーへのアクセスに対して認証を要求する
  
@@ -29,4 +29,4 @@
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

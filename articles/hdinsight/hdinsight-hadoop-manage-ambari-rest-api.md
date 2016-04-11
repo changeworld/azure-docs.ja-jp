@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="03/29/2016"
    ms.author="larryfr"/>
 
 #Ambari REST API を使用した HDInsight クラスターの管理
@@ -40,7 +40,15 @@ Ambari は既定で Linux ベースの HDInsight クラスターに付属して�
 
 HDInsight の Ambari REST API のベース URI は https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME です。ここで、__CLUSTERNAME__ はクラスターの名前です。
 
-> [AZURE.IMPORTANT] HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
+> [AZURE.IMPORTANT] URI (CLUSTERNAME.azurehdinsight.net,) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、他に URI が出現する部分では大文字と小文字が区別されます。たとえば、クラスター名が MyCluster であれば、有効な URI は次のようになります。
+>
+> `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster` `https://MyCluster.azurehdinsight.net/api/v1/clusters/MyCluster`
+>
+> 名前の 2 番目の出現で大文字/小文字の指定が正しくないため、次の URI はエラーを返します。
+>
+> `https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster` `https://MyCluster.azurehdinsight.net/api/v1/clusters/mycluster`
+
+HDInsight の Ambari に接続するには、HTTPS が必要です。クラスターの作成時に指定した管理者アカウント名 (既定値は __admin__) とパスワードを使用して、Ambari を認証する必要もあります。
 
 cURL を使用して REST API に対する GET 要求を実行する例を次に示します。
 
@@ -129,10 +137,121 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
     たとえば、wasb://example/data/filename.txt のように HDInsight にファイルが表示されるようにするには、__BLOBPATH__ に `example/data/filename.txt` を指定します。
 
+##例: Ambari 構成の更新
+
+1. Ambari で "desired configuration (望ましい構成)" として格納される現在の構成を取得します。
+
+        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_configs"
+        
+    これは、クラスターにインストールされているコンポーネントの現在の構成 (_タグ_値で特定) を含む JSON ドキュメントを返します。たとえば、次は Spark タイプのクラスターから返されるデータからの抜粋です。
+    
+        "spark-metrics-properties" : {
+            "tag" : "INITIAL",
+            "user" : "admin",
+            "version" : 1
+        },
+        "spark-thrift-fairscheduler" : {
+            "tag" : "INITIAL",
+            "user" : "admin",
+            "version" : 1
+        },
+        "spark-thrift-sparkconf" : {
+            "tag" : "INITIAL",
+            "user" : "admin",
+            "version" : 1
+        }
+
+    この一覧から、コンポーネントの名前をコピーする必要があります (たとえば、__spark\_thrift\_sparkconf__ と__タグ__値)。
+    
+2. 次のコマンドを利用し、コンポーネントとタグの構成を取得します。構成を取得するコンポーネントとタグで __spark-thrift-sparkconf__ と __INITIAL__ を置換します。
+
+        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
+    
+    Curl が JSON ドキュメントを取得します。jq が使用されていくつかの変更が行われ、構成値の追加/変更に使用できるテンプレートが作成されます。具体的には次の操作が行われます。
+    
+    * 文字列 "version" と __newtag__ に保存されている日付を含む一意の値が作成されます。
+    * 新しい望ましい構成のルート ドキュメントが作成されます。
+    * .items array のコンテンツが取得され、__desired\_config__ 要素の下でそれが追加されます。
+    * 新しい構成の送信で必要ないため、__href__、__version__、__Config__ 要素が削除されます。
+    * 新しい __tag__ 要素が追加され、その値が __version#################__ に設定されます。数値部分は現在の日付に基づきます。構成ごとに一意のタグを与える必要があります。
+    
+    最後にデータが __newconfig.json__ ドキュメントに保存されます。ドキュメントの構造は次の構造に似たものになります。
+    
+        {
+            "Clusters": {
+                "desired_config": {
+                "tag": "version1459260185774265400",
+                "type": "spark-thrift-sparkconf",
+                "properties": {
+                    ....
+                 },
+                 "properties_attributes": {
+                     ....
+                 }
+            }
+        }
+
+3. __newconfig.json__ ドキュメントを開き、__properties__ オブジェクトの値を変更/追加します。たとえば、__"spark.yarn.am.memory"__ の値を __"1g"__ から __"3g"__ に変更し、値を __"256m"__ として __"spark.kryoserializer.buffer.max"__ の新しい要素を追加します。
+
+        "spark.yarn.am.memory": "3g",
+        "spark.kyroserializer.buffer.max": "256m",
+
+    変更が完了したら、ファイルを保存します。
+
+4. 次を利用し、更新した構成を Ambari に送信します。
+
+        cat newconfig.json | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME"
+        
+    このコマンドは __newconfig.json__ ファイルのコンテンツを curl 要求にパイプ処理します。curl 要求がそれを新しい望ましい構成としてクラスターに送信します。これで JSON ドキュメントが返されます。このドキュメントの __versionTag__ 要素は、送信したバージョンに一致する必要があります。__configs__ オブジェクトには、要求した構成変更が含まれます。
+
+###例: サービス コンポーネントの再起動
+
+この時点で Ambari Web UI に、新しい構成を有効にするには Spark サービスを再起動する必要がある旨が表示されます。次の手順でサービスを再起動します。注意深く見ると、次の指示があります。
+
+1. 次を利用し、Spark サービスのメンテナンス モードを有効にします。
+
+        echo '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK"
+
+    これはメンテナンス モードをオンにするサーバー (`echo` ステートメントに含まれています) に JSON ドキュメントを送信します。次の要求を利用すれば、サービスがメンテナンス モードに入っていることを確認できます。
+    
+        curl -u admin:PASSWORD -H "X-Requested-By: ambari" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK" | jq .ServiceInfo.maintenance_state
+        
+    これは値 `"ON"` を返します。
+
+3. 次に、次を利用し、サービスをオフにします。
+
+        echo '{"RequestInfo": {"context" :"Stopping the Spark service"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK"
+        
+    次のような応答を受け取ります。
+    
+        {
+            "href" : "http://10.0.0.18:8080/api/v1/clusters/CLUSTERNAME/requests/29",
+            "Requests" : {
+                "id" : 29,
+                "status" : "Accepted"
+            }
+        }
+    
+    この URI で返される `href` 値はクラスター ノードの内部 IP アドレスを利用します。クラスターの外部からこれを利用するには、`10.0.0.18:8080' 部分をクラスターの FQDN に置換します。たとえば、次は要求の状態を取得します。
+    
+        curl -u admin:PASSWORD -H "X-Requested-By: ambari" "https://CLUSTERNAME/api/v1/clusters/CLUSTERNAME/requests/29" | jq .Requests.request_status
+    
+    この値が `"COMPLETED"` を返す場合、要求は完了しています。
+
+4. 前の要求が完了したら、次を利用し、サービスを開始します。
+
+        echo '{"RequestInfo": {"context" :"Restarting the Spark service"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}' | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK"
+
+    サービスが再起動すると、新しい構成設定が使用されます。
+
+5. 最後に、次を利用し、メンテナンス モードをオフにします。
+
+        echo '{"RequestInfo": {"context": "turning off maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}' | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK"
+
 ##次のステップ
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
 > [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

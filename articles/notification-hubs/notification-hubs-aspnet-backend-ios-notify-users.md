@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知
@@ -24,7 +24,7 @@
 
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
 
-> [AZURE.NOTE]このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。また、「[安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md)」チュートリアルの前提条件でもあります。バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](../mobile-services-javascript-backend-ios-push-notifications-app-users.md)をご覧ください。
+> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。また、「[安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md)」チュートリアルの前提条件でもあります。バックエンド サービスとして Mobile Apps を使用する場合は、「[iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
 
 
 
@@ -34,7 +34,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 1. 「[Notification Hubs の使用 (iOS)](notification-hubs-ios-get-started.md)」で作成した単一枠ビュー アプリケーションを開きます。
 
-	> [AZURE.NOTE]このセクションでは、プロジェクトの組織名は空で構成されていると想定しています。そうでない場合は、すべてのクラス名の前にその組織名を付けてください。
+	> [AZURE.NOTE] このセクションでは、プロジェクトの組織名は空で構成されていると想定しています。そうでない場合は、すべてのクラス名の前にその組織名を付けてください。
 
 2. Main.storyboard で、オブジェクト ライブラリから、以下のスクリーンショットに表示されているコンポーネントを追加します。
 
@@ -283,7 +283,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 		@end
 
-> [AZURE.NOTE]これは安全な認証スキームではないため、**createAndSetAuthenticationHeaderWithUsername:AndPassword**: の実装を登録クライアント クラス (OAuth、Active Directory など) によって読み取られる認証トークンを生成する特定の認証メカニズムで置き換えます。
+> [AZURE.NOTE] これは安全な認証スキームではないため、**createAndSetAuthenticationHeaderWithUsername:AndPassword**: の実装を登録クライアント クラス (OAuth、Active Directory など) によって読み取られる認証トークンを生成する特定の認証メカニズムで置き換えます。
 
 9. 次に、ViewController.m の `@implementation` セクションに以下のコードを追加します。これは、デバイス トークンと認証ヘッダーに関する設定の実装を追加するものです。
 
@@ -465,4 +465,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

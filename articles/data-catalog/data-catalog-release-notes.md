@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Data Catalog リリース ノート"
-   description="Azure Data Catalog の 2015 年 8 月 28 日パブリック プレビュー リリースのリリース ノート"
+   description="Azure Data Catalog のリリース ノートです。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="02/08/2016"
+   ms.date="03/30/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
@@ -50,7 +50,7 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 ### SQL Server Reporting Services への登録と接続
 
-Azure Data Catalog の初期プレビュー リリースでの SQL Server Reporting Services (SSRS) データ ソースのサポートは、ネイティブ モード サーバーのみに制限されます。SSRS の SharePoint モードでのサポートは、今後のリリースで追加される予定です。
+現在、SQL Server Reporting Services (SSRS) データ ソースのサポートは、ネイティブ モード サーバーのみに制限されます。SSRS の SharePoint モードでのサポートは、今後のリリースで追加される予定です。
 
 ### Excel でのデータ資産のオープン
 
@@ -88,4 +88,4 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0330_2016-->

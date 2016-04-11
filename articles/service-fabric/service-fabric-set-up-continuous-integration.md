@@ -15,9 +15,9 @@
    ms.date="01/27/2016"
    ms.author="cawa" />
 
-# Visual Studio Team Services (VSTS) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
+# Visual Studio Team Services を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
 
-この記事では、アプリケーションが自動的にビルド、パッケージ化、およびデプロイされるように、Visual Studio Team Services (VSTS) を使用して、Service Fabric アプリケーションの継続的インテグレーションをセットアップする手順について説明します。説明する手順では、毎回、クラスターを最初から作成し直すことに注意してください。
+この記事では、アプリケーションが自動的にビルド、パッケージ化、およびデプロイされるように、Visual Studio Team Services (VSTS) を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションをセットアップする手順について説明します。説明する手順では、毎回、クラスターを最初から作成し直すことに注意してください。
 
 このドキュメントは現在の手順を反映したものであり、今後変更される予定です。
 
@@ -52,7 +52,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
     b."Azure PowerShell" を見つけて、それをアンインストールします。
 
-    c.Azure PowerShell コマンド プロンプトを起動します。
+    c.PowerShell コマンド プロンプトを開きます。
 
     d.`Install-Module AzureRM` コマンドを使用して AzureRM モジュールをインストールします。
 
@@ -76,7 +76,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
     d.使用するサブスクリプションを検索します。
 
-    e.コマンド `Select-AzureRmSubscription -SubscriptionId <id for your subscription>` を実行します。
+    e.コマンド `Select-AzureRmSubscription -SubscriptionId <ID for your subscription>` を実行します。
 
 ### サービス プリンシパルの作成
 
@@ -100,11 +100,11 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 スクリプトが完了すると、次の 3 つの値が出力されます。これらの値はビルド変数として使用するので、メモしておいてください。
 
-*  `ServicePrincipalId`
-*  `ServicePrincipalTenantId`
-*  `ServicePrincipalSubscriptionId`
+ - `ServicePrincipalId`
+ - `ServicePrincipalTenantId`
+ - `ServicePrincipalSubscriptionId`
 
-### 証明書を作成し、新しい Azure Key Vault にアップロードする
+### 証明書を作成し、新しい Azure Key Vault のインスタンスにアップロードする
 
 >[AZURE.NOTE] このサンプル スクリプトは、自己署名証明書を生成します。これは安全なプラクティスではなく、実験の場合にだけ許容できます。代わりに、組織のガイドラインに従って、正規の証明書を取得してください。
 
@@ -119,13 +119,13 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 | SecureCertificatePassword | 任意の値。このパラメーターは、ビルド コンピューターに証明書をインポートするときに使用されます。 |
 | KeyVaultResourceGroupName | 任意の値。ただし、クラスターに使用するリソース グループ名は使用しないでください。 |
 | KeyVaultName | 任意の値。 |
-| PfxFileOutputPath|任意の値。このファイルを使用して、ビルド コンピューターに証明書をインポートします。 |
+| PfxFileOutputPath| 任意の値。このファイルを使用して、ビルド コンピューターに証明書をインポートします。 |
 
 スクリプトが完了すると、次の 3 つの値が出力されます。これらの値はビルド変数として使用するので、メモしておいてください。
 
-* `ServiceFabricCertificateThumbprint`
-* `ServiceFabricKeyVaultId`
-* `ServiceFabricCertificateSecretId`
+ - `ServiceFabricCertificateThumbprint`
+ - `ServiceFabricKeyVaultId`
+ - `ServiceFabricCertificateSecretId`
 
 ## ビルド コンピューターをセットアップする
 
@@ -143,7 +143,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 4. **Visual Studio 2015** を検索します。
 
-5. **[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順に選択します。
+5. **[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 6. **[Windows Server 2012 R2 での Visual Studio Enterprise 2015 Update 1 と Azure SDK 2.8]** イメージを選択します。
 
@@ -151,23 +151,23 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 7.	ダイアログ ボックスの指示に従って VM を作成します
 
-### Service Fabric SDK をインストールする
+### Service Fabric SDK をインストールします。
 
 コンピューターに [Service Fabric SDK](https://azure.microsoft.com/campaigns/service-fabric/) をインストールします。
 
 ### Azure PowerShell をインストールするには
 
-Azure PowerShell をインストールするには、前のセクション「**Azure PowerShell にインストールしてサインインする**」の手順に従ってください。「**Azure PowerShell にサインインします**」の手順は省略します。
+Azure PowerShell をインストールするには、前のセクション「Azure PowerShell をインストールしてサインインする」の手順に従ってください。「Azure PowerShell にサインインします」の手順は省略します。
 
 ### ローカル サービス アカウントに Azure PowerShell モジュールを登録します。
 
->[AZURE.NOTE] この操作は、ビルド エージェントを起動する*前に*行います。そうしないと、新しい環境変数が取得されません。
+>[AZURE.NOTE] ビルド エージェントを開始する*前*にこれを行います。そうしないと、新しい環境変数が反映されません。
 
-1. Win + R キーを押して、「**regedit**」と入力し、Enter キーを押します。
+1. Windows ロゴ キーと R キーを押し、「**regedit**」と入力して Enter キーを押します。
 
-2. ノード `HKEY_Users\.Default\Environment` で右クリックし、**[新規]、[展開可能な文字列値]** の順に選択します。
+2. ノード `HKEY_Users\.Default\Environment` を右クリックし、**[新規]**、**[展開可能な文字列値]** の順に選択します。
 
-3. 名前として `PSModulePath` を入力し、値として `%PROGRAMFILES%\WindowsPowerShell\Modules` を入力します。`%PROGRAMFILES%` を、`PROGRAMFILES` 環境変数の値に置き換えます。
+3. 名前として「`PSModulePath`」と入力し、値として「`%PROGRAMFILES%\WindowsPowerShell\Modules`」と入力します。`%PROGRAMFILES%` は、`PROGRAMFILES` 環境変数の値に置き換えます。
 
 ### Automation の証明書をインポートする
 
@@ -184,7 +184,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 2.	証明書マネージャーを実行します。
 
-    a.Windows のコントロール パネルを開きます。[スタート] ボタンを右クリックし、**[コントロール パネル]** を選択します。
+    a.Windows でコントロール パネルを開きます。[スタート] ボタンを右クリックし、**[コントロール パネル]** を選択します。
 
     b.**証明書**を検索します。
 
@@ -198,29 +198,29 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
     c.証明書を右クリックして、**[すべてのタスク]**、**[秘密キーの管理]** の順に選択します。
 
-    d.**[追加]** ボタンを選択し、「**ローカル サービス**」と入力し、**[名前の確認]** をクリックします。
+    d.**[追加]** ボタンを選択し、「**ローカル サービス**」と入力し、**[名前の確認]** を選択します。
 
-    e.**[OK]** ボタンをクリックし、証明書マネージャーを閉じます。
+    e.**[OK]** を選択し、証明書マネージャーを閉じます。
 
-![](media/service-fabric-set-up-continuous-integration/windows-certificate-manager.png)
+ ![ローカル サービス アカウントのアクセス許可を付与するための手順のスクリーンショット](media/service-fabric-set-up-continuous-integration/windows-certificate-manager.png)
 
 ### ビルド エージェントを登録する
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
 
-    a.* **https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにログオンします。
+    a.****https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにサインインします。
 
     b.画面の右上隅にある歯車アイコンを選択します。
 
-    c.コントロール パネルで、**[エージェント プール]** タブを選択します。
+    c.**[エージェント プール]** タブを選択します。
 
     d.**[ダウンロード エージェント]** を選択し、agent.zip ファイルをダウンロードします。
 
     e.先ほど作成したビルド コンピューターに agent.zip をコピーします。
 
-    f.agent.zip をビルド コンピューター`C:\agent` (または短いパスの任意の場所) に解凍します。
+    f.agent.zip をビルド コンピューターの `C:\agent` (または短いパスの任意の場所) に解凍します。
 
-        >[AZURE.NOTE] If you plan on building ASP.NET 5 Web Services, it's recommended that you  choose the shortest name possible for this folder to avoid running into **PathTooLongExceptions** errors during deployment.
+    >[AZURE.NOTE] ASP.NET 5 Web サービスを使用する場合は、デプロイ中に **PathTooLongExceptions** エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。
 
 2.	管理者のコマンド プロンプトで、`C:\agent\ConfigureAgent.cmd` を実行します。スクリプトは次のパラメーターに対して入力を求めるメッセージを表示します。
 
@@ -229,12 +229,12 @@ Azure PowerShell をインストールするには、前のセクション「**A
 |エージェント名|既定値 `Agent-[machine name]` をそのまま使用します。|
 |TFS URL|チーム プロジェクトに `https://[your-VSTS-account-name].visualstudio.com` のような URL を入力します。|
 |エージェント プール|エージェント プールの名前を入力します(エージェント プールを作成していない場合は、既定値を使用します)。|
-|作業フォルダー|既定値をそのまま使用します。これは、ビルド エージェントによってアプリケーションが実際にビルドされるフォルダーです。注: ASP.NET 5 Web Services の構築を計画している場合は、デプロイ中に PathTooLongExceptions エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。|
-|Windows サービスとしてインストールしますか?|既定値は N です。値を「**Y**」に変更します。|
+|作業フォルダー|既定値をそのまま使用します。これは、ビルド エージェントによってアプリケーションが実際にビルドされるフォルダーです。ASP.NET 5 Web サービスを使用する場合は、デプロイ中に PathTooLongExceptions エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。|
+|Windows サービスとしてインストールしますか?|既定値は N です。値を **Y** に変更します。|
 |サービスを実行するユーザー アカウント|既定値 `NT AUTHORITY\LocalService` をそのまま使用します。|
 |既存のエージェントの構成を解除しますか?|既定値 **N** をそのまま使用します。|
 
-3.  資格情報を入力するように求められます。チーム プロジェクトに対する権限を持つ Microsoft アカウントの資格情報を入力します。
+3.  資格情報の指定を求められたら、チーム プロジェクトに対する権限を持つ Microsoft アカウントの資格情報を入力します。
 
 4.  ビルド エージェントが登録されていることを確認します。これを行うには、次の手順を実行します。
 
@@ -244,7 +244,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
     c.ビルド エージェントが一覧の中に表示され、緑色で強調表示されていることを確認します。赤色で強調表示されている場合は、ビルド エージェントで Team Services への接続に関する問題が発生しています。
 
-![](media/service-fabric-set-up-continuous-integration/vso-configured-agent.png)
+ ![ビルド エージェントの状態を示すスクリーンショット](media/service-fabric-set-up-continuous-integration/vso-configured-agent.png)
 
 
 ## ビルド定義を作成する
@@ -265,9 +265,9 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
     b.**[ビルド]** タブを選択します。
 
-    c.緑色の **+** 記号を選択して、新しいビルド定義を作成します。
+    c.緑色の **[+]** 記号を選択して、新しいビルド定義を作成します。
 
-    d.**[空]** を選択し、**[次へ]** ボタンをクリックします。
+    d.**[空]** を選択し、**[次へ]** を選択します。
 
     e.適切なリポジトリとブランチが選択されていることを確認します。
 
@@ -280,25 +280,24 @@ Azure PowerShell をインストールするには、前のセクション「**A
 |BuildConfiguration|リリース||○|
 |BuildPlatform|x64|||
 |ServicePrincipalPassword|CreateServicePrincipal.ps1 に渡したパスワードです。|○||
-|ServicePrincipalId|CreateServicePrincipal.ps1 の出力から|||
-|ServicePrincipalTenantId|CreateServicePrincipal.ps1 の出力から|||
-|ServicePrincipalSubscriptionId|CreateServicePrincipal.ps1 の出力から|||
-|ServiceFabricCertificateThumbprint|GenerateCertificate.ps1 の出力から|||
-|ServiceFabricKeyVaultId|GenerateCertificate.ps1 の出力から|||
-|ServiceFabricCertificateSecretId|GenerateCertificate.ps1 の出力から|||
+|ServicePrincipalId|CreateServicePrincipal.ps1 の出力から。|||
+|ServicePrincipalTenantId|CreateServicePrincipal.ps1 の出力から。|||
+|ServicePrincipalSubscriptionId|CreateServicePrincipal.ps1 の出力から。|||
+|ServiceFabricCertificateThumbprint|GenerateCertificate.ps1 の出力から。|||
+|ServiceFabricKeyVaultId|GenerateCertificate.ps1 の出力から。|||
+|ServiceFabricCertificateSecretId|GenerateCertificate.ps1 の出力から。|||
 |ServiceFabricClusterName|任意の名前。|||
 |ServiceFabricClusterResourceGroupName|任意の名前。|||
 |ServiceFabricClusterLocation|Key Vault の場所と一致する任意の名前。|||
 |ServiceFabricClusterAdminPassword|任意の名前。|○||
 |ServiceFabricClusterResourceGroupTemplateFilePath|`<path/to/extracted/automation/scripts/ArmTemplate-Full-3xVM-Secure.json>`|||
-|ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>` 注: 発行プロファイル内の接続のエンドポイントは無視されます。一時クラスター用の接続エンドポイントが使用されます。|||
+|ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>`発行プロファイル内の接続のエンドポイントは無視されます。一時クラスター用の接続エンドポイントが使用されます。|||
 |ServiceFabricDeploymentScriptPath|`<path/to/Deploy-FabricApplication.ps1>`|||
 |ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>` これは .sfproj ファイルを含むフォルダーとする必要があります。||||
 
 3.  ビルド定義を保存して、名前を付けます (この名前は後で必要に応じて変更できます)。
 
 ### "ビルド" ステップを追加する
-@<Author GitHub alias> – 記事のコピーを確認し、コメントに入力した問題点に対応してください。技術的な意味が変わっているところがある場合はお知らせください。
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加]** コマンドを選択します。
 
@@ -370,7 +369,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 これで一時クラスターでの作業が終了したので、それをクリーンアップする必要があります。クリーンアップを行わないと、一時クラスターに対して引き続き料金がかかります。この手順ではリソース グループを削除します。これによって、クラスターと、グループ内の他のすべてのリソースが削除されます。
 
->[AZURE.NOTE] このステップと、前の "クラスター リソース グループの削除" ステップには違いが 1 つあります。このステップでは、[常に実行する] チェック ボックスをオンにしておく必要があります。
+>[AZURE.NOTE] このステップと、前の "クラスター リソース グループの削除" ステップには違いが 1 つあります。このステップでは、**[常に実行する]** チェック ボックスをオンにしておく必要があります。
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加]** コマンドを選択します。
 
@@ -380,7 +379,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 4.	**[スクリプト ファイル名]** の横にある **[...]** ボタンを選択します。自動化スクリプトを展開した場所に移動し、**RemoveClusterResourceGroup.ps1** を選択します。
 
-5.	**[引数]** に、「`-ServicePrincipalPassword "$(ServicePrincipalPassword)`」と入力します。
+5.	**[引数]** に対して、「`-ServicePrincipalPassword "$(ServicePrincipalPassword)`」と入力します。
 
 6.	**[コントロール オプション]** の **[常に実行する]** チェック ボックスをオンにします。
 
@@ -388,7 +387,7 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 ### 試してみる
 
-**[キュー ビルド]** をクリックしてビルドを開始します。ビルドは、プッシュ時またはチェックイン時にもトリガーされます。
+**[キュー ビルド]** を選択してビルドを開始します。ビルドは、プッシュ時またはチェックイン時にもトリガーされます。
 
 
 ## 代替ソリューション
@@ -407,8 +406,8 @@ Azure PowerShell をインストールするには、前のセクション「**A
 
 Service Fabric アプリケーションの継続的インテグレーションに関する詳細については、次の記事を参照してください。
 
-- [ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)
-- [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
-- [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
+ - [ビルドに関するドキュメントのホームページ](https://msdn.microsoft.com/Library/vs/alm/Build/overview)
+ - [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
+ - [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

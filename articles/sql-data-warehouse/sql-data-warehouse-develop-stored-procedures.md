@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のストアド プロシージャ
@@ -38,11 +38,11 @@ SQL Data Warehouse では、最大 8 レベルの入れ子をサポートしま�
 
 最上位のストアド プロシージャの呼び出しは、入れ子レベル 1 になります。
 
-```
+```sql
 EXEC prc_nesting
 ```
 ストアド プロシージャから別の EXEC の呼び出しも行う場合、入れ子レベルは 2 に増えます。
-```
+```sql
 CREATE PROCEDURE prc_nesting
 AS
 EXEC prc_nesting_2  -- This call is nest level 2
@@ -50,7 +50,7 @@ GO
 EXEC prc_nesting
 ```
 次に 2 つ目の手順で何らかの動的 SQL を実行すると、入れ子レベルは 3 に増えます。
-```
+```sql
 CREATE PROCEDURE prc_nesting_2
 AS
 EXEC sp_executesql 'SELECT 'another nest level'  -- This call is nest level 2
@@ -97,4 +97,4 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

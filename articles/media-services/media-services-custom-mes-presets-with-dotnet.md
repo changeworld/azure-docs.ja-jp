@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Media Encoder Standard のプリセットをカスタマイズし、高度なエンコード タスクを実行する" 
+	pageTitle="Media Encoder Standard を使用した高度なエンコード" 
 	description="このトピックでは、Media Encoder Standard タスク プリセットをカスタマイズし、高度なエンコードを実行する方法を紹介します。このトピックでは、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法を説明します。エンコード ジョブにカスタム プリセットを与える方法も紹介します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016"    
+	ms.date="03/27/2016"    
 	ms.author="juliako"/>
 
 
-#Media Encoder Standard のプリセットをカスタマイズし、高度なエンコード タスクを実行する
+#Media Encoder Standard を使用した高度なエンコード
 
 ##概要
 
-このトピックでは、Media Encoder Standard タスク プリセットをカスタマイズし、高度なエンコードを実行する方法を紹介します。このトピックでは、[.NET を利用し、エンコード タスクとそのタスクを実行するジョブを作成する方法](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)を紹介します。エンコード タスクにカスタム プリセットを与える方法も紹介します。プリセットで使用される要素の説明については、[この文書](https://msdn.microsoft.com/library/mt269962.aspx)を参照してください。
+このトピックでは、Media Encoder Standard を使用して高度なエンコード タスクを実行する方法を紹介します。このトピックでは、[.NET を利用し、エンコード タスクとそのタスクを実行するジョブを作成する方法](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)を紹介します。エンコード タスクにカスタム プリセットを与える方法も紹介します。プリセットで使用される要素の説明については、[この文書](https://msdn.microsoft.com/library/mt269962.aspx)を参照してください。
 
 次のエンコード タスクを実行するカスタム プリセットを実演します。
 
@@ -30,6 +30,7 @@
 - [オーバーレイを作成する](media-services-custom-mes-presets-with-dotnet.md#overlay)
 - [音声が入力されない場合、無音オーディオ トラックを挿入する](media-services-custom-mes-presets-with-dotnet.md#silent_audio)
 - [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
+- [オーディオのみのプリセット](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 
 ##<a id="encoding_with_dotnet"></a>Media Services .NET SDK でエンコードする
 
@@ -896,7 +897,55 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	</Sources>
 
 
+##<a id="audio_only"></a>オーディオのみのプリセット
 
+このセクションでは、2 つのオーディオのみの MES プリセット、AAC Audio と AAC Good Quality Audio を実演します。
+
+###AAC Audio 
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 128,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
+
+###AAC Good Quality Audio
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 192,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
 
 ##Media Services のラーニング パス
 
@@ -910,4 +959,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

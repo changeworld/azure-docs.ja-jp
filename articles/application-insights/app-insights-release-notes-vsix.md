@@ -1,21 +1,66 @@
-<properties 
-	pageTitle="Application Insights の Visual Studio 拡張機能のリリース ノート" 
-	description="Application Insights の Visual Studio ツールの最新の更新内容。" 
-	services="application-insights" 
+<properties
+	pageTitle="開発者分析用 Visual Studio 拡張機能のリリース ノート"
+	description="開発者分析用 Visual Studio ツールの更新内容。"
+	services="application-insights"
     documentationCenter=""
-	authors="aruna" 
+	authors="aruna"
 	manager="douge"/>
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/26/2016" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/28/2016"
 	ms.author="acearun"/>
- 
-# Application Insights Tools for Visual Studio のリリース ノート
 
+# リリース ノート - Developer Analytics Tools
+##### Visual Studio での Application Insights と HockeyApp の分析
+## バージョン 5.2
+Visual Studio に HockeyApp シナリオを導入することになりました。最初に有効にした統合は、Visual Studio でのユニバーサル Windows アプリと Windows フォーム アプリのベータ版配布です。
+
+ベータ版配布を使用すると、旧バージョンのアプリを HockeyApp にアップロードし、一部の顧客やテスターに配布することができます。ベータ版配布と HockeyApp のクラッシュ コレクションとユーザー フィードバック機能を組み合わせることで、広範なリリース前にアプリに関する重要な情報を収集できます。この情報を使用すると、アプリの問題 (低評価、よくないフィードバックなど) が大きくなる前に対処することができます。
+
+Visual Studio からベータ版配布用にビルドをアップロードする方法は簡単です。ここではその方法について説明します。
+### ユニバーサル Windows アプリ
+UWP プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが追加されました。
+
+![ユニバーサル アプリのプロジェクト コンテキスト メニュー](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
+
+項目を選択すると、HockeyApp アップロード ダイアログが表示されます。ビルドをアップロードするには、HockeyApp アカウントが必要です。新規ユーザーの場合でも、アカウントを簡単に作成できます。
+
+接続すると、ダイアログにアップロード フォームが表示されます。
+
+![ユニバーサル アプリのアップロード ダイアログ](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
+
+アップロードするコンテンツ (appxbundle または appx) を選択し、ウィザードでリリース オプションを選択します。必要に応じて、次のページでリリース ノートを追加できます。[Finish] を選択してアップロードを開始します。
+
+アップロードが完了すると、HockeyApp のトーストに確認メッセージと HockeyApp ポータルのアプリへのリンクが表示されます。
+
+![アップロード完了のトースト](./media/app-insights-release-notes-vsix/UploadComplete.png)
+
+以上で完了です。わずか数回のクリックで、ベータ版配布のビルドをアップロードできます。
+
+HockeyApp ポータルでは、さまざまな方法でアプリケーションを管理できます (ユーザーの招待、クラッシュ レポートとフィードバックの表示、変更履歴など)。
+
+![HockeyApp ポータル](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
+
+アプリ管理の詳細については、[HockeyApp のナレッジ ベース](http://support.hockeyapp.net/kb/app-management-2)を参照してください。
+
+### Windows フォーム アプリ
+Windows フォーム プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが含まれています。
+
+![Windows フォーム アプリのプロジェクト コンテキスト メニュー](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
+
+このオプションを選択すると、ユニバーサル アプリの場合と同様に HockeyApp のアップロード ダイアログが表示されます。
+
+![Windows フォーム アプリのアップロード ダイアログ](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
+
+このウィザードには、アプリのバージョンを指定する追加のフィールドがあります。ユニバーサル アプリの場合、情報はマニフェストから生成されます。残念ながら Windows フォームに同等の機能はないので、手動で指定する必要があります。
+
+その他のフローはユニバーサル アプリと同様です。ビルドを選択し、リリース オプションを選択し、リリース ノートを追加し、アップロードし、HockeyApp ポータルで管理します。
+
+このように操作は簡単です。ぜひ試してご意見をお聞かせください。
 ## バージョン 4.3
 ### ローカル デバッグ セッションからのテレメトリの検索
 このリリースでは、Visual Studio デバッグ セッションで生成された Application Insights テレメトリを検索する機能が導入されました。以前は、Application Insights でアプリを登録していた場合のみ検索可能でした。このリリースでは、ローカルのテレメトリを検索するために、アプリに Application Insights SDK のみインストールする必要があります。
@@ -39,18 +84,18 @@
 ###- 0 クリックのログ記録エクスペリエンス
 NLog、Log4Net や System.Diagnostics のトレースを既に使用している場合は、AI へのすべてのトレースの移動について心配する必要はありません。通常の構成エクスペリエンスと Application Insights のログ記録アダプターが統合されました。既にこれらのログ記録フレームワークを構成してある場合は、次の手順でトレースを移動できます。
 ####既に Application Insights を追加してある場合
-- プロジェクト ノードを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。 
+- プロジェクト ノードを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
 - または、ソリューションをビルドするときに、画面右上に表示されるポップアップに気付いて、[構成] をクリックします。![ログイン トースト](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
 ログ アダプターをインストールした後、アプリケーションを実行することができ、[診断ツール] タブに次のようにデータが表示されます。![トレース](./media/app-insights-release-notes-vsix/Traces.png)
 ###- テレメトリ イベント プロパティが生成されるコードへの移動、またはこれらのコードの検索が可能に
-新しいリリースでは、ユーザーはイベント詳細の任意の値をクリックすることで、現在開いているソリューション内で一致する文字列を検索できます。結果は、Visual Studio の [検索結果] リストに次のように表示されます。 ![一致の検索](./media/app-insights-release-notes-vsix/FindMatch.png)
+新しいリリースでは、ユーザーはイベント詳細の任意の値をクリックすることで、現在開いているソリューション内で一致する文字列を検索できます。結果は、Visual Studio の [検索結果] リストに次のように表示されます。![一致の検索](./media/app-insights-release-notes-vsix/FindMatch.png)
 ###- サインインしていないユーザーに表示される [検索] ウィンドウの新しい画面
-[検索] ウィンドウの外観が機能強化され、実稼働環境でのデータ検索手順をユーザーにガイドするようになりました。 ![[検索] ウィンドウ](./media/app-insights-release-notes-vsix/SearchWindow.png)
+[検索] ウィンドウの外観が機能強化され、実稼働環境でのデータ検索手順をユーザーにガイドするようになりました。![[検索] ウィンドウ](./media/app-insights-release-notes-vsix/SearchWindow.png)
 ###- イベントに関連するすべてのテレメトリ イベントが表示可能に
-イベント詳細の横に新しいタブが追加されました。このタブには、ユーザーが表示しているテレメトリ イベントに関連するすべてのデータを表示する定義済みクエリが含まれています。例: 要求には操作 ID と呼ばれるフィールドがあり、この要求に関連付けられているすべてのイベントは同じ操作 ID を持ちます。そのために、たとえば、要求の処理中に例外が発生した場合は、要求と同じ操作 ID を受け取るため、例外を見つけやすくなります。要求を見ているユーザーが、[この操作のすべてのテレメトリ] をクリックすると、新しい検索結果を含む新しいタブが開くようになりました。 ![関連項目](./media/app-insights-release-notes-vsix/RelatedItems.png)
+イベント詳細の横に新しいタブが追加されました。このタブには、ユーザーが表示しているテレメトリ イベントに関連するすべてのデータを表示する定義済みクエリが含まれています。例: 要求には操作 ID と呼ばれるフィールドがあり、この要求に関連付けられているすべてのイベントは同じ操作 ID を持ちます。そのために、たとえば、要求の処理中に例外が発生した場合は、要求と同じ操作 ID を受け取るため、例外を見つけやすくなります。要求を見ているユーザーが、[この操作のすべてのテレメトリ] をクリックすると、新しい検索結果を含む新しいタブが開くようになりました。![関連項目](./media/app-insights-release-notes-vsix/RelatedItems.png)
 ### - 検索の前/後の履歴を追加
-ユーザーは、検索結果の間で前後に移動できるようになりました。 ![戻る](./media/app-insights-release-notes-vsix/GoBAck.png)
+ユーザーは、検索結果の間で前後に移動できるようになりました。![戻る](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ##Version 4.1
 このリリースには、多くの新しい機能と、既存の機能の強化が含まれています。このリリースを入手するには、お使いのコンピューターに Update 1 をインストールしておく必要があります。
@@ -69,7 +114,7 @@ Application Insights の [検索] ウィンドウで運用アプリの例外を�
 
 ![Clicking on Exception](./media/app-insights-release-notes-vsix/jumptocode.png)
 
-###ソリューション エクスプローラーの検索エクスペリエンスへの新しいエントリ ポイント 
+###ソリューション エクスプローラーの検索エクスペリエンスへの新しいエントリ ポイント
 
 ![Entry Point in Solution Explorer](./media/app-insights-release-notes-vsix/searchentry.png)
 
@@ -104,6 +149,4 @@ Application Insights ポータルでの検索と同じように、イベント�
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio のエクスペリエンスをさらに統合するための新しい機能を導入する予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)を参照してください。
 
- 
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="12/11/2015" 
+	ms.date="03/28/2016" 
 	ms.author="wesmc"/>
 
 # 通知ハブによるユーザーへのクロスプラットフォーム通知の送信
@@ -108,4 +108,4 @@
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

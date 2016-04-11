@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/08/2016"
+   ms.date="03/22/2016"
    ms.author="rickbyh"/>
 
 # SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理  
@@ -28,7 +28,7 @@ Microsoft Azure SQL Database では、サービスをサインアップすると
 
 Azure SQL Database サーバーレベル プリンシパル アカウントには、サーバーレベルとデータベースレベルのセキュリティをすべて管理する権限が常にあります。このトピックでは、SQL Database でサーバーレベル プリンシパルなどのアカウントを使用してログインとデータベースを管理する方法について説明します。
 
-Azure のロールベースのアクセス制御と Azure リソース マネージャー REST API を使用して SQL Database にアクセスする Azure ユーザーは、Azure ロールからアクセス許可を受け取ります。Azure ロールのメンバーのアクションは、データベース エンジンによって実行されます。データベース エンジンのアクセス許可モデルによって影響を受けることはなく、このトピックでは説明しません。詳細については、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles/#sql-db-contributor)」を参照してください。
+Azure のロールベースのアクセス制御 (RBAC) と Azure Resource Manager REST API を使用して SQL Database にアクセスする Azure ユーザーは、Azure ロールからアクセス許可を受け取ります。これらのロールは、データ プレーン操作ではなく、管理プレーン操作へのアクセスを提供します。管理プレーン操作では、SQL Database 内のさまざまなプロパティやスキーマ要素を読み取ることができます。また、SQL Database に関連する一部のサーバー レベルの機能の作成、削除、構成を行うことができます。これらの管理プレーン操作の多くは、Azure ポータルを使用しているときに表示および構成できる項目です。RBAC ロールを使用すると、データベース内の Azure ロールのメンバーのアクション (テーブルの表示など) は、データベース エンジンによってそれらのメンバーに対して実行されるので、標準の SQL Server アクセス許可システムの GRANT/REVOKE/DENY ステートメントによる影響は受けません。データの読み取りや変更はデータ プレーン操作であるため、RBAC ロールでこれらの操作を実行することはできません。詳細については、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」をご覧ください。
 
 > [AZURE.IMPORTANT] SQL Database V12 では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。包含データベース ユーザーはログインする必要がありません。そのため、データベースは軽量になりますが、データベースへのアクセスを制御するサーバーレベルのプリンシパルの機能が減ります。包含データベース ユーザーを有効にすると、セキュリティに重大な影響があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
 
@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

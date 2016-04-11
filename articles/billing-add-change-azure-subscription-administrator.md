@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="03/22/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
@@ -24,12 +24,37 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 | 管理ロール | 制限 | 説明
 | ------------- | ------------- |---------------|
 |アカウント管理者 (AA) | 1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、多様な管理タスクを実行する権限を持っている個人。管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。
-| サービス管理者 (SA) | 1 Azure サブスクリプションに 1 人 |この管理者には、[Azure ポータル](https://manage.windowsazure.com/)でのサービスの管理が許可されます。既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。|
-|共同管理者 (CA)|サブスクリプションあたり 200 人|サービス管理者と同じアクセス権を持っていますが、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできない個人。|
+| サービス管理者 (SA) | 1 Azure サブスクリプションに 1 人 |このロールには、[Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。|
+|[Azure クラシック ポータル](https://manage.windowsazure.com)の共同管理者 (CA)|サブスクリプションあたり 200 人| サービス管理者と同じアクセス権を持っていますが、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 
 > [AZURE.NOTE] Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。詳細については、「[Azure Active Directory のロールベースの Access Control](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ## サブスクリプションの管理者を追加する方法
+
+**Azure ポータル**
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+
+2. ハブ メニューで **[サブスクリプション]** を選択し、*管理者にアクセス権を与えるサブスクリプション*を選択します。
+
+	![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
+
+3. サブスクリプション ブレードで、**[設定]**、**[ユーザー]** の順に選択します。
+
+	![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
+4. [ユーザー] ブレードで、**[追加]**、**[ロールの選択]**、**[所有者]** の順に選択します。
+
+	![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+
+	**注**
+	- 所有者ロールには、共同管理者と同じアクセス権が付与されます。このロールには、[Azure アカウント センター](https://account.windowsazure.com/subscriptions)へのアクセス権がありません。
+	- [Azure ポータル](https://portal.azure.com)を通じて追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でサービスを管理できません。  
+
+5. 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーをクリックしてから、**[選択]** をクリックします。
+
+	![newadduser](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+
+**Azure クラシック ポータル**
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
@@ -63,9 +88,9 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 ## サブスクリプションのサービス管理者を変更する方法
 
-Azure クラシック ポータルでは、サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
+サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
 
-1. アカウント管理者を使用して [Azure 管理ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
+1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にログオンします。
 
 2. 変更するサブスクリプションを選択します。
 
@@ -89,4 +114,4 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory の管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

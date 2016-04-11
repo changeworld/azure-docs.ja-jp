@@ -1,13 +1,5 @@
 
 
-## Azure が計画的なメンテナンスを実行する理由
-
-Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシンの基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。これらの更新の多くは、仮想マシンや Cloud Services に影響を及ぼさずに実行されます (たとえば、メモリ保護更新など)。
-
-ただし、一部の更新では、インフラストラクチャに必須の更新を適用する際に仮想マシンの再起動が必要になります。その場合、インフラストラクチャにパッチを適用する間、仮想マシンはシャットダウンされ、その後、仮想マシンの再起動が行われます。
-
-仮想マシンの可用性に影響を及ぼす可能性があるメンテナンスには、計画的なメンテナンスと計画外のメンテナンスの 2 種類があります。このページでは、Microsoft Azure による計画的なメンテナンスの実行について説明します。計画外のメンテナンスの詳細については、「[Understand planned versus unplanned maintenance (計画的なメンテナンスと計画外のメンテナンスの概要)](virtual-machines-windows-manage-availability.md)」を参照してください。
-
 ## メモリ保護更新
 
 Microsoft Azure の更新のクラスの場合、実行中の仮想マシンに何らかの影響があってもお客様にはわかりません。これらの更新の多くは、実行中のインスタンスに干渉することがなく更新可能なコンポーネントまたはサービスを対象にしています。これらの更新の一部は、ホスト オペレーティング システムのプラットフォーム インフラストラクチャに対する更新であり、仮想マシンの完全な再起動を必要とせずに適用できます。
@@ -24,7 +16,7 @@ Microsoft Azure の更新のクラスの場合、実行中の仮想マシンに�
 
 マルチインスタンス構成を使用すると、物理コンピューター、電源、ネットワークの冗長性が得られます。アプリケーションの可用性を確保するために、この構成の使用をお勧めします。可用性セットのすべての仮想マシンは、アプリケーションに対する目的が同じである必要があります。
 
-高可用性を達成するための仮想マシン構成の詳細については、「[Virtual Machines の可用性管理](virtual-machines-windows-manage-availability.md)」を参照してください。
+高可用性を達成するための仮想マシン構成の詳細については、「[Virtual Machines の可用性管理](../articles/virtual-machines/virtual-machines-windows-manage-availability.md)」または「[Linux 仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)」を参照してください。
 
 対照的に、可用性セットに配置されていないスタンドアロンの仮想マシンに対しては、単一インスタンス構成が使用されます。これらの仮想マシンは、同一の可用性セットに複数の仮想マシンがデプロイされていることを必要とするサービス レベル アグリーメント (SLA) の対象になりません。
 
@@ -39,7 +31,7 @@ SLA の詳細については、「[サービス レベル アグリーメント]
 
 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに更新ドメインと障害ドメインが割り当てられます。各更新ドメインは同じ時間帯に再起動される仮想マシンのグループです。また、各障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループです。
 
-更新ドメインと障害ドメインの詳細については、「[冗長性実現のために複数の仮想マシンを可用性セット内に構成する](virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)」を参照してください。
+更新ドメインと障害ドメインの詳細については、「[冗長性実現のために複数の仮想マシンを可用性セット内に構成する](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)」を参照してください。
 
 更新ドメインが同時にオフラインにならないように、メンテナンスは、更新ドメイン内のそれぞれの仮想マシンをシャットダウンし、ホスト コンピューターに更新を適用した後、仮想マシンを再起動して、次の更新ドメインに移るという流れで進行します。すべての更新ドメインが更新されると、計画的メンテナンス イベントは終了します。
 
@@ -99,8 +91,8 @@ SLA の詳細については、「[サービス レベル アグリーメント]
 
 
 <!--Link references-->
-[Virtual Machines Manage Availability]: virtual-machines-windows-hero-tutorial.md
+[Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 
-[Understand planned versus unplanned maintenance]: virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->
