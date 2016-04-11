@@ -1,6 +1,6 @@
 <properties
-   pageTitle="CLI から Linux VM を作成する | Microsoft Azure"
-   description="Mac、Linux、または Windows から Azure CLI を使用して Microsoft Azure に新しい Linux VM を作成します。"
+   pageTitle="CLI を使用して Azure で Linux VM を短時間で作成する | Microsoft Azure"
+   description="CLI を使用して Azure で Linux VM を短時間で作成します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="vlivech"
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="03/04/2016"
+   ms.date="03/28/2016"
    ms.author="v-livech"/>
 
 
-# 開発用とテスト用の Linux VM を Azure CLI から作成する
+# CLI を使用して Azure で Linux VM を短時間で作成する
 
-このトピックでは、[Azure CLI](../xplat-cli-install.md) の `azure vm quick-create` コマンドを使用して基本的な Azure 環境に評価、テスト、その他の短期シナリオのための Linux VM をすばやく作成する方法について説明します。VM はパスワードによってアクセスされ、インターネットに開かれています。運用環境またはその他の長期的なシナリオの場合は、[Azure テンプレートを使用して Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md) を作成し、セキュリティで保護する必要があります。
+この記事では、[Azure CLI](../xplat-cli-install.md) の `azure vm quick-create` コマンドを使って、新しい Linux VM をすばやく作成する方法を説明します。
 
-## 前提条件
+[AZURE.NOTE] このトピックでは、基本的な Azure 環境に評価、テスト、その他の短期シナリオのための Linux VM をすばやく作成する方法について説明します。実稼働またはその他の長期的なシナリオの場合は、Linux VM のより安全な Azure 環境を準備する必要があります。
 
-Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/)) および「`azure config mode arm`」と入力してリソース モードに設定した [Azure CLI](../xplat-cli-install.md) が必要です。「`azure login`」と入力して Azure にログインし、画面の指示に従います。最新バージョン: 0.9.16。
+前提条件としては、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)、[SSH の公開キーと秘密キー](virtual-machines-linux-mac-create-ssh-keys.md)、Azure リソース グループ (以降で作成) があり、Azure CLI がインストールされていて、`azure config mode arm` を使用して Azure Resource Manager モードに切り替えてあることです。
 
 ## クイック コマンドの概要
 
@@ -31,25 +31,27 @@ Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pr
 
 1. `azure vm quick-create`
 
+## 詳しいチュートリアル
+
+### Linux VM の作成
+
+次のコマンドでは任意のイメージを使用できますが、この例では、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して VM をすばやく作成します。(Marketplace でイメージを探すには、[イメージを検索する](virtual-machines-linux-cli-ps-findimage.md)か、または[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。 次のようになります。
+
 以下のコマンド例の &lt; と &gt; で囲まれた値は、実際の環境の値に置き換えてください。
-
-## Linux VM の作成
-
-次のコマンドでは任意のイメージを使用できますが、この例では、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して VM をすばやく作成します(Marketplace でイメージを探すには、[イメージを検索する](virtual-machines-linux-cli-ps-findimage.md)か、または[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。 次のようになります。
 
 ```bash
 # Create the Linux VM using prompts
 username@macbook$ azure vm quick-create
 info:    Executing command vm quick-create
-Resource group name: quickcreate
-Virtual machine name: quickcreate
+Resource group name: exampleResourceGroup
+Virtual machine name: exampleVMname
 Location name: westus
 Operating system Type [Windows, Linux]: linux
 ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to the user image: canonical:ubuntuserver:14.04.2-LTS:latest
 User name: ops
 Password: *********
 Confirm password: *********
-+ Looking up the VM "quickcreate"
++ Looking up the VM "exampleVMname"
 info:    Using the VM Size "Standard_D1"
 info:    The [OS, Data] Disk or image configuration requires storage account
 + Looking up the storage account cli133501687
@@ -71,12 +73,12 @@ info:    PublicIP with given name "quick-westu-1363648838-pip" not found, creati
 + Creating NIC "quick-westu-1363648838-nic"
 + Looking up the NIC "quick-westu-1363648838-nic"
 + Creating VM "quickcreate"
-+ Looking up the VM "quickcreate"
++ Looking up the VM "exampleVMname"
 + Looking up the NIC "quick-westu-1363648838-nic"
 + Looking up the public ip "quick-westu-1363648838-pip"
-data:    Id                              :/subscriptions/<guid>/resourceGroups/quickcreate/providers/Microsoft.Compute/virtualMachines/quickcreate
+data:    Id                              :/subscriptions/<guid>/resourceGroups/exampleResourceGroup/providers/Microsoft.Compute/virtualMachines/exampleVMname
 data:    ProvisioningState               :Succeeded
-data:    Name                            :quickcreate
+data:    Name                            :exampleVMname
 data:    Location                        :westus
 data:    Type                            :Microsoft.Compute/virtualMachines
 data:
@@ -99,7 +101,7 @@ data:        Vhd:
 data:          Uri                       :https://cli1361687.blob.core.windows.net/vhds/cli350d386daac1f01c-os-1457063387485.vhd
 data:
 data:    OS Profile:
-data:      Computer Name                 :quickcreate
+data:      Computer Name                 :exampleVMname
 data:      User Name                     :ops
 data:      Linux Configuration:
 data:        Disable Password Auth       :false
@@ -125,18 +127,17 @@ info:    vm quick-create command OK
 
 既定の SSH ポート 22 で VM に SSH 接続できます。
 
-## 詳細なチュートリアル
-
-`azure vm quick-create` を使用すると、仮想マシンを短時間で作成し、ログインして作業できます。ただし、複雑な環境はないので、環境をカスタマイズする必要がある場合は、[Azure リソース マネージャー テンプレートを使用して特定のデプロイをすばやく作成する](virtual-machines-linux-cli-deploy-templates.md)か、または[Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)ことができます。
+`azure vm quick-create` を使用すると、VM を短時間で作成し、ログインして作業できます。ただし、複雑な環境はないので、環境をカスタマイズする必要がある場合は、[Azure リソース マネージャー テンプレートを使用して特定のデプロイをすばやく作成する](virtual-machines-linux-cli-deploy-templates.md)か、[Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)ことができます。
 
 上の例では次のものが作成されます。
 
+- Azure リソース グループにより VM が以下にデプロイされます。
 - VM イメージの .vhd ファイルを保持するための Azure ストレージ アカウント
 - VM に接続するための Azure Virtual Network とサブネット
 - VM とネットワークを関連付けるための仮想ネットワーク インターフェイス カード (NIC)
-- 外部使用のためのインターネット アドレスを提供するパブリック IP アドレスとサブドメイン プレフィックス
+- 外部使用のためのインターネット アドレスを提供するパブリック IP アドレスとサブドメイン プレフィックス。その後、その環境内に Linux VM が作成されます。
 
-その後、その環境内に Linux VM を作成します。この VM はインターネットに直接公開され、ユーザー名とパスワードによってのみ保護されます。
+この VM はインターネットに直接公開され、ユーザー名とパスワードによってのみ保護されます。
 
 ## 次のステップ
 
@@ -148,4 +149,4 @@ info:    vm quick-create command OK
 
 また、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

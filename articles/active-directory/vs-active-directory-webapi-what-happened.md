@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="03/28/2016"
 	ms.author="tarcher"/>
 
 # Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-webapi-getting-started.md)
-> - [What Happened](vs-active-directory-webapi-what-happened.md)
+> - [作業の開始](vs-active-directory-webapi-getting-started.md)
+> - [変更内容](vs-active-directory-webapi-what-happened.md)
 
 ##リファレンスが追加されました
 
@@ -59,7 +59,8 @@
 
 ###app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
 
-次の構成エントリが追加されました。```
+次の構成エントリが追加されました。
+```
 	`<appSettings>
     		<add key="ida:ClientId" value="ClientId from the new Azure AD App" />
     		<add key="ida:Tenant" value="Your selected Azure AD Tenant" />
@@ -116,4 +117,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のトランザクション
@@ -57,7 +57,7 @@ SQL Data Warehouse では、XACT\_STATE() 関数の値 -2 を使用して、失�
 
 SQL Server では、次のようなコード フラグメントを目にすることがあります。
 
-```
+```sql
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
@@ -83,7 +83,7 @@ BEGIN TRAN
 
 SQL Data Warehouse では、このコードは次のように記述する必要があります。
 
-```
+```sql
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
@@ -140,4 +140,4 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

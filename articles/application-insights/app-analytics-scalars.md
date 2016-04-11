@@ -15,12 +15,11 @@
 	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-
  
 # Analytics のスカラー式
 
 
-[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-analytics.md) を使用すると、[Application Insights](app-insights-overview.md) によってアプリから収集されたテレメトリに対して強力なクエリを実行できます。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -193,7 +192,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | "" | false
 |"x" | false
 |parsejson("")|true
-|parsejson("[]")|false
+|parsejson("")|false
 |parsejson("{}")|false
 
 **例**
@@ -549,7 +548,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 文字列は、単一引用符または二重引用符で囲むことがあります。
 
-バックスラッシュ (`\`) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
+バックスラッシュ (``) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -698,7 +697,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 | "" | true
 |"x" | false
 |parsejson("")|true
-|parsejson("[]")|false
+|parsejson("")|false
 |parsejson("{}")|false
 
 
@@ -1152,4 +1151,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

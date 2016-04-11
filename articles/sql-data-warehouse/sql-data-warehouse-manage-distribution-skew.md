@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # テーブル分散傾斜の管理
@@ -27,7 +27,7 @@
 
 傾斜しているテーブルを特定するとき、下のビューのようなクエリが役立ちます。
 
-```
+```sql
 CREATE VIEW dbo.vDistributionSkew
 AS
 WITH base
@@ -113,7 +113,7 @@ FROM	size
 
 ビューが作成されたら、それにクエリを実行すると、下のようなクエリでテーブルの傾斜を検証できます。
 
-```
+```sql
 SELECT	[two_part_name]
 ,		[distribution_id]
 ,		[row_count]
@@ -151,4 +151,4 @@ ORDER BY [row_count] DESC
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

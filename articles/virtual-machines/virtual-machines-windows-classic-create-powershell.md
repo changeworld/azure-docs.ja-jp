@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure クラシック ポータル - Windows](virtual-machines-windows-classic-tutorial.md)
-- [Powershell - Windows](virtual-machines-windows-classic-create-powershell.md)
+- [PowerShell - Windows](virtual-machines-windows-classic-create-powershell.md)
 - [PowerShell - Linux](virtual-machines-linux-classic-createpowershell.md)
 
 <br>
@@ -36,18 +36,18 @@
 
 このトピックと対になっている、Linux ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-linux-classic-createpowershell.md)」を参照してください。
 
-まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Azure PowerShell コマンド プロンプトを開きます。
+まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## 手順 1: アカウントを追加する
 
-1. Powershell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
-2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
-3. Azure サブスクリプションのパスワードを入力します。 
+1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
+2. 使用している Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
+3. アカウントのパスワードを入力します。 
 4. **[サインイン]** をクリックします。
 
 ## 手順 2. サブスクリプションとストレージ アカウントを設定する
 
-Azure PowerShell コマンド プロンプトで次のコマンドを実行して Azure サブスクリプションとストレージ アカウントを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+Windows PowerShell コマンド プロンプトで次のコマンドを実行して、Azure サブスクリプションとストレージ アカウントを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	$staccount="<storage account name>"
@@ -66,7 +66,7 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 - Windows Server 2012 R2 Datacenter
 - Windows Server 2008 R2 SP1
-- Windows Server Technical Preview
+- Windows Server 2016 Technical Preview 4
 - SQL Server 2012 SP1 Enterprise on Windows Server 2012
 
 目的のイメージが見つかったら、任意のテキスト エディターの最新インスタンスまたは PowerShell Integrated Scripting Environment (ISE) を開きます。新しいテキスト ファイルまたは PowerShell ISE に次のコードをコピーし、ImageFamily 値を置き換えます。
@@ -85,7 +85,7 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 ## 手順 4. コマンド セットを構築する
 
-残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
+残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとして参照してください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
@@ -107,7 +107,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 スタンドアロンの Windows コンピューターの場合は、必要に応じて、ローカル管理者のアカウントとパスワードを指定します。
 
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
-	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
+	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.Username -Password $cred.GetNetworkCredential().Password
 
  強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
 
@@ -117,7 +117,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 	$cred2=Get-Credential –Message "Now type the name (not including the domain) and password of an account that has permission to add the machine to the domain."
 	$domaindns="<FQDN of the domain that the machine is joining>"
 	$domacctdomain="<domain of the account that has permission to add the machine to the domain>"
-	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
+	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
 
 これ以外の Windows ベースの事前構成の追加方法については、「[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx)」で **Windows** パラメーター セットと **WindowsDomain** パラメーター セットの構文を参照してください。
 
@@ -145,7 +145,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 必要に応じて、外部トラフィックを処理するために、既存の負荷分散セットに仮想マシンを次のように追加します。
 
-	$port="<Specify one: tcp, udp>"
+	$protocol="<Specify one: tcp, udp>"
 	$localport=<port number of the internal port>
 	$pubport=<port number of the external port>
 	$endpointname="<name of the endpoint>"
@@ -153,7 +153,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 	$probeprotocol="<Specify one: tcp, http>"
 	$probeport=<TCP or HTTP port number of probe traffic>
 	$probepath="<URL path for probe traffic>"
-	$vm1 | Add-AzureEndpoint -Name $endpointname -Protocol $prot -LocalPort $localport -PublicPort $pubport -LBSetName $lbsetname -ProbeProtocol $probeprotocol -ProbePort $probeport -ProbePath $probepath
+	$vm1 | Add-AzureEndpoint -Name $endpointname -Protocol $protocol -LocalPort $localport -PublicPort $pubport -LBSetName $lbsetname -ProbeProtocol $probeprotocol -ProbePort $probeport -ProbePath $probepath
 
 最後に、仮想マシンの作成に必要な以下のコマンド ブロックの 1 つを選択します。
 
@@ -173,12 +173,12 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 手順 4. でテキスト エディターまたは PowerShell ISE を使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
 
-テキスト エディターを使用している場合は、コマンド セットをクリップボードにコピーしてから、開いている Azure PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、PowerShell ISE でコマンド セットを実行します。
+テキスト エディターを使用している場合は、コマンド セットをクリップボードにコピーしてから、開いている Windows PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、PowerShell ISE でコマンド セットを実行します。
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+- Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -205,7 +205,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
-	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
+	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.Username -Password $cred.GetNetworkCredential().Password
 
 	$vm1 | Set-AzureSubnet -SubnetNames "BackEnd"
 
@@ -244,7 +244,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 	$cred2=Get-Credential –Message "Now type the name (not including the domain) and password of an account that has permission to add the machine to the domain."
 	$domaindns="corp.contoso.com"
 	$domacctdomain="CORP"
-	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
+	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
 
 	$vm1 | Set-AzureSubnet -SubnetNames "FrontEnd"
 
@@ -263,4 +263,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

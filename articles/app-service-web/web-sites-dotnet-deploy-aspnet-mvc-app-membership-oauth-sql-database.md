@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="03/21/2016" 
 	ms.author="riande"/>
 
 # 認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ
@@ -53,9 +53,7 @@
 
 	![[ファイル] メニューの [新しいプロジェクト]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/gs13newproj.png)
 
-1. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET Web アプリケーション]** を選択します。
-
-1. アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+1. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET Web アプリケーション]** を選択します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
 	![New Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
  
@@ -63,33 +61,39 @@
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[認証]** に **[個別ユーザー アカウント]** が設定されていること、**[クラウドでのホスト]** がオンになっていること、**[App Service]** が選択されていることを確認します。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newproject.png)
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newproject.png)
 
 1. **[OK]** をクリックします。
 
-3. **[Microsoft Azure Web アプリ設定の構成]** ダイアログが表示されたら、Azure にサインインしていることを確認してください。まだサインインしていない場合はサインインしてください。また、ログインが失効している場合は資格情報を再入力してください。
+1. **[Microsoft Azure Web アプリの設定を構成する]** ダイアログ ボックスが表示されます。サインインしていない場合はサインインし、ログインが期限切れの場合は資格情報を再入力する必要があります。
 
-	![資格情報を再入力する](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/reentercredentials.png)
-
-2. Web アプリに名前を指定する場合は、**[Web アプリ名]** ボックスの値を変更します。
+1. 省略可能 - **[Web App name (Web アプリ名)]** ボックスの値を変更します (以下のイメージを参照)。
 
 	Web アプリの URL は「{名前}.azurewebsites.net」になります。そのため、名前は azurewebsites.net ドメインで一意にする必要があります。構成ウィザードからはプロジェクト名の「ContactManager」に数字を付けたものが一意の名前として提案されます。このチュートリアルではそれで問題ありません。
 
-5. **[App Service プラン]** ドロップダウンから **[新しい App Service プランの作成]** を選択し、図に示すように「StandardWeb」などの名前を入力します。
-
-	既存の App Service プランを選択することもできます。App Service プランの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
-
-5. **[リソース グループ]** ドロップダウンから **[新規リソース グループの作成]** を選択し、図に示すように「ExampleMVC」などの名前を入力します。
+5. **[リソース グループ]** ボックスの一覧で、既存のグループまたは **[新しいリソース グループの作成]** を選択します (下のイメージを参照)。
 
 	既存のリソース グループを選択することもできます。ただし、新しいリソース グループを作成し、このチュートリアルでそれだけを使用した場合、完了後、チュートリアルのために作成したすべての Azure リソースを簡単に削除できます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
-7. 近くのリージョンを選択します。
+5. **[App Service プラン]** ボックスの一覧で、既存のプランまたは **[新しい App Service プランの作成]** を選択します (下のイメージを参照)。
 
-	**[OK]** はまだクリックしないでください。次の手順では、データベース リソースを構成します。ダイアログ ボックスは次の図のようになります。
+	既存の App Service プランを選択することもできます。App Service プランの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
 
-	![新しいプランとリソース グループ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newplanandgroup.png)
- 
-2. **[サーバーの新規作成]** を選択し、サーバー名、ユーザー名、パスワードを入力します。
+1. **[Explore additional Azure services (他の Azure サービスを探す)]** をタップして、SQL データベースを追加します。
+
+	![新しいサービスの追加](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/n2.png)
+
+1. **[+]** アイコンをタップして、SQL データベースを追加します。
+
+	![新しい SQL DB](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/nsql.png)
+
+1. **[SQL データベースの構成]** ダイアログで **[New (新規)]** をタップして、以下の操作を実行します。
+
+	![SQL 管理者の名前とパスワード](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/nc.png)
+
+1. 管理者の名前と強力なパスワードを入力します。
+
+	![新しい SQL DB](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/np.png)
 
 	サーバー名は一意にする必要があります。小文字、数字、ハイフンを使用できます。末尾にハイフンを使用することはできません。ユーザー名とパスワードは新しいサーバーに作成する新しい資格情報となります。
 
@@ -99,7 +103,7 @@
 
 	![新しいデータベースを使用する](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newdb.png)
 
-4. **[OK]** をクリックします。
+4. **[作成]** をタップします。
 
 	Visual Studio は ContactManager Web プロジェクトを作成し、指定したリソース グループと App Service プランを作成し、指定した名前で Web アプリを Azure App Service に作成します。
 
@@ -109,54 +113,13 @@
 
 	![\_Layout.cshtml in Solution Explorer][newapp004]
 
-1. *Layout.cshtml* ファイルの内容を次のコードに置き換えます。
+1. *Layout.cshtml* ファイル内の ActionLink を次のコードに置き換えます。
 
-		<!DOCTYPE html>
-		<html>
-		<head>
-		    <meta charset="utf-8" />
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		    <title>@ViewBag.Title - Contact Manager</title>
-		    @Styles.Render("~/Content/css")
-		    @Scripts.Render("~/bundles/modernizr")
-		
-		</head>
-		<body>
-		    <div class="navbar navbar-inverse navbar-fixed-top">
-		        <div class="container">
-		            <div class="navbar-header">
-		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                </button>
-		                @Html.ActionLink("CM Demo", "Index", "Cm", new { area = "" }, new { @class = "navbar-brand" })
-		            </div>
-		            <div class="navbar-collapse collapse">
-		                <ul class="nav navbar-nav">
-		                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-		                    <li>@Html.ActionLink("About", "About", "Home")</li>
-		                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-		                </ul>
-		                @Html.Partial("_LoginPartial")
-		            </div>
-		        </div>
-		    </div>
-		    <div class="container body-content">
-		        @RenderBody()
-		        <hr />
-		        <footer>
-		            <p>&copy; @DateTime.Now.Year - Contact Manager</p>
-		        </footer>
-		    </div>
-		
-		    @Scripts.Render("~/bundles/jquery")
-		    @Scripts.Render("~/bundles/bootstrap")
-		    @RenderSection("scripts", required: false)
-		</body>
-		</html>
 
-	このコードにより、ヘッダーとフッターのアプリケーション名が「My ASP.NET Application」と「Application name」から「Contact Manager」と「CM Demo」に変更されます。
+	@Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
+		           
+
+	3 番目のパラメーターを "Home" から "Contacts" に変更します。上のマークアップにより、各ページの "Contacts" リンクが Contacts コントローラーの Index メソッドに作成されます。ヘッダーとフッターのアプリケーション名を「My ASP.NET Application」と「Application name」から「Contact Manager」と「CM Demo」に変更します。
  
 ### ローカルでアプリケーションを実行する
 
@@ -282,7 +245,6 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **[データ コンテキスト クラス]** で **ApplicationDbContext (ContactManager.Models)** を選択します。この **ApplicationDbContext** が、メンバーシップ DB と連絡先データの両方に使用されます。
 
-1. **[コントローラー名]** テキスト入力ボックスで、コントローラー名として「CmController」と入力します。
 
 	![New data ctx dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss5.PNG)
 
@@ -372,7 +334,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
                 );
         }
 
-	このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
+	このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。プロジェクトをビルドし、コンパイル エラーがないことを確認します。
 
 6. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
@@ -445,7 +407,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
+	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー *user1@contoso.com* を作成して、*user1@contoso.com* を *canEdit* ロールに追加します。詳細については、ASP.NET サイトの [ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する  ##
 
@@ -501,7 +463,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 		Update-Database
 
-**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー **user1@contoso.com* を作成し、*canEdit* ロールに追加します。
+**Update-Database** コマンドは **Seed** メソッドを実行し、それが先に追加した **AddUserAndRole** メソッドを実行します。**AddUserAndRole** メソッドは、ユーザー *user1@contoso.com* を作成し、*canEdit* ロールに追加します。
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する ##
 
@@ -588,9 +550,10 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. このページ上の編集リンクをクリックすると、ログイン ページにリダイレクトされます (新しいローカル ユーザーが *canEdit* ロールに追加されていないため)。
 
-1. ユーザー名 **user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
+1. ユーザー名 *user1@contoso.com*、パスワード "P\_assw0rd1" ("word" の "0" はゼロ) でログインします。先ほど選択した編集ページにリダイレクトされます。
+2. 
 
-	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、**user1@contoso.com* が追加されていることを確認します。
+	このアカウントとパスワードでログインできない場合は、ソース コードからパスワードをコピーして貼り付けてみてください。それでもログインできない場合は、**AspNetUsers** テーブルの **UserName** 列を見て、*user1@contoso.com* が追加されていることを確認します。
 
 1. データを変更できることを確認します。
 
@@ -604,17 +567,16 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. **[Web の発行]** ダイアログ ボックスの左側の **[設定]** タブをクリックします。
 
-2. **[v]** アイコンをクリックして **ApplicationDbContext** の **[リモート接続文字列]** を選択し、プロジェクトの作成時に作成したデータベースを選択します。
+2. **[ApplicationDbContext]** で、プロジェクトの作成時に作成したデータベースを選択します。
    
-	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. **ContactManagerContext** で、**[Code First Migrations を実行する]** を選択します。
 
-	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
+	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. **[発行]** をクリックします。
 
-1. **user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
+1. *user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
 
 1. ログアウトします。
 
@@ -698,7 +660,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr8.png)
  
-1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、**user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
+1. **canEdit** ロールへの追加用として登録した Google アカウントの ID と、*user1@contoso.com* の ID をメモします。それ以外のユーザーは **canEdit** ロールに含めないようにする必要があります。この点については、次のステップで確認します。
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s2.png)
  
@@ -706,7 +668,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rs1.png)
  
-3. **UserId** が、**user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
+3. **UserId** が、*user1@contoso.com* と、登録した Google アカウントの ID であることを確認します。
 
 ## トラブルシューティング
 
@@ -797,4 +759,4 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

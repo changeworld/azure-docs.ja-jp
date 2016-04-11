@@ -1,7 +1,5 @@
 
 
-通常、ワークロードが設計に従って動作するには多くのリソースが必要です。Azure リソース マネージャー テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure PowerShell、または Azure CLI を使用したそれらのデプロイメントについて説明します。
-
 ## アプリケーション
 
 次の表を使用すると、テンプレートで使用されるパラメーターの詳細がわかり、デプロイ前にテンプレートを調べることができ、Azure ポータルからテンプレートを直接デプロイできます。
@@ -59,7 +57,7 @@ Azure ポータルでは、URL を送信するだけで簡単にテンプレー�
 
 ## Azure CLI
 
-[Azure CLI をインストールし](../xplat-cli-install.md)、ログインして、Resource Manager のコマンドを有効にします。その方法については、「[Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。
+[Azure CLI をインストールし](../articles/xplat-cli-install.md)、ログインして、Resource Manager のコマンドを有効にします。その方法については、「[Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。
 
 かっこ内のテキストをリソース グループ名、場所、デプロイメント名、およびテンプレート名に置き換えた後、以下のコマンドを実行してリソース グループとデプロイメントを作成します。
 
@@ -72,6 +70,6 @@ Azure ポータルでは、URL を送信するだけで簡単にテンプレー�
 
 一般向けに公開されているテンプレートを [GitHub](https://github.com/Azure/azure-quickstart-templates) で探します。
 
-[Azure リソース マネージャー](../resource-group-template-deploy.md)の詳細を確認します。
+[Azure リソース マネージャー](../articles/resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

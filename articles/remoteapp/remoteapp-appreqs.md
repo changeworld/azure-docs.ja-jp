@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/05/2015"
+    ms.date="03/28/2016"
     ms.author="elizapo" />
 
 
@@ -55,4 +55,4 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 - マルチユーザー、マルチプロセッサ環境向けに、アプリケーションの[スレッド使用状況](https://msdn.microsoft.com/library/aa383520.aspx)を調整する必要があります。
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出する](https://msdn.microsoft.com/library/aa380798.aspx)ことをお勧めします。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016-->

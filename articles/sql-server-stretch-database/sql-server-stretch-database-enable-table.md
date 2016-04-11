@@ -61,7 +61,7 @@ CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Databa
 
 -   テーブルに履歴データと現行データの両方が含まれている場合、`FILTER_PREDICATE = <predicate>` 句を使用し、移行する行を選択する述語を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、「[行を選択するインライン テーブル値関数を記述する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-        > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
+    >   [AZURE.NOTE] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
 
     CTP 3.1 ～ RC1 では、[Stretch Database を有効にする] ウィザードにはこのオプションがありません。このオプションで Stretch Database のテーブルを設定するには、CREATE TABLE または ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
 
@@ -114,4 +114,4 @@ CREATE TABLE <table name> ...
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

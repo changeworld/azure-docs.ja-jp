@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[クラシック デプロイ モデルで UDR を作成](virtual-networks-udr-how-to.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -175,7 +175,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 Azure CLI を使用して ARM テンプレートをデプロイするには、次の手順に従います。
 
 1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、`azure config mode` コマンドを実行してリソース マネージャー モードに切り替えます。
+2. 次に示すように、`azure config mode` コマンドを実行して、リソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
@@ -394,6 +394,6 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 		data:    
 		info:    group show command OK
 
->[AZURE.TIP] すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイメントのプロビジョニング状態が *Succeeded* になっていることを確認します。
+>[AZURE.TIP] すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイのプロビジョニング状態が *Succeded* になっていることを確認します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

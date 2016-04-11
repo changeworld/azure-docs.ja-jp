@@ -329,7 +329,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     	azure group log show new_res_group --last-deployment
 
-    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../virtual-machines/resource-group-deploy-debug.md)」を参照してください。
+    追加情報については、「[Azure のリソース グループ デプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-cli.md)」を参照してください。
 
 - 次のスクリーンショットのように、エラー情報は Azure ポータルでも確認できます。エラー情報に移動するには: ジャンプバーで [リソース グループ] をクリックし、エラーが発生したリソース グループを選択します。次に、[リソース グループ] ブレードの [Essentials] 領域で [前回のデプロイ] の日付をクリックし、[デプロイ履歴] ブレードで失敗したデプロイを選択し、[デプロイ] ブレードで赤い感嘆符が付いた [操作の詳細] 詳細をクリックします。失敗したデプロイメントの状態メッセージが [操作の詳細] ブレードに表示されます。
 
@@ -354,4 +354,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

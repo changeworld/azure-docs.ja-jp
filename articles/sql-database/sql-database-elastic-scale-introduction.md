@@ -13,15 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/01/2016"
+    ms.date="03/24/2016"
     ms.author="ddove;sidneyh"/>
 
 # Elastic Database 機能の概要
 
 **Elastic Database** 機能では、**Azure SQL Database** の実質的に無制限のデータベースのリソースを使用して、トランザクションの作業負荷に対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。Elastic Database は、次の機能で構成されています。
 
-* Elastic Database ツール: 2 つのツールによって、シャーディング データベース ソリューションの開発および管理を簡略化します。そのツールとは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)と、[Elastic Database 分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)です。 
-* [Elastic Database プール](sql-database-elastic-pool-guidance.md) (プレビュー): プールはデータベースのコレクションで、いつでもデータベースの追加や削除が可能です。プール内のデータベースは、固定量のリソース (データベース トランザクション ユニット (DTU)) を共有します。支払い金額はそのリソースの量に応じて一定であるため、パフォーマンスを管理しながらコストを簡単に計算できます。 
+* Elastic Database ツール: 2 つのツールによって、シャーディング データベース ソリューションの開発および管理を簡略化します。そのツールとは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)と、[Elastic Database 分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)です。
+* [Elastic Database プール](sql-database-elastic-pool-guidance.md) (プレビュー): プールはデータベースのコレクションで、いつでもデータベースの追加や削除が可能です。プール内のデータベースは、固定量のリソース (データベース トランザクション ユニット (DTU)) を共有します。支払い金額はそのリソースの量に応じて一定であるため、パフォーマンスを管理しながらコストを簡単に計算できます。
 * [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md)(プレビュー): ジョブを使用して、多数の Azure SQL databases を管理します。ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行します。
 * [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー): 複数のデータベースにまたがる Transact-SQL クエリを実行することができます。これにより、Excel、PowerBI、Tableau などのレポート作成ツールに接続できます。
 
@@ -33,13 +33,13 @@
 
 この図では、データベースの色は、スキーマを表しています。同じ色のデータベースは、同じスキーマを共有します。
 
-1. **Azure SQL データベース**が、シャーディング アーキテクチャを使用して Azure でホストされています。 
+1. **Azure SQL データベース**が、シャーディング アーキテクチャを使用して Azure でホストされています。
 2. **Elastic Database クライアント ライブラリ**は、シャード セットの管理に使用します。
-3. 一部のデータベースは、**エラスティック データベース プール**に入っています (「[Tame explosive growth with elastic databases (エラスティック データベースを利用して激増に対応する)](sql-database-elastic-pool.md)」をご覧ください)。 
+3. 一部のデータベースは、**エラスティック データベース プール**に入っています (「[Tame explosive growth with elastic databases (エラスティック データベースを利用して激増に対応する)](sql-database-elastic-pool.md)」をご覧ください)。
 4. **Elastic Database ジョブ**は、すべてのデータベースに対して T-SQL スクリプトを実行します。
 5. 1 つのシャードから別のシャードにデータを移動するときには、**分割/マージ ツール**を使用します。
 6. **Elastic Database クエリ**では、シャード セット内のすべてのデータベースにまたがるクエリを記述することができます。
-  
+
 ## 約束と課題
 
 クラウド アプリケーションに対して弾力性と拡張性を実現することは、コンピューティングと BLOB ストレージでは簡単でした。単純に単位を追加または削除すればよかったからです。ところが、リレーショナル データベースでのステートフルなデータ処理では、それが依然として困難でした。この課題は、次の 2 つのシナリオで顕著に現れます。
@@ -93,7 +93,7 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 
 分割/マージ ツールを使用するには、[セキュリティを構成](sql-database-elastic-scale-split-merge-security-configuration.md)する必要があります。
 
-エラスティック データベース プールの詳細を確認するには、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-portal.md)に従って新しいプールを作成してください。
+Elastic Database プールの詳細を確認するには、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-create-portal.md)に従って新しいプールを作成してください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -108,4 +108,4 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

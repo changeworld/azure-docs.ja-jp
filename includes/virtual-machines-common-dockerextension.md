@@ -1,6 +1,6 @@
 
 
-[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
 このトピックの内容:
 
@@ -64,4 +64,4 @@ Docker 対応 VM の作成をすぐに開始するには、以下を参照して
 [Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

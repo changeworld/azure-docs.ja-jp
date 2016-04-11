@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への SQL コードの移行
@@ -93,7 +93,7 @@ SQL Data Warehouse 内の共通テーブル式 (CTE) の現在の実装には、
 
 たとえば、次のコードは、@@ROWCOUNT 情報を取得するための代替ソリューションです。
 
-```
+```sql
 SELECT  SUM(row_count) AS row_count
 FROM    sys.dm_pdw_sql_requests
 WHERE   row_count <> -1
@@ -131,4 +131,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

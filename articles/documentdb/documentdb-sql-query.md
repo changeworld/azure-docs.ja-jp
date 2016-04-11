@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/11/2016" 
+	ms.date="03/30/2016" 
 	ms.author="arramac"/>
 
 # DocumentDB における SQL クエリと SQL 構文
@@ -1223,7 +1223,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 	   };
 	   
 	   UserDefinedFunction createdUdf = client.CreateUserDefinedFunctionAsync(
-	       collectionSelfLink/* link of the parent collection*/, 
+	       UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
 	       regexMatchUdf).Result;  
                                                                              
 前の例では「`REGEX_MATCH`」という名前の UDF を作成しています。この UDF は 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の string.match() 関数を使用して、1 つ目の文字列値が 2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
@@ -1285,7 +1285,9 @@ UDF の機能はさらに拡張できます。条件ロジックが使用され�
 	                }"
             };
 
-            UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(collection.SelfLink, seaLevelUdf);
+            UserDefinedFunction createdUdf = await client.CreateUserDefinedFunctionAsync(
+                UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
+                seaLevelUdf);
 	
 	
 この UDF を実行する例を以下に示します。
@@ -2316,7 +2318,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 上記に示したとおり、.NET クライアントは foreach ブロックのクエリ結果のすべてのページを自動で反復処理します。REST API のセクションで説明したクエリ オプションも .NET SDK で利用可能です。これには、`FeedOptions` および `FeedResponse` クラスを CreateDocumentQuery メソッドで使用します。ページの数は `MaxItemCount` 設定を使用して制御できます。
 
-開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に ` ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。`EnableScanInQuery` を設定することで、構成されたインデックス作成ポリシーでクエリをサポートできない場合に、スキャンを有効にすることができます。
+開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に ` ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。`EnableScanInQuery` を設定することで、構成されたインデックス作成ポリシーでクエリをサポートできない場合に、スキャンを有効にすることができます。パーティション分割コレクションの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行でき (ただし、DocumentDB はクエリ テキストからこれを自動的に抽出できます)、`EnableCrossPartitionQuery` を使用すると複数のパーティションに対して実行することが必要な場合があるクエリを実行できます。
 
 クエリのその他のサンプルについては、[DocumentDB の .NET サンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。
 
@@ -2378,4 +2380,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

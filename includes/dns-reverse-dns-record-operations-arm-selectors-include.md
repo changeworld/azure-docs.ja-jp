@@ -1,5 +1,6 @@
 > [AZURE.SELECTOR] 
-[PowerShell](dns-reverse-dns-record-operations-ps.md)
-[Azure CLI](dns-reverse-dns-record-operations-cli.md)
+[PowerShell - classic](dns-reverse-dns-record-operations-classic-ps.md)
+[Azure CLI - Resource Manager](dns-reverse-dns-record-operations-cli.md)
+[PowerShell - Resource Manager](dns-reverse-dns-record-operations-ps.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

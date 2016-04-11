@@ -1,8 +1,5 @@
 
  
-
-Azure インフラストラクチャ サービス内で、仮想マシン上で実行される 1 番目または 2 番目の開発およびテスト、または運用 Oracle データベースを設定します。構成のしやすさ、また Oracle データベースのワークロードをすばやく拡張して新しい容量を含める機能をご活用ください。
-
 ## Oracle 仮想マシン イメージ
 
 Windows および Linux ベースの仮想マシン イメージの最新セットについては、「[Oracle 仮想マシン イメージの一覧](../articles/virtual-machines/virtual-machines-linux-classic-oracle-images.md)」を参照してください。
@@ -35,4 +32,4 @@ Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェ�
 
 「[Azure 用の Oracle GoldenGate の構成](../articles/virtual-machines/virtual-machines-windows-classic-configure-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

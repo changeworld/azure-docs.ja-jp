@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
-   ms.author="mfussell"/>
+   ms.date="03/24/2016"
+   ms.author="msfussell"/>
 
 # RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行
 Azure Service Fabric では、**RunAs** と呼ばれる別のユーザー アカウントを使用して、クラスターで実行しているアプリケーションをセキュリティで保護できます。また、そのユーザー アカウントを使用するアプリケーションによって使用されるファイル、ディレクトリ、証明書などのリソースも保護されます。
@@ -110,7 +110,7 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ~~~
 
-サービスがデプロイされ、Service Fabric エクスプローラーで開始したノードの名前をメモします (たとえば、Node 1)。次に、アプリケーション インスタンスの作業フォルダーに移動し、**TestVariable** の値を示す out.txt ファイルを探します。たとえば、これが Node 2 にデプロイされた場合、**MyApplicationType** の次のパスに移動します。
+サービスがデプロイされ、Service Fabric エクスプローラーで開始したノードの名前をメモします (たとえば、Node 2)。次に、アプリケーション インスタンスの作業フォルダーに移動し、**TestVariable** の値を示す out.txt ファイルを探します。たとえば、これが Node 2 にデプロイされた場合、**MyApplicationType** の次のパスに移動します。
 
 ~~~
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
@@ -351,4 +351,4 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

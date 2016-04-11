@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="02/03/2016"
+   ms.date="03/30/2016"
    ms.author="derrickv"/>
 
 
@@ -34,4 +34,4 @@ GitHub に以下のサンプルがあります。
 
   Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。また、json としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0330_2016-->

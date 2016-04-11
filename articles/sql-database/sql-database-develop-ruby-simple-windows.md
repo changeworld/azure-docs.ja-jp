@@ -20,68 +20,25 @@
 
 # Windows 上で Ruby を使用して SQL Database に接続する
 
-
-<!--
-Older Selector technique, with dynamic drop-down lists.
- [ A ZURE . I NCLUDE [s ql-database-develop-includes-selector-language-platform-depth](../../inclu des/sql-database-develop-includes-selector-language-platform-depth.m d)]
--->
-
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
-
 
 このトピックでは、Windows 8.1 を実行している Windows コンピューターで実行される Ruby コード サンプルで Azure SQL Database のデータベースに接続する方法を示します。
 
-## 前提条件
 
-###必要なモジュールのインストール
+## 手順 1: 開発環境を設定する
 
-ターミナルを開き、次をインストールします。
+[TinyTDS Ruby Driver for SQL Server 使用の前提条件](https://msdn.microsoft.com/library/mt711041.aspx#Windows)
 
-**1) Ruby:** コンピューターに Ruby がインストールされていない場合は、インストールを行ってください。新規の Ruby ユーザーには、Ruby 2.1.X インストーラーの使用をお勧めします。これらのインストーラーは、安定した言語を提供すると共に、互換性を有し更新済みであるパッケージ (gem) の広範なリストを提供します。[Ruby のダウンロード ページ](http://rubyinstaller.org/downloads/)に進み、適切な 2.1.x インストーラーをダウンロードします。たとえば、64 ビット コンピューターをご使用の場合は、**Ruby 2.1.6 (x64)** インストーラーをダウンロードします。<br/><br/>インストーラーがダウンロードされたら、次の操作を行います。
-
-
-- インストーラーを起動するファイルをダブルクリックします。
-
-- 使用する言語を選択し、利用規約に同意します。
-
-- インストール設定画面で、*[パスに Ruby 実行可能ファイルを追加する]* と *[.rb および .rbw ファイルをこの Ruby インストールに関連付ける]* の横にあるチェックボックスを両方ともオンにします。
-
-
-**2) DevKit:** [Ruby インストール ページ](http://rubyinstaller.org/downloads/)から DevKit をダウンロードします。
-
-ダウンロードが完了したら、次の操作を行います。
-
-
-- ファイルをダブルクリックします。ファイルを抽出する場所を指定するよう求められます。
-
-- [...] ボタンをクリックし、"C:\\DevKit" を選択します。ほとんどの場合は、最初にこのフォルダーを作成する必要があります。それには、[新しいフォルダーの作成] をクリックします。
-
-- [OK]、[抽出] の順にクリックして、ファイルを抽出します。
-
-
-ここで、[コマンド ライン プロンプト] を開き、次のコマンドを入力します。
-
-	> chdir C:\DevKit
-	> ruby dk.rb init
-	> ruby dk.rb install
-
-Ruby と RubyGems が完全に機能する状態になりました。
-
-
-**3) TinyTDS:** C:\\DevKit に進み、端末から次のコマンドを実行します。これにより、TinyTDS がコンピューターにインストールされます。
-
-	gem inst tiny_tds --pre
-
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
 
-## 手順 1. 接続の詳細を取得する
+## 手順 3: 接続の詳細を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) 関数を使用して、SQL Database に接続します。
 
@@ -90,7 +47,7 @@ Ruby と RubyGems が完全に機能する状態になりました。
     host: 'yourserver.database.windows.net', port: 1433,
     database: 'AdventureWorks', azure:true
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 次のコードをコピーして、空のファイルに貼り付けます。test.rb という名前を付けます。コマンド プロンプトから次のコマンドを入力して、ファイルを実行します。
 
@@ -108,7 +65,7 @@ Ruby と RubyGems が完全に機能する状態になりました。
     puts row
     end
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -137,4 +94,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

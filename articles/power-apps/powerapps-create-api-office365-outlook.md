@@ -14,20 +14,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Office 365 Outlook API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-office365-outlook.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-office365-outlook.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-outlook.md)
 
-組織の (テナント) App Service 環境に Office 365 Outlook API を追加する 
+組織の (テナント) App Service 環境に Office 365 Outlook API を追加する
 
 ## Azure ポータルでの API の作成
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、 *yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
  
 2. タスク バーの **[参照]** をクリックします。  
 ![][14]
@@ -49,7 +49,7 @@
 8. **[設定] - [必要な設定の構成]** を選択します。  
 ![Office 365 Outlook API 設定の構成][4]
 
-9. Office 365 Azure Active Directory (AAD) アプリケーションの *アプリケーション キー* と *アプリケーション シークレット* の値を入力します。これらがない場合は、このトピックの「PowerApps Office 365 API で使用する AAD アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
+9. Office 365 Azure Active Directory (AAD) アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*の値を入力します。これらがない場合は、このトピックの「PowerApps Office 365 API で使用する AAD アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
  
 	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
 
@@ -66,7 +66,7 @@
 
 2. **[参照]** をクリックし、**[Active Directory]** を選択します。  
 
-	>[AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。  
+	>[AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
 
 3. 組織のテナント名を選択します。  
 ![Azure Active Directory の起動][6]
@@ -113,17 +113,17 @@
 
 	![Contoso アプリケーションでのアクセス許可のデリゲート][13]
 
-新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの Office 365 Outlook API 構成でこのアプリケーションを使用できます。 
+新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの Office 365 Outlook API 構成でこのアプリケーションを使用できます。
 
 「[アプリケーションを Azure AD に追加する方法と理由](../active-directory/active-directory-how-applications-are-added.md)」に AAD アプリケーションに関する有用な情報があります。
 
 ## REST API に関するページを参照してください。
 
-[Office 365 Outlook REST API](../connectors/create-api-office365-outlook.md) リファレンス。
+[Office 365 Outlook REST API](../connectors/connectors-create-api-office365-outlook.md) リファレンス。
 
 
 ## まとめと次のステップ
-このトピックでは、Office 365 Users API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。 
+このトピックでは、Office 365 Users API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
 
 [接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
 
@@ -144,5 +144,4 @@
 [14]: ./media/powerapps-create-api-office365-outlook/browseall.png
 [15]: ./media/powerapps-create-api-office365-outlook/allresources.png
 
-<!----HONumber=AcomDC_0309_2016-->
-
+<!---HONumber=AcomDC_0330_2016-->

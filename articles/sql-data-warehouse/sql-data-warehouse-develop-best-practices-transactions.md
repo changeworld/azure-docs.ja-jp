@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="02/27/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess"/>
 
 # SQL Data Warehouse のトランザクションの最適化
@@ -89,7 +89,7 @@ Azure SQL Data Warehouse では、トランザクション ログを使用して
 ### CTAS を使用した大規模な削除操作の最適化
 テーブルまたはパーティションから大量のデータを削除する必要がある場合は、それらを削除する代わりに、残しておきたいデータを `SELECT` する方が合理的です。具体的には、[CTAS][] を使用して新しいテーブルを作成します。テーブルを作成したら、[RENAME OBJECT][] コマンドのペアを使用して、テーブルの名前を切り替えます。
 
-```
+```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
 
 --Step 01. Create a new table select only the records we want to kep (PromotionKey 2)
@@ -124,7 +124,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 この例では、テーブル内の売上に割引金額をさかのぼって追加しています。
 
-```
+```sql
 --Step 01. Create a new table containing the "Update". 
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
@@ -192,7 +192,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 ただし、切り替えるパーティションを区別しやすいように、次に示すようなヘルパー プロシージャを最初に作成する必要があります。
 
-```
+```sql
 CREATE PROCEDURE dbo.partition_data_get
 	@schema_name		   NVARCHAR(128)
 ,	@table_name			   NVARCHAR(128)
@@ -240,7 +240,7 @@ GO
 
 次のコードは、上記で説明した、完全なパーティション切り替えルーチンを実現する 5 つの手順を示しています。
 
-```
+```sql
 --Create a partitioned aligned empty table to switch out the data 
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
@@ -346,7 +346,7 @@ DROP TABLE #ptn_data
 
 実際の例を次に示します。この手法を強調するために、バッチ サイズは小さい数値に設定されていますが、実際には、バッチ サイズはもっと大きい値になります。
 
-```
+```sql
 SET NO_COUNT ON;
 IF OBJECT_ID('tempdb..#t') IS NOT NULL
 BEGIN
@@ -436,4 +436,4 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 <!--MSDN references-->
 [alter index]: https://msdn.microsoft.com/ja-JP/library/ms188388.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

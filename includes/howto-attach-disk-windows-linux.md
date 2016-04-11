@@ -1,5 +1,5 @@
 
-ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-linux-about-disks-vhds.md) を参照してください。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md) を参照してください。
 
 ##<a id="attachempty"></a>方法: 空のディスクの接続
 
@@ -54,4 +54,4 @@
 
 	![Data disk successfully attached](./media/howto-attach-disk-windows-linux/AttachExistingSuccess.png)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

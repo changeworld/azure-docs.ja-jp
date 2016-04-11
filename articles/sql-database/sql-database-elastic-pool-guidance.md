@@ -113,7 +113,10 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 
 ツールを使用できない場合、プールのコスト効果が Single Database よりも高いかどうかを確認するには、次の手順が役立ちます。
 
-1.	MAX(<*DB の合計数* X *DB ごとの平均 DTU 使用量*, <*同時にピークとなる DB 数* X *DB ごとの DTU 使用量のピーク*) という式でプールに必要な eDTU を見積もります。
+1.	プールに必要な eDTU は、次のように評価します。
+
+    MAX(<*DB の合計数* X *DB ごとの平均 DTU 使用量*> <br> <*同時にピークとなる DB 数* X *DB ごとの DTU 使用量のピーク*)
+
 2.	プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。次に、このストレージの容量を提供する eDTU プール サイズを決定します。eDTU プール サイズに基づくプール ストレージの制限については、「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 3.	手順 1. と手順 2. の eDTU の見積もりのうち、大きい方を使用します。
 4.	「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照し、手順 3. の見積もりを超える最小の eDTU プール サイズを探します。
@@ -131,4 +134,4 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 - [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)
 - [エラスティック データベース プールに適したデータベースを識別する Powershell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016-->

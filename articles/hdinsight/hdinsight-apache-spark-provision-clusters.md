@@ -71,16 +71,16 @@ Azure での SQL データベースの作成方法について詳しくは、「
 
 Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
-##<a id="portal"></a>Azure プレビュー ポータルの使用
+##<a id="portal"></a>Azure ポータルの使用
 
 HDInsight 上の Spark クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure Storage アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。Azure Storage アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+    ![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-provision-clusters/hdispark.createcluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
 3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Spark]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Windows Server 2012 R2 Datacenter]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
@@ -174,9 +174,9 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	* **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-apache-spark-provision-clusters/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
 
-	* **ユーザー** (![ユーザー アイコン](./media/hdinsight-apache-spark-provision-clusters/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+	* **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-apache-spark-provision-clusters/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに対して設定できます。
 
-		> [AZURE.IMPORTANT] これは Azure プレビュー ポータルでのこのクラスターへのアクセスと権限のみに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT] これは、Azure ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
 	* **タグ** (![タグ アイコン](./media/hdinsight-apache-spark-provision-clusters/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
 
@@ -242,4 +242,4 @@ Spark クラスターの種類を指定します。
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016-->

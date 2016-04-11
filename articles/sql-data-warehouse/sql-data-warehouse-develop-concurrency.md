@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/04/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での同時実行とワークロード管理
@@ -227,7 +227,7 @@ SQL Data Warehouse のワークロード内部では、管理はもう少し複�
 
 リソース ガバナーの観点からメモリ リソースの割り当ての違いを詳細に確認するには、次のクエリを使用します。
 
-```
+```sql
 WITH rg
 AS
 (   SELECT  pn.name									AS node_name
@@ -282,7 +282,7 @@ ORDER BY
 
 SQL Data Warehouse のマスター データベースへの接続を開き、次のコマンドを実行します。
 
-```
+```sql
 CREATE LOGIN newperson WITH PASSWORD = 'mypassword'
 
 CREATE USER newperson for LOGIN newperson
@@ -294,19 +294,19 @@ CREATE USER newperson for LOGIN newperson
 
 SQL Data Warehouse データベースへの接続を開き、次のコマンドを実行します。
 
-```
+```sql
 CREATE USER newperson FOR LOGIN newperson
 ```
 
 ユーザーに対して、1 回完全なアクセス許可が付与される必要があります。次の例は、SQL Data Warehouse データベースで `CONTROL` を付与します。データベース レベルの `CONTROL` は、SQL サーバーの db\_owner SQL server に相当します。
 
-```
+```sql
 GRANT CONTROL ON DATABASE::MySQLDW to newperson
 ```
 
 ワークロード管理ロールを確認するには、次のクエリを使用します。
 
-```
+```sql
 SELECT  ro.[name]           AS [db_role_name]
 FROM    sys.database_principals ro
 WHERE   ro.[type_desc]      = 'DATABASE_ROLE'
@@ -316,13 +316,13 @@ AND     ro.[is_fixed_role]  = 0
 
 増加ワークロード管理ロールにユーザーを追加するには、次のクエリを使用します。
 
-```
+```sql
 EXEC sp_addrolemember 'largerc', 'newperson'
 ```
 
 ワークロード管理ロールからユーザーを削除するのには、次のクエリを使用します。
 
-```
+```sql
 EXEC sp_droprolemember 'largerc', 'newperson'
 ```
 
@@ -330,7 +330,7 @@ EXEC sp_droprolemember 'largerc', 'newperson'
 
 どのユーザーが特定のロールのメンバーであるかを確認するには、次のクエリを使用します。
 
-```
+```sql
 SELECT	r.name AS role_principal_name
 ,		m.name AS member_principal_name
 FROM	sys.database_role_members rm
@@ -343,7 +343,7 @@ WHERE	r.name IN ('mediumrc','largerc', 'xlargerc')
 ### キューに置かれたクエリの検出
 同時実行キューに配置されているクエリを識別するには、常に `sys.dm_pdw_exec_requests` DMV を参照します。
 
-```
+```sql
 SELECT 	 r.[request_id]									AS Request_ID
 		,r.[status]										AS Request_Status
 		,r.[submit_time]								AS Request_SubmitTime
@@ -374,7 +374,7 @@ BackupConcurrencyResourceType は、データベースのバックアップ実�
 
 現在キューに置かれたクエリを分析して、要求がどのリソースを待機しているのかを調べるには、`sys.dm_pdw_waits` DMV を参照してください。
 
-```
+```sql
 SELECT  w.[wait_id]
 ,       w.[session_id]
 ,       w.[type]											AS Wait_type
@@ -411,7 +411,7 @@ WHERE	w.[session_id] <> SESSION_ID()
 
 特定のクエリによって使用されるリソースの待機のみを表示するには、`sys.dm_pdw_resource_waits` DMV を参照してください。リソースの待機時間では、リソースが提供されるまでの時間のみが考慮されますが、シグナルの待機時間は、基本の SQL Server リソースに対するクエリが CPU にスケジュール設定されるまでの時間です。
 
-```
+```sql
 SELECT  [session_id]
 ,       [type]
 ,       [object_type]
@@ -430,7 +430,7 @@ WHERE	[session_id] <> SESSION_ID()
 
 最後に、待機のこれまでの傾向を分析するために、SQL Data Warehouse では `sys.dm_pdw_wait_stats` DMV が提供されています。
 
-```
+```sql
 SELECT	w.[pdw_node_id]
 ,		w.[wait_name]
 ,		w.[max_wait_time]
@@ -455,4 +455,4 @@ FROM	sys.dm_pdw_wait_stats w
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

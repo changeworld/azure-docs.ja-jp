@@ -21,7 +21,7 @@
 
 インターネット インフォメーション サービス (IIS) 6 以降で実行されている既存の Web サイトを簡単に [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に移行できます。
 
->[AZURE.IMPORTANT] Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了します。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Web Apps により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Web Apps Migration Assistant により移行プロセスが自動化されます。
+>[AZURE.IMPORTANT] Windows Server 2003 は、2015 年 7 月 14 日でサポートが終了しました。現在 Windows Server 2003 の IIS サーバーに Web サイトが置かれている場合、Web Apps により、低リスク、低コスト、および低干渉で Web サイトがオンラインの状態に保たれます。また、Web Apps Migration Assistant により移行プロセスが自動化されます。
 
 [Web Apps Migration Assistant](https://www.movemetothecloud.net/) では、IIS サーバーのインストールを分析し、どのサイトを App Service に移行できるかを識別し、移行できない要素またはプラットフォームでサポートされていない要素を強調表示してから、Web サイトおよび関連するデータベースを Azure に移行できます。
 
@@ -135,4 +135,4 @@ Migration Assistant により対応状況レポートが作成されます。こ
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

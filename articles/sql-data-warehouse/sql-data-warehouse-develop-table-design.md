@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのテーブル デザイン #
@@ -59,7 +59,7 @@ SQL Data Warehouse では、次の一般的なビジネス データ型がサポ
 
 次のクエリを使用して、データ ウェアハウスで互換性のない型が含まれた列を特定できます。
 
-```
+```sql
 SELECT  t.[name]
 ,       c.[name]
 ,       c.[system_type_id]
@@ -138,7 +138,7 @@ SQL Data Warehouse でのデータ分散には、次の 2 つの選択肢があ�
 
 ラウンド ロビン分散テーブルの例を次に示します。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -158,7 +158,7 @@ WITH
 
 これもラウンド ロビン分散テーブルの例です。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -205,7 +205,7 @@ WITH
 
 ProductKey でハッシュ分散されたテーブルを次に示します。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (   [ProductKey]            int          NOT NULL
 ,   [OrderDateKey]          int          NOT NULL
@@ -230,7 +230,7 @@ WITH
 
 SQL Data Warehouse のパーティション分割された `CREATE TABLE` コマンドの例を次に示します。
 
-```
+```sql
 CREATE TABLE [dbo].[FactInternetSales]
 (
     [ProductKey]            int          NOT NULL
@@ -306,4 +306,4 @@ SQL Data Warehouse では、次の機能は使用またはサポートされま�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

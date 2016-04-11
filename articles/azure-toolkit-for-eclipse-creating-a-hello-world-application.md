@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure 向け Hello World アプリケーションを Eclipse で作成する"
+    pageTitle="Azure 向け Hello World クラウド サービスを Eclipse で作成する"
     description="Azure Toolkit for Eclipse を使用してシンプルな Hello World アプリケーションを作成する方法について説明します。"
     services=""
     documentationCenter="java"
@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="03/04/2016" 
+    ms.date="03/28/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690944.aspx -->
 
-# Azure 向け Hello World アプリケーションを Eclipse で作成する #
+# Azure 向け Hello World クラウド サービスを Eclipse で作成する #
 
 以降の手順では、Azure Toolkit for Eclipse を使って基本的な JSP アプリケーションを作成し Azure にデプロイする方法を説明しています。簡潔にするために JSP の例を紹介していますが、Azure のデプロイに関する限り、Java サーブレットの場合も手順はほぼ同じです。
 
@@ -187,4 +187,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719491]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic719491.png
 [ic789598]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic789598.png
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

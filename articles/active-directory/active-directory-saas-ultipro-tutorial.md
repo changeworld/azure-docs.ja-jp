@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="03/23/2016"
 	ms.author="jeedes"/>
 
 
@@ -65,7 +65,7 @@ Azure AD への Ultipro の統合を構成するには、ギャラリーから�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Ultipro**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ultipro-tutorial/tutorial_ultipro_01.png)<br>
-7. 結果ウィンドウで **[Ultipro]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br>
+7. 結果ウィンドウで **[Ultipro]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。 <br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ultipro-tutorial/tutorial_ultipro_02.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Ultipro で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -221,4 +221,4 @@ Ultipro で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

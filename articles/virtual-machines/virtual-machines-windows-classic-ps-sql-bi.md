@@ -1,13 +1,13 @@
-<properties 
+<properties
 	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
 	description="このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure 仮想マシン (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" 
+	editor="monicar"
 	tags="azure-service-management"/>
-<tags 
+<tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
 	ms.topic="article"
@@ -19,8 +19,8 @@
 # Azure Virtual Machines での SQL Server Business Intelligence
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
- 
- 
+
+
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
 ## ライセンスに関する考慮事項
@@ -42,18 +42,18 @@ Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) 次の PowerShell スクリプトは、ImageName に "SQL Server" が含まれた Azure イメージのリストを返します。
 
 	# assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
-	
+
 	$subscriptionID = ""    # REQUIRED: Provide your subscription ID.
 	$subscriptionName = "" # REQUIRED: Provide your subscription name.
 	$thumbPrint = "" # REQUIRED: Provide your certificate thumbprint.
 	$certificate = Get-Item cert:\currentuser\my\$thumbPrint # REQUIRED: If your certificate is in a different store, provide it here.-Ser  store is the one specified with the -ss parameter on MakeCert
-	
+
 	Set-AzureSubscription -SubscriptionName $subscriptionName -Certificate $certificate -SubscriptionID $subscriptionID
-	
+
 	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2014"
 	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2014*"} | select imagename,category, location, label, description
-	
+
 	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2012"
 	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2012*"} | select imagename,category, location, label, description
@@ -99,7 +99,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 - ディスク管理のベスト プラクティスとして、データ ファイル、ログ ファイル、バックアップ ファイルは **C**: および **D**: 以外のドライブに保存することをお勧めします。たとえば、データ ディスク **E**: と **F**: を作成します。
 
 	- 既定の **C**: ドライブのドライブ キャッシュ ポリシーは、データ操作に最適でありません。
-	
+
 	- **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。**D**: ドライブは永続化されず、BLOB ストレージには保存されません。仮想マシンのサイズ変更などの管理タスクを行うと、**D**: ドライブはリセットされます。tempdb も含め、データベース ファイルには** D**: ドライブを使用**しない**ことをお勧めします。
 
 	ディスクの作成と接続の詳細については、「[データ ディスクを Windows 仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)」をご覧ください。
@@ -165,11 +165,11 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 - Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
 
 	1. コンピューター名として**クラウド サービス名**を入力します。
-	
+
 	1. コロン (:) を入力し、TCP リモート デスクトップ エンドポイント用に構成されているパブリック ポート番号を入力します。
-		
+
 		Myservice.cloudapp.net:63133
-		
+
 		詳細については、「[What is a Cloud Service? (クラウド サービスとは)](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/)」を参照してください。
 
 **Reporting Services 構成マネージャーを起動します。**
@@ -279,11 +279,11 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 Microsoft Azure 仮想マシンでホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
 - **レポート ビルダー**: 仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
-											
+
 	1. 管理者特権でブラウザーを起動します。
-	
+
 	1. 仮想マシン上のレポート マネージャーを参照し、リボンの **[レポート ビルダー]** をクリックします。
-	
+
 	詳細については、「[レポート ビルダーのインストール、アンインストール、およびサポート](https://technet.microsoft.com/library/dd207038.aspx)」をご覧ください。
 
 - **SQL Server Data Tools: VM**: SQL Server Data Tools は仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
@@ -295,11 +295,11 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 - レポートを格納する .VHD ハード ドライブを作成し、ドライブをアップロードして接続します。
 
 	1. ローカル コンピューター上で、レポートを格納する .VHD ハード ドライブを作成します。
-	
+
 	1. 管理証明書を作成し、インストールします。
-	
+
 	1. Add-AzureVHD コマンドレットを使用して、VHD ファイルを Azure にアップロードします (「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md)」を参照)。
-	
+
 	1. ディスクを仮想マシンに接続します。
 
 ## SQL Server のその他のサービスと機能のインストール
@@ -375,13 +375,13 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 - VM を 1 つだけ使用し、次の 2 つの条件に該当する場合は、VM エンドポイントを作成する必要はありません。また、VM 上のファイアウォールでポートを開く必要もありません。
 
 	- VM 上の SQL Server 機能にリモート接続しない。VM へのリモート デスクトップ接続を確立し、VM 上で SQL Server 機能にローカルでアクセスすることは、SQL Server 機能へのリモート接続とは見なされません。
-	
+
 	- Azure Virtual Networking または別の VPN トンネリング ソリューションを使用して、VM をオンプレミス ドメインに参加させない。
 
 - 仮想マシンがドメインに参加していない場合に VM 上の SQL Server 機能にリモート接続するには、次の操作を行います。
 
 	- VM 上のファイアウォールでポートを開きます。
-	
+
 	- アスタリスク (*) が付いているポートの仮想マシン エンドポイントを作成します。
 
 - 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。ただし、VM 上のファイアウォールでポートを開いてください。
@@ -397,7 +397,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - エンドポイントの作成: [仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)
 
-- SQL Server: 「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
+- SQL Server: 「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
 
 次の図は、VM 上の機能とコンポーネントへのリモート アクセスを可能にするために、VM のファイアウォールで開くポートを示しています。
 
@@ -411,7 +411,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
-- [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)
+- [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)
 
 - [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)
 
@@ -431,4 +431,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

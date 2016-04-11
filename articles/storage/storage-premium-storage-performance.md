@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/20/2016"
+    ms.date="03/28/2016"
     ms.author="prkhad"/>
 
 # Azure Premium Storage: 高パフォーマンスのための設計
@@ -168,9 +168,9 @@ IO サイズを変更できるアプリケーションを使用している場�
 IO サイズがアプリケーションのパフォーマンスに及ぼす影響を監視するには、VM とディスクでベンチマーク ツールを実行します。複数のテスト実行を作成し、実行ごとに異なる IO サイズを使用して影響を確認します。詳細については、この記事の最後のセクションである「[ベンチマーク](#Benchmarking)」をご覧ください。
 
 ## 高スケール VM サイズ  
-アプリケーションの設計を始めるときに、最初に行うことの 1 つとして、アプリケーションをホストする VM の選択があります。Premium Storage には、高いコンピューティング能力と高いローカル ディスク I/O パフォーマンスを必要とするアプリケーションを実行できる、高スケール VM サイズが用意されています。これらの VM は、高速プロセッサ、高いメモリ対コア比、ローカル ディスク用ソリッド ステート ドライブ (SSD) を提供します。Premium Storage をサポートする高スケール VM の例として、DS シリーズ VM と GS シリーズ VM があります。
+アプリケーションの設計を始めるときに、最初に行うことの 1 つとして、アプリケーションをホストする VM の選択があります。Premium Storage には、高いコンピューティング能力と高いローカル ディスク I/O パフォーマンスを必要とするアプリケーションを実行できる、高スケール VM サイズが用意されています。これらの VM は、高速プロセッサ、高いメモリ対コア比、ローカル ディスク用ソリッド ステート ドライブ (SSD) を提供します。Premium Storage をサポートする高スケール VM の例として、DS シリーズ VM、DSv2 シリーズ VM、GS シリーズ VM があります。
 
-高スケール VM は、CPU コア数、メモリ容量、OS/一時ディスク サイズが異なるさまざまなサイズで提供されます。各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。また、コンピューティングおよびストレージ コストにも影響します。例として、DS シリーズと GS シリーズの最大 VM サイズの仕様を次に示します。
+高スケール VM は、CPU コア数、メモリ容量、OS/一時ディスク サイズが異なるさまざまなサイズで提供されます。各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。また、コンピューティングおよびストレージ コストにも影響します。例として、DS シリーズ、DSv2 シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
 
 | VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大データ ディスク数 | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
 |---|---|---|---|---|---|---|---|
@@ -540,4 +540,4 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-classic-sql-perf.md)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx) 
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

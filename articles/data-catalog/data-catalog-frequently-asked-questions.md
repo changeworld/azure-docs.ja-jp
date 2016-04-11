@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Data Catalog のよく寄せられる質問"
-   description="データ ソースの検出、注釈、管理など、Azure Data Catalog プレビューについてのよく寄せられる質問です。"
+   description="データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="02/04/2016"
+   ms.date="03/30/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -39,7 +39,7 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 ## Q: Azure Data Catalog の提供先のリージョンはどこですか。
 
-プレビュー期間中、**Azure Data Catalog** サービスは次のデータ センターでのみ使用できます。
+現在、**Azure Data Catalog** サービスは次のデータ センターで使用できます。
 
 - 米国西部
 - 米国東部
@@ -58,14 +58,13 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 現在サポートされているデータ ソースの一覧については、「[Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」をご覧ください。
 
-
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
 
 機能要求やその他のフィードバックは [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で送信することができます。
 
 ## Q: Azure Data Catalog はどのように使用を開始するのですか。
 
-使用を開始する最適な場所は、「[Data Catalog の概要](../data-catalog-get-started/)」の手順に従うことです。この記事は、パブリック プレビューでの機能のエンド ツー エンドのツアーです。
+使用を開始する最適な場所は、「[Data Catalog の概要](../data-catalog-get-started/)」の手順に従うことです。この記事は、サービスの機能を網羅した概要です。
 
 ## Q: データの登録方法を教えてください。
 
@@ -106,10 +105,6 @@ A: Microsoft **Azure Data Catalog** は、Microsoft Azure クラウドでホス�
 
 エキスパートは、データ オブジェクトに関して、情報に基づいた、ある観点を持つ個人です。オブジェクトには、複数のエキスパートを指定できます。エキスパートは、オブジェクトの "所有者" である必要はありません。エキスパートは単純に、データをどのように使用でき、使用すべきかを知っている者です。
 
-## Q: プレビューの SLA はどうなっていますか。
-
-**Azure Data Catalog** プレビュー期間中は、明示的なサービス レベル アグリーメントがありません。
-
 ## Q: 問題が発生した場合に、Azure Data Catalog チームに情報を伝えるにはどうすればよいですか。
 
 **Azure Data Catalog** フォーラムを使用して、問題を報告し、情報を共有して、質問をしてください。フォーラムは、http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409 にあります
@@ -141,12 +136,8 @@ A: **Azure Data Catalog** で、データ資産を選択し、[所有権の取�
 
 A: カタログに既に登録されているデータ資産のメタデータを更新するには、その資産を含むデータ ソースを再登録するだけです。テーブルまたはビューの列の追加や削除などのデータ ソースのすべての変更は、カタログで更新されますが、ユーザーによって提供されたすべての注釈は維持されます。
 
-## Q: Azure Data Catalog を操作しているときに、質問をしたり、ヘルプを参照したりするにはどうすればいいですか。
-
-問題が発生した場合、または **Azure Data Catalog** プレビューのサポートが必要な場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)に投稿してください。
-
 ## Q: ここに質問の答えがありません。どうすればいいですか。
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/30/2015"
+	ms.date="03/30/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションにログインして管理することができない
@@ -24,13 +24,9 @@
 
 ## どのポータルにアクセスしようとしていますか?
 
-アカウント所有者は[アカウント センター](https://account.windowsazure.com/)にのみアクセスできる一方、サービス管理者 (SA) と共同管理者 (CA) は [Azure ポータル](https://manage.windowsazure.com/)にアクセスできます。
+アカウント管理者は[アカウント センター](https://account.windowsazure.com/)だけにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)だけです。
 
-管理者ロールの更新方法については、以下のリンクを参照してください。
-
-- [アカウントの SA を更新するには](./billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)
-
-- [管理ポータルで CA を新規に追加するには](./billing-add-change-azure-subscription-administrator.md#add-a-co-administrator-for-a-subscription)
+Azure 管理者ロールの詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
 ## サブスクリプションは Microsoft アカウントまたは組織アカウントに関連付けられていますか?
 
@@ -49,11 +45,11 @@ Microsoft アカウントとはお使いの電子メール アドレスとその
 
 | ログイン方法| Microsoft アカウントを共同管理者またはサービス管理者として追加できる |同じ組織内の組織アカウントを共同管理者またはサービス管理者として追加できる |異なる組織の組織アカウントを共同管理者またはサービス管理者として追加できる
 | ------------- | ------------- |---------------|---------------|
-|Microsoft アカウント |はい|いいえ|いいえ|
+|Microsoft アカウント |はい|なし|いいえ|
 |組織アカウント|はい|はい|いいえ|
 
 ## キャッシュ/Cookie の削除、IE InPrivate ブラウズ モードの使用、および他のブラウザーの使用
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016-->

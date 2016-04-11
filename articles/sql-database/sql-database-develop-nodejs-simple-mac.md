@@ -26,36 +26,19 @@
 
 このトピックでは、Mac OS X 上で実行する Node.js のコード サンプルを示します。このサンプルは、Tedious ドライバーを使用して、Azure SQL Database に接続します。
 
+## 手順 1: 開発環境を設定する
 
-## 前提条件
+[Tedious Node.js Driver for SQL Server 使用の前提条件](https://msdn.microsoft.com/library/mt652094.aspx#Mac)
 
-
-既にコンピューターにインストールされている場合を除いて、**node** をインストールします。
-
-
-OSX 10.10 Yosemite に node.js をインストールするには、簡単にインストールができる、便利な事前コンパイルされたバイナリ パッケージをダウンロードします。[nodejs.org に進み](http://nodejs.org/)、インストール ボタンをクリックして最新のパッケージをダウンロードします。
-
-**node** と **npm** の両方のインストールを行うインストール ウィザードに従い、.dmg からパッケージをインストールします (npm は、node.js 用にその他のパッケージのインストールを容易にするノード パッケージ マネージャーです)。
-
-
-**ノード** と **npm** でコンピューターを構成したら、Node.js プロジェクトの作成を予定しているディレクトリに移動して、次のコマンドを入力します。
-
-
-	npm init
-	npm install tedious
-
-
-**npm init** はノード プロジェクトを作成します。プロジェクトの作成中に既定値を保持するには、プロジェクトが作成されるまで Enter キーを押します。プロジェクト ディレクトリに **package.json** が表示されます。
-
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
-## 手順 1. 接続の詳細を取得する
+## 手順 3: 接続の詳細を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 [新しい Connection ](http://pekim.github.io/tedious/api-connection.html)関数は、SQL Database に接続するために使用します。
 
@@ -74,7 +57,7 @@ OSX 10.10 Yosemite に node.js をインストールするには、簡単にイ�
 	});
 
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 
 [新しい Request()](http://pekim.github.io/tedious/api-request.html) 関数 を使用して、すべての SQL ステートメントが実行されます。ステートメントが SELECT ステートメントなどの行を返す場合は、[request.on()](http://pekim.github.io/tedious/api-request.html) 関数を使用してそれらを取得することができます。行が存在しない場合は、[request.on()](http://pekim.github.io/tedious/api-request.html) 関数は空のリストを返します。
@@ -123,7 +106,7 @@ OSX 10.10 Yosemite に node.js をインストールするには、簡単にイ�
 	}
 
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -172,4 +155,4 @@ OSX 10.10 Yosemite に node.js をインストールするには、簡単にイ�
 
 詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0330_2016-->

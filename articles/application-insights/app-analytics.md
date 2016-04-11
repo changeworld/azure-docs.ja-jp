@@ -16,12 +16,10 @@
 	ms.author="awills"/>
 
 
-
-
 # Application Insights の Analytics
 
 
-[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-analytics.md) を使用すると、[Application Insights](app-insights-overview.md) によってアプリから収集されたテレメトリに対して強力なクエリを実行できます。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
 
@@ -66,6 +64,8 @@
 >[AZURE.NOTE] まず、[言語ツアー](app-analytics-tour.md)を参照することをお勧めします。
 
 
+
+
 ## Application Insights のデータに接続する
 
 
@@ -74,9 +74,12 @@
 ![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-analytics/001.png)
 
 
+## 制限
+
+現時点では、クエリの結果は過去 1 週間のデータだけに制限されます。
 
 
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

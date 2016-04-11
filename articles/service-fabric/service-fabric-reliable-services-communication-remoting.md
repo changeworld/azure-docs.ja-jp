@@ -23,7 +23,7 @@ WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロ
 サービスのリモート処理の設定は、次の 2 つの簡単な手順で行われます。
 
 1. 実装するサービスのインターフェイスを作成します。このインターフェイスはサービスのリモート プロシージャ コールで使用できるメソッドを定義します。このメソッドはタスクを返す非同期メソッドである必要があります。インターフェイスは `Microsoft.ServiceFabric.Services.Remoting.IService` を実装し、そのサービスにリモート処理インターフェイスがあることを示す必要があります。
-2. `Microsoft.ServiceFabric.Services.Remoting.Runtime.ServiceRemotingListener` をサービスに使用します。これは、リモート処理機能を提供する `ICommunicationListener` の実装です。
+2. `FabricTransportServiceRemotingListener` をサービスに使用します。これは、リモート処理機能を提供する `ICommunicationListener` の実装です。
 
 たとえば、この Hello World サービスでは、リモート プロシージャ コールで "Hello World" を取得する 1 つのメソッドを公開します。
 
@@ -37,7 +37,9 @@ internal class HelloWorldStateful : StatefulService, IHelloWorldStateful
 {
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
-        return new[] { new ServiceReplicaListener(parameters => new ServiceRemotingListener<HelloWorldStateful>(parameters, this)) };
+        return new[]{
+                new ServiceReplicaListener(
+                    (context) => new FabricTransportServiceRemotingListener(context,this))};
     }
 
     public Task<string> GetHelloWorld()
@@ -47,7 +49,7 @@ internal class HelloWorldStateful : StatefulService, IHelloWorldStateful
 }
 
 ```
-> [AZURE.NOTE]サービス インターフェイスの引数と戻り値の型は、単純型、複合型、またはカスタム型のいずれかにできますが、.NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) によってシリアル化できる必要があります。
+> [AZURE.NOTE] サービス インターフェイスの引数と戻り値の型は、単純型、複合型、またはカスタム型のいずれかにできますが、.NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) によってシリアル化できる必要があります。
 
 
 ## リモート サービス メソッドの呼び出し
@@ -70,4 +72,6 @@ string message = await helloWorldClient.GetHelloWorld();
 
 * [Reliable Services との WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+* [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
+
+<!---HONumber=AcomDC_0330_2016-->

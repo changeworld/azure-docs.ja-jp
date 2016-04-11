@@ -26,7 +26,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 このチュートリアルでは、Azure Event Hubs を作成する方法、C# のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および HDInsight で Apache Spark 用に構成されている Zeppelin Notebook を使用して並列にメッセージを取得する方法を説明します。
 
-> [AZURE.NOTE] この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure プレビュー ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE] この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
 
 **前提条件:**
 
@@ -54,10 +54,12 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 4. 作成した Event Hub をクリックし、**[構成]** をクリックして、Event Hub 用に 2 つのアクセス ポリシーを作成します。
 
 	<table>
-<tr><th>名前</th><th>アクセス許可</th></tr>
-<tr><td>mysendpolicy</td><td>送信</td></tr>
-<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
+	<tr><th>名前</th><th>アクセス許可</th></tr>
+	<tr><td>mysendpolicy</td><td>送信</td></tr>
+	<tr><td>myreceivepolicy</td><td>リッスン</td></tr>
+	</table>
+
+	アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Event Hub のポリシーを作成します")
 
@@ -92,7 +94,7 @@ Spark クラスターでリソースを割り当てる方法については、�
 
 ### Zeppelin を利用してストリーミング アプリケーションを作成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -112,8 +114,7 @@ Spark クラスターでリソースを割り当てる方法については、�
 
 4. 新しい Notebook に既定で作成される空の段落に次のスニペットを貼り付け、Event Hub の構成を使用するようにプレースホルダーを置き換えます。このスニペットでは、Event Hub からストリームを受け取り、**mytemptable** という名前の一時テーブルにストリームを登録します。次のセクションでは、送信側アプリケーションを開始します。その後は、テーブルから直接データを読み取ることができます。
 
-	> [AZURE.NOTE] 次のスニペットでは、**eventhubs.checkpoint.dir** を既定のストレージ コンテナー内のディレクトリに設定する必要があります。ディレクトリが存在しない場合、ストリーミング アプリケーションにより作成されます。 
-	>**wasb://container@storageaccount.blob.core.windows.net/mycheckpointdir/** のようにディレクトリの完全パスを指定するか、 「**/mycheckpointdir**」 のようにディレクトリの相対パスを指定できます。
+	> [AZURE.NOTE] 次のスニペットでは、**eventhubs.checkpoint.dir** を既定のストレージ コンテナー内のディレクトリに設定する必要があります。ディレクトリが存在しない場合、ストリーミング アプリケーションにより作成されます。「**wasb://container@storageaccount.blob.core.windows.net/mycheckpointdir/**」のようにディレクトリの完全パスを指定するか、「**/mycheckpointdir**」のようにディレクトリの相対パスを指定できます。
 
 		import org.apache.spark.streaming.{Seconds, StreamingContext}
 		import org.apache.spark.streaming.eventhubs.EventHubsUtils
@@ -195,5 +196,4 @@ Zeppelin を使用して HDInsight の Spark クラスターでストリーミ�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!----HONumber=AcomDC_0218_2016-->
-<!--LINE 117-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/23/2016"
+     ms.date="03/29/2016"
      ms.author="obloch"/>
 
 # C 用 Azure IoT デバイス SDK の概要
@@ -156,6 +156,8 @@ SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケ
 
 ### ライブラリの初期化
 
+> [AZURE.NOTE] ライブラリの使用を開始する前に、プラットフォーム固有の初期化の実行が必要になる場合があります。たとえば、Linux 上で AMQPS を使用する計画がある場合は、OpenSSL ライブラリを初期化する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)のサンプルはクライアントの起動時にユーティリティ関数 **platform\_init** を呼び出し、終了する前に **platform\_deinit** 関数を呼び出します。これらの関数は、platform.h ヘッダー ファイルで宣言されます。[リポジトリ](https://github.com/Azure/azure-iot-sdks)の目的のプラットフォームについてこれらの関数の定義を確認して、クライアントにいずれかのプラットフォーム初期化コードを含める必要があるかどうかを決める必要があります。
+
 ライブラリで作業を開始するには、最初に、IoT Hub クライアントのハンドルを割り当てる必要があります。
 
 ```
@@ -242,7 +244,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 これにより、以前に割り当てられていたリソースが、**IoTHubClient\_CreateFromConnectionString** 関数によって解放されます。
 
-見てわかるように、**IoTHubClient** ライブラリを使用すると、簡単にイベントの送信とメッセージの受信を実行できます。使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
+ご覧のように、**IoTHubClient** ライブラリを使用すると、簡単にイベントの送信とメッセージの受信を実行できます。使用するプロトコルなど (開発者の観点からは単純な構成オプションです)、IoT Hub との通信に関する詳細情報は、ライブラリで処理されます。
 
 **IoTHubClient** ライブラリでは、デバイスから IoT Hub に送信されるイベントをシリアル化する方法を正確に制御することもできます。これが利点になる場合もありますが、この実装の詳細が関心の対象にならない場合もあります。その場合は、次のセクションで説明する **serializer** ライブラリの使用を検討することができます。
 
@@ -456,6 +458,6 @@ serializer_deinit();
 
 ## 次のステップ
 
-この記事では、**C 用 Azure IoT デバイス SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。次の記事では、[IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
+この記事では、**C 用 Azure IoT device SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。次の記事では、[IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016-->

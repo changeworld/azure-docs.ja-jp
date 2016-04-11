@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="01/22/2016"
+	ms.date="03/24/2016"
 	ms.author="jroth" />
 
 # Azure 仮想マシンにおける SQL Server の高可用性と障害復旧
@@ -22,7 +22,7 @@
 
 Microsoft Azure 仮想マシン (VM) と SQL Server を使用すると、高可用性と障害復旧 (HADR) データベース ソリューションのコストを削減できます。ほとんどの SQL Server HADR ソリューションでは、Azure のみのソリューションとしても、ハイブリッドのソリューションとしても、Azure 仮想マシンがサポートされています。Azure のみのソリューションでは、HADR システム全体が Azure で実行されます。ハイブリッド構成では、ソリューションの一部が Azure で実行され、その他の部分が組織内のオンプレミスで実行されます。Azure 環境は柔軟性が高いので、SQL Server データベース システムの予算や HADR 要件に応じて、部分的に、または完全に Azure に移動できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
 ## HADR ソリューションの必要性
@@ -142,7 +142,7 @@ Azure ディスク内の geo レプリケーションでは、同じデータベ
 
 ## 次のステップ
 
-Azure 仮想マシンと SQL Server を作成する必要がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+Azure 仮想マシンと SQL Server を作成する必要がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
 Azure VM で実行されている SQL Server のパフォーマンスを最大限まで高めるには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-classic-sql-perf.md)」のガイダンスをご覧ください。
 
@@ -153,4 +153,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
 
 # SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール
@@ -40,7 +40,7 @@ Microsoft はバック グラウンドで多数のパフォーマンス ベン�
 
 [Azure クラシック ポータル][]で、SQL Data Warehouse ページの上部にある [スケール] アイコンをクリックし、スライダーを使用して Data Warehouse に適用される DWU の量を増減し、[保存] をクリックします。プログラムを使用してスケールを変更する場合は、次の T-SQL コードが SQL Data Warehouse に対して DWU の割り当てを調整する方法を示しています。
 
-```
+```sql
 ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ;
@@ -49,7 +49,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 また、次のコードを使用し、Powershell を使用して同様に調整することもできます。
 
-```
+```Powershell
 Set-AzureSQLDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -ServiceObjective "DW1000"
 ```
 
@@ -64,20 +64,18 @@ SQL Data Warehouse 独自の機能として、オンデマンドでコンピュ�
 
 次のコードは、PowerShell を使用して一時停止を実行する方法を示しています。
 
-```
+```Powershell
 Suspend-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName
 "Server01" –DatabaseName "Database02"
 ```
 
 PowerShell を使用すれば、サービスの再開も非常に簡単に行うことができます。
 
-```
+```Powershell
 Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
 PowerShell の使用方法の詳細については、「[SQL Data Warehouse での PowerShell コマンドレットと REST API の使用][]」を参照してください。
-
-
 
 ## 次のステップ
 パフォーマンスの概要については、[パフォーマンスの概要][]に関するページを参照してください。
@@ -95,4 +93,4 @@ PowerShell の使用方法の詳細については、「[SQL Data Warehouse で�
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

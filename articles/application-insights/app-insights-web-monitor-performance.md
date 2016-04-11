@@ -110,43 +110,52 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 ## システム パフォーマンス カウンター
 
-[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)から、いくつかのメトリックを選択できます。Windows にはさまざまなパフォーマンス カウンターが用意されていますが、ユーザーが独自に定義することもできます。
+
+Windows にはさまざまなパフォーマンス カウンターが用意されていますが、ユーザーが独自に定義することもできます。
 
 (Azure でホストされるアプリケーションの場合は、[Azure Diagnostics を Application Insights に送信](app-insights-azure-diagnostics.md)します。)
 
-この例では、既定で使用できるパフォーマンス カウンターを表示します。各カウンターに[個別のグラフを追加](app-insights-metrics-explorer.md#editing-charts-and-grids)して、[好みの名前を付けて保存](app-insights-metrics-explorer.md#editing-charts-and-grids)することでグラフに名前を付けました。
+一般的な[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)の一覧を表示するには、**サーバー** ブレードを開きます。グラフを編集し、パフォーマンス カウンター セクションからメトリックを選択することで、カウンターを選択することもできます。
 
 ![](./media/app-insights-web-monitor-performance/sys-perf.png)
 
+お使いの Windows システムで利用できる全メトリックの一覧を取得するには、PowerShell コマンド [`Get-Counter -ListSet *`](https://technet.microsoft.com/library/hh849685.aspx) を使用します。
 
-必要なカウンターがプロパティ一覧にない場合は、SDK の収集セットにそれらを追加できます。ApplicationInsights.config を開き、パフォーマンス コレクター ディレクティブを次のように編集します。
+必要なカウンターがメトリックの一覧にない場合は、SDK の収集セットにそれらを追加できます。ApplicationInsights.config を開き、パフォーマンス コレクター ディレクティブを次のように編集します。
 
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCollector.PerformanceCollectorModule, Microsoft.ApplicationInsights.Extensibility.PerfCollector">
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
       <Counters>
         <Add PerformanceCounter="\Objects\Processes"/>
         <Add PerformanceCounter="\Sales(electronics)# Items Sold" ReportAs="Item sales"/>
       </Counters>
     </Add>
 
-形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。システムで使用できるカウンターを確認するには、[こちらの説明](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)をご覧ください。
+標準のカウンターと、自分で実装したカウンターの両方を収集できます。`\Objects\Processes` はすべての Windows システムで利用可能です。`\Sales...` は Web サーバーに実装可能なカスタム カウンターの一例です。
+
+形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。
+
 
 カウンターの名前に、英字、丸かっこ、スラッシュ、ハイフン、アンダー スコア、スペース、ドットの文字以外が含まれている場合は、`ReportAs` が必要です。
 
-インスタンスを指定した場合は、報告されるメトリックの "CounterInstanceName" プロパティとして収集されます。
+インスタンスを指定した場合は、報告されるメトリックの "CounterInstanceName" ディメンションとして収集されます。
 
-必要に応じて、同じ効果を持つ次のようなコードを記述できます。
+### コードによるパフォーマンス カウンターの収集
+
+システム パフォーマンス カウンターを収集し、それらを Application Insights にプッシュする場合は、次のスニペットを使用できます。
+
+    var perfCollectorModule = new PerformanceCollectorModule();
+    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
+      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
+    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+
+作成したカスタム メトリックの場合も同様です。
 
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(electronics)# Items Sold", "Items sold"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 
-さらに、システム パフォーマンス カウンターを収集し、それらを Application Insights にプッシュする場合は、次のスニペットを使用できます。
 
-    var perfCollectorModule = new PerformanceCollectorModule();
-    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
-      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
-    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 
 ### 例外の数
 
@@ -201,4 +210,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

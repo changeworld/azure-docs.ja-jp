@@ -36,11 +36,11 @@
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. **[参照]** > **[ネットワーク セキュリティ グループ]** をクリックします。
 
-	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
 
 3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
-
-	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
+  
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
 
 4. **[ネットワーク セキュリティ グループの作成]** ブレードで、*RG-NSG* リソース グループに *NSG FrontEnd* という名前の NSG を作成し、**[作成]** をクリックします。
 
@@ -66,7 +66,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 
 6. 数秒後に、NSG の新しい規則が表示されます。
 
-	![Azure ポータル - 規則の作成](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
+	![Azure ポータル - 新しい規則](./media/virtual-networks-create-nsg-arm-pportal/figure5.png)
 
 7. 手順 6 までを繰り返し、ポート *3389* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *rdp-rule* という名前の受信規則を *250* の優先度で作成します。
 
@@ -103,4 +103,4 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 - [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)方法を学習します。
 - NSG の[ログを有効にします](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

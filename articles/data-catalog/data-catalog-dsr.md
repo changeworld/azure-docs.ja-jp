@@ -3,8 +3,8 @@
    description="現在サポートされているデータ ソースの仕様。"
    services="data-catalog"
    documentationCenter=""
-   authors="trhabe"
-   manager="jstrauss"
+   authors="steelanddata"
+   manager=""
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="01/15/2016"
-   ms.author="trhabe"/>
+   ms.date="03/30/2016"
+   ms.author="maroche"/>
 
 # Azure Data Catalog でサポートされるデータ ソース
 
@@ -436,18 +436,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       </td>
     </tr>
 
-    <tr>
-      <td>Cosmos</td>
-      <td>コンテナー</td>
-      <td>仮想クラスター</td>
-      <td>該当なし</td>
-      <td>
-        <font size=2> プロトコル: cosmos
-            <br>認証: {basic、windows}
-            <br>アドレス:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
+
 
     <tr>
       <td>SQL Server Reporting Services</td>
@@ -523,46 +512,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; モデル
             <br>
-            <br>* basic/anonymous は https 経由でのみ使用可能 </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>テーブル</td>
-      <td>Stream</td>
-      <td>仮想クラスター</td>
-      <td>
-        <font size=2> プロトコル: cosmos
-            <br>認証: {basic、windows}
-            <br>アドレス:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>テーブル</td>
-      <td>Stream Set</td>
-      <td>仮想クラスター</td>
-      <td>
-        <font size=2> プロトコル: cosmos
-            <br>認証: {basic、windows}
-            <br>アドレス:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Cosmos</td>
-      <td>テーブル</td>
-      <td>表示</td>
-      <td>仮想クラスター</td>
-      <td>
-        <font size=2> プロトコル: cosmos
-            <br>認証: {basic、windows}
-            <br>アドレス:
-            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+            <br>* basic/anonymous は https 経由でのみ使用可能* </font>
       </td>
     </tr>
 
@@ -664,7 +614,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; モデル
             <br>
-            <br>* basic/anonymous は https 経由でのみ使用可能 </font>
+            <br>* basic/anonymous は https 経由でのみ使用可能* </font>
       </td>
     </tr>
 
@@ -1173,7 +1123,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Kpi}
             <br>
-            <br>* basic/anonymous は https 経由でのみ使用可能 </font>
+            <br>* basic/anonymous は https 経由でのみ使用可能* </font>
       </td>
     </tr>
 
@@ -1239,7 +1189,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table}
             <br>
-            <br>* basic/anonymous は https 経由でのみ使用可能 </font>
+            <br>* basic/anonymous は https 経由でのみ使用可能* </font>
       </td>
     </tr>
 
@@ -1334,4 +1284,4 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 
 </table>
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0330_2016-->

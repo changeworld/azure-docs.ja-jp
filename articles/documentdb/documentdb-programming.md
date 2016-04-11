@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="03/30/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
@@ -74,7 +74,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 
 	// register the stored procedure
 	var createdStoredProcedure;
-	client.createStoredProcedureAsync(collection._self, helloWorldStoredProc)
+	client.createStoredProcedureAsync('dbs/testdb/colls/testColl', helloWorldStoredProc)
 		.then(function (response) {
 		    createdStoredProcedure = response.resource;
 		    console.log("Successfully created stored procedure");
@@ -86,7 +86,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 ストアド プロシージャを登録した後、コレクションに対して実行して、その結果をクライアントで読み取ることができます。
 
 	// execute the stored procedure
-	client.executeStoredProcedureAsync(createdStoredProcedure._self)
+	client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld')
 		.then(function (response) {
 		    console.log(response.result); // "Hello, World"
 		}, function (err) {
@@ -101,21 +101,21 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 ### 例: ドキュメントを作成するストアド プロシージャを記述する 
 コンテキスト オブジェクトを使用して DocumentDB リソースとやり取りする方法を次のスニペットに示します。
 
-	var createDocumentStoredProc = {
-	    id: "createMyDocument",
-	    body: function createMyDocument(documentToCreate) {
-	        var context = getContext();
-	        var collection = context.getCollection();
-	
-	        var accepted = collection.createDocument(collection.getSelfLink(),
-	              documentToCreate,
-				function (err, documentCreated) {
-				    if (err) throw new Error('Error' + err.message);
-				    context.getResponse().setBody(documentCreated.id)
-				});
-	        if (!accepted) return;
-	    }
-	}
+    var createDocumentStoredProc = {
+        id: "createMyDocument",
+        body: function createMyDocument(documentToCreate) {
+            var context = getContext();
+            var collection = context.getCollection();
+
+            var accepted = collection.createDocument(collection.getSelfLink(),
+                  documentToCreate,
+                  function (err, documentCreated) {
+                      if (err) throw new Error('Error' + err.message);
+                      context.getResponse().setBody(documentCreated.id)
+                  });
+            if (!accepted) return;
+        }
+    }
 
 
 このストアド プロシージャは、入力として documentToCreate を受け取ります。これは、現在のコレクション内に作成するドキュメントの本文を示します。このような操作はすべて非同期に実行され、JavaScript 関数コールバックに依存します。コールバック関数には、操作が失敗した場合のエラー オブジェクト用と作成されたオブジェクト用の 2 つのパラメーターがあります。コールバック内では、例外を処理することも、エラーをスローすることもできます。コールバックが提供されていない場合にエラーが発生すると、DocumentDB ランタイムはエラーをスローします。
@@ -123,7 +123,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 上の例で操作が失敗した場合、コールバックはエラーをスローします。それ以外の場合、コールバックは、作成されたドキュメントの ID をクライアントへの応答の本文として設定します。入力パラメーターによってこのストアド プロシージャがどのように実行されるかを次に示します。
 
 	// register the stored procedure
-	client.createStoredProcedureAsync(collection._self, createDocumentStoredProc)
+	client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentStoredProc)
 		.then(function (response) {
 		    var createdStoredProcedure = response.resource;
 	
@@ -134,7 +134,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 		        author: "Douglas Adams"
 		    };
 	
-		    return client.executeStoredProcedureAsync(createdStoredProcedure._self,
+		    return client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/createMyDocument',
 	              docToCreate);
 		}, function (error) {
 		    console.log("Error", error);
@@ -221,6 +221,8 @@ DocumentDB では、JavaScript はデータベースと同じメモリ空間で�
 	);
 
 このストアド プロシージャでは、ゲーム アプリ内のトランザクションを使用して、2 人のプレイヤーの間でアイテムを交換する操作を 1 つの処理で実現しています。このストアド プロシージャは、引数として渡されたプレイヤー ID にそれぞれ対応する 2 つのドキュメントの読み取りを試行します。2 つのプレイヤー ドキュメントが見つかると、アイテムを交換してドキュメントを更新します。処理の途中でエラーが発生した場合は、JavaScript 例外がスローされ、トランザクションが暗黙的に中止されます。
+
+ストアド プロシージャが登録されているコレクションが単一パーティション コレクションである場合、トランザクションのスコープはそのコレクション内のすべてのドキュメントになります。コレクションがパーティション分割されている場合、ストアド プロシージャは同一のパーティション キーをトランザクション スコープとして実行されます。このとき、各ストアド プロシージャの実行には、トランザクションを実行するスコープに対応したパーティション キー値を含める必要があります。詳細については、[DocumentDB のパーティション分割](documentdb-partition-data.md)に関する記事を参照してください。
 
 ### コミットとロールバック
 トランザクションは、DocumentDB の JavaScript プログラミング モデルに深くネイティブに統合されています。JavaScript 関数内では、1 つのトランザクションの下ですべての操作が自動的にラップされます。例外が発生することなく JavaScript が完了すると、データベースに対する操作がコミットされます。DocumentDB では、実質的に、リレーショナル データベースの BEGIN TRANSACTION ステートメントと COMMIT TRANSACTION ステートメントは暗黙的です。
@@ -405,7 +407,7 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 トリガーの登録方法を次に示します。
 
 	// register post-trigger
-	client.createTriggerAsync(collection.self, updateMetadataTrigger)
+	client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
 		.then(function(createdTrigger) { 
 		    var docToCreate = { 
 		        name: "artist_profile_1023",
@@ -457,12 +459,12 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 この UDF は、次のサンプルに示すように、後でクエリ内で使用できます。
 
 	// register UDF
-	client.createUserDefinedFunctionAsync(collection.self, taxUdf)
+	client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 		.then(function(response) { 
 		    console.log("Created", response.resource);
 	
 		    var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
-		    return client.queryDocuments(collection.self,
+		    return client.queryDocuments('dbs/testdb/colls/testColl',
 	               query).toArrayAsync();
 		}, function(error) {
 		    console.log("Error" , error);
@@ -477,17 +479,15 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 ## JavaScript 統合言語クエリ API
 DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。クエリは JavaScript ランタイムで解析され、DocumentDB のインデックスで効率的に実行されます。
 
-> [AZURE.NOTE]`__` (二重下線) は `getContext().getCollection()` のエイリアスです。
-> <br/>
-> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
+> [AZURE.NOTE] `__` (二重下線) は `getContext().getCollection()` のエイリアスです。<br/> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
 
-サポートされる関数: 
+サポートされている関数は次のとおりです。
 <ul>
 <li>
 <b>chain() ... .value([callback] [, options])</b>
 <ul>
 <li>
-連鎖呼び出しを開始します。これは value() で終了しなければなりません。
+連鎖呼び出しを開始します。連鎖呼び出しは value() で終わる必要があります。
 </li>
 </ul>
 </li>
@@ -495,7 +495,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>filter(predicateFunction [, options] [, callback])</b>
 <ul>
 <li>
-入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。
+入力ドキュメントを結果セットに含めたり除外したりするために、true/false を返す述語関数を使用して入力をフィルター処理します。この動作は SQL の WHERE 句に似ています。
 </li>
 </ul>
 </li>
@@ -503,7 +503,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>map(transformationFunction [, options] [, callback])</b>
 <ul>
 <li>
-各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を付与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。
+各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数によって返される射影を適用します。この動作は SQL の SELECT 句に似ています。
 </li>
 </ul>
 </li>
@@ -511,7 +511,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>pluck([propertyName] [, options] [, callback])</b>
 <ul>
 <li>
-これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。
+これは、各入力項目から 1 つのプロパティの値を抽出する関数で、map のショートカット版です。
 </li>
 </ul>
 </li>
@@ -519,7 +519,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>flatten([isShallow] [, options] [, callback])</b>
 <ul>
 <li>
-各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。
+各入力項目の配列を結合し、一次元配列にします。この動作は LINQ の SelectMany に似ています。
 </li>
 </ul>
 </li>
@@ -527,7 +527,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>sortBy([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY 句に似ています。 
+指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY 句に似ています。
 </li>
 </ul>
 </li>
@@ -535,7 +535,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>sortByDescending([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-与えられた述語を利用し、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY x DESC 句に似ています。
+指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。この動作は SQL の ORDER BY x DESC 句に似ています。
 </li>
 </ul>
 </li>
@@ -632,29 +632,29 @@ SQL クエリと同様に、ドキュメント プロパティ キー (`doc.id` 
 <tr>
 <td>
 <pre>
- SELECT *
+SELECT *
 FROM docs
 </pre>
 </td>
 <td>
 <pre>
-_.map(function(doc) {
+__.map(function(doc) {
     return doc;
 });
 </pre>
 </td>
-<td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td>
+<td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンで改ページ調整されます)。</td>
 </tr>
 <tr>
 <td>
 <pre>
-SELECT docs.id, docs.message AS msg, docs.actions
+SELECT docs.id, docs.message AS msg, docs.actions 
 FROM docs
 </pre>
 </td>
 <td>
 <pre>
-_.map(function(doc) {
+__.map(function(doc) {
     return {
         id: doc.id,
         msg: doc.message,
@@ -663,24 +663,24 @@ _.map(function(doc) {
 });
 </pre>
 </td>
-<td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td>
+<td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションを射影します。</td>
 </tr>
 <tr>
 <td>
 <pre>
 SELECT * 
-FROM docs
+FROM docs 
 WHERE docs.id="X998_Y998"
 </pre>
 </td>
 <td>
 <pre>
-_.filter(function(doc) {
-    return doc.id === "X998\_Y998";
+__.filter(function(doc) {
+    return doc.id === "X998_Y998";
 });
 </pre>
 </td>
-<td>述語があるドキュメントのクエリ: id = "X998_Y998".</td>
+<td>述語に id = "X998_Y998" を指定して、ドキュメントに対してクエリします。</td>
 </tr>
 <tr>
 <td>
@@ -692,24 +692,24 @@ WHERE ARRAY_CONTAINS(docs.Tags, 123)
 </td>
 <td>
 <pre>
-_.filter(function(x) {
-    return x.Tags && x.Tags.indexOf(123) > -1;
+__.filter(function(x) {
+    return x.Tags &amp;&amp; x.Tags.indexOf(123) > -1;
 });
 </pre>
 </td>
-<td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td>
+<td>Tags プロパティを持つドキュメントに対してクエリします。Tags は値 123 を含む配列です。</td>
 </tr>
 <tr>
 <td>
 <pre>
 SELECT docs.id, docs.message AS msg
-FROM docs
+FROM docs 
 WHERE docs.id="X998_Y998"
 </pre>
 </td>
 <td>
 <pre>
-_.chain()
+__.chain()
     .filter(function(doc) {
         return doc.id === "X998_Y998";
     })
@@ -722,7 +722,7 @@ _.chain()
     .value();
 </pre>
 </td>
-<td>述語があり、id = "X998_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td>
+<td>述語に id = "X998_Y998" を指定してドキュメントに対してクエリし、ID とメッセージ (エイリアスは msg) を射影します。</td>
 </tr>
 <tr>
 <td>
@@ -735,18 +735,19 @@ ORDER BY docs._ts
 </td>
 <td>
 <pre>
-_.chain()
+__.chain()
     .filter(function(doc) {
-        return doc.Tags && Array.isArray(doc.Tags);
+        return doc.Tags &amp;&amp; Array.isArray(doc.Tags);
     })
     .sortBy(function(doc) {
-    	return doc.\_ts;
+    	return doc._ts;
     })
     .pluck("Tags")
     .flatten()
     .value()
 </pre>
-</td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td>
+</td>
+<td>配列プロパティ Tags のあるドキュメントをフィルター処理し、生成されたドキュメントを _ts タイムスタンプ システム プロパティで並べ替え、射影して Tags 配列を一次元配列にします。</td>
 </tr>
 </tbody>
 </table>
@@ -785,13 +786,13 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	};
 	
 	// register stored procedure
-	StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(collection.SelfLink, markAntiquesSproc);
+	StoredProcedure createdStoredProcedure = await client.CreateStoredProcedureAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), markAntiquesSproc);
 	dynamic document = new Document() { Id = "Borges_112" };
 	document.Title = "Aleph";
 	document.Year = 1949;
 	
 	// execute stored procedure
-	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(createdStoredProcedure.SelfLink, document, 1920);
+	Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "sproc"), document, 1920);
 
 
 このサンプルは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn948556.aspx) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
@@ -808,7 +809,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	    TriggerType = TriggerType.Pre
 	};
 	
-	Document createdItem = await client.CreateDocumentAsync(collection.SelfLink, new Document { Id = "documentdb" },
+	Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), new Document { Id = "documentdb" },
 	    new RequestOptions
 	    {
 	        PreTriggerInclude = new List<string> { "CapitalizeName" },
@@ -826,7 +827,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	    }"
 	};
 	
-	foreach (Book book in client.CreateDocumentQuery(collection.SelfLink,
+	foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollectionUri("db", "coll"),
 	    "SELECT * FROM Books b WHERE udf.LOWER(b.Title) = 'war and peace'"))
 	{
 	    Console.WriteLine("Read {0} from query", book);
@@ -856,7 +857,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 	}
 
 
-ストアド プロシージャは、作成するストアド プロシージャを本文に含む POST 要求を URI dbs/sehcAA==/colls/sehcAIE2Qy4=/sprocs に対して実行することで登録されます。トリガーと UDF は、それぞれ POST を /triggers と /udfs に発行することで登録できます。このストアド プロシージャは、リソース リンクに対して POST 要求を発行することで実行できます。
+ストアド プロシージャを登録するには、作成するストアド プロシージャを本文に含む POST 要求を URI dbs/testdb/colls/testColl/sprocs に対して実行します。トリガーと UDF は、それぞれ POST を /triggers と /udfs に発行することで登録できます。このストアド プロシージャは、リソース リンクに対して POST 要求を発行することで実行できます。
 
 	POST https://<url>/sprocs/<sproc> HTTP/1.1
 	authorization: <<auth>>
@@ -903,7 +904,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 
 ## サンプル コード
 
-その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) および [更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
+その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) や [更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[Github リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
 
 あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。
 
@@ -922,4 +923,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 - [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 - [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016-->

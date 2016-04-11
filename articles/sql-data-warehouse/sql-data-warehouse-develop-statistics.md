@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での統計の管理
@@ -49,7 +49,7 @@ SQL Data Warehouse 開発を始めた場合、次のパターンを実装する�
 - 各テーブルの各列に 1 列の統計情報を作成する
 - クエリの joins 句と group by 句で使用される列に複数列の統計情報を作成する
 
-データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、「統計管理の実装」(## 統計管理の実装) をご覧ください。
+データを照会する方法を把握したら、特にテーブルの幅が広い場合に、このモデルを改良することもできます。さらに高度な手法については、[「統計管理の実装」](## 統計管理の実装) をご覧ください。
 
 ## 統計を更新する場合
 統計の更新をデータベース管理ルーチンに含めることが重要です。データベース内のデータの分布が変わったら、統計を更新する必要があります。そうしないと、クエリのパフォーマンスが十分に最適化されない可能性があり、労力をかけてクエリのトラブルシューティングをさらに行うだけの価値がなくなります。
@@ -90,13 +90,13 @@ SQL Data Warehouse 開発を始めた場合、次のパターンを実装する�
 
 次の構文では、既定のオプションをすべて使用しています。既定では、SQL Data Warehouse は統計を作成するときに、テーブルの 20% をサンプリングします。
 
-```
+```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
 次に例を示します。
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
@@ -106,13 +106,13 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 
 テーブル全体をサンプリングするには、次の構文を使用します。
 
-```
+```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
 次に例を示します。
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
@@ -120,7 +120,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 
 サンプル サイズをパーセントで指定することもできます。
 
-```
+```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -132,7 +132,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 
 次の例では、値の範囲の統計を作成します。パーティションの値の範囲に一致する値を簡単に定義できます。
 
-```
+```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
@@ -142,7 +142,7 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 
 オプションは組み合わせることができます。次の例では、カスタム サンプル サイズを指定してフィルター選択された統計オブジェクトを作成します。
 
-```
+```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -156,7 +156,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 次の例では、ヒストグラムは *product\_category* で使用されます。列間の統計は、*product\_category* と *product\_sub\_c\\ategory* で計算されます。
 
-```
+```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
@@ -166,7 +166,7 @@ CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category)
 
 統計を作成する方法の 1 つとして、テーブルの作成後に CREATE STATISTICS コマンドを発行します。
 
-```
+```sql
 CREATE TABLE dbo.table1
 (
    col1 int
@@ -190,7 +190,7 @@ SQL Data Warehouse には、SQL Server の [sp\_create\_stats][] に相当する
 
 これは、データベースの設計を開始する際に役立ちます。ニーズに合わせて、このオブジェクトを自由に変更できます。
 
-```
+```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
 (   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
 ,   @sample_pct     tinyint
@@ -273,7 +273,7 @@ DROP TABLE #stats_ddl;
 
 このプロシージャを使用して、テーブルのすべての列の統計を作成するには、プロシージャを呼び出すだけです。
 
-```
+```sql
 prc_sqldw_create_stats;
 ```
 
@@ -288,13 +288,13 @@ prc_sqldw_create_stats;
 ### A.1 つの特定の統計オブジェクトの更新 ###
 特定の統計オブジェクトを更新するには、次の構文を使用します。
 
-```
+```sql
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
 次に例を示します。
 
-```
+```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
@@ -304,13 +304,13 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ### B.テーブルのすべての統計の更新 ###
 テーブルのすべての統計オブジェクトを更新する簡単な方法を次に示します。
 
-```
+```sql
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
 次に例を示します。
 
-```
+```sql
 UPDATE STATISTICS dbo.table1;
 ```
 
@@ -351,7 +351,7 @@ UPDATE STATISTICS dbo.table1;
 
 このビューには、統計に関連する列と、[STATS\_DATE()][] 関数の結果が一緒に表示されます。
 
-```
+```sql
 CREATE VIEW dbo.vstats_columns
 AS
 SELECT
@@ -401,13 +401,13 @@ DBCC SHOW\_STATISTICS() は、統計オブジェクト内に保持されてい�
 
 次の簡単な例は、統計オブジェクトの 3 つの部分をすべて表示します。
 
-```
+```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
 次に例を示します。
 
-```
+```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
@@ -415,13 +415,13 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 
 特定の部分だけを表示する場合は、`WITH` 句を使用して表示する部分を指定します。
 
-```
+```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
 次に例を示します。
 
-```
+```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
@@ -461,4 +461,4 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW\_STATISTICS() が�
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

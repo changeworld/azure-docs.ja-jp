@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="03/28/2016"
 	ms.author="v-shysun"/>
 
 # Azure SQL Database を使用してデータベースのパフォーマンスのトラブルシューティングを行う
@@ -30,4 +30,4 @@
 
 パフォーマンスの問題が続く場合は、サポートに連絡してサポート ケースを登録してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->

@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Office 365 Users API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-office365-users.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-office365-users.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-users.md)
 
 組織の (テナント) App Service 環境に Office 365 Users API を追加する
@@ -65,7 +65,7 @@
 
 2. **[参照]** をクリックし、**[Active Directory]** を選択します。  
 
-	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。  
+	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
 
 3. 組織のテナント名を選択します。  
 ![Azure Active Directory の起動][6]
@@ -107,7 +107,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Office 365 Users REST API](../connectors/create-api-office365-users.md) リファレンス。
+[Office 365 Users REST API](../connectors/connectors-create-api-office365-users.md) リファレンス。
 
 ## まとめと次のステップ
 このトピックでは、Office 365 Users API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -128,4 +128,4 @@
 [10]: ./media/powerapps-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/powerapps-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016-->

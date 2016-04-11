@@ -16,11 +16,11 @@
 	ms.date="01/06/2016"
 	ms.author="coreyp"/>
 
-# Azure PowerShell のインストールおよび構成方法#
+# Azure PowerShell のインストールおよび構成方法
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure CLI</a></div>
 
-##Azure PowerShell とは#
+##Azure PowerShell とは
 Azure PowerShell は、Windows PowerShell を使用して Azure を管理するためのコマンドレットを提供するモジュールです。このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。ほとんどの場合、コマンドレットを使用して Microsoft Azure 管理ポータルと同じタスク (クラウド サービス、仮想マシン、仮想ネットワーク、Web アプリの作成や構成など) を実行できます。
 
 <a id="Install"></a>
@@ -28,50 +28,53 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 Azure PowerShell は、以下に示す 2 つの方法でインストールできます。WebPI からインストールする方法と PowerShell ギャラリーからインストールする方法です。
 
-> [AZURE.NOTE] Windows PowerShell Integrated Scripting Environment (ISE) のすべてのコマンドを表示するには、インストール後に再起動が必要になる場合があります。
-
 ###WebPI から Azure PowerShell をインストールする
 
-Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からインストールすることができます。[Azure Powershell](http://aka.ms/webpi-azps) をダウンロードしてインストールを開始します。Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、Azure PowerShell 環境の整合性を確保するために、インストール前にモジュールを削除するよう求められます。
+Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からインストールすることができます。[Azure Powershell](http://aka.ms/webpi-azps) をダウンロードして、インストールを開始します。Azure PowerShell 0.9.x がインストールされている場合は、アップグレードの一環としてバージョン 0.9.x がアンインストールされます。Azure PowerShell モジュールが PowerShell ギャラリーからインストールされた場合は、Azure PowerShell 環境の整合性を確保するために、インストール前にモジュールが自動的に削除されます。
 
-> [AZURE.NOTE] PowerShell ギャラリーからインストールした Azure モジュールがある場合は、インストーラーによって自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリー モジュールは通常、**%ProgramFiles%\\WindowsPowerShell\\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles%\\Microsoft SDKs\\Azure\\PowerShell** にインストールされます。モジュールをアンインストールするには **PowerShellGet** を使用します。このとき、アンインストール中にモジュールの依存関係が読み込まれている場合、ロックされている .dll とそのフォルダーはそのまま残されます。インストール中にエラーが発生する場合は、**%ProgramFiles%\\WindowsPowerShell\\Modules** フォルダーから Azure* フォルダーを削除してください。
+> [AZURE.NOTE] PowerShell ギャラリーから以前にインストールされた Azure モジュールは、自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリーのモジュールは通常では **%ProgramFiles%\\WindowsPowerShell\\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\PowerShell** にインストールされます。インストール中にエラーが発生した場合は、**%ProgramFiles%\\WindowsPowerShell\\Modules** フォルダーから Azure* フォルダーを手動で削除してから、インストールをもう一度試みます。
 
-PowerShell ギャラリーからインストールした Azure PowerShell が既に存在する状態で WebPI インストールを使用する必要がある場合、ギャラリーからインストールされたコマンドレットは WebPI インストールによって自動的に削除されます。
+インストールが完了したら、Azure PowerShell コマンドレットを含むディレクトリが ```$env:PSModulePath``` の設定に含まれている必要があります。
 
-> [AZURE.NOTE] PowerShell **$env:PSModulePath** には、WebPI からのインストール時に生じる既知の問題があります。システムの更新プログラムやその他のインストールでコンピューターの再起動が必要になった場合、Azure PowerShell のインストール パスが **$env:PSModulePath** に反映されない可能性があります。この問題は、コンピューターを再起動することで修正できます。
+> [AZURE.NOTE] PowerShell **$env:PSModulePath** には、WebPI からのインストール時に生じる可能性がある既知の問題があります。システムの更新やその他のインストールでコンピューターの再起動が必要になった場合、Azure PowerShell のインストール パスが **$env:PSModulePath** の更新に含まれない場合があります。このような場合は、インストールまたはアップグレード後に Azure PowerShell コマンドレットを使用しようとすると、「コマンドレットは認識されません」というメッセージが表示されることがあります。このような場合は、コンピューターを再起動すると問題が解決します。
 
-###ギャラリーから Azure PowerShell をインストールする
+コマンドレットを読み込もうとしたとき、または実行しようとしたときに、次のようなメッセージが表示される場合:
 
-Azure PowerShell 1.0 以降をギャラリーからインストールするには、次のコマンドを使用します。
+```
+    PS C:\> Get-AzureRmResource
+    Get-AzureRmResource : The term 'Get-AzureRmResource' is not recognized as the name of a cmdlet, function,
+    script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is
+    correct and try again.
+    At line:1 char:1
+    + Get-AzureRmResource
+    + ~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : ObjectNotFound: (get-azurermresourcefork:String) [], CommandNotFoundException
+        + FullyQualifiedErrorId : CommandNotFoundException
+```
+
+この問題は、コンピューターを再起動することで修正できます。
+
+###PowerShell ギャラリーから Azure PowerShell をインストールする
+
+PowerShell ギャラリーから、管理者特権の Windows PowerShell または PowerShell Integrated Scripting Environment (ISE) プロンプトを使用して、次のコマンドで Azure PowerShell 1.3.0 以上をインストールします。
 
     # Install the Azure Resource Manager modules from the PowerShell Gallery
     Install-Module AzureRM
-    Install-AzureRM
 
     # Install the Azure Service Management module from the PowerShell Gallery
     Install-Module Azure
 
-    # Import AzureRM modules for the given version manifest in the AzureRM module
-    Import-AzureRM
-
-    # Import Azure Service Management module
-    Import-Module Azure
-
 ####前述のコマンドの詳細
 
-- **Install-Module AzureRM** は、AzureRM モジュールのブートストラップ モジュールをインストールします。このモジュールには、安全にかつ整合性のある方法で AzureRM モジュールの更新、アンインストール、インポートを行うために必要なコマンドレットが含まれています。メジャー バージョンの AzureRM に支障をきたす重大な変更を招かないよう、必要なバージョン範囲 (最小と最大) とモジュールのリストが記述されます。セマンティック バージョニングの詳細については、[semver.org](http://semver.org) を参照してください。これを利用し、特定のバージョンの AzureRM を使って独自のコマンドレットを作成することもできます。ブートストラップを介してモジュールをインストールすることによって、重大な変更が紛れ込むのを確実に防ぐことが可能です。
-- **Install-AzureRM** は、ブートストラップ モジュールに宣言されているすべてのモジュールをインストールします。
+- **Install-Module AzureRM** は、Azure Resource Manager のコマンドレットのロールアップ モジュールをインストールします。AzureRM モジュールは、Azure Resource Manager の各モジュールの特定のバージョン範囲に依存します。バージョン範囲が含まれていることにより、同じメジャー バージョンの AzureRM モジュールをインストールするときに、互換性を破るモジュール変更は含まれません。AzureRM モジュールをインストールするときには、以前にインストールしていない Azure Resource Manager モジュールをダウンロードして、PowerShell ギャラリーからインストールします。Azure PowerShell モジュールで使用されるセマンティック バージョニングの詳細については、[semver.org](http://semver.org) をご覧ください。 
 - **Install-Module Azure** は、Azure モジュールをインストールします。これは、Azure PowerShell 0.9.x のサービス管理モジュールとなります。大きな変更はなく、以前のバージョンの Azure モジュールと互換性があります。
-- **Import-AzureRM** は、AzureRM モジュールの一連のモジュールとバージョンに該当するすべてのモジュールをインポートします。AzureRM モジュールに必要なバージョン範囲内の Azure PowerShell モジュールを確実に読み込むことができます。
-- **Import-Module Azure** は、Azure サービス管理モジュールをインポートします。PowerShell セッションには Azure モジュールと AzureRM モジュールが読み込まれ、両方のモジュールを併用することができます。
-
 
 ## 手順 2: 起動
 コマンドレットは、標準の Windows PowerShell コンソールまたは PowerShell Integrated Scripting Environment (ISE) から実行できます。どちらのコンソールでも、開く方法は、実行している Windows のバージョンによって異なります。
 
-- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。**スタート**画面で「power」と入力します。Windows PowerShell が名前に含まれているすべてのアプリケーションが一覧表示されます。コンソールを開くには、いずれかのアプリケーションをクリックします。アプリケーションを**スタート**画面にピン留めするには、そのアイコンを右クリックします。
+- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。**スタート**画面で「power」と入力します。Windows PowerShell が名前に含まれているすべてのアプリケーションが一覧表示されます。コンソールを開くには、いずれかのアプリケーションをクリックします。(アプリを**スタート**画面にピン留めするには、そのアイコンを右クリックします。)
 
-- Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、**[スタート]** メニューを使用します。**[スタート]** メニューから、**[すべてのプログラム]**、**[アクセサリ]**、**[Windows PowerShell]** フォルダー、**[Windows PowerShell]** の順にクリックします。
+- Windows 8 または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、**[スタート]** メニューを使用します。**[スタート]** メニューから、**[すべてのプログラム]**、**[アクセサリ]**、**[Windows PowerShell]** フォルダー、**[Windows PowerShell]** の順にクリックします。
 
 Windows PowerShell コンソールで行う作業の多くは、**Windows PowerShell ISE** からメニュー項目とキーボード ショートカットを使用して実行することもできます。ISE を使用するには、Windows PowerShell コンソール、Cmd.exe、または **[ファイル名を指定して実行]** ボックスに「**powershell\_ise.exe**」と入力します。
 
@@ -79,9 +82,6 @@ Windows PowerShell コンソールで行う作業の多くは、**Windows PowerS
 
     # To make sure the Azure PowerShell module is available after you install
     Get-Module –ListAvailable 
-	
-	# If the Azure PowerShell module is not listed when you run Get-Module, you may need to import it
-    Import-Module Azure 
 	
     # To login to Azure Resource Manager
     Login-AzureRmAccount
@@ -105,9 +105,6 @@ Windows PowerShell コンソールで行う作業の多くは、**Windows PowerS
     # View your current Azure PowerShell session context
     # Note: the CurrentStorageAccount is now set in your session context
     Get-AzureRmContext
-
-    # To import the Azure.Storage data plane module (blob, queue, table)
-    Import-Module Azure.Storage
 
     # To list all of the blobs in all of your containers in all of your accounts
     Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
@@ -139,11 +136,11 @@ Windows PowerShell コンソールで行う作業の多くは、**Windows PowerS
 
 > 3. ディレクトリを選択し、新しいユーザーを追加します。この新しいユーザーは、職場または学校のアカウントを使用してサインインできます。ユーザーの作成時、ユーザーの電子メール アドレスと仮パスワードの両方が通知されます。この情報は、以降の手順 5. で使用するため保管しておいてください。
 
-> 4. Azure クラシック ポータルで **[設定]**、**[Administrators]** の順に選択します。**[追加]** を選択し、共同管理者として新しいユーザーを追加します。これにより、職場または学校のアカウントで Azure サブスクリプションを管理できるようになります。
+> 4. Azure クラシック ポータルで **[設定]**、**[管理者]** の順に選択します。**[追加]** を選択し、共同管理者として新しいユーザーを追加します。これにより、職場または学校のアカウントで Azure サブスクリプションを管理できるようになります。
 
 > 5. 最後に、Azure クラシック ポータルからログアウトし、職場または学校のアカウントを使用してログインし直します。初めてこのアカウントを使用してログインする場合は、パスワードを変更するように求められます。
 
-> 職場または学校のアカウントを使用して Microsoft Azure にサインアップする方法の詳細については、[組織としての Microsoft Azure へのサインアップに関するページ](/active-directory/sign-up-organization.md)を参照してください。
+> 職場または学校のアカウントを使用して Microsoft Azure にサインアップする方法の詳細については、[組織としての Microsoft Azure へのサインアップに関するページ](./active-directory/sign-up-organization.md)を参照してください。
 
 > Azure の認証とサブスクリプション管理の詳細については、「[アカウント、サブスクリプション、管理者ロールを管理する](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
 
@@ -172,10 +169,10 @@ Azure サブスクリプションを表示するには、「**Get-AzureRmSubscri
 
 コマンドレットの使用方法の詳細については、次のリソースを参照してください。
 
-Windows PowerShell の基本的な使用手順については、「[Windows PowerShell を使用する](http://go.microsoft.com/fwlink/p/?LinkId=321939)」を参照してください。
+Windows PowerShell の基本的な使用手順については、「[Windows PowerShell を使用する](http://go.microsoft.com/fwlink/p/?LinkId=321939)」をご覧ください。
 
-コマンドレットのリファレンスについては、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」を参照してください。
+コマンドレットのリファレンスについては、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」をご覧ください。
 
-スクリプトを使用した Azure の管理に役立つサンプル スクリプトとその使用方法については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」を参照してください。
+スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

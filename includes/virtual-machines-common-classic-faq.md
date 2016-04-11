@@ -15,7 +15,7 @@ Windows クライアント イメージについては、 MSDN Azure 特典の�
 
 ## 仮想マシンではどれくらいのストレージ容量を使用できますか。
 
-各データ ディスクで最大 1 TB (テラバイト) を利用できます。使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+各データ ディスクで最大 1 TB (テラバイト) を利用できます。使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。価格の詳細については、「[Azure Storage の価格](http://go.microsoft.com/fwlink/p/?LinkId=396819)」を参照してください。
 
@@ -23,9 +23,9 @@ Azure のストレージ アカウントでは、オペレーティング シス
 
 Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。Azure で VHDX を使用したい場合は、最初に、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレット を使用して形式を変換する必要があります。その後、[Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
 
-- Linux での手順ついては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
+- Linux での手順ついては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
 
-- Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md)」を参照してください。
+- Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md)」を参照してください。
 
 ## これらの仮想マシンは、HYPER-V 仮想マシンと同じですか。
 
@@ -45,17 +45,17 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 
 Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対するリモート デスクトップ接続を使用してリモート接続を確立し、仮想マシンにログオンする必要があります。手順については、次の項目を参照してください。
 
-- [Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-windows-classic-connect-logon.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
-- [Linux が実行されている仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
+- [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
+- [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
 
-リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](virtual-machines-windows-extensions-features.md) 拡張機能をインストールして使用し、問題を修正してください。
+リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md) 拡張機能をインストールして使用し、問題を修正してください。
 
 Windows VM の場合は、次のオプションもあります。
 
 - Azure クラシック ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
-- [「Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング」](virtual-machines-windows-troubleshoot-rdp-connection.md)を参照する。
-- Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
+- [「Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング」](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)を参照する。
+- Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
 
 Hyper-V に慣れている場合は、VMConnect と同様のツールを検討されるかもしれませんが、Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
 
@@ -65,7 +65,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 ## 一時ディスクのドライブ文字を変更する方法について教えてください。
 
-Windows 仮想マシンでは、ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。手順については、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」を参照してください。
+Windows 仮想マシンでは、ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。手順については、「[Windows 一時ディスクのドライブ文字を変更する方法](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)」を参照してください。
 
 ## ゲスト オペレーティング システムのアップグレード方法について教えてください。
 
@@ -82,7 +82,7 @@ Windows Server の移行に関するツールとプロセスの詳細につい�
 
 Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのログオンに使用するユーザー名とパスワードを指定する必要があります。
 
-ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](virtual-machines-windows-extensions-features.md) 拡張機能をインストールして使用し、問題を解決することができます。
+ユーザー名やパスワードを忘れてしまった場合、VM エージェントが既にインストールされていれば、[VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md) 拡張機能をインストールして使用し、問題を解決することができます。
 
 追加情報:
 
@@ -102,7 +102,7 @@ Azure ではウイルス対策ソリューションとしていくつかのオ�
 
 ## バックアップと回復についてはどのようなオプションがありますか。
 
-Azure Backup は、特定の地域でプレビューとして提供されています。詳細については、「[Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+Azure Backup は、特定の地域でプレビューとして提供されています。詳細については、「[Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../articles/backup/backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
 
 追加オプションとして、BLOB ストレージのスナップショット機能を使用することもできます。これを使用する場合は、BLOB スナップショットに依存する操作を実行する前に、VM を停止する必要があります。これにより、保留中のデータの書き込みが回避され、ファイル システムが一貫性のある状態に維持されます。
 
@@ -138,4 +138,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016-->

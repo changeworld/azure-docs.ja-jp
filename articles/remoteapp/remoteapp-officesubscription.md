@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/14/2015" 
+    ms.date="03/28/2016" 
     ms.author="elizapo" />
 
 
@@ -115,7 +115,7 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 
 このオプションでは、標準の Windows ツールを使用して、イメージに更新を適用します。Office 365 ProPlus の場合、Office デプロイメント ツールを使用して、Office 365 ProPlus の最新の更新プログラムまたはバージョンをダウンロードしてインストールします。
 
-> [AZURE.IMPORTANT]注意: Office 365 ProPlus の自動更新を無効にしてください。
+> [AZURE.IMPORTANT] 注意: Office 365 ProPlus の自動更新を無効にしてください。
 
 Office 展開ツールを使用した更新の詳細については以下をご覧ください。
 
@@ -123,4 +123,4 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 - [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 - [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016-->
