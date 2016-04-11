@@ -130,4 +130,4 @@ SQL が最善のオプションである場合は、「[SQL Server](https://www.
     - [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
     - [Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

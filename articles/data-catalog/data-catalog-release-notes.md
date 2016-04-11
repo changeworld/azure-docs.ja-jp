@@ -88,4 +88,4 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -149,4 +149,4 @@ info:    vm quick-create command OK
 
 また、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

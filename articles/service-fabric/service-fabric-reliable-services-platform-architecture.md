@@ -97,4 +97,4 @@ Service Fabric の詳細については、次の項目を参照してくださ�
 
 [Reliable Service の構成](service-fabric-reliable-services-configuration.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

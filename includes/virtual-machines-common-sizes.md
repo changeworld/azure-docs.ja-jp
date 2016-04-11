@@ -186,4 +186,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
 - 高パフォーマンス コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

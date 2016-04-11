@@ -110,4 +110,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

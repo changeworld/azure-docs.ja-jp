@@ -175,4 +175,4 @@ Windows PowerShell の基本的な使用手順については、「[Windows Powe
 
 スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」をご覧ください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

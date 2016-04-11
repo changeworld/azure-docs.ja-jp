@@ -12,4 +12,4 @@
 
 チュートリアルの次のセクションでは、[Notification Hub REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用してアプリで直接通知メッセージを送信する方法について説明します。すべての登録デバイスは、任意のデバイスから送信された通知を受信します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

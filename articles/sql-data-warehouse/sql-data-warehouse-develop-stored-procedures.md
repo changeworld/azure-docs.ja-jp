@@ -97,4 +97,4 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

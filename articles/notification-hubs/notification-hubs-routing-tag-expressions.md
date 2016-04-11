@@ -113,4 +113,4 @@ SDK でタグ式を使用して通知を送信する例を次に示します。
 	"You want info on the Red Socks</text></binding></visual></toast>";
 	outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

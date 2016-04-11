@@ -369,4 +369,4 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

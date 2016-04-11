@@ -26,4 +26,4 @@ Azure インフラストラクチャ サービス内の Windows 仮想マシン�
 
 [AZURE.INCLUDE [virtual-machines-common-classic-oracle](../../includes/virtual-machines-common-classic-oracle.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

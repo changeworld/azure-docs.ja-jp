@@ -86,4 +86,4 @@ geo レプリケーションは、Standard エラスティック データベー
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

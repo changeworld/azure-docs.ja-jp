@@ -28,4 +28,4 @@
 
 	![仮想マシンを既存のクラウド サービスに追加する](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

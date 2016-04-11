@@ -230,4 +230,4 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

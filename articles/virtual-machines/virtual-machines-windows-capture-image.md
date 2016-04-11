@@ -209,4 +209,4 @@ PowerShell の方法の代わりにリソース エクスプローラーを使�
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、「[Manage virtual machines using Azure Resource Manager and PowerShell (Azure Resource Manager と PowerShell を使用した仮想マシンの管理)](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

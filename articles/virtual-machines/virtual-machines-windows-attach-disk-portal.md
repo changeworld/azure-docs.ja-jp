@@ -55,4 +55,4 @@
 
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、[Windows 一時ディスクのドライブ文字を変更](virtual-machines-windows-classic-change-drive-letter.md)できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

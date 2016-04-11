@@ -203,4 +203,4 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 ##<a id="Next"> 次のステップ
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

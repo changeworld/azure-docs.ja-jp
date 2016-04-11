@@ -39,4 +39,4 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 [Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

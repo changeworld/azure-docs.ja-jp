@@ -122,4 +122,4 @@ PowerShell 経由でテナント ID を取得するには:
 - [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
 - [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

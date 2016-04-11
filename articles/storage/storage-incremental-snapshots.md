@@ -136,4 +136,4 @@ Azure VM のバックアップについて詳しくは、「[Azure における 
 - [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 - [VM のバックアップ インフラストラクチャの計画](../backup/backup-azure-vms-introduction.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

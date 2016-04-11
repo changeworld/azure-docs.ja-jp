@@ -103,4 +103,4 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 - [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)方法を学習します。
 - NSG の[ログを有効にします](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

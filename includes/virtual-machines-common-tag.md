@@ -64,4 +64,4 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

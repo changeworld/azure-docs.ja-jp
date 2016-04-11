@@ -39,4 +39,4 @@ Azure クラシック ポータルで Windows 仮想マシンを作成すると�
 
 * リソース マネージャーのデプロイメント モデルで仮想マシンを作成した場合、Azure PowerShell を使用して、[インターネットに接続するロード バランサーを作成する](../load-balancer/load-balancer-get-started-internet-arm-ps.md)こともできます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

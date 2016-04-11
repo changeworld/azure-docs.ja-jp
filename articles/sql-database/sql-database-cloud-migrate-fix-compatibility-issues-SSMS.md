@@ -33,4 +33,4 @@ SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transac
 
 [移行方法を選択](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

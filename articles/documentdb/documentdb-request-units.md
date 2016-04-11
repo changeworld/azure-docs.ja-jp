@@ -180,4 +180,4 @@ DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメ
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

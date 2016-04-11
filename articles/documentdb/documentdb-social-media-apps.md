@@ -198,4 +198,4 @@ Azure Search の詳細については、「[A Hitchhikers Guide to Search (検�
 
 または、[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

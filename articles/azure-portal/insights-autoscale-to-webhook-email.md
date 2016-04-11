@@ -93,4 +93,4 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 |newCapacity|	あり |自動スケールによってリソースがスケールされた後の新しいインスタンス数。|
 |プロパティ|	いいえ|	省略可能。<Key  Value> ペアのセット (例: Dictionary <String  String>)。properties フィールドは省略可能です。カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。|
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

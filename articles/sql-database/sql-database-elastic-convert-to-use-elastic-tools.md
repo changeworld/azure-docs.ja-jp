@@ -179,4 +179,4 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

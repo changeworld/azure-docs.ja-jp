@@ -108,4 +108,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

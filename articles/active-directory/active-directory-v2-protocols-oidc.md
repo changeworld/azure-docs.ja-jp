@@ -202,4 +202,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。ユーザーをサインインさせるには、[前](#validating-the-id-token)に説明したように `id_token` を厳密に検証する必要があります。アクセス トークンは、[OAuth プロトコルのドキュメント](active-directory-v2-protocols-oauth-code.md#request-an-access-token)に記載されている手順に従って取得できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

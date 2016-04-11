@@ -112,4 +112,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 <!-- Shared links -->
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -170,4 +170,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

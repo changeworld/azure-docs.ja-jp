@@ -159,4 +159,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 これにより、New-PSDrive コマンドレットの -Credential パラメーターを省略できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

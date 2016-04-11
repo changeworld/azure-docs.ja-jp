@@ -448,4 +448,4 @@ HTTP コマンドを使用したリソースの操作の詳細については、
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

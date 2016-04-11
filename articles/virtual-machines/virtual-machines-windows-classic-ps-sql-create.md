@@ -169,4 +169,4 @@ Azure ポータルを使用して SQL Virtual Machines を作成する方法に�
 
 これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-classic-sql-overview.md)も参照することをお勧めします。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

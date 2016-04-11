@@ -113,4 +113,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [Azure ポータル]: https://portal.azure.com/
 [サポートに連絡]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

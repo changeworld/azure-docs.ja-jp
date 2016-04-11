@@ -72,4 +72,4 @@ Azure ポータルでは、URL を送信するだけで簡単にテンプレー�
 
 [Azure リソース マネージャー](../articles/resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

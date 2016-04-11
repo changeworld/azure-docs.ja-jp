@@ -194,4 +194,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 1. Microsoft サポート ドキュメント
 	- [サポート: Microsoft Azure での Linux イメージのサポート](http://support2.microsoft.com/kb/2941892)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

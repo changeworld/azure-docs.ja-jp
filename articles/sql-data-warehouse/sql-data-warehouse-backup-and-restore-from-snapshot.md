@@ -141,4 +141,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

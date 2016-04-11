@@ -89,4 +89,4 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 
 * [グループ用の Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -59,4 +59,4 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

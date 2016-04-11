@@ -259,4 +259,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | trace\_id | 診断に役立つ、要求の一意の識別子。 |
 | correlation\_id | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

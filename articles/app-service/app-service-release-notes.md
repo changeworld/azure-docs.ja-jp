@@ -68,4 +68,4 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

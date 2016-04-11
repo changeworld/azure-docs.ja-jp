@@ -25,4 +25,4 @@ Azure インフラストラクチャ サービス内の Linux 仮想マシン上
 
 [AZURE.INCLUDE [virtual-machines-common-classic-oracle](../../includes/virtual-machines-common-classic-oracle.md)]
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

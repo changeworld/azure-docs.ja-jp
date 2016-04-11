@@ -113,4 +113,4 @@ ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使�
 [0]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
 [1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

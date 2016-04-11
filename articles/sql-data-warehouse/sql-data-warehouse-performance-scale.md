@@ -93,4 +93,4 @@ PowerShell の使用方法の詳細については、「[SQL Data Warehouse で�
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

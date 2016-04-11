@@ -98,4 +98,4 @@ ALTER DATABASE <database name>
 
 [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

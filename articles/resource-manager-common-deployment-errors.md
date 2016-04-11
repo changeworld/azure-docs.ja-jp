@@ -226,4 +226,4 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 - 監査アクションについては、「[リソース マネージャーの監査操作](./resource-group-audit.md)」を参照してください。
 - デプロイ時に発生するエラーを判断するアクションについては、[リソース グループのデプロイのトラブルシューティング](./resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -81,4 +81,4 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 |**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/dn606289.aspx)|
 |**HpcVmDrivers**|Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。|[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0330_2016------>
