@@ -104,10 +104,39 @@ Mesos のトンネルを構成したら、関連するエンドポイントに�
 
 Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラスターにアクセスできます。最初に「`DOCKER_HOST`」という名前の Windows 環境変数を値 ` :2375` で構成する必要があります。
 
+## トラブルシューティング
+
+### トンネルを作成し、Mesos または Marathon の URL を参照した後で、"502 Bad Gateway" が返される
+この問題を解決する最も簡単な方法は、クラスターを削除してもう一度デプロイすることです。それ以外に、次の手順で Zookeeper に強制的に自己修復させるという方法もあります。
+
+各マスターにログインし、次のコマンドを実行します。
+
+```
+sudo service nginx stop
+sudo service marathon stop
+sudo service chronos stop
+sudo service mesos-dns stop
+sudo service mesos-master stop 
+sudo service zookeeper stop
+```
+
+すべてのマスターで全サービスが停止したら、次のコマンドを実行します。
+```
+sudo mkdir /var/lib/zookeeperbackup
+sudo mv /var/lib/zookeeper/* /var/lib/zookeeperbackup
+sudo service zookeeper start
+sudo service mesos-master start
+sudo service mesos-dns start
+sudo service chronos start
+sudo service marathon start
+sudo service nginx start
+```
+すべてのサービスが再起動したらすぐに、このドキュメントの説明どおりにクラスターを操作できるようになります。
+
 ## 次のステップ
 
 コンテナーをデプロイし、Mesos または Swarm で管理します。
 
 - [REST API によるコンテナー管理](./container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

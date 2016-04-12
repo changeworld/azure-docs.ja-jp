@@ -1,5 +1,5 @@
 <properties
-   pageTitle="検索条件の保存とデータ資産のピン留めを行う方法"
+   pageTitle="検索条件の保存とデータ資産のピン留めを行う方法 | Microsoft Azure"
    description="データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。"
    services="data-catalog"
    documentationCenter=""
@@ -76,4 +76,4 @@ Azure Data Catalog ポータルのホーム ページには [マイ アセット
 ## まとめ
 Azure Data Catalog には、ユーザーが必要なデータ ソースをより簡単に検出できるようにする機能が用意されています。その結果、ユーザーは、データの検索にかかる時間を短縮し、データの処理により多くの時間を費やすことができるようになりました。保存した検索条件とピン留めされたデータ資産は、このような中核となる機能に基づいているため、ユーザーは繰り返し使用するデータ ソースを簡単に特定できます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

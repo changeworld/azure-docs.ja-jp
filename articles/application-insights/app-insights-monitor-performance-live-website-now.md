@@ -194,6 +194,89 @@ Status Monitor が動作するように、サーバーのファイアウォー�
 
 IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
+## PowerShell でのオートメーション
+
+監視の開始と停止は、PowerShell を使って実行できます。
+
+`Get-ApplicationInsightsMonitoringStatus [-Name appName]`
+
+* `-Name` (省略可能) Web アプリの名前。
+* この IIS サーバーに存在する各 Web アプリ (または指定されたアプリ) について、Application Insights の監視ステータスを表示します。
+
+* 各アプリの `ApplicationInsightsApplication` を返します。
+ * `SdkState==EnabledAfterDeployment`: アプリは監視中です。Status Monitor ツールまたは `Start-ApplicationInsightsMonitoring` によって実行時にインストルメント化されました。
+ * `SdkState==Disabled`: アプリは Application Insights 用にインストルメント化されていません。過去に一度もインストルメント化されたことがないか、Status Monitor ツールまたは `Stop-ApplicationInsightsMonitoring` によって実行時の監視が無効に設定されています。
+ * `SdkState==EnabledByCodeInstrumentation`: アプリは、ソース コードに SDK を追加することによってインストルメント化されています。SDK は更新することも停止することもできません。
+ * `SdkVersion` は、このアプリの監視に使用されているバージョンを示します。
+ * `LatestAvailableSdkVersion` は、現在 NuGet ギャラリーで入手できるバージョンを示します。このバージョンにアプリをアップグレードするには、`Update-ApplicationInsightsMonitoring` を使用します。
+
+`Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000`
+
+* `-Name` IIS に存在するアプリの名前。
+* `-InstrumentationKey` 結果を表示する Application Insights リソースのキー。
+
+* このコマンドレットが作用するのは、まだインストルメント化されていないアプリ (SdkState==NotInstrumented) だけです。
+
+    SDK をコードに追加することによってビルド時に、または過去にこのコマンドレットを使用して実行時に既にインストルメント化されているアプリには作用しません。
+
+    アプリをインストルメント化するときに使用される SDK バージョンは、このサーバーに最近ダウンロードされたバージョンとなります。
+
+    最新バージョンをダウンロードするには、Update-ApplicationInsightsVersion を使用してください。
+
+* 成功すると `ApplicationInsightsApplication` が返されます。失敗した場合、トレースが stderr に出力されます。
+
+    
+          Name                      : Default Web Site/WebApp1
+          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+          ProfilerState             : ApplicationInsights
+          SdkState                  : EnabledAfterDeployment
+          SdkVersion                : 1.2.1
+          LatestAvailableSdkVersion : 1.2.3
+
+`Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
+
+* `-Name` IIS に存在するアプリの名前。
+* `-All` この IIS サーバーに存在する、ステータスが `SdkState==EnabledAfterDeployment` であるすべてのアプリの監視を停止します。
+
+* 指定されたアプリの監視を停止し、インストルメンテーションを解除します。実行時に Status Monitoring ツールまたは Start-ApplicationInsightsApplication を使用してインストルメント化されたアプリ (`SdkState==EnabledAfterDeployment`) に対してのみ正しく動作します。
+
+* ApplicationInsightsApplication が返されます。
+
+`Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`
+
+* `-Name`: IIS に存在する Web アプリの名前。
+* `-InstrumentationKey` (省略可能) アプリのテレメトリの送信先となるリソースを変更する場合に使用します。
+* このコマンドレットの機能を次に示します。
+ * 最近このマシンにダウンロードされた SDK バージョンに、指定されたアプリをアップグレードします (`SdkState==EnabledAfterDeployment` の場合にのみ機能します)。
+ * インストルメンテーション キーが指定された場合、そのキーを持ったリソースにテレメトリを送信するよう、指定されたアプリを再構成します (`SdkState != Disabled` の場合に機能します)。
+
+`Update-ApplicationInsightsVersion`
+
+* 最新の Application Insights SDK をサーバーにダウンロードします。
+
+## Azure テンプレート
+
+Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
+
+    {
+      resources: [
+        /* Create Application Insights resource */
+        {
+          "apiVersion": "2015-05-01",
+          "type": "microsoft.insights/components",
+          "name": "nameOfAIAppResource",
+          "location": "centralus",
+          "kind": "web",
+          "properties": { "ApplicationId": "nameOfAIAppResource" },
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', myWebAppName)]"
+          ]
+        }
+       ]
+     } 
+
+* `nameOfAIAppResource` - Application Insights リソースの名前。
+* `myWebAppName` - Web アプリの ID。
 
 ## <a name="next"></a>次のステップ
 
@@ -219,4 +302,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

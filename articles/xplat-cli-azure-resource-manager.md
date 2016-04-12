@@ -165,7 +165,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 テンプレートをコンピューターにダウンロードせず、[GitHub](https://github.com/Azure/azure-quickstart-templates) から直接使用することもできます。その場合、コマンドに **--template-url** オプションを指定し、テンプレートの azuredeploy.json ファイルに URL を渡します。URL を取得するには、GitHub で _raw_ モードで azuredeploy.json を開き、ブラウザーのアドレス バーに表示される URL をコピーします。次のようにコマンドを使用し、この URL を使用してデプロイを直接作成できます。
 
-	azure group deployment create "testDeploy" testResourceGroup --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
+	azure group deployment create "testRG" testDeploy --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
 必要なテンプレート パラメーターを入力するように求められます。
 
 > [AZURE.NOTE] _raw_ モードで JSON テンプレートを開くことが重要です。ブラウザーのアドレス バーに表示される URL は、通常モードで表示される URL とは異なります。GitHub でファイルを表示するときに_未加工_モードでファイルを開くには、右上にある **[未加工]** をクリックします。
@@ -215,4 +215,4 @@ Azure リソース マネージャー モードは既定で無効になってい
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

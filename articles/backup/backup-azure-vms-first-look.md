@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/14/2016"
+	ms.date="03/30/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # 最初に: Azure 仮想マシンのバックアップ
+
+> [AZURE.SELECTOR]
+- [ARM VM のバックアップ](backup-azure-vms-first-look-arm.md)
+- [クラシック モード VM のバックアップ](backup-azure-vms-first-look.md)
 
 この記事は、Azure 仮想マシン (VM) をバックアップする Azure 環境を準備するための一連の手順を説明するチュートリアルです。このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。手順の概要は次のとおりです。
 
@@ -230,4 +234,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

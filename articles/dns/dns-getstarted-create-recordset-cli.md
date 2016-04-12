@@ -20,10 +20,9 @@
 # CLI を使用して DNS レコードを作成する
 
 > [AZURE.SELECTOR]
-- [Azure CLI](dns-getstarted-create-recordset-cli.md)
+- [Azure ポータル](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
-
-
+- [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
 DNS ゾーンを作成した後は、ドメインの DNS レコードを追加する必要があります。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
 
@@ -33,7 +32,7 @@ DNS ゾーンを作成した後は、ドメインの DNS レコードを追加�
 
 _完全修飾_名にはゾーン名が含まれますが、_相対_名には含まれません。たとえば、"contoso.com" ゾーン内の相対レコード名 "www" によって、完全修飾レコード名 "www.contoso.com" が示されます。
 
->[AZURE.NOTE]Azure DNS では、相対名を使用してレコードを指定します。
+>[AZURE.NOTE] Azure DNS では、相対名を使用してレコードを指定します。
 
 レコードは、含まれるデータによってさまざまな種類があります。最も一般的な種類は "A" レコードで、名前が IPv4 アドレスにマップされます。また、別の種類の "MX" レコードでは、名前がメール サーバーにマップされます。
 
@@ -48,7 +47,7 @@ Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CN
 
 Time-to-Live (TTL) は、各レコードが再度照会されるまでクライアントによってキャッシュされる期間を指定します。上の例では、TTL は 3600 秒、つまり 1 時間です。TTL は、各レコードではなく、レコード セットに対して指定されるため、そのレコード セット内のすべてのレコードに同じ値が使用されます。
 
->[AZURE.NOTE]Azure DNS は、レコード セットを使用して DNS レコードを管理します。
+>[AZURE.NOTE] Azure DNS は、レコード セットを使用して DNS レコードを管理します。
 
 
 
@@ -67,7 +66,7 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 レコード セットには、DNS ゾーン "contoso.com" の相対名 "www" が含まれているため、レコードの完全修飾名は "www.contoso.com" になります。レコードの種類は "A" で、TTL は 60 秒です。
 
->[AZURE.NOTE]ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
+>[AZURE.NOTE] ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
 
 レコード セットは空であるため、新しく作成した "www" レコード セットを使用できるようにレコードを追加する必要があります。<BR>
 
@@ -100,7 +99,7 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 nslookup や他の DNS ツールを使用して、新しいレコード セットをクエリすることもできます。
 
->[AZURE.NOTE]ゾーンの作成時と同様に、まだドメインを Azure DNS ネーム サーバーに委任していない場合は、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
+>[AZURE.NOTE] ゾーンの作成時と同様に、まだドメインを Azure DNS ネーム サーバーに委任していない場合は、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
 
 
 	C:\> nslookup www.contoso.com ns1-01.azure-dns.com
@@ -122,4 +121,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

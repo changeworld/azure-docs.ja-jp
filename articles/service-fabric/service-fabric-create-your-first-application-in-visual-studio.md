@@ -127,7 +127,11 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 ## 次のステップ
 
-- [Web サービス フロント エンドを使用してインターネットにサービスを公開する方法を参照](service-fabric-add-a-web-frontend.md)
+<!--
+Temporarily removing this link because we have removed the ASP.NET template.
+
+ - [See how you can expose your services to the Internet with a web service front end](service-fabric-add-a-web-frontend.md)
+-->
 - [Azure でクラスターを作成する方法の説明](service-fabric-cluster-creation-via-portal.md)
 - [Reliable Services の詳細](service-fabric-reliable-services-quick-start.md)
 - [Reliable Actors プログラミング モデルを使用してサービスを作成してみる](service-fabric-reliable-actors-get-started.md)
@@ -146,4 +150,4 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

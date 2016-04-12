@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/27/2015"
+	ms.date="03/27/2016"
 	ms.author="jeffreyg"/>
 
 # SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する
@@ -128,4 +128,4 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 - [Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)、索引
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->
