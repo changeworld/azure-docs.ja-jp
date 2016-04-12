@@ -122,7 +122,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 コード:
 
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("Foo", 42) });
+this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("metric1", 42) });
 ```
 
 サービスのレプリカまたはインスタンスは、使用するように構成されているメトリックの負荷のみをレポートします。メトリックの一覧は、各サービスの作成時に設定されます。サービスのレプリカまたはインスタンスで現在使用するように構成されていないメトリックの負荷に関するレポートは、Service Fabric で記録されますが無視されます。つまり、クラスターの状態を分析したレポートを作成する際に、そのレポートが使用されません。これにより大規模な分析が可能になるため、都合がよいのです。コードでは測定可能なすべてのメトリックを測定してレポートでき、ユーザーはコードを変更しなくても運用中にそのサービスのリソース割り当て規則を更新し、調整し、更新することができます。たとえば、レポートのバグが多いときにメトリックを無効にしたり、動作に応じてメトリックの重み付けを再構成したり、コードがデプロイされ検証された後でのみ新しいメトリックを有効にしたりできます。
@@ -196,4 +196,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image3]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

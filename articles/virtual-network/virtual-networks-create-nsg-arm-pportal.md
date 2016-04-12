@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行するには、まず[このテンプレート](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)をデプロイしてテスト環境を構築してから **[Azure にデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えてから、ポータルの指示に従います。次の手順では、テンプレートのデプロイ先のリソース グループの名前として **RG NSG** を使用します。
+以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行するには、まず[このテンプレート](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd)をデプロイしてテスト環境を構築してから **[Azure にデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えてから、ポータルの指示に従います。次の手順では、テンプレートのデプロイ先のリソース グループの名前として **RG-NSG** を使用します。
 
 ## NSG-FrontEnd NSG を作成する
 
@@ -36,13 +36,13 @@
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. **[参照]** > **[ネットワーク セキュリティ グループ]** をクリックします。
 
-	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
 
 3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
+  
+    ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
 
-	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
-
-4. **[ネットワーク セキュリティ グループの作成]** ブレードで、*RG NSG* リソース グループに *NSG FrontEnd* という名前の NSG を作成し、**[作成]** をクリックします。
+4. **[ネットワーク セキュリティ グループの作成]** ブレードで、*RG-NSG* リソース グループに *NSG FrontEnd* という名前の NSG を作成し、**[作成]** をクリックします。
 
 	![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
 
@@ -72,7 +72,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 
 ## NSG を FrontEnd サブネットに関連付ける
 
-1. **[参照]** > **[リソース グループ]** > **[RG NSG]** をクリックします。
+1. **[参照]** > **[リソース グループ]** > **[RG-NSG]** をクリックします。
 2. **[RG NSG]** ブレードで、**[...]** > **[TestVNet]** をクリックします。
 
 	![Azure ポータル - TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
@@ -90,7 +90,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 **NSG-BackEnd** NSG を作成し、**BackEnd** サブネットに関連付けるには、次の手順を実行します。
 
 1. 「[NSG-FrontEnd NSG を作成する](#Create-the-NSG-FrontEnd-NSG)」の手順を繰り返し、*NSG-BackEnd* という名前の NSG を作成します。
-2. 「[既存の NSG に規則を作成する](#Create-rules-in-an-existing-NSG)」の手順を繰り返し、次の表に**受信**規則を作成します。
+2. 「[既存の NSG に規則を作成する](#Create-rules-in-an-existing-NSG)」の手順を繰り返し、次の表のように**受信**規則を作成します。
 
 	|受信規則|送信規則|
 	|---|---|
@@ -100,7 +100,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 
 ## 次のステップ
 
-- [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)方法を学習する
-- NSG の[ログを有効する](virtual-network-nsg-manage-log.md)
+- [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)方法を学習します。
+- NSG の[ログを有効にします](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

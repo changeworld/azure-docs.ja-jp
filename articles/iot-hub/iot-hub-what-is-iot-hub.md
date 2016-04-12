@@ -1,6 +1,6 @@
 <properties
  pageTitle="Azure IoT Hub の概要 | Microsoft Azure"
- description="デバイスの接続、通信パターン、サービス支援通信パターンを含む、Azure IoT Hub サービスの概要"
+ description="IoT のアーキテクチャ、デバイスの接続、通信パターン、サービス支援通信パターンを含む、Azure IoT Hub サービスの概要"
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -27,7 +27,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 - デバイス接続イベントおよびデバイス ID 管理イベントの詳細な監視を実現します。
 - 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
 
-![クラウド ゲートウェイとしての IoT Hub][img-architecture]
+![Azure IoT Hub as cloud gateway in internet of things solution][img-architecture]
 
 ## IoT デバイスの接続の課題
 
@@ -112,4 +112,4 @@ Azure IoT Hub の詳細については、次のリンクを参照してくださ
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

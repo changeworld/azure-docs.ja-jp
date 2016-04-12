@@ -27,7 +27,7 @@
 
 - [SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)
 - [Azure SQL サーバーを V12 にアップグレードする](sql-database-upgrade-server-portal.md)
-- V12 サーバーをブラウズする - データベースに [エラスティック データベース プールによるメリットがある](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)場合は、サーバー ブレードに推奨されるプールを示すメッセージが表示されます。メッセージをクリックすると、推奨されるプールが作成されます。
+- V12 サーバーに移動します。「[SQL Database の価格レベルの提案](sql-database-service-tier-advisor.md)」を参照してください。
 - [エラスティック データベース プールを作成します](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
 
 
@@ -96,4 +96,4 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016------>

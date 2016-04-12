@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -28,7 +28,7 @@ SQL Data Warehouse では、ビューが特に役立ちます。ビューをさ�
 
 次の例では、日付ディメンションに新しい日付レコードを追加します。新しいオブジェクトの DimDate\_New が最初に作成され、名前が変更され、オブジェクトの最初のバージョンに代わることに注意してください。
 
-```
+```sql
 CREATE TABLE dbo.DimDate_New
 WITH (DISTRIBUTION = ROUND_ROBIN
 , CLUSTERED INDEX (DateKey ASC)
@@ -74,4 +74,4 @@ SQL Data Warehouse のビューはメタデータ専用です。
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

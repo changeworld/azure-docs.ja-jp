@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/08/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs と Node.js でのプッシュ通知の送信
@@ -230,4 +230,4 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

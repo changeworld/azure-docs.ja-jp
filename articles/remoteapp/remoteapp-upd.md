@@ -1,7 +1,7 @@
 
 <properties 
-    pageTitle="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法 | Microsoft Azure"
-	description="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法について説明します。"
+    pageTitle="Azure RemoteApp によるユーザー データと設定の保存方法 | Microsoft Azure"
+	description="Azure RemoteApp によりユーザー プロファイル ディスクを使用してユーザー データを保存する方法を説明します。"
 	services="remoteapp"
 	documentationCenter="" 
 	authors="lizap" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="12/04/2015" 
+    ms.date="03/28/2016" 
     ms.author="elizapo" />
 
 # Azure RemoteApp によるユーザー データと設定の保存方法
@@ -26,7 +26,7 @@ Azure RemoteApp では、デバイスとセッションにわたってユーザ�
 
 ユーザー プロファイル データの詳細については、次をお読みください。
 
->[AZURE.NOTE]UPD を無効にする必要がありますか。 UPD を無効にできるようになりました。詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD)](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx) に関するページを参照してください。
+>[AZURE.NOTE] UPD を無効にする必要がありますか。 UPD を無効にできるようになりました。詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD)](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx) に関するページを参照してください。
 
 
 ## 管理者がデータにアクセスするには、どうすればよいですか。
@@ -121,6 +121,10 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 ![ユーザーがログオンするときに実行されるシステム タスクを作成します](./media/remoteapp-upd/upd2.png)
 
+**[General (全般)]** タブで、[セキュリティ] の下の **[ユーザー アカウント]** を "BUILTIN\\Users" に必ず変更してください。
+
+![ユーザー アカウントのグループへの変更](./media/remoteapp-upd/upd4.png)
+
 スケジュールされたタスクでは、ユーザーの資格情報を使用してスタートアップ スクリプトが実行されます。ユーザーがログオンするたびに実行されるように、タスクのスケジュールを設定します。
 
 ![タスクのトリガーを "ログオン時" として設定します](./media/remoteapp-upd/upd3.png)
@@ -137,4 +141,22 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 いいえ。Azure RemoteApp ではサポートされません。
 
-<!---HONumber=AcomDC_1217_2015-->
+## データを VM にローカルに保存することはできますか。
+
+いいえ、VM 上の UPD 以外の場所に保存されたデータは失われます。ユーザーが Azure RemoteApp に次回にサインインしたとき、同じ VM が取得されない可能性が高まります。ユーザーと VM の永続性は維持されないため、ユーザーは同じ VM にサインインせず、データも失われます。さらに、コレクションの更新時に、既存の VM は VM の新しいセットに置き換えられます。これは、VM 自体に格納されたすべてのデータが失われることを意味します。推奨される方法として、データを UPD、共有ストレージ (Azure Files など)、VNET 内のファイル サーバー、または OneDrive for Business を使用したクラウドや他のサポートされたクラウド ストレージ システム (DropBox など) に格納します。
+
+## PowerShell を使用して VM に Azure File 共有をマウントする方法
+
+以下のように、Net-PSDrive コマンドレットを使用して、ドライブをマウントできます。
+
+    New-PSDrive -Name <drive-name> -PSProvider FileSystem -Root \<storage-account-name>.file.core.windows.net<share-name> -Credential :<storage-account-name>
+
+
+また、以下を実行して、資格情報を保存することもできます。
+
+    cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+
+
+これにより、New-PSDrive コマンドレットの -Credential パラメーターを省略できます。
+
+<!---HONumber=AcomDC_0330_2016------>

@@ -12,12 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/11/2015"
+   ms.date="03/22/2016"
    ms.author="telmos" />
 
 # VM またはロール インスタンスを別のサブネットに移動する方法
 
 PowerShell を使用すると、同じ Virtual Network (VNet) 内のサブネット間で VM を移動することができます。ロール インスタンスを移動する場合は、PowerShell を使用せずに、CSCFG を編集します。
+
+>[AZURE.NOTE] この記事には、Azure クラシック デプロイのみに関連する情報が含まれています。
 
 サブネット間で VM を移動する理由は何でしょうか。 たとえば、古いサブネットが小さいにもかかわらず、その中で既存の VM が動作しているために拡張できないときは、サブネットを移行することで問題を解決できます。サブネットを移行する場合は、まず新しい、より規模の大きいサブネットを作成し、そこに VM を移行します。そして移行が完了したら、空になった古いサブネットを削除します。
 
@@ -51,4 +53,4 @@ VM に対して静的 DIP が指定されている場合は、VM を新しいサ
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016------>

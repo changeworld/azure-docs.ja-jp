@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Machine Learning の使用
@@ -54,7 +54,7 @@ Machine Learning Studio ウィンドウの下部にある [+新規] をクリッ
 7. [データベース クエリ]: 読み取るデータを記述した SQL ステートメントを入力します。この例では、次のクエリを使用して Product テーブルからデータを読み取ります。
 
 
-```
+```SQL
 SELECT ProductKey, EnglishProductName, StandardCost,
         ListPrice, Size, Weight, DaysToManufacture,
         Class, Style, Color
@@ -149,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

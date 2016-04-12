@@ -3,7 +3,7 @@
    description="SQL Data Warehouse に接続して、クエリを実行する"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/26/2016"
+   ms.date="03/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
@@ -22,7 +22,7 @@
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-このチュートリアルでは、Visual Studio の SQL Server Data Tools を使用して、Azure SQL Data Warehouse データベースにわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
+このチュートリアルでは、Visual Studio の SQL Server Data Tools (SSDT) を使用して、Azure SQL Data Warehouse データベースにわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
 
 ## 前提条件
 
@@ -70,7 +70,7 @@
 
 ## 手順 3. サンプル クエリを実行する
 
-サーバーへの接続が完了したので、次はクエリを記述してみましょう。
+これで、データベースへの接続が確立されました。次はクエリを記述してみましょう。
 
 1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。
 
@@ -110,4 +110,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

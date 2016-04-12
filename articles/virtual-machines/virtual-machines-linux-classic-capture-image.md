@@ -38,7 +38,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 2. SSH のウィンドウで、次のコマンドを入力します。`waagent` からの出力はこのユーティリティのバージョンによって多少異なる場合があることに注意してください。
 
-	`sudo waagent -deprovision`
+	`sudo waagent -deprovision+user`
 
 	このコマンドは、システムをクリーンアップし、再プロビジョニングに適した状態にします。この操作では次のタスクが実行されます。
 
@@ -87,7 +87,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 
 ## 次のステップ
-イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines-command-line-tools.md)」を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
@@ -98,4 +98,4 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [カスタム Linux VM を作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

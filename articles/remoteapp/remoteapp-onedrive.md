@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="01/13/2016"
+   ms.date="03/31/2016"
    ms.author="elizapo"/>
 
 # OneDrive for Business と Azure RemoteApp を統合する方法
@@ -24,11 +24,11 @@ Azure RemoteApp では、OneDrive for Business をファイル リポジトリ�
 
 OneDrive には、OneDrive と OneDrive for Business という 2 つのバージョンがあります。Azure RemoteApp では、OneDrive for Business のみがサポートされています。個人用の OneDrive は機能しますが、公式にはサポートされていません。また、Azure RemoteApp (および RDSH/Citrix/ターミナル サーバー) でサポートされているのは、OneDrive for Business の最新バージョン (次世代同期クライアントとも呼ばれます) のみです。
 
->[AZURE.NOTE]OneDrive (コンシューマー/個人向けエディション) は、Azure RemoteApp ではサポートされていません。OneDrive for Business にも、Windows Server 上での動作が確認されていないためにサポートされていないバージョンがあります。新しいクライアント (次世代同期クライアント) と以前の Groove バージョンの両方が Azure RemoteApp で正常に動作するように見えるかもしれませんが、[https://support.microsoft.com/ja-jp/kb/2965687](https://support.microsoft.com/kb/2965687) で説明されているように、以前の同期エンジンは Citrix/ターミナル サーバー (Windows Server) では機能が完全ではありません。Azure RemoteApp (およびその他の Windows Server デプロイ) では、新しい同期クライアントを使用してください。
+>[AZURE.NOTE]  OneDrive (コンシューマー/個人向けエディション) は、Azure RemoteApp ではサポートされていません。OneDrive for Business にも、Windows Server 上での動作が確認されていないためにサポートされていないバージョンがあります。新しいクライアント (次世代同期クライアント) と以前の Groove バージョンの両方が Azure RemoteApp で正常に動作するように見えるかもしれませんが、[https://support.microsoft.com/ja-jp/kb/2965687](https://support.microsoft.com/kb/2965687) で説明されているように、以前の同期エンジンは Citrix/ターミナル サーバー (Windows Server) では機能が完全ではありません。
 
 ## OneDrive for Business のさまざまなセットアップ オプション
 
-- **OneDrive for Business 同期エンジンの従来のセットアップ:** OneDrive for Business 同期クライアントは、サーバー SKU (リモート デスクトップおよび RemoteApp セッション/ターミナル サーバー セッション) に加え、RemoteApp セッションでの同期用に選択されたフォルダーにインストールできます。これは、Windows クライアント SKU の場合と同じです。OneDrive for Business がファイルを同期する既定の場所は、Azure RemoteApp のユーザー データと設定を格納するために使用されるユーザー プロファイル ディスクがあるのと同じ場所 (つまり、C:\\users<username>) です。このディスクは、ユーザーがログインするどの VM にも追従するので、ODB ファイルもユーザーに追従します。OneDrive for Business アプリは、管理者によってすべてのユーザーに公開される必要があります。また、ユーザーは、同期エンジンがアクティブになるように、新しいセッションごとにアプリを起動する必要があります (または、ログイン スクリプトで起動を自動化することもできます)。OneDrive for Business は、セッションが実行されている VM のファイル全体をダウンロードします。ユーザーのコンテンツを同期する際に、各マシンに一時的にサインインするユーザーが多数存在するターミナル マシン用に最適化されていない状態ですべて (CPU/転送されたデータ/取得されたストレージ) を同期すると、ワークロードが大きくなります。選択的同期を使用すると、ワークロードが軽減されますが、懸念は残ります。
+- **OneDrive for Business 同期エンジンの従来のセットアップ:** 現時点で、このオプションは Azure RemoteApp、RDSH、Citrix デプロイでサポートされていません。
 - **OneDrive for Business の "仮想化"/ローカル ファット クライアントからセッションへのリダイレクト:** OneDrive をクライアント デバイスのドライブのフォルダーに同期している場合、そのドライブを Azure RemoteApp に[リダイレクト](remoteapp-redirection.md)することを選択できます。そのドライブはすべてのユーザーのクライアントで同じであり、すべてのユーザーの OneDrive はそのドライブのフォルダーに同期された状態になります。ユーザーが他のクライアントから RemoteApp にアクセスしている場合、これらのファイルは利用できない可能性があります (回避方法 - ユーザーはオンライン バージョンの OneDrive を使用すれば、いつでもファイルにアクセスできます)。 
 - **ファイルをキャッシュ/同期せずに Azure RemoteApp 環境内で OneDrive for Business をドライブ化:** (OneDrive for Business の HTTP URL を VM 上のドライブにマップ) RDSH 環境内で OneDrive for Business をネットワーク ドライブにマップすることが可能です。これを使用できるシナリオは次のとおりです。 
 	- Azure RemoteApp へのアクセスにシン クライアント (ローカル ストレージなし) が使用される場合。アプリケーションはファイルが OneDrive for Business に格納されることを必要としますが、ローカルにあるように "見える" ことが望ましく、管理者はファイルを VM に同期することを望みません。
@@ -65,4 +65,4 @@ OneDrive には、OneDrive と OneDrive for Business という 2 つのバージ
  
 	![OneDrive for Business as a mapped network drive](./media/remoteapp-onedrive/ra-mappeddrive.png)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

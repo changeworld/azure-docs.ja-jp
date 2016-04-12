@@ -1,10 +1,5 @@
 
-
-## 概要
-
-この記事では、アプリとワークロードの実行に使用できる仮想マシン ベースのコンピューティング リソースの利用可能なサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。さまざまなサイズの価格について詳しくは、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
-
-Azure VM の一般的な制限事項については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+Azure VM の一般的な制限事項については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)」を参照してください。
 
 標準のサイズは、複数のシリーズ (A、D、DS、G、および GS) で構成されます。これらのサイズに関する考慮事項は次のとおりです。
 
@@ -14,7 +9,8 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 *   G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 
-*   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+
+*   DS シリーズ、DSv2 シリーズ、GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
 
 
 *   A シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
@@ -22,13 +18,13 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 *   A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。
 
 
-仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
+仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
 
-* A8 ～ A11 のサイズは、*コンピューティング集中型インスタンス*とも呼ばれます。これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
+* A8 ～ A11 のサイズは、*コンピューティング集中型インスタンス*とも呼ばれます。これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
 
 
 *	Dv2 シリーズ、D シリーズ、G シリーズ、および対応する DS/GS は、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
@@ -46,20 +42,19 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 |SKU ファミリ |ACU/コア |
 |---|---|
-|[Standard\_A0](#standard-tier-a-series) |50 |
-|[Standard\_A1 ～ 4](#standard-tier-a-series) |100 |
-|[Standard\_A5 ～ 7](#standard-tier-a-series) |100 |
-|[A8 ～ A11](#standard-tier-a-series) |225 *|
-|[D1 ～ 14](#standard-tier-d-series) |160 |
-|[D1 ～ 14v2](#standard-tier-dv2-series) |210 ～ 250 *|
-|[DS1 ～ 14](#standard-tier-ds-series) |160 |
-|[G1 ～ 5](#standard-tier-g-series) |180 ～ 240 *|
-|[GS1 ～ 5](#standard-tier-gs-series) |180 ～ 240 *|
+|[Standard\_A0](#standard-tier-a-series)	|50 |
+|[Standard\_A1 ～ 4](#standard-tier-a-series)	|100 |
+|[Standard\_A5 ～ 7](#standard-tier-a-series)	|100 |
+|[A8-A11](#standard-tier-a-series)	|225 *|
+|[D1-14](#standard-tier-d-series)	|160 |
+|[D1-15v2](#standard-tier-dv2-series)	|210 - 250 *|
+|[DS1-14](#standard-tier-ds-series)	|160 |
+|[DS1-14v2](#standard-tier-dsv2-series)	|210-250* |
+|[G1-5](#standard-tier-g-series)	|180 - 240 *|
+|[GS1-5](#standard-tier-gs-series)	|180 - 240 *|
 
 
 * が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
-
-
 
 ## サイズ一覧表
 
@@ -84,9 +79,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_A7 |8|56 GB|4|一時ディスク = 605 GB |16|16 x 500| 高 |
 
 
+
 ## Standard レベル: A シリーズ - コンピューティング集中型インスタンス
 
-注: これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
+注: これらのサイズの使用に関する詳細な情報と考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
 
 |サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|---|
@@ -108,6 +104,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_D13 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
 |Standard\_D14 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
 
+
 ## Standard レベル: Dv2 シリーズ
 
 |サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)| 最大ネットワーク帯域幅 |
@@ -121,6 +118,8 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
 |Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
 |Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
+|Standard\_D15\_v2 |20|140 GB|10|一時的 (SSD) = 1 TB |40|40 x 500| 非常に高 |
+
 
 ## Standard レベル: DS シリーズ*
 
@@ -135,7 +134,26 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS13 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 25,600 256 MB/秒 | 高 |
 |Standard\_DS14 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 50,000 512 MB/秒 | 非常に高 |
 
-**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+
+
+## Standard レベル: DSv2 シリーズ*
+
+|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|キャッシュ サイズ (GB)|最大ディスク IOPS および帯域幅| 最大ネットワーク帯域幅 |
+|---|---|---|---|---|---|---|---|---|
+|Standard\_DS1\_v2 |1|3\.5|1|ローカル SSD ディスク = 7 GB |2|43| 毎秒 3,200 48 MB | 中 |
+|Standard\_DS2\_v2 |2|7|2|ローカル SSD ディスク = 14 GB |4|86| 毎秒 6,400 96 MB | 高 |
+|Standard\_DS3\_v2 |4|14|4|ローカル SSD ディスク = 28 GB |8|172| 毎秒 12,800 192 MB | 高 |
+|Standard\_DS4\_v2 |8|28|8|ローカル SSD ディスク = 56 GB |16|344| 毎秒 25,600 384 MB | 高 |
+|Standard\_DS5\_v2 |16|56|8|ローカル SSD ディスク = 112 GB |16|688| 毎秒 50,000 768 MB | 高 |
+|Standard\_DS11\_v2 |2|14|2|ローカル SSD ディスク = 28 GB |4|72| 毎秒 6,400 96 MB | 高 |
+|Standard\_DS12\_v2 |4|28|4|ローカル SSD ディスク = 56 GB |8|144| 毎秒 12,800 192 MB | 高 |
+|Standard\_DS13\_v2 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 毎秒 25,600 384 MB | 高 |
+|Standard\_DS14\_v2 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 毎秒 50,000 768 MB | 非常に高 |
+
+
+**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+
 
 ## Standard レベル: G シリーズ
 
@@ -157,8 +175,8 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_GS4|16|224|8|ローカル SSD ディスク = 448 GB |32|2112| 40,000 1,000 MB/秒 | 極めて高 |
 |Standard\_GS5|32|448|8|ローカル SSD ディスク = 896 GB |64|4224| 80,000 2,000 MB/秒 | 極めて高 |
 
-
 ## 注意: 標準 A0 ～ A4 は CLI および Powershell を使用します 
+
 
 クラシック デプロイ モデルでは、一部の VM サイズが CLI と Powershell で若干異なります。
 
@@ -168,9 +186,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 * Standard\_A3: Large
 * Standard\_A4: ExtraLarge
 
+
 ## 次のステップ
 
-- [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
-- 高パフォーマンス コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
+- [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
+- 高パフォーマンス コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

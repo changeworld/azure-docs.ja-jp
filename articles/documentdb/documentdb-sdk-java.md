@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="03/30/2016" 
 	ms.author="ryancraw"/>
 
 # DocumentDB SDK
@@ -26,15 +26,18 @@
 
 ##DocumentDB Java SDK
 
-<table> 
+<table>
 <tr><td>**ダウンロード**</td><td>[Maven](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)</td></tr>
-<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr> 
-<tr><td>**ドキュメント**</td><td>[Java SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr> 
-<tr><td>**使用**</td><td>[Java SDK の使用](documentdb-java-application.md)</td></tr> 
-<tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr> 
+<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**ドキュメント**</td><td>[Java SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr>
+<tr><td>**概要**</td><td>[Java SDK の概要](documentdb-java-application.md)</td></tr>
+<tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## リリース ノート
+
+### <a name="1.6.0"/>[1\.6.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.6.0)
+- 実装されている[パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)。 
 
 ### <a name="1.5.1"/>[1\.5.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.5.1)
 - 他の SDK と一貫性を維持するため、リトル エンディアンのハッシュ値を生成する HashPartitionResolver のバグを修正しました。
@@ -67,25 +70,25 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
 
-> [AZURE.WARNING]バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
+> [AZURE.WARNING]
+バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
 
 <br/>
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1.5.1](#1.5.1) | 2015 年 12 月 31 日 |--- 
-| [1.5.0](#1.5.0) | 2015 年 12 月 04 日 |--- 
-| [1\.4.0](#1.4.0) | 2015 年 10 月 05 日 |--- 
-| [1\.3.0](#1.3.0) | 2015 年 10 月 05 日 |--- 
-| [1\.2.0](#1.2.0) | 2015 年 8 月 05 日 |--- 
-| [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |--- 
-| [1\.0.1](#1.0.1) | 2015 年 5 月 12 日 |--- 
-| [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |--- 
-| 0.9.5-prelease | 2015 年 3 月 09 日 | 2016 年 2 月 29 日 
-| 0.9.4-prelease | 2015 年 2 月 17 日 | 2016 年 2 月 29 日 
-| 0.9.3-prelease | 2015 年 1 月 13 日 | 2016 年 2 月 29 日 
-| 0.9.2-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日 
-| 0.9.1-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日 
+| [1\.5.0](#1.5.0) | 2015 年 12 月 4 日 |---
+| [1\.4.0](#1.4.0) | 2015 年 10 月 05 日 |---
+| [1\.3.0](#1.3.0) | 2015 年 10 月 05 日 |---
+| [1\.2.0](#1.2.0) | 2015 年 8 月 05 日 |---
+| [1\.1.0](#1.1.0) | 2015 年 7 月 09 日 |---
+| [1\.0.1](#1.0.1) | 2015 年 5 月 12 日 |---
+| [1\.0.0](#1.0.0) | 2015 年 4 月 07 日 |---
+| 0.9.5-prelease | 2015 年 3 月 09 日 | 2016 年 2 月 29 日
+| 0.9.4-prelease | 2015 年 2 月 17 日 | 2016 年 2 月 29 日
+| 0.9.3-prelease | 2015 年 1 月 13 日 | 2016 年 2 月 29 日
+| 0.9.2-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日
+| 0.9.1-prelease | 2014 年 12 月 19 日 | 2016 年 2 月 29 日
 | 0.9.0-prelease | 2014 年 12 月 10 日 | 2016 年 2 月 29 日
 
 ## FAQ
@@ -95,4 +98,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0330_2016------>

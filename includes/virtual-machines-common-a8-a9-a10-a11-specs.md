@@ -23,7 +23,7 @@ A8 および A10 | Intel Xeon E5-2670<br/>8 コア @ 2.6 GHz | DDR3-1600 MHz<br/
 A9 および A11 | Intel Xeon E5-2670<br/>16 コア @ 2.6 GHz | DDR3-1600 MHz<br/>112 GB
 
 
->[AZURE.NOTE]サポートされる命令セット拡張機能など、プロセッサに関する詳細については、Intel.com の Web サイトを参照してください。VM ストレージの容量とディスクの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+>[AZURE.NOTE]サポートされる命令セット拡張機能など、プロセッサに関する詳細については、Intel.com の Web サイトを参照してください。VM ストレージの容量とディスクの詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 ### ネットワーク アダプター
 
@@ -58,4 +58,4 @@ A10 および A11 インスタンスは、Azure サービスおよびインタ�
 
 * **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/12 は予約済みです。Azure 仮想ネットワークの A8 および A9 インスタンスで MPI アプリケーションを実行する場合は、仮想ネットワークのアドレス空間が RDMA ネットワークと重複しないようにしてください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

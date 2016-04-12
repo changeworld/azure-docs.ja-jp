@@ -1,6 +1,3 @@
-クラウド コンピューティングという言葉は、今や多くの人々に認知され、小規模な企業から大企業、多国籍企業にいたるまで、IT 業界における存在感を日増しに高めています。Microsoft Azure はマイクロソフトが提供する Cloud Services プラットフォームで、多方面にわたって新たな可能性を生み出しています。アプリケーションを Cloud Services として迅速にプロビジョニングしたり、プロビジョニング解除したりすることができるようになった今、技術や予算の制約に縛られることはありません。企業は、ハードウェア インフラストラクチャに貴重な時間と予算を費やすことなく、アプリケーションやビジネス プロセス、そして顧客とユーザーの利益にのみ目を向けることができます。
-
-Microsoft Azure Virtual Machines サービスを通じて、マイクロソフトは包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。SAP NetWeaver ベースのアプリケーションは、Azure Virtual Machines (IaaS) でサポートされます。以下のホワイトペーパーには、SAP NetWeaver ベースのアプリケーションに最適なプラットフォームをプランニングし、Microsoft Azure に導入する方法が説明されています。
 
 ## 計画と導入
 
@@ -39,24 +36,4 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkID=521971)
 
-## Azure における SAP NetWeaver - HA
-
-タイトル: Azure への SAP NetWeaver の導入 - Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用して SAP ASCS/SCS インスタンスをクラスタリングする
-
-概要: このドキュメントでは、SIOS DataKeeper を使用して可用性に優れた SAP ASCS/SCS 構成を Azure 上にセットアップする方法を説明しています。SAP では、その単一障害点となるコンポーネント (SAP ASCS/SCS、Enqueue Replication Services など) を、共有ディスクを使った Windows Server フェールオーバー クラスター構成によって保護しています。これらの SAP コンポーネントは、SAP システムの機能に不可欠です。それらのコンポーネントがサーバーの障害や VM の障害に耐えることができるよう、ベアメタル環境や Hyper-V 環境向けの Windows クラスター構成を使って高可用性機能を設定する必要があります。2015 年 8 月時点では、こうしたクリティカルな SAP コンポーネントに要求される Windows ベースの高可用性構成に必要となる共有ディスクを Azure 単体で提供することができません。しかし、SIOS 社の DataKeeper という製品を利用すれば、SAP ASCS/SCS に必要な Windows Server フェールオーバー クラスター構成を Azure IaaS プラットフォーム上に構築することが可能です。このホワイト ペーパーには、SIOS Datakeeper によって提供される共有ディスクを使用して、Windows Server フェールオーバー クラスター構成を Azure にインストールする手順が説明されています。このホワイト ペーパーでは、この高可用性構成を適切に機能させるために必要な Azure、Windows、SAP 側の構成について詳しく説明しています。特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイする際の主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
-
-更新日: 2015 年 8 月
-
-[このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=613056)
-
-## Azure SUSE Linux Virtual Machines における SAP NetWeaver
-
-タイトル: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト
-
-概要: 現時点では、SAP は Azure Linux VMs での SAP NetWeaver の実行を正式にはサポートしていません。それでも、SAP サポートに連絡する必要がない限り、顧客はテストを実施する、または Azure Linux VMs で SAP のデモやトレーニング システムを実行することを検討する場合があります。この記事では、SAP を実行するために必要な Azure SUSE Linux VMs の設定方法と、潜在的な落とし穴を回避するための基本的なヒントをいくつか示します。
-
-更新日: 2015 年 12 月
-
-[記事はこちら](virtual-machines-linux-sap-on-suse-quickstart.md)
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

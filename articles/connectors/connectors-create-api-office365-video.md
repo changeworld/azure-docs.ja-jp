@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="03/23/2016"
 ms.author="deonhe"/>
 
 # Office 365 Video API の概要
@@ -33,7 +33,7 @@ Office 365 ビデオは、次のことを行えます。
 
 ## トリガーとアクション
 
-Office 365 Users API では、次のアクションを使用できます。トリガーはありません。
+Office 365 Video API では、次のアクションを使用できます。トリガーはありません。
 
 | トリガー | アクション|
 | --- | --- |
@@ -221,4 +221,4 @@ Office 365 Users API では、次のアクションを使用できます。ト�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

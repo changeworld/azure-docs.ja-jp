@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="03/22/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの EBOD コントローラーを交換する
@@ -30,7 +30,7 @@
 
 - EBOD コントローラーはホットスワップ可能であり、取り外しと交換が可能です。交換モジュールを用意するまで、障害が発生しているモジュールを取り外さないでください。交換処理は、開始後 10 分以内に完了する必要があります。
 
->[AZURE.IMPORTANT]EBOD コントローラーを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+>[AZURE.IMPORTANT] StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](storsimple-safety.md#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
 
 ## EBOD コントローラーを取り外す
 
@@ -48,7 +48,7 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 5. コントローラーに接続されていた EBOD コントローラー モジュールの正確な SAS ポートをメモしておきます。EBOD モジュールを交換した後、システムをこの構成に復元する必要があります。
 
-    >[AZURE.NOTE]通常、これはポート A になり、次の図に示す**ホスト イン**になります。
+    >[AZURE.NOTE] 通常、これはポート A になり、次の図に示す**ホスト イン**になります。
 
     ![Backplane of EBOD controller](./media/storsimple-ebod-controller-replacement/IC741049.png)
 
@@ -101,10 +101,10 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
     |6|EBOD コント ローラー 0|
     |7|EBOD コント ローラー 1|
     |8|EBOD エンクロージャ|
-    |9|PDU|
+    |9|電力配分装置|
 
 ## 次のステップ
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0330_2016------>

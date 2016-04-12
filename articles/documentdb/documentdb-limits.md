@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/03/2016" 
-	ms.author="mimig"/>
+	ms.date="03/30/2016" 
+	ms.author="arramac"/>
 
 
 # DocumentDB の制限とクォータ
@@ -24,4 +24,6 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](documentdb-increase-limits.md)。
+
+<!---HONumber=AcomDC_0330_2016------>

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="12/05/2015"
+    ms.date="03/28/2016"
     ms.author="elizapo" />
 
 
@@ -29,4 +29,4 @@ Azure RemoteApp を仮想ネットワーク (VNET) で使用する場合、Remot
 - [個人の VNET から Azure VNET への切り替え](remoteapp-migratevnet.md)
 - [Azure RemoteApp で使用する Azure VNET の検証](remoteapp-vnet.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016------>

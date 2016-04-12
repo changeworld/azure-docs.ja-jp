@@ -56,9 +56,9 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 ### ギャラリー
 
-**[ギャラリー]** タブをクリックすると、Cortana Analytics ギャラリーに移動します。ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Analytics Suite のコンポーネントを使用してソリューションを共有できる場です。
+**[ギャラリー]** タブをクリックすると、Cortana Intelligence ギャラリーに移動します。ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用してソリューションを共有できる場です。
 
-ギャラリーの詳細については、[Cortana Analytics ギャラリーのソリューションを共有および検出する](machine-learning-gallery-how-to-use-contribute-publish.md)方法に関するページを参照してください。
+ギャラリーの詳細については、「[Cortana Analytics ギャラリーのソリューションを共有および検出する](machine-learning-gallery-how-to-use-contribute-publish.md)」を参照してください。
 
 ## 実験の構成要素
 
@@ -115,4 +115,4 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

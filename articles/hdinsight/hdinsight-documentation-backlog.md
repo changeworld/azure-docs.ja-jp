@@ -40,4 +40,4 @@ Automation | ARM テンプレートを使用するための [Apache Storm クラ
 * 下にコメントを追加する。
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/hdinsight/hdinsight-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

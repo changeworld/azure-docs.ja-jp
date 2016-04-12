@@ -24,21 +24,19 @@
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-## 前提条件
-
-### .NET Framework
+## 手順 1: 開発環境を設定する
 
 .NET framework は、Windows にプレインストールされています。Linux と Mac OS X では、.NET Frameworkを [Mono プロジェクト](http://www.mono-project.com/)でダウンロードすることができます。
 
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
-## 手順 1. 接続文字列を取得する
+## 手順 3: 接続文字列を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 [System.Data.SqlClient.SqlConnection クラス](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) は SQL Databaseへの接続に使用します。
 
@@ -58,7 +56,7 @@ class Sample
 }
 ```
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 [System.Data.SqlClient.SqlCommand](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.aspx) と [SqlDataReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqldatareader.aspx) クラスは、SQL Database へのクエリの結果セットを取得するために使用できます。System.Data.SqlClient はオフラインの [System.Data.DataSet](https://msdn.microsoft.com/library/system.data.dataset.aspx) のデータの取得もサポートしています。
 
@@ -98,7 +96,7 @@ class Sample
 
 ```  
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -133,4 +131,11 @@ class Sample
 }
 ```
 
-<!---HONumber=AcomDC_0323_2016-->
+
+## 次のステップ
+
+一時的なエラー コードを処理してコードの回復性を強化し、再試行ロジックを使用する方法については、「[コード サンプル: SQL Database に接続するための C# の再試行ロジック](sql-database-develop-csharp-retry-windows.md)」を参照してください。
+
+考えられるエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
+
+<!---HONumber=AcomDC_0330_2016------>

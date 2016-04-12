@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/26/2016"
+   ms.date="03/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -78,7 +78,7 @@ New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "myn
 パラメーターのオプションについては、「[Create Database (Azure SQL Data Warehouse)](https://msdn.microsoft.com/library/mt204021.aspx)」を参照してください。
 
 ## 次のステップ
-SQL Data Warehouse のプロビジョニングが済めば、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を調べたりできます。
+SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
 
 プログラムでの SQL Data Warehouse の管理方法について詳しくは、[Powershell][] または [REST API][] のドキュメントを参照してください。
 
@@ -88,7 +88,8 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 
 <!--Article references-->
 [移行]: ./sql-data-warehouse-overview-migrate.md
-[開発]: ./sql-data-warehouse-overview-develop/.md
+[開発]: ./sql-data-warehouse-overview-develop.md
+[読み込み]: ./sql-data-warehouse-load-with-bcp.md
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [Powershell]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [REST API]: https://msdn.microsoft.com/library/azure/dn505719.aspx
@@ -96,4 +97,4 @@ SQL Data Warehouse のプロビジョニングが済めば、[サンプル デ�
 [firewall rules]: ../sql-database/sql-database-configure-firewall-settings.md
 [Azure PowerShell のインストールおよび構成方法]: ./powershell-install-configure.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

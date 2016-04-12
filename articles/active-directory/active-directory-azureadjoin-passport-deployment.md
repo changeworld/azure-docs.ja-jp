@@ -3,6 +3,7 @@
 	description="組織で Microsoft Passport を有効にするためのデプロイメント手順"
 	services="active-directory"
 	documentationCenter=""
+	keywords="Microsoft Passport の構成, Microsoft Passport for Work のデプロイ"
 	authors="femila"
 	manager="stevenpo"
 	editor=""
@@ -14,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/19/2015"
+	ms.date="03/23/2016"
 	ms.author="femila"/>
 
 
@@ -25,7 +26,7 @@ Windows 10 ドメイン参加済みデバイスを Azure Active Directory (Azure
 ## System Center Configuration Manager Version 1509 for Technical Preview をデプロイする
 Microsoft Passport のキーに基づいてユーザー証明書をデプロイするには、以下が必要です。
 
-- **System Center Configuration Manager Version 1509 for Technical Preview**。詳細については、「[Microsoft System Center Configuration Manager Technical Preview](https://technet.microsoft.com/library/dn965439.aspx#BKMK_TP3Update)」および [System Center Configuration Manager チームのブログ](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx)を参照してください。
+- **System Center Configuration Manager Version 1509 for Technical Preview**。詳細については、「[Microsoft System Center Configuration Manager Technical Preview](https://technet.microsoft.com/library/dn965439.aspx#BKMK_TP3Update)」および [System Center Configuration Manager](http://blogs.technet.com/b/configmgrteam/archive/2015/09/23/now-available-update-for-system-center-config-manager-tp3.aspx) チームのブログを参照してください。
 - **公開キー基盤 (PKI)**: ユーザー証明書を使用して Microsoft Passport for Work を有効にするには、PKI が準備されている必要があります。PKI がないか、PKI をユーザー証明書には使用しない場合は、次の方法があります。
  - **ドメイン コントローラーをデプロイする**: Windows Server 2016 ビルド 10551 (以降) がインストールされている新しいドメイン コントローラーをデプロイし、[レプリカ ドメイン コントローラーを既存のドメインにインストールする](https://technet.microsoft.com/library/jj574134.aspx)手順に従うか、[新しい環境を作成する場合は、新しい Active Directory フォレストをインストールする](https://technet.microsoft.com/library/jj574166)手順に従います([Signiant Media Exchange](https://datatransfer.microsoft.com/signiant_media_exchange/spring/main?sdkAccessible=true) で ISO をダウンロードできます)。
 
@@ -118,4 +119,4 @@ xml サンプルを次に示します。
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

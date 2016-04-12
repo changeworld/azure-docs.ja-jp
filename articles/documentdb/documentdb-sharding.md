@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="03/30/2016" 
 	ms.author="arramac"/>
 
 # .NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法
 
-Azure DocumentDB は、[SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) と [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してコレクションをプロビジョニングすることによって、アカウントをシームレスにスケールできる (これを**シャーディング**とも言います) ドキュメント データベース サービスです。パーティション分割されたアプリケーションの開発を容易にし、パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のパーティションにスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
+Azure DocumentDB では、コレクションを[大容量のストレージとスループット](documentdb-partition-data.md)にスケールアップすることができます。ただし、パーティション分割の動作を細かく制御することにメリットがあるケースもあります。パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のコレクションにまたがってスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
 
 この記事では、.NET SDK のクラスとインターフェイスについて確認し、それらを使用してパーティション分割されたアプリケーションを開発する方法を見ていきます。
 
@@ -26,8 +26,8 @@ Azure DocumentDB は、[SDK](https://msdn.microsoft.com/library/azure/dn781482.a
 
 パーティション分割を詳しく見る前に、パーティション分割に関連する基本的な DocumentDB の概念を確認しましょう。各 Azure DocumentDB データベース アカウントは、一連のデータベースで構成されます。それぞれのデータベースには複数のコレクションが含まれ、それぞれのコレクションにはストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する添付ファイルが含まれています。コレクションは DocumentDB 内でパーティションとして扱うことができ、次のような性質を備えています。
 
-- コレクションは物理的なパーティションで、論理的なコンテナーではありません。そのため、同じコレクション内の複数のドキュメントに対してクエリや処理を行う場合に、パフォーマンスが向上します。
-- コレクションは、ストアド プロシージャやトリガーなど、ACID トランザクションの境界です。
+- コレクションではパフォーマンスを分離することができます。そのため、同一コレクション内の類似したドキュメントを照合することには、パフォーマンス上のメリットがあります。たとえば、時系列データの場合、頻繁に照会する前月のデータはプロビジョニング済みの高スループットのコレクション内に配置し、古いデータはプロビジョニング済みの低スループットのコレクション内に配置することができます。
+- ACID トランザクション (ストアド プロシージャやトリガー) は、コレクションをまたがることはできません。トランザクションのスコープは、コレクション内の単一のパーティション キー値内に設定されます。
 - コレクションではスキーマを適用しないため、同じ種類だけでなく、異なる種類の複数の JSON ドキュメントに対しても使用できます。
 
 [Azure DocumentDB .NET SDK のバージョン 1.1.0](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
@@ -134,12 +134,11 @@ foreach (UserProfile activeUser in query)
 >[AZURE.NOTE] コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
 
 ##FAQ
-**DocumentDB がサーバー側のパーティション分割ではなくクライアント側のパーティション分割をサポートしているのはなぜですか。**
+** DocumentDB はサーバー側のパーティション分割をサポートしていますか。**
 
-DocumentDB では複数の理由からクライアント側のパーティション分割をサポートしています。
+はい、DocumentDB は[サーバー側のパーティション分割](documentdb-partition-data.md)をサポートしています。より高度なユース ケースとしては、クライアント側のパーティション リゾルバーを介したクライアント側のパーティション分割もサポートしています。
 
-- 開発者からコレクションの概念を分離しようとすると、一貫性のあるインデックス作成/クエリ実行、高可用性、ACID トランザクションの保証のうち、いずれかの面で妥協せざるを得なくなります。 
-- ドキュメント データベースでは、多くの場合、パーティション分割戦略を定義するうえで柔軟性が必要ですが、サーバー側アプローチではこれに対応できない場合があります。 
+** サーバー側のパーティション分割とクライアント側のパーティション分割はどのように使い分ければよいですか。** ほとんどのケースでサーバー側のパーティション分割をお勧めしています。データのパーティション分割とルーティング要求の管理タスクを扱えるためです。ただし、範囲パーティション分割が必要な場合や、パーティション キーの値に応じてパフォーマンスを分離するような特別なユースケースがある場合など、クライアント側のパーティション分割の方が適している場合もあります。
 
 **パーティション スキームへのコレクションの追加や削除はどのようにすればよいですか。**
 
@@ -154,13 +153,13 @@ DocumentDB では複数の理由からクライアント側のパーティショ
 複数の PartitionResolver を連結するには、1 つ以上の既存のリゾルバーを内部で使用する独自の IPartitionResolver を実装します。この例については、サンプル プロジェクト内の TransitionHashPartitionResolver を参照してください。
 
 ##参照
-* [GitHub のパーティション分割のコード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)
-* [DocumentDB の概念を使用したデータのパーティション分割](documentdb-partition-data.md)
+* [DocumentDB を使用したデータのパーティション分割](documentdb-partition-data.md)
 * [DocumentDB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
+* [GitHub のパーティション分割のコード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB の制限](documentdb-limits.md)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0330_2016------>

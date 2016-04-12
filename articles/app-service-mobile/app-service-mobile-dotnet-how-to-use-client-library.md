@@ -607,7 +607,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。それぞれで、次の置換を行います。
 
-* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[[Azure クラシック ポータル]] の Azure Active Directory の [ドメイン] タブからコピーできます。
+* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル](https://manage.windowsazure.com/) の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
 
@@ -891,7 +891,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/ja-JP/library/azure/dn250579(v=azure.10).aspx
 [Azure ポータル]: https://portal.azure.com/
-[[Azure クラシック ポータル]]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/ja-JP/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
@@ -913,4 +913,4 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

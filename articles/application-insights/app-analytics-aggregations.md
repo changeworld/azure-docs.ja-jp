@@ -15,13 +15,11 @@
 	ms.date="03/21/2016" 
 	ms.author="awills"/>
 
-
 # Analytics での集計
 
-[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-analytics.md) を使用すると、[Application Insights](app-insights-overview.md) によってアプリから収集されたテレメトリに対して強力なクエリを実行できます。ここでは、Analytics のクエリ言語について説明します。
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
-
 
 
 ## summarize 演算子
@@ -463,4 +461,4 @@ traces
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

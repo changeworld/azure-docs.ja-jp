@@ -173,4 +173,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!-----HONumber=AcomDC_0218_2016-->
+<!------HONumber=AcomDC_0218_2016-->

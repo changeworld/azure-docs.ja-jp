@@ -1,5 +1,5 @@
 <properties
-   pageTitle="編集と更新の機能を使用して、ローカルの Docker コンテナーで実行されているライブ ASP.NET 5 Web アプリケーションに変更を加える | Microsoft Azure"
+   pageTitle="編集と更新の機能によるローカル Docker コンテナーでのアプリのデバッグ | Microsoft Azure"
    description="編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリケーションに変更を加え、コンテナーを更新する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="02/17/2016"
+   ms.date="03/25/2016"
    ms.author="tarcher" />
 
-# 編集と更新の機能を使用して、ローカルの Docker コンテナーで実行されているライブ ASP.NET 5 Web アプリケーションに変更を加える
+# 編集と更新の機能によるローカル Docker コンテナーでのアプリのデバッグ
 
 ## 概要
 Visual Studio Tools for Docker を使用すると、アプリケーションの開発とテストを Docker コンテナーでローカルで実行でき、しかも、コードに変更を加えるたびにコンテナーを再起動する必要がありません。この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET 5 Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。
@@ -27,37 +27,9 @@ Visual Studio Tools for Docker を使用すると、アプリケーションの�
 - [Microsoft ASP .NET and Web Tools 2015 RC](https://go.microsoft.com/fwlink/?LinkId=627627)
 - [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox)
 - [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)
+- [Docker クライアントを構成する](./vs-azure-tools-docker-setup.md)
 
 > [AZURE.NOTE] Visual Studio 2015 Tools for Docker の以前のバージョンがインストールされている場合は、最新のバージョンをインストールする前に、コントロール パネルで以前のバージョンをアンインストールする必要があります。
-
-## Docker クライアントを構成してテストする 
-このセクションでは、Docker マシンの既定のインスタンスが構成されて実行されていることを確認する手順について説明します。
-
-1. 既定の Docker ホスト インスタンスを作成するために、コマンド プロンプトで次のコマンドを発行します。
-
-		docker-machine create --driver virtualbox default
- 
-1. 既定のインスタンスが構成され、実行されていることを確認するために、コマンド プロンプトで次のコマンドを発行します (通常は、"default" という名前のインスタンスが実行されていることがわかります)。
-
-		docker-machine ls 
-		
-	![][0]
- 
-1. 現在のホストを既定として設定するために、コマンド プロンプトで次のコマンドを発行します。
-
-		docker-machine env default
-
-1. 次のコマンドを発行して、シェルを構成します。
-
-		FOR /f "tokens=*" %i IN ('docker-machine env default') DO %i
-
-1. 次のコマンドを発行すると、実行中のアクティブなコンテナーから返された空の応答が表示されます。
-
-		docker ps
-
-	![][1]
- 
-> [AZURE.NOTE] 開発用コンピューターを再起動するたびに、ローカルの Docker ホストを再起動する必要があります。これを行うには、コマンド プロンプトで、次のコマンドを発行します。`docker-machine start default`
 
 ## ローカルの Docker コンテナーで実行されているアプリを編集する
 ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使用すると、Docker コンテナーでアプリケーションをテストして実行し、Visual Studio でアプリケーションに変更を加えた後、ブラウザーの表示を更新して、コンテナー内で実行されているアプリに加えた変更を反映することができます。
@@ -78,11 +50,11 @@ ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使�
 
 1. Visual Studio のソリューション エクスプローラーで、プロジェクトを右クリックし、**[追加]、[Docer サポート]** の順に選択します。
 
-	![][2]
+	![][0]
  
 1. プロジェクト ノードに次のファイルが作成されます。
 
-	![][3]
+	![][1]
 
 1. ソリューション構成を `Debug` に設定し、**F5** キーを押して、ローカルでアプリケーションのテストを開始します。
 
@@ -120,7 +92,7 @@ ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使�
 
 - **"Build : Failed to build the image"、"Error checking TLS connection: Host is not running" と表示される**
 
-	既定の Docker ホストが実行されていることを確認します。手順については、「[Docker クライアントを構成してテストする](#configuring-the-docker-client)」セクションを参照してください。
+	既定の Docker ホストが実行されていることを確認します。「[Configure the Docker client (VirtualBox を使用して Docker ホストを構成する)](./vs-azure-tools-docker-setup.md)」をご覧ください。
 
 - **ボリューム マッピングが見つからない**
 
@@ -128,11 +100,17 @@ ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使�
 
 - **Microsoft Edge を既定のブラウザーとして使用している**
 
-	Microsoft Edge ブラウザーを使用している場合、IP アドレスがセキュリティで保護されていないと見なされるため、サイトが表示されないことがあります。この問題を解決するには、次の手順を実行します。1.Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。2.**[インターネット オプション]** が表示されたらタップします。2.**[セキュリティ]** タブをタップします。3.**[ローカル イントラネット]** ゾーンを選択します。4.**[サイト]** をタップします。5.一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。6.Edge でページを更新すると、サイトが実行されていることがわかります。7.この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。
+	Microsoft Edge ブラウザーを使用している場合、IP アドレスがセキュリティで保護されていないと見なされるため、サイトが表示されないことがあります。この問題を解決するには、次の手順を実行します。
+	1. Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
+	2. **[インターネット オプション]** が表示されたらタップします。 
+	2. **[セキュリティ]** タブをタップします。
+	3. **[ローカル イントラネット]** ゾーンを選択します。
+	4. **[サイト]** をタップします。 
+	5. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。 
+	6. Edge でページを更新すると、サイトが実行されていることがわかります。 
+	7. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。
 
-[0]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-machine-ls.png
-[1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-ps.png
-[2]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
-[3]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
+[0]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
+[1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -10,7 +10,7 @@
 
 ## VM スケール セットの作成と管理
 
-VM スケール セットは、個々の Azure リソース マネージャー VM と同様に、JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して定義およびデプロイできます。そのため、Azure リソース マネージャーの標準的なデプロイ方法を利用することができます。テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
+VM スケール セットは、個々の Azure リソース マネージャー VM と同様に、JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して定義およびデプロイできます。そのため、Azure リソース マネージャーの標準的なデプロイ方法を利用することができます。テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](../articles/resource-group-authoring-templates.md)」をご覧ください。
 
 VM スケール セットのサンプル テンプレートは、Azure Quickstart teamplates GitHub リポジトリから入手できます。
 
@@ -26,7 +26,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 容量を変更するためにテンプレートを再デプロイする場合は、SKU と更新された容量だけが含まれている、非常に小さいテンプレートを定義できます。その例は、[https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json) にあります。
 
-自動的にサイズを増減するスケール セットの作成手順については、「[仮想マシン スケール セットでのマシンの自動スケール](virtual-machines-windows-ps-vmss-create.md)」を参照してください。
+自動的にサイズを増減するスケール セットの作成手順については、「[仮想マシン スケール セットでのマシンの自動スケール](../articles/virtual-machines/virtual-machines-windows-ps-vmss-create.md)」を参照してください。
 
 ## VM スケール セットの監視
 
@@ -79,7 +79,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **Q** VM スケール セットには、他にどのようなリソース制限がありますか?
 
-**A.** プレビュー期間中は、リージョンごとに複数のスケール セットで 500 個を超える VM を作成できないという制限があります。既存の [Azure サブスクリプション サービス制限](../azure-subscription-service-limits.md)が適用されます。
+**A.** プレビュー期間中は、リージョンごとに複数のスケール セットで 500 個を超える VM を作成できないという制限があります。既存の [Azure サブスクリプション サービス制限](../articles/azure-subscription-service-limits.md)が適用されます。
 
 **Q.** VM スケール セット内でデータ ディスクはサポートされていますか?
 
@@ -130,4 +130,4 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **A.** はい。VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -17,7 +17,7 @@ Traffic Manager は、トラフィックの分散に次の 3 つの異なる負�
 - **パフォーマンス**: 地理的に異なる複数の場所にエンドポイントがあり、遅延が最小という意味で "最も近い" エンドポイントを使用するようにクライアントに要求する場合に使用します。
 - **ラウンド ロビン**: 同じデータセンター内にある一連のクラウド サービス、または異なるデータセンター内にあるクラウド サービスや Web サイトの間で負荷を分散する場合に使用します。
 
-詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
+詳細については、「[Traffic Manager での負荷分散方法について](../articles/traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
 次の図は、異なるクラウド サービス間でトラフィックを分散するラウンド ロビンの負荷分散方法の例を示します。
 
@@ -30,7 +30,7 @@ Traffic Manager は、トラフィックの分散に次の 3 つの異なる負�
 3.	Traffic Manager はラウンド ロビン リストにある次のクラウド サービスを選択し、DNS 名を返します。インターネット クライアントの DNS サーバーは、その名前を IP アドレスに解決してインターネット クライアントに送信します。
 4.	インターネット クライアントは、Traffic Manager が選択したクラウド サービスに接続します。
 
-詳細については、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」を参照してください。
+詳細については、「[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)」を参照してください。
 
 ## Azure の仮想マシンの負荷分散 ##
 
@@ -42,7 +42,7 @@ Azure ロード バランサーは、特定の種類の着信トラフィック�
 
 ![負荷分散](./media/virtual-machines-common-load-balance/LoadBalancing.png)
 
-詳細については、「[Azure ロード バランサー](../load-balancer/load-balancer-overview.md)」を参照してください。負荷分散セットの作成手順については、「[負荷分散セットの構成](../load-balancer/load-balancer-internet-getstarted.md)」を参照してください。
+詳細については、「[Azure ロード バランサー](../articles/load-balancer/load-balancer-overview.md)」を参照してください。負荷分散セットの作成手順については、「[負荷分散セットの構成](../articles/load-balancer/load-balancer-internet-getstarted.md)」を参照してください。
 
 Azure はまた、クラウド サービスや仮想ネットワーク内で負荷を分散することもできます。これは内部負荷分散と呼ばれ、次の方法で使用できます。
 
@@ -58,15 +58,15 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 ## Load Balancer に関する考慮事項
 
-Load Balancer は、既定で 4 分間のアイドル状態のセッションをタイムアウトするように構成されています。Load Balancer の背後にあるアプリケーションが 4 分以上接続をアイドル状態のままにし、キープアライブ構成がない場合、接続が切断されます。[Azure Load Balancer のタイムアウト設定を長くする](../load-balancer/load-balancer-tcp-idle-timeout.md)ようにLoad Balancer の動作を変更できます。
+Load Balancer は、既定で 4 分間のアイドル状態のセッションをタイムアウトするように構成されています。Load Balancer の背後にあるアプリケーションが 4 分以上接続をアイドル状態のままにし、キープアライブ構成がない場合、接続が切断されます。[Azure Load Balancer のタイムアウト設定を長くする](../articles/load-balancer/load-balancer-tcp-idle-timeout.md)ように Load Balancer の動作を変更できます。
 
-その他の考慮事項は、Azure Load Balancer でサポートされている分散モードの種類です。ソース IP アフィニティ (ソース IP、接続先 IP) またはソース IP プロトコル (ソース IP、接続先 IP、およびプロトコル) を構成することができます。詳細については、「[Load Balancer 分散モード (ソース IP アフィニティ)](../load-balancer/load-balancer-distribution-mode.md)」を参照してください。
+その他の考慮事項は、Azure Load Balancer でサポートされている分散モードの種類です。ソース IP アフィニティ (ソース IP、接続先 IP) またはソース IP プロトコル (ソース IP、接続先 IP、およびプロトコル) を構成することができます。詳細については、「[Load Balancer 分散モード (ソース IP アフィニティ)](../articles/load-balancer/load-balancer-distribution-mode.md)」を参照してください。
 
 
 ## 次のステップ
 
-負荷分散セットの作成手順については、「[内部負荷分散セットの構成](../load-balancer/load-balancer-internal-getstarted.md)」を参照してください。
+負荷分散セットの作成手順については、「[内部負荷分散セットの構成](../articles/load-balancer/load-balancer-internal-getstarted.md)」を参照してください。
 
-ロード バランサーの詳細については、「[内部負荷分散](../load-balancer/load-balancer-internal-overview.md)」を参照してください。
+ロード バランサーの詳細については、「[内部負荷分散](../articles/load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

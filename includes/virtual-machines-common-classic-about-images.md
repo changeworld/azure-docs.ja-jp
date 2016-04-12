@@ -16,12 +16,12 @@ Azure 内の仮想マシンや、他の場所で稼働している仮想マシ�
 
 Azure サブスクリプションに使用できるイメージの管理には、Mac、Linux、Windows、Azure PowerShell モジュール用の Azure コマンド ライン インターフェイス (CLI) を使用することができます。いくつかのイメージ タスクには Azure クラシック ポータルを使用することもできますが、コマンドラインの方が多くのオプションを使用できます。
 
-リソース マネージャーのデプロイでのこれらのツールの使用方法の詳細については、「[PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)」をご覧ください。
+リソース マネージャーのデプロイでのこれらのツールの使用方法の詳細については、「[PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)」をご覧ください。
 
 次にクラシック デプロイでのツールの使用方法の例を示します。
 
-- CLI については、「[Azure サービス管理での Mac、Linux、Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)」の「Azure の仮想マシン イメージの管理用コマンド」をご覧ください。
-- Azure PowerShell については、次のコマンドの一覧をご覧ください。イメージを見つけて仮想マシンを作成する例は、「[Azure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](virtual-machines-windows-classic-create-powershell.md)」の「手順 3. ImageFamily を特定する」をご覧ください。
+- CLI については、「[Azure サービス管理での Mac、Linux、Windows 用 Azure CLI の使用](../articles/virtual-machines-command-line-tools.md)」の「Azure の仮想マシン イメージの管理用コマンド」をご覧ください。
+- Azure PowerShell については、次のコマンドの一覧をご覧ください。イメージを見つけて仮想マシンを作成する例は、「[Azure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)」の「手順 3. ImageFamily を特定する」をご覧ください。
 
 -	**すべてのイメージを取得する**: `Get-AzureVMImage` は、現在のサブスクリプションで使用できるすべてのイメージの一覧を返します。Azure またはパートナーによって提供されるイメージも含みます。つまり、取得する一覧はかなり大きくなる可能性があります。次の例では、取得する一覧を小さくする方法を示します。
 -	**イメージのファミリを取得する**: `Get-AzureVMImage | select ImageFamily` は、**ImageFamily** プロパティの文字列を表示して、イメージのファミリの一覧を取得します。
@@ -35,8 +35,8 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 ## その他のリソース
 
-[Linux 仮想マシンを作成するさまざまな方法](virtual-machines-linux-creation-choices.md)
+[Linux 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
-[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)
+[Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

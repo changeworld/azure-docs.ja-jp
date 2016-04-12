@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure" 
-	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
+<properties
+	pageTitle="Azure ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure"
+	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
 	manager="jeffreyg"
 	editor=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-management" 
-	ms.date="02/23/2016" 
+<tags
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="02/23/2016"
 	ms.author="sstein"/>
 
 
@@ -21,7 +21,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-upgrade-server-portal.md)
+- [Azure ポータル](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
@@ -41,12 +41,11 @@ V12 にアップグレードする過程で、すべての Web および Busines
 
 SQL Database V12 へのアップグレードを元に戻すことはできません。アップグレードした後に、サーバーを V11 に戻すことはできません。
 
-V12 にアップグレードした後、[サービス レベルの推奨事項](sql-database-service-tier-advisor.md)と[エラスティック プールの推奨事項](sql-database-elastic-pool-portal.md#step-2-choose-a-pricing-tier)は、サービスが新しいサーバーでのワークロードを評価し終わるまで、すぐには利用できません。V11 サーバーの推奨履歴は V12 サーバーには適用されないため、履歴は保持されません。
-
+V12 にアップグレードした後、[サービス レベルの推奨事項](sql-database-service-tier-advisor.md)と[エラスティック プールのパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)は、サービスが新しいサーバーでのワークロードを評価し終わるまで、すぐには利用できません。V11 サーバーの推奨履歴は V12 サーバーには適用されないため、履歴は保持されません。
 
 ## アップグレードの準備
 
-- **すべての Web および Business データベースのアップグレード**: 以下の「[すべての Web および Business データベースのアップグレード](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases)」セクションを参照するか、[PowerShell を使用してデータベースとサーバーをアップグレード](sql-database-upgrade-server-powershell.md)します。
+- **すべての Web および Business データベースのアップグレード**: 後述の「[すべての Web および Business データベースのアップグレード](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases)」を参照するか、[「エラスティック データベース プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)」をご覧ください。
 - **geo レプリケーションをレビューして一時停止**: Azure SQL Database が geo レプリケーション用に構成されている場合、現在の構成を文書化し、[geo レプリケーションを停止](sql-database-geo-replication-portal.md#remove-secondary-database)する必要があります。アップグレードが完了したら、geo レプリケーション用にデータベースを再構成します。
 - **Azure VM にクライアントがある場合、これらのポートを開く**: クライアントが Azure 仮想マシン (VM) で実行されるときに、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000 ～ 11999 と 14000 ～ 14999 を開く必要があります。詳細については、「[SQL Database V12のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
 
@@ -64,7 +63,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 サーバーに Web データベースまたは Business データベースがある場合は、それらをアップグレードする必要があります。SQL Database V12 へのアップグレードの過程で、すべての Web/Business データベースを新しいサービス レベルに更新します。
 
 アップグレードする際、SQL Database サービスによって、各データベースに適したサービス層とパフォーマンス レベル (価格レベル) が推奨されます。サービスでは、データベースの使用履歴を分析することで、既存データベースのワークロードを実行するための最適なレベルを使用することが推奨されます。
-    
+
 3. **[このサーバーをアップグレード]** ブレードで、各データベースを選択して見直しを行い、アップグレードするための推奨価格レベルを選択します。利用できる価格レベルはいつでも参照でき、お使いの環境に最適な価格レベルを選択できます。
 
 
@@ -82,7 +81,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## アップグレードの確認
 
-3. サーバー上のすべてのデータベースをアップグレードの対象にしたら、アップグレードを実行することを確認するために**サーバー名を入力**し、**[OK]** をクリックします。 
+3. サーバー上のすべてのデータベースをアップグレードの対象にしたら、アップグレードを実行することを確認するために**サーバー名を入力**し、**[OK]** をクリックします。
 
     ![アップグレードの確認][3]
 
@@ -103,19 +102,19 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 または
 
-**[ここをクリックして、このサーバーの推奨エラスティック データベース プールを表示します]** というメッセージが表示されたら、それをクリックして、サーバーのデータベースに最適化されたプールを簡単に作成できます。詳細については、「[推奨されるエラスティック データベース プール](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)」をご覧ください。
+**[ここをクリックして、このサーバーの推奨エラスティック データベース プールを表示します]** というメッセージが表示されたら、それをクリックして、サーバーのデータベースに最適化されたプールを簡単に作成できます。詳細については、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
 
 ![サーバーへのプールの追加][7]
-   
+
 「[エラスティック データベース プールの作成](sql-database-elastic-pool.md)」の記事の説明に従って、プールの作成を完了します。
 
 ## SQL Database V12 へのアップグレード後のデータベースの監視
 
 >[AZURE.IMPORTANT] 新しい V12 の機能を利用するには、最新バージョンの SQL Server Management Studio (SSMS) にアップグレードします。[SQL Server Management Studio をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)します。
-	
-アップグレードした後は、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて最適化できるように、データベースを積極的に監視することをお勧めします。
 
-個々のデータベースを監視するだけではなく、[ポータルを使用して](sql-database-elastic-pool-portal.md#monitor-and-manage-an-elastic-database-pool)、または [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) を使用してエラスティック データベース プールを監視することもできます。
+アップグレード後、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて設定を最適化できるように、データベースを積極的に監視します。
+
+個々のデータベースを監視するだけでなく、[Azure ポータル](sql-database-elastic-pool-manage-portal.md)または [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) を使用してエラスティック データベース プールを監視することもできます。
 
 
 **リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、Premium データベース リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
@@ -148,8 +147,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## 次のステップ
 
-- [エラスティック データベース プールの推奨事項を確認します](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)。
-- [エラスティック データベース プールを作成し、](sql-database-elastic-pool-portal.md)データベースの一部またはすべてをプールに追加する。
+- [プールに関する推奨事項を確認し、プールを作成する](sql-database-elastic-pool-create-portal.md)。
 - [データベースのサービス レベルとパフォーマンス レベルを変更する](sql-database-scale-up.md)。
 
 
@@ -169,4 +167,4 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0330_2016------>

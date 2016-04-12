@@ -81,6 +81,10 @@ Web Apps には Basic 以上の価格レベルを使用してください。Clea
 
 [ClearDB アップグレード ウィザード](https://www.cleardb.com/store/azure/upgrade)を使用してください。現時点では、Azure ポータルからはアップグレードできません。
 
+## Azure ポータルに ClearDB データベースが表示されないのはなぜですか。
+
+Azure Resource Manager または[新しい Azure ポータル](https://portal.azure.com)を使って作成した ClearDB データベースは、[以前の Azure ポータル](https://manage.windowsazure.com)には表示されません。これは回避するには、データベースを Web アプリケーションにを手動でリンクします。同様に、[古いポータル](https://manage.windowsazure.com)で作成した ClearDB データベースは、[新しい Azure ポータル](https://portal.azure.com)には表示されません。後者のシナリオの解決策はありません。
+
 ## データベースがダウンしたときはどこに問い合わせればよいですか。
 
 データベース関連の問題については、[ClearDB のサポート](https://www.cleardb.com/developers/help/support)にお問い合わせください。その際、Azure サブスクリプションの情報を提供できるよう準備しておいてください。
@@ -89,9 +93,13 @@ Web Apps には Basic 以上の価格レベルを使用してください。Clea
 
 いいえ。追加ユーザーを作成することはできません。ただし、ClearDB データベース クラスターに追加のデータベースを作成することはできます。
 
+## Basic/Pro シリーズのデータベースを、Planetary プランと同様、ClearDB ポータルですぐにインプレース アップグレードできますか。
+
+はい、Basic シリーズのデータベースはインプレース アップグレードできます (Basic 60 ～ Basic 500)。Pro シリーズも、Pro 60 を除き、インプレース アップグレードできます (Pro 125 ～ Pro 1000)。現在、Pro 60 データベースのアップグレードはサポートされていません。
+
 ## サブスクリプションから別のサブスクリプションにリソースを移行すると、ClearDB MySQL データベースも移行されますか。  
 
-サブスクリプション間でリソースの移行を実行する場合、いくつかの[制限事項](app-service-move-resources.md)が適用されます。ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。
+サブスクリプション間でリソースの移行を実行する場合、いくつかの[制限事項](./app-service-web/app-service-move-resources.md)が適用されます。ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。
 
 ## エンタープライズ契約 (EA) サブスクリプションでスケーラブル WordPress を購入することはできますか。
 
@@ -120,8 +128,12 @@ EA Azure の登録管理者は、Azure Marketplace のサード パーティ サ
 
 EA 登録での料金に関するご質問は、[エンタープライズ カスタマー サポート](http://aka.ms/AzureEntSupport)にお問い合わせください。EA ポータル サポート チームがご質問に回答し、問題解決のお手伝いをします。
 
+ 
+
+
+
 ## 詳細情報
 
 [Azure Marketplace FAQ](/marketplace/faq/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -82,8 +82,6 @@ Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用し
 
 HDInsight Emulator に関連するサービスは既定で自動的に開始されません。サービスを開始するには、Hadoop コマンド ラインで、C:\\hdp の **start\_local\_hdp\_services.cmd** (既定の場所) を実行します。コンピューターの再起動後にサービスが自動的に開始されるようにするには、**set-onebox-autostart.cmd** を実行します。
 
-HDInsight Emulator のインストールと実行に関する既知の問題については、「[HDInsight Emulator のリリース ノート](hdinsight-emulator-release-notes.md)」をご覧ください。インストール ログは **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log** にあります。
-
 ##<a name="vstools"></a>Visual Studio の HDInsight ツールでのエミュレーターの使用
 
 Visual Studio の HDInsight ツールを使用して、HDInsight Emulator に接続できます。Azure の HDInsight クラスターで Visual Studio ツールを使用する方法については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
@@ -508,7 +506,7 @@ Emulator をインストールしたコンピューターでコントロール �
 
 - [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
-- [HDInsight Emulator リリース ノート](hdinsight-emulator-release-notes.md)
+- [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/hdinsight)
 
 
@@ -521,12 +519,12 @@ Emulator をインストールしたコンピューターでコントロール �
 [hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
 
 [hdinsight-emulator-install]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
-[hdinsight-emulator-release-notes]: hdinsight-emulator-release-notes.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-develop-deploy-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-versions]: hdinsight-component-versioning.md
 
 [Powershell-install-configure]: powershell-install-configure.md
@@ -536,4 +534,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

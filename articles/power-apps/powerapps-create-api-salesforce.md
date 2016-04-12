@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Salesforce API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-salesforce.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-salesforce.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
 
 組織の (テナント) App Service 環境に新しい Salesforce API を追加します。
@@ -82,7 +82,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Salesforce REST API](../connectors/create-api-salesforce.md) リファレンスを参照してください。
+[Salesforce REST API](../connectors/connectors-create-api-salesforce.md) リファレンス。
 
 ## まとめと次のステップ
 このトピックでは、Salesforce API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
@@ -101,4 +101,4 @@
 [14]: ./media/powerapps-create-api-salesforce/browseall.png
 [15]: ./media/powerapps-create-api-salesforce/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

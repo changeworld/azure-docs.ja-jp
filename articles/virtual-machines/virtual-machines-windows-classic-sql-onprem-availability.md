@@ -99,8 +99,8 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 ## 次のステップ
 
-**Azure レプリカの追加ウィザード**を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。最初に、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
+**Azure レプリカの追加ウィザード**を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。最初に、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -16,7 +16,7 @@
     ms.date="03/15/2016"
     ms.author="sstein"/>
 
-# エラスティック データベース プールの監視と管理 (PowerShell) 
+# PowerShell を使用したエラスティック データベース プールの監視、管理、およびサイズ設定 
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
@@ -35,7 +35,7 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 
 
 
-## エラスティック データベース プールでの新しいエラスティック データベースの作成
+## プールに新しいエラスティック データベースを作成する
 
 プール内に直接新しいデータベースを作成するには、[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
 
@@ -43,34 +43,34 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 
-## エラスティック データベース プールへのスタンドアロン データベースの移動
+## スタンドアロンのデータベースをプールに移動する
 
 プール内に既存のデータベースを移動するには、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
 
 	Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 
-## エラスティック データベース プールのパフォーマンス設定の変更
+## プールのパフォーマンス設定を変更する
 
-エラスティック データベース プールのパフォーマンス設定を変更するには、[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。
+プールのパフォーマンス設定を変更するには、[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。
 
     Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
 
 
-## エラスティック データベース プールの操作の状態の取得
+## プール操作の状態を取得する
 
-[Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) コマンドレットを使用して、作成や更新など、エラスティック データベース プール操作の状態を追跡できます。
+[Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) コマンドレットを使用して、作成や更新など、プール操作の状態を追跡できます。
 
 	Get-AzureRmSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” 
 
 
-## エラスティック データベースをエラスティック データベース プールに出し入れする際の状態の取得
+## エラスティック データベースをプールに出し入れする際の状態を取得する
 
 [Get-AzureRmSqlDatabaseActivity](https://msdn.microsoft.com/library/azure/mt603687.aspx) コマンドレットを使用して、作成や更新など、エラスティック データベース操作の状態を追跡できます。
 
 	Get-AzureRmSqlDatabaseActivity -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
-## エラスティック データベース プールの使用状況データを取得する
+## プールの使用状況データを取得する
 
 リソース プールの制限値のパーセンテージとして取得できるメトリックを以下に示します。
 
@@ -113,7 +113,7 @@ CSV ファイルにエクスポートします。
 
 これらの API は、次のセマンティックな相違点を除き、スタンドアロン データベースのリソース使用率の監視に使用する現在の (V12) API と同じです。
 
-* 取得されたこの API メトリックは、エラスティック データベース プールの databaseDtuMax (または CPU、IO など基盤となるメトリックと同等の上限) セットのパーセンテージとして表されます。たとえば、これらのメトリックいずれかの使用率が 50% であることは、特定のリソース消費量が、DB の上限の 50% (親のエラスティック データベース プールで該当するリソースの制限) であることを示しています。 
+* この API では、取得されたメトリックが、プールに設定されている databaseDtuMax (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限) に対するパーセンテージで表示されます。たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられている DB の上限の 50% であることを示しています。 
 
 メトリックを取得します。
 
@@ -132,7 +132,7 @@ CSV ファイルにエクスポートします。
     foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
 
 
-## エラスティック データベース プールの監視と管理 (PowerShell) の例
+## プールを監視し、管理する (PowerShell の例)
 
 
     $subscriptionId = '<Azure subscription id>'
@@ -171,11 +171,11 @@ CSV ファイルにエクスポートします。
 
 ## 次のステップ
 
-- [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブは、プール内にある任意の数のデータベースに対して T-SQL スクリプトの実行を容易にします。
+- [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 
 
 ## エラスティック データベースのリファレンス
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

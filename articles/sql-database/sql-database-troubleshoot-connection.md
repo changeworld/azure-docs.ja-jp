@@ -13,25 +13,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/12/2016"
+	ms.date="03/29/2016"
 	ms.author="daleche"/>
 
-# 「サーバー上のデータベースは現在使用できません。後で再試行してください」などの接続エラーのトラブルシューティング
-「サーバー <servername> のデータベース <dbname> は現在使用できません」は、Azure SQL Database の最も一般的で一時的な接続エラーです。一時的な接続エラーは、通常、計画されたイベント (ソフトウェアのアップグレードなど) または計画されていないイベント (プロセスのクラッシュなど) が原因で発生します。これらのエラーの発生期間は一般に短く、数秒から 1 分です。別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を評価し、問題が一時的か永続的かを判断して、このトピックのガイダンスを使用します。
+# 「サーバー &lt;y&gt; 上のデータベース &lt;x&gt; は現在使用できません。後で接続を再試行してください」エラーのトラブルシューティング
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+アプリケーションが Azure SQL データベースに接続するとき、次のエラー メッセージが表示されます。
+
+```
+Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
+```
+
+> [AZURE.NOTE] 通常、このエラー メッセージは (短時間の) 一時的なものです。
+
+このエラーは、Azure データベースが移動 (または再構成) されたり、アプリケーションが SQL データベースへの接続を失ったときに発生します。SQL データベースの再構成イベントは、計画されたイベント (ソフトウェアのアップグレードなど) または計画されていないイベント (プロセスのクラッシュ、負荷分散など) が原因で発生します。通常、ほとんどの再構成イベントは一時的であり、長くて 1 分もかかりませんが、これらのイベントは、大規模なトランザクションによる実行時間の長い復旧など、場合によっては、完了に時間がかかることがあります。
 
 ## 一時的な接続の問題を解決する手順
-1.	既知の障害については、「[Microsoft Azure サービス ダッシュ ボード](https://azure.microsoft.com/status)」を参照してください。
-2.	アプリで再試行ロジックを使用していることを確認します。一般的な再試行戦略については、[接続の問題](sql-database-connectivity-issues.md)のトピックと、[ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)のトピックを参照してください。次に、具体的な内容を[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)で確認してください。
+1.	アプリケーションによって報告されたエラーで発生している既知の障害については、[Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status)を参照してください。
+2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。詳細および一般的な再試行戦略については、「[一時エラー](sql-database-connectivity-issues.md)」セクション、または[ベスト プラクティスやデザイン ガイドライン](sql-database-connect-central-recommendations.md)を参照してください。次に、具体的な内容を[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)で確認してください。
 3.	データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。[パフォーマンスの問題のトラブルシューティング](sql-database-troubleshoot-performance.md)のトピックを参照してください。
-4.	接続の問題が解消しない場合は、[Azure サポート](https://azure.microsoft.com/support/options) サイトの **[サポートの要求]** を選択して、Azure サポート要求を提出してください。
+4.	接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、[Azure サポート](https://azure.microsoft.com/support/options) サイトの **[サポートの要求]** を選択して、サポート要求を送信してください。
 
-## 永続的な接続の問題を解決する手順
-アプリがまったく接続できない場合、通常は IP とファイアウォールの構成の問題です。これには、クライアント側 (たとえば、新しい IP アドレスやプロキシ) のネットワークの再構成が含まれます。接続パラメーター (接続文字列など) の入力が間違っている場合もあります。
+## 次のステップ
+- 別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を確認してください。
+- 問題が解消されない場合は、「[Troubleshoot common connection issues to SQL Azure Database (SQL Azure Database への接続の一般的な問題のトラブルシューティング)](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
 
-1.	クライアントの IP アドレスを許可するには、[ファイアウォール規則](sql-database-configure-firewall-settings.md)を設定します。
-2.	クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。
-3.	接続文字列およびその他の接続設定を確認します。[接続の問題のトピック](sql-database-connectivity-issues.md)で、接続文字列のセクションを確認します。
-4.	ダッシュ ボードでサービスの正常性を確認します。リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を[障害からの回復](sql-database-disaster-recovery.md)のトピックで参照してください。
-5.	接続の問題が解消しない場合は、[Azure サポート](https://azure.microsoft.com/support/options) サイトの **[サポートの要求]** を選択して、Azure サポート要求を提出してください。
-
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0330_2016------>

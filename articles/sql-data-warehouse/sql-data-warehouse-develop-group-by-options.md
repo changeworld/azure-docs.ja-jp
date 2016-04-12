@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の Group By オプション
 
-[GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
+[GROUP BY][] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
 
 オプションは次のとおりです。
 - GROUP BY with ROLLUP
@@ -30,7 +30,7 @@
 
 `ROLLUP` オプションを使用した Group By ステートメントの例は、以下のとおりです。
 
-```
+```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
 ,      SUM(SalesAmount)             AS TotalSalesAmount
@@ -50,7 +50,7 @@ ROLLUP を使用して、次の集計を要求しました。
 
 これを置き換えるには、`UNION ALL` を使用して、同じ結果を返すために明示的に必要な集計を指定します。
 
-```
+```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
 ,      SUM(SalesAmount) AS TotalSalesAmount
@@ -84,7 +84,7 @@ UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成するこ
 
 まず、作成したい集計のすべてのレベルを定義する 'cube' を定義します。2 つの派生テーブルに CROSS JOIN と書き込むことが重要です。これによって、すべてのレベルが生成されます。コードの残りの部分は、書式設定用です。
 
-```
+```sql
 CREATE TABLE #Cube
 WITH
 (   DISTRIBUTION = ROUND_ROBIN
@@ -119,7 +119,7 @@ CTAS の結果が、以下のように表示されます。
 
 2 番目に、中間結果を格納するターゲット テーブルを指定します。
 
-```
+```sql
 DECLARE
  @SQL NVARCHAR(4000)
 ,@Columns NVARCHAR(4000)
@@ -142,7 +142,7 @@ WITH
 
 3 番目に、集計を実行する列のキューブをループします。クエリが、#Cube 一時テーブルで行ごとに 1 回実行され、#Results 一時テーブルに結果が格納されます。
 
-```
+```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
 
 WHILE @i<=@nbr
@@ -166,7 +166,7 @@ END
 
 最後に、#Results 一時テーブルから簡単に読み取ることによって結果を戻すことができます。
 
-```
+```sql
 SELECT *
 FROM #Results
 ORDER BY 1,2,3
@@ -191,4 +191,4 @@ ORDER BY 1,2,3
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -17,7 +17,7 @@
 
 # Application Insights: Analytics 参考資料
 
-[Analytics](app-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-analytics.md) を使用すると、[Application Insights](app-insights-overview.md) によってアプリから収集されたテレメトリに対して強力なクエリを実行できます。ここでは、Analytics のクエリ言語について説明します。
 
 
 [AZURE.INCLUDE [app-analytics-top-index](../../includes/app-analytics-top-index.md)]
@@ -25,28 +25,27 @@
 ## 正規表現
 
 
-
 [> 正規表現の一般的な説明](https://github.com/google/re2/wiki/Syntax)
 
 このページでは、RE2 で使用できる正規表現の構文の一覧を示します。また、PCRE、PERL、VIM で使用できる構文の一覧も示します。
 
-||
+|
 |---|---
 |単一文字: | 
 |. |任意の文字。改行が含まれる場合もあります (s = true) 
 |[xyz] |文字クラス 
 |[^xyz] |否定の文字クラス 
-|\d |Perl 文字クラス 
-|\D |否定の Perl 文字クラス 
+|\\d |Perl 文字クラス 
+|\\D |否定の Perl 文字クラス 
 |[[:alpha:]] |ASCII 文字クラス 
 |[[:^alpha:]] |否定の ASCII 文字クラス 
-|\pN |Unicode 文字クラス (1 文字の名前) 
-|\p{Greek} |Unicode 文字クラス 
-|\PN |否定の Unicode 文字クラス (1 文字の名前) 
-|\P{Greek} |否定の Unicode 文字クラス 
-|複合: |
+|\\pN |Unicode 文字クラス (1 文字の名前) 
+|\\p{Greek} |Unicode 文字クラス 
+|\\PN |否定の Unicode 文字クラス (1 文字の名前) 
+|\\P{Greek} |否定の Unicode 文字クラス 
+|複合: | 
 |xy |x の後に y が続く 
-|x&#124;y |x または y (x 優先) 
+|x|y |x または y (x 優先) 
 |
 |反復: |
 | |0 回以上の x。多い方を優先
@@ -414,4 +413,4 @@
 
 [AZURE.INCLUDE [app-analytics-footer](../../includes/app-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

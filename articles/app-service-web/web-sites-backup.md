@@ -21,7 +21,7 @@
 
 [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップと復元の機能により、Web アプリのバックアップを手動または自動で簡単に作成できます。Web アプリを以前の状態に復元するか、または元のアプリのいずれかのバックアップに基づいて、新しい Web アプリを作成できます。
 
-Azure Web アプリをバックアップから復元する方法については、[Web アプリの復元](web-sites-restore.md)に関するページをご覧ください。
+Azure Web アプリをバックアップから復元する方法については、[Web アプリの復元](web-sites-restore.md)に関するページを参照してください。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -40,7 +40,7 @@ Web Apps では、次の情報をバックアップできます。
 <a name="requirements"></a>
 ## 要件および制限
 
-* バックアップと復元の機能には、Standard 以上のレベルにある App Service プランが必要です。上位レベルを使用するための App Service プランの拡張の詳細については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」をご覧ください。Premium レベルでは、Standard レベルよりも多くの回数の日次バックアップが可能です。
+* バックアップと復元の機能には、Standard 以上のレベルにある App Service プランが必要です。上位レベルを使用するための App Service プランの拡張の詳細については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」を参照してください。Premium レベルでは、Standard レベルよりも多くの回数の日次バックアップが可能です。
 
 * バックアップと復元の機能では、バックアップする Web アプリと同じサブスクリプションに属する Azure ストレージ アカウントとコンテナーが必要です。ストレージ アカウントをまだ持っていない場合は、[Azure ポータル](https://portal.azure.com/)の **[バックアップ]** ブレードで **[ストレージ アカウント]** をクリックし、**[バックアップ先]** ブレードで **[ストレージ アカウント]** と **[コンテナー]** を選択することで作成できます。Azure のストレージ アカウントの詳細については、この記事の末尾に示されている[リンク](#moreaboutstorage)を参照してください。
 
@@ -126,8 +126,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含む Web アプリがあるとします。古い画像を含む Web アプリの完全バックアップは既に存在します。今後、Web アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止画像ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder]	
-![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -143,7 +142,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 2. `_backup.filter` という名前のファイルを作成し、上のリストをこのファイルに配置します。ただし `D:\home` は削除します。1 つのディレクトリまたはファイルを 1 行に配置します。したがって、ファイルの内容は次のようになります。
 
-    \site\wwwroot\Logs \LogFiles \site\wwwroot\Images\2013 \site\wwwroot\Images\2014 \site\wwwroot\Images\brand.png
+    \\site\\wwwroot\\Logs \\LogFiles \\site\\wwwroot\\Images\\2013 \\site\\wwwroot\\Images\\2014 \\site\\wwwroot\\Images\\brand.png
 
 3. このファイルを、[ftp](web-sites-deploy.md#ftp)やその他の方法を使用して、サイトの `D:\home\site\wwwroot` ディレクトリにアップロードします。ファイルを `http://{yourapp}.scm.azurewebsites.net/DebugConsole` 内に直接作成し、そこにコンテンツを挿入することもできます。
 
@@ -167,7 +166,7 @@ Web アプリのデータベースのバックアップは、.zip ファイル�
 
 <a name="nextsteps"></a>
 ## 次のステップ
-Web アプリをバックアップから復元する方法については、「[Azure App Service での Web アプリの復元](web-sites-restore.md)」をご覧ください。REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」をご覧ください)。
+Web アプリをバックアップから復元する方法については、「[Azure App Service での Web アプリの復元](web-sites-restore.md)」を参照してください。REST API を使用して、App Service アプリのバックアップと復元を実行することもできます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」を参照してください)。
 
 Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
 
@@ -190,4 +189,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016------>

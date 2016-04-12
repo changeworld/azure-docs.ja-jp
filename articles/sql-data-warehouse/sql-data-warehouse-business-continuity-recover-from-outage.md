@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/09/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess"/>
 
 # SQL Data Warehouse でのデータベースの障害からの復旧
@@ -52,7 +52,7 @@ Azure PowerShell を使用して、プログラムでデータベースの復旧
 5. データベースの復旧要求を作成します。
 6. 復旧の進行状況を監視します。
 
-```
+```Powershell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -113,4 +113,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [Azure ポータル]: https://portal.azure.com/
 [サポートに連絡]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

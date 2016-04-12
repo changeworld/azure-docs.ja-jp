@@ -1,6 +1,3 @@
-VM を作成するとき、停止した (割り当て解除した) VM を再起動するとき、または VM のサイズを変更するとき、Microsoft Azure はコンピューティング リソースをサブスクリプションに割り当てます。これらの操作をしているときに、Azure サブスクリプションの制限に達していなくても、エラーが発生する場合があります。この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な改善方法を提案します。この情報は、サービスのデプロイを計画する場合にも役立ちます。
-
-「一般的なトラブルシューティングの手順」のセクションでは、一般的な問題を解決する手順を示します。「詳細なトラブルシューティングの手順」のセクションでは、特定のエラー メッセージごとに問題の解決の手順を説明します。最初に、割り当てのしくみと割り当てエラーの発生理由を理解するための背景情報を以下に示します。
 
 この記事で Azure の問題に対処できない場合は、[MSDN と Stack Overflow の Azure フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。問題をこれらのフォーラムまたは Twitter の @AzureSupport に投稿できます。また、[Azure サポート](https://azure.microsoft.com/support/options/) サイトの **[サポートの要求]** を選択して、Azure サポート要求を提出することもできます。
 ## 背景情報
@@ -17,9 +14,9 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 
 仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
-- VM を別の VM サイズに変更します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、仮想マシン、**[設定]**、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
+- VM を別の VM サイズに変更します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の仮想マシン、**[設定]**、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
-- クラウド サービスからすべての VM を削除して、VM を再作成します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、仮想マシン、**[削除]** の順にクリックします。次に、**[新規]**、**[Compute]**、[仮想マシン イメージ] の順にクリックします。
+- クラウド サービスからすべての VM を削除して、VM を再作成します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の仮想マシン、**[削除]** の順にクリックします。次に、**[新規]**、**[Compute]**、[仮想マシン イメージ] の順にクリックします。
 
 ### Azure リソース マネージャー デプロイメント モデルでの一般的な割り当てエラーのトラブルシューティング
 
@@ -61,7 +58,7 @@ VM のサイズの変更、あるいは既存のクラウド サービスへの 
 
 **対処法**
 
-エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できないものの、別の仮想 IP アドレス (VIP) を使用できる場合は、新しい VM をホストする新しいクラウド サービスを作成し、既存の VM が実行されているリージョン仮想ネットワークにその新しいクラウド サービスを追加します。既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合も、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続できます。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
+エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できないものの、別の仮想 IP アドレス (VIP) を使用できる場合は、新しい VM をホストする新しいクラウド サービスを作成し、既存の VM が実行されているリージョン仮想ネットワークにその新しいクラウド サービスを追加します。既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合も、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続できます。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」をご覧ください。
 
 エラーが GeneralError* である場合は、リソースの種類 (特定の VM サイズなど) がクラスターでサポートされているものの、現時点ではクラスターに空きリソースがないと考えられます。上のシナリオと同じように、新しいクラウド サービスを作成することによって、必要なコンピューティング リソースを追加します (新しいクラウド サービスは別の VIP を使用する必要がある点に注意してください)。その後、リージョン仮想ネットワークを使用して、クラウド サービスに接続します。
 
@@ -79,7 +76,7 @@ GeneralError*
 
 別の VIP を使用できる場合は、停止 (割り当て解除) された VM を削除し (ただし、関連付けられているディスクは保持し)、別のクラウド サービスを通じて VM を追加し直します。クラウド サービスに接続するには、リージョン仮想ネットワークを使用します。
 - 既存のクラウド サービスがリージョン仮想ネットワークを使用している場合は、単に新しいクラウド サービスを同じ仮想ネットワークに追加します。
-- 既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続します。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
+- 既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続します。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」をご覧ください。
 
 #### 割り当てシナリオ: 完全に停止 (割り当て解除) されていた VM の再起動
 **エラー**
@@ -131,7 +128,7 @@ New\_General* または New\_VMSizeNotSupported*
 
 **対処法**
 
-アフィニティ グループが不要の場合は、追加する新しいリソース用に新しいリージョン仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワークに接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
+アフィニティ グループが不要の場合は、追加する新しいリソース用に新しいリージョン仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワークに接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、「[Regional Virtual Networks (リージョン仮想ネットワーク)](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」をご覧ください。
 
 または、[アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、必要なリソースをもう一度追加することもできます。
 
@@ -204,4 +201,4 @@ GeneralError*
 
 "サーバーで内部エラーが発生しました。要求を再試行してください。" または "サービスの割り当てを生成できませんでした。"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

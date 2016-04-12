@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/28/2016"
    ms.author="barbkess;mausher;sonyama"/>
 
 # SQL Data Warehouse での PowerShell コマンドレットと REST API の使用
@@ -26,19 +26,19 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 
 ## Azure PowerShell コマンドレットの取得と実行
 
-1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
+1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://aka.ms/webpi-azps) を実行します。このインストーラーの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
-3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールおよび構成方法]()」を参照してください)。
+3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
 
-	```
-	Login-AzureRmAccount
-	```
+```PowerShell
+Login-AzureRmAccount
+```
 
 3. 中断または再開するデータベースのサブスクリプションを選択します。次の例では、"MySubscription" という名前のサブスクリプションが選択されます。
 
-	```
-	Select-AzureRmSubscription -SubscriptionName "MySubscription"
-	```
+```Powershell
+Select-AzureRmSubscription -SubscriptionName "MySubscription"
+```
 
 ## Suspend-AzureRmSqlDatabase
 
@@ -48,7 +48,7 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 
 この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが一時停止されます。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
-```
+```Powershell
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
@@ -56,7 +56,7 @@ Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "
 
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 取得したオブジェクトは **Suspend-AzureRmSqlDatabase** にパイプ処理されます。その結果、データベースが一時停止されます。最後のコマンドは結果を表示します。
 
-```
+```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Suspend-AzureRmSqlDatabase
 $resultDatabase
@@ -64,13 +64,13 @@ $resultDatabase
 
 ## Resume-AzureSqlDatabase
 
-コマンド リファレンスについては、「[Resume-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619347.aspx)」を参照してください。
+コマンド リファレンスについては、「[Resume-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619347.aspx)」をご覧ください。
 
 ### 例 1: サーバー上で名前によってデータベースを再開する
 
 この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが再開されます。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
 
-```
+```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
@@ -78,7 +78,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "S
 
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 オブジェクトは **Resume-AzureRmSqlDatabase** にパイプ処理されます。
 
-```
+```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
@@ -96,7 +96,7 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 ### 例 1: サーバー上で名前によってデータベースの復元ポイントを取得する
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースの復元ポイントが取得されます。
 
-```
+```Powershell
 $restorePoints = Get-AzureRmSqlDatabaseRestorePoints –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $restorePoints
 ```
@@ -106,7 +106,7 @@ $restorePoints
 
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 データベース オブジェクトは **Get-AzureRmSqlDatabase** にパイプ処理され、データベースの復元ポイントが結果として得られます。最後のコマンドは結果を出力します。
 
-```
+```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $restorePoints = $database | Get-AzureRmSqlDatabaseRestorePoints
 $retorePoints
@@ -123,7 +123,7 @@ $retorePoints
 
 <!--Article references-->
 [SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
-[How to install and configure Azure PowerShell]: ../articles/powershell-install-configure.md
+[Azure PowerShell のインストールおよび構成方法]: ../articles/powershell-install-configure.md
 
 <!--MSDN references-->
 
@@ -133,4 +133,4 @@ $retorePoints
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

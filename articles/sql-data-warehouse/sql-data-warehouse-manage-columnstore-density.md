@@ -1,6 +1,6 @@
 <properties
-   pageTitle="テーブル分散スキューの管理 | Microsoft Azure"
-   description="分散テーブルの分散スキューを確認する方法"
+   pageTitle="テーブル分散傾斜の管理 | Microsoft Azure"
+   description="分散テーブルの分散傾斜を確認する方法"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # 列ストア インデックスの管理
@@ -24,7 +24,7 @@
 ## 列ストア メタデータの照会
 列ストア インデックスの密度を把握するには、システム メタデータに対するクエリが必要です。確認できる情報の例を次に示します。
 
-```
+```sql
 CREATE VIEW dbo.vColumnstoreDensity
 AS
 WITH CSI
@@ -73,7 +73,7 @@ FROM    CSI
 
 一度ビューを作成したら、列ストア メタデータは簡単に分析できます。クエリの例を次に示します。
 
-```
+```sql
 SELECT	[table_name]
 ,		[table_partition_count]
 ,		[row_count_total]
@@ -149,4 +149,4 @@ WHERE	[table_name] = 'FactInternetSales'
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

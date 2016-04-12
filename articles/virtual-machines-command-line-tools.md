@@ -19,7 +19,7 @@
 
 # Azure サービス管理 (asm) モードでの Azure CLI コマンド
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](azure-cli-arm-commands.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines/azure-cli-arm-commands.md).
 
 この記事では、クラシック デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure CLI コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、Azure サービス管理 (asm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
 
@@ -1446,7 +1446,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ### <a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](../mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
 
 **mobile script list [options] [servicename]**
 
@@ -2348,4 +2348,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

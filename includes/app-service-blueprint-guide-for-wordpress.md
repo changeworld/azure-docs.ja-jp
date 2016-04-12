@@ -9,7 +9,7 @@
 * [マスター/スレーブ構成を使用して MySQL レプリケーション クラスターでバックアップされる WordPress のデプロイ](/documentation/templates/mysql-replication/)
 * [ProjectNami によって管理される SQL Azure DB でバックアップされる WordPress アプリのデプロイ](/marketplace/partners/projectnami/projectnami/)
   
-## 第 2 章: WordPress アプリケーションのトラブルシューティング
+## WordPress アプリケーションのトラブルシューティング
 
 * [WordPress アプリのトラブルシューティング方法](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
 * [Azure Application Insights サービスを使用状況テレメトリの収集](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
@@ -18,7 +18,7 @@
 * [さまざまな自動回復ツールを使用した、リアルタイム インシデントの解決の自動化](http://microsoftazurewebsitescheatsheet.info/#auto-heal)
 * [Web アプリのバックアップ方法](../articles/app-service-web/web-sites-backup.md)と[Web アプリの復元方法](../articles/app-service-web/web-sites-restore.md)
 
-## 第 3 章: パフォーマンス
+## パフォーマンス
 
 * [WordPress Web アプリを高速化する方法](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
 * [Redis Cache プラグイン](https://wordpress.org/plugins/wp-redis/)を使用して [Redis Cache を有効にする方法](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
@@ -28,4 +28,4 @@
 * [IIS 出力キャッシュを使用してキャッシュを提供する方法](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
 * [静的コンテンツのブラウザー キャッシュを有効にする方法](http://www.iis.net/configreference/system.webserver/staticcontent)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016------>

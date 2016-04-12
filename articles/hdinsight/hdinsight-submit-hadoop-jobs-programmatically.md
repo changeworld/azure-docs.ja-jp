@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="03/23/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -52,6 +52,8 @@ Azure PowerShell を使用して MapReduce、と Hive ジョブを送信する�
 
 ##HDInsight .NET SDK を使用して Hive/Pig/Sqoop ジョブを送信する
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
+
+次の例では、ユーザーの対話型認証を使用します。非対話型認証を使用する場合は、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。
 
 **ジョブを送信するには**
 
@@ -98,7 +100,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		
 		        static void Main(string[] args)
 		        {
-		            System.Console.WriteLine("Running");
+                    System.Console.WriteLine("The application is running ...");
 		
 		            var tokenCreds = GetTokenCloudCredentials();
 		            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
@@ -114,6 +116,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		            SubmitHiveJob();
 		            SubmitPigJob();
 		            SubmitSqoopJob();
+
+                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.ReadLine();
+                    
 		        }
 		
 		        public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
@@ -139,7 +145,50 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		            return new TokenCloudCredentials(subId.ToString(), creds.Token);
 		        }
 		
-		        private static void SubmitPigJob()
+		        private static void SubmitHiveJob()
+		        {
+		            Dictionary<string, string> defines = new Dictionary<string, string> { { "hive.execution.engine", "ravi" }, { "hive.exec.reducers.max", "1" } };
+		            List<string> args = new List<string> { { "argA" }, { "argB" } };
+		            var parameters = new HiveJobSubmissionParameters
+		            {
+		                Query = "SHOW TABLES",
+		                Defines = defines,
+		                Arguments = args
+		            };
+		
+                    Console.WriteLine("Submitting the Hive job to the cluster...");
+                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
+                    var jobId = jobResponse.JobSubmissionJsonResponse.Id;
+                    Console.WriteLine("Response status code is " + jobResponse.StatusCode);
+                    Console.WriteLine("JobId is " + jobId);
+
+                    Console.WriteLine("Waiting for the job completion ...");
+		
+		            // Wait for job completion
+		            var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
+		            while (!jobDetail.Status.JobComplete)
+		            {
+		                Thread.Sleep(1000);
+		                jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
+		            }
+		
+		            // Get job output
+		            var storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey,
+		                DefaultStorageContainerName);
+		            var output = (jobDetail.ExitValue == 0)
+		                ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
+		                : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
+                        
+                    Console.WriteLine("Job output is: ");
+                    
+                    using (var reader = new StreamReader(output, Encoding.UTF8))
+                    {
+                        string value = reader.ReadToEnd();
+                        Console.WriteLine(value);
+                    }
+		        }
+                
+   		        private static void SubmitPigJob()
 		        {
 		            var parameters = new PigJobSubmissionParameters
 		            {
@@ -158,43 +207,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		            System.Console.WriteLine("Response status code is " + response.StatusCode);
 		            System.Console.WriteLine("Validating the response object...");
 		            System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-		        }
-		
-		        private static void SubmitHiveJob()
-		        {
-		            Dictionary<string, string> defines = new Dictionary<string, string> { { "hive.execution.engine", "ravi" }, { "hive.exec.reducers.max", "1" } };
-		            List<string> args = new List<string> { { "argA" }, { "argB" } };
-		            var parameters = new HiveJobSubmissionParameters
-		            {
-		                Query = "SHOW TABLES",
-		                Defines = defines,
-		                Arguments = args
-		            };
-		
-		            Console.WriteLine("Submitting the Hive job to the cluster...");
-		            var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
-		            var jobId = jobResponse.JobSubmissionJsonResponse.Id;
-		            Console.WriteLine("Validating that the response is as expected...");
-		            Console.WriteLine("Response status code is " + jobResponse.StatusCode);
-		            Console.WriteLine("Validating the response object...");
-		            Console.WriteLine("JobId is " + jobId);
-		
-		            Console.WriteLine("Waiting for the job completion ...");
-		
-		            // Wait for job completion
-		            var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
-		            while (!jobDetail.Status.JobComplete)
-		            {
-		                Thread.Sleep(1000);
-		                jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
-		            }
-		
-		            // Get job output
-		            var storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey,
-		                DefaultStorageContainerName);
-		            var output = (jobDetail.ExitValue == 0)
-		                ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
-		                : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
 		        }
 		
 		        private static void SubmitSqoopJob()
@@ -270,4 +282,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

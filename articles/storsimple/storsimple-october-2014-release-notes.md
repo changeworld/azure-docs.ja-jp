@@ -3,8 +3,8 @@
     description="Microsoft Azure StorSimple の 2014 年 10 月リリース (Update 0.1) における新機能と修正点、未解決の問題、利用可能な回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
-    authors="SharS"
-    manager="carolz"
+    authors="alkohli"
+    manager="carmonm"
     editor="" />
  <tags 
     ms.service="storsimple"
@@ -12,8 +12,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="12/01/2015"
-    ms.author="v-sharos" />
+    ms.date="03/23/2016"
+    ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月  
 
@@ -35,7 +35,7 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 
 - 更新プログラムを確認する前に、両方のデバイス コントローラーが実行されていることを確認してください。いずれかのコントローラーが実行されていない場合は、確認できません。コントローラーの状態が正常であることを確認するには、**[メンテナンス]** ページの下にある **[ハードウェアの状態]** に移動します。**対処が必要な**コンポーネントがある場合は、続行する前に Microsoft サポートにお問い合わせください。  
 - コントローラー 0 とコントローラー 1 がデバイスへの更新プログラムの提供に使用される場合は、両方のコントローラーの固定 IP がルーティング可能でインターネットに接続できることを確認します。[Test-Connection コマンドレット](https://technet.microsoft.com/library/hh849808.aspx)を使用して、outlook.com などのネットワークの外側にある既知のアドレスに ping を実行し、コントローラーが外部ネットワークに接続できるかどうかを確認することができます。  
-- StorSimple デバイスでポート 80 と 443 が送信に使用できることを確認します。詳細については、「[StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。  
+- 内側から外側への通信について、StorSimple デバイスで必要な送信ポートが利用できることを確認します。詳細については、「[StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。  
 - デバイス ソフトウェアが 6.3.9600.17312 (2014 年 10 月の更新プログラム) よりも前のバージョンである場合、Data 2 と Data 3 のポートが有効になっていたら、更新プログラムの適用を開始する前に無効にします。更新プログラムの適用時に Data 2 と Data 3 のポートが有効になっていると、デバイス コントローラーが復旧モードになる可能性があります。ネットワーク インターフェイスを無効にすると、更新中は、関連するすべてのボリュームがオフラインになり、I/O が中断されることに注意してください。  
 
 ## 10 月のリリースの新機能
@@ -99,4 +99,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0330_2016------>

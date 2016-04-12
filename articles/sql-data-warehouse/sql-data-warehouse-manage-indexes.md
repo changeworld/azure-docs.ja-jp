@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/18/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # インデックスの管理
@@ -29,13 +29,13 @@
 
 以下は 1 つのパーティションを再構築する方法の例です。
 
-```
+```sql
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
 ```
 
 ALTER INDEX..REBUILD は、小規模のデータ ボリュームに、特に列ストア インデックスに対して使用すると効果的です。オープン、クローズド、圧縮の行グループがすべて再構築に含まれます。ただし、パーティションが非常に大きければ、`CTAS` は効果的な操作となります。インデックスの完全再構築の例は下のようになります。
 
-```
+```sql
 ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
 ```
 
@@ -45,7 +45,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
 
 以下は CTAS を使用してパーティションを再構築する方法の例です。
 
-```
+```sql
 -- Step 01. Select the partition of data and write it out to a new table using CTAS
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
     WITH    (   DISTRIBUTION = HASH([ProductKey])
@@ -82,7 +82,6 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 
 -- Step 04. Switch IN the rebuilt data
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
-
 ```
 
 ## 次のステップ
@@ -102,4 +101,4 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -77,7 +77,6 @@ RESTful API の開発とホストに役立つ Azure App Service の機能の使�
 	* **ToDoListAPI** - 中間層: to-do 項目に対して CRUD 操作を実行するデータ層を呼び出す ASP.NET Web API プロジェクト。
 
 	* **ToDoListDataAPI** - データ層: to-do 項目に対して CRUD 操作を実行する ASP.NET Web API プロジェクト。to-do 項目はメモリに格納されます。つまり、アプリケーションを再起動するたびに、すべての変更は消去されます。
-	* . 
 
 	データ層を呼び出すと、中間層から `Owner` フィールドにユーザー ID が渡されます。ダウンロード時のコードでは、ユーザー ID は常に "*" です。今後のチュートリアルで認証を追加すると、中間層からデータ層に実際のユーザー ID が渡されます。
 
@@ -230,7 +229,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
 
 Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できます。Swagger メタデータ生成を既存のプロジェクトに追加する場合、Swashbuckle パッケージをインストールします。
 
-**注:** Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
+**注: ** Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
 
 ## Azure で API アプリを作成して ToDoListAPI プロジェクトをデプロイする
 
@@ -282,7 +281,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	以降の手順では、新しいリソース グループの App Service プランを作成します。App Service プランには、API アプリの実行環境となるコンピューティング リソースを指定します。たとえば、Free レベルを選択した場合、API アプリは共有 VM 上で実行され、一部の有料レベルを選択した場合は専用 VM で実行されます。App Service プランの詳細については、[App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
-5. **[App Service プランの構成]** ダイアログに「ToDoListPlan」と入力するか、別の名前を入力します。
+5. **[App Service プランの構成]** ダイアログに「ToDoListPlan」(またはお好きな名前) を入力します。
 
 5. **[場所]** ドロップダウン リストで、現在の所在地に最も近い場所を選択します。
 
@@ -318,13 +317,13 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 	* 発行中にプリコンパイルする
 	* App\_Data フォルダーのファイルを除外する
 
-	このチュートリアルでは、いずれも必要ありません。これらの詳しい説明については、「[方法: Visual Studio でワンクリック発行を使用して Web アプリケーション プロジェクトを配置する](https://msdn.microsoft.com/library/dd465337.aspx)」を参照してください。
+	このチュートリアルでは、いずれも必要ありません。これらの詳しい説明については、「[How to: Deploy a Web Project Using One-Click Publish in Visual Studio (方法: Visual Studio でワンクリック発行を使用して Web プロジェクトをデプロイする)](https://msdn.microsoft.com/library/dd465337.aspx)」を参照してください。
 
 14. **[次へ]** をクリックします。
 
 	![Click Next in Settings tab of Publish Web](./media/app-service-api-dotnet-get-started/settingsnext.png)
 
-	**[プレビュー]** タブでは、プロジェクトから API アプリにコピーされるファイルを確認できます。既にデプロイ済みの API アプリにプロジェクトをデプロイした場合は、変更されたファイルだけがコピーされます。コピーされるファイルの一覧を確認するには、**[プレビューの開始]** ボタンをクリックしてください。
+	**[プレビュー]** タブでは、プロジェクトから API アプリにコピーされるファイルを確認できます。既にデプロイ済みの API アプリにプロジェクトをデプロイした場合は、変更されたファイルだけがコピーされます。どのファイルがコピーされるかを確認するには、**[プレビューの開始]** ボタンをクリックしてください。
 
 15. **[発行]** をクリックします。
 
@@ -503,7 +502,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 ただしポータルでの表示を変更する必要があれば、簡単な手順で実行できます。たとえば先ほど作成した API アプリを Web アプリに変更するには、次の手順に従います。
 
-1. リソース エクスプローラーを開きます。
+1. [リソース エクスプローラー](https://resources.azure.com/)を開きます。
 
 2. 左側のナビゲーション ウィンドウで **[サブスクリプション]** を展開し、自分が使用してきたサブスクリプションを展開します。
 
@@ -543,4 +542,4 @@ ASP.NET API アプリが Azure App Service で動作するようになったら�
 
 このチュートリアルでは、API アプリを作成し、それにコードをデプロイし、クライアント コードを生成し、.NET クライアントから使用する方法について学習しました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

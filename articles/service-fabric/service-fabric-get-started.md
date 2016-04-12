@@ -28,19 +28,13 @@
 - Windows Server 2012 R2
 - Windows 10
 
-### Visual Studio 2015
-
-Service Fabric のツールには少なくとも Visual Studio 2015 が必要です。Visual Studio 2015 は、[Visual Studio の Web サイト][2]から入手できます。
-
-> [AZURE.NOTE] サポートされる OS のバージョンを実行していないか、コンピューターに Visual Studio をインストールしたくない場合は、Windows Server 2012 R2 と Visual Studio がプレインストールされている Azure 仮想マシンを設定できます。この操作は、Azure 仮想マシン ギャラリーからのイメージを使用して実行できます。
-
 ## ランタイム、SDK、およびツールのインストール
 
-Service Fabric のコンポーネントは、Web Platform Installer によってインストールされます。インストールには 3 つのオプションがあります。
+Web Platform Installer には、Service Fabric 開発用に 3 つの構成が用意されています。
 
-- [Visual Studio 2015 用の Service Fabric ランタイム、SDK、ツールをインストールする](full-bundle-vs2015)
-- [Visual Studio "15" プレビュー用の Service Fabric ランタイム、SDK、ツールをインストールする](full-bundle-dev15)
-- [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)](core-sdk)
+- [Visual Studio 2015 用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
+- [Visual Studio "15" プレビュー用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-dev15]
+- [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)][core-sdk]
 
 
 ## PowerShell スクリプトの実行の有効化
@@ -67,4 +61,4 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI link"
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->
