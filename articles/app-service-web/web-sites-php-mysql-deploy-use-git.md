@@ -214,7 +214,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		php -S localhost:8000
 
-これで、****http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
+これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
@@ -280,7 +280,9 @@ Registration アプリケーションは、名前と電子メール アドレス
     
 3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
 
-    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。 ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png)
+    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。 
+    
+    ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png)
     
 4. 前のセクションと同様に `git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
 
