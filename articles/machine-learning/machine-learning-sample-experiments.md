@@ -17,20 +17,16 @@
     ms.author="chhavib;olgali"/>
 
 # サンプル実験を使用した新しい実験の作成
-実験を作成する場合は、Machine Learning チームのサンプル実験の例や、Machine Learning コミュニティで共有されている実験を探します。また、[Cortana Analytics ギャラリー](http://gallery.azureml.net/)で、実験について質問したり、コメントを投稿したりできます。
+実験を作成する場合は、Machine Learning チームのサンプル実験の例や、Machine Learning コミュニティで共有されている実験を探します。また、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)で、実験について質問したり、コメントを投稿したりできます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Cortana Analytics ギャラリーを参照する
-1. [ギャラリー](http://gallery.azureml.net/)にアクセスします。
+## Cortana Intelligence ギャラリーにアクセスする
+1. [ギャラリー](http://gallery.cortanaintelligence.com/)にアクセスします。
 2. **[Trending experiments]** または **[Microsoft sample experiments]** に移動して参照します。
-3. 結果を絞り込むには、次のように検索とフィルターを使用します。
-![](./media/machine-learning-sample-experiments/image1.png) 
-4. 実験をクリックして詳細を表示します。実験を実行、変更するには、**[Open in Studio]** をクリックします。
-![](./media/machine-learning-sample-experiments/image2.png) 
-5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認]( https://azure.microsoft.com/pricing/details/machine-learning/)
-
-![](./media/machine-learning-sample-experiments/image3.png) 
+3. 結果を絞り込むには、次のように検索とフィルターを使用します。![](./media/machine-learning-sample-experiments/image1.png) 
+4. 実験をクリックして詳細を表示します。実験を実行、変更するには、**[Open in Studio]** をクリックします。![](./media/machine-learning-sample-experiments/image2.png) 
+5.  Microsoft アカウントの資格情報でサインインします。Machine Learning ワークスペースをまだ持っていない場合は、無料評価版のワークスペースが作成されます。[Machine Learning 無料評価版に含まれる内容を確認](https://azure.microsoft.com/pricing/details/machine-learning/) ![](./media/machine-learning-sample-experiments/image3.png) 
 
 ## Studio でテンプレートとして使用する
 1. Microsoft アカウントの資格情報で [Studio](https://studio.azureml.net) にサインインしたら、**[新規]*** をクリックして新しい実験を作成します。
@@ -43,4 +39,4 @@
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0406_2016-->

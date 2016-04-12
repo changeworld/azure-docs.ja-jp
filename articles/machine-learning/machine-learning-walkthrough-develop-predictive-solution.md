@@ -39,6 +39,6 @@
 5.	[Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
-このチュートリアルは、[Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
+このチュートリアルは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

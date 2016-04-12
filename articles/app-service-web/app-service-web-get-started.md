@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article"
-	ms.date="03/17/2016" 
+	ms.date="04/04/2016" 
 	ms.author="cephalin"
 />
 	
@@ -67,7 +67,7 @@ Azure App Service に Web アプリをデプロイしましょう。
 
 4. 次のコマンドを使用し、一意のアプリ名で Azure に App Service アプリ リソースを作成します。Web アプリの URL は http://&lt;app_name>.azurewebsites.net になります。
 
-        azure site create --git <app_name> 
+        azure site create --git <app_name>
       
     >[AZURE.NOTE] Azure サブスクリプションのデプロイ資格情報がまだ設定されていない場合は、それらを作成するように求められます。これらの資格情報 (Azure アカウント資格情報ではありません) は App Service で Git のデプロイと FTP のログインのみに使用されます。
     
@@ -85,11 +85,9 @@ Azure App Service に Web アプリをデプロイしましょう。
 
 ## アプリがライブ実行されるのを確認する
 
-Azure でアプリがライブ実行されるのを確認するには、次のコマンドを実行します。
+Azure で実稼働しているアプリを確認するには、リポジトリ内の任意のディレクトリから次のコマンドを実行します。
 
-    azure site browse <app_name>
-
-"`Site <app_name> does not exist or has no hostnames`" というエラー メッセージが表示された場合は、数秒待ってコマンドをもう一度実行します。Java アプリなど、一部のアプリは、デプロイが完了するまでに時間がかかる場合があります。
+    azure site browse
 
 ## アプリを更新する
 
@@ -141,4 +139,4 @@ App Service アプリのポータル ブレードには、アプリの構成、�
 - [モバイル アプリの作成](/documentation/learning-paths/appservice-mobileapps/)
 - [API アプリの作成](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

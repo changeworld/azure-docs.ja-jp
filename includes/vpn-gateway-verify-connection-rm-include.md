@@ -1,10 +1,14 @@
 ### Azure ポータルを使用して接続を確認するには
 
-Azure ポータルで VPN 接続を確認するには、**[仮想ネットワーク ゲートウェイ]** に移動し、***ゲートウェイ名***、**[設定]**、**[接続]** の順にクリックします。接続の名前を選択することにより、**[接続]** ブレードに詳細な情報を表示することができます。
+Azure ポータルで VPN 接続を確認するには、**[仮想ネットワーク ゲートウェイ]** に移動し、***ゲートウェイ名***、**[設定]**、**[接続]** の順にクリックします。接続の名前を選択すると、接続の詳細情報が表示されます。次の例では、接続が未接続の状態のため、データの流れはありません。
+
+
+![Verify connection](./media/vpn-gateway-verify-connection-rm-include/connectionverify450.png)
+
 
 ### PowerShell を使用して接続を確認するには
 
-しかし、*Get-AzureRmVirtualNetworkGatewayConnection –Debug* を使用して、接続が成功したことを検証することもできます。今後、このためのコマンドレットを用意します。次のコマンドレット サンプルを使用して、実際に使用する値と同じ値を構成できます。プロンプトが表示されたら、*A* を選択してすべてを実行します。
+`Get-AzureRmVirtualNetworkGatewayConnection –Debug` を使用して、接続が成功したことを確認することもできます。次のコマンドレット サンプルを使用して、実際に使用する値と同じ値を構成できます。プロンプトが表示されたら、*A* を選択してすべてを実行します。
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Debug
 
@@ -37,4 +41,4 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 	    "egressBytesTransferred": 4142431
 	  }
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

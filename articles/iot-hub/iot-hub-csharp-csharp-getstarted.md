@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure IoT Hub for C# の使用 | Microsoft Azure"
-	description="このチュートリアルに従って、C# で Azure IoT Hub を使用します。"
+	pageTitle="C# で Azure IoT Hub を使用する方法 | Microsoft Azure"
+	description="C# で Azure IoT Hub を使用する方法についてわかりやすく説明します。Azure IoT Hub と C#、Microsoft Azure IoT SDK を使用して IoT ソリューションを実装します。"
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="dominicbetts"
@@ -22,7 +22,7 @@
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
+Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
 
 - 非常にスケール性が高く信頼性に優れた、デバイスとクラウド間の双方向メッセージングを提供します。
 - デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
@@ -125,4 +125,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-resource-groups]: resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

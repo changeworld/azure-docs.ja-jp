@@ -40,7 +40,7 @@ Azure Machine Learning ではモデルの予測分析ツールを提供するだ
 
 予測分析ではさまざまな統計手法 (この場合は、機械学習) を使用して、収集したデータや最新データのパターンや傾向を分析し、将来のイベントを予測します。
 
-Azure Machine Learning は非常に強力な方法で予測分析を行います。すぐに使用できるアルゴリズムのライブラリから作業し、設備やインフラストラクチャを別に購入せずにインターネットに接続された PC でモデルを作成して、予測ソリューションを迅速にデプロイできます。また、[Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) または [Cortana Analytics ギャラリー](http://gallery.azureml.net/) (旧称 Azure Machine Learning Gallery) で、すぐに使用できる例やソリューションを見つけることができます。
+Azure Machine Learning は非常に強力な方法で予測分析を行います。すぐに使用できるアルゴリズムのライブラリから作業し、設備やインフラストラクチャを別に購入せずにインターネットに接続された PC でモデルを作成して、予測ソリューションを迅速にデプロイできます。また、[Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) または [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)で、すぐに使用できる例やソリューションを見つけることができます。
 
 ## クラウドで完全な機械学習ソリューションを構築する
 
@@ -53,9 +53,9 @@ Azure Machine Learning には、大規模のアルゴリズム ライブラリ�
 ![予測分析とは: Azure Machine Learning Studio の予測分析実験の例](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
 * Machine Learning Studio にある [Machine Learning アルゴリズムとモジュール](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7)の大規模なライブラリを使用して、予測モデルをすぐに開始します。サンプル実験、R と Python のパッケージ、Xbox や Bing など Microsoft のビジネスで使われている最高クラスのアルゴリズムのライブラリから選択します。[R](machine-learning-r-quickstart.md) と [Python](machine-learning-execute-python-scripts.md) の独自のカスタム スクリプトで Studio モジュールを拡張できます。
-* [Cortana Analytics ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)では、他のユーザーが作成した分析ソリューションを試したり、Machine Learning、HDInsight (Hadoop)、Stream Analytics、Data Lake Analytics、Azure のビッグ データ ストア、Azure のデータ管理サービスなど、Azure サービスを使用した自作のソリューションを投稿したりすることができます。また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。  
+* [Cortana Intelligence ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)では、他のユーザーが作成した分析ソリューションを試したり、Machine Learning、HDInsight (Hadoop)、Stream Analytics、Data Lake Analytics、Azure のビッグ データ ストア、Azure のデータ管理サービスなど、Azure サービスを使用した自作のソリューションを投稿したりすることができます。また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。  
 
-	![予測実験を試したり、自分の実験を Azure Cortana Analytics ギャラリーに投稿したりします。](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-analytics-gallery.png)
+	![予測実験を試したり、自分の実験を Azure Cortana Intelligence ギャラリーに投稿したりします。](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-analytics-gallery.png)
 
 ### 予測分析ソリューションの運用を実現: Web サービスを購入するか、独自に発行
 
@@ -118,4 +118,4 @@ Azure Machine Learning では、モデルはトレーニング データを処�
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

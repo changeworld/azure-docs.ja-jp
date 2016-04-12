@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog - Data Catalog とは"
-   description="機能および対処するように設計されている問題など、Microsoft Azure Data Catalog の概要について説明します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
+   pageTitle="Azure Data Catalog とは | Microsoft Azure"
+   description="この記事では、Microsoft Azure Data Catalog の概要 (機能や対処できる問題など) について説明します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
@@ -109,4 +109,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 1.	**Azure Data Catalog** で直接サポートされているクライアント アプリケーションの場合、ユーザーはポータルにあるデータ ソース タイルの **[開く]** メニューをクリックします。クライアント アプリケーションで、選択したデータ ソースへの接続が開始されます。
 2.	ユーザーは、すべてのクライアント アプリケーションで、選択したデータ ソースのプロパティ ウィンドウに表示される接続情報を使用できます。接続情報には、データへの接続に必要なすべての詳細 (サーバー名、データベース名、オブジェクト名) が含まれます。接続情報は、クライアント ツールの接続エクスペリエンスにコピーできます。データ ソースにアクセス要求の詳細が提供されている場合、その情報は接続の詳細の横に表示されます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

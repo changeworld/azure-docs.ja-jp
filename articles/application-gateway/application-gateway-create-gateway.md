@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/02/2016"
+   ms.date="04/05/2016"
    ms.author="joaoma"/>
 
 # Application Gateway の作成、起動、または削除
@@ -20,9 +20,9 @@
 Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
-- [Azure Classic PowerShell](application-gateway-create-gateway.md)
-- [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-- [Azure Resource Manager template](application-gateway-create-gateway-arm-template.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 
 
 <BR>
@@ -59,12 +59,12 @@ Application Gateway を作成するには:
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
->[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
+>[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Azure Resource Manager で PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
 
 
 ### Application Gateway リソースの作成
 
-ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを、独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
+ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
 次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
 
@@ -78,7 +78,7 @@ Application Gateway を作成するには:
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description* 、 *InstanceCount* 、および *GatewaySize* は省略可能なパラメーターです。
+ *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
@@ -369,7 +369,7 @@ Application Gateway を削除するには:
 
 1. ゲートウェイを停止するには、**Stop-AzureApplicationGateway** コマンドレットを使用します。
 2. ゲートウェイを削除するには、**Remove-AzureApplicationGateway** コマンドレットを使用します。
-3. ゲートウェイが削除されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
+3. **Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
 次の例の最初の行は **Stop-AzureApplicationGateway** コマンドレットを示し、その後に出力が続きます。
 
@@ -404,13 +404,13 @@ Application Gateway が停止状態になったら、**Remove-AzureApplicationGa
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 
-内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

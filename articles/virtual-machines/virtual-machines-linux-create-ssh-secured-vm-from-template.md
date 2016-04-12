@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="hero-article"
 	ms.date="03/08/2016"
 	ms.author="vlivech"/>
 
@@ -72,4 +72,4 @@ info:    group create command OK
 
 テンプレートを使って Linux VM を作成したら、テンプレートで扱うことのできる他のアプリケーション フレームワークをぜひご覧ください。[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)から、次にデプロイするアプリケーション フレームワークを探しましょう。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

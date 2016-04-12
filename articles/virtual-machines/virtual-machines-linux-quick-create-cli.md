@@ -1,6 +1,6 @@
 <properties
-   pageTitle="CLI を使用して Azure で Linux VM を短時間で作成する | Microsoft Azure"
-   description="CLI を使用して Azure で Linux VM を短時間で作成します。"
+   pageTitle="CLI を使用した Azure での Linux VM の作成 | Microsoft Azure"
+   description="CLI を使用して Azure で Linux VM を作成します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="vlivech"
@@ -10,32 +10,29 @@
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="03/28/2016"
+   ms.date="04/04/2016"
    ms.author="v-livech"/>
 
 
-# CLI を使用して Azure で Linux VM を短時間で作成する
+# CLI を使用した Azure での Linux VM の作成
 
-この記事では、[Azure CLI](../xplat-cli-install.md) の `azure vm quick-create` コマンドを使って、新しい Linux VM をすばやく作成する方法を説明します。
-
-[AZURE.NOTE] このトピックでは、基本的な Azure 環境に評価、テスト、その他の短期シナリオのための Linux VM をすばやく作成する方法について説明します。実稼働またはその他の長期的なシナリオの場合は、Linux VM のより安全な Azure 環境を準備する必要があります。
-
-前提条件としては、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)、[SSH の公開キーと秘密キー](virtual-machines-linux-mac-create-ssh-keys.md)、Azure リソース グループ (以降で作成) があり、Azure CLI がインストールされていて、`azure config mode arm` を使用して Azure Resource Manager モードに切り替えてあることです。
+この記事では、Azure CLI の `azure vm quick-create` コマンドを使って Azure で Linux VM を簡単に作成する方法について説明します。このコマンドにより、概念のプロトタイプ作成またはテストを非常に短時間で実行するための基本的なインフラストラクチャを使用した VM が作成されます。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、Resource Manager モードの [Azure CLI](../xplat-cli-install.md) (`azure config mode arm`) が必要です。
 
 ## クイック コマンドの概要
 
-発行するコマンドは 1 つだけです。
-
-1. `azure vm quick-create`
+```
+# One command to quickly the VM that prompts for arguments
+chrisL@fedora$ azure vm quick-create
+```
 
 ## 詳しいチュートリアル
 
 ### Linux VM の作成
 
-次のコマンドでは任意のイメージを使用できますが、この例では、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して VM をすばやく作成します。(Marketplace でイメージを探すには、[イメージを検索する](virtual-machines-linux-cli-ps-findimage.md)か、または[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。 次のようになります。
+次のコマンドでは任意のイメージを使用できますが、この例では、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して VM をすばやく作成します (Marketplace でイメージを探すには、[イメージを検索](virtual-machines-linux-cli-ps-findimage.md)するか、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。 次のようになります。
 
 以下のコマンド例の &lt; と &gt; で囲まれた値は、実際の環境の値に置き換えてください。
 
@@ -47,7 +44,7 @@ Resource group name: exampleResourceGroup
 Virtual machine name: exampleVMname
 Location name: westus
 Operating system Type [Windows, Linux]: linux
-ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to the user image: canonical:ubuntuserver:14.04.2-LTS:latest
+ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to the user image: Canonical:UbuntuServer:14.04.4-LTS:latest
 User name: ops
 Password: *********
 Confirm password: *********
@@ -127,7 +124,7 @@ info:    vm quick-create command OK
 
 既定の SSH ポート 22 で VM に SSH 接続できます。
 
-`azure vm quick-create` を使用すると、VM を短時間で作成し、ログインして作業できます。ただし、複雑な環境はないので、環境をカスタマイズする必要がある場合は、[Azure リソース マネージャー テンプレートを使用して特定のデプロイをすばやく作成する](virtual-machines-linux-cli-deploy-templates.md)か、[Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)ことができます。
+`azure vm quick-create` を使用すると、VM がすぐに作成されるため、ログインして作業できます。ただし、複雑な環境はないので、環境をカスタマイズする必要がある場合は、[Azure Resource Manager テンプレートを使用して特定のデプロイをすばやく作成する](virtual-machines-linux-cli-deploy-templates.md)か、[Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)ことができます。
 
 上の例では次のものが作成されます。
 
@@ -149,4 +146,4 @@ info:    vm quick-create command OK
 
 また、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->
