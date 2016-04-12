@@ -29,7 +29,7 @@ Microsoft クラウド サービスにアクセスするユーザーごとに、
 
 	- **[組織内の新しいユーザー]** – ディレクトリに新しいユーザー アカウントを追加します。
 	- **[既存の Microsoft アカウントを持つユーザー]** – ディレクトリに既存の Microsoft コンシューマー アカウント (Outlook アカウントなど) を追加します。
-	- **[別の Windows Azure AD ディレクトリのユーザー]** – 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加します。その別のディレクトリ内のユーザーを選択するには、そのディレクトリのメンバーである必要があります。
+	- **[別の Microsoft Azure AD ディレクトリのユーザー]** – 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加します。その別のディレクトリ内のユーザーを選択するには、そのディレクトリのメンバーである必要があります。
 	- **[パートナー会社のユーザー]** - ディレクトリにパートナー会社のユーザーを招待して承認します (「[Azure Active Directory (Azure AD) の B2B コラボレーション](active-directory-b2b-what-is-azure-ad-b2b.md)」を参照)。
 
 
@@ -127,4 +127,4 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->
