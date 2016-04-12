@@ -43,7 +43,7 @@ IoT Suite の予測的なメンテナンスの構成済みソリューション�
 
 *サイクル数*。サイクルとは、長さが 2 ～ 10 時間に渡る完了しているフライトを示します。フライトの期間中、テレメトリ データは 30 分ごとにキャプチャされます。
 
-*テレメトリ*。エンジン属性を示すセンサーは 4 つあります。センサーは総称的に、センサー 9、センサー 11、センサー 14、およびセンサー 15 とラベル付けされています。これら 4 つのセンサーは、RUL 用に Machine Learning モデルから有用な結果を得るテレメトリを表します。このモデルは、実際のエンジンのセンサー データなど、公開されているデータ セットから作成されています。元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Analytics ギャラリーの予測的なメンテナンス テンプレート][lnk-cortana-analytics]」を参照してください。
+*テレメトリ*。エンジン属性を示すセンサーは 4 つあります。センサーは総称的に、センサー 9、センサー 11、センサー 14、およびセンサー 15 とラベル付けされています。これら 4 つのセンサーは、RUL 用に Machine Learning モデルから有用な結果を得るテレメトリを表します。このモデルは、実際のエンジンのセンサー データなど、公開されているデータ セットから作成されています。元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Intelligence Gallery Predictive Maintenance Template (Cortana Intelligence ギャラリーの予測的なメンテナンス テンプレート)][lnk-cortana-analytics]」を参照してください。
 
 シミュレートされたデバイスは、IoT Hub から送信された次のコマンドを処理できます。
 
@@ -64,7 +64,7 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 
 ## Azure Machine Learning
 
-元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Analytics ギャラリーの予測的なメンテナンス テンプレート][lnk-cortana-analytics]」を参照してください。
+元のデータ セットからこのモデルを作成する方法の詳細については、「[Cortana Intelligence Gallery Predictive Maintenance Template (Cortana Intelligence ギャラリーの予測的なメンテナンス テンプレート)][lnk-cortana-analytics]」を参照してください。
 
 ## チュートリアルの開始
 
@@ -120,8 +120,8 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
 [lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
-[lnk-cortana-analytics]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
+[lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

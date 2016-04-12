@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
@@ -44,7 +44,7 @@ Azure PowerShell を使用して、プログラムでデータベースの復元
 6. 目的の復元ポイントに、データベースを復元します。
 7. 復元の進行状況を監視します。
 
-```
+```Powershell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -95,7 +95,7 @@ Azure PowerShell を使用して、削除済みデータベースの復元をプ
 3. 復元する削除済みデータベースを含むサブスクリプションを選択します。
 4. 削除済みデータベースの一覧で、データベースと削除日を確認します。
 
-```
+```Powershell
 Get-AzureSqlDatabase -RestorableDropped -ServerName "<YourServerName>"
 ```
 
@@ -141,4 +141,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

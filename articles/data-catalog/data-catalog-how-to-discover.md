@@ -1,5 +1,5 @@
 <properties
-   pageTitle="データ ソースの探索方法"
+   pageTitle="データ ソースの探索方法 | Microsoft Azure"
    description="Azure Data Catalog を使用して登録済みのデータ資産を探索する方法を説明する操作方法に関する記事 (検索とフィルター処理、Azure Data Catalog ポータルの検索語句の強調表示機能の使用など)。"
    services="data-catalog"
    documentationCenter=""
@@ -13,9 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
-
 
 # データ ソースの探索方法
 
@@ -63,4 +62,4 @@
 ## 関連項目
 - データ ソースの探索方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

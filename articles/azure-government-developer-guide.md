@@ -92,7 +92,8 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 全般|*.windows.net|*.usgovcloudapi.net
 コア|*.core.windows.net|*.core.usgovcloudapi.net
 コンピューティング|*.cloudapp.net|*.usgovcloudapp.net
-BLOB ストレージ|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+BLOB ストレージ|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net
+Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
 テーブル ストレージ|*.table.core.windows.net|*.table.core.usgovcloudapi.net
 サービス管理|management.core.windows.net|management.core.usgovcloudapi.net
 SQL Database|*.database.windows.net|*.database.usgovcloudapi.net

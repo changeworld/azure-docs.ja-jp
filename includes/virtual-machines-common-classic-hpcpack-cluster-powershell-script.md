@@ -13,10 +13,10 @@ HPC Pack クラスターの計画に関する背景情報については、HPC P
 
 ## 前提条件
 
-* **Azure サブスクリプション** - Azure Global または Azure China サービスのサブスクリプションを利用できます。ご利用のサブスクリプションの制限によりデプロイ可能なクラスター ノードの数と種類が変わります。詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+* **Azure サブスクリプション** - Azure Global または Azure China サービスのサブスクリプションを利用できます。ご利用のサブスクリプションの制限によりデプロイ可能なクラスター ノードの数と種類が変わります。詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)」をご覧ください。
 
 
-* **Azure PowerShell 0.8.7 以降がインストールされ、構成されている Windows クライアント コンピューター** - 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。このスクリプトは Azure サービス管理で実行されます。
+* **Azure PowerShell 0.8.7 以降がインストールされ、構成されている Windows クライアント コンピューター** - 「[Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md)」をご覧ください。このスクリプトは Azure サービス管理で実行されます。
 
 
 * **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行して、スクリプトのバージョンを確認します。この記事はバージョン 4.4.0 のスクリプトに基づきます。
@@ -362,4 +362,4 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> 
 
     この問題を回避するには、最初に VM の拡張機能の状態を確認します。拡張機能が適切にインストールされていない場合、HPC クラスターからノードを削除し、ノードを再度追加してみます。たとえば、ヘッド ノードで Add-HpcIaaSNode.ps1 スクリプトを実行し、コンピューティング ノード VM を追加できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

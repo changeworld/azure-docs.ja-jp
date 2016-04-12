@@ -1,6 +1,6 @@
 この記事では、Azure サービス管理と Azure リソース マネージャーで Azure VM を作成および管理するための Microsoft Azure コマンド ライン インターフェイス (Azure CLI) の同等のコマンドを紹介します。この記事は、スクリプトをコマンド モード間で移行するための簡易ガイドとして使用してください。
 
-* まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Azure CLI のインストール](../xplat-cli-install.md)に関するページと、[Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページをご覧ください。リソース マネージャー モードのコマンドを使用する場合は、必ず所定のログイン方法を使用して接続してください。
+* まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Azure CLI のインストール](../articles/xplat-cli-install.md)に関するページと、[Azure CLI から Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)に関するページをご覧ください。リソース マネージャー モードのコマンドを使用する場合は、必ず所定のログイン方法を使用して接続してください。
 
 * Azure CLI でリソース マネージャー モードの使用を開始するには、コマンド モードを切り替える必要がある場合があります。既定では、CLI はサービス管理モードで起動します。リソース マネージャー モードに変更するには、`azure config mode arm` を実行します。サービス管理モードに戻るには、`azure config mode asm` を実行します。
 
@@ -9,11 +9,11 @@
 ## VM タスク
 次の表では、サービス管理とリソース マネージャーで Azure CLI コマンドを使用して実行できる一般的な VM タスクを比較します。リソース マネージャーの多くのコマンドでは、既存のリソース グループの名前を渡す必要があります。
 
-> [AZURE.NOTE] これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。詳細については、「[リソース マネージャーで Azure CLI を使用する](../xplat-cli-azure-resource-manager.md)」と「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」を参照してください。
+> [AZURE.NOTE] これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。詳細については、「[リソース マネージャーで Azure CLI を使用する](../articles/xplat-cli-azure-resource-manager.md)」と「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)」を参照してください。
 
 タスク | サービス管理 | リソース マネージャー
 -------------- | ----------- | -------------------------
-最も基本的な VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。例については[こちらの記事](virtual-machines-linux-cli-ps-findimage.md)を参照してください。)
+最も基本的な VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。例については[こちらの記事](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)を参照してください。)
 Linux VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
 Windows VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
 VM の一覧表示 | `azure  vm list [options]` | `azure  vm list [options]`
@@ -42,6 +42,6 @@ VM リソースの使用量の取得 | 使用できません。 | `azure vm list
 
 ## 次のステップ
 
-* CLI コマンドのその他の例については、[Azure サービス管理での Azure コマンド ライン インターフェイスの使用](virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](azure-cli-arm-commands.md)に関するページを参照してください。
+* CLI コマンドのその他の例については、[Azure サービス管理での Azure コマンド ライン インターフェイスの使用](../articles/virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](../articles/azure-cli-arm-commands.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

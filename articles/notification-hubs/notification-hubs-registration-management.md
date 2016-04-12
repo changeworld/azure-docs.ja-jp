@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="11/25/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # 登録管理
@@ -28,10 +28,10 @@
 Notification Hub にデバイスを登録するには、**登録**または**インストール**を使用します。
 
 #### 登録
-登録は、通知ハブのサブエントリです。登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルは、タグや、場合によってはテンプレートに関連付けられます。PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。詳細については、「[ルーティングとタグ式](notification-hubs-routing-tag-expressions.md)」を参照してください。テンプレートは、登録ごとの変換を実装するために使用されます。詳細については、「[テンプレート](notification-hubs-templates.md)」を参照してください。
+登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。PNS ハンドルは、ChannelURI、デバイス トークン、または GCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。詳細については、「[ルーティングとタグ式](notification-hubs-routing-tag-expressions.md)」を参照してください。テンプレートは、登録ごとの変換を実装するために使用されます。詳細については、「[テンプレート](notification-hubs-templates.md)」を参照してください。
 
 #### インストール
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。また、デバイス登録の最新の優れたアプローチです。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。また、デバイス登録の最新の優れた方法です。ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) を使用する必要があります。バックエンド サービスを使用する場合は、[バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 
@@ -39,9 +39,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 * インストール モデルを使用すると、特定のデバイスを対象にした個別のプッシュを簡単に実行できるようになります。システム タグ **"$InstallationId:[installationId]"** は、インストール ベースの登録ごとに自動的に追加されます。そのため、コードを追加することなく、特定のデバイスを対象にしてこのタグに対する送信を呼び出すことができます。
 * また、インストールを使用することで、部分的な登録の更新を実行できます。インストールの部分的な更新は、[JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。これは登録時にタグを更新するときに特に便利です。登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-インストールは、[バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) でのみサポートされています。詳細については、「[Installation クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation.aspx)」を参照してください。現時点で、バックエンドを使用せずにインストール ID を使用してクライアント デバイスから登録するには、[Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) を使用する必要があります。
-
-インストールには、次のプロパティを含めることができます。インストール プロパティの一覧については、[REST でインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx)、または[インストールのプロパティに関するページ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)を参照してください。
+インストールには、次のプロパティを含めることができます。インストールのプロパティの一覧については、[REST API を使用してインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストールのプロパティに関するページ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)をご覧ください。
 
 	// Example installation format to show some supported properties
 	{
@@ -332,4 +330,4 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 バックエンドは、登録の更新が複数ある場合の並行処理に対応する必要があります。Service Bus は、登録管理向けにオプティミスティック同時実行制御を提供しています。HTTP レベルでは、この処理は登録管理操作に対して ETag を使用して実装されます。この機能は、Microsoft SDK から透過的に使用されます。並行処理の理由で更新が拒否された場合は、例外がスローされます。このような例外に対応し、必要に応じて更新を再試行する処理は、アプリ バックエンドの役割です。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016------>

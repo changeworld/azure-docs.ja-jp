@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の一時テーブル
@@ -24,7 +24,7 @@
 ## 一時テーブルを作成する
 一時テーブルは非常に簡単に作成できます。必要な作業は、下の例のように、テーブル名の先頭に # を付けることだけです。
 
-```
+```sql
 CREATE TABLE #stats_ddl
 (
 	[schema_name]			NVARCHAR(128) NOT NULL
@@ -44,7 +44,7 @@ WITH
 
 一時テーブルで `CTAS` を利用して作成することもできます。手法はまったく同じになります。
 
-```
+```sql
 CREATE TABLE #stats_ddl
 WITH
 (
@@ -102,7 +102,7 @@ FROM    t1
 
 `CREATE TABLE` ステートメントを正常に機能させるには、セッションにテーブルが存在しないことが重要です。これは、下のパターンを利用し、簡単に既存チェックで処理できます。
 
-```
+```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
 BEGIN
 	DROP TABLE #stats_ddl
@@ -113,7 +113,7 @@ END
 
 また、コードで一時テーブルの利用を終えたら、`DROP TABLE` でそれを削除することはよい方法です。
 
-```
+```sql
 DROP TABLE #stats_ddl
 ```
 
@@ -127,7 +127,7 @@ DROP TABLE #stats_ddl
 
 次のストアド プロシージャは、上記の例をまとめたものです。コードを利用し、データベース内のすべての列の統計を更新するために必要な DDL を生成できます。
 
-```
+```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
 (   @update_type    tinyint -- 1 default 2 fullscan 3 sample 4 resample
 	,@sample_pct     tinyint
@@ -209,7 +209,7 @@ SQL Data Warehouse では、一時テーブルを作成したプロシージャ�
 
 これにより、コードのモジュール性が高まり、コードを管理しやすくなります。次の例をご覧ください。
 
-```
+```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
 
 DECLARE @i INT              = 1
@@ -254,4 +254,4 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

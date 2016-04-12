@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/02/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Dropbox API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-dropbox.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-dropbox.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-dropbox.md)
 
 組織の (テナント) App Service 環境に新しい Dropbox API を追加する
@@ -90,7 +90,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Dropbox REST API](../connectors/create-api-dropbox.md) リファレンス。
+[Dropbox REST API](../connectors/connectors-create-api-dropbox.md) リファレンス。
 
 
 ## まとめと次のステップ
@@ -115,4 +115,4 @@
 [12]: ./media/powerapps-create-api-dropbox/browseall.png
 [13]: ./media/powerapps-create-api-dropbox/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

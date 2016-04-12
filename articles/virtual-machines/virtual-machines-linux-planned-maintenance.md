@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure VM に対する計画的なメンテナンス | Microsoft Azure"
-	description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている仮想マシンに及ぼす影響について説明します。"
+	pageTitle="Linux VM に対する計画的なメンテナンス | Microsoft Azure"
+	description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている Linux 仮想マシンに及ぼす影響について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="drewm"
@@ -17,10 +17,20 @@
 	ms.date="01/05/2016"
 	ms.author="drewm"/>
 
-# Azure Virtual Machines に対する計画的なメンテナンス
+# Azure での Linux 仮想マシンに対する計画的なメンテナンス
+
+Azure の計画的なメンテナンスの概要と、それが Linux 仮想マシンの可用性に及ぼす影響について説明します。[Windows 仮想マシンの計画的なメンテナンス](virtual-machines-windows-planned-maintenance.md)を参照することもできます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
+## Azure が計画的なメンテナンスを実行する理由
+
+Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシンの基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。これらの更新の多くは、仮想マシンや Cloud Services に影響を及ぼさずに実行されます (たとえば、メモリ保護更新など)。
+
+ただし、一部の更新では、インフラストラクチャに必須の更新を適用するときに仮想マシンの再起動が必要になります。その場合、インフラストラクチャにパッチを適用する間、仮想マシンはシャットダウンされ、その後、仮想マシンの再起動が行われます。
+
+仮想マシンの可用性に影響を及ぼす可能性があるメンテナンスには、計画的なメンテナンスと計画外のメンテナンスの 2 種類があります。このページでは、Microsoft Azure による計画的なメンテナンスの実行について説明します。計画外のメンテナンスの詳細については、「[Understand planned versus unplanned maintenance (計画的なメンテナンスと計画外のメンテナンスの概要)](virtual-machines-linux-manage-availability.md)」を参照してください。
+
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

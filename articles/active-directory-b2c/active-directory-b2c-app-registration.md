@@ -39,8 +39,8 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 [https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft\_AAD\_B2CAdmin/TenantManagementBlade/id/](https://portal.azure.com/{tenant}.onmicrosoft.com/?#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/) に移動して、B2C 機能ブレードに直接アクセスすることもできます。**{tenant}** をテナント作成時に使用した名前 (例: contosob2c) に置き換えます。今後も使用できるように、このリンクをブックマークできます。
 
-    > [AZURE.IMPORTANT]
-    B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。
+> [AZURE.IMPORTANT]
+B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。
 
 ### 2.Azure クラシック ポータルからアクセスする
 

@@ -62,7 +62,12 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
         "effect" : "deny | audit"
       }
     }
+    
+## ポリシーの評価
 
+HTTP PUT を使用してリソースの作成やテンプレートのデプロイメントが行われると、ポリシーが評価されます。テンプレートのデプロイメントの場合、ポリシーはテンプレート内の各リソースの作成時に評価されます。
+
+注: Microsoft.Resources/deployments など、タグ、種別、場所をサポートしていないリソースの種類は、ポリシーによって評価されません。このサポートは将来、追加される予定です。下位互換性の問題を避けるために、ポリシーの作成時に種類を明示的に指定することを勧めします。たとえば、将来、リソースの種類が評価に追加されたときにタグをサポートしない入れ子になったリソースがある場合、種類を指定しないタグのポリシーがすべての種類に適用され、テンプレートのデプロイメントが失敗する可能性があります。
 
 ## 論理演算子
 
@@ -176,19 +181,19 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
         "not" : {
           "anyOf" : [
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Resources/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Compute/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Storage/*"
             },
             {
-              "source" : "action",
+              "field" : "type",
               "like" : "Microsoft.Network/*"
             }
           ]
@@ -207,14 +212,14 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
       "if": {
         "allOf": [
           {
-            "source": "action",
-            "like": "Microsoft.Storage/storageAccounts/*"
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
           },
           {
             "not": {
               "allof": [
                 {
-                  "field": "Microsoft.Storage/storageAccounts/accountType",
+                  "field": "Microsoft.Storage/storageAccounts/sku.name",
                   "in": ["Standard_LRS", "Standard_GRS"]
                 }
               ]
@@ -302,8 +307,6 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
           }
         }
       },
-      "id":"/subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
-      "type":"Microsoft.Authorization/policyDefinitions",
       "name":"testdefinition"
     }
 
@@ -350,8 +353,6 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
         "policyDefinitionId":"/subscriptions/########/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
         "scope":"/subscriptions/########-####-####-####-############"
       },
-      "id":"/subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyAssignments/VMPolicyAssignment",
-      "type":"Microsoft.Authorization/policyAssignments",
       "name":"VMPolicyAssignment"
     }
 
@@ -386,4 +387,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0330_2016------>

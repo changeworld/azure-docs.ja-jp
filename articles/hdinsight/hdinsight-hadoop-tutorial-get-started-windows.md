@@ -22,8 +22,8 @@
 # Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する
 
 > [AZURE.SELECTOR]
-- [Windows ベース](../hdinsight-hadoop-tutorial-get-started-windows.md)
 - [Linux ベース](../hdinsight-hadoop-linux-tutorial-get-started.md)
+- [Windows ベース](../hdinsight-hadoop-tutorial-get-started-windows.md)
 
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
 
@@ -255,4 +255,4 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

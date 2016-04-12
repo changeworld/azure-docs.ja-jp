@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Twitter API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-twitter.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-twitter.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-twitter.md)
 
 組織の (テナント) App Service 環境に新しい Twitter API を追加します。
@@ -76,7 +76,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Twitter REST API](../connectors/create-api-twitter.md) リファレンスを参照してください。
+[Twitter REST API](../connectors/connectors-create-api-twitter.md) リファレンス。
 
 
 ## まとめと次のステップ
@@ -96,4 +96,4 @@
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

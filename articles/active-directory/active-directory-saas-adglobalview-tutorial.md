@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="03/23/2016"
 	ms.author="jeedes"/>
 
 
@@ -65,12 +65,12 @@ Azure AD への ADP GlobalView の統合を構成するには、ギャラリー�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**ADP GlobalView**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_01.png)<br>
-7. 結果ウィンドウで **[ADP GlobalView]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[ADP GlobalView]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_06.png)<br>
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、ADP GlobalView で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する ADP GlobalView ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと ADP GlobalView の関連ユーザーの間で、リンク関係が確立されている必要があります。<br> このリンク関係は、Azure AD の **[ユーザー名]** の値を、ADP GlobalView の **[Username]** の値として割り当てることで確立されます。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する ADP GlobalView ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと ADP GlobalView の関連ユーザーの間で、リンク関係を確立する必要があります。<br> このリンク関係は、Azure AD の **[ユーザー名]** の値を、ADP GlobalView の **[Username]** の値として割り当てることで確立されます。
 
 ADP GlobalView で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -100,10 +100,10 @@ SAML アサーションを構成する前に、ADP GlobalView サポート チ�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_04.png) <br>
 
 
-    a.**[識別子]** ボックスで、ADP GlobalView を識別するのに使用する URL を、**“https://<server name>.globalview.adp.com/federate2”** または **“https://<server name>.globalview.adp.com/federate”** のいずれかの形式で入力します。
+    a.**[識別子]** ボックスに、ADP GlobalView アプリケーションの識別に使用する URL を、**“https://<サーバー名>.globalview.adp.com/federate2”** または **“https://<サーバー名>.globalview.adp.com/federate”** のいずれかの形式で入力します。
 
 
-    b.**[応答 URL]** ボックスで、ADP GlobalView アプリケーションに応答を投稿するために Azure AD が使用する URL を、**“https://<server name>.globalview.adp.com/federate2/sp/ACS.saml2”** または **“https://<server name>.globalview.adp.com/federate/sp/ACS.saml2”** のいずれかの形式で入力します。
+    b.**[応答 URL]** ボックスに、ADP GlobalView アプリケーションに応答を投稿するために Azure AD が使用する URL を、**“https://<サーバー名>.globalview.adp.com/federate2/sp/ACS.saml2”** または **“https://<サーバー名>.globalview.adp.com/federate/sp/ACS.saml2”** のいずれかの形式で入力します。
 
     c.**[次へ]** をクリックします。
 
@@ -123,7 +123,7 @@ SAML アサーションを構成する前に、ADP GlobalView サポート チ�
     - シングル サインアウト サービス URL
 
 
-    > [AZURE.NOTE] **ADP GlobalView** チームがインスタンスを構成したら、**[RelayState]** の値をチームから取得し、この値をアプリケーション インスタンス用に構成するよう Azure AD に要求します。この値、Azure AD テナント ID、およびアプリケーション ID を、Azure AD チーム ([waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com)) に送信できます。この構成の後でのみ、統合をテストすることができ、統合が機能します。このアプリケーションの統合が機能するには、この構成のステップが重要であることに注意してください。
+    > [AZURE.NOTE] **ADP GlobalView** チームがインスタンスを構成したら、**RelayState** 値をチームから入手し、この値をアプリケーション インスタンス用に構成するよう Azure AD に要求します。この値、Azure AD テナント ID、およびアプリケーション ID を、Azure AD チーム ([waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com)) に送信できます。この構成の後でのみ、統合をテストすることができ、統合が機能します。このアプリケーションの統合が機能するには、この構成のステップが重要であることに注意してください。
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
 
@@ -229,4 +229,4 @@ SAML アサーションを構成する前に、ADP GlobalView サポート チ�
 [204]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

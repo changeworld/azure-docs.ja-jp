@@ -26,20 +26,21 @@
 
 このトピックでは、Windows 上で実行される PHP で記述されたクライアント アプリケーションから Azure SQL Database に接続する方法について説明します。
 
+## 手順 1: 開発環境を設定する
 
 [AZURE.INCLUDE [sql-database-develop-includes-prerequisites-php-windows](../../includes/sql-database-develop-includes-prerequisites-php-windows.md)]
 
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
 
-## 手順 1. 接続の詳細を取得する
+## 手順 3: 接続の詳細を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 
 **OpenConnection** 関数は、後に続くすべての関数の上部近くで呼び出されます。
@@ -63,7 +64,7 @@
 	}
 
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 [sqlsrv\_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv\_fetch\_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
 
@@ -93,7 +94,7 @@
 	}
 
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -123,7 +124,7 @@
 		}
 	}
 
-## 手順 5. トランザクションをロールバックする
+## 手順 7: トランザクションをロールバックする
 
 
 このコード例は、以下のトランザクションの使用について示します。
@@ -135,10 +136,10 @@
 - 挿入と更新に成功した場合はトランザクションをコミット。そのどちらか一方に失敗した場合はトランザクションをロールバック
 
 
-		function Transactions()
+	function Transactions()
+	{
+		try
 		{
-			try
-			{
 			$conn = OpenConnection();
 
 			if (sqlsrv_begin_transaction($conn) == FALSE)
@@ -172,7 +173,7 @@
 		{
 			echo("Error!");
 		}
-		}
+	}
 
 
 ## 次のステップ
@@ -180,4 +181,4 @@
 
 PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://technet.microsoft.com/library/cc793139.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -40,7 +40,7 @@
 
 1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)をダウンロードし、ローカル コンピューターに保存します。 
 
-2. **[Assets] (アセット)、[Import Package] (パッケージのインポート)、[Custom Package] (カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
+2. **[Assets] \(アセット)、[Import Package] \(パッケージのインポート)、[Custom Package] \(カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
 
 	![][70]
 
@@ -84,7 +84,7 @@
 
 1. Android デバイスをコンピューターに接続します。 
 
-2. **[File] (ファイル)、[Build Settings] (設定をビルド)** の順に開きます。
+2. **[File] \(ファイル)、[Build Settings] \(設定をビルド)** の順に開きます。
 
 	![][40]
 
@@ -151,4 +151,4 @@
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!----HONumber=AcomDC_0330_2016-->

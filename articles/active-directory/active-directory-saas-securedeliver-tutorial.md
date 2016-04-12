@@ -64,8 +64,7 @@ Azure AD への Secure Deliver の統合を構成するには、ギャラリー�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Secure Deliver**」と入力します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_01.png)<br>
-7. 結果ウィンドウで **[Secure Deliver]** を選び、**[完了]** をクリックしてアプリを追加します。<br><br>
-
+7. 結果ウィンドウで **[Secure Deliver]** を選び、**[完了]** をクリックしてアプリを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_02.png)<br>
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Secure Deliver で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
@@ -75,9 +74,9 @@ Azure AD への Secure Deliver の統合を構成するには、ギャラリー�
 Secure Deliver で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD テスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Secure Deliver のテスト ユーザーの作成](#creating-a-secure-deliver-test-user)** - Secure Deliver で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### Azure AD シングル サインオンの構成
@@ -220,4 +219,4 @@ Secure Deliver で Azure AD のシングル サインオンを構成してテス
 [204]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

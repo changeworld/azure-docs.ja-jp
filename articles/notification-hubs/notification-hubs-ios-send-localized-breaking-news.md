@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 
 # Notification Hubs を使用した iOS デバイスへのローカライズ ニュース速報の送信
 
 > [AZURE.SELECTOR]
-- [Windows Store C#](notification-hubs-windows-store-dotnet-send-localized-breaking-news)
+- [Windows ストア C#](notification-hubs-windows-store-dotnet-send-localized-breaking-news)
 - [iOS](notification-hubs-ios-send-localized-breaking-news)
 
 
@@ -288,4 +288,4 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016------>

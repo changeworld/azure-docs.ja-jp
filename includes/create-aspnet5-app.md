@@ -1,21 +1,23 @@
-1. From the Visual Studio menu, select **File > New > Project**.
+1. Visual Studio のメニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。
 
-1. The **New Project** dialog will display.
+1. **[新しいプロジェクト]** ダイアログが表示されます。
 
-	![New Project dialog](./media/create-aspnet5-app/create-web-app.png)
+	![[新しいプロジェクト] ダイアログ](./media/create-aspnet5-app/create-web-app.png)
 
-1. Under the **Templates** section of the **New Project** dialog, select **Visual C# > Web**.
+1. **[新しいプロジェクト]** ダイアログの **[テンプレート]** セクションで、**[Visual C#]、[Web]** の順に選択します。
 
-1. Select **ASP.NET Web Application**.
+1. **[ASP.NET Web アプリケーション]** を選択します。
 
-1. Give your new application a name (or take the default).
+1. 新しいアプリケーションに名前を設定します (または、既定の名前をそのまま使用します)。
 
-1. Tap **OK**.
+1. **[OK]** をタップします。
 
-1. The **New ASP.NET Project** dialog will display.
+1. **[新しい ASP.NET プロジェクト]** ダイアログが表示されます。
 
-	![New ASP.NET Project dialog](./media/create-aspnet5-app/choose-template.png)
+	![[新しい ASP.NET プロジェクト] ダイアログ](./media/create-aspnet5-app/choose-template.png)
 
-1. Under ASP.NET 5 Templates, select ASP.NET Web Application.
+1. [ASP.NET 5 テンプレート] で [ASP.NET Web アプリケーション] を選択します。
 
-1. Tap **OK**.
+1. **[OK]** をタップします。
+
+<!---HONumber=AcomDC_0330_2016------>

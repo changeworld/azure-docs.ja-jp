@@ -156,6 +156,6 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 ## 次のステップ
 
-仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)」をご覧ください。
+仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-cli-create.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../articles/virtual-machines/virtual-machines-windows-tutorial.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

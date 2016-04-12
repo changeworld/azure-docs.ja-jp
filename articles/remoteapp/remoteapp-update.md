@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="compute"
-   ms.date="12/05/2015"
+   ms.date="03/28/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp コレクションの更新
@@ -34,4 +34,4 @@
 
 1. チェック マークをクリックして、更新を開始します。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016------>

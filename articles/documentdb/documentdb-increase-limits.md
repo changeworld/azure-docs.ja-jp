@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="03/30/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
@@ -29,20 +29,8 @@
 
 Azure サポートに問い合わせて調整できる DocumentDB クォータは、次の表のとおりです。
 
-|エンティティ |クォータ (Standard プラン)|
-|-------|--------|
-|データベース アカウント |5
-|コレクションあたりのストアド プロシージャ、トリガー、UDF の数 |それぞれ 25 個
-|データベース アカウントあたりの最大コレクション |100
-|データベースあたりの最大ドキュメント ストレージ (100 コレクション単位) |1 TB (テラバイト)
-|クエリあたりの最大 UDF 数 |2
-|クエリあたりの最大 JOIN 数 |5
-|クエリあたりの AND 句の最大数 |20
-|クエリあたりの OR 句の最大数 |20
-|IN 式あたりの値の最大数 |200
-|ST\_WITHIN クエリ内のポリゴン引数の最大ポイント数 |16
-|1 分あたりのコレクション作成の最大数 |5
-|1 分あたりのスケール操作の最大数 |5
+[AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
+
 
 ##<a id="RequestQuotaIncrease"></a> クォータ調整の要求
 クォータ調整を要求するには、次の手順を実行します。
@@ -75,4 +63,4 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016------>

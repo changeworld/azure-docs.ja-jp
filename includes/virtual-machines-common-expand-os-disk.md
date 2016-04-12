@@ -50,7 +50,7 @@
     Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-これで終了です。 VM に RDP で接続し、[コンピューターの管理] (または [ディスクの管理]) を開いて、新しく割り当てた領域を使用してドライブを拡張します。
+これで終了です。 VM に RDP で接続し、[コンピューターの管理] \(または [ディスクの管理]) を開いて、新しく割り当てた領域を使用してドライブを拡張します。
 
 ## 概要
 この記事では、Powershell の Azure リソース マネージャー モジュールを使用して、IaaS 仮想マシンの OS ドライブを拡張しました。参考のために完全なスクリプトを以下に示します。
@@ -81,4 +81,4 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 Azure リソース マネージャー VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

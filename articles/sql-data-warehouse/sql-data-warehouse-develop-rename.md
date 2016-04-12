@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # SDL Data Warehouse での名前変更
-SQL Server では、ストアド プロシージャ ```sp_renamedb``` を使用したデータベースの名前変更をサポートしていますが、SQL Data Warehouse では、DDL 構文を使用して同じ目標を達成します。DDL コマンドは ```RENAME OBJECT``` です。
+SQL Server では、ストアド プロシージャ `sp_renamedb` を使用したデータベースの名前変更をサポートしていますが、SQL Data Warehouse では、DDL 構文を使用して同じ目標を達成します。DDL コマンドは `RENAME OBJECT` です。
 
 ## テーブルの名前変更
 
 現時点で、名前を変更できるのはテーブルのみです。テーブルの名前を変更するための構文は次のとおりです。
 
-```
+```sql
 RENAME OBJECT dbo.Customer TO NewCustomer;
 ```
 
@@ -36,13 +36,13 @@ RENAME OBJECT dbo.Customer TO NewCustomer;
 ## テーブル スキーマの変更
 オブジェクトが属するスキーマを変更する場合は、ALTER SCHEMA を次のように使用して目的を達成します。
 
-```
+```sql
 ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 ```
 
 ## テーブル名の変更には排他的なテーブル ロックが必要
 
-使用中のテーブルの名前は変更できないことに注意してください。テーブルの名前の変更には、テーブル上での排他的なロックが必要です。テーブルを使用中である場合は、テーブルを使用しているセッションを終了することが必要な場合があります。セッションを終了するには、 [KILL](https://msdn.microsoft.com/library/ms173730.aspx) コマンドを使用する必要があります。```KILL``` を使用する場合は注意が必要です。いったん実行すると、セッションは終了し、コミット前の作業はロールバックされます。SQL Data Warehouse 内のセッションにはプレフィックスとして 'SID' が付けられます。KILL コマンドを呼び出す際には、このプレフィックスとセッション番号を指定する必要があります。たとえば、「```KILL 'SID1234'```」のように指定します。[セッション]の詳細については、接続に関する記事を参照してください。
+使用中のテーブルの名前は変更できないことに注意してください。テーブルの名前の変更には、テーブル上での排他的なロックが必要です。テーブルを使用中である場合は、テーブルを使用しているセッションを終了することが必要な場合があります。セッションを終了するには、 [KILL][] コマンドを使用する必要があります。`KILL` を使用する場合は注意が必要です。いったん実行すると、セッションは終了し、コミット前の作業はロールバックされます。SQL Data Warehouse 内のセッションにはプレフィックスとして 'SID' が付けられます。KILL コマンドを呼び出す際には、このプレフィックスとセッション番号を指定する必要があります。たとえば、「`KILL 'SID1234'`」のように指定します。[セッション]の詳細については、接続に関する記事を参照してください。
 
 
 ## 次のステップ
@@ -54,4 +54,8 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [セッション]: sql-data-warehouse-develop-connections.md
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--MSDN references-->
+[KILL]: https://msdn.microsoft.com/library/ms173730.aspx
+
+<!---HONumber=AcomDC_0330_2016------>

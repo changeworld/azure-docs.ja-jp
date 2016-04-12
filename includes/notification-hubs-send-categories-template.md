@@ -1,7 +1,7 @@
 
 このセクションでは、.NET コンソール アプリケーションからタグ付けされたテンプレート通知としてニュース速報を送信する方法について説明します。
 
-Mobile Services を使用している場合は、「[Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md)」のチュートリアルを参照してください。
+Mobile Apps を使用している場合は、「[Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加](../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)」チュートリアルを参照し、上部でプラットフォームを選択してください。
 
 Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)](../articles/notification-hubs/notification-hubs-java-backend-how-to.md)」を参照してください。[Notification Hub REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用することで、バックエンドから通知を送信できます。
 
@@ -78,4 +78,4 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0330_2016------>

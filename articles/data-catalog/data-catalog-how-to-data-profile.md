@@ -1,6 +1,6 @@
 <properties
    pageTitle="データ ソースのプロファイリングを行う方法"
-   description="この記事では、Azure Data Catalog でデータ ソースのプロファイリングを行う方法について重点的に説明しています。"
+   description="この記事では、Azure Data Catalog でデータ ソースを登録するときにテーブル レベルのデータ プロファイルと列レベルのデータ プロファイルを含める方法と、データ プロファイルを基にデータ ソースについて理解する方法について説明します。"
    services="data-catalog"
    documentationCenter=""
    authors="dvana"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="derrickv"/>
 
 # データ ソースのプロファイリング
@@ -91,4 +91,4 @@
 -	[データ ソースの登録方法](data-catalog-how-to-register.md)
 -	[Azure Data Catalog の概要](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

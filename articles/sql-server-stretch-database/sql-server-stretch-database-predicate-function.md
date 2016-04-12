@@ -24,7 +24,7 @@ CTP 3.1 ～ RC1 では、[Stretch Database を有効にする] ウィザード�
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-    > If you provide a filter predicate that performs poorly, data migration also performs poorly. Stretch Database applies the filter predicate to the table by using the CROSS APPLY operator.
+>   [AZURE.NOTE] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
 
 ## インライン テーブル値関数の基本要件
 Stretch Database フィルター機能に必要なインライン テーブル値関数は次の例のようになります。
@@ -410,4 +410,4 @@ GO
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

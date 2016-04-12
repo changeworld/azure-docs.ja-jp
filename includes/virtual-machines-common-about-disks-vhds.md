@@ -10,7 +10,7 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 一時ディスクが自動的に作成されます。Windows 仮想マシンでは、このディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。Linux 仮想マシンでは、ディスクは通常 /dev/sdb であり、Azure Linux エージェントにより書式設定され /mnt/resource にマウントされます。
 
->[AZURE.WARNING] 一時的なディスクにデータを格納しないでください。これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。Windows 仮想マシンにこのディスクを再マッピングするには、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」をご覧ください。
+>[AZURE.WARNING] 一時的なディスクにデータを格納しないでください。これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。Windows 仮想マシンにこのディスクを再マッピングするには、「[Windows 一時ディスクのドライブ文字を変更する方法](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)」をご覧ください。
 
 Azure による一時ディスクの使用方法については、[Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)に関するブログを参照してください。
 
@@ -18,7 +18,7 @@ Azure による一時ディスクの使用方法については、[Microsoft Azu
 
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。各ディスクの最大容量は 1023 ギガバイトです。仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
->[AZURE.NOTE] 仮想マシンの容量の詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」をご覧ください。
+>[AZURE.NOTE] 仮想マシンの容量の詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」をご覧ください。
 
 ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。(Azure、パートナー、またはユーザーが提供するイメージを使用することができます。) それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
 
@@ -26,7 +26,7 @@ Azure による一時ディスクの使用方法については、[Microsoft Azu
 
 ## VHD について
 
-Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。(Premium Storage は特定の地域で使用できます。) ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/ee691964.aspx)」をご覧ください。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」をご覧ください。
+Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。(Premium Storage は特定の地域で使用できます。) ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/ee691964.aspx)」をご覧ください。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」をご覧ください。
 
 Azure は VHD フォーマットの固定ディスクをサポートしています。固定フォーマットの場合、ファイル内で論理ディスクがリニアにレイアウトされるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。固定フォーマットの場合、ほとんどのディスクに大きな未使用の範囲が含まれるため、容量が無駄になることがよくあります。しかし、Azure では .vhd ファイルをスパース フォーマットで格納するため、固定ディスクのメリットと動的ディスクのメリットを同時に享受できます。詳細については、「[仮想ハード ディスクの概要](https://technet.microsoft.com/library/dd979539.aspx)」をご覧ください。
 
@@ -38,4 +38,4 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 
 >[AZURE.WARNING] ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

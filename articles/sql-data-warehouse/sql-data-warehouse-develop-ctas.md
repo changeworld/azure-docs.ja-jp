@@ -13,19 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
-CREATE TABLE AS SELECT (CTAS) は、使用可能な T-SQL 機能の中でも最も重要なものの 1 つです。これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成するという、完全に並列化された操作です。CTAS は、テーブルのコピーを作成する最も簡単で高速な方法です。SELECT..INTO の高性能バージョンだと考えてください。このドキュメントでは、CTAS の例とベスト プラクティスについて説明します。
+Create table as select (`CTAS`) は利用可能な最重要 T-SQL 機能のうちの 1 つです。これは SELECT ステートメントの出力に基づいて新しいテーブルを作成する完全に並列化された操作です。 `CTAS` はテーブルのコピーを最も簡単かつすばやく作成する方法です。これを `SELECT..INTO` の高機能バージョンであると見なすことができます。このドキュメントには `CTAS` の例とベスト プラクティスの両方が記載されています。
 
 ## CTAS を使用したテーブルのコピー
 
-おそらく、CTAS の最も一般的な用途の 1 つは、DDL を変更できるようにテーブルのコピーを作成す場合です。たとえば、もともと ROUND\_ROBIN として作成したテーブルを列の分散テーブルに変更する場合、CTAS を使用して分散列を変更します。また、CTAS を使用してパーティション分割、インデックス、または列の型を変更することもできます。
+`CTAS` の最も一般的な用途の 1 つは、DDL を変更できるようにテーブルのコピーを作成することです。たとえば、当初 `ROUND_ROBIN` として作成したテーブルを列に分散されるテーブルに変更する場合は、`CTAS` で分散列を変更します。`CTAS` を使用して、パーティション分割、インデックス作成、または列の型を変更することもできます。
 
-たとえば、CREATE TABLE で分散列が指定されていないため、ROUND\_ROBIN 分散の既定の分布タイプを使用してこのテーブルを作成したものとします。
+たとえば、`CREATE TABLE` で分散列が指定されなかったので、分散された `ROUND_ROBIN` の既定の分散タイプを使用して、このテーブルを作成したとします。
 
-```
+```sql
 CREATE TABLE FactInternetSales
 (
 	ProductKey int NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE FactInternetSales
 
 クラスター化列ストア テーブルのパフォーマンスの利点を得られるように、クラスター化列ストア インデックスでこのテーブルの新しいコピーを作成します。また、この列で結合が予想され、ProductKey での結合の間のデータを移動したくないので、このテーブルを ProductKey に分散させます。最後に OrderDateKey にパーティションを追加して、古いパーティションをドロップして古いデータをすぐに削除できるようにします。次に示すのが、古いテーブルを新しいテーブルにコピーする CTAS ステートメントです。
 
-```
+```sql
 CREATE TABLE FactInternetSales_new
 WITH
 (
@@ -77,7 +77,7 @@ AS SELECT * FROM FactInternetSales;
 
 最後に、テーブルの名前を変更して新しいテーブルにスワップし、古いテーブルをドロップできます。
 
-```
+```sql
 RENAME OBJECT FactInternetSales TO FactInternetSales_old;
 RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 
@@ -88,30 +88,30 @@ DROP TABLE FactInternetSales_old;
 
 ## CTAS を使用したサポートされていない機能の回避
 
-CTAS を使用すると、以下に示すサポートされていない機能の多くに対応することもできます。この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。これは、完全に並列化された設計により可能になりました。CTAS で対処できるシナリオは次のとおりです。
+`CTAS` を使用して、下記のサポートされていない多くの機能を回避することもできます。この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。これは、完全に並列化された設計により可能になりました。CTAS で対処できるシナリオは次のとおりです。
 
 - SELECT..INTO
 - ANSI JOINS を使用した UPDATE
 - ANSI JOIN を使用した DELETE
 - MERGE ステートメント
 
-> [AZURE.NOTE] 「まず最初に CTAS」を検討しましょう。CTAS によって問題を解決できると思われる場合は、たとえ結果的に多くのコードを作成することになったとしても、通常は CTAS を使用するのが最善の方法です。
+> [AZURE.NOTE] 「まず最初に CTAS」を検討しましょう。`CTAS` を使用して問題を解決できると思われる場合は、たとえ追加データを結果的に書き込むことになったとしても、それが一般的に最善の対処方法です。
 >
 
 ## SELECT..INTO
-SELECT..INTO は、ソリューション内で頻繁に使用される場合があります。
+`SELECT..INTO` は、ソリューション内で頻繁に使用される場合があります。
 
-SELECT..INTO ステートメントの例を次に示します。
+`SELECT..INTO` ステートメントの例を次に示します。
 
-```
+```sql
 SELECT *
 INTO    #tmp_fct
 FROM    [dbo].[FactInternetSales]
 ```
 
-上を CTAS に変換するのはとても簡単です。
+上記のステートメントを `CTAS` に変換するのはとても簡単です。
 
-```
+```sql
 CREATE TABLE #tmp_fct
 WITH
 (
@@ -123,7 +123,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-> [AZURE.NOTE] CTAS では、現在、分散列を指定する必要があります。分散列を変更しないようにすると、基のテーブルと同じ分散列を選択した場合、データ移動がないので、CTAS は最高速で実行されます。パフォーマンスが問題ではない小さいテーブルを作成する場合は、ROUND\_ROBIN を指定して分散列の決定を回避できます。
+> [AZURE.NOTE] CTAS では、現在、分散列を指定する必要があります。分散列の変更を意図していない場合に、基のテーブルと同じ分散列を選択すると、この方法によってデータ移動が回避されることから、`CTAS` が最速で実行されます。パフォーマンスが問題ではない小さいテーブルを作成する場合は、`ROUND_ROBIN` を指定して分散列の決定を回避できます。
 
 ## UPDATE ステートメントの代わりに使用する ANSI JOIN
 
@@ -131,7 +131,7 @@ UPDATE または DELETE を実行するための ANSI JOIN 構文を使用して
 
 このテーブルを更新しなければならない状況だと想定します。
 
-```
+```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
 (	[EnglishProductCategoryName]	NVARCHAR(50)	NOT NULL
 ,	[CalendarYear]					SMALLINT		NOT NULL
@@ -146,7 +146,7 @@ WITH
 
 元のクエリは次のようだったとします。
 
-```
+```sql
 UPDATE	acs
 SET		[TotalSalesAmount] = [fis].[TotalSalesAmount]
 FROM	[dbo].[AnnualCategorySales] 	AS acs
@@ -169,11 +169,11 @@ AND	[acs].[CalendarYear]				= [fis].[CalendarYear]
 ;
 ```
 
-SQL Data Warehouse では、UPDATE ステートメントの FROM 句で ANSI JOIN がサポートされていないため、このコードは若干の変更を加えないとコピーできません。
+SQL Data Warehouse では、`UPDATE` ステートメントの `FROM` 句で ANSI JOIN がサポートされていないため、このコードは若干の変更を加えないとコピーできません。
 
-CTAS と暗黙的結合を組み合わせて使用することで、このコードを置き換えます。
+`CTAS` と暗黙的結合を組み合わせて使用することで、このコードを置き換えます。
 
-```
+```sql
 -- Create an interim table
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -206,11 +206,11 @@ DROP TABLE CTAS_acs
 ```
 
 ## DELETE ステートメントの代わりに使用する ANSI JOIN
-CTAS がデータ削除の際に最良のアプローチとなることもあります。単にデータを削除するのではなく、保持したいデータを選択するということです。ANSI JOIN 構文を使用する DELETE ステートメントの場合に特に当てはまります。SQL Data Warehouse では、DELETE ステートメントの FROM 句で ANSI JOIN がサポートされていないためです。
+最善のデータ削除方法は `CTAS` を使用することである場合があります。単にデータを削除するのではなく、保持したいデータを選択するということです。これは ANSI JOIN 構文を使用する `DELETE` ステートメントの場合に特に当てはまります。SQL Data Warehouse では、`DELETE` ステートメントの `FROM` 句で ANSI JOIN がサポートされていないためです。
 
 変換された DELETE ステートメントの例を次に示します。
 
-```
+```sql
 CREATE TABLE dbo.DimProduct_upsert
 WITH
 (   Distribution=HASH(ProductKey)
@@ -230,11 +230,11 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## MERGE ステートメントの代わりに使用
-MERGE ステートメントは、少なくとも部分的に CTAS で置き換えることができます。`INSERT` および `UPDATE` を 1 つのステートメントに統合できます。削除されたレコードはすべて、2 つ目のステートメントで閉じる必要があります。
+少なくとも部分的に `CTAS` を使用することにより、MERGE ステートメントを置き換えることができます。`INSERT` および `UPDATE` を 1 つのステートメントに統合できます。削除されたレコードはすべて、2 つ目のステートメントで閉じる必要があります。
 
 `UPSERT` の例を次に示します。
 
-```
+```sql
 CREATE TABLE dbo.[DimProduct_upsert]
 WITH
 (   DISTRIBUTION = HASH([ProductKey])
@@ -268,7 +268,7 @@ RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 
 コードを移行するときに、このようなコーディング パターンが見られる場合があります。
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 
@@ -286,7 +286,7 @@ SELECT @d*@f
 
 次のコードからは、同じ結果が得られないからです。
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 ;
@@ -302,7 +302,7 @@ SELECT @d*@f as result
 
 次の例を試してください。
 
-```
+```sql
 SELECT result,result*@d
 from result
 ;
@@ -320,11 +320,11 @@ from ctas_r
 
 この 2 つの結果に差異があるのは、暗黙の型変換が原因です。1 つ目の例の場合、テーブルで列が定義されています。行が挿入されると、暗黙の型変換が実行されます。2 つ目の例では、列のデータ型が式で定義されているため、暗黙の型変換は実行されません。2 つ目の例の列が null 許容の列として定義されている一方で、1 つ目の例の列はそのように定義されていないことにも注意してください。1 つ目の例でテーブルが作成されるとき、列の null 値の許容は明示的に定義されました。2 つ目の例では、列の null 値の許容は定義されていないため、既定で null 定義になります。
 
-これらの問題を解決するには、 CTAS ステートメントの SELECT 部分に、型の変換と null 値の許容を明示的に設定する必要があります。これらのプロパティは、CREATE TABLE 部分で設定することはできません。
+これらの問題を解決するには、`CTAS` ステートメントの `SELECT` 部分に、型の変換と null 値の許容を明示的に設定する必要があります。これらのプロパティは、CREATE TABLE 部分で設定することはできません。
 
 次の例で、このコードの修正方法を示しています。
 
-```
+```sql
 DECLARE @d decimal(7,2) = 85.455
 ,       @f float(24)    = 85.455
 
@@ -340,11 +340,11 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 - ISNULL は最も外側の関数です
 - ISNULL の 2 つ目の部分は定数 (つまり 0) です
 
-> [AZURE.NOTE] null 値の許容を正しく設定するために、COALESCE ではなく ISNULL を使用することは重要です。COALESCE は確定的な関数ではないため、式の結果には常に null 値が使用されるからです。ISNULL の場合は異なります。ISNULL は確定的な関数です。そのため、ISNULL 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
+> [AZURE.NOTE] Null 値の許容を正しく設定するには、`COALESCE` ではなくて `ISNULL` を使用することが重要です。`COALESCE` は決定的関数ではありませんので、式の結果は必ず null を許容します。`ISNULL` は異なります。ISNULL は確定的な関数です。そのため、`ISNULL` 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
 
 このヒントは、計算の整合性を確保する上で役立つだけではありません。テーブル パーティションの切り替えでも重要になります。このテーブルが、ファクトとして定義されていると考えてください。
 
-```
+```sql
 CREATE TABLE [dbo].[Sales]
 (
     [date]      INT     NOT NULL
@@ -369,7 +369,7 @@ WITH
 
 パーティション分割されたデータセットを作成するには、次を実行してください。
 
-```
+```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH    
 (   DISTRIBUTION = HASH([product])
@@ -393,7 +393,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 
 クエリは、問題なく実行されます。問題が発生するのは、パーティションの切り替えを実行するときです。テーブルの定義が一致しないためです。テーブルの定義を一致させるには、CTAS を変更する必要があります。
 
-```
+```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH    
 (   DISTRIBUTION = HASH([product])
@@ -433,4 +433,4 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

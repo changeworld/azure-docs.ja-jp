@@ -48,8 +48,6 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 - [Azure PowerShell コマンドレット](../powershell-install-configure.md)がインストール済みである。
 
-- GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-classic-portal-sql.md)」を参照してください。
-
 - オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
 ## Azure サブスクリプションへの接続と Virtual Network の作成
@@ -632,4 +630,4 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

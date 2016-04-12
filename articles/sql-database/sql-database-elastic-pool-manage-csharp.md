@@ -16,7 +16,7 @@
     ms.date="03/15/2016"
     ms.author="sstein"/>
 
-# エラスティック データベース プールの管理 (C&#x23;)
+# C&#x23 によるエラスティック データベース プールの管理とサイズ設定
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
@@ -36,7 +36,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールの更新
+## プールを更新する
 
 
     // Retrieve existing pool properties
@@ -60,7 +60,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## 既存のデータベースをエラスティック データベース プールに移動
+## 既存のデータベースをプールに移動する
 
 
     // Update database service objective to add the database to a pool
@@ -88,7 +88,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールでの新しいデータベースの作成
+## プールに新しいデータベースを作成する
 
 
     // Create a new database in the pool
@@ -111,7 +111,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールのすべてのデータベースの一覧表示
+## プール内のすべてのデータベースを一覧表示する
 
 次の例では、プール内のすべてのデータベースが一覧表示されます。
 
@@ -126,7 +126,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 
 
-## エラスティック データベース プールの管理例 (C&#x23;)
+## プールを管理する (C&#x23; の例)
 
 この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
 
@@ -148,7 +148,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
     {
     class Program
     {
-        // elastic database pool variables
+        // pool variables
         static string poolName = "elasticPool1";
         static string poolEdition = "Standard";
         static int poolDtus = 400;
@@ -191,7 +191,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
             ServerGetResponse srvr = CreateServer();
             Console.WriteLine("Creation of server " + srvr.Server.Name + ": " + srvr.StatusCode.ToString());
 
-            // Create an elastic database pool
+            // Create a pool
             Console.WriteLine("Creating elastic database pool with 400 pool eDTUs... ");
             ElasticPoolCreateOrUpdateResponse epool = CreateElasticDatabasePool();
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
@@ -212,7 +212,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
             Console.WriteLine("Press Enter to update the pool to 1200 pool eDTUs.");
             Console.ReadLine();
 
-            // Update the elastic database pool
+            // Update the pool
             Console.WriteLine("Updating elastic database pool to 1200 pool eDTUs...");
             ElasticPoolCreateOrUpdateResponse epool2 = UpdateElasticDatabasePool();
             Console.WriteLine("Update of pool " + epool2.ElasticPool.Name + ": " + epool2.Status.ToString());
@@ -457,4 +457,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

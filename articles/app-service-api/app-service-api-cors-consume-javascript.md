@@ -1,6 +1,6 @@
 <properties
-	pageTitle="CORS を使用して JavaScript から API アプリを使用する | Microsoft Azure"
-	description="JavaScript クライアントから、および CORS を使用して Azure App Service の API アプリを使用する方法について説明します"
+	pageTitle="App Service における CORS のサポート | Microsoft Azure"
+	description="Azure App Service の CORS 機能の使い方について説明します。"
 	services="app-service\api"
 	documentationCenter=".net"
 	authors="tdykstra"
@@ -13,22 +13,22 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/04/2016"
+	ms.date="03/31/2016"
 	ms.author="tdykstra"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
 
 ## 概要
 
-App Service では、クロス オリジン リソース共有 (CORS) に対するサポートが組み込まれ、JavaScript クライアントが App Service API アプリに対してドメイン間呼び出しを行うことができます。
+App Service は、API アプリや Web アプリ、モバイル アプリでホストされている API を JavaScript クライアントからドメインの境界を越えて呼び出すことができるクロス オリジン リソース共有 (CORS) をネイティブでサポートしています。この機能が App Service に備わっていることで、独自の API でコードを記述することなく CORS を利用することができます。
 
-セキュリティ上の理由から、ブラウザーは JavaScript コードが含まれるドメイン以外のドメインに対して、JavaScript が API 呼び出しを行うことを禁止します。たとえば、contoso.com の Web ページから contoso.com API エンドポイントには呼び出しができますが、fabrikam.com エンドポイントには呼び出しができません。CORS は、このようなクロス ドメインの API 呼び出しを行う必要があるシナリオが実現できるように設計されたインターネット プロトコルです。Azure App Service のこのようなシナリオの例として、API が API アプリを実行している間に JavaScript クライアントが Web アプリを実行している場合などがあります。
+[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) は、JavaScript から別のドメイン (ブラウザーで JavaScript を読み込んだときとは異なるドメイン) の API を呼び出すことができるインターネット プロトコルです。CORS を使用しなかった場合、contoso.com という Web ページから contoso.com の API エンドポイントに対して呼び出しを行うことはできますが、fabrikam.com のエンドポイントに対して呼び出しを行うことはできません。
 
 この記事には 2 つのセクションが含まれます。
 
-* 「[Azure App Service での CORS の構成方法](#corsconfig)」セクションでは、API アプリ用に CORS を構成する一般的な方法について説明します。このセクションは、.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークが対象となります。 
+* 「[CORS の構成方法](#corsconfig)」セクションでは、API アプリ、Web アプリ、モバイル アプリ用に CORS を構成する方法について説明します。.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークを対象としています。 
 
-* [.NET 入門チュートリアルの続行](#tutorialstart)」セクションでは、.NET サンプル アプリケーションをデプロイし、JavaScript のフロントエンドが Web API のバックエンドを呼び出すことができるように CORS を構成する方法について説明します。
+* 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、[App Service の機能の使用方法を説明するチュートリアル シリーズの第 1 回](app-service-api-dotnet-get-started.md)で作成したアプリを基に、CORS の機能のデモンストレーションを行います。
 
 ## <a id="corsconfig"></a> Azure App Service での CORS の構成方法
 
@@ -40,11 +40,11 @@ CORS は、Azure ポータル、または [Azure Resource Manager](../resource-g
 
 2. **[App Services]** をクリックした後、API アプリの名前をクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
+	![Select API app in portal](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 
 10. **[API アプリ]** ブレードの右側に表示される **[設定]** ブレードで、**[API]** セクションを探し、**[CORS]** をクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/clicksettings.png)
+	![Select CORS in Settings blade](./media/app-service-api-cors-consume-javascript/clicksettings.png)
 
 11. テキスト ボックスに、JavaScript の呼び出し元として許可する URL を入力します。
 
@@ -54,7 +54,7 @@ CORS は、Azure ポータル、または [Azure Resource Manager](../resource-g
 
 13. **[保存]** をクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/corsinportal.png)
+	![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
 	**[保存]** をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。
 
@@ -78,7 +78,7 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 ## 新しい Web アプリに ToDoListAngular プロジェクトをデプロイする
 
-[最初のチュートリアル](app-service-api-dotnet-get-started.md)では、中間層の API アプリとデータ層の API アプリを作成しました。このチュートリアルでは、中間層の API アプリを呼び出す単一ページ アプリケーション (SPA) Web アプリを作成します。SPA を使用するは、中間層 API アプリで CORS を有効にする必要があります。
+[最初のチュートリアル](app-service-api-dotnet-get-started.md)では、中間層の API アプリとデータ層の API アプリを作成しました。このチュートリアルでは、中間層の API アプリを呼び出す単一ページ アプリケーション (SPA) Web アプリを作成します。SPA を使用するには、中間層 API アプリで CORS を有効にする必要があります。
 
 [ToDoList サンプル アプリケーション](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)の ToDoListAngular プロジェクトは、中間層の ToDoListAPI Web API プロジェクトを呼び出す簡単な AngularJS クライアントです。*app/scripts/todoListSvc.js* ファイルの JavaScript コードは、AngularJS HTTP プロバイダーを使用して API を呼び出します。
 
@@ -104,7 +104,7 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 ### ToDoListAngular プロジェクト用の新しい Web アプリを作成する
 
-新しい Web アプリを作成してそれにプロジェクトをデプロイする手順は、このシリーズの最初のチュートリアルで示したものと同じです。ただし、アプリの種類が **API アプリ**ではなく **Web アプリ**になります。
+新しい Web アプリを作成してそこにプロジェクトをデプロイする手順は、このシリーズの最初のチュートリアルで示したものと同様です。ただしアプリの種類が **API アプリ**ではなく **Web アプリ**になります。
 
 1. **ソリューション エクスプローラー**で ToDoListAngular プロジェクトを右クリックし、**[発行]** をクリックします。
 
@@ -116,15 +116,15 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 5. 使用する Azure **サブスクリプション**を選択します。
 
-6. **[リソース グループ]** ドロップダウンで、先に作成したものと同じリソース グループを選択します。
+6. **[リソース グループ]** ボックスの一覧で、先に作成したものと同じリソース グループを選択します。
 
-4. **[App Service プラン]** ドロップダウンで、先に作成した同じプランを選択します。
+4. **[App Service プラン]** ボックスの一覧で、先に作成した同じプランを選択します。
 
 7. **[作成]** をクリックします。
 
 	Visual Studio により Web アプリが作成され、その発行プロファイルが作成され、**Web の発行**ウィザードの **[接続]** ステップが表示されます。
 
-	**Web の発行**ウィザードの **[発行]** をクリックする前に、App Service で実行されている中間層の API アプリを呼び出すように新しい Web アプリを構成してください。
+	まだ **[発行]** はクリックしないでください。次のセクションで、App Service で実行されている中間層の API アプリを呼び出すように新しい Web アプリを構成します。
 
 ### Web アプリの設定で中間層の URL を設定する
 
@@ -140,7 +140,7 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 4. **[保存]** をクリックします。
 
-	Azure でコードを実行すると、Web.config ファイルにある localhost の URL がこの値で上書きされます。
+	Azure でコードを実行すると、*Web.config* ファイルにある localhost の URL がこの値で上書きされます。
 
 	設定値を取得するコードは *index.cshtml* にあります。
 
@@ -184,9 +184,9 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 3. AngularJS UI が表示されているブラウザーのウィンドウで、**[To Do List]** リンクをクリックします。
 
-	JavaScript のコードは中間層 API アプリの呼び出しを試みますが、フロントエンドはバックエンド (API アプリ URL) とは異なるドメイン (Web アプリ URL) で実行しているため、呼び出しは失敗します。ブラウザーの開発者ツールのコンソール ウィンドウには、クロス オリジンのエラー メッセージが表示されます。
+	JavaScript のコードは中間層 API アプリの呼び出しを試みますが、フロントエンドはバックエンドとは異なるドメインで実行しているため、呼び出しは失敗します。ブラウザーの開発者ツールのコンソール ウィンドウには、クロス オリジンのエラー メッセージが表示されます。
 
-	![](./media/app-service-api-cors-consume-javascript/consoleaccessdenied.png)
+	![Cross-origin error message](./media/app-service-api-cors-consume-javascript/consoleaccessdenied.png)
 
 ## 中間層 API アプリ用に CORS を構成する
 
@@ -196,11 +196,11 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 2. **App Services** をクリックして、ToDoListAPI (中間層) の API アプリをクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
+	![Select API app in portal](./media/app-service-api-cors-consume-javascript/browseapiapps.png)
 
 10. **[API アプリ]** ブレードの右側に表示される **[設定]** ブレードで、**[API]** セクションを探し、**[CORS]** をクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/clicksettings.png)
+	![Select CORS in portal](./media/app-service-api-cors-consume-javascript/clicksettings.png)
 
 12. テキスト ボックスに、ToDoListAngular (フロントエンド) Web アプリの URL を入力します。たとえば、todolistangular0121 という名前の Web アプリに ToDoListAngular プロジェクトをデプロイした場合は、URL `https://todolistangular0121.azurewebsites.net` からの呼び出しを許可します。
 
@@ -208,7 +208,7 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 13. **[保存]** をクリックします。
 
-	![](./media/app-service-api-cors-consume-javascript/corsinportal.png)
+	![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
 	**[保存]** をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。このスクリーン ショットでは、ToDoListAPI0223 API アプリは ToDoListAngular Web アプリから JavaScript クライアントの呼び出しを受け入れています。
 
@@ -218,7 +218,7 @@ API アプリの Node.js または Java 入門シリーズに従って学習し�
 
 	今度は、アプリケーションで To Do 項目を表示、追加、編集、削除できます。
 
-	![](./media/app-service-api-cors-consume-javascript/corssuccess.png)
+	![To Do List page of sample app](./media/app-service-api-cors-consume-javascript/corssuccess.png)
 
 ## App Service の CORS と Web API の CORS
 
@@ -264,10 +264,23 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 		    [EnableCors(origins:"*", headers:"*", methods: "*")]
 		    public class ToDoListController : ApiController
  
-	> **注**: `EnableCors` 属性を持つすべてのパラメーターにワイルドカードを使用しているのはデモンストレーションのみを目的としています。この場合、すべてのオリジンとすべての HTTP 要求に対して API が開かれます。この属性は注意して使用してください。
+	> **注**: この属性は注意して使用してください。すべてのパラメーターにワイルドカードを指定すると、すべてのオリジンおよびすべての HTTP 要求に API が開放されます。ここに示した設定はデモンストレーションを目的としたものであり、それ以外の用途は想定していません。
+
+## トラブルシューティング
+
+このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法としては、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)します。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
+
+ポータルの CORS ブレードで URL を設定した後も CORS エラーが発生する場合は、適切な場所で正しく変更を行ったかどうかを再確認してください。次に例を示します。
+
+* 入力したプロトコルが正しいことを確認 (`http` ではなく `https`) し、`https` を使用してフロントエンド Web アプリを実行していることを確認します。
+* フロントエンドの Web アプリではなく中間層の API アプリで CORS 設定を入力したことを確認します。
+
+アプリケーション コードと Azure App Service の両方で CORS の設定を行っている場合、App Service の CORS 設定が、アプリケーション コードのどのような設定よりも優先されることに注意してください。
+
+トラブルシューティングを効率化する Visual Studio の機能について詳しくは、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 ## 次のステップ 
 
-このチュートリアルでは、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
+この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

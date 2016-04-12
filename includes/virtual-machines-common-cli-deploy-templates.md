@@ -1,5 +1,5 @@
 
-この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
+この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
 
 
 - [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
@@ -35,9 +35,9 @@ Azure リソース グループで Azure CLI を使用するには、適切な A
 
 Azure サブスクリプションをまだ持っていない場合でも、MSDN サブスクリプションがあれば、[MSDN サブスクライバー向けの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../xplat-cli-connect.md#use-the-log-in-method)します。
+「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../articles/xplat-cli-connect.md#use-the-log-in-method)します。
 
-> [AZURE.NOTE] 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを*使わずに*ログインすること**も**できます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](virtual-machines-windows-create-aad-work-id.md)して同じ方法でログインできます。
+> [AZURE.NOTE] 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを*使わずに*ログインすること**も**できます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md)して同じ方法でログインできます。
 
 アカウントには、複数のサブスクリプションが含まれる場合があります。`azure account list` と入力することで、次のようにサブスクリプションの一覧を表示できます。
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
 - 操作を監査する。
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
 
-Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../articles/resource-group-authoring-templates.md)」を参照してください。
 
 ## <a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
 
@@ -97,7 +97,7 @@ Azure リソース グループとその機能の詳細については、「[Azu
     info:    group create command OK
 
 
-次に、イメージが必要になります。Azure CLI でイメージを検索するには、[PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)に関するページを参照してください。ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。この簡易作成には、CoreOS の安定版イメージを使用します。
+次に、イメージが必要になります。Azure CLI でイメージを検索するには、[PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)に関するページを参照してください。ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。この簡易作成には、CoreOS の安定版イメージを使用します。
 
 > [AZURE.NOTE] ComputeImageVersion では、テンプレートの言語と Azure CLI の両方のパラメーターとして "latest" を指定することもできます。こうすることで、スクリプトやテンプレートを変更しなくても、常にパッチが適用された最新バージョンのイメージを使用できます。一般的なイメージを以下に示します。
 
@@ -666,9 +666,9 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 
 当然ながら、これには .vhd が必要になります。既に Azure にあるものを使用するか、アップロードすることができます。
 
-Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-windows-classic-createupload-vhd.md)」を参照してください。
+Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md)」を参照してください。
 
-Linux ベースの仮想マシンについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
+Linux ベースの仮想マシンについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
 
 ### 手順 3. テンプレートを使用して仮想マシンを作成する
 
@@ -1160,7 +1160,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
 
-これは、テンプレートの作成時や使用時によく行われます。グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます (デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
+これは、テンプレートの作成時や使用時によく行われます。グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます (デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](../articles/resource-manager-troubleshoot-deployments-cli.md)」を参照してください)。
 
 特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイ ログを解析し、エラーを探しています。
 
@@ -1243,7 +1243,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
 
-通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」をご覧ください。
+通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md)」をご覧ください。
 
 ## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
 
@@ -1276,9 +1276,9 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ## 次のステップ
 
-**arm** モードでの Azure CLI のその他の使用例については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
+**arm** モードでの Azure CLI のその他の使用例については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
 
 
-使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
+使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

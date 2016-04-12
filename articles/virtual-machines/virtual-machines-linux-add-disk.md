@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Linux VM へのディスクの追加 | Microsoft Azure"
 	description="Linux VM に永続ディスクを追加する方法について説明します。"
-	keywords="Linux 仮想マシン,リソース ディスクの追加" 
+	keywords="Linux 仮想マシン,リソース ディスクの追加"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="rickstercdn"
@@ -20,17 +20,17 @@
 
 # Linux VM へのディスクの追加
 
-このトピックでは、Mac および Linux 用の Azure コマンド ライン インターフェイスを使用して、Linux ベースの Azure 仮想マシンに永続ディスクを追加します。メンテナンスやサイズ変更で VM を再度プロビジョニングする場合でも、仮想マシンに永続ディスクが接続されていれば、必要なデータを保持することができます。
+この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。ディスクを追加するには、[Azure CLI](../xplat-cli-install.md) を Resource Manager モードにする必要があります (`azure config mode arm`)。
 
-## 前提条件
+## クイック コマンド
 
-このトピックでは、実際にご利用の Azure サブスクリプション ([無料試用版のサインアップ](https://azure.microsoft.com/pricing/free-trial/)) が既にあること、[Azure CLI をインストール済みであること](../xplat-cli-install.md)、[VM を作成](virtual-machines-linux-quick-create-cli.md)済みであることを前提としています。あらかじめリソース グループ名と VM 名、それらが置かれているリージョンを把握しておく必要があります。
+```
+# In the following command examples, replace the values between &lt; and &gt; with the values from your own environment.
 
-## Azure CLI 端末を Azure サブスクリプションに接続する
+rick@ubuntu$ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
+```
 
-Azure で何かを行うときはまず、[Azure CLI で Azure にログオン](../xplat-cli-connect.md)し、「`azure config mode arm`」と入力して、CLI をリソース グループ モードにする必要があります。
-
-## ディスクの接続とマウント
+## ディスクの接続
 
 新しいディスクには簡単に接続できます。「`azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>`」と入力するだけで、VM に新しい GB のディスクが作成され、接続されます。これは、次のようになります。
 
@@ -42,12 +42,11 @@ Azure で何かを行うときはまず、[Azure CLI で Azure にログオン](
 	info:    vm disk attach-new command OK
 
 
-## Linux 仮想マシンを接続して新しいディスクをマウントする
+## Linux VM を接続して新しいディスクをマウントする
 
+> [AZURE.NOTE] このトピックでは、ユーザー名とパスワードを使用して VM に接続します。公開キーおよび秘密キーのペアを使用して VM と通信するには、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。`azure vm quick-create` コマンドを使って作成された VM の **SSH** 接続を `azure vm reset-access` コマンドを使って **SSH** アクセスを完全にリセットしたり、ユーザーを追加または削除したりできます。また、アクセスをセキュリティで保護するための公開キー ファイルを追加することもできます。
 
-> [AZURE.NOTE] このトピックでは、ユーザー名とパスワードを使用して VM に接続します。公開キーおよび秘密キーのペアを使用して VM と通信するには、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。`azure vm quick-create` コマンドを使って作成された VM の **SSH** 接続を `azure vm reset-access` コマンドを使って **SSH** アクセスを完全にリセットしたり、ユーザーを追加または削除したりできます。また、アクセスをセキュリティで保護するための公開キー ファイルを追加することもできます。この記事では、わかりやすいように、ユーザー名とパスワードに **SSH** を使用しています。
-
-Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続する必要があります。**ssh** を使用した接続に慣れていない場合は、`ssh <username>@<FQDNofAzureVM> -p <the ssh port>` 形式のコマンドを使用します。
+Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続する必要があります。**ssh** を使用した接続に慣れていない場合は、`ssh <username>@<FQDNofAzureVM> -p <the ssh port>` 形式のコマンドを使用します。コマンドは次のようになります。
 
 	ssh ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com -p 22
 	The authenticity of host 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
@@ -73,8 +72,6 @@ Linux VM から使用できるように新しいディスクのパーティシ�
 	0 packages can be updated.
 	0 updates are security updates.
 
-
-
 	The programs included with the Ubuntu system are free software;
 	the exact distribution terms for each program are described in the
 	individual files in /usr/share/doc/*/copyright.
@@ -84,7 +81,7 @@ Linux VM から使用できるように新しいディスクのパーティシ�
 
 	ops@myuniquevmname:~$
 
-これで VM に接続されたので、ディスクを接続する準備ができました。まず、`dmesg | grep SCSI` を使用してディスクを探してみましょう (新しいディスクの探索に使用する方法は異なる場合があります)。この場合、次のようになります。
+これで VM に接続されたので、ディスクを接続する準備ができました。まず、`dmesg | grep SCSI` を使用してディスクを探します (新しいディスクの探索に使用する方法は異なる場合があります)。この場合、次のようになります。
 
 	dmesg | grep SCSI
 	[    0.294784] SCSI subsystem initialized
@@ -153,7 +150,6 @@ Linux VM から使用できるように新しいディスクのパーティシ�
 	8192 inodes per group
 	Superblock backups stored on blocks:
 		32768, 98304, 163840, 229376, 294912, 819200, 884736
-
 	Allocating group tables: done
 	Writing inode tables: done
 	Creating journal (32768 blocks): done
@@ -177,8 +173,8 @@ Linux VM から使用できるように新しいディスクのパーティシ�
 
 ## 次のステップ
 
-- 通常、新しいディスクは、[fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。 
-- 「[Optimize your Linux machine performance (Linux マシン パフォーマンスの最適化)](virtual-machines-linux-optimization.md)」の推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
-- ディスクを追加して記憶域容量を拡大し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。 
+- 通常、新しいディスクは、[fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
+- 「[Azure での Linux VM の最適化](virtual-machines-linux-optimization.md)」の推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
+- ディスクを追加してストレージ容量を拡大し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

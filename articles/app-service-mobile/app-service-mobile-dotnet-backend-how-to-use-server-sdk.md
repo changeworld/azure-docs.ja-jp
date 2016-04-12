@@ -283,7 +283,7 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 
 		config.Routes.MapHttpRoute("CustomAuth", ".auth/login/CustomAuth", new { controller = "CustomAuth" });
 
-上の文字列 "CustomAuth" をログイン操作をホストしているコント ローラーの名前で置き換えます。
+上の文字列 "CustomAuth" をログイン操作をホストしているコントローラーの名前に置き換えます。
 
 >[AZURE.TIP] loginAsync() アプローチを使用することで、サービスの後続の呼び出しごとに認証トークンが添付されます。
 
@@ -461,4 +461,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

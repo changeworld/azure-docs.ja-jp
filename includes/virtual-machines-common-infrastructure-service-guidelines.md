@@ -6,7 +6,7 @@ Azure は、わずかな投資でソリューションの実装に対する具�
 
 この記事は、[Azure 実装ガイドライン](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)に関するブログ投稿の内容を基にしています。基の資料を作成した Santiago Cánepa (Microsoft のアプリケーション開発マネージャー) と Hugo Salcedo (Microsoft のアプリケーション開発マネージャー) に感謝します。
 
-> [AZURE.NOTE] アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
+> [AZURE.NOTE] アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
 
 ## 1\.名前付け規則
 
@@ -140,7 +140,7 @@ Azure Storage は多くの Azure ソリューションにおいて不可欠な�
 
 Azure では 2 種類のストレージ アカウントを使用できます。標準ストレージ アカウントでは、BLOB ストレージ (Azure 仮想マシン ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。Premium Storage は、AlwaysOn クラスター内の SQL Server などの高パフォーマンス アプリケーション用に設計されており、現在は Azure 仮想マシン ディスクのみをサポートします。
 
-ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。Azure ストレージの現在の制限については、「[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)」をご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)」もご覧ください。
+ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。Azure ストレージの現在の制限については、「[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#storage-limits)」をご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」もご覧ください。
 
 Azure で作成される仮想マシンには、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。このため、コンピューターのノードが変更されたことが認識されないとそのディスクのデータが失われる可能性があるため、一時ディスクはシステム リサイクルの間に保持する必要があるデータには適していません。一時ドライブには何も格納しないでください。
 
@@ -149,7 +149,7 @@ BLOB の最大サイズは 1024 ギガバイト (GB) で、それには VHD フ�
 ### ストライピングされたディスク
 データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合に複数の BLOB で単一ボリュームのストレージをバックアップできるので、パフォーマンスが向上します。ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+Azure では、仮想マシンのサイズにより、使用できるデータ ディスクの量と帯域幅が制限されます。詳細については、「[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
@@ -409,15 +409,15 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 ## その他のリソース
 
-[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#storage-limits)
+[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#storage-limits)
 
-[仮想マシンのサイズ](virtual-machines-linux-sizes.md)
+[仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)
 
-[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage-scalability-targets.md)
+[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)
 
 [データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

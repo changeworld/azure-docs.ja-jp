@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="03/29/2016"
    ms.author="sameerch"/>
 
 # PowerApps Enterprise で新しい Dynamics CRM Online API を作成する
 
 > [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/create-api-crmonline.md)
+- [Logic Apps](../articles/connectors/connectors-create-api-crmonline.md)
 - [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-crmonline.md)
 
 組織の (テナント) App Service 環境に Dynamics CRM Online API を追加する
@@ -99,7 +99,7 @@
 
 ## REST API に関するページを参照してください。
 
-[Dynamics CRM Online REST API](../connectors/create-api-crmonline.md) リファレンス。
+[Dynamics CRM Online REST API](../connectors/connectors-create-api-crmonline.md) リファレンス。
 
 
 ## まとめと次のステップ
@@ -122,4 +122,4 @@
 [11]: ./media/powerapps-create-api-crmonline/contoso-aad-app.PNG
 [12]: ./media/powerapps-create-api-crmonline/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
 	ms.topic="hero-article" 
-	ms.date="03/25/2016"
+	ms.date="04/04/2016"
 	ms.author="piyushjo" />
 
 # Cordova/Phonegap 用 Azure Mobile Engagement の使用
@@ -24,7 +24,7 @@
 
 このチュートリアルでは、Mac を使用して空の Cordova アプリを作成してから、Mobile Engagement SDK と統合します。このアプリは、基本的な分析データを収集し、iOS では Apple Push Notification System (APNS)、Android では Google Cloud Messaging (GCM) を使用してプッシュ通知を受信します。このアプリを、テスト用に iOS デバイスまたは Android デバイスにデプロイします。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)を参照してください。
 
 このチュートリアルには、次のものが必要です。
 
@@ -72,13 +72,14 @@
 1. Azure Mobile Engagement Cordova プラグインに変数値を設定しながら、このプラグインをインストールします。
 
 		cordova plugin add cordova-plugin-ms-azure-mobile-engagement    
-			 --variable AZME_IOS_CONNECTION_STRING=<iOS Connection String> 
+     		--variable AZME_IOS_CONNECTION_STRING=<iOS Connection String> 
 	        --variable AZME_IOS_REACH_ICON=... (icon name WITH extension) 
 	        --variable AZME_ANDROID_CONNECTION_STRING=<Android Connection String> 
 			--variable AZME_ANDROID_REACH_ICON=... (icon name WITHOUT extension)       
 	        --variable AZME_ANDROID_GOOGLE_PROJECT_NUMBER=... (From your Google Cloud console for sending push notifications) 
-	        --variable AZME_REDIRECT_URL=... (URL scheme which triggers the app for deep linking)
-	        --variable AZME_ENABLE_LOG=true|false
+	        --variable AZME_ACTION_URL =... (URL scheme which triggers the app for deep linking)
+	        --variable AZME_ENABLE_NATIVE_LOG=true|false
+			--variable AZME_ENABLE_PLUGIN_LOG=true|false
 
 *Android Reach アイコン*: 拡張子も描画可能なプレフィックスも付いていないリソース名を指定する必要があります (例: mynotificationicon)。また、アイコン ファイルは Android プロジェクトにコピーする必要があります (platforms/android/res/drawable)。
 
@@ -89,8 +90,7 @@
 1. Cordova プロジェクトで、**www/js/index.js** を編集して、*deviceReady* イベントが受信された場合に新しいアクティビティを宣言する Mobile Engagement への呼び出しを追加します。
 
 		 onDeviceReady: function() {
-		        app.receivedEvent('deviceready');
-		        AzureEngagement.startActivity("myPage",{});
+		        Engagement.startActivity("myPage",{});
 		    }
 
 2. アプリケーションを実行します。
@@ -155,10 +155,12 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 **www/js/index.js** を編集して、プッシュ通知の要求とハンドラーの宣言を行う Mobile Engagement への呼び出しを追加します。
 
 	 onDeviceReady: function() {
-	        app.receivedEvent('deviceready');
-	        AzureEngagement.registerForPushNotification();
-	        AzureEngagement.onOpenURL(function(_url) { alert(_url); });
-	        AzureEngagement.startActivity("myPage",{});
+           Engagement.initializeReach(  
+	 			// on OpenUrl  
+	 			function(_url) {   
+	 			alert(_url);   
+	 			});  
+			Engagement.startActivity("myPage",{});  
 	    }
 
 ###アプリの実行
@@ -191,7 +193,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 	
 	- キャンペーンの**名前**を指定します。 
 	- **[配信タイプ]** として *[システム通知]* - *[シンプル]* を選択します。
-	- [配信時刻] として *[任意の時刻]* を選択します。
+	- **[配信時刻]** として *[任意の時刻]* を選択します。
 	- プッシュ通知の 1 行目になる **[タイトル]** を指定します。
 	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。 
 
@@ -200,7 +202,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 4. 入力情報を指定してキャンペーンを作成します。**[iOS]**
 
 	- キャンペーンの**名前**を指定します。 
-	- [配信時刻] として *[アプリ外のみ]* を選択します。
+	- **[配信時刻]** として *[アプリ外のみ]* を選択します。
 	- プッシュ通知の 1 行目になる **[タイトル]** を指定します。
 	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。 
  
@@ -210,7 +212,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 
 	![][8]
 
-6. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME REDIRECT URL** 変数の構成時に指定した URL スキームを必ず使用します (例: **myapp://test*)。
+6. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME\_REDIRECT\_URL** 変数の構成時に指定した URL スキームを必ず使用します (例: **myapp://test*)。
 
 7. 最も基本的なキャンペーンの設定が完了しました。もう一度下にスクロールし、**[作成]** ボタンをクリックしてキャンペーンを保存します。
 
@@ -223,9 +225,6 @@ GCM 通知は Android エミュレーターでサポートされているため�
 ##<a id="next-steps"></a>次のステップ
 [Cordova Mobile Engagement SDK で使用できるすべてのメソッドの概要](https://github.com/Azure/azure-mobile-engagement-cordova)
 
-<!-- URLs. -->
-[Mobile Engagement iOS SDK]: http://aka.ms/qk2rnj
-
 <!-- Images. -->
 
 [1]: ./media/mobile-engagement-cordova-get-started/engage-button.png
@@ -235,8 +234,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [6]: ./media/mobile-engagement-cordova-get-started/new-announcement.png
 [8]: ./media/mobile-engagement-cordova-get-started/campaign-content.png
 [10]: ./media/mobile-engagement-cordova-get-started/campaign-activate.png
-
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -298,11 +298,11 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 -	[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)
 -	[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
 -	[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
--	[Azure でのリソース グループのデプロイのトラブルシューティング](../virtual-machines/resource-group-deploy-debug.md)
+-	[Azure でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
 
 
 
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

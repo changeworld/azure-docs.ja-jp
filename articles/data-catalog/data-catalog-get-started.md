@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog データ カタログの概要"
-   description="Azure Data Catalog のシナリオと機能のエンド ツー エンドのチュートリアルです。"
+   pageTitle="Azure Data Catalog データ カタログの概要 | Microsoft Azure"
+   description="Azure Data Catalog のシナリオと機能を紹介するエンド ツー エンドのチュートリアルです。"
    documentationCenter=""
    services="data-catalog"
    authors="dvana"
@@ -258,4 +258,4 @@ T-SQL スクリプトを実行する代わりに、SQL Server Management Studio 
 
 このチュートリアルでは、**Azure Data Catalog** のエンタープライズ データ ソースの登録、注釈、検出、および管理を含む重要な機能について学習しました。これでチュートリアルは完了したので、使用を開始できます。自分やチームが依存するデータ ソースを登録し、カタログを使用する同僚を招待することによって、今すぐ始めることができます。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0406_2016-->

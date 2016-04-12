@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="03/23/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # SQL Data Warehouse の容量制限
@@ -55,7 +55,7 @@
 | Index | テーブルあたりのクラスター化インデックス数 | 1<br><br/>行ストア テーブルと列ストア テーブルの両方に適用されます。|
 | Index | 列ストア インデックスの行グループ内の行数 | 1,024<br/><br/>各列ストア インデックスは、複数の列ストア インデックスとして実装されます。SQL Data Warehouse の列ストア インデックスに 1,024 個の行を挿入した場合、そのすべての行が同じ行グループに入るわけではありません。|
 | Index | クラスター化列ストア インデックスの同時実行ビルド数 | 32<br/><br/>クラスター化列ストア インデックスがすべて別々のテーブルでビルドされる場合に適用されます。1 つのテーブルにつき許可されるクラスター化列ストア インデックスのビルドは、1 つだけです。追加の要求は、キュー内で待機します。|
-| Index | インデックス キーのサイズ | 900 バイト<br/><br/>行ストア インデックスにのみ適用されます。<br/><br/>インデックスの作成時には varchar 列の既存のデータが 900 バイトを超えていない場合でも、最大サイズが 900 バイトを超える、varchar 列のインデックスが作成されることがあります。ただし、その後の列に対する INSERT または UPDATE 操作は、合計サイズが 900 バイトを超えてしまう場合、失敗します。|
+| Index | インデックス キーのサイズ | 900 バイト<br/><br/>行ストア インデックスにのみ適用されます。<br/><br/>インデックスの作成時には varchar 列の既存のデータが 900 バイトを超えていない場合でも、最大サイズが 900 バイトを超えると、varchar 列のインデックスが作成されることがあります。ただし、その後の列に対する INSERT または UPDATE 操作は、合計サイズが 900 バイトを超えてしまう場合、失敗します。|
 | Index | インデックスあたりのキー列数 | 16<br/><br/>行ストア インデックスにのみに適用されます。クラスター化列ストア インデックスには、すべての列が含まれます。|
 | 統計 | 組み合わせ列値のサイズ | 900 バイト |
 | 統計 | 統計オブジェクトあたりの列数 | 32 |
@@ -149,7 +149,7 @@ DMS バッファーの固定幅列では、SQL Server のネイティブ サイ�
 
 nvarchar の実際の定義サイズでは 26 バイトを使用するため、行の定義は 8,060 バイト未満となり、SQL Server ページに収まります。したがって、この行を DMS バッファーに読み込もうとしたときに DMS が失敗したとしても、CREATE TABLE ステートメントは成功します。
 
-````
+```sql
 CREATE TABLE T1
   (
     c0 int NOT NULL,
@@ -162,10 +162,11 @@ CREATE TABLE T1
   )
 WITH ( DISTRIBUTION = HASH (c0) )
 ;
-````
+```
+
 次のステップでは、INSERT を使用すると、テーブルにデータを正常に挿入できることを示します。このステートメントでは、DMS を使用しないで SQL Server にデータを直接読み込むので、DMS バッファーのオーバーフロー エラーは発生しません。Integration Services でもこの行を正常に読み込むことができます。</para>
 
-````
+```sql
 --The INSERT operation succeeds because the row is inserted directly into SQL Server without requiring DMS to buffer the row.
 INSERT INTO T1
 VALUES (
@@ -177,11 +178,11 @@ VALUES (
     N'Each row must fit into the DMS buffer size of 32,768 bytes.',
     N'Each row must fit into the DMS buffer size of 32,768 bytes.'
   )
-````
+```
 
 データの移動方法を説明するための準備として、ディストリビューション列に CustomerKey を使用して 2 つ目のテーブルを作成します。
 
-````
+```sql
 --This second table is distributed on CustomerKey. 
 CREATE TABLE T2
   (
@@ -206,20 +207,20 @@ VALUES (
     N'Each row must fit into the DMS buffer size of 32,768 bytes.',
     N'Each row must fit into the DMS buffer size of 32,768 bytes.'
   )
-````
+```
 両方のテーブルは CustomerKey でディストリビュートされないため、CustomerKey での T1 と T2 との結合は、ディストリビューションに関して互換性がありません。DMS は、少なくとも 1 つの行を読み込み、別のディストリビューションにコピーする必要があります。
 
-````
+```sql
 SELECT * FROM T1 JOIN T2 ON T1.CustomerKey = T2.CustomerKey;
-````
+```
 
 想定どおり、すべての nvarchar 列が埋め込まれると、行のサイズは 32,768 バイトの DMS バッファー サイズより大きくなるため、DMS は結合を実行することができません。次のエラー メッセージが表示されます。
 
-````
+```sql
 Msg 110802, Level 16, State 1, Line 126
 
 An internal DMS error occurred that caused this operation to fail. Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Workers.DmsSqlNativeException, Message: SqlNativeBufferReader.ReadBuffer, error in OdbcReadBuffer: SqlState: , NativeError: 0, 'COdbcReadConnection::ReadBuffer: not enough buffer space for one row | Error calling: pReadConn-&gt;ReadBuffer(pBuffer, bufferOffset, bufferLength, pBytesRead, pRowsRead) | state: FFFF, number: 81, active connections: 8', Connection String: Driver={SQL Server Native Client 11.0};APP=DmsNativeReader:P13521-CMP02\sqldwdms (4556) - ODBC;Trusted_Connection=yes;AutoTranslate=no;Server=P13521-SQLCMP02,1500
-````
+```
 
 
 ## 次のステップ
@@ -232,4 +233,4 @@ An internal DMS error occurred that caused this operation to fail. Details: Exce
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0330_2016------>

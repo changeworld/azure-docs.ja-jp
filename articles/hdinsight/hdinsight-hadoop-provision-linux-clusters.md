@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/21/2016"
+   	ms.date="03/25/2016"
    	ms.author="jgao"/>
 
 
@@ -26,7 +26,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 ##クラスターの種類
 
-現在、HDInsight では、それぞれ特定の機能を提供する一連のコンポーネントを備えた 4 種類のクラスターを提供しています。
+現在、HDInsight では、それぞれ特定の機能を提供する一連のコンポーネントを備えた 5 種類のクラスターを提供しています。
 
 | クラスターの種類 | 用途 |
 | ------------ | ----------------------------- |
@@ -34,6 +34,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 | HBase | NoSQL データ ストレージ |
 | Storm | リアルタイム イベント処理 |
 | Spark (プレビュー) | メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
+| R Server on Spark | R は、さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートしています。 |
 
 各クラスターの種類にはクラスター内のノードの独自の用語と、ノードの種類ごとにノード数および既定の VM サイズがあります。
 
@@ -50,6 +51,25 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 [スクリプト アクション](#customize-clusters-using-script-action)を使用して、Hue や R などの他のコンポーネントをこれらの基本的な種類に追加することができます。
 
+## クラスター レベル
+
+Azure HDInsight は、ビッグ データのクラウド サービスを Standard と [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium) の 2 つのカテゴリで提供します。HDInsight Premium には、R とその他の追加コンポーネントが含まれています。HDInsight Premium は、HDInsight バージョン 3.4 でのみサポートされます。
+
+次の表に、HDInsight クラスターの種類と HDInsight Premium のサポート状況を示します。
+
+| クラスターの種類 | Standard | Premium |
+|--------------|---------------|--------------|
+| Hadoop | あり | あり |
+| Spark | あり | あり |
+| HBase | あり | いいえ |
+| Storm | あり | いいえ |
+| R Server on Spark | いいえ | あり |
+
+HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。次のスクリーンショットは、クラスターの種類を選択するための Azure ポータルの情報を示しています。
+
+![HDInsight Premium の構成](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-type-configuration.png)
+
+
 ## 基本的な構成オプション
 
 HDInsight クラスターを作成する際の基本的な構成オプションを以下に示します。
@@ -63,7 +83,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 
 - **クラスターの種類**
 
-    「[クラスターの種類](#cluster-types)」を参照してください。
+    「[クラスターの種類](#cluster-types)」および「[クラスター レベル](#cluster-tiers)] を参照してください。
 
 - **オペレーティング システム**
 
@@ -88,7 +108,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 	HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。
 
 	- HTTP ユーザー。既定のユーザー名は、Azure ポータルで基本構成を使用する admin です。"クラスター ユーザー" と呼ばれることもあります。
-	- SSH ユーザー (Linux クラスター): SSH を使用してクラスターに接続する際に使用します。「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従ってクラスターを作成した後に、追加の SSH ユーザー アカウントを作成できます。
+	- SSH ユーザー (Linux クラスター): SSH を使用してクラスターに接続する際に使用します。「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従ってクラスターを作成した後に、追加の SSH ユーザー アカウントを作成できます。
 
     >[AZURE.NOTE] Windows ベースのクラスターでは、RDP を使用してクラスターに接続するために使用する RDP ユーザーを作成できます。
 
@@ -182,7 +202,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 
 場合によっては、クラスターへのストレージの追加が必要になることがあります。たとえば、異なる地理的リージョンまたは異なるサービスの複数の Azure Storage アカウントがあるが、それらをすべて HDInsight で分析する必要がある場合などです。
 
-従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。セカンダリ Data Lake ストアの使用の詳細については、「[HDInsight での Windows ベースの Hadoop クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。セカンダリ Data Lake ストアの使用の詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 
 
 ## Hive/Oozie メタストアの使用
@@ -226,7 +246,7 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 ## スクリプト アクションを使用したクラスターのカスタマイズ
 
-追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト アクション**によって呼び出されます。これは、ポータル、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
+追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト アクション**によって呼び出されます。これは、ポータル、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
 
 
@@ -244,4 +264,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM テンプレート](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

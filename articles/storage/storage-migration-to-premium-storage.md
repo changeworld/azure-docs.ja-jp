@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/19/2016"
+    ms.date="03/28/2016"
     ms.author="prkhad"/>
 
 
@@ -45,7 +45,7 @@ Premium Storage の機能の概要については、「[Premium Storage: Azure �
 ### 前提条件
 - Azure サブスクリプションが必要です。サブスクリプションがない場合は、1 か月間の[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプションを作成するか、「[Azure の価格](https://azure.microsoft.com/pricing/)」でさらに多くのオプションを利用することができます。
 - PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページにアクセスしてください。
-- Premium Storage で実行されている Azure VM を使用する予定がある場合は、DS シリーズの VM または GS シリーズの VM を使用する必要があります。DS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
+- Premium Storage で実行される Azure VM を使用する場合は、DS シリーズ、DSv2 シリーズ、または GS シリーズの VM を使用する必要があります。DS シリーズ、DSv2 シリーズ、GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### 考慮事項
 
@@ -146,7 +146,7 @@ VHD の準備が完了したら、次のセクションで説明する手順に�
 VHD を管理するためにストレージ アカウントを作成します。VHD の保存場所を計画する際は、次の点を考慮してください。
 
 - 対象のストレージ アカウントは、アプリケーション要件に応じて Standard Storage または Premium Storage になります。
-- ストレージ アカウントの場所は、最終ステージで作成する DS シリーズまたは GS シリーズの Azure VM と同じにする必要があります。必要に応じて、新しいストレージ アカウントにコピーするか、同じストレージ アカウントの使用を計画することができます。
+- ストレージ アカウントの場所は、最終ステージで作成する DS シリーズ、DSv2 シリーズ、または GS シリーズの Azure VM と同じである必要があります。必要に応じて、新しいストレージ アカウントにコピーするか、同じストレージ アカウントの使用を計画することができます。
 - 次のステージ用に、移行先ストレージ アカウントのストレージ アカウント キーをコピーして保存します。
 - データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持し、IOP の高いディスクを Premium Storage アカウントに移行することもできます。
 
@@ -243,7 +243,7 @@ OS VHD から VM を作成するか、新しい VM にデータ ディスクを�
 
 #### 新しい Azure VM インスタンスに接続するデータ ディスク VHD
 
-データ ディスク VHD をストレージ アカウントにアップロードした後、その VHD を Azure データ ディスクとして登録すると、それを新しい DS シリーズまたは GS シリーズの Azure VM インスタンスに接続できます。
+データ ディスク VHD をストレージ アカウントにアップロードした後、その VHD を Azure データ ディスクとして登録すると、それを DS シリーズ、DSv2 シリーズ、または GS シリーズの新しい Azure VM インスタンスに接続できます。
 
 次の PowerShell コマンドレットを使用して、VHD を Azure データ ディスクとして登録します。VHD のコピー先の完全なコンテナー URL を入力します。
 
@@ -251,9 +251,9 @@ OS VHD から VM を作成するか、新しい VM にデータ ディスクを�
 
 この新しい Azure データ ディスクの名前をコピーして保存します。上記の例では *DataDisk* です。
 
-### Azure DS シリーズまたは GS シリーズの VM を作成する
+### Azure DS シリーズ、DSv2 シリーズ、または GS シリーズの VM を作成する
 
-OS イメージまたは OS ディスクが登録されたら、新しい DS シリーズまたは GS シリーズの VM を作成します。登録したオペレーティング システム イメージまたはオペレーティング システム ディスクの名前を使用します。Premium Storage レベルから VM のタイプを選択します。次の例では、*Standard\_DS2* という VM サイズを使用します。
+OS イメージまたは OS ディスクが登録されたら、DS シリーズ、DSv2 シリーズ、または GS シリーズの新しい VM を作成します。登録したオペレーティング システム イメージまたはオペレーティング システム ディスクの名前を使用します。Premium Storage レベルから VM のタイプを選択します。次の例では、*Standard\_DS2* という VM サイズを使用します。
 
 >[AZURE.NOTE] ディスク サイズを更新し、容量、パフォーマンス要件、使用可能な Azure ディスク サイズに適していることを確認します。
 
@@ -299,7 +299,7 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 
 ### Attach data disk
 
-最後に、データ ディスク VHD を登録した場合は、それらを新しい DS シリーズまたは GS シリーズの Azure VM に接続します。
+最後に、データ ディスク VHD を登録した場合は、それらを DS シリーズ、DSv2 シリーズ、または GS シリーズの新しい Azure VM に接続します。
 
 次の PowerShell コマンドレットを使用して、新しい VM にデータ ディスクに接続し、キャッシュ ポリシーを指定します。次の例では、キャッシュ ポリシーは読み取り専用 (*ReadOnly*) に設定されています。
 
@@ -315,7 +315,7 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 
 現在、Standard Storage ディスクを使用する Azure VM がある場合、それを Premium Storage に移行するには、以下のプロセスに従います。大まかに言えば、移行には次の 2 段階があります。
 -	Standard Storage アカウントから Premium Storage アカウントにディスクを移行する
--	Premium Storage ディスクを使用するために VM サイズを A/D/G から DS または GS に変換する
+-	Premium Storage ディスクを使用するために VM サイズを A/D/G から DS、DSv2、または GS に変換する
 
 さらに、Premium Storage に向けて実行できるさまざまな最適化を理解するには、前のセクションの「考慮事項」を参照してください。移行プロセスは、アプリケーションに適用される最適化に応じて、以下の移行シナリオのいずれかに分類できます。
 
@@ -324,7 +324,7 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 
 #### 準備
 1. 移行先のリージョンで Premium Storage が利用可能であることを確認します。
-2. 使用する新しい VM シリーズを決定します。リージョンでの可用性や自身のニーズに応じて DS シリーズと GS シリーズのどちらかにする必要があります。
+2. 使用する新しい VM シリーズを決定します。リージョンでの可用性や自身のニーズに応じて DS シリーズ、DSv2 シリーズ、GS シリーズのいずれかにする必要があります。
 3. 使用する正確な VM サイズを決定します。VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。たとえば、データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
 4. 移行先のリージョンで Premium Storage アカウントを作成します。これが新しい VM に使用するアカウントです。
 5. 現在の VM の詳細 (ディスクの一覧や対応する VHD BLOB など) を手元に用意します。
@@ -341,7 +341,7 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 4.	Premium Storage アカウントにコピーした OS ディスクの VHD BLOB を使用して、新しい OS ディスクを作成します。これには、"Add-AzureDisk" PowerShell コマンドレットを使用します。
 
     サンプル スクリプト: Add-AzureDisk -DiskName "NewOSDisk1" -MediaLocation "https://newpremiumstorageaccount.blob.core.windows.net/vhds/MyOSDisk.vhd" -OS "Windows"
-5. 次に、上記の OS ディスクとデータ ディスクを使用して、DS シリーズ (または GS シリーズ) の VM を作成します。
+5. 次に、上記の OS ディスクとデータ ディスクを使用して、DS シリーズ (または DSv2 シリーズか GS シリーズ) の VM を作成します。
 
     新しいクラウド サービスを作成して、そのサービス内に新しい VM を作成するためのサンプル スクリプト: New-AzureService -ServiceName "NewServiceName" -Location "East US 2"
 
@@ -680,4 +680,4 @@ OS イメージまたは OS ディスクが登録されたら、新しい DS シ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

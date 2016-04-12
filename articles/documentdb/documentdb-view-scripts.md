@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="03/30/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、ユーザー定義関数の作成と実行
@@ -89,17 +89,19 @@
 
 ## ストアド プロシージャの実行
 
+> [AZURE.WARNING] スクリプト エクスプローラーでのストアド プロシージャの実行は、サーバー側のパーティション分割コレクションではまだサポートされていません。詳細については、「[DocumentDB のデータのパーティション分割と拡大縮小](documentdb-partition-data.md)」をご覧ください。
+
 スクリプト エクスプローラーでは、Azure ポータルからサーバー側のストアド プロシージャを実行できます。
 
-- 新規作成のストアド プロシージャ ブレードを開くと、既定のスクリプト (*プレフィックス*) が提供されます。*プレフィックス* スクリプトまたは独自のスクリプトを実行するには、*ID* と*入力*を追加します。複数のパラメーターを受け取るストアド プロシージャの場合、すべて配列内に入力します (例 *["foo", "bar"]*)。
+- ストアド プロシージャの新規作成ブレードを開くと、既定のスクリプト (*プレフィックス*) が提供されます。*プレフィックス* スクリプトまたは独自のスクリプトを実行するには、*ID* と*入力*を追加します。複数のパラメーターを受け取るストアド プロシージャの場合、すべて配列内に入力する必要があります (例 *["foo", "bar"]*)。
 
 	![スクリプト エクスプローラーの [ストアド プロシージャ] ブレードで入力を追加し、ストアド プロシージャを実行するスクリーンショット](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
 
-- ストアド プロシージャを実行するには、スクリプト エディター ウィンドウ内で **[保存して実行]** コマンドをクリックします。
+- ストアド プロシージャを実行するには、スクリプト エディター ウィンドウ内で **[保存して実行]** をクリックします。
 
-	> [AZURE.NOTE] **[保存して実行]** コマンドを実行すると、実行前にストアド プロシージャが保存されます。つまり、ストアド プロシージャの前回保存されたバージョンが上書きされます。
+	> [AZURE.NOTE] **[保存して実行]** コマンドでは、実行前にストアド プロシージャが保存されます。つまり、ストアド プロシージャの前回保存されたバージョンが上書きされます。
 
-- ストアド プロシージャが正常に実行されると、そのステータスが「*ストアド プロシージャが正常に保存され、実行されました*」となり、返された結果が *[結果]* ウィンドウに入力されます。
+- ストアド プロシージャが正常に実行されると、状態が "*ストアド プロシージャが正常に保存され、実行されました*" になり、返された結果が *[結果]* ウィンドウに入力されます。
 
 	![スクリプト エクスプローラーの [ストアド プロシージャ] ブレードでストアド プロシージャを実行するスクリーンショット](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
 
@@ -109,12 +111,12 @@
 
 ## ポータルの外部のスクリプトを使用する
 
-Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の 1 つです。REST API と[クライアント SDK](documentdb-sdk-dotnet.md) を使用してスクリプトを操作することもできます。REST API ドキュメントには、[REST を利用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を利用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を利用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。[C# を利用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を利用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
+Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の 1 つです。REST API と[クライアント SDK](documentdb-sdk-dotnet.md) を使用してスクリプトを操作することもできます。REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。[C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
 
 ## 次のステップ
 
-DocumentDB のサーバー側プログラミングの詳細については、「[ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」という記事を参照してください。
+DocumentDB のサーバー側プログラミングの詳細については、「[DocumentDB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」をご覧ください。
 
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細について学習する際に便利なリソースです。
+[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

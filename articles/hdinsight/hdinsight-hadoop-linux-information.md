@@ -14,18 +14,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="03/28/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
 
 Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Hadoop を提供します。使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。ここでは、知っておく必要がある特定の違いについて説明します。
 
+##前提条件
+
+このドキュメントの手順の多くでは次のユーティリティを使用するので、これらがシステムにインストールされている必要があります。
+
+* [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します
+* [jq](https://stedolan.github.io/jq/) - JSON ドキュメントの解析に使用します
+
 ## ドメイン名
 
 インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**<clustername>.azurehdinsight.net** または (SSH のみ) **<clustername-ssh>.azurehdinsight.net** です。
 
-内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。クラスター名を見つけるには、Ambari Web UI の __[ホスト]__ ページにアクセスするか、次の方法で、[cURL](http://curl.haxx.se/) と [jq](https://stedolan.github.io/jq/) を利用し、Ambari REST API からホストの一覧を返します。
+内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。クラスター名を見つけるには、Ambari Web UI の __[ホスト]__ ページにアクセスするか、次の方法で Ambari REST API からホストの一覧を返します。
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -196,7 +203,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* __Storm UI__: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
-		1. Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
+		1. Web ブラウザーで \_\___https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
 
 		3. 再調整するトポロジを選択し、__[再調整]__ ボタンをクリックします。再調整の操作が実行されるまでの待ち時間を入力します。
 
@@ -242,8 +249,9 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 ## 次のステップ
 
+* [Windows ベースの HDInsight から Linux ベースへの移行](hdinsight-migrate-from-windows-to-linux.md)
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0330_2016------>

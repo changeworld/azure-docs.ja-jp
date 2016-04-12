@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="12/07/2015" 
+ms.date="03/25/2016" 
 ms.author="adegeo"/>
 
 # Azure におけるロール インスタンスの通信の有効化
@@ -89,7 +89,7 @@ Worker ロールと Web ロールの両方を使用する場合は、エンド�
 ## .NET SDK を使用してエンドポイントにアクセスする方法
 Azure マネージ ライブラリは、実行時に通信できるようロール インスタンスにメソッドを提供します。ロール インスタンス内で実行するコードから、現在のロール インスタンスに関する情報だけでなく、他のロール インスタンスの存在およびそのエンドポイントに関する情報を取得できます。
 
-> [AZURE.NOTE]取得できるのは、自身のクラウド サービスで実行されているロール インスタンスに関する情報と、少なくとも 1 つの内部エンドポイントを定義するロール インスタンスの情報のみです。別のサービスで実行されているロール インスタンスに関するデータは取得することはできません。
+> [AZURE.NOTE] 取得できるのは、自身のクラウド サービスで実行されているロール インスタンスに関する情報と、少なくとも 1 つの内部エンドポイントを定義するロール インスタンスの情報のみです。別のサービスで実行されているロール インスタンスに関するデータは取得することはできません。
 
 ロール インスタンスを取得するには、[Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) プロパティを使用します。まず [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 使用して現在のロール インスタンスに参照を返してから、[Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) プロパティを使用してそのロール自体に参照を返します。
 
@@ -101,7 +101,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 
 **Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。このコレクションには常に、現在のインスタンスが含まれています。ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
 
-> [AZURE.NOTE]Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)を使用すると、実行中のロール インスタンスの情報を取得できます。
+> [AZURE.NOTE] Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)を使用すると、実行中のロール インスタンスの情報を取得できます。
 
 ロール インスタンスの内部エンドポイントのポート番号を判断するには、[InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。[IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。**PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。**PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
 
@@ -120,7 +120,7 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 
 これは、サービス定義で公開されるエンドポイントを取得し、接続のリッスンを開始する worker ロールの例です。
 
-> [AZURE.WARNING]このコードは、デプロイ済みのサービスのみに使用できます。Azure Compute Emulator での実行時に、直接ポート エンドポイントを作成するサービス構成要素 　(**InstanceInputEndpoint** 要素) は無視されます。
+> [AZURE.WARNING] このコードは、デプロイ済みのサービスのみに使用できます。Azure Compute Emulator での実行時に、直接ポート エンドポイントを作成するサービス構成要素 　(**InstanceInputEndpoint** 要素) は無視されます。
 
 ```csharp
 using System;
@@ -242,7 +242,7 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-> [AZURE.NOTE]ロール間の通信の制限は、固定ポートと自動割り当てポートの両方の内部エンドポイントで行うことができます。
+> [AZURE.NOTE] ロール間の通信の制限は、固定ポートと自動割り当てポートの両方の内部エンドポイントで行うことができます。
 
 既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。通信を制限するには、サービス定義ファイル内で、**NetworkTrafficRules** 要素を **ServiceDefinition** 要素に追加する必要があります。
 
@@ -266,7 +266,7 @@ namespace WorkerRole1
 ```
 
 ### シナリオ 2
-**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および WebRole1 から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0330_2016------>

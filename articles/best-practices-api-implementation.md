@@ -937,7 +937,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	処理に時間がかかると考えられる要求は、その要求を送信したクライアントをブロックせずに実行する必要があります。Web API では、要求を検証する初期チェックを実行しし、処理を実行する別のタスクを開始した後、HTTP コード 202 (Accepted) を含む応答メッセージを返すことができます。タスクは、Web API の処理の一環として非同期に実行できます。また、Azure WebJobs (Web API が Azure Websites でホストされている場合) または worker ロール (Web API が Azure クラウド サービスとして実装されている場合) にオフロードすることもできます。
 
-	> [AZURE.NOTE] Azure Websites での WebJobs の使用方法の詳細については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](web-sites-create-web-jobs.md)に関するページをご覧ください。
+	> [AZURE.NOTE] Azure Websites での WebJobs の使用方法の詳細については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](../articles/app-service-web/web-sites-create-web-jobs.md)に関するページをご覧ください。
 
 	Web API では、処理の結果をクライアント アプリケーションに返すためのメカニズムも提供する必要があります。これを実現するには、クライアント アプリケーションが、処理が完了したかどうかを定期的に照会し、結果を取得するためのポーリング メカニズムを提供するか、Web API が操作の完了時に通知を送信できるようにします。
 
@@ -1061,7 +1061,7 @@ Azure には、Web API の公開と管理に使用できる [API Management サ�
 
 これらのタスクの実行方法の詳細については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。Azure API Management サービスでは、独自の REST インターフェイスも提供しています。これにより、Web API の構成プロセスを簡素化するためのカスタム インターフェイスを構築できます。詳細については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 
-> [AZURE.TIP] Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
+> [AZURE.TIP] Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager のルーティング方法](../articles/traffic-manager/traffic-manager-routing-methods.md)」をご覧ください。
 
 > この構造では、Web サイトにカスタム DNS 名を使用している場合に、各 Web サイトの適切な CNAME レコードを、Azure Traffic Manager の Web サイトの DNS 名を指すように構成する必要があります。
 
@@ -1111,7 +1111,7 @@ Visual Studio 2013 と、ASP.NET Web API テンプレートを (Azure クラウ�
 
 このデータは、Microsoft Azure 管理ポータルからリアルタイムで表示できます。Web API の正常性を監視する WebTest を作成することもできます。WebTest では、Web API の指定した URI に定期的な要求を送信し、応答をキャプチャします。正常な応答の定義 (HTTP 状態コード 200 など) を指定し、要求でこの応答が返されない場合に、管理者に送信するアラートを準備できます。必要に応じて、管理者は Web API をホストするサーバーで障害が発生した場合にサーバーを再起動できます。
 
-詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](app-insights-start-monitoring-app-health-usage/)」をご覧ください。
+詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](../articles/application-insights/app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
 
 ### API Management サービスを使用した Web API の監視
 
@@ -1143,13 +1143,13 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - HTTP 状態コードの全一覧と説明については、W3C の Web サイトの「[Status Code Definitions (状態コードの定義)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」をご覧ください。
 - ASP.NET Web API での HTTP 例外の処理の詳細については、Microsoft Web サイトの「[Exception Handling in ASP.NET Web API (ASP.NET Web API での例外処理)](http://www.asp.net/web-api/overview/error-handling/exception-handling)」をご覧ください。
 - Web API でグローバルなエラー処理とログを実装する方法については、Microsoft Web サイトの [Web API でのグローバルなエラー処理](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling)に関する記事をご覧ください。
-- Azure Websites で WebJobs を使用してバックグラウンド操作を実行する方法と例については、Microsoft Web サイトの [Microsoft Azure Websites で WebJobs を使用したバックグラウンド タスクの実行](web-sites-create-web-jobs.md)に関するページをご覧ください。
+- Microsoft Azure Websites で WebJobs を使用してバックグラウンド操作を実行する方法と例については、Microsoft Web サイトの「[Web ジョブでバックグラウンド タスクを実行する](../articles/app-service-web/web-sites-create-web-jobs.md)」をご覧ください。
 - Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users/)」をご覧ください。
 - Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。
 - API Management REST API を使用して、カスタム管理アプリケーションを構築する方法については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
-- Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
-- ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
+- Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager のルーティング方法](../articles/traffic-manager/traffic-manager-routing-methods.md)」をご覧ください。
+- ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](../articles/application-insights/app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

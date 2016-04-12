@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/18/2015"
+	ms.date="03/28/2016"
 	ms.author="tarcher"/>
 
 # MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-dotnet-getting-started.md)
-> - [What Happened](vs-active-directory-dotnet-what-happened.md)
+> - [作業の開始](vs-active-directory-dotnet-getting-started.md)
+> - [変更内容](vs-active-directory-dotnet-what-happened.md)
 
 
 
@@ -171,4 +171,4 @@ Azure Active Directory アプリが更新され、*ディレクトリ データ�
 
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0330_2016------>

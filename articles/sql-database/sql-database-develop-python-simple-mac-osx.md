@@ -23,43 +23,21 @@
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
-
 このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは Mac コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。このドキュメントの補足として、[Mac で Python の使用を開始する](https://www.youtube.com/watch?v=OMpugPTwnTI) ビデオを視聴してください。
 
+## 手順 1: 開発環境を設定する
 
-## 前提条件
+[pymssql Python Driver for SQL Server 使用の前提条件](https://msdn.microsoft.com/library/mt694094.aspx#Mac)
 
-
-- [Python 2.7.6](https://www.python.org/download/releases/2.7.6/)。
-- [FreeTDS](https://github.com/brianb/FreeTDS)
-- [Pymssql](https://github.com/pymssql/pymssql)
-
-### 必要なモジュールのインストール
-
-
-端末を開き、次をインストールします。
-
-**1) Homebrew**: 端末から次のコマンドを実行します。コンピューターに Homebrew package manager がダウンロードされます。
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-**2) FreeTDS:** 端末から次のコマンドを実行します。コンピューターに FreeTDS がダウンロードされます。pymmsql を動かすには FreeTDS が必要です。
-
-    brew install FreeTDS
-
-**3) Pymmsql**: 端末から次のコマンドを実行します。これにより、コンピューターに pymmsql がインストールされます。
-
-    sudo -H pip install pymssql
-
-### SQL Database
+## 手順 2: SQL Database を作成する
 
 「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
 
-## 手順 1. 接続の詳細を取得する
+## 手順 3: 接続の詳細を取得する
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 手順 2. 接続する
+## 手順 4: 接続する
 
 [pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 関数は、SQL Database に接続するために使用します。
 
@@ -67,7 +45,7 @@
 	conn = pymssql.connect(server='yourserver.database.windows.net', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
 
 
-## 手順 3. クエリを実行する
+## 手順 5: クエリを実行する
 
 [Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリを受け取り、[cursor.fetchone()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone) を使用して反復処理できる結果セットを返します。
 
@@ -82,7 +60,7 @@
 	    row = cursor.fetchone()
 
 
-## 手順 4. 行を挿入する
+## 手順 6: 行を挿入する
 
 この例では、[INSERT](https://msdn.microsoft.com/library/ms174335.aspx) ステートメントを安全に実行し、[SQL インジェクション](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) の脆弱性からアプリケーションを保護するパラメーターを渡し、自動生成された[プライマリ キー](https://msdn.microsoft.com/library/ms179610.aspx)値を取得する方法について説明しています。
 
@@ -98,7 +76,7 @@
 	    row = cursor.fetchone()
 
 
-## 手順 5. トランザクションをロールバックする
+## 手順 7: トランザクションをロールバックする
 
 
 このコード例は、以下のトランザクションの使用について示します。
@@ -123,4 +101,4 @@
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0330_2016------>

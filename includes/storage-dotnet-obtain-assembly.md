@@ -1,7 +1,7 @@
-### アセンブリの取得
+### ストレージ クライアント ライブラリ パッケージの入手
 
-NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
+NuGet を利用して、ストレージ クライアント ライブラリ パッケージとその依存関係を入手できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、<a href="http://azure.microsoft.com/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは、`%Program Files%\Microsoft SDKs\Azure\.NET SDK<sdk-version>\ref` ディレクトリにインストールされます。
+ストレージ クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれていますが、常に最新バージョンのクライアント ライブラリを使用できるように、NuGet からストレージ クライアント ライブラリをインストールすることをお勧めします。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0406_2016-->
