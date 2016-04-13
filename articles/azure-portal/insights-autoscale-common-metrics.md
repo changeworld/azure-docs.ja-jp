@@ -51,7 +51,33 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 |メトリックの名前|	単位|
 |---|---|
-|\\Processor(\_Total)\\% Processor Time |Percent| |\\Processor(\_Total)\\% Privileged Time |Percent| |\\Processor(\_Total)\\% User Time |Percent| |\\Processor Information(\_Total)\\Processor Frequency |Count| |\\System\\Processes| Count| |\\Process(\_Total)\\Thread Count| Count| |\\Process(\_Total)\\Handle Count |Count| |\\Memory\\% Committed Bytes In Use |Percent| |\\Memory\\Available Bytes| Bytes| |\\Memory\\Committed Bytes |Bytes| |\\Memory\\Commit Limit| Bytes| |\\Memory\\Pool Paged Bytes| Bytes| |\\Memory\\Pool Nonpaged Bytes| Bytes| |\\PhysicalDisk(\_Total)\\% Disk Time| Percent| |\\PhysicalDisk(\_Total)\\% Disk Read Time| Percent| |\\PhysicalDisk(\_Total)\\% Disk Write Time| Percent| |\\PhysicalDisk(\_Total)\\Disk Transfers/sec |CountPerSecond| |\\PhysicalDisk(\_Total)\\Disk Reads/sec |CountPerSecond| |\\PhysicalDisk(\_Total)\\Disk Writes/sec |CountPerSecond| |\\PhysicalDisk(\_Total)\\Disk Bytes/sec |BytesPerSecond| |\\PhysicalDisk(\_Total)\\Disk Read Bytes/sec| BytesPerSecond| |\\PhysicalDisk(\_Total)\\Disk Write Bytes/sec |BytesPerSecond| |\\PhysicalDisk(\_Total)\\Avg.Disk Queue Length| Count| |\\PhysicalDisk(\_Total)\\Avg.Disk Read Queue Length| Count| |\\PhysicalDisk(\_Total)\\Avg.Disk Write Queue Length |Count| |\\LogicalDisk(\_Total)\\% Free Space| Percent| |\\LogicalDisk(\_Total)\\Free Megabytes| Count|
+|\\Processor(\_Total)\\% Processor Time |Percent|
+|\\Processor(\_Total)\\% Privileged Time |Percent|
+|\\Processor(\_Total)\\% User Time |Percent|
+|\\Processor Information(\_Total)\\Processor Frequency |Count|
+|\\System\\Processes| Count|
+|\\Process(\_Total)\\Thread Count| Count|
+|\\Process(\_Total)\\Handle Count |Count|
+|\\Memory\\% Committed Bytes In Use |Percent|
+|\\Memory\\Available Bytes| Bytes|
+|\\Memory\\Committed Bytes |Bytes|
+|\\Memory\\Commit Limit| Bytes|
+|\\Memory\\Pool Paged Bytes| Bytes|
+|\\Memory\\Pool Nonpaged Bytes| Bytes|
+|\\PhysicalDisk(\_Total)\\% Disk Time| Percent|
+|\\PhysicalDisk(\_Total)\\% Disk Read Time| Percent|
+|\\PhysicalDisk(\_Total)\\% Disk Write Time| Percent|
+|\\PhysicalDisk(\_Total)\\Disk Transfers/sec |CountPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Reads/sec |CountPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Writes/sec |CountPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Bytes/sec |BytesPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Read Bytes/sec| BytesPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Write Bytes/sec |BytesPerSecond|
+|\\PhysicalDisk(\_Total)\\Avg.Disk Queue Length| Count|
+|\\PhysicalDisk(\_Total)\\Avg.Disk Read Queue Length| Count|
+|\\PhysicalDisk(\_Total)\\Avg.Disk Write Queue Length |Count|
+|\\LogicalDisk(\_Total)\\% Free Space| Percent|
+|\\LogicalDisk(\_Total)\\Free Megabytes| Count|
 
 
 

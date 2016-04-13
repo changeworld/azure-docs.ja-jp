@@ -32,6 +32,7 @@ Automation | ARM テンプレートを使用するための [Apache Storm クラ
 ストレージ | WASB および Data Lake Store ストレージ オプションに関する説明の記事 | 2 | 保留中 | [@mumian](https://github.com/mumian) | - 
 パフォーマンス | MapReduce アプリケーションのパフォーマンス チューニング ガイドライン | 1 | 保留中 | [@blackmist](https://github.com/blackmist) | - 
 パフォーマンス | Spark クラスターのパフォーマンス チューニング ガイドライン |1 | 保留中 | [@nitinme](https://github.com/nitinme) | -
+開発 | HDInsight .NET アプリケーションでの非対話型認証 |2| 作成中 | [@mumian](https://github.com/mumian) | [@matt1883](https://github.com/matt1883)
 
 
 ## バックログに関するフィードバックの送信方法
@@ -40,4 +41,4 @@ Automation | ARM テンプレートを使用するための [Apache Storm クラ
 * 下にコメントを追加する。
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/hdinsight/hdinsight-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0330_2016-->
