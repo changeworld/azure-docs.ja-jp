@@ -3,7 +3,7 @@
    description="この記事では、Azure Resource Manager の Powershell を使用して、仮想マシンの OS ドライブのサイズを拡張する方法を示します。"
    services="virtual-machines-windows"
    documentationCenter=""
-   authors="kirpasingh"
+   authors="vturecek"
    manager="roshar"
    editor=""
    tags="azure-resource-manager"/>
