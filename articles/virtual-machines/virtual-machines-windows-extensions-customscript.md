@@ -3,7 +3,7 @@
    description="カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する"
    services="virtual-machines-windows"
    documentationCenter=""
-   authors="kundanap"
+   authors="vturecek"
    manager="timlt"
    editor=""
    tags="azure-resource-manager"/>
