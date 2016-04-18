@@ -3,7 +3,7 @@
    description="ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="toddabel"
+   authors="ms-toddabel"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/04/2016"
+   ms.date="03/30/2016"
    ms.author="toddabel"/>
 
 
@@ -33,9 +33,7 @@
 
 Service Fabric は ETW イベントを出力して、アプリケーションの開発者が、プラットフォームで起こっていることを理解できるようにします。まだ実行していない場合は、[Visual Studio での初めてのアプリケーション作成](service-fabric-create-your-first-application-in-visual-studio.md)に関するページの手順に従ってください。この情報は、アプリケーションを起動して実行し、診断イベント ビューアーにトレース メッセージを表示するのに役立ちます。
 
-1. [診断イベント] ウィンドウが自動的に表示されない場合は、Visual Studio の **[サーバー エクスプローラー]** タブに移動し、**[Service Fabric クラスター]** を右クリックして、コンテキスト メニューの **[診断イベントの表示]** を選択します。
-
-  ![Open the Visual Studio diagnostics events viewer](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/ServerExViewDiagEvents.png)
+1. 診断イベント ウィンドウが自動的に表示されない場合は、Visual Studio の **[表示]** タブに移動し、**[その他のウィンドウ]**、**[診断イベント ビューアー]** の順に選択します。
 
 2. 各イベントには、イベントの送信元のノード、アプリケーション、およびサービスを示す標準的なメタデータ情報があります。イベント ウィンドウの上部にある **[イベントのフィルター処理]** ボックスを使用して、イベントの一覧をフィルター処理することもできます。たとえば、**[ノード名]** または **[サービス名]** でフィルター処理することができます。 また、イベントの詳細を確認する際には、イベント ウィンドウの上部にある **[一時停止]** ボタンを使用して一時停止すると、イベントが失われることなく後で再開できます。
 
@@ -59,7 +57,7 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 
 ## 次のステップ
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。ツールの各オプションや、その設定方法について説明した記事を参照してください。
-* [Azure 診断と Operational Insights を使用して Service Fabric クラスターのログを収集する](service-fabric-diagnostics-how-to-setup-wad-operational-insights.md)
+* [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

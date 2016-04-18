@@ -100,7 +100,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		
 		        static void Main(string[] args)
 		        {
-                    System.Console.WriteLine("The application is running ...");
+		            System.Console.WriteLine("The application is running ...");
 		
 		            var tokenCreds = GetTokenCloudCredentials();
 		            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
@@ -113,13 +113,13 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		            var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
 		            _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
 		
+		            SubmitMapReduceStreamingJob();
 		            SubmitHiveJob();
 		            SubmitPigJob();
 		            SubmitSqoopJob();
 
-                    System.Console.WriteLine("Press ENTER to continue ...");
-                    System.Console.ReadLine();
-                    
+		            System.Console.WriteLine("Press ENTER to continue ...");
+		            System.Console.ReadLine();
 		        }
 		
 		        public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
@@ -144,6 +144,23 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		        {
 		            return new TokenCloudCredentials(subId.ToString(), creds.Token);
 		        }
+		        
+		        private static void SubmitMapReduceStreamingJob()
+		        {
+		        	System.Console.WriteLine("Submitting the MapReduce Streaming job to the cluster...");
+		        	
+		        	var parameters = new MapReduceStreamingJobSubmissionParameters
+		        	{
+		        		Mapper = "cat.exe",
+		        		Reducer = "wc.exe",
+		        		Input = "/example/data/gutenberg/davinci.txt",
+		        		Output = "/example/data/StreamingOutput/wc.txt”,
+		        		Files = new List<string>{"/example/apps/wc.exe","/example/apps/cat.exe"}
+		        	};
+		        	var response = _hdiJobManagementClient.JobManagement.SubmitMapReduceStreamingJob(parameters);
+		        	System.Console.WriteLine("Response status code is " + response.StatusCode);
+		        	System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
+		        }
 		
 		        private static void SubmitHiveJob()
 		        {
@@ -156,13 +173,13 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		                Arguments = args
 		            };
 		
-                    Console.WriteLine("Submitting the Hive job to the cluster...");
-                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
-                    var jobId = jobResponse.JobSubmissionJsonResponse.Id;
-                    Console.WriteLine("Response status code is " + jobResponse.StatusCode);
-                    Console.WriteLine("JobId is " + jobId);
+		            Console.WriteLine("Submitting the Hive job to the cluster...");
+		            var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
+		            var jobId = jobResponse.JobSubmissionJsonResponse.Id;
+		            Console.WriteLine("Response status code is " + jobResponse.StatusCode);
+		            Console.WriteLine("JobId is " + jobId);
 
-                    Console.WriteLine("Waiting for the job completion ...");
+		            Console.WriteLine("Waiting for the job completion ...");
 		
 		            // Wait for job completion
 		            var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
@@ -178,14 +195,14 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 		            var output = (jobDetail.ExitValue == 0)
 		                ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
 		                : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
-                        
-                    Console.WriteLine("Job output is: ");
-                    
-                    using (var reader = new StreamReader(output, Encoding.UTF8))
-                    {
-                        string value = reader.ReadToEnd();
-                        Console.WriteLine(value);
-                    }
+		            
+		            Console.WriteLine("Job output is: ");
+		            
+		            using (var reader = new StreamReader(output, Encoding.UTF8))
+		            {
+		            	string value = reader.ReadToEnd();
+		            	Console.WriteLine(value);
+		            }
 		        }
                 
    		        private static void SubmitPigJob()
@@ -282,4 +299,4 @@ Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig ス
 
 [apache-hive]: http://hive.apache.org/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

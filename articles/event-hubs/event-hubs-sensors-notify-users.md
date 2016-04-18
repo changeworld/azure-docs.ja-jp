@@ -25,7 +25,7 @@
 
 ![][2]
 
-問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。[Azure Event Hub][] または [Azure IoT Hub][] を使用して、[Dynamics AX][] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。それには、[Azure Websites][]、[SQL Azure][]、[HDInsight][]、[Cortana Analytics Suite][]、[IoT Suite][]、[Logic Apps][]、[Azure Notification Hubs][] など強力なツールを使用することができます。ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。ほんの少しのコードでそれを行う方法を示すために、[AppToNotifyUsers][] という新しいサンプルを用意しました。オプションには、電子メール (SMTP)、SMS、電話などがあります。
+問題は、静的なレポートを確認するための時間ができたときではなく、特定の条件が満たされたときに、重要な情報をいかに取得するかということです。[Azure Event Hub][] または [Azure IoT Hub][] を使用して、[Dynamics AX][] などのデバイスまたはエンタープライズ アプリケーションからデータを受信する場合、それらのデータを処理する方法としていくつかのオプションがあります。受信したデータは Web サイトで確認できるほか、分析し、格納することができ、さらに、それらのデータを使用して適切な作業を行うコマンドをトリガーすることもできます。それには、[Azure Websites][]、[SQL Azure][]、[HDInsight][]、[Cortana Intelligence Suite][]、[IoT Suite][]、[Logic Apps][]、[Azure Notification Hubs][] など強力なツールを使用することができます。ただし、そのデータを誰かに最小限のオーバーヘッドで送信することが最も重要である場合があります。ほんの少しのコードでそれを行う方法を示すために、[AppToNotifyUsers][] という新しいサンプルを用意しました。オプションには、電子メール (SMTP)、SMS、電話などがあります。
 
 ## アプリケーション構造
 
@@ -33,7 +33,7 @@
 
 Azure Event Hub または IoT Hub にプッシュする重大なイベントがあるという想定で説明を始めます。ハブへのアクセス権を有し、接続文字列がわかっている限り、どのハブも使用できます。
 
-Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub][] (**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが重大レベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
+Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub]\(**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが重大レベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
 
 **AppToNotify** は起動すると、構成ファイル (App.config) を読み取って、アラートを受信する Event Hub の URL と資格情報を取得します。次に、その Event Hub を継続的に監視して、それを介して渡されたメッセージがないかを確認するプロセスを生成します。Event Hub または IoT Hub の URL および有効な資格情報にアクセスできる限り、この Event Hubs リーダー コードは何が入ってきたかを継続的に読み取ることができます。アプリケーションはまた、起動中に、使用されるメッセージング サービス (電子メール、SMS、電話) の URL と資格情報、送信者の名前とアドレス、および受信者のリストを読み取ります。
 
@@ -74,7 +74,7 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [Azure Websites]: https://azure.microsoft.com/services/app-service/web/
 [SQL Azure]: https://azure.microsoft.com/services/sql-database/
 [HDInsight]: https://azure.microsoft.com/services/hdinsight/
-[Cortana Analytics Suite]: http://www.microsoft.com/server-cloud/cortana-analytics-suite/Overview.aspx?WT.srch=1&WT.mc_ID=SEM_lLFwOJm3&bknode=BlueKai
+[Cortana Intelligence Suite]: http://www.microsoft.com/server-cloud/cortana-analytics-suite/Overview.aspx?WT.srch=1&WT.mc_ID=SEM_lLFwOJm3&bknode=BlueKai
 [IoT Suite]: https://azure.microsoft.com/solutions/iot-suite/
 [Logic Apps]: https://azure.microsoft.com/services/app-service/logic/
 [Azure Notification Hubs]: https://azure.microsoft.com/services/notification-hubs/
@@ -83,4 +83,4 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

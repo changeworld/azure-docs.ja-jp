@@ -13,7 +13,7 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="02/19/2016" 
 	ms.author="mimig"/>
 
@@ -51,4 +51,4 @@ DocumentDB データベースの作成方法を学習したら、次の手順は
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-sql-queries)することができます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

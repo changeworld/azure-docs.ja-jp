@@ -65,7 +65,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 アプリケーションの **server.js** ファイルの先頭に次のコードを追加します。
 
-    var azure = require('azure-storage');
+	var azure = require('azure-storage');
 
 ## Azure のストレージ接続文字列の設定
 
@@ -77,27 +77,27 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 次のコードは、**TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
-    var tableSvc = azure.createTableService();
+	var tableSvc = azure.createTableService();
 
 **createTableIfNotExists** の呼び出しにより、指定した名前の新しいテーブルが (まだ存在していない場合は) 作成されます。次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
 
-    tableSvc.createTableIfNotExists('mytable', function(error, result, response){
-		if(!error){
-			// Table exists or created
-		}
+	tableSvc.createTableIfNotExists('mytable', function(error, result, response){
+	  if(!error){
+	    // Table exists or created
+	  }
 	});
 
-新しいテーブルを作成する場合、`result`は `true` になります。テーブルが既に存在する場合は `false` になります。`response`には要求に関する情報が含まれます。
+新しいテーブルを作成する場合、`result.created`は `true` になります。テーブルが既に存在する場合は `false` になります。`response`には要求に関する情報が含まれます。
 
 ### フィルター
 
 オプションのフィルター操作は、**TableService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
-		function handle (requestOptions, next)
+	function handle (requestOptions, next)
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-		function (returnObject, finalCallback, next)
+	function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
@@ -130,19 +130,19 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 **entityGenerator** を使用してエンティティを作成することもできます。次の例では、**entityGenerator** を使用して同じタスク エンティティを作成しています。
 
 	var entGen = azure.TableUtilities.entityGenerator;
-    var task = {
+	var task = {
 	  PartitionKey: entGen.String('hometasks'),
-      RowKey: entGen.String('1'),
-      description: entGen.String('take out the trash'),
-      dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
-    };
+	  RowKey: entGen.String('1'),
+	  description: entGen.String('take out the trash'),
+	  dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
+	};
 
 エンティティをテーブルに追加するには、エンティティ オブジェクトを **insertEntity** メソッドに渡します。
 
 	tableSvc.insertEntity('mytable',task, function (error, result, response) {
-		if(!error){
-			// Entity inserted
-		}
+	  if(!error){
+	    // Entity inserted
+	  }
 	});
 
 操作が成功した場合、`result` には挿入されたレコードの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) が含まれ、`response` には操作に関する情報が含まれます。
@@ -159,7 +159,7 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **updateEntity** - 既存のエンティティを置換することで更新します。
+* **replaceEntity** - 既存のエンティティを置換することで更新します。
 
 * **mergeEntity** - 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
 
@@ -167,13 +167,13 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 * **insertOrMergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-次の例に、**updateEntity** を使用してエンティティを更新する方法を示します。
+次の例に、**replaceEntity** を使用してエンティティを更新する方法を示します。
 
-	tableSvc.updateEntity('mytable', updatedTask, function(error, result, response){
-      if(!error) {
-        // Entity updated
-      }
-    });
+	tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
+	  if(!error) {
+	    // Entity updated
+	  }
+	});
 
 > [AZURE.NOTE] 既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
 >
@@ -182,10 +182,10 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 > 2. エンティティで更新操作を実行する場合は、以前に取得した ETag 情報を新しいエンティティに追加します。次に例を示します。
 >
 >     `entity2['.metadata'].etag = currentEtag;`
->    
+>
 > 3. 更新操作を実行します。アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す `error` が返されます。
 
-**updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用します。
+**replaceEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用します。
 
 成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
 
@@ -195,7 +195,7 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
  次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
-    var task1 = {
+	var task1 = {
 	  PartitionKey: {'_':'hometasks'},
 	  RowKey: {'_': '1'},
 	  description: {'_':'Take out the trash'},
@@ -239,11 +239,11 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 **PartitionKey** および **RowKey** に基づいて特定のエンティティを返すには、**retrieveEntity** メソッドを使用します。
 
-    tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
+	tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
 	  if(!error){
 	    // result contains the entity
 	  }
-    });
+	});
 
 この操作を完了すると、`result` にはエンティティが含まれます。
 
@@ -296,9 +296,9 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 	  RowKey: {'_': '1'}
 	};
 
-    tableSvc.deleteEntity('mytable', task, function(error, response){
+	tableSvc.deleteEntity('mytable', task, function(error, response){
 	  if(!error) {
-		// Entity deleted
+	    // Entity deleted
 	  }
 	});
 
@@ -308,7 +308,7 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
-    tableSvc.deleteTable('mytable', function(error, response){
+	tableSvc.deleteTable('mytable', function(error, response){
 		if(!error){
 			// Table deleted
 		}
@@ -379,7 +379,7 @@ SAS の保有者がテーブルにアクセスするときに必要なホスト�
 
 	sharedTableService.queryEntities(query, null, function(error, result, response) {
 	  if(!error) {
-		// result contains the entities
+	    // result contains the entities
 	  }
 	});
 
@@ -391,36 +391,30 @@ SAS のアクセス ポリシーを設定するために、アクセス制御リ
 
 ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
-	var sharedAccessPolicy = [
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user1'
+	var sharedAccessPolicy = {
+	  user1: {
+	    Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  },
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.TableUtilities.SharedAccessPermissions.ADD,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user2'
+	  user2: {
+	    Permissions: azure.TableUtilities.SharedAccessPermissions.ADD,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  }
-	];
+	};
 
 次の例では、現在の **hometasks** テーブルの ACL を取得し、**setTableAcl** を使用して新しいポリシーを追加しています。この手法で以下を実行できます。
 
+	var extend = require('extend');
 	tableSvc.getTableAcl('hometasks', function(error, result, response) {
-      if(!error){
-		//push the new policy into signedIdentifiers
-		result.signedIdentifiers.push(sharedAccessPolicy);
-		tableSvc.setTableAcl('hometasks', result, function(error, result, response){
-	  	  if(!error){
-	    	// ACL set
-	  	  }
-		});
+    if(!error){
+	    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+	    tableSvc.setTableAcl('hometasks', newSignedIdentifiers, function(error, result, response){
+	      if(!error){
+	        // ACL set
+	      }
+	    });
 	  }
 	});
 
@@ -448,4 +442,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Table サービスを使用する Node.js Web アプリ]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

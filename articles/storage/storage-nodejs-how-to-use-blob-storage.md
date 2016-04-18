@@ -82,14 +82,14 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次のコード例では、'mycontainer' という名前の新しいコンテナーを作成します。
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
-      if(!error){
-        // Container exists and allows
-        // anonymous read access to blob
-        // content and metadata within this container
-      }
+	    if(!error){
+	      // Container exists and allows
+	      // anonymous read access to blob
+	      // content and metadata within this container
+	    }
 	});
 
-コンテナーが新規に作成された場合、`result` は true です。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
+コンテナーが新規に作成された場合、`result.created` は true です。コンテナーが既に存在する場合は、`result.created` は false になります。`response` には、コンテナーの ETag 情報を含む、操作に関する情報が含まれます。
 
 ### コンテナーのセキュリティ
 
@@ -101,17 +101,17 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 次のコード例では、アクセス レベルを **blob** に設定する方法を示します。
 
-    blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
-      if(!error){
-        // Container exists and is private
-      }
+	blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
+	    if(!error){
+	      // Container exists and is private
+	    }
 	});
 
 代わりに、**setContainerAcl** を使用してアクセス レベルを指定することによって、コンテナーのアクセス レベルを変更できます。次のコード例では、アクセス レベルを container に変更します。
 
-    blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, 'container' /* publicAccessLevel*/, function(error, result, response){
+	blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, {publicAccessLevel : 'container'} /* publicAccessLevel*/, function(error, result, response){
 	  if(!error){
-		// Container access level set to 'container'
+	    // Container access level set to 'container'
 	  }
 	});
 
@@ -121,11 +121,11 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
-		function handle (requestOptions, next)
+	function handle (requestOptions, next)
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-		function (returnObject, finalCallback, next)
+	function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
@@ -136,7 +136,7 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 ## コンテナーに BLOB をアップロードする
 
-BLOB はブロックベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB には、ブロック BLOB、ページ BLOB、追加 BLOB の 3 種類があります。ブロック BLOB を使用すると、大規模なデータをより効率的にアップロードできます。追加 BLOB は、追加操作用に最適化されています。ページ BLOB は、読み取りと書き込み操作用に最適化されています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### ブロック blob
 
@@ -160,6 +160,49 @@ BLOB はブロックベースまたはページ ベースのいずれにもで�
 
 これらのメソッドによって返される `result` には、BLOB の **ETag** など、操作に関する情報が含まれます。
 
+### 追加 BLOB
+
+データを新しい追加 BLOB にアップロードするには、以下のメソッドを使用します。
+
+* **createAppendBlobFromLocalFile** - 新しい追加 BLOB を作成し、ファイルの内容をアップロードします。
+
+* **createAppendBlobFromStream** - 新しい追加 BLOB を作成し、ストリームの内容をアップロードします。
+
+* **createAppendBlobFromText** - 新しい追加 BLOB を作成し、文字列の内容をアップロードします。
+
+* **createWriteStreamToNewAppendBlob** - 新しい追加 BLOB を作成してから、その BLOB に書き込むストリームを提供します。
+
+次のコード例では、**test.txt** ファイルの内容を **myappendblob** にアップロードします。
+
+	blobSvc.createAppendBlobFromLocalFile('mycontainer', 'myappendblob', 'test.txt', function(error, result, response){
+	  if(!error){
+	    // file uploaded
+	  }
+	});
+
+既存の追加 BLOB にブロックを追加するには、以下のメソッドを使用します。
+
+* **appendFromLocalFile** - 既存の追加 BLOB にファイルの内容を追加します。
+
+* **appendFromStream** - 既存の追加 BLOB にストリームの内容を追加します。
+
+* **appendFromText** - 既存の追加 BLOB に文字列の内容を追加します。
+
+* **appendBlockFromStream** - 既存の追加 BLOB にストリームの内容を追加します。
+
+* **appendBlockFromText** - 既存の追加 BLOB に文字列の内容を追加します。
+
+> [AZURE.NOTE] appendFromXXX API では、不要なサーバー呼び出しを回避するために、Fail Fast に対するクライアント側検証が実行されますが、appendBlockFromXXX では実行されません。
+
+次のコード例では、**test.txt** ファイルの内容を **myappendblob** にアップロードします。
+
+	blobSvc.appendFromText('mycontainer', 'myappendblob', 'text to be appended', function(error, result, response){
+	  if(!error){
+	    // text appended
+	  }
+	});
+
+
 ### ページ blob
 
 データをページ blob にアップロードするには、以下のメソッドを使用します。
@@ -172,7 +215,7 @@ BLOB はブロックベースまたはページ ベースのいずれにもで�
 
 * **createWriteStreamToExistingPageBlob** - 既存のページ blob への書き込みストリームを提供します。
 
-* **createWriteStreamToNewPageBlob** - 新しい BLOB を作成してから、この BLOB に書き込むストリームを提供します。
+* **createWriteStreamToNewPageBlob** - 新しいページ BLOB を作成してから、その BLOB に書き込むストリームを提供します。
 
 次のコード例では、**test.txt** ファイルの内容を **mypageblob** にアップロードします。
 
@@ -182,16 +225,16 @@ BLOB はブロックベースまたはページ ベースのいずれにもで�
 	  }
 	});
 
-> [AZURE.NOTE] ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
+> [AZURE.NOTE] ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーが発生します。
 
 ## コンテナー内の BLOB を一覧表示する
 
 コンテナー内の BLOB を一覧表示するには、**listBlobsSegmented** メソッドを使用します。特定のプレフィックスと共に BLOB を返す必要がある場合は、**listBlobsSegmentedWithPrefix** を使用します。
 
-    blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response){
-      if(!error){
-        // result.entries contains the entries
-        // If not all blobs were returned, result.continuationToken has the continuation token.
+	blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response){
+	  if(!error){
+	      // result.entries contains the entries
+	      // If not all blobs were returned, result.continuationToken has the continuation token.
 	  }
 	});
 
@@ -211,7 +254,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 次のコード例は、**getBlobToStream** を使用して **myblob** BLOB の内容をダウンロードし、ストリームを使用して **output.txt** ファイルに格納する方法を示しています。
 
-    var fs = require('fs');
+	var fs = require('fs');
 	blobSvc.getBlobToStream('mycontainer', 'myblob', fs.createWriteStream('output.txt'), function(error, result, response){
 	  if(!error){
 	    // blob retrieved
@@ -224,7 +267,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 最後に、BLOB を削除するには、**deleteBlob** を呼び出します。次のコード例では、**myblob** という名前の BLOB を削除します。
 
-    blobSvc.deleteBlob(containerName, 'myblob', function(error, response){
+	blobSvc.deleteBlob(containerName, 'myblob', function(error, response){
 	  if(!error){
 		// Blob has been deleted
 	  }
@@ -240,12 +283,12 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 ### ETag
 
-ETag は、複数のクライアントまたはインスタンスからの BLOB への同時書き込みを許可する必要がある場合に使用してください。ETag を使用すると、最初の読み取りまたは作成以降にコンテナーまたは BLOB が変更されているかどうかを確認できることから、別のクライアントまたはプロセスによってコミットされた変更の上書きを回避できます。
+ETag は、複数のクライアントまたはインスタンスからのブロック BLOB またはページ BLOB への同時書き込みを許可する必要がある場合に使用してください。ETag を使用すると、最初の読み取りまたは作成以降にコンテナーまたは BLOB が変更されているかどうかを確認できることから、別のクライアントまたはプロセスによってコミットされた変更の上書きを回避できます。
 
 ETag の条件は、オプションの `options.accessConditions` パラメーターを使用して設定できます。次のコード例では、BLOB が既に存在し、`etagToMatch` によって ETag 値が含まれる場合に、**test.txt** ファイルのみをアップロードします。
 
-	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { 'if-match': etagToMatch} }, function(error, result, response){
-      if(!error){
+	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { EtagMatch: etagToMatch} }, function(error, result, response){
+	    if(!error){
 	    // file uploaded
 	  }
 	});
@@ -319,36 +362,30 @@ SAS のアクセス ポリシーを設定するために、アクセス制御リ
 
 ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次のコード例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
-	var sharedAccessPolicy = [
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user1'
+	var sharedAccessPolicy = {
+	  user1: {
+	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  },
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.BlobUtilities.SharedAccessPermissions.WRITE,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user2'
+	  user2: {
+	    Permissions: azure.BlobUtilities.SharedAccessPermissions.WRITE,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  }
-	];
+	};
 
 次のコード例では、**mycontainer** の現在の ACL を取得してから、**setBlobAcl** を使用して新しいポリシーを追加しています。この手法で以下を実行できます。
 
+	var extend = require('extend');
 	blobSvc.getBlobAcl('mycontainer', function(error, result, response) {
-      if(!error){
-		//push the new policy into signedIdentifiers
-		result.signedIdentifiers.push(sharedAccessPolicy);
-		blobSvc.setBlobAcl('mycontainer', result, function(error, result, response){
-	  	  if(!error){
-	    	// ACL set
-	  	  }
-		});
+	  if(!error){
+	    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+	    blobSvc.setBlobAcl('mycontainer', newSignedIdentifiers, function(error, result, response){
+	      if(!error){
+	        // ACL set
+	      }
+	    });
 	  }
 	});
 
@@ -378,4 +415,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

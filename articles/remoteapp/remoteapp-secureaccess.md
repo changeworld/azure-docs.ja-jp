@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="01/12/2016" 
+    ms.date="04/05/2016" 
     ms.author="elizapo" />
 
 # Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護
@@ -44,7 +44,7 @@ Azure RemoteApp 管理者は、Azure AD Premium で使用可能な機能を用�
 ### Azure RemoteApp に対する条件付きアクセスの設定方法
 ここでは、ユーザーが企業ネットワークの外部にいる場合、Azure RemoteApp 管理者は環境へのアクセスをブロックするシナリオ例について説明します。
 
->[AZURE.NOTE]Azure AD が Premium レベルにアップグレード済みで、1 つ以上の Azure RemoteApp コレクションを作成済みであることを前提とします。
+>[AZURE.NOTE] Azure AD が Premium レベルにアップグレード済みで、1 つ以上の Azure RemoteApp コレクションを作成済みであることを前提とします。
 
 1.	Azure ポータルで、**[Active Directory]** タブをクリックします。次に、構成するディレクトリをクリックします。
 
@@ -110,4 +110,4 @@ Azure RemoteApp では、最初に VNet を構成してから、コレクショ�
 ## 完全なソリューション
 以下の図は、エンド ユーザーからバックエンド リソースへの Azure RemoteApp (ARA) 経由のセキュリティで保護されたアクセス チャネルが構築された完全なソリューションを示しています。![セキュリティで保護された Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ステージ 1 では、ユーザーを選択し、ARA へのアクセス方法を制御するアクセス規則を作成しました。この例では、企業ネットワークから作業を行っているユーザーに対してのみアクセスを許可しています。非準拠ユーザーは、ARA 環境にはまったくアクセスすることはできません。"ステージ 2" では、制御下の VNet/VPN 構成でのみバックエンド リソースを公開しました。Azure RemoteApp は同じ VNet 内に配置されています。最終的に、リソースは ARA 環境を介してのみアクセスできます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

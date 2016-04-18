@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/07/2016"
+    ms.date="04/05/2016"
     ms.author="elizapo" />
 
 
@@ -49,4 +49,4 @@
 
 ご質問がある場合、または特別なサポートが必要な場合は、[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help) に電子メールをお送りください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0406_2016-->

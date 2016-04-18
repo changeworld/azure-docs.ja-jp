@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="04/05/2016"
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -66,84 +66,7 @@ WebPI は月次の更新プログラムを受け取ります。PowerShell ギャ
 
 ##クラスターの作成
 
-HDInsight クラスターを使用するには、Azure ストレージ アカウントに Azure リソース グループと BLOB コンテナーが必要です。
-
-- Azure リソース グループは、Azure リソース用の論理的なコンテナーです。Azure リソース グループと HDInsight クラスターを同じ場所にする必要はありません。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
-- HDInsight は、Azure ストレージ アカウントの BLOB コンテナーを既定のファイル システムとして使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントとストレージ コンテナーが必要です。既定のストレージ アカウントと HDInsight クラスターは、同じ場所に存在する必要があります。
-
-[AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
-
-**Azure に接続するには**
-
-	Login-AzureRmAccount
-	Get-AzureRmSubscription  # list your subscriptions and get your subscription ID
-	Select-AzureRmSubscription -SubscriptionId "<Your Azure Subscription ID>"
-
-複数の Azure サブスクリプションがある場合は、**Select-AzureRMSubscription** が呼び出されます。
-	
-**新しいリソース グループを作成するには**
-
-	New-AzureRmResourceGroup -name <New Azure Resource Group Name> -Location "<Azure Location>"  # For example, "EAST US 2"
-
-**Azure ストレージ アカウントを作成するには**
-
-	New-AzureRmStorageAccount -ResourceGroupName <Azure Resource Group Name> -Name <Azure Storage Account Name> -Location "<Azure Location>" -Type <AccountType> # account type example: Standard_LRS for zero redundancy storage
-	
-**Standard\_ZRS** は Azure テーブルをサポートしていないので使用しないでください。HDInsight はログ記録に Azure テーブルを使用します。ストレージ アカウントの種類の一覧については [https://msdn.microsoft.com/library/azure/hh264518.aspx](https://msdn.microsoft.com/library/azure/hh264518.aspx) を参照してください。
-
-[AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
-
-
-Azure ポータルを使用した Azure ストレージ アカウントの作成については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
-
-既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
-
-	# List Storage accounts for the current subscription
-	Get-AzureRmStorageAccount
-	# List the keys for a Storage account
-	Get-AzureRmStorageAccountKey -ResourceGroupName <Azure Resource Group Name> -name $storageAccountName <Azure Storage Account Name>
-
-ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アクセス キーの表示、コピーおよび再生成」セクションを参照してください。
-
-**Azure Storage コンテナーを作成するには**
-
-Azure PowerShell では、HDInsight の作成プロセス中に BLOB コンテナーを作成することはできません。コンテナーは次のスクリプトを使って作成します。
-
-	$resourceGroupName = "<AzureResoureGroupName>"
-	$storageAccountName = "<Azure Storage Account Name>"
-	$storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccount |  %{ $_.Key1 }
-	$containerName="<AzureBlobContainerName>"
-
-	# Create a storage context object
-	$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-
-	# Create a Blob storage container
-	New-AzureStorageContainer -Name $containerName -Context $destContext
-
-**クラスターを作成するには**
-
-ストレージ アカウントを用意して、BLOB コンテナーを準備したら、クラスターを作成する準備は整いました。
-
-	$resourceGroupName = "<AzureResoureGroupName>"
-
-	$storageAccountName = "<Azure Storage Account Name>"
-	$containerName = "<AzureBlobContainerName>"
-
-	$clusterName = "<HDInsightClusterName>"
-	$location = "<AzureDataCenter>"
-	$clusterNodes = <ClusterSizeInNodes>
-
-	# Get the Storage account key
-	$storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName | %{ $_.Key1 }
-
-	# Create a new HDInsight cluster
-	New-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName `
-		-ClusterName $clusterName `
-		-Location $location `
-		-DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-		-DefaultStorageAccountKey $storageAccountKey `
-		-DefaultStorageContainer $containerName  `
-		-ClusterSizeInNodes $clusterNodes
+「[Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)」をご覧ください。
 
 ##クラスターの一覧表示
 現在のサブスクリプションにあるクラスターすべてを一覧表示するには次のコマンドを使用します。
@@ -332,4 +255,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

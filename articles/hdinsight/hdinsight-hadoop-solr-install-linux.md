@@ -46,7 +46,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
 
 このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] Azure PowerShell、HDInsight .NET SDK または Azure リソース マネージャーのテンプレートは、スクリプト アクションを適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -307,4 +307,4 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

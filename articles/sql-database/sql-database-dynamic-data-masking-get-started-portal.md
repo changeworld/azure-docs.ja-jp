@@ -19,7 +19,7 @@
 # SQL Database 動的データ マスクの使用 (Azure クラシック ポータル)
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure Portal](sql-database-dynamic-data-masking-get-started.md)
+- [動的データ マスク - Azure ポータル](sql-database-dynamic-data-masking-get-started.md)
 
 ## 概要
 
@@ -88,6 +88,10 @@ Azure クラシック ポータルの [監視とセキュリティ] タブでデ
 9. **[保存]** をクリックして、新しいマスク ルールまたは更新されたマスク ポリシーを保存します。
 
 
+## Transact-SQL ステートメントを使用したデータベースの動的データ マスクの設定
+
+「[Dynamic Data Masking (動的データ マスク)](https://msdn.microsoft.com/library/mt130841.aspx)」をご覧ください。
+
 ## Powershell コマンドレットを使用して、データベースの動的データ マスクを設定する
 
 「[Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)」をご覧ください。
@@ -96,4 +100,4 @@ Azure クラシック ポータルの [監視とセキュリティ] タブでデ
 
 「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="03/28/2016"
    ms.author="sahajs;barbkess"/>
 
 # SQL Data Warehouse でのデータベースの障害からの復旧
 
-geo 復元機能を利用すると、geo 冗長バックアップからデータベースを復元して新しいデータベースを作成できます。データベースは任意の Azure リージョンの任意のサーバーに作成できます。ソースとして geo 冗長バックアップが使用されるため、障害によってデータベースにアクセスできない場合でも、それを使用してデータベースを復旧できます。geo 復元は、障害からの復旧以外に、データベースを別のサーバーやリージョンに移行またはコピーするなど、他のシナリオにも使用できます。
+geo 復元機能を利用すると、geo 冗長バックアップからデータベースを復元して新しいデータベースを作成できます。データベースは任意の Azure リージョンの任意のサーバーに作成できます。geo リストアではソースとして geo 冗長バックアップが使用されるため、障害によってデータベースにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。geo 復元は、障害からの復旧以外に、データベースを別のサーバーやリージョンに移行またはコピーするなど、他のシナリオにも使用できます。
 
 
 ## 復旧を開始するタイミング
@@ -43,14 +43,14 @@ geo 復元機能を利用すると、geo 冗長バックアップからデータ
 ### PowerShell
 Azure PowerShell を使用して、プログラムでデータベースの復旧を実行します。Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。Get-Module -ListAvailable -Name Azure を実行することで、バージョンを確認できます。この記事は、Microsoft Azure PowerShell バージョン 1.0.4 に基づいています。
 
-データベースを復旧するには、[Start-AzureSqlDatabaseRecovery][] コマンドレットを使用します。
+データベースを復旧するには、[Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 3. 復元するデータベースを含むサブスクリプションを選択します。
 4. 復旧するデータベースを取得します。
 5. データベースの復旧要求を作成します。
-6. 復旧の進行状況を監視します。
+6. geo リストアされたデータベースの状態を確認します。
 
 ```Powershell
 
@@ -59,17 +59,17 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 
 # Get the database you want to recover
-$Database = Get-AzureRmSqlRecoverableDatabase -ServerName "<YourServerName>" –DatabaseName "<YourDatabaseName>"
+$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$RecoveryRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourSourceServerName>" -SourceDatabase $Database -TargetDatabaseName "<NewDatabaseName>" -TargetServerName "<YourTargetServerName>"
+$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID
 
-# Monitor progress of recovery operation
-Get-AzureSqlDatabaseOperation -ServerName "<YourTargetServerName>" –OperationGuid $RecoveryRequest.RequestID
+# Verify that the geo-restored database is online
+$GeoRestoredDatabase.status
 
 ```
 
-サーバーが foo.database.windows.net の場合は、上の PowerShell コマンドレットで -ServerName として "foo" を使用してください。
+>[AZURE.NOTE] サーバーが foo.database.windows.net の場合、上記の PowerShell コマンドレットで -ServerName として "foo" を使用します。
 
 ### REST API
 REST を使用して、プログラムでデータベースの復旧を実行します。
@@ -85,7 +85,7 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 復旧後のデータベースをすぐ運用できるようにするためのチェックリストです。
 
 1. **接続文字列を更新する**: クライアント ツールの接続文字列が新しく復旧したデータベースを指していることを確認します。
-2. **ファイアウォール ルールを変更する**: 対象サーバーのファイアウォール ルールを確認し、クライアント コンピューターまたは Azure からサーバーと新しく復旧されたデータベースへの接続が有効になっていることを確認します。
+2. **ファイアウォール ルールを変更する**: ターゲット サーバーのファイアウォール ルールを確認し、クライアント コンピューターまたは Azure からサーバーおよび新しく復旧されたデータベースへの接続が有効になっていることを確認します。
 3. **サーバー ログインとデータベース ユーザーを確認する**: アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認します。不足しているログインを再作成し、復旧されたデータベースに対する適切なアクセス許可を与えます。 
 4. **監査を有効にする**: データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。
 
@@ -93,17 +93,17 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 
 
 ## 次のステップ
-Azure SQL Database のその他のエディションのビジネス継続性については、[Azure SQL Database のビジネス継続性の概要][]を参照してください。
+Azure SQL Database の各エディションのビジネス継続性機能については、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧][]」をご覧ください。
 
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL Database のビジネス継続性の概要]: sql-database/sql-database-business-continuity.md
+[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧]: sql-database/sql-database-business-continuity.md
 [Finalize a recovered database]: sql-database/sql-database-recovered-finalize.md
 
 <!--MSDN references-->
-[Start-AzureSqlDatabaseRecovery]: https://msdn.microsoft.com/library/azure/dn720224.aspx
+[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 [List Recoverable Databases]: http://msdn.microsoft.com/library/azure/dn800984.aspx
 [Get Recoverable Database]: http://msdn.microsoft.com/library/azure/dn800985.aspx
 [Create Database Recovery Request]: http://msdn.microsoft.com/library/azure/dn800986.aspx
@@ -113,4 +113,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [Azure ポータル]: https://portal.azure.com/
 [サポートに連絡]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

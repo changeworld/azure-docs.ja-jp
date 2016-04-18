@@ -13,29 +13,25 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/14/2016" 
+	ms.date="04/04/2016" 
 	ms.author="ccompy"/>
 
 # App Service 環境内でのアプリのスケーリング #
 
-大まかに言うと、App Service 環境は基本的に Azure App Service の VNET への個人的なデプロイメントであり、サブスクリプションでのみ管理できます。App Service 環境は VNET 内に配置されるため、新しいネットワーク機能を提供し、さらに Azure App Service 環境で通常提供されるレベル以上の拡張性を提供します。App Service 環境 (ASE) の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。App Service 環境を作成する方法や App Service 環境に Web アプリを作成する方法の詳細については、[App Service 環境の作成方法][HowtoCreateASE]に関するページと [App Service 環境での Web アプリの作成方法][CreateWebappinASE]に関するページを参照してください。
-
-通常、Azure App Service で Web アプリ、モバイル アプリ、または API アプリのスケール属性を変更する場合は、App Service プラン (ASP) のレベルで変更が加えられることに注意してください。App Service プランのスケーリングや App Service 環境外部の App Service プランの詳細については、[Azure App Service での Web アプリのスケーリング][ScaleWebapp]に関するページおよび [App Service プランの詳細][Appserviceplans]に関するページを参照してください。
-
-App Service 環境でアプリをスケーリングする方法は、アプリをスケーリングする通常の方法とよく似ています。Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
+Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
 
 - 料金プラン
-- (専用インスタンスの) ワーカーのサイズ
+- ワーカーのサイズ 
 - インスタンスの数
 
-ASE では、料金プランを選択または変更する必要はありません。機能に関しては、既に Premium 料金機能レベルにあります。App Service 環境においても、共有ワーカーは存在しません。すべて専用ワーカーです。
+ASE では、料金プランを選択または変更する必要はありません。機能に関しては、既に Premium 料金機能レベルにあります。
 
 ワーカー サイズについては、ASE 管理者が各ワーカー プールに使用するコンピューティング リソースのサイズを割り当てることができます。つまり、必要に応じて、ワーカー プール 1 に P4 コンピューティング リソースを割り当て、ワーカー プール 2 に P1 コンピューティング リソースを割り当てることができます。サイズの順に従う必要はありません。サイズとその料金設定の詳細については、[Azure App Service の料金][AppServicePricing]に関するページにあるドキュメントを参照してください。結果として、App Service 環境内の Web アプリおよび App Service プランに対しては、次のスケーリング オプションが残されます。
 
 - ワーカー プールの選択
 - インスタンスの数
 
-どちらの項目も、ASE でホストされる App Service プランに対して表示される適切な UI を使用して変更できます。ASP が属しているワーカー プールで利用可能なコンピューティング リソースの数を超えて ASP をスケールアップすることはできません。より多くのコンピューティング リソースが必要な場合は、ASE 管理者に依頼して、必要な量のコンピューティング リソースをワーカー プールに割り当ててもらう必要があります。ASE を再構成する方法については、[App Service 環境の構成方法][HowtoConfigureASE]に関するページを参照してください。また、ASE の自動スケール機能を利用することで、スケジュールまたはメトリックに基づいて容量を追加することができます。ASE 環境自体に対して自動スケールを構成する方法の詳細については、「[App Service 環境の自動スケールの構成方法][ASEAutoscale]」を参照してください。
+どちらの項目も、ASE でホストされる App Service プランに対して表示される適切な UI を使用して変更できます。ASP が属しているワーカー プールで利用可能なコンピューティング リソースの数を超えて ASP をスケールアップすることはできません。そのワーカー プールにコンピューティング リソースが必要な場合は、ASE 管理者に依頼してコンピューティング リソースを追加してもらう必要があります。ASE を再構成する方法については、[App Service 環境の構成方法][HowtoConfigureASE]に関するページをご覧ください。また、ASE の自動スケール機能を利用することで、スケジュールまたはメトリックに基づいて容量を追加することができます。ASE 環境自体に対して自動スケールを構成する方法の詳細については、「[App Service 環境の自動スケールの構成方法][ASEAutoscale]」を参照してください。
 
 ![][1]
 
@@ -83,4 +79,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [AppScale]: http://azure.microsoft.com/documentation/articles/web-sites-scale/
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

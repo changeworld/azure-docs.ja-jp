@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="04/04/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Amazon アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -52,4 +52,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Amazon アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Amazon の構成を保存します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

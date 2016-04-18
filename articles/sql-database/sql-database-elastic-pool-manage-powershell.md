@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="03/15/2016"
+    ms.date="04/01/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用したエラスティック データベース プールの監視、管理、およびサイズ設定 
@@ -22,11 +22,11 @@
 - [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
 - [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 - [C#](sql-database-elastic-pool-manage-csharp.md)
+- [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
+PowerShell コマンドレットを使用して、[エラスティック データベース プール](sql-database-elastic-pool.md)を管理する方法について説明します。
 
-PowerShell コマンドレットを使った[エラスティック データベース プール](sql-database-elastic-pool.md)の管理方法について説明します。
-
-一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
+一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
 > [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
@@ -178,4 +178,4 @@ CSV ファイルにエクスポートします。
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

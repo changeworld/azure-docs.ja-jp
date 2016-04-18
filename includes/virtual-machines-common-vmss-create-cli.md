@@ -1,20 +1,20 @@
-Virtual Machine Scale Sets allow you to manage multiple VMs as a set. At a high level, scale sets have the following pros and cons:
+仮想マシン スケール セットを利用すれば、複数の VM を セットとして管理できます。大まかに言うと、スケール セットには次のような長所と短所があります。
 
-Pros:
+長所:
 
-1. High availability. Each scale set puts its VMs into an Availability Set with 5 Fault Domains (FDs) and 5 Update Domains (UDs) to ensure availability (for more information on FDs and UDs, see [VM availability](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)).
-2. Easy integration with Azure Load Balancer and App Gateway.
-3. Easy integration with Azure Autoscale.
-4. Simplified deployment, management, and clean up of VMs.
-5. Support common Windows and Linux flavors, as well as custom images.
+1. 高可用性:各スケール セットでは、VM が 5 つの障害ドメイン (FD) と 5 つの更新ドメイン (UD) を持つ可用性セットに割り当てられ、可用性が保証されます (FD と UD の詳細については、「[Linux 仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)」をご覧ください)。
+2. Azure Load Balancer および Application Gateway との容易な統合。
+3. Azure 自動スケールとの容易な統合。
+4. VM の簡略化されたデプロイ、管理、クリーンアップ。
+5. カスタム イメージだけでなく、Windows や Linux の一般的なディストリビューションもサポート。
 
-Cons:
+短所:
 
-1. Cannot attach data disks to VM instances in a scale set. Instead, must use Blob Storage, Azure Files, Azure Tables, or other storage solution.
+1. スケール セット内の VM インスタンスにデータ ディスクをアタッチすることはできません。代わりに、Blob Storage、Azure Files、Azure テーブルなどのストレージ ソリューションを使用する必要があります。
 
-## Quick-Create Using Azure CLI
+## Azure CLI を使用した簡易作成
 
-If you haven't already, you can get an [Azure subscription free trial](https://azure.microsoft.com/pricing/free-trial/) and the [Azure CLI](../articles/xplat-cli-install.md) [connected to your Azure account](../articles/xplat-cli-connect.md). Once you do, you can run the following commands to quick-create a VM scale set:
+[Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と [Azure CLI](../articles/xplat-cli-install.md) は、[Azure アカウントに接続](../articles/xplat-cli-connect.md)できます (まだ接続していない場合)。接続が完了したら、次のコマンドを実行して VM スケール セットを簡易作成できます。
 
 ```bash
 # make sure we are in resource manager mode 
@@ -29,9 +29,9 @@ azure config mode arm
 azure vmss quick-create -n negatvmss -g negatvmssrg -l westus -u negat -p P4$$w0rd -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
 ```
 
-If you want to customize the location or image-urn, please look into the commands `azure location list` and `azure vm image {list-publishers|list-offers|list-skus|list|show}`.
+場所またはイメージの URN をカスタマイズする場合は、`azure location list` コマンドと `azure vm image {list-publishers|list-offers|list-skus|list|show}` コマンドをご確認ください。
 
-Once this command has returned, the scale set will have been created. This scale set will have a load balancer with NAT rules mapping port 50,000+i on the load balancer to port 22 on VM i. Thus, once we figure out the FQDN of the load balancer, we will be able to SSH into our VMs:
+このコマンドから制御が返された時点で、スケール セットは既に作成されています。このスケール セットは、ロード バランサー上のポート 50,000+i を VM i のポート 22 にマッピングする NAT 規則が構成されたロード バランサーを備えています。したがって、ロード バランサーの FQDN がわかっていれば、VM に SSH で接続することができます。
 
 ```bash
 # list load balancers in the resource group we created
@@ -70,10 +70,12 @@ FQDN=${split_line[3]}
 ssh -p 50000 $FQDN
 ```
 
-## Next Steps
+## 次のステップ
 
-For general information, check out the [main landing page for VM scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+全般的な情報については、[VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 
-For documentation, check out the [main documentation page for VM scale sets](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/).
+ドキュメントについては、[VM スケール セットのメイン ドキュメント ページ](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/)をご覧ください。
 
-For example Azure resource manager templates using VM scale sets, search for "vmss" in the [Azure Quickstart Templates github repo](https://github.com/Azure/azure-quickstart-templates).
+VM スケール セットを使用した Azure Resource Manager テンプレートの例については、[Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
+
+<!---HONumber=AcomDC_0406_2016-->

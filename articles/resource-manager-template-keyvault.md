@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/23/2016"
+   ms.date="04/04/2016"
    ms.author="tomfitz"/>
 
 # Key Vault テンプレートのスキーマ
@@ -58,51 +58,51 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 
 次の表では、スキーマに設定する必要がある値について説明します。
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| type | enum | はい | **Microsoft.KeyVault/vaults** | 作成するリソースの種類。 |
-| apiVersion | enum | はい | **2015-06-01** <br /> **2014-12-19-preview** | リソースの作成に使用する API バージョン。 | 
-| name | string | はい | | 作成する Key Vault 名。Azure 全体で重複しない、一意の名前にしてください。次の例で示すように、名前付け規則では [uniqueString](resource-group-template-functions.md#uniquestring) 関数の使用を検討してください。 |
-| location | string | はい | 有効なリージョンを確認するには、[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)を参照します。 | Key Vault をホストするリージョン。 |
-| properties | オブジェクト | はい | ([下記参照](#properties)) | 作成する Key Vault の種類を指定するオブジェクト。 |
-| resources | array | いいえ | [Key Vault シークレット](resource-manager-template-keyvault-secret.md) | Key Vault の子リソース。 |
+| 名前 | 値 |
+| ---- | ---- | 
+| type | 列挙型<br />必須<br />**Microsoft.KeyVault/vaults**<br /><br />作成するリソースの種類。 |
+| apiVersion | 列挙型<br />必須<br />**2015-06-01** または **2014-12-19-preview**<br /><br />リソースの作成に使用する API バージョン。 | 
+| name | 文字列<br />必須<br />Azure 全体で一意の名前。<br /><br />作成する Key Vault の名前。以下の例に示すように、名前付け規則で [uniqueString](resource-group-template-functions.md#uniquestring) 関数を使用して一意の名前を作成することを検討してください。 |
+| location | 文字列<br />必須<br />Key Vault の有効なリージョン。有効なリージョンを確認するには、「[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)」を参照してください。<br /><br />Key Vault をホストするリージョン。 |
+| properties | オブジェクト<br />必須<br />[properties オブジェクト](#properties)<br /><br />作成する Key Vault の種類を指定するオブジェクト。 |
+| resources | 配列<br />省略可能<br />許可される値: [Key Vault のシークレット リソース](resource-manager-template-keyvault-secret.md)<br /><br />Key Vault の子リソース。 |
 
 <a id="properties" />
 ### プロパティ オブジェクト
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| enabledForDeployment | ブール値 | いいえ | **true** または **false** | 仮想マシン デプロイまたは Service Fabric デプロイで Key Vault が有効かどうかを指定します。 |
-| enabledForTemplateDeployment | ブール値 | いいえ | **true** または **false** | リソース マネージャー テンプレート デプロイで Key Vault を使用できるかどうかを指定します。詳細については、「[」デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。 |
-| enabledForVolumeEncryption | ブール値 | いいえ | **true** または **false** | Key Vault でボリュームの暗号化が有効かどうかを指定します。 |
-| tenantId | string | はい | グローバル一意識別子 | サブスクリプションのテナント識別子。識別子は、**Get-AzureRMSubscription** PowerShell コマンドレットで取得できます。 |
-| accessPolicies | array | はい | ([下記参照](#accesspolicies)) | ユーザーまたはサービス プリンシパルのアクセス許可を指定した、最大 16 オブジェクトの配列。 |
-| sku | オブジェクト | はい | ([下記参照](#sku)) | Key Vault の SKU。 |
+| 名前 | 値 |
+| ---- | ---- | 
+| enabledForDeployment | ブール値<br />省略可能<br />**true** または **false**<br /><br />仮想マシン デプロイまたは Service Fabric デプロイで Key Vault が有効かどうかを指定します。 |
+| enabledForTemplateDeployment | ブール値<br />省略可能<br />**true** または **false**<br /><br />Resource Manager テンプレート デプロイで Key Vault を使用できるかどうかを指定します。詳細については、「[」デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。 |
+| enabledForVolumeEncryption | ブール値<br />省略可能<br />**true** または **false**<br /><br />Key Vault でボリュームの暗号化が有効かどうかを指定します。 |
+| tenantId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />サブスクリプションのテナント ID。これは、[Get-AzureRMSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell コマンドレットまたは **azure account show** Azure CLI コマンドで取得できます。 |
+| accessPolicies | 配列<br />必須<br />[accessPolicies オブジェクト](#accesspolicies)<br /><br />ユーザーまたはサービス プリンシパルのアクセス許可を指定した、最大 16 オブジェクトの配列。 |
+| sku | オブジェクト<br />必須<br />[sku オブジェクト](#sku)<br /><br />Key Vault の SKU。 |
 
 <a id="accesspolicies" />
 ### properties.accessPolicies オブジェクト
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| tenantId | string | はい | グローバル一意識別子 | このアクセス ポリシーの **objectId** を含む Azure Active Directory テナントのテナント識別子 |
-| objectId | string | はい | グローバル一意識別子 | Key Vault に対するアクセス権が付与される AAD ユーザーまたはサービス プリンシパルのオブジェクト識別子。**Get-AzureRMADUser** または **Get-AzureRMADServicePrincipal** コマンドレットから値を取得できます。 |
-| アクセス許可 | オブジェクト | はい | ([下記参照](#permissions)) | この Key Vault に付与される、Active Directory オブジェクトに対するアクセス許可。 |
+| 名前 | 値 |
+| ---- | ---- | 
+| tenantId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />このアクセス ポリシーの **objectId** を含む Azure Active Directory テナントのテナント ID。 |
+| objectId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />Key Vault にアクセスできるようになる Azure Active Directory ユーザーまたはサービス プリンシパルのオブジェクト ID。この値は、[Get-AzureRMADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) または [Get-AzureRMADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell コマンドレットか、**azure ad user** または **azure ad sp** Azure CLI コマンドで取得できます。 |
+| アクセス許可 | オブジェクト<br />必須<br />[permissions オブジェクト](#permissions)<br /><br />この Key Vault に付与される、Active Directory オブジェクトに対するアクセス許可。 |
 
 <a id="permissions" />
 ### properties.accessPolicies.permissions オブジェクト
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| キー | array | はい | 次の値のコンマ区切りの一覧:<br />**all**<br />**backup**<br />**create**<br />**decrypt**<br />**delete**<br />**encrypt**<br />**get**<br />**import**<br />**list**<br />**restore**<br />**sign**<br />**unwrapkey**<br/>**update**<br />**verify**<br />**wrapkey** | この Key Vault 内のキーに付与される、Active Directory オブジェクトに対するアクセス許可。この値は、許可される値の配列として指定する必要があります。 |
-| secrets | array | はい | 次の値のコンマ区切りの一覧:<br />**all**<br />**delete**<br />**get**<br />**list**<br />**set** | この Key Vault 内のシークレットに付与される、Active Directory オブジェクトに対するアクセス許可。この値は、許可される値の配列として指定する必要があります。 |
+| 名前 | 値 |
+| ---- | ---- | 
+| キー | 配列<br />必須<br />**all**、**backup**、**create**、**decrypt**、**delete**、**encrypt**、**get**、**import**、**list**、**restore**、**sign**、**unwrapkey**、**update**、**verify**、**wrapkey**<br /><br />この Key Vault 内のキーに付与される、Active Directory オブジェクトに対するアクセス許可。この値は、1 つ以上の許可される値の配列として指定する必要があります。 |
+| secrets | 配列<br />必須<br />**all**、**delete**、**get**、**list**、**set**<br /><br />この Key Vault 内のシークレットに付与される、Active Directory オブジェクトに対するアクセス許可。この値は、1 つ以上の許可される値の配列として指定する必要があります。 |
 
 <a id="sku" />
 ### properties.sku オブジェクト
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| name | enum | はい | **standard**<br />**premium** | 使用する KeyVault のサービス階層。Standard は、シークレットとソフトウェアで保護されたキーをサポートしています。Premium は、さらに HSM で保護されたキーもサポートしています。 |
-| family | enum | はい | **A** | 使用する sku ファミリ。 
+| 名前 | 値 |
+| ---- | ---- | 
+| name | 列挙型<br />必須<br />**standard**、または **premium** <br /><br />使用する KeyVault のサービス レベル。Standard は、シークレットとソフトウェアで保護されたキーをサポートしています。Premium は、さらに HSM で保護されたキーもサポートしています。 |
+| family | 列挙型<br />必須<br />**A** <br /><br />使用する SKU ファミリ。 |
  
 	
 ## 例
@@ -237,7 +237,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 
 Key Vault は、次のクイック スタート テンプレートによってデプロイされます。
 
-- [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
+- [Key Vault の作成](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)
 
 
 ## 次のステップ
@@ -245,4 +245,4 @@ Key Vault は、次のクイック スタート テンプレートによって�
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
 - テンプレートをデプロイするときに Key Vault のシークレットを参照する例については、「[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

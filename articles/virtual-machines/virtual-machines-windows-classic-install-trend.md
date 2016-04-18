@@ -3,7 +3,7 @@
 	description="この記事では、Azure でクラシック デプロイ モデルを使用して作成された VM で Trend Micro のセキュリティをインストールして構成する方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -87,4 +87,4 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-windows-classic-connect-logon.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

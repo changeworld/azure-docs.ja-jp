@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Cortana Analytics Process の活用: 1 TB Criteo データセットで HDInsight Hadoop クラスターを使用する | Microsoft Azure" 
-	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Adva nced Analytics Process and Technology (ADAPT) を使用し、大量の (1 TB) 公開されている使用可能なデータセットを使用してモデルを構築してデプロイします。" 
-	services="machine-learning,hdinsight" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="paulettm" 
+<properties
+	pageTitle="Cortana Analytics Process の活用: 1 TB Criteo データセットで HDInsight Hadoop クラスターを使用する | Microsoft Azure"
+	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Adva nced Analytics Process and Technology (ADAPT) を使用し、大量の (1 TB) 公開されている使用可能なデータセットを使用してモデルを構築してデプロイします。"
+	services="machine-learning,hdinsight"
+	documentationCenter=""
+	authors="bradsev"
+	manager="paulettm"
 	editor="cgronlun" />
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/08/2016" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/08/2016"
 	ms.author="ginathan;bradsev" />
 
 # Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する
@@ -29,15 +29,15 @@ Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (�
 
 このデータセットの各レコードには、40 の列があります。
 
-- 最初の列は、ユーザーが追加をクリックする (値 1) またはクリックしない (値 0) ことを示すラベル列です。 
-- 次の 13 の列は数値列です。 
-- 最後の 26 の列はカテゴリ列です。 
+- 最初の列は、ユーザーが追加をクリックする (値 1) またはクリックしない (値 0) ことを示すラベル列です。
+- 次の 13 の列は数値列です。
+- 最後の 26 の列はカテゴリ列です。
 
 列は匿名で、"Col1" (ラベル列) から "Col40" (最後のカテゴリ列) まで一連の列挙型名を使用します。
 
 次に、このデータセットから最初の 20 列の 2 つの観測 (行) を抜粋して示します。
 
-	Col1	Col2	Col3	Col4	Col5	Col6	Col7	Col8	Col9	Col10	Col11	Col12	Col13	Col14	Col15			Col16			Col17			Col18			Col19		Col20	
+	Col1	Col2	Col3	Col4	Col5	Col6	Col7	Col8	Col9	Col10	Col11	Col12	Col13	Col14	Col15			Col16			Col17			Col18			Col19		Col20
 
 	0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
 	0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
@@ -62,7 +62,7 @@ Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (�
 
 HDInsight クラスターを使用して予測分析ソリューションを構築するために、3 つの手順で Azure のデータ サイエンス環境をセット アップします。
 
-1. [ストレージ アカウントの作成](storage-whatis-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。ここには、HDInsight クラスターで使用するデータが格納されます。
+1. [ストレージ アカウントの作成](../storage/storage-create-storage-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。ここには、HDInsight クラスターで使用するデータが格納されます。
 
 2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](machine-learning-data-science-customize-hadoop-cluster.md): この手順では、すべてのノードにインストールされている 64 ビット Anaconda Python 2.7 を使用して Azure HDInsight Hadoop クラスターを作成します。HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
 
@@ -80,10 +80,10 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 
 **[Continue to Download]** をクリックしてデータセットとその可用性に関する詳細をお読みください。
 
-このデータはパブリックの [Azure BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)にありますwasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。"wasb" は、Azure BLOB ストレージの場所を表します。
+このデータはパブリックの [Azure BLOB ストレージ](../storage/storage-dotnet-how-to-use-blobs.md)にありますwasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。"wasb" は、Azure BLOB ストレージの場所を表します。
 
 1. このパブリック BLOB ストレージ内のデータは、解凍されたデータの 3 つのサブフォルダーで構成されています。
-		
+
 	1. サブフォルダー *raw/count/* には、最初の 21 日間 (day\_00 から day\_20 まで) のデータが含まれています。
 	2. サブフォルダー *raw/train/* には、1 日分 (day\_21) のデータが含まれています。
 	3. サブ フォルダー *raw/test/* には、2 日間 (day\_22 と day\_23) のデータが含まれています。
@@ -120,9 +120,9 @@ Hive REPL が "hive >" 記号と共に表示されたら、単にクエリをカ
 以下のコードは、データベース "criteo" を作成した後、次の 4 つのテーブルを生成します。
 
 
-* day\_00 ～ day\_20 の期間に構築された、*カウントを生成する 1 つのテーブル*。 
-* day\_21 に構築された、*トレーニング データベースとして使用する 1 つのテーブル*。 
-* それぞれ day\_22 と day\_23 に構築された、*テスト データセットとして使用する 2 つのテーブル*。 
+* day\_00 ～ day\_20 の期間に構築された、*カウントを生成する 1 つのテーブル*。
+* day\_21 に構築された、*トレーニング データベースとして使用する 1 つのテーブル*。
+* それぞれ day\_22 と day\_23 に構築された、*テスト データセットとして使用する 2 つのテーブル*。
 
 いずれかの日が休日であり、モデルがクリックスルー率から休日と休日以外の違いを検出できるかどうかを判断するため、テスト データセットは 2 つの異なるテーブルに分割します。
 
@@ -225,7 +225,7 @@ Hive REPL が "hive >" 記号と共に表示されたら、単にクエリをカ
 		SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
 次が生成されます。
-	
+
 		189747893
 		Time taken: 267.968 seconds, Fetched: 1 row(s)
 
@@ -240,7 +240,7 @@ Hive REPL が "hive >" 記号と共に表示されたら、単にクエリをカ
 		SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
 次のように表示されます。
-	
+
 		178274637
 		Time taken: 253.089 seconds, Fetched: 1 row(s)
 
@@ -257,12 +257,12 @@ Hive REPL が "hive >" 記号と共に表示されたら、単にクエリをカ
 		Time taken: 459.435 seconds, Fetched: 2 row(s)
 
 正の値のラベルの割合が約 3.3% であることに注意してください (元のデータセットと一致します)。
-		
+
 ### トレーニング データセット内の一部の数値変数のヒストグラム分布
 
 Hive のネイティブの "histogram\_numeric" 関数を使用して、数値変数の分布がどのように表示されるかを確認できます。[sample&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql) の内容を次に示します。
 
-		SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM 
+		SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
 			(SELECT
             histogram_numeric(col2, 20) as col2_hist
             FROM
@@ -324,7 +324,7 @@ Col15 は 19 M 個の一意の値を持つことに注意してください。 "
 
 他のカテゴリ列の一意の値の数を確認すると、このサブ セクションが完了します。[sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) の内容を以下に示します。
 
-		SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)), 
+		SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
 		COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
 		FROM criteo.criteo_train;
 
@@ -458,7 +458,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 6. **[出力データの場所]**: [Azure] を選択します。
 7. **[Azure ストレージ アカウント名]**: クラスターに関連付けられているストレージ アカウント。
 8. **[Azure ストレージ アカウント キー]**: クラスターに関連付けられているストレージ アカウントのキー。
-9. **[Azure コンテナー名]**: クラスター名が "abc" の場合、通常は単に "abc" となります。 
+9. **[Azure コンテナー名]**: クラスター名が "abc" の場合、通常は単に "abc" となります。
 
 
 **リーダー** がデータの取得を終了したら (モジュールに緑色のチェック マークが表示されます)、このデータをデータセットとして保存します (任意の名前を付けます)。次のように表示されます。
@@ -472,7 +472,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 ![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 ***重要*****: トレーニングとテストの両方のデータセットでこれを行います。また、この用途で付けたデータベース名とテーブル名を必ず使用してください。図の値は、説明の目的でのみ使用されている例です。**
- 
+
 ### <a name="step2"></a> 手順 2: Azure Machine Learning Studio で簡単な実験を作成して、クリックする / クリックしないを予測します。
 
 この Azure ML の実験内容は次のとおりです。
@@ -600,7 +600,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 次に、Web サービスの入力ポートと出力ポートを作成する必要があります。
 
-* 入力ポートは、予測が必要なデータと同じ形式のデータを受け入れます。 
+* 入力ポートは、予測が必要なデータと同じ形式のデータを受け入れます。
 * 出力ポートは、スコア付けラベルと関連する確率を返します。
 
 #### 入力ポートにいくつかのデータ行を選択する
@@ -643,7 +643,7 @@ Web サービスが公開されると、次のページにリダイレクトさ�
 
 Web サービス用の 2 つのリンクが左側に表示されます。
 
-* **[要求/応答]** サービス (または RRS) は、1 つの予測向けのサービスで、このワーク ショップで使用されます。 
+* **[要求/応答]** サービス (または RRS) は、1 つの予測向けのサービスで、このワーク ショップで使用されます。
 * **バッチの実行**サービス (BES) バッチ予測を使用し、Azure Blob ストレージに存在する予測を行う、入力データを使用する必要があります。
 
 **[REQUEST/RESPONSE]** リンクをクリックすると、C#、python、R で作成されたコードを紹介するページに移動します。そのコードを使用して、Web サービスの呼び出しを手間なく行うことができます。このページの API キーを認証に使用する必要があります。
@@ -663,4 +663,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法の総合的なチュートリアルは終了です。ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure リソース マネージャーのテンプレートの作成"
+   pageTitle="Azure Resource Manager テンプレートの作成 | Microsoft Azure"
    description="宣言型 JSON 構文を使用して Azure にアプリケーションをデプロイする Azure リソース マネージャーのテンプレートを作成します。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -13,17 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/17/2016"
+   ms.date="04/04/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
 
-Azure アプリケーションでは、通常、目的を達成するためにリソース (データベース サーバー、データベース、Web サイトなど) を組み合わせる必要があります。  
-デプロイして、各リソースを別々 に管理するではなく、使用する Azure リソース マネージャーのテンプレートをデプロイおよびプロビジョニングするすべての調整、1 つの操作で、アプリケーションのリソースを作成できます。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。このトピックでは、テンプレートの各セクションについて説明します。
+Azure Resource Manager テンプレートでは、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。このトピックでは、テンプレートの各セクションについて説明します。
 
 Visual Studio には、テンプレートの作成を支援するためのツールが用意されています。テンプレートでの Visual Studio の使用の詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
-テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限する必要があります。1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。
+テンプレートの作成に関するガイダンスについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
 
 ## テンプレートの計画
 
@@ -36,13 +35,9 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 5. デプロイの過程で渡す値と、テンプレートで直接定義する値。
 6. デプロイから値を返す必要があるかどうか。
 
-デプロイで使用できるリソースの種類、その種類のリソースでサポートされるリージョン、リソースの種類ごとの使用可能な API バージョンについては、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。このトピックでは、テンプレート内で指定すべき値を判断する際に参考となる例やリンクを紹介しています。
+デプロイで使用できるリソースの種類、その種類のリソースでサポートされるリージョン、リソースの種類ごとの使用可能な API バージョンについては、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。
 
-特定のリソースを別のリソースの後にデプロイする必要がある場合、そのリソースをもう一方のリソースの依存リソースとして指定することができます。その方法については、以下の「[リソース](#resources)」セクションを参照してください。
-
-デプロイの実行中にパラメーターの値を渡すことによって、同じテンプレートで異なる結果を得ることができます。その方法については、以下の「[パラメーター](#parameters)」セクションを参照してください。
-
-デプロイから値を返す方法については、「[出力](#outputs)」セクションを参照してください。
+テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限する必要があります。1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。
 
 ## テンプレートの形式
 
@@ -57,17 +52,21 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        "outputs": {  }
     }
 
-| 要素名| 必須 | 説明
+| 要素名  | 必須 | 説明
 | :------------: | :------: | :----------
-| $schema | はい | テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。上記の URL を使用する必要があります。
-| contentVersion | はい | テンプレートのバージョン (1.0.0.0 など)。この要素には任意の値を指定できます。テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。
+| $schema | はい | テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。  
+上記の URL を使用する必要があります。
+| contentVersion | はい | テンプレートのバージョン (1.0.0.0 など)。  
+この要素には任意の値を指定できます。テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。  
+
 | parameters | いいえ | リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。
-| variables | いいえ | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。
+| variables | いいえ | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。  
+
 | resources | はい | リソース グループ内でデプロイまたは更新されるリソースの種類。
 | outputs | いいえ | デプロイ後に返される値。
 
-テンプレートのセクションについては、後で詳しく説明します。
-次に、テンプレートを構成する構文のいくつかを確認します。
+テンプレートのセクションについては、後で詳しく説明します。  
+次に、テンプレートを構成する構文のいくつかを確認します。  
 
 
 ## 式と関数  
@@ -117,7 +116,8 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 
 | 要素名  | 必須 | 説明
 | :------------: | :------: | :----------
-| parameterName | はい | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。
+| parameterName | はい | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。  
+
 | type | はい | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
 | defaultValue | いいえ | パラメーターに値が指定されない場合のパラメーターの既定値。
 | allowedValues | いいえ | 適切な値が確実に指定されるように、パラメーターに使用できる値の配列。
@@ -137,7 +137,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 
 パラメーターを省略可能に指定するには、defaultValue を空の文字列に設定します。
 
-指定したパラメーター名が、テンプレートをデプロイするコマンドのパラメーターのいずれかと一致する場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+指定したパラメーター名が、テンプレートをデプロイするコマンドのパラメーターのいずれかと一致する場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞が **FromTemplate** であるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するよう求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 >[AZURE.NOTE] すべてのパスワード、キー、およびその他のシークレットでは、**secureString** 型を使用する必要があります。SecureString 型を持つテンプレート パラメーターをリソース デプロイの後に読み取ることはできません。
 
@@ -177,7 +177,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        }
     }
 
-デプロイ時にパラメーター値を入力する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy/#parameter-file)」を参照してください。
+デプロイ時にパラメーター値を入力する方法については、「[Azure Resource Manager テンプレートを使用したリソースのデプロイ](../resource-group-template-deploy/#parameter-file)」をご覧ください。
 
 ## 変数
 
@@ -194,14 +194,6 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 
 次の例では、2 つのパラメーター値で構成される変数の定義方法を示しています。
 
-    "parameters": {
-       "username": {
-         "type": "string"
-       },
-       "password": {
-         "type": "secureString"
-       }
-     },
      "variables": {
        "connectionString": "[concat('Name=', parameters('username'), ';Password=', parameters('password'))]"
     }
@@ -236,7 +228,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 ## リソース
 
 resources セクションでは、デプロイまたは更新されるリソースを定義します。  
-ここは、テンプレートの中でも複雑になりやすい部分です。適切な値を指定するためには、デプロイするリソースの種類を理解している必要があるためです。リソース プロバイダーに関して必要な知識の大半は、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」で確認できます。
+ここは、テンプレートの中でも複雑になりやすい部分です。適切な値を指定するためには、デプロイするリソースの種類を理解している必要があるためです。リソース プロバイダーの詳細については、「[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」をご覧ください。
 
 リソースは、次の構造で定義します。  
 
@@ -260,16 +252,28 @@ resources セクションでは、デプロイまたは更新されるリソー�
     ]
 
 | 要素名  | 必須 | 説明
-| :----------------------: | :------:| :----------
+| :----------------------: | :------: | :----------
 | apiVersion | はい | リソースの作成に使用する REST API バージョン。特定のリソース タイプの使用できるバージョン番号を特定するには、「[サポートされている API バージョン](../resource-manager-supported-services/#supported-api-versions)」を参照してください。
-| type | はい | リソースの種類。この値は、リソース プロバイダーの名前空間と、リソース プロバイダーがサポートするリソースの種類の組み合わせです。
-| name | はい | リソースの名前。この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。
-| location | いいえ | 指定されたリソースのサポートされている地理的な場所。対象となる場所については、「[サポートされているリージョン](../resource-manager-supported-services/#supported-regions)」を参照してください。
-| tags | いいえ | リソースに関連付けられたタグ。
+| type | はい | リソースの種類。  
+この値は、リソース プロバイダーの名前空間と、リソース プロバイダーがサポートするリソースの種類の組み合わせです。  
+
+| name | はい | リソースの名前。  
+この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。  
+
+| location | 多様 | 指定されたリソースのサポートされている地理的な場所。  
+対象となる場所については、「[サポートされているリージョン](../resource-manager-supported-services/#supported-regions)」をご覧ください。ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。
+| tags | いいえ | リソースに関連付けられたタグ。  
+
 | コメント | いいえ | テンプレート内にドキュメント化するリソースについてのメモ。
-| dependsOn | いいえ | 定義されているリソースが依存するリソース。リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。相互依存していないリソースは、平行してデプロイされます。値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。
-| properties | いいえ | リソース固有の構成設定。properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値とまったく同じです。リソース スキーマのドキュメントまたは REST API へのリンクについては、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。
-| resources | いいえ | 定義されているリソースに依存する子リソース。親リソースのスキーマで許可されているリソースの種類のみを指定することができます。子リソースの種類の完全修飾名には親リソースの種類 (**Microsoft.Web/sites/extensions** など) が含まれます。親リソースへの依存関係は暗黙的に示されないため、明示的に定義する必要があります。 
+| dependsOn | いいえ | 定義されているリソースが依存するリソース。  
+リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。  
+相互依存していないリソースは、平行してデプロイされます。  
+値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。  
+
+| properties | いいえ | リソース固有の構成設定。  
+properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値とまったく同じです。リソース スキーマのドキュメントまたは REST API へのリンクについては、「[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」をご覧ください。
+| resources | いいえ | 定義されているリソースに依存する子リソース。  
+親リソースのスキーマで許可されているリソースの種類のみを指定することができます。子リソースの種類の完全修飾名には親リソースの種類 (**Microsoft.Web/sites/extensions** など) が含まれます。親リソースへの依存関係は暗黙的に示されないため、明示的に定義する必要があります。 
 
 
 リソース名が一意でない場合は、**resourceId** ヘルパー関数 (後で説明) を使用すると、リソースの一意識別子を取得できます。
@@ -303,56 +307,61 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 
 
-次の例では、**Microsoft.Web/serverfarms** リソースと、入れ子になった **Extensions** リソースを含む **Microsoft.Web/sites** リソースを示しています。サイトがサーバー ファームに依存するリソースとして指定されている点に注意してください。これは、サーバー ファームが存在して初めてサイトをデプロイできるためです。また、**Extensions** リソースがサイトの子になっている点にも注意してください。
+次の例は、**Microsoft.Web/serverfarms** リソースと、子の **Extensions** リソースを含む **Microsoft.Web/sites** リソースを示しています。サイトがサーバー ファームに依存するリソースとして指定されている点に注意してください。これは、サーバー ファームが存在して初めてサイトをデプロイできるためです。また、**Extensions** リソースがサイトの子になっている点にも注意してください。
 
     "resources": [
-        {
-          "apiVersion": "2014-06-01",
-          "type": "Microsoft.Web/serverfarms",
-          "name": "[parameters('hostingPlanName')]",
-          "location": "[resourceGroup().location]",
-          "properties": {
-              "name": "[parameters('hostingPlanName')]",
-              "sku": "[parameters('hostingPlanSku')]",
-              "workerSize": "0",
-              "numberOfWorkers": 1
-          }
+      {
+        "apiVersion": "2015-08-01",
+        "name": "[parameters('hostingPlanName')]",
+        "type": "Microsoft.Web/serverfarms",
+        "location": "[resourceGroup().location]",
+        "tags": {
+          "displayName": "HostingPlan"
         },
-        {
-          "apiVersion": "2014-06-01",
-          "type": "Microsoft.Web/sites",
-          "name": "[parameters('siteName')]",
-          "location": "[resourceGroup().location]",
-          "tags": {
-              "environment": "test",
-              "team": "ARM"
-          },
-          "dependsOn": [
-              "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-          ],
-          "properties": {
-              "name": "[parameters('siteName')]",
-              "serverFarm": "[parameters('hostingPlanName')]"
-          },
-          "resources": [
-              {
-                  "apiVersion": "2014-06-01",
-                  "type": "Extensions",
-                  "name": "MSDeploy",
-                  "dependsOn": [
-                      "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-                  ],
-                  "properties": {
-                    "packageUri": "https://auxmktplceprod.blob.core.windows.net/packages/StarterSite-modified.zip",
-                    "dbType": "None",
-                    "connectionString": "",
-                    "setParameters": {
-                      "Application Path": "[parameters('siteName')]"
-                    }
-                  }
-              }
-          ]
+        "sku": {
+          "name": "[parameters('skuName')]",
+          "capacity": "[parameters('skuCapacity')]"
+        },
+        "properties": {
+          "name": "[parameters('hostingPlanName')]",
+          "numberOfWorkers": 1
         }
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "type": "Microsoft.Web/sites",
+        "name": "[parameters('siteName')]",
+        "location": "[resourceGroup().location]",
+        "tags": {
+          "environment": "test",
+          "team": "ARM"
+        },
+        "dependsOn": [
+          "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+        ],
+        "properties": {
+          "name": "[parameters('siteName')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+        },
+        "resources": [
+          {
+            "apiVersion": "2015-08-01",
+            "type": "extensions",
+            "name": "MSDeploy",
+            "dependsOn": [
+              "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
+            ],
+            "properties": {
+              "packageUri": "https://auxmktplceprod.blob.core.windows.net/packages/StarterSite-modified.zip",
+              "dbType": "None",
+              "connectionString": "",
+              "setParameters": {
+                "Application Path": "[parameters('siteName')]"
+              }
+            }
+          }
+        ]
+      }
     ]
 
 
@@ -372,11 +381,15 @@ resources セクションには、デプロイの対象となる一連のリソ�
        }
     }
 
-| 要素名 | 必須 | 説明
+| 要素名  | 必須 | 説明
 | :------------: | :------: | :----------
-| outputName | はい | 出力値の名前。有効な JavaScript 識別子で指定する必要があります。
-| type | はい | 出力値の型。出力値では、テンプレート入力パラメーターと同じ型がサポートされています。
-| 値 | はい | 評価され、出力値として返されるテンプレート言語式。
+| outputName | はい | 出力値の名前。  
+有効な JavaScript 識別子で指定する必要があります。  
+
+| type | はい | 出力値の型。  
+出力値では、テンプレート入力パラメーターと同じ型がサポートされています。  
+
+| 値 | はい | 評価され、出力値として返されるテンプレート言語式。  
 
 
 
@@ -402,96 +415,13 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。  
 これは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。  
-詳細については、「[resourceId 関数](../resource-group-template-functions#resourceid)」を参照してください。
-
-## 完全なテンプレート  
-
-次に、Web アプリをデプロイし、.zip ファイルのコードを使用してそのアプリをプロビジョニングするテンプレートを示します。  
-
-
-    {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-         "siteName": {
-           "type": "string"
-         },
-         "hostingPlanName": {
-           "type": "string"
-         },
-         "hostingPlanSku": {
-           "type": "string",
-           "allowedValues": [
-             "Free",
-             "Shared",
-             "Basic",
-             "Standard",
-             "Premium"
-           ],
-           "defaultValue": "Free"
-         }
-       },
-       "resources": [
-         {
-           "apiVersion": "2014-06-01",
-           "type": "Microsoft.Web/serverfarms",
-           "name": "[parameters('hostingPlanName')]",
-           "location": "[resourceGroup().location]",
-           "properties": {
-             "name": "[parameters('hostingPlanName')]",
-             "sku": "[parameters('hostingPlanSku')]",
-             "workerSize": "0",
-             "numberOfWorkers": 1
-           }
-         },
-         {
-           "apiVersion": "2014-06-01",
-           "type": "Microsoft.Web/sites",
-           "name": "[parameters('siteName')]",
-           "location": "[resourceGroup().location]",
-           "tags": {
-             "environment": "test",
-             "team": "ARM"
-           },
-           "dependsOn": [
-             "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-           ],
-           "properties": {
-             "name": "[parameters('siteName')]",
-             "serverFarm": "[parameters('hostingPlanName')]"
-           },
-           "resources": [
-             {
-               "apiVersion": "2014-06-01",
-               "type": "Extensions",
-               "name": "MSDeploy",
-               "dependsOn": [
-                 "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-               ],
-               "properties": {
-                 "packageUri": "https://auxmktplceprod.blob.core.windows.net/packages/StarterSite-modified.zip",
-                 "dbType": "None",
-                 "connectionString": "",
-                 "setParameters": {
-                   "Application Path": "[parameters('siteName')]"
-                 }
-               }
-             }
-           ]
-         }
-       ],
-       "outputs": {
-         "siteUri": {
-           "type": "string",
-           "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
-         }
-       }
-    }
+詳細については、「[resourceId](../resource-group-template-functions#resourceid)」をご覧ください。
 
 ## 次のステップ
+- さまざまな種類のソリューションのテンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 - テンプレート内から使用できる関数の詳細については、「[Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
-<!-------HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

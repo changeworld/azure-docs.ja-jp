@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
-   ms.author="dkshir;memccror"/>
+   ms.date="04/04/2016"
+   ms.author="iainfou;memccror"/>
 
 # Azure で Windows 仮想マシンにタグを付ける方法
 
@@ -101,4 +101,4 @@ PowerShell でタグを付ける方法については、「[Azure リソース �
 [Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

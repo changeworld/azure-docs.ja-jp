@@ -20,12 +20,14 @@
 
 この記事では、Azure Insights の監視機能にアクセスできるコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
 
+>[AZURE.NOTE] Azure Insights CLI では、最新のバグの修正の一部がまだ完了していません。このため、最新の機能の中には、現在の Azure CLI バージョンではまだ利用できないものがあります。一方、[Azure XPLAT-CLI tarball](http://github.com/Azure/azure-xplat-cli/archive/dev.tar.gz) の開発分岐から最新の tarball をダウンロードすると、修正プログラムが含まれた最新の Azure Insights CLI を使用できます。次に、「[Installation from a particular branch of this repository (このリポジトリの特定の分岐からのインストール)](https://github.com/Azure/azure-xplat-cli#installation-from-a-particular-branch-of-this-repository)」の手順に従って、ダウンロードした tarball を使ってインストールすることができます。Azure CLI のバグの修正は、Azure Insights が更新された時点で間もなく追加されます。このドキュメントは、Azure CLI のメイン分岐で変更が利用可能になった時点で更新されます。
+
 ## 前提条件
 
-Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照してください。Azure CLI を使い慣れていない場合、その詳細について、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を確認してください。
+Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。Azure CLI を使い慣れていない場合、その詳細について、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を確認してください。
 
 
-Windows で、[Node.js Web サイト](https://nodejs.org/)から npm をインストールします。インストールが完了したら、管理者特権で CMD.exe を使用し、npm のインストール フォルダーから次を実行します。
+Windows では、[Node.js Web サイト](https://nodejs.org/)から npm をインストールします。インストールが完了したら、管理者特権で CMD.exe を使用し、npm のインストール フォルダーから次を実行します。
 
 ```
 npm install azure-cli --global
@@ -219,4 +221,4 @@ node bin\azure insights autoscale setting list montest2 -n setting2
 node bin\azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

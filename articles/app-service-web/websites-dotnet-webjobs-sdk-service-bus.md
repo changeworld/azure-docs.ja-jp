@@ -20,7 +20,7 @@
 
 ## 概要
 
-このガイドでは、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [WebJobs SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
+このガイドでは、Azure Service Bus メッセージを受信したときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [WebJobs SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
 
 このガイドは、[Visual Studio でストレージ アカウントを指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法](websites-dotnet-webjobs-sdk-get-started.md)を理解していることを前提としています。
 
@@ -61,7 +61,7 @@ App.config ファイルに Service Bus の接続文字列を含むサンプル �
 
 キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、`ServiceBusTrigger` 属性を使用します。この属性コンストラクターは、ポーリングするキューの名前を指定するパラメーターを受け取ります。
 
-### ServicebusTrigger のしくみ
+### ServiceBusTrigger のしくみ
 
 この SDK では、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は、`Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
 
@@ -186,4 +186,4 @@ Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK 
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

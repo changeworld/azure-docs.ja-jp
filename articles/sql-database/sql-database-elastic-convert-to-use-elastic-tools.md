@@ -13,14 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/29/2016"
+   ms.date="04/01/2016"
    ms.author="SilviaDoomra"/>
 
 # 既存のデータベースをエラスティック データベース ツールを使用するように変換する
 
-既存のスケールアウトされたシャーディング ソリューションがある場合、ここで説明する手法を使用して Elastic Database ツールを利用できます。変換が済むと、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)と[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)を使用できるようになります。
+既存のスケールアウトされたシャーディング ソリューションがある場合、ここで説明する手法を使用して、Elastic Database ツール ([Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)や [Split-Merge ツール](sql-database-elastic-scale-overview-split-and-merge.md)など) を利用できます。
 
 これらの方法は、[.NET Framework クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)または「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - Elastic Database ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」の PowerShell スクリプトを使用して実装できます。この例では、PowerShell スクリプトを使用します。
+
+Add-Shard コマンドレットや New-ShardMapManager コマンドレットを実行する前に、データベースを作成する必要があります。これらのコマンドレットでは、データベースは作成されません。
 
 次の 4 つのステップがあります。
 
@@ -29,10 +31,10 @@
 3. 個々のシャードを準備します。  
 2. シャード マップにマッピングを追加します。
 
-ShardMapManager の詳細については、「[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。エラスティック データベース ツールの概要については、「[Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)」を参照してください。
+ShardMapManager の詳細については、「[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」をご覧ください。Elastic Database ツールの概要については、「[Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)」をご覧ください。
 
 ## シャード マップ マネージャー データベースの準備
-新しいデータベースまたは既存のデータベースをシャード マップ マネージャーとして使用できます。これは 1 回限りの操作です。
+新しいデータベースまたは既存のデータベースをシャード マップ マネージャーとして使用できます。
 
 ## 手順 1: シャード マップ マネージャーを作成する
 シャード マップ マネージャーとして機能するデータベースは、シャードと同じデータベースにしてはならないことに注意してください。
@@ -169,7 +171,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 
 ツールは GitHub ([Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)) にもあります。
 
-マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。[分割/マージ ツール](sql-database-elastic-scale-get-started.md)を参照してください。
+マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。[分割/マージ ツール](sql-database-elastic-scale-get-started.md)に関するページをご覧ください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -179,4 +181,4 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

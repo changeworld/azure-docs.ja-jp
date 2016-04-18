@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="03/30/2016"
    ms.author="toddabel"/>
 
 
 # Azure 診断でログを収集する方法
 
-Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。1 か所でログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。実際のところ、ストレージのログは直接的にはそれほど役に立ちません。しかしながら、外部プロセスを利用してストレージからイベントを読み込み、[Operational Insights](https://azure.microsoft.com/services/operational-insights/) や Elastic Search などの製品に配置できます。
+Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。1 か所でログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。実際には、ログはストレージで直接的にはそれほど役立ちませんが、外部プロセスを使用してストレージからイベントを読み込み、[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や別のログ解析ソリューションに配置できます。
 
 ## 前提条件
 これらのツールは、このドキュメントの操作の一部を実行するために使用されます。
@@ -45,7 +45,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 ![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/portal-cluster-creation-diagnostics-setting.png)
 
-サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、現在のリソース グループで作成されたストレージ アカウントに保存されます。アプリケーション診断では、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントを Azure Storage に保存します。[Operational Insights](https://azure.microsoft.com/services/operational-insights/) のような製品や独自のプロセスでストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。ポータルを利用してクラスターを作成する場合、デプロイの完了後にテンプレートをエクスポートすることが推奨されます。テンプレートは次の方法でポータルからエクスポートできます。
+サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、現在のリソース グループで作成されたストレージ アカウントに保存されます。アプリケーション診断では、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントを Azure Storage に保存します。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスでストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。ポータルを利用してクラスターを作成する場合、デプロイの完了後にテンプレートをエクスポートすることが推奨されます。テンプレートは次の方法でポータルからエクスポートできます。
 1. リソース グループを開きます。
 2. [設定] を選択し、[設定] パネルを表示します。
 3. [デプロイ] を選択し、[デプロイ履歴] パネルを表示します。
@@ -178,4 +178,4 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

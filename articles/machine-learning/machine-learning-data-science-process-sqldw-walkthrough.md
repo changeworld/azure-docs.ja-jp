@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016" 
+	ms.date="02/05/2016"
 	ms.author="bradsev;hangzh;weig"/>
 
 
@@ -48,11 +48,11 @@ NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイ�
 
 trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 
-- medallion、 
-- hack\_license、 
+- medallion、
+- hack\_license、
 - pickup\_datetime という 3 つのフィールドで構成されます。
 
-## <a name="mltasks"></a>3 種類の予測タスクに対応する 
+## <a name="mltasks"></a>3 種類の予測タスクに対応する
 
 3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
@@ -75,23 +75,23 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 **独自の Azure BLOB ストレージ アカウントを作成する**
 
-- 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。 
-- 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の手順に従います。以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。 
+- 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
+- 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」に示されている手順に従います。以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
 
   - **ストレージ アカウント名**
   - **ストレージ アカウント キー**
   - **コンテナー名** (Azure BLOB ストレージ内のデータの格納先)
 
-**Azure SQL DW インスタンスをプロビジョニングします。** 「[SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md)」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
- 
+**Azure SQL DW インスタンスをプロビジョニングします。** 「[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
+
   - **サーバー名**: <server Name>.database.windows.net
-  - **SQLDW (データベース) 名** 
+  - **SQLDW (データベース) 名**
   - **ユーザー名**
   - **パスワード**
 
-**Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](sql-data-warehouse-install-visual-studio.md)」を参照してください。
+**Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
 
-**Visual Studio で Azure SQL DW に接続します。** 手順については、「[Visual Studio で SQL Data Warehouse に接続する](sql-data-warehouse-get-started-connect.md)」の手順 1 と 2 を参照してください。
+**Visual Studio で Azure SQL DW に接続します。** 手順については、「[Visual Studio で SQL Data Warehouse に接続する](../sql-data-warehouse/sql-data-warehouse-get-started-connect.md)」の手順 1 と 2 を参照してください。
 
 >[AZURE.NOTE] SQL Data Warehouse で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
 
@@ -114,7 +114,7 @@ Windows PowerShell コマンド コンソールを開きます。以下の Power
 	$source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
 	$ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
 	$wc = New-Object System.Net.WebClient
-	$wc.DownloadFile($source, $ps1_dest) 
+	$wc.DownloadFile($source, $ps1_dest)
 	.\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 
 正しく実行されると、現在の作業ディレクトリが *- DestDir* に変わります。画面は次のようになります。
@@ -149,13 +149,13 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 				if ($env_path -notlike '*' +$AzCopy_path_i+'*'){
 					Write-Host $AzCopy_path_i 'not in system path, add it...'
 					[Environment]::SetEnvironmentVariable("Path", "$AzCopy_path_i;$env_path", "Machine")
-					$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") 
+					$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 					$env_path = $env:Path
-				}	
+				}
 
 - AzCopy を使用して、パブリック BLOB から**プライベート BLOB ストレージ アカウントにデータをコピーします**
 
-		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"	
+		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
 		$start_time = Get-Date
 		AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
 		$end_time = Get-Date
@@ -166,20 +166,20 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 
 - 次のコマンドで、プライベート BLOB ストレージ アカウントから **(LoadDataToSQLDW.sql を実行して) Polybase を使用して Azure SQL DW にデータを読み込みます**。
-	
+
 	- スキーマの作成
 
 			EXEC (''CREATE SCHEMA {schemaname};'');
 
 	- データベース スコープの資格情報の作成
-			
-			CREATE DATABASE SCOPED CREDENTIAL {KeyAlias} 
-			WITH IDENTITY = ''asbkey'' , 
+
+			CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
+			WITH IDENTITY = ''asbkey'' ,
 			Secret = ''{StorageAccountKey}''
 
 	- Azure Storage BLOB の外部データ ソースの作成
 
-			CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage} 
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
 			WITH
 			(
     			TYPE = HADOOP,
@@ -188,7 +188,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 			)
 			;
 
-			CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage} 
+			CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
 			WITH
 			(
     			TYPE = HADOOP,
@@ -199,10 +199,10 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 	- csv ファイルの外部ファイル形式を作成します。データは圧縮されず、フィールドはパイプ文字で区切られます。
 
-			CREATE EXTERNAL FILE FORMAT {csv_file_format} 
-			WITH 
+			CREATE EXTERNAL FILE FORMAT {csv_file_format}
+			WITH
 			(   
-    			FORMAT_TYPE = DELIMITEDTEXT, 
+    			FORMAT_TYPE = DELIMITEDTEXT,
     			FORMAT_OPTIONS  
     			(
         			FIELD_TERMINATOR ='','',
@@ -210,7 +210,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
     			)
 			)
 			;
-		
+
 	- Azure Blob ストレージに NYC タクシー データセットの外部料金および乗車のテーブルを作成します。
 
 			CREATE EXTERNAL TABLE {external_nyctaxi_fare}
@@ -244,7 +244,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
        			rate_code char(3),
        			store_and_fwd_flag char(3),
        			pickup_datetime datetime  not null,
-       			dropoff_datetime datetime, 
+       			dropoff_datetime datetime,
        			passenger_count int,
        			trip_time_in_secs bigint,
        			trip_distance float,
@@ -264,40 +264,40 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 	- Azure Blob ストレージの外部テーブルのデータを SQL Data Warehouse に読み込む
 
 			CREATE TABLE {schemaname}.{nyctaxi_fare}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
-			SELECT * 
+			AS
+			SELECT *
 			FROM   {external_nyctaxi_fare}
 			;
 
 			CREATE TABLE {schemaname}.{nyctaxi_trip}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
-			SELECT * 
+			AS
+			SELECT *
 			FROM   {external_nyctaxi_trip}
 			;
 
 	- サンプル データ テーブル (NYCTaxi\_Sample) を作成し、乗車および料金テーブルで SQL クエリを選択してデータをテーブルに挿入します(このチュートリアルのいくつかの手順では、このサンプル テーブルを使用する必要があります)。
 
 			CREATE TABLE {schemaname}.{nyctaxi_sample}
-			WITH 
+			WITH
 			(   
     			CLUSTERED COLUMNSTORE INDEX,
 				DISTRIBUTION = HASH(medallion)
 			)
-			AS 
+			AS
 			(
 	    		SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount,
 				tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
-				tip_class = CASE 
+				tip_class = CASE
 						WHEN (tip_amount = 0) THEN 0
                         WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
                         WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
@@ -321,7 +321,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 ![プロット #21][21]
 
 >[AZURE.TIP] **独自のデータを使用する:** 実際のアプリケーションでオンプレミスのコンピューターにデータがある場合でも、AzCopy を使用してオンプレミスのデータをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
-	
+
 >[AZURE.TIP] 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
 
 
@@ -453,7 +453,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 	-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
 	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
-	
+
 	RETURNS float
 	AS
 	BEGIN
@@ -474,7 +474,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	END
 	GO
 
-	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude, 
+	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
 	dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
 	FROM <schemaname>.<nyctaxi_trip>
 	WHERE datepart("mi",pickup_datetime)=1
@@ -500,7 +500,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 	-- User-defined function calculate the direct distance between two geographical coordinates.
 	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
-	
+
 	RETURNS float
 	AS
 	BEGIN
@@ -519,12 +519,12 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
   		END
   		RETURN @distance
 	END
-	GO 
+	GO
 
 この関数を呼び出して SQL クエリで特徴を生成する場合の例を以下に示します。
 
 	-- Sample query to call the function to create features
-	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude, 
+	SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
 	dbo.fnCalculateDistance(pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude) AS DirectDistance
 	FROM <schemaname>.<nyctaxi_trip>
 	WHERE datepart("mi",pickup_datetime)=1
@@ -534,7 +534,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** このクエリは、乗車場所と降車場所の緯度と経度、およびマイル単位の直線距離を示す (2,803,538 行で構成される) テーブルを生成します。最初の 3 つの行の結果を次に示します。
 
-|pickup\_latitude | pickup\_longitude | dropoff\_latitude |dropoff\_longitude | DirectDistance |
+||pickup\_latitude | pickup\_longitude | dropoff\_latitude |dropoff\_longitude | DirectDistance |
 |---| --------- | -------|-------| --------- | -------|
 |1 | 40\.731804 | -74.001083 | 40\.736622 | -73.988953 | .7169601222 |
 |2 | 40\.715794 | -74,010635 | 40\.725338 | -74.00399 | .7448343721 |
@@ -564,7 +564,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 Azure Machine Learning に進む準備ができれば、次のいずれかを実行できます。
 
 1. 最終的な SQL クエリを保存してデータをサンプリングし、クエリをコピーして直接 Azure Machine Learning の[リーダー][reader] モジュールに貼り付けます。または、
-2. 構築するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しい SQL DW テーブルに保持し、Azure Machine Learning の[リーダー][reader] モジュールでその新しいテーブルを使用します。これは、前の手順の PowerShell スクリプトで既に行われています。リーダー モジュールでは、このテーブルから直接読み取ることできます。 
+2. 構築するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しい SQL DW テーブルに保持し、Azure Machine Learning の[リーダー][reader] モジュールでその新しいテーブルを使用します。これは、前の手順の PowerShell スクリプトで既に行われています。リーダー モジュールでは、このテーブルから直接読み取ることできます。
 
 
 ## <a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
@@ -575,7 +575,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 AzureML ワークスペースを既にセットアップしている場合は、サンプルの IPython Notebook を AzureML IPython Notebook サービスに直接アップロードして、実行を開始できます。AzureML IPython Notebook サービスにアップロードする手順を次に示します。
 
-1. AzureML ワークスペースにログインし、Web ページの上部にある [Studio] をクリックしてから、左側にある [NOTEBOOKS] をクリックします。 
+1. AzureML ワークスペースにログインし、Web ページの上部にある [Studio] をクリックしてから、左側にある [NOTEBOOKS] をクリックします。
 
 	![プロット #22][22]
 
@@ -964,4 +964,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

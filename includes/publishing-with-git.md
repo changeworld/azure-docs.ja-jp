@@ -1,6 +1,6 @@
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、BitBucket、CodePlex、Dropbox、Git、GitHub、Mercurial、TFS など、ソース コード管理やリポジトリ ツールから Web Apps への継続的なデプロイをサポートしています。これらのツールを使用すると、アプリケーションのコンテンツとコードをメンテナンスすることができ、必要なときに変更を Azure Web アプリにすばやく簡単にプッシュできます。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、GitHub、BitBucket、Visual Studio Team Services など、ソース コード管理やリポジトリ ツールからの継続的なデプロイをサポートしています。これらのツールを使用すると、アプリケーションのコンテンツとコードをメンテナンスして、変更を App Service アプリにすばやく簡単にプッシュできます。
 
-この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket、CodePlex、Dropbox、GitHub、Mercurial などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的なデプロイメントに TFS を使用する方法の詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信]」を参照してください。
+この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket や GitHub などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的なデプロイメントに VSTS を使用する方法の詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信]」を参照してください。
 
 > [AZURE.NOTE] この記事に記載されている Git コマンドの多くは、[Mac および Linux 用 Azure コマンド ライン ツール](/develop/nodejs/how-to-guides/command-line-tools/)を使用して Web アプリを作成する際に自動的に実行されます。
 
@@ -211,7 +211,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: ホスト 'hostname' を解決できませんでした
+**症状**: Couldn't resolve host 'hostname'
 
 **原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
@@ -219,7 +219,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: refs がなく、何も指定されていません。何も処理を行いません。'master' などの分岐を指定する必要があるものと思われます.
+**症状**: No refs in common and none specified; doing nothing.Perhaps you should specify a branch such as 'master'.
 
 **原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
@@ -229,7 +229,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: src refspec [branchname] と一致するものがありません。
+**症状**: src refspec [branchname] does not match any.
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
@@ -295,4 +295,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Visual Studio Team Services を使用した Azure への継続的な配信]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

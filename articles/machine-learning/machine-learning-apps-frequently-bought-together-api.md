@@ -21,7 +21,7 @@
 
 ## 重要: このサービスは推奨されていません
 
-**このサービスによって提供される Frequently Bought Together 機能は、より広範囲にわたる [Recommendations API](http://gallery.azureml.net/MachineLearningAPI/3574432384684cac9cc766e57729ea4c) に統合されました。このサービスではなく、Recommendations を使用することをお勧めします。**
+**このサービスによって提供される Frequently Bought Together 機能は、より広範囲にわたる [Recommendations API](http://gallery.cortanaintelligence.com/MachineLearningAPI/3574432384684cac9cc766e57729ea4c) に統合されました。このサービスではなく、Recommendations を使用することをお勧めします。**
 
 ##概要
 
@@ -39,4 +39,4 @@ Frequently Bought Together Web サービスをサブスクライブすると、[
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

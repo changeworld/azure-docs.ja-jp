@@ -18,16 +18,16 @@
 
 # 移行する行の選択にフィルター述語を使用する (Stretch Database)
 
-別個のテーブルに履歴データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。その一方で、テーブルに過去と現在の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。フィルター述語では、インライン テーブル値関数を呼び出す必要があります。このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
-
-CTP 3.1 ～ RC1 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
-
-フィルター述語を指定しない場合、テーブル全体が移行されます。
+別個のテーブルに履歴データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。その一方で、テーブルに現在と過去の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。フィルター述語は、インライン テーブル値関数です。このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
 
 >   [AZURE.NOTE] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
 
+フィルター述語を指定しない場合、テーブル全体が移行されます。
+
+CTP 3.1 ～ RC2 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」および「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。
+
 ## インライン テーブル値関数の基本要件
-Stretch Database フィルター機能に必要なインライン テーブル値関数は次の例のようになります。
+Stretch Database フィルター述語に必要なインライン テーブル値関数は次の例のようになります。
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datatype1, @column2 datatype2 [, ...n])
@@ -42,7 +42,7 @@ RETURN	SELECT 1 AS is_eligible
 フィルター述語で使用される列が削除または変更されるの回避するには、スキーマ バインディングが必要になります。
 
 ### 戻り値
-関数が空ではない結果を返すとき、行は移行の対象となります。何の行も返されない場合、行は移行の対象となりません。
+関数が空ではない結果を返す場合、行は移行の対象となります。それ以外の場合、つまり結果が返されない場合、行は移行の対象となりません。
 
 ### 条件
 &lt;*述語*&gt; は 1 つの条件か AND 論理演算子で結合された複数の条件で構成されます。
@@ -133,7 +133,117 @@ BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置�
 
 サブクエリや RAND() または GETDATE() のような非決定性の関数は使用できません。
 
-## 有効な関数の例
+## フィルター述語をテーブルに追加する
+ALTER TABLE ステートメントを実行し、FILTER\_PREDICATE パラメーターの値として既存のインライン テーブル値関数を指定することでテーブルにフィルター述語を追加します。次に例を示します。
+
+```tsql
+ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
+	FILTER_PREDICATE = dbo.fn_stretchpredicate(column1, column2),
+	MIGRATION_STATE = <desired_migration_state>
+) )
+```
+関数を述語としてテーブルにバインドすると、次のようになります。
+
+-   次のデータ移行時に、関数が空ではない値を返す行のみが移行されます。
+
+-   関数で使用される列にスキーマがバインドされます。テーブルでそのフィルター述語として関数が使用されている限り、これらの列は変更できません。
+
+テーブルでそのフィルター述語として関数が使用されている限り、インライン テーブル値関数は削除できません。
+
+## 日付で行をフィルター処理する
+次の例は、**date** 列に 2016 年 1 月 1 日より前の値を含む列が移行されます。
+
+```tsql
+-- Filter by date
+--
+CREATE FUNCTION dbo.fn_stretch_by_date(@date datetime2)
+RETURNS TABLE
+WITH SCHEMABINDING
+AS
+       RETURN SELECT 1 AS is_eligible WHERE @date < CONVERT(datetime2, '1/1/2016', 101)
+GO
+```
+
+## status 列の値で行をフィルター処理する
+次の例では、**status** 列に指定された値のいずれかを含む列が移行されます。
+
+```tsql
+-- Filter by status column
+--
+CREATE FUNCTION dbo.fn_stretch_by_status(@status nvarchar(128))
+RETURNS TABLE
+WITH SCHEMABINDING
+AS
+       RETURN SELECT 1 AS is_eligible WHERE @status IN (N'Completed', N'Returned', N'Cancelled')
+GO
+```
+
+## スライディング ウィンドウを使用して行をフィルター処理する
+スライディング ウィンドウを使用して行をフィルター処理する場合は、フィルター関数の以下の要件を考慮してください。
+
+-   関数は確定的である必要があります。このため、スライディング ウィンドウを時間の経過に伴い自動的に再計算する関数は作成できません。
+
+-   関数はスキーマ バインドを使用します。このため、スライディング ウィンドウを移動するのに、ALTER FUNCTION を呼び出して "所定の場所にある" 関数を毎日更新することはできません。
+
+次に示すフィルター述語の例では、**systemEndTime** 列に 2016 年 1 月 1 日より前の値を含む列が移行されます。
+
+```tsql
+CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160101(@systemEndTime datetime2)
+RETURNS TABLE
+WITH SCHEMABINDING  
+AS  
+RETURN SELECT 1 AS is_eligible
+  WHERE @systemEndTime < CONVERT(datetime2, '2016-01-01T00:00:00', 101) ;
+```
+
+テーブルにフィルター述語を適用します。
+
+```tsql
+ALTER TABLE <table name>
+SET (
+        REMOTE_DATA_ARCHIVE = ON
+                (
+                        FILTER_PREDICATE = dbo.fn_StretchBySystemEndTime20160101 (SysEndTime)
+                                , MIGRATION_STATE = OUTBOUND
+                )
+        )
+;
+```
+
+スライディング ウィンドウを更新するには、次のようにします。
+
+1.  新しいスライディング ウィンドウを指定する新しい関数を作成します。次の例では、2016 年 1 月 1 日ではなく、2106 年 1 月 2日より前の日付を選択します。
+
+2.  次の例に示すように、ALTER TABLE を呼び出して、以前のフィルター述語を新しい述語に置き換えます。
+
+3. 必要に応じて、DROP FUNCTION を呼び出して不要になった前のフィルター関数を削除します (この手順は例に含まれていません)。
+
+```tsql
+BEGIN TRAN
+GO
+        /*(1) Create new predicate function definition */
+        CREATE FUNCTION dbo.fn_StretchBySystemEndTime20160102(@systemEndTime datetime2)
+        RETURNS TABLE
+        WITH SCHEMABINDING
+        AS
+        RETURN SELECT 1 AS is_eligible
+               WHERE @systemEndTime < CONVERT(datetime2,'2016-01-02T00:00:00', 101)
+        GO
+
+        /*(2) Set the new function as filter predicate */
+        ALTER TABLE <table name>
+        SET
+        (
+               REMOTE_DATA_ARCHIVE = ON
+               (
+                       FILTER_PREDICATE = dbo.fn_StretchBySystemEndTime20160102(SysEndTime),
+                       MIGRATION_STATE = OUTBOUND
+               )
+        )
+COMMIT ;
+```
+
+## 有効なフィルター述語のその他の例
 
 -   次の例では、AND 論理演算子を使用して 2 つのプリミティブ条件を結合します。
 
@@ -200,7 +310,7 @@ BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置�
     GO
     ```
 
-## 無効な関数の例
+## 無効なフィルター述語の例
 
 -   非決定性の変換が含まれるため、次の関数は無効です。
 
@@ -289,32 +399,6 @@ SELECT * FROM stretch_table_name CROSS APPLY fn_stretchpredicate(column1, column
 ```
 関数が行に空ではない結果を返す場合、行は移行の対象となります。
 
-## フィルター述語をテーブルに追加する
-ALTER TABLE ステートメントを実行し、FILTER\_PREDICATE パラメーターの値として既存のインライン テーブル値関数を指定することでテーブルにフィルター述語を追加します。次に例を示します。
-
-```tsql
-ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
-	FILTER_PREDICATE = dbo.fn_stretchpredicate(column1, column2),
-	MIGRATION_STATE = <desired_migration_state>
-) )
-```
-関数を述語としてテーブルにバインドすると、次のようになります。
-
--   次のデータ移行時に、関数が空ではない値を返す行のみが移行されます。
-
--   関数で使用される列にスキーマがバインドされます。テーブルでそのフィルター述語として関数が使用されている限り、これらの列は変更できません。
-
-## フィルター述語をテーブルから削除する
-選択した行ではなく、テーブル全体を移行する場合、既存の FILTER\_PREDICATE を null に設定し、削除します。次に例を示します。
-
-```tsql
-ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
-	FILTER_PREDICATE = NULL,
-	MIGRATION_STATE = <desired_migration_state>
-) )
-```
-フィルター述語を削除すると、テーブルのすべての行が移行の対象になります。
-
 ## 既存のフィルター述語を置き換える
 ALTER TABLE ステートメントをもう一度実行し、FILTER\_PREDICATE パラメーターに新しい値を指定することで、以前に指定したフィルター述語を置換できます。次に例を示します。
 
@@ -400,8 +484,16 @@ RETURN	SELECT 1 AS is_eligible
 GO
 ```
 
-## フィルター述語を削除する
-テーブルでそのフィルター述語として関数が使用されている限り、インライン テーブル値関数は削除できません。
+## フィルター述語をテーブルから削除する
+選択した行ではなく、テーブル全体を移行する場合、既存の FILTER\_PREDICATE を null に設定し、削除します。次に例を示します。
+
+```tsql
+ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
+	FILTER_PREDICATE = NULL,
+	MIGRATION_STATE = <desired_migration_state>
+) )
+```
+フィルター述語を削除すると、テーブルのすべての行が移行の対象になります。このため、先に Azure からテーブルのすべてのリモート データを戻しておかない限り、後で同じテーブルにフィルター述語を指定することはできません。この制限は、新しいフィルター述語を指定したときに移行対象外となっている行が既に Azure に移行されているという状況を避けるために設けられています。
 
 ## テーブルに適用されたフィルター述語を確認する
 テーブルに適用されたフィルター述語を確認するには、カタログ ビュー **sys.remote\_data\_archive\_tables** を開き、**filter\_predicate** 列の値を確認します。値が null の場合、テーブル全体がアーカイブの対象になります。詳細については、「[sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」を参照してください。
@@ -410,4 +502,4 @@ GO
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

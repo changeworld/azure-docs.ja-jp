@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="mcoskun"
    manager="timlt"
-   editor="masnider,jessebenson"/>
+   editor="masnider,vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="11/11/2015"
+   ms.date="03/25/2016"
    ms.author="mcoskun"/>
 
 # Azure Service Fabric ステートフル サービスの Reliable Collection の概要
@@ -39,13 +39,13 @@ Reliable Collection では追加設定なしで強力な整合性が保証され
 Reliable Collection API は同時実行コレクション API (**System.Collections.Concurrent** 名前空間内にあります) が進化したものです。
 
 - 非同期: 同時実行コレクションとは異なり、操作がレプリケートおよび永続化されるため、タスクを返します。
-- 出力パラメーターなし: **ConditionalResult<T>** を使用して、出力パラメーターの代わりにブールと値を返します。**ConditionalResult<T>** は **Nullable<T>** に似ていますが、構造体にするために T は必要ありません。
+- out パラメーターを使用しない: `ConditionalValue<T>` を使用して out パラメーターではなく、ブール値および値を返します。`ConditionalValue<T>` は `Nullable<T>` に似ていますが、構造体にするには「T」は必要ありません。
 - トランザクション: トランザクション オブジェクトを使用することで、トランザクション内で複数の Reliable Collection に対してユーザーがグループ操作を実行できます。
 
 現在、**Microsoft.ServiceFabric.Data.Collections** には次の 2 つのコレクションが含まれています。
 
-- [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。**ConcurrentDictionary** のように、キーと値のいずれにも任意の型を使用できます。
-- [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。**ConcurrentQueue** のように、値には任意の型を使用できます。
+- [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。**ConcurrentDictionary** と同様に、キーと値のいずれにも任意の型を使用できます。
+- [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。**ConcurrentQueue** と同様に、値には任意の型を使用できます。
 
 ## 分離レベル
 分離レベルは、達成された分離の程度を示します。分離とは、いかなるときでも 1 つのトランザクションのみが実行されるシステム内のように、トランザクションが動作することを意味します。
@@ -54,8 +54,8 @@ Reliable Collection では、レプリカの操作とロールに合わせて、
 
 Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
-- **反復可能読み取り**: 変更されたが、まだ他のトランザクションによってコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
-- **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していた、トランザクション全体を通じて整合性のあるバージョンのデータになることを指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
+- **反復可能読み取り**: 変更されたが、まだ他のトランザクションによってコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) をご覧ください。
+- **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータのトランザクション一貫性のあるバージョンになることを指定します。トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) をご覧ください。
 
 Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
@@ -99,16 +99,16 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 
 ## 推奨事項
 
-- 読み取り操作 (**TryPeekAsync** や **TryGetAsync** など) によって返されるカスタム型のオブジェクトを変更しないでください。Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
+- 読み取り操作 (`TryPeekAsync` や `TryGetAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
 - 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。構造体型と組み込み型は値渡しであるため、詳細コピーを実行する必要はありません。
-- タイムアウトには **TimeSpan.MaxValue** を使用しないでください。タイムアウトはデッドロックの検出に使用してください。
+- タイムアウトに `TimeSpan.MaxValue` を使用しないでください。タイムアウトはデッドロックの検出に使用してください。
 - 別のトランザクションの `using` ステートメント内にトランザクションを作成しないでください。デッドロックを引き起こす可能性があるためです。
 
 次の点に注意してください。
 
 - すべての Reliable Collection API の既定のタイムアウトは 4 秒です。ほとんどの場合において、ユーザーがこれをオーバーライドすることはお勧めしません。
-- すべての Reliable Collection API で、既定のキャンセル トークンは **CancellationToken.None** です。
-- Reliable Dictionary のキー タイプ パラメーター (*TKey*) では、**GetHashCode()** と **Equals()** が正しく実装されている必要があります。キーは不変である必要があります。
+- すべての Reliable Collection API で、既定のキャンセル トークンは `CancellationToken.None` です。
+- Reliable Dictionary のキー タイプ パラメーター (*TKey*) では、`GetHashCode()` と `Equals()` が正しく実装されている必要があります。キーは不変である必要があります。
 - 列挙体は、コレクション内で整合性のあるスナップショットです。ただし、複数コレクションの列挙体にはコレクション間での整合性はありません。
 - Reliable Collection で高可用性を実現するには、各サービスに少なくとも 1 つのターゲットと、最低 3 台で構成されるレプリカ セットが必要です。
 
@@ -119,4 +119,4 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 - [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

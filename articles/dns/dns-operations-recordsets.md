@@ -19,9 +19,12 @@
 # PowerShell を使用して DNS レコードを管理する方法
 
 
+
 > [AZURE.SELECTOR]
+- [Azure ポータル](dns-operations-recordsets-portal.md)
 - [Azure CLI](dns-operations-recordsets-cli.md)
 - [PowerShell](dns-operations-recordsets.md)
+
 
 
 このガイドでは、Azure PowerShell を使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
@@ -294,4 +297,4 @@ CNAME レコード セットに格納できるレコードは最大 1 つであ�
 [レコード セットとレコードの作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理](dns-operations-dnszones.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

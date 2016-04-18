@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016" 
+	ms.date="02/08/2016"
 	ms.author="mohabib;fashah;bradsev"/>
 
 
@@ -74,13 +74,15 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 Azure のデータ サイエンス環境をセット アップするには、
 
-1. [ストレージ アカウントの作成](../storage-create-storage-account.md)
+1. [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)
 
 2. [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
 
 3. [データ サイエンス仮想マシンをプロビジョニングする](machine-learning-data-science-setup-sql-server-virtual-machine.md)。この仮想マシンは SQL Server と IPython Notebook サーバーの役割をします。
 
-	> [AZURE.NOTE] サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。VM のインストール後スクリプトが完了すると、サンプルの Sample Scripts: `C:\Users<user_name>\Documents\Data Science Scripts` と Sample IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples` が VM のドキュメント ライブラリに入ります。`<user_name>` は VM の Windows ログイン名です。ここでのサンプル フォルダーは **Sample Scripts** と **Sample IPython Notebooks** です。
+	> [AZURE.NOTE] サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。仮想マシンのインストール後スクリプトが完了すると、サンプルは仮想マシンのドキュメント ライブラリに入ります。
+	> - サンプルのスクリプト: `C:\Users<user_name>\Documents\Data Science Scripts`  
+	> - サンプルの IPython Notebooks: `C:\Users<user_name>\Documents\IPython Notebooks\DataScienceSamples` ここで `<user_name>` は VM の Windows ログイン名です。ここでのサンプル フォルダーは **Sample Scripts** と **Sample IPython Notebooks** です。
 
 
 データセットのサイズ、データ ソースの場所、選択された Azure の対象環境に基づくと、このシナリオは[シナリオ 5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)](../machine-learning-data-science-plan-sample-scenarios.md#largelocaltodb) と類似しています。
@@ -714,4 +716,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -91,8 +91,6 @@ App Service の認証および承認では、**要求が認証されない場合
 
 ここで示す以外の ID システムを使用する場合、「[.NET サーバー SDK でのカスタム認証のサポートのプレビュー](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth)」も参照してください。
 
-「[App Service の認証の概要](app-service-authentication-overview.md)」にも、上記のフローの詳細があります。このトピックには、Mobile Apps では使用されなくなった、しかし概念的な内容は引き続き利用できる App Service ゲートウェイに関する情報も含まれています。
-
 [iOS アプリに認証を追加する]: app-service-mobile-ios-get-started-users.md
 [Xamarin.iOS アプリに認証を追加する]: app-service-mobile-xamarin-ios-get-started-users.md
 [Xamarin.Android アプリに認証を追加する]: app-service-mobile-xamarin-android-get-started-users.md
@@ -104,4 +102,4 @@ App Service の認証および承認では、**要求が認証されない場合
 [Microsoft アカウント ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-twitter-authentication.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

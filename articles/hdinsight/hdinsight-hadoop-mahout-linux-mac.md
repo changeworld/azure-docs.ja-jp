@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="03/30/2016"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成
@@ -51,48 +51,26 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 * __類似性のリコメンデーション__: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。この場合、Mahout では、「_The Phantom Menace (ファントム メナス_)」、「_Attack of the Clones (クローンの攻撃)_」、「_Revenge of the Sith (シスの復讐)_」を推薦します。
 
-##データを読み込む
+###データの説明
 
-[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。次の手順を使用してデータをダウンロードし、クラスターの既定のストレージに読み込みます。
+[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。このデータは、クラスターの既定の記憶域 (`/HdiSamples/HdiSamples/MahoutMovieData`) にあります。
 
-1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
+2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示する際に、わかりやすいテキスト情報を提供するために使用されます。
 
-	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
-
-    * **Linux、Unix または OS X クライアント**: 「[Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
-
-    * **Windows クライアント**: 「[Windows からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
-
-2. MovieLens 100k アーカイブをダウンロードします。これには、1,700 本の映画に対する 1,000 人のユーザーによる評価 100,000 件が含まれています。
-
-        curl -O http://files.grouplens.org/datasets/movielens/ml-100k.zip
-
-3. 次のコマンドを使用して、アーカイブを抽出します。
-
-        unzip ml-100k.zip
-
-    これは **ml-100k** という名前の新しいフォルダーに内容を抽出します。
-
-4. HDInsight のストレージにデータをコピーするには、次のコマンドを使用します。
-
-        cd ml-100k
-        hdfs dfs -put u.data /example/data
+user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。次にデータの例を示します。
 
 
-    このファイルに含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。次にデータの例を示します。
+    196	242	3	881250949
+    186	302	3	891717742
+    22	377	1	878887116
+    244	51	2	880606923
+    166	346	1	886397596
 
-
-		196	242	3	881250949
-		186	302	3	891717742
-		22	377	1	878887116
-		244	51	2	880606923
-		166	346	1	886397596
-
-##ジョブを実行する
+##分析を実行する
 
 次のコマンドを実行して、リコメンデーション ジョブを実行します。
 
-	mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /example/data/u.data -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
 
 > [AZURE.NOTE] ジョブが完了するまでに数分かかる場合があり、複数の MapReduce ジョブを実行することがあります。
 
@@ -111,11 +89,12 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 	最初の列は `userID` です。'[' と ']' の間に入る値は `movieId`:`recommendationScore` です。
 
-2. **ml-100k** ディレクトリに含まれているデータの中には、データをよりユーザー フレンドリーにするために使用できるものもあります。最初に、次のコマンドを使用してデータをダウンロードします。
+2. 出力を moviedb.txt と共に使用して、よりわかりやすく情報を表示できます。最初に、次のコマンドを使用して、ファイルをローカルにコピーする必要があります。
 
 		hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
+        hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
 
-	これにより、出力データが現在のディレクトリの **recommendations.txt** という名前のファイルにコピーされます。
+	これにより、出力データが、現在のディレクトリの **recommendations.txt** という名前のファイルにコピーされます。また、映画データ ファイルもコピーされます。
 
 3. 次のコマンドを使用し、リコメンデーション出力のデータの映画の名前を検索する新しい Python スクリプトを作成します。
 
@@ -124,15 +103,15 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 	エディターが開いたら、ファイルの内容として次のコードを使用します。
 
         #!/usr/bin/env python
-        
+
         import sys
-        
+
         if len(sys.argv) != 5:
                 print "Arguments: userId userDataFilename movieFilename recommendationFilename"
                 sys.exit(1)
-        
+
         userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
-        
+
         print "Reading Movies Descriptions"
         movieFile = open(movieFilename)
         movieById = {}
@@ -140,7 +119,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
                 tokens = line.split("|")
                 movieById[tokens[0]] = tokens[1:]
         movieFile.close()
-        
+
         print "Reading Rated Movies"
         userDataFile = open(userDataFilename)
         ratedMovieIds = []
@@ -149,7 +128,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
                 if tokens[0] == userId:
                         ratedMovieIds.append((tokens[1],tokens[2]))
         userDataFile.close()
-        
+
         print "Reading Recommendations"
         recommendationFile = open(recommendationFilename)
         recommendations = []
@@ -160,13 +139,13 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
                         recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
                         break
         recommendationFile.close()
-        
+
         print "Rated Movies"
         print "------------------------"
         for movieId, rating in ratedMovieIds:
                 print "%s, rating=%s" % (movieById[movieId][0], rating)
         print "------------------------"
-        
+
         print "Recommended Movies"
         print "------------------------"
         for movieId, score in recommendations:
@@ -179,14 +158,14 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 		chmod +x show_recommendations.py
 
-4. Python スクリプトを実行します。以下では、`u.data` と `u.item` ファイルがある ml-100k ディレクトリにいるものと仮定しています。
+4. Python スクリプトを実行します。次は、すべてのファイルがダウンロードされているディレクトリにいることが前提となっています。
 
-		./show_recommendations.py 4 u.data u.item recommendations.txt
+		./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
 
 	これは、ユーザー ID 4 に対して生成されたリコメンデーションを表示します。
 
-	* **u.data** ファイルを使用して、ユーザーが評価した映画を取得します
-	* **u.item** ファイルを使用して、映画の名前を取得します
+	* **user-ratings.txt** ファイルを使用して、ユーザーが評価した映画を取得します
+	* **moviedb.txt** ファイルを使用して、映画の名前を取得します
 	* **recommendations.txt** を使用して、このユーザーの映画のリコメンデーションを取得します
 
 	このコマンドの出力は次のように表示されます。
@@ -245,7 +224,7 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 >
 > ```hdfs dfs -rm -f -r /example/data/mahoutout```
 
-##次のステップ
+## 次のステップ
 
 ここまで、Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
 
@@ -267,4 +246,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

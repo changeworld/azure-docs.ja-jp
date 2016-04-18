@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="03/28/2016" 
-	ms.author="ealsur@hotmail.com"/>
+	ms.author="mimig"/>
 
 # DocumentDB によるソーシャル化
 
@@ -182,7 +182,7 @@ Azure Search の詳細については、「[A Hitchhikers Guide to Search (検�
 
 人を夢中にさせるような話なので、シンプルなデータベースやファイルからこれらのパターンや情報を抽出するには、数理科学の博士号が必要と思っておられるでしょう。しかし、それは違います。
 
-[Cortana Analytics Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) の一部である [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成、[R](https://en.wikipedia.org/wiki/R_(programming_language)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能な完全に管理されたクラウド サービスです。
+[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) の一部である [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成、[R](https://en.wikipedia.org/wiki/R_(programming_language)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能な完全に管理されたクラウド サービスです。
 
 ## まとめ
 
@@ -198,4 +198,4 @@ Azure Search の詳細については、「[A Hitchhikers Guide to Search (検�
 
 または、[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

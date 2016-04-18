@@ -48,7 +48,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] Azure PowerShell、HDInsight .NET SDK または Azure Resource Manager のテンプレートは、スクリプト アクションを適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 1. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
@@ -154,4 +154,4 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-linux.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/04/2016"
+	ms.date="04/05/2016"
 	ms.author="jgao"/>
 
 # Azure CLI を使用した HDInsight での Hadoop クラスターの管理
@@ -47,7 +47,7 @@
 	
 ##クラスターの作成
 
-「[Azure CLI を使用した HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-cli.md)」を参照してください。
+「[Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」をご覧ください。
 
 ##クラスターの一覧と詳細の表示
 クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
@@ -106,4 +106,4 @@ Hadoop クラスターのサイズを変更するには:
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->
