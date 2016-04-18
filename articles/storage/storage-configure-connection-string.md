@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Storage への接続文字列の構成 |Microsoft Azure"
-	description="Azure ストレージ アカウントへの接続文字列を構成する方法を説明します。接続文字列には、ストレージ アカウント内のリソースへのプログラム アクセスを認証するために必要な情報が含まれています。接続文字列は、ユーザーが所有するアカウントのアカウント アクセス キーをカプセル化できます。または、アクセス キーなしでアカウント内のリソースにアクセスするための共有アクセス署名を含むことができます。"
+	description="Azure ストレージ アカウントへの接続文字列を作成します。接続文字列には、アプリケーションからストレージ アカウント内のリソースへのアクセスを認証するために必要な情報が含まれています。"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="04/01/2016"
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -96,13 +96,13 @@ BLOB サービスで使用するためにカスタム ドメイン名が登録�
 
 ### 共有アクセス署名で BLOB エンドポイントを指定する
 
-明示的なエンドポイントを持つ接続文字列を作成し、共有アクセス署名を介してストレージ リソースにアクセスできます。この場合、アカウント名とアカウント キーの資格情報ではなく、共有アクセス署名を接続文字列に含めて指定できます。共有アクセス署名トークンは、アクセス先のリソース、アクセス可能な期間、付与される権限に関する情報をカプセル化します。共有アクセス署名の詳細については、「[共有アクセス署名を使用したアクセスの委任](https://msdn.microsoft.com/library/ee395415.aspx)」を参照してください。
+明示的なエンドポイントを持つ接続文字列を作成し、共有アクセス署名を介してストレージ リソースにアクセスできます。この場合、アカウント名とアカウント キーの資格情報ではなく、共有アクセス署名を接続文字列に含めて指定できます。共有アクセス署名トークンは、アクセス先のリソース、アクセス可能な期間、付与される権限に関する情報をカプセル化します。共有アクセス署名の詳細については、「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 共有アクセス署名を含む接続文字列を作成するには、文字列を次の形式で指定します。
 
-    BlobEndpoint=myBlobEndpoint; QueueEndpoint=myQueueEndpoint;TableEndpoint=myTableEndpoint;SharedAccessSignature=base64Signature
+    BlobEndpoint=myBlobEndpoint; QueueEndpoint=myQueueEndpoint;TableEndpoint=myTableEndpoint;SharedAccessSignature=sasToken
 
-エンドポイントには、既定のサービス エンドポイントとカスタム エンドポイントのいずれかを指定できます。`base64Signature` は、共有アクセス署名の署名部分に対応します。署名は、有効な署名対象文字列とキーを SHA256 アルゴリズムを使用して計算処理した後、その値を Base64 エンコードした HMAC 値です。
+エンドポイントには、既定のサービス エンドポイントとカスタム エンドポイントのいずれかを指定できます。`sasToken` は、SAS URL の疑問符 (?) に続くクエリ文字列です。
 
 ### エンドポイント サフィックスを含む接続文字列を作成する
 
@@ -119,4 +119,9 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 	AccountKey=<account-key>;
 	EndpointSuffix=core.chinacloudapi.cn;
 
-<!---HONumber=AcomDC_0218_2016-->
+## 次のステップ
+
+- [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
+- [Azure ストレージ エクスプローラー](storage-explorers.md)
+
+<!---HONumber=AcomDC_0406_2016-->

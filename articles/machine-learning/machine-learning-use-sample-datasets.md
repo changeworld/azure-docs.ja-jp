@@ -21,7 +21,7 @@
 
 [top]: #machine-learning-sample-datasets
 
-Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。こうしたサンプル データセットの多くは、[Cortana Analytics ギャラリー](http://gallery.azureml.net/)のサンプル モデルで使用されています。その他にも Machine Learning で使用するさまざまな種類のデータの例が含まれています。
+Azure Machine Learning で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。こうしたサンプル データセットの多くは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)のサンプル モデルで使用されています。その他にも Machine Learning で使用するさまざまな種類のデータの例が含まれています。
 
 データセットの一部は、Azure BLOB ストレージで使用できます。次の表ではこれらのデータセットへの直接のリンクを提供します。これらのデータ セットは、[リーダー][reader] モジュールを使用して実験で使用できます。
 
@@ -316,4 +316,4 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

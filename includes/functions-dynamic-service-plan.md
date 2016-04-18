@@ -1,23 +1,17 @@
-## Dynamic Service Plan
+## 動的サービス プラン
 
-In the Dynamic Service Plan, your function apps will be assigned to a function app instance. If needed more instances will be added dynamically.
-Those instances can span across multiple computing resources, making the most out of the available Azure infrastructure. Moreover, your functions will run in parallel minimizing the total time needed to process requests. Execution time for each function is added up, in seconds, and aggregated by the containing function app. With cost driven by the number of instances, their memory size, and total execution time as measured in Gigabyte seconds. This is an excellent option if your compute needs are intermittent or your job times tend to be very short as it allows you to only pay for compute resources when they are actually in use.   
+動的サービス プランでは、関数アプリが関数アプリ インスタンスに割り当てられます。場合によっては、インスタンスがさらに動的に追加されます。これらのインスタンスを複数のコンピューティング リソース全体に分散して、使用可能な Azure インフラストラクチャを最大限に活用できます。さらに、関数を併行して実行することで、要求の処理に必要な合計時間を最小限に抑えます。各関数の実行時間が秒単位で加算され、上位関数アプリによって集計されます。料金は、インスタンス数、メモリ サイズ、実行時間の合計数 (ギガバイト秒で計測) に応じて決まります。これは、実際に使用したコンピューティング リソースに対してのみ支払うだけで済むため、コンピューティング ニーズが断続的であったり、ジョブ時間が非常に短い場合に最適なオプションです。
 
-### Memory tier
+### メモリ階層
 
-Depending on your function needs you can select the amount of memory required to run them in the Function App (container of functions).
-The memory size options vary from **128MB to 1536MB**. 
-The selected memory size corresponds to the Working Set needed by all the functions that are part of your function app. 
-If your code requires more memory than the selected size, the function app instance will be shut down due to lack of available memory.
+関数のニーズに基づいて、関数アプリ (関数のコンテナー) での実行に必要なだけのメモの量を選択できます。メモリ サイズには、**128 MB ～ 1536 MB** のオプションがあります。選択したメモリ サイズは、関数アプリの一部であるすべての機能に必要なワーキング セットに対応します。選択したサイズよりも多くのメモリがコードで必要になった場合、関数アプリ インスタンスが空きメモリ不足によりシャットダウンされます。
 
-### Scaling
+### スケーリング
 
-The Azure Functions platform will evaluate the traffic needs, based on the configured triggers, to decide when to scale up or down. 
-The granularity of scaling is the function app. Scaling up in this case means adding more instances of a function app. Inversely as traffic goes down, function app instances are disabled- eventually scaling down to zero when none are running.  
+Azure Functions プラットフォームは構成されたトリガーに基づいてトラフィックのニーズを評価して、スケールアップやスケールダウンのタイミングを決定します。スケーリングの粒度は、関数アプリです。つまり、スケールアップは関数アプリのインスタンスの追加を意味します。反対に、トラフィックが減ると、関数アプリのインスタンスが無効化され、何も実行されていない場合、最終的に 0 にスケールダウンされます。
 
-### Resource consumption and billing
+### リソース消費と課金
 
-In the Dynamic mode resource allocation is done differently than the standard App Service plan, therefore the consumption model is also different, allowing for a "pay-per-use" model. 
-Consumption will be reported per function app, only for time when code is being executed.  
-It is computed by multiplying the memory size (in GB) by the total amount of execution time (in seconds) for all functions running inside that function app. 
-The unit of consumption will be **GB-s (Gigabyte Seconds)**.
+動的モードでは、リソースは標準の App Service プランとは異なる方法で割り当てられるため、消費モデルも異なり、"従量課金" モデルが採用されます。消費量は、コードが実行される間だけ、関数アプリごとにレポートされます。これは、メモリ サイズ (GB) に、その関数アプリ内で実行されるすべての関数の実行時間の合計を掛けて計算されます。消費量の単位は **GB (ギガバイト秒)** です。
+
+<!---HONumber=AcomDC_0406_2016-->

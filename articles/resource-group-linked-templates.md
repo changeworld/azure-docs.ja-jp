@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure リソース マネージャーでのリンクされたテンプレートの使用"
+   pageTitle="Azure Resource Manager でのリンクされたテンプレート | Microsoft Azure"
    description="Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/07/2015"
+   ms.date="04/04/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのリンクされたテンプレートの使用
@@ -113,7 +113,7 @@
 リンクされたテンプレートからメイン テンプレートに値を渡す必要がある場合は、リンクされたテンプレートの **outputs** セクションで値を作成できます。例については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
 ## 次のステップ
-- [テンプレートの作成](./resource-group-authoring-templates.md)
-- [テンプレートのデプロイ](resource-group-template-deploy.md)
+- リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」をご覧ください。
+- リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0406_2016-->

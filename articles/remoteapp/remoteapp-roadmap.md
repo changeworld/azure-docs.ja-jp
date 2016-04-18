@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="03/23/2016"
+    ms.date="04/05/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
@@ -25,7 +25,7 @@
 |Azure RemoteApp 用 Windows 10 Universal Application with Continuum - プレビュー|○| |
 |個々のアプリケーションを特定のユーザーに発行する機能 - **プライベート プレビュー** ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|○ | |
 |Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/))| ○| |
-|Azure RemoteApp の HTML5 ベースのクライアント|○ ||
+|Azure RemoteApp の HTML5 ベースのクライアント| |○|
 |Azure リソース マネージャー (ARM) のサポート||○|
 |Azure v2 リソースのサポート| |○|
 |Cloud Solution Provider (CSP)||○|
@@ -47,4 +47,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

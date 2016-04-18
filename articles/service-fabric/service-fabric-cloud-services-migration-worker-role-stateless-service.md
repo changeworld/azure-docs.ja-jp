@@ -138,7 +138,7 @@ VM ロールの構成設定が Cloud Services に設定され、その VM ロー
  - **Config:** サービスのすべての構成ファイルと設定。
  - **Data:** サービスに関連する静的なデータ ファイル。
 
-これらの各パッケージは、独立してバージョンを管理し、アップグレードすることができます。Cloud Services と同様に、config パッケージには、プログラムで API を介してアクセスすることができます。また、イベントを使用して、サービスに config パッケージの変更を通知することができます。Settings.xml ファイルは、同様のキーと値の構成とプログラムによるアクセスに使用できます。ただし、Cloud Services とは異なり、Service Fabric の config パッケージには、XML、JSON、YAML、カスタム バイナリ形式など、任意の形式の任意の構成ファイルを含めることができます。
+これらの各パッケージは、独立してバージョンを管理し、アップグレードすることができます。Cloud Services と同様に、config パッケージには、プログラムで API を介してアクセスすることができます。また、イベントを使用して、サービスに config パッケージの変更を通知することができます。Settings.xml ファイルは、App.config ファイルのアプリ設定セクションと同様に、キーと値の構成とプログラムによるアクセスに使用できます。ただし、Cloud Services とは異なり、Service Fabric の config パッケージには、XML、JSON、YAML、カスタム バイナリ形式など、任意の形式の任意の構成ファイルを含めることができます。
 
 
 ### 構成にアクセスする
@@ -277,4 +277,4 @@ Service Fabric の全機能を活用できるように、Service Fabric の Reli
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

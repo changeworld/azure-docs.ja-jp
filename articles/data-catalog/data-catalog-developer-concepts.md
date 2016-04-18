@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Data Catalog 開発者の概念 | Microsoft Azure"
-   description="Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
+   description="この記事では、Data Catalog REST API で公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
    services="data-catalog"
    documentationCenter=""
    authors="dvana"
@@ -10,10 +10,10 @@
 <tags 
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/10/2016"
+   ms.date="03/29/2016"
    ms.author="derrickv"/>
 
 # Azure Data Catalog 開発者の概念
@@ -24,7 +24,7 @@ Microsoft **Azure Data Catalog** は、データ ソース検出およびデー�
 
 **Azure Data Catalog** の概念モデルは、**カタログ**、**ユーザー**、**資産**、**注釈**という 4 つの主要な概念に基づいています。
 
-![概念][1]
+![](media/data-catalog-developer-concepts/concept2.png)
 
 *図 1 - Azure Data Catalog の簡略化された概念モデル*
 
@@ -58,7 +58,7 @@ Azure Data Catalog では、ID およびアクセス管理のために Azure Act
 
 注釈は、資産に関するメタデータを表す項目です。
 
-注釈の例としては、説明、タグ、スキーマ、ドキュメントなどがあります。資産の型と注釈の型の完全な一覧が、「資産オブジェクト モデル」セクションに示されています。
+注釈の例としては、説明、タグ、スキーマ、ドキュメントなどがあります。資産の型と注釈の型の完全な一覧が、下の「[資産オブジェクト モデル](#asset-model)」セクションに示されています。
 
 ## 注釈のクラウド ソーシングとユーザーの観点 (意見の多重度)
 
@@ -74,7 +74,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 このパターンは、オブジェクト モデル内のほとんどの項目に適用されます。JSON ペイロードのオブジェクト型が、多くの場合、シングルトンが想定されるプロパティの配列であるのはこのためです。
 
-たとえば、資産下で、ルートは説明オブジェクトの配列です。配列プロパティは、“descriptions” という名前です。説明オブジェクトには、説明、タグ、friendlyName の 3 つのプロパティがあります。パターンとしては、これらのプロパティの 1 つ以上を入力する各ユーザーが、ユーザーが指定した値に対して作成された説明オブジェクトを取得します。
+たとえば、資産下で、ルートは説明オブジェクトの配列です。配列プロパティは、“descriptions” という名前です。説明オブジェクトには、description という 1 つのプロパティがあります。パターンとしては、description を入力する各ユーザーは、そのユーザーが指定した値に対して作成された説明オブジェクトを取得します。
 
 その後、UX は組み合わせの表示方法を選択できます。表示には 3 つの異なるパターンがあります。
 
@@ -82,125 +82,132 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 -	もう 1 つのパターンは、「統合」です。このパターンでは、さまざまなユーザーからのすべての値がマージされ、重複部分が削除されます。Azure Data Catalog ポータル UX でのこのパターンの例には、タグやエキスパート プロパティがあります。
 -	3 つ目のパターンは、「最後の書き込みを優先」です。このパターンでは、最後に入力された最新の値のみが表示されます。このパターンの例には、friendlyName があります。
 
+<a name="asset-model"/>
 ## 資産オブジェクト モデル
 
 「主要な概念」セクションで説明したように、**Azure Data Catalog** オブジェクト モデルには、資産または注釈を指定できる項目が含まれます。項目には、省略可能または必須のプロパティがあります。一部のプロパティは、すべての項目に適用されます。一部のプロパティは、すべての資産に適用されます。一部のプロパティは、特定の資産の型のみに適用されます。
+
+### システム プロパティ
+
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>項目が最後に変更された日時。項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。項目に対する一意のアドレス可能 URI です。公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>String</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック同時実行制御に使用できる項目のバージョンに対応する文字列。"*" を使用して任意の値と照合することができます。</td></tr></table>
 
 ### 共通のプロパティ
 
 これらのプロパティは、すべてのルート資産の型とすべての注釈の型に適用されます。
 
-> [AZURE.NOTE] 名前がダブル アンダースコアで始まるプロパティは、システムの型です。
-
-|**プロパティ名**|**データ型**|**説明**
-|---|---|---
-|modifiedTime|DateTime|ルートが最後に変更された日時。これは、クライアントによって設定されます (この値はサーバーでは管理されません)。
-|__id|String|項目の ID (読み取り専用)。この ID は、カタログ内の資産に対して一意であることが保証されています。
-|__type|String|資産の型 (読み取り専用)。
-|__\_\_creatorId|String|資産を一意に識別するために資産の作成者によって使用される文字列。
+<table>
+<tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
+<tr><td>fromSourceSystem</td><td>Boolean</td><td>項目のデータがソース システム (SQL Server データベース、Oracle Database など) から派生したのか、またはユーザーによって作成されたのかを示します。</td></tr>
+</table>
 
 ### 共通のルート プロパティ
-
+<p>
 これらのプロパティは、すべてのルート資産の型に適用されます。
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>String</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>Data Source Location</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。dsl の構造は、ソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>containerId</td><td>String</td><td>データ ソースのコンテナーの資産の ID です。このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
 
-|**プロパティ名**|**データ型**|**説明**
-|---|---|---
-|name|String|データ ソースの場所の情報から派生した名前。
-|dsl|Data Source Location|データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。dsl の構造は、ソースの種類によって異なります。
-|dataSource|DataSourceInfo|資産の型の詳細な説明。
-|lastRegisteredBy|SecurityPrincipal|この資産を最後に登録したユーザーを説明します。ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。
-|lastRegisteredTime|dateTime|この資産が最後にカタログに登録された日時。
-|containerId|String|データ ソースのコンテナーの資産の ID です。このプロパティは、コンテナー型ではサポートされていません。
+### シングルトン以外の注釈の共通プロパティ
+
+これらのプロパティは、シングルトン以外のすべての注釈の型に適用されます (つまり、1 つの資産に対して複数の注釈を適用できます)。
+
+<table>
+<tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
+<tr><td>key</td><td>String</td><td>現在のコレクション内で注釈を一意に識別するユーザー指定キー。キーの長さは 256 文字を超えてはなりません。</td></tr>
+</table>
 
 ### ルート資産の型
 
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。
 
-|**資産の型**|**追加のプロパティ**|**データ型**|**説明**
-|---|---|---|---
-|テーブル|||テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。
-|Measure|||この型は、Analysis Services のメジャーを表します。
-||Measure|分割|メジャーを説明するメタデータ。
-||isCalculated|Boolean|メジャーが計算されるかどうかを指定します。
-||measureGroup|String|メジャーの物理的なコンテナー。
-||goalExpression|String|KPI の対象の値を返す MDX 数値式または計算。
-||valueExpression|String|KPI の実際の値を返す MDX 数値式。
-||statusExpression|String|指定された時点での KPI の状態を表す MDX 式。
-||trendExpression|String|時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。
-||measureGroup|String|メジャーの物理的なコンテナー。
-|レポート|||この型は、SQL Server Reporting Services のレポートを表します。
-||CreatedBy|String| |
-||CreatedDate|String| |
-|コンテナー|||この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。
+<table><tr><td><b>資産の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>テーブル</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
+<tr><td>レポート</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>コンテナー</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。</td></tr></table>
 
 ### 注釈の型
 
 注釈の型は、カタログ内で他の型に割り当てることのできるメタデータの種類を表します。
 
-|**注釈の型**|**追加のプロパティ**|**データ型**|**説明**
-|---|---|---|---
-|Description|||システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、説明オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。
-||friendlyName|string|データ ソースから派生した名前の代わりに使用できるフレンドリ名。これは、表示と検索を行う場合に有用です。
-||tags|string|資産のタグの配列。
-||description|string|資産の簡単な説明 (2 ～ 3 行)。
-|Schema|||スキーマは、データの構造を説明します。属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。この情報はすべて、データ ソースから派生します。通常、資産には 1 つのスキーマ項目があります。
-||columns|分割|列オブジェクトの配列。データ ソースから派生した情報を含む列を説明します。
-|SchemaDescription|||スキーマで定義されている各属性の説明とタグ セットが含まれています。システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、SchemaDescription オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに SchemaDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、属性に関する知識を提供した各ユーザーの説明)。SchemaAttributes はスキーマに疎結合されているため、同期しなくなる可能性があります。つまり、SchemaDescription は、スキーマに存在しない列を説明する場合や、最近追加された新しい列を参照できない場合があります。これらの同期を保つのは、ライターの責任です。データ ソースには、説明情報も含まれる場合があります。これは、ツールを実行するときに作成される追加の schemaDescription オブジェクトです。
-||columnDescriptions|ColumnDescription|スキーマ内の列を説明する ColumnDescriptions の配列です。
-|Expert|||データ セット内でエキスパートと見なされるユーザーの一覧が含まれています。説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。各ユーザーは、エキスパートの独自の一覧を指定できます。そのユーザーだけがエキスパート オブジェクトを編集できます (管理者および資産の所有者は、エキスパート オブジェクトを削除できますが、編集することはできません)。
-||experts|string|電子メール アドレスの配列。
-|Preview|||プレビューには、資産のデータの上位 20 行のスナップショットが含まれています。プレビューは、一部の資産の型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。
-||preview|オブジェクト|列を表すオブジェクトの配列。各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。
-|AccessInstruction|||データ ソースへのアクセスを要求する方法に関する情報。Catalog ポータルの [アクセスの要求] フィールドに表示される情報です。
-||mimeType|string|コンテンツの MIME の種類。
-||content|string|このデータ資産にアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。
-|TableDataProfile|||
-||numberOfRows|int|データ セット内の行の数
-||size|long|データ セットのバイト単位のサイズ。
-||schemaModifiedTime|string|スキーマが最後に変更された日時
-||dataModifiedTime|string|データ セットが最後に変更された (データが追加、変更、または削除された) 日時
-|ColumnsDataProfile|||
-||columns|ColumnDataProfile|データ セット内の行の数
-|Documentation|||特定の資産には 1 つのドキュメントしか関連付けることができません。
-||mimeType|string|コンテンツの MIME の種類。
-||content|string|ドキュメントのコンテンツ。
+<table>
+<tr><td><b>注釈の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
+<tr><td>説明</td><td></td><td></td><td>これには、資産の説明が含まれています。システムの各ユーザーは、独自の説明を追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、Description オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr>
+<tr><td></td><td>description</td><td>string</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
+
+<tr><td>タグ</td><td></td><td></td><td>これには、資産のタグが含まれています。システムの各ユーザーは、資産に対して複数のタグを追加できます。Tag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます(管理者および資産の所有者は、Tag オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、各資産に Tag オブジェクトの配列があります。</td></tr>
+<tr><td></td><td>tag</td><td>string</td><td>資産を説明するタグ。</td></tr>
+
+<tr><td>FriendlyName</td><td></td><td></td><td>これには、資産のフレンドリ名が含まれています。FriendlyName はシングルトンの注釈です。1 つの FriendlyName のみを資産に追加できます。FriendlyName オブジェクトを作成したユーザーのみがこのオブジェクトを編集できます(管理者および資産の所有者は、FriendlyName オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。</td></tr>
+<tr><td></td><td>friendlyName</td><td>string</td><td>資産のフレンドリ名。</td></tr>
+
+<tr><td>スキーマ</td><td></td><td></td><td>スキーマは、データの構造を説明します。属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。この情報はすべて、データ ソースから派生します。スキーマはシングルトンの注釈です。1 つのスキーマのみを資産に追加できます。</td></tr>
+<tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。データ ソースから派生した情報を含む列を説明します。</td></tr>
+
+<tr><td>ColumnDescription</td><td></td><td></td><td>これには、列の説明が含まれています。システムの各ユーザーは、複数の列に対して独自の説明 (1 列ごとに最大 1 つの説明) を追加できます。ColumnDescription オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます(管理者および資産の所有者は、ColumnDescription オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに ColumnDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明に加えて、列に関する知識を提供した各ユーザーの 1 列あたり 1 つの説明)。ColumnDescription は Schema と緩やかにバインドされているため、同期しなくなる可能性があります。すなわち、Schema に存在しなくなった列を ColumnDescription が説明することがあります。これらの同期を保つのは、ライターの責任です。データ ソースには、列の説明情報も含まれる場合があります。これは、ツールを実行するときに作成される追加の ColumnDescription オブジェクトです。</td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>この説明が参照する列の名前。</td></tr>
+<tr><td></td><td>description</td><td>String</td><td>列の簡単な説明 (2 ～ 3 行)。</td></tr>
+
+<tr><td>ColumnTag</td><td></td><td></td><td>これには、列のタグが含まれています。システムの各ユーザーは、特定の 1 つの列に対して複数のタグを追加できます。複数の列に対して複数のタグを追加することもできます。ColumnTag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます(管理者および資産の所有者は、ColumnTag オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、各資産に ColumnTag オブジェクトの配列があります。ColumnTag は Schema と緩やかにバインドされているため、同期しなくなる可能性があります。すなわち、Schema に存在しなくなった列を ColumnTag が説明することがあります。これらの同期を保つのは、ライターの責任です。</td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>このタグが参照する列の名前。</td></tr>
+<tr><td></td><td>tag</td><td>String</td><td>列を説明するタグ。</td></tr>
+
+<tr><td>エキスパート</td><td></td><td></td><td>データ セット内のエキスパートと見なされるユーザーが含まれています。説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。各ユーザーは、独自のエキスパートを指定できます。そのユーザーだけがエキスパート オブジェクトを編集できます (管理者および資産の所有者は、Expert オブジェクトを削除できますが、編集することはできません)。</td></tr>
+<tr><td></td><td>expert</td><td>SecurityPrincipal</td><td></td></tr>
+
+<tr><td>Preview</td><td></td><td></td><td>プレビューには、資産のデータの上位 20 行のスナップショットが含まれています。プレビューは、一部の資産の型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。</td></tr>
+<tr><td></td><td>preview</td><td>object[]</td><td>列を表すオブジェクトの配列。各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。</td></tr>
+
+<tr><td>AccessInstruction</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+<tr><td></td><td>content</td><td>string</td><td>このデータ資産にアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
+
+<tr><td>TableDataProfile</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>numberOfRows</td></td><td>int</td><td>データ セット内の行の数</td></tr>
+<tr><td></td><td>size</td><td>long</td><td>データ セットのバイト単位のサイズ。 </td></tr>
+<tr><td></td><td>schemaModifiedTime</td><td>string</td><td>スキーマが最後に変更された日時</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>string</td><td>データ セットが最後に変更された (データが追加、変更、または削除された) 日時</td></tr>
+
+<tr><td>ColumnsDataProfile</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>列のデータ プロファイルの配列。</td></tr>
+
+<tr><td>ドキュメント</td><td></td><td></td><td>特定の資産には 1 つのドキュメントしか関連付けることができません。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+<tr><td></td><td>content</td><td>string</td><td>ドキュメントのコンテンツ。</td></tr>
+
+</table>
 
 ### 共通の型
 
 共通の型は、プロパティの型として使用できますが、項目ではありません。
+<table>
+<tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
+<tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr>
+<tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr>
 
-|**共通の型**|**プロパティ**|**データ型**|**説明**
-|---|---|---|---
-|DataSourceInfo||||
-||sourceType|string|SQL Server、Oracle データベースなど、データ ソースの種類を説明します。
-||ObjectType|string|SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。
-||formatType|string|データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。
-|SecurityPrincipal||||
-||upn|string|ユーザーの一意の電子メール アドレス。
-||firstName|string|ユーザーの名前 (表示用)。
-||lastName|string|ユーザーの姓 (表示用)。
-|Column||||
-||name|string|列または属性の名前。
-||type|string|列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。
-||maxLength|int|列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。
-||Precision|byte|列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。
-||isNullable|Boolean|列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。
-||expression|string|値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。
-||defaultValue|object@|オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。
-|ColumnDescription||||
-||tags|string|列を説明するタグの配列。
-||description|string|列を説明する説明。
-||columnName|string|この情報が参照する列の名前。
-|ColumnDataProfile||||
-||columnName|string|列の名前
-||type|string|列の種類
-||min|string|データ セット内の最小値
-||max|string|データ セット内の最大値
-||avg|double|データ セット内の平均値
-||stdev|double|データ セットの標準偏差
-||nullCount|int|データ セット内の null 値の数
-||distinctCount|int|データ セット内の異なる値の数
+<tr><td>SecurityPrincipal</td><td></td><td></td><td>バックエンドでは公開時に AAD に対して指定されたプロパティの検証が実行されないことにご注意ください。</td></tr>
+<tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。objectId が指定されていない場合や、"lastRegisteredBy" プロパティのコンテキストでは、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>
+<tr><td></td><td>objectId</td><td>Guid</td><td>ユーザーまたはセキュリティ グループの AAD ID です。省略可能。upn が指定されていない場合には、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>
+<tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。省略可能。"lastRegisteredBy" プロパティのコンテキストでのみ有効です。"roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
+<tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。省略可能。"lastRegisteredBy" プロパティのコンテキストでのみ有効です。"roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
+
+<tr><td>分割</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr>
+<tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr>
+<tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr>
+<tr><td></td><td>precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr>
+<tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr>
+<tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr>
+
+<tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>columnName </td><td>string</td><td>列の名前</td></tr>
+<tr><td></td><td>type </td><td>string</td><td>列の種類</td></tr>
+<tr><td></td><td>min </td><td>string</td><td>データ セット内の最小値</td></tr>
+<tr><td></td><td>max </td><td>string</td><td>データ セット内の最大値</td></tr>
+<tr><td></td><td>avg </td><td>double</td><td>データ セット内の平均値</td></tr>
+<tr><td></td><td>stdev </td><td>double</td><td>データ セットの標準偏差</td></tr>
+<tr><td></td><td>nullCount </td><td>int</td><td>データ セット内の null 値の数</td></tr>
+<tr><td></td><td>distinctCount  </td><td>int</td><td>データ セット内の異なる値の数</td></tr>
+
+
+</table>
 
 ## ロールと承認
 
@@ -217,11 +224,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 **管理者**、**所有者**、**共同作成者** の 3 つのロールがあります。各ロールは、次の表に示すスコープと権限を持ちます。
 
-|**ロール**|**スコープ**|**権限**
-|---|---|---
-|管理者|カタログ (カタログ内のすべての資産と注釈)|Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions
-|所有者|各資産 (ルート項目とも呼ばれる)|Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions
-|共同作成者|個別の各資産および注釈|Read Update Delete ViewRoles Note: 項目に対する共同作成者の読み取り権限が取り消されると、すべての権限が取り消されます
+<table><tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべての資産と注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各資産 (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各資産および注釈</td><td>Read Update Delete ViewRoles Note: 項目に対する共同作成者の読み取り権限が取り消されると、すべての権限が取り消されます</td></tr></table>
 
 > [AZURE.NOTE] **Read**、**Update**、**Delete**、**ViewRoles** 権限はいずれの項目 (資産または注釈) にも適用されますが、**TakeOwnership**、**ChangeOwnership**、**ChangeVisibility**、**ViewPermissions** はルート資産のみに適用されます。
 >
@@ -237,95 +240,80 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 ## REST API
 
-**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**__roles** と **__permissions** の 2 つのシステム プロパティを指定できます。
+**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**roles** と **permissions** の 2 つのシステム プロパティを指定できます。
 
 > [AZURE.NOTE]
 >
-> **\_\_permissions** は、ルート項目のみに適用されます。
+> **permissions** は、ルート項目のみに適用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **\_\_roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
 
-### 例
-**項目を公開する場合は、共同作成者を <Everyone> に設定します。**
-
-特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。
-
-**POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2015-07.1.0-Preview
-
-**Azure Data Catalog (ADC)** への要求に対して、別のエンドポイントへのリダイレクトを示す HTTP 302 応答が返される場合があります。呼び出し元は 302 への応答として Location 応答ヘッダーで指定された URL に要求をもう一度発行する必要があります。
-
+###例
+**項目を公開する場合は、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。**POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
 > [AZURE.NOTE] HTTP クライアント実装の中には、サーバーからの 302 に対する応答として要求を自動的に再発行するものもありますが、通常は要求から **Authorization ヘッダー**が削除されます。Authorization ヘッダーは ADC への要求に必要であるため、ADC で指定されたリダイレクト場所に要求を再発行する際は、Authorization ヘッダーが引き続き提供されるようにする必要があります。以下のサンプル コードは、.NET HttpWebRequest オブジェクトを使用してこれを実現する方法を示しています。
 
+  **本文**
 
-**本文**
+    {
+      "roles": [
+        {
+          "role": "Contributor",
+          "members": [
+            {
+              "objectId": "00000000-0000-0000-0000-000000000201"
+            }
+          ]
+        }
+      ]
+    }
 
-	{
-	    "__roles": [
-	        {
-	            "role": "Contributor",
-	            "members": [
-	                {
-	                    "objectId": "00000000-0000-0000-0000-000000000201"
-	                }
-	            ]
-	        }
-	    ],
-	    … other table properties
-	}
+  **所有者を割り当て、既存のルート項目に対する可視性を制限します。** **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
-**所有者を割り当て、既存のルート項目に対する可視性を制限します。**
+    {
+      "roles": [
+        {
+          "role": "Owner",
+          "members": [
+            {
+              "objectId": "c4159539-846a-45af-bdfb-58efd3772b43",
+              "upn": "user1@contoso.com"
+            },
+            {
+              "objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f",
+              "upn": "user2@contoso.com"
+            }
+          ]
+        }
+      ],
+      "permissions": [
+        {
+          "principal": {
+            "objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a",
+            "upn": "user3@contoso.com"
+          },
+          "rights": [
+            {
+              "right": "Read"
+            }
+          ]
+        },
+        {
+          "principal": {
+            "objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31",
+            "upn": "user4@contoso.com"
+          },
+          "rights": [
+            {
+              "right": "Read"
+            }
+          ]
+        }
+      ]
+    }
 
-**PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2015-07.1.0-Preview
+  > [AZURE.NOTE] PUT では、本文に項目のペイロードを指定する必要はありません。 PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
 
-	{
-	    "__roles": [
-	        {
-	            "role": "Owner",
-	            "members": [
-	                {
-	                    "objectId": "c4159539-846a-45af-bdfb-58efd3772b43",
-	                    "upn": "user1@contoso.com"
-	                },
-	                {
-	                    "objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f",
-	                    "upn": "user2@contoso.com"
-	                }
-	            ]
-	        }
-	    ],
-	    "__permissions": [
-	        {
-	            "principal": {
-	                "objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a",
-	                "upn": "user3@contoso.com"
-	            },
-	            "rights": [
-	                {
-	                    "right": "Read"
-	                }
-	            ]
-	        },
-	        {
-	            "principal": {
-	                "objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31",
-	                "upn": "user4@contoso.com"
-	            },
-	            "rights": [
-	                {
-	                    "right": "Read"
-	                }
-	            ]
-	        }
-	    ]
-	}
-
-> [AZURE.NOTE] PUT では、本文に項目のペイロードを指定する必要はありません。 PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png
-
-<!---HONumber=AcomDC_0316_2016-->
-
+<!---HONumber=AcomDC_0406_2016-->

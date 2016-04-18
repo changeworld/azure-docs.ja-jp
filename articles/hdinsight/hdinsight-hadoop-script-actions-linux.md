@@ -32,10 +32,11 @@ Script Action は次の方法によって適用できます。
 | ----- |:-----:|:-----:|
 | Azure ポータル | ✓ | ✓ |
 | Azure PowerShell | ✓ | ✓ |
+| Azure CLI | &nbsp; | ✓ |
 | HDInsight .NET SDK | ✓ | ✓ |
 | Azure Resource Manager テンプレート | ✓ | &nbsp; |
 
-これらの方法を使用して、Script Action を適用する詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+これらの方法を使用した Script Action の適用の詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
 ## <a name="bestPracticeScripting"></a>スクリプトの開発におけるベスト プラクティス
 
@@ -94,7 +95,7 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 
 スクリプトの実行時に STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用して表示することができます。
 
-> [AZURE.NOTE] Ambari は、クラスターが正常に作成された場合にのみ使用できます。クラスターの作成時に Script Action を使用し、作成が失敗した場合は、ログに記録された情報にアクセスする他の方法について、トラブルシューティング セクション「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
+> [AZURE.NOTE] Ambari は、クラスターが正常に作成された場合にのみ使用できます。クラスターの作成時に Script Action を使用し、作成が失敗した場合は、ログに記録された情報にアクセスする他の方法について、トラブルシューティング セクション「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」をご覧ください。
 
 ほとんどのユーティリティとインストール パッケージは情報を STDOUT および STDERR に書き込みますが、ログ記録を追加することもできます。STDOUT にテキストを送信するには、`echo` を使用します。次に例を示します。
 
@@ -226,10 +227,10 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 ## <a name="seeAlso"></a>次のステップ
 
-* [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)方法を理解します
+* [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)方法を理解します。
 
-* [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します
+* [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 
-* [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使用して HDInsight クラスターで管理操作を実行する方法の詳細について理解します。
+* [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

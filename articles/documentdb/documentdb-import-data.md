@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
+	ms.date="04/05/2016"
 	ms.author="anhoh"/>
 
 # データベース移行ツールを使用した DocumentDB へのデータのインポート
@@ -32,13 +32,13 @@
 -	HBase のデータを DocumentDB にインポートするにはどうすればよいか。
 -	DocumentDB コレクション間でデータを移行するにはどうすればよいか。
 
-##<a id="Prerequisites"></a>前提条件 ##
+##<a id="Prerequisites"></a>前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 - [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 以降
 
-##<a id="Overviewl"></a>DocumentDB データ移行ツールの概要 ##
+##<a id="Overviewl"></a>DocumentDB データ移行ツールの概要
 
 DocumentDB データ移行ツールはオープン ソース ソリューションで、次のような各種ソースからデータを DocumentDB にインポートします。
 
@@ -61,7 +61,7 @@ DocumentDB データ移行ツールはオープン ソース ソリューショ�
 - **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
 - **Dt.exe**: コマンド ライン バージョンのツール
 
-##<a id="JSON"></a>JSON ファイルのインポート ##
+##<a id="JSON"></a>JSON ファイルのインポート
 
 JSON ファイル ソース インポーター オプションを使用して、1 つ以上の単一ドキュメント JSON ファイル、またはそれぞれに JSON ドキュメントの配列が含まれた JSON ファイルをインポートできます。インポートする JSON ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
@@ -84,7 +84,7 @@ JSON ファイルをインポートするためのコマンド ライン サン�
 	#Import a single JSON file and partition the data across 4 collections
 	dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionTier:S3
 
-##<a id="MongoDB"></a>MongoDB からのインポート ##
+##<a id="MongoDB"></a>MongoDB からのインポート
 
 MongoDB ソース インポーター オプションを使用して、個々の MongoDB コレクションからインポートできます。必要に応じて、クエリを使用してドキュメントをフィルター処理したり、プロジェクションを使用してドキュメント構造を変更したりすることもできます。
 
@@ -106,7 +106,7 @@ MongoDB からインポートするためのコマンド ライン サンプル�
 	#Import documents from a MongoDB collection which match the query and exclude the loc field
 	dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionTier:S3
 
-##<a id="MongoDBExport"></a>MongoDB エクスポート ファイルのインポート ##
+##<a id="MongoDBExport"></a>MongoDB エクスポート ファイルのインポート
 
 MongoDB エクスポート JSON ファイル ソース インポーター オプションを使用して、mongoexport ユーティリティによって生成された 1 つ以上の JSON ファイルをインポートできます。
 
@@ -118,7 +118,7 @@ MongoDB エクスポート JSON ファイルからインポートするための
 
 	dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionTier:S3
 
-##<a id="SQL"></a>SQL Server からのインポート ##
+##<a id="SQL"></a>SQL Server からのインポート
 
 SQL ソース インポーター オプションを使用して、個々の SQL Server データベースからインポートできます。また、必要に応じて、クエリを使用してインポートするレコードをフィルター処理できます。さらに、入れ子の区切り記号を指定して、ドキュメント構造を変更することもできます (詳細は後ほど説明します)。
 
@@ -148,7 +148,7 @@ SQL Server からインポートするためのコマンド ライン サンプ�
 	#Import records from sql which match a query and create hierarchical relationships
 	dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionTier:S3
 
-##<a id="CSV"></a>CSV ファイルをインポートする - CSV を JSON に変換する ##
+##<a id="CSV"></a>CSV ファイルをインポートする - CSV を JSON に変換する
 
 CSV ファイル ソース インポーター オプションを使用して、1 つ以上の CSV ファイルをインポートできます。インポートする CSV ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
@@ -175,7 +175,7 @@ CSV インポート用のコマンド ライン サンプルを以下に示し�
 
 	dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionTier:S3
 
-##<a id="AzureTableSource"></a>Azure テーブル ストレージからのインポート ##
+##<a id="AzureTableSource"></a>Azure テーブル ストレージからのインポート
 
 Azure テーブル ストレージ ソース インポーター オプションを使用して、個々の Azure テーブル ストレージ テーブルからインポートできます。また、必要に応じて、インポートするテーブル エンティティをフィルター処理できます。
 
@@ -230,7 +230,7 @@ Azure BLOB ストレージから JSON ファイルをインポートするため
 
 	dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:doctest
 
-##<a id="DocumentDBSource"></a>DocumentDB からのインポート ##
+##<a id="DocumentDBSource"></a>DocumentDB からのインポート
 
 DocumentDB ソース インポーターのオプションを使用して、1 つ以上の DocumentDB コレクションからデータをインポートできます。また、必要に応じて、クエリを使用してドキュメントをフィルター処理できます。
 
@@ -239,6 +239,10 @@ DocumentDB ソース インポーターのオプションを使用して、1 つ
 DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+DocumentDB アカウントの接続文字列は、「[DocumentDB アカウントの管理方法](documentdb-manage-account.md)」の説明に従って Azure ポータルの [キー] ブレードから取得できます。ただし、データベースの名前は、次の形式で接続文字列に追加する必要があります。
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
@@ -289,13 +293,17 @@ HBase からインポートするためのコマンド ライン サンプルを
 
 ##<a id="DocumentDBBulkTarget"></a>DocumentDB へのインポート (一括インポート)
 
-DocumentDB 一括インポーターを使用して、効率向上のために DocumentDB ストアド プロシージャを使用し、使用可能な任意のソース オプションからインポートできます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。DocumentDB でのデータのパーティション分割の詳細については、[ここ](documentdb-partition-data.md)を参照してください。このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。
+DocumentDB 一括インポーターを使用して、効率向上のために DocumentDB ストアド プロシージャを使用し、使用可能な任意のソース オプションからインポートできます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。データのパーティション分割の詳細については、「[Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」をご覧ください。このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。
 
 ![DocumentDB 一括オプションのスクリーンショット](./media/documentdb-import-data/documentdbbulk.png)
 
 DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+DocumentDB アカウントの接続文字列は、「[DocumentDB アカウントの管理方法](documentdb-manage-account.md)」の説明に従って Azure ポータルの [キー] ブレードから取得できます。ただし、データベースの名前は、次の形式で接続文字列に追加する必要があります。
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
@@ -305,7 +313,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
 3. 複数の代入値を指定することができます。たとえば、collection[0-1] [0-9] と指定すると、0 か 1 で始まる 20 のコレクション名を生成します (collection01、..02、..03)。
 
-コレクション名を指定したら、コレクションの目的の価格レベルを選択します (S1、S2、または S3)。インポートのパフォーマンスを最大限に高めるには、S3 を選択してください。DocumentDB のパフォーマンス レベルの詳細については、[ここ](documentdb-performance-levels.md)を参照してください。
+コレクション名を指定したら、コレクションの目的の価格レベルを選択します (S1、S2、または S3)。インポートのパフォーマンスを最大限に高めるには、S3 を選択してください。パフォーマンス レベルの詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」をご覧ください。
 
 > [AZURE.NOTE] パフォーマンス階層の設定は、コレクションの作成にのみ適用されます。指定されたコレクションが既に存在する場合、その価格レベルは変更されません。
 
@@ -342,13 +350,17 @@ DocumentDB 一括インポーターには、次の詳細オプションがあり
 
 ##<a id="DocumentDBSeqTarget"></a>DocumentDB へのインポート (シーケンシャル レコードのインポート)
 
-DocumentDB シーケンシャル レコード インポーターを使用して、レコードで使用可能な任意のソース オプションからレコード単位でインポートできます。ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。DocumentDB でのデータのパーティション分割の詳細については、[ここ](documentdb-partition-data.md)を参照してください。
+DocumentDB シーケンシャル レコード インポーターを使用して、レコードで使用可能な任意のソース オプションからレコード単位でインポートできます。ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。データのパーティション分割の詳細については、「[Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」をご覧ください。
 
 ![DocumentDB シーケンシャル レコード インポート オプションのスクリーンショット](./media/documentdb-import-data/documentdbsequential.png)
 
 DocumentDB の接続文字列の形式は次のとおりです。
 
 	AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;
+
+DocumentDB アカウントの接続文字列は、「[DocumentDB アカウントの管理方法](documentdb-manage-account.md)」の説明に従って Azure ポータルの [キー] ブレードから取得できます。ただし、データベースの名前は、次の形式で接続文字列に追加する必要があります。
+
+    Database=<DocumentDB Database>;
 
 > [AZURE.NOTE] [確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
@@ -358,7 +370,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
 3. 複数の代入値を指定することができます。たとえば、collection[0-1] [0-9] と指定すると、0 か 1 で始まる 20 のコレクション名を生成します (collection01、..02、..03)。
 
-コレクション名を指定したら、コレクションの目的の価格レベルを選択します (S1、S2、または S3)。インポートのパフォーマンスを最大限に高めるには、S3 を選択してください。DocumentDB のパフォーマンス レベルの詳細については、[ここ](documentdb-performance-levels.md)を参照してください。
+コレクション名を指定したら、コレクションの目的の価格レベルを選択します (S1、S2、または S3)。インポートのパフォーマンスを最大限に高めるには、S3 を選択してください。パフォーマンス レベルの詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」をご覧ください。
 
 > [AZURE.NOTE] パフォーマンス階層の設定は、コレクションの作成にのみ適用されます。指定されたコレクションが既に存在する場合、その価格レベルは変更されません。
 
@@ -387,7 +399,7 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 
 > [AZURE.TIP] インポート ツールの接続モードは既定で [DirectTcp] に設定されています。ファイアウォールの問題が発生した場合は、ポート 443 のみを使用する必要があるため、接続モードを [ゲートウェイ] に切り替えてください。
 
-##<a id="IndexingPolicy"></a>DocumentDB コレクションを作成するときにインデックス作成ポリシーを指定する ##
+##<a id="IndexingPolicy"></a>DocumentDB コレクションを作成するときにインデックス作成ポリシーを指定する
 
 移行ツールを使用してインポート中にコレクションを作成するときに、コレクションのインデックス作成ポリシーを指定できます。DocumentDB の一括インポートと DocumentDB のシーケンシャル レコード オプションの詳細オプション セクションで、[インデックス作成オプション] セクションに移動します。
 
@@ -403,7 +415,7 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 
 ![DocumentDB インデックス作成ポリシー詳細オプションのスクリーンショット](./media/documentdb-import-data/indexingpolicy2.png)
 
-> [AZURE.NOTE] インデックス作成ポリシーを指定しないと、既定のポリシーが適用されます。DocumentDB のインデックス作成ポリシーの詳細については、[こちら](documentdb-indexing-policies.md)を参照してください。
+> [AZURE.NOTE] インデックス作成ポリシーを指定しないと、既定のポリシーが適用されます。インデックス作成ポリシーの詳細については、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」をご覧ください。
 
 
 ## JSON ファイルへのエクスポート
@@ -476,6 +488,6 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
 ## 次のステップ
 
-- DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
+- DocumentDB の詳細については、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0406_2016-->

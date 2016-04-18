@@ -42,16 +42,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 |SKU ファミリ |ACU/コア |
 |---|---|
-|[Standard\_A0](#standard-tier-a-series)	|50 |
-|[Standard\_A1 ～ 4](#standard-tier-a-series)	|100 |
-|[Standard\_A5 ～ 7](#standard-tier-a-series)	|100 |
-|[A8-A11](#standard-tier-a-series)	|225 *|
-|[D1-14](#standard-tier-d-series)	|160 |
-|[D1-15v2](#standard-tier-dv2-series)	|210 - 250 *|
-|[DS1-14](#standard-tier-ds-series)	|160 |
-|[DS1-14v2](#standard-tier-dsv2-series)	|210-250* |
-|[G1-5](#standard-tier-g-series)	|180 - 240 *|
-|[GS1-5](#standard-tier-gs-series)	|180 - 240 *|
+|[Standard\_A0](#standard-tier-a-series) |50 |
+|[Standard\_A1 ～ 4](#standard-tier-a-series) |100 |
+|[Standard\_A5 ～ 7](#standard-tier-a-series) |100 |
+|[A8 ～ A11](#standard-tier-a-series) |225 *| |[D1-14](#standard-tier-d-series) |160 | |[D1-15v2](#standard-tier-dv2-series) |210 - 250 *| |[DS1-14](#standard-tier-ds-series) |160 | |[DS1-14v2](#standard-tier-dsv2-series) |210-250* | |[G1-5](#standard-tier-g-series) |180 - 240 *| |[GS1-5](#standard-tier-gs-series) |180 - 240 *|
 
 
 * が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
@@ -145,7 +139,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS2\_v2 |2|7|2|ローカル SSD ディスク = 14 GB |4|86| 毎秒 6,400 96 MB | 高 |
 |Standard\_DS3\_v2 |4|14|4|ローカル SSD ディスク = 28 GB |8|172| 毎秒 12,800 192 MB | 高 |
 |Standard\_DS4\_v2 |8|28|8|ローカル SSD ディスク = 56 GB |16|344| 毎秒 25,600 384 MB | 高 |
-|Standard\_DS5\_v2 |16|56|8|ローカル SSD ディスク = 112 GB |16|688| 毎秒 50,000 768 MB | 高 |
+|Standard\_DS5\_v2 |16|56|8|ローカル SSD ディスク = 112 GB |32|688| 毎秒 50,000 768 MB | 高 |
 |Standard\_DS11\_v2 |2|14|2|ローカル SSD ディスク = 28 GB |4|72| 毎秒 6,400 96 MB | 高 |
 |Standard\_DS12\_v2 |4|28|4|ローカル SSD ディスク = 56 GB |8|144| 毎秒 12,800 192 MB | 高 |
 |Standard\_DS13\_v2 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 毎秒 25,600 384 MB | 高 |
@@ -192,4 +186,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
 - 高パフォーマンス コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

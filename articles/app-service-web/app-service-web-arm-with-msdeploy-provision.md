@@ -174,7 +174,7 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
 
 	.\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation "East US" `
 									-ResourceGroupName $rgName `
-									-UploadArtifacts "container-name" `
+									-UploadArtifacts `
 									-StorageAccountName "name-of-storage-acct-for-package" `
 									-StorageAccountResourceGroupName "resource-group-name-storage-acct" `
 									-TemplateFile "web-app-deploy.json" `
@@ -197,4 +197,4 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
 
 この時点でアプリケーションがデプロイされているので、https://www.yourcustomdomain.com から参照できます。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

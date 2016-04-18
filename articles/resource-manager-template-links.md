@@ -4,7 +4,7 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="04/05/2016"
    ms.author="tomfitz"/>
 
 # リソース リンク テンプレート スキーマ
@@ -42,20 +42,18 @@
 
 次の表では、スキーマに設定する必要がある値について説明します。
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ---- | ---- | -------- | ---------------- | ----------- |
-| type | enum | はい | **{namespace}/{type}/providers/links** | 作成するリソースの種類。{namespace} と {type} の値は、ソース リソースのプロバイダー名前空間とリソース タイプです。 |
-| apiVersion | enum | はい | **2015-01-01** | リソースの作成に使用する API バージョン。 |  
-| name | string | はい | **{resouce}/Microsoft.Resources/{linkname}**<br /><br />最大 64 文字<br /><、>、%、&、?、制御文字を含めることはできません。 | ソース リソースの名前とリンクの名前の両方を指定する値。 |
-| dependsOn | array | いいえ | リソース名またはリソースの一意識別子のコンマ区切りリスト。 | このリンクが依存するリソースのコレクション。リンクしているリソースが同じテンプレートにデプロイされる場合、先にデプロイされるように、それらのリソース名をこの要素に追加します。 | 
-| properties | オブジェクト | はい | (下記参照) | リンク先のリソースを識別し、リンクに関するメモが記されたオブジェクト。 |  
+| 名前 | 値 |
+| ---- | ---- |
+| type | 列挙型<br />必須<br />**{namespace}/{type}/providers/links**<br /><br />作成するリソースの種類。{namespace} と {type} の値は、ソース リソースのプロバイダー名前空間とリソース タイプです。 |
+| apiVersion | 列挙型<br />必須<br />**2015-01-01**<br /><br />リソースの作成に使用する API バージョン。 |  
+| name | 文字列<br />必須<br />**{resouce}/Microsoft.Resources/{linkname}****<br />最大 64 文字。<、>、%、&、?、制御文字を含めることはできません。<br /><br />ソース リソースの名前とリンクの名前の両方を指定する値。 | | dependsOn | 配列<br />省略可能<br />リソース名またはリソースの一意識別子のコンマ区切りリスト。<br /><br />このリンクが依存するリソースのコレクション。リンクしているリソースを同じテンプレートでデプロイする場合は、それらのリソースが最初にデプロイされるように、リソース名をこの要素に含めます。| | properties | オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />リンク先のリソースを識別し、リンクに関するメモが記述されたオブジェクト。 | 
 
+<a id="properties" />
 ### プロパティ オブジェクト
 
-| 名前 | 型 | 必須 | 使用できる値 | 説明 |
-| ------- | ---- | ---------------- | -------- | ----------- |
-| targetId | string | はい | | リンク先のターゲット リソースの識別子。 |
-| notes | string | いいえ | 512 文字 | ロックの説明。 |
+| 名前 | 値 |
+| ------- | ---- |
+| targetId | 文字列<br />必須<br />**{resource id}****<br /><br />リンク先のターゲット リソースの識別子。 | | notes | 文字列<br />省略可能<br />最大 512 文字<br /><br />ロックの説明。 |
 
 
 ## リンク リソースの使用方法
@@ -68,7 +66,7 @@ REST 経由でリンクを使用する方法については、「[リンク済�
 
 次の Azure PowerShell コマンドを使用すると、サブスクリプションのすべてのリンクが表示されます。他のパラメーターを指定し、結果を絞り込むことができます。
 
-    Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -OutputObjectFormat New
+    Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -ResourceGroupName <YourResourceGroupName>
 
 ## 例
 
@@ -128,16 +126,16 @@ REST 経由でリンクを使用する方法については、「[リンク済�
 
 次のクイック スタート テンプレートでは、リンクを使ってリソースがデプロイされます。
 
-- [アラートによってキューに項目を追加するロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
-- [アラートによって Slack にメッセージを投稿するロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-- [既存のゲートウェイを使用する API アプリのプロビジョニング](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-existing)
-- [新しいゲートウェイを使用する API アプリのプロビジョニング](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-new)
-- [テンプレートを使用したロジック アプリと API アプリの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-api-app-create)
-- [アラートが発生したときにテキスト メッセージを送信するロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
+- [アラートによってキューに項目を追加するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
+- [アラートによって Slack にメッセージを投稿するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
+- [既存のゲートウェイを使用する API アプリのプロビジョニング](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
+- [新しいゲートウェイを使用する API アプリのプロビジョニング](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
+- [テンプレートを使用したロジック アプリと API アプリの作成](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
+- [アラートが発生したときにテキスト メッセージを送信するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
 
 
 ## 次のステップ
 
 - テンプレートの構造の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

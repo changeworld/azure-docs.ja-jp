@@ -374,7 +374,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
     "outputs": {
         "masterip": {
-            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].privateIPAddress]",
+            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].properties.privateIPAddress]",
             "type": "string"
          }
     }
@@ -389,4 +389,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

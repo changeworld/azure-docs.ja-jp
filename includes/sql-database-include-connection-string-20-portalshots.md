@@ -11,7 +11,7 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 ### Azure ポータルから接続文字列を取得する
 
 
-[Azure プレビュー ポータル](https://portal.azure.com/)を使用して、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。
+[Azure ポータル](https://portal.azure.com/)を使用して、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。
 
 
 1. **[参照]**、**[SQL データベース]** の順にクリックします。
@@ -53,4 +53,4 @@ includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -30,8 +30,8 @@
 
 >[AZURE.NOTE] **以下のすべてのシナリオでは、以下の操作を行う必要があります。**
 
-*   [ストレージ アカウントの作成](storage-whatis-account.md)
-*   [Azure ML ワークスペースを作成する](machine-learning/machine-learning-create-workspace.md)
+*   [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)
+*   [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
 
 
 ## <a name="smalllocal"></a>シナリオ 1: ローカル ファイルの小規模から中規模の表形式のデータセット
@@ -168,7 +168,7 @@
 
     f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
- > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+ > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -208,7 +208,7 @@
 
 	f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
-> [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning/machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+> [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -228,11 +228,11 @@
 
 SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラー GUI か、同等の TRANSACT-SQL コマンドを使用して行います。
 
-1. ソースの場所にあるデータベースをデタッチします。詳細については、[データベースのデタッチ](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx)をご覧ください。
+1. ソースの場所にあるデータベースをデタッチします。詳細については、「データベースのデタッチhttps://technet.microsoft.com/library/ms191491(v=sql.110).aspx)」をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、[データベースのアタッチ](https://technet.microsoft.com/library/ms190209(v=sql.110).aspx)をご覧ください。
+3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、「データベースのアタッチhttps://technet.microsoft.com/library/ms190209(v=sql.110).aspx)」をご覧ください。
 
-[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858(v=sql.110).aspx)
+デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)https://technet.microsoft.com/library/ms187858(v=sql.110).aspx
 
 ## <a name="largedbtohive"></a>シナリオ #7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 
@@ -296,8 +296,8 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 Advanced Analytics Process and Technology とパブリック データセットを使用する Azure Machine Learning の完全な チュートリアルについては、以下を参照してください。
 
 
-* [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning/machine-learning-data-science-process-sql-walkthrough.md)
-* [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning/machine-learning-data-science-process-hive-walkthrough.md)
+* [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
+* [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
 
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
@@ -314,4 +314,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

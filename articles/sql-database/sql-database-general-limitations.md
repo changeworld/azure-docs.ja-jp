@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure SQL Database の一般的な制限事項とガイドライン"
    description="このページでは、Azure SQL Database の一般的な制限事項および相互運用性とサポートの領域について説明します。"
    services="sql-database"
@@ -6,7 +6,7 @@
    authors="rothja"
    manager="jeffreyg"
    editor="monicar" />
-<tags 
+<tags
    ms.service="sql-database"
    ms.devlang="na"
    ms.topic="article"
@@ -19,15 +19,15 @@
 
 このトピックでは、Azure SQL Database の一般的な制限事項とガイドラインについて説明します。クォータ、リソースの管理、およびサポートの詳細については、このトピックの末尾に記載されている[追加のリソース](#additional-guidelines)を参照してください。
 
-## 接続
+## 接続と認証
 
- - Windows 認証はサポートされません。「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。 
+  - Windows 認証はサポートされません。「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。Azure Active Directory 認証はサポートされていますが、制限事項があります。「[Azure Active Directory 認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」をご覧ください。
 
- - Microsoft Azure SQL Database では、表形式データ ストリーム (TDS) プロトコル クライアント バージョン 7.3 以降をサポートしています。
+  - Microsoft Azure SQL Database では、表形式データ ストリーム (TDS) プロトコル クライアント バージョン 7.3 以降をサポートしています。
 
- - TCP/IP 接続のみが許可されます。
+  - TCP/IP 接続のみが許可されます。
 
- - Microsoft Azure SQL Database には動的ポートがなく、ポート 1433 のみを使用するため、SQL Server 2008 の SQL Server Browser はサポートされません。
+  - Microsoft Azure SQL Database には動的ポートがなく、ポート 1433 のみを使用するため、SQL Server 2008 の SQL Server Browser はサポートされません。
 
 ## SQL Server エージェント/ジョブ
 
@@ -41,11 +41,11 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 セキュリティ上の理由により、特定のユーザー名を使用できません。使用できない名前は次のとおりです。
 
- - **admin** 
- - **administrator** 
- - **guest** 
- - **root** 
- - **sa** 
+ - **admin**
+ - **administrator**
+ - **guest**
+ - **root**
+ - **sa**
 
 すべての新しいオブジェクトの名前は、SQL Server の識別子に関する規則に従う必要があります。詳細については、「[データベース識別子](https://msdn.microsoft.com/library/ms175874.aspx)」を参照してください。
 
@@ -63,4 +63,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

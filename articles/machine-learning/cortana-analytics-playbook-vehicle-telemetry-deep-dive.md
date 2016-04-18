@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細 | Microsoft Azure" 
-	description="Cortana Analytics の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。" 
+	description="Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。" 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
@@ -155,9 +155,9 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 ### 参照
 
-[ストリームの挿入に関する Azure Event Hub SDK](event-hubs-csharp-ephcs-getstarted.md)
+[ストリームの挿入に関する Azure Event Hub SDK](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-[Azure Data Factory のデータ移動機能](data-factory-data-movement-activities.md) [Azure Data Factory DotNet アクティビティ](data-factory-use-custom-activities.md)
+[Azure Data Factory のデータ移動機能](../data-factory/data-factory-data-movement-activities.md) [Azure Data Factory DotNet アクティビティ](../data-factory/data-factory-use-custom-activities.md)
 
 [サンプル データを準備するための Azure Data Factory DotNet アクティビティの Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077)
 
@@ -706,4 +706,4 @@ PowerBI レポートとダッシュボードを設定するための詳細な手
 
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

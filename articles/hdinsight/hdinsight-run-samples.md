@@ -26,7 +26,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 - [**ワード カウント**][hdinsight-sample-wordcount]\: テキスト ファイル内の単語出現回数をカウントします。
 - [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]\: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 - [**Pi 推定**][hdinsight-sample-pi-estimator]\: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-- [**10 GB GraySort**][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+- [**10 GB GraySort **][hdinsight-sample-10gb-graysort]\: HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 >[AZURE.NOTE] ソース コードは「付録」にあります。
 
@@ -49,7 +49,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (****wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -119,7 +119,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 > [AZURE.NOTE] このチュートリアルの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。Linux ベースの HDInsight クラスターのストリーミング例は、「[HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)」をご覧ください。
 
-この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] (1 行ずつ) から入力を  読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
+この例では、mapper と reducer は、[stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
 **mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。
 
@@ -136,11 +136,11 @@ Hadoop ストリーミング インターフェイスの詳細については、
 - 「[ワード カウント - Java](#word-count-java)」の手順に従って、し、ジョブ定義を以下に置き換えます。
 
 		$mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
-									-File "/example/apps/" `
-									-Mapper "cat.exe" `
-									-Reducer "wc.exe" `
-									-InputPath "/example/data/gutenberg/davinci.txt" `
-									-OutputPath "/example/data/StreamingOutput/wc.txt"
+    							-Files "/example/apps/cat.exe","/example/apps/wc.exe" `
+    							-Mapper "cat.exe" `
+    							-Reducer "wc.exe" `
+    							-InputPath "/example/data/gutenberg/davinci.txt" `
+    							-OutputPath "/example/data/StreamingOutput/wc.txt"  
 
 
 	出力ファイルは次のようになります。
@@ -997,4 +997,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

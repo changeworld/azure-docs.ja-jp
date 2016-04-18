@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="04/05/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Kindling と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Kindling でのシングル サインオンが有効なサブスクリプション
+- Kindling サブスクリプション
 
 
 > [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -84,7 +84,7 @@ Kindling で Azure AD のシングル サインオンを構成してテストす
 
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Kindling アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-Kindling のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインがない場合は、Kindling のサポート チーム ([support@flatterfiles.com](mailto:support@flatterfiles.com)) にお問い合わせください。
+Kindling のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインがない場合は、Kindling のサポート チーム ([support@kindlingapp.com](mailto:support@kindlingapp.com)) にお問い合わせください。
 
 
 
@@ -97,11 +97,15 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_04.png) <br>
 
 
-    a.**[サインオン URL]** ボックスに、ユーザーが Kindling アプリケーションへのサインオンに使用する URL (例: **https://fabrikam.Kindling.com/*) を入力します。
+    a.**[サインオン URL]** ボックスに、ユーザーが Kindling アプリケーションへのサインオンに使用する URL (例: *https://\<company name>.kindlingapp.com/*) を入力します。
 
-    b.**[発行者]** 値と **[応答 URL]** 値を取得するには、Kindling サポート チームにご連絡ください。
+    b.**[発行者]** 値と **[応答 URL]** 値を取得するには、Kindling サポート チーム ([support@kindlingapp.com](mailto:support@kindlingapp.com)) にご連絡ください。
+
+    c.**[発行者]** ボックスに、発行者の URL を入力します。
+
+    d.**[応答 URL]** ボックスに、使用している応答 URL を入力します。
  
-    c.**[次へ]** をクリックします。
+    e.**[次へ]** をクリックします。
  
  
 4. **[Kindling でのシングル サインオンの構成]** ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_05.png) <br>
@@ -216,4 +220,4 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 [204]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -565,7 +565,7 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ### /BlobType:"block" | "page" | "append"
 
-コピー操作の再帰モードを指定します。再帰モードでは、AzCopy は指定のファイル パターンに一致するすべての BLOB またはファイル (サブフォルダー内を含む) をコピーします。
+宛先 BLOB がブロック BLOB、ページ BLOB、追加 BLOB のどれであるかを指定します。このオプションは、BLOB をアップロードする場合にのみ適用されます。それ以外の場合は、エラーが発生します。宛先が BLOB で、このオプションが指定されていない場合、既定では AzCopy によってブロック BLOB が作成されます。
 
 **適用対象:** BLOB
 
@@ -864,4 +864,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

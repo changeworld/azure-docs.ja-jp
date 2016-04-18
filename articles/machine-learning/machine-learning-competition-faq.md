@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Cortana Analytics コンペティションの FAQ | Microsoft Azure"
-	description="Microsoft Cortana Analytics コンペティションについてよく寄せられる質問。"
+	pageTitle="Cortana Intelligence コンペティションの FAQ | Microsoft Azure"
+	description="Microsoft Cortana Intelligence コンペティションについてよく寄せられる質問。"
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
@@ -16,11 +16,11 @@
 	ms.date="03/11/2016"
 	ms.author="haining;chlovel;garye"/>
 
-# Microsoft Cortana Analytics コンペティションの FAQ
+# Microsoft Cortana Intelligence コンペティションの FAQ
 
-**Cortana Analytics コンペティションとは何ですか。**
+**Microsoft Cortana Intelligence コンペティションとは何ですか。**
 
-Microsoft は、Cortana Analytics コンペティションについて発表しました。世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合することができます。Cortana Analytics コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。このコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。参加者は、報酬を得たり、トップ 10 パブリック スコアボードを通じて知名度を高めたりすることができます。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
+Microsoft は、Cortana Intelligence コンペティションについて発表しました。世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合することができます。Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。このコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。参加者は、報酬を得たり、トップ 10 パブリック スコアボードを通じて知名度を高めたりすることができます。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
 
 **Microsoft は新しいコンペティションをどのくらいの頻度でリリースしますか。**
 
@@ -32,15 +32,15 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **コンペティションに参加するにはどうすればよいですか?**
 
-Cortana Analytics ギャラリー経由で、コンペティションのホーム ページにアクセスしてください。このページには、実施中のすべてのコンペティションが含まれています。各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
+Cortana Intelligence ギャラリー経由で、コンペティションのホーム ページにアクセスしてください。このページには、実施中のすべてのコンペティションが含まれています。各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
 
-1. Cortana Analytics ギャラリーで参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオを見てください。その後、[Enter Competition] ボタンをクリックして、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。通常は、この段階に時間の大半を費やします。   
+1. Cortana Intelligence ギャラリーで参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオを見てください。その後、[Enter Competition] ボタンをクリックして、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。通常は、この段階に時間の大半を費やします。   
 
-2. Starter Experiment を基にしてトレーニングしたモデルで、Predicative Experiment を作成します。次に、Web サービスの入力および出力スキーマを、コンペティションのドキュメントに指定されている要件を満たすように、慎重に調整します。その方法の詳細は、通常、チュートリアル ドキュメントに記載されています。チュートリアル ビデオが用意されている場合は、それも視聴できます。
+2. Starter Experiment を基にしてトレーニングしたモデルで、Predictive Experiment を作成します。次に、Web サービスの入力および出力スキーマを、コンペティションのドキュメントに指定されている要件を満たすように、慎重に調整します。その方法の詳細は、通常、チュートリアル ドキュメントに記載されています。チュートリアル ビデオが用意されている場合は、それも視聴できます。
 
-3. Predicative Experiment から Web サービスをデプロイします。テスト ボタンか、正常に動作することを確認するために自動的に作成される Excel テンプレートを使用して、Web サービスをテストします。
+3. Predictive Experiment から Web サービスをデプロイします。テスト ボタンか、正常に動作することを確認するために自動的に作成される Excel テンプレートを使用して、Web サービスをテストします。
 
-4. Web サービスをコンペティション エントリとして送信し、Cortana Intelligence ギャラリーのコンペティション ページで公開スコアを確認します。高得点であれば、スコアボードに表示されます。 エントリが正常に送信されたら、コピーした Starter Experiment に戻り、作業を繰り返して、Predicative Experiment を更新し、Web サービスを更新して、新しいエントリを送信できます。
+4. Web サービスをコンペティション エントリとして送信し、Cortana Intelligence ギャラリーのコンペティション ページで公開スコアを確認します。高得点であれば、スコアボードに表示されます。 エントリが正常に送信されたら、コピーした Starter Experiment に戻り、作業を繰り返して、Predictive Experiment を更新し、Web サービスを更新して、新しいエントリを送信できます。
 
 **オープン ソース ツールを使用して、コンペティションに参加することはできますか。**
 
@@ -49,8 +49,11 @@ Cortana Analytics ギャラリー経由で、コンペティションのホー�
 **参加するには、データ サイエンティストである必要はありますか?**
 
 いいえ。実際には、データ処理に強い関心がある人、データ サイエンスに興味がある人、データ サイエンティストになろうとしている人などに、コンテストへの参加をお勧めしています。補助ドキュメントは、全員が完了できるように設計されています。対象読者:
+
 * データ開発者、データ サイエンティスト、BI、および分析のプロフェッショナル: 他のユーザーが使用するデータおよび分析用コンテンツの生成を担当するユーザー。
+
 * データ スチュワード: データの意味、意図された使用方法、目的などのデータに関する知識を持つユーザー。
+
 * 学生と研究者: 大学の教育プログラムを通じてデータ関連のスキルを学習したり習得しようとしているユーザー、または Massively Open Online Courses (MOOC) の参加者。
 
 
@@ -60,7 +63,7 @@ Cortana Analytics ギャラリー経由で、コンペティションのホー�
 
 **コンペティションに参加するには、費用がかかりますか。**
 
-コンペティションには、無料で参加できます。ただし、参加するには、Azure Machine Learning ワークスペースへのアクセスが必要です。クレジット カードなしで、単に有効な Microsoft アカウントまたは Office 365 アカウントでログインするだけで、Free ワークスペースを作成することができます。既に Azure または Cortana Analytics Suite ユーザーである場合は、同じ Azure サブスクリプションで Standard ワークスペースを作成して使用できます。Azure サブスクリプションを購入したい場合は、[ここ](https://azure.microsoft.com/pricing)にアクセスしてください。実験を構築するために Standard ワークスペースを使用する場合は、標準料金が適用されることに注意してください。Azure Machine Learning の価格情報については、[こちら](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。
+コンペティションには、無料で参加できます。ただし、参加するには、Azure Machine Learning ワークスペースへのアクセスが必要です。クレジット カードなしで、単に有効な Microsoft アカウントまたは Office 365 アカウントでログインするだけで、Free ワークスペースを作成することができます。既に Azure または Cortana Intelligence Suite ユーザーである場合は、同じ Azure サブスクリプションで Standard ワークスペースを作成して使用できます。Azure サブスクリプションを購入したい場合は、[ここ](https://azure.microsoft.com/pricing)にアクセスしてください。実験を構築するために Standard ワークスペースを使用する場合は、標準料金が適用されることに注意してください。Azure Machine Learning の価格情報については、[こちら](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -112,4 +115,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。詳細については、[契約条件](http://aka.ms/comptermsandconditions)を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

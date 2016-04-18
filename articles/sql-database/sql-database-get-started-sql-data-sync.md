@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="04/04/2016"
 	ms.author="jhubbard"/>
 
 
@@ -22,7 +22,7 @@
 
 このチュートリアルは、SQL Server および Azure SQL Database を使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL Database インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
-> [AZURE.NOTE]これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は PDF として[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
+> [AZURE.NOTE] これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は PDF として[こちら](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)でダウンロードできます。
 
 ## 手順 1: Azure SQL Database への接続
 
@@ -44,7 +44,7 @@
 
 <a id="InstallRequiredSoftware"></a>
 ### ステップ 2a. 必要なソフトウェアのインストール
-クライアント エージェントをインストールするコンピューターに次のソフトウェアがインストールされていることを確認してください。
+クライアント エージェントをインストールするコンピューターに次のソフトウェアがインストールされていることを確認します。
 
 - **.NET Framework 4.0**
 
@@ -52,11 +52,11 @@
 
 - **Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)**
 
- Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
+ Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) は、[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールします。
 
 - **Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)**
 
- Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
+ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は、[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールします。
 
 
 
@@ -117,7 +117,7 @@
 3. SQL データ同期によってユーザー名とパスワードが確認されるのを待ちます。資格情報が確認されると、[パスワード] ボックスの右側に緑色のチェック マークが表示されます。
 4. ドロップダウン リストで、**[競合の解決]** ポリシーを選択します。
 
- **[ハブ側に合わせる]** – ハブ データベースに書き込まれた変更内容がすべて参照データベースに書き込まれ、同じ参照データベース レコードの変更内容は上書きされます。機能的には、ハブに書き込まれた最初の変更内容が他のデータベースに反映されることになります。
+ **[ハブ側に合わせる]** - ハブ データベースに書き込まれた変更内容が参照データベースに書き込まれ、同じ参照データベース レコードの変更内容は上書きされます。機能的には、ハブに書き込まれた最初の変更内容が他のデータベースに反映されることになります。
 
 
  **[クライアント側に合わせる]** – ハブ データベースに書き込まれた変更内容は参照データベースの変更内容によって上書きされます。機能的には、ハブに書き込まれた最後の変更内容は、他のデータベースに保持され反映されている変更内容ということになります。
@@ -153,7 +153,7 @@
 
 ## ステップ 5. 同期するデータの定義
 
-Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列を絞り込んで、特定の値 (年齢 >= 65 など) を持つ行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、および行の選択」の説明を参照して、同期するデータを定義します。
+Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列をフィルターして特定の値 (年齢 >= 65 など) が含まれた行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、および行の選択」の説明を参照して、同期するデータを定義します。
 
 1.	[クラシック ポータル](http://manage.windowsazure.com)に戻ります。
 2.	**[SQL データベース]** をクリックします。
@@ -174,7 +174,7 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 
 ## ステップ 6. 同期グループの構成
 
-同期グループはいつでも、データ同期のランディング ページの下部にある [同期] をクリックして同期できます。同期グループを定期的に同期する場合は、同期グループを構成します。
+同期グループはいつでも、データ同期のランディング ページの下部にある [同期] をクリックして同期できます。定期的に同期する場合は、同期グループを構成します。
 
 1.	[クラシック ポータル](http://manage.windowsazure.com)に戻ります。
 2.	**[SQL データベース]** をクリックします。
@@ -202,4 +202,4 @@ SQL Database と SQL データ同期の詳細については、以下を参照�
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

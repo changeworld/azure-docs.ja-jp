@@ -148,13 +148,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 |このアラート ルールの場所|	米国東部|
 |ResourceGroup|	montest|
 |TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
-|作成されたアラートの MetricName|	\\PhysicalDisk(\_Total)\\Disk Writes/sec。正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。|
-|演算子| GreaterThan|
-|しきい値 (このメトリックの場合、数/秒)| 1|
-|WindowSize (hh:mm:ss 形式)| 00:05:00|
-|アグリゲーター (メトリックの統計。この例では Average を使用)| Average|
-|カスタム電子メール (文字列配列)|'foo@example.com','bar@example.com'|
-|所有者、共同作成者、閲覧者への電子メールの送信| -SendToServiceOwners|
+|作成されたアラートの MetricName|	\\PhysicalDisk(\_Total)\\Disk Writes/sec。正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。| |演算子| GreaterThan| |しきい値 (このメトリックの場合、数/秒)| 1| |WindowSize (hh:mm:ss 形式)| 00:05:00| |アグリゲーター (メトリックの統計。この例では Average を使用)| Average| |カスタム電子メール (文字列配列)|'foo@example.com','bar@example.com'| |所有者、共同作成者、閲覧者への電子メールの送信| -SendToServiceOwners|
 
 Email アクションを作成する
 
@@ -229,7 +223,6 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 `Get-AzureRmMetricDefinition` で使用できるオプションの完全な一覧については、「[Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」をご覧ください。
 
-各種 Azure サービスで使用可能なメトリックとその単位の一覧については、「[(Web ページのタイトル)](http://link)」をご覧ください。
 
 ## 自動スケール設定の作成と管理
 Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。ただし、各自動スケール設定では複数のプロファイルを使用できます。たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。各プロファイルには、複数のルールを構成できます。自動スケールの詳細については、「[アプリケーションの自動スケールを実行する方法](../cloud-services/cloud-services-how-to-scale.md)」をご覧ください。
@@ -339,7 +332,7 @@ Remove-AzureRmLogProfile -name my_log_profile_s1
 
 ### データ リテンション期間を指定したログ プロファイルの追加
 
-データを保持する日数を正の整数で指定して、**RetentionInDays** プロパティを指定できます。
+データを保持する日数を正の整数で指定して、**-RetentionInDays** プロパティを指定できます。
 
 ```
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
@@ -385,4 +378,4 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

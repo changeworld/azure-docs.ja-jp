@@ -30,11 +30,11 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 
 このセクションでは、`BlobTrigger` 属性を使用する方法を示しています。
 
-> [AZURE.NOTE]WebJobs SDK は、ログ ファイルをスキャンし、新しい BLOB や変更された BLOB を監視します。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で `BlobTrigger` 属性ではなく [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することをお勧めします。
+> [AZURE.NOTE] WebJobs SDK は、ログ ファイルをスキャンし、新しい BLOB や変更された BLOB を監視します。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で `BlobTrigger` 属性ではなく [QueueTrigger](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することをお勧めします。
 
 ### 拡張子を持つ BLOB 名の 1 つのプレース ホルダー  
 
-次のコード サンプルは、 入力コンテナーに表示される テキスト BLOB を 出力コンテナーにコピーします。
+次のコード サンプルは、 *入力*コンテナーに表示される テキスト BLOB を *出力*コンテナーにコピーします。
 
 		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
 		    [Blob("output/{name}")] out string output)
@@ -42,7 +42,7 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 		    output = input.ReadToEnd();
 		}
 
-属性コンストラクターが、コンテナー名と BLOB 名のプレース ホルダーを指定する文字列パラメーターを取得します。たとえば、 Blob1.txt という名前の BLOB が 入力コンテナーで作成されると、Blob1.txt という名前の BLOB が 出力コンテナーに作成されます。
+属性コンストラクターが、コンテナー名と BLOB 名のプレース ホルダーを指定する文字列パラメーターを取得します。たとえば、 *Blob1.txt* という名前の BLOB が *入力*コンテナーで作成されると、*Blob1.txt* という名前の BLOB が *出力*コンテナーに作成されます。
 
 次のコード サンプルに示すように、BLOB 名のプレース ホルダーを持つ名前のパターンを指定できます。
 
@@ -52,9 +52,9 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 		    output = input.ReadToEnd();
 		}
 
-このコードは「元-」で始まる名前の BLOB のみをコピーします。たとえば、 入力コンテナーの original-Blob1.txt は、出力コンテナーの copy-Blob1.txt にコピーされます。
+このコードは「元-」で始まる名前の BLOB のみをコピーします。たとえば、 *入力*コンテナーの *original-Blob1.txt* は、*出力*コンテナーの *copy-Blob1.txt* にコピーされます。
 
-名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ イメージコンテナーに blob を見つける場合は、
+名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ *イメージ*コンテナーに blob を見つける場合は、
 
 		{20140101}-soundfile.mp3
 
@@ -62,11 +62,11 @@ BLOB を作成する方法を示すコード サンプルについては、「[W
 
 		images/{{20140101}}-{name}
 
-この例では、名前 プレース ホルダーの値は、soundfile.mp3 になります。
+この例では、*名前* プレース ホルダーの値は、*soundfile.mp3* になります。
 
 ### 別の BLOB 名と拡張子のプレース ホルダー
 
-次のコード サンプルでは、入力コンテナーに表示される BLOB が 出力コンテナーにコピーされる際にファイル拡張子を変更します。コードは、入力 BLOB の拡張子をログに記録し、出力 BLOB の拡張子を .txt に設定します。
+次のコード サンプルでは、*入力*コンテナーに表示される BLOB が *出力*コンテナーにコピーされる際にファイル拡張子を変更します。コードは、*入力* BLOB の拡張子をログに記録し、*出力* BLOB の拡張子を *.txt* に設定します。
 
 		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
 		    [Blob("output/{name}.txt")] out string output,
@@ -150,15 +150,30 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		    }
 		}
 
+## トリガー BLOB の BLOB パスの取得
+
+コンテナー名と、関数をトリガーした BLOB のコンテナー名と BLOB 名を取得するには、関数のシグネチャに `blobTrigger` 文字列パラメーターを含めます。
+
+		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
+		    string name,
+		    string blobTrigger,
+		    TextWriter logger)
+		{
+		     logger.WriteLine("Full blob path: {0}", blobTrigger);
+		     logger.WriteLine("Content:");
+		     logger.WriteLine(logMessage);
+		}
+
+
 ## <a id="poison"></a>有害な BLOB の処理方法
 
-`BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 webjobs-blobtrigger-poison という名前のキューにメッセージを追加します。
+`BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
 
 再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId ({WebJob name}.Functions.{Function name} の形式、たとえば、WebJob1.Functions.CopyBlob)
+* FunctionId (*{WebJob name}*.Functions.*{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * コンテナー名
 * BlobName
@@ -205,21 +220,21 @@ Web ジョブ SDK は、アプリケーションの起動時に `BlobTrigger` �
 
 ### <a id="receipts"></a>BLOB の配信確認メッセージ
 
-Web ジョブ SDK では、`BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。これはBLOB の配信確認メッセージを維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
+Web ジョブ SDK では、`BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。これは*BLOB の配信確認メッセージ*を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
-BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの azure-webjobs-hosts という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
+BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
 
-* BLOB に対して呼び出された関数 ("{WebJob name}.Functions.{Function name}"。たとえば、"WebJob1.Functions.CopyBlob")
+* BLOB に対して呼び出された関数 ("*{WebJob name}*.Functions.*{Function name}*"。たとえば、"WebJob1.Functions.CopyBlob")
 * コンテナーの名前
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * BLOB の名前
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-BLOB を強制的に再処理する場合は、 azure-webjobs-hosts コンテナーからその BLOB の配信確認メッセージを手動で削除します。
+BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
 
 ## <a id="queues"></a>キューの記事で扱う関連トピック
 
-キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure Queue Storage を操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
+キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 
 その記事では、以下のような関連トピックが紹介されています。
 
@@ -238,4 +253,4 @@ BLOB を強制的に再処理する場合は、 azure-webjobs-hosts コンテナ
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0406_2016-->

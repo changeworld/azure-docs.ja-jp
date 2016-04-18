@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Data Warehouse での PowerShell コマンドレットと REST API の使用"
-   description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
+   pageTitle="Azure SQL Data Warehouse の PowerShell コマンドレット"
+   description="データベースの一時停止と再開など、Azure SQL Data Warehouse でよく使用される PowerShell コマンドレットを紹介します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
@@ -13,48 +13,59 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/28/2016"
+   ms.date="04/02/2016"
    ms.author="barbkess;mausher;sonyama"/>
 
-# SQL Data Warehouse での PowerShell コマンドレットと REST API の使用
+# SQL Data Warehouse の PowerShell コマンドレットと REST API
 
 SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。
 
-**Azure SQL Database** に対して定義されているコマンドは、**SQL Data Warehouse** に対しても使用されます。最新のリストについては、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/mt574084.aspx)」を参照してください。コマンドレット **Suspend-AzureRmSqlDatabase** と **Resume-AzureRmSqlDatabase** (以下参照) は、SQL Data Warehouse 用に追加作成されたものです。
+**Azure SQL Database** 用に定義されているコマンドのほとんどは、**SQL Data Warehouse** でも使用されます。最新のリストについては、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/mt574084.aspx)」を参照してください。コマンドレット [Suspend-AzureRmSqlDatabase][] と [Resume-AzureRmSqlDatabase][] は、SQL Data Warehouse 用に追加作成されたものです。
 
 同様に、**SQL Azure Database** 用の REST API も **SQL Data Warehouse** インスタンスに使用できます。最新のリストについては、「[Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)」を参照してください。
 
-## Azure PowerShell コマンドレットの取得と実行
+## Azure PowerShell コマンドレットの使用開始
 
-1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://aka.ms/webpi-azps) を実行します。このインストーラーの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
-2. モジュールを実行するには、スタート ウィンドウに「**Windows PowerShell**」と入力します。
-3. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
+1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://aka.ms/webpi-azps) を実行します。このインストーラーの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
+2. PowerShell を起動するには、**[スタート]** をクリックし、「**Windows PowerShell**」と入力します。
+3. PowerShell プロンプトで、次のコマンドを実行して Azure Resource Manager にサインインし、サブスクリプションを選択します。
 
-```PowerShell
-Login-AzureRmAccount
-```
+    ```PowerShell
+    Login-AzureRmAccount
+    Get-AzureRmSubscription
+    Select-AzureRmSubscription -SubscriptionName "MySubscription"
+    ```
 
-3. 中断または再開するデータベースのサブスクリプションを選択します。次の例では、"MySubscription" という名前のサブスクリプションが選択されます。
 
-```Powershell
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
-```
+## 頻繁に使用される PowerShell コマンドレット
 
-## Suspend-AzureRmSqlDatabase
+次の PowerShell コマンドレットは、Azure SQL Data Warehouse で頻繁に使用されます。
 
-コマンド リファレンスについては、「[Suspend-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619337.aspx)」を参照してください。
 
-### 例 1: サーバー上で名前によってデータベースを一時停止する
+- [Get-AzureRmSqlDatabase][]
+- [Get-AzureRmSqlDeletedDatabaseBackup][]
+- [Get-AzureRmSqlDatabaseRestorePoints][]
+- [New-AzureRmSqlDatabase][]
+- [Remove-AzureRmSqlDatabase][]
+- [Restore-AzureRmSqlDatabase][] 
+- [Resume-AzureRmSqlDatabase][]
+- [Select-AzureRmSubscription][]
+- [Set-AzureRmSqlDatabase][]
+- [Suspend-AzureRmSqlDatabase][]
 
-この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが一時停止されます。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
+
+## SQL Data Warehouse の例
+
+SQL Data Warehouse にのみ適用される機能の例を以下に示します。
+
+### [Suspend-AzureRmSqlDatabase][]
+
+"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```Powershell
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-
-### 例 2: データベース オブジェクトを一時停止する
-
-この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 取得したオブジェクトは **Suspend-AzureRmSqlDatabase** にパイプ処理されます。その結果、データベースが一時停止されます。最後のコマンドは結果を表示します。
+バリエーションであるこの例では、取得したオブジェクトを [Suspend-AzureRmSqlDatabase][] にパイプ処理します。その結果、データベースが一時停止されます。最後のコマンドは結果を表示します。
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -62,62 +73,29 @@ $resultDatabase = $database | Suspend-AzureRmSqlDatabase
 $resultDatabase
 ```
 
-## Resume-AzureSqlDatabase
+### [Resume-AzureRmSqlDatabase][]
 
-コマンド リファレンスについては、「[Resume-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt619347.aspx)」をご覧ください。
-
-### 例 1: サーバー上で名前によってデータベースを再開する
-
-この例では、"Server01" という名前のサーバーにホストされている "Database02" という名前のデータベースが再開されます。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
+"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを再開します。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-### 例 2: データベース オブジェクトの再開
-
-この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 オブジェクトは **Resume-AzureRmSqlDatabase** にパイプ処理されます。
+この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースを取得します。 取得したオブジェクトを [Suspend-AzureRmSqlDatabase][] にパイプ処理します。
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
 
-## Get-AzureRmSqlDatabaseRestorePoints
-
-このコマンドレットは、Azure SQL Data Warehouse データベースのバックアップ復元ポイントを一覧表示します。復元ポイントは、データベースの復元に使用されます。返されるオブジェクトのプロパティは、次のとおりです。
-
-プロパティ|説明
----|---
-RestorePointType|DISCRETE / CONTINUOUS.不連続復元ポイントは、Azure SQL Data Warehouse データベースを復元できる特定の時点を示します。連続復元ポイントは、Azure SQL Database を復元できる最も早い時点を示します。データベースは、最も早い時点以降の任意の時点に復元できます。
-EarliestRestoreDate|最も早い復元時間 (restorePointType = CONTINUOUS のときに入力)
-RestorePointCreationDate |バックアップのスナップショット時間 (restorePointType = DISCRETE のときに入力)
-
-### 例 1: サーバー上で名前によってデータベースの復元ポイントを取得する
-この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースの復元ポイントが取得されます。
-
-```Powershell
-$restorePoints = Get-AzureRmSqlDatabaseRestorePoints –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
-$restorePoints
-```
-
-
-### 例 2: データベース オブジェクトの再開
-
-この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースが取得されます。 データベース オブジェクトは **Get-AzureRmSqlDatabase** にパイプ処理され、データベースの復元ポイントが結果として得られます。最後のコマンドは結果を出力します。
-
-```Powershell
-$database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
-$restorePoints = $database | Get-AzureRmSqlDatabaseRestorePoints
-$retorePoints
-```
-
-
 > [AZURE.NOTE] サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
 
 
 ## 次のステップ
-詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][]に関するページを参照してください。
+詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][]に関するページを参照してください。PowerShell のその他の例については、次のトピックをご覧ください。
+- [PowerShell を使用して SQL Data Warehouse を作成する](sql-data-warehouse-get-started-provision-powershell.md)
+- [SQL Data Warehouse でのデータベースのユーザー エラーからの復旧](sql-data-warehouse-backup-and-restore-from-snapshot.md)
+- [SQL Data Warehouse でのデータベースの障害からの復旧](sql-data-warehouse-backup-and-restore-from-geo-restore-snapshot.md)
 
 <!--Image references-->
 
@@ -126,11 +104,21 @@ $retorePoints
 [Azure PowerShell のインストールおよび構成方法]: ../articles/powershell-install-configure.md
 
 <!--MSDN references-->
+[Get-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt603648.aspx
+[Get-AzureRmSqlDeletedDatabaseBackup]: https://msdn.microsoft.com/library/mt693387.aspx
+[Get-AzureRmSqlDatabaseRestorePoints]: https://msdn.microsoft.com/library/mt603642.aspx
+[New-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619339.aspx
+[Remove-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619368.aspx
+[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[Resume-AzureRmSqlDatabase]: http://msdn.microsoft.com/library/mt619347.aspx
+[Suspend-AzureRmSqlDatabase]: http://msdn.microsoft.com/library/mt619347.aspx
+<!-- It appears that Select-AzureRmSubscription isn't documented, so this points to Select-AzureRmSubscription -->
+[Select-AzureRmSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
+[Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
+[Suspend-AzureRmSqlDatabase]: http://msdn.microsoft.com/library/mt619337.aspx
+
 
 
 <!--Other Web references-->
-[gog]: http://google.com/
-[yah]: http://search.yahoo.com/
-[msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

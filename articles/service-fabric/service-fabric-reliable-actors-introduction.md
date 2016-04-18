@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric Reliable Actors の概要 | Microsoft Azure"
-   description="Service Fabric Reliable Actors のプログラミング モデルの概要"
+   pageTitle="Service Fabric 高信頼アクターの概要 | Microsoft Azure"
+   description="Service Fabric Reliable Actors のプログラミング モデルの概要。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,79 +13,104 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="03/25/2016"
    ms.author="vturecek"/>
 
 # Service Fabric Reliable Actors の概要
-Service Fabric API は、[Azure Service Fabric](service-fabric-technical-overview.md) が提供する 2 つの高度なフレームワークの 1 つです (もう 1 つのフレームワークは [Reliable Services API](service-fabric-reliable-services-introduction.md))。
 
-Reliable Actors API は、アクター パターンに基づいて、Service Fabric が提供する拡張性と信頼性を利用しながら、コードを簡素化する非同期のシングル スレッド プログラミング モデルを提供します。
+Reliable Actors は、[Virtual Actor](http://research.microsoft.com/ja-JP/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
 
-## アクター
-アクターは、独立したシングル スレッド コンポーネントであり、状態と動作の両方をカプセル化します。このアクターは、.NET オブジェクトに似ているため、自然なプログラミング モデルを提供します。.NET オブジェクトが .NET 型のインスタンスであるように、アクターはすべてアクター型のインスタンスです。たとえば、電卓の機能を実装するアクター型や、クラスター全体のさまざまなノードに分散されるその型のアクターが多数存在する場合があります。このようなアクターはそれぞれ、アクター ID で一意に識別されます。
+## アクターとは
+アクターは、シングル スレッド実行のコンピューティングと状態の、分離されて独立したユニットです。[アクター パターン](https://en.wikipedia.org/wiki/Actor_model)は、同時実行システムまたは分散システム用のコンピューティング モデルです。このモデルでは、これらの多数のアクターが同時に、互いに独立して実行されます。アクターは、互いに通信することができ、さらにアクターを作成することができます。
 
-## アクター インターフェイスの定義と実装
+### どのようなときに Reliable Actors を使用するか
 
-アクターは、要求応答パターンを使用して非同期メッセージを渡すことによって、他のアクターを含む、システムの残りの部分と対話します。これらの対話は、非同期メソッドとしてインターフェイスで定義されます。たとえば、電卓の機能を実装するアクター型のインターフェイスは、次のように定義される場合があります。
+Service Fabric Reliable Actors は、アクター設計パターンの実装です。他のソフトウェア設計パターンと同様に、特定のパターンを使用するかどうかの判断は、ソフトウェア設計の問題がパターンに適しているかどうかに基づいて行われます。
 
-```csharp
-public interface ICalculatorActor : IActor
-{
-    Task<double> AddAsync(double valueOne, double valueTwo);
-    Task<double> SubtractAsync(double valueOne, double valueTwo);
-}
-```
+アクター設計パターンは、分散システムの多くの問題とシナリオに適していますが、パターンの制限とパターンを実装するフレームワークの制限を慎重に検討する必要があります。一般的なガイダンスとして、次のような場合に、問題やシナリオをモデル化するためにアクター パターンを検討してください。
 
-アクター型では、このインターフェイスを次のように実装できます。
+ - 問題空間に、状態とロジックの小さな分離されて独立したユニットが多数 (1,000 以上) 含まれている。
 
-```csharp
-public class CalculatorActor : StatelessActor, ICalculatorActor
-{
-    public Task<double> AddAsync(double valueOne, double valueTwo)
-    {
-        return Task.FromResult(valueOne + valueTwo);
-    }
+ - アクターのセット全体の状態に対するクエリなどの、外部コンポーネントとの重要なやり取りを必要としない、シングル スレッド オブジェクトを操作したい。
 
-    public Task<double> SubtractAsync(double valueOne, double valueTwo)
-    {
-        return Task.FromResult(valueOne - valueTwo);
-    }
-}
-```
+ - アクター インスタンスが、予期できない遅延がある呼び出し元を、I/O 操作を発行してブロックすることがない。
+
+## Service Fabric のアクター
+
+Service Fabric では、アクターは Reliable Actors フレームワーク内に実装されます。これは、[Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) 上に構築される、アクターとパターンをベースにしたアプリケーション フレームワークです。記述する各 Reliable Actors サービスは、実際にはパーティション分割されたステートフルな Reliable Service です。
+
+各アクターは、アクター型のインスタンスとして定義されます。これは、.NET オブジェクトが .NET 型のインスタンスであるのと同様です。たとえば、電卓の機能を実装するアクター型がある場合や、クラスター全体のさまざまなノードで分散されるその型のアクターが多数存在する場合があります。このようなアクターはそれぞれ、アクター ID で一意に識別されます。
+
+### アクターの有効期間
+
+Service Fabric アクターは仮想アクターです。つまり、その有効期間は、メモリ内表現に関連付けられていません。したがって、明示的に作成したり、破棄したりする必要はありません。Reliable Actors ランタイムは、アクター ID への要求の初回受信時に、自動的にそのアクターをアクティブ化します。アクターが一定期間使用されていない場合、Reliable Actors ランタイムはメモリ内オブジェクトをガベージ コレクトします。また、アクターを後で再アクティブ化する場合に備えて、アクターの存在に関する情報を保持します。詳細については、「[アクターのライフ サイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」を参照してください。
+
+この仮想アクターの有効期間の抽象化によって、仮想アクター モデルの結果として、いくつかの注意事項が発生します。実際には、Reliable Actors の実装は、ときどきこのモデルから逸脱します。
+
+ - アクターは、そのアクター ID に初めてメッセージが送信されたときに、自動的にアクティブ化されます (アクター オブジェクトが構築されます)。しばらくしてから、アクター オブジェクトはガベージ コレクトされます。その後、もう一度そのアクター ID を使用すると、新しいアクター オブジェクトが構築されます。アクターの状態は、状態マネージャーに格納されると、オブジェクトの有効期間よりも長く保持されます。
+ 
+ - アクター ID に対していずれかのアクター メソッドを呼び出すと、そのアクターがアクティブ化されます。このような理由で、アクター型ではランタイムによってコンストラクターが暗黙的に呼び出されます。そのため、サービス自体はアクターのコンストラクターにパラメーターを渡すことができても、クライアント コードはパラメーターをアクター型のコンストラクターに渡すことができません。結果として、アクターがクライアントからの初期化パラメーターを必要とする場合、他のメソッドから呼び出されるときまで、アクターが部分的に初期化された状態で構築されることがあります。アクターのアクティブ化のための、クライアントからの単一のエントリ ポイントはありません。
+
+ - Reliable Actors では暗黙的にアクター オブジェクトが作成されますが、ユーザーが明示的にアクターとその状態を削除できます。
+
+### 分散とフェールオーバー
+
+Service Fabric アクターは、拡張性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。これは、[パーティション分割された、ステートフルな Reliable Service](./service-fabric-concepts-partitioning.md) の抽象化です。分散、拡張性、信頼性、および自動フェールオーバーは、アクターが *Actor Service* と呼ばれるステートフルな Reliable Service 内で実行されていることによって、すべてが実現されています。
+
+アクターは Actor Service のパーティション全体に分散され、これらのパーティションは Service Fabric クラスター内のノード全体に分散されます。各サービス パーティションには、アクターのセットが含まれています。Service Fabric は、分散とサービス パーティションのフェールオーバーを管理します。
+
+たとえば、既定のアクター パーティション配置を使用して 3 つのノードに 9 つのパーティションをデプロイしているアクター サービスは、次のように分散されます。
+
+![Reliable Actors distribution][2]
+
+Actor Framework は、パーティション スキームとキー範囲設定を管理します。これは、いくつかの選択を簡略化しますが、次のような考慮事項も伴います。
+
+ - Reliable Services では、パーティション スキーム、キー範囲 (範囲パーティション スキームを使用する場合)、およびパーティション数を選択できます。Reliable Actors は範囲パーティション スキーム (uniform Int64 スキーム) に制限され、完全な Int64 キー範囲を使用する必要があります。
+ 
+ - 既定では、アクターは均等に分散するように、パーティションにランダムに配置されます。
+ 
+ - アクターがランダムに配置されるため、アクターの操作には常にネットワーク通信が必要になることを想定しておかなければなりません。また、メソッド呼び出しデータのシリアル化および逆シリアル化、遅延とオーバーヘッドの発生なども考慮する必要があります。
+ 
+ - 高度なシナリオでは、特定のパーティションに割り当てられる Int64 アクター ID を使用して、アクターのパーティション配置を制御できます。ただし、そうした場合、パーティション間でアクターの分散が不均等になることがあります。
+
+アクター サービスがパーティション分割される方法の詳細については、[アクターのパーティション分割の概念](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)の部分を参照してください。
+
+### アクターの通信
+アクター間のやり取りは、インターフェイスを実装するアクターと、同じインターフェイスを介してアクターへのプロキシを取得するクライアントとで共有されるインターフェイス内で定義されます。このインターフェイスは、アクター メソッドを非同期で呼び出すために使用されるので、インターフェイスの各メソッドはタスクを返す必要があります。
 
 メソッド呼び出しとその応答が、最終的にはクラスター全体でネットワーク要求になるため、引数と返されるタスクの結果の型は、プラットフォームがシリアル化できる必要があります。具体的には、[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)でなければなりません。
 
-> [AZURE.TIP] Service Fabric Actors ランタイムは、いくつかの[アクター メソッドに関するイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
-
-アクター インターフェイス メソッドに関する次の規則に注意する必要があります。
-- アクター インターフェイス メソッドはオーバー ロードできません。
-- アクター インターフェイス メソッドには、out、ref、optional パラメーターを使用できません。
-
-## アクターの通信
-### アクター プロキシ
-Reliable Actors API は、アクター インスタンスとアクター クライアント間の通信を提供します。アクターと通信するために、クライアントは、アクター インターフェイスを実装するアクター プロキシ オブジェクトを作成します。クライアントは、プロキシ オブジェクトでメソッドを呼び出すことによって、アクターと対話します。アクター間の通信だけでなく、クライアントとアクター間の通信でもアクター プロキシを使用できます。ここでも電卓を例とします。電卓アクターのクライアント コードは以下のように記述できます。
+#### アクター プロキシ
+Reliable Actors API は、アクター インスタンスとアクター クライアント間の通信を提供します。アクターと通信するために、クライアントは、アクター インターフェイスを実装するアクター プロキシ オブジェクトを作成します。クライアントは、プロキシ オブジェクトでメソッドを呼び出すことによって、アクターと対話します。アクター間の通信だけでなく、クライアントとアクター間の通信でもアクター プロキシを使用できます。
 
 ```csharp
+// Create a randomly distributed actor ID
 ActorId actorId = ActorId.NewId();
-string applicationName = "fabric:/CalculatorActorApp";
-ICalculatorActor calculatorActor = ActorProxy.Create<ICalculatorActor>(actorId, applicationName);
-double result = calculatorActor.AddAsync(2, 3).Result;
+
+// This only creates a proxy object, it does not activate an actor or invoke any methods yet.
+IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/MyActorService"));
+
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+await myActor.DoWorkAsync();
 ```
 
 アクター プロキシ オブジェクトの作成には、アクター ID とアプリケーション名という 2 つの情報が使用されていることに注意してください。アクター ID は、アクターを一意に識別します。アプリケーション名は、アクターがデプロイされている [Service Fabric アプリケーション](service-fabric-reliable-actors-platform.md#service-fabric-application-model-concepts-for-actors)を識別します。
 
-### アクターの有効期間
+クライアント側の `ActorProxy` クラスは、必要な解決策を実行して、ID によってアクターを検索し、このアクターによって通信チャネルを開きます。また、`ActorProxy` は、通信のエラーとフェールオーバーが発生した場合にアクターの検索も再試行します。その結果、メッセージの配信には次のような特徴があります。
 
-Service Fabric アクターは仮想アクターです。つまり、その有効期間は、メモリ内表現に関連付けられていません。したがって、明示的に作成したり、破棄したりする必要はありません。アクター ランタイムは、そのアクターの要求の初回受信時に、自動的にアクターをアクティブ化します。アクターが一定期間使用されていない場合、アクター ランタイムはメモリ内のオブジェクトをガベージ コレクトします。また、アクターを後で再アクティブ化する場合に備えて、アクターの存在に関する情報を保持します。詳細については、「[アクターのライフ サイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」を参照してください。
+ - メッセージ配信は、ベスト エフォートです。
+ - アクターは、同じクライアントから重複するメッセージを受け取る可能性があります。
 
-### 場所の透過性と自動フェールオーバー
+### 同時実行
 
-Service Fabric アクターは、高可用性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。クライアント側の `ActorProxy` クラスは、必要な解決策を実行して、ID [パーティション](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)によってアクターを検索し、このアクターによって通信チャネルを開きます。また、`ActorProxy` は、通信のエラーおよびフェールオーバーが発生した場合にアクターの特定も再試行します。この処理によって、エラーが発生した場合でも、メッセージは確実に配信されます。ただし、これは、アクターの実装で同じクライアントから重複するメッセージを取得できることも意味します。
+Reliable Actors ランタイムは、アクター メソッドにアクセスするためのターンに基づくアクセス モデルを提供します。これは、アクター オブジェクトのコード内で、ある時点でアクティブにできるスレッドが 1 つだけであることを意味します。ターンに基づくアクセスは、データ アクセスの同期メカニズムを必要としないので、同時実行システムを大幅に簡略化できます。また、システムの設計で、各アクター インスタンスのシングル スレッド アクセスの性質に特別な配慮が必要であることも意味しています。
 
-## 同時実行
-### ターンに基づくアクセス
+ - 1 つのアクター インスタンスは、一度に複数の要求を処理することはできません。アクター インスタンスが同時要求の処理を期待される場合は、アクター インスタンスがスループット ボトルネックになる可能性があります。 
+ - 2 つのアクターの一方に外部要求が同時に行われるときに、2 つのアクター間に循環要求があると、互いにデッドロックすることがあります。アクター ランタイムは、デッドロック状態を中断するために、自動的にアクター呼び出しをタイムアウトし、呼び出し元に例外をスローします。
 
-アクター ランタイムは、アクター メソッドにアクセスするためのターンに基づくモデルを提供します。これは、アクター コード内で随時アクティブ化できるスレッドが 1 つだけであることを意味します。
+![Reliable Actors communication][3]
+
+#### ターンに基づくアクセス
 
 ターンは、他のアクターまたはクライアントからの要求に応じたアクター メソッドの完全な実行、あるいは[タイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)のコールバックの完全な実行で構成されます。これらのメソッドとコールバックが非同期でも、アクター ランタイムはこれらをインターリーブしません。ターンは、新しいターンが許可される前に完全に完了する必要があります。つまり、現在実行しているアクター メソッドまたはタイマーとアラームのコールバックは、メソッドまたはコールバックの新しい呼び出しが許可される前に完全に完了する必要があります。実行がメソッドまたはコールバックから返され、メソッドまたはコールバックによって返されたタスクが完了した場合は、そのメソッドまたはコールバックは完了したと見なされます。ターンごとの同時実行は、メソッド、タイマーおよびコールバックが異なる場合でも優先されることに注意してください。
 
@@ -95,108 +120,42 @@ Service Fabric アクターは、高可用性と信頼性を実現するため�
 
 ![Reliable Actors ランタイムのターンごとの同時実行とアクセス][1]
 
-上の図は、次の規則に従っています。
+この図は、次の規則に従っています。
 
 - 各垂直線は、特定のアクターの代わりにメソッドまたはコールバックを実行する場合の論理フローを示しています。
 - 各垂直線上にマークされているイベントは発生順になっており、古いイベントの下に新しいイベントが続きます。
 - タイムラインでは、異なるアクターに対応する異なる色が使用されています。
 - 強調表示は、アクターごとのロックがメソッドまたはコールバックの代わりに保持される期間を示すために使用されています。
 
-上記の図では次の点に注意する必要があります。
+次のような、考慮すべき重要な点がいくつかあります。
 
 - クライアント要求 *xyz789* に応じて *ActorId2* の代わりに *Method1* を実行しているときに、別のクライアント要求 (*abc123*) が到着する場合があります。その場合も、*ActorId2* が *Method1* を実行する必要があります。ただし、*Method1* の 2 回目の実行は、前の実行が完了するまで開始されません。同様に、*Method1* がクライアント要求 *xyz789* に応じて実行されている間に、*ActorId2* によって登録されたアラームが開始されます。アラームのコールバックが実行されるのは、*Method1* の両方の実行が完了した場合のみです。これはすべてターンごとの同時実行が *ActorId2* に対して強制されるためです。
 - 同様に、ターンごとの同時実行は *ActorId1* に対しても強制されます。図に示されているように、*ActorId1* の代わりに *Method1*、*Method2* およびタイマーのコールバックが順次実行されます。
 - *ActorId1* の代理としての *Method1* の実行は、*ActorId2* の代理として実行と重複しています。これは、ターンごとの同時実行が、アクター全体ではなくアクター内でのみ強制されるためです。
 - メソッドやコールバックのいくつかの実行では、メソッドやコールバックによって返される `Task` は、メソッドが応答した後に完了します。その他の実行では、メソッドやコールバックが応答するまでに `Task` は既に完了しています。いずれの場合でも、アクターごとのロックは、メソッドとコールバックが応答し、`Task` が完了した後にのみ解放されます。
 
-### 再入
+#### 再入
 
 アクター ランタイムでは、既定で再入が許可されます。つまり、*アクター A* のアクター メソッドが*アクター B* に対してメソッドを呼び出してから、アクター B が*アクター A* に対して別のメソッドを呼び出す場合、実行が許可されます。これは、メソッドが同じ論理呼び出しチェーン コンテキストの一部であるためです。すべてのタイマーとアラームの呼び出しは新しい論理呼び出しコンテキストで始まります。詳細については、「[Reliable Actors の再入](service-fabric-reliable-actors-reentrancy.md)」を参照してください。
 
-### 同時実行の保証の範囲
+#### 同時実行の保証の範囲
 
 アクター ランタイムは、これらのメソッドの呼び出しを制御する状況でこのような同時実行を保証します。たとえば、クライアント要求の受信に対する応答として行われるメソッド呼び出しおよびタイマーとアラームのコールバックに対して、このような保証を提供します。ただし、アクター コードがアクター ランタイムによって提供されるメカニズム以外でこれらのメソッドを直接呼び出す場合、ランタイムは同時実行を保証できません。たとえば、メソッドが、アクター メソッドによって返されるタスクに関連付けられていない一部のタスクのコンテキストで呼び出される場合、ランタイムは同時実行を保証することはできません。アクターが独自に作成するスレッドからメソッドが呼び出される場合、ランタイムは同時実行を保証できません。そのため、バックグラウンド操作を実行するには、アクターは、ターンごとの同時実行を優先する[アクターのタイマーおよびアクターのアラーム](service-fabric-reliable-actors-timers-reminders.md)を使用する必要があります。
 
-> [AZURE.TIP] Service Fabric Actors ランタイムは、いくつかの[同時実行に関するイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#concurrency-events-and-performance-counters)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
-
-## アクターの状態管理
-Service Fabric を使用して、ステートレスまたはステートフルであるアクターを作成できます。
-
-### ステートレス アクター
-`StatelessActor` 基本クラスから派生したステートレス アクターには、アクター ランタイムによって管理される状態はありません。アクターのメンバー変数は、他の .NET 型と同じように、そのメモリ内の有効期間にわたって保持されます。ただし、アクターはアイドル状態がしばらく続くとガベージ コレクトされるため、その状態は失われます。同様に、フェールオーバーによって状態が失われる場合もあります。フェールオーバーは、アップグレード、リソース バランシング操作、またはアクター プロセスやアクター プロセスをホストするノードの障害によって発生します。
-
-ステートレス アクターの例を次に示します。
-
-```csharp
-class HelloActor : StatelessActor, IHello
-{
-    public Task<string> SayHello(string greeting)
-    {
-        return Task.FromResult("You said: '" + greeting + "', I say: Hello Actors!");
-    }
-}
-```
-
-### ステートフル アクター
-ステートフル アクターには、ガベージ コレクションとフェールオーバー全体で保持しなければならない状態が含まれます。このステートフル アクターは `StatefulActor<TState>` から派生します。`TState` は、保持する必要がある状態の種類です。状態には、基本クラスの `State` プロパティを使用して、アクター メソッドでアクセスできます。
-
-状態にアクセスするステートフル アクターの例を次に示します。
-
-```csharp
-class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
-{
-    public Task<List<Voicemail>> GetMessagesAsync()
-    {
-        return Task.FromResult(State.MessageList);
-    }
-    ...
-}
-```
-
-アクターの状態はディスクに保持され、クラスター内の複数のノードにレプリケートされます。これにより、ガベージ コレクションおよびフェールオーバー全体で保持されます。つまり、メソッドの引数や戻り値のように、アクター状態の型は[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)でなければなりません。
-
-> [AZURE.NOTE] インターフェイスおよびアクター状態の型の定義方法の詳細については、[Reliable Actors のシリアル化に関する留意事項](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)に関する記事を参照してください。
-
-#### アクター状態プロバイダー
-状態の格納と取得はアクター状態プロバイダーによって提供されます。状態プロバイダーは、状態プロバイダーの特定の属性を使用して、アクターごとまたはアセンブリ内のすべてのアクターに構成できます。アクターがアクティブ化されている場合、その状態はメモリに読み込まれます。Actors メソッドが完了すると、Actors ランタイムから状態プロバイダーに対してメソッドが呼び出され、変更された状態が自動的に保存されます。**保存**中にエラーが発生した場合、Actors ランタイムは、新しいアクター インスタンスを作成し、最後の一貫性のある状態を状態プロバイダーから読み込みます。
-
-既定では、ステートフル アクターはキー値ストアのアクター状態プロバイダーを使用します。この状態プロバイダーは、Service Fabric プラットフォームで提供される分散キー値ストアに構築されます。詳細については、[状態プロバイダーの選択](service-fabric-reliable-actors-platform.md#actor-state-provider-choices)に関するトピックを参照してください。
-
-> [AZURE.TIP] アクター ランタイムは、[アクター状態管理に関するイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-state-management-events-and-performance-counters)をいくつか出力します。これらは、診断やパフォーマンスの監視に役立ちます。
-
-#### 読み取り専用メソッド
-既定では、Actors ランタイムは、アクター メソッド呼び出し、タイマーのコールバック、またはアラームのコールバックの完了時にアクター状態を保存します。状態の保存が完了するまでは、他のアクターの呼び出しは許可されません。
-
-ただし、状態を変更しないアクター メソッドもあります。この場合、状態の保存に使用される追加時間によって、システム全体のスループットに影響が及ぶ可能性があります。これを回避するために、読み取り専用として、状態を変更しないメソッドとタイマーのコールバックをマークすることができます。
-
-次の例は、`Readonly` 属性を使用して、アクター メソッドを読み取り専用としてマークする方法を示しています。
-
-```csharp
-public interface IVoicemailBoxActor : IActor
-{
-    [Readonly]
-    Task<List<Voicemail>> GetMessagesAsync();
-}
-```
-
-タイマーのコールバックも同じように `Readonly` 属性を使用してマークできます。アラームの場合は、読み取り専用フラグが引数として、アラームを登録するために呼び出される `RegisterReminder` メソッドに渡されます。
-
 ## 次のステップ
-[アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
-
-[アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
-
-[アクター イベント](service-fabric-reliable-actors-events.md)
-
-[アクターの再入](service-fabric-reliable-actors-reentrancy.md)
-
-[Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
-
-[KVSActorStateProvider アクターの構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
-
-[アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+ - [Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
+ - [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
+ - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
+ - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+ - [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
+ - [アクター イベント](service-fabric-reliable-actors-events.md)
+ - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
+ - [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
+ - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
+[2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
+[3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

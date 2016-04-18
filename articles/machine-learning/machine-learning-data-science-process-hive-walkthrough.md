@@ -79,7 +79,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
-1. [ストレージ アカウントを作成する](../storage-whatis-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。ここには、HDInsight クラスターで使用するデータも格納されます。
+1. [ストレージ アカウントを作成する](../storage/storage-create-storage-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。ここには、HDInsight クラスターで使用するデータも格納されます。
 
 2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md): この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
 
@@ -95,7 +95,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure BLOB ストレージとの間でデータを移動する](machine-learning-data-science-move-azure-blob.md)」で説明されているいずれかの方法を使用して、データをコンピューターにコピーします。
 
-ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../storage-use-azcopy.md)」に記載されている手順に従います。
+ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../storage/storage-use-azcopy.md)」に記載されている手順に従います。
 
 1. コマンド プロンプト ウィンドウで、次の AzCopy コマンドを発行し、*<path_to_data_folder>* を、目的の転送先に置き換えます。
 
@@ -786,7 +786,7 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 決定係数が 0.709 であり、これは約 71% という分散がモデル係数で説明されていることを意味しています。
 
-**重要な注意事項:** Azure Machine Learning の詳細と Azure Machine Learning にアクセスして使用する方法の詳細については、「[Azure Machine Learning とは](machine-learning-what-is-machine-learning.md)」をご覧ください。Machine Learning の一連の実験を再生する非常に便利なリソースとして [Cortana Analytics ギャラリー](https://gallery.azureml.net/)があります。ギャラリーには、すべての実験についての説明があり、Azure Machine Learning の機能範囲が詳しく説明されています。
+**重要な注意事項:** Azure Machine Learning の詳細と Azure Machine Learning にアクセスして使用する方法の詳細については、「[Azure Machine Learning とは](machine-learning-what-is-machine-learning.md)」をご覧ください。Machine Learning の一連の実験を再生する非常に便利なリソースとして [Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)があります。ギャラリーには、すべての実験についての説明があり、Azure Machine Learning の機能範囲が詳しく説明されています。
 
 ## ライセンス情報
 
@@ -794,9 +794,7 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 ## 参照
 
-•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
@@ -810,4 +808,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/21/2016" 
+	ms.date="03/28/2016" 
 	ms.author="tamram"/>
 
 # 開発とテストのための Azure のストレージ エミュレーター使用
@@ -21,7 +21,7 @@
 
 Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、キュー、テーブル サービスを開発用にエミュレートするローカル環境が利用できます。ストレージ エミュレーターを使用すると、ストレージ サービスに対するアプリケーションのローカル テストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure ストレージ アカウントの使用に切り替えることができます。
 
-> [AZURE.NOTE] ストレージ エミュレーターは、[Microsoft Azure SDK](https://azure.microsoft.com/downloads/) に付属しています。また、スタンドアロンのパッケージとしてストレージ エミュレーターをインストールすることも可能です。ストレージ エミュレーターを構成するには、ローカル コンピューターで管理者権限が与えられている必要があります。
+> [AZURE.NOTE] ストレージ エミュレーターは、[Microsoft Azure SDK](https://azure.microsoft.com/downloads/) に付属しています。また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)を使用して、ストレージ エミュレーターをインストールすることも可能です。ストレージ エミュレーターを構成するには、ローカル コンピューターで管理者権限が与えられている必要があります。
 >  
 > ストレージ エミュレーターの特定のバージョンで作成されたデータには、別のバージョンを使用しているとアクセスできない場合があります。データを永続化して長期にわたって保持する必要がある場合、そのデータはストレージ エミュレーターではなく Azure ストレージ アカウントに格納することをお勧めします。
 
@@ -41,7 +41,7 @@ LocalDB のインストールを管理するには、SQL Server Management Studi
 
 [AZURE.INCLUDE [storage-emulator-connection-string-include](../../includes/storage-emulator-connection-string-include.md)]
 
-接続文字列の詳細については、「[Azure Storage への接続文字列の構成](storage-configure-connection-string.md)」を参照してください。
+接続文字列の詳細については、「[Azure Storage への接続文字列を構成する](storage-configure-connection-string.md)」をご覧ください。
 
 ### 共有アクセス署名での認証 
 
@@ -232,4 +232,4 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。(以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->
