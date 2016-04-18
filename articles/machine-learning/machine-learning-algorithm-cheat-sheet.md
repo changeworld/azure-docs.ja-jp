@@ -1,7 +1,7 @@
 <properties
 	pageTitle="機械学習アルゴリズム チート シート | Microsoft Azure"
 	description="印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。"
-	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
+|	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
 	services="machine-learning"
 	documentationCenter=""
 	authors="brohrer"

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Power BI Embedded の一般的なシナリオ"
-   description=""
+   description="Microsoft Power BI Embedded の一般的なシナリオ"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

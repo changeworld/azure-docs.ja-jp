@@ -1,6 +1,6 @@
 <properties
    pageTitle="Power BI Embedded のアプリケーション トークン フローについて"
-   description=""
+   description="Power BI Embedded のアプリケーション トークン フローについて"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

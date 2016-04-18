@@ -1,6 +1,6 @@
 <properties
    pageTitle="FAQ"
-   description=""
+   description="FAQ"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -91,7 +91,7 @@
 
 16.	**どのように Power BI Embedded のユーザー認証は処理されますか?**
 
-    Power BI Embedded サービスでは、明示的なエンドユーザー認証ではなく、アプリケーション トークンを使用して認証と承認を行います。アプリケーション トークン モデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。次に、アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。アプリケーションのトークンの詳細については、[アプリ トークン](https://azure.microsoft.com/ja-JP/documentation/articles/power-bi-embedded-get-started-sample/#key-flow) ドキュメント ページを参照してください。
+    Power BI Embedded サービスでは、明示的なエンドユーザー認証ではなく、アプリケーション トークンを使用して認証と承認を行います。アプリケーション トークン モデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。次に、アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。アプリケーションのトークンの詳細については、[アプリ トークン](https://azure.microsoft.com/documentation/articles/power-bi-embedded-get-started-sample/#key-flow) ドキュメント ページを参照してください。
 
 17.	**Power BI Embedded では現在どのようなデータ ソースがサポートされていますか?**
 
@@ -101,7 +101,7 @@
 
     Power BI Embedded モデルでは、Azure Active Directory (Azure AD) テナントを顧客向けに使用するための明示的な条件はありません。顧客向けに Azure AD を提供するかどうか選択することができます。結果として、アプリケーションとインフラストラクチャのアーキテクチャによって、Power BI Embedded でテナント モデルが必要となるかが決定されます。
 
-    アプリケーションの開発に取り組んでいる開発者または従業員は、Azure ポータルを使用して Azure サブスクリプションとワークスペースのコレクションを管理できるよう、Azure AD ユーザー アカウントを所有している必要があります。開発者は、プログラムの API を使用し、レポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証用のアプリトークンを使用することも可能です。結果として、Azure AD は不要となります。API と Azure ポータルを使用する方法の詳細については、[Azure.com の Power BI Embedded ドキュメント ページ](https://azure.microsoft.com/ja-JP/documentation/services/power-bi-embedded/)を参照してください。
+    アプリケーションの開発に取り組んでいる開発者または従業員は、Azure ポータルを使用して Azure サブスクリプションとワークスペースのコレクションを管理できるよう、Azure AD ユーザー アカウントを所有している必要があります。開発者は、プログラムの API を使用し、レポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証用のアプリトークンを使用することも可能です。結果として、Azure AD は不要となります。API と Azure ポータルを使用する方法の詳細については、[Azure.com の Power BI Embedded ドキュメント ページ](https://azure.microsoft.com/documentation/services/power-bi-embedded/)を参照してください。
 
 19.	**詳細情報を得るには?**
 
@@ -116,4 +116,4 @@
 - [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

@@ -68,7 +68,7 @@ IoT Hub を認識しない SDK (または製品の統合) を使用する場合�
 
     ![][img-eventhubcompatible]
 
-> [AZURE.NOTE] SDK は、**ホスト名**または**名前空間**の値を必要とする場合があります。この場合、**[イベント ハブと互換性のあるエンドポイント]** からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが ****sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
+> [AZURE.NOTE] SDK は、**ホスト名**または**名前空間**の値を必要とする場合があります。この場合、**[イベント ハブと互換性のあるエンドポイント]** からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセスのセキュリティ ポリシーを使用できます。
 
@@ -640,4 +640,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

@@ -53,7 +53,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
-### <a name="bulk-insert-sql-query">一括挿入 SQL クエリ</a>
+### <a name="bulk-insert-sql-query"></a>一括挿入 SQL クエリ
 
 一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する手順と似ています。詳細については、「[一括挿入 SQL クエリ](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
@@ -72,7 +72,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 フラット ファイルにエクスポートする手順は、「[フラット ファイルへのエクスポート](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file)」の手順と似ています。
 
-###<a name="insert-tables-bcp">SQL Database 移行ウィザード</a>
+###<a name="insert-tables-bcp"></a>SQL Database 移行ウィザード
 
 SQL Database 移行ウィザードを使用する手順は、「[SQL Database 移行ウィザード](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration)」の手順と似ています。
 

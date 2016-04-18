@@ -28,7 +28,7 @@
 
 - **オープン REST API の可用性**。オープン プラットフォーム API を使用して CRM/CMS/IT システムと統合し自動化するために、オープン REST API と、これらの API を使用する .NET SDK を提供しています。これにより、Mobile Engagement との統合および自動化が容易になります。詳細については、[こちら](mobile-engagement-api-authentication.md)をご覧ください。
 
-- **Power BI コネクタが使用可能**。主な分析グラフを取り出して Power BI ダッシュ ボードに取り込むこともできます。この[ガイド](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-mobile/)を参照してください。
+- **Power BI コネクタが使用可能**。主な分析グラフを取り出して Power BI ダッシュ ボードに取り込むこともできます。この[ガイド](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-mobile/)を参照してください。
 
 - **セキュリティおよびプライバシーの保証**。Azure ファミリに属する Azure Mobile Engagement は、クラウド サービスで想定されるセキュリティおよびプライバシーにまつわるすべての標準的なベスト プラクティスに従います。
 
@@ -164,4 +164,4 @@
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

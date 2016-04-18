@@ -175,9 +175,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 [Azure ポータル]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Azure コマンド ライン インターフェイス]: https://azure.microsoft.com/ja-JP/documentation/articles/xplat-cli-azure-resource-manager/
+[Azure コマンド ライン インターフェイス]: https://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/
 
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->

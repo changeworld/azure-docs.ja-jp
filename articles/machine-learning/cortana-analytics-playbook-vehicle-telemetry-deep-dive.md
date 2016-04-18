@@ -387,7 +387,7 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 
 [ここ](http://go.microsoft.com/fwlink/?LinkId=717078)をクリックして、RealtimeDashboardApp Visual Studio ソリューションをダウンロードし、カスタマイズします。
 
-****リアルタイム ダッシュボード アプリケーションを実行するには **
+**リアルタイム ダッシュボード アプリケーションを実行するには**
 
 1.	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで [Download Real-time Dashboard Application] リンクをクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *図 17 – PowerBI ダッシュボードのセットアップ手順*
 2.	ローカルに展開し、保存します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *図 18 – RealtimeDashboardApp フォルダー*
@@ -706,4 +706,4 @@ PowerBI レポートとダッシュボードを設定するための詳細な手
 
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->
