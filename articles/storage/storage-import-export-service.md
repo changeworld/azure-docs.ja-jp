@@ -284,8 +284,8 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
 
-[import-job-03]: ./media/storage-import-export-service-classic-portal/import-job-03.png
-[export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
-[export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
+[import-job-03]: ./media/storage-import-export-service/import-job-03.png
+[export-job-03]: ./media/storage-import-export-service/export-job-03.png
+[export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

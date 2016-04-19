@@ -76,7 +76,7 @@ Azure Machine Learning 環境を例とします。
 - Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「[サポートされるデータ形式とデータ型](machine-learning-data-science-import-data.md#data-formats-and-data-types-supported)」セクションを参照してください。
 - Azure Machine Learning Studio のデータ制限については、「[Machine Learning 用データのインポートとエクスポート](machine-learning-faq.md#machine-learning-studio-questions)」の「**モジュールのデータ セットの大きさはどの程度まで許容されますか**」セクションを参照してください。
 
-分析プロセスで使用されるその他の Azure サービスの制限事項については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」を参照してください。
+分析プロセスで使用されるその他の Azure サービスの制限事項については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 
 ## データ品質の確認事項: 探索と前処理
 
@@ -104,7 +104,7 @@ Azure Machine Learning 環境を例とします。
 
 
 ## 高度な分析シナリオの特定
-前のセクションの質問に答えたら、現在の状況に最適なシナリオを決定する準備が整います。サンプル シナリオは、「[Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ](../machine-learning-data-science-plan-sample-scenarios.md)」に記載されています。
+前のセクションの質問に答えたら、現在の状況に最適なシナリオを決定する準備が整います。サンプル シナリオは、「[Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)」に記載されています。
 
 
 
@@ -114,4 +114,4 @@ Azure Machine Learning 環境を例とします。
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -17,11 +17,15 @@
 	ms.date="02/03/2016"
 	ms.author="cephalin"/>
 
-
 #アプリに対する HTTPS を Azure App Service で有効にする
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+> [AZURE.SELECTOR]
+- [カスタム ドメインに対して SSL を有効にする](web-sites-configure-ssl-certificate.md)
+- [Web Apps の SSL 証明書を購入する](web-sites-purchase-ssl-web-site.md)
+
+
 
 [AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

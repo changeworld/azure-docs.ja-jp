@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/28/2016"
+	ms.date="04/06/2016"
 	ms.author="jimpark; trinadhk"/>
 
 # Azure Backup とは
@@ -56,7 +56,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Azure Backup (MARS) エージェント | <li>物理と仮想のどちらの Windows OS マシンでもファイルとフォルダーをバックアップできる (VM はオンプレミスと Azure のどちらにも配置できる)<li>別途バックアップ サーバーは不要<li>Azure Backup コンテナーを使用 | <li>バックアップ/ファイル レベルの復元は 1 日 3 回まで<li>ファイル/フォルダー/ボリューム レベルの復元のみ。アプリケーションは認識されない<li>Linux には非対応 | ファイル/フォルダー/ボリューム |
 | System Center Data Protection Manager | <li>アプリ認識スナップショット (VSS)<li>バックアップを実行するタイミングを思いどおりに設定可能<li>きめ細かい回復単位 (全レベル)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合) | <li>異機種混在環境には非対応 (VMware VM バックアップ、Oracle ワークロード バックアップ) | ファイル/フォルダー/ボリューム<br>/VM/アプリケーション |
 | Microsoft Azure Backup サーバー | <li>アプリ認識スナップショット (VSS)<li>バックアップを実行するタイミングを思いどおりに設定可能<li>きめ細かい回復単位 (全レベル)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合)<li>System Center ライセンスは不要 | <li>異機種混在環境には非対応 (VMware VM バックアップ、Oracle ワークロード バックアップ)<li>常にアクティブな Azure サブスクリプションが必須<li>テープ バックアップには非対応 | ファイル/フォルダー/ボリューム<br>/VM/アプリケーション |
-| Azure IaaS VM のバックアップ | <li>Windows/Linux のネイティブ バックアップ<li>特定のエージェントのインストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ<li>Azure Backup コンテナーを使用 | <li>バックアップ/ディスク レベルの復元は 1 日に 1 回<li>オンプレミスでバックアップできない | VM<br>個々のディスク |
+| Azure IaaS VM のバックアップ | <li>Windows/Linux のネイティブ バックアップ<li>特定のエージェントのインストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ | <li>バックアップ/ディスク レベルの復元は 1 日に 1 回<li>オンプレミスでバックアップできない | VM<br>すべてのディスク (PowerShell を使用) |
 
 ## バックアップできるアプリケーションとワークロード
 
@@ -69,7 +69,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | 
 | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 
 ## ARM と Linux のサポート
@@ -79,7 +79,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Azure Backup (MARS) エージェント | あり | なし (Windows ベースのエージェントのみ) |
 | System Center Data Protection Manager | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 |
 | Azure Backup Server (MABS) | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 (DPM と同じ) |
-| Azure IaaS VM のバックアップ | 近日対応予定 | 近日対応予定 - V2 Linux VM <br><br>(ファイル システム レベルの整合性) |
+| Azure IaaS VM のバックアップ | パブリック プレビュー中 | パブリック プレビュー中 - Resource Manager デプロイ モデルでの Linux VM <br>(ファイル システム レベルの整合性)<br><br>あり - クラシック デプロイ モデルでの Linux VM |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
@@ -211,4 +211,4 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

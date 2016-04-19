@@ -18,10 +18,10 @@
 
 # Powershell で Azure DNS の使用を開始する
 
-
 > [AZURE.SELECTOR]
-- [Azure CLI](dns-getstarted-create-dnszone-cli.md)
+- [Azure ポータル](dns-getstarted-create-dnszone-portal.md)
 - [PowerShell](dns-getstarted-create-dnszone.md)
+- [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 
 ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。
 
@@ -31,7 +31,7 @@
 
 Azure PowerShell を使用して Azure DNS を管理するには、次の手順を完了しておく必要があります。
 
-Azure DNS では、Azure リソース マネージャー (ARM) を使用します。Azure PowerShell 1.0.0 以降の場合は次の手順を実行します。詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+Azure DNS では、Azure リソース マネージャー (ARM) を使用します。Azure PowerShell 1.0.0 以降の場合は次の手順を実行します。詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
 ### 手順 1.
 Azure アカウントにログインする (資格情報を使用して認証を行うよう求められます)
@@ -147,4 +147,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -3,7 +3,7 @@
    description="Azure ポータルで仮想マシンに基づいて、リソース マネージャーの完全修飾ドメイン名 (FQDN) を作成する方法を説明します。"
    services="virtual-machines-windows"
    documentationCenter=""
-   authors="dsk-2015"
+   authors="iainfoulds"
    manager="timlt"
    editor="tysonn"
    tags="azure-resource-manager"/>
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="01/19/2016"
-   ms.author="dkshir"/>
+   ms.date="04/04/2016"
+   ms.author="iainfou"/>
 
 # Azure ポータルでの完全修飾ドメイン名の作成
 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-portal-create-fqdn](../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

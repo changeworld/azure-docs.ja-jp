@@ -361,10 +361,10 @@ let 句は、名前を表形式の結果、スカラー値、または関数に�
 
 |EventNarrative|
 |---|
-|The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.Flood stage at Brownsville is 18 feet.Minor flooding occurs at this level.The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.|
-|The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.Flood stage at Boston is 35 feet.Minor flooding occurs at this level, with some agricultural bottom land covered.|
-|The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.Flood stage at Woodbury is 33 feet.Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.|
-|The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.Flood stage at Tell City is 38 feet.At this level, the river begins to overflow its banks above the gage.Indiana Highway 66 floods between Rome and Derby.|
+|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.) Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.) 小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.) 閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
+|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.) Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.) 小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
+|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.) Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.) 小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
+|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.) Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.) このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.) インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
 
 ```AIQL
 
@@ -1240,7 +1240,17 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
+| - | 減算 |
+| * | 乗算 |
+| / | 除算 |
+| % | 剰余 |
+||
+|`<` |小さい
+|`<=`|小さいか等しい
+|`>` |大きい
+|`>=`|大きいか等しい
+|`<>`|等しくない
+|`!=`|等しくない
 
 
 
@@ -2139,3 +2149,5 @@ range(1, 8, 3)
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 <!---HONumber=AcomDC_0330_2016------>
+
+

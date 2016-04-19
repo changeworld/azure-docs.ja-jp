@@ -13,7 +13,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="02/23/2016"
 	ms.author="anhoh"/>
 
@@ -79,4 +79,4 @@ Azure ポータルのクエリ エクスプローラーは、DocumentDB に対�
 
 クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。また、[Query Playground](https://www.documentdb.com/sql/demo)で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

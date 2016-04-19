@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="03/30/2016"
 	ms.author="femila"/>
 
 # Azure Conditional Access Preview for SaaS Apps
@@ -49,6 +49,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 ##アクセス規則について
 
 ここでは、Azure Conditional Application Access プレビューでサポートされているアクセス規則について詳細に説明します。
+
 ### アクセス規則を適用するユーザーの指定
 
 既定では、このポリシーは、アプリケーションへのアクセスを持つすべてのユーザーに適用されます。ただし、指定したセキュリティ グループのメンバーであるユーザーのみにポリシーを制限することもできます。**[グループの追加]** を使用すると、グループ選択のダイアログ ボックスから、アクセス規則を適用するグループを 1 つまたは複数選択できます。このダイアログ ボックスを使用して、選択したグループを削除することもできます。グループに適用する規則を選択すると、アクセス規則は、指定したセキュリティ グループに属するユーザーにのみ課せられます。
@@ -78,7 +79,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 フェデレーション テナントでは、Multi-Factor Authentication (MFA) が、Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。
 
-既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell の Azure AD モジュールを使用して、Azure Active Directory で –SupportsMFA プロパティを true に設定する必要があります。
+既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell の Azure AD モジュールを使用して、Azure Active Directory で -SupportsMFA プロパティを **true** に設定する必要があります。
 
 次の例で、contoso.com テナントで [Set-MsolDomainFederationSettings コマンドレット](https://msdn.microsoft.com/library/azure/dn194088.aspx)を使用して、オンプレミスの MFA を有効にする方法を示します。
 
@@ -88,6 +89,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 ##関連記事
 
+- [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="04/04/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -55,4 +55,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Microsoft アカウント アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Microsoft アカウントの構成を保存します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0406_2016-->

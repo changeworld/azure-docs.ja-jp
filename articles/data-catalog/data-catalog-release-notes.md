@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Data Catalog リリース ノート"
+   pageTitle="Azure Data Catalog リリース ノート | Microsoft Azure"
    description="Azure Data Catalog のリリース ノートです。"
    services="data-catalog"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
@@ -88,4 +88,4 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

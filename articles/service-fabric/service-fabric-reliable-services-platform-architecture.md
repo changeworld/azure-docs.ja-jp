@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="AlanWarwick"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="Service-Fabric"
@@ -16,9 +16,9 @@
    ms.date="03/30/2016"
    ms.author="alanwar"/>
 
-# ステートフルとステートレスの Reliable Service のアーキテクチャ
+# ステートフルとステートレスの Reliable Services のアーキテクチャ
 
-Azure Service Fabric の Reliable Service は、ステートフルまたはステートレスのいずれかに設定できます。いずれのサービスも、特定のアーキテクチャ内で実行されます。この記事では、そのアーキテクチャについて説明します。ステートフル サービスとステートレス サービスの違いについての詳細は「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」を参照してください。
+Azure Service Fabric の Reliable Service は、ステートフルの場合とステートレスの場合があります。いずれのサービスも、特定のアーキテクチャ内で実行されます。この記事では、そのアーキテクチャについて説明します。ステートフル サービスとステートレス サービスの違いの詳細については、「[Reliable Services の概要](service-fabric-reliable-services-introduction.md)」をご覧ください。
 
 ## ステートフル Reliable Service
 
@@ -27,13 +27,13 @@ Azure Service Fabric の Reliable Service は、ステートフルまたはス�
 
 ### ステートフル Reliable Service
 
-ステートフル Reliable Service は、StatefulService または StatefulServiceBase のいずれかのクラスから派生します。Service Fabric には、いずれの基本クラスも用意されています。これらのクラスで、Service Fabric の多様なレベルのサポートが実現し、インターフェイスに対してステートフル サービスを抽象化することができます。また、Service Fabric クラスター内のサービスとして参加することができます。
+ステートフル Reliable Service は、StatefulService クラスまたは StatefulServiceBase クラスから派生します。Service Fabric には、いずれの基本クラスも用意されています。これらのクラスで、Service Fabric の多様なレベルのサポートが実現し、インターフェイスに対してステートフル サービスを抽象化することができます。また、Service Fabric クラスター内のサービスとして参加することができます。
 
-StatefulService は StatefulServiceBase から派生します。StatefulServiceBase によってサービスの柔軟性が高まりますが、Service Fabric の内部を深く理解する必要があります。StatefulService クラスと StatefulServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
+StatefulService は StatefulServiceBase から派生します。StatefulServiceBase によってサービスの柔軟性が高まりますが、Service Fabric の内部を深く理解する必要があります。StatefulService クラスと StatefulServiceBase クラスを使用したサービスの作成の詳細については、「[Reliable Services の概要](service-fabric-reliable-services-introduction.md)」および「[Reliable Services プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」をご覧ください。
 
 いずれの基本クラスでも、サービス実装の有効期間と役割が管理されます。サービス実装によって、いずれかの基本クラスの仮想メソッドがオーバーライドされることがあります。それは、サービス実装のライフサイクルにおけるこれらのポイントで、サービスで実行しなければならない処理がある場合や、通信リスナー オブジェクトを作成する場合です。上記の図で示すように、サービスが独自の通信リスナー オブジェクトを実装して ICommunicationListener を公開する場合がありますが、このサービス実装では Service Fabric が実装した通信リスナーが使用されるため、通信リスナーは Service Fabric が実装します。
 
-ステートフル Reliable Service では、Reliable State Manager を使用して Reliable Collection が利用されます。Reliable Collection は、サービスに対する可用性が高いローカル データ構造であるため、サービスのフェールオーバーに関係なく常に利用可能です。Reliable Collection は、Reliable State Provider によって実装されます。Reliable Collection の詳細については「[ Reliable Collection の概要](service-fabric-reliable-services-reliable-collections.md)」を参照してください。
+ステートフル Reliable Service では、Reliable State Manager を使用して Reliable Collection を利用します。Reliable Collection は、サービスに対する可用性が高いローカル データ構造であるため、サービスのフェールオーバーに関係なく常に利用可能です。Reliable Collection は、Reliable State Provider によって実装されます。Reliable Collection の詳細については「[ Reliable Collection の概要](service-fabric-reliable-services-reliable-collections.md)」を参照してください。
 
 ### Reliable State Manager および State Provider
 
@@ -67,7 +67,7 @@ Reliable State Manager はプラグイン アーキテクチャを使用し、�
 
 このログは、最小限のユーザー モード インターフェイスであるにもかかわらず、カーネル モード ドライバーとして書き込まれます。ログがカーネル モード ドライバーとして実行されると、このログを使用するすべてのサービスのパフォーマンスが最大化されます。
 
-ログ構成の詳細については「[ステートフル Reliable Service の構成](service-fabric-reliable-services-configuration.md)」を参照してください。
+ログの構成の詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」をご覧ください。
 
 ## ステートレス Reliable Service
 
@@ -80,7 +80,7 @@ Reliable State Manager はプラグイン アーキテクチャを使用し、�
 
 サービス実装によって、いずれかの基本クラスの仮想メソッドがオーバーライドされることがあります。それは、サービス実装のライフサイクルにおけるこれらのポイントで、サービスで実行しなければならない処理がある場合や、通信リスナー オブジェクトを作成する場合です。上記の図で示すように、サービスが独自の通信リスナー オブジェクトを実装して ICommunicationListener を公開する場合がありますが、このサービス実装では Service Fabric が実装した通信リスナーが使用されるため、通信リスナーは Service Fabric が実装します。
 
-StatelessService クラスおよび StatelessServiceBase クラスを使用したサービス作成の詳細については、「[Reliable Service の概要](service-fabric-reliable-services-introduction.md)」と「[Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」を参照してください 。
+StatelessService クラスと StatelessServiceBase クラスを使用したサービスの作成の詳細については、「[Reliable Services の概要](service-fabric-reliable-services-introduction.md)」および「[Reliable Services プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)」をご覧ください。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
@@ -97,4 +97,4 @@ Service Fabric の詳細については、次の項目を参照してくださ�
 
 [Reliable Service の構成](service-fabric-reliable-services-configuration.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

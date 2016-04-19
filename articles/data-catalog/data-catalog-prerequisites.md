@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog の前提条件"
-   description="Azure Data Catalog の使用を開始するために必要なこと"
+   pageTitle="Azure Data Catalog の前提条件 | Microsoft Azure"
+   description="Azure Data Catalog の前提条件 - Azure Data Catalog を使用するために必要なもの。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
-# Azure Data Catalog の使用を開始するために必要なこと
+# Azure Data Catalog の前提条件
 
-## Azure Data Catalog の前提条件
+## Azure Data Catalog の使用を開始するために必要なこと
 
 **Azure Data Catalog** をセットアップする前に、いくつかのことに注意する必要があります。それほど長くはかかりません。
 
@@ -42,4 +42,4 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
 ## Azure サブスクリプション
 Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。詳細については、「[アカウント、サブスクリプション、管理ロールの管理](https://msdn.microsoft.com/library/azure/hh531793.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

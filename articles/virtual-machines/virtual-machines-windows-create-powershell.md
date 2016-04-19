@@ -24,7 +24,7 @@
 - [PowerShell](virtual-machines-windows-create-powershell.md)
 - [PowerShell - テンプレート](virtual-machines-windows-ps-template.md)
 - [ポータル - Linux](virtual-machines-linux-portal-create.md)
-- [CLI](virtual-machines-linux-cli-create.md)
+- [CLI](virtual-machines-linux-quick-create-cli.md)
 
 <br>
 
@@ -40,7 +40,7 @@
 
 インストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [WebPI](http://aka.ms/webpi-azps) という 2 つの大きなオプションがあります。WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。
 
-詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/)」を参照してください。
 
 ## 手順2. サブスクリプションを設定する
 
@@ -393,4 +393,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

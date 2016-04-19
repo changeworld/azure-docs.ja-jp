@@ -30,7 +30,7 @@ PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース デ�
 
 ## PostgreSQL のインストール
 
-> [AZURE.NOTE] このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-cli-create.md)を見て Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE] このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-quick-create-cli.md)を見て Linux VM を作成およびセットアップしてください。
 
 この例では、PostgreSQL ポートとしてポート 1999 を使用します。
 
@@ -255,4 +255,4 @@ Postgres データベースを作成します。
 ##PostgreSQL の詳細情報
 PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

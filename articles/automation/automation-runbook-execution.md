@@ -97,7 +97,7 @@ Runbook Dashboard を表示するには、次の手順を使用します。
 
 クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は任意のジョブが 3 時間実行された後で一時的にそのジョブをアンロードします。[グラフィカル](automation-runbook-types.md#graphical-runbooks) Runbook と [PowerShell ワークフロー](automation-runbook-types.md#powershell-workflow-runbooks) runbook は、最後の[チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints)から再開されます。この間、ジョブの状態は [実行中、リソースを待機中] となります。Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。[PowerShell](automation-runbook-types.md#powershell-runbooks) Runbook はチェックポイントをサポートしていないため、常に最初から再開されます。
 
->[AZURE.NOTE] The fair share limit is not applicable to runbook jobs executing on Hybrid Runbook Workers.
+>[AZURE.NOTE] フェア シェアの制限は、Hybrid Runbook Worker で実行される Runbook ジョブには適用されません。
 
 Runbook が同じチェックポイントから、または Runbook の先頭から 3 回連続して再起動した場合、Runbook は終了し、[失敗、リソースを待機中] という状態になります。これは、Runbook が次のチェックポイントに進むことができず再度アンロードされない場合に、Runbook が完了せずに無期限に実行されるのを防ぐためのものです。この場合は、エラー発生時に次の例外を受信します。
 

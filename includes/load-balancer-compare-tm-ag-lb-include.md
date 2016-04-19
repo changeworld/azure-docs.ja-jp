@@ -8,9 +8,9 @@ Microsoft Azure を使用してネットワーク トラフィックを分散す
 
 - 	Traffic Manager は、DNS レベルで動作します。これは、DNS 応答を使用して、エンドユーザーのトラフィックをグローバルに分散されたエンドポイントに送信します。その後、クライアントは、それらのエンドポイントに直接接続します。次の表では、各サービスで提供される機能についてまとめています。
 
-|Azure Load Balancer |	Application Gateway | Traffic Manager |
-|---|---|---|
-|テクノロジ| ネットワーク レベル (レベル 4) | アプリケーション レベル (レベル 7) |	DNS レベル |
+| サービス | Azure Load Balancer | Application Gateway | Traffic Manager |
+|---|---|---|---|
+|テクノロジ| ネットワーク レベル (レベル 4) | アプリケーション レベル (レベル 7) | DNS レベル |
 | サポート対象アプリケーション プロトコル |	任意 | HTTP および HTTPS | 	任意 (HTTP/S エンドポイントはエンドポイントの監視に必要です) |
 | エンドポイント | Azure VM と Cloud Services のロール インスタンス | 任意の Azure の内部 IP アドレスまたはパブリック インターネット IP アドレス | Azure VM、Cloud Services、Azure Web Apps および外部エンドポイント |
 | VNet のサポート | インターネット接続と内部 (VNet) のアプリケーションの両方に使用できます | インターネット接続と内部 (VNet) のアプリケーションの両方に使用できます |	インターネットに接続するアプリケーションのみをサポートします |
@@ -30,4 +30,4 @@ Microsoft Azure を使用してネットワーク トラフィックを分散す
 
   
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

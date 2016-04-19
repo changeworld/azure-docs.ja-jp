@@ -18,9 +18,12 @@
 
 # CLI を使用して DNS レコードを管理する方法
 
+
 > [AZURE.SELECTOR]
+- [Azure ポータル](dns-operations-recordsets-portal.md)
 - [Azure CLI](dns-operations-recordsets-cli.md)
 - [PowerShell](dns-operations-recordsets.md)
+
 
 このガイドでは、クロス プラットフォームの Azure CLI を使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
@@ -238,8 +241,8 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 
 ## 次のステップ
 
-DNS ゾーンとレコードを作成したら、 [ドメインを Azure DNS に委任](dns-domain-delegation.md)できます。<BR> CLI を使用して [DNS ゾーンを管理する](dns-operations-dnszones-cli.md)方法を確認します。<BR> [.NET SDK を使用して操作を自動化](dns-sdk.md)して、Azure DNS 操作をアプリケーション内にコーディングすることもできます。
+DNS ゾーンとレコードを作成したら、[ドメインを Azure DNS に委任](dns-domain-delegation.md)できます。<BR> CLI を使用して [DNS ゾーンを管理する](dns-operations-dnszones-cli.md)方法を確認します。<BR> [.NET SDK を使用して操作を自動化](dns-sdk.md)して、Azure DNS 操作をアプリケーション内にコーディングすることもできます。
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -278,6 +278,5 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-- [エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

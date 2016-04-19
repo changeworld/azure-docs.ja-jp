@@ -27,7 +27,7 @@
 Azure クラシック ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
 
 
- - 詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」を参照してください。
+ - 詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)」を参照してください。
  - 詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。
 
 
@@ -98,4 +98,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

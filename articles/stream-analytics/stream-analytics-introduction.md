@@ -40,7 +40,7 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 
 -   **参照データ:** Stream Analytics では、参照データを指定して使用することができます。参照データには、履歴データか、時間の経過に伴う変化が頻繁にはない単純にストリーミングでないデータを指定できます。参照データは、システムにより、他の受信イベント ストリームと同様に扱われ、リアルタイムで取り込まれる他のイベント ストリームと結合されて変換が実行されるので、簡単に使用できます。
 
--   **接続:** Stream Analytics は、Azure Event Hubs に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。
+-   **接続:** Stream Analytics は、Azure Event Hubs と Azure IoT Hub に直接接続してストリームを取り込み、Azure BLOB サービスに直接接続して履歴データを取り込みます。結果は、Stream Analytics から Azure Storage Blobs または Tables、Azure SQL DB、Event Hubs、Azure Service Bus Topics または Queues、Power BI に書き込まれます。そこで、視覚化、ワークフローによる処理、[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) を介したバッチ分析での使用、一連のイベントとしての再処理を実行することができます。Event Hubs を使用すると、計算処理のストリーミングの性質を失うことなく、複数の Stream Analytics を他のデータ ソースや処理エンジンとまとめて構成できます。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -53,4 +53,4 @@ Stream Analytics で活用されている、時間が重要となる処理向け
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

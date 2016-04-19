@@ -28,6 +28,8 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 この表では、Azureが提供するさまざまなオプションを比較することができます。
 
+[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
+
 [AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
 
@@ -35,12 +37,6 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。手順については、「[Azure ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)」を参照してください。
 
-これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、「[Different ways to create a Windows virtual machine with Resource Manager (Resource Manager で Windows 仮想マシンを作成するさまざまな方法)](virtual-machines-windows-creation-choices.md)」を参照してください。
+これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、「[リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)」を参照してください。
 
-
-<!--links-->
-[App Service]: app-service-choose-me.md
-[Virtual Machines]: #tellmevm
-[Cloud Services]: cloud-services-choose-me.md
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

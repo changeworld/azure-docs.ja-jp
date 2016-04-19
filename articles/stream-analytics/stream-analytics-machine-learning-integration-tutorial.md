@@ -21,7 +21,7 @@
 
 # チュートリアル: Stream Analytics と Machine Learning を使用したセンチメント分析の実行 #
 
-このチュートリアルは、単純な Stream Analytics ジョブを Machine Learning とすばやく統合できるように設計されています。ここでは、Cortana Analytics ギャラリーのセンチメント分析 Machine Learning モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。ストリーミング Twitter データに関するリアルタイムのセンチメント分析、サポート スタッフによるユーザー チャット レコード分析、フォーラム/ブログ/ビデオに対するコメントなどのリアルタイムの予測スコアリング シナリオを理解するには、このチュートリアルがお勧めです。
+このチュートリアルは、単純な Stream Analytics ジョブを Machine Learning とすばやく統合できるように設計されています。ここでは、Cortana Intelligence ギャラリーのセンチメント分析 Machine Learning モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。ストリーミング Twitter データに関するリアルタイムのセンチメント分析、サポート スタッフによるユーザー チャット レコード分析、フォーラム/ブログ/ビデオに対するコメントなどのリアルタイムの予測スコアリング シナリオを理解するには、このチュートリアルがお勧めです。
   
 このチュートリアルでは、テキストが入力されたサンプル CSV ファイル (下の図 1 を参照してください) が Azure BLOB ストアの入力として用意されています。このジョブは、BLOB ストアのサンプル テキスト データに対して、ユーザー定義関数 (UDF) としてセンチメント分析モデルを適用します。最終的な結果は、同じ Azure BLOB ストア内の別の CSV ファイルに出力されます。この構成の内容を以下の図 2 に示します。さらに現実的なシナリオとしては、この BLOB ストアの入力を Azure Event Hub 入力からのストリーミング Twitter データと置き換えることができます。また、集計センチメントの [Power BI](https://powerbi.microsoft.com/) リアルタイム視覚化を構築することもできます。この記事の今後の版には、このような拡張機能が追加される予定です。
 
@@ -43,7 +43,7 @@
 概要としては次の手順を実行します。
 
 1.	CSV の入力ファイルを Blob Storage にアップロードします
-2.	Cortana Analytics ギャラリーのセンチメント分析モデルを Machine Learning ワークスペースに追加します
+2.	Cortana Intelligence ギャラリーのセンチメント分析モデルを Machine Learning ワークスペースに追加します
 3.	このモデルを Web サービスとして Azure Machine Learning ワークスペースにデプロイします
 4.	この Web サービスを、テキスト入力のセンチメントを決定する関数として呼び出す Stream Analytics ジョブを作成します
 5.	Stream Analytics ジョブを開始し、出力を確認します 
@@ -63,9 +63,9 @@
 
 3.	**[BLOB のアップロード]** アイコンをクリックして CSV ファイルをアップロードし、**ローカル ディスクからファイル**を選択します。
 
-## Cortana Analytics ギャラリーからセンチメント分析モデルを追加する
+## Cortana Intelligence ギャラリーからセンチメント分析モデルを追加する
 
-1.	Cortana Analytics ギャラリーで、[予測センチメント分析モデル](https://gallery.cortanaanalytics.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1)をダウンロードします。  
+1.	Cortana Intelligence ギャラリーで、[予測センチメント分析モデル](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1)をダウンロードします。  
 2.	Studio で **[開く]** をクリックします。  
 
     ![Stream Analytics Machine Learning チュートリアル: Machine Learning Studio を開く](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)
@@ -140,7 +140,7 @@
 
 ## まとめ
 
-このチュートリアルでは、リアルタイムでストリーミング テキスト データを読み取り、そのデータに対してセンチメント分析を適用する Stream Analytics ジョブを作成しました。このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。これが Cortana Analytics スイートの利点の 1 つです。
+このチュートリアルでは、リアルタイムでストリーミング テキスト データを読み取り、そのデータに対してセンチメント分析を適用する Stream Analytics ジョブを作成しました。このすべての処理は、センチメント分析モデルを構築する場合の複雑な作業を心配することなく実行できます。これが Cortana Intelligence スイートの利点の 1 つです。
 
 Azure Machine Learning 関数に関連するメトリックも確認できます。**[監視]** タブをクリックします。関数に関連する 3 つのメトリックがあります。
   
@@ -150,4 +150,4 @@ Azure Machine Learning 関数に関連するメトリックも確認できます
 
     ![Stream Analytics Machine Learning チュートリアル: ML 監視ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -32,7 +32,7 @@ RDP (リモート デスクトップ プロトコル) は、Windows の専用プ
 xrdp はオープン ソースの RDP サーバーで、これを使用すると、Windows コンピューターからリモート デスクトップを使用して Linux サーバーに接続できます。このパフォーマンスは、VNC (Virtual Network Computing) よりも優れています。VNC には "JPEG" 品質と動作が遅いという欠点があるのに対し、RDP は高速かつ明瞭です。
 
 
-> [AZURE.NOTE] Linux を実行している既存の Microsoft Azure VM が必要です。Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](virtual-machines-linux-cli-create.md)を参照してください。
+> [AZURE.NOTE] Linux を実行している既存の Microsoft Azure VM が必要です。Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](virtual-machines-linux-classic-createportal.md)を参照してください。
 
 
 ##リモート デスクトップ用のエンドポイントを作成する
@@ -116,4 +116,4 @@ Linux VM の `user` と `password` を使用してログインすると、Micros
 ##次へ
 xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

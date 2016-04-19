@@ -13,11 +13,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="04/06/2016"
    ms.author="derrickv"/>
 
 # Azure Data Catalog の導入
-この記事は、組織における **Azure Data Catalog** の導入方法について説明します。**Azure Data Catalog** を正常に導入するには、ビジョンの定義、組織内の主要ビジネス ユース ケースの特定、パイロット プロジェクトの選択という 3 つの主要項目に注目する必要があります。
+この記事は、組織における **Azure Data Catalog** の導入方法について説明します。**Azure Data Catalog** を正常に導入するには、次の 3 つの主要項目に注目します。ビジョンの定義、組織内の主要ビジネスのユースケースの識別、およびパイロット プロジェクトの選択。
 
 ## Azure Data Catalog の概要
 仕事の世界で、どのようにデータ資産に関する専門情報を検索できる必要があるかに対して、ユーザーの期待が変わってきました。今日、Yammer などのソーシャル メディア ツールを広い範囲のワークプレースで使用するため、広範なトピックにおけるサポートとアドバイスを素早く取得できることが期待されます。**Azure Data Catalog** は、データ コンシューマーが利用可能なデータ ソースを検出し、領域の専門家によって提供される知識を得ることできる中央リポジトリのエンタープライズ データ資産に関する情報を、企業やチームが統合するために役立ちます。
@@ -172,4 +172,4 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 -	[データ ソースの注釈付け](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
 - [メタデータのクラウドソーシング](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -58,7 +58,7 @@ CORS は、Azure ポータル、または [Azure Resource Manager](../resource-g
 
 	**[保存]** をクリックすると、API アプリは、指定した URL からの JavaScript 呼び出しを受け付けるようになります。
 
-### Azure リソース マネージャー ツールを使用して CORS を構成する
+#### Azure リソース マネージャー ツールを使用して CORS を構成する
 
 API アプリに使用する CORS は、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。
 
@@ -261,14 +261,12 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 		namespace ToDoListAPI.Controllers 
 		{
 		    [HttpOperationExceptionFilterAttribute]
-		    [EnableCors(origins:"*", headers:"*", methods: "*")]
+		    [EnableCors(origins:"https://todolistangular0121.azurewebsites.net", headers:"accept,content-type,origin,x-my-header", methods: "get,post")]
 		    public class ToDoListController : ApiController
  
-	> **注**: この属性は注意して使用してください。すべてのパラメーターにワイルドカードを指定すると、すべてのオリジンおよびすべての HTTP 要求に API が開放されます。ここに示した設定はデモンストレーションを目的としたものであり、それ以外の用途は想定していません。
-
 ## トラブルシューティング
 
-このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法としては、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)します。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
+このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法は、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)することです。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
 
 ポータルの CORS ブレードで URL を設定した後も CORS エラーが発生する場合は、適切な場所で正しく変更を行ったかどうかを再確認してください。次に例を示します。
 
@@ -283,4 +281,4 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 
 この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

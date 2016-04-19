@@ -19,12 +19,6 @@
 
 # Azure PowerShell を使用して Linux 仮想マシンを作成および事前構成する
 
-> [AZURE.SELECTOR]
-- [Azure CLI](virtual-machines-linux-cli-create.md)
-- [PowerShell](virtual-machines-linux-classic-createpowershell.md)
-
-
-<br>
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
  
@@ -36,7 +30,7 @@ Azure PowerShell コマンド セットを作成するために、空欄を埋�
 
 ## Azure PowerShell をインストールするには
 
-まだインストールしていない場合は、[Azure PowerShell をインストールして構成します](powershell-install-configure.md)。次に、Azure PowerShell コマンド プロンプトを開きます。
+まだインストールしていない場合は、[Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。次に、Azure PowerShell コマンド プロンプトを開きます。
 
 ## サブスクリプションとストレージ アカウントの設定
 
@@ -275,10 +269,10 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure の仮想マシンの概要](http://msdn.microsoft.com/library/azure/jj156143.aspx)
 
-[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)
+[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 
 [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-windows-classic-create-powershell.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

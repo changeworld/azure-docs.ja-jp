@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter="na"
 	authors="rothja"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="10/15/2015"
+	ms.date="04/04/2016"
 	ms.author="jroth" />
 
 # Azure SQL Database ベンチマークの概要
@@ -130,4 +130,4 @@ Azure SQL Database ベンチマークは、利用可能なサービス階層と�
 
 [Azure SQL Database performance guidance for single databases (データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス)](sql-database-performance-guidance.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0406_2016-->

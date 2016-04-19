@@ -42,7 +42,7 @@
 
 	![PuTTY を開く](./media/virtual-machines-linux-classic-log-on/putty.png)
 
-4. マシンの作成時に指定したアカウントを使用して仮想マシンにログオンします。ユーザー名とパスワードを使用して仮想マシンを作成する方法の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」を参照してください。
+4. マシンの作成時に指定したアカウントを使用して仮想マシンにログオンします。ユーザー名とパスワードを使用して仮想マシンを作成する方法の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-classic-createportal.md)」を参照してください。
 
 	![仮想マシンへのログオン](./media/virtual-machines-linux-classic-log-on/sshlogin.png)
 
@@ -53,4 +53,4 @@
 <!-- LINKS -->
 [Linux 仮想マシンのパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

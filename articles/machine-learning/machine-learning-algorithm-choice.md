@@ -35,7 +35,7 @@
 
 チャートのパス ラベルとアルゴリズム ラベルは、"*&lt;パス ラベル&gt;* の場合は *&lt;アルゴリズム&gt;* を使用する" と読んでください。 たとえば、"*速度*の場合は *2 クラスのロジスティック回帰*を使用する" といった具合です。 場合によっては複数の分岐が適用されます。どれも完全に一致しない場合もあります。大まかな推奨事項なので、正確さは気にしないでください。複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 
-同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Analytics ギャラリー](http://gallery.azureml.net/) の次の例を参照してください。[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
+同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)の「[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」を参照してください。
 
 >[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
@@ -237,4 +237,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

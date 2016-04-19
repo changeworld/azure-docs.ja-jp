@@ -14,22 +14,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="11/10/2015"
-   ms.author="dkshir;memccror"/>
+   ms.date="04/05/2016"
+   ms.author="iainfour;memccror"/>
 
 # Azure で Linux 仮想マシンにタグを付ける方法
 
-この記事では、Azure Resource Manager で Azure で Linux 仮想マシンにタグを付けるさまざまな方法について説明します。タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。タグは、Azure リソース マネージャー経由で作成されたリソースでのみサポートされます。Windows 仮想マシンにタグ付けする場合は、「[How to tag a Windows virtual machine in Azure (Azure で Windows 仮想マシンにタグ付ける方法)](virtual-machines-windows-tag.md)」をご覧ください。
+この記事では、Azure Resource Manager で Azure で Linux 仮想マシンにタグを付けるさまざまな方法について説明します。タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。タグは、Azure リソース マネージャー経由で作成されたリソースでのみサポートされます。
 
 [AZURE.INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## Azure CLI を使用してタグを付ける
 
-Azure CLI で既に作成されているリソースにも、タグを付けることができます。この場合は、[Azure CLI 環境][]を設定します。Azure CLI でサブスクリプションにログインし、ARM リソースに切り替えます。このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
+Azure CLI で既に作成されているリソースにも、タグを付けることができます。この場合は、[Azure CLI 環境][]を設定します。Azure CLI でサブスクリプションにログインし、ARM モードに切り替えます (`azure config mode arm`)。
+
+このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 
         azure vm show -g MyResourceGroup -n MyVM
 
-PowerShell とは異なり、既にタグが含まれているリソースにタグを追加する場合、`azure vm set` コマンドを使用する前にすべてのタグ (既存のタグと新しいタグ) を指定する必要はありません。代わりに、このコマンドを使用すると、リソースにタグが付加されます。Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
+Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
 
         azure vm set -g MyResourceGroup -n MyVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
 
@@ -38,24 +40,24 @@ PowerShell とは異なり、既にタグが含まれているリソースにタ
         azure vm set – g MyResourceGroup –n MyVM -T
 
 
-ここでは、PowerShell、Azure CLI、およびポータルを使用してリソースにタグを適用しました。次に、課金ポータルの使用量の詳細でタグを確認してみましょう。
+ここでは、Azure CLI およびポータルを使用してリソースにタグを適用しました。次は、課金ポータルの使用量の詳細でタグを確認してみましょう。
 
 
 
 
 ## 次のステップ
 
-* Azure リソースへのタグ付けの詳細については、「[Azure リソース マネージャーの概要][]」および「[タグを使用した Azure リソースの整理][]」をご覧ください。
-* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、「[Microsoft Azure の課金内容の確認][]」および「[Microsoft Azure リソースの消費を把握する][]」をご覧ください。
+* Azure リソースへのタグ付けの詳細については、「[Azure Resource Manager の概要][]」および「[タグを使用した Azure リソースの整理][]」を参照してください。
+* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、「[Microsoft Azure の課金内容の確認][]」および「[Microsoft Azure リソースの消費を把握する][]」を参照してください。
 
 
 
 
 
 [Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
-[Azure リソース マネージャーの概要]: ../resource-group-overview.md
+[Azure Resource Manager の概要]: ../resource-group-overview.md
 [タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

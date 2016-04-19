@@ -3,9 +3,9 @@
 
 ## テンプレートを使用して仮想マシンにタグを付ける
 
-まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)では、Compute (仮想マシン)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。(このテンプレート サンプルは Windows VM のものですが、Linux VM 用に調整できます。)
+まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)では、Compute (仮想マシン)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。(このテンプレート サンプルは Windows VM のものですが、Linux VM 用に調整できます。)
 
-[テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure ポータル](https://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
+[テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure ポータル](https://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
 
 ![タグを使用した単純なデプロイ](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
@@ -64,4 +64,4 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

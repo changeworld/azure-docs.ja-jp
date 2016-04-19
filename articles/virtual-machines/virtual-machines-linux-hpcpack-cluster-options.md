@@ -18,18 +18,20 @@ ms.service="virtual-machines-linux"
 
 # Microsoft HPC Pack を使用して Azure で Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
+
+HPC Pack で Windows HPC ワークロードを実行する場合は、「[Microsoft HPC Pack を使用して Azure で Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](virtual-machines-windows-hpcpack-cluster-options.md)」をご覧ください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## Azure VM での HPC Pack クラスターの実行
 
 ### Azure テンプレート
 
 
-* (Marketplace) [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
+* (Marketplace) [HPC Pack cluster for Linux workloads (Linux ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
 
-* (クイックスタート) [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
+* (クイックスタート) [Create an HPC cluster with Linux compute nodes (Linux コンピューティング ノードがある HPC クラスターを作成する)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
 
 
 ### Azure VM イメージ
@@ -64,4 +66,4 @@ ms.service="virtual-machines-linux"
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

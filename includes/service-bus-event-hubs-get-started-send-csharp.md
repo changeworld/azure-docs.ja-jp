@@ -6,11 +6,9 @@
 
    ![][7]
 
-2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューション用 NuGet パッケージの管理]** をクリックします。 
+2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。 
 
-	[NuGet パッケージの管理] ダイアログ ボックスが表示されます。
-
-3. `Microsoft Azure Service Bus` を検索し、**[インストール]** をクリックして、使用条件に同意します。
+3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。プロジェクト名 (**Sender**) が **[バージョン]** ボックスで指定されていることを確認します。**[インストール]** をクリックして、使用条件に同意します。
 
 	![][8]
 
@@ -23,10 +21,10 @@
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-5. **Program** クラスに次のフィールドを追加し、**send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列を値に代入します。
+5. **Program** クラスに次のフィールドを追加し、**Send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列をプレースホルダーの値に代入します (**SendRule** 接続文字列)。`EntityPath` サフィックスを接続文字列から削除します。
 
 	```
-	static string eventHubName = "{event hub name}";
+	static string eventHubName = "{Event Hub name}";
 	static string connectionString = "{send connection string}";
 	```
 
@@ -72,4 +70,4 @@
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

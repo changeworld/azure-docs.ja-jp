@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="03/29/2016"
    ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
 
 # SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール
@@ -36,7 +36,7 @@ Microsoft はバック グラウンドで多数のパフォーマンス ベン�
 ## コンピューティング リソースのスケーリングの増減
 クラウド ストレージとは関係なく、SQL Data Warehouse の弾力性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。これにより、ビジネスに最適なレベルにコンピューティング機能を調整できる柔軟性が得られます。
 
-コンピューティング機能を高めるには、Azure クラシック ポータルのスケール スライダーを使用して、サービスに複数の DWU を追加できます。T-SQL、REST API、Powershell コマンドレットから DWU を追加することもできます。スケールを増減すると、実行中のアクティビティやキューに入れられているアクティビティはすべてキャンセルされますが、数秒以内で完了するため、増加または減少されたコンピューティング機能で再開できます。
+コンピューティング機能を高めるには、Azure クラシック ポータルのスケール スライダーを使用して、サービスに複数の DWU を追加できます。T-SQL、REST API、または Azure Powershell コマンドレットを使用して DWU を追加することもできます。スケールを増減すると、実行中のアクティビティやキューに入れられているアクティビティはすべてキャンセルされますが、数秒以内で完了するため、増加または減少されたコンピューティング機能で再開できます。
 
 [Azure クラシック ポータル][]で、SQL Data Warehouse ページの上部にある [スケール] アイコンをクリックし、スライダーを使用して Data Warehouse に適用される DWU の量を増減し、[保存] をクリックします。プログラムを使用してスケールを変更する場合は、次の T-SQL コードが SQL Data Warehouse に対して DWU の割り当てを調整する方法を示しています。
 
@@ -47,10 +47,10 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ```
 この T-SQL は、論理サーバーに対して実行し、SQL Data Warehouse インスタンス自体に対しては実行しないでください。
 
-また、次のコードを使用し、Powershell を使用して同様に調整することもできます。
+AzureRM.Sql モジュールをインポートして Azure Powershell を使用し、次のコードを使用することで同じ結果が得られます。
 
 ```Powershell
-Set-AzureSQLDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -ServiceObjective "DW1000"
+Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -RequestedServiceObjectiveName "DW1000"
 ```
 
 ## コンピューティング リソースの一時停止
@@ -60,22 +60,27 @@ SQL Data Warehouse 独自の機能として、オンデマンドでコンピュ�
 
 > [AZURE.NOTE] ストレージはコンピューティングとは切り離されているため、一時停止によってストレージが影響を受けることはありません。
 
-コンピューティング機能の一時停止と再開は、[Azure クラシック ポータル][] で REST API または Powershell を介して行うことができます。一時停止すると実行中のアクティビティまたはキューに入れられたアクティビティはすべてキャンセルされ、戻ったときにコンピューティング リソースを数秒で再開できます。
+コンピューティング機能の一時停止と再開は、[Azure クラシック ポータル][]で REST API または Azure Powershell を使用して実行できます。一時停止すると実行中のアクティビティまたはキューに入れられたアクティビティはすべてキャンセルされ、戻ったときにコンピューティング リソースを数秒で再開できます。
 
-次のコードは、PowerShell を使用して一時停止を実行する方法を示しています。
-
-```Powershell
-Suspend-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName
-"Server01" –DatabaseName "Database02"
-```
-
-PowerShell を使用すれば、サービスの再開も非常に簡単に行うことができます。
+Azure Powershell を使用してサービスを一時停止および再開するには、まず、次のように AzureRM.Sql モジュールをインポートする必要があります。
 
 ```Powershell
-Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+Import-Module AzureRM.Sql
 ```
 
-PowerShell の使用方法の詳細については、「[SQL Data Warehouse での PowerShell コマンドレットと REST API の使用][]」を参照してください。
+次のコードは、Azure PowerShell を使用して一時停止を実行する方法を示しています。
+
+```Powershell
+Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+
+Azure PowerShell を使用して、サービスの再開も非常に簡単に行うことができます。
+
+```Powershell
+Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+
+Azure PowerShell の使用方法の詳細については、「[SQL Data Warehouse での PowerShell コマンドレットと REST API の使用][]」をご覧ください。
 
 ## 次のステップ
 パフォーマンスの概要については、[パフォーマンスの概要][]に関するページを参照してください。
@@ -93,4 +98,4 @@ PowerShell の使用方法の詳細については、「[SQL Data Warehouse で�
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

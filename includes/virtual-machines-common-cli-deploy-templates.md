@@ -1,7 +1,4 @@
 
-この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
-
-
 - [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
 - [テンプレートから Azure への仮想マシンのデプロイ](#deploy-a-vm-in-azure-from-a-template)
 - [カスタム イメージからの仮想マシンの作成](#create-a-custom-vm-image)
@@ -16,7 +13,7 @@
 
 ## 準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](xplat-cli-install.md)。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](../articles/xplat-cli-install.md)。
 
 ### Azure CLI のバージョンを 0.9.0 以降に更新する
 
@@ -214,7 +211,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 
 ### 手順 1. テンプレート パラメーターの JSON ファイルを確認する
 
-テンプレートの JSON ファイルの内容を次に示します。(テンプレートは [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json) にもあります)。
+テンプレートの JSON ファイルの内容を次に示します。(テンプレートは [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json) にもあります)。
 
 テンプレートは柔軟性が高いことから、デザイナーはテンプレートで多くのパラメーターを提供することがあります。逆に、比較的固定的なテンプレートを作成し、ごく少数のパラメーターだけを提供していることもあります。テンプレートをパラメーターとして渡すために必要な情報を収集するには、テンプレート ファイル (このトピックでは、以下にインラインのテンプレートが含まれています) を開き、**parameters** の値を確認する必要があります。
 
@@ -435,7 +432,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 
 たとえば次のようになります。
 
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json myResourceGroup firstDeployment
+    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json myResourceGroup firstDeployment
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
     newStorageAccountName: storageaccount
@@ -477,7 +474,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 
 ### 手順 1. テンプレートの JSON ファイルを確認する
 
-以下は、このセクションで例として使用するテンプレートの JSON ファイルの内容です。
+以下は、このセクションで例として使用するテンプレートの JSON ファイルの内容です。(テンプレートは [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json) にもあります)。
 
 ここでも、既定値がないパラメーター用に入力する値を見つける必要があります。`azure group deployment create` コマンドを実行すると、Azure CLI からその値を入力するよう求められます。
 
@@ -1176,7 +1173,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ## <a id="display-information-about-a-virtual-machine"></a>タスク: 仮想マシンに関する情報の表示
 
-`azure vm show <groupname> <vmname> command` を使用して、リソース グループ内の特定の VM に関する情報を表示できます。複数の VM がある場合、まずは `azure vm list <groupname>` を使用してグループ内の VM を一覧表示する必要があります。
+`azure vm show <groupname> <vmname>` コマンドを使用して、リソース グループ内の特定の VM に関する情報を表示できます。複数の VM がある場合、まずは `azure vm list <groupname>` を使用してグループ内の VM を一覧表示する必要があります。
 
     azure vm list zoo
     info:    Executing command vm list
@@ -1271,7 +1268,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
     azure vm disk attach <resource-group> <vm-name> [vhd-url]
 
-その後、Linux (または Windows) で通常行うように、ディスクをマウントする必要があります。
+その後、Linux で通常行うように、ディスクをマウントする必要があります。
 
 
 ## 次のステップ
@@ -1281,4 +1278,4 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

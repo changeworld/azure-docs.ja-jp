@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="seanmck"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/08/2016"
+   ms.date="03/25/2016"
    ms.author="seanmck"/>
 
 # Reliable Actors フレームワークにおけるポリモーフィズム
 
-Reliable Actors フレームワークは、オブジェクト指向設計で使用する手法の多くを使用してサービスを構築できるようにすることで、分散システムのプログラミングを簡素化します。このような手法の 1 つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。
+Reliable Actors フレームワークでは、オブジェクト指向設計で使用する手法の多くを使用してアクターを作成できます。このような手法の 1 つがポリモーフィズムで、型とインターフェイスが汎用性の高い親から継承できるようにします。Reliable Actors フレームワークにおける継承は、一般に .NET モデルに従いますが、追加の制約がいくつかあります。
 
 ## インターフェイス
 
@@ -29,53 +29,58 @@ Reliable Actors フレームワークでは、アクター型によって実装�
 
 ## 型
 
-プラットフォームで提供される Actor 基本クラスから派生したアクター型の階層を作成することもできます。ステートフル アクターの場合、状態の種類の階層を同様に作成できます。図形の場合、状態の種類が `ShapeState` の基本 `Shape` 型を使用します。
+プラットフォームで提供される Actor 基本クラスから派生したアクター型の階層を作成することもできます。図形の場合、基本 `Shape` 型を使用します。
 
-    public abstract class Shape : Actor<ShapeState>, IShape
+```csharp
+public abstract class Shape : Actor, IShape
+{
+    public abstract Task<int> GetVerticeCount();
+    
+    public abstract Task<double> GetAreaAsync();
+}
+```
+
+`Shape` のサブタイプは、基本型のメソッドをオーバーライドできます。
+
+```csharp
+[ActorService(Name = "Circle")]
+[StatePersistence(StatePersistence.Persisted)]
+public class Circle : Shape, ICircle
+{
+    public override Task<int> GetVerticeCount()
     {
-        ...
+        return Task.FromResult(0);
     }
 
-`Shape` のサブタイプでは、`ShapeType` のサブタイプを使用して、より詳細なプロパティを格納できます。
-
-    [ActorService(Name = "Circle")]
-    public class Circle : Shape, ICircle
+    public override async Task<double> GetAreaAsync()
     {
-        private CircleState CircleState => this.State as CircleState;
+        CircleState state = await this.StateManager.GetStateAsync<CircleState>("circle");
 
-        public override ShapeState InitializeState()
-        {
-            return new CircleState();
-        }
-
-        [Readonly]
-        public override Task<int> GetVerticeCount()
-        {
-            return Task.FromResult(0);
-        }
-
-       [Readonly]
-       public override Task<double> GetArea()
-       {
-           return Task.FromResult(
-               Math.PI*
-               this.CircleState.Radius*
-               this.CircleState.Radius);
-       }
-
-       ...
+        return Math.PI *
+            state.Radius *
+            state.Radius;
     }
+}
+```
 
-アクター型の `ActorService` 属性に注意してください。この属性は、この型のアクターをホストするためのサービスを自動的に作成する必要があることを Azure Service Fabric SDK に通知します。サブタイプとの機能の共有だけを目的とし、具体的なアクターのインスタンス化には使用しない基本型を作成する場合があります。このような場合、`abstract` キーワードを使用して、その型に基づくアクターは作成しないことを示す必要があります。
+アクター型の `ActorService` 属性に注意してください。この属性は、この型のアクターをホストするためのサービスを自動的に作成する必要があることを Reliable Actors フレームワークに通知します。サブタイプとの機能の共有だけを目的とし、具体的なアクターのインスタンス化には使用しない基本型を作成する場合があります。このような場合、`abstract` キーワードを使用して、その型に基づくアクターは作成しないことを示す必要があります。
 
 
 ## 次のステップ
 
-- 信頼性、スケーラビリティ、一貫性のある状態を提供するために、[Reliable Actors フレームワークで Service Fabric プラットフォームを利用する方法](service-fabric-reliable-actors-platform.md)
-- [アクターのライフサイクル](service-fabric-reliable-actors-lifecycle.md)の詳細
+- 信頼性、スケーラビリティ、一貫性のある状態を提供するために、[Reliable Actors フレームワークで Service Fabric プラットフォームを利用する方法](service-fabric-reliable-actors-platform.md)を確認します。
+- [アクターのライフサイクル](service-fabric-reliable-actors-lifecycle.md)の詳細を確認します。
 
 <!-- Image references -->
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-<!---HONumber=AcomDC_0309_2016-->
+## 次のステップ
+ - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
+ - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+ - [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
+ - [アクター イベント](service-fabric-reliable-actors-events.md)
+ - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
+ - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+
+<!---HONumber=AcomDC_0406_2016-->
