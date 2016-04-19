@@ -158,7 +158,7 @@ New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESO
 
 PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。この機能は、テンプレートで定義するパラメーターでも同様に使用できます。テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、パラメーターを解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
 
-パラメーターが含まれている完全なコマンドを以下に示します。リソースの名前には独自の値を指定できます。
+パラメーターが含まれている完全なコマンドを以下に示します。 リソースの名前には独自の値を指定できます。
 
 ```
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....

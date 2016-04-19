@@ -61,7 +61,7 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. [Solution] (ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
+1. [Solution] \(ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
 
     ![][5]
 

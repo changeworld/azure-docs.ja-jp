@@ -183,7 +183,7 @@
     public static void main( String[] args ) throws IOException
     ```
 
-12. **App** クラスの **main** メソッドに次のコードを追加します。このコードでは、IoT Hub でイベント ハブと互換性のあるエンドポイントに接続する **EventHubClient** インスタンスが作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**Event Hub-compatible endpoint** から取得され、**xxxxnamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの ****sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
+12. **App** クラスの **main** メソッドに次のコードを追加します。このコードでは、IoT Hub でイベント ハブと互換性のあるエンドポイントに接続する **EventHubClient** インスタンスが作成されます。それから、2 つのパーティションから読み取る 2 つのスレッドが作成されます。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**Event Hub-compatible endpoint** から取得され、**xxxxnamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの **sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
 
     ```
     String policyName = "iothubowner";
