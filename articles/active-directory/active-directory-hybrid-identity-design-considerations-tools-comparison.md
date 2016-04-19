@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/23/2016"
+	ms.date="04/13/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID ディレクトリ統合ツールの比較
 
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。このドキュメントでは、このようなツールをまとめた表と、各ツールで使用できる機能の比較を示しています。
 
+<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
+
 >[AZURE.NOTE] Azure AD Connect には、以前 Dirsync と AAD Sync としてリリースされたコンポーネントと機能が組み込まれています。これらのツールは、個別にリリースされなくなりました。今後の機能強化はすべて Azure AD Connect の更新プログラムに含まれるため、最新機能の入手場所はいつでもわかります。
 >
->現在 Dirsync は引き続きサポートされていますが、今後のある時点で廃止される予定です。廃止された後、一定期間のみサポートされます。この期間の経過後は、Dirsync のサポートが終了します。
+>DirSync と Azure AD Sync は使用されていません。詳細については、「[Upgrade Windows Azure Active Directory Sync (“DirSync”) and Azure Active Directory Sync (“Azure AD Sync”) (Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) をアップグレードする)](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)」を参照してください。
 
 
 各表で使用されるキーは次のとおりです。
@@ -82,14 +84,14 @@
 
 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM)| Microsoft Identity Manager 2016 (MIM)
 :-------- |:--------:|:--------:|:--------:|:--------:|:--------:|
-ドメインおよび組織単位でのフィルター処理 | ● | ● | ● | ● | ● 
-オブジェクトの属性値でのフィルター処理 | ● | ● | ● | ●| ● 
+ドメインおよび組織単位でのフィルター処理 | ● | ● | ● | ● | ●
+オブジェクトの属性値でのフィルター処理 | ● | ● | ● | ●| ●
 最小の属性セットの同期 (MinSync) の許可 | ● | ● | ||
 属性フローへのさまざまなサービス テンプレートの適用の許可 |● | ● | ||
 AD から Azure AD に流れる属性の削除の許可 | ● | ● | | |
-属性フローの高度なカスタマイズの許可 | ● | ● | | ● | ● 
+属性フローの高度なカスタマイズの許可 | ● | ● | | ● | ●
 
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

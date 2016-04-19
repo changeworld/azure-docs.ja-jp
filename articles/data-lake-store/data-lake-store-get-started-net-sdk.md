@@ -13,17 +13,19 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/07/2016"
+   ms.date="04/07/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
-- [ポータルの使用](data-lake-store-get-started-portal.md)
-- [PowerShell の使用](data-lake-store-get-started-powershell.md)
-- [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
-- [Azure CLI の使用](data-lake-store-get-started-cli.md)
-- [Node.js の使用](data-lake-store-manage-use-nodejs.md)
+- [ポータル](data-lake-store-get-started-portal.md)
+- [PowerShell](data-lake-store-get-started-powershell.md)
+- [.NET SDK](data-lake-store-get-started-net-sdk.md)
+- [Java SDK](data-lake-store-get-started-java-sdk.md)
+- [REST API](data-lake-store-get-started-rest-api.md)
+- [Azure CLI](data-lake-store-get-started-cli.md)
+- [Node.JS](data-lake-store-manage-use-nodejs.md)
 
 Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
 
@@ -44,7 +46,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 次のコード スニペットでは、どちらの方法でもメソッドを提供しますが、この記事では `AuthenticateUser` メソッドを使用します。このメソッドでは、AAD アプリケーションのクライアント ID と応答 URI を提供する必要があります。前提条件のリンクでは、これらを取得する方法について説明します。
 
->[AZURE.NOTE] 代わりにコード スニペットを変更して、`AuthenticateApplication` メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。 「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、 クライアント認証キーを生成し、取得する方法についても説明します。
+>[AZURE.NOTE] 代わりにコード スニペットを変更して、`AuthenticateApplication` メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、 クライアント認証キーを生成し、取得する方法についても説明します。
 
 
 
@@ -307,12 +309,6 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 8. アプリケーションをビルドし、実行します。指示に従って、アプリケーションを実行して完了します。
 
-## Data Lake Store アカウントの他の作成方法
-
-- [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-- [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
-- [Azure CLI で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-cli.md)
-
 
 ## 次のステップ
 
@@ -320,4 +316,4 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

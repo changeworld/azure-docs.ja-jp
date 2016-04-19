@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/01/2016"
+	ms.date="04/07/2016"
 	ms.author="tamram"/>
 
 
@@ -33,10 +33,10 @@ Azure Blob Storage は、クラウドにファイル データを格納するサ
 
 **前提条件:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)。
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -53,14 +53,13 @@ Azure Blob Storage は、クラウドにファイル データを格納するサ
 
 	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-    using Microsoft.WindowsAzure.Storage.Auth; // Namespace for authentication types
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### BLOB サービス クライアントの作成
 
-**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を表すオブジェクトを取得できます。次のコードを Main() メソッドに追加します。
+**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。次のコードを **Main()** メソッドに追加します。
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -90,7 +89,7 @@ Azure Blob Storage は、クラウドにファイル データを格納するサ
     container.SetPermissions(
         new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-パブリック コンテナー内の BLOB は、インターネットに接続しているすべてのユーザーが表示できますが、変更または削除できるのは、適切なアクセス キーを持っているユーザーだけです。
+パブリック コンテナー内の BLOB は、インターネットに接続しているすべてのユーザーが表示できますが、変更または削除できるのは、適切なアカウント アクセス キーまたは Shared Access Signature を持っているユーザーだけです。
 
 ## コンテナーに BLOB をアップロードする
 
@@ -377,4 +376,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

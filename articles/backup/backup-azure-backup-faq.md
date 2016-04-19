@@ -14,7 +14,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="03/30/2016"
+	 ms.date="04/04/2016"
 	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
 
 # Azure Backup サービス - FAQ
@@ -112,7 +112,12 @@
 
 **Q23.Azure Backup エージェントを使用する Azure Backup ポリシーの一部として指定できるファイル パスの長さはどれくらいですか。** <br/> A23.Azure Backup エージェントでは NTFS が使用されています。[ファイル パスの長さの指定は、Windows API による制限を受けます](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。ファイル パスが、Windows API で許容されている長さを超える場合は、必要なファイルの親フォルダーまたはディスク ドライブをバックアップしてください。
 
-**Q24. Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。** <br/> A24.Azure Backup エージェントでは NTFS が使用されています。そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions)を使用できます。
+**Q24.Azure Backup エージェントを使用する Azure Backup ポリシーのファイル パスには、どのような文字を使用できますか。** <br/> A24.Azure Backup エージェントでは NTFS が使用されています。そのため、ファイルの指定では [NTFS でサポートされている文字](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions)を使用できます。
+
+**Q25.Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。** <br/> A25.はい。
+
+**Q26.バックアップ ジョブが失敗した場合にメールを送信するように Backup サービスを構成できますか。** <br/> A26.はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。詳細については、「[アラート通知](backup-azure-manage-vms.md#alert-notifications)」を参照してください。
+
 
 
 ## バックアップと保有期間
@@ -160,6 +165,8 @@
 
 **Q12.Backup サービスによって使用される帯域幅の量を調整する方法はありますか。**<br/> A12.はい。帯域幅の調整には、Backup エージェントの **[プロパティの変更]** オプションを使用します。帯域幅の量と、帯域幅を使用する時間を調整できます。詳細については、[ネットワークのスロットル](../backup-configure-vault.md#enable-network-throttling)に関するセクションを参照してください。
 
+**Q13.バックアップする必要のあるデータ量に対してインターネット帯域幅が限られています。大容量のネットワーク パイプで特定の場所にデータを移動し、そのデータを Azure にプッシュできる方法はありますか。** <br/>Q13.標準的なオンライン バックアップ プロセスを使用して Azure にデータをバックアップできます。または、Azure Import/Export サービスを使用して Azure の Blob Storage にデータを転送できます。Azure Storage にバックアップ データを格納する方法は他にはありません。Azure Backup で Azure Import/Export サービスを使用する方法については、「[Offline Backup workflow (オフライン バックアップのワークフロー)](backup-azure-backup-import-export)」を参照してください。
+
 
 ## 復旧
 **Q1.Azure にバックアップされたデータでは、いくつの回復を実行できますか。**<br/> A1.Azure Backup からの回復の数に制限はありません。
@@ -197,4 +204,4 @@
 
   バックアップが新しいキャッシュ場所に正常に作成されたら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=AcomDC_0406_2016--->
+<!---HONumber=AcomDC_0413_2016-->

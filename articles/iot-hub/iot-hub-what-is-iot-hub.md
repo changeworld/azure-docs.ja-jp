@@ -1,6 +1,6 @@
 <properties
  pageTitle="Azure IoT Hub の概要 | Microsoft Azure"
- description="IoT のアーキテクチャ、デバイスの接続、通信パターン、サービス支援通信パターンを含む、Azure IoT Hub サービスの概要"
+ description="Azure IoT Hub サービスの概要: IoT Hub、デバイスの接続、モノのインターネット (IoT) の通信パターン、サービス支援通信パターンの説明"
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -27,7 +27,11 @@ Azure IoT Hub は、何百万もの IoT デバイスとソリューション バ
 - デバイス接続イベントおよびデバイス ID 管理イベントの詳細な監視を実現します。
 - 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
 
+「[IoT Hub と Event Hubs の比較][lnk-compare]」では、この 2 つのサービスの主な違いについて説明し、IoT ソリューションで IoT Hub を使用する利点を示しています。
+
 ![Azure IoT Hub as cloud gateway in internet of things solution][img-architecture]
+
+> [AZURE.NOTE] IoT アーキテクチャの詳細については、「[Azure IoT リファレンス アーキテクチャ][lnk-refarch]」を参照してください。
 
 ## IoT デバイスの接続の課題
 
@@ -47,13 +51,13 @@ IoT Hub とデバイスのライブラリでは、デバイスをソリューシ
 
 Azure IoT Hub は、次の方法でデバイスの接続の課題に対処します。
 
--   **デバイスごとの認証およびセキュリティで保護された接続**。各デバイスを独自のセキュリティ キーを使用してプロビジョニングして、IoT Hub に接続することができます。[IoT Hub ID レジストリ][lnk-devguide-identityregistry]には、ソリューションのデバイスの ID とキーが保存されます。ソリューション バックエンドで個々のデバイスのホワイトリストおよびブラックリストを保持し、デバイスのアクセスを完全に制御できます。
+-   **デバイスごとの認証およびセキュリティで保護された接続**。各デバイスを独自の[セキュリティ キー][lnk-devguide-security]を使用してプロビジョニングし、IoT Hub に接続することができます。[IoT Hub ID レジストリ][lnk-devguide-identityregistry]には、ソリューションのデバイスの ID とキーが保存されます。ソリューション バックエンドで個々のデバイスのホワイトリストおよびブラックリストを保持し、デバイスのアクセスを完全に制御できます。
 
 -   **デバイスの接続操作の監視**。デバイス ID の管理操作とデバイス接続イベントに関する詳細な操作ログを受信できます。これにより、IoT ソリューションでは、接続の問題 (不正な資格情報で接続を試みるデバイス、メッセージを送信する頻度が異常であるデバイス、すべての C2D メッセージを拒否するデバイスなど) を簡単に識別することができます。
 
--   **広範なデバイス ライブラリ**。Azure IoT デバイス SDK はさまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、およびリアルタイム オペレーティング システムでは C) で使用でき、サポートされています。Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
+-   **広範なデバイス ライブラリ**。[Azure IoT デバイス SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、およびリアルタイム オペレーティング システムでは C) で使用でき、サポートされています。Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
 
--   **IoT プロトコルと機能拡張**。ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。[Azure IoT プロトコル ゲートウェイ][protocol-gateway]のオープン ソース コンポーネントをカスタマイズすることで、IoT Hub を拡張してカスタム プロトコルをサポートすることもできます。Azure IoT プロトコル ゲートウェイは、クラウドまたはオンプレミスで実行できます。
+-   **IoT プロトコルと機能拡張**。ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。[Azure IoT プロトコル ゲートウェイ][protocol-gateway]のオープン ソース コンポーネントをカスタマイズして、IoT Hub を拡張してカスタム プロトコルをサポートすることもできます。Azure IoT プロトコル ゲートウェイは、クラウドまたはオンプレミスで実行できます。
 
 -   **スケール**。Azure IoT Hub は、デバイスの数百万単位での同時接続、および毎秒数百万単位のイベントに対応できます。
 
@@ -64,8 +68,6 @@ Azure IoT Hub は、次の方法でデバイスの接続の課題に対処しま
 -   **クラウドからデバイスへの信頼性の高いメッセージング (または*コマンド*)。** ソリューション バック エンドでは、IoT Hub を使用して、最低 1 回の配信保証で個々のデバイスにメッセージを送信できます。各メッセージには個別の有効期限設定があり、バックエンドでは配信と有効期限の両方の受信通知を要求し、クラウドからデバイスへのメッセージのライフサイクルの完全な可視性を保証します。これにより、デバイス上で実行される操作を含むビジネス ロジックの実装が可能になります。
 
 また、IoT 固有の機能を IoT Hub で利用して、ファイルのアップロードやダウンロードなどの他の一般的なパターンを実装することもできます。そうした機能には、一貫性のあるデバイス ID 管理、接続の監視、スケールなどがあります。
-
-「[IoT Hub と Event Hubs の比較][lnk-compare]」では、この 2 つのサービスの主な違いについて説明し、IoT ソリューションで IoT Hub を使用する利点を示しています。
 
 ## ゲートウェイ
 
@@ -108,8 +110,11 @@ Azure IoT Hub の詳細については、次のリンクを参照してくださ
 [lnk-gateway]: iot-hub-protocol-gateway.md
 [lnk-field-gateway]: iot-hub-guidance.md#field-gateways
 [lnk-devguide-identityregistry]: iot-hub-devguide.md#identityregistry
+[lnk-devguide-security]: iot-hub-devguide.md#security
 [lnk-wns]: https://msdn.microsoft.com/library/windows/apps/mt187203.aspx
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
+[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

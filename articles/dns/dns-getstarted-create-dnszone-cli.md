@@ -40,7 +40,7 @@ Azure CLI をインストールします。Windows 用、Linux 用、MAC 用の 
 
 
 >[AZURE.IMPORTANT] DNS コマンドを使用するには、Azure CLI バージョン 0.9.8 以上が必要です。コンピューターに現在インストールされている Azure CLI のバージョンを確認するには、「`azure -v`」と入力します。
- 
+
 ### 手順 2.
 
 Azure DNS では、Azure リソース マネージャーを使用します。arm コマンドおよび DNS を使用するように CLI を切り替えます。
@@ -78,7 +78,7 @@ Azure DNS サービスは Microsoft.Network リソース プロバイダーに�
 
 ## タグ
 
-タグは Etag とは異なります。タグは名前と値のペアのリストであり、Azure リソース マネージャーでは、課金またはグループ化のためのリソースのラベル付けに使用されます。タグの詳細については、[タグを使用した Azure リソースの整理](resource-group-using-tags.md)を参照してください。Azure DNS CLI では、ゾーンとレコード セットの両方でタグをサポートしており、オプションの "-Tag" パラメーターを使用して指定します。次の例では、'project = demo' と 'env = test' の 2 つのタグを持つ DNS ゾーンの作成方法を示します。
+タグは Etag とは異なります。タグは名前と値のペアのリストであり、Azure リソース マネージャーでは、課金またはグループ化のためのリソースのラベル付けに使用されます。タグの詳細については、[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)を参照してください。Azure DNS CLI では、ゾーンとレコード セットの両方でタグをサポートしており、オプションの "-Tag" パラメーターを使用して指定します。次の例では、'project = demo' と 'env = test' の 2 つのタグを持つ DNS ゾーンの作成方法を示します。
 
 	Azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
 
@@ -103,7 +103,7 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 
 次の例で、リソース グループ "myresourcegroup"、レコード セット名 "@" (ルート レコード)、タイプ "SOA" でコマンドを実行すると、次の出力が生成されます。
- 
+
 
 	azure network dns record-set show myresourcegroup "contoso.com" "@" SOA
 	info:    Executing command network dns-record-set show
@@ -171,4 +171,4 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-cli.md)を作成し、インターネット ドメインの名前解決を開始する必要があります。<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)とその DNS ゾーン操作についても学習できます。<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)と [.NET SDK による Azure 操作の自動化](dns-sdk.md)について学習できます。<BR>[Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

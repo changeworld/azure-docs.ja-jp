@@ -86,9 +86,4 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 - [プールを管理する](sql-database-elastic-pool-manage-powershell.md)
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 
-
-## エラスティック データベースのリファレンス
-
-エラスティック データベースとエラスティック データベース プールの詳細については、「[SQL Database エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)」を参照してください。
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

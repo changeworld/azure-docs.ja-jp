@@ -36,7 +36,7 @@
 
 ![][0]
 
-このチュートリアルを完了するには、(Windows 上に) Xamarin Studio と Visual Studio プラグインをインストールする [Xamarin.Android] と、最新の Android プラットフォームが必要です。このほか、Android SDK のバージョン 4.2 以降が必要になります。
+このチュートリアルを完了するには、XCode と OS X 用 Xamarin Studio または Visual Studio (Windows) とネットワークに接続した Mac が必要です。インストール指示の完全版は「[Setup and Install for Visual Studio and Xamarin (Visual Studio と Xamarin の設定とインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」に記載されています。
 
 ダウンロードしたクイック スタート プロジェクトには、Xamarin.Android 向けの Azure Mobile Services コンポーネントが含まれています。このプロジェクトではバージョン 4.2 以降の Android をターゲットにしていますが、Mobile Services SDK ではバージョン 2.2 以降があれば問題ありません。
 
@@ -54,7 +54,7 @@
 
 1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
 	![][6]
 
@@ -137,9 +137,8 @@
 [オフライン データの同期の使用]: mobile-services-xamarin-android-get-started-offline-data.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-xamarin-android
 [プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-xamarin-android
-[Xamarin.Android]: http://xamarin.com/download
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Azure]: http://azure.microsoft.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

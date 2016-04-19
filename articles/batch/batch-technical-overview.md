@@ -44,8 +44,6 @@ Batch は本質的に並列 (「驚異的並列」とも呼ばれています) �
 
 Batch と Azure 内の他の HPC ソリューション オプションとの比較については、「[Batch と HPC ソリューション](batch-hpc-solutions.md)」を参照してください。
 
->[AZURE.NOTE] 現時点では、Batch は、Windows Server ベースの仮想マシンで実行されるワークロードのみをサポートしています。
-
 ## Batch を使用した開発
 
 並列ワークロード処理に Azure Batch を使用するソリューションを構築するとき、Batch API を利用し、プログラミングでそれを実行できます。Batch API を使用すると、コンピューティング ノード (仮想マシン) のプールを作成して管理し、そのノードで実行するジョブとタスクのスケジュールを設定できます。作成したクライアント アプリケーションまたはサービスで Batch API を使用し、Batch サービスと通信します。組織の大規模なワークロードを効率的に処理したり、顧客が 1 つ、数百、数千のノードで、必要なときに、またはスケジュールに基づきジョブやタスクを実行できるように、顧客にサービス フロントエンドを提供したりできます。また、Batch を大規模なワークフローの一部として使用し、[Azure Data Factory][data_factory] などのツールで管理できます。
@@ -136,4 +134,4 @@ Batch シナリオの例をご覧に入れました。次は、サービスに�
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

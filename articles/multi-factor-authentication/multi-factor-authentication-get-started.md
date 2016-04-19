@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/03/2016" 
+	ms.date="04/07/2016" 
 	ms.author="billmath"/>
 
 #ユーザーに適した多要素のセキュリティ ソリューションの選択
@@ -65,7 +65,7 @@ DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、A
 第 2 要素としての双方向 SMS | | ● 
 第 2 要素としてのハードウェア トークン | | ● 
 MFA をサポートしていないクライアントのアプリ パスワード | ● |  
-認証方法の管理制御 | (パブリック プレビュー版) | ● 
+認証方法の管理制御 | ● | ● 
 PIN モード | | ●
 不正アクセスのアラート | ● | ●
 MFA レポート | ● | ● 
@@ -81,4 +81,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

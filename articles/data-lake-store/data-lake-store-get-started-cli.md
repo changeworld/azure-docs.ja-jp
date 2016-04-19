@@ -13,17 +13,19 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/04/2016"
+   ms.date="04/07/2016"
    ms.author="nitinme"/>
 
 # Azure コマンド ラインを使用して Azure Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
-- [ポータルの使用](data-lake-store-get-started-portal.md)
-- [PowerShell の使用](data-lake-store-get-started-powershell.md)
-- [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
-- [Azure CLI の使用](data-lake-store-get-started-cli.md)
-- [Node.js の使用](data-lake-store-manage-use-nodejs.md)
+- [ポータル](data-lake-store-get-started-portal.md)
+- [PowerShell](data-lake-store-get-started-powershell.md)
+- [.NET SDK](data-lake-store-get-started-net-sdk.md)
+- [Java SDK](data-lake-store-get-started-java-sdk.md)
+- [REST API](data-lake-store-get-started-rest-api.md)
+- [Azure CLI](data-lake-store-get-started-cli.md)
+- [Node.JS](data-lake-store-manage-use-nodejs.md)
 
 Azure コマンド ライン インターフェイスを使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、「[Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
 
@@ -177,12 +179,6 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 
 確認を求めるメッセージが表示されたら、「**Y**」と入力して、アカウントを削除します。
 
-## Data Lake Store アカウントの他の作成方法
-
-- [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-- [.NET SDK を使用して Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
-- [PowerShell を使用して Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
-
 
 ## 次のステップ
 
@@ -193,4 +189,4 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

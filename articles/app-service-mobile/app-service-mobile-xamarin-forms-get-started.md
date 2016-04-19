@@ -30,13 +30,13 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* [Visual Studio Community 2013] 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
+* Visual Studio with Xamarin。手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 
-* [Xcode] v7.0 以降と [Xamarin Studio] がインストールされた Mac。Visual Studio を使用して Windows コンピューターにアプリをビルドする予定の場合でも、ネットワーク接続された Mac にアクセスしてそれを行う必要があります。
-
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター Mobile App をすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。「[Setup and install for Visual Studio and Xamarin (Visual Studio と Xamarin を対象にしたセットアップとインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」と「[Setup, install, and verifications for Mac users (Mac ユーザーを対象にしたセットアップ、インストール、および確認)](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
+ 
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 新しい Azure Mobile App バックエンドの作成
 
@@ -63,13 +63,9 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 ##Xamarin.Forms ソリューションのダウンロードと実行
 
-いくつかのオプションがあります。Mac にソリューションをダウンロードして Xamarin Studio で開くことも、ソリューションを Windows コンピューターにダウンロードして Visual Studio で開くこともできます。両方の環境を使用して、それらを切り替えることもできます。次の点を考慮してください。
+いくつかのオプションがあります。ネットワーク接続された Mac を使用して iOS アプリを構築すれば、Mac にソリューションをダウンロードして Xamarin Studio で開くことも、ソリューションを Windows コンピューターにダウンロードして Visual Studio で開くこともできます。ここでも手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 
-* Mac でソリューションの iOS プロジェクトを実行する方が簡単です。必要であれば Visual Studio を Windows コンピューター上で使用できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
-* Android プロジェクトは、Mac または Windows コンピューターのいずれかで実行できます。
-* Windows プロジェクトは、Windows コンピューターで Visual Studio を使用することによってのみ実行できます。
-
-これをすべて考慮して、先に進みましょう。
+先に進みます。
 
  1. Mac または Windows コンピューターで、[Azure ポータル]をブラウザー ウィンドウで開きます。
  2. モバイル アプリの [設定] ブレードで、[モバイル] の **[開始]**、**[Xamarin.Forms]** の順にクリックします。手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。次に、**[ダウンロード]** ボタンをクリックします。
@@ -172,11 +168,4 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure ポータル]: https://portal.azure.com/
 
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin]: http://xamarin.com/download
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
-[Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

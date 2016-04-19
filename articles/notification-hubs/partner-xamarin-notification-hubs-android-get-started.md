@@ -39,7 +39,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Xamarin.Android]
++ Visual Studio と Xamarin (Windows) または Xamarin Studio (Mac OS X)。インストール指示の完全版は「[Setup and Install for Visual Studio and Xamarin (Visual Studio と Xamarin の設定とインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」に記載されています。
 + アクティブな Google アカウント
 + [Azure Messaging コンポーネント]
 + [Google Cloud Messaging のクライアント コンポーネント]
@@ -516,8 +516,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [GCMClient Component page]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
-[Xamarin.Android]: http://xamarin.com/download/
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

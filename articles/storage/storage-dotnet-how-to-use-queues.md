@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/28/2016"
+	ms.date="04/07/2016"
 	ms.author="gusapost"/>
 
 # .NET を使用して Azure Queue Storage を使用する
@@ -24,7 +24,19 @@
 
 Azure Queue Storage は、クラウド内のメッセージ キューを提供するサービスです。拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。キュー ストレージでは、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、信頼性の高いメッセージング ソリューションによって、アプリケーション コンポーネント間の非同期通信が実行されます。Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
+### このチュートリアルについて
+
 このチュートリアルでは、Azure Queue Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、キューの作成と削除、およびキュー メッセージの追加、読み取り、削除です。
+
+**推定所要時間:** 45 分
+
+**前提条件:**
+
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
+
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -32,37 +44,38 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-configure-connection-string-include](../../includes/storage-configure-connection-string-include.md)]
+[AZURE.INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
-## プログラムでキュー ストレージにアクセスする
+### 名前空間宣言の追加
 
-[AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
+次の `using` ステートメントを `program.cs` ファイルの先頭に追加します。
 
-### 名前空間宣言
-プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+    using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
-    using Microsoft.WindowsAzure.Storage.Queue;
+[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
-必ず `Microsoft.WindowsAzure.Storage.dll` アセンブリを参照してください。
+### Queue サービス クライアントを作成する
 
-[AZURE.INCLUDE [storage-dotnet-retrieve-conn-string](../../includes/storage-dotnet-retrieve-conn-string.md)]
+**CloudQueueClient** クラスを使用すると、Queue Storage に格納されているキューを取得できます。次のコードを **Main()** メソッドに追加します。
+
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+これで、Queue Storage に対してデータの読み取りと書き込みを実行するコードを記述する準備が整いました。
 
 ## キューを作成する
 
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このガイドのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.cloudstorageaccount_methods.aspx) に関するドキュメントを参照してください。
+この例は、キューがない場合に、キューを作成する方法を示しています。
 
-    // Retrieve storage account from connection string
+    // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client
+    // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
-
-    // Retrieve a reference to a queue
+    // Retrieve a reference to a container.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
     // Create the queue if it doesn't already exist
@@ -248,9 +261,9 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk.md)」をご覧ください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    - 構造化データを格納するには「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」
-    - 非構造化データを格納するには「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」
-    - リレーショナル データを格納するには「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」
+    - 構造化データを格納するには、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」を参照してください。
+    - 非構造化データを格納するには、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」を参照してください。
+    - リレーショナル データを格納するには、「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」を参照してください。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
@@ -260,4 +273,4 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/31/2016"
+   ms.date="04/06/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -145,7 +145,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**システム インテグレーター**|**大陸**|
 |---|---|
-|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**|ヨーロッパ|
+|**[Avanade Inc.](http://www.avanade.com/)**| アジア、ヨーロッパ、米国 |
+|**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| ヨーロッパ |
 |**[Nimbo](http://www.nimbo.com/)**|米国||
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | アジア |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
@@ -156,4 +157,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

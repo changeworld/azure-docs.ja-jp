@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Visual Studio を使用した Web アプリの作成 |Microsoft Azure"
+	pageTitle="ASP.NET と Azure App Service を使用する | Microsoft Azure"
 	description="Visual Studio で ASP.NET Web プロジェクトを作成し、Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
 	services="app-service\web"
 	documentationCenter=".net"
@@ -12,11 +12,11 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article"
+	ms.topic="get-started-article"
 	ms.date="03/02/2016"
 	ms.author="tdykstra"/>
 
-# Visual Studio を使用した Azure App Service での ASP.NET Web アプリの作成
+# Visual Studio を使用した Azure App Service での ASP.NET Web アプリの使用
 
 > [AZURE.SELECTOR]
 - [.NET](web-sites-dotnet-get-started.md)
@@ -42,7 +42,7 @@
 
 このチュートリアルの最後の「[トラブルシューティング](#troubleshooting)」セクションでは、うまくいかない場合の対処方法を説明します。また、「[次のステップ](#next-steps)」セクションには、Azure App Service の使い方をさらに学習できる他のチュートリアルへのリンクがあります。
 
-> [AZURE.NOTE] このチュートリアルの範囲と方針の向上にご協力ください。ここに記載されているトピック以外に入門用のチュートリアルとして扱ってほしいトピックがありましたら、このチュートリアルの最後にある [Disqus コメント欄](#comments)でご意見をお寄せください。
+## 前提条件
 
 [AZURE.INCLUDE [前提条件](../../includes/app-service-web-dotnet-get-started-prereqs.md)]
 
@@ -58,7 +58,7 @@
 
 2. **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックします。
 
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション]** の順にクリックします(好みに応じて、**[Visual Basic]** を選択してもかまいません)。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション]** の順にクリックします (好みに応じて、**[Visual Basic]** を選択してもかまいません)。
 
 3. ターゲット フレームワークとして **[.NET Framework 4.5.2]** が選択されていることを確認します。
 
@@ -100,7 +100,7 @@
 
 	入力した名前が既に使用されている場合は、右側に緑色のチェック マークではなく赤色の感嘆符が表示されます。この場合、別の名前を入力する必要があります。
 
-	アプリケーションの URL は、この名前に *.azurewebsites.net* を追加したものとなります (**[Web アプリ名]** ボックスの横に表示されます)。たとえば、名前が `MyExample810` である場合、URL は `myexample810.azurewebsites.net` です。
+	アプリケーションの URL は、この名前に *.azurewebsites.net* を追加したものとなります (**[Web アプリ名]** ボックスの横に表示されます)。たとえば、名前が `MyExample810` である場合、URL は `myexample810.azurewebsites.net` になります。
 
 	「[次のステップ](#next-steps)」セクションに、Azure Web アプリで独自のカスタム ドメインを使用する方法について説明したチュートリアルへのリンクがあります。
 
@@ -146,7 +146,7 @@
 
 	![[Azure App Service アクティビティ] ウィンドウで作成された Web アプリ](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
-	Visual Studio の **[Cloud Explorer]** ウィンドウに Web アプリが表示されます。
+	Visual Studio の **[Cloud Explorer]** ウィンドウには Web アプリが表示されます。
 
 	![Cloud Explorer で作成された Web アプリ](./media/web-sites-dotnet-get-started/siteinse.png)
 	
@@ -170,7 +170,7 @@
 
 	![Web の発行ウィザードの [接続] タブで [次へ] をクリック](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
 
-	次のタブは **[設定]** タブです。ここで、ビルド構成のタブでデプロイの対象をデバッグ ビルドに変更すると、[リモート デバッグ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を行うことができます。このタブには他にも、次のようにさまざまな**ファイル発行オプション**があります。
+	次のタブは **[設定]** タブです。ここで、ビルド構成を変更して、デバッグ ビルドをデプロイするように設定すると、[リモート デバッグ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)ができるようになります。このタブには他にも、次のようにさまざまな**ファイル発行オプション**があります。
 
 	* 発行先の追加ファイルを削除する
 	* 発行中にプリコンパイルする
@@ -224,7 +224,7 @@
 	
 	このスクリーン ショットには **[設定]** ブレードの一部しか表示されていません。このブレードには、表示されている以外のセクションもあります。
 
-4. **[設定]** ブレードの **[全般]** セクションの **[アプリケーションの設定]** をクリックすると、ポータルで構成できる設定の種類の例を見ることができます。
+4. **[設定]** ブレードの **[全般]** セクションにある **[アプリケーションの設定]** をクリックすると、ポータルで構成できる設定の種類の例を見ることができます。
 
 	たとえば、Web アプリで使用される .NET のバージョンを制御したり、[WebSocket](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) などの機能を有効にしたり、[接続文字列値](/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)を設定することなどが可能です。
 
@@ -252,7 +252,7 @@ Web アプリを削除する簡単な方法は、Azure ポータルで **[Web �
 
 ## トラブルシューティング
 
-このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法としては、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)します。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
+このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法は、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)することです。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
 
 企業ネットワークを使用しており、ファイアウォールを介して Azure App Service にデプロイしようとしている場合は、Web デプロイのためにポート 443 と 8172 を開いてください。これらのポートを開くことができない場合は、次の「次のステップ」セクションで、その他のデプロイ オプションについて確認してください。
 
@@ -276,7 +276,7 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 * Web プロジェクトをデプロイする他の方法
 
-	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による Web プロジェクトの Web アプリへのデプロイの他の方法については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
+	Visual Studio の使用、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による Web プロジェクトの Web アプリへのデプロイの他の方法については、「[Azure App Service での Web アプリの使用](app-service-web-get-started.md)」と「[Azure App Service へのアプリのデプロイ](web-sites-deploy.md)」を参照してください。
 
 * カスタム ドメイン名および SSL の追加方法
 
@@ -293,4 +293,4 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 	Azure では、このチュートリアルで示したように App Service Web Apps で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、「[Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較](/manage/services/web-sites/choose-web-app-service/)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

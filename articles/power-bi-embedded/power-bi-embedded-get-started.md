@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Power BI Embedded プレビューを使ってみる"
-   description="With Power BI Embedded, you can add interactive Power BI reports into your application."
+   description=""
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -74,9 +74,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 ## アプリに埋め込む Power BI データセットとレポートの作成
 
-アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。または、[Analyzing Sales Data PBIX サンプル](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix)をダウンロードしてすぐに作業を開始することもできます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/en-us/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
-
-> [AZURE.NOTE] Analyzing Sales Data PBIX の作成方法については、「[チュートリアル: Excel と OData フィードの売上データを分析する](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-tutorial-analyzing-sales-data-from-excel-and-an-odata-feed)」を参照してください。
+アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。あるいは、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/ja-JP/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
 
 **Power BI Desktop** でデータ ソースに接続するには、データのコピーを **Power BI Desktop** にインポートする方法と、**DirectQuery** を使ってデータ ソースに直接接続する方法があります。
 
@@ -109,4 +107,4 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

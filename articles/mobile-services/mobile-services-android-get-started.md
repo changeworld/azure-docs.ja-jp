@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="03/05/2016"
+	ms.date="04/08/2016"
 	ms.author="ricksal"/>
 
 # Android 用 Mobile Services の使用 (JavaScript バックエンド)
@@ -35,7 +35,7 @@
 
 ## 前提条件
 
-このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools](https://developer.android.com/sdk/index.html) が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
+このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools](https://developer.android.com/sdk/index.html) が必要です。この他、Android のバージョン 4.2 以降が必要になります。
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けの Azure の Mobile Services SDK が含まれています。
 
@@ -94,4 +94,4 @@
 [プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

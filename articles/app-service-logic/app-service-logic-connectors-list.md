@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/11/2016"
+	ms.date="04/11/2016"
 	ms.author="mandia"/>
 
 
 # Logic Apps で使用するコネクタと API Apps の一覧
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、こちらの [API 一覧](../connectors/apis-list.md)をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、[新しいコネクタの一覧](../connectors/apis-list.md)をご覧ください。
 
 このトピックでは、マイクロソフトによって作成された、Logic Apps 内で使用できるすべてのコネクタと API Apps を示します。
 
@@ -33,23 +33,13 @@
 --- | ---
 [Azure HDInsight](app-service-logic-connector-hdinsight.md) | Azure で Hadoop クラスターを作成し、別の Hadoop ジョブを送信するには、このコネクタを使用します。
 [Azure の Service Bus](app-service-logic-connector-azureservicebus.md) | Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。
-[Azure Storage Blob](app-service-logic-connector-azurestorageblob.md) | BLOB ストレージに接続して、BLOB の取得、削除、一覧の取得などを実行できます。 
 [Bing 翻訳ツール](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Bing を使用して、テキストを別の言語に翻訳します。
-[Box](app-service-logic-connector-box.md) | Box に接続して、ファイルのアップロード、取得、削除、一覧の取得や、その他のファイル タスクを実行できます。
 [Chatter](app-service-logic-connector-chatter.md) | Chatter に接続して、メッセージの投稿と検索を実行できます。新しいメッセージを取得することもできます。
-[Dropbox](app-service-logic-connector-dropbox.md) | Dropbox に接続して、ファイルの取得、削除、一覧の取得や、その他のファイル タスクを実行できます。
-[Facebook](app-service-logic-connector-facebook.md) | Facebook に接続して、メッセージ、画像、その他の詳細を公開できます。また、メッセージ、コメントを取得できるほか、本や映画などのユーザーの好みに関する情報を取得することもできます。
 [HTTP](app-service-logic-connector-http.md) | HTTP リスナーは、HTTP サーバーとして機能するエンドポイントを開き、着信 HTTP または HTTPS 要求をリッスンします。HTTP アクションに API アプリは必要ありません。HTTP アクションは Logic Apps 内でネイティブにサポートされます。
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。
-[Microsoft OneDrive](app-service-logic-connector-onedrive.md) | 個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧の取得などの操作を実行できます。
-[Microsoft SharePoint](app-service-logic-connector-sharepoint.md) | オンプレミスの Microsoft SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理できます。既定の資格情報、OAuth 2.0、Windows 認証、およびフォームベース認証などのさまざまな認証方法がサポートされています。
-[Microsoft Yammer](app-service-logic-connector-yammer.md) | Yammer に接続して、メッセージを投稿し、新しいメッセージを取得します。
 [QuickBooks](app-service-logic-connector-quickbooks.md) | このコネクタを使用すると、Intuit QuickBooks のさまざまなエンティティ (顧客、項目、請求書など) の作成、更新、クエリなどの操作を実行できます。
 [Slack](app-service-logic-connector-slack.md) | Slack に接続し、Slack チャネルにメッセージを投稿します。
-[Salesforce](app-service-logic-connector-salesforce.md) | Salesforce アカウントに接続し、アカウント、潜在顧客、営業案件などを管理します。
 [SugarCRM](app-service-logic-connector-sugarcrm.md) | SugarCRM Online に接続して、さまざまな種類のモジュール (アカウント、連絡先など) の作成、更新、読み取りなどの操作を実行できます。
-[Twilio](app-service-logic-connector-twilio.md) | Twilio に接続して、メッセージの送信と取得、利用可能な番号の取得、着信電話番号の管理などを実行できます。
-[Twitter](app-service-logic-connector-twitter.md) | Twitter に接続してタイムラインを取得し、ツイートの投稿などを実行します。
 [待機](app-service-logic-connector-wait.md) | このコネクタを使用して、アプリの実行を遅らせることができます。アプリの実行を、指定した時間分遅らせることも、特定の時点まで遅らせることもできます。
 
 
@@ -77,8 +67,6 @@ MQ | Windows オペレーティング システムを実行している Azure �
 [Oracle Database](app-service-logic-connector-oracle.md) | オンプレミスの Oracle Database に接続して、データベース テーブルのエントリを作成、更新、取得、削除できます。
 [POP3](app-service-logic-connector-pop3.md) (Post Office Protocol)| POP3 サーバーに接続して、添付ファイルを含むメールを取得します。
 [SAP](app-service-logic-connector-sap.md) | オンプレミスの SAP サーバーに接続し、RFC、BAPI、tRFC を呼び出して、IDOC を送信します。
-[SFTP](app-service-logic-connector-sftp.md) (SSH ファイル転送プロトコル)| SFTP に接続して、ファイルのアップロード、取得、削除などの操作を実行できます。
-[SMTP](app-service-logic-connector-smtp.md) (簡易メール転送プロトコル) | SMTP サーバーに接続して、添付ファイルを含む電子メールを送信します。
 
 ## トリガーとしてのコネクタ
 いくつかのコネクタは、Logic Apps のトリガーとして提供されています。これらのトリガーには、次の 2 種類があります。
@@ -95,4 +83,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

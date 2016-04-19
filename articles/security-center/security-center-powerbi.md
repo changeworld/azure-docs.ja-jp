@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/25/2016"
+   ms.date="04/11/2016"
    ms.author="yurid"/>
 
 # Power BI で Azure Security Center のデータから洞察を得る
@@ -77,7 +77,7 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 1\. **[Azure Security Center]** ダッシュボードで **[Power BI で調べる]** ボタンをクリックします。
 
-![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig9.png)
+![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig9-new.png)
 
 2\. 次のように、**[Power BI で調べる]** ブレードが右側に表示されます。
 
@@ -95,6 +95,8 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 8\. 認証ページにリダイレクトされるので、Azure Security Center への接続に使用している資格情報を入力します。認証プロセスが完了すると、Power BI がレポートを作成するためのデータのインポートを開始します。
 
+> [AZURE.NOTE] レポートの更新は毎日実行されるようにスケジュールされています。この更新で障害が発生した場合は、「[Potential Refresh Issues with the Azure Security Center Power BI (Azure セキュリティ センターの Power BI の潜在的な更新の問題)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/)」でトラブルシューティングについて確認してください。
+
 ## 次のステップ
 このドキュメントでは、Azure Security Center での Power BI の使用方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
@@ -103,4 +105,4 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

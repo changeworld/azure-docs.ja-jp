@@ -75,7 +75,7 @@ Azure ポータルには、SQL Server 仮想マシンを構成するための 5 
 >![SQL ARM の基本](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png) <br/>
 
 ## 2\.仮想マシンのサイズを選択する
-**[仮想マシンの作成]** ブレードの **[サイズ]** で、仮想マシンのサイズを選びます。Azure ポータルでは、推奨サイズが表示されます。仮想マシン サイズの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。サイズは、選択したテンプレートに基づきます。サイズにより、VM の実行にかかる毎月のコストが見積もられます。サーバーの VM サイズを選択します。SQL Server VM のサイズに関する考慮事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-classic-sql-perf.md)」を参照してください。
+**[仮想マシンの作成]** ブレードの **[サイズ]** で、仮想マシンのサイズを選びます。Azure ポータルでは、推奨サイズが表示されます。仮想マシン サイズの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。サイズは、選択したテンプレートに基づきます。サイズにより、VM の実行にかかる毎月のコストが見積もられます。サーバーの VM サイズを選択します。SQL Server VM のサイズに関する考慮事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
 ## 3\.仮想マシンの設定を構成する
 **[仮想マシンの作成]** ブレードの **[設定]** で、仮想マシンの Azure Storage、ネットワーク、監視を構成します。
@@ -146,7 +146,7 @@ SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パ�
 
 <br/>![SQL ARM の修正](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png) <br/>
 
-詳細については、「[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-ps-sql-patch.md)」を参照してください。
+詳細については、「[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
 
 ### バックアップ
 **[SQL 自動バックアップ]** では、すべてのデータベースの自動データベース バックアップを有効にできます。SQL の自動バックアップを有効にするときは、以下の構成を行います。
@@ -157,7 +157,7 @@ SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パ�
 
 <br/>![SQL ARM のバックアップ](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png) <br/>
 
- 詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-ps-sql-backup.md)」をご覧ください。
+ 詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
 
 ### Key Vault の統合
 暗号化のためにセキュリティ シークレットを Azure に格納するには、**[Azure Key Vault の統合]** をクリックして、**[有効]** をクリックします。
@@ -201,6 +201,6 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 > [AZURE.INCLUDE [VM リソース マネージャーで SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ##<a id="Next"> 次のステップ
-Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
+Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -24,7 +24,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Xamarin Studio](http://xamarin.com/studio) 
++ [Xamarin Studio](http://xamarin.com/studio)。Visual Studio with Xamarin を使用することもできますが、このチュートリアルでは Xamarin Studio を使用します。インストールの手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。 
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started)を参照してください。
@@ -63,11 +63,11 @@ Xamarin Studio で、Mobile Engagement の統合先のデモ アプリが作成�
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. [Solution] \(ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
+1. [Solution] (ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
 
     ![][5]
 
-2. **Microsoft Azure Mobile Engagement Xamarin SDK** を探してソリューションに追加します。
+2. **Microsoft Azure Mobile Engagement Xamarin SDK** を検索してソリューションに追加します。
 
     ![][6]
    
@@ -75,7 +75,7 @@ Xamarin Studio で、Mobile Engagement の統合先のデモ アプリが作成�
 
 		using Microsoft.Azure.Engagement.Xamarin;
 
-4. **FinishedLaunching** メソッドに、Mobile Engagement バックエンドとの接続を初期化する次のコードを追加します。**ConnectionString** を必ず追加してください。また、次のコードでは、Mobile Engagement SDK によって追加されるダミーの **NotificationIcon** が使用されています。これは、置き換えることができます。
+4. **FinishedLaunching** メソッドに、Mobile Engagement バックエンドとの接続を初期化する次のコードを追加します。**ConnectionString** を必ず追加してください。また、次のコードでは、Mobile Engagement SDK によって追加されるダミーの **NotificationIcon** も使用されています。これは、置き換えることができます。
 
 		EngagementConfiguration config = new EngagementConfiguration {
 		                ConnectionString = "YourConnectionStringFromAzurePortal",
@@ -168,4 +168,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [7]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-confirm-bundle.png
 [8]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-configure-push.png
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->
