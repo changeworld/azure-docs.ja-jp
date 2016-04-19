@@ -1,4 +1,4 @@
-<properties pageTitle="Azure SQL Database におけるデータベース パフォーマンスの監視" | Microsoft Azure" description="Azure ツールと動的管理ビューによるデータベースの監視のオプションについて説明します。" keywords="データベースの監視, クラウド データベースのパフォーマンス" services="sql-database" documentationCenter="" authors="jeffgoll" manager="jeffreyg" editor="jeffreyg"/>
+<properties pageTitle="Azure SQL Database におけるデータベース パフォーマンスの監視" | Microsoft Azure" description="Azure ツールと動的管理ビューによるデータベースの監視のオプションについて説明します。" keywords="データベースの監視, クラウド データベースのパフォーマンス" services="sql-database" documentationCenter="" authors="carlrabeler" manager="jhubbard" editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -7,7 +7,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
 	ms.date="03/25/2016"
-	ms.author="jeffreyg"/>
+	ms.author="carlrab"/>
 
 # Azure SQL Database におけるデータベース パフォーマンスの監視
 Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断できます。また、データベースのパフォーマンス レベルと[サービス階層](sql-database-service-tiers.md)を調整する必要があるかどうかを判断することもできます。データベースの監視には、[Azure ポータル](https://portal.azure.com)のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
@@ -39,4 +39,4 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

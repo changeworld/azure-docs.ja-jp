@@ -1,11 +1,11 @@
 
- 
+
 
 Azure は、物理コンピューター ハードウェアをエミュレートした仮想マシンを利用して、ソフトウェア デプロイメントの移動を迅速化し、物理ハードウェアよりも格段に効率的なリソース統合を可能にするすばらしいクラウド ソリューションです。この数年間、[Docker](https://www.docker.com) のコンテナー アプローチと Docker エコシステムが業界に大きな影響を与えたこともあり、Linux のコンテナー テクノロジは分散型ソフトウェアの開発や管理のあり方を大きく変えています。コンテナー内のアプリケーション コードは、ホストの Azure VM からだけでなく、同じ VM 上にあるその他のコンテナーからも分離されるため、Azure VM がもたらす開発やデプロイメントのアジリティをアプリケーション レベルでさらに高めることにつながります。
 
 **しかし、このことはもはやニュースではありません。** 注目すべきは、Docker がもたらす次のようなメリットを Azure で活用できるようになったということです。
 
-- 状況に応じて、[さまざまな](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)[方法](virtual-machines-linux-classic-portal-use-docker.md)[で](virtual-machines-linux-classic-docker-quickstart.md) [Docker ホストを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)できる
+- 状況に応じて、[さまざまな](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)[方法](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)[で](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md) [Docker ホストを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)できる
 - [Azure リソース マネージャー](../articles/resource-group-overview.md)と[リソース グループ テンプレート](../articles/resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 - 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
@@ -56,7 +56,7 @@ Windows コンテナーは、Linux コンテナーと同じメリットを Windo
 Docker コンテナーは開発者の間で急速に普及していますが、これは、Linux コンテナーを使いやすくする次のようなメリットがあるためです。
 
 - シンプルなコマンドを使用して固定イメージを作成し、それらを簡単にデプロイできるだけでなく、Dockerfile を使用してそれらのイメージ作成を自動化することができる
-- シンプルな [Git](https://git-scm.com/) スタイルのコマンドを使用して、[パブリック](https://registry.hub.docker.com/)や[プライベートの Docker レジストリにイメージを](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)プッシュ/プルし、それらを簡単に共有できる 
+- シンプルな [Git](https://git-scm.com/) スタイルのコマンドを使用して、[パブリック](https://registry.hub.docker.com/)や[プライベートの Docker レジストリにイメージを](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)プッシュ/プルし、それらを簡単に共有できる
 - コンピューター単位ではなく、分離されたアプリケーション コンポーネント単位で開発が行える
 - さまざまなツールを使用して、Docker コンテナーや各種ベース イメージの構成を把握できる
 
@@ -90,7 +90,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 | "既定" のセキュリティ サポート | より充実している | 充実度においてやや劣る |
 | 必要なディスク上のメモリ | OS 全体とアプリ | アプリ要件のみ |
 | 起動にかかる時間 | 非常に長い: OS のブートとアプリの読み込み | 非常に短い: カーネルが既に実行されているため必要なのはアプリの起動のみ |
-| 移植性 | 適切な準備をすれば移植可能 | イメージ フォーマット内でのみ移植可能 (通常はより限定的) | 
+| 移植性 | 適切な準備をすれば移植可能 | イメージ フォーマット内でのみ移植可能 (通常はより限定的) |
 | イメージの自動化 | OS やアプリによって大きく異なる | [Docker レジストリ](https://registry.hub.docker.com/)など
 
 ## VM とコンテナーのグループ作成とその管理
@@ -122,7 +122,7 @@ Docker は、独自の VM 作成ツール セット ([docker-machine](../article
 
 [Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (Platform-as-a-Service) です。Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
 
-[CoreOS](./articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md) というコンテナー グループ管理ツールも備えています。
+[CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md) というコンテナー グループ管理ツールも備えています。
 
 Ubuntu も非常にポピュラーな Linux ディストリビューションで、Docker のサポートに優れているほか、[Linux (LXC スタイル) クラスター](https://help.ubuntu.com/lts/serverguide/lxc.html)もサポートしています 。
 
@@ -170,7 +170,7 @@ Docker on Microsoft Azure:
 - [Azure での Docker および Compose の概要](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
 - [Azure のリソース グループ テンプレートを使用して Azure 上に Docker ホストをすばやく作成する方法](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
 - コンテナー内アプリケーションのための[組み込み `compose` サポート](https://github.com/Azure/azure-docker-extension#11-public-configuration-keys)
-- [Azure への独自のプライベート Docker Registry のデプロイ](virtual-machines-linux-docker-registry-in-blob-storage.md)
+- [Azure への独自のプライベート Docker Registry のデプロイ](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)
 
 Linux ディストリビューションと Azure での導入例:
 
@@ -182,27 +182,27 @@ Linux ディストリビューションと Azure での導入例:
 
 -	Deis
 	- [3 ノードの Azure VM グループを作成し、Deis をインストールして、Hello World Go アプリケーションを起動する方法](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)
-	
+
 -	Kubernetes
 	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
 	- [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
-	
+
 -	[Mesos](http://mesos.apache.org/)
 	-	[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
-	
+
 -	[Jenkins](https://jenkins-ci.org/) と [Hudson](http://hudson-ci.org/)
 	- [ブログ: Azure 用 Jenkins スレーブ プラグイン](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
 	- [GitHub のリポジトリ: Azure 用 Jenkins ストレージ プラグイン](https://github.com/jenkinsci/windows-azure-storage-plugin)
 	- [サード パーティ: Azure 用 Hudson スレーブ プラグイン](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
 	- [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
-	
+
 -	[Chef](https://docs.chef.io/index.html)
 	- [Chef と Virtual Machines](../articles/virtual-machines/virtual-machines-windows-install-chef-client.md)
 	- [ビデオ: Chef の概要とそのしくみ](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
 
 -	[Azure Automation](https://azure.microsoft.com/services/automation/)
 	- [ビデオ: Linux VM で Azure Automation を使用する方法](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Automation-104-managing-Linux-and-creating-Modules-with-Joe-Levy)
-	
+
 -	Linux 用の Powershell DSC
     - [ビデオ: Linux 用 Powershell DSC を実行する方法](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
     - [GitHub: Docker クライアント DSC](https://github.com/anweiss/DockerClientDSC)
@@ -216,4 +216,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

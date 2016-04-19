@@ -3,7 +3,7 @@
    description="この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。"
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
+   authors="charwen"
    manager="carmonm"
    editor=""
    tags="azure-service-management"/>
@@ -13,20 +13,23 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/18/2016"
-   ms.author="cherylmc"/>
+   ms.date="04/06/2016"
+   ms.author="charwen"/>
 
-# ExpressRoute 接続とサイト間接続の共存の構成
+# クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
 
-サイト間 VPN と ExpressRoute が構成可能な場合、いくつかの利点があります。ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ネットワークの一部ではないものの、ExpressRoute 経由で接続されているサイトに接続したりすることができます。この記事では、両方のシナリオを構成する手順について説明します。**現時点で、VNet 用にこの構成を作成するために使用できるのは、クラシック デプロイ モデルのみです。**リソース マネージャーのデプロイ モデルに適用されるドキュメントが準備できたら、このページからリンクする予定です。
 
+> [AZURE.SELECTOR]
+- [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
+- [PowerShell - クラシック](expressroute-howto-coexist-classic.md)
+
+サイト間 VPN と ExpressRoute が構成可能な場合、いくつかの利点があります。ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続したりできます。この記事では、両方のシナリオを構成する手順について説明します。この記事は、クラシック デプロイ モデルに適用されます。この構成は、ポータルで使用できません。
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-ExpressRoute 回線を事前に構成してから、以下の手順に従ってください。以下の手順に従う前に、必ず、[ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)と[ルーティングの構成](expressroute-howto-routing-classic.md)に関するガイドに従ってください。
+>[AZURE.IMPORTANT] ExpressRoute 回線を事前に構成してから、以下の手順に従ってください。以下の手順に従う前に、必ず、[ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)と[ルーティングの構成](expressroute-howto-routing-classic.md)に関するガイドに従ってください。
 
 ## 制限と制限事項
 
@@ -34,7 +37,7 @@ ExpressRoute 回線を事前に構成してから、以下の手順に従って�
 - **ポイント対サイトはサポートされていません:** ExpressRoute に接続されているのと同じ VNet に対しては、ポイント対サイト VPN 接続を有効にできません。ポイント対サイト VPN と ExpressRoute を同じ VNet に共存させることはできません。
 - **サイト間 VPN ゲートウェイで強制トンネリングを有効にできません:** インターネットへのすべてのトラフィックを、ExpressRoute 経由でオンプレミス ネットワークに "強制的に" 戻すことのみ可能です。 
 - **標準または高性能ゲートウェイのみ:** ExpressRoute ゲートウェイとサイト間 VPN ゲートウェイの両方で標準または高性能ゲートウェイを使用する必要があります。ゲートウェイの SKU については、[ゲートウェイの SKU](../vpn-gateway/vpn-gateway-about-vpngateways.md) に関するページをご覧ください。
-- **ルート ベースの VPN Gateway のみ:** ルート ベースの VPN Gateway を使用する必要があります。ルート ベースの VPN Gateway については、「[VPN ゲートウェイについて](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
+- **ルート ベースの VPN Gateway のみ:** ルート ベースの VPN Gateway を使用する必要があります。ルート ベースの VPN Gateway については、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 - **静的ルートの要件:** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、パブリック インターネットへのサイト間 VPN 接続をルーティングする必要があります。
 - **ExpressRoute ゲートウェイを最初に構成する必要があります:** サイト間 VPN ゲートウェイを追加する前に、まず、ExpressRoute ゲートウェイを作成する必要があります。
 
@@ -60,22 +63,22 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 共存できる接続を構成するために、選択できる 2 とおりの手順があります。接続先にする既存の仮想ネットワークがある場合と、新しい仮想ネットワークを作成する場合とでは、選択できる構成手順が異なります。
 
 
-- VNet がないので作成する必要がある
+- VNet がないので作成する必要がある。
 	
 	仮想ネットワークがまだない場合、この手順で、クラシック デプロイ モデルを使用して新しい仮想ネットワークを作成し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する方法を説明します。構成するには、この記事の「[新しい仮想ネットワークおよび共存する接続を作成するには](#new)」の手順に従います。
 
-- クラシック デプロイ モデル VNet が既にある
+- クラシック デプロイ モデル VNet が既にある。
 
-	既存のサイト間 VPN 接続または ExpressRoute 接続を使用して、仮想ネットワークを既に配置している場合があります。「[既存の VNet の共存する接続を構成するには](#add)」では、ゲートウェイを削除し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する手順について説明します。新しい接続を作成する場合は、非常に特殊な順序で完了する必要がありますので注意してください。他の記事の手順を使用してゲートウェイと接続を作成しないでください。
+	既存のサイト間 VPN 接続または ExpressRoute 接続を使用して、仮想ネットワークを既に配置している場合があります。記事のセクション「[既存の VNet の共存する接続を構成するには](#add)」では、ゲートウェイを削除し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する手順について説明します。新しい接続を作成する場合は、非常に特殊な順序で完了する必要がありますので注意してください。他の記事の手順を使用してゲートウェイと接続を作成しないでください。
 
 	この手順では、共存できる接続を作成するために、ゲートウェイを削除する必要があるので、新しいゲートウェイを構成します。これは、ゲートウェイを削除して接続を再作成する間、クロスプレミス接続でダウンタイムが発生しますが、VM やサービスを新しい仮想ネットワークに移行する必要がないことを意味します。移行するように構成されている場合でも、VM やサービスは、ゲートウェイの構成中にロード バランサーを経由して通信できます。
 
 
-## <a name ="new"/>新しい仮想ネットワークおよび共存する接続を作成するには
+## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
 
 2. 仮想ネットワークのスキーマを作成します。構成スキーマの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
 
@@ -111,7 +114,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 		Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
 
-4. <a name ="gw"/>ExpressRoute ゲートウェイを作成します。GatewaySKU を *Standard* または *HighPerformance* に指定し、GatewayType を *DynamicRouting* に指定します。
+4. <a name="gw"></a>ExpressRoute ゲートウェイを作成します。GatewaySKU を *Standard* または *HighPerformance* に指定し、GatewayType を *DynamicRouting* に指定します。
 
 	次のサンプルを使用して、自身の値に置き換えます。
 
@@ -150,7 +153,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 7. ローカル サイト VPN ゲートウェイのエンティティを作成します。このコマンドは、オンプレミスの VPN ゲートウェイを構成しません。代わりに、パブリック IP やオンプレミスのアドレス空間などのローカル ゲートウェイ設定を指定できるため、Azure VPN ゲートウェイがこれに接続できます。
 
-	> [AZURE.IMPORTANT] サイト間 VPN のローカル サイトは、netcfg で定義されていません。代わりに、このコマンドレットを使用してローカル サイトのパラメーターを指定する必要があります。ポータルまたは netcfg ファイルを使用して、これを定義することはできません。
+	>[AZURE.IMPORTANT] サイト間 VPN のローカル サイトは、netcfg で定義されていません。代わりに、このコマンドレットを使用してローカル サイトのパラメーターを指定する必要があります。ポータルまたは netcfg ファイルを使用して、これを定義することはできません。
 
 	次のサンプルを使用して、自身の値に置き換えます。
 
@@ -181,7 +184,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 	`New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>`
 
-## <a name ="add"/>既存の VNet の共存する接続を構成するには
+## <a name="add"></a>既存の VNet の共存する接続を構成するには
 
 ExpressRoute 接続またはサイト間 VPN 接続経由で接続されている既存の仮想ネットワークがある場合は、既存の仮想ネットワークに接続する両方の接続を有効にするために、まず既存のゲートウェイを削除する必要があります。これは、この構成で作業している間、ローカル環境からゲートウェイ経由で仮想ネットワークに接続できなくなるということです。
 
@@ -219,4 +222,4 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

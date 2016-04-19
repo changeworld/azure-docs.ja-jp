@@ -14,14 +14,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="01/05/2016"
+    ms.date="04/08/2016"
     ms.author="ryancraw"/>
 
 # DocumentDB による Python Flask Web アプリケーション開発
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
-- [Node.js](documentdb-nodejs-application.md)
+- [Node.JS](documentdb-nodejs-application.md)
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
@@ -49,7 +49,7 @@
 - Azure Python SDK for Visual Studio Version 2.4 以降 ([azure.com](https://azure.microsoft.com/downloads/) から入手できます)。ここでは、Microsoft Azure SDK for Python 2.7 を使用しました。
 - Python 2.7 ([python.org][2] から入手できます)。ここでは、Python 2.7.11 を使用しました。 
 
-> [AZURE.IMPORTANT]初めて Python 2.7 をインストールする場合は、[Customize Python 2.7.11] 画面で必ず **[Add python.exe to Path]** を選択してください。
+> [AZURE.IMPORTANT] 初めて Python 2.7 をインストールする場合は、[Customize Python 2.7.11] 画面で必ず **[Add python.exe to Path]** を選択してください。
 > 
 >    ![Screen shot of the Customize Python 2.7.11 screen, where you need to select Add python.exe to Path](./media/documentdb-python-application/image2.png)
 
@@ -61,8 +61,7 @@
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-<br/> 
-次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
+<br/> 次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
 
 ## 手順 2: 新しい Python Flask Web アプリケーションを作成する
 
@@ -86,7 +85,7 @@
 
 	![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image10_A.png)
 
-    環境が正常にインストールされると、出力ウィンドウに "`Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.3 itsdangerous-0.24 'requirements.txt' was installed successfully.`" と表示されます。
+    環境が正常にインストールされると、出力ウィンドウに "`Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`" と表示されます。
 
 ## 手順 3: Python Flask Web アプリケーションを変更する
 
@@ -94,7 +93,7 @@
 
 プロジェクトを設定した後は、プロジェクトに必要な Flask パッケージ (DocumentDB 用の Python パッケージ pydocumentdb など) を追加する必要があります。
 
-1. ソリューション エクスプローラーで、**requirements.txt** という名前のファイルを開き、既存のコードを次のコードに置き換え、ファイルを保存します。
+1. ソリューション エクスプローラーで、**requirements.txt** という名前のファイルを開き、既存のコードを次のコードに置き換えます。
 
     	flask==0.9
     	flask-mail==0.7.6
@@ -108,15 +107,16 @@
     	flup
     	pydocumentdb>=1.0.0
 
-2. ソリューション エクスプローラーで、**[env]** を右クリックし、**[Install from requirements.txt]** をクリックします。
+2. **requirements.txt** ファイルを保存します。
+3. ソリューション エクスプローラーで、**[env]** を右クリックし、**[Install from requirements.txt]** をクリックします。
 
 	![[env (Python 2.7)] を示すスクリーン ショット。リストで [requirements.txt からインストール] が選択されている](./media/documentdb-python-application/image11.png)
 
     正常にインストールされると、出力ウィンドウに次のメッセージが表示されます。
 
-        Successfully installed Babel-2.1.1 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.0 blinker-1.4 decorator-4.0.6 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.4.2 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
+        Successfully installed Babel-2.3.2 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.4 blinker-1.4 decorator-4.0.9 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.6.1 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
 
-    > [AZURE.NOTE]まれに、出力ウィンドウにエラーが表示されることがあります。その場合は、エラーがクリーンアップに関連しているかどうか確認してください。クリーンアップには失敗しても、インストールは正常に行われる場合があります (出力ウィンドウを上方向へスクロールして確認してください)。[仮想環境を確認する](#verify-the-virtual-environment)ことで、インストールを確認できます。インストールに失敗しても、確認に成功した場合は、続行してかまいません。
+    > [AZURE.NOTE] まれに、出力ウィンドウにエラーが表示されることがあります。その場合は、エラーがクリーンアップに関連しているかどうか確認してください。クリーンアップには失敗しても、インストールは正常に行われる場合があります (出力ウィンドウを上方向へスクロールして確認してください)。[仮想環境を確認する](#verify-the-virtual-environment)ことで、インストールを確認できます。インストールに失敗しても、確認に成功した場合は、続行してかまいません。
 
 ### 仮想環境の確認
 
@@ -127,7 +127,7 @@
 
 	![空の Python Flask Web 開発プロジェクトがブラウザーで表示されます](./media/documentdb-python-application/image12.png)
 
-3. **Shift** + **F5** キーを押して、Web サイトのデバッグを停止します。
+3. Visual Studio で **Shift** + **F5** キーを押して、Web サイトのデバッグを停止します。
 
 ### データベース、コレクション、およびドキュメント定義の作成
 
@@ -199,7 +199,7 @@ def create():
         message='You just created a new database, collection, and document.  Your old votes have been deleted')
 ```
 
-> [AZURE.TIP]**CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。これを使用すると、コレクションのプランの種類を指定することができます。offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> [AZURE.TIP] **CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。これを使用すると、コレクションのプランの種類を指定することができます。offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 
 
 ### データベース、コレクション、およびドキュメントの読み取りとフォームの送信
@@ -259,7 +259,7 @@ def vote():
 1. ソリューション エクスプローラーで、**tutorial** フォルダー内の **templates** フォルダーを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。 
 2. **[HTML ページ]** を選択し、[名前] ボックスに「**create.html**」と入力します。 
 3. 手順 1. と 2. を繰り返して、results.html と vote.html という 2 つの追加の HTML ファイルを作成します。
-4. 次のコードを **create.html** の <body> 要素に追加します。このコードは、新しいデータベース、コレクション、およびドキュメントを作成したことを示すメッセージを表示します。
+4. 次のコードを **create.html** の `<body>` 要素に追加します。このコードは、新しいデータベース、コレクション、およびドキュメントを作成したことを示すメッセージを表示します。
 
 	```html
 	{% extends "layout.html" %}
@@ -270,7 +270,7 @@ def vote():
 	{% endblock %}
 	```
 
-5. 次のコードを **results.html** の <body> 要素に追加します。このコードは、投票の結果を表示します。
+5. 次のコードを **results.html** の `<body`> 要素に追加します。このコードは、投票の結果を表示します。
 
 	```html
 	{% extends "layout.html" %}
@@ -296,7 +296,7 @@ def vote():
 	{% endblock %}
 	```
 
-6. 次のコードを **vote.html** の <body> 要素に追加します。このコードは、アンケートを表示し、投票を受け付けます。投票が登録されると、制御が views.py に渡されます。これにより、投票が行われたことを確認して、ドキュメントを適宜追加できます。
+6. 次のコードを **vote.html** の `<body`> 要素に追加します。このコードは、アンケートを表示し、投票を受け付けます。投票が登録されると、制御が views.py に渡されます。これにより、投票が行われたことを確認して、ドキュメントを適宜追加できます。
 
 	```html
 	{% extends "layout.html" %}
@@ -340,7 +340,7 @@ def vote():
 	DOCUMENTDB_DOCUMENT = 'voting document'
 	```
 
-3. [Azure ポータル](https://portal.azure.com/)で、**[キー]** ブレードに移動します。そのためには、**[参照]**、**[DocumentDB アカウント]** の順にクリックします。使用するアカウントの名前をダブルクリックし、**[キー]** をクリックします。**[キー]** ブレードで、**[URI]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_HOST** プロパティの値として貼り付けます。
+3. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックして、**[キー]** ブレードに移動します。使用するアカウントの名前をダブルクリックし、**[Essentials]** 領域で **[キー]** ボタンをクリックします。**[キー]** ブレードで、**[URI]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_HOST** プロパティの値として貼り付けます。
 4. Azure ポータルに戻り、**[キー]** ブレードで、**[プライマリ キー]** または **[セカンダリ キー]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_KEY** プロパティの値として貼り付けます。
 5. **\_\_init\_\_.py** ファイルに次の行を追加します。 
 
@@ -389,15 +389,15 @@ def vote():
 
  	![tutorial が選択されたソリューション エクスプローラーのスクリーンショット。[発行] オプションが強調表示されている](./media/documentdb-python-application/image20.png)
 
-2. **[Web の発行]** ウィンドウで、**[Microsoft Azure Websites]** を選択します。
+2. **[Web の発行]** ウィンドウで **[Microsoft Azure Web Apps]** を選択し、**[次へ]** をクリックします。
 
-	![[Web の発行] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image21.png)
+	![Microsoft Azure Web Apps が強調表示されている [Web の発行] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image21.png)
 
-3. **[既存の Web サイトを選択]** ウィンドウで、**[新規]** をクリックします。
+3. **[Microsoft Azure Web Apps]** ウィンドウで、**[新規]** をクリックします。
 
-	![Screen shot of the Select Existing Website window](./media/documentdb-python-application/select-existing-website.png)
+	![[Microsoft Azure Web Apps] ウィンドウのスクリーン ショット](./media/documentdb-python-application/select-existing-website.png)
 
-4. **[Microsoft Azure でサイトを作成]** ウィンドウで、**サイト名**を入力し、**リージョン**を選択して、**[作成]** をクリックします。
+4. **[Microsoft Azure でのサイトの作成]** ウィンドウで、**[App アプリ名]**、**[App Service プラン]**、**[リソース グループ]**、および **[リージョン]** を入力し、**[作成]** をクリックします。
 
 	![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
 
@@ -433,4 +433,4 @@ Python Flask の追加のチュートリアルについては、[Flask メガ �
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0413_2016-->

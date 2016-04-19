@@ -24,7 +24,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Xamarin Studio](http://xamarin.com/studio) (Xamarin 拡張機能を搭載した Visual Studio を使用することもできますが、このチュートリアルでは手順に Xamarin Studio を使用します)
++ [Xamarin Studio](http://xamarin.com/studio)。Visual Studio with Xamarin を使用することもできますが、このチュートリアルでは Xamarin Studio を使用します。インストールの手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started)を参照してください。
@@ -131,4 +131,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [5]: ./media/mobile-engagement-xamarin-android-get-started/5.png
 [6]: ./media/mobile-engagement-xamarin-android-get-started/6.png
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

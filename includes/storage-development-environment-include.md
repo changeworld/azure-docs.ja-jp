@@ -8,6 +8,8 @@
 
 ![Create Windows console application](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
+このチュートリアルのすべてのコード例は、コンソール アプリケーションの `program.cs` の **Main()** メソッドに追加できます。
+
 Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、任意の種類の .NET アプリケーションから Azure ストレージ クライアント ライブラリを使用できます。このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
 ### NuGet を使用した必要なパッケージのインストール
@@ -20,7 +22,7 @@ Azure クラウド サービス、Azure Web アプリ、デスクトップ ア�
 NuGet を使って両方のパッケージを取得できます。次の手順に従います。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-2. "WindowsAzure.Storage" をオンラインで検索し、**[インストール]** をクリックして ストレージ クライアント ライブラリとその依存関係をインストールします。
+2. "WindowsAzure.Storage" をオンラインで検索し、**[インストール]** をクリックしてストレージ クライアント ライブラリとその依存関係をインストールします。
 3. "ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックして Azure Configuration Manager をインストールします。
 
 >[AZURE.NOTE] ストレージ クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれていますが、常に最新バージョンのクライアント ライブラリを使用できるように、NuGet からストレージ クライアント ライブラリもインストールすることをお勧めします。
@@ -57,10 +59,10 @@ Azure .NET 用ストレージ クライアント ライブラリでは、スト�
 
 たとえば、構成設定は次のようになります。
 
-	<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln9fT7bvY+rxu2iWAEyzPNITGkhM88J8HUoyofpK7C8fHcZc2kIZp6cKgYRUM74lHI84L50Iau1+9hPjB==" />
+	<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln6fT7mvY+rxu2iWAEyzPKITGkhM88J8HUoyofpK7C8fHcZc2kIZp6cKgYRUM74lHI84L50Iau1+9hPjB==" />
 
 ストレージ エミュレーターをターゲットとする場合、既知のアカウントの名前とキーにマップされるショートカットを使用できます。この場合、接続文字列の設定は次のようになります。
 
 	<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -25,6 +25,8 @@
 
 現時点では、iOS、Android、Windows アプリ、J2EE と ASP.NET Web アプリケーション、WCF サービスをサポートしています。Web アプリは、Azure 上か、お使いのオンプレミス サーバーで実行できます。JavaScript SDK は任意の Web ページで実行できます。
 
+[概要を説明するアニメーションを参照してください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
+
 ## 作業開始
 
 次の図に示すエントリ ポイントを、任意の順序で自由に組み合わせて開始します。適切なパスを選択します。
@@ -48,7 +50,7 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -74,4 +76,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

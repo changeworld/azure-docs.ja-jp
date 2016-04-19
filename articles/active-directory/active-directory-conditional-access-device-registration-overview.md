@@ -29,10 +29,10 @@ Azure Active Directory Device Registration は、Azure Active Directory で使�
 
 Azure Active Directory Device Registration は、iOS、Android、Windows の各デバイスをサポートしています。Azure AD Device Registration を使用する個々のシナリオでは、より具体的な要件とプラットフォームのサポートが存在する場合があります。そうしたシナリオを次に示します。
 
-- **オンプレミスでホストされるアプリケーションへの条件付きアクセス**: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。 
+- **オンプレミスでホストされるアプリケーションへの条件付きアクセス**: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。
 
 - **Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス**: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「Office 365 サービス用条件付きアクセスのデバイス ポリシー」を参照してください。
- 
+
 ##Azure Active Directory Device Registration の設定
 
 Azure AD Device Registration は、周知された DNS レコードをモバイル デバイスから探してそのサービスを検出できるように、Azure ポータルで有効にする必要があります。Windows 10、Windows 8.1、Windows 7、Android、iOS のデバイスでサービスが検出されて使用されるように、会社の DNS を構成する必要があります。Azure Active Directory の管理者ポータルを使用して、登録されているデバイスを表示し、有効または無効にすることができます。
@@ -62,7 +62,7 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 Azure Active Directory Device Registration サービスに関連付けられた A レコードを参照する DNS CNAME レコードを作成する必要があります。CNAME レコードでは、既知のプレフィックス enterpriseregistration の後に、組織のユーザー アカウントで使用されている UPN サフィックスを使用する必要があります。組織で複数の UPN サフィックスを使用している場合は、DNS に複数の CNAME レコードを作成する必要があります。
 
 たとえば、組織で @contoso.com と @region.contoso.com の 2 つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
- 
+
 | エントリ | 型 | Address |
 |-------------------------------------------|-------|------------------------------------|
 | enterpriseregistration.contoso.com | CNAME | enterpriseregistration.windows.net |
@@ -76,15 +76,15 @@ Azure Active Directory Device Registration サービスに関連付けられた 
 5. **[ユーザー]** タブをクリックします。デバイスを表示するユーザーを選択します。
 6. **[デバイス]** タブを選択します。
 7. ドロップダウン メニューから **[登録済みのデバイス]** を選択します。
-8. ここで、ユーザーの登録済みデバイスを表示、ブロック、またはブロック解除することができます。 
+8. ここで、ユーザーの登録済みデバイスを表示、ブロック、またはブロック解除することができます。
 
 ## 関連トピック
 
 Azure AD Device Registration を使用して、ドメイン参加済みの Windows 7 デバイスおよび Windows 8.1 デバイスを登録することができます。次のトピックでは、Windows 7 デバイスおよび Windows 8.1 デバイス上でデバイス登録を構成するために必要な前提条件と手順について詳しく説明します。
 
-- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md) 
+- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
-- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

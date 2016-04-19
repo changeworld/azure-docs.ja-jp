@@ -4,21 +4,21 @@
 	keywords="スケーラブルなデータベース、データベースの構成"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="sidneyh"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
 	ms.date="03/24/2016"
-	ms.author="jeffreyg"
+	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# Azure ポータルで SQL データベースのスケーラブルなエラスティック データベース プールを作成する
+# Azure ポータルを使用してエラスティック データベース プールを作成する
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-create-portal.md)
@@ -70,7 +70,7 @@
     | **[eDTU の最小値]** (データベースごとの設定)| プール内のすべてのデータベースが常に保証される、プールの eDTU の最小数。**[eDTU の最小値]** は、通常、0 とデータベースあたりの過去の eDTU 平均使用率の間に設定されます。これは、プール内のすべてのデータベースに適用されるグローバル設定です。 |
     | **[eDTU の最大値]** (データベースごとの設定) | プール内の任意の 1 つのデータベースで使用可能な eDTU の最大数。この上限は、最大で **[プールの eDTU]** に設定できます。データベースあたりの **[eDTU の最大値]** は、バーストやスパイクを処理できるように、十分に高く (データベースの最大使用率に) 設定します。プールでは通常、ホットとコールドのデータベース使用パターンがあり、すべてのデータベースが同時に最大に使用されることはないため、グループではある程度高めに上限が設定されています。**例:** データベースあたりの最大使用率を 50 DTU とし、グループの 100 のデータベースの 20% のみが同時に最大で使用されると仮定します。データベースあたりの eDTU 上限が 50 eDTU に設定されている場合は、プールを 5 倍に設定し、**[プールの eDTU]** を 1,000 eDTU に設定しておいても問題はありません。**[eDTU の最大値]** はデータベースのリソース保証ではなく、使用可能な場合に達する可能性がある eDTU の上限であることに注意してください。これは、プール内のすべてのデータベースに適用されるグローバル設定です。 |
 
-    各サービス レベルの上限の詳細については、「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
+    各サービス レベルの上限の詳細については、「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
 
 7. 完了したら、**[選択]** をクリックし、**[OK]** をクリックしてプールを作成します。
 
@@ -90,7 +90,6 @@ SQL Database サービスでは使用状況の履歴を評価し、単一のデ�
 
 - [Azure ポータルを使用したエラスティック データベース プールの監視、管理、サイズ設定](sql-database-elastic-pool-manage-portal.md)
 - [エラスティック データベース プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
-- [C# で SQL Database を作成し、管理する](sql-database-client-library.md)
-- [エラスティック データベースのリファレンス](sql-database-elastic-pool-reference.md)
+- [C# で SQL Database を作成し、管理する](sql-database-elastic-pool-manage-csharp.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

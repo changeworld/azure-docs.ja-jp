@@ -25,6 +25,8 @@
 
 ![Web Marketplace](./media/app-service-web-overview/marketplace.png)
 
+[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
+
 ## 単なる Web サイト以上のもの##
 
 現代の企業は、これまでにないほど洗練された方法で顧客と交流しています。あらゆる種類の企業が、企業 Web サイトをビジネスに不可欠な部分と見なし、ビジネス プランにおける主要なコンポーネントであると考えています。この重要度に対応するために、企業は、機敏性、セキュリティ、スケーラビリティをもたらすプラットフォームを求めています。さらに、企業では、既存のビジネス システムにリンクする機能、新しいコードを迅速にデプロイする機能、世界各地でインスタンスを起動する機能を必要としています。Azure App Service と Web Apps を利用することで、企業は迅速かつ費用効率に優れた方法で顧客の要求に応えることができます。
@@ -64,4 +66,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
  
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

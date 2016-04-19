@@ -34,7 +34,7 @@
 
 ![][0]
 
-このチュートリアルを完了するには、XCode と、OS X 用 [Xamarin Studio] または Visual Studio 用 Xamarin Visual Studio プラグイン (Windows) が必要です。サンプルは iOS 5.0 以降で実行します。
+このチュートリアルを完了するには、XCode と OS X 用 Xamarin Studio または Visual Studio (Windows) とネットワークに接続した Mac が必要です。インストール指示の完全版は「[Setup and Install for Visual Studio and Xamarin (Visual Studio と Xamarin の設定とインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」に記載されています。
 
 > [AZURE.IMPORTANT] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -136,4 +136,4 @@
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->
