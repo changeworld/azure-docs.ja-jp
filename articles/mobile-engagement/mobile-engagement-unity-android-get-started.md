@@ -60,7 +60,7 @@
 
 2. ファイルを保存します。
 
-3. **[File] (ファイル)、[Engagement] (エンゲージメント)、[Generate Android Manifest] (Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
+3. **[File] \(ファイル)、[Engagement] \(エンゲージメント)、[Generate Android Manifest] \(Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
 
 	![][74]
 
@@ -122,7 +122,7 @@
 
 2. ファイルを保存します。
 
-3. **[File] (ファイル)、[Engagement] (エンゲージメント)、[Generate Android Manifest] (Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
+3. **[File] \(ファイル)、[Engagement] \(エンゲージメント)、[Generate Android Manifest] \(Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
 
 	![][74]
 
@@ -151,4 +151,4 @@
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
-<!----HONumber=AcomDC_0330_2016-->
+<!-----HONumber=AcomDC_0330_2016-->

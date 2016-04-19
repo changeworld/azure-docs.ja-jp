@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="04/11/2016"
    ms.author="yurid"/>
 
 #Azure セキュリティ センターでのセキュリティ ヘルスの監視
@@ -34,7 +34,7 @@
 
 **[リソースのセキュリティ ヘルス]** タイルで、リソースのセキュリティの状態を監視することができます。次の例では、注意を必要とする、重大度が高レベルと中レベルの問題を多数確認できます。有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
 
-![リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig1-new.png)
+![リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig1-new2.png)
 
 セキュリティ更新プログラムが適用されていない VM や[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性がセキュリティ センターによって特定された場合、ここに表示されます。
 
@@ -188,4 +188,4 @@ Azure ワークロードに、[リソース マネージャーの VM](../resourc
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

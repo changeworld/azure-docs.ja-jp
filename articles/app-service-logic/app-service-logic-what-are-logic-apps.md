@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article" 
-	ms.date="03/01/2016"
+	ms.date="04/07/2016"
 	ms.author="klam"/>
 
 #Logic Apps とは
@@ -65,11 +65,12 @@ Logic Apps の機能を構成する主な要素とは次のとおりです。
 -  **アクション** - ワークフローにおけるトリガーの後の各ステップは、アクションと呼ばれます。通常、各アクションはマネージ API アプリまたはカスタム API アプリでの操作にマップされます。
 - **BizTalk** - Logic Apps には、高度な統合シナリオ向けに Biztalk の機能が含まれています。Biztalk は、マイクロソフトの業界屈指の統合プラットフォームです。BizTalk API Apps により、Logic Apps ワークフローに検証、変換、ルールなどを簡単に含めることができます。詳細については、[BizTalk API Apps とは何か][biztalk]を説明しているページを参照してください。
 
-## Getting Started (概要)
+## Getting Started (概要)  
 
-Logic Apps の使用を開始するには、[ロジック アプリの作成][create]に関するページのチュートリアルに従ってください。
-
-Azure App Service プラットフォームの詳細については、[Azure App Service][appservice] に関するページを参照してください。
+ - Logic Apps の使用を開始するには、[ロジック アプリの作成][create]に関するページのチュートリアルに従ってください。  
+ - [Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694) 
+ - [Logic Apps を使用してシステムを統合する方法を説明する](http://channel9.msdn.com/Events/Build/2016/P462)
+- Azure App Service プラットフォームの詳細については、[Azure App Service][appservice] に関するページを参照してください。
 
 [biztalk]: app-service-logic-what-are-biztalk-api-apps.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
@@ -79,4 +80,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [rules]: app-service-logic-use-biztalk-rules.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

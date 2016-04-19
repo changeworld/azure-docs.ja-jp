@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/21/2016"
+	ms.date="04/08/2016"
 	ms.author="nitinme"/>
 
 
@@ -86,8 +86,8 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 この記事では、PySpark カーネルを使用します。記事「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」で、PySpark カーネルを使用する利点に関する詳細を確認できますが、主な利点のいくつかをここで紹介します。
 
-* Spark、SQL、Hive のコンテキストを設定する必要がありません。これらは自動的に設定されます。
-* 別のセル マジック (%%sql、%%hive など) を使用して、コード スニペットを付けずに SQL または Hive クエリを直接実行します。
+* Spark と Hive のコンテキストを設定する必要はありません。これらは自動的に設定されます。
+* セル マジック (`%%sql` など) を使用して、コード スニペットを付けずに SQL または Hive クエリを直接実行できます。
 * SQL または Hive クエリの出力は、自動的に視覚化されます。
 
 ### PySpark カーネルを使用した Jupyter Notebook の作成 
@@ -100,7 +100,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]**、**[PySpark]** の順にクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -108,7 +108,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark と Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
 
 		from pyspark.sql.types import *
 		
@@ -206,4 +206,4 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

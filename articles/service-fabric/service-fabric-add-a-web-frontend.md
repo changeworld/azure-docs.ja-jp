@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/19/2016"
+   ms.date="04/05/2016"
    ms.author="seanmck"/>
 
 
 # アプリケーション用の Web サービス フロントエンドの構築
+
+>[AZURE.WARNING] ASP.NET Core RC2 における変更により、この記事で参照されているプロジェクト テンプレートが SDK から削除されたため、この記事は一時的に正確ではなくなっています。この記事は、ASP.NET Core RC2 のリリース時に更新されます。それまでの間、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」で説明するステートレス Web API テンプレートを使用できます。
 
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
 
@@ -28,7 +30,7 @@
 
 ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
 
-1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックして、**[ファブリック サービスの追加]** を選択します。
+1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックして、**[Fabric サービスの追加]** を選択します。
 
 	![既存アプリケーションへの新しいサービスの追加][vs-add-new-service]
 
@@ -61,9 +63,9 @@ ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレーム�
 
 ## サービスへの接続
 
-Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。使用可能なオプションおよびトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」を参照してください。このチュートリアルでは簡単な手法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
+Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。使用可能なオプションとトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」をご覧ください。このチュートリアルでは、より簡単な方法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
 
-(リモート プロシージャ コールつまり RPC でモデル化された) `ServiceProxy` アプローチで、サービスのパブリック コントラクトとして機能するインターフェイスを定義します。次に、そのインターフェイスを使用して、サービスと対話するためのプロキシ クラスを生成します。
+(リモート プロシージャ コール (RPC) でモデル化された) `ServiceProxy` アプローチで、サービスのパブリック コントラクトとして機能するインターフェイスを定義します。次に、そのインターフェイスを使用して、サービスと対話するためのプロキシ クラスを生成します。
 
 
 ### インターフェイスの作成
@@ -105,7 +107,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
     ![ステートフル サービスのクラス ライブラリ プロジェクトへの参照の追加][vs-add-class-library-reference]
 
-2. `StatefulService` を継承するクラスを探し (`MyStatefulService` など)、それを拡張して `ICounter` インターフェイスを実装します。
+2. `StatefulService` から継承したクラス (`MyStatefulService` など) を探し、そのクラスを拡張して `ICounter` インターフェイスを実装します。
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -118,7 +120,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     }
     ```
 
-3. 次に、`ICounter` インターフェイスで定義されている単一のメソッド `GetCountAsync` を実装します。
+3. 次に、`ICounter` インターフェイスで定義されている単一のメソッド (`GetCountAsync`) を実装します。
 
     ```c#
     public async Task<long> GetCountAsync()
@@ -137,11 +139,11 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 ### ServiceRemotingListener を使用したステートフル サービスの公開
 
-`ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。ステートフル サービスのために、Service Fabric には、`CreateServiceReplicaListeners` と呼ばれるオーバーライド可能なメソッドが用意されています。このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
+`ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。ステートフル サービスのために、Service Fabric には、`CreateServiceReplicaListeners` というオーバーライド可能なメソッドが用意されています。このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
 
 >[AZURE.NOTE] ステートレス サービスへの通信チャネルを開く同等のメソッドは、`CreateServiceInstanceListeners` という名前です。
 
-この場合、既存の `CreateServiceReplicaListeners` メソッドを置換し、`ServiceRemotingListener` のインスタンスを指定します。これにより、`ServiceProxy` を介してクライアントから呼び出すことができる RPC エンドポイントが作成されます。
+ここでは、既存の `CreateServiceReplicaListeners` メソッドを置き換え、`ServiceRemotingListener` のインスタンスを指定します。これにより、`ServiceProxy` を介してクライアントから呼び出すことができる RPC エンドポイントが作成されます。
 
 ```c#
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
@@ -168,7 +170,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。これにより、`ServiceProxy` クラスが提供されます。
 
-3. **Controllers** フォルダーで `ValuesController` クラスを開きます。現時点では、`Get` メソッドはハードコーディングされた文字配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーで見たものと一致します。この実装を次のコードに置き換えます。
+3. **Controllers** フォルダーで `ValuesController` クラスを開きます。現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。この実装を次のコードに置き換えます。
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -208,13 +210,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。ただし、非常によく似たモデルに従ってアクターと対話することもできます。実際にはもう少し簡単です。
 
-アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に指定されます。そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当するようなことは何も行う必要がありません。
+アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に指定されます。そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要はありません。
 
 ## ローカル クラスター上の Web サービスのしくみ
 
 一般に、ローカル クラスターにデプロイした複数コンピューター クラスターにまったく同じ Service Fabric アプリケーションをデプロイすると、高い確率で意図したとおりに動作させることができます。これは、ローカル クラスターが 5 ノードの構成を 1 つのコンピューターにまとめただけであるためです。
 
-ただし、Web サービスに関しては 1 つの重要な違いがあります。クラスターが Azure でのようにロード バランサーの背後に配置されている場合、ロード バランサーはコンピューター間にトラフィックをラウンドロビンするだけなので、Web サービスをすべてのコンピューターにデプロイする必要があります。これは、サービスの `InstanceCount` に特別な値 "-1" を設定することによって実現できます。
+ただし、Web サービスに関しては 1 つの重要な違いがあります。クラスターが Azure でのようにロード バランサーの背後に配置されている場合、ロード バランサーはコンピューター間にトラフィックをラウンドロビンするだけなので、Web サービスをすべてのコンピューターにデプロイする必要があります。これは、サービスの `InstanceCount` を特別な値 "-1" に設定することによって実現できます。
 
 これに対して、Web サービスをローカルで実行するときは、必ずサービスのインスタンスが 1 つだけ実行されているようにする必要があります。そうしないと、同じパスとポートでリッスンしている複数のプロセスから競合が発生します。そのため、ローカル デプロイの場合は Web サービスのインスタンス数を 1 に設定する必要があります。
 
@@ -237,4 +239,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

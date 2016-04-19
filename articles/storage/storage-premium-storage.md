@@ -39,16 +39,15 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 **Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。
 
-**Premium\_LRS アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)または次の SDK ライブラリを使って、タイプ "Premium\_LRS" のストレージ アカウントを作成します: [Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイメント)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイメント)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降の SDK ライブラリ。プレミアム ストレージ アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
+**Premium Storage アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。また、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium\_LRS" を指定することで、Premium Storage アカウントを作成することもできます。Premium Storage アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
 
-**Premium ローカル冗長ストレージ**: Premium Storage アカウントはローカル冗長 (LRS) であり、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「[スナップショットと Copy Blob](#snapshots-and-copy-blob)」を参照してください。
+**Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「[スナップショットと Copy Blob](#snapshots-and-copy-blob)」を参照してください。
 
 ストレージ アカウントは、オペレーティング システム (OS) とデータ ディスクのコンテナーとして使用されます。Azure DS、DSv2 または GS VM を作成して Azure Premium Storage アカウントを選択すると、オペレーティング システムとデータ ディスクはそのストレージ アカウントに格納されます。
 
 ディスク向け Premium Storage は次のいずれかの方法で使用できます。
 - まず、Premium Storage アカウントを作成します。次に、新しい DS、DSv2 または GS VM の作成時に、Storage の構成設定でプレミアム ストレージ アカウントを選択します。または
 - DS、DSv2 または GS VM の作成時に、Storage の構成設定に新しいプレミアム ストレージ アカウントを作成するか、Azure ポータルで既定のプレミアム ストレージ アカウントを自動作成します。
-
 
 詳細な手順については、この記事の以降の[クイック スタート](#quick-start)を参照してください。
 
@@ -203,7 +202,7 @@ DS4 VM に P30 ディスクが 2 つアタッチされています。P30 ディ�
 Premium Storage を使用した高パフォーマンスのための設計について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
 
 ## スナップショットと BLOB のコピー
-Premium Storage の場合も、Standard Storage を使用してスナップショットを作成するときと同じ方法でスナップショットを作成できます。Premium Storage はローカル冗長であるため、スナップショットを作成して、それらのスナップショットを地理冗長 Standard Storage アカウントにコピーすることをお勧めします。詳細については、「[Azure Storage 冗長オプション](storage-redundancy.md)」をご覧ください。
+Premium Storage の場合も、Standard Storage を使用してスナップショットを作成するときと同じ方法でスナップショットを作成できます。Premium Storage はレプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートするため、スナップショットを作成し、そのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。詳細については、「[Azure Storage 冗長オプション](storage-redundancy.md)」をご覧ください。
 
 ディスクが VM にアタッチされている場合、ディスクをバックアップするページ BLOB で特定の API 操作が許可されなくなります。たとえば、ディスクが VM にアタッチされている間は、その BLOB に対して [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) 操作を実行できません。代わりに、[Snapshot Blob](http://msdn.microsoft.com/library/azure/ee691971.aspx) REST API メソッドを使用して BLOB のスナップショットを作成してから、スナップショットの [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) を実行してアタッチされたディスクをコピーします。または、ディスクのアタッチを解除してから、基盤となる BLOB に対して必要な操作を実行します。
 
@@ -363,29 +362,39 @@ Premium Storage、DS シリーズの VM、DSv2 シリーズの VM および GS �
 
 1.	[Azure ポータル](https://portal.azure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)をお試しください。
 
-2.	ハブ メニューの **[新規]** をクリックします。
+2. ハブ メニューで、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-3.	**[新規]** で、**[データ + ストレージ]** を選択します。そこで、**[ストレージ アカウント]** をクリックします。デプロイ モデルを選択します。新しいデプロイの Resource Manager を使用します。**[作成]** をクリックします。
+3. ストレージ アカウントの名前を入力します。
 
-4.	[ストレージ アカウント] ブレードで、ストレージ アカウントの名前を入力します。デプロイの目的の場所を選択します。「[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)」を参照して、Premium Storage が選択した場所で使用できるかどうかを確認します。
+	> [AZURE.NOTE] ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+	>  
+	> ストレージ アカウント名は Azure 内で一意である必要があります。選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
 
-5.	**[種類]** をクリックします。**[ストレージ アカウントの種類の選択]** ブレードで、**[Premium ローカル冗長]** を選択します。**[選択]** をクリックします。**[選択]** をクリックすると、**[種類]** に **[Premium-LRS]** と表示されます。
+4. 使用するデプロイ モデル (**[Resource Manager]** または **[クラシック]**) を指定します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
-6.	**[ストレージ アカウント]** ブレードで、新しい**リソース グループ**を作成するか、作成している場合は、既存のリソース グループを選択します。[作成] をクリックします。
+5. ストレージ アカウントのパフォーマンス レベルとして **[Premium]** を指定します。
 
-	![価格レベル][Image1]
+6. **ローカル冗長ストレージ (LRS)** は、Premium Storage で使用できる唯一のレプリケーション オプションです。Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
+
+7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
+
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../azure-portal/resource-group-portal.md)」を参照してください。
+
+9. ストレージ アカウントの地理的な場所を選択します。「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照して、選択した場所で Premium Storage を使用できるかどうかを確認できます。
+
+10. **[作成]** をクリックしてストレージ アカウントを作成します。
 
 #### II.Azure ポータルで Azure 仮想マシンを作成する
 
-Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM を作成する必要があります。最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」の手順に従って、DS、DSv2 または GS 仮想マシンを新規作成します。
+Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM を作成する必要があります。最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」の手順に従って、DS、DSv2、または GS 仮想マシンを新しく作成します。
 
 #### III.Azure ポータルで Premium Storage データ ディスクを接続する
 
 1. Azure ポータルで新規または既存の DS、DSv2 または GS VM を探します。
 2. VM の **[すべての設定]** で、**[ディスク]** に移動し、**[新しいディスクの接続]** をクリックします。
-3. データ ディスクの名前を入力し、**種類**として **[Premium]** を選択します。目的の **[サイズ]** と **[ホスト キャッシュ]** の設定を選択します。
+3. データ ディスクの名前を入力し、**種類**として **[Premium]** を選択します。**[サイズ]** と **[ホスト キャッシュ]** で目的の設定を選択します。
 
-	![Premium ディスク][Image2]
+	![Premium ディスク][Image1]
 
 詳細な手順については、「[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)」を参照してください。
 
@@ -442,7 +451,7 @@ VM のディスク領域を増やしたい場合は、VM の作成後に、コ�
 
 ### Premium Storage を使用する Azure 仮想マシンを Azure コマンド ライン インターフェイスで作成する
 
-[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) は、Azure Platform を使用するための、一連のオープン ソース クロス プラットフォーム コマンドを提供します。以下の例では、Azure CLI (バージョン 0.8.14 以降) を使用して、Premium Storage アカウントを作成する方法、新しい仮想マシンを作成する方法、新しいデータ ディスクを Premium Storage アカウントからアタッチする方法を示します。
+[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) は、Azure Platform を使用するための、一連のオープン ソース クロスプラットフォーム コマンドを提供します。以下の例では、Azure CLI (バージョン 0.8.14 以降) を使用して、Premium Storage アカウントを作成する方法、新しい仮想マシンを作成する方法、新しいデータ ディスクを Premium Storage アカウントからアタッチする方法を示します。
 
 #### I.Azure CLI で Premium Storage アカウントを作成する
 
@@ -493,7 +502,7 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 4. **Premium Storage の使用ではトランザクションのコストは発生しますか?**
 
-	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳しくは、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
+	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 5. **DS、DSv2 または GS シリーズ VM のブート診断はどこに保存できますか?**
 
@@ -513,7 +522,7 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 9. **D シリーズ VM を DS シリーズ VM に変換する方法を教えてください。**
 
-	移行ガイドの「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照して、Standard ストレージ アカウントを使用する D シリーズ VM のワークロードを Premium ストレージ アカウントを使用する DS シリーズ VM に移行します。
+	移行ガイドの「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照して、Standard Storage アカウントを使用する D シリーズ VM のワークロードを Premium Storage アカウントを使用する DS シリーズ VM に移行します。
 
 ## 次のステップ
 
@@ -528,14 +537,11 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 - [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
 
-
 ### ブログ記事
 
 - [Azure Premium Storage を一般に提供](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 - [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
 
+[Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-[Image1]: ./media/storage-premium-storage/Azure_pricing_tier.png
-[Image2]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
-
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

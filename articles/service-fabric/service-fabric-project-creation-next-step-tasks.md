@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/08/2016"
+   ms.date="03/27/2016"
    ms.author="seanmck"/>
 
 # Service Fabric アプリケーションと次の手順
@@ -35,29 +35,23 @@ Azure Service Fabric アプリケーションが作成されました。この�
 
 - アプリケーションを説明するアプリケーション マニフェスト。マニフェストは、ApplicationPackageRoot フォルダーにあります。
 
-### Reliable Services
-新しい Reliable Service を追加すると、Visual Studio はソリューションにサービス プロジェクトを追加します。サービス プロジェクトには、選択したタイプに応じて `StatelessService` または `StatefulService` から拡張するクラスが含まれています。
+### ステートレス サービス
+新しいステートレス サービスを追加すると、Visual Studio は `StatelessService` から継承した型を含むソリューションにサービス プロジェクトを追加します。サービスは、カウンター内のローカル変数をインクリメントします。
 
-### Reliable Actors
+### ステートフル サービス
+新しいステートフル サービスを追加すると、Visual Studio は `StatefulService` から継承した型を含むソリューションにサービス プロジェクトを追加します。サービスは、`RunAsync` メソッドでカウンターをインクリメントし、`ReliableDictionary` に結果を格納します。
+
+### アクター サービス
 新しい Reliable Actor を追加すると、Visual Studio はソリューションにアクター プロジェクトとインターフェイス プロジェクトを追加します。
 
-アクター プロジェクトは、アクターのタイプと状態 (ステートフル アクターの場合) を定義します。インターフェイス プロジェクトは、その他のサービスでアクターを呼び出すために使用できるインターフェイスを提供します。
+アクター プロジェクトは、アクターの状態に確実に保持されるカウンターの値を取得および設定するメソッドを提供します。インターフェイス プロジェクトは、その他のサービスでアクターを呼び出すために使用できるインターフェイスを提供します。
 
-アクターは他のサービスによってアクティブ化される必要があるため、アクター プロジェクトには既定のスタートアップ動作が含まれていないことに注意してください。アクターを作成し、対話するためには、Reliable Service または ASP.NET プロジェクトの追加を検討してください。
-
-### ASP.NET 5
-Service Fabric アプリケーションで使用するために提供される ASP.NET 5 テンプレートは、個別に作成される ASP.NET 5 プロジェクトで使用するものとほぼ同じです。違いは次の点のみです。
-
-- プロジェクトに、データ パッケージと構成パッケージと共に ServiceManifest ファイルを格納する **PackageRoot** フォルダーが含まれます。
-
-- プロジェクトは、.NET Execution Environment (DNX) と Service Fabric 間のブリッジとして機能する追加の NuGet パッケージ (Microsoft.ServiceFabric.AspNet.Hosting) を参照しています。
+### ステートレス Web API
+ステートレス Web API プロジェクトでは、外部クライアントに対してアプリケーションを開くときに使用できる基本的な Web サービスを提供します。プロジェクトの構造の詳細については、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi)」をご覧ください。
 
 ## 次のステップ
-### アプリケーションへの Web フロント エンドの追加
-Service Fabric は、アプリケーションへの Web ベースのエントリ ポイントを作成するための ASP.NET 5 との統合を提供します。ASP.NET Web API に基づく REST インターフェイスの作成方法については、「[アプリケーションへの Web フロント エンドの追加][add-web-frontend]」を参照してください。
-
 ### Azure クラスターの作成
-Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。Azure でのクラスターの作成については、「[Azure ポータルからの Service Fabric クラスターのセットアップ][create-cluster-in-portal]」を参照してください。
+Service Fabric SDK には、開発およびテスト用のローカル クラスターが用意されています。Azure でのクラスターの作成については、「[Azure ポータルから Service Fabric クラスターを作成する][create-cluster-in-portal]」をご覧ください。
 
 ### パーティ クラスターを使用した Azure へのデプロイの無料試行
 
@@ -67,7 +61,7 @@ Service Fabric SDK には、開発およびテスト用のローカル クラス
 Visual Studio から Azure クラスターに直接アプリケーションを発行することができます。方法については、[Azure へのアプリケーションの発行][publish-app-to-azure]に関するページを参照してください。
 
 ### Service Fabric Explorer を使用したクラスターの視覚化
-Service Fabric Explorer には、デプロイ済みのアプリケーションや物理的なレイアウトなど、クラスターを視覚化するための簡単な方法が用意されています。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化][visualize-with-sfx]」を参照してください。
+Service Fabric Explorer には、デプロイ済みのアプリケーションや物理的なレイアウトなど、クラスターを視覚化するための簡単な方法が用意されています。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化][visualize-with-sfx]」をご覧ください。
 
 ### サービスのアップグレードとバージョン管理
 Service Fabric では、アプリケーションにおいて、独立したサービスの個別のバージョン管理とアップグレードを実行できます。詳細については、「[サービスのバージョン管理とアップグレード][app-upgrade-tutorial]」を参照してください。
@@ -86,4 +80,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0406_2016-->

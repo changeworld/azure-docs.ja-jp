@@ -27,9 +27,9 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
 
 -   **プロパティ:** プロパティは、名前と値のペアです。それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。さらに、それぞれのエンティティは、パーティション キー、行キー、およびタイムスタンプを指定する、3 つのシステム プロパティを持ちます。同じパーティション キーを持つエンティティは、アトミック操作でより迅速な照会と挿入/更新が可能です。エンティティの行キーは、パーティション内の一意の識別子です。
 
-
+テーブルとプロパティの名前付け規則については、「[Understanding the Table Service Data Model (Table サービス データ モデルの概要)](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
   
   [Table1]: ./media/storage-table-concepts-include/table1.png
   [OData.org の Web サイト]: http://www.odata.org/
 
-<!----HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

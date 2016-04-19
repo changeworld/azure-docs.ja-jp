@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/27/2016"
+	ms.date="04/07/2016"
 	ms.author="tamram"/>
 
 
@@ -27,7 +27,18 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
+### このチュートリアルについて
+
 このチュートリアルでは、Azure Table Storage を使用して、テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなどの一般的なシナリオの .NET コードを記述する方法を示します。
+
+**推定所要時間:** 45 分
+
+**前提条件:**
+
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -35,36 +46,42 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-configure-connection-string-include](../../includes/storage-configure-connection-string-include.md)]
+[AZURE.INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
-## プログラムでテーブル ストレージにアクセスする
+### 名前空間宣言の追加
 
-[AZURE.INCLUDE [storage-dotnet-obtain-assembly](../../includes/storage-dotnet-obtain-assembly.md)]
+次の `using` ステートメントを `program.cs` ファイルの先頭に追加します。
 
-### 名前空間宣言
-プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+    using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
-    using Microsoft.WindowsAzure.Storage;
-	using Microsoft.WindowsAzure.Storage.Auth;
-    using Microsoft.WindowsAzure.Storage.Table;
+[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
-必ず `Microsoft.WindowsAzure.Storage.dll` アセンブリを参照してください。
+### Table サービス クライアントを作成する
 
-[AZURE.INCLUDE [storage-dotnet-retrieve-conn-string](../../includes/storage-dotnet-retrieve-conn-string.md)]
+**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。次のコードを **Main()** メソッドに追加します。
+
+	// Create the table client.
+	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+これで、Table Storage に対してデータの読み取りと書き込みを実行するコードを記述する準備が整いました。
 
 ## テーブルの作成
 
-**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。この記事のすべてのコードでは、作成するアプリケーションが Azure Cloud Services プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。
+この例は、テーブルがない場合に、キューを作成する方法を示しています。
 
-    // Retrieve the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	// Retrieve the storage account from the connection string.
+	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+	    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	
+	// Create the table client.
+	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
-    // Create the table if it doesn't exist.
+	// Retrieve a reference to the table.
     CloudTable table = tableClient.GetTableReference("people");
+		
+    // Create the table if it doesn't exist.
     table.CreateIfNotExists();
 
 ## エンティティをテーブルに追加する
@@ -423,8 +440,8 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage で作業するために記述したコードを簡略化する方法については、[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)を参照してください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    - 非構造化データを格納するには「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」
-    - リレーショナル データを格納するには「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」
+    - 非構造化データを格納するには、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」を参照してください。
+    - リレーショナル データを格納するには、「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」を参照してください。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
@@ -444,4 +461,4 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

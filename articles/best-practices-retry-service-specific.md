@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/28/2015"
+   ms.date="04/01/2016"
    ms.author="masashin"/>
 
 # 再試行サービス固有のガイダンス
@@ -1107,4 +1107,4 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 | **Linear (固定間隔)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 再試行の回数。<br />再試行間の遅延。<br />最初の再試行をすぐに行うかどうかを示します。 |
 一時的エラー処理アプリケーション ブロックの使用例については、このガイダンスで前述されている、ADO.NET と Azure Active Directory を使用する Azure SQL Database についての「例」のセクションを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0406_2016-->

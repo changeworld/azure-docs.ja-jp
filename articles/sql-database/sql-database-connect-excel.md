@@ -5,8 +5,8 @@
 	keywords="SQL への Excel の接続、Excel へのデータのインポート"
 	documentationCenter=""
 	authors="joseidz"
-	manager="jeffreyg"
-	editor="jeffreyg"/>
+	manager="jhubbard"
+	editor=""/>
 
 
 <tags
@@ -83,4 +83,4 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 - [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 - [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法を学習します。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

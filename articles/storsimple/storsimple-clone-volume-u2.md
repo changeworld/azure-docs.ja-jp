@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/14/2015"
+   ms.date="03/31/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する (Update 2)
@@ -117,4 +117,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0406_2016-->

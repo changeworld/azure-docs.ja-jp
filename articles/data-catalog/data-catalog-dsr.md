@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Data Catalog でサポートされるデータ ソース | Microsoft Azure"
-   description="現在サポートされているデータ ソースの仕様。"
+   description="この記事では、Azure Data Catalog での登録でサポートされるデータ ソースとデータ資産の種類を示します。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -13,20 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/30/2016"
+   ms.date="03/31/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog でサポートされるデータ ソース
 
-Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。さらにその下の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+**Azure Data Catalog** のユーザーは、パブリック API である ClickOnce データ ソース登録ツールを使用するか、Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。
+
+以下の表は、現在 Data Catalog でサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。また、各ソースを Data Catalog ポータルから "オープンイン" で起動できる外部ツールも一覧表示されています。
+
+さらにその下の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様と、Data Catalog API を使用するときにサポートされる各データ資産に対して使用されるデータ ソース参照 (DSR) の仕様を示します。
 
 
-## サポートされるデータ ソースの一覧
+## サポートされるデータ ソースと資産の一覧
 
 <table>
 
     <tr>
-       <td><b>データ ソース オブジェクト</b></td>
+       <td><b>データ資産</b></td>
        <td><b>API</b></td>
        <td><b>手動入力</b></td>
        <td><b>登録ツール</b></td>
@@ -260,7 +264,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 
     <tr>
-      <td>Db2 テーブル</td>
+      <td>DB2 テーブル</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -269,7 +273,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 
     <tr>
-      <td>Db2 ビュー</td>
+      <td>DB2 ビュー</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -398,6 +402,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 
 
 <br> <br>
+
 ## データ ソース参照の仕様
 
 <table>
@@ -517,7 +522,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 
     <tr>
-      <td>Db2</td>
+      <td>DB2</td>
       <td>コンテナー</td>
       <td>データベース</td>
       <td>該当なし</td>
@@ -531,7 +536,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 
     <tr>
-      <td>Db2</td>
+      <td>DB2</td>
       <td>テーブル</td>
       <td>テーブル</td>
       <td>データベース</td>
@@ -547,7 +552,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 
     <tr>
-      <td>Db2</td>
+      <td>DB2</td>
       <td>テーブル</td>
       <td>表示</td>
       <td>データベース</td>
@@ -1284,4 +1289,4 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 
 </table>
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

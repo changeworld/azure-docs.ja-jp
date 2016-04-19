@@ -18,21 +18,23 @@ ms.service="virtual-machines-windows"
 
 # Microsoft HPC Pack を使用して Azure で Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
+
+HPC Pack で Linux HPC ワークロードを実行する場合は、「[Microsoft HPC Pack を使用して Azure で Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](virtual-machines-linux-hpcpack-cluster-options.md)」を参照してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## Azure VM での HPC Pack クラスターの実行
 
 ### Azure テンプレート
 
-* (Marketplace) [HPC Pack cluster for Windows workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
+* (Marketplace) [HPC Pack cluster for Windows workloads (Windows ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
 
-* (Marketplace) [HPC Pack cluster for Excel workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
+* (Marketplace) [HPC Pack cluster for Excel workloads (Excel ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
 
-* (クイックスタート) [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
+* (クイックスタート) [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
 
-* (クイックスタート) [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
+* (クイックスタート) [Create an HPC cluster with custom compute node image(カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
 
 ### Azure VM イメージ
 
@@ -87,4 +89,4 @@ ms.service="virtual-machines-windows"
 
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

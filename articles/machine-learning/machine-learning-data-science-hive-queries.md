@@ -36,7 +36,7 @@
  
 * Azure のストレージ アカウントが作成されている。この作業の手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。 
 * HDInsight サービスで Hadoop クラスターをプロビジョニングしている。手順については、[HDInsight クラスターのプロビジョニング](../hdinsight-get-started.md#provision)に関するページをご覧ください。
-* データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」にある指示に従って Hive テーブルにデータをアップロードします。
+* データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-move-hive-tables.md)」にある指示に従って Hive テーブルにデータをアップロードします。
 * クラスターへのリモート アクセスが有効になっている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#remoteaccess)」をご覧ください。 
 
 
@@ -127,7 +127,7 @@ Azure ストレージ エクスプローラーなどのツールを使用して 
 1. [データの探索](#hive-dataexploration)
 2. [特徴の生成](#hive-featureengineering)
 
-> [AZURE.NOTE] サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)に従って Hive テーブルにデータをアップロードします。
+> [AZURE.NOTE] サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず[データを作成して Hive テーブルに読み込む](machine-learning-data-science-move-hive-tables.md)に従って Hive テーブルにデータをアップロードします。
 
 ###<a name="hive-dataexploration"></a>データの探索
 Hive テーブルでデータを探索するために使用する、いくつかのサンプル Hive スクリプトは次のとおりです。
@@ -325,4 +325,4 @@ Hive 埋め込み UDF のリストについては、[UDF 言語マニュアル](
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0406_2016-->

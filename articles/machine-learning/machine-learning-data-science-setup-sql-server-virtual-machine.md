@@ -225,7 +225,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 1.  Azure クラシック ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
-2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
+2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
 ##<a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
 
@@ -279,7 +279,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Cortana Analytics Process (CAP) に関連するタスクを行う準備もできました。
 
-データ サイエンス プロセスにおける次のステップは、「[学習ガイド: Azure での高度なデータ処理](machine-learning-data-science-advanced-data-processing.md)」に示されています。これには、HDInsight にデータを移動して、Azure Machine Learning でデータから知見を得るための準備としてデータを処理してサンプリングするための手順が含まれています。
+データ サイエンス プロセスにおける次のステップは、「[学習ガイド: Azure での高度なデータ処理](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。これには、HDInsight にデータを移動して、Azure Machine Learning でデータから知見を得るための準備としてデータを処理してサンプリングするための手順が含まれています。
 
 
 [1]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/selectsqlvmimg.png
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!----HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0406_2016-->

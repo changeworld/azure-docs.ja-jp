@@ -1,7 +1,7 @@
 
 
 
-**リソース マネージャー** デプロイ モデルを使用して [Azure ポータル](https://portal.azure.com) で仮想マシンを作成すると、ポータルによって仮想マシン用のパブリック IP リソースが作成されます。この IP アドレスを使用して、仮想マシンにリモートでアクセスできます。ポータルでは、既定では[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) が作成されませんが、仮想マシンの作成後に非常に簡単に作成できます。この記事では、DNS 名または FQDN を作成する手順を示します。
+**Resource Manager** デプロイ モデルを使用して [Azure ポータル](https://portal.azure.com)で仮想マシンを作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。この IP アドレスを使用して、仮想マシンにリモートでアクセスできます。ポータルでは、既定では[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) が作成されませんが、仮想マシンの作成後に非常に簡単に作成できます。この記事では、DNS 名または FQDN を作成する手順を示します。
 
 この記事では、ポータルでサブスクリプションにログインし、**リソース マネージャー** を使用して、使用可能なイメージで仮想マシンを作成していることを前提としています。仮想マシンの起動後、次の手順に従います。
 
@@ -24,6 +24,6 @@
     ![FQDN が作成される](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
 
-    この DNS 名を使用して、仮想マシンにリモートで接続できるようになります。たとえば、`SSH adminuser@testdnslabel.centralus.cloudapp.azure.com` を使用して、完全修飾ドメイン名が `testdnslabel.centralus.cloudapp.azure.com` でユーザー名が `adminuser` の Linux 仮想マシンに接続できます。
+    この DNS 名を使用して、仮想マシンにリモートで接続できるようになります。たとえば、`ssh adminuser@testdnslabel.centralus.cloudapp.azure.com` を使用して、完全修飾ドメイン名が `testdnslabel.centralus.cloudapp.azure.com` でユーザー名が `adminuser` の Linux 仮想マシンに接続できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

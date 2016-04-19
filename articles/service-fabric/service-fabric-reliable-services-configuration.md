@@ -5,7 +5,7 @@
    documentationCenter=".net"
    authors="sumukhs"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="Service-Fabric"
@@ -57,7 +57,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 ステートフル Reliable Services の既定の構成は、構成パッケージ (Config) か、サービス実装 (コード) を通じて変更できます。
 
 + **Config** - 構成パッケージを使用して構成する場合は、アプリケーションの各サービスの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートに生成された Settings.xml ファイルを変更します。
-+ **コード** - コードを使用して構成する場合は、StatefulService.CreateReliableStateManager をオーバーライドし、ReliableStateManagerConfiguration オブジェクトを使用して ReliableStateManager を作成します (その際、適切なオプションを設定します)。
++ **コード** - コードを使用して構成する場合は、適切なオプションが設定された ReliableStateManagerConfiguration オブジェクトを使用して ReliableStateManager を作成します。
 
 既定では、Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
 
@@ -97,14 +97,32 @@ ReplicatorConfig
 
 ### コードによるサンプル構成
 ```csharp
-protected override IReliableStateManager CreateReliableStateManager()
+class Program
 {
-    return new ReliableStateManager(
+    /// <summary>
+    /// This is the entry point of the service host process.
+    /// </summary>
+    static void Main()
+    {
+        ServiceRuntime.RegisterServiceAsync("HelloWorldStatefulType",
+            context => new HelloWorldStateful(context, 
+                new ReliableStateManager(context, 
         new ReliableStateManagerConfiguration(
-            new ReliableStateManagerReplicatorSettings
+                        new ReliableStateManagerReplicatorSettings()
             {
                 RetryInterval = TimeSpan.FromSeconds(3)
-            }));
+                        }
+            )))).GetAwaiter().GetResult();
+    }
+}    
+```
+```csharp
+class MyStatefulService : StatefulService
+{
+    public MyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica stateManager)
+        : base(context, stateManager)
+    { }
+    ...
 }
 ```
 
@@ -140,4 +158,8 @@ MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書�
 
 SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-<!---HONumber=AcomDC_0330_2016------>
+## 次のステップ
+ - [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
+ - [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+
+<!---HONumber=AcomDC_0406_2016-->

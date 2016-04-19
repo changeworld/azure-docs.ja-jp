@@ -33,11 +33,9 @@
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* [Visual Studio Community 2013](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
+* Visual Studio with Xamarin。手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 
-* [Xcode] v7.0 以降と [Xamarin Studio] がインストールされた Mac。
-
-* Visual Studio を実行する Windows ベースのコンピューターでアプリの構築を計画する場合でも、実際にビルドしてデプロイするには、Xamarin.iOS Build Host を実行するネットワークで接続された Mac にアクセスする必要があります。詳細については、[Windows への Xamarin.iOS のインストール](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/)に関するページを参照してください。
+* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。「[Setup and install for Visual Studio and Xamarin (Visual Studio と Xamarin を対象にしたセットアップとインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」と「[Setup, install, and verifications for Mac users (Mac ユーザーを対象にしたセットアップ、インストール、および確認)](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -66,9 +64,7 @@
 
 ## Xamarin.iOS アプリのダウンロードと実行
 
-1. Mac で、[Azure ポータル]をブラウザー ウィンドウで開きます。
-
-	>[AZURE.NOTE] Mac で Xamarin.iOS アプリを実行するほうが簡単です。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
+1. [Azure ポータル]をブラウザー ウィンドウで開きます。
 
 2. モバイル アプリの [設定] ブレードで、**[開始]**、**[Xamarin.iOS]** の順にクリックします。手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。次に、**[ダウンロード]** ボタンをクリックします。
 
@@ -112,11 +108,4 @@
 <!-- URLs. -->
 [Azure ポータル]: https://portal.azure.com/
 
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin]: http://xamarin.com/download
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
-[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
-
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

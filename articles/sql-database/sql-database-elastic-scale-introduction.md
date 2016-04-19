@@ -3,7 +3,7 @@
     description="これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
     services="sql-database"
     documentationCenter=""
-    manager="jeffreyg"
+    manager="jhubbard"
     authors="ddove"
     editor=""/>
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/24/2016"
+    ms.date="04/04/2016"
     ms.author="ddove;sidneyh"/>
 
 # Elastic Database 機能の概要
@@ -24,6 +24,7 @@
 * [Elastic Database プール](sql-database-elastic-pool-guidance.md) (プレビュー): プールはデータベースのコレクションで、いつでもデータベースの追加や削除が可能です。プール内のデータベースは、固定量のリソース (データベース トランザクション ユニット (DTU)) を共有します。支払い金額はそのリソースの量に応じて一定であるため、パフォーマンスを管理しながらコストを簡単に計算できます。
 * [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md)(プレビュー): ジョブを使用して、多数の Azure SQL databases を管理します。ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行します。
 * [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー): 複数のデータベースにまたがる Transact-SQL クエリを実行することができます。これにより、Excel、PowerBI、Tableau などのレポート作成ツールに接続できます。
+* [エラスティック トランザクション](sql-database-elastic-transactions-overview.md): この機能を使用すると、Azure SQL Database 内の複数のデータベースにまたがるトランザクションを実行できます。エラスティック データベース トランザクションは、ADO .NET を使用して .NET アプリケーションで利用できます。[System.Transaction クラス](https://msdn.microsoft.com/library/system.transactions.aspx)を使用することで、これまでに培ったプログラミングの経験を活かすことができます。
 
 次の図は、データベースのコレクションに関連する **Elastic Database 機能**を含めたアーキテクチャを示しています。
 
@@ -108,4 +109,4 @@ Elastic Database プールの詳細を確認するには、「[エラスティ�
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

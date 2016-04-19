@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/02/2016"
+   ms.date="04/11/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -79,11 +79,13 @@
 
 Marketplace からソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。
 
+リソース グループの現在の状態をテンプレートにエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。いずれの選択肢も「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」で解説しています。
+
 最後に、テンプレートは、アプリのソース コードの一部になります。テンプレートはソース コード リポジトリにチェックインして、アプリの変更に合わせて更新できます。テンプレートは Visual Studio から編集できます。
 
 テンプレートの定義の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)を参照してください。
 
-デプロイにテンプレートを使用する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+テンプレートの作成に関する段階的指示については、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
 
 テンプレートを構造化する方法のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
 
@@ -117,11 +119,11 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャーのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)を参照してください。
 
-REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。
+REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。デプロイしたリソースの REST 操作を表示する方法については、「[Azure リソース エクスプローラーを使用してリソースを表示および変更する](resource-manager-resource-explorer.md)」を参照してください。
 
 ポータルの使用方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
 
@@ -138,4 +140,4 @@ Azure リソース マネージャーでは、クロス オリジン リソー�
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

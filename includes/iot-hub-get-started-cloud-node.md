@@ -1,6 +1,6 @@
 ## デバイス ID の作成
 
-このセクションでは、IoT Hub の ID レジストリに新しいデバイス ID を作成する Node.js コンソール アプリケーションを作成します。IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」の「**デバイス ID レジストリ**」を参照してください。このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信する際にそのデバイスを識別する一意の ID とキーが生成されます。
+このセクションでは、IoT Hub の ID レジストリに新しいデバイス ID を作成する Node.js コンソール アプリケーションを作成します。IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」の「**デバイス ID レジストリ**」を参照してください。このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
 1. 「**createdeviceidentity**」という名前の空のフォルダーを新規作成します。**createdeviceidentity** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
 
@@ -68,9 +68,11 @@
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Node.js コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルでは、「デバイスからクラウドへの」メッセージを処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しい説明があります。これは IoT Hub Event Hub 対応のエンドポイントに適用されます。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Node.js コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。「[デバイスからクラウドへのメッセージの処理][lnk-processd2c-tutorial]」チュートリアルでは、デバイスからクラウドへの大規模なメッセージを処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。これは IoT Hub のイベント ハブと互換性のあるエンドポイントに適用されます。
 
-1. **readdevicetocloudmessages** という名前の空のフォルダーを新規作成します。**readdevicetocloudmessages** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
+> [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
+
+1. **readdevicetocloudmessages** という名前の空のフォルダーを新規作成します。**readdevicetocloudmessages** フォルダー内に、コマンド プロンプトで次のコマンドを使用して、新しい package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
 
     ```
     npm init
@@ -95,7 +97,7 @@
     var Promise = require('bluebird');
     ```
 
-5. プレース ホルダーを前にメモした値に置き換えて、次の変数宣言を追加します。**{your event hub-compatible namespace}** プレースホルダーの値は、ポータルの**イベント ハブと互換性のあるエンドポイント** フィールドから取得され、**namespace.servicebus.windows.net** (**sb://* プレフィックスなし) の形式になります。
+5. プレース ホルダーを前にメモした値に置き換えて、次の変数宣言を追加します。**{your event hub-compatible namespace}** プレースホルダーの値は、ポータルの **Event Hub-compatible endpoint** フィールドから取得され、**namespace.servicebus.windows.net** (**sb://* プレフィックスなし) の形式になります。
 
     ```
     var protocol = 'amqps';
@@ -106,7 +108,7 @@
     var numPartitions = 2;
     ```
 
-    > [AZURE.NOTE] このコードでは、F1 (free) レベルで IoT hub を作成したと想定しています。無料の IoT Hub は、2 つのパーティションがあります。名前は「0」と「1」です。他の価格レベルを利用して IoT Hub を作成した場合、コードを調整し、パーティションごとに **MessageReceiver** を作成してください。
+    > [AZURE.NOTE] このコードでは、F1 (free) レベルで IoT hub を作成したと想定しています。無料の IoT Hub は、2 つのパーティションがあります。名前は「0」と「1」です。他の価格レベルのいずれかを使用して IoT Hub を作成した場合、コードを調整し、パーティションごとに **MessageReceiver** を作成する必要があります。
 
 6. 次のフィルター定義を追加します。受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このアプリケーション メソッドは受信側の構築時にフィルターを使用します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、「[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-processd2c-tutorial]」チュートリアルを参照してください。
 
@@ -177,9 +179,9 @@
 
 <!-- Links -->
 
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
-[lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
-[lnk-processd2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-eventhubs-tutorial]: ../articles/event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[lnk-devguide-identity]: ../articles/iot-hub/iot-hub-devguide.md#identityregistry
+[lnk-event-hubs-overview]: ../articles/event-hubs/event-hubs-overview.md
+[lnk-processd2c-tutorial]: ../articles/iot-hub/iot-hub-csharp-csharp-process-d2c.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

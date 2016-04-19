@@ -3,7 +3,7 @@
 	description="データ ディスクを Linux を実行する Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -14,17 +14,17 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
-	ms.author="dkshir"/>
+	ms.date="04/04/2016"
+	ms.author="iainfou"/>
 
 # データ ディスクを Linux 仮想マシンに接続する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
+空のディスクと、データが含まれているディスクのどちらも接続できます。ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
 
-> [AZURE.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
+> [AZURE.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**永続データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
@@ -38,7 +38,7 @@
 
 2. 次に、データ ディスクの初期化のためにデバイスの ID を検索する必要があります。この作業を実行する 2 つの方法があります。
 
-	a) SSH のウィンドウで、次のコマンドを入力し、仮想マシンを管理するために作成したアカウントのパスワードを入力します。
+	a) SSH のウィンドウで、次のコマンドを入力します。
 
 			$sudo grep SCSI /var/log/messages
 
@@ -76,11 +76,9 @@
 
 	各行の組にある最後の数字が _LUN_ です。詳細については、「`man lsscsi`」を参照してください。
 
-3. SSH のウィンドウで、次のコマンドを入力して新しいデバイスを作成し、アカウントのパスワードを入力します。
+3. SSH のウィンドウで、次のコマンドを入力して、新しいデバイスを作成します。
 
 		$sudo fdisk /dev/sdc
-
-	>[AZURE.NOTE] この例で、ディストリビューションによっては `sudo -i` を使用しなければならない場合があります (sbin または /usr/sbin が `$PATH` にない場合)。
 
 
 4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
@@ -107,7 +105,7 @@
 
 	![Write the disk changes](./media/virtual-machines-linux-classic-attach-disk/DiskWrite.png)
 
-8. 新しいパーティションにファイル システムを作成します。デバイス ID にパーティション番号 (1) を追加します。たとえば、次のコマンドを入力し、アカウントのパスワードを入力します。
+8. 新しいパーティションにファイル システムを作成します。デバイス ID にパーティション番号 (1) を追加します。たとえば、/dev/sdc1 に ext4 パーティションを作成するには、次のように入力します。
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
@@ -116,7 +114,7 @@
 	>[AZURE.NOTE] SUSE Linux Enterprise 11 では、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
 
 
-9. 新しいファイル システムをマウントするディレクトリを作成します。たとえば、次のコマンドを入力し、アカウントのパスワードを入力します。
+9. 新しいファイル システムをマウントするディレクトリを作成します。たとえば、次のコマンドを入力します。
 
 		# sudo mkdir /datadrive
 
@@ -143,7 +141,7 @@
 
 	>[AZURE.NOTE] **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
 
-	次に、テキスト エディターで **/etc/fstab** ファイルを開きます。/etc/fstab is はシステム ファイルです。したがってこのファイルを編集するには `sudo` を使用する必要があります。たとえば、次のようになります。
+	次に、テキスト エディターで **/etc/fstab** ファイルを開きます。
 
 		# sudo vi /etc/fstab
 
@@ -173,10 +171,10 @@
 
 [Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-classic-detach-disk.md)
 
-[サービス管理 API での Azure CLI の使用](virtual-machines-command-line-tools.md)
+[サービス管理 API での Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -60,7 +60,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの **server.js** ファイルの先頭に次の内容を追加します。
 
-    var azure = require('azure-storage');
+	var azure = require('azure-storage');
 
 ## Azure のストレージ接続文字列の設定
 
@@ -72,27 +72,27 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 次のコードは、**QueueService** オブジェクトを作成し、これによってキューを操作できるようにします。
 
-    var queueSvc = azure.createQueueService();
+	var queueSvc = azure.createQueueService();
 
 **createQueueIfNotExists** メソッドを使用します。このメソッドは、指定されたキューが存在する場合は、そのキューを返します。指定されたキューが存在しない場合は、指定された名前で新しいキューを作成します。
 
 	queueSvc.createQueueIfNotExists('myqueue', function(error, result, response){
-      if(!error){
-        // Queue created or exists
+	  if(!error){
+	    // Queue created or exists
 	  }
 	});
 
-キューが作成されると、`result` は true になります。キューが存在する場合は、`result` は false です。
+キューが作成されると、`result.created` は true になります。キューが存在する場合は、`result.created` は false です。
 
 ### フィルター
 
 オプションのフィルター操作は、**QueueService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
-		function handle (requestOptions, next)
+	function handle (requestOptions, next)
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-		function (returnObject, finalCallback, next)
+	function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
@@ -117,7 +117,7 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 	queueSvc.peekMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Message text is in messages[0].messagetext
+	    // Message text is in messages[0].messageText
 	  }
 	});
 
@@ -136,14 +136,14 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 メッセージをデキューするには、**getMessage** を使用します。これによりメッセージはキューで参照できなくなるため、他のクライアントがこれを処理することもできません。アプリケーションでメッセージが処理されたら、**deleteMessage** を呼び出してキューからこのメッセージを削除します。次に、メッセージを取得してから削除する例を示します。
 
 	queueSvc.getMessages('myqueue', function(error, result, response){
-      if(!error){
-	    // Message text is in messages[0].messagetext
-        var message = result[0];
-        queueSvc.deleteMessage('myqueue', message.messageid, message.popreceipt, function(error, response){
+	  if(!error){
+	    // Message text is in messages[0].messageText
+	    var message = result[0];
+	    queueSvc.deleteMessage('myqueue', message.messageId, message.popReceipt, function(error, response){
 	      if(!error){
-		    //message deleted
-		  }
-		});
+	        //message deleted
+	      }
+	    });
 	  }
 	});
 
@@ -156,15 +156,15 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 **updateMessage** を使用すると、キュー内のメッセージの内容をインプレースで変更できます。次に、メッセージのテキストを更新する例を示します。
 
-    queueSvc.getMessages('myqueue', function(error, result, response){
+	queueSvc.getMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Got the message
-		var message = result[0];
-		queueSvc.updateMessage('myqueue', message.messageid, message.popreceipt, 10, {messageText: 'new text'}, function(error, result, response){
-		  if(!error){
-			// Message updated successfully
-		  }
-		});
+	    // Got the message
+	    var message = result[0];
+	    queueSvc.updateMessage('myqueue', message.messageId, message.popReceipt, 10, {messageText: 'new text'}, function(error, result, response){
+	      if(!error){
+	        // Message updated successfully
+	      }
+	    });
 	  }
 	});
 
@@ -177,18 +177,18 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 次のコード例では、**getMessages** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。その後、for ループを使用して、各メッセージを処理します。また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを 5 分に設定します。
 
-    queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
+	queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
 	  if(!error){
-		// Messages retreived
-		for(var index in result){
-		  // text is available in result[index].messageText
-		  var message = result[index];
-		  queueSvc.deleteMessage(queueName, message.messageid, message.popreceipt, function(error, response){
-			if(!error){
-			  // Message deleted
-			}
-		  });
-		}
+	    // Messages retreived
+	    for(var index in result){
+	      // text is available in result[index].messageText
+	      var message = result[index];
+	      queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, response){
+	        if(!error){
+	          // Message deleted
+	        }
+	      });
+	    }
 	  }
 	});
 
@@ -196,9 +196,9 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 **getQueueMetadata** は、キューで待機中のおおよそのメッセージ数など、キューに関するメタデータを返します。
 
-    queueSvc.getQueueMetadata('myqueue', function(error, result, response){
+	queueSvc.getQueueMetadata('myqueue', function(error, result, response){
 	  if(!error){
-		// Queue length is available in result.approximatemessagecount
+	    // Queue length is available in result.approximateMessageCount
 	  }
 	});
 
@@ -218,10 +218,10 @@ Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数�
 
 キューおよびキューに含まれているすべてのメッセージを削除するには、キュー オブジェクトに対して **deleteQueue** メソッドを呼び出します。
 
-    queueSvc.deleteQueue(queueName, function(error, response){
-		if(!error){
-			// Queue has been deleted
-		}
+	queueSvc.deleteQueue(queueName, function(error, response){
+	  if(!error){
+	    // Queue has been deleted
+	  }
 	});
 
 すべてのメッセージを削除せずにキューからクリアするには、**clearMessages** を使用します。
@@ -269,36 +269,30 @@ SAS のアクセス ポリシーを設定するために、アクセス制御リ
 
 ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
-	var sharedAccessPolicy = [
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user1'
+	var sharedAccessPolicy = {
+	  user1: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  },
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user2'
+	  user2: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  }
-	];
+	};
 
 次の例では、**myqueue** の現在の ACL を取得てから、**setQueueAcl** を使用して新しいポリシーを追加します。この手法で以下を実行できます。
 
+	var extend = require('extend');
 	queueSvc.getQueueAcl('myqueue', function(error, result, response) {
-      if(!error){
-		//push the new policy into signedIdentifiers
-		result.signedIdentifiers = result.signedIdentifiers.concat(sharedAccessPolicy);
-		queueSvc.setQueueAcl('myqueue', result.signedIdentifiers, function(error, result, response){
-	  	  if(!error){
-	    	// ACL set
-	  	  }
-		});
+	  if(!error){
+	    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+	    queueSvc.setQueueAcl('myqueue', newSignedIdentifiers, function(error, result, response){
+	      if(!error){
+	        // ACL set
+	      }
+	    });
 	  }
 	});
 
@@ -331,4 +325,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ]: ../app-service-web/web-sites-nodejs-use-webmatrix.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

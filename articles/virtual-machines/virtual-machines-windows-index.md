@@ -112,9 +112,9 @@
 	
 [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-windows-cli-deploy-templates.md)
 		
-[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-ps-sql-backup.md)
+[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)
 
-[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-ps-sql-patch.md)
+[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)
 
 [仮想マシン スケール セットでのマシンの自動スケール](virtual-machines-windows-ps-vmss-create.md)
 
@@ -161,7 +161,7 @@
 
 [HPC Pack](virtual-machines-windows-hpcpack-cluster-options.md)
 
-[SQL Server](virtual-machines-windows-classic-sql-overview.md)
+[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-windows-lob.md)
 
@@ -281,9 +281,9 @@
 
 [クラシック Windows 仮想マシンのカスタム スクリプト拡張機能](virtual-machines-windows-classic-extensions-customscript.md)
 
-[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-ps-sql-backup.md)
+[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)
 
-[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-ps-sql-patch.md)
+[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)
 
 
 
@@ -351,7 +351,7 @@
 
 [Oracle](virtual-machines-windows-classic-oracle.md)
 
-[SQL Server](virtual-machines-windows-classic-sql-overview.md)
+[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
 
 [SharePoint](virtual-machines-windows-sharepoint-farm.md)
 
@@ -375,4 +375,4 @@
 
 [Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング](virtual-machines-windows-allocation-failure.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure のセルフサービス サインアップについて | Microsoft Azure"
-	description="Azure のセルフサービス サインアップの概要、およびサインアップ プロセスの管理方法と DNS ドメイン名の引き継ぎ方法"
+	description="Azure のセルフサービス サインアップの概要、サインアップ プロセスの管理方法、および DNS ドメイン名の引き継ぎ方法。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/05/2016"
-	ms.author="stevenpo"/>
+	ms.date="04/04/2016"
+	ms.author="curtand"/>
 
 
 # Azure のセルフサービス サインアップについて
@@ -232,4 +232,4 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

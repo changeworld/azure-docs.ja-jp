@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="11/17/2015"
-   ms.author="vturecek@microsoft.com"/>
+   ms.date="03/25/2016"
+   ms.author="vturecek"/>
 
-# Reliable Services 通信モデル
+# Reliable Services 通信 API の使用方法
 
-プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。サービスの通信方法の選択は、サービス開発者に委ねられています。Reliable Services アプリケーション フレームワークには、いくつかの構築済みの通信スタックと、カスタム通信スタックを展開するためのツールがあります。これらには、クライアントがサービス エンドポイントを検出して通信するために使用できる抽象化を含みます。
+プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。サービスの通信方法の選択は、サービス開発者に委ねられています。Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
 
 ## サービス通信のセットアップ
 
@@ -42,16 +42,30 @@ public interface ICommunicationListener
 ステートレスの場合、次のようになります。
 
 ```csharp
-protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+class MyStatelessService : StatelessService
+{
+    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+    {
+        ...
+    }
+    ...
+}
 ```
 
 ステートフルの場合、次のようになります。
 
 ```csharp
-protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+class MyStatefulService : StatefulService
+{
+    protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+    {
+        ...
+    }
+    ...
+}
 ```
 
-どちらの場合も、リスナーのコレクションが返されます。これにより、サービスが複数のリスナーを簡単に使用できるようになります。たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。各リスナーが名前を取得し、その結果生じる名前とアドレスの組み合わせのコレクションが、クライアントがサービス インスタンスまたはサービス パーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
+どちらの場合も、リスナーのコレクションが返されます。これにより、サービスでは、複数のリスナーを使用して、異なるプロトコルを使用している可能性のある複数のエンドポイントでリッスンすることができます。たとえば、HTTP リスナーと別の WebSocket リスナーがあるとします。各リスナーが名前を取得し、その結果生じる*名前とアドレス*の組み合わせのコレクションが、クライアントがサービス インスタンスまたはサービス パーティションのリッスン アドレスを要求したときに JSON オブジェクトとして表されます。
 
 ステートレス サービスでは、オーバーライドによって ServiceInstanceListeners のコレクションが返されます。ServiceInstanceListener には、ICommunicationListener を作成する関数が含まれ、これに名前を付けます。ステートフル サービスでは、オーバーライドによって ServiceReplicaListeners のコレクションが返されます。ServiceReplicaListener は、セカンダリ レプリカで ICommunicationListener を開くこともできるため、ステートレスの対応する要素とは若干異なります。これにより、サービスで複数の通信リスナーを使用できるだけでなく、セカンダリ レプリカで要求を受け入れるリスナーと、プライマリ レプリカでリッスンするだけのリスナーを指定することもできます。
 
@@ -62,13 +76,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 {
     return new[]
     {
-        new ServiceReplicaListener(initParams =>
-            new MyCustomListener(initParams),
+        new ServiceReplicaListener(context =>
+            new MyCustomListener(context),
             "customReadonlyEndpoint",
             true),
 
-        new ServiceReplicaListener(initParams =>
-            new ServiceRemotingListener<IMyStatefulInterface2>(initParams, this),
+        new ServiceReplicaListener(context =>
+            this.CreateServiceRemotingListener(context),
             "rpcPrimaryEndpoint",
             false)
     };
@@ -78,180 +92,193 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 最後に、Endpoints セクションの下の[サービス マニフェスト](service-fabric-application-model.md)に、サービスに必要なエンドポイントを記述します。
 
 ```xml
-
 <Resources>
     <Endpoints>
-      <Endpoint Name="ServiceEndpoint" Protocol="http" Type="Input" />
+      <Endpoint Name="WebServiceEndpoint" Protocol="http" Port="80" />
+      <Endpoint Name="OtherServiceEndpoint" Protocol="tcp" Port="8505" />
     <Endpoints>
 </Resources>
 
 ```
 
-通信リスナーは、`ServiceInitializationParameters` の `CodePackageActivationContext` から、割り当てられているエンドポイント リソースにアクセスできます。その後、リスナーは開かれたときに、要求のリッスンを開始できます。
+通信リスナーは、`ServiceContext` の `CodePackageActivationContext` から、割り当てられているエンドポイント リソースにアクセスできます。その後、リスナーは開かれたときに、要求のリッスンを開始できます。
 
 ```csharp
-
-var codePackageActivationContext = this.serviceInitializationParameters.CodePackageActivationContext;
+var codePackageActivationContext = serviceContext.CodePackageActivationContext;
 var port = codePackageActivationContext.GetEndpoint("ServiceEndpoint").Port;
 
 ```
 
-> [AZURE.NOTE]エンドポイント リソースはサービス パッケージ全体に共通であり、サービス パッケージがアクティブ化されたときに Service Fabric によって割り当てられます。同じ ServiceHost 共有でホストされているすべてのレプリカは、同じポートを共有します。これは、通信リスナーがポート共有をサポートする必要があることを意味します。これを実行する推奨される方法は、通信リスナーが、リッスン アドレスを生成する際に、パーティション ID とレプリカ/インスタンス ID を使用することです。
+> [AZURE.NOTE] エンドポイント リソースはサービス パッケージ全体に共通であり、サービス パッケージがアクティブ化されたときに Service Fabric によって割り当てられます。同じ ServiceHost でホストされている複数のサービス レプリカは、同じポートを共有する場合があります。これは、通信リスナーがポート共有をサポートする必要があることを意味します。これを実行する推奨される方法は、通信リスナーが、リッスン アドレスを生成する際に、パーティション ID とレプリカ/インスタンス ID を使用することです。
+
+### サービスのアドレスの登録
+
+Service Fabric クラスターでは、*ネーム サービス*と呼ばれるシステム サービスが実行されます。ネーム サービスは、サービスの各インスタンスまたはレプリカがリッスンしているサービスとそのアドレスのレジストラーです。`ICommunicationListener` の `OpenAsync` メソッドが完了すると、戻り値がネーム サービスに登録されます。ネーム サービスで公開されるこの戻り値は、値が任意である文字列です。クライアントがネーム サービスからサービスのアドレスを要求すると、この文字列値が表示されます。
 
 ```csharp
-
-var replicaOrInstanceId = 0;
-var parameters = this.serviceInitializationParameters as StatelessServiceInitializationParameters;
-if (parameters != null)
+public Task<string> OpenAsync(CancellationToken cancellationToken)
 {
-   replicaOrInstanceId = parameters.InstanceId;
+    EndpointResourceDescription serviceEndpoint = serviceContext.CodePackageActivationContext.GetEndpoint("ServiceEndpoint");
+    int port = serviceEndpoint.Port;
+
+    this.listeningAddress = string.Format(
+                CultureInfo.InvariantCulture,
+                "http://+:{0}/");
+                        
+    this.publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+            
+    this.webApp = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Invoke(appBuilder));
+    
+    // the string returned here will be published in the Naming Service.
+    return Task.FromResult(this.publishAddress);
 }
-else
-{
-   replicaOrInstanceId = ((StatefulServiceInitializationParameters) this.serviceInitializationParameters).ReplicaId;
-}
-
-var nodeContext = FabricRuntime.GetNodeContext();
-
-var listenAddress = new Uri(
-    string.Format(
-        CultureInfo.InvariantCulture,
-        "{0}://{1}:{2}/{5}/{3}-{4}",
-        scheme,
-        nodeContext.IPAddressOrFQDN,
-        port,
-        this.serviceInitializationParameters.PartitionId,
-        replicaOrInstanceId,
-        Guid.NewGuid().ToString()));
-
 ```
 
-`ICommunicationListener` の記述方法の詳しいチュートリアルについては、「[OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
+Service Fabric は、クライアントや他のサービスがサービス名でこのアドレスを要求できるようにする API を提供します。これが重要なのは、サービスのアドレスが静的でないためです。リソースの分散と可用性のために、サービスはクラスター内を移動します。これは、クライアントがサービスのリッスンしているアドレスを解決できるようにするメカニズムです。
 
-### クライアントとサービス間の通信
-Reliable Services API は、サービスと通信するクライアントの作成を簡単にする次の抽象化を提供します。
+> [AZURE.NOTE] `ICommunicationListener` の記述方法の詳しいチュートリアルについては、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」をご覧ください。
 
-#### ServicePartitionResolver
-このユーティリティ クラスは、クライアントが実行時に Service Fabric サービスのエンドポイントを特定するのに役立ちます。サービスのエンドポイントを特定するプロセスは、Service Fabric の用語で、サービス エンドポイント解決と呼ばれます。
+## サービスとの通信
+Reliable Services API は、サービスと通信するクライアントを作成するために、以下のライブラリを提供します。
+
+### サービス エンドポイントの解決
+サービスと通信するには、まず、通信するサービスのパーティションまたはインスタンスのエンドポイント アドレスを解決します。`ServicePartitionResolver` ユーティリティ クラスは、クライアントが実行時にサービスのエンドポイントを特定するのに役立つ基本プリミティブです。Service Fabric の用語では、サービスのエンドポイントを特定するプロセスを*サービス エンドポイントの解決*と呼びます。
+
+クラスター内のサービスに接続するには、パラメーターを指定せずに `ServicePartitionResolver` を作成します。
 
 ```csharp
+ServicePartitionResolver resolver = new  ServicePartitionResolver();
+```
 
+別のクラスター内のサービスに接続するには、一連のクラスター ゲートウェイ エンドポイントを指定して `ServicePartitionResolver` を作成します。ゲートウェイ エンドポイントは、同じクラスターに接続するさまざまなエンドポイントであることに注意してください。次に例を示します。
+
+```csharp
+ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
+```
+
+`ServicePartitionResolver` には、内部で使用される `FabricClient` を作成するための関数を指定できます。
+ 
+```csharp
 public delegate FabricClient CreateFabricClientDelegate();
-
-// ServicePartitionResolver methods
-
-public ServicePartitionResolver(CreateFabricClientDelegate createFabricClient);
-
-Task<ResolvedServicePartition> ResolveAsync(Uri serviceName,
-   long partitionKey,
-   CancellationToken cancellationToken);
-
-Task<ResolvedServicePartition> ResolveAsync(ResolvedServicePartition previousRsp,
-   CancellationToken cancellationToken);
-
-
 ```
-> [AZURE.NOTE]FabricClient は、Service Fabric クラスターに対するさまざまな管理操作のために、クラスターとの通信に使用されるオブジェクトです。
 
-一般に、クライアント コードでは `ServicePartitionResolver` を直接操作する必要はありません。それが作成されると、Reliable Service の API の他のヘルパー クラスに渡されます。これらのクラスは、内部でリゾルバーを使用し、サービスとのクライアント通信を支援します。
-
-#### CommunicationClientFactory
-`ICommunicationClientFactory` は、ServiceFabric サービスと通信できるクライアントを生成する通信クライアント ファクトリによって実装される基本インターフェイスを定義します。CommunicationClientFactory の実装は、クライアントが通信しようとする Service Fabric サービスで使用される通信スタックによって異なります。Reliable Services API は `CommunicationClientFactoryBase<TCommunicationClient>` を提供します。これは、この `ICommunicationClientFactory` インターフェイスの基本実装を提供し、すべての通信スタックに共通するタスクを実行します。(これらのタスクには、`ServicePartitionResolver` を使用した、サービス エンドポイントの特定も含まれます)。クライアントは、通常 CommunicationClientFactoryBase 抽象クラスを実装して、通信スタック固有のロジックを処理します。
+`FabricClient` は、Service Fabric クラスターに対するさまざまな管理操作のために、クラスターとの通信に使用されるオブジェクトです。これは、`ServicePartitionClient` とクラスターとの対話を細かく制御する場合に役立ちます。内部でキャッシュを実行する `FabricClient` は、通常、作成にコストがかかるため、`FabricClient` インスタンスをできるだけ再利用することが重要です。
 
 ```csharp
+ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
+```
 
-protected CommunicationClientFactoryBase(
-   ServicePartitionResolver servicePartitionResolver = null,
-   IEnumerable<IExceptionHandler> exceptionHandlers = null,
-   IEnumerable<Type> doNotRetryExceptionTypes = null);
+Resolve メソッドは、サービスのアドレスまたはパーティション分割されたサービスのサービス パーティションのアドレスの取得に使用されます。
 
+```csharp
+ServicePartitionResolver resolver = new ServicePartitionResolver();
 
-public class MyCommunicationClient : ICommunicationClient
+ResolvedServicePartition partition =
+    await resolver.ResolveAsync(new Uri("fabric:/MyApp/MyService"), new ServicePartitionKey(), cancellationToken);
+```
+
+サービスのアドレスは `ServicePartitionResolver` を使用して簡単に解決できますが、解決されたアドレスを正しく使用できるようにするために必要な作業が増えます。クライアントは、接続試行の失敗が、再試行可能な一時的なエラー (サービスが移動している、サービスが一時的に使用できないなど) によるものか、永続的なエラー (サービスが削除されている、要求したリソースが存在しないなど) によるものかを検出する必要があります。サービスのインスタンスまたはレプリカは、いくつかの理由によりノード間でいつでも移動できます。`ServicePartitionResolver` によって解決されたサービスのアドレスは、クライアント コードが接続を試行した時点で古くなっている可能性があります。その場合、クライアントはアドレスをもう一度解決する必要があります。以前の `ResolvedServicePartition` を提供すると、リゾルバーはキャッシュされたアドレスを単に取得するのではなく、アドレスをもう一度解決する必要があります。
+
+通常は、クライアント コードで `ServicePartitionResolver` を直接操作する必要はありません。リゾルバーが作成されると、Reliable Services API の通信クライアント ファクトリに渡されます。ファクトリでは、リゾルバーを内部で使用して、サービスとの通信に使用できるクライアント オブジェクトを生成します。
+
+### 通信クライアントと通信ファクトリ
+
+通信ファクトリ ライブラリは、解決済みのサービス エンドポイントへの接続の再試行を容易にする、標準的なエラー処理再試行パターンを実装しています。ファクトリ ライブラリが再試行メカニズムを提供し、開発者がエラー ハンドラーを提供します。
+
+`ICommunicationClientFactory` は、Service Fabric サービスと通信できるクライアントを生成する通信クライアント ファクトリによって実装される基本インターフェイスを定義します。CommunicationClientFactory の実装は、クライアントが通信しようとする Service Fabric サービスで使用される通信スタックによって異なります。Reliable Services API は `CommunicationClientFactoryBase<TCommunicationClient>` を提供します。これは、`ICommunicationClientFactory` インターフェイスの基本実装を提供し、すべての通信スタックに共通するタスクを実行します (これらのタスクには、`ServicePartitionResolver` を使用した、サービス エンドポイントの特定も含まれます)。クライアントは、通常 CommunicationClientFactoryBase 抽象クラスを実装して、通信スタック固有のロジックを処理します。
+
+通信クライアントはアドレスを受け取り、そのアドレスを使用してサービスに接続します。クライアントは必要なプロトコルを使用できます。
+
+```csharp
+class MyCommunicationClient : ICommunicationClient
 {
-   public MyCommunicationClient(MyCommunicationChannel communicationChannel)
-   {
-      this.CommunicationChannel = communicationChannel;
-   }
-   public MyCommunicationChannel CommunicationChannel { get; private set; }
-   public ResolvedServicePartition ResolvedServicePartition;
-}
+    public ResolvedServiceEndpoint Endpoint { get; set; }
 
+    public string ListenerName { get; set; }
+
+    public ResolvedServicePartition ResolvedServicePartition { get; set; }
+}
+```
+
+クライアント ファクトリは、主に通信クライアントを作成する役割を担います。HTTP クライアントなど、永続的な接続を維持しないクライアントの場合、ファクトリはクライアントを作成して返すだけで済みます。一部のバイナリ プロトコルなど、永続的な接続を維持する他のプロトコルの場合、ファクトリはプロトコルを検証して接続を再作成する必要があるかどうかを確認する必要があります。
+
+```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
 {
     protected override void AbortClient(MyCommunicationClient client)
     {
-        throw new NotImplementedException();
     }
 
     protected override Task<MyCommunicationClient> CreateClientAsync(string endpoint, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
     }
 
     protected override bool ValidateClient(MyCommunicationClient clientChannel)
     {
-        throw new NotImplementedException();
     }
 
     protected override bool ValidateClient(string endpoint, MyCommunicationClient client)
     {
-        throw new NotImplementedException();
     }
 }
-
 ```
 
-#### ServicePartitionClient
-`ServicePartitionClient` は CommunicationClientFactory (および内部で ServicePartitionResolver) を使用します。また、一般的な通信および Service Fabric の一時的な例外の再試行を処理し、サービスとの通信に役立ちます。
+最後に、例外ハンドラーは、例外が発生したときに実行するアクションを決定する役割を担います。例外は、**再試行可能**と**再試行不可能**に分類されます。
 
+ - **再試行不可能な**例外は、呼び出し元に単に再スローされます。 
+ - **再試行可能な**例外は、**一時的**と**非一時的**にさらに分類されます。
+  - **一時的な**例外は、サービス エンドポイント アドレスを再度解決せずに再試行できる例外です。一時的な例外には、一時的なネットワークの問題やサービスのエラー応答 (サービス エンドポイントのアドレスが存在しないことを示すエラー応答を除く) などがあります。 
+  - **非一時的な**例外は、サービス エンドポイント アドレスを再度解決する必要がある例外です。非一時的な例外には、サービス エンドポイントに到達できなかったことを示す (サービスが別のノードに移動したことを示す) 例外などがあります。 
+
+`TryHandleException` は、特定の例外について判断を下します。特定の例外についてどのような判断を下せばよいか**わからない**場合は、**false** を返します。どのような判断を下せばよいか**わかっている**場合は、それに応じて結果を設定し、**true** を返します。
+ 
 ```csharp
+class MyExceptionHandler : IExceptionHandler
+{
+    public bool TryHandleException(ExceptionInformation exceptionInformation, OperationRetrySettings retrySettings, out ExceptionHandlingResult result)
+    {
+        // if exceptionInformation.Exception is known and is transient (can be retried without re-resolving)
+        result = new ExceptionHandlingRetryResult(exceptionInformation.Exception, true, retrySettings, retrySettings.DefaultMaxRetryCount);
+        return true;
 
-public ServicePartitionClient(
-    ICommunicationClientFactory<TCommunicationClient> factory,
-    Uri serviceName,
-    long partitionKey);
 
-public async Task<TResult> InvokeWithRetryAsync<TResult>(
-    Func<TCommunicationClient, Task<TResult>> func,
-    CancellationToken cancellationToken,
-    params Type[] doNotRetryExceptionTypes)
+        // if exceptionInformation.Exception is known and is not transient (indicates a new service endpoint address must be resolved)
+        result = new ExceptionHandlingRetryResult(exceptionInformation.Exception, false, retrySettings, retrySettings.DefaultMaxRetryCount);
+        return true;
 
+        // if exceptionInformation.Exception is unknown (let the next IExceptionHandler attempt to handle it)
+        result = null;
+        return false;
+    }
+}
 ```
-
-一般的な使用パターンは、次のようになります。
+### まとめ
+通信プロトコルを中心に構築された `ICommunicationClient`、`ICommunicationClientFactory`、`IExceptionHandler` を使用して、`ServicePartitionClient` はすべてをまとめてラップし、これらのコンポーネントを中心としたエラー処理とサービス パーティションのアドレス解決ループを提供します。
 
 ```csharp
-
-public MyCommunicationClientFactory myCommunicationClientFactory;
-public Uri myServiceUri;
-
-... other client code ..
-
-// Call the service corresponding to the partitionKey myKey.
+private MyCommunicationClientFactory myCommunicationClientFactory;
+private Uri myServiceUri;
 
 var myServicePartitionClient = new ServicePartitionClient<MyCommunicationClient>(
     this.myCommunicationClientFactory,
     this.myServiceUri,
-    myKey);
+    myPartitionKey);
 
-var result = await myServicePartitionClient.InvokeWithRetryAsync(
-   client =>
+var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) =>
    {
       // Communicate with the service using the client.
-      throw new NotImplementedException();
    },
    CancellationToken.None);
-
-
-... other client code ...
 
 ```
 
 ## 次のステップ
-* [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
+ - [GitHUb にあるサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
 
-* [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
+ - [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 
-* [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+ - [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+ - [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
+
+<!---HONumber=AcomDC_0406_2016-->

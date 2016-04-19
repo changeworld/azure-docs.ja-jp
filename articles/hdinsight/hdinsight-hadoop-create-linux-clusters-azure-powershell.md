@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/09/2016"
+   	ms.date="04/05/2016"
    	ms.author="nitinme"/>
 
 #Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
@@ -57,7 +57,7 @@ Linux クラスターをプロビジョニングするために設定する必�
     ###########################################
 
     # Sign in
-    Add-AzureRmAccount
+    Login-AzureRmAccount
 
     # Select the subscription to use
     $subscriptionID = "<SubscriptionName>"        # Provide your Subscription Name
@@ -75,8 +75,8 @@ Linux クラスターをプロビジョニングするために設定する必�
     # Create an Azure Blob Storage container
     $containerName = "<ContainerName>"              # Provide a container name
     $storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
-    $destContext = New-AzureRmStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-    New-AzureRmStorageContainer -Name $containerName -Context $destContext
+    $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+    New-AzureStorageContainer -Name $containerName -Context $destContext
 
     ###########################################
     # Create an HDInsight Cluster
@@ -91,8 +91,8 @@ Linux クラスターをプロビジョニングするために設定する必�
     # Set these variables
     $clusterName = $containerName           		# As a best practice, have the same name for the cluster and container
     $clusterNodes = <ClusterSizeInNodes>    		# The number of nodes in the HDInsight cluster
-    $credentials = Get-Credential
-    $sshCredentials = Get-Credential
+    $credentials = Get-Credential -Message "Enter Cluster user credentials" -UserName "admin"
+    $sshCredentials = Get-Credential -Message "Enter SSH user credentials"
 
     # The location of the HDInsight cluster. It must be in the same data center as the Storage account.
     $location = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName | %{$_.Location}
@@ -146,4 +146,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

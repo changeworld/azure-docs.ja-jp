@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/30/2015"   
+   ms.date="04/05/2016"   
    ms.author="seanmck"/>
 
 # Service Fabric でのアプリケーションのモデル化
@@ -44,7 +44,7 @@
 ![サービス内のパーティションとレプリカ][cluster-application-instances]
 
 
->[AZURE.TIP]http://&lt;yourclusteraddress&gt;:19080/Explorer で利用できる Service Fabric Explorer ツールを利用し、クラスターのアプリケーションのレイアウトを表示できます。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
+>[AZURE.TIP] http://&lt;yourclusteraddress&gt;:19080/Explorer で利用できる Service Fabric Explorer ツールを利用し、クラスターのアプリケーションのレイアウトを表示できます。詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 
 ## サービスを記述する
 
@@ -93,7 +93,7 @@
 </Settings>
 ~~~
 
-> [AZURE.NOTE]サービス マニフェストには、複数のコード、構成、データのパッケージを含めることができます。それぞれを個別にバージョン管理できます。
+> [AZURE.NOTE] サービス マニフェストには、複数のコード、構成、データのパッケージを含めることができます。それぞれを個別にバージョン管理できます。
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -139,7 +139,7 @@ For more information about other features supported by service manifests, refer 
 
 **DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。
 
-> [AZURE.NOTE]アプリケーション マニフェストには、複数のサービス マニフェストのインポートと既定のサービスを含めることができます。各サービス マニフェストのインポートは、個別にバージョン管理できます。
+> [AZURE.NOTE] アプリケーション マニフェストには、複数のサービス マニフェストのインポートと既定のサービスを含めることができます。各サービス マニフェストのインポートは、個別にバージョン管理できます。
 
 個々の環境で異なるアプリケーションやサービスのパラメーターを維持する方法については、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
@@ -254,4 +254,4 @@ PS D:\temp>
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0406_2016-->

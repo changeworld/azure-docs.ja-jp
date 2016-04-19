@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/23/2016" 
+	ms.date="03/31/2016" 
 	ms.author="tdykstra"/>
 
 # API Apps の概要
@@ -22,11 +22,11 @@ API Apps は、[Azure App Service](../app-service/app-service-value-prop-what-is
 
 ![Azure App Service でのアプリの種類](./media/app-service-api-apps-why-best-platform/appservicesuite.png)
 
-[App Service](../app-service/app-service-value-prop-what-is.md) は、Web、モバイル、および統合シナリオのための完全に管理されたプラットフォームです。App Service の API Apps は、クラウドとオンプレミスでの API のビルド、ホスト、および使用を容易にする機能を提供します。API を App Service の API アプリとしてデプロイすると、エンタープライズ レベルのセキュリティ、シンプルなアクセス制御、ハイブリッド接続、SDK の自動生成、および [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合を利用できます。
+[App Service](../app-service/app-service-value-prop-what-is.md) は、Web、モバイル、および統合シナリオのための完全に管理されたプラットフォームです。App Service の API アプリは、クラウドとオンプレミスでの API のビルド、ホスト、および使用を容易にする機能を提供します。API アプリを使用すると、エンタープライズ レベルのセキュリティ、シンプルなアクセス制御、ハイブリッド接続、SDK の自動生成、および [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) とのシームレスな統合を利用できます。
 
 ## API Apps を使う理由
 
-API Apps には、次の機能が用意されています。
+API Apps の主要な機能を次に示します。
 
 - **簡単な利用** - [Swagger API メタデータ](#concepts)に対するサポートの統合によって、さまざまなクライアントで API を簡単に利用できます。C#、Java、Javascript などのさまざまな言語で API のクライアント コードを自動的に生成します。コードの変更なしで [CORS](#concepts) を簡単に構成します。詳細については、「[API の検出とコードの生成を行うための App Service API Apps のメタデータ](app-service-api-metadata.md)」と「[CORS を使用して JavaScript から API アプリを使用する](app-service-api-cors-consume-javascript.md)」を参照してください。 
 
@@ -64,4 +64,4 @@ API Apps の使用を開始する場合は、[API Apps の使用に関するチ�
 
 API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)でスレッドを開始します。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

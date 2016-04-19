@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="04/04/2016"
 	ms.author="larryfr"/>
 
 # Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -47,7 +47,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * クラスター ノードで__ルート レベルの権限__を使用して実行されます。
 
-* __Azure ポータル__、__Azure PowerShell__、または __HDInsight .NET SDK__ で使用できます。
+* __Azure ポータル__、__Azure PowerShell__、__Azure CLI__、または __HDInsight .NET SDK__ で使用できます。
 
 > [AZURE.IMPORTANT] スクリプト アクションで行われた変更を自動的に元に戻すことはできません。スクリプトの影響を元に戻す必要がある場合は、どのような変更が行われたかを特定し、手動で戻す必要があります (または、変更を元に戻すスクリプト アクションを用意します)。
 
@@ -92,7 +92,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## スクリプト アクションのサンプル スクリプト
 
-Script Action のスクリプトは、Azure ポータル、Azure PowerShell、または HDInsight .NET SDK から使用できます。HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
+Script Action のスクリプトは、Azure ポータル、Azure PowerShell、Azure CLI、または HDInsight .NET SDK から使用できます。HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
 名前 | スクリプト
 ----- | -----
@@ -416,7 +416,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ## 実行中のクラスターにスクリプト アクションを適用する
 
-このセクションでは、実行中の HDInsight クラスターにさまざまな方法でスクリプト アクションを適用する例を紹介します。ここでは、Azure ポータル、PowerShell コマンドレット、.NET SDK を通じてスクリプト アクションを適用しています。
+このセクションでは、実行中の HDInsight クラスターにさまざまな方法でスクリプト アクションを適用する例を紹介します。ここでは、Azure ポータル、PowerShell コマンドレット、クロスプラットフォーム Azure CLI、.NET SDK を通じてスクリプト アクションを適用しています。
 
 ### 実行中のクラスターに Azure ポータルからスクリプト アクションを適用する
 
@@ -472,6 +472,38 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
         Uri             : https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
         Parameters      :
         NodeTypes       : {HeadNode, WorkerNode}
+
+### 実行中のクラスターに Azure CLI からスクリプト アクションを適用する
+
+次に進む前に、Azure CLI をインストールして構成したことを確認します。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+
+1. シェル セッション、ターミナル、コマンド プロンプト、またはシステムのその他のコマンド ラインを開き、次のコマンドを使用して Azure Resource Manager モードに切り替えます。
+
+        azure config mode arm
+
+2. 次のコマンドを使用して、Azure サブスクリプションに対して認証します。
+
+        azure login
+
+3. 次のコマンドを使用して、実行中のクラスターにスクリプトを適用します。
+
+        azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+
+    このコマンドのパラメーターを省略した場合は、それを要求するメッセージが表示されます。`-u` で指定したスクリプトでパラメーターが受け取られた場合、`-p` パラメーターを使用してそれらを指定できます。
+
+    有効な __nodetype__ は __headnode__、__workernode__、および __zookeeper__ です。スクリプトを複数のノード タイプに適用する必要がある場合、タイプを ; で区切って指定します。たとえば、「`-n headnode;workernode`」のように入力します。
+
+    スクリプトを保存するには、`--persistOnSuccess` を追加します。スクリプトを後日保存するには、`azure hdinsight script-action persisted set` を使用します。
+    
+    ジョブが完了すると、次のような出力が返されます。
+    
+        info:    Executing command hdinsight script-action create
+        + Executing Script Action on HDInsight cluster
+        data:    Operation Info
+        data:    ---------------
+        data:    Operation status:
+        data:    Operation ID:  b707b10e-e633-45c0-baa9-8aed3d348c13
+        info:    hdinsight script-action create command OK
 
 ### 実行中のクラスターに HDInsight .NET SDK からスクリプト アクションを適用する
 
@@ -532,9 +564,22 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
     # execution ID.
     Remove-AzureRmHDInsightPersistedScriptAction -ClusterName mycluster -Name "Install Giraph"
 
+### Azure CLI の使用
+
+| 使用 | 目的 |
+| ----- | ----- |
+| `azure hdinsight script-action persisted list <clustername>` | 保存済みスクリプト アクションの一覧を取得します。 |
+| `azure hdinsight script-action persisted show <clustername> <scriptname>` | 特定の保存済みスクリプト アクションに関する情報を取得します。 |
+| `azure hdinsight script-action history list <clustername>` | クラスターに適用されたスクリプト アクションの履歴を取得します。 |
+| `azure hdinsight script-action history show <clustername> <scriptname>` | 特定のスクリプト アクションに関する情報の取得 |
+| `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` | アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します |
+| `azure hdinsight script-action persisted delete <clustername> <scriptname>` | 保存済みスクリプト アクションをアドホック アクションに降格します |
+
+> [AZURE.IMPORTANT] `azure hdinsight script-action persisted delete` を使用しても、スクリプトによって実行されたアクションは元に戻されません。クラスターに追加された新しい worker ノードに対してスクリプトが実行されないように、保存済みフラグが削除されるだけです。
+
 ### HDInsight .NET SDK を使用する場合
 
-.NET SDK を使用してクラスターからスクリプトの履歴を取得し、スクリプトを昇格または降格する例については、[TBD]() を参照してください。
+.NET SDK を使用してクラスターからスクリプトの履歴を取得し、スクリプトを昇格または降格する例については、[https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action) を参照してください。
 
 ## トラブルシューティング
 
@@ -633,4 +678,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

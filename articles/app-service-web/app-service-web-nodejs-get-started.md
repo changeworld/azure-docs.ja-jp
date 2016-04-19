@@ -3,7 +3,7 @@
 	description="Node.js アプリケーションを Azure App Service の Web アプリにデプロイする方法を説明します。"
 	services="app-service\web"
 	documentationCenter="nodejs"
-	authors="rmcmurray"
+	authors="cephalin"
 	manager="wpickett"
 	editor=""/>
 
@@ -28,14 +28,12 @@
 
 このチュートリアルでは、簡単な [Node.js](http://nodejs.org) アプリケーションを作成し、cmd.exe や bash などのコマンド ラインを使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web アプリ](app-service-web-overview.md)にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
-[Azure App Service Web Apps](/services/app-service/web/)
-
 <a name="prereq"/>
 ## 前提条件
 
-- Node.js。インストール用のバイナリは、[こちら](https://nodejs.org/)からダウンロードできます。
+- Node.js。インストール用のバイナリは[こちら](https://nodejs.org/)にあります。
 - Yoeman。インストールの手順については、[こちら](http://yeoman.io/)を参照してください。
-- Gitインストール用のバイナリは、[こちら](http://www.git-scm.com/downloads)からダウンロードできます。
+- Gitインストール用のバイナリは[こちら](http://www.git-scm.com/downloads)にあります。
 - Azure CLI。インストールの手順については、[こちら](../xplat-cli-install.md)を参照してください。
 - Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
@@ -116,7 +114,7 @@ Azure App Service では、Node.js アプリを実行するために [iisnode](h
     
 ## Node.js フレームワークの使用
 
-[Sails.js](http://sailsjs.org/) や [MEAN.js](http://meanjs.org/) などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[iisnode から stdout ログと stderr ログを取得する](#iisnodelog)」を参照してください。
+[Sails.js](http://sailsjs.org/) や [MEAN.js](http://meanjs.org/) などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[Get stdout and stderr logs from iisnode (iisnode から stdout ログと stderr ログを取得する)](#iisnodelog)」をご覧ください。
 
 以下のチュートリアルには、App Service における特定のフレームワークの使用方法がわかりやすく解説されています。
 
@@ -211,4 +209,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 - [Node.js デベロッパー センター](/develop/nodejs/)
 - [Azure App Service での Web アプリの使用](app-service-web-get-started.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -52,7 +52,7 @@ Azure に VM をデプロイするとき、あらかじめ用意された一連�
 * Dv2 シリーズは D シリーズの最新版で、強力な CPU を特徴としています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.2 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 * G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 
-注: DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。SSD をベースとした高性能かつ低レイテンシのストレージによって、I/O 負荷の高いワークロードに対応します。Premium Storage は特定のリージョンで使用できます。詳細については、「**[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage-preview-portal.md)**」を参照してください。
+注: DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。SSD をベースとした高性能かつ低レイテンシのストレージによって、I/O 負荷の高いワークロードに対応します。Premium Storage は特定のリージョンで使用できます。詳細については、「**[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)**」を参照してください。
 
 Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。このクォータ制限は、サポート チケットで制限の引き上げを要求することによって引き上げることができます。クォータ制限の詳細については、「**[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)**」を参照してください。
 
@@ -60,4 +60,4 @@ Azure サブスクリプションにはそれぞれ既定のクォータ制限�
 
 無料試用版アカウント。**[こちらから入手](https://azure.microsoft.com/pricing/free-trial/)**してください。 既にお持ちの場合は、早速試してみましょう。まず **[Azure CLI をインストール](../xplat-cli-install.md)**します。それが済んだら、いよいよ [Linux VM の作成](virtual-machines-linux-quick-create-cli.md)に進みます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

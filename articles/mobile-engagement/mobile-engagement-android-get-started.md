@@ -4,7 +4,7 @@
 	services="mobile-engagement"
 	documentationCenter="android"
 	authors="piyushjo"
-	manager=""
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
-	ms.author="piyushjo" />
+	ms.date="04/08/2016"
+	ms.author="piyushjo;ricksal" />
 
 # Android アプリ用 Azure Mobile Engagement の使用
 
@@ -22,24 +22,25 @@
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を理解し、Android アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。このシナリオでは、基本的なデータを収集する空の Android アプリを作成し、Google Cloud Messaging (GCM) を使ってプッシュ通知を受信します。
 
-このチュートリアルには、次のものが必要です。
+## 前提条件
 
-+ Android SDK (Android Studio を使うことを前提とします)。[ここ](http://go.microsoft.com/fwlink/?LinkId=389797)からダウンロードできます。
-+ [Mobile Engagement Android SDK]
+このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools](https://developer.android.com/sdk/index.html) が必要です。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)を参照してください。
+また、[Mobile Engagement Android SDK](https://aka.ms/vq9mfn) も必要です。
 
-##<a id="setup-azme"></a>Android アプリ用のモバイル エンゲージメントの設定
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)を参照してください。
+
+## Android アプリ用の Mobile Engagement の設定
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
-##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+## アプリを Mobile Engagement のバックエンドに接続する
 
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントについては、「[Mobile Engagement Android SDK の統合](../mobile-engagement-android-sdk-overview/)」を参照してください。
 
 統合の例を示すために、Android Studio で基本的なアプリを作成します。
 
-###新しい Android プロジェクトを作成する
+### 新しい Android プロジェクトを作成する
 
 1. **Android Studio** を開始し、ポップアップ画面で **[Start a new Android Studio project]** を選択します。
 
@@ -65,7 +66,7 @@
 
 Mobile Engagement を統合するデモ アプリが Android Studio によって作成されます。
 
-###SDK ライブラリをプロジェクトに含める
+### SDK ライブラリをプロジェクトに含める
 
 1. [Mobile Engagement Android SDK] をダウンロードします。
 2. アーカイブ ファイルをコンピューターのフォルダーに抽出します。
@@ -81,7 +82,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 	  ![][8]
 
-###接続文字列を使用してアプリを Mobile Engagement のバックエンドに接続します。
+### 接続文字列を使用してアプリを Mobile Engagement のバックエンドに接続します。
 
 1. 次のコード行をアクティビティ作成の中にコピーします (アプリケーションの 1 か所でのみ実行する必要があります。通常はメイン アクティビティの中で実行します)。このサンプル アプリの MainActivity を [src]、[main]、[java] フォルダーから開き、次を追加します。
 
@@ -102,7 +103,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 		engagementConfiguration.setConnectionString("Endpoint=my-company-name.device.mobileengagement.windows.net;SdkKey=********************;AppId=*********");
 
-###アクセス権限とサービス宣言を追加する
+### アクセス権限とサービス宣言を追加する
 
 1. 次のアクセス権限をプロジェクトの Manifest.xml の `<application>` タグの直前または直後に追加します。
 
@@ -123,7 +124,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 3. 貼り付けたばかりのコードの label 内の `"<Your application name>"` をアプリケーション名に置き換えます。この内容は **[設定]** メニューに表示されます。デバイスで実行されているサービスをユーザーはここで確認できます。たとえば、このラベルに「サービス」という語句を追加できます。
 
-###画面を Mobile Engagement に送信する
+### 画面を Mobile Engagement に送信する
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
@@ -137,16 +138,16 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 これを残しておきたい場合は、[Android の高度な統合](mobile-engagement-android-integrate-engagement.md/#basic-reporting)に関するページの「基本的なレポート」シナリオを参照してください。
 
-##<a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
+## リアルタイム監視を使用してアプリを接続する
 
 [AZURE.INCLUDE [リアルタイム監視を使用してアプリを接続する](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-##<a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+## プッシュ通知とアプリ内メッセージングを有効にする
 
 Mobile Engagement を導入すると、プッシュ通知とアプリ内メッセージングを利用して、ユーザーにキャンペーン情報を提供できます。このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するようにアプリをセットアップします。
 
 ### SDK リソースをプロジェクトにコピーする
-	
+
 1. SDK ダウンロード コンテンツに戻り、**res** フォルダーをコピーします。
 
 	![][10]
@@ -161,9 +162,6 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 [AZURE.INCLUDE [Send notification from portal](../../includes/mobile-engagement-android-send-push-from-portal.md)]
 
-<!-- URLs. -->
-[Mobile Engagement Android SDK]: https://aka.ms/vq9mfn
-
 <!-- Images. -->
 [1]: ./media/mobile-engagement-android-get-started/android-studio-new-project.png
 [2]: ./media/mobile-engagement-android-get-started/android-studio-project-props.png
@@ -177,4 +175,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0413_2016-->

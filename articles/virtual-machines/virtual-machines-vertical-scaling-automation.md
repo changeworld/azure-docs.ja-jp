@@ -59,7 +59,7 @@
 * ユーザーのログイン情報を含む、AutomationPSCredential を作成します
 * ユーザーがサブスクリプション内のリソースにアクセスできるようにセットアップします
 
-サブスクリプションで Azure Automation Runbook を実行するには、Azure Automation にサブスクリプションへのアクセス許可が必要です。これは、Active Directory で別のユーザーを作成することで行います。次に、ユーザーが Azure に対する認証を行えるようにする AutomationPSCredential を作成して、仮想マシンのサイズを変更する PowerShell コマンドを実行する必要があります。
+サブスクリプションで Azure Automation Runbook の実行を開始するには、Azure Automation にサブスクリプションへのアクセス許可が必要です。これは、Active Directory で別のユーザーを作成することで行います。次に、ユーザーが Azure に対する認証を行えるようにする AutomationPSCredential を作成して、仮想マシンのサイズを変更する PowerShell コマンドを実行する必要があります。
 
 ユーザーと、AutomationPSCredential を作成するチュートリアルは、次の記事を参照してください。
 
@@ -108,4 +108,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0406_2016-->

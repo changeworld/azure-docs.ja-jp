@@ -34,7 +34,7 @@ Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Py
 
 また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure クラシック ポータルで取得できます)。
 
-Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」をご覧ください。
+Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-classic-createportal.md)」をご覧ください。
 
 インストール コマンドでは Ubuntu が想定されますが、サポートされる Linux ディストリビューションに応じてインストールを調整できます。
 
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -98,9 +98,9 @@
 
 
 *図 7: データ ソースから抽出された特徴*
-> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、[Cortana Analytics ギャラリー](http://gallery.azureml.net/) の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.azureml.net/Experiment/31c19425ee874f628c847f7e2d93e383)」にあるサンプル実験をご覧ください。
+> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」にあるサンプル実験を参照してください。
 > 
-> Cortana Analytics Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による[このビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)をご覧になることをお勧めします。
+> Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による[このビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)をご覧になることをお勧めします。
 > 
 
 ###プロトタイプで使用されたアルゴリズム
@@ -240,4 +240,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0406_2016-->

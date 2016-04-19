@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/27/2016"
+   ms.date="04/05/2016"
    ms.author="chackdan"/>
 
 # Windows Server または Linux でのスタンドアロン Service Fabric クラスターの作成
@@ -25,11 +25,12 @@ Service Fabric には、オンプレミスにこれらのスタンドアロン S
 
 ## サポートされているオペレーティング システム
 クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます。
+
 * Windows Server 2012 R2
 * Windows Server 2016
 * Linux
 
-Windows Server での詳細については、「[Service Fabric cluster creation for Windows Server (Windows Server 用の Service Fabric クラスターの作成)](service-fabric-creation-for-windows-server)」を参照してください。
+Windows Server の詳細については、[Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事をご覧ください。
 
 ## クラスターの作成と構成
 Service Fabric には、ダウンロードできるインストール パッケージが用意されています。このパッケージをダウンロードした後、JSON 構成ファイルを変更してクラスターの設定を指定する必要があります。クラスターの設定を編集した後、セットアップ スクリプトを実行して、クラスター設定で指定した複数のコンピューターにまたがるクラスターを作成します。スクリプトを実行して一連のコンピューターからクラスターを削除することもできます。
@@ -52,8 +53,13 @@ Service Fabric には、ダウンロードできるインストール パッケ�
 
 * **Azure リソース マネージャー**: Azure リソース マネージャーを使用すると、クラスターでユニットとして使用されているリソースの管理が容易になり、コストの追跡と要求を簡素化できます。
 * **Azure リソースとしての Service Fabric クラスター**: Service Fabric クラスターは ARM リソースなので、Azure の他の ARM リソースと同じようにモデル化できます。
-* **Azure インフラストラクチャとの統合**: Service Fabric は、OS、ネットワーク、およびその他のアップグレードに関して基盤の Azure インフラストラクチャと連携するので、アプリケーションの可用性と信頼性が向上します。  
+* **Azure インフラストラクチャとの統合**: Service Fabric は、OS、ネットワーク、およびその他のアップグレードに関して基になる Azure インフラストラクチャと連携するので、アプリケーションの可用性と信頼性が向上します。  
 * **診断**: Azure では、Azure 診断および Operational Insights との統合が提供されます。
 * **自動スケール**: Azure 上のクラスターの場合、仮想マシン スケール セットであるため、組み込みの自動スケール機能が提供されます。オンプレミスおよび他のクラウド環境では、自動スケール機能を独自に構築するか、Service Fabric で公開されているクラスター スケーリング用 API を手動で使用してスケールする必要があります。
 
-<!---HONumber=AcomDC_0330_2016------>
+## 次のステップ
+Windows Server を実行する VM またはコンピューターでのクラスターの作成: [Windows Server での Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
+
+Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
+
+<!---HONumber=AcomDC_0406_2016-->

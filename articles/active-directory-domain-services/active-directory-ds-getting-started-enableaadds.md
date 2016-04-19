@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/31/2016"
+	ms.date="04/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD Domain Services *(プレビュー)* - 作業の開始
@@ -44,9 +44,9 @@
 7. **[ドメイン サービスの DNS ドメイン名]** を指定します。
    - ディレクトリの既定のドメイン名 (**.onmicrosoft.com** ドメイン サフィックスで終わる名前) が既定で選択されます。
    - 一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが含まれます。検証対象のドメインおよび [ドメイン] タブで構成する検証対象外のドメインなどがあります。
-   - さらに、この一覧には、カスタム ドメイン名を入力して追加することもできます。
+   - さらに、この一覧には、カスタム ドメイン名を入力して追加することもできます。この例では、'contoso100.com' というカスタム ドメイン名を入力しました
 
-     > [AZURE.WARNING] 指定したドメイン名のドメイン プレフィックス (たとえば、'contoso.com' ドメイン名の 'contoso') が 15 文字未満であることを確認します。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
+     > [AZURE.WARNING] 指定したドメイン名のドメイン プレフィックス (たとえば、'contoso100.com' ドメイン名の 'contoso100') が 15 文字未満であることを確認します。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
 
 8. 次の手順は、Azure AD Domain Services を利用できる仮想ネットワークを選択することです。先ほど作成した仮想ネットワークを、**[ドメイン サービスをこの仮想ネットワークに接続します]** というタイトルのボックスの一覧から選択します。
    - 指定した仮想ネットワークが Azure AD Domain Services でサポートされている Azure リージョンに属することを確認します。
@@ -81,4 +81,4 @@
 ---
 [**次の手順: Azure 仮想ネットワークの DNS 設定を更新する**](active-directory-ds-getting-started-dns.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

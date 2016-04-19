@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="04/05/2016"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
 
 **Script Action** クラスターのカスタマイズを使用して HDInsight 上の Hadoop で任意の種類のクラスターに R をインストールできます。これにより、R を使用して強力な MapReduce/YARN プログラミング フレームワークをデプロイし、HDInsight に展開される Hadoop クラスター上で大量のデータを処理できます。
 
-> [AZURE.NOTE] このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Windows)](hdinsight-hadoop-r-scripts.md)」を参照してください。
+HDInsight の [Premium レベル](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスタの一部として R Server が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。詳細については、「[Get started using R Server on HDInsight (HDInsight で R Server を使ってみる)](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。
+
 
 ## R とは
 
@@ -62,7 +63,7 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
     
 このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際にこのスクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] Azure PowerShell、HDInsight .NET SDK または Azure リソース マネージャーのテンプレートは、スクリプト アクションを適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -145,4 +146,4 @@ HDInsight クラスターへの R のインストールに使用するスクリ�
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->

@@ -225,7 +225,7 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 ![組織の境界デバイスを示す図](./media/virtual-machines-linux-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-インターネットに直接接続されているコンピューターがない場合は、新しい Azure 仮想マシンをリソース グループまたはクラウド サービス内に簡単に作成して使用できます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」を参照してください。テストの完了後に、そのリソース グループまたは仮想マシンと、クラウド サービスを削除します。
+インターネットに直接接続されているコンピューターがない場合は、新しい Azure 仮想マシンをリソース グループまたはクラウド サービス内に簡単に作成して使用できます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)」を参照してください。テストの完了後に、そのリソース グループまたは仮想マシンと、クラウド サービスを削除します。
 
 インターネットに直接接続されているコンピューターとの SSH 接続を作成できるのなら、組織のエッジ デバイスで以下を確認してください。
 
@@ -243,7 +243,7 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 ![クラウド サービス エンドポイントと ACL を示す図](./media/virtual-machines-linux-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-同じ仮想ネットワーク内に別の VM がない場合、新しい VM を簡単に作成することができます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-cli-create.md)」を参照してください。テストの完了後に、追加した VM を削除してください。
+同じ仮想ネットワーク内に別の VM がない場合、新しい VM を簡単に作成することができます。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)」を参照してください。テストの完了後に、追加した VM を削除してください。
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
@@ -281,4 +281,4 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0406_2016-->
