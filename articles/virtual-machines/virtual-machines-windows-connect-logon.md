@@ -43,4 +43,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 ログオンのヒントで解決できない場合、または必要な情報が掲載されていない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)に関するページを参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0323_2016--->
