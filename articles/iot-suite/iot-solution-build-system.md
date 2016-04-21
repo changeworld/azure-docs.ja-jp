@@ -290,8 +290,7 @@ scenario\_complete.json での操作:
 | SQL Data Warehouse |                                                                                                                                                                                                            
 | Stream Analytics (ASA) ジョブ | App Service API、Machine Learning、拡張機能、および Power BI のリアルタイムと履歴データの両方を集計するために使用するクエリでの入力と出力の接続。                               
 | Machine Learning ワークスペース | 実験、R コード、API サービスが含まれます。                                                                                                                                                              
-| Data Factory  
- | スケジュールされた Machine Learning の再トレーニング。                                                                                                                                                                     
+| Data Factory   | スケジュールされた Machine Learning の再トレーニング。                                                                                                                                                                     
 | Service Fabric ホスティング プラン | 拡張機能に使用します。                                                                                                                                                                                            
 | App Service (“モバイル アプリ”) | モバイル アプリのエンドポイントを提供する Mobile Apps API プロジェクトをホストします。API コードは、Visual Studio から App Service にデプロイされる必要があります。                                                         
 | アラート ルール | アプリの応答でエラーが示される場合に、電子メールを送信します。                                                                                                                                            
@@ -476,4 +475,4 @@ MyDriving の開発構成を設定するコストの大まかな見積もりを�
 
 ご意見をお待ちしています。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!----HONumber=AcomDC_0406_2016-->
