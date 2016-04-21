@@ -17,17 +17,17 @@
 	ms.author="robb"/>
 
 #Microsoft Azure のアプリケーションのアーキテクチャ
-Microsoft Azure を使用するアプリケーションを構築するためのリソースです。これには、ソフトウェア システムを視覚的に説明する図を描画するためのツールが含まれます。
+Microsoft Azure を使用するアプリケーションを構築するためのリソースです。これには、ソフトウェア システムを視覚的に説明する図を描画するためのツールが含まれています。
 
 ##設計パターンのポスター
 
-Microsoft patterns & practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍「[クラウド設計パターン](http://msdn.microsoft.com/library/dn568099.aspx)」を発行しました。すべてのパターンを一覧表示する大型のポスターもあります。
+Microsoft patterns & practices は、MSDN と PDF ダウンロードの両方で利用可能な書籍「[クラウド設計パターン](http://msdn.microsoft.com/library/dn568099.aspx)」を発行しています。すべてのパターンを一覧表示する大型のポスターもあります。
 
 ![patterns & practices のクラウド パターンのポスター](./media/architecture-overview/PnPPatternPosterThumb.jpg)
 
 ##Microsoft のアーキテクチャの認定コース
 
-Microsoft では、先日マイクロソフト認定資格試験 70-534 をサポートする新しいアーキテクチャ コースをリリースしました。このコースは、[EDX.ORG で無料で利用可能](https://www.edx.org/course/architecting-microsoft-azure-solutions-microsoft-dev205x)です。このコースでは、新しい [3D ブループリントの Visio テンプレート](#3d-blueprint-visio-template)を使用します。
+Microsoft では、先日マイクロソフト認定資格試験 70-534 をサポートする新しいアーキテクチャ コースをリリースしました。このコースは、[EDX.ORG で無料で利用可能](https://www.edx.org/course/architecting-microsoft-azure-solutions-microsoft-dev205x)です。このコースでは、新しい [3D ブループリントの Visio テンプレート](#3d-blueprint-visio-template)を使用しています。
 
 ![Microsoft のアーキテクチャの認定コース](./media/architecture-overview/EDXCourse.png)
 
