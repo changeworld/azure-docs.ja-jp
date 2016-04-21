@@ -30,7 +30,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 + Microsoft Visual Studio 2013 以降、Microsoft Visual Studio Express for Windows。この記事の例では Visual Studio 2015 を使用します。
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、「[Azure の無料試用版サイト]」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank")」 を参照してください。
 
 ## Event Hub を作成する
 
@@ -130,4 +130,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

@@ -42,4 +42,4 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!------HONumber=AcomDC_0406_2016-->
