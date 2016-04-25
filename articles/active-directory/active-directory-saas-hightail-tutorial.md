@@ -165,7 +165,7 @@ Hightail アプリケーションは、特定の形式で構成された SAML �
 
 	![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_06.png)
 
-	a.[サインオン URL] テキストボックスに、****https://www.hightail.com/loginSSO** というパターンで、Hightail アプリケーションにサインオンするユーザーが使用する URL を入力します。これは、SSO を使用するすべてのユーザーに共通のログイン ページです。
+	a.[サインオン URL] テキストボックスに、**https://www.hightail.com/loginSSO** というパターンで、Hightail アプリケーションにサインオンするユーザーが使用する URL を入力します。これは、SSO を使用するすべてのユーザーに共通のログイン ページです。
 
 	b.**[次へ]** をクリックします。
 

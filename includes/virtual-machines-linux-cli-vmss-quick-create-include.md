@@ -1,7 +1,7 @@
 [Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と [Azure CLI](../articles/xplat-cli-install.md) は、[Azure アカウントに接続](../articles/xplat-cli-connect.md)できます (まだ接続していない場合)。接続が完了したら、次のコマンドを実行してスケール セットを簡易作成できます。
 
 ```bash
-# make sure we are in Resource Manager mode (https://azure.microsoft.com/ja-JP/documentation/articles/resource-manager-deployment-model/)
+# make sure we are in Resource Manager mode (https://azure.microsoft.com/documentation/articles/resource-manager-deployment-model/)
 azure config mode arm
 
 # quick-create a scale set

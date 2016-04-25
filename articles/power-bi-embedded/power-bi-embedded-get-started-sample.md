@@ -1,6 +1,6 @@
 <properties
    pageTitle="Get started with sample (サンプルの使用を開始する)"
-   description=""
+   description="Get started with sample (サンプルの使用を開始する)"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"

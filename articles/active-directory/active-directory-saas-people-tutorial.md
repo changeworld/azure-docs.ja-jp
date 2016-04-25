@@ -121,7 +121,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
 	c.**[識別子]** ボックスに、テナントの URL を入力します。
 
-    d.**[応答 URL]** ボックスに、"****https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**" の形式で URL を入力します。
+    d.**[応答 URL]** ボックスに、"**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**" の形式で URL を入力します。
 
 	e.**[次へ]** をクリックします。
 

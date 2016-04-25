@@ -33,7 +33,7 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 3. AD FS 管理コンソールを開き、**[AD FS]** > **[信頼関係] > [証明書利用者信頼]** に移動します。[Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、**[要求規則の編集…]** を選択します。
 4. **[発行変換規則]** タブで、**[規則の追加]** を選択します。
 5. **[要求規則テンプレート]** ボックスから、**[カスタムの規則を使用して要求を送信する]** を選択します。**[次へ]** を選択します。
-6. **[要求規則名]** ボックスに「*Auth Method Claim Rule*」と入力します。
+6. **[要求規則名]** ボックスに「 *Auth Method Claim Rule* 」と入力します。
 7. **[要求規則]** ボックスに次の要求規則を入力します。
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
@@ -105,4 +105,4 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

@@ -84,8 +84,8 @@
 
     ![Configure App URL](./media/active-directory-saas-successfactors-tutorial/IC791140.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** テキスト ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "**https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
-2.  **[SuccessFactors 応答 URL]** テキスト ボックスに、「****https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName**」と入力します。
+    1.  **[サインオン URL]** テキスト ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
+    2.  **[SuccessFactors 応答 URL]** テキスト ボックスに、「**https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName**」と入力します。
 
         >[AZURE.NOTE] この値は一時的なプレースホルダーです。実際の値は、SuccessFactors サポート チームから取得します。このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
 
@@ -131,4 +131,4 @@ SuccessFactors でユーザーを作成するには、SuccessFactors のサポ�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

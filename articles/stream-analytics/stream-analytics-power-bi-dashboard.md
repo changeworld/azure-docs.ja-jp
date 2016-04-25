@@ -99,11 +99,11 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 * **[データセット名]** - Power BI 出力に設定するデータセット名を入力します。たとえば、"pbidemo" を使用します。
 *	**[テーブル名]** - Power BI 出力のデータセットの下にテーブル名を入力します。たとえば、"pbidemo" という名前にします。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
 
->	[AZURE.NOTE] You should not explicitly create this dataset and table in your Power BI account. They will be automatically created when you start your Stream Analytics job and the job starts pumping output into Power BI. If your job query doesn’t return any results, the dataset and table will not be created.
+>	[AZURE.NOTE] お使いの Power BI アカウントでこのデータセットとテーブルを明示的に作成しないでください。これらは、Stream Analytics ジョブを開始し、そのジョブによって出力が Power BI に流し込まれるときに自動的に作成されます。ジョブ クエリから結果が返されない場合、データセットとテーブルは作成されません。
 
 *	**[OK]**、**[接続のテスト]** の順にクリックします。これで、出力の構成は完了です。
 
->	[AZURE.WARNING] Also be aware that if Power BI already had a dataset and table with the same name as the one you provided in this Stream Analytics job, the existing data will be overwritten.
+>	[AZURE.WARNING] また、この Stream Analytics ジョブで提供したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされますので注意してください。
 
 
 ## クエリの記述
@@ -123,8 +123,8 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
     	TUMBLINGWINDOW(ss,1),
     	dspl
 
-
-
+    
+    
 ジョブを開始します。イベント ハブがイベントを受け取り、クエリによって予期された結果が生成されることを確認します。クエリによって行が出力されない場合、Power BI データセットとテーブルは自動的に作成されません。
 
 ## Power BI でのダッシュボードの作成
@@ -168,13 +168,13 @@ Power BI 出力の構成と Power BI グループの利用の詳細について�
 Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
 
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データ プッシュが最大 1 プッシュ/秒になり、クエリがスループット要件の範囲内に収まるようにするために、TumblingWindow または HoppingWindow を使用することをお勧めします。次の式を使用して、現在のウィンドウに設定する値 (秒単位) を計算できます。
-
+  
 ![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
-
+  
 たとえば、1 秒ごとにデータを送信する 1,000 台のデバイスがあるとします。1,000,000 行/時に対応する Power BI Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 台のデバイスにつき最大 4 秒ごとに 1 回プッシュできます (次の式を参照)。
-
+  
 ![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
-
+  
 つまり、元のクエリが次のように変更されます。
 
     SELECT

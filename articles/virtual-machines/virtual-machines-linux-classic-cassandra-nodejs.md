@@ -59,8 +59,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 |	行のレプリカの数 |
-| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
-| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
+| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
+| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 

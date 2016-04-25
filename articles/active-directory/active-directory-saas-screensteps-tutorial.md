@@ -158,7 +158,7 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 1.  Azure AD ポータルで、テスト アカウントを作成します。
 
-2.  **ScreenSteps ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **ScreenSteps** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-screensteps-tutorial/IC773094.png "ユーザーの割り当て")
 

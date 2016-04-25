@@ -270,7 +270,8 @@ Maven リポジトリから jar ファイルを取得して、プロジェクト
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **ブローカー**: Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
+11. **ブローカー**:
+Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -456,4 +457,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

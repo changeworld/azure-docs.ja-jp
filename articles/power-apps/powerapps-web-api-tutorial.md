@@ -59,7 +59,7 @@
 2. 2 つ目の AAD アプリケーションは、カスタム API の登録をセキュリティで保護し、1 つ目のアプリによって保護されている Web API への委任アクセスを取得するために使用されます。このアプリケーションには **webAPI-customAPI** という名前を付けます。
 3. **webAPI** では、次の構成を使用します。  
 
-  1. サインオン URL: ******https://login.windows.net***
+  1. サインオン URL: ***https://login.windows.net***
   2. アプリ ID URI: ***https://\<your-root-url>*** (通常は Azure にデプロイした Web サイトの URL)
   3. 応答 URL: ***https://\<your-root-url>/.auth/login/aad/callback***  
   
@@ -67,9 +67,9 @@
 
 4. **webAPI-customAPI** では、次の構成を使用します。
   
-  1. サインオン URL: ****https://login.windows.net**
+  1. サインオン URL: **https://login.windows.net**
   2. アプリ ID URI: ***一意の URL であれば制限なし***
-  3. 応答 URL: ******https://msmanaged-na.consent.azure-apim.net/redirect***
+  3. 応答 URL: ***https://msmanaged-na.consent.azure-apim.net/redirect***
   4. webAPI への委任アクセスを持たせるアクセス許可を追加します。
   5. このアプリのクライアント ID も後で必要になるため、メモしておいてください。
   6. キーを生成し、安全な場所に保存します。このキーは後で必要です。
@@ -112,7 +112,7 @@
 
   1. クライアント ID: このトピックの **手順 2** の 4.e でメモしておいた***webAPI-CustomAPI のクライアント ID***
   2. シークレット: このトピックの **手順 2** の 4.f で生成した***webAPI-CustomAPI のキー***
-  3. ログイン URL: ******https://login.windows.net***
+  3. ログイン URL: ***https://login.windows.net***
   4. ResourceUri: このトピックの **手順 2** の 3 でメモしておいた***webAPI のクライアント ID***
 
 5. **[作成]** を選択し、カスタム API に接続できるかどうかを試します。すべてが正しく設定されていれば、サインインは成功します。

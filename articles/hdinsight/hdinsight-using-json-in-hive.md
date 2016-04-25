@@ -81,7 +81,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
 	SELECT * FROM StudentsOneLine
 
-未加工の JSON ファイルは ****wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
+未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
 
 *StudentsOneLine* Hive テーブルは、*/json/students/* パスの下にある HDInsight の規定のファイル システムにデータを保存します。
 

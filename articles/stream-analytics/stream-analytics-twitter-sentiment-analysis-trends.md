@@ -81,7 +81,8 @@ Event Hub を作成するには、次の手順に従います。
 	* **[リージョン]**: ジョブを実行するリージョンを選択します。パフォーマンスを向上させ、リージョン間のデータ転送が有料にならないように、同じリージョンにジョブとイベント ハブを配置することを検討します。
 	* **[ストレージ アカウント]**: このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用するストレージ アカウントを選択します。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。
 
-3.	Stream Analytics ジョブを一覧表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。![Stream Analytics サービス アイコン](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+3.	Stream Analytics ジョブを一覧表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。  
+	![Stream Analytics サービス アイコン](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
 
 4.	新しいジョブが **[作成済み]** の状態で表示されます。ページの下部にある **[開始]** ボタンが無効になっていることがわかります。ジョブを開始する前に、ジョブの入力、出力、クエリなどを構成する必要があります。
 
@@ -224,7 +225,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -236,4 +237,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->
