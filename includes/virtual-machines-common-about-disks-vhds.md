@@ -1,7 +1,5 @@
 
 
-Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。Azure のすべての仮想マシンには、オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
-
 ## オペレーティング システム ディスク
 
 どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。このディスクの最大容量は 1023 ギガバイトです。Azure がオペレーティング システム ディスクを作成する際に、高い耐久性を保つためにディスクのコピーを 3 つ作成します。さらに、geo レプリケーション用に仮想マシンを構成する場合、400 マイル以上離れた別のサイトにも VHD を複製します。
@@ -12,7 +10,7 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 >[AZURE.WARNING] 一時的なディスクにデータを格納しないでください。これはアプリケーションとプロセスに一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。Windows 仮想マシンにこのディスクを再マッピングするには、「[Windows 一時ディスクのドライブ文字を変更する方法](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)」をご覧ください。
 
-Azure による一時ディスクの使用方法については、[Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)に関するブログを参照してください。
+Azure による一時ディスクの使用方法については、「[Understanding the temporary drive on Microsoft Azure Virtual Machines (Microsoft Azure Virtual Machines の一時ドライブの概要)](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)」をご覧ください。
 
 ## データ ディスク
 
@@ -38,4 +36,4 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 
 >[AZURE.WARNING] ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

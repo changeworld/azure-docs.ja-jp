@@ -23,7 +23,7 @@
 
 この記事では、Azure Resource Manager のデプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
 
-開始するには、まず職場/学校のアカウント、または Microsoft アカウントID を使用して、[Azure CLI をインストール](xplat-cli-install.md)し、[Azure サブスクリプションに接続](xplat-cli-connect.md)します。
+開始するには、まず、職場/学校のアカウント、または Microsoft アカウントID を使用して、[Azure CLI をインストール](../xplat-cli-install.md)し、[Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
 
 リソース マネージャー モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
@@ -208,11 +208,11 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 **リソース グループにクラスターを作成するコマンド**
 
 	hdinsight cluster create [options] <clusterName>
-	 
+
 例: Linux クラスターでの Storm の作成
 
 	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
-	
+
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
 	info:    hdinsight cluster create command OK
@@ -220,11 +220,11 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 例: スクリプト アクションによるクラスターの作成
 
 	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
-	
+
 	info:    Executing command hdinsight cluster create
 	+ Submitting the request to create cluster...
 	info:    hdinsight cluster create command OK
-	
+
 パラメーターのオプション:
 
 	-h, --help                                                 output usage information
@@ -255,7 +255,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	--rdpPassword <rdpPassword>                                RDP password (only for Windows clusters)
 	--rdpAccessExpiry <rdpAccessExpiry>                        RDP access expiry.
 	For example 12/12/2015 (only for Windows clusters)
-	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster. 
+	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster.
 	Value is a GUID for Windows cluster and ARM resource ID for Linux cluster)
 	--subnetName <subnetName>                                  (Optional) Subnet for the cluster
 	--additionalStorageAccounts <additionalStorageAccounts>    (Optional) Additional storage accounts.
@@ -1872,4 +1872,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

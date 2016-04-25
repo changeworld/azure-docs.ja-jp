@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure リソース マネージャーでの基本構成テスト環境"
-	description="イントラネットをシミュレーションする単純な開発/テスト環境を Microsoft Azure のリソース マネージャーを使用して作成する方法について説明します。"
+	description="イントラネットをシミュレーションする単純な開発/テスト環境を Microsoft Azure で作成する方法について説明します。"
 	documentationCenter=""
 	services="virtual-machines-windows"
 	authors="JoeDavies-MSFT"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
-# Azure リソース マネージャーでの基本構成テスト環境
+# 基本構成テスト環境
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-test-config-env.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
@@ -30,7 +30,7 @@
 
 基本構成テスト環境は、TestLab という、クラウドのみの仮想ネットワーク内の Corpnet サブネットから成ります。インターネットに接続された単純なプライベート イントラネットが TestLab によってシミュレーションされます。
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG04.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph4.png)
 
 その構成要素を次に示します。
 
@@ -50,7 +50,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
 
 > [AZURE.NOTE] Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
@@ -94,16 +94,22 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 	$saName="<storage account name>"
 	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
-次に、基本構成の Corpnet サブネットをホストすることになる TestLab という Azure Virtual Network を作成します。
+次に、基本構成の Corpnet サブネットをホストすることになる TestLab という Azure Virtual Network を作成し、ネットワーク セキュリティ グループで保護します。
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location name, such as West US>"
+	$locShortName="<the location of your new resource group in lowercase with spaces removed, example: westus>"
 	$corpnetSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name Corpnet -AddressPrefix 10.0.0.0/24
 	New-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/8 -Subnet $corpnetSubnet –DNSServer 10.0.0.4
+	$rule1=New-AzureRMNetworkSecurityRuleConfig -Name "RDPTraffic" -Description "Allow RDP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+	New-AzureRMNetworkSecurityGroup -Name Corpnet -ResourceGroupName $rgName -Location $locShortName -SecurityRules $rule1
+	$vnet=Get-AzureRMVirtualNetwork -ResourceGroupName $rgName -Name TestLab
+	$nsg=Get-AzureRMNetworkSecurityGroup -Name Corpnet -ResourceGroupName $rgName
+	Set-AzureRMVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name Corpnet -AddressPrefix "10.0.0.0/24" -NetworkSecurityGroup $nsg
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG01.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph1.png)
 
 ## フェーズ 2: DC1 を構成する
 
@@ -189,7 +195,7 @@ DC1 とのリモート デスクトップ セッションを閉じ、CORP\\User1
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG02.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph2.png)
 
 ## フェーズ 3: APP1 を構成する
 
@@ -238,7 +244,7 @@ APP1 が再起動した後、CORP\\User1 のアカウント名とパスワード
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG03.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph3.png)
 
 ## フェーズ 4: CLIENT1 を構成する
 
@@ -292,13 +298,13 @@ CLIENT1 が再起動した後、CORP\\User1 のアカウント名とパスワー
 
 最終的な構成は次のようになります。
 
-![](./media/virtual-machines-windows-test-config-env/BC_TLG04.png)
+![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph4.png)
 
 Azure の基本構成の準備が整いました。アプリケーションの開発やテスト、および追加のテスト環境に使用できます。
 
 ## 次のステップ
 
-- Corpnet サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
+- [Azure ポータル](virtual-machines-windows-hero-tutorial.md)を使用して新しい仮想マシンを追加するか、[シミュレートされたハイブリッド クラウド テスト環境](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)を構築します。
 
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
@@ -328,4 +334,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

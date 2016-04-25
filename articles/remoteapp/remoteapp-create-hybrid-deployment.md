@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure RemoteApp のハイブリッド コレクションの作成方法 | Microsoft Azure" 
-	description="内部ネットワークに接続する RemoteApp のデプロイを作成する方法について説明します。" 
-	services="remoteapp" 
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" 
+<properties
+	pageTitle="Azure RemoteApp のハイブリッド コレクションの作成方法 | Microsoft Azure"
+	description="内部ネットワークに接続する RemoteApp のデプロイを作成する方法について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"
 	editor=""/>
 
-<tags 
-	ms.service="remoteapp" 
-	ms.workload="compute" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="remoteapp"
+	ms.workload="compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のハイブリッド コレクションの作成方法
@@ -40,12 +40,12 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 
 コレクションを作成する前に以下の操作が必要です:
 
-- Azure RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。 
+- Azure RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。
 - Azure RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
 - [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
 - アクセス権を付与するユーザーに関する情報を集めます。ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。Azure AD と Active Directory 間で UPN が一致していることを確認します。
-- テンプレート イメージを選択します。Azure RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、[Azure RemoteApp イメージのオプション](remoteapp-imageoptions.md)に関するページを参照してください。 
+- テンプレート イメージを選択します。Azure RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、[Azure RemoteApp イメージのオプション](remoteapp-imageoptions.md)に関するページを参照してください。
 - Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
 - [RemoteApp を使用するために Active Directory を構成します](remoteapp-ad.md)。
 
@@ -58,9 +58,9 @@ VNET を作成する前に、[VNET 計画](remoteapp-planvnet.md)と [VNET サ�
 
 ### Azure VNET を作成して Active Directory のデプロイに参加させる
 
-まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
+まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)の作成から開始します。これは Azure ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
 
-詳細については、「[管理ポータルでの Virtual Network の設定について](../virtual-network/virtual-networks-settings.md)」を参照してください。
+詳細については、「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
 
 ### 仮想ネットワークで Azure RemoteApp を使用する準備ができていることを確認します。
 コレクションを作成する前に、新しい仮想ネットワークで準備ができていることを確認します。これは次の手順を実行することで検証できます。
@@ -91,9 +91,9 @@ Azure RemoteApp コレクションが作成されたら、コレクションの�
 
 ## 手順 3. コレクションをローカル ドメインに関連付ける ##
 
- 
+
 1. **[クイック スタート]** ページで、**[ローカル ドメインに参加]** をクリックします。
-2. Azure RemoteApp サービス アカウントをローカル Active Directory ドメインに追加します。追加するには、ドメイン名、組織単位、サービス アカウントのユーザー名とパスワードが必要になります。 
+2. Azure RemoteApp サービス アカウントをローカル Active Directory ドメインに追加します。追加するには、ドメイン名、組織単位、サービス アカウントのユーザー名とパスワードが必要になります。
 
 	これは、「[Azure RemoteApp の Active Directory を構成する](remoteapp-ad.md)」の手順に従った場合に収集される情報です。
 
@@ -121,14 +121,14 @@ Azure RemoteApp を使用するには、次のいずれかの方法で Azure Act
 Azure RemoteApp アプリケーションは、ユーザーに提供するアプリケーションまたはプログラムのことです。このプログラムは、コレクション用にアップロードしたテンプレート イメージに置かれています。ユーザーがアプリケーションにアクセスすると、アプリケーションはユーザーのローカル環境で実行しているように見えますが、実際には Azure で実行しています。
 
 ユーザーがアプリケーションにアクセスするには、アプリケーションを発行しておく必要があります。これにより、ユーザーはリモート デスクトップ クライアントからアプリケーションにアクセスできます。
- 
+
 コレクションには複数のアプリケーションを発行できます。発行ページから、**[発行]** をクリックしてアプリを追加します。プログラムは、テンプレート イメージの **[スタート]** メニューから発行することも、テンプレート イメージのパスをアプリケーションに指定して発行することもできます。**[スタート]** メニューから追加する場合は、発行するアプリケーションを選択します。アプリケーションのパスを指定して発行する場合は、アプリケーションの名前と、アプリケーションがインストールされるテンプレート イメージ上の保存場所までのパスを指定します。
 
 ## 手順 7. ユーザー アクセスを構成する ##
 
 これでコレクションが作成できたので、リモート リソースを使用可能にするユーザーを追加する必要があります。アクセス権を付与するユーザーは、この Azure RemoteApp コレクションを作成するために使用したサブスクリプションに関連付けられた Active Directory テナントに存在している必要があります。
 
-1.	[クイック スタート] ページの **[ユーザー アクセスの構成]** をクリックします。 
+1.	[クイック スタート] ページの **[ユーザー アクセスの構成]** をクリックします。
 2.	アクセス権を付与する (Active Directory の) 仕事用アカウントか、または Microsoft アカウントを入力します。
 
 	**注:**
@@ -145,8 +145,8 @@ Azure RemoteApp アプリケーションは、ユーザーに提供するアプ�
 これで、Azure RemoteApp ハイブリッド コレクションの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、Azure RemoteApp の [クイック スタート] ページにあります。次に、ユーザーがクライアントにログインし、発行したアプリケーションにアクセスします。
 
 
- 
-### サポートのお願い 
+
+### サポートのお願い
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

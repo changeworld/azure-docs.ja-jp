@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="04/07/2016"
 	ms.author="jgao"/>
 
 # Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -83,7 +83,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 	
 	- メニューをカスタマイズするには、メニュー上の任意の場所を右クリックし、**[カスタマイズ]** をクリックします。
 	- **設定**と**すべての設定**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
-	- **ダッシュ ボード**、**クラスター ダッシュ ボード**、**URL: これらはすべて、クラスタ ダッシュボードにアクセスするための方法で、 Linux ベースのクラスターの Ambari Web です。**Secure Shell**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法が表示されます。
+	- **[ダッシュ ボード]**、**[クラスター ダッシュ ボード]**、**[URL]: これらはすべて、クラスター ダッシュボードにアクセスするための方法で、Linux ベースのクラスターの Ambari Web です。**Secure Shell**: Secure Shell (SSH) 接続を使用してクラスターに接続する手順が表示されます。
 	- **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
 	- **[削除]**: クラスターを削除します。
 	- **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-administer-use-portal-linux/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
@@ -387,4 +387,4 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

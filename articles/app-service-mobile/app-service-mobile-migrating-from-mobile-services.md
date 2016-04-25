@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="04/11/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
@@ -274,7 +274,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > \[Notification Hubs] の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -344,6 +344,14 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 
 生成されたログはウィンドウにストリーム配信されます。ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。詳細については、[ログ]に関するドキュメントを参照してください。
 
+## <a name="known-issues"></a>既知の問題
+
+### 移行したモバイル アプリの複製を削除すると、サイトが停止する
+
+Azure PowerShell を使用して、移行したモバイル サービスを複製し、その後複製を削除すると、運用サービスの DNS エントリが削除されます。その結果、インターネットからサイトにアクセスできなくなります。
+
+解決策: Microsoft ではこの問題に取り組んでいます。サイトを複製する必要がある場合は、ポータルを使用してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションが App Service に移行され、活用できる機能がさらに増えました。
@@ -393,4 +401,4 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

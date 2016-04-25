@@ -1,24 +1,20 @@
-<properties 
-	pageTitle="音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Azure" 
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。" 
-	services="" 
-	documentationCenter=".net" 
-	authors="devinrader" 
-	manager="twilio" 
+<properties
+	pageTitle="音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Azure"
+	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。"
+	services=""
+	documentationCenter=".net"
+	authors="devinrader"
+	manager="twilio"
 	editor=""/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="04/24/2015"
 	ms.author="devinrader"/>
-
-
-
-
 
 # Azure から音声および SMS 機能に Twilio を使用する方法
 
@@ -80,7 +76,14 @@ Twilio 対応のアプリケーションをホストする Azure アプリケー
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 Twilio は、一連の .NET ヘルパー ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
 
-Twilio は .NET 開発者向けに 5 つのライブラリを提供します。|説明---|--- Twilio.API|扱いやすい .NET ライブラリで Twilio REST API をラップする、主要な Twilio ライブラリです。このライブラリは、.NET、Silverlight、および Windows Phone 7 向けに用意されています。Twilio.TwiML|.NET 対応の方法で TwiML マークアップを生成します。Twilio.MVC|ASP.NET MVC を使用する開発者向けのこのライブラリは、TwilioController、TwiML ActionResult、要求検証の属性を含んでいます。Twilio.WebMatrix|Microsoft が無償で提供する WebMatrix 開発ツールを使用する開発者向けのこのライブラリは、Twilio のさまざまな操作に対応する Razor 構文ヘルパーを含んでいます。Twilio.Client.Capability|Twilio Client JavaScript SDK と共に使用するための Capability トークン ジェネレーターを含んでいます。
+Twilio は、.NET 開発者向けに次の 5 つのライブラリを用意しています。
+ライブラリ|説明
+---|---
+Twilio.API|扱いやすい .NET ライブラリで Twilio REST API をラップする主要な Twilio ライブラリです。このライブラリは、.NET、Silverlight、および Windows Phone 7 向けに用意されています。
+Twilio.TwiML|.NET 対応の方法で TwiML マークアップを生成します。
+Twilio.MVC|ASP.NET MVC を使用する開発者向けのこのライブラリは、TwilioController、TwiML ActionResult、および要求検証の属性を含んでいます。
+Twilio.WebMatrix|Microsoft が無償で提供する WebMatrix 開発ツールを使用する開発者向けのこのライブラリは、Twilio のさまざまな操作に対応する Razor 構文ヘルパーを含んでいます。
+Twilio.Client.Capability|Twilio Client JavaScript SDK と共に使用するための Capability トークン ジェネレーターを含んでいます。
 
 すべてのライブラリに .NET 3.5、Silverlight 4、または Windows Phone 7 以降が必要です。
 
@@ -90,7 +93,7 @@ Twilio は .NET 開発者向けに 5 つのライブラリを提供します。|
 
 Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインストールされます。Twilio ライブラリをインストールするには、NuGet の Version 1.6 以降が必要です。NuGet のインストールまたは更新については、[http://nuget.org/][nuget] を参照してください。
 
-> [AZURE.NOTE]NuGet の最新バージョンをインストールするには、最初に Visual Studio Extension Manager を使用して、読み込み済みのバージョンをアンインストールする必要があります。そのためには、Visual Studio を管理者として実行する必要があります。そのようにしない場合、[アンインストール] ボタンは無効です。
+> [AZURE.NOTE] NuGet の最新バージョンをインストールするには、最初に Visual Studio Extension Manager を使用して、読み込み済みのバージョンをアンインストールする必要があります。そのためには、Visual Studio を管理者として実行する必要があります。そのようにしない場合、[アンインストール] ボタンは無効です。
 
 ### <a id="use_nuget"></a>Twilio ライブラリを Visual Studio プロジェクトに追加するには、次の手順を実行します。
 
@@ -161,7 +164,7 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 ## <a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
 アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**client.InitiateOutboundCall** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。「[方法: 発信通話する](#howto_make_call)」の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用して応答を返します。
 
-> [AZURE.NOTE]TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message](twimlet_message_url) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World](twimlet_message_url_hello_world) をクリックすると、<Say> 要素を格納している <Response> 要素が表示されます。
+> [AZURE.NOTE] TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message](twimlet_message_url) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World](twimlet_message_url_hello_world) をクリックすると、<Say> 要素を格納している <Response> 要素が表示されます。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
 
@@ -252,7 +255,7 @@ TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundC
 
 ASP.NET を使用する Microsoft Azure での Twilio の使用に関する詳細については、「[Microsoft Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」を参照してください。
 
-[AZURE.INCLUDE [twilio\_additional\_services\_and\_next\_steps](../includes/twilio_additional_services_and_next_steps.md)]
+[AZURE.INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
 
 
 
@@ -279,4 +282,4 @@ ASP.NET を使用する Microsoft Azure での Twilio の使用に関する詳�
 [twilio_account]: https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

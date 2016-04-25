@@ -30,15 +30,9 @@
 
 ##前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-
-* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-
-* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。必要であれば Windows コンピューター上で Visual Studio を使用して Xamarin.Forms を実行できますが、Xamarin.iOS Build Host を実行するネットワーク接続された Mac にアクセスする必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
+* 「[Xamarin.Forms アプリの作成](app-service-mobile-xamarin-forms-get-started.md)」チュートリアルを完了していること。このチュートリアルには、他の前提条件も記載されています。この記事では、そのチュートリアルで完成させたアプリケーションを使用します。
 
 * 物理的な iOS デバイスiOS シミュレーターでは、プッシュ通知はサポートされていません。
-
-* [Xamarin.Forms クイック スタート チュートリアル](app-service-mobile-xamarin-forms-get-started.md)を完了してください。
 
 ##モバイル アプリ用の通知ハブを作成する
 
@@ -529,10 +523,8 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[Xamarin Studio]: http://xamarin.com/platform
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

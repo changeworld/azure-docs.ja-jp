@@ -22,7 +22,7 @@
 
 ##概要
 
-このチュートリアルでは、[Xamarin.Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。このチュートリアルは、[Xamarin.Android クイック スタート] チュートリアルに基づいているので、先にそちらを完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このチュートリアルでは、「[Xamarin.Android アプリの作成]」プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。このチュートリアルは、「[Xamarin.Android アプリの作成]」チュートリアルに基づいているので、先にそちらを完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##前提条件
 
@@ -31,9 +31,6 @@
 + アクティブな Google アカウント。[accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) で、Google アカウントにサインアップできます。
 
 + [Google Cloud Messaging のクライアント コンポーネント](http://components.xamarin.com/view/GCMClient/)。このコンポーネントは、チュートリアル中に追加します。
-
-+ [Xamarin.Android クイック スタート] チュートリアルの完了。
-
 
 ##<a name="create-hub"></a>通知ハブを作成する
 
@@ -77,10 +74,9 @@
 
 
 <!-- URLs. -->
-[Xamarin.Android クイック スタート]: app-service-mobile-xamarin-android-get-started.md
-
+[Xamarin.Android quickstart]: app-service-mobile-xamarin-android-get-started.md
+[Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
 [Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
-[Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

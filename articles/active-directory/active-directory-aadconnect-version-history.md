@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/15/2016"
+   ms.date="04/12/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -27,6 +27,14 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 - Azure AD Connect の[以前のバージョンから最新リリースにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法
 - 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 - [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.130.0
+リリース日: 2016 年 4 月
+
+**新機能:**
+
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に複数値の属性のサポートを追加しました。
+- アップグレードの対象として考慮する必要がある[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)に対して、詳細な構成バリエーションのサポートを追加しました。
 
 ## 1\.1.119.0
 リリース日: 2016 年 3
@@ -67,7 +75,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新しいプレビュー機能:**
 
-- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の動作の変更がサポートされるようになりました。
+- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)動作の変更のサポートを追加しました。
 
 **修正された問題:**
 
@@ -257,4 +265,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

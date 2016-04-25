@@ -30,21 +30,13 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 ## 前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-
-* [Visual Studio Community 2013] 以降。
-
-* [Xcode](https://go.microsoft.com/fwLink/?LinkID=266532) v7.0 以降と [Xamarin Studio](http://xamarin.com/download) がインストールされた Mac。
-
-* [Xamarin.Forms アプリの作成]のチュートリアルを完了していること。この記事では、そのチュートリアルで完成させたアプリケーションを使用します。
+* 「[Xamarin.Forms アプリの作成]」チュートリアルを完了していること。このチュートリアルには、他の前提条件も記載されています。この記事では、そのチュートリアルで完成させたアプリケーションを使用します。
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## ストレージ アカウントの作成
 
-1. [Azure ストレージ アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。 
+1. [Azure Storage アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。 
 
 2. Azure ポータルで、新しく作成したストレージ アカウントに移動し、**キー**のアイコンをクリックします。**プライマリ接続文字列**をコピーします。
 
@@ -480,7 +472,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 プラットフォーム固有のコード (ファイルをダウンロードし、カメラを使用して新しいイメージをキャプチャするためのコードも含める) を Android プロジェクトに追加します。
 
-このコードはXamarin.Forms [DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/) を使用して、実行時に正しいプラットフォーム固有のクラスをロードします。
+このコードは Xamarin.Forms [DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/) を使用して、実行時に正しいプラットフォーム固有のクラスをロードします。
 
 1. コンポーネント **Xamarin.Mobile** を Android プロジェクトに追加します。
 
@@ -717,12 +709,12 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 <!-- URLs. -->
 
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-[Xamarin.Forms アプリの作成]: ../app-service-mobile-xamarin-forms-get-started.md
+[Xamarin.Forms アプリの作成]: app-service-mobile-xamarin-forms-get-started.md
 [Xamarin.Forms DependencyService]: https://developer.xamarin.com/guides/xamarin-forms/dependency-service/
 [Microsoft.Azure.Mobile.Client.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.Files/
 [Microsoft.Azure.Mobile.Client.SQLiteStore]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
 [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage/storage-dotnet-shared-access-signature-part-1.md
-[Azure ストレージ アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Azure Storage アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

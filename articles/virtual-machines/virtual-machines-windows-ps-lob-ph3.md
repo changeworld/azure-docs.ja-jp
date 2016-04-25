@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する
@@ -180,7 +180,7 @@ SQL Server サービスには、クライアントがデータベース サー�
 
 SQL Server 仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-classic-sql-perf.md)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの 地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの 地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -259,4 +259,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 - [フェーズ 4](virtual-machines-windows-ps-lob-ph4.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -2,11 +2,10 @@
 	pageTitle="Linux を実行する仮想マシンでのソフトウェア RAID の構成 | Microsoft Azure" 
 	description="mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。" 
 	services="virtual-machines-linux" 
-	documentationCenter="" 
-	authors="szarkos" 
-	writer="szark" 
+	documentationCenter="na" 
+	authors="rickstercdn"  
 	manager="timlt" 
-	editor=""
+	editor="tysonn"
 	tag="azure-service-management,azure-resource-manager" />
 
 <tags 
@@ -16,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="03/25/2016" 
-	ms.author="szark"/>
+	ms.author="rclaus"/>
 
 
 
@@ -25,9 +24,7 @@
 
 
 ## データ ディスクをアタッチする
-2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](virtual-machines-windows-classic-attach-disk.md#attachempty)」をご覧ください。
-
->[AZURE.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンとクラウド サービスのサイズ)](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](virtual-machines-linux-add-disk.md)」をご覧ください。
 
 
 ## mdadm ユーティリティをインストールする
@@ -49,7 +46,7 @@
 ## ディスク パーティションを作成する
 この例では、/dev/sdc に 1 つのディスク パーティションを作成します。その後、新しいディスク パーティションに /dev/sdc1 という名前を付けます。
 
-- fdisk を使用してパーティションの作成を開始する
+1. fdisk を使用してパーティションの作成を開始する
 
 		# sudo fdisk /dev/sdc
 		Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -61,38 +58,37 @@
 				 switch off the mode (command 'c') and change display units to
 				 sectors (command 'u').
 
-- プロンプトが表示されたら N キーを押して、新しいパーティションを作成します。
+2. プロンプトが表示されたら N キーを押して、新しいパーティションを作成します。
 
 		Command (m for help): n
 
-- 次に、P キーを押して、プライマリ パーティションを作成します。
+3. 次に、P キーを押して、プライマリ パーティションを作成します。
 
 		Command action
 			e   extended
 			p   primary partition (1-4)
-		p
 
-- 1 キーを押して、パーティション番号 1 を選択します。
+4. 1 キーを押して、パーティション番号 1 を選択します。
 
 		Partition number (1-4): 1
 
-- 新しいパーティションの開始位置を選択するか、`<enter>` キーを押して既定の設定をそのまま使用します。既定では、ドライブの空き領域の先頭にパーティションが配置されます。
+5. 新しいパーティションの開始位置を選択するか、`<enter>` キーを押して既定の設定をそのまま使用します。既定では、ドライブの空き領域の先頭にパーティションが配置されます。
 
 		First cylinder (1-1305, default 1):
 		Using default value 1
 
-- パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。または、`<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
+6. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。または、`<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
 
 		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
 		Using default value 1305
 
-- 次に、パーティションの ID とタイプを変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更してください。
+7. 次に、パーティションの ID とタイプを変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更してください。
 
 		Command (m for help): t
 		Selected partition 1
 		Hex code (type L to list codes): fd
 
-- 最後に、パーティション テーブルをドライブに書き込み、fdisk を終了します。
+8. 最後に、パーティション テーブルをドライブに書き込み、fdisk を終了します。
 
 		Command (m for help): w
 		The partition table has been altered!
@@ -100,13 +96,10 @@
 
 ## RAID アレイを作成する
 
-1. 次の例では、3 つの個別のデータ ディスク (sdc1、sdd1、sde1) にある 3 つのパーティションを "ストライピング" (RAID レベル 0) にします。
+1. 次の例では、3 つの個別のデータ ディスク (sdc1、sdd1、sde1) にある 3 つのパーティションを "ストライピング" (RAID レベル 0) にします。このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを `mdadm` コマンドに追加してください。
 
 		# sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
 		  /dev/sdc1 /dev/sdd1 /dev/sde1
-
-この例では、このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを `mdadm` コマンドに追加してください。
-
 
 2. 新しい RAID デバイスにファイル システムを作成します。
 
@@ -118,7 +111,7 @@
 
 		# sudo mkfs -t ext3 /dev/md127
 
-3. **SLES 11 と openSUSE** - boot.md を有効にし、mdadm.conf を作成します
+	**SLES 11 と openSUSE** - boot.md を有効にし、mdadm.conf を作成します
 
 		# sudo -i chkconfig --add boot.md
 		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
@@ -178,6 +171,4 @@
 
 	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
- 
-
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

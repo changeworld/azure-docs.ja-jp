@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="04/07/2016"
    ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
@@ -115,7 +115,9 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
-* [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
+* [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
+* [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
+* [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-pig/hdi.checkmark.png
 
@@ -137,7 +139,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md#mapreduce-sdk
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[Powershell-install-configure]: ../powershell-install-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 
@@ -146,4 +148,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

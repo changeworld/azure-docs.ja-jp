@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="04/02/2016"
 	ms.author="dastrock"/>
 
 # Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
@@ -39,6 +39,7 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
 ## リファレンス
 これらのリンクは、プラットフォームの詳細を確認する上で役立ちます。
 
+- ビルド 2016: [Getting Started with Microsoft Identities: Enterprise Grade Sign In For Your Apps (Microsoft ID の概要: アプリへのエンタープライズ グレードのサインイン)](https://azure.microsoft.com/documentation/videos/build-2016-getting-started-with-microsoft-identities-enterprise-grade-sign-in-for-your-apps/)
 - [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
 - [v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)
 - [v2.0 トークンのリファレンス](active-directory-v2-tokens.md)
@@ -56,10 +57,4 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
   - [Android OAuth2 クライアント](https://github.com/wuman/android-oauth-client)
   - [Android OpenID Connect クライアント](https://github.com/kalemontes/OIDCAndroidLib)
 
-<!-- TODO: These articles
-- [ADAL Library Reference]()
-- [v2 Endpoint FAQs](active-directory-v2-faq.md)
-- Give us your thoughts on the preview using [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) - we want to hear them!  Use the phrase "AppModelv2:" in the title of your post so we can find it.
--->
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

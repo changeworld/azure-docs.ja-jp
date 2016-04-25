@@ -38,7 +38,7 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
         => issue(claim = c);
-    
+
 8. **[OK]** を 2 回クリックして、ダイアログ ボックスを完了します。
 
 追加の Azure Active Directory 証明書利用者信頼の認証クラス参照を構成する
@@ -47,7 +47,7 @@ Azure Active Directory Connect を使用して、AD FS をデプロイして Azu
 
 
   `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
-   
+
 ここで、<RPObjectName> は、Azure Active Directory 証明書利用者信頼オブジェクトの証明書利用者オブジェクト名です。通常、このオブジェクトは "Microsoft Office 365 ID プラットフォーム" という名前です。
 
 AD FS グローバル認証ポリシー
@@ -83,7 +83,7 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 以下のリンクを参照して、Windows 7 および Windows 8.1 のドメイン参加済みデバイスの自動デバイス登録を構成します。続行する前に、上記の前提条件が満たされているようにしてください。
 
-* [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+* [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 
 * [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
@@ -102,7 +102,7 @@ AD FS を使用したデバイス登録のデプロイに関する詳細につ�
 
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
-- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

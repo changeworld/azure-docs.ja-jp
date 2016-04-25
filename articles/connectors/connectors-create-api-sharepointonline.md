@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 SharePoint Connection Provider には、SharePoint リストを操作する API があります。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [SharePoint](../app-service-logic/app-service-logic-connector-SharePoint.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 SharePoint では、次の操作を実行できます。
 
@@ -701,4 +701,4 @@ TablesList の必須プロパティ:
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

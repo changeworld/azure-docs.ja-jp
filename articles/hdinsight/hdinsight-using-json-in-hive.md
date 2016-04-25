@@ -66,19 +66,19 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
 	DROP TABLE IF EXISTS StudentsRaw;
 	CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
-	
+
 	DROP TABLE IF EXISTS StudentsOneLine;
 	CREATE EXTERNAL TABLE StudentsOneLine
 	(
 	  json_body string
 	)
 	STORED AS TEXTFILE LOCATION '/json/students';
-	
+
 	INSERT OVERWRITE TABLE StudentsOneLine
-	SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON 
+	SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 	      FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
 	      GROUP BY INPUT__FILE__NAME;
-	
+
 	SELECT * FROM StudentsOneLine
 
 未加工の JSON ファイルは ****wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
@@ -100,16 +100,16 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 - GET\_JSON\_OBJECT UDF (ユーザー定義関数) を使用する
 - JSON\_TUPLE UDF を使用する
 - カスタム SerDe を使用する
-- Python またはその他の言語を使用して独自の UDF を作成する独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。 
+- Python またはその他の言語を使用して独自の UDF を作成する独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。
 
 ### GET\_JSON\_OBJECT UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。このメソッドは 2 つの引数を取ります。テーブル名とメソッド名で、解析することが必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。この UDF の動作を確認する例を見てみましょう。
 
 各学生の姓と名を取得します。
 
-	SELECT 
-	  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'), 
-	  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName') 
+	SELECT
+	  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
+	  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
 	FROM StudentsOneLine;
 
 このクエリをコンソール ウィンドウで実行した際の出力を次に示します。
@@ -128,7 +128,7 @@ get-json\_object UDF にはいくつかの制限があります。
 
 Hive に備わっているもう 1 つの UDF に [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、[get\_ json \_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
-    SELECT q1.StudentId, q1.Grade 
+    SELECT q1.StudentId, q1.Grade
       FROM StudentsOneLine jt
       LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
         AS StudentId, Grade;
@@ -148,7 +148,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 1. [Java SE Development Kit 7u55 JDK 1.7.0\_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR) をインストールします。HDInsight の Windows デプロイメントを使用する場合は、JDK の Windows X64 バージョンを選択します。
 
-	>[AZURE.WARNING]JDK 1.8 はこの SerDe では機能しません。
+	>[AZURE.WARNING] JDK 1.8 はこの SerDe では機能しません。
 
 	インストールが完了したら、新しいユーザーの環境変数を追加します。
 
@@ -160,7 +160,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
 2. [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip) をインストールします。
 
-	[コントロール パネル] からご使用のアカウントの環境変数の [システム変数の編集] に移動して、パスの bin フォルダーを追加します。次のスクリーンショットに、この方法を示します。
+	[コントロール パネル] からご使用のアカウントの環境変数の [システム環境変数の編集] に移動して、パスに bin フォルダーを追加します。次のスクリーンショットに、この方法を示します。
 
 	![Maven のセットアップ][image-hdi-hivejson-maven]
 
@@ -171,7 +171,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 4: このパッケージをダウンロードしたフォルダーに移動して、「mvn package」と入力します。これにより必要な jar ファイルが作成されるので、クラスターにコピーします。
 
 5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。通常は、Hive バイナリ フォルダーである C:\\apps\\dist\\hive-0.13.0.2.1.11.0-2316\\bin などに配置します。
- 
+
 6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。この例では jar は C:\\apps\\dist\\hive-0.13.x\\bin フォルダーにあるので、次に示す名前の jar を直接追加できます。
 
     add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
@@ -184,7 +184,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 
     DROP TABLE json_table;
     CREATE EXTERNAL TABLE json_table (
-      StudentId string, 
+      StudentId string,
       Grade int,
       StudentDetails array<struct<
           FirstName:string,
@@ -216,7 +216,7 @@ JSON ドキュメントのスコアの合計を計算するには、次のよう
     SELECT SUM(scores)
     FROM json_table jt
       lateral view explode(jt.StudentClassCollection.Score) collection as scores;
-       
+
 前述のクエリは [lateral view explode](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) UDF を使用してスコアの配列を展開し、合計を計算できます。
 
 Hive コンソールの出力を次に示します。
@@ -224,7 +224,7 @@ Hive コンソールの出力を次に示します。
 ![SerDe クエリ 2][image-hdi-hivejson-serde_query2]
 
 特定の学生のスコアが 80 点を超えている科目を検索するには、次のようにします。SELECT jt.StudentClassCollection.ClassId FROM json\_table jt lateral view explode(jt.StudentClassCollection.Score) collection as score where score > 80;
-      
+
 上記のクエリにより、Hive 配列が戻ります。文字列が返される get\_json\_object とは異なります。
 
 ![SerDe クエリ 3][image-hdi-hivejson-serde_query3]
@@ -244,7 +244,7 @@ Hive コンソールの出力を次に示します。
 - [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)
 - [HDInsight での Hive を使用したフライトの遅延データの分析](hdinsight-analyze-flight-delay-data.md)
 - [HDInsight での Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)
-- [DocumentDB と HDInsight を使用した Hadoop ジョブの実行](documentdb-run-hadoop-with-hdinsight.md)
+- [DocumentDB と HDInsight を使用した Hadoop ジョブの実行](../documentdb/documentdb-run-hadoop-with-hdinsight.md)
 
 [hdinsight-python]: hdinsight-python.md
 
@@ -259,6 +259,5 @@ Hive コンソールの出力を次に示します。
 [image-hdi-hivejson-serde_query2]: ./media/hdinsight-using-json-in-hive/serde_query2.png
 [image-hdi-hivejson-serde_query3]: ./media/hdinsight-using-json-in-hive/serde_query3.png
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
- 
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

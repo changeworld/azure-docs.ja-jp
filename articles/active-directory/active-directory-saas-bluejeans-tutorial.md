@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="チュートリアル: Azure AD と BlueJeans の統合 | Microsoft Azure" 
+    pageTitle="チュートリアル: Azure Active Directory と BlueJeans の統合 | Microsoft Azure" 
     description="Azure Active Directory で BlueJeans を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="04/06/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure AD と BlueJeans の統合
@@ -49,7 +49,7 @@
 
 4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-bluejeans-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-bluejeans-tutorial/IC749321.png "アプリケーションの追加")
 
 5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
@@ -70,15 +70,15 @@
 
 1.  Azure AD ポータルの **BlueJeans** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "シングル サインオンの構成")
 
 2.  **[ユーザーの BlueJeans へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785864.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[BlueJeans サインオン URL]** ボックスに、"*https://company.BlueJeans.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリの URL の構成]** ページで、**[BlueJeans サインオン URL]** ボックスに、"**https://company.BlueJeans.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "アプリケーション URL の構成")
 
 4.  **[BlueJeans でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -110,9 +110,9 @@
 
     ![変更を保存](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "変更を保存")
 
-    1.  **[ユーザー ID]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
-    2.  **[電子メール]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
-    3.  **[変更を保存]** をクリックします。
+    1.  **[ユーザー ID]** ボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
+2.  **[電子メール]** ボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
+3.  **[変更を保存]** をクリックします。
 
 10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -129,7 +129,7 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
 
     ![管理者](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "管理者")
 
-    >[AZURE.IMPORTANT]**[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
+    >[AZURE.IMPORTANT] **[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
 
 3.  **[ユーザーの追加]** セクションで、次の手順を実行します。
 
@@ -138,7 +138,7 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
     1.  対応するボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**電子メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
     2.  **[ユーザーの追加]** をクリックします。
 
->[AZURE.NOTE]BlueJeans から提供されている他の BlueJeans ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] BlueJeans から提供されている他の BlueJeans ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -154,8 +154,8 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-bluejeans-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-bluejeans-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

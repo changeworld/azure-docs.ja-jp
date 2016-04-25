@@ -17,7 +17,7 @@
 
 # Azure クラウド サービスおよび仮想マシン用の診断の構成
 
-Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用すると Azure 診断が構成しやすくなります。Azure 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。Azure の診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](/app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用すると Azure 診断が構成しやすくなります。Azure 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。Azure の診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
 このトピックでは、Azure クラウド サービスをデプロイする前と後、さらに Azure 仮想マシンを対象に、Visual Studio で Azure 診断を有効にして構成する方法を示します。また、収集する診断情報の種類を選択する方法と、収集された情報を表示する方法についても取り上げます。
 
@@ -169,7 +169,7 @@ Azure Virtual Machines の診断データを Visual Studio で収集すること
 
   ![Application Logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
-  アプリケーション ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
+  アプリケーション ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
 ### Windows イベント ログ
 
@@ -221,7 +221,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
   ![ETW logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766025.png)
 
-  ASP.NET では、[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) 名前空間のクラスによって ETW フレームワークがサポートされています。[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) は、Microsoft.WindowsAzure.Diagnostics 名前空間を通じて、Azure 環境のログ記録フレームワークとして使用することができます。Microsoft.WindowsAzure.Diagnostics は、標準の [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) クラスを継承して拡張する名前空間です。詳細については、[Microsoft Azure でログ記録とトレースを制御する方法](https://msdn.microsoft.com/magazine/ff714589.aspx)と [Azure のクラウド サービスおよび仮想マシンの診断機能](/cloud-services/cloud-services-dotnet-diagnostics.md)に関するページを参照してください。
+  ASP.NET では、[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) 名前空間のクラスによって ETW フレームワークがサポートされています。[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) は、Microsoft.WindowsAzure.Diagnostics 名前空間を通じて、Azure 環境のログ記録フレームワークとして使用することができます。Microsoft.WindowsAzure.Diagnostics は、標準の [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) クラスを継承して拡張する名前空間です。詳細については、[Microsoft Azure でログ記録とトレースを制御する方法](https://msdn.microsoft.com/magazine/ff714589.aspx)と [Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページを参照してください。
 
 ### クラッシュ ダンプ
 
@@ -355,6 +355,6 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 ## 次のステップ
 
-Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
+Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

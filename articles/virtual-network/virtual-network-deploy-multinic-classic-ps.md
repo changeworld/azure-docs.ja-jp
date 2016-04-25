@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="クラシック デプロイメント モデルで PowerShell を使用して複数 NIC VM をデプロイする | Microsoft Azure"
    description="クラシック デプロイメント モデルで PowerShell を使用して複数の NIC VM をデプロイする方法を説明します"
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-この時点では、単一の NIC を含む VM と複数の NIC を含む VM を同じクラウド サービス内で保持できないため、バックエンド サーバーを特定のクラウド サービスに実装したら、シナリオ内の他のすべてのコンポーネントは別のクラウド サービスに実装します。以下の手順では、メイン リソースに *IaaSStory* という名前のクラウド サービスを使用し、バックエンド サーバーに *IaaSStory-BackEnd* を使用します。
+現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じクラウド サービスに含めることはできません。したがって、このシナリオでは、バックエンド サーバーは、他のすべてのコンポーネントと異なるクラウド サービスで実装する必要があります。以下の手順では、メイン リソースに *IaaSStory* という名前のクラウド サービスを使用し、バックエンド サーバーに *IaaSStory-BackEnd* を使用します。
 
 ## 前提条件
 
@@ -41,7 +41,7 @@
 
 - **バックエンド サブネット**。データベース サーバーは、トラフィックを分離するために、別のサブネットに含まれます。次のスクリプトでは、このサブネットが *WTestVnet* という名前の Vnet に存在する必要があります。
 - **データ ディスクのストレージ アカウント**。パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
-- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。 
+- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
 
 ### 手順 1 - スクリプトの開始
 
@@ -129,7 +129,7 @@
 		    Add-AzureNetworkInterfaceConfig -Name ("RemoteAccessNIC"+$suffixNumber) `
 		        -SubnetName $backendSubnetName `
 		        -StaticVNetIPAddress ($ipAddressPrefix+(53+$suffixNumber)) `
-		        -VM $vmConfig 
+		        -VM $vmConfig
 
 6. 各 VM のデータ ディスクを作成します。
 
@@ -138,7 +138,7 @@
 		        -DiskSizeInGB $diskSize `
 		        -DiskLabel $dataDisk1Name `
 		        -LUN 0       
-		
+
 		    $dataDisk2Name = $vmName + "-" + $dataDiskSuffix + "-2"   
 		    Add-AzureDataDisk -CreateNew -VM $vmConfig `
 		        -DiskSizeInGB $diskSize `
@@ -163,12 +163,12 @@
 		--------------------    -----------                          ---------------
 		New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
 		New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-		                                                                            
+
 		WARNING: No deployment found in service: 'IaaSStory-Backend'.
 
 2. 資格情報プロンプトに必要な情報を入力して、**[OK]** をクリックします。次の出力が表示されます。
 
 		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded 
+		New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -43,7 +43,7 @@
 	2. **[可用性セット]** を「未構成」のままにします。
 	3. この時点では**エンドポイント**を追加しないでください。
 
-9.	[[リソース グループ]](../resource-group-portal.md) を選択または作成
+9.	[[リソース グループ]](../azure-portal/resource-group-portal.md) を選択または作成
 
 10. **[サブスクリプション]** を選択
 
@@ -187,4 +187,4 @@
 
 -	[Azure の Oracle 仮想マシン イメージ](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="04/06/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -29,27 +29,18 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 * [HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk-v1.md)
 
-##<a id="prereq"></a>前提条件
+## 前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベースのいずれか)
+* Azure HDInsight (HDInsight の Hadoop) クラスター (Windows または Linux ベース)
+* Visual Studio 2012/2013/2015
 
-* Visual Studio 2012 または 2013 または 2015
-
-##<a id="certificate"></a>管理証明書の作成
-
-Azure HDInsight にアプリケーションを認証するには、自己署名証明書を作成して開発ワークステーションにインストールすると同時に、それを Azure サブスクリプションにもアップロードする必要があります。
-
-この方法に関する手順については、「[自己署名証明書の作成](http://go.microsoft.com/fwlink/?LinkId=511138)」をご覧ください。
-
-> [AZURE.NOTE] 後で使用するため、証明書にはわかりやすい名前を付けてください。
-
-##<a id="subscriptionid"></a>サブスクリプション ID の検索
+## サブスクリプション ID の検索
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. [Azure ポータル](preview-portal) にアクセスします。
+1. [Azure ポータル][preview-portal]にアクセスします。
 
 2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
 
@@ -57,7 +48,12 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 後で使用するため、サブスクリプション ID を書き留めます。
 
-##<a id="create"></a>アプリケーションを作成する
+## アプリケーションを作成する
+
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
+
+次の例では、ユーザーの対話型認証を使用します。非対話型認証を使用する場合は、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
+
 
 1. Visual Studio 2012 または 2013 を開く
 2. **[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。
@@ -85,66 +81,122 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
 6. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
 
-		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
+        Install-Package Microsoft.Azure.Common.Authentication -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
 
 7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。既存のコードを次のコードに置き換えます。
 
         using System;
+        using System.Collections.Generic;
+        using System.Security;
+        using System.Threading;
+        using Microsoft.Azure;
+        using Microsoft.Azure.Common.Authentication;
+        using Microsoft.Azure.Common.Authentication.Factories;
+        using Microsoft.Azure.Common.Authentication.Models;
+        using Microsoft.Azure.Management.Resources;
+        using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
         using Hyak.Common;
-        
-        namespace HDInsightSubmitPigJobsDotNet
+
+        namespace SubmitHDInsightJobDotNet
         {
             class Program
             {
+                private static HDInsightManagementClient _hdiManagementClient;
+                private static HDInsightJobManagementClient _hdiJobManagementClient;
+
+                private static Guid SubscriptionId = new Guid("<Your Subscription ID>");
+                private const string ResourceGroupName = "<Your Resource Group Name>";
+
+                private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
+                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
+                private const string ExistingClusterUsername = "<Cluster Username>";
+                private const string ExistingClusterPassword = "<Cluster User Password>";
+
+                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
+                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
+                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
+
                 static void Main(string[] args)
                 {
-                    var ExistingClusterName = "<HDInsightClusterName>";
-                    var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
-                    var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
-                    var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
-        
-                    // The Pig Latin statements to run
-                    string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
-                        "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
-                        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
-                        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
-                        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
-                        "RESULT = order FREQUENCIES by COUNT desc;" +
-                        "DUMP RESULT;";
-        
-        
-                    HDInsightJobManagementClient _hdiJobManagementClient;
+                    System.Console.WriteLine("The application is running ...");
+
+                    var tokenCreds = GetTokenCloudCredentials();
+                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+
+                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+                    var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+
+                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
+
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-        
-                    // Define the Pig job
-                    var parameters = new PigJobSubmissionParameters()
+
+                    SubmitPigJob();
+
+                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.ReadLine();
+                }
+
+                public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
+                {
+                    var authFactory = new AuthenticationFactory();
+
+                    var account = new AzureAccount { Type = AzureAccount.AccountType.User };
+
+                    if (username != null && password != null)
+                        account.Id = username;
+
+                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+
+                    var accessToken =
+                        authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
+                            .AccessToken;
+
+                    return new TokenCloudCredentials(accessToken);
+                }
+
+                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(TokenCloudCredentials creds, Guid subId)
+                {
+                    return new TokenCloudCredentials(subId.ToString(), creds.Token);
+                }
+
+
+                private static void SubmitPigJob()
+                {
+                    var parameters = new PigJobSubmissionParameters
                     {
-                        Query = queryString,
+                        Query = @"LOGS = LOAD 'wasb:///example/data/sample.log';
+                            LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+                            FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+                            GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+                            FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+                            RESULT = order FREQUENCIES by COUNT desc;
+                            DUMP RESULT;"
                     };
-        
+
                     System.Console.WriteLine("Submitting the Pig job to the cluster...");
                     var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
                     System.Console.WriteLine("Validating that the response is as expected...");
                     System.Console.WriteLine("Response status code is " + response.StatusCode);
                     System.Console.WriteLine("Validating the response object...");
                     System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-                    Console.WriteLine("Press ENTER to continue ...");
-                    Console.ReadLine();
                 }
             }
         }
 
+
 7. **F5** キーを押してアプリケーションを起動します。
 8. **ENTER** キーを押してアプリケーションを閉じます。
 
-##<a id="summary"></a>概要
+## まとめ
 
 このように、.NET SDK for Hadoop では Pig ジョブを HDInsight クラスターに送信する .NET アプリケーションを作成して、ジョブのステータスを監視し、出力を取得できます。
 
-##<a id="nextsteps"></a>次のステップ
+## 次のステップ
 
 HDInsight での Pig に関する全般的な情報
 
@@ -157,4 +209,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

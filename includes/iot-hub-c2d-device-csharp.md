@@ -33,8 +33,8 @@
 > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。実稼働のコードでは、MSDN 記事 (一時的な障害処理) で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

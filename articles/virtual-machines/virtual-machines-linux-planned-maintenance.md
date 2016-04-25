@@ -19,7 +19,7 @@
 
 # Azure での Linux 仮想マシンに対する計画的なメンテナンス
 
-Azure の計画的なメンテナンスの概要と、それが Linux 仮想マシンの可用性に及ぼす影響について説明します。[Windows 仮想マシンの計画的なメンテナンス](virtual-machines-windows-planned-maintenance.md)を参照することもできます。
+Azure の計画的なメンテナンスの概要と、それが Linux 仮想マシンの可用性に及ぼす影響について説明します。この記事は、[Windows 仮想マシン](virtual-machines-windows-planned-maintenance.md)にも利用できます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -33,4 +33,4 @@ Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシ�
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

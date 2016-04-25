@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM に関してよく寄せられる質問 | Microsoft Azure"
-	description="クラシック デプロイ モデルで作成された Azure 仮想マシンについてよく寄せられる質問への回答を示します。"
+	description="クラシック デプロイ モデルで作成された Azure 仮想マシンについてよく寄せられる質問への回答。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-faq](../../includes/virtual-machines-common-classic-faq.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

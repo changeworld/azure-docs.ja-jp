@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="04/07/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -36,7 +36,7 @@ Azure Multi-Factor Auth プロバイダーを介して MFA 管理ポータルに
 [信頼できる IP](#trusted-ips)|信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの多要素認証をバイパスできるようにする多要素認証の機能です。|多要素認証の対象外となる IP アドレスの構成および設定	
 [アプリ パスワード](#app-passwords)|アプリ パスワードは、MFA (multi-factor authentication: 多要素認証) を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。|アプリ パスワードに関する情報
 [記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の記憶](#remember-multi-factor-authentication-for-devices-users-trust)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。|この機能の有効化と日数の設定に関する情報
-[選択可能な検証方法 (パブリック プレビュー)](#selectable-verification-methods-public-preview)|ユーザーが使用できる認証方法を選択できます。|電話やテキスト メッセージなど、特定の認証方法の有効化または無効化に関する情報
+[選択可能な検証方法](#selectable-verification-methods)|ユーザーが使用できる認証方法を選択できます。|電話やテキスト メッセージなど、特定の認証方法の有効化または無効化に関する情報
 
 
 
@@ -355,7 +355,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 10. [閉じる] をクリックします。
 
 
-## 選択可能な検証方法 (パブリック プレビュー)
+## 選択可能な検証方法
 Azure Multi-Factor Authentication を使用しているときにユーザーが使用できる認証方法を選択できるようになりました。この機能は、以前はオンプレミス サーバー バージョンでのみ使用できました。次の表では、ユーザーに対して有効または無効にできるさまざまな認証方法の概要を示します。
 
 メソッド|説明
@@ -376,4 +376,4 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

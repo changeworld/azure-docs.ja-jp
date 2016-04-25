@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure API Management でユーザー アカウントを管理する方法" 
+	pageTitle="Azure API Management でユーザー アカウントを管理する方法 | Microsoft Azure" 
 	description="Azure API Management でユーザーを作成または招待する方法について説明します。" 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/12/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でユーザー アカウントを管理する方法
 
-API Management では、開発者は、API Management を使用して公開された API のユーザーになります。このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。
+API Management では、開発者は、API Management を使用して公開された API のユーザーになります。このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)」リファレンスの[ユーザー エンティティ](https://msdn.microsoft.com/library/azure/dn776330.aspx)に関するドキュメントを参照してください。
 
 ## <a name="create-developer"> </a>新しい開発者の作成
 
@@ -60,9 +60,25 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="block-developer"> </a> 開発者アカウントの非アクティブ化および再アクティブ化
 
-既定では、新しく作成または招待された開発者アカウントは**アクティブ**になります。開発者アカウントを非アクティブ化するには、**[ブロック]** をクリックします。ブロックされている開発者アカウントを再アクティブ化するには、**[アクティブ化]** をクリックします。ブロックされている開発者アカウントは、開発者ポータルにアクセスすることも、API を呼び出すこともできません。
+既定では、新しく作成または招待された開発者アカウントは**アクティブ**になります。開発者アカウントを非アクティブ化するには、**[ブロック]** をクリックします。ブロックされている開発者アカウントを再アクティブ化するには、**[アクティブ化]** をクリックします。ブロックされている開発者アカウントは、開発者ポータルにアクセスすることも、API を呼び出すこともできません。ユーザー アカウントを削除するには、**[削除]** をクリックします。
 
 ![開発者をブロックする][api-management-new-developer]
+
+## ユーザーのパスワードのリセット
+
+ユーザー アカウントのパスワードをリセットするには、アカウント名をクリックします。
+
+![パスワードのリセット][api-management-view-developer]
+
+**[パスワードのリセット]** をクリックして、パスワードをリセットするためのリンクをユーザーに送信します。
+
+![パスワードのリセット][api-management-reset-password]
+
+プログラムによってユーザー アカウントを操作するには、「[API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)」リファレンスの[ユーザー エンティティ](https://msdn.microsoft.com/library/azure/dn776330.aspx)に関するドキュメントを参照してください。ユーザー アカウントのパスワードを特定の値にリセットするには、[ユーザーの更新](https://msdn.microsoft.com/library/azure/dn776330.aspx#UpdateUser)操作を使用して目的のパスワードを指定します。
+
+## 保留中の検証
+
+![Pending verification][api-management-pending-verification]
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -76,7 +92,10 @@ API Management では、開発者は、API Management を使用して公開さ�
 [api-management-new-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-new-developer.png
 [api-management-invite-developer-window]: ./media/api-management-howto-create-or-invite-developers/api-management-invite-developer-window.png
 [api-management-invite-developer-confirmation]: ./media/api-management-howto-create-or-invite-developers/api-management-invite-developer-confirmation.png
-[api-management-]: ./media/api-management-howto-create-or-invite-developers/api-management-.png
+[api-management-pending-verification]: ./media/api-management-howto-create-or-invite-developers/api-management-pending-verification.png
+[api-management-view-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-view-developer.png
+[api-management-reset-password]: ./media/api-management-howto-create-or-invite-developers/api-management-reset-password.png
+: ./media/api-management-howto-create-or-invite-developers/.png
 
 
 
@@ -91,4 +110,4 @@ API Management では、開発者は、API Management を使用して公開さ�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [電子メール テンプレートの構成]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

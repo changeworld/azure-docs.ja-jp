@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="ユニバーサル Windows アプリからの Azure BLOB ストレージへのイメージのアップロード | Microsoft Azure" 
-	description="JavaScript バックエンド モバイル サービスを使用してイメージを Azure BLOB ストレージにアップロードし、そのイメージにユニバーサル Windows アプリからアクセスする方法を説明します。" 
-	services="mobile-services,storage" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="ユニバーサル Windows アプリからの Azure BLOB ストレージへのイメージのアップロード | Microsoft Azure"
+	description="JavaScript バックエンド モバイル サービスを使用してイメージを Azure BLOB ストレージにアップロードし、そのイメージにユニバーサル Windows アプリからアクセスする方法を説明します。"
+	services="mobile-services,storage"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="11/16/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="11/16/2015"
 	ms.author="glenga"/>
 
 # Mobile Services を使用した Azure Blob ストレージへのイメージのアップロード
 
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
-##概要 
+##概要
 
 このトピックでは、Azure モバイル サービスを使用して、ユーザーが生成したイメージをアプリケーションが Azure ストレージにアップロードおよび保存する方法を紹介します。モバイル サービスでは、SQL データベースを使用してデータを保存します。ただし、BLOB (Binary Large Object) データは、Azure BLOB ストレージ サービスに、より効率的に保存されます。
 
@@ -33,7 +33,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2013 Update 3 以降のバージョン
-+ [Azure ストレージ アカウント](../storage-create-storage-account.md)
++ [Azure ストレージ アカウント](../storage/storage-create-storage-account.md)
 + コンピューターに接続された、カメラなどのイメージ キャプチャ デバイス
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
@@ -55,12 +55,12 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 + [Mobile Services のサーバー スクリプト リファレンス]
 
     サーバー側のタスクを実行するサーバー スクリプトの使用および他の Azure コンポーネントおよび外部リソースとの統合に関するトピックを参照してください。
- 
+
 + [Mobile Services .NET の使用方法の概念リファレンス]
 
     .NET で Mobile Services を使用する方法について説明します
-  
- 
+
+
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
 [Update the client app to capture images]: #add-select-images
@@ -83,6 +83,5 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0413_2016-->

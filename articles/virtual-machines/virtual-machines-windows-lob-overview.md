@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
@@ -91,6 +91,6 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 ## 次のステップ
 
-このワークロードの構成を開始するには、「[フェーズ 1: Azure を構成する](virtual-machines-windows-ps-lob-ph1.md)」に進んでください。
+- [フェーズ 1](virtual-machines-windows-ps-lob-ph1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

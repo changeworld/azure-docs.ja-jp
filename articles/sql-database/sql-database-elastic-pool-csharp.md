@@ -5,7 +5,7 @@
     keywords="c# データベース, sql の開発"
     documentationCenter=""
     authors="stevestein"
-    manager="jeffreyg"
+    manager="jhubbard"
     editor=""/>
 
 <tags
@@ -285,7 +285,7 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 
 ## 既存のデータベースをエラスティック データベース プールに移動
 
-*プールを作成したら、Transact-SQL を使用して既存のデータベースをプールの内外に移動することもできます。詳細については、[エラスティック データベース プールのリファレンスの「Transact-SQL」](sql-database-elastic-pool-reference.md#Transact-SQL)を参照してください。*
+プールを作成したら、Transact-SQL を使用して既存のデータベースをプールの内外に移動することもできます。詳細については、「[Transact-SQL を使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-tsql.md)」をご覧ください。*
 
 次の例では、既存の Azure SQL Database がプールに移動されます。
 
@@ -576,4 +576,4 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

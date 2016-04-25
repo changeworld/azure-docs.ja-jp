@@ -3,9 +3,9 @@
 	description="Azure SQL Database を管理するためのツールとオプションを比較します。"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
-	editor="jeffreyg"/>
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
 	ms.service="sql-database"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
-	ms.author="jeffreyg"/>
+	ms.date="04/04/2016"
+	ms.author="sstein"/>
 
 # 概要: SQL Database の管理ツール
 
@@ -36,4 +36,12 @@ PowerShell などのコマンド ライン ツールを使って、データベ�
 
 コマンド ライン ツールを使った Azure SQL Database の管理の詳細については、「[PowerShell を使用した SQL Database の管理](sql-database-command-line-tools.md)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+## Elastic Database ツール
+エラスティック データベース ツールを使用して、次の操作を行います。
+
+* [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)を使用して、一連のデータベースに対して T-SQL スクリプトを実行する
+* [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)で、マルチテナント モデル データベースをシングルテナント モデルに移動する
+* [エラスティック スケール クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して、シングルテナント モデルまたはマルチテナント モデルでデータベースを管理する。
+ 
+
+<!---HONumber=AcomDC_0413_2016-->

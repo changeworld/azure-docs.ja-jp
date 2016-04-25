@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="テンプレートを使用して ARM モードで NSG を作成する方法 | Microsoft Azure"
    description="テンプレートを使用して ARM で NSG を作成してデプロイする方法について"
    services="virtual-network"
@@ -8,7 +8,7 @@
    editor="tysonn"
    tags="azure-resource-manager"
 />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -98,26 +98,26 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 [AZURE.INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
 
-1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
 3. テンプレートを使用してリソース グループを作成するには、**`New-AzureRmResourceGroup`** コマンドレットを実行します。
 
 		New-AzureRmResourceGroup -Name TestRG -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' `
-		    -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'	
+		    -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
 
 	予想される出力:
 
 		ResourceGroupName : TestRG
 		Location          : westus
 		ProvisioningState : Succeeded
-		Tags              : 
-		Permissions       : 
+		Tags              :
+		Permissions       :
 		                    Actions  NotActions
 		                    =======  ==========
 		                    *                  
-		                    
-		Resources         : 
+
+		Resources         :
 		                    Name                Type                                     Location
 		                    ==================  =======================================  ========
 		                    sqlAvSet            Microsoft.Compute/availabilitySets       westus  
@@ -139,14 +139,14 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                    TestVNet            Microsoft.Network/virtualNetworks        westus  
 		                    testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
 		                    testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
-		                    
+
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
 ## Azure CLI を使用して ARM テンプレートをデプロイする
 
 Azure CLI を使用して ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**`azure config mode`** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -181,4 +181,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
 	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

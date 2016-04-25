@@ -4,8 +4,8 @@
    services="sql-database"
    documentationCenter=""
    authors="tmullaney"
-   manager="jeffreyg"
-   editor="jeffreyg"/>
+   manager="jhubbard"
+   editor=""/>
 
 <tags
    ms.service="sql-database"
@@ -77,7 +77,7 @@ ALTER ROLE db_datawriter ADD MEMBER ApplicationUser; -- allows ApplicationUser t
 * [データのマスキング](sql-database-dynamic-data-masking-get-started.md)を使用すると、機密データの公開を制限できます。
 * [ストアド プロシージャ](https://msdn.microsoft.com/library/ms190782)を使用すると、データベースで実行できるアクションを制限できます。
 
-Azure クラシック ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure ポータルでのロール ベースのアクセス制御](../role-based-access-control-configure.md)」を参照してください。
+Azure クラシック ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure ポータルでのロール ベースのアクセス制御](../active-directory./role-based-access-control-configure.md)」を参照してください。
 
 
 ## 暗号化
@@ -106,4 +106,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

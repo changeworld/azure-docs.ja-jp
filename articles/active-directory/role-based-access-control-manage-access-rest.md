@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # REST API を使用したロールベースのアクセス制御の管理
@@ -23,13 +23,16 @@
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 - [REST API](role-based-access-control-manage-access-rest.md)
 
+Azure ポータルと Azure Resource Manager API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
+
+
 ## ロールの割り当てをすべて一覧表示する
 
 指定されたスコープとサブスコープにあるロールの割り当てをすべて一覧表示します。
 
 ロールの割り当てを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **GET** メソッドを使用します。
 
@@ -58,7 +61,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -91,7 +94,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ロールの割り当てに関する情報を取得するには、`Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **GET** メソッドを使用します。
 
@@ -111,7 +114,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -139,7 +142,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ロールの割り当てを作成するには、`Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **PUT** メソッドを使用します。
 
@@ -204,7 +207,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ロールの割り当てを削除するには、`Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **DELETE** メソッドを使用します。
 
@@ -224,7 +227,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -252,7 +255,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ロールを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **GET** メソッドを使用します。
 
@@ -270,7 +273,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
-*{filter}* は、ロールの一覧をフィルター処理するために適用する条件を指定します。次の条件がサポートされます。
+*{filter}* には、ロールの一覧をフィルター処理するために適用する条件を指定します。次の条件がサポートされます。
 
 | 条件 | *{Filter}* | *Views\\\Home\\\AllDates.cshtml* |
 |-----------|------------|---------|
@@ -279,7 +282,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -346,7 +349,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ロールに関する情報を取得するには、`Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **GET** メソッドを使用します。
 
@@ -364,7 +367,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{role-definition-id}* は、ロールの定義の GUID 識別子に置き換えます。*{api-version}* は 2015-07-01 に置き換えます。
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -430,7 +433,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 カスタム ロールを作成するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **PUT** メソッドを使用します。
 
@@ -540,7 +543,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 カスタム ロールに変更を加えるには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **PUT** メソッドを使用します。
 
@@ -650,7 +653,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 カスタム ロールを削除するには、対応するすべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### Request
+### 要求
 
 次の URI で **DELETE** メソッドを使用します。
 
@@ -670,7 +673,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 *{api-version}* は 2015-07-01 に置き換えます。
 
-### Response
+### 応答
 
 状態コード: 200
 
@@ -711,4 +714,4 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

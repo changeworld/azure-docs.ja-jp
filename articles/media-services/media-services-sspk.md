@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016"  
+	ms.date="03/11/2016"  
 	ms.author="xpouyat"/>
 
 #Licensing Microsoft® Smooth Streaming Client Porting Kit
@@ -93,6 +93,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - AVC Multimedia Software Co., Ltd.
 - EchoStar Purchasing Corporation
 - Enseo, Inc.
+- Fluendo S.A.
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
 - HANDAN BroadInfoCom Co., Ltd.
 - Infomir GMBH
@@ -106,6 +107,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Research In Motion Limited
 - Saffron Digital Limited
 - Sichuan Changhong Electric Co., Ltd
+- SoftAtHome
 - Tatung Technology Inc.
 - Vestel Elektronik Sanayi ve Ticaret A.S.
 - VisualOn, Inc.
@@ -127,6 +129,8 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - EchoStar Purchasing Corporation
 - Enseo, Inc.
 - Filmflex Movies Limited
+- Fluendo S.A.
+- Gibson Innovations Limited
 - Guangdong OPPO Mobile Telecommunications Corp., Ltd.
 - HANDAN BroadInfoCom Co., Ltd.
 - Hisense International Co., Ltd
@@ -154,7 +158,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Virgin Media Limited
 - VIZIO, Inc.
 - Wistron Corporation
-- WOOX Innovations Limited
 - ZTE Corporation
 
 ##Media Services のラーニング パス
@@ -165,4 +168,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -16,21 +16,21 @@
 	ms.date="02/09/2016"
 	ms.author="tarcher"/>
 
-# 特定の DevTest ラボ ポリシーにユーザーのアクセス許可を付与
+# 特定の DevTest ラボ ポリシーにユーザーのアクセス許可を付与する
 
 ## 概要
 
-この記事では、PowerShell を使用して、特定の Azure DevTest ラボ ポリシーにユーザーのアクセス許可を付与する方法を説明します。このように、アクセス許可は、各ユーザーのニーズに基づいて適用できます。たとえば、特定のユーザーに、VM ポリシー設定は変更できるがコスト ポリシーは変更できない能力を付与することができます。
+この記事では、PowerShell を使用して、特定の Azure DevTest ラボ ポリシーにユーザーのアクセス許可を付与する方法を説明します。そうすることで、アクセス許可を各ユーザーのニーズに基づいて適用できます。たとえば、特定のユーザーに、VM ポリシー設定は変更できるがコスト ポリシーは変更できない能力を付与することができます。
 
 ## リソースとしてのポリシー
 
-[Azure のロールベースのアクセス制御](/role-based-access-control-configure.md)に関する記事で説明されているように、RBAC を使用すると、Azure のリソースのアクセスを詳細に管理することができます。RBAC を使用して、開発チーム内で職務を分離し、職務に必要なアクセス権のみをユーザーに付与します。
+「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」の記事で説明されているように、RBAC を使用すると、Azure のリソースのアクセスをきめ細かく管理できます。RBAC を使用して、開発チーム内で職務を分離し、職務に必要なアクセス権のみをユーザーに付与します。
 
-DevTest ラボでは、ポリシーはリソースの種類の 1 つで、RBAC の操作を可能にするものです **Microsoft.DevTestLab/labs/policySets/policies/**。各 DevTest ラボ ポリシーはこの種類のポリシー リソースのリソースであり、RBAC のロールにスコープとして割り当てることができます。
+DevTest ラボでは、ポリシーはリソースの種類の 1 つで、RBAC の操作 **Microsoft.DevTestLab/labs/policySets/policies/** を可能にするものです。各 DevTest ラボ ポリシーはこの種類のポリシー リソースのリソースであり、RBAC のロールにスコープとして割り当てることができます。
 
 たとえば、 **VM サイズの許可** ポリシーに対するユーザーの読み取り/書き込みアクセス許可を付与するために、**Microsoft.DevTestLab/labs/policySets/policies/*** 操作を扱うカスタム ロールを作成し、**Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てるなどです。
 
-RBAC のカスタム ロールの詳細については、[Azure のロールベースのアクセス制御](/role-based-access-control-configure.md)に関する記事の [Azure RBAC のカスタム ロール](/role-based-access-control-configure.md#custom-roles-in-azure-rbac)のセクションを参照してください。
+RBAC のカスタム ロールの詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」の「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac)」のセクションを参照してください。
 
 ##PowerShell を使用して DevTest ラボ カスタム ロールを作成する
 開始するには、Azure PowerShell コマンドレットをインストールして構成する方法を説明する記事 ([https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)) をお読みください。
@@ -59,8 +59,8 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
-##カスタム ロールを使用して特定のポリシーのユーザーにアクセス許可を割り当てる
-カスタム ロールを定義すると、ユーザーにアクセス許可を割り当てられるようになります。カスタム ロールをユーザーに割り当てるには、はじめに、そのユーザーを表す **ObjectId** を取得する必要があります。そのために、 **Get AzureRmADUser** コマンドレットを使用します。
+##カスタム ロールを使用して特定のポリシーに対しユーザーにアクセス許可を割り当てる
+カスタム ロールを定義すると、ユーザーにカスタム ロールを割り当てられるようになります。カスタム ロールをユーザーに割り当てるには、はじめに、そのユーザーを表す **ObjectId** を取得する必要があります。そのために、 **Get AzureRmADUser** コマンドレットを使用します。
 
 次の例では、*SomeUser* ユーザーの **ObjectId** は 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 です。
 
@@ -95,4 +95,4 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 
 - [アーティファクトを含む VM を Azure DevTest ラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

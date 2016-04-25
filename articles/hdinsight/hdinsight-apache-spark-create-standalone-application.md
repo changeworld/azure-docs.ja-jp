@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する | Microsoft Azure" 
-	description="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="paulettm" 
+<properties
+	pageTitle="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する | Microsoft Azure"
+	description="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="nitinme"/>
 
 
@@ -34,7 +34,7 @@
 * Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight Linux での Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 * Oracle Java Development kit。[ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
-* Java IDE。この記事では、IntelliJ IDEA 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。 
+* Java IDE。この記事では、IntelliJ IDEA 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 
 
 ## IntelliJ IDEA 用の Scala プラグインをインストールする
@@ -81,7 +81,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 	1. **[File (ファイル)]** メニューの **[Settings (設定)]** をクリックします。
 	2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイメント)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
 	3. **[Import Maven projects automaticallyMaven (Maven プロジェクトを自動的にインポートする)]** オプションを選択します。
-	4. **[Apply (適用)]** をクリックし、**[OK]** をクリックします。 
+	4. **[Apply (適用)]** をクリックし、**[OK]** をクリックします。
 
 
 8. 目的のアプリケーション コードを含むように、Scala ソース ファイルを更新します。ファイルを開き、既存のサンプル コードを次のコードに置き換え、変更を保存します。このコードでは、HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、6 番目の列に 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
@@ -90,7 +90,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 		import org.apache.spark.SparkConf
 		import org.apache.spark.SparkContext
-		
+
 		/**
 		  * Test IO to wasb
 		  */
@@ -98,12 +98,12 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 		  def main (arg: Array[String]): Unit = {
 		    val conf = new SparkConf().setAppName("WASBIOTest")
 		    val sc = new SparkContext(conf)
-		
+
 		    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-		
+
 		    //find the rows which have only one digit in the 7th column in the CSV
 		    val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
-		
+
 		    rdd1.saveAsTextFile("wasb:///HVACout")
 		  }
 		}
@@ -158,7 +158,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 クラスターでアプリケーションを実行するには、次の手順を実行します。
 
-* クラスターに関連付けられた **Azure Storage BLOB にアプリケーション jar をコピーします**。そのためには、[**AzCopy**](storage/storage-use-azcopy.md) (コマンドライン ユーティリティ) を使用します。他にも、データのアップロードに使用できるクライアントが多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+* クラスターに関連付けられた **Azure Storage BLOB にアプリケーション jar をコピーします**。そのためには、[**AzCopy**](../storage/storage-use-azcopy.md) (コマンドライン ユーティリティ) を使用します。他にも、データのアップロードに使用できるクライアントが多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
 * Spark に**アプリケーション ジョブをLivy を使用してリモートで送信**します。HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。詳細については、「[Submit Spark jobs remotely using Livy with Spark clusters on HDInsight (HDInsight の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する)](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
@@ -186,7 +186,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -196,4 +196,4 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

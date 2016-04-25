@@ -102,8 +102,8 @@ BLOB に読み書きアクセス許可を付与するサービス SAS URI の例
 ---|---|---
 Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt |BLOB のアドレス。HTTPS の使用を強くお勧めします。
 ストレージ サービスのバージョン|sv=2015-04-05|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
-開始時刻|st=2015-04-29T22%3A18%3A26Z|ISO 8601 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
-有効期限|se=2015-04-30T02%3A23%3A26Z|ISO 8601 形式で指定されます。
+開始時刻|st=2015-04-29T22%3A18%3A26Z|UTC 時間で指定。SAS をすぐに有効にする場合は、開始時刻を省略します。
+有効期限|se=2015-04-30T02%3A23%3A26Z|UTC 時間で指定。
 リソース|sr=b|リソースは BLOB です。
 アクセス許可|sp=rw|SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
 IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレスの範囲です。
@@ -318,4 +318,4 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!----HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

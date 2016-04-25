@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/28/2016" 
+	ms.date="03/28/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
@@ -130,7 +130,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 	- **[ゲートウェイ サブネットの追加]** をクリックします。
 11.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
-次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
+次に、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。
 
 次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、*TestVNET-UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestVNET-Tailspin という名前を付けることができます。
 
@@ -293,7 +293,7 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 ## この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。
 
 Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](https://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN Gateway の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
 
@@ -318,4 +318,4 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 
 - この環境に [SharePoint イントラネット ファーム](virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)、[Web ベース LOB アプリケーション](virtual-networks-setup-lobapp-hybrid-cloud-testing.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-networks-setup-dirsync-hybrid-cloud-testing.md)をセットアップします。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -48,7 +48,7 @@
 
     ![][7]
 
-5. mbed コンパイラのウィンドウでは、このプロジェクトをインポートしたことでさまざまなライブラリがインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[proton-c-mbed](https://developer.mbed.org/users/AzureIoTClient/code/proton-c-mbed/)) もあれば、mbed ライブラリ カタログで入手可能なサード パーティのライブラリもあります。
+5. mbed コンパイラのウィンドウでは、このプロジェクトをインポートしたことでさまざまなライブラリがインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)) もあれば、mbed ライブラリ カタログで入手可能なサード パーティのライブラリもあります。
 
     ![][8]
 
@@ -61,7 +61,7 @@
     static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
     ```
 
-7. [Device Id] と [Device Key] を自身のデバイス データに置き換えます。IoT Hub ホスト名を使用して、プレースホルダーの [IoTHub Name] と [IoTHub Suffix, i.e. azure-devices.net] を置き換えます。たとえば、IoT Hub ホスト名が contoso.azure-devices.net である場合は、contoso が **hubName**、残りの部分が **hubSuffix** になります。
+7. サンプル プログラムが IoT Hub に接続できるように、[Device Id] と [Device Key] をデバイスのデータに置き換えます。IoT Hub ホスト名を使用して、プレースホルダーの [IoTHub Name] と [IoTHub Suffix, i.e. azure-devices.net] を置き換えます。たとえば、IoT Hub ホスト名が contoso.azure-devices.net である場合は、contoso が **hubName**、残りの部分が **hubSuffix** になります。
 
     ```
     static const char* deviceId = "mydevice";
@@ -72,6 +72,123 @@
 
     ![][9]
 
+### コードのウォーク スルー
+
+プログラムのしくみに関心があるユーザー向けに、このセクションでは、サンプル コードの重要な部分について説明します。コードを実行するだけである場合は、「[プログラムをビルドして実行する](#buildandrun)」に進んでください。
+
+#### モデルの定義
+
+このサンプルでは、[serializer][lnk-serializer] ライブラリを使用して、デバイスが IoT Hub との間で送受信できるメッセージを指定するモデルを定義します。このサンプルでは、**Contoso** 名前空間で、**Temperature**、**ExternalTemperature**、**Humidity** の各テレメトリ データと、デバイス ID、デバイスのプロパティ、デバイスが応答するコマンドなどのメタデータを指定する**サーモスタット** モデルを定義します。
+
+```
+BEGIN_NAMESPACE(Contoso);
+
+DECLARE_STRUCT(SystemProperties,
+    ascii_char_ptr, DeviceID,
+    _Bool, Enabled
+);
+
+DECLARE_STRUCT(DeviceProperties,
+ascii_char_ptr, DeviceID,
+_Bool, HubEnabledState
+);
+
+DECLARE_MODEL(Thermostat,
+
+    /* Event data (temperature, external temperature and humidity) */
+    WITH_DATA(int, Temperature),
+    WITH_DATA(int, ExternalTemperature),
+    WITH_DATA(int, Humidity),
+    WITH_DATA(ascii_char_ptr, DeviceId),
+
+    /* Device Info - This is command metadata + some extra fields */
+    WITH_DATA(ascii_char_ptr, ObjectType),
+    WITH_DATA(_Bool, IsSimulatedDevice),
+    WITH_DATA(ascii_char_ptr, Version),
+    WITH_DATA(DeviceProperties, DeviceProperties),
+    WITH_DATA(ascii_char_ptr_no_quotes, Commands),
+
+    /* Commands implemented by the device */
+    WITH_ACTION(SetTemperature, int, temperature),
+    WITH_ACTION(SetHumidity, int, humidity)
+);
+
+END_NAMESPACE(Contoso);
+```
+
+モデル定義に関連するのは、デバイスが応答する **SetTemperature** コマンドと **SetHumidity** コマンドの定義です。
+
+```
+EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
+{
+    (void)printf("Received temperature %d\r\n", temperature);
+    thermostat->Temperature = temperature;
+    return EXECUTE_COMMAND_SUCCESS;
+}
+
+EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
+{
+    (void)printf("Received humidity %d\r\n", humidity);
+    thermostat->Humidity = humidity;
+    return EXECUTE_COMMAND_SUCCESS;
+}
+```
+
+#### ライブラリへのモデルの接続
+
+**sendMessage** 関数と **IoTHubMessage** 関数は、デバイスからテレメトリを送信し、IoT Hub からのメッセージをコマンド ハンドラーに接続する定型コードです。
+
+#### remote\_monitoring\_run 関数
+
+プログラムの **main** 関数は、アプリケーションの起動時に **remote\_monitoring\_run** 関数を呼び出して、IoT Hub デバイス クライアントとしてデバイスの動作を実行します。この **remote\_monitoring\_run** 関数は、大半が関数の入れ子になったペアで構成されています。
+
+- **platform\_init** と **platform\_deinit** は、プラットフォーム固有の初期化およびシャットダウン操作を実行します。
+- **serializer\_init** と **serializer\_deinit** は、serializer ライブラリの初期化と初期化解除を実行します。
+- **IoTHubClient\_Create** と **IoTHubClient\_Destroy** は、デバイスの資格情報を使用して IoT Hub に接続するクライアント ハンドル **iotHubClientHandle** を作成します。
+
+**remote\_monitoring\_run** 関数のメイン セクションでは、プログラムは **iotHubClientHandle** ハンドルを使用して次の操作を実行します。
+
+- Contoso サーモスタット モデルのインスタンスを作成し、2 つのコマンドのメッセージのコールバックを設定します。
+- serializer ライブラリを使用して、デバイス自体に関する情報 (デバイスがサポートするコマンドなど) を IoT Hub に送信します。ハブはこのメッセージを受信すると、ダッシュボードのデバイスの状態を**保留中**から**実行中**に変更します。
+- 温度、外部温度、湿度の値を 1 秒おきに IoT Hub に送信する **while** ループを開始します。
+
+起動時に IoT Hub に送信される **DeviceInfo** メッセージの例:
+
+```
+{
+  "ObjectType":"DeviceInfo",
+  "Version":"1.0",
+  "IsSimulatedDevice":false,
+  "DeviceProperties":
+  {
+    "DeviceID":"mydevice01", "HubEnabledState":true
+  }, 
+  "Commands":
+  [
+    {"Name":"SetHumidity", "Parameters":[{"Name":"humidity","Type":"double"}]},
+    { "Name":"SetTemperature", "Parameters":[{"Name":"temperature","Type":"double"}]}
+  ]
+}
+```
+
+IoT Hub に送信される**テレメトリ** メッセージの例:
+
+```
+{"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
+```
+
+IoT Hub から受信する**コマンド**の例:
+
+```
+{
+  "Name":"SetHumidity",
+  "MessageId":"2f3d3c75-3b77-4832-80ed-a5bb3e233391",
+  "CreatedTime":"2016-03-11T15:09:44.2231295Z",
+  "Parameters":{"humidity":23}
+}
+```
+
+<a id="buildandrun"/>
 ### プログラムをビルドして実行する
 
 1. **[コンパイル]** をクリックしてプログラムをビルドします。警告は無視してかまいません。ただし、ビルドでエラーが発生する場合は、続行する前にそのエラーを修正してください。
@@ -82,7 +199,7 @@
 
     ![][11]
 
-4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。デバイスは通常、115200 ボーで接続するため、**[速度]** ボックスに「115200」と入力します。その後、**[開く]** をクリックします。
+4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。通常、デバイスは 115200 ボーで接続するため、**[速度]** ボックスに「115200」と入力します。次に、**[開く]** をクリックします。
 
 5. プログラムの実行が開始されます。接続時にプログラムが自動的に開始されない場合は、ボードのリセットが必要になることがあります (Ctrl キーを押しながら Break キーを押すか、ボードのリセット ボタンを押します)。
 
@@ -101,5 +218,6 @@
 [lnk-mbed-home]: https://developer.mbed.org/platforms/FRDM-K64F/
 [lnk-mbed-getstarted]: https://developer.mbed.org/platforms/FRDM-K64F/#getting-started-with-mbed
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
+[lnk-serializer]: https://azure.microsoft.com/documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,12 +1,11 @@
 <properties
 	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響"
 	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。"
-	authors="yochayk"
-	writer="yochayk"
-	editor="yochayk"
-	manager="nirma"
 	services="app-service"
-	documentationCenter=""/>
+    documentationCenter=""
+	authors="yochay"
+	manager="nirma"
+	editor=""/>
 
 <tags
 	ms.service="app-service"
@@ -92,4 +91,4 @@ App Service では、[Websites](https://azure.microsoft.com/services/websites/)�
 
 詳細については、「[App Service のドキュメント](https://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

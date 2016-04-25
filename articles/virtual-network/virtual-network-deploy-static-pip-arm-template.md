@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="リソース マネージャーでのテンプレートを使用した静的パブリック IP を持つ VM のデプロイ | Microsoft Azure"
    description="リソース マネージャーでテンプレートを使用して静的パブリック IP を持つ VM をデプロイする方法について説明します"
    services="virtual-network"
@@ -101,7 +101,7 @@
 
 PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照し、手順 1 ～ 3 の指示に従います。
+1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照し、手順 1. ～ 3. の指示に従います。
 
 2. 必要に応じて、PowerShell コンソールで、**AzureRmResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。既に作成したリソース グループがある場合は、手順 3. に進みます。
 
@@ -112,7 +112,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 		ResourceGroupName : StaticPublicIP
 		Location          : westus
 		ProvisioningState : Succeeded
-		Tags              : 
+		Tags              :
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
 3. PowerShell コンソールで、**New-AzureRmResourceGroupDeployment** を実行して、テンプレートをデプロイします。
@@ -128,31 +128,31 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 		ProvisioningState : Succeeded
 		Timestamp         : 1/8/2016 7:04:44 PM
 		Mode              : Incremental
-		TemplateLink      : 
+		TemplateLink      :
 		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
 		                    ter/IaaS-Story/03-Static-public-IP/azuredeploy.json
 		                    ContentVersion : 1.0.0.0
-		                    
-		Parameters        : 
+
+		Parameters        :
 		                    Name                      Type                       Value     
 		                    ========================  =========================  ==========
-		                    vnetName                  String                     WTestVNet 
+		                    vnetName                  String                     WTestVNet
 		                    vnetPrefix                String                     192.168.0.0/16
 		                    frontEndSubnetName        String                     FrontEnd  
 		                    frontEndSubnetPrefix      String                     192.168.1.0/24
 		                    storageAccountNamePrefix  String                     iaasestd  
 		                    stdStorageType            String                     Standard_LRS
 		                    osType                    String                     Windows   
-		                    adminUsername             String                     adminUser 
+		                    adminUsername             String                     adminUser
 		                    adminPassword             SecureString                         
-		                    
-		Outputs           : 
+
+		Outputs           :
 
 ## Azure CLI を使用してテンプレートをデプロイする
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -184,4 +184,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

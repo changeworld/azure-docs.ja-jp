@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/15/2016" 
+	ms.date="04/06/2016" 
 	ms.author="awills"/>
 
 # Windows デスクトップ アプリ、サービス、worker ロールに対する Application Insights
@@ -31,15 +31,15 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 ## <a name="add"></a>Application Insights リソースの作成
 
 
-1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類には、Windows ストア アプリを選択します。 
+1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET アプリを選択します。 
 
     ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-desktop/01-new.png)
 
-    (選択したアプリケーションの種類に応じて、[メトリックス エクスプローラー][metrics]で使用できる概要ブレードのコンテンツとプロパティが設定されます)
+    (必要に応じて別のアプリケーションの種類を選択できます。これにより、概要ブレードの内容と、[メトリックス エクスプローラー][metrics]で使用できるプロパティが設定されます。)
 
-2.  インストルメンテーション キーをコピーします。先ほど作成した新しいリソースの [要点] ボックスの一覧で、キーを探します。
+2.  インストルメンテーション キーをコピーします。先ほど作成した新しいリソースの [要点] ボックスの一覧で、キーを探します。アプリケーション マップを閉じるか、左側にあるリソースの概要ブレードまでスクロールします。
 
-    ![Click Essentials, select the key, and press ctrl+C](./media/app-insights-windows-desktop/02-props.png)
+    ![Click Essentials, select the key, and press ctrl+C](./media/app-insights-windows-desktop/10.png)
 
 ## <a name="sdk"></a>アプリケーションでの SDK のインストール
 
@@ -89,7 +89,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
             tc.InstrumentationKey = "key copied from portal";
 
             // Set session data:
-            tc.Context.User.Id = Environment.GetUserName();
+            tc.Context.User.Id = Environment.UserName;
             tc.Context.Session.Id = Guid.NewGuid().ToString();
             tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
@@ -123,19 +123,20 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 * `Flush()` は、アプリを終了する前にすべてのテレメトリを確実に送信するために使用する。これは、コア API (Microsoft.ApplicationInsights) を使用する場合に限られます。Web SDK では、この動作が自動的に実装されます(インターネットが常に利用できるとは限らないコンテキストでアプリが実行される場合は、[永続化チャネル](#persistence-channel)に関するページも参照してください。)
 
 
-#### コンテキストの初期化子
+#### テレメトリの初期化子
 
-ユーザーとセッションの数を表示するために、各 `TelemetryClient` インスタンスに値を設定できます。または、コンテキストの初期化子を使用して、この加算をすべてのクライアントに実行できます。
+ユーザーとセッションの数を表示するために、各 `TelemetryClient` インスタンスに値を設定できます。または、テレメトリの初期化子を使用して、この加算をすべてのクライアントに対して実行することもできます。
 
 ```C#
 
-    class UserSessionInitializer: IContextInitializer
+    class UserSessionInitializer : ITelemetryInitializer
     {
-        public void Initialize(TelemetryContext context)
+        public void Initialize(ITelemetry telemetry)
         {
-            context.User.Id = Environment.UserName;
-            context.Session.Id = Guid.NewGuid().ToString();
+            telemetry.Context.User.Id = Environment.UserName;
+            telemetry.Context.Session.Id = Guid.NewGuid().ToString();
         }
+        
     }
 
     static class Program
@@ -143,7 +144,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
         ...
         static void Main()
         {
-            TelemetryConfiguration.Active.ContextInitializers.Add(
+            TelemetryConfiguration.Active.TelemetryInitializers.Add(
                 new UserSessionInitializer());
             ...
 
@@ -159,15 +160,13 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ![](./media/app-insights-windows-desktop/appinsights-09eventcount.png)
 
-
+イベントは診断および出力のウィンドウにも表示されます。
 
 ## <a name="monitor"></a>監視データの表示
 
 Azure ポータルで、アプリケーションのブレードに戻ります。
 
 [[診断検索]](app-insights-diagnostic-search.md) に最初のイベントが表示されます。
-
-大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
 TrackMetric、または TrackEvent の測定値パラメーターを使用した場合は、[メトリックス エクスプローラー][metrics]を開き、[フィルター] ブレードを開きます。メトリックが表示されますが、パイプラインを通過するのに時間がかかることがあるため、場合によっては [フィルター] ブレードを閉じてしばらく待ってから更新する必要があります。
 
@@ -299,4 +298,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

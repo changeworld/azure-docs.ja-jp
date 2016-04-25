@@ -388,9 +388,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).|
-|**1433**|TCP|SQL Server Management Studio (*).|
-|**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
+|**80**|TCP|レポート サーバー リモート アクセス (*).| |**1433**|TCP|SQL Server Management Studio (*).| |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
 |**ユーザー定義**|TCP|選択したポート番号で Analysis Services の名前付きインスタンスの静的ポートを作成し、ファイアウォールでそのポート番号のブロックを解除します。|
@@ -409,7 +407,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - Azure 仮想マシン環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://support.microsoft.com/kb/2721672)」をご覧ください。
 
-- [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-classic-sql-overview.md)
+- [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 
 - [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
@@ -417,7 +415,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)
 
-- [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-classic-migrate-sql.md)
+- [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)
 
 - [Analysis Services インスタンスのサーバー モードの決定](https://msdn.microsoft.com/library/gg471594.aspx)
 
@@ -433,4 +431,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

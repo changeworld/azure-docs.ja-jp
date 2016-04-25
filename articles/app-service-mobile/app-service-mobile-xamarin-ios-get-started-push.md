@@ -22,22 +22,13 @@
 
 ##概要
 
-最初に、このチュートリアルの基になっている [Xamarin.iOS のクイック スタート チュートリアル](app-service-mobile-xamarin-ios-get-started.md)を完了しておく必要があります。Xamarin.iOS クイック スタート プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+最初に、このチュートリアルの基になっている [Xamarin.iOS のクイックスタート](app-service-mobile-xamarin-ios-get-started.md)に関するチュートリアルを完了しておく必要があります。Xamarin.iOS クイック スタート プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-
-* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリ バックエンドを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-
-* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、Xamarin.iOS Build Host を実行するネットワーク接続された Mac にアクセスする必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
+* [Xamarin.iOS のクイックスタート](app-service-mobile-xamarin-ios-get-started.md)に関するチュートリアルを完了していること。
 
 * 物理的な iOS デバイスiOS シミュレーターでは、プッシュ通知はサポートされていません。
-
-* [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)。Apple Push Notification サービス (APNS) に登録する場合に必要です。
-
-* [Xamarin.iOS クイック スタート チュートリアル](app-service-mobile-xamarin-ios-get-started.md)を完了してください。
-
 
 ##Apple の開発者ポータルにプッシュ通知のアプリを登録する
 
@@ -164,9 +155,5 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[Xamarin Studio]: http://xamarin.com/platform
-[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
-[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -32,9 +32,9 @@
 
 ##リリース ノート
 
-###3\.2.1 (12/11/2015)
+###3\.2.2 (2016 年 4 月 7 日)
 
--   新しいアプリケーション インスタンスがディープ リンクを持つ通知によってトリガーされたときの遅延を修正。 
+-   クラッシュの原因となる場合がある HTTP 要求のキャンセルに関するバグを修正。 
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -59,4 +59,4 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
 	-(void)didFailToRetrieveLaunchMessage;
 	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

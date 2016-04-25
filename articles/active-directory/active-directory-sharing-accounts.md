@@ -65,7 +65,7 @@ Azure AD を使用してアカウントを共有するには、次の操作が�
 - [グループ ベースの割り当て](active-directory-accessmanagement-group-saasapps.md)を使用し、共有資格情報を入力するオプションを選択する
 - オプション: Facebook、Twitter、LinkedIn などの一部のアプリケーションでは、[Azure AD 自動パスワード ロール オーバー](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)のオプションを有効にすることができます。
 
-Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](multi-factor-authentication-get-started.md)」を参照) すると共に、[Azure AD のセルフ サービス](active-directory-accessmanagement-self-service-group-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
+Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../multi-factor-authentication/multi-factor-authentication-get-started.md)」を参照) すると共に、[Azure AD のセルフ サービス](active-directory-accessmanagement-self-service-group-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
 ## 関連記事:
 
@@ -73,4 +73,4 @@ Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

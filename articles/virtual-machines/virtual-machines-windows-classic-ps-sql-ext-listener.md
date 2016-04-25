@@ -3,9 +3,9 @@
 	description="このチュートリアルでは、関連付けられているクラウド サービスのパブリック仮想 IP アドレスを使用して外部からアクセスできる、AlwaysOn 可用性グループ リスナーを Azure で作成する手順について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar"
+	authors="MikeRayMSFT"
+	manager="jhubbard"
+	editor=""
 	tags="azure-service-management" />
 <tags
 	ms.service="virtual-machines-windows"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
-	ms.author="jroth" />
+	ms.date="04/05/2016"
+	ms.author="mikeray" />
 
 # Azure での AlwaysOn 可用性グループの外部リスナーの構成
 
@@ -27,7 +27,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-windows-classic-portal-sql-availability.md)ものの、リスナーは構成していないと仮定しています。
+可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)ものの、リスナーは構成していないと仮定しています。
 
 ## 外部リスナーのガイドラインと制限事項
 
@@ -37,7 +37,7 @@
 
 - クライアント アプリケーションは、可用性グループ VM が含まれるクラウド サービスとは異なるクラウド サービスに存在する必要があります。Azure では、同じクラウド サービスに存在するクライアントとサーバーによる Direct Server Return はサポートされません。
 
-- 既定では、この記事の手順により、クラウド サービスの仮想 IP (VIP) アドレスを使用するリスナーが 1 つ構成されます。ただし、クラウド サービスに対して複数の VIP アドレスを予約して作成することができます。これにより、この記事の手順を使用して、別の VIP にそれぞれ関連付けられている複数のリスナーを作成することができます。複数の VIP アドレスを作成する方法の詳細については、「[クラウド サービスごとの複数の VIP](load-balancer-multivip.md)」を参照してください。
+- 既定では、この記事の手順により、クラウド サービスの仮想 IP (VIP) アドレスを使用するリスナーが 1 つ構成されます。ただし、クラウド サービスに対して複数の VIP アドレスを予約して作成することができます。これにより、この記事の手順を使用して、別の VIP にそれぞれ関連付けられている複数のリスナーを作成することができます。複数の VIP アドレスを作成する方法の詳細については、「[クラウド サービスごとの複数の VIP](../load-balancer/load-balancer-multivip.md)」を参照してください。
 
 - ハイブリッド環境でのリスナーを作成する場合、オンプレミスのネットワークは、Azure 仮想ネットワークを使用したサイト間 VPN への接続に加えて、パブリック インターネットへの接続が必要です。Azure のサブネットでは、可用性グループ リスナーは個々 のクラウド サービスのパブリック IP アドレスによってのみ到達可能です。
 
@@ -130,4 +130,4 @@ AlwaysOn レプリカが異なるサブネットにある場合、クライア�
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

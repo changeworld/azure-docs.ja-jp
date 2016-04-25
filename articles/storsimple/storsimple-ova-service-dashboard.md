@@ -3,7 +3,7 @@
    description="StorSimple Manager サービス ダッシュボードについて説明すると共に、サービス ダッシュボードを使用して StorSimple Virtual Array の状態を監視する方法を説明します。"
    services="storsimple"
    documentationCenter=""
-   authors="SharS"
+   authors="alkohli"
    manager="carmonm"
    editor="" />
 <tags 
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/18/2016"
-   ms.author="v-sharos" />
+   ms.date="04/07/2016"
+   ms.author="alkohli" />
 
-# StorSimple Virtual Array の StorSimple Manager サービス ダッシュボードを使用する (プレビュー)
+# StorSimple Virtual Array の StorSimple Manager サービス ダッシュボードを使用する
 
 ## 概要
 
@@ -62,4 +62,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 [ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法](storsimple-ova-web-ui-admin.md)を確認します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -12,8 +12,8 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="02/10/2016"
+	ms.topic="article"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
@@ -59,8 +59,8 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
-- [Article Index for Application Management in Azure Active Directory (Azure Active Directory のアプリケーション構成の管理に関する記事の索引)](active-directory-apps-index.md)
+- Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,7 +3,7 @@
 	description="PowerApps Enterprise の使用を開始し、アプリ サービス環境を作成する"
 	services=""
     suite="powerapps"
-	documentationCenter="" 
+	documentationCenter=""
 	authors="linhtranms"
 	manager="dwrede"
 	editor=""/>
@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
+   ms.workload="na"
    ms.date="11/29/2015"
    ms.author="litran"/>
 
@@ -33,8 +33,8 @@ Microsoft PowerApps Enterprise は、新しい Microsoft Azure サービスで�
 IT 管理者は、企業内のビジネス ユーザーによって作成されたアプリを次のように管理できます。
 
 - 作成されたアプリの管理、およびアプリへのユーザー アクセスの管理を行う。
-- API を作成し、さまざまなデータ ソースへの接続を作成する 
-- API に対するユーザー アクセスを管理して、これらのデータ ソースへの接続を管理する。 
+- API を作成し、さまざまなデータ ソースへの接続を作成する
+- API に対するユーザー アクセスを管理して、これらのデータ ソースへの接続を管理する。
 
 ## 開始するには?
 
@@ -61,12 +61,12 @@ Office 365 サブスクリプション (または Microsoft Dynamic CRM Online�
 そのためには、次の手順を実行してください。または、新しいテナントを作成し、同様のプロセスでそのテナントに管理者を作成することもできます。
 
 1.	個人アカウントで [Azure クラシック管理ポータル](https://manage.windowsazure.com/)にサインインします。
-2.	左側のメニュー バーにある **[Active Directory]** を選択します。 
+2.	左側のメニュー バーにある **[Active Directory]** を選択します。
 3.	使用可能なディレクトリの一覧で、**[既定のディレクトリ]** を選択します。
 4.	上部にある **[ユーザー]** タブをクリックします。1 人のユーザーが [ソース ディレクトリ] 列に “Microsoft アカウント” と共に一覧表示されます。
-5.	下部にある **[ユーザーの追加]** を選択します。 
+5.	下部にある **[ユーザーの追加]** を選択します。
 6.	**[ユーザーの追加]** フォームで、次の詳細を指定します。  
-	
+
 	プロパティ | 説明
 --- | ---
 ユーザーの種類 | 組織内の新しいユーザーです。
@@ -75,7 +75,7 @@ Office 365 サブスクリプション (または Microsoft Dynamic CRM Online�
 ロール | グローバル管理者
 連絡用メール アドレス | 値を入力します。
 省略可能。 | Multi-Factor Authentication を有効にします。  
-	
+
 	**[作成]** ボタンを選択して完了させ、一時的なパスワードを表示します。
 
 終了したら、新しい管理ユーザー用の一時的なパスワードを記録します。一時的なパスワードを変更するには、この新しいユーザー アカウントで [https://login.microsoftonline.com](https://login.microsoftonline.com) にサインインし、パスワードを変更します。連絡用電子メールを使用して、ユーザーにパスワードを直接送信することもできます。
@@ -104,7 +104,7 @@ PowerApps Enterprise にサインアップしていない状態で、[Azure ポ�
 
 サインアップ プロセスを完了し、PowerApps Enterprise を使用する準備が整ったら、次のことができるようになります。
 
-- 社内のユーザーを追加し、[ロールベースのアクセス制御](../role-based-access-control-configure.md)を使用して、これらのユーザーに、PowerApps Enterprise ポータルにアクセスするための PowerApps Admin ロールを付与します。
+- 社内のユーザーを追加し、[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用して、これらのユーザーに、PowerApps Enterprise ポータルにアクセスするための PowerApps Admin ロールを付与します。
 - PowerApps をホストする専用のアプリ サービス環境を作成します。
 - 専用のアプリ サービス環境内で実行される API と接続を作成します。
 - PowerApps で作成したアプリだけでなく、Web アプリ、モバイル アプリ、API アプリ、ロジック アプリなどのアプリもアプリ サービス環境に追加することができます。
@@ -120,11 +120,11 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 アプリ サービス環境は、すべてのアプリを安全に実行するための分離された専用環境です。コンピューティング リソースは、アプリ サービス環境ごとに有効になり、お使いのアプリを実行するためだけに使用されます。PowerApps Enterprise にサインアップすると、アプリで使用される API と接続は専用のアプリ サービス環境を使用してホストされます。このアプリ サービス環境は、"特殊な" タイプのアプリ サービス環境です。具体的には次の処理が行われます。
 
 - このアプリ サービス環境は、任意の目的で使用できます。これは、サブスクリプションではなく、会社に関連付けられます。
-- PowerApps で作成したアプリで使用されるように、API と接続を構成します。ただし、前述アプリ サービス環境には、Web アプリ、モバイル アプリ、ロジック アプリ、および API アプリを追加することもできます。 
+- PowerApps で作成したアプリで使用されるように、API と接続を構成します。ただし、前述アプリ サービス環境には、Web アプリ、モバイル アプリ、ロジック アプリ、および API アプリを追加することもできます。
 - 課金は固定で、PowerApps Enterprise に含められます。  
 - スケールは自動的に管理されます。追加のコンピューティング リソースが必要なかどうかを判断するために、環境を監視する必要はありません。
 
-通常の Azure アプリ サービス環境にはさまざまな機能があります。詳細については、「[App Service Environment の概要](../app-service-app-service-environment-intro.md)」を参照してください。
+通常の Azure アプリ サービス環境にはさまざまな機能があります。詳細については、「[App Service Environment の概要](../app-service-web/app-service-app-service-environment-intro.md)」を参照してください。
 
 #### 使用を開始するための前提要件
 
@@ -136,16 +136,16 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 > [AZURE.NOTE] アプリ サービス環境を作成するオプションが表示されない場合、テナントのアプリ サービス環境は既に作成されています。詳細を表示するには、**[設定]** を選択してアプリ サービス環境を開きます。
 
 1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
- 
+
 2. タスク バーの **[参照]** をクリックします。![PowerApps の参照][1]
-  
+
 3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![PowerApps の検索][2]
 
 4. **[PowerApps]** ブレードで、**[App Service Environment を作成して使用を開始する]** を選択するか、*[設定]* の **[App Service Environment ]** を選択します。![][5]
 
 	> [AZURE.NOTE] **[App Service Environment を作成して使用を開始する]** をクリックすると、App Service Environment の詳細を示すブレードが追加で表示されます。そのブレード上で作成リンクをクリックするだけで、作成ブレードが起動します。
 
-5. 次に、名前を入力し、使用するサブスクリプションを選択し、新しいリソース グループを選択または作成し、仮想ネットワークを選択します。仮想ネットワークは、選択するとその後変更できなくなるので**注意してください**。![][6] App Service Environmentでの仮想ネットワークの動作の詳細については、「[App Service Environment の作成方法](../app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
+5. 次に、名前を入力し、使用するサブスクリプションを選択し、新しいリソース グループを選択または作成し、仮想ネットワークを選択します。仮想ネットワークは、選択するとその後変更できなくなるので**注意してください**。![][6] App Service Environmentでの仮想ネットワークの動作の詳細については、「[App Service Environment の作成方法](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
 
 6. **[追加]** を選択して、アプリ サービス環境の作成を完了します。
 
@@ -159,7 +159,7 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 
 1. 先ほど作成したアプリ サービス環境を選択します。
 2. [Essentials] で、**[リソース グループ]** プロパティを選択します。これにより、アプリ サービス環境を含むリソース グループが開きます。![][7]
-3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
+3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
 
 > [AZURE.NOTE] 現時点で、アプリ サービス環境に RBAC アクセス許可を付与することはできません。親のリソース グループ レベルでは RBAC アクセス許可を付与することができます。
 
@@ -181,4 +181,4 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

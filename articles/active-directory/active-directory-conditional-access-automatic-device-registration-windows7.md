@@ -45,7 +45,7 @@ Windows 7 ドメイン参加済みデバイスのデバイス登録にはユー�
 ドメインに参加した Windows 7 デバイスの登録を解除するには、次の手順に従います。System Center Configuration Manager などのソフトウェア配布システムを使用して、Windows 7 ドメイン参加済みデバイスから社内参加のソフトウェア パッケージをアンインストールします。
 
 Windows 7 コンピューターでコマンド プロンプトを開き、次のコマンドを実行して、デバイスの登録を解除します。
-    
+
     %ProgramFiles%\Microsoft Workplace Join\AutoWorkplace.exe /leave
 
 >[AZURE.NOTE]
@@ -57,9 +57,7 @@ Windows 7 コンピューターの Windows イベント ログには、社内参
 
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 - [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
-- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+- [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
- 
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

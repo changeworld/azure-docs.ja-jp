@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 
@@ -54,11 +54,10 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 新しいカーネルを使用すると、いくつかの利点があります。
 
-1. **コンテキストのプリセット**。Jupyter ノードブックで利用できる既定の **Python2** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark、SQL、Hive コンテキストを明示的に設定する必要があります。新しいカーネル (**PySpark** または **Spark**) を使用する場合は、これらのコンテキストが既定で利用可能です。各コンテキストは次のとおりです。
+1. **コンテキストのプリセット**。Jupyter Notebook で利用できる既定の **Python2** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要があります。新しいカーネル (**PySpark** または **Spark**) を使用する場合は、これらのコンテキストが既定で利用可能です。各コンテキストは次のとおりです。
 
 	* **sc**: Spark コンテキスト用
-	* **sqlContext**: SQL コンテキスト用
-	* **hiveContext** - Hive コンテキスト用
+	* **sqlContext**: Hive コンテキスト用
 
 
 	そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
@@ -67,8 +66,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 		# YOU DO NOT NEED TO RUN THIS WITH THE NEW KERNELS
 		###################################################
 		sc = SparkContext('yarn-client')
-		sqlContext = SQLContext(sc)
-		hiveContext = HiveContext(sc)
+		sqlContext = HiveContext(sc)
 
 	代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 	
@@ -80,9 +78,8 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 	|-----------|---------------------------------|--------------|
 	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
 	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
-	| configure | `%%configure -f {"executorMemory": "1000M", "executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧は、「[Livy の POST /セッション要求本文](https://github.com/cloudera/livy#request-body)」にあります。パラメーターは JSON 文字列として渡す必要があります。 |
-	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して SQL クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
-	| hive | `%%hive -o <variable name>`<br> `SHOW TABLES` | hivelContext に対する Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
+	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧は、「[Livy の POST /セッション要求本文](https://github.com/cloudera/livy#request-body)」にあります。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
+	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して Hive クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
 	| local | `%%local`<br>`a=1` | 後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。 |
 	| ログ | `%%logs` | 現在の Livy セッションのログを出力します。 |
 	| 削除 | `%%delete -f -s <session number>` | 現在 Livy エンドポイントの特定のセッションを削除します。カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
@@ -90,6 +87,30 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 3. **自動視覚化**。**Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
+## %%sql マジックでサポートされるパラメーター
+
+%%sql マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。次の表に、出力を示します。
+
+| パラメーター | 例 | 説明 |
+|-----------|---------------------------------|--------------|
+| -o | `-o <VARIABLE NAME>` | クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。データ フレーム変数の名前は、指定した変数の名前です。 |
+| パラメーター | `-q` | セルの視覚化をオフにするには、これを使用します。セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。結果をキャプチャせずに、視覚化をオフにする必要がある場合 (たとえば `CREATE TABLE` ステートメントのような、副次的作用のある SQL クエリを実行するため)、 `-o` 引数を指定せずに `-q` を使用します。 |
+| -m | `-m <METHOD>` | ここで **METHOD** は **take** または **sample** です (既定値は **take**)。メソッドが **take** の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
+| -r | `-r <FRACTION>` | ここで **FRACTION** は、0.0 ~ 1.0 の浮動小数点数です。SQL クエリのサンプル メソッドが `sample` の場合、カーネルによって、設定された結果セットの要素の指定された比率がランダムにサンプリングされます。たとえば、引数 `-m sample -r 0.01` を使用して SQL クエリを実行する場合、結果の行の 1% がランダムにサンプリングされます。 |
+| -n | `-n <MAXROWS>` | **MAXROWS** は整数値です。カーネルによって、出力行の数が **MAXROWS** に制限されます。**MAXROWS** が **-1** など、負の数の場合は、結果セット内の行数は制限されません。 |
+
+**例:**
+
+	%%sql -q -m sample -r 0.1 -n 500 -o query2 
+	SELECT * FROM hivesampletable
+
+上記のステートメントによって、次のことが行われます。
+
+* **hivesampletable** からすべてのレコードを選択します。
+* -q を使用しているため、自動視覚化をオフにします。
+* `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% をランダムにサンプリングし、結果セットのサイズを 500 行に制限します。
+* 最後に、`-o query2` を使用しているため、**query2** と呼ばれるデータフレームにも、その出力を保存します。
+	
 
 ## 新しいカーネルを使用する場合の考慮事項
 
@@ -105,7 +126,23 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 * **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
 * **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
 
-**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** ノードブックを開くと、利用できるさまざまなマジックを確認できます。この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
+**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
+
+## Notebook の格納場所
+
+Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成する場合、`wasb:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を `/HdiNotebooks/mynotebook1.ipynb` にある自分のストレージ アカウントに直接アップロードする場合、Jupyter からも Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+
+Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。そのため、クラスターに SSH で接続すると、次のようなファイル管理コマンドを使用できます。
+
+	hdfs dfs -ls /HdiNotebooks             				  # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
+	hdfs dfs –copyToLocal /HdiNotebooks    				# Download the contents of the HdiNotebooks folder
+	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
+
+
+クラスターのストレージ アカウントへのアクセスに問題がある場合のために、Notebook はヘッドノード `/var/lib/jupyter` にも保存されます。
+
+## サポートされているブラウザー
+HDInsight の Spark クラスターに対して実行される Jupyter Notebook は、Google Chrome でのみサポートされます。
 
 ## フィードバック
 
@@ -137,7 +174,7 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -145,4 +182,4 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

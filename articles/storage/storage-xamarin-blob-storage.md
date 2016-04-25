@@ -55,8 +55,7 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 このチュートリアルでは、Visual Studio で Xamarin アプリケーションを作成します。次の手順でアプリケーションを作成します。
 
-1. [Visual Studio](https://www.visualstudio.com/) をダウンロードし、インストールします。
-2. [Xamarin](http://xamarin.com/platform) をダウンロードし、インストールします。
+1. [Visual Studio 2015 のインストーラー](https://www.visualstudio.com/)を実行し、**カスタム** インストールを選択して、**[クロスプラットフォーム モバイル開発] > [C#/.NET (Xamarin)]** のチェック ボックスをオンにします。Visual Studio がインストールされている場合は、[Xamarin](http://xamarin.com/platform) をダウンロードして、直接インストールします。Visual Studio と Xamarin の詳細な手順については、MSDN の「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。
 3. Visual Studio を開き、**[ファイル]、[新規]、[プロジェクト]、[Android]、[空のアプリ (Android)]** の順に選択します。
 4. [ソリューション エクスプローラー] ウィンドウでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次に、「**Azure ストレージ**」を検索し、**Azure Storage 4.4.0-preview** をインストールします。
 
@@ -180,4 +179,4 @@ BLOB、テーブル、キューの詳細は次のリンクで確認できます�
 - [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

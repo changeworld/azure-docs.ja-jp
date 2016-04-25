@@ -2,16 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と TeamSeer の統合 | Microsoft Azure" 
     description="Azure Active Directory で TeamSeer を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
-    documentationCenter="na" manager="stevenpo"/>
+    authors="jeevansd"  
+    documentationCenter="na" 
+    manager="stevenpo"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="04/06/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TeamSeer の統合
   
@@ -65,7 +66,7 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、TeamSeer で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、TeamSeer で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -79,7 +80,7 @@
 
 3.  **[アプリケーション URL の構成]** ページで、**[サインイン URL]** テキスト ボックスに、"**http://www.teamseer.com/companyid*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-teamseer-tutorial/IC789629.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-teamseer-tutorial/IC789629.png "アプリケーション URL の構成")
 
 4.  **[TeamSeer でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -106,7 +107,7 @@
     1.  Azure ポータルの **[TeamSeer でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[URL]** テキスト ボックスに貼り付けます。
     2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[IdP Public Certificate]** テキスト ボックスに貼り付けます。
 
@@ -146,7 +147,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 4.  画面の指示に従って新しいユーザーを追加し、**[完了]** をクリックします。
 
->[AZURE.NOTE]TeamSeer から提供されている他の TeamSeer ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] TeamSeer から提供されている他の TeamSeer ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -166,4 +167,4 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,8 +3,8 @@
 	description="SQL Database 監査の使用"
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="ronitr"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
-	ms.author="jeffreyg; ronitr"/>
+	ms.date="04/11/2016"
+	ms.author="carlrabeler; ronitr"/>
  
 # SQL Database 監査の使用
 Azure SQL Database 監査は、データベース イベントを追跡し、監査したイベントを Azure ストレージ アカウントの監査ログに書き込みます監査は通常、Basic、Standard、と Premium の各サービス層で使用できます。
@@ -178,4 +178,4 @@ Azure SQL Database で監査を構成する際、使用できる PowerShell コ�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

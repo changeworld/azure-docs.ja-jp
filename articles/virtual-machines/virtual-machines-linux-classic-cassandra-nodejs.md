@@ -1,4 +1,4 @@
-<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines-linux" documentationCenter="nodejs" authors="rmcmurray" manager="wpickett" editor="" azure-service-management"/>
+<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines-linux" documentationCenter="nodejs" authors="hanuk" manager="wpickett" editor="" azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines-linux" 
@@ -6,8 +6,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
-	ms.author="robmcm"/>
+	ms.date="04/12/2016" 
+	ms.author="hanuk;robmcm"/>
 
 # Azure 上の Linux で Cassandra を実行して Node.js からアクセス 
 
@@ -59,8 +59,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 |	行のレプリカの数 |
-| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
-| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
+| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
+| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
@@ -457,7 +457,7 @@ VM にログインし、次の処理を行います。
 完了した単一リージョン デプロイを利用して、同じ処理を繰り返し、2 番目のリージョンをインストールします。単一リージョン デプロイと複数リージョン デプロイの主な違いは、リージョン間通信のための VPN トンネルのセットアップです。ここでは、最初にネットワーク インストールを実行してから、VM をプロビジョニングし、Cassandra を構成します。
 
 ###手順 1. 2 つ目のリージョンでの Virtual Network の作成
-Azure クラシック ポータルにログインし、次の表に記載の属性で Virtual Network を作成します。プロセスの詳細な手順については、「[Azure クラシック ポータルでのクラウド専用の Virtual Network の構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。
+Azure クラシック ポータルにログインし、次の表に記載の属性で Virtual Network を作成します。プロセスの詳細な手順については、「[Azure クラシック ポータルでのクラウド専用の Virtual Network の構成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
 
 <table>
 <tr><th>属性名    </th><th>値	</th><th>解説</th></tr>
@@ -697,4 +697,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 - [http://www.datastax.com](http://www.datastax.com) 
 - [http://www.nodejs.org](http://www.nodejs.org) 
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="SQL Database V12 の新機能 |Microsoft Azure" 
-	description="クラウドで Azure SQL Database を使用しているビジネス システムが今すぐ V12 にアップグレードでメリットを得られる理由を説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jhubbard" 
+<properties
+	pageTitle="SQL Database V12 の新機能 |Microsoft Azure"
+	description="クラウドで Azure SQL Database を使用しているビジネス システムが今すぐ V12 にアップグレードでメリットを得られる理由を説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jhubbard"
 	editor=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/21/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/21/2016"
 	ms.author="genemi"/>
 
 
@@ -39,8 +39,9 @@ Azure SQL Database のリソース制限に関する最新情報は「<br/>[Azur
 
 SQL Database V12 の主な目標は、Microsoft SQL Server 2014 との互換性を改善し、新しいバージョンの SQL Server がリリースされた場合にも互換性を維持することです。その他の領域では、V12 はプログラミングの重要な領域で SQL Server との対応を実現しました。次に例を示します。
 
+- [組み込みの JSON のサポート](https://msdn.microsoft.com/library/dn921897.aspx)
 
-- [ウィンドウ関数](http://msdn.microsoft.com/library/ms189798.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx) 
+- [ウィンドウ関数](http://msdn.microsoft.com/library/ms189798.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx)
 
 - [XML インデックス](http://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
 
@@ -166,4 +167,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="PowerShell での SQL Server 仮想マシンの作成 | Microsoft Azure"
-	description="SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell スクリプトを提供します。"
+	pageTitle="Azure PowerShell での SQL Server 仮想マシンの作成 (クラシック) | Microsoft Azure"
+	description="SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell スクリプトを提供します。このトピックでは、クラシック デプロイメント モードを使用します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="01/22/2016"
+	ms.date="04/08/2016"
 	ms.author="jroth" />
 
-# Azure での SQL Server 仮想マシンの作成 (PowerShell)
+# Azure PowerShell での SQL Server 仮想マシンの作成 (クラシック)
 
 ## 概要
 
@@ -24,14 +24,17 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-
 ## PowerShell のインストールと構成
 
 1. Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2. [最新の Azure PowerShell コマンドレットをインストールします。](../powershell-install-configure.md/#how-to-install-azure-powershell)
+2. [最新の Azure PowerShell コマンドレットをインストールします。](../powershell-install-configure.md)
 
-3. [PowerShell と Azure サブスクリプションを接続します](../powershell-install-configure.md/#how-to-connect-to-your-subscription)。
+3. インストールしたら、Windows PowerShell を起動します。
+
+4. 次に、Add-AzureAccount コマンドを使用して、PowerShell と Azure サブスクリプションを接続します。
+
+		Add-AzureAccount
 
 ## ターゲット Azure リージョンの決定
 
@@ -163,10 +166,10 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 
 PowerShell を使用した仮想マシンのプロビジョニングの詳細については、[仮想マシンのドキュメント](virtual-machines-windows-classic-create-powershell.md)を参照してください。SQL Server および Premium Storage に関連するその他のスクリプトについては、「[仮想マシン上での Azure Premium Storage と SQL Server の使用](virtual-machines-windows-classic-sql-server-premium-storage.md)」を参照してください。
 
-多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-classic-migrate-sql.md)」を参照してください。
+多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」を参照してください。
 
-Azure ポータルを使用して SQL Virtual Machines を作成する方法についても興味がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
+Azure ポータルを使用して SQL Virtual Machines を作成する方法についても興味がある場合は、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
 
-これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-classic-sql-overview.md)も参照することをお勧めします。
+これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-sql-server-iaas-overview.md)もご覧になることをお勧めします。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

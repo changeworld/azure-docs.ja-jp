@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="03/28/2016"
+ms.date="04/07/2016"
 ms.author="larryfr"/>
 
 #Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -21,6 +21,8 @@ ms.author="larryfr"/>
 Windows ベースの HDInsight にはクラウドで Hadoop を使用する簡単な方法が提供されますが、ソリューションに必要なツールとテクノロジを活用するには Linux ベースのクラスターが必要な場合があります。Hadoop エコシステムの多くの要素は Linux ベース システムで開発されており、一部は Windows ベースの HDInsight で使用できない場合があります。さらに、多くの書籍、ビデオ、およびその他のトレーニング資料では、Hadoop の操作時に Linux システムを使用することを前提としています。
 
 このドキュメントでは、Windows と Linux での HDInsight の違いについて詳しく説明し、Linux ベースのクラスターに既存のワークロードを移行する方法に関するガイダンスを示します。
+
+> [AZURE.NOTE] Ubuntu 12.04.05 LTS は、Linux-ベースの HDInsight クラスターで使用される Linux ディストリビューションです。
 
 ## 移行タスク
 
@@ -128,7 +130,7 @@ Linux ベースのクラスターで使用される**スクリプト アクシ�
 
 他のカスタマイズ機能として**ブートストラップ**があります。Windows クラスターの場合、これにより、Hive で使用する追加ライブラリの場所を指定することができます。クラスターの作成後にこれらのライブラリは自動的に Hive クエリで使用できるようになるため、`ADD JAR` を使用する必要はありません。
 
-Linux ベースのクラスターのブートストラップでは、この機能は提供されません。代わりに、「[Add Hive libraries during cluster creation (クラスター作成時の Hive ライブラリの追加)](hdinsight-hadoop-add-hive-libraries.md)」に記載されているスクリプト アクションを使用します。
+Linux ベースのクラスターのブートストラップでは、この機能は提供されません。代わりに、「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」に記載されているスクリプト アクションを使用します。
 
 ### Virtual Networks
 
@@ -252,4 +254,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

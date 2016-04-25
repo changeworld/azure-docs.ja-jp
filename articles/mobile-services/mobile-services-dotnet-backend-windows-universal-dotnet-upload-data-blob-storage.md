@@ -8,13 +8,13 @@
 	editor=""/>
 
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/01/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/01/2015"
 	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
@@ -38,7 +38,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2013 Update 3 以降のバージョン。
-+ [Azure ストレージ アカウント](../storage-create-storage-account.md)
++ [Azure ストレージ アカウント](../storage/storage-create-storage-account.md)
 + コンピューターに接続された、カメラなどのイメージ キャプチャ デバイス
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
@@ -51,11 +51,11 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 モバイル サービスを Blob サービスと統合することによりイメージを安全にアップロードできました。他のバックエンド サービスおよび統合のトピックを参照してください。
 
-+ [Mobile Services でのバックエンド ジョブの計画](../mobile-services-dotnet-backend-schedule-recurring-tasks.md)
++ [Mobile Services でのバックエンド ジョブの計画](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 
      モバイル サービスのジョブ スケジューラ機能を使用して、定義したスケジュールに従って実行されるサーバー スクリプト コードを定義する方法について説明します。
 
-+ [Mobile Services .NET の使用方法の概念リファレンス](../mobile-services-windows-dotnet-how-to-use-client-library.md)
++ [Mobile Services .NET の使用方法の概念リファレンス](mobile-services-dotnet-how-to-use-client-library.md)
 
      .NET で Mobile Services を使用する方法について説明します
 
@@ -71,8 +71,8 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 <!-- Images. -->
 
 <!-- URLs. -->
-[モバイル サービスの使用]: ../mobile-services-windows-store-dotnet-get-started.md
-[How To Create a Storage Account]: ../storage-create-storage-account.md
+[モバイル サービスの使用]: mobile-services-windows-store-dotnet-get-started.md
+[How To Create a Storage Account]: ../storage/storage-create-storage-account.md
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

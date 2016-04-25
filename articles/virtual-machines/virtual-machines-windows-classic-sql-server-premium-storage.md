@@ -37,7 +37,7 @@
 - 考えられる移行方法。
 - 既存の AlwaysOn 実装の移行の Azure、Windows、および SQL Server の詳細な手順を示す例。
 
-Azure Virtual Machines での SQL Server についての背景情報については、「[Azure の仮想マシンにおける SQL Server](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
+Azure Virtual Machines での SQL Server についての背景情報については、「[Azure の仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
 **執筆者:** Daniel Sol **技術校閲者:** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz
 
@@ -402,8 +402,6 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 1. 完全バックアップをコピーし、**NORECOVERY** で復元します。
 1. ログインなど、‘out of user DB’ 依存オブジェクトをコピーします。
 1. 内部ロード バランサー (ILB) を新しく作成するか、または外部ロード バランサー (ELB) を使用して、両方の新しいノードにロード バランサー エンドポイントを設定します。
-
-
 > [AZURE.NOTE] 続行する前に、すべてのノードのエンドポイント構成が適切であることをチェックしてください
 
 1. (記憶域プールを使用している場合) SQL サーバーへのユーザー/アプリケーション アクセスを停止します。
@@ -1121,7 +1119,7 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 ## その他のリソース
 - [Azure Premium Storage](../storage/storage-premium-storage.md)
 - [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-- [Azure の仮想マシンにおける SQL Server](virtual-machines-windows-classic-sql-overview.md)
+- [Azure の仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png
@@ -1150,4 +1148,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

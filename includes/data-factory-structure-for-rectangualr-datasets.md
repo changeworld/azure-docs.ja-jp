@@ -7,7 +7,7 @@
 | -------- | ----------- | -------- |
 | name | 列の名前です。 | あり |
 | type | 列のデータ型です。型情報を指定する必要がある場合の詳細については、以下の型変換のセクションを参照してください。 | いいえ |
-| culture | 型を指定するときに使用される .NET ベースのカルチャ。.NET 型の Datetime または Datetimeoffset です。既定値は “ja-jp” です。 | いいえ |
+| culture | 型を指定するときに使用される .NET ベースのカルチャ。.NET 型の Datetime または Datetimeoffset です。既定値は “ja-JP” です。 | いいえ |
 | BlobSink の format | 型を指定するときに使用される書式指定文字列。.NET 型の Datetime または Datetimeoffset です。 | いいえ |
 
 次に、userid、name、および lastlogindate という 3 つの列があるテーブルの structure セクション JSON の例を示します。
@@ -47,4 +47,4 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースでスキ�
 
 Datetime と Datetimeoffset の場合、必要に応じて “culture” と “format” 文字列を指定して、カスタムの Datetime 文字列の解析に利用することができます。型変換については、以下のサンプルを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

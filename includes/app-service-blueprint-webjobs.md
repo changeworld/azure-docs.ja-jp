@@ -1,22 +1,21 @@
 
 ## リソース
 
-* [Azure Web ジョブ SDK とは](../app-service-web/websites-dotnet-webjobs-sdk.md)
-* [Web ジョブ リソースの完全な一覧](../app-service-web/websites-webjobs-resources.md)
-* [Azure Web ジョブ SDK の使用](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
-* [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
-* [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-* [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
-* [Web ジョブ SDK で Azure Service Bus を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md)
+* [Web ジョブ リソースの完全な一覧](../articles/app-service-web/websites-webjobs-resources.md)
+* [Azure Web ジョブ SDK の使用](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
+* [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
+* [Web ジョブ SDK で Azure Blob Storage を使用する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+* [Web ジョブ SDK を使用して Azure Table Storage を使用する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
+* [Web ジョブ SDK で Azure Service Bus を使用する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-service-bus.md)
 * [GitHub の Web ジョブ設定に関するドキュメント](https://github.com/projectkudu/kudu/wiki/Web-jobs)
-* [Visual Studio を使用して Azure WebJobs をデプロイする方法](../app-service-web/websites-dotnet-deploy-webjobs.md)
-* [Azure 管理ポータルを使用して Web ジョブをデプロイする方法](../app-service-web/web-sites-create-web-jobs.md)
-* [[Azure Web ジョブの追加] ダイアログ ボックス](../app-service-web/websites-dotnet-deploy-webjobs.md#configure)
-* [Azure 管理ポータルでのスケジュール実行の Web ジョブの作成](../app-service-web/web-sites-create-web-jobs.md#CreateScheduled)
+* [Visual Studio を使用して Azure WebJobs をデプロイする方法](../articles/app-service-web/websites-dotnet-deploy-webjobs.md)
+* [Azure 管理ポータルを使用して Web ジョブをデプロイする方法](../articles/app-service-web/web-sites-create-web-jobs.md)
+* [[Azure Web ジョブの追加] ダイアログ ボックス](../articles/app-service-web/websites-dotnet-deploy-webjobs.md#configure)
+* [Azure 管理ポータルでのスケジュール実行の Web ジョブの作成](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduled)
 * [Scheduling Azure WebJobs with cron expressions (CRON 式を使用して Azure Web ジョブをスケジュールする)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
-* [Web ジョブ ダッシュボードの表示](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
-* [Web ジョブ SDK を使用してログを記述し、ダッシュボードに表示する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
-* [Web ジョブのリモート デバッグ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
+* [Web ジョブ ダッシュボードの表示](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
+* [Web ジョブ SDK を使用してログを記述し、ダッシュボードに表示する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
+* [Web ジョブのリモート デバッグ](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 
 ## ビデオ
 
@@ -32,4 +31,4 @@
 * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

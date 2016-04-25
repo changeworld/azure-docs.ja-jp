@@ -17,7 +17,7 @@
    ms.author="masnider"/>
 
 # Service Fabric クラスターの記述
-Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。実行時に、リソース マネージャーは、この情報を使用して、クラスターのリソースを適切に使用しながら、クラスターで実行されているサービスの高可用性を確保します。
+Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。Resource Manager は、実行時にこの情報を利用することで、クラスターのリソースが適切に使用されるように管理しながら、クラスターで実行されているサービスの高可用性を確保します。
 
 ## 主要な概念
 クラスターを記述するクラスター リソース マネージャーの機能を次に示します。
@@ -262,4 +262,4 @@ LoadMetricInformation     :
 [Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

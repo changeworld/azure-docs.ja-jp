@@ -14,7 +14,7 @@
 	ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-	ms.date="01/25/2016" 
+	ms.date="04/07/2016" 
 	ms.author="markusvi"/>
 
 
@@ -25,7 +25,7 @@
 必要に応じて次の関連するトピックも参照してください。
 
 - これらの手順については、ビデオ「[How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)」をご覧ください。
-- 必要であれば、[サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。
+- 必要であれば、[サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。
 -  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## シナリオ図
@@ -37,7 +37,7 @@
 
 ドメイン コントローラーのオンプレミスへのインストールと Azure へのインストールにそれほど大きな違いはありません。主な違いを次の表に示します。
 
-構成対象 | オンプレミスの  | Azure Virtual Network	
+構成対象 | オンプレミスの | Azure Virtual Network	
 ------------- | -------------  | ------------
 **ドメイン コントローラーの IP アドレス** | ネットワーク アダプターのプロパティの静的 IP アドレスを割り当てる | Set-AzureStaticVNetIP コマンドレットを実行して、静的 IP アドレスを割り当てる
 **DNS クライアント リゾルバー** | ドメイン メンバーのネットワーク アダプターのプロパティの優先および代替 DNS サーバー アドレスを設定する | 仮想ネットワークのプロパティの DNS サーバー アドレスを設定する
@@ -118,10 +118,10 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 ## 関連項目
 
 -  [How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
--  [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
--  [Configure a Cloud-Only Virtual Network (クラウド専用 Virtual Network の構成)](../virtual-network/virtual-networks-create-vnet.md)
+-  [Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+
 -  [サイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
--  [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-networks-install-replica-active-directory-domain-controller.md)
+-  [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)
 -  [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 -  [Microsoft Azure IT Pro IaaS: (05) Virtual Network とクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
@@ -138,4 +138,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

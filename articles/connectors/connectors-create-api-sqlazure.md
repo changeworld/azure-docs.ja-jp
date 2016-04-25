@@ -25,14 +25,14 @@ SQL Azure API は次のツールから使用できます。
 
 - Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Microsoft SQL コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-sql.md)」をご覧ください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 SQL Azure では次のことができます。
 
 - SQL Azure から取得したデータに基づいてビジネス フローを構築できます。 
 - 行の取得、行の挿入などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、SQL Azure からデータの行を取得し、そのデータを Excel に追加できます。 
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 
 ## トリガーとアクション
@@ -51,7 +51,7 @@ SQL には、次のアクションがあります。トリガーはありませ�
 | ---|---|---|
 |SQL 接続文字列|あり|SQL Azure の接続文字列を入力します。|
 
-接続を作成したら、テーブル名など、SQL のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+接続を作成したら、テーブル名など、SQL のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -227,4 +227,4 @@ SQL テーブルの既存の行を更新します。```PATCH: /datasets/default/
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

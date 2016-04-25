@@ -112,7 +112,7 @@ Web サイト|http://www.myhdinsightapp.com
 
 		#region - Connect to Azure subscription
 		Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-		Add-AzureAccount
+		Login-AzureRmAccount
 		#endregion
 
 		#region - Create a block blob object for writing tweets into Blob storage
@@ -488,7 +488,7 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 	
 	Write-Host "Display the standard error log ... " -ForegroundColor Green
 	$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
-	Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -StandardError
+	Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 	#endregion
 
 ### 結果を確認する
@@ -565,4 +565,4 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

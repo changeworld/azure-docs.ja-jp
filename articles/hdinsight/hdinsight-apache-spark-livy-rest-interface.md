@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Livy を使用して Spark ジョブをリモートで送信する | Microsoft Azure" 
-	description="Livy と HDInsight クラスターを使用して Spark ジョブをリモートで送信する方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="paulettm" 
+<properties
+	pageTitle="Livy を使用して Spark ジョブをリモートで送信する | Microsoft Azure"
+	description="Livy と HDInsight クラスターを使用して Spark ジョブをリモートで送信する方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="nitinme"/>
 
 
@@ -33,7 +33,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 ## クラスターへのバッチ ジョブの送信
 
-バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。そうするには、[**AzCopy**](storage/storage-use-azcopy.md) (コマンド ライン ユーティリティ) を使用します。データのアップロードに使用できるクライアントは、他にも多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。そうするには、[**AzCopy**](../storage/storage-use-azcopy.md) (コマンド ライン ユーティリティ) を使用します。データのアップロードに使用できるクライアントは、他にも多数あります。詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
 	curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
 
@@ -44,7 +44,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 		curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
 * 入力ファイル (この例では input.txt) の一部として、jar ファイル名とクラス名を渡す場合
-		
+
 		curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
 ## クラスターで実行されているバッチの情報の取得
@@ -179,7 +179,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -189,4 +189,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

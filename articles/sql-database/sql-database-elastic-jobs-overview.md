@@ -2,8 +2,9 @@
 	pageTitle="Elastic Database ジョブの概要 | Microsoft Azure" 
 	description="エラスティック データベース ジョブ サービスの説明" 
 	metaKeywords="azure sql database elastic databases" 
-	services="sql-database" documentationCenter=""  
-	manager="jeffreyg" 
+	services="sql-database" 
+    documentationCenter=""  
+	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
@@ -124,4 +125,6 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0224_2016-->
+ 
+
+<!---HONumber=AcomDC_0413_2016-->

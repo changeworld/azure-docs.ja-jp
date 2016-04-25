@@ -40,6 +40,6 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure RemoteApp を管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
-* [Azure Automation の使用](../automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+* [Azure Automation の使用](../automation/automation-first-runbook-graphical.md) (Azure Automation の作業開始のチュートリアル)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

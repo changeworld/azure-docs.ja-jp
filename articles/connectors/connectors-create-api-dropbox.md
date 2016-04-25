@@ -30,7 +30,7 @@ Dropbox に接続して、ファイルの作成、ファイルの取得など、
 
 &nbsp;
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Dropbox コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-dropbox.md)」をご覧ください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 
 Dropbox では、次の操作を実行できます。
@@ -286,4 +286,4 @@ Dropbox フォルダー内のファイルが変更されたときにフローを
 [10]: ./media/connectors-create-api-dropbox/dropbox-create-app-page1.png
 [11]: ./media/connectors-create-api-dropbox/dropbox-create-app-page2.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

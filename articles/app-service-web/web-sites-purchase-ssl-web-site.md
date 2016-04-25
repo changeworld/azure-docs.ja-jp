@@ -103,29 +103,29 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
     * **App Service 検証** 
     
-        1. これは、既に **App Service アプリにカスタム ドメインを割り当ててある**場合に、最も簡単なプロセスです。 この方法では、この条件を満たすすべての App Service アプリが一覧表示されます。たとえば、この例では、**contosocertdemo.com** は **"ContosoCertDemo"** という名前の App Service アプリに割り当てられているカスタム ドメインであり、ここで表示される唯一の App Service アプリです。複数リージョンのデプロイがあった場合、すべてのリージョンのアプリが一覧表示されます。
-            > [AZURE.NOTE]
-            この検証方法は、Standard (基本) 証明書購入にのみ使用できます。ワイルドカード証明書の場合は、以下で説明する他の 3 つのオプションを使用してください。 
-        2. **[検証]** ボタンをクリックして、この手順を実行します。
-        3. 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
+        * これは、既に **App Service アプリにカスタム ドメインを割り当ててある**場合に、最も簡単なプロセスです。 この方法では、この条件を満たすすべての App Service アプリが一覧表示されます。たとえば、この例では、**contosocertdemo.com** は **"ContosoCertDemo"** という名前の App Service アプリに割り当てられているカスタム ドメインであり、ここで表示される唯一の App Service アプリです。複数リージョンのデプロイがあった場合、すべてのリージョンのアプリが一覧表示されます。
         
-            ![App Service 検証のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)
+           この検証方法は、Standard (基本) 証明書購入にのみ使用できます。ワイルドカード証明書の場合は、以下で説明する他の 3 つのオプションを使用してください。
+        * **[検証]** ボタンをクリックして、この手順を実行します。
+        * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
+        
+        ![App Service 検証のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)
 
     * **ドメイン検証**
 
-        1. この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)**場合にのみ**、最も便利な方法です。
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
         
-        2. **[検証]** ボタンをクリックして、この手順を実行します。
+        * **[検証]** ボタンをクリックして、この手順を実行します。
         
-        3. 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
+        * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
 
     * **メール検証**
         
-        1. 検証の電子メールは、このカスタム ドメインに関連付けられているメール アドレスに既に送信されています。
+        * 検証の電子メールは、このカスタム ドメインに関連付けられているメール アドレスに既に送信されています。
          
-        2. 電子メールを開き、検証リンクをクリックして、電子メール検証手順を実行します。
+        * 電子メールを開き、検証リンクをクリックして、電子メール検証手順を実行します。
         
-        3. 検証メールを再送信する必要がある場合は、**[電子メールを再送信]** ボタンをクリックします。
+        * 検証メールを再送信する必要がある場合は、**[電子メールを再送信]** をクリックします。
          
     * **手動検証**
                  
@@ -139,7 +139,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
             
             * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
             
-            たとえば、**‘cAGgQrKc’** というドメイン検証トークンで contosocertdemo.com の Standard 証明書を購入した場合、**‘http://contosocertdemo.com/cAGgQrKc.html’** に対する Web 要求からは **cAGgQrKc** が返ります。
+            たとえば、**"cAGgQrKc"** というドメイン検証トークンで contosocertdemo.com の Standard 証明書を購入した場合、**"http://contosocertdemo.com/cAGgQrKc.html"** に対する Web 要求からは **cAGgQrKc** が返ります。
         2. **DNS TXT レコード検証**
 
             * DNS マネージャーを使用して、**"DZC"** サブドメインに、**ドメイン検証トークン**と同じ値の TXT レコードを作成します。
@@ -154,21 +154,21 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 この手順では、この新しく購入した証明書を App Service アプリに割り当てる方法を説明します。
 
 > [AZURE.NOTE]
-このセクションの手順を実行する前に、アプリにカスタム ドメイン名が関連付けられている必要があります。詳細については、「**[Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)**」を参照してください。
+このセクションの手順を実行する前に、アプリにカスタム ドメイン名が関連付けられている必要があります。詳細については、**[Web アプリ用のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)**に関するページをご覧ください。
 
 1.	ブラウザーで、**[Azure ポータル](https://portal.azure.com/)**を開きます。
 2.	ページの左側にある **[App Service]** オプションをクリックします。
 3.	この証明書を割り当てるアプリの名前をクリックします。 
 4.	**[設定]** で **[カスタム ドメインおよび SSL]** をクリックします。
-5.	**証明書セクション**で **[証明書のインポート]** クリックして、購入した証明書を選択します。
+5.	**証明書セクション**で **[証明書のインポート]** クリックして、購入した証明書を選択します
 
     ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.jpg)
 
-6. **[SSL の設定]** タブの **[SSL バインド]** セクションで、ドロップダウン リストから、SSL で保護するドメイン名と使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
+6. **[SSL の設定]** タブの **[SSL バインド]** セクションで、ドロップダウン リストから、SSL で保護するドメイン名と使用する証明書を選択します。**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** または IP ベースの SSL のどちらを使用するかを選択することもできます。
 
     ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.jpg)
 
-       • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。 • SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事を参照してください。
+       • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。• SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** の記事をご覧ください。
        
 7. 変更を保存して SSL を有効にするには、*[保存]* をクリックします。
 
@@ -208,4 +208,4 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

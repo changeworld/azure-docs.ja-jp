@@ -9,7 +9,7 @@
 <tags
     ms.service="application-insights"
     ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza" 
+	ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
 	ms.date="11/17/2015"
@@ -17,7 +17,7 @@
 
 # Application Insights に対する Azure 診断ログの構成
 
-Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンをセットアップするときに、[Azure は診断ログを生成できます](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。これを Application Insights に送信し、Application Insights SDK によってアプリ内から送信された診断および使用テレメトリと共に分析できます。Azure のログには、開始、停止、クラッシュ、パフォーマンス カウンターなど、アプリの管理でのイベントが含まれます。また、ログにはアプリでの System.Diagnostics.Trace の呼び出しも含まれます。
+Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンをセットアップするときに、[Azure は診断ログを生成できます](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md/)。これを Application Insights に送信し、Application Insights SDK によってアプリ内から送信された診断および使用テレメトリと共に分析できます。Azure のログには、開始、停止、クラッシュ、パフォーマンス カウンターなど、アプリの管理でのイベントが含まれます。また、ログにはアプリでの System.Diagnostics.Trace の呼び出しも含まれます。
 
 この記事では、診断キャプチャの構成について詳しく説明します。
 
@@ -62,7 +62,7 @@ Azure 診断のデータは、Azure Storage のテーブルに格納されます
         <Channel logLevel="Verbose" name="MyLogData"  />
       </Channels>
      </Sink>
-    </SinksConfig> 
+    </SinksConfig>
 
 ```
 
@@ -116,7 +116,7 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
         <DataSource name="Application!*" />
       </WindowsEventLog>
       <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose"
-            sinks="ApplicationInsights.MyLogData"/> 
+            sinks="ApplicationInsights.MyLogData"/>
        <!-- This specific info sent to this channel -->
      </DiagnosticMonitorConfiguration>
 
@@ -136,9 +136,9 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
 
 この機能には制限事項がいくつかあります。
 
-* チャネルは、ログの種類を操作することのみを目的としています。パフォーマンス カウンターは操作できません。パフォーマンス カウンターの要素を含むチャネルを指定した場合、そのチャネルは無視されます。 
-* チャネルのログ レベルには、Azure 診断によって収集されるデータのログ レベルを超えるログを指定することはできません。たとえば、Logs 要素でアプリケーション ログのエラーを収集できないため、Application Insight シンクに "詳細" ログを送信することにします。scheduledTransferLogLevelFilter 属性では、シンクに送信するログと同じかそれを超えるレベルのログを常に収集する必要があります。 
-* Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。たとえば、Directories ノードの下で指定されたデータです。クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。 
+* チャネルは、ログの種類を操作することのみを目的としています。パフォーマンス カウンターは操作できません。パフォーマンス カウンターの要素を含むチャネルを指定した場合、そのチャネルは無視されます。
+* チャネルのログ レベルには、Azure 診断によって収集されるデータのログ レベルを超えるログを指定することはできません。たとえば、Logs 要素でアプリケーション ログのエラーを収集できないため、Application Insight シンクに "詳細" ログを送信することにします。scheduledTransferLogLevelFilter 属性では、シンクに送信するログと同じかそれを超えるレベルのログを常に収集する必要があります。
+* Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。たとえば、Directories ノードの下で指定されたデータです。クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## 関連トピック
 
@@ -146,4 +146,4 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
 * [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診断構成ファイル](https://msdn.microsoft.com/library/azure/dn782207.aspx)
 
-<!---HONumber=AcomDC_1125_2015-->
+<!---HONumber=AcomDC_0413_2016-->

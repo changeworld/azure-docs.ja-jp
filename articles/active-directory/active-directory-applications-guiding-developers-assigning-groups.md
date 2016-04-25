@@ -17,7 +17,7 @@
 	ms.author="inhenk"/>
 
 # Azure AD とアプリケーション: アプリケーションへのグループの割り当て
-ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。ユーザー割り当てを要求する方法については、「[ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md)」を参照してください。
+ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。ユーザー割り当てを要求する方法については、[ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md)に関する記事をご覧ください。
 
 この記事では、このアプリケーションに使用する Active Directory に既にグループが作成されていることを前提としています。
 
@@ -36,4 +36,4 @@
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

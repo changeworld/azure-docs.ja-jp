@@ -120,13 +120,13 @@ Azure Active Directory Device Registration サービスを Azure Active Director
   1.	ドメインを追加します。
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
-  >[AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。
-  >[AZURE.NOTE] プレビュー機能を構成する必要はありません。
-
-
+  
+  > [AZURE.NOTE] 
+  上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。プレビュー機能を構成する必要はありません。
 
 
 ## Active Directory ドメイン サービス スキーマをアップグレードする
+
 > [AZURE.NOTE]
 Active Directory スキーマのアップグレードを行うと、それを元に戻すことはできません。これは最初にテスト環境で実行することをお勧めします。
 
@@ -136,6 +136,7 @@ Active Directory スキーマのアップグレードを行うと、それを元
 4. コマンド プロンプトから、adprep ディレクトリに移動し、**adprep.exe /forestprep** を実行します。画面の手順に従ってスキーマのアップグレードを完了します。
 
 ## デバイスをサポートするために Active Directory の準備を行う
+
 >[AZURE.NOTE] これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 
 
@@ -206,6 +207,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 次のシナリオを考慮します。AD FS でアプリケーションの証明書利用者の信頼を作成し、登録されたデバイスのみを許可する発行承認規則を構成します。これで、登録されたデバイスのみにアプリケーションへのアクセスが許可されます。ユーザーがアプリケーションに容易にアクセスできるようにするには、ユーザーのデバイスを参加させる手順を含むカスタム アクセス拒否メッセージを構成します。これで、ユーザーはアプリケーションにアクセスするために、シームレスな方法でデバイスを登録できます。
 
 次の手順に、このシナリオを実装する方法を示します。
+
 >[AZURE.NOTE]
 ここでは、AD FS でアプリケーションに対して証明書利用者の信頼を構成済みであると想定します。
 
@@ -250,4 +252,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

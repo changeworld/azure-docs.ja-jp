@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのテンプレートで状態を処理するためのベスト プラクティス"
+	pageTitle="Resource Manager テンプレートでの状態の処理 | Microsoft Azure"
 	description="複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -13,26 +13,52 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/06/2016"
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートでの状態の共有
 
-このトピックでは、Azure リソース マネージャー テンプレート内およびリンクされたテンプレート間で状態を管理して共有するためのベスト プラクティスを示します。このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
+このトピックでは、テンプレート内で状態を管理して共有するためのベスト プラクティスを説明します。このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
 
 このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
 
 
-## 複合オブジェクトを使用した、状態の共有
+## 標準の構成設定を指定する
 
 高い柔軟性と多様性に対応したテンプレートというのは、決して一般的ではありません。一般的なパターンはむしろ既製の構成を選べるようにすることであり、事実、T シャツのような標準的なサイズ区分 (サンドボックス、S、M、L など) が多く使われています。コミュニティ エディション、エンタープライズ エディションなど製品の提供形態も、T シャツのサイズと同様の区分といえます。また、MapReduce、NoSQL など、テクノロジのワークロードに基づく構成で大中小を決める場合もあります。
 
-複合オブジェクトを使用すると、データのコレクションを格納する変数 ("プロパティ バッグ" と呼ばれます) を作成し、そのデータを使用して、テンプレートでのリソースの宣言をしやすくすることができます。このアプローチの特徴は、さまざまなサイズの構成を顧客向けにあらかじめ用意しておき、良質な既製の構成を提供できることです。既製の構成が用意されていなければ、エンド カスタマー自身がクラスターの規模を決め、プラットフォーム リソースの制約を加味しながら、ストレージ アカウントや各種リソースの分割サイズを計算しなければなりません (クラスター サイズとリソースの制約のため)。既製の構成を用いることによって、"T シャツの適切なサイズ"、つまり特定のデプロイを顧客が選びやすくなります。顧客の利便性を高めることとは別に、既製の構成の数は少ない方がサポートしやすく、密集度も高めやすくなります。
-
+複合オブジェクトを使用すると、データのコレクションを格納する変数 ("プロパティ バッグ" と呼ばれます) を作成し、そのデータを使用して、テンプレートでのリソースの宣言をしやすくすることができます。このアプローチの特徴は、さまざまなサイズの構成を顧客向けにあらかじめ用意しておき、良質な既製の構成を提供できることです。既製の構成が用意されていなければ、エンド カスタマー自身がクラスターの規模を決め、プラットフォーム リソースの制約を加味しながら、ストレージ アカウントや各種リソースの分割サイズを計算しなければなりません (クラスター サイズとリソースの制約のため)。顧客の利便性を高めることとは別に、既製の構成の数は少ない方がサポートしやすく、密集度も高めやすくなります。
 
 次の例は、データのコレクションを表す複合オブジェクトを含む変数を定義する方法を示します。コレクションは、仮想マシンのサイズ、ネットワークの設定、オペレーティング システムの設定、および可用性の設定に使用される値を定義します。
 
     "variables": {
+      "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
+      },
+      "tshirtSizeMedium": {
+        "vmSize": "Standard_A3",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 2,
+          "pool": "db",
+          "map": [0,1],
+          "jumpbox": 0
+        }
+      },
       "tshirtSizeLarge": {
         "vmSize": "Standard_A4",
         "diskSize": 1023,
@@ -53,7 +79,7 @@
           "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh"
         ],
         "imageReference": {
-	  "publisher": "Canonical",
+          "publisher": "Canonical",
           "offer": "UbuntuServer",
           "sku": "14.04.2-LTS",
           "version": "latest"
@@ -82,6 +108,8 @@
       }
     }
 
+**tshirtSize** 変数は、パラメーター (**Small**、**Medium**、**Large**) で指定した T シャツのサイズを **tshirtSize** のテキストに連結することに注意してください。この変数を使用して、その T シャツ サイズの関連する複合オブジェクト変数を取得します。
+
 テンプレートで、後でこれらの変数を参照できます。名前付きの変数とそのプロパティを参照できると、テンプレートの構文を簡略化し、コンテキストがわかりやすくなります。次の例では、上記のオブジェクトを使用して値を設定することで、デプロイするリソースを定義します。たとえば、VM のサイズを設定するために `variables('tshirtSize').vmSize` の値を取得する一方、ディスクのサイズの値を `variables('tshirtSize').diskSize` から取得しています。さらに、リンクされたテンプレートの URI を `variables('tshirtSize').vmTemplate` の値と共に設定しています。
 
     "name": "master-node",
@@ -104,7 +132,7 @@
             "value": "[parameters('replicatorPassword')]"
           },
           "osSettings": {
-	    "value": "[variables('osSettings')]"
+            "value": "[variables('osSettings')]"
           },
           "subnet": {
             "value": "[variables('networkSettings').subnets.data]"
@@ -137,18 +165,11 @@
       }
     }
 
-## テンプレートおよびリンクされたテンプレートに状態を渡す
+## 状態をテンプレートに渡す
 
-次を使用して、テンプレートおよびリンクされたテンプレートと状態情報を共有できます。
-
-- デプロイ中に、メイン テンプレートに直接渡されるパラメーター
-- メイン テンプレートが、リンクされたテンプレートと共有するパラメーター、静的変数、生成された変数
-
-### メイン テンプレートに渡される共通パラメーター
+デプロイ中に直接指定するパラメーターを使用して、状態をテンプレートに共有します。
 
 次の表では、テンプレートで一般的に使用されるパラメーターを一覧にしています。
-
-**メイン テンプレートに渡される、一般的に使用されるパラメーター**
 
 名前 | 値 | 説明
 ---- | ----- | -----------
@@ -161,111 +182,64 @@ tshirtSize | 提供される T シャツ サイズの制約付き一覧の文字
 virtualNetworkName | String | コンシューマーが使用する仮想ネットワークの名前。
 enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の jumpbox を有効にするかどうかを識別するパラメーター。値: "enabled"、"disabled"
 
-### リンクされたテンプレートに送信されるパラメーター
+前のセクションで使用した **tshirtSize** パラメータは、次のように定義されます。
+
+    "parameters": {
+      "tshirtSize": {
+        "type": "string",
+        "defaultValue": "Small",
+        "allowedValues": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "metadata": {
+          "Description": "T-shirt size of the MongoDB deployment"
+        }
+      }
+    }
+
+
+## リンクされたテンプレートに状態を渡す
 
 リンクされたテンプレートへの接続時には、多くの場合、静的変数と生成された変数を組み合わせて使用します。
 
-#### 静的変数
+### 静的変数
 
-静的変数は、URL など、基本の値を指定するためによく使用されます。このような基本の値は、テンプレート全体で、または動的な変数の値を作成するための値として使用されます。
+静的変数は、URL など、基本の値を指定するためによく使用されます。このような基本の値は、テンプレート全体で使用されます。
 
-次のテンプレートの抜粋では、*templateBaseUrl* により、GitHub におけるテンプレートのルートの場所を指定します。その次の行では、*templateBaseUrl* の値と共有リソース テンプレートの既知の名前を連結する新しい変数 *sharedTemplateUrl* を作成します。その下では、複合オブジェクト変数を使用して、T シャツ サイズを格納します。ここで、*templateBaseUrl* が連結されて、*vmTemplate* プロパティに格納されている既知の構成テンプレートの場所を指定します。
+次のテンプレートの抜粋では、`templateBaseUrl` により、GitHub におけるテンプレートのルートの場所を指定します。その次の行では、基本 URL と共有リソース テンプレートの既知の名前を連結する新しい変数 `sharedTemplateUrl` を作成します。その下では、複合オブジェクト変数を使用して、T シャツ サイズを格納します。ここで、基本 URL が `vmTemplate` プロパティに格納されている既知の構成テンプレートの場所に連結されます。
 
-このアプローチの利点は、新しいテンプレートの基礎として簡単にテンプレートを移動、分岐、使用できることです。テンプレートの場所が変わった場合でも、メイン テンプレートという 1 か所で静的変数を変更するだけでかまいません。メイン テンプレートから、静的変数が渡されます。
+この方法の利点は、テンプレートの場所が変わった場合でも、1 か所で静的変数を変更するだけで済むという点です。その場所から、リンクされたテンプレート全体に静的変数が渡されます。
 
-    "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-    "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "slaveCount": 1,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
+    "variables": {
+      "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+      "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "slaveCount": 1,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
       }
     }
 
-#### 生成された変数
+### 生成された変数
 
 静的変数に加えて、いくつかの変数が動的に生成されます。このセクションでは、生成された変数の一般的な種類を明確にします。
 
-##### tshirtSize
+#### tshirtSize
 
-メイン テンプレートを呼び出す場合、固定された数のオプションから T シャツ サイズを選択できます。通常、これらの値は、*Small*、*Medium*、*Large* などです。
+上記の例で、生成されたこの変数について説明しています。
 
-メイン テンプレートでは、このオプションは次のように *tshirtSize* などのパラメーターとして表されます。
-
-    "tshirtSize": {
-      "type": "string",
-      "defaultValue": "Small",
-      "allowedValues": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "metadata": {
-        "Description": "T-shirt size of the MongoDB deployment"
-      }
-    }
-
-メイン テンプレート内では、変数は、それぞれのサイズに対応します。たとえば、利用可能なサイズが、Small、Medium、Large の場合、変数のセクションには、*tshirtSizeSmall*、*tshirtSizeMedium*、および*tshirtSizeLarge* という名前の変数が含まれます。
-
-次の例に示すように、これらの変数には、特定の T シャツ サイズのプロパティを定義します。それぞれが、VM の種類、ディスクのサイズ、リンクする関連付けられたスケール ユニット リソースのテンプレート、インスタンスの数、ストレージ アカウントの詳細、および jumpbox の状態を識別します。
-
-ストレージ アカウント名のプレフィックスは、ユーザーが指定したパラメーターから取得され、リンクされたテンプレートは、テンプレートのベース URL と特定のスケール ユニット リソースのテンプレートのファイル名を連結したものです。
-
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-			"diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeMedium": {
-      "vmSize": "Standard_A3",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeLarge": {
-      "vmSize": "Standard_A4",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-16disk-resources.json')]",
-      "vmCount": 3,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1,1],
-        "jumpbox": 0
-      }
-    }
-
-*tshirtSize* 変数は、セクションの変数のさらに下の部分にあります。指定した T シャツ サイズ (*Small*、*Medium*、*Large*) の末尾が、テキスト *tshirtSize* と連結され、その T シャツ サイズに対応する、関連付けられた複合オブジェクト変数を取得します。
-
-    "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
-
-この変数は、リンクされているスケール ユニット リソースのテンプレートに渡されます。
-
-##### networkSettings
+#### networkSettings
 
 容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。わかりやすい方法の 1 つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
 
@@ -288,7 +262,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
       }
     }
 
-##### availabilitySettings
+#### availabilitySettings
 
 リンクされたテンプレートで作成されたリソースは、多くの場合、可用性セットに配置されます。次の例では、可用性セット名と共に、使用する障害ドメインと更新ドメインの数も指定しています。
 
@@ -300,7 +274,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 複数の可用性セット (たとえば、あるセットをマスター ノード用に、別のセットをデータ ノード用に使用) が必要な場合、名前をプレフィックスとして使用して、複数の可用性セットを指定するか、前に示した、特定の T シャツ サイズの変数を作成するモデルに従います。
 
-##### storageSettings
+#### storageSettings
 
 多くの場合、ストレージの詳細は、リンクされたテンプレートと共有されます。次の例では、*storageSettings* オブジェクトは、ストレージ アカウント名とコンテナー名の詳細を提供します。
 
@@ -310,7 +284,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
         "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
     }
 
-##### osSettings
+#### osSettings
 
 リンクされたテンプレートを使用すると、場合によっては、異なる既知の構成の種類における、さまざまなノードの種類に対して、オペレーティング システムの設定を渡す必要があります。複合オブジェクトを使用すると、オペレーティング システムの情報を簡単に格納し、共有できます。また、複数のオペレーティング システムを選択してデプロイすることも容易になります。
 
@@ -325,7 +299,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
       }
     }
 
-##### machineSettings
+#### machineSettings
 
 生成された変数である *machineSettings* は、新しい VM を作成するための中核となる変数を組み合わせた複合オブジェクトです。以下のように、管理者のユーザー名とパスワード、VM 名のプレフィックス、オペレーティング システム イメージの参照が含まれています。
 
@@ -343,7 +317,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 *osImageReference* が、メイン テンプレートで定義された *osSettings* 変数から値を取得することに注意してください。つまり、VM のオペレーティング システムを簡単に変更できます。全体的に、またはテンプレートのコンシューマーの設定に基づいて変更できます。
 
-##### vmScripts
+#### vmScripts
 
 *vmScripts* オブジェクトには、VM インスタンスでダウンロードして実行するスクリプトの詳細が含まれています。これには、外部の参照や内部の参照などが含まれています。外部の参照には、インフラストラクチャが含まれます。内部の参照には、インストールされているソフトウェアと構成が含まれます。
 
@@ -381,12 +355,75 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
 メイン テンプレート内では、次の構文でこのデータを使用できます。
 
-    "masterIpAddress": {
-        "value": "[reference('master-node').outputs.masterip.value]"
+    "[reference('master-node').outputs.masterip.value]"
+
+この式は、出力のセクションまたはメイン テンプレートの resources セクションで使用することができます。この式は実行時の状態に依存するため、変数のセクションでは使用できません。メイン テンプレートからこの値を返すには、次のように使用します。
+
+    "outputs": { 
+      "masterIpAddress": {
+        "value": "[reference('master-node').outputs.masterip.value]",
+        "type": "string"
+      }
+     
+リンクされたテンプレートの出力のセクションを使用して仮想マシンのデータ ディスクを取得する例については、[「仮想マシン用の複数のデータ ディスクの作成」](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine)を参照してください。
+
+## 仮想マシンの認証設定を定義する
+
+上記の構成設定と同様のパターンで、仮想マシンの認証設定を指定することができます。認証の種類を渡すためのパラメーターを作成します。
+
+    "parameters": {
+      "authenticationType": {
+        "allowedValues": [
+          "password",
+          "sshPublicKey"
+        ],
+        "defaultValue": "password",
+        "metadata": {
+          "description": "Authentication type"
+        },
+        "type": "string"
+      }
     }
 
-## 次のステップ
-- [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
-- [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
+さまざまな認証の種類の変数と、パラメーターの値に基づいてこのデプロイメントで使用する種類を格納するための変数を追加します。
 
-<!---HONumber=AcomDC_0406_2016-->
+    "variables": {
+      "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
+      "osProfilepassword": {
+        "adminPassword": "[parameters('adminPassword')]",
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]"
+      },
+      "osProfilesshPublicKey": {
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": "true",
+          "ssh": {
+            "publicKeys": [
+              {
+                "keyData": "[parameters('sshPublicKey')]",
+                "path": "/home/notused/.ssh/authorized_keys"
+              }
+            ]
+          }
+        }
+      }
+    }
+
+仮想マシンを定義する場合、作成した変数に **osProfile** を設定します。
+
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      ...
+      "osProfile": "[variables('osProfile')]"
+    }
+
+
+## 次のステップ
+- テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
+
+<!---HONumber=AcomDC_0413_2016-->

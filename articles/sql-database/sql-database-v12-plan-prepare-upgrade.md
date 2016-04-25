@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="data-management" 
+	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
@@ -60,7 +60,7 @@ V12 から使用する場合、Azure SQL Database は Basic、Standard、Premium
 Basic、Standard、Premium サービス階層の詳細については、次を参照してください。
 
 - [SQL Database のサービス階層](sql-database-service-tiers.md)
-- [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
+- [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-server-portal.md)
 
 
 
@@ -225,7 +225,7 @@ V11 データベースは、V12 へのアップグレード中も、引き続き
 
 PowerShell コマンドレットを使用して、V11 を含め、V12 より前のバージョンから V12 への Azure SQL Database のアップグレードを開始、停止、監視できます。
 
-- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server.md)
+- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server-powershell.md)
 
 これらの PowerShell コマンドレットについては、次のリファレンス ドキュメントを参照してください。
 
@@ -252,6 +252,5 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

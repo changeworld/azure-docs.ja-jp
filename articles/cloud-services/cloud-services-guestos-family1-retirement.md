@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Azure" 
-   description="Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します" 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="timlt" 
+<properties
+   pageTitle="ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Azure"
+   description="Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します"
+   services="cloud-services"
+   documentationCenter="na"
+   authors="yuemlu"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
+   ms.workload="tbd"
    ms.date="12/07/2015"
    ms.author="yuemlu"/>
 
@@ -35,17 +35,17 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。
 
-1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。 
+1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
 3. Azure クラシック ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
 
-クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../install-configure-powershell.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
+クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../powershell-install-configure.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
-    Select-AzureSubscription -SubscriptionName $subscription.SubscriptionName 
-    
-    $deployments=get-azureService | get-azureDeployment -ErrorAction Ignore | where {$_.SdkVersion -NE ""} 
+    Select-AzureSubscription -SubscriptionName $subscription.SubscriptionName
+
+    $deployments=get-azureService | get-azureDeployment -ErrorAction Ignore | where {$_.SdkVersion -NE ""}
 
     $deployments | ft @{Name="SubscriptionName";Expression={$subscription.SubscriptionName}}, ServiceName, SdkVersion, Slot, @{Name="osFamily";Expression={(select-xml -content $_.configuration -xpath "/ns:ServiceConfiguration/@osFamily" -namespace $namespace).node.value }}, osVersion, Status, URL
 }
@@ -65,13 +65,13 @@ foreach($subscription in Get-AzureSubscription) {
 
 **ゲスト OS ファミリ 3.x** - Windows Server 2012
 
-1. アプリケーションで SDK 1.8 以降と .NET Framework 4.0 または 4.5 を使用していることを確認します。 
+1. アプリケーションで SDK 1.8 以降と .NET Framework 4.0 または 4.5 を使用していることを確認します。
 2. ServiceConfiguration.cscfg ファイルで osFamily 属性を “3” に設定し、クラウド サービスを再デプロイします。
 
 
 **ゲスト OS ファミリ 2.x** - Windows Server 2008 R2
 
-1. アプリケーションで SDK 1.3 以降と .NET Framework 3.5 または 4.0 を使用していることを確認します。 
+1. アプリケーションで SDK 1.3 以降と .NET Framework 3.5 または 4.0 を使用していることを確認します。
 2. ServiceConfiguration.cscfg ファイルで osFamily 属性を "2" に設定し、クラウド サービスを再デプロイします。
 
 
@@ -81,4 +81,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

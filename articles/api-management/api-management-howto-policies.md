@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure API Management のポリシー" 
+	pageTitle="Azure API Management のポリシー | Microsoft Azure" 
 	description="API Management のポリシーを作成、編集、構成する方法について説明します。" 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/12/2016" 
 	ms.author="sdanie"/>
 
 
@@ -32,7 +32,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![[ポリシー] メニュー][policies-menu]
 
-ポリシー エディターは、[ポリシー スコープ] \(上部)、ポリシーを編集するための [ポリシー定義] \(左側)、およびステートメントの一覧 \(右側) の 3 つのメイン セクションから構成されます。
+ポリシー エディターは、[ポリシー スコープ] (上部)、ポリシーを編集するための [ポリシー定義] (左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
 
 ![ポリシー エディター][policies-editor]
 
@@ -51,6 +51,8 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。XML は、定義ウィンドウで直接編集できます。ウィンドウの右側には、ステートメントの一覧が表示されます。上のスクリーンショットの**[呼び出しレート制限]** ステートメントを見るとわかるように、現在のスコープに適用できるステートメントが有効になり、強調表示されます。
 
 有効なステートメントをクリックすると、定義ビュー内のカーソル位置に適切な XML が追加されます。
+
+>[AZURE.NOTE] 追加するポリシーが有効になっていない場合、そのポリシー用の正しいスコープが選択されていることを確認してください。各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス][]に関するページでそのポリシーの**使用例**を参照してください。
 
 使用できるポリシー ステートメントと設定の一覧については、「[Azure API Management ポリシー リファレンス][]」を参照してください。
 
@@ -131,6 +133,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 > [AZURE.VIDEO policy-expressions-in-azure-api-management]
 
 [Azure API Management ポリシー リファレンス]: api-management-policy-reference.md
+[ポリシー リファレンス]: api-management-policy-reference.md
 [成果物]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md#add-apis
 [操作]: api-management-howto-add-operations.md
@@ -148,4 +151,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

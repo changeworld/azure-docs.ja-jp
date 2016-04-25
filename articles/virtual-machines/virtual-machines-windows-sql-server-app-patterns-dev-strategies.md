@@ -3,9 +3,9 @@
 	description="この記事では、Azure VM での SQL Server のアプリケーション パターンについて説明します。ソリューション設計者および開発者向けに、優れたアプリケーション アーキテクチャと設計の基礎について説明しています。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="Selcin"
-	manager="jeffreyg"
-	editor="monicar"
+	authors="rothja"
+	manager="jhubbard"
+	editor=""
 	tags="azure-service-management,azure-resource-manager" />
 <tags
 	ms.service="virtual-machines-windows"
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/04/2015"
-	ms.author="selcint" />
+	ms.date="04/05/2016"
+	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
 
@@ -48,9 +48,9 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 アプリケーションのレイヤーは、アプリケーションの機能とコンポーネントの論理的なグループを表します。一方、層は、個々の物理サーバー、コンピューター、ネットワーク、またはリモートの場所にある機能とコンポーネントの物理的な分散を表します。アプリケーションのレイヤーは、同じ物理コンピューター (同じ層) に配置することや、別々のコンピューター (n 層) に分散させることができます。各レイヤー内のコンポーネントは、適切に定義されたインターフェイスを介して他のレイヤーのコンポーネントと通信します。層という用語は、2 層、3 層、n 層など、物理的な分散パターンを指していると考えることができます。**2 層アプリケーション パターン**には、アプリケーション サーバーとデータベース サーバーという 2 つのアプリケーション層があります。アプリケーション サーバーとデータベース サーバー間の通信は、直接行われます。アプリケーション サーバーには、Web 層とビジネス層の両方のコンポーネントが含まれています。**3 層アプリケーション パターン**には、Web サーバー、アプリケーション サーバー (ビジネス ロジック層やビジネス層のデータ アクセス コンポーネントが含まれる)、およびデータベース サーバーという 3 つのアプリケーション層があります。Web サーバーとデータベース サーバー間の通信は、アプリケーション サーバーを介して行われます。アプリケーションのレイヤーと層の詳細については、[Microsoft アプリケーション アーキテクチャ ガイド](https://msdn.microsoft.com/library/ff650706.aspx)を参照してください。
 
-この記事を読む前に、SQL Server と Azure の基本的な概念に関する知識が必要です。詳細については、[SQL Server オンライン ブック](https://msdn.microsoft.com/library/bb545450.aspx)、[Azure Virtual Machines における SQL Server](virtual-machines-windows-classic-sql-overview.md) に関するページ、および [Azure.com](https://azure.microsoft.com/) を参照してください。
+この記事を読む前に、SQL Server と Azure の基本的な概念に関する知識が必要です。詳細については、[SQL Server オンライン ブック](https://msdn.microsoft.com/library/bb545450.aspx)、[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関するページ、および [Azure.com](https://azure.microsoft.com/) を参照してください。
 
-この記事では、単純なアプリケーションおよび非常に複雑なエンタープライズ アプリケーションに適したいくつかのアプリケーション パターンについて説明します。各パターンの詳細を読む前に、[Azure Storage](../storage/storage-introduction.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-classic-sql-overview.md) など、Azure で利用可能なデータ ストレージ サービスについて理解しておくことをお勧めします。アプリケーションの設計に関して最適な決断を下すには、いつ、どのデータ ストレージ サービスを使用するかを明確に把握する必要があります。
+この記事では、単純なアプリケーションおよび非常に複雑なエンタープライズ アプリケーションに適したいくつかのアプリケーション パターンについて説明します。各パターンの詳細を読む前に、[Azure Storage](../storage/storage-introduction.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) など、Azure で利用可能なデータ ストレージ サービスについて理解しておくことをお勧めします。アプリケーションの設計に関して最適な決断を下すには、いつ、どのデータ ストレージ サービスを使用するかを明確に把握する必要があります。
 
 ### 次の場合に、Azure の仮想マシン内の SQL Server を選択します。
 
@@ -61,7 +61,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 - Azure 環境の機能を活用したいが、Azure SQL Database ではアプリケーションに必要なすべての機能をサポートしていない。これには、次のような点が関係します。
 
 	- **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 500 GB のデータのデータベースをサポートしています。アプリケーションで 500 GB を超すデータが必要だが、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。最新情報については、「[Azure SQL データベースのスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)」および [Azure SQL Database のサービス階層とパフォーマンス レベル](../sql-database/sql-database-service-tiers.md)に関するページを参照してください。
-	- **HIPAA のコンプライアンス**: Azure の Virtual Machines 内の SQL Server は HIPAA Business Associate Agreement (BAA) の対象になっているため、医療関係のお客様や独立系ソフトウェア ベンダー (ISV) は、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) の代わりに、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-classic-sql-overview.md) を選択できます。コンプライアンスについては、「[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
+	- **HIPAA のコンプライアンス**: Azure の Virtual Machines 内の SQL Server は HIPAA Business Associate Agreement (BAA) の対象になっているため、医療関係のお客様や独立系ソフトウェア ベンダー (ISV) は、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) の代わりに、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) を選択できます。コンプライアンスについては、「[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
 	- **インスタンス レベルの機能**: 現時点では、SQL Database では、データベース外部の機能 (リンク サーバー、エージェント ジョブ、FileStream、Service Broker など) をサポートしていません。詳細については、「[Azure SQL Database のガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。
 
 ## 1 層 (単純): 単一の仮想マシン
@@ -84,7 +84,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 スケーラビリティやセキュリティ上の理由から個別の層を使用する必要がない限り、プレゼンテーション レイヤーと同じ物理層にビジネス レイヤー (ビジネス ロジックおよびデータ アクセス コンポーネント) をデプロイすると、アプリケーションのパフォーマンスを最大限に引き出すことができます。
 
-これは出発点として非常に一般的なパターンです。データを SQL Server VM に移行する際は、移行に関する記事 (「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-classic-migrate-sql.md)」) が役に立ちます。
+これは出発点として非常に一般的なパターンです。データを SQL Server VM に移行する際は、移行に関する記事 (「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」) が役に立ちます。
 
 ## 3 層 (単純): 複数の仮想マシン
 
@@ -194,7 +194,7 @@ Azure Virtual Machines で SQL Server の High Availability and Disaster Recover
 
 Azure で運用コードを実行しているお客様のほとんどは Azure にプライマリとセカンダリの両方のレプリカを保持しています。
 
-High Availability and Disaster Recovery 手法に関する包括的な情報とチュートリアルについては、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-classic-sql-dr.md)」を参照してください。
+High Availability and Disaster Recovery 手法に関する包括的な情報とチュートリアルについては、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
 ## 2 層および 3 層 (Azure VM と Cloud Services の使用)
 
@@ -226,7 +226,7 @@ Cloud Services を使用すると、Azure がユーザーに代わってイン�
 
 ![アプリケーション パターン (Cloud Services)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
 
-## Azure VM、Azure SQL Database、および Azure Web Apps を使用したパターン
+## Azure VM、Azure SQL Database、および Azure App Service を使用したパターン (Web Apps)
 
 このアプリケーション パターンの主な目的は、ソリューション内で Azure のサービスとしてのインフラストラクチャ (IaaS) コンポーネントと Azure のサービスとしてのプラットフォーム (PaaS) コンポーネントを組み合わせる方法を示すことです。このパターンは、リレーショナル データ ストレージ向けの Azure SQL Database に焦点を当てています。Azure の仮想マシン内の SQL Server は含まれません。これは、Azure のサービスとしてのインフラストラクチャ プランで提供されます。
 
@@ -272,7 +272,7 @@ n 層ハイブリッド アプリケーション パターンでは、オンプ�
 
 ![N 層アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728016.png)
 
-Azure では、Active Directory を組織のスタンドアロン クラウド ディレクトリとして使用することや、既存のオンプレミスの Active Directory を [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) と統合することもできます。図に示すように、ビジネス層のコンポーネントは、複数のデータ ソースにアクセスできます。たとえば、プライベート内部 IP アドレスを使用して [Azure の SQL Server](virtual-machines-windows-classic-sql-overview.md) に、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用してオンプレミスの SQL Server に、.NET Framework データ プロバイダー テクノロジを使用して [SQL Database](../sql-database/sql-database-technical-overview) にアクセスすることができます。この図では、Azure SQL Database はオプションのデータ ストレージ サービスです。
+Azure では、Active Directory を組織のスタンドアロン クラウド ディレクトリとして使用することや、既存のオンプレミスの Active Directory を [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) と統合することもできます。図に示すように、ビジネス層のコンポーネントは、複数のデータ ソースにアクセスできます。たとえば、プライベート内部 IP アドレスを使用して [Azure の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用してオンプレミスの SQL Server に、.NET Framework データ プロバイダー テクノロジを使用して [SQL Database](../sql-database/sql-database-technical-overview) にアクセスすることができます。この図では、Azure SQL Database はオプションのデータ ストレージ サービスです。
 
 n 層ハイブリッド アプリケーション パターンでは、指定の順序で次のワークフローを実装できます。
 
@@ -292,7 +292,7 @@ n 層ハイブリッド アプリケーション パターンでは、指定の�
 
 	Azure の SQL Server に接続する方法の詳細については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-classic-sql-connect.md)」を参照してください。
 
-1. オンプレミスのデータを Azure の仮想マシン ディスクにバックアップするようにスケジュールされたジョブとアラートを設定します。詳細については、[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関するページおよび「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-classic-sql-br.md)」を参照してください。
+1. オンプレミスのデータを Azure の仮想マシン ディスクにバックアップするようにスケジュールされたジョブとアラートを設定します。詳細については、[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関するページおよび「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
 
 1. アプリケーションのニーズに応じて、次の 3 つの一般的なシナリオのいずれかを実装できます。
 
@@ -300,7 +300,7 @@ n 層ハイブリッド アプリケーション パターンでは、指定の�
 
 	1. Web サーバーとアプリケーション サーバーをオンプレミスに保持し、データベース サーバーを Azure の仮想マシンに保持する。
 
-	1. データベース サーバー、Web サーバー、およびアプリケーション サーバーをオンプレミスに保持し、データベース レプリカを Azure の仮想マシンに保持する。この設定では、オンプレミスの Web サーバーまたはレポート アプリケーションが Azure のデータベース レプリカにアクセスできます。そのため、オンプレミスのデータベース内のワークロードの削減を実現することができます。このシナリオは読み取り負荷の高いワークロードおよび開発目的で実装することをお勧めします。Azure でデータベース レプリカを作成する方法の詳細については、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-classic-sql-dr.md)」の AlwaysOn 可用性グループに関する説明を参照してください。
+	1. データベース サーバー、Web サーバー、およびアプリケーション サーバーをオンプレミスに保持し、データベース レプリカを Azure の仮想マシンに保持する。この設定では、オンプレミスの Web サーバーまたはレポート アプリケーションが Azure のデータベース レプリカにアクセスできます。そのため、オンプレミスのデータベース内のワークロードの削減を実現することができます。このシナリオは読み取り負荷の高いワークロードおよび開発目的で実装することをお勧めします。Azure でデータベース レプリカを作成する方法の詳細については、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」の AlwaysOn 可用性グループに関する説明を参照してください。
 
 ## Azure の Web 開発計画の比較
 
@@ -317,7 +317,7 @@ SQL Server ベースの多層アプリケーションを Azure に実装およ�
 |**オンプレミスからのアプリケーションの移行**|既存のアプリケーションはそのまま。|アプリケーションには Web ロールと worker ロールが必要です。|既存のアプリケーションはそのままですが、迅速な拡張性を必要とする自己完結型の Web アプリケーションと Web サービスが適しています。|
 |**開発とデプロイ**|Visual Studio、WebMatrix、Visual Web Developer、WebDeploy、FTP、TFS、IIS マネージャー、PowerShell。|Visual Studio、Azure SDK、TFS、PowerShell。各クラウド サービスには、ステージング環境と運用環境という、サービス パッケージと構成をデプロイできる環境が 2 つ用意されています。クラウド サービスは、まずステージング環境にデプロイしてテストした後、運用環境に昇格させることができます。|Visual Studio、WebMatrix、Visual Web Developer、FTP、GIT、BitBucket、CodePlex、DropBox、GitHub、Mercurial、TFS、Web Deploy、PowerShell。|
 |**管理とセットアップ**|アプリケーション、データ、ファイアウォール規則、仮想ネットワーク、およびオペレーティング システムに対する管理作業を行う必要があります。|アプリケーション、データ、ファイアウォール規則、および仮想ネットワークに対する管理作業を行う必要があります。|アプリケーションとデータのみに対する管理作業を行う必要があります。|
-|**高可用性と障害復旧 (HADR)**|仮想マシンを同じ可用性セットと同じクラウド サービス内に配置することをお勧めします。VM を同じ可用性セットに保持すると、Azure で高可用性ノードを別個の障害ドメインとアップグレード ドメインに配置できるようになります。一方、VM を同じクラウド サービスに保持すると、負荷分散できるようになり、VM が Azure データ センター内でローカル ネットワークを介して相互に直接通信できるようになります。<br/><br/>ユーザーは、ダウンタイムを回避するために、Azure Virtual Machines に SQL Server の High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「[Azure Virtual Machines内 の SQL Server の高可用性と障害復旧](virtual-machines-windows-classic-sql-dr.md)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>Azure では、ハードウェアの問題によってデータ センター内のホスト コンピューターに障害が発生した場合に、仮想マシンを移動できます。また、セキュリティやソフトウェアの更新のためにホスト コンピューターを更新するときなど、VM の計画的なダウンタイムが発生する場合があります。そのため、継続的な可用性を確保するために、アプリケーション層ごとに少なくとも 2 台の VM を保持することをお勧めします。Azure では、単一の仮想マシンに対する SLA は提供していません。詳細については、「[Azure のビジネス継続性テクニカル ガイダンス](https://msdn.microsoft.com/library/azure/hh873027.aspx)」を参照してください。|基になるハードウェアやオペレーティング システム ソフトウェアに起因するエラーは Azure で管理されます。アプリケーションの高可用性を確保するために、Web ロールまたは worker ロールの複数のインスタンスを実装することをお勧めします。詳細については、[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および「[Azure アプリケーションの災害復旧と高可用性](https://msdn.microsoft.com/library/azure/dn251004.aspx)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>データベースが Azure VM 内の SQL Server データベースに存在する場合は、ユーザーは、ダウンタイムを回避するために、High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」を参照してください。<br/><br/>**SQL Server データベース ミラーリング**: Azure Cloud Services (web/worker ロール) で使用します。SQL Server VM とクラウド サービス プロジェクトは、同じ Azure Virtual Network 内に配置できます。SQL Server VM が同じ Virtual Network 内にない場合は、SQL Server のインスタンスに通信をルーティングするために、SQL Server エイリアスを作成する必要があります。さらに、エイリアス名は SQL Server 名と一致する必要もあります。|高可用性は、Azure worker ロール、Azure Blob Storage、および Azure SQL Database から継承されます。たとえば、Azure Storage では、すべての BLOB、テーブル、およびキューのデータの 3 つのレプリカを保持します。Azure SQL Database では、常に、実行中のデータの 3 つのレプリカ (1 つのプライマリ レプリカと 2 つのセカンダリ レプリカ) を保持します。詳細については、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) に関するページおよび [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に関するページを参照してください。<br/><br/>Azure Web Apps のデータ ソースとして Azure VM 内の SQL Server を使用する場合は、Azure Web Apps では Azure Virtual Network がサポートされないことに注意してください。つまり、Azure Web Apps から Azure の SQL Server VM への接続はすべて仮想マシンのパブリック エンドポイントを介して行う必要があります。そのため、高可用性と障害復旧のシナリオが一部制限される可能性があります。たとえば、データベース ミラーリングでは Azure の SQL Server ホスト VM 間に Azure Virtual Network をセットアップする必要があるため、データベース ミラーリングを使用している SQL Server VM に接続している Azure Web Apps のクライアント アプリケーションでは、新しいプライマリ サーバーに接続することができません。そのため、Azure Web Apps では現在、**SQL Server データベース ミラーリング**の使用はサポートされていません。<br/><br/>**SQL Server AlwaysOn 可用性グループ**: Azure Web Apps と Azure の SQL Server VM を使用する場合は、AlwaysOn 可用性グループをセットアップできます。ただし、負荷分散されたパブリック エンドポイントを介してプライマリ レプリカに通信をルーティングするように AlwaysOn 可用性グループ リスナーを構成する必要があります。|
+|**高可用性と障害復旧 (HADR)**|仮想マシンを同じ可用性セットと同じクラウド サービス内に配置することをお勧めします。VM を同じ可用性セットに保持すると、Azure で高可用性ノードを別個の障害ドメインとアップグレード ドメインに配置できるようになります。一方、VM を同じクラウド サービスに保持すると、負荷分散できるようになり、VM が Azure データ センター内でローカル ネットワークを介して相互に直接通信できるようになります。<br/><br/>ユーザーは、ダウンタイムを回避するために、Azure Virtual Machines に SQL Server の High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「[Azure Virtual Machines内 の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>Azure では、ハードウェアの問題によってデータ センター内のホスト コンピューターに障害が発生した場合に、仮想マシンを移動できます。また、セキュリティやソフトウェアの更新のためにホスト コンピューターを更新するときなど、VM の計画的なダウンタイムが発生する場合があります。そのため、継続的な可用性を確保するために、アプリケーション層ごとに少なくとも 2 台の VM を保持することをお勧めします。Azure では、単一の仮想マシンに対する SLA は提供していません。詳細については、「[Azure のビジネス継続性テクニカル ガイダンス](https://msdn.microsoft.com/library/azure/hh873027.aspx)」を参照してください。|基になるハードウェアやオペレーティング システム ソフトウェアに起因するエラーは Azure で管理されます。アプリケーションの高可用性を確保するために、Web ロールまたは worker ロールの複数のインスタンスを実装することをお勧めします。詳細については、[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および「[Azure アプリケーションの災害復旧と高可用性](https://msdn.microsoft.com/library/azure/dn251004.aspx)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>データベースが Azure VM 内の SQL Server データベースに存在する場合は、ユーザーは、ダウンタイムを回避するために、High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」を参照してください。<br/><br/>**SQL Server データベース ミラーリング**: Azure Cloud Services (web/worker ロール) で使用します。SQL Server VM とクラウド サービス プロジェクトは、同じ Azure Virtual Network 内に配置できます。SQL Server VM が同じ Virtual Network 内にない場合は、SQL Server のインスタンスに通信をルーティングするために、SQL Server エイリアスを作成する必要があります。さらに、エイリアス名は SQL Server 名と一致する必要もあります。|高可用性は、Azure worker ロール、Azure Blob Storage、および Azure SQL Database から継承されます。たとえば、Azure Storage では、すべての BLOB、テーブル、およびキューのデータの 3 つのレプリカを保持します。Azure SQL Database では、常に、実行中のデータの 3 つのレプリカ (1 つのプライマリ レプリカと 2 つのセカンダリ レプリカ) を保持します。詳細については、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) に関するページおよび [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に関するページを参照してください。<br/><br/>Azure Web Apps のデータ ソースとして Azure VM 内の SQL Server を使用する場合は、Azure Web Apps では Azure Virtual Network がサポートされないことに注意してください。つまり、Azure Web Apps から Azure の SQL Server VM への接続はすべて仮想マシンのパブリック エンドポイントを介して行う必要があります。そのため、高可用性と障害復旧のシナリオが一部制限される可能性があります。たとえば、データベース ミラーリングでは Azure の SQL Server ホスト VM 間に Azure Virtual Network をセットアップする必要があるため、データベース ミラーリングを使用している SQL Server VM に接続している Azure Web Apps のクライアント アプリケーションでは、新しいプライマリ サーバーに接続することができません。そのため、Azure Web Apps では現在、**SQL Server データベース ミラーリング**の使用はサポートされていません。<br/><br/>**SQL Server AlwaysOn 可用性グループ**: Azure Web Apps と Azure の SQL Server VM を使用する場合は、AlwaysOn 可用性グループをセットアップできます。ただし、負荷分散されたパブリック エンドポイントを介してプライマリ レプリカに通信をルーティングするように AlwaysOn 可用性グループ リスナーを構成する必要があります。|
 |**クロスプレミス接続**|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network がサポートされています。詳細については、「[Web Apps Virtual Network Integration (Web Apps Virtual Network 統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)」を参照してください。|
 |**拡張性**|スケールアップは、仮想マシンのサイズを大きくするか、ディスクを追加することで実現できます。仮想マシンのサイズの詳細については、[Azure の仮想マシンのサイズ](virtual-machines-linux-sizes.md)に関するページを参照してください。<br/><br/>**データベース サーバー**: データベースのパーティション分割手法と SQL Server AlwaysOn 可用性グループを使用してスケールアウトできます。<br/><br/>読み取り負荷の高いワークロードについては、複数のセカンダリ ノードの [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)と SQL Server レプリケーションを使用できます。<br/><br/>書き込み負荷の高いワークロードについては、複数の物理サーバーにまたがるデータの行方向のパーティション分割を実装することで、アプリケーションのスケールアウトを実現できます。<br/><br/>また、[SQL Server とデータ依存型ルーティング](https://technet.microsoft.com/library/cc966448.aspx)を使用して、スケールアウトを実装することもできます。データ依存型ルーティング (DDR) を使用する場合は、クライアント アプリケーション (通常は、ビジネス層レイヤー) にパーティション分割メカニズムを実装して、データベース要求を複数の SQL Server ノードにルーティングする必要があります。ビジネス層には、データのパーティション分割方法とデータが含まれているノードのマッピングが含まれています。<br/><br/>仮想マシンを実行しているアプリケーションのスケールを設定できます。詳細については、[アプリケーションの規模の自動設定方法](../cloud-services/cloud-services-how-to-scale.md)に関するページを参照してください。<br/><br/>**重要**: Azure の**自動スケール**機能を使用すると、アプリケーションで使用する Virtual Machines の規模を自動的に拡張または縮小できます。この機能は、ピーク時にエンド ユーザー エクスペリエンスに悪影響が出ないようにし、要求が少ないときには VM をシャットダウンします。クラウド サービスに SQL Server VM が含まれている場合は、自動スケール オプションを設定しないことをお勧めします。これは、自動スケール機能を使用すると、Azure が、仮想マシンの CPU 使用率がしきい値を超えるとその VM をオンにし、CPU 使用率がしきい値を下回ると仮想マシンをオフにできるようになるためです。自動スケール機能は、VM が以前の状態を参照せずにワークロードを管理できる、Web サーバーなどのステートレスなアプリケーションに役立ちます。ただし、1 つのインスタンスだけがデータベースに書き込むことができる、SQL Server などのステートフルなアプリケーションには適していません。|スケールアップは、複数の Web ロールおよび worker ロールを使用することで実現できます。Web ロールと worker ロールの仮想マシンのサイズの詳細については、[クラウド サービスのサイズの構成](../cloud-services/cloud-services-sizes-specs.md)に関するページを参照してください。<br/><br/>**Cloud Services** を使用すると、複数のロールを定義して処理を分散させることや、アプリケーションの柔軟なスケーリングを実現することができます。各クラウド サービスには 1 つ以上の Web ロールまたは worker ロールが含まれており、各ロールにそれぞれ専用のアプリケーション ファイルと構成が関連付けられます。ロールにデプロイされているロール インスタンス (仮想マシン) の数を増やすことでクラウド サービスをスケールアップし、ロール インスタンスの数を減らすことでクラウド サービスをスケールダウンできます。詳細については、[Azure の実行モデル](fundamentals-application-models.md)に関するページを参照してください。<br/><br/>[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および Load Balancer による組み込みの Azure 高可用性サポートを利用して、スケールアウトできます。<br/><br/>多層アプリケーションについては、Azure Virtual Network を介して Web/worker ロール アプリケーションをデータベース サーバー VM に接続することをお勧めします。また、Azure は同じクラウド サービス内の VM に負荷分散を提供して、VM 間でユーザー要求を分散します。この方法で接続された仮想マシンは、Azure データ センター内でローカル ネットワークを介して相互に直接通信できます。<br/><br/>Azure クラシック ポータルで**自動スケール**を設定することや、スケジュール時間を設定することができます。詳細については、「[アプリケーションの規模の自動設定方法](../cloud-services/cloud-services-how-to-scale.md)」を参照してください。|**スケールアップとスケールダウン**: Web サイト用に予約されているインスタンス (VM) のサイズを増減できます。<br/><br/>スケールアウト: Web サイト用に予約されているインスタンス (VM) を追加できます。<br/><br/>ポータルで**自動スケール**を設定するだけでなく、スケジュール時間を設定することもできます。詳細については、「[Azure App Service の Web アプリをスケーリングする](../app-service-web/web-sites-scale.md)」を参照してください。|
 
@@ -325,6 +325,6 @@ SQL Server ベースの多層アプリケーションを Azure に実装およ�
 
 ## 次のステップ
 
-Azure の仮想マシンで SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-classic-sql-overview.md)」を参照してください。
+Azure の仮想マシンで SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

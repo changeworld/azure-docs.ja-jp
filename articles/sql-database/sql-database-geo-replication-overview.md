@@ -3,8 +3,8 @@
 	description="このトピックでは、SQL Database のアクティブ geo レプリケーションとその使用方法について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="stevestein"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
 	ms.date="03/07/2016"
-	ms.author="jroth" />
+	ms.author="sstein" />
 
 # Azure SQL Database のアクティブ geo レプリケーション
 
@@ -66,4 +66,4 @@
 ## 次のステップ
 SQL Database のビジネス継続性機能の詳細については、[ビジネス継続性の概要に関するページ](sql-database-business-continuity.md)を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

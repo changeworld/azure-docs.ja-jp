@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="02/29/2016"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # Azure コマンド ライン インターフェイスを使用したロールベースのアクセス制御の管理
@@ -23,9 +23,14 @@
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 - [REST API](role-based-access-control-manage-access-rest.md)
 
-## ロールベースのアクセス制御 (RBAC) ロールの一覧
+Azure ポータルと Azure Resource Manager API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
->[AZURE.IMPORTANT] この記事のコマンドレットを使用するには、[Azure CLI をインストール](../xplat-cli-install.md)しておく必要があります。
+Azure CLI を使用して RBAC を管理するには、事前に以下を用意しておく必要があります。
+
+- Azure CLI バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照してください。
+- Azure CLI の Azure Resource Manager。詳細については、[Resource Manager での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)に関するページをご覧ください。
+
+## ロールの一覧表示
 
 ###	使用可能なすべてのロールの表示
 使用可能なすべてのロールを表示するには、次のコマンドを使用します。
@@ -47,17 +52,17 @@
 
 ##	アクセス権の表示
 ###	リソース グループに対して有効なロールの割り当ての表示
-リソース グループに対して有効なロールの割り当てを表示するには、次のコマンドを使用します。
+リソース グループに存在しているロールの割り当ての一覧を表示するには、次のコマンドを使用します。
 
     azure role assignment list --resource-group <resource group name>
 
-次の例では、*pharma-sales-projecforcast* グループに対して有効なロールの割り当てを表示しています。
+次の例は、*pharma-sales-projecforcast* グループのロールの割り当てを示しています。
 
 ![RBAC Azure コマンド ライン - グループ別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
 ###	ユーザーへのロールの割り当て (ユーザーのグループに割り当てられているロールを含む) の表示
 
-次の例は、ユーザー **sameert@aaddemo.com* に対して有効なロールの割り当てを示しています。
+次の例は、ユーザー **sameert@aaddemo.com* に付与されたロールの割り当てを示しています。これには、ユーザーに直接割り当てられたロールだけでなく、グループから継承されたロールも含まれます。
 
 ![RBAC Azure コマンド ライン - ユーザー別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -122,7 +127,7 @@
 
 ## カスタム ロールの修正
 
-カスタム ロールを修正するには、最初に `azure role show` コマンドを使用してロール定義を取得します。必要に応じてロール定義を変更します。最後に、`azure role set` を使用して変更したロール定義を保存します。
+カスタム ロールを修正するには、最初に `azure role show` コマンドを使用してロール定義を取得します。必要に応じてロール定義を変更します。最後に、`azure role set` を使用して、変更したロール定義を保存します。
 
 次の例では、Microsoft.Insights/diagnosticSettings/* 操作が **Actions** に追加され、Azure サブスクリプションが Virtual Machine Operator カスタム ロールの **AssignableScopes** に追加されます。
 
@@ -157,4 +162,4 @@
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

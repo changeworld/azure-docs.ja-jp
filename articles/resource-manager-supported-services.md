@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -31,13 +31,12 @@ Azure ポータルとクラシック ポータルでサポートされている�
 
 | サービス | リソース マネージャーが有効 | REST API | スキーマ | クイック スタート テンプレート |
 | ------- | ------------------------ |-------- | ------ | ------ |
-| Batch   | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
+| Batch  
+ | あり | [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) | | [Microsoft.Batch](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Batch%22&type=Code) |
 | Dynamics Lifecycle Services | はい | | | [Microsoft.DynamicsLcs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DynamicsLcs%22&type=Code)
 | Service Fabric (プレビュー) | はい | [Service Fabric Rest](https://msdn.microsoft.com/library/azure/dn707692.aspx) | | [Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
 | Virtual Machines | あり | [VM REST](https://msdn.microsoft.com/library/azure/mt163647.aspx) | [2015-08-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) | [Microsoft.Compute](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Compute%22&type=Code) |
-| Virtual Machines (クラシック) | 制限あり | - | - |
-| リモート アプリ | いいえ | - | - |
-| Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
+| Virtual Machines (クラシック) | 制限あり | - | - | | リモート アプリ | いいえ | - | - | | Cloud Services (クラシック) | 制限あり (下記参照) | - | - | - |
 
 「Virtual Machines (クラシック)」とは、リソース マネージャー デプロイ モデルではなくクラシック デプロイ モデルを使用してデプロイされたリソースのことです。一般に、このようなリソースはリソース マネージャーの操作をサポートしていませんが、有効になっている操作がいくつかあります。これらのデプロイメント モデルの詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -90,8 +89,7 @@ Cloud Services (クラシック) は、他のクラシック リソースと共�
 | Data Lake Store | あり | | | |
 | HDInsights | あり | [HDInsights REST](https://msdn.microsoft.com/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Stream Analytics | はい | [Steam Analytics REST](https://msdn.microsoft.com/library/azure/dn835031.aspx) | | [Microsoft.StreamAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.StreamAnalytics%22&type=Code) |
-| Machine Learning | いいえ | - | - |
-| Data Catalog | いいえ | - | - |
+| Machine Learning | いいえ | - | - | | Data Catalog | いいえ | - | - |
 
 ## モノのインターネット
 
@@ -115,8 +113,7 @@ Cloud Services (クラシック) は、他のクラシック リソースと共�
 | ------- | ------- | -------- | ------ | ------ |
 | BizTalk Services | はい | | [2014-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) | [Microsoft.BizTalkServices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.BizTalkServices%22&type=Code) |
 | Service Bus | あり | | | [Microsoft.ServiceBus](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceBus%22&type=Code) |
-| Backup | いいえ | - | - |
-| Site Recovery | いいえ | - | - |
+| Backup | いいえ | - | - | | Site Recovery | いいえ | - | - |
 
 ## ID 管理とアクセス管理 
 
@@ -163,7 +160,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 使用可能なすべてのリソース プロバイダーを取得する例を次に示します。
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
     
 次のように出力されます。
 
@@ -175,7 +172,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 次の例では、特定のリソース プロバイダーのリソースの種類を取得しています。
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
     
 次のように出力されます。
 
@@ -187,7 +184,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
     
 リソース プロバイダーを登録するには、名前空間を指定します。
 
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
 
 ### Azure CLI
 
@@ -228,7 +225,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 次の例では、Web サイトでサポートされるリージョンを取得する方法を示します。
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
     
 次のように出力されます。
 
@@ -304,4 +301,4 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

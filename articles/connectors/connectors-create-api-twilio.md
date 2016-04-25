@@ -21,7 +21,7 @@ ms.author="mandia"/>
 
 Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信します。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Twilio](../app-service-logic/app-service-logic-connector-twilio.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Twilio では次のことができます。
 
@@ -47,9 +47,9 @@ Twilio API には、次のアクションがあります。トリガーはあり
 |Account ID|あり|Twilio アカウント ID を入力します。|
 |Access Token|あり|Twilio アカウント トークンを入力します。|
 
-アクセス トークンを作成する方法については、「[Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity)」を参照してください。
+アクセス トークンを作成する方法については、「[Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity)」をご覧ください。
 
-接続を作成したら、Twilio のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、Twilio のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでこの同じ Twilio 接続を使用できます。
 
@@ -57,7 +57,7 @@ Twilio API には、次のアクションがあります。トリガーはあり
 #### このドキュメントの対象バージョン: 1.0
 
 ### メッセージを取得する
-入力したメッセージ ID で指定された 1 つのメッセージを返します。 ```GET: /Messages/{MessageId}.json```
+入力したメッセージ ID で指定された 1 つのメッセージを返します。```GET: /Messages/{MessageId}.json```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -74,7 +74,7 @@ Twilio API には、次のアクションがあります。トリガーはあり
 
 
 ### メッセージを一覧表示する
-自分のアカウントに関連付けられているメッセージの一覧を返します。 ```GET: /Messages.json```
+自分のアカウントに関連付けられているメッセージの一覧を返します。```GET: /Messages.json```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -95,7 +95,7 @@ Twilio API には、次のアクションがあります。トリガーはあり
 
 
 ### メッセージを送信する
-携帯電話番号に新しいメッセージを送信します。 ```POST: /Messages.json```
+携帯電話番号に新しいメッセージを送信します。```POST: /Messages.json```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -247,4 +247,4 @@ Twilio API には、次のアクションがあります。トリガーはあり
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

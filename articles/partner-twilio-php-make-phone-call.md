@@ -1,22 +1,22 @@
-<properties 
-	pageTitle="Twilio から通話する方法 (PHP) | Microsoft Azure" 
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。サンプルは PHP アプリケーション用です。" 
-	documentationCenter="php" 
-	services="" 
-	authors="devinrader" 
-	manager="twilio" 
+<properties
+	pageTitle="Twilio から通話する方法 (PHP) | Microsoft Azure"
+	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。サンプルは PHP アプリケーション用です。"
+	documentationCenter="php"
+	services=""
+	authors="devinrader"
+	manager="twilio"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
+<tags
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="11/25/2014"
 	ms.author="microsofthelp@twilio.com"/>
 
-# Azure 上の PHP アプリケーションで Twilio を使用して通話する方法 
+# Azure 上の PHP アプリケーションで Twilio を使用して通話する方法
 
 次の例では、Azure でホストされる PHP Web ページから Twilio を使用して通話する方法を示しています。次のスクリーン ショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
@@ -25,7 +25,7 @@
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
 1. Twilio アカウントと認証トークンを取得します。Twilio を利用し始める前に、[http://www.twilio.com/pricing][twilio_pricing] で価格を検討します。試用アカウントには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。Twilio から提供される API の詳細については、[http://www.twilio.com/api][twilio_api] を参照してください。
-2. PHP 用 Twilio ライブラリを入手します。このライブラリは GitHub ([https://github.com/twilio/twilio-php][twilio_php_github]) からダウンロードするか、PEAR パッケージとしてインストールすることができます。詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
+2. [PHP 用 Twilio ライブラリ](https://github.com/twilio/twilio-php)を入手するか、PEAR パッケージとしてインストールします。詳細については、[readme ファイル](https://github.com/twilio/twilio-php/blob/master/README.md)をご覧ください。
 3. Azure SDK for PHP をインストールします。SDK の概要とそのインストール手順については、[Azure SDK for PHP の設定に関する記事][setup_php_sdk]を参照してください。
 
 ## 通話用の Web フォームの作成
@@ -83,7 +83,7 @@
 	$client = new Services_Twilio($sid, $token, "2010-04-01");
 
 	$call = $client->account->calls->create(
-		$from_number, 
+		$from_number,
 		$to_number,
   		'http://twimlets.com/message?Message='.urlencode($message)
 	);
@@ -102,8 +102,7 @@
 次のステップでは、アプリケーションを Azure Websites にデプロイします。この後に示している記事は、Web サイトの作成と、Git、FTP、または WebMatrix によるコードのデプロイに関連しています (ただし各記事内のすべての情報が関連しているわけではありません)。
 
 * [PHP-MySQL Azure Web サイトを作成して Git でデプロイする][website-git]
-* [PHP-MySQL Azure の Web サイトを作成して FTP でデプロイする][website-ftp]。
-* [WebMatrix を使用して PHP-MySQL Azure の Web サイトを作成およびデプロイする][website-webmatrix]
+* [PHP-MySQL Azure の Web サイトを作成して FTP でデプロイする。][website-ftp]
 
 ## 次のステップ
 Azure 上の PHP で Twilio を使用した基本機能を示すために、このコードが用意されました。運用環境で Azure にデプロイする前に、エラー処理やその他の機能をさらに追加することができます。次に例を示します。
@@ -121,8 +120,6 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [try_twilio]: http://www.twilio.com/try-twilio
 [twilio_api]: http://www.twilio.com/api
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_php]: https://github.com/twilio/twilio-php
-[twilio_github_readme]: https://github.com/twilio/twilio-php/blob/master/README.md
 [setup_php_sdk]: http://azurephp.interoperabilitybridges.com/articles/setup-the-windows-azure-sdk-for-php
 [twimlet_message_url]: http://twimlets.com/message
 [twiml]: http://www.twilio.com/docs/api/twiml
@@ -138,9 +135,8 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [ssl_validation]: http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html
 [twilio_php]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPCallForm.jpg
 [twilio_php_response]: ./media/partner-twilio-php-make-phone-call/WA_TwilioPHPMakeCall.jpg
-[website-git]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-git/
-[website-ftp]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-ftp/
-[website-webmatrix]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-webmatrix/
+[website-git]: ./web-sites/web-sites-php-mysql-deploy-use-git.md
+[website-ftp]: ./web-sites/web-sites-php-mysql-deploy-use-ftp.md
 [twilio_php_github]: https://github.com/twilio/twilio-php
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

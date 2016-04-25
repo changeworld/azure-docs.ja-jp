@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="04/12/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect 同期: ディレクトリ拡張機能
@@ -24,8 +24,8 @@
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。![Schema Extension Wizard](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png) インストールでは、以下の属性が表示されます。これらは有効な候補です。
 
 - ユーザーおよびグループ オブジェクト型
-- 単一値の属性
-- 文字列、整数、バイナリ
+- 単一値の属性: 文字列、ブール値、整数、バイナリ
+- 複数値の属性: 文字列、バイナリ
 
 オブジェクトは、最大で 100 個のディレクトリ拡張機能属性を持つことができます。最大長は、250 文字です。属性値がそれより長い場合は、同期エンジンによって切り捨てられます。
 
@@ -40,4 +40,4 @@
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

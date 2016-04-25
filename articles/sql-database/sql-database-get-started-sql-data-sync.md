@@ -3,8 +3,8 @@
 	description="このチュートリアルでは、Azure SQL データ同期 (プレビュー) の概要について説明します。"
 	services="sql-database"
 	documentationCenter=""
-	authors="spelluru"
-	manager="JennieHubbard"
+	authors="jhubbard"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -202,4 +202,4 @@ SQL Database と SQL データ同期の詳細については、以下を参照�
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

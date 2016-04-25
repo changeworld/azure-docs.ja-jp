@@ -530,6 +530,6 @@ public class BlogsController : Controller
 
 ## 次のステップ
 
-Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
+Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](./app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

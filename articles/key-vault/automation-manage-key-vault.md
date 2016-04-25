@@ -42,7 +42,7 @@ Azure Key Vault コマンドレットによって、キーの作成やインポ�
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Key Vault を管理する方法について説明しました。Azure Automation の詳細については、次の各リンクを参照してください。
 
-* Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページを参照してください。
+* Azure Automation の[作業開始のチュートリアル](../automation/automation-first-runbook-graphical.md)に関するページを参照してください。
 * [Azure Key Vault の PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Azure-Key-Vault-Powershell-1349b091)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

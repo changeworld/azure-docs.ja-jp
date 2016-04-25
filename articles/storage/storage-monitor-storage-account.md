@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="04/06/2016"
 	ms.author="robinsh"/>
 
 # Azure ポータルでのストレージ アカウントの監視
@@ -25,6 +25,8 @@
 > [AZURE.NOTE] [Azure ポータル](https://portal.azure.com)で監視データを調査すると、追加のコストがかかります。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。<br />
 
 > 現在、Azure File ストレージは、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。[Azure ポータル](https://portal.azure.com)から Azure File ストレージのメトリックを有効にすることができます。
+
+> 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。
 
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
@@ -120,7 +122,7 @@
 	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
 
-6. すべてのサービスについてメトリックを選択したら、[OK] \(チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
+6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
 7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 
@@ -157,4 +159,4 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

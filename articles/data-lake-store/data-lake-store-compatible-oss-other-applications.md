@@ -1,24 +1,24 @@
-<properties 
-   pageTitle="Data Lake Store と互換性のあるビッグ データ アプリケーション | Azure" 
-   description="Azure Data Lake Store で機能するオープン ソース アプリケーションの一覧" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+<properties
+   pageTitle="Data Lake Store と互換性のあるビッグ データ アプリケーション | Azure"
+   description="Azure Data Lake Store で機能するオープン ソース アプリケーションの一覧"
+   services="data-lake-store"
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="02/03/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Storeで機能するオープン ソースのビッグ データ アプリケーション
 
-この記事では、Azure Data Lake Store で機能するオープン ソースのビッグ データ アプリケーションを示します。次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。これらのアプリケーションの HDInsight で利用できるバージョンについては、「[HDInsight コンポーネントのバージョン](/hdinsight/hdinsight-component-versioning.md)」を参照してください。
+この記事では、Azure Data Lake Store で機能するオープン ソースのビッグ データ アプリケーションを示します。次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。これらのアプリケーションの HDInsight で利用できるバージョンについては、「[HDInsight コンポーネントのバージョン](../hdinsight/hdinsight-component-versioning.md)」を参照してください。
 
 
 | オープン ソース ソフトウェア | ディストリビューション |
@@ -39,6 +39,5 @@
 ## 関連項目
 
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

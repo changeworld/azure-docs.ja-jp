@@ -21,7 +21,7 @@ ms.author="deonhe"/>
 
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Yammer](../app-service-logic/app-service-logic-connector-yammer.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Yammer で次のことができます。
 
@@ -206,4 +206,4 @@ Yammer Web インターフェイスの "すべて" の会話に対応します�
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

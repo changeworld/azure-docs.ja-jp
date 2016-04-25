@@ -4,13 +4,13 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="01/20/2016"
+	ms.date="04/11/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -23,26 +23,26 @@
 **1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-import.md)
+- [Azure ポータル](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
 
 この記事は、[Azure ポータル](https://portal.azure.com)を使用して BACPAC ファイルから新しい Azure SQL Database を作成する手順について説明します。
 
-BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」の「バックアップ パッケージ (.bacpac)」を参照してください。
-
-Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export.md)」の手順に従って作成できます。
+BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export.md)」の手順に従って作成できます。
 
 
-> [AZURE.NOTE]Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
 
 .bacpac から SQL Database をインポートするには、以下が必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。 
 - Azure SQL Database V12 サーバー。V12 サーバーがない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
-- [Azure Storage アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
+- [Azure Storage アカウント (標準)](../storage/storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
+
+***重要*** BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
 
 
 ## データベースを含めるサーバーの選択
@@ -50,10 +50,9 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 次のように、インポートするデータベースの [SQL Server] ブレードを開きます。
 
 1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
-2.	**[すべて参照]** をクリックします。
-3.	**[SQL Server]** をクリックします。
-2.	データベースを復元するサーバーをクリックします。
-3.	[SQL Server] ブレードで、**[データベースのインポート]** をクリックして、**[データベースのインポート]** ブレードを開きます。
+2.	**[SQL Server]** をクリックします。
+3.	データベースを復元するサーバーをクリックします。
+4.	[SQL Server] ブレードで、**[データベースのインポート]** をクリックして、**[データベースのインポート]** ブレードを開きます。
 
     ![データベースのインポート][1]
 
@@ -65,9 +64,9 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
     ![価格レベルの選択][3]
 
-1.  **[データベース名]** を入力します。
-2.  データベースをインポートする Azure SQL Server の **[サーバー管理ログイン]** と **[パスワード]** を入力します。
-1.  **[作成]** をクリックして、BACPAC からデータベースを作成します。
+1.  **[データベース名]** に BACPAC ファイルから作成するデータベースの名前を入力します。
+2.  認証の種類を選択し、サーバーの認証情報を指定します。 
+3.  **[作成]** をクリックして、BACPAC からデータベースを作成します。
 
     ![データベースの作成][4]
 
@@ -75,10 +74,9 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 ## インポート操作の進行状況の監視
 
-2.	**[すべて参照]** をクリックします。
-3.	**[SQL Server]** をクリックします。
+1.	**[SQL Server]** をクリックします。
 2.	復元先のサーバーをクリックします。
-3.	[SQL Server] ブレードで、**[インポート/エクスポート履歴]** をクリックします。
+3.	[SQL Server] ブレードの [操作] 領域で、**[インポート/エクスポート履歴]** をクリックします。
 
     ![インポート/エクスポート履歴][5] ![インポート/エクスポート履歴][6]
 
@@ -88,8 +86,7 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 
 ## サーバーにデータベースが存在することの確認
 
-2.	**[すべて参照]** をクリックします。
-3.	**[SQL データベース]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
+1.	**[SQL データベース]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
 
 
 
@@ -112,4 +109,4 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

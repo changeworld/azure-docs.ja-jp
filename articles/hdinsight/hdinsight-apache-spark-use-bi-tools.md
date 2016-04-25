@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/21/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 
@@ -58,7 +58,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-use-bi-tools/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
 
 		from pyspark.sql import *
 		
@@ -84,27 +84,27 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 		dfw = DataFrameWriter(hvacTable)
 		dfw.saveAsTable('hvac')
 
-5. テーブルが正常に作成されたことを確認します。`%%hive` マジックを使用して、Hive を直接実行できます。`%%hive` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
+5. テーブルが正常に作成されたことを確認します。`%%sql` マジックを使用して、Hive クエリを直接実行できます。`%%sql` マジックと、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」をご覧ください。
 
-		%%hive
+		%%sql
 		SHOW TABLES
 
 	出力は次のようになります。
 
-		+---------------+-----------+
-		|      tableName|isTemporary|
-		+---------------+-----------+
-		|  hvactemptable|       true|
-		|hivesampletable|      false|
-		|           hvac|      false|
-		+---------------+-----------+
+		+-----------+---------------+
+		|isTemporary|tableName		| 
+		+-----------+---------------+
+		|       true|hvactemptable  |
+		|      false|hivesampletable|
+		|      false|hvac			|
+		+-----------+---------------+
 
 
 	**isTemporary** 列が false の Hive テーブルだけがメタストアに格納されて、BI ツールからアクセスできるようになります。このチュートリアルでは、作成したばかりの **hvac** テーブルに接続します。
 
 6. テーブルに目的のデータが含まれることを確認します。Notebook の空のセルに次のスニペットをコピーして、**Shift + Enter** キーを押します。
 
-		%%hive
+		%%sql
 		SELECT * FROM hvac LIMIT 10
 	
 7. ここで、リソースを解放するために Notebook をシャットダウンできます。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
@@ -210,7 +210,7 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -231,4 +231,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->
