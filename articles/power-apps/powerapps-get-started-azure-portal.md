@@ -53,14 +53,14 @@ PowerApps Enterprise の使用を開始するには、Azure Active Directory (Az
 次の手順を使用して、テナントを既に所有しているかどうかを判定するか、または新しいテナントを作成する方法を決定します。
 
 #### 既存の Office 365 サブスクリプションを所有している
-Office 365 サブスクリプション (または Microsoft Dynamic CRM Online、Enterprise Mobility Suite、またはその他の Microsoft サービス) を既に所有している場合は、Azure Active Directory への無料のサブスクリプションが提供されます。Azure AD を使用して、ユーザー アカウントとグループ アカウントを作成し管理することができます。Azure ポータルにサインインできない場合は、おそらくサブスクリプションをアクティブにする必要があります。それを行うには、[Azure クラシック ポータル](https://manage.windowsazure.com/)に進み、1 回限りの登録処理を実行します。次の[手順](https://technet.microsoft.com/library/dn832618.aspx)を使用して、Azure AD テナントにアクセスします。
+Office 365 サブスクリプション (または Microsoft Dynamic CRM Online、Enterprise Mobility Suite、またはその他の Microsoft サービス) を既に所有している場合は、Azure Active Directory への無料のサブスクリプションが提供されます。Azure AD を使用して、ユーザー アカウントとグループ アカウントを作成し管理することができます。Azure ポータルにサインインできない場合は、おそらくサブスクリプションをアクティブにする必要があります。それを行うには、[Azure クラシック ポータル]( https://manage.windowsazure.com/)に進み、1 回限りの登録処理を実行します。次の[手順]( https://technet.microsoft.com/library/dn832618.aspx)を使用して、Azure AD テナントにアクセスします。
 
 #### Microsoft アカウントに関連付けられた既存の Azure サブスクリプションを所有している
-以前に個人の Microsoft アカウント (hotmail または live) で Azure サブスクリプションにサインアップしている場合は、既にテナントを所有しています。 [Azure クラシック ポータル](https://manage.windowsazure.com/)の **[すべてのアイテム]** と **[Active Directory]** に**既定のテナント**が表示されます。このテナントは自由に使用できますが、組織の管理者アカウントを作成する必要がある場合があります。
+以前に個人の Microsoft アカウント (hotmail または live) で Azure サブスクリプションにサインアップしている場合は、既にテナントを所有しています。 [Azure クラシック ポータル]( https://manage.windowsazure.com/)の **[すべてのアイテム]** と **[Active Directory]** に**既定のテナント**が表示されます。このテナントは自由に使用できますが、組織の管理者アカウントを作成する必要がある場合があります。
 
 そのためには、次の手順を実行してください。または、新しいテナントを作成し、同様のプロセスでそのテナントに管理者を作成することもできます。
 
-1.	個人アカウントで [Azure クラシック管理ポータル](https://manage.windowsazure.com/)にサインインします。
+1.	個人アカウントで [Azure クラシック管理ポータル]( https://manage.windowsazure.com/)にサインインします。
 2.	左側のメニュー バーにある **[Active Directory]** を選択します。
 3.	使用可能なディレクトリの一覧で、**[既定のディレクトリ]** を選択します。
 4.	上部にある **[ユーザー]** タブをクリックします。1 人のユーザーが [ソース ディレクトリ] 列に “Microsoft アカウント” と共に一覧表示されます。
@@ -78,14 +78,14 @@ Office 365 サブスクリプション (または Microsoft Dynamic CRM Online�
 
 	**[作成]** ボタンを選択して完了させ、一時的なパスワードを表示します。
 
-終了したら、新しい管理ユーザー用の一時的なパスワードを記録します。一時的なパスワードを変更するには、この新しいユーザー アカウントで [https://login.microsoftonline.com](https://login.microsoftonline.com) にサインインし、パスワードを変更します。連絡用電子メールを使用して、ユーザーにパスワードを直接送信することもできます。
+終了したら、新しい管理ユーザー用の一時的なパスワードを記録します。一時的なパスワードを変更するには、この新しいユーザー アカウントで [https://login.microsoftonline.com]( https://login.microsoftonline.com) にサインインし、パスワードを変更します。連絡用電子メールを使用して、ユーザーにパスワードを直接送信することもできます。
 
 
 #### 組織のアカウントに関連付けられた既存の Azure サブスクリプションを所有している
-以前に組織のアカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを所有しています。[Azure クラシック ポータル](https://manage.windowsazure.com/)の **[すべてのアイテム]** と **[Active Directory]** にテナントが表示されます。必要に応じて、このテナントを自由に使用できます。下部のタスク バーにある **[新規]** メニューを使用して新しいテナントを作成することもできます。
+以前に組織のアカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを所有しています。[Azure クラシック ポータル]( https://manage.windowsazure.com/)の **[すべてのアイテム]** と **[Active Directory]** にテナントが表示されます。必要に応じて、このテナントを自由に使用できます。下部のタスク バーにある **[新規]** メニューを使用して新しいテナントを作成することもできます。
 
 #### 上記のいずれも所有しておらず、最初から始める
-上記のいずれにも該当しない場合は、[https://account.windowsazure.com/organization](https://account.windowsazure.com/organization) にアクセスして、新しい組織で Azure にサインアップします。サインアップすると、選択したドメイン名が付けられた独自の Azure AD テナントを取得できます。[Azure クラシック ポータル](https://manage.windowsazure.com/)の左側のメニューの **[Active Directory]** にテナントが表示されます。
+上記のいずれにも該当しない場合は、[https://account.windowsazure.com/organization]( https://account.windowsazure.com/organization) にアクセスして、新しい組織で Azure にサインアップします。サインアップすると、選択したドメイン名が付けられた独自の Azure AD テナントを取得できます。[Azure クラシック ポータル]( https://manage.windowsazure.com/)の左側のメニューの **[Active Directory]** にテナントが表示されます。
 
 ## 手順 2: 新しい Azure サブスクリプションを作成するか、または既存のものを使用する
 AD テナントが用意できましたので、次に新しい Azure サブスクリプションを作成することも、既存のものを使用することもできます。Azure AD サブスクリプションには複数のエディションがあります。PowerApps Enterprise の場合は、Free エディションを使用することができます。ただし、AAD プロキシを使用して、オンプレミスのデータへのハイブリッド接続を作成する必要がある場合は、Basic エディションまたは Premium エディションが必要です。
@@ -98,7 +98,7 @@ AD テナントが用意できましたので、次に新しい Azure サブス�
 
 AD テナントと Azure サブスクリプションが準備できましたので、作業サブスクリプションの管理者は次に PowerApps Enterprise にサインアップできます。管理者はまた、社内のユーザーを '管理' PowerApps に追加し (ユーザーにアクセス許可を与えることも含む)、Azure サブスクリプションに公開された PowerApps を管理することができます。
 
-PowerApps Enterprise にサインアップしていない状態で、[Azure ポータル](https://portal.azure.com/)にアクセスして PowerApps を参照しても、アクセス ブレードは表示されません。会社をサインアップする場合、**サブスクリプション管理者**は [PowerApps](http://go.microsoft.com/fwlink/p/?LinkId=716848) にアクセスすることで、料金やサインアップ プロセスの詳細をお問い合わせいただけます。
+PowerApps Enterprise にサインアップしていない状態で、[Azure ポータル]( https://portal.azure.com/)にアクセスして PowerApps を参照しても、アクセス ブレードは表示されません。会社をサインアップする場合、**サブスクリプション管理者**は [PowerApps](http://go.microsoft.com/fwlink/p/?LinkId=716848) にアクセスすることで、料金やサインアップ プロセスの詳細をお問い合わせいただけます。
 
 ![][4]
 
@@ -135,17 +135,27 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 ### アプリ サービス環境を作成する
 > [AZURE.NOTE] アプリ サービス環境を作成するオプションが表示されない場合、テナントのアプリ サービス環境は既に作成されています。詳細を表示するには、**[設定]** を選択してアプリ サービス環境を開きます。
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. [Azure ポータル]( https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
 
-2. タスク バーの **[参照]** をクリックします。![PowerApps の参照][1]
+2. タスク バーの **[参照]** をクリックします。
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![PowerApps の検索][2]
+	![PowerApps の参照][1]
 
-4. **[PowerApps]** ブレードで、**[App Service Environment を作成して使用を開始する]** を選択するか、*[設定]* の **[App Service Environment ]** を選択します。![][5]
+3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。
+
+	![PowerApps の検索][2]
+
+4. **[PowerApps]** ブレードで、**[App Service Environment を作成して使用を開始する]** を選択するか、*[設定]* の **[App Service Environment ]** を選択します。
+
+	![][5]
 
 	> [AZURE.NOTE] **[App Service Environment を作成して使用を開始する]** をクリックすると、App Service Environment の詳細を示すブレードが追加で表示されます。そのブレード上で作成リンクをクリックするだけで、作成ブレードが起動します。
 
-5. 次に、名前を入力し、使用するサブスクリプションを選択し、新しいリソース グループを選択または作成し、仮想ネットワークを選択します。仮想ネットワークは、選択するとその後変更できなくなるので**注意してください**。![][6] App Service Environmentでの仮想ネットワークの動作の詳細については、「[App Service Environment の作成方法](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
+5. 次に、名前を入力し、使用するサブスクリプションを選択し、新しいリソース グループを選択または作成し、仮想ネットワークを選択します。仮想ネットワークは、選択するとその後変更できなくなるので**注意してください**。
+
+	![][6] 
+
+App Service Environmentでの仮想ネットワークの動作の詳細については、「[App Service Environment の作成方法](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
 
 6. **[追加]** を選択して、アプリ サービス環境の作成を完了します。
 
@@ -159,7 +169,7 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 
 1. 先ほど作成したアプリ サービス環境を選択します。
 2. [Essentials] で、**[リソース グループ]** プロパティを選択します。これにより、アプリ サービス環境を含むリソース グループが開きます。![][7]
-3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
+3. RBAC アイコンを選択してアクセス許可を管理します。![][8]ユーザーの追加やロールの割り当ては、Azure 内で[ロールベースのアクセス制御]( https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)を使用する場合と似ています。
 
 > [AZURE.NOTE] 現時点で、アプリ サービス環境に RBAC アクセス許可を付与することはできません。親のリソース グループ レベルでは RBAC アクセス許可を付与することができます。
 
@@ -181,4 +191,4 @@ PowerApps の API と接続に加えて、モバイル アプリ、Web アプリ
 [7]: ./media/powerapps-get-started-azure-portal/aseessentials.png
 [8]: ./media/powerapps-get-started-azure-portal/resourcegrouprbac.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!-----HONumber=AcomDC_0413_2016-->
